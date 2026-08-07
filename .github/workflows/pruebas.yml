@@ -18,9 +18,28 @@ on:
 permissions:
   contents: read
 
+# Cancela lo que ya ha quedado atras en la misma referencia, para no gastar
+# minutos en un commit que nadie va a mirar.
+#
+# CON UNA EXCEPCION: `main` NO se cancela. Aqui los commits van directos a main,
+# uno detras de otro, y el estado del flujo es el unico registro de que un
+# commit concreto paso la suite. Con `cancel-in-progress: true` a secas, empujar
+# tres commits seguidos deja los dos primeros en "cancelled" para siempre: no
+# fallaron, es que nunca llegaron a responder. En un repositorio donde la
+# reproducibilidad es el producto, un verdadero por commit vale mas que los
+# segundos de maquina que ahorra cancelarlo.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   suite:
     runs-on: ubuntu-latest
+    # La suite tarda ~45 s. Diez minutos no es un objetivo de velocidad: es el
+    # tope que convierte un trabajo colgado —una descarga que no responde, un
+    # subproceso de test_order_determinism que no termina— en un fallo en vez de
+    # en seis horas de runner.
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:

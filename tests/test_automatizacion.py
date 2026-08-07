@@ -1,7 +1,7 @@
 """
 Que la suite la corra alguien sin que haya que acordarse.
 
-Tener 247 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
+Tener 249 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
 pruebas de las que parece. Hay dos redes, y cubren momentos distintos:
 
   * `.githooks/pre-commit`, antes de cada commit, en local.
@@ -107,6 +107,37 @@ class TestElFlujoDeCI(unittest.TestCase):
             if "- uses:" in linea:
                 with self.subTest(linea.strip()[:40]):
                     self.assertRegex(linea, r"@[0-9a-f]{40} # v\d+\.\d+\.\d+$")
+
+    def _cuerpo_del_trabajo(self, trabajo: str) -> str:
+        """Desde la cabecera del trabajo hasta la del siguiente.
+
+        El corte busca la siguiente clave con DOS espacios de sangria, que es
+        la del trabajo que viene. Partir por `\\n  ` a secas no vale: las lineas
+        de dentro del trabajo van a cuatro, y empiezan por esos dos.
+        """
+        resto = self.texto.split(f"\n  {trabajo}:\n", 1)[1]
+        siguiente = re.search(r"^  [A-Za-z0-9_-]+:", resto, re.M)
+        return resto[: siguiente.start()] if siguiente else resto
+
+    def test_cada_trabajo_tiene_tope_de_tiempo(self):
+        """Sin tope, un trabajo colgado corre hasta el limite de la plataforma.
+        No es una meta de velocidad; es que un cuelgue falle en vez de arder."""
+        trabajos = re.findall(r"^  ([A-Za-z0-9_-]+):$",
+                              self.texto.split("\njobs:\n", 1)[1], re.M)
+        self.assertTrue(trabajos, "el flujo ya no declara ningun trabajo")
+        for trabajo in trabajos:
+            with self.subTest(trabajo):
+                self.assertIn("timeout-minutes:",
+                              self._cuerpo_del_trabajo(trabajo))
+
+    def test_main_no_se_cancela_nunca(self):
+        """Aqui los commits van directos a main y el estado del flujo es el
+        unico registro de que ese commit paso la suite. Un
+        `cancel-in-progress: true` a secas deja en "cancelled" a todo commit
+        adelantado por el siguiente: no fallaron, es que nunca respondieron.
+        La excepcion es la decision; simplificarla la borraria en silencio."""
+        self.assertIn("cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}",
+                      self.texto)
 
 
 class TestDependabot(unittest.TestCase):

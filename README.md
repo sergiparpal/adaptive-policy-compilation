@@ -58,7 +58,7 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
-Y antes de tocar nada, la suite: **247 pruebas en ~12 s, sin API y sin escribir
+Y antes de tocar nada, la suite: **249 pruebas en ~12 s, sin API y sin escribir
 en `results*/`.**
 
 ```bash
@@ -155,7 +155,7 @@ Dos redes distintas, con propósitos distintos.
 ### La suite
 
 ```bash
-python3 -m unittest discover            # 247 pruebas, ~12 s, 0 llamadas a la API
+python3 -m unittest discover            # 249 pruebas, ~12 s, 0 llamadas a la API
 python3 -m unittest tests.test_ceilings -v      # un módulo suelto
 ```
 
@@ -234,6 +234,14 @@ código, un commit no. Es la convención del resto de repositorios de esta cuent
 Para subir una, se resuelve la etiqueta nueva a su commit —
 `gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha` — y se cambian SHA y
 comentario a la vez; hay una prueba que comprueba que van juntos.
+
+Cada trabajo lleva `timeout-minutes: 10` sobre una suite de ~45 s: no es una
+meta de velocidad, es lo que convierte un trabajo colgado en un fallo en vez de
+en seis horas de runner. Y las ejecuciones superadas se cancelan… **salvo en
+`main`**. Aquí los commits van directos a `main` y el estado del flujo es el
+único registro de que ese commit pasó la suite; con `cancel-in-progress: true`
+a secas, empujar tres commits seguidos deja los dos primeros en *cancelled*
+para siempre — no fallaron, es que nunca llegaron a responder.
 
 Y como un SHA clavado **no envejece ruidosamente** —se queda quieto y en
 silencio—, [`.github/dependabot.yml`](.github/dependabot.yml) propone la subida
@@ -574,7 +582,7 @@ adaptive-triage/
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
 │
-├── tests/                   247 pruebas · `python3 -m unittest discover`
+├── tests/                   249 pruebas · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
 │   ├── doubles.py           el cliente de SDK grabado: la ruta del LLM sin pagar
 │   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`
