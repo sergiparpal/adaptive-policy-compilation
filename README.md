@@ -79,12 +79,46 @@ clave (ver *Puesta en marcha*):
 conservan en el código y cada tirada guarda íntegro el que usó. El registro del
 cambio está en [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 
-> ⚠️ **Dos scripts del peldaño 1 reescriben `results/` al re-ejecutarse**:
-> `harness/subsumption_check.py` y `harness/learned_subsumption.py`. El cómputo
-> es determinista, así que el contenido sale idéntico, pero cambia la fecha de
-> modificación de un registro cerrado. Está documentado en
-> [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md). Los peldaños 2, 3 y 4
-> escriben cada uno en su propio directorio.
+> ⚠️ **Reproducir una cifra sobrescribe su propio registro.** Casi todos los
+> scripts de arriba vuelcan su JSON al terminar, sobre el archivo publicado:
+>
+> | script | archivo que reescribe |
+> |---|---|
+> | `run_experiment.py frontier` | `results/frontier.json` |
+> | `run_experiment.py llm` | **`results/llm_run.json`** ← ver aviso abajo |
+> | `harness/subsumption_check.py` | `results/subsumption.json` |
+> | `harness/learned_subsumption.py` | `results/learned_subsumption.json` |
+> | `peldano2/ceiling_check2.py` | `results2/ceiling2.json` |
+> | `peldano2/compare_runs.py` | `results2/comparativa.json` |
+> | `peldano2/note_audit.py` | `results2/note_audit.json` |
+> | `peldano2/run2.py` | `results2/llm_run2_<tag>.json` |
+> | `peldano3/order_search.py` | `results3/order_search.json` |
+> | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` |
+> | `peldano4/sweep.py` | `results4/sweep.json` |
+>
+> Solo `harness/ceiling_check.py` no escribe nada.
+>
+> **El caso grave es `run_experiment.py llm`.** Sobrescribe
+> `results/llm_run.json`, que no es solo el registro del peldaño 1: es la base de
+> 577 reglas de la que **parten los peldaños 3 y 4**. Re-correrlo destruye la
+> entrada de dos peldaños cerrados, y como el proponente no es determinista a
+> `temperature 0`, lo que salga no será lo mismo. Si necesitas re-correrlo,
+> guarda el original antes con otro nombre.
+>
+> En los peldaños 1 y 2 el resto del cómputo es determinista y el contenido sale
+> idéntico —cambia la fecha de modificación de un registro cerrado, ver
+> [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md)—. En los peldaños 3 y
+> 4 **el contenido sí cambia**, porque el arreglo del desempate mueve los
+> dígitos.
+>
+> Y hay una trampa peor: `compare_runs` y `note_audit` reescriben con **lo que
+> se les pasa como argumento**. Invocarlos con un archivo en vez de con
+> `results2/llm_run2_*.json` reduce el registro de 8 tiradas a 1. No es un
+> cambio de dígitos, es pérdida de datos.
+>
+> **La salvaguarda es git, y basta.** Después de reproducir cualquier cosa:
+> `git status` delata lo que se ha tocado y `git checkout -- <archivo>` lo
+> restaura. Los registros se versionan precisamente para esto.
 
 ---
 

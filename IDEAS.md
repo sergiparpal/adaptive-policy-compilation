@@ -114,10 +114,15 @@ Real, pero no cambia ninguna conclusión. Anotada para no volver a descubrirla.
 - **Ruff: ~28 incidencias**, sobre todo imports muertos y estilo. Una era real y
   ya se corrigió (`true_action` importado y sin usar en `peldano4/sweep.py`,
   que además desmentía literalmente una afirmación de FINDINGS4).
-- **Dos scripts del peldaño 1 escriben en `results/`** al re-ejecutarse
-  (`harness/subsumption_check.py` y `harness/learned_subsumption.py`). El efecto
-  está documentado en `results2/NOTA_REGISTRO.md`. Los peldaños 2, 3 y 4
-  escriben cada uno en su propio directorio.
+- **Reproducir una cifra sobrescribe su propio registro.** No son dos scripts del
+  peldaño 1 como se anotó aquí primero: son **todos menos uno**. Cada script de
+  análisis vuelca su JSON al terminar, sobre el archivo publicado. El peor es
+  `run_experiment.py llm`, que reescribe `results/llm_run.json`, la base de 577
+  reglas de la que parten los peldaños 3 y 4. La tabla completa está en el
+  README. **No se anota como deuda a resolver con código**: git ya es la
+  salvaguarda —`git status` lo delata, `git checkout --` lo revierte— y añadir
+  `--out` a nueve scripts, dos de ellos en `harness/`, es más superficie de
+  cambio que problema resuelto. Queda como cosa que hay que saber, no que hacer.
 
 ---
 
