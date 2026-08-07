@@ -1,0 +1,35 @@
+{
+  "model": "deepseek/deepseek-v4-flash",
+  "n_rules": 577,
+  "caveat": "cota, no simulacion: la base se aprendio bajo arbitraje por especificidad; bajo subsuncion habria sido otra. Ademas aqui se carga completa desde el caso 0.",
+  "ordered_pairs": 8599,
+  "possible_pairs": 166176,
+  "specificity": {
+    "action": 858,
+    "impasse": 0,
+    "conflict": 1142,
+    "correct": 365,
+    "coverage": 0.429,
+    "silent_error": 0.5746,
+    "e2e": 0.1825
+  },
+  "subsumption": {
+    "action": 160,
+    "impasse": 0,
+    "conflict": 1840,
+    "correct": 75,
+    "coverage": 0.08,
+    "silent_error": 0.5312,
+    "e2e": 0.0375
+  },
+  "soundness": {
+    "committed": 160,
+    "wrong": 85,
+    "rate": 0.5312,
+    "hidden_policy_reference": {
+      "committed": 1263,
+      "wrong": 0
+    }
+  },
+  "residue_sets": 873
+}

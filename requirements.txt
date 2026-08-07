@@ -1,0 +1,3 @@
+openai>=1.40.0
+# solo si usas --provider anthropic:
+# anthropic>=0.40.0

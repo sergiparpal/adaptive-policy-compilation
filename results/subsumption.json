@@ -1,0 +1,276 @@
+{
+  "base": "politica oculta (29 reglas)",
+  "space_size": 134400,
+  "order": {
+    "ordered_pairs": 61,
+    "possible_pairs": 406,
+    "incomparable_pairs": 345,
+    "contradictions_with_layer_order": 0
+  },
+  "arbitration": {
+    "specificity": {
+      "action": 1495,
+      "conflict": 505,
+      "correct": 1175,
+      "e2e": 0.5875,
+      "silent_error": 0.214
+    },
+    "subsumption": {
+      "action": 1263,
+      "conflict": 737,
+      "correct": 1263,
+      "e2e": 0.6315,
+      "silent_error": 0.0
+    },
+    "priority_layer_order": {
+      "action": 2000,
+      "conflict": 0,
+      "correct": 2000,
+      "e2e": 1.0,
+      "silent_error": 0.0
+    }
+  },
+  "spec_conflicts_under_subsumption": {
+    "total": 505,
+    "resolved": 201,
+    "resolved_correctly": 201,
+    "still_incomparable": 304,
+    "new_conflicts": 433
+  },
+  "residue": {
+    "cases": 737,
+    "distinct_minimal_sets": 131,
+    "distinct_disagreeing_pairs": 110,
+    "top": [
+      {
+        "rules": [
+          "H16",
+          "H24"
+        ],
+        "cases": 128
+      },
+      {
+        "rules": [
+          "H11",
+          "H24"
+        ],
+        "cases": 89
+      },
+      {
+        "rules": [
+          "H18",
+          "H24"
+        ],
+        "cases": 63
+      },
+      {
+        "rules": [
+          "H16",
+          "H28"
+        ],
+        "cases": 37
+      },
+      {
+        "rules": [
+          "H11",
+          "H28"
+        ],
+        "cases": 24
+      },
+      {
+        "rules": [
+          "H03",
+          "H24"
+        ],
+        "cases": 17
+      },
+      {
+        "rules": [
+          "H12",
+          "H28"
+        ],
+        "cases": 17
+      },
+      {
+        "rules": [
+          "H20",
+          "H28"
+        ],
+        "cases": 17
+      },
+      {
+        "rules": [
+          "H18",
+          "H28"
+        ],
+        "cases": 16
+      },
+      {
+        "rules": [
+          "H11",
+          "H14"
+        ],
+        "cases": 12
+      },
+      {
+        "rules": [
+          "H14",
+          "H16"
+        ],
+        "cases": 12
+      },
+      {
+        "rules": [
+          "H16",
+          "H24",
+          "H25",
+          "H26"
+        ],
+        "cases": 12
+      },
+      {
+        "rules": [
+          "H16",
+          "H26"
+        ],
+        "cases": 11
+      },
+      {
+        "rules": [
+          "H09",
+          "H11",
+          "H13"
+        ],
+        "cases": 9
+      },
+      {
+        "rules": [
+          "H15",
+          "H28"
+        ],
+        "cases": 9
+      },
+      {
+        "rules": [
+          "H16",
+          "H24",
+          "H25"
+        ],
+        "cases": 9
+      },
+      {
+        "rules": [
+          "H13",
+          "H16"
+        ],
+        "cases": 8
+      },
+      {
+        "rules": [
+          "H26",
+          "H28"
+        ],
+        "cases": 7
+      },
+      {
+        "rules": [
+          "H14",
+          "H18"
+        ],
+        "cases": 7
+      },
+      {
+        "rules": [
+          "H08",
+          "H17"
+        ],
+        "cases": 7
+      },
+      {
+        "rules": [
+          "H19",
+          "H28"
+        ],
+        "cases": 6
+      },
+      {
+        "rules": [
+          "H03",
+          "H11",
+          "H24"
+        ],
+        "cases": 6
+      },
+      {
+        "rules": [
+          "H08",
+          "H10",
+          "H11"
+        ],
+        "cases": 6
+      },
+      {
+        "rules": [
+          "H20",
+          "H25"
+        ],
+        "cases": 6
+      },
+      {
+        "rules": [
+          "H18",
+          "H24",
+          "H25"
+        ],
+        "cases": 5
+      }
+    ]
+  },
+  "concentration_curve": [
+    {
+      "k": 0,
+      "cases_won": 0,
+      "e2e": 0.6315
+    },
+    {
+      "k": 5,
+      "cases_won": 341,
+      "e2e": 0.802
+    },
+    {
+      "k": 10,
+      "cases_won": 420,
+      "e2e": 0.8415
+    },
+    {
+      "k": 20,
+      "cases_won": 511,
+      "e2e": 0.887
+    },
+    {
+      "k": 30,
+      "cases_won": 565,
+      "e2e": 0.914
+    },
+    {
+      "k": 50,
+      "cases_won": 636,
+      "e2e": 0.9495
+    },
+    {
+      "k": 75,
+      "cases_won": 681,
+      "e2e": 0.972
+    },
+    {
+      "k": 100,
+      "cases_won": 706,
+      "e2e": 0.9845
+    },
+    {
+      "k": 131,
+      "cases_won": 737,
+      "e2e": 1.0
+    }
+  ]
+}

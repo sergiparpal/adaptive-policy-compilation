@@ -1,0 +1,3057 @@
+{
+  "peldano": 2,
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 100,
+  "seed": 20,
+  "prompt_version": "v2",
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nEl solape entre reglas es NORMAL y es lo que se espera. Una regla que no se\nsolapa con ninguna otra cubre solo el rincon del que nacio y no generaliza nada.\nEscribe la regla al nivel de abstraccion que creas correcto AUNQUE pise a otras,\ny usa `beats` / `loses_to` para decir quien manda donde se pisen. No estreches\nuna regla ni le a\u00f1adas condiciones para esquivar a otra: eso no resuelve el\nconflicto, lo esconde.\n\nSi tu regla es un caso particular de otra (todo caso que casa la tuya casa\ntambien la otra), no declares nada: el nivel 1 ya lo resuelve solo.\n\nCuidado con la aritmetica de conjuntos: dos reglas que mencionan los mismos\natributos pueden no compartir ni un solo caso. El motor te marca abajo, para\ncada regla, que condiciones incumple este ticket y que pares son disjuntos.\nEsos datos estan calculados sobre el espacio completo de casos: fiate de ellos\nantes que de tu propia estimacion.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "metrics": {
+    "n_cases": 100,
+    "n_rules": 26,
+    "hidden_policy_size": 29,
+    "rejected_rules": 0,
+    "failed_proposals": 3,
+    "escalations": 29,
+    "escalation_rate": 0.29,
+    "escalation_curve_by_decile": [
+      0.8,
+      0.6,
+      0.3,
+      0.4,
+      0.3,
+      0.1,
+      0.3,
+      0.1,
+      0.0,
+      0.0
+    ],
+    "final_decile_escalation_rate": 0.0,
+    "impasses": 28,
+    "conflicts": 1,
+    "coverage": 0.71,
+    "shadow_accuracy": 0.1127,
+    "silent_error_rate": 0.8873,
+    "silent_errors_abs": 63,
+    "e2e_accuracy": 0.08,
+    "reuse_rate": 0.6154,
+    "median_fires_per_rule": 1.0,
+    "dead_rules": 10,
+    "proposal_action_accuracy": 0.2414,
+    "llm_calls": 29,
+    "edges_proposed": 5,
+    "edges_accepted": 0,
+    "edge_reasons": {
+      "no_solapan": 5
+    },
+    "subsumption_pairs": 9,
+    "rules_with_edges": 0,
+    "escalations_with_base_shown": 28,
+    "escalations_on_conflict": 1
+  },
+  "rules": [
+    {
+      "rule_id": "R0001",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 0,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Primera regla: tickets de baja severidad en horario no laboral, canal portal, tier pro, se derivan a soporte general. Se abstrae omitiendo producto y n\u00famero de tickets previos por no ser determinantes para la acci\u00f3n."
+    },
+    {
+      "rule_id": "R0002",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 1,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Usuario free con severidad media (2-3), fuera de horas, por portal y producto integraciones. No es cr\u00edtico ni de seguridad, y no hay regla existente que cubra este perfil. Se asigna a soporte general (T1_GENERAL) ya que no requiere escalado t\u00e9cnico ni de facturaci\u00f3n. La regla es "
+    },
+    {
+      "rule_id": "R0003",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 3,
+      "fire_count": 12,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Regla general para usuarios free en portal con severidad media-alta: cubre este ticket y tambi\u00e9n casos en off_hours u otros productos (excepto los cubiertos por reglas m\u00e1s espec\u00edficas como off_hours), pero sin a\u00f1adir condiciones restrictivas. Al no contener ni ser contenida por l"
+    },
+    {
+      "rule_id": "R0004",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 4,
+      "fire_count": 11,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Generaliza las reglas existentes R0003 y R0002 (que requieren channel portal) a cualquier canal, cubriendo el ticket actual (chat). La regla es m\u00e1s general que R0003/R0002, por lo que la contenci\u00f3n natural (nivel 1) asegura que las espec\u00edficas ganen en sus casos, sin necesidad de"
+    },
+    {
+      "rule_id": "R0005",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 7,
+      "fire_count": 1,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Clientes pro/business con tickets de billing en off_hours y severidad media deben ir a BILLING_SPECIALIST. No se solapa con reglas existentes (todas requieren free)."
+    },
+    {
+      "rule_id": "R0006",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 8,
+      "fire_count": 2,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un cliente pro con producto billing y severidad 1 (cr\u00edtica). Aunque la regla R0005 cubre billing con off_hours y severidad 2-3, este ticket tiene severidad 1 y off_hours false, por lo que no casa. Se crea una regla m\u00e1s general para billing en pro/business con seve"
+    },
+    {
+      "rule_id": "R0007",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 9,
+      "fire_count": 3,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente free con severity baja (4) en billing fuera de horas. No hay regla existente que cubra este caso, ya que las reglas para free requieren severity 2-3 y las de billing requieren tier pro/business. Se asigna a T1_GENERAL por ser ticket de baja prioridad y sin especialista as"
+    },
+    {
+      "rule_id": "R0008",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 13,
+      "fire_count": 1,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente free con severidad cr\u00edtica (1) no cubierto por reglas existentes. Se asigna a equipo t\u00e9cnico para atenci\u00f3n inmediata, generalizando que cualquier ticket free con severity 1 debe ir a T2_TECHNICAL, independientemente de producto o canal."
+    },
+    {
+      "rule_id": "R0009",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 14,
+      "fire_count": 2,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente pro con severidad 3 en producto dashboard no cubierto por reglas existentes (todas orientadas a free o billing). Se asigna a soporte t\u00e9cnico general, nivel T2, por ser un caso de soporte t\u00e9cnico no cr\u00edtico para un cliente de pago."
+    },
+    {
+      "rule_id": "R0010",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 15,
+      "fire_count": 2,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Este ticket es un usuario free con severidad baja en horario no laboral, sin condiciones espec\u00edficas de producto o canal. La regla generaliza cualquier producto y canal para free+severity>=4+off_hours, cubriendo este caso y otros an\u00e1logos. No se solapa con las reglas existentes p"
+    },
+    {
+      "rule_id": "R0011",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 17,
+      "fire_count": 18,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Free tier users with low severity (4) during normal hours should be directed to general support. No overlapping rules exist because others cover different severity levels or off-hours."
+    },
+    {
+      "rule_id": "R0012",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 19,
+      "fire_count": 4,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente business, severidad baja, fuera de horas. Ninguna regla existente cubre este perfil; regla general para tickets de pago con baja severidad en off-hours, derivando a soporte general. No se solapa con reglas existentes porque las que cubren off-hours son para free o requier"
+    },
+    {
+      "rule_id": "R0013",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 25,
+      "fire_count": 1,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente pro con producto billing y severidad baja en horario normal. Las reglas existentes para billing solo cubren severidades 1-3 o requieren off_hours true, por lo que esta regla es disjunta y no necesita prioridad. Se asigna a BILLING_SPECIALIST porque el producto es billing "
+    },
+    {
+      "rule_id": "R0014",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 27,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un cliente business con severity 3 en off_hours y producto mobile. No hay regla existente que cubra esta combinaci\u00f3n; las reglas m\u00e1s cercanas son para free o severity 4. Se crea una regla espec\u00edfica para business/enterprise con severity 2-3 en off_hours para mobil"
+    },
+    {
+      "rule_id": "R0015",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 29,
+      "fire_count": 2,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un cliente pro con severity 3 y producto api, canal portal. No hay regla existente que cubra esta combinaci\u00f3n. Se generaliza para clientes pro/business con severity 3 y producto api, canal portal, asignando a T2_TECHNICAL. No se solapa con reglas existentes porque"
+    },
+    {
+      "rule_id": "R0016",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 30,
+      "fire_count": 1,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un usuario pro, severidad media, producto mobile, en horario normal. No hay reglas existentes que cubran este caso (las reglas con mobile son para business/enterprise o con off_hours true). Se asigna a T2_TECHNICAL por ser un producto t\u00e9cnico y usuario de pago con"
+    },
+    {
+      "rule_id": "R0017",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 32,
+      "fire_count": 4,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Cliente pro con severidad 4 en horario regular por portal sin coincidencia con reglas existentes; se deriva a T1_GENERAL al ser una consulta de baja criticidad. La regla es disjunta con todas las reglas cercanas porque especifica off_hours=false y customer_tier pro/business/enter"
+    },
+    {
+      "rule_id": "R0018",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 33,
+      "fire_count": 2,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un cliente business con severidad 2 en dashboard, un caso no cubierto expl\u00edcitamente. La regla generaliza a todos los tiers de pago (pro, business, enterprise) con severidades 2 y 3 en dashboard, que son problemas t\u00e9cnicos t\u00edpicos. R0009 es un subconjunto (pro, se"
+    },
+    {
+      "rule_id": "R0019",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 34,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "loses_to:R0014:no_solapan",
+        "loses_to:R0016:no_solapan"
+      ],
+      "note": "Cubre business/enterprise con mobile, severity 2-3, en horario laboral. Pierde frente a R0014 (off_hours true) y R0016 (customer_tier pro) por ser m\u00e1s espec\u00edficas."
+    },
+    {
+      "rule_id": "R0020",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "portal"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 44,
+      "fire_count": 5,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "loses_to:R0017:no_solapan",
+        "loses_to:R0013:no_solapan"
+      ],
+      "note": "El ticket es business, severity 4, off_hours false, email, integraciones. No encaja en las reglas existentes porque ninguna cubre severity>=4 con off_hours false y channel no portal ni producto billing. Se crea una regla general para tickets de tier pago, severity baja, fuera de "
+    },
+    {
+      "rule_id": "R0021",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 47,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Enterprise billing tickets with severity 2-3 during business hours are not covered by existing rules; R0013 covers severity >=4, R0006 covers pro/business, so this fills the gap."
+    },
+    {
+      "rule_id": "R0022",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 48,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es business, severity 3, product integrations, sin security keyword. Ninguna regla existente cubre este caso exacto. Las reglas existentes cubren otros productos o tiers, por lo que esta regla es disjunta con todas ellas. Se asigna a T2_TECHNICAL por ser un problema t\u00e9c"
+    },
+    {
+      "rule_id": "R0023",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 57,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:R0022:no_solapan"
+      ],
+      "note": "El ticket es business, integrations, severity 1. R0022 cubre severity 2-3, pero no 1. Creo una regla para severity 1 en el mismo segmento, que es un caso m\u00e1s urgente que merece T2_TECHNICAL. La nueva regla es un subcaso de R0022 (mismo customer_tier y product, pero severity m\u00e1s e"
+    },
+    {
+      "rule_id": "R0024",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 60,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Severity 1 is critical and requires technical handling; for pro/business customers on the API via portal, route to T2_TECHNICAL. This rule generalizes the specific case and does not conflict with existing rules since it is a new combination."
+    },
+    {
+      "rule_id": "R0025",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 68,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Enterprise API tickets with severity 2 or 3 are not covered by any existing rule; they require technical support. This rule is disjoint from all listed rules due to product and tier differences."
+    },
+    {
+      "rule_id": "R0026",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 73,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Regla general para tickets de mobile con severidad 2 o 3, fuera de horas, para clientes de pago. Cubre el ticket actual (pro, severidad 2, mobile, off_hours false) y casos an\u00e1logos. Las reglas existentes R0016 y R0019 son subconjuntos de esta (m\u00e1s espec\u00edficas en customer_tier o s"
+    }
+  ],
+  "edge_log": [
+    [
+      "R0014",
+      "R0019",
+      "no_solapan"
+    ],
+    [
+      "R0016",
+      "R0019",
+      "no_solapan"
+    ],
+    [
+      "R0017",
+      "R0020",
+      "no_solapan"
+    ],
+    [
+      "R0013",
+      "R0020",
+      "no_solapan"
+    ],
+    [
+      "R0023",
+      "R0022",
+      "no_solapan"
+    ]
+  ],
+  "records": [
+    {
+      "idx": 0,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 1,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H17",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 2,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ''"
+    },
+    {
+      "idx": 3,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0002",
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 4,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H15",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0002",
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 5,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 6,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 7,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0001",
+        "R0003",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 8,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H08",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0005",
+        "R0001",
+        "R0003",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 9,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0001",
+        "R0003",
+        "R0002",
+        "R0005",
+        "R0006"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 10,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 11,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H08",
+      "correct": false,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 12,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 13,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H07",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0003",
+        "R0007",
+        "R0001",
+        "R0002",
+        "R0005"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 14,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0003",
+        "R0001",
+        "R0005",
+        "R0008",
+        "R0002",
+        "R0007"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 15,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0007",
+        "R0008",
+        "R0003",
+        "R0001",
+        "R0009",
+        "R0006",
+        "R0002",
+        "R0005"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 16,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0001",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0003",
+        "R0005",
+        "R0007",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ''"
+    },
+    {
+      "idx": 17,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0008",
+        "R0010",
+        "R0003",
+        "R0007",
+        "R0006",
+        "R0001",
+        "R0009",
+        "R0002",
+        "R0005"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 18,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 19,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H28",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0010",
+        "R0004",
+        "R0006",
+        "R0001",
+        "R0005",
+        "R0007",
+        "R0008",
+        "R0009",
+        "R0011",
+        "R0003",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 20,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 21,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 22,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 23,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 24,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 25,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0006",
+        "R0011",
+        "R0012",
+        "R0004",
+        "R0001",
+        "R0005",
+        "R0007",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0003",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 26,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 27,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H28",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0004",
+        "R0006",
+        "R0005",
+        "R0012",
+        "R0001",
+        "R0002",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0011",
+        "R0007"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 28,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 29,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0004",
+        "R0006",
+        "R0009",
+        "R0011",
+        "R0005",
+        "R0001",
+        "R0008",
+        "R0012",
+        "R0013",
+        "R0002",
+        "R0010"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 30,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0009",
+        "R0003",
+        "R0011",
+        "R0005",
+        "R0008",
+        "R0012",
+        "R0013",
+        "R0014",
+        "R0015",
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 31,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 32,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0011",
+        "R0001",
+        "R0012",
+        "R0013",
+        "R0016",
+        "R0003",
+        "R0004",
+        "R0006",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0015"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 33,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H14",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0003",
+        "R0011",
+        "R0005",
+        "R0008",
+        "R0009",
+        "R0012",
+        "R0013",
+        "R0014",
+        "R0017",
+        "R0010"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 34,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H28",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0004",
+        "R0006",
+        "R0014",
+        "R0015",
+        "R0016",
+        "R0017",
+        "R0018",
+        "R0011",
+        "R0005",
+        "R0008",
+        "R0009"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 2,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan",
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 35,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0012",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 36,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 37,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 38,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 39,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0007",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 40,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 41,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 42,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 43,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 44,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0011",
+        "R0012",
+        "R0013",
+        "R0017",
+        "R0004",
+        "R0006",
+        "R0008",
+        "R0010",
+        "R0018",
+        "R0019",
+        "R0003",
+        "R0005"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 2,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan",
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 45,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 46,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0010",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 47,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H09",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0013",
+        "R0018",
+        "R0019",
+        "R0011",
+        "R0003",
+        "R0005",
+        "R0012",
+        "R0008",
+        "R0014",
+        "R0017"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 48,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0003",
+        "R0006",
+        "R0015",
+        "R0017",
+        "R0018",
+        "R0019",
+        "R0011",
+        "R0005",
+        "R0012",
+        "R0002",
+        "R0008"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 49,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 50,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0007",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 51,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0007",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 52,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H26",
+      "correct": false,
+      "winner_id": "R0017",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 53,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H07",
+      "correct": false,
+      "winner_id": "R0008",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 54,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 55,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 56,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": "R0018",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 57,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H06",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0006",
+        "R0008",
+        "R0020",
+        "R0022",
+        "R0004",
+        "R0011",
+        "R0012",
+        "R0017",
+        "R0018",
+        "R0013",
+        "R0019",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 1,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 58,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0015",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 59,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0012",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 60,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H07",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0006",
+        "R0008",
+        "R0015",
+        "R0017",
+        "R0004",
+        "R0011",
+        "R0003",
+        "R0012",
+        "R0018",
+        "R0001",
+        "R0009",
+        "R0013"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 61,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 62,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": "R0018",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 63,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0017",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 64,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 65,
+      "outcome": "CONFLICT",
+      "predicted": null,
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 2,
+      "escalated": true,
+      "shown_ids": [
+        "R0013",
+        "R0017"
+      ],
+      "shown_kind": "conflicto",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ''"
+    },
+    {
+      "idx": 66,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 67,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 68,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H13",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0003",
+        "R0017",
+        "R0018",
+        "R0019",
+        "R0021",
+        "R0022",
+        "R0011",
+        "R0006",
+        "R0012",
+        "R0008",
+        "R0015"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 69,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 70,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H26",
+      "correct": false,
+      "winner_id": "R0017",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 71,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0012",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 72,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H26",
+      "correct": false,
+      "winner_id": "R0012",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 73,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0006",
+        "R0018",
+        "R0016",
+        "R0019",
+        "R0020",
+        "R0011",
+        "R0003",
+        "R0012",
+        "R0017",
+        "R0005",
+        "R0008"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 74,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 75,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 76,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 77,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0015",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 78,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H17",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 79,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": "R0016",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 80,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 81,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0020",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 82,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": true,
+      "winner_id": "R0020",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 83,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T3_ENGINEERING",
+      "truth_rule": "H15",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 84,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H28",
+      "correct": true,
+      "winner_id": "R0020",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 85,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0020",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 86,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 87,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": false,
+      "winner_id": "R0017",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 88,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 89,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0013",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 90,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 91,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": "R0009",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 92,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 93,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0010",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 94,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 95,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 96,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0020",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 97,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 98,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 99,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": "R0009",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    }
+  ]
+}

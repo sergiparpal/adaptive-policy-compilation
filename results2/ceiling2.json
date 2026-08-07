@@ -1,0 +1,32 @@
+{
+  "n_rules": 29,
+  "space": 134400,
+  "subsumption_pairs": 61,
+  "declared_edges": 199,
+  "possible_pairs": 406,
+  "skipped": {
+    "skipped_disjoint": 112,
+    "skipped_subsumed_by_structure": 61,
+    "skipped_same_action": 34
+  },
+  "rejected_edges": [],
+  "action": 2000,
+  "conflict": 0,
+  "impasse": 0,
+  "correct": 2000,
+  "e2e": 1.0,
+  "silent_error": 0.0,
+  "verdict": "PASA",
+  "reference_peldano1": {
+    "especificidad (peldano 1)": {
+      "e2e": 0.5875,
+      "silent_error": 0.214,
+      "conflict": 505
+    },
+    "subsuncion sola (peldano 1)": {
+      "e2e": 0.6315,
+      "silent_error": 0.0,
+      "conflict": 737
+    }
+  }
+}

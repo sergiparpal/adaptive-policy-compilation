@@ -1,0 +1,110 @@
+{
+  "label_budget": [
+    {
+      "fraction": 1.0,
+      "labels": 1005,
+      "test_mean": 0.7707,
+      "test_sd": 0.0374,
+      "test_min": 0.7425,
+      "test_max": 0.843,
+      "n_runs": 5
+    },
+    {
+      "fraction": 0.25,
+      "labels": 251,
+      "test_mean": 0.7681,
+      "test_sd": 0.0326,
+      "test_min": 0.729,
+      "test_max": 0.8522,
+      "n_runs": 25
+    },
+    {
+      "fraction": 0.1,
+      "labels": 100,
+      "test_mean": 0.7488,
+      "test_sd": 0.0352,
+      "test_min": 0.65,
+      "test_max": 0.8053,
+      "n_runs": 25
+    },
+    {
+      "fraction": 0.05,
+      "labels": 50,
+      "test_mean": 0.7049,
+      "test_sd": 0.0535,
+      "test_min": 0.5596,
+      "test_max": 0.8241,
+      "n_runs": 25
+    },
+    {
+      "fraction": 0.01,
+      "labels": 10,
+      "test_mean": 0.5251,
+      "test_sd": 0.0628,
+      "test_min": 0.385,
+      "test_max": 0.6577,
+      "n_runs": 25
+    }
+  ],
+  "objective_comparison": {
+    "total": {
+      "e2e_test_mean": 0.7707,
+      "balanced_acc_mean": 0.5241
+    },
+    "balanced": {
+      "e2e_test_mean": 0.715,
+      "balanced_acc_mean": 0.6936
+    }
+  },
+  "per_class_split0": {
+    "SELF_SERVICE_DEFLECT": {
+      "test": 242,
+      "ceiling": 220,
+      "greedy_total": 191,
+      "greedy_balanced": 157
+    },
+    "BILLING_SPECIALIST": {
+      "test": 136,
+      "ceiling": 136,
+      "greedy_total": 90,
+      "greedy_balanced": 110
+    },
+    "T2_TECHNICAL": {
+      "test": 364,
+      "ceiling": 357,
+      "greedy_total": 318,
+      "greedy_balanced": 295
+    },
+    "T1_GENERAL": {
+      "test": 128,
+      "ceiling": 128,
+      "greedy_total": 128,
+      "greedy_balanced": 128
+    },
+    "SECURITY_INCIDENT": {
+      "test": 10,
+      "ceiling": 10,
+      "greedy_total": 7,
+      "greedy_balanced": 10
+    },
+    "ACCOUNT_MANAGER": {
+      "test": 55,
+      "ceiling": 21,
+      "greedy_total": 0,
+      "greedy_balanced": 5
+    },
+    "T3_ENGINEERING": {
+      "test": 57,
+      "ceiling": 20,
+      "greedy_total": 14,
+      "greedy_balanced": 5
+    },
+    "ONCALL_ESCALATION": {
+      "test": 3,
+      "ceiling": 3,
+      "greedy_total": 0,
+      "greedy_balanced": 3
+    }
+  },
+  "notes": "submuestreo aleatorio simple; estratificar exigiria conocer las etiquetas racionadas"
+}
