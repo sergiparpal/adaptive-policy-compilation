@@ -303,8 +303,8 @@ funciona **solo con la biblioteca estándar**. El venv hace falta únicamente pa
 el proponente real.
 
 ```bash
-git clone https://github.com/sergiparpal/adaptive_triage.git
-cd adaptive_triage
+git clone https://github.com/sergiparpal/adaptive-triage.git
+cd adaptive-triage
 
 # 0. OBLIGATORIO, y antes que nada: techo del motor. 0 llamadas a la API.
 #    Si no sale ~100%, PARA: nada de lo que venga despues sera interpretable.
@@ -451,7 +451,7 @@ carpeta**. Si los archivos quedan planos verás
 `ModuleNotFoundError: No module named 'harness'`.
 
 ```
-adaptive_triage/
+adaptive-triage/
 ├── run_experiment.py        CLI del peldaño 1 (frontier · llm · models)
 ├── requirements.txt         `openai` clavado, para el proponente real
 ├── requirements.lock.txt    cierre transitivo del entorno de los registros

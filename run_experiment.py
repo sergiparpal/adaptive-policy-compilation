@@ -22,7 +22,7 @@ if not (Path(__file__).resolve().parent / "harness" / "domain.py").exists():
     sys.exit(
         "\nERROR DE ESTRUCTURA: no encuentro harness/domain.py\n\n"
         "Los modulos deben estar dentro de una subcarpeta 'harness/':\n\n"
-        "  adaptive_triage/\n"
+        "  adaptive-triage/\n"
         "    run_experiment.py\n"
         "    harness/\n"
         "      __init__.py  domain.py  dsl.py  shadow.py\n"
