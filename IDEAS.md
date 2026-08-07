@@ -1,6 +1,6 @@
 # Aparcadero
 
-Estado a 6 de agosto de 2026. Peldaños 1, 2, 3 y 4 cerrados; ver
+Estado a 7 de agosto de 2026. Peldaños 1, 2, 3 y 4 cerrados; ver
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` y
 `results4/FINDINGS4.md`. Esto es una lista de cosas no hechas, sin desarrollar
 ninguna y sin orden de prelación.
@@ -12,9 +12,10 @@ ninguna y sin orden de prelación.
 - **Dar al proponente la base de reglas existente como contexto.** Peldaño 2.
   Redujo el solape entre sus reglas en un factor 10 y dejó sin material al
   mecanismo de prioridad declarada que ese mismo cambio venía a posibilitar.
-- **Prioridad por búsqueda sobre el corpus, sin LLM.** Peldaño 3. Techo 0,90
-  sobre las 577 reglas del peldaño 1; orden buscado 0,77 en test con gap ~0. La
-  búsqueda usa el oráculo.
+- **Prioridad por búsqueda sobre el corpus, sin LLM.** Peldaño 3. Cota de
+  cobertura 0,90 sobre las 577 reglas del peldaño 1 —cota superior caso a caso,
+  no un óptimo alcanzable demostrado, ver la errata de `FINDINGS3.md`— y orden
+  buscado 0,77 en test con gap ~0. La búsqueda usa el oráculo.
 - **Prioridad aprendida del comportamiento observado.** Peldaño 4, Paso A. Con
   feedback simétrico se recupera casi todo; con el asimétrico, que es el
   realista, quedan +0,067 sobre no aprender nada.
@@ -32,26 +33,24 @@ ninguna y sin orden de prelación.
   anotado que es un problema distinto del Paso A —la base crece mientras se
   ordena, y el feedback llega con retardo sobre decisiones que una versión
   anterior del orden tomó— por si el planteamiento cambia.
+- **Re-correr los peldaños 3 y 4 con el desempate arreglado.** El arreglo está
+  hecho y verificado —6 de agosto de 2026, iteración sobre lista ordenada,
+  resultado idéntico bajo tres `PYTHONHASHSEED`— pero no se re-corrió nada, a
+  propósito: hacerlo **junto con** el optimizador serio es lo que permite
+  distinguir si la fragilidad venía del desempate o del algoritmo. Las cifras
+  registradas son las del código anterior. Cuando se rehaga, la versión antigua
+  se conserva al lado, no encima.
 
 ---
 
 ## Lo que el peldaño 4 abre y no resuelve
 
-- **El voraz es un optimizador débil y eso contamina hacia atrás.** Con etiquetas
+- El voraz es un optimizador débil, y eso contamina hacia atrás. Con etiquetas
   perfectas alcanza 0,7574 contra la verdad; con el 30% falsificadas, 0,8337. Un
   optimizador serio (búsqueda local, recocido, exacto sobre los pares que
   compiten) cambiaría todas las cifras de los peldaños 3 y 4. Se desconoce en qué
-  dirección y en qué magnitud.
-  **Va junto con re-correr los peldaños 3 y 4.** El desempate no determinista se
-  arregló el 6 de agosto de 2026 (iteración sobre lista ordenada; verificado
-  idéntico bajo tres `PYTHONHASHSEED`) pero **no se re-corrió nada**: hacer las
-  dos cosas a la vez es lo que permite distinguir si la fragilidad venía del
-  desempate o del algoritmo. Las cifras registradas son las del código anterior.
-  Cuando se rehaga, la versión antigua se conserva al lado, no encima.
-- **Cota global del orden.** El 90,1% del peldaño 3 es una cota superior por
-  cobertura caso a caso, no un óptimo demostrado sobre órdenes totales. Cuánto
-  del hueco 0,77→0,90 es alcanzable sigue sin medir. Haría falta optimización
-  exacta o una cota más fuerte.
+  dirección y en qué magnitud. Va junto con re-correr ambos peldaños, en
+  "Pendiente y ya especificado".
 - Si la conclusión sobre la asimetría sobrevive a un optimizador mejor. Es la
   única afirmación del peldaño 4 que importa y descansa sobre un método que se
   sabe débil, aunque su celda ancla sea determinista.
@@ -63,8 +62,14 @@ ninguna y sin orden de prelación.
 - Si la ausencia de feedback puede usarse de alguna forma. Aquí se decidió no
   interpretarla como acierto; una interpretación probabilística no se ha probado.
 
+---
+
 ## Lo que el peldaño 3 abre y no resuelve
 
+- Cuánto del hueco 0,77→0,90 es realmente alcanzable. El 90,1% es una cota
+  superior por cobertura caso a caso: garantiza que ningún orden lo supera, no
+  que algún orden lo alcance. Haría falta optimización exacta o una cota global
+  más fuerte. Ver la errata de `FINDINGS3.md`.
 - Si el orden es alcanzable sin etiquetas. El bucle en sombra no tiene canal de
   supervisión por diseño. El peldaño 4 acotó parcialmente esta pregunta y la
   respuesta fue mala.
@@ -77,6 +82,8 @@ ninguna y sin orden de prelación.
 - Por qué el arbitraje híbrido del peldaño 2 es peor que el orden puro sobre una
   base aprendida (0,7496 frente a 0,7711) pese a ejecutar la política perfecta al
   100%.
+
+---
 
 ## Lo que el peldaño 2 abre y no resuelve
 
@@ -122,14 +129,18 @@ el README.
 
 ---
 
-## Anterior a los cuatro peldaños, intacto
+## Anterior a los cuatro peldaños
+
+De esta lista, lo único que se ha tocado es el impasse empírico, y solo en parte.
+El resto sigue exactamente donde estaba.
 
 - Peldaño de novedad: atributos o valores nuevos a mitad de corpus
 - Deriva de concepto: la política oculta cambia en t=N/2 -> ¿retira reglas?
 - Inexpresabilidad -> medir regret vs. mejor política representable
 - Impasse empírico: canal de feedback parametrizado (cobertura, retardo, ruido).
-  Parcialmente hecho en el peldaño 4, en modo offline y con un cuarto parámetro
-  —asimetría— que resultó ser el que decide.
+  **Parcialmente hecho** en el peldaño 4, en modo offline y con un cuarto
+  parámetro —asimetría— que resultó ser el que decide. Queda sin hacer en modo
+  online y sin explorar el resto del espacio de parámetros.
 - Diagnóstico bajo ambigüedad: ¿deriva o sobre-generalidad? Reparaciones opuestas
 - Tirada comparativa con un modelo más capaz, con el MODELO como única variable
   (misma semilla, mismo prompt, mismo esquema, mismo corpus). Requiere promediar
