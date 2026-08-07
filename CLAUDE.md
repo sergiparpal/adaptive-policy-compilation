@@ -108,7 +108,7 @@ Comprueba con `${#OPENROUTER_API_KEY}` (la longitud), nunca con su valor.
 
     python3 -m unittest discover
 
-237 pruebas con la biblioteca estándar. No escriben en `results*/`: llaman a las
+242 pruebas con la biblioteca estándar. No escriben en `results*/`: llaman a las
 funciones de medida, nunca a los `main()`. Clavan los invariantes (el DSL
 reproduce las lambdas sobre las 134.400 combinaciones) y las cifras publicadas
 (0,5875 · 0,6315 · 1,0000, la frontera y el corpus), vigilan que ningún

@@ -25,7 +25,7 @@ from harness.provenance import code_digest, describe, environment
 REPO = Path(__file__).resolve().parent.parent
 
 CLAVES = {"recorded_at", "python", "openai", "platform", "pythonhashseed",
-          "git_commit", "git_dirty", "code_digest"}
+          "git_commit", "git_dirty", "code_dirty", "code_digest"}
 
 # Modulos que vuelcan un JSON de resultados. La lista esta en el README, en la
 # tabla "reproducir una cifra sobrescribe su propio registro".
@@ -148,11 +148,84 @@ class TestGit(unittest.TestCase):
                 e = environment()
         self.assertIsNone(e["git_commit"])
         self.assertIsNone(e["git_dirty"])
+        self.assertIsNone(e["code_dirty"])
 
     def test_dentro_del_repo_hay_commit(self):
         e = environment()
         self.assertRegex(e["git_commit"], r"^[0-9a-f]{40}$")
         self.assertIsInstance(e["git_dirty"], bool)
+        self.assertIsInstance(e["code_dirty"], bool)
+
+
+class TestLasDosBanderasDeSuciedad(unittest.TestCase):
+    """`git_dirty` y `code_dirty` no son redundantes, y la diferencia importa.
+
+    Solo `code_dirty` decide si `git_commit` identifica el codigo que corrio.
+    `git_dirty` cubre lo demas, que no siempre es inocuo: tres escritores leen
+    registros de `results*/` como ENTRADA. Desdoblarlos (7 ago 2026) salio de
+    re-correr seis registros seguidos, donde cada script ensuciaba el arbol
+    para el siguiente con su propia salida.
+
+    Se monta un repo de mentira porque la distincion no se puede provocar en el
+    de verdad sin ensuciarlo.
+    """
+
+    def setUp(self):
+        import subprocess
+        import tempfile
+
+        self._tmp = tempfile.TemporaryDirectory()
+        self.repo = Path(self._tmp.name)
+        (self.repo / "harness").mkdir()
+        (self.repo / "harness" / "x.py").write_text("y = 1\n")
+        (self.repo / "results").mkdir()
+        (self.repo / "results" / "cifra.json").write_text("{}\n")
+
+        def git(*args):
+            subprocess.run(("git", "-C", str(self.repo), *args),
+                           check=True, capture_output=True)
+
+        git("init", "-q")
+        git("add", "-A")
+        git("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "base")
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def _env(self):
+        with mock.patch.object(provenance, "REPO", self.repo):
+            return environment()
+
+    def test_con_el_arbol_limpio_las_dos_son_falsas(self):
+        e = self._env()
+        self.assertEqual((e["git_dirty"], e["code_dirty"]), (False, False))
+
+    def test_un_registro_modificado_ensucia_el_arbol_pero_no_el_codigo(self):
+        """El caso de la tanda: la salida de un script no invalida el commit
+        del siguiente, y hasta ahora las dos cosas se veian igual."""
+        (self.repo / "results" / "cifra.json").write_text('{"a": 1}\n')
+        e = self._env()
+        self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, False))
+
+    def test_el_codigo_modificado_ensucia_las_dos(self):
+        (self.repo / "harness" / "x.py").write_text("y = 2\n")
+        e = self._env()
+        self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
+
+    def test_un_fichero_de_codigo_sin_seguimiento_tambien_cuenta(self):
+        """Un modulo nuevo sin `git add` cambia lo que corre igual que uno
+        modificado, y el digest ya lo recoge; el flag tambien debe."""
+        (self.repo / "harness" / "nuevo.py").write_text("z = 3\n")
+        e = self._env()
+        self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
+
+    def test_la_linea_legible_distingue_los_dos_casos(self):
+        with mock.patch.object(provenance, "REPO", self.repo):
+            self.assertNotIn("sucio", describe())
+            (self.repo / "results" / "cifra.json").write_text('{"a": 1}\n')
+            self.assertIn("+arbol-sucio", describe())
+            (self.repo / "harness" / "x.py").write_text("y = 2\n")
+            self.assertIn("+codigo-sucio", describe())
 
 
 class TestTodosLosEscritoresRegistranEntorno(unittest.TestCase):

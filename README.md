@@ -58,7 +58,7 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
-Y antes de tocar nada, la suite: **237 pruebas en ~12 s, sin API y sin escribir
+Y antes de tocar nada, la suite: **242 pruebas en ~12 s, sin API y sin escribir
 en `results*/`.**
 
 ```bash
@@ -155,7 +155,7 @@ Dos redes distintas, con propósitos distintos.
 ### La suite
 
 ```bash
-python3 -m unittest discover            # 237 pruebas, ~12 s, 0 llamadas a la API
+python3 -m unittest discover            # 242 pruebas, ~12 s, 0 llamadas a la API
 python3 -m unittest tests.test_ceilings -v      # un módulo suelto
 ```
 
@@ -234,14 +234,15 @@ Cada JSON de resultados abre con la procedencia de la cifra:
 
 ```json
 "_env": {
-  "recorded_at": "2026-08-07T09:57:10Z",
+  "recorded_at": "2026-08-07T14:38:14Z",
   "python": "3.12.3",
   "openai": null,
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
   "pythonhashseed": null,
-  "git_commit": "da2ed146…",
-  "git_dirty": true,
-  "code_digest": "df53add077d0d8fa",
+  "git_commit": "97cabc1f…",
+  "git_dirty": false,
+  "code_dirty": false,
+  "code_digest": "7ef0ec6d89ec4d85",
   "seed": 17
 }
 ```
@@ -253,6 +254,16 @@ exactamente lo que le pasó al voraz de los peldaños 3 y 4. `code_digest` es un
 sha256 del código que produce cifras (`harness/`, `peldano2..4/`,
 `run_experiment.py`; las pruebas quedan fuera), así que identifica la versión
 aunque el árbol esté sucio o no haya git.
+
+**Hay dos banderas de suciedad y no son redundantes.** `code_dirty` es la que
+decide si `git_commit` identifica lo que corrió: con `false`, ese commit **es**
+el código. `git_dirty` cubre todo lo demás del árbol, y lo demás no siempre es
+inocuo — `learned_subsumption`, `compare_runs` y `note_audit` leen registros de
+`results*/` **como entrada**, así que un JSON modificado y sin confirmar también
+rompe la trazabilidad sin tocar una línea de código. Por eso el flag ancho no se
+acotó: se desdobló (7 de agosto de 2026, al re-correr seis registros seguidos y
+descubrir que cada script ensuciaba el árbol para el siguiente con su propia
+salida; ver [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md)).
 
 El campo aparece en cada archivo cuando esa cifra se vuelve a correr, así que
 llevarlo o no separa hoy los registros en dos:
@@ -549,7 +560,7 @@ adaptive-triage/
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
 │
-├── tests/                   237 pruebas · `python3 -m unittest discover`
+├── tests/                   242 pruebas · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
 │   ├── doubles.py           el cliente de SDK grabado: la ruta del LLM sin pagar
 │   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`

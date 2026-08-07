@@ -21,8 +21,23 @@ QUE SE GUARDA, Y PARA QUE SIRVE CADA CAMPO
                   ella. Cualquier cifra sensible al orden de iteracion de un
                   set producida con `null` es sospechosa por construccion.
   git_commit      commit de HEAD, o null fuera de un repositorio.
-  git_dirty       si el arbol tenia cambios sin confirmar. Con `true`, el
-                  commit NO identifica el codigo que corrio; el digest si.
+  git_dirty       si el arbol tenia ALGO sin confirmar, en cualquier sitio.
+  code_dirty      si lo sin confirmar tocaba el codigo (CODE_ROOTS). Es el que
+                  decide si `git_commit` identifica lo que corrio: con `false`,
+                  ese commit ES el codigo, aunque `git_dirty` diga `true`.
+
+  Los dos hacen falta y no son redundantes. `code_dirty` responde por el
+  codigo; `git_dirty` avisa de lo demas, y lo demas no siempre es inocuo:
+  `learned_subsumption`, `compare_runs` y `note_audit` leen registros de
+  `results*/` COMO ENTRADA, asi que un JSON modificado y sin confirmar tambien
+  rompe la trazabilidad de la cifra, sin tocar una linea de codigo. Acotar el
+  unico flag a CODE_ROOTS se lo habria callado.
+
+  El caso comun, y el motivo de desdoblarlos (7 ago 2026): re-correr varios
+  registros seguidos. El primero corre con el arbol limpio y a partir de ahi
+  cada script ha dejado su propio JSON modificado, de modo que todos los demas
+  anotaban `git_dirty: true` por culpa de la salida del anterior. El flag no
+  mentia; medía otra cosa. Ver results2/NOTA_REGISTRO.md.
   code_digest     sha256 (16 hex) del codigo que produce las cifras: todos los
                   .py de harness/, peldano2/, peldano3/, peldano4/ y
                   run_experiment.py. Identifica el codigo aunque el arbol este
@@ -101,7 +116,10 @@ def code_digest() -> str | None:
 def environment(**extra: Any) -> dict[str, Any]:
     """El bloque `_env` que acompana a cada JSON de resultados."""
     commit = _git("rev-parse", "HEAD")
-    status = _git("status", "--porcelain")
+    arbol = _git("status", "--porcelain")
+    # El mismo status acotado al codigo. Con `--` git no confunde una ruta que
+    # no exista con una rama, y CODE_ROOTS mezcla directorios y un fichero.
+    codigo = _git("status", "--porcelain", "--", *CODE_ROOTS)
     env: dict[str, Any] = {
         "recorded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "python": platform.python_version(),
@@ -109,7 +127,8 @@ def environment(**extra: Any) -> dict[str, Any]:
         "platform": platform.platform(),
         "pythonhashseed": os.environ.get("PYTHONHASHSEED"),
         "git_commit": commit,
-        "git_dirty": bool(status) if status is not None else None,
+        "git_dirty": bool(arbol) if arbol is not None else None,
+        "code_dirty": bool(codigo) if codigo is not None else None,
         "code_digest": code_digest(),
     }
     env.update(extra)
@@ -120,10 +139,17 @@ def describe() -> str:
     """Una linea legible, para imprimir al pie de un informe."""
     e = environment()
     seed = e["pythonhashseed"] or "sin fijar"
-    dirty = "" if e["git_dirty"] is False else "+sucio"
+    # La marca dice de que hay que desconfiar. Sin git no se marca nada: eso ya
+    # lo dice el propio commit.
+    if e["code_dirty"]:
+        marca = "+codigo-sucio"
+    elif e["git_dirty"]:
+        marca = "+arbol-sucio"
+    else:
+        marca = ""
     commit = (e["git_commit"] or "sin git")[:8]
     return (f"python {e['python']} · openai {e['openai'] or '—'} · "
-            f"PYTHONHASHSEED {seed} · {commit}{dirty} · "
+            f"PYTHONHASHSEED {seed} · {commit}{marca} · "
             f"codigo {e['code_digest']}")
 
 

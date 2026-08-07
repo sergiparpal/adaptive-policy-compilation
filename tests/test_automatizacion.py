@@ -1,7 +1,7 @@
 """
 Que la suite la corra alguien sin que haya que acordarse.
 
-Tener 227 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
+Tener 242 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
 pruebas de las que parece. Hay dos redes, y cubren momentos distintos:
 
   * `.githooks/pre-commit`, antes de cada commit, en local.

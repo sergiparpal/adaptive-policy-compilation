@@ -117,7 +117,7 @@ que quedan tienen todas la misma raíz y no se cierran escribiendo código.
 
 ### Hecho
 
-- **Pruebas automatizadas.** `python3 -m unittest discover` corre 237 pruebas en
+- **Pruebas automatizadas.** `python3 -m unittest discover` corre 242 pruebas en
   ~12 s, sin llamadas a la API y sin escribir en `results*/`. Cubren los dos
   invariantes que sostienen el peldaño 1 —el DSL reproduce las lambdas sobre las
   134.400 combinaciones, y primera-que-casa reproduce `true_action`— y clavan al
@@ -130,9 +130,12 @@ que quedan tienen todas la misma raíz y no se cierran escribiendo código.
   cierre transitivo del entorno que produjo los registros. Una prueba impide que
   el `>=` vuelva por descuido.
 - **Registro de entorno.** `harness/provenance.py` cuelga un bloque `_env` de
-  cada JSON: Python, openai, plataforma, `PYTHONHASHSEED`, commit + dirty y un
-  digest del código fuente. Una prueba recorre el repo y suspende si aparece un
-  escritor de JSON sin él.
+  cada JSON: Python, openai, plataforma, `PYTHONHASHSEED`, commit, un digest del
+  código fuente y **dos** banderas de suciedad —`code_dirty`, que es la que
+  decide si el commit identifica lo que corrió, y `git_dirty` para el resto del
+  árbol, que tampoco es inocuo porque tres escritores leen registros como
+  entrada—. Una prueba recorre el repo y suspende si aparece un escritor de
+  JSON sin `_env`.
 - **Las pruebas las corre algo, no alguien** (7 de agosto de 2026).
   `.githooks/pre-commit` antes de cada commit —se activa con
   `git config core.hooksPath .githooks`— y `.github/workflows/pruebas.yml` en
