@@ -1,0 +1,231 @@
+"""
+El DSL congelado: condiciones, validacion y arbitraje por especificidad.
+
+`harness/dsl.py` es especificacion congelada (regla dura 1). Estas pruebas no
+piden que se comporte BIEN: piden que se comporte IGUAL, porque las cifras del
+peldano 1 se midieron sobre este comportamiento exacto. Incluye por eso una
+prueba de caracterizacion del defecto registrado en CLAUDE.md — que CONFLICT se
+devuelve antes de llegar al desempate por antiguedad—, que es un fallo del
+diseno y a la vez el hecho central que el peldano 1 midio.
+"""
+
+from __future__ import annotations
+
+import unittest
+
+from harness.domain import Case
+from harness.dsl import (OPS, Condition, Rule, RuleEngine, RuleValidationError,
+                         validate_rule_payload)
+
+
+def make_case(**over) -> Case:
+    base = dict(has_security_keyword=False, severity=3, customer_tier="free",
+                product="dashboard", channel="portal", prior_tickets_30d=0,
+                off_hours=False, language="en")
+    base.update(over)
+    return Case(**base)
+
+
+def rule(rid: str, conds, action: str, born_at: int = 0) -> Rule:
+    return Rule(rule_id=rid,
+                conditions=[Condition(a, o, v) for a, o, v in conds],
+                action=action, born_at=born_at)
+
+
+class TestCondition(unittest.TestCase):
+
+    def test_eq(self):
+        c = Condition("severity", "eq", 1)
+        self.assertTrue(c.holds(make_case(severity=1)))
+        self.assertFalse(c.holds(make_case(severity=2)))
+
+    def test_neq(self):
+        c = Condition("customer_tier", "neq", "enterprise")
+        self.assertTrue(c.holds(make_case(customer_tier="free")))
+        self.assertFalse(c.holds(make_case(customer_tier="enterprise")))
+
+    def test_lte_y_gte_incluyen_el_extremo(self):
+        self.assertTrue(Condition("severity", "lte", 2).holds(make_case(severity=2)))
+        self.assertFalse(Condition("severity", "lte", 2).holds(make_case(severity=3)))
+        self.assertTrue(Condition("severity", "gte", 2).holds(make_case(severity=2)))
+        self.assertFalse(Condition("severity", "gte", 2).holds(make_case(severity=1)))
+
+    def test_in(self):
+        c = Condition("customer_tier", "in", ["business", "enterprise"])
+        self.assertTrue(c.holds(make_case(customer_tier="business")))
+        self.assertFalse(c.holds(make_case(customer_tier="pro")))
+
+    def test_operador_desconocido_revienta(self):
+        with self.assertRaises(AssertionError):
+            Condition("severity", "between", 2).holds(make_case())
+
+    def test_el_vocabulario_de_operadores_es_el_declarado(self):
+        self.assertEqual(OPS, {"eq", "neq", "lte", "gte", "in"})
+
+
+class TestValidacion(unittest.TestCase):
+    """Ningun juicio de LLM interviene aqui: son comprobaciones mecanicas."""
+
+    def valid_payload(self, **over):
+        p = {"rule_id": "X1", "action": "T2_TECHNICAL",
+             "conditions": [{"attr": "severity", "op": "lte", "value": 2}]}
+        p.update(over)
+        return p
+
+    def test_payload_valido(self):
+        r = validate_rule_payload(self.valid_payload())
+        self.assertEqual(r.action, "T2_TECHNICAL")
+        self.assertEqual(r.specificity, 1)
+        self.assertEqual(r.conditions[0].attr, "severity")
+
+    def test_debe_casar_el_caso_que_la_origino(self):
+        p = self.valid_payload()
+        validate_rule_payload(p, case=make_case(severity=1))
+        with self.assertRaises(RuleValidationError):
+            validate_rule_payload(p, case=make_case(severity=4))
+
+    def test_la_nota_se_recorta_a_280(self):
+        r = validate_rule_payload(self.valid_payload(note="x" * 500))
+        self.assertEqual(len(r.note), 280)
+
+    def test_rule_id_por_defecto(self):
+        r = validate_rule_payload(self.valid_payload(rule_id=None))
+        self.assertEqual(r.rule_id, "R?")
+
+    def test_rechazos(self):
+        casos = {
+            "payload no es objeto": "no soy un dict",
+            "accion inventada": self.valid_payload(action="T9_INVENTADA"),
+            "sin accion": self.valid_payload(action=None),
+            "conditions no es lista": self.valid_payload(conditions={"a": 1}),
+            "conditions vacia": self.valid_payload(conditions=[]),
+            "condicion no es objeto": self.valid_payload(conditions=["severity<=2"]),
+            "atributo inventado": self.valid_payload(
+                conditions=[{"attr": "urgencia", "op": "eq", "value": 1}]),
+            "operador inventado": self.valid_payload(
+                conditions=[{"attr": "severity", "op": "between", "value": 2}]),
+            "condicion duplicada": self.valid_payload(conditions=[
+                {"attr": "severity", "op": "eq", "value": 2},
+                {"attr": "severity", "op": "eq", "value": 3}]),
+            "lte sobre no numerico": self.valid_payload(
+                conditions=[{"attr": "product", "op": "lte", "value": "api"}]),
+            "lte con valor no entero": self.valid_payload(
+                conditions=[{"attr": "severity", "op": "lte", "value": "2"}]),
+            "lte con booleano": self.valid_payload(
+                conditions=[{"attr": "severity", "op": "lte", "value": True}]),
+            "lte fuera de dominio": self.valid_payload(
+                conditions=[{"attr": "severity", "op": "lte", "value": 9}]),
+            "in con valor no lista": self.valid_payload(
+                conditions=[{"attr": "customer_tier", "op": "in", "value": "free"}]),
+            "in con lista vacia": self.valid_payload(
+                conditions=[{"attr": "customer_tier", "op": "in", "value": []}]),
+            "in con miembro fuera de dominio": self.valid_payload(
+                conditions=[{"attr": "customer_tier", "op": "in",
+                             "value": ["free", "titanium"]}]),
+            "eq fuera de dominio": self.valid_payload(
+                conditions=[{"attr": "product", "op": "eq", "value": "crm"}]),
+        }
+        for nombre, payload in casos.items():
+            with self.subTest(nombre):
+                with self.assertRaises(RuleValidationError):
+                    validate_rule_payload(payload)
+
+    def test_mas_condiciones_que_atributos(self):
+        conds = [{"attr": "severity", "op": "eq", "value": 1}] * 9
+        with self.assertRaises(RuleValidationError):
+            validate_rule_payload(self.valid_payload(conditions=conds))
+
+    def test_una_condicion_por_atributo_y_operador_distinto_si_vale(self):
+        r = validate_rule_payload(self.valid_payload(conditions=[
+            {"attr": "severity", "op": "gte", "value": 2},
+            {"attr": "severity", "op": "lte", "value": 3}]))
+        self.assertEqual(r.specificity, 2)
+
+
+class TestRuleEngine(unittest.TestCase):
+
+    def test_add_asigna_id_correlativo_y_born_at(self):
+        e = RuleEngine()
+        a = e.add(rule("?", [("severity", "eq", 1)], "T1_GENERAL"), born_at=7)
+        b = e.add(rule("?", [("severity", "eq", 2)], "T1_GENERAL"), born_at=9)
+        self.assertEqual((a.rule_id, a.born_at), ("R0001", 7))
+        self.assertEqual((b.rule_id, b.born_at), ("R0002", 9))
+
+    def test_impasse_cuando_no_casa_nada(self):
+        e = RuleEngine()
+        e.rules = [rule("A", [("severity", "eq", 1)], "T1_GENERAL")]
+        outcome, winner, matched = e.decide(make_case(severity=4))
+        self.assertEqual(outcome, "IMPASSE")
+        self.assertIsNone(winner)
+        self.assertEqual(matched, [])
+
+    def test_gana_la_mas_especifica(self):
+        e = RuleEngine()
+        e.rules = [
+            rule("GENERICA", [("severity", "eq", 3)], "T1_GENERAL", born_at=0),
+            rule("ESPECIFICA", [("severity", "eq", 3), ("product", "eq", "dashboard")],
+                 "T2_TECHNICAL", born_at=1),
+        ]
+        outcome, winner, matched = e.decide(make_case())
+        self.assertEqual(outcome, "ACTION")
+        self.assertEqual(winner.rule_id, "ESPECIFICA")
+        self.assertEqual(len(matched), 2)
+
+    def test_a_igual_especificidad_y_misma_accion_gana_la_mas_antigua(self):
+        e = RuleEngine()
+        e.rules = [
+            rule("NUEVA", [("severity", "eq", 3)], "T1_GENERAL", born_at=50),
+            rule("VIEJA", [("product", "eq", "dashboard")], "T1_GENERAL", born_at=2),
+        ]
+        outcome, winner, _ = e.decide(make_case())
+        self.assertEqual(outcome, "ACTION")
+        self.assertEqual(winner.rule_id, "VIEJA")
+
+    def test_conflicto_a_igual_especificidad_con_acciones_distintas(self):
+        e = RuleEngine()
+        e.rules = [
+            rule("A", [("severity", "eq", 3)], "T1_GENERAL", born_at=0),
+            rule("B", [("product", "eq", "dashboard")], "T2_TECHNICAL", born_at=1),
+        ]
+        outcome, winner, finalists = e.decide(make_case())
+        self.assertEqual(outcome, "CONFLICT")
+        self.assertIsNone(winner)
+        self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
+
+    def test_una_regla_menos_especifica_no_entra_en_el_conflicto(self):
+        """Los finalistas son solo los de especificidad maxima."""
+        e = RuleEngine()
+        e.rules = [
+            rule("GEN", [("severity", "eq", 3)], "SELF_SERVICE_DEFLECT", born_at=0),
+            rule("A", [("severity", "eq", 3), ("channel", "eq", "portal")],
+                 "T1_GENERAL", born_at=1),
+            rule("B", [("severity", "eq", 3), ("product", "eq", "dashboard")],
+                 "T2_TECHNICAL", born_at=2),
+        ]
+        outcome, _, finalists = e.decide(make_case())
+        self.assertEqual(outcome, "CONFLICT")
+        self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
+
+    def test_DEFECTO_REGISTRADO_el_conflicto_precede_al_desempate(self):
+        """CARACTERIZACION del defecto documentado en CLAUDE.md, no aprobacion.
+
+        `decide` devuelve CONFLICT en cuanto los finalistas discrepan, asi que
+        el desempate por antiguedad —que es la semantica correcta— queda
+        inalcanzable justo cuando decidiria algo. Es el defecto que da 505
+        CONFLICT y hunde el techo del peldano 1 a 0,5875, y esta clavado aqui
+        porque `dsl.py` es registro cerrado y sus cifras deben reproducir. El
+        rediseno ya existe aparte, en `peldano2/engine2.py`.
+        """
+        e = RuleEngine()
+        e.rules = [
+            rule("VIEJA", [("severity", "eq", 3)], "T1_GENERAL", born_at=0),
+            rule("NUEVA", [("product", "eq", "dashboard")], "T2_TECHNICAL", born_at=99),
+        ]
+        outcome, winner, _ = e.decide(make_case())
+        self.assertEqual(outcome, "CONFLICT")
+        self.assertIsNone(winner, "si algun dia gana VIEJA, el techo del "
+                                  "peldano 1 deja de ser 0,5875")
+
+
+if __name__ == "__main__":
+    unittest.main()
