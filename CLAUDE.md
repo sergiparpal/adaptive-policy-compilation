@@ -28,6 +28,15 @@ su reutilización de 0,158 describía el arbitraje, no la inducción.
 Lee `README.md` antes de tocar nada, y el bloque "Estado actual" al final de este
 archivo antes de proponer nada. `IDEAS.md` lleva la lista de lo abierto.
 
+**La operativa de los peldaños 2, 3 y 4 no está en este archivo**, que solo
+describe la del 1. Está en el README, sección "Reproducir los cuatro peldaños".
+Todo lo de esos tres peldaños cuesta cero llamadas a la API y corre con la
+biblioteca estándar:
+
+    python3 -m peldano2.ceiling_check2      # techo del motor híbrido: 100%
+    python3 -m peldano3.order_search        # cota de cobertura y orden buscado
+    python3 -m peldano4.sweep               # barridos del canal de feedback
+
 ---
 
 ## REGLAS DURAS — no negociables
@@ -39,10 +48,18 @@ archivo antes de proponer nada. `IDEAS.md` lleva la lista de lo abierto.
 
 Si crees que alguno tiene un bug, **párate y dilo**; no lo arregles por tu cuenta.
 
-EXCEPCIÓN REGISTRADA: `dsl.py` tiene un defecto confirmado. `RuleEngine.decide`
-arbitra por especificidad y devuelve CONFLICT antes de aplicar el desempate por
-antigüedad, que queda inalcanzable justo cuando importaría. Está pendiente de
-rediseño, no de parche. No lo toques hasta que Sergi lo autorice.
+DEFECTO REGISTRADO EN `dsl.py`, YA SUPERADO: `RuleEngine.decide` arbitra por
+especificidad y devuelve CONFLICT antes de aplicar el desempate por antigüedad,
+que queda inalcanzable justo cuando importaría.
+
+**El rediseño ya se hizo, en el peldaño 2**, como paquete aparte
+(`peldano2/engine2.py`: subsunción como orden base + prioridad declarada), y da
+100% con la política perfecta cargada. Se hizo fuera de `harness/` precisamente
+para que `dsl.py` siguiera congelado.
+
+Así que `dsl.py` **se sigue sin tocar**, pero por el motivo contrario al que
+decía esta nota antes: no porque quede trabajo pendiente ahí, sino porque es
+registro cerrado del peldaño 1 y sus cifras deben seguir reproduciendo.
 
 **2. NO rellenar `PREDICTION.md`.** Lo rellena Sergi, a mano, antes de la tirada
 larga. Que un modelo escriba la predicción destruye el propósito del archivo. Si
@@ -54,6 +71,12 @@ cambia si el caso siguiente escala o no. Concurrencia = semántica rota.
 **4. NO cambiar la semilla (17) ni regenerar el corpus.** El determinismo es lo
 que hace comparables las tiradas.
 
+Por la misma razón, **NO sobrescribas `results/llm_run.json`**. No es solo el
+registro del peldaño 1: es la base de 577 reglas de la que **parten los peldaños
+3 y 4**. `run_experiment.py llm` lo reescribe, y como el proponente no es
+determinista a temperature 0, lo que salga no será lo mismo. Si hay que
+re-correrlo, se guarda el original antes con otro nombre.
+
 **5. NO ajustar prompt ni esquema antes de tener un resultado registrado.**
 Primero se mide, luego se itera.
 
@@ -62,8 +85,20 @@ negativo es un resultado. Ajustar hasta que la curva quede bonita es exactamente
 el fallo de Goodhart que este experimento estudia; no lo reproduzcas.
 
 **7. La clave de API va en el entorno, nunca en un archivo del repo.**
-`OPENROUTER_API_KEY` la exporta Sergi en su shell. No la escribas, no la leas en
-voz alta, no la guardes.
+`OPENROUTER_API_KEY` la gestiona Sergi. No la escribas, no la leas en voz alta,
+no la guardes.
+
+CÓMO LLEGA, EN LA PRÁCTICA — está registrado porque cuesta un rodeo largo
+descubrirlo. Un `export` en la terminal interactiva de Sergi **no** llega a tu
+shell: son procesos distintos. Y aunque la tenga en `~/.bashrc`, la guarda de
+Debian en las líneas 5-9 de ese archivo hace `return` para shells no
+interactivas, así que su `export` nunca se ejecuta en la tuya.
+
+Lo que sí funciona, cargándola en el entorno del proceso sin imprimirla nunca:
+
+    eval "$(grep -m1 '^export OPENROUTER_API_KEY=' ~/.bashrc)"
+
+Comprueba con `${#OPENROUTER_API_KEY}` (la longitud), nunca con su valor.
 
 ---
 
@@ -88,10 +123,7 @@ antemano.
 
 **PARADA 0.** Si el techo no es ~100%, para y dilo. No sigas al Paso 1.
 
-### Paso 1 — Estructura y verificación en seco
-
-Comprueba que los módulos están dentro de `harness/` (con `__init__.py`). Si
-quedaron planos, muévelos. Luego:
+### Paso 1 — Verificación en seco
 
     python3 run_experiment.py frontier
 
@@ -115,15 +147,20 @@ silencioso). La "región a batir" está por encima del techo del sistema.
 
 ### Paso 2 — Dependencias
 
-    pip install -r requirements.txt
+    python3 -m venv .venv
+    .venv/bin/pip install -r requirements.txt
 
-Solo `openai` (OpenRouter es compatible con OpenAI). Verifica que
-`OPENROUTER_API_KEY` existe en el entorno; si no, pídesela a Sergi — no la
-gestiones tú.
+Solo `openai` (OpenRouter es compatible con OpenAI). **El venv no es opcional**:
+en Debian/Ubuntu `pip install` global falla con `externally-managed-environment`
+(PEP 668). Los Pasos 0 y 1 no lo necesitan —van con la biblioteca estándar—;
+del Paso 3 en adelante, sí.
+
+Verifica que `OPENROUTER_API_KEY` llega al entorno del proceso (ver regla 7); si
+no, pídesela a Sergi — no la gestiones tú.
 
 ### Paso 3 — Prueba corta
 
-    python3 run_experiment.py llm --n 100
+    .venv/bin/python run_experiment.py llm --n 100
 
 Cuesta céntimos. **No juzgues la reutilización aquí**: con 100 casos casi ninguna
 regla tiene ocasión de dispararse dos veces. Esta tirada sirve para tres cosas:
@@ -145,9 +182,12 @@ o transcribir tickets. Espera respuesta antes de seguir.
 
 Solo si el Paso 0 dio ~100%, `PREDICTION.md` está relleno y Sergi lo aprueba.
 
-    python3 run_experiment.py llm --n 2000
+    .venv/bin/python run_experiment.py llm --n 2000
 
 Secuencial: cuenta minutos. Cuesta céntimos con `deepseek/deepseek-v4-flash`.
+
+**Antes de lanzarlo, releer la regla 4**: este comando sobrescribe
+`results/llm_run.json`, que es la entrada de los peldaños 3 y 4.
 
 ### Paso 5 — Lectura
 
@@ -170,30 +210,60 @@ resolvió una regla compilada.
 
 ---
 
-## Estado actual (5 de agosto de 2026)
+## Estado actual (7 de agosto de 2026)
 
-El peldaño 1 tal como está especificado está MUERTO. La tirada de n=2000 quedó
-anulada por techo del motor; ver `PREDICTION.md` para el registro completo.
+Cuatro peldaños cerrados. El hilo que los une: **la prioridad de una política por
+capas no está en la forma de las reglas**, y las tres vías de suministrarla están
+medidas y fallan cada una por una razón distinta.
 
-Hallazgo de fondo: ningún criterio sintáctico recupera esta política. H01 (2
-condiciones) debe ganar a H03 (1); H16 (1) debe ganar a H24 (2) — ninguna
-función monótona de la especificidad satisface ambas. Y el arbitraje por orden
-de llegada tampoco: mismas 29 reglas, orden de diseño 100%, orden inverso 12,8%,
-orden aleatorio 49,3% de media sobre 200 muestras. En una base aprendida el
-orden de llegada va al revés del correcto, porque los primeros casos vienen de
-la distribución común y engendran reglas de defecto, mientras las excepciones
-nacen tarde.
-
-La compilación por impasse aprende reglas, pero no tiene ningún mecanismo para
-aprender PRIORIDAD. En una política estratificada la estructura vive ahí.
+**Peldaño 1 — inferirla de la sintaxis. Falla.** Ningún criterio sintáctico
+recupera esta política. H01 (2 condiciones) debe ganar a H03 (1); H16 (1) debe
+ganar a H24 (2) — ninguna función monótona de la especificidad satisface ambas.
+El arbitraje por orden de llegada tampoco: mismas 29 reglas, orden de diseño
+100%, orden inverso 12,8%, orden aleatorio 49,3% de media sobre 200 muestras. En
+una base aprendida el orden de llegada va al revés del correcto, porque los
+primeros casos vienen de la distribución común y engendran reglas de defecto,
+mientras las excepciones nacen tarde. La tirada de n=2000 quedó anulada por techo
+del motor; ver `PREDICTION.md`.
 
 El DSL no es el culpable: verificado exhaustivamente sobre las 134.400
 combinaciones del espacio de casos que las 29 reglas en DSL son equivalentes a
 sus lambdas y que primera-que-casa las reproduce exactamente. Fallo de
 ejecución, no de representación.
 
-NO re-corras el peldaño 1 con otro arbitraje sintáctico: fallará por lo anterior.
-NO propongas rediseños no solicitados. El siguiente paso lo decide Sergi.
+**Peldaño 2 — que la declare el proponente. El mecanismo funciona; el proponente
+no lo alimenta.** Subsunción más 199 aristas declaradas ejecutan la política al
+100%. Pero con la base delante, la aritmética de solape resuelta y la instrucción
+explícita de solapar, el proponente escribe reglas mayoritariamente disjuntas y
+lo argumenta como mérito. Ocho tiradas, dos conflictos, cero aristas aceptadas.
 
-Todo lo demás —deriva de concepto, regret, ILP como competidor, detectores de
-impasse empírico, ASP, activación real— está en `IDEAS.md` y no se toca.
+**Peldaño 3 — buscarla sobre el corpus. El material sí la contenía.** Las mismas
+577 reglas que el arbitraje convertía en 0,18 admiten un orden que saca 0,77 en
+test con gap ~0. `SECURITY_INCIDENT` y `ONCALL_ESCALATION` son 100% recuperables
+y dieron 0/17 y 0/7. Pero la búsqueda usa el oráculo.
+
+**Peldaño 4 — aprenderla del comportamiento observado. No con feedback real.**
+Con supervisión simétrica se recupera casi todo (+0,235); con la asimétrica, que
+es la única que un sistema real produce, quedan +0,067, y la señal se agota
+conforme el sistema mejora.
+
+La compilación por impasse aprende reglas, pero no tiene ningún mecanismo para
+aprender PRIORIDAD. En una política estratificada la estructura vive ahí.
+
+**La hipótesis original —¿las reglas del LLM se reutilizan o memoriza casos?—
+sigue sin medirse limpiamente.**
+
+### Qué sigue prohibido y qué se levantó
+
+NO re-corras el peldaño 1 con otro arbitraje sintáctico: fallará por lo anterior.
+
+**Levantado el 6 de agosto de 2026, al abrir el peldaño 2:** la prohibición de
+proponer rediseños y la excepción sobre `dsl.py`. Sergi las levantó
+explícitamente para ese trabajo. No las restablezcas por tu cuenta ni las des por
+vigentes; **el alcance de cada apertura lo fija Sergi al abrirla**, y hasta
+entonces la norma sigue siendo no proponer rediseños no solicitados.
+
+Lo pendiente y lo abierto está en `IDEAS.md`, incluido lo que cada peldaño dejó
+sin resolver. De la lista original solo se ha tocado el impasse empírico
+—parcialmente, en el peldaño 4—; deriva de concepto, regret, ILP como competidor,
+ASP y activación real siguen sin hacerse.
