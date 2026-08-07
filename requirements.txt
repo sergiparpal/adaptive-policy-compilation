@@ -1,3 +1,20 @@
-openai>=1.40.0
-# solo si usas --provider anthropic:
+# Dependencias del proponente real. Los Pasos 0 y 1 y todos los peldanos 2, 3 y
+# 4 corren con la biblioteca estandar: esto solo hace falta para gastar dinero.
+#
+# ENTORNO CON EL QUE SE PRODUJO TODO LO REGISTRADO
+#   Python 3.12.3 (GCC 13.3.0) sobre Linux x86_64
+#   openai 2.53.0
+#
+# La version va CLAVADA, no acotada. Antes ponia `openai>=1.40.0`, que en la
+# practica significaba "la que hubiera ese dia": reconstruir el entorno de una
+# tirada registrada era imposible. El cierre transitivo completo, tal como
+# estaba instalado, esta en requirements.lock.txt.
+#
+# OpenRouter es compatible con la API de OpenAI, asi que este mismo paquete
+# sirve para los dos proveedores.
+openai==2.53.0
+
+# Solo si usas --provider anthropic. Sin fijar a proposito: no se ha usado en
+# ninguna tirada registrada, asi que no hay ninguna version que reproducir. Si
+# alguna vez se usa, clavarla aqui antes de correr nada.
 # anthropic>=0.40.0
