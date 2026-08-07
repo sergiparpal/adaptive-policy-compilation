@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------------------
+# Entorno virtual. Se reconstruye con:  python3 -m venv .venv &&
+#                                       .venv/bin/pip install -r requirements.txt
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------------------------------------------------------------------------
+# Bytecode y cachés de Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ---------------------------------------------------------------------------
+# Cachés de herramientas
+# ---------------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---------------------------------------------------------------------------
+# Empaquetado
+# ---------------------------------------------------------------------------
+build/
+dist/
+*.egg-info/
+
+# ---------------------------------------------------------------------------
+# SECRETOS. La clave va en el entorno, nunca en un archivo del repo (regla 7).
+# Estas líneas son una red de seguridad, no una invitación a crear el archivo.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.key
+secrets.*
+
+# ---------------------------------------------------------------------------
+# Editores y sistema operativo
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Salidas transitorias de las tiradas. Los registros SÍ se versionan
+# (results/, results2/, results3/, results4/): son el producto del experimento.
+# Lo que se ignora es el ruido de ejecución.
+# ---------------------------------------------------------------------------
+*.log
+scratch/
+tmp/
