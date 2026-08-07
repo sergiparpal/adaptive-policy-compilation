@@ -37,8 +37,8 @@ lo que queda abierto, incluida la deuda técnica conocida.
 ## Reproducir los cuatro peldaños
 
 **Todo esto cuesta cero llamadas a la API y corre con la biblioteca estándar**,
-sin venv. Son las mediciones que sostienen los cuatro registros; entre paréntesis,
-lo que deben imprimir.
+sin venv. Son las mediciones que sostienen los cuatro registros; al lado de cada
+comando, lo que debe imprimir.
 
 ```bash
 # --- PELDAÑO 1 · el techo del motor y la frontera ------------------------
@@ -96,7 +96,8 @@ cambio está en [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` |
 > | `peldano4/sweep.py` | `results4/sweep.json` |
 >
-> Solo `harness/ceiling_check.py` no escribe nada.
+> De todo lo que se ejecuta en este README, solo `harness/ceiling_check.py` y
+> `run_experiment.py models` no escriben nada.
 >
 > **El caso grave es `run_experiment.py llm`.** Sobrescribe
 > `results/llm_run.json`, que no es solo el registro del peldaño 1: es la base de
@@ -194,26 +195,20 @@ Operadores: `eq`, `neq`, `lte`, `gte`, `in`. `lte`/`gte` solo sobre `severity` y
 
 ---
 
-## Uso
+## El Paso 0 es obligatorio y bloqueante
 
 ```bash
-python3 -m harness.ceiling_check           # PASO 0: techo del motor, 0 llamadas
-python run_experiment.py frontier          # barrido de mocks + baselines, 0 llamadas
-export OPENROUTER_API_KEY=...
-python run_experiment.py llm --n 2000      # proponente real
+python3 -m harness.ceiling_check
 ```
 
-`pip install -r requirements.txt` (solo `openai`) para el último; los dos primeros
-no necesitan nada ni gastan llamadas. El proveedor por defecto es **OpenRouter**;
-con `--provider anthropic` harían falta el paquete `anthropic` y
-`ANTHROPIC_API_KEY` en su lugar.
+Carga la política oculta verdadera en el motor y mide su exactitud sin ningún
+LLM. Si el motor no puede ejecutar la política correcta, ninguna medición sobre
+reglas aprendidas significa nada. Mientras no dé ~100%, cualquier tirada con LLM
+queda anulada de antemano — es lo que pasó con la tirada del 5 de agosto de 2026
+(ver [`PREDICTION.md`](PREDICTION.md)).
 
-**El Paso 0 es obligatorio y bloqueante.** Carga la política oculta verdadera en el
-motor y mide su exactitud sin ningún LLM. Si el motor no puede ejecutar la política
-correcta, ninguna medición sobre reglas aprendidas significa nada. Mientras no dé
-~100%, cualquier tirada con LLM queda anulada de antemano — es lo que pasó con la
-tirada del 5 de agosto de 2026 (ver `PREDICTION.md`).
-
+Cuesta cero llamadas a la API y se vuelve a correr después de **cualquier**
+cambio en el DSL, en el arbitraje o en la política oculta.
 
 ---
 
@@ -262,13 +257,18 @@ export OPENROUTER_API_KEY=sk-or-...        # Windows: set OPENROUTER_API_KEY=...
 `IDEAS.md` como deuda.
 
 **Proveedor por defecto: OpenRouter.** Modelo por defecto
-`deepseek/deepseek-v4-flash`. Alternativas:
+`deepseek/deepseek-v4-flash`. Alternativas (todas necesitan el venv, porque
+llaman al LLM):
 
 ```bash
-python3 run_experiment.py llm --model openai/gpt-5.6-luna
-python3 run_experiment.py llm --model deepseek/deepseek-v4-flash-0731   # revision fijada
-python3 run_experiment.py llm --provider anthropic --model claude-haiku-4-5-20251001
+.venv/bin/python run_experiment.py llm --model openai/gpt-5.6-luna
+.venv/bin/python run_experiment.py llm --model deepseek/deepseek-v4-flash-0731   # revision fijada
+.venv/bin/python run_experiment.py llm --provider anthropic --model claude-haiku-4-5-20251001
 ```
+
+Con `--provider anthropic` harían falta además el paquete `anthropic` —que
+`requirements.txt` deja comentado— y `ANTHROPIC_API_KEY` en lugar de la de
+OpenRouter.
 
 Que el proponente NO sea Claude es preferible: el arnes y la politica oculta
 los escribio Claude, y conviene que el proponente venga de otra familia.
@@ -344,11 +344,17 @@ Deriva de concepto, regret respecto a la mejor política representable, ILP como
 competidor, detectores de impasse empírico, feedback parcial, ASP, activación,
 versionado, reversión.
 
-Dos de esas cosas han ocurrido desde entonces: el **feedback parcial** se
-implementó en el peldaño 4 (canal parametrizado por cobertura, asimetría,
-retardo y ruido) y la **prioridad declarada** en el peldaño 2. El resto sigue en
-[`IDEAS.md`](IDEAS.md), junto con lo que los cuatro peldaños abrieron y no
-resolvieron.
+De esa lista, **el feedback parcial ocurrió**: el peldaño 4 lo implementó como un
+canal parametrizado por cobertura, asimetría, retardo y ruido. El resto sigue sin
+hacerse, incluido el **ILP como competidor**, que llegó a especificarse como Paso
+B del peldaño 3 y no se corrió.
+
+(El peldaño 2 añadió la **prioridad declarada**, que no estaba en esta lista
+porque en el peldaño 1 no se había identificado todavía como la pieza que
+faltaba.)
+
+Todo lo abierto está en [`IDEAS.md`](IDEAS.md), junto con lo que los cuatro
+peldaños abrieron y no resolvieron.
 
 ---
 
@@ -362,7 +368,7 @@ carpeta**. Si los archivos quedan planos verás
 adaptive_triage/
 ├── run_experiment.py        CLI del peldaño 1 (frontier · llm · models)
 ├── requirements.txt         solo `openai`, para el proponente real
-├── README.md  CLAUDE.md  IDEAS.md  PREDICTION.md
+├── README.md  CLAUDE.md  IDEAS.md  PREDICTION.md  LICENSE  .gitignore
 │
 ├── harness/                 PELDAÑO 1 — espec. congelada y motor original
 │   ├── domain.py            caso, acciones, corpus (semilla 17)   [CONGELADO]
@@ -380,7 +386,7 @@ adaptive_triage/
 │   ├── hidden_priority.py   las 29 reglas con sus aristas mínimas
 │   ├── ceiling_check2.py    PASO 0 del peldaño 2 (da 100%)
 │   ├── proposers2.py        prompts v1/v2 y vecindario acotado
-│   ├── shadow2.py  run2.py  compare_runs.py  note_audit.py
+│   └── shadow2.py  run2.py  compare_runs.py  note_audit.py
 │
 ├── peldano3/                orden por búsqueda sobre el corpus, sin LLM
 │   ├── order_search.py      cota de cobertura, voraz, partición
