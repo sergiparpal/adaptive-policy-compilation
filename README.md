@@ -58,7 +58,7 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
-Y antes de tocar nada, la suite: **242 pruebas en ~12 s, sin API y sin escribir
+Y antes de tocar nada, la suite: **244 pruebas en ~12 s, sin API y sin escribir
 en `results*/`.**
 
 ```bash
@@ -155,7 +155,7 @@ Dos redes distintas, con propósitos distintos.
 ### La suite
 
 ```bash
-python3 -m unittest discover            # 242 pruebas, ~12 s, 0 llamadas a la API
+python3 -m unittest discover            # 244 pruebas, ~12 s, 0 llamadas a la API
 python3 -m unittest tests.test_ceilings -v      # un módulo suelto
 ```
 
@@ -227,6 +227,13 @@ cada push y cada PR —incluido lo que se empujó con `--no-verify`— sobre **3
 3.12**: el mínimo que declara este README y el intérprete que produjo los
 registros. Y añade un paso que la suite no puede hacer sola: comprobar, después
 de correrla, que `results*/` sigue intacto.
+
+Las acciones van clavadas al **SHA completo** con su versión en un comentario al
+lado, nunca a una etiqueta: una etiqueta la puede repuntar su dueño hacia otro
+código, un commit no. Es la convención del resto de repositorios de esta cuenta.
+Para subir una, se resuelve la etiqueta nueva a su commit —
+`gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha` — y se cambian SHA y
+comentario a la vez; hay una prueba que comprueba que van juntos.
 
 ### El bloque `_env`
 
@@ -560,7 +567,7 @@ adaptive-triage/
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
 │
-├── tests/                   242 pruebas · `python3 -m unittest discover`
+├── tests/                   244 pruebas · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
 │   ├── doubles.py           el cliente de SDK grabado: la ruta del LLM sin pagar
 │   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`

@@ -1,7 +1,7 @@
 """
 Que la suite la corra alguien sin que haya que acordarse.
 
-Tener 242 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
+Tener 244 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
 pruebas de las que parece. Hay dos redes, y cubren momentos distintos:
 
   * `.githooks/pre-commit`, antes de cada commit, en local.
@@ -24,6 +24,8 @@ import os
 import re
 import unittest
 from pathlib import Path
+
+SHA = re.compile(r"^[0-9a-f]{40}$")
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -85,6 +87,25 @@ class TestElFlujoDeCI(unittest.TestCase):
         """La suite lo afirma en su docstring; el flujo lo verifica despues de
         correrla, que es la unica forma de que la afirmacion no envejezca."""
         self.assertIn("git status --porcelain -- results", self.texto)
+
+    def test_las_acciones_van_clavadas_a_un_sha_completo(self):
+        """Una etiqueta la puede repuntar su dueño hacia otro codigo; un commit
+        no. Es la convencion del resto de repositorios de esta cuenta, y aqui
+        entro tarde: este flujo nacio con `@v4` y estuvo un dia en `@v7`."""
+        refs = re.findall(r"^\s*- uses: (\S+)@(\S+)", self.texto, re.M)
+        self.assertTrue(refs, "el flujo ya no usa ninguna accion")
+        for accion, ref in refs:
+            with self.subTest(accion):
+                self.assertRegex(ref, SHA,
+                                 f"{accion} va por etiqueta, no por commit")
+
+    def test_cada_sha_lleva_su_version_al_lado(self):
+        """El SHA solo es legible si dice de que version es. Sin el comentario,
+        subir una accion obliga a resolver el hash para saber de donde partes."""
+        for linea in self.texto.splitlines():
+            if "- uses:" in linea:
+                with self.subTest(linea.strip()[:40]):
+                    self.assertRegex(linea, r"@[0-9a-f]{40} # v\d+\.\d+\.\d+$")
 
 
 if __name__ == "__main__":

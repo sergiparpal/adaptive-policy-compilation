@@ -31,12 +31,21 @@ jobs:
         python: ["3.10", "3.12"]
 
     steps:
-      # Las dos, clavadas al mayor vigente (jul 2026). Antes iban en checkout@v4
-      # y setup-python@v5, que declaran `using: node20`: GitHub las forzaba
-      # sobre Node 24 y avisaba en cada ejecucion de que eso se acaba.
-      - uses: actions/checkout@v7
+      # Clavadas al SHA COMPLETO, con la version en un comentario al lado. Una
+      # etiqueta la puede repuntar su dueño hacia otro codigo; un commit no. Es
+      # la convencion del resto de repositorios de esta cuenta y aqui faltaba:
+      # este flujo estuvo en `@v7` durante un dia.
+      #
+      # Los mayores, ademas, no son cosmeticos: hasta hace poco esto iba en
+      # checkout@v4 y setup-python@v5, que declaran `using: node20`, ya
+      # deprecado, y GitHub avisaba en cada ejecucion.
+      #
+      # Para subirlas: resolver la etiqueta nueva a su commit
+      #   gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha
+      # y cambiar SHA y comentario a la vez. Una prueba comprueba que van juntos.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
 
