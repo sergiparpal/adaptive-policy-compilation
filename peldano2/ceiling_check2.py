@@ -16,6 +16,7 @@ from pathlib import Path
 
 from harness.domain import generate_corpus
 from harness.hidden_policy import true_action, true_rule_id
+from harness.provenance import environment
 
 from .engine2 import Space, strictly_below
 from .hidden_priority import build_hidden_engine
@@ -107,6 +108,7 @@ def main() -> int:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "ceiling2.json").write_text(json.dumps({
+        "_env": environment(),
         "n_rules": n_rules,
         "space": space.n,
         "subsumption_pairs": sub_pairs,

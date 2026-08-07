@@ -21,6 +21,7 @@ import sys
 from pathlib import Path
 
 from harness.domain import ATTRIBUTES
+from harness.provenance import environment
 
 # Marcadores de razonamiento hacia la disjuncion. Deliberadamente literales:
 # no se cuenta "solape" a secas, solo formas que afirman NO compartir casos.
@@ -91,7 +92,10 @@ def main(argv: list[str]) -> int:
             print(f"      \"{e['note']}\"")
 
     out = Path("results2/note_audit.json")
-    out.write_text(json.dumps(rows, indent=2, ensure_ascii=False))
+    # 7 ago 2026: igual que en compare_runs.py, la lista pasa a "rows" dentro de
+    # un objeto para poder colgar `_env`. El registro publicado no se re-corrio.
+    out.write_text(json.dumps({"_env": environment(), "rows": rows},
+                              indent=2, ensure_ascii=False))
     print(f"\n-> {out}")
     return 0
 

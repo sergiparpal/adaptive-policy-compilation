@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 from harness.domain import generate_corpus
+from harness.provenance import environment
 
 from .engine2 import PriorityEngine, Space
 from .proposers2 import OpenRouterProposer2
@@ -70,6 +71,7 @@ def main() -> int:
     tag = args.tag or f"n{args.n}"
     path = OUT / f"llm_run2_{tag}.json"
     path.write_text(json.dumps({
+        "_env": environment(),
         "peldano": 2,
         "model": args.model,
         "n": args.n,

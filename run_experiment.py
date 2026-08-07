@@ -36,6 +36,7 @@ from harness.domain import generate_corpus
 from harness.dsl import RuleEngine
 from harness.hidden_policy import HIDDEN_POLICY_SIZE, true_action
 from harness.cache_baseline import run_cache_baseline
+from harness.provenance import environment
 from harness.proposers import KeepKProposer, RandomKProposer
 from harness.shadow import run_shadow
 
@@ -130,7 +131,8 @@ def cmd_frontier(args) -> None:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "frontier.json").write_text(json.dumps(
-        {"corpus": stats, "results": results}, indent=2, default=str))
+        {"_env": environment(seed=args.seed), "corpus": stats, "results": results},
+        indent=2, default=str))
     print(f"\n  -> {OUT/'frontier.json'}")
 
 
@@ -188,6 +190,7 @@ def cmd_llm(args) -> None:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "llm_run.json").write_text(json.dumps({
+        "_env": environment(seed=args.seed, n=args.n, provider=args.provider),
         "model": model,
         "metrics": m,
         "rules": [r.as_dict() for r in res.rules],

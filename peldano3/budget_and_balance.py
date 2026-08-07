@@ -32,6 +32,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from harness.hidden_policy import true_action
+from harness.provenance import environment
 
 from .order_search import (build_tables, ceiling, evaluate, load, split,
                            subsumption_below)
@@ -210,6 +211,7 @@ def main() -> int:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "budget_and_balance.json").write_text(json.dumps({
+        "_env": environment(),
         "label_budget": budget_rows,
         "objective_comparison": {
             name: {"e2e_test_mean": round(statistics.mean(agg[name]), 4),

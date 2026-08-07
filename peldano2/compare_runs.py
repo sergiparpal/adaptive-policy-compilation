@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 
 from harness.dsl import Condition
+from harness.provenance import environment
 
 from .engine2 import Space, strictly_below
 
@@ -108,7 +109,10 @@ def main(argv: list[str]) -> int:
         print(f"    conflictos       : {cf}")
 
     out = Path("results2/comparativa.json")
-    out.write_text(json.dumps(rows, indent=2))
+    # 7 ago 2026: la salida pasa de lista pelada a objeto para poder colgar el
+    # bloque `_env`. Las filas siguen siendo las mismas, bajo la clave "rows".
+    # El archivo registrado sigue siendo la lista antigua: no se ha re-corrido.
+    out.write_text(json.dumps({"_env": environment(), "rows": rows}, indent=2))
     print(f"\n-> {out}")
     return 0
 

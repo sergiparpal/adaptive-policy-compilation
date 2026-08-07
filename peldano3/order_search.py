@@ -72,6 +72,7 @@ from pathlib import Path
 from harness.domain import generate_corpus
 from harness.dsl import Condition
 from harness.hidden_policy import true_action
+from harness.provenance import environment
 from peldano2.engine2 import Space, strictly_below   # reuso, no modificacion
 
 OUT = Path("results3")
@@ -371,6 +372,7 @@ def main() -> int:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "order_search.json").write_text(json.dumps({
+        "_env": environment(n_splits=N_SPLITS, n_random=N_RANDOM),
         "n_rules": len(rules), "n_cases": len(corpus),
         "ceiling_pure": round(ceil_pure, 4), "ceiling_hybrid": round(ceil_hyb, 4),
         "cases_without_matching_rule": nomatch,

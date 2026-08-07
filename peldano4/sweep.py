@@ -39,6 +39,7 @@ from pathlib import Path
 # se usan solo para EVALUAR el orden resultante y para calcular la tasa de error
 # de pi0 que se reporta; nunca se le pasan al aprendiz, que es
 # `greedy_from_reports` y solo recibe `reported`.
+from harness.provenance import environment
 from peldano3.order_search import (build_tables, ceiling, evaluate, load, split,
                                    subsumption_below)
 
@@ -214,7 +215,8 @@ def main() -> int:
 
     OUT.mkdir(exist_ok=True)
     (OUT / "sweep.json").write_text(json.dumps(
-        {"references": REF, "n_splits": N_SPLITS, "n_draws": N_DRAWS,
+        {"_env": environment(n_splits=N_SPLITS, n_draws=N_DRAWS),
+         "references": REF, "n_splits": N_SPLITS, "n_draws": N_DRAWS,
          "pi0": "born_at", "rows": rows}, indent=2))
     print(f"\n-> {OUT/'sweep.json'}")
     return 0

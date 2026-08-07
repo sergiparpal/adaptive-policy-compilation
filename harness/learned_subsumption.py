@@ -35,6 +35,7 @@ from .ceiling_check import all_cases
 from .domain import ATTRIBUTES, DOMAINS, generate_corpus
 from .dsl import Condition, Rule, RuleEngine
 from .hidden_policy import true_action, true_rule_id
+from .provenance import environment
 
 RESULTS = Path("results")
 
@@ -235,6 +236,7 @@ def main() -> int:
 
     RESULTS.mkdir(exist_ok=True)
     (RESULTS / "learned_subsumption.json").write_text(json.dumps({
+        "_env": environment(),
         "model": model,
         "n_rules": len(rules),
         "caveat": "cota, no simulacion: la base se aprendio bajo arbitraje por "

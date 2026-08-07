@@ -30,6 +30,7 @@ from .ceiling_check import HIDDEN_DSL, all_cases, build_rules
 from .domain import generate_corpus
 from .dsl import RuleEngine
 from .hidden_policy import HIDDEN_RULES, true_action, true_rule_id
+from .provenance import environment
 
 
 # ---------------------------------------------------------------------------
@@ -231,6 +232,7 @@ def main() -> int:
     out = Path("results")
     out.mkdir(exist_ok=True)
     (out / "subsumption.json").write_text(json.dumps({
+        "_env": environment(),
         "base": "politica oculta (29 reglas)",
         "space_size": n_space,
         "order": {
