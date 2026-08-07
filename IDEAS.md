@@ -117,7 +117,7 @@ que quedan tienen todas la misma raíz y no se cierran escribiendo código.
 
 ### Hecho
 
-- **Pruebas automatizadas.** `python3 -m unittest discover` corre 244 pruebas en
+- **Pruebas automatizadas.** `python3 -m unittest discover` corre 247 pruebas en
   ~12 s, sin llamadas a la API y sin escribir en `results*/`. Cubren los dos
   invariantes que sostienen el peldaño 1 —el DSL reproduce las lambdas sobre las
   134.400 combinaciones, y primera-que-casa reproduce `true_action`— y clavan al

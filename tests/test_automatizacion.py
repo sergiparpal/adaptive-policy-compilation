@@ -1,7 +1,7 @@
 """
 Que la suite la corra alguien sin que haya que acordarse.
 
-Tener 244 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
+Tener 247 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
 pruebas de las que parece. Hay dos redes, y cubren momentos distintos:
 
   * `.githooks/pre-commit`, antes de cada commit, en local.
@@ -31,6 +31,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 HOOK = REPO / ".githooks" / "pre-commit"
 FLUJO = REPO / ".github" / "workflows" / "pruebas.yml"
+DEPENDABOT = REPO / ".github" / "dependabot.yml"
 
 SUITE = "unittest discover"
 
@@ -106,6 +107,37 @@ class TestElFlujoDeCI(unittest.TestCase):
             if "- uses:" in linea:
                 with self.subTest(linea.strip()[:40]):
                     self.assertRegex(linea, r"@[0-9a-f]{40} # v\d+\.\d+\.\d+$")
+
+
+class TestDependabot(unittest.TestCase):
+    """Lo que impide que el pin por SHA se fosilice.
+
+    Un SHA clavado no envejece ruidosamente: se queda quieto y en silencio. El
+    pin y esta vigilancia son una sola decision partida en dos archivos, y
+    quitar la mitad de abajo no rompe nada visible.
+    """
+
+    def setUp(self):
+        self.texto = DEPENDABOT.read_text()
+
+    def test_existe(self):
+        self.assertTrue(DEPENDABOT.is_file(),
+                        f"falta {DEPENDABOT.relative_to(REPO)}")
+
+    def test_vigila_las_acciones_de_CI(self):
+        self.assertIn("package-ecosystem: github-actions", self.texto)
+
+    def test_NO_vigila_pip_a_proposito(self):
+        """La ausencia es la decision, no un olvido.
+
+        `openai==2.53.0` y el cierre transitivo del lock no son una dependencia
+        desactualizada: son la procedencia del entorno que produjo los
+        registros. Un PR semanal proponiendo subirlos entrenaria a fusionarlo
+        sin mirar, que es el descuido que el lock existe para impedir.
+        """
+        self.assertNotIn("package-ecosystem: pip", self.texto)
+        self.assertIn("requirements.lock.txt", self.texto,
+                      "si se deja pip fuera, el motivo va escrito al lado")
 
 
 if __name__ == "__main__":

@@ -58,7 +58,7 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
-Y antes de tocar nada, la suite: **244 pruebas en ~12 s, sin API y sin escribir
+Y antes de tocar nada, la suite: **247 pruebas en ~12 s, sin API y sin escribir
 en `results*/`.**
 
 ```bash
@@ -155,7 +155,7 @@ Dos redes distintas, con propósitos distintos.
 ### La suite
 
 ```bash
-python3 -m unittest discover            # 244 pruebas, ~12 s, 0 llamadas a la API
+python3 -m unittest discover            # 247 pruebas, ~12 s, 0 llamadas a la API
 python3 -m unittest tests.test_ceilings -v      # un módulo suelto
 ```
 
@@ -234,6 +234,13 @@ código, un commit no. Es la convención del resto de repositorios de esta cuent
 Para subir una, se resuelve la etiqueta nueva a su commit —
 `gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha` — y se cambian SHA y
 comentario a la vez; hay una prueba que comprueba que van juntos.
+
+Y como un SHA clavado **no envejece ruidosamente** —se queda quieto y en
+silencio—, [`.github/dependabot.yml`](.github/dependabot.yml) propone la subida
+cada semana. Vigila las acciones y **no** `pip`, a propósito: `openai==2.53.0` y
+el cierre transitivo del lock no son una dependencia desactualizada, son la
+procedencia del entorno que produjo los registros, y un PR semanal proponiendo
+subirlos entrenaría a fusionarlo sin mirar.
 
 ### El bloque `_env`
 
@@ -567,7 +574,7 @@ adaptive-triage/
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
 │
-├── tests/                   244 pruebas · `python3 -m unittest discover`
+├── tests/                   247 pruebas · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
 │   ├── doubles.py           el cliente de SDK grabado: la ruta del LLM sin pagar
 │   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`
@@ -575,6 +582,7 @@ adaptive-triage/
 │
 ├── .githooks/pre-commit     la suite antes de cada commit (hay que activarlo)
 ├── .github/workflows/       la suite en cada push y cada PR, en 3.10 y 3.12
+├── .github/dependabot.yml   sube las acciones; NO toca los pines de pip
 │
 └── results/  results2/  results3/  results4/
     Los registros. FINDINGS*.md son las conclusiones con sus erratas
