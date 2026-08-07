@@ -100,7 +100,9 @@ ninguna y sin orden de prelación.
 
 ## Deuda técnica
 
-Real, pero no cambia ninguna conclusión. Anotada para no volver a descubrirla.
+Trabajo pendiente **sobre el repo como software**, no sobre el experimento. Es
+de otra naturaleza que el resto de este archivo y por eso va aparte. Real, pero
+no cambia ninguna conclusión.
 
 - **Sin pruebas automatizadas.** `unittest discover` encuentra 0. Lo que más
   valdría: invariantes (el DSL reproduce las lambdas sobre el espacio completo)
@@ -110,19 +112,13 @@ Real, pero no cambia ninguna conclusión. Anotada para no volver a descubrirla.
   `openai>=1.40.0`. El entorno con el que se produjo todo: Python 3.12.3,
   openai 2.53.0.
 - **Sin registro de entorno en los resultados.** Ningún JSON guarda versión de
-  Python, de la librería ni hash del código que lo produjo.
-- **Ruff: ~28 incidencias**, sobre todo imports muertos y estilo. Una era real y
-  ya se corrigió (`true_action` importado y sin usar en `peldano4/sweep.py`,
-  que además desmentía literalmente una afirmación de FINDINGS4).
-- **Reproducir una cifra sobrescribe su propio registro.** No son dos scripts del
-  peldaño 1 como se anotó aquí primero: son **todos menos uno**. Cada script de
-  análisis vuelca su JSON al terminar, sobre el archivo publicado. El peor es
-  `run_experiment.py llm`, que reescribe `results/llm_run.json`, la base de 577
-  reglas de la que parten los peldaños 3 y 4. La tabla completa está en el
-  README. **No se anota como deuda a resolver con código**: git ya es la
-  salvaguarda —`git status` lo delata, `git checkout --` lo revierte— y añadir
-  `--out` a nueve scripts, dos de ellos en `harness/`, es más superficie de
-  cambio que problema resuelto. Queda como cosa que hay que saber, no que hacer.
+  Python, de la librería ni hash del código que lo produjo. Es lo que habría
+  hecho detectable el desempate no determinista mucho antes.
+
+Lo que **no** está aquí, a propósito: que reproducir una cifra sobrescriba su
+propio registro. Es un comportamiento que hay que conocer, no una tarea
+pendiente —git ya es la salvaguarda— y está documentado con su tabla completa en
+el README.
 
 ---
 
