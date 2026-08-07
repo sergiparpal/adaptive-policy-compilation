@@ -120,7 +120,7 @@ all have the same root and are not closed by writing code.
 
 ### Done
 
-- **Automated tests.** `python3 -m unittest discover` runs 249 tests in ~12 s,
+- **Automated tests.** `python3 -m unittest discover` runs 250 tests in ~12 s,
   with no API calls and no writes to `results*/`. They cover the two invariants
   that underpin rung 1 — the DSL reproduces the lambdas over the 134,400
   combinations, and first-match-wins reproduces `true_action` — and pin the

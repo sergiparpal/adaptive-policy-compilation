@@ -63,7 +63,7 @@ python3 -m peldano3.budget_and_balance  # label curve and balanced greedy
 python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
 ```
 
-And before touching anything, the test suite: **249 tests in ~12 s, no API and
+And before touching anything, the test suite: **250 tests in ~12 s, no API and
 no writes to `results*/`.**
 
 ```bash
@@ -158,7 +158,7 @@ Two different nets, with different purposes.
 ### The test suite
 
 ```bash
-python3 -m unittest discover            # 249 tests, ~12 s, 0 API calls
+python3 -m unittest discover            # 250 tests, ~12 s, 0 API calls
 python3 -m unittest tests.test_ceilings -v      # a single module
 ```
 
@@ -231,6 +231,20 @@ every push and every PR — including what was pushed with `--no-verify` — on
 **3.10 and 3.12**: the minimum this README declares and the interpreter that
 produced the records. And it adds a step the suite cannot do on its own: check,
 after running it, that `results*/` is still intact.
+
+**`main` is protected, so changes arrive by pull request.** A GitHub ruleset —
+the same one as the rest of the repositories in this account — requires a PR (no
+approvals: zero reviewers), forbids force-pushes and deletion, and requires one
+status check: **`ci-complete`**. That check is the aggregate job at the end of
+the workflow; it depends on the matrix and fails unless every leg succeeded.
+
+The aggregation is the point. Requiring `suite (3.10)` directly would work until
+the floor moves, and then the ruleset would be waiting forever for a check that
+no longer exists — an unsatisfiable required check blocks every merge without
+failing anything. For the same reason the job name is load-bearing: renaming
+`ci-complete` without touching the ruleset blocks every merge, in silence. Half
+of that decision lives in the repository settings and the other half in the
+workflow, so `tests/test_automatizacion.py` pins the half that is versioned.
 
 The actions are pinned to the **full SHA** with their version in a comment
 alongside, never to a tag: a tag can be repointed by its owner at other code, a
@@ -610,7 +624,7 @@ adaptive-triage/
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   └── sweep.py             coverage, asymmetry, delay and noise sweeps
 │
-├── tests/                   249 tests · `python3 -m unittest discover`
+├── tests/                   250 tests · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus and exhaustive space, built once
 │   ├── doubles.py           the recorded SDK client: the LLM path without paying
 │   ├── hashseed_child.py    child process for the `PYTHONHASHSEED` control

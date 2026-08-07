@@ -1,7 +1,7 @@
 """
 That something runs the suite without anyone having to remember.
 
-Having 249 tests and depending on someone remembering to launch them is having
+Having 250 tests and depending on someone remembering to launch them is having
 fewer tests than it looks. There are two nets, covering different moments:
 
   * `.githooks/pre-commit`, before every commit, locally.
@@ -13,9 +13,17 @@ is a small thing, but it is exactly the kind of failure that gives no warning: a
 hook without the execute bit or a renamed workflow raise no error, they simply
 stop running and nobody notices until it matters.
 
+Since August 7, 2026 there is a third net, and it does not live in this
+repository: a GitHub ruleset protects `main` —PR required, no force-push, no
+deletion— and requires the status check `ci-complete`. That check is the
+aggregate job at the end of the workflow, so half of that decision IS here and
+can be broken from here: renaming the job blocks every merge, silently and
+forever. That is what `test_existe_el_check_que_exige_el_ruleset` watches.
+
 What is NOT checked here is that the hook is installed: `core.hooksPath` is
-local configuration per clone and is not set in CI. The instruction to install
-it is in the README and in the header of the hook itself.
+local configuration per clone and is not set in CI. Nor is the ruleset, which
+lives in the repository settings and not in a versioned file. The instruction to
+install the hook is in the README and in the header of the hook itself.
 """
 
 from __future__ import annotations
@@ -133,13 +141,32 @@ class TestElFlujoDeCI(unittest.TestCase):
                               self._cuerpo_del_trabajo(trabajo))
 
     def test_main_no_se_cancela_nunca(self):
-        """Here commits go straight to main and the workflow status is the only
-        record that a commit passed the suite. A plain
+        """Commits reach main one after another and the workflow status is the
+        only record that a commit passed the suite. A plain
         `cancel-in-progress: true` leaves every commit overtaken by the next one
         as "cancelled": they did not fail, they simply never answered. The
-        exception is the decision; simplifying it would erase it silently."""
+        exception is the decision; simplifying it would erase it silently.
+
+        The premise changed on August 7, 2026 —commits used to go straight to
+        main and now arrive by merge— and the exception survives it: what it
+        protects is the run on main, not the route the commit took."""
         self.assertIn("cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}",
                       self.texto)
+
+    def test_existe_el_check_que_exige_el_ruleset(self):
+        """`ci-complete` is the required status check of the ruleset that
+        protects `main`. It is one decision split across two places, and only
+        one of them is in this repository: renaming the job here leaves the
+        ruleset waiting forever for a check that nobody reports, which does not
+        fail anything — it blocks every merge, in silence.
+
+        It aggregates on purpose instead of the ruleset requiring the matrix
+        legs: `suite (3.10)` stops existing the day the floor moves, and a
+        required check that never reports again is unsatisfiable."""
+        cuerpo = self._cuerpo_del_trabajo("ci-complete")
+        self.assertIn("needs: [suite]", cuerpo)
+        self.assertIn("if: always()", cuerpo)
+        self.assertIn("contains(needs.*.result, 'failure')", cuerpo)
 
 
 class TestDependabot(unittest.TestCase):

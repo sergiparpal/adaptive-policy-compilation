@@ -114,7 +114,7 @@ Check with `${#OPENROUTER_API_KEY}` (the length), never with its value.
 
     python3 -m unittest discover
 
-249 tests on the standard library. They do not write to `results*/`: they call
+250 tests on the standard library. They do not write to `results*/`: they call
 the measurement functions, never the `main()`s. They pin the invariants (the DSL
 reproduces the lambdas over the 134,400 combinations) and the published figures
 (0.5875 · 0.6315 · 1.0000, the frontier and the corpus), watch that no component
