@@ -1,17 +1,40 @@
-# Compilación adaptativa de políticas — Peldaño 1
+# Compilación adaptativa de políticas
 
-> **Este archivo documenta el PELDAÑO 1, que no es el estado actual del
-> proyecto.** Hay cuatro peldaños cerrados:
+Un motor simbólico barato resuelve los casos que cubre; cuando no cubre uno
+(*impasse*), un LLM actúa y escribe una regla nueva para que la próxima vez sí lo
+cubra. Dominio: triaje de tickets de soporte — 8 atributos, 8 colas, y una
+política oculta de 29 reglas repartidas en 8 capas de prioridad.
+
+## Cuatro peldaños cerrados
+
+| peldaño | qué midió | registro |
+|---|---|---|
+| **1** · techo del motor | el arbitraje por especificidad alcanza **58,75%** con la política perfecta cargada; la tirada con LLM quedó anulada por ese techo | [`results/FINDINGS.md`](results/FINDINGS.md) |
+| **2** · prioridad declarada | el motor híbrido (subsunción + prioridad declarada) ejecuta la política estratificada al **100%**, pero el proponente escribe reglas disjuntas y nunca lo ejercita | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
+| **3** · prioridad por búsqueda | las 577 reglas del peldaño 1 admiten un orden que saca **0,77** en test; el arbitraje las convertía en 0,18 | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
+| **4** · prioridad por feedback | ese orden **no** se aprende del feedback asimétrico que produce un sistema real | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
+
+El hilo que los une: la prioridad de una política por capas no está en la forma
+de las reglas, y las tres vías de suministrarla —inferirla de la sintaxis, que la
+declare el proponente, aprenderla del comportamiento observado— están medidas y
+fallan cada una por una razón distinta.
+
+**La hipótesis original —¿las reglas que escribe un LLM se reutilizan, o memoriza
+casos?— sigue sin medirse limpiamente.** [`IDEAS.md`](IDEAS.md) lleva la lista de
+lo que queda abierto, incluida la deuda técnica conocida.
+
+> **El resto de este archivo describe la especificación y la operativa del
+> peldaño 1.** Siguen siendo válidas como procedimiento, no como estado del
+> proyecto.
 >
-> | peldaño | registro |
-> |---|---|
-> | 1 · techo del motor y tirada anulada | [`results/FINDINGS.md`](results/FINDINGS.md) |
-> | 2 · prioridad declarada, motor híbrido | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
-> | 3 · prioridad por búsqueda sobre el corpus | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
-> | 4 · prioridad aprendida de un canal de feedback | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
->
-> Los cuatro llevan erratas fechadas en el sitio; léelas antes de citar cifras.
-> `IDEAS.md` lleva lo que queda abierto.
+> Antes de citar cualquier cifra, lee las **erratas fechadas** que cada FINDINGS
+> lleva en el sitio. Las de los peldaños 3 y 4 están además condicionadas por un
+> desempate no determinista en el optimizador, corregido el 6 de agosto de 2026
+> y **sin re-correr**: los números publicados son los del código anterior.
+
+---
+
+## Peldaño 1
 
 Mundo estático · política oculta realizable · **sombra pura** (ninguna regla se activa jamás).
 
@@ -110,7 +133,12 @@ tirada del 5 de agosto de 2026 (ver `PREDICTION.md`).
 
 Requiere **Python 3.10+**. Comprueba con `python3 --version`.
 
+Todo lo que no llama al LLM —los techos, `frontier` y los peldaños 2, 3 y 4—
+funciona **solo con la biblioteca estándar**. El venv hace falta únicamente para
+el proponente real.
+
 ```bash
+git clone https://github.com/sergiparpal/adaptive_triage.git
 cd adaptive_triage
 
 # 0. OBLIGATORIO, y antes que nada: techo del motor. 0 llamadas a la API.
@@ -120,21 +148,30 @@ python3 -m harness.ceiling_check
 # 1. Comprobar que todo funciona SIN gastar nada
 python3 run_experiment.py frontier
 
-# 2. Instalar el SDK (OpenRouter es compatible con OpenAI)
-pip install -r requirements.txt
+# 2. Entorno virtual e instalacion del SDK.
+#    OJO: en Debian/Ubuntu `pip install` global falla con
+#    "externally-managed-environment" (PEP 668). El venv lo evita, y ademas
+#    esta en .gitignore, asi que no ensucia el repo.
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 
-# 3. Clave desde openrouter.ai -> Keys
+# 3. Clave desde openrouter.ai -> Keys. Va en el entorno, NUNCA en un archivo
+#    del repo. Si la exportas en otra terminal, el proceso no la heredara.
 export OPENROUTER_API_KEY=sk-or-...        # Windows: set OPENROUTER_API_KEY=...
 
 # 4. (opcional) buscar el slug exacto de un modelo
-python3 run_experiment.py models deepseek
+.venv/bin/python run_experiment.py models deepseek
 
 # 5. Prueba corta primero: ver reglas reales y validar el parseo
-python3 run_experiment.py llm --n 100
+.venv/bin/python run_experiment.py llm --n 100
 
 # 6. Rellenar PREDICTION.md, y solo entonces la tirada completa
-python3 run_experiment.py llm --n 2000
+.venv/bin/python run_experiment.py llm --n 2000
 ```
+
+**Entorno con el que se produjeron los resultados publicados:** Python 3.12.3,
+`openai` 2.53.0, Linux. `requirements.txt` no fija versiones; queda anotado en
+`IDEAS.md` como deuda.
 
 **Proveedor por defecto: OpenRouter.** Modelo por defecto
 `deepseek/deepseek-v4-flash`. Alternativas:
@@ -213,39 +250,69 @@ No es ceremonia. Sin umbral escrito de antemano, cualquier resultado va a parece
 
 ---
 
-## Qué NO hay aquí, deliberadamente
+## Qué NO había aquí en el peldaño 1, deliberadamente
 
-Deriva de concepto, regret respecto a la mejor política representable, ILP como competidor, detectores de impasse empírico, feedback parcial, ASP, activación, versionado, reversión. Todo eso está en `IDEAS.md` y no se toca hasta tener la primera curva del LLM.
+Deriva de concepto, regret respecto a la mejor política representable, ILP como
+competidor, detectores de impasse empírico, feedback parcial, ASP, activación,
+versionado, reversión.
+
+Dos de esas cosas han ocurrido desde entonces: el **feedback parcial** se
+implementó en el peldaño 4 (canal parametrizado por cobertura, asimetría,
+retardo y ruido) y la **prioridad declarada** en el peldaño 2. El resto sigue en
+[`IDEAS.md`](IDEAS.md), junto con lo que los cuatro peldaños abrieron y no
+resolvieron.
 
 ---
 
-## Estructura de archivos (importante)
+## Estructura del repositorio
 
-Los modulos usan imports relativos, asi que **deben estar dentro de `harness/`**.
-Si al descargarlos quedaron planos, veras
-`ModuleNotFoundError: No module named 'harness'`. Estructura correcta:
+Los módulos usan imports relativos, así que **cada paquete debe conservar su
+carpeta**. Si los archivos quedan planos verás
+`ModuleNotFoundError: No module named 'harness'`.
 
 ```
 adaptive_triage/
-├── run_experiment.py
-├── requirements.txt
-├── README.md
-├── PREDICTION.md
-├── IDEAS.md
-└── harness/
-    ├── __init__.py
-    ├── domain.py
-    ├── dsl.py
-    ├── hidden_policy.py
-    ├── proposers.py
-    ├── shadow.py
-    └── cache_baseline.py
+├── run_experiment.py        CLI del peldaño 1 (frontier · llm · models)
+├── requirements.txt         solo `openai`, para el proponente real
+├── README.md  CLAUDE.md  IDEAS.md  PREDICTION.md
+│
+├── harness/                 PELDAÑO 1 — espec. congelada y motor original
+│   ├── domain.py            caso, acciones, corpus (semilla 17)   [CONGELADO]
+│   ├── hidden_policy.py     las 29 reglas en 8 capas · el ORÁCULO [CONGELADO]
+│   ├── dsl.py               esquema de regla y RuleEngine          [CONGELADO]
+│   ├── shadow.py            bucle en sombra y métricas             [CONGELADO]
+│   ├── cache_baseline.py    baseline de caché semántica            [CONGELADO]
+│   ├── proposers.py         mocks keep_k/random_k y proponentes LLM
+│   ├── ceiling_check.py     PASO 0 · techo del motor por especificidad
+│   ├── subsumption_check.py orden parcial por subsunción semántica
+│   └── learned_subsumption.py  el mismo criterio sobre la base aprendida
+│
+├── peldano2/                motor híbrido: subsunción + prioridad declarada
+│   ├── engine2.py           arbitraje en dos niveles
+│   ├── hidden_priority.py   las 29 reglas con sus aristas mínimas
+│   ├── ceiling_check2.py    PASO 0 del peldaño 2 (da 100%)
+│   ├── proposers2.py        prompts v1/v2 y vecindario acotado
+│   ├── shadow2.py  run2.py  compare_runs.py  note_audit.py
+│
+├── peldano3/                orden por búsqueda sobre el corpus, sin LLM
+│   ├── order_search.py      cota de cobertura, voraz, partición
+│   └── budget_and_balance.py  presupuesto de etiquetas y voraz balanceado
+│
+├── peldano4/                prioridad aprendida de un canal de feedback
+│   ├── feedback.py          el canal; único que consulta el oráculo
+│   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
+│
+└── results/  results2/  results3/  results4/
+    Los registros. FINDINGS*.md son las conclusiones con sus erratas
+    fechadas; los .json son los datos crudos, para hacer cortes post-hoc
+    sin volver a pagar ninguna tirada. Se versionan a propósito: son el
+    producto del experimento, no salidas transitorias.
 ```
 
-Arreglo rapido si quedaron planos:
+**`.venv/` está en `.gitignore`** y se reconstruye entero desde
+`requirements.txt`. No lo versiones: el primer commit lo hizo y hubo que purgar
+el historial.
 
-```bash
-mkdir -p harness
-mv domain.py dsl.py hidden_policy.py proposers.py shadow.py cache_baseline.py harness/
-touch harness/__init__.py
-```
+Los cinco archivos marcados `[CONGELADO]` definen el experimento. Si crees que
+alguno tiene un bug, **párate y dilo**; no lo arregles por tu cuenta. Ver las
+reglas duras en [`CLAUDE.md`](CLAUDE.md).
