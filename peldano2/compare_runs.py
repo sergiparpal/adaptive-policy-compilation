@@ -18,8 +18,11 @@ from pathlib import Path
 
 from harness.dsl import Condition
 from harness.provenance import environment
+from harness.record_guard import FLAG, or_exit, refuse_shrink
 
 from .engine2 import Space, strictly_below
+
+RECORD = Path("results2/comparativa.json")
 
 
 def analyse(path: Path, space: Space) -> dict:
@@ -65,8 +68,20 @@ def analyse(path: Path, space: Space) -> dict:
 
 
 def main(argv: list[str]) -> int:
+    # No argparse: everything here is positional except the escape hatch, and
+    # a shell glob already arrives expanded.
+    overwrite = FLAG in argv
+    ficheros = [a for a in argv if a != FLAG]
+
     space = Space()
-    rows = [analyse(Path(p), space) for p in sorted(argv)]
+    rows = [analyse(Path(p), space) for p in sorted(ficheros)]
+
+    # The record is written at the end because computing it is free, but it is
+    # checked HERE, before printing a report that suggests everything went
+    # fine. Shrinking is the failure this cannot see from the destination: the
+    # path never changes, the rows do.
+    or_exit(refuse_shrink, RECORD, rows, overwrite=overwrite,
+            hint="    python3 -m peldano2.compare_runs results2/llm_run2_*.json")
 
     print("=" * 108)
     print("COMPARATIVA DE TIRADAS  (n=100, mismo modelo, mismo prompt salvo donde se indique)")
@@ -108,15 +123,15 @@ def main(argv: list[str]) -> int:
               f"   desv {statistics.pstdev(ov):.1f}")
         print(f"    conflictos       : {cf}")
 
-    out = Path("results2/comparativa.json")
     # Aug 7, 2026: the output goes from a bare list to an object so that the
     # `_env` block can be hung off it. The rows are the same, under the "rows"
     # key. The record was re-run that same day with the 8 runs and adopted the
     # new shape without a single row changing; see results2/NOTA_REGISTRO.md.
-    # CAREFUL: it rewrites with whatever is passed as an ARGUMENT. Invoking it
-    # with a single file shrinks the record from 8 runs to 1.
-    out.write_text(json.dumps({"_env": environment(), "rows": rows}, indent=2))
-    print(f"\n-> {out}")
+    # It still rewrites with whatever is passed as an ARGUMENT — that has not
+    # changed and cannot change, it is what the command is for. What is guarded
+    # since Aug 8, 2026 is the consequence: it refuses to shrink the record.
+    RECORD.write_text(json.dumps({"_env": environment(), "rows": rows}, indent=2))
+    print(f"\n-> {RECORD}")
     return 0
 
 

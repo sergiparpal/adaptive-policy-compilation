@@ -78,9 +78,18 @@ makes runs comparable.
 
 For the same reason, **DO NOT overwrite `results/llm_run.json`**. It is not just
 the record of rung 1: it is the base of 577 rules that **rungs 3 and 4 start
-from**. `run_experiment.py llm` rewrites it, and since the proposer is not
-deterministic at temperature 0, what comes out will not be the same. If it has
-to be re-run, the original is saved first under another name.
+from**, and since the proposer is not deterministic at temperature 0, what comes
+out will not be the same. If it has to be re-run, the original is saved first
+under another name.
+
+Since August 8, 2026 the rule is also enforced by the code, in
+`harness/record_guard.py`: `run_experiment.py llm` no longer writes that path —
+it writes `results/llm_run_n<N>.json`, so `--n 100` and `--n 2000` no longer
+share a file — and if the destination is occupied it aborts before spending a
+call, saying what would be lost. The escape hatches are `--out` and
+`--overwrite-record`. The same guard covers `peldano2/run2.py`. **The guard is
+not authorization**: the norm above still holds, and the flag is not typed
+without Sergi asking for it.
 
 **5. DO NOT adjust the prompt or the schema before having a recorded result.**
 First you measure, then you iterate.
@@ -114,7 +123,7 @@ Check with `${#OPENROUTER_API_KEY}` (the length), never with its value.
 
     python3 -m unittest discover
 
-250 tests on the standard library. They do not write to `results*/`: they call
+289 tests on the standard library. They do not write to `results*/`: they call
 the measurement functions, never the `main()`s. They pin the invariants (the DSL
 reproduces the lambdas over the 134,400 combinations) and the published figures
 (0.5875 · 0.6315 · 1.0000, the frontier and the corpus), watch that no component
@@ -218,8 +227,10 @@ Only if Step 0 gave ~100%, `PREDICTION.md` is filled in and Sergi approves it.
 
 Sequential: count on minutes. Costs cents with `deepseek/deepseek-v4-flash`.
 
-**Before launching it, re-read rule 4**: this command overwrites
-`results/llm_run.json`, which is the input of rungs 3 and 4.
+**Before launching it, re-read rule 4.** Since August 8, 2026 this command
+writes `results/llm_run_n2000.json` and no longer touches `results/llm_run.json`,
+which is the input of rungs 3 and 4; if the destination is already there it
+aborts without spending anything.
 
 ### Step 5 — Reading
 

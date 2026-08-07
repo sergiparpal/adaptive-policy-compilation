@@ -120,7 +120,7 @@ all have the same root and are not closed by writing code.
 
 ### Done
 
-- **Automated tests.** `python3 -m unittest discover` runs 250 tests in ~12 s,
+- **Automated tests.** `python3 -m unittest discover` runs 289 tests in ~14 s,
   with no API calls and no writes to `results*/`. They cover the two invariants
   that underpin rung 1 — the DSL reproduces the lambdas over the 134,400
   combinations, and first-match-wins reproduces `true_action` — and pin the
@@ -183,8 +183,12 @@ deferred.
   snapshots and the records earn their provenance at the same time.
 
 What is **not** here, on purpose: that reproducing a figure overwrites its own
-record. That is behaviour you have to know about, not a pending task — git is
-already the safeguard — and it is documented with its full table in the README.
+record. For the deterministic, free ones that is behaviour you have to know
+about, not a pending task — git is already the safeguard — and it is documented
+with its full table in the README. The exception was closed on August 8, 2026:
+the two commands that cost money now refuse to write over an existing record and
+their output name carries the `--n`, so the smoke test no longer lands on the
+full run's file (`harness/record_guard.py`).
 
 ---
 

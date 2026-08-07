@@ -38,9 +38,41 @@ from harness.hidden_policy import HIDDEN_POLICY_SIZE, true_action
 from harness.cache_baseline import run_cache_baseline
 from harness.provenance import environment
 from harness.proposers import KeepKProposer, RandomKProposer
+from harness.record_guard import FLAG, or_exit, refuse_overwrite
 from harness.shadow import run_shadow
 
 OUT = Path("results")
+
+# The seed the whole experiment is pinned to (hard rule 4). It appears in the
+# output name only when it is NOT this one, so that the usual case keeps a
+# clean name.
+PINNED_SEED = 17
+
+
+def llm_out_path(args) -> Path:
+    """Where `llm` writes, when `--out` does not say otherwise.
+
+    Until August 8, 2026 it was always `results/llm_run.json`, whatever `--n`:
+    the n=100 smoke test and the n=2000 run wrote the same file, so the cheap
+    command of the getting-started destroyed the record of rung 1.
+
+    The n now goes in the name. Two reasons for this and not for demanding
+    `--out`: it is what rung 2 already does (`llm_run2_n100.json`) and what the
+    smoke test record on disk already looked like
+    (`llm_run_n100_smoke.json`), so it invents no third convention; and it
+    keeps the recommended command a single line with no obligatory flags.
+
+    A CONSEQUENCE THAT IS DELIBERATE: `results/llm_run.json` is no longer the
+    destination of any invocation. It is the closed record of rung 1 and the
+    input of rungs 3 and 4; reproducing that figure now writes
+    `llm_run_n2000.json` and comparing the two is a separate, deliberate step.
+    Overwriting the original takes `--out results/llm_run.json` AND the flag —
+    and even then the guard describes first what would be lost.
+    """
+    if args.out:
+        return Path(args.out)
+    cola = "" if args.seed == PINNED_SEED else f"_seed{args.seed}"
+    return OUT / f"llm_run_n{args.n}{cola}.json"
 
 
 def corpus_stats(corpus) -> dict:
@@ -143,6 +175,14 @@ def cmd_models(args) -> None:
 
 
 def cmd_llm(args) -> None:
+    # THE FIRST THING, before generating the corpus and before building the
+    # proposer: this run costs money and aborting at the end, after 632 calls,
+    # would be worse than not guarding at all.
+    destino = or_exit(
+        refuse_overwrite, llm_out_path(args), overwrite=args.overwrite_record,
+        exits=("--out OTRO_FICHERO    escribir en otro sitio",
+               f"{FLAG}    sobrescribir este a proposito"))
+
     corpus = generate_corpus(args.n, seed=args.seed)
 
     if args.provider == "openrouter":
@@ -188,8 +228,8 @@ def cmd_llm(args) -> None:
     print("\n  AVISO: sin el Paso 0 (python3 -m harness.ceiling_check) en ~100%,")
     print("  estas cifras no son interpretables. Techo medido: 58.75%.")
 
-    OUT.mkdir(exist_ok=True)
-    (OUT / "llm_run.json").write_text(json.dumps({
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_text(json.dumps({
         "_env": environment(seed=args.seed, n=args.n, provider=args.provider),
         "model": model,
         "metrics": m,
@@ -199,7 +239,7 @@ def cmd_llm(args) -> None:
         # paying for the run again.
         "records": [vars(r) for r in res.records],
     }, indent=2, default=str))
-    print(f"\n-> {OUT/'llm_run.json'}  (reglas con su 'note' + registros crudos)")
+    print(f"\n-> {destino}  (reglas con su 'note' + registros crudos)")
 
 
 def main() -> int:
@@ -213,10 +253,16 @@ def main() -> int:
 
     l = sub.add_parser("llm")
     l.add_argument("--n", type=int, default=2000)
-    l.add_argument("--seed", type=int, default=17)
+    l.add_argument("--seed", type=int, default=PINNED_SEED)
     l.add_argument("--provider", choices=("openrouter", "anthropic"),
                    default="openrouter")
     l.add_argument("--model", default=None, help="slug exacto; ver subcomando 'models'")
+    l.add_argument("--out", default=None,
+                   help="fichero de salida; por defecto results/llm_run_n<N>.json")
+    # Not called --force on purpose: the name says what it does, so that it
+    # does not get typed out of habit.
+    l.add_argument(FLAG, dest="overwrite_record", action="store_true",
+                   help="sobrescribir el registro que ya haya en el destino")
     l.set_defaults(func=cmd_llm)
 
     mo = sub.add_parser("models", help="buscar el slug exacto en OpenRouter")
