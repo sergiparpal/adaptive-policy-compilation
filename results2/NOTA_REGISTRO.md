@@ -93,12 +93,37 @@ dígitos.
   no está incorporado a sus cifras publicadas. Está aplazado a propósito, para
   hacerse junto con el optimizador serio.
 
-### Una salvedad sobre el `git_dirty` de estos seis
+### El `git_dirty` de estos seis, y una trampa al re-correrlos en tanda
 
-Los seis bloques `_env` dicen `git_dirty: true`. Es correcto: el árbol tenía sin
-confirmar el trabajo de ese mismo día (documentación y pruebas). El
-`code_digest` sí identifica el código con exactitud —`7ef0ec6d89ec4d85`, el
-mismo en los seis— porque cubre `harness/`, `peldano2..4/` y
-`run_experiment.py`, y nada de lo que estaba sin confirmar vive ahí. Si se
-vuelven a correr una vez confirmado todo, lo único que cambiará será
-`recorded_at`, `git_commit` y ese `git_dirty`.
+Los seis dicen `git_dirty: false` y `git_commit: 97cabc1`, con el mismo
+`code_digest` `7ef0ec6d89ec4d85`. Es decir: ese commit identifica exactamente el
+código que produjo las seis cifras.
+
+Costó dos intentos, y el motivo merece quedar anotado porque le va a pasar a
+cualquiera que repita esto. **Correr los seis seguidos no da `git_dirty: false`
+más que en el primero**: cada script deja su JSON modificado, así que el árbol
+que ve el segundo ya está sucio, y el tercero más. En la primera pasada sólo
+`frontier.json` salió limpio y los otros cinco dijeron `true`.
+
+El flag no mentía, pero medía lo que no importa: lo que ensuciaba el árbol eran
+*registros*, no código. La forma correcta es correr cada script desde un árbol
+limpio, apartar su JSON y restaurar el árbol antes del siguiente:
+
+    for cada script:
+        comprobar que `git status --porcelain` está vacío
+        correr el script
+        copiar su JSON a un temporal
+        git checkout -- results results2
+    al final, poner los seis en su sitio de una vez
+
+Así cada bloque `_env` dice la verdad sobre el código que corrió, que es para lo
+que existe el campo.
+
+### Por qué el commit que citan no es el que los contiene
+
+Un registro no puede llevar dentro el hash del commit que lo transporta. Los
+seis se produjeron con el árbol limpio en `97cabc1` y se confirmaron en el
+commit siguiente, que sólo toca estos seis JSON y esta nota: ni una línea de
+`harness/`, `peldano2..4/` ni `run_experiment.py`. Por eso `code_digest` sigue
+siendo el mismo en los dos commits, y `git_commit: 97cabc1` sigue identificando
+el código con exactitud.
