@@ -1,8 +1,8 @@
 """
-Material compartido por varias pruebas, construido una sola vez.
+Material shared by several tests, built only once.
 
-El corpus canonico y el espacio exhaustivo salen en casi todos los modulos y
-cuestan lo suficiente (~0,6 s el espacio) como para no rehacerlos por clase.
+The canonical corpus and the exhaustive space show up in almost every module and
+cost enough (~0.6 s for the space) not to be rebuilt per class.
 """
 
 from __future__ import annotations
@@ -14,12 +14,12 @@ from harness.domain import Case, generate_corpus
 from harness.dsl import Condition
 from peldano2.engine2 import PriorityEngine, Rule2, Space
 
-# El corpus del experimento. Semilla 17 y n=2000 no son parametros: son parte
-# de la especificacion (regla dura 4 de CLAUDE.md).
+# The experiment's corpus. Seed 17 and n=2000 are not parameters: they are part
+# of the specification (hard rule 4 of CLAUDE.md).
 CORPUS_N = 2000
 CORPUS_SEED = 17
 
-# 2*4*4*5*4*21*2*5, el producto de los dominios.
+# 2*4*4*5*4*21*2*5, the product of the domains.
 SPACE_SIZE = 134_400
 
 
@@ -34,7 +34,7 @@ def space() -> Space:
 
 
 def hidden_rule2s() -> list[Rule2]:
-    """Las 29 reglas ocultas como Rule2, con born_at = orden de capa."""
+    """The 29 hidden rules as Rule2, with born_at = layer order."""
     return [
         Rule2(rule_id=rid,
               conditions=[Condition(attr=a, op=o, value=v) for a, o, v in conds],
@@ -45,7 +45,7 @@ def hidden_rule2s() -> list[Rule2]:
 
 
 def subsumption_only_engine() -> PriorityEngine:
-    """Motor del peldano 2 SIN ninguna arista declarada: solo el nivel 1."""
+    """Rung 2 engine WITHOUT any declared edge: level 1 only."""
     engine = PriorityEngine(space=space())
     for rule in hidden_rule2s():
         engine.add(rule, born_at=rule.born_at, keep_id=True)

@@ -1,14 +1,14 @@
 """
-El motor hibrido del peldano 2: extensiones, subsuncion y prioridad declarada.
+The rung 2 hybrid engine: extensions, subsumption and declared priority.
 
-Dos cosas distintas que probar aqui:
+Two different things to test here:
 
-  * que las MASCARAS DE BITS dicen lo mismo que `Condition.holds`. Toda la
-    subsuncion se calcula con enteros grandes en vez de barrer casos; si esa
-    equivalencia se rompe, el orden parcial que sale es de otro problema.
-  * que el VALIDADOR DE ARISTAS rechaza lo que dice rechazar. Es lo que hace
-    que una referencia sea verificable mecanicamente y un entero no, que es el
-    argumento entero del diseno del nivel 2.
+  * that the BITMASKS say the same as `Condition.holds`. All of subsumption is
+    computed with big integers instead of sweeping cases; if that equivalence
+    breaks, the partial order that comes out belongs to another problem.
+  * that the EDGE VALIDATOR rejects what it says it rejects. It is what makes a
+    reference mechanically verifiable and an integer not, which is the entire
+    argument for the level 2 design.
 """
 
 from __future__ import annotations
@@ -47,7 +47,7 @@ class TestSpace(unittest.TestCase):
         self.assertEqual(s.full.bit_count(), SPACE_SIZE)
 
     def test_las_mascaras_coinciden_con_Condition_holds(self):
-        """Una pasada por el espacio completo comparando las dos vias."""
+        """One pass over the complete space comparing the two routes."""
         conds = [
             Condition("severity", "eq", 1),
             Condition("customer_tier", "neq", "enterprise"),
@@ -132,8 +132,8 @@ class TestSubsuncion(unittest.TestCase):
         self.assertEqual(self.e.decide(make_case())[0], "ACTION")
 
     def test_la_transitividad_sale_gratis(self):
-        """A gana a B y B gana a C: solo A queda invicta, sin calcular
-        clausura. Tres reglas encajadas por subsuncion."""
+        """A beats B and B beats C: only A stays undefeated, with no closure
+        computed. Three rules nested by subsumption."""
         self.e.add(r2("C", [("product", "eq", "api")], "T1_GENERAL"), 0, True)
         self.e.add(r2("B", [("product", "eq", "api"),
                             ("severity", "lte", 2)], "T2_TECHNICAL"), 1, True)
@@ -146,7 +146,7 @@ class TestSubsuncion(unittest.TestCase):
 
 
 class TestValidadorDeAristas(unittest.TestCase):
-    """Los seis veredictos de `try_edge`."""
+    """The six verdicts of `try_edge`."""
 
     def setUp(self):
         self.e = PriorityEngine(space=space())
@@ -169,17 +169,18 @@ class TestValidadorDeAristas(unittest.TestCase):
         self.assertEqual(self.e.try_edge("R9999", "A"), EDGE_UNKNOWN)
 
     def test_extensiones_disjuntas_son_inertes(self):
-        """severity==3 y severity==1 no pueden competir jamas."""
+        """severity==3 and severity==1 can never compete."""
         self.assertEqual(self.e.try_edge("A", "LEJOS"), EDGE_DISJOINT)
 
     def test_contradecir_la_subsuncion_se_rechaza(self):
-        """La subsuncion NO es sobreescribible por declaracion: es la unica
-        parte del orden derivada de la semantica y no de la conjetura."""
+        """Subsumption is NOT overridable by declaration: it is the only part of
+        the order derived from the semantics and not from conjecture."""
         self.assertEqual(self.e.try_edge("A", "SUB"), EDGE_CONTRADICTS)
         self.assertNotIn("A", self.e.decl_below["SUB"])
 
     def test_redundante_con_la_subsuncion_se_acepta(self):
-        """Declarar lo que la estructura ya dice es consistente, no un error."""
+        """Declaring what the structure already says is consistent, not an
+        error."""
         self.assertEqual(self.e.try_edge("SUB", "A"), EDGE_OK)
 
     def test_cierre_de_ciclo(self):
@@ -187,11 +188,11 @@ class TestValidadorDeAristas(unittest.TestCase):
         self.assertEqual(self.e.try_edge("B", "A"), EDGE_CYCLE)
 
     def test_ciclo_de_tres_pasando_por_subsuncion(self):
-        """`_reaches` sigue aristas de los DOS niveles, no solo declaradas.
+        """`_reaches` follows edges from BOTH levels, not only declared ones.
 
-        C gana a A por subsuncion (C = A mas una condicion). Declarada B -> C,
-        queda el camino B -> C -> A; declarar entonces A -> B cerraria un ciclo
-        que solo se ve si la busqueda cruza el nivel 1.
+        C beats A by subsumption (C = A plus one condition). With B -> C
+        declared, the path B -> C -> A exists; declaring A -> B would then close
+        a cycle that is only visible if the search crosses level 1.
         """
         self.e.add(r2("C", [("severity", "eq", 3),
                             ("channel", "eq", "portal")], "T3_ENGINEERING"), 4, True)
@@ -200,8 +201,8 @@ class TestValidadorDeAristas(unittest.TestCase):
         self.assertEqual(self.e.try_edge("A", "B"), EDGE_CYCLE)
 
     def test_una_arista_declarada_decide_el_conflicto(self):
-        """Sin SUB de por medio, A y B son incomparables y discrepan: es el
-        residuo que el nivel 1 deja y el nivel 2 existe para resolver."""
+        """Without SUB in the way, A and B are incomparable and disagree: it is
+        the residue level 1 leaves and level 2 exists to resolve."""
         e = PriorityEngine(space=space())
         e.add(r2("A", [("severity", "eq", 3)], "T1_GENERAL"), 0, True)
         e.add(r2("B", [("product", "eq", "dashboard")], "T2_TECHNICAL"), 1, True)
@@ -212,15 +213,15 @@ class TestValidadorDeAristas(unittest.TestCase):
         self.assertEqual(winner.rule_id, "A")
 
     def test_la_regla_mas_especifica_zanja_el_conflicto_sin_declarar_nada(self):
-        """Con SUB cargada, el caso que casa A, B y SUB no es conflicto: SUB
-        las subsume a las dos y queda invicta ella sola."""
+        """With SUB loaded, the case matching A, B and SUB is not a conflict:
+        SUB subsumes both and is left undefeated on its own."""
         outcome, winner, _ = self.e.decide(make_case())
         self.assertEqual(outcome, "ACTION")
         self.assertEqual(winner.rule_id, "SUB")
 
 
 class TestValidacionDeCondiciones(unittest.TestCase):
-    """El peldano 2 revalida con las mismas reglas mecanicas que el 1."""
+    """Rung 2 revalidates with the same mechanical rules as rung 1."""
 
     def test_payload_valido(self):
         rule = validate_conditions(
@@ -256,8 +257,8 @@ class TestValidacionDeCondiciones(unittest.TestCase):
 
 
 class TestRender(unittest.TestCase):
-    """Lo que el proponente ve de una regla. `correct_count` sale del oraculo
-    y no puede aparecer nunca."""
+    """What the proposer sees of a rule. `correct_count` comes from the oracle
+    and can never appear."""
 
     def test_no_filtra_el_acierto(self):
         rule = r2("R0001", [("severity", "eq", 1)], "T2_TECHNICAL")

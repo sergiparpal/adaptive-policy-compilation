@@ -1,53 +1,54 @@
 """
-El doble del proponente: un cliente de SDK que devuelve respuestas grabadas.
+The proposer double: an SDK client that returns recorded responses.
 
-POR QUE EXISTE. De la ruta del LLM solo estaba probado el parseo, que es la
-parte pura. Todo lo demas —construir la peticion, leerla del objeto que devuelve
-el SDK, reintentar, validar, meter la regla en la base y calcular las metricas—
-solo se ejercitaba pagando una tirada. Es la deuda que `IDEAS.md` dejaba escrita
-asi: "un doble del proponente que devolviera respuestas grabadas cubriria el
-resto sin gastar".
+WHY IT EXISTS. Of the LLM path only the parsing was tested, which is the pure
+part. Everything else —building the request, reading it from the object the SDK
+returns, retrying, validating, inserting the rule into the base and computing
+the metrics— was only exercised by paying for a run. It is the debt `IDEAS.md`
+put in writing thus: "a proposer double returning recorded responses would cover
+the rest without spending".
 
-DONDE SE PINCHA. El doble NO sustituye al proponente: sustituye al CLIENTE del
-SDK, un escalon mas abajo. `OpenRouterProposer` y `OpenRouterProposer2` corren
-enteros, con su prompt, sus reintentos y su parseo; lo unico que no ocurre es la
-peticion HTTP. Sustituir el proponente entero habria dejado sin probar
-justamente el codigo que cuesta dinero ejercitar.
+WHERE IT TAPS IN. The double does NOT replace the proposer: it replaces the SDK
+CLIENT, one rung lower. `OpenRouterProposer` and `OpenRouterProposer2` run in
+full, with their prompt, their retries and their parsing; the only thing that
+does not happen is the HTTP request. Replacing the whole proposer would have
+left untested precisely the code that costs money to exercise.
 
-Como el SDK `openai` no esta instalado sin venv, `sdk_falso` inyecta un modulo
-en `sys.modules` antes de construir el proponente, y lo retira al salir.
+Since the `openai` SDK is not installed without the venv, `sdk_falso` injects a
+module into `sys.modules` before building the proposer, and removes it on exit.
 
-DE DONDE SALEN LAS RESPUESTAS. No hay archivo de guion: se derivan del registro
-publicado (`results/llm_run.json`, `results2/llm_run2_n100.json`), asi que por
-construccion son las de la tirada que produjo esas cifras. El texto crudo nunca
-se guardo, de modo que la reconstruccion es exacta en el CONTENIDO y normalizada
-en la forma. Turno a turno, del registro del peldano 1:
+WHERE THE RESPONSES COME FROM. There is no script file: they are derived from
+the published record (`results/llm_run.json`, `results2/llm_run2_n100.json`), so
+by construction they are those of the run that produced those figures. The raw
+text was never stored, so the reconstruction is exact in CONTENT and normalized
+in form. Turn by turn, from the rung 1 record:
 
-  577  regla aceptada       accion, condiciones y `note` verbatim del registro;
-                            el formato (sangria, ausencia de valla markdown) se
-                            normaliza porque no consta.
-   32  respuesta vacia      verbatim: el motivo registrado lleva el `repr` de lo
-                            que llego —"sin objeto JSON en la respuesta: ''"— y
-                            lo que llego era la cadena vacia.
-    2  JSON mal cerrado     el texto NO es recuperable. Se sintetiza uno que
-                            falla en la misma linea, columna y offset que el
-                            registro (ver `_json_roto`). Reconstruye el modo de
-                            fallo, no el texto.
-   19  payload sin `action` las condiciones no constan; un payload sin `action`
-                            reproduce el desenlace registrado, que es lo unico
-                            que el registro fija.
-    2  regla que no casa    accion verbatim del registro, mas una condicion
-                            deliberadamente falsa sobre el caso.
+  577  accepted rule        action, conditions and `note` verbatim from the
+                            record; the formatting (indentation, absence of a
+                            markdown fence) is normalized because it is not
+                            recorded.
+   32  empty response       verbatim: the recorded reason carries the `repr` of
+                            what arrived —"sin objeto JSON en la respuesta: ''"—
+                            and what arrived was the empty string.
+    2  badly closed JSON    the text is NOT recoverable. One is synthesized that
+                            fails at the same line, column and offset as the
+                            record (see `_json_roto`). It reconstructs the
+                            failure mode, not the text.
+   19  payload with no      the conditions are not recorded; a payload without
+        `action`            `action` reproduces the recorded outcome, which is
+                            all the record pins down.
+    2  non-matching rule    action verbatim from the record, plus a condition
+                            deliberately false about the case.
 
-Las cinco reconstrucciones salen de `records[].idx`, `records[].predicted`,
-`records[].rejected_reason` y `rules[]`. Ninguna lee `records[].truth`: el doble
-no ve el oraculo, igual que no lo veia el modelo.
+The five reconstructions come from `records[].idx`, `records[].predicted`,
+`records[].rejected_reason` and `rules[]`. None reads `records[].truth`: the
+double does not see the oracle, just as the model did not.
 
-CUANTAS LLAMADAS CONSUME UN TURNO. Una si el texto parsea; `INTENTOS` si no,
-porque el proponente reintenta. El guion lo expande de antemano y comprueba caso
-por caso a quien se le esta preguntando, asi que si la ruta se desincroniza
-—otra politica de reintento, otro orden de escalacion— la prueba falla senalando
-el turno exacto en vez de dar un numero distinto al final.
+HOW MANY CALLS A TURN CONSUMES. One if the text parses; `INTENTOS` if not,
+because the proposer retries. The script expands that in advance and checks case
+by case who is being asked about, so if the path goes out of sync —a different
+retry policy, a different escalation order— the test fails pointing at the exact
+turn instead of giving a different number at the end.
 """
 
 from __future__ import annotations
@@ -67,34 +68,35 @@ from harness.domain import generate_corpus
 
 REPO = Path(__file__).resolve().parent.parent
 
-# Nunca es una clave: el proponente lee la de verdad del entorno (regla dura 7)
-# y las pruebas comprueban precisamente que la lee de ahi.
+# Never a real key: the proposer reads the real one from the environment (hard
+# rule 7) and the tests check precisely that it reads it from there.
 CLAVE_FALSA = "sk-doble-de-pruebas-esto-no-es-una-clave"
 
-# max_retries=2 en los dos proponentes -> tres llamadas antes de rendirse.
+# max_retries=2 in both proposers -> three calls before giving up.
 INTENTOS = 3
 
 MARCA_TICKET = "TICKET EN IMPASSE:"
 
 
 class Desincronizado(BaseException):
-    """El guion no reconoce el caso por el que se le pregunta.
+    """The script does not recognize the case it is being asked about.
 
-    Hereda de BaseException, no de Exception, A PROPOSITO: los dos proponentes
-    envuelven cualquier `Exception` en un reintento y acaban convirtiendola en
-    `ProposalError`, que el bucle cuenta y se traga. Un fallo del guion se
-    veria entonces como "el modelo contesto mal" y el replay seguiria adelante
-    hasta dar una cifra distinta al final, sin decir donde. Asi sale entero.
+    It inherits from BaseException, not from Exception, ON PURPOSE: both
+    proposers wrap any `Exception` in a retry and end up turning it into
+    `ProposalError`, which the loop counts and swallows. A script failure would
+    then look like "the model answered badly" and the replay would carry on to a
+    different figure at the end, without saying where. This way it comes out
+    whole.
     """
 
 
-# Cada peldano tiene su propio parseador y su propio mensaje de error. El guion
-# necesita el prefijo exacto para recuperar de el la respuesta que llego.
+# Each rung has its own parser and its own error message. The script needs the
+# exact prefix to recover from it the response that arrived.
 SIN_JSON = {1: "sin objeto JSON en la respuesta:", 2: "sin objeto JSON:"}
 
 
 # ---------------------------------------------------------------------------
-# Los objetos que devuelven los SDK
+# The objects the SDKs return
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -114,8 +116,8 @@ class _Completion:
 
 @dataclass
 class _Bloque:
-    """Bloque de contenido de Anthropic. `type` puede no ser 'text': el
-    proponente debe quedarse solo con los que lo son."""
+    """An Anthropic content block. `type` may not be 'text': the proposer must
+    keep only those that are."""
     type: str
     text: str = ""
 
@@ -126,14 +128,14 @@ class _RespuestaAnthropic:
 
 
 # ---------------------------------------------------------------------------
-# Los clientes falsos
+# The fake clients
 # ---------------------------------------------------------------------------
 
 class ClienteOpenAIFalso:
-    """Compatible con lo que usa el proponente: `.chat.completions.create`."""
+    """Compatible with what the proposer uses: `.chat.completions.create`."""
 
     def __init__(self, guion: Callable[[dict], Any]):
-        self.construido_con: dict[str, Any] = {}    # base_url y api_key
+        self.construido_con: dict[str, Any] = {}    # base_url and api_key
         self.peticiones: list[dict] = []
         self._guion = guion
         self.chat = types.SimpleNamespace(
@@ -145,7 +147,7 @@ class ClienteOpenAIFalso:
 
 
 class ClienteAnthropicFalso:
-    """Compatible con lo que usa el proponente: `.messages.create`."""
+    """Compatible with what the proposer uses: `.messages.create`."""
 
     def __init__(self, guion: Callable[[dict], Any]):
         self.construido_con: dict[str, Any] = {}
@@ -162,7 +164,7 @@ class ClienteAnthropicFalso:
 
 
 def _fabrica(cliente):
-    """Lo que el proponente llama como `OpenAI(...)` o `Anthropic(...)`."""
+    """What the proposer calls as `OpenAI(...)` or `Anthropic(...)`."""
     def crear(**kwargs: Any):
         cliente.construido_con = kwargs
         return cliente
@@ -172,11 +174,11 @@ def _fabrica(cliente):
 @contextmanager
 def sdk_falso(openai: ClienteOpenAIFalso | None = None,
               anthropic: ClienteAnthropicFalso | None = None):
-    """Inyecta los SDK y una clave falsa mientras dure el bloque.
+    """Injects the SDKs and a fake key for the duration of the block.
 
-    Se inyecta el MODULO, no el proponente: `from openai import OpenAI` dentro
-    de `__init__` resuelve contra esto. Al salir se restaura lo que hubiera,
-    instalado o no, para que la suite corra igual con venv y sin el.
+    The MODULE is injected, not the proposer: `from openai import OpenAI` inside
+    `__init__` resolves against this. On exit whatever was there is restored,
+    installed or not, so that the suite runs the same with and without the venv.
     """
     previos = {n: sys.modules.get(n) for n in ("openai", "anthropic")}
     if openai is not None:
@@ -197,11 +199,11 @@ def sdk_falso(openai: ClienteOpenAIFalso | None = None,
 
 
 # ---------------------------------------------------------------------------
-# Guiones
+# Scripts
 # ---------------------------------------------------------------------------
 
 class RespuestasFijas:
-    """Devuelve textos en orden, y repite el ultimo si se lo piden de mas."""
+    """Returns texts in order, repeating the last if asked for more."""
 
     def __init__(self, *textos: Any):
         self.textos = list(textos)
@@ -214,10 +216,10 @@ class RespuestasFijas:
 
 
 def ticket_de(kwargs: dict) -> dict:
-    """El caso que viaja en la peticion.
+    """The case travelling in the request.
 
-    Se busca en TODOS los mensajes de usuario porque en el reintento el ultimo
-    es la instruccion de reparacion, no el ticket.
+    It is looked for in ALL user messages because on the retry the last one is
+    the repair instruction, not the ticket.
     """
     for m in kwargs["messages"]:
         if m["role"] == "user" and MARCA_TICKET in m["content"]:
@@ -227,20 +229,20 @@ def ticket_de(kwargs: dict) -> dict:
 
 @dataclass
 class Turno:
-    """Una escalacion del registro y lo que el modelo contesto."""
+    """One escalation from the record and what the model answered."""
     idx: int
     caso: dict
     texto: Any
-    llamadas: int = 1                       # 1, o INTENTOS si el texto no parsea
+    llamadas: int = 1                       # 1, or INTENTOS if the text fails to parse
 
 
 @dataclass
 class Guion:
-    """Reproduce los turnos y comprueba por quien se pregunta en cada uno."""
+    """Replays the turns and checks who is being asked about in each one."""
     turnos: list[Turno]
     extraer: Callable[[dict], dict] = ticket_de
-    _t: int = 0                             # turno en curso
-    _c: int = 0                             # llamadas consumidas del turno
+    _t: int = 0                             # current turn
+    _c: int = 0                             # calls consumed from the turn
     vistos: list[int] = field(default_factory=list)
 
     def __call__(self, kwargs: dict) -> Any:
@@ -272,23 +274,23 @@ class Guion:
 
 
 # ---------------------------------------------------------------------------
-# Reconstruccion del guion a partir de un registro publicado
+# Reconstruction of the script from a published record
 # ---------------------------------------------------------------------------
 
 POSICION = re.compile(r"line (\d+) column (\d+) \(char (\d+)\)")
 
 
 def _json_roto(lineno: int, colno: int, pos: int) -> str:
-    """Un texto que `json.loads` rechaza en EXACTAMENTE esa posicion.
+    """A text that `json.loads` rejects at EXACTLY that position.
 
-    El texto crudo de las respuestas mal cerradas no se guardo; lo que si consta
-    es donde fallaron. Se sintetiza un objeto cuyo ultimo valor va seguido de
-    otra cadena sin coma —el error "Expecting ',' delimiter"— cuadrando el
-    relleno para que linea, columna y offset coincidan con el registro.
+    The raw text of the badly closed responses was not stored; what is recorded
+    is where they failed. An object is synthesized whose last value is followed
+    by another string with no comma —the "Expecting ',' delimiter" error—
+    adjusting the padding so that line, column and offset match the record.
     """
     if lineno < 3 or colno < 11:
         raise NotImplementedError(f"posicion no reconstruible: {lineno}:{colno}")
-    inicio = pos - (colno - 1)              # indice donde empieza la linea mala
+    inicio = pos - (colno - 1)              # index where the bad line starts
     lineas = [f'"k{i}": "",' for i in range(1, lineno - 1)]
     sobra = inicio - (2 + sum(len(x) + 1 for x in lineas))
     if sobra < 0:
@@ -300,16 +302,16 @@ def _json_roto(lineno: int, colno: int, pos: int) -> str:
 
 
 def _texto_de_fallo(rec: dict, caso: dict, sin_json: str) -> str:
-    """Reconstruye la respuesta a partir del motivo registrado.
+    """Reconstructs the response from the recorded reason.
 
-    Cada rama es un modo de fallo distinto, de los enumerados arriba. Un motivo
-    desconocido revienta: mejor eso que un guion que reproduce otra cosa y una
-    prueba verde que no significa nada.
+    Each branch is a different failure mode, from those enumerated above. An
+    unknown reason blows up: better that than a script reproducing something
+    else and a green test that means nothing.
     """
     razon: str = rec["rejected_reason"]
 
     if razon.startswith(f"proposal_failed: {sin_json}"):
-        # El motivo lleva el repr de lo que llego (200 primeros caracteres).
+        # The reason carries the repr of what arrived (first 200 characters).
         return ast.literal_eval(razon.split(sin_json, 1)[1].strip())
 
     if razon.startswith("proposal_failed: JSON invalido"):
@@ -326,8 +328,8 @@ def _texto_de_fallo(rec: dict, caso: dict, sin_json: str) -> str:
         return json.dumps(cuerpo)
 
     if razon == "la regla no casa el caso que la origino":
-        # La accion consta; las condiciones no. Una sola condicion falsa sobre
-        # el caso basta para reproducir el rechazo.
+        # The action is recorded; the conditions are not. A single condition
+        # false about the case is enough to reproduce the rejection.
         otra = 1 if caso["severity"] != 1 else 2
         return json.dumps({
             "action": rec["predicted"],
@@ -339,7 +341,7 @@ def _texto_de_fallo(rec: dict, caso: dict, sin_json: str) -> str:
 
 
 def _llamadas(texto: Any, parse) -> int:
-    """Un turno consume una llamada si el texto parsea, e `INTENTOS` si no."""
+    """A turn consumes one call if the text parses, and `INTENTOS` if not."""
     try:
         parse(texto)
     except Exception:                                            # noqa: BLE001
@@ -353,13 +355,14 @@ def _cuerpo_p1(regla: dict) -> dict:
 
 
 def _cuerpo_p2(regla: dict) -> dict:
-    """Como el del peldano 1, mas las aristas de prioridad que se propusieron.
+    """Like rung 1's, plus the priority edges that were proposed.
 
-    Las aceptadas estan en `beats`/`loses_to` y las descartadas en
-    `dropped_edges`, con la forma `direccion:regla[:motivo]`. El orden RELATIVO
-    entre unas y otras no consta; se reconstruye aceptadas primero. Da igual
-    mientras no coincidan los dos tipos en una misma regla, que es el caso de
-    las ocho tiradas registradas: cero aristas aceptadas.
+    The accepted ones are in `beats`/`loses_to` and the discarded ones in
+    `dropped_edges`, with the shape `direction:rule[:reason]`. The RELATIVE
+    order between them is not recorded; it is reconstructed with the accepted
+    ones first. It does not matter as long as both kinds do not coincide on the
+    same rule, which is the case in the eight recorded runs: zero accepted
+    edges.
     """
     cuerpo = _cuerpo_p1(regla)
     beats, loses = list(regla["beats"]), list(regla["loses_to"])
@@ -385,7 +388,7 @@ def _turnos(reg: dict, corpus, parse, cuerpo, sin_json: str) -> list[Turno]:
 
 
 def registro(nombre: str) -> dict:
-    """Un registro publicado, leido del repo."""
+    """A published record, read from the repo."""
     return json.loads((REPO / nombre).read_text())
 
 

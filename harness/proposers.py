@@ -1,24 +1,24 @@
 """
-Proponentes.
+Proposers.
 
-Un proponente recibe un caso en impasse y devuelve (accion, payload_de_regla).
-El payload pasa despues por validacion mecanica: el proponente no tiene acceso
-a la base activa ni puede promocionar nada.
+A proposer receives a case in impasse and returns (action, rule_payload). The
+payload then goes through mechanical validation: the proposer has no access to
+the active base and cannot promote anything.
 
-Dos familias:
+Two families:
 
-  * MockProposer -- no llama a ningun LLM. Recibe la accion correcta y
-    generaliza con una heuristica fija. Sirve para (a) validar las tuberias sin
-    gastar una sola llamada y (b) trazar la FRONTERA reutilizacion / error
-    silencioso propia del DSL, que es la referencia contra la que se juzga
-    despues al LLM real.
+  * MockProposer -- calls no LLM. It receives the correct action and generalizes
+    with a fixed heuristic. It serves to (a) validate the plumbing without
+    spending a single call and (b) trace the reuse / silent-error FRONTIER
+    inherent to the DSL, which is the reference the real LLM is judged against
+    afterwards.
 
-    Nota metodologica: darle la accion correcta al mock es deliberado. Aisla el
-    eje de GENERALIZACION del eje de ACTUACION. Con el LLM real aparece una
-    segunda fuente de error (accion equivocada en el momento de proponer) que se
-    mide por separado.
+    Methodological note: giving the mock the correct action is deliberate. It
+    isolates the GENERALIZATION axis from the ACTING axis. With the real LLM a
+    second source of error appears (the wrong action at proposal time) which is
+    measured separately.
 
-  * AnthropicProposer -- llamada real. Listo para enchufar; no se ejecuta aqui.
+  * AnthropicProposer -- a real call. Ready to plug in; not run here.
 """
 
 from __future__ import annotations
@@ -32,14 +32,14 @@ from .domain import ACTIONS, ATTRIBUTES, DOMAINS, Case
 
 
 class ProposalError(Exception):
-    """El proponente no devolvio nada usable. NO es fatal: el bucle lo cuenta
-    como escalacion sin regla y sigue. Con modelos baratos esto pasa, y perder
-    una tirada de 2000 casos en el caso 1500 por un JSON mal cerrado seria
-    absurdo."""
+    """The proposer returned nothing usable. NOT fatal: the loop counts it as an
+    escalation without a rule and carries on. With cheap models this happens, and
+    losing a 2000-case run at case 1500 over a badly closed JSON would be
+    absurd."""
 
 
 def parse_payload(text: str) -> dict[str, Any]:
-    """Extraccion tolerante: quita vallas markdown, preambulos y epilogos."""
+    """Tolerant extraction: strips markdown fences, preambles and epilogues."""
     t = text.strip()
     if "```" in t:
         parts = t.split("```")
@@ -65,16 +65,16 @@ class Proposer(Protocol):
 
 
 # ---------------------------------------------------------------------------
-# Mocks: trazan la frontera del DSL
+# Mocks: they trace the DSL's frontier
 # ---------------------------------------------------------------------------
 
 class KeepKProposer:
     """
-    Conserva los primeros k atributos del orden de prioridad de domain.ATTRIBUTES
-    y los fija con `eq`. Generalizador deliberadamente ingenuo: nunca descubre
+    Keeps the first k attributes of the priority order in domain.ATTRIBUTES and
+    fixes them with `eq`. A deliberately naive generalizer: it never discovers
     `lte`/`gte`/`in`.
 
-    k = 8 equivale a memorizar el caso. k = 1 es maximamente general.
+    k = 8 amounts to memorizing the case. k = 1 is maximally general.
     """
 
     def __init__(self, k: int):
@@ -92,8 +92,9 @@ class KeepKProposer:
 
 
 class RandomKProposer:
-    """Igual que KeepK pero eligiendo k atributos al azar. Baseline inferior:
-    aisla cuanto del rendimiento viene de elegir BIEN los atributos."""
+    """Same as KeepK but choosing k attributes at random. A lower baseline: it
+    isolates how much of the performance comes from choosing the attributes
+    WELL."""
 
     def __init__(self, k: int, seed: int = 0):
         self.k = k
@@ -111,9 +112,12 @@ class RandomKProposer:
 
 
 # ---------------------------------------------------------------------------
-# Proponente real
+# Real proposer
 # ---------------------------------------------------------------------------
 
+# NOTE: the prompt is left in Spanish on purpose. It is the text that produced
+# the published records and `tests/doubles.py` replays those runs against it;
+# translating it would change the experiment, not the documentation.
 SYSTEM_PROMPT = f"""Eres el componente de excepcion de un sistema de triaje de tickets.
 
 El motor simbolico no ha encontrado ninguna regla aplicable a este ticket. Tu tarea:
@@ -154,10 +158,10 @@ def _user_msg(case: Case) -> str:
 
 
 class AnthropicProposer:
-    """Proponente via API de Anthropic. Requiere ANTHROPIC_API_KEY."""
+    """Proposer via the Anthropic API. Requires ANTHROPIC_API_KEY."""
 
     def __init__(self, model: str = "claude-haiku-4-5-20251001", max_retries: int = 2):
-        from anthropic import Anthropic  # import perezoso
+        from anthropic import Anthropic  # lazy import
 
         self.name = f"anthropic({model})"
         self.model = model
@@ -189,14 +193,15 @@ class AnthropicProposer:
 
 class OpenRouterProposer:
     """
-    Proponente via OpenRouter. Requiere OPENROUTER_API_KEY.
+    Proposer via OpenRouter. Requires OPENROUTER_API_KEY.
 
-    OpenRouter expone una API compatible con OpenAI, asi que basta con el SDK
-    `openai` apuntando a otra base_url. El slug del modelo es el unico cambio
-    entre proveedores: `deepseek/deepseek-v4-flash`, `openai/gpt-5.6-luna`, etc.
+    OpenRouter exposes an OpenAI-compatible API, so the `openai` SDK pointed at
+    a different base_url is enough. The model slug is the only change between
+    providers: `deepseek/deepseek-v4-flash`, `openai/gpt-5.6-luna`, etc.
 
-    Usar un modelo de otra familia es metodologicamente preferible: el arnes y
-    la politica oculta los escribio Claude, y conviene que el proponente no.
+    Using a model from another family is methodologically preferable: the
+    harness and the hidden policy were written by Claude, and it is better that
+    the proposer was not.
     """
 
     def __init__(
@@ -205,7 +210,7 @@ class OpenRouterProposer:
         max_retries: int = 2,
         force_json: bool = True,
     ):
-        from openai import OpenAI  # import perezoso
+        from openai import OpenAI  # lazy import
 
         self.name = f"openrouter({model})"
         self.model = model
@@ -231,8 +236,8 @@ class OpenRouterProposer:
                     "max_tokens": 1000,
                     "temperature": 0,
                 }
-                # Algunos modelos no soportan response_format; si falla, el
-                # reintento lo desactiva y confia en el parser tolerante.
+                # Some models do not support response_format; if it fails, the
+                # retry disables it and relies on the tolerant parser.
                 if self.force_json and attempt == 0:
                     kwargs["response_format"] = {"type": "json_object"}
 
@@ -243,7 +248,7 @@ class OpenRouterProposer:
             except Exception as exc:  # noqa: BLE001
                 last = exc
                 if attempt == 0 and len(messages) == 2:
-                    # Reintento con instruccion de reparacion explicita.
+                    # Retry with an explicit repair instruction.
                     messages = messages + [
                         {"role": "assistant", "content": "..."},
                         {"role": "user", "content":
@@ -254,8 +259,8 @@ class OpenRouterProposer:
 
 
 def list_openrouter_models(substring: str = "") -> list[tuple[str, str]]:
-    """Consulta el catalogo de OpenRouter para encontrar el slug exacto.
-    Evita adivinar nombres: los comerciales y los de API no coinciden."""
+    """Queries the OpenRouter catalogue to find the exact slug. Avoids guessing
+    names: the marketing ones and the API ones do not match."""
     import urllib.request
 
     with urllib.request.urlopen("https://openrouter.ai/api/v1/models", timeout=30) as r:

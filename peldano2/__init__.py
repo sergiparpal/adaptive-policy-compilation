@@ -1,1 +1,1 @@
-"""Peldano 2: arbitraje hibrido subsuncion + prioridad declarada."""
+"""Rung 2: hybrid arbitration, subsumption + declared priority."""

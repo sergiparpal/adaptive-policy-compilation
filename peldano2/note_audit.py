@@ -1,15 +1,15 @@
 """
-Auditoria de notas y de uso de atributos.
+Audit of notes and of attribute usage.
 
-Dos cosas que la comparativa numerica no captura:
+Two things the numeric comparison does not capture:
 
-  * QUE ATRIBUTOS usa cada base. Una base que solo mira dos atributos no puede
-    ejecutar una politica de ocho capas, por bien arbitrada que este.
-  * CUANTAS NOTAS ARGUMENTAN DISJUNCION explicitamente. El recuento por palabras
-    clave es tosco, asi que ademas se vuelcan las notas enteras: el recuento
-    orienta, la cita es la prueba.
+  * WHICH ATTRIBUTES each base uses. A base that only looks at two attributes
+    cannot execute an eight-layer policy, however well arbitrated it is.
+  * HOW MANY NOTES ARGUE FOR DISJOINTNESS explicitly. The keyword count is
+    crude, so the whole notes are dumped as well: the count orients, the
+    quotation is the evidence.
 
-Uso:  python3 -m peldano2.note_audit results2/llm_run2_*.json
+Usage:  python3 -m peldano2.note_audit results2/llm_run2_*.json
 """
 
 from __future__ import annotations
@@ -23,8 +23,9 @@ from pathlib import Path
 from harness.domain import ATTRIBUTES
 from harness.provenance import environment
 
-# Marcadores de razonamiento hacia la disjuncion. Deliberadamente literales:
-# no se cuenta "solape" a secas, solo formas que afirman NO compartir casos.
+# Markers of reasoning towards disjointness. Deliberately literal: a bare
+# "solape" is not counted, only forms asserting that cases are NOT shared.
+# The patterns stay in Spanish: the notes they match are in Spanish.
 MARKERS = [
     r"\bdisjunt", r"\bno se solapa", r"\bsin solapa", r"\bno solapa",
     r"\bsin coincidir", r"\bno coincide", r"\bcubre el hueco", r"\bel hueco\b",
@@ -92,10 +93,10 @@ def main(argv: list[str]) -> int:
             print(f"      \"{e['note']}\"")
 
     out = Path("results2/note_audit.json")
-    # 7 ago 2026: igual que en compare_runs.py, la lista pasa a "rows" dentro de
-    # un objeto para poder colgar `_env`, y el registro se re-corrio ese mismo
-    # dia con las 8 tiradas: misma forma nueva, mismas filas. Y la misma
-    # trampa: reescribe con lo que se le pase como argumento.
+    # Aug 7, 2026: as in compare_runs.py, the list moves to "rows" inside an
+    # object so that `_env` can be hung off it, and the record was re-run that
+    # same day with the 8 runs: same new shape, same rows. And the same trap:
+    # it rewrites with whatever is passed as an argument.
     out.write_text(json.dumps({"_env": environment(), "rows": rows},
                               indent=2, ensure_ascii=False))
     print(f"\n-> {out}")

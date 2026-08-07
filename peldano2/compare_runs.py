@@ -1,11 +1,11 @@
 """
-Comparador de tiradas del peldano 2.
+Run comparator for rung 2.
 
-Sirve para aislar el confound del prompt: si el estrechamiento de las reglas
-(mas condiciones, menos solape) se repite con corpus distintos y el mismo
-prompt, es efecto del prompt; si baila, era ruido de no-determinismo.
+It serves to isolate the prompt confound: if the narrowing of the rules (more
+conditions, less overlap) repeats across different corpora with the same prompt,
+it is an effect of the prompt; if it wobbles, it was non-determinism noise.
 
-Uso:  python3 -m peldano2.compare_runs results2/llm_run2_*.json
+Usage:  python3 -m peldano2.compare_runs results2/llm_run2_*.json
 """
 
 from __future__ import annotations
@@ -109,12 +109,12 @@ def main(argv: list[str]) -> int:
         print(f"    conflictos       : {cf}")
 
     out = Path("results2/comparativa.json")
-    # 7 ago 2026: la salida pasa de lista pelada a objeto para poder colgar el
-    # bloque `_env`. Las filas siguen siendo las mismas, bajo la clave "rows".
-    # El registro se re-corrio ese mismo dia con las 8 tiradas y adopto la
-    # forma nueva sin que cambiara una sola fila; ver results2/NOTA_REGISTRO.md.
-    # OJO: reescribe con lo que se le pase como ARGUMENTO. Invocarlo con un
-    # archivo suelto reduce el registro de 8 tiradas a 1.
+    # Aug 7, 2026: the output goes from a bare list to an object so that the
+    # `_env` block can be hung off it. The rows are the same, under the "rows"
+    # key. The record was re-run that same day with the 8 runs and adopted the
+    # new shape without a single row changing; see results2/NOTA_REGISTRO.md.
+    # CAREFUL: it rewrites with whatever is passed as an ARGUMENT. Invoking it
+    # with a single file shrinks the record from 8 runs to 1.
     out.write_text(json.dumps({"_env": environment(), "rows": rows}, indent=2))
     print(f"\n-> {out}")
     return 0

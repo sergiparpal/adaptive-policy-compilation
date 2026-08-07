@@ -1,1 +1,1 @@
-"""Peldano 4: prioridad aprendida de un canal de feedback acotado."""
+"""Rung 4: priority learned from a bounded feedback channel."""

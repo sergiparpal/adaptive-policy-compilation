@@ -1,15 +1,15 @@
 """
-Bucle en sombra + metricas.
+Shadow loop + metrics.
 
-PROPIEDAD CENTRAL: ninguna regla se activa jamas. Se registra lo que HABRIA
-pasado. Como los tickets son independientes (sin estado compartido), la decision
-registrada no influye en el resto del corpus: la sombra es exacta, no una
-aproximacion.
+CENTRAL PROPERTY: no rule is ever activated. What WOULD have happened is
+recorded. Since tickets are independent (no shared state), the recorded decision
+does not influence the rest of the corpus: the shadow is exact, not an
+approximation.
 
-SEPARACION DEL ORACULO: la politica oculta se consulta solo para etiquetar el
-registro. El motor y el proponente nunca la ven. El unico disparador de
-escalacion es el impasse de cobertura o de conflicto -- nunca "la respuesta era
-incorrecta". Esa es justamente la condicion que hace medible el error silencioso.
+ORACLE SEPARATION: the hidden policy is consulted only to label the record. The
+engine and the proposer never see it. The only escalation trigger is a coverage
+or conflict impasse -- never "the answer was incorrect". That is precisely the
+condition that makes the silent error measurable.
 """
 
 from __future__ import annotations
@@ -62,7 +62,7 @@ def run_shadow(
     failed = 0
 
     for idx, case in enumerate(corpus):
-        truth = true_action(case)          # solo para el registro
+        truth = true_action(case)          # for the record only
         trule = true_rule_id(case)
 
         outcome, winner, matched = engine.decide(case)
@@ -80,7 +80,7 @@ def run_shadow(
             if correct:
                 winner.correct_count += 1
         else:
-            # IMPASSE de cobertura, o CONFLICT logico
+            # Coverage IMPASSE, or logical CONFLICT
             if outcome == "CONFLICT" and not escalate_on_conflict:
                 pass
             else:
@@ -88,8 +88,8 @@ def run_shadow(
                 try:
                     action, payload = proposer.propose(case, true_action_hint=truth)
                 except ProposalError as exc:
-                    # El proponente no devolvio nada usable. Se cuenta y se sigue:
-                    # una tirada larga no puede morir por un JSON mal cerrado.
+                    # The proposer returned nothing usable. Count it and carry on:
+                    # a long run cannot die over a badly closed JSON.
                     failed += 1
                     reason = f"proposal_failed: {exc}"
                     action, payload = None, None
@@ -137,7 +137,7 @@ def run_shadow(
 
 
 # ---------------------------------------------------------------------------
-# Metricas
+# Metrics
 # ---------------------------------------------------------------------------
 
 def compute_metrics(res: RunResult) -> dict[str, Any]:
@@ -151,17 +151,17 @@ def compute_metrics(res: RunResult) -> dict[str, Any]:
     n_cov = len(covered)
     n_correct_cov = sum(1 for r in covered if r.correct)
 
-    # --- reutilizacion ----------------------------------------------------
+    # --- reuse ------------------------------------------------------------
     fires = [r.fire_count for r in res.rules]
     reused = [f for f in fires if f >= 1]
     n_rules = len(res.rules)
 
-    # cuota del decil superior de reglas sobre el total de disparos
+    # share of the top decile of rules over total firings
     total_fires = sum(fires) or 1
     top_decile_n = max(1, n_rules // 10)
     top_decile_share = sum(sorted(fires, reverse=True)[:top_decile_n]) / total_fires
 
-    # --- curva de escalacion por decil ------------------------------------
+    # --- escalation curve by decile ---------------------------------------
     bucket = max(1, n // 10)
     curve = []
     for b in range(0, n, bucket):
@@ -169,7 +169,7 @@ def compute_metrics(res: RunResult) -> dict[str, Any]:
         if chunk:
             curve.append(round(sum(1 for r in chunk if r.escalated) / len(chunk), 3))
 
-    # --- exactitud por regla ----------------------------------------------
+    # --- per-rule accuracy -------------------------------------------------
     per_rule_acc = [
         r.correct_count / r.fire_count for r in res.rules if r.fire_count >= 3
     ]
@@ -190,13 +190,13 @@ def compute_metrics(res: RunResult) -> dict[str, Any]:
         "coverage": round(n_cov / n, 4),
         "conflicts": len(conflicts),
 
-        # LA metrica de error silencioso: casos donde una regla disparo con
-        # total confianza y estaba equivocada. El sistema no puede detectarlos.
+        # THE silent-error metric: cases where a rule fired with complete
+        # confidence and was wrong. The system cannot detect them.
         "shadow_accuracy": round(n_correct_cov / n_cov, 4) if n_cov else None,
         "silent_error_rate": round(1 - n_correct_cov / n_cov, 4) if n_cov else None,
         "silent_errors_abs": n_cov - n_correct_cov,
 
-        # LA metrica que decide si la arquitectura tiene sentido
+        # THE metric that decides whether the architecture makes sense
         "reuse_rate": round(len(reused) / n_rules, 4) if n_rules else None,
         "median_fires_per_rule": statistics.median(fires) if fires else 0,
         "mean_fires_per_rule": round(statistics.mean(fires), 2) if fires else 0,
@@ -212,7 +212,7 @@ def compute_metrics(res: RunResult) -> dict[str, Any]:
             else None
         ),
 
-        # coste proxy: 1 llamada de LLM por escalacion
+        # proxy cost: 1 LLM call per escalation
         "llm_calls": len(escalations),
         "llm_calls_per_100_cases_final_decile": (
             round(curve[-1] * 100, 1) if curve else None

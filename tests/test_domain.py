@@ -1,10 +1,9 @@
 """
-El corpus y el espacio de casos.
+The corpus and the case space.
 
-El determinismo del corpus es lo que hace comparables las tiradas (regla dura 4
-de CLAUDE.md): mismo n, misma semilla, mismos 2000 casos en el mismo orden. Si
-esto se rompe, ninguna cifra del repositorio se puede volver a comparar con
-ninguna otra.
+The determinism of the corpus is what makes runs comparable (hard rule 4 of
+CLAUDE.md): same n, same seed, same 2000 cases in the same order. If this
+breaks, no figure in the repository can be compared with any other again.
 """
 
 from __future__ import annotations
@@ -18,13 +17,13 @@ from harness.hidden_policy import true_action
 
 from .fixtures import CORPUS_N, CORPUS_SEED, SPACE_SIZE, corpus
 
-# Estadisticas del corpus canonico. Publicadas en la cabecera de
-# results/FINDINGS.md y en el Paso 1 de CLAUDE.md.
+# Statistics of the canonical corpus. Published in the header of
+# results/FINDINGS.md and in Step 1 of CLAUDE.md.
 UNIQUE_CASES = 1743
 DUPLICATE_RATE = 0.1285
 
-# Distribucion de la clase verdadera. Las dos ultimas son las clases criticas y
-# raras que el agregado esconde: 20 y 7 casos de 2000.
+# Distribution of the true class. The last two are the critical, rare classes
+# the aggregate hides: 20 and 7 cases out of 2000.
 ACTION_DISTRIBUTION = {
     "T2_TECHNICAL": 726,
     "SELF_SERVICE_DEFLECT": 495,
@@ -79,9 +78,9 @@ class TestCorpusCanonico(unittest.TestCase):
         self.assertEqual(tuple(a), corpus())
 
     def test_un_prefijo_de_n_mayor_es_el_corpus_de_n_menor(self):
-        """El caso i no depende de cuantos se pidan: --n 100 es prefijo de
-        --n 2000. De ahi que la prueba corta y la larga vean los mismos casos
-        (lo que NO es determinista es el proponente; ver CLAUDE.md, Paso 3)."""
+        """Case i does not depend on how many are requested: --n 100 is a prefix
+        of --n 2000. Hence the smoke test and the full run see the same cases
+        (what is NOT deterministic is the proposer; see CLAUDE.md, Step 3)."""
         self.assertEqual(generate_corpus(100, seed=CORPUS_SEED),
                          list(corpus()[:100]))
 

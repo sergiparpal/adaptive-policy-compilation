@@ -1,10 +1,10 @@
 """
-Peldano 2, tirada con proponente real.
+Rung 2, run with the real proposer.
 
   python3 -m peldano2.run2 --n 100
   python3 -m peldano2.run2 --n 2000 --model deepseek/deepseek-v4-flash
 
-Escribe en results2/. Nunca toca results/.
+Writes to results2/. Never touches results/.
 """
 
 from __future__ import annotations

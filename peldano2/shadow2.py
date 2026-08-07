@@ -1,15 +1,15 @@
 """
-Bucle en sombra del peldano 2.
+Rung 2 shadow loop.
 
-Invariantes heredados del peldano 1, sin cambios:
-  * ninguna regla se activa; se registra lo que HABRIA pasado
-  * la politica oculta solo etiqueta el registro; el motor y el proponente
-    nunca la ven
-  * el unico disparador de escalacion es IMPASSE de cobertura o CONFLICT,
-    nunca "la respuesta era incorrecta"
-  * estrictamente secuencial
+Invariants inherited from rung 1, unchanged:
+  * no rule is activated; what WOULD have happened is recorded
+  * the hidden policy only labels the record; the engine and the proposer never
+    see it
+  * the only escalation trigger is a coverage IMPASSE or a CONFLICT, never "the
+    answer was incorrect"
+  * strictly sequential
 
-Lo nuevo que se registra: el destino de cada arista de prioridad propuesta.
+What is newly recorded: the fate of every proposed priority edge.
 """
 
 from __future__ import annotations
@@ -90,7 +90,7 @@ def run_shadow2(corpus: list[Case], engine: PriorityEngine, proposer,
             if hasattr(proposer, "build_base"):
                 shown, shown_kind, base_text = proposer.build_base(
                     engine, case, undefeated)
-            else:                                   # proponentes mock de prueba
+            else:                                   # mock proposers used in tests
                 shown, shown_kind = neighbourhood(engine, case, undefeated)
                 base_text = render_base_v1(shown, shown_kind, engine, case)
             shown_ids = [r.rule_id for r in shown]
@@ -111,7 +111,7 @@ def run_shadow2(corpus: list[Case], engine: PriorityEngine, proposer,
                     rule = validate_conditions(payload, case=case)
                     engine.add(rule, born_at=idx)
 
-                    # aristas: solo pueden citar reglas mostradas
+                    # edges: they may only cite rules that were shown
                     for direction in ("beats", "loses_to"):
                         raw = payload.get(direction) or []
                         if isinstance(raw, str):
@@ -207,7 +207,7 @@ def compute_metrics2(res: RunResult2, engine: PriorityEngine) -> dict[str, Any]:
             round(sum(1 for r in esc if r.proposal_action_correct) / len(esc), 4)
             if esc else None),
         "llm_calls": len(esc),
-        # --- prioridad declarada -------------------------------------------
+        # --- declared priority ----------------------------------------------
         "edges_proposed": sum(r.edges_proposed for r in recs),
         "edges_accepted": declared,
         "edge_reasons": res.edge_stats,

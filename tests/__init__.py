@@ -1,35 +1,34 @@
 """
-Pruebas del arnes.
+Harness tests.
 
-QUE CUBREN, Y POR QUE ESAS Y NO OTRAS
+WHAT THEY COVER, AND WHY THESE AND NOT OTHERS
 
-Este repositorio no es una biblioteca: es un experimento cuyo producto son
-CIFRAS. Lo que hay que proteger no es una API, son los numeros que los
-`FINDINGS` citan y que deben seguir reproduciendo. De ahi las dos familias:
+This repository is not a library: it is an experiment whose product is FIGURES.
+What has to be protected is not an API, it is the numbers the `FINDINGS` cite
+and that must keep reproducing. Hence the two families:
 
-  * INVARIANTES — propiedades que deben ser ciertas por construccion. La
-    principal: las 29 reglas escritas en el DSL son equivalentes a los
-    predicados de `hidden_policy` sobre las 134.400 combinaciones del espacio,
-    y evaluarlas con primera-que-casa reproduce la politica exactamente. Es la
-    afirmacion sobre la que descansa todo el peldano 1 ("fallo de ejecucion, no
-    de representacion").
+  * INVARIANTS — properties that must be true by construction. The main one:
+    the 29 rules written in the DSL are equivalent to the `hidden_policy`
+    predicates over the 134,400 combinations of the space, and evaluating them
+    with first-match-wins reproduces the policy exactly. It is the claim the
+    whole of rung 1 rests on ("execution failure, not representation failure").
 
-  * SNAPSHOTS — las cifras publicadas, clavadas al digito: techo por
-    especificidad 0,5875, subsuncion sola 0,6315, hibrido 1,0000, la frontera
-    de los mocks y las estadisticas del corpus. Si una de estas pruebas falla,
-    la respuesta correcta NO es actualizar el numero esperado: es averiguar que
-    cambio y, si el cambio es legitimo, fechar la errata en el `FINDINGS`
-    correspondiente, que es como este proyecto registra las correcciones.
+  * SNAPSHOTS — the published figures, pinned to the digit: specificity ceiling
+    0.5875, subsumption alone 0.6315, hybrid 1.0000, the mock frontier and the
+    corpus statistics. If one of these tests fails, the correct answer is NOT to
+    update the expected number: it is to find out what changed and, if the
+    change is legitimate, to date the erratum in the corresponding `FINDINGS`,
+    which is how this project records corrections.
 
-REGLA DE LA SUITE: ninguna prueba escribe en `results*/`. Los registros son el
-producto del experimento y solo los reescribe quien corre el experimento a
-proposito. Por eso las pruebas llaman a las funciones de medida y nunca a los
-`main()` de los scripts, que si vuelcan su JSON.
+SUITE RULE: no test writes to `results*/`. The records are the product of the
+experiment and only whoever runs the experiment on purpose rewrites them. That
+is why the tests call the measurement functions and never the scripts'
+`main()`, which do dump their JSON.
 
-Los peldanos 3 y 4 estan cubiertos por DETERMINISMO, no por snapshot: sus
-cifras publicadas son las del codigo anterior al arreglo del desempate del 6 de
-agosto de 2026 y estan pendientes de re-correr. Clavar aqui los valores nuevos
-crearia una segunda cifra oficial que no respalda ningun FINDINGS.
+Rungs 3 and 4 are covered by DETERMINISM, not by snapshot: their published
+figures are those of the code prior to the tie-break fix of August 6, 2026 and
+are pending a re-run. Pinning the new values here would create a second official
+figure that no FINDINGS backs.
 
-    python3 -m unittest discover -v       # todo, cero llamadas a la API
+    python3 -m unittest discover -v       # everything, zero API calls
 """

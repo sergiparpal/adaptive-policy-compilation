@@ -1,27 +1,27 @@
-# Actualizaciones automaticas de las acciones de CI.
+# Automatic updates for the CI actions.
 #
-# POR QUE HACE FALTA. Las acciones van clavadas al SHA completo (ver
-# .github/workflows/pruebas.yml), que es lo correcto —una etiqueta la puede
-# repuntar su dueño hacia otro codigo, un commit no— pero tiene un coste: un
-# SHA no envejece ruidosamente. Se queda quieto y en silencio mientras la accion
-# publica versiones nuevas, y el pin acaba siendo un fosil en vez de una
-# eleccion. Esto convierte ese silencio en un PR semanal. Dependabot reescribe
-# el SHA y su comentario `# vX.Y.Z` a la vez, que es justo lo que exige
-# `tests/test_automatizacion.py`.
+# WHY IT IS NEEDED. The actions are pinned to the full SHA (see
+# .github/workflows/pruebas.yml), which is the right thing —a tag can be
+# repointed by its owner at other code, a commit cannot— but it has a cost: a
+# SHA does not age noisily. It sits still and silent while the action publishes
+# new versions, and the pin ends up a fossil instead of a choice. This turns
+# that silence into a weekly PR. Dependabot rewrites the SHA and its
+# `# vX.Y.Z` comment together, which is exactly what
+# `tests/test_automatizacion.py` requires.
 #
-# POR QUE SOLO `github-actions`, Y NO `pip`. Aqui hay `requirements.txt` y
-# `requirements.lock.txt`, asi que a diferencia de los otros repositorios de
-# esta cuenta el ecosistema pip si tendria material que resolver. Se deja fuera
-# a proposito: `openai==2.53.0` y el cierre transitivo del lock no son una
-# dependencia desactualizada, son la PROCEDENCIA del entorno que produjo los
-# registros. Subir ese pin no es mantenimiento rutinario —cambia el entorno que
-# el lock promete reconstruir al digito— y es una decision que va acompañada de
-# re-correr la tirada o de anotar el cambio. Un PR semanal proponiendolo
-# entrenaria a fusionarlo sin mirar, que es exactamente el descuido que el lock
-# existe para impedir.
+# WHY ONLY `github-actions`, AND NOT `pip`. There is a `requirements.txt` and a
+# `requirements.lock.txt` here, so unlike the other repositories in this account
+# the pip ecosystem would have material to resolve. It is left out on purpose:
+# `openai==2.53.0` and the lock's transitive closure are not an outdated
+# dependency, they are the PROVENANCE of the environment that produced the
+# records. Bumping that pin is not routine maintenance —it changes the
+# environment the lock promises to rebuild to the digit— and it is a decision
+# that comes with re-running the run or noting the change. A weekly PR
+# proposing it would train the habit of merging without looking, which is
+# exactly the carelessness the lock exists to prevent.
 #
-# Las alertas de seguridad son otra cosa y no salen de este archivo: dependen de
-# la configuracion del repositorio, no de `updates:`.
+# Security alerts are a different thing and do not come from this file: they
+# depend on the repository configuration, not on `updates:`.
 
 version: 2
 updates:

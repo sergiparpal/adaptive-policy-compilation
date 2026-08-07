@@ -1,22 +1,22 @@
 """
-Las 29 reglas ocultas con sus relaciones de prioridad DECLARADAS.
+The 29 hidden rules with their DECLARED priority relations.
 
-Aqui si conocemos el orden de capas, asi que las aristas se derivan de el. Pero
-se declara el MINIMO, no un orden total: solo los pares que la subsuncion deja
-sin resolver y que ademas pueden colisionar de verdad.
+Here we do know the layer order, so the edges are derived from it. But the
+MINIMUM is declared, not a total order: only the pairs subsumption leaves
+unresolved and that can genuinely collide.
 
-Una arista i -> j (capa i gana a capa j) se declara sii las tres cosas:
+An edge i -> j (layer i beats layer j) is declared iff all three hold:
 
-  1. las extensiones SOLAPAN sobre el espacio exhaustivo (pueden competir),
-  2. son INCOMPARABLES por subsuncion (la subsuncion no lo resuelve ya),
-  3. las ACCIONES DIFIEREN (si coinciden, da igual quien gane).
+  1. the extensions OVERLAP over the exhaustive space (they can compete),
+  2. they are INCOMPARABLE by subsumption (subsumption does not resolve it),
+  3. the ACTIONS DIFFER (if they agree, it does not matter who wins).
 
-Declarar el orden total (406 pares) seria hacer trampa: mediria "¿funciona un
-orden total?", cuya respuesta ya se conoce (100%, peldano 1). Lo que se mide
-aqui es si subsuncion + el minimo de aristas declaradas basta. El numero de
-aristas resultante es, ademas, el coste de autoria de esta politica: cuantas
-relaciones tendria que declarar un autor perfecto por encima de lo que la
-estructura ya dice sola.
+Declaring the total order (406 pairs) would be cheating: it would measure "does
+a total order work?", whose answer is already known (100%, rung 1). What is
+measured here is whether subsumption + the minimum of declared edges suffices.
+The resulting number of edges is, in addition, the authorship cost of this
+policy: how many relations a perfect author would have to declare beyond what
+the structure already says on its own.
 """
 
 from __future__ import annotations
@@ -40,13 +40,13 @@ def build_hidden_engine(space: Space | None = None):
         )
         engine.add(rule, born_at=i, keep_id=True)
 
-    # --- derivar las aristas minimas del orden de capas ---------------------
+    # --- derive the minimal edges from the layer order ----------------------
     rules = engine.rules
     declared = []
     skipped_disjoint = skipped_subsumed = skipped_same_action = 0
     for i in range(len(rules)):
         for j in range(i + 1, len(rules)):
-            a, b = rules[i], rules[j]          # i < j  =>  a es de capa anterior
+            a, b = rules[i], rules[j]          # i < j  =>  a is from an earlier layer
             ea, eb = engine.ext[a.rule_id], engine.ext[b.rule_id]
             if ea & eb == 0:
                 skipped_disjoint += 1

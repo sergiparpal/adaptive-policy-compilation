@@ -1,20 +1,20 @@
-# Dependencias del proponente real. Los Pasos 0 y 1 y todos los peldanos 2, 3 y
-# 4 corren con la biblioteca estandar: esto solo hace falta para gastar dinero.
+# Dependencies of the real proposer. Steps 0 and 1 and all of rungs 2, 3 and 4
+# run on the standard library: this is only needed in order to spend money.
 #
-# ENTORNO CON EL QUE SE PRODUJO TODO LO REGISTRADO
-#   Python 3.12.3 (GCC 13.3.0) sobre Linux x86_64
+# ENVIRONMENT EVERYTHING RECORDED WAS PRODUCED WITH
+#   Python 3.12.3 (GCC 13.3.0) on Linux x86_64
 #   openai 2.53.0
 #
-# La version va CLAVADA, no acotada. Antes ponia `openai>=1.40.0`, que en la
-# practica significaba "la que hubiera ese dia": reconstruir el entorno de una
-# tirada registrada era imposible. El cierre transitivo completo, tal como
-# estaba instalado, esta en requirements.lock.txt.
+# The version is PINNED, not bounded. It used to say `openai>=1.40.0`, which in
+# practice meant "whichever was around that day": rebuilding the environment of
+# a recorded run was impossible. The full transitive closure, as it was
+# installed, is in requirements.lock.txt.
 #
-# OpenRouter es compatible con la API de OpenAI, asi que este mismo paquete
-# sirve para los dos proveedores.
+# OpenRouter is compatible with the OpenAI API, so this same package serves both
+# providers.
 openai==2.53.0
 
-# Solo si usas --provider anthropic. Sin fijar a proposito: no se ha usado en
-# ninguna tirada registrada, asi que no hay ninguna version que reproducir. Si
-# alguna vez se usa, clavarla aqui antes de correr nada.
+# Only if you use --provider anthropic. Unpinned on purpose: it has not been
+# used in any recorded run, so there is no version to reproduce. If it ever is
+# used, pin it here before running anything.
 # anthropic>=0.40.0

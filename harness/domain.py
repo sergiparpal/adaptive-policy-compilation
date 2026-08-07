@@ -1,10 +1,10 @@
 """
-Dominio: triaje de tickets de soporte.
+Domain: support ticket triage.
 
-Define el espacio de casos, el espacio de acciones y la distribucion de
-muestreo (deliberadamente de cola larga).
+Defines the case space, the action space and the sampling distribution
+(deliberately long-tailed).
 
-FROZEN. No tocar sin congelar una version nueva del experimento.
+FROZEN. Do not touch without freezing a new version of the experiment.
 """
 
 from __future__ import annotations
@@ -15,11 +15,11 @@ from typing import Any
 
 
 # ---------------------------------------------------------------------------
-# Espacio de atributos
+# Attribute space
 # ---------------------------------------------------------------------------
 
-# Orden fijo. Los proponentes mock recorren esta lista en este orden, que
-# representa la prioridad que un analista razonable daria a los atributos.
+# Fixed order. The mock proposers walk this list in this order, which
+# represents the priority a reasonable analyst would give to the attributes.
 ATTRIBUTES: list[str] = [
     "has_security_keyword",
     "severity",
@@ -33,7 +33,7 @@ ATTRIBUTES: list[str] = [
 
 DOMAINS: dict[str, Any] = {
     "customer_tier": ["free", "pro", "business", "enterprise"],
-    "severity": [1, 2, 3, 4],  # 1 = critica
+    "severity": [1, 2, 3, 4],  # 1 = critical
     "product": ["dashboard", "billing", "api", "mobile", "integrations"],
     "channel": ["portal", "email", "chat", "phone"],
     "off_hours": [False, True],
@@ -57,7 +57,7 @@ ACTIONS: list[str] = [
 
 
 # ---------------------------------------------------------------------------
-# Distribucion de muestreo (cola larga)
+# Sampling distribution (long tail)
 # ---------------------------------------------------------------------------
 
 _WEIGHTS: dict[str, list[float]] = {
@@ -70,7 +70,7 @@ _WEIGHTS: dict[str, list[float]] = {
     "language": [0.60, 0.20, 0.08, 0.07, 0.05],
 }
 
-# prior_tickets_30d: geometrica truncada. La mayoria en 0-1, cola hasta 20.
+# prior_tickets_30d: truncated geometric. Most in 0-1, tail out to 20.
 _PRIOR_WEIGHTS = [0.85 ** k for k in range(21)]
 
 
@@ -89,7 +89,7 @@ class Case:
         return asdict(self)
 
     def key(self) -> tuple:
-        """Identidad exacta del caso, para medir duplicados literales."""
+        """Exact identity of the case, for measuring literal duplicates."""
         return tuple(getattr(self, a) for a in ATTRIBUTES)
 
 
@@ -104,6 +104,6 @@ def sample_case(rng: random.Random) -> Case:
 
 
 def generate_corpus(n: int, seed: int) -> list[Case]:
-    """Corpus fijo y reproducible. Se genera una vez y no cambia."""
+    """Fixed, reproducible corpus. Generated once and never changed."""
     rng = random.Random(seed)
     return [sample_case(rng) for _ in range(n)]

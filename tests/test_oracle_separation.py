@@ -1,21 +1,21 @@
 """
-SEPARACION DEL ORACULO, comprobada sobre los imports.
+ORACLE SEPARATION, checked over the imports.
 
-`hidden_policy.py` se declara a si mismo asi: "este modulo es el ORACULO. Sirve
-para etiquetar el corpus y para medir offline. NUNCA debe ser consultado por el
-motor de reglas, por el proponente ni por ningun componente del bucle online".
+`hidden_policy.py` declares itself thus: "this module is the ORACLE. It exists
+to label the corpus and to measure offline. It must NEVER be consulted by the
+rule engine, by the proposer or by any component of the online loop".
 
-Es la afirmacion de la que depende que las cifras signifiquen algo, y hasta
-ahora vivia solo en un docstring. Estas pruebas la vuelven mecanica: leen el AST
-de cada modulo y miran quien importa que. Un import basta para suspender —no
-hace falta que se use—, porque un import sin usar es exactamente lo que hubo en
-`peldano4/sweep.py` hasta el 6 de agosto de 2026, contradiciendo por escrito lo
-que afirmaba `FINDINGS4.md`.
+It is the claim on which the figures meaning anything depends, and until now it
+lived only in a docstring. These tests make it mechanical: they read each
+module's AST and look at who imports what. An import is enough to fail —it does
+not need to be used— because an unused import is exactly what was in
+`peldano4/sweep.py` until August 6, 2026, contradicting in writing what
+`FINDINGS4.md` claimed.
 
-El mismo control cubre el otro extremo: en el peldano 4, `feedback.py` debe
-seguir siendo el UNICO modulo que toca el oraculo. Si deja de serlo, "aprender
-del feedback" pasa a ser supervision completa con otro nombre y el peldano no
-mide lo que dice medir.
+The same control covers the other end: in rung 4, `feedback.py` must remain the
+ONLY module that touches the oracle. If it stops being so, "learning from
+feedback" becomes full supervision under another name and the rung does not
+measure what it says it measures.
 """
 
 from __future__ import annotations
@@ -28,8 +28,8 @@ REPO = Path(__file__).resolve().parent.parent
 
 ORACULO = {"hidden_policy", "true_action", "true_rule_id"}
 
-# Componentes del bucle online: ven el caso, deciden y proponen. Ninguno puede
-# consultar la politica verdadera.
+# Components of the online loop: they see the case, decide and propose. None of
+# them may consult the true policy.
 BUCLE_ONLINE = [
     "harness/dsl.py",
     "harness/domain.py",
@@ -41,7 +41,7 @@ BUCLE_ONLINE = [
 
 
 def imports_de(path: Path) -> set[str]:
-    """Nombres importados por el modulo: tanto el modulo como los simbolos."""
+    """Names imported by the module: both the module and the symbols."""
     arbol = ast.parse(path.read_text(), filename=str(path))
     nombres: set[str] = set()
     for nodo in ast.walk(arbol):
@@ -66,19 +66,19 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
                                  f"{rel} importa del oraculo: {filtrados}")
 
     def test_los_ficheros_vigilados_existen(self):
-        """Si alguien renombra un modulo, la prueba de arriba dejaria de
-        vigilarlo en silencio."""
+        """If somebody renames a module, the test above would silently stop
+        watching it."""
         for rel in BUCLE_ONLINE:
             with self.subTest(rel):
                 self.assertTrue((REPO / rel).is_file(), f"falta {rel}")
 
     def test_quien_si_puede_verlo(self):
-        """Medir offline y etiquetar el registro si consultan el oraculo. La
-        prueba fija la lista para que crecer sea una decision, no un descuido."""
+        """Measuring offline and labelling the record do consult the oracle. The
+        test pins the list so that growing it is a decision, not an oversight."""
         permitidos = {
-            "harness/shadow.py",            # etiqueta el registro, no decide
-            "harness/cache_baseline.py",    # baseline: el LLM habria acertado
-            "harness/ceiling_check.py",     # medicion offline
+            "harness/shadow.py",            # labels the record, does not decide
+            "harness/cache_baseline.py",    # baseline: the LLM would be right
+            "harness/ceiling_check.py",     # offline measurement
             "harness/subsumption_check.py",
             "harness/learned_subsumption.py",
             "run_experiment.py",
@@ -102,8 +102,8 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
 
 
 class TestElCanalDelPeldano4(unittest.TestCase):
-    """El canal es el artefacto que contiene el riesgo: si el oraculo se cuela
-    en otro sitio, el peldano 4 mide supervision completa."""
+    """The channel is the artefact that contains the risk: if the oracle slips
+    in somewhere else, rung 4 measures full supervision."""
 
     def test_feedback_es_el_unico_del_peldano_4_que_toca_el_oraculo(self):
         tocan = {f.name for f in (REPO / "peldano4").glob("*.py")
@@ -111,8 +111,8 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         self.assertEqual(tocan, {"feedback.py"})
 
     def test_el_aprendiz_no_recibe_la_verdad(self):
-        """`greedy_from_reports` solo ve {caso -> accion reportada}: su firma
-        no admite las etiquetas verdaderas por ninguna via."""
+        """`greedy_from_reports` only sees {case -> reported action}: its
+        signature does not admit the true labels by any route."""
         import inspect
 
         from peldano4.sweep import greedy_from_reports
@@ -122,8 +122,8 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         self.assertNotIn("truth", params)
 
     def test_el_canal_emite_menos_que_la_verdad(self):
-        """Su salida es estrictamente mas pobre: un subconjunto de los casos, y
-        con ruido. Con cobertura 0 no emite nada."""
+        """Its output is strictly poorer: a subset of the cases, and with noise.
+        With coverage 0 it emits nothing."""
         from harness.domain import generate_corpus
         from peldano4.feedback import Channel
 
@@ -137,16 +137,16 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         self.assertLessEqual(len(lleno), len(ventana))
 
     def test_la_asimetria_condiciona_las_etiquetas_a_los_errores(self):
-        """Con asimetria 0 solo se observan decisiones INCORRECTAS. Es lo que
-        impide que el canal sea el oraculo, y lo que hace que el conjunto
-        etiquetado no sea i.i.d."""
+        """With asymmetry 0 only INCORRECT decisions are observed. It is what
+        keeps the channel from being the oracle, and what makes the labelled set
+        not i.i.d."""
         from harness.domain import generate_corpus
         from harness.hidden_policy import true_action
         from peldano4.feedback import Channel
 
         corpus = generate_corpus(200, seed=17)
         ventana = list(range(200))
-        decisiones = {i: true_action(corpus[i]) for i in ventana}   # pi0 perfecta
+        decisiones = {i: true_action(corpus[i]) for i in ventana}   # perfect pi0
         rep = Channel(coverage=1.0, asymmetry=0.0, seed=1).observe(
             corpus, ventana, decisiones)
         self.assertEqual(rep, {}, "una pi0 que no falla no genera etiqueta alguna")

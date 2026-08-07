@@ -1,10 +1,10 @@
 """
-PASO 0 del peldano 2: techo del motor hibrido con la politica perfecta cargada.
+STEP 0 of rung 2: ceiling of the hybrid engine with the perfect policy loaded.
 
-Ningun LLM. Cero llamadas a la API. Si esto no da ~100%, el rediseño no funciona
-y no tiene sentido correr nada mas.
+No LLM. Zero API calls. If this does not give ~100%, the redesign does not work
+and there is no point running anything else.
 
-Uso:  python3 -m peldano2.ceiling_check2
+Usage:  python3 -m peldano2.ceiling_check2
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ def main() -> int:
     for a, b, why in stats["rejected"][:10]:
         print(f"      {a} -> {b}: {why}")
 
-    # ---------------------------------------------------------------- medicion
+    # ------------------------------------------------------------- measurement
     out = collections.Counter()
     n_ok = 0
     wrong = []

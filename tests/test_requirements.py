@@ -1,14 +1,15 @@
 """
-Las dependencias siguen clavadas.
+The dependencies are still pinned.
 
-`requirements.txt` decia `openai>=1.40.0`, que en la practica significa "la que
-hubiera el dia de la instalacion". Con eso, reconstruir el entorno de una tirada
-registrada es imposible, y una tirada del proponente real no es reproducible ni
-en principio. Esta prueba impide que el `>=` vuelva por descuido.
+`requirements.txt` used to say `openai>=1.40.0`, which in practice means
+"whichever was around on installation day". With that, rebuilding the
+environment of a recorded run is impossible, and a run of the real proposer is
+not reproducible even in principle. This test prevents the `>=` from coming back
+by oversight.
 
-La comprobacion contra el interprete vivo se salta si `openai` no esta
-instalado: los Pasos 0 y 1 y los peldanos 2, 3 y 4 corren con la biblioteca
-estandar y no deben exigir el venv para pasar las pruebas.
+The check against the live interpreter is skipped if `openai` is not installed:
+Steps 0 and 1 and rungs 2, 3 and 4 run on the standard library and must not
+require the venv in order to pass the tests.
 """
 
 from __future__ import annotations
@@ -70,8 +71,8 @@ class TestRequirements(unittest.TestCase):
 
     @unittest.skipIf(OPENAI_INSTALADO is None, "openai no instalado (sin venv)")
     def test_la_version_instalada_es_la_clavada(self):
-        """Si esto falla, el entorno vivo ya no es el de los registros: o se
-        reinstala, o se actualiza el pin Y se anota el cambio."""
+        """If this fails, the live environment is no longer the records':
+        either reinstall, or update the pin AND note the change."""
         self.assertEqual(OPENAI_INSTALADO, pines(REQ)["openai"])
 
 

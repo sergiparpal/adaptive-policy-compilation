@@ -1,28 +1,28 @@
 """
-PASO A del peldano 4: repetir la busqueda de orden del peldano 3 sobre las
-mismas 577 reglas y las mismas particiones, sustituyendo el oraculo por el canal
-de feedback. Cero llamadas al LLM.
+STEP A of rung 4: repeat rung 3's order search over the same 577 rules and the
+same splits, replacing the oracle with the feedback channel. Zero LLM calls.
 
-PROTOCOLO
----------
-1. Una politica de referencia pi0 decide sobre los casos de train. Por defecto
-   es el ORDEN DE LLEGADA (born_at), que es lo que hace la base sin ninguna
-   prioridad aprendida y que en test saca 0,5216. Es tambien el baseline a batir.
-2. El canal observa esas decisiones y emite {caso -> accion reportada} segun sus
-   cuatro parametros.
-3. El voraz del peldano 3 busca un orden usando SOLO lo que emitio el canal.
-   Donde antes leia `true_action[i]`, ahora lee `reported[i]`.
-4. El orden se evalua sobre el test entero contra la verdad. Eso es medicion.
+PROTOCOL
+--------
+1. A reference policy pi0 decides over the train cases. By default it is the
+   ARRIVAL ORDER (born_at), which is what the base does with no learned priority
+   and which scores 0.5216 on test. It is also the baseline to beat.
+2. The channel observes those decisions and emits {case -> reported action}
+   according to its four parameters.
+3. Rung 3's greedy search looks for an order using ONLY what the channel
+   emitted. Where it used to read `true_action[i]`, it now reads `reported[i]`.
+4. The order is evaluated over the whole test set against the truth. That is
+   measurement.
 
-La pregunta: a partir de que combinacion de cobertura, retardo, ruido y asimetria
-el orden aprendido deja de superar a born_at (0,5216 en test).
+The question: from which combination of coverage, delay, noise and asymmetry
+does the learned order stop beating born_at (0.5216 on test).
 
-DEGENERACION CONTROLADA: si el canal no emite nada, el voraz no tiene con que
-puntuar y su cola ordena por born_at. Es decir, sin feedback el metodo colapsa
-exactamente al baseline. Que una celda del barrido quede POR DEBAJO de 0,5216
-significa entonces algo concreto: el feedback recibido fue peor que ninguno.
+CONTROLLED DEGENERATION: if the channel emits nothing, the greedy search has
+nothing to score with and its tail orders by born_at. That is, without feedback
+the method collapses exactly to the baseline. A sweep cell landing BELOW 0.5216
+then means something concrete: the feedback received was worse than none.
 
-Uso:  python3 -m peldano4.sweep
+Usage:  python3 -m peldano4.sweep
 """
 
 from __future__ import annotations
@@ -33,12 +33,12 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-# Nota 2026-08-06: este modulo NO importa `true_action`. Lo hacia, sin usarlo, y
-# eso contradecia literalmente la afirmacion de FINDINGS4 de que feedback.py era
-# el unico que lo importaba. Las verdades que maneja llegan por `build_tables` y
-# se usan solo para EVALUAR el orden resultante y para calcular la tasa de error
-# de pi0 que se reporta; nunca se le pasan al aprendiz, que es
-# `greedy_from_reports` y solo recibe `reported`.
+# Note 2026-08-06: this module does NOT import `true_action`. It used to,
+# without using it, and that literally contradicted FINDINGS4's claim that
+# feedback.py was the only one importing it. The truths it handles arrive via
+# `build_tables` and are used only to EVALUATE the resulting order and to
+# compute the reported error rate of pi0; they are never passed to the learner,
+# which is `greedy_from_reports` and only receives `reported`.
 from harness.provenance import environment
 from peldano3.order_search import (build_tables, ceiling, evaluate, load, split,
                                    subsumption_below)
@@ -56,9 +56,9 @@ REF = {"oraculo completo": 0.7707, "5% de etiquetas": 0.7049,
 
 def greedy_from_reports(rules, pool, reported, action, born):
     """
-    Voraz de lista de decision sobre los casos con accion reportada.
-    Identico al del peldano 3 salvo que la etiqueta viene del canal.
-    Cola: born_at, para que la ausencia de feedback degenere en el baseline.
+    Decision-list greedy over the cases with a reported action.
+    Identical to rung 3's except that the label comes from the channel.
+    Tail: born_at, so that the absence of feedback degenerates to the baseline.
     """
     ids = [r["rule_id"] for r in rules]
     idxs = sorted(reported)
@@ -82,7 +82,7 @@ def greedy_from_reports(rules, pool, reported, action, born):
     order = []
     while left and remaining:
         best, bs = None, None
-        for rid in sorted(left):     # ARREGLO 2026-08-06, ver order_search.py
+        for rid in sorted(left):     # FIX 2026-08-06, see order_search.py
             s = (win[rid] & remaining).bit_count() - (lose[rid] & remaining).bit_count()
             if bs is None or s > bs:
                 best, bs = rid, s
@@ -138,7 +138,7 @@ def main() -> int:
 
     rows = []
 
-    # ---------------------------------------------------------- barrido 1D
+    # ------------------------------------------------------------ 1D sweep
     print()
     print("=" * 78)
     print("BARRIDO POR PARAMETRO  (los demas en su valor mas favorable)")
@@ -164,7 +164,7 @@ def main() -> int:
             print(f"    {v:>8}{y:>11.0f}{m:>11.4f}{sd:>8.4f}"
                   f"{m - REF['born_at']:>+12.4f}{flag}")
 
-    # ------------------------------------------------------ rejilla realista
+    # -------------------------------------------------------- realistic grid
     print()
     print("=" * 78)
     print("REJILLA · asimetria 0 (solo se observan errores), que es el caso real")
@@ -183,7 +183,7 @@ def main() -> int:
                 print(f"  {cov:>10}{dly:>9}{noi:>7}{y:>8.0f}{m:>11.4f}"
                       f"{sd:>8.4f}{m - REF['born_at']:>+12.4f}{flag}")
 
-    # ------------------------------------------------------- eleccion de pi0
+    # ---------------------------------------------------------- choice of pi0
     print()
     print("=" * 78)
     print("SENSIBILIDAD A pi0  (c=0.5, a=0, d=0, e=0.1)")

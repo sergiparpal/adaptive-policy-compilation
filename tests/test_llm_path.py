@@ -1,30 +1,30 @@
 """
-La ruta del LLM, de extremo a extremo y sin gastar.
+The LLM path, end to end and without spending.
 
-Hasta aqui de esta ruta solo estaba probado el parseo. Lo que no lo estaba es
-todo lo que hay alrededor: como se arma la peticion, como se lee la respuesta
-del SDK, cuando se reintenta, que llega a la base y que sale en las metricas.
-Son las cuatro cosas que solo se ejercitaban pagando una tirada, y son
-exactamente donde una tirada de 2000 casos se pierde a mitad.
+Until now only the parsing of this path was tested. What was not is everything
+around it: how the request is built, how the SDK response is read, when it
+retries, what reaches the base and what comes out in the metrics. Those are the
+four things that were only exercised by paying for a run, and they are exactly
+where a 2000-case run is lost halfway.
 
-El doble esta descrito en `doubles.py`: sustituye al CLIENTE del SDK, no al
-proponente, asi que el proponente corre entero.
+The double is described in `doubles.py`: it replaces the SDK CLIENT, not the
+proposer, so the proposer runs in full.
 
-DOS NIVELES, Y HACEN COSAS DISTINTAS
+TWO LEVELS, AND THEY DO DIFFERENT THINGS
 
-  * las clases de PETICION fijan el contrato con la API: prompt, temperatura,
-    `response_format`, reintentos, y que la accion verdadera no viaje jamas.
-    Se apoyan en respuestas inventadas, porque lo que miden es la peticion.
+  * the REQUEST classes pin the contract with the API: prompt, temperature,
+    `response_format`, retries, and that the true action never travels. They
+    rely on invented responses, because what they measure is the request.
 
-  * las clases de REPLAY son snapshots: reproducen la tirada registrada entera
-    a partir de las respuestas del propio registro y exigen que salga identica
-    —reglas, metricas y los registros crudos caso a caso—. Si alguien toca el
-    validador, el arbitraje o el calculo de metricas, esto lo caza sin haber
-    llamado a nadie.
+  * the REPLAY classes are snapshots: they reproduce the whole recorded run from
+    the record's own responses and require it to come out identical —rules,
+    metrics and the raw records case by case. If somebody touches the validator,
+    the arbitration or the metric computation, this catches it without having
+    called anyone.
 
-Vale para las dos rutas: la del peldano 1 (`results/llm_run.json`, 2000 casos,
-632 escalaciones) y la del peldano 2 (`results2/llm_run2_n100.json`, 100 casos,
-42 escalaciones, con sus aristas de prioridad).
+It holds for both paths: rung 1's (`results/llm_run.json`, 2000 cases, 632
+escalations) and rung 2's (`results2/llm_run2_n100.json`, 100 cases, 42
+escalations, with their priority edges).
 """
 
 from __future__ import annotations
@@ -74,7 +74,7 @@ def un_caso(idx: int = 0):
 
 
 def proponente1(guion, **kwargs):
-    """`OpenRouterProposer` construido contra el cliente falso."""
+    """`OpenRouterProposer` built against the fake client."""
     cliente = ClienteOpenAIFalso(guion)
     with sdk_falso(openai=cliente):
         from harness.proposers import OpenRouterProposer
@@ -91,18 +91,20 @@ def proponente2(guion, **kwargs):
 
 
 # ---------------------------------------------------------------------------
-# El doble
+# The double
 # ---------------------------------------------------------------------------
 
 class TestElDoble(unittest.TestCase):
-    """Infraestructura de prueba: si el doble miente, todo lo de abajo miente."""
+    """Test infrastructure: if the double lies, everything below it lies."""
 
     def test_el_guion_detecta_que_se_pregunta_por_otro_caso(self):
-        """Es la comprobacion que convierte el replay en snapshot: si la ruta
-        escala en otro sitio, falla ahi y no en un total distinto al final.
+        """This is the check that turns the replay into a snapshot: if the path
+        escalates somewhere else, it fails there and not on a different total at
+        the end.
 
-        Y sale ENTERA a traves del proponente, que envuelve toda `Exception` en
-        un `ProposalError`: por eso `Desincronizado` no es una de ellas."""
+        And it comes out WHOLE through the proposer, which wraps every
+        `Exception` in a `ProposalError`: that is why `Desincronizado` is not
+        one of them."""
         guion = Guion([Turno(0, un_caso(0).as_dict(), REGLA)])
         prop, _ = proponente1(guion)
         with self.assertRaises(Desincronizado) as ctx:
@@ -118,7 +120,8 @@ class TestElDoble(unittest.TestCase):
             prop.propose(un_caso(0), true_action_hint=None)
 
     def test_el_sdk_inyectado_se_retira_al_salir(self):
-        """La suite corre con venv y sin el; el doble no puede dejar rastro."""
+        """The suite runs with and without the venv; the double must leave no
+        trace."""
         import sys
 
         previo = sys.modules.get("openai")
@@ -128,7 +131,7 @@ class TestElDoble(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# La peticion — peldano 1
+# The request — rung 1
 # ---------------------------------------------------------------------------
 
 class TestPeticionPeldano1(unittest.TestCase):
@@ -137,8 +140,8 @@ class TestPeticionPeldano1(unittest.TestCase):
         self.caso = un_caso(0)
 
     def test_la_clave_sale_del_entorno_y_apunta_a_openrouter(self):
-        """Regla dura 7: la clave vive en el entorno. Aqui se comprueba que el
-        proponente la lee de ahi y no de ningun otro sitio."""
+        """Hard rule 7: the key lives in the environment. Here it is checked that
+        the proposer reads it from there and from nowhere else."""
         _, cli = proponente1(RespuestasFijas(REGLA))
         self.assertEqual(cli.construido_con["api_key"], CLAVE_FALSA)
         self.assertEqual(cli.construido_con["base_url"],
@@ -178,9 +181,9 @@ class TestPeticionPeldano1(unittest.TestCase):
         self.assertEqual(prop.name, "openrouter(openai/gpt-5.6-luna)")
 
     def test_la_accion_verdadera_no_viaja_en_la_peticion(self):
-        """El invariante que separa al LLM de los mocks: el mock recibe la
-        accion correcta gratis y el LLM no. `run_shadow` le pasa la verdad como
-        `true_action_hint` y el proponente tiene que tirarla."""
+        """The invariant that separates the LLM from the mocks: the mock gets
+        the correct action for free and the LLM does not. `run_shadow` passes it
+        the truth as `true_action_hint` and the proposer has to drop it."""
         prop, cli = proponente1(RespuestasFijas(REGLA))
         verdad = true_action(self.caso)
         prop.propose(self.caso, true_action_hint=verdad)
@@ -194,15 +197,15 @@ class TestPeticionPeldano1(unittest.TestCase):
         self.assertEqual(payload["action"], "T2_TECHNICAL")
 
     def test_atraviesa_la_valla_markdown(self):
-        """El parseo tolerante ya esta probado suelto; esto comprueba que
-        efectivamente se aplica a lo que devuelve el SDK."""
+        """The tolerant parsing is already tested on its own; this checks that
+        it is actually applied to what the SDK returns."""
         prop, _ = proponente1(RespuestasFijas(f"Aqui tienes:\n```json\n{REGLA}\n```"))
         accion, _ = prop.propose(self.caso, true_action_hint=None)
         self.assertEqual(accion, "T2_TECHNICAL")
 
     def test_una_respuesta_vacia_no_revienta_la_tirada(self):
-        """`content: None` es lo que devuelve el SDK cuando el modelo no emite
-        nada. Tiene que acabar en ProposalError, que el bucle cuenta y sigue."""
+        """`content: None` is what the SDK returns when the model emits nothing.
+        It has to end in ProposalError, which the loop counts and carries on."""
         from harness.proposers import ProposalError
 
         prop, _ = proponente1(RespuestasFijas(None))
@@ -210,8 +213,8 @@ class TestPeticionPeldano1(unittest.TestCase):
             prop.propose(self.caso, true_action_hint=None)
 
     def test_json_object_solo_en_el_primer_intento(self):
-        """Algunos modelos no soportan `response_format`; el reintento lo quita
-        y confia en el parser tolerante."""
+        """Some models do not support `response_format`; the retry removes it
+        and relies on the tolerant parser."""
         from harness.proposers import ProposalError
 
         prop, cli = proponente1(RespuestasFijas("no es json"))
@@ -242,7 +245,7 @@ class TestPeticionPeldano1(unittest.TestCase):
         self.assertIn("sin objeto JSON", str(ctx.exception))
 
     def test_la_instruccion_de_reparacion_no_se_duplica(self):
-        """Tres intentos, un solo par de mensajes de reparacion."""
+        """Three attempts, a single pair of repair messages."""
         from harness.proposers import ProposalError
 
         prop, cli = proponente1(RespuestasFijas("no es json"))
@@ -252,12 +255,12 @@ class TestPeticionPeldano1(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# La peticion — Anthropic
+# The request — Anthropic
 # ---------------------------------------------------------------------------
 
 class TestPeticionAnthropic(unittest.TestCase):
-    """El proveedor alternativo. `run_experiment.py llm --provider anthropic`
-    lo ofrece, y hasta ahora no lo habia ejercitado nadie."""
+    """The alternative provider. `run_experiment.py llm --provider anthropic`
+    offers it, and until now nobody had exercised it."""
 
     def setUp(self):
         self.caso = un_caso(0)
@@ -274,7 +277,7 @@ class TestPeticionAnthropic(unittest.TestCase):
         self.assertEqual(cli.construido_con["api_key"], CLAVE_FALSA)
 
     def test_el_prompt_del_sistema_va_con_cache_control(self):
-        """Es lo que abarata la tirada: 2000 casos con el mismo prompt."""
+        """It is what makes the run cheap: 2000 cases with the same prompt."""
         prop, cli = self._proponente(RespuestasFijas(REGLA))
         prop.propose(self.caso, true_action_hint=None)
         sistema = cli.peticiones[0]["system"]
@@ -299,7 +302,7 @@ class TestPeticionAnthropic(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# La peticion — peldano 2
+# The request — rung 2
 # ---------------------------------------------------------------------------
 
 class TestPeticionPeldano2(unittest.TestCase):
@@ -347,13 +350,14 @@ class TestPeticionPeldano2(unittest.TestCase):
         self.assertNotIn("response_format", cli.peticiones[1])
 
     def test_las_aristas_declaradas_llegan_al_bucle_con_su_veredicto(self):
-        """`beats`/`loses_to` es lo unico que el peldano 2 anade al esquema. Si
-        el payload las trae, el bucle las tiene que ver y el motor juzgarlas.
+        """`beats`/`loses_to` is the only thing rung 2 adds to the schema. If
+        the payload carries them, the loop has to see them and the engine has to
+        judge them.
 
-        Los dos primeros casos del corpus llegan por `chat` y por `email`, asi
-        que una regla por canal cubre uno cada una y son disjuntas: la arista
-        que declara la segunda contra la primera se rechaza con `no_solapan`,
-        que es el veredicto que se repite en las ocho tiradas registradas.
+        The first two cases of the corpus arrive via `chat` and via `email`, so
+        one rule per channel covers one each and they are disjoint: the edge the
+        second declares against the first is rejected with `no_solapan`, which is
+        the verdict repeated across the eight recorded runs.
         """
         def por_canal(canal, **extra):
             return json.dumps({
@@ -379,15 +383,15 @@ class TestPeticionPeldano2(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# Replay: la tirada registrada, entera, sin llamar a nadie
+# Replay: the recorded run, whole, without calling anyone
 # ---------------------------------------------------------------------------
 
 class TestReplayPeldano1(unittest.TestCase):
-    """Snapshot de `results/llm_run.json`: 2000 casos, 632 escalaciones.
+    """Snapshot of `results/llm_run.json`: 2000 cases, 632 escalations.
 
-    Las respuestas salen del propio registro (ver `doubles.py`), asi que esto
-    comprueba la cadena entera —peticion, parseo, validacion, arbitraje,
-    metricas— contra la tirada que produjo las cifras publicadas.
+    The responses come from the record itself (see `doubles.py`), so this checks
+    the whole chain —request, parsing, validation, arbitration, metrics—
+    against the run that produced the published figures.
     """
 
     @classmethod
@@ -417,25 +421,25 @@ class TestReplayPeldano1(unittest.TestCase):
         self.assertEqual(len(registrado), 632)
 
     def test_632_escalaciones_costaron_700_llamadas(self):
-        """El coste no es una llamada por escalacion: los 34 fallos de parseo se
-        reintentan hasta tres veces. La diferencia se paga y no aparece en
-        ninguna metrica del registro."""
+        """The cost is not one call per escalation: the 34 parse failures are
+        retried up to three times. The difference is paid for and appears in no
+        metric of the record."""
         self.assertTrue(self.guion.agotado)
         self.assertEqual(len(self.cliente.peticiones), 700)
         self.assertEqual(self.res.metrics["llm_calls"], 632)
         self.assertEqual(self.res.metrics["failed_proposals"], 34)
 
     def test_los_dos_ejes_de_error_siguen_separados(self):
-        """Las dos cifras que CLAUDE.md manda no mezclar."""
+        """The two figures CLAUDE.md orders not to mix."""
         self.assertEqual(self.res.metrics["proposal_action_accuracy"], 0.3877)
         self.assertEqual(self.res.metrics["silent_error_rate"], 0.4839)
 
 
 class TestReplayPeldano2(unittest.TestCase):
-    """Snapshot de `results2/llm_run2_n100.json`: 100 casos, 42 escalaciones.
+    """Snapshot of `results2/llm_run2_n100.json`: 100 cases, 42 escalations.
 
-    Anade lo que el peldano 1 no tiene: el vecindario en la peticion y las
-    aristas de prioridad de vuelta, con su veredicto.
+    It adds what rung 1 does not have: the neighbourhood in the request and the
+    priority edges coming back, with their verdict.
     """
 
     @classmethod
@@ -476,16 +480,16 @@ class TestReplayPeldano2(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# El comando entero
+# The whole command
 # ---------------------------------------------------------------------------
 
 class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
-    """`run_experiment.py llm` de principio a fin, incluido el volcado.
+    """`run_experiment.py llm` from start to finish, including the dump.
 
-    Es el comando que cuesta dinero, y es el unico trozo de la ruta que ninguna
-    otra prueba toca: el arranque, el proveedor, el progreso y el JSON que
-    queda. Con `OUT` desviado a un temporal: la suite no escribe en `results*/`
-    y esta prueba comprueba tambien eso.
+    It is the command that costs money, and it is the only piece of the path no
+    other test touches: the startup, the provider, the progress and the JSON
+    left behind. With `OUT` redirected to a temporary directory: the suite does
+    not write to `results*/` and this test checks that too.
     """
 
     N = 50
@@ -522,8 +526,8 @@ class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
             (REPO / "results" / "llm_run.json").read_bytes()).hexdigest()
 
     def test_no_ha_tocado_el_registro_publicado(self):
-        """`results/llm_run.json` es la entrada de los peldanos 3 y 4
-        (regla dura 4). Una prueba que lo pisara seria peor que no tenerla."""
+        """`results/llm_run.json` is the input of rungs 3 and 4 (hard rule 4).
+        A test that trampled it would be worse than not having it."""
         self.assertEqual(self._huella(), self.antes)
 
     def test_el_json_lleva_procedencia_y_el_modelo(self):
@@ -542,12 +546,12 @@ class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
         self.assertTrue(all(r["note"] for r in self.escrito["rules"]))
 
     def test_el_prefijo_reproduce_el_prefijo_de_la_tirada_registrada(self):
-        """El corpus de n=50 es el prefijo del de n=2000, asi que las reglas y
-        las decisiones de esos 50 casos tienen que salir clavadas.
+        """The n=50 corpus is the prefix of the n=2000 one, so the rules and the
+        decisions for those 50 cases have to come out identical.
 
-        Los contadores de disparos no: en la tirada larga estas mismas reglas
-        siguen disparando durante los 1950 casos que aqui no existen. Es la
-        diferencia entre la regla y su historial.
+        The firing counters do not: in the long run these same rules keep firing
+        during the 1950 cases that do not exist here. It is the difference
+        between the rule and its history.
         """
         def sin_contadores(reglas):
             return [{k: v for k, v in r.items()
@@ -560,7 +564,7 @@ class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
                          self.reg["records"][: self.N])
 
     def test_avisa_de_que_sin_el_paso_0_las_cifras_no_valen(self):
-        """El aviso del techo va en la salida de la tirada, no en el README."""
+        """The ceiling warning goes in the run's output, not in the README."""
         self.assertIn("harness.ceiling_check", self.salida)
         self.assertIn("58.75%", self.salida)
 

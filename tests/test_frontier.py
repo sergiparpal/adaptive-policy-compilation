@@ -1,20 +1,19 @@
 """
-SNAPSHOT de la frontera de mocks: la verificacion en seco del Paso 1.
+SNAPSHOT of the mock frontier: the dry-run verification of Step 1.
 
-CLAUDE.md publica estas cifras como comprobacion de integridad: "resultado
-esperado, exacto (semilla 17, n=2000); si no coincide, algo se corrompio al
-copiar". Aqui dejan de depender de que alguien las lea en una terminal.
+CLAUDE.md publishes these figures as an integrity check: "expected result, exact
+(seed 17, n=2000); if it does not match, something got corrupted in copying".
+Here they stop depending on somebody reading them in a terminal.
 
-ADVERTENCIA QUE ACOMPANA A ESTAS CIFRAS, y que no hay que perder: son
-reproducibles pero NO son una referencia de calidad. Todas las reglas de keep_k
-tienen exactamente k condiciones, asi que su especificidad es uniforme y el
-arbitraje nunca puede invertirlas: los mocks son estructuralmente inmunes al
-defecto que destroza la politica real. keep_k(k=4) puntua MEJOR que la politica
-verdadera bajo este motor. La "region a batir" esta por encima del techo del
-sistema.
+THE WARNING THAT ACCOMPANIES THESE FIGURES, and must not be lost: they are
+reproducible but they are NOT a quality reference. All keep_k rules have exactly
+k conditions, so their specificity is uniform and arbitration can never invert
+them: the mocks are structurally immune to the defect that destroys the real
+policy. keep_k(k=4) scores BETTER than the true policy under this engine. The
+"region to beat" is above the ceiling of the system.
 
-Fuente: results/frontier.json, results/FINDINGS.md y el Paso 1 de CLAUDE.md.
-Esta prueba llama a `run_shadow`, no a `cmd_frontier`, para no reescribir
+Source: results/frontier.json, results/FINDINGS.md and Step 1 of CLAUDE.md. This
+test calls `run_shadow`, not `cmd_frontier`, so as not to rewrite
 results/frontier.json.
 """
 
@@ -29,7 +28,7 @@ from harness.shadow import run_shadow
 
 from .fixtures import corpus
 
-# k -> (reglas, reuso, error silencioso, escalacion)
+# k -> (rules, reuse, silent error, escalation)
 KEEP_K = {
     4: (113, 0.7965, 0.1728, 0.0565),
     5: (304, 0.7237, 0.1568, 0.1520),
@@ -38,9 +37,9 @@ KEEP_K = {
 
 CACHE_D2 = {"n_rules": 211, "silent": 0.4477, "escal": 0.1055, "cov": 0.8945}
 
-# Suelo de memorizacion. keep_k(8) conserva los ocho atributos: cada regla casa
-# un unico caso y solo se reutiliza por los duplicados literales del corpus.
-# Cualquier reutilizacion cercana a esto es ruido, no aprendizaje.
+# Memorization floor. keep_k(8) keeps all eight attributes: each rule matches a
+# single case and is only reused thanks to the corpus's literal duplicates. Any
+# reuse close to this is noise, not learning.
 MEMORIZATION_FLOOR = 0.1176
 UNIQUE_CASES = 1743
 
@@ -66,16 +65,17 @@ class TestFronteraKeepK(unittest.TestCase):
                 self.assertAlmostEqual(m["escalation_rate"], escal, places=4)
 
     def test_el_mock_recibe_la_accion_correcta_gratis(self):
-        """Deliberado: aisla el eje de GENERALIZACION del de ACTUACION. Con el
-        LLM real aparece la segunda fuente de error, que se mide aparte."""
+        """Deliberate: it isolates the GENERALIZATION axis from the ACTING one.
+        With the real LLM the second source of error appears, measured
+        separately."""
         for k in KEEP_K:
             with self.subTest(k=k):
                 self.assertEqual(self.m[k]["proposal_action_accuracy"], 1.0)
 
     def test_los_mocks_nunca_entran_en_conflicto(self):
-        """Todas sus reglas tienen k condiciones: especificidad uniforme, asi
-        que el desempate cae siempre en antiguedad. Es la razon por la que
-        estas cifras no sirven como referencia de calidad."""
+        """All their rules have k conditions: uniform specificity, so the
+        tie-break always falls to age. It is the reason these figures do not
+        serve as a quality reference."""
         for k in KEEP_K:
             with self.subTest(k=k):
                 self.assertEqual(self.m[k]["conflicts"], 0)
@@ -88,7 +88,7 @@ class TestFronteraKeepK(unittest.TestCase):
 
 
 class TestSueloDeMemorizacion(unittest.TestCase):
-    """keep_k(8) no induce nada: es la cache de casos con otro nombre."""
+    """keep_k(8) induces nothing: it is the case cache under another name."""
 
     @classmethod
     def setUpClass(cls):
@@ -103,12 +103,12 @@ class TestSueloDeMemorizacion(unittest.TestCase):
 
     def test_el_suelo_es_puro_efecto_de_los_duplicados(self):
         self.assertAlmostEqual(self.m["reuse_rate"], MEMORIZATION_FLOOR, places=4)
-        # cobertura de keep_k(8) = tasa de duplicados del corpus
+        # coverage of keep_k(8) = duplicate rate of the corpus
         self.assertAlmostEqual(self.m["coverage"], 1 - UNIQUE_CASES / 2000, places=4)
 
 
 class TestBaselineDeCache(unittest.TestCase):
-    """La hipotesis nula del proyecto: sin reglas, vecino mas cercano."""
+    """The project's null hypothesis: no rules, nearest neighbour."""
 
     @classmethod
     def setUpClass(cls):
@@ -121,9 +121,9 @@ class TestBaselineDeCache(unittest.TestCase):
         self.assertAlmostEqual(self.m["coverage"], CACHE_D2["cov"], places=4)
 
     def test_cubre_algo_menos_que_keep_k4_y_se_equivoca_mucho_mas(self):
-        """Es la comparacion que justifica que existan reglas: a cobertura
-        parecida (0,894 frente a 0,944), la cache falla en el 45% de lo que
-        cubre y keep_k(4) en el 17%. Dos veces y media mas error silencioso."""
+        """It is the comparison that justifies rules existing at all: at similar
+        coverage (0.894 versus 0.944), the cache fails on 45% of what it covers
+        and keep_k(4) on 17%. Two and a half times more silent error."""
         keep4 = correr_keep_k(4)
         self.assertLess(abs(self.m["coverage"] - keep4["coverage"]), 0.06)
         self.assertGreater(self.m["silent_error_rate"],

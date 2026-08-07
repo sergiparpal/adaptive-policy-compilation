@@ -1,27 +1,27 @@
 """
-Proponente del peldano 2: ve un vecindario ACOTADO de la base existente.
+Rung 2 proposer: it sees a BOUNDED neighbourhood of the existing base.
 
-El cambio de fondo respecto al peldano 1: la prioridad es una relacion entre
-reglas, y alli el proponente no veia ninguna otra regla. Aqui ve las que podrian
-competir con la que va a escribir.
+The underlying change relative to rung 1: priority is a relation between rules,
+and there the proposer saw no other rule. Here it sees the ones that could
+compete with the one it is about to write.
 
-QUE SE LE ENSEÑA, Y POR QUE
+WHAT IT IS SHOWN, AND WHY
 
-  * en CONFLICT: el conjunto INVICTO que discrepo. Son literalmente las reglas
-    contra las que hay que posicionarse; el motor ya calculo que ninguna otra
-    las derrota.
-  * en IMPASSE de cobertura: las vecinas mas proximas, ordenadas por cuantas de
-    sus condiciones incumple el caso.
+  * on CONFLICT: the UNDEFEATED set that disagreed. Those are literally the
+    rules it has to position itself against; the engine has already computed
+    that no other rule defeats them.
+  * on a coverage IMPASSE: the nearest neighbours, ordered by how many of their
+    conditions the case fails.
 
-Tope duro de MAX_SHOWN reglas, independientemente del tamaño de la base. La
-prioridad solo puede hacer falta entre reglas que SOLAPAN: una regla que no
-comparte ningun caso con la nueva no puede conflictuar con ella jamas, asi que
-enseñarla es ruido. El vecindario acotado es exactamente el conjunto contra el
-que la regla nueva podria necesitar ordenarse, y su tamaño no crece con la base.
+A hard cap of MAX_SHOWN rules, regardless of the size of the base. Priority can
+only be needed between rules that OVERLAP: a rule sharing no case with the new
+one can never conflict with it, so showing it is noise. The bounded
+neighbourhood is exactly the set the new rule might need to order itself
+against, and its size does not grow with the base.
 
-NO se muestra `correct_count`. Es una cifra derivada del oraculo y enseñarla
-romperia la separacion. Se muestran id, condiciones, accion y aristas ya
-declaradas.
+`correct_count` is NOT shown. It is a figure derived from the oracle and showing
+it would break the separation. Id, conditions, action and already-declared edges
+are shown.
 """
 
 from __future__ import annotations
@@ -38,7 +38,8 @@ MAX_SHOWN = 12
 
 
 class ProposalError(Exception):
-    """El proponente no devolvio nada usable. No es fatal: se cuenta y se sigue."""
+    """The proposer returned nothing usable. Not fatal: it is counted and the
+    loop carries on."""
 
 
 def parse_payload(text: str) -> dict[str, Any]:
@@ -59,7 +60,7 @@ def parse_payload(text: str) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Vecindario
+# Neighbourhood
 # ---------------------------------------------------------------------------
 
 def _violated(rule: Rule2, case: Case) -> int:
@@ -67,7 +68,7 @@ def _violated(rule: Rule2, case: Case) -> int:
 
 
 def neighbourhood(engine, case: Case, undefeated: list[Rule2]) -> tuple[list[Rule2], str]:
-    """Las reglas que se le enseñan al proponente, y como se etiquetan."""
+    """The rules shown to the proposer, and how they are labelled."""
     shown = list(undefeated)[:MAX_SHOWN]
     if shown:
         return shown, "conflicto"
@@ -93,16 +94,19 @@ def render_base_v1(shown: list[Rule2], kind: str, engine=None, case=None) -> str
 
 def render_base_v2(shown: list[Rule2], kind: str, engine, case: Case) -> str:
     """
-    v2: el motor aporta la ARITMETICA DE CONJUNTOS que el proponente calcula mal.
+    v2: the engine supplies the SET ARITHMETIC the proposer computes badly.
 
-    En la v1 el proponente afirmaba solapes inexistentes (R0035: "se solapa en
-    business+severity4" entre `billing` e `integrations`, que son disjuntos) e
-    incluso escribia el hecho correcto y sacaba la conclusion contraria (R0036:
-    "off_hours es mutuamente excluyente" y declaraba la arista igualmente).
+    Under v1 the proposer claimed non-existent overlaps (R0035: "it overlaps at
+    business+severity4" between `billing` and `integrations`, which are
+    disjoint) and even wrote down the correct fact and drew the opposite
+    conclusion (R0036: "off_hours is mutually exclusive" and declared the edge
+    anyway).
 
-    Todo lo que se marca aqui esta calculado sobre el espacio exhaustivo de
-    134.400 combinaciones. Ninguna de estas cifras es derivable por el
-    proponente a partir del texto de las reglas.
+    Everything marked here is computed over the exhaustive space of 134,400
+    combinations. None of these figures is derivable by the proposer from the
+    text of the rules.
+
+    The emitted text stays in Spanish: it is what produced the records.
     """
     if not shown:
         return "BASE DE REGLAS: vacia. Esta es la primera regla.\n"
@@ -124,7 +128,7 @@ def render_base_v2(shown: list[Rule2], kind: str, engine, case: Case) -> str:
         lines.append(f"  {r.render()}")
         lines.append(f"      [{tag}]  [cubre {size:,} casos del espacio]")
 
-    # disjunciones exactas entre las mostradas
+    # exact disjointness among the rules shown
     disj = []
     for i in range(len(shown)):
         for j in range(i + 1, len(shown)):
@@ -205,20 +209,21 @@ La regla DEBE casar el ticket presentado."""
 
 
 # ---------------------------------------------------------------------------
-# v2 — cambia dos cosas respecto a v1, y solo dos:
+# v2 — changes two things relative to v1, and only two:
 #
-#   (a) el encuadre del solape. La v1 decia "solo necesitas declarar prioridad
-#       frente a reglas que se solapan con la tuya sin que una contenga a la
-#       otra", que se lee como incentivo a EVITAR el solape. Medido sobre 4
-#       tiradas de n=100 con corpus distintos: el solape entre reglas cayo del
-#       17,5% del peldano 1 al 0,0-2,9%, con el mismo numero de condiciones por
-#       regla. El modelo no estrechaba las reglas: las embaldosaba. Sin solape
-#       no hay conflicto y la prioridad declarada no se puede medir.
+#   (a) how overlap is framed. v1 said "you only need to declare priority
+#       against rules that overlap yours without one containing the other",
+#       which reads as an incentive to AVOID overlap. Measured over 4 runs of
+#       n=100 with different corpora: overlap between rules fell from rung 1's
+#       17.5% to 0.0-2.9%, with the same number of conditions per rule. The
+#       model was not narrowing the rules: it was tiling them. Without overlap
+#       there is no conflict and declared priority cannot be measured.
 #
-#   (b) la regla de inferencia sobre disjuncion, que el motor ya marca en el
-#       vecindario v2 pero conviene enunciar una vez.
+#   (b) the inference rule about disjointness, which the engine already marks in
+#       the v2 neighbourhood but is worth stating once.
 #
-# El resto del texto es identico a la v1, palabra por palabra.
+# The rest of the text is identical to v1, word for word. Both prompts stay in
+# Spanish: they are the text that produced the published records.
 # ---------------------------------------------------------------------------
 
 SYSTEM_PROMPT_V2 = SYSTEM_PROMPT_V1.replace(
@@ -254,8 +259,8 @@ def user_msg(case: Case, base_text: str) -> str:
 # ---------------------------------------------------------------------------
 
 class OpenRouterProposer2:
-    """Identico al del peldano 1 salvo que el mensaje de usuario lleva el
-    vecindario de la base. Nunca recibe la accion verdadera."""
+    """Identical to rung 1's except that the user message carries the
+    neighbourhood of the base. It never receives the true action."""
 
     def __init__(self, model: str = "deepseek/deepseek-v4-flash", max_retries: int = 2,
                  prompt_version: str = "v1"):

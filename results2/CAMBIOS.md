@@ -1,47 +1,58 @@
-# Registro de cambios — peldaño 2
+# Changelog — rung 2
 
-## v1 → v2 (6 de agosto de 2026)
+> The prompt fragments quoted below are the **literal Spanish text** that lives
+> in `peldano2/proposers2.py`; the v2 is built by literal substitution over the
+> v1, so they are reproduced verbatim. An English rendering follows each one in
+> italics.
 
-Dos cambios, autorizados por Sergi, en este orden y solo tras medir el control.
+## v1 → v2 (August 6, 2026)
 
-### Motivo: el confound del prompt, aislado con 4 tiradas
+Two changes, authorized by Sergi, in this order and only after measuring the
+control.
 
-Antes de cambiar nada se corrieron 3 tiradas adicionales de n=100 con el prompt
-v1 **intacto**, variando solo la semilla de muestreo del corpus (18, 19, 20).
-Junto con la original (semilla 17):
+### Motive: the prompt confound, isolated with 4 runs
+
+Before changing anything, 3 additional n=100 runs were done with the v1 prompt
+**intact**, varying only the corpus sampling seed (18, 19, 20). Together with the
+original one (seed 17):
 
 ```
-base                           reglas cond/regla  solape%  sol.dif%   anid  CONF
-PELDANO 1  n=100 (16 reglas)       16      2.94     17.5       8.3      1     -
-PELDANO 1  n=2000 (577)           577      3.06     32.3      21.3   8599     -
-PELDANO 2  n=100 semilla 17        40      3.73      2.9       2.8      0     0
-PELDANO 2  n=100 semilla 18        14      2.86      2.2       0.0      2     0
-PELDANO 2  n=100 semilla 19        12      3.00      1.5       1.5      0     0
-PELDANO 2  n=100 semilla 20        26      2.92      0.0       0.0      0     0
+base                          rules cond/rule  overlap%  ov.diff%   nest  CONF
+RUNG 1  n=100 (16 rules)         16      2.94      17.5       8.3      1     -
+RUNG 1  n=2000 (577)            577      3.06      32.3      21.3   8599     -
+RUNG 2  n=100 seed 17            40      3.73       2.9       2.8      0     0
+RUNG 2  n=100 seed 18            14      2.86       2.2       0.0      2     0
+RUNG 2  n=100 seed 19            12      3.00       1.5       1.5      0     0
+RUNG 2  n=100 seed 20            26      2.92       0.0       0.0      0     0
 ```
 
-Conclusión: **el efecto del prompt v1 es real y sistemático, pero no es el que se
-había diagnosticado.** El número de condiciones por regla NO cambió respecto al
-peldaño 1 (2,86–3,00 en tres de las cuatro; la semilla 17, con 3,73, es el
-outlier). Lo que cambió es el **solape**, que cayó de 17,5% a 0,0–2,9%, un orden
-de magnitud, en las cuatro tiradas.
+Conclusion: **the effect of the v1 prompt is real and systematic, but it is not
+the one that had been diagnosed.** The number of conditions per rule did NOT
+change relative to rung 1 (2.86–3.00 in three of the four; seed 17, at 3.73, is
+the outlier). What changed is the **overlap**, which fell from 17.5% to 0.0–2.9%,
+an order of magnitude, in all four runs.
 
-El modelo no estrecha las reglas: las **embaldosa**. Con la misma densidad de
-condiciones elige combinaciones de atributos que tselan el espacio en vez de
-apilarse sobre él. Sin solape no hay conflicto (0 en las cuatro tiradas), y sin
-conflicto la prioridad declarada no puede medirse: el mecanismo queda inerte.
+The model does not narrow the rules: it **tiles** them. With the same condition
+density it picks attribute combinations that tessellate the space instead of
+stacking on top of it. Without overlap there is no conflict (0 in all four runs),
+and without conflict declared priority cannot be measured: the mechanism sits
+inert.
 
-Datos en `comparativa.json`.
+Data in `comparativa.json`.
 
-### Cambio 1 — encuadre del solape en el prompt
+### Change 1 — how overlap is framed in the prompt
 
-La v1 decía:
+The v1 said:
 
 > Por eso solo necesitas declarar prioridad frente a reglas que se solapan con la
 > tuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,
 > no declares nada: el nivel 1 ya lo resuelve.
 
-Se lee como incentivo a **evitar** el solape. La v2 lo sustituye por:
+> *So you only need to declare priority against rules that overlap yours without
+> one containing the other. If your rule is a particular case of another one,
+> declare nothing: level 1 already resolves it.*
+
+It reads as an incentive to **avoid** overlap. The v2 replaces it with:
 
 > El solape entre reglas es NORMAL y es lo que se espera. Una regla que no se
 > solapa con ninguna otra cubre solo el rincón del que nació y no generaliza
@@ -59,45 +70,61 @@ Se lee como incentivo a **evitar** el solape. La v2 lo sustituye por:
 > Esos datos están calculados sobre el espacio completo de casos: fíate de ellos
 > antes que de tu propia estimación.
 
-**El resto del prompt es idéntico palabra por palabra.** La v2 se construye por
-sustitución literal sobre la v1 (`SYSTEM_PROMPT_V1.replace(...)`) con un `assert`
-que falla si la sustitución no aplica, de modo que no puede divergir en silencio.
+> *Overlap between rules is NORMAL and is what is expected. A rule that does not
+> overlap any other covers only the corner it was born in and generalizes
+> nothing. Write the rule at the level of abstraction you think correct EVEN IF
+> it treads on others, and use `beats` / `loses_to` to say who rules where they
+> tread on each other. Do not narrow a rule or add conditions to it to dodge
+> another one: that does not resolve the conflict, it hides it.*
+>
+> *If your rule is a particular case of another (every case matching yours also
+> matches the other), declare nothing: level 1 already resolves it on its own.*
+>
+> *Careful with set arithmetic: two rules mentioning the same attributes may not
+> share a single case. Below, for each rule, the engine marks which conditions
+> this ticket fails and which pairs are disjoint. That data is computed over the
+> complete case space: trust it over your own estimate.*
 
-### Cambio 2 — el vecindario aporta la aritmética de conjuntos
+**The rest of the prompt is identical word for word.** The v2 is built by literal
+substitution over the v1 (`SYSTEM_PROMPT_V1.replace(...)`) with an `assert` that
+fails if the substitution does not apply, so it cannot diverge silently.
 
-En la v1 el proponente calculaba mal el solape, y de forma sistemática:
+### Change 2 — the neighbourhood supplies the set arithmetic
 
-- `R0035` afirmó solape "en business+severity4" entre una regla de `billing` y
-  otra de `integrations`, que son disjuntas: no comparten ni un caso.
-- `R0036` **escribió** que `off_hours` es mutuamente excluyente y declaró la
-  arista igualmente.
-- `R0014` se ordenó contra una regla `off_hours=true` siendo ella `off_hours=false`.
+Under v1 the proposer miscalculated the overlap, and did so systematically:
 
-No es que ignorase el solape: confunde "comparten atributos" con "comparten
-casos". Un fallo de aritmética de conjuntos tapaba por completo la medición de
-si sabe declarar prioridad.
+- `R0035` claimed overlap "in business+severity4" between a `billing` rule and an
+  `integrations` one, which are disjoint: they do not share a single case.
+- `R0036` **wrote** that `off_hours` is mutually exclusive and declared the edge
+  anyway.
+- `R0014` ordered itself against an `off_hours=true` rule while being
+  `off_hours=false` itself.
 
-El vecindario v2 añade, todo calculado por el motor sobre las 134.400
-combinaciones y nada de ello derivable por el proponente:
+It is not that it ignored the overlap: it confuses "they share attributes" with
+"they share cases". A set-arithmetic failure was completely masking the
+measurement of whether it knows how to declare priority.
 
-- por regla mostrada, si **casa el ticket** (solape garantizado con cualquier
-  regla que se escriba) o **qué condiciones incumple el ticket**;
-- el **tamaño de la extensión** de cada regla;
-- los **pares disjuntos** entre las reglas mostradas;
-- la regla de inferencia enunciada una vez: si fijas un atributo que la regla R
-  incumple, tu regla y R quedan disjuntas y declarar prioridad no tiene efecto.
+The v2 neighbourhood adds, all of it computed by the engine over the 134,400
+combinations and none of it derivable by the proposer:
 
-Sigue sin mostrarse `correct_count`: es del oráculo.
+- per rule shown, whether it **matches the ticket** (overlap guaranteed with any
+  rule that gets written) or **which conditions the ticket fails**;
+- the **size of the extension** of each rule;
+- the **disjoint pairs** among the rules shown;
+- the inference rule stated once: if you fix an attribute that rule R fails, your
+  rule and R end up disjoint and declaring priority has no effect.
 
-### Qué NO cambió
+`correct_count` is still not shown: it belongs to the oracle.
 
-Motor, esquema de regla, validador, semilla del corpus para la comparación
-principal (17), modelo (`deepseek/deepseek-v4-flash`), tope de 12 reglas en el
-vecindario, criterio de selección del vecindario, y los invariantes del
-experimento (sombra pura, separación del oráculo, escalación solo por impasse o
-conflicto, bucle secuencial).
+### What did NOT change
 
-### Reproducir
+Engine, rule schema, validator, corpus seed for the main comparison (17), model
+(`deepseek/deepseek-v4-flash`), cap of 12 rules in the neighbourhood,
+neighbourhood selection criterion, and the invariants of the experiment (pure
+shadow, oracle separation, escalation only by impasse or conflict, sequential
+loop).
+
+### Reproducing
 
 ```bash
 python3 -m peldano2.run2 --n 100 --seed 17 --prompt-version v1 --tag n100
@@ -105,5 +132,5 @@ python3 -m peldano2.run2 --n 100 --seed 17 --prompt-version v2 --tag n100_v2
 python3 -m peldano2.compare_runs results2/llm_run2_*.json
 ```
 
-Cada tirada guarda su `prompt_version` y el texto íntegro del `system_prompt`
-que usó, así que ninguna cifra queda huérfana de la versión que la produjo.
+Each run stores its `prompt_version` and the full text of the `system_prompt` it
+used, so no figure is left orphaned from the version that produced it.

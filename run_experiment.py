@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Peldano 1: mundo estatico, politica realizable, sombra pura.
+Rung 1: static world, realizable policy, pure shadow.
 
-Uso:
-  python run_experiment.py frontier              # barrido de mocks, 0 llamadas
-  python run_experiment.py llm                   # proponente real
+Usage:
+  python run_experiment.py frontier              # mock sweep, 0 calls
+  python run_experiment.py llm                   # real proposer
   python run_experiment.py llm --n 500 --model claude-sonnet-5
 """
 
@@ -15,7 +15,7 @@ import json
 import sys
 from pathlib import Path
 
-# El directorio del script siempre en sys.path, se ejecute desde donde se ejecute.
+# The script's directory always on sys.path, wherever it is run from.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 if not (Path(__file__).resolve().parent / "harness" / "domain.py").exists():
@@ -178,13 +178,13 @@ def cmd_llm(args) -> None:
         print(f"  {key:<32}{m.get(key)}")
     print("\n  curva de escalacion por decil:")
     print(f"  {m['escalation_curve_by_decile']}")
-    # Aqui se imprimia "frontera a batir (keep_k k=4): err.sil 0.173 con 113
-    # reglas". Se retiro el 6 de agosto de 2026: esa frontera quedo INVALIDADA
-    # como referencia de calidad. Las reglas de keep_k tienen todas k
-    # condiciones, asi que su especificidad es uniforme y el arbitraje nunca
-    # puede invertirlas; son inmunes al defecto que hunde a la politica real.
-    # keep_k(k=4) puntua MEJOR que la politica verdadera bajo este motor (0.173
-    # frente a 0.214 de error silencioso). Ver results/FINDINGS.md.
+    # This used to print "frontier to beat (keep_k k=4): sil.err 0.173 with 113
+    # rules". It was withdrawn on August 6, 2026: that frontier was INVALIDATED
+    # as a quality reference. The keep_k rules all have k conditions, so their
+    # specificity is uniform and arbitration can never invert them; they are
+    # immune to the defect that sinks the real policy. keep_k(k=4) scores BETTER
+    # than the true policy under this engine (0.173 versus 0.214 silent error).
+    # See results/FINDINGS.md.
     print("\n  AVISO: sin el Paso 0 (python3 -m harness.ceiling_check) en ~100%,")
     print("  estas cifras no son interpretables. Techo medido: 58.75%.")
 
@@ -194,9 +194,9 @@ def cmd_llm(args) -> None:
         "model": model,
         "metrics": m,
         "rules": [r.as_dict() for r in res.rules],
-        # Registros crudos por caso. No se analizan ahora, pero guardarlos
-        # permite cualquier corte posterior (error por clase, por regla, por
-        # decil) sin volver a pagar la tirada.
+        # Raw per-case records. They are not analysed now, but storing them
+        # allows any later slicing (error by class, by rule, by decile) without
+        # paying for the run again.
         "records": [vars(r) for r in res.records],
     }, indent=2, default=str))
     print(f"\n-> {OUT/'llm_run.json'}  (reglas con su 'note' + registros crudos)")

@@ -1,11 +1,12 @@
 """
-Proceso hijo de `test_order_determinism.py`. No es una prueba: no empieza por
-`test_` y `unittest discover` no lo recoge.
+Child process of `test_order_determinism.py`. Not a test: it does not start with
+`test_` and `unittest discover` does not collect it.
 
-Corre el voraz de los peldanos 3 y 4 e imprime un JSON con cuatro huellas. Se
-invoca varias veces con `PYTHONHASHSEED` distinto; el padre compara.
+Runs the greedy search of rungs 3 and 4 and prints a JSON with four
+fingerprints. It is invoked several times with a different `PYTHONHASHSEED`; the
+parent compares.
 
-    python3 -m tests.hashseed_child        # desde la raiz del repositorio
+    python3 -m tests.hashseed_child        # from the repository root
 """
 
 from __future__ import annotations
@@ -37,9 +38,9 @@ def main() -> int:
     ids = [r["rule_id"] for r in rules]
     tr, te = split(corpus, truth, seed=17)
 
-    # TESTIGO: el orden de iteracion de un set de cadenas SI depende de
-    # PYTHONHASHSEED. Sirve para distinguir "el arreglo funciona" de "aqui no
-    # habia empates que desempatar".
+    # WITNESS: the iteration order of a set of strings DOES depend on
+    # PYTHONHASHSEED. It serves to distinguish "the fix works" from "there were
+    # no ties to break here".
     control = digest(set(ids))
 
     order = greedy_order(rules, matched, truth, action, tr)

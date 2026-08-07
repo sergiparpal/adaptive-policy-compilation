@@ -1,63 +1,63 @@
 """
-El canal de feedback, como artefacto separado.
+The feedback channel, as a separate artefact.
 
-RIESGO QUE ESTE MODULO EXISTE PARA CONTENER
--------------------------------------------
-En un entorno sintetico "feedback del entorno" y "politica oculta" son la misma
-funcion. Si el canal no esta acotado, medir "aprender del feedback" es medir
-supervision completa con otro nombre.
+THE RISK THIS MODULE EXISTS TO CONTAIN
+--------------------------------------
+In a synthetic environment "environment feedback" and "hidden policy" are the
+same function. If the channel is not bounded, measuring "learning from feedback"
+is measuring full supervision under another name.
 
-Contencion: este modulo es el UNICO del peldano 4 que importa `true_action`. Su
-salida es un diccionario {indice de caso -> accion reportada} estrictamente mas
-pobre que la verdad, y el aprendiz no ve nada mas. La verdad vuelve a aparecer
-solo en la EVALUACION, que es medicion y no supervision, igual que en los tres
-peldanos anteriores.
+Containment: this module is the ONLY one in rung 4 that imports `true_action`.
+Its output is a dictionary {case index -> reported action}, strictly poorer than
+the truth, and the learner sees nothing else. The truth reappears only in the
+EVALUATION, which is measurement and not supervision, just as in the three
+previous rungs.
 
-QUE OBSERVA EL CANAL
---------------------
-No etiquetas sueltas: RESULTADOS DE DECISIONES. Hace falta, por tanto, una
-politica de referencia pi0 que este decidiendo mientras se observa. Sin eso, la
-pregunta "que fraccion de decisiones recibe resultado" no significa nada.
+WHAT THE CHANNEL OBSERVES
+-------------------------
+Not loose labels: OUTCOMES OF DECISIONS. It therefore requires a reference
+policy pi0 to be deciding while the observation happens. Without that, the
+question "what fraction of decisions receives an outcome" means nothing.
 
-En un sistema real de triaje el ciclo es: el ticket se enruta, alguien lo
-recibe, y si la cola no era la suya lo reasigna. La reasignacion es el feedback,
-y trae consigo la accion correcta.
+In a real triage system the cycle is: the ticket is routed, someone receives it,
+and if the queue was not theirs they reassign it. The reassignment is the
+feedback, and it brings the correct action with it.
 
-PARAMETROS, Y A QUE CORRESPONDEN
---------------------------------
+PARAMETERS, AND WHAT THEY CORRESPOND TO
+---------------------------------------
 `coverage` c
-    p(hay feedback | la decision fue INCORRECTA). En un sistema real la mayoria
-    de tickets mal enrutados se reasignan, pero no todos: algunos se resuelven
-    igual en la cola equivocada, otros se cierran, otros nadie los toca.
+    p(feedback exists | the decision was INCORRECT). In a real system most
+    misrouted tickets get reassigned, but not all: some are resolved anyway in
+    the wrong queue, others are closed, others nobody touches.
 
 `asymmetry` a
-    p(hay feedback | la decision fue CORRECTA) = c * a.
-    ESTE ES EL PARAMETRO QUE IMPIDE QUE EL CANAL SEA EL ORACULO. Un sistema real
-    entera de sus ERRORES, no de sus aciertos: nadie manda un mensaje diciendo
-    "este ticket estaba bien enrutado". Con a = 1 el canal es un muestreo
-    insesgado de etiquetas, que es lo que midio el peldano 3 y NO es realista.
-    Con a = 0 solo se observan errores, y el conjunto etiquetado queda
-    condicionado a que pi0 se equivocara: no es i.i.d., y esa dependencia es
-    exactamente la que tendria un sistema desplegado.
+    p(feedback exists | the decision was CORRECT) = c * a.
+    THIS IS THE PARAMETER THAT KEEPS THE CHANNEL FROM BEING THE ORACLE. A real
+    system learns about its ERRORS, not about its correct decisions: nobody
+    sends a message saying "this ticket was routed correctly". With a = 1 the
+    channel is an unbiased sample of labels, which is what rung 3 measured and
+    is NOT realistic. With a = 0 only errors are observed, and the labelled set
+    is conditioned on pi0 having been wrong: it is not i.i.d., and that
+    dependency is exactly the one a deployed system would have.
 
 `delay` d
-    El resultado del caso i solo es utilizable si i + d cae dentro de la ventana
-    de observacion. Corresponde a que la reasignacion ocurre horas o dias
-    despues, cuando ya han entrado muchos tickets mas. Offline se traduce en que
-    los ultimos d casos de la ventana no han producido feedback todavia.
+    The outcome of case i is only usable if i + d falls within the observation
+    window. It corresponds to the reassignment happening hours or days later,
+    when many more tickets have already come in. Offline this translates into
+    the last d cases of the window not having produced feedback yet.
 
 `noise` e
-    Con probabilidad e la accion reportada no es la verdadera sino otra al azar.
-    Corresponde a que quien reasigna tambien se equivoca, o reasigna segun una
-    convencion local que no es la politica.
+    With probability e the reported action is not the true one but another at
+    random. It corresponds to whoever reassigns also making mistakes, or
+    reassigning by a local convention that is not the policy.
 
-QUE NO SE MODELA, Y POR QUE
----------------------------
-No se interpreta la AUSENCIA de feedback como "fue correcto". Seria tentador
-—duplicaria la senal— pero con cobertura parcial la ausencia es ambigua: puede
-significar acierto o puede significar que nadie miro. Asumir lo primero
-inyectaria informacion que el entorno no da. Queda anotado como decision, no
-como omision.
+WHAT IS NOT MODELLED, AND WHY
+-----------------------------
+The ABSENCE of feedback is not interpreted as "it was correct". It would be
+tempting —it would double the signal— but with partial coverage the absence is
+ambiguous: it may mean a correct decision or it may mean nobody looked. Assuming
+the former would inject information the environment does not give. Recorded as a
+decision, not as an omission.
 """
 
 from __future__ import annotations
@@ -66,15 +66,15 @@ import random
 from dataclasses import dataclass, asdict
 
 from harness.domain import ACTIONS
-from harness.hidden_policy import true_action    # UNICO import del oraculo
+from harness.hidden_policy import true_action    # THE ONLY oracle import
 
 
 @dataclass(frozen=True)
 class Channel:
-    coverage: float = 1.0      # p(feedback | decision incorrecta)
-    asymmetry: float = 1.0     # p(feedback | correcta) = coverage * asymmetry
-    delay: int = 0             # casos de retardo
-    noise: float = 0.0         # prob. de que la accion reportada sea otra
+    coverage: float = 1.0      # p(feedback | incorrect decision)
+    asymmetry: float = 1.0     # p(feedback | correct) = coverage * asymmetry
+    delay: int = 0             # cases of delay
+    noise: float = 0.0         # prob. that the reported action is another one
     seed: int = 17
 
     def label(self) -> str:
@@ -86,14 +86,14 @@ class Channel:
 
     def observe(self, corpus, window, decisions, window_end=None) -> dict[int, str]:
         """
-        window       indices de casos observables (la ventana de aprendizaje)
-        decisions    {indice -> accion que tomo pi0}
-        window_end   ultimo indice del que ya ha podido llegar feedback;
-                     por defecto, el maximo de la ventana
+        window       indices of observable cases (the learning window)
+        decisions    {index -> action pi0 took}
+        window_end   last index whose feedback could already have arrived;
+                     by default, the maximum of the window
 
-        Devuelve {indice -> accion reportada}. Nada mas. El aprendiz no recibe
-        ni la verdad ni si la decision fue correcta: solo la accion reportada,
-        que puede estar equivocada con probabilidad `noise`.
+        Returns {index -> reported action}. Nothing else. The learner receives
+        neither the truth nor whether the decision was correct: only the
+        reported action, which may be wrong with probability `noise`.
         """
         if window_end is None:
             window_end = max(window) if window else 0
@@ -101,12 +101,12 @@ class Channel:
         out: dict[int, str] = {}
         for i in window:
             if i + self.delay > window_end:
-                continue                                  # aun no ha llegado
+                continue                                  # has not arrived yet
             truth = true_action(corpus[i])
             was_wrong = decisions.get(i) != truth
             p = self.coverage if was_wrong else self.coverage * self.asymmetry
             if rng.random() >= p:
-                continue                                  # nadie reporto nada
+                continue                                  # nobody reported it
             if rng.random() < self.noise:
                 alt = [a for a in ACTIONS if a != truth]
                 out[i] = rng.choice(alt)

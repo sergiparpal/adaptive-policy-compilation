@@ -1,22 +1,23 @@
 """
-Orden parcial por subsuncion semantica sobre las 29 reglas ocultas.
+Partial order by semantic subsumption over the 29 hidden rules.
 
-  A ≺ B  sii  ext(A) ⊊ ext(B)
+  A ≺ B  iff  ext(A) ⊊ ext(B)
 
-donde ext(R) es el conjunto de casos del ESPACIO COMPLETO (134.400 combinaciones)
-que R casa. Semantica, no sintactica: no cuenta condiciones, compara extensiones.
-Por eso puede ordenar H01 ≺ H03 (excepcion antes que defecto) sin ser funcion
-monotona del numero de condiciones, que es lo que hunde al arbitraje actual.
+where ext(R) is the set of cases of the COMPLETE SPACE (134,400 combinations)
+that R matches. Semantic, not syntactic: it does not count conditions, it
+compares extensions. That is why it can order H01 ≺ H03 (exception before
+default) without being a monotone function of the number of conditions, which is
+what sinks the current arbitration.
 
-Arbitraje por subsuncion: de las reglas que casan un caso, ganan las MINIMAS del
-orden parcial (ninguna otra que case esta estrictamente por debajo). Si todas las
-minimas coinciden en accion -> ACTION. Si discrepan -> INCOMPARABLE, que aqui se
-cuenta como CONFLICT.
+Subsumption arbitration: of the rules matching a case, the MINIMAL ones of the
+partial order win (no other matching rule is strictly below them). If all the
+minimal ones agree on the action -> ACTION. If they disagree -> INCOMPARABLE,
+which is counted here as CONFLICT.
 
-ANALISIS, NO MODIFICACION. No toca dsl.py. Reutiliza Rule.matches() del DSL
-congelado y las reglas transcritas en ceiling_check.py.
+ANALYSIS, NOT MODIFICATION. It does not touch dsl.py. It reuses Rule.matches()
+from the frozen DSL and the rules transcribed in ceiling_check.py.
 
-Uso:  python3 -m harness.subsumption_check
+Usage:  python3 -m harness.subsumption_check
 """
 
 from __future__ import annotations
@@ -34,11 +35,11 @@ from .provenance import environment
 
 
 # ---------------------------------------------------------------------------
-# Extensiones como mascaras de bits sobre el espacio completo
+# Extensions as bitmasks over the complete space
 # ---------------------------------------------------------------------------
 
 def build_extensions(rules):
-    """ext(R) como entero: bit i = 1 sii R casa el caso i del espacio completo."""
+    """ext(R) as an integer: bit i = 1 iff R matches case i of the full space."""
     space = list(all_cases())
     masks = {}
     for rule in rules:
@@ -53,7 +54,7 @@ def strictly_below(a: int, b: int) -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Arbitraje
+# Arbitration
 # ---------------------------------------------------------------------------
 
 def decide_by_subsumption(rules, masks, case):
@@ -74,7 +75,7 @@ def main() -> int:
     corpus = generate_corpus(2000, seed=17)
     rules = build_rules()
     by_id = {r.rule_id: r for r in rules}
-    idx_of = {r.rule_id: i for i, r in enumerate(rules)}   # orden de capas
+    idx_of = {r.rule_id: i for i, r in enumerate(rules)}   # layer order
     act_of = {h: a for h, _p, a in HIDDEN_RULES}
 
     print("=" * 74)
@@ -113,7 +114,7 @@ def main() -> int:
         print("  NINGUNA. El orden parcial es consistente con el orden de capas:")
         print("  siempre que ordena, ordena en el sentido correcto.")
 
-    # ------------------------------------------------- medicion sobre el corpus
+    # ------------------------------------------------- measurement over corpus
     engine = RuleEngine()
     engine.rules = rules
 
@@ -187,8 +188,8 @@ def main() -> int:
                     dis_pairs.add((combo[i], combo[j]))
     print(f"\n  parejas de reglas distintas implicadas: {len(dis_pairs)}")
 
-    # --- concentracion: lo que importa no es cuantas parejas hay, sino cuantos
-    # --- casos cubren las mas frecuentes. Los desempates no son independientes.
+    # --- concentration: what matters is not how many pairs there are, but how
+    # --- many cases the most frequent ones cover. Tie-breaks are not independent.
     print()
     print("=" * 74)
     print("(b bis) CURVA DE CONCENTRACION DEL RESIDUO")
@@ -228,7 +229,7 @@ def main() -> int:
         for (hid, t, p), k in c.most_common(10):
             print(f"    capa {hid}: verdad {t} -> predicho {p}   ({k})")
 
-    # ---------------------------------------------------------------- guardar
+    # ------------------------------------------------------------------- save
     out = Path("results")
     out.mkdir(exist_ok=True)
     (out / "subsumption.json").write_text(json.dumps({

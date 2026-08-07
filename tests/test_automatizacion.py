@@ -1,21 +1,21 @@
 """
-Que la suite la corra alguien sin que haya que acordarse.
+That something runs the suite without anyone having to remember.
 
-Tener 249 pruebas y depender de que uno se acuerde de lanzarlas es tener menos
-pruebas de las que parece. Hay dos redes, y cubren momentos distintos:
+Having 249 tests and depending on someone remembering to launch them is having
+fewer tests than it looks. There are two nets, covering different moments:
 
-  * `.githooks/pre-commit`, antes de cada commit, en local.
-  * `.github/workflows/pruebas.yml`, en cada push y cada PR, incluido lo que se
-    empujo con `--no-verify`.
+  * `.githooks/pre-commit`, before every commit, locally.
+  * `.github/workflows/pruebas.yml`, on every push and every PR, including what
+    was pushed with `--no-verify`.
 
-Esto vigila que las dos sigan ahi y sigan corriendo lo que dicen correr. Es
-poca cosa, pero es exactamente el tipo de fallo que no avisa: un hook sin
-permiso de ejecucion o un flujo renombrado no dan error, simplemente dejan de
-correr y nadie se entera hasta que hace falta.
+This watches that both are still there and still run what they say they run. It
+is a small thing, but it is exactly the kind of failure that gives no warning: a
+hook without the execute bit or a renamed workflow raise no error, they simply
+stop running and nobody notices until it matters.
 
-Lo que NO se comprueba aqui es que el hook este instalado: `core.hooksPath` es
-configuracion local de cada clon y en CI no esta puesto. La instruccion de
-instalarlo va en el README y en la cabecera del propio hook.
+What is NOT checked here is that the hook is installed: `core.hooksPath` is
+local configuration per clone and is not set in CI. The instruction to install
+it is in the README and in the header of the hook itself.
 """
 
 from __future__ import annotations
@@ -42,20 +42,20 @@ class TestElHookDePreCommit(unittest.TestCase):
         self.assertTrue(HOOK.is_file(), f"falta {HOOK.relative_to(REPO)}")
 
     def test_es_ejecutable(self):
-        """Sin el bit de ejecucion git lo ignora en silencio."""
+        """Without the execute bit git ignores it silently."""
         self.assertTrue(os.access(HOOK, os.X_OK), "el hook no es ejecutable")
 
     def test_corre_la_suite(self):
         self.assertIn(SUITE, HOOK.read_text())
 
     def test_dice_como_instalarse(self):
-        """El hook se versiona pero no se activa solo: `core.hooksPath` es
-        configuracion de cada clon."""
+        """The hook is versioned but does not enable itself: `core.hooksPath`
+        is per-clone configuration."""
         self.assertIn("core.hooksPath", HOOK.read_text())
 
     def test_no_necesita_el_venv(self):
-        """Si el hook dependiera de `.venv`, un clon recien hecho no podria
-        confirmar nada. La suite corre con la biblioteca estandar."""
+        """If the hook depended on `.venv`, a fresh clone could not commit
+        anything. The suite runs on the standard library."""
         self.assertNotIn(".venv", HOOK.read_text())
 
 
@@ -76,23 +76,24 @@ class TestElFlujoDeCI(unittest.TestCase):
                 self.assertIn(evento, self.texto)
 
     def test_cubre_el_minimo_de_python_que_declara_el_README(self):
-        """Si alguien sube el suelo en el README, la matriz tiene que seguirle.
-        Al reves tambien: una matriz que no incluya el minimo declarado deja la
-        afirmacion del README sin comprobar."""
+        """If somebody raises the floor in the README, the matrix has to follow.
+        And the other way round: a matrix that does not include the declared
+        minimum leaves the README's claim unchecked."""
         readme = (REPO / "README.md").read_text()
         minimo = re.search(r"Python (\d+\.\d+)\+", readme)
         self.assertIsNotNone(minimo, "el README ya no declara version minima")
         self.assertIn(f'"{minimo.group(1)}"', self.texto)
 
     def test_comprueba_que_la_suite_no_escribe_en_los_registros(self):
-        """La suite lo afirma en su docstring; el flujo lo verifica despues de
-        correrla, que es la unica forma de que la afirmacion no envejezca."""
+        """The suite claims it in its docstring; the workflow verifies it after
+        running it, which is the only way the claim does not go stale."""
         self.assertIn("git status --porcelain -- results", self.texto)
 
     def test_las_acciones_van_clavadas_a_un_sha_completo(self):
-        """Una etiqueta la puede repuntar su dueño hacia otro codigo; un commit
-        no. Es la convencion del resto de repositorios de esta cuenta, y aqui
-        entro tarde: este flujo nacio con `@v4` y estuvo un dia en `@v7`."""
+        """A tag can be repointed by its owner at other code; a commit cannot.
+        It is the convention of the rest of the repositories in this account,
+        and it arrived late here: this workflow was born with `@v4` and spent a
+        day on `@v7`."""
         refs = re.findall(r"^\s*- uses: (\S+)@(\S+)", self.texto, re.M)
         self.assertTrue(refs, "el flujo ya no usa ninguna accion")
         for accion, ref in refs:
@@ -101,27 +102,28 @@ class TestElFlujoDeCI(unittest.TestCase):
                                  f"{accion} va por etiqueta, no por commit")
 
     def test_cada_sha_lleva_su_version_al_lado(self):
-        """El SHA solo es legible si dice de que version es. Sin el comentario,
-        subir una accion obliga a resolver el hash para saber de donde partes."""
+        """A SHA is only readable if it says which version it is. Without the
+        comment, bumping an action forces you to resolve the hash to know where
+        you are starting from."""
         for linea in self.texto.splitlines():
             if "- uses:" in linea:
                 with self.subTest(linea.strip()[:40]):
                     self.assertRegex(linea, r"@[0-9a-f]{40} # v\d+\.\d+\.\d+$")
 
     def _cuerpo_del_trabajo(self, trabajo: str) -> str:
-        """Desde la cabecera del trabajo hasta la del siguiente.
+        """From the job's header to the next one's.
 
-        El corte busca la siguiente clave con DOS espacios de sangria, que es
-        la del trabajo que viene. Partir por `\\n  ` a secas no vale: las lineas
-        de dentro del trabajo van a cuatro, y empiezan por esos dos.
+        The cut looks for the next key with TWO spaces of indentation, which is
+        the next job's. Splitting on a bare `\\n  ` does not work: the lines
+        inside the job are indented by four, and they start with those two.
         """
         resto = self.texto.split(f"\n  {trabajo}:\n", 1)[1]
         siguiente = re.search(r"^  [A-Za-z0-9_-]+:", resto, re.M)
         return resto[: siguiente.start()] if siguiente else resto
 
     def test_cada_trabajo_tiene_tope_de_tiempo(self):
-        """Sin tope, un trabajo colgado corre hasta el limite de la plataforma.
-        No es una meta de velocidad; es que un cuelgue falle en vez de arder."""
+        """Without a cap, a hung job runs to the platform limit. It is not a
+        speed target; it is so that a hang fails instead of burning."""
         trabajos = re.findall(r"^  ([A-Za-z0-9_-]+):$",
                               self.texto.split("\njobs:\n", 1)[1], re.M)
         self.assertTrue(trabajos, "el flujo ya no declara ningun trabajo")
@@ -131,21 +133,21 @@ class TestElFlujoDeCI(unittest.TestCase):
                               self._cuerpo_del_trabajo(trabajo))
 
     def test_main_no_se_cancela_nunca(self):
-        """Aqui los commits van directos a main y el estado del flujo es el
-        unico registro de que ese commit paso la suite. Un
-        `cancel-in-progress: true` a secas deja en "cancelled" a todo commit
-        adelantado por el siguiente: no fallaron, es que nunca respondieron.
-        La excepcion es la decision; simplificarla la borraria en silencio."""
+        """Here commits go straight to main and the workflow status is the only
+        record that a commit passed the suite. A plain
+        `cancel-in-progress: true` leaves every commit overtaken by the next one
+        as "cancelled": they did not fail, they simply never answered. The
+        exception is the decision; simplifying it would erase it silently."""
         self.assertIn("cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}",
                       self.texto)
 
 
 class TestDependabot(unittest.TestCase):
-    """Lo que impide que el pin por SHA se fosilice.
+    """What keeps the SHA pin from fossilizing.
 
-    Un SHA clavado no envejece ruidosamente: se queda quieto y en silencio. El
-    pin y esta vigilancia son una sola decision partida en dos archivos, y
-    quitar la mitad de abajo no rompe nada visible.
+    A pinned SHA does not age noisily: it sits still and silent. The pin and
+    this watch are a single decision split across two files, and removing the
+    bottom half breaks nothing visible.
     """
 
     def setUp(self):
@@ -159,12 +161,13 @@ class TestDependabot(unittest.TestCase):
         self.assertIn("package-ecosystem: github-actions", self.texto)
 
     def test_NO_vigila_pip_a_proposito(self):
-        """La ausencia es la decision, no un olvido.
+        """The absence is the decision, not an oversight.
 
-        `openai==2.53.0` y el cierre transitivo del lock no son una dependencia
-        desactualizada: son la procedencia del entorno que produjo los
-        registros. Un PR semanal proponiendo subirlos entrenaria a fusionarlo
-        sin mirar, que es el descuido que el lock existe para impedir.
+        `openai==2.53.0` and the lock's transitive closure are not an outdated
+        dependency: they are the provenance of the environment that produced the
+        records. A weekly PR proposing to bump them would train the habit of
+        merging without looking, which is the carelessness the lock exists to
+        prevent.
         """
         self.assertNotIn("package-ecosystem: pip", self.texto)
         self.assertIn("requirements.lock.txt", self.texto,

@@ -1,26 +1,25 @@
 #!/bin/sh
 #
-# La suite entera antes de cada commit. ~12 s, cero llamadas a la API.
+# The whole suite before every commit. ~12 s, zero API calls.
 #
-# INSTALACION, una vez por clon:
+# INSTALLATION, once per clone:
 #
 #     git config core.hooksPath .githooks
 #
-# El hook se versiona aqui y se apunta git a este directorio en vez de copiarlo
-# a .git/hooks, porque .git/ no se versiona: un hook copiado se pierde en el
-# siguiente clon y nadie se entera de que dejo de correr.
+# The hook is versioned here and git is pointed at this directory instead of
+# copying it to .git/hooks, because .git/ is not versioned: a copied hook is
+# lost on the next clone and nobody notices that it stopped running.
 #
-# La suite no necesita venv —biblioteca estandar— y no escribe en results*/,
-# asi que este hook no puede ensuciar ningun registro ni depender de un entorno
-# instalado.
+# The suite needs no venv —standard library— and does not write to results*/,
+# so this hook cannot dirty any record or depend on an installed environment.
 #
-# PARA SALTARSELO:  git commit --no-verify
+# TO SKIP IT:  git commit --no-verify
 #
-# Tiene sentido en un commit de solo documentacion. En cualquier otro no: si un
-# snapshot falla, el numero esperado NO se actualiza y el commit no se fuerza;
-# se averigua que cambio y, si el cambio es legitimo, se fecha la errata en el
-# FINDINGS que publica la cifra. Esta escrito en el README, seccion "Las
-# pruebas y la procedencia".
+# It makes sense for a documentation-only commit. For any other it does not: if
+# a snapshot fails, the expected number is NOT updated and the commit is not
+# forced; you find out what changed and, if the change is legitimate, you date
+# the erratum in the FINDINGS that publishes the figure. It is written in the
+# README, section "The tests and the provenance".
 
 set -e
 

@@ -1,51 +1,52 @@
 """
-Registro de entorno para los JSON de resultados.
+Environment record for the results JSON files.
 
-MOTIVO. Hasta el 7 de agosto de 2026 ningun registro guardaba con que codigo ni
-con que interprete se habia producido. El desempate no determinista del voraz
-—descubierto el 6 de agosto, cuando ya habia dos peldanos cerrados sobre el— es
-exactamente el tipo de defecto que este modulo hace visible: dependia de
-`PYTHONHASHSEED`, que ahora queda anotado en cada archivo.
+MOTIVE. Until August 7, 2026 no record stored which code or which interpreter it
+had been produced with. The greedy search's non-deterministic tie-break
+—discovered on August 6, when two rungs were already closed on top of it— is
+exactly the kind of defect this module makes visible: it depended on
+`PYTHONHASHSEED`, which is now noted in every file.
 
-QUE SE GUARDA, Y PARA QUE SIRVE CADA CAMPO
+WHAT IS STORED, AND WHAT EACH FIELD IS FOR
 
-  recorded_at     cuando se produjo. Un registro re-corrido sin cambiar nada
-                  mueve SOLO este campo: `git diff` sobre el resto es entonces
-                  la comprobacion de que la cifra sigue reproduciendo.
-  python          version del interprete.
-  openai          version del SDK, o null si no esta instalado (los pasos que
-                  no llaman a la API corren con la biblioteca estandar).
-  platform        sistema y arquitectura.
-  pythonhashseed  el valor de la variable de entorno. `null` significa SIN
-                  FIJAR, es decir aleatorio: es informacion, no ausencia de
-                  ella. Cualquier cifra sensible al orden de iteracion de un
-                  set producida con `null` es sospechosa por construccion.
-  git_commit      commit de HEAD, o null fuera de un repositorio.
-  git_dirty       si el arbol tenia ALGO sin confirmar, en cualquier sitio.
-  code_dirty      si lo sin confirmar tocaba el codigo (CODE_ROOTS). Es el que
-                  decide si `git_commit` identifica lo que corrio: con `false`,
-                  ese commit ES el codigo, aunque `git_dirty` diga `true`.
+  recorded_at     when it was produced. A record re-run without changing
+                  anything moves ONLY this field: `git diff` over the rest is
+                  then the check that the figure still reproduces.
+  python          interpreter version.
+  openai          SDK version, or null if it is not installed (the steps that
+                  do not call the API run on the standard library).
+  platform        system and architecture.
+  pythonhashseed  the value of the environment variable. `null` means UNSET,
+                  that is, random: it is information, not the absence of it.
+                  Any figure sensitive to the iteration order of a set produced
+                  with `null` is suspect by construction.
+  git_commit      HEAD commit, or null outside a repository.
+  git_dirty       whether the tree had ANYTHING uncommitted, anywhere.
+  code_dirty      whether the uncommitted part touched the code (CODE_ROOTS).
+                  It is the one that decides whether `git_commit` identifies
+                  what ran: with `false`, that commit IS the code, even if
+                  `git_dirty` says `true`.
 
-  Los dos hacen falta y no son redundantes. `code_dirty` responde por el
-  codigo; `git_dirty` avisa de lo demas, y lo demas no siempre es inocuo:
-  `learned_subsumption`, `compare_runs` y `note_audit` leen registros de
-  `results*/` COMO ENTRADA, asi que un JSON modificado y sin confirmar tambien
-  rompe la trazabilidad de la cifra, sin tocar una linea de codigo. Acotar el
-  unico flag a CODE_ROOTS se lo habria callado.
+  Both are needed and they are not redundant. `code_dirty` answers for the
+  code; `git_dirty` warns about the rest, and the rest is not always harmless:
+  `learned_subsumption`, `compare_runs` and `note_audit` read records from
+  `results*/` AS INPUT, so a modified and uncommitted JSON also breaks the
+  traceability of the figure, without touching a line of code. Narrowing the
+  single flag to CODE_ROOTS would have kept quiet about it.
 
-  El caso comun, y el motivo de desdoblarlos (7 ago 2026): re-correr varios
-  registros seguidos. El primero corre con el arbol limpio y a partir de ahi
-  cada script ha dejado su propio JSON modificado, de modo que todos los demas
-  anotaban `git_dirty: true` por culpa de la salida del anterior. El flag no
-  mentia; medía otra cosa. Ver results2/NOTA_REGISTRO.md.
-  code_digest     sha256 (16 hex) del codigo que produce las cifras: todos los
-                  .py de harness/, peldano2/, peldano3/, peldano4/ y
-                  run_experiment.py. Identifica el codigo aunque el arbol este
-                  sucio o no haya git. `tests/` queda fuera a proposito:
-                  cambiar una prueba no cambia ningun numero.
+  The common case, and the reason for splitting them (Aug 7, 2026): re-running
+  several records back to back. The first runs with a clean tree and from then
+  on each script has left its own JSON modified, so all the others recorded
+  `git_dirty: true` because of the previous one's output. The flag was not
+  lying; it was measuring something else. See results2/NOTA_REGISTRO.md.
+  code_digest     sha256 (16 hex) of the code that produces the figures: every
+                  .py in harness/, peldano2/, peldano3/, peldano4/ and
+                  run_experiment.py. It identifies the code even if the tree is
+                  dirty or there is no git. `tests/` is left out on purpose:
+                  changing a test changes no number.
 
-Este modulo no mide nada y no lo importa ninguna de las especificaciones
-congeladas. Es metadato, y va bajo la clave `_env` para que se lea como tal.
+This module measures nothing and none of the frozen specifications import it. It
+is metadata, and it goes under the `_env` key so that it reads as such.
 """
 
 from __future__ import annotations
@@ -61,7 +62,7 @@ from typing import Any
 
 REPO = Path(__file__).resolve().parent.parent
 
-# Codigo que produce cifras. El orden no importa: el digest ordena por ruta.
+# Code that produces figures. Order does not matter: the digest sorts by path.
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
 
 DIGEST_CHARS = 16
@@ -77,7 +78,7 @@ def _openai_version() -> str | None:
 
 
 def _git(*args: str) -> str | None:
-    """Salida de un git acotado al repo, o None si git no esta o falla."""
+    """Output of a git call scoped to the repo, or None if git is absent/fails."""
     try:
         p = subprocess.run(
             ("git", "-C", str(REPO), *args),
@@ -100,7 +101,7 @@ def _source_files() -> list[Path]:
 
 
 def code_digest() -> str | None:
-    """Huella del codigo fuente. Depende del contenido, no de git."""
+    """Fingerprint of the source code. Depends on content, not on git."""
     files = _source_files()
     if not files:
         return None
@@ -114,11 +115,11 @@ def code_digest() -> str | None:
 
 
 def environment(**extra: Any) -> dict[str, Any]:
-    """El bloque `_env` que acompana a cada JSON de resultados."""
+    """The `_env` block that accompanies every results JSON."""
     commit = _git("rev-parse", "HEAD")
     arbol = _git("status", "--porcelain")
-    # El mismo status acotado al codigo. Con `--` git no confunde una ruta que
-    # no exista con una rama, y CODE_ROOTS mezcla directorios y un fichero.
+    # The same status scoped to the code. With `--`, git does not confuse a
+    # non-existent path with a branch, and CODE_ROOTS mixes dirs and a file.
     codigo = _git("status", "--porcelain", "--", *CODE_ROOTS)
     env: dict[str, Any] = {
         "recorded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -136,11 +137,11 @@ def environment(**extra: Any) -> dict[str, Any]:
 
 
 def describe() -> str:
-    """Una linea legible, para imprimir al pie de un informe."""
+    """A readable one-liner, to print at the foot of a report."""
     e = environment()
     seed = e["pythonhashseed"] or "sin fijar"
-    # La marca dice de que hay que desconfiar. Sin git no se marca nada: eso ya
-    # lo dice el propio commit.
+    # The mark says what to distrust. Without git nothing is marked: the commit
+    # itself already says that.
     if e["code_dirty"]:
         marca = "+codigo-sucio"
     elif e["git_dirty"]:

@@ -1,21 +1,21 @@
 """
-SNAPSHOT de los techos: las cifras publicadas, clavadas al digito.
+SNAPSHOT of the ceilings: the published figures, pinned to the digit.
 
-Los cuatro arbitrajes se miden sobre EXACTAMENTE las mismas 29 reglas y el
-mismo corpus. Lo unico que cambia entre ellos es como se resuelve que regla
-gana, que es justo lo que los cuatro peldanos investigan.
+The four arbitrations are measured over EXACTLY the same 29 rules and the same
+corpus. The only thing that changes between them is how it is resolved which
+rule wins, which is precisely what the four rungs investigate.
 
-  especificidad   0,5875   el defecto del peldano 1; 505 CONFLICT
-  subsuncion      0,6315   se abstiene en vez de inventar: 0 error silencioso
-  hibrido         1,0000   subsuncion + 199 aristas declaradas (peldano 2)
-  prioridad       1,0000   primera-que-casa, la semantica de la politica
+  specificity   0.5875   the rung 1 defect; 505 CONFLICT
+  subsumption   0.6315   abstains instead of inventing: 0 silent error
+  hybrid        1.0000   subsumption + 199 declared edges (rung 2)
+  priority      1.0000   first-match-wins, the semantics of the policy
 
-Si una de estas pruebas falla, el numero esperado NO se actualiza: se averigua
-que cambio y se fecha la errata en el FINDINGS correspondiente.
+If one of these tests fails, the expected number is NOT updated: you find out
+what changed and date the erratum in the corresponding FINDINGS.
 
-Fuentes: results/FINDINGS.md (0,5875 y 0,6315), results2/FINDINGS2.md (1,0000),
-CLAUDE.md Paso 0. Ninguna prueba de aqui llama a un `main()`, de modo que
-results/ y results2/ no se tocan.
+Sources: results/FINDINGS.md (0.5875 and 0.6315), results2/FINDINGS2.md
+(1.0000), CLAUDE.md Step 0. No test here calls a `main()`, so results/ and
+results2/ are not touched.
 """
 
 from __future__ import annotations
@@ -31,22 +31,22 @@ from peldano2.hidden_priority import build_hidden_engine
 
 from .fixtures import corpus, space, subsumption_only_engine
 
-# --- peldano 1, arbitraje por especificidad (RuleEngine.decide) -------------
+# --- rung 1, specificity arbitration (RuleEngine.decide) --------------------
 SPEC_ACTION, SPEC_IMPASSE, SPEC_CONFLICT = 1495, 0, 505
 SPEC_COVERAGE, SPEC_SILENT, SPEC_E2E = 0.7475, 0.2140, 0.5875
 SPEC_SILENT_ABS = 320
 
-# --- peldano 1, subsuncion sola --------------------------------------------
+# --- rung 1, subsumption alone ---------------------------------------------
 SUB_ACTION, SUB_CONFLICT, SUB_E2E = 1263, 737, 0.6315
 
-# --- peldano 2, hibrido ------------------------------------------------------
-HYB_DECLARED_EDGES = 199        # coste de autoria de esta politica
-HYB_SUBSUMPTION_PAIRS = 61      # pares que la estructura ya ordena sola
+# --- rung 2, hybrid ----------------------------------------------------------
+HYB_DECLARED_EDGES = 199        # authorship cost of this policy
+HYB_SUBSUMPTION_PAIRS = 61      # pairs the structure already orders on its own
 HYB_POSSIBLE_PAIRS = 29 * 28 // 2
 
 
 def medir(engine_decide) -> dict:
-    """Cuenta ACTION/IMPASSE/CONFLICT y aciertos sobre el corpus canonico."""
+    """Counts ACTION/IMPASSE/CONFLICT and correct decisions over the corpus."""
     out = Counter()
     ok = 0
     for case in corpus():
@@ -60,8 +60,8 @@ def medir(engine_decide) -> dict:
 
 
 class TestTechoPorEspecificidad(unittest.TestCase):
-    """PARADA 0 de CLAUDE.md: mientras esto no sea ~100%, toda tirada con LLM
-    queda anulada de antemano. Sigue sin serlo, y esa es la cifra registrada."""
+    """STOP 0 of CLAUDE.md: while this is not ~100%, every LLM run is voided in
+    advance. It still is not, and that is the recorded figure."""
 
     @classmethod
     def setUpClass(cls):
@@ -88,14 +88,14 @@ class TestTechoPorEspecificidad(unittest.TestCase):
         self.assertAlmostEqual(SPEC_CONFLICT / len(corpus()), 0.2525, places=4)
 
     def test_no_alcanza_la_PARADA_0(self):
-        """Documenta el estado, no lo aprueba: si algun dia esto falla porque
-        el techo subio a ~100%, hay que revisar CLAUDE.md entero."""
+        """Documents the state, does not approve it: if one day this fails
+        because the ceiling rose to ~100%, all of CLAUDE.md must be revisited."""
         self.assertLess(self.m["accuracy_end_to_end"], 0.995)
 
 
 class TestTechoPorPrioridad(unittest.TestCase):
-    """Con las reglas en el orden de HIDDEN_RULES, ganar la mas antigua ES la
-    semantica primera-que-casa de la politica. Debe dar 100% exacto."""
+    """With the rules in HIDDEN_RULES order, the oldest winning IS the
+    first-match-wins semantics of the policy. It must give exactly 100%."""
 
     @classmethod
     def setUpClass(cls):
@@ -111,8 +111,8 @@ class TestTechoPorPrioridad(unittest.TestCase):
         self.assertEqual(self.m["silent_error_rate"], 0.0)
 
     def test_el_orden_inverso_no_lo_consigue(self):
-        """El orden importa y no es un detalle: invertirlo destruye la
-        politica (12,8% en FINDINGS.md). Aqui basta con que no siga en 1,0."""
+        """The order matters and is not a detail: reversing it destroys the
+        policy (12.8% in FINDINGS.md). Here it is enough that it is not 1.0."""
         rules = build_rules()
         for i, r in enumerate(rules):
             r.born_at = -i
@@ -121,7 +121,7 @@ class TestTechoPorPrioridad(unittest.TestCase):
 
 
 class TestSubsuncionSola(unittest.TestCase):
-    """Nivel 1 del motor del peldano 2, sin ninguna arista declarada."""
+    """Level 1 of the rung 2 engine, with no declared edge at all."""
 
     @classmethod
     def setUpClass(cls):
@@ -134,13 +134,14 @@ class TestSubsuncionSola(unittest.TestCase):
         self.assertAlmostEqual(self.m["e2e"], SUB_E2E, places=4)
 
     def test_error_silencioso_cero(self):
-        """La propiedad que justifica el nivel 1: cuando no sabe, se abstiene.
-        Abstenerse es correcto; inventar es lo que produce error silencioso."""
+        """The property that justifies level 1: when it does not know, it
+        abstains. Abstaining is correct; inventing is what produces silent
+        error."""
         self.assertEqual(self.m["silent"], 0.0)
 
 
 class TestTechoHibrido(unittest.TestCase):
-    """PASO 0 del peldano 2. Este si pasa: 100% con la politica cargada."""
+    """STEP 0 of rung 2. This one does pass: 100% with the policy loaded."""
 
     @classmethod
     def setUpClass(cls):
@@ -158,9 +159,9 @@ class TestTechoHibrido(unittest.TestCase):
         self.assertEqual(len(self.declared), HYB_DECLARED_EDGES)
 
     def test_ninguna_arista_minima_es_rechazada(self):
-        """Las aristas se derivan del orden de capas verdadero, asi que el
-        validador no deberia tumbar ninguna. Si tumbase alguna, la suposicion
-        de que la subsuncion es sound sobre esta politica seria falsa."""
+        """The edges are derived from the true layer order, so the validator
+        should not knock any down. If it knocked one down, the assumption that
+        subsumption is sound over this policy would be false."""
         self.assertEqual(self.stats["rejected"], [])
 
     def test_la_estructura_ordena_61_pares_por_si_sola(self):
@@ -168,8 +169,8 @@ class TestTechoHibrido(unittest.TestCase):
         self.assertEqual(pares, HYB_SUBSUMPTION_PAIRS)
 
     def test_no_se_declara_el_orden_total(self):
-        """Declarar los 406 pares seria hacer trampa: mediria si funciona un
-        orden total, cuya respuesta ya se conoce."""
+        """Declaring all 406 pairs would be cheating: it would measure whether a
+        total order works, whose answer is already known."""
         self.assertEqual(HYB_POSSIBLE_PAIRS, 406)
         self.assertLess(self.stats["declared"], HYB_POSSIBLE_PAIRS)
 
@@ -182,8 +183,8 @@ class TestTechoHibrido(unittest.TestCase):
 
 
 class TestTablaDeReferenciaDelPeldano2(unittest.TestCase):
-    """`ceiling_check2.REF` imprime las cifras del peldano 1 como referencia.
-    Estan escritas a mano; esta prueba comprueba que siguen siendo ciertas."""
+    """`ceiling_check2.REF` prints the rung 1 figures as a reference. They are
+    written by hand; this test checks that they are still true."""
 
     def test_referencia_de_especificidad(self):
         e2e, silent, conflict = REF["especificidad (peldano 1)"]

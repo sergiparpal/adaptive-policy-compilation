@@ -1,91 +1,91 @@
-# Predicción registrada
+# Recorded prediction
 
-Fecha: 5 de agosto de 2026
-Tirada: n=2000, deepseek/deepseek-v4-flash, semilla 17
+Date: August 5, 2026
+Run: n=2000, deepseek/deepseek-v4-flash, seed 17
 
-| magnitud                  | predicción | resultado |
-|---------------------------|------------|-----------|
-| reutilización             |    0,70    |   0,158   |
-| nº de reglas              |     200    |     577   |
-| error silencioso          |    0,30    |   0,484   |
-| escalación último decil   |    0,20    |   0,670   |
+| quantity                  | prediction | result |
+|---------------------------|------------|--------|
+| reuse                     |    0.70    |  0.158 |
+| number of rules           |     200    |    577 |
+| silent error              |    0.30    |  0.484 |
+| escalation, last decile   |    0.20    |  0.670 |
 
-Umbral de parada: si la reutilización < 0,30 , esto no está induciendo y el
-proyecto se replantea.
+Stopping threshold: if reuse < 0.30, this is not inducing anything and the
+project gets rethought.
 
-Predicción informada, no ciega: hecha tras ver la tirada de n=100, el análisis
-de R0002 (cubre el 19,1% del corpus, nació de un caso resuelto por el catch-all
-H29) y el punto ciego de prior_tickets_30d (decide el 14,5% del corpus, usado 0
-veces en 47 condiciones).
+An informed prediction, not a blind one: made after seeing the n=100 run, the
+analysis of R0002 (covers 19.1% of the corpus, born from a case resolved by the
+catch-all H29) and the blind spot around prior_tickets_30d (decides 14.5% of the
+corpus, used 0 times in 47 conditions).
 
-Frente a la predicción de Claude (0,5-0,7 de reutilización, exceso de reglas):
-predigo reutilización más alta y menos reglas.
+Against Claude's prediction (0.5-0.7 reuse, excess rules): I predict higher reuse
+and fewer rules.
 
-La tirada queda anulada por techo del motor.
+The run is voided by the engine ceiling.
 
-## Anulación — verificada el 5 de agosto de 2026
+## Voiding — verified on August 5, 2026
 
-La tirada NO mide la hipótesis. Con la política oculta perfecta cargada (29
-reglas, ningún LLM), el motor alcanza 58,75% de exactitud y declara CONFLICT en
-el 25,3% de los casos. El techo de error silencioso era ~0,41 aunque el modelo
-hubiera inducido la política exacta. Obtuvo 0,484: quedó a ~7 puntos de un techo
-inalcanzable.
+The run does NOT measure the hypothesis. With the perfect hidden policy loaded
+(29 rules, no LLM), the engine reaches 58.75% accuracy and declares CONFLICT on
+25.3% of the cases. The silent-error ceiling was ~0.41 even if the model had
+induced the exact policy. It obtained 0.484: it came within ~7 points of an
+unreachable ceiling.
 
-Causa: `RuleEngine.decide` arbitra por especificidad (nº de condiciones). La
-política oculta es una lista priorizada por capas, y prioridad y especificidad
-son casi ortogonales en ella. Agravante: `decide` devuelve CONFLICT antes de
-aplicar el desempate por antigüedad, así que el desempate es inalcanzable justo
-cuando importaría. Eso convierte 83,2% en 58,75%.
+Cause: `RuleEngine.decide` arbitrates by specificity (number of conditions). The
+hidden policy is a list prioritized by layers, and priority and specificity are
+nearly orthogonal in it. Aggravating factor: `decide` returns CONFLICT before
+applying the age tie-break, so the tie-break is unreachable precisely when it
+would matter. That turns 83.2% into 58.75%.
 
-El DSL NO es el culpable: verificado exhaustivamente sobre las 134.400
-combinaciones del espacio de casos que las 29 reglas en DSL son equivalentes a
-sus lambdas y que primera-que-casa las reproduce exactamente. Fallo de
-ejecución, no de representación.
+The DSL is NOT the culprit: verified exhaustively over the 134,400 combinations
+of the case space that the 29 rules in the DSL are equivalent to their lambdas
+and that first-match-wins reproduces them exactly. An execution failure, not a
+representation failure.
 
-### Por qué el umbral de parada no se aplica
+### Why the stopping threshold does not apply
 
-594 de 632 escalaciones (94%) fueron CONFLICT, que es justo lo que este
-arbitraje sobreproduce. Conflicto → regla nueva → más solapamiento → más
-conflicto. Reutilización, nº de reglas, reglas muertas, curva de escalación y
-ambos contrafactuales de acción son productos de ese bucle. El 0,158 no mide si
-el LLM induce o memoriza.
+594 of 632 escalations (94%) were CONFLICT, which is exactly what this
+arbitration overproduces. Conflict → new rule → more overlap → more conflict.
+Reuse, number of rules, dead rules, the escalation curve and both action
+counterfactuals are products of that loop. The 0.158 does not measure whether
+the LLM induces or memorizes.
 
-### Qué SÍ sobrevive (independiente del arbitraje)
+### What DOES survive (independent of the arbitration)
 
-- Generalización desde el residuo: la región `dashboard AND severity<=3` toca 15
-  reglas ocultas y T1_GENERAL solo es verdad en el 21,5%. El caso de origen lo
-  resuelve H29, el catch-all. El proponente ve una respuesta correcta y no puede
-  saber que lo es por descarte. Ocurrió en las dos tiradas, de formas distintas.
-- Ceguera atributiva: prior_tickets_30d en 6,3% de las condiciones escritas
-  frente al 14,5% de casos que decide; language en 0,2% pese a existir H21.
-- La compilación destruyó capacidad: SECURITY_INCIDENT, 3/3 aciertos cuando el
-  caso llegó al LLM, 0/17 cuando lo resolvió una regla compilada.
+- Generalization from the residue: the region `dashboard AND severity<=3` touches
+  15 hidden rules and T1_GENERAL is the truth in only 21.5% of it. The
+  originating case is resolved by H29, the catch-all. The proposer sees a correct
+  answer and cannot know that it is correct by elimination. It happened in both
+  runs, in different ways.
+- Attribute blindness: prior_tickets_30d in 6.3% of the conditions written
+  against the 14.5% of cases it decides; language in 0.2% despite H21 existing.
+- Compilation destroyed capability: SECURITY_INCIDENT, 3/3 correct when the case
+  reached the LLM, 0/17 when a compiled rule resolved it.
 
-### El fallo de diseño de fondo
+### The underlying design failure
 
-Ningún criterio sintáctico recupera esta política. Demostración con las propias
-reglas ocultas: H01 (2 condiciones) debe ganar a H03 (1); H16 (1) debe ganar a
-H24 (2). Ninguna función monótona de la especificidad satisface ambas. Y el
-arbitraje por orden de llegada tampoco: mismas 29 reglas, orden de diseño 100%,
-orden inverso 12,8%, orden aleatorio 49,3% de media sobre 200 muestras. En una
-base aprendida el orden de llegada va al revés del correcto, porque los primeros
-casos vienen de la distribución común y engendran reglas de defecto, mientras
-las excepciones nacen tarde.
+No syntactic criterion recovers this policy. Demonstration with the hidden rules
+themselves: H01 (2 conditions) must beat H03 (1); H16 (1) must beat H24 (2). No
+monotone function of specificity satisfies both. And arrival-order arbitration
+does not work either: same 29 rules, design order 100%, reverse order 12.8%,
+random order 49.3% on average over 200 samples. In a learned base the arrival
+order runs backwards from the correct one, because the first cases come from the
+common distribution and beget default rules, while the exceptions are born late.
 
-CONCLUSIÓN: la compilación por impasse aprende reglas, pero no tiene ningún
-mecanismo para aprender prioridad. En una política estratificada la estructura
-vive en la prioridad. Es una limitación del diseño, no del modelo ni del motor.
+CONCLUSION: compilation by impasse learns rules, but has no mechanism whatsoever
+for learning priority. In a stratified policy the structure lives in the
+priority. It is a limitation of the design, not of the model or the engine.
 
-### Errores de proceso, para el registro
+### Process errors, for the record
 
-- Yo (Sergi) di por buena la realizabilidad sin verificarla.
-- Claude escribió en el README que la política era "enteramente expresable en el
-  DSL" habiendo comprobado solo las condiciones, no la semántica de resolución.
-  También predijo que la tormenta de conflictos de random_k "probablemente no
-  mordería" con un LLM real. Fue el mecanismo dominante.
-- ChatGPT advirtió exactamente de este riesgo (la verdad oculta debe ser
-  expresable en el DSL, si no el fracaso es ininterpretable). Se aceptó la
-  advertencia y no se implementó la comprobación.
-- El defecto lo encontró una verificación que costó cero llamadas a la API y que
-  debió correrse ANTES de la tirada: cargar la política verdadera en el motor y
-  medir su techo.
+- I (Sergi) took realizability for granted without verifying it.
+- Claude wrote in the README that the policy was "entirely expressible in the
+  DSL" having checked only the conditions, not the resolution semantics. It also
+  predicted that random_k's conflict storm "probably would not bite" with a real
+  LLM. It was the dominant mechanism.
+- ChatGPT warned of exactly this risk (the hidden truth must be expressible in
+  the DSL, otherwise the failure is uninterpretable). The warning was accepted
+  and the check was not implemented.
+- The defect was found by a verification that cost zero API calls and that
+  should have been run BEFORE the run: load the true policy into the engine and
+  measure its ceiling.

@@ -1,260 +1,261 @@
-# Peldaño 3 — hallazgo
+# Rung 3 — finding
 
-Registro. 6 de agosto de 2026. Base: las 577 reglas que el LLM escribió en el
-peldaño 1 (`results/llm_run.json`). Corpus de 2000 casos, semilla 17. Cero
-llamadas al LLM en todo el peldaño.
+Record. August 6, 2026. Base: the 577 rules the LLM wrote in rung 1
+(`results/llm_run.json`). Corpus of 2000 cases, seed 17. Zero LLM calls in the
+whole rung.
 
 ---
 
-## 1. El resultado central
+## 1. The central result
 
-**En el peldaño 1 el material contenía la señal y el arbitraje la destruía.**
+**In rung 1 the material contained the signal and the arbitration destroyed it.**
 
-Las 577 reglas cubren los 2000 casos —ni uno queda sin regla que lo case— y en
-el **90,1%** alguna de las reglas que casan tiene la acción correcta. Ese número
-es el techo exacto de cualquier orden total: si ninguna regla que cubre un caso
-tiene la acción correcta, ningún orden lo salva. Sale sin buscar nada.
+The 577 rules cover the 2000 cases — not one is left without a rule that matches
+it — and in **90.1%** of them some matching rule has the correct action. That
+number is the exact ceiling of any total order: if no rule covering a case has
+the correct action, no order saves it. It comes out without searching for
+anything.
 
-> **[ERRATA 2026-08-06]** El 90,1% es una **cota superior por cobertura por
-> caso**, no un óptimo global demostrado. `ceiling()` comprueba, caso a caso,
-> que exista *alguna* regla correcta entre las que lo cubren. No comprueba que
-> exista **un solo orden total** capaz de hacer ganar simultáneamente a la regla
-> correcta en todos esos casos, que es una condición estrictamente más fuerte.
-> Como cota superior es válida —ningún orden puede superarla— pero el máximo
-> realmente alcanzable por algún orden puede ser menor. Llamarla "techo" a secas
-> induce a leerla como alcanzable. Ver la errata del apartado 4.
+> **[ERRATUM 2026-08-06]** The 90.1% is an **upper bound by per-case coverage**,
+> not a demonstrated global optimum. `ceiling()` checks, case by case, that
+> *some* correct rule exists among those covering it. It does not check that
+> **a single total order** exists capable of making the correct rule win
+> simultaneously in all those cases, which is a strictly stronger condition. As
+> an upper bound it is valid — no order can exceed it — but the maximum actually
+> attainable by some order may be lower. Calling it a "ceiling" without
+> qualification invites reading it as attainable. See the erratum in section 4.
 
-Buscando un orden sobre la mitad del corpus y evaluándolo sobre la otra mitad,
-nunca vista por el orden:
+Searching for an order over half the corpus and evaluating it on the other half,
+never seen by the order:
 
 ```
               train              test               GAP
-puro       0.7779±0.0275     0.7711±0.0352     0.0068±0.0203
-híbrido    0.7848±0.0080     0.7496±0.0093     0.0351±0.0118
+pure       0.7779±0.0275     0.7711±0.0352     0.0068±0.0203
+hybrid     0.7848±0.0080     0.7496±0.0093     0.0351±0.0118
 ```
 
-**El gap es esencialmente cero.** Dos de las cinco particiones lo tienen
-negativo (−0,0161 y −0,0090), y la dispersión entre particiones (±0,0352) es
-cinco veces el gap medio (0,0068): el sobreajuste del orden no es detectable por
-encima del ruido de partición.
+**The gap is essentially zero.** Two of the five splits have it negative
+(−0.0161 and −0.0090), and the dispersion across splits (±0.0352) is five times
+the mean gap (0.0068): overfitting of the order is not detectable above the
+split noise.
 
-Contra las referencias, todo en test:
+Against the references, all on test:
 
 ```
-techo                                       0.8995
-orden buscado (voraz), puro                 0.7518
-orden buscado (voraz), híbrido              0.7317
-orden de llegada (born_at)                  0.5216
-orden aleatorio (media de 50)               0.4227
-arbitraje por especificidad                 0.1829
-subsunción sola (conflicto = fallo)         0.0412
+ceiling                                     0.8995
+searched order (greedy), pure               0.7518
+searched order (greedy), hybrid             0.7317
+arrival order (born_at)                     0.5216
+random order (mean of 50)                   0.4227
+specificity-based arbitration               0.1829
+subsumption alone (conflict = failure)      0.0412
 ```
 
-Cuatro veces la especificidad. Y el orden de llegada —que el peldaño 1 dio por
-inservible— ya saca 0,52: el arbitraje por especificidad era peor que no ordenar
-casi nada.
+Four times specificity. And the arrival order — which rung 1 wrote off as
+useless — already scores 0.52: specificity-based arbitration was worse than
+barely ordering anything.
 
-Las dos clases críticas son **100% recuperables**: `SECURITY_INCIDENT` (20 casos)
-y `ONCALL_ESCALATION` (7). En el peldaño 1 dieron **0/17** y **0/7**. Las reglas
-correctas estaban escritas. El motor nunca las dejó ganar.
+The two critical classes are **100% recoverable**: `SECURITY_INCIDENT` (20 cases)
+and `ONCALL_ESCALATION` (7). In rung 1 they gave **0/17** and **0/7**. The
+correct rules were written. The engine never let them win.
 
-El arbitraje híbrido del peldaño 2 es **peor** que el orden puro sobre una base
-aprendida (0,7496 frente a 0,7711) y es el único con gap consistente. La
-subsunción cuesta 0,047 de techo: elimina de la puja reglas correctas. Coherente
-con lo medido en el peldaño 1, donde sobre una base aprendida no resultó sound.
+Rung 2's hybrid arbitration is **worse** than pure ordering over a learned base
+(0.7496 versus 0.7711) and is the only one with a consistent gap. Subsumption
+costs 0.047 of ceiling: it removes correct rules from the bidding. Consistent
+with what was measured in rung 1, where it did not turn out sound over a learned
+base.
 
 ---
 
-## 2. Problema de orden y problema de material son cosas distintas
+## 2. An ordering problem and a material problem are different things
 
-Los peldaños 1 y 2 los medían juntos. Separados, con el techo por clase:
+Rungs 1 and 2 measured them together. Separated, with the per-class ceiling:
 
 ```
-clase                   corpus  techo  irrecuperable        naturaleza del fallo
-T2_TECHNICAL               726    714       12   1.7%       orden
-SELF_SERVICE_DEFLECT       495    457       38   7.7%       orden
-BILLING_SPECIALIST         271    271        0   0.0%       orden
-T1_GENERAL                 255    255        0   0.0%       orden
-SECURITY_INCIDENT           20     20        0   0.0%       orden
-ONCALL_ESCALATION            7      7        0   0.0%       orden
-T3_ENGINEERING             117     39       78  66.7%       MATERIAL
-ACCOUNT_MANAGER            109     39       70  64.2%       MATERIAL
+class                   corpus  ceiling  unrecoverable      nature of the failure
+T2_TECHNICAL               726      714       12   1.7%     ordering
+SELF_SERVICE_DEFLECT       495      457       38   7.7%     ordering
+BILLING_SPECIALIST         271      271        0   0.0%     ordering
+T1_GENERAL                 255      255        0   0.0%     ordering
+SECURITY_INCIDENT           20       20        0   0.0%     ordering
+ONCALL_ESCALATION            7        7        0   0.0%     ordering
+T3_ENGINEERING             117       39       78  66.7%     MATERIAL
+ACCOUNT_MANAGER            109       39       70  64.2%     MATERIAL
 ```
 
-- **Problema de orden.** El material está escrito y lo que decide si se
-  aprovecha es el arbitraje, o la función objetivo. Seis clases de ocho, 1774 de
-  los 2000 casos.
-- **Problema de material.** Dos tercios de `T3_ENGINEERING` y de
-  `ACCOUNT_MANAGER` no tienen ni una sola regla correcta que los cubra. Ningún
-  orden, ninguna función objetivo y ningún arbitraje los salva. Ahí el
-  proponente no escribió lo que hacía falta.
+- **Ordering problem.** The material is written and what decides whether it gets
+  used is the arbitration, or the objective function. Six classes out of eight,
+  1774 of the 2000 cases.
+- **Material problem.** Two thirds of `T3_ENGINEERING` and of `ACCOUNT_MANAGER`
+  do not have a single correct rule covering them. No order, no objective
+  function and no arbitration saves them. There the proposer did not write what
+  was needed.
 
-La distinción importa porque las reparaciones son opuestas: una se arregla en el
-motor y la otra solo en el proponente. Medidas juntas, ambas se leían como "el
-LLM no funciona".
+The distinction matters because the repairs are opposite: one is fixed in the
+engine and the other only in the proposer. Measured together, both read as "the
+LLM does not work".
 
 ---
 
-## 3. La perilla no declarada
+## 3. The undeclared knob
 
-Qué clases se sacrifican es una elección de función objetivo, y en el peldaño 1
-la estaba fijando el arbitraje sin que nadie la hubiera puesto ahí.
+Which classes get sacrificed is a choice of objective function, and in rung 1 the
+arbitration was setting it without anyone having put it there.
 
-El voraz por defecto maximiza aciertos totales. La variante balanceada pesa cada
-caso por 1/|clase| en train, de modo que cada clase aporta lo mismo:
-
-```
-objetivo                   e2e test   acierto balanceado
-aciertos totales             0.7707               0.5241
-balanceado por clase         0.7150               0.6936
-                             -5,6 pts             +17,0 pts
-```
-
-Por clase, en test (partición 0):
+The default greedy search maximizes total correct decisions. The balanced variant
+weights each case by 1/|class| on train, so that every class contributes equally:
 
 ```
-clase                     test  techo   total  balanc.   % techo tot  % techo bal
-T2_TECHNICAL               364    357     318      295           89%          83%
-SELF_SERVICE_DEFLECT       242    220     191      157           87%          71%
-BILLING_SPECIALIST         136    136      90      110           66%          81%
-T1_GENERAL                 128    128     128      128          100%         100%
-T3_ENGINEERING              57     20      14        5           70%          25%
-ACCOUNT_MANAGER             55     21       0        5            0%          24%
-SECURITY_INCIDENT           10     10       7       10           70%         100%
-ONCALL_ESCALATION            3      3       0        3            0%         100%
+objective                  e2e test   balanced accuracy
+total correct                0.7707              0.5241
+class-balanced               0.7150              0.6936
+                             -5.6 pts            +17.0 pts
 ```
 
-Por **5,6 puntos de agregado**, `ONCALL_ESCALATION` pasa de 0/3 a **3/3** y
-`SECURITY_INCIDENT` de 7/10 a **10/10** — las dos clases críticas al 100% de su
-techo. `BILLING_SPECIALIST` mejora de 66% a 81%.
+By class, on test (split 0):
 
-Lo pagan `SELF_SERVICE_DEFLECT` (87% → 71%), `T2_TECHNICAL` (89% → 83%) y sobre
-todo **`T3_ENGINEERING`, que empeora de 70% a 25%**. Balancear no es gratis ni es
-uniformemente mejor: redistribuye, y una de las clases que pierde es una de las
-que menos techo tenía.
+```
+class                     test  ceiling  total  balanc.  % ceil tot  % ceil bal
+T2_TECHNICAL               364      357    318      295         89%         83%
+SELF_SERVICE_DEFLECT       242      220    191      157         87%         71%
+BILLING_SPECIALIST         136      136     90      110         66%         81%
+T1_GENERAL                 128      128    128      128        100%        100%
+T3_ENGINEERING              57       20     14        5         70%         25%
+ACCOUNT_MANAGER             55       21      0        5          0%         24%
+SECURITY_INCIDENT           10       10      7       10         70%        100%
+ONCALL_ESCALATION            3        3      0        3          0%        100%
+```
 
-El punto no es que el balanceado sea preferible. Es que la elección existe, es
-explícita en la función objetivo, y antes se estaba tomando sin declararla. Los
-0/17 de `SECURITY_INCIDENT` del peldaño 1 no eran una propiedad del sistema: eran
-la consecuencia no declarada de maximizar aciertos totales con un arbitraje que
-además lo hacía mal.
+For **5.6 points of aggregate**, `ONCALL_ESCALATION` goes from 0/3 to **3/3** and
+`SECURITY_INCIDENT` from 7/10 to **10/10** — the two critical classes at 100% of
+their ceiling. `BILLING_SPECIALIST` improves from 66% to 81%.
+
+It is paid for by `SELF_SERVICE_DEFLECT` (87% → 71%), `T2_TECHNICAL` (89% → 83%)
+and above all **`T3_ENGINEERING`, which gets worse, from 70% to 25%**. Balancing
+is neither free nor uniformly better: it redistributes, and one of the classes
+that loses is one of those that had the least ceiling.
+
+The point is not that balancing is preferable. It is that the choice exists, is
+explicit in the objective function, and was previously being made without being
+declared. Rung 1's 0/17 for `SECURITY_INCIDENT` was not a property of the system:
+it was the undeclared consequence of maximizing total correct decisions with an
+arbitration that also did it badly.
 
 ---
 
-## 4. Salvedades
+## 4. Caveats
 
-Todas necesarias para que el resultado no se lea como más de lo que es.
+All of them necessary so that the result is not read as more than it is.
 
-**La búsqueda usa el oráculo.** El voraz elige cada regla contando aciertos y
-fallos contra `true_action` sobre los casos de train. Es supervisión que el bucle
-en sombra no tiene nunca: su único disparador es impasse o conflicto, jamás "la
-respuesta era incorrecta". Lo demostrado es que **el material contiene la señal**,
-no que sea alcanzable sin etiquetas.
+**The search uses the oracle.** The greedy search picks each rule by counting
+correct and incorrect decisions against `true_action` over the train cases. That
+is supervision the shadow loop never has: its only trigger is an impasse or a
+conflict, never "the answer was incorrect". What is demonstrated is that **the
+material contains the signal**, not that it is attainable without labels.
 
-**Las 50 etiquetas compran el orden, no el material.** Con supervisión parcial
-—muestreo aleatorio simple del train, porque estratificar exigiría conocer las
-etiquetas que se racionan— la curva aguanta:
+**The 50 labels buy the order, not the material.** With partial supervision —
+simple random sampling of the train set, because stratifying would require
+knowing the very labels being rationed — the curve holds up:
 
 ```
- fracción  etiquetas    test e2e     desv      min      max
-     100%       1005      0.7707   0.0374   0.7425   0.8430
-      25%        251      0.7681   0.0326   0.7290   0.8522
-      10%        100      0.7488   0.0352   0.6500   0.8053
-       5%         50      0.7049   0.0535   0.5596   0.8241
-       1%         10      0.5251   0.0628   0.3850   0.6577
+ fraction    labels    test e2e       sd      min      max
+     100%      1005      0.7707   0.0374   0.7425   0.8430
+      25%       251      0.7681   0.0326   0.7290   0.8522
+      10%       100      0.7488   0.0352   0.6500   0.8053
+       5%        50      0.7049   0.0535   0.5596   0.8241
+       1%        10      0.5251   0.0628   0.3850   0.6577
 ```
 
-Al 25% la pérdida es 0,0026, prácticamente gratis. Al 5% —50 casos, el 2,5% del
-corpus— quedan 0,7049, el 78% del techo. Al 1% se desploma a 0,5251, que es el
-orden de llegada sin buscar nada. Pero **esas 50 etiquetas no son la supervisión
-total del sistema**: las 577 reglas costaron 632 llamadas al LLM sobre el corpus
-completo, ya pagadas. Decir "funciona con 50 etiquetas" omitiría ese coste.
+At 25% the loss is 0.0026, practically free. At 5% — 50 cases, 2.5% of the corpus
+— 0.7049 remains, 78% of the ceiling. At 1% it collapses to 0.5251, which is the
+arrival order without searching for anything. But **those 50 labels are not the
+system's total supervision**: the 577 rules cost 632 LLM calls over the full
+corpus, already paid for. Saying "it works with 50 labels" would omit that cost.
 
-**Varianza alta con presupuesto bajo.** Al 5%, desviación 0,0535 y rango
-0,5596–0,8241. La media aguanta; un sorteo concreto de 50 etiquetas puede dar
-0,56.
+**High variance at low budget.** At 5%, standard deviation 0.0535 and range
+0.5596–0.8241. The mean holds up; one particular draw of 50 labels can give 0.56.
 
-**El voraz no tiene garantía global.** Es el voraz clásico de listas de decisión:
-óptimo en cada paso local sobre los casos vivos, sin razón de aproximación
-conocida para este objetivo, y sin búsqueda local posterior. Medido: buscando el
-orden **sobre el propio test** queda todavía a **0,1187** de media por debajo del
-techo. Casi todo el hueco entre 0,77 y 0,90 es debilidad del método de búsqueda,
-no falta de generalización.
+**The greedy search has no global guarantee.** It is the classic greedy search
+for decision lists: locally optimal at each step over the live cases, with no
+known approximation ratio for this objective, and with no subsequent local
+search. Measured: searching for the order **over the test set itself** still
+leaves it **0.1187** below the ceiling on average. Almost all the gap between
+0.77 and 0.90 is weakness of the search method, not a lack of generalization.
 
-> **[ERRATA 2026-08-06]** La última frase no está demostrada. Lo medido es que
-> el voraz, buscando sobre el propio test, se queda a 0,1187 de la cota. Eso
-> separa limpiamente búsqueda de generalización —el hueco no viene de evaluar
-> fuera de muestra— pero **no establece que esos 0,1187 sean alcanzables por
-> orden alguno**. La cota es por cobertura caso a caso (ver errata del apartado
-> 1) y el máximo real sobre órdenes totales puede estar por debajo. La
-> afirmación correcta es: *el hueco entre 0,77 y 0,90 no se explica por falta de
-> generalización; cuánto de él es debilidad del voraz y cuánto es cota
-> inalcanzable queda sin medir.* Haría falta optimización exacta o una cota
-> global más fuerte.
+> **[ERRATUM 2026-08-06]** The last sentence is not demonstrated. What was
+> measured is that the greedy search, searching over the test set itself, stays
+> 0.1187 away from the bound. That cleanly separates search from generalization
+> — the gap does not come from evaluating out of sample — but it **does not
+> establish that those 0.1187 are attainable by any order at all**. The bound is
+> by per-case coverage (see the erratum in section 1) and the real maximum over
+> total orders may be lower. The correct claim is: *the gap between 0.77 and 0.90
+> is not explained by a lack of generalization; how much of it is greedy-search
+> weakness and how much is an unattainable bound remains unmeasured.* Exact
+> optimization or a stronger global bound would be needed.
 >
-> Evidencia adicional posterior de que el voraz es débil, aunque tampoco acota
-> el óptimo: en el peldaño 4 resultó que perturbar su objetivo con ruido lo
-> mejora contra la verdad (0,7574 → 0,8337), y que cambiar el desempate mueve el
-> resultado ~0,011.
+> Further later evidence that the greedy search is weak, though it does not bound
+> the optimum either: in rung 4 it turned out that perturbing its objective with
+> noise improves it against the truth (0.7574 → 0.8337), and that changing the
+> tie-break moves the result by ~0.011.
 
-**Las reglas se aprendieron sobre el corpus completo.** `born_at` va de 0 a 1998.
-El test no son datos no vistos por las reglas; son datos no vistos por el orden.
-La partición controla el sobreajuste del orden y solo ese. El gap de un sistema
-entero sería mayor. Por eso la partición se agrupó por identidad de caso: el
-23,1% del corpus tiene un gemelo exacto y una partición al azar habría premiado
-memorizar.
-
----
-
-## 5. Qué reescribe del peldaño 1
-
-`results/FINDINGS.md` es registro cerrado y **no se modifica**. Se corrige por
-encima, no por dentro. Lo que cambia es esto:
-
-**El titular no era "el LLM no induce estructura reutilizable". Era "el LLM
-inducía estructura y el motor la destruía".**
-
-Lo que sigue en pie de aquel registro, sin tocar:
-
-- la prioridad en una política estratificada no es recuperable de la forma
-  sintáctica de las reglas; las tres vías (especificidad, orden de llegada,
-  subsunción) siguen falsadas
-- el techo del motor del peldaño 1 con la política perfecta cargada: 58,75%
-- la formulación de proxy sintáctico de prioridad autorizada
-- la generalización desde el residuo del catch-all
-- la ceguera atributiva del proponente
-
-Lo que queda re-encuadrado:
-
-- **El material era mucho mejor de lo que cualquier métrica de aquella tirada
-  sugería.** Reutilización 0,158, error silencioso 0,484 y e2e 0,353 describían
-  lo que el arbitraje extraía, no lo que las reglas contenían. El techo de esas
-  mismas reglas es 0,90.
-- **"La compilación destruyó capacidad"** era cierto y ahora es más preciso: no
-  es que las reglas compiladas fueran malas, es que las correctas existían y
-  nunca ganaban. `SECURITY_INCIDENT` es 100% recuperable y dio 0/17.
-- **El umbral de parada** (reutilización < 0,30) se aplicó a una cifra que ya
-  estaba anulada por el techo del motor. Este peldaño no lo rehabilita —la
-  reutilización sigue sin medirse limpiamente— pero confirma que detener el
-  proyecto por aquel 0,158 habría sido detenerlo por una medición del arbitraje.
-
-Lo que este peldaño **no** demuestra: que el bucle pueda encontrar ese orden. La
-búsqueda ve etiquetas; el bucle no. Sigue abierto.
+**The rules were learned over the full corpus.** `born_at` runs from 0 to 1998.
+The test set is not data unseen by the rules; it is data unseen by the order. The
+split controls overfitting of the order and only that. The gap of a whole system
+would be larger. That is why the split was grouped by case identity: 23.1% of the
+corpus has an exact twin and a random split would have rewarded memorizing.
 
 ---
 
-## Archivos
+## 5. What it rewrites of rung 1
+
+`results/FINDINGS.md` is a closed record and **is not modified**. It is corrected
+from above, not from within. What changes is this:
+
+**The headline was not "the LLM does not induce reusable structure". It was "the
+LLM was inducing structure and the engine was destroying it".**
+
+What still stands from that record, untouched:
+
+- priority in a stratified policy is not recoverable from the syntactic shape of
+  the rules; the three routes (specificity, arrival order, subsumption) remain
+  falsified
+- rung 1's engine ceiling with the perfect policy loaded: 58.75%
+- the formulation of a syntactic proxy for authored priority
+- generalization from the catch-all's residue
+- the proposer's attribute blindness
+
+What gets re-framed:
+
+- **The material was far better than any metric from that run suggested.** Reuse
+  0.158, silent error 0.484 and e2e 0.353 described what the arbitration
+  extracted, not what the rules contained. The ceiling of those same rules is
+  0.90.
+- **"Compilation destroyed capability"** was true and is now more precise: it is
+  not that the compiled rules were bad, it is that the correct ones existed and
+  never won. `SECURITY_INCIDENT` is 100% recoverable and gave 0/17.
+- **The stopping threshold** (reuse < 0.30) was applied to a figure that was
+  already voided by the engine ceiling. This rung does not rehabilitate it —
+  reuse still has not been measured cleanly — but it confirms that stopping the
+  project over that 0.158 would have meant stopping it over a measurement of the
+  arbitration.
+
+What this rung does **not** demonstrate: that the loop can find that order. The
+search sees labels; the loop does not. Still open.
+
+---
+
+## Files
 
 ```
-peldano3/order_search.py         techo exacto, búsqueda voraz, partición, referencias
-peldano3/budget_and_balance.py   presupuesto de etiquetas y voraz balanceado
+peldano3/order_search.py         exact ceiling, greedy search, split, references
+peldano3/budget_and_balance.py   label budget and balanced greedy
 
-results3/order_search.json       techos, cinco particiones, orden hallado
-results3/budget_and_balance.json curva de supervisión y comparación de objetivos
+results3/order_search.json       ceilings, five splits, order found
+results3/budget_and_balance.json supervision curve and objective comparison
 ```
 
-Reproducible con `python3 -m peldano3.order_search` y
-`python3 -m peldano3.budget_and_balance`. Cero llamadas a la API.
+Reproducible with `python3 -m peldano3.order_search` and
+`python3 -m peldano3.budget_and_balance`. Zero API calls.
 
-El Paso B —ILP (Popper/ILASP) como medidor del orden de capas y como competidor
-que induce reglas por su cuenta— no se ha corrido. Queda sin autorizar.
+Step B — ILP (Popper/ILASP) as a gauge of the layer order and as a competitor
+inducing rules on its own — has not been run. It remains unauthorized.

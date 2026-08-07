@@ -1,18 +1,18 @@
 """
-El bucle en sombra y las metricas que produce.
+The shadow loop and the metrics it produces.
 
-Aqui se definen las cifras que citan los cuatro FINDINGS, asi que lo que se
-prueba es su SEMANTICA, no su valor:
+The figures the four FINDINGS cite are defined here, so what is tested is their
+SEMANTICS, not their value:
 
-  * error silencioso = fallos entre los casos que una regla decidio con total
-    confianza. Se calcula SOLO sobre ACTION. Un impasse no es un error
-    silencioso: el sistema sabe que no sabe.
-  * reutilizacion = fraccion de reglas que llegaron a dispararse despues de
-    nacer. Un disparo es un caso resuelto sin llamar al LLM.
-  * el UNICO disparador de escalacion es el impasse (de cobertura o de
-    conflicto), nunca "la respuesta era incorrecta". Es justo esa separacion la
-    que hace medible el error silencioso: si el bucle escalara al equivocarse,
-    estaria usando el oraculo y no habria error silencioso que medir.
+  * silent error = failures among the cases a rule decided with complete
+    confidence. Computed ONLY over ACTION. An impasse is not a silent error:
+    the system knows that it does not know.
+  * reuse = fraction of rules that got to fire after being born. A firing is a
+    case resolved without calling the LLM.
+  * the ONLY escalation trigger is the impasse (coverage or conflict), never
+    "the answer was incorrect". It is precisely that separation that makes the
+    silent error measurable: if the loop escalated on being wrong, it would be
+    using the oracle and there would be no silent error to measure.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ from harness.shadow import run_shadow
 
 
 class ProponenteGuionizado:
-    """Devuelve lo que se le indique, caso a caso. Sin LLM y sin heuristica."""
+    """Returns whatever it is told to, case by case. No LLM, no heuristic."""
 
     name = "guionizado"
 
@@ -39,7 +39,7 @@ class ProponenteGuionizado:
         siguiente = self.guion.pop(0) if self.guion else None
         if isinstance(siguiente, Exception):
             raise siguiente
-        if siguiente is None:                      # regla que memoriza el caso
+        if siguiente is None:                      # rule that memorizes the case
             siguiente = {
                 "action": true_action_hint,
                 "conditions": [{"attr": a, "op": "eq", "value": getattr(case, a)}
@@ -55,14 +55,15 @@ def corpus_corto(n: int = 40):
 class TestDisparadorDeEscalacion(unittest.TestCase):
 
     def test_el_primer_caso_siempre_escala(self):
-        """Base vacia: IMPASSE de cobertura."""
+        """Empty base: coverage IMPASSE."""
         res = run_shadow(corpus_corto(1), RuleEngine(), ProponenteGuionizado([]))
         self.assertEqual(res.records[0].outcome, "IMPASSE")
         self.assertTrue(res.records[0].escalated)
 
     def test_una_regla_equivocada_que_casa_NO_escala(self):
-        """Es la definicion de error silencioso: el sistema decide mal y sigue
-        adelante sin enterarse. Si esto escalara, el bucle veria el oraculo."""
+        """This is the definition of silent error: the system decides wrongly
+        and carries on unaware. If this escalated, the loop would see the
+        oracle."""
         prop = ProponenteGuionizado([{
             "action": "T1_GENERAL",
             "conditions": [{"attr": "severity", "op": "gte", "value": 1}],
@@ -93,7 +94,7 @@ class TestDisparadorDeEscalacion(unittest.TestCase):
 
 
 class TestToleranciaAFallos(unittest.TestCase):
-    """Una tirada de 2000 casos no puede morir en el 1500 por un JSON roto."""
+    """A 2000-case run cannot die at case 1500 over a broken JSON."""
 
     def test_una_propuesta_fallida_se_cuenta_y_el_bucle_sigue(self):
         prop = ProponenteGuionizado([ProposalError("JSON mal cerrado")])
@@ -111,12 +112,12 @@ class TestToleranciaAFallos(unittest.TestCase):
         res = run_shadow(corpus_corto(3), engine, prop)
         self.assertEqual(res.rejected, 1)
         self.assertIsNotNone(res.records[0].rejected_reason)
-        # la propuesta fallida no deja regla, asi que el caso 2 vuelve a escalar
+        # the failed proposal leaves no rule, so case 2 escalates again
         self.assertTrue(res.records[1].escalated)
 
     def test_la_accion_propuesta_se_registra_aunque_la_regla_se_rechace(self):
-        """Los dos ejes de error son independientes: elegir mal la cola al
-        proponer se mide aparte del alcance de la regla."""
+        """The two error axes are independent: choosing the wrong queue when
+        proposing is measured separately from the rule's scope."""
         prop = ProponenteGuionizado([{
             "action": "T1_GENERAL",
             "conditions": [{"attr": "urgencia", "op": "eq", "value": 9}],
@@ -178,9 +179,9 @@ class TestMetricas(unittest.TestCase):
 
 
 class TestLaSombraNoActua(unittest.TestCase):
-    """PROPIEDAD CENTRAL: ninguna regla se activa jamas; se registra lo que
-    HABRIA pasado. Como los tickets no comparten estado, la sombra es exacta y
-    no una aproximacion: la decision registrada no altera el resto del corpus.
+    """CENTRAL PROPERTY: no rule is ever activated; what WOULD have happened is
+    recorded. Since tickets share no state, the shadow is exact and not an
+    approximation: the recorded decision does not alter the rest of the corpus.
     """
 
     def test_el_corpus_no_cambia_al_correr_el_bucle(self):

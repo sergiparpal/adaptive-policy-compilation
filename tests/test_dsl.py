@@ -1,12 +1,12 @@
 """
-El DSL congelado: condiciones, validacion y arbitraje por especificidad.
+The frozen DSL: conditions, validation and specificity arbitration.
 
-`harness/dsl.py` es especificacion congelada (regla dura 1). Estas pruebas no
-piden que se comporte BIEN: piden que se comporte IGUAL, porque las cifras del
-peldano 1 se midieron sobre este comportamiento exacto. Incluye por eso una
-prueba de caracterizacion del defecto registrado en CLAUDE.md — que CONFLICT se
-devuelve antes de llegar al desempate por antiguedad—, que es un fallo del
-diseno y a la vez el hecho central que el peldano 1 midio.
+`harness/dsl.py` is frozen specification (hard rule 1). These tests do not ask
+it to behave WELL: they ask it to behave THE SAME, because the rung 1 figures
+were measured over this exact behaviour. That is why it includes a
+characterization test of the defect recorded in CLAUDE.md — that CONFLICT is
+returned before reaching the age tie-break — which is a design failure and at
+the same time the central fact rung 1 measured.
 """
 
 from __future__ import annotations
@@ -64,7 +64,7 @@ class TestCondition(unittest.TestCase):
 
 
 class TestValidacion(unittest.TestCase):
-    """Ningun juicio de LLM interviene aqui: son comprobaciones mecanicas."""
+    """No LLM judgement takes part here: these are mechanical checks."""
 
     def valid_payload(self, **over):
         p = {"rule_id": "X1", "action": "T2_TECHNICAL",
@@ -193,7 +193,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
 
     def test_una_regla_menos_especifica_no_entra_en_el_conflicto(self):
-        """Los finalistas son solo los de especificidad maxima."""
+        """The finalists are only those of maximum specificity."""
         e = RuleEngine()
         e.rules = [
             rule("GEN", [("severity", "eq", 3)], "SELF_SERVICE_DEFLECT", born_at=0),
@@ -207,14 +207,14 @@ class TestRuleEngine(unittest.TestCase):
         self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
 
     def test_DEFECTO_REGISTRADO_el_conflicto_precede_al_desempate(self):
-        """CARACTERIZACION del defecto documentado en CLAUDE.md, no aprobacion.
+        """CHARACTERIZATION of the defect documented in CLAUDE.md, not approval.
 
-        `decide` devuelve CONFLICT en cuanto los finalistas discrepan, asi que
-        el desempate por antiguedad —que es la semantica correcta— queda
-        inalcanzable justo cuando decidiria algo. Es el defecto que da 505
-        CONFLICT y hunde el techo del peldano 1 a 0,5875, y esta clavado aqui
-        porque `dsl.py` es registro cerrado y sus cifras deben reproducir. El
-        rediseno ya existe aparte, en `peldano2/engine2.py`.
+        `decide` returns CONFLICT as soon as the finalists disagree, so the age
+        tie-break —which is the correct semantics— is left unreachable exactly
+        when it would decide something. It is the defect that yields 505
+        CONFLICT and sinks the rung 1 ceiling to 0.5875, and it is pinned here
+        because `dsl.py` is a closed record and its figures must reproduce. The
+        redesign already exists separately, in `peldano2/engine2.py`.
         """
         e = RuleEngine()
         e.rules = [

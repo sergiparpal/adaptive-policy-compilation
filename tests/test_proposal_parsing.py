@@ -1,15 +1,15 @@
 """
-El parseo de lo que devuelve el proponente.
+The parsing of what the proposer returns.
 
-Es la unica parte de la ruta del LLM que se puede probar sin gastar dinero, y es
-la que decide si una tirada larga sobrevive. La extraccion es TOLERANTE a
-proposito —vallas markdown, preambulos, epilogos— porque los modelos baratos
-adornan la respuesta, y perder una tirada de 2000 casos en el caso 1500 por un
-JSON mal cerrado seria absurdo. Lo que NO puede hacer es tolerar de mas: si
-acepta basura, la basura entra en la base como regla.
+It is the only part of the LLM path that can be tested without spending money,
+and it is what decides whether a long run survives. The extraction is TOLERANT
+on purpose —markdown fences, preambles, epilogues— because cheap models decorate
+the response, and losing a 2000-case run at case 1500 over a badly closed JSON
+would be absurd. What it must NOT do is tolerate too much: if it accepts
+rubbish, the rubbish enters the base as a rule.
 
-`failed_proposals` en las metricas cuenta exactamente los casos en que esto
-levanta `ProposalError`.
+`failed_proposals` in the metrics counts exactly the cases where this raises
+`ProposalError`.
 """
 
 from __future__ import annotations
@@ -25,11 +25,11 @@ REGLA = '{"action": "T2_TECHNICAL", "conditions": [{"attr": "severity", ' \
 
 
 class BaseParseo:
-    """Las dos versiones del parseador deben comportarse igual.
+    """The two versions of the parser must behave the same.
 
-    Cada peldano tiene la suya, con su propia clase de error: el peldano 2 se
-    escribio como paquete aparte precisamente para no tocar el 1. La
-    duplicacion es deliberada; lo que no puede pasar es que diverjan.
+    Each rung has its own, with its own error class: rung 2 was written as a
+    separate package precisely so as not to touch rung 1. The duplication is
+    deliberate; what must not happen is that they diverge.
     """
 
     parse = staticmethod(parse_payload)
@@ -75,8 +75,8 @@ class BaseParseo:
             self.parse("")
 
     def test_el_error_lleva_el_motivo(self):
-        """`rejected_reason` acaba en el registro crudo de cada caso, asi que
-        el motivo tiene que decir algo."""
+        """`rejected_reason` ends up in the raw record of each case, so the
+        reason has to say something."""
         try:
             self.parse("nada")
         except self.error as exc:
@@ -113,9 +113,10 @@ class TestLosDosParseadoresCoinciden(unittest.TestCase):
                     parse_payload2(texto)
 
     def test_cada_bucle_captura_su_propia_clase_de_error(self):
-        """Son clases DISTINTAS y ninguna hereda de la otra: capturar la que no
-        toca dejaria morir una tirada larga en el primer JSON adornado. Cada
-        bucle en sombra importa la de su paquete, y asi debe seguir."""
+        """They are DIFFERENT classes and neither inherits from the other:
+        catching the wrong one would let a long run die on the first decorated
+        JSON. Each shadow loop imports the one from its own package, and it must
+        stay that way."""
         self.assertIsNot(ProposalError, ProposalError2)
         self.assertNotIsInstance(ProposalError2("x"), ProposalError)
 

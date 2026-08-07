@@ -1,27 +1,27 @@
 """
-Arbitraje por subsuncion aplicado a la BASE APRENDIDA, offline.
+Subsumption arbitration applied to the LEARNED BASE, offline.
 
-En la politica oculta la subsuncion resulto sound: 0 errores silenciosos sobre
-1263 casos decididos, porque su autor puso las excepciones antes que los
-defectos, de modo que ext(A) ⊊ ext(B) implicaba siempre prioridad(A) < prioridad(B).
+Over the hidden policy, subsumption turned out to be sound: 0 silent errors over
+1263 decided cases, because its author put the exceptions before the defaults,
+so that ext(A) ⊊ ext(B) always implied priority(A) < priority(B).
 
-Una base escrita por un LLM no tiene ese autor. Este script comprueba si la
-propiedad sobrevive: cuantas veces la regla minimal bajo subsuncion propone una
-accion distinta de la verdad.
+A base written by an LLM has no such author. This script checks whether the
+property survives: how often the minimal rule under subsumption proposes an
+action different from the truth.
 
-ES UNA COTA, NO UNA SIMULACION. Las 577 reglas se aprendieron BAJO el arbitraje
-por especificidad: que caso escalaba, y por tanto que regla nacia, dependia de
-ese arbitraje. Bajo subsuncion la base habria sido otra desde el primer caso.
-Lo que se mide aqui es como se comporta ESTA base con OTRO arbitraje, no lo que
-habria producido el bucle.
+IT IS A BOUND, NOT A SIMULATION. The 577 rules were learned UNDER
+specificity-based arbitration: which case escalated, and therefore which rule
+was born, depended on that arbitration. Under subsumption the base would have
+been a different one from the first case. What is measured here is how THIS base
+behaves under a DIFFERENT arbitration, not what the loop would have produced.
 
-Segunda salvedad: aqui las 577 reglas estan cargadas desde el caso 0, mientras
-que en la tirada se acumulaban. Las cifras no son comparables sin mas con las de
-results/llm_run.json; por eso se recalcula tambien la especificidad en estatico.
+Second caveat: here the 577 rules are loaded from case 0, whereas in the run
+they accumulated. The figures are not directly comparable with those in
+results/llm_run.json; that is why static specificity is recomputed as well.
 
-ANALISIS, NO MODIFICACION. No toca dsl.py.
+ANALYSIS, NOT MODIFICATION. It does not touch dsl.py.
 
-Uso:  python3 -m harness.learned_subsumption
+Usage:  python3 -m harness.learned_subsumption
 """
 
 from __future__ import annotations
@@ -41,19 +41,19 @@ RESULTS = Path("results")
 
 
 # ---------------------------------------------------------------------------
-# Extensiones rapidas: mascaras por (atributo, valor), luego AND por regla
+# Fast extensions: masks per (attribute, value), then AND per rule
 # ---------------------------------------------------------------------------
 
 def attribute_masks():
-    """Para cada (attr, valor), la mascara de casos del espacio que lo cumplen."""
+    """For each (attr, value), the mask of cases in the space satisfying it."""
     space = list(all_cases())
     n = len(space)
     bits: dict[str, dict] = {a: {v: bytearray(n) for v in DOMAINS[a]} for a in ATTRIBUTES}
     for i, c in enumerate(space):
         for a in ATTRIBUTES:
             bits[a][getattr(c, a)][i] = 1
-    # bit i (contando desde la izquierda) = caso i del espacio. La posicion
-    # absoluta da igual mientras sea la misma en todas las mascaras.
+    # bit i (counting from the left) = case i of the space. The absolute
+    # position does not matter as long as it is the same in every mask.
     masks = {a: {v: int("".join(map(str, b)), 2) for v, b in d.items()}
              for a, d in bits.items()}
     return masks, n
@@ -115,17 +115,17 @@ def load_learned() -> list[Rule]:
 
 
 def strict_below_sets(rules, ext):
-    """below[A] = {B : ext(B) ⊊ ext(A)}. Se poda por popcount."""
+    """below[A] = {B : ext(B) ⊊ ext(A)}. Pruned by popcount."""
     pc = {r.rule_id: ext[r.rule_id].bit_count() for r in rules}
     order = sorted(rules, key=lambda r: pc[r.rule_id])
     below = {r.rule_id: set() for r in rules}
-    for i, b in enumerate(order):           # b candidato a estar por debajo
+    for i, b in enumerate(order):           # b is a candidate for being below
         eb, pb = ext[b.rule_id], pc[b.rule_id]
         if eb == 0:
             continue
-        for a in order[i + 1:]:             # a tiene >= bits que b
+        for a in order[i + 1:]:             # a has >= bits than b
             if pc[a.rule_id] == pb:
-                continue                    # mismo popcount -> no puede ser estricto
+                continue                    # same popcount -> cannot be strict
             if (eb | ext[a.rule_id]) == ext[a.rule_id]:
                 below[a.rule_id].add(b.rule_id)
     return below
@@ -168,7 +168,7 @@ def main() -> int:
     sub = collections.Counter()
     spec = collections.Counter()
     n_sub_ok = n_spec_ok = 0
-    unsound = []          # subsuncion commit con accion != verdad
+    unsound = []          # subsumption commits with action != truth
     residue = collections.Counter()
     for case in corpus:
         truth = true_action(case)

@@ -1,12 +1,12 @@
-# La suite, en cada push y en cada pull request.
+# The suite, on every push and every pull request.
 #
-# Cierra la mitad remota de "nadie corre las pruebas automaticamente"
-# (IDEAS.md, deuda tecnica). La mitad local es `.githooks/pre-commit`, que
-# corre lo mismo antes de cada commit; este trabajo cubre lo que ya se empujo,
-# incluido lo que se empujo con `--no-verify`.
+# It closes the remote half of "nobody runs the tests automatically"
+# (IDEAS.md, technical debt). The local half is `.githooks/pre-commit`, which
+# runs the same thing before every commit; this job covers what has already
+# been pushed, including what was pushed with `--no-verify`.
 #
-# Cuesta cero llamadas a la API: la suite llama a las funciones de medida,
-# nunca a los `main()` de los scripts.
+# It costs zero API calls: the suite calls the measurement functions, never the
+# scripts' `main()`.
 
 name: pruebas
 
@@ -18,16 +18,16 @@ on:
 permissions:
   contents: read
 
-# Cancela lo que ya ha quedado atras en la misma referencia, para no gastar
-# minutos en un commit que nadie va a mirar.
+# Cancels what has been left behind on the same ref, so as not to spend minutes
+# on a commit nobody is going to look at.
 #
-# CON UNA EXCEPCION: `main` NO se cancela. Aqui los commits van directos a main,
-# uno detras de otro, y el estado del flujo es el unico registro de que un
-# commit concreto paso la suite. Con `cancel-in-progress: true` a secas, empujar
-# tres commits seguidos deja los dos primeros en "cancelled" para siempre: no
-# fallaron, es que nunca llegaron a responder. En un repositorio donde la
-# reproducibilidad es el producto, un verdadero por commit vale mas que los
-# segundos de maquina que ahorra cancelarlo.
+# WITH ONE EXCEPTION: `main` is NOT cancelled. Here commits go straight to main,
+# one after another, and the workflow status is the only record that a specific
+# commit passed the suite. With a plain `cancel-in-progress: true`, pushing
+# three commits in a row leaves the first two "cancelled" forever: they did not
+# fail, they simply never got to answer. In a repository where reproducibility
+# is the product, one true per commit is worth more than the machine seconds
+# cancelling saves.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
@@ -35,49 +35,50 @@ concurrency:
 jobs:
   suite:
     runs-on: ubuntu-latest
-    # La suite tarda ~45 s. Diez minutos no es un objetivo de velocidad: es el
-    # tope que convierte un trabajo colgado —una descarga que no responde, un
-    # subproceso de test_order_determinism que no termina— en un fallo en vez de
-    # en seis horas de runner.
+    # The suite takes ~45 s. Ten minutes is not a speed target: it is the cap
+    # that turns a hung job —a download that does not answer, a
+    # test_order_determinism subprocess that never finishes— into a failure
+    # instead of six hours of runner.
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        # Dos interpretes, y cada uno responde a una afirmacion del repo: 3.12
-        # es el que produjo los registros (cabecera de requirements.lock.txt:
-        # "Python 3.12.3 · Linux x86_64") y 3.10 el minimo que declara el
-        # README.
+        # Two interpreters, each answering a claim the repo makes: 3.12 is the
+        # one that produced the records (header of requirements.lock.txt:
+        # "Python 3.12.3 · Linux x86_64") and 3.10 the minimum the README
+        # declares.
         python: ["3.10", "3.12"]
 
     steps:
-      # Clavadas al SHA COMPLETO, con la version en un comentario al lado. Una
-      # etiqueta la puede repuntar su dueño hacia otro codigo; un commit no. Es
-      # la convencion del resto de repositorios de esta cuenta y aqui faltaba:
-      # este flujo estuvo en `@v7` durante un dia.
+      # Pinned to the FULL SHA, with the version in a comment alongside. A tag
+      # can be repointed by its owner at other code; a commit cannot. It is the
+      # convention of the rest of the repositories in this account and it was
+      # missing here: this workflow spent a day on `@v7`.
       #
-      # Los mayores, ademas, no son cosmeticos: hasta hace poco esto iba en
-      # checkout@v4 y setup-python@v5, que declaran `using: node20`, ya
-      # deprecado, y GitHub avisaba en cada ejecucion.
+      # The majors, moreover, are not cosmetic: until recently this used
+      # checkout@v4 and setup-python@v5, which declare `using: node20`, already
+      # deprecated, and GitHub warned on every run.
       #
-      # Para subirlas: resolver la etiqueta nueva a su commit
+      # To bump them: resolve the new tag to its commit
       #   gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha
-      # y cambiar SHA y comentario a la vez. Una prueba comprueba que van juntos.
+      # and change SHA and comment together. A test checks they travel as one.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
 
-      # Sin instalar nada, a proposito: la suite corre con la biblioteca
-      # estandar y que siga siendo asi es parte de lo que se comprueba. Sin
-      # `openai` instalado, la prueba que compara la version viva con el pin se
-      # salta, igual que en local sin venv.
+      # Nothing installed, on purpose: the suite runs on the standard library
+      # and that it stays that way is part of what is checked. Without `openai`
+      # installed, the test comparing the live version with the pin is skipped,
+      # just as locally without the venv.
       - name: la suite
         run: python -m unittest discover
 
-      # La suite declara que no escribe en results*/. Aqui se comprueba en vez
-      # de creerselo: si algun dia una prueba llama a un `main()` que vuelca su
-      # JSON, se ve aqui y no cuando alguien confirme el registro pisado.
+      # The suite declares that it does not write to results*/. Here it is
+      # checked instead of believed: if one day a test calls a `main()` that
+      # dumps its JSON, it shows up here and not when somebody commits the
+      # trampled record.
       - name: los registros siguen intactos
         run: |
           sucio="$(git status --porcelain -- results results2 results3 results4)"

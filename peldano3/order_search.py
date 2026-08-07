@@ -1,63 +1,63 @@
 """
-PASO A del peldano 3: buscar el orden total que maximiza el acierto sobre el
-corpus, con las 577 reglas que el LLM escribio en el peldano 1. Sin LLM.
+STEP A of rung 3: search for the total order that maximizes accuracy over the
+corpus, using the 577 rules the LLM wrote in rung 1. No LLM.
 
 --------------------------------------------------------------------------
-EL TECHO, PRIMERO
+THE CEILING, FIRST
 --------------------------------------------------------------------------
-Bajo primera-que-casa, el ganador de un caso es la regla de menor rango entre
-las que lo casan. Luego un caso es GANABLE por algun orden sii alguna regla que
-lo casa tiene la accion correcta. Si ninguna la tiene, ningun orden lo salva.
-Ese conteo es exacto y no requiere buscar nada; acota todo lo demas.
+Under first-match-wins, the winner of a case is the lowest-ranked rule among
+those matching it. So a case is WINNABLE by some order iff some rule matching it
+has the correct action. If none has it, no order saves it. That count is exact
+and requires no search; it bounds everything else.
 
-Se calculan dos techos:
-  * puro   : sobre las reglas que CASAN el caso
-  * hibrido: sobre las reglas INVICTAS por subsuncion, que son las unicas que
-             pueden ganar en el motor del peldano 2. Es <= el puro: la
-             subsuncion puede eliminar de la puja a la unica regla correcta.
-
---------------------------------------------------------------------------
-LA PARTICION
---------------------------------------------------------------------------
-Agrupada por identidad de caso y estratificada por accion verdadera, 50/50.
-
-  * AGRUPADA porque el 23,1% de los casos del corpus tiene un gemelo exacto.
-    Una particion al azar pondria copias del mismo caso a ambos lados y el test
-    premiaria memorizar. Todas las copias de un caso caen del mismo lado.
-  * ESTRATIFICADA porque ONCALL_ESCALATION son 7 casos de 2000 y
-    SECURITY_INCIDENT 20. Sin estratificar, una mitad puede quedarse sin
-    ninguno y el test no mediria nada sobre ellos.
-  * 50/50 porque con 577 reglas y 2000 casos el conjunto de busqueda ya es
-    pequeño; recortarlo mas haria que el orden hallado fuese ruido.
-
-FUGA QUE NINGUNA PARTICION DESHACE, y hay que declararla: las 577 reglas se
-aprendieron sobre los 2000 casos (born_at va de 0 a 1998). El test no es datos
-no vistos por las REGLAS; es datos no vistos por el ORDEN. Lo que este montaje
-mide es el sobreajuste del orden, y solo eso. El gap real de un sistema
-completo seria mayor.
+Two ceilings are computed:
+  * pure   : over the rules that MATCH the case
+  * hybrid : over the rules UNDEFEATED by subsumption, which are the only ones
+             that can win in the rung 2 engine. It is <= the pure one:
+             subsumption may remove the only correct rule from the bidding.
 
 --------------------------------------------------------------------------
-EL METODO DE BUSQUEDA
+THE SPLIT
 --------------------------------------------------------------------------
-Voraz de lista de decision: se elige repetidamente la regla que, colocada en la
-siguiente posicion, maximiza (casos que gana - casos que pierde) entre los casos
-de train aun no decididos; se coloca y se retiran los casos que casa.
+Grouped by case identity and stratified by true action, 50/50.
 
-Es el voraz clasico de construccion de listas de decision.
+  * GROUPED because 23.1% of the corpus cases have an exact twin. A random
+    split would put copies of the same case on both sides and the test would
+    reward memorizing. All copies of a case fall on the same side.
+  * STRATIFIED because ONCALL_ESCALATION is 7 cases out of 2000 and
+    SECURITY_INCIDENT 20. Without stratifying, one half can end up with none
+    and the test would measure nothing about them.
+  * 50/50 because with 577 rules and 2000 cases the search set is already
+    small; trimming it further would make the order found be noise.
 
-  GARANTIZA: optimalidad de cada paso local sobre los casos vivos, y que el
-             orden producido es un orden total valido sobre las 577 reglas.
-  NO GARANTIZA: nada global. El problema es de tipo minimo conjunto de arcos de
-             retroceso; no hay razon de aproximacion conocida para este
-             objetivo y no se ha corrido ninguna busqueda local despues.
+LEAKAGE THAT NO SPLIT UNDOES, and it has to be declared: the 577 rules were
+learned over the 2000 cases (born_at runs from 0 to 1998). The test set is not
+data unseen by the RULES; it is data unseen by the ORDER. What this setup
+measures is overfitting of the order, and only that. The real gap of a complete
+system would be larger.
 
-Cola del orden: cuando ya no queda ningun caso de train por decidir, todas las
-reglas restantes puntuan 0. Se ordenan por precision en train y luego por
-born_at. Esa cola es arbitraria respecto a train y es una fuente conocida de
-gap: en test si puede tocarle decidir.
+--------------------------------------------------------------------------
+THE SEARCH METHOD
+--------------------------------------------------------------------------
+Decision-list greedy search: repeatedly pick the rule that, placed in the next
+position, maximizes (cases it wins - cases it loses) among the train cases not
+yet decided; place it and remove the cases it matches.
 
-Se comparan ademas tres ordenes que no buscan nada: born_at (orden de llegada),
-precision en train, y aleatorio promediado.
+It is the classic greedy construction of decision lists.
+
+  GUARANTEES: optimality of each local step over the live cases, and that the
+              order produced is a valid total order over the 577 rules.
+  DOES NOT GUARANTEE: anything global. The problem is of the minimum feedback
+              arc set kind; there is no known approximation ratio for this
+              objective and no local search was run afterwards.
+
+Tail of the order: once no train case remains to be decided, all remaining rules
+score 0. They are sorted by train precision and then by born_at. That tail is
+arbitrary with respect to train and is a known source of gap: on test it may
+well get to decide.
+
+Three orders that search for nothing are also compared: born_at (arrival order),
+train precision, and averaged random.
 """
 
 from __future__ import annotations
@@ -73,7 +73,7 @@ from harness.domain import generate_corpus
 from harness.dsl import Condition
 from harness.hidden_policy import true_action
 from harness.provenance import environment
-from peldano2.engine2 import Space, strictly_below   # reuso, no modificacion
+from peldano2.engine2 import Space, strictly_below   # reuse, not modification
 
 OUT = Path("results3")
 N_SPLITS = 5
@@ -81,7 +81,7 @@ N_RANDOM = 50
 
 
 # ---------------------------------------------------------------------------
-# Carga y estructura
+# Loading and structure
 # ---------------------------------------------------------------------------
 
 def load():
@@ -98,7 +98,7 @@ def load():
 
 
 def subsumption_below(rules, ext):
-    """below[A] = {B : ext(B) ⊊ ext(A)}, con poda por popcount."""
+    """below[A] = {B : ext(B) ⊊ ext(A)}, pruned by popcount."""
     pc = {r["rule_id"]: ext[r["rule_id"]].bit_count() for r in rules}
     order = sorted(rules, key=lambda r: pc[r["rule_id"]])
     below = {r["rule_id"]: set() for r in rules}
@@ -115,7 +115,7 @@ def subsumption_below(rules, ext):
 
 
 def build_tables(corpus, rules, conds, below):
-    """Por caso: reglas que casan, reglas invictas por subsuncion, verdad."""
+    """Per case: matching rules, rules undefeated by subsumption, truth."""
     matched, undef, truth = [], [], []
     for case in corpus:
         m = [r["rule_id"] for r in rules
@@ -129,22 +129,22 @@ def build_tables(corpus, rules, conds, below):
 
 
 # ---------------------------------------------------------------------------
-# Techo
+# Ceiling
 # ---------------------------------------------------------------------------
 
 def ceiling(pool, truth, action, idxs):
-    """Casos ganables por ALGUN orden: alguna regla del pool tiene la accion
-    correcta. Exacto, sin busqueda."""
+    """Cases winnable by SOME order: some rule in the pool has the correct
+    action. Exact, no search."""
     ok = sum(1 for i in idxs if any(action[r] == truth[i] for r in pool[i]))
     return ok / len(idxs)
 
 
 # ---------------------------------------------------------------------------
-# Busqueda voraz
+# Greedy search
 # ---------------------------------------------------------------------------
 
 def greedy_order(rules, pool, truth, action, train_idx):
-    """Voraz de lista de decision sobre `pool` (matched o undefeated)."""
+    """Decision-list greedy over `pool` (matched or undefeated)."""
     ids = [r["rule_id"] for r in rules]
     pos = {i: k for k, i in enumerate(train_idx)}
     win = {rid: 0 for rid in ids}
@@ -162,15 +162,16 @@ def greedy_order(rules, pool, truth, action, train_idx):
     order = []
     while left and remaining:
         best, best_score = None, None
-        # ARREGLO 2026-08-06: se itera sobre lista ORDENADA, no sobre el set.
-        # Antes, el argmax recorria `left` directamente y el desempate quedaba
-        # a merced del orden de iteracion de un set de cadenas, que depende de
-        # PYTHONHASHSEED: la misma celda daba entre 0,5880 y 0,5991 segun el
-        # hash. Ordenar por rule_id es determinista y, como los ids son R%04d
-        # asignados por orden de nacimiento, equivale a desempatar por la regla
-        # mas antigua. NO se han vuelto a correr los peldanos 3 y 4 con este
-        # arreglo: se hara junto con un optimizador serio, para poder distinguir
-        # si la fragilidad venia del desempate o del algoritmo.
+        # FIX 2026-08-06: iterate over a SORTED list, not over the set. Before,
+        # the argmax walked `left` directly and the tie-break was at the mercy
+        # of the iteration order of a set of strings, which depends on
+        # PYTHONHASHSEED: the same cell gave between 0.5880 and 0.5991
+        # depending on the hash. Sorting by rule_id is deterministic and, since
+        # the ids are R%04d assigned in birth order, it amounts to breaking ties
+        # by the oldest rule. Rungs 3 and 4 have NOT been re-run with this fix:
+        # that will be done together with a serious optimizer, so as to
+        # distinguish whether the fragility came from the tie-break or from the
+        # algorithm.
         for rid in sorted(left):
             s = (win[rid] & remaining).bit_count() - (lose[rid] & remaining).bit_count()
             if best_score is None or s > best_score:
@@ -179,7 +180,7 @@ def greedy_order(rules, pool, truth, action, train_idx):
         left.discard(best)
         remaining &= ~(win[best] | lose[best])
 
-    # cola: ya no queda nada por decidir en train. Precision en train, luego born_at.
+    # tail: nothing left to decide on train. Train precision, then born_at.
     born = {r["rule_id"]: r["born_at"] for r in rules}
     def prec(rid):
         w, l = win[rid].bit_count(), lose[rid].bit_count()
@@ -189,7 +190,7 @@ def greedy_order(rules, pool, truth, action, train_idx):
 
 
 # ---------------------------------------------------------------------------
-# Evaluacion
+# Evaluation
 # ---------------------------------------------------------------------------
 
 def evaluate(order, pool, truth, action, idxs):
@@ -236,11 +237,11 @@ def eval_subsumption(undef, truth, action, idxs):
 
 
 # ---------------------------------------------------------------------------
-# Particion
+# Split
 # ---------------------------------------------------------------------------
 
 def split(corpus, truth, seed):
-    """Agrupada por identidad de caso, estratificada por accion, 50/50."""
+    """Grouped by case identity, stratified by action, 50/50."""
     groups = defaultdict(list)
     for i, c in enumerate(corpus):
         groups[c.key()].append(i)
@@ -275,7 +276,7 @@ def main() -> int:
     noundef = sum(1 for i in allidx if not undef[i])
     print(f"  casos sin ninguna regla que los case: {nomatch} ({nomatch/2000:.1%})")
 
-    # ------------------------------------------------------------ TECHO
+    # ---------------------------------------------------------- CEILING
     print()
     print("=" * 78)
     print("TECHO — maximo alcanzable por CUALQUIER orden (exacto, sin buscar)")
@@ -299,7 +300,7 @@ def main() -> int:
         print(f"    {cls:<24}{tot[cls]:>8}{lost.get(cls,0):>10}"
               f"{100*lost.get(cls,0)/tot[cls]:>7.1f}%")
 
-    # ------------------------------------------------- BUSQUEDA POR PARTICION
+    # ------------------------------------------------------ SEARCH PER SPLIT
     print()
     print("=" * 78)
     print(f"BUSQUEDA CON PARTICION agrupada+estratificada 50/50 · {N_SPLITS} particiones")
@@ -335,7 +336,7 @@ def main() -> int:
               f"   test {statistics.mean(te):.4f}±{statistics.pstdev(te):.4f}"
               f"   GAP {statistics.mean(gp):.4f}±{statistics.pstdev(gp):.4f}")
 
-    # --------------------------------------------------------- REFERENCIAS
+    # --------------------------------------------------------- REFERENCES
     print()
     print("=" * 78)
     print("REFERENCIAS sobre la misma base y las mismas particiones")

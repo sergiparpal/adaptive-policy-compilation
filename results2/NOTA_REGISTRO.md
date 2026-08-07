@@ -1,20 +1,20 @@
-# Notas de registro
+# Record notes
 
-## 6 de agosto de 2026 — `results/subsumption.json` cambió de fecha durante el Paso 1 del peldaño 2
+## August 6, 2026 — `results/subsumption.json` changed date during Step 1 of rung 2
 
-El Paso 1 del peldaño 2 exige comprobar que el peldaño 1 sigue reproduciendo.
-Esa comprobación se hace corriendo los scripts originales:
+Step 1 of rung 2 requires checking that rung 1 still reproduces. That check is
+done by running the original scripts:
 
     python3 -m harness.ceiling_check
     python3 -m harness.subsumption_check
 
-`ceiling_check` no escribe nada. `subsumption_check` **sí**: termina volcando
-`results/subsumption.json`. Al re-correrlo, el archivo se reescribió.
+`ceiling_check` writes nothing. `subsumption_check` **does**: it finishes by
+dumping `results/subsumption.json`. On re-running it, the file was rewritten.
 
-**No se perdió nada.** El cómputo es enteramente determinista —corpus fijo con
-semilla 17, política oculta congelada, espacio exhaustivo de 134.400
-combinaciones— y el contenido reescrito es idéntico al anterior. Verificado
-campo a campo tras la reescritura:
+**Nothing was lost.** The computation is entirely deterministic — fixed corpus
+with seed 17, frozen hidden policy, exhaustive space of 134,400 combinations —
+and the rewritten content is identical to the previous one. Verified field by
+field after the rewrite:
 
     order.ordered_pairs                        61
     order.possible_pairs                      406
@@ -29,37 +29,36 @@ campo a campo tras la reescritura:
     concentration_curve k=20                0.8870
     concentration_curve k=50                0.9495
 
-Lo único que cambió es el `mtime`: de 6 ago 14:20 a 6 ago 16:23.
+The only thing that changed is the `mtime`: from Aug 6 14:20 to Aug 6 16:23.
 
-## Por qué queda constancia
+## Why this is put on record
 
-El peldaño 1 es registro cerrado y sus cifras deben seguir reproduciendo. Una
-fecha de modificación posterior al cierre, sin explicación, es indistinguible de
-una manipulación. Queda anotado aquí que el cambio lo produjo la verificación y
-no una reejecución con parámetros distintos.
+Rung 1 is a closed record and its figures must keep reproducing. A modification
+date later than the closing, with no explanation, is indistinguishable from
+tampering. It is noted here that the change was produced by the verification and
+not by a re-execution with different parameters.
 
-Todo lo que produce el peldaño 2 va a `results2/` y no toca `results/`.
+Everything rung 2 produces goes to `results2/` and does not touch `results/`.
 
-## Cómo re-verificar sin volver a escribir
+## How to re-verify without writing again
 
     python3 -m harness.subsumption_check | head -20
 
-La salida por pantalla contiene las mismas cifras; el volcado a disco es un
-efecto secundario del script del peldaño 1 que no se corrige aquí, porque
-`harness/` es registro cerrado y modificarlo tendría el mismo problema que se
-quiere evitar.
+The on-screen output contains the same figures; the dump to disk is a side effect
+of the rung 1 script that is not fixed here, because `harness/` is a closed
+record and modifying it would have the same problem we are trying to avoid.
 
 ---
 
-## 7 de agosto de 2026 — seis registros re-corridos para que ganen su `_env`
+## August 7, 2026 — six records re-run so they would earn their `_env`
 
-Ese día se añadió `harness/provenance.py`, que cuelga un bloque `_env` de cada
-JSON con el intérprete, la plataforma, `PYTHONHASHSEED`, el commit y un digest
-del código. Ningún registro publicado lo llevaba: el campo aparece cuando la
-cifra se vuelve a correr, y no se había re-corrido nada.
+That day `harness/provenance.py` was added, which hangs an `_env` block off every
+JSON with the interpreter, the platform, `PYTHONHASHSEED`, the commit and a
+digest of the code. No published record carried it: the field appears when the
+figure is re-run, and nothing had been re-run.
 
-Se re-corrieron **los seis que son deterministas y cuestan cero llamadas a la
-API**, que son exactamente aquellos en los que reproducir no puede cambiar nada:
+The **six that are deterministic and cost zero API calls** were re-run, which are
+exactly those where reproducing cannot change anything:
 
     python3 run_experiment.py frontier                          # results/frontier.json
     python3 -m harness.subsumption_check                        # results/subsumption.json
@@ -68,83 +67,143 @@ API**, que son exactamente aquellos en los que reproducir no puede cambiar nada:
     python3 -m peldano2.compare_runs results2/llm_run2_*.json   # results2/comparativa.json
     python3 -m peldano2.note_audit  results2/llm_run2_*.json    # results2/note_audit.json
 
-**No cambió ni un dato.** Verificado por comparación estructural contra la
-versión en git, no a ojo: para los cuatro primeros, el objeto entero menos la
-clave `_env` es igual al publicado; para los dos últimos, las filas bajo `rows`
-son iguales a la lista publicada, las 8, en el mismo orden.
+**Not a single datum changed.** Verified by structural comparison against the
+version in git, not by eye: for the first four, the whole object minus the `_env`
+key equals the published one; for the last two, the rows under `rows` equal the
+published list, all 8, in the same order.
 
-Los dos últimos sí **cambiaron de forma**, que era lo previsto y la razón de que
-se re-corrieran: sus escritores pasaron de volcar una lista pelada a volcar
-`{"_env": …, "rows": […]}`, que es la única manera de colgarles procedencia. Se
-invocaron con el glob de las ocho tiradas; llamarlos con un archivo suelto
-habría reducido el registro de 8 a 1, que es pérdida de datos y no un cambio de
-dígitos.
+The last two did **change shape**, which was expected and the reason they were
+re-run: their writers went from dumping a bare list to dumping
+`{"_env": …, "rows": […]}`, which is the only way to hang provenance off them.
+They were invoked with the glob of the eight runs; calling them with a single
+file would have shrunk the record from 8 to 1, which is data loss and not a
+change of digits.
 
-### Lo que NO se re-corrió, y por qué
+### What was NOT re-run, and why
 
-- `results/llm_run.json`, `results/llm_run_n100_smoke.json` y las ocho
-  `results2/llm_run2_*.json`: reproducirlas cuesta dinero y **no saldrían
-  iguales** —el proponente no es determinista a `temperature 0`—. Además
-  `llm_run.json` es la base de 577 reglas de la que parten los peldaños 3 y 4
-  (regla dura 4).
-- `results3/order_search.json`, `results3/budget_and_balance.json` y
-  `results4/sweep.json`: son gratis y deterministas, pero re-correrlas **sí
-  mueve los dígitos**, porque el arreglo del desempate del 6 de agosto todavía
-  no está incorporado a sus cifras publicadas. Está aplazado a propósito, para
-  hacerse junto con el optimizador serio.
+- `results/llm_run.json`, `results/llm_run_n100_smoke.json` and the eight
+  `results2/llm_run2_*.json`: reproducing them costs money and **they would not
+  come out the same** — the proposer is not deterministic at `temperature 0`.
+  Besides, `llm_run.json` is the base of 577 rules that rungs 3 and 4 start from
+  (hard rule 4).
+- `results3/order_search.json`, `results3/budget_and_balance.json` and
+  `results4/sweep.json`: they are free and deterministic, but re-running them
+  **does move the digits**, because the August 6 tie-break fix is not yet
+  incorporated into their published figures. It is deferred on purpose, to be
+  done together with the serious optimizer.
 
-### El `git_dirty` de estos seis, y una trampa al re-correrlos en tanda
+### The `git_dirty` of these six, and a trap when re-running them in a batch
 
-Los seis dicen `git_dirty: false`, `code_dirty: false` y
-`git_commit: 684f0e9`, con el mismo `code_digest` `43e91ada22e9587f`. Es decir:
-ese commit identifica exactamente el código que produjo las seis cifras.
+All six say `git_dirty: false`, `code_dirty: false` and `git_commit: 684f0e9`,
+with the same `code_digest` `43e91ada22e9587f`. That is: that commit identifies
+exactly the code that produced the six figures.
 
-(Se re-corrieron tres veces el mismo día, todas gratis y todas con el contenido
-idéntico: la primera para ganar el `_env`, la segunda con el árbol ya
-confirmado, y la tercera después de desdoblar la bandera de suciedad, que
-cambia el `code_digest` porque toca `harness/provenance.py`. Lo de abajo es lo
-que se aprendió por el camino.)
+(They were re-run three times the same day, all free and all with identical
+content: the first to earn the `_env`, the second with the tree already
+committed, and the third after splitting the dirty flag, which changes the
+`code_digest` because it touches `harness/provenance.py`. What follows is what
+was learned along the way.)
 
-Costó dos intentos, y el motivo merece quedar anotado porque le va a pasar a
-cualquiera que repita esto. **Correr los seis seguidos no da `git_dirty: false`
-más que en el primero**: cada script deja su JSON modificado, así que el árbol
-que ve el segundo ya está sucio, y el tercero más. En la primera pasada sólo
-`frontier.json` salió limpio y los otros cinco dijeron `true`.
+It took two attempts, and the reason deserves to be noted because it will happen
+to anyone repeating this. **Running the six back to back does not give
+`git_dirty: false` except in the first one**: each script leaves its JSON
+modified, so the tree the second one sees is already dirty, and the third one
+more so. On the first pass only `frontier.json` came out clean and the other five
+said `true`.
 
-El flag no mentía, pero medía lo que no importa: lo que ensuciaba el árbol eran
-*registros*, no código. La forma correcta es correr cada script desde un árbol
-limpio, apartar su JSON y restaurar el árbol antes del siguiente:
+The flag was not lying, but it was measuring what does not matter: what dirtied
+the tree were *records*, not code. The correct way is to run each script from a
+clean tree, set its JSON aside and restore the tree before the next one:
 
-    for cada script:
-        comprobar que `git status --porcelain` está vacío
-        correr el script
-        copiar su JSON a un temporal
+    for each script:
+        check that `git status --porcelain` is empty
+        run the script
+        copy its JSON to a temporary file
         git checkout -- results results2
-    al final, poner los seis en su sitio de una vez
+    at the end, put all six in place at once
 
-Ninguno de los seis lee la salida de otro, así que el orden da igual. Así cada
-bloque `_env` dice la verdad sobre el código que corrió, que es para lo que
-existe el campo.
+None of the six reads another's output, so the order does not matter. This way
+each `_env` block tells the truth about the code that ran, which is what the
+field exists for.
 
-**El bloque ya no obliga a este baile para saberlo.** De aquí salió el desdoble
-de la bandera en `git_dirty` (árbol entero) y `code_dirty` (sólo `CODE_ROOTS`),
-que es la que decide si `git_commit` identifica lo que corrió. Con las dos, una
-tanda seguida habría dicho `git_dirty: true, code_dirty: false` y se habría
-leído bien a la primera. El baile se mantiene aquí porque sigue dando la
-procedencia más limpia posible —las dos en `false`— y porque el procedimiento
-vale para cualquier otra tanda.
+**The block no longer forces this dance in order to know that.** Out of this came
+the split of the flag into `git_dirty` (whole tree) and `code_dirty` (only
+`CODE_ROOTS`), which is the one that decides whether `git_commit` identifies what
+ran. With both, a back-to-back batch would have said
+`git_dirty: true, code_dirty: false` and would have read correctly the first
+time. The dance is kept here because it still gives the cleanest possible
+provenance — both flags `false` — and because the procedure holds for any other
+batch.
 
-Lo que **no** se hizo es acotar el flag que había: tres de estos seis
-—`learned_subsumption`, `compare_runs` y `note_audit`— leen registros de
-`results*/` **como entrada**, así que un JSON modificado y sin confirmar rompe
-la trazabilidad de esas cifras sin tocar una línea de código, y un único flag
-acotado a `CODE_ROOTS` se lo habría callado.
+What was **not** done is narrowing the flag that already existed: three of these
+six — `learned_subsumption`, `compare_runs` and `note_audit` — read records from
+`results*/` **as input**, so a modified and uncommitted JSON breaks the
+traceability of those figures without touching a line of code, and a single flag
+narrowed to `CODE_ROOTS` would have kept quiet about it.
 
-### Por qué el commit que citan no es el que los contiene
+### Why the commit they cite is not the one that contains them
 
-Un registro no puede llevar dentro el hash del commit que lo transporta. Los
-seis se produjeron con el árbol limpio en `684f0e9` y se confirmaron en el
-commit siguiente, que sólo toca estos seis JSON y esta nota: ni una línea de
-`harness/`, `peldano2..4/` ni `run_experiment.py`. Por eso `code_digest` sigue
-siendo el mismo en los dos commits, y `git_commit: 684f0e9` sigue identificando
-el código con exactitud.
+A record cannot carry inside it the hash of the commit that transports it. The
+six were produced with the tree clean at `684f0e9` and were committed in the
+following commit, which touches only these six JSON files and this note: not a
+line of `harness/`, `peldano2..4/` or `run_experiment.py`. That is why
+`code_digest` is still the same in both commits, and `git_commit: 684f0e9` still
+identifies the code exactly.
+
+---
+
+## August 7, 2026 — the `code_digest` moved: everything was translated to English
+
+The prose of the repository went from Spanish to English: the ten `.md`
+documents, and the comments and docstrings of every `.py`, of
+`.githooks/pre-commit`, of the two `.github/` files and of the two
+`requirements*.txt`.
+
+**Consequence on the provenance:** `code_digest` is a sha256 of the **bytes** of
+`CODE_ROOTS`, comments included, so it moved:
+
+    before  43e91ada22e9587f
+    after   d9406dbe1d2ca233
+
+**Not one figure changed.** Nothing was touched but prose: no logic, no
+threshold, no seed. The evidence, in the order it was checked:
+
+- the 249 tests pass, and they are the ones that pin 0.5875 · 0.6315 · 1.0000 ·
+  1.0000, the mock frontier, the corpus, and that replay `results/llm_run.json`
+  and `results2/llm_run2_n100.json` rule by rule and record by record;
+- `python3 -m harness.ceiling_check` still prints the 134,400 combinations
+  verified, `DSL ≡ lambdas: OK`, `first-match-wins ≡ true_action: OK`, and
+  ACTION 1495 / CONFLICT 505 / silent error 0.2140 / e2e 0.5875, with 1.0000 for
+  the design order;
+- `ruff check` reports exactly the same 27 findings as before the translation.
+
+### Why this is put on record
+
+For the same reason as the `mtime` note at the top of this file: a digest that
+stops matching, with no explanation, is indistinguishable from code that changed
+what it does. Here what changed is what the code *says*, not what it *computes*.
+
+The six records that carry `_env` keep citing `43e91ada22e9587f` at `684f0e9`,
+and that remains correct: that digest identifies the code that produced them.
+What no longer holds is that it matches the current tree — which is the point of
+the field, and the reason it is worth writing down that the discrepancy is a
+translation and not a change of behaviour.
+
+### What was NOT done, and why
+
+**They were not re-run.** It is free and deterministic, and the content would
+come out identical field by field: only `recorded_at`, `git_commit` and
+`code_digest` would move. It is left for whoever next has a reason to re-run
+them, rather than done as a side effect of a translation — the same criterion as
+everywhere else in this file.
+
+The five frozen files of hard rule 1 (`hidden_policy.py`, `domain.py`, `dsl.py`,
+`shadow.py`, `cache_baseline.py`) were touched, with Sergi's explicit
+authorization and in comments and docstrings only.
+
+**What stays in Spanish, on purpose:** the prompts of `harness/proposers.py` and
+`peldano2/proposers2.py`, because they are the text that produced the records
+and `tests/doubles.py` replays the runs against them; and the printed output,
+the error messages and the identifiers, because the docs quote those tables as
+expected results and the tests match those messages. When a block in the README
+or in `CLAUDE.md` shows an expected result, compare the **numbers**.

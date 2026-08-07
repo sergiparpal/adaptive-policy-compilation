@@ -1,283 +1,283 @@
-# Peldaño 1 — hallazgos
+# Rung 1 — findings
 
-Registro de cierre. 5–6 de agosto de 2026.
-Corpus: 2000 casos, semilla 17, 1743 únicos. Política oculta: 29 reglas en 8
-capas. Proponente: `deepseek/deepseek-v4-flash` vía OpenRouter.
+Closing record. August 5-6, 2026.
+Corpus: 2000 cases, seed 17, 1743 unique. Hidden policy: 29 rules in 8 layers.
+Proposer: `deepseek/deepseek-v4-flash` via OpenRouter.
 
-El peldaño se cierra sin haber medido su hipótesis. La pregunta que se quería
-responder —si las reglas que escribe un LLM se reutilizan o memorizan casos— no
-llegó a ser medible, porque el motor sobre el que se medía no puede ejecutar la
-clase de política que se le pedía ejecutar. Lo que sigue es lo que sí quedó
-establecido.
-
----
-
-## El resultado
-
-**La prioridad en una política estratificada no es recuperable de la forma
-sintáctica de las reglas.**
-
-La política oculta es una lista priorizada por capas: overrides de seguridad,
-SLO y guardia, facturación, riesgo de fuga, enrutado por producto, idioma y
-dotación, deflexión, defectos. Primera coincidencia gana. Su contenido vive en
-las condiciones de cada regla; su estructura vive en el orden entre ellas.
-
-El motor recibe las reglas sin ese orden y tiene que reconstruirlo a partir de
-lo único que ve: la forma de las reglas. Se probaron tres criterios para hacerlo.
-Ninguno funciona, y no por afinar mal un parámetro: fallan por razones
-estructurales distintas entre sí.
-
-El DSL no es el culpable. Verificado exhaustivamente sobre las 134.400
-combinaciones del espacio de casos que las 29 reglas escritas en el DSL son
-equivalentes a sus predicados originales, y que evaluarlas con "primera que casa
-gana" reproduce la política exactamente. Fallo de ejecución, no de
-representación.
+The rung closes without having measured its hypothesis. The question it set out
+to answer — whether the rules an LLM writes get reused or memorize cases — never
+became measurable, because the engine it was being measured on cannot execute
+the class of policy it was being asked to execute. What follows is what was
+established.
 
 ---
 
-## Las tres vías falsadas
+## The result
 
-Todas las cifras con la política **perfecta** cargada, salvo donde se indique.
-Ninguna involucra al LLM.
+**Priority in a stratified policy is not recoverable from the syntactic shape of
+the rules.**
 
-### 1. Especificidad — número de condiciones
+The hidden policy is a list prioritized by layers: security overrides, SLO and
+on-call, billing, churn risk, product routing, language and staffing, deflection,
+defaults. First match wins. Its content lives in the conditions of each rule; its
+structure lives in the order between them.
 
-`RuleEngine.decide`: gana la regla con más condiciones; empate con acciones
-distintas devuelve CONFLICT.
+The engine receives the rules without that order and has to reconstruct it from
+the only thing it sees: the shape of the rules. Three criteria for doing so were
+tried. None works, and not through mistuning a parameter: they fail for
+structurally different reasons.
+
+The DSL is not the culprit. Verified exhaustively over the 134,400 combinations
+of the case space that the 29 rules written in the DSL are equivalent to their
+original predicates, and that evaluating them with "first match wins" reproduces
+the policy exactly. An execution failure, not a representation failure.
+
+---
+
+## The three falsified routes
+
+All figures with the **perfect** policy loaded, except where indicated. None
+involves the LLM.
+
+### 1. Specificity — number of conditions
+
+`RuleEngine.decide`: the rule with the most conditions wins; a tie with different
+actions returns CONFLICT.
 
 ```
-ACTION 1495   IMPASSE 0   CONFLICT 505 (25,3%)
-cobertura 0,7475   error silencioso 0,2140 (320 casos)   e2e 0,5875
+ACTION 1495   IMPASSE 0   CONFLICT 505 (25.3%)
+coverage 0.7475   silent error 0.2140 (320 cases)   e2e 0.5875
 ```
 
-Prioridad y número de condiciones son casi ortogonales en esta política. H24
-(capa 6, 2 condiciones) gana a H16, H18 y H03 (capas 4 y 0, 1 condición cada
-una) y les roba 246 casos. El catch-all H29 tiene 1 condición y por tanto empata
-en especificidad con toda regla de capa de 1 condición, generando conflicto en
-vez de ceder.
+Priority and number of conditions are nearly orthogonal in this policy. H24
+(layer 6, 2 conditions) beats H16, H18 and H03 (layers 4 and 0, 1 condition
+each) and steals 246 cases from them. The catch-all H29 has 1 condition and
+therefore ties on specificity with every single-condition layer rule, generating
+a conflict instead of yielding.
 
-Demostración de que ninguna función monótona de la especificidad puede
-funcionar, usando solo reglas de la propia política: H01 (2 condiciones) debe
-ganar a H03 (1), y H16 (1) debe ganar a H24 (2). Las dos exigencias son
-incompatibles bajo cualquier criterio monótono en el número de condiciones.
+Proof that no monotone function of specificity can work, using only rules from
+the policy itself: H01 (2 conditions) must beat H03 (1), and H16 (1) must beat
+H24 (2). The two requirements are incompatible under any criterion monotone in
+the number of conditions.
 
-Corolario sobre la frontera del experimento: las reglas de `keep_k(k)` tienen
-todas exactamente k condiciones, así que su especificidad es uniforme y el
-arbitraje nunca puede invertirlas — el desempate cae en antigüedad, que es la
-semántica correcta. Los mocks son estructuralmente inmunes al defecto que
-destroza la política real. `keep_k(k=4)` puntúa mejor que la política verdadera
-bajo este motor: 0,173 de error silencioso frente a 0,214, y 0,780 de e2e frente
-a 0,588. La "región a batir" estaba por encima del techo del sistema.
+Corollary about the experiment's frontier: the rules of `keep_k(k)` all have
+exactly k conditions, so their specificity is uniform and arbitration can never
+invert them — the tie-break falls to age, which is the correct semantics. The
+mocks are structurally immune to the defect that destroys the real policy.
+`keep_k(k=4)` scores better than the true policy under this engine: 0.173 silent
+error versus 0.214, and 0.780 e2e versus 0.588. The "region to beat" was above
+the system's ceiling.
 
 Reproducible: `python3 -m harness.ceiling_check`.
 
-### 2. Orden de llegada — antigüedad de la regla
+### 2. Arrival order — age of the rule
 
-Gana la regla más antigua que casa, sin mirar especificidad.
-
-```
-orden de diseño     100,0%
-orden inverso        12,8%
-orden aleatorio      49,3%   (media sobre 200 muestras)
-```
-
-El 100% del orden de diseño es una tautología: cargar las reglas en el orden de
-la política y decir "gana la más antigua" *es* primera-que-casa. Demuestra que
-DSL más orden total bastan para ejecutar la política, y nada más.
-
-Lo que importa es el resto de la curva. El criterio no tiene contenido propio:
-transporta el orden que se le dé. Y en una base aprendida el orden de llegada va
-sistemáticamente al revés del correcto, porque los primeros casos vienen de la
-distribución común y engendran reglas de defecto, mientras las excepciones —que
-deben tener prioridad— nacen tarde.
-
-(Las cifras de orden inverso y aleatorio están registradas en `PREDICTION.md`;
-el repo solo automatiza el orden de diseño.)
-
-### 3. Subsunción semántica — inclusión de extensiones
-
-`A ≺ B` sii el conjunto de casos que A casa es subconjunto estricto del de B,
-calculado sobre el espacio completo de 134.400 combinaciones. No cuenta
-condiciones: compara extensiones. Gana la minimal del orden parcial; si las
-minimales discrepan en acción, CONFLICT.
-
-Es el único criterio de los tres que no es monótono en el número de condiciones,
-así que puede satisfacer a la vez H01 ≺ H03 y la incomparabilidad de H16 con
-H24.
-
-**Sobre la política oculta, escrita por un humano:**
+The oldest matching rule wins, without looking at specificity.
 
 ```
-parejas ordenadas 61 de 406 (15,0%)   contradicciones con el orden de capas: 0
-ACTION 1263   CONFLICT 737 (36,9%)
-error silencioso 0,0000  (0 de 1263)   e2e 0,6315
+design order      100.0%
+reverse order      12.8%
+random order       49.3%   (mean over 200 samples)
 ```
 
-Cero contradicciones, y de ahí se sigue la soundness: si alguna regla que casa
-estuviera estrictamente por debajo de la regla de capa más temprana, esa pareja
-contradiría el orden de capas; como no las hay, la regla correcta está siempre
-en el conjunto minimal. El motor deja de equivocarse en silencio: o acierta, o
-declara que no sabe.
+The 100% of the design order is a tautology: loading the rules in the policy's
+order and saying "the oldest wins" *is* first-match-wins. It shows that the DSL
+plus a total order suffice to execute the policy, and nothing more.
 
-El residuo además está concentrado. 737 casos en 131 conjuntos minimales, y
-desempatarlos por frecuencia da:
+What matters is the rest of the curve. The criterion has no content of its own:
+it transports whatever order it is given. And in a learned base the arrival order
+runs systematically backwards from the correct one, because the first cases come
+from the common distribution and beget default rules, while the exceptions —
+which must have priority — are born late.
+
+(The reverse- and random-order figures are recorded in `PREDICTION.md`; the repo
+only automates the design order.)
+
+### 3. Semantic subsumption — inclusion of extensions
+
+`A ≺ B` iff the set of cases A matches is a strict subset of B's, computed over
+the full space of 134,400 combinations. It does not count conditions: it compares
+extensions. The minimal element of the partial order wins; if the minimal
+elements disagree on the action, CONFLICT.
+
+It is the only one of the three criteria that is not monotone in the number of
+conditions, so it can simultaneously satisfy H01 ≺ H03 and the incomparability of
+H16 with H24.
+
+**Over the hidden policy, written by a human:**
 
 ```
-k=10 -> e2e 0,8415     k=20 -> 0,8870     k=50 -> 0,9495     k=131 -> 1,0000
+ordered pairs 61 of 406 (15.0%)   contradictions with the layer order: 0
+ACTION 1263   CONFLICT 737 (36.9%)
+silent error 0.0000  (0 of 1263)   e2e 0.6315
 ```
 
-con error silencioso 0,0000 en todo el trayecto. No hace falta un orden total
-sobre 29 reglas: bastan unas decenas de desempates dirigidos.
+Zero contradictions, and soundness follows from that: if some matching rule were
+strictly below the earliest-layer rule, that pair would contradict the layer
+order; since there are none, the correct rule is always in the minimal set. The
+engine stops being wrong silently: either it is right, or it declares that it
+does not know.
 
-**Sobre la base aprendida, 577 reglas escritas por el LLM:**
+The residue is also concentrated. 737 cases in 131 minimal sets, and breaking
+ties by frequency gives:
 
 ```
-parejas ordenadas 8599 de 166176 (5,17%)
+k=10 -> e2e 0.8415     k=20 -> 0.8870     k=50 -> 0.9495     k=131 -> 1.0000
+```
+
+with silent error 0.0000 all the way. A total order over 29 rules is not needed:
+a few dozen targeted tie-breaks suffice.
+
+**Over the learned base, 577 rules written by the LLM:**
+
+```
+ordered pairs 8599 of 166176 (5.17%)
 ACTION 160   CONFLICT 1840
-casos en que se compromete: 160   de esos, acción equivocada: 85  (53,12%)
-cobertura 0,0800   error silencioso 0,5312   e2e 0,0375
-residuo: 873 conjuntos minimales; los 10 primeros cubren 122 casos
+cases where it commits: 160   of those, wrong action: 85  (53.12%)
+coverage 0.0800   silent error 0.5312   e2e 0.0375
+residue: 873 minimal sets; the first 10 cover 122 cases
 ```
 
-Las tres propiedades desaparecen a la vez. La soundness pasa de 0,00% a 53,12%
-de error: peor que una moneda. La cobertura cae al 8%. El residuo pasa de 131
-conjuntos concentrados a 873 difusos.
+The three properties disappear at once. Soundness goes from 0.00% to 53.12%
+error: worse than a coin. Coverage drops to 8%. The residue goes from 131
+concentrated sets to 873 diffuse ones.
 
-Las reglas responsables de la falta de soundness son estrechas —4 a 6
-condiciones, extensión pequeña— y por eso la subsunción las declara minimales y
-las deja ganar, con la acción equivocada. Extensión pequeña no significa
-correcta.
+The rules responsible for the lack of soundness are narrow — 4 to 6 conditions,
+small extension — and that is why subsumption declares them minimal and lets them
+win, with the wrong action. A small extension does not mean a correct one.
 
-Reproducible: `python3 -m harness.subsumption_check` y
+Reproducible: `python3 -m harness.subsumption_check` and
 `python3 -m harness.learned_subsumption`.
 
 ---
 
-## La formulación
+## The formulation
 
-Los tres criterios son **proxies sintácticos de prioridad autorizada**.
+The three criteria are **syntactic proxies for authored priority**.
 
-Funcionan en la medida en que un autor haya codificado la prioridad en la forma
-de las reglas, y no llevan ninguna señal cuando nadie lo ha hecho. La
-especificidad supone que el autor puso más condiciones en lo más prioritario. El
-orden de llegada supone que el autor escribió primero lo más prioritario. La
-subsunción supone que el autor anidó las excepciones dentro de los defectos.
+They work to the extent that an author encoded the priority in the shape of the
+rules, and they carry no signal when nobody did. Specificity assumes the author
+put more conditions on what has more priority. Arrival order assumes the author
+wrote the highest-priority thing first. Subsumption assumes the author nested the
+exceptions inside the defaults.
 
-En la política oculta la tercera suposición se cumple —de ahí el 0,00% de
-error— porque quien la escribió puso las excepciones antes que los defectos, que
-es como se escriben las políticas por capas sanas. Ese 0,00% no mide una virtud
-del criterio: mide una virtud del autor. La base aprendida no tiene autor en ese
-sentido, y el mismo criterio produce 53,12% de error.
+In the hidden policy the third assumption holds — hence the 0.00% error —
+because whoever wrote it put the exceptions before the defaults, which is how
+healthy layered policies are written. That 0.00% does not measure a virtue of the
+criterion: it measures a virtue of the author. The learned base has no author in
+that sense, and the same criterion produces 53.12% error.
 
-La compilación por impasse aprende reglas. No tiene ningún mecanismo para
-aprender prioridad. En una política estratificada la estructura vive ahí.
-
----
-
-## Por qué un modelo más capaz no lo arregla
-
-La información necesaria no está en el contexto del proponente.
-
-El proponente ve un ticket y el vocabulario del dominio. No ve la base de reglas
-existente, no ve qué reglas ya cubren regiones vecinas, y no ve por qué el caso
-que se le presenta llegó hasta él. Con eso no se puede decidir una prioridad
-relativa, porque la prioridad es una relación entre reglas y él solo tiene una.
-
-El caso más claro está registrado. La región `product == dashboard AND severity
-<= 3` cubre 382 casos (19,1% del corpus) y toca 15 reglas ocultas distintas;
-`T1_GENERAL` solo es la verdad en el 21,5% de ella. El caso que originó la regla
-que cubre esa región lo resuelve H29, el catch-all `lambda c: True`, tras fallar
-28 capas. El proponente ve una respuesta correcta y no puede saber que lo es por
-descarte. Generalizó un residuo como si fuera una regla positiva. Ocurrió en las
-dos tiradas, de formas distintas: en la de n=100 con la acción correcta y el
-alcance equivocado, en la de n=2000 equivocando también la acción.
-
-Ningún aumento de capacidad reconstruye una relación a partir de un solo
-operando. Y las cifras que se atribuirían a la capacidad del modelo son
-pequeñas: en la tirada anulada, sustituir la acción de cada regla por la verdad
-de su caso de origen bajaba el error silencioso de 0,4839 a 0,4298 —5 puntos de
-48—, y darle a cada regla su acción óptima lo dejaba todavía en 0,2909. El resto
-es alcance, no elección de cola.
+Compilation by impasse learns rules. It has no mechanism whatsoever for learning
+priority. In a stratified policy the structure lives there.
 
 ---
 
-## Qué queda abierto
+## Why a more capable model does not fix it
 
-Declarar la prioridad en vez de inferirla.
+The necessary information is not in the proposer's context.
 
-Si la prioridad no es recuperable de la forma de las reglas, la alternativa es
-que forme parte de lo que se escribe: un campo en el esquema, una referencia
-explícita a la regla de la que ésta es excepción, o cualquier otra
-representación que el validador pueda comprobar. Eso obliga a dar al proponente
-la base de reglas existente como contexto, porque una prioridad relativa no se
-puede declarar sin ver respecto a qué.
+The proposer sees a ticket and the domain vocabulary. It does not see the
+existing rule base, it does not see which rules already cover neighbouring
+regions, and it does not see why the case presented to it got as far as it. With
+that, a relative priority cannot be decided, because priority is a relation
+between rules and it has only one.
 
-Es un problema de autoría, no de arbitraje. Cambia qué se le pide al proponente
-y qué se le enseña, no cómo desempata el motor. No está medido: aquí solo queda
-registrado que las tres vías de inferencia están falsadas.
+The clearest case is on record. The region `product == dashboard AND severity
+<= 3` covers 382 cases (19.1% of the corpus) and touches 15 distinct hidden
+rules; `T1_GENERAL` is the truth in only 21.5% of it. The case that originated
+the rule covering that region is resolved by H29, the catch-all `lambda c: True`,
+after 28 layers fail. The proposer sees a correct answer and cannot know that it
+is correct by elimination. It generalized a residue as if it were a positive
+rule. It happened in both runs, in different ways: in the n=100 one with the
+correct action and the wrong scope, in the n=2000 one getting the action wrong
+too.
 
----
-
-## Salvedades
-
-**Cotas, no simulaciones.** Las 577 reglas de la base aprendida se escribieron
-bajo arbitraje por especificidad. Qué caso escalaba —y por tanto qué regla
-nacía— dependía de ese arbitraje. Bajo subsunción desde el primer caso la base
-habría sido otra. Lo medido es cómo se comporta esa base con otro arbitraje, no
-lo que el bucle habría producido. Además, en esa medición las 577 reglas están
-cargadas desde el caso 0, mientras que en la tirada se acumulaban; por eso las
-cifras de especificidad en estático (cobertura 0,4290, e2e 0,1825) no coinciden
-con las de `results/llm_run.json` (0,684 y 0,353).
-
-**No determinismo a temperature 0.** El corpus es determinista (semilla 17); el
-proponente no. Mismo prompt, mismo caso, misma semilla, y las reglas nacidas de
-los primeros casos difieren entre la tirada de n=100 y la de n=2000. La prueba
-corta no es un prefijo de la larga, y una comparativa entre modelos no tiene al
-modelo como única variable salvo que se promedien varias semillas de muestreo.
-
-**Soundness verificada sobre una sola política oculta.** El 0,00% de error de la
-subsunción se comprobó sobre las 29 reglas de `hidden_policy.py` y sobre ninguna
-otra. Es una propiedad de esa política concreta, no un teorema. No se sabe con
-qué frecuencia la cumplen las políticas escritas a mano en general, ni si el
-resultado sobrevive a otra estratificación.
-
-**Un solo modelo, una sola tirada.** Las cifras del proponente son de
-`deepseek/deepseek-v4-flash` en una ejecución. La tirada quedó anulada por techo
-del motor antes de que la comparación entre modelos tuviera sentido.
+No increase in capability reconstructs a relation from a single operand. And the
+figures that would be attributed to the model's capability are small: in the
+voided run, replacing each rule's action with the truth of its originating case
+lowered the silent error from 0.4839 to 0.4298 — 5 points out of 48 — and giving
+each rule its optimal action still left it at 0.2909. The rest is scope, not
+queue choice.
 
 ---
 
-## Genealogía
+## What remains open
 
-La compilación por impasse viene del *chunking* de SOAR: cuando la resolución de
-un problema se atasca, el sistema resuelve el atasco en un subespacio y compila
-el resultado en una regla nueva, de modo que la próxima vez no se atasque.
+Declaring the priority instead of inferring it.
 
-Lo que aquí se tomó prestado fue el mecanismo de compilación. Lo que no se tomó
-fue la estructura que lo hace bien definido. En SOAR los impasses ocurren dentro
-de una jerarquía de metas, y la regla compilada nace dentro del contexto de la
-submeta que resolvió el atasco; el orden entre alternativas lo fijan preferencias
-que a su vez producen reglas. La prioridad está declarada por el sistema, no
-inferida de la forma de las producciones.
+If priority is not recoverable from the shape of the rules, the alternative is
+for it to be part of what gets written: a field in the schema, an explicit
+reference to the rule this one is an exception to, or any other representation
+the validator can check. That forces giving the proposer the existing rule base
+as context, because a relative priority cannot be declared without seeing what it
+is relative to.
 
-Aquí la base se hizo una lista plana y el arbitraje un criterio sintáctico
-calculado sobre las reglas. La jerarquía de impasses, que es donde vivía la
-estructura de prioridad, no se replicó. La estructura que se perdió al aplanar
-es exactamente la que los tres criterios intentaron reconstruir después, sin
-conseguirlo.
+It is an authorship problem, not an arbitration one. It changes what the proposer
+is asked for and what it is shown, not how the engine breaks ties. It is not
+measured: all that is recorded here is that the three inference routes are
+falsified.
 
 ---
 
-## Archivos
+## Caveats
+
+**Bounds, not simulations.** The 577 rules of the learned base were written under
+specificity-based arbitration. Which case escalated — and therefore which rule
+was born — depended on that arbitration. Under subsumption from the first case
+the base would have been another one. What was measured is how that base behaves
+under a different arbitration, not what the loop would have produced. Also, in
+that measurement the 577 rules are loaded from case 0, whereas in the run they
+accumulated; that is why the static specificity figures (coverage 0.4290, e2e
+0.1825) do not match those of `results/llm_run.json` (0.684 and 0.353).
+
+**Non-determinism at temperature 0.** The corpus is deterministic (seed 17); the
+proposer is not. Same prompt, same case, same seed, and the rules born from the
+first cases differ between the n=100 run and the n=2000 one. The smoke test is
+not a prefix of the full run, and a comparison between models does not have the
+model as its only variable unless several sampling seeds are averaged.
+
+**Soundness verified over a single hidden policy.** Subsumption's 0.00% error was
+checked over the 29 rules of `hidden_policy.py` and over no other. It is a
+property of that specific policy, not a theorem. How often hand-written policies
+satisfy it in general is unknown, as is whether the result survives a different
+stratification.
+
+**One model, one run.** The proposer figures come from
+`deepseek/deepseek-v4-flash` in a single execution. The run was voided by the
+engine ceiling before comparing models made any sense.
+
+---
+
+## Lineage
+
+Compilation by impasse comes from SOAR's *chunking*: when problem solving gets
+stuck, the system resolves the impasse in a subspace and compiles the result into
+a new rule, so that next time it does not get stuck.
+
+What was borrowed here was the compilation mechanism. What was not borrowed was
+the structure that makes it well defined. In SOAR the impasses occur within a
+goal hierarchy, and the compiled rule is born within the context of the subgoal
+that resolved the impasse; the order among alternatives is fixed by preferences
+which in turn produce rules. Priority is declared by the system, not inferred
+from the shape of the productions.
+
+Here the base was made a flat list and the arbitration a syntactic criterion
+computed over the rules. The impasse hierarchy, which is where the priority
+structure lived, was not replicated. The structure lost in flattening is exactly
+what the three criteria then tried to reconstruct, without succeeding.
+
+---
+
+## Files
 
 ```
-harness/ceiling_check.py         techo del motor; especificidad y orden de diseño
-harness/subsumption_check.py     orden parcial por subsunción, política oculta
-harness/learned_subsumption.py   el mismo criterio sobre la base aprendida
-results/frontier.json            barrido de mocks y baselines
-results/llm_run.json             tirada anulada, n=2000, registros crudos por caso
-results/llm_run_n100_smoke.json  prueba corta previa
-results/subsumption.json         orden parcial y curva de concentración
-results/learned_subsumption.json soundness sobre la base aprendida
-PREDICTION.md                    predicción registrada y acta de anulación
+harness/ceiling_check.py         engine ceiling; specificity and design order
+harness/subsumption_check.py     partial order by subsumption, hidden policy
+harness/learned_subsumption.py   the same criterion over the learned base
+results/frontier.json            sweep of mocks and baselines
+results/llm_run.json             voided run, n=2000, raw per-case records
+results/llm_run_n100_smoke.json  prior smoke test
+results/subsumption.json         partial order and concentration curve
+results/learned_subsumption.json soundness over the learned base
+PREDICTION.md                    recorded prediction and voiding statement
 ```

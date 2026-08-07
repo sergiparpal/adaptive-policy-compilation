@@ -1,13 +1,13 @@
 """
-DSL de reglas: representacion intermedia tipada y restringida.
+Rule DSL: a typed, restricted intermediate representation.
 
-El proponente (LLM o mock) NUNCA emite codigo. Emite este esquema cerrado, que
-un compilador determinista valida y ejecuta. Es la separacion
-superficie-de-autoria / sustrato acordada en el diseno.
+The proposer (LLM or mock) NEVER emits code. It emits this closed schema, which
+a deterministic compiler validates and executes. This is the authoring-surface /
+substrate separation agreed on in the design.
 
-Peldano 1: el motor es una lista de reglas con resolucion de conflictos por
-especificidad. No hay ASP todavia; el esquema esta pensado para bajarse a ASP
-sin cambios cuando llegue el peldano 3.
+Rung 1: the engine is a list of rules with conflict resolution by specificity.
+There is no ASP yet; the schema is meant to be lowered to ASP without changes
+when rung 3 arrives.
 """
 
 from __future__ import annotations
@@ -53,10 +53,10 @@ class Rule:
     rule_id: str
     conditions: list[Condition]
     action: str
-    born_at: int = -1          # indice del caso que la genero
-    fire_count: int = 0        # disparos posteriores a su creacion
-    correct_count: int = 0     # de esos, cuantos acertaron
-    note: str = ""             # justificacion libre del proponente (no ejecutable)
+    born_at: int = -1          # index of the case that generated it
+    fire_count: int = 0        # firings after its creation
+    correct_count: int = 0     # of those, how many were right
+    note: str = ""             # free-form proposer justification (not executable)
 
     @property
     def specificity(self) -> int:
@@ -78,20 +78,20 @@ class Rule:
 
 
 # ---------------------------------------------------------------------------
-# Validacion
+# Validation
 # ---------------------------------------------------------------------------
 
 def validate_rule_payload(payload: dict[str, Any], case: Case | None = None) -> Rule:
     """
-    Valida el payload de una regla candidata.
+    Validates the payload of a candidate rule.
 
-    Comprobaciones mecanicas (ningun juicio de LLM interviene aqui):
-      - esquema y tipos
-      - atributos y acciones dentro del vocabulario cerrado
-      - valores dentro del dominio declarado
-      - operadores numericos solo sobre atributos numericos
-      - no vacia, sin condiciones duplicadas sobre el mismo atributo+op
-      - si se pasa `case`: la regla debe casar el caso que la origino
+    Mechanical checks (no LLM judgement takes part here):
+      - schema and types
+      - attributes and actions inside the closed vocabulary
+      - values inside the declared domain
+      - numeric operators only over numeric attributes
+      - non-empty, no duplicate conditions over the same attribute+op
+      - if `case` is passed: the rule must match the case that originated it
     """
     if not isinstance(payload, dict):
         raise RuleValidationError("payload no es un objeto")
@@ -154,20 +154,20 @@ def validate_rule_payload(payload: dict[str, Any], case: Case | None = None) -> 
 
 
 # ---------------------------------------------------------------------------
-# Motor
+# Engine
 # ---------------------------------------------------------------------------
 
 @dataclass
 class RuleEngine:
     """
-    Motor de reglas con tres resultados posibles:
-      - ACTION   : una regla gana y propone accion
-      - IMPASSE  : ninguna regla casa (impasse de cobertura)
-      - CONFLICT : empatan reglas con acciones distintas (impasse logico)
+    Rule engine with three possible outcomes:
+      - ACTION   : one rule wins and proposes an action
+      - IMPASSE  : no rule matches (coverage impasse)
+      - CONFLICT : rules with different actions tie (logical impasse)
 
-    Resolucion de conflictos: gana la mas especifica (mas condiciones);
-    a igual especificidad y misma accion, gana la mas antigua; a igual
-    especificidad y acciones distintas -> CONFLICT.
+    Conflict resolution: the most specific one wins (most conditions); at equal
+    specificity and the same action, the oldest wins; at equal specificity and
+    different actions -> CONFLICT.
     """
 
     rules: list[Rule] = field(default_factory=list)

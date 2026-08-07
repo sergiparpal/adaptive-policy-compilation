@@ -1,18 +1,19 @@
 """
-EL INVARIANTE CENTRAL: la transcripcion de la politica oculta al DSL es fiel.
+THE CENTRAL INVARIANT: the transcription of the hidden policy into the DSL is
+faithful.
 
-De esto depende la afirmacion sobre la que se cierra el peldano 1: "el DSL no es
-el culpable; es fallo de ejecucion, no de representacion". Si la transcripcion
-no fuese fiel, el techo de 0,5875 no mediria el arbitraje sino un error de
-copia, y el peldano entero cambiaria de significado.
+The claim rung 1 closes on depends on this: "the DSL is not the culprit; it is
+an execution failure, not a representation failure". If the transcription were
+not faithful, the 0.5875 ceiling would not measure the arbitration but a copying
+error, and the whole rung would change meaning.
 
-La comprobacion es EXHAUSTIVA sobre las 134.400 combinaciones del espacio, no
-sobre el corpus: una regla puede ser equivalente en los 2000 casos muestreados y
-no serlo en el espacio. Cuesta ~1,5 s y es la prueba mas cara de la suite.
+The check is EXHAUSTIVE over the 134,400 combinations of the space, not over the
+corpus: a rule can be equivalent on the 2000 sampled cases and not in the space.
+It costs ~1.5 s and is the most expensive test in the suite.
 
-Es la misma comprobacion que hace `verify_encoding()` en
-`harness/ceiling_check.py`, reescrita aqui para que un fallo diga QUE regla y
-en QUE caso, en vez de imprimir un recuento.
+It is the same check `verify_encoding()` performs in
+`harness/ceiling_check.py`, rewritten here so that a failure says WHICH rule and
+in WHICH case, instead of printing a count.
 """
 
 from __future__ import annotations
@@ -38,7 +39,7 @@ class TestEspacioExhaustivo(unittest.TestCase):
 
 
 class TestTranscripcion(unittest.TestCase):
-    """Las 29 reglas del DSL contra los 29 predicados originales."""
+    """The 29 DSL rules against the 29 original predicates."""
 
     @classmethod
     def setUpClass(cls):
@@ -58,7 +59,7 @@ class TestTranscripcion(unittest.TestCase):
         self.assertEqual(HIDDEN_POLICY_SIZE, 29)
 
     def test_cada_regla_DSL_es_equivalente_a_su_lambda(self):
-        """Sobre las 134.400 combinaciones, no sobre el corpus."""
+        """Over the 134,400 combinations, not over the corpus."""
         fallos = {}
         for case in self.cases:
             for regla, (hid, pred, _act) in zip(self.rules, HIDDEN_RULES):
@@ -79,8 +80,8 @@ class TestTranscripcion(unittest.TestCase):
                 self.fail(f"ninguna regla DSL casa {case}: falta el catch-all")
 
     def test_H29_es_el_catch_all_del_espacio_entero(self):
-        """`lambda c: True` se codifica como `severity gte 1` porque el
-        validador exige al menos una condicion. Debe cubrir TODO el espacio."""
+        """`lambda c: True` is encoded as `severity gte 1` because the validator
+        requires at least one condition. It must cover the WHOLE space."""
         h29 = self.rules[-1]
         self.assertEqual(h29.rule_id, "H29")
         self.assertEqual(space().extension(h29.conditions), space().full)

@@ -1,16 +1,16 @@
-# Cierre transitivo de openai==2.53.0, tal como estaba instalado en el entorno
-# que produjo los registros de results/ y results2/. Generado con
-# `pip freeze` el 7 de agosto de 2026 y podado de dos paquetes que estaban en
-# el venv pero NO son dependencias del proyecto (git-filter-repo, instalado
-# aparte como herramienta).
+# Transitive closure of openai==2.53.0, as it was installed in the environment
+# that produced the records in results/ and results2/. Generated with
+# `pip freeze` on August 7, 2026 and pruned of two packages that were in the
+# venv but are NOT project dependencies (git-filter-repo, installed separately
+# as a tool).
 #
 #   Python 3.12.3 · Linux x86_64
 #
-# Para reconstruir exactamente ese entorno:
+# To rebuild exactly that environment:
 #   python3 -m venv .venv
 #   .venv/bin/pip install -r requirements.lock.txt
 #
-# Para instalar solo lo declarado y dejar que pip resuelva el resto, usa
+# To install only what is declared and let pip resolve the rest, use
 # requirements.txt.
 annotated-types==0.8.0
 anyio==4.14.2

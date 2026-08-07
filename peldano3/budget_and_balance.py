@@ -1,25 +1,24 @@
 """
-PASO A, ampliacion. Dos mediciones que acotan lo que se puede afirmar del
-resultado del orden buscado. Cero llamadas al LLM.
+STEP A, extension. Two measurements that bound what can be claimed about the
+result of the searched order. Zero LLM calls.
 
-1. PRESUPUESTO DE ETIQUETAS. El voraz del Paso A usa `true_action` sobre los
-   1000 casos de train. Eso es supervision completa. Aqui se repite la busqueda
-   viendo etiquetas solo para una fraccion, y se evalua siempre sobre el test
-   entero.
+1. LABEL BUDGET. The Step A greedy search uses `true_action` over the 1000 train
+   cases. That is full supervision. Here the search is repeated seeing labels
+   for only a fraction, and it is always evaluated over the whole test set.
 
-   El submuestreo es ALEATORIO SIMPLE, no estratificado: estratificar por clase
-   exige conocer las etiquetas de antemano, que es exactamente el recurso que se
-   esta racionando. Estratificar aqui seria hacerse trampas.
+   The subsampling is SIMPLE RANDOM, not stratified: stratifying by class
+   requires knowing the labels in advance, which is exactly the resource being
+   rationed. Stratifying here would be cheating.
 
-   Con fracciones pequeñas la varianza del sorteo domina, asi que cada
-   (particion, fraccion) se repite con varios sorteos y se reporta media y
-   desviacion.
+   At small fractions the variance of the draw dominates, so each
+   (split, fraction) is repeated with several draws and the mean and standard
+   deviation are reported.
 
-2. VORAZ BALANCEADO. El voraz del Paso A maximiza aciertos totales y por eso
-   sacrifica las clases raras: en test dio 0/21 en ACCOUNT_MANAGER y 0/3 en
-   ONCALL_ESCALATION. La variante pesa cada caso por 1/|clase| en train, de modo
-   que cada clase aporta lo mismo al objetivo. Se reportan las dos, en agregado
-   y por clase.
+2. BALANCED GREEDY. The Step A greedy search maximizes total correct decisions
+   and therefore sacrifices the rare classes: on test it gave 0/21 on
+   ACCOUNT_MANAGER and 0/3 on ONCALL_ESCALATION. The variant weights each case
+   by 1/|class| on train, so that every class contributes equally to the
+   objective. Both are reported, in aggregate and per class.
 """
 
 from __future__ import annotations
@@ -44,8 +43,8 @@ N_SPLITS = 5
 
 
 def greedy(rules, pool, truth, action, label_idx, weights=None):
-    """Voraz de lista de decision. `weights` None -> aciertos totales;
-    dict caso->peso -> objetivo ponderado (balanceado por clase)."""
+    """Decision-list greedy. `weights` None -> total correct decisions;
+    dict class->weight -> weighted objective (class-balanced)."""
     ids = [r["rule_id"] for r in rules]
     pos = {i: k for k, i in enumerate(label_idx)}
 
@@ -64,7 +63,7 @@ def greedy(rules, pool, truth, action, label_idx, weights=None):
         order = []
         while left and remaining:
             best, bs = None, None
-            for rid in sorted(left):     # ARREGLO 2026-08-06, ver order_search.py
+            for rid in sorted(left):     # FIX 2026-08-06, see order_search.py
                 s = ((win[rid] & remaining).bit_count()
                      - (lose[rid] & remaining).bit_count())
                 if bs is None or s > bs:
@@ -76,7 +75,7 @@ def greedy(rules, pool, truth, action, label_idx, weights=None):
             w, l = win[rid].bit_count(), lose[rid].bit_count()
             return w / (w + l) if (w + l) else -1.0
     else:
-        # mascaras por clase para poder ponderar sin recorrer casos uno a uno
+        # per-class masks, so weighting does not require walking case by case
         classes = sorted({truth[i] for i in label_idx})
         win = {rid: {c: 0 for c in classes} for rid in ids}
         lose = {rid: {c: 0 for c in classes} for rid in ids}
@@ -94,7 +93,7 @@ def greedy(rules, pool, truth, action, label_idx, weights=None):
         order = []
         while left and remaining:
             best, bs = None, None
-            for rid in sorted(left):     # ARREGLO 2026-08-06, ver order_search.py
+            for rid in sorted(left):     # FIX 2026-08-06, see order_search.py
                 s = 0.0
                 for c in classes:
                     s += weights[c] * ((win[rid][c] & remaining).bit_count()

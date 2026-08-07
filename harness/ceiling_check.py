@@ -1,24 +1,25 @@
 """
-Techo del motor: precision maxima alcanzable con la politica PERFECTA cargada.
+Engine ceiling: maximum accuracy attainable with the PERFECT policy loaded.
 
-Codifica las 29 reglas de hidden_policy.py directamente en el DSL y las pasa por
-el motor. Ningun LLM interviene. Si el motor no alcanza 1.0 con la politica
-verdadera dentro, el techo no lo pone el proponente: lo pone el motor.
+Encodes the 29 rules of hidden_policy.py directly in the DSL and runs them
+through the engine. No LLM takes part. If the engine does not reach 1.0 with the
+true policy inside it, the ceiling is not set by the proposer: it is set by the
+engine.
 
-Compara dos politicas de arbitraje sobre EXACTAMENTE el mismo conjunto de reglas:
+Compares two arbitration policies over EXACTLY the same set of rules:
 
-  * especificidad  -- la que implementa RuleEngine.decide: gana la regla con mas
-                      condiciones; empate con acciones distintas -> CONFLICT.
-  * prioridad      -- gana la regla mas antigua que case (orden de nacimiento),
-                      sin mirar especificidad. Con las reglas cargadas en el
-                      orden de HIDDEN_RULES esto es exactamente la semantica
-                      "primera que casa gana" de la politica oculta.
+  * specificity -- the one RuleEngine.decide implements: the rule with the most
+                   conditions wins; a tie with different actions -> CONFLICT.
+  * priority    -- the oldest matching rule wins (birth order), without looking
+                   at specificity. With the rules loaded in HIDDEN_RULES order
+                   this is exactly the "first match wins" semantics of the
+                   hidden policy.
 
-ANALISIS, NO MODIFICACION. No toca dsl.py: el arbitraje alternativo se
-implementa aqui y reutiliza Rule.matches() del DSL congelado, de modo que la
-unica diferencia entre las dos mediciones es el arbitraje.
+ANALYSIS, NOT MODIFICATION. It does not touch dsl.py: the alternative
+arbitration is implemented here and reuses Rule.matches() from the frozen DSL,
+so that the only difference between the two measurements is the arbitration.
 
-Uso:  python3 -m harness.ceiling_check
+Usage:  python3 -m harness.ceiling_check
 """
 
 from __future__ import annotations
@@ -33,24 +34,25 @@ from .hidden_policy import HIDDEN_RULES, true_action, true_rule_id
 
 
 # ---------------------------------------------------------------------------
-# Las 29 reglas ocultas, transcritas al DSL
+# The 29 hidden rules, transcribed into the DSL
 # ---------------------------------------------------------------------------
-# Cada entrada es (id, [(attr, op, value), ...], accion) y reproduce LITERALMENTE
-# el cuerpo del predicado correspondiente en HIDDEN_RULES, en el mismo orden.
+# Each entry is (id, [(attr, op, value), ...], action) and reproduces LITERALLY
+# the body of the corresponding predicate in HIDDEN_RULES, in the same order.
 #
-# Unica traduccion no literal: H29 es `lambda c: True`, y validate_rule_payload
-# exige al menos una condicion. Se codifica como `severity gte 1`, que es cierto
-# en todo el dominio (severity in 1..4). verify_encoding() lo comprueba.
+# The only non-literal translation: H29 is `lambda c: True`, and
+# validate_rule_payload requires at least one condition. It is encoded as
+# `severity gte 1`, which is true over the whole domain (severity in 1..4).
+# verify_encoding() checks this.
 
 HIDDEN_DSL: list[tuple[str, list[tuple[str, str, object]], str]] = [
-    # --- Capa 0: overrides de seguridad -----------------------------------
+    # --- Layer 0: security overrides --------------------------------------
     ("H01", [("has_security_keyword", "eq", True),
              ("customer_tier", "in", ["business", "enterprise"])], "SECURITY_INCIDENT"),
     ("H02", [("has_security_keyword", "eq", True),
              ("severity", "lte", 2)], "SECURITY_INCIDENT"),
     ("H03", [("has_security_keyword", "eq", True)], "T2_TECHNICAL"),
 
-    # --- Capa 1: SLO y guardia ---------------------------------------------
+    # --- Layer 1: SLO and on-call ------------------------------------------
     ("H04", [("severity", "eq", 1), ("customer_tier", "eq", "enterprise")], "ONCALL_ESCALATION"),
     ("H05", [("severity", "eq", 1), ("customer_tier", "eq", "business"),
              ("off_hours", "eq", True)], "ONCALL_ESCALATION"),
@@ -58,7 +60,7 @@ HIDDEN_DSL: list[tuple[str, list[tuple[str, str, object]], str]] = [
     ("H07", [("severity", "eq", 1), ("product", "eq", "api")], "T3_ENGINEERING"),
     ("H08", [("severity", "eq", 1)], "T2_TECHNICAL"),
 
-    # --- Capa 2: facturacion ------------------------------------------------
+    # --- Layer 2: billing ---------------------------------------------------
     ("H09", [("product", "eq", "billing"),
              ("customer_tier", "eq", "enterprise")], "ACCOUNT_MANAGER"),
     ("H10", [("product", "eq", "billing"), ("severity", "lte", 2)], "BILLING_SPECIALIST"),
@@ -66,13 +68,13 @@ HIDDEN_DSL: list[tuple[str, list[tuple[str, str, object]], str]] = [
              ("prior_tickets_30d", "gte", 3)], "BILLING_SPECIALIST"),
     ("H12", [("product", "eq", "billing")], "SELF_SERVICE_DEFLECT"),
 
-    # --- Capa 3: riesgo de fuga --------------------------------------------
+    # --- Layer 3: churn risk -----------------------------------------------
     ("H13", [("customer_tier", "eq", "enterprise"),
              ("prior_tickets_30d", "gte", 5)], "ACCOUNT_MANAGER"),
     ("H14", [("customer_tier", "eq", "business"),
              ("prior_tickets_30d", "gte", 8)], "ACCOUNT_MANAGER"),
 
-    # --- Capa 4: enrutado por producto -------------------------------------
+    # --- Layer 4: product routing ------------------------------------------
     ("H15", [("product", "eq", "api"), ("severity", "lte", 2)], "T3_ENGINEERING"),
     ("H16", [("product", "eq", "api")], "T2_TECHNICAL"),
     ("H17", [("product", "eq", "integrations"), ("severity", "lte", 2)], "T3_ENGINEERING"),
@@ -80,27 +82,27 @@ HIDDEN_DSL: list[tuple[str, list[tuple[str, str, object]], str]] = [
     ("H19", [("product", "eq", "mobile"), ("severity", "eq", 2)], "T2_TECHNICAL"),
     ("H20", [("product", "eq", "dashboard"), ("severity", "lte", 2)], "T2_TECHNICAL"),
 
-    # --- Capa 5: idioma y dotacion (cola larga) ----------------------------
+    # --- Layer 5: language and staffing (long tail) ------------------------
     ("H21", [("language", "eq", "pt"), ("severity", "lte", 2)], "T2_TECHNICAL"),
     ("H22", [("channel", "eq", "phone"), ("customer_tier", "eq", "free")], "SELF_SERVICE_DEFLECT"),
     ("H23", [("channel", "eq", "phone"), ("off_hours", "eq", True),
              ("customer_tier", "neq", "enterprise")], "T1_GENERAL"),
 
-    # --- Capa 6: deflexion --------------------------------------------------
+    # --- Layer 6: deflection ------------------------------------------------
     ("H24", [("customer_tier", "eq", "free"), ("severity", "gte", 3)], "SELF_SERVICE_DEFLECT"),
     ("H25", [("customer_tier", "eq", "free"),
              ("prior_tickets_30d", "eq", 0)], "SELF_SERVICE_DEFLECT"),
     ("H26", [("severity", "eq", 4), ("prior_tickets_30d", "eq", 0)], "SELF_SERVICE_DEFLECT"),
 
-    # --- Capa 7: defectos ---------------------------------------------------
+    # --- Layer 7: defaults --------------------------------------------------
     ("H27", [("severity", "lte", 2)], "T2_TECHNICAL"),
     ("H28", [("customer_tier", "in", ["business", "enterprise"])], "T1_GENERAL"),
-    ("H29", [("severity", "gte", 1)], "T1_GENERAL"),   # `True` en todo el dominio
+    ("H29", [("severity", "gte", 1)], "T1_GENERAL"),   # `True` over the whole domain
 ]
 
 
 def build_rules() -> list[Rule]:
-    """Reglas del DSL en el orden de HIDDEN_RULES. born_at = posicion en la capa."""
+    """DSL rules in HIDDEN_RULES order. born_at = position in the layer."""
     rules = []
     for i, (rid, conds, action) in enumerate(HIDDEN_DSL):
         rules.append(Rule(
@@ -114,7 +116,7 @@ def build_rules() -> list[Rule]:
 
 
 # ---------------------------------------------------------------------------
-# Verificacion de la transcripcion: exhaustiva sobre el espacio completo
+# Verifying the transcription: exhaustive over the complete space
 # ---------------------------------------------------------------------------
 
 def all_cases():
@@ -125,9 +127,9 @@ def all_cases():
 
 
 def verify_encoding(rules: list[Rule]) -> bool:
-    """Cada regla DSL debe ser equivalente a su lambda, y la evaluacion
-    primera-que-casa sobre el DSL debe reproducir true_action, en TODO el
-    espacio de casos (no solo en el corpus)."""
+    """Every DSL rule must be equivalent to its lambda, and first-match-wins
+    evaluation over the DSL must reproduce true_action, over the WHOLE case
+    space (not just the corpus)."""
     n = 0
     per_rule_bad = collections.Counter()
     first_match_bad = 0
@@ -136,7 +138,7 @@ def verify_encoding(rules: list[Rule]) -> bool:
         for rule, (hid, pred, _act) in zip(rules, HIDDEN_RULES):
             if rule.matches(case) != bool(pred(case)):
                 per_rule_bad[hid] += 1
-        for rule in rules:                      # primera que casa
+        for rule in rules:                      # first match wins
             if rule.matches(case):
                 if rule.action != true_action(case):
                     first_match_bad += 1
@@ -159,12 +161,12 @@ def verify_encoding(rules: list[Rule]) -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Arbitraje alternativo: prioridad por orden de nacimiento
+# Alternative arbitration: priority by birth order
 # ---------------------------------------------------------------------------
 
 def decide_by_priority(rules: list[Rule], case: Case):
-    """Gana la regla mas antigua que case. Nunca produce CONFLICT: el orden
-    total sobre las reglas desempata siempre. Reutiliza Rule.matches() del DSL."""
+    """The oldest matching rule wins. Never produces CONFLICT: the total order
+    over the rules always breaks the tie. Reuses Rule.matches() from the DSL."""
     matched = [r for r in rules if r.matches(case)]
     if not matched:
         return "IMPASSE", None, []
@@ -173,14 +175,14 @@ def decide_by_priority(rules: list[Rule], case: Case):
 
 
 # ---------------------------------------------------------------------------
-# Medicion
+# Measurement
 # ---------------------------------------------------------------------------
 
 def measure(corpus, decide_fn, label):
     out = collections.Counter()
     n_correct = 0
-    wrong = []          # (caso, verdad, predicho, regla ganadora)
-    conflicts = []      # (caso, verdad, finalistas)
+    wrong = []          # (case, truth, predicted, winning rule)
+    conflicts = []      # (case, truth, finalists)
     for case in corpus:
         outcome, winner, matched = decide_fn(case)
         out[outcome] += 1
@@ -246,7 +248,7 @@ def main() -> int:
     report(m_spec)
     report(m_prio)
 
-    # ---- de que se compone el fallo de la especificidad ------------------
+    # ---- what the specificity failure is made of -------------------------
     print()
     print("=" * 74)
     print("DESGLOSE DEL FALLO POR ESPECIFICIDAD")

@@ -1,25 +1,28 @@
 """
-REGRESION del arreglo del 6 de agosto de 2026: el voraz ya no depende del hash.
+REGRESSION test for the August 6, 2026 fix: the greedy search no longer depends
+on the hash.
 
-QUE PASO. El argmax del voraz recorria un `set` de identificadores de regla, asi
-que el desempate quedaba a merced del orden de iteracion de un set de cadenas,
-que depende de `PYTHONHASHSEED`. La misma celda daba entre 0,5880 y 0,5991 segun
-el hash. Se descubrio con dos peldanos ya cerrados encima. El arreglo —iterar
-sobre `sorted(left)`— es de una linea; el problema es que nada lo habria pillado.
+WHAT HAPPENED. The greedy argmax walked a `set` of rule identifiers, so the
+tie-break was at the mercy of the iteration order of a set of strings, which
+depends on `PYTHONHASHSEED`. The same cell gave between 0.5880 and 0.5991
+depending on the hash. It was discovered with two rungs already closed on top of
+it. The fix —iterating over `sorted(left)`— is one line; the problem is that
+nothing would have caught it.
 
-Esto es lo que lo pilla. `tests/hashseed_child.py` corre el voraz de los dos
-peldanos en un proceso aparte y firma el orden que sale; el padre lo invoca con
-tres `PYTHONHASHSEED` distintos y compara.
+This is what catches it. `tests/hashseed_child.py` runs the greedy search of
+both rungs in a separate process and signs the resulting order; the parent
+invokes it with three different `PYTHONHASHSEED` values and compares.
 
-EL TESTIGO. El hijo firma tambien el orden de iteracion de un set de esos mismos
-identificadores. Ese testigo DEBE cambiar entre semillas: si no cambiase, la
-prueba pasaria sin comprobar nada —querria decir que en esta version de Python
-el hash ya no se aleatoriza, no que el voraz sea determinista.
+THE WITNESS. The child also signs the iteration order of a set of those same
+identifiers. That witness MUST change between seeds: if it did not, the test
+would pass without checking anything —it would mean that in this version of
+Python hashing is no longer randomized, not that the greedy search is
+deterministic.
 
-NO se clava aqui ningun valor de exactitud. Las cifras publicadas de los
-peldanos 3 y 4 son las del codigo ANTERIOR al arreglo y estan pendientes de
-re-correr junto con un optimizador serio; fijar aqui los valores nuevos crearia
-una segunda cifra oficial que no respalda ningun FINDINGS. Ver IDEAS.md.
+NO accuracy value is pinned here. The published figures of rungs 3 and 4 are
+those of the code PRIOR to the fix and are pending a re-run together with a
+serious optimizer; pinning the new values here would create a second official
+figure that no FINDINGS backs. See IDEAS.md.
 """
 
 from __future__ import annotations
@@ -56,7 +59,7 @@ class TestInvarianciaAlHashSeed(unittest.TestCase):
         cls.runs = {s: correr_hijo(s) for s in HASH_SEEDS}
 
     def test_el_testigo_confirma_que_el_hash_se_aleatoriza(self):
-        """Si esto falla, las demas pruebas de esta clase no prueban nada."""
+        """If this fails, the other tests in this class prove nothing."""
         vistos = {r["set_iteration"] for r in self.runs.values()}
         self.assertEqual(len(vistos), len(HASH_SEEDS),
                          "el orden de iteracion del set no cambio entre "
@@ -75,15 +78,15 @@ class TestInvarianciaAlHashSeed(unittest.TestCase):
         self.assertEqual(len(vistos), 1, f"exactitudes distintas: {vistos}")
 
     def test_el_material_de_entrada_es_el_esperado(self):
-        """577 reglas: la base del peldano 1 de la que parten los peldanos 3 y
-        4. Si esto cambia, alguien reescribio results/llm_run.json."""
+        """577 rules: the rung 1 base that rungs 3 and 4 start from. If this
+        changes, somebody rewrote results/llm_run.json."""
         for s, r in self.runs.items():
             with self.subTest(hashseed=s):
                 self.assertEqual(r["n_rules"], 577)
 
 
 class TestContratoDelVoraz(unittest.TestCase):
-    """Propiedades del orden producido, en el mismo proceso."""
+    """Properties of the produced order, in the same process."""
 
     @classmethod
     def setUpClass(cls):
@@ -117,8 +120,8 @@ class TestContratoDelVoraz(unittest.TestCase):
         self.assertEqual(len(tr1) + len(te1), 2000)
 
     def test_las_copias_de_un_caso_caen_del_mismo_lado(self):
-        """La particion se agrupa por identidad de caso: si no, el test
-        premiaria memorizar, porque el 12,8% del corpus tiene gemelo exacto."""
+        """The split is grouped by case identity: otherwise the test would
+        reward memorizing, because 12.8% of the corpus has an exact twin."""
         corpus, rules, ext, conds = load()
         below = subsumption_below(rules, ext)
         _m, _u, truth = build_tables(corpus, rules, conds, below)

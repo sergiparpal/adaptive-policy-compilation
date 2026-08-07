@@ -1,12 +1,13 @@
 """
-Baseline obligatorio: cache semantica.
+Mandatory baseline: semantic cache.
 
-No induce reglas. Guarda casos vistos y, ante uno nuevo, recupera el mas
-parecido por distancia de Hamming sobre los atributos. Si la distancia es <= d,
-reutiliza su accion; si no, escala.
+It induces no rules. It stores seen cases and, faced with a new one, retrieves
+the most similar by Hamming distance over the attributes. If the distance is
+<= d, it reuses its action; otherwise it escalates.
 
-Es la hipotesis nula del proyecto entero: si esto consigue el 80% del ahorro con
-una fraccion de la complejidad, las reglas tienen que justificar su existencia.
+It is the null hypothesis of the whole project: if this achieves 80% of the
+saving at a fraction of the complexity, the rules have to justify their
+existence.
 """
 
 from __future__ import annotations
@@ -29,7 +30,7 @@ def run_cache_baseline(corpus: list[Case], max_dist: int) -> dict[str, Any]:
     n = len(corpus)
 
     for case in corpus:
-        truth = true_action(case)  # solo para etiquetar el registro
+        truth = true_action(case)  # only to label the record
         best, best_d = None, 10**9
         for prev, act in store:
             d = _dist(case, prev)
@@ -44,7 +45,7 @@ def run_cache_baseline(corpus: list[Case], max_dist: int) -> dict[str, Any]:
                 correct += 1
         else:
             escalations += 1
-            store.append((case, truth))  # el LLM habria dado la accion correcta
+            store.append((case, truth))  # the LLM would have given the right action
 
     return {
         "name": f"cache(d<={max_dist})",

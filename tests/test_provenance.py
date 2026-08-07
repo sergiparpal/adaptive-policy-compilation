@@ -1,13 +1,14 @@
 """
-El registro de entorno que acompana a cada JSON de resultados.
+The environment record that accompanies every results JSON.
 
-Incluye la comprobacion que importa de verdad: que el bloque `_env` no filtra la
-clave de la API (regla dura 7). Solo se lee una variable de entorno,
-`PYTHONHASHSEED`, y esta prueba lo fija por si alguien anade otra sin pensarlo.
+It includes the check that really matters: that the `_env` block does not leak
+the API key (hard rule 7). Only one environment variable is read,
+`PYTHONHASHSEED`, and this test pins that in case somebody adds another without
+thinking.
 
-La ultima clase recorre el codigo buscando escritores de JSON y exige que todos
-cuelguen su `_env`. Es lo que evita que el siguiente script que se anada vuelva
-a producir registros sin procedencia, que es como se llego a la deuda original.
+The last class walks the code looking for JSON writers and requires all of them
+to hang their `_env`. It is what prevents the next script added from producing
+records without provenance again, which is how the original debt came about.
 """
 
 from __future__ import annotations
@@ -27,8 +28,8 @@ REPO = Path(__file__).resolve().parent.parent
 CLAVES = {"recorded_at", "python", "openai", "platform", "pythonhashseed",
           "git_commit", "git_dirty", "code_dirty", "code_digest"}
 
-# Modulos que vuelcan un JSON de resultados. La lista esta en el README, en la
-# tabla "reproducir una cifra sobrescribe su propio registro".
+# Modules that dump a results JSON. The list is in the README, in the table
+# "reproducing a figure overwrites its own record".
 ESCRITORES = [
     "run_experiment",
     "harness.subsumption_check",
@@ -70,7 +71,7 @@ class TestEnvironment(unittest.TestCase):
             self.assertEqual(environment()["pythonhashseed"], "7")
 
     def test_sin_PYTHONHASHSEED_queda_null(self):
-        """`null` significa "sin fijar", es decir aleatorio. Es informacion."""
+        """`null` means "unset", that is, random. It is information."""
         with mock.patch.dict("os.environ", clear=True):
             self.assertIsNone(environment()["pythonhashseed"])
 
@@ -104,7 +105,7 @@ class TestCodeDigest(unittest.TestCase):
         self.assertNotEqual(uno, dos)
 
     def test_no_depende_del_nombre_del_directorio_raiz(self):
-        """El digest es del contenido: mover el repo no lo cambia."""
+        """The digest is of the content: moving the repo does not change it."""
         with mock.patch.object(provenance, "REPO", Path(self.tmp)):
             uno = code_digest()
         otro = Path(self.tmp2)
@@ -116,8 +117,8 @@ class TestCodeDigest(unittest.TestCase):
         self.assertEqual(uno, dos)
 
     def test_no_incluye_las_pruebas(self):
-        """Cambiar una prueba no cambia ninguna cifra; el digest no debe
-        moverse por ello."""
+        """Changing a test changes no figure; the digest must not move because
+        of it."""
         self.assertNotIn("tests", provenance.CODE_ROOTS)
 
     def test_sin_fuentes_devuelve_None(self):
@@ -158,16 +159,17 @@ class TestGit(unittest.TestCase):
 
 
 class TestLasDosBanderasDeSuciedad(unittest.TestCase):
-    """`git_dirty` y `code_dirty` no son redundantes, y la diferencia importa.
+    """`git_dirty` and `code_dirty` are not redundant, and the difference
+    matters.
 
-    Solo `code_dirty` decide si `git_commit` identifica el codigo que corrio.
-    `git_dirty` cubre lo demas, que no siempre es inocuo: tres escritores leen
-    registros de `results*/` como ENTRADA. Desdoblarlos (7 ago 2026) salio de
-    re-correr seis registros seguidos, donde cada script ensuciaba el arbol
-    para el siguiente con su propia salida.
+    Only `code_dirty` decides whether `git_commit` identifies the code that ran.
+    `git_dirty` covers the rest, which is not always harmless: three writers
+    read records from `results*/` as INPUT. Splitting them (Aug 7, 2026) came
+    out of re-running six records back to back, where each script dirtied the
+    tree for the next one with its own output.
 
-    Se monta un repo de mentira porque la distincion no se puede provocar en el
-    de verdad sin ensuciarlo.
+    A fake repo is set up because the distinction cannot be provoked in the real
+    one without dirtying it.
     """
 
     def setUp(self):
@@ -201,8 +203,8 @@ class TestLasDosBanderasDeSuciedad(unittest.TestCase):
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (False, False))
 
     def test_un_registro_modificado_ensucia_el_arbol_pero_no_el_codigo(self):
-        """El caso de la tanda: la salida de un script no invalida el commit
-        del siguiente, y hasta ahora las dos cosas se veian igual."""
+        """The batch case: one script's output does not invalidate the next
+        one's commit, and until now the two looked the same."""
         (self.repo / "results" / "cifra.json").write_text('{"a": 1}\n')
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, False))
@@ -213,8 +215,8 @@ class TestLasDosBanderasDeSuciedad(unittest.TestCase):
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
 
     def test_un_fichero_de_codigo_sin_seguimiento_tambien_cuenta(self):
-        """Un modulo nuevo sin `git add` cambia lo que corre igual que uno
-        modificado, y el digest ya lo recoge; el flag tambien debe."""
+        """A new module without `git add` changes what runs just as a modified
+        one does, and the digest already picks it up; the flag must too."""
         (self.repo / "harness" / "nuevo.py").write_text("z = 3\n")
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
@@ -238,8 +240,8 @@ class TestTodosLosEscritoresRegistranEntorno(unittest.TestCase):
                               f"{nombre} no importa harness.provenance.environment")
 
     def test_ningun_escritor_de_JSON_se_queda_sin_env(self):
-        """Descubre escritores NUEVOS: cualquier `write_text(json.dumps(...))`
-        del codigo debe llevar su bloque `_env` al lado."""
+        """Discovers NEW writers: any `write_text(json.dumps(...))` in the code
+        must carry its `_env` block alongside."""
         sin_env = []
         for root in CODE_ROOTS:
             p = REPO / root
