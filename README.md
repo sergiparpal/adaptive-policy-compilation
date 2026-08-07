@@ -63,7 +63,7 @@ python3 -m peldano3.budget_and_balance  # label curve and balanced greedy
 python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
 ```
 
-And before touching anything, the test suite: **250 tests in ~12 s, no API and
+And before touching anything, the test suite: **289 tests in ~14 s, no API and
 no writes to `results*/`.**
 
 ```bash
@@ -94,6 +94,10 @@ and the key (see *Getting started*):
 .venv/bin/python -m peldano2.run2 --n 100 --seed 17 --prompt-version v2   # rung 2
 ```
 
+They write `results/llm_run_n100.json` and `results2/llm_run2_n100_v2.json`. If
+the file is already there they abort without spending anything; see the warning
+below.
+
 `peldano2/run2.py` accepts `--prompt-version v1|v2`; both versions of the prompt
 are kept in the code and every run stores in full the one it used. The record of
 the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
@@ -101,39 +105,77 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > ⚠️ **Reproducing a figure overwrites its own record.** Nearly all the scripts
 > above dump their JSON on finishing, over the published file:
 >
-> | script | file it rewrites |
-> |---|---|
-> | `run_experiment.py frontier` | `results/frontier.json` |
-> | `run_experiment.py llm` | **`results/llm_run.json`** ← see warning below |
-> | `harness/subsumption_check.py` | `results/subsumption.json` |
-> | `harness/learned_subsumption.py` | `results/learned_subsumption.json` |
-> | `peldano2/ceiling_check2.py` | `results2/ceiling2.json` |
-> | `peldano2/compare_runs.py` | `results2/comparativa.json` |
-> | `peldano2/note_audit.py` | `results2/note_audit.json` |
-> | `peldano2/run2.py` | `results2/llm_run2_<tag>.json` |
-> | `peldano3/order_search.py` | `results3/order_search.json` |
-> | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` |
-> | `peldano4/sweep.py` | `results4/sweep.json` |
+> | script | file it rewrites | guarded |
+> |---|---|---|
+> | `run_experiment.py frontier` | `results/frontier.json` | no, on purpose |
+> | `run_experiment.py llm` | `results/llm_run_n<N>.json` | **yes** |
+> | `harness/subsumption_check.py` | `results/subsumption.json` | no, on purpose |
+> | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
+> | `peldano2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
+> | `peldano2/compare_runs.py` | `results2/comparativa.json` | only against shrinking |
+> | `peldano2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
+> | `peldano2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
+> | `peldano3/order_search.py` | `results3/order_search.json` | no, on purpose |
+> | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` | no, on purpose |
+> | `peldano4/sweep.py` | `results4/sweep.json` | no, on purpose |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.
 >
-> **The serious case is `run_experiment.py llm`.** It overwrites
-> `results/llm_run.json`, which is not just the record of rung 1: it is the base
-> of 577 rules that **rungs 3 and 4 start from**. Re-running it destroys the
-> input of two closed rungs, and since the proposer is not deterministic at
-> `temperature 0`, what comes out will not be the same. If you need to re-run
-> it, save the original under another name first.
+> **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
+> is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
+> three levels, because only one of them needs protecting.
+>
+> **What is guarded: what costs money and is not deterministic.**
+> `run_experiment.py llm` and `peldano2/run2.py`. If the destination is occupied
+> they abort **before spending a single call** — the check is at startup, not at
+> the end — with a message that reads the existing file and says what would be
+> lost: when it was recorded, with what model, how many cases, how many rules and
+> how many calls it cost. It makes no automatic copy: silent backups pile up and
+> people stop looking at them. Two ways out, both explicit:
+>
+> ```bash
+> .venv/bin/python run_experiment.py llm --n 100 --out results/otra_tirada.json
+> .venv/bin/python run_experiment.py llm --n 100 --overwrite-record
+> ```
+>
+> The flag is not called `--force` on purpose: it names what it does, so that it
+> does not get typed out of habit. And the guard is on the **destination**, not
+> on the flag that chose it — `--out` onto an occupied file aborts just the same.
+>
+> **The `--n` collision is gone too.** Until that date `llm` wrote
+> `results/llm_run.json` whatever `--n` it was given, so the smoke test and the
+> full run shared a file: `llm --n 100`, the cheap step of the *Getting started*,
+> destroyed the 2000-case record. The n now goes in the name —
+> `llm_run_n100.json`, `llm_run_n2000.json` — which is what rung 2 already did
+> (`llm_run2_n100.json`) and what the smoke record on disk already looked like
+> (`llm_run_n100_smoke.json`). The seed only appears when it is not 17. A
+> deliberate consequence: **`results/llm_run.json` is no longer the destination of
+> any invocation**; it is the closed record of rung 1 and the input of rungs 3
+> and 4, and reaching it now takes `--out` *and* the flag. Reproducing that
+> figure writes `llm_run_n2000.json`, and comparing the two is a separate,
+> deliberate step. `peldano2/run2.py` got the same fix on its `--tag`: it now
+> includes the prompt version and the seed, so the rung 2 line recommended above
+> no longer writes on top of the v1 record.
+>
+> **What is NOT guarded, also on purpose.** The deterministic, free records:
+> re-running them **is** the reproducibility check, and a guard there would get
+> in the way. Nor `order_search`, `budget_and_balance` and `sweep`, whose re-run
+> with a serious optimizer is planned.
 >
 > In rungs 1 and 2 the rest of the computation is deterministic and the content
 > comes out identical — what changes is the modification date of a closed record,
 > see [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md). In rungs 3 and 4
 > **the content does change**, because the tie-break fix moves the digits.
 >
-> And there is a worse trap: `compare_runs` and `note_audit` rewrite with
-> **whatever they are passed as an argument**. Invoking them with one file
-> instead of with `results2/llm_run2_*.json` shrinks the record from 8 runs to 1.
-> That is not a change of digits, it is data loss.
+> **The other trap, the one that is about arguments and not about the
+> destination.** `compare_runs` and `note_audit` rewrite with **whatever they are
+> passed**. Invoking them with one file instead of with
+> `results2/llm_run2_*.json` shrinks the record from 8 runs to 1: not a change of
+> digits, data loss. Their destination never changes, so the guard above cannot
+> see it; what they check is the row count, and they refuse to leave fewer rows
+> than they found. Equal or more goes through untouched, which is exactly the
+> free reproduction with the full glob. To shrink one on purpose, the same flag.
 >
 > Since August 7, 2026 there is one more detail: each JSON carries an `_env`
 > block with the provenance (see *The tests and the provenance*). When you
@@ -145,9 +187,11 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > `comparativa.json` and `note_audit.json` also adopted their new shape,
 > `{"_env": …, "rows": […]}` instead of the bare list, with the same 8 rows.
 >
-> **The safeguard is git, and it is enough.** After reproducing anything:
-> `git status` gives away what was touched and `git checkout -- <file>` restores
-> it. The records are versioned precisely for this.
+> **For everything else the safeguard is still git**, and for everything else it
+> is enough: `git status` gives away what was touched and
+> `git checkout -- <file>` restores it. The records are versioned precisely for
+> this. What the guard adds is the one case where git arrives too late — a record
+> that cost money and cannot be produced again.
 
 ---
 
@@ -158,7 +202,7 @@ Two different nets, with different purposes.
 ### The test suite
 
 ```bash
-python3 -m unittest discover            # 250 tests, ~12 s, 0 API calls
+python3 -m unittest discover            # 289 tests, ~14 s, 0 API calls
 python3 -m unittest tests.test_ceilings -v      # a single module
 ```
 
@@ -181,6 +225,7 @@ What it covers, and why those things:
 | `test_proposal_parsing.py` | the parsing of what the proposer returns, in both versions |
 | `test_llm_path.py` | the **whole** LLM path, replaying the recorded runs without spending (see below) |
 | `test_provenance.py` | the `_env` block, that it does not leak the key, and that no JSON writer is left without one |
+| `test_record_guard.py` | the guard on the records that cost money: what it refuses, that it aborts **before** spending a call, that the output name no longer collides across `--n`, and that the free records stay unguarded |
 | `test_automatizacion.py` | that the hook and the CI workflow are still there and still run what they say they run |
 
 If a *snapshot* test fails, the expected number **is not updated**: you find out
@@ -465,9 +510,12 @@ export OPENROUTER_API_KEY=sk-or-...        # Windows: set OPENROUTER_API_KEY=...
 .venv/bin/python run_experiment.py models deepseek
 
 # 5. Smoke test first: see real rules and validate the parsing
+#    -> results/llm_run_n100.json
 .venv/bin/python run_experiment.py llm --n 100
 
 # 6. Fill in PREDICTION.md, and only then the full run
+#    -> results/llm_run_n2000.json. It does NOT touch results/llm_run.json,
+#    which is the closed record of rung 1 and the input of rungs 3 and 4.
 .venv/bin/python run_experiment.py llm --n 2000
 ```
 
@@ -605,6 +653,7 @@ adaptive-triage/
 │   ├── cache_baseline.py    semantic cache baseline                  [FROZEN]
 │   ├── proposers.py         keep_k/random_k mocks and LLM proposers
 │   ├── provenance.py        the `_env` block attached to every JSON
+│   ├── record_guard.py      refusal to overwrite the records that cost money
 │   ├── ceiling_check.py     STEP 0 · ceiling of the specificity engine
 │   ├── subsumption_check.py partial order by semantic subsumption
 │   └── learned_subsumption.py  the same criterion over the learned base
@@ -624,7 +673,7 @@ adaptive-triage/
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   └── sweep.py             coverage, asymmetry, delay and noise sweeps
 │
-├── tests/                   250 tests · `python3 -m unittest discover`
+├── tests/                   289 tests · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus and exhaustive space, built once
 │   ├── doubles.py           the recorded SDK client: the LLM path without paying
 │   ├── hashseed_child.py    child process for the `PYTHONHASHSEED` control

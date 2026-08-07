@@ -507,14 +507,17 @@ class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory()
         cliente = ClienteOpenAIFalso(cls.guion)
         args = argparse.Namespace(n=cls.N, seed=17, provider="openrouter",
-                                  model=cls.reg["model"])
+                                  model=cls.reg["model"], out=None,
+                                  overwrite_record=False)
         with sdk_falso(openai=cliente), \
                 mock.patch.object(run_experiment, "OUT", Path(cls.tmp.name)), \
                 contextlib.redirect_stdout(io.StringIO()) as salida:
             run_experiment.cmd_llm(args)
         cls.salida = salida.getvalue()
+        # The name carries the n since Aug 8, 2026: the smoke test and the full
+        # run used to write the same file. See harness/record_guard.py.
         cls.escrito = json.loads(
-            (Path(cls.tmp.name) / "llm_run.json").read_text())
+            (Path(cls.tmp.name) / f"llm_run_n{cls.N}.json").read_text())
 
     @classmethod
     def tearDownClass(cls):

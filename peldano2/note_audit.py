@@ -22,6 +22,9 @@ from pathlib import Path
 
 from harness.domain import ATTRIBUTES
 from harness.provenance import environment
+from harness.record_guard import FLAG, or_exit, refuse_shrink
+
+RECORD = Path("results2/note_audit.json")
 
 # Markers of reasoning towards disjointness. Deliberately literal: a bare
 # "solape" is not counted, only forms asserting that cases are NOT shared.
@@ -59,7 +62,13 @@ def audit(path: Path) -> dict:
 
 
 def main(argv: list[str]) -> int:
-    rows = [audit(Path(p)) for p in sorted(argv)]
+    overwrite = FLAG in argv
+    rows = [audit(Path(p)) for p in sorted(a for a in argv if a != FLAG)]
+
+    # Checked before printing, for the same reason as in compare_runs: the
+    # destination never changes here, the number of rows does.
+    or_exit(refuse_shrink, RECORD, rows, overwrite=overwrite,
+            hint="    python3 -m peldano2.note_audit results2/llm_run2_*.json")
 
     print("=" * 100)
     print("ATRIBUTOS USADOS POR BASE")
@@ -92,14 +101,14 @@ def main(argv: list[str]) -> int:
             print(f"    [{e['rule_id']}] {e['conditions']} -> {e['action']}   ({acc})")
             print(f"      \"{e['note']}\"")
 
-    out = Path("results2/note_audit.json")
     # Aug 7, 2026: as in compare_runs.py, the list moves to "rows" inside an
     # object so that `_env` can be hung off it, and the record was re-run that
-    # same day with the 8 runs: same new shape, same rows. And the same trap:
-    # it rewrites with whatever is passed as an argument.
-    out.write_text(json.dumps({"_env": environment(), "rows": rows},
-                              indent=2, ensure_ascii=False))
-    print(f"\n-> {out}")
+    # same day with the 8 runs: same new shape, same rows. And the same trap,
+    # guarded since Aug 8, 2026 the same way: it still rewrites with whatever
+    # it is passed, but it refuses to leave fewer rows than it found.
+    RECORD.write_text(json.dumps({"_env": environment(), "rows": rows},
+                                 indent=2, ensure_ascii=False))
+    print(f"\n-> {RECORD}")
     return 0
 
 
