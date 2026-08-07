@@ -23,14 +23,68 @@ fallan cada una por una razón distinta.
 casos?— sigue sin medirse limpiamente.** [`IDEAS.md`](IDEAS.md) lleva la lista de
 lo que queda abierto, incluida la deuda técnica conocida.
 
-> **El resto de este archivo describe la especificación y la operativa del
-> peldaño 1.** Siguen siendo válidas como procedimiento, no como estado del
-> proyecto.
+> **A partir de "Peldaño 1", este archivo describe la especificación y la
+> operativa de ese peldaño.** Siguen siendo válidas como procedimiento, no como
+> estado del proyecto.
 >
 > Antes de citar cualquier cifra, lee las **erratas fechadas** que cada FINDINGS
 > lleva en el sitio. Las de los peldaños 3 y 4 están además condicionadas por un
 > desempate no determinista en el optimizador, corregido el 6 de agosto de 2026
 > y **sin re-correr**: los números publicados son los del código anterior.
+
+---
+
+## Reproducir los cuatro peldaños
+
+**Todo esto cuesta cero llamadas a la API y corre con la biblioteca estándar**,
+sin venv. Son las mediciones que sostienen los cuatro registros; entre paréntesis,
+lo que deben imprimir.
+
+```bash
+# --- PELDAÑO 1 · el techo del motor y la frontera ------------------------
+python3 -m harness.ceiling_check      # especificidad 0.5875 · orden de diseño 1.0000
+python3 run_experiment.py frontier    # keep_k(k=4): 113 reglas, err.sil 0.173
+
+# --- PELDAÑO 2 · motor híbrido: subsunción + prioridad declarada ---------
+python3 -m peldano2.ceiling_check2    # e2e 1.0000 · 0 conflictos · PARADA 0 -> PASA
+python3 -m peldano2.compare_runs results2/llm_run2_*.json   # las 8 tiradas
+python3 -m peldano2.note_audit  results2/llm_run2_*.json    # atributos y notas
+
+# --- PELDAÑO 3 · orden por búsqueda sobre el corpus ----------------------
+python3 -m peldano3.order_search      # cota 0.9010 · test ~0.77 · gap ~0
+python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
+
+# --- PELDAÑO 4 · orden aprendido de un canal de feedback -----------------
+python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
+```
+
+> **Los peldaños 3 y 4 no reproducen sus cifras publicadas al dígito.** El
+> desempate del optimizador era no determinista (dependía de `PYTHONHASHSEED`) y
+> se corrigió el 6 de agosto de 2026 sin volver a correr nada. Ejemplo real:
+> `order_search` imprime hoy `test 0.7713 · GAP 0.0062` donde el registro dice
+> `0.7711 · 0.0068`. Las direcciones y las magnitudes se mantienen; los dígitos
+> se moverán hasta que se rehagan ambos peldaños, lo que está previsto hacer
+> junto con un optimizador serio. Las cotas y los techos —0.9010, 0.5875,
+> 1.0000— **no** dependen del voraz y sí reproducen exactamente.
+
+**Lo único que gasta dinero** es el proponente real, que necesita el venv y la
+clave (ver *Puesta en marcha*):
+
+```bash
+.venv/bin/python run_experiment.py llm --n 100                      # peldaño 1
+.venv/bin/python -m peldano2.run2 --n 100 --seed 17 --prompt-version v2   # peldaño 2
+```
+
+`peldano2/run2.py` acepta `--prompt-version v1|v2`; ambas versiones del prompt se
+conservan en el código y cada tirada guarda íntegro el que usó. El registro del
+cambio está en [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
+
+> ⚠️ **Dos scripts del peldaño 1 reescriben `results/` al re-ejecutarse**:
+> `harness/subsumption_check.py` y `harness/learned_subsumption.py`. El cómputo
+> es determinista, así que el contenido sale idéntico, pero cambia la fecha de
+> modificación de un registro cerrado. Está documentado en
+> [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md). Los peldaños 2, 3 y 4
+> escriben cada uno en su propio directorio.
 
 ---
 
