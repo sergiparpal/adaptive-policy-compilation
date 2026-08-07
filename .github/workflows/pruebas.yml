@@ -31,9 +31,12 @@ jobs:
         python: ["3.10", "3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      # Las dos, clavadas al mayor vigente (jul 2026). Antes iban en checkout@v4
+      # y setup-python@v5, que declaran `using: node20`: GitHub las forzaba
+      # sobre Node 24 y avisaba en cada ejecucion de que eso se acaba.
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
 
