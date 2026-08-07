@@ -111,16 +111,46 @@ Trabajo pendiente **sobre el repo como software**, no sobre el experimento. Es
 de otra naturaleza que el resto de este archivo y por eso va aparte. Real, pero
 no cambia ninguna conclusión.
 
-- **Sin pruebas automatizadas.** `unittest discover` encuentra 0. Lo que más
-  valdría: invariantes (el DSL reproduce las lambdas sobre el espacio completo)
-  y snapshots de los techos (58,75% por especificidad, 100% híbrido), que son
-  justo las cifras que deben seguir reproduciendo.
-- **Dependencias sin fijar.** `requirements.txt` acepta cualquier
-  `openai>=1.40.0`. El entorno con el que se produjo todo: Python 3.12.3,
-  openai 2.53.0.
-- **Sin registro de entorno en los resultados.** Ningún JSON guarda versión de
-  Python, de la librería ni hash del código que lo produjo. Es lo que habría
-  hecho detectable el desempate no determinista mucho antes.
+Los tres puntos que había aquí se cerraron el 7 de agosto de 2026. Quedan sus
+consecuencias, que son de otro tamaño.
+
+### Hecho
+
+- **Pruebas automatizadas.** `python3 -m unittest discover` corre 186 pruebas en
+  ~11 s, sin llamadas a la API y sin escribir en `results*/`. Cubren los dos
+  invariantes que sostienen el peldaño 1 —el DSL reproduce las lambdas sobre las
+  134.400 combinaciones, y primera-que-casa reproduce `true_action`— y clavan al
+  dígito las cifras publicadas: 0,5875 por especificidad, 0,6315 por subsunción,
+  1,0000 híbrido, la frontera de los mocks y el corpus. Añaden tres controles
+  que no existían: que ningún componente del bucle online importe el oráculo,
+  que `feedback.py` siga siendo el único módulo del peldaño 4 que lo toca, y que
+  el voraz de los peldaños 3 y 4 no dependa de `PYTHONHASHSEED`.
+- **Dependencias fijadas.** `openai==2.53.0`, más `requirements.lock.txt` con el
+  cierre transitivo del entorno que produjo los registros. Una prueba impide que
+  el `>=` vuelva por descuido.
+- **Registro de entorno.** `harness/provenance.py` cuelga un bloque `_env` de
+  cada JSON: Python, openai, plataforma, `PYTHONHASHSEED`, commit + dirty y un
+  digest del código fuente. Una prueba recorre el repo y suspende si aparece un
+  escritor de JSON sin él.
+
+### Lo que eso deja abierto
+
+- **Los registros publicados son anteriores a `_env`.** El campo aparecerá en
+  cada archivo cuando esa cifra se vuelva a correr, no antes. No se re-corrió
+  nada a propósito: reproducir una cifra sobrescribe su propio registro.
+- **`comparativa.json` y `note_audit.json` cambian de forma al re-correrse.**
+  Sus escritores pasaron de volcar una lista pelada a volcar
+  `{"_env": ..., "rows": [...]}`, que es la única manera de colgarles
+  procedencia. Los dos archivos registrados siguen siendo la lista antigua.
+- **Los peldaños 3 y 4 están cubiertos por determinismo, no por snapshot.** Sus
+  cifras publicadas son las del código anterior al arreglo del desempate y están
+  pendientes de re-correr; clavar aquí los valores nuevos crearía una segunda
+  cifra oficial que no respalda ningún FINDINGS. Cuando se rehagan ambos
+  peldaños, esas pruebas pasan a snapshot.
+- **Nadie corre las pruebas automáticamente.** No hay CI ni hook de pre-commit.
+- **La ruta del LLM sigue sin prueba de extremo a extremo**, por definición: solo
+  está probado el parseo, que es la parte pura. Un doble del proponente que
+  devolviera respuestas grabadas cubriría el resto sin gastar.
 
 Lo que **no** está aquí, a propósito: que reproducir una cifra sobrescriba su
 propio registro. Es un comportamiento que hay que conocer, no una tarea

@@ -58,6 +58,13 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
+Y antes de tocar nada, la suite: **186 pruebas en ~11 s, sin API y sin escribir
+en `results*/`.**
+
+```bash
+python3 -m unittest discover
+```
+
 > **Los peldaños 3 y 4 no reproducen sus cifras publicadas al dígito.** El
 > desempate del optimizador era no determinista (dependía de `PYTHONHASHSEED`) y
 > se corrigió el 6 de agosto de 2026 sin volver a correr nada. Ejemplo real:
@@ -117,9 +124,84 @@ cambio está en [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > `results2/llm_run2_*.json` reduce el registro de 8 tiradas a 1. No es un
 > cambio de dígitos, es pérdida de datos.
 >
+> Desde el 7 de agosto de 2026 hay un detalle más: cada JSON lleva un bloque
+> `_env` con la procedencia (ver *Las pruebas y la procedencia*). Al re-correr
+> una cifra que no ha cambiado, `git diff` muestra **solo** el campo
+> `recorded_at` moviéndose — que es justamente la comprobación de que sigue
+> reproduciendo. Y `compare_runs` y `note_audit` pasaron de volcar una lista
+> pelada a volcar `{"_env": …, "rows": […]}`: sus dos registros publicados son
+> todavía la lista antigua, y cambiarán de forma la primera vez que se re-corran.
+>
 > **La salvaguarda es git, y basta.** Después de reproducir cualquier cosa:
 > `git status` delata lo que se ha tocado y `git checkout -- <archivo>` lo
 > restaura. Los registros se versionan precisamente para esto.
+
+---
+
+## Las pruebas y la procedencia
+
+Dos redes distintas, con propósitos distintos.
+
+### La suite
+
+```bash
+python3 -m unittest discover            # 186 pruebas, ~11 s, 0 llamadas a la API
+python3 -m unittest tests.test_ceilings -v      # un módulo suelto
+```
+
+No necesita venv y **no escribe en `results*/`**: llama a las funciones de
+medida, nunca a los `main()` de los scripts, que sí vuelcan su JSON.
+
+Lo que cubre, y por qué esas cosas:
+
+| módulo | qué protege |
+|---|---|
+| `test_encoding_invariant.py` | las 29 reglas del DSL ≡ sus lambdas, y primera-que-casa ≡ `true_action`, sobre las **134.400** combinaciones. Es la afirmación en que se apoya "fallo de ejecución, no de representación" |
+| `test_ceilings.py` | los cuatro techos al dígito: 0,5875 · 0,6315 · 1,0000 · 1,0000, con sus 505 y 737 conflictos y las 199 aristas |
+| `test_frontier.py` | la verificación en seco del Paso 1 y el suelo de memorización (0,1176) |
+| `test_domain.py` | el corpus: 1743 únicos, 12,85% duplicados, y las 8 clases con sus recuentos |
+| `test_dsl.py` | el DSL congelado, incluido el **defecto registrado** (CONFLICT se devuelve antes del desempate por antigüedad), clavado a propósito |
+| `test_shadow.py` | la semántica de las métricas, y que el único disparador de escalación sea el impasse — nunca "la respuesta era incorrecta" |
+| `test_engine2.py` | máscaras de bits ≡ `Condition.holds`, y los seis veredictos del validador de aristas |
+| `test_oracle_separation.py` | que ningún componente del bucle online importe el oráculo, y que `feedback.py` siga siendo el único módulo del peldaño 4 que lo toca |
+| `test_order_determinism.py` | que el voraz de los peldaños 3 y 4 dé el mismo orden bajo tres `PYTHONHASHSEED`, con un testigo que confirma que el hash sí se aleatoriza |
+| `test_proposal_parsing.py` | la única parte de la ruta del LLM probable sin gastar |
+| `test_provenance.py` | el bloque `_env`, que no filtra la clave, y que ningún escritor de JSON se quede sin él |
+
+Si una prueba de *snapshot* falla, el número esperado **no se actualiza**: se
+averigua qué cambió y, si el cambio es legítimo, se fecha la errata en el
+`FINDINGS` correspondiente. Los peldaños 3 y 4 están cubiertos por determinismo
+y no por snapshot, a propósito: sus cifras publicadas son las del código
+anterior al arreglo del desempate y están pendientes de re-correr.
+
+### El bloque `_env`
+
+Cada JSON de resultados abre con la procedencia de la cifra:
+
+```json
+"_env": {
+  "recorded_at": "2026-08-07T09:57:10Z",
+  "python": "3.12.3",
+  "openai": null,
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "pythonhashseed": null,
+  "git_commit": "da2ed146…",
+  "git_dirty": true,
+  "code_digest": "df53add077d0d8fa",
+  "seed": 17
+}
+```
+
+`pythonhashseed: null` significa **sin fijar**, es decir aleatorio: es
+información, no ausencia de ella — cualquier cifra sensible al orden de
+iteración de un `set` producida así es sospechosa por construcción, que es
+exactamente lo que le pasó al voraz de los peldaños 3 y 4. `code_digest` es un
+sha256 del código que produce cifras (`harness/`, `peldano2..4/`,
+`run_experiment.py`; las pruebas quedan fuera), así que identifica la versión
+aunque el árbol esté sucio o no haya git.
+
+Los registros publicados son **anteriores** a este campo: aparecerá en cada
+archivo cuando esa cifra se vuelva a correr, no antes.
 
 ---
 
@@ -229,6 +311,7 @@ cd adaptive_triage
 python3 -m harness.ceiling_check
 
 # 1. Comprobar que todo funciona SIN gastar nada
+python3 -m unittest discover
 python3 run_experiment.py frontier
 
 # 2. Entorno virtual e instalacion del SDK.
@@ -253,8 +336,11 @@ export OPENROUTER_API_KEY=sk-or-...        # Windows: set OPENROUTER_API_KEY=...
 ```
 
 **Entorno con el que se produjeron los resultados publicados:** Python 3.12.3,
-`openai` 2.53.0, Linux. `requirements.txt` no fija versiones; queda anotado en
-`IDEAS.md` como deuda.
+`openai` 2.53.0, Linux x86_64. `requirements.txt` clava esa versión exacta y
+`requirements.lock.txt` guarda el cierre transitivo completo; para reconstruir
+el entorno al dígito, instala el lock en vez de `requirements.txt`. Desde el 7
+de agosto de 2026 cada JSON de resultados anota además el entorno con el que se
+produjo, en su bloque `_env`.
 
 **Proveedor por defecto: OpenRouter.** Modelo por defecto
 `deepseek/deepseek-v4-flash`. Alternativas (todas necesitan el venv, porque
@@ -367,7 +453,8 @@ carpeta**. Si los archivos quedan planos verás
 ```
 adaptive_triage/
 ├── run_experiment.py        CLI del peldaño 1 (frontier · llm · models)
-├── requirements.txt         solo `openai`, para el proponente real
+├── requirements.txt         `openai` clavado, para el proponente real
+├── requirements.lock.txt    cierre transitivo del entorno de los registros
 ├── README.md  CLAUDE.md  IDEAS.md  PREDICTION.md  LICENSE  .gitignore
 │
 ├── harness/                 PELDAÑO 1 — espec. congelada y motor original
@@ -377,6 +464,7 @@ adaptive_triage/
 │   ├── shadow.py            bucle en sombra y métricas             [CONGELADO]
 │   ├── cache_baseline.py    baseline de caché semántica            [CONGELADO]
 │   ├── proposers.py         mocks keep_k/random_k y proponentes LLM
+│   ├── provenance.py        el bloque `_env` que acompaña a cada JSON
 │   ├── ceiling_check.py     PASO 0 · techo del motor por especificidad
 │   ├── subsumption_check.py orden parcial por subsunción semántica
 │   └── learned_subsumption.py  el mismo criterio sobre la base aprendida
@@ -395,6 +483,11 @@ adaptive_triage/
 ├── peldano4/                prioridad aprendida de un canal de feedback
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
+│
+├── tests/                   186 pruebas · `python3 -m unittest discover`
+│   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
+│   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`
+│   └── test_*.py            invariantes y snapshots (ver *Las pruebas*)
 │
 └── results/  results2/  results3/  results4/
     Los registros. FINDINGS*.md son las conclusiones con sus erratas

@@ -104,6 +104,20 @@ Comprueba con `${#OPENROUTER_API_KEY}` (la longitud), nunca con su valor.
 
 ## Secuencia, con paradas obligatorias
 
+### Paso previo — La suite (cero llamadas, ~11 s)
+
+    python3 -m unittest discover
+
+186 pruebas con la biblioteca estándar. No escriben en `results*/`: llaman a las
+funciones de medida, nunca a los `main()`. Clavan los invariantes (el DSL
+reproduce las lambdas sobre las 134.400 combinaciones) y las cifras publicadas
+(0,5875 · 0,6315 · 1,0000, la frontera y el corpus), y vigilan que ningún
+componente del bucle online importe el oráculo.
+
+Si algo falla aquí, para: los Pasos 0 y 1 medirían sobre un arnés que ya no
+reproduce. **Un snapshot que falla no se actualiza**; se averigua qué cambió y,
+si el cambio es legítimo, se fecha la errata en el FINDINGS que publica la cifra.
+
 ### Paso 0 — Techo del motor (OBLIGATORIO antes de cualquier tirada con LLM)
 
     python3 -m harness.ceiling_check
@@ -150,10 +164,13 @@ silencioso). La "región a batir" está por encima del techo del sistema.
     python3 -m venv .venv
     .venv/bin/pip install -r requirements.txt
 
-Solo `openai` (OpenRouter es compatible con OpenAI). **El venv no es opcional**:
-en Debian/Ubuntu `pip install` global falla con `externally-managed-environment`
-(PEP 668). Los Pasos 0 y 1 no lo necesitan —van con la biblioteca estándar—;
-del Paso 3 en adelante, sí.
+Solo `openai`, clavado en `openai==2.53.0` (OpenRouter es compatible con
+OpenAI). Para reconstruir el entorno de los registros al dígito, instala
+`requirements.lock.txt` en su lugar: lleva el cierre transitivo completo.
+
+**El venv no es opcional**: en Debian/Ubuntu `pip install` global falla con
+`externally-managed-environment` (PEP 668). El Paso previo y los Pasos 0 y 1 no
+lo necesitan —van con la biblioteca estándar—; del Paso 3 en adelante, sí.
 
 Verifica que `OPENROUTER_API_KEY` llega al entorno del proceso (ver regla 7); si
 no, pídesela a Sergi — no la gestiones tú.
