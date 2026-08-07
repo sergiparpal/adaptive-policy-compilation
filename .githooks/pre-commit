@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# La suite entera antes de cada commit. ~12 s, cero llamadas a la API.
+#
+# INSTALACION, una vez por clon:
+#
+#     git config core.hooksPath .githooks
+#
+# El hook se versiona aqui y se apunta git a este directorio en vez de copiarlo
+# a .git/hooks, porque .git/ no se versiona: un hook copiado se pierde en el
+# siguiente clon y nadie se entera de que dejo de correr.
+#
+# La suite no necesita venv —biblioteca estandar— y no escribe en results*/,
+# asi que este hook no puede ensuciar ningun registro ni depender de un entorno
+# instalado.
+#
+# PARA SALTARSELO:  git commit --no-verify
+#
+# Tiene sentido en un commit de solo documentacion. En cualquier otro no: si un
+# snapshot falla, el numero esperado NO se actualiza y el commit no se fuerza;
+# se averigua que cambio y, si el cambio es legitimo, se fecha la errata en el
+# FINDINGS que publica la cifra. Esta escrito en el README, seccion "Las
+# pruebas y la procedencia".
+
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "pre-commit: no encuentro python3, que es lo unico que hace falta." >&2
+    echo "            Si de verdad quieres confirmar sin pasar la suite:" >&2
+    echo "            git commit --no-verify" >&2
+    exit 1
+fi
+
+echo "pre-commit: python3 -m unittest discover"
+python3 -m unittest discover

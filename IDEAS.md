@@ -111,13 +111,14 @@ Trabajo pendiente **sobre el repo como software**, no sobre el experimento. Es
 de otra naturaleza que el resto de este archivo y por eso va aparte. Real, pero
 no cambia ninguna conclusión.
 
-Los tres puntos que había aquí se cerraron el 7 de agosto de 2026. Quedan sus
-consecuencias, que son de otro tamaño.
+Los tres puntos que había aquí se cerraron el 7 de agosto de 2026, y ese mismo
+día se cerraron dos de las cinco consecuencias que dejaron abiertas. Las tres
+que quedan tienen todas la misma raíz y no se cierran escribiendo código.
 
 ### Hecho
 
-- **Pruebas automatizadas.** `python3 -m unittest discover` corre 186 pruebas en
-  ~11 s, sin llamadas a la API y sin escribir en `results*/`. Cubren los dos
+- **Pruebas automatizadas.** `python3 -m unittest discover` corre 237 pruebas en
+  ~12 s, sin llamadas a la API y sin escribir en `results*/`. Cubren los dos
   invariantes que sostienen el peldaño 1 —el DSL reproduce las lambdas sobre las
   134.400 combinaciones, y primera-que-casa reproduce `true_action`— y clavan al
   dígito las cifras publicadas: 0,5875 por especificidad, 0,6315 por subsunción,
@@ -132,25 +133,49 @@ consecuencias, que son de otro tamaño.
   cada JSON: Python, openai, plataforma, `PYTHONHASHSEED`, commit + dirty y un
   digest del código fuente. Una prueba recorre el repo y suspende si aparece un
   escritor de JSON sin él.
+- **Las pruebas las corre algo, no alguien** (7 de agosto de 2026).
+  `.githooks/pre-commit` antes de cada commit —se activa con
+  `git config core.hooksPath .githooks`— y `.github/workflows/pruebas.yml` en
+  cada push y cada PR, sobre 3.10 y 3.12: el mínimo que declara el README y el
+  intérprete que produjo los registros. El flujo, además, comprueba después de
+  correr la suite que `results*/` sigue intacto, en vez de fiarse de que la
+  suite no escribe ahí.
+- **La ruta del LLM, probada de extremo a extremo y sin gastar** (7 de agosto de
+  2026). El doble (`tests/doubles.py`) no sustituye al proponente sino al
+  **cliente del SDK**, un escalón más abajo, así que `OpenRouterProposer` y
+  `OpenRouterProposer2` corren enteros —prompt, `response_format`, reintentos,
+  parseo— y lo único que no ocurre es la petición HTTP. Las respuestas se
+  derivan del registro publicado, no de un guion aparte: replicar
+  `results/llm_run.json` reproduce sus 577 reglas, sus métricas y sus 2000
+  registros crudos exactamente, y lo mismo con `results2/llm_run2_n100.json` y
+  sus aristas de prioridad. De propina, una cifra que no estaba en ningún sitio:
+  las 632 escalaciones costaron **700 llamadas**, porque los 34 fallos de parseo
+  se reintentan. Lo que no es recuperable —el texto crudo nunca se guardó— está
+  enumerado turno a turno en la cabecera de `doubles.py`.
 
 ### Lo que eso deja abierto
 
-- **Los registros publicados son anteriores a `_env`.** El campo aparecerá en
-  cada archivo cuando esa cifra se vuelva a correr, no antes. No se re-corrió
-  nada a propósito: reproducir una cifra sobrescribe su propio registro.
-- **`comparativa.json` y `note_audit.json` cambian de forma al re-correrse.**
-  Sus escritores pasaron de volcar una lista pelada a volcar
-  `{"_env": ..., "rows": [...]}`, que es la única manera de colgarles
-  procedencia. Los dos archivos registrados siguen siendo la lista antigua.
-- **Los peldaños 3 y 4 están cubiertos por determinismo, no por snapshot.** Sus
-  cifras publicadas son las del código anterior al arreglo del desempate y están
-  pendientes de re-correr; clavar aquí los valores nuevos crearía una segunda
-  cifra oficial que no respalda ningún FINDINGS. Cuando se rehagan ambos
-  peldaños, esas pruebas pasan a snapshot.
-- **Nadie corre las pruebas automáticamente.** No hay CI ni hook de pre-commit.
-- **La ruta del LLM sigue sin prueba de extremo a extremo**, por definición: solo
-  está probado el parseo, que es la parte pura. Un doble del proponente que
-  devolviera respuestas grabadas cubriría el resto sin gastar.
+Lo que queda comparte raíz: **no se cierra escribiendo código, sino
+re-corriendo registros**, y lo que falta por re-correr, o cuesta dinero, o está
+deliberadamente aplazado.
+
+- **Diez registros siguen sin `_env`, y son los que no se pueden reproducir
+  gratis.** Los seis deterministas y gratuitos se re-corrieron el 7 de agosto de
+  2026 y lo ganaron sin que cambiara un solo dato —en esa misma pasada
+  `comparativa.json` y `note_audit.json` adoptaron su forma nueva,
+  `{"_env": ..., "rows": [...]}`, con las mismas 8 filas; ver
+  `results2/NOTA_REGISTRO.md`—. Sin `_env` quedan `llm_run.json`,
+  `llm_run_n100_smoke.json` y las ocho `llm_run2_*.json`: reproducirlas cuesta
+  dinero y no saldrían iguales, porque el proponente no es determinista a
+  `temperature 0`. Aparecerá en cada una cuando haya un motivo para pagarla, no
+  antes.
+- **Los peldaños 3 y 4 están cubiertos por determinismo, no por snapshot, y sus
+  tres registros siguen sin `_env` por la misma razón.** Sus cifras publicadas
+  son las del código anterior al arreglo del desempate: re-correrlos es gratis,
+  pero mueve dígitos, y clavar aquí los valores nuevos crearía una segunda cifra
+  oficial que no respalda ningún FINDINGS. Cuando se rehagan ambos peldaños
+  —junto con el optimizador serio, ver "Pendiente y ya especificado"— esas
+  pruebas pasan a snapshot y los registros ganan su procedencia a la vez.
 
 Lo que **no** está aquí, a propósito: que reproducir una cifra sobrescriba su
 propio registro. Es un comportamiento que hay que conocer, no una tarea

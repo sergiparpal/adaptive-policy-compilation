@@ -1,0 +1,57 @@
+# La suite, en cada push y en cada pull request.
+#
+# Cierra la mitad remota de "nadie corre las pruebas automaticamente"
+# (IDEAS.md, deuda tecnica). La mitad local es `.githooks/pre-commit`, que
+# corre lo mismo antes de cada commit; este trabajo cubre lo que ya se empujo,
+# incluido lo que se empujo con `--no-verify`.
+#
+# Cuesta cero llamadas a la API: la suite llama a las funciones de medida,
+# nunca a los `main()` de los scripts.
+
+name: pruebas
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Dos interpretes, y cada uno responde a una afirmacion del repo: 3.12
+        # es el que produjo los registros (cabecera de requirements.lock.txt:
+        # "Python 3.12.3 · Linux x86_64") y 3.10 el minimo que declara el
+        # README.
+        python: ["3.10", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # Sin instalar nada, a proposito: la suite corre con la biblioteca
+      # estandar y que siga siendo asi es parte de lo que se comprueba. Sin
+      # `openai` instalado, la prueba que compara la version viva con el pin se
+      # salta, igual que en local sin venv.
+      - name: la suite
+        run: python -m unittest discover
+
+      # La suite declara que no escribe en results*/. Aqui se comprueba en vez
+      # de creerselo: si algun dia una prueba llama a un `main()` que vuelca su
+      # JSON, se ve aqui y no cuando alguien confirme el registro pisado.
+      - name: los registros siguen intactos
+        run: |
+          sucio="$(git status --porcelain -- results results2 results3 results4)"
+          if [ -n "$sucio" ]; then
+            echo "la suite ha escrito en results*/:"
+            echo "$sucio"
+            exit 1
+          fi

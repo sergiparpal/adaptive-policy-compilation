@@ -1,4 +1,14 @@
 {
+  "_env": {
+    "recorded_at": "2026-08-07T14:28:44Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "29e250c1dc07722a08c39bcf916baa93777df6d5",
+    "git_dirty": true,
+    "code_digest": "7ef0ec6d89ec4d85"
+  },
   "model": "deepseek/deepseek-v4-flash",
   "n_rules": 577,
   "caveat": "cota, no simulacion: la base se aprendio bajo arbitraje por especificidad; bajo subsuncion habria sido otra. Ademas aqui se carga completa desde el caso 0.",

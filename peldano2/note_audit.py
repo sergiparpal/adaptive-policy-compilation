@@ -93,7 +93,9 @@ def main(argv: list[str]) -> int:
 
     out = Path("results2/note_audit.json")
     # 7 ago 2026: igual que en compare_runs.py, la lista pasa a "rows" dentro de
-    # un objeto para poder colgar `_env`. El registro publicado no se re-corrio.
+    # un objeto para poder colgar `_env`, y el registro se re-corrio ese mismo
+    # dia con las 8 tiradas: misma forma nueva, mismas filas. Y la misma
+    # trampa: reescribe con lo que se le pase como argumento.
     out.write_text(json.dumps({"_env": environment(), "rows": rows},
                               indent=2, ensure_ascii=False))
     print(f"\n-> {out}")

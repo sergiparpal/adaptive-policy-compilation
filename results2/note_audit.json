@@ -1,561 +1,573 @@
-[
-  {
-    "file": "llm_run2_n100.json",
-    "version": "v1",
-    "seed": 17,
-    "n_rules": 40,
-    "attrs_used": {
-      "has_security_keyword": 1,
-      "severity": 40,
-      "customer_tier": 39,
-      "product": 38,
-      "channel": 0,
-      "prior_tickets_30d": 20,
-      "off_hours": 11,
-      "language": 0
-    },
-    "attrs_never_used": [
-      "channel",
-      "language"
-    ],
-    "notes_arguing_disjointness": 8,
-    "notes_total": 40,
-    "examples": [
-      {
-        "rule_id": "R0002",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq pro AND severity lte 3 AND product eq dashboard AND off_hours eq True",
-        "fire_count": 2,
-        "correct_count": 1,
-        "note": "Cliente pro con severidad 3 en dashboard fuera de horario laboral requiere atención técnica, no general. La regla es un subcaso de R0001 (enterprise severity 4) pero no se solapa, no necesita prioridad declarada."
-      },
-      {
-        "rule_id": "R0004",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq pro AND severity lte 3 AND product eq mobile",
-        "fire_count": 3,
-        "correct_count": 2,
-        "note": "El ticket es de un cliente pro con severidad 2 en producto mobile, sin coincidir con las reglas existentes. Se crea una regla general para clientes pro con severidad <=3 en mobile que deriva a T2_TECHNICAL, ya que no hay reglas que se solapen (R0002 requiere dashboard y off_hours"
-      },
-      {
-        "rule_id": "R0007",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier eq pro AND severity eq 4 AND product eq billing",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "El ticket es de un cliente pro con severidad 4 y producto billing. Ninguna regla existente cubre exactamente esta combinación. Las reglas existentes cubren otros productos o severidades, por lo que esta regla no se solapa con ellas de manera conflictiva. Se asigna a T1_GENERAL po"
-      },
-      {
-        "rule_id": "R0024",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq business AND severity lte 3 AND product eq integrations AND prior_tickets_30d gte 1",
-        "fire_count": 1,
-        "correct_count": 1,
-        "note": "El ticket es business, severity 3, product integrations, con prior_tickets_30d >= 1. No hay regla existente que cubra business+integrations con severidad <=3 y tickets previos. Se crea regla general para este perfil, que no solapa con otras reglas de business (R0020 es billing, R"
-      },
-      {
-        "rule_id": "R0027",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq free AND severity eq 4 AND product eq billing AND prior_tickets_30d gte 1",
-        "fire_count": 3,
-        "correct_count": 0,
-        "note": "Para usuarios free con severidad baja (4) en billing y al menos un ticket previo, se asigna a T2_TECHNICAL, siguiendo el patrón de otros productos (mobile, api, etc.) donde prior>=1 lleva a soporte técnico. No solapa con R0025 (prior=0) ni con R0015 (severity<=3)."
-      },
-      {
-        "rule_id": "R0034",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq business AND product eq dashboard AND severity lte 3",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "Regla general para clientes business con incidencias técnicas en dashboard de severidad no crítica; no solapa con reglas existentes porque no hay regla business+dashboard, y las reglas de business son para otros productos."
-      },
-      {
-        "rule_id": "R0036",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq pro AND severity lte 2 AND product eq dashboard AND off_hours eq False",
-        "fire_count": 0,
-        "correct_count": 0,
-        "note": "Cliente pro con severidad crítica (1) en dashboard fuera de horas normales (off_hours=false) no cubierto por reglas existentes. La regla se solapa con R0002 (pro, severity≤3, dashboard, off_hours=true) en el rango severity≤2, pero como off_hours es mutuamente excluyente, se decla"
-      },
-      {
-        "rule_id": "R0039",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq pro AND severity eq 3 AND product eq dashboard AND off_hours eq False",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "Nueva regla para pro, severity 3, dashboard, off_hours false. No solapa con reglas existentes porque R0036 cubre severity lte 2, R0033 severity 4, R0002 off_hours true, y R0034 tier business. Es un caso técnico de severidad media no cubierto."
-      }
-    ]
+{
+  "_env": {
+    "recorded_at": "2026-08-07T14:28:45Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "29e250c1dc07722a08c39bcf916baa93777df6d5",
+    "git_dirty": true,
+    "code_digest": "7ef0ec6d89ec4d85"
   },
-  {
-    "file": "llm_run2_n100_seed18.json",
-    "version": "v1",
-    "seed": 18,
-    "n_rules": 14,
-    "attrs_used": {
-      "has_security_keyword": 0,
-      "severity": 14,
-      "customer_tier": 14,
-      "product": 12,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+  "rows": [
+    {
+      "file": "llm_run2_n100.json",
+      "version": "v1",
+      "seed": 17,
+      "n_rules": 40,
+      "attrs_used": {
+        "has_security_keyword": 1,
+        "severity": 40,
+        "customer_tier": 39,
+        "product": 38,
+        "channel": 0,
+        "prior_tickets_30d": 20,
+        "off_hours": 11,
+        "language": 0
+      },
+      "attrs_never_used": [
+        "channel",
+        "language"
+      ],
+      "notes_arguing_disjointness": 8,
+      "notes_total": 40,
+      "examples": [
+        {
+          "rule_id": "R0002",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq pro AND severity lte 3 AND product eq dashboard AND off_hours eq True",
+          "fire_count": 2,
+          "correct_count": 1,
+          "note": "Cliente pro con severidad 3 en dashboard fuera de horario laboral requiere atención técnica, no general. La regla es un subcaso de R0001 (enterprise severity 4) pero no se solapa, no necesita prioridad declarada."
+        },
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq pro AND severity lte 3 AND product eq mobile",
+          "fire_count": 3,
+          "correct_count": 2,
+          "note": "El ticket es de un cliente pro con severidad 2 en producto mobile, sin coincidir con las reglas existentes. Se crea una regla general para clientes pro con severidad <=3 en mobile que deriva a T2_TECHNICAL, ya que no hay reglas que se solapen (R0002 requiere dashboard y off_hours"
+        },
+        {
+          "rule_id": "R0007",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier eq pro AND severity eq 4 AND product eq billing",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "El ticket es de un cliente pro con severidad 4 y producto billing. Ninguna regla existente cubre exactamente esta combinación. Las reglas existentes cubren otros productos o severidades, por lo que esta regla no se solapa con ellas de manera conflictiva. Se asigna a T1_GENERAL po"
+        },
+        {
+          "rule_id": "R0024",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq business AND severity lte 3 AND product eq integrations AND prior_tickets_30d gte 1",
+          "fire_count": 1,
+          "correct_count": 1,
+          "note": "El ticket es business, severity 3, product integrations, con prior_tickets_30d >= 1. No hay regla existente que cubra business+integrations con severidad <=3 y tickets previos. Se crea regla general para este perfil, que no solapa con otras reglas de business (R0020 es billing, R"
+        },
+        {
+          "rule_id": "R0027",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq free AND severity eq 4 AND product eq billing AND prior_tickets_30d gte 1",
+          "fire_count": 3,
+          "correct_count": 0,
+          "note": "Para usuarios free con severidad baja (4) en billing y al menos un ticket previo, se asigna a T2_TECHNICAL, siguiendo el patrón de otros productos (mobile, api, etc.) donde prior>=1 lleva a soporte técnico. No solapa con R0025 (prior=0) ni con R0015 (severity<=3)."
+        },
+        {
+          "rule_id": "R0034",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq business AND product eq dashboard AND severity lte 3",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "Regla general para clientes business con incidencias técnicas en dashboard de severidad no crítica; no solapa con reglas existentes porque no hay regla business+dashboard, y las reglas de business son para otros productos."
+        },
+        {
+          "rule_id": "R0036",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq pro AND severity lte 2 AND product eq dashboard AND off_hours eq False",
+          "fire_count": 0,
+          "correct_count": 0,
+          "note": "Cliente pro con severidad crítica (1) en dashboard fuera de horas normales (off_hours=false) no cubierto por reglas existentes. La regla se solapa con R0002 (pro, severity≤3, dashboard, off_hours=true) en el rango severity≤2, pero como off_hours es mutuamente excluyente, se decla"
+        },
+        {
+          "rule_id": "R0039",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq pro AND severity eq 3 AND product eq dashboard AND off_hours eq False",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "Nueva regla para pro, severity 3, dashboard, off_hours false. No solapa con reglas existentes porque R0036 cubre severity lte 2, R0033 severity 4, R0002 off_hours true, y R0034 tier business. Es un caso técnico de severidad media no cubierto."
+        }
+      ]
     },
-    "attrs_never_used": [
-      "has_security_keyword",
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 5,
-    "notes_total": 14,
-    "examples": [
-      {
-        "rule_id": "R0002",
-        "action": "BILLING_SPECIALIST",
-        "conditions": "product eq billing AND customer_tier neq free AND severity lte 3",
-        "fire_count": 12,
-        "correct_count": 9,
-        "note": "Ticket de facturación con tier pro y severidad 3 (no crítica). La regla cubre tickets de billing de clientes de pago con severidad media o baja, que deben ir a BILLING_SPECIALIST. No se solapa con R0001 porque R0001 es para free y severidad >=3, mientras que esta regla excluye fr"
+    {
+      "file": "llm_run2_n100_seed18.json",
+      "version": "v1",
+      "seed": 18,
+      "n_rules": 14,
+      "attrs_used": {
+        "has_security_keyword": 0,
+        "severity": 14,
+        "customer_tier": 14,
+        "product": 12,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0003",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq api AND severity lte 2 AND customer_tier neq free",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "Regla para tickets de API con severidad alta (<=2) y cliente no free, que requieren soporte técnico especializado. No se solapa con las reglas existentes: R0002 es de billing y R0001 es de free con severidad >=3, por lo que no hay conflicto."
-      },
-      {
-        "rule_id": "R0005",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier eq free AND severity lte 2",
-        "fire_count": 15,
-        "correct_count": 0,
-        "note": "Para usuarios free con severidad baja o media (<=2), se asigna a T1_GENERAL, complementando la regla R0001 que cubre severidad >=3. No hay solapamiento porque los rangos de severidad son disjuntos."
-      },
-      {
-        "rule_id": "R0007",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq dashboard AND customer_tier neq free AND severity lte 3",
-        "fire_count": 5,
-        "correct_count": 2,
-        "note": "El ticket es de un cliente business con severidad 3 en dashboard, sin coincidir con reglas existentes. Se asigna a T2_TECHNICAL como nivel técnico estándar para clientes de pago con severidad media, cubriendo casos análogos futuros de dashboard con severidad <=3 y tier no free."
-      },
-      {
-        "rule_id": "R0008",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq mobile AND customer_tier neq free AND severity lte 2",
-        "fire_count": 5,
-        "correct_count": 5,
-        "note": "Regla específica para producto mobile de clientes de pago con severidad alta; no se solapa con las reglas existentes por producto."
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_seed19.json",
-    "version": "v1",
-    "seed": 19,
-    "n_rules": 12,
-    "attrs_used": {
-      "has_security_keyword": 11,
-      "severity": 10,
-      "customer_tier": 4,
-      "product": 11,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+      "attrs_never_used": [
+        "has_security_keyword",
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 5,
+      "notes_total": 14,
+      "examples": [
+        {
+          "rule_id": "R0002",
+          "action": "BILLING_SPECIALIST",
+          "conditions": "product eq billing AND customer_tier neq free AND severity lte 3",
+          "fire_count": 12,
+          "correct_count": 9,
+          "note": "Ticket de facturación con tier pro y severidad 3 (no crítica). La regla cubre tickets de billing de clientes de pago con severidad media o baja, que deben ir a BILLING_SPECIALIST. No se solapa con R0001 porque R0001 es para free y severidad >=3, mientras que esta regla excluye fr"
+        },
+        {
+          "rule_id": "R0003",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq api AND severity lte 2 AND customer_tier neq free",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "Regla para tickets de API con severidad alta (<=2) y cliente no free, que requieren soporte técnico especializado. No se solapa con las reglas existentes: R0002 es de billing y R0001 es de free con severidad >=3, por lo que no hay conflicto."
+        },
+        {
+          "rule_id": "R0005",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier eq free AND severity lte 2",
+          "fire_count": 15,
+          "correct_count": 0,
+          "note": "Para usuarios free con severidad baja o media (<=2), se asigna a T1_GENERAL, complementando la regla R0001 que cubre severidad >=3. No hay solapamiento porque los rangos de severidad son disjuntos."
+        },
+        {
+          "rule_id": "R0007",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq dashboard AND customer_tier neq free AND severity lte 3",
+          "fire_count": 5,
+          "correct_count": 2,
+          "note": "El ticket es de un cliente business con severidad 3 en dashboard, sin coincidir con reglas existentes. Se asigna a T2_TECHNICAL como nivel técnico estándar para clientes de pago con severidad media, cubriendo casos análogos futuros de dashboard con severidad <=3 y tier no free."
+        },
+        {
+          "rule_id": "R0008",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq mobile AND customer_tier neq free AND severity lte 2",
+          "fire_count": 5,
+          "correct_count": 5,
+          "note": "Regla específica para producto mobile de clientes de pago con severidad alta; no se solapa con las reglas existentes por producto."
+        }
+      ]
     },
-    "attrs_never_used": [
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 2,
-    "notes_total": 12,
-    "examples": [
-      {
-        "rule_id": "R0004",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq mobile AND severity lte 2 AND has_security_keyword eq False",
-        "fire_count": 3,
-        "correct_count": 2,
-        "note": "Los tickets de producto mobile con severidad 1 o 2 (media-alta) requieren soporte técnico, no general. Esta regla complementa a R0003 que cubre severidad >=3, sin solapamiento."
+    {
+      "file": "llm_run2_n100_seed19.json",
+      "version": "v1",
+      "seed": 19,
+      "n_rules": 12,
+      "attrs_used": {
+        "has_security_keyword": 11,
+        "severity": 10,
+        "customer_tier": 4,
+        "product": 11,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0009",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq api AND severity lte 2 AND has_security_keyword eq False",
-        "fire_count": 2,
-        "correct_count": 0,
-        "note": "Caso particular de API con severidad alta (<=2) y sin keyword de seguridad, que requiere soporte técnico. No se solapa con reglas existentes porque no hay regla para API con severidad <=2; las reglas de API existentes son para severidad >=3 y tier free, y las de otros productos n"
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_seed20.json",
-    "version": "v1",
-    "seed": 20,
-    "n_rules": 26,
-    "attrs_used": {
-      "has_security_keyword": 2,
-      "severity": 25,
-      "customer_tier": 23,
-      "product": 26,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+      "attrs_never_used": [
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 2,
+      "notes_total": 12,
+      "examples": [
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq mobile AND severity lte 2 AND has_security_keyword eq False",
+          "fire_count": 3,
+          "correct_count": 2,
+          "note": "Los tickets de producto mobile con severidad 1 o 2 (media-alta) requieren soporte técnico, no general. Esta regla complementa a R0003 que cubre severidad >=3, sin solapamiento."
+        },
+        {
+          "rule_id": "R0009",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq api AND severity lte 2 AND has_security_keyword eq False",
+          "fire_count": 2,
+          "correct_count": 0,
+          "note": "Caso particular de API con severidad alta (<=2) y sin keyword de seguridad, que requiere soporte técnico. No se solapa con reglas existentes porque no hay regla para API con severidad <=2; las reglas de API existentes son para severidad >=3 y tier free, y las de otros productos n"
+        }
+      ]
     },
-    "attrs_never_used": [
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 4,
-    "notes_total": 26,
-    "examples": [
-      {
-        "rule_id": "R0006",
-        "action": "T1_GENERAL",
-        "conditions": "product eq api AND severity gte 3 AND customer_tier eq free",
-        "fire_count": 8,
-        "correct_count": 0,
-        "note": "El ticket es de producto api, severidad 3 y tier free. No casa con R0005 (severidad lte 2) ni con R0004 (product dashboard). Se crea una regla que cubre api con severidad >=3 y tier free, que es un caso particular de api con severidad alta para usuarios gratuitos, y no se solapa "
+    {
+      "file": "llm_run2_n100_seed20.json",
+      "version": "v1",
+      "seed": 20,
+      "n_rules": 26,
+      "attrs_used": {
+        "has_security_keyword": 2,
+        "severity": 25,
+        "customer_tier": 23,
+        "product": 26,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0007",
-        "action": "T1_GENERAL",
-        "conditions": "product eq integrations AND customer_tier eq free AND severity gte 3",
-        "fire_count": 5,
-        "correct_count": 0,
-        "note": "Unifica integraciones con el patrón ya existente para dashboard/api en plan free con severidad media/alta, sin solaparse con R0002 (severity <=2) ni R0001 (tier pro)."
-      },
-      {
-        "rule_id": "R0018",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq integrations AND customer_tier eq business AND severity eq 4",
-        "fire_count": 1,
-        "correct_count": 1,
-        "note": "Regla para tickets de integraciones con cliente business y severidad baja. No solapa con reglas existentes (R0001 es pro, R0002 es severity<=2, R0007 es free)."
-      },
-      {
-        "rule_id": "R0026",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq api AND severity eq 3 AND customer_tier eq pro",
-        "fire_count": 0,
-        "correct_count": 0,
-        "note": "Nueva regla para api, severity 3, pro, que no está cubierta. No solapa con reglas existentes porque las que tienen api y severity 3 son para business, y las de pro son para severity 4. Por tanto no requiere prioridad."
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_v2.json",
-    "version": "v2",
-    "seed": 17,
-    "n_rules": 6,
-    "attrs_used": {
-      "has_security_keyword": 0,
-      "severity": 6,
-      "customer_tier": 6,
-      "product": 2,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+      "attrs_never_used": [
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 4,
+      "notes_total": 26,
+      "examples": [
+        {
+          "rule_id": "R0006",
+          "action": "T1_GENERAL",
+          "conditions": "product eq api AND severity gte 3 AND customer_tier eq free",
+          "fire_count": 8,
+          "correct_count": 0,
+          "note": "El ticket es de producto api, severidad 3 y tier free. No casa con R0005 (severidad lte 2) ni con R0004 (product dashboard). Se crea una regla que cubre api con severidad >=3 y tier free, que es un caso particular de api con severidad alta para usuarios gratuitos, y no se solapa "
+        },
+        {
+          "rule_id": "R0007",
+          "action": "T1_GENERAL",
+          "conditions": "product eq integrations AND customer_tier eq free AND severity gte 3",
+          "fire_count": 5,
+          "correct_count": 0,
+          "note": "Unifica integraciones con el patrón ya existente para dashboard/api en plan free con severidad media/alta, sin solaparse con R0002 (severity <=2) ni R0001 (tier pro)."
+        },
+        {
+          "rule_id": "R0018",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq integrations AND customer_tier eq business AND severity eq 4",
+          "fire_count": 1,
+          "correct_count": 1,
+          "note": "Regla para tickets de integraciones con cliente business y severidad baja. No solapa con reglas existentes (R0001 es pro, R0002 es severity<=2, R0007 es free)."
+        },
+        {
+          "rule_id": "R0026",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq api AND severity eq 3 AND customer_tier eq pro",
+          "fire_count": 0,
+          "correct_count": 0,
+          "note": "Nueva regla para api, severity 3, pro, que no está cubierta. No solapa con reglas existentes porque las que tienen api y severity 3 son para business, y las de pro son para severity 4. Por tanto no requiere prioridad."
+        }
+      ]
     },
-    "attrs_never_used": [
-      "has_security_keyword",
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 5,
-    "notes_total": 6,
-    "examples": [
-      {
-        "rule_id": "R0002",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq dashboard AND severity lte 3 AND customer_tier in ['pro', 'business', 'enterprise']",
-        "fire_count": 8,
-        "correct_count": 2,
-        "note": "El ticket es de un cliente pro con severidad 3 en dashboard, fuera de horario. No hay regla que cubra exactamente este perfil. La regla generaliza a cualquier tier pago con severidad <=3 en dashboard, ya que estos tickets requieren soporte técnico estándar. No se solapa con R0001"
+    {
+      "file": "llm_run2_n100_v2.json",
+      "version": "v2",
+      "seed": 17,
+      "n_rules": 6,
+      "attrs_used": {
+        "has_security_keyword": 0,
+        "severity": 6,
+        "customer_tier": 6,
+        "product": 2,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0003",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier eq free AND severity eq 4",
-        "fire_count": 21,
-        "correct_count": 0,
-        "note": "Cubre tickets de usuarios free con severidad baja (4) que no requieren especialización técnica ni de facturación. Al restringir el tier y la severidad, la regla es disjunta con las existentes (R0001/R0002 se centran en enterprise/dashboard y severidad menor o igual a 3). No se de"
-      },
-      {
-        "rule_id": "R0004",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity lte 3",
-        "fire_count": 22,
-        "correct_count": 9,
-        "note": "El ticket es de un cliente pro con severidad 2, sin indicios de seguridad ni facturación. La regla general para clientes de pago con severidad media-baja (T2_TECHNICAL) es la más adecuada, ya que cubre este caso y otros análogos (business, enterprise, severidad 1-3). No se solapa"
-      },
-      {
-        "rule_id": "R0005",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity eq 4",
-        "fire_count": 9,
-        "correct_count": 2,
-        "note": "El ticket es de un cliente pro con severidad 4 (baja) en billing, sin coincidir con reglas existentes (R0003 requiere free, R0004 requiere severidad ≤3, R0001/2 requieren dashboard). Se asigna a T1_GENERAL como categoría por defecto para tickets de baja severidad de clientes no f"
-      },
-      {
-        "rule_id": "R0006",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq free AND severity lte 3",
-        "fire_count": 34,
-        "correct_count": 10,
-        "note": "El ticket es free con severidad 3 (no crítica). Las reglas existentes para free solo cubren severidad 4 (R0003) o enterprise/pro/business (R0004, R0002). Esta regla cubre el hueco: free con severidad 1-3, que merece atención técnica pero no es crítica. No se solapa con R0003 (sev"
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_v2_seed18.json",
-    "version": "v2",
-    "seed": 18,
-    "n_rules": 9,
-    "attrs_used": {
-      "has_security_keyword": 1,
-      "severity": 9,
-      "customer_tier": 8,
-      "product": 8,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+      "attrs_never_used": [
+        "has_security_keyword",
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 5,
+      "notes_total": 6,
+      "examples": [
+        {
+          "rule_id": "R0002",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq dashboard AND severity lte 3 AND customer_tier in ['pro', 'business', 'enterprise']",
+          "fire_count": 8,
+          "correct_count": 2,
+          "note": "El ticket es de un cliente pro con severidad 3 en dashboard, fuera de horario. No hay regla que cubra exactamente este perfil. La regla generaliza a cualquier tier pago con severidad <=3 en dashboard, ya que estos tickets requieren soporte técnico estándar. No se solapa con R0001"
+        },
+        {
+          "rule_id": "R0003",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier eq free AND severity eq 4",
+          "fire_count": 21,
+          "correct_count": 0,
+          "note": "Cubre tickets de usuarios free con severidad baja (4) que no requieren especialización técnica ni de facturación. Al restringir el tier y la severidad, la regla es disjunta con las existentes (R0001/R0002 se centran en enterprise/dashboard y severidad menor o igual a 3). No se de"
+        },
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity lte 3",
+          "fire_count": 22,
+          "correct_count": 9,
+          "note": "El ticket es de un cliente pro con severidad 2, sin indicios de seguridad ni facturación. La regla general para clientes de pago con severidad media-baja (T2_TECHNICAL) es la más adecuada, ya que cubre este caso y otros análogos (business, enterprise, severidad 1-3). No se solapa"
+        },
+        {
+          "rule_id": "R0005",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity eq 4",
+          "fire_count": 9,
+          "correct_count": 2,
+          "note": "El ticket es de un cliente pro con severidad 4 (baja) en billing, sin coincidir con reglas existentes (R0003 requiere free, R0004 requiere severidad ≤3, R0001/2 requieren dashboard). Se asigna a T1_GENERAL como categoría por defecto para tickets de baja severidad de clientes no f"
+        },
+        {
+          "rule_id": "R0006",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq free AND severity lte 3",
+          "fire_count": 34,
+          "correct_count": 10,
+          "note": "El ticket es free con severidad 3 (no crítica). Las reglas existentes para free solo cubren severidad 4 (R0003) o enterprise/pro/business (R0004, R0002). Esta regla cubre el hueco: free con severidad 1-3, que merece atención técnica pero no es crítica. No se solapa con R0003 (sev"
+        }
+      ]
     },
-    "attrs_never_used": [
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 4,
-    "notes_total": 9,
-    "examples": [
-      {
-        "rule_id": "R0002",
-        "action": "T2_TECHNICAL",
-        "conditions": "product eq billing AND severity lte 3 AND customer_tier eq pro",
-        "fire_count": 5,
-        "correct_count": 0,
-        "note": "El ticket es de billing con severidad 3 y tier pro, sin coincidir con R0001 (que requiere tier free y severidad 4). Se asigna a T2_TECHNICAL como accion general para billing de nivel medio, cubriendo casos similares sin solapamiento con reglas existentes."
+    {
+      "file": "llm_run2_n100_v2_seed18.json",
+      "version": "v2",
+      "seed": 18,
+      "n_rules": 9,
+      "attrs_used": {
+        "has_security_keyword": 1,
+        "severity": 9,
+        "customer_tier": 8,
+        "product": 8,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0004",
-        "action": "T2_TECHNICAL",
-        "conditions": "severity lte 3 AND customer_tier eq free AND product neq billing",
-        "fire_count": 24,
-        "correct_count": 10,
-        "note": "El ticket es de un usuario free con severidad 3 (no crítica) y producto no billing, por lo que requiere soporte técnico. La regla generaliza a todos los usuarios free con severidad <=3 y producto distinto de billing, cubriendo este caso y otros análogos. No se solapa con R0001 (s"
-      },
-      {
-        "rule_id": "R0005",
-        "action": "BILLING_SPECIALIST",
-        "conditions": "product eq billing AND severity eq 4",
-        "fire_count": 7,
-        "correct_count": 2,
-        "note": "Regla para tickets de billing con severidad baja (4), independientemente del tier, para que sean atendidos por el especialista de facturación. No se solapa con reglas existentes porque todas requieren severity <=3 o tier free."
-      },
-      {
-        "rule_id": "R0006",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity eq 4 AND product neq billing",
-        "fire_count": 6,
-        "correct_count": 1,
-        "note": "Ninguna regla existente cubre tickets de clientes de pago con severidad 4 y producto técnico no billing. Esta regla llena ese vacío y es disjunta de todas las reglas existentes por severidad o producto."
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_v2_seed19.json",
-    "version": "v2",
-    "seed": 19,
-    "n_rules": 12,
-    "attrs_used": {
-      "has_security_keyword": 11,
-      "severity": 10,
-      "customer_tier": 11,
-      "product": 12,
-      "channel": 0,
-      "prior_tickets_30d": 0,
-      "off_hours": 0,
-      "language": 0
+      "attrs_never_used": [
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 4,
+      "notes_total": 9,
+      "examples": [
+        {
+          "rule_id": "R0002",
+          "action": "T2_TECHNICAL",
+          "conditions": "product eq billing AND severity lte 3 AND customer_tier eq pro",
+          "fire_count": 5,
+          "correct_count": 0,
+          "note": "El ticket es de billing con severidad 3 y tier pro, sin coincidir con R0001 (que requiere tier free y severidad 4). Se asigna a T2_TECHNICAL como accion general para billing de nivel medio, cubriendo casos similares sin solapamiento con reglas existentes."
+        },
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "conditions": "severity lte 3 AND customer_tier eq free AND product neq billing",
+          "fire_count": 24,
+          "correct_count": 10,
+          "note": "El ticket es de un usuario free con severidad 3 (no crítica) y producto no billing, por lo que requiere soporte técnico. La regla generaliza a todos los usuarios free con severidad <=3 y producto distinto de billing, cubriendo este caso y otros análogos. No se solapa con R0001 (s"
+        },
+        {
+          "rule_id": "R0005",
+          "action": "BILLING_SPECIALIST",
+          "conditions": "product eq billing AND severity eq 4",
+          "fire_count": 7,
+          "correct_count": 2,
+          "note": "Regla para tickets de billing con severidad baja (4), independientemente del tier, para que sean atendidos por el especialista de facturación. No se solapa con reglas existentes porque todas requieren severity <=3 o tier free."
+        },
+        {
+          "rule_id": "R0006",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity eq 4 AND product neq billing",
+          "fire_count": 6,
+          "correct_count": 1,
+          "note": "Ninguna regla existente cubre tickets de clientes de pago con severidad 4 y producto técnico no billing. Esta regla llena ese vacío y es disjunta de todas las reglas existentes por severidad o producto."
+        }
+      ]
     },
-    "attrs_never_used": [
-      "channel",
-      "prior_tickets_30d",
-      "off_hours",
-      "language"
-    ],
-    "notes_arguing_disjointness": 7,
-    "notes_total": 12,
-    "examples": [
-      {
-        "rule_id": "R0002",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier eq free AND product neq billing AND has_security_keyword eq False",
-        "fire_count": 33,
-        "correct_count": 0,
-        "note": "Para usuarios free con productos no críticos (dashboard) y sin seguridad, se asigna a la cola general T1_GENERAL, ya que no tienen derecho a soporte técnico avanzado. La regla es disjunta con R0001 (product=billing) y no se solapa con ninguna otra existente."
+    {
+      "file": "llm_run2_n100_v2_seed19.json",
+      "version": "v2",
+      "seed": 19,
+      "n_rules": 12,
+      "attrs_used": {
+        "has_security_keyword": 11,
+        "severity": 10,
+        "customer_tier": 11,
+        "product": 12,
+        "channel": 0,
+        "prior_tickets_30d": 0,
+        "off_hours": 0,
+        "language": 0
       },
-      {
-        "rule_id": "R0004",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business'] AND product eq mobile AND severity in [2, 3] AND has_security_keyword eq False",
-        "fire_count": 3,
-        "correct_count": 2,
-        "note": "Regla para clientes pro/business con producto mobile y severidad 2-3, similar a la regla T2 existente para dashboard/api, pero cubriendo mobile. No se solapa con reglas existentes porque product es distinto."
-      },
-      {
-        "rule_id": "R0005",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business'] AND severity in [2, 3] AND product eq integrations AND has_security_keyword eq False",
-        "fire_count": 2,
-        "correct_count": 1,
-        "note": "Regla cubre tickets pro/business con severidad 2-3 en producto integrations, llenando el vacío dejado por las reglas existentes que cubren dashboard, api y mobile. No hay solapamiento porque product es disjunto de los ya cubiertos."
-      },
-      {
-        "rule_id": "R0006",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier in ['pro', 'business'] AND product eq dashboard AND severity eq 4 AND has_security_keyword eq False",
-        "fire_count": 3,
-        "correct_count": 1,
-        "note": "Cliente pro con dashboard y severidad baja (4) no cubierto por reglas existentes; se asigna a soporte general (T1_GENERAL) ya que no es crítico ni técnico de nivel 2/3."
-      },
-      {
-        "rule_id": "R0008",
-        "action": "T3_ENGINEERING",
-        "conditions": "customer_tier in ['pro', 'business'] AND product in ['dashboard', 'api'] AND severity eq 1 AND has_security_keyword eq False",
-        "fire_count": 1,
-        "correct_count": 1,
-        "note": "Severidad 1 (crítica) en dashboard/api para clientes pro/business requiere intervención de ingeniería. No se solapa con reglas existentes porque estas cubren severidades 2-4 o tiers diferentes."
-      },
-      {
-        "rule_id": "R0010",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business'] AND product eq mobile AND severity in [2, 3, 4] AND has_security_keyword eq False",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "El ticket tiene severity 4, customer_tier pro, product mobile, sin keyword de seguridad. Ninguna regla existente cubre severity 4 con product mobile para pro/business. Se crea una regla que generaliza severity a [2,3,4] para cubrir este caso y futuros similares, sin solaparse con"
-      },
-      {
-        "rule_id": "R0012",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq enterprise AND product in ['dashboard', 'api'] AND severity in [2, 3] AND has_security_keyword eq False",
-        "fire_count": 0,
-        "correct_count": 0,
-        "note": "El ticket es enterprise con dashboard y severidad 2, sin cobertura en reglas existentes. Se generaliza a enterprise con dashboard o api y severidad 2-3, asignando a T2_TECHNICAL, análogo a R0003 para pro/business. No se solapa con ninguna regla existente porque las reglas para en"
-      }
-    ]
-  },
-  {
-    "file": "llm_run2_n100_v2_seed20.json",
-    "version": "v2",
-    "seed": 20,
-    "n_rules": 26,
-    "attrs_used": {
-      "has_security_keyword": 0,
-      "severity": 26,
-      "customer_tier": 26,
-      "product": 18,
-      "channel": 7,
-      "prior_tickets_30d": 0,
-      "off_hours": 15,
-      "language": 0
+      "attrs_never_used": [
+        "channel",
+        "prior_tickets_30d",
+        "off_hours",
+        "language"
+      ],
+      "notes_arguing_disjointness": 7,
+      "notes_total": 12,
+      "examples": [
+        {
+          "rule_id": "R0002",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier eq free AND product neq billing AND has_security_keyword eq False",
+          "fire_count": 33,
+          "correct_count": 0,
+          "note": "Para usuarios free con productos no críticos (dashboard) y sin seguridad, se asigna a la cola general T1_GENERAL, ya que no tienen derecho a soporte técnico avanzado. La regla es disjunta con R0001 (product=billing) y no se solapa con ninguna otra existente."
+        },
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business'] AND product eq mobile AND severity in [2, 3] AND has_security_keyword eq False",
+          "fire_count": 3,
+          "correct_count": 2,
+          "note": "Regla para clientes pro/business con producto mobile y severidad 2-3, similar a la regla T2 existente para dashboard/api, pero cubriendo mobile. No se solapa con reglas existentes porque product es distinto."
+        },
+        {
+          "rule_id": "R0005",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business'] AND severity in [2, 3] AND product eq integrations AND has_security_keyword eq False",
+          "fire_count": 2,
+          "correct_count": 1,
+          "note": "Regla cubre tickets pro/business con severidad 2-3 en producto integrations, llenando el vacío dejado por las reglas existentes que cubren dashboard, api y mobile. No hay solapamiento porque product es disjunto de los ya cubiertos."
+        },
+        {
+          "rule_id": "R0006",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier in ['pro', 'business'] AND product eq dashboard AND severity eq 4 AND has_security_keyword eq False",
+          "fire_count": 3,
+          "correct_count": 1,
+          "note": "Cliente pro con dashboard y severidad baja (4) no cubierto por reglas existentes; se asigna a soporte general (T1_GENERAL) ya que no es crítico ni técnico de nivel 2/3."
+        },
+        {
+          "rule_id": "R0008",
+          "action": "T3_ENGINEERING",
+          "conditions": "customer_tier in ['pro', 'business'] AND product in ['dashboard', 'api'] AND severity eq 1 AND has_security_keyword eq False",
+          "fire_count": 1,
+          "correct_count": 1,
+          "note": "Severidad 1 (crítica) en dashboard/api para clientes pro/business requiere intervención de ingeniería. No se solapa con reglas existentes porque estas cubren severidades 2-4 o tiers diferentes."
+        },
+        {
+          "rule_id": "R0010",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business'] AND product eq mobile AND severity in [2, 3, 4] AND has_security_keyword eq False",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "El ticket tiene severity 4, customer_tier pro, product mobile, sin keyword de seguridad. Ninguna regla existente cubre severity 4 con product mobile para pro/business. Se crea una regla que generaliza severity a [2,3,4] para cubrir este caso y futuros similares, sin solaparse con"
+        },
+        {
+          "rule_id": "R0012",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq enterprise AND product in ['dashboard', 'api'] AND severity in [2, 3] AND has_security_keyword eq False",
+          "fire_count": 0,
+          "correct_count": 0,
+          "note": "El ticket es enterprise con dashboard y severidad 2, sin cobertura en reglas existentes. Se generaliza a enterprise con dashboard o api y severidad 2-3, asignando a T2_TECHNICAL, análogo a R0003 para pro/business. No se solapa con ninguna regla existente porque las reglas para en"
+        }
+      ]
     },
-    "attrs_never_used": [
-      "has_security_keyword",
-      "prior_tickets_30d",
-      "language"
-    ],
-    "notes_arguing_disjointness": 9,
-    "notes_total": 26,
-    "examples": [
-      {
-        "rule_id": "R0005",
-        "action": "BILLING_SPECIALIST",
-        "conditions": "customer_tier in ['pro', 'business'] AND product eq billing AND off_hours eq True AND severity in [2, 3]",
-        "fire_count": 1,
-        "correct_count": 1,
-        "note": "Clientes pro/business con tickets de billing en off_hours y severidad media deben ir a BILLING_SPECIALIST. No se solapa con reglas existentes (todas requieren free)."
+    {
+      "file": "llm_run2_n100_v2_seed20.json",
+      "version": "v2",
+      "seed": 20,
+      "n_rules": 26,
+      "attrs_used": {
+        "has_security_keyword": 0,
+        "severity": 26,
+        "customer_tier": 26,
+        "product": 18,
+        "channel": 7,
+        "prior_tickets_30d": 0,
+        "off_hours": 15,
+        "language": 0
       },
-      {
-        "rule_id": "R0008",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq free AND severity eq 1",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "Cliente free con severidad crítica (1) no cubierto por reglas existentes. Se asigna a equipo técnico para atención inmediata, generalizando que cualquier ticket free con severity 1 debe ir a T2_TECHNICAL, independientemente de producto o canal."
-      },
-      {
-        "rule_id": "R0009",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier eq pro AND severity eq 3 AND product eq dashboard",
-        "fire_count": 2,
-        "correct_count": 0,
-        "note": "Cliente pro con severidad 3 en producto dashboard no cubierto por reglas existentes (todas orientadas a free o billing). Se asigna a soporte técnico general, nivel T2, por ser un caso de soporte técnico no crítico para un cliente de pago."
-      },
-      {
-        "rule_id": "R0010",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier eq free AND severity gte 4 AND off_hours eq True",
-        "fire_count": 2,
-        "correct_count": 0,
-        "note": "Este ticket es un usuario free con severidad baja en horario no laboral, sin condiciones específicas de producto o canal. La regla generaliza cualquier producto y canal para free+severity>=4+off_hours, cubriendo este caso y otros análogos. No se solapa con las reglas existentes p"
-      },
-      {
-        "rule_id": "R0012",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity gte 4 AND off_hours eq True",
-        "fire_count": 4,
-        "correct_count": 0,
-        "note": "Cliente business, severidad baja, fuera de horas. Ninguna regla existente cubre este perfil; regla general para tickets de pago con baja severidad en off-hours, derivando a soporte general. No se solapa con reglas existentes porque las que cubren off-hours son para free o requier"
-      },
-      {
-        "rule_id": "R0013",
-        "action": "BILLING_SPECIALIST",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND product eq billing AND severity gte 4 AND off_hours eq False",
-        "fire_count": 1,
-        "correct_count": 0,
-        "note": "Cliente pro con producto billing y severidad baja en horario normal. Las reglas existentes para billing solo cubren severidades 1-3 o requieren off_hours true, por lo que esta regla es disjunta y no necesita prioridad. Se asigna a BILLING_SPECIALIST porque el producto es billing "
-      },
-      {
-        "rule_id": "R0015",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['pro', 'business'] AND severity eq 3 AND product eq api AND channel eq portal",
-        "fire_count": 2,
-        "correct_count": 2,
-        "note": "El ticket es de un cliente pro con severity 3 y producto api, canal portal. No hay regla existente que cubra esta combinación. Se generaliza para clientes pro/business con severity 3 y producto api, canal portal, asignando a T2_TECHNICAL. No se solapa con reglas existentes porque"
-      },
-      {
-        "rule_id": "R0017",
-        "action": "T1_GENERAL",
-        "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity gte 4 AND off_hours eq False AND channel eq portal",
-        "fire_count": 4,
-        "correct_count": 0,
-        "note": "Cliente pro con severidad 4 en horario regular por portal sin coincidencia con reglas existentes; se deriva a T1_GENERAL al ser una consulta de baja criticidad. La regla es disjunta con todas las reglas cercanas porque especifica off_hours=false y customer_tier pro/business/enter"
-      },
-      {
-        "rule_id": "R0022",
-        "action": "T2_TECHNICAL",
-        "conditions": "customer_tier in ['business', 'enterprise'] AND product eq integrations AND severity in [2, 3]",
-        "fire_count": 0,
-        "correct_count": 0,
-        "note": "El ticket es business, severity 3, product integrations, sin security keyword. Ninguna regla existente cubre este caso exacto. Las reglas existentes cubren otros productos o tiers, por lo que esta regla es disjunta con todas ellas. Se asigna a T2_TECHNICAL por ser un problema téc"
-      }
-    ]
-  }
-]
+      "attrs_never_used": [
+        "has_security_keyword",
+        "prior_tickets_30d",
+        "language"
+      ],
+      "notes_arguing_disjointness": 9,
+      "notes_total": 26,
+      "examples": [
+        {
+          "rule_id": "R0005",
+          "action": "BILLING_SPECIALIST",
+          "conditions": "customer_tier in ['pro', 'business'] AND product eq billing AND off_hours eq True AND severity in [2, 3]",
+          "fire_count": 1,
+          "correct_count": 1,
+          "note": "Clientes pro/business con tickets de billing en off_hours y severidad media deben ir a BILLING_SPECIALIST. No se solapa con reglas existentes (todas requieren free)."
+        },
+        {
+          "rule_id": "R0008",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq free AND severity eq 1",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "Cliente free con severidad crítica (1) no cubierto por reglas existentes. Se asigna a equipo técnico para atención inmediata, generalizando que cualquier ticket free con severity 1 debe ir a T2_TECHNICAL, independientemente de producto o canal."
+        },
+        {
+          "rule_id": "R0009",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier eq pro AND severity eq 3 AND product eq dashboard",
+          "fire_count": 2,
+          "correct_count": 0,
+          "note": "Cliente pro con severidad 3 en producto dashboard no cubierto por reglas existentes (todas orientadas a free o billing). Se asigna a soporte técnico general, nivel T2, por ser un caso de soporte técnico no crítico para un cliente de pago."
+        },
+        {
+          "rule_id": "R0010",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier eq free AND severity gte 4 AND off_hours eq True",
+          "fire_count": 2,
+          "correct_count": 0,
+          "note": "Este ticket es un usuario free con severidad baja en horario no laboral, sin condiciones específicas de producto o canal. La regla generaliza cualquier producto y canal para free+severity>=4+off_hours, cubriendo este caso y otros análogos. No se solapa con las reglas existentes p"
+        },
+        {
+          "rule_id": "R0012",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity gte 4 AND off_hours eq True",
+          "fire_count": 4,
+          "correct_count": 0,
+          "note": "Cliente business, severidad baja, fuera de horas. Ninguna regla existente cubre este perfil; regla general para tickets de pago con baja severidad en off-hours, derivando a soporte general. No se solapa con reglas existentes porque las que cubren off-hours son para free o requier"
+        },
+        {
+          "rule_id": "R0013",
+          "action": "BILLING_SPECIALIST",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND product eq billing AND severity gte 4 AND off_hours eq False",
+          "fire_count": 1,
+          "correct_count": 0,
+          "note": "Cliente pro con producto billing y severidad baja en horario normal. Las reglas existentes para billing solo cubren severidades 1-3 o requieren off_hours true, por lo que esta regla es disjunta y no necesita prioridad. Se asigna a BILLING_SPECIALIST porque el producto es billing "
+        },
+        {
+          "rule_id": "R0015",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['pro', 'business'] AND severity eq 3 AND product eq api AND channel eq portal",
+          "fire_count": 2,
+          "correct_count": 2,
+          "note": "El ticket es de un cliente pro con severity 3 y producto api, canal portal. No hay regla existente que cubra esta combinación. Se generaliza para clientes pro/business con severity 3 y producto api, canal portal, asignando a T2_TECHNICAL. No se solapa con reglas existentes porque"
+        },
+        {
+          "rule_id": "R0017",
+          "action": "T1_GENERAL",
+          "conditions": "customer_tier in ['pro', 'business', 'enterprise'] AND severity gte 4 AND off_hours eq False AND channel eq portal",
+          "fire_count": 4,
+          "correct_count": 0,
+          "note": "Cliente pro con severidad 4 en horario regular por portal sin coincidencia con reglas existentes; se deriva a T1_GENERAL al ser una consulta de baja criticidad. La regla es disjunta con todas las reglas cercanas porque especifica off_hours=false y customer_tier pro/business/enter"
+        },
+        {
+          "rule_id": "R0022",
+          "action": "T2_TECHNICAL",
+          "conditions": "customer_tier in ['business', 'enterprise'] AND product eq integrations AND severity in [2, 3]",
+          "fire_count": 0,
+          "correct_count": 0,
+          "note": "El ticket es business, severity 3, product integrations, sin security keyword. Ninguna regla existente cubre este caso exacto. Las reglas existentes cubren otros productos o tiers, por lo que esta regla es disjunta con todas ellas. Se asigna a T2_TECHNICAL por ser un problema téc"
+        }
+      ]
+    }
+  ]
+}

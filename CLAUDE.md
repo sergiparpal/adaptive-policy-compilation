@@ -104,19 +104,27 @@ Comprueba con `${#OPENROUTER_API_KEY}` (la longitud), nunca con su valor.
 
 ## Secuencia, con paradas obligatorias
 
-### Paso previo — La suite (cero llamadas, ~11 s)
+### Paso previo — La suite (cero llamadas, ~12 s)
 
     python3 -m unittest discover
 
-186 pruebas con la biblioteca estándar. No escriben en `results*/`: llaman a las
+237 pruebas con la biblioteca estándar. No escriben en `results*/`: llaman a las
 funciones de medida, nunca a los `main()`. Clavan los invariantes (el DSL
 reproduce las lambdas sobre las 134.400 combinaciones) y las cifras publicadas
-(0,5875 · 0,6315 · 1,0000, la frontera y el corpus), y vigilan que ningún
-componente del bucle online importe el oráculo.
+(0,5875 · 0,6315 · 1,0000, la frontera y el corpus), vigilan que ningún
+componente del bucle online importe el oráculo, y replican las tiradas
+registradas del LLM —`results/llm_run.json` y `results2/llm_run2_n100.json`—
+regla a regla y registro a registro, sin gastar un céntimo.
 
 Si algo falla aquí, para: los Pasos 0 y 1 medirían sobre un arnés que ya no
 reproduce. **Un snapshot que falla no se actualiza**; se averigua qué cambió y,
 si el cambio es legítimo, se fecha la errata en el FINDINGS que publica la cifra.
+
+**No hace falta acordarse de lanzarla.** El hook `.githooks/pre-commit` la corre
+antes de cada commit (se activa una vez con `git config core.hooksPath
+.githooks`) y `.github/workflows/pruebas.yml` en cada push. Si el hook aborta un
+commit, `--no-verify` **no** es la respuesta por defecto: ver el párrafo
+anterior.
 
 ### Paso 0 — Techo del motor (OBLIGATORIO antes de cualquier tirada con LLM)
 

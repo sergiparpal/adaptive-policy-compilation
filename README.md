@@ -58,11 +58,18 @@ python3 -m peldano3.budget_and_balance  # curva de etiquetas y voraz balanceado
 python3 -m peldano4.sweep             # barridos de cobertura/asimetría/retardo/ruido
 ```
 
-Y antes de tocar nada, la suite: **186 pruebas en ~11 s, sin API y sin escribir
+Y antes de tocar nada, la suite: **237 pruebas en ~12 s, sin API y sin escribir
 en `results*/`.**
 
 ```bash
 python3 -m unittest discover
+```
+
+La corren solas el hook de pre-commit y CI; para activar el hook en tu clon,
+una vez:
+
+```bash
+git config core.hooksPath .githooks
 ```
 
 > **Los peldaños 3 y 4 no reproducen sus cifras publicadas al dígito.** El
@@ -128,9 +135,12 @@ cambio está en [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > `_env` con la procedencia (ver *Las pruebas y la procedencia*). Al re-correr
 > una cifra que no ha cambiado, `git diff` muestra **solo** el campo
 > `recorded_at` moviéndose — que es justamente la comprobación de que sigue
-> reproduciendo. Y `compare_runs` y `note_audit` pasaron de volcar una lista
-> pelada a volcar `{"_env": …, "rows": […]}`: sus dos registros publicados son
-> todavía la lista antigua, y cambiarán de forma la primera vez que se re-corran.
+> reproduciendo. Los seis registros deterministas y gratuitos de la tabla ya lo
+> llevan: se re-corrieron ese mismo día para ganarlo, con el contenido idéntico
+> campo a campo ([`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md)). En
+> esa pasada `comparativa.json` y `note_audit.json` adoptaron además su forma
+> nueva, `{"_env": …, "rows": […]}` en vez de la lista pelada, con las mismas 8
+> filas.
 >
 > **La salvaguarda es git, y basta.** Después de reproducir cualquier cosa:
 > `git status` delata lo que se ha tocado y `git checkout -- <archivo>` lo
@@ -145,7 +155,7 @@ Dos redes distintas, con propósitos distintos.
 ### La suite
 
 ```bash
-python3 -m unittest discover            # 186 pruebas, ~11 s, 0 llamadas a la API
+python3 -m unittest discover            # 237 pruebas, ~12 s, 0 llamadas a la API
 python3 -m unittest tests.test_ceilings -v      # un módulo suelto
 ```
 
@@ -165,14 +175,58 @@ Lo que cubre, y por qué esas cosas:
 | `test_engine2.py` | máscaras de bits ≡ `Condition.holds`, y los seis veredictos del validador de aristas |
 | `test_oracle_separation.py` | que ningún componente del bucle online importe el oráculo, y que `feedback.py` siga siendo el único módulo del peldaño 4 que lo toca |
 | `test_order_determinism.py` | que el voraz de los peldaños 3 y 4 dé el mismo orden bajo tres `PYTHONHASHSEED`, con un testigo que confirma que el hash sí se aleatoriza |
-| `test_proposal_parsing.py` | la única parte de la ruta del LLM probable sin gastar |
+| `test_proposal_parsing.py` | el parseo de lo que devuelve el proponente, en sus dos versiones |
+| `test_llm_path.py` | la ruta del LLM **entera**, replicando las tiradas registradas sin gastar (ver abajo) |
 | `test_provenance.py` | el bloque `_env`, que no filtra la clave, y que ningún escritor de JSON se quede sin él |
+| `test_automatizacion.py` | que el hook y el flujo de CI sigan ahí y sigan corriendo lo que dicen |
 
 Si una prueba de *snapshot* falla, el número esperado **no se actualiza**: se
 averigua qué cambió y, si el cambio es legítimo, se fecha la errata en el
 `FINDINGS` correspondiente. Los peldaños 3 y 4 están cubiertos por determinismo
 y no por snapshot, a propósito: sus cifras publicadas son las del código
 anterior al arreglo del desempate y están pendientes de re-correr.
+
+### La ruta del LLM, sin gastar
+
+De la ruta que cuesta dinero solo estaba probado el parseo. El resto —armar la
+petición, leer la respuesta del SDK, reintentar, validar, meter la regla en la
+base, calcular las métricas— ahora se prueba con un **doble que sustituye al
+cliente del SDK, no al proponente**: `OpenRouterProposer` y `OpenRouterProposer2`
+corren enteros y lo único que no ocurre es la petición HTTP.
+
+Las respuestas no salen de un guion aparte, sino **del propio registro
+publicado**, de modo que el replay es la tirada que produjo las cifras:
+
+| registro | qué reproduce, exactamente |
+|---|---|
+| `results/llm_run.json` | 2000 casos, 632 escalaciones → las 577 reglas, las métricas y los 2000 registros crudos |
+| `results2/llm_run2_n100.json` | 100 casos, 42 escalaciones → lo mismo, más las 7 aristas de prioridad con su veredicto |
+
+De ahí sale además una cifra que no está en ningún registro: **632 escalaciones
+costaron 700 llamadas**, porque los 34 fallos de parseo se reintentan hasta tres
+veces. El texto crudo de las respuestas nunca se guardó; qué parte se
+reconstruye verbatim y qué parte es sólo el modo de fallo está enumerado turno a
+turno en la cabecera de [`tests/doubles.py`](tests/doubles.py).
+
+### Quién corre la suite
+
+Nadie tiene que acordarse:
+
+```bash
+git config core.hooksPath .githooks     # una vez por clon
+```
+
+[`.githooks/pre-commit`](.githooks/pre-commit) corre la suite antes de cada
+commit —~12 s, sin venv, sin API— y la aborta si falla. Se salta con
+`git commit --no-verify`, que tiene sentido en un commit de sólo documentación y
+en pocos casos más: si un snapshot falla, el número esperado no se actualiza y
+el commit tampoco se fuerza.
+
+[`.github/workflows/pruebas.yml`](.github/workflows/pruebas.yml) hace lo mismo en
+cada push y cada PR —incluido lo que se empujó con `--no-verify`— sobre **3.10 y
+3.12**: el mínimo que declara este README y el intérprete que produjo los
+registros. Y añade un paso que la suite no puede hacer sola: comprobar, después
+de correrla, que `results*/` sigue intacto.
 
 ### El bloque `_env`
 
@@ -200,8 +254,16 @@ sha256 del código que produce cifras (`harness/`, `peldano2..4/`,
 `run_experiment.py`; las pruebas quedan fuera), así que identifica la versión
 aunque el árbol esté sucio o no haya git.
 
-Los registros publicados son **anteriores** a este campo: aparecerá en cada
-archivo cuando esa cifra se vuelva a correr, no antes.
+El campo aparece en cada archivo cuando esa cifra se vuelve a correr, así que
+llevarlo o no separa hoy los registros en dos:
+
+| lo llevan | siguen sin llevarlo, y por qué |
+|---|---|
+| `frontier.json`, `subsumption.json`, `learned_subsumption.json`, `ceiling2.json`, `comparativa.json`, `note_audit.json` — re-corridos el 7 de agosto de 2026, contenido idéntico | `llm_run.json`, `llm_run_n100_smoke.json` y las 8 tiradas `llm_run2_*.json`: reproducirlas **cuesta dinero** y no salen iguales (el proponente no es determinista a `temperature 0`) |
+| | `order_search.json`, `budget_and_balance.json`, `sweep.json`: son gratis y deterministas, pero re-correrlas **sí mueve dígitos** (arreglo del desempate) y está aplazado a hacerse junto con el optimizador serio |
+
+Dicho de otro modo: lo que falta por llevar `_env` es exactamente lo que no se
+puede reproducir gratis o lo que no se debe reproducir todavía.
 
 ---
 
@@ -313,6 +375,9 @@ python3 -m harness.ceiling_check
 # 1. Comprobar que todo funciona SIN gastar nada
 python3 -m unittest discover
 python3 run_experiment.py frontier
+
+# 1b. Que la suite se corra sola antes de cada commit. Una vez por clon.
+git config core.hooksPath .githooks
 
 # 2. Entorno virtual e instalacion del SDK.
 #    OJO: en Debian/Ubuntu `pip install` global falla con
@@ -484,10 +549,14 @@ adaptive-triage/
 │   ├── feedback.py          el canal; único que consulta el oráculo
 │   └── sweep.py             barridos de cobertura, asimetría, retardo, ruido
 │
-├── tests/                   186 pruebas · `python3 -m unittest discover`
+├── tests/                   237 pruebas · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus y espacio exhaustivo, construidos una vez
+│   ├── doubles.py           el cliente de SDK grabado: la ruta del LLM sin pagar
 │   ├── hashseed_child.py    proceso hijo del control de `PYTHONHASHSEED`
 │   └── test_*.py            invariantes y snapshots (ver *Las pruebas*)
+│
+├── .githooks/pre-commit     la suite antes de cada commit (hay que activarlo)
+├── .github/workflows/       la suite en cada push y cada PR, en 3.10 y 3.12
 │
 └── results/  results2/  results3/  results4/
     Los registros. FINDINGS*.md son las conclusiones con sus erratas

@@ -1,4 +1,14 @@
 {
+  "_env": {
+    "recorded_at": "2026-08-07T14:28:45Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "29e250c1dc07722a08c39bcf916baa93777df6d5",
+    "git_dirty": true,
+    "code_digest": "7ef0ec6d89ec4d85"
+  },
   "n_rules": 29,
   "space": 134400,
   "subsumption_pairs": 61,
