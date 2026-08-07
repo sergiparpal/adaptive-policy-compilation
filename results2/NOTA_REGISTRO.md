@@ -95,9 +95,15 @@ dígitos.
 
 ### El `git_dirty` de estos seis, y una trampa al re-correrlos en tanda
 
-Los seis dicen `git_dirty: false` y `git_commit: 97cabc1`, con el mismo
-`code_digest` `7ef0ec6d89ec4d85`. Es decir: ese commit identifica exactamente el
-código que produjo las seis cifras.
+Los seis dicen `git_dirty: false`, `code_dirty: false` y
+`git_commit: 684f0e9`, con el mismo `code_digest` `43e91ada22e9587f`. Es decir:
+ese commit identifica exactamente el código que produjo las seis cifras.
+
+(Se re-corrieron tres veces el mismo día, todas gratis y todas con el contenido
+idéntico: la primera para ganar el `_env`, la segunda con el árbol ya
+confirmado, y la tercera después de desdoblar la bandera de suciedad, que
+cambia el `code_digest` porque toca `harness/provenance.py`. Lo de abajo es lo
+que se aprendió por el camino.)
 
 Costó dos intentos, y el motivo merece quedar anotado porque le va a pasar a
 cualquiera que repita esto. **Correr los seis seguidos no da `git_dirty: false`
@@ -116,14 +122,29 @@ limpio, apartar su JSON y restaurar el árbol antes del siguiente:
         git checkout -- results results2
     al final, poner los seis en su sitio de una vez
 
-Así cada bloque `_env` dice la verdad sobre el código que corrió, que es para lo
-que existe el campo.
+Ninguno de los seis lee la salida de otro, así que el orden da igual. Así cada
+bloque `_env` dice la verdad sobre el código que corrió, que es para lo que
+existe el campo.
+
+**El bloque ya no obliga a este baile para saberlo.** De aquí salió el desdoble
+de la bandera en `git_dirty` (árbol entero) y `code_dirty` (sólo `CODE_ROOTS`),
+que es la que decide si `git_commit` identifica lo que corrió. Con las dos, una
+tanda seguida habría dicho `git_dirty: true, code_dirty: false` y se habría
+leído bien a la primera. El baile se mantiene aquí porque sigue dando la
+procedencia más limpia posible —las dos en `false`— y porque el procedimiento
+vale para cualquier otra tanda.
+
+Lo que **no** se hizo es acotar el flag que había: tres de estos seis
+—`learned_subsumption`, `compare_runs` y `note_audit`— leen registros de
+`results*/` **como entrada**, así que un JSON modificado y sin confirmar rompe
+la trazabilidad de esas cifras sin tocar una línea de código, y un único flag
+acotado a `CODE_ROOTS` se lo habría callado.
 
 ### Por qué el commit que citan no es el que los contiene
 
 Un registro no puede llevar dentro el hash del commit que lo transporta. Los
-seis se produjeron con el árbol limpio en `97cabc1` y se confirmaron en el
+seis se produjeron con el árbol limpio en `684f0e9` y se confirmaron en el
 commit siguiente, que sólo toca estos seis JSON y esta nota: ni una línea de
 `harness/`, `peldano2..4/` ni `run_experiment.py`. Por eso `code_digest` sigue
-siendo el mismo en los dos commits, y `git_commit: 97cabc1` sigue identificando
+siendo el mismo en los dos commits, y `git_commit: 684f0e9` sigue identificando
 el código con exactitud.

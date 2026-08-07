@@ -1,13 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-08-07T14:38:12Z",
+    "recorded_at": "2026-08-07T14:58:14Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": null,
-    "git_commit": "97cabc1fd3433c71d287d93d37497d89ccc1b4b8",
+    "git_commit": "684f0e9bc3d17460ef1754dd070be42b39663131",
     "git_dirty": false,
-    "code_digest": "7ef0ec6d89ec4d85"
+    "code_dirty": false,
+    "code_digest": "43e91ada22e9587f"
   },
   "base": "politica oculta (29 reglas)",
   "space_size": 134400,
