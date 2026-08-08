@@ -1,9 +1,10 @@
 # Parking lot
 
-Status as of August 7, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of August 8, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
-`results4/FINDINGS4.md`. This is a list of things not done, none of them
-developed and in no order of precedence.
+`results4/FINDINGS4.md`. The optimizer audit of August 8, 2026 (`PLAN_AUDIT.md`)
+corrected figures in rungs 3 and 4 in place. This is a list of things not done,
+none of them developed and in no order of precedence.
 
 ---
 
@@ -16,9 +17,22 @@ developed and in no order of precedence.
   0.90 over the 577 rules from rung 1 — an upper bound case by case, not a
   demonstrated attainable optimum, see the erratum in `FINDINGS3.md` — and a
   searched order of 0.77 on test with gap ~0. The search uses the oracle.
+  **Corrected 2026-08-08: 0.8530 with a competent optimizer, and the bound over
+  the exhaustive space is 0.8784, not 0.9010.**
 - **Priority learned from observed behaviour.** Rung 4, Step A. With symmetric
   feedback almost everything is recovered; with the asymmetric kind, which is the
-  realistic one, +0.067 over learning nothing remains.
+  realistic one, +0.067 over learning nothing remains. **Corrected 2026-08-08:
+  +0.2011, and the "change of regime" was a weak learner's failure curve.**
+- **A serious optimizer for the order, and the audit of what the greedy cost.**
+  August 8, 2026. Multi-start local search, validated first against the hidden
+  policy whose optimum is known by construction. It answered the three questions
+  the greedy left open — how much of the gap was search weakness (63%), whether
+  noise still helps (no), whether the asymmetry regime change survives (no) — and
+  cost zero API calls. `PLAN_AUDIT.md`, `results3/optimizer_check.json`,
+  `results3/order_search_ls.json`, `results4/sweep_ls.json`.
+- **Re-run rungs 3 and 4 with the tie-break fixed.** Done in the same pass, which
+  is what made the two effects separable: the tie-break was worth **+0.0002** on
+  test and the algorithm **+0.0817**. The fragility was variance, not bias.
 
 ---
 
@@ -33,28 +47,19 @@ developed and in no order of precedence.
   degrade things further. It is noted that it is a different problem from Step A
   — the base grows while it is being ordered, and feedback arrives with delay
   about decisions an earlier version of the order took — in case the framing
-  changes.
-- **Re-run rungs 3 and 4 with the tie-break fixed.** The fix is done and
-  verified — August 6, 2026, iteration over a sorted list, identical result under
-  three `PYTHONHASHSEED` values — but nothing was re-run, on purpose: doing it
-  **together with** the serious optimizer is what makes it possible to tell
-  whether the fragility came from the tie-break or from the algorithm. The
-  recorded figures are those of the earlier code. When it is redone, the old
-  version is kept alongside, not on top.
+  changes. **The reason for skipping it weakened on 2026-08-08**: asymmetric
+  feedback recovers 61% of what full supervision does, not 29%, so "it would only
+  degrade things further" now rests on a smaller margin than when it was written.
 
 ---
 
 ## What rung 4 opens and does not resolve
 
-- The greedy search is a weak optimizer, and that contaminates backwards. With
-  perfect labels it reaches 0.7574 against the truth; with 30% falsified, 0.8337.
-  A serious optimizer (local search, annealing, exact over the competing pairs)
-  would change every figure in rungs 3 and 4. In which direction and by how much
-  is unknown. It goes together with re-running both rungs, in "Pending and
-  already specified".
-- Whether the conclusion about asymmetry survives a better optimizer. It is the
-  only claim in rung 4 that matters and it rests on a method known to be weak,
-  even though its anchor cell is deterministic.
+- ~~The greedy search is a weak optimizer, and that contaminates backwards.~~
+  **Closed 2026-08-08.** It did, and upwards: every figure moved in the same
+  direction, +0.0817 on rung 3's test and +0.134 on rung 4's anchor cell.
+- ~~Whether the conclusion about asymmetry survives a better optimizer.~~
+  **Closed 2026-08-08. It does not.** See the erratum in `FINDINGS4.md` §1.
 - The fixed point of learning by correction: the signal runs out as the system
   improves. Where that point is and what it depends on has not been
   characterized.
@@ -72,7 +77,17 @@ developed and in no order of precedence.
 - How much of the 0.77→0.90 gap is really attainable. The 90.1% is an upper bound
   by per-case coverage: it guarantees that no order exceeds it, not that some
   order reaches it. Exact optimization or a stronger global bound would be
-  needed. See the erratum in `FINDINGS3.md`.
+  needed. See the erratum in `FINDINGS3.md`. **Partly answered 2026-08-08**: 63%
+  of it was search weakness. A search seeing all 134,400 cases still stops 0.0879
+  under the space bound, down from the greedy's 0.1187 — evidence the bound is
+  somewhat loose, not proof. Exact optimization is still what would settle it.
+- **Which surface a figure is measured on, as a standing question.** Opened
+  2026-08-08. The corpus is the modelled arrival distribution and the exhaustive
+  space is a uniform measure over attribute combinations; they are not
+  interchangeable and this project published corpus figures for four rungs
+  without saying so. An order fitted to the corpus loses 0.180 carried to the
+  space, and `born_at` reverses against random between the two. Every future
+  figure should name its surface.
 - Whether the order is attainable without labels. The shadow loop has no
   supervision channel by design. Rung 4 partially bounded this question and the
   answer was bad.
@@ -84,7 +99,20 @@ developed and in no order of precedence.
 - The objective function as an explicit design surface: which classes are
   protected, at what cost in aggregate, and who decides.
 - Why rung 2's hybrid arbitration is worse than pure ordering over a learned base
-  (0.7496 versus 0.7711) despite executing the perfect policy at 100%.
+  (0.7496 versus 0.7711) despite executing the perfect policy at 100%. It stays
+  worse under a competent optimizer — 0.7734 against 0.8530 — so it is not a
+  search artifact.
+- **Subsumption silences a third of the learned base, and that is a finding about
+  subsumption, not about runtime.** Opened 2026-08-08 while measuring why the
+  hybrid pool costs 8x more to search: once subsumption prunes, **181 of the 577
+  rules match nothing at all on the train half**. They are rules whose extension
+  is strictly contained in another's, so on every case they cover, something else
+  covers it too and outranks them. A third of what the proposer wrote is
+  unreachable by construction under that arbitration, before any question of
+  order. It is the mechanical form of what `FINDINGS3.md` measures as "subsumption
+  costs 0.047 of ceiling", and it says the cost is concentrated rather than
+  diffuse. Whether those 181 are redundant or are exceptions the arbitration
+  buries is not known.
 
 ---
 
@@ -120,7 +148,7 @@ all have the same root and are not closed by writing code.
 
 ### Done
 
-- **Automated tests.** `python3 -m unittest discover` runs 289 tests in ~14 s,
+- **Automated tests.** `python3 -m unittest discover` runs 315 tests in ~17 s,
   with no API calls and no writes to `results*/`. They cover the two invariants
   that underpin rung 1 — the DSL reproduces the lambdas over the 134,400
   combinations, and first-match-wins reproduces `true_action` — and pin the
@@ -178,9 +206,18 @@ deferred.
   records still have no `_env` for the same reason.** Their published figures are
   those of the code prior to the tie-break fix: re-running them is free, but it
   moves digits, and pinning the new values here would create a second official
-  figure that no FINDINGS backs. When both rungs are redone — together with the
-  serious optimizer, see "Pending and already specified" — those tests become
-  snapshots and the records earn their provenance at the same time.
+  figure that no FINDINGS backs.
+
+  **Half-resolved 2026-08-08.** The audit produced four new records that all
+  carry `_env` — `optimizer_check.json`, `order_search_ls.json`,
+  `order_search_ls_fullspace.json`, `sweep_ls.json` — and the FINDINGS of both
+  rungs now publish the corrected figures as dated errata, so the second official
+  figure has a document behind it. What is still open is the original three
+  records: `order_search.json`, `budget_and_balance.json` and `sweep.json` remain
+  pre-tie-break, without `_env`, and are deliberately left that way so the old
+  numbers stay reproducible beside the new ones. `budget_and_balance` was not
+  re-run with the new optimizer at all — the label-budget curve and the balanced
+  objective are still greedy figures, and both would move.
 
 What is **not** here, on purpose: that reproducing a figure overwrites its own
 record. For the deterministic, free ones that is behaviour you have to know

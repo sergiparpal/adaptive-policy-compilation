@@ -73,6 +73,15 @@ class TestInvarianciaAlHashSeed(unittest.TestCase):
         vistos = {r["greedy_p4"] for r in self.runs.values()}
         self.assertEqual(len(vistos), 1, f"ordenes distintos: {self.runs}")
 
+    def test_la_busqueda_local_multiarranque_no_depende_del_hash(self):
+        """Added August 8, 2026 with the optimizer. Its starts come from a
+        declared seed and its argmax never walks a set, but that was believed of
+        the greedy too until it was checked here."""
+        for campo in ("multistart_order", "multistart_score", "multistart_from"):
+            with self.subTest(campo):
+                vistos = {r[campo] for r in self.runs.values()}
+                self.assertEqual(len(vistos), 1, f"{campo} difiere: {vistos}")
+
     def test_la_exactitud_resultante_es_identica(self):
         vistos = {r["test_p3"] for r in self.runs.values()}
         self.assertEqual(len(vistos), 1, f"exactitudes distintas: {vistos}")

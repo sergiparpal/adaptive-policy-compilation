@@ -86,6 +86,8 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
             "peldano2/ceiling_check2.py",
             "peldano3/order_search.py",
             "peldano3/budget_and_balance.py",
+            "peldano3/optimizer_check.py",   # offline: the optimizer's own ceiling
+            "peldano3/order_search_ls.py",   # offline: labels the two instances
             "peldano4/feedback.py",
         }
         encontrados = set()
