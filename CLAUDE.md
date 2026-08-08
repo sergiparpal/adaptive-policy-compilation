@@ -14,12 +14,25 @@ status of the project:
 |---|---|---|
 | 1 | the specificity engine gives 58.75% with the perfect policy loaded; the run was voided | `results/FINDINGS.md` |
 | 2 | hybrid engine (subsumption + declared priority) at 100%, but the proposer writes disjoint rules and does not exercise it | `results2/FINDINGS2.md` |
-| 3 | the 577 rules from rung 1 admit an order that scores 0.77 on test; coverage bound 0.90 | `results3/FINDINGS3.md` |
-| 4 | that order is not learned from the asymmetric feedback a real system gives | `results4/FINDINGS4.md` |
+| 3 | the 577 rules from rung 1 admit an order that scores **0.8530** on corpus test; bound 0.9010 on corpus, 0.8784 over the case space | `results3/FINDINGS3.md` |
+| 4 | that order IS partly learned from asymmetric feedback: +0.2011, not the +0.067 first published | `results4/FINDINGS4.md` |
 
-**Every FINDINGS carries dated errata in place.** Rungs 3 and 4 have figures
-called into question by a non-deterministic tie-break, fixed on August 6, 2026
-and **not re-run**. Read them before citing any number.
+**Every FINDINGS carries dated errata in place.** The optimizer audit of August
+8, 2026 (`PLAN_AUDIT.md`) rewrote figures in rungs 3 and 4: the greedy search
+was weak, and fixing it moved rung 3's test from 0.7713 to 0.8530 and withdrew
+rung 4's "change of regime". The tie-break fix of August 6 was worth +0.0002;
+the algorithm was worth +0.0817. **Read the errata before citing any number.**
+
+**Every figure names a surface, and the two are not interchangeable.** The
+CORPUS is the modelled arrival distribution — deliberately long-tailed, so
+`has_security_keyword` is 3% of arrivals against 50% of the attribute space. The
+EXHAUSTIVE SPACE is the uniform measure over all 134,400 combinations. The
+corpus answers "what would this achieve in deployment" and cannot certify an
+optimum: 2000 draws touch 1743 distinct cases and leave the rest unconstrained,
+so an order can be perfect on it and be 0.9455 as a function. The space answers
+"is this order the policy" and weights regions the system will almost never see.
+Rungs 1 to 4 published corpus figures without saying so. Do not swap one for the
+other silently.
 
 **The original hypothesis — do the LLM's rules get reused or does it memorize
 cases? — still has not been measured.** Rung 1 was voided by the engine ceiling
@@ -37,6 +50,19 @@ standard library:
     python3 -m peldano2.ceiling_check2      # hybrid engine ceiling: 100%
     python3 -m peldano3.order_search        # coverage bound and searched order
     python3 -m peldano4.sweep               # feedback-channel sweeps
+
+The optimizer audit of August 8, 2026 adds four more, also free. The first is
+blocking in the same sense as `harness.ceiling_check`: it measures the
+instrument before the instrument measures anything else.
+
+    python3 -m peldano3.optimizer_check     # optimizer ceiling: must give 1.0000
+    python3 -m peldano3.order_search_ls     # rung 3 with the declared optimizer
+    python3 -m peldano4.sweep_ls            # rung 4 with the declared optimizer
+    python3 -m peldano3.order_search_ls --full-space-search   # ~3.3 h
+
+`order_search_ls` takes ~33 min and `sweep_ls` ~42 min: the multi-start runs 65
+searches per instance. The four originals are left in place and unmodified, so
+the pre-audit figures stay reproducible next to the corrected ones.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
@@ -123,13 +149,25 @@ Check with `${#OPENROUTER_API_KEY}` (the length), never with its value.
 
     python3 -m unittest discover
 
-289 tests on the standard library. They do not write to `results*/`: they call
+315 tests on the standard library. They do not write to `results*/`: they call
 the measurement functions, never the `main()`s. They pin the invariants (the DSL
 reproduces the lambdas over the 134,400 combinations) and the published figures
 (0.5875 · 0.6315 · 1.0000, the frontier and the corpus), watch that no component
 of the online loop imports the oracle, and replay the recorded LLM runs —
 `results/llm_run.json` and `results2/llm_run2_n100.json` — rule by rule and
 record by record, without spending a cent.
+
+The 26 added on August 8, 2026 cover the audit's optimizer. They pin that it is
+an instrument rather than a figure: that `best_insertion` equals brute force over
+every position, that the search really is at a local optimum of its neighbourhood
+when it stops, that the mask-based greedy reproduces `order_search.greedy_order`
+exactly — so a gain is measured against the record's baseline and not a different
+one — and that knowing the optimum cannot leak into the search. **No accuracy
+figure from the 577 rules is pinned there**: the audit's numbers live in the
+FINDINGS errata and in `results3/`, and duplicating them in a test would create a
+second official figure. The multi-start is also signed across three
+`PYTHONHASHSEED` values in `tests/hashseed_child.py`, because the same-process
+determinism test is the one that returned a false 0.0000 in rung 4.
 
 If something fails here, stop: Steps 0 and 1 would be measuring over a harness
 that no longer reproduces. **A failing snapshot is not updated**; you find out
@@ -254,11 +292,14 @@ compiled rule resolved it.
 
 ---
 
-## Current status (August 7, 2026)
+## Current status (August 8, 2026)
 
-Four closed rungs. The thread that ties them together: **the priority of a
-layered policy is not in the shape of the rules**, and the three ways of
-supplying it have been measured and each fails for a different reason.
+Four closed rungs plus an audit of the instrument that measured two of them. The
+thread that ties them together: **the priority of a layered policy is not in the
+shape of the rules**, and the three ways of supplying it have been measured. Two
+fail. The third — learning it from observed behaviour — works better than rung 4
+concluded, and the correction came from auditing the optimizer, not from new
+data.
 
 **Rung 1 — infer it from the syntax. Fails.** No syntactic criterion recovers
 this policy. H01 (2 conditions) must beat H03 (1); H16 (1) must beat H24 (2) —
@@ -282,16 +323,30 @@ as a merit. Eight runs, two conflicts, zero accepted edges.
 
 **Rung 3 — search for it over the corpus. The material did contain it.** The
 same 577 rules that arbitration was turning into 0.18 admit an order that scores
-0.77 on test with gap ~0. `SECURITY_INCIDENT` and `ONCALL_ESCALATION` are 100%
-recoverable and gave 0/17 and 0/7. But the search uses the oracle.
+**0.8530 on corpus test** with a gap of 0.017. `SECURITY_INCIDENT` and
+`ONCALL_ESCALATION` are 100% recoverable and gave 0/17 and 0/7. But the search
+uses the oracle.
 
-**Rung 4 — learn it from observed behaviour. Not with real feedback.** With
-symmetric supervision almost everything is recovered (+0.235); with the
-asymmetric kind, which is the only one a real system produces, +0.067 remains,
-and the signal runs out as the system improves.
+**Rung 4 — learn it from observed behaviour. Partly, with real feedback.** With
+symmetric supervision +0.3273; with the asymmetric kind, which is the only one a
+real system produces, **+0.2011** — 61% of it, not the 29% first published. What
+survives of rung 4 is that the signal runs out as the system improves, which is a
+property of the channel. What does not survive is the change of regime.
 
-Compilation by impasse learns rules, but has no mechanism whatsoever for
-learning PRIORITY. In a stratified policy the structure lives there.
+**The audit, August 8, 2026.** The greedy search of rungs 3 and 4 was weak, and
+three signs had said so: noise improved it, searching over its own test set left
+0.12 under the bound, and the tie-break moved it by 0.011. Validating the
+replacement against the hidden policy — where the optimum is 1.0000 by
+construction — turned out to matter: pairwise swaps, the neighbourhood the plan
+specified, cannot solve even the 29-rule instance (0.9356, and 0/65 starts reach
+the optimum). Multi-start relocation does. Of the corrections that followed, 63%
+of rung 3's gap was search weakness and rung 4's headline was mostly the shape
+of a weak learner's failure curve.
+
+Compilation by impasse learns rules, and learns priority from error feedback
+better than rung 4 credited — but still short: +0.2011 against a corpus bound of
+0.9010 and a space bound of 0.8784. In a stratified policy the structure lives in
+the priority, and it is only partly recoverable from behaviour.
 
 **The original hypothesis — do the LLM's rules get reused or does it memorize
 cases? — still has not been measured cleanly.**
@@ -306,6 +361,20 @@ redesigns and the exception about `dsl.py`. Sergi lifted them explicitly for tha
 work. Do not reinstate them on your own, nor assume they are in force; **the
 scope of each opening is set by Sergi when he opens it**, and until then the norm
 remains not to propose unrequested redesigns.
+
+**The optimizer's constants are not yours to tune.** `MULTISTART_SEED = 17`,
+`MULTISTART_STARTS = 64` and `DECLARED_NEIGHBOURHOOD = "move+swap"` in
+`peldano3/local_search.py` were fixed before the runs that used them, and the
+reasoning for the neighbourhood is recorded next to it. Changing any of them
+after seeing a result is rule 6 under another name. The instrument was changed
+once, on August 8, 2026, and only because Step 0 showed it failing against a
+policy whose optimum is known independently of any of these numbers — that is
+what made it legitimate, and it is the only thing that would make it legitimate
+again.
+
+**On which surface a figure is measured**, see the block at the top of this file.
+Rungs 1 to 4 published corpus figures without labelling them. Do not continue
+that: name the surface, and where both are available report both.
 
 What is pending and open is in `IDEAS.md`, including what each rung left
 unresolved. Of the original list only the empirical impasse has been touched —

@@ -80,6 +80,43 @@ The 24 cells of the realistic regime (asymmetry 0) fall between **0.5448 and
 0.6509**, and at coverage 0.1 the improvement (+0.023 to +0.047) lies within its
 own standard deviation.
 
+> **[ERRATUM 2026-08-08] The change of regime does not survive a competent
+> learner. The headline of this section was substantially an artifact of a weak
+> optimizer starved of restarts.**
+>
+> The audit (`PLAN_AUDIT.md`) re-ran this sweep with the channel untouched, the
+> same π₀, the same three splits and the same seed 17, replacing only the learner:
+> the multi-start local search declared in `peldano3/local_search.py`. All figures
+> below are on the CORPUS test half, the same surface as the table above.
+>
+> ```
+> asimetria    este registro   auditoria   etiquetas
+>       1.0         +0.2348     +0.3273        1010
+>       0.5         +0.2738     +0.3274         751
+>      0.25         +0.1901     +0.3115         622
+>       0.1         +0.0969     +0.2818         544
+>       0.0         +0.0671     +0.2011         498
+> ```
+>
+> **The cliff between 0.25 and 0.1 is gone.** What remains is a gradual decline,
+> and the symmetric-to-asymmetric ratio falls from **3.5x to 1.6x**. The anchor
+> cell that carries the whole claim — `c=1, a=0, d=0, e=0` — moves from **0.5887
+> to 0.7227**: three times the margin this record credits to a realistic channel,
+> and 61% of what full symmetric supervision buys, against 29% here.
+>
+> So the sentence that opens this section — *"it is not a gradual limit but a
+> change of regime"* — is withdrawn. Asymmetric feedback is worse than symmetric,
+> by a margin that is real and consistent across the sweep, but it is a
+> difference of degree. The regime change was the shape of a weak learner's
+> failure curve, not a property of the channel.
+>
+> On the exhaustive space the same orders score far lower — the anchor cells give
+> 0.6157 and 0.5757 against a space bound of 0.8784 — but the *direction* is the
+> same, so the withdrawal does not depend on which surface is used.
+>
+> Record: `results4/sweep_ls.json`, reproduced with `python3 -m peldano4.sweep_ls`.
+> Zero API calls. This record's figures are not modified.
+
 **Symmetric supervision is exactly what this rung existed in order not to
 assume.** Rung 3 measured 0.7049 with 5% of the labels and from there came the
 hypothesis that a poor channel would suffice. The hypothesis holds as long as the
@@ -159,6 +196,15 @@ construction of the channel, not through weakness of the learner.
 It is the same phenomenon, seen from the other side, that made the silent error
 measurable: the system cannot ask for help about what it resolves confidently.
 
+> **[NOTA 2026-08-08] This section stands.** Sections 1 and 4 were corrected by
+> the optimizer audit and this one was not, so it is worth saying why rather than
+> leaving the silence ambiguous. The claim is that the volume of signal is
+> proportional to the error rate of the system being observed. That is a property
+> of the CHANNEL — of what `feedback.py` emits given π₀'s decisions — and no
+> learner downstream of it changes how many labels arrive. The audit's optimizer
+> extracts more from the same labels; it does not create any. The fixed point of
+> learning by correction is where this record put it.
+
 ---
 
 ## 4. The noise contamination, and its methodological consequence
@@ -226,6 +272,45 @@ the realistic regime, not in the contaminated curves.
 The method was not corrected. Changing the optimizer after seeing the numbers is
 exactly the failure this experiment studies.
 
+> **[ERRATUM 2026-08-08] The anomaly is explained and it is gone. Noise no longer
+> helps.**
+>
+> The diagnosis in this section was right about the mechanism — the greedy was
+> falling into a bad local optimum and the noise was pulling it out, acting as a
+> random restart. The audit supplied restarts deliberately, and the anomaly
+> disappeared. On the CORPUS test half, same channel, same splits:
+>
+> ```
+> ruido    este registro   auditoria     desv
+>   0.0           0.7564      0.8489   0.0023
+>   0.1           0.8163      0.8502   0.0070
+>   0.3           0.8171      0.8318   0.0104
+>   0.5           0.7004      0.7812   0.0160
+> ```
+>
+> Falsifying 10% of the labels bought +0.060 here and now buys **+0.0013**, inside
+> its own spread. 30% bought +0.061 and now **costs 0.017**. The curve is
+> monotonically decreasing, which is what a supervision-degradation curve should
+> look like.
+>
+> **The methodological consequence drawn above was the right call about the wrong
+> mechanism.** Refusing to read those sweeps as degradation curves was correct
+> *while the optimizer was the one that produced them*, and the reason given —
+> that any parameter injecting randomness partly improves the search — was the
+> true mechanism. With restarts declared rather than smuggled in through the
+> channel, the sweeps read as degradation curves again, and anchoring the central
+> result in the deterministic cell is no longer necessary (though it remains
+> sound).
+>
+> The refusal to correct the method at the time was also right, and the audit
+> preserved it: the optimizer was replaced only after Step 0 validated it against
+> a known optimum, with its constants declared in advance, and the failing
+> single-run figures are kept in `results3/optimizer_check.json` rather than
+> discarded. What made this legitimate is that the instrument was fixed against a
+> policy whose answer was known independently, not against these numbers.
+>
+> Record: `results4/sweep_ls.json`.
+
 ---
 
 ## 5. What the four rungs leave regarding the original architecture
@@ -268,6 +353,13 @@ What was established, in order:
   symmetric supervision almost everything is recovered (+0.235); with the
   asymmetric kind, which is the only realistic one, +0.067 remains, and the signal
   runs out as the system improves.
+
+  > **[ERRATUM 2026-08-08]** The +0.067 is +0.2011 with a competent learner and
+  > the +0.235 is +0.3273; see the erratum in section 1. What survives of this
+  > bullet is the second half — the signal runs out as the system improves, which
+  > is a property of the channel (section 3). What does not survive is reading it
+  > as "priority is not learned from realistic feedback": asymmetric feedback
+  > recovers 61% of what full supervision recovers, not 29%.
 
 The three ways of supplying priority — infer it from the syntax, have the
 proposer declare it, learn it from observed behaviour — have been measured, and

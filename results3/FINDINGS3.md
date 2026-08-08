@@ -55,6 +55,39 @@ Four times specificity. And the arrival order — which rung 1 wrote off as
 useless — already scores 0.52: specificity-based arbitration was worse than
 barely ordering anything.
 
+> **[ERRATUM 2026-08-08] Every figure in this section is measured on the CORPUS,
+> and the corpus is not a neutral surface.** `harness/domain.py` samples it from
+> a deliberately long-tailed distribution: `has_security_keyword` is true in 3%
+> of arrivals against 50% of the attribute space, `severity=1` in 5% against
+> 25%, `prior_tickets_30d` truncated-geometric against uniform over 21 values.
+> Measured over the exhaustive 134,400 combinations instead, on the same 577
+> rules and the same pure pool:
+>
+> ```
+>                          corpus    espacio exhaustivo
+> cota por cobertura       0.9010                0.8784
+> orden buscado (voraz)    0.7713                0.4931
+> born_at                  0.5216                0.3148
+> aleatorio                0.4227                0.3768
+> ```
+>
+> **The claim that "the arrival order already scores 0.52" does not survive the
+> change of surface. Over the case space, born_at is WORSE than shuffling** —
+> 0.3148 against 0.3768 — and the sentence above reverses. The early-born rules
+> are defaults fitted to the common distribution, which is exactly what a 2000-
+> draw sample of that distribution rewards and what a uniform measure does not.
+> The comparison against specificity survives; the rehabilitation of arrival
+> order does not.
+>
+> Neither surface is *the* honest one and this record should have said which it
+> was using. The corpus is the modelled arrival distribution, so it answers
+> "what would this base achieve in deployment" — but it cannot certify an
+> optimum or identify a decision function, because 2000 draws touch 1743 of
+> 134,400 cases and leave the rest unconstrained. The exhaustive space answers
+> "is this order the policy" and cannot answer the first question, because it
+> weights regions the system will almost never see. See
+> `results3/order_search_ls.json`.
+
 The two critical classes are **100% recoverable**: `SECURITY_INCIDENT` (20 cases)
 and `ONCALL_ESCALATION` (7). In rung 1 they gave **0/17** and **0/7**. The
 correct rules were written. The engine never let them win.
@@ -197,6 +230,64 @@ leaves it **0.1187** below the ceiling on average. Almost all the gap between
 > the optimum either: in rung 4 it turned out that perturbing its objective with
 > noise improves it against the truth (0.7574 → 0.8337), and that changing the
 > tie-break moves the result by ~0.011.
+
+> **[ERRATUM 2026-08-08] Measured. The greedy search was the main problem, and
+> the bound was not loose.** The audit of the optimizer (`PLAN_AUDIT.md`) built a
+> multi-start local search — seed 17, 64 random starts plus the greedy at
+> position 0, neighbourhood `move+swap`, all declared before running — and put it
+> through the same protocol as this record: same corpus, same seed 17, same five
+> splits, same two pools, same objective. Only the search changed.
+>
+> ```
+> pool puro, 5 particiones, sobre el CORPUS
+>                              train              test               GAP
+> voraz (este registro)    0.7775±0.0278     0.7713±0.0381     0.0062
+> busqueda local           0.8695±0.0052     0.8530±0.0062     0.0165±0.0098
+> ```
+>
+> **0.7713 becomes 0.8530.** The gap to the corpus bound was 0.1297 and the
+> optimizer recovers **+0.0817 of it, 63%**. Overfitting of the order grows from
+> 0.006 to 0.017, an eighth of what was gained. So the sentence this erratum
+> hangs off — "almost all the gap between 0.77 and 0.90 is weakness of the search
+> method" — turns out to have been **substantially right**, and the erratum of
+> 2026-08-06 that withdrew it was correctly cautious rather than correct.
+>
+> **The tie-break is now separated from the algorithm, which is why neither was
+> re-run until both could be.** The tie-break fix alone moves test by **+0.0002**
+> (0.7711 → 0.7713); the algorithm moves it by +0.0817. The fragility measured
+> across `PYTHONHASHSEED` was variance, not bias.
+>
+> **On the exhaustive space the story is different and worse**, and this record
+> could not have seen it:
+>
+> ```
+> pool puro, sobre los 134,400 casos
+> cota por cobertura                              0.8784
+> busqueda directa sobre el espacio               0.7905     resto 0.0879
+> orden buscado sobre train del corpus            0.6105
+> voraz de este registro                          0.4931
+> ```
+>
+> The order that scores 0.8530 on corpus test scores 0.6105 as a function. Of
+> that 0.268 shortfall, **0.180 is the change of measure** — an order fitted to
+> the arrival distribution carried onto a uniform one — and **0.088 survives a
+> search that sees every one of the 134,400 cases**. That 0.088 is what the
+> erratum above called unmeasured. It is now partly measured: this record's
+> greedy left 0.1187 under the bound searching over its own test set; the new
+> optimizer leaves 0.0879 searching over the whole space. The residue shrank by a
+> quarter and did not close, which is evidence — not proof — that the coverage
+> bound is somewhat loose. A heuristic that fails to reach a bound never
+> distinguishes "unreachable" from "still too weak".
+>
+> The hybrid pool remains worse than pure ordering under the new optimizer too:
+> 0.7734 against 0.8530 on corpus test. Rung 2's arbitration does not become
+> competitive over a learned base by optimizing harder.
+>
+> Records: `results3/order_search_ls.json`,
+> `results3/order_search_ls_fullspace.json`, `results3/optimizer_check.json`.
+> Reproduced with `python3 -m peldano3.order_search_ls`. Zero API calls. **This
+> record's own figures are not modified**: they are corrected from above, as
+> rung 1 was.
 
 **The rules were learned over the full corpus.** `born_at` runs from 0 to 1998.
 The test set is not data unseen by the rules; it is data unseen by the order. The

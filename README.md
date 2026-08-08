@@ -16,13 +16,16 @@ of 29 rules spread over 8 priority layers.
 |---|---|---|
 | **1** · engine ceiling | specificity-based arbitration reaches **58.75%** with the perfect policy loaded; the LLM run was voided by that ceiling | [`results/FINDINGS.md`](results/FINDINGS.md) |
 | **2** · declared priority | the hybrid engine (subsumption + declared priority) executes the layered policy at **100%**, but the proposer writes disjoint rules and never exercises it | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
-| **3** · priority by search | the 577 rules from rung 1 admit an order that scores **0.77** on test; arbitration was turning them into 0.18 | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
-| **4** · priority from feedback | that order is **not** learnable from the asymmetric feedback a real system produces | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
+| **3** · priority by search | the 577 rules from rung 1 admit an order that scores **0.8530** on corpus test; arbitration was turning them into 0.18 | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
+| **4** · priority from feedback | that order is **partly** learnable from asymmetric feedback: **+0.2011**, 61% of what full supervision buys | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
+| **audit** · the optimizer | the greedy that produced rungs 3 and 4 was weak; correcting it moved both, and pairwise swaps cannot solve even the 29-rule instance | [`PLAN_AUDIT.md`](PLAN_AUDIT.md) |
 
 The thread that ties them together: the priority of a layered policy is not in
 the shape of the rules, and the three ways of supplying it — infer it from the
 syntax, have the proposer declare it, learn it from observed behaviour — have
-all been measured and each fails for a different reason.
+all been measured. The first two fail. The third works better than rung 4
+concluded, and finding that out took auditing the instrument rather than
+gathering new data.
 
 **The original hypothesis — do the rules an LLM writes get reused, or does it
 memorize cases? — still has not been measured cleanly.** [`IDEAS.md`](IDEAS.md)
@@ -33,9 +36,11 @@ keeps the list of what remains open, including the known technical debt.
 > project status.
 >
 > Before citing any figure, read the **dated errata** each FINDINGS carries in
-> place. Those of rungs 3 and 4 are additionally conditioned by a
-> non-deterministic tie-break in the optimizer, fixed on August 6, 2026 and
-> **not re-run**: the published numbers are those of the earlier code.
+> place. Rungs 3 and 4 were re-measured on August 8, 2026 with an audited
+> optimizer and their headline figures moved; the original records are kept
+> beside the new ones, not replaced. Every figure also belongs to a **surface** —
+> the long-tailed corpus or the uniform 134,400-case space — and the two are not
+> interchangeable.
 
 ---
 
@@ -61,9 +66,14 @@ python3 -m peldano3.budget_and_balance  # label curve and balanced greedy
 
 # --- RUNG 4 · order learned from a feedback channel ----------------------
 python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
+
+# --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
+python3 -m peldano3.optimizer_check   # optimizer ceiling: 1.0000 · STOP 0
+python3 -m peldano3.order_search_ls   # rung 3 redone: corpus test 0.8530 (33 min)
+python3 -m peldano4.sweep_ls          # rung 4 redone: a=0 gives +0.2011 (42 min)
 ```
 
-And before touching anything, the test suite: **289 tests in ~14 s, no API and
+And before touching anything, the test suite: **315 tests in ~17 s, no API and
 no writes to `results*/`.**
 
 ```bash
@@ -77,14 +87,30 @@ clone, once:
 git config core.hooksPath .githooks
 ```
 
-> **Rungs 3 and 4 do not reproduce their published figures to the digit.** The
-> optimizer's tie-break was non-deterministic (it depended on `PYTHONHASHSEED`)
-> and was fixed on August 6, 2026 without re-running anything. Real example:
-> `order_search` today prints `test 0.7713 · GAP 0.0062` where the record says
-> `0.7711 · 0.0068`. Directions and magnitudes hold; the digits will move until
-> both rungs are redone, which is planned to happen together with a serious
-> optimizer. The bounds and the ceilings — 0.9010, 0.5875, 1.0000 — do **not**
-> depend on the greedy search and do reproduce exactly.
+> **Rungs 3 and 4 do not reproduce their published figures to the digit, and
+> since August 8, 2026 their published figures are also superseded.** Two
+> separate things, now separated by measurement:
+>
+> - **The tie-break**, non-deterministic because it depended on `PYTHONHASHSEED`,
+>   fixed on August 6, 2026. `order_search` prints `test 0.7713 · GAP 0.0062`
+>   where the record says `0.7711 · 0.0068`. Worth **+0.0002**.
+> - **The algorithm.** The greedy search was weak. A multi-start local search,
+>   validated first against the hidden policy whose optimum is 1.0000 by
+>   construction, takes rung 3's corpus test from 0.7713 to **0.8530** and
+>   withdraws rung 4's "change of regime". Worth **+0.0817**.
+>
+> Leaving the tie-break fix unexecuted until the optimizer arrived is what made
+> those two separable. Both rungs' FINDINGS carry dated errata; the original
+> records are untouched beside the new ones.
+>
+> **Which surface a figure is measured on now matters and is stated.** The corpus
+> is the modelled arrival distribution; the exhaustive 134,400 combinations are a
+> uniform measure. The coverage bound is 0.9010 on the first and **0.8784** on
+> the second, and `born_at` beats a random order on the first (0.5216 vs 0.4227)
+> and loses to it on the second (0.3148 vs 0.3768).
+>
+> The ceilings that do not depend on any search — 0.5875, 1.0000 — reproduce
+> exactly and are unaffected.
 
 **The only thing that costs money** is the real proposer, which needs the venv
 and the key (see *Getting started*):
@@ -118,6 +144,9 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/order_search.py` | `results3/order_search.json` | no, on purpose |
 > | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` | no, on purpose |
 > | `peldano4/sweep.py` | `results4/sweep.json` | no, on purpose |
+> | `peldano3/optimizer_check.py` | `results3/optimizer_check.json` | no, on purpose |
+> | `peldano3/order_search_ls.py` | `results3/order_search_ls.json` | no, on purpose |
+> | `peldano4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.
@@ -202,7 +231,7 @@ Two different nets, with different purposes.
 ### The test suite
 
 ```bash
-python3 -m unittest discover            # 289 tests, ~14 s, 0 API calls
+python3 -m unittest discover            # 315 tests, ~17 s, 0 API calls
 python3 -m unittest tests.test_ceilings -v      # a single module
 ```
 
@@ -673,7 +702,7 @@ adaptive-triage/
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   └── sweep.py             coverage, asymmetry, delay and noise sweeps
 │
-├── tests/                   289 tests · `python3 -m unittest discover`
+├── tests/                   315 tests · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus and exhaustive space, built once
 │   ├── doubles.py           the recorded SDK client: the LLM path without paying
 │   ├── hashseed_child.py    child process for the `PYTHONHASHSEED` control

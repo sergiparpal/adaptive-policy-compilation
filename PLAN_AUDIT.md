@@ -1,0 +1,332 @@
+# Validity audit of rungs 3 and 4 — the optimizer
+
+**This is not rung 5.** It is an audit of the search procedure that produced the
+figures of rungs 3 and 4. The outcome may be *"the numbers move and so do the
+conclusions"*, and that has to be writable without it looking like a setback.
+
+Everything here costs **zero API calls**.
+
+---
+
+## Why
+
+Three independent signs point at the same weakness in the greedy search:
+
+| sign | figure | where |
+|---|---|---|
+| noise **improves** the result — it acts as a random restart | 0.8337 against truth with 30% of labels falsified, vs 0.7574 with clean ones | `results4/FINDINGS4.md` |
+| searching over the test set itself still leaves a large gap under the bound | 0.12 | `results3/FINDINGS3.md` |
+| the tie-break changed the result at all | amplitude 0.011 across `PYTHONHASHSEED` | erratum of 2026-08-06 |
+
+None of that is measurement noise: it is one weakness seen from three angles.
+And it contaminates backwards — the 0.77 of rung 3 and the +0.067 of rung 4 both
+come out of that searcher.
+
+**What the tie-break fix already told us.** Fixing it moved the aggregate from
+0.7711 to 0.7713 — two ten-thousandths. So the tie-break was responsible for
+*variance*, not *bias*. The weakness is not instability in how ties are broken;
+it is the algorithm itself. The greedy is genuinely myopic.
+
+That raises the stakes: if the problem is myopia rather than noise, pairwise
+swaps should recover a substantial share of the gap. If they recover almost
+nothing, then the 0.9010 bound is loose and that has to be said.
+
+---
+
+## Step 0 — validate the optimizer before using it
+
+**Blocking. Do this first.**
+
+Run the local search on the **perfect hidden policy** (29 rules), where the
+optimum is known: 1.0000 under the design order.
+
+- Start from the greedy order, which under specificity-style arbitration is
+  known to be far from optimal.
+- Apply the local search.
+- **Does it reach 1.0000?**
+
+If the local search cannot recover a known optimum over 29 rules, it is
+insufficient, and nothing it says about the 577 learned rules means anything.
+**Stop and report.**
+
+This is the same pattern as `harness.ceiling_check`: measure the ceiling of the
+instrument before using the instrument to measure something else. It has saved
+this project twice.
+
+---
+
+## Step 1 — local search over the 577 rules
+
+Start from the greedy order, apply pairwise swaps until no improvement. Same
+corpus (seed 17), same five splits, same protocol as `peldano3/order_search.py`,
+so the numbers are comparable to the record.
+
+Report train, test and the gap, against the existing references:
+
+```
+greedy (post tie-break fix)   test 0.7713 ± 0.0381
+coverage bound                     0.9010     <- upper bound by per-case coverage,
+                                                NOT a demonstrated global optimum
+born_at                            0.5216
+random (mean of 50)                0.4227
+```
+
+### The three questions this answers
+
+1. **How much of the 0.77 → 0.90 gap does it recover?**
+   A lot → the bound was reachable and rung 3 *underestimated* the LLM's material.
+   Little → the bound is loose and the attribution of that gap must be corrected
+   again.
+
+2. **Does noise still help?** Re-run the rung 4 noise sweep with the new
+   optimizer. If noise stops helping, that confirms it was acting as a random
+   restart. If it still helps, there is something else going on.
+
+3. **Does the asymmetry regime change survive?** This is the one that matters.
+   The +0.067 vs +0.235 is the *only* claim rung 4 contributes, and it currently
+   rests on a searcher we know is weak. If a serious optimizer extracts much more
+   from scarce, asymmetric labels, that figure rises and the "regime change"
+   softens. **It might not survive.**
+
+---
+
+## Step 2 — re-run rungs 3 and 4
+
+Only after Steps 0 and 1 are reported and approved.
+
+As a **pull request**, so the diff shows exactly what moved and `_env` records
+which code produced it. The previous figures stay in the history rather than
+being replaced.
+
+Because the tie-break fix is already in the working tree and unexecuted, the
+same diff separates two effects that would otherwise be confounded:
+
+- what the **tie-break** moved (expected: ~0.0002, i.e. nothing)
+- what the **algorithm** moved (unknown)
+
+That separation is the whole reason the fix was left unexecuted. Do not lose it.
+
+Dated errata go in `results3/FINDINGS3.md` and `results4/FINDINGS4.md`, in place,
+with the original text visible — the convention already established on
+2026-08-06.
+
+---
+
+## Prediction — fill in before running
+
+Two parts, because they are now separable. Sergi fills this in; the agent does
+not (hard rule 2).
+
+Filled in by Sergi on August 8, 2026, before running anything. Transcribed
+verbatim; the agent did not author it (hard rule 2).
+
+| question | prediction | result |
+|---|---|---|
+| Does local search reach 1.0000 on the perfect policy? (yes/no) | yes | **yes**, with multi-start — **no** in one run (2026-08-08) |
+| Test e2e over the 577 rules (greedy gives 0.7713, bound 0.9010) | 0.82 | **0.8530** ± 0.0062 (2026-08-08) |
+| Does the asymmetry regime change survive? (yes/no) | no | **no** — the 3.5x gap becomes 1.6x (2026-08-08) |
+
+**Step 0, first run — FAILED.** August 8, 2026. One run from the greedy start,
+as this plan specified. Both neighbourhoods missed, three orders of magnitude
+apart: pairwise swaps stopped at 0.9356 over the exhaustive space (8,660 wrong
+cases of 134,400), relocation at 0.999851 (20 wrong). The residue was a single
+inverted relation — H26 at rank 24 beating H23 at rank 27, against a design
+order that puts H23 first — and it was a genuine local optimum: the best single
+swap and the best single relocation both gave +0, and no permutation of three
+positions improved it. Repairing the inversion in isolation costs accuracy
+(swapping the pair, −190 cases; lifting H23, −40), which is what made it a basin
+rather than an oversight.
+
+**Step 0, second run — PASSES.** Sergi authorized changing the instrument. The
+repair is the one the failure pointed at, restarts, and not a wider
+neighbourhood, which would have been tuned to the symptom. Constants declared in
+`local_search.py` and fixed before the run: seed 17, 64 random starts, plus the
+greedy at position 0 so the multi-start can never return worse than the single
+run. The criterion is 1.0000 over the **exhaustive space**; the corpus is
+measured and validates nothing.
+
+```
+                        one run   multi-start   1st hit   reach it
+espacio · move         0.999851      1.000000         9       9/65
+espacio · swap         0.935565      0.994196         —       0/65
+espacio · move+swap    0.999851      1.000000         9       9/65
+corpus  · move         0.999500      1.000000         4      16/65
+corpus  · swap         0.957500      0.985000         —       0/65
+corpus  · move+swap    0.999500      1.000000         4      13/65
+```
+
+**Pairwise swaps never reach it**, with or without restarts: 0/65 on both
+instances, 780 wrong cases at best over the exhaustive space. That is a result
+about the method, which is what this plan asked for, and it stays in the record.
+
+**The corpus would have certified a wrong instrument twice over.** It hides the
+swap failure — 0.9575 there against 0.9356 over the space — and worse, the
+orders that score a perfect 1.0000 on its 2000 cases score only **0.9455** and
+**0.9299** over the full space. Fitting the corpus exactly is not recovering the
+policy. The order found over the exhaustive space scores 1.0000 on both, and is
+not the design permutation: it is a different one inducing the same decision
+function, which is what policy equivalence means here.
+
+---
+
+## Step 1 result — August 8, 2026
+
+`results3/order_search_ls.json` · `results4/sweep_ls.json`. Same corpus, same
+seed 17, same five splits, same objective, same channel. Only the search changed.
+
+**The greedy baseline reproduces the record exactly**, which is what makes the
+rest comparable: 0.7713 ± 0.0381 on test against the 0.7713 this plan cites, and
+0.7775 train against the record's 0.7779. The tie-break fix is confirmed worth
++0.0002 on test — the separation this plan was built to preserve, now measured.
+
+```
+pool puro, 5 particiones      train              test               GAP
+voraz (registro)          0.7775±0.0278     0.7713±0.0381     0.0062
+busqueda local            0.8695±0.0052     0.8530±0.0062     0.0165±0.0098
+
+pool hibrido
+voraz                     0.7792±0.0110     0.7460±0.0069
+busqueda local            0.8128±0.0075     0.7734±0.0097     0.0394±0.0153
+```
+
+**Answer to question 1: a lot.** The gap was 0.1297 (0.9010 − 0.7713) and the
+optimizer recovers **+0.0817, 63% of it**. The greedy was the main problem and
+the bound was not loose. Overfitting of the order stays small — the gap grows
+from 0.006 to 0.017, an eighth of the recovered accuracy.
+
+**Answer to question 3: the regime change does not survive.**
+
+```
+asimetria    registro   ahora    etiquetas
+      1.0    +0.2348   +0.3273        1010
+      0.5    +0.2738   +0.3274         751
+     0.25    +0.1901   +0.3115         622
+      0.1    +0.0969   +0.2818         544
+      0.0    +0.0671   +0.2011         498
+```
+
+The record's cliff between 0.25 and 0.1 is gone. What is left is a gradual
+decline, and the symmetric-to-asymmetric ratio falls from **3.5x to 1.6x**. The
+anchor cell that carried the claim moves from 0.5887 to **0.7227**: three times
+the margin the record credited to a realistic channel. The rung 4 headline —
+"not a gradual limit but a change of regime" — was substantially an artifact of
+a weak learner starved of restarts.
+
+What is NOT touched: the structural claim of FINDINGS4 section 3, that the
+volume of signal is proportional to the error rate of the observed system. That
+is a property of the channel, not of the learner, and no optimizer changes it.
+
+**Answer to question 2: noise has stopped helping.**
+
+```
+ruido    registro   ahora     desv
+  0.0      0.7564  0.8489   0.0023
+  0.1      0.8163  0.8502   0.0070
+  0.3      0.8171  0.8318   0.0104
+  0.5      0.7004  0.7812   0.0160
+```
+
+In the record, falsifying 10% of the labels bought +0.060 and 30% bought +0.061,
+which is impossible as an effect of supervision and is what made it diagnostic.
+Now 10% is +0.0013 — flat, inside its own spread — and 30% and 50% degrade
+monotonically. The noise was acting as a random restart, exactly as suspected.
+Once the restarts are declared instead of being smuggled in through the channel,
+the anomaly disappears and the sweep reads as the degradation curve it should
+always have been. FINDINGS4's refusal to read those curves as degradation was
+the right call about the wrong mechanism.
+
+The re-run reproduces the anchors and the asymmetry cells digit for digit, and
+`ruido e=0` returns the `simetrica a=1` figures exactly, as the same channel
+configuration must.
+
+**The exhaustive space says something the corpus cannot.** The same orders,
+scored over all 134,400 cases:
+
+```
+                       corpus test   espacio    cota espacio
+voraz                       0.7713    0.4931          0.8784
+busqueda local              0.8530    0.6105          0.8784
+born_at                     0.5216    0.3148
+aleatorio                   0.4251    0.3768
+```
+
+The optimizer improves the space score too, 0.4931 to 0.6105, so the gain is not
+purely corpus-fitting. But against the space bound the shortfall is **0.268**,
+five times the 0.048 that remains on corpus test. And **born_at is worse than
+random over the real case space** (0.3148 against 0.3768) while beating it on the
+corpus (0.5216 against 0.4227): rung 3's remark that "the arrival order already
+scores 0.52" is a corpus artifact. The early-born rules are defaults fitted to
+the common distribution.
+
+**The direct search over the exhaustive space splits that 0.268 in two.**
+Searching the order over the whole space, with no split — the analogue of rung
+3's "search over the test set itself" — gives 0.7905 on the pure pool and 0.7557
+on the hybrid:
+
+```
+pool puro, sobre los 134,400 casos
+cota por cobertura                              0.8784
+busqueda directa sobre el espacio               0.7905     resto 0.0879
+orden buscado sobre train del corpus            0.6105
+voraz del registro                              0.4931
+aleatorio                                       0.3768
+born_at                                         0.3148
+```
+
+So of the 0.268: **0.180 is fitting to the corpus distribution** — the order is
+searched over a 2000-draw sample and loses that much when carried to the whole
+space — and **0.088 survives even when the search sees every case**. Two thirds
+distribution, one third search or slack in the bound.
+
+That 0.088 is what FINDINGS3's erratum of 2026-08-06 left open: *"how much of it
+is greedy-search weakness and how much is an unattainable bound remains
+unmeasured."* It is now partly measured. Rung 3's greedy left 0.1187 under the
+bound searching over its own test set; this optimizer leaves 0.0879 searching
+over the entire space. The residue shrank by a quarter and did not close, which
+is evidence that the coverage bound is somewhat loose — evidence, not proof,
+because a heuristic that fails to reach a bound never distinguishes the two.
+
+Cost of that diagnostic: 1375 s for the pure pool and **8471 s for the hybrid**,
+which is where the 8x hybrid penalty really shows.
+
+**Cost of `move+swap` at 577 rules**, as required: corpus protocol 1997 s,
+rung 4 anchors and asymmetry 1253 s. Per search, 0.6 s on the pure pool and
+4-5 s on the hybrid — the hybrid is ~8x worse because subsumption leaves 181 of
+the 577 rules matching nothing on train, and the swap scan cannot skip pairs
+involving them. `move` alone reached an identical train score in probing at a
+twentieth of the cost. The neighbourhood is affordable here and would not be at
+another order of magnitude of rules.
+
+**If the first one fails, the other two mean nothing.** Same lesson as Step 0 of
+rung 1, applied to the optimizer instead of the engine.
+
+Stopping threshold: 0.78 on row 2 — recovering less than 20% of the 0.13 gap
+means the greedy was not the main problem, and the weakness lies in the bound or
+in the material rather than in the search.
+
+Row 1 is blocking: if local search fails to recover a known optimum over 29
+rules, rows 2 and 3 mean nothing and the audit stops there.
+
+Divergence from Claude: Claude said the asymmetry regime change "might not
+survive" without committing. Sergi predicts it does not survive.
+
+---
+
+## Deliberately out of scope
+
+- **ILP as a competitor.** Still the uncomfortable question — if it induces
+  comparable rules with no LLM, what is the proposer for? But comparing against a
+  number you know is unstable says little. After this audit.
+- **Online order.** Only meaningful if rung 4's Step A survives the optimizer.
+- **Why the proposer partitions instead of stratifying.** The most interesting
+  open question from rung 2 and the only one with no measurement behind it. It is
+  expensive and depends on nothing above — it can wait.
+
+---
+
+## Rules in force
+
+Seed 17. Oracle separation. Frozen files untouched. Report bad numbers without
+fixing them. Snapshot tests: if one fails, the expected number is **not**
+updated — you find out what changed and date an erratum. Mandatory stops:
+after Step 0, after Step 1.
