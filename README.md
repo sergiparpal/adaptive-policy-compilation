@@ -5,42 +5,43 @@ A cheap symbolic engine resolves the cases it covers; when it fails to cover one
 it. Domain: support-ticket triage — 8 attributes, 8 queues, and a hidden policy
 of 29 rules spread over 8 priority layers.
 
+> **Arriving cold? Start at [`STATUS.md`](STATUS.md).** It is the snapshot of
+> what is known today — what is established and on which surface it was
+> measured, what was withdrawn and why, and what is open — with a pointer to the
+> record behind each figure. This file, from *Rung 1* onwards, is the
+> specification and the operating procedure.
+
 > **Note on language.** The prose of this repository is in English; the code is
 > not. Module, package and field names stay as they are (`peldano2/` = rung 2),
 > and the scripts still print their tables in Spanish. When a block below shows
 > expected output, compare the **numbers**, not the words.
 
-## Four closed rungs
+## Four closed rungs, and where their figures live
 
-| rung | what it measured | record |
+**A figure has exactly two homes: the FINDINGS record that owns it, and
+[`STATUS.md`](STATUS.md), which indexes it and names the surface it was measured
+on.** None appears in this file. A number copied into a README has no erratum
+attached and no test behind it, so when the record that owns it is corrected the
+copy goes stale in silence — which is how the four rungs' headline figures ended
+up in four places at once.
+
+| rung | what it took on | record |
 |---|---|---|
-| **1** · engine ceiling | specificity-based arbitration reaches **58.75%** with the perfect policy loaded; the LLM run was voided by that ceiling | [`results/FINDINGS.md`](results/FINDINGS.md) |
-| **2** · declared priority | the hybrid engine (subsumption + declared priority) executes the layered policy at **100%**, but the proposer writes disjoint rules and never exercises it | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
-| **3** · priority by search | the 577 rules from rung 1 admit an order that scores **0.8530** on corpus test; arbitration was turning them into 0.18 | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
-| **4** · priority from feedback | that order is **partly** learnable from asymmetric feedback: **+0.2011**, 61% of what full supervision buys | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
-| **audit** · the optimizer | the greedy that produced rungs 3 and 4 was weak; correcting it moved both, and pairwise swaps cannot solve even the 29-rule instance | [`PLAN_AUDIT.md`](PLAN_AUDIT.md) |
+| **1** · engine ceiling | whether priority can be inferred from the shape of the rules | [`results/FINDINGS.md`](results/FINDINGS.md) |
+| **2** · declared priority | whether the proposer will declare it, given a mechanism that executes it | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
+| **3** · priority by search | whether rung 1's material contained an order worth having | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
+| **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
+| **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`PLAN_AUDIT.md`](PLAN_AUDIT.md) |
 
-The thread that ties them together: the priority of a layered policy is not in
-the shape of the rules, and the three ways of supplying it — infer it from the
-syntax, have the proposer declare it, learn it from observed behaviour — have
-all been measured. The first two fail. The third works better than rung 4
-concluded, and finding that out took auditing the instrument rather than
-gathering new data.
-
-**The original hypothesis — do the rules an LLM writes get reused, or does it
-memorize cases? — still has not been measured cleanly.** [`IDEAS.md`](IDEAS.md)
-keeps the list of what remains open, including the known technical debt.
+Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
+re-measured on August 8, 2026 and their headline figures moved, with the
+originals kept beside the new ones rather than replaced. **Read the erratum
+before citing any number.** [`IDEAS.md`](IDEAS.md) keeps what remains open,
+including the known technical debt.
 
 > **From "Rung 1" onwards, this file describes the specification and the
 > operating procedure of that rung.** They remain valid as procedure, not as
 > project status.
->
-> Before citing any figure, read the **dated errata** each FINDINGS carries in
-> place. Rungs 3 and 4 were re-measured on August 8, 2026 with an audited
-> optimizer and their headline figures moved; the original records are kept
-> beside the new ones, not replaced. Every figure also belongs to a **surface** —
-> the long-tailed corpus or the uniform 134,400-case space — and the two are not
-> interchangeable.
 
 ---
 
@@ -52,29 +53,30 @@ what it should print.
 
 ```bash
 # --- RUNG 1 · the engine ceiling and the frontier ------------------------
-python3 -m harness.ceiling_check      # specificity 0.5875 · design order 1.0000
-python3 run_experiment.py frontier    # keep_k(k=4): 113 rules, silent err. 0.173
+python3 -m harness.ceiling_check      # specificity engine vs. design order
+python3 run_experiment.py frontier    # the keep_k mocks and the cache baseline
 
 # --- RUNG 2 · hybrid engine: subsumption + declared priority -------------
-python3 -m peldano2.ceiling_check2    # e2e 1.0000 · 0 conflicts · STOP 0 -> PASS
+python3 -m peldano2.ceiling_check2    # STOP 0 of rung 2; must PASS
 python3 -m peldano2.compare_runs results2/llm_run2_*.json   # the 8 runs
 python3 -m peldano2.note_audit  results2/llm_run2_*.json    # attributes and notes
 
 # --- RUNG 3 · order by search over the corpus ----------------------------
-python3 -m peldano3.order_search      # bound 0.9010 · test ~0.77 · gap ~0
+python3 -m peldano3.order_search      # coverage bound, greedy order, splits
 python3 -m peldano3.budget_and_balance  # label curve and balanced greedy
 
 # --- RUNG 4 · order learned from a feedback channel ----------------------
 python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
-python3 -m peldano3.optimizer_check   # optimizer ceiling: 1.0000 · STOP 0
-python3 -m peldano3.order_search_ls   # rung 3 redone: corpus test 0.8530 (33 min)
-python3 -m peldano4.sweep_ls          # rung 4 redone: a=0 gives +0.2011 (42 min)
+python3 -m peldano3.optimizer_check   # optimizer ceiling: must give 1.0000
+python3 -m peldano3.order_search_ls   # rung 3 redone with the audited optimizer (33 min)
+python3 -m peldano4.sweep_ls          # rung 4 redone with the audited optimizer (42 min)
 ```
 
-And before touching anything, the test suite: **315 tests in ~17 s, no API and
-no writes to `results*/`.**
+What each of them should produce is in the record it belongs to; the corrected
+figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
+the test suite — **no API calls and no writes to `results*/`**:
 
 ```bash
 python3 -m unittest discover
@@ -88,29 +90,27 @@ git config core.hooksPath .githooks
 ```
 
 > **Rungs 3 and 4 do not reproduce their published figures to the digit, and
-> since August 8, 2026 their published figures are also superseded.** Two
-> separate things, now separated by measurement:
+> since August 8, 2026 those figures are also superseded.** Two separate things,
+> now separated by measurement:
 >
 > - **The tie-break**, non-deterministic because it depended on `PYTHONHASHSEED`,
->   fixed on August 6, 2026. `order_search` prints `test 0.7713 · GAP 0.0062`
->   where the record says `0.7711 · 0.0068`. Worth **+0.0002**.
+>   fixed on August 6, 2026. `order_search` no longer prints what the record
+>   says, by a margin in the fourth decimal.
 > - **The algorithm.** The greedy search was weak. A multi-start local search,
->   validated first against the hidden policy whose optimum is 1.0000 by
->   construction, takes rung 3's corpus test from 0.7713 to **0.8530** and
->   withdraws rung 4's "change of regime". Worth **+0.0817**.
+>   validated first against the hidden policy whose optimum is known by
+>   construction, moved rung 3's test and withdrew rung 4's "change of regime".
 >
 > Leaving the tie-break fix unexecuted until the optimizer arrived is what made
-> those two separable. Both rungs' FINDINGS carry dated errata; the original
-> records are untouched beside the new ones.
+> those two separable, and what each was worth is in the errata both rungs'
+> FINDINGS carry; the original records are untouched beside the new ones.
 >
-> **Which surface a figure is measured on now matters and is stated.** The corpus
-> is the modelled arrival distribution; the exhaustive 134,400 combinations are a
-> uniform measure. The coverage bound is 0.9010 on the first and **0.8784** on
-> the second, and `born_at` beats a random order on the first (0.5216 vs 0.4227)
-> and loses to it on the second (0.3148 vs 0.3768).
+> **Which surface a figure is measured on now matters and is stated** — the
+> long-tailed corpus or the uniform case space, which answer different questions
+> and can rank two orders in opposite directions. See
+> [`STATUS.md`](STATUS.md), "Before reading any figure".
 >
-> The ceilings that do not depend on any search — 0.5875, 1.0000 — reproduce
-> exactly and are unaffected.
+> The ceilings that do not depend on any search reproduce exactly and are
+> unaffected.
 
 **The only thing that costs money** is the real proposer, which needs the venv
 and the key (see *Getting started*):
@@ -231,7 +231,7 @@ Two different nets, with different purposes.
 ### The test suite
 
 ```bash
-python3 -m unittest discover            # 315 tests, ~17 s, 0 API calls
+python3 -m unittest discover            # 0 API calls, no writes to results*/
 python3 -m unittest tests.test_ceilings -v      # a single module
 ```
 
@@ -243,9 +243,9 @@ What it covers, and why those things:
 | module | what it protects |
 |---|---|
 | `test_encoding_invariant.py` | the 29 DSL rules ≡ their lambdas, and first-match-wins ≡ `true_action`, over the **134,400** combinations. This is the claim that "execution failure, not representation failure" rests on |
-| `test_ceilings.py` | the four ceilings to the digit: 0.5875 · 0.6315 · 1.0000 · 1.0000, with their 505 and 737 conflicts and the 199 edges |
-| `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor (0.1176) |
-| `test_domain.py` | the corpus: 1743 unique, 12.85% duplicates, and the 8 classes with their counts |
+| `test_ceilings.py` | the four ceilings to the digit, with their conflict counts and the declared edges |
+| `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
+| `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
 | `test_shadow.py` | the semantics of the metrics, and that the only escalation trigger is the impasse — never "the answer was incorrect" |
 | `test_engine2.py` | bitmasks ≡ `Condition.holds`, and the six verdicts of the edge validator |
@@ -277,14 +277,15 @@ itself**, so that the replay is the run that produced the figures:
 
 | record | what it reproduces, exactly |
 |---|---|
-| `results/llm_run.json` | 2000 cases, 632 escalations → the 577 rules, the metrics and the 2000 raw records |
-| `results2/llm_run2_n100.json` | 100 cases, 42 escalations → the same, plus the 7 priority edges with their verdict |
+| `results/llm_run.json` | the n=2000 run: every escalation, the rules it produced, the metrics and the raw per-case records |
+| `results2/llm_run2_n100.json` | the n=100 run: the same, plus the priority edges with their verdict |
 
-That also yields a figure that is in no record: **632 escalations cost 700
-calls**, because the 34 parse failures are retried up to three times. The raw
-text of the responses was never stored; which part is reconstructed verbatim and
-which part is only the failure mode is enumerated turn by turn in the header of
-[`tests/doubles.py`](tests/doubles.py).
+That also yields a figure that is in no record — **what those escalations really
+cost in calls**, higher than the escalation count because parse failures are
+retried. It lives where it is derived, in the header of
+[`tests/doubles.py`](tests/doubles.py), together with the enumeration of which
+part of each response is reconstructed verbatim and which part is only the
+failure mode: the raw text was never stored.
 
 ### Who runs the suite
 
@@ -295,7 +296,7 @@ git config core.hooksPath .githooks     # once per clone
 ```
 
 [`.githooks/pre-commit`](.githooks/pre-commit) runs the suite before every
-commit — ~12 s, no venv, no API — and aborts it on failure. It is skipped with
+commit — no venv, no API — and aborts it on failure. It is skipped with
 `git commit --no-verify`, which makes sense for a documentation-only commit and
 in few other cases: if a snapshot fails, the expected number is not updated and
 the commit is not forced either.
@@ -327,7 +328,8 @@ account. To bump one, resolve the new tag to its commit —
 `gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha` — and change SHA and
 comment together; there is a test that checks they travel together.
 
-Each job carries `timeout-minutes: 10` over a ~45 s suite: it is not a speed
+Each job carries `timeout-minutes: 10` over a suite that finishes in seconds: it
+is not a speed
 target, it is what turns a hung job into a failure instead of six hours of
 runner. And superseded runs are cancelled… **except on `main`**. Here commits go
 straight to `main` and the workflow status is the only record that a given
@@ -337,7 +339,7 @@ they simply never got to answer.
 
 And since a pinned SHA **does not age noisily** — it sits still and silent —
 [`.github/dependabot.yml`](.github/dependabot.yml) proposes the bump every week.
-It watches the actions and **not** `pip`, on purpose: `openai==2.53.0` and the
+It watches the actions and **not** `pip`, on purpose: the `openai` pin and the
 lock's transitive closure are not an outdated dependency, they are the
 provenance of the environment that produced the records, and a weekly PR
 proposing to bump them would train the habit of merging without looking.
@@ -440,10 +442,11 @@ verified on August 5, 2026 and is central to reading everything else:
   equivalent to their original predicates, and that evaluating them with "first
   match wins" reproduces `true_action` exactly. The DSL loses nothing.
 - **Execution: broken.** With those same 29 rules loaded into `RuleEngine` and no
-  LLM involved, the engine reaches **58.75% accuracy** and declares **CONFLICT on
-  25.3%** of the cases. Specificity-based arbitration cannot execute a policy
-  prioritized by layers: in this policy, priority and number of conditions are
-  nearly orthogonal.
+  LLM involved, the engine gets a large fraction of the corpus wrong and declares
+  CONFLICT on a quarter of it — the figures are in [`STATUS.md`](STATUS.md) and
+  the record is [`results/FINDINGS.md`](results/FINDINGS.md). Specificity-based
+  arbitration cannot execute a policy prioritized by layers: in this policy,
+  priority and number of conditions are nearly orthogonal.
 
 The "rung 1 condition" (realizable hidden policy) holds at the level of
 representation and fails at the level of execution. Reproducible for free with
@@ -548,12 +551,12 @@ export OPENROUTER_API_KEY=sk-or-...        # Windows: set OPENROUTER_API_KEY=...
 .venv/bin/python run_experiment.py llm --n 2000
 ```
 
-**Environment in which the published results were produced:** Python 3.12.3,
-`openai` 2.53.0, Linux x86_64. `requirements.txt` pins that exact version and
-`requirements.lock.txt` stores the full transitive closure; to rebuild the
-environment to the digit, install the lock instead of `requirements.txt`. Since
-August 7, 2026 each results JSON additionally records the environment it was
-produced with, in its `_env` block.
+**Environment in which the published results were produced:** recorded per file,
+in the `_env` block each results JSON has carried since August 7, 2026 — Python,
+`openai`, platform and commit, alongside the figure they produced.
+`requirements.txt` pins that exact `openai` version and `requirements.lock.txt`
+stores the full transitive closure; to rebuild the environment to the digit,
+install the lock instead of `requirements.txt`.
 
 **Default provider: OpenRouter.** Default model `deepseek/deepseek-v4-flash`.
 Alternatives (all of them need the venv, because they call the LLM):
@@ -618,10 +621,11 @@ threshold that used to be set here is withdrawn:
   correct semantics. The hidden policy, by contrast, mixes rules of 1 to 3
   conditions in which the *less* specific rule usually has *more* priority —
   exactly the case arbitration resolves backwards.
-- **`keep_k(k=4)` scores better than the true policy under this engine:** 0.173
-  silent error versus 0.214, and 0.780 end-to-end accuracy versus 0.588. A crude
-  grid beats the oracle, and not by being a better policy: by not suffering the
-  priority inversions arbitration imposes.
+- **`keep_k(k=4)` scores better than the true policy under this engine**, on both
+  silent error and end-to-end accuracy — the comparison is in
+  [`results/FINDINGS.md`](results/FINDINGS.md), route 1. A crude grid beats the
+  oracle, and not by being a better policy: by not suffering the priority
+  inversions arbitration imposes.
 
 That is: the "region to beat" was **above the ceiling of the system itself**.
 Measuring against it would have measured the mock's immunity to the defect, not
@@ -631,7 +635,8 @@ the proposer's inductive capacity. No new threshold is set until Step 0 gives
 The `frontier` figures remain reproducible and serve to check that nothing got
 corrupted in copying. They are not usable as a quality reference.
 
-Reference: majority class 36.3%. Hidden policy: 29 rules.
+Reference: the majority-class rate is in `results/frontier.json`, next to the
+mocks it is there to situate. Hidden policy: 29 rules.
 
 ---
 
@@ -702,7 +707,7 @@ adaptive-triage/
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   └── sweep.py             coverage, asymmetry, delay and noise sweeps
 │
-├── tests/                   315 tests · `python3 -m unittest discover`
+├── tests/                   the suite · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus and exhaustive space, built once
 │   ├── doubles.py           the recorded SDK client: the LLM path without paying
 │   ├── hashseed_child.py    child process for the `PYTHONHASHSEED` control
