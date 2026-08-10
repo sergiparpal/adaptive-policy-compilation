@@ -84,7 +84,8 @@ own standard deviation.
 > learner. The headline of this section was substantially an artifact of a weak
 > optimizer starved of restarts.**
 >
-> The audit (`PLAN_AUDIT.md`) re-ran this sweep with the channel untouched, the
+> The audit (`results3/FINDINGS_AUDIT.md`, `PLAN_AUDIT.md` when this erratum was
+> written) re-ran this sweep with the channel untouched, the
 > same π₀, the same three splits and the same seed 17, replacing only the learner:
 > the multi-start local search declared in `peldano3/local_search.py`. All figures
 > below are on the CORPUS test half, the same surface as the table above.

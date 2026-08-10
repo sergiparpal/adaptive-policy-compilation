@@ -6,6 +6,21 @@ conclusions"*, and that has to be writable without it looking like a setback.
 
 Everything here costs **zero API calls**.
 
+> **[NOTE 2026-08-10] This file was `PLAN_AUDIT.md` at the repo root** until the
+> audit closed. It was written as a plan and executed in full; it is kept because
+> it is the record that **owns** figures nothing else carries — the Step 0
+> multi-start table, the 0.9455 / 0.9299 of orders perfect on the corpus, the
+> cost of `move+swap` — and because it carries the prediction Sergi filled in by
+> hand before the run (hard rule 2), which cannot be regenerated. Moved here so
+> that a plan that is done stops reading as work pending. **The `peldano3/`
+> scripts still name it `PLAN_AUDIT`**, in comments and in one printed line, and
+> that was left standing on purpose. Those comments are accurate about what they
+> describe: what the plan asked for, under the name it had when they were
+> written. And `harness/provenance.py` hashes every `.py` under `peldano3/` into
+> the `code_digest` that `optimizer_check.json`, `order_search_ls.json`,
+> `order_search_ls_fullspace.json` and `sweep_ls.json` carry, so editing them for
+> a cosmetic rename moves a figure-provenance signal while no figure moves.
+
 ---
 
 ## Why
@@ -125,6 +140,19 @@ verbatim; the agent did not author it (hard rule 2).
 | Does local search reach 1.0000 on the perfect policy? (yes/no) | yes | **yes**, with multi-start — **no** in one run (2026-08-08) |
 | Test e2e over the 577 rules (greedy gives 0.7713, bound 0.9010) | 0.82 | **0.8530** ± 0.0062 (2026-08-08) |
 | Does the asymmetry regime change survive? (yes/no) | no | **no** — the 3.5x gap becomes 1.6x (2026-08-08) |
+
+**If the first one fails, the other two mean nothing.** Same lesson as Step 0 of
+rung 1, applied to the optimizer instead of the engine.
+
+Stopping threshold: 0.78 on row 2 — recovering less than 20% of the 0.13 gap
+means the greedy was not the main problem, and the weakness lies in the bound or
+in the material rather than in the search.
+
+Row 1 is blocking: if local search fails to recover a known optimum over 29
+rules, rows 2 and 3 mean nothing and the audit stops there.
+
+Divergence from Claude: Claude said the asymmetry regime change "might not
+survive" without committing. Sergi predicts it does not survive.
 
 **Step 0, first run — FAILED.** August 8, 2026. One run from the greedy start,
 as this plan specified. Both neighbourhoods missed, three orders of magnitude
@@ -296,19 +324,6 @@ the 577 rules matching nothing on train, and the swap scan cannot skip pairs
 involving them. `move` alone reached an identical train score in probing at a
 twentieth of the cost. The neighbourhood is affordable here and would not be at
 another order of magnitude of rules.
-
-**If the first one fails, the other two mean nothing.** Same lesson as Step 0 of
-rung 1, applied to the optimizer instead of the engine.
-
-Stopping threshold: 0.78 on row 2 — recovering less than 20% of the 0.13 gap
-means the greedy was not the main problem, and the weakness lies in the bound or
-in the material rather than in the search.
-
-Row 1 is blocking: if local search fails to recover a known optimum over 29
-rules, rows 2 and 3 mean nothing and the audit stops there.
-
-Divergence from Claude: Claude said the asymmetry regime change "might not
-survive" without committing. Sergi predicts it does not survive.
 
 ---
 
