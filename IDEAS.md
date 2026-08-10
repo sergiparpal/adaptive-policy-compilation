@@ -2,7 +2,8 @@
 
 Status as of August 8, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
-`results4/FINDINGS4.md`. The optimizer audit of August 8, 2026 (`PLAN_AUDIT.md`)
+`results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
+(`results3/FINDINGS_AUDIT.md`)
 corrected figures in rungs 3 and 4 in place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -28,7 +29,7 @@ none of them developed and in no order of precedence.
   policy whose optimum is known by construction. It answered the three questions
   the greedy left open — how much of the gap was search weakness (most of it),
   whether noise still helps (no), whether the asymmetry regime change survives
-  (no) — and cost zero API calls. `PLAN_AUDIT.md`,
+  (no) — and cost zero API calls. `results3/FINDINGS_AUDIT.md`,
   `results3/optimizer_check.json`, `results3/order_search_ls.json`,
   `results4/sweep_ls.json`.
 - **Re-run rungs 3 and 4 with the tie-break fixed.** Done in the same pass, which
@@ -109,7 +110,8 @@ none of them developed and in no order of precedence.
 - **Subsumption silences a third of the learned base, and that is a finding about
   subsumption, not about runtime.** Opened 2026-08-08 while measuring why the
   hybrid pool costs so much more to search: once subsumption prunes, **181 of the
-  577 rules match nothing at all on the train half** (`PLAN_AUDIT.md`, Step 1).
+  577 rules match nothing at all on the train half**
+  (`results3/FINDINGS_AUDIT.md`, Step 1).
   They are rules whose extension is strictly contained in another's, so on every
   case they cover, something else covers it too and outranks them. A third of what
   the proposer wrote is unreachable by construction under that arbitration, before

@@ -232,7 +232,9 @@ leaves it **0.1187** below the ceiling on average. Almost all the gap between
 > tie-break moves the result by ~0.011.
 
 > **[ERRATUM 2026-08-08] Measured. The greedy search was the main problem, and
-> the bound was not loose.** The audit of the optimizer (`PLAN_AUDIT.md`) built a
+> the bound was not loose.** The audit of the optimizer
+> (`results3/FINDINGS_AUDIT.md`, `PLAN_AUDIT.md` when this erratum was written)
+> built a
 > multi-start local search — seed 17, 64 random starts plus the greedy at
 > position 0, neighbourhood `move+swap`, all declared before running — and put it
 > through the same protocol as this record: same corpus, same seed 17, same five

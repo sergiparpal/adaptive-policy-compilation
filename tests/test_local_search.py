@@ -351,7 +351,7 @@ class TestMultiArranque(unittest.TestCase):
 
     def test_el_voraz_ocupa_la_posicion_cero(self):
         """So that a tie goes to it and the multi-start is never worse than the
-        single run PLAN_AUDIT asked for."""
+        single run the audit asked for (`results3/FINDINGS_AUDIT.md`, Step 0)."""
         ids = [f"X{k:03d}" for k in range(9)]
         voraz = list(reversed(sorted(ids)))
         starts = declared_starts(ids, first=voraz)

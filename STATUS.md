@@ -1,7 +1,7 @@
 # Status
 
 What is known, as of August 9, 2026. **Not a history** — that is the four
-`FINDINGS` records and [`PLAN_AUDIT.md`](PLAN_AUDIT.md), each with its dated
+`FINDINGS` records and [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), each with its dated
 errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
@@ -43,7 +43,8 @@ changed a conclusion:
   1.0000 — 0 of 65 starts reach it.
 - **Aug 8** · the same check, on the other surface: the corpus would have
   certified that instrument anyway — orders perfect on its 2000 cases score
-  0.9455 and 0.9299 as functions ([`PLAN_AUDIT.md`](PLAN_AUDIT.md), Step 0).
+  0.9455 and 0.9299 as functions
+  ([`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), Step 0).
 
 Money bought only rung 1's 577 rules and rung 2's eight runs. Rungs 3 and 4 and
 the audit cost zero API calls.

@@ -31,7 +31,7 @@ up in four places at once.
 | **2** · declared priority | whether the proposer will declare it, given a mechanism that executes it | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) |
 | **3** · priority by search | whether rung 1's material contained an order worth having | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
-| **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`PLAN_AUDIT.md`](PLAN_AUDIT.md) |
+| **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
 
 Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
 re-measured on August 8, 2026 and their headline figures moved, with the
