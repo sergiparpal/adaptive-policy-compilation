@@ -512,8 +512,8 @@ and 4 — works **with the standard library alone**. The venv is needed only for
 the real proposer.
 
 ```bash
-git clone https://github.com/sergiparpal/adaptive-triage.git
-cd adaptive-triage
+git clone https://github.com/sergiparpal/adaptive-policy-compilation.git
+cd adaptive-policy-compilation
 
 # 0. MANDATORY, and before anything else: the engine ceiling. 0 API calls.
 #    If it does not give ~100%, STOP: nothing that follows will be interpretable.
@@ -673,7 +673,7 @@ the files end up flat you will see
 `ModuleNotFoundError: No module named 'harness'`.
 
 ```
-adaptive-triage/
+adaptive-policy-compilation/
 ├── run_experiment.py        rung 1 CLI (frontier · llm · models)
 ├── requirements.txt         `openai` pinned, for the real proposer
 ├── requirements.lock.txt    transitive closure of the records' environment
