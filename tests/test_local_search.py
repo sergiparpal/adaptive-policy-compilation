@@ -34,12 +34,14 @@ import itertools
 import random
 import time
 import unittest
+from collections import Counter
 
 from peldano3.local_search import (MULTISTART_STARTS, balanced_weights,
                                    best_insertion, build_masks, coverage_length,
                                    declared_starts, greedy_order_from_masks,
                                    local_search, move_pass, multistart,
-                                   random_order, score_order, swap_pass)
+                                   random_order, score_order, swap_pass,
+                                   weights_from_counts)
 
 ACCIONES = ("A", "B", "C")
 
@@ -480,6 +482,62 @@ class TestObjetivoPonderado(unittest.TestCase):
 
         cronometra(None)                       # calienta
         self.assertLess(cronometra(None), 1.5 * cronometra(unos))
+
+
+class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
+    """`optimizer_check_wt` derives the cases per class from the MASKS instead
+    of from the oracle, and gates on a weighted optimum of L x |clases|. A wrong
+    count there would validate the instrument against the wrong number, which is
+    the one failure mode a step 0 cannot afford."""
+
+    def instancia_cubierta(self, seed, n_reglas=12, n_casos=60):
+        """Every case matched by at least one rule carrying its correct label —
+        the precondition of the derivation, which the hidden policy satisfies by
+        construction because every case is covered by its own rule."""
+        rng = random.Random(seed)
+        ids = [f"X{k:03d}" for k in range(n_reglas)]
+        action = {rid: ACCIONES[k % len(ACCIONES)] for k, rid in enumerate(ids)}
+        label = [rng.choice(ACCIONES) for _ in range(n_casos)]
+        pool = []
+        for y in label:
+            p = {rid for rid in ids if rng.random() < 0.3}
+            p.add(rng.choice([rid for rid in ids if action[rid] == y]))
+            pool.append(sorted(p))
+        return ids, action, label, pool, list(range(n_casos))
+
+    def test_reproduce_el_recuento_directo_de_etiquetas(self):
+        from peldano3.optimizer_check_wt import class_counts_from_masks
+
+        for seed in range(10):
+            ids, action, label, pool, idxs = self.instancia_cubierta(seed)
+            _M, W, _full = build_masks(ids, pool, label, action, idxs)
+            with self.subTest(seed=seed):
+                self.assertEqual(class_counts_from_masks(ids, action, W),
+                                 Counter(label))
+
+    def test_un_orden_perfecto_puntua_exactamente_L_por_clases(self):
+        """The criterion the weighted gate rests on, in miniature: a policy that
+        gets every case right reaches recall 1 in every class at once, so it
+        maximizes the balanced objective and its score is L x |clases|."""
+        from peldano3.optimizer_check_wt import class_counts_from_masks
+
+        ids = ["X000", "X001", "X002"]
+        action = {"X000": "A", "X001": "B", "X002": "C"}
+        label = ["A"] * 5 + ["B"] * 3 + ["C"] * 2
+        pool = [[rid for rid in ids if action[rid] == y] for y in label]
+        idxs = list(range(len(label)))
+        M, W, full = build_masks(ids, pool, label, action, idxs)
+        wt, L, n = balanced_weights(ids, action, label, idxs)
+        self.assertEqual(score_order(ids, M, W, full, wt), L * len(n))
+        self.assertEqual(class_counts_from_masks(ids, action, W), Counter(label))
+
+    def test_los_pesos_por_recuento_coinciden_con_los_pesos_por_etiquetas(self):
+        for seed in range(10):
+            ids, action, label, _pool, idxs = self.instancia_cubierta(seed)
+            with self.subTest(seed=seed):
+                self.assertEqual(balanced_weights(ids, action, label, idxs),
+                                 weights_from_counts(ids, action,
+                                                     Counter(label)))
 
 
 class TestPoolPorMascara(unittest.TestCase):
