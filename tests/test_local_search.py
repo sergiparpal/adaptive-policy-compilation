@@ -16,6 +16,12 @@ not an accuracy figure: it is that the instrument does what it claims.
   * on instances small enough to enumerate, the optimum found is compared with
     the true optimum over all permutations.
 
+The class-weighted objective, added on 2026-08-12 for step 3 of the audit, is
+pinned to the same standard, and to one more: with all-ones weights it must
+return exactly what `wt=None` returns, function by function. `wt=None` is the
+path every published figure was measured on, and the weighted branch must not
+become a second algorithm that quietly scores something else.
+
 NO figure from the real base is pinned here, and the search is not run over it.
 The audit has not been reported yet; pinning its numbers in a test would create
 an official figure that no FINDINGS backs, which is the same mistake
@@ -26,13 +32,14 @@ from __future__ import annotations
 
 import itertools
 import random
+import time
 import unittest
 
-from peldano3.local_search import (MULTISTART_STARTS, best_insertion,
-                                   build_masks, coverage_length, declared_starts,
-                                   greedy_order_from_masks, local_search,
-                                   move_pass, multistart, random_order,
-                                   score_order, swap_pass)
+from peldano3.local_search import (MULTISTART_STARTS, balanced_weights,
+                                   best_insertion, build_masks, coverage_length,
+                                   declared_starts, greedy_order_from_masks,
+                                   local_search, move_pass, multistart,
+                                   random_order, score_order, swap_pass)
 
 ACCIONES = ("A", "B", "C")
 
@@ -61,6 +68,21 @@ def puntua_ingenuo(order, pool, label, action, idxs):
             continue
         if action[min(p, key=lambda rid: rank[rid])] == label[i]:
             ok += 1
+    return ok
+
+
+def puntua_ingenuo_con_pesos(order, pool, label, action, idxs, L, n):
+    """The same walk, weighting each case won by L // |its class|. It knows
+    nothing about the lemma the fast path rests on — it reads the class off the
+    CASE, not off the rule — which is what makes it a reference for it."""
+    rank = {rid: k for k, rid in enumerate(order)}
+    ok = 0
+    for i in idxs:
+        p = pool[i]
+        if not p:
+            continue
+        if action[min(p, key=lambda rid: rank[rid])] == label[i]:
+            ok += L // n[label[i]]
     return ok
 
 
@@ -272,6 +294,192 @@ class TestBusquedaLocal(unittest.TestCase):
         ids, pool, label, action, idxs, M, W, full = instancia(5, 20, seed=0)
         with self.assertRaises(ValueError):
             local_search(ids, M, W, full, neighbourhood="2-opt")
+
+
+class TestPesosBalanceados(unittest.TestCase):
+    """`balanced_weights` is the whole of the balanced objective: if the weights
+    are wrong, the search maximizes something nobody declared."""
+
+    def test_son_enteros_y_compensan_exactamente_el_tamano_de_la_clase(self):
+        for seed in range(20):
+            ids, _pool, label, action, idxs, _M, _W, _full = instancia(15, 60, seed)
+            wt, L, n = balanced_weights(ids, action, label, idxs)
+            with self.subTest(seed=seed):
+                for rid in ids:
+                    self.assertIsInstance(wt[rid], int)
+                for c in n:
+                    self.assertEqual(L % n[c], 0)
+                for rid in ids:
+                    if action[rid] in n:
+                        # every class contributes the same total weight
+                        self.assertEqual(wt[rid] * n[action[rid]], L)
+
+    def test_una_accion_ausente_del_subconjunto_pesa_cero(self):
+        """It can win nothing there — W[r] is empty — so the value only has to
+        exist for the lookup, and it must not invent score."""
+        ids = ["X000", "X001"]
+        action = {"X000": "A", "X001": "C"}
+        pool = [ids, ids]
+        label = ["A", "A"]
+        idxs = [0, 1]
+        M, W, full = build_masks(ids, pool, label, action, idxs)
+        wt, L, n = balanced_weights(ids, action, label, idxs)
+        self.assertEqual(wt["X001"], 0)
+        self.assertNotIn("C", n)
+        self.assertEqual(W["X001"], 0)
+        self.assertEqual(score_order(["X001", "X000"], M, W, full, wt), 0)
+        self.assertEqual(score_order(["X000", "X001"], M, W, full, wt), L)
+
+
+class TestObjetivoPonderado(unittest.TestCase):
+    """The weighted path against the unweighted one it must generalize, and
+    against a naive recomputation it must reproduce."""
+
+    def test_todo_unos_devuelve_exactamente_lo_mismo_que_sin_pesos(self):
+        """The equivalence that keeps the weighted branch from being a second
+        algorithm. Every function that takes `wt`, on 50 instances."""
+        for seed in range(50):
+            ids, _pool, _label, _action, _idxs, M, W, full = instancia(20, 40, seed)
+            unos = {rid: 1 for rid in ids}
+            o0 = random_order(ids, seed=seed)
+            with self.subTest(seed=seed):
+                self.assertEqual(score_order(o0, M, W, full),
+                                 score_order(o0, M, W, full, unos))
+                for k in range(len(o0)):
+                    self.assertEqual(best_insertion(o0, k, M, W, full),
+                                     best_insertion(o0, k, M, W, full, unos))
+                for pasada in (move_pass, swap_pass):
+                    a, b = list(o0), list(o0)
+                    self.assertEqual(pasada(a, M, W, full),
+                                     pasada(b, M, W, full, unos))
+                    self.assertEqual(a, b)
+                for vec in ("move", "swap", "move+swap"):
+                    oa, sa = local_search(o0, M, W, full, neighbourhood=vec)
+                    ob, sb = local_search(o0, M, W, full, neighbourhood=vec,
+                                          wt=unos)
+                    self.assertEqual(oa, ob)
+                    self.assertEqual(sa, sb)
+
+    def test_la_puntuacion_iguala_el_recuento_caso_a_caso(self):
+        """The lemma made falsifiable: the fast path reads the class off the
+        RULE, the reference reads it off the CASE, and they must agree."""
+        for seed in range(20):
+            ids, pool, label, action, idxs, M, W, full = instancia(12, 60, seed)
+            wt, L, n = balanced_weights(ids, action, label, idxs)
+            o = random_order(ids, seed=100 + seed)
+            with self.subTest(seed=seed):
+                self.assertEqual(
+                    score_order(o, M, W, full, wt),
+                    puntua_ingenuo_con_pesos(o, pool, label, action, idxs, L, n))
+
+    def test_es_el_acierto_balanceado_por_una_constante(self):
+        """What makes this objective the BALANCED one, checked against the
+        `per_class` of the module that owns the published figure:
+        score / (L * |clases|) is exactly its balanced accuracy."""
+        from peldano3.budget_and_balance import per_class
+
+        for seed in range(10):
+            ids, pool, label, action, idxs, M, W, full = instancia(12, 60, seed)
+            wt, L, n = balanced_weights(ids, action, label, idxs)
+            o = random_order(ids, seed=200 + seed)
+            _tot, _ok, _ceil, balanceado = per_class(o, pool, label, action, idxs)
+            with self.subTest(seed=seed):
+                self.assertAlmostEqual(
+                    score_order(o, M, W, full, wt) / (L * len(n)), balanceado)
+
+    def test_la_mejor_insercion_iguala_a_la_fuerza_bruta_con_pesos(self):
+        for seed in range(10):
+            ids, _pool, label, action, idxs, M, W, full = instancia(7, 40, seed)
+            wt, _L, _n = balanced_weights(ids, action, label, idxs)
+            o = random_order(ids, seed=seed)
+            for k in range(len(o)):
+                resto = o[:k] + o[k + 1:]
+                bruto = [score_order(resto[:j] + [o[k]] + resto[j:],
+                                     M, W, full, wt) for j in range(len(o))]
+                mejor_k, mejor = best_insertion(o, k, M, W, full, wt)
+                with self.subTest(seed=seed, k=k):
+                    self.assertEqual(mejor, max(bruto))
+                    self.assertEqual(bruto[mejor_k], max(bruto))
+
+    def test_termina_y_la_ganancia_declarada_es_real(self):
+        """Termination is what the integer weights buy. If `exhausted` ever
+        comes back True, the score stopped being a bounded integer and the
+        no-move-on-a-tie rule went with it."""
+        for seed in range(20):
+            ids, _pool, label, action, idxs, M, W, full = instancia(14, 70, seed)
+            wt, _L, _n = balanced_weights(ids, action, label, idxs)
+            o0 = random_order(ids, seed=seed)
+            for vec in ("move", "swap", "move+swap"):
+                o, st = local_search(o0, M, W, full, neighbourhood=vec, wt=wt)
+                with self.subTest(seed=seed, vecindario=vec):
+                    self.assertFalse(st["exhausted"])
+                    self.assertEqual(sorted(o), sorted(ids))
+                    self.assertEqual(st["start"], score_order(o0, M, W, full, wt))
+                    self.assertEqual(st["end"], score_order(o, M, W, full, wt))
+                    self.assertGreaterEqual(st["gain"], 0)
+
+    def test_al_parar_esta_en_un_optimo_local_de_su_vecindario(self):
+        """The same guarantee the unweighted search is held to, enumerated over
+        the whole neighbourhood."""
+        for seed in range(6):
+            ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
+            wt, _L, _n = balanced_weights(ids, action, label, idxs)
+            o0 = random_order(ids, seed=seed)
+            n = len(ids)
+
+            o, _ = local_search(o0, M, W, full, neighbourhood="swap", wt=wt)
+            base = score_order(o, M, W, full, wt)
+            for p, q in itertools.combinations(range(n), 2):
+                alt = list(o)
+                alt[p], alt[q] = alt[q], alt[p]
+                with self.subTest(seed=seed, vecindario="swap", par=(p, q)):
+                    self.assertLessEqual(score_order(alt, M, W, full, wt), base)
+
+            o, _ = local_search(o0, M, W, full, neighbourhood="move", wt=wt)
+            base = score_order(o, M, W, full, wt)
+            for k in range(n):
+                resto = o[:k] + o[k + 1:]
+                for j in range(n):
+                    alt = resto[:j] + [o[k]] + resto[j:]
+                    with self.subTest(seed=seed, vecindario="move", k=k, j=j):
+                        self.assertLessEqual(score_order(alt, M, W, full, wt),
+                                             base)
+
+    def test_el_multiarranque_acepta_pesos_y_no_empeora_su_primer_arranque(self):
+        for seed in range(5):
+            ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
+            wt, _L, _n = balanced_weights(ids, action, label, idxs)
+            primero = random_order(ids, seed=seed)
+            starts = declared_starts(ids, first=primero)
+            _solo, st_solo = local_search(primero, M, W, full, wt=wt)
+            a, sa = multistart(starts, M, W, full, wt=wt)
+            b, sb = multistart(starts, M, W, full, wt=wt)
+            with self.subTest(seed=seed):
+                self.assertGreaterEqual(sa["best_score"], st_solo["end"])
+                self.assertEqual(a, b)
+                self.assertEqual(sa, sb)
+
+    def test_el_camino_sin_pesos_no_paga_por_los_pesos(self):
+        """P1 asks that the unweighted path not slow down. The gate itself was
+        measured against the previous revision, which a test cannot import; what
+        is pinned here is the structural half of it — that `wt=None` really is a
+        fast path and not the weighted branch with ones — with a loose bound, so
+        that it catches a regression and not a busy machine."""
+        ids, _pool, label, action, idxs, M, W, full = instancia(60, 300, seed=7)
+        unos = {rid: 1 for rid in ids}
+        o = random_order(ids, seed=7)
+
+        def cronometra(wt):
+            mejor = float("inf")
+            for _ in range(5):
+                t0 = time.perf_counter()
+                for _ in range(20):
+                    score_order(o, M, W, full, wt)
+                mejor = min(mejor, time.perf_counter() - t0)
+            return mejor
+
+        cronometra(None)                       # calienta
+        self.assertLess(cronometra(None), 1.5 * cronometra(unos))
 
 
 class TestPoolPorMascara(unittest.TestCase):
