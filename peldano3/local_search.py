@@ -34,6 +34,28 @@ independent of the traversal order in the way the old tie-break was not: no move
 is ever applied on a tie.
 
 --------------------------------------------------------------------------
+WEIGHTS — the balanced objective, on the same machinery
+--------------------------------------------------------------------------
+`budget_and_balance` also searches a CLASS-BALANCED objective, which weights
+each case by 1/|its class| so that the rare classes stop being sacrificed.
+Naively that needs per-class masks and about eight times the work.
+
+It does not, because of one lemma: every case in W[r] carries the label
+action[r], since W[r] is by construction the subset of M[r] the rule gets
+RIGHT. So THE CLASS OF A WIN IS A FUNCTION OF THE RULE, not of the case, and a
+class-weighted objective is exactly the machinery below with each rule's hit
+count scaled by one integer — `balanced_weights` builds them.
+
+Integer, and that is the point: the score stays a bounded integer, so strict
+improvement still guarantees termination and no move is ever applied on a tie.
+Both properties would be lost with floating-point 1/n.
+
+`wt=None` is the uniform objective, and it is the path every published figure
+runs on. It is kept exactly as it was: the weight never enters its arithmetic,
+only a test that it is absent. `tests/test_local_search.py` pins that all-ones
+weights return the same order and the same score as `wt=None`.
+
+--------------------------------------------------------------------------
 REPRESENTATION — bitmasks, so that a full evaluation is O(#rules)
 --------------------------------------------------------------------------
 Per rule: M[r] = mask of the evaluated cases it matches, W[r] = the subset of
@@ -68,6 +90,8 @@ honest reading of "until no improvement".
 from __future__ import annotations
 
 import random
+from collections import Counter
+from math import lcm
 
 # ---------------------------------------------------------------------------
 # Masks and scoring
@@ -91,6 +115,38 @@ def build_masks(ids, pool, label, action, idxs):
             if action[rid] == y:
                 W[rid] |= bit
     return M, W, (1 << len(idxs)) - 1
+
+
+def balanced_weights(ids, action, label, idxs):
+    """
+    Integer per-rule weights that turn the objective into macro-recall.
+
+    The lemma is in the module header: every case a rule wins carries that
+    rule's action as its label, so weighting a CASE by 1/|its class| is the same
+    as weighting the RULE by 1/|its action's class|.
+
+        n[c]  = labelled cases of class c
+        L     = lcm{ n[c] }              so that every weight is an integer
+        wt[r] = L // n[action[r]]
+
+    The score of an order is then L * sum_c recall_c: macro-recall up to the
+    positive constant L * |classes|, which is what `budget_and_balance.per_class`
+    reports as balanced accuracy. L being integral is what keeps the score a
+    bounded integer, and with it termination and the no-move-on-a-tie rule;
+    floating-point 1/n would cost both. L can be large — Python ints.
+
+    A rule whose action is a class absent from the labelled subset gets weight
+    0. It can win nothing there (W[r] is empty by construction), so the value
+    only has to exist for the lookup, and 0 is the honest one.
+
+    Returns (wt, L, n).
+    """
+    n = Counter(label[i] for i in idxs)
+    L = 1
+    for c in n:
+        L = lcm(L, n[c])
+    wt = {rid: (L // n[action[rid]] if action[rid] in n else 0) for rid in ids}
+    return wt, L, n
 
 
 def greedy_order_from_masks(ids, M, W, full, tail_key):
@@ -124,14 +180,21 @@ def greedy_order_from_masks(ids, M, W, full, tail_key):
     return order + sorted(left, key=tail_key)
 
 
-def score_order(order, M, W, full):
+def score_order(order, M, W, full, wt=None):
     """Cases won with the right action. `fires` is a subset of `remaining`, so
-    the xor is the same as clearing the bits and is cheaper."""
+    the xor is the same as clearing the bits and is cheaper.
+
+    `wt` is the per-rule weight of `balanced_weights`; None is the uniform
+    objective and does not pay for the weight, only for a test that it is
+    absent."""
     remaining, ok = full, 0
     for rid in order:
         fires = M[rid] & remaining
         if fires:
-            ok += (W[rid] & fires).bit_count()
+            if wt is None:
+                ok += (W[rid] & fires).bit_count()
+            else:
+                ok += wt[rid] * (W[rid] & fires).bit_count()
             remaining ^= fires
             if not remaining:
                 break
@@ -154,7 +217,7 @@ def coverage_length(order, M, full):
 # ---------------------------------------------------------------------------
 
 
-def best_insertion(order, k_cur, M, W, full):
+def best_insertion(order, k_cur, M, W, full, wt=None):
     """
     Best position for `order[k_cur]` among all the ways of reinserting it into
     the order without it. Returns (position, score).
@@ -169,6 +232,11 @@ def best_insertion(order, k_cur, M, W, full):
       B[k]  cases it matches with rank >= k whose label its action gets right
 
     and score(k) = C + A[k] + B[k].
+
+    Under weights, C and A are scaled case by case by the weight of whichever
+    rule wins the case, while the whole of B belongs to `r` and is scaled by the
+    single weight wt[r] — so B is scaled once, after the sweep, and the sweep
+    itself stays as cheap as it was.
     """
     r = order[k_cur]
     rest = order[:k_cur] + order[k_cur + 1:]
@@ -185,8 +253,13 @@ def best_insertion(order, k_cur, M, W, full):
         fires = M[rest[k]] & remaining
         if fires:
             hits = W[rest[k]] & fires
-            acc += (hits & Mr).bit_count()
-            C += (hits & not_Mr).bit_count()
+            if wt is None:
+                acc += (hits & Mr).bit_count()
+                C += (hits & not_Mr).bit_count()
+            else:
+                w = wt[rest[k]]
+                acc += w * (hits & Mr).bit_count()
+                C += w * (hits & not_Mr).bit_count()
             remaining ^= fires
         k += 1
         A[k] = acc
@@ -196,6 +269,9 @@ def best_insertion(order, k_cur, M, W, full):
     for j in range(k, n + 1):
         A[j] = acc
         B[j] = tail_B
+    if wt is not None:
+        wr = wt[r]
+        B = [wr * b for b in B]
 
     best_k, best = k_cur, C + A[k_cur] + B[k_cur]
     for j in range(n + 1):
@@ -205,12 +281,12 @@ def best_insertion(order, k_cur, M, W, full):
     return best_k, best
 
 
-def move_pass(order, M, W, full):
+def move_pass(order, M, W, full, wt=None):
     """One sweep relocating every rule. Returns how many it moved."""
     moved = 0
     for rid in list(order):
         k = order.index(rid)
-        best_k, best = best_insertion(order, k, M, W, full)
+        best_k, best = best_insertion(order, k, M, W, full, wt)
         if best_k != k:
             order.pop(k)
             order.insert(best_k, rid)
@@ -223,7 +299,7 @@ def move_pass(order, M, W, full):
 # ---------------------------------------------------------------------------
 
 
-def _prefix_states(order, M, W, full):
+def _prefix_states(order, M, W, full, wt=None):
     """Pending mask and hits accumulated BEFORE each position."""
     n = len(order)
     rem = [0] * (n + 1)
@@ -231,15 +307,19 @@ def _prefix_states(order, M, W, full):
     remaining, ok = full, 0
     for p in range(n):
         rem[p], hit[p] = remaining, ok
-        fires = M[order[p]] & remaining
+        rid = order[p]
+        fires = M[rid] & remaining
         if fires:
-            ok += (W[order[p]] & fires).bit_count()
+            if wt is None:
+                ok += (W[rid] & fires).bit_count()
+            else:
+                ok += wt[rid] * (W[rid] & fires).bit_count()
             remaining ^= fires
     rem[n], hit[n] = remaining, ok
     return rem, hit
 
 
-def _score_after_swap(order, p, q, rem0, ok0, M, W):
+def _score_after_swap(order, p, q, rem0, ok0, M, W, wt=None):
     """Score of the order with p and q exchanged, resuming from the prefix of
     p. Everything before p is untouched, which is what makes this affordable."""
     n = len(order)
@@ -247,7 +327,10 @@ def _score_after_swap(order, p, q, rem0, ok0, M, W):
     remaining, ok = rem0, ok0
     fires = M[b] & remaining
     if fires:
-        ok += (W[b] & fires).bit_count()
+        if wt is None:
+            ok += (W[b] & fires).bit_count()
+        else:
+            ok += wt[b] * (W[b] & fires).bit_count()
         remaining ^= fires
     for j in range(p + 1, n):
         if not remaining:
@@ -255,12 +338,15 @@ def _score_after_swap(order, p, q, rem0, ok0, M, W):
         rid = a if j == q else order[j]
         fires = M[rid] & remaining
         if fires:
-            ok += (W[rid] & fires).bit_count()
+            if wt is None:
+                ok += (W[rid] & fires).bit_count()
+            else:
+                ok += wt[rid] * (W[rid] & fires).bit_count()
             remaining ^= fires
     return ok
 
 
-def swap_pass(order, M, W, full):
+def swap_pass(order, M, W, full, wt=None):
     """
     Sweep of pairs, applying each strict improvement as it is found and
     resuming from the same p. Every application raises an integer bounded
@@ -268,7 +354,7 @@ def swap_pass(order, M, W, full):
     """
     n = len(order)
     applied = 0
-    rem, hit = _prefix_states(order, M, W, full)
+    rem, hit = _prefix_states(order, M, W, full, wt)
     base = hit[n]
     p = 0
     while p < n:
@@ -279,11 +365,11 @@ def swap_pass(order, M, W, full):
         for q in range(p + 1, n):
             if not (M[order[p]] & rem0) and not (M[order[q]] & rem0):
                 continue                  # neither can fire from here: inert
-            s = _score_after_swap(order, p, q, rem0, ok0, M, W)
+            s = _score_after_swap(order, p, q, rem0, ok0, M, W, wt)
             if s > base:                  # strict, first improvement
                 order[p], order[q] = order[q], order[p]
                 applied += 1
-                rem, hit = _prefix_states(order, M, W, full)
+                rem, hit = _prefix_states(order, M, W, full, wt)
                 base = hit[n]
                 found = True
                 break
@@ -299,7 +385,8 @@ def swap_pass(order, M, W, full):
 NEIGHBOURHOODS = ("move", "swap", "move+swap")
 
 
-def local_search(order, M, W, full, neighbourhood="move+swap", max_rounds=200):
+def local_search(order, M, W, full, neighbourhood="move+swap", max_rounds=200,
+                 wt=None):
     """
     Hill climbing to a local optimum. Returns (order, stats).
 
@@ -311,7 +398,7 @@ def local_search(order, M, W, full, neighbourhood="move+swap", max_rounds=200):
     if neighbourhood not in NEIGHBOURHOODS:
         raise ValueError(f"unknown neighbourhood: {neighbourhood!r}")
     order = list(order)
-    start = score_order(order, M, W, full)
+    start = score_order(order, M, W, full, wt)
     stats = {"start": start, "move_passes": 0, "moves": 0,
              "swap_passes": 0, "swaps": 0, "rounds": 0, "exhausted": False}
 
@@ -319,12 +406,12 @@ def local_search(order, M, W, full, neighbourhood="move+swap", max_rounds=200):
         stats["rounds"] += 1
         changed = 0
         if neighbourhood in ("move", "move+swap"):
-            moved = move_pass(order, M, W, full)
+            moved = move_pass(order, M, W, full, wt)
             stats["move_passes"] += 1
             stats["moves"] += moved
             changed += moved
         if neighbourhood in ("swap", "move+swap"):
-            swapped = swap_pass(order, M, W, full)
+            swapped = swap_pass(order, M, W, full, wt)
             stats["swap_passes"] += 1
             stats["swaps"] += swapped
             changed += swapped
@@ -333,7 +420,7 @@ def local_search(order, M, W, full, neighbourhood="move+swap", max_rounds=200):
     else:
         stats["exhausted"] = True
 
-    stats["end"] = score_order(order, M, W, full)
+    stats["end"] = score_order(order, M, W, full, wt)
     stats["gain"] = stats["end"] - start
     return order, stats
 
@@ -398,7 +485,8 @@ def declared_starts(ids, first=None, seed=MULTISTART_SEED, n=MULTISTART_STARTS):
     return starts
 
 
-def multistart(starts, M, W, full, neighbourhood="move+swap", optimum=None):
+def multistart(starts, M, W, full, neighbourhood="move+swap", optimum=None,
+               wt=None):
     """
     Local search from every declared start, keeping the best. Deterministic:
     the starts are fixed, no move is applied on a tie, and a tie between starts
@@ -412,7 +500,7 @@ def multistart(starts, M, W, full, neighbourhood="move+swap", optimum=None):
     rows = []
     best_order, best_score, best_at = None, -1, None
     for k, (name, o0) in enumerate(starts):
-        o, st = local_search(o0, M, W, full, neighbourhood=neighbourhood)
+        o, st = local_search(o0, M, W, full, neighbourhood=neighbourhood, wt=wt)
         rows.append({"index": k, "start": name, "start_score": st["start"],
                      "end_score": st["end"], "rounds": st["rounds"],
                      "moves": st["moves"], "swaps": st["swaps"],
