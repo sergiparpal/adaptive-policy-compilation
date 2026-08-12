@@ -141,7 +141,18 @@ def balanced_weights(ids, action, label, idxs):
 
     Returns (wt, L, n).
     """
-    n = Counter(label[i] for i in idxs)
+    return weights_from_counts(ids, action, Counter(label[i] for i in idxs))
+
+
+def weights_from_counts(ids, action, n):
+    """
+    The same weights when the class counts are already in hand.
+
+    Over the exhaustive space they come off the masks — the cases of class c are
+    exactly the union of W[r] over the rules with action c, whenever every case
+    is matched by some rule carrying its correct label — and building 134,400
+    labels only to count them again would be waste. Returns (wt, L, n).
+    """
     L = 1
     for c in n:
         L = lcm(L, n[c])
