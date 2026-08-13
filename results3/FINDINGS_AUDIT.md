@@ -531,32 +531,51 @@ ONCALL_ESCALATION 2 of 3 against 3 of 3, SECURITY_INCIDENT 9 of 10 against 10 of
 10 — while scoring higher on the weighted train objective. With 4 and 10 training
 cases, maximizing weighted train recall harder does not generalize.
 
-### Is 0.8530 converged? No — and more starts make test worse
+### Is 0.8530 converged? No — and where more starts help train, they hurt test
 
 The `n_at_best = 1.00` above is not a curiosity, it is a warning: a figure that
-one start of 65 reaches is a maximum over draws. Split 0 at full supervision, run
-again with 128 and 256 random starts — nested by construction, the larger budgets
-begin with the record's 64 — gives
+one start of 65 reaches is a maximum over draws. All five splits at full
+supervision, run again with 128 and 256 random starts — nested by construction,
+the larger budgets begin with the record's 64 — give
 ([`start_budget_check.json`](start_budget_check.json)):
 
 ```
- arranques    train  (bruto)     test   espacio   en el mejor   distintas
-        65   0.8786      883   0.8472    0.6033             1          36
-       129   0.8786      883   0.8472    0.6033             1          46
-       257   0.8796      884   0.8442    0.5776             1          53
+ part  arranques    train  (bruto)     test   espacio   en el mejor   distintas
+    0         65   0.8786      883   0.8472    0.6033             1          36
+    0        129   0.8786      883   0.8472    0.6033             1          46
+    0        257   0.8796      884   0.8442    0.5776             1          53
+    1     65/129/257  0.8697   874   0.8472    0.5835             1     33/45/49
+    2     65/129/257  0.8626   879   0.8522    0.6604             1     32/44/51
+    3     65/129/257  0.8670   867   0.8640    0.5868             1     26/34/39
+    4         65   0.8697      868   0.8543    0.6183             1          35
+    4        129   0.8727      871   0.8473    0.6048             1          44
+    4        257   0.8727      871   0.8473    0.6048             1          47
 ```
 
-**The best train score moves**, by one case in 1005 — so 0.8530 is the best of 65
-draws and not a converged optimum, and on this instance nothing can say whether a
-258th start would beat it again. Exactly one start reaches the best at *every*
-budget tried; the distinct scores merely grow, 36 → 46 → 53.
+**The best train score moves in 2 of the 5 splits** — split 0 at 256 starts,
+split 4 already at 128. So 0.8530 is a maximum over draws rather than a converged
+optimum, and on this instance nothing can say whether a 258th start would move it
+again. In the other three splits it does not budge at four times the budget,
+which is evidence of local convergence and not proof of it.
 
-**And the better train order is worse everywhere else**: corpus test 0.8472 →
-**0.8442**, exhaustive space 0.6033 → **0.5776**. Searching the train objective
-harder stops buying generalization well before the search stops finding
-improvements — the same "maximising harder the thing that has stopped being a
-proxy" §0 predicted for *low budget*, appearing instead at **full supervision**
-when the restart budget grows.
+**Where the train score improves, test and space both get worse — 2 of 2.**
+Split 0: test 0.8472 → **0.8442**, space 0.6033 → **0.5776**. Split 4: test
+0.8543 → **0.8473**, space 0.6183 → **0.6048**. Mean where it moves: **−0.0050**
+on corpus test and **−0.0196** on the exhaustive space. The direction is
+consistent; the *frequency* is 2 in 5, so split 0 was not a fluke of sign but it
+was the more extreme of the two.
+
+This is §0's own mechanism — maximising harder something that has stopped being a
+proxy — appearing at **full supervision** when the restart budget grows, rather
+than at low budget where §0 expected it. At 1005 labels the train objective is
+still a good proxy at the scale of 0.08 and already a bad one at the scale of
+0.001.
+
+**One thing is universal across all 15 rows: `n_at_best` is 1.** At 65, 129 and
+257 starts, in every split, exactly one start reaches the best train score. The
+sample never concentrates; only the spread grows (26–36 distinct scores at 65,
+39–53 at 257). Whatever budget this instrument is given, its answer rests on a
+single shuffle.
 
 **`MULTISTART_STARTS` stays 64 because it was declared before the runs that used
 it.** That is the entire reason, and it is deliberately not contingent on
@@ -612,7 +631,7 @@ duplication this project keeps having to undo.
 | **F12** | `move+swap` reaches the weighted optimum from fewer starts than `move` alone on the corpus. | **CONFIRMED.** |
 | **F13** | The balanced objective overfits the smallest classes. | **OBSERVED.** Above, and in the FINDINGS3 §3 erratum. |
 | **F14** | At full supervision exactly one start of 65 reaches the best train score. | **MEASURED.** Above. |
-| **F15** | 0.8530 is not converged. | **MEASURED.** Above. |
+| **F15** | 0.8530 is not converged: more starts improve train in 2 of 5 splits, and in 2 of those 2 the test and space scores fall. | **MEASURED over five splits.** Above. |
 | **F16** | The tie-break moves exactly one cell of the per-class table: SECURITY_INCIDENT under the total objective, 7 → 4. | **CONFIRMED.** FINDINGS3 §3 erratum. |
 | **F17** | *"50 labels are practically free"* changes direction with the denominator. | **CONFIRMED.** FINDINGS3 §4 erratum. |
 
