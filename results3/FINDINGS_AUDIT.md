@@ -351,6 +351,32 @@ precisely so this case is distinguishable from a code change
 (`harness/provenance.py`); a `true` with no explanation beside it is not
 traceability, so this is the explanation.
 
+**How the step was executed, and one procedural gap.** Seven phases, each
+committed before the next: the plan first, so the phases are measured against
+something already on the record; then the weighted objective; then two blocking
+gates; then the run; then this. Two things are worth carrying:
+
+- **The unweighted path did not slow down.** Threading class weights through
+  `score_order`, `best_insertion`, `move_pass`, `swap_pass`, `local_search` and
+  `multistart` costs **+1.1%** when `wt=None`, measured against the previous
+  revision on the real instance with the two revisions alternating in one
+  process, and returns identical orders and identical stats. The budget was 10%.
+  The first, non-alternating measurement said *−25%* on code that had not been
+  touched; anyone repeating this should alternate.
+- **Harness parity was checked before any figure.** Split 0 at full supervision
+  on the pure pool reproduces `order_search_ls.json` exactly — greedy test
+  0.7487, local search 0.8472, coverage length 559, and even the winning start,
+  `aleatorio 13` at index 14 — and born_at over the exhaustive space gives
+  0.3148. The two greedy implementations produce one order. All of it is in the
+  record's `checks`.
+
+**The gap: §0 of `PLAN_BUDGET_LS.md` carries the prediction and no signature
+line.** Sergi authorized P4 by saying it was signed; the file is byte-identical
+to the commit that introduced it. The agent is forbidden from editing §0, so it
+is recorded here rather than fixed. The substance of hard rule 2 held — the
+prediction was committed and immutable before any number existed — but the file
+does not show it.
+
 **A blocking gate was run first, and it found a defect.** The class-weighted
 objective got its own step 0 (`optimizer_check_wt.py`): the hidden policy in
 design order maximizes every non-negative-weight objective at once, so the
@@ -532,15 +558,20 @@ improvements — the same "maximising harder the thing that has stopped being a
 proxy" §0 predicted for *low budget*, appearing instead at **full supervision**
 when the restart budget grows.
 
-**`MULTISTART_STARTS` stays 64.** It was declared before the runs that used it,
-and changing it after seeing this would be rule 6 under another name — the more
-so since the 256-start result is *worse* on both evaluation surfaces, so "more is
-better" is not even what the diagnostic found. What it produces is a caveat, and
-the caveat reaches further than this record: **`order_search_ls` published the
-0.8530 with the same optimizer at the same budget**, and `sweep_ls` did the same
-for rung 4. Those figures are what the declared instrument returns; they are not
-optima, and they are bounded by a draw. Recorded in `STATUS.md` beside the
-figure, which is where a reader meets it.
+**`MULTISTART_STARTS` stays 64 because it was declared before the runs that used
+it.** That is the entire reason, and it is deliberately not contingent on
+anything in the table above. An earlier draft of this section added *"the more so
+since 256 came out worse on both evaluation surfaces"*, which is an argument that
+must not be made: it picks a hyperparameter by reading the test and space
+figures, which is rule 6 with its sign reversed and no better for happening to
+support the constant already in force. The 256-start result is a fact about the
+instrument, not a reason for a constant.
+
+What the diagnostic produces is a caveat, and it reaches further than this
+record: **`order_search_ls` published the 0.8530 with the same optimizer at the
+same budget**, and `sweep_ls` did the same for rung 4. Those figures are what the
+declared instrument returns; they are not optima, and they are bounded by a draw.
+Recorded in `STATUS.md` beside the figure, which is where a reader meets it.
 
 ### What it costs, and what it does not settle
 
@@ -548,9 +579,138 @@ figure, which is where a reader meets it.
 that produced the original record. The exhaustive-space transfer added 0.9 s to
 build the masks and about a millisecond per order scored.
 
+Per configuration the cost falls monotonically with the budget — 33.0 s at 100%,
+18.4 at 25%, 12.8 at 10%, 9.4 at 5%, 3.4 at 1% — with no inversion. The probe
+reported in the plan had it the other way round, with partial budgets slower than
+full supervision; that probe was one start on one split and the full grid does
+not reproduce it.
+
 Not settled: whether the coverage bound is loose (Step 1's open question is
 untouched here), and whether any of this survives on the hybrid pool, which
 `budget_and_balance` never used and which is ~8× slower.
+
+### The register of findings
+
+The plan required a findings register. It was kept as a working file during the
+run and is folded in here, because figures have exactly two homes — the FINDINGS
+that owns them and `STATUS.md` — and a third document carrying them is the
+duplication this project keeps having to undo.
+
+| id | finding | status |
+|---|---|---|
+| **F1** | `tests/test_provenance.py::ESCRITORES` and `tests/test_record_guard.py::LIBRES` under-list the modules that write records, against the README table `ESCRITORES` says it mirrors. | **CONFIRMED.** Reported, not fixed. |
+| **F2** | The 2026-08-06 tie-break fix, per row: never measured on this record. | **CONFIRMED**, changes sign twice, +0.0481 at 1%. Above. |
+| **F3** | Any configuration hitting the `max_rounds` safety net. | **NONE**, 0 of 115, plus 390 weighted searches in P2. |
+| **F4** | Configurations where the local search is worse than the greedy on test. | **6 of 105**, peaking at 10%, none at 1%. Above. |
+| **F5** | Per-fraction cost: the plan's probe had partial budgets slower than full supervision. | **REFUTED as stated.** Cost falls monotonically. |
+| **F6** | Any class whose `ceiling` differs from the published `per_class_split0`. | **NONE.** All eight identical. |
+| **F7** | This work adds record writers absent from both pinned lists and the README table. | **Resolved for the README**, which now carries all three rows. The pinned lists are F1 and stay unfixed. |
+| **F8** | Pairwise `swap` alone cannot reach the weighted optimum either. | **CONFIRMED**, 0 of 64 on both instances. |
+| **F9** | Under weights the optimum is never reached from the greedy start. | **CONFIRMED**, always from a restart. |
+| **F10** | `class_counts_from_masks` returned the per-class **ceiling**, not the class size. **The P2 gate could not see it.** | **CONFIRMED and fixed** before any figure was produced. |
+| **F11** | The restart budget's *"below 1e-8"* is calibrated to an unweighted 1-in-4 rate. | **RECOMPUTED.** Constant untouched. |
+| **F12** | `move+swap` reaches the weighted optimum from fewer starts than `move` alone on the corpus. | **CONFIRMED.** |
+| **F13** | The balanced objective overfits the smallest classes. | **OBSERVED.** Above, and in the FINDINGS3 §3 erratum. |
+| **F14** | At full supervision exactly one start of 65 reaches the best train score. | **MEASURED.** Above. |
+| **F15** | 0.8530 is not converged. | **MEASURED.** Above. |
+| **F16** | The tie-break moves exactly one cell of the per-class table: SECURITY_INCIDENT under the total objective, 7 → 4. | **CONFIRMED.** FINDINGS3 §3 erratum. |
+| **F17** | *"50 labels are practically free"* changes direction with the denominator. | **CONFIRMED.** FINDINGS3 §4 erratum. |
+
+**F10, in full, because it is the one that nearly cost a figure.** The weighted
+objective needs the number of cases per class. The first implementation derived
+it from the masks — the union of `W[r]` over the rules of each action — to keep
+the module free of the oracle. That quantity is the per-class **ceiling**: it
+counts the cases of a class that *some correct rule matches*, and equals the
+class size only where every case is winnable. On split 0's train, over the 577
+rules:
+
+```
+clase                   Counter(truth)   de mascaras   falta
+T2_TECHNICAL                       362           357       5
+SELF_SERVICE_DEFLECT               253           237      16
+BILLING_SPECIALIST                 135           135       0
+T1_GENERAL                         127           127       0
+T3_ENGINEERING                      60            19      41
+ACCOUNT_MANAGER                     54            18      36
+SECURITY_INCIDENT                   10            10       0
+ONCALL_ESCALATION                    4             4       0
+total                             1005           907      98
+```
+
+The shortfall lands on the two classes FINDINGS3 §2 records as materially broken.
+Weighting by `L/19` instead of `L/60` inflates T3_ENGINEERING 3.2× and
+ACCOUNT_MANAGER 3.0× — exactly the classes the balanced objective exists to
+protect, in the direction that flatters it. §2 would have compared the record's
+greedy, weighted by `1/Counter(truth)`, against a search weighted by a ceiling,
+and reported the difference as the optimizer.
+
+**The gate could not catch it, and that is the general lesson.** On the hidden
+policy every case is covered by its own rule, so ceiling and class size coincide
+and the derivation is exact. Step 0 reaching `L × classes` was evidence for the
+*search* and none at all for the *counting*: the instance that makes an optimum
+knowable was also the instance on which the defect is invisible. A gate certifies
+what it varies, and the weights were not varied. Found by a check on the real
+instance, called for after P2 had already passed.
+
+`class_counts_from_masks` is deleted; the module reads `true_action` and is
+declared in `tests/test_oracle_separation.py`. Avoiding the oracle import bought
+nothing and cost a defect.
+
+**F8, F9 and F11 — the weighted gate.** Over the 29 rules of the hidden policy,
+balanced accuracy as a fraction of the known optimum:
+
+```
+instancia            move            swap             move+swap
+corpus         1.000000  9/64   0.995523  0/64   1.000000   6/64
+espacio        1.000000 11/64   0.992092  0/64   1.000000  12/64
+```
+
+The design order is a fixed point of all three neighbourhoods on both instances.
+Pairwise swaps fail exactly as they did unweighted in Step 0. The greedy at index
+0 hits in none of the six configurations, so every hit is a restart, and the
+unweighted greedy is a poor start for the balanced objective — 0.4346 balanced on
+the corpus against 0.7365 unweighted e2e.
+
+`local_search.py` justifies its 64 starts by *"at a one-in-four rate, 64 starts
+miss altogether with probability 0.75\*\*64, below 1e-8"*. That rate was measured
+**unweighted**. At the weighted rates, over the 64 random starts, with exact
+Clopper-Pearson intervals:
+
+```
+instancia · vecindario    aciertos   tasa     IC95 tasa        fallo    IC95 fallo
+corpus · move+swap           6/64   0.0938  [0.035, 0.193]   1.8e-03  [1.1e-06, 1.0e-01]
+espacio · move+swap         12/64   0.1875  [0.101, 0.305]   1.7e-06  [8.0e-11, 1.1e-03]
+```
+
+against an inherited `0.75**64` of `1.01e-08` — marginally above the "below 1e-8"
+the comment claims. On the corpus the declared neighbourhood is five orders of
+magnitude from it, with an interval reaching 0.10. The point estimate reuses the
+draws that produced the rate, so the interval is the honest part; and this is 29
+rules, not the 577 of §1 and §2, where no rate can be measured at all. **The
+constant is not touched:** what is recomputed is the claim made about it.
+
+**F12.** `move` alone reaches the weighted optimum from more starts than
+`move+swap` on the corpus — 9/64 against 6/64, and already 16/65 against 13/65
+unweighted. On the exhaustive space the tie that `local_search.py` cites when
+declaring the neighbourhood ("same first hit at start 9, same 9/65") has broken
+under weights, this time in `move+swap`'s favour, 12/64 against 11/64. Nothing
+here argues for changing the declared neighbourhood; what it records is that the
+sample of size one called a tie is no longer one.
+
+**F1 and F7 — a pinned list that stopped mirroring its source.** `ESCRITORES`
+says in its own comment that it mirrors the README's overwrite table, and omits
+`peldano3.optimizer_check`, `peldano3.order_search_ls` and `peldano4.sweep_ls`,
+all three of which the README lists. `LIBRES` omits the same three; its other
+absences — `run_experiment`, `run2`, `compare_runs`, `note_audit` — are not drift,
+since those are guarded on purpose and `LIBRES` is the list of writers that must
+*not* import the guard. No test catches the omission: one iterates the pinned
+list, so an absent module is never checked, and the other discovers new writers
+but only asks that they carry `_env`, which they all do.
+
+Reported and deliberately **not** fixed here: it predates this work, and folding
+a repair into a branch measuring something else would make the diff say two
+things at once. This branch adds three more writers to the same gap; the README
+table now carries all of them, the pinned lists still do not.
 
 ---
 
