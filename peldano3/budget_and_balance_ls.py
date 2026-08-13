@@ -46,6 +46,7 @@ import random
 import statistics
 import sys
 import time
+from collections import Counter
 
 from peldano3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
 from peldano3.budget_and_balance import greedy as greedy_del_registro
@@ -55,7 +56,8 @@ from peldano3.order_search_ls import space_pools
 
 from .local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                            MULTISTART_STARTS, build_masks, coverage_length,
-                           declared_starts, multistart, score_order)
+                           declared_starts, multistart, score_order,
+                           weights_from_counts)
 
 POOL = "puro"
 
@@ -98,6 +100,39 @@ def subsample(tr, frac, s, d):
         return tr
     k = max(1, round(frac * len(tr)))
     return sorted(random.Random(1000 * s + d).sample(tr, k))
+
+
+def balanced_objective(ids, action, truth, label_idx):
+    """
+    The balanced objective for one labelled subset, in the two forms the run
+    needs, both built from ONE count of the classes.
+
+    `budget_and_balance.greedy` takes class -> 1/|class| as floats and the local
+    search takes rule -> integer weight. They have to be the SAME objective, and
+    the only way to be sure is for both to come out of the same Counter — the
+    very one `budget_and_balance` builds, `Counter(truth[i] for i in tr)`. The
+    identity is checked below rather than trusted.
+
+    NOT from the masks. Over the 577 rules the masks give the per-class CEILING
+    and not the class size: on split 0's train the union of the correct masks
+    falls 98 cases short of 1005, and it falls short precisely in
+    T3_ENGINEERING and ACCOUNT_MANAGER, where two thirds of the cases have no
+    correct rule at all. Weighting by that would multiply the weight of exactly
+    the classes the balanced objective exists to protect by about three, and
+    would maximize something other than what the record maximized, while
+    reporting it under the same name. `optimizer_check_wt.
+    class_counts_from_masks` now refuses when its precondition fails, and this
+    is the function that replaces it here.
+
+    Returns (weights, wt, counts, L).
+    """
+    counts = Counter(truth[i] for i in label_idx)
+    weights = {c: 1.0 / counts[c] for c in counts}
+    wt, L, n = weights_from_counts(ids, action, counts)
+    if n is not counts:
+        raise ValueError("los pesos del voraz balanceado y los de la busqueda "
+                         "local no salen del mismo recuento de clases")
+    return weights, wt, counts, L
 
 
 def search(ids, greedy, M, W, full, wt=None):

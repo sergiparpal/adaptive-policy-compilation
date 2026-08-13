@@ -20,10 +20,12 @@ from __future__ import annotations
 import ast
 import random
 import unittest
+from collections import Counter
 from pathlib import Path
 
 from peldano3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
-from peldano3.budget_and_balance_ls import ESPERADO, POOL, subsample
+from peldano3.budget_and_balance_ls import (ESPERADO, POOL, balanced_objective,
+                                            subsample)
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -113,6 +115,97 @@ class TestElRegistroPublicadoNoSeToca(unittest.TestCase):
         for s in cadenas_de_codigo(self.FUENTE):
             with self.subTest(cadena=s[:40]):
                 self.assertNotIn("budget_and_balance.json", s)
+
+
+class TestElObjetivoBalanceadoEsUnoSolo(unittest.TestCase):
+    """`budget_and_balance.greedy` weights classes with floats and the local
+    search weights rules with integers. If those two stopped being the same
+    objective, §2 would compare a greedy maximizing one thing against a search
+    maximizing another and report the difference as the optimizer."""
+
+    IDS = ["X000", "X001", "X002", "X003"]
+    ACTION = {"X000": "A", "X001": "B", "X002": "C", "X003": "A"}
+    TRUTH = ["A"] * 7 + ["B"] * 5 + ["C"] * 3
+
+    def test_los_dos_pesos_salen_del_mismo_recuento(self):
+        idxs = list(range(len(self.TRUTH)))
+        weights, wt, counts, L = balanced_objective(
+            self.IDS, self.ACTION, self.TRUTH, idxs)
+        self.assertEqual(counts, Counter(self.TRUTH))
+        for c in counts:
+            # the float form and the integer form, one constant apart
+            self.assertAlmostEqual(weights[c] * counts[c], 1.0)
+        for rid in self.IDS:
+            self.assertEqual(wt[rid] * counts[self.ACTION[rid]], L)
+            self.assertAlmostEqual(wt[rid] / L, weights[self.ACTION[rid]])
+
+    def test_el_recuento_es_el_de_budget_and_balance(self):
+        """Copied from `budget_and_balance.main`, deliberately: the counts are
+        over the LABELLED SUBSET, and the record's are Counter(truth)."""
+        idxs = [0, 1, 2, 7, 8, 12]
+        _weights, _wt, counts, _L = balanced_objective(
+            self.IDS, self.ACTION, self.TRUTH, idxs)
+        self.assertEqual(counts, Counter(self.TRUTH[i] for i in idxs))
+
+    def test_no_se_construye_desde_las_mascaras(self):
+        """The mask route gives the per-class ceiling, which over the 577 rules
+        is not the class size. It must not appear in this module."""
+        self.assertNotIn("class_counts_from_masks",
+                         (REPO / "peldano3" / "budget_and_balance_ls.py")
+                         .read_text().split('"""')[-1])
+
+
+class TestElPresupuestoDeReinicios(unittest.TestCase):
+    """The claim `local_search.py` makes for its 64 starts is calibrated at a
+    one-in-four hit rate measured WITHOUT weights. `optimizer_check_wt`
+    recomputes it at the measured rate; the arithmetic has to be right."""
+
+    def test_el_intervalo_exacto_contiene_la_tasa_y_esta_ordenado(self):
+        from peldano3.optimizer_check_wt import clopper_pearson
+
+        for k in (0, 1, 6, 12, 32, 64):
+            lo, hi = clopper_pearson(k, 64)
+            with self.subTest(k=k):
+                self.assertLessEqual(lo, k / 64)
+                self.assertLessEqual(k / 64, hi)
+                self.assertLessEqual(0.0, lo)
+                self.assertLessEqual(hi, 1.0)
+        self.assertEqual(clopper_pearson(0, 64)[0], 0.0)
+        self.assertEqual(clopper_pearson(64, 64)[1], 1.0)
+
+    def test_la_probabilidad_de_fallo_baja_al_subir_la_tasa(self):
+        from peldano3.optimizer_check_wt import restart_budget
+
+        anterior = None
+        for k in (0, 1, 6, 12, 32):
+            b = restart_budget(k, 64)
+            with self.subTest(k=k):
+                self.assertAlmostEqual(b["miss_probability"],
+                                       (1 - k / 64) ** 64)
+                lo, hi = b["miss_probability_ci95"]
+                self.assertLessEqual(lo, b["miss_probability"])
+                self.assertLessEqual(b["miss_probability"], hi)
+                if anterior is not None:
+                    self.assertLess(b["miss_probability"], anterior)
+            anterior = b["miss_probability"]
+
+    def test_no_se_toca_la_constante_declarada(self):
+        """What was recomputed is the claim about the constant, never the
+        constant: changing it after seeing a result is CLAUDE.md rule 6."""
+        from peldano3.local_search import (DECLARED_NEIGHBOURHOOD,
+                                           MULTISTART_SEED, MULTISTART_STARTS)
+
+        self.assertEqual((MULTISTART_SEED, MULTISTART_STARTS,
+                          DECLARED_NEIGHBOURHOOD), (17, 64, "move+swap"))
+
+    def test_la_afirmacion_heredada_queda_registrada_para_comparar(self):
+        from peldano3.optimizer_check_wt import restart_budget
+
+        b = restart_budget(6, 64)
+        self.assertAlmostEqual(b["inherited_claim"]["miss_probability"],
+                               0.75 ** 64)
+        self.assertGreater(b["miss_probability"],
+                           b["inherited_claim"]["miss_probability"])
 
 
 class TestLasExpectativasSonConstantes(unittest.TestCase):

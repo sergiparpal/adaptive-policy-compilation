@@ -488,7 +488,15 @@ class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
     """`optimizer_check_wt` derives the cases per class from the MASKS instead
     of from the oracle, and gates on a weighted optimum of L x |clases|. A wrong
     count there would validate the instrument against the wrong number, which is
-    the one failure mode a step 0 cannot afford."""
+    the one failure mode a step 0 cannot afford.
+
+    The derivation is only valid where every case is winnable. Elsewhere it
+    returns the per-class CEILING, and the difference is not academic: over the
+    577 learned rules it misses 98 of the 1005 train cases of split 0,
+    concentrated in the two classes the balanced objective exists to protect.
+    So the precondition is checked and the function raises. That is pinned here
+    because the gate passing was, by itself, no evidence for it: on the hidden
+    policy the two quantities coincide."""
 
     def instancia_cubierta(self, seed, n_reglas=12, n_casos=60):
         """Every case matched by at least one rule carrying its correct label —
@@ -505,15 +513,32 @@ class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
             pool.append(sorted(p))
         return ids, action, label, pool, list(range(n_casos))
 
-    def test_reproduce_el_recuento_directo_de_etiquetas(self):
+    def test_reproduce_el_recuento_directo_cuando_todo_es_ganable(self):
         from peldano3.optimizer_check_wt import class_counts_from_masks
 
         for seed in range(10):
             ids, action, label, pool, idxs = self.instancia_cubierta(seed)
-            _M, W, _full = build_masks(ids, pool, label, action, idxs)
+            _M, W, full = build_masks(ids, pool, label, action, idxs)
             with self.subTest(seed=seed):
-                self.assertEqual(class_counts_from_masks(ids, action, W),
+                self.assertEqual(class_counts_from_masks(ids, action, W, full),
                                  Counter(label))
+
+    def test_se_niega_a_devolver_un_techo_como_si_fuera_un_recuento(self):
+        """The failure the gate could not see. One case with no correct rule is
+        enough: the union of the correct masks stops being the class size and
+        becomes the ceiling, and a caller weighting by it would maximize
+        something else."""
+        from peldano3.optimizer_check_wt import class_counts_from_masks
+
+        for seed in range(6):
+            ids, action, label, pool, idxs = self.instancia_cubierta(seed)
+            # strip case 0 of every rule that gets it right
+            pool[0] = [rid for rid in pool[0] if action[rid] != label[0]]
+            _M, W, full = build_masks(ids, pool, label, action, idxs)
+            with self.subTest(seed=seed):
+                with self.assertRaises(ValueError) as ctx:
+                    class_counts_from_masks(ids, action, W, full)
+                self.assertIn("techo", str(ctx.exception))
 
     def test_un_orden_perfecto_puntua_exactamente_L_por_clases(self):
         """The criterion the weighted gate rests on, in miniature: a policy that
@@ -529,7 +554,8 @@ class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
         M, W, full = build_masks(ids, pool, label, action, idxs)
         wt, L, n = balanced_weights(ids, action, label, idxs)
         self.assertEqual(score_order(ids, M, W, full, wt), L * len(n))
-        self.assertEqual(class_counts_from_masks(ids, action, W), Counter(label))
+        self.assertEqual(class_counts_from_masks(ids, action, W, full),
+                         Counter(label))
 
     def test_los_pesos_por_recuento_coinciden_con_los_pesos_por_etiquetas(self):
         for seed in range(10):

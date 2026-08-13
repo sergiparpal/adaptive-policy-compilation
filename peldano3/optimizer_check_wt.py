@@ -53,6 +53,7 @@ import statistics
 import sys
 import time
 from collections import Counter
+from math import comb
 from pathlib import Path
 
 from harness.domain import generate_corpus
@@ -72,27 +73,118 @@ OUT = Path("results3")
 INSTANCIA_QUE_VALIDA = "espacio exhaustivo"
 
 
-def class_counts_from_masks(ids, action, W):
+def class_counts_from_masks(ids, action, W, full):
     """
-    Cases per class, read off the masks.
+    Cases per class, read off the masks — ONLY where every case is winnable.
 
     Every bit of W[r] belongs to a case of class action[r], so the union over
-    the rules of each action gives the cases of that class that SOME correct
-    rule matches — which on this instance is all of them, because every case is
-    covered by its own hidden rule. `run_instance` refuses to go on unless the
-    design order scores the optimum, which is what makes that a checked
-    assumption rather than an assumed one.
+    the rules of each action counts the cases of that class THAT SOME CORRECT
+    RULE MATCHES. That is the per-class CEILING, and it coincides with the class
+    size exactly when every case has a correct rule covering it.
+
+    On the hidden policy it does: every case is covered by its own rule. On the
+    577 learned rules it does NOT — two thirds of T3_ENGINEERING and of
+    ACCOUNT_MANAGER have no correct rule at all — and there the union falls 98
+    cases short of the 1005 of split 0's train. Weighting by a ceiling instead
+    of by a class size would inflate exactly the classes the balanced objective
+    exists to protect, by a factor of three, and would silently maximize
+    something other than what the record maximized.
+
+    So the precondition is CHECKED rather than documented, and the function
+    raises instead of returning a ceiling that a caller would read as a count.
+    The balanced objective of P5 comes from `Counter(truth)` —
+    `budget_and_balance_ls.balanced_objective` — and never from here.
     """
     porclase = {}
     for rid in ids:
         porclase[action[rid]] = porclase.get(action[rid], 0) | W[rid]
+    ganables = 0
+    for m in porclase.values():
+        ganables |= m
+    if ganables != full:
+        faltan = (full & ~ganables).bit_count()
+        raise ValueError(
+            f"{faltan} casos no tienen ninguna regla correcta que los case: el "
+            "recuento por mascaras seria el techo por clase y no el tamano de "
+            "la clase")
     return Counter({c: m.bit_count() for c, m in porclase.items() if m})
+
+
+# ---------------------------------------------------------------------------
+# What the restarts are really worth
+# ---------------------------------------------------------------------------
+
+def _binom_cdf(k, n, p):
+    """P(X <= k) for X ~ Bin(n, p), with exact integer binomials."""
+    if k < 0:
+        return 0.0
+    if k >= n:
+        return 1.0
+    return sum(comb(n, i) * p ** i * (1.0 - p) ** (n - i) for i in range(k + 1))
+
+
+def _root(f, lo, hi, iters=200):
+    """Bisection on a monotone f with a sign change in [lo, hi]."""
+    flo = f(lo)
+    for _ in range(iters):
+        mid = (lo + hi) / 2.0
+        fm = f(mid)
+        if (fm > 0) == (flo > 0):
+            lo, flo = mid, fm
+        else:
+            hi = mid
+    return (lo + hi) / 2.0
+
+
+def clopper_pearson(k, n, alpha=0.05):
+    """Exact binomial interval. Standard library only, like everything here."""
+    lo = 0.0 if k == 0 else _root(
+        lambda p: (1.0 - _binom_cdf(k - 1, n, p)) - alpha / 2.0, 0.0, 1.0)
+    hi = 1.0 if k == n else _root(
+        lambda p: _binom_cdf(k, n, p) - alpha / 2.0, 0.0, 1.0)
+    return lo, hi
+
+
+def restart_budget(n_hits, n_random=MULTISTART_STARTS):
+    """
+    What `MULTISTART_STARTS` buys AT THE MEASURED RATE, which is not the rate
+    the constant was declared against.
+
+    `local_search.py` justifies 64 starts thus: "At a one-in-four rate, 64
+    starts miss altogether with probability 0.75**64, below 1e-8." That 1-in-4
+    was measured UNWEIGHTED, in Step 0. Under weights the rate is lower, so the
+    inherited figure does not apply and is recomputed here.
+
+    The constant is NOT touched. It was declared before the runs that used it
+    and changing it after seeing a result is the failure this project studies;
+    what is recomputed is the claim made ABOUT it.
+
+    Read it as: the probability that a FRESH set of `n_random` starts misses
+    entirely, estimated from these ones. The point estimate reuses the same
+    draws that produced the rate, so the interval is the honest part.
+    """
+    p = n_hits / n_random
+    lo, hi = clopper_pearson(n_hits, n_random)
+    return {
+        "hits_of_random_starts": n_hits,
+        "random_starts": n_random,
+        "hit_rate": round(p, 6),
+        "hit_rate_ci95": [round(lo, 6), round(hi, 6)],
+        "miss_probability": (1.0 - p) ** n_random,
+        # ordered low to high: the high hit rate gives the low miss probability
+        "miss_probability_ci95": [(1.0 - hi) ** n_random,
+                                  (1.0 - lo) ** n_random],
+        "inherited_claim": {
+            "hit_rate": 0.25, "miss_probability": 0.75 ** n_random,
+            "source": "local_search.py, medido sin pesos en el paso 0",
+        },
+    }
 
 
 def run_instance(name, ids, M, W, full, n_cases, action, born):
     """The weighted gate over one instance. Returns None if the optimum is not
     known here, which aborts the whole check."""
-    n = class_counts_from_masks(ids, action, W)
+    n = class_counts_from_masks(ids, action, W, full)
     wt, L, _ = weights_from_counts(ids, action, n)
     optimo = L * len(n)
 
@@ -168,6 +260,11 @@ def run_instance(name, ids, M, W, full, n_cases, action, born):
         st["equals_design_order"] = o == design
         st["exhausted_any"] = any(r["exhausted"] for r in st["rows"])
         st["seconds"] = round(time.time() - t0, 1)
+        # The greedy occupies index 0 and is not one of the restarts, so the
+        # rate the budget depends on counts hits among the random starts only.
+        st["greedy_hits"] = st["rows"][0]["end_score"] == optimo
+        st["restart_budget"] = restart_budget(
+            sum(1 for r in st["rows"][1:] if r["end_score"] == optimo))
         multis[vec] = st
         primero = ("—" if st["starts_until_first_hit"] is None
                    else f"{st['starts_until_first_hit']} ({st['first_hit_start']})")
@@ -236,6 +333,8 @@ def main() -> int:
                 "hit_rate": m["hit_rate"],
                 "optimum_is_fixed_point": f["es_punto_fijo"],
                 "exhausted_any": m["exhausted_any"],
+                "greedy_hits": m["greedy_hits"],
+                "restart_budget": m["restart_budget"],
                 "seconds": m["seconds"],
             }
             primero = ("—" if m["starts_until_first_hit"] is None
@@ -259,6 +358,37 @@ def main() -> int:
               f"{decide['best_balanced']:.6f} de acierto balanceado")
     if not decide["optimum_is_fixed_point"]:
         print("    y ADEMAS se aleja del optimo cuando arranca en el")
+
+    # ---- WHAT THE 64 RESTARTS ARE REALLY WORTH, AT THE MEASURED RATE -------
+    print()
+    print("=" * 78)
+    print("PRESUPUESTO DE REINICIOS — recalculado a la tasa medida CON PESOS")
+    print("=" * 78)
+    print(f"  local_search.py declara {MULTISTART_STARTS} arranques con este")
+    print("  argumento: a una tasa de 1 de cada 4, fallar del todo tiene")
+    print(f"  probabilidad 0.75**{MULTISTART_STARTS} = "
+          f"{0.75 ** MULTISTART_STARTS:.2e}. Ese 1-de-4 se midio SIN PESOS.")
+    print("  La constante no se toca; lo que se recalcula es la afirmacion.")
+    print()
+    print(f"  {'instancia · vecindario':<34}{'aciertos':>10}{'tasa':>9}"
+          f"{'IC95 tasa':>18}{'fallo':>11}{'IC95 fallo':>24}")
+    for inst in ("corpus", INSTANCIA_QUE_VALIDA):
+        for vec in NEIGHBOURHOODS:
+            b = per[inst]["multiarranque"][vec]["restart_budget"]
+            lo, hi = b["hit_rate_ci95"]
+            flo, fhi = b["miss_probability_ci95"]
+            print(f"  {inst + ' · ' + vec:<34}"
+                  f"{b['hits_of_random_starts']}/{b['random_starts']:<7}"
+                  f"{b['hit_rate']:>9.4f}"
+                  f"{f'[{lo:.4f}, {hi:.4f}]':>18}"
+                  f"{b['miss_probability']:>11.2e}"
+                  f"{f'[{flo:.1e}, {fhi:.1e}]':>24}")
+    print()
+    print("  Es la probabilidad de que un conjunto NUEVO de 64 arranques falle")
+    print("  entero. El estimador puntual reutiliza las mismas tiradas que dan")
+    print("  la tasa, asi que la parte honesta es el intervalo.")
+    print("  Y esto se mide sobre 29 reglas: sobre las 577 de P4 y P5 la tasa")
+    print("  no tiene por que ser esta.")
 
     OUT.mkdir(exist_ok=True)
     (OUT / "optimizer_check_wt.json").write_text(json.dumps({
