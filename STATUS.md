@@ -96,15 +96,24 @@ order scores 0.6105 on the space, and a search seeing all 134,400 cases reaches
 The search uses the oracle: the material contains the signal, which is not the
 same as it being reachable without labels.
 
-**0.8530 is a maximum over draws, and where more starts improve train they make
-test worse.** At full supervision exactly **one** start of 65 reaches the best
-train score — in all five splits, and still exactly one at 128 and 256 starts, so
-the sample never concentrates. Raising the budget to 256 improves the best train
-score in **2 of the 5 splits**, and in **both** of those the same order scores
-worse on corpus test and on the exhaustive space: mean **−0.0050** and **−0.0196**
-where it moves. Searching the train objective harder stops buying generalization
-before the search stops finding improvements. The three splits that do not budge
-at four times the budget are evidence of local convergence, not proof.
+**The level is robust to the search budget; the order is not.** These are two
+different claims and the figure invites fusing them.
+
+*The level.* Quadrupling the multi-start budget moves the best train score by at
+most one case in 1005, in 2 of the 5 splits, and in both of those the test score
+falls. **The gap from 0.8530 up to the 0.9010 bound does not close by searching
+harder** — more budget stops buying generalization before it stops finding train
+improvements.
+
+*The order.* In all fifteen rows measured — three budgets × five splits —
+**exactly one start reaches the best train score**. In splits 1 to 3 the best did
+not change between 65 and 257 starts, and yet the 192 extra draws never found it
+again: the peak is a singleton that the sample spreads around rather than
+concentrates on.
+
+**So a reader of the number can rely on it, and a reader of the order inherits a
+draw.** That distinction is not academic here: rung 4 consumes orders, not
+scores.
 
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
