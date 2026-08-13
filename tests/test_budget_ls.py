@@ -18,14 +18,17 @@ The suite never calls the module's `main()`, so nothing here writes to
 from __future__ import annotations
 
 import ast
+import json
 import random
 import unittest
 from collections import Counter
 from pathlib import Path
 
 from peldano3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
-from peldano3.budget_and_balance_ls import (ESPERADO, POOL, balanced_objective,
-                                            subsample)
+from peldano3.budget_and_balance_ls import (ESPERADO, GROUPS, POOL, PUBLICADO,
+                                            PUBLICADO_OBJETIVO,
+                                            balanced_objective, record_name,
+                                            start_spread, subsample)
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -222,6 +225,77 @@ class TestLasExpectativasSonConstantes(unittest.TestCase):
         """`budget_and_balance` never used the hybrid one; naming the pool is
         required of every figure (`STATUS.md`)."""
         self.assertEqual(POOL, "puro")
+
+    def test_lo_publicado_es_de_verdad_lo_publicado(self):
+        """The three-column table compares against constants. They are pinned
+        against the record they claim to quote, so they cannot drift from it —
+        and the record itself is only ever READ."""
+        d = json.loads((REPO / "results3" / "budget_and_balance.json")
+                       .read_text())
+        for fila in d["label_budget"]:
+            pub = PUBLICADO[round(fila["fraction"], 2)]
+            with self.subTest(fraccion=fila["fraction"]):
+                for k in ("labels", "test_mean", "test_sd", "test_min",
+                          "test_max"):
+                    self.assertEqual(pub[k], fila[k])
+        for nombre, v in d["objective_comparison"].items():
+            with self.subTest(objetivo=nombre):
+                self.assertEqual(PUBLICADO_OBJETIVO[nombre], v)
+
+
+class TestElRegistroParcialNoPisaElCompleto(unittest.TestCase):
+    """Every save rewrites the whole document from the rows of THIS process, so
+    a partial run landing on the canonical name would drop the section it did
+    not run. `sweep_ls` nearly lost its anchors that way on 2026-08-08."""
+
+    def test_solo_la_corrida_completa_usa_el_nombre_canonico(self):
+        self.assertEqual(record_name(list(GROUPS)),
+                         "budget_and_balance_ls.json")
+        self.assertEqual(record_name(list(reversed(GROUPS))),
+                         "budget_and_balance_ls.json")
+        for parcial in (["budget"], ["balanced"]):
+            with self.subTest(parcial=parcial):
+                self.assertNotEqual(record_name(parcial),
+                                    "budget_and_balance_ls.json")
+                self.assertTrue(record_name(parcial).endswith(".json"))
+
+    def test_cada_subconjunto_tiene_su_propio_nombre(self):
+        nombres = {record_name(g) for g in (["budget"], ["balanced"],
+                                            list(GROUPS))}
+        self.assertEqual(len(nombres), 3)
+
+
+class TestLoQueHicieronLosArranques(unittest.TestCase):
+    """With the seed fixed there is no rate to estimate and, on the real
+    instance, no optimum to hit. What `start_spread` records is the shape of the
+    sample, which is what says whether 64 restarts are comfortable or tight."""
+
+    def fila(self, scores, best_at):
+        return {"best_score": max(scores), "best_from_index": best_at,
+                "best_from": f"aleatorio {best_at}",
+                "rows": [{"end_score": s} for s in scores]}
+
+    def test_cuenta_los_que_empatan_en_el_mejor(self):
+        d = start_spread(self.fila([10, 12, 12, 9, 12], 1))
+        self.assertEqual(d["n_at_best"], 3)
+        self.assertEqual(d["end_score_max"], 12)
+        self.assertEqual(d["end_score_min"], 9)
+        self.assertEqual(d["end_score_distinct"], 3)
+        self.assertEqual(d["n_starts"], 5)
+        self.assertEqual(d["best_from_index"], 1)
+
+    def test_el_maximo_es_el_mejor_por_construccion(self):
+        for scores in ([5], [1, 2, 3], [7, 7, 7]):
+            with self.subTest(scores=scores):
+                d = start_spread(self.fila(scores, 0))
+                self.assertEqual(d["end_score_max"], max(scores))
+
+    def test_un_solo_arranque_en_el_mejor_es_visible(self):
+        """The case that matters: one start at the best out of 65 distinct
+        values means the result rides on a single lucky shuffle."""
+        d = start_spread(self.fila(list(range(65)), 64))
+        self.assertEqual(d["n_at_best"], 1)
+        self.assertEqual(d["end_score_distinct"], 65)
 
 
 if __name__ == "__main__":

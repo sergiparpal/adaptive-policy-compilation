@@ -87,6 +87,14 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
             "peldano3/order_search.py",
             "peldano3/budget_and_balance.py",
             "peldano3/optimizer_check.py",   # offline: the optimizer's own ceiling
+            # offline: the weighted optimizer's ceiling. Added 2026-08-13, and
+            # deliberately: it first tried to count the classes off the masks to
+            # avoid this import, and the masks give the per-class CEILING, which
+            # equals the class size only where every case is winnable — true of
+            # the hidden policy, false of the 577 rules by 98 cases in 1005.
+            # Avoiding the oracle bought nothing and cost a defect the gate
+            # could not see.
+            "peldano3/optimizer_check_wt.py",
             "peldano3/order_search_ls.py",   # offline: labels the two instances
             "peldano4/feedback.py",
         }

@@ -484,68 +484,20 @@ class TestObjetivoPonderado(unittest.TestCase):
         self.assertLess(cronometra(None), 1.5 * cronometra(unos))
 
 
-class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
-    """`optimizer_check_wt` derives the cases per class from the MASKS instead
-    of from the oracle, and gates on a weighted optimum of L x |clases|. A wrong
-    count there would validate the instrument against the wrong number, which is
-    the one failure mode a step 0 cannot afford.
+class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
+    """The gate of `optimizer_check_wt` rests on one arithmetic claim: a policy
+    that gets every case right reaches recall 1 in every class at once, so it
+    maximizes the balanced objective and scores exactly L x |clases|. If that
+    number were wrong the instrument would be validated against the wrong
+    target, which is the one failure mode a step 0 cannot afford.
 
-    The derivation is only valid where every case is winnable. Elsewhere it
-    returns the per-class CEILING, and the difference is not academic: over the
-    577 learned rules it misses 98 of the 1005 train cases of split 0,
-    concentrated in the two classes the balanced objective exists to protect.
-    So the precondition is checked and the function raises. That is pinned here
-    because the gate passing was, by itself, no evidence for it: on the hidden
-    policy the two quantities coincide."""
-
-    def instancia_cubierta(self, seed, n_reglas=12, n_casos=60):
-        """Every case matched by at least one rule carrying its correct label —
-        the precondition of the derivation, which the hidden policy satisfies by
-        construction because every case is covered by its own rule."""
-        rng = random.Random(seed)
-        ids = [f"X{k:03d}" for k in range(n_reglas)]
-        action = {rid: ACCIONES[k % len(ACCIONES)] for k, rid in enumerate(ids)}
-        label = [rng.choice(ACCIONES) for _ in range(n_casos)]
-        pool = []
-        for y in label:
-            p = {rid for rid in ids if rng.random() < 0.3}
-            p.add(rng.choice([rid for rid in ids if action[rid] == y]))
-            pool.append(sorted(p))
-        return ids, action, label, pool, list(range(n_casos))
-
-    def test_reproduce_el_recuento_directo_cuando_todo_es_ganable(self):
-        from peldano3.optimizer_check_wt import class_counts_from_masks
-
-        for seed in range(10):
-            ids, action, label, pool, idxs = self.instancia_cubierta(seed)
-            _M, W, full = build_masks(ids, pool, label, action, idxs)
-            with self.subTest(seed=seed):
-                self.assertEqual(class_counts_from_masks(ids, action, W, full),
-                                 Counter(label))
-
-    def test_se_niega_a_devolver_un_techo_como_si_fuera_un_recuento(self):
-        """The failure the gate could not see. One case with no correct rule is
-        enough: the union of the correct masks stops being the class size and
-        becomes the ceiling, and a caller weighting by it would maximize
-        something else."""
-        from peldano3.optimizer_check_wt import class_counts_from_masks
-
-        for seed in range(6):
-            ids, action, label, pool, idxs = self.instancia_cubierta(seed)
-            # strip case 0 of every rule that gets it right
-            pool[0] = [rid for rid in pool[0] if action[rid] != label[0]]
-            _M, W, full = build_masks(ids, pool, label, action, idxs)
-            with self.subTest(seed=seed):
-                with self.assertRaises(ValueError) as ctx:
-                    class_counts_from_masks(ids, action, W, full)
-                self.assertIn("techo", str(ctx.exception))
+    The counts come from the oracle (`class_counts`), and after 2026-08-13 they
+    come from nowhere else. An earlier version derived them from the masks to
+    avoid the import; the masks give the per-class CEILING, which coincides with
+    the class size only where every case is winnable — on the hidden policy, and
+    not on the 577 rules."""
 
     def test_un_orden_perfecto_puntua_exactamente_L_por_clases(self):
-        """The criterion the weighted gate rests on, in miniature: a policy that
-        gets every case right reaches recall 1 in every class at once, so it
-        maximizes the balanced objective and its score is L x |clases|."""
-        from peldano3.optimizer_check_wt import class_counts_from_masks
-
         ids = ["X000", "X001", "X002"]
         action = {"X000": "A", "X001": "B", "X002": "C"}
         label = ["A"] * 5 + ["B"] * 3 + ["C"] * 2
@@ -554,12 +506,25 @@ class TestRecuentoDeClasesSobreMascaras(unittest.TestCase):
         M, W, full = build_masks(ids, pool, label, action, idxs)
         wt, L, n = balanced_weights(ids, action, label, idxs)
         self.assertEqual(score_order(ids, M, W, full, wt), L * len(n))
-        self.assertEqual(class_counts_from_masks(ids, action, W, full),
-                         Counter(label))
+
+    def test_el_recuento_del_oraculo_cuenta_todos_los_casos(self):
+        """What the mask route got wrong: every case belongs to its class,
+        winnable or not."""
+        from harness.domain import generate_corpus
+        from peldano3.optimizer_check_wt import class_counts
+
+        corpus = generate_corpus(200, seed=17)
+        n = class_counts(corpus)
+        self.assertEqual(sum(n.values()), len(corpus))
 
     def test_los_pesos_por_recuento_coinciden_con_los_pesos_por_etiquetas(self):
+        rng = random.Random(11)
         for seed in range(10):
-            ids, action, label, _pool, idxs = self.instancia_cubierta(seed)
+            ids = [f"X{k:03d}" for k in range(12)]
+            action = {rid: ACCIONES[k % len(ACCIONES)]
+                      for k, rid in enumerate(ids)}
+            label = [rng.choice(ACCIONES) for _ in range(60)]
+            idxs = list(range(len(label)))
             with self.subTest(seed=seed):
                 self.assertEqual(balanced_weights(ids, action, label, idxs),
                                  weights_from_counts(ids, action,

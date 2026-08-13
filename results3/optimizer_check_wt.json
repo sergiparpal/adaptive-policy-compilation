@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-08-13T08:06:38Z",
+    "recorded_at": "2026-08-13T10:55:51Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": null,
-    "git_commit": "51dab073c5d900100f3d1bcdda2529383ae37c54",
-    "git_dirty": false,
-    "code_dirty": false,
-    "code_digest": "a9af65f06ca28c41",
+    "git_commit": "0f0344b73e1540a973675973faae588666a6ddba",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "15c9134c7b9a3cb7",
     "multistart_seed": 17,
     "multistart_starts": 64,
     "neighbourhood": "move+swap"
@@ -253,7 +253,7 @@
         "hit_rate": 0.1692,
         "equals_design_order": false,
         "exhausted_any": false,
-        "seconds": 1.9,
+        "seconds": 0.8,
         "greedy_hits": false,
         "restart_budget": {
           "hits_of_random_starts": 11,
@@ -294,7 +294,7 @@
         "hit_rate": 0.0,
         "equals_design_order": false,
         "exhausted_any": false,
-        "seconds": 9.8,
+        "seconds": 9.3,
         "greedy_hits": false,
         "restart_budget": {
           "hits_of_random_starts": 0,
@@ -335,7 +335,7 @@
         "hit_rate": 0.1846,
         "equals_design_order": false,
         "exhausted_any": false,
-        "seconds": 8.5,
+        "seconds": 8.0,
         "greedy_hits": false,
         "restart_budget": {
           "hits_of_random_starts": 12,
@@ -4400,7 +4400,7 @@
           "source": "local_search.py, medido sin pesos en el paso 0"
         }
       },
-      "seconds": 1.9
+      "seconds": 0.8
     },
     "espacio exhaustivo \u00b7 swap": {
       "best_balanced": 0.992092,
@@ -4431,7 +4431,7 @@
           "source": "local_search.py, medido sin pesos en el paso 0"
         }
       },
-      "seconds": 9.8
+      "seconds": 9.3
     },
     "espacio exhaustivo \u00b7 move+swap": {
       "best_balanced": 1.0,
@@ -4462,8 +4462,8 @@
           "source": "local_search.py, medido sin pesos en el paso 0"
         }
       },
-      "seconds": 8.5
+      "seconds": 8.0
     }
   },
-  "seconds_total": 22.0
+  "seconds_total": 20.1
 }

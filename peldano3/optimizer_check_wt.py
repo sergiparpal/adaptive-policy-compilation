@@ -56,7 +56,9 @@ from collections import Counter
 from math import comb
 from pathlib import Path
 
+from harness.ceiling_check import all_cases
 from harness.domain import generate_corpus
+from harness.hidden_policy import true_action
 from harness.provenance import describe, environment
 
 from .local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
@@ -73,41 +75,25 @@ OUT = Path("results3")
 INSTANCIA_QUE_VALIDA = "espacio exhaustivo"
 
 
-def class_counts_from_masks(ids, action, W, full):
+def class_counts(cases):
     """
-    Cases per class, read off the masks — ONLY where every case is winnable.
+    Cases per class, from the oracle. One way of counting classes, and this is
+    it.
 
-    Every bit of W[r] belongs to a case of class action[r], so the union over
-    the rules of each action counts the cases of that class THAT SOME CORRECT
-    RULE MATCHES. That is the per-class CEILING, and it coincides with the class
-    size exactly when every case has a correct rule covering it.
+    The previous version derived the counts from the masks, to keep this module
+    free of `true_action`. That was wrong, and the gate could not see it: the
+    union of the correct masks is the per-class CEILING, which equals the class
+    size only where every case is winnable. On the hidden policy it is — every
+    case is covered by its own rule — and on the 577 learned rules it is not,
+    by 98 cases of 1005, concentrated in the two classes the balanced objective
+    exists to protect. Avoiding the import bought nothing and cost a defect
+    invisible to the one instance the gate runs on.
 
-    On the hidden policy it does: every case is covered by its own rule. On the
-    577 learned rules it does NOT — two thirds of T3_ENGINEERING and of
-    ACCOUNT_MANAGER have no correct rule at all — and there the union falls 98
-    cases short of the 1005 of split 0's train. Weighting by a ceiling instead
-    of by a class size would inflate exactly the classes the balanced objective
-    exists to protect, by a factor of three, and would silently maximize
-    something other than what the record maximized.
-
-    So the precondition is CHECKED rather than documented, and the function
-    raises instead of returning a ceiling that a caller would read as a count.
-    The balanced objective of P5 comes from `Counter(truth)` —
-    `budget_and_balance_ls.balanced_objective` — and never from here.
+    So the module reads the truth, like every other offline measurement in the
+    repo, and is declared in `tests/test_oracle_separation.py`. It decides
+    nothing and no online component imports it.
     """
-    porclase = {}
-    for rid in ids:
-        porclase[action[rid]] = porclase.get(action[rid], 0) | W[rid]
-    ganables = 0
-    for m in porclase.values():
-        ganables |= m
-    if ganables != full:
-        faltan = (full & ~ganables).bit_count()
-        raise ValueError(
-            f"{faltan} casos no tienen ninguna regla correcta que los case: el "
-            "recuento por mascaras seria el techo por clase y no el tamano de "
-            "la clase")
-    return Counter({c: m.bit_count() for c, m in porclase.items() if m})
+    return Counter(true_action(c) for c in cases)
 
 
 # ---------------------------------------------------------------------------
@@ -181,10 +167,9 @@ def restart_budget(n_hits, n_random=MULTISTART_STARTS):
     }
 
 
-def run_instance(name, ids, M, W, full, n_cases, action, born):
+def run_instance(name, ids, M, W, full, n_cases, action, born, n):
     """The weighted gate over one instance. Returns None if the optimum is not
     known here, which aborts the whole check."""
-    n = class_counts_from_masks(ids, action, W, full)
     wt, L, _ = weights_from_counts(ids, action, n)
     optimo = L * len(n)
 
@@ -301,10 +286,11 @@ def main() -> int:
     sM, sW, sfull, sn = masks_over_space(ids, conds, action)
 
     per = {}
-    for inst, (M, W, full, ncas) in (
-            ("corpus", (cM, cW, cfull, len(corpus))),
-            (INSTANCIA_QUE_VALIDA, (sM, sW, sfull, sn))):
-        out = run_instance(inst, ids, M, W, full, ncas, action, born)
+    for inst, (M, W, full, ncas, n) in (
+            ("corpus", (cM, cW, cfull, len(corpus), class_counts(corpus))),
+            (INSTANCIA_QUE_VALIDA, (sM, sW, sfull, sn,
+                                    class_counts(all_cases())))):
+        out = run_instance(inst, ids, M, W, full, ncas, action, born, n)
         if out is None:
             return 1
         per[inst] = out
