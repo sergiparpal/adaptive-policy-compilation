@@ -339,7 +339,17 @@ Same corpus of 2000 at seed 17, same five splits, same pure pool, same
 fractions, same draw seeds, same simple random subsampling, same evaluation over
 the whole test half. Only the optimizer changed. Record:
 [`budget_and_balance_ls.json`](budget_and_balance_ls.json). 1663 s, zero API
-calls, one process, `code_dirty: false`.
+calls, one process.
+
+**Provenance, since one flag reads badly on its own.** That record carries
+`code_dirty: false` at `a69890b`, which is the flag that matters: the commit
+identifies the code that ran. It also carries `git_dirty: true`, and that is
+**only** `README.md` and `IDEAS.md`, edited during the run while the P7
+documentation was being written. Neither is under `CODE_ROOTS`, neither is read
+by anything, and no input to the figures was uncommitted. The two flags are split
+precisely so this case is distinguishable from a code change
+(`harness/provenance.py`); a `true` with no explanation beside it is not
+traceability, so this is the explanation.
 
 **A blocking gate was run first, and it found a defect.** The class-weighted
 objective got its own step 0 (`optimizer_check_wt.py`): the hidden policy in
@@ -405,11 +415,45 @@ because at low budget it usually **is** the greedy.
 |---|---|---|
 | **P-a** | **HOLDS** (gate) | 0.8530 ± 0.0062, min 0.8472, max 0.8640, space 0.6105 — reproduces `order_search_ls.json` digit for digit. |
 | **P-b** | **REFUTED** | Gains +0.0817, +0.0597, +0.0429, **+0.0527**, +0.0035. Not monotone — it grows from 10% to 5%, the stated refutation — and at 5% it is +0.0527 against the predicted ≤ +0.02. Only the "≥ +0.07 at 100%" clause holds. |
-| **P-c** | **REFUTED** | At 1% LS 0.5767 against greedy 0.5732: LS ≥ greedy, which is the refutation verbatim. Structural, not luck — see above. |
-| **P-d** | **NOT REFUTED, threshold missed** | Ratio 5%/100% falls from the published **0.9147** to **0.8687**. Below the 0.90 that would refute it, above the 0.85 it predicted. Greedy-today's own ratio is 0.8924. |
+| **P-c** | **REFUTED** | At 1% LS 0.5767 against greedy 0.5732: LS ≥ greedy, which is the refutation verbatim. |
+| **P-d** | **NOT REFUTED, threshold missed** | Ratio 5%/100% falls from the published **0.9147** to **0.8687**. Below the 0.90 that would refute it, above the 0.85 it predicted. Greedy-today's own ratio is 0.8924. And the direction depends on the denominator — see the FINDINGS3 §4 erratum, where the same budget *improves* from 78.2% to 82.2% as a fraction of the coverage bound. |
 | **P-e** | **REFUTED** | LS sd 0.0478 at 5% (predicted > 0.0535) and 0.0710 at 1% (predicted > 0.0628). Against greedy-today in the same run — 0.0590 and 0.0739 — the LS sd is **smaller at both**, which is the refutation verbatim. Against the published greedy it is smaller at 5% and larger at 1%. |
 | **P-f** | **HOLDS** | Space/corpus ratio 0.7157, 0.6203, 0.6275, 0.6055, 0.5740. Every row far below its corpus figure and low budgets losing proportionally more, with one inversion between 25% and 10%. |
 | **P-g** | **REFUTED** | Balancing costs the LS **+0.0274** against the published 0.0557 — less, as predicted — but buys **+0.0576** in balanced accuracy against the published +0.1695. The gain moved the other way, which is the refutation. |
+
+**P-b, P-c and P-e are not three independent failures. They are one fact about
+the instrument, seen three times.** §0 bet that a stronger optimizer would buy
+most where the objective is informative and could *actively lose* where it is
+not, "maximising harder the thing that has stopped being a proxy". The first half
+is right. The second never happens, and cannot, because of how the instrument is
+built:
+
+1. **The objective saturates.** Distinct train scores across the 65 starts fall
+   32.4 → 13.6 → 6.5 → 3.6 → **1.4**. At 10 labels the train objective assigns
+   essentially one value to every order it is shown.
+2. **The multi-start degenerates into the greedy.** Ties between starts go to the
+   lowest index and index 0 is the record's greedy (D2). At 1%, 56 of 65 starts
+   tie at the top, the greedy start wins **25 of 25** configurations, and the
+   returned order is *identical* to the greedy's in 22 of them.
+3. **So the tie-break at index 0 acts as a regularizer.** Where the objective
+   stops discriminating, the search stops moving, and what it returns is the
+   baseline. That is why P-c fails (LS cannot be worse than something it is
+   returning), why P-b's gain flattens to +0.0035 instead of going negative, and
+   why P-e finds *less* dispersion rather than more: the low-budget rows are
+   partly the greedy's own variance, not the search's.
+
+**F4 is the shape of the actual risk, and it is not at the bottom of the curve.**
+Configurations where the local search ends up worse than the greedy on test: 0 of
+5 at 100%, 1 of 25 at 25%, **3 of 25 at 10%**, 2 of 25 at 5%, **0 of 25 at 1%**.
+The danger is not where the objective is noise — there the instrument declines to
+act — but in the middle, where it is informative enough to move the search off
+the greedy and not informative enough for the move to generalize.
+
+The prediction's mechanism was therefore right about the objective and wrong
+about the consequence, because it did not account for its own D2. A design
+decision taken for a different reason — start 0 is the greedy, so the comparison
+is honest in one direction — turned out to determine the entire shape of the
+low-budget half of the curve.
 
 The invariants held: LS ≥ greedy on **train** in all 115 configurations, no
 configuration hit the `max_rounds` safety net, every per-class `ceiling` equals
@@ -440,6 +484,13 @@ at all.
 
 Greedy-today reproduces the published §2 to the digit on the balanced row
 (0.7150 and 0.6936), which is what makes the comparison readable.
+
+All four macro-recall figures are in the record, for **both objectives × both
+optimizers**, in `objective_comparison[objetivo][quien].macro_space`, and per
+split in `objective_runs` as `greedy_macro_space` and `ls_macro_space`. It is a
+fourth measurement rather than a restatement of the third: `e2e espacio` weights
+every one of the 134,400 cases equally, macro-recall weights every *class*
+equally on that same uniform surface.
 
 **On the uniform measure the balanced objective almost stops paying under a good
 optimizer.** Macro-recall over the exhaustive space: balancing buys the greedy

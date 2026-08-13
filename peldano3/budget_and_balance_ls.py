@@ -300,6 +300,100 @@ def aggregate(rows, frac):
 
 
 # ---------------------------------------------------------------------------
+# Is 0.8530 converged, or is it "the best of 65"?
+# ---------------------------------------------------------------------------
+
+BUDGETS = (64, 128, 256)
+
+
+def start_budget_check(inst, espacio, budgets=BUDGETS):
+    """
+    A DIAGNOSTIC, NOT A TUNING, and the distinction is the whole point.
+
+    §1 measured that at full supervision exactly ONE start of 65 reaches the
+    best train score, in all five configurations. That makes the published
+    figure the best of 65 draws rather than a converged value, and on this
+    instance no optimum is known, so nothing else can say whether a 66th start
+    would beat it. This runs the same configuration with more starts and reports
+    whether the best train score moves.
+
+    `MULTISTART_STARTS` stays 64 whatever comes out. It was declared before the
+    runs that used it and changing it after seeing a result is `CLAUDE.md` rule 6
+    under another name. What this can legitimately produce is a CAVEAT on the
+    figure, not a new figure.
+
+    The comparison is nested by construction: `declared_starts` draws its
+    shuffles from `random.Random(17)` in sequence, so the first 65 starts of the
+    256 run are the 65 of the 64 run, bit for bit. Checked below rather than
+    assumed — without it the rows would not be comparable at all.
+    """
+    ids, action, matched = inst["ids"], inst["action"], inst["matched"]
+    rules, truth = inst["rules"], inst["truth"]
+    tr0, te0 = inst["splits"][0]
+    sM, sW, sfull, sn = espacio["masks"]
+
+    M, W, full = build_masks(ids, matched, truth, action, tr0)
+    tM, tW, tfull = build_masks(ids, matched, truth, action, te0)
+    greedy = greedy_del_registro(rules, matched, truth, action, tr0)
+
+    print()
+    print("=" * 78)
+    print("SENSIBILIDAD AL PRESUPUESTO DE ARRANQUES  (diagnostico, no ajuste)")
+    print("=" * 78)
+    print(f"  particion 0 · fraccion 100% · pool {POOL} · {len(tr0)} etiquetas")
+    print(f"  MULTISTART_STARTS sigue en {MULTISTART_STARTS} salga lo que salga.")
+
+    base = declared_starts(ids, first=greedy, n=budgets[0])
+    rows = []
+    for n in budgets:
+        starts = declared_starts(ids, first=greedy, n=n)
+        if starts[:len(base)] != base:
+            raise ValueError("los arranques no son anidados: las filas no son "
+                             "comparables")
+        t0 = time.time()
+        best, st = multistart(starts, M, W, full,
+                              neighbourhood=DECLARED_NEIGHBOURHOOD)
+        fila = {
+            "starts": len(starts), "random_starts": n,
+            "train_score": st["best_score"],
+            "train": round(st["best_score"] / len(tr0), 4),
+            "test": round(score_order(best, tM, tW, tfull) / len(te0), 4),
+            "space": round(score_order(best, sM, sW, sfull) / sn, 4),
+            "seconds": round(time.time() - t0, 1),
+        }
+        fila.update(start_spread(st))
+        rows.append(fila)
+
+    ref = rows[0]
+    print()
+    print(f"  {'arranques':>10}{'train':>9}{'(bruto)':>9}{'test':>9}{'espacio':>9}"
+          f"{'en el mejor':>13}{'distintas':>11}{'desde':>14}{'seg':>7}")
+    for r in rows:
+        r["train_delta_vs_64"] = round(r["train"] - ref["train"], 4)
+        r["train_score_delta_vs_64"] = r["train_score"] - ref["train_score"]
+        r["test_delta_vs_64"] = round(r["test"] - ref["test"], 4)
+        print(f"  {r['starts']:>10}{r['train']:>9.4f}{r['train_score']:>9}"
+              f"{r['test']:>9.4f}{r['space']:>9.4f}{r['n_at_best']:>13}"
+              f"{r['end_score_distinct']:>11}{r['best_from']:>14}"
+              f"{r['seconds']:>7.0f}")
+
+    movido = any(r["train_score"] != ref["train_score"] for r in rows)
+    print()
+    if movido:
+        peor = max(r["train_score"] - ref["train_score"] for r in rows)
+        print(f"  EL MEJOR TRAIN SE MUEVE: +{peor} casos de {len(tr0)} al ampliar")
+        print("  el presupuesto. 0.8530 es el mejor de 65 sorteos, no un valor")
+        print("  convergido, y el caveat alcanza tambien a order_search_ls, que")
+        print("  usa el mismo optimizador con el mismo presupuesto.")
+    else:
+        print("  El mejor train NO se mueve al cuadruplicar el presupuesto.")
+        print("  Es evidencia de convergencia, no prueba: sin optimo conocido")
+        print("  sobre esta instancia, nada descarta un arranque 257.")
+    return {"rows": rows, "best_train_moves": movido,
+            "reference_starts": ref["starts"]}
+
+
+# ---------------------------------------------------------------------------
 # P3 — harness parity. No figures.
 # ---------------------------------------------------------------------------
 
@@ -498,6 +592,7 @@ def seccion_balanceado(inst, espacio, obj_rows, per_class_split0, save):
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     solo_checks = "--checks" in argv
+    solo_arranques = "--start-budget" in argv
     groups = list(GROUPS)
     if "--sections" in argv:
         groups = [g.strip() for g in argv[argv.index("--sections") + 1].split(",")]
@@ -535,6 +630,27 @@ def main(argv=None) -> int:
         return 1
     if solo_checks:
         print(f"\n  coste total: {time.time() - t_start:.0f}s")
+        return 0
+
+    if solo_arranques:
+        d = start_budget_check(inst, espacio)
+        OUT.mkdir(exist_ok=True)
+        (OUT / "start_budget_check.json").write_text(json.dumps({
+            "_env": environment(neighbourhood=DECLARED_NEIGHBOURHOOD,
+                                multistart_seed=MULTISTART_SEED,
+                                multistart_starts=MULTISTART_STARTS,
+                                budgets=list(BUDGETS)),
+            "what": "diagnostic, not a tuning: whether the best train score of "
+                    "split 0 at full supervision moves when the multi-start "
+                    "budget is doubled and quadrupled. MULTISTART_STARTS is "
+                    "unchanged.",
+            "surface": "corpus test", "pool": POOL, "split": 0, "fraction": 1.0,
+            "n_rules": len(inst["ids"]), "n_space": espacio["masks"][3],
+            **d,
+            "seconds_total": round(time.time() - t_start, 1),
+        }, indent=2))
+        print(f"\n  coste total: {time.time() - t_start:.0f}s")
+        print(f"-> {OUT/'start_budget_check.json'}")
         return 0
 
     rows, budget_rows, obj_rows = [], [], []
