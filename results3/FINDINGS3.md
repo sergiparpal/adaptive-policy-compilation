@@ -174,6 +174,68 @@ declared. Rung 1's 0/17 for `SECURITY_INCIDENT` was not a property of the system
 it was the undeclared consequence of maximizing total correct decisions with an
 arbitration that also did it badly.
 
+> **[ERRATUM 2026-08-13] Most of the sacrifice was the greedy's, not the
+> objective's.** Step 3 of the audit re-ran this section with the declared
+> multi-start local search, same split 0, same pure pool, same two objectives —
+> only the search changed
+> ([`FINDINGS_AUDIT.md`](FINDINGS_AUDIT.md) Step 3;
+> [`budget_and_balance_ls.json`](budget_and_balance_ls.json)).
+>
+> ```
+> clase                  techo   ESTE REGISTRO   voraz hoy   BL hoy   % techo
+>                                (total)         (total)     (total)  (BL, total)
+> T2_TECHNICAL             357        318            318       341       96%
+> SELF_SERVICE_DEFLECT     220        191            191       212       96%
+> BILLING_SPECIALIST       136         90             90       124       91%
+> T1_GENERAL               128        128            128       124       97%
+> T3_ENGINEERING            20         14             14        18       90%
+> ACCOUNT_MANAGER           21          0              0        19       90%
+> SECURITY_INCIDENT         10          7              4         5       50%
+> ONCALL_ESCALATION          3          0              0         0        0%
+> ```
+>
+> **Under the SAME total objective**, a competent optimizer takes six of the eight
+> classes to 90% or more of their ceiling. `ACCOUNT_MANAGER` goes from **0 of 21
+> to 19 of 21** with no balancing at all, `BILLING_SPECIALIST` from 66% to 91%,
+> `T3_ENGINEERING` from 70% to 90%. The 0% and the 66% this section reads as
+> *"which classes get sacrificed is a choice of objective function"* were
+> substantially a property of the greedy search, not of the objective.
+>
+> **The knob is real, and it is smaller and narrower than published.** What
+> survives is exactly the two rarest classes: under the total objective the local
+> search still leaves `SECURITY_INCIDENT` at 5 of 10 and `ONCALL_ESCALATION` at
+> **0 of 3**. For those two the trade this section describes is genuine. For
+> `ACCOUNT_MANAGER`, which is where the case was made most vividly, it is not.
+>
+> In aggregate the same correction: balancing costs the greedy 0.0563 and buys
+> +0.1735 in balanced accuracy; under the local search it costs +0.0274 and buys
+> **+0.0576**. Over the exhaustive space, macro-recall says it buys the greedy
+> +0.1093 and the local search +0.0201.
+>
+> **Two further notes on this table.** The tie-break fix of 2026-08-06 moves
+> exactly one cell of it: `SECURITY_INCIDENT` under the total objective, from 7
+> to 4. Every other cell reproduces, and the balanced column reproduces in all
+> eight. And the balanced local search is *worse* than the balanced greedy on the
+> two smallest classes — `ONCALL_ESCALATION` 2 of 3 against 3 of 3,
+> `SECURITY_INCIDENT` 9 of 10 against 10 of 10 — while scoring higher on the
+> weighted train objective: with 4 and 10 training cases, maximizing macro-recall
+> harder does not generalize.
+>
+> **The same claim also lives in code, where an erratum cannot reach it.** The
+> module docstring of `peldano3/budget_and_balance.py` states that the greedy
+> *"maximizes total correct decisions and **therefore** sacrifices the rare
+> classes: on test it gave 0/21 on ACCOUNT_MANAGER and 0/3 on
+> ONCALL_ESCALATION"*. Both figures remain true of the greedy; the *therefore* is
+> what this erratum withdraws. It is deliberately **not** rewritten — that file
+> produces `budget_and_balance.json` and `harness/provenance.py` hashes it into
+> the `code_digest` those records carry, so editing prose there moves a
+> provenance signal while no figure moves. It is recorded here instead: **that
+> docstring carries figures with no erratum attached to them**, and this is the
+> erratum.
+>
+> **This record's own figures are not modified.** Reproduced with
+> `python3 -m peldano3.budget_and_balance_ls`. Zero API calls.
+
 ---
 
 ## 4. Caveats
@@ -233,11 +295,29 @@ corpus, already paid for. Saying "it works with 50 labels" would omit that cost.
 > **0.5732** at 1%. The collapse is real but shallower, and it does not reach
 > born_at.
 >
-> **"50 labels are practically free" is weakened but not withdrawn.** The headline
-> ratio 5%/100% falls from **0.9147** to **0.8687** under the local search — 87%
-> of full supervision on 50 labels rather than 91%. With the better optimizer
-> there is simply more to lose: full supervision now buys 0.8530 instead of
-> 0.7707, so the same 50 labels fall further behind.
+> **"50 labels are practically free": the claim genuinely changes with the
+> denominator, so all three readings are given.** They do not agree, and one of
+> them moves in the *opposite* direction:
+>
+> ```
+> lectura                                        publicado    BL hoy   direccion
+> como fraccion de la supervision plena            0.9147    0.8687    empeora
+> como perdida absoluta en e2e test                0.0658    0.1120    empeora
+> como fraccion de la cota por cobertura (0.9010)   78.2%     82.2%    MEJORA
+> ```
+>
+> As a **fraction of full supervision** the 5% budget falls from 91% to 87%, and
+> in **absolute loss** it nearly doubles, from 0.0658 to 0.1120 — both because the
+> better optimizer raises the ceiling of comparison: full supervision now buys
+> 0.8530 instead of 0.7707, so the same 50 labels fall further behind. But as a
+> **fraction of the coverage bound** — how much of what any order could achieve
+> those 50 labels actually capture — it *improves*, from 78.2% to 82.2%.
+>
+> The sentence above this erratum uses the third denominator ("78% of the
+> ceiling") and the headline of the section uses the first. Under the audited
+> optimizer they now point opposite ways, which is exactly why the denominator has
+> to be stated. Nothing here settles which reading is the right one; what is
+> withdrawn is the assumption that it does not matter.
 >
 > **The high variance at low budget does not grow, it shrinks.** Against this
 > record's sd of 0.0535 at 5% and 0.0628 at 1%, the local search gives 0.0478 and

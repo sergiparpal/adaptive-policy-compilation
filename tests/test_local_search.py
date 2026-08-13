@@ -606,6 +606,20 @@ class TestMultiArranque(unittest.TestCase):
         for _nombre, o in a:
             self.assertEqual(sorted(o), sorted(ids))
 
+    def test_los_presupuestos_mayores_son_anidados(self):
+        """The property the start-budget diagnostic rests on: the shuffles come
+        off `random.Random(17)` in sequence, so 256 starts BEGIN with the same 64
+        the record used. Without it, comparing budgets would be comparing two
+        different samples and the diagnostic would say nothing."""
+        ids = [f"X{k:03d}" for k in range(9)]
+        voraz = list(reversed(sorted(ids)))
+        pequeno = declared_starts(ids, first=voraz, n=64)
+        for n in (128, 256):
+            grande = declared_starts(ids, first=voraz, n=n)
+            with self.subTest(n=n):
+                self.assertEqual(grande[:len(pequeno)], pequeno)
+                self.assertEqual(len(grande), n + 1)
+
     def test_el_voraz_ocupa_la_posicion_cero(self):
         """So that a tie goes to it and the multi-start is never worse than the
         single run the audit asked for (`results3/FINDINGS_AUDIT.md`, Step 0)."""
