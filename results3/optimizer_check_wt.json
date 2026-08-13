@@ -1,0 +1,4469 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-13T08:06:38Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "51dab073c5d900100f3d1bcdda2529383ae37c54",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a9af65f06ca28c41",
+    "multistart_seed": 17,
+    "multistart_starts": 64,
+    "neighbourhood": "move+swap"
+  },
+  "what": "phase P2 of step 3 of the audit: the class-weighted local search on the perfect policy, whose weighted optimum is L x (number of classes) by construction",
+  "criterion": "the weighted optimum over the espacio exhaustivo with the declared neighbourhood (move+swap); the corpus is measured and does not validate",
+  "passes": true,
+  "n_rules": 29,
+  "n_cases": {
+    "corpus": 2000,
+    "espacio exhaustivo": 134400
+  },
+  "instances": {
+    "corpus": {
+      "L": 995277022740,
+      "n_classes": 8,
+      "optimum": 7962216181920,
+      "cases_per_class": {
+        "ACCOUNT_MANAGER": 109,
+        "BILLING_SPECIALIST": 271,
+        "ONCALL_ESCALATION": 7,
+        "SECURITY_INCIDENT": 20,
+        "SELF_SERVICE_DEFLECT": 495,
+        "T1_GENERAL": 255,
+        "T2_TECHNICAL": 726,
+        "T3_ENGINEERING": 117
+      },
+      "design_balanced": 1.0,
+      "reverse_balanced": 0.125,
+      "greedy_balanced": 0.434623,
+      "greedy_e2e": 0.7365,
+      "desde_el_optimo": {
+        "move": {
+          "es_punto_fijo": true,
+          "start_score": 7962216181920,
+          "end_score": 7962216181920,
+          "moves": 0,
+          "swaps": 0
+        },
+        "swap": {
+          "es_punto_fijo": true,
+          "start_score": 7962216181920,
+          "end_score": 7962216181920,
+          "moves": 0,
+          "swaps": 0
+        },
+        "move+swap": {
+          "es_punto_fijo": true,
+          "start_score": 7962216181920,
+          "end_score": 7962216181920,
+          "moves": 0,
+          "swaps": 0
+        }
+      }
+    },
+    "espacio exhaustivo": {
+      "L": 3412436999277600,
+      "n_classes": 8,
+      "optimum": 27299495994220800,
+      "cases_per_class": {
+        "ACCOUNT_MANAGER": 16440,
+        "BILLING_SPECIALIST": 6840,
+        "ONCALL_ESCALATION": 6300,
+        "SECURITY_INCIDENT": 50400,
+        "SELF_SERVICE_DEFLECT": 4300,
+        "T1_GENERAL": 5220,
+        "T2_TECHNICAL": 36720,
+        "T3_ENGINEERING": 8180
+      },
+      "design_balanced": 1.0,
+      "reverse_balanced": 0.125,
+      "greedy_balanced": 0.775344,
+      "greedy_e2e": 0.899256,
+      "desde_el_optimo": {
+        "move": {
+          "es_punto_fijo": true,
+          "start_score": 27299495994220800,
+          "end_score": 27299495994220800,
+          "moves": 0,
+          "swaps": 0
+        },
+        "swap": {
+          "es_punto_fijo": true,
+          "start_score": 27299495994220800,
+          "end_score": 27299495994220800,
+          "moves": 0,
+          "swaps": 0
+        },
+        "move+swap": {
+          "es_punto_fijo": true,
+          "start_score": 27299495994220800,
+          "end_score": 27299495994220800,
+          "moves": 0,
+          "swaps": 0
+        }
+      }
+    }
+  },
+  "multistart": {
+    "corpus": {
+      "move": {
+        "n_starts": 65,
+        "neighbourhood": "move",
+        "best_score": 7962216181920,
+        "best_from_index": 5,
+        "best_from": "aleatorio 4",
+        "reached_optimum": true,
+        "first_hit_index": 5,
+        "first_hit_start": "aleatorio 4",
+        "starts_until_first_hit": 6,
+        "n_hits": 9,
+        "instance": "corpus",
+        "best_balanced": 1.0,
+        "best_e2e": 1.0,
+        "mean_balanced": 0.996467,
+        "worst_balanced": 0.98478,
+        "hit_rate": 0.1385,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 0.1,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 9,
+          "random_starts": 64,
+          "hit_rate": 0.140625,
+          "hit_rate_ci95": [
+            0.066374,
+            0.250237
+          ],
+          "miss_probability": 6.13329413460483e-05,
+          "miss_probability_ci95": [
+            9.8887726234778e-09,
+            0.012332918848981952
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      },
+      "swap": {
+        "n_starts": 65,
+        "neighbourhood": "swap",
+        "best_score": 7926572652180,
+        "best_from_index": 25,
+        "best_from": "aleatorio 24",
+        "reached_optimum": false,
+        "first_hit_index": null,
+        "first_hit_start": null,
+        "starts_until_first_hit": null,
+        "n_hits": 0,
+        "instance": "corpus",
+        "best_balanced": 0.995523,
+        "best_e2e": 0.987,
+        "mean_balanced": 0.9858,
+        "worst_balanced": 0.966973,
+        "hit_rate": 0.0,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 0.5,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 0,
+          "random_starts": 64,
+          "hit_rate": 0.0,
+          "hit_rate_ci95": [
+            0.0,
+            0.056009
+          ],
+          "miss_probability": 1.0,
+          "miss_probability_ci95": [
+            0.025000000000000105,
+            1.0
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      },
+      "move+swap": {
+        "n_starts": 65,
+        "neighbourhood": "move+swap",
+        "best_score": 7962216181920,
+        "best_from_index": 5,
+        "best_from": "aleatorio 4",
+        "reached_optimum": true,
+        "first_hit_index": 5,
+        "first_hit_start": "aleatorio 4",
+        "starts_until_first_hit": 6,
+        "n_hits": 6,
+        "instance": "corpus",
+        "best_balanced": 1.0,
+        "best_e2e": 1.0,
+        "mean_balanced": 0.996505,
+        "worst_balanced": 0.98478,
+        "hit_rate": 0.0923,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 0.4,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 6,
+          "random_starts": 64,
+          "hit_rate": 0.09375,
+          "hit_rate_ci95": [
+            0.035187,
+            0.192969
+          ],
+          "miss_probability": 0.001836002435888319,
+          "miss_probability_ci95": [
+            1.0989307156210123e-06,
+            0.10100707408009187
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      }
+    },
+    "espacio exhaustivo": {
+      "move": {
+        "n_starts": 65,
+        "neighbourhood": "move",
+        "best_score": 27299495994220800,
+        "best_from_index": 5,
+        "best_from": "aleatorio 4",
+        "reached_optimum": true,
+        "first_hit_index": 5,
+        "first_hit_start": "aleatorio 4",
+        "starts_until_first_hit": 6,
+        "n_hits": 11,
+        "instance": "espacio exhaustivo",
+        "best_balanced": 1.0,
+        "best_e2e": 1.0,
+        "mean_balanced": 0.996113,
+        "worst_balanced": 0.988083,
+        "hit_rate": 0.1692,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 1.9,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 11,
+          "random_starts": 64,
+          "hit_rate": 0.171875,
+          "hit_rate_ci95": [
+            0.089049,
+            0.286754
+          ],
+          "miss_probability": 5.729771718794295e-06,
+          "miss_probability_ci95": [
+            4.048847281884212e-10,
+            0.0025567083824839716
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      },
+      "swap": {
+        "n_starts": 65,
+        "neighbourhood": "swap",
+        "best_score": 27083624067259200,
+        "best_from_index": 2,
+        "best_from": "aleatorio 1",
+        "reached_optimum": false,
+        "first_hit_index": null,
+        "first_hit_start": null,
+        "starts_until_first_hit": null,
+        "n_hits": 0,
+        "instance": "espacio exhaustivo",
+        "best_balanced": 0.992092,
+        "best_e2e": 0.992262,
+        "mean_balanced": 0.948174,
+        "worst_balanced": 0.85746,
+        "hit_rate": 0.0,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 9.8,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 0,
+          "random_starts": 64,
+          "hit_rate": 0.0,
+          "hit_rate_ci95": [
+            0.0,
+            0.056009
+          ],
+          "miss_probability": 1.0,
+          "miss_probability_ci95": [
+            0.025000000000000105,
+            1.0
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      },
+      "move+swap": {
+        "n_starts": 65,
+        "neighbourhood": "move+swap",
+        "best_score": 27299495994220800,
+        "best_from_index": 3,
+        "best_from": "aleatorio 2",
+        "reached_optimum": true,
+        "first_hit_index": 3,
+        "first_hit_start": "aleatorio 2",
+        "starts_until_first_hit": 4,
+        "n_hits": 12,
+        "instance": "espacio exhaustivo",
+        "best_balanced": 1.0,
+        "best_e2e": 1.0,
+        "mean_balanced": 0.995834,
+        "worst_balanced": 0.971491,
+        "hit_rate": 0.1846,
+        "equals_design_order": false,
+        "exhausted_any": false,
+        "seconds": 8.5,
+        "greedy_hits": false,
+        "restart_budget": {
+          "hits_of_random_starts": 12,
+          "random_starts": 64,
+          "hit_rate": 0.1875,
+          "hit_rate_ci95": [
+            0.100815,
+            0.304623
+          ],
+          "miss_probability": 1.6931508682682886e-06,
+          "miss_probability_ci95": [
+            7.98188854396984e-11,
+            0.0011125883219116782
+          ],
+          "inherited_claim": {
+            "hit_rate": 0.25,
+            "miss_probability": 1.0090689833159348e-08,
+            "source": "local_search.py, medido sin pesos en el paso 0"
+          }
+        }
+      }
+    }
+  },
+  "multistart_per_start": {
+    "corpus": {
+      "move": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 3460562482286,
+          "end_score": 7951980091328,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 995277022740,
+          "end_score": 7919964187100,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 3625789869923,
+          "end_score": 7871151906072,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 4160193662612,
+          "end_score": 7926572652180,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 4610686385218,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 3793530073263,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 4215182845853,
+          "end_score": 7919964187100,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 4069798870605,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 3607115345596,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 4294742810260,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 2926499885309,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 2500850579591,
+          "end_score": 7888764003120,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 4084690523147,
+          "end_score": 7892546087300,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 5150874930558,
+          "end_score": 7911738757160,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 3682687343017,
+          "end_score": 7871151906072,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 3976761189520,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 2269255514806,
+          "end_score": 7888764003120,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 4933310786793,
+          "end_score": 7949182152912,
+          "rounds": 4,
+          "moves": 29,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 3325878971772,
+          "end_score": 7962216181920,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 3172136887738,
+          "end_score": 7962216181920,
+          "rounds": 4,
+          "moves": 31,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 3802798984096,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 1604289197056,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 3535183560006,
+          "end_score": 7919964187100,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 4435253968607,
+          "end_score": 7951074539408,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 4026841898387,
+          "end_score": 7919964187100,
+          "rounds": 4,
+          "moves": 29,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 4471639510182,
+          "end_score": 7926572652180,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 1205025486210,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 2220796502834,
+          "end_score": 7919964187100,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 995277022740,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 3917513993574,
+          "end_score": 7841028388340,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 3268164448066,
+          "end_score": 7906255137200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 4083039453766,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 2858285405052,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 2168282085255,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 4255935790533,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 1809787919555,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 3914475431866,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 1833902786534,
+          "end_score": 7953085200060,
+          "rounds": 4,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 1833087789806,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 5021472157482,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 4957487934729,
+          "end_score": 7953990751980,
+          "rounds": 4,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 2254730161320,
+          "end_score": 7871151906072,
+          "rounds": 3,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 4112051321756,
+          "end_score": 7916061139952,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 1142173524492,
+          "end_score": 7916061139952,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 4528486176792,
+          "end_score": 7926572652180,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 2501102848342,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 2669305799706,
+          "end_score": 7918347222240,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 2600415643280,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 995277022740,
+          "end_score": 7944859770120,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 3294689528137,
+          "end_score": 7951074539408,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 3269341250434,
+          "end_score": 7953085200060,
+          "rounds": 4,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 995277022740,
+          "end_score": 7926572652180,
+          "rounds": 4,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 2975298577069,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 29,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 1613052088830,
+          "end_score": 7958313134772,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 2214024550590,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 2798226752412,
+          "end_score": 7953085200060,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 4553846215685,
+          "end_score": 7922669605032,
+          "rounds": 4,
+          "moves": 17,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 2481182125058,
+          "end_score": 7953990751980,
+          "rounds": 4,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 3174638596115,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 2802389181519,
+          "end_score": 7922669605032,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 1795519962236,
+          "end_score": 7904244476548,
+          "rounds": 4,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 3280137245546,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 3283044063663,
+          "end_score": 7962216181920,
+          "rounds": 2,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 1861016569594,
+          "end_score": 7884860955972,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 2055584153980,
+          "end_score": 7906255137200,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        }
+      ],
+      "swap": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 3460562482286,
+          "end_score": 7833821108652,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 78,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 995277022740,
+          "end_score": 7867307374920,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 98,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 3625789869923,
+          "end_score": 7922669605032,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 89,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 4160193662612,
+          "end_score": 7863404327772,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 59,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 4610686385218,
+          "end_score": 7884995678252,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 3793530073263,
+          "end_score": 7802080626060,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 99,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 4215182845853,
+          "end_score": 7858176393060,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 71,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 4069798870605,
+          "end_score": 7798177578912,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 3607115345596,
+          "end_score": 7815190861352,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 91,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 4294742810260,
+          "end_score": 7817749418472,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 60,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 2926499885309,
+          "end_score": 7802080626060,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 102,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 2500850579591,
+          "end_score": 7871629757712,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 4084690523147,
+          "end_score": 7863404327772,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 60,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 5150874930558,
+          "end_score": 7883583832208,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 47,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 3682687343017,
+          "end_score": 7826880400332,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 3976761189520,
+          "end_score": 7798177578912,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 52,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 2269255514806,
+          "end_score": 7802080626060,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 100,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 4933310786793,
+          "end_score": 7863404327772,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 60,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 3325878971772,
+          "end_score": 7863404327772,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 68,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 3172136887738,
+          "end_score": 7871629757712,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 3802798984096,
+          "end_score": 7871629757712,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 81,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 1604289197056,
+          "end_score": 7830783447480,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 124,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 3535183560006,
+          "end_score": 7821652465620,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 4435253968607,
+          "end_score": 7899042067868,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 68,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 4026841898387,
+          "end_score": 7867307374920,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 4471639510182,
+          "end_score": 7926572652180,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 75,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 1205025486210,
+          "end_score": 7871910968992,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 130,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 2220796502834,
+          "end_score": 7826880400332,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 112,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 995277022740,
+          "end_score": 7879005764168,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 87,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 3917513993574,
+          "end_score": 7873522144208,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 64,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 3268164448066,
+          "end_score": 7867307374920,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 4083039453766,
+          "end_score": 7834762700912,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 2858285405052,
+          "end_score": 7699244546532,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 84,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 2168282085255,
+          "end_score": 7817749418472,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 90,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 4255935790533,
+          "end_score": 7892714814068,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 74,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 1809787919555,
+          "end_score": 7888924251432,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 106,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 3914475431866,
+          "end_score": 7854273345912,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 81,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 1833902786534,
+          "end_score": 7798177578912,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 101,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 1833087789806,
+          "end_score": 7880136398932,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 93,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 5021472157482,
+          "end_score": 7907205579728,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 59,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 4957487934729,
+          "end_score": 7863404327772,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 45,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 2254730161320,
+          "end_score": 7871910968992,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 90,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 4112051321756,
+          "end_score": 7867307374920,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 95,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 1142173524492,
+          "end_score": 7817749418472,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 118,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 4528486176792,
+          "end_score": 7858176393060,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 75,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 2501102848342,
+          "end_score": 7871629757712,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 74,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 2669305799706,
+          "end_score": 7708375528392,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 2600415643280,
+          "end_score": 7871629757712,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 84,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 995277022740,
+          "end_score": 7817749418472,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 94,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 3294689528137,
+          "end_score": 7871629757712,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 89,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 3269341250434,
+          "end_score": 7867307374920,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 105,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 995277022740,
+          "end_score": 7863404327772,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 100,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 2975298577069,
+          "end_score": 7884320657360,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 83,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 1613052088830,
+          "end_score": 7871629757712,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 105,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 2214024550590,
+          "end_score": 7854273345912,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 99,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 2798226752412,
+          "end_score": 7858201547280,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 84,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 4553846215685,
+          "end_score": 7854273345912,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 50,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 2481182125058,
+          "end_score": 7712278575540,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 95,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 3174638596115,
+          "end_score": 7837724155800,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 90,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 2802389181519,
+          "end_score": 7888924251432,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 88,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 1795519962236,
+          "end_score": 7863404327772,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 78,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 3280137245546,
+          "end_score": 7826880400332,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 81,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 3283044063663,
+          "end_score": 7871629757712,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 109,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 1861016569594,
+          "end_score": 7875532804860,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 2055584153980,
+          "end_score": 7826880400332,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 105,
+          "exhausted": false
+        }
+      ],
+      "move+swap": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 3460562482286,
+          "end_score": 7960205521268,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 995277022740,
+          "end_score": 7897748495980,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 3625789869923,
+          "end_score": 7871151906072,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 4160193662612,
+          "end_score": 7926572652180,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 4610686385218,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 3793530073263,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 9,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 4215182845853,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 4069798870605,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 3607115345596,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 4294742810260,
+          "end_score": 7949182152912,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 10,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 2926499885309,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 29,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 2500850579591,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 10,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 4084690523147,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 9,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 5150874930558,
+          "end_score": 7911738757160,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 3682687343017,
+          "end_score": 7871151906072,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 3976761189520,
+          "end_score": 7953990751980,
+          "rounds": 4,
+          "moves": 22,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 2269255514806,
+          "end_score": 7888764003120,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 4933310786793,
+          "end_score": 7936378654932,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 3325878971772,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 3172136887738,
+          "end_score": 7940281702080,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 3802798984096,
+          "end_score": 7940281702080,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 1604289197056,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 3535183560006,
+          "end_score": 7919964187100,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 14,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 4435253968607,
+          "end_score": 7951074539408,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 4026841898387,
+          "end_score": 7919964187100,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 20,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 4471639510182,
+          "end_score": 7926572652180,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 1205025486210,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 2220796502834,
+          "end_score": 7893845448832,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 995277022740,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 3917513993574,
+          "end_score": 7841028388340,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 3268164448066,
+          "end_score": 7906255137200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 4083039453766,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 16,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 2858285405052,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 2168282085255,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 4255935790533,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 9,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 1809787919555,
+          "end_score": 7936378654932,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 3914475431866,
+          "end_score": 7949182152912,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 1833902786534,
+          "end_score": 7953085200060,
+          "rounds": 4,
+          "moves": 23,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 1833087789806,
+          "end_score": 7926572652180,
+          "rounds": 2,
+          "moves": 25,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 5021472157482,
+          "end_score": 7940281702080,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 4957487934729,
+          "end_score": 7953990751980,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 2254730161320,
+          "end_score": 7871151906072,
+          "rounds": 2,
+          "moves": 15,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 4112051321756,
+          "end_score": 7916061139952,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 1142173524492,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 10,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 4528486176792,
+          "end_score": 7926572652180,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 2501102848342,
+          "end_score": 7962216181920,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 2669305799706,
+          "end_score": 7914444175092,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 2600415643280,
+          "end_score": 7953990751980,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 11,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 995277022740,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 3294689528137,
+          "end_score": 7953085200060,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 15,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 3269341250434,
+          "end_score": 7919964187100,
+          "rounds": 4,
+          "moves": 21,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 995277022740,
+          "end_score": 7926572652180,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 2975298577069,
+          "end_score": 7944859770120,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 13,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 1613052088830,
+          "end_score": 7958313134772,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 2214024550590,
+          "end_score": 7962216181920,
+          "rounds": 2,
+          "moves": 15,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 2798226752412,
+          "end_score": 7953085200060,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 4553846215685,
+          "end_score": 7922669605032,
+          "rounds": 4,
+          "moves": 17,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 2481182125058,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 3174638596115,
+          "end_score": 7940281702080,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 2802389181519,
+          "end_score": 7922669605032,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 1795519962236,
+          "end_score": 7875054953220,
+          "rounds": 4,
+          "moves": 18,
+          "swaps": 11,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 3280137245546,
+          "end_score": 7953085200060,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 3283044063663,
+          "end_score": 7962216181920,
+          "rounds": 2,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 1861016569594,
+          "end_score": 7884860955972,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 2055584153980,
+          "end_score": 7906255137200,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 1,
+          "exhausted": false
+        }
+      ]
+    },
+    "espacio exhaustivo": {
+      "move": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 21166504576106400,
+          "end_score": 27152600464164000,
+          "rounds": 4,
+          "moves": 14,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 3412436999277600,
+          "end_score": 26987246857032000,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 12506388764334640,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 14062182888984160,
+          "end_score": 27165674935425600,
+          "rounds": 5,
+          "moves": 33,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 15307185949386535,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 11749354663638480,
+          "end_score": 27299495994220800,
+          "rounds": 5,
+          "moves": 33,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 14036025064471335,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 31,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 11925909039259320,
+          "end_score": 27191560030740000,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 13583010486394650,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 14324424119891200,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 10699542366156000,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 32,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 8704065725935160,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 13392903616424080,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 16970873350613210,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 15116845137697968,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 13851392422041680,
+          "end_score": 27152600464164000,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 7722915450871600,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 28,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 15936686977315920,
+          "end_score": 27152600464164000,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 10942156836011912,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 10604759300193030,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 28,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 11636079720997830,
+          "end_score": 26987246857032000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 6889118404781760,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 28,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 12587860228258000,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 13849699300228680,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 14002137322999840,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 14269783014312930,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 4289708384712800,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 9114219474575040,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 32,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 3412436999277600,
+          "end_score": 27143371425626400,
+          "rounds": 2,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 14146088985464240,
+          "end_score": 27191560030740000,
+          "rounds": 4,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 9750173047607300,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 12848637746217210,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 8685331656756720,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 6824873998555200,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 14715202032134040,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 6563448507168000,
+          "end_score": 26974172385770400,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 13306322292443180,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 6865902587664400,
+          "end_score": 27191560030740000,
+          "rounds": 4,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 6738656319100860,
+          "end_score": 27191560030740000,
+          "rounds": 4,
+          "moves": 33,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 15734554032077715,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 29,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 18210698212528360,
+          "end_score": 27143371425626400,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 7777193024339200,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 12939615642552270,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 3732670327945440,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 13947101148786640,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 9072201472785080,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 9253544902986020,
+          "end_score": 26987246857032000,
+          "rounds": 4,
+          "moves": 27,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 9068022162117240,
+          "end_score": 27191560030740000,
+          "rounds": 4,
+          "moves": 34,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 3412436999277600,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 11512387664413620,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 30,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 10130335515214460,
+          "end_score": 26987246857032000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 3412436999277600,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 10184213030287030,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 7090888122729600,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 9128902626715200,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 9278195985921800,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 14407170636785440,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 8453841033820000,
+          "end_score": 26987246857032000,
+          "rounds": 4,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 10373567882180720,
+          "end_score": 27143371425626400,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 8877184895140240,
+          "end_score": 26974172385770400,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 6269360998672800,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 11314952203009000,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 10688027443685970,
+          "end_score": 27299495994220800,
+          "rounds": 2,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 5893119309015680,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 26,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 8062609728793200,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        }
+      ],
+      "swap": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 21166504576106400,
+          "end_score": 25950828419930400,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 26,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 3412436999277600,
+          "end_score": 24813349420171200,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 84,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 12506388764334640,
+          "end_score": 27083624067259200,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 107,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 14062182888984160,
+          "end_score": 24813349420171200,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 48,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 15307185949386535,
+          "end_score": 25963902891192000,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 41,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 11749354663638480,
+          "end_score": 26862705360708000,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 149,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 14036025064471335,
+          "end_score": 26848216219305600,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 87,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 11925909039259320,
+          "end_score": 26595063243117600,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 96,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 13583010486394650,
+          "end_score": 25854256937560800,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 89,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 14324424119891200,
+          "end_score": 26656713669650400,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 78,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 10699542366156000,
+          "end_score": 26581988771856000,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 86,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 8704065725935160,
+          "end_score": 25999008708052800,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 13392903616424080,
+          "end_score": 24545707302580800,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 62,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 16970873350613210,
+          "end_score": 26804585995756800,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 83,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 15116845137697968,
+          "end_score": 25854784741783200,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 64,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 13851392422041680,
+          "end_score": 26329828842105600,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 57,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 7722915450871600,
+          "end_score": 26598644828632800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 106,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 15936686977315920,
+          "end_score": 26656713669650400,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 10942156836011912,
+          "end_score": 25696260773601600,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 102,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 10604759300193030,
+          "end_score": 26122426859373600,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 11636079720997830,
+          "end_score": 26424690334324800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 86,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 6889118404781760,
+          "end_score": 26937430258502400,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 111,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 12587860228258000,
+          "end_score": 26669788140912000,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 78,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 13849699300228680,
+          "end_score": 24558781773842400,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 62,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 14002137322999840,
+          "end_score": 26644879841647200,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 74,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 14269783014312930,
+          "end_score": 26424690334324800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 87,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 4289708384712800,
+          "end_score": 23408228302821600,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 103,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 9114219474575040,
+          "end_score": 26595063243117600,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 100,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 3412436999277600,
+          "end_score": 26656713669650400,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 14146088985464240,
+          "end_score": 24874604179555200,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 68,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 9750173047607300,
+          "end_score": 25973450803591200,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 86,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 12848637746217210,
+          "end_score": 25683186302340000,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 8685331656756720,
+          "end_score": 26924355787240800,
+          "rounds": 8,
+          "moves": 0,
+          "swaps": 93,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 6824873998555200,
+          "end_score": 24545707302580800,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 67,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 14715202032134040,
+          "end_score": 25683186302340000,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 50,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 6563448507168000,
+          "end_score": 24545707302580800,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 13306322292443180,
+          "end_score": 25987053079075200,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 6865902587664400,
+          "end_score": 25950828419930400,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 80,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 6738656319100860,
+          "end_score": 26835141748044000,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 106,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 15734554032077715,
+          "end_score": 26937430258502400,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 95,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 18210698212528360,
+          "end_score": 26848216219305600,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 48,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 7777193024339200,
+          "end_score": 24703005740112000,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 63,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 12939615642552270,
+          "end_score": 25950828419930400,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 84,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 3732670327945440,
+          "end_score": 23408228302821600,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 111,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 13947101148786640,
+          "end_score": 25117216196906400,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 75,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 9072201472785080,
+          "end_score": 26086808077108800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 92,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 9253544902986020,
+          "end_score": 24558781773842400,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 96,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 9068022162117240,
+          "end_score": 24924420778084800,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 97,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 3412436999277600,
+          "end_score": 26523869406904800,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 101,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 11512387664413620,
+          "end_score": 26595063243117600,
+          "rounds": 7,
+          "moves": 0,
+          "swaps": 79,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 10130335515214460,
+          "end_score": 23408228302821600,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 73,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 3412436999277600,
+          "end_score": 26656713669650400,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 95,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 10184213030287030,
+          "end_score": 26692332451915200,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 96,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 7090888122729600,
+          "end_score": 25963902891192000,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 99,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 9128902626715200,
+          "end_score": 24813349420171200,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 76,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 9278195985921800,
+          "end_score": 26424690334324800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 75,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 14407170636785440,
+          "end_score": 25963902891192000,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 53,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 8453841033820000,
+          "end_score": 25696260773601600,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 87,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 10373567882180720,
+          "end_score": 23421302774083200,
+          "rounds": 3,
+          "moves": 0,
+          "swaps": 75,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 8877184895140240,
+          "end_score": 26474052808375200,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 87,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 6269360998672800,
+          "end_score": 24826423891432800,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 69,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 11314952203009000,
+          "end_score": 26241620725404000,
+          "rounds": 4,
+          "moves": 0,
+          "swaps": 66,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 10688027443685970,
+          "end_score": 26899447487976000,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 115,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 5893119309015680,
+          "end_score": 26849630889446400,
+          "rounds": 6,
+          "moves": 0,
+          "swaps": 89,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 8062609728793200,
+          "end_score": 26561852177431200,
+          "rounds": 5,
+          "moves": 0,
+          "swaps": 126,
+          "exhausted": false
+        }
+      ],
+      "move+swap": [
+        {
+          "index": 0,
+          "start": "voraz",
+          "start_score": 21166504576106400,
+          "end_score": 27152600464164000,
+          "rounds": 4,
+          "moves": 13,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 1,
+          "start": "aleatorio 0",
+          "start_score": 3412436999277600,
+          "end_score": 27009550366831200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 2,
+          "start": "aleatorio 1",
+          "start_score": 12506388764334640,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 9,
+          "exhausted": false
+        },
+        {
+          "index": 3,
+          "start": "aleatorio 2",
+          "start_score": 14062182888984160,
+          "end_score": 27299495994220800,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 11,
+          "exhausted": false
+        },
+        {
+          "index": 4,
+          "start": "aleatorio 3",
+          "start_score": 15307185949386535,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 5,
+          "start": "aleatorio 4",
+          "start_score": 11749354663638480,
+          "end_score": 26987246857032000,
+          "rounds": 2,
+          "moves": 25,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 6,
+          "start": "aleatorio 5",
+          "start_score": 14036025064471335,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 13,
+          "exhausted": false
+        },
+        {
+          "index": 7,
+          "start": "aleatorio 6",
+          "start_score": 11925909039259320,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 8,
+          "start": "aleatorio 7",
+          "start_score": 13583010486394650,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 9,
+          "start": "aleatorio 8",
+          "start_score": 14324424119891200,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 10,
+          "start": "aleatorio 9",
+          "start_score": 10699542366156000,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 32,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 11,
+          "start": "aleatorio 10",
+          "start_score": 8704065725935160,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 21,
+          "exhausted": false
+        },
+        {
+          "index": 12,
+          "start": "aleatorio 11",
+          "start_score": 13392903616424080,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 13,
+          "start": "aleatorio 12",
+          "start_score": 16970873350613210,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 14,
+          "start": "aleatorio 13",
+          "start_score": 15116845137697968,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 24,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 15,
+          "start": "aleatorio 14",
+          "start_score": 13851392422041680,
+          "end_score": 27152600464164000,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 9,
+          "exhausted": false
+        },
+        {
+          "index": 16,
+          "start": "aleatorio 15",
+          "start_score": 7722915450871600,
+          "end_score": 27009550366831200,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 17,
+          "start": "aleatorio 16",
+          "start_score": 15936686977315920,
+          "end_score": 27152600464164000,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 18,
+          "start": "aleatorio 17",
+          "start_score": 10942156836011912,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 28,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 19,
+          "start": "aleatorio 18",
+          "start_score": 10604759300193030,
+          "end_score": 27143371425626400,
+          "rounds": 2,
+          "moves": 22,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 20,
+          "start": "aleatorio 19",
+          "start_score": 11636079720997830,
+          "end_score": 26987246857032000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 21,
+          "start": "aleatorio 20",
+          "start_score": 6889118404781760,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 22,
+          "start": "aleatorio 21",
+          "start_score": 12587860228258000,
+          "end_score": 27152600464164000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 11,
+          "exhausted": false
+        },
+        {
+          "index": 23,
+          "start": "aleatorio 22",
+          "start_score": 13849699300228680,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 18,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 24,
+          "start": "aleatorio 23",
+          "start_score": 14002137322999840,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 26,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 25,
+          "start": "aleatorio 24",
+          "start_score": 14269783014312930,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 26,
+          "start": "aleatorio 25",
+          "start_score": 4289708384712800,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 27,
+          "start": "aleatorio 26",
+          "start_score": 9114219474575040,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 28,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 28,
+          "start": "aleatorio 27",
+          "start_score": 3412436999277600,
+          "end_score": 27143371425626400,
+          "rounds": 2,
+          "moves": 22,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 29,
+          "start": "aleatorio 28",
+          "start_score": 14146088985464240,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 30,
+          "start": "aleatorio 29",
+          "start_score": 9750173047607300,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 25,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 31,
+          "start": "aleatorio 30",
+          "start_score": 12848637746217210,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 16,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 32,
+          "start": "aleatorio 31",
+          "start_score": 8685331656756720,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 33,
+          "start": "aleatorio 32",
+          "start_score": 6824873998555200,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 8,
+          "exhausted": false
+        },
+        {
+          "index": 34,
+          "start": "aleatorio 33",
+          "start_score": 14715202032134040,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 35,
+          "start": "aleatorio 34",
+          "start_score": 6563448507168000,
+          "end_score": 26974172385770400,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 36,
+          "start": "aleatorio 35",
+          "start_score": 13306322292443180,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 24,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 37,
+          "start": "aleatorio 36",
+          "start_score": 6865902587664400,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 38,
+          "start": "aleatorio 37",
+          "start_score": 6738656319100860,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 28,
+          "swaps": 16,
+          "exhausted": false
+        },
+        {
+          "index": 39,
+          "start": "aleatorio 38",
+          "start_score": 15734554032077715,
+          "end_score": 27165674935425600,
+          "rounds": 2,
+          "moves": 21,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 40,
+          "start": "aleatorio 39",
+          "start_score": 18210698212528360,
+          "end_score": 27143371425626400,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 41,
+          "start": "aleatorio 40",
+          "start_score": 7777193024339200,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 10,
+          "exhausted": false
+        },
+        {
+          "index": 42,
+          "start": "aleatorio 41",
+          "start_score": 12939615642552270,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 43,
+          "start": "aleatorio 42",
+          "start_score": 3732670327945440,
+          "end_score": 27286421522959200,
+          "rounds": 4,
+          "moves": 26,
+          "swaps": 6,
+          "exhausted": false
+        },
+        {
+          "index": 44,
+          "start": "aleatorio 43",
+          "start_score": 13947101148786640,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 45,
+          "start": "aleatorio 44",
+          "start_score": 9072201472785080,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 22,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 46,
+          "start": "aleatorio 45",
+          "start_score": 9253544902986020,
+          "end_score": 27165674935425600,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 47,
+          "start": "aleatorio 46",
+          "start_score": 9068022162117240,
+          "end_score": 26521220889122400,
+          "rounds": 2,
+          "moves": 24,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 48,
+          "start": "aleatorio 47",
+          "start_score": 3412436999277600,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 23,
+          "swaps": 16,
+          "exhausted": false
+        },
+        {
+          "index": 49,
+          "start": "aleatorio 48",
+          "start_score": 11512387664413620,
+          "end_score": 27165674935425600,
+          "rounds": 3,
+          "moves": 27,
+          "swaps": 12,
+          "exhausted": false
+        },
+        {
+          "index": 50,
+          "start": "aleatorio 49",
+          "start_score": 10130335515214460,
+          "end_score": 26987246857032000,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 1,
+          "exhausted": false
+        },
+        {
+          "index": 51,
+          "start": "aleatorio 50",
+          "start_score": 3412436999277600,
+          "end_score": 27191560030740000,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 52,
+          "start": "aleatorio 51",
+          "start_score": 10184213030287030,
+          "end_score": 27191560030740000,
+          "rounds": 2,
+          "moves": 21,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 53,
+          "start": "aleatorio 52",
+          "start_score": 7090888122729600,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 21,
+          "swaps": 13,
+          "exhausted": false
+        },
+        {
+          "index": 54,
+          "start": "aleatorio 53",
+          "start_score": 9128902626715200,
+          "end_score": 27299495994220800,
+          "rounds": 3,
+          "moves": 17,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 55,
+          "start": "aleatorio 54",
+          "start_score": 9278195985921800,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        },
+        {
+          "index": 56,
+          "start": "aleatorio 55",
+          "start_score": 14407170636785440,
+          "end_score": 27286421522959200,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 57,
+          "start": "aleatorio 56",
+          "start_score": 8453841033820000,
+          "end_score": 27178485559478400,
+          "rounds": 3,
+          "moves": 19,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 58,
+          "start": "aleatorio 57",
+          "start_score": 10373567882180720,
+          "end_score": 27143371425626400,
+          "rounds": 3,
+          "moves": 20,
+          "swaps": 4,
+          "exhausted": false
+        },
+        {
+          "index": 59,
+          "start": "aleatorio 58",
+          "start_score": 8877184895140240,
+          "end_score": 27286421522959200,
+          "rounds": 2,
+          "moves": 18,
+          "swaps": 7,
+          "exhausted": false
+        },
+        {
+          "index": 60,
+          "start": "aleatorio 59",
+          "start_score": 6269360998672800,
+          "end_score": 27178485559478400,
+          "rounds": 2,
+          "moves": 22,
+          "swaps": 5,
+          "exhausted": false
+        },
+        {
+          "index": 61,
+          "start": "aleatorio 60",
+          "start_score": 11314952203009000,
+          "end_score": 27191560030740000,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 62,
+          "start": "aleatorio 61",
+          "start_score": 10688027443685970,
+          "end_score": 27299495994220800,
+          "rounds": 2,
+          "moves": 24,
+          "swaps": 0,
+          "exhausted": false
+        },
+        {
+          "index": 63,
+          "start": "aleatorio 62",
+          "start_score": 5893119309015680,
+          "end_score": 27178485559478400,
+          "rounds": 4,
+          "moves": 25,
+          "swaps": 3,
+          "exhausted": false
+        },
+        {
+          "index": 64,
+          "start": "aleatorio 63",
+          "start_score": 8062609728793200,
+          "end_score": 27191560030740000,
+          "rounds": 2,
+          "moves": 20,
+          "swaps": 2,
+          "exhausted": false
+        }
+      ]
+    }
+  },
+  "verdict": {
+    "corpus \u00b7 move": {
+      "best_balanced": 1.0,
+      "reaches_optimum": true,
+      "starts_until_first_hit": 6,
+      "n_hits": 9,
+      "n_starts": 65,
+      "hit_rate": 0.1385,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 9,
+        "random_starts": 64,
+        "hit_rate": 0.140625,
+        "hit_rate_ci95": [
+          0.066374,
+          0.250237
+        ],
+        "miss_probability": 6.13329413460483e-05,
+        "miss_probability_ci95": [
+          9.8887726234778e-09,
+          0.012332918848981952
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 0.1
+    },
+    "corpus \u00b7 swap": {
+      "best_balanced": 0.995523,
+      "reaches_optimum": false,
+      "starts_until_first_hit": null,
+      "n_hits": 0,
+      "n_starts": 65,
+      "hit_rate": 0.0,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 0,
+        "random_starts": 64,
+        "hit_rate": 0.0,
+        "hit_rate_ci95": [
+          0.0,
+          0.056009
+        ],
+        "miss_probability": 1.0,
+        "miss_probability_ci95": [
+          0.025000000000000105,
+          1.0
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 0.5
+    },
+    "corpus \u00b7 move+swap": {
+      "best_balanced": 1.0,
+      "reaches_optimum": true,
+      "starts_until_first_hit": 6,
+      "n_hits": 6,
+      "n_starts": 65,
+      "hit_rate": 0.0923,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 6,
+        "random_starts": 64,
+        "hit_rate": 0.09375,
+        "hit_rate_ci95": [
+          0.035187,
+          0.192969
+        ],
+        "miss_probability": 0.001836002435888319,
+        "miss_probability_ci95": [
+          1.0989307156210123e-06,
+          0.10100707408009187
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 0.4
+    },
+    "espacio exhaustivo \u00b7 move": {
+      "best_balanced": 1.0,
+      "reaches_optimum": true,
+      "starts_until_first_hit": 6,
+      "n_hits": 11,
+      "n_starts": 65,
+      "hit_rate": 0.1692,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 11,
+        "random_starts": 64,
+        "hit_rate": 0.171875,
+        "hit_rate_ci95": [
+          0.089049,
+          0.286754
+        ],
+        "miss_probability": 5.729771718794295e-06,
+        "miss_probability_ci95": [
+          4.048847281884212e-10,
+          0.0025567083824839716
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 1.9
+    },
+    "espacio exhaustivo \u00b7 swap": {
+      "best_balanced": 0.992092,
+      "reaches_optimum": false,
+      "starts_until_first_hit": null,
+      "n_hits": 0,
+      "n_starts": 65,
+      "hit_rate": 0.0,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 0,
+        "random_starts": 64,
+        "hit_rate": 0.0,
+        "hit_rate_ci95": [
+          0.0,
+          0.056009
+        ],
+        "miss_probability": 1.0,
+        "miss_probability_ci95": [
+          0.025000000000000105,
+          1.0
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 9.8
+    },
+    "espacio exhaustivo \u00b7 move+swap": {
+      "best_balanced": 1.0,
+      "reaches_optimum": true,
+      "starts_until_first_hit": 4,
+      "n_hits": 12,
+      "n_starts": 65,
+      "hit_rate": 0.1846,
+      "optimum_is_fixed_point": true,
+      "exhausted_any": false,
+      "greedy_hits": false,
+      "restart_budget": {
+        "hits_of_random_starts": 12,
+        "random_starts": 64,
+        "hit_rate": 0.1875,
+        "hit_rate_ci95": [
+          0.100815,
+          0.304623
+        ],
+        "miss_probability": 1.6931508682682886e-06,
+        "miss_probability_ci95": [
+          7.98188854396984e-11,
+          0.0011125883219116782
+        ],
+        "inherited_claim": {
+          "hit_rate": 0.25,
+          "miss_probability": 1.0090689833159348e-08,
+          "source": "local_search.py, medido sin pesos en el paso 0"
+        }
+      },
+      "seconds": 8.5
+    }
+  },
+  "seconds_total": 22.0
+}
