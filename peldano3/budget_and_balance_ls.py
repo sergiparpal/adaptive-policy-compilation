@@ -306,7 +306,7 @@ def aggregate(rows, frac):
 BUDGETS = (64, 128, 256)
 
 
-def start_budget_check(inst, espacio, budgets=BUDGETS):
+def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
     """
     A DIAGNOSTIC, NOT A TUNING, and the distinction is the whole point.
 
@@ -314,13 +314,20 @@ def start_budget_check(inst, espacio, budgets=BUDGETS):
     best train score, in all five configurations. That makes the published
     figure the best of 65 draws rather than a converged value, and on this
     instance no optimum is known, so nothing else can say whether a 66th start
-    would beat it. This runs the same configuration with more starts and reports
-    whether the best train score moves.
+    would beat it. This runs the same configurations with more starts and
+    reports whether the best train score moves — and, where it moves, what
+    happens on the two evaluation surfaces.
 
-    `MULTISTART_STARTS` stays 64 whatever comes out. It was declared before the
-    runs that used it and changing it after seeing a result is `CLAUDE.md` rule 6
-    under another name. What this can legitimately produce is a CAVEAT on the
-    figure, not a new figure.
+    **`MULTISTART_STARTS` stays 64 because it was DECLARED before the runs that
+    used it.** That is the whole reason and it is not contingent on anything
+    measured here. Whatever this diagnostic returns — better, worse or
+    unchanged on test — reading it back into the constant would be choosing a
+    hyperparameter off the evaluation surface, which is rule 6 with its sign
+    reversed. What a diagnostic can legitimately produce is a CAVEAT on the
+    figure, never a new figure and never a new constant.
+
+    Run over all five splits, because one split and one 65 -> 257 jump is a
+    sample of size one and cannot tell an effect from a draw.
 
     The comparison is nested by construction: `declared_starts` draws its
     shuffles from `random.Random(17)` in sequence, so the first 65 starts of the
@@ -329,68 +336,102 @@ def start_budget_check(inst, espacio, budgets=BUDGETS):
     """
     ids, action, matched = inst["ids"], inst["action"], inst["matched"]
     rules, truth = inst["rules"], inst["truth"]
-    tr0, te0 = inst["splits"][0]
     sM, sW, sfull, sn = espacio["masks"]
-
-    M, W, full = build_masks(ids, matched, truth, action, tr0)
-    tM, tW, tfull = build_masks(ids, matched, truth, action, te0)
-    greedy = greedy_del_registro(rules, matched, truth, action, tr0)
+    splits = list(range(N_SPLITS)) if splits is None else list(splits)
 
     print()
     print("=" * 78)
     print("SENSIBILIDAD AL PRESUPUESTO DE ARRANQUES  (diagnostico, no ajuste)")
     print("=" * 78)
-    print(f"  particion 0 · fraccion 100% · pool {POOL} · {len(tr0)} etiquetas")
-    print(f"  MULTISTART_STARTS sigue en {MULTISTART_STARTS} salga lo que salga.")
+    print(f"  fraccion 100% · pool {POOL} · particiones {splits}")
+    print(f"  MULTISTART_STARTS sigue en {MULTISTART_STARTS} porque estaba")
+    print("  DECLARADO antes de las corridas. Lo que salga aqui no es un motivo.")
+    print()
+    print(f"  {'part':>5}{'arranques':>10}{'train':>9}{'(bruto)':>9}{'test':>9}"
+          f"{'espacio':>9}{'en el mejor':>13}{'distintas':>11}{'seg':>7}")
 
-    base = declared_starts(ids, first=greedy, n=budgets[0])
     rows = []
-    for n in budgets:
-        starts = declared_starts(ids, first=greedy, n=n)
-        if starts[:len(base)] != base:
-            raise ValueError("los arranques no son anidados: las filas no son "
-                             "comparables")
-        t0 = time.time()
-        best, st = multistart(starts, M, W, full,
-                              neighbourhood=DECLARED_NEIGHBOURHOOD)
-        fila = {
-            "starts": len(starts), "random_starts": n,
-            "train_score": st["best_score"],
-            "train": round(st["best_score"] / len(tr0), 4),
-            "test": round(score_order(best, tM, tW, tfull) / len(te0), 4),
-            "space": round(score_order(best, sM, sW, sfull) / sn, 4),
-            "seconds": round(time.time() - t0, 1),
-        }
-        fila.update(start_spread(st))
-        rows.append(fila)
+    for s in splits:
+        tr, te = inst["splits"][s]
+        M, W, full = build_masks(ids, matched, truth, action, tr)
+        tM, tW, tfull = build_masks(ids, matched, truth, action, te)
+        greedy = greedy_del_registro(rules, matched, truth, action, tr)
+        base = declared_starts(ids, first=greedy, n=budgets[0])
+        ref = None
+        for n in budgets:
+            starts = declared_starts(ids, first=greedy, n=n)
+            if starts[:len(base)] != base:
+                raise ValueError("los arranques no son anidados: las filas no "
+                                 "son comparables")
+            t0 = time.time()
+            best, st = multistart(starts, M, W, full,
+                                  neighbourhood=DECLARED_NEIGHBOURHOOD)
+            fila = {
+                "split": s, "starts": len(starts), "random_starts": n,
+                "train_score": st["best_score"],
+                "train": round(st["best_score"] / len(tr), 4),
+                "test": round(score_order(best, tM, tW, tfull) / len(te), 4),
+                "space": round(score_order(best, sM, sW, sfull) / sn, 4),
+                "seconds": round(time.time() - t0, 1),
+            }
+            fila.update(start_spread(st))
+            if ref is None:
+                ref = fila
+            fila["train_score_delta"] = fila["train_score"] - ref["train_score"]
+            fila["train_delta"] = round(fila["train"] - ref["train"], 4)
+            fila["test_delta"] = round(fila["test"] - ref["test"], 4)
+            fila["space_delta"] = round(fila["space"] - ref["space"], 4)
+            rows.append(fila)
+            print(f"  {s:>5}{fila['starts']:>10}{fila['train']:>9.4f}"
+                  f"{fila['train_score']:>9}{fila['test']:>9.4f}"
+                  f"{fila['space']:>9.4f}{fila['n_at_best']:>13}"
+                  f"{fila['end_score_distinct']:>11}{fila['seconds']:>7.0f}")
 
-    ref = rows[0]
-    print()
-    print(f"  {'arranques':>10}{'train':>9}{'(bruto)':>9}{'test':>9}{'espacio':>9}"
-          f"{'en el mejor':>13}{'distintas':>11}{'desde':>14}{'seg':>7}")
-    for r in rows:
-        r["train_delta_vs_64"] = round(r["train"] - ref["train"], 4)
-        r["train_score_delta_vs_64"] = r["train_score"] - ref["train_score"]
-        r["test_delta_vs_64"] = round(r["test"] - ref["test"], 4)
-        print(f"  {r['starts']:>10}{r['train']:>9.4f}{r['train_score']:>9}"
-              f"{r['test']:>9.4f}{r['space']:>9.4f}{r['n_at_best']:>13}"
-              f"{r['end_score_distinct']:>11}{r['best_from']:>14}"
-              f"{r['seconds']:>7.0f}")
+    # -------------------------------------------------- does it generalize?
+    mayor = max(budgets)
+    finales = [r for r in rows if r["random_starts"] == mayor]
+    mueven = [r for r in finales if r["train_score_delta"] > 0]
+    peor_test = [r for r in mueven if r["test_delta"] < 0]
+    peor_esp = [r for r in mueven if r["space_delta"] < 0]
 
-    movido = any(r["train_score"] != ref["train_score"] for r in rows)
     print()
-    if movido:
-        peor = max(r["train_score"] - ref["train_score"] for r in rows)
-        print(f"  EL MEJOR TRAIN SE MUEVE: +{peor} casos de {len(tr0)} al ampliar")
-        print("  el presupuesto. 0.8530 es el mejor de 65 sorteos, no un valor")
-        print("  convergido, y el caveat alcanza tambien a order_search_ls, que")
-        print("  usa el mismo optimizador con el mismo presupuesto.")
+    print(f"  Al pasar de {budgets[0]} a {mayor} arranques, sobre "
+          f"{len(finales)} particiones:")
+    print(f"    el mejor train mejora en          {len(mueven)}/{len(finales)}")
+    print(f"    de esas, el test EMPEORA en       {len(peor_test)}/{len(mueven) or 1}")
+    print(f"    de esas, el espacio EMPEORA en    {len(peor_esp)}/{len(mueven) or 1}")
+    if mueven:
+        print(f"    media del delta en test           "
+              f"{statistics.mean([r['test_delta'] for r in mueven]):+.4f}")
+        print(f"    media del delta en espacio        "
+              f"{statistics.mean([r['space_delta'] for r in mueven]):+.4f}")
+    print()
+    if len(mueven) == 0:
+        print("  El mejor train NO se mueve en ninguna particion. Es evidencia")
+        print("  de convergencia, no prueba: sin optimo conocido sobre esta")
+        print("  instancia, nada descarta un arranque 258.")
+    elif len(peor_test) == len(mueven) and len(mueven) > 1:
+        print("  LA INVERSION SE REPITE: donde el train mejora, el test empeora.")
+    elif len(peor_test) > 0:
+        print("  LA INVERSION APARECE, pero no en todas: ver la tabla.")
     else:
-        print("  El mejor train NO se mueve al cuadruplicar el presupuesto.")
-        print("  Es evidencia de convergencia, no prueba: sin optimo conocido")
-        print("  sobre esta instancia, nada descarta un arranque 257.")
-    return {"rows": rows, "best_train_moves": movido,
-            "reference_starts": ref["starts"]}
+        print("  El train mejora sin que el test empeore.")
+    print()
+    print(f"  MULTISTART_STARTS sigue en {MULTISTART_STARTS}, y no por esto:")
+    print("  por estar declarado de antemano. Elegirlo leyendo el test seria")
+    print("  la regla 6 con el signo cambiado.")
+
+    return {"rows": rows, "budgets": list(budgets), "splits": splits,
+            "best_train_moves": len(mueven) > 0,
+            "n_splits_train_improves": len(mueven),
+            "n_splits_test_worsens": len(peor_test),
+            "n_splits_space_worsens": len(peor_esp),
+            "mean_test_delta_where_train_improves": (
+                round(statistics.mean([r["test_delta"] for r in mueven]), 4)
+                if mueven else None),
+            "mean_space_delta_where_train_improves": (
+                round(statistics.mean([r["space_delta"] for r in mueven]), 4)
+                if mueven else None)}
 
 
 # ---------------------------------------------------------------------------
@@ -640,11 +681,15 @@ def main(argv=None) -> int:
                                 multistart_seed=MULTISTART_SEED,
                                 multistart_starts=MULTISTART_STARTS,
                                 budgets=list(BUDGETS)),
-            "what": "diagnostic, not a tuning: whether the best train score of "
-                    "split 0 at full supervision moves when the multi-start "
-                    "budget is doubled and quadrupled. MULTISTART_STARTS is "
-                    "unchanged.",
-            "surface": "corpus test", "pool": POOL, "split": 0, "fraction": 1.0,
+            "what": "diagnostic, not a tuning: whether the best train score at "
+                    "full supervision moves when the multi-start budget is "
+                    "doubled and quadrupled, over all five splits, and what "
+                    "happens to the two evaluation surfaces where it does. "
+                    "MULTISTART_STARTS is unchanged, because it was declared "
+                    "before the runs that used it and for no reason measured "
+                    "here.",
+            "surfaces": ["corpus test", "espacio exhaustivo"],
+            "pool": POOL, "fraction": 1.0,
             "n_rules": len(inst["ids"]), "n_space": espacio["masks"][3],
             **d,
             "seconds_total": round(time.time() - t_start, 1),
