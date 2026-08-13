@@ -370,12 +370,23 @@ gates; then the run; then this. Two things are worth carrying:
   0.3148. The two greedy implementations produce one order. All of it is in the
   record's `checks`.
 
-**The gap: §0 of `PLAN_BUDGET_LS.md` carries the prediction and no signature
-line.** Sergi authorized P4 by saying it was signed; the file is byte-identical
-to the commit that introduced it. The agent is forbidden from editing §0, so it
-is recorded here rather than fixed. The substance of hard rule 2 held — the
-prediction was committed and immutable before any number existed — but the file
-does not show it.
+**§0 is signed, and the signature arrived after the run.** For most of this step
+the file carried the prediction and no signature line: Sergi authorized P4 in
+conversation, before it was launched, while `PLAN_BUDGET_LS.md` stayed
+byte-identical to the commit that introduced it. He added the line on
+2026-08-13, after the figures existed, and it says so itself — the prediction was
+drafted on 2026-08-12, was immutable in `6b8311b` before any number existed, and
+§0 was never edited in between, which `git log -p PLAN_BUDGET_LS.md` verifies.
+The substance of hard rule 2 held; the file was late in showing it.
+
+**One traceability defect, and it is the agent's.** That signature reached the
+repository inside commit `b9b0f5f`, whose subject is *"Run the start-budget
+diagnostic over all five splits, not one"* and whose message does not mention it:
+a `git add -A` swept the working-tree edit in alongside the code change. Anyone
+auditing the plan with `git log --oneline -- PLAN_BUDGET_LS.md` therefore lands
+on a commit about a diagnostic, not on a signing event. Nothing was altered and
+the diff is honest, but the signing is the one act in this step that should have
+had a commit of its own, and staging by wildcard is what cost it.
 
 **A blocking gate was run first, and it found a defect.** The class-weighted
 objective got its own step 0 (`optimizer_check_wt.py`): the hidden policy in
