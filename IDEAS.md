@@ -223,9 +223,16 @@ deferred.
   figure has a document behind it. What is still open is the original three
   records: `order_search.json`, `budget_and_balance.json` and `sweep.json` remain
   pre-tie-break, without `_env`, and are deliberately left that way so the old
-  numbers stay reproducible beside the new ones. `budget_and_balance` was not
-  re-run with the new optimizer at all — the label-budget curve and the balanced
-  objective are still greedy figures, and both would move.
+  numbers stay reproducible beside the new ones.
+
+  **Closed 2026-08-13 for `budget_and_balance`**, which was the one still never
+  re-run: step 3 of the audit measured the label-budget curve and the balanced
+  objective with the declared optimizer and wrote `budget_and_balance_ls.json`,
+  with `_env` and both surfaces named. The original record is untouched and
+  still pre-tie-break, so the three columns — published, greedy-today,
+  local-search-today — separate the 2026-08-06 tie-break fix from the optimizer
+  for the first time. The figures and the dated erratum are in
+  `results3/FINDINGS_AUDIT.md` and `results3/FINDINGS3.md` §4.
 
 - **A test that reads the figures out of `results*/` and fails when a prose table
   disagrees. Considered on August 9, 2026 and deliberately not written.** It would

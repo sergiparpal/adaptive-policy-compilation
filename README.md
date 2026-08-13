@@ -70,8 +70,10 @@ python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
 python3 -m peldano3.optimizer_check   # optimizer ceiling: must give 1.0000
+python3 -m peldano3.optimizer_check_wt  # idem for the class-weighted objective
 python3 -m peldano3.order_search_ls   # rung 3 redone with the audited optimizer (33 min)
 python3 -m peldano4.sweep_ls          # rung 4 redone with the audited optimizer (42 min)
+python3 -m peldano3.budget_and_balance_ls  # label curve and balanced objective (28 min)
 ```
 
 What each of them should produce is in the record it belongs to; the corrected
@@ -145,7 +147,9 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` | no, on purpose |
 > | `peldano4/sweep.py` | `results4/sweep.json` | no, on purpose |
 > | `peldano3/optimizer_check.py` | `results3/optimizer_check.json` | no, on purpose |
+> | `peldano3/optimizer_check_wt.py` | `results3/optimizer_check_wt.json` | no, on purpose |
 > | `peldano3/order_search_ls.py` | `results3/order_search_ls.json` | no, on purpose |
+> | `peldano3/budget_and_balance_ls.py` | `results3/budget_and_balance_ls.json` | **partial runs get their own name** |
 > | `peldano4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
