@@ -43,6 +43,9 @@ rule held: the prediction was committed, immutable, before any number existed.
 | **F12** | `move+swap` reaches the optimum from **fewer** starts than `move` alone on the corpus, weighted and unweighted alike; and the tie on the space that the declaration rested on has broken. | **NEW, confirmed.** |
 | **F13** | The balanced objective **overfits the smallest classes**: on split 0 the balanced LS scores worse than the balanced greedy on ONCALL_ESCALATION (2/3 vs 3/3) and SECURITY_INCIDENT (9/10 vs 10/10). | **NEW, observed in P5.** |
 | **F14** | At full supervision **exactly one start of 65** reaches the best train score, in all five configurations. 64 restarts look tight precisely where the objective is informative. | **NEW, measured in P4.** |
+| **F15** | 0.8530 is **not converged**: 256 starts find a better train order that is **worse on corpus test and on the space**. The caveat reaches `order_search_ls` and `sweep_ls` too. | **NEW, 2026-08-13. Constant untouched; caveat in STATUS.md.** |
+| **F16** | The tie-break fix moves **exactly one cell** of the per-class table: SECURITY_INCIDENT under the total objective, 7 → 4. The balanced column reproduces in all eight classes. | **NEW, confirmed in P5.** |
+| **F17** | *"50 labels are practically free"* changes **direction** with the denominator: worse as a fraction of full supervision and in absolute loss, **better** as a fraction of the coverage bound. | **NEW, recorded in the FINDINGS3 §4 erratum.** |
 
 ---
 
@@ -395,6 +398,39 @@ Where they look comfortable — 56 of 65 tied at 1% — they are comfortable bec
 the objective has stopped distinguishing anything, which is the opposite of
 reassuring. F11's recomputed miss probability was measured on the 29-rule
 instance and does not transfer here; this is what can be said instead.
+
+---
+
+## F15 — 0.8530 is the best of 65 draws, not a converged value · NEW
+
+Asked for after the run, as a diagnostic and explicitly not a tuning. Split 0,
+full supervision, pure pool, budgets nested by construction:
+
+| arranques | train | (bruto) | test | espacio | en el mejor | distintas |
+|---|---|---|---|---|---|---|
+| 65 | 0.8786 | 883 | 0.8472 | 0.6033 | 1 | 36 |
+| 129 | 0.8786 | 883 | 0.8472 | 0.6033 | 1 | 46 |
+| 257 | **0.8796** | **884** | **0.8442** | **0.5776** | 1 | 53 |
+
+**The best train score moves** at 256 starts, so the figure is a maximum over
+draws. Exactly one start reaches the best at every budget tried — the sample
+never concentrates, it only spreads (36 → 46 → 53 distinct scores).
+
+**And the better train order is worse on both evaluation surfaces**: test −0.0030,
+space −0.0257. This is §0's own predicted mechanism — maximizing harder something
+that has stopped being a proxy — showing up at **full supervision** under a larger
+restart budget, rather than at low budget where §0 expected it. At 1005 labels the
+train objective is still a good proxy at the scale of 0.08 and already a bad one
+at the scale of 0.001.
+
+**The caveat is not local to this record.** `order_search_ls` published the 0.8530
+with the same optimizer at the same budget, and `sweep_ls` did the same for rung
+4. None of those figures is withdrawn — they are what the declared instrument
+returns — but they are bounded by a draw rather than by convergence, and that now
+sits in `STATUS.md` next to the figure rather than in this working file.
+
+`MULTISTART_STARTS` is untouched, and the diagnostic is a poor argument for
+touching it anyway: at 256 starts the answer is *worse* on both surfaces.
 
 ---
 

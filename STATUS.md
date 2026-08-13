@@ -85,7 +85,8 @@ them decide 14.5% of the corpus.
 
 **The material contained the signal; the arbitration destroyed it.** The same 577
 rules that specificity turned into 0.1829 admit an order scoring **0.8530 ±
-0.0062 on corpus test** (train 0.8695: overfitting of the order is 0.0165),
+0.0062 on corpus test** — *the best of 65 starts, and not a converged value; see
+the caveat below* — (train 0.8695: overfitting of the order is 0.0165),
 against a coverage bound of 0.9010 on the corpus and 0.8784 on the space —
 [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §1 and its 2026-08-08 erratum,
 [`order_search_ls.json`](results3/order_search_ls.json). That bound is an **upper
@@ -94,6 +95,24 @@ order scores 0.6105 on the space, and a search seeing all 134,400 cases reaches
 0.7905 ([`order_search_ls_fullspace.json`](results3/order_search_ls_fullspace.json)).
 The search uses the oracle: the material contains the signal, which is not the
 same as it being reachable without labels.
+
+**0.8530 is the best of 65 starts, and more starts make train better and test
+worse.** At full supervision exactly **one** start of 65 reaches the best train
+score, in all five configurations — so the figure is a maximum over draws, not a
+converged optimum, and on this instance no optimum is known to check it against.
+Quadrupling the budget on split 0 finds a strictly better train order (883 → 884
+of 1005) that scores **worse on corpus test (0.8472 → 0.8442) and markedly worse
+on the exhaustive space (0.6033 → 0.5776)**. Searching the train objective harder
+stops buying generalization before the search stops finding improvements.
+
+**This caveat applies equally to
+[`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
+0.8530 with the same optimizer at the same budget, and to every rung 4 figure
+from `sweep_ls`. It does not withdraw those figures — they are what the declared
+instrument returns — but they are upper-bounded by a draw, not by convergence.
+`MULTISTART_STARTS` was deliberately left at 64
+([`start_budget_check.json`](results3/start_budget_check.json), FINDINGS_AUDIT
+Step 3).
 
 **An ordering problem and a material problem are different things.** Six classes
 of eight — 1774 of 2000 cases — are pure ordering. `SECURITY_INCIDENT` (20 cases)

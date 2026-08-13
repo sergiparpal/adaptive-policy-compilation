@@ -150,6 +150,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/optimizer_check_wt.py` | `results3/optimizer_check_wt.json` | no, on purpose |
 > | `peldano3/order_search_ls.py` | `results3/order_search_ls.json` | no, on purpose |
 > | `peldano3/budget_and_balance_ls.py` | `results3/budget_and_balance_ls.json` | **partial runs get their own name** |
+> | `peldano3/budget_and_balance_ls.py --start-budget` | `results3/start_budget_check.json` | no, on purpose |
 > | `peldano4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and

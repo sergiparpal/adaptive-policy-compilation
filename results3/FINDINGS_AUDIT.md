@@ -505,6 +505,43 @@ ONCALL_ESCALATION 2 of 3 against 3 of 3, SECURITY_INCIDENT 9 of 10 against 10 of
 10 — while scoring higher on the weighted train objective. With 4 and 10 training
 cases, maximizing weighted train recall harder does not generalize.
 
+### Is 0.8530 converged? No — and more starts make test worse
+
+The `n_at_best = 1.00` above is not a curiosity, it is a warning: a figure that
+one start of 65 reaches is a maximum over draws. Split 0 at full supervision, run
+again with 128 and 256 random starts — nested by construction, the larger budgets
+begin with the record's 64 — gives
+([`start_budget_check.json`](start_budget_check.json)):
+
+```
+ arranques    train  (bruto)     test   espacio   en el mejor   distintas
+        65   0.8786      883   0.8472    0.6033             1          36
+       129   0.8786      883   0.8472    0.6033             1          46
+       257   0.8796      884   0.8442    0.5776             1          53
+```
+
+**The best train score moves**, by one case in 1005 — so 0.8530 is the best of 65
+draws and not a converged optimum, and on this instance nothing can say whether a
+258th start would beat it again. Exactly one start reaches the best at *every*
+budget tried; the distinct scores merely grow, 36 → 46 → 53.
+
+**And the better train order is worse everywhere else**: corpus test 0.8472 →
+**0.8442**, exhaustive space 0.6033 → **0.5776**. Searching the train objective
+harder stops buying generalization well before the search stops finding
+improvements — the same "maximising harder the thing that has stopped being a
+proxy" §0 predicted for *low budget*, appearing instead at **full supervision**
+when the restart budget grows.
+
+**`MULTISTART_STARTS` stays 64.** It was declared before the runs that used it,
+and changing it after seeing this would be rule 6 under another name — the more
+so since the 256-start result is *worse* on both evaluation surfaces, so "more is
+better" is not even what the diagnostic found. What it produces is a caveat, and
+the caveat reaches further than this record: **`order_search_ls` published the
+0.8530 with the same optimizer at the same budget**, and `sweep_ls` did the same
+for rung 4. Those figures are what the declared instrument returns; they are not
+optima, and they are bounded by a draw. Recorded in `STATUS.md` beside the
+figure, which is where a reader meets it.
+
 ### What it costs, and what it does not settle
 
 1663 s for 115 configurations on the pure pool, against ~2 min for the greedy
