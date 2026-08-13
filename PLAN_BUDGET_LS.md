@@ -23,6 +23,12 @@ replaces it** (`CLAUDE.md`, hard rule 2: predictions are his). The agent **must
 not** edit this section, before or after seeing any number. Phase P4 does not
 start until this section carries a signature line.
 
+**Firmado por Sergi, 2026-08-13, después de la corrida.** La predicción se redactó el
+2026-08-12 y quedó inmutable en el commit `6b8311b`, antes de que existiera ninguna
+cifra; la autorización para P4 se dio antes de lanzarla y la §0 no se ha editado desde
+entonces — `git log -p PLAN_BUDGET_LS.md` lo verifica. La firma llega tarde; la
+predicción no.
+
 **Mechanism being bet on.** At 1005 labels the train objective separates orders
 finely. At 50 it is an integer out of 50 with massive ties, and at 10 it is
 noise. The multi-start keeps the order with the best **train** score and breaks
