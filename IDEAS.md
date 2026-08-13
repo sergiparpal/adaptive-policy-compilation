@@ -119,6 +119,36 @@ none of them developed and in no order of precedence.
   `FINDINGS3.md` measures subsumption as costing, and it says the cost is
   concentrated rather than diffuse. Whether those 181 are redundant or are
   exceptions the arbitration buries is not known.
+- **Search budget above the declared 64 buys labels and sells policy.** Opened
+  2026-08-13. Raising the multi-start budget to 256 improved the best train score
+  in 2 of the 5 splits, and in **2 of those 2** the same order scored worse on
+  corpus test and worse over the exhaustive space — mean **−0.0050** and
+  **−0.0196** (`results3/FINDINGS_AUDIT.md`, Step 3;
+  `results3/start_budget_check.json`, n = 5 splits × 3 budgets). Extra budget
+  buys fit to the labelled sample and sells the function. The direction is
+  consistent but the sample of *movements* is 2, so what is open is whether it
+  survives more splits and other fractions.
+  **Falsifiable by measuring ORDERS, not scores.** Every figure above is a score,
+  and two orders can score alike and rank rules quite differently. The check is
+  to compare the orders a growing budget returns — how many positions move, how
+  the rank correlation decays, whether the rules that change places are the ones
+  that decide the rare classes — which is also the only way to tell a real
+  regression from two draws either side of a plateau.
+- **The peak of the multi-start is a singleton that spreads, not an optimum that
+  concentrates.** Opened 2026-08-13. Across all fifteen measured rows — three
+  budgets × five splits — **exactly one start reaches the best train score**, and
+  quadrupling the budget only widens the spread of scores rather than gathering
+  starts at the top; in splits 1 to 3 the best did not change between 65 and 257
+  starts and the 192 extra draws never found it again (`FINDINGS_AUDIT.md`,
+  Step 3). A well-behaved landscape would show the opposite: more starts, more
+  ties at the maximum.
+  What is open is what that costs **any rung that consumes the order rather than
+  the score**. Rung 4 does exactly that — it learns an order from feedback and
+  hands the order on — so its figures inherit a draw even where the aggregate
+  level is stable. Whether the variance is benign (many near-equivalent orders,
+  and which one you get does not matter downstream) or load-bearing (the singleton
+  encodes the rare-class decisions) is unmeasured, and it is the same question the
+  entry above proposes measuring.
 
 ---
 
