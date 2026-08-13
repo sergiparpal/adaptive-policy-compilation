@@ -5,17 +5,23 @@ is a **working file**, not a record: at phase P7 it is folded into
 [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), which is the record
 that will own the Step 3 figures, and this file goes away with the plan.
 
-**Opened 2026-08-12. Phases P0, P1, P2 and P3 are done; P4 onward are not**, so
-every entry that depends on the label-budget curve is still open. §0 of the plan
-carries no signature and P4 does not start without it (plan invariant 10).
+**Opened 2026-08-12. Closed 2026-08-13: all seven phases are done.** The figures
+belong to [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), Step 3,
+which owns them, and are indexed in [`STATUS.md`](STATUS.md). What is here is the
+register of findings, several of which have no home in either.
 
-**2026-08-13** — a blocking check Sergi called for before P4, which P2 could not
-have made, **found a real defect in the instrument** (F10) and forced two more
-entries (F11, F12). It is recorded here in full because it is the cleanest
-example in this branch of a gate passing for the wrong reason.
+**Two entries deserve reading before the rest.** F10 is a real defect in the
+instrument, found by a blocking check Sergi called for after P2 had already
+passed — the cleanest example in this branch of a gate passing for the wrong
+reason. F2 is a published sentence withdrawn by a column nobody had thought to
+compute.
 
-**No figure of the new curve exists yet.** What is below is the instrument, the
-harness and one reproduced configuration.
+**One procedural gap, and it is not mine to close.** §0 of the plan carries the
+prediction and Sergi authorized P4 by saying it was signed, but
+`PLAN_BUDGET_LS.md` is byte-identical to commit `6b8311b` and **contains no
+signature line**. The agent is forbidden from editing §0 (plan invariant 10,
+`CLAUDE.md` hard rule 2), so it is recorded here instead. The substance of the
+rule held: the prediction was committed, immutable, before any number existed.
 
 ---
 
@@ -24,17 +30,19 @@ harness and one reproduced configuration.
 | id | finding | status |
 |---|---|---|
 | **F1** | `tests/test_provenance.py::ESCRITORES` and `tests/test_record_guard.py::LIBRES` under-list the modules that write records, against the README table `ESCRITORES` says it mirrors. | **CONFIRMED.** Reported, not fixed — see below. |
-| **F2** | Greedy-today vs published, per row: the size of the 2026-08-06 tie-break fix on this record, never measured. | **OPEN** — needs P4. Machinery in place and verified. |
-| **F3** | Any configuration with `exhausted: true`. | **OPEN** for the curve. 390 weighted local searches in P2: none exhausted. |
-| **F4** | Configurations where LS is worse than the greedy on **test**. Expected at low budget (P-c). | **OPEN** — needs P4. |
-| **F5** | Per-fraction cost; in probing, LS from the greedy start was slower at partial budgets than at full supervision. | **OPEN** — needs P4. One point consistent with the probe. |
-| **F6** | Any class whose `ceiling` differs from the published `per_class_split0`. | **OPEN** — needs P5. |
+| **F2** | Greedy-today vs published, per row: the size of the 2026-08-06 tie-break fix on this record, never measured. | **CONFIRMED and larger than expected.** It changes sign twice and reaches **+0.0481** at 1%. |
+| **F3** | Any configuration with `exhausted: true`. | **NONE.** 0 of 115 configurations, plus 390 weighted searches in P2. |
+| **F4** | Configurations where LS is worse than the greedy on **test**. Expected at low budget (P-c). | **6 of 105, and not where predicted**: 0/1/3/2/0 by fraction, peaking at 10%, none at 1%. |
+| **F5** | Per-fraction cost; in probing, LS from the greedy start was slower at partial budgets than at full supervision. | **REFUTED as stated.** Cost per configuration falls monotonically with the budget. |
+| **F6** | Any class whose `ceiling` differs from the published `per_class_split0`. | **NONE.** All eight ceilings and class sizes identical. |
 | **F7** | This work extends F1's drift: `peldano3.optimizer_check_wt` writes a record and is in neither pinned list nor the README table, and P6 will add `budget_and_balance_ls`. | **NEW, open for P7.** |
 | **F8** | Pairwise `swap` alone cannot reach the weighted optimum either: 0 of 65 starts on both instances. | **NEW, confirmed in P2.** |
 | **F9** | The optimum is never reached from the greedy start under weights — always from a random restart. | **NEW, confirmed in P2.** |
 | **F10** | `class_counts_from_masks` returned the per-class **ceiling**, not the class size. It agrees with the truth only where every case is winnable, which is true of the hidden policy and false of the 577 rules. **The P2 gate could not see it.** | **NEW, CONFIRMED 2026-08-13. Fixed: the function now refuses; P5 uses `Counter(truth)`.** |
 | **F11** | The restart budget's *"below 1e-8"* is calibrated at a 1-in-4 hit rate measured **without** weights. At the measured weighted rates it is **1.8e-3** on the corpus, five orders of magnitude worse. | **NEW, recomputed and recorded. Constant untouched.** |
 | **F12** | `move+swap` reaches the optimum from **fewer** starts than `move` alone on the corpus, weighted and unweighted alike; and the tie on the space that the declaration rested on has broken. | **NEW, confirmed.** |
+| **F13** | The balanced objective **overfits the smallest classes**: on split 0 the balanced LS scores worse than the balanced greedy on ONCALL_ESCALATION (2/3 vs 3/3) and SECURITY_INCIDENT (9/10 vs 10/10). | **NEW, observed in P5.** |
+| **F14** | At full supervision **exactly one start of 65** reaches the best train score, in all five configurations. 64 restarts look tight precisely where the objective is informative. | **NEW, measured in P4.** |
 
 ---
 
@@ -261,6 +269,135 @@ choice has the worse rate of the two.
 
 ---
 
+## F2 — the tie-break fix changes sign twice, and is largest at 1% · CONFIRMED
+
+The old record is pre-tie-break and untouched, so running the same greedy today
+isolates the 2026-08-06 fix from the optimizer for the first time:
+
+| frac | este registro | voraz hoy | **F2** |
+|---|---|---|---|
+| 100% | 0.7707 | 0.7713 | **+0.0006** |
+| 25% | 0.7681 | 0.7630 | **−0.0051** |
+| 10% | 0.7488 | 0.7342 | **−0.0146** |
+| 5% | 0.7049 | 0.6883 | **−0.0166** |
+| 1% | 0.5251 | 0.5732 | **+0.0481** |
+
+At full supervision it is the +0.0002…+0.0006 the audit already knew about. In
+the middle of the curve it is *negative* and an order of magnitude larger. At 1%
+it is **+0.0481**, which is enough to withdraw a published sentence on its own:
+FINDINGS3 §4's "at 1% it collapses to 0.5251, the arrival order without searching
+for anything" describes the old tie-break, not the label budget.
+
+Nobody had a reason to expect this, and it is only visible because the plan
+insisted on three columns rather than two.
+
+---
+
+## F3 — the safety net was never hit · NONE
+
+`exhausted: true` in **0 of 115** configurations, on top of the 390 weighted
+local searches of P2. Strict improvement over a bounded integer is doing what the
+module claims it does.
+
+---
+
+## F4 — where the local search loses on test · 6 OF 105, NOT WHERE PREDICTED
+
+| frac | configuraciones con LS < voraz en test |
+|---|---|
+| 100% | 0 of 5 |
+| 25% | 1 of 25 |
+| 10% | **3 of 25** |
+| 5% | 2 of 25 |
+| 1% | **0 of 25** |
+
+P-c expected the losses at the *smallest* budget. There are none there, and the
+peak is at 10%. The reason is structural and is the same one that refuted P-c:
+at 1% the objective has 1.4 distinct values across 65 starts, ties go to the
+earliest index, index 0 is the greedy, and so the multi-start returns the
+greedy's own order in 22 of 25 configurations. It cannot lose to something it is
+returning.
+
+The losses cluster where the objective is *partially* informative — enough to
+move the search off the greedy, not enough for the move to generalize.
+
+---
+
+## F5 — cost falls with the budget · REFUTED AS STATED
+
+The probe reported in the plan had LS from the greedy start slower at partial
+budgets (~2 s) than at full supervision (~0.3 s), which would have made 25% the
+most expensive row per configuration. Measured over the whole grid, per
+configuration:
+
+| frac | s/config | total |
+|---|---|---|
+| 100% | **33.0** | 165 s |
+| 25% | 18.4 | 460 s |
+| 10% | 12.8 | 321 s |
+| 5% | 9.4 | 236 s |
+| 1% | 3.4 | 85 s |
+
+Monotone in the budget, with no inversion. 25% is the most expensive *row* only
+because it is the first with 25 configurations instead of 5. The probe measured
+one start on one split; the full grid does not reproduce it.
+
+---
+
+## F6 — the pool and the split did not move · NONE
+
+All eight classes match the published `per_class_split0` exactly, in both `test`
+and `ceiling`. ACCOUNT_MANAGER stays capped at 21 of 55, which was named as an
+invariant in §0.
+
+---
+
+## F13 — the balanced objective overfits the smallest classes · NEW
+
+On split 0 test, the balanced local search scores **worse** than the balanced
+greedy on the two rarest classes, while scoring higher on the weighted train
+objective it is maximizing:
+
+| clase | test | techo | voraz balanceado | BL balanceado |
+|---|---|---|---|---|
+| ONCALL_ESCALATION | 3 | 3 | **3** | **2** |
+| SECURITY_INCIDENT | 10 | 10 | **10** | **9** |
+
+Those classes have 4 and 10 training cases. Maximizing macro-recall harder on a
+handful of labels does not generalize, and the classes where it fails are exactly
+the ones the objective exists to protect — the same two `CLAUDE.md` singles out
+as the most critical and the rarest.
+
+It is a small absolute number and one split, so it is recorded as an
+observation, not a conclusion. But it is the direction that matters.
+
+---
+
+## F14 — 64 restarts are comfortable exactly where they are useless · NEW
+
+Starts of 65 reaching the best train score, and distinct end scores:
+
+| frac | en el mejor | puntuaciones distintas |
+|---|---|---|
+| 100% | **1.00** | 32.4 |
+| 25% | 2.88 | 13.6 |
+| 10% | 8.84 | 6.5 |
+| 5% | 18.44 | 3.6 |
+| 1% | **56.44** | **1.4** |
+
+This is what the fields Sergi asked for were meant to expose, and the answer is
+uncomfortable. **At full supervision exactly one start of 65 reaches the best
+score, in all five configurations.** The result rides on a single shuffle, and
+with no known optimum on this instance there is no way to tell whether a 66th
+start would beat it. Where the objective is informative, 64 restarts look tight.
+
+Where they look comfortable — 56 of 65 tied at 1% — they are comfortable because
+the objective has stopped distinguishing anything, which is the opposite of
+reassuring. F11's recomputed miss probability was measured on the 29-rule
+instance and does not transfer here; this is what can be said instead.
+
+---
+
 ## What the finished phases established
 
 **P0.** Suite green at `7728d60` (315 tests, 1 skip: `openai` absent from the
@@ -297,12 +434,28 @@ varies, and the weights were not varied.
 
 The best start also reproduces: `aleatorio 13`, index 14. 34 s.
 
-Two secondary observations, neither a finding yet:
+The space masks build in **0.8 s**, against the plan's estimated 2.3 s.
 
-- **F5's one data point.** That configuration — 65 starts at full supervision —
-  took 32 s, about 0.49 s per start, consistent with the plan's probe of 0.29 s
-  from the greedy and 0.48 s from a random start. It says nothing about partial
-  budgets, which is where F5 lives.
-- **F4 does not apply at full supervision**: LS 0.8472 against greedy 0.7487 on
-  split 0. F4 is a prediction about *low* budget.
-- The space masks build in **0.8 s**, against the plan's estimated 2.3 s.
+**P4, P5 and P6 — the run.** One process, full run, canonical name, **1663 s**
+(28 min) against the plan's estimate of 43. `code_dirty: false` at `a69890b`,
+105 configurations in §1 and 10 in §2, saves after every fraction and every §2
+split. Every blocking check passed: the three of P3, the P-a gate at 0.8530
+exactly, and the P5 identity between §2's total rows and §1's full-supervision
+rows.
+
+**The predictions fell 2 held, 4 refuted, 1 short of its own threshold.** They
+are answered one by one in FINDINGS_AUDIT Step 3. The one worth repeating here is
+**P-g, which is refuted by its own reasoning being correct**: it bet that part of
+the greedy's sacrifice of rare classes was search weakness rather than objective
+conflict, and that this would make balancing buy *more*. The mechanism was right
+and the consequence is the opposite — because the better optimizer rescues the
+rare classes under the *total* objective (ACCOUNT_MANAGER 0 of 21 → 19 of 21),
+there is far less left for balancing to buy, so the gain falls from +0.1695 to
++0.0576.
+
+**P7 — documentation.** FINDINGS_AUDIT gains Step 3 and owns the figures;
+FINDINGS3 §4 gains a dated erratum with the original table untouched beside it;
+STATUS.md moves open item 1 into what is established and adds a seventh
+withdrawal; README gains the command and three table rows, including the one F7
+asked for; IDEAS.md marks the half-resolved note closed for
+`budget_and_balance`. No figure was put in README, CLAUDE.md or IDEAS.md.

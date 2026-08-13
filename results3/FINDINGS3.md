@@ -205,6 +205,65 @@ arrival order without searching for anything. But **those 50 labels are not the
 system's total supervision**: the 577 rules cost 632 LLM calls over the full
 corpus, already paid for. Saying "it works with 50 labels" would omit that cost.
 
+> **[ERRATUM 2026-08-13] Re-measured with the audited optimizer. The curve
+> survives, the collapse at 1% does not, and part of this table was never the
+> optimizer at all.** Step 3 of the audit
+> ([`FINDINGS_AUDIT.md`](FINDINGS_AUDIT.md), which owns the new figures) re-ran
+> both sections of `budget_and_balance` under the same protocol — same corpus,
+> same seed 17, same five splits, same fractions, same draw seeds, same pure
+> pool — changing only the search. Record:
+> [`budget_and_balance_ls.json`](budget_and_balance_ls.json).
+>
+> **The table above is left exactly as it was**, and it is *pre-tie-break*: it
+> predates the 2026-08-06 fix. Re-running the same greedy today, with the fix,
+> gives a third column, and the difference is not small nor of one sign:
+>
+> ```
+>  frac   etiq   ESTE REGISTRO   VORAZ HOY   diferencia   BUSQUEDA LOCAL HOY
+>  100%   1005      0.7707        0.7713      +0.0006          0.8530
+>   25%    251      0.7681        0.7630      -0.0051          0.8227
+>   10%    100      0.7488        0.7342      -0.0146          0.7771
+>    5%     50      0.7049        0.6883      -0.0166          0.7410
+>    1%     10      0.5251        0.5732      +0.0481          0.5767
+> ```
+>
+> **The sentence "at 1% it collapses to 0.5251, which is the arrival order
+> without searching for anything" is withdrawn.** That figure is substantially an
+> artifact of the old tie-break: the same greedy, correctly tie-broken, gives
+> **0.5732** at 1%. The collapse is real but shallower, and it does not reach
+> born_at.
+>
+> **"50 labels are practically free" is weakened but not withdrawn.** The headline
+> ratio 5%/100% falls from **0.9147** to **0.8687** under the local search — 87%
+> of full supervision on 50 labels rather than 91%. With the better optimizer
+> there is simply more to lose: full supervision now buys 0.8530 instead of
+> 0.7707, so the same 50 labels fall further behind.
+>
+> **The high variance at low budget does not grow, it shrinks.** Against this
+> record's sd of 0.0535 at 5% and 0.0628 at 1%, the local search gives 0.0478 and
+> 0.0710; against the *tie-broken* greedy measured in the same run, 0.0590 and
+> 0.0739, the local search is less dispersed at both budgets.
+>
+> **Why, and it is the interesting part.** The number of the 65 starts that tie
+> at the best train score goes 1.00, 2.88, 8.84, 18.44, **56.44** as the budget
+> shrinks, and the distinct train scores go 32.4 down to **1.4**. At 10 labels
+> the objective no longer separates orders at all; ties go to the earliest start,
+> which is the greedy, so at 1% the multi-start returns the greedy's own order in
+> 22 of 25 configurations. The optimizer cannot help where the objective has
+> stopped being informative, and it cannot hurt either.
+>
+> **§2, the balanced greedy, moves further.** This record measures balancing as
+> costing 0.0557 in e2e and buying +0.1695 in balanced accuracy. Under the local
+> search it costs +0.0274 and buys **+0.0576** — because the local search under
+> the *total* objective already reaches 0.6299 balanced accuracy against the
+> greedy's 0.5201, recovering 19 of 21 attainable ACCOUNT_MANAGER cases where the
+> greedy recovered 0. Most of what this record read as an objective conflict was
+> search weakness.
+>
+> **This record's own figures are not modified**: they are corrected from above,
+> as rung 1 was. Reproduced with `python3 -m peldano3.budget_and_balance_ls`.
+> Zero API calls.
+
 **High variance at low budget.** At 5%, standard deviation 0.0535 and range
 0.5596–0.8241. The mean holds up; one particular draw of 50 labels can give 0.56.
 

@@ -327,6 +327,145 @@ another order of magnitude of rules.
 
 ---
 
+## Step 3 result — August 13, 2026
+
+`budget_and_balance` was the last figure of rungs 3 and 4 produced entirely by
+the superseded greedy, and the source of *"50 labels are enough to order"* — the
+premise rung 4 was opened on. It has now been re-measured with the declared
+optimizer, under the plan `PLAN_BUDGET_LS.md`, and **this section owns the new
+figures**.
+
+Same corpus of 2000 at seed 17, same five splits, same pure pool, same
+fractions, same draw seeds, same simple random subsampling, same evaluation over
+the whole test half. Only the optimizer changed. Record:
+[`budget_and_balance_ls.json`](budget_and_balance_ls.json). 1663 s, zero API
+calls, one process, `code_dirty: false`.
+
+**A blocking gate was run first, and it found a defect.** The class-weighted
+objective got its own step 0 (`optimizer_check_wt.py`): the hidden policy in
+design order maximizes every non-negative-weight objective at once, so the
+weighted optimum is `L × (number of classes)` by construction. `move+swap`
+reaches it — 4 starts on the exhaustive space, 12 of 64 — and pairwise `swap`
+alone does not, 0 of 64 on both instances, the same failure shape step 0 found
+unweighted. What the gate could **not** see is recorded below.
+
+### The three columns
+
+The old record is deliberately pre-tie-break and is untouched, so for the first
+time the 2026-08-06 tie-break fix and the optimizer are separated on this
+record. Corpus test, pure pool, 5 splits × 5 draws (1 draw at full supervision):
+
+```
+                 PUBLICADO   VORAZ HOY               BUSQUEDA LOCAL HOY
+ frac   etiq     (pre-des.)  (post-des.)   F2      media      sd     min     max   espacio
+ 100%   1005       0.7707      0.7713   +0.0006   0.8530  0.0062  0.8472  0.8640   0.6105
+  25%    251       0.7681      0.7630   -0.0051   0.8227  0.0179  0.7719  0.8462   0.5103
+  10%    100       0.7488      0.7342   -0.0146   0.7771  0.0308  0.7206  0.8373   0.4876
+   5%     50       0.7049      0.6883   -0.0166   0.7410  0.0478  0.5769  0.8145   0.4487
+   1%     10       0.5251      0.5732   +0.0481   0.5767  0.0710  0.4874  0.7276   0.3310
+```
+
+**The tie-break fix changes sign twice** (column F2) and is largest where the
+record's headline claim lives: at 1% it is worth **+0.0481** on its own. So
+FINDINGS3 §4's *"at 1% it collapses to 0.5251, which is the arrival order
+without searching for anything"* is substantially a tie-break artifact — the
+greedy alone, correctly tie-broken, gives 0.5732 there, and the collapse is
+shallower than published before any optimizer is involved.
+
+### Why 64 restarts behave completely differently across the curve
+
+With a fixed seed there is no hit rate to estimate and no known optimum to hit,
+so what is recorded is how the 65 starts spread:
+
+```
+ frac    arranques en el mejor    puntuaciones distintas (de 65)
+ 100%           1.00                        32.4
+  25%           2.88                        13.6
+  10%           8.84                         6.5
+   5%          18.44                         3.6
+   1%          56.44                         1.4
+```
+
+This is the mechanism the prediction bet on, measured directly. At full
+supervision **exactly one start of 65 reaches the best train score** in every one
+of the five configurations, and 32 distinct scores come out: the objective
+separates orders finely and the answer rides on a single shuffle. At 1% the
+train objective has 1.4 distinct values and 56 of 65 starts tie at the top — it
+has stopped discriminating between orders altogether.
+
+**And that is what decided P-c.** Ties between starts go to the earliest index,
+and index 0 is the record's greedy (D2). At 1% the greedy start therefore wins
+**25 of 25** configurations, and the order returned is *identical* to the
+greedy's in 22 of them. The multi-start cannot lose to the greedy at low budget
+because at low budget it usually **is** the greedy.
+
+### The predictions, one by one
+
+| # | verdict | measured |
+|---|---|---|
+| **P-a** | **HOLDS** (gate) | 0.8530 ± 0.0062, min 0.8472, max 0.8640, space 0.6105 — reproduces `order_search_ls.json` digit for digit. |
+| **P-b** | **REFUTED** | Gains +0.0817, +0.0597, +0.0429, **+0.0527**, +0.0035. Not monotone — it grows from 10% to 5%, the stated refutation — and at 5% it is +0.0527 against the predicted ≤ +0.02. Only the "≥ +0.07 at 100%" clause holds. |
+| **P-c** | **REFUTED** | At 1% LS 0.5767 against greedy 0.5732: LS ≥ greedy, which is the refutation verbatim. Structural, not luck — see above. |
+| **P-d** | **NOT REFUTED, threshold missed** | Ratio 5%/100% falls from the published **0.9147** to **0.8687**. Below the 0.90 that would refute it, above the 0.85 it predicted. Greedy-today's own ratio is 0.8924. |
+| **P-e** | **REFUTED** | LS sd 0.0478 at 5% (predicted > 0.0535) and 0.0710 at 1% (predicted > 0.0628). Against greedy-today in the same run — 0.0590 and 0.0739 — the LS sd is **smaller at both**, which is the refutation verbatim. Against the published greedy it is smaller at 5% and larger at 1%. |
+| **P-f** | **HOLDS** | Space/corpus ratio 0.7157, 0.6203, 0.6275, 0.6055, 0.5740. Every row far below its corpus figure and low budgets losing proportionally more, with one inversion between 25% and 10%. |
+| **P-g** | **REFUTED** | Balancing costs the LS **+0.0274** against the published 0.0557 — less, as predicted — but buys **+0.0576** in balanced accuracy against the published +0.1695. The gain moved the other way, which is the refutation. |
+
+The invariants held: LS ≥ greedy on **train** in all 115 configurations, no
+configuration hit the `max_rounds` safety net, every per-class `ceiling` equals
+the published one, and ACCOUNT_MANAGER stays capped at 21 of 55.
+
+**P-g is refuted by its own mechanism being right.** It reasoned that part of
+the greedy's sacrifice of rare classes was search weakness rather than objective
+conflict. That is exactly what happened — and it is why the gain shrank. Under
+the **total** objective the local search already reaches 0.6299 balanced accuracy
+where the greedy reached 0.5201, so balancing has far less left to buy. On split
+0 the greedy under the total objective gets **0 of 21** attainable
+ACCOUNT_MANAGER cases and the local search gets **19 of 21**, with no balancing
+at all.
+
+### §2 — the balanced objective, on both surfaces
+
+```
+ objetivo   optimizador   e2e test   acierto bal.   e2e espacio   MACRO-RECALL espacio
+ total       voraz          0.7713      0.5201        0.4931            0.5393
+ total       BL             0.8530      0.6299        0.6105            0.6271
+ balanceado  voraz          0.7150      0.6936        0.6420            0.6486
+ balanceado  BL             0.8256      0.6875        0.6573            0.6472
+
+ coste de balancear / ganancia en acierto balanceado / ganancia en macro espacio
+   voraz   +0.0563   +0.1735   +0.1093
+   BL      +0.0274   +0.0576   +0.0201
+```
+
+Greedy-today reproduces the published §2 to the digit on the balanced row
+(0.7150 and 0.6936), which is what makes the comparison readable.
+
+**On the uniform measure the balanced objective almost stops paying under a good
+optimizer.** Macro-recall over the exhaustive space: balancing buys the greedy
++0.1093 and the local search **+0.0201**, and the balanced local search (0.6472)
+does not beat the balanced greedy (0.6486). The corpus is long-tailed and the
+space is uniform, so this is the surface where the two objectives had to diverge
+most — and it is where the optimizer absorbs almost all of the difference.
+
+**The balanced objective overfits the smallest classes.** On split 0 the balanced
+local search scores *worse* than the balanced greedy on the two rarest classes —
+ONCALL_ESCALATION 2 of 3 against 3 of 3, SECURITY_INCIDENT 9 of 10 against 10 of
+10 — while scoring higher on the weighted train objective. With 4 and 10 training
+cases, maximizing weighted train recall harder does not generalize.
+
+### What it costs, and what it does not settle
+
+1663 s for 115 configurations on the pure pool, against ~2 min for the greedy
+that produced the original record. The exhaustive-space transfer added 0.9 s to
+build the masks and about a millisecond per order scored.
+
+Not settled: whether the coverage bound is loose (Step 1's open question is
+untouched here), and whether any of this survives on the hybrid pool, which
+`budget_and_balance` never used and which is ~8× slower.
+
+---
+
 ## Deliberately out of scope
 
 - **ILP as a competitor.** Still the uncomfortable question — if it induces

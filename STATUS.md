@@ -113,6 +113,25 @@ learner never sees the truth by any route (the record's wording, "the only modul
 that imports `true_action`", was corrected — `sweep.py` carries an unused
 import).
 
+**Cheap supervision is nearly free, and less free than published.** Under the
+audited optimizer the label-budget curve reads 0.8530 / 0.8227 / 0.7771 / 0.7410
+/ 0.5767 on **corpus test** for 1005 / 251 / 100 / 50 / 10 labels, pure pool.
+The headline ratio 5%/100% falls from 0.9147 to **0.8687**: 50 labels still buy
+87% of full supervision, on a full supervision that is now worth more
+([`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), Step 3;
+[`budget_and_balance_ls.json`](results3/budget_and_balance_ls.json)). On the
+**exhaustive space** the same orders give 0.6105 down to 0.3310, and low budgets
+transfer proportionally worse.
+
+**Protecting the rare classes costs a quarter of what it looked like.** Balancing
+the objective costs the greedy 0.0563 in e2e and buys +0.1735 in balanced
+accuracy; under the local search it costs +0.0274 and buys **+0.0576**, corpus
+test. Most of what read as objective conflict was search weakness: with no
+balancing at all, the local search recovers 19 of 21 attainable ACCOUNT_MANAGER
+cases where the greedy recovered 0. On the exhaustive space, macro-recall says
+balancing buys the greedy +0.1093 and the local search +0.0201. FINDINGS_AUDIT,
+Step 3.
+
 **The signal runs out as the system improves.** Under asymmetric feedback the
 volume of labels is proportional to the error rate of the system observed, so
 observing a worse π₀ produces a better order. A property of the channel, not of
@@ -146,7 +165,15 @@ The part a reader cannot reconstruct without reading everything in order.
    search lacked. The record diagnosed that mechanism correctly and refused to
    change the method, which is what later made the fix legitimate. FINDINGS4 §4
    erratum.
-6. **Rung 4's anchor cell was not "completely deterministic."** It spreads 0.0111
+6. **Rung 3's "at 1% it collapses to 0.5251, the arrival order without searching
+   for anything" was withdrawn.** The same greedy, correctly tie-broken, gives
+   **0.5732** at 10 labels: that collapse was substantially an artifact of the
+   pre-2026-08-06 tie-break, not of the label budget. Measured by running the
+   published greedy and the local search side by side against the untouched
+   record, which also showed the tie-break to be worth between −0.0166 and
+   +0.0481 depending on the fraction — it changes sign twice across the curve.
+   Corpus test. FINDINGS3 §4 erratum of 2026-08-13.
+7. **Rung 4's anchor cell was not "completely deterministic."** It spreads 0.0111
    across `PYTHONHASHSEED`, and the null test that had ruled tie-break
    instability out permuted a list the argmax never iterated — a true 0.0000 that
    measured nothing. Cause: the tie-break ran over a `set`. Fixed 2026-08-06,
@@ -159,24 +186,17 @@ The part a reader cannot reconstruct without reading everything in order.
 
 Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
-1. **`budget_and_balance` was never re-run with the audited optimizer**
-   ([`results3/budget_and_balance.json`](results3/budget_and_balance.json)). The
-   only figure of rungs 3 and 4 still produced entirely by the superseded greedy,
-   and the source of *50 labels are enough to order* — the premise rung 4 was
-   opened on. Both its results would move: the label-budget curve and the
-   balanced-vs-total objective comparison. Decides whether cheap supervision is
-   really nearly free, and what protecting the rare critical classes costs.
-2. **Whether the residue under the coverage bound is slack or search weakness.** A
+1. **Whether the residue under the coverage bound is slack or search weakness.** A
    search seeing all 134,400 cases still stops 0.0879 below it, down from the
    greedy's 0.1187 — evidence the bound is loose, not proof, since a heuristic
    that misses a bound never distinguishes the two. Exact optimization would
    settle it. FINDINGS3 §4 erratum.
-3. **Why the proposer partitions instead of stratifying, and why it wrote nothing
+2. **Why the proposer partitions instead of stratifying, and why it wrote nothing
    correct for two classes.** Rung 2's mechanism stays unmeasured until a base
    produces conflicts, and the 66.7%/64.2% material gap has no explanation.
    Undiscriminated: the framing (one ticket, one rule), the model, or rule-writing
    elicitation in general. FINDINGS2, "Why this is NOT a capability failure".
-4. **ILP (Popper/ILASP) as a competitor.** Specified as Step B of rung 3, never
+3. **ILP (Popper/ILASP) as a competitor.** Specified as Step B of rung 3, never
    run, still unauthorized. Decides whether the LLM proposer does work a cheaper
    inducer could not.
 
