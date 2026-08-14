@@ -24,6 +24,12 @@ pool y superficie que el registro ya lleva y este resumen omitía —
 `0.8530` es del **pool puro**, con la subsunción apagada, y ahí empieza el error
 de §4.
 
+**Actualizado el 14 de agosto de 2026, solo por estado.** La fila 1 de §3 seguía
+pidiendo un experimento ejecutado el día 13, que `STATUS.md` ya había movido
+fuera de sus abiertos: va marcada en su sitio, con puntero al registro que la
+posee. Esto **no** es una re-verificación del documento —ninguna cifra se volvió
+a comprobar—; la revisión del 12 de agosto sigue siendo la última.
+
 ---
 
 ## 1. Conclusiones a las que se llegó
@@ -190,12 +196,29 @@ sostiene.
 
 | # | antes | experimento | coste | qué descubriría |
 |---|---|---|---|---|
-| 1 | 4 | **Re-correr `budget_and_balance`** con el optimizador auditado | 0 llamadas · **1-2 h de reloj** (105 configuraciones × 64 arranques) | si "50 etiquetas bastan" sobrevive — la premisa sobre la que se abrió el peldaño 4. Es el único ítem que puede **retirar** una figura publicada, y es el abierto nº 1 de `STATUS.md` |
+| 1 | 4 | **Re-correr `budget_and_balance`** con el optimizador auditado: **ejecutado el 13 de agosto de 2026**, no pendiente | ya hecho · 0 llamadas | era: si "50 etiquetas bastan" sobrevive, la premisa sobre la que se abrió el peldaño 4. Lo midió el paso 3 de la auditoría — [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), «Step 3 result — August 13, 2026» —, que es el registro que posee esas cifras |
 | 2 | 1 | **Juicio por pares, en la forma enmendada de §2.2**: disparar por solape de extensiones, offline, sobre las 577 reglas ya pagadas | céntimos | si el proposer puede *declarar* prioridad aunque no la *escriba*. Puntuable contra 0.8530 arriba y 0.5115 abajo, sin depender de conseguir una base con solape |
 | 3 | 2 | **Otro modelo** (mismo prompt v2, varias semillas promediadas) | céntimos | discrimina "es DeepSeek" vs "es la elicitación"; informativo en ambos casos |
 | 4 | 3 | **Mostrar los huecos del techo** al proposer ("aquí no tienes regla correcta") | céntimos | si rellena el material que falta en T3/ACCOUNT_MANAGER (abierto en `IDEAS.md`). Es el único que ataca el problema de material, que ningún mecanismo de prioridad toca |
 | 5 | 5 | **ILP (Popper/ILASP) como competidor** | gratis, especificado, no autorizado | si un inductor sin LLM recupera el orden de capas, ¿para qué el proposer? |
 | 6 | 6 | **born_at invertido**: ya medido en §2.1, no pendiente. Lo que queda es decidir **qué es** | ya hecho | sobre el espacio, +0.252 sin etiquetas y sin búsqueda; sobre el corpus, dentro del ruido. No es un default de despliegue: es la evidencia más limpia de que born_at codifica la distribución y no la política |
+
+> **[ESTADO 2026-08-14] La fila 1 está ejecutada, y con ella se gastan tres cosas
+> que afirmaba.** El paso 3 de la auditoría la corrió el 13 de agosto de 2026;
+> sus resultados y su errata fechada viven en
+> [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) y en
+> [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §4, que son los registros que
+> los poseen. Aquí no se copian, por lo que dice la cabecera de este documento.
+>
+> **(a)** Ya no es «el abierto nº 1 de `STATUS.md`»: ese índice la movió a lo
+> establecido y su lista de abiertos empieza ahora por otra cosa. **(b)** Ya no es
+> «el único ítem que puede retirar una figura publicada», porque retiró una; el
+> resto de la tabla añade capacidad, no la quita. **(c)** La estimación de coste
+> que traía la fila —reloj y número de configuraciones— no es la que salió; la
+> real está en el registro, sección «What it costs, and what it does not settle».
+>
+> La fila se deja en su sitio y la tabla sin renumerar: sacarla borraría el motivo
+> por el que se reordenó el 12 de agosto, que está escrito justo encima.
 
 ## 4. ¿Hay esperanza de que el experimento no termine sin éxito?
 
