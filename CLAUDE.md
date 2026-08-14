@@ -81,6 +81,26 @@ it is the closed record of rung 1 and its figures must keep reproducing.
 long run. A model writing the prediction destroys the purpose of the file. If it
 is empty when the long run comes up, **stop and ask for it**.
 
+**A SIGNED PLAN TRAVELS ALONE.** `PREDICTION.md` and any `PLAN_*.md` at the root
+go in **their own commit, with their own message**, never staged alongside
+anything else. Stage them by name; `git add -A` with one of them edited in the
+working tree is how this gets broken. Committing them is not the problem —
+committing them accompanied is, because a signature that shares a commit with a
+diagnostic is filed under the diagnostic and stops being findable in the log.
+That is not hypothetical: on August 13, 2026 Sergi's signature of §0 of
+`PLAN_BUDGET_LS.md` arrived inside `b9b0f5f`, a commit about the start-budget
+diagnostic whose message never mentions it. Nothing was altered; the act simply
+became unauditable from the file's own history.
+
+Since August 14, 2026 `.githooks/pre-commit` refuses that commit. **The guard
+does not make this rule safe**: it runs pre-commit and `--no-verify` skips it
+whole, which is enough against a wildcard in a hurry and nothing at all against
+an agent that reads a rejection and reaches for the flag. Making it binding would
+take a server-side hook or a check in CI, disproportionate for a failure that has
+happened once and altered nothing. The rule is yours to keep; the guard only
+catches the careless version. Only the root counts — `docs/PLAN_x.md` is
+documentation about a plan, not a signed one.
+
 **3. DO NOT parallelize the loop.** It is strictly sequential: each new rule
 changes whether the next case escalates or not. Concurrency = broken semantics.
 
@@ -164,6 +184,10 @@ runs it before every commit (enable it once with `git config core.hooksPath
 .githooks`) and `.github/workflows/pruebas.yml` on every push. If the hook
 aborts a commit, `--no-verify` is **not** the default answer: see the previous
 paragraph.
+
+The hook now aborts for a second reason, before running anything: a signed plan
+staged with company (hard rule 2). There the answer is not `--no-verify` either
+— it is to split the commit, which is the whole point of the rejection.
 
 ### Step 0 — Engine ceiling (MANDATORY before any LLM run)
 

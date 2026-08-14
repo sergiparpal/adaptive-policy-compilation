@@ -1,8 +1,8 @@
 """
 That something runs the suite without anyone having to remember.
 
-Having 250 tests and depending on someone remembering to launch them is having
-fewer tests than it looks. There are two nets, covering different moments:
+Having hundreds of tests and depending on someone remembering to launch them is
+having fewer tests than it looks. There are two nets, covering different moments:
 
   * `.githooks/pre-commit`, before every commit, locally.
   * `.github/workflows/pruebas.yml`, on every push and every PR, including what
