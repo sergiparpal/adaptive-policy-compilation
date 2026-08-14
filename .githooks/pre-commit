@@ -15,15 +15,72 @@
 #
 # TO SKIP IT:  git commit --no-verify
 #
-# It makes sense for a documentation-only commit. For any other it does not: if
-# a snapshot fails, the expected number is NOT updated and the commit is not
-# forced; you find out what changed and, if the change is legitimate, you date
-# the erratum in the FINDINGS that publishes the figure. It is written in the
-# README, section "The tests and the provenance".
+# It skips the WHOLE hook, the guard below included, so "it is only
+# documentation" is no longer the licence it used to be: what the guard rejects
+# IS a documentation commit, and going around it to slip a signature in
+# accompanied is the one thing the guard exists to stop. There you split the
+# commit; you do not force it.
+#
+# What survives of that licence is narrower —prose that no snapshot covers, and
+# no plan in the same commit— and it never covers a failing test: if a snapshot
+# fails, the expected number is NOT updated and the commit is not forced; you
+# find out what changed and, if the change is legitimate, you date the erratum
+# in the FINDINGS that publishes the figure. It is written in the README,
+# section "The tests and the provenance".
 
 set -e
 
 cd "$(git rev-parse --show-toplevel)"
+
+# A signed plan travels alone.
+#
+# This does NOT forbid committing PREDICTION.md or a PLAN_*.md. It forbids
+# committing them ACCOMPANIED, which is what keeps the act findable in the log:
+# a signature is an event, and an event that shares a commit with a diagnostic
+# is filed under the diagnostic.
+#
+# WHY IT EXISTS: on 2026-08-13 Sergi's signature of §0 reached the repository
+# inside b9b0f5f, a commit whose message talks about the start-budget diagnostic
+# and never mentions the signature, because the agent staged with a wildcard and
+# swept the working-tree edit in. Nothing was altered; but auditing the plan by
+# its own history lands on a diagnostic instead of on a signing event.
+#
+# Only at the root: docs/PLAN_algo.md is documentation, not a signed plan, so
+# anything with a slash in its path falls through to the other pile.
+
+if git rev-parse -q --verify HEAD >/dev/null 2>&1; then
+    contra=HEAD
+else
+    contra=$(git hash-object -t tree /dev/null)   # first commit: empty tree
+fi
+
+planes=""
+otros=""
+estadificado=$(git diff --cached --name-only "$contra")
+
+while IFS= read -r fichero; do
+    [ -n "$fichero" ] || continue
+    case "$fichero" in
+        */*)                     otros="$otros $fichero"  ;;
+        PREDICTION.md|PLAN_*.md) planes="$planes $fichero" ;;
+        *)                       otros="$otros $fichero"  ;;
+    esac
+done <<FIN
+$estadificado
+FIN
+
+if [ -n "$planes" ] && [ -n "$otros" ]; then
+    echo "pre-commit: este commit mezcla un plan firmado con otros ficheros." >&2
+    echo "            plan: $planes" >&2
+    echo "            resto:$otros" >&2
+    echo "" >&2
+    echo "            Confirmalos por separado. El plan va en su propio commit," >&2
+    echo "            con su propio mensaje, para que la firma se encuentre en" >&2
+    echo "            el log en vez de quedar archivada bajo otra cosa." >&2
+    echo "" >&2
+    echo "            git reset$planes    # y confirma el resto primero" >&2
+    exit 1
+fi
 
 if ! command -v python3 >/dev/null 2>&1; then
     echo "pre-commit: no encuentro python3, que es lo unico que hace falta." >&2

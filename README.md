@@ -301,10 +301,21 @@ git config core.hooksPath .githooks     # once per clone
 ```
 
 [`.githooks/pre-commit`](.githooks/pre-commit) runs the suite before every
-commit — no venv, no API — and aborts it on failure. It is skipped with
-`git commit --no-verify`, which makes sense for a documentation-only commit and
-in few other cases: if a snapshot fails, the expected number is not updated and
-the commit is not forced either.
+commit — no venv, no API — and aborts it on failure. It also refuses one shape of
+commit before running anything: `PREDICTION.md` or a root `PLAN_*.md` staged
+together with any other file. Committing them is not the problem; committing them
+*accompanied* is, because a signature that shares a commit with a diagnostic gets
+filed under the diagnostic and stops being findable in the log — which is how
+Sergi's signature of §0 arrived on 2026-08-13, inside a commit about the
+start-budget diagnostic.
+
+The whole hook is skipped with `git commit --no-verify`, guard included, so
+"it is only documentation" is no longer the licence it was: what the guard
+rejects *is* a documentation commit, and going around it to slip a signature in
+accompanied is the one thing the guard exists to stop — there you split the
+commit. What survives of that licence is narrower — prose no snapshot covers,
+with no plan in the same commit — and it never covers a failing test: the
+expected number is not updated and the commit is not forced either.
 
 [`.github/workflows/pruebas.yml`](.github/workflows/pruebas.yml) does the same on
 every push and every PR — including what was pushed with `--no-verify` — on
@@ -317,6 +328,24 @@ the same one as the rest of the repositories in this account — requires a PR (
 approvals: zero reviewers), forbids force-pushes and deletion, and requires one
 status check: **`ci-complete`**. That check is the aggregate job at the end of
 the workflow; it depends on the matrix and fails unless every leg succeeded.
+
+**Merge the head CI signed, not the tab you left open.** On 2026-08-13
+[PR #7](https://github.com/sergiparpal/adaptive-policy-compilation/pull/7) was
+merged with two commits in flight: they did not go in, and for a while `main`
+published a Step 3 saying §0 carried no signature when the signature was already
+in `main`. **The ruleset cannot catch this and is not meant to** — `ci-complete`
+was green on the head that got merged and the required check was satisfied.
+Nothing failed; the page was simply older than the branch. It is a race, and the
+only thing that catches a race is looking before pressing the button:
+
+```bash
+gh pr view <N> --json headRefOid --jq .headRefOid    # what GitHub will merge
+git rev-parse origin/<branch>                        # what is on the branch
+```
+
+If the two differ, the page is stale: reload it and read the diff again. That
+comparison needs both halves, so whoever pushed the branch says which SHA they
+pushed, and it is the last line of the report.
 
 The aggregation is the point. Requiring `suite (3.10)` directly would work until
 the floor moves, and then the ruleset would be waiting forever for a check that
