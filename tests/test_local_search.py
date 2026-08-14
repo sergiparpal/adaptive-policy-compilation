@@ -689,5 +689,153 @@ class TestMultiArranque(unittest.TestCase):
         self.assertEqual(st["n_hits"], 0)
 
 
+# The output of `multistart` BEFORE `keep_orders` existed, captured on
+# 2026-08-14 by running the previous revision on these three instances. It is
+# the gate of P1 of `PLAN_ORDER_METRICS.md`: every figure in `results3/` and
+# `results4/` was produced through this function, so the default path has to
+# keep returning what it returned, and "it looks the same" is not a check.
+# Small instances and three explicit starts, so the expectation is readable
+# rather than a blob — the property under test is the SHAPE and the arithmetic
+# of the dict, and 65 rows would only make it unreadable.
+ANTES_DE_KEEP_ORDERS = {
+    0: {"best_order": ["X005", "X003", "X002", "X004", "X001", "X000"],
+        "stats": {
+            "n_starts": 3, "neighbourhood": "move+swap", "best_score": 13,
+            "best_from_index": 1, "best_from": "b", "reached_optimum": False,
+            "first_hit_index": None, "first_hit_start": None,
+            "starts_until_first_hit": None, "n_hits": 0,
+            "rows": [
+                {"index": 0, "start": "a", "start_score": 9, "end_score": 12,
+                 "rounds": 3, "moves": 3, "swaps": 0, "exhausted": False},
+                {"index": 1, "start": "b", "start_score": 10, "end_score": 13,
+                 "rounds": 2, "moves": 2, "swaps": 0, "exhausted": False},
+                {"index": 2, "start": "c", "start_score": 9, "end_score": 13,
+                 "rounds": 2, "moves": 3, "swaps": 0, "exhausted": False}]}},
+    1: {"best_order": ["X001", "X002", "X003", "X000", "X005", "X004"],
+        "stats": {
+            "n_starts": 3, "neighbourhood": "move+swap", "best_score": 9,
+            "best_from_index": 0, "best_from": "a", "reached_optimum": False,
+            "first_hit_index": None, "first_hit_start": None,
+            "starts_until_first_hit": None, "n_hits": 0,
+            "rows": [
+                {"index": 0, "start": "a", "start_score": 7, "end_score": 9,
+                 "rounds": 2, "moves": 2, "swaps": 0, "exhausted": False},
+                {"index": 1, "start": "b", "start_score": 6, "end_score": 9,
+                 "rounds": 2, "moves": 2, "swaps": 0, "exhausted": False},
+                {"index": 2, "start": "c", "start_score": 7, "end_score": 9,
+                 "rounds": 2, "moves": 2, "swaps": 0, "exhausted": False}]}},
+    2: {"best_order": ["X003", "X000", "X001", "X004", "X005", "X002"],
+        "stats": {
+            "n_starts": 3, "neighbourhood": "move+swap", "best_score": 12,
+            "best_from_index": 0, "best_from": "a", "reached_optimum": False,
+            "first_hit_index": None, "first_hit_start": None,
+            "starts_until_first_hit": None, "n_hits": 0,
+            "rows": [
+                {"index": 0, "start": "a", "start_score": 6, "end_score": 12,
+                 "rounds": 2, "moves": 3, "swaps": 0, "exhausted": False},
+                {"index": 1, "start": "b", "start_score": 6, "end_score": 12,
+                 "rounds": 2, "moves": 3, "swaps": 0, "exhausted": False},
+                {"index": 2, "start": "c", "start_score": 9, "end_score": 12,
+                 "rounds": 2, "moves": 2, "swaps": 0, "exhausted": False}]}},
+}
+
+
+def tres_arranques(ids, seed):
+    """The starts of the snapshot above: named, explicit and independent of
+    `declared_starts`, so that changing the declared budget cannot silently
+    rewrite the expectation."""
+    return [("a", sorted(ids)),
+            ("b", list(reversed(sorted(ids)))),
+            ("c", random_order(ids, seed=seed))]
+
+
+class TestMultiArranqueGuardaOrdenes(unittest.TestCase):
+    """P1 of `PLAN_ORDER_METRICS.md`: the 64 end orders the multi-start used to
+    drop are what the whole instrument is going to measure, and capturing them
+    must be ADDITIVE. The risk is not that the new field is wrong — it is that
+    reaching for it perturbs the search that produced every published figure."""
+
+    def test_sin_pedirlos_devuelve_exactamente_lo_de_antes(self):
+        """The gate: against output captured from the previous revision, not
+        against the current code's opinion of itself."""
+        for seed, esperado in ANTES_DE_KEEP_ORDERS.items():
+            ids, _pool, _label, _action, _idxs, M, W, full = instancia(6, 30, seed)
+            best, st = multistart(tres_arranques(ids, seed), M, W, full)
+            with self.subTest(seed=seed):
+                self.assertEqual(best, esperado["best_order"])
+                self.assertEqual(st, esperado["stats"])
+
+    def test_el_valor_por_defecto_es_no_guardarlos(self):
+        """Explicit, because the default is what every record ran on."""
+        ids, _pool, _label, _action, _idxs, M, W, full = instancia(6, 30, seed=0)
+        _b, st = multistart(tres_arranques(ids, 0), M, W, full)
+        for fila in st["rows"]:
+            self.assertNotIn("order", fila)
+
+    def test_guardarlos_no_cambia_nada_mas(self):
+        """Additive over the declared 65 starts: strip the new key and the two
+        dicts have to be the same object, best order included."""
+        for seed in range(5):
+            ids, _pool, _label, _action, _idxs, M, W, full = instancia(11, 70, seed)
+            starts = declared_starts(ids, first=random_order(ids, seed=seed))
+            a, sa = multistart(starts, M, W, full)
+            b, sb = multistart(starts, M, W, full, keep_orders=True)
+            desnudo = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
+                                     for f in sb["rows"]])
+            with self.subTest(seed=seed):
+                self.assertEqual(a, b)
+                self.assertEqual(sa, desnudo)
+
+    def test_tampoco_bajo_pesos(self):
+        """The weighted path is the other one a caller can be on."""
+        ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed=3)
+        wt, _L, _n = balanced_weights(ids, action, label, idxs)
+        starts = declared_starts(ids, first=random_order(ids, seed=3))
+        a, sa = multistart(starts, M, W, full, wt=wt)
+        b, sb = multistart(starts, M, W, full, wt=wt, keep_orders=True)
+        desnudo = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
+                                 for f in sb["rows"]])
+        self.assertEqual(a, b)
+        self.assertEqual(sa, desnudo)
+
+    def test_el_orden_guardado_es_el_que_termina_esa_partida(self):
+        """What makes the field worth having: each row's order is the end order
+        of ITS start, re-derivable by running the same search alone, and it
+        scores what the row says it scores."""
+        for seed in range(3):
+            ids, _pool, _label, _action, _idxs, M, W, full = instancia(10, 60, seed)
+            starts = tres_arranques(ids, seed)
+            _b, st = multistart(starts, M, W, full, keep_orders=True)
+            for fila, (_nombre, o0) in zip(st["rows"], starts):
+                solo, _ = local_search(o0, M, W, full)
+                with self.subTest(seed=seed, arranque=fila["start"]):
+                    self.assertEqual(fila["order"], solo)
+                    self.assertEqual(sorted(fila["order"]), sorted(ids))
+                    self.assertEqual(
+                        score_order(fila["order"], M, W, full),
+                        fila["end_score"])
+
+    def test_el_ganador_es_el_orden_de_su_fila(self):
+        """The winner is not stored twice with two meanings: what comes back as
+        `best_order` is the row at `best_from_index`."""
+        for seed in range(4):
+            ids, _pool, _label, _action, _idxs, M, W, full = instancia(10, 60, seed)
+            best, st = multistart(declared_starts(ids), M, W, full,
+                                  keep_orders=True)
+            with self.subTest(seed=seed):
+                self.assertEqual(st["rows"][st["best_from_index"]]["order"],
+                                 best)
+
+    def test_las_filas_no_comparten_lista_con_el_ganador(self):
+        """A caller that reorders what it got back must not rewrite the record
+        of the run it got it from."""
+        ids, _pool, _label, _action, _idxs, M, W, full = instancia(9, 50, seed=1)
+        best, st = multistart(declared_starts(ids), M, W, full, keep_orders=True)
+        fila = st["rows"][st["best_from_index"]]["order"]
+        copia = list(fila)
+        best.reverse()
+        self.assertEqual(fila, copia)
+
+
 if __name__ == "__main__":
     unittest.main()
