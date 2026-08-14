@@ -20,6 +20,12 @@ aggregate job at the end of the workflow, so half of that decision IS here and
 can be broken from here: renaming the job blocks every merge, silently and
 forever. That is what `test_existe_el_check_que_exige_el_ruleset` watches.
 
+Since August 14, 2026 the hook carries a second job besides running the suite: it
+refuses a commit that mixes a signed plan with anything else. That one is
+*executed* here rather than read —`TestLaGuardaDePlanes` runs the real hook over
+throwaway repositories— because a guard pinned by a substring is a guard whose
+behaviour nobody checks.
+
 What is NOT checked here is that the hook is installed: `core.hooksPath` is
 local configuration per clone and is not set in CI. Nor is the ruleset, which
 lives in the repository settings and not in a versioned file. The instruction to
@@ -30,6 +36,9 @@ from __future__ import annotations
 
 import os
 import re
+import shutil
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -65,6 +74,144 @@ class TestElHookDePreCommit(unittest.TestCase):
         """If the hook depended on `.venv`, a fresh clone could not commit
         anything. The suite runs on the standard library."""
         self.assertNotIn(".venv", HOOK.read_text())
+
+
+class TestLaGuardaDePlanes(unittest.TestCase):
+    """That the hook still refuses a signed plan committed accompanied.
+
+    This one is not pinned by reading the file. `TestElHookDePreCommit` can
+    check that the CI half exists because it cannot run GitHub Actions from
+    here; the hook it CAN run, and a guard whose only test is
+    `assertIn("PLAN_", texto)` passes just as happily over a guard that has been
+    broken into always letting everything through.
+
+    So the real hook is run over throwaway repositories. Two details make that
+    cheap and safe: the hook resolves its own root with `git rev-parse
+    --show-toplevel`, so from another repository it reads that other index and
+    never this one; and `python3` is masked with a stub, so the pass cases do
+    not relaunch this very suite from inside itself.
+
+    What the guard is for is in the hook's header and in the README: on
+    2026-08-13 the §0 signature arrived inside a commit about the start-budget
+    diagnostic, and stopped being findable in the log.
+    """
+
+    HOOK = HOOK
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="guarda-de-planes-"))
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
+
+        # The stub lives outside the repository, where no `git add` can reach
+        # it. It stands in for the suite: reaching it means the guard let the
+        # commit through.
+        binario = self.tmp / "bin"
+        binario.mkdir()
+        (binario / "python3").write_text("#!/bin/sh\necho SUITE-LANZADA\n")
+        (binario / "python3").chmod(0o755)
+
+        # Neither the user's global config nor the system's: this repository
+        # sets `core.hooksPath`, and inheriting it would run the hook again on
+        # the fixture's own commit.
+        self.entorno = dict(
+            os.environ,
+            PATH=f"{binario}{os.pathsep}{os.environ['PATH']}",
+            GIT_CONFIG_GLOBAL=os.devnull,
+            GIT_CONFIG_SYSTEM=os.devnull,
+        )
+
+    def _git(self, raiz: Path, *orden: str):
+        return subprocess.run(("git",) + orden, cwd=raiz, env=self.entorno,
+                              check=True, capture_output=True, text=True)
+
+    def _repo(self, con_historia: bool = True) -> Path:
+        raiz = self.tmp / f"repo{len(list(self.tmp.iterdir()))}"
+        raiz.mkdir()
+        self._git(raiz, "init", "-q")
+        self._git(raiz, "config", "user.email", "prueba@example.invalid")
+        self._git(raiz, "config", "user.name", "prueba")
+        if con_historia:
+            (raiz / "semilla.txt").write_text("semilla\n")
+            self._git(raiz, "add", "semilla.txt")
+            self._git(raiz, "commit", "-q", "-m", "semilla")
+        return raiz
+
+    def _confirma(self, *rutas: str, con_historia: bool = True):
+        """Stage those paths in a fresh repository and run the real hook."""
+        raiz = self._repo(con_historia)
+        for ruta in rutas:
+            destino = raiz / ruta
+            destino.parent.mkdir(parents=True, exist_ok=True)
+            destino.write_text(f"contenido de {ruta}\n")
+            self._git(raiz, "add", "--", ruta)
+        return subprocess.run([str(self.HOOK)], cwd=raiz, env=self.entorno,
+                              capture_output=True, text=True)
+
+    def _rechazado(self, salida):
+        self.assertEqual(salida.returncode, 1, salida.stderr or salida.stdout)
+        self.assertIn("mezcla un plan firmado", salida.stderr)
+        self.assertNotIn("SUITE-LANZADA", salida.stdout)
+
+    def _aceptado(self, salida):
+        self.assertEqual(salida.returncode, 0, salida.stderr or salida.stdout)
+        self.assertNotIn("mezcla un plan firmado", salida.stderr)
+        self.assertIn("SUITE-LANZADA", salida.stdout,
+                      "no llego a la suite: paro antes por otro motivo")
+
+    def test_rechaza_un_plan_acompanado_de_codigo(self):
+        """The 2026-08-13 case, which is the one that has already happened."""
+        self._rechazado(self._confirma("PLAN_BUDGET_LS.md",
+                                       "peldano3/local_search.py"))
+
+    def test_rechaza_PREDICTION_acompanada(self):
+        """Hard rule 2 of `CLAUDE.md`: the prediction is Sergi's, and it is
+        written before the long run. Same reason, same treatment."""
+        self._rechazado(self._confirma("PREDICTION.md", "run_experiment.py"))
+
+    def test_rechaza_aunque_el_acompanante_sea_prosa(self):
+        """It is not about code. A signature swept in next to a README edit is
+        just as unfindable."""
+        self._rechazado(self._confirma("PLAN_AUDIT.md", "README.md"))
+
+    def test_el_mensaje_nombra_los_dos_lados(self):
+        """A guard that says no without saying to what is a guard people
+        disable."""
+        salida = self._confirma("PLAN_BUDGET_LS.md", "peldano3/local_search.py")
+        self.assertIn("PLAN_BUDGET_LS.md", salida.stderr)
+        self.assertIn("peldano3/local_search.py", salida.stderr)
+
+    def test_deja_pasar_el_plan_solo(self):
+        """Sergi's signing commit. The guard forbids the company, not the
+        act."""
+        self._aceptado(self._confirma("PLAN_BUDGET_LS.md"))
+
+    def test_deja_pasar_varios_planes_juntos(self):
+        """Deliberate, and this is where it is written down: a commit carrying
+        only plans is still filed as a plan commit, which is all the guard is
+        protecting. Nothing hides behind them."""
+        self._aceptado(self._confirma("PLAN_BUDGET_LS.md", "PREDICTION.md"))
+
+    def test_deja_pasar_un_commit_sin_planes(self):
+        """The common case has to stay free: the guard is not a toll on every
+        commit."""
+        self._aceptado(self._confirma("peldano3/local_search.py", "README.md"))
+
+    def test_un_plan_en_un_subdirectorio_no_cuenta(self):
+        """Anchored to the root. `docs/PLAN_algo.md` is documentation about a
+        plan, not a signed one, and blocking it would teach people to reach for
+        `--no-verify` — which is the same hole with extra steps."""
+        self._aceptado(self._confirma("docs/PLAN_algo.md",
+                                      "peldano3/local_search.py"))
+
+    def test_no_se_rompe_en_el_primer_commit(self):
+        """Without HEAD there is nothing to diff the index against, and the
+        hook runs under `set -e`: the empty tree is the fallback. A clone that
+        cannot commit anything at all would get the hook uninstalled the same
+        afternoon."""
+        self._aceptado(self._confirma("peldano3/local_search.py",
+                                      con_historia=False))
+        self._rechazado(self._confirma("PLAN_BUDGET_LS.md", "run_experiment.py",
+                                       con_historia=False))
 
 
 class TestElFlujoDeCI(unittest.TestCase):
