@@ -76,6 +76,30 @@ REF = {"voraz test (post arreglo del desempate)": 0.7713,
 # Pools as masks
 # ---------------------------------------------------------------------------
 
+def space_truth_masks(space=None):
+    """
+    {action: mask of the cases whose TRUE label is that action}, over the
+    exhaustive space, in `Space`'s bit convention.
+
+    Extracted from `space_pools`, which has always built exactly this and kept
+    it to itself. It is exposed because the truth by class is what
+    `order_metrics.per_class_disagreement` needs, and there is exactly one place
+    it may come from: a module already allowed to consult the oracle
+    (`tests/test_oracle_separation.py` pins that list). Deriving it from the
+    masks instead is the defect the audit recorded as F10 — the masks give the
+    per-class CEILING, which equals the class size only where every case is
+    winnable, true of the hidden policy and false of the 577 rules by 98 cases
+    in 1005, and false precisely in ACCOUNT_MANAGER and T3_ENGINEERING.
+
+    The masks partition the space: every case has exactly one true action.
+    """
+    space = Space() if space is None else space
+    bits = {a: bytearray(space.n) for a in ACTIONS}
+    for i, case in enumerate(all_cases()):
+        bits[true_action(case)][i] = 1
+    return {a: int("".join(map(str, b)), 2) for a, b in bits.items()}
+
+
 def space_pools(ids, conds, action, below):
     """
     The two pools over the exhaustive space, as bitmasks.
@@ -86,10 +110,7 @@ def space_pools(ids, conds, action, below):
     against `order_search.build_tables`, which is what computed the record.
     """
     space = Space()
-    bits = {a: bytearray(space.n) for a in ACTIONS}
-    for i, case in enumerate(all_cases()):
-        bits[true_action(case)][i] = 1
-    tmask = {a: int("".join(map(str, b)), 2) for a, b in bits.items()}
+    tmask = space_truth_masks(space)
 
     ext = {rid: space.extension(conds[rid]) for rid in ids}
     pools = {}
