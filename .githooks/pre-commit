@@ -47,6 +47,17 @@ cd "$(git rev-parse --show-toplevel)"
 #
 # Only at the root: docs/PLAN_algo.md is documentation, not a signed plan, so
 # anything with a slash in its path falls through to the other pile.
+#
+# WHAT IT DOES NOT PROTECT AGAINST: being skipped. This runs pre-commit, and
+# --no-verify skips it whole. Against an honest slip —a wildcard in a hurry,
+# which is what happened on the 13th— that is enough, because a slip is not
+# trying to get past anything. Against an agent that sees a commit fail and
+# reaches for --no-verify by reflex, it is nothing at all, and no wording here
+# changes that. Making it binding would take a server-side hook or a check in
+# CI: disproportionate for a failure that has happened once and altered nothing.
+# So it stays a guard against carelessness, and says so — a guard trusted for
+# more than it can do is worse than no guard, because it moves the vigilance
+# off the person without moving the ability to stop anything.
 
 if git rev-parse -q --verify HEAD >/dev/null 2>&1; then
     contra=HEAD

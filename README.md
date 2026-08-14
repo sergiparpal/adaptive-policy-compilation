@@ -317,6 +317,13 @@ commit. What survives of that licence is narrower — prose no snapshot covers,
 with no plan in the same commit — and it never covers a failing test: the
 expected number is not updated and the commit is not forced either.
 
+Which makes the guard a norm and not an enforcement, and it is worth saying
+plainly: it catches carelessness — a wildcard in a hurry, the 2026-08-13 case —
+and it catches nothing that is trying to get past it, an agent reaching for
+`--no-verify` by reflex included. Making it binding would take a server-side
+hook or a check in CI, disproportionate for a failure that has happened once and
+altered nothing. A guard trusted for more than it can do is worse than no guard.
+
 [`.github/workflows/pruebas.yml`](.github/workflows/pruebas.yml) does the same on
 every push and every PR — including what was pushed with `--no-verify` — on
 **3.10 and 3.12**: the minimum this README declares and the interpreter that
