@@ -28,6 +28,10 @@ after seeing any number. P4 does not start until this section carries a signatur
 line. Commit the plan before P1, so that `git log -p` can show the prediction
 predates every figure.
 
+**Signed — Sergi, 2026-08-14.** I adopt §0 as drafted, without changes.
+`git diff 0f2dcf8 -- PLAN_ORDER_METRICS.md` shows only this line and the
+pointer in §4, so no row of the table moved. P4 may start.
+
 **What is being bet on.** With first-match-wins, the relative order of two rules
 can only change a decision if **both match some common case and they prescribe
 different actions**. Measured on the exhaustive space: of the 166,176 pairs,
@@ -211,6 +215,12 @@ were regenerated and from which published rows.
 | **G4** | Any pair with behavioural distance 0 and positional distance > 0 — proof in the real instance of what P2 pins on a toy. | |
 | **G5** | Where the greedy start's end order sits relative to the random starts' end orders: inside their cloud or off to one side. | |
 | **G6** | Anything the parity gate turns up. | |
+
+**Where the filled register lives.** The status column stays empty in this
+file on purpose: the plan is not edited after signing, so that its own log
+shows the prediction preceding every figure instead of a diff having to prove
+it. `results3/FINDINGS_ORDERS.md` (P6) owns the register, with its findings
+dated in place.
 
 ---
 
