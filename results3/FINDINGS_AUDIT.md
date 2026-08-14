@@ -388,6 +388,14 @@ on a commit about a diagnostic, not on a signing event. Nothing was altered and
 the diff is honest, but the signing is the one act in this step that should have
 had a commit of its own, and staging by wildcard is what cost it.
 
+*Addendum, 2026-08-14.* The route this took is now closed at the cheapest point:
+`.githooks/pre-commit` refuses a commit that stages `PREDICTION.md` or a root
+`PLAN_*.md` together with any other file, and hard rule 2 of `CLAUDE.md` states
+the norm the guard only partly enforces — the hook is skipped by `--no-verify`,
+so it stops the careless version of this defect and nothing that is trying to get
+past it. Neither the figures above nor the commit under discussion change; what
+changes is that the same wildcard would now fail loudly.
+
 **A blocking gate was run first, and it found a defect.** The class-weighted
 objective got its own step 0 (`optimizer_check_wt.py`): the hidden policy in
 design order maximizes every non-negative-weight objective at once, so the
