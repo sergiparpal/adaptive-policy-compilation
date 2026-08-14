@@ -1,5 +1,17 @@
 # PLAN — Audit Step 3: `budget_and_balance` with the audited optimizer
 
+> **[CLOSED 2026-08-14] Executed in full.** The seven phases merged in
+> [#7](https://github.com/sergiparpal/adaptive-policy-compilation/pull/7), their
+> tail — the §0 signature among it — in
+> [#8](https://github.com/sergiparpal/adaptive-policy-compilation/pull/8), and
+> the process guard that the step's one traceability defect earned in
+> [#9](https://github.com/sergiparpal/adaptive-policy-compilation/pull/9). **The
+> figures are owned by
+> [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), Step 3**, and no
+> number is to be read off this file. Nothing below is pending work: what is kept
+> here is §0, the prediction immutable before any number existed, and its four
+> refuted bets.
+
 **Destination:** repository root, next to `PLAN_AUDIT` (referenced from
 `peldano3/local_search.py`). **Drafted:** 2026-08-12. **For:** execution by a
 coding agent, start to finish, without further design decisions.
