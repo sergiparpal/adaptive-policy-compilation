@@ -497,7 +497,7 @@ def declared_starts(ids, first=None, seed=MULTISTART_SEED, n=MULTISTART_STARTS):
 
 
 def multistart(starts, M, W, full, neighbourhood="move+swap", optimum=None,
-               wt=None):
+               wt=None, keep_orders=False):
     """
     Local search from every declared start, keeping the best. Deterministic:
     the starts are fixed, no move is applied on a tie, and a tie between starts
@@ -507,15 +507,30 @@ def multistart(starts, M, W, full, neighbourhood="move+swap", optimum=None,
     so that the cost of the restarts is on the record. The search never reads
     it, and it must be left None wherever the optimum is not known independently
     of the search, which is everywhere except this audit's Step 0.
+
+    `keep_orders` adds each start's END ORDER to its row, and changes nothing
+    else. Every published figure came out of this function with the orders
+    dropped: only the winner survived, scored, and the other 64 permutations
+    were discarded at the `for` above. That is why no record in `results*/`
+    holds an order from this optimizer, and why the question "do two orders that
+    score alike decide alike" has never been askable of a stored artefact
+    (`PLAN_ORDER_METRICS.md`, G1). It defaults to False so that the path every
+    record ran on is the same path, byte for byte — `tests/test_local_search.py`
+    pins the returned stats against what it returned before this argument
+    existed. The orders are the expensive thing to hold, not to compute: 65
+    permutations of 577 rules, which is why the caller asks for them.
     """
     rows = []
     best_order, best_score, best_at = None, -1, None
     for k, (name, o0) in enumerate(starts):
         o, st = local_search(o0, M, W, full, neighbourhood=neighbourhood, wt=wt)
-        rows.append({"index": k, "start": name, "start_score": st["start"],
-                     "end_score": st["end"], "rounds": st["rounds"],
-                     "moves": st["moves"], "swaps": st["swaps"],
-                     "exhausted": st["exhausted"]})
+        row = {"index": k, "start": name, "start_score": st["start"],
+               "end_score": st["end"], "rounds": st["rounds"],
+               "moves": st["moves"], "swaps": st["swaps"],
+               "exhausted": st["exhausted"]}
+        if keep_orders:
+            row["order"] = list(o)
+        rows.append(row)
         if st["end"] > best_score:
             best_order, best_score, best_at = o, st["end"], k
 
