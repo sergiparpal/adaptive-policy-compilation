@@ -33,8 +33,12 @@ measure the exhaustive space, the corpus, or a three-rule instance whose answer
 is written out by hand in a test.
 
 The masks are the ones `local_search.build_masks` and
-`order_search_ls.space_pools` already build, with the same bit convention: bit k
-of a mask is case k of the evaluated set. `truth`, where a function takes it, is
+`order_search_ls.space_pools` already build. Nothing here ever maps a bit back
+to a case — every operation is an AND, an OR and a `bit_count` — so the bit
+convention is the caller's business, and the two in the repository differ:
+`build_masks` puts case k in bit k, `Space` puts it in bit n-1-k. What a caller
+must not do is mix masks from two of them in one comparison. `truth`, where a
+function takes it, is
 {class: mask of the cases whose true label is that class}, and it comes from a
 module allowed to see the oracle — never from the masks, which give the per-class
 CEILING and not the class size (the defect recorded as F10 of the optimizer
