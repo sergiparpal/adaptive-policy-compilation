@@ -9,6 +9,14 @@ before any number existed and signed unchanged. Record:
 arrived in PR #13; the regeneration and these figures in PR #17, PR #15 having
 landed them once and PR #16 having reverted that whole. Zero API calls.
 
+**The revert was editorial, and the diff says so rather than this sentence
+doing it.** Both landings carry the same measurements: `git diff 21b3293 HEAD --
+results3/order_metrics.json` is empty and the `code_digest` inside that record
+reads `1ffac0092a1f6c06` either way, while `git diff d4381fe HEAD --
+results3/FINDINGS_ORDERS.md` is the entire change and is confined to how Q-d,
+Q-f and G4 are read. (`21b3293` and `d4381fe` are the two commits PR #15 landed;
+they stay on `main`, followed by PR #16's reverts of them.)
+
 **Surface.** Every distance, signature and per-class rate here is over the
 **exhaustive space** of 134,400 cases, **pure pool**. The `train`, `test` and
 `space` figures of the parity gate are the surfaces of the records being
