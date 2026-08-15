@@ -134,16 +134,6 @@ none of them developed and in no order of precedence.
   the rank correlation decays, whether the rules that change places are the ones
   that decide the rare classes — which is also the only way to tell a real
   regression from two draws either side of a plateau.
-  **Measured on 2026-08-15** (`results3/FINDINGS_ORDERS.md`, which owns the
-  figures). What the instrument settled: the winner at 65 starts and the winner
-  at 257 are different machines by a wide margin on both splits where the train
-  score moved, so those rows are not two draws either side of a plateau in any
-  sense a reader could dismiss. What it did **not** settle: the direction — that
-  extra budget buys the labelled sample and sells the function — still rests on
-  the same two movements, and the count of positions that move turns out to say
-  nothing, because nearly every rule moves between any two end orders. Rank
-  correlation decayed as a diagnostic too: it does not track behaviour here even
-  restricted to the pairs that can change a decision.
 - **The peak of the multi-start is a singleton that spreads, not an optimum that
   concentrates.** Opened 2026-08-13. Across all fifteen measured rows — three
   budgets × five splits — **exactly one start reaches the best train score**, and
@@ -159,17 +149,6 @@ none of them developed and in no order of precedence.
   and which one you get does not matter downstream) or load-bearing (the singleton
   encodes the rare-class decisions) is unmeasured, and it is the same question the
   entry above proposes measuring.
-  **Measured on 2026-08-15** (`results3/FINDINGS_ORDERS.md`). Not closed,
-  sharpened. The variance is **not** benign in the first sense: the end orders
-  are all distinct machines — every set measured, up to 257 of them, with no two
-  behaviourally identical — and where the objective saturates at 1% the orders
-  that tie at the top disagree with each other on a large fraction of the case
-  space. So the singleton peak is not one summit among near-copies; it is one
-  draw among many genuinely different answers. Whether it is load-bearing in the
-  second sense — whether the differences fall where a deployment would feel them
-  — is still open: they concentrate on the **most abundant** class, not on the
-  scarce ones the entry guessed, and nothing here measures the arrival
-  distribution.
 
 ---
 

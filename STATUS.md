@@ -1,9 +1,8 @@
 # Status
 
-What is known, as of August 15, 2026. **Not a history** — that is the four
-`FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md)
-and [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), each with its
-dated errata in place. Every figure here already exists in one of them.
+What is known, as of August 9, 2026. **Not a history** — that is the four
+`FINDINGS` records and [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md), each with its dated
+errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
 does not cover (an *impasse*), an LLM acts and writes a rule so that next time it
@@ -116,22 +115,6 @@ concentrates on.
 draw.** That distinction is not academic here: rung 4 consumes orders, not
 scores.
 
-**And the draw is now measured in cases, not inferred.** The end orders the
-multi-start discards were regenerated — parity exact on all 31 published rows —
-and compared as functions over the **exhaustive space**, pure pool
-([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md),
-[`order_metrics.json`](results3/order_metrics.json)). Split 0 at full
-supervision: the winner at 65 starts and the winner at 257, **one train case
-apart**, decide **11,240 of 134,400 cases differently — 8.36%**; split 4, three
-train cases apart, **14,430 — 10.74%**. The 65 end orders are **65 distinct
-behavioural signatures**, and so are all 257: no two of them are the same
-machine. Positional churn says nothing — a median 99.65% of the rules sit at a
-different index between any two of them — and **Kendall tau says nothing
-either**, over all pairs or restricted to the 35,457 that can change a decision
-(|ρ| ≈ 0.13 both ways), which refuted the instrument's own design premise.
-Disagreement concentrates on the **most abundant** class, `SECURITY_INCIDENT` at
-1.53× the overall rate, and is *below* average on the two scarce ones.
-
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
 0.8530 with the same optimizer at the same budget, and to every rung 4 figure
@@ -170,18 +153,6 @@ The headline ratio 5%/100% falls from 0.9147 to **0.8687**: 50 labels still buy
 [`budget_and_balance_ls.json`](results3/budget_and_balance_ls.json)). On the
 **exhaustive space** the same orders give 0.6105 down to 0.3310, and low budgets
 transfer proportionally worse.
-
-**Caveat on the low-budget rows, added August 15, 2026.** Step 3 reads them as
-*the tie-break regularises*: the objective saturates, most starts tie, ties go to
-index 0, so the search returns a sane default. Measured as orders, that reading
-is too kind. At 10 labels (split 0, draw 0) the **40 orders tying at the best
-train score are 40 distinct machines**, disagreeing with one another on a median
-**39.2% of the exhaustive space**. The search is not declining to act; it is
-choosing arbitrarily among very different answers and landing on a sane default
-by accident of the start order. The figures stand — they are what the declared
-instrument returns — but anyone who changes the tie-break or the order of the
-declared starts changes which of the 40 ships
-([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md)).
 
 **Protecting the rare classes costs a quarter of what it looked like.** Balancing
 the objective costs the greedy 0.0563 in e2e and buys +0.1735 in balanced
