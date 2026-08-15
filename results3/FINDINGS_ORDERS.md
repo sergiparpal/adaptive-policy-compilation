@@ -813,7 +813,9 @@ the 65 end orders of split 0, matched by `(i, j)`. No search, no regeneration,
 no new instrument, zero API calls, **0.07 s**. Both records were opened read
 only and neither was rewritten. Prediction: `IDEAS.md`, the entry *Whether the
 space can RANK two orders when it cannot rate them*, committed alone and without
-code before any of these numbers existed. Record:
+code before any of these numbers existed — commit `73719ec`, landed in **PR
+#22**; these figures arrived in **PR #23**, which is what makes the order of the
+two checkable in the log rather than asserted here. Record:
 [`rank_transfer.json`](rank_transfer.json).
 
 **The question the two parts above left open.** The corpus part settled that the
