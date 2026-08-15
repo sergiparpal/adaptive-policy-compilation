@@ -61707,7 +61707,8 @@
         "corpus_full": "below",
         "corpus_test": "below"
       },
-      "verdict": "REFUTED"
+      "verdict": "REFUTED",
+      "competition_is_post_hoc": "the figures under 'competition' were chosen and measured AFTER this verdict existed, because it was a refutation with a stated mechanism; see the record's 'post_hoc' field. They are evidence about the mechanism and no part of the adjudication, which is the pooled rate against 15.2% and nothing else."
     },
     "S-c": {
       "claim": "the per-class rates are preserved across surfaces to within +/-30% relative, for the classes with 100 or more corpus cases; refuted otherwise.",
@@ -61820,7 +61821,7 @@
       "claim": "SECURITY_INCIDENT's share of the total disagreement falls from 57.5% to under 3%; refuted by anything far from that.",
       "adjudicates_on": "corpus_full",
       "threshold": 0.03,
-      "refutation_note": "'anything far from that' is not a number, so what is applied is the line the prediction does state: under 3% holds, 3% or more does not.",
+      "refutation_note": "this row has two lines in it and they do not agree. The clause is quoted verbatim under `clause_verbatim` rather than paraphrased, and both readings of it, with the one applied and why, are under `readings`.",
       "space_share": 0.575305,
       "reweighted_share": 0.026749,
       "reweighted_share_note": "what pure reweighting predicts for this share \u2014 the space's per-class rates carried over unchanged and weighted by the corpus class sizes. It is where the 'under 3%' line comes from, and the gap between it and the measured share is exactly what S-c's refutation is made of.",
@@ -61854,7 +61855,25 @@
         "corpus_full": "REFUTED",
         "corpus_test": "REFUTED"
       },
-      "verdict": "REFUTED"
+      "verdict": "REFUTED",
+      "clause_verbatim": "S-d \u2014 *Calibration.* SECURITY_INCIDENT's share of the total disagreement falls from **57.5% to under 3%**. *Refuted* by anything far from that, which would mean the per-class rates do not carry across and S-c will already have fired.",
+      "readings": {
+        "on_the_stated_value": {
+          "line": "under 3%",
+          "measured": {
+            "corpus_full": 0.0457,
+            "corpus_test": 0.050553
+          },
+          "verdict": "REFUTED"
+        },
+        "on_the_refutation_clause_as_written": {
+          "line": "anything far from that",
+          "verdict": "NOT DECIDABLE FROM THE ROW",
+          "why": "4.57% arrives from 57.5%, a fall of 12.6x, and lands 1.6 points above a 3% line. Whether that is 'far from' 3% is not a quantity this record can evaluate, and reading it charitably after seeing the number is adjudication by charity."
+        },
+        "applied": "on_the_stated_value",
+        "why_applied": "the point value is the only half of the row that can be checked mechanically, and the clause's own rider \u2014 that a refutation would mean the per-class rates do not carry across and S-c would already have fired \u2014 describes exactly what happened: S-c is refuted on four of its six eligible classes. Both halves of the row therefore agree, and the verdict is not doing the work of an argument."
+      }
     },
     "S-e": {
       "claim": "over the 32,896 pairs of the 257-start set: pairs at distance 0 on the corpus with distance > 0 on the space stay at zero, while the pairwise minimum falls from 1.9% of the space \u2014 2,615 cases \u2014 to under 1% of the corpus. Refuted if any such pair appears.",
@@ -61918,5 +61937,32 @@
     },
     "search_band_1pct": 86.5,
     "total": 396.1
-  }
+  },
+  "truth_provenance": "the per-class truth of every corpus figure in this record is inst['truth'] \u2014 the label list order_search.build_tables produced once for the 2000 cases \u2014 sliced into one mask per class over the indices ACTUALLY MEASURED, in build_masks' convention: case idxs[k] is bit k. It is NOT order_search_ls.space_truth_masks, which is the truth over the 134,400 cases of the exhaustive space in Space's convention, case k at bit n-1-k; that one is used here for nothing, and using it on a corpus surface would have turned every per-class figure into noise of the right shape, since the totals would still add up. The G2 census gate does not cover this: it pins the rule masks M by reproducing a published pair count, and a pair count never looks at a label. What covers it is tests/test_order_metrics_corpus.py \u2014 the class masks partition each of the three measured surfaces, and W[r] == M[r] & truth[action[r]] holds over all 577 rules on each, which the reversed convention fails.",
+  "post_hoc": "competition_census IS POST HOC and is not one of the adjudicated figures. The six verdicts were produced first, by a run of this module that did not contain `competition` at all (2026-08-15T14:08:24Z, code_digest 3bb4662a607fc9a0). The census was then written and instrumented BECAUSE S-b had failed and S-b states a mechanism, and the module was re-run whole (14:17:16Z, code_digest 99184aa53d866fac), reproducing the six verdicts exactly and adding it. So this record's own code_digest covers code written after the verdicts existed. That earlier record was overwritten by this one and is not on the record, so what a reader can check is the code in this commit, not that run. The two figures are kept because they separate 'the premise was false' from 'the premise was true and the effect does not appear', which is the finding; they are marked because a quantity chosen after seeing a refutation is a different kind of quantity from one named before it.",
+  "sets_measured": {
+    "surfaces": [
+      "corpus_full: all 2000 corpus cases",
+      "corpus_test: the test half of the split whose orders are measured \u2014 995 cases for split 0, 1002 for split 4",
+      "exhaustive space, 134,400 cases: measured here only for S-e's first clause, which compares the two surfaces pair by pair"
+    ],
+    "adjudicating": [
+      "split0_starts65 on corpus_full \u2014 S-a, S-b, S-c and S-d, all four pooled over its 2,080 pairs; corpus_test reported beside",
+      "split0_starts257 on corpus_full, against the same 32,896 pairs on the exhaustive space \u2014 S-e, whose first clause needs both surfaces; corpus_test reported beside",
+      "b_tied_split0_draw0 on corpus_full, the 40 orders tying at the best train score at 1% \u2014 S-f; corpus_test reported beside"
+    ],
+    "additional": [
+      "split0_starts129 on both corpus surfaces: adjudicates nothing, and is measured because the budgets are nested and slicing the matrix is free",
+      "split4_starts65 / 129 / 257 on both corpus surfaces: the other split start_budget_check saw the train score move on. It adjudicates nothing \u2014 every prediction names split 0 \u2014 and is reported so that no figure rests on one split",
+      "b_all65_split0_draw0 on both corpus surfaces: all 65 end orders of the 1% cell, tied or not, as the containing set of S-f's 40",
+      "band_1pct_context_corpus_full: the tied set of each of the 25 cells of the 1% band, context for S-f and for nothing else",
+      "cited_pairs: the winner at 65 against the winner at 257 on each split, reported in full on each corpus surface",
+      "competition_census: post hoc, see the 'post_hoc' field"
+    ],
+    "pair_matrices": [
+      "5 matrices of 32,896 pairs: (split 0, corpus_full), (split 0, corpus_test), (split 4, corpus_full), (split 4, corpus_test), (split 0, exhaustive space)",
+      "plus the 2,080-pair and 780-pair triangles of the 1% cell on each corpus surface, and the tied set of each band cell on corpus_full"
+    ]
+  },
+  "record_annotations": "annotations added BY HAND to the committed record on 2026-08-15, after the run that produced it and after the six verdicts existed: truth_provenance, post_hoc, sets_measured, this field, and inside predictions, S-b's competition_is_post_hoc, S-d's clause_verbatim and readings, and a rewrite of S-d's refutation_note, which paraphrased a clause that had to be quoted. Every one of them is a string; no measured value was touched, and the diff against the commit that landed this record shows those additions and nothing else. The module holds them as constants and emits them, so a fresh run reproduces this text \u2014 what a fresh run would not reproduce is code_digest 99184aa53d866fac, which identifies the code as it stood when these numbers were computed."
 }

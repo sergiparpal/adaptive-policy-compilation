@@ -306,17 +306,27 @@ none of them developed and in no order of precedence.
   - **S-b REFUTED** — the same 5.75%, against 15.2%. Its stated mechanism is
     **confirmed and does not produce the effect**: the average arriving case
     carries 74% more live conflicting pairs than the average point of the space,
-    and disagrees 3.5 times less. The 15.2% itself does not reconstruct by the
-    route the prediction names, which gives 11.67%; the verdict is against 15.2%
-    as written, and 5.75% is below both.
+    and disagrees 3.5 times less. Those two figures are **post hoc** — chosen
+    after the verdict existed and because S-b had failed — and the record marks
+    them so.
+  - **S-b's 15.2% does not reconstruct.** Found on reading the entry and
+    confirmed on measuring: reweighting the space's per-class rates by the
+    arrival distribution, the route the prediction names, gives **11.67%**. It
+    landed in the repository in the same commit as the measurement, so the log
+    does not separate the two and this is not a note that predates the run. The
+    verdict is against 15.2% as written; 5.75% is below both.
   - **S-c REFUTED** — four of the six eligible classes fall outside ±30%
     relative, from −81.6% to +165.2%. Which is the larger finding its own
     refutation clause named: the mix of cases *within* a class governs too.
-  - **S-d REFUTED**, narrowly — 4.57% against *under 3%*, from 57.5% on the
-    space. Pure reweighting predicts 2.67%, and the gap is what S-c already
-    fired on.
+  - **S-d REFUTED on its stated value** — 4.57% against *under 3%*, from 57.5%
+    on the space; pure reweighting predicts 2.67%, and the gap is what S-c
+    already fired on. Its refutation condition, *anything far from that*, is not
+    a number: both readings are published in the record that owns the figures,
+    and the row's own rider — that S-c would already have fired — did occur.
   - **S-e HOLDS**, both clauses — zero pairs of the 32,896 at distance 0 on the
-    corpus, and the pairwise minimum at 0.10% against a line of 1%.
+    corpus, and the pairwise minimum at 0.10% against a line of 1%. Read at the
+    surface's resolution that is 2 cases of 2000, one case being 0.05%: the
+    clause was cleared by 18 cases.
   - **S-f HOLDS** — median 24.05% of the corpus, against a 20% line. The
     low-budget caveat survives the change of surface; the full-supervision
     headline does not.
