@@ -113,6 +113,157 @@ CENSUS_PUBLISHED = {"pairs": 166176, "co_match": 51499, "conflicting": 33631}
 # same set is used on both surfaces so that the two columns compare.
 S_C_MIN_CORPUS_CASES = 100
 
+# ---------------------------------------------------------------------------
+# What the record says about itself. Constants rather than literals inside the
+# payload because the committed record was annotated with these same strings by
+# hand, after the run, and the only way to be sure the two agree is for there to
+# be one copy.
+# ---------------------------------------------------------------------------
+
+TRUTH_PROVENANCE = (
+    "the per-class truth of every corpus figure in this record is "
+    "inst['truth'] — the label list order_search.build_tables produced once "
+    "for the 2000 cases — sliced into one mask per class over the indices "
+    "ACTUALLY MEASURED, in build_masks' convention: case idxs[k] is bit k. It "
+    "is NOT order_search_ls.space_truth_masks, which is the truth over the "
+    "134,400 cases of the exhaustive space in Space's convention, case k at "
+    "bit n-1-k; that one is used here for nothing, and using it on a corpus "
+    "surface would have turned every per-class figure into noise of the right "
+    "shape, since the totals would still add up. The G2 census gate does not "
+    "cover this: it pins the rule masks M by reproducing a published pair "
+    "count, and a pair count never looks at a label. What covers it is "
+    "tests/test_order_metrics_corpus.py — the class masks partition each of "
+    "the three measured surfaces, and W[r] == M[r] & truth[action[r]] holds "
+    "over all 577 rules on each, which the reversed convention fails.")
+
+POST_HOC = (
+    "competition_census IS POST HOC and is not one of the adjudicated "
+    "figures. The six verdicts were produced first, by a run of this module "
+    "that did not contain `competition` at all (2026-08-15T14:08:24Z, "
+    "code_digest 3bb4662a607fc9a0). The census was then written and "
+    "instrumented BECAUSE S-b had failed and S-b states a mechanism, and the "
+    "module was re-run whole (14:17:16Z, code_digest 99184aa53d866fac), "
+    "reproducing the six verdicts exactly and adding it. So this record's own "
+    "code_digest covers code written after the verdicts existed. That earlier "
+    "record was overwritten by this one and is not on the record, so what a "
+    "reader can check is the code in this commit, not that run. The two "
+    "figures are kept because they separate 'the premise was false' from 'the "
+    "premise was true and the effect does not appear', which is the finding; "
+    "they are marked because a quantity chosen after seeing a refutation is a "
+    "different kind of quantity from one named before it.")
+
+COMPETITION_IS_POST_HOC = (
+    "the figures under 'competition' were chosen and measured AFTER this "
+    "verdict existed, because it was a refutation with a stated mechanism; see "
+    "the record's 'post_hoc' field. They are evidence about the mechanism and "
+    "no part of the adjudication, which is the pooled rate against 15.2% and "
+    "nothing else.")
+
+RECORD_ANNOTATIONS = (
+    "annotations added BY HAND to the committed record on 2026-08-15, after "
+    "the run that produced it and after the six verdicts existed: "
+    "truth_provenance, post_hoc, sets_measured, this field, and inside "
+    "predictions, S-b's competition_is_post_hoc, S-d's clause_verbatim and "
+    "readings, and a rewrite of S-d's refutation_note, which paraphrased a "
+    "clause that had to be quoted. Every one of them is a string; no measured "
+    "value was touched, "
+    "and the diff against the commit that landed this record shows those "
+    "additions and nothing else. The module holds them as constants and emits "
+    "them, so a fresh run reproduces this text — what a fresh run would not "
+    "reproduce is code_digest 99184aa53d866fac, which identifies the code as "
+    "it stood when these numbers were computed.")
+
+# The row of IDEAS.md, copied rather than summarized: its refutation condition
+# is not a number, and paraphrasing it is how it would quietly become one.
+S_D_CLAUSE = (
+    "S-d — *Calibration.* SECURITY_INCIDENT's share of the total disagreement "
+    "falls from **57.5% to under 3%**. *Refuted* by anything far from that, "
+    "which would mean the per-class rates do not carry across and S-c will "
+    "already have fired.")
+
+SETS_MEASURED = {
+    "surfaces": [
+        "corpus_full: all 2000 corpus cases",
+        "corpus_test: the test half of the split whose orders are measured — "
+        "995 cases for split 0, 1002 for split 4",
+        "exhaustive space, 134,400 cases: measured here only for S-e's first "
+        "clause, which compares the two surfaces pair by pair",
+    ],
+    "adjudicating": [
+        "split0_starts65 on corpus_full — S-a, S-b, S-c and S-d, all four "
+        "pooled over its 2,080 pairs; corpus_test reported beside",
+        "split0_starts257 on corpus_full, against the same 32,896 pairs on the "
+        "exhaustive space — S-e, whose first clause needs both surfaces; "
+        "corpus_test reported beside",
+        "b_tied_split0_draw0 on corpus_full, the 40 orders tying at the best "
+        "train score at 1% — S-f; corpus_test reported beside",
+    ],
+    "additional": [
+        "split0_starts129 on both corpus surfaces: adjudicates nothing, and is "
+        "measured because the budgets are nested and slicing the matrix is "
+        "free",
+        "split4_starts65 / 129 / 257 on both corpus surfaces: the other split "
+        "start_budget_check saw the train score move on. It adjudicates "
+        "nothing — every prediction names split 0 — and is reported so that no "
+        "figure rests on one split",
+        "b_all65_split0_draw0 on both corpus surfaces: all 65 end orders of "
+        "the 1% cell, tied or not, as the containing set of S-f's 40",
+        "band_1pct_context_corpus_full: the tied set of each of the 25 cells "
+        "of the 1% band, context for S-f and for nothing else",
+        "cited_pairs: the winner at 65 against the winner at 257 on each "
+        "split, reported in full on each corpus surface",
+        "competition_census: post hoc, see the 'post_hoc' field",
+    ],
+    "pair_matrices": [
+        "5 matrices of 32,896 pairs: (split 0, corpus_full), "
+        "(split 0, corpus_test), (split 4, corpus_full), "
+        "(split 4, corpus_test), (split 0, exhaustive space)",
+        "plus the 2,080-pair and 780-pair triangles of the 1% cell on each "
+        "corpus surface, and the tied set of each band cell on corpus_full",
+    ],
+}
+
+
+def s_d_readings(share_full, share_test):
+    """
+    S-d has two lines in it and they do not agree; both are published.
+
+    The row states a point value — *under 3%* — and a refutation condition that
+    is not a number, *anything far from that*. 4.57% fails the first and
+    arguably satisfies the second, since it arrives from 57.5%. What decides
+    between them here is not which is kinder: it is that the point value is the
+    only half a reader can check mechanically, and that the clause's own rider
+    — *which would mean the per-class rates do not carry across and S-c will
+    already have fired* — names a condition that DID occur. S-c fired, on four
+    of its six eligible classes. The row's own logic therefore points where its
+    stated value points.
+    """
+    return {
+        "on_the_stated_value": {
+            "line": "under 3%",
+            "measured": {"corpus_full": share_full, "corpus_test": share_test},
+            "verdict": "REFUTED",
+        },
+        "on_the_refutation_clause_as_written": {
+            "line": "anything far from that",
+            "verdict": "NOT DECIDABLE FROM THE ROW",
+            "why": "4.57% arrives from 57.5%, a fall of 12.6x, and lands 1.6 "
+                   "points above a 3% line. Whether that is 'far from' 3% is "
+                   "not a quantity this record can evaluate, and reading it "
+                   "charitably after seeing the number is adjudication by "
+                   "charity.",
+        },
+        "applied": "on_the_stated_value",
+        "why_applied":
+            "the point value is the only half of the row that can be checked "
+            "mechanically, and the clause's own rider — that a refutation "
+            "would mean the per-class rates do not carry across and S-c would "
+            "already have fired — describes exactly what happened: S-c is "
+            "refuted on four of its six eligible classes. Both halves of the "
+            "row therefore agree, and the verdict is not doing the work of an "
+            "argument.",
+    }
+
 
 # ---------------------------------------------------------------------------
 # The corpus as a surface
@@ -154,8 +305,14 @@ def competition(ids, M, conflicting, n):
     were written looking at the corpus, so the typical arriving case carries
     more rules over it and more pairs competing than the typical point of the
     uniform space. That is not an assumption, it is a quantity, and it comes off
-    the same masks the rest of this run uses. It is reported for both surfaces
-    whichever way the bet comes out.
+    the same masks the rest of this run uses.
+
+    **POST HOC, and marked as such wherever it appears**: this function was
+    written on 2026-08-15 AFTER the six verdicts already existed and BECAUSE
+    S-b had failed. It is evidence about a mechanism, not part of any
+    adjudication, and the record's `post_hoc` field carries the full account
+    with the two runs and their digests. Nothing about the verdicts changed
+    when it was added: the re-run reproduced all six.
 
     `conflicting_pairs_per_case_mean` is the honest denominator of the two: a
     pair can only change a decision on a case both its rules match, so summing
@@ -294,6 +451,7 @@ def adjudicate(measured, space):
             for s in SURFACES},
     }
     q["S-b"]["verdict"] = q["S-b"]["verdict_by_surface"]["corpus_full"]
+    q["S-b"]["competition_is_post_hoc"] = COMPETITION_IS_POST_HOC
 
     # ---- S-c: per-class rates preserved to +/-30% relative
     def rows_c(s):
@@ -329,9 +487,10 @@ def adjudicate(measured, space):
         "adjudicates_on": "corpus_full",
         "threshold": 0.03,
         "refutation_note":
-            "'anything far from that' is not a number, so what is applied is "
-            "the line the prediction does state: under 3% holds, 3% or more "
-            "does not.",
+            "this row has two lines in it and they do not agree. The clause is "
+            "quoted verbatim under `clause_verbatim` rather than paraphrased, "
+            "and both readings of it, with the one applied and why, are under "
+            "`readings`.",
         "space_share": measured["space_share_security"],
         "reweighted_share":
             measured["reweighted_space_share_security"],
@@ -349,6 +508,10 @@ def adjudicate(measured, space):
                 else "REFUTED") for s in SURFACES},
     }
     q["S-d"]["verdict"] = q["S-d"]["verdict_by_surface"]["corpus_full"]
+    q["S-d"]["clause_verbatim"] = S_D_CLAUSE
+    q["S-d"]["readings"] = s_d_readings(
+        measured["corpus_full"]["shares"]["SECURITY_INCIDENT"],
+        measured["corpus_test"]["shares"]["SECURITY_INCIDENT"])
 
     # ---- S-e: the 32,896 pairs of the 257-start set
     def v_e(s):
@@ -767,6 +930,10 @@ def main(argv=None) -> int:
             "search_band_1pct": round(sum(f["seconds"] for f in band), 1),
             "total": round(time.time() - t_start, 1),
         },
+        "truth_provenance": TRUTH_PROVENANCE,
+        "post_hoc": POST_HOC,
+        "sets_measured": SETS_MEASURED,
+        "record_annotations": RECORD_ANNOTATIONS,
     }
     OUT.mkdir(exist_ok=True)
     (OUT / RECORD).write_text(json.dumps(payload, indent=2))

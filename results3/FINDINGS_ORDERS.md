@@ -431,6 +431,46 @@ combinations measured; `undecided_either` is 0 everywhere, on the corpus as on
 the space. Had any of these failed, the prediction would not have been tested at
 all.
 
+**Where the per-class truth comes from, which the census gate does not cover.**
+S-c and S-d divide by class, and there are two sources of truth in this
+repository in **different bit conventions**: `build_masks` puts case `idxs[k]`
+at bit k, while `order_search_ls.space_truth_masks` is the space's truth in
+`Space`'s convention, case k at bit n−1−k. Every per-class figure below comes
+from **`inst["truth"]`** — the label list `order_search.build_tables` produced
+once for the 2000 cases — sliced into one mask per class **over the indices
+actually measured**, in `build_masks`' convention. `space_truth_masks` is used
+for nothing here; had it been, the totals would still have added up and every
+per-class number would have been noise of the right shape. The G2 census gate
+cannot see this: it pins the rule masks M, and a pair count never looks at a
+label. What sees it is
+[`tests/test_order_metrics_corpus.py`](../tests/test_order_metrics_corpus.py):
+the class masks **partition** each of the three measured surfaces — pairwise
+disjoint, union exactly `full`, bit counts summing to n — and
+`W[r] == M[r] & truth[action[r]]` holds over all 577 rules on each, which is the
+identity `build_masks` builds W by and which the reversed convention fails. That
+last part is checked too, so the first is not passing vacuously.
+
+**Exactly what was measured, and which of it adjudicates.** Three surfaces:
+corpus full (2000), corpus test (995 for split 0, 1002 for split 4), and the
+exhaustive space, the last only for S-e's first clause, which compares the two
+surfaces pair by pair. Five 32,896-pair matrices: split 0 and split 4 on each
+corpus surface, and split 0 on the space.
+
+| set | surface | what it decides |
+|---|---|---|
+| `split0_starts65` | corpus full | **S-a, S-b, S-c, S-d**, all four pooled over its 2,080 pairs |
+| `split0_starts257` | corpus full + space | **S-e**, both clauses |
+| `b_tied_split0_draw0` | corpus full | **S-f** |
+| the same three | corpus test | nothing; reported beside every one of them |
+| `split0_starts129`, `split4_starts65/129/257` | both corpus surfaces | **nothing** — every prediction names split 0. Split 4 is the other split `start_budget_check` saw the train score move on, and is reported so that no figure rests on one split |
+| `b_all65_split0_draw0` | both corpus surfaces | nothing; the containing set of S-f's 40 |
+| the 25 tied sets of the 1% band | corpus full | nothing; context for S-f |
+| `cited_pairs` | both corpus surfaces | nothing; the winner at 65 against the winner at 257, in full |
+| `competition_census` | all three | nothing, and **post hoc** — see below |
+
+The additions are additions. None of them entered a verdict, and the record
+carries the same list under `sets_measured`.
+
 ---
 
 ## The predictions of `IDEAS.md`, one by one
@@ -440,7 +480,7 @@ all.
 | **S-a** | **REFUTED**, and not narrowly | Pooled over the 2,080 pairs of split 0's 65 end orders: **5.75%** of the full corpus, **6.45%** of test. Predicted band 12–20%, refutation line 10%. The same pairs pool to **20.35%** of the space. |
 | **S-b** | **REFUTED** | The same 5.75% against the 15.2% the bet named — and below the **11.67%** that the reweighting it describes actually produces. The direction is the opposite of the bet: the corpus subtracts disagreement rather than adding it. |
 | **S-c** | **REFUTED** | Of the six classes with ≥100 corpus cases, **four** fall outside ±30% relative: `T2_TECHNICAL` **−81.6%**, `BILLING_SPECIALIST` **+165.2%**, `T3_ENGINEERING` −42.7%, `ACCOUNT_MANAGER` −42.0%. Inside: `T1_GENERAL` −29.9% and `SELF_SERVICE_DEFLECT` +10.3%. |
-| **S-d** | **REFUTED**, narrowly, and in exactly the way S-c predicts | `SECURITY_INCIDENT`'s share of the total disagreement falls from **57.5% to 4.57%** (5.06% on test) against a line of *under 3%*. Pure reweighting predicts **2.67%**, which is where the 3% came from. |
+| **S-d** | **REFUTED on its stated value.** Its refutation condition is not a number and both readings are published below | `SECURITY_INCIDENT`'s share of the total disagreement falls from **57.5% to 4.57%** (5.06% on test) against a stated line of *under 3%*. Pure reweighting predicts **2.67%**, which is where the 3% came from. |
 | **S-e** | **HOLDS**, both clauses | Of the 32,896 pairs of the 257-start set, **zero** sit at distance 0 on the corpus — so none can sit at 0 here and above 0 on the space. The pairwise minimum falls from **2,615 cases (1.9%)** to **2 of 2000 (0.10%)**, and to 1 of 995 on test. |
 | **S-f** | **HOLDS** | The 40 orders tying at the best train score at 1% disagree a median **24.05%** of the full corpus (481 cases) and **24.32%** of test (242 cases), against a 20% line and a 10% refutation. |
 
@@ -453,8 +493,22 @@ figure.
 
 **S-b argued from a premise, and the premise is true.** It reasoned that the 577
 rules were written looking at the corpus, so the typical arriving case carries
-more rules and more competing pairs than the typical point of the space. Measured
-on the same masks:
+more rules and more competing pairs than the typical point of the space.
+
+**The two figures that follow are POST HOC and are a different kind of figure
+from the adjudicated ones.** They were chosen and instrumented on 2026-08-15
+*after* all six verdicts already existed, and *because* S-b had failed with a
+mechanism written into it. The order is on the record: an earlier run of the
+same module, without `competition()` in it at all (14:08:24Z, `code_digest
+3bb4662a607fc9a0`), produced the six verdicts; the census was then written and
+the module re-run whole (14:17:16Z, `code_digest 99184aa53d866fac`), reproducing
+all six and adding it. That earlier record was overwritten by this one and is
+not itself on the record, so what a reader can check is the code in this commit,
+not that run — **and this record's `code_digest` therefore covers code written
+after the verdicts existed.** The figures are kept because they separate *the
+premise was false* from *the premise was true and the effect does not appear*,
+which is the finding; they are marked because a quantity chosen after seeing a
+refutation cannot be read as one named before it. Measured on the same masks:
 
 | surface | rules matching the average case | conflicting pairs live on it |
 |---|---|---|
@@ -469,12 +523,14 @@ is the informative half of this refutation: *more competition, less
 disagreement*, and the two quantities do not move together at all.
 
 **How much of it is fitting: about a tenth.** Train and test partition the 2000
-cases, so the two pooled rates this record publishes fix the third by arithmetic
-rather than by a new measurement: 5.75% over 2000 and 6.45% over the 995 test
-cases put the 1005 fitted ones at **5.06%**. The orders do agree more where the
-objective looked — by 1.39 points — but the surface effect is 13.9 points, so
-fitting accounts for roughly **10%** of the gap and the change of surface for
-the rest.
+cases, so the two pooled rates this record publishes fix the third **by
+arithmetic on them and not by a measurement** — the train half was never
+measured. From `pooled_full × 2000 = pooled_train × 1005 + pooled_test × 995`,
+5.75% over 2000 and 6.45% over the 995 test cases put the 1005 fitted ones at
+**5.06%**, a derived number and marked as one wherever it appears. The orders do
+agree more where the objective looked — by 1.39 points — but the distance from
+the space to the unfitted half is 13.9 points, so fitting accounts for roughly
+**10%** of the gap and the change of surface for the rest.
 
 **Why the other 90%, this record does not say.** It bounds it from two sides —
 not scarcity, not mainly fitting — and stops there. Anything further would be an
@@ -490,6 +546,13 @@ came from is unknown. It changes no verdict: 5.75% is below both. The line
 adjudicated against is the one the prediction wrote, 15.2%, because moving a
 threshold to a reconstruction after seeing the measurement is the failure this
 project studies, and it would not have helped here anyway.
+
+**Where that sits in the log, plainly.** The failure to reconstruct was found on
+reading the entry, before this run existed, and it was **not committed before the
+record**: it reached the repository inside the same commit as the module and the
+measurement, so the log does not separate the two and cannot be made to. It is
+recorded here and in `IDEAS.md` as a finding of this work, not as a note that
+predates it — that window closed when the two landed together.
 
 ### S-c and S-d: where the disagreement falls, which was the actual question
 
@@ -535,6 +598,31 @@ than reweighting predicts — 4.57% measured against 2.67% modelled. The directi
 of S-d was right and the magnitude was off by 70% relative, and the reason is
 precisely the classes S-c caught.
 
+**S-d has two lines in it and they do not agree, so the row is quoted rather
+than summarized.** Verbatim:
+
+> **S-d** — *Calibration.* SECURITY_INCIDENT's share of the total disagreement
+> falls from **57.5% to under 3%**. *Refuted* by anything far from that, which
+> would mean the per-class rates do not carry across and S-c will already have
+> fired.
+
+| reading | line | verdict on 4.57% |
+|---|---|---|
+| the stated value | *under 3%* | **REFUTED** |
+| the refutation clause as written | *anything far from that* | **not decidable from the row**: 4.57% arrives from 57.5%, a fall of 12.6×, and lands 1.6 points above the line |
+
+**The first is what was applied, and the reason is not that it is the harsher
+one.** It is that the point value is the only half of the row a reader can check
+mechanically — an adjective is not a threshold, and reading one charitably after
+seeing the number is adjudication by charity, in whichever direction it lands.
+And the clause carries its own rider: *which would mean the per-class rates do
+not carry across and S-c will already have fired*. That condition **occurred** —
+S-c is refuted on four of its six eligible classes — so both halves of the row
+point the same way, and the verdict rests on the row rather than on a choice
+between its halves. A reader who takes *far from that* as the operative line
+should read this as S-d not refuted, and everything needed to do so is above and
+in the record under `predictions["S-d"]["readings"]`.
+
 **The deployment reading, which is not the same as the aggregate.** Two end
 orders differ on 5.75% of arrivals, and 45% of that lands on the deflection
 queue. But per case of the class, `SECURITY_INCIDENT` runs at **4.57×** the
@@ -548,9 +636,27 @@ place for either.
 **S-e holds, and by a factor of ten on its second clause.** No pair of the 32,896
 is behaviourally identical on the corpus — not one — so the case the prediction
 called *the large finding here*, two orders distinguishable in principle and
-identical wherever cases actually arrive, does not occur at this scale. The
-closest pair differs on **2 cases of 2000**; on the space the closest differ on
-2,615 of 134,400. Predicted *under 1%*, measured 0.10%.
+identical wherever cases actually arrive, does not occur at this scale.
+Predicted *under 1%*, measured **0.10%**.
+
+**But read the second clause at the resolution the surface has.** The minimum is
+**2 cases of 2000**, and on a surface of 2000 cases **one case is 0.05%**. The 1%
+line the prediction drew is 20 cases; the measurement cleared it by **18 cases**,
+and the closest pair of end orders is **two arriving tickets away** from being
+the same machine in deployment — which is the finding S-e itself names as the
+large one, missed by a margin that counts in single cases. It is coarser still
+than that: the 2000 draws touch 1,743 distinct cases, so two disagreements need
+not even be two distinct cases. On corpus test the minimum is 1 case of 995,
+which is the smallest a non-zero distance can be.
+
+**The pair is not identified, and this record cannot identify it.** The
+257-order matrices are summarized and not stored — the same decision the first
+part took, 32,896 rows per split being a record nobody reads — so the minimum is
+on the record and the `(i, j)` that attains it is not, nor is what that same pair
+does on the space. The 2,615-case minimum quoted for the space is the minimum of
+the same 32,896 pairs, **not necessarily of this pair**. Recovering the identity
+means regenerating the orders, which is a re-run, and this is a documentation
+pass. It is left as a named gap below.
 
 **And G3 and G4 carry across untouched.** 257 distinct behavioural signatures
 from 257 end orders, on both corpus surfaces and both splits; 65 of 65; 40 of 40
@@ -601,10 +707,10 @@ arrive.
 | id | finding | status |
 |---|---|---|
 | **S-a** | The disagreement of the 65-start set, on the corpus, between 12% and 20%. | **REFUTED**: 5.75% pooled, below the 10% refutation line. |
-| **S-b** | That rate above the 15.2% of a pure reweighting. | **REFUTED**: 5.75%, below the 15.2% written and below the 11.67% reconstructed. Its stated mechanism is confirmed and does not produce the effect. |
+| **S-b** | That rate above the 15.2% of a pure reweighting. | **REFUTED**: 5.75%, below the 15.2% written and below the 11.67% reconstructed. Its stated mechanism is confirmed, by a post-hoc measurement, and does not produce the effect. |
 | **S-c** | Per-class rates preserved to ±30% relative. | **REFUTED**: 4 of 6 eligible classes outside, from −81.6% to +165.2%. |
-| **S-d** | `SECURITY_INCIDENT`'s share of the disagreement under 3%. | **REFUTED**: 4.57%, against 2.67% modelled and 57.5% on the space. |
-| **S-e** | No pair identical on the corpus and different on the space; pairwise minimum under 1%. | **HOLDS**: zero such pairs, minimum 0.10%. |
+| **S-d** | `SECURITY_INCIDENT`'s share of the disagreement under 3%. | **REFUTED on the stated value**: 4.57%, against 2.67% modelled and 57.5% on the space. Its refutation clause — *anything far from that* — is not a number; both readings are published and the row's own rider fired. |
+| **S-e** | No pair identical on the corpus and different on the space; pairwise minimum under 1%. | **HOLDS**: zero such pairs, minimum 0.10% — two cases of 2000, clearing a 20-case line by 18. |
 | **S-f** | The tied set at 1% still above 20% on the corpus. | **HOLDS**: median 24.05% full corpus, 24.32% test. |
 | **S-g** | *(not predicted)* Whether the distinctness findings survive the surface. | **THEY DO**: 257 of 257, 65 of 65, 40 of 40 distinct machines; zero identical-behaviour pairs. |
 
@@ -624,7 +730,20 @@ having been the 260 s that dominated the first part.
 part**: the runner that produced this record, `peldano3/order_metrics_corpus.py`,
 was untracked when it ran. What identifies the code is `code_digest
 99184aa53d866fac`; what identifies the **orders** is neither, it is the parity
-gate, and the parity gate is exact on all 31 rows.
+gate, and the parity gate is exact on all 31 rows. **That digest covers code
+written after the six verdicts existed** — `competition()`, added because S-b
+had failed — which is why the census it produces is marked post hoc above and in
+the record's `post_hoc` field.
+
+**The record was annotated by hand after the run, with strings and nothing
+else.** `truth_provenance`, `post_hoc`, `sets_measured`, `record_annotations`,
+S-b's `competition_is_post_hoc`, S-d's `clause_verbatim` and `readings`, and a
+rewrite of S-d's `refutation_note`, which had paraphrased a clause that needed
+quoting. No measured value was touched and the claim is checkable rather than
+asserted: `git diff b964823 -- results3/order_metrics_corpus.json` is those
+string additions and nothing else. The module holds the same text as constants
+and emits it, so a fresh run would reproduce the file — except its `code_digest`,
+which identifies the code as it stood when the numbers were computed.
 
 ---
 
@@ -642,3 +761,9 @@ gate, and the parity gate is exact on all 31 rows.
 - **The other three splits at full supervision.** Splits 0 and 4 are measured
   because they are the two `start_budget_check` saw the train score move on.
   Whether the 3.5× is stable across the other three is not known.
+- **Which pair attains S-e's minimum, and what it does on the space.** The
+  257-order matrices are summarized, so the 2-case minimum is on the record and
+  the pair that reaches it is not. It is the cheapest open question here — one
+  regeneration of split 0 and one argmin — and it is the one worth answering,
+  because a pair two arriving cases from identical is the closest this material
+  comes to the finding S-e was written to look for.
