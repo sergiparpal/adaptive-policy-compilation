@@ -49,6 +49,10 @@ ESCRITORES = [
     # writer because it is a separate record: it must never land on
     # order_metrics.json, which owns the space figures.
     "peldano3.order_metrics_corpus",
+    # The join of those two records, added 2026-08-15. It writes a record and
+    # reads two, so it belongs here; adding it widens what this test covers,
+    # which is the only direction this list is ever allowed to move.
+    "peldano3.rank_transfer",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
