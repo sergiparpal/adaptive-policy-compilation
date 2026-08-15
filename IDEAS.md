@@ -100,6 +100,10 @@ none of them developed and in no order of precedence.
   `ACCOUNT_MANAGER` — for roughly two thirds of each, no rule covering the case
   carries the right action (`FINDINGS3.md` §2). It is a material problem, not an
   ordering one, and it has no explanation.
+  **Those two thirds now have a measured consequence**, the refutation of Q-f
+  (`results3/FINDINGS_ORDERS.md`): where no rule is correct there is nothing to
+  compete over, so every order fails those cases alike. Scarcity of material
+  produces uniform failure, not variety.
 - Whether a proposer that is shown the gaps in the ceiling would fill them.
 - The objective function as an explicit design surface: which classes are
   protected, at what cost in aggregate, and who decides.
@@ -178,6 +182,40 @@ none of them developed and in no order of precedence.
   make them different machines. All-distinct is therefore what that arithmetic
   predicts on its own; the informative quantity is how far apart they are, and
   that is what the record measures.
+- **The surface question has its first measurable instance, and it is cheap.**
+  Opened 2026-08-15. This is not a second copy of *which surface a figure is
+  measured on* above — it is that standing question narrowed, for once, from a
+  norm about labelling into a run somebody can go and do.
+  Everything `results3/order_metrics.json` holds is the **uniform measure over
+  the 134,400 combinations**: Q-a's disagreement between the winners at two
+  budgets, Q-b's median across the orders that tie at 1%, Q-e's median
+  disagreement against churn. None of it is the arrival distribution a deployed
+  system would actually meet.
+  What keeps the answer from being a formality is G2, which counted the pairs
+  that can change a decision on **both** pools: the corpus pool carries very
+  nearly as many as the exhaustive space. The material to disagree over is
+  therefore almost the same on either surface, and what is unknown is **where it
+  falls** — the corpus is deliberately long-tailed, and disagreement that
+  concentrates on a class occupying a large share of the space while being rare
+  in arrivals would read very differently in deployment from how the record
+  reads now.
+  It is settled by running the same instrument over the corpus pool, which
+  `order_search_ls.space_pools` and `local_search.build_masks` already build and
+  which `order_metrics` accepts unchanged, being pure and taking masks as
+  arguments. Minutes, and no new apparatus: that is what makes this worth doing
+  rather than merely noting.
+  **It informs whichever way it comes out.** If the disagreement survives the
+  change of surface, the space figures carry over and the caveat
+  `results3/FINDINGS_ORDERS.md` leaves open under *what this does not settle*
+  closes. If it collapses, then what that record measures matters less in
+  production than it currently suggests — the more interesting of the two
+  answers, and just as publishable.
+  **The prediction is written and committed BEFORE measuring.** A single run
+  does not need a whole `PLAN_*.md`; one dated line in this entry, committed
+  before any figure exists, is enough to make it checkable in the log. What is
+  not acceptable is writing the number down afterwards and presenting it as what
+  was expected — that is the Goodhart failure this project exists to study, and
+  avoiding it costs one commit.
 
 ---
 
