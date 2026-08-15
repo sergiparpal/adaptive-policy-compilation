@@ -78,7 +78,8 @@ python3 -m peldano3.budget_and_balance_ls  # label curve and balanced objective 
 # --- THE ORDERS BEHIND THOSE FIGURES, compared as orders ------------------
 python3 -m peldano3.order_metrics_run # regenerates and measures orders (12 min)
 python3 -m peldano3.order_metrics_run --checks   # parity gate only (6 min)
-python3 -m peldano3.order_metrics_corpus  # the same orders over the corpus (8 min)
+python3 -m peldano3.order_metrics_corpus  # the same orders over the corpus (7 min)
+python3 -m peldano3.order_metrics_corpus --s-e-argmin  # amends its own record in place
 ```
 
 What each of them should produce is in the record it belongs to; the corrected

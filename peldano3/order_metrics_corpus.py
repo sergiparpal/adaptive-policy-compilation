@@ -69,8 +69,21 @@ comparison on the space, tau is by far the dominant cost of P4, and none of
 S-a..S-f asks for it. Where a named pair is reported in full, `pair_report`
 computes it anyway, over that surface's own conflicting set.
 
+--------------------------------------------------------------------------
+THE AMENDMENT MODE, AND WHY IT IS ALLOWED TO RE-RUN
+--------------------------------------------------------------------------
+`--s-e-argmin` regenerates down the same path, passes the same two gates, and
+then does one thing the full run did not: it says WHICH pairs attain S-e's
+minimum. The full run stored the minimum and not the pair, because the
+257-order matrices are summarized rather than kept, so the identity is a lookup
+into a set already measured and not a new quantity. It was authorized
+explicitly, after the six verdicts existed, and on the condition that nothing
+already published may move; the mode compares every set summary it recomputes
+against the record and refuses to write if one differs. See `AUTHORIZATION`.
+
 Usage:  python3 -m peldano3.order_metrics_corpus
         python3 -m peldano3.order_metrics_corpus --checks   (gates only)
+        python3 -m peldano3.order_metrics_corpus --s-e-argmin
 """
 
 from __future__ import annotations
@@ -83,8 +96,8 @@ from pathlib import Path
 from harness.provenance import describe, environment
 from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS)
-from peldano3.order_metrics import (behavioural_distance, conflicting_pairs,
-                                    pair_census)
+from peldano3.order_metrics import (agreement_masks, behavioural_distance,
+                                    conflicting_pairs, pair_census)
 from peldano3.order_metrics_run import (BUDGETS, DRAW_B, FRACTION_B, SPLIT_B,
                                         SPLITS_FULL, band_context,
                                         build_instance,
@@ -222,6 +235,25 @@ SETS_MEASURED = {
         "corpus surface, and the tied set of each band cell on corpus_full",
     ],
 }
+
+
+AUTHORIZATION = (
+    "the re-run behind `minimum_pairs` was authorized by Sergi on 2026-08-15, "
+    "EXPLICITLY AND AFTER THE SIX VERDICTS EXISTED, and for one thing only: to "
+    "recover the identity of the pairs attaining S-e's minimum, which this "
+    "record measured and did not store because the 257-order matrices are "
+    "summarized. It is a lookup, not a measurement. What it returns is an "
+    "INDEX into a set already measured — which two of the 257 end orders reach "
+    "a distance already published, and where. No quantity that adjudicates "
+    "anything is computed for the first time here: S-e rests on the minimum "
+    "being 2 cases of 2000, and that number is re-verified rather than "
+    "re-derived. That is why an argmin is not a new figure and cannot move a "
+    "verdict — the only way this pass could have changed one is by failing to "
+    "reproduce, and a failure to reproduce would have been a finding about "
+    "determinism, reported as such and with nothing overwritten. Both gates "
+    "were re-run and both passed: parity 31/31 and the G2 census. Every "
+    "already-published value it recomputes was compared against this file "
+    "before anything was written to it.")
 
 
 def s_d_readings(share_full, share_test):
@@ -567,10 +599,160 @@ def adjudicate(measured, space):
 
 
 # ---------------------------------------------------------------------------
+# The amendment: which pairs reach S-e's minimum
+# ---------------------------------------------------------------------------
+#
+# WHY IT IS A MODE AND NOT A SCRIPT. It has to regenerate down the same path and
+# pass the same two gates before it may say anything about these orders, and
+# that path is `main` above. So it branches after the gates and reuses every
+# line of them; what it adds is an argmin and a comparison.
+
+def _lookup(pares):
+    return {(p["i"], p["j"]): p for p in pares}
+
+
+def minimum_pairs(inst, surf, dec, pares, en_espacio):
+    """
+    Every pair attaining the minimum behavioural distance on `surf`, with what
+    the same pair does over the space, and — the question the findings raise —
+    whether the corpus cases they differ on are distinct tickets or one ticket
+    drawn twice.
+
+    The minimum is plural on purpose: nothing says one pair attains it, and
+    reporting `the` closest pair when three tie would be inventing a
+    uniqueness the measurement does not have.
+    """
+    minimo = min(p["disagree"] for p in pares)
+    corpus, idxs = inst["corpus"], surf["idxs"]
+    fuera = []
+    for p in (q for q in pares if q["disagree"] == minimo):
+        dA, dB = dec[p["i"]][0], dec[p["j"]][0]
+        _ag, dis, _un = agreement_masks(dA, dB, surf["masks"][2])
+        casos = []
+        for k in range(surf["n"]):
+            if dis >> k & 1:
+                i_corpus = idxs[k]
+                casos.append({
+                    "corpus_index": i_corpus,
+                    "true_class": inst["truth"][i_corpus],
+                    "key": corpus[i_corpus].key(),
+                    "decided_by_i": next(a for a, m in dA.items() if m >> k & 1),
+                    "decided_by_j": next(a for a, m in dB.items() if m >> k & 1),
+                })
+        llaves = [c["key"] for c in casos]
+        fuera.append({
+            "i": p["i"], "j": p["j"],
+            "disagree_here": p["disagree"],
+            "disagree_on_the_space": en_espacio[(p["i"], p["j"])]["disagree"],
+            "moved_fraction": p["moved_fraction"],
+            "cases": casos,
+            "distinct_tickets": len(set(llaves)),
+            "same_ticket_drawn_twice": len(llaves) > 1 and len(set(llaves)) == 1,
+        })
+    return {"min_cases": minimo, "n_pairs_at_minimum": len(fuera),
+            "pairs": fuera}
+
+
+def amend_minimum_pairs(inst, surfs, runs, band, t_start):
+    """Measure the 257-order sets again, check that nothing published moved, and
+    write the identities into the record. Blocking on both counts."""
+    registro = OUT / RECORD
+    if not registro.is_file():
+        print(f"  STOP: {registro} is not there. This amends a record; it does "
+              f"not create one.")
+        return 1
+    d = json.loads(registro.read_text())
+
+    print()
+    print("MEASURING AGAIN — the 257-order sets, to locate a minimum already "
+          "published")
+    dec_c, pares_c = {}, {}
+    for s in SPLITS_FULL:
+        orders = [r["order"] for r in runs[s]["stats"]["rows"]]
+        for name in SURFACES:
+            surf = surfs[s][name]
+            v = view(inst, surf)
+            dec, dig = decisions_and_signatures(v, orders)
+            pares = pairwise(v, orders, dec, with_taus=False)
+            dec_c[(s, name)], pares_c[(s, name)] = dec, pares
+            for k in BUDGETS:
+                nuevo = summarize(
+                    f"split {s}, fraction 1.0, {k} starts, {surf['label']}",
+                    dig, slice_pairs(pares, k), k)
+                viejo = d["sets"][name][f"split{s}_starts{k}"]
+                distintos = [c for c in viejo if viejo[c] != nuevo.get(c)]
+                if distintos:
+                    print(f"\n  STOP: split{s}_starts{k} on {name} no longer "
+                          f"reproduces. Fields that moved: {distintos}")
+                    print("  Nothing is written. A published value changing is "
+                          "the finding, and it is reported, not repaired.")
+                    return 1
+    orders0 = [r["order"] for r in runs[SPLITS_FULL[0]]["stats"]["rows"]]
+    dec_s, _dig = decisions_and_signatures(inst, orders0)
+    en_espacio = _lookup(pairwise(inst, orders0, dec_s, with_taus=False))
+    print(f"  every one of the {len(SPLITS_FULL) * len(SURFACES) * len(BUDGETS)}"
+          f" published set summaries reproduces exactly")
+
+    # ---- the argmins, one per corpus surface: they need not be the same pair
+    s0 = SPLITS_FULL[0]
+    fuera = {}
+    for name in SURFACES:
+        surf = surfs[s0][name]
+        m = minimum_pairs(inst, surf, dec_c[(s0, name)], pares_c[(s0, name)],
+                          en_espacio)
+        publicado = d["s_e_cross_surface"][name]
+        if m["min_cases"] != publicado["min_cases"]:
+            print(f"\n  STOP: the minimum on {name} is {m['min_cases']} and "
+                  f"the record publishes {publicado['min_cases']}.")
+            print("  Nothing is written. That is the finding.")
+            return 1
+        fuera[name] = m
+        print(f"\n  {surf['label']}: minimum {m['min_cases']} cases, reached by "
+              f"{m['n_pairs_at_minimum']} pair(s) of {len(pares_c[(s0, name)]):,}")
+        for p in m["pairs"]:
+            print(f"    orders {p['i']} and {p['j']}: {p['disagree_here']} "
+                  f"case(s) here, {p['disagree_on_the_space']:,} over the "
+                  f"space, {p['distinct_tickets']} distinct ticket(s)")
+            for c in p["cases"]:
+                print(f"      corpus case {c['corpus_index']} "
+                      f"({c['true_class']}): {c['decided_by_i']} against "
+                      f"{c['decided_by_j']}")
+
+    # ---- into the record, beside the value they locate
+    for name in SURFACES:
+        d["s_e_cross_surface"][name]["minimum_pairs"] = fuera[name]
+        d["s_e_cross_surface"][name]["minimum_pairs_note"] = (
+            "the pairs attaining `min_cases`, recovered by the authorized "
+            "re-run of 2026-08-15; see `authorization`. They are NOT in "
+            "`example`, which is the slot for an instance of the case S-e "
+            "calls its refutation — a pair at distance 0 here and above 0 on "
+            "the space — and whose being null is itself a published fact, "
+            "carried also by pairs_zero_on_corpus_positive_on_space: 0.")
+        for p in fuera[name]["pairs"]:
+            d["cited_pairs"][f"s_e_minimum_split{s0}_{name}_{p['i']}_{p['j']}"] = \
+                pair_report(view(inst, surfs[s0][name]),
+                            orders0[p["i"]], orders0[p["j"]],
+                            f"split {s0}: end orders {p['i']} and {p['j']}, "
+                            f"which attain the minimum distance over "
+                            f"{surfs[s0][name]['label']}")
+    d["authorization"] = AUTHORIZATION
+    d["_env_amendment"] = environment(
+        what="the authorized re-run that recovered S-e's minimum pairs",
+        neighbourhood=DECLARED_NEIGHBOURHOOD, multistart_seed=MULTISTART_SEED,
+        multistart_starts=MULTISTART_STARTS, budgets=list(BUDGETS),
+        seconds=round(time.time() - t_start, 1))
+    registro.write_text(json.dumps(d, indent=2))
+    print(f"\n  nothing published moved. total cost: {time.time() - t_start:.0f}s")
+    print(f"-> {registro}")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     solo_checks = "--checks" in argv
+    solo_argmin = "--s-e-argmin" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -661,6 +843,8 @@ def main(argv=None) -> int:
     if solo_checks:
         print(f"\n  total cost: {time.time() - t_start:.0f}s")
         return 0
+    if solo_argmin:
+        return amend_minimum_pairs(inst, surfs, runs, band, t_start)
 
     # ----------------------------------------------------------- the measuring
     print()

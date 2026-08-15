@@ -3945,7 +3945,57 @@
       "min_cases": 2,
       "min_rate": 0.001,
       "n_surface": 2000,
-      "example": null
+      "example": null,
+      "minimum_pairs": {
+        "min_cases": 2,
+        "n_pairs_at_minimum": 1,
+        "pairs": [
+          {
+            "i": 47,
+            "j": 87,
+            "disagree_here": 2,
+            "disagree_on_the_space": 6180,
+            "moved_fraction": 0.9913,
+            "cases": [
+              {
+                "corpus_index": 577,
+                "true_class": "T2_TECHNICAL",
+                "key": [
+                  true,
+                  4,
+                  "free",
+                  "billing",
+                  "email",
+                  0,
+                  false,
+                  "pt"
+                ],
+                "decided_by_i": "SECURITY_INCIDENT",
+                "decided_by_j": "SELF_SERVICE_DEFLECT"
+              },
+              {
+                "corpus_index": 854,
+                "true_class": "SELF_SERVICE_DEFLECT",
+                "key": [
+                  false,
+                  3,
+                  "pro",
+                  "billing",
+                  "portal",
+                  0,
+                  true,
+                  "en"
+                ],
+                "decided_by_i": "SELF_SERVICE_DEFLECT",
+                "decided_by_j": "BILLING_SPECIALIST"
+              }
+            ],
+            "distinct_tickets": 2,
+            "same_ticket_drawn_twice": false
+          }
+        ]
+      },
+      "minimum_pairs_note": "the pairs attaining `min_cases`, recovered by the authorized re-run of 2026-08-15; see `authorization`. They are NOT in `example`, which is the slot for an instance of the case S-e calls its refutation \u2014 a pair at distance 0 here and above 0 on the space \u2014 and whose being null is itself a published fact, carried also by pairs_zero_on_corpus_positive_on_space: 0."
     },
     "corpus_test": {
       "n_pairs": 32896,
@@ -3954,7 +4004,41 @@
       "min_cases": 1,
       "min_rate": 0.001005,
       "n_surface": 995,
-      "example": null
+      "example": null,
+      "minimum_pairs": {
+        "min_cases": 1,
+        "n_pairs_at_minimum": 1,
+        "pairs": [
+          {
+            "i": 47,
+            "j": 87,
+            "disagree_here": 1,
+            "disagree_on_the_space": 6180,
+            "moved_fraction": 0.9913,
+            "cases": [
+              {
+                "corpus_index": 854,
+                "true_class": "SELF_SERVICE_DEFLECT",
+                "key": [
+                  false,
+                  3,
+                  "pro",
+                  "billing",
+                  "portal",
+                  0,
+                  true,
+                  "en"
+                ],
+                "decided_by_i": "SELF_SERVICE_DEFLECT",
+                "decided_by_j": "BILLING_SPECIALIST"
+              }
+            ],
+            "distinct_tickets": 1,
+            "same_ticket_drawn_twice": false
+          }
+        ]
+      },
+      "minimum_pairs_note": "the pairs attaining `min_cases`, recovered by the authorized re-run of 2026-08-15; see `authorization`. They are NOT in `example`, which is the slot for an instance of the case S-e calls its refutation \u2014 a pair at distance 0 here and above 0 on the space \u2014 and whose being null is itself a published fact, carried also by pairs_zero_on_corpus_positive_on_space: 0."
     }
   },
   "competition_census": {
@@ -4420,6 +4504,122 @@
           "n": 56,
           "disagree": 1,
           "rate": 0.017857
+        }
+      }
+    },
+    "s_e_minimum_split0_corpus_full_47_87": {
+      "what": "split 0: end orders 47 and 87, which attain the minimum distance over corpus, all 2000 cases",
+      "agree": 1998,
+      "disagree": 2,
+      "undecided_either": 0,
+      "disagreement_rate": 0.001,
+      "same_signature": false,
+      "same_rule_where_they_agree": 1312,
+      "agree_for_different_reasons": 686,
+      "moved": 572,
+      "moved_fraction": 0.9913,
+      "displacement_max": 530,
+      "displacement_median": 148,
+      "tau": 0.0703,
+      "tau_conflicting": 0.0813,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "n": 109,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "BILLING_SPECIALIST": {
+          "n": 271,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "ONCALL_ESCALATION": {
+          "n": 7,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "SECURITY_INCIDENT": {
+          "n": 20,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "n": 495,
+          "disagree": 1,
+          "rate": 0.00202
+        },
+        "T1_GENERAL": {
+          "n": 255,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "T2_TECHNICAL": {
+          "n": 726,
+          "disagree": 1,
+          "rate": 0.001377
+        },
+        "T3_ENGINEERING": {
+          "n": 117,
+          "disagree": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    "s_e_minimum_split0_corpus_test_47_87": {
+      "what": "split 0: end orders 47 and 87, which attain the minimum distance over corpus test half, split 0",
+      "agree": 994,
+      "disagree": 1,
+      "undecided_either": 0,
+      "disagreement_rate": 0.001005,
+      "same_signature": false,
+      "same_rule_where_they_agree": 643,
+      "agree_for_different_reasons": 351,
+      "moved": 572,
+      "moved_fraction": 0.9913,
+      "displacement_max": 530,
+      "displacement_median": 148,
+      "tau": 0.0703,
+      "tau_conflicting": 0.0841,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "n": 55,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "BILLING_SPECIALIST": {
+          "n": 136,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "ONCALL_ESCALATION": {
+          "n": 3,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "SECURITY_INCIDENT": {
+          "n": 10,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "n": 242,
+          "disagree": 1,
+          "rate": 0.004132
+        },
+        "T1_GENERAL": {
+          "n": 128,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "T2_TECHNICAL": {
+          "n": 364,
+          "disagree": 0,
+          "rate": 0.0
+        },
+        "T3_ENGINEERING": {
+          "n": 57,
+          "disagree": 0,
+          "rate": 0.0
         }
       }
     }
@@ -61964,5 +62164,27 @@
       "plus the 2,080-pair and 780-pair triangles of the 1% cell on each corpus surface, and the tied set of each band cell on corpus_full"
     ]
   },
-  "record_annotations": "annotations added BY HAND to the committed record on 2026-08-15, after the run that produced it and after the six verdicts existed: truth_provenance, post_hoc, sets_measured, this field, and inside predictions, S-b's competition_is_post_hoc, S-d's clause_verbatim and readings, and a rewrite of S-d's refutation_note, which paraphrased a clause that had to be quoted. Every one of them is a string; no measured value was touched, and the diff against the commit that landed this record shows those additions and nothing else. The module holds them as constants and emits them, so a fresh run reproduces this text \u2014 what a fresh run would not reproduce is code_digest 99184aa53d866fac, which identifies the code as it stood when these numbers were computed."
+  "record_annotations": "annotations added BY HAND to the committed record on 2026-08-15, after the run that produced it and after the six verdicts existed: truth_provenance, post_hoc, sets_measured, this field, and inside predictions, S-b's competition_is_post_hoc, S-d's clause_verbatim and readings, and a rewrite of S-d's refutation_note, which paraphrased a clause that had to be quoted. Every one of them is a string; no measured value was touched, and the diff against the commit that landed this record shows those additions and nothing else. The module holds them as constants and emits them, so a fresh run reproduces this text \u2014 what a fresh run would not reproduce is code_digest 99184aa53d866fac, which identifies the code as it stood when these numbers were computed.",
+  "authorization": "the re-run behind `minimum_pairs` was authorized by Sergi on 2026-08-15, EXPLICITLY AND AFTER THE SIX VERDICTS EXISTED, and for one thing only: to recover the identity of the pairs attaining S-e's minimum, which this record measured and did not store because the 257-order matrices are summarized. It is a lookup, not a measurement. What it returns is an INDEX into a set already measured \u2014 which two of the 257 end orders reach a distance already published, and where. No quantity that adjudicates anything is computed for the first time here: S-e rests on the minimum being 2 cases of 2000, and that number is re-verified rather than re-derived. That is why an argmin is not a new figure and cannot move a verdict \u2014 the only way this pass could have changed one is by failing to reproduce, and a failure to reproduce would have been a finding about determinism, reported as such and with nothing overwritten. Both gates were re-run and both passed: parity 31/31 and the G2 census. Every already-published value it recomputes was compared against this file before anything was written to it.",
+  "_env_amendment": {
+    "recorded_at": "2026-08-15T15:43:43Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "a762abac41fdfac029e008099b7458dc3551c5a9",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "fa00a210173e1e8f",
+    "what": "the authorized re-run that recovered S-e's minimum pairs",
+    "neighbourhood": "move+swap",
+    "multistart_seed": 17,
+    "multistart_starts": 64,
+    "budgets": [
+      65,
+      129,
+      257
+    ],
+    "seconds": 396.5
+  }
 }

@@ -34,12 +34,21 @@ home for a number would not be.
 
 from __future__ import annotations
 
+import json
 import unittest
 from functools import cache
+from pathlib import Path
 
 from peldano3.budget_and_balance_ls import load_instance
-from peldano3.order_metrics_corpus import truth_masks
+from peldano3.order_metrics_corpus import (AUTHORIZATION,
+                                           COMPETITION_IS_POST_HOC, POST_HOC,
+                                           RECORD, RECORD_ANNOTATIONS,
+                                           S_D_CLAUSE, SETS_MEASURED,
+                                           TRUTH_PROVENANCE, s_d_readings,
+                                           truth_masks)
 from peldano3.order_metrics_run import masks_for
+
+REPO = Path(__file__).resolve().parent.parent
 
 
 @cache
@@ -134,6 +143,54 @@ class TestElCasoKEsElBitK(unittest.TestCase):
         the list given, not case number k."""
         inst = {"truth": ["A", "B", "A", "C"]}
         self.assertEqual(truth_masks(inst, [3, 1]), {"C": 0b01, "B": 0b10})
+
+
+class TestLasAnotacionesDelRegistroSonLasDelModulo(unittest.TestCase):
+    """
+    The record was annotated by hand after the run, with text the module holds
+    as constants. Two copies of a string is exactly the drift the project
+    removed figures from `README.md` and `CLAUDE.md` to avoid, and here it would
+    be worse than a stale figure: these strings say what the record IS —
+    where its truth comes from, what in it is post hoc, what was authorized —
+    so an edit to a constant that never reached the JSON would leave the
+    committed record claiming something its own module no longer says, with
+    nothing to catch it.
+
+    This is not a second home for a figure. Every value below is prose, and the
+    only measured numbers involved are the two shares S-d's readings quote,
+    which are read out of the record itself rather than pinned here.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.d = json.loads((REPO / "results3" / RECORD).read_text())
+
+    def test_las_de_primer_nivel(self):
+        for clave, esperado in (("truth_provenance", TRUTH_PROVENANCE),
+                                ("post_hoc", POST_HOC),
+                                ("sets_measured", SETS_MEASURED),
+                                ("record_annotations", RECORD_ANNOTATIONS),
+                                ("authorization", AUTHORIZATION)):
+            with self.subTest(clave):
+                self.assertEqual(self.d[clave], esperado)
+
+    def test_las_tres_de_dentro_de_predictions(self):
+        q = self.d["predictions"]
+        self.assertEqual(q["S-b"]["competition_is_post_hoc"],
+                         COMPETITION_IS_POST_HOC)
+        self.assertEqual(q["S-d"]["clause_verbatim"], S_D_CLAUSE)
+        self.assertEqual(q["S-d"]["readings"],
+                         s_d_readings(q["S-d"]["share"]["corpus_full"],
+                                      q["S-d"]["share"]["corpus_test"]))
+
+    def test_la_clausula_de_S_d_es_la_de_IDEAS_palabra_por_palabra(self):
+        """The point of quoting it is that it is quoted. If `IDEAS.md` and the
+        record drifted apart, the row would be adjudicated against a
+        paraphrase."""
+        entrada = (REPO / "IDEAS.md").read_text()
+        cuerpo = S_D_CLAUSE.split("—", 1)[1].strip()
+        aplanado = " ".join(entrada.replace("\n", " ").split())
+        self.assertIn(" ".join(cuerpo.split()), aplanado)
 
 
 if __name__ == "__main__":
