@@ -1,0 +1,419 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-15T22:10:04Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "73719ec25ed42191621cf27a740cdc5d6ade5b6c",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "6b414c347a06772d",
+    "set_measured": "split0_starts65",
+    "n_pairs": 2080,
+    "n_orders": 65,
+    "decile": 208
+  },
+  "what": "R-a to R-d of IDEAS.md, adjudicated. A JOIN of two records already published \u2014 order_metrics.json for the exhaustive space and order_metrics_corpus.json for the two corpus surfaces \u2014 over the 2,080 pairs of the 65 end orders of split 0, matched by (i, j). No search, no regeneration of orders, no new instrument, zero API calls; both records are read only and neither is rewritten. The question is whether the ORDERING of pairs transfers between surfaces, which the corpus record settled nothing about: it measured that the level does not transfer and that the per-class composition does not, and a rank is invariant to any monotone transformation, so neither implies this one either way.",
+  "prediction": "IDEAS.md, the entry 'Whether the space can RANK two orders when it cannot rate them', committed alone and without code before any of these figures existed",
+  "surfaces": {
+    "space": {
+      "source": "order_metrics.json::pairs_split0_starts65",
+      "n_cases": 134400
+    },
+    "corpus_full": {
+      "source": "order_metrics_corpus.json::pairs_split0_starts65_corpus_full",
+      "n_cases": 2000
+    },
+    "corpus_test": {
+      "source": "order_metrics_corpus.json::pairs_split0_starts65_corpus_test",
+      "n_cases": 995
+    }
+  },
+  "adjudicating_surface": "corpus_full",
+  "corpus_test_note": "measured and published beside every figure, adjudicating nothing, as the entry fixes: it is 995 cases, half the resolution, and rank noise rises as the surface shrinks.",
+  "n_pairs": 2080,
+  "n_orders": 65,
+  "gate": {
+    "what": "this question's parity gate: the three matrices are the same 2,080 pairs, and each reproduces the summary its own record publishes for the set",
+    "key_sets": {
+      "space": {
+        "source": "order_metrics.json::pairs_split0_starts65",
+        "rows": 2080,
+        "distinct_keys": 2080,
+        "duplicates": 0,
+        "index_min": 0,
+        "index_max": 64,
+        "i_lt_j_always": true,
+        "n_is_65_choose_2": true
+      },
+      "corpus_full": {
+        "source": "order_metrics_corpus.json::pairs_split0_starts65_corpus_full",
+        "rows": 2080,
+        "distinct_keys": 2080,
+        "duplicates": 0,
+        "index_min": 0,
+        "index_max": 64,
+        "i_lt_j_always": true,
+        "n_is_65_choose_2": true
+      },
+      "corpus_test": {
+        "source": "order_metrics_corpus.json::pairs_split0_starts65_corpus_test",
+        "rows": 2080,
+        "distinct_keys": 2080,
+        "duplicates": 0,
+        "index_min": 0,
+        "index_max": 64,
+        "i_lt_j_always": true,
+        "n_is_65_choose_2": true
+      }
+    },
+    "key_sets_identical": true,
+    "summaries": {
+      "space": {
+        "recomputed": {
+          "n": 2080,
+          "min": 0.035937,
+          "p25": 0.158929,
+          "median": 0.19718750000000002,
+          "mean": 0.203451,
+          "p75": 0.24535,
+          "max": 0.411228
+        },
+        "published": {
+          "n": 2080,
+          "min": 0.035937,
+          "p25": 0.158929,
+          "median": 0.19718750000000002,
+          "mean": 0.203451,
+          "p75": 0.24535,
+          "max": 0.411228
+        },
+        "reproduces": true,
+        "differs_in": []
+      },
+      "corpus_full": {
+        "recomputed": {
+          "n": 2080,
+          "min": 0.0085,
+          "p25": 0.0405,
+          "median": 0.059,
+          "mean": 0.057472,
+          "p75": 0.073,
+          "max": 0.1255
+        },
+        "published": {
+          "n": 2080,
+          "min": 0.0085,
+          "p25": 0.0405,
+          "median": 0.059,
+          "mean": 0.057472,
+          "p75": 0.073,
+          "max": 0.1255
+        },
+        "reproduces": true,
+        "differs_in": []
+      },
+      "corpus_test": {
+        "recomputed": {
+          "n": 2080,
+          "min": 0.00603,
+          "p25": 0.045226,
+          "median": 0.066332,
+          "mean": 0.06446,
+          "p75": 0.082412,
+          "max": 0.135678
+        },
+        "published": {
+          "n": 2080,
+          "min": 0.00603,
+          "p25": 0.045226,
+          "median": 0.066332,
+          "mean": 0.06446,
+          "p75": 0.082412,
+          "max": 0.135678
+        },
+        "reproduces": true,
+        "differs_in": []
+      }
+    },
+    "first_verified": "2026-08-15, before the prediction was committed. It reproduces already-published summaries and computes no quantity R-a..R-d adjudicates on, so it could not carry information about an answer; this record carries the result of the run that produced the figures below.",
+    "passes": true
+  },
+  "predictions": {
+    "R-a": {
+      "claim": "Spearman between the corpus-full rate and the space rate, over the 2,080 pairs of split0_starts65, lands between 0.70 and 0.93. Refuted below 0.55 or above 0.97.",
+      "adjudicates_on": "corpus_full",
+      "band": [
+        0.7,
+        0.93
+      ],
+      "refuted_outside": [
+        0.55,
+        0.97
+      ],
+      "spearman": {
+        "corpus_full": 0.3364,
+        "corpus_test": 0.3325
+      },
+      "verdict_by_surface": {
+        "corpus_full": "REFUTED",
+        "corpus_test": "REFUTED"
+      },
+      "verdict": "REFUTED",
+      "tie_diagnostics": {
+        "note": "reported beside rho and adjudicating nothing. The entry declares the drafter checked the tie load and concluded it does not cap the band; this is that claim made checkable.",
+        "profiles": {
+          "space": {
+            "n": 2080,
+            "distinct_values": 1834,
+            "largest_tie_group": 3,
+            "mean_group_size": 1.1341,
+            "values_appearing_once": 1613
+          },
+          "corpus_full": {
+            "n": 2080,
+            "distinct_values": 207,
+            "largest_tie_group": 27,
+            "mean_group_size": 10.0483,
+            "values_appearing_once": 21
+          },
+          "corpus_test": {
+            "n": 2080,
+            "distinct_values": 119,
+            "largest_tie_group": 44,
+            "mean_group_size": 17.479,
+            "values_appearing_once": 9
+          }
+        },
+        "ceilings": {
+          "corpus_full": {
+            "max_attainable_spearman": 1.0,
+            "attenuation_upper_bound": 5e-05,
+            "resolution_note": "spearman rounds to 4 dp; 1.0 means >= 0.99995, so the bound carries that half-ulp rather than claiming an exact zero"
+          },
+          "corpus_test": {
+            "max_attainable_spearman": 0.9999,
+            "attenuation_upper_bound": 0.00015,
+            "resolution_note": "spearman rounds to 4 dp; 1.0 means >= 0.99995, so the bound carries that half-ulp rather than claiming an exact zero"
+          }
+        }
+      }
+    },
+    "R-b": {
+      "claim": "of the 208 pairs closest on the space, between 35% and 70% are among the 208 closest on the corpus. Refuted below 20% or above 80%.",
+      "adjudicates_on": "corpus_full",
+      "k": 208,
+      "band": [
+        0.35,
+        0.7
+      ],
+      "refuted_outside": [
+        0.2,
+        0.8
+      ],
+      "overlap": {
+        "corpus_full": {
+          "overlap": 45,
+          "fraction": 0.216346,
+          "core_overlap": 43,
+          "core_sizes": [
+            207,
+            203
+          ],
+          "tie_break_sensitivity": {
+            "slots_filled_from_the_boundary": 5,
+            "boundary_pairs_also_in_the_space_208": 2,
+            "overlap_min": 43,
+            "overlap_max": 45,
+            "space_boundary_is_unambiguous": true,
+            "fraction_min": 0.206731,
+            "fraction_max": 0.216346,
+            "verdict_is_robust_to_the_tie_break": true
+          }
+        },
+        "corpus_test": {
+          "overlap": 45,
+          "fraction": 0.216346,
+          "core_overlap": 41,
+          "core_sizes": [
+            207,
+            199
+          ],
+          "tie_break_sensitivity": {
+            "slots_filled_from_the_boundary": 9,
+            "boundary_pairs_also_in_the_space_208": 6,
+            "overlap_min": 41,
+            "overlap_max": 47,
+            "space_boundary_is_unambiguous": true,
+            "fraction_min": 0.197115,
+            "fraction_max": 0.225962,
+            "verdict_is_robust_to_the_tie_break": false
+          }
+        }
+      },
+      "boundary": {
+        "space": {
+          "boundary_rate": 0.130729,
+          "boundary_ties_total": 1,
+          "boundary_ties_inside": 1,
+          "core_size": 207,
+          "decided_by_tie_break": false
+        },
+        "corpus_full": {
+          "boundary_rate": 0.026,
+          "boundary_ties_total": 14,
+          "boundary_ties_inside": 5,
+          "core_size": 203,
+          "decided_by_tie_break": true
+        },
+        "corpus_test": {
+          "boundary_rate": 0.030151,
+          "boundary_ties_total": 30,
+          "boundary_ties_inside": 9,
+          "core_size": 199,
+          "decided_by_tie_break": true
+        }
+      },
+      "tie_break": "lowest rate first, ties by (i, j) ascending, as declared before the numbers existed",
+      "verdict_by_surface": {
+        "corpus_full": "NEITHER",
+        "corpus_test": "NEITHER"
+      },
+      "verdict": "NEITHER"
+    },
+    "R-c": {
+      "claim": "the per-pair ratio corpus/space is not a common factor: its p75 over its p25 exceeds 1.30. Refuted below 1.15.",
+      "adjudicates_on": "corpus_full",
+      "threshold": 1.3,
+      "refuted_below": 1.15,
+      "note": "the ratio is per pair, and p75 and p25 come from resumen() over the list of ratios \u2014 not from dividing one surface's p75 by the other's, which is a different quantity.",
+      "ratios": {
+        "corpus_full": {
+          "resumen": {
+            "n": 2080,
+            "min": 0.04736740216572,
+            "p25": 0.19705542887706556,
+            "median": 0.29203402176075505,
+            "mean": 0.299899,
+            "p75": 0.3705427685975722,
+            "max": 1.7669811058240812
+          },
+          "p75_over_p25": 1.880399,
+          "max_over_min": 37.303737
+        },
+        "corpus_test": {
+          "resumen": {
+            "n": 2080,
+            "min": 0.05293467001422125,
+            "p25": 0.22330518935466354,
+            "median": 0.3270104955939891,
+            "mean": 0.336703,
+            "p75": 0.41511991119601416,
+            "max": 1.7618888610624148
+          },
+          "p75_over_p25": 1.85898,
+          "max_over_min": 33.284214
+        }
+      },
+      "pooled_ratio_for_context": 0.282486,
+      "reweighting_model_for_context": 0.573529,
+      "verdict_by_surface": {
+        "corpus_full": "HOLDS",
+        "corpus_test": "HOLDS"
+      },
+      "verdict": "HOLDS"
+    },
+    "R-d": {
+      "claim": "reported, not adjudicated: which pair attains the space minimum inside this set and where it ranks on the corpus, and the converse.",
+      "adjudicates": false,
+      "space_minimum": {
+        "minimum_rate": 0.035937,
+        "n_pairs_attaining": 1,
+        "pairs": [
+          {
+            "pair": [
+              53,
+              56
+            ],
+            "rate_here": 0.035937,
+            "rate_on_corpus_full": 0.0635,
+            "rank_here": {
+              "rank": 1,
+              "n_strictly_below": 0,
+              "n_sharing_its_rate": 1
+            },
+            "rank_on_corpus_full": {
+              "rank": 1207,
+              "n_strictly_below": 1192,
+              "n_sharing_its_rate": 16
+            }
+          }
+        ]
+      },
+      "corpus_full_minimum": {
+        "minimum_rate": 0.0085,
+        "n_pairs_attaining": 1,
+        "pairs": [
+          {
+            "pair": [
+              22,
+              43
+            ],
+            "rate_here": 0.0085,
+            "rate_on_space": 0.113914,
+            "rank_here": {
+              "rank": 1,
+              "n_strictly_below": 0,
+              "n_sharing_its_rate": 1
+            },
+            "rank_on_space": {
+              "rank": 111,
+              "n_strictly_below": 110,
+              "n_sharing_its_rate": 1
+            }
+          }
+        ]
+      },
+      "corpus_test_minimum": {
+        "minimum_rate": 0.00603,
+        "n_pairs_attaining": 1,
+        "pairs": [
+          {
+            "pair": [
+              22,
+              43
+            ],
+            "rate_here": 0.00603,
+            "rate_on_space": 0.113914,
+            "rank_here": {
+              "rank": 1,
+              "n_strictly_below": 0,
+              "n_sharing_its_rate": 1
+            },
+            "rank_on_space": {
+              "rank": 111,
+              "n_strictly_below": 110,
+              "n_sharing_its_rate": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "drafters_arithmetic": {
+    "what": "the entry argues that which particular cases were drawn contributes about 9% relative, against a spread between pairs of about 42%, so idiosyncratic draw cannot be what lowers the correlation. Both halves are checked here.",
+    "draw_noise_relative_sd": 0.090553,
+    "draw_noise_is": "closed form, sqrt((1-p)/(n p)) at the published pooled corpus rate over 2,000 draws. Not a measurement.",
+    "iqr_over_median_by_surface": {
+      "space": 0.438268,
+      "corpus_full": 0.550847,
+      "corpus_test": 0.560604
+    },
+    "entry_says": {
+      "draw": 0.09,
+      "spread": 0.42
+    }
+  },
+  "seconds_total": 0.07
+}
