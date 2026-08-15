@@ -802,3 +802,204 @@ which identifies the code as it stood when the numbers were computed.
   the pair closest on the SPACE is anywhere near closest on the corpus.** The
   2,615-case minimum belongs to some other pair, and where that pair sits among
   arrivals is unknown.
+
+---
+
+# Rank transfer — R-a to R-d
+
+August 15, 2026. **This part owns the figures below.** It is not a third
+measurement: it is a **join of the two records above**, over the 2,080 pairs of
+the 65 end orders of split 0, matched by `(i, j)`. No search, no regeneration,
+no new instrument, zero API calls, **0.07 s**. Both records were opened read
+only and neither was rewritten. Prediction: `IDEAS.md`, the entry *Whether the
+space can RANK two orders when it cannot rate them*, committed alone and without
+code before any of these numbers existed. Record:
+[`rank_transfer.json`](rank_transfer.json).
+
+**The question the two parts above left open.** The corpus part settled that the
+*level* does not transfer — 5.75% against 20.35% — and that *where* the
+disagreement falls does not either. Neither implies anything about the
+**ordering**: a rank is invariant to any monotone transformation, so a level
+falling by 3.5× is perfectly compatible with an ordering preserved exactly. What
+turns on it is whether `order_metrics.json` can be read comparatively at all —
+*this pair is further apart than that one* — once the surface is wrong for
+deployment.
+
+**It cannot.** ρ = 0.34.
+
+---
+
+## The gate
+
+Blocking, and it is this question's parity gate. The three `(i, j)` key sets are
+**identical**, 2,080 keys each, no duplicates, indices 0..64, `i < j` throughout,
+and 2080 = 65·64/2. And `resumen()` over each matrix's own stored rates
+reproduces **exactly** the summary that matrix's own record already publishes
+for the set — all three.
+
+**The gate was first run before the prediction was committed, and that does not
+contaminate it.** It reproduces summaries already published and computes no
+quantity R-a to R-d adjudicates on: no Spearman, no decile overlap, no ratio
+quantile, no argmin. What it can establish is only that the join is over the
+rows it claims — which is a fact about the two files, not about an answer. It
+was re-run in the run that produced these figures, and that is the result the
+record carries.
+
+---
+
+## The predictions of `IDEAS.md`, one by one
+
+| # | verdict | measured |
+|---|---|---|
+| **R-a** | **REFUTED, and not narrowly** | Spearman between the corpus-full rate and the space rate over the 2,080 pairs: **0.3364**. Predicted band 0.70–0.93, refutation line 0.55 — it lands **0.21 below the refutation line** and less than half way to the band. Corpus test: 0.3325. |
+| **R-b** | **NEITHER**, and 3.4 pairs from refuted | **45 of 208, 21.6%**. The band was 35–70% and the refutation line 20%, so it falls in the dead zone between them. Robust to the tie-break: over every way of breaking it the overlap is 43 to 45, **20.7% to 21.6%**, never reaching the band. |
+| **R-c** | **HOLDS** | The per-pair ratio corpus/space has **p75/p25 = 1.880**, against a threshold of 1.30 and a refutation line at 1.15. It is not one factor by a wide margin: the ratio runs from **0.047 to 1.767**, a factor of **37** end to end. |
+| **R-d** | *reported, not adjudicated* | The space's closest pair, **(53, 56)** at 3.59%, ranks **1207 of 2080** on the corpus. The corpus's closest pair, **(22, 43)** at 0.85%, ranks **111 of 2080** on the space. |
+
+### R-a, and why ties are not the explanation
+
+The entry declares that the drafter checked the tie load and concluded it does
+not cap the band. That claim is now checkable rather than inherited:
+
+| surface | distinct rate values | largest tie group | mean group size | values appearing once |
+|---|---|---|---|---|
+| exhaustive space | 1,834 | 3 | 1.13 | 1,613 |
+| corpus, all 2000 | 207 | 27 | 10.05 | 21 |
+| corpus test half | 119 | 44 | 17.48 | 9 |
+
+The corpus rate is a count out of 2,000, so it is coarse by construction, and
+2,080 pairs land on 207 values. That could in principle cap a rank correlation,
+so the ceiling is measured: pairing the two multisets comonotonically — k-th
+smallest with k-th smallest, which no arrangement beats — gives a maximum
+attainable Spearman of **1.0000**, i.e. **an attenuation of at most 5×10⁻⁵**.
+That bound carries the instrument's own resolution: `order_metrics_run.spearman`
+rounds to four decimals, so 1.0000 means ≥ 0.99995, and resolving it finer would
+take a second rank correlation — the instrument change this record declines to
+make halfway through. It does not need resolving. **Ties cost at most 5×10⁻⁵ and
+the measurement falls 0.66 short of the ceiling.**
+
+### R-b, and where the arbitrariness actually is
+
+208 is exactly a tenth of 2,080, and the closest pairs are the deployment-
+relevant end: they are the pairs a reader would call interchangeable. Of the 208
+closest on the space, **45** are among the 208 closest on the corpus.
+
+The boundary is worth stating because the set could have been partly arbitrary
+and is not. On the space the 208th value is attained by **one** pair, so that
+side is exact. On the corpus the boundary rate 0.026 is shared by **14** pairs
+of which 5 fit, so 9 were excluded by the declared `(i, j)` tie-break. Varying
+that tie-break over every possibility moves the overlap only between **43 and
+45** — 20.7% to 21.6% — so the verdict does not depend on it. On corpus test the
+same bounds are 41 to 47, 19.7% to 22.6%, which straddles the 20% line: **there**
+the tie-break would decide between REFUTED and NEITHER, and it is one more
+reason that surface is reported and does not adjudicate.
+
+### R-c, and what a common factor would have meant
+
+Refuting R-c would have meant the change of surface is one multiplication for
+every pair alike. It is not, and not by a little: **p75/p25 = 1.880**, and the
+extremes run from 0.047 to 1.767 — one pair disagrees on 1.77× as much of the
+corpus as of the space, another on a twenty-first of it. The pooled ratio is
+0.282 and the median per-pair ratio 0.292, so the *centre* is stable while the
+per-pair spread is enormous. That is the same shape S-c found per class, now per
+pair, and it is the mechanism R-a's refutation needed: pairs differ from one
+another in **where** they disagree, so re-weighting the surface re-ranks them.
+
+### R-d, an anecdote in both directions
+
+One draw of 2,080 either way, and the two directions do not behave alike.
+
+- **Space → corpus.** The most interchangeable pair on the space, **(53, 56)** at
+  3.59% of 134,400, sits at **rank 1207 of 2080** on the corpus, with 1192 pairs
+  strictly below it. Its corpus rate, 6.35%, is *above* the corpus median of
+  5.90%. The pair the space nominates as the two orders hardest to tell apart is,
+  on arrivals, slightly **worse** than typical.
+- **Corpus → space.** The most interchangeable pair on the corpus, **(22, 43)**
+  at 0.85% — 17 tickets of 2,000 — ranks **111 of 2080** on the space, inside the
+  top 5.3%. It is also corpus test's minimum.
+
+So the failure is not symmetric on this one draw: a pair that is close on
+arrivals tends to be close as a function, while a pair close as a function says
+little about arrivals. Two anecdotes are not a distribution, which is exactly why
+R-d was written as reported and not adjudicated.
+
+---
+
+## The drafter's own arithmetic, checked
+
+The entry argues the correlation must be high: which particular cases were drawn
+contributes about **9%** relative, against a between-pair spread of about **42%**,
+so idiosyncratic draw cannot be what lowers it. Both halves check out, and the
+conclusion still does not follow.
+
+| quantity | entry | measured |
+|---|---|---|
+| draw noise, relative sd | ~9% | **9.06%** — closed form √((1−p)/np) at the published pooled rate 0.0575 over 2,000 draws, not a measurement |
+| between-pair spread, IQR/median | ~42% | **43.8%** on the space, **55.1%** on the corpus |
+
+The 42% is the **space** figure. The apples-to-apples comparison is the corpus
+one, since the draw noise is a corpus-side quantity, and it makes the drafter's
+point *stronger*: 9% against 55%, a ratio of six. **And weaker still than that**,
+by an argument the arithmetic misses: all 2,080 pairs are evaluated on the *same*
+2,000 tickets, so the draw is common rather than independent across pairs, and a
+common sample moves them together — which cancels further in a rank than in a
+level.
+
+**So the reasoning is right and its conclusion is wrong**, and the entry itself
+says what that leaves: *what can lower the correlation is pairs differing from
+each other in where they disagree, and these 65 orders come from one
+neighbourhood over one training half at similar scores, which argues they do not
+differ much*. They differ much. R-a's own text calls refutation below 0.55 **the
+informative outcome** — *it would mean the pairs specialize far more than their
+common origin suggests* — and that is the outcome.
+
+---
+
+## What this changes elsewhere
+
+**The comparative readings of `order_metrics.json` do not survive to
+deployment.** That record is cited to say one pair of orders is further apart
+than another — Q-a's 11,240 cases, the factor of 21 between the closest and
+furthest pair. Those remain true *of the space*. What is now measured is that
+the space's ordering of pairs carries a Spearman of 0.34 to the arrival
+distribution, and that its most interchangeable pair is mid-table there. **A
+reader who used the space record to decide which two orders are safest to swap
+was reading the wrong surface, and not only by a constant.**
+
+**It is the strong form of the reservation, and it is now the measured one.**
+The corpus part closed *what this does not settle* on the level and on the
+composition. This closes it on the ordering, which was the last reading under
+which the space figures could have been used comparatively for deployment.
+
+**What it does not touch.** Every space figure is what it always was, measured on
+the surface it names. Nothing above is withdrawn, and the space remains the
+surface that answers *is this order the policy* — a question about the function,
+where the arrival distribution has no standing.
+
+---
+
+## The register, third part
+
+| id | finding | status |
+|---|---|---|
+| **R-a** | Spearman corpus vs space over the 2,080 pairs, between 0.70 and 0.93. | **REFUTED**: 0.3364, below the 0.55 line. Ties cap it by at most 5×10⁻⁵, so that is not the explanation. |
+| **R-b** | Of the 208 closest on the space, 35–70% among the 208 closest on the corpus. | **NEITHER**: 45 of 208, 21.6%, in the dead zone between band and refutation. Robust to the tie-break, 20.7–21.6%. |
+| **R-c** | The per-pair ratio is not a common factor: p75/p25 above 1.30. | **HOLDS**: 1.880, extremes 0.047 to 1.767. |
+| **R-d** | Reported, not adjudicated. | Space's closest pair ranks 1207/2080 on the corpus; the corpus's ranks 111/2080 on the space. |
+
+---
+
+## What the rank part does not settle
+
+- **The 257-order sets.** Both records summarize those matrices rather than
+  store them, so this join is over the 65-order set of split 0 only. Whether
+  ρ = 0.34 is stable at 257 orders, or on split 4, would cost a regeneration and
+  was not done.
+- **Whether 0.34 is a lot or a little for a deployment decision.** It is far
+  below what was predicted and clearly above zero; the two surfaces agree more
+  than chance and much less than a reader of either would assume. What margin a
+  real decision needs is not a question this material answers.
+- **Why the pairs specialize.** R-c says they do — the per-pair ratio spans a
+  factor of 37 — and nothing here says what distinguishes a pair whose ratio is
+  0.05 from one whose ratio is 1.77. The class-level account of S-c is the
+  obvious place to look and was not looked at.

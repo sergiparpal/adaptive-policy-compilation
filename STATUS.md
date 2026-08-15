@@ -36,8 +36,11 @@ without saying so; everything below is labelled.
 disagree on 20.35% of the space and 5.75% of the corpus, and the class carrying
 most of that disagreement is not the same class on the two surfaces — 57.5% of it
 against 4.6%. Per-class rates do not transfer either, so a figure on one surface
-cannot be reweighted into a figure on the other. Name the surface
-([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part two).
+cannot be reweighted into a figure on the other. **Nor does the ordering**: over
+the same 2,080 pairs the two surfaces correlate at a Spearman of 0.34, so the
+space cannot rank two orders for deployment any more than it can rate them
+([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), parts two and
+three). Name the surface.
 
 **Every finding came from a check costing cents or nothing**, never from the
 expensive run. Three failures were caught by a blocking free check, each of which
@@ -159,6 +162,20 @@ reweighting turns one into the other. What does not change: **all 257 end orders
 are still 257 distinct machines on the corpus**, the closest pair differing on 2
 cases of 2000 — and not for lack of material, since the average arriving case
 carries 74% more live conflicting pairs than the average point of the space.
+
+**And the space does not even RANK what it cannot rate.** The same 2,080 pairs,
+joined across the two records by `(i, j)` — no search, no regeneration, 0.07 s
+([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part three;
+[`rank_transfer.json`](results3/rank_transfer.json)). Spearman between a pair's
+**corpus** disagreement rate and its **space** rate is **0.3364**, and ties cap
+it by at most 5×10⁻⁵, so that is not the explanation. Of the 208 pairs closest on
+the space, **45 (21.6%)** are among the 208 closest on the corpus. The per-pair
+ratio corpus/space is not one factor: **p75/p25 = 1.880**, extremes 0.047 to
+1.767, a factor of **37**. And the pair the space calls the most interchangeable
+of all 2,080 sits at **rank 1207 of 2080** on the corpus, above its median. So a
+reader who used the space record comparatively — *this pair is further apart than
+that one* — was reading the wrong surface, and not merely by a constant: the
+ordering does not transfer either.
 
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
