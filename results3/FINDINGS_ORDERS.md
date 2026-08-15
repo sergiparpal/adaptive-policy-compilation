@@ -649,14 +649,41 @@ than that: the 2000 draws touch 1,743 distinct cases, so two disagreements need
 not even be two distinct cases. On corpus test the minimum is 1 case of 995,
 which is the smallest a non-zero distance can be.
 
-**The pair is not identified, and this record cannot identify it.** The
-257-order matrices are summarized and not stored — the same decision the first
-part took, 32,896 rows per split being a record nobody reads — so the minimum is
-on the record and the `(i, j)` that attains it is not, nor is what that same pair
-does on the space. The 2,615-case minimum quoted for the space is the minimum of
-the same 32,896 pairs, **not necessarily of this pair**. Recovering the identity
-means regenerating the orders, which is a re-run, and this is a documentation
-pass. It is left as a named gap below.
+**The pair is identified, by a re-run authorized for that and nothing else.**
+The full run stored the minimum and not the pair, the 257-order matrices being
+summarized rather than kept. Sergi lifted the no-re-run rule on 2026-08-15,
+**after these verdicts existed**, to recover an index — a pointer into a set
+already measured, not a quantity. The condition was that nothing already
+published may move, and nothing did: both gates passed again, parity 31/31 and
+the G2 census, and all twelve published set summaries and both minima reproduced
+exactly before anything was written. The record says the same under
+`authorization`, with its own `_env_amendment`.
+
+**It is one pair, not two.** End orders **47 and 87** of split 0's 257 starts
+attain the minimum on *both* corpus surfaces. Nothing guaranteed that — the two
+argmins are over different surfaces and could have been different pairs.
+
+**And the two cases are two distinct tickets, not one drawn twice**, which is
+the question this section raised:
+
+| | true class | order 47 | order 87 |
+|---|---|---|---|
+| corpus case 577 | `T2_TECHNICAL` | `SECURITY_INCIDENT` | `SELF_SERVICE_DEFLECT` |
+| corpus case 854 | `SELF_SERVICE_DEFLECT` | `SELF_SERVICE_DEFLECT` | `BILLING_SPECIALIST` |
+
+On corpus test only 854 survives — 577 sits in the fitted half — which is why
+that surface's minimum is 1 case, the smallest a non-zero distance can be.
+
+**Three things read off it.** *One of the two cases is two ways of being wrong*:
+on 577 neither order is right, so half of what separates the closest pair of
+machines in this material is not a difference in quality at all. *The pair
+closest on arrivals is not the pair closest on the space*: these two differ on
+**6,180 cases, 4.60%** of the uniform surface, while the minimum over the same
+32,896 pairs there is 2,615 — being nearly indistinguishable in deployment puts
+a pair nowhere near the bottom of the other surface's ranking, which is S-c's
+point at the level of a single pair. And *Q-e at its extreme*: **99.13% of the
+577 rules sit at a different index** between two orders that decide the same
+thing on 1,998 of 2,000 arriving tickets.
 
 **And G3 and G4 carry across untouched.** 257 distinct behavioural signatures
 from 257 end orders, on both corpus surfaces and both splits; 65 of 65; 40 of 40
@@ -710,7 +737,7 @@ arrive.
 | **S-b** | That rate above the 15.2% of a pure reweighting. | **REFUTED**: 5.75%, below the 15.2% written and below the 11.67% reconstructed. Its stated mechanism is confirmed, by a post-hoc measurement, and does not produce the effect. |
 | **S-c** | Per-class rates preserved to ±30% relative. | **REFUTED**: 4 of 6 eligible classes outside, from −81.6% to +165.2%. |
 | **S-d** | `SECURITY_INCIDENT`'s share of the disagreement under 3%. | **REFUTED on the stated value**: 4.57%, against 2.67% modelled and 57.5% on the space. Its refutation clause — *anything far from that* — is not a number; both readings are published and the row's own rider fired. |
-| **S-e** | No pair identical on the corpus and different on the space; pairwise minimum under 1%. | **HOLDS**: zero such pairs, minimum 0.10% — two cases of 2000, clearing a 20-case line by 18. |
+| **S-e** | No pair identical on the corpus and different on the space; pairwise minimum under 1%. | **HOLDS**: zero such pairs, minimum 0.10% — two cases of 2000, clearing a 20-case line by 18. The pair is orders 47 and 87, two distinct tickets, 6,180 cases apart over the space. |
 | **S-f** | The tied set at 1% still above 20% on the corpus. | **HOLDS**: median 24.05% full corpus, 24.32% test. |
 | **S-g** | *(not predicted)* Whether the distinctness findings survive the surface. | **THEY DO**: 257 of 257, 65 of 65, 40 of 40 distinct machines; zero identical-behaviour pairs. |
 
@@ -734,6 +761,13 @@ gate, and the parity gate is exact on all 31 rows. **That digest covers code
 written after the six verdicts existed** — `competition()`, added because S-b
 had failed — which is why the census it produces is marked post hoc above and in
 the record's `post_hoc` field.
+
+**One authorized re-run, 397 s, after all of the above.** It regenerated down
+the same path, passed both gates again and located S-e's minimum pairs; it
+carries its own `_env_amendment` in the record, beside the `_env` of the run
+that produced the figures. It wrote two things into the file — the pair
+identities and the authorization — and changed nothing else, which the mode
+verified before writing rather than after.
 
 **The record was annotated by hand after the run, with strings and nothing
 else.** `truth_provenance`, `post_hoc`, `sets_measured`, `record_annotations`,
@@ -761,9 +795,10 @@ which identifies the code as it stood when the numbers were computed.
 - **The other three splits at full supervision.** Splits 0 and 4 are measured
   because they are the two `start_budget_check` saw the train score move on.
   Whether the 3.5× is stable across the other three is not known.
-- **Which pair attains S-e's minimum, and what it does on the space.** The
-  257-order matrices are summarized, so the 2-case minimum is on the record and
-  the pair that reaches it is not. It is the cheapest open question here — one
-  regeneration of split 0 and one argmin — and it is the one worth answering,
-  because a pair two arriving cases from identical is the closest this material
-  comes to the finding S-e was written to look for.
+- ~~Which pair attains S-e's minimum, and what it does on the space.~~
+  **Answered 2026-08-15** by the authorized re-run: orders 47 and 87, on both
+  corpus surfaces, 6,180 cases apart over the space. What that leaves open is
+  the converse, which is not the same question and was not measured: **whether
+  the pair closest on the SPACE is anywhere near closest on the corpus.** The
+  2,615-case minimum belongs to some other pair, and where that pair sits among
+  arrivals is unknown.
