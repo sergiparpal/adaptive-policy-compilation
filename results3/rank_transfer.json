@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-08-15T22:10:04Z",
+    "recorded_at": "2026-08-15T22:45:20Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": null,
-    "git_commit": "73719ec25ed42191621cf27a740cdc5d6ade5b6c",
+    "git_commit": "5975020baa6dc9c578fe076b09efee3e49674b59",
     "git_dirty": true,
     "code_dirty": true,
-    "code_digest": "6b414c347a06772d",
+    "code_digest": "a65e790e6cdac408",
     "set_measured": "split0_starts65",
     "n_pairs": 2080,
     "n_orders": 65,
@@ -402,10 +402,15 @@
     }
   },
   "drafters_arithmetic": {
-    "what": "the entry argues that which particular cases were drawn contributes about 9% relative, against a spread between pairs of about 42%, so idiosyncratic draw cannot be what lowers the correlation. Both halves are checked here.",
-    "draw_noise_relative_sd": 0.090553,
-    "draw_noise_is": "closed form, sqrt((1-p)/(n p)) at the published pooled corpus rate over 2,000 draws. Not a measurement.",
-    "iqr_over_median_by_surface": {
+    "what": "the entry argues that which particular cases were drawn contributes about 9% relative, against a spread between pairs of about 42%, so idiosyncratic draw cannot be what lowers the correlation. Both halves are checked here, ON THE SCALE THE ENTRY USED.",
+    "draw_noise_cv": 0.090553,
+    "draw_noise_is": "closed form, sqrt((1-p)/(n p)) at the published pooled corpus rate over 2,000 draws: sd over mean. Not a measurement.",
+    "between_pair_cv": {
+      "space": 0.314882,
+      "corpus_full": 0.419194,
+      "corpus_test": 0.427639
+    },
+    "between_pair_iqr_over_median": {
       "space": 0.438268,
       "corpus_full": 0.550847,
       "corpus_test": 0.560604
@@ -413,7 +418,8 @@
     "entry_says": {
       "draw": 0.09,
       "spread": 0.42
-    }
+    },
+    "scale_note": "the entry's 42% is the COEFFICIENT OF VARIATION over the CORPUS, IQR/1.349 over the mean, which comes to 0.4192 \u2014 the same normalization as its 9%, since both are sd over mean. So the entry's comparison was homogeneous. What it did not do is declare the scale, and IQR/median \u2014 a different scale, 1.31x larger here \u2014 gives 0.5508 on the same surface. That the space's IQR/median, 0.4383, sits near the corpus's 0.4192 is a coincidence of two different scales on two different surfaces: on the entry's own scale the space gives 0.3149, so 42% could not have been a space figure."
   },
-  "seconds_total": 0.07
+  "seconds_total": 0.09
 }

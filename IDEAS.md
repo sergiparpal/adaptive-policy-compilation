@@ -463,13 +463,15 @@ none of them developed and in no order of precedence.
 
   **What it settles, and the one thing that does not fit.** The space cannot
   order two orders for deployment any more than it can rate them — the strong
-  form of the reservation, now measured. The drafter's own arithmetic checks out
-  and its conclusion does not: draw noise really is ~9% against a between-pair
-  spread of 44–55%, so sampling cannot be what lowers the correlation, and what
-  is left is the alternative the entry named and dismissed — the pairs specialize
-  in *where* they disagree, which R-c's factor of 37 now measures directly. R-a's
-  own text called refutation below 0.55 *the informative outcome*; it is the
-  outcome.
+  form of the reservation, now measured. The entry's own arithmetic checks out
+  on the scale it used, 9.06% against 41.92%, both a standard deviation over a
+  mean: the comparison was homogeneous and what went undeclared was the scale.
+  What does not follow is the inference, and for a reason the decomposition
+  cannot see: all 2,080 pairs are scored on the *same* 2,000 tickets, so the
+  corpus is one common re-weighting rather than 2,080 independent draws. What is
+  left is the alternative the entry named and dismissed — the pairs specialize in
+  *where* they disagree, which R-c's factor of 37 measures directly. R-a's own
+  text called refutation below 0.55 *the informative outcome*; it is the outcome.
 
 ---
 
