@@ -230,16 +230,28 @@ none of them developed and in no order of precedence.
   of the tied set) are owned by
   [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and quoted from
   it.
+  Two of those yardsticks were referred to loosely when this was signed, and S-a
+  and S-b and S-e were sharpened the same day, **still before any measurement
+  exists** — which is the only window in which it can be done at all. Saying
+  more precisely *what* is being measured, while no number exists to be flattered
+  by the choice, is the opposite of moving the goalposts; the log is what makes
+  that checkable rather than a claim, since both commits predate the run.
 
-  - **S-a** — The median pairwise disagreement over the 2,080 pairs of the
-    65-start set, measured on the corpus, falls **between 12% and 20%**.
-    *Refuted* below 10% or above 22%.
-  - **S-b** — **The bet.** The measured value comes out **above the 15.2%** that
-    reweighting the space's per-class rates by the arrival distribution gives.
-    The reason: the 577 rules were written looking at the corpus, so the typical
-    arriving case carries more rules over it and more pairs competing, and that
-    pushes up against a reweighting that pushes down. *Refuted* below 15.2% —
-    and then the surface is only a change of weights, and the corpus's
+  - **S-a** — The disagreement over the 2,080 pairs of the 65-start set,
+    measured on the corpus, falls **between 12% and 20%**. *Refuted* below 10%
+    or above 22%. **The quantity that adjudicates is the POOLED rate** — total
+    disagreements over total cases, summed across the pairs — which is what
+    `FINDINGS_ORDERS.md` publishes as 0.2035 for the space and what the 15.2% of
+    S-b was computed from. The per-pair median is reported beside it for
+    continuity with Q-e and does **not** adjudicate. On the space the two nearly
+    coincide, 19.99% and 20.35%, which is exactly why the distinction has to be
+    fixed now rather than argued about on the day.
+  - **S-b** — **The bet.** That same pooled rate comes out **above the 15.2%**
+    that reweighting the space's per-class rates by the arrival distribution
+    gives. The reason: the 577 rules were written looking at the corpus, so the
+    typical arriving case carries more rules over it and more pairs competing,
+    and that pushes up against a reweighting that pushes down. *Refuted* below
+    15.2% — and then the surface is only a change of weights, and the corpus's
     concentration adds no competition of its own.
   - **S-c** — The per-class rates are preserved across surfaces to within
     **±30% relative**, for the classes with 100 or more corpus cases. *Refuted*
@@ -250,12 +262,18 @@ none of them developed and in no order of precedence.
     falls from **57.5% to under 3%**. *Refuted* by anything far from that, which
     would mean the per-class rates do not carry across and S-c will already have
     fired.
-  - **S-e** — Pairs at distance 0 on the corpus with distance > 0 on the space
+  - **S-e** — **Over the 32,896 pairs of the 257-start set**, not the 2,080 of
+    the 65: pairs at distance 0 on the corpus with distance > 0 on the space
     stay at **zero**, while the pairwise minimum falls from **1.9% of the space
-    to under 1% of the corpus**. *Refuted* if any such pair appears — and that
-    would be the large finding here: two orders distinguishable in principle and
-    identical wherever the cases actually arrive are the same machine for
-    deployment purposes.
+    — the 2,615 cases the record publishes — to under 1% of the corpus**.
+    *Refuted* if any such pair appears — and that would be the large finding
+    here: two orders distinguishable in principle and identical wherever the
+    cases actually arrive are the same machine for deployment purposes. The set
+    is the 257 because that is where both space figures are published; the
+    65 starts are its prefix, so the smaller set's minimum is greater or equal
+    and was never published. It is also the harder test of the two: sixteen
+    times the pairs is sixteen times the chances of turning up a pair the corpus
+    cannot tell apart.
   - **S-f** — The tied set at 1%, which disagrees a median 39.2% over the space,
     stays **above 20%** over the corpus. The tie is a fact about the training
     signal, not about the surface. *Refuted* below 10%.
