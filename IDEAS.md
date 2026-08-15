@@ -443,6 +443,34 @@ none of them developed and in no order of precedence.
   wrong one here: it is 995 cases, half the resolution, and rank noise rises as
   the surface shrinks.
 
+  **MEASURED — 2026-08-15. It does not rank either.** Figures owned by
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part three, and
+  by [`rank_transfer.json`](results3/rank_transfer.json); below is only each row
+  against its own threshold. The gate passed — the three key sets identical, all
+  three published summaries reproduced from their own stored matrices — no
+  search, no regeneration, **0.07 s**.
+
+  - **R-a REFUTED** — Spearman **0.3364**, against a band of 0.70–0.93 and a
+    refutation line at 0.55. Ties are not the explanation: the tie structures cap
+    it by at most 5×10⁻⁵, and the measurement falls 0.66 short of that ceiling.
+  - **R-b NEITHER** — **45 of 208, 21.6%**: above the 20% refutation line and
+    below the 35% band, in the dead zone between them. Robust to the tie-break,
+    which can only move it between 20.7% and 21.6%.
+  - **R-c HOLDS** — per-pair ratio p75/p25 = **1.880**, against a threshold of
+    1.30. The ratio runs from 0.047 to 1.767, a factor of 37 end to end.
+  - **R-d** reported: the space's closest pair ranks **1207 of 2080** on the
+    corpus; the corpus's closest ranks **111 of 2080** on the space.
+
+  **What it settles, and the one thing that does not fit.** The space cannot
+  order two orders for deployment any more than it can rate them — the strong
+  form of the reservation, now measured. The drafter's own arithmetic checks out
+  and its conclusion does not: draw noise really is ~9% against a between-pair
+  spread of 44–55%, so sampling cannot be what lowers the correlation, and what
+  is left is the alternative the entry named and dismissed — the pairs specialize
+  in *where* they disagree, which R-c's factor of 37 now measures directly. R-a's
+  own text called refutation below 0.55 *the informative outcome*; it is the
+  outcome.
+
 ---
 
 ## What rung 2 opens and does not resolve
