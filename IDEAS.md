@@ -187,17 +187,19 @@ none of them developed and in no order of precedence.
   measured on* above — it is that standing question narrowed, for once, from a
   norm about labelling into a run somebody can go and do.
   Everything `results3/order_metrics.json` holds is the **uniform measure over
-  the 134,400 combinations**: Q-a's disagreement between the winners at two
-  budgets, Q-b's median across the orders that tie at 1%, Q-e's median
-  disagreement against churn. None of it is the arrival distribution a deployed
-  system would actually meet.
+  the 134,400 combinations** — figures owned by
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and quoted here
+  as pointers, not as a second home: Q-a's **11,240** cases between the winners
+  at 65 and 257 starts, Q-b's median **39.2%** across the 40 orders that tie at
+  1%, Q-e's median disagreement of **20%** against a median churn of 99.65%.
+  None of it is the arrival distribution a deployed system would actually meet.
   What keeps the answer from being a formality is G2, which counted the pairs
-  that can change a decision on **both** pools: the corpus pool carries very
-  nearly as many as the exhaustive space. The material to disagree over is
-  therefore almost the same on either surface, and what is unknown is **where it
-  falls** — the corpus is deliberately long-tailed, and disagreement that
-  concentrates on a class occupying a large share of the space while being rare
-  in arrivals would read very differently in deployment from how the record
+  that can change a decision on **both** pools: **33,631** on the corpus against
+  **35,457** on the space, out of the same 166,176. The material to disagree
+  over is therefore almost the same on either surface, and what is unknown is
+  **where it falls** — the corpus is deliberately long-tailed, and disagreement
+  that concentrates on a class occupying a large share of the space while being
+  rare in arrivals would read very differently in deployment from how the record
   reads now.
   It is settled by running the same instrument over the corpus pool, which
   `order_search_ls.space_pools` and `local_search.build_masks` already build and
