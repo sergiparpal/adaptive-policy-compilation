@@ -293,6 +293,41 @@ none of them developed and in no order of precedence.
   S-f, where measuring on what the search fitted would understate the answer by
   construction.
 
+  **MEASURED — 2026-08-15, and four of the six are refuted.** The figures are
+  owned by [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part
+  two, and by [`order_metrics_corpus.json`](results3/order_metrics_corpus.json);
+  what is below is each row against its own threshold and nothing more. Parity
+  31/31, the corpus census reproduces G2, `d(a, a) = 0` throughout, no new
+  search. Adjudicated on the full corpus, with the test half beside every one of
+  them and agreeing on every verdict. 396 s, zero API calls.
+
+  - **S-a REFUTED** — 5.75% pooled, below its 10% refutation line and far below
+    the 12–20% band. On the space the same pairs give 20.35%.
+  - **S-b REFUTED** — the same 5.75%, against 15.2%. Its stated mechanism is
+    **confirmed and does not produce the effect**: the average arriving case
+    carries 74% more live conflicting pairs than the average point of the space,
+    and disagrees 3.5 times less. The 15.2% itself does not reconstruct by the
+    route the prediction names, which gives 11.67%; the verdict is against 15.2%
+    as written, and 5.75% is below both.
+  - **S-c REFUTED** — four of the six eligible classes fall outside ±30%
+    relative, from −81.6% to +165.2%. Which is the larger finding its own
+    refutation clause named: the mix of cases *within* a class governs too.
+  - **S-d REFUTED**, narrowly — 4.57% against *under 3%*, from 57.5% on the
+    space. Pure reweighting predicts 2.67%, and the gap is what S-c already
+    fired on.
+  - **S-e HOLDS**, both clauses — zero pairs of the 32,896 at distance 0 on the
+    corpus, and the pairwise minimum at 0.10% against a line of 1%.
+  - **S-f HOLDS** — median 24.05% of the corpus, against a 20% line. The
+    low-budget caveat survives the change of surface; the full-supervision
+    headline does not.
+
+  **What it settles for the standing question above.** Where the disagreement
+  falls changes completely — `SECURITY_INCIDENT` goes from 57.5% of it to 4.6%,
+  and the deflection queue from 1.5% to 44.8% — so a space figure cannot be read
+  as a deployment figure, in either direction. What it does not settle is why
+  the rate collapses by 3.5× when the contested material grows by 74%: about a
+  tenth of it is fitting, and the rest is unexplained and deliberately left so.
+
 ---
 
 ## What rung 2 opens and does not resolve
