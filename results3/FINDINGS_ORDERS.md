@@ -134,18 +134,48 @@ spread of magnitude — and the measurement says the opposite of it. Over the
 | behavioural distance | — | — | 21,940 | 26,860 | 32,630 | **10,690** | 2,615 … 56,565 |
 
 There are no ties to speak of: no tau value covers more than a tenth of a
-percent of the pairs, and both statistics spread across a quarter of their
-theoretical range. **Both quantities vary; they simply do not vary together.**
-That is a different and stronger finding than degeneracy would have been — a
-degenerate statistic could be fixed by a finer one, and this cannot.
+percent of the pairs. **Both quantities vary; they simply do not vary
+together.** That is a different and stronger finding than degeneracy would have
+been — a degenerate statistic could be fixed by a finer one, and this cannot.
 
-Two things do follow. The restriction **coarsens the resolution**: computed over
-a fifth as many pairs, the restricted tau takes 3,456 distinct values where the
-global one takes 9,772 — a wider spread in coarser steps, which is not what a
-rescue looks like. And PR #13's finding that conflicting pairs can be inert
-applies here with force: the restriction does not even isolate the pairs that
-decided anything **in these particular orders**, only those that could decide
-something in some order.
+**How much rank signal there was to track: almost none.** For two
+**independent** permutations of n elements, Kendall tau has mean 0 and standard
+deviation √( 2(2n+5) / (9n(n−1)) ), which at n = 577 is **σ = 0.0278**. That is
+closed form on the number of rules, not a new measurement, and it is the
+yardstick the table was missing. Against it the global tau's median of 0.0339 is
+**1.22 σ**, and its interquartile range runs from **0.53 σ to 1.90 σ**. In rank
+terms these end orders are barely distinguishable from independent random
+permutations of one another — while their behavioural distance covers a **factor
+of 21**, from 2,615 to 56,565 cases.
+
+So Q-d's failure, said with a magnitude: it is not that rank follows behaviour
+badly here. It is that **there was almost no rank signal to follow**, and a
+quantity whose middle half sits between half a sigma and two sigma of pure
+independence cannot track one that moves by a factor of 21. The tails do reach
+further — the extremes of the global row are −2.95 σ and +5.30 σ — which is why
+the claim is about how little the bulk moves, not about every pair.
+
+The yardstick covers the **global row only**. That closed form is derived for
+tau over all C(n,2) pairs of a permutation; over an arbitrary subset — the
+35,457 conflicting pairs, which overlap in a dependence structure of their own —
+neither the variance nor the null it comes from carries over, and this record
+does not stretch it to a row it does not cover.
+
+**The distinct-value counts, meanwhile, compare nothing — and that is arithmetic
+rather than evidence.** Tau over a pair set P takes values only in multiples of
+2/|P|, so computing it over 35,457 pairs instead of 166,176 makes its grid
+**4.69× coarser by construction**, whether or not the restriction rescues
+anything. Measured against the grid each one actually has, the restricted
+statistic fills **more** of it rather than less: 3,456 of the ~5,130 values
+available across its observed range, against 9,772 of ~19,080 for the global one
+— **67% against 51%**. An earlier draft read the smaller count as a blunter
+instrument; it is the same instrument on a coarser ruler, and the count settles
+nothing either way.
+
+What does survive is PR #13's finding that conflicting pairs can be inert: the
+restriction does not even isolate the pairs that decided anything **in these
+particular orders**, only those that could decide something in some order. That
+is the argument against the rescue clause, and it stands on its own.
 
 *Where those figures come from.* Every quantile in the table is already in
 [`order_metrics.json`](order_metrics.json) under `sets.split0_starts257`. Only
@@ -154,7 +184,9 @@ regenerating split 0 down the same deterministic path and tallying the two tau
 columns over all 32,896 pairs; that re-run returns **the same winner at 65 and
 the same winner at 257 that the record stores**, rule for rule, and reproduces
 both Spearman figures to the digit, which is how the tally is known to be about
-these pairs and not about a second sample.
+these pairs and not about a second sample. The σ yardstick is closed form on
+n = 577 and the grid arithmetic is 2/|P| on two pair counts already published
+above: neither involves a measurement at all.
 
 **Q-d was measured exactly as written**, with the same 35,457-pair set §0
 declared, after that weakness was already on the record. Re-specifying it to,
