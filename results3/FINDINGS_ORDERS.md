@@ -519,14 +519,17 @@ measure and does not survive to the arrival distribution.
 per-class rates would carry across, and said that failing would mean the mix of
 cases *within* a class governs too. It fails, and by a lot: the same class,
 `T2_TECHNICAL`, disagrees on 19.69% of its space cases and 3.62% of its corpus
-cases — and it is the largest class on both surfaces, so this is not a small-sample
-effect. `BILLING_SPECIALIST` moves the other way, ×2.65. Two orders differ not on
+cases — and it is the largest class of the corpus (726 of 2000) and the second
+largest of the space (36,720 of 134,400), so this is not a small-sample effect.
+`BILLING_SPECIALIST` moves the other way, ×2.65. Two orders differ not on
 *a class* but on a region, and which part of a class the surface samples decides
 whether that region is in it.
 
 **S-d then follows arithmetically, and it is worth seeing why it missed.**
-`SECURITY_INCIDENT`'s own rate carries across almost intact, −15.9%, which is
-*inside* S-c's ±30% band. What does not carry is the denominator: the overall
+`SECURITY_INCIDENT`'s own rate carries across almost intact, −15.9% — which
+would have been *inside* S-c's ±30% band had the class been eligible for it, and
+it is not: 20 corpus cases against the 100 S-c requires. What does not carry is
+the denominator: the overall
 rate collapsed by 3.5×, so a class whose rate barely moved keeps a larger share
 than reweighting predicts — 4.57% measured against 2.67% modelled. The direction
 of S-d was right and the magnitude was off by 70% relative, and the reason is
