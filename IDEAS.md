@@ -219,6 +219,62 @@ none of them developed and in no order of precedence.
   was expected — that is the Goodhart failure this project exists to study, and
   avoiding it costs one commit.
 
+  **PREDICTION — 2026-08-15, written before the run.** Drafted by Claude; Sergi
+  signs it as it stands, without changes; committed before any of the figures it
+  names exists, which is the only thing that makes it worth anything. §6 of
+  `PLAN_ORDER_METRICS.md` bans figures from this file beyond a pointer, and a
+  prediction is the one exception that justifies itself — the number bet on has
+  to be written down or there is no bet — so this is not the rule relaxing. The
+  space-side figures used here as yardsticks (the 20.35% overall rate,
+  SECURITY_INCIDENT's 57.5% of it, the 1.9% pairwise minimum, the 39.2% median
+  of the tied set) are owned by
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and quoted from
+  it.
+
+  - **S-a** — The median pairwise disagreement over the 2,080 pairs of the
+    65-start set, measured on the corpus, falls **between 12% and 20%**.
+    *Refuted* below 10% or above 22%.
+  - **S-b** — **The bet.** The measured value comes out **above the 15.2%** that
+    reweighting the space's per-class rates by the arrival distribution gives.
+    The reason: the 577 rules were written looking at the corpus, so the typical
+    arriving case carries more rules over it and more pairs competing, and that
+    pushes up against a reweighting that pushes down. *Refuted* below 15.2% —
+    and then the surface is only a change of weights, and the corpus's
+    concentration adds no competition of its own.
+  - **S-c** — The per-class rates are preserved across surfaces to within
+    **±30% relative**, for the classes with 100 or more corpus cases. *Refuted*
+    otherwise, and then "surface" is not reweighting at all: the mix of cases
+    *within* each class governs too, which is a larger finding than the
+    headline.
+  - **S-d** — *Calibration.* SECURITY_INCIDENT's share of the total disagreement
+    falls from **57.5% to under 3%**. *Refuted* by anything far from that, which
+    would mean the per-class rates do not carry across and S-c will already have
+    fired.
+  - **S-e** — Pairs at distance 0 on the corpus with distance > 0 on the space
+    stay at **zero**, while the pairwise minimum falls from **1.9% of the space
+    to under 1% of the corpus**. *Refuted* if any such pair appears — and that
+    would be the large finding here: two orders distinguishable in principle and
+    identical wherever the cases actually arrive are the same machine for
+    deployment purposes.
+  - **S-f** — The tied set at 1%, which disagrees a median 39.2% over the space,
+    stays **above 20%** over the corpus. The tie is a fact about the training
+    signal, not about the surface. *Refuted* below 10%.
+
+  **Not predictions, invariants** — if these fail, something is broken and the
+  prediction has not been tested at all: `d(a, a) = 0` on either surface; the 65
+  orders are the same objects the record already measured, so the parity gate is
+  passed again over the same 31 rows before anything below it is believed; and
+  **no new search** — this is re-measuring known orders on another surface.
+
+  **Two conditions for whoever runs it.** The record stores signatures and
+  distances, not the 65 orders, so the run is regenerate-with-parity and then
+  measure over 2,000 cases instead of 134,400: seven or eight minutes. And the
+  surface has to be named precisely — the full corpus is 2,000 cases, but the
+  search saw the train half of those, so **both** are measured and published,
+  full corpus and test split, each said to be what it is. That matters most for
+  S-f, where measuring on what the search fitted would understate the answer by
+  construction.
+
 ---
 
 ## What rung 2 opens and does not resolve
