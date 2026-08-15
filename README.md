@@ -78,6 +78,7 @@ python3 -m peldano3.budget_and_balance_ls  # label curve and balanced objective 
 # --- THE ORDERS BEHIND THOSE FIGURES, compared as orders ------------------
 python3 -m peldano3.order_metrics_run # regenerates and measures orders (12 min)
 python3 -m peldano3.order_metrics_run --checks   # parity gate only (6 min)
+python3 -m peldano3.order_metrics_corpus  # the same orders over the corpus (8 min)
 ```
 
 What each of them should produce is in the record it belongs to; the corrected
@@ -157,6 +158,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/budget_and_balance_ls.py --start-budget` | `results3/start_budget_check.json` | no, on purpose |
 > | `peldano4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
 > | `peldano3/order_metrics_run.py` | `results3/order_metrics.json` | no, on purpose |
+> | `peldano3/order_metrics_corpus.py` | `results3/order_metrics_corpus.json` | no, on purpose |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.
