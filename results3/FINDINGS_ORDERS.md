@@ -931,29 +931,49 @@ R-d was written as reported and not adjudicated.
 
 The entry argues the correlation must be high: which particular cases were drawn
 contributes about **9%** relative, against a between-pair spread of about **42%**,
-so idiosyncratic draw cannot be what lowers it. Both halves check out, and the
-conclusion still does not follow.
+so idiosyncratic draw cannot be what lowers it. **Both halves check out on the
+scale the entry used, its comparison was homogeneous, and the conclusion still
+does not follow.**
 
-| quantity | entry | measured |
+| quantity | scale | value |
 |---|---|---|
-| draw noise, relative sd | ~9% | **9.06%** — closed form √((1−p)/np) at the published pooled rate 0.0575 over 2,000 draws, not a measurement |
-| between-pair spread, IQR/median | ~42% | **43.8%** on the space, **55.1%** on the corpus |
+| draw noise, the entry's 9% | sd / mean | **9.06%** — closed form √((1−p)/np) at the pooled rate 0.0575 over 2,000 draws, not a measurement |
+| between-pair spread, **the entry's 42%** | sd / mean, as IQR/1.349 over the mean | **41.92%** on the corpus |
+| the same spread, another scale | IQR / median | **55.08%** on the corpus |
+| the space, on that second scale | IQR / median | **43.83%** |
+| the space, on the entry's scale | sd / mean | **31.49%** |
 
-The 42% is the **space** figure. The apples-to-apples comparison is the corpus
-one, since the draw noise is a corpus-side quantity, and it makes the drafter's
-point *stronger*: 9% against 55%, a ratio of six. **And weaker still than that**,
-by an argument the arithmetic misses: all 2,080 pairs are evaluated on the *same*
-2,000 tickets, so the draw is common rather than independent across pairs, and a
-common sample moves them together — which cancels further in a rank than in a
-level.
+**What the entry did not do is declare its scale — it did not cite the wrong
+surface.** Its 42% is the coefficient of variation *over the corpus*, IQR/1.349
+over the mean, and that is the same normalization as its 9%: both are a standard
+deviation over a mean, and the mean of the per-pair rates is exactly the pooled
+rate, since every pair divides by the same 2,000 cases. So the comparison it
+made was apples to apples, 9.06% against 41.92%, a ratio of 4.6.
 
-**So the reasoning is right and its conclusion is wrong**, and the entry itself
-says what that leaves: *what can lower the correlation is pairs differing from
-each other in where they disagree, and these 65 orders come from one
-neighbourhood over one training half at similar scores, which argues they do not
-differ much*. They differ much. R-a's own text calls refutation below 0.55 **the
-informative outcome** — *it would mean the pairs specialize far more than their
-common origin suggests* — and that is the outcome.
+The second row of that table is a **different scale**, 1.31× larger here — which
+is 1.349 times the set's mean over its median — and the resemblance between the
+space's 43.83% on it and the corpus's 41.92% on the entry's scale is a
+**coincidence of two scales on two surfaces**: on the entry's own scale the space
+gives 31.49%, so 42% could not have been a space figure. An earlier draft of this
+section read it as one, which was wrong and is corrected here rather than
+quietly.
+
+**The conclusion still does not follow, and the reason is mine rather than the
+entry's.** Sampling being small against between-pair spread would settle it only
+if each pair drew its own corpus. It does not: all 2,080 pairs are scored on the
+**same** 2,000 tickets, so what the corpus does to them is a single common
+re-weighting, not 2,080 independent draws. A common re-weighting moves pairs
+together — and cancels further in a rank than in a level — so the drafter's
+decomposition measures a quantity that does not enter the question it was raised
+to answer.
+
+**So the arithmetic is right, and the inference it supports is not**, and the
+entry itself says what that leaves: *what can lower the correlation is pairs
+differing from each other in where they disagree, and these 65 orders come from
+one neighbourhood over one training half at similar scores, which argues they do
+not differ much*. They differ much. R-a's own text calls refutation below 0.55
+**the informative outcome** — *it would mean the pairs specialize far more than
+their common origin suggests* — and that is the outcome.
 
 ---
 

@@ -310,16 +310,32 @@ def extremes(keys, rates, otra, nombre_otra):
 
 def draw_noise(p, n):
     """
-    Relative standard deviation of a rate estimated from `n` draws at rate `p`:
-    sqrt((1-p) / (n p)). It is closed form, not a measurement, and it is the
-    first half of the 9%-against-42% arithmetic the entry reasons from.
+    Coefficient of variation of a rate estimated from `n` draws at rate `p`:
+    sqrt((1-p) / (n p)), which is sd over mean. Closed form, not a measurement,
+    and the first half of the 9%-against-42% arithmetic the entry reasons from.
     """
     return round(((1 - p) / (n * p)) ** 0.5, 6)
 
 
-def spread(pub):
-    """Interquartile range over the median, from a published summary. The
-    second half of the same arithmetic."""
+def between_pair_cv(pub):
+    """
+    Coefficient of variation ACROSS PAIRS, on the same normalization as
+    `draw_noise`: IQR / 1.349 is the standard deviation of a normal with that
+    interquartile range, and dividing by the mean makes it sd over mean.
+
+    This is the scale the entry's 42% is on, and getting that wrong is how a
+    homogeneous comparison gets read as a heterogeneous one. Note that the mean
+    of the per-pair rates IS the pooled rate — every pair divides by the same
+    number of cases — so this denominator and `draw_noise`'s p are the same
+    quantity.
+    """
+    return round((pub["p75"] - pub["p25"]) / 1.349 / pub["mean"], 6)
+
+
+def iqr_over_median(pub):
+    """A DIFFERENT scale from the one above, and reported beside it so the two
+    are never confused: on this material it runs about 1.31x larger, which is
+    1.349 times the mean-over-median of the set."""
     return round((pub["p75"] - pub["p25"]) / pub["median"], 6)
 
 
@@ -507,18 +523,32 @@ def main(argv=None) -> int:
 
     # ------------------------------- the arithmetic the entry reasons from
     ruido = draw_noise(POOLED["corpus_full"], mats["corpus_full"]["n_surface"])
-    dispersion = {s: spread(mats[s]["published"]) for s in SURFACES}
     reparto = {
         "what": "the entry argues that which particular cases were drawn "
                 "contributes about 9% relative, against a spread between pairs "
                 "of about 42%, so idiosyncratic draw cannot be what lowers the "
-                "correlation. Both halves are checked here.",
-        "draw_noise_relative_sd": ruido,
+                "correlation. Both halves are checked here, ON THE SCALE THE "
+                "ENTRY USED.",
+        "draw_noise_cv": ruido,
         "draw_noise_is": "closed form, sqrt((1-p)/(n p)) at the published "
-                         "pooled corpus rate over 2,000 draws. Not a "
-                         "measurement.",
-        "iqr_over_median_by_surface": dispersion,
+                         "pooled corpus rate over 2,000 draws: sd over mean. "
+                         "Not a measurement.",
+        "between_pair_cv": {s: between_pair_cv(mats[s]["published"])
+                            for s in SURFACES},
+        "between_pair_iqr_over_median": {s: iqr_over_median(mats[s]["published"])
+                                         for s in SURFACES},
         "entry_says": {"draw": 0.09, "spread": 0.42},
+        "scale_note":
+            "the entry's 42% is the COEFFICIENT OF VARIATION over the CORPUS, "
+            "IQR/1.349 over the mean, which comes to 0.4192 — the same "
+            "normalization as its 9%, since both are sd over mean. So the "
+            "entry's comparison was homogeneous. What it did not do is declare "
+            "the scale, and IQR/median — a different scale, 1.31x larger here — "
+            "gives 0.5508 on the same surface. That the space's IQR/median, "
+            "0.4383, sits near the corpus's 0.4192 is a coincidence of two "
+            "different scales on two different surfaces: on the entry's own "
+            "scale the space gives 0.3149, so 42% could not have been a space "
+            "figure.",
     }
 
     print()
