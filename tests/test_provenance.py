@@ -45,6 +45,10 @@ ESCRITORES = [
     # audit — this list still under-lists the writers the README table carries —
     # it only keeps the newest one from joining the omission.
     "peldano3.order_metrics_run",
+    # The same instrument on the corpus surface, added 2026-08-15. A separate
+    # writer because it is a separate record: it must never land on
+    # order_metrics.json, which owns the space figures.
+    "peldano3.order_metrics_corpus",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
