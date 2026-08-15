@@ -386,7 +386,9 @@ everything above it is the exhaustive space, and the two are not
 interchangeable about anything. Same 577 rules, same orders, same instrument:
 the surface is the only thing that changes. Prediction: `IDEAS.md`, the entry
 *The surface question has its first measurable instance*, drafted and committed
-before any of these numbers existed (PR #18, PR #19, PR #20). Record:
+before any of these numbers existed (PR #18, PR #19, PR #20). These figures
+arrived afterwards, in **PR #21**, which is what makes the order of the two
+checkable in the log rather than asserted here. Record:
 [`order_metrics_corpus.json`](order_metrics_corpus.json). Zero API calls, 396 s.
 
 It is a separate record from [`order_metrics.json`](order_metrics.json) and a
