@@ -41,10 +41,6 @@ ESCRITORES = [
     "peldano3.order_search",
     "peldano3.budget_and_balance",
     "peldano4.sweep",
-    # Added 2026-08-15 with the module. It does not close F1 of the optimizer
-    # audit — this list still under-lists the writers the README table carries —
-    # it only keeps the newest one from joining the omission.
-    "peldano3.order_metrics_run",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
