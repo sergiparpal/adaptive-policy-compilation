@@ -371,6 +371,269 @@ what keeps this file at 840 KB instead of 11 MB.
   figures inherit a draw was already recorded; that the draw is worth ~8% of the
   space between two orders one train case apart is new, and what it does to a
   learned policy in deployment is unmeasured.
-- **The corpus surface.** Everything here is the uniform measure over 134,400
+- **The corpus surface.** Everything above is the uniform measure over 134,400
   cases. Two orders that disagree on 20% of the space need not disagree on 20%
-  of the arrival distribution, and this record does not say which.
+  of the arrival distribution, and this record did not say which.
+  **Answered on 2026-08-15 by the section below**, which is part of this same
+  record: they do not. The rate is 5.75%, and where it falls changes completely.
+
+---
+
+# The corpus surface — S-a to S-f
+
+August 15, 2026. **This part of the record owns the corpus figures**;
+everything above it is the exhaustive space, and the two are not
+interchangeable about anything. Same 577 rules, same orders, same instrument:
+the surface is the only thing that changes. Prediction: `IDEAS.md`, the entry
+*The surface question has its first measurable instance*, drafted and committed
+before any of these numbers existed (PR #18, PR #19, PR #20). Record:
+[`order_metrics_corpus.json`](order_metrics_corpus.json). Zero API calls, 396 s.
+
+It is a separate record from [`order_metrics.json`](order_metrics.json) and a
+section of the same findings, on purpose. Two records because they are two
+surfaces and a run that overwrote the first would destroy the comparison; one
+document because it is one question.
+
+**Four of the six are refuted.** That is the result, and it is published as one.
+
+---
+
+## The two surfaces, named
+
+| surface | cases | what it is |
+|---|---|---|
+| **corpus, all 2000** | 2,000 | the modelled arrival distribution, whole. What the entry means by *the corpus*, and what these predictions adjudicate on. The search saw the train half of it. |
+| **corpus test half** | 995 (split 0), 1002 (split 4) | the same distribution with the fitted half removed. Reported beside every figure below. |
+| exhaustive space | 134,400 | the uniform measure, for comparison. Owned by the first part of this record. |
+
+Every verdict below came out the same on both corpus surfaces. Where the
+numbers differ they differ in size, never in sign, and both are printed.
+
+## The gates
+
+**Parity: 31 of 31 rows exact**, the same gate as the first part and against the
+same two records — 883 / 0.8786 / 0.8472 / 0.6033 at split 0 and 65 starts,
+884 / 0.8796 / 0.8442 / 0.5776 at 257, all six budget rows, and 25 of 25 band
+cells. **No new search**: every order comes out of `run_full_supervision` and
+`run_band_1pct` of `order_metrics_run.py`, imported and called unchanged. The
+prefix shortcut is not revalidated — it was checked against an independent
+65-start run when it was introduced.
+
+**The corpus census reproduces G2 exactly**: 166,176 pairs, 51,499 co-matching,
+**33,631 conflicting** over the corpus pure pool. That is the one published
+figure that pins the *masks* rather than the orders, and the masks are what this
+run changes.
+
+**The invariants hold.** `d(a, a) = 0` on all seven set-and-surface
+combinations measured; `undecided_either` is 0 everywhere, on the corpus as on
+the space. Had any of these failed, the prediction would not have been tested at
+all.
+
+---
+
+## The predictions of `IDEAS.md`, one by one
+
+| # | verdict | measured |
+|---|---|---|
+| **S-a** | **REFUTED**, and not narrowly | Pooled over the 2,080 pairs of split 0's 65 end orders: **5.75%** of the full corpus, **6.45%** of test. Predicted band 12–20%, refutation line 10%. The same pairs pool to **20.35%** of the space. |
+| **S-b** | **REFUTED** | The same 5.75% against the 15.2% the bet named — and below the **11.67%** that the reweighting it describes actually produces. The direction is the opposite of the bet: the corpus subtracts disagreement rather than adding it. |
+| **S-c** | **REFUTED** | Of the six classes with ≥100 corpus cases, **four** fall outside ±30% relative: `T2_TECHNICAL` **−81.6%**, `BILLING_SPECIALIST` **+165.2%**, `T3_ENGINEERING` −42.7%, `ACCOUNT_MANAGER` −42.0%. Inside: `T1_GENERAL` −29.9% and `SELF_SERVICE_DEFLECT` +10.3%. |
+| **S-d** | **REFUTED**, narrowly, and in exactly the way S-c predicts | `SECURITY_INCIDENT`'s share of the total disagreement falls from **57.5% to 4.57%** (5.06% on test) against a line of *under 3%*. Pure reweighting predicts **2.67%**, which is where the 3% came from. |
+| **S-e** | **HOLDS**, both clauses | Of the 32,896 pairs of the 257-start set, **zero** sit at distance 0 on the corpus — so none can sit at 0 here and above 0 on the space. The pairwise minimum falls from **2,615 cases (1.9%)** to **2 of 2000 (0.10%)**, and to 1 of 995 on test. |
+| **S-f** | **HOLDS** | The 40 orders tying at the best train score at 1% disagree a median **24.05%** of the full corpus (481 cases) and **24.32%** of test (242 cases), against a 20% line and a 10% refutation. |
+
+### S-a and S-b: the collapse, and the mechanism that is not the reason for it
+
+The headline is one number: **20.35% of the space, 5.75% of the corpus**, the
+same 2,080 pairs of the same 65 orders. A factor of 3.5. The per-pair median
+moves with it, 19.72% to 5.90%, so this is not one outlier pair dragging a pooled
+figure.
+
+**S-b argued from a premise, and the premise is true.** It reasoned that the 577
+rules were written looking at the corpus, so the typical arriving case carries
+more rules and more competing pairs than the typical point of the space. Measured
+on the same masks:
+
+| surface | rules matching the average case | conflicting pairs live on it |
+|---|---|---|
+| exhaustive space | 37.82 | 416.50 |
+| corpus, all 2000 | **50.25** | **724.43** |
+| corpus test, split 0 | 49.94 | 702.63 |
+
+The average arriving case carries **33% more rules** and **74% more contested
+pairs** than the average point of the space — and disagreement is **3.5 times
+lower** there. So the collapse is not scarcity of material to disagree over. That
+is the informative half of this refutation: *more competition, less
+disagreement*, and the two quantities do not move together at all.
+
+**How much of it is fitting: about a tenth.** Train and test partition the 2000
+cases, so the two pooled rates this record publishes fix the third by arithmetic
+rather than by a new measurement: 5.75% over 2000 and 6.45% over the 995 test
+cases put the 1005 fitted ones at **5.06%**. The orders do agree more where the
+objective looked — by 1.39 points — but the surface effect is 13.9 points, so
+fitting accounts for roughly **10%** of the gap and the change of surface for
+the rest.
+
+**Why the other 90%, this record does not say.** It bounds it from two sides —
+not scarcity, not mainly fitting — and stops there. Anything further would be an
+explanation invented after the fact for a number already in hand, which is what
+§0 of the plan exists to prevent.
+
+**One yardstick does not reconstruct, and it is reported rather than repaired.**
+S-b's 15.2% is described as *reweighting the space's per-class rates by the
+arrival distribution*. Done with the rates this record publishes and the corpus
+class sizes, that sum is **11.67%**, not 15.2%, and no other reading tried gets
+there — the tied set at 1% gives 28.03%, the Q-a pair 4.29%. Where the number
+came from is unknown. It changes no verdict: 5.75% is below both. The line
+adjudicated against is the one the prediction wrote, 15.2%, because moving a
+threshold to a reconstruction after seeing the measurement is the failure this
+project studies, and it would not have helped here anyway.
+
+### S-c and S-d: where the disagreement falls, which was the actual question
+
+The entry asked it plainly — the material to disagree over is nearly the same on
+either surface, *what is unknown is where it falls*. It falls somewhere else.
+
+| class | corpus n | corpus rate | ×overall | space rate | rel. change | share of corpus disagreement | share of space disagreement |
+|---|---|---|---|---|---|---|---|
+| `SELF_SERVICE_DEFLECT` | 495 | 0.1040 | 1.81 | 0.0943 | +10.3% | **44.8%** | 1.5% |
+| `T2_TECHNICAL` | 726 | 0.0362 | 0.63 | 0.1969 | **−81.6%** | 22.9% | 26.4% |
+| `BILLING_SPECIALIST` | 271 | 0.0401 | 0.70 | 0.0151 | **+165.2%** | 9.5% | 0.4% |
+| `T1_GENERAL` | 255 | 0.0298 | 0.52 | 0.0426 | −29.9% | 6.6% | 0.8% |
+| `T3_ENGINEERING` | 117 | 0.0542 | 0.94 | 0.0947 | −42.7% | 5.5% | 2.8% |
+| `ACCOUNT_MANAGER` | 109 | 0.0531 | 0.92 | 0.0916 | −42.0% | 5.0% | 5.5% |
+| `SECURITY_INCIDENT` | 20 | 0.2626 | **4.57** | 0.3121 | −15.9% | 4.6% | **57.5%** |
+| `ONCALL_ESCALATION` | 7 | 0.1910 | **3.32** | 0.2178 | −12.3% | 1.2% | 5.0% |
+
+Read the last two columns first. On the uniform space, **57.5% of everything two
+end orders disagree about is `SECURITY_INCIDENT`** — a class that is 37.5% of
+the space and 1% of arrivals. On the corpus that share is **4.6%**, and the
+disagreement is concentrated instead on `SELF_SERVICE_DEFLECT`, 24.75% of
+arrivals and 3.2% of the space. The reading of `FINDINGS_ORDERS`' Q-f — *the
+orders fight where the proposer wrote most* — is a fact about the uniform
+measure and does not survive to the arrival distribution.
+
+**S-c is the larger finding its own refutation clause anticipated.** It predicted
+per-class rates would carry across, and said that failing would mean the mix of
+cases *within* a class governs too. It fails, and by a lot: the same class,
+`T2_TECHNICAL`, disagrees on 19.69% of its space cases and 3.62% of its corpus
+cases — and it is the largest class on both surfaces, so this is not a small-sample
+effect. `BILLING_SPECIALIST` moves the other way, ×2.65. Two orders differ not on
+*a class* but on a region, and which part of a class the surface samples decides
+whether that region is in it.
+
+**S-d then follows arithmetically, and it is worth seeing why it missed.**
+`SECURITY_INCIDENT`'s own rate carries across almost intact, −15.9%, which is
+*inside* S-c's ±30% band. What does not carry is the denominator: the overall
+rate collapsed by 3.5×, so a class whose rate barely moved keeps a larger share
+than reweighting predicts — 4.57% measured against 2.67% modelled. The direction
+of S-d was right and the magnitude was off by 70% relative, and the reason is
+precisely the classes S-c caught.
+
+**The deployment reading, which is not the same as the aggregate.** Two end
+orders differ on 5.75% of arrivals, and 45% of that lands on the deflection
+queue. But per case of the class, `SECURITY_INCIDENT` runs at **4.57×** the
+overall rate and `ONCALL_ESCALATION` at **3.32×** — the two classes rung 1
+resolved 0 of 17 and 0 of 7 times. Rare in traffic and disproportionately exposed
+to which of 65 orders shipped: a small share of a small number, and the wrong
+place for either.
+
+### S-e and S-f: what the change of surface does not touch
+
+**S-e holds, and by a factor of ten on its second clause.** No pair of the 32,896
+is behaviourally identical on the corpus — not one — so the case the prediction
+called *the large finding here*, two orders distinguishable in principle and
+identical wherever cases actually arrive, does not occur at this scale. The
+closest pair differs on **2 cases of 2000**; on the space the closest differ on
+2,615 of 134,400. Predicted *under 1%*, measured 0.10%.
+
+**And G3 and G4 carry across untouched.** 257 distinct behavioural signatures
+from 257 end orders, on both corpus surfaces and both splits; 65 of 65; 40 of 40
+for the tied set. Zero pairs anywhere at behavioural distance 0 with positional
+distance above 0. The multi-start still produces a different machine every time,
+and the freedom per pair still does not compose. What changed is the size of the
+difference, not its existence.
+
+**S-f holds, and the low-budget caveat survives the surface.** At 10 labels the
+40 tied orders disagree a median 39.2% of the space and **24.05% of the corpus**
+— a fall of 1.6×, against 3.5× at full supervision. The whole 1% band behaves the
+same way: across the 25 cells the corpus median runs 22.1% to 35.8% against the
+space's 30.4% to 44.9%, and the cell S-f names is not the extreme of either.
+So *the search is choosing arbitrarily among very different answers* remains true
+of what a deployed system would meet, and the caveat that section leaves on
+`FINDINGS_AUDIT`'s step 3 does not need weakening.
+
+**That contrast is the shape of the whole result.** Where supervision is full the
+change of surface divides the disagreement by 3.5; where the objective saturates
+at 1% it divides it by 1.6. The better the orders are fitted, the more the
+surface flatters them.
+
+---
+
+## What this changes in the first part of this record
+
+**The headline draw, translated.** `STATUS.md` and the section above quote 11,240
+cases — 8.36% of the space — between the winner at 65 starts and the winner at
+257, one train case apart. On the corpus that same pair differs on **33 of 2000
+cases, 1.65%**, and on 22 of 995 test cases, 2.21%. Split 4, three train cases
+apart: 14,430 (10.74%) becomes **50 of 2000, 2.50%**, and 33 of 1002, 3.29%.
+
+**Nothing above is withdrawn.** Every space figure is what it always was, and it
+was always labelled as the uniform measure. What the corpus adds is that a reader
+who took 8.36% as *what shipping the other order would cost* was reading the
+wrong surface by a factor of five.
+
+**Explainability diverges more, not less.** On the Q-a pair the two orders agree
+on 1,967 corpus cases and fire the same rule on 677 of them: **65.6% of their
+agreements are agreements for different reasons**, against 47.8% on the space.
+The gap between behaviour and attribution is wider where the cases actually
+arrive.
+
+---
+
+## The register, second part
+
+| id | finding | status |
+|---|---|---|
+| **S-a** | The disagreement of the 65-start set, on the corpus, between 12% and 20%. | **REFUTED**: 5.75% pooled, below the 10% refutation line. |
+| **S-b** | That rate above the 15.2% of a pure reweighting. | **REFUTED**: 5.75%, below the 15.2% written and below the 11.67% reconstructed. Its stated mechanism is confirmed and does not produce the effect. |
+| **S-c** | Per-class rates preserved to ±30% relative. | **REFUTED**: 4 of 6 eligible classes outside, from −81.6% to +165.2%. |
+| **S-d** | `SECURITY_INCIDENT`'s share of the disagreement under 3%. | **REFUTED**: 4.57%, against 2.67% modelled and 57.5% on the space. |
+| **S-e** | No pair identical on the corpus and different on the space; pairwise minimum under 1%. | **HOLDS**: zero such pairs, minimum 0.10%. |
+| **S-f** | The tied set at 1% still above 20% on the corpus. | **HOLDS**: median 24.05% full corpus, 24.32% test. |
+| **S-g** | *(not predicted)* Whether the distinctness findings survive the surface. | **THEY DO**: 257 of 257, 65 of 65, 40 of 40 distinct machines; zero identical-behaviour pairs. |
+
+---
+
+## Provenance of the corpus part
+
+**Cost: 396 s in one process, zero API calls** — against the *seven or eight
+minutes* the entry estimated. Regeneration is 342 s of it (137.5 s and 118.2 s
+for the two 257-start searches, 86.5 s for the whole 1% band), and the measuring
+51 s: five 32,896-pair matrices on three surfaces, the tied set, the whole band
+on the corpus, and the two censuses. It is cheap for the reason the entry gave —
+2,000-bit masks instead of 134,400 — and because no Kendall tau is computed, tau
+having been the 260 s that dominated the first part.
+
+**`code_dirty: true` at commit `a7e2d2a6`, for the same reason as the first
+part**: the runner that produced this record, `peldano3/order_metrics_corpus.py`,
+was untracked when it ran. What identifies the code is `code_digest
+99184aa53d866fac`; what identifies the **orders** is neither, it is the parity
+gate, and the parity gate is exact on all 31 rows.
+
+---
+
+## What the corpus part does not settle
+
+- **Why 3.5×.** Not scarcity of contested material — the corpus carries 74% more
+  live conflicting pairs per case — and only about a tenth of it is fitting.
+  What accounts for the rest is unmeasured, and this record declines to invent
+  it after the fact.
+- **Whether "corpus" means deployment.** It is a modelled arrival distribution
+  with a seed, not observed traffic. Everything here says the two surfaces
+  disagree; nothing here says the corpus is the right one.
+- **Where S-b's 15.2% came from.** Nothing in this run reconstructs it, and the
+  prediction is not edited to match what does.
+- **The other three splits at full supervision.** Splits 0 and 4 are measured
+  because they are the two `start_budget_check` saw the train score move on.
+  Whether the 3.5× is stable across the other three is not known.

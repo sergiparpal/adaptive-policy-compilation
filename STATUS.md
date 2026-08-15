@@ -32,6 +32,13 @@ space answers *is this order the policy*, and weights regions the system will
 almost never see. Neither is *the* bound. Rungs 1 to 4 published corpus figures
 without saying so; everything below is labelled.
 
+**The sharpest instance measured, 2026-08-15**: two end orders of the same search
+disagree on 20.35% of the space and 5.75% of the corpus, and the class carrying
+most of that disagreement is not the same class on the two surfaces — 57.5% of it
+against 4.6%. Per-class rates do not transfer either, so a figure on one surface
+cannot be reweighted into a figure on the other. Name the surface
+([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part two).
+
 **Every finding came from a check costing cents or nothing**, never from the
 expensive run. Three failures were caught by a blocking free check, each of which
 changed a conclusion:
@@ -135,6 +142,24 @@ restricted is evidence for it. Disagreement concentrates on the **most abundant*
 class, `SECURITY_INCIDENT` at 1.53× the overall rate, and is *below* average on
 the two scarce ones, where most cases have no correct rule to compete over.
 
+**And on the arrival distribution the same draw costs a fifth of that.** The same
+orders and the same instrument, measured over the **corpus** — parity exact on
+the same 31 rows ([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md),
+part two; [`order_metrics_corpus.json`](results3/order_metrics_corpus.json)). The
+2,080 pairs of split 0's 65 end orders pool to **5.75% of the 2000 corpus cases**
+against 20.35% of the space, and the winner at 65 against the winner at 257
+differs on **33 of 2000 cases, 1.65%**, against 11,240 of 134,400. On the corpus
+test half alone, 6.45% and 2.21%. **Where the disagreement falls changes
+completely**: `SECURITY_INCIDENT` carries 57.5% of it on the space and **4.6%**
+on the corpus, where `SELF_SERVICE_DEFLECT` carries 44.8% — although per case of
+its own class `SECURITY_INCIDENT` still runs at **4.57×** the overall corpus rate
+and `ONCALL_ESCALATION` at 3.32×. Per-class rates do **not** transfer between the
+two surfaces (`T2_TECHNICAL` −81.6%, `BILLING_SPECIALIST` +165.2%), so no
+reweighting turns one into the other. What does not change: **all 257 end orders
+are still 257 distinct machines on the corpus**, the closest pair differing on 2
+cases of 2000 — and not for lack of material, since the average arriving case
+carries 74% more live conflicting pairs than the average point of the space.
+
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
 0.8530 with the same optimizer at the same budget, and to every rung 4 figure
@@ -184,7 +209,10 @@ choosing arbitrarily among very different answers and landing on a sane default
 by accident of the start order. The figures stand — they are what the declared
 instrument returns — but anyone who changes the tie-break or the order of the
 declared starts changes which of the 40 ships
-([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md)).
+([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md)). **This one
+survives the change of surface**: on the corpus those 40 machines still disagree
+a median **24.05%** of the 2000 cases, 24.32% of corpus test, against 39.2% of
+the space — a fall of 1.6× where full supervision falls by 3.5×.
 
 **Protecting the rare classes costs a quarter of what it looked like.** Balancing
 the objective costs the greedy 0.0563 in e2e and buys +0.1735 in balanced
