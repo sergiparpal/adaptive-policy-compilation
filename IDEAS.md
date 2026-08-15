@@ -338,6 +338,111 @@ none of them developed and in no order of precedence.
   the rate collapses by 3.5× when the contested material grows by 74%: about a
   tenth of it is fitting, and the rest is unexplained and deliberately left so.
 
+  - **Whether the space can RANK two orders when it cannot rate them.** Opened
+  2026-08-15, after the corpus surface entry above closed. That entry settled two
+  things and left this one untouched. The **level** does not transfer: 5.75% over
+  the corpus against 20.35% over the space, and not the 11.67% that reweighting
+  the per-class rates predicts either. And **where** disagreement falls does not
+  transfer: S-c refuted, SECURITY_INCIDENT going from 57.5% of the total to 4.6%
+  while SELF_SERVICE_DEFLECT goes from 1.5% to 44.8%.
+  Neither says whether the **ordering** of pairs survives, and it is not implied
+  by either. A rank is invariant to any monotone transformation, so a level that
+  falls by 3.5× is perfectly compatible with an ordering preserved exactly, and
+  a per-class composition that moves is compatible with both — what it would take
+  to scramble the ordering is for pairs to differ from **each other** in where
+  they disagree, which is a different quantity from any measured so far.
+  **What turns on it.** `results3/order_metrics.json` is cited to say that one
+  pair of orders is further apart than another: Q-a's 11,240 cases between the
+  winner at 65 starts and the winner at 257, the factor of 21 between the closest
+  and furthest pair. If rank transfers, that use survives the change of surface
+  and only the level was wrong. If it does not, the space record cannot even
+  **order** two orders for deployment, which is strictly worse than a level shift
+  and is the strong form of the reservation
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) leaves open under
+  *what this does not settle*.
+  **It is a join of two published records, not a run.**
+  `order_metrics.json::pairs_split0_starts65` and
+  `order_metrics_corpus.json::pairs_split0_starts65_corpus_full` and
+  `_corpus_test` hold 2,080 rows each, keyed by the same `i`/`j` over the same 65
+  end orders. No search, no regeneration, no new instrument, seconds. The
+  257-start matrices are summarized on both sides and would cost a regeneration;
+  they are an addition here and adjudicate nothing.
+
+  **PREDICTION — 2026-08-15, written before the join.** Drafted by Claude; Sergi
+  signs it as it stands; committed before any of the figures it names exists.
+  §6 of `PLAN_ORDER_METRICS.md` bans figures from this file beyond a pointer, and
+  a prediction is the exception that justifies itself, as in the entry above.
+
+    **What the drafter had already seen, declared so that the signature is
+    auditable.** All of S-a…S-f and their verdicts. The two marginal
+    distributions of the very set being predicted, both published: over the
+    space, rates from 0.0359 to 0.4112, median 0.1972; over the corpus, 0.0085 to
+    0.1255, median 0.0590. Their quantile-by-quantile ratios, computed while
+    drafting and therefore declared here: 0.237 at the minimum, 0.255 at p25,
+    0.299 at the median, 0.297 at p75, 0.305 at the maximum — near-proportional
+    marginals, which raised the drafter's estimate for R-a and settle nothing,
+    since a Q–Q relation is between distributions and says nothing about which
+    pair sits where. And one extreme point from the corpus side: end orders 47
+    and 87, 2 cases of 2,000 apart on the corpus and 6,180 (4.60%) apart on the
+    space, while the minimum over that set's 32,896 pairs is 2,615. **That pair
+    is not in the set being predicted** — index 87 falls outside the 65-start
+    prefix — so it constrains the intuition and not the answer.
+
+    Two structural facts about the matrices, checked while drafting: the `(i, j)`
+    key sets are identical across the three, and the rates take 1,834 distinct
+    values over the space against 207 over the corpus. The tie load was checked
+    for whether it caps R-a and it does not — groups average ten over 2,080, an
+    attenuation of order 1e-5 — so it constrains the procedure, not the band.
+
+  - **R-a** — **The headline.** Spearman between the corpus-full rate and the
+    space rate, over the 2,080 pairs of `split0_starts65`, lands **between 0.70
+    and 0.93**. *Refuted* below 0.55 or above 0.97, and the upper clause will
+    rarely fire alone: if R-c is refuted, this one follows it.
+    The reason the band sits high. Corpus distance is not a second measurement of
+    the same pair, it is an importance-weighted sub-sample of the first: each of
+    the 2,000 tickets lands on exactly one of the 134,400 points, so corpus
+    disagreement counts the draws that land where the two orders differ. Which
+    particular cases were drawn contributes about 9% relative — binomial at a
+    rate of 0.0575 over 2,000 — against a spread between pairs of about 42%, read
+    off the published IQR of the very set being predicted. Idiosyncratic draw
+    cannot be what lowers the correlation. What can is pairs differing from each
+    other in *where* they disagree, and these 65 orders come from one
+    neighbourhood over one training half at similar scores, which argues they do
+    not differ much. **Refutation below 0.55 is therefore the informative
+    outcome**: it would mean the pairs specialize far more than their common
+    origin suggests.
+  - **R-b** — *Where it bites.* Of the 208 pairs closest on the space, **between
+    35% and 70%** are among the 208 closest on the corpus. *Refuted* below 20% or
+    above 80%. This is the deployment-relevant form: a global correlation can be
+    respectable while the extremes — the pairs a reader would call
+    interchangeable — swap wholesale.
+  - **R-c** — *Calibration.* The per-pair ratio corpus/space is **not a common
+    factor**: its p75 over its p25 exceeds **1.30**. *Refuted* below 1.15, and
+    then the change of surface is one multiplication for every pair alike. Note
+    what that would and would not mean: a single scalar of roughly 0.29 is **not**
+    the class-reweighting model, which predicts 0.573. It would say a constant
+    exists and no per-class account currently produces it, which is a new
+    question and not a reprieve for the route S-b's 15.2% named.
+  - **R-d** — *Reported, not adjudicated.* Which pair attains the space minimum
+    inside this set and where it ranks on the corpus, and the converse for the
+    corpus minimum. It is one draw of 2,080 either way; a threshold on a single
+    argmin would not be a bet, and the question that opened this entry is
+    answered here as an anecdote beside R-a rather than as its substitute.
+
+  **Not predictions, invariants** — if these fail nothing above was tested: the
+  same 2,080 pairs on both sides, matched by `(i, j)` and not by position; both
+  matrices read from the published records with **no regeneration and no search**;
+  and the gate, which is this question's parity gate — recomputing each record's
+  own published summary quantiles for that set from its stored matrix must
+  reproduce them exactly before anything below is believed, since that is what
+  makes the join about the right rows.
+
+  **One condition for whoever runs it.** `corpus_full` adjudicates and
+  `corpus_test` is reported beside it, matching the convention the entry above
+  fixed. Test is the honest surface for anything about generalization and the
+  wrong one here: it is 995 cases, half the resolution, and rank noise rises as
+  the surface shrinks.
+
 ---
 
 ## What rung 2 opens and does not resolve
