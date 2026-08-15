@@ -170,6 +170,14 @@ none of them developed and in no order of precedence.
   — is still open: they concentrate on the **most abundant** class, not on the
   scarce ones the entry guessed, and nothing here measures the arrival
   distribution.
+  One thing to read carefully before anyone cites "they are all distinct" as
+  ruggedness: the freedom the plan identified is **per pair and does not
+  compose**. Two rules whose relative order cannot change a decision can be
+  swapped freely, but two orders produced by separate searches almost surely
+  invert at least one pair that *can* change a decision, and one is enough to
+  make them different machines. All-distinct is therefore what that arithmetic
+  predicts on its own; the informative quantity is how far apart they are, and
+  that is what the record measures.
 
 ---
 

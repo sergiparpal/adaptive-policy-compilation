@@ -128,9 +128,12 @@ behavioural signatures**, and so are all 257: no two of them are the same
 machine. Positional churn says nothing — a median 99.65% of the rules sit at a
 different index between any two of them — and **Kendall tau says nothing
 either**, over all pairs or restricted to the 35,457 that can change a decision
-(|ρ| ≈ 0.13 both ways), which refuted the instrument's own design premise.
-Disagreement concentrates on the **most abundant** class, `SECURITY_INCIDENT` at
-1.53× the overall rate, and is *below* average on the two scarce ones.
+(|ρ| ≈ 0.13 both ways). What that kills is the cheap shortcut — a rank statistic
+standing in for the exact comparison — and not the premise of the instrument,
+which is that decisions are what have to be compared: rank failing even when
+restricted is evidence for it. Disagreement concentrates on the **most abundant**
+class, `SECURITY_INCIDENT` at 1.53× the overall rate, and is *below* average on
+the two scarce ones, where most cases have no correct rule to compete over.
 
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the

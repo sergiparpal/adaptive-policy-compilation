@@ -6,7 +6,8 @@ about a search, and this is about what the search returns. Plan:
 [`PLAN_ORDER_METRICS.md`](../PLAN_ORDER_METRICS.md), §0 drafted and committed
 before any number existed and signed unchanged. Record:
 [`order_metrics.json`](order_metrics.json). The instrument and its step 0
-arrived in PR #13; the regeneration and these figures in PR #15. Zero API calls.
+arrived in PR #13; the regeneration and these figures in PR #17, PR #15 having
+landed them once and PR #16 having reverted that whole. Zero API calls.
 
 **Surface.** Every distance, signature and per-class rate here is over the
 **exhaustive space** of 134,400 cases, **pure pool**. The `train`, `test` and
@@ -95,25 +96,65 @@ exists for toys and truncated orders.
 | **Q-a** | **HOLDS** | Split 0, winner at 65 starts against winner at 257: **11,240** cases of the space decided differently (8.36%), against a predicted floor of 6,910 and an arithmetic floor of 3,455. Split 4: **14,430** (10.74%). |
 | **Q-b** | **HOLDS, and by a wide margin** | At 1% (split 0, draw 0), the **40** orders tying at the best train score — 780 pairs — have a median pairwise disagreement of **52,744 cases, 39.2%** of the space, against a predicted 20% and a refutation line at 5%. Range 18,250 to 86,110. |
 | **Q-c** | **HOLDS** | The 65 end orders at full supervision are **65 distinct behavioural signatures**, and so are all 257. Best against runner-up: **15,955** cases (11.87%) while **2 train cases** apart. |
-| **Q-d** | **REFUTED** | Over the 32,896 pairs of split 0: Spearman of global tau against distance **−0.1361**, of tau restricted to the 35,457 conflicting pairs **−0.1349**. The restricted metric does **not** beat the global one, which is the refutation verbatim. Split 4 says the same: −0.078 against −0.062. |
+| **Q-d** | **REFUTED — but only its second half; the first is confirmed** | Over the 32,896 pairs of split 0: global tau against behavioural distance, Spearman **−0.1361**, so |ρ| **< 0.5** and the first clause — *a rank statistic over all pairs tracks behaviour poorly* — is **CONFIRMED**. Restricted to the 35,457 conflicting pairs: **−0.1349**, nowhere near the > 0.8 predicted and **not better than the global one**, which is the refutation verbatim. Split 4 the same: −0.078 against −0.062. |
 | **Q-e** | **HOLDS** | Median churn **99.65%** of rules at a different index; median disagreement **19.99%**. **30,775 of 32,896 pairs (93.6%)** move more than 60% of the rules while disagreeing on less than 30% of the space. |
 | **Q-f** | **REFUTED, and in the opposite direction** | Pooled over the 2,080 pairs of split 0's 65 end orders, overall rate **0.2035**; **ACCOUNT_MANAGER 0.0916 (0.45×)** and **T3_ENGINEERING 0.0947 (0.47×)**, both *below* the overall rate, which is the stated refutation. Disagreement concentrates instead on **SECURITY_INCIDENT, 0.3121 (1.53×)**. |
 
 ### Q-d, and what exactly is refuted
 
-The design premise — that a rank statistic can be repaired by restricting it to
-the pairs that can matter — is wrong on this instance. It is not that the
-restricted tau is bad and the global one good: **both are near zero**, and both
-correlate with behaviour at |ρ| ≈ 0.13.
+**The two halves came out differently and must be read separately.** Q-d
+predicted that a rank statistic over all pairs would track behaviour poorly, and
+that restricting it to the pairs that can change a decision would rescue it.
+The first half is **confirmed** — |ρ| = 0.1361, well under the 0.5 it named. The
+second is **refuted**: the restricted statistic reaches 0.1349, not the 0.8 it
+needed, and does not beat the metric it was supposed to rescue.
 
-The mechanism is visible in the record. Across the 32,896 pairs the median
-global tau is **0.0339** and the median restricted tau **0.0423**: these end
-orders are mutually rank-uncorrelated, essentially random permutations of one
-another, while their behavioural distances spread from 4,830 to 55,269 cases. A
-statistic with no variance cannot track a quantity with plenty, and restricting
-it to a fifth of the pairs does not create any. Added to that, PR #13's finding
-that conflicting pairs can be inert means the restriction does not even isolate
-the pairs that actually decided anything **in these orders**.
+**§0 wrote that this refutation would mean "the design premise of this
+instrument is wrong". That inference is mistaken, and this record says so
+instead of inheriting it.** The premise of the instrument is that two orders
+must be compared by the decisions they produce rather than by the ranks they
+assign — which is why `behavioural_distance` exists at all and is computed
+exactly, one bitmask sweep per order. A rank statistic failing to track
+behaviour *even after it is given only the pairs that can matter* is evidence
+**for** that premise, not against it. What the refutation kills is the cheap
+shortcut §0 hoped for beside it: that a corrected tau could stand in for the
+exact comparison when the exact comparison was inconvenient. It cannot — and at
+0.15 ms per decision vector it never needed to.
+
+**Which of the two failure modes it is: dispersed, not degenerate.** An earlier
+draft of this section said a statistic with no variance cannot track one with
+plenty. That explanation is wrong — Spearman is a rank correlation and needs no
+spread of magnitude — and the measurement says the opposite of it. Over the
+32,896 pairs of split 0:
+
+| | distinct values | modal value | p25 | median | p75 | IQR | range |
+|---|---|---|---|---|---|---|---|
+| tau, all pairs | **9,772** | 16 pairs (0.05%) | 0.0147 | 0.0339 | 0.0530 | **0.0383** | −0.0821 … 0.1475 |
+| tau, conflicting pairs | **3,456** | 34 pairs (0.10%) | 0.0177 | 0.0423 | 0.0670 | **0.0492** | −0.0980 … 0.1915 |
+| behavioural distance | — | — | 21,940 | 26,860 | 32,630 | **10,690** | 2,615 … 56,565 |
+
+There are no ties to speak of: no tau value covers more than a tenth of a
+percent of the pairs, and both statistics spread across a quarter of their
+theoretical range. **Both quantities vary; they simply do not vary together.**
+That is a different and stronger finding than degeneracy would have been — a
+degenerate statistic could be fixed by a finer one, and this cannot.
+
+Two things do follow. The restriction **coarsens the resolution**: computed over
+a fifth as many pairs, the restricted tau takes 3,456 distinct values where the
+global one takes 9,772 — a wider spread in coarser steps, which is not what a
+rescue looks like. And PR #13's finding that conflicting pairs can be inert
+applies here with force: the restriction does not even isolate the pairs that
+decided anything **in these particular orders**, only those that could decide
+something in some order.
+
+*Where those figures come from.* Every quantile in the table is already in
+[`order_metrics.json`](order_metrics.json) under `sets.split0_starts257`. Only
+the distinct-value counts and the modal frequencies were added afterwards, by
+regenerating split 0 down the same deterministic path and tallying the two tau
+columns over all 32,896 pairs; that re-run returns **the same winner at 65 and
+the same winner at 257 that the record stores**, rule for rule, and reproduces
+both Spearman figures to the digit, which is how the tally is known to be about
+these pairs and not about a second sample.
 
 **Q-d was measured exactly as written**, with the same 35,457-pair set §0
 declared, after that weakness was already on the record. Re-specifying it to,
@@ -128,13 +169,27 @@ statistic tracks behaviour here at all.
 Measured, it concentrates where material is **abundant and contested**.
 
 The mechanism is the same arithmetic as G2, read per class. Two orders can only
-disagree on a case that two rules with different actions both match; where two
-thirds of a class has no correct rule at all (`FINDINGS3.md` §2:
-`ACCOUNT_MANAGER` 64.2%, `T3_ENGINEERING` 66.7%), there is little competition
-over those cases and therefore little to disagree about — the orders are
-uniformly wrong there rather than differently wrong. `SECURITY_INCIDENT`, the
-largest class on the uniform surface with 50,400 of 134,400 cases, is where the
-proposer wrote most and where the orders fight.
+disagree on a case that two rules with different actions both match; where most
+of a class has no correct rule at all there is nothing to compete over, so the
+orders are uniformly wrong there rather than differently wrong.
+`SECURITY_INCIDENT`, the largest class on the uniform surface with 50,400 of
+134,400 cases, is where the proposer wrote most and where the orders fight.
+
+**That mechanism has a second source, measured by another route and published
+before this work.** The per-class ceilings of
+[`budget_and_balance_ls.json`](budget_and_balance_ls.json)`::per_class_split0`
+count, case by case on **corpus test**, how many cases of each class any rule
+could get right: **ACCOUNT_MANAGER 21 of 55** and **T3_ENGINEERING 20 of 57** —
+61.8% and 64.9% with no correct rule covering them, against 0% for five of the
+remaining six classes. `FINDINGS3.md` §2 reaches 64.2% and 66.7% for the same
+two classes on the whole corpus. So the material gap this explanation rests on
+is not inferred from the disagreement rates it explains: it was counted
+independently, on a different surface, by a script that knows nothing about
+orders.
+
+The two surfaces agree on which classes are starved and are not interchangeable
+about anything else: the ceilings are corpus test, the disagreement rates are
+the uniform space.
 
 On the single pair Q-a names, ACCOUNT_MANAGER does reach 1.64× the overall rate
 — but T3_ENGINEERING is at 0.35×, so even the reading most favourable to the
@@ -151,15 +206,24 @@ that whole 1% cell. Not one behavioural collision anywhere. The multi-start does
 not converge on a few machines that its score cannot tell apart; it produces a
 different machine every time.
 
-**G4 — and no free lunch either, on the real instance.** Zero pairs, in any set,
-sit at behavioural distance 0 with a positive positional distance. The property
-that motivated the whole instrument — two orders differing only in
-non-conflicting pairs are the same machine — is real, pinned on toys and on the
-29 hidden rules, and **has no instance among these end orders**. Four fifths of
-each permutation is free, and no two of these orders differ only in the free
-part. This is a negative result and it sharpens Q-e rather than softening it:
-churn wildly overstates difference, but it never overstates it to the point of
-zero.
+**G4 — the freedom is per pair, and it does not compose.** Zero pairs, in any
+set, sit at behavioural distance 0 with a positive positional distance. That is
+not the property of §0 failing; it is the property being stated precisely.
+
+Each of the 130,719 non-conflicting pairs can be inverted on its own without
+changing a decision, and that is exactly what P2 pins on a toy and P3 recovers
+over the 29 hidden rules. What does **not** follow is that two orders drawn
+independently will differ *only* in free pairs. There are 35,457 conflicting
+pairs; two permutations produced by separate searches will almost surely invert
+at least one of them, and inverting one is enough to make them different
+machines. So both statements are true at once, and neither weakens the other:
+**four fifths of any single permutation is free, and no two of these 257 end
+orders are behaviourally identical.**
+
+That composition failure is also why G3 comes out the way it does. All 257
+signatures being distinct is not evidence of a rugged landscape by itself — it
+is what a per-pair freedom that does not compose predicts, and the interesting
+figure is not *that* they differ but *by how much*, which is Q-a, Q-b and Q-e.
 
 **G5 — the greedy's end order sits inside the cloud.** Distances from the end
 order of start 0, which is the record's greedy, to the other 64 at split 0:
@@ -215,7 +279,7 @@ in either direction.
 | **G1** | No record in `results*/` holds an order from the audited optimizer; the only stored order is the superseded rung-3 greedy in `order_search.json`. | **CONFIRMED**, by scanning every JSON in `results*/`. Worth changing for future runs: `multistart(keep_orders=True)` now exists and costs nothing when unused, so a run that wants its orders on the record can have them. Reported, not retrofitted — no published record is rewritten. |
 | **G2** | Of 166,176 pairs, 53,620 co-match and 35,457 conflict on the space. | **REPRODUCED** digit for digit, and extended to the other three surface/pool combinations above. |
 | **G3** | Whether the 65 end orders cluster into few behavioural classes or are all distinct. | **ALL DISTINCT**, in every set measured, up to 257 of 257. |
-| **G4** | Any pair with behavioural distance 0 and positional distance > 0. | **NONE**, in any set. The property holds on toys and on the hidden policy and has no instance here. |
+| **G4** | Any pair with behavioural distance 0 and positional distance > 0. | **NONE**, in any set — and that is a refinement of §0's freedom, not a failure of it. The freedom is per pair and does not compose: with 35,457 conflicting pairs, two independently produced orders almost surely invert at least one, and one is enough. Both hold at once, which is also why G3 reads as it does. |
 | **G5** | Where the greedy start's end order sits relative to the random starts'. | **INSIDE THE CLOUD**, marginally more typical than average, on both splits. |
 | **G6** | Anything the parity gate turns up. | **NOTHING**: 31 of 31 rows exact, and the prefix shortcut reproduces an independent run rule for rule. The one thing it does turn up is a provenance note, below. |
 
@@ -240,14 +304,27 @@ distances (32,896 of them cost 3 s) and wrong about Kendall tau: the restricted
 tau costs 4 ms a pair, and it alone is 260 s of this run. One decision vector
 over the space costs 0.15 ms, not the 0.6 ms probed.
 
+**What the 840 KB of the record are.** Two stored matrices and nothing else of
+consequence: the 2,080 pairs of split 0's 65 end orders take **477 KB (56.9%)**
+and the 780 pairs of the tied set at 1% take **179 KB (21.3%)** — 78% between
+them, at ten fields a pair. The five orders the findings cite are 37 KB (4.4%)
+and the per-set summaries 32 KB (3.8%); everything else is under 1% each. Each
+matrix is stored **once, as one triangle**: 2,080 rows is exactly 65·64/2, every
+row has `i < j`, and no `(j, i)` appears — so there is no duplicate half to
+drop. The 257-order matrices are not stored at all, only summarized, which is
+what keeps this file at 840 KB instead of 11 MB.
+
 ---
 
 ## What this does not settle
 
 - **Whether any rank statistic tracks behaviour on this material.** Q-d refutes
-  the one §0 proposed. Both taus sit near zero over mutually uncorrelated
-  permutations, so the honest next question is whether the failure is the
-  statistic or the range, and neither this record nor the plan answers it.
+  the one §0 proposed, and refutes the easy excuse for it: both taus are
+  dispersed, with thousands of distinct values and no ties worth the name, so
+  the failure is not a range artefact that a finer statistic would repair. What
+  a *different* statistic — weighted by how many cases each conflicting pair
+  actually decides, say — would do is unmeasured, and is not something to try
+  after the fact on this data.
 - **Why 65 draws give 65 machines.** That the landscape has no plateaus the
   objective can see is measured; what shape it has instead is not.
 - **What any of this costs downstream.** Rung 4 consumes orders. That its
