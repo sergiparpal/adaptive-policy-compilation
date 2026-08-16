@@ -81,6 +81,9 @@ python3 -m peldano3.order_metrics_run --checks   # parity gate only (6 min)
 python3 -m peldano3.order_metrics_corpus  # the same orders over the corpus (7 min)
 python3 -m peldano3.order_metrics_corpus --s-e-argmin  # amends its own record in place
 python3 -m peldano3.rank_transfer     # joins the two records above (seconds)
+python3 -m peldano3.order_metrics_touched  # the space, restricted to the points
+                                      # the corpus touches (7 min)
+python3 -m peldano3.order_metrics_touched --checks   # its four gates only
 ```
 
 What each of them should produce is in the record it belongs to; the corrected
@@ -162,6 +165,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/order_metrics_run.py` | `results3/order_metrics.json` | no, on purpose |
 > | `peldano3/order_metrics_corpus.py` | `results3/order_metrics_corpus.json` | no, on purpose |
 > | `peldano3/rank_transfer.py` | `results3/rank_transfer.json` | no, on purpose |
+> | `peldano3/order_metrics_touched.py` | `results3/order_metrics_touched.json` | no, on purpose |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.

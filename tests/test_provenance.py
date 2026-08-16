@@ -53,6 +53,11 @@ ESCRITORES = [
     # reads two, so it belongs here; adding it widens what this test covers,
     # which is the only direction this list is ever allowed to move.
     "peldano3.rank_transfer",
+    # The space restricted to the points the corpus touches, added 2026-08-16.
+    # A fourth writer for the same reason as the second: it must never land on
+    # order_metrics.json or order_metrics_corpus.json, which own the two
+    # surfaces it compares.
+    "peldano3.order_metrics_touched",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
