@@ -1640,8 +1640,9 @@ first one, and it fails inside the territories.
 **The spread is not a rule-level fact.** The entry's hypothesis was that a pair's
 ratio is the arrival concentration of the rules whose territories change hands,
 and that the 1,344× range of `κ` was what could cover a 30× spread in the pairs.
-The range is there and the mechanism does not operate: half the ordering and
-essentially none of the spread. What is left is what D-a's own refutation clause
+The range is there — though its ceiling is not reachable, see the erratum below —
+and the mechanism does not operate: half the ordering and essentially none of the
+spread. What is left is what D-a's own refutation clause
 names — the heterogeneity **inside** a territory dominates the differences
 between territories.
 
@@ -1657,6 +1658,60 @@ it fails, which changes no measurement any of them made.
 
 ---
 
+## Erratum, 2026-08-16 — the ceiling of `κ` holds no territory
+
+Record: [`territory_holders.json`](territory_holders.json), landed in **PR #30**.
+
+**What is corrected: a reading, not a value.** This part uses `κ`'s range over
+the 577 rules — 1,344×, ceiling **30.8434** — as the illustration that the
+mechanism D-a proposed was *available*, which is the argument the entry it
+adjudicates makes against the 12.3× of the class ratios. The rule at that ceiling
+is **`R0327`**, and it **wins not one case** under any of the 65 end orders. Under
+first-match-wins a rule with no territory enters `ρ̂` nowhere, so the ceiling that
+illustrates the argument is a value the predictor can never read. Measured: the
+union of the 65 territory sets is **406 of 577** rules, and over that union `κ`
+runs **0.0229** (`R0019`) to **25.7028** (`R0062`) — a ceiling 1.20× lower than
+the pool's, and a floor that is the pool's own.
+
+**The scope is literal.** *Zero of the 65 end orders of split 0 at full
+supervision* — the set every matrix in this record holds. **Not "never"**:
+`R0327`'s extension is not empty, some other order over these same rules could
+give it a territory, and nothing here measures that. The same literalness applies
+to the 406: it is a union over these 65 machines, not a statement about which
+rules are reachable in principle.
+
+**The argument survives, and it survives inside a single machine.** The range
+that bears on D-a is not the pool's but the one available **within one order**,
+since `ρ̂` averages the `κ` of the rules that actually win the cases of a pair.
+Measured across the 65: median **651×**, minimum **183×**, maximum 1,120×. The
+weakest is order 0 — the greedy's end order, 25 rules — where `κ` still runs
+0.0815 to 14.94. The entry asked whether the mechanism could cover a 30× spread
+where 12.3× could not; the answer is yes by a factor of six in the *worst* of the
+65 machines. **So this reinforces D-a's refutation and does not attenuate it**:
+`ρ̂` had two to three orders of magnitude of variation available in every machine
+and still reached 0.4962.
+
+**No verdict moves, and no figure does either.** `κ`'s values are untouched —
+this run reads them from [`order_metrics_rules.json`](order_metrics_rules.json)
+and never recomputes them, gated on their still reproducing the five-number
+summary published beside them. D-a REFUTED, D-b HOLDS, D-c REFUTED, D-d reported:
+each stands on the number that decided it, and D-e's 25–53 stands with its
+complement added — **171 of the 577 rules hold territory in none of the 65
+orders**, `R0327` among them. `STATUS.md`'s copy of the range is scoped *across
+the 577* and stays exact as written.
+
+**Provenance, which is not what the rest of this part has.** This is a **post-run
+audit finding**: the fact was read off `order_metrics_rules.json` after PR #29
+published it, and the instrument was written afterwards by someone who already
+knew what it would say. It is not a prediction that could have failed, and the
+two commits of PR #29 have the opposite property in the log. What it can be worth
+instead is that the primitive is exact and the gates blocking: parity **31/31**,
+`κ` read and reproducing its published summary, and `n_rules_with_territory`
+identical **order by order** to `gates.territories.per_order` of the record it
+corrects. 343 s, zero API calls, clean tree, `code_digest ccd2ad259f5d8198`.
+
+---
+
 ## The register, fifth part
 
 | id | finding | status |
@@ -1665,7 +1720,7 @@ it fails, which changes no measurement any of them made.
 | **D-b** | The residual `ρ / ρ̂` still spans p75/p25 above 1.20. | **HOLDS**: 1.60765 — and 84.5% of the original spread on a log scale, so it holds at the end of its range opposite to the one it was drawn to catch. |
 | **D-c** | At least three quarters of the 478 pairs below the class floor have `ρ̂` below it too. | **REFUTED**: 0 of 478, and 0 of all 2,080; `ρ̂`'s minimum is 0.3085 against a floor of 0.1952. |
 | **D-d** | Reported, not adjudicated. | `κ_r` against the product of its conditions' concentrations: Spearman **0.987**, ratio p75/p25 **1.118**. The last link of the chain is nearly exact. |
-| **D-e** | *(not predicted)* What the predictor's inputs actually are. | **25 to 53 rules of 577 hold a territory** under any of the 65 end orders, over 4,121 atoms. Everything two orders disagree about is decided by a few dozen rules. |
+| **D-e** | *(not predicted)* What the predictor's inputs actually are. | **25 to 53 rules of 577 hold a territory** under any of the 65 end orders, over 4,121 atoms. Everything two orders disagree about is decided by a few dozen rules. The union over the 65 is **406**, and the erratum above names which rule is not in it. |
 
 **The entry carries no stopping condition, and its absence is deliberate**: the
 C entry granted one successor and said that successor would carry none. This
@@ -1712,3 +1767,7 @@ numbers themselves are exact.
   gates, not a question anybody asked. Whether 25–53 is a fact about
   first-match-wins over a uniform space, about the 577 rules, or about the
   orders the search returns is not measured.
+  **Bounded 2026-08-16 by the erratum above, not explained**: the union over the
+  65 orders is 406 rules, so which few dozen win is largely a fact about the
+  order and not about a fixed subset of the pool — and 171 rules win nothing
+  under any of them.
