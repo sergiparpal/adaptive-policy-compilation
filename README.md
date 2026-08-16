@@ -166,6 +166,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `peldano3/order_metrics_corpus.py` | `results3/order_metrics_corpus.json` | no, on purpose |
 > | `peldano3/rank_transfer.py` | `results3/rank_transfer.json` | no, on purpose |
 > | `peldano3/order_metrics_touched.py` | `results3/order_metrics_touched.json` | no, on purpose |
+> | `peldano3/order_metrics_rules.py` | `results3/order_metrics_rules.json` | no, on purpose |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.
