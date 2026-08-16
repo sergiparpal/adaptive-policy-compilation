@@ -783,14 +783,20 @@ which identifies the code as it stood when the numbers were computed.
 
 ## What the corpus part does not settle
 
-- **Why 3.5×.** Not scarcity of contested material — the corpus carries 74% more
-  live conflicting pairs per case — and only about a tenth of it is fitting.
-  What accounts for the rest is unmeasured, and this record declines to invent
-  it after the fact.
-  **The rank part states the same gap as a ratio**: 0.28 measured against the
-  0.57 reweighting predicts, an overestimate of 2.03×, which is the same 2.03×
-  as 11.67% against 5.75% because the two differ only by a multiplication by the
-  space's pooled rate. One open question in two units, not two.
+- ~~**Why 3.5×.** Not scarcity of contested material — the corpus carries 74%
+  more live conflicting pairs per case — and only about a tenth of it is
+  fitting. What accounts for the rest is unmeasured, and this record declines to
+  invent it after the fact. **The rank part states the same gap as a ratio**:
+  0.28 measured against the 0.57 reweighting predicts, an overestimate of 2.03×,
+  which is the same 2.03× as 11.67% against 5.75% because the two differ only by
+  a multiplication by the space's pooled rate. One open question in two units,
+  not two.~~
+  **Answered 2026-08-16**, in part four of this record: it is **which points
+  arrive, not how often each is drawn**. The 2,000 draws reach 1.30% of the
+  space, and reweighting rebuilt on the rate over just those points gives
+  0.05828 against the measured 0.057472 — 98.6% of the deficit is that step
+  alone. What replaces this item is narrower and is in part four's own list: why
+  disagreement concentrates in the part of the space arrivals never visit.
 - **Whether "corpus" means deployment.** It is a modelled arrival distribution
   with a seed, not observed traffic. Everything here says the two surfaces
   disagree; nothing here says the corpus is the right one.
@@ -1052,13 +1058,364 @@ where the arrival distribution has no standing.
   below what was predicted and clearly above zero; the two surfaces agree more
   than chance and much less than a reader of either would assume. What margin a
   real decision needs is not a question this material answers.
-- **Why the centre is 0.28 and not the 0.57 reweighting predicts — which is
+- ~~**Why the centre is 0.28 and not the 0.57 reweighting predicts — which is
   S-b's gap and not a second one.** The two differ by a multiplication by the
   space's pooled rate and by nothing else, so part two's *Why 3.5×* and this are
   a single open question: an answer to either is an answer to both, and the
-  record should not be read as carrying two.
+  record should not be read as carrying two.~~
+  **Answered 2026-08-16**, in part four, and as one item because it was one:
+  reweighting on the rate over the touched points alone gives a ratio of 0.2864
+  against the measured 0.2825, where reweighting on the whole space gave 0.5735.
 - **Why the pairs specialize around that centre.** A separate question from the
   one above, and the one R-c opens on its own: the per-pair ratio spans a factor
   of 37, and nothing here says what distinguishes a pair whose ratio is 0.05 from
   one whose ratio is 1.77. The class-level account of S-c is the obvious place to
   look and was not looked at.
+  **Narrowed 2026-08-16, not closed** (part four, C-d): the spread lives at the
+  same step as the level. On a log scale 89% of it is already there in
+  `touched/space`, p75/p25 = 1.754 of the 1.880, while the multiplicity step
+  contributes 1.066. So the question is why pairs differ from each other over
+  *which 1.3% of the space is sampled*, and `touched/space` still spans a factor
+  of 30.
+
+---
+
+# The touched points — C-a to C-d
+
+August 16, 2026. **This part of the record owns the touched-point figures.**
+Same 577 rules, same 65 end orders of split 0, same 2,080 pairs, same
+instrument: what changes is that the exhaustive space is restricted to the
+**1,743 points the corpus actually reaches**. Prediction: `IDEAS.md`, the entry
+*The whole 2.03× gap is one class, and the question is why its arrivals are
+cleaner*, drafted, signed and committed before `touched(c)` existed for any
+class. These figures arrived afterwards, in **PR #27**, which is what makes the
+order of the two checkable in the log rather than asserted here. Record:
+[`order_metrics_touched.json`](order_metrics_touched.json). Zero API calls,
+343 s.
+
+**Two hold, one lands in its dead zone, one is reported.** And the open question
+parts two and three both ended on — *why 3.5×*, *why 0.28 and not 0.57* — is
+answered: **it is which points arrive, not how often each is drawn.**
+
+---
+
+## The two steps, and why only one of them was unmeasured
+
+Class reweighting corrects for how often a class arrives and assumes the rate
+*within* a class transfers. It does not, and `R-c` measured the size of the
+failure without locating it: the centre of the corpus/space ratio is 0.2825
+where reweighting predicts 0.5735, an overestimate of **2.03×** — the same 2.03×
+as 11.67% against 5.75%, in other units.
+
+The corpus reaches the space twice over, and the two can be separated:
+
+| step | what it is | measured before today |
+|---|---|---|
+| **which** points arrive | the 2,000 draws land on 1,743 of the 134,400 points, **1.30%** of the space, concentrated on common attribute combinations | **no** |
+| **how often** each is drawn | the multiplicity of those 1,743 points: 1,538 drawn once, 165 twice, 31 three times, 7 four times, one five and one six | yes — it is the difference between `touched` and `arrivals` |
+
+So three rates per class over the same 2,080 pairs, and only the middle one is
+new:
+
+| rate | surface | denominator | provenance |
+|---|---|---|---|
+| `all(c)` | the whole space | every point of the class | **published**, first part of this record |
+| `touched(c)` | the touched points | the class's points the corpus reaches, **each counted once** | **new** |
+| `arrivals(c)` | the corpus | the class's 2,000 draws, **with multiplicity** | **published**, second part of this record |
+
+**The corpus contributes a mask and nothing else.** Every rate above is computed
+in `Space`'s bit convention, case k at bit n−1−k, from
+`order_search_ls.space_truth_masks` and the space pools. `arrivals(c)` is *read*
+from [`order_metrics_corpus.json`](order_metrics_corpus.json) rather than
+recomputed, so no corpus mask is built in this run at all and the two
+conventions never meet — which is why this question is structurally safer than
+the corpus one, where the whole per-class apparatus had to be rebuilt in the
+other convention.
+
+## The gates, and there are four
+
+**PARITY: 31 of 31 rows exact**, the same gate and the same two records as parts
+one and two — 883 / 0.8786 / 0.8472 / 0.6033 at split 0 and 65 starts, 884 /
+0.8796 / 0.8442 / 0.5776 at 257, all six budget rows, and 25 of 25 band cells.
+**No new search**: every order comes out of `run_full_supervision` and
+`run_band_1pct` of `order_metrics_run.py`, imported and called unchanged.
+
+**THE PUBLISHED `all(c)`: eight of eight identical**, and the overall rate with
+them — 0.203451. Parity compares four scores per row; this compares the
+per-class behaviour the question is actually about, and it is the gate the entry
+named as its second invariant.
+
+**THE MATRIX: 2,080 of 2,080 per-pair distances identical** to
+`order_metrics.json::pairs_split0_starts65`, joined on `(i, j)` and never on
+position. It is what makes the per-pair half of C-d a re-weighting of the
+published matrix rather than a second, unrelated one.
+
+**THE MASK: 1,743 bits exactly**, the figure part two publishes for the distinct
+cases the 2,000 draws touch; every corpus case maps into the enumeration
+(a case outside it raises rather than being dropped); and the class masks
+partition both the space and the touched mask.
+
+**One caveat about that last gate, stated rather than left implicit.**
+Partitioning does **not** catch a mask built in the wrong convention:
+intersecting a partition with any mask partitions that mask, so the reversed
+mask would have 1,743 bits and eight class masks summing to 1,743 too, and every
+figure below would be noise of the right shape. What catches it is a count that
+has to agree by two routes — `(truth_space[c] & touched).bit_count()` against
+the number of **distinct corpus cases labelled c**, the first from the oracle's
+labelling of the space and the second from the corpus label list. That is pinned
+in [`tests/test_order_metrics_touched.py`](../tests/test_order_metrics_touched.py),
+which also **shows** the reversed convention failing it rather than assuming it
+would.
+
+---
+
+## The three rates, by class
+
+Ordered by each class's contribution to the 0.059213 the reweighting
+overestimates by. `f(c) = (all − touched) / (all − arrivals)` is the fraction of
+the class's fall carried by *which* points arrive.
+
+| class | space n | touched n | corpus n | p(c) | `all(c)` | `touched(c)` | `arrivals(c)` | `f(c)` | share of the deficit |
+|---|---|---|---|---|---|---|---|---|---|
+| `T2_TECHNICAL` | 36,720 | 661 | 726 | 0.3630 | 0.196859 | **0.038432** | 0.036190 | **0.986** | **98.5%** |
+| `T3_ENGINEERING` | 8,180 | 105 | 117 | 0.0585 | 0.094743 | 0.060449 | 0.054249 | 0.847 | 4.0% |
+| `ACCOUNT_MANAGER` | 16,440 | 108 | 109 | 0.0545 | 0.091590 | 0.050592 | 0.053110 | **1.065** | 3.5% |
+| `T1_GENERAL` | 5,220 | 229 | 255 | 0.1275 | 0.042567 | 0.031030 | 0.029842 | 0.907 | 2.7% |
+| `SECURITY_INCIDENT` | 50,400 | 20 | 20 | 0.0100 | 0.312125 | 0.262644 | 0.262644 | **1.000** | 0.8% |
+| `ONCALL_ESCALATION` | 6,300 | 7 | 7 | 0.0035 | 0.217836 | 0.191003 | 0.191003 | **1.000** | 0.2% |
+| `SELF_SERVICE_DEFLECT` | 4,300 | 379 | 495 | 0.2475 | 0.094261 | 0.104436 | 0.103952 | 1.050 | −4.1% |
+| `BILLING_SPECIALIST` | 6,840 | 234 | 271 | 0.1355 | 0.015135 | 0.036428 | 0.040140 | 0.852 | −5.7% |
+
+**The entry's own arithmetic reproduces exactly.** It declared, as what the
+drafter had already seen, the eight `arrivals/all` ratios (0.184 for
+`T2_TECHNICAL` through 2.652 for `BILLING_SPECIALIST`) and `T2_TECHNICAL` at
+**98.5%** of the deficit. Recomputed here from the regenerated orders: 98.5%,
+and every ratio to the digit it gave. Nothing in this run contradicts what the
+entry says it derived.
+
+**The headline is one line of that table.** `T2_TECHNICAL` falls from 19.69% of
+its space cases to 3.62% of its arrivals, and **0.038432** of that fall is
+already there when the only thing that has changed is *which* points are
+counted, each exactly once. Of the 0.059213 the reweighting overestimates by,
+**0.058406 — 98.6% — is the which-points step**, and 0.000808 is multiplicity.
+
+## The predictions of `IDEAS.md`, one by one
+
+| # | verdict | measured |
+|---|---|---|
+| **C-a** | **NEITHER** — above its band, inside its refutation line | `f(T2_TECHNICAL)` = **0.986**, against a band of 0.60–0.95 and refutation outside 0.40–1.10. The direction is the one the entry's own calibration note suspected: the band was too *low*. |
+| **C-b** | **HOLDS**, 8 of 8 | The sign of `touched(c) − all(c)` matches the sign of `arrivals(c) − all(c)` in **every** class, against a threshold of 6. `BILLING_SPECIALIST` and `SELF_SERVICE_DEFLECT`, the two the row names, both go **up** as it required. Two of the eight matches are degenerate — see below — and it is 6 of 6 without them. |
+| **C-c** | **HOLDS** | Reweighting rebuilt with `touched(c)`: **0.05828**, against a band of 0.043–0.072 and the measured corpus rate of 0.057472 — **+1.4% relative**. The original reweighting gave 0.116685. |
+| **C-d** | *reported* | Per-pair ratio `touched/space`: p75/p25 = **1.754**, against R-c's **1.880** for `arrivals/space`. The residual step `arrivals/touched` gives **1.066**. The spread does not shrink; it moves to the same step the level did. |
+
+### C-a, and a band that could not accommodate its own hypothesis
+
+`f(T2_TECHNICAL) = 0.986` says the fall is **essentially all** which-points. The
+row asked for 0.60–0.95 and refuted outside 0.40–1.10, so the measurement sits
+in the dead zone between them, 0.036 above the band.
+
+**Worth seeing why, because it is a fact about how the row was drawn and not a
+reinterpretation of it.** The hypothesis the entry states is that reweighting
+overestimates *because* the corpus touches concentrated points; the strongest
+form of that hypothesis is that multiplicity contributes nothing at all, which
+is `f = 1`. That value is **outside the band as written**. A prediction whose own
+mechanism, taken to completion, cannot make it hold is a prediction whose band
+was drawn short — and the entry's calibration note said so in advance, in the
+opposite direction from its four losses: *this band may be too low*. It was, by
+one dead zone. **That is one instance and not a trend**, exactly as the note
+itself insists; the band is not edited, and the verdict is NEITHER.
+
+**Three classes give `f > 1`,** which the row explicitly allowed for — *nothing
+forces `touched` to sit between the other two, so `f` outside `[0, 1]` is
+possible and is a result, not an error*. `ACCOUNT_MANAGER` is the clearest:
+which-points takes it from 0.0916 to 0.0506, *below* its arrival rate of 0.0531,
+and multiplicity moves it back up. Its 109 draws land on 108 distinct points, so
+**one ticket drawn twice** is what that reversal is made of. At 109 corpus cases
+a single duplicate is about 1% of the class's weight, and it is enough to put `f`
+on the far side of 1.
+
+### C-b, and the two classes where the split is degenerate
+
+Eight of eight, and the two the row names as the test of whether the story is
+about which points at all — `BILLING_SPECIALIST` at ×2.65 and
+`SELF_SERVICE_DEFLECT` at ×1.10 — both rise under `touched` as required:
+0.0151 → 0.0364 and 0.0943 → 0.1044. The mechanism is general, not a fact about
+`T2_TECHNICAL`.
+
+**Two of the eight matches are free, and are reported as such.**
+`SECURITY_INCIDENT` draws 20 tickets onto 20 distinct points and
+`ONCALL_ESCALATION` 7 onto 7, so for those two classes the multiplicity step is
+the identity map: `touched(c) = arrivals(c)` **exactly**, 0.262644 and 0.191003,
+and their signs cannot fail to match. Their `f = 1.000` is arithmetic, not
+measurement. Excluding both, C-b is **6 of 6** — still above its threshold of 6
+and far above its refutation line of 4 — so the row survives the strictest
+reading of itself. It is worth knowing which classes carry it, though: the two
+scarcest, and the two rung 1 resolved 0 of 17 and 0 of 7 times, contribute
+nothing to it.
+
+### C-c, and the gap that closes with it
+
+**0.05828 against a measured 0.057472.** Reweighting with `touched(c)` in place
+of `all(c)` — the same class weights, the same eight classes, one column
+swapped — reconstructs the corpus rate to within **+1.4% relative**, where the
+original reweighting was out by **+103%**.
+
+| | ratio to the space rate | level on the corpus |
+|---|---|---|
+| class reweighting on `all(c)` | 0.5735 | **0.116685** |
+| class reweighting on `touched(c)` | 0.2864 | **0.05828** |
+| measured on arrivals | 0.2825 | **0.057472** |
+
+The weights are the right ones by two published identities, checked rather than
+asserted: the same weights on `arrivals(c)` give back **0.057472**, the pooled
+corpus rate, and on `all(c)` they give back **0.116685**, the figure part two
+publishes. So the whole of the 2.03× is one modelling error, and it is not about
+class frequencies: **it is that the rate within a class does not transfer
+because the corpus samples 1.3% of the class, not a uniform slice of it.**
+
+**And the unweighted figure says the same thing more bluntly.** Pooled over the
+1,743 touched points with every point counted **once**, the 2,080 pairs disagree
+on **5.68%** — against 5.75% on the arrival distribution and 20.35% on the
+space. The per-pair median is 5.74% against the corpus's 5.90% and the space's
+19.72%. Restricting the surface to the touched points reproduces the corpus
+level *before any weighting is applied at all*.
+
+### C-d, reported: the spread moves, it does not shrink
+
+R-c left a second question beside the level — the per-pair ratio spans a factor
+of 37, and nothing said what distinguishes a pair whose ratio is 0.05 from one
+whose ratio is 1.77. C-d asks whether the same explanation covers it.
+
+| per-pair ratio | min | p25 | median | p75 | max | p75/p25 | max/min |
+|---|---|---|---|---|---|---|---|
+| `touched / space` — **which points** | 0.0544 | 0.2039 | 0.2849 | 0.3576 | 1.6284 | **1.754** | 29.96 |
+| `arrivals / space` — R-c's own, reproduced | 0.0474 | 0.1971 | 0.2920 | 0.3705 | 1.7670 | **1.880** | 37.30 |
+| `arrivals / touched` — **how often** | 0.8715 | 0.9756 | 1.0129 | 1.0395 | 1.1494 | **1.066** | 1.32 |
+
+**R-c's row reproduces bit for bit** — every quantile of `arrivals/space`
+matches the published one to the last decimal, which is the check that this
+file's ratio instrument is the one that produced 1.880.
+
+**No threshold is applied to any of this; C-d adjudicates nothing.** What it
+says is that the spread is **localized, not explained**: on a log scale
+**89%** of it is already present at the which-points step, and the multiplicity
+step contributes a p75/p25 of 1.066 across all 2,080 pairs. So the answer to
+*does the same explanation cover the spread* is that the spread lives at the
+same step as the level — which narrows R-c's open question from *why do pairs
+specialize between the two surfaces* to *why do pairs specialize over which
+1.3% of the space is sampled*. It does not close it: `touched/space` still runs
+from 0.054 to 1.63, a factor of 30, and nothing here says what distinguishes
+those pairs.
+
+**And no pair collapses.** Of the 2,080, **zero** disagree on nothing over the
+touched points; the minimum is **17 cases of 1,743** and the maximum 213. That
+is S-e's question asked of this surface, and it comes out the same way the
+corpus answered it.
+
+---
+
+## What this settles for the standing question
+
+**The open question parts two and three both ended on is answered.** *Why 3.5×*
+and *why 0.28 and not the 0.57 reweighting predicts* are one question in two
+units, and the answer is **which points arrive**: 98.6% of the deficit, and a
+reconstruction accurate to 1.4% relative once `all(c)` is replaced by
+`touched(c)`. The residual — the 1.4% multiplicity carries and the 1.4% C-c
+still misses — is the same order as the arithmetic's own resolution and is not a
+second mechanism.
+
+**What it does not do is rehabilitate the space as a deployment surface.**
+Nothing here recovers a per-class account that turns space figures into corpus
+figures, because the correction is not per class: `touched(c)` is a measurement
+over a 1.3% sample of each class that only the corpus can identify. A reader
+holding `order_metrics.json` and the class frequencies still cannot get to
+5.75%; they need the mask.
+
+## What this changes elsewhere
+
+**Part two's *Why 3.5×* closes, and part three's *why 0.28 and not 0.57* closes
+with it** — they were one item and are struck as one. What replaces them is
+narrower and is entered in the register below: why disagreement concentrates in
+the part of the space the corpus does *not* touch, and why pairs differ from
+each other in that.
+
+**Part two's reading of S-c is confirmed and sharpened.** S-c's refutation
+clause said that failing would mean *the mix of cases within each class governs
+too*. It does, and the mix is now named: not an arbitrary re-weighting inside
+the class, but the 1.3% of it a long-tailed sampler reaches. `T2_TECHNICAL`
+disagreeing on 19.69% of its 36,720 space points and 3.84% of the 661 the corpus
+reaches is the whole of that finding in one row.
+
+**Nothing above is withdrawn.** Every space figure is what it always was, on the
+surface it names.
+
+---
+
+## The register, fourth part
+
+| id | finding | status |
+|---|---|---|
+| **C-a** | `f(T2_TECHNICAL)`, the fraction of the fall carried by which points, between 0.60 and 0.95. | **NEITHER**: 0.986, above the band and inside the 1.10 refutation line. The hypothesis' own limit, `f = 1`, was outside the band as written. |
+| **C-b** | The signs of `touched − all` and `arrivals − all` agree in at least 6 of 8 classes. | **HOLDS**: 8 of 8, and 6 of 6 excluding the two classes where `touched = arrivals` identically. The two classes the row names both rise. |
+| **C-c** | Reweighting on `touched(c)` between 0.043 and 0.072. | **HOLDS**: 0.05828 against a measured 0.057472, +1.4% relative, where reweighting on `all(c)` was +103%. |
+| **C-d** | Reported, not adjudicated. | `touched/space` p75/p25 = 1.754 against R-c's 1.880; `arrivals/touched` = 1.066. 89% of the spread on a log scale is already at the which-points step. |
+| **C-e** | *(not predicted)* Whether the unweighted touched surface reproduces the corpus level on its own. | **IT DOES**: 5.68% pooled over the 1,743 points, each counted once, against 5.75% on 2,000 draws — before any class weighting. |
+
+**The stopping condition the entry signed with the prediction, quoted verbatim
+and applied by nobody here:**
+
+> **The stopping condition for this thread.** If C-a, C-b and C-c all hold, the
+> audit thread closes and the next entries go back to the domain. Any other
+> outcome — a refutation, or a row landing between its band and its refutation
+> line — permits one successor entry and no more, and that successor carries no
+> stopping condition of its own because this one is it.
+
+C-b and C-c hold; C-a landed between its band and its refutation line. What
+follows from that is not this record's to decide, and no successor entry is
+written here.
+
+## Provenance of the touched part
+
+**Cost: 343 s in one process, zero API calls.** Regeneration is 338 s of it
+(135.6 s and 117.0 s for the two 257-start searches, 85.3 s for the whole 1%
+band); the measuring is under 5 s, because the pairwise sweep runs once over 65
+orders rather than 257 and no Kendall tau is computed.
+
+**`code_dirty: false` and `git_dirty: false`** — the first record in this thread
+to run on a clean tree. The instrument was committed **before the run**, in its
+own commit carrying no figure, which is why. What identifies the code is
+`code_digest 59d413ab37c58038`; what identifies the **orders** is neither that
+nor the commit, it is the parity gate, and the parity gate is exact on all 31
+rows.
+
+**The `_env.git_commit` in the record is a branch commit that the merge
+rewrites.** `main` is protected and merges by rebase, so the SHA the run stamped
+does not survive onto `main`. That is why this section cites **PR #27** and no
+SHA: the commit in the record identifies the tree the figures were computed on,
+and the PR is what a reader can follow.
+
+## What the touched part does not settle
+
+- **Why disagreement lives where the corpus does not go.** This is the question
+  the answer creates, and it is now the sharp one: two orders disagree on 19.69%
+  of `T2_TECHNICAL`'s space points and 3.84% of the 661 the corpus reaches, so
+  the disagreement is concentrated in the 98% of the class arrivals never
+  visit. What distinguishes those points — which attributes, which rules
+  competing over them — is not measured here.
+- **Why pairs specialize over that sample.** R-c's spread is not closed, only
+  relocated: `touched/space` still spans a factor of 30 across the 2,080 pairs.
+  The class-level account is not enough, per part three's own note, and it is
+  still the obvious place to look.
+- **Whether 1,743 points is enough to measure anything about a rare class.**
+  `SECURITY_INCIDENT` has 20 touched points of 50,400 and `ONCALL_ESCALATION` 7
+  of 6,300. Their `touched(c)` is a rate over 20 and 7 cases and their `f` is
+  arithmetic rather than measurement; a second corpus with another seed would
+  move them and nothing here bounds by how much.
+- **The other three splits, and the 257-order set.** Measured on split 0's 65
+  end orders because that is the set both published matrices hold. Whether
+  98.6% is stable at 257 orders, or on split 4, would cost a regeneration of the
+  larger matrices and was not done.
+- **Whether "corpus" means deployment.** Unchanged from part two: it is a
+  modelled arrival distribution with a seed. What is now known is that the gap
+  between it and the uniform space is a sampling fact about *which* combinations
+  it visits — which makes the answer inherit whatever the sampler gets wrong.

@@ -177,6 +177,27 @@ reader who used the space record comparatively — *this pair is further apart t
 that one* — was reading the wrong surface, and not merely by a constant: the
 ordering does not transfer either.
 
+**And the whole of that shift is WHICH points arrive, not how often.** The same
+2,080 pairs again, over the **exhaustive space restricted to the 1,743 points
+the corpus touches** — 1.30% of it, each point counted once — with the corpus
+contributing a mask and nothing else, so every rate stays in `Space`'s
+convention ([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part
+four; [`order_metrics_touched.json`](results3/order_metrics_touched.json)).
+Pooled over those touched points the pairs disagree on **5.68%**, against
+**5.75%** of the 2,000 arrivals and **20.35%** of the whole space: the level
+transfers to the arrival distribution *before any class weighting is applied*.
+Class reweighting rebuilt on the touched rates gives **0.05828** against the
+measured 0.057472, **+1.4%** relative, where the same reweighting on the whole
+space gave 0.116685, **+103%** — so **98.6%** of that error is which points get
+sampled and 1.4% is their multiplicity. `T2_TECHNICAL` carries 98.5% of it: two
+orders disagree on **19.69%** of its 36,720 space points and **3.84%** of the
+661 the corpus reaches. What this closes is the *why 3.5×* left open by part two
+and the *why 0.28 and not 0.57* left open by part three, which were one question
+in two units. What it does **not** do is make the space readable as a deployment
+surface: the correction is a measurement over a 1.3% sample that only the corpus
+can identify, not a per-class factor, so the space record plus the class
+frequencies still does not reach 5.75%.
+
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
 0.8530 with the same optimizer at the same budget, and to every rung 4 figure
