@@ -481,6 +481,88 @@ none of them developed and in no order of precedence.
   *where* they disagree, which R-c's factor of 37 measures directly. R-a's own
   text called refutation below 0.55 *the informative outcome*; it is the outcome.
 
+- **The whole 2.03× gap is one class, and the question is why its arrivals are
+  cleaner.** Opened 2026-08-16, after the rank entry closed. `R-c` reported a
+  stable centre — pooled ratio 0.2825 against the 0.5735 class reweighting
+  predicts — and named it the same gap S-b left open on 8 August, in other
+  units. Decomposing that gap by class, from figures already published and with
+  no new measurement, it is not spread at all: **T2_TECHNICAL carries 98.5% of
+  it**, and the other seven very nearly cancel.
+  **What is left to explain** is therefore narrow: the space says two orders
+  disagree on 19.69% of `T2_TECHNICAL`, the arrivals say 3.62%, a factor of 5.4,
+  in the class that is 36% of the corpus. Class reweighting corrects for how
+  often a class arrives and assumes the rate *within* a class transfers. It does
+  not, and almost all of the failure is here.
+  **The hypothesis.** The corpus touches 1,743 of 134,400 points — 1.3% of the
+  space — and touches them concentrated on common attribute combinations. If
+  disagreement lives disproportionately in the rare corners, reweighting
+  overestimates exactly this way. That splits each class's fall into two steps:
+  **which** points get touched, and **how often** each is touched. Only the
+  first is unmeasured.
+  **It is a regeneration and a measurement on the space side only.** Three rates
+  per class over the 2,080 pairs of `split0_starts65`: `all(c)` over every space
+  point of the class (published), `touched(c)` over only the points the corpus
+  reaches, unweighted (**new**), and `arrivals(c)` over the 2,000 draws with
+  multiplicity (published). The corpus contributes a mask and nothing else, so
+  every comparison stays in `Space`'s bit convention and nothing is joined
+  across conventions.
+
+  **PREDICTION — 2026-08-16, written before the measurement.** Drafted by
+  Claude; Sergi signs it as it stands; committed before `touched(c)` exists for
+  any class. §6 applies as in the two entries above.
+
+    **What the drafter had already seen.** The full per-class decomposition,
+    derived while drafting from the two published records: rates on the space
+    and on arrivals, their ratios — T2_TECHNICAL 0.184, T3_ENGINEERING 0.573,
+    ACCOUNT_MANAGER 0.580, T1_GENERAL 0.701, SECURITY_INCIDENT 0.841,
+    ONCALL_ESCALATION 0.877, SELF_SERVICE_DEFLECT 1.103, BILLING_SPECIALIST
+    2.652 — and each class's share of the 0.05921 deficit, T2 at 98.5%. The
+    hypothesis was formed after seeing that table, not before it.
+    **And a note the standing entry above now requires.** Its calibration note
+    says an argument for continuity across surfaces should be read as evidence
+    the band is too high. This bet is on the other side — that arrivals differ
+    structurally from the space — which is the side S-e won on. The drafter has
+    lost four bets on continuity and won one on difference, so the suspicion
+    here runs the other way: this band may be too *low*, and one confirmation
+    would not establish that the drafter has stopped being wrong, only that the
+    direction of the error changed.
+
+  - **C-a** — **The headline.** Write `f(c) = (all − touched) / (all −
+    arrivals)`: the fraction of a class's fall carried by *which* points arrive
+    rather than *how often*. **`f(T2_TECHNICAL)` lands between 0.60 and 0.95.**
+    *Refuted* below 0.40 or above 1.10. Nothing forces `touched` to sit between
+    the other two, so `f` outside `[0, 1]` is possible and is a result, not an
+    error.
+  - **C-b** — *The mechanism is general, not a fact about one class.* The sign
+    of `touched(c) − all(c)` matches the sign of `arrivals(c) − all(c)` in **at
+    least 6 of the 8 classes**. *Refuted* at 4 or fewer. This is the row that
+    keeps C-a from being a tautology: `BILLING_SPECIALIST` at 2.652 and
+    `SELF_SERVICE_DEFLECT` at 1.103 must go **up**, not down, or the story is
+    not about which points arrive at all.
+  - **C-c** — *The reconstruction.* Reweighting rebuilt with `touched(c)` in
+    place of `all(c)` — `Σ p_corpus(c) · touched(c)` — lands between **0.043 and
+    0.072**, within ±25% of the measured 0.0575, against the 0.1167 the original
+    reweighting gave. *Refuted* outside 0.035–0.090. If it holds, the 2.03× is
+    explained and S-b's gap closes with it.
+  - **C-d** — *Reported, not adjudicated.* The per-pair ratio recomputed on
+    touched points, and whether its p75/p25 of 1.880 shrinks. If the same
+    explanation covers the spread, R-c's other half closes too; if not, the
+    spread is a separate fact and stays open. One measurement either way, and no
+    threshold on it.
+
+  **Not predictions, invariants** — if these fail nothing above was tested:
+  parity 31/31 against `start_budget_check.json` and `budget_and_balance_ls.json`;
+  the eight published `all(c)` reproduce exactly from the regenerated orders;
+  the touched mask has exactly **1,743** bits set; the class masks partition the
+  space; **no new search**, no constant touched, no API call, and no mask joined
+  across the two bit conventions.
+
+  **The stopping condition for this thread.** If C-a, C-b and C-c all hold, the
+  audit thread closes and the next entries go back to the domain. Any other
+  outcome — a refutation, or a row landing between its band and its refutation
+  line — permits one successor entry and no more, and that successor carries no
+  stopping condition of its own because this one is it.
+
 ---
 
 ## What rung 2 opens and does not resolve
