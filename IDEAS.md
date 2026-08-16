@@ -111,6 +111,14 @@ none of them developed and in no order of precedence.
   base, despite executing the perfect policy without error. It stays worse under
   a competent optimizer, by a wider margin, so it is not a search artifact
   (`FINDINGS3.md` §1 and its 2026-08-08 erratum).
+
+  **A standing note on who drafts these.** Across S-a…S-f and R-a…R-d, every row
+  that bet a quantity would *carry across* this change of surface lost — the
+  level twice, the per-class rates, the ordering — and the one that bet something
+  would *break*, S-e, held in both clauses. R-a is the sharpest case: it had the
+  most developed argument for continuity and missed by the largest margin.
+  Whoever drafts the next entry should treat an argument for continuity across
+  surfaces as evidence that the band is too high, and say so in the block.
 - **Subsumption silences a third of the learned base, and that is a finding about
   subsumption, not about runtime.** Opened 2026-08-08 while measuring why the
   hybrid pool costs so much more to search: once subsumption prunes, **181 of the
