@@ -787,6 +787,10 @@ which identifies the code as it stood when the numbers were computed.
   live conflicting pairs per case — and only about a tenth of it is fitting.
   What accounts for the rest is unmeasured, and this record declines to invent
   it after the fact.
+  **The rank part states the same gap as a ratio**: 0.28 measured against the
+  0.57 reweighting predicts, an overestimate of 2.03×, which is the same 2.03×
+  as 11.67% against 5.75% because the two differ only by a multiplication by the
+  space's pooled rate. One open question in two units, not two.
 - **Whether "corpus" means deployment.** It is a modelled arrival distribution
   with a seed, not observed traffic. Everything here says the two surfaces
   disagree; nothing here says the corpus is the right one.
@@ -907,6 +911,33 @@ per-pair spread is enormous. That is the same shape S-c found per class, now per
 pair, and it is the mechanism R-a's refutation needed: pairs differ from one
 another in **where** they disagree, so re-weighting the surface re-ranks them.
 
+**The centre is stable and it is also wrong by a factor of two**, which this
+section reported without saying. Against the pooled 0.2825 and the median
+per-pair 0.2920, class reweighting predicts **0.5735** — 0.1167 over 0.203451,
+both already published. It **overestimates the centre by 2.03×**.
+
+**And that is not a second open question beside S-b's. It is the same one in
+other units.** Multiply either column back by the space's pooled rate:
+
+| | ratio to the space | level on the corpus |
+|---|---|---|
+| class reweighting predicts | 0.5735 | **0.1167** — the figure S-b named and did not reach |
+| measured | 0.2825 | **0.0575** |
+| overestimate | **2.03×** | **2.03×** |
+
+The factor is *identical* in the two columns because the space rate cancels:
+0.5735 × 0.203451 = 0.1167 and 0.2825 × 0.203451 = 0.0575, so dividing by it is
+a bijection between the two readings. **Why is the common factor 0.28 rather than
+0.57** and **why did the corpus rate come out at 5.75% instead of the 11.67%
+reweighting predicted** are one question asked twice, once as a ratio and once as
+a level. That is arithmetic on figures already published, not a new measurement.
+
+What R-c adds to it is that the gap is not an artefact of averaging: the centre
+that reweighting misses by 2.03× is *stable* across pairs, while the spread
+around it — p75/p25 = 1.880, extremes a factor of 37 — is a separate fact and is
+what re-ranks them. A per-class account that produced 0.28 would close the level
+and the ratio at once, and would still owe an explanation of the spread.
+
 ### R-d, an anecdote in both directions
 
 One draw of 2,080 either way, and the two directions do not behave alike.
@@ -1021,7 +1052,13 @@ where the arrival distribution has no standing.
   below what was predicted and clearly above zero; the two surfaces agree more
   than chance and much less than a reader of either would assume. What margin a
   real decision needs is not a question this material answers.
-- **Why the pairs specialize.** R-c says they do — the per-pair ratio spans a
-  factor of 37 — and nothing here says what distinguishes a pair whose ratio is
-  0.05 from one whose ratio is 1.77. The class-level account of S-c is the
-  obvious place to look and was not looked at.
+- **Why the centre is 0.28 and not the 0.57 reweighting predicts — which is
+  S-b's gap and not a second one.** The two differ by a multiplication by the
+  space's pooled rate and by nothing else, so part two's *Why 3.5×* and this are
+  a single open question: an answer to either is an answer to both, and the
+  record should not be read as carrying two.
+- **Why the pairs specialize around that centre.** A separate question from the
+  one above, and the one R-c opens on its own: the per-pair ratio spans a factor
+  of 37, and nothing here says what distinguishes a pair whose ratio is 0.05 from
+  one whose ratio is 1.77. The class-level account of S-c is the obvious place to
+  look and was not looked at.
