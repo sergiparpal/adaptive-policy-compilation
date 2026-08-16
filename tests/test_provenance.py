@@ -58,6 +58,11 @@ ESCRITORES = [
     # order_metrics.json or order_metrics_corpus.json, which own the two
     # surfaces it compares.
     "peldano3.order_metrics_touched",
+    # The same 2,080 pairs read at the level of the rules, added 2026-08-16. A
+    # fifth writer and a fifth record: it reads three of the four above and
+    # rewrites none of them. Adding it here widens what this test covers, which
+    # is the only direction this list is ever allowed to move.
+    "peldano3.order_metrics_rules",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
