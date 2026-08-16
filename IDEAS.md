@@ -625,6 +625,99 @@ none of them developed and in no order of precedence.
   line. What follows is Sergi's to decide, and no successor entry is written
   here.
 
+- **Where the 30× spread comes from, at the level the order actually operates
+  on.** Opened 2026-08-16, as the one successor the stopping condition above
+  permits. That entry closed the *centre* — 98.6% of the 2.03× gap is which
+  points arrive — and explicitly did not close the *spread*: `touched/space`
+  still runs 0.0544 to 1.6284 across the 2,080 pairs, a factor of 30, and 89% of
+  R-c's spread on a log scale is already present at the which-points step.
+  **Class composition is already ruled out, from figures on disk.** A pair's
+  ratio under a pure class-composition model is a weighted average of the eight
+  class ratios, which run 0.1952 (`T2_TECHNICAL`) to 2.4069
+  (`BILLING_SPECIALIST`), so no such average can leave that interval. **478 of
+  the 2,080 pairs — 23% — fall below the floor**, the lowest by a factor of 3.6,
+  and not one falls above the ceiling. Whatever produces the spread is not the
+  mix of classes a pair disagrees over.
+  **The level below is the rule, and it is the last one.** The order is an order
+  over 577 rules; beneath a rule there is only its conditions on attributes, and
+  the arrival skew of those attributes is a declared property of the corpus
+  generator, not an open question — `STATUS.md` has recorded since 8 August that
+  `has_security_keyword` is 3% of arrivals against 50% of the attribute space.
+  So the chain is: a pair's ratio ← the arrival concentration of the rules whose
+  territories change hands ← the attribute marginals ← the generator. Three
+  links, and the last one was written down before any of this started.
+  **The quantity.** For each rule `r`, `κ_r = (|M_r ∩ T| / 1743) / (|M_r| /
+  134400)`, its arrival concentration over the pure pool. For an order `o`, the
+  territory of `r` is the set of cases `r` wins under `o`. For a pair, the
+  κ-only predictor is `ρ̂(i,j)` = the mean over the cases in `D_ij` of
+  `(κ_{r_i(c)} + κ_{r_j(c)}) / 2`, where `r_i(c)` and `r_j(c)` are the rules that
+  win `c` under each order. **The predictor may read `T` only through the
+  aggregate `κ_r`, never for an individual case.** That restriction is the whole
+  design: with per-case access the row is a tautology, since the measured ratio
+  *is* the arrival density of `D_ij`. What the predictor must lose is the
+  heterogeneity inside a territory, and how much it loses is the finding.
+
+  **PREDICTION — 2026-08-16, written before the territories exist.** Drafted by
+  Claude; Sergi signs it as it stands; committed before `ρ̂` exists for any pair.
+  §6 applies as in the three entries above.
+
+    **What the drafter had already seen.** Everything the C entry published, and
+    four things derived while drafting, from records already on disk: the eight
+    class ratios and their 0.1952–2.4069 interval; that 478 of 2,080 pairs fall
+    below its floor and none above its ceiling, the extreme by 3.6×; the measured
+    per-pair ratio's own shape, median 0.2849 and p75/p25 1.7543; and the
+    distribution of `κ_r` over all 577 rules — **min 0.0229, p25 0.8105, median
+    1.6265, p75 3.3046, max 30.8434**, a range of 1,344×. That last one is why
+    this hypothesis was written and the class one was not: 12.3× could not cover
+    a 30× spread and 1,344× can. It shows the mechanism is *available*, not that
+    it operates.
+    **Two notes the standing entry above requires.** First, this drafter's
+    documented error is to underestimate how violently the surface changes
+    things, four times against continuity and once by placing a band's ceiling
+    below the clean form of its own hypothesis. Read these bands as more likely
+    too narrow than too wide. Second, and because of that: **none of the rows
+    below has a dead zone.** Two of the ten rows signed before today landed
+    between a band and its refutation line, which is a drafting defect and not a
+    result. Here every band's edges are its refutation lines.
+
+  - **D-a** — **The headline.** Spearman between `ρ̂` and the measured ratio,
+    over the 2,080 pairs of `split0_starts65`, lands **between 0.75 and 0.97**.
+    *Refuted* below 0.75 or above 0.97. Below is the informative side: it would
+    mean the heterogeneity inside a rule's territory dominates the differences
+    between rules, and the explanation lives beneath the rule level, in the
+    attributes directly.
+  - **D-b** — *Rules are the mechanism, not the whole of it.* The residual
+    `ρ / ρ̂` still spans **p75/p25 above 1.20**. *Refuted* at or below 1.20,
+    which would say the rule level closes the spread completely and nothing is
+    left inside the territories. D-a and D-b are a single position taken in two
+    halves — rules explain most of it and not all of it — and the entry is wrong
+    if either half fails.
+  - **D-c** — *Today's finding, explained or not.* Of the **478** pairs that
+    fall below the 0.1952 class floor, **at least three quarters** have `ρ̂`
+    below that floor too. *Refuted* below three quarters. This is the row that
+    ties the mechanism to the specific anomaly the C entry left behind, rather
+    than to the spread in general.
+  - **D-d** — *Reported, and it cannot be a prediction.* The last link: whether
+    `κ_r` tracks the arrival marginals of the attributes in `r`'s conditions.
+    Reported and not adjudicated because both sides are computable from data
+    already on disk, so no honest band could be written for it now. It is here
+    because the chain is only closed if someone looks.
+
+  **Not predictions, invariants** — if these fail nothing above was tested:
+  parity 31/31 against `start_budget_check.json` and `budget_and_balance_ls.json`;
+  the 2,080 measured ratios read from `order_metrics_touched.json` and reproduced,
+  not re-measured; the touched mask exactly **1,743** bits; `κ_r` recomputed over
+  all 577 rules matching the five-number summary declared above; territories
+  disjoint and covering every decided case under each of the 65 orders; **no new
+  search**, no constant touched, no API call.
+  **And one that is a test, not a check:** permuting `T` within each rule's
+  extension must leave `ρ̂` unchanged for every pair. If it moves, the predictor
+  is reading `T` per case and D-a is a tautology.
+
+  **No stopping condition.** The clause in the entry above grants one successor
+  and says that successor carries none. This is it. Its absence here is that
+  clause being obeyed, not an omission.
+
 ---
 
 ## What rung 2 opens and does not resolve
