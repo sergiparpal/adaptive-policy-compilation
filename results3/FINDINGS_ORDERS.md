@@ -1064,7 +1064,7 @@ where the arrival distribution has no standing.
   a single open question: an answer to either is an answer to both, and the
   record should not be read as carrying two.~~
   **Answered 2026-08-16**, in part four, and as one item because it was one:
-  reweighting on the rate over the touched points alone gives a ratio of 0.2864
+  reweighting on the rate over the touched points alone gives a ratio of 0.2865
   against the measured 0.2825, where reweighting on the whole space gave 0.5735.
 - **Why the pairs specialize around that centre.** A separate question from the
   one above, and the one R-c opens on its own: the per-pair ratio spans a factor
@@ -1263,7 +1263,7 @@ original reweighting was out by **+103%**.
 | | ratio to the space rate | level on the corpus |
 |---|---|---|
 | class reweighting on `all(c)` | 0.5735 | **0.116685** |
-| class reweighting on `touched(c)` | 0.2864 | **0.05828** |
+| class reweighting on `touched(c)` | 0.2865 | **0.05828** |
 | measured on arrivals | 0.2825 | **0.057472** |
 
 The weights are the right ones by two published identities, checked rather than
