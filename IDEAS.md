@@ -718,6 +718,64 @@ none of them developed and in no order of precedence.
   and says that successor carries none. This is it. Its absence here is that
   clause being obeyed, not an omission.
 
+  **MEASURED — 2026-08-16. It is not the rule level.** Figures owned by
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part five, and by
+  [`order_metrics_rules.json`](results3/order_metrics_rules.json); below is only
+  each row against its own threshold. Six gates passed before any verdict — the
+  mask at 1,743 bits, `κ`'s five declared numbers exact, parity 31/31, the 2,080
+  measured ratios read and reproduced with their two counts identical from the
+  regenerated orders, the territories disjoint and covering on 65 of 65 orders by
+  two independent routes, and **the permutation test**. No new search, no
+  constant touched, 346 s, zero API calls.
+
+  - **D-a REFUTED** — Spearman **0.4962**, against a band of 0.75–0.97 whose
+    lower edge is its refutation line. It is the side the row calls informative:
+    the heterogeneity inside a territory dominates the differences between
+    rules. Clearly above zero, and two thirds of the way to the band's lower
+    edge.
+  - **D-b HOLDS** — residual `ρ/ρ̂` p75/p25 = **1.60765**, above 1.20. **And it
+    holds at the end of its range opposite to the one it was drawn for**: the
+    measured ratio's own spread is 1.754326, so dividing by the prediction leaves
+    **84.5%** of it on a log scale. The row was built to catch a rule level that
+    explained the spread completely and cannot tell "most of it" from "almost
+    none of it"; read beside D-a it says the spread is not at the rule level.
+  - **D-a and D-b were declared a single position in two halves, so the entry is
+    wrong.** Rules explain some of the ordering and almost none of the spread, not
+    most and not all.
+  - **D-c REFUTED** — **0 of the 478**, against three quarters. And 0 of all
+    2,080: `ρ̂`'s minimum is 0.3085 where the class floor is 0.195226, so no pair
+    could have satisfied it. The row compared a mean of per-rule concentrations
+    against a threshold drawn for the concentration of a disagreement set, and
+    the two share a definition and not a scale — `ρ̂` sits a factor of 2.7 above
+    the quantity it predicts at the median and spans a fifth of its range.
+  - **D-d** reported: `κ_r` against the product of its conditions' own
+    concentrations gives Spearman **0.987**, with `κ/κ̂` at median exactly 1.000
+    and p75/p25 = 1.118. **The chain's last link is nearly exact** —
+    `has_security_keyword = True` is 50% of the space and 4.07% of the touched
+    points, the most rarefied of the 69 conditions — so what fails is the first
+    link and not the generator.
+  - **The trap the entry legislated against was real, and the test has teeth.**
+    The forbidden predictor — the arrival density of the disagreement set itself
+    — correlates **1.0000** with the measured ratio, agreeing with it to
+    2.8×10⁻⁵. Permuting `T` inside the atoms of the 577 extensions, which is
+    exactly the set of permutations preserving every extension setwise, left `κ`
+    and `ρ̂` identical on 577 and 2,080 of them; **and it leaves the forbidden
+    predictor identical too**, since a winner is constant on an atom. A second
+    arm that preserves all 577 per-rule counts while moving `T` between atoms
+    moved that quantity on **1,980 of 2,080 pairs** and `ρ̂` on none, which is
+    what makes the test something `ρ̂` could have failed.
+
+  **What it settles, and the one figure that did not fit.** The mechanism the
+  entry proposed is available and does not operate: `κ` spans 1,344× and predicts
+  half the ordering of the pairs and almost none of their spread. What is left is one
+  level lower — which *part* of a rule's extension two orders fight over — and
+  part five puts a size on it: a disagreement region is 0.36× as touched as the
+  rules that win it. Of the four figures the entry declared it had derived, the
+  class interval 0.1952–2.4069, the 478 pairs below the floor, the median 0.2849
+  with p75/p25 1.7543 and `κ`'s five-number summary all reproduce exactly; the
+  range quoted beside that summary, **1,344×**, is max over min unrounded, where
+  the same ratio on the four-decimal summary is 1,346.9.
+
 ---
 
 ## What rung 2 opens and does not resolve

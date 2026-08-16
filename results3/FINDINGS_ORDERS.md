@@ -1402,10 +1402,20 @@ and the PR is what a reader can follow.
   the disagreement is concentrated in the 98% of the class arrivals never
   visit. What distinguishes those points — which attributes, which rules
   competing over them — is not measured here.
+  **Narrowed 2026-08-16 by part five, and one level down.** It is not that the
+  rules whose territories change hands are the rarely-touched ones: a predictor
+  built from exactly that correlates **0.4962** with the measured ratio. What it
+  does put a size on is the effect itself — a disagreement region is measured at
+  **0.36×** the arrival concentration of the rules that win it, at the median. So
+  the question survives, asked of the *part* of a rule's extension rather than of
+  the rule.
 - **Why pairs specialize over that sample.** R-c's spread is not closed, only
   relocated: `touched/space` still spans a factor of 30 across the 2,080 pairs.
   The class-level account is not enough, per part three's own note, and it is
   still the obvious place to look.
+  **Not the rule level either, 2026-08-16** (part five, D-b): dividing each
+  pair's ratio by the rule-level prediction leaves **84.5%** of the spread on a
+  log scale, p75/p25 falling only from 1.754 to 1.608.
 - **Whether 1,743 points is enough to measure anything about a rare class.**
   `SECURITY_INCIDENT` has 20 touched points of 50,400 and `ONCALL_ESCALATION` 7
   of 6,300. Their `touched(c)` is a rate over 20 and 7 cases and their `f` is
@@ -1419,3 +1429,286 @@ and the PR is what a reader can follow.
   modelled arrival distribution with a seed. What is now known is that the gap
   between it and the uniform space is a sampling fact about *which* combinations
   it visits — which makes the answer inherit whatever the sampler gets wrong.
+
+---
+
+# The rule level — D-a to D-d
+
+August 16, 2026. **This part of the record owns the rule-level figures.** Same
+577 rules, same 65 end orders of split 0, same 2,080 pairs. What changes is that
+each pair's ratio is no longer only measured: it is **predicted**, from a
+quantity defined on rules, and scored against the ratio part four published.
+Prediction: `IDEAS.md`, the entry *Where the 30× spread comes from, at the level
+the order actually operates on*, drafted, signed and committed before any
+territory existed — the one successor the C entry's stopping condition permits.
+These figures arrived afterwards, in **PR #29**, which is what makes the order of
+the two checkable in the log rather than asserted here. Record:
+[`order_metrics_rules.json`](order_metrics_rules.json). Zero API calls, 346 s.
+
+**One holds, two are refuted, one is reported — and the chain fails at the link
+nobody was betting on.** The rule level carries about half of the ordering
+(**ρ = 0.4962** against a band of 0.75–0.97) and almost none of the spread. The
+*last* link, from the attribute marginals to `κ_r`, is the tight one: **0.987**.
+
+---
+
+## The chain the entry drew, and where it breaks
+
+The entry proposed three links: a pair's ratio ← the arrival concentration of the
+rules whose territories change hands ← the attribute marginals ← the generator.
+Two of them are measured here and the third was declared before any of this
+started.
+
+| link | what it relates | measured |
+|---|---|---|
+| pair ← rules | `ρ̂`, the mean over `D_ij` of the two winners' `κ`, against the measured `touched/space` | Spearman **0.4962** (D-a), and the residual keeps **84.5%** of the spread on a log scale (D-b) |
+| rules ← attributes | `κ_r` against `∏ c(cond)`, the same concentration computed per condition | Spearman **0.987**, `κ/κ̂` p75/p25 = **1.118** (D-d) |
+| attributes ← generator | `has_security_keyword` at 50% of the space and 4.07% of the touched points | declared in `STATUS.md` since 8 August, not measured here |
+
+So the mechanism the entry named is **available and does not operate**: the
+attribute skew explains `κ` almost exactly, and `κ` explains half the ordering of
+the pairs and essentially none of their spread.
+
+---
+
+## The trap, and the test that is not a promise
+
+**The forbidden predictor is not merely correlated with the answer; it is the
+answer.** A pair's measured ratio is `(|D_ij ∩ T| / 1743) / (|D_ij| / 134400)`,
+the arrival density of its own disagreement set. Computed under the name
+`rho_tilde` and reported beside `ρ̂`: Spearman **1.0000** against the measured
+ratio, agreeing to **2.8×10⁻⁵**, which is the resolution the published rates
+carry. Per-case access to `T` scores 1 by construction and measures nothing.
+
+`IDEAS.md` therefore requires a test: *permuting `T` within each rule's extension
+must leave `ρ̂` unchanged for every pair.* It ran **before any verdict was
+computed**, in two arms, because the literal one passes for a reason that does
+not separate the two predictors.
+
+| arm | what it does | `κ` | `ρ̂` | the per-case quantity |
+|---|---|---|---|---|
+| **PERM-1**, literal | permutes `T` inside the **atoms** of the 577 extensions — exactly the permutations that preserve every extension setwise. **2,928 bits of `T` moved** | identical, 577 of 577 | identical, 2,080 of 2,080 | **moves on 0 pairs** |
+| **PERM-2**, with teeth | 200 cancelling pairs of moves that hold all 577 counts `\|M_r ∩ T\|` exactly while `T` changes which atoms it sits in. **800 bits moved** | identical, 577 of 577 | identical, 2,080 of 2,080 | **moves on 1,980 of 2,080 pairs**, by up to 18 cases |
+
+**Why the literal arm cannot catch a cheat, said here rather than left for a
+reader to notice.** Under first-match-wins a winner is constant on an atom — two
+cases matched by exactly the same rules cannot be decided differently — so every
+territory and every `D_ij` is a **union of atoms**, and `|D_ij ∩ T|` is invariant
+under PERM-1 exactly as `ρ̂` is. The tautology passes that arm as cleanly as the
+predictor does. PERM-2 is the arm that separates them, and its 1,980 moved pairs
+are what say the test could have failed.
+
+The construction is arithmetic, not sampling: if atom `B` is matched by exactly
+`A`'s rules plus `r`, moving a touched point from `A` to `B` raises rule `r`'s
+count by one and no other's; doing the same downwards elsewhere for the same `r`
+cancels it. Every one of the 577 counts is where it was, so `κ` cannot move, and
+a predictor reading `T` per case must. `tests/test_order_metrics_rules.py` pins
+both arms on instances small enough to check by hand, including a toy where
+PERM-1 demonstrably fails to notice the cheat.
+
+---
+
+## The gates, and there are six
+
+**THE MASK: 1,743 bits**, the same object part four built, inside the space.
+
+**KAPPA: the five numbers the entry declared it had derived come back exactly** —
+min **0.0229**, p25 **0.8105**, median **1.6265**, p75 **3.3046**, max
+**30.8434** over the 577 rules of the pure pool, every one of them with a
+non-empty extension. It is the gate that pins the **pool** and the mask together:
+the hybrid masks, another corpus or another pool move it.
+
+**PARITY: 31 of 31 rows exact**, the same gate and the same two records as parts
+one, two and four — 883 / 0.8786 / 0.8472 / 0.6033 at split 0 and 65 starts, 884
+/ 0.8796 / 0.8442 / 0.5776 at 257, all six budget rows, and 25 of 25 band cells.
+**No new search**: every order comes out of `run_full_supervision` and
+`run_band_1pct` of `order_metrics_run.py`, imported and called unchanged.
+
+**THE MATRIX: the 2,080 measured ratios are READ and reproduced, never
+re-measured.** They come from
+[`order_metrics_touched.json`](order_metrics_touched.json), joined on `(i, j)`;
+their summary comes back identical to the one that record publishes, p75/p25
+**1.754326** and max/min **29.959769** included; and the two counts each ratio is
+built from — `|D|` over the space and `|D ∩ T|` — come back identical from the
+regenerated orders on all 2,080 pairs, which is what says the read rows are about
+*these* orders.
+
+**THE TERRITORIES: 65 of 65 orders**, pairwise disjoint, covering the whole
+space, **nothing undecided**, and equal by two independent routes — the mask
+sweep `order_metrics.winners` every other figure in this thread rests on, and the
+atom route this part computes with.
+
+**THE PERMUTATION TEST**, above, blocking and run before any verdict.
+
+**One thing the arrangement turns up on its way past.** The 577 extensions cut
+the space into **4,121 atoms**, sizes 1 to 420, median 25 — and under any of the
+65 end orders only **25 to 53 rules hold a territory at all**. Everything two
+orders can disagree about is decided by a few dozen rules of 577, which is the
+resolution `ρ̂` has to work at and was not known before this run.
+
+---
+
+## The predictions of `IDEAS.md`, one by one
+
+| # | verdict | measured |
+|---|---|---|
+| **D-a** | **REFUTED**, on the informative side | Spearman between `ρ̂` and the measured ratio over the 2,080 pairs: **0.4962**, against a band of 0.75–0.97 whose lower edge is its refutation line. Clearly above zero, and two thirds of the way to the band's lower edge. |
+| **D-b** | **HOLDS** | The residual `ρ / ρ̂` has p75/p25 = **1.60765**, against a threshold of 1.20. But see below: it holds at the opposite end of its own meaning. |
+| **D-c** | **REFUTED**, and not narrowly | Of the **478** pairs below the 0.1952 class floor, **0** have `ρ̂` below it — and so do **0 of all 2,080**, because `ρ̂`'s minimum is 0.3085. The row asked for three quarters. |
+| **D-d** | *reported, not adjudicated* | Spearman between `κ_r` and `∏ c(cond)` over the 577 rules: **0.987**. The ratio `κ/κ̂` has median exactly **1.000** and p75/p25 = **1.118**. |
+
+### D-a, and what half a correlation means here
+
+**0.4962.** The entry's own text names the reading: *below is the informative
+side — it would mean the heterogeneity inside a rule's territory dominates the
+differences between rules, and the explanation lives beneath the rule level, in
+the attributes directly.* That is the outcome, and D-a and D-b were declared *a
+single position taken in two halves*, so **the entry is wrong** and says so
+itself: rules explain some of it, not most of it.
+
+**Where the predictor loses.** `ρ̂` is a mean of per-rule concentrations over the
+cases of `D_ij`; the measured ratio is the concentration of `D_ij` itself. The
+two are not on the same scale, and the gap is the finding rather than a defect of
+the units: the residual `ρ / ρ̂` has a median of **0.3630**, so a disagreement
+region is measured at **0.36×** the arrival concentration of the rules that win
+it. Disagreement lives in the rarely-touched *part* of a rule's extension, not in
+rarely-touched rules — which is part four's open question (*why disagreement
+lives where the corpus does not go*) with a number on it for the first time.
+
+### D-b, which holds at the far end of its own meaning
+
+The row's refutation clause reads: *refuted at or below 1.20, which would say the
+rule level closes the spread completely and nothing is left inside the
+territories.* Nothing of the sort happened. The measured ratio's own spread is
+p75/p25 = 1.754326 and the residual's is **1.60765**, so on a log scale
+**84.5%** of the spread survives dividing by the prediction — arithmetic on two
+figures this record publishes, not a third measurement.
+
+**So D-b is a threshold that cannot fail on the side it was drawn for.** It was
+built to catch a rule level that explained everything, and it passes identically
+whether rules explain most of the spread or almost none of it. Read with D-a it
+says what it can: the spread is not at the rule level. Read on its own it says
+very little, and that is a fact about how the row was drawn, in the same family
+as C-a's band that could not accommodate its own hypothesis.
+
+### D-c, refuted by a scale the row did not check
+
+**0 of 478**, and 0 of all 2,080. The floor is the smallest of the eight class
+ratios `touched(c)/all(c)`, **0.195226** — `T2_TECHNICAL` — and `ρ̂` never goes
+below **0.3085** anywhere in the set. The row asked whether the pairs that fall
+below the class floor do so *because* the rules whose territories change hands
+are rarely-touched ones. They do not: no combination of winners in this material
+produces a mean `κ` that low, because a mean of 25 to 53 rules' concentrations
+sits near the middle of `κ`'s distribution however the pairs are chosen.
+
+Derived from the 2,080 rows the record stores, and not a second measurement:
+`ρ̂` runs 0.3085 / 0.6999 / 0.7816 / 0.8824 / 1.7424 (min, p25, median, p75, max)
+against the measured ratio's 0.0544 / 0.2039 / 0.2849 / 0.3576 / 1.6284. **The
+predictor is a factor of 2.7 above the quantity it predicts at the median and
+spans a fifth of its range** — p75/p25 1.261 against 1.754, max/min 5.65 against
+29.96. A row comparing the two against one absolute threshold was comparing
+quantities that share a definition of *concentration* and nothing else.
+
+### D-d, reported: the last link is the tight one
+
+`κ̂(r) = ∏ c(cond)`, where `c(cond)` is the same concentration computed for a
+one-condition rule, is what `κ_r` would be if the attributes in `r`'s conditions
+were independent under both measures. Over the 577 rules and the 69 distinct
+conditions they use: **Spearman 0.987**, `κ/κ̂` with median exactly **1.000**,
+p25 0.9444, p75 1.0562 — p75/p25 = **1.118** — and tails at 0.3926 and 25.46.
+
+The generator's skew is visible directly in the conditions:
+
+| condition | share of the space | share of the touched points | `c(cond)` |
+|---|---|---|---|
+| `has_security_keyword = True` | 0.5000 | 0.0407 | **0.0815** |
+| `channel = phone` | 0.2500 | 0.0539 | 0.2157 |
+| `severity = 1` | 0.2500 | 0.0545 | 0.2180 |
+| `prior_tickets_30d = 0` | 0.0476 | 0.1377 | **2.8916** |
+| `language = en` | 0.2000 | 0.5663 | 2.8313 |
+
+`STATUS.md` has recorded since 8 August that `has_security_keyword` is 3% of
+arrivals against 50% of the attribute space; here it is 4.07% of the 1,743
+touched points, and it is the single most rarefied condition of the 69. **So the
+chain's last link is not in question — it is nearly exact.** What fails is the
+first one, and it fails inside the territories.
+
+---
+
+## What this settles, and what it opens
+
+**The spread is not a rule-level fact.** The entry's hypothesis was that a pair's
+ratio is the arrival concentration of the rules whose territories change hands,
+and that the 1,344× range of `κ` was what could cover a 30× spread in the pairs.
+The range is there and the mechanism does not operate: half the ordering and
+essentially none of the spread. What is left is what D-a's own refutation clause
+names — the heterogeneity **inside** a territory dominates the differences
+between territories.
+
+**And that heterogeneity now has a size.** A disagreement region is 0.36× as
+touched as the rules that win it, at the median, with a residual spanning 0.075
+to 1.11. Whatever distinguishes a pair whose ratio is 0.054 from one whose ratio
+is 1.63 lives below the rule, in which *part* of a rule's extension the two
+orders happen to fight over.
+
+**Nothing above is withdrawn.** Every figure in parts one to four is what it
+always was, on the surface it names. This part adds a predictor and reports that
+it fails, which changes no measurement any of them made.
+
+---
+
+## The register, fifth part
+
+| id | finding | status |
+|---|---|---|
+| **D-a** | Spearman between `ρ̂` and the measured ratio, between 0.75 and 0.97. | **REFUTED**: 0.4962, below the band's lower edge, which is its refutation line. The informative side, by the row's own text. |
+| **D-b** | The residual `ρ / ρ̂` still spans p75/p25 above 1.20. | **HOLDS**: 1.60765 — and 84.5% of the original spread on a log scale, so it holds at the end of its range opposite to the one it was drawn to catch. |
+| **D-c** | At least three quarters of the 478 pairs below the class floor have `ρ̂` below it too. | **REFUTED**: 0 of 478, and 0 of all 2,080; `ρ̂`'s minimum is 0.3085 against a floor of 0.1952. |
+| **D-d** | Reported, not adjudicated. | `κ_r` against the product of its conditions' concentrations: Spearman **0.987**, ratio p75/p25 **1.118**. The last link of the chain is nearly exact. |
+| **D-e** | *(not predicted)* What the predictor's inputs actually are. | **25 to 53 rules of 577 hold a territory** under any of the 65 end orders, over 4,121 atoms. Everything two orders disagree about is decided by a few dozen rules. |
+
+**The entry carries no stopping condition, and its absence is deliberate**: the
+C entry granted one successor and said that successor would carry none. This
+record adds none either, and takes no decision from the outcome.
+
+---
+
+## Provenance of the rule-level part
+
+**Cost: 346 s in one process, zero API calls.** Regeneration is 339 s of it
+(135.2 s and 118.1 s for the two 257-start searches, 86.2 s for the whole 1%
+band); the arrangement, the territories, the 2,080-pair sweep and the whole
+permutation test are under 5 s together, because a pair is summed over 4,121
+atoms instead of 134,400 cases.
+
+**`code_dirty: false` and `git_dirty: false`.** The instrument was committed
+before the run, in its own commit carrying no figure, as part four's was. What
+identifies the code is `code_digest 7c79e8de11c1cb97`; what identifies the
+**orders** is neither that nor the commit, it is the parity gate, and the parity
+gate is exact on all 31 rows. The `_env.git_commit` is a branch commit that the
+rebase merge rewrites, which is why this section cites **PR #29** and no SHA.
+
+**One figure of the entry's own arithmetic does not reproduce, and it is
+rounding.** The entry gives `κ`'s range as **1,344×**; that is max over min on
+the unrounded values, and the record's `range_factor` is **1,346.9** because the
+gate computes it from the four-decimal summary it compares against. The five
+numbers themselves are exact.
+
+## What the rule-level part does not settle
+
+- **What distinguishes the part of a rule's extension where two orders fight.**
+  It is now the only place left for the spread to live, and nothing here
+  describes it: not which attributes, not whether it is the same region for
+  every pair.
+- **Whether a finer rule-level predictor would do better.** `ρ̂` is the one the
+  entry defined — a case-weighted mean of two winners' `κ` — and trying others
+  on this data after seeing 0.4962 is what §0 of `PLAN_ORDER_METRICS.md` exists
+  to prevent. What is measured is that *this* one fails, not that the rule level
+  is exhausted.
+- **The other three splits, and the 257-order set.** Measured on split 0's 65 end
+  orders because that is the set every matrix in this record holds. Unchanged
+  from part four.
+- **Why only a few dozen rules hold territory.** D-e is a by-product of the
+  gates, not a question anybody asked. Whether 25–53 is a fact about
+  first-match-wins over a uniform space, about the 577 rules, or about the
+  orders the search returns is not measured.

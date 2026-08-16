@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of August 15, 2026. **Not a history** — that is the four
+What is known, as of August 16, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md)
 and [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), each with its
 dated errata in place. Every figure here already exists in one of them.
@@ -197,6 +197,27 @@ in two units. What it does **not** do is make the space readable as a deployment
 surface: the correction is a measurement over a 1.3% sample that only the corpus
 can identify, not a per-class factor, so the space record plus the class
 frequencies still does not reach 5.75%.
+
+**And it is not the rules that decide which points those are.** The same 2,080
+pairs again, over the **exhaustive space, pure pool**, with the touched mask
+entering only through a per-rule aggregate
+([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part five;
+[`order_metrics_rules.json`](results3/order_metrics_rules.json)). A rule's
+arrival concentration — the share of the touched points its extension holds over
+the share of the space it holds — spans **1,344×** across the 577, and the
+predictor built from it, the mean over a pair's disagreement set of the two
+winning rules' concentration, reaches a Spearman of **0.4962** against the
+measured per-pair ratio and leaves **84.5%** of its spread on a log scale
+(p75/p25 1.754 → 1.608). Half the ordering, almost none of the spread. What the same run
+does find: a disagreement region is **0.36×** as touched as the rules that win
+it, at the median — so the effect is inside a rule's extension, not between rules
+— and the chain's *last* link is nearly exact, `κ` against the product of its
+conditions' own concentrations giving **0.987**, with `has_security_keyword` at
+50% of the space and 4.07% of the touched points. Two by-products: only **25 to
+53 rules of 577** hold a territory under any of these orders, and the forbidden
+per-case predictor — the arrival density of the disagreement set itself —
+correlates **1.0000** with the measured ratio, which is why the run's permutation
+test is blocking.
 
 **This caveat applies equally to
 [`order_search_ls.json`](results3/order_search_ls.json)**, which produced the
