@@ -63,6 +63,11 @@ ESCRITORES = [
     # rewrites none of them. Adding it here widens what this test covers, which
     # is the only direction this list is ever allowed to move.
     "peldano3.order_metrics_rules",
+    # Who holds territory, added 2026-08-16 with the audit note on part five.
+    # A sixth writer: it reads order_metrics_rules.json — kappa included, which
+    # it never recomputes — and writes territory_holders.json, correcting the
+    # reading of a figure rather than any of its values.
+    "peldano3.territory_holders",
 ]
 
 CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
