@@ -563,6 +563,68 @@ none of them developed and in no order of precedence.
   line — permits one successor entry and no more, and that successor carries no
   stopping condition of its own because this one is it.
 
+  **MEASURED — 2026-08-16. It is which points arrive.** Figures owned by
+  [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), part four, and by
+  [`order_metrics_touched.json`](results3/order_metrics_touched.json); below is
+  only each row against its own threshold. Four gates passed — parity 31/31, the
+  eight published `all(c)` identical, the 2,080 published per-pair distances
+  identical, the touched mask at exactly 1,743 bits with the class masks
+  partitioning it — no new search, no constant touched, 343 s, zero API calls.
+  The 98.5% this entry declared it had derived for `T2_TECHNICAL` recomputes to
+  98.5%, and every `arrivals/all` ratio it listed to the digit it gave.
+
+  - **C-a NEITHER** — `f(T2_TECHNICAL)` = **0.986**, above the 0.60–0.95 band and
+    inside the 1.10 refutation line. The fall is essentially *all* which-points.
+    Note what that says about the row rather than about the world: the strongest
+    form of the hypothesis it argues from is that multiplicity contributes
+    nothing, which is `f = 1`, and that value sits outside the band as written.
+    Three classes come out above 1, which the row explicitly allowed for;
+    `ACCOUNT_MANAGER` at 1.065 is one ticket of 109 drawn twice.
+  - **C-b HOLDS** — 8 of 8, against a threshold of 6. `BILLING_SPECIALIST` and
+    `SELF_SERVICE_DEFLECT`, the two the row names as the test of whether the
+    story is about which points at all, both go **up** under `touched`. Two of
+    the eight are degenerate and are reported as such — `SECURITY_INCIDENT` draws
+    20 tickets onto 20 distinct points and `ONCALL_ESCALATION` 7 onto 7, so
+    `touched = arrivals` exactly there and their signs cannot fail to match.
+    Without them it is 6 of 6, still above the threshold.
+  - **C-c HOLDS** — **0.05828**, inside the 0.043–0.072 band and **+1.4%
+    relative** to the measured 0.057472, where reweighting on `all(c)` was
+    +103%. The weights are checked against two published identities: the same
+    weights on `arrivals(c)` give back 0.057472 and on `all(c)` give back
+    0.116685.
+  - **C-d** reported: `touched/space` p75/p25 = **1.754** against R-c's
+    **1.880**, which reproduces bit for bit; the residual `arrivals/touched`
+    step gives **1.066**. The spread does not shrink, it moves to the same step
+    the level did — 89% of it on a log scale — so R-c's other half is narrowed
+    and not closed.
+
+  **What it settles.** The gap this entry opened on is closed, and it was one
+  question in two units: *why 3.5×* and *why 0.28 and not 0.57* are answered by
+  which points arrive, 98.6% of the deficit, with multiplicity carrying 1.4%.
+  The unweighted figure says it without any weighting at all — the 2,080 pairs
+  disagree on **5.68%** of the 1,743 touched points, each counted once, against
+  5.75% of the 2,000 draws and 20.35% of the space.
+  **What it does not settle** is the question the answer creates: disagreement is
+  concentrated in the part of the space arrivals never visit — `T2_TECHNICAL` at
+  19.69% of its 36,720 space points against 3.84% of the 661 the corpus reaches —
+  and nothing here says what distinguishes those points, nor why pairs differ
+  from each other over which of them get sampled.
+  **And it does not rehabilitate the space as a deployment surface**: the
+  correction is not per class, it is a measurement over a 1.3% sample only the
+  corpus can identify, so a reader holding the space record and the class
+  frequencies still cannot reach 5.75%.
+
+  **The drafter's calibration note was right about the direction, once.** The
+  note bet that this band ran too *low*, against four losses on continuity, and
+  `f` came out above it. The note also says one confirmation would not establish
+  that the drafter has stopped being wrong, only that the direction of the error
+  changed, and that is all this is.
+
+  **The stopping condition above is quoted verbatim in the record and applied by
+  nobody.** C-b and C-c hold; C-a landed between its band and its refutation
+  line. What follows is Sergi's to decide, and no successor entry is written
+  here.
+
 ---
 
 ## What rung 2 opens and does not resolve
