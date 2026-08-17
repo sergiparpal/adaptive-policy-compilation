@@ -1650,7 +1650,10 @@ between territories.
 touched as the rules that win it, at the median, with a residual spanning 0.075
 to 1.11. Whatever distinguishes a pair whose ratio is 0.054 from one whose ratio
 is 1.63 lives below the rule, in which *part* of a rule's extension the two
-orders happen to fight over.
+orders happen to fight over — **a reading of 0.4962 and not a measured result;
+see the first two bullets of *what this part does not settle*, corrected
+2026-08-16**, since a `κ` conditioned on the order would test the same thing
+without leaving the rule level.
 
 **Nothing above is withdrawn.** Every figure in parts one to four is what it
 always was, on the surface it names. This part adds a predictor and reports that
@@ -1752,9 +1755,25 @@ numbers themselves are exact.
 ## What the rule-level part does not settle
 
 - **What distinguishes the part of a rule's extension where two orders fight.**
-  It is now the only place left for the spread to live, and nothing here
-  describes it: not which attributes, not whether it is the same region for
-  every pair.
+  It is **one of the two places the spread can live**, and nothing here describes
+  it: not which attributes, not whether it is the same region for every pair.
+  **Corrected 2026-08-16.** This bullet said it was *the only place left*, which
+  is wrong and is the sentence being withdrawn. `κ` is defined over `M_r`, the
+  whole extension, while `ρ̂` applies it to the cases `r` **wins** under one
+  order — a different subset of `M_r` in every one of the 65. So a rule whose
+  extension is touched at the pool average can hold a territory that is not, and
+  the gap that opens there is still at the rule level: closing it takes
+  conditioning `κ` on the order, not descending beneath the rule.
+- **How much of the 0.4962 is that extension-versus-territory gap, and how much
+  is heterogeneity inside the territory.** The two are different quantities and
+  this run separates neither: `ρ̂` reads one `κ` per rule, computed over the whole
+  extension, so the shortfall it leaves is their sum. That is why D-a's clause —
+  *the explanation lives beneath the rule level, in the attributes directly* — is
+  **a reasonable reading of 0.4962 and not a result measured here**, and this
+  record does not upgrade it. Separating them means scoring a second predictor,
+  `κ` conditioned on the territory, against a matrix already seen; that is
+  governed by §0 of `PLAN_ORDER_METRICS.md` exactly as the bullet below is, and it
+  is not to be tried on this data after the fact.
 - **Whether a finer rule-level predictor would do better.** `ρ̂` is the one the
   entry defined — a case-weighted mean of two winners' `κ` — and trying others
   on this data after seeing 0.4962 is what §0 of `PLAN_ORDER_METRICS.md` exists
