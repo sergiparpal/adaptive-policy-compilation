@@ -62,6 +62,79 @@ the audit cost zero API calls.
 
 ---
 
+## The signed rows, and how they came out
+
+**Twenty-four rows have been signed before the figures they name existed. This is
+their scoreboard**, and it is a fact about the drafter rather than about the
+material. It exists because the standing calibration note in
+[`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
+which way their bands usually err — and a note like that is worth nothing without
+a count behind it.
+
+**The convention, stated before the count so that the count can be checked.**
+
+1. **The `Q` rows count.** They live in §0 of `PLAN_ORDER_METRICS.md` instead of
+   `IDEAS.md`, and the regime is the same: drafted by Claude on 2026-08-14 and
+   signed by Sergi the same day — *I adopt §0 as drafted, without changes* — where
+   the signing commit adds only that line and a pointer in §4, so no row of the
+   table moved. Same drafter, same shape of band with its own *refuted by* column,
+   same "committed before any figure exists".
+2. **Rows marked *reported, not adjudicated* are listed apart and are not in the
+   denominator.** There was no band to hit or miss, so they are not calibration
+   events — but they are signed rows and they are a fact about the drafter, so
+   they are counted separately rather than dropped.
+3. **One signed row is one event, with the verdict its own record gives it.**
+   `S-d` is one refutation and not two, though the record publishes two readings
+   of it; `Q-d` is one though only its second half failed. Splitting rows by
+   clause would make the denominator depend on drafting style, and hand the next
+   drafter an incentive to write fewer clauses to protect the ratio.
+
+| thread | signed | adjudicated | refuted | dead zone | hold | reported |
+|---|---|---|---|---|---|---|
+| **Q** · the instrument (§0 of `PLAN_ORDER_METRICS.md`) | 6 | 6 | **2** | 0 | 4 | 0 |
+| **S** · the corpus surface | 6 | 6 | **4** | 0 | 2 | 0 |
+| **R** · rank transfer | 4 | 3 | **1** | 1 | 1 | 1 |
+| **C** · the touched points | 4 | 3 | **0** | 1 | 2 | 1 |
+| **D** · the rule level | 4 | 3 | **2** | 0 | 1 | 1 |
+| **total** | **24** | **21** | **9** | **2** | **10** | **3** |
+
+**Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
+`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`. Hold: `Q-a`, `Q-b`, `Q-c`,
+`Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`. Reported: `R-d`, `C-d`, `D-d`.
+**Dead zone: `R-b` and `C-a`** — a row landing between its band and its
+refutation line, which is a drafting defect and not a result. **`D` has none**,
+because after those two the D entry declared every band's edges to be its own
+refutation lines.
+
+**Why the per-thread column and not a single ratio.** The calibration note is
+about direction, and one ratio destroys it: `S` at 4 of 6 and `C` at 0 of 3 are
+not the same drafting behaviour, and the thread that bet on arrivals *differing*
+from the space is the one that stopped being refuted.
+
+**The convention chosen is the milder of the two available, and that is declared
+here rather than left to be found later.** With the `Q` rows, 9 of 21 = **42.9%**
+refuted; without them, 7 of 15 = **46.7%**. `Q` is in because of the common
+drafter and the sample size, not because of the figure — and it moves the figure
+3.8 points the flattering way, which is exactly why saying so is not optional.
+
+**Where the verdicts are read from.** The `Q` column comes from *the predictions
+of §0, one by one* in the first part of
+[`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) — its register table
+carries `G1`–`G6` instead — and `S`, `R`, `C` and `D` from the registers of parts
+two, three, four and five of the same record. **Excluded, and this is what makes
+the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
+band; and `S-g`, `C-e` and `D-e`, which the records add as *(not predicted)* and
+which nobody signed.
+
+**The only earlier mention of a count does not reconcile with any of this.** The
+note inside the D entry says *two of the ten rows signed before today* landed in a
+dead zone. The numerator is right and the denominator matches nothing: 20 rows
+were signed before that entry and 18 of them adjudicated. It sits inside a signed
+prediction block, which is not edited — not even to annotate it — so it stands as
+written and this line is the reconciliation.
+
+---
+
 ## What is established
 
 **Priority is not recoverable from the syntactic shape of the rules.** Three
