@@ -30,6 +30,14 @@ fuera de sus abiertos: va marcada en su sitio, con puntero al registro que la
 posee. Esto **no** es una re-verificación del documento —ninguna cifra se volvió
 a comprobar—; la revisión del 12 de agosto sigue siendo la última.
 
+**Corregido el 17 de agosto de 2026, en un sitio: el marcador de la fila 2 de
+§3.** Ninguna cifra se volvió a comprobar tampoco aquí; lo que falla es de nuevo
+la lectura, y es la misma que §4 desmonta tres secciones más abajo — el marcador
+no nombra su pool, y por defecto nombra el equivocado. Va con su errata en su
+sitio. Se añade además la salvedad que las métricas de órdenes del 15 y 16 de
+agosto imponen sobre cualquier marcador de un solo número, que no existía cuando
+se escribió la fila.
+
 ---
 
 ## 1. Conclusiones a las que se llegó
@@ -219,6 +227,47 @@ sostiene.
 >
 > La fila se deja en su sitio y la tabla sin renumerar: sacarla borraría el motivo
 > por el que se reordenó el 12 de agosto, que está escrito justo encima.
+
+> **[ERRATA 2026-08-17] La fila 2 comete en su marcador el error que §4 corrige.**
+> La fila dice que el juicio por pares es *«puntuable contra 0.8530 arriba y
+> 0.5115 abajo»*. **Ninguna de las dos cifras lleva su pool, y por defecto son
+> las del pool equivocado.**
+>
+> `0.8530` es un orden total **puro**, con la subsunción apagada. Pero lo que este
+> experimento produce son **aristas declaradas**, y las aristas se consumen en el
+> motor **híbrido**, que es el que las tiene. Sobre esa misma base y ese mismo
+> pool, el orden buscado con oráculo da **0.7734** y la cota por cobertura es
+> **0.8540**, no 0.9010 (`results3/order_search_ls.json`; los posee
+> `results3/FINDINGS3.md` §1 con su errata y `results3/FINDINGS_AUDIT.md`).
+> Puntuar un resultado híbrido contra 0.8530 infla el listón unos **0.08** por
+> leer la superficie de otro motor — que es, con otro nombre, el encadenamiento
+> de figuras de motores distintos que la errata (a) de §4 desmonta. Escrito tres
+> secciones antes de desmontarlo.
+>
+> El suelo tiene el mismo problema y además es peor: `born_at` **0.5115** es pool
+> puro y corpus completo. **Sobre el pool híbrido no está medido.** Medirlo es
+> gratis y es el primer paso del experimento, no un detalle de presentación.
+>
+> **El marcador correcto, entonces, depende de qué motor consuma la salida:**
+>
+> | si las aristas se consumen en… | techo con oráculo | cota | suelo |
+> |---|---|---|---|
+> | motor **híbrido** (subsunción + aristas) — el caso por defecto | **0.7734** | 0.8540 | **sin medir** |
+> | orden total **puro**, compilando las aristas a orden y apagando la subsunción | 0.8530 | 0.9010 | 0.5115 |
+>
+> Corpus test salvo el suelo, que es corpus completo. La fila se deja como está
+> escrita, con esta errata al lado, por la misma razón por la que se dejó la fila 1.
+>
+> **[AÑADIDO 2026-08-17] Y un marcador de un solo número es más débil de lo que
+> podía saberse el 12 de agosto.** Las métricas de órdenes del 15 y 16 de agosto
+> (`results3/FINDINGS_ORDERS.md`, que las posee) establecen que 0.8530 y 0.7734
+> son **el mejor de 65 arranques**, y que los 65 órdenes finales son **65 máquinas
+> de comportamiento distintas**. Comparar un orden declarado contra ese máximo es
+> compararlo contra un billete premiado, no contra un nivel. La comparación
+> honesta es contra la **distribución** de los 65, que ya está regenerada en
+> `results3/order_metrics.json` y no cuesta nada volver a leer. Esto no retira la
+> fila: la abarata, porque una comparación contra una distribución tolera un
+> resultado intermedio y una contra un máximo no.
 
 ## 4. ¿Hay esperanza de que el experimento no termine sin éxito?
 

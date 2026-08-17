@@ -23,20 +23,29 @@ escalones, en este orden y no en otro:
 
 1. **Lo que dicta la semántica.** Si `ext(A) ⊊ ext(B)` y discrepan en acción, gana A. Es
    derivado, no declarado, y **parcial**: sobre las 29 reglas ordena 61 de los 406 pares, un
-   15%. Pero **no es gratis, y esa es la corrección más importante de este informe**: sobre
-   una política escrita a mano es sólido y sin coste; sobre la base aprendida de 577 reglas
-   *baja la propia cota de cobertura* de 0.9010 a 0.8540 y el orden buscado de 0.8530 a
-   0.7734 (corpus test), porque retira reglas correctas de la puja. §3, nivel 1.
+   15%. Pero **no es gratis**: sobre una política escrita a mano es sólido y sin coste;
+   sobre la base aprendida de 577 reglas *baja la propia cota de cobertura* de 0.9010 a
+   0.8540 y el orden buscado de 0.8530 a 0.7734 (corpus test), porque retira reglas
+   correctas de la puja. §3, nivel 1. **Esta corrección no es de este informe**: la hizo la
+   errata (a) de §4 de `RESUMEN_CHAT.md` el 12 de agosto de 2026, y aquí se re-derivó por
+   otro camino sin saberlo.
 2. **El residuo se declara, en aristas referenciales entre pares concretos**, nunca en un
    entero global. Medido: subsunción más 199 aristas mínimas sobre la política oculta dan
    e2e **1.0000**, error silencioso 0.0000, cero conflictos, cero impasses **sobre el
    corpus** — sobre el espacio ese motor no se ha medido nunca.
-3. **Si nadie declara, se busca o se aprende.** Búsqueda sobre casos etiquetados:
-   **0.8530** (corpus test) frente a una cota de cobertura de 0.9010. Aprendizaje desde
-   feedback asimétrico —el único que un sistema desplegado produce—: **+0.2011** sobre
-   `born_at`, el 61% de lo que compra la supervisión total (corpus test).
+3. **Si nadie declara, se busca, se aprende o se hereda de la estructura.** Búsqueda sobre
+   casos etiquetados: **0.8530** (corpus test) frente a una cota de cobertura de 0.9010.
+   Aprendizaje desde feedback asimétrico —el único que un sistema desplegado produce—:
+   **+0.2011** sobre `born_at`, el 61% de lo que compra la supervisión total (corpus test).
+   Y por debajo de las dos, **un canal sin etiquetas y sin oráculo** que este informe no
+   contemplaba: invertir el orden de nacimiento de la base aprendida da 0.5668 sobre el
+   espacio, por encima del voraz del registro llevado allí y cerca de una búsqueda que sí ve
+   el oráculo. §2, y léase con la advertencia que lleva: es la única cifra de este documento
+   sin registro que la posea.
 4. **Cuando nada resuelve, abstenerse.** `CONFLICT` no es un fallo del motor: es la única
-   forma de que el error sea medible en vez de silencioso.
+   forma de que el error sea medible en vez de silencioso. Y no es una concesión: **una base
+   que nunca entra en conflicto no comete menos errores, los comete en silencio**, con un
+   caso medido que lo demuestra (§3, nivel 3).
 
 Y dos advertencias que valen tanto como la escalera:
 
@@ -80,7 +89,7 @@ Tres criterios sintácticos, con la política **perfecta** cargada y sin LLM de 
 | criterio | resultado | por qué falla |
 |---|---|---|
 | **Especificidad** (gana la de más condiciones) | e2e 0.5875, err. silencioso 0.2140, CONFLICT 25.3% | prioridad y nº de condiciones son casi ortogonales |
-| **Orden de llegada** | 100% en orden de diseño, 12.8% invertido, **49.3%** aleatorio | no tiene contenido propio: transporta el orden que le des |
+| **Orden de llegada** | 100% en orden de diseño, 12.8% invertido, **49.3%** aleatorio — **las tres sobre la política oculta**, no sobre una base aprendida | no tiene contenido propio: transporta el orden que le des |
 | **Subsunción** | err. silencioso **0.0000** (política escrita a mano) / **53.12%** (base aprendida) | mide una virtud del **autor**, no del criterio |
 
 **La imposibilidad de la especificidad es una prueba, no una medición.** Dentro de la
@@ -105,6 +114,41 @@ nunca puede invertir y el desempate cae a `born_at`. De ahí la regla práctica:
 > **Si una baseline tonta supera a tu oráculo, tu árbitro está invirtiendo prioridades. No
 > es la política la que está mal.**
 
+**La fila del orden de llegada engaña si se lee sin su etiqueta.** El 12.8% es lo que
+saca el orden invertido **con la política oculta cargada en el motor**, donde invertir el
+orden de diseño es catastrófico por construcción: es una tautología al revés, no una medida
+del criterio. La medida que importa —invertir el orden de nacimiento de la **base
+aprendida**— dice otra cosa muy distinta, y sale a favor:
+
+```
+                         corpus      espacio
+  born_at                0.5115       0.3148
+  born_at INVERTIDO      0.5420       0.5668
+  aleatorio (media 50)   0.4172       0.3768   desv 0.0711 / 0.1026
+```
+
+Sobre el corpus la ventaja es de media desviación: un signo, no una mejora. Sobre el
+espacio son **+0.252 y casi dos desviaciones**, y esa cifra deja al invertido **por encima
+del voraz del registro llevado al espacio (0.4931) y cerca de la búsqueda local ajustada
+sobre train del corpus (0.6105), que sí usa el oráculo**. Sin una sola etiqueta y sin
+buscar nada.
+
+> **Advertencia sobre estas cifras, y es la única de este tipo en el documento.** Provienen
+> de un *probe* ad hoc de `RESUMEN_CHAT.md` §2.1, cuyo propio encabezado las declara
+> protocolo no oficial y no grabado en `results*/`. **No tienen registro que las posea**, y
+> el script que las produce no está en el árbol. Sus tres baselines sí verifican: 0.3148 y
+> 0.3768 son exactos contra la errata de `FINDINGS3.md`; 0.5115 y 0.4172 son *corpus
+> completo* y no deben mezclarse con los 0.5216 / 0.4227 del registro, que son de corpus
+> *test*. Las dos cifras del invertido son las que están sin confirmar. Reproducirlas cuesta
+> minutos y cero llamadas.
+
+Qué significa, con cuidado: **el orden de llegada no carece de señal, carece de signo.**
+Las reglas nacidas temprano son defaults ajustados a la distribución común —lo que el corpus
+premia y una medida uniforme no—, así que invertirlo es una aproximación mucho mejor *a la
+política* y apenas mejor como *default de despliegue*. La conclusión del peldaño 1 sobre
+este criterio sigue en pie tal como se escribió, sobre el objeto sobre el que se escribió;
+lo que no se sostiene es extenderla a "la antigüedad no sirve para nada".
+
 **La trampa de la subsunción merece un párrafo aparte** porque es el hallazgo más fácil de
 malinterpretar. El 0.0000 sobre la política escrita a mano no valida el criterio: valida
 al autor, que respetaba el convenio "regla estrecha = excepción a la ancha". Un proponente
@@ -115,9 +159,14 @@ sobreajustado— y ahí el mismo criterio da 53.12% de error silencioso.
 peor de lo que es y como cuatro veces mejor a la vez. Sobre la base aprendida la subsunción
 sólo se compromete en **160 de 2000 casos** (cobertura 0.0800); el 53.12% son **85 errores
 sobre esos 160**, y el e2e resultante es 0.0375. Es decir: el criterio no se vuelve
-temerario, se vuelve mudo, y cuando habla se equivoca más que una moneda. **La subsunción
-no es gratis; es gratis condicionada a una disciplina de autoría.** De eso sale la
-propuesta **P3**.
+temerario, se vuelve mudo, y cuando habla se equivoca más que una moneda.
+
+Y son **dos** fallos, no uno, que conviene no fundir porque tienen remedios distintos: sobre
+la base aprendida apenas hay anidamiento que detectar —**5.17% de los pares**, contra el 15%
+de la política escrita a mano— y, cuando lo hay, corona reglas estrechas y equivocadas.
+**Estrecha ≠ correcta.** El nivel semántico no sólo se equivoca sobre una base sin autor:
+ordena relativamente menos que sobre una con autor. **La subsunción no es gratis; es gratis
+condicionada a una disciplina de autoría.** De eso sale la propuesta **P3**.
 
 ---
 
@@ -131,9 +180,13 @@ ambos en el mismo grafo, más abstención.
 `A ≺ B` si `ext(A) ⊊ ext(B)`, calculado como máscara de bits sobre el espacio exhaustivo.
 Es derivado, no declarado. Es **parcial**: 61 de 406 pares sobre 29 reglas.
 
-**Y no es un nivel gratuito: es una decisión de diseño con precio medido.** Sobre la base
-aprendida de 577 reglas, activar la subsunción como nivel no sobrescribible cuesta esto
-(`results3/FINDINGS3.md` §1 y su erratum de 2026-08-08; `results3/order_search_ls.json`):
+**Y no es un nivel gratuito: es una decisión de diseño con precio medido.** Esto lo
+estableció la errata (a) de §4 de `RESUMEN_CHAT.md`, fechada el 12 de agosto de 2026, contra
+un documento que afirmaba estar «a un eslabón» de cerrar la cadena; aquí se re-derivó desde
+los registros por otro camino y sin conocerla, lo cual sirve de confirmación cruzada y no de
+hallazgo nuevo. Sobre la base aprendida de 577 reglas, activar la subsunción como nivel no
+sobrescribible cuesta esto (`results3/FINDINGS3.md` §1 y su erratum de 2026-08-08;
+`results3/order_search_ls.json`):
 
 | pool | cota por cobertura (corpus) | orden buscado (corpus test) | el mismo orden sobre el espacio |
 |---|---|---|---|
@@ -201,6 +254,23 @@ disparador de escalación es sólo cobertura o conflicto, nunca "la respuesta fu
 incorrecta"**, y esa restricción es exactamente lo que hace medible el error silencioso.
 Un empate resuelto a ciegas es un error invisible; un conflicto declarado es un evento
 contable y la señal que alimenta el aprendizaje.
+
+**Y esto no es una preferencia estética por la prudencia: hay un caso medido en el que se
+ve el precio de no abstenerse.** La formulación es de `RESUMEN_CHAT.md` §1 y la cifra es de
+`results2/FINDINGS2.md` §4:
+
+> **Particionar no elimina los errores: elimina el detector de errores.**
+
+La base de v2 con semilla 17 son **seis reglas** que particionan limpiamente el espacio
+usando sólo tres atributos. Cobertura 0.940. **Cero conflictos** en toda la ejecución — y
+error silencioso **0.7553**. Tres de cada cuatro decisiones mal, sin que el sistema emitiera
+una sola señal de que había algo que decidir.
+
+Ese es el argumento entero del nivel 3, y conviene tenerlo en esta forma y no en la
+abstracta: **el número de conflictos no es un coste que minimizar**. Una base que nunca
+entra en conflicto puede ser una base que ha dejado de mirar. Y como el error silencioso
+sólo se puede medir con el oráculo —que en producción no existe— el conteo de conflictos es
+el único instrumento que un sistema desplegado tiene para saber que está perdido.
 
 ### Lo medido, y sobre qué superficie
 
@@ -309,6 +379,15 @@ Consecuencia de diseño, y es la que ordena todo lo demás:
 > que ya ejecuta sin error y sin alimentar.** Antes de decidir mejor quién gana el
 > conflicto hay que conseguir una base donde las reglas se pisen.
 
+**Con una reserva que hay que hacer explícita, porque esa frase invita a leer más de lo que
+dice.** «Conseguir una base con solape» suena a último eslabón de una cadena cuyo resto está
+probado, y no lo es: **ni el 0.8530 ni el 61% del feedback viajan con una base nueva**. Los
+dos se midieron sobre las 577 reglas del peldaño 1; una base con solape real es material
+distinto, y lo que un orden buscado o un canal de feedback extraigan de ella está por medir.
+Lo señala la errata (c) de §4 de `RESUMEN_CHAT.md`, escrita el 12 de agosto de 2026 contra
+un documento que afirmaba estar «a un eslabón» de cerrar la cadena. La afirmación defendible
+es más modesta y sigue bastando: **sin solape no hay ni experimento**.
+
 ### La palabra "material" significa dos cosas y conviene no fundirlas
 
 Lo de arriba es **material de solape**: reglas que compiten, sin las cuales no hay arista
@@ -394,45 +473,90 @@ modelo redactando la predicción destruye el propósito del archivo (regla dura 
 `CLAUDE.md`). Lo que sigue son borradores direccionales: para entrar en el marcador de
 `STATUS.md` a cada uno le falta la banda numérica y la firma.
 
-Ordenadas por lo que atacan: P1 y P2 van al material de solape, P3 al precio del nivel 1,
-P4 a la identificabilidad, P5 al instrumento.
+**Ordenadas por un criterio prestado, que es mejor que el que traían.** `RESUMEN_CHAT.md`
+§3 ordena sus experimentos así: *lo que puede **retirar** una premisa publicada va antes que
+lo que puede **añadir** una capacidad*. Bajo esa regla P1 va primero —un resultado nulo
+retira la tesis de que la declaración es el canal que falta, que es la premisa sobre la que
+se abrió el peldaño 2— y P4 y P5 van al final, porque añaden instrumento. Por lo que atacan:
+P1 y P2 al material de solape, P3 al precio del nivel 1, P4 a la identificabilidad, P5 al
+instrumento.
 
-### P1 · Elicitación por **caso testigo**, no por aritmética abstracta
+### P1 · Juicio por pares disparado por **solape offline**, sobre la base ya pagada
 
-En vez de preguntar "¿se solapan R3 y R7 y quién gana?", **materializar un ticket de
-`ext(R3) ∩ ext(R7)` y preguntar la cola**. La respuesta *es* la arista. El motor ya enumera
-las 134.400 combinaciones con máscaras de bits, así que el testigo es una operación
-determinista y gratis.
+No pedirle al proponente que escriba reglas que se pisen —que es lo que ocho ejecuciones
+dicen que no hace—, sino **detectar los pares que se pisan y preguntarle cuál gana**. Con
+dos decisiones de protocolo que son la propuesta entera:
 
-*Por qué podría funcionar:* convierte una relación abstracta entre extensiones, que el
-proponente falla, en un ticket concreto.
+**Dónde salen los pares: del solape de extensiones calculado offline**, sobre las 134.400
+combinaciones, no de un conflicto en tiempo de ejecución. El motor ya calcula ese solape
+para el vecindario de v2. Disparar por conflicto en ejecución es la misma sequía que dejó a
+`EDGE_CONTRADICTS` sin medir nada en ocho runs: **2 conflictos**. Un experimento que
+necesita conflictos para arrancar no repara el eslabón roto — *es* el eslabón roto.
 
-**Dos objeciones que hay que poner delante, porque salen del registro y son duras.**
+**Sobre qué base: las 577 reglas del peldaño 1, que ya están pagadas.** Sin bucle de sombra
+nuevo, sin corpus nuevo, y sin depender de conseguir primero una base con solape, que es la
+dependencia circular que hunde la versión ingenua de esta idea.
 
-*Primera: la operación de destino tampoco está demostrada.* `results/llm_run.json` mide
+*(Ambas decisiones son la forma enmendada que propone `RESUMEN_CHAT.md` §2.2, cuya errata
+del 12 de agosto de 2026 identificó la circularidad antes que este informe.)*
+
+**Y cómo se materializa la pregunta:** en vez de "¿se solapan R3 y R7 y quién gana?",
+**construir un ticket de `ext(R3) ∩ ext(R7)` y preguntar la cola**. La respuesta *es* la
+arista, y el testigo es un `&` de dos enteros: determinista y gratis.
+
+**Tres objeciones que hay que poner delante, porque salen del registro y son duras.**
+
+*Primera, y es la que más directamente apunta al blanco:* las dos únicas veces que un
+conflicto real llegó al proponente —exactamente la situación que este experimento fabrica—
+respondió con **cero aristas** una vez y **falló el parseo** la otra. **0 de 2.** Con n=2 y
+sin que la elicitación fuera una pregunta directa no es una refutación, pero es lo más
+cercano a evidencia que existe y no apunta a favor.
+
+*Segunda: la operación de destino tampoco está demostrada.* `results/llm_run.json` mide
 exactamente eso —un ticket delante, la cola por decidir— en
-`proposal_action_accuracy` = **0.3877** sobre 632 escalaciones. Y la comparación es
-especialmente pertinente, no analógica: 594 de esas 632 escalaciones fueron CONFLICT, es
-decir casos de contienda, que es justo lo que un testigo materializa. La premisa "es la
-operación que demostradamente contesta" es falsa tal cual: es otra operación que también
-falla, sólo que falla distinto.
+`proposal_action_accuracy` = **0.3877** sobre 632 escalaciones, 594 de ellas CONFLICT. La
+premisa "es la operación que demostradamente contesta" es falsa tal cual: es otra operación
+que también falla, sólo que falla distinto.
 
-*Segunda: la métrica obvia es degenerada.* Las 14 aristas rechazadas cayeron **todas** por
+*Tercera: la métrica obvia es degenerada.* Las 14 aristas rechazadas cayeron **todas** por
 `no_solapan`. Un testigo extraído de la intersección garantiza solape por construcción, así
 que `EDGE_DISJOINT` deja de ser alcanzable y la tasa de aceptación sube desde 0/14 haga lo
 que haga el modelo. Y como el validador no puede comprobar que el ganador sea el correcto
-(§3, nivel 2), lo que P1 produciría con un 39% de acierto son **aristas aceptadas y
+(§3, nivel 2), lo que se produciría con un 39% de acierto son **aristas aceptadas y
 falsas**: convertir un rechazo visible en un error silencioso, que es la conversión exacta
 que este proyecto existe para evitar.
 
-*Coste:* una llamada por par contendiente. *Predicción falsable, corregida:* **medir
-corrección de la arista contra el orden de capas, no aceptación**. Sobre las 29 reglas
-ocultas el ganador de cada par es conocido por construcción, así que el experimento es
-barato y tiene verdad: si la tasa de aristas *correctas* por testigo no supera claramente
-la tasa base de `proposal_action_accuracy`, el formato de la pregunta no era el problema y
-P1 queda refutada. Si la supera, hace falta un segundo experimento antes de creerse nada:
-el mismo protocolo sobre una base aprendida, donde no hay verdad contra la que comprobar,
-para ver si el validador deja pasar más basura de la que filtra.
+**El marcador, y hay que etiquetarle el pool o no vale nada.** La salida se puntúa como
+orden, no como tasa de aceptación. Pero **contra qué depende de qué motor la consuma**, y
+confundirlo es encadenar figuras de motores distintos:
+
+| si las aristas se consumen en… | techo con oráculo, misma base | cota | suelo |
+|---|---|---|---|
+| el motor **híbrido** (subsunción + aristas) — el caso por defecto, porque es donde viven las aristas | **0.7734** | 0.8540 | `born_at` sobre pool híbrido: **sin medir** |
+| un orden total **puro**, si las aristas se compilan a orden y se apaga la subsunción | 0.8530 | 0.9010 | `born_at` 0.5115 (corpus completo) |
+
+Corpus test salvo el suelo. Puntuar un resultado híbrido contra 0.8530 sería inflar el
+listón en ~0.08 por leer el pool equivocado. **El suelo de la fila que importa está sin
+medir y medirlo es gratis**: es el primer paso del experimento, no un detalle.
+
+**Y una salvedad que sólo existe desde el 15 de agosto:** 0.7734 y 0.8530 son *el mejor de
+65 arranques*, y los 65 órdenes finales son 65 máquinas distintas (§6). Comparar un orden
+declarado contra ese máximo es compararlo contra un billete premiado. La comparación honesta
+es contra la **distribución** de los 65, y ese material ya está regenerado en
+`results3/order_metrics.json`.
+
+*Coste:* céntimos — una llamada por par contendiente que se decida muestrear.
+*Predicciones falsables, y son dos porque miden cosas distintas:*
+
+1. *Con verdad, barata:* sobre las 29 reglas ocultas el ganador de cada par es conocido por
+   construcción (§7, P5). Si la tasa de aristas **correctas** por testigo no supera
+   claramente el 0.3877 de base, el formato de la pregunta no era el problema y P1 queda
+   refutada ahí, antes de tocar la base aprendida.
+2. *Sin verdad, la que decide:* el orden que resulte de las aristas declaradas sobre las 577
+   reglas puntúa por encima del suelo `born_at` de su propio pool y dentro de la
+   distribución de los 65 arranques. Si queda en el suelo, la declaración no aporta canal;
+   si queda entre suelo y distribución, aporta y no basta, que es un resultado y no un
+   empate.
 
 ### P2 · Elicitación **diferida**, sobre el subgrafo vivo
 
@@ -555,6 +679,13 @@ denominador —la convención que ya usa el hilo de predicciones.
    fiable"— pero no dice nada sobre con qué frecuencia las políticas reales tienen esa
    forma. Distinguir "falsado como criterio general" de "medida su tasa de fallo en el
    dominio" merece quedar escrito.
+
+   Hay una respuesta parcial a esto que conviene registrar, de `RESUMEN_CHAT.md` §1: **la
+   política oculta no tiene por qué ser "la correcta del universo", es el manual de ESTA
+   empresa**, y lo que se mide es si una función estructurada se recupera de la experiencia,
+   no si la política es buena. Eso desactiva la objeción para lo que el experimento mide y
+   no la desactiva para la generalización: con qué frecuencia los manuales reales tienen
+   overrides anchos arriba sigue sin medirse aquí ni en ningún sitio de este repositorio.
 2. **El 1.0000 del motor híbrido es una cifra de corpus.** Sobre el espacio exhaustivo ese
    motor no se ha medido, y este informe ha sostenido en el §6 que las dos superficies ni
    siquiera rankean igual. Es la comprobación pendiente más barata de todas las que aquí se
@@ -571,8 +702,22 @@ denominador —la convención que ya usa el hilo de predicciones.
    las 181 reglas silenciadas son propiedades de las 577 reglas que produjo el peldaño 1
    bajo arbitraje por especificidad. Una base nacida bajo otro arbitraje sería otra, y
    `FINDINGS` ya avisa de que esas mediciones son cotas, no simulaciones del bucle.
-6. **Este informe no ha ejecutado nada.** Es una lectura de los registros, con las cifras
-   contrastadas contra el `FINDINGS` que posee cada una y contra el código donde el código
-   era la fuente (los seis verdictos del validador, la localidad de las aristas, la
-   superficie de `ceiling_check2`). Todo lo de la sección 7 está sin medir y así está
-   marcado.
+6. **Dos cifras de este informe no tienen registro que las posea**, y son las únicas: el
+   0.5420 y el 0.5668 de `born_at` invertido sobre la base aprendida (§2). Vienen de un
+   *probe* que `RESUMEN_CHAT.md` §2.1 declara no oficial y que no está en `results*/`; el
+   script que lo produce no existe en el árbol. Sus baselines del espacio sí verifican
+   exactos contra `FINDINGS3.md`. Van citadas con esa advertencia en su sitio, y si alguna
+   vez sostienen una conclusión hay que medirlas antes — cuesta minutos y cero llamadas.
+7. **Este informe no ha ejecutado nada.** Es una lectura de los registros, con las cifras
+   contrastadas contra el `FINDINGS` que posee cada una —salvo las dos del punto anterior—
+   y contra el código donde el código era la fuente (los seis verdictos del validador, la
+   localidad de las aristas, la superficie de `ceiling_check2`). Todo lo de la sección 7
+   está sin medir y así está marcado.
+8. **Parte de lo que aquí se corrige ya estaba corregido.** El precio del nivel 1, la
+   circularidad del disparador por conflicto y la advertencia de que las cifras no viajan
+   con una base nueva son las tres erratas que `RESUMEN_CHAT.md` se puso a sí mismo el 12 de
+   agosto de 2026. Este informe llegó a las tres por otro camino y sin conocerlas. Que dos
+   lecturas independientes de los mismos registros converjan es evidencia a favor de las
+   conclusiones; también es un aviso de que **este repositorio ya contiene análisis que un
+   documento nuevo puede estar repitiendo**, y de que leer `RESUMEN_CHAT.md` va antes de
+   escribir el siguiente.
