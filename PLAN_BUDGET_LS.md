@@ -390,4 +390,4 @@ not a promise; the run must print its own seconds per fraction.
 **§1 ≈ 38 min** at 65 starts per configuration; §2 adds 10 configurations at full
 supervision (≈ 5 min, the weighted half at comparable cost per D1); the space
 transfer adds 2.3 s plus ~1 ms per order. The estimate of *1–2 h* in
-`RESUMEN_CHAT.md` §3 is the right order of magnitude on a slower machine.
+`CHAT_SUMMARY.md` §3 is the right order of magnitude on a slower machine.
