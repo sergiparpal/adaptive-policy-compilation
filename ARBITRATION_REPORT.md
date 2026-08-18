@@ -27,7 +27,7 @@ no other:
    costless; over the learned base of 577 rules it *lowers the coverage bound itself* from
    0.9010 to 0.8540 and the searched order from 0.8530 to 0.7734 (corpus test), because it
    takes correct rules out of the running. §3, level 1. **This correction is not this
-   report's**: erratum (a) of §4 of `RESUMEN_CHAT.md` made it on August 12, 2026, and here
+   report's**: erratum (a) of §4 of `CHAT_SUMMARY.md` made it on August 12, 2026, and here
    it was re-derived by another route without knowing that.
 2. **The residue is declared, in referential edges between concrete pairs**, never in a
    global integer. Measured: subsumption plus 199 minimal edges over the hidden policy give
@@ -134,7 +134,7 @@ fitted on the corpus train (0.6105), which does use the oracle**. Without a sing
 without searching anything.
 
 > **A warning about these figures, and it is the only one of its kind in the document.**
-> They come from an ad hoc *probe* in `RESUMEN_CHAT.md` §2.1, whose own header declares them
+> They come from an ad hoc *probe* in `CHAT_SUMMARY.md` §2.1, whose own header declares them
 > unofficial protocol and not recorded in `results*/`. **They have no record that owns
 > them**, and the script that produces them is not in the tree. Its three baselines do
 > verify: 0.3148 and 0.3768 are exact against the `FINDINGS3.md` erratum; 0.5115 and 0.4172
@@ -182,7 +182,7 @@ both in the same graph, plus abstention.
 derived, not declared. It is **partial**: 61 of 406 pairs over 29 rules.
 
 **And it is not a free level: it is a design decision with a measured price.** This was
-established by erratum (a) of §4 of `RESUMEN_CHAT.md`, dated August 12, 2026, against a
+established by erratum (a) of §4 of `CHAT_SUMMARY.md`, dated August 12, 2026, against a
 document claiming to be "one link" from closing the chain; here it was re-derived from the
 records by another route and without knowing it, which serves as cross-confirmation and not
 as a new finding. Over the learned base of 577 rules, switching subsumption on as a
@@ -257,7 +257,7 @@ resolved blindly is an invisible error; a declared conflict is a countable event
 signal that feeds the learning.
 
 **And this is not an aesthetic preference for prudence: there is a measured case where the
-price of not abstaining can be seen.** The formulation is from `RESUMEN_CHAT.md` §1 and the
+price of not abstaining can be seen.** The formulation is from `CHAT_SUMMARY.md` §1 and the
 figure from `results2/FINDINGS2.md` §4:
 
 > **Partitioning does not eliminate the errors: it eliminates the error detector.**
@@ -383,7 +383,7 @@ more than it says.** "Getting a base with overlap" sounds like the last link of 
 whose remainder is tested, and it is not: **neither the 0.8530 nor the feedback's 61%
 travels with a new base**. Both were measured over rung 1's 577 rules; a base with real
 overlap is different material, and what a searched order or a feedback channel would extract
-from it is unmeasured. Erratum (c) of §4 of `RESUMEN_CHAT.md` points it out, written on
+from it is unmeasured. Erratum (c) of §4 of `CHAT_SUMMARY.md` points it out, written on
 August 12, 2026 against a document claiming to be "one link" from closing the chain. The
 defensible claim is more modest and still suffices: **with no overlap there is not even an
 experiment**.
@@ -472,7 +472,7 @@ directional drafts: to enter `STATUS.md`'s scoreboard each one is missing the nu
 and the signature.
 
 **Ordered by a borrowed criterion, which is better than the one they came with.**
-`RESUMEN_CHAT.md` §3 orders its experiments like this: *what can **withdraw** a published
+`CHAT_SUMMARY.md` §3 orders its experiments like this: *what can **withdraw** a published
 premise comes before what can **add** a capability*. Under that rule P1 goes first —a null
 result withdraws the thesis that declaration is the missing channel, which is the premise on
 which rung 2 was opened— and P4 and P5 go last, because they add instrument. By what they
@@ -495,7 +495,7 @@ conflicts to get started does not repair the broken link — it *is* the broken 
 new corpus, and no dependence on first getting a base with overlap, which is the circular
 dependency that sinks the naive version of this idea.
 
-*(Both decisions are the amended form `RESUMEN_CHAT.md` §2.2 proposes, whose erratum of
+*(Both decisions are the amended form `CHAT_SUMMARY.md` §2.2 proposes, whose erratum of
 August 12, 2026 identified the circularity before this report did.)*
 
 **And how the question is materialized:** instead of "do R3 and R7 overlap and which one
@@ -679,7 +679,7 @@ outside the denominator —the convention the predictions thread already uses.
    a general criterion" from "its failure rate measured in the domain" deserves to be
    written down.
 
-   There is a partial answer to this worth recording, from `RESUMEN_CHAT.md` §1: **the
+   There is a partial answer to this worth recording, from `CHAT_SUMMARY.md` §1: **the
    hidden policy does not have to be "the right one in the universe", it is THIS company's
    manual**, and what is measured is whether a structured function is recovered from
    experience, not whether the policy is good. That defuses the objection for what the
@@ -704,7 +704,7 @@ outside the denominator —the convention the predictions thread already uses.
    the loop.
 6. **Two figures in this report have no record that owns them**, and they are the only ones:
    the 0.5420 and the 0.5668 of reversed `born_at` over the learned base (§2). They come
-   from a *probe* that `RESUMEN_CHAT.md` §2.1 declares unofficial and that is not in
+   from a *probe* that `CHAT_SUMMARY.md` §2.1 declares unofficial and that is not in
    `results*/`; the script that produces it does not exist in the tree. Its space baselines
    do verify exactly against `FINDINGS3.md`. They are cited with that warning in place, and
    if they ever support a conclusion they have to be measured first — it costs minutes and
@@ -716,9 +716,9 @@ outside the denominator —the convention the predictions thread already uses.
    and is marked as such.
 8. **Part of what is corrected here was already corrected.** The price of level 1, the
    circularity of the conflict trigger and the warning that the figures do not travel with a
-   new base are the three errata `RESUMEN_CHAT.md` issued against itself on August 12, 2026.
+   new base are the three errata `CHAT_SUMMARY.md` issued against itself on August 12, 2026.
    This report reached all three by another route and without knowing them. That two
    independent readings of the same records converge is evidence in favour of the
    conclusions; it is also a warning that **this repository already contains analysis that a
-   new document may be repeating**, and that reading `RESUMEN_CHAT.md` comes before writing
+   new document may be repeating**, and that reading `CHAT_SUMMARY.md` comes before writing
    the next one.
