@@ -1,723 +1,724 @@
-# El arbitraje de prioridad en `adaptive-policy-compilation`
+# Priority arbitration in `adaptive-policy-compilation`
 
-Informe sobre la pregunta *"¿qué regla gana cuando varias casan y discrepan?"*, escrito
-contra los registros del repositorio a fecha de `STATUS.md` (2026-08-16).
+A report on the question *"which rule wins when several match and disagree?"*, written
+against the repository's records as of `STATUS.md` (2026-08-16).
 
-**Convención, y este informe la cumple sobre sí mismo.** Toda cifra nombra dos cosas: su
-**superficie** —**corpus** (distribución de llegada, n=2000, semilla 17) o **espacio** (las
-134.400 combinaciones, medida uniforme)— y el **registro que la posee**. Las dos
-superficies no son intercambiables y ni siquiera rankean igual. **Este informe no publica
-ninguna cifra por primera vez**: todas viven en un `FINDINGS` con su erratum al lado y en
-`STATUS.md`, que las indexa; aquí sólo se citan con su puntero. Lo **establecido** va con su
-registro; lo **propuesto** va marcado como tal y con una predicción falsable, nunca mezclado
-con lo medido.
-
----
-
-## 0. La respuesta, en una página
-
-La prioridad de una política estratificada **no es un dato derivable de las reglas: es
-información externa que alguien tiene que suministrar**. La única pregunta legítima es
-quién, en qué formato y cuándo se le pregunta. De ahí sale una escalera de cuatro
-escalones, en este orden y no en otro:
-
-1. **Lo que dicta la semántica.** Si `ext(A) ⊊ ext(B)` y discrepan en acción, gana A. Es
-   derivado, no declarado, y **parcial**: sobre las 29 reglas ordena 61 de los 406 pares, un
-   15%. Pero **no es gratis**: sobre una política escrita a mano es sólido y sin coste;
-   sobre la base aprendida de 577 reglas *baja la propia cota de cobertura* de 0.9010 a
-   0.8540 y el orden buscado de 0.8530 a 0.7734 (corpus test), porque retira reglas
-   correctas de la puja. §3, nivel 1. **Esta corrección no es de este informe**: la hizo la
-   errata (a) de §4 de `RESUMEN_CHAT.md` el 12 de agosto de 2026, y aquí se re-derivó por
-   otro camino sin saberlo.
-2. **El residuo se declara, en aristas referenciales entre pares concretos**, nunca en un
-   entero global. Medido: subsunción más 199 aristas mínimas sobre la política oculta dan
-   e2e **1.0000**, error silencioso 0.0000, cero conflictos, cero impasses **sobre el
-   corpus** — sobre el espacio ese motor no se ha medido nunca.
-3. **Si nadie declara, se busca, se aprende o se hereda de la estructura.** Búsqueda sobre
-   casos etiquetados: **0.8530** (corpus test) frente a una cota de cobertura de 0.9010.
-   Aprendizaje desde feedback asimétrico —el único que un sistema desplegado produce—:
-   **+0.2011** sobre `born_at`, el 61% de lo que compra la supervisión total (corpus test).
-   Y por debajo de las dos, **un canal sin etiquetas y sin oráculo** que este informe no
-   contemplaba: invertir el orden de nacimiento de la base aprendida da 0.5668 sobre el
-   espacio, por encima del voraz del registro llevado allí y cerca de una búsqueda que sí ve
-   el oráculo. §2, y léase con la advertencia que lleva: es la única cifra de este documento
-   sin registro que la posea.
-4. **Cuando nada resuelve, abstenerse.** `CONFLICT` no es un fallo del motor: es la única
-   forma de que el error sea medible en vez de silencioso. Y no es una concesión: **una base
-   que nunca entra en conflicto no comete menos errores, los comete en silencio**, con un
-   caso medido que lo demuestra (§3, nivel 3).
-
-Y dos advertencias que valen tanto como la escalera:
-
-- **El mecanismo de ejecución no es el cuello de botella.** El motor del peldaño 2 ya da
-  1.0000 sobre el corpus con un autor perfecto. Lo que falta es **material**: en ocho
-  ejecuciones el proponente generó 2 conflictos y 14 aristas, ninguna aceptada.
-- **El orden no está identificado por el objetivo.** Órdenes que puntúan igual son
-  máquinas distintas. Eso hace el problema de *verificación* más duro que el de
-  arbitraje, y ninguna arquitectura de árbitro lo resuelve.
+**Convention, and this report applies it to itself.** Every figure names two things: its
+**surface** —**corpus** (arrival distribution, n=2000, seed 17) or **space** (the 134,400
+combinations, uniform measure)— and the **record that owns it**. The two surfaces are not
+interchangeable and do not even rank the same. **This report publishes no figure for the
+first time**: they all live in a `FINDINGS` with its erratum beside it and in `STATUS.md`,
+which indexes them; here they are only cited with their pointer. What is **established**
+goes with its record; what is **proposed** goes marked as such and with a falsifiable
+prediction, never mixed with what is measured.
 
 ---
 
-## 1. Qué pregunta es exactamente
+## 0. The answer, in one page
 
-Dado un caso, el motor calcula el conjunto de reglas que casan y devuelve una de tres
-salidas: `IMPASSE` (ninguna casa → problema de **cobertura**), `ACTION` (una gana) o
-`CONFLICT` (varias casan y discrepan → problema de **prioridad**). La pregunta de este
-informe es la tercera salida, y conviene no confundirla con la primera: son dos carencias
-distintas y un sistema puede tener cobertura perfecta y prioridad rota.
+The priority of a stratified policy **is not a datum derivable from the rules: it is
+external information that somebody has to supply**. The only legitimate question is who, in
+what format and when they are asked. Out of that comes a four-step ladder, in this order and
+no other:
 
-La separación que hace el proyecto y que hay que sostener en cualquier rediseño:
+1. **What the semantics dictates.** If `ext(A) ⊊ ext(B)` and they disagree on action, A
+   wins. It is derived, not declared, and **partial**: over the 29 rules it orders 61 of the
+   406 pairs, 15%. But **it is not free**: over a hand-written policy it is sound and
+   costless; over the learned base of 577 rules it *lowers the coverage bound itself* from
+   0.9010 to 0.8540 and the searched order from 0.8530 to 0.7734 (corpus test), because it
+   takes correct rules out of the running. §3, level 1. **This correction is not this
+   report's**: erratum (a) of §4 of `RESUMEN_CHAT.md` made it on August 12, 2026, and here
+   it was re-derived by another route without knowing that.
+2. **The residue is declared, in referential edges between concrete pairs**, never in a
+   global integer. Measured: subsumption plus 199 minimal edges over the hidden policy give
+   e2e **1.0000**, silent error 0.0000, zero conflicts, zero impasses **over the corpus** —
+   over the space that engine has never been measured.
+3. **If nobody declares, it is searched, learned or inherited from the structure.** Search
+   over labelled cases: **0.8530** (corpus test) against a coverage bound of 0.9010.
+   Learning from asymmetric feedback —the only kind a deployed system produces—:
+   **+0.2011** over `born_at`, 61% of what full supervision buys (corpus test). And below
+   the two, **a channel with no labels and no oracle** that this report did not contemplate:
+   reversing the birth order of the learned base gives 0.5668 over the space, above the
+   record's greedy carried there and close to a search that does see the oracle. §2, and
+   read it with the warning it carries: it is the only figure in this document with no
+   record that owns it.
+4. **When nothing resolves it, abstain.** `CONFLICT` is not an engine failure: it is the
+   only way for the error to be measurable instead of silent. And it is not a concession:
+   **a base that never enters conflict does not make fewer errors, it makes them in
+   silence**, with a measured case that demonstrates it (§3, level 3).
 
-> **Representación ≠ ejecución.** Sobre las 134.400 combinaciones del espacio, las 29
-> reglas escritas en el DSL son equivalentes a sus predicados originales, y evaluarlas con
-> *first-match-wins* reproduce la política exacta. El DSL no pierde nada. Lo que fallaba
-> era el árbitro.
+And two warnings worth as much as the ladder:
 
-Esa verificación —fijada por `tests/test_encoding_invariant.py`, no sólo publicada— es lo
-que convierte "el sistema va mal" en "el sistema **ejecuta mal una política que representa
-bien**", que es una afirmación mucho más fuerte y mucho más accionable. Cualquier
-diagnóstico de arbitraje debería empezar por reproducirla: si la representación no está
-limpia, no se sabe qué se está midiendo.
+- **The execution mechanism is not the bottleneck.** Rung 2's engine already gives 1.0000
+  over the corpus with a perfect author. What is missing is **material**: in eight runs the
+  proposer generated 2 conflicts and 14 edges, none accepted.
+- **The order is not identified by the objective.** Orders that score the same are
+  different machines. That makes the *verification* problem harder than the arbitration
+  one, and no arbiter architecture solves it.
 
 ---
 
-## 2. Lo falsado: la prioridad no está en la forma de las reglas
+## 1. What the question is exactly
 
-Tres criterios sintácticos, con la política **perfecta** cargada y sin LLM de por medio
-(corpus, `results/FINDINGS.md`):
+Given a case, the engine computes the set of rules that match and returns one of three
+outputs: `IMPASSE` (none matches → a **coverage** problem), `ACTION` (one wins) or
+`CONFLICT` (several match and disagree → a **priority** problem). This report's question is
+the third output, and it is worth not confusing it with the first: they are two distinct
+deficiencies and a system can have perfect coverage and broken priority.
 
-| criterio | resultado | por qué falla |
+The separation the project makes and that any redesign has to sustain:
+
+> **Representation ≠ execution.** Over the space's 134,400 combinations, the 29 rules
+> written in the DSL are equivalent to their original predicates, and evaluating them with
+> *first-match-wins* reproduces the exact policy. The DSL loses nothing. What was failing
+> was the arbiter.
+
+That verification —pinned by `tests/test_encoding_invariant.py`, not merely published— is
+what turns "the system is going wrong" into "the system **executes badly a policy it
+represents well**", which is a much stronger and much more actionable claim. Any arbitration
+diagnosis ought to start by reproducing it: if the representation is not clean, you do not
+know what you are measuring.
+
+---
+
+## 2. What was falsified: priority is not in the shape of the rules
+
+Three syntactic criteria, with the **perfect** policy loaded and no LLM involved (corpus,
+`results/FINDINGS.md`):
+
+| criterion | result | why it fails |
 |---|---|---|
-| **Especificidad** (gana la de más condiciones) | e2e 0.5875, err. silencioso 0.2140, CONFLICT 25.3% | prioridad y nº de condiciones son casi ortogonales |
-| **Orden de llegada** | 100% en orden de diseño, 12.8% invertido, **49.3%** aleatorio — **las tres sobre la política oculta**, no sobre una base aprendida | no tiene contenido propio: transporta el orden que le des |
-| **Subsunción** | err. silencioso **0.0000** (política escrita a mano) / **53.12%** (base aprendida) | mide una virtud del **autor**, no del criterio |
+| **Specificity** (the one with most conditions wins) | e2e 0.5875, silent err. 0.2140, CONFLICT 25.3% | priority and number of conditions are nearly orthogonal |
+| **Arrival order** | 100% in design order, 12.8% reversed, **49.3%** random — **all three over the hidden policy**, not over a learned base | it has no content of its own: it carries whatever order you give it |
+| **Subsumption** | silent err. **0.0000** (hand-written policy) / **53.12%** (learned base) | it measures a virtue of the **author**, not of the criterion |
 
-**La imposibilidad de la especificidad es una prueba, no una medición.** Dentro de la
-propia política: H01 (2 condiciones) debe ganar a H03 (1), y H16 (1) debe ganar a H24 (2).
-Ninguna función monótona del número de condiciones satisface ambas. No es un
-hiperparámetro mal puesto; es una imposibilidad de representación.
+**Specificity's impossibility is a proof, not a measurement.** Within the policy itself: H01
+(2 conditions) must beat H03 (1), and H16 (1) must beat H24 (2). No monotone function of the
+number of conditions satisfies both. It is not a badly set hyperparameter; it is a
+representational impossibility.
 
-**La forma generalizable del fallo**, que es lo que se lleva uno a otro dominio: *la
-especificidad funciona si y solo si las excepciones son **refinamientos** de las reglas que
-anulan.* Se invierte en cuanto la política tiene una capa de **overrides anchos** encima
-—seguridad, cumplimiento, on-call—, que por naturaleza se escriben con pocas condiciones,
-mientras las reglas estrechas de caso especial viven abajo. Vale la pena decirlo con el
-vocabulario correcto: **arriba hay overrides anchos, no defaults**; los defaults están al
-fondo y a veces son los más específicos de la base. Esa es la forma normal de una política
-de negocio, no una patología del caso de estudio.
+**The generalizable form of the failure**, which is what one carries to another domain:
+*specificity works if and only if the exceptions are **refinements** of the rules they
+override.* It inverts as soon as the policy has a layer of **broad overrides** on top
+—security, compliance, on-call—, which by nature are written with few conditions, while the
+narrow special-case rules live at the bottom. It is worth saying with the right vocabulary:
+**at the top there are broad overrides, not defaults**; the defaults are at the bottom and
+are sometimes the most specific in the base. That is the normal shape of a business policy,
+not a pathology of the case study.
 
-**La firma diagnóstica, que es exportable.** Bajo el motor de especificidad, `keep_k(k=4)`
-—una rejilla burda de reglas de 4 condiciones— **supera a la política oculta**. No por ser
-mejor política: por ser inmune a la inversión, ya que con especificidad uniforme el árbitro
-nunca puede invertir y el desempate cae a `born_at`. De ahí la regla práctica:
+**The diagnostic signature, which is exportable.** Under the specificity engine,
+`keep_k(k=4)` —a coarse grid of 4-condition rules— **beats the hidden policy**. Not by being
+a better policy: by being immune to the inversion, since with uniform specificity the arbiter
+can never invert and the tie-break falls to `born_at`. Hence the practical rule:
 
-> **Si una baseline tonta supera a tu oráculo, tu árbitro está invirtiendo prioridades. No
-> es la política la que está mal.**
+> **If a dumb baseline beats your oracle, your arbiter is inverting priorities. It is not
+> the policy that is wrong.**
 
-**La fila del orden de llegada engaña si se lee sin su etiqueta.** El 12.8% es lo que
-saca el orden invertido **con la política oculta cargada en el motor**, donde invertir el
-orden de diseño es catastrófico por construcción: es una tautología al revés, no una medida
-del criterio. La medida que importa —invertir el orden de nacimiento de la **base
-aprendida**— dice otra cosa muy distinta, y sale a favor:
+**The arrival-order row misleads if it is read without its label.** The 12.8% is what the
+reversed order scores **with the hidden policy loaded into the engine**, where reversing the
+design order is catastrophic by construction: it is a tautology backwards, not a measurement
+of the criterion. The measurement that matters —reversing the birth order of the **learned
+base**— says something very different, and it comes out in favour:
 
 ```
-                         corpus      espacio
+                         corpus       space
   born_at                0.5115       0.3148
-  born_at INVERTIDO      0.5420       0.5668
-  aleatorio (media 50)   0.4172       0.3768   desv 0.0711 / 0.1026
+  born_at REVERSED       0.5420       0.5668
+  random (mean of 50)    0.4172       0.3768   sd 0.0711 / 0.1026
 ```
 
-Sobre el corpus la ventaja es de media desviación: un signo, no una mejora. Sobre el
-espacio son **+0.252 y casi dos desviaciones**, y esa cifra deja al invertido **por encima
-del voraz del registro llevado al espacio (0.4931) y cerca de la búsqueda local ajustada
-sobre train del corpus (0.6105), que sí usa el oráculo**. Sin una sola etiqueta y sin
-buscar nada.
+Over the corpus the advantage is half a deviation: a sign, not an improvement. Over the
+space it is **+0.252 and almost two deviations**, and that figure leaves the reversed order
+**above the record's greedy carried onto the space (0.4931) and close to the local search
+fitted on the corpus train (0.6105), which does use the oracle**. Without a single label and
+without searching anything.
 
-> **Advertencia sobre estas cifras, y es la única de este tipo en el documento.** Provienen
-> de un *probe* ad hoc de `RESUMEN_CHAT.md` §2.1, cuyo propio encabezado las declara
-> protocolo no oficial y no grabado en `results*/`. **No tienen registro que las posea**, y
-> el script que las produce no está en el árbol. Sus tres baselines sí verifican: 0.3148 y
-> 0.3768 son exactos contra la errata de `FINDINGS3.md`; 0.5115 y 0.4172 son *corpus
-> completo* y no deben mezclarse con los 0.5216 / 0.4227 del registro, que son de corpus
-> *test*. Las dos cifras del invertido son las que están sin confirmar. Reproducirlas cuesta
-> minutos y cero llamadas.
+> **A warning about these figures, and it is the only one of its kind in the document.**
+> They come from an ad hoc *probe* in `RESUMEN_CHAT.md` §2.1, whose own header declares them
+> unofficial protocol and not recorded in `results*/`. **They have no record that owns
+> them**, and the script that produces them is not in the tree. Its three baselines do
+> verify: 0.3148 and 0.3768 are exact against the `FINDINGS3.md` erratum; 0.5115 and 0.4172
+> are *full corpus* and must not be mixed with the record's 0.5216 / 0.4227, which are
+> corpus *test*. The two figures of the reversed order are the ones left unconfirmed.
+> Reproducing them costs minutes and zero calls.
 
-Qué significa, con cuidado: **el orden de llegada no carece de señal, carece de signo.**
-Las reglas nacidas temprano son defaults ajustados a la distribución común —lo que el corpus
-premia y una medida uniforme no—, así que invertirlo es una aproximación mucho mejor *a la
-política* y apenas mejor como *default de despliegue*. La conclusión del peldaño 1 sobre
-este criterio sigue en pie tal como se escribió, sobre el objeto sobre el que se escribió;
-lo que no se sostiene es extenderla a "la antigüedad no sirve para nada".
+What it means, carefully: **arrival order does not lack signal, it lacks a sign.** The rules
+born early are defaults fitted to the common distribution —what the corpus rewards and a
+uniform measure does not—, so reversing it is a much better approximation *to the policy*
+and barely better as a *deployment default*. Rung 1's conclusion about this criterion still
+stands as it was written, over the object it was written about; what does not hold is
+extending it to "age is good for nothing".
 
-**La trampa de la subsunción merece un párrafo aparte** porque es el hallazgo más fácil de
-malinterpretar. El 0.0000 sobre la política escrita a mano no valida el criterio: valida
-al autor, que respetaba el convenio "regla estrecha = excepción a la ancha". Un proponente
-que escribe ticket a ticket no lo respeta —una regla estrecha suya puede ser un default
-sobreajustado— y ahí el mismo criterio da 53.12% de error silencioso.
+**Subsumption's trap deserves a paragraph of its own** because it is the finding easiest to
+misread. The 0.0000 over the hand-written policy does not validate the criterion: it
+validates the author, who respected the convention "narrow rule = exception to the broad
+one". A proposer that writes ticket by ticket does not respect it —a narrow rule of its own
+can be an overfitted default— and there the same criterion gives 53.12% silent error.
 
-**Ese 53.12% hay que citarlo con su denominador**, porque sin él se lee como cuatro veces
-peor de lo que es y como cuatro veces mejor a la vez. Sobre la base aprendida la subsunción
-sólo se compromete en **160 de 2000 casos** (cobertura 0.0800); el 53.12% son **85 errores
-sobre esos 160**, y el e2e resultante es 0.0375. Es decir: el criterio no se vuelve
-temerario, se vuelve mudo, y cuando habla se equivoca más que una moneda.
+**That 53.12% has to be cited with its denominator**, because without it it reads as four
+times worse than it is and as four times better at once. Over the learned base, subsumption
+only commits on **160 of 2000 cases** (coverage 0.0800); the 53.12% is **85 errors over
+those 160**, and the resulting e2e is 0.0375. That is: the criterion does not turn reckless,
+it turns mute, and when it speaks it is wrong more often than a coin.
 
-Y son **dos** fallos, no uno, que conviene no fundir porque tienen remedios distintos: sobre
-la base aprendida apenas hay anidamiento que detectar —**5.17% de los pares**, contra el 15%
-de la política escrita a mano— y, cuando lo hay, corona reglas estrechas y equivocadas.
-**Estrecha ≠ correcta.** El nivel semántico no sólo se equivoca sobre una base sin autor:
-ordena relativamente menos que sobre una con autor. **La subsunción no es gratis; es gratis
-condicionada a una disciplina de autoría.** De eso sale la propuesta **P3**.
+And they are **two** failures, not one, and it is worth not fusing them because they have
+different remedies: over the learned base there is hardly any nesting to detect —**5.17% of
+the pairs**, against 15% for the hand-written policy— and, when there is, it crowns narrow
+and wrong rules. **Narrow ≠ correct.** The semantic level does not only get it wrong over a
+base with no author: it orders relatively less than over one with an author. **Subsumption
+is not free; it is free conditional on a discipline of authorship.** Proposal **P3** comes
+out of that.
 
 ---
 
-## 3. La forma correcta de la respuesta
+## 3. The correct shape of the answer
 
-El arbitraje que funciona es **un orden parcial semántico más una totalización declarada**,
-ambos en el mismo grafo, más abstención.
+The arbitration that works is **a semantic partial order plus a declared totalization**,
+both in the same graph, plus abstention.
 
-### Nivel 1 — Subsunción
+### Level 1 — Subsumption
 
-`A ≺ B` si `ext(A) ⊊ ext(B)`, calculado como máscara de bits sobre el espacio exhaustivo.
-Es derivado, no declarado. Es **parcial**: 61 de 406 pares sobre 29 reglas.
+`A ≺ B` if `ext(A) ⊊ ext(B)`, computed as a bitmask over the exhaustive space. It is
+derived, not declared. It is **partial**: 61 of 406 pairs over 29 rules.
 
-**Y no es un nivel gratuito: es una decisión de diseño con precio medido.** Esto lo
-estableció la errata (a) de §4 de `RESUMEN_CHAT.md`, fechada el 12 de agosto de 2026, contra
-un documento que afirmaba estar «a un eslabón» de cerrar la cadena; aquí se re-derivó desde
-los registros por otro camino y sin conocerla, lo cual sirve de confirmación cruzada y no de
-hallazgo nuevo. Sobre la base aprendida de 577 reglas, activar la subsunción como nivel no
-sobrescribible cuesta esto (`results3/FINDINGS3.md` §1 y su erratum de 2026-08-08;
+**And it is not a free level: it is a design decision with a measured price.** This was
+established by erratum (a) of §4 of `RESUMEN_CHAT.md`, dated August 12, 2026, against a
+document claiming to be "one link" from closing the chain; here it was re-derived from the
+records by another route and without knowing it, which serves as cross-confirmation and not
+as a new finding. Over the learned base of 577 rules, switching subsumption on as a
+non-overridable level costs this (`results3/FINDINGS3.md` §1 and its erratum of 2026-08-08;
 `results3/order_search_ls.json`):
 
-| pool | cota por cobertura (corpus) | orden buscado (corpus test) | el mismo orden sobre el espacio |
+| pool | coverage bound (corpus) | searched order (corpus test) | the same order over the space |
 |---|---|---|---|
-| puro (sólo orden total) | 0.9010 | **0.8530** | 0.6105 |
-| híbrido (subsunción + orden) | 0.8540 | **0.7734** | 0.4970 |
+| pure (total order only) | 0.9010 | **0.8530** | 0.6105 |
+| hybrid (subsumption + order) | 0.8540 | **0.7734** | 0.4970 |
 
-Los 0.047 se pierden **en la cota**, no en la búsqueda: la subsunción retira reglas
-correctas de la puja antes de que haya orden ninguno. El mecanismo está contado en
-`results3/FINDINGS_AUDIT.md`, paso 1: una vez la subsunción poda, **181 de las 577 reglas
-no casan absolutamente nada** sobre el train. Un tercio de lo que el proponente escribió es
-inalcanzable por construcción, antes de cualquier pregunta de orden. Y no es debilidad del
-optimizador: el híbrido sigue por debajo bajo el optimizador auditado, con un margen mayor
-que bajo el voraz.
+The 0.047 is lost **in the bound**, not in the search: subsumption takes correct rules out
+of the running before there is any order at all. The mechanism is told in
+`results3/FINDINGS_AUDIT.md`, step 1: once subsumption prunes, **181 of the 577 rules match
+absolutely nothing** on the train. A third of what the proposer wrote is unreachable by
+construction, before any question of order. And it is not optimizer weakness: the hybrid
+stays below under the audited optimizer, by a wider margin than under the greedy.
 
-Eso deja el nivel 1 en un sitio más incómodo y más honesto que "no se negocia":
+That leaves level 1 in a more uncomfortable and more honest place than "non-negotiable":
 
-> **Sobre una base con disciplina de autoría, la subsunción es orden gratis y sólido. Sobre
-> una base aprendida sin esa disciplina, es un filtro que cuesta 0.047 de cota y silencia un
-> tercio de las reglas.** Si se conserva no sobrescribible —y hay razones para conservarlo,
-> es la única parte del orden derivada de la semántica— hay que conservarlo *sabiendo el
-> precio*, y ese precio es lo que P3 intenta dejar de pagar.
+> **Over a base with a discipline of authorship, subsumption is free and sound order. Over a
+> learned base without that discipline, it is a filter that costs 0.047 of bound and
+> silences a third of the rules.** If it is kept non-overridable —and there are reasons to
+> keep it, it is the only part of the order derived from the semantics— it has to be kept
+> *knowing the price*, and that price is what P3 tries to stop paying.
 
-Por qué sigue mereciendo ser el nivel base pese al precio: es el único que ningún
-proponente puede falsear, el único que no hay que verificar contra nada, y el que da los 61
-pares sin gastar una sola pregunta. Lo que no se sostiene es presentarlo como sin coste.
+Why it still deserves to be the base level despite the price: it is the only one no proposer
+can fake, the only one that does not have to be verified against anything, and the one that
+gives the 61 pairs without spending a single question. What does not hold is presenting it
+as costless.
 
-### Nivel 2 — Aristas referenciales, no enteros
+### Level 2 — Referential edges, not integers
 
-`{"beats": ["R0007"], "loses_to": ["R0021"]}`. Las cuatro razones por las que esto derrota
-a un `priority: 17` **son las del docstring de `peldano2/engine2.py`**, no una derivación
-nueva de este informe; se reproducen porque son la justificación del diseño y conviene
-tenerlas donde se discute:
+`{"beats": ["R0007"], "loses_to": ["R0021"]}`. The four reasons why this beats a
+`priority: 17` **are those of `peldano2/engine2.py`'s docstring**, not a new derivation by
+this report; they are reproduced because they are the design's justification and it is
+useful to have them where it is discussed:
 
-1. **Un entero exige una decisión global desde una observación local.** El proponente ve
-   un ticket y un puñado de reglas. Es la misma exigencia que ya falló en el peldaño 1 con
-   otro nombre.
-2. **La información que falta es parcial, no total.** Son relaciones entre pares. Un
-   ranking global es una respuesta a una pregunta que nadie hizo.
-3. **Una referencia es mecánicamente verificable.** Un entero es **infalsificable**:
-   cualquier número pasa cualquier validador.
-4. **Una referencia compone; un entero compite.** Si el entero dice A>B y la subsunción
-   dice B≺A, no hay forma no arbitraria de arbitrar entre los dos arbitrajes.
+1. **An integer demands a global decision from a local observation.** The proposer sees a
+   ticket and a handful of rules. It is the same demand that already failed in rung 1 under
+   another name.
+2. **The information that is missing is partial, not total.** They are relations between
+   pairs. A global ranking is an answer to a question nobody asked.
+3. **A reference is mechanically verifiable.** An integer is **unfalsifiable**: any number
+   passes any validator.
+4. **A reference composes; an integer competes.** If the integer says A>B and subsumption
+   says B≺A, there is no non-arbitrary way to arbitrate between the two arbitrations.
 
-Ese cuarto punto es el que descalifica los esquemas mixtos del tipo `priority_layer` +
-`overrides`: introducen dos autoridades sobre el mismo par.
+That fourth point is what disqualifies mixed schemes of the `priority_layer` + `overrides`
+kind: they introduce two authorities over the same pair.
 
-**Qué comprueba exactamente el validador** (verificado contra `peldano2/engine2.py:220` y
-`try_edge`, no inferido): seis verdictos, cinco de rechazo y uno de aceptación —
-`EDGE_SELF` (auto-referencia), `EDGE_UNKNOWN` (la regla citada no existe), `EDGE_DISJOINT`
-(las extensiones no se cortan: la arista sería inerte), `EDGE_CONTRADICTS` (la subsunción
-ya dice lo contrario), `EDGE_CYCLE` (cerraría un ciclo) y `EDGE_OK`. Detalle que no es
-obvio: `EDGE_OK` se devuelve además cuando `ext(ganador) ⊊ ext(perdedor)`, es decir cuando
-la arista es redundante con la subsunción pero consistente con ella; se acepta y no añade
-nada al grafo.
+**What exactly the validator checks** (verified against `peldano2/engine2.py:220` and
+`try_edge`, not inferred): six verdicts, five of rejection and one of acceptance —
+`EDGE_SELF` (self-reference), `EDGE_UNKNOWN` (the cited rule does not exist),
+`EDGE_DISJOINT` (the extensions do not intersect: the edge would be inert),
+`EDGE_CONTRADICTS` (subsumption already says the opposite), `EDGE_CYCLE` (it would close a
+cycle) and `EDGE_OK`. A detail that is not obvious: `EDGE_OK` is also returned when
+`ext(winner) ⊊ ext(loser)`, that is when the edge is redundant with subsumption but
+consistent with it; it is accepted and adds nothing to the graph.
 
-**Y lo que el validador no puede comprobar, que es lo que importa para el §7:** que el
-ganador declarado sea el correcto. Existencia, solape, no-contradicción y aciclicidad son
-propiedades del grafo; la verdad de la arista no está en el grafo. Una arista falsa y bien
-formada entra sin resistencia.
+**And what the validator cannot check, which is what matters for §7:** that the declared
+winner is the correct one. Existence, overlap, non-contradiction and acyclicity are
+properties of the graph; the truth of the edge is not in the graph. A false, well-formed
+edge goes in without resistance.
 
-### Nivel 3 — Abstención
+### Level 3 — Abstention
 
-Si tras ambos niveles quedan reglas invictas que discrepan → `CONFLICT` y escalación. **El
-disparador de escalación es sólo cobertura o conflicto, nunca "la respuesta fue
-incorrecta"**, y esa restricción es exactamente lo que hace medible el error silencioso.
-Un empate resuelto a ciegas es un error invisible; un conflicto declarado es un evento
-contable y la señal que alimenta el aprendizaje.
+If after both levels there remain undefeated rules that disagree → `CONFLICT` and
+escalation. **The escalation trigger is only coverage or conflict, never "the answer was
+incorrect"**, and that restriction is exactly what makes the silent error measurable. A tie
+resolved blindly is an invisible error; a declared conflict is a countable event and the
+signal that feeds the learning.
 
-**Y esto no es una preferencia estética por la prudencia: hay un caso medido en el que se
-ve el precio de no abstenerse.** La formulación es de `RESUMEN_CHAT.md` §1 y la cifra es de
-`results2/FINDINGS2.md` §4:
+**And this is not an aesthetic preference for prudence: there is a measured case where the
+price of not abstaining can be seen.** The formulation is from `RESUMEN_CHAT.md` §1 and the
+figure from `results2/FINDINGS2.md` §4:
 
-> **Particionar no elimina los errores: elimina el detector de errores.**
+> **Partitioning does not eliminate the errors: it eliminates the error detector.**
 
-La base de v2 con semilla 17 son **seis reglas** que particionan limpiamente el espacio
-usando sólo tres atributos. Cobertura 0.940. **Cero conflictos** en toda la ejecución — y
-error silencioso **0.7553**. Tres de cada cuatro decisiones mal, sin que el sistema emitiera
-una sola señal de que había algo que decidir.
+The v2 base with seed 17 is **six rules** that partition the space cleanly using only three
+attributes. Coverage 0.940. **Zero conflicts** in the whole run — and silent error
+**0.7553**. Three out of every four decisions wrong, without the system emitting a single
+signal that there was anything to decide.
 
-Ese es el argumento entero del nivel 3, y conviene tenerlo en esta forma y no en la
-abstracta: **el número de conflictos no es un coste que minimizar**. Una base que nunca
-entra en conflicto puede ser una base que ha dejado de mirar. Y como el error silencioso
-sólo se puede medir con el oráculo —que en producción no existe— el conteo de conflictos es
-el único instrumento que un sistema desplegado tiene para saber que está perdido.
+That is level 3's entire argument, and it is worth having it in this form and not the
+abstract one: **the number of conflicts is not a cost to be minimized**. A base that never
+enters conflict may be a base that has stopped looking. And since the silent error can only
+be measured with the oracle —which in production does not exist— the conflict count is the
+only instrument a deployed system has for knowing it is lost.
 
-### Lo medido, y sobre qué superficie
+### What is measured, and on which surface
 
-Subsunción + 199 aristas mínimas declaradas: **e2e 1.0000, error silencioso 0.0000, cero
-conflictos, cero impasses** — **sobre el corpus de 2000**, que es lo único que
-`peldano2/ceiling_check2.py` mide. Sobre el espacio exhaustivo ese motor **no se ha medido
-nunca**. Por el convenio de la cabecera de este informe, y a la vista de lo que el §6
-demuestra sobre transferencia entre superficies, la formulación correcta no es "el
-mecanismo está cerrado" sino:
+Subsumption + 199 minimal declared edges: **e2e 1.0000, silent error 0.0000, zero conflicts,
+zero impasses** — **over the corpus of 2000**, which is all `peldano2/ceiling_check2.py`
+measures. Over the exhaustive space that engine **has never been measured**. By this
+report's header convention, and in view of what §6 demonstrates about transfer between
+surfaces, the correct formulation is not "the mechanism is closed" but:
 
-> **El mecanismo ejecuta sin error la declaración de un autor perfecto sobre la
-> distribución de llegada.** Que lo haga también como función sobre las 134.400
-> combinaciones es plausible —el orden declarado deriva del orden de capas, y
-> *first-match-wins* sí está verificado sobre todo el espacio— pero no está medido, y
-> medirlo cuesta cero llamadas.
+> **The mechanism executes a perfect author's declaration without error over the arrival
+> distribution.** That it does so as a function over the 134,400 combinations as well is
+> plausible —the declared order derives from the layer order, and *first-match-wins* is
+> verified over the whole space— but it is not measured, and measuring it costs zero calls.
 
-Dos detalles de implementación que vale la pena dejar escritos porque no son obvios:
+Two implementation details worth writing down because they are not obvious:
 
-- **La transitividad sale gratis.** Si A vence a B y B vence a C, ambas quedan derrotadas
-  y sólo A permanece invicta; no hace falta calcular el cierre transitivo.
-- **Las aristas son globales pero su efecto es local.** `decide` sólo considera las
-  derrotas *entre las reglas que casaron en este caso*. La misma regla puede ser invicta en
-  un caso y derrotada en otro: la prioridad es un grafo, no una tabla de méritos absolutos.
+- **Transitivity comes free.** If A beats B and B beats C, both end up defeated and only A
+  remains undefeated; there is no need to compute the transitive closure.
+- **The edges are global but their effect is local.** `decide` only considers the defeats
+  *among the rules that matched in this case*. The same rule can be undefeated in one case
+  and defeated in another: priority is a graph, not a table of absolute merits.
 
 ---
 
-## 4. Dónde encaja esto en la tradición
+## 4. Where this fits in the tradition
 
-El peldaño 1 y el 2, juntos, son una réplica empírica de por qué las lógicas rebatibles
-llevan una **relación de superioridad explícita** y por qué Drools tiene `salience`: los
-criterios que reconstruyen la prioridad desde la forma de las reglas caen sobre una
-política estratificada, y el que aguanta es el que la declara.
+Rungs 1 and 2, together, are an empirical replication of why defeasible logics carry an
+**explicit superiority relation** and why Drools has `salience`: the criteria that
+reconstruct priority from the shape of the rules fall over on a stratified policy, and the
+one that holds up is the one that declares it.
 
-Una precisión sobre esa réplica, para no reclamar más de lo que hubo: los tres criterios
-falsados aquí fueron **especificidad, orden de llegada y subsunción**, y ese no es
-exactamente el trío clásico de los sistemas de producción —donde la terna canónica es
-refracción, recencia y especificidad—. La subsunción no es una estrategia OPS5: es un
-criterio semántico que este proyecto añadió y que resultó ser el único de los tres con
-soundness sobre una política bien escrita. La coincidencia con la tradición es en la
-conclusión, no en el conjunto de criterios probados.
+A precision about that replication, so as not to claim more than there was: the three
+criteria falsified here were **specificity, arrival order and subsumption**, and that is not
+exactly the classic trio of production systems —where the canonical three are refraction,
+recency and specificity—. Subsumption is not an OPS5 strategy: it is a semantic criterion
+this project added and which turned out to be the only one of the three with soundness over
+a well-written policy. The coincidence with the tradition is in the conclusion, not in the
+set of criteria tested.
 
-| mecanismo | origen | qué hace con el conflicto | dónde se rompe |
+| mechanism | origin | what it does with conflict | where it breaks |
 |---|---|---|---|
-| Especificidad | OPS5, CLIPS, Jess | gana la de más condiciones | invierte con overrides anchos (peldaño 1) |
-| Recencia / antigüedad | OPS5 (LEX/MEA) | gana la más reciente o la más antigua | en una base aprendida corre **hacia atrás** |
-| First-applicable | XACML, iptables, listas de ACL | gana la primera de la lista | el orden textual **es** la prioridad; insertar en medio rompe la semántica |
-| `salience` | Drools | entero explícito; empate → LIFO | infalsificable; compite con cualquier otro criterio |
-| Relación de superioridad `>` | lógica rebatible (Nute, Antoniou) | aristas entre reglas concretas | hay que declararla: alguien tiene que escribirla |
-| Preferencias en ASP | asprin, LPOD | orden sobre modelos | expresivo y caro; fuera del alcance del motor barato |
-| Combinación de resultados | XACML (`deny-overrides`…), Cerbos | combina **decisiones**, no reglas | no expresa jerarquía entre reglas |
-| **Subsunción + aristas + abstención** | este repositorio | `ACTION` si las invictas acuerdan; si no, `CONFLICT` | requiere extensiones calculables; sobre base aprendida cuesta cota; el `CONFLICT` es carga si nadie lo rellena |
+| Specificity | OPS5, CLIPS, Jess | the one with most conditions wins | inverts with broad overrides (rung 1) |
+| Recency / age | OPS5 (LEX/MEA) | the most recent or the oldest wins | on a learned base it runs **backwards** |
+| First-applicable | XACML, iptables, ACL lists | the first in the list wins | textual order **is** the priority; inserting in the middle breaks the semantics |
+| `salience` | Drools | explicit integer; tie → LIFO | unfalsifiable; competes with any other criterion |
+| Superiority relation `>` | defeasible logic (Nute, Antoniou) | edges between concrete rules | it has to be declared: somebody has to write it |
+| Preferences in ASP | asprin, LPOD | order over models | expressive and expensive; outside the cheap engine's scope |
+| Result combination | XACML (`deny-overrides`…), Cerbos | combines **decisions**, not rules | does not express hierarchy between rules |
+| **Subsumption + edges + abstention** | this repository | `ACTION` if the undefeated agree; if not, `CONFLICT` | requires computable extensions; over a learned base it costs bound; the `CONFLICT` is a burden if nobody fills it |
 
-Una precisión que conviene no perder: **los algoritmos de combinación de XACML no son
-comparables con la subsunción**. `deny-overrides` combina *resultados* de políticas;
-la subsunción ordena *reglas*. Son objetos de tipo distinto, y la analogía "la subsunción
-es la denegación no negociable" confunde más de lo que aclara.
+A precision worth not losing: **XACML's combining algorithms are not comparable with
+subsumption**. `deny-overrides` combines policy *results*; subsumption orders *rules*. They
+are objects of a different type, and the analogy "subsumption is the non-negotiable denial"
+confuses more than it clarifies.
 
-Lo que el repositorio aporta al cuadro y no estaba: **la medida de cuánto queda por
-declarar** una vez la semántica ha dicho lo suyo (85% de los pares sobre la política
-oculta), la constatación de que ese residuo es *pequeño en aristas* pero *no lo produce
-nadie automáticamente*, y **el precio del nivel semántico sobre una base sin autor**, que
-es la parte que ninguna de las tradiciones de arriba mide porque todas suponen una base
-escrita por alguien.
+What the repository adds to the picture and was not there: **the measurement of how much is
+left to declare** once the semantics has said its part (85% of the pairs over the hidden
+policy), the finding that this residue is *small in edges* but *nobody produces it
+automatically*, and **the price of the semantic level over a base with no author**, which is
+the part none of the traditions above measures because they all assume a base written by
+somebody.
 
 ---
 
-## 5. El cuello de botella no es el mecanismo: es el material
+## 5. The bottleneck is not the mechanism: it is the material
 
-El mecanismo es la parte visible y elegante, y por eso se lleva la atención. Los registros
-señalan a otro sitio.
+The mechanism is the visible and elegant part, and that is why it takes the attention. The
+records point somewhere else.
 
-El peldaño 2 construyó el motor que ejecuta prioridad declarada (1.0000, corpus) **y en el
-mismo movimiento eliminó el material que lo ejercita**. Mostrarle la base al proponente bajó
-el solape entre sus reglas de 17.5% de los pares a **1.60%**; instruirle explícitamente a
-solapar lo recuperó hasta 7.25%, sin llegar a la mitad del punto de partida. Sin solape no
-hay conflicto, y sin conflicto no hay prioridad que declarar:
+Rung 2 built the engine that executes declared priority (1.0000, corpus) **and in the same
+movement eliminated the material that exercises it**. Showing the base to the proposer
+dropped the overlap between its rules from 17.5% of the pairs to **1.60%**; instructing it
+explicitly to overlap recovered it to 7.25%, without reaching half the starting point. With
+no overlap there is no conflict, and with no conflict there is no priority to declare:
 
 ```
-ocho runs · ~200 escalaciones
-  conflictos totales      2
-  aristas propuestas     14
-  aristas ACEPTADAS       0
+eight runs · ~200 escalations
+  total conflicts         2
+  edges proposed         14
+  edges ACCEPTED          0
   EDGE_CONTRADICTS        0
 ```
 
-**Y no es un fallo de capacidad del modelo.** Razona relacionalmente en cuanto tiene con
-qué: cita reglas por identificador, argumenta que una debe perder contra otra, e incluso
-identifica correctamente que la subsunción resuelve un anidamiento sin necesidad de
-declaración. La v2 del prompt le entrega la aritmética de solape ya resuelta por el motor
-—qué condiciones falla el ticket para cada regla, tamaño de cada extensión, qué pares son
-disjuntos— y **cinco de las catorce aristas mal propuestas siguen siendo de v2**.
+**And it is not a capability failure of the model.** It reasons relationally as soon as it
+has something to reason with: it cites rules by identifier, argues that one should lose
+against another, and even correctly identifies that subsumption resolves a nesting with no
+need for a declaration. Prompt v2 hands it the overlap arithmetic already resolved by the
+engine —which conditions the ticket fails for each rule, the size of each extension, which
+pairs are disjoint— and **five of the fourteen badly proposed edges are still from v2**.
 
-El diagnóstico correcto es más incómodo que "no sabe calcular el solape": **la operación
-que ejecuta —encontrar un hueco y rellenarlo— no requiere calcularlo**, y es la operación
-que ejecuta incluso cuando se le pide otra. Trata la base como un mosaico incompleto, no
-como una pila de capas.
+The correct diagnosis is more uncomfortable than "it cannot compute the overlap": **the
+operation it performs —find a gap and fill it— does not require computing it**, and it is
+the operation it performs even when it is asked for another. It treats the base as an
+incomplete mosaic, not as a stack of layers.
 
-*(`STATUS.md` mantiene el porqué de eso como pregunta abierta y sin discriminar entre tres
-candidatos: el encuadre de la tarea —un ticket, una regla—, el modelo concreto, o la
-elicitación por escritura de reglas en general. La afirmación "no es capacidad" está
-sostenida por los dos argumentos de `FINDINGS2`; la explicación no la tiene nadie.)*
+*(`STATUS.md` keeps the why of that as an open question and without discriminating between
+three candidates: the framing of the task —one ticket, one rule—, the specific model, or
+elicitation by rule-writing in general. The claim "it is not capability" is supported by
+`FINDINGS2`'s two arguments; nobody has the explanation.)*
 
-Consecuencia de diseño, y es la que ordena todo lo demás:
+A design consequence, and it is the one that orders everything else:
 
-> **Toda capa adicional de arquitectura de arbitraje es capacidad añadida a un mecanismo
-> que ya ejecuta sin error y sin alimentar.** Antes de decidir mejor quién gana el
-> conflicto hay que conseguir una base donde las reglas se pisen.
+> **Every additional layer of arbitration architecture is capability added to a mechanism
+> that already executes without error and without being fed.** Before deciding better who
+> wins the conflict, one has to get a base where the rules step on each other.
 
-**Con una reserva que hay que hacer explícita, porque esa frase invita a leer más de lo que
-dice.** «Conseguir una base con solape» suena a último eslabón de una cadena cuyo resto está
-probado, y no lo es: **ni el 0.8530 ni el 61% del feedback viajan con una base nueva**. Los
-dos se midieron sobre las 577 reglas del peldaño 1; una base con solape real es material
-distinto, y lo que un orden buscado o un canal de feedback extraigan de ella está por medir.
-Lo señala la errata (c) de §4 de `RESUMEN_CHAT.md`, escrita el 12 de agosto de 2026 contra
-un documento que afirmaba estar «a un eslabón» de cerrar la cadena. La afirmación defendible
-es más modesta y sigue bastando: **sin solape no hay ni experimento**.
+**With a reservation that has to be made explicit, because that sentence invites reading
+more than it says.** "Getting a base with overlap" sounds like the last link of a chain
+whose remainder is tested, and it is not: **neither the 0.8530 nor the feedback's 61%
+travels with a new base**. Both were measured over rung 1's 577 rules; a base with real
+overlap is different material, and what a searched order or a feedback channel would extract
+from it is unmeasured. Erratum (c) of §4 of `RESUMEN_CHAT.md` points it out, written on
+August 12, 2026 against a document claiming to be "one link" from closing the chain. The
+defensible claim is more modest and still suffices: **with no overlap there is not even an
+experiment**.
 
-### La palabra "material" significa dos cosas y conviene no fundirlas
+### The word "material" means two things and it is worth not fusing them
 
-Lo de arriba es **material de solape**: reglas que compiten, sin las cuales no hay arista
-que declarar. Hay un segundo problema de material, de otra naturaleza y medido aparte
-(`results3/FINDINGS3.md` §2, corpus): para **66.7% de `T3_ENGINEERING` y 64.2% de
-`ACCOUNT_MANAGER` no existe ninguna regla correcta que cubra el caso**. Ahí no falta
-solape, falta regla, y ningún orden, ninguna arista y ningún árbitro los recupera. Seis
-clases de ocho —1774 de 2000 casos— sí son problema puro de ordenación; esas dos no.
+What is above is **overlap material**: rules that compete, without which there is no edge to
+declare. There is a second material problem, of another nature and measured separately
+(`results3/FINDINGS3.md` §2, corpus): for **66.7% of `T3_ENGINEERING` and 64.2% of
+`ACCOUNT_MANAGER` no correct rule covering the case exists**. There what is missing is not
+overlap, it is a rule, and no order, no edge and no arbiter recovers them. Six classes out
+of eight —1774 of 2000 cases— are indeed a pure ordering problem; those two are not.
 
-La distinción importa para leer cualquier propuesta: P1 y P2 atacan el material de solape,
-y no tocan el segundo. Nada en este informe lo toca.
+The distinction matters for reading any proposal: P1 and P2 attack the overlap material, and
+do not touch the second. Nothing in this report touches it.
 
-### Y el hueco mayor no es de arbitraje
+### And the biggest gap is not one of arbitration
 
-Conviene decirlo aunque quede fuera del alcance del informe: la pregunta original del
-proyecto —si las reglas que escribe el LLM se reutilizan o memorizan casos— **sigue sin
-medirse limpiamente** (`STATUS.md`, "What this does not show"). El 0.158 de reutilización
-del peldaño 1 describe el arbitraje, no la inducción, porque 594 de sus 632 escalaciones
-fueron CONFLICT. Un informe sobre arbitraje puede cerrar el arbitraje y dejar el proyecto
-igual de lejos de su propia hipótesis.
+It is worth saying even though it falls outside the report's scope: the project's original
+question —whether the rules the LLM writes are reused or memorize cases— **still has not
+been measured cleanly** (`STATUS.md`, "What this does not show"). Rung 1's 0.158 reuse
+describes the arbitration, not the induction, because 594 of its 632 escalations were
+CONFLICT. A report on arbitration can close arbitration and leave the project just as far
+from its own hypothesis.
 
-### Corolario sobre un instrumento no validado
+### Corollary about an unvalidated instrument
 
-`EDGE_CONTRADICTS` nunca ha incrementado en ninguna ejecución, no porque el proponente
-acierte sino porque la situación en que puede incrementar no se alcanzó. Cualquier
-conclusión que se apoye en él está apoyada en un contador que nadie ha visto funcionar.
-
----
-
-## 6. Por debajo de todo: el orden no está identificado
-
-Este es el resultado que menos atención recibe y el que más restringe lo que se puede
-construir encima.
-
-Sobre el espacio exhaustivo, dos órdenes finales de la misma búsqueda **a un caso de train
-de distancia** deciden distinto **11.240 de 134.400 casos (8.36%)**; en otro split, a tres
-casos, 10.74%. Los 65 órdenes finales son **65 firmas de comportamiento distintas**: no hay
-dos que sean la misma máquina, y lo mismo vale para los 257. Y con presupuesto bajo es
-brutal: con 10 etiquetas, los **40 órdenes que empatan en el mejor score de train discrepan
-entre sí en una mediana del 39.2% del espacio** (24.05% del corpus). La búsqueda no se está
-absteniendo; está eligiendo arbitrariamente entre respuestas muy distintas y aterrizando en
-un default sensato por accidente del orden de arranques.
-
-Tres consecuencias, y ninguna es cosmética:
-
-1. **El nivel es un resultado; el orden es un sorteo.** Un lector de la cifra 0.8530 puede
-   fiarse de ella —con la salvedad que `STATUS.md` le adjunta: es el mejor de 65 arranques,
-   acotada por un sorteo y no por convergencia—. Un lector del orden hereda la extracción
-   entera. Y el peldaño 4 consume órdenes, no cifras.
-2. **La verificación es más dura que el arbitraje.** Un verificador que compruebe
-   aciclicidad, invariantes y ausencia de regresiones sobre casos históricos **certifica a
-   los 40 con la misma alegría**. El objetivo no identifica la respuesta, así que la
-   autoridad del verificador es menor de lo que su nombre sugiere. Cualquier diseño que
-   ponga "el verificador es la autoridad" en su principio central tiene que decir contra
-   qué verifica.
-3. **La superficie no es un detalle de medición.** Los mismos 2.080 pares agrupan a 20.35%
-   del espacio y 5.75% del corpus, y las clases que cargan la discrepancia son otras
-   (`SECURITY_INCIDENT` 57.5% en el espacio, 4.6% en el corpus). Peor: **el orden tampoco
-   transfiere** —Spearman corpus↔espacio de **0.3364**— así que el espacio no puede ni
-   rankear dos órdenes para despliegue. Un estadístico de rango decente **no** es evidencia
-   de transferencia; es necesario, no suficiente.
-
-**Y la cuarta parte de ese registro dice de dónde sale exactamente la brecha**, que es lo
-que hace accionable el punto 3 en vez de sólo alarmante. Medidos los mismos 2.080 pares
-sobre el espacio **restringido a los 1.743 puntos que el corpus toca** —1.30% del espacio,
-cada punto contado una vez— los pares discrepan en **5.68%**, contra 5.75% de las llegadas
-y 20.35% del espacio entero. Es decir: **el nivel transfiere a la distribución de llegada
-antes de aplicar ningún peso de clase**, y el 98.6% de la brecha es *qué puntos se
-muestrean*, no cuántas veces. Lo cual cierra una puerta y abre otra: no existe un factor
-por clase que convierta una superficie en la otra —reponderar por clase deja +1.4% sobre
-los puntos tocados y +103% sobre el espacio entero—, así que el registro del espacio más
-las frecuencias de clase **sigue sin llegar** a 5.75%. La corrección sólo la identifica el
-corpus.
+`EDGE_CONTRADICTS` has never incremented in any run, not because the proposer gets it right
+but because the situation in which it can increment was never reached. Any conclusion
+resting on it rests on a counter nobody has seen work.
 
 ---
 
-## 7. Propuestas
+## 6. Underneath everything: the order is not identified
 
-**Nada de esta sección está medido, y ninguna de estas predicciones está firmada.** El
-convenio del repositorio para que una predicción cuente es estricto: banda con su línea de
-refutación, escrita y firmada **antes de que exista la cifra**, y firmada por Sergi —un
-modelo redactando la predicción destruye el propósito del archivo (regla dura 2 de
-`CLAUDE.md`). Lo que sigue son borradores direccionales: para entrar en el marcador de
-`STATUS.md` a cada uno le falta la banda numérica y la firma.
+This is the result that gets the least attention and the one that most constrains what can
+be built on top of it.
 
-**Ordenadas por un criterio prestado, que es mejor que el que traían.** `RESUMEN_CHAT.md`
-§3 ordena sus experimentos así: *lo que puede **retirar** una premisa publicada va antes que
-lo que puede **añadir** una capacidad*. Bajo esa regla P1 va primero —un resultado nulo
-retira la tesis de que la declaración es el canal que falta, que es la premisa sobre la que
-se abrió el peldaño 2— y P4 y P5 van al final, porque añaden instrumento. Por lo que atacan:
-P1 y P2 al material de solape, P3 al precio del nivel 1, P4 a la identificabilidad, P5 al
-instrumento.
+Over the exhaustive space, two end orders of the same search **one train case apart** decide
+**11,240 of 134,400 cases (8.36%)** differently; in another split, three cases apart,
+10.74%. The 65 end orders are **65 distinct behavioural signatures**: no two of them are the
+same machine, and the same holds for the 257. And with a low budget it is brutal: with 10
+labels, the **40 orders that tie on the best train score disagree with one another on a
+median of 39.2% of the space** (24.05% of the corpus). The search is not abstaining; it is
+choosing arbitrarily among very different answers and landing on a sensible default by
+accident of the order of starts.
 
-### P1 · Juicio por pares disparado por **solape offline**, sobre la base ya pagada
+Three consequences, and none is cosmetic:
 
-No pedirle al proponente que escriba reglas que se pisen —que es lo que ocho ejecuciones
-dicen que no hace—, sino **detectar los pares que se pisan y preguntarle cuál gana**. Con
-dos decisiones de protocolo que son la propuesta entera:
+1. **The level is a result; the order is a lottery.** A reader of the figure 0.8530 can
+   trust it —with the caveat `STATUS.md` attaches to it: it is the best of 65 starts,
+   bounded by a lottery and not by convergence—. A reader of the order inherits the whole
+   draw. And rung 4 consumes orders, not figures.
+2. **Verification is harder than arbitration.** A verifier checking acyclicity, invariants
+   and the absence of regressions over historical cases **certifies all 40 just as
+   cheerfully**. The objective does not identify the answer, so the verifier's authority is
+   smaller than its name suggests. Any design that puts "the verifier is the authority" in
+   its central principle has to say what it verifies against.
+3. **The surface is not a measurement detail.** The same 2,080 pairs pool to 20.35% of the
+   space and 5.75% of the corpus, and the classes that carry the disagreement are different
+   ones (`SECURITY_INCIDENT` 57.5% on the space, 4.6% on the corpus). Worse: **the order
+   does not transfer either** —Spearman corpus↔space of **0.3364**— so the space cannot even
+   rank two orders for deployment. A decent rank statistic is **not** evidence of transfer;
+   it is necessary, not sufficient.
 
-**Dónde salen los pares: del solape de extensiones calculado offline**, sobre las 134.400
-combinaciones, no de un conflicto en tiempo de ejecución. El motor ya calcula ese solape
-para el vecindario de v2. Disparar por conflicto en ejecución es la misma sequía que dejó a
-`EDGE_CONTRADICTS` sin medir nada en ocho runs: **2 conflictos**. Un experimento que
-necesita conflictos para arrancar no repara el eslabón roto — *es* el eslabón roto.
+**And the fourth part of that record says exactly where the gap comes from**, which is what
+makes point 3 actionable instead of merely alarming. Measuring the same 2,080 pairs over the
+space **restricted to the 1,743 points the corpus touches** —1.30% of the space, each point
+counted once— the pairs disagree on **5.68%**, against 5.75% for the arrivals and 20.35% for
+the whole space. That is: **the level transfers to the arrival distribution before applying
+any class weight**, and 98.6% of the gap is *which points are sampled*, not how many times.
+Which closes one door and opens another: there is no per-class factor that turns one surface
+into the other —reweighting by class leaves +1.4% over the touched points and +103% over the
+whole space—, so the space's record plus the class frequencies **still does not reach**
+5.75%. Only the corpus identifies the correction.
 
-**Sobre qué base: las 577 reglas del peldaño 1, que ya están pagadas.** Sin bucle de sombra
-nuevo, sin corpus nuevo, y sin depender de conseguir primero una base con solape, que es la
-dependencia circular que hunde la versión ingenua de esta idea.
+---
 
-*(Ambas decisiones son la forma enmendada que propone `RESUMEN_CHAT.md` §2.2, cuya errata
-del 12 de agosto de 2026 identificó la circularidad antes que este informe.)*
+## 7. Proposals
 
-**Y cómo se materializa la pregunta:** en vez de "¿se solapan R3 y R7 y quién gana?",
-**construir un ticket de `ext(R3) ∩ ext(R7)` y preguntar la cola**. La respuesta *es* la
-arista, y el testigo es un `&` de dos enteros: determinista y gratis.
+**Nothing in this section is measured, and none of these predictions is signed.** The
+repository's convention for a prediction to count is strict: a band with its refutation
+line, written and signed **before the figure exists**, and signed by Sergi —a model drafting
+the prediction destroys the file's purpose (hard rule 2 of `CLAUDE.md`). What follows are
+directional drafts: to enter `STATUS.md`'s scoreboard each one is missing the numeric band
+and the signature.
 
-**Tres objeciones que hay que poner delante, porque salen del registro y son duras.**
+**Ordered by a borrowed criterion, which is better than the one they came with.**
+`RESUMEN_CHAT.md` §3 orders its experiments like this: *what can **withdraw** a published
+premise comes before what can **add** a capability*. Under that rule P1 goes first —a null
+result withdraws the thesis that declaration is the missing channel, which is the premise on
+which rung 2 was opened— and P4 and P5 go last, because they add instrument. By what they
+attack: P1 and P2 the overlap material, P3 the price of level 1, P4 identifiability, P5 the
+instrument.
 
-*Primera, y es la que más directamente apunta al blanco:* las dos únicas veces que un
-conflicto real llegó al proponente —exactamente la situación que este experimento fabrica—
-respondió con **cero aristas** una vez y **falló el parseo** la otra. **0 de 2.** Con n=2 y
-sin que la elicitación fuera una pregunta directa no es una refutación, pero es lo más
-cercano a evidencia que existe y no apunta a favor.
+### P1 · Pairwise judgement triggered by **offline overlap**, over the base already paid for
 
-*Segunda: la operación de destino tampoco está demostrada.* `results/llm_run.json` mide
-exactamente eso —un ticket delante, la cola por decidir— en
-`proposal_action_accuracy` = **0.3877** sobre 632 escalaciones, 594 de ellas CONFLICT. La
-premisa "es la operación que demostradamente contesta" es falsa tal cual: es otra operación
-que también falla, sólo que falla distinto.
+Not asking the proposer to write rules that step on each other —which is what eight runs say
+it does not do—, but **detecting the pairs that step on each other and asking it which one
+wins**. With two protocol decisions that are the whole proposal:
 
-*Tercera: la métrica obvia es degenerada.* Las 14 aristas rechazadas cayeron **todas** por
-`no_solapan`. Un testigo extraído de la intersección garantiza solape por construcción, así
-que `EDGE_DISJOINT` deja de ser alcanzable y la tasa de aceptación sube desde 0/14 haga lo
-que haga el modelo. Y como el validador no puede comprobar que el ganador sea el correcto
-(§3, nivel 2), lo que se produciría con un 39% de acierto son **aristas aceptadas y
-falsas**: convertir un rechazo visible en un error silencioso, que es la conversión exacta
-que este proyecto existe para evitar.
+**Where the pairs come from: from the extension overlap computed offline**, over the 134,400
+combinations, not from a conflict at run time. The engine already computes that overlap for
+v2's neighbourhood. Triggering on conflict at run time is the same drought that left
+`EDGE_CONTRADICTS` measuring nothing in eight runs: **2 conflicts**. An experiment that needs
+conflicts to get started does not repair the broken link — it *is* the broken link.
 
-**El marcador, y hay que etiquetarle el pool o no vale nada.** La salida se puntúa como
-orden, no como tasa de aceptación. Pero **contra qué depende de qué motor la consuma**, y
-confundirlo es encadenar figuras de motores distintos:
+**Over which base: rung 1's 577 rules, which are already paid for.** No new shadow loop, no
+new corpus, and no dependence on first getting a base with overlap, which is the circular
+dependency that sinks the naive version of this idea.
 
-| si las aristas se consumen en… | techo con oráculo, misma base | cota | suelo |
+*(Both decisions are the amended form `RESUMEN_CHAT.md` §2.2 proposes, whose erratum of
+August 12, 2026 identified the circularity before this report did.)*
+
+**And how the question is materialized:** instead of "do R3 and R7 overlap and which one
+wins?", **build a ticket from `ext(R3) ∩ ext(R7)` and ask for the queue**. The answer *is*
+the edge, and the witness is an `&` of two integers: deterministic and free.
+
+**Three objections that have to be put up front, because they come out of the record and
+they are hard.**
+
+*First, and it is the one that points most directly at the target:* the only two times a
+real conflict reached the proposer —exactly the situation this experiment manufactures— it
+answered with **zero edges** once and **failed the parse** the other. **0 of 2.** With n=2
+and the elicitation not being a direct question it is not a refutation, but it is the closest
+thing to evidence there is and it does not point in favour.
+
+*Second: the target operation is not demonstrated either.* `results/llm_run.json` measures
+exactly that —a ticket in front, the queue to be decided— in `proposal_action_accuracy` =
+**0.3877** over 632 escalations, 594 of them CONFLICT. The premise "it is the operation it
+demonstrably answers" is false as it stands: it is another operation that also fails, only
+it fails differently.
+
+*Third: the obvious metric is degenerate.* The 14 rejected edges fell **all** to
+`no_solapan` [*they do not overlap*]. A witness extracted from the intersection guarantees
+overlap by construction, so `EDGE_DISJOINT` stops being reachable and the acceptance rate
+rises from 0/14 whatever the model does. And since the validator cannot check that the
+winner is the correct one (§3, level 2), what would be produced at 39% accuracy are
+**accepted and false edges**: turning a visible rejection into a silent error, which is the
+exact conversion this project exists to avoid.
+
+**The scoreboard, and its pool has to be labelled or it is worth nothing.** The output is
+scored as an order, not as an acceptance rate. But **against what depends on which engine
+consumes it**, and confusing that is chaining figures from different engines:
+
+| if the edges are consumed in… | ceiling with oracle, same base | bound | floor |
 |---|---|---|---|
-| el motor **híbrido** (subsunción + aristas) — el caso por defecto, porque es donde viven las aristas | **0.7734** | 0.8540 | `born_at` sobre pool híbrido: **sin medir** |
-| un orden total **puro**, si las aristas se compilan a orden y se apaga la subsunción | 0.8530 | 0.9010 | `born_at` 0.5115 (corpus completo) |
+| the **hybrid** engine (subsumption + edges) — the default case, because it is where the edges live | **0.7734** | 0.8540 | `born_at` over the hybrid pool: **not measured** |
+| a **pure** total order, if the edges are compiled to an order and subsumption is switched off | 0.8530 | 0.9010 | `born_at` 0.5115 (full corpus) |
 
-Corpus test salvo el suelo. Puntuar un resultado híbrido contra 0.8530 sería inflar el
-listón en ~0.08 por leer el pool equivocado. **El suelo de la fila que importa está sin
-medir y medirlo es gratis**: es el primer paso del experimento, no un detalle.
+Corpus test except the floor. Scoring a hybrid result against 0.8530 would be inflating the
+bar by ~0.08 by reading the wrong pool. **The floor of the row that matters is unmeasured
+and measuring it is free**: it is the experiment's first step, not a detail.
 
-**Y una salvedad que sólo existe desde el 15 de agosto:** 0.7734 y 0.8530 son *el mejor de
-65 arranques*, y los 65 órdenes finales son 65 máquinas distintas (§6). Comparar un orden
-declarado contra ese máximo es compararlo contra un billete premiado. La comparación honesta
-es contra la **distribución** de los 65, y ese material ya está regenerado en
+**And a caveat that has only existed since August 15:** 0.7734 and 0.8530 are *the best of
+65 starts*, and the 65 end orders are 65 distinct machines (§6). Comparing a declared order
+against that maximum is comparing it against a winning ticket. The honest comparison is
+against the **distribution** of the 65, and that material is already regenerated in
 `results3/order_metrics.json`.
 
-*Coste:* céntimos — una llamada por par contendiente que se decida muestrear.
-*Predicciones falsables, y son dos porque miden cosas distintas:*
+*Cost:* cents — one call per contending pair that is chosen for sampling.
+*Falsifiable predictions, and there are two because they measure different things:*
 
-1. *Con verdad, barata:* sobre las 29 reglas ocultas el ganador de cada par es conocido por
-   construcción (§7, P5). Si la tasa de aristas **correctas** por testigo no supera
-   claramente el 0.3877 de base, el formato de la pregunta no era el problema y P1 queda
-   refutada ahí, antes de tocar la base aprendida.
-2. *Sin verdad, la que decide:* el orden que resulte de las aristas declaradas sobre las 577
-   reglas puntúa por encima del suelo `born_at` de su propio pool y dentro de la
-   distribución de los 65 arranques. Si queda en el suelo, la declaración no aporta canal;
-   si queda entre suelo y distribución, aporta y no basta, que es un resultado y no un
-   empate.
+1. *With truth, cheap:* over the 29 hidden rules the winner of each pair is known by
+   construction (§7, P5). If the rate of **correct** edges per witness does not clearly beat
+   the baseline 0.3877, the format of the question was not the problem and P1 is refuted
+   right there, before touching the learned base.
+2. *Without truth, the one that decides:* the order resulting from the declared edges over
+   the 577 rules scores above the `born_at` floor of its own pool and within the
+   distribution of the 65 starts. If it lands on the floor, declaration contributes no
+   channel; if it lands between floor and distribution, it contributes and is not enough,
+   which is a result and not a tie.
 
-### P2 · Elicitación **diferida**, sobre el subgrafo vivo
+### P2 · **Deferred** elicitation, over the live subgraph
 
-No declarar prioridad al nacer la regla, sino cuando dos reglas contienden sobre un caso
-real. *Es la misma disciplina de impasse que ya gobierna las llamadas al LLM, aplicada al
-arbitraje: pagar sólo cuando hay que pagar.*
+Not declaring priority when the rule is born, but when two rules contend over a real case.
+*It is the same impasse discipline that already governs the calls to the LLM, applied to
+arbitration: pay only when you have to pay.*
 
-**El argumento de coste, corregido.** La versión fuerte —"el coste no es O(N²)"— no se
-sigue de las cifras del repositorio. De los 166.176 pares de la base aprendida, **35.457
-pueden cambiar una decisión sobre el espacio** (33.631 sobre el corpus): eso es el 21.3%,
-una **fracción constante de la cuadrática**, no un orden menor. Y el otro dato que invita a
-optimismo hay que leerlo con cuidado: sólo **25 a 53 reglas de 577 poseen territorio** bajo
-un orden dado, pero eso es *por orden*, y la unión sobre los 65 órdenes finales es **406 de
-577**. Qué reglas deciden algo depende del sorteo que documenta el §6.
+**The cost argument, corrected.** The strong version —"the cost is not O(N²)"— does not
+follow from the repository's figures. Of the learned base's 166,176 pairs, **35,457 can
+change a decision over the space** (33,631 over the corpus): that is 21.3%, a **constant
+fraction of the quadratic**, not a lower order. And the other datum that invites optimism has
+to be read carefully: only **25 to 53 rules of 577 own territory** under a given order, but
+that is *per order*, and the union over the 65 end orders is **406 of 577**. Which rules
+decide anything depends on the lottery §6 documents.
 
-Lo que sí sostiene la propuesta es más modesto y sigue siendo suficiente: el 21.3% es una
-**cota superior de lo que puede importar**, no un conteo de lo que importará —hay pares
-contendientes que no cambian ninguna decisión porque nada de lo que casan sobrevive a las
-reglas de encima—, y sobre tráfico observado el conjunto que llega a contender de verdad es
-otra criba más. La diferencia entre O(N²) declarado por adelantado y O(pares que contienden
-sobre tráfico real) es empírica y está sin medir.
+What does support the proposal is more modest and is still sufficient: the 21.3% is an
+**upper bound on what can matter**, not a count of what will matter —there are contending
+pairs that change no decision because nothing they match survives the rules above them—, and
+over observed traffic the set that really gets to contend is one more sieve. The difference
+between O(N²) declared up front and O(pairs that contend over real traffic) is empirical and
+unmeasured.
 
-*Predicción falsable:* el número de aristas necesarias para alcanzar un e2e dado crece
-sublinealmente en el tamaño de la base. **Falta la banda**: sin ella, "sublineal" se
-adjudica a ojo.
+*Falsifiable prediction:* the number of edges needed to reach a given e2e grows sublinearly
+in the size of the base. **The band is missing**: without it, "sublinear" gets adjudicated
+by eye.
 
-### P3 · Imponer la disciplina de autoría en vez de suponerla
+### P3 · Imposing the discipline of authorship instead of assuming it
 
-La subsunción da 53.12% de error silencioso sobre base aprendida —sobre el 8% de casos en
-que se compromete— porque el convenio "regla estrecha = excepción" no se cumple. En lugar
-de abandonar el criterio o de inferir mejor, **restringir la forma**: el validador rechaza
-una regla que solape con otra sin declarar si es *excepción a* o *default bajo* cada una de
-las que pisa. El motor ya sabe exactamente cuáles son.
+Subsumption gives 53.12% silent error over the learned base —over the 8% of cases where it
+commits— because the convention "narrow rule = exception" is not honoured. Instead of
+abandoning the criterion or inferring better, **restrict the form**: the validator rejects a
+rule that overlaps another without declaring whether it is an *exception to* or a *default
+under* each of the ones it steps on. The engine already knows exactly which those are.
 
-Esto convierte un problema de inferencia en uno de declaración **con número de preguntas
-acotado y localmente contestables**. Es la propuesta que más me convence de las cinco,
-porque es la única que ataca una causa medida en vez de un síntoma.
+This turns an inference problem into a declaration one **with a bounded number of questions,
+locally answerable**. It is the proposal that convinces me most of the five, because it is
+the only one that attacks a measured cause instead of a symptom.
 
-*Dos predicciones, y son distintas: la segunda es la que importa y es la que nadie ha
-planteado.*
+*Two predictions, and they are different: the second is the one that matters and the one
+nobody has posed.*
 
-1. *Soundness:* el error silencioso de la subsunción sobre una base así producida cae muy
-   por debajo del 53.12%, **a cobertura comparable o mayor** —sin esa condición la
-   predicción se cumple sola volviendo el criterio aún más mudo.
-2. *Cota:* la brecha de 0.047 entre la cota híbrida (0.8540) y la pura (0.9010) se estrecha.
-   Esta es la que decide si el nivel 1 deja de tener precio o simplemente deja de mentir. Si
-   la soundness mejora y la cota no se mueve, P3 arregla medio problema y la subsunción
-   sigue costando un tercio de la base.
+1. *Soundness:* the silent error of subsumption over a base produced this way falls well
+   below 53.12%, **at comparable or greater coverage** —without that condition the
+   prediction fulfils itself by making the criterion even more mute.
+2. *Bound:* the 0.047 gap between the hybrid bound (0.8540) and the pure one (0.9010)
+   narrows. This is the one that decides whether level 1 stops having a price or merely
+   stops lying. If soundness improves and the bound does not move, P3 fixes half the problem
+   and subsumption still costs a third of the base.
 
-### P4 · Restringir la clase de hipótesis a órdenes **k-estratificados**
+### P4 · Restricting the hypothesis class to **k-stratified** orders
 
-Ahora se busca sobre órdenes totales de 577 reglas. Buscar sobre asignaciones a *k*
-estratos (barriendo *k*) hace tres cosas: reduce el espacio, regulariza, y —lo decisivo—
-**dentro de un estrato los empates no se rompen por índice: se declaran indecidibles y
-escalan**. Eso convierte el problema de identificabilidad de invisible en medible: el número
-de pares indeterminados pasa a ser una **salida** del sistema en lugar de una propiedad
-oculta del orden de arranques.
+Right now the search runs over total orders of 577 rules. Searching over assignments to *k*
+strata (sweeping *k*) does three things: it shrinks the space, it regularizes, and —the
+decisive one— **within a stratum ties are not broken by index: they are declared undecidable
+and escalate**. That turns the identifiability problem from invisible into measurable: the
+number of undetermined pairs becomes an **output** of the system instead of a hidden
+property of the order of starts.
 
-**Ese es el valor de P4 y no depende de ninguna conjetura sobre la verdad.** Lo que sí
-depende, y es el eslabón flojo: la política oculta tiene 8 capas sobre **29** reglas, y la
-búsqueda corre sobre **577 reglas aprendidas** cuya relación con esas capas es desconocida
-—de hecho el peldaño 2 documenta que el proponente particiona en vez de estratificar—. Que
-el score aplane cerca de *k*≈8 sobre la base aprendida no se sigue de que la verdad tenga 8
-estratos.
+**That is P4's value and it does not depend on any conjecture about the truth.** What does
+depend, and it is the weak link: the hidden policy has 8 layers over **29** rules, and the
+search runs over **577 learned rules** whose relation to those layers is unknown —in fact
+rung 2 documents that the proposer partitions instead of stratifying—. That the score
+flattens near *k*≈8 over the learned base does not follow from the truth having 8 strata.
 
-*Predicción falsable, con esa reserva declarada:* barriendo *k*, el número de máquinas de
-comportamiento distintas colapsa respecto a las 65 y 257 actuales, y el score de test no
-cae apreciablemente hasta *k* pequeño. Si el número de máquinas no colapsa, la
-estratificación no es la estructura que falta. **Dónde aplana el score es dato, no
-predicción**: si aplanara en 8 sería una coincidencia que valdría la pena mirar, no una
-confirmación.
+*Falsifiable prediction, with that reservation declared:* sweeping *k*, the number of
+distinct behavioural machines collapses relative to the current 65 and 257, and the test
+score does not fall appreciably until small *k*. If the number of machines does not
+collapse, stratification is not the missing structure. **Where the score flattens is data,
+not prediction**: if it flattened at 8 it would be a coincidence worth looking at, not a
+confirmation.
 
-### P5 · Benchmark de conflictos con ganador conocido
+### P5 · Benchmark of conflicts with known winner
 
-Un conjunto de pares en conflicto con ganador y ámbito conocidos por construcción, medido a
-niveles crecientes de información (sólo reglas / + ejemplos / + contraejemplos / +
-procedencia). Sirve para responder algo que ahora no se puede: **qué información aporta
-valor real al arbitraje**, en vez de suponerlo.
+A set of conflicting pairs with winner and scope known by construction, measured at
+increasing levels of information (rules only / + examples / + counterexamples / +
+provenance). It serves to answer something that cannot be answered now: **which information
+contributes real value to arbitration**, instead of assuming it.
 
-**Y es bastante más barato de lo que parece, porque el sustrato ya está construido.**
-`peldano2/hidden_priority.py` clasifica los 406 pares de la política oculta en cuatro cajas
-disjuntas: 112 de extensiones disjuntas, 61 ya ordenados por subsunción, 34 con la misma
-acción (da igual quién gane) y **199 aristas declaradas con ganador conocido**, derivadas
-del orden de capas. Eso es un benchmark etiquetado, hoy, a coste cero. Lo que falta no es
-construirlo: es el protocolo de niveles de información y las bandas.
+**And it is considerably cheaper than it looks, because the substrate is already built.**
+`peldano2/hidden_priority.py` classifies the hidden policy's 406 pairs into four disjoint
+boxes: 112 with disjoint extensions, 61 already ordered by subsumption, 34 with the same
+action (it does not matter who wins) and **199 declared edges with known winner**, derived
+from the layer order. That is a labelled benchmark, today, at zero cost. What is missing is
+not building it: it is the protocol of information levels and the bands.
 
-Dos condiciones para que no se convierta en un tablero de métricas sin filo: las bandas se
-firman antes de que exista la cifra, y las filas sin banda van listadas aparte y fuera del
-denominador —la convención que ya usa el hilo de predicciones.
-
----
-
-## 8. Lo que descarto, y por qué
-
-- **Entero de prioridad global** (con o sin aristas al lado): infalsificable, exige decisión
-  global desde observación local, y compite con la subsunción en lugar de componer.
-- **Crítico adversarial encarnado en un LLM**: el contraejemplo dentro de
-  `ext(A) ∩ ext(B)` se **enumera** exactamente con las máscaras de bits que ya existen.
-  Poner un modelo donde basta un procedimiento determinista invierte la economía entera del
-  proyecto —simbólico barato primero, LLM sólo en impasse.
-- **Prioridad contextual con ámbito** (`A > B si region=EU`): es una generalización real y
-  válida para otros dominios, pero aquí la verdad **es** un orden total por capas, así que
-  añade capacidad fuera de la verdad, no sólo fuera de la clase de hipótesis. Además rompe
-  el chequeo de aciclicidad, que hoy es un DFS trivial y barato. Reservarlo para un dominio
-  donde se haya demostrado que hace falta.
-- **Cualquier pipeline de arbitraje de varias etapas** —detector, árbitro determinista,
-  árbitro LLM, crítico, verificador, grafo, compilador, runtime— **construido antes de tener
-  material**: es el peldaño 2 otra vez, a mayor escala. Construir el aparato y descubrir que
-  no llega nada por la tubería ya ocurrió una vez, está documentado, y costó el único
-  mecanismo del proyecto que funciona sin error. La tentación es fuerte precisamente porque
-  el arbitraje es la parte que se deja diseñar sin datos.
+Two conditions so that it does not turn into a dashboard of blunt metrics: the bands are
+signed before the figure exists, and the rows without a band go listed separately and
+outside the denominator —the convention the predictions thread already uses.
 
 ---
 
-## 9. Límites de este informe
+## 8. What I rule out, and why
 
-1. **La política oculta puede ser adversarial a la especificidad por construcción.** En
-   ella prioridad y número de condiciones son casi ortogonales *por diseño*. Eso hace
-   correcta la falsación —basta un contraejemplo para tumbar "la especificidad es
-   fiable"— pero no dice nada sobre con qué frecuencia las políticas reales tienen esa
-   forma. Distinguir "falsado como criterio general" de "medida su tasa de fallo en el
-   dominio" merece quedar escrito.
+- **A global priority integer** (with or without edges alongside): unfalsifiable, it demands
+  a global decision from a local observation, and it competes with subsumption instead of
+  composing.
+- **An adversarial critic embodied in an LLM**: the counterexample inside
+  `ext(A) ∩ ext(B)` is **enumerated** exactly with the bitmasks that already exist. Putting
+  a model where a deterministic procedure suffices inverts the project's whole economy
+  —cheap symbolic first, LLM only on impasse.
+- **Scoped contextual priority** (`A > B if region=EU`): it is a real generalization and a
+  valid one for other domains, but here the truth **is** a total order by layers, so it adds
+  capability outside the truth, not just outside the hypothesis class. It also breaks the
+  acyclicity check, which today is a trivial and cheap DFS. Reserve it for a domain where it
+  has been shown to be needed.
+- **Any multi-stage arbitration pipeline** —detector, deterministic arbiter, LLM arbiter,
+  critic, verifier, graph, compiler, runtime— **built before having material**: it is rung 2
+  again, at a larger scale. Building the apparatus and discovering that nothing comes down
+  the pipe already happened once, it is documented, and it cost the project's only mechanism
+  that works without error. The temptation is strong precisely because arbitration is the
+  part that lets itself be designed without data.
 
-   Hay una respuesta parcial a esto que conviene registrar, de `RESUMEN_CHAT.md` §1: **la
-   política oculta no tiene por qué ser "la correcta del universo", es el manual de ESTA
-   empresa**, y lo que se mide es si una función estructurada se recupera de la experiencia,
-   no si la política es buena. Eso desactiva la objeción para lo que el experimento mide y
-   no la desactiva para la generalización: con qué frecuencia los manuales reales tienen
-   overrides anchos arriba sigue sin medirse aquí ni en ningún sitio de este repositorio.
-2. **El 1.0000 del motor híbrido es una cifra de corpus.** Sobre el espacio exhaustivo ese
-   motor no se ha medido, y este informe ha sostenido en el §6 que las dos superficies ni
-   siquiera rankean igual. Es la comprobación pendiente más barata de todas las que aquí se
-   nombran.
-3. **Las 199 aristas son el coste de autoría de un autor perfecto sobre 29 reglas.**
-   Cuántas harían falta sobre una base aprendida, y si un proponente podría producirlas,
-   es exactamente lo que las ocho ejecuciones nunca llegaron a poner a prueba. P2 sugiere
-   que el coste real es menor que la extrapolación cuadrática, pero eso está por medir y el
-   propio §7 rebaja el argumento.
-4. **Un modelo, ocho ejecuciones de n=100.** Todo el peldaño 2 es `deepseek-v4-flash`. Que
-   otro modelo particione igual es desconocido, y el número de reglas varía tanto entre
-   semillas con prompt idéntico que esa cantidad es ruido.
-5. **El precio del nivel 1 está medido sobre una sola base aprendida.** Los 0.047 de cota y
-   las 181 reglas silenciadas son propiedades de las 577 reglas que produjo el peldaño 1
-   bajo arbitraje por especificidad. Una base nacida bajo otro arbitraje sería otra, y
-   `FINDINGS` ya avisa de que esas mediciones son cotas, no simulaciones del bucle.
-6. **Dos cifras de este informe no tienen registro que las posea**, y son las únicas: el
-   0.5420 y el 0.5668 de `born_at` invertido sobre la base aprendida (§2). Vienen de un
-   *probe* que `RESUMEN_CHAT.md` §2.1 declara no oficial y que no está en `results*/`; el
-   script que lo produce no existe en el árbol. Sus baselines del espacio sí verifican
-   exactos contra `FINDINGS3.md`. Van citadas con esa advertencia en su sitio, y si alguna
-   vez sostienen una conclusión hay que medirlas antes — cuesta minutos y cero llamadas.
-7. **Este informe no ha ejecutado nada.** Es una lectura de los registros, con las cifras
-   contrastadas contra el `FINDINGS` que posee cada una —salvo las dos del punto anterior—
-   y contra el código donde el código era la fuente (los seis verdictos del validador, la
-   localidad de las aristas, la superficie de `ceiling_check2`). Todo lo de la sección 7
-   está sin medir y así está marcado.
-8. **Parte de lo que aquí se corrige ya estaba corregido.** El precio del nivel 1, la
-   circularidad del disparador por conflicto y la advertencia de que las cifras no viajan
-   con una base nueva son las tres erratas que `RESUMEN_CHAT.md` se puso a sí mismo el 12 de
-   agosto de 2026. Este informe llegó a las tres por otro camino y sin conocerlas. Que dos
-   lecturas independientes de los mismos registros converjan es evidencia a favor de las
-   conclusiones; también es un aviso de que **este repositorio ya contiene análisis que un
-   documento nuevo puede estar repitiendo**, y de que leer `RESUMEN_CHAT.md` va antes de
-   escribir el siguiente.
+---
+
+## 9. Limits of this report
+
+1. **The hidden policy may be adversarial to specificity by construction.** In it, priority
+   and number of conditions are nearly orthogonal *by design*. That makes the falsification
+   correct —one counterexample is enough to knock down "specificity is reliable"— but it
+   says nothing about how often real policies have that shape. Distinguishing "falsified as
+   a general criterion" from "its failure rate measured in the domain" deserves to be
+   written down.
+
+   There is a partial answer to this worth recording, from `RESUMEN_CHAT.md` §1: **the
+   hidden policy does not have to be "the right one in the universe", it is THIS company's
+   manual**, and what is measured is whether a structured function is recovered from
+   experience, not whether the policy is good. That defuses the objection for what the
+   experiment measures and does not defuse it for the generalization: how often real manuals
+   have broad overrides on top is still unmeasured here and anywhere else in this
+   repository.
+2. **The hybrid engine's 1.0000 is a corpus figure.** Over the exhaustive space that engine
+   has not been measured, and this report has argued in §6 that the two surfaces do not even
+   rank the same. It is the cheapest pending check of all the ones named here.
+3. **The 199 edges are the authorship cost of a perfect author over 29 rules.** How many
+   would be needed over a learned base, and whether a proposer could produce them, is
+   exactly what the eight runs never got to put to the test. P2 suggests the real cost is
+   lower than the quadratic extrapolation, but that is unmeasured and §7 itself tones the
+   argument down.
+4. **One model, eight runs of n=100.** All of rung 2 is `deepseek-v4-flash`. Whether another
+   model partitions the same way is unknown, and the number of rules varies so much between
+   seeds with an identical prompt that that quantity is noise.
+5. **The price of level 1 is measured over a single learned base.** The 0.047 of bound and
+   the 181 silenced rules are properties of the 577 rules that rung 1 produced under
+   specificity-based arbitration. A base born under another arbitration would be another
+   one, and `FINDINGS` already warns that those measurements are bounds, not simulations of
+   the loop.
+6. **Two figures in this report have no record that owns them**, and they are the only ones:
+   the 0.5420 and the 0.5668 of reversed `born_at` over the learned base (§2). They come
+   from a *probe* that `RESUMEN_CHAT.md` §2.1 declares unofficial and that is not in
+   `results*/`; the script that produces it does not exist in the tree. Its space baselines
+   do verify exactly against `FINDINGS3.md`. They are cited with that warning in place, and
+   if they ever support a conclusion they have to be measured first — it costs minutes and
+   zero calls.
+7. **This report has executed nothing.** It is a reading of the records, with the figures
+   checked against the `FINDINGS` that owns each one —except the two of the previous point—
+   and against the code where the code was the source (the validator's six verdicts, the
+   locality of the edges, `ceiling_check2`'s surface). Everything in section 7 is unmeasured
+   and is marked as such.
+8. **Part of what is corrected here was already corrected.** The price of level 1, the
+   circularity of the conflict trigger and the warning that the figures do not travel with a
+   new base are the three errata `RESUMEN_CHAT.md` issued against itself on August 12, 2026.
+   This report reached all three by another route and without knowing them. That two
+   independent readings of the same records converge is evidence in favour of the
+   conclusions; it is also a warning that **this repository already contains analysis that a
+   new document may be repeating**, and that reading `RESUMEN_CHAT.md` comes before writing
+   the next one.
