@@ -13,7 +13,7 @@
 > refuted bets.
 
 **Destination:** repository root, next to `PLAN_AUDIT` (referenced from
-`peldano3/local_search.py`). **Drafted:** 2026-08-12. **For:** execution by a
+`rung3/local_search.py`). **Drafted:** 2026-08-12. **For:** execution by a
 coding agent, start to finish, without further design decisions.
 
 This plan closes open item **nº 1 of `STATUS.md`**: `budget_and_balance` is the
@@ -74,7 +74,7 @@ too (`CLAUDE.md` rule 6).
 ## 1. What changes and what does not
 
 **Only the optimizer.** Decision-list greedy → the multi-start local search
-declared in `peldano3/local_search.py`: seed 17, 64 random starts plus the
+declared in `rung3/local_search.py`: seed 17, 64 random starts plus the
 record's greedy at index 0, neighbourhood `move+swap`.
 
 **Identical, and to be verified as identical:** corpus of 2000 at seed 17; the
@@ -150,7 +150,7 @@ must remain **bit-identical** to today's behaviour.
 
 ### D2 — Start 0 is the record's greedy, tail included
 
-For both objectives the first start is `peldano3.budget_and_balance.greedy(...)`
+For both objectives the first start is `rung3.budget_and_balance.greedy(...)`
 called with the same arguments the record used (`weights=None` for §1 and the
 total objective, `weights=w` for the balanced one). That function already returns
 a complete order, tail sorted by train precision then `born_at`. Consequences,
@@ -166,11 +166,11 @@ never move, because no move is applied without strict improvement.
 - `results3/budget_and_balance.json` is **read-only for this work**. It is
   deliberately pre-tie-break and without `_env` so the old numbers stay
   reproducible beside the new ones (`IDEAS.md`).
-- **Never run `python3 -m peldano3.budget_and_balance`.** It is unguarded and
+- **Never run `python3 -m rung3.budget_and_balance`.** It is unguarded and
   dumps over that record on finishing. To obtain greedy-today, import and call
   `budget_and_balance.greedy` / `order_search.evaluate` — never a script's
   `main()`. This is the same discipline the test suite follows.
-- Partial runs get their own name, following `peldano4/sweep_ls.py::record_name`:
+- Partial runs get their own name, following `rung4/sweep_ls.py::record_name`:
   a full run writes `budget_and_balance_ls.json`; `--sections budget` writes
   `budget_and_balance_ls_budget.json`, and so on. Every save rewrites the whole
   document from the rows of *this* process, which is why a partial run must not
@@ -182,7 +182,7 @@ never move, because no move is applied without strict improvement.
 
 Each configuration reports its corpus test figure (primary, comparable with the
 record) **and** the score of the same order over the exhaustive space of 134,400
-combinations, pure pool. `peldano4/sweep_ls.py` already reports a `space` column
+combinations, pure pool. `rung4/sweep_ls.py` already reports a `space` column
 per row; this follows it, and `STATUS.md` requires the surface to be named.
 
 Measured cost of the addition: **2.3 s** to build the space masks once, **~1 ms**
@@ -252,7 +252,7 @@ Implement D1. Add to `tests/test_local_search.py`:
 
 The repo's own pattern: validate an instrument against an instance whose optimum
 is known **for a reason**, before believing anything it says. Reuse
-`peldano3/optimizer_check.py`: `hidden_rules()`, `masks_over_space()`,
+`rung3/optimizer_check.py`: `hidden_rules()`, `masks_over_space()`,
 `masks_over_corpus()`.
 
 The 29 rules of the hidden policy in design order get **every** case right, so
@@ -335,7 +335,7 @@ Write `results3/budget_and_balance_ls.json`:
 }
 ```
 
-CLI: `python3 -m peldano3.budget_and_balance_ls [--sections budget,balanced]`.
+CLI: `python3 -m rung3.budget_and_balance_ls [--sections budget,balanced]`.
 
 ### P7 — Documentation
 
@@ -365,7 +365,7 @@ line for every entry below, confirmed or refuted, plus anything new.
 
 | id | finding | status |
 |---|---|---|
-| **F1** | `tests/test_provenance.py::ESCRITORES` lists neither `peldano3.order_search_ls`, `peldano4.sweep_ls` nor `peldano3.optimizer_check`, though the README table it says it mirrors does list them. Same for `LIBRES` in `tests/test_record_guard.py`. Pre-existing drift between a pinned list and its stated source. **Report it; do not fix it silently as part of this work.** | |
+| **F1** | `tests/test_provenance.py::ESCRITORES` lists neither `rung3.order_search_ls`, `rung4.sweep_ls` nor `rung3.optimizer_check`, though the README table it says it mirrors does list them. Same for `LIBRES` in `tests/test_record_guard.py`. Pre-existing drift between a pinned list and its stated source. **Report it; do not fix it silently as part of this work.** | |
 | **F2** | Greedy-today vs published, per row: the size of the 2026-08-06 tie-break fix on this record, never measured. | |
 | **F3** | Any configuration with `exhausted: true` — the safety net was hit, which the module says must not pass silently. | |
 | **F4** | Configurations where LS is worse than the greedy on **test**. Expected at low budget (P-c); it is the finding, not a bug. Count them per fraction. | |

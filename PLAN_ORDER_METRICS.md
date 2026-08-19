@@ -69,7 +69,7 @@ distance 0; and every regenerated score equals the published one exactly.
 
 ## 1. What is built
 
-**One module, `peldano3/order_metrics.py`.** Pure functions over orders and
+**One module, `rung3/order_metrics.py`.** Pure functions over orders and
 masks. It does not consult the oracle, does not read the corpus, writes no JSON,
 and knows nothing about optimizers. Everything it needs arrives as arguments.
 
@@ -151,7 +151,7 @@ by hand rather than by running the code:
 
 The repository's own pattern: validate against an instance whose answer is known
 **for a reason** before believing anything the instrument says. Use the 29 rules
-of the hidden policy (`peldano3/optimizer_check.py::hidden_rules`,
+of the hidden policy (`rung3/optimizer_check.py::hidden_rules`,
 `masks_over_space`):
 
 | check | expected, and why |
