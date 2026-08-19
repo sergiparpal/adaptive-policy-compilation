@@ -63,9 +63,9 @@ exactly those where reproducing cannot change anything:
     python3 run_experiment.py frontier                          # results/frontier.json
     python3 -m harness.subsumption_check                        # results/subsumption.json
     python3 -m harness.learned_subsumption                      # results/learned_subsumption.json
-    python3 -m peldano2.ceiling_check2                          # results2/ceiling2.json
-    python3 -m peldano2.compare_runs results2/llm_run2_*.json   # results2/comparativa.json
-    python3 -m peldano2.note_audit  results2/llm_run2_*.json    # results2/note_audit.json
+    python3 -m rung2.ceiling_check2                          # results2/ceiling2.json
+    python3 -m rung2.compare_runs results2/llm_run2_*.json   # results2/comparativa.json
+    python3 -m rung2.note_audit  results2/llm_run2_*.json    # results2/note_audit.json
 
 **Not a single datum changed.** Verified by structural comparison against the
 version in git, not by eye: for the first four, the whole object minus the `_env`
@@ -146,7 +146,7 @@ narrowed to `CODE_ROOTS` would have kept quiet about it.
 A record cannot carry inside it the hash of the commit that transports it. The
 six were produced with the tree clean at `684f0e9` and were committed in the
 following commit, which touches only these six JSON files and this note: not a
-line of `harness/`, `peldano2..4/` or `run_experiment.py`. That is why
+line of `harness/`, `rung2..4/` or `run_experiment.py`. That is why
 `code_digest` is still the same in both commits, and `git_commit: 684f0e9` still
 identifies the code exactly.
 
@@ -202,7 +202,7 @@ The five frozen files of hard rule 1 (`hidden_policy.py`, `domain.py`, `dsl.py`,
 authorization and in comments and docstrings only.
 
 **What stays in Spanish, on purpose:** the prompts of `harness/proposers.py` and
-`peldano2/proposers2.py`, because they are the text that produced the records
+`rung2/proposers2.py`, because they are the text that produced the records
 and `tests/doubles.py` replays the runs against them; and the printed output,
 the error messages and the identifiers, because the docs quote those tables as
 expected results and the tests match those messages. When a block in the README

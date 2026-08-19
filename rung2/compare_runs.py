@@ -5,7 +5,7 @@ It serves to isolate the prompt confound: if the narrowing of the rules (more
 conditions, less overlap) repeats across different corpora with the same prompt,
 it is an effect of the prompt; if it wobbles, it was non-determinism noise.
 
-Usage:  python3 -m peldano2.compare_runs results2/llm_run2_*.json
+Usage:  python3 -m rung2.compare_runs results2/llm_run2_*.json
 """
 
 from __future__ import annotations
@@ -81,7 +81,7 @@ def main(argv: list[str]) -> int:
     # fine. Shrinking is the failure this cannot see from the destination: the
     # path never changes, the rows do.
     or_exit(refuse_shrink, RECORD, rows, overwrite=overwrite,
-            hint="    python3 -m peldano2.compare_runs results2/llm_run2_*.json")
+            hint="    python3 -m rung2.compare_runs results2/llm_run2_*.json")
 
     print("=" * 108)
     print("COMPARATIVA DE TIRADAS  (n=100, mismo modelo, mismo prompt salvo donde se indique)")

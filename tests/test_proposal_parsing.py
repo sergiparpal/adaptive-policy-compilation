@@ -17,8 +17,8 @@ from __future__ import annotations
 import unittest
 
 from harness.proposers import ProposalError, parse_payload
-from peldano2.proposers2 import ProposalError as ProposalError2
-from peldano2.proposers2 import parse_payload as parse_payload2
+from rung2.proposers2 import ProposalError as ProposalError2
+from rung2.proposers2 import parse_payload as parse_payload2
 
 REGLA = '{"action": "T2_TECHNICAL", "conditions": [{"attr": "severity", ' \
         '"op": "lte", "value": 2}]}'
@@ -85,12 +85,12 @@ class BaseParseo:
             self.fail("no levanto ProposalError")
 
 
-class TestParseoPeldano1(BaseParseo, unittest.TestCase):
+class TestParseoRung1(BaseParseo, unittest.TestCase):
     parse = staticmethod(parse_payload)
     error = ProposalError
 
 
-class TestParseoPeldano2(BaseParseo, unittest.TestCase):
+class TestParseoRung2(BaseParseo, unittest.TestCase):
     parse = staticmethod(parse_payload2)
     error = ProposalError2
 
@@ -120,7 +120,7 @@ class TestLosDosParseadoresCoinciden(unittest.TestCase):
         self.assertIsNot(ProposalError, ProposalError2)
         self.assertNotIsInstance(ProposalError2("x"), ProposalError)
 
-        import peldano2.shadow2 as shadow2
+        import rung2.shadow2 as shadow2
 
         import harness.shadow as shadow1
         self.assertIs(shadow1.ProposalError, ProposalError)

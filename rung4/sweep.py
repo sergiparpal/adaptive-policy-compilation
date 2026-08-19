@@ -22,7 +22,7 @@ nothing to score with and its tail orders by born_at. That is, without feedback
 the method collapses exactly to the baseline. A sweep cell landing BELOW 0.5216
 then means something concrete: the feedback received was worse than none.
 
-Usage:  python3 -m peldano4.sweep
+Usage:  python3 -m rung4.sweep
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ from pathlib import Path
 # compute the reported error rate of pi0; they are never passed to the learner,
 # which is `greedy_from_reports` and only receives `reported`.
 from harness.provenance import environment
-from peldano3.order_search import (build_tables, ceiling, evaluate, load, split,
+from rung3.order_search import (build_tables, ceiling, evaluate, load, split,
                                    subsumption_below)
 
 from .feedback import Channel
@@ -113,7 +113,7 @@ def main() -> int:
     splits = [split(corpus, truth, seed=17 + s) for s in range(N_SPLITS)]
 
     print("=" * 78)
-    print("PELDANO 4 · PASO A — ORDEN APRENDIDO DE UN CANAL DE FEEDBACK")
+    print("RUNG 4 · PASO A — ORDEN APRENDIDO DE UN CANAL DE FEEDBACK")
     print("=" * 78)
     print(f"  reglas 577 · corpus 2000 · semilla 17 · {N_SPLITS} particiones"
           f" x {N_DRAWS} sorteos")

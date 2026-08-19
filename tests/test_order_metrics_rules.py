@@ -35,8 +35,8 @@ from __future__ import annotations
 import unittest
 from functools import cache
 
-from peldano3.order_metrics import winners
-from peldano3.order_metrics_rules import (CLASS_FLOOR_DECLARED,
+from rung3.order_metrics import winners
+from rung3.order_metrics_rules import (CLASS_FLOOR_DECLARED,
                                           KAPPA_DECLARED,
                                           PAIRS_BELOW_FLOOR_DECLARED,
                                           adjudicate, apply_moves, arrangement,

@@ -28,13 +28,13 @@
   "e2e": 1.0,
   "silent_error": 0.0,
   "verdict": "PASA",
-  "reference_peldano1": {
-    "especificidad (peldano 1)": {
+  "reference_rung1": {
+    "especificidad (rung 1)": {
       "e2e": 0.5875,
       "silent_error": 0.214,
       "conflict": 505
     },
-    "subsuncion sola (peldano 1)": {
+    "subsuncion sola (rung 1)": {
       "e2e": 0.6315,
       "silent_error": 0.0,
       "conflict": 737

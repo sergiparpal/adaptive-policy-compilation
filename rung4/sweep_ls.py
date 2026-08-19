@@ -42,7 +42,7 @@ Each group is written to the record as it finishes, so that a run cut short
 leaves the groups it completed rather than nothing, and the report can say
 exactly which ones those are.
 
-Usage:  python3 -m peldano4.sweep_ls [--groups anchors,asymmetry,noise]
+Usage:  python3 -m rung4.sweep_ls [--groups anchors,asymmetry,noise]
 """
 
 from __future__ import annotations
@@ -54,12 +54,12 @@ import time
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
+from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS, build_masks,
                                    declared_starts, greedy_order_from_masks,
                                    multistart, score_order)
-from peldano3.order_search import (build_tables, load, split, subsumption_below)
-from peldano3.order_search_ls import space_pools
+from rung3.order_search import (build_tables, load, split, subsumption_below)
+from rung3.order_search_ls import space_pools
 
 from .feedback import Channel
 from .sweep import pi0_decisions
@@ -129,7 +129,7 @@ def main(argv=None) -> int:
     sM, sW, sfull, sn = space_pools(ids, conds, action, below)["puro"]
 
     print("=" * 78)
-    print("PASO 1 · PELDANO 4 — ¿SOBREVIVE EL CAMBIO DE REGIMEN POR ASIMETRIA?")
+    print("PASO 1 · RUNG 4 — ¿SOBREVIVE EL CAMBIO DE REGIMEN POR ASIMETRIA?")
     print("=" * 78)
     print(f"  reglas {len(ids)} · corpus {len(corpus)} · {N_SPLITS} particiones")
     print(f"  aprendiz: {DECLARED_NEIGHBOURHOOD}, semilla {MULTISTART_SEED}, "

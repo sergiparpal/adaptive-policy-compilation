@@ -4,7 +4,7 @@ STEP 0 of rung 2: ceiling of the hybrid engine with the perfect policy loaded.
 No LLM. Zero API calls. If this does not give ~100%, the redesign does not work
 and there is no point running anything else.
 
-Usage:  python3 -m peldano2.ceiling_check2
+Usage:  python3 -m rung2.ceiling_check2
 """
 
 from __future__ import annotations
@@ -24,8 +24,8 @@ from .hidden_priority import build_hidden_engine
 OUT = Path("results2")
 
 REF = {
-    "especificidad (peldano 1)": (0.5875, 0.2140, 505),
-    "subsuncion sola (peldano 1)": (0.6315, 0.0000, 737),
+    "especificidad (rung 1)": (0.5875, 0.2140, 505),
+    "subsuncion sola (rung 1)": (0.6315, 0.0000, 737),
 }
 
 
@@ -35,7 +35,7 @@ def main() -> int:
     engine, declared, stats = build_hidden_engine(space)
 
     print("=" * 74)
-    print("PELDANO 2 · PASO 0 — TECHO DEL MOTOR HIBRIDO")
+    print("RUNG 2 · PASO 0 — TECHO DEL MOTOR HIBRIDO")
     print("=" * 74)
     print(f"  espacio exhaustivo: {space.n:,} casos")
     print(f"  reglas cargadas   : {len(engine.rules)}")
@@ -86,7 +86,7 @@ def main() -> int:
     print(f"  {'arbitraje':<34}{'e2e':>9}{'err.sil':>10}{'CONFLICT':>10}{'IMPASSE':>9}")
     for name, (r_e2e, r_sil, r_cf) in REF.items():
         print(f"  {name:<34}{r_e2e:>9.4f}{r_sil:>10.4f}{r_cf:>10}{0:>9}")
-    print(f"  {'HIBRIDO (peldano 2)':<34}{e2e:>9.4f}{silent:>10.4f}"
+    print(f"  {'HIBRIDO (rung 2)':<34}{e2e:>9.4f}{silent:>10.4f}"
           f"{out['CONFLICT']:>10}{out['IMPASSE']:>9}")
     print(f"  {'objetivo':<34}{1.0:>9.4f}{0.0:>10.4f}{'~0':>10}{0:>9}")
 
@@ -120,7 +120,7 @@ def main() -> int:
         "action": n_act, "conflict": out["CONFLICT"], "impasse": out["IMPASSE"],
         "correct": n_ok, "e2e": round(e2e, 4), "silent_error": round(silent, 4),
         "verdict": veredicto,
-        "reference_peldano1": {k: {"e2e": v[0], "silent_error": v[1], "conflict": v[2]}
+        "reference_rung1": {k: {"e2e": v[0], "silent_error": v[1], "conflict": v[2]}
                                for k, v in REF.items()},
     }, indent=2))
     print(f"\n-> {OUT/'ceiling2.json'}")

@@ -214,7 +214,7 @@ class TestRuleEngine(unittest.TestCase):
         when it would decide something. It is the defect that yields 505
         CONFLICT and sinks the rung 1 ceiling to 0.5875, and it is pinned here
         because `dsl.py` is a closed record and its figures must reproduce. The
-        redesign already exists separately, in `peldano2/engine2.py`.
+        redesign already exists separately, in `rung2/engine2.py`.
         """
         e = RuleEngine()
         e.rules = [
@@ -224,7 +224,7 @@ class TestRuleEngine(unittest.TestCase):
         outcome, winner, _ = e.decide(make_case())
         self.assertEqual(outcome, "CONFLICT")
         self.assertIsNone(winner, "si algun dia gana VIEJA, el techo del "
-                                  "peldano 1 deja de ser 0,5875")
+                                  "rung 1 deja de ser 0,5875")
 
 
 if __name__ == "__main__":

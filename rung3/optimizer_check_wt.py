@@ -4,7 +4,7 @@ STEP 0 FOR THE WEIGHTED INSTRUMENT — phase P2 of `PLAN_BUDGET_LS.md`.
 --------------------------------------------------------------------------
 WHY THIS EXISTS AND WHY IT BLOCKS
 --------------------------------------------------------------------------
-`peldano3.optimizer_check` validated the UNWEIGHTED local search against an
+`rung3.optimizer_check` validated the UNWEIGHTED local search against an
 instance whose optimum is known for a reason rather than by search, and it
 failed the first time: the neighbourhood the audit had declared could not
 recover it. That failure is why the multi-start exists.
@@ -43,7 +43,7 @@ instance is matched by a rule carrying its correct label. So this module never
 imports `true_action`; it reuses the mask builders of `optimizer_check`, which
 is also what keeps the two gates measuring the same instance.
 
-Usage:  python3 -m peldano3.optimizer_check_wt
+Usage:  python3 -m rung3.optimizer_check_wt
 """
 
 from __future__ import annotations

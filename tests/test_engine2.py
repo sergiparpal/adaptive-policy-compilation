@@ -18,7 +18,7 @@ import unittest
 from harness.ceiling_check import all_cases
 from harness.domain import Case
 from harness.dsl import Condition, RuleValidationError
-from peldano2.engine2 import (EDGE_CONTRADICTS, EDGE_CYCLE, EDGE_DISJOINT,
+from rung2.engine2 import (EDGE_CONTRADICTS, EDGE_CYCLE, EDGE_DISJOINT,
                               EDGE_OK, EDGE_SELF, EDGE_UNKNOWN, PriorityEngine,
                               Rule2, strictly_below, validate_conditions)
 

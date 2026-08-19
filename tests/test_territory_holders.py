@@ -21,8 +21,8 @@ from __future__ import annotations
 
 import unittest
 
-from peldano3.order_metrics_rules import mask_from_points
-from peldano3.territory_holders import (N_ORDERS, derive, gate_counts,
+from rung3.order_metrics_rules import mask_from_points
+from rung3.territory_holders import (N_ORDERS, derive, gate_counts,
                                         gate_kappa_read, holders,
                                         territory_table)
 

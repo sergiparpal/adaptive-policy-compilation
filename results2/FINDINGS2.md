@@ -53,7 +53,7 @@ HYBRID (rung 2)                      1.0000    0.0000         0        0
 
 2000 ACTION, 2000 correct, zero silent errors, zero conflicts. The arbitration
 redesign **works**. Reproducible for free with
-`python3 -m peldano2.ceiling_check2`.
+`python3 -m rung2.ceiling_check2`.
 
 **Second: no material arrives to exercise it.** This is what these eight runs
 measure, and it is independent of the above. A correct mechanism that receives no
@@ -316,14 +316,14 @@ these eight runs never got to put to the test.
 ## Files
 
 ```
-peldano2/engine2.py            hybrid engine: subsumption + declared priority
-peldano2/hidden_priority.py    the 29 rules with their derived minimal edges
-peldano2/ceiling_check2.py     STEP 0 — engine ceiling
-peldano2/proposers2.py         prompts v1 and v2, neighbourhood v1 and v2
-peldano2/shadow2.py            shadow loop
-peldano2/run2.py               run CLI
-peldano2/compare_runs.py       comparison across runs
-peldano2/note_audit.py         attributes used and notes arguing disjointness
+rung2/engine2.py            hybrid engine: subsumption + declared priority
+rung2/hidden_priority.py    the 29 rules with their derived minimal edges
+rung2/ceiling_check2.py     STEP 0 — engine ceiling
+rung2/proposers2.py         prompts v1 and v2, neighbourhood v1 and v2
+rung2/shadow2.py            shadow loop
+rung2/run2.py               run CLI
+rung2/compare_runs.py       comparison across runs
+rung2/note_audit.py         attributes used and notes arguing disjointness
 
 results2/ceiling2.json         Step 0 ceiling
 results2/llm_run2_n100*.json   the eight runs, each with its full prompt

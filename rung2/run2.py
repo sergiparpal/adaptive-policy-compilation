@@ -1,8 +1,8 @@
 """
 Rung 2, run with the real proposer.
 
-  python3 -m peldano2.run2 --n 100
-  python3 -m peldano2.run2 --n 2000 --model deepseek/deepseek-v4-flash
+  python3 -m rung2.run2 --n 100
+  python3 -m rung2.run2 --n 2000 --model deepseek/deepseek-v4-flash
 
 Writes to results2/. Never touches results/.
 """
@@ -73,7 +73,7 @@ def main() -> int:
     proposer = OpenRouterProposer2(model=args.model,
                                    prompt_version=args.prompt_version)
 
-    print(f"peldano 2: {args.n} casos con {proposer.name}")
+    print(f"rung 2: {args.n} casos con {proposer.name}")
     print("(solo las escalaciones cuestan una llamada)\n")
 
     def progress(idx, total, n_rules, n_esc):
@@ -105,7 +105,7 @@ def main() -> int:
     destino.parent.mkdir(parents=True, exist_ok=True)
     destino.write_text(json.dumps({
         "_env": environment(),
-        "peldano": 2,
+        "rung": 2,
         "model": args.model,
         "n": args.n,
         "seed": args.seed,

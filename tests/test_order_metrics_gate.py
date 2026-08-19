@@ -5,8 +5,8 @@ STEP 0 FOR THE INSTRUMENT — validate it before pointing it at anything.
 THE PATTERN, AND WHY IT IS REPEATED A FOURTH TIME
 --------------------------------------------------------------------------
 `harness.ceiling_check` loaded the true policy into the engine and voided rung 1
-before a cent had been spent interpreting it. `peldano2.ceiling_check2` did it
-for the hybrid engine. `peldano3.optimizer_check` did it for the search, and
+before a cent had been spent interpreting it. `rung2.ceiling_check2` did it
+for the hybrid engine. `rung3.optimizer_check` did it for the search, and
 found the declared neighbourhood insufficient over 29 rules.
 
 This does it for the instrument that compares orders. It is about to be asked
@@ -45,13 +45,13 @@ from __future__ import annotations
 import unittest
 from functools import cache
 
-from peldano3.optimizer_check import hidden_rules, masks_over_space
-from peldano3.order_metrics import (agreement_masks, attribution_agreement,
+from rung3.optimizer_check import hidden_rules, masks_over_space
+from rung3.order_metrics import (agreement_masks, attribution_agreement,
                                     behavioural_distance, conflicting_pairs,
                                     decisions, pair_census,
                                     per_class_disagreement, positions_moved,
                                     signature, tau, winners)
-from peldano3.order_search_ls import space_truth_masks
+from rung3.order_search_ls import space_truth_masks
 
 DEFECTO = "T1_GENERAL"      # the action of H29, the policy's catch-all layer
 

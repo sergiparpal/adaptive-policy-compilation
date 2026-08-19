@@ -73,7 +73,7 @@ from harness.domain import generate_corpus
 from harness.dsl import Condition
 from harness.hidden_policy import true_action
 from harness.provenance import environment
-from peldano2.engine2 import Space, strictly_below   # reuse, not modification
+from rung2.engine2 import Space, strictly_below   # reuse, not modification
 
 OUT = Path("results3")
 N_SPLITS = 5
@@ -269,7 +269,7 @@ def main() -> int:
     allidx = list(range(len(corpus)))
 
     print("=" * 78)
-    print("PELDANO 3 · PASO A — ORDEN POR BUSQUEDA SOBRE EL CORPUS")
+    print("RUNG 3 · PASO A — ORDEN POR BUSQUEDA SOBRE EL CORPUS")
     print("=" * 78)
     print(f"  reglas: {len(rules)}   casos: {len(corpus)}   semilla del corpus: 17")
     nomatch = sum(1 for i in allidx if not matched[i])
@@ -367,7 +367,7 @@ def main() -> int:
     print(f"  {'subsuncion sola (conflicto = fallo)':<40}"
           f"{eval_subsumption(undef, truth, action, tr0):>9.4f}"
           f"{eval_subsumption(undef, truth, action, te0):>9.4f}")
-    print(f"\n  referencias del peldano 1 sobre los 2000 casos:"
+    print(f"\n  referencias del rung 1 sobre los 2000 casos:"
           f" especificidad 0.1825 · subsuncion 0.0375")
     print(f"  techo sobre los 2000: puro {ceil_pure:.4f} · hibrido {ceil_hyb:.4f}")
 

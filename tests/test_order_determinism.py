@@ -34,7 +34,7 @@ import sys
 import unittest
 from pathlib import Path
 
-from peldano3.order_search import (build_tables, greedy_order, load, split,
+from rung3.order_search import (build_tables, greedy_order, load, split,
                                    subsumption_below)
 
 REPO = Path(__file__).resolve().parent.parent
@@ -65,11 +65,11 @@ class TestInvarianciaAlHashSeed(unittest.TestCase):
                          "el orden de iteracion del set no cambio entre "
                          "semillas: el resto de esta clase es vacuo")
 
-    def test_el_voraz_del_peldano_3_no_depende_del_hash(self):
+    def test_el_voraz_del_rung_3_no_depende_del_hash(self):
         vistos = {r["greedy_p3"] for r in self.runs.values()}
         self.assertEqual(len(vistos), 1, f"ordenes distintos: {self.runs}")
 
-    def test_el_voraz_del_peldano_4_no_depende_del_hash(self):
+    def test_el_voraz_del_rung_4_no_depende_del_hash(self):
         vistos = {r["greedy_p4"] for r in self.runs.values()}
         self.assertEqual(len(vistos), 1, f"ordenes distintos: {self.runs}")
 

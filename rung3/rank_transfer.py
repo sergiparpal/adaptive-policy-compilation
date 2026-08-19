@@ -66,7 +66,7 @@ computes no quantity R-a to R-d adjudicates on — no Spearman, no decile overla
 no ratio quantile, no argmin. It is re-run here, and the record carries the
 result of THIS run.
 
-Usage:  python3 -m peldano3.rank_transfer
+Usage:  python3 -m rung3.rank_transfer
 """
 
 from __future__ import annotations
@@ -78,7 +78,7 @@ from collections import Counter
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from peldano3.order_metrics_run import resumen, spearman
+from rung3.order_metrics_run import resumen, spearman
 
 OUT = Path("results3")
 RECORD = "rank_transfer.json"

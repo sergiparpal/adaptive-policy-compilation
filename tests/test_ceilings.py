@@ -26,8 +26,8 @@ from collections import Counter
 from harness.ceiling_check import build_rules, decide_by_priority, measure
 from harness.dsl import RuleEngine
 from harness.hidden_policy import true_action
-from peldano2.ceiling_check2 import REF
-from peldano2.hidden_priority import build_hidden_engine
+from rung2.ceiling_check2 import REF
+from rung2.hidden_priority import build_hidden_engine
 
 from .fixtures import corpus, space, subsumption_only_engine
 
@@ -182,18 +182,18 @@ class TestTechoHibrido(unittest.TestCase):
         self.assertEqual(total, HYB_POSSIBLE_PAIRS)
 
 
-class TestTablaDeReferenciaDelPeldano2(unittest.TestCase):
+class TestTablaDeReferenciaDelRung2(unittest.TestCase):
     """`ceiling_check2.REF` prints the rung 1 figures as a reference. They are
     written by hand; this test checks that they are still true."""
 
     def test_referencia_de_especificidad(self):
-        e2e, silent, conflict = REF["especificidad (peldano 1)"]
+        e2e, silent, conflict = REF["especificidad (rung 1)"]
         self.assertAlmostEqual(e2e, SPEC_E2E, places=4)
         self.assertAlmostEqual(silent, SPEC_SILENT, places=4)
         self.assertEqual(conflict, SPEC_CONFLICT)
 
     def test_referencia_de_subsuncion(self):
-        e2e, silent, conflict = REF["subsuncion sola (peldano 1)"]
+        e2e, silent, conflict = REF["subsuncion sola (rung 1)"]
         self.assertAlmostEqual(e2e, SUB_E2E, places=4)
         self.assertEqual(silent, 0.0)
         self.assertEqual(conflict, SUB_CONFLICT)

@@ -31,18 +31,18 @@ describes that of rung 1. It is in the README, section "Reproducing the four
 rungs". Everything in those three rungs costs zero API calls and runs on the
 standard library:
 
-    python3 -m peldano2.ceiling_check2      # hybrid engine ceiling
-    python3 -m peldano3.order_search        # coverage bound and searched order
-    python3 -m peldano4.sweep               # feedback-channel sweeps
+    python3 -m rung2.ceiling_check2      # hybrid engine ceiling
+    python3 -m rung3.order_search        # coverage bound and searched order
+    python3 -m rung4.sweep               # feedback-channel sweeps
 
 The optimizer audit of August 8, 2026 adds four more, also free. The first is
 blocking in the same sense as `harness.ceiling_check`: it measures the
 instrument before the instrument measures anything else.
 
-    python3 -m peldano3.optimizer_check     # optimizer ceiling: must give 1.0000
-    python3 -m peldano3.order_search_ls     # rung 3 with the declared optimizer
-    python3 -m peldano4.sweep_ls            # rung 4 with the declared optimizer
-    python3 -m peldano3.order_search_ls --full-space-search
+    python3 -m rung3.optimizer_check     # optimizer ceiling: must give 1.0000
+    python3 -m rung3.order_search_ls     # rung 3 with the declared optimizer
+    python3 -m rung4.sweep_ls            # rung 4 with the declared optimizer
+    python3 -m rung3.order_search_ls --full-space-search
 
 The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before
@@ -69,7 +69,7 @@ by specificity and returns CONFLICT before applying the age tie-break, which is
 left unreachable precisely when it would matter.
 
 **The redesign has already been done, in rung 2**, as a separate package
-(`peldano2/engine2.py`: subsumption as the base order + declared priority), and
+(`rung2/engine2.py`: subsumption as the base order + declared priority), and
 it executes the perfect policy without error — the figure is in `STATUS.md`. It
 was done outside `harness/` precisely so that `dsl.py` would stay frozen.
 
@@ -118,7 +118,7 @@ Since August 8, 2026 the rule is also enforced by the code, in
 it writes `results/llm_run_n<N>.json`, so `--n 100` and `--n 2000` no longer
 share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
-`--overwrite-record`. The same guard covers `peldano2/run2.py`. **The guard is
+`--overwrite-record`. The same guard covers `rung2/run2.py`. **The guard is
 not authorization**: the norm above still holds, and the flag is not typed
 without Sergi asking for it.
 
@@ -322,7 +322,7 @@ remains not to propose unrequested redesigns.
 
 **The optimizer's constants are not yours to tune.** `MULTISTART_SEED = 17`,
 `MULTISTART_STARTS = 64` and `DECLARED_NEIGHBOURHOOD = "move+swap"` in
-`peldano3/local_search.py` were fixed before the runs that used them, and the
+`rung3/local_search.py` were fixed before the runs that used them, and the
 reasoning for the neighbourhood is recorded next to it. Changing any of them
 after seeing a result is rule 6 under another name. The instrument was changed
 once, on August 8, 2026, and only because Step 0 showed it failing against a

@@ -392,15 +392,15 @@ def registro(nombre: str) -> dict:
     return json.loads((REPO / nombre).read_text())
 
 
-def guion_peldano1(reg: dict) -> Guion:
+def guion_rung1(reg: dict) -> Guion:
     from harness.proposers import parse_payload
 
     corpus = generate_corpus(reg["metrics"]["n_cases"], seed=17)
     return Guion(_turnos(reg, corpus, parse_payload, _cuerpo_p1, SIN_JSON[1]))
 
 
-def guion_peldano2(reg: dict) -> Guion:
-    from peldano2.proposers2 import parse_payload
+def guion_rung2(reg: dict) -> Guion:
+    from rung2.proposers2 import parse_payload
 
     corpus = generate_corpus(reg["n"], seed=reg["seed"])
     return Guion(_turnos(reg, corpus, parse_payload, _cuerpo_p2, SIN_JSON[2]))

@@ -1,5 +1,5 @@
 {
-  "peldano": 2,
+  "rung": 2,
   "model": "deepseek/deepseek-v4-flash",
   "n": 100,
   "seed": 18,

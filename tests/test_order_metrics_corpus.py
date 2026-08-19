@@ -39,14 +39,14 @@ import unittest
 from functools import cache
 from pathlib import Path
 
-from peldano3.budget_and_balance_ls import load_instance
-from peldano3.order_metrics_corpus import (AUTHORIZATION,
+from rung3.budget_and_balance_ls import load_instance
+from rung3.order_metrics_corpus import (AUTHORIZATION,
                                            COMPETITION_IS_POST_HOC, POST_HOC,
                                            RECORD, RECORD_ANNOTATIONS,
                                            S_D_CLAUSE, SETS_MEASURED,
                                            TRUTH_PROVENANCE, s_d_readings,
                                            truth_masks)
-from peldano3.order_metrics_run import masks_for
+from rung3.order_metrics_run import masks_for
 
 REPO = Path(__file__).resolve().parent.parent
 

@@ -1,5 +1,5 @@
 """
-The harness of step 3 of the audit (`peldano3.budget_and_balance_ls`).
+The harness of step 3 of the audit (`rung3.budget_and_balance_ls`).
 
 What is pinned here is that the instances are the RECORD'S instances. The whole
 point of the step is to change one thing — the optimizer — and read the
@@ -24,8 +24,8 @@ import unittest
 from collections import Counter
 from pathlib import Path
 
-from peldano3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
-from peldano3.budget_and_balance_ls import (ESPERADO, GROUPS, POOL, PUBLICADO,
+from rung3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
+from rung3.budget_and_balance_ls import (ESPERADO, GROUPS, POOL, PUBLICADO,
                                             PUBLICADO_OBJETIVO,
                                             balanced_objective, record_name,
                                             start_spread, subsample)
@@ -99,11 +99,11 @@ def cadenas_de_codigo(path):
 
 
 class TestElRegistroPublicadoNoSeToca(unittest.TestCase):
-    """`peldano3.budget_and_balance` has no guard and dumps over its own record
+    """`rung3.budget_and_balance` has no guard and dumps over its own record
     on finishing. Step 3 obtains greedy-today by importing the function, never
     by running the script."""
 
-    FUENTE = REPO / "peldano3" / "budget_and_balance_ls.py"
+    FUENTE = REPO / "rung3" / "budget_and_balance_ls.py"
 
     def test_no_importa_el_main_del_modulo_sin_guarda(self):
         arbol = ast.parse(self.FUENTE.read_text(), filename=str(self.FUENTE))
@@ -154,7 +154,7 @@ class TestElObjetivoBalanceadoEsUnoSolo(unittest.TestCase):
         """The mask route gives the per-class ceiling, which over the 577 rules
         is not the class size. It must not appear in this module."""
         self.assertNotIn("class_counts_from_masks",
-                         (REPO / "peldano3" / "budget_and_balance_ls.py")
+                         (REPO / "rung3" / "budget_and_balance_ls.py")
                          .read_text().split('"""')[-1])
 
 
@@ -164,7 +164,7 @@ class TestElPresupuestoDeReinicios(unittest.TestCase):
     recomputes it at the measured rate; the arithmetic has to be right."""
 
     def test_el_intervalo_exacto_contiene_la_tasa_y_esta_ordenado(self):
-        from peldano3.optimizer_check_wt import clopper_pearson
+        from rung3.optimizer_check_wt import clopper_pearson
 
         for k in (0, 1, 6, 12, 32, 64):
             lo, hi = clopper_pearson(k, 64)
@@ -177,7 +177,7 @@ class TestElPresupuestoDeReinicios(unittest.TestCase):
         self.assertEqual(clopper_pearson(64, 64)[1], 1.0)
 
     def test_la_probabilidad_de_fallo_baja_al_subir_la_tasa(self):
-        from peldano3.optimizer_check_wt import restart_budget
+        from rung3.optimizer_check_wt import restart_budget
 
         anterior = None
         for k in (0, 1, 6, 12, 32):
@@ -195,14 +195,14 @@ class TestElPresupuestoDeReinicios(unittest.TestCase):
     def test_no_se_toca_la_constante_declarada(self):
         """What was recomputed is the claim about the constant, never the
         constant: changing it after seeing a result is CLAUDE.md rule 6."""
-        from peldano3.local_search import (DECLARED_NEIGHBOURHOOD,
+        from rung3.local_search import (DECLARED_NEIGHBOURHOOD,
                                            MULTISTART_SEED, MULTISTART_STARTS)
 
         self.assertEqual((MULTISTART_SEED, MULTISTART_STARTS,
                           DECLARED_NEIGHBOURHOOD), (17, 64, "move+swap"))
 
     def test_la_afirmacion_heredada_queda_registrada_para_comparar(self):
-        from peldano3.optimizer_check_wt import restart_budget
+        from rung3.optimizer_check_wt import restart_budget
 
         b = restart_budget(6, 64)
         self.assertAlmostEqual(b["inherited_claim"]["miss_probability"],

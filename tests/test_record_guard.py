@@ -49,7 +49,7 @@ from harness.record_guard import (
     refuse_overwrite,
     refuse_shrink,
 )
-from peldano2 import compare_runs, note_audit, run2
+from rung2 import compare_runs, note_audit, run2
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -177,7 +177,7 @@ class TestDescripcionDeRegistrosReales(unittest.TestCase):
     money— have no `_env`, which is exactly the case the description has to
     survive."""
 
-    def test_el_registro_del_peldano_1_se_describe_entero(self):
+    def test_el_registro_del_rung_1_se_describe_entero(self):
         lineas = dict(describe(REPO / "results" / "llm_run.json"))
         self.assertEqual(lineas["modelo"], "deepseek/deepseek-v4-flash")
         self.assertEqual(lineas["casos"], "2000")
@@ -190,7 +190,7 @@ class TestDescripcionDeRegistrosReales(unittest.TestCase):
         lineas = dict(describe(REPO / "results" / "llm_run.json"))
         self.assertIn("no lleva bloque _env", lineas["registrado"])
 
-    def test_el_registro_del_peldano_2_se_describe_entero(self):
+    def test_el_registro_del_rung_2_se_describe_entero(self):
         lineas = dict(describe(REPO / "results2" / "llm_run2_n100.json"))
         self.assertEqual(lineas["casos"], "100")
         self.assertEqual(lineas["semilla"], "17")
@@ -270,7 +270,7 @@ class TestElNombreDeSalidaYaNoColisiona(unittest.TestCase):
         self.assertEqual(self.ruta(out="/tmp/x.json"), Path("/tmp/x.json"))
 
 
-class TestLaEtiquetaDelPeldano2(unittest.TestCase):
+class TestLaEtiquetaDelRung2(unittest.TestCase):
     """The same defect on the other paid command, and worse: the rung 2 line
     the README recommends —`--n 100 --seed 17 --prompt-version v2`— wrote on
     top of the v1 record with that same name."""
@@ -411,10 +411,10 @@ class TestLoQueSeQuedaSinGuarda(unittest.TestCase):
     LIBRES = [
         "harness.subsumption_check",
         "harness.learned_subsumption",
-        "peldano2.ceiling_check2",
-        "peldano3.order_search",
-        "peldano3.budget_and_balance",
-        "peldano4.sweep",
+        "rung2.ceiling_check2",
+        "rung3.order_search",
+        "rung3.budget_and_balance",
+        "rung4.sweep",
     ]
 
     def test_los_deterministas_y_gratis_no_importan_la_guarda(self):
