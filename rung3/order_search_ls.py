@@ -37,8 +37,8 @@ Three things it can say, and they cost very different amounts:
                It costs ~3 h against ~2 min for everything else, so it lives
                behind --full-space-search and its own record.
 
-Usage:  python3 -m peldano3.order_search_ls
-        python3 -m peldano3.order_search_ls --full-space-search
+Usage:  python3 -m rung3.order_search_ls
+        python3 -m rung3.order_search_ls --full-space-search
 """
 
 from __future__ import annotations
@@ -53,8 +53,8 @@ from harness.ceiling_check import all_cases
 from harness.domain import ACTIONS
 from harness.hidden_policy import true_action
 from harness.provenance import describe, environment
-from peldano2.engine2 import Space
-from peldano3.order_search import (build_tables, load, split, subsumption_below)
+from rung2.engine2 import Space
+from rung3.order_search import (build_tables, load, split, subsumption_below)
 
 from .local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                            MULTISTART_STARTS, build_masks, coverage_length,
@@ -308,7 +308,7 @@ def main(argv=None) -> int:
         print("=" * 78)
         print("BUSQUEDA DIRECTA SOBRE EL ESPACIO EXHAUSTIVO (sin particion)")
         print("=" * 78)
-        print("  Es el analogo de 'buscar sobre el propio test' del peldano 3:")
+        print("  Es el analogo de 'buscar sobre el propio test' del rung 3:")
         print("  separa debilidad de la busqueda de fallo de generalizacion.")
         direct = {}
         for name in POOLS:

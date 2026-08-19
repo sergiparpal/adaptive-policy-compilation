@@ -34,43 +34,43 @@ ESCRITORES = [
     "run_experiment",
     "harness.subsumption_check",
     "harness.learned_subsumption",
-    "peldano2.ceiling_check2",
-    "peldano2.compare_runs",
-    "peldano2.note_audit",
-    "peldano2.run2",
-    "peldano3.order_search",
-    "peldano3.budget_and_balance",
-    "peldano4.sweep",
+    "rung2.ceiling_check2",
+    "rung2.compare_runs",
+    "rung2.note_audit",
+    "rung2.run2",
+    "rung3.order_search",
+    "rung3.budget_and_balance",
+    "rung4.sweep",
     # Added 2026-08-15 with the module. It does not close F1 of the optimizer
     # audit — this list still under-lists the writers the README table carries —
     # it only keeps the newest one from joining the omission.
-    "peldano3.order_metrics_run",
+    "rung3.order_metrics_run",
     # The same instrument on the corpus surface, added 2026-08-15. A separate
     # writer because it is a separate record: it must never land on
     # order_metrics.json, which owns the space figures.
-    "peldano3.order_metrics_corpus",
+    "rung3.order_metrics_corpus",
     # The join of those two records, added 2026-08-15. It writes a record and
     # reads two, so it belongs here; adding it widens what this test covers,
     # which is the only direction this list is ever allowed to move.
-    "peldano3.rank_transfer",
+    "rung3.rank_transfer",
     # The space restricted to the points the corpus touches, added 2026-08-16.
     # A fourth writer for the same reason as the second: it must never land on
     # order_metrics.json or order_metrics_corpus.json, which own the two
     # surfaces it compares.
-    "peldano3.order_metrics_touched",
+    "rung3.order_metrics_touched",
     # The same 2,080 pairs read at the level of the rules, added 2026-08-16. A
     # fifth writer and a fifth record: it reads three of the four above and
     # rewrites none of them. Adding it here widens what this test covers, which
     # is the only direction this list is ever allowed to move.
-    "peldano3.order_metrics_rules",
+    "rung3.order_metrics_rules",
     # Who holds territory, added 2026-08-16 with the audit note on part five.
     # A sixth writer: it reads order_metrics_rules.json — kappa included, which
     # it never recomputes — and writes territory_holders.json, correcting the
     # reading of a figure rather than any of its values.
-    "peldano3.territory_holders",
+    "rung3.territory_holders",
 ]
 
-CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
+CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
 
 
 class TestEnvironment(unittest.TestCase):

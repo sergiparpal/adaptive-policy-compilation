@@ -161,7 +161,7 @@ class TestLaGuardaDePlanes(unittest.TestCase):
     def test_rechaza_un_plan_acompanado_de_codigo(self):
         """The 2026-08-13 case, which is the one that has already happened."""
         self._rechazado(self._confirma("PLAN_BUDGET_LS.md",
-                                       "peldano3/local_search.py"))
+                                       "rung3/local_search.py"))
 
     def test_rechaza_PREDICTION_acompanada(self):
         """Hard rule 2 of `CLAUDE.md`: the prediction is Sergi's, and it is
@@ -176,9 +176,9 @@ class TestLaGuardaDePlanes(unittest.TestCase):
     def test_el_mensaje_nombra_los_dos_lados(self):
         """A guard that says no without saying to what is a guard people
         disable."""
-        salida = self._confirma("PLAN_BUDGET_LS.md", "peldano3/local_search.py")
+        salida = self._confirma("PLAN_BUDGET_LS.md", "rung3/local_search.py")
         self.assertIn("PLAN_BUDGET_LS.md", salida.stderr)
-        self.assertIn("peldano3/local_search.py", salida.stderr)
+        self.assertIn("rung3/local_search.py", salida.stderr)
 
     def test_deja_pasar_el_plan_solo(self):
         """Sergi's signing commit. The guard forbids the company, not the
@@ -194,21 +194,21 @@ class TestLaGuardaDePlanes(unittest.TestCase):
     def test_deja_pasar_un_commit_sin_planes(self):
         """The common case has to stay free: the guard is not a toll on every
         commit."""
-        self._aceptado(self._confirma("peldano3/local_search.py", "README.md"))
+        self._aceptado(self._confirma("rung3/local_search.py", "README.md"))
 
     def test_un_plan_en_un_subdirectorio_no_cuenta(self):
         """Anchored to the root. `docs/PLAN_algo.md` is documentation about a
         plan, not a signed one, and blocking it would teach people to reach for
         `--no-verify` — which is the same hole with extra steps."""
         self._aceptado(self._confirma("docs/PLAN_algo.md",
-                                      "peldano3/local_search.py"))
+                                      "rung3/local_search.py"))
 
     def test_no_se_rompe_en_el_primer_commit(self):
         """Without HEAD there is nothing to diff the index against, and the
         hook runs under `set -e`: the empty tree is the fallback. A clone that
         cannot commit anything at all would get the hook uninstalled the same
         afternoon."""
-        self._aceptado(self._confirma("peldano3/local_search.py",
+        self._aceptado(self._confirma("rung3/local_search.py",
                                       con_historia=False))
         self._rechazado(self._confirma("PLAN_BUDGET_LS.md", "run_experiment.py",
                                        con_historia=False))

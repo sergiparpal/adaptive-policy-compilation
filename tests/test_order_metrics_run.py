@@ -21,8 +21,8 @@ from __future__ import annotations
 
 import unittest
 
-from peldano3.order_metrics import signature
-from peldano3.order_metrics_run import (digest, prefix_winner, resumen,
+from rung3.order_metrics import signature
+from rung3.order_metrics_run import (digest, prefix_winner, resumen,
                                         slice_pairs, spearman)
 
 

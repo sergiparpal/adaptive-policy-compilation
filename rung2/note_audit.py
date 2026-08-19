@@ -9,7 +9,7 @@ Two things the numeric comparison does not capture:
     crude, so the whole notes are dumped as well: the count orients, the
     quotation is the evidence.
 
-Usage:  python3 -m peldano2.note_audit results2/llm_run2_*.json
+Usage:  python3 -m rung2.note_audit results2/llm_run2_*.json
 """
 
 from __future__ import annotations
@@ -68,7 +68,7 @@ def main(argv: list[str]) -> int:
     # Checked before printing, for the same reason as in compare_runs: the
     # destination never changes here, the number of rows does.
     or_exit(refuse_shrink, RECORD, rows, overwrite=overwrite,
-            hint="    python3 -m peldano2.note_audit results2/llm_run2_*.json")
+            hint="    python3 -m rung2.note_audit results2/llm_run2_*.json")
 
     print("=" * 100)
     print("ATRIBUTOS USADOS POR BASE")

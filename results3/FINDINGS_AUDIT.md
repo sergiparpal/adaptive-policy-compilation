@@ -12,11 +12,11 @@ Everything here costs **zero API calls**.
 > multi-start table, the 0.9455 / 0.9299 of orders perfect on the corpus, the
 > cost of `move+swap` — and because it carries the prediction Sergi filled in by
 > hand before the run (hard rule 2), which cannot be regenerated. Moved here so
-> that a plan that is done stops reading as work pending. **The `peldano3/`
+> that a plan that is done stops reading as work pending. **The `rung3/`
 > scripts still name it `PLAN_AUDIT`**, in comments and in one printed line, and
 > that was left standing on purpose. Those comments are accurate about what they
 > describe: what the plan asked for, under the name it had when they were
-> written. And `harness/provenance.py` hashes every `.py` under `peldano3/` into
+> written. And `harness/provenance.py` hashes every `.py` under `rung3/` into
 > the `code_digest` that `optimizer_check.json`, `order_search_ls.json`,
 > `order_search_ls_fullspace.json` and `sweep_ls.json` carry, so editing them for
 > a cosmetic rename moves a figure-provenance signal while no figure moves.
@@ -73,7 +73,7 @@ this project twice.
 ## Step 1 — local search over the 577 rules
 
 Start from the greedy order, apply pairwise swaps until no improvement. Same
-corpus (seed 17), same five splits, same protocol as `peldano3/order_search.py`,
+corpus (seed 17), same five splits, same protocol as `rung3/order_search.py`,
 so the numbers are comparable to the record.
 
 Report train, test and the gap, against the existing references:
@@ -737,7 +737,7 @@ sample of size one called a tie is no longer one.
 
 **F1 and F7 — a pinned list that stopped mirroring its source.** `ESCRITORES`
 says in its own comment that it mirrors the README's overwrite table, and omits
-`peldano3.optimizer_check`, `peldano3.order_search_ls` and `peldano4.sweep_ls`,
+`rung3.optimizer_check`, `rung3.order_search_ls` and `rung4.sweep_ls`,
 all three of which the README lists. `LIBRES` omits the same three; its other
 absences — `run_experiment`, `run2`, `compare_runs`, `note_audit` — are not drift,
 since those are guarded on purpose and `LIBRES` is the list of writers that must

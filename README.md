@@ -12,7 +12,7 @@ of 29 rules spread over 8 priority layers.
 > specification and the operating procedure.
 
 > **Note on language.** The prose of this repository is in English; the code is
-> not. Module, package and field names stay as they are (`peldano2/` = rung 2),
+> not. Module, package and field names stay as they are (`rung2/` = rung 2),
 > and the scripts still print their tables in Spanish. When a block below shows
 > expected output, compare the **numbers**, not the words.
 
@@ -57,33 +57,33 @@ python3 -m harness.ceiling_check      # specificity engine vs. design order
 python3 run_experiment.py frontier    # the keep_k mocks and the cache baseline
 
 # --- RUNG 2 · hybrid engine: subsumption + declared priority -------------
-python3 -m peldano2.ceiling_check2    # STOP 0 of rung 2; must PASS
-python3 -m peldano2.compare_runs results2/llm_run2_*.json   # the 8 runs
-python3 -m peldano2.note_audit  results2/llm_run2_*.json    # attributes and notes
+python3 -m rung2.ceiling_check2    # STOP 0 of rung 2; must PASS
+python3 -m rung2.compare_runs results2/llm_run2_*.json   # the 8 runs
+python3 -m rung2.note_audit  results2/llm_run2_*.json    # attributes and notes
 
 # --- RUNG 3 · order by search over the corpus ----------------------------
-python3 -m peldano3.order_search      # coverage bound, greedy order, splits
-python3 -m peldano3.budget_and_balance  # label curve and balanced greedy
+python3 -m rung3.order_search      # coverage bound, greedy order, splits
+python3 -m rung3.budget_and_balance  # label curve and balanced greedy
 
 # --- RUNG 4 · order learned from a feedback channel ----------------------
-python3 -m peldano4.sweep             # coverage/asymmetry/delay/noise sweeps
+python3 -m rung4.sweep             # coverage/asymmetry/delay/noise sweeps
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
-python3 -m peldano3.optimizer_check   # optimizer ceiling: must give 1.0000
-python3 -m peldano3.optimizer_check_wt  # idem for the class-weighted objective
-python3 -m peldano3.order_search_ls   # rung 3 redone with the audited optimizer (33 min)
-python3 -m peldano4.sweep_ls          # rung 4 redone with the audited optimizer (42 min)
-python3 -m peldano3.budget_and_balance_ls  # label curve and balanced objective (28 min)
+python3 -m rung3.optimizer_check   # optimizer ceiling: must give 1.0000
+python3 -m rung3.optimizer_check_wt  # idem for the class-weighted objective
+python3 -m rung3.order_search_ls   # rung 3 redone with the audited optimizer (33 min)
+python3 -m rung4.sweep_ls          # rung 4 redone with the audited optimizer (42 min)
+python3 -m rung3.budget_and_balance_ls  # label curve and balanced objective (28 min)
 
 # --- THE ORDERS BEHIND THOSE FIGURES, compared as orders ------------------
-python3 -m peldano3.order_metrics_run # regenerates and measures orders (12 min)
-python3 -m peldano3.order_metrics_run --checks   # parity gate only (6 min)
-python3 -m peldano3.order_metrics_corpus  # the same orders over the corpus (7 min)
-python3 -m peldano3.order_metrics_corpus --s-e-argmin  # amends its own record in place
-python3 -m peldano3.rank_transfer     # joins the two records above (seconds)
-python3 -m peldano3.order_metrics_touched  # the space, restricted to the points
+python3 -m rung3.order_metrics_run # regenerates and measures orders (12 min)
+python3 -m rung3.order_metrics_run --checks   # parity gate only (6 min)
+python3 -m rung3.order_metrics_corpus  # the same orders over the corpus (7 min)
+python3 -m rung3.order_metrics_corpus --s-e-argmin  # amends its own record in place
+python3 -m rung3.rank_transfer     # joins the two records above (seconds)
+python3 -m rung3.order_metrics_touched  # the space, restricted to the points
                                       # the corpus touches (7 min)
-python3 -m peldano3.order_metrics_touched --checks   # its four gates only
+python3 -m rung3.order_metrics_touched --checks   # its four gates only
 ```
 
 What each of them should produce is in the record it belongs to; the corrected
@@ -129,14 +129,14 @@ and the key (see *Getting started*):
 
 ```bash
 .venv/bin/python run_experiment.py llm --n 100                      # rung 1
-.venv/bin/python -m peldano2.run2 --n 100 --seed 17 --prompt-version v2   # rung 2
+.venv/bin/python -m rung2.run2 --n 100 --seed 17 --prompt-version v2   # rung 2
 ```
 
 They write `results/llm_run_n100.json` and `results2/llm_run2_n100_v2.json`. If
 the file is already there they abort without spending anything; see the warning
 below.
 
-`peldano2/run2.py` accepts `--prompt-version v1|v2`; both versions of the prompt
+`rung2/run2.py` accepts `--prompt-version v1|v2`; both versions of the prompt
 are kept in the code and every run stores in full the one it used. The record of
 the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 
@@ -149,25 +149,25 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `run_experiment.py llm` | `results/llm_run_n<N>.json` | **yes** |
 > | `harness/subsumption_check.py` | `results/subsumption.json` | no, on purpose |
 > | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
-> | `peldano2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
-> | `peldano2/compare_runs.py` | `results2/comparativa.json` | only against shrinking |
-> | `peldano2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
-> | `peldano2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
-> | `peldano3/order_search.py` | `results3/order_search.json` | no, on purpose |
-> | `peldano3/budget_and_balance.py` | `results3/budget_and_balance.json` | no, on purpose |
-> | `peldano4/sweep.py` | `results4/sweep.json` | no, on purpose |
-> | `peldano3/optimizer_check.py` | `results3/optimizer_check.json` | no, on purpose |
-> | `peldano3/optimizer_check_wt.py` | `results3/optimizer_check_wt.json` | no, on purpose |
-> | `peldano3/order_search_ls.py` | `results3/order_search_ls.json` | no, on purpose |
-> | `peldano3/budget_and_balance_ls.py` | `results3/budget_and_balance_ls.json` | **partial runs get their own name** |
-> | `peldano3/budget_and_balance_ls.py --start-budget` | `results3/start_budget_check.json` | no, on purpose |
-> | `peldano4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
-> | `peldano3/order_metrics_run.py` | `results3/order_metrics.json` | no, on purpose |
-> | `peldano3/order_metrics_corpus.py` | `results3/order_metrics_corpus.json` | no, on purpose |
-> | `peldano3/rank_transfer.py` | `results3/rank_transfer.json` | no, on purpose |
-> | `peldano3/order_metrics_touched.py` | `results3/order_metrics_touched.json` | no, on purpose |
-> | `peldano3/order_metrics_rules.py` | `results3/order_metrics_rules.json` | no, on purpose |
-> | `peldano3/territory_holders.py` | `results3/territory_holders.json` | no, on purpose |
+> | `rung2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
+> | `rung2/compare_runs.py` | `results2/comparativa.json` | only against shrinking |
+> | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
+> | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
+> | `rung3/order_search.py` | `results3/order_search.json` | no, on purpose |
+> | `rung3/budget_and_balance.py` | `results3/budget_and_balance.json` | no, on purpose |
+> | `rung4/sweep.py` | `results4/sweep.json` | no, on purpose |
+> | `rung3/optimizer_check.py` | `results3/optimizer_check.json` | no, on purpose |
+> | `rung3/optimizer_check_wt.py` | `results3/optimizer_check_wt.json` | no, on purpose |
+> | `rung3/order_search_ls.py` | `results3/order_search_ls.json` | no, on purpose |
+> | `rung3/budget_and_balance_ls.py` | `results3/budget_and_balance_ls.json` | **partial runs get their own name** |
+> | `rung3/budget_and_balance_ls.py --start-budget` | `results3/start_budget_check.json` | no, on purpose |
+> | `rung4/sweep_ls.py` | `results4/sweep_ls.json` | **partial runs get their own name** |
+> | `rung3/order_metrics_run.py` | `results3/order_metrics.json` | no, on purpose |
+> | `rung3/order_metrics_corpus.py` | `results3/order_metrics_corpus.json` | no, on purpose |
+> | `rung3/rank_transfer.py` | `results3/rank_transfer.json` | no, on purpose |
+> | `rung3/order_metrics_touched.py` | `results3/order_metrics_touched.json` | no, on purpose |
+> | `rung3/order_metrics_rules.py` | `results3/order_metrics_rules.json` | no, on purpose |
+> | `rung3/territory_holders.py` | `results3/territory_holders.json` | no, on purpose |
 >
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing.
@@ -177,7 +177,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > three levels, because only one of them needs protecting.
 >
 > **What is guarded: what costs money and is not deterministic.**
-> `run_experiment.py llm` and `peldano2/run2.py`. If the destination is occupied
+> `run_experiment.py llm` and `rung2/run2.py`. If the destination is occupied
 > they abort **before spending a single call** — the check is at startup, not at
 > the end — with a message that reads the existing file and says what would be
 > lost: when it was recorded, with what model, how many cases, how many rules and
@@ -204,7 +204,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > any invocation**; it is the closed record of rung 1 and the input of rungs 3
 > and 4, and reaching it now takes `--out` *and* the flag. Reproducing that
 > figure writes `llm_run_n2000.json`, and comparing the two is a separate,
-> deliberate step. `peldano2/run2.py` got the same fix on its `--tag`: it now
+> deliberate step. `rung2/run2.py` got the same fix on its `--tag`: it now
 > includes the prompt version and the seed, so the rung 2 line recommended above
 > no longer writes on top of the v1 record.
 >
@@ -424,9 +424,19 @@ Each results JSON opens with the provenance of the figure:
 the absence of it — any figure sensitive to the iteration order of a `set`
 produced that way is suspect by construction, which is exactly what happened to
 the greedy search of rungs 3 and 4. `code_digest` is a sha256 of the code that
-produces figures (`harness/`, `peldano2..4/`, `run_experiment.py`; the tests are
+produces figures (`harness/`, `rung2..4/`, `run_experiment.py`; the tests are
 left out), so it identifies the version even if the tree is dirty or there is no
 git.
+
+**The digests recorded before August 19, 2026 cannot be reproduced, and no
+figure of theirs changed.** That day the packages `peldano2/`, `peldano3/` and
+`peldano4/` were renamed to `rung2/`, `rung3/` and `rung4/`. `code_digest`
+hashes each file's relative path along with its content, so renaming the
+directories moves every digest without touching a single number: the records
+above keep the digest of the layout they were produced under, and re-running any
+of them today reproduces its figures and prints a different digest. A digest
+mismatch across that date is the rename, not a figure that stopped reproducing;
+across any other date it is what it has always been.
 
 **There are two dirty flags and they are not redundant.** `code_dirty` is the
 one that decides whether `git_commit` identifies what ran: with `false`, that
@@ -749,18 +759,18 @@ adaptive-policy-compilation/
 │   ├── subsumption_check.py partial order by semantic subsumption
 │   └── learned_subsumption.py  the same criterion over the learned base
 │
-├── peldano2/                hybrid engine: subsumption + declared priority
+├── rung2/                hybrid engine: subsumption + declared priority
 │   ├── engine2.py           two-level arbitration
 │   ├── hidden_priority.py   the 29 rules with their minimal edges
 │   ├── ceiling_check2.py    STEP 0 of rung 2 (gives 100%)
 │   ├── proposers2.py        v1/v2 prompts and bounded neighbourhood
 │   └── shadow2.py  run2.py  compare_runs.py  note_audit.py
 │
-├── peldano3/                order by search over the corpus, no LLM
+├── rung3/                order by search over the corpus, no LLM
 │   ├── order_search.py      coverage bound, greedy search, split
 │   └── budget_and_balance.py  label budget and balanced greedy
 │
-├── peldano4/                priority learned from a feedback channel
+├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   └── sweep.py             coverage, asymmetry, delay and noise sweeps
 │

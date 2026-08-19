@@ -6,7 +6,7 @@ THE PATTERN, AND WHY IT IS REPEATED
 --------------------------------------------------------------------------
 `harness.ceiling_check` loads the true policy into the engine and measures what
 the engine can do with it. It cost zero API calls and it voided rung 1 before a
-single cent had been spent on interpreting it. `peldano2.ceiling_check2` did the
+single cent had been spent on interpreting it. `rung2.ceiling_check2` did the
 same for the hybrid engine.
 
 This does it for the SEARCH. The local search of `local_search.py` is about to
@@ -67,7 +67,7 @@ single-run figures stay measured and printed below: that swaps fail on 8,660
 cases is a result about the method, which is what PLAN_AUDIT asked for, and not
 a discard.
 
-Usage:  python3 -m peldano3.optimizer_check
+Usage:  python3 -m rung3.optimizer_check
 """
 
 from __future__ import annotations
@@ -82,7 +82,7 @@ from harness.domain import ACTIONS, generate_corpus
 from harness.dsl import Condition
 from harness.hidden_policy import true_action
 from harness.provenance import describe, environment
-from peldano2.engine2 import Space
+from rung2.engine2 import Space
 
 from .local_search import (MULTISTART_SEED, MULTISTART_STARTS, NEIGHBOURHOODS,
                            build_masks, coverage_length, declared_starts,

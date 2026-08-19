@@ -49,7 +49,7 @@ changed a conclusion:
 - **Aug 5** · `harness.ceiling_check`: the engine scores 0.5875 with the
   *perfect* policy loaded. It voided an n=2000 run already paid for
   ([`PREDICTION.md`](PREDICTION.md)).
-- **Aug 8** · `peldano3.optimizer_check`: the neighbourhood the audit had
+- **Aug 8** · `rung3.optimizer_check`: the neighbourhood the audit had
   declared, pairwise swaps, cannot solve the 29-rule instance whose optimum is
   1.0000 — 0 of 65 starts reach it.
 - **Aug 8** · the same check, on the other surface: the corpus would have

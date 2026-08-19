@@ -70,8 +70,8 @@ writes one new file, `results3/territory_holders.json`, and rewrites none of the
 records it reads — least of all `order_metrics_rules.json`, whose figures this
 corrects the READING of and not the values.
 
-Usage:  python3 -m peldano3.territory_holders
-        python3 -m peldano3.territory_holders --checks   (gates only)
+Usage:  python3 -m rung3.territory_holders
+        python3 -m rung3.territory_holders --checks   (gates only)
 """
 
 from __future__ import annotations
@@ -82,10 +82,10 @@ import time
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
+from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS)
-from peldano3.order_metrics import winners
-from peldano3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
+from rung3.order_metrics import winners
+from rung3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
                                         parity_band, parity_full_supervision,
                                         resumen, run_band_1pct,
                                         run_full_supervision)

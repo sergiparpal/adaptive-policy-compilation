@@ -81,9 +81,9 @@ explicitly, after the six verdicts existed, and on the condition that nothing
 already published may move; the mode compares every set summary it recomputes
 against the record and refuses to write if one differs. See `AUTHORIZATION`.
 
-Usage:  python3 -m peldano3.order_metrics_corpus
-        python3 -m peldano3.order_metrics_corpus --checks   (gates only)
-        python3 -m peldano3.order_metrics_corpus --s-e-argmin
+Usage:  python3 -m rung3.order_metrics_corpus
+        python3 -m rung3.order_metrics_corpus --checks   (gates only)
+        python3 -m rung3.order_metrics_corpus --s-e-argmin
 """
 
 from __future__ import annotations
@@ -94,11 +94,11 @@ import time
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
+from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS)
-from peldano3.order_metrics import (agreement_masks, behavioural_distance,
+from rung3.order_metrics import (agreement_masks, behavioural_distance,
                                     conflicting_pairs, pair_census)
-from peldano3.order_metrics_run import (BUDGETS, DRAW_B, FRACTION_B, SPLIT_B,
+from rung3.order_metrics_run import (BUDGETS, DRAW_B, FRACTION_B, SPLIT_B,
                                         SPLITS_FULL, band_context,
                                         build_instance,
                                         decisions_and_signatures, masks_for,

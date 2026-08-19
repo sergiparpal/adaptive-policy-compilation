@@ -217,7 +217,7 @@ as costless.
 ### Level 2 — Referential edges, not integers
 
 `{"beats": ["R0007"], "loses_to": ["R0021"]}`. The four reasons why this beats a
-`priority: 17` **are those of `peldano2/engine2.py`'s docstring**, not a new derivation by
+`priority: 17` **are those of `rung2/engine2.py`'s docstring**, not a new derivation by
 this report; they are reproduced because they are the design's justification and it is
 useful to have them where it is discussed:
 
@@ -234,7 +234,7 @@ useful to have them where it is discussed:
 That fourth point is what disqualifies mixed schemes of the `priority_layer` + `overrides`
 kind: they introduce two authorities over the same pair.
 
-**What exactly the validator checks** (verified against `peldano2/engine2.py:220` and
+**What exactly the validator checks** (verified against `rung2/engine2.py:220` and
 `try_edge`, not inferred): six verdicts, five of rejection and one of acceptance —
 `EDGE_SELF` (self-reference), `EDGE_UNKNOWN` (the cited rule does not exist),
 `EDGE_DISJOINT` (the extensions do not intersect: the edge would be inert),
@@ -276,7 +276,7 @@ only instrument a deployed system has for knowing it is lost.
 ### What is measured, and on which surface
 
 Subsumption + 199 minimal declared edges: **e2e 1.0000, silent error 0.0000, zero conflicts,
-zero impasses** — **over the corpus of 2000**, which is all `peldano2/ceiling_check2.py`
+zero impasses** — **over the corpus of 2000**, which is all `rung2/ceiling_check2.py`
 measures. Over the exhaustive space that engine **has never been measured**. By this
 report's header convention, and in view of what §6 demonstrates about transfer between
 surfaces, the correct formulation is not "the mechanism is closed" but:
@@ -635,7 +635,7 @@ provenance). It serves to answer something that cannot be answered now: **which 
 contributes real value to arbitration**, instead of assuming it.
 
 **And it is considerably cheaper than it looks, because the substrate is already built.**
-`peldano2/hidden_priority.py` classifies the hidden policy's 406 pairs into four disjoint
+`rung2/hidden_priority.py` classifies the hidden policy's 406 pairs into four disjoint
 boxes: 112 with disjoint extensions, 61 already ordered by subsumption, 34 with the same
 action (it does not matter who wins) and **199 declared edges with known winner**, derived
 from the layer order. That is a labelled benchmark, today, at zero cost. What is missing is

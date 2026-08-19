@@ -36,7 +36,7 @@ import time
 import unittest
 from collections import Counter
 
-from peldano3.local_search import (MULTISTART_STARTS, balanced_weights,
+from rung3.local_search import (MULTISTART_STARTS, balanced_weights,
                                    best_insertion, build_masks, coverage_length,
                                    declared_starts, greedy_order_from_masks,
                                    local_search, move_pass, multistart,
@@ -98,10 +98,10 @@ class TestPuntuacion(unittest.TestCase):
                 self.assertEqual(score_order(o, M, W, full),
                                  puntua_ingenuo(o, pool, label, action, idxs))
 
-    def test_coincide_con_evaluate_del_peldano_3(self):
+    def test_coincide_con_evaluate_del_rung_3(self):
         """`order_search.evaluate` is what produced the published figures. The
         two must agree, or the audit would not be comparable with the record."""
-        from peldano3.order_search import evaluate
+        from rung3.order_search import evaluate
         for seed in range(6):
             ids, pool, label, action, idxs, M, W, full = instancia(9, 50, seed)
             o = random_order(ids, seed=100 + seed)
@@ -138,8 +138,8 @@ class TestVorazSobreMascaras(unittest.TestCase):
     not the same construction, everything measured afterwards would be a gain
     over a different baseline."""
 
-    def test_produce_el_mismo_orden_que_el_voraz_del_peldano_3(self):
-        from peldano3.order_search import greedy_order
+    def test_produce_el_mismo_orden_que_el_voraz_del_rung_3(self):
+        from rung3.order_search import greedy_order
         for seed in range(10):
             ids, pool, label, action, idxs, M, W, full = instancia(11, 60, seed)
             born = {rid: k for k, rid in enumerate(ids)}
@@ -378,7 +378,7 @@ class TestObjetivoPonderado(unittest.TestCase):
         """What makes this objective the BALANCED one, checked against the
         `per_class` of the module that owns the published figure:
         score / (L * |clases|) is exactly its balanced accuracy."""
-        from peldano3.budget_and_balance import per_class
+        from rung3.budget_and_balance import per_class
 
         for seed in range(10):
             ids, pool, label, action, idxs, M, W, full = instancia(12, 60, seed)
@@ -511,7 +511,7 @@ class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
         """What the mask route got wrong: every case belongs to its class,
         winnable or not."""
         from harness.domain import generate_corpus
-        from peldano3.optimizer_check_wt import class_counts
+        from rung3.optimizer_check_wt import class_counts
 
         corpus = generate_corpus(200, seed=17)
         n = class_counts(corpus)
@@ -538,7 +538,7 @@ class TestPoolPorMascara(unittest.TestCase):
     with the `build_tables` that computed the record."""
 
     def test_el_pool_indefenso_coincide_con_build_tables(self):
-        from peldano3.order_search import (build_tables, load,
+        from rung3.order_search import (build_tables, load,
                                            subsumption_below)
 
         corpus, rules, ext, conds = load()
@@ -575,7 +575,7 @@ class TestElRegistroParcialNoPisaElCompleto(unittest.TestCase):
     pinned rather than left to the comment."""
 
     def test_solo_la_corrida_completa_usa_el_nombre_canonico(self):
-        from peldano4.sweep_ls import GROUPS, record_name
+        from rung4.sweep_ls import GROUPS, record_name
 
         self.assertEqual(record_name(list(GROUPS)), "sweep_ls.json")
         self.assertEqual(record_name(list(reversed(GROUPS))), "sweep_ls.json")
@@ -585,7 +585,7 @@ class TestElRegistroParcialNoPisaElCompleto(unittest.TestCase):
                 self.assertTrue(record_name(parcial).endswith(".json"))
 
     def test_cada_subconjunto_tiene_su_propio_nombre(self):
-        from peldano4.sweep_ls import record_name
+        from rung4.sweep_ls import record_name
 
         nombres = {record_name(g) for g in (["anchors"], ["asymmetry"],
                                             ["noise"], ["anchors", "noise"])}

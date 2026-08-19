@@ -83,8 +83,8 @@ those dump JSON over published records, so their functions are imported and
 called instead. It writes one new file, `results3/order_metrics_touched.json`,
 and rewrites neither of the two records it reads. Zero API calls.
 
-Usage:  python3 -m peldano3.order_metrics_touched
-        python3 -m peldano3.order_metrics_touched --checks   (gates only)
+Usage:  python3 -m rung3.order_metrics_touched
+        python3 -m rung3.order_metrics_touched --checks   (gates only)
 """
 
 from __future__ import annotations
@@ -97,11 +97,11 @@ from pathlib import Path
 
 from harness.ceiling_check import all_cases
 from harness.provenance import describe, environment
-from peldano2.engine2 import Space
-from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
+from rung2.engine2 import Space
+from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS)
-from peldano3.order_metrics import agreement_masks
-from peldano3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
+from rung3.order_metrics import agreement_masks
+from rung3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
                                         decisions_and_signatures, pairwise,
                                         parity_band, parity_full_supervision,
                                         per_class_over_pairs, resumen,

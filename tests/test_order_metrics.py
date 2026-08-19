@@ -25,7 +25,7 @@ import unittest
 from itertools import combinations
 from pathlib import Path
 
-from peldano3.order_metrics import (agreement_masks, attribution_agreement,
+from rung3.order_metrics import (agreement_masks, attribution_agreement,
                                     behavioural_distance, conflicting_pairs,
                                     decisions, pair_census,
                                     per_class_disagreement, positions_moved,
@@ -525,19 +525,19 @@ class TestElInstrumentoEsPuro(unittest.TestCase):
     exhaustive space."""
 
     def test_no_importa_nada_del_repositorio(self):
-        arbol = ast.parse((REPO / "peldano3" / "order_metrics.py").read_text())
+        arbol = ast.parse((REPO / "rung3" / "order_metrics.py").read_text())
         modulos = set()
         for nodo in ast.walk(arbol):
             if isinstance(nodo, ast.Import):
                 modulos.update(a.name.split(".")[0] for a in nodo.names)
             elif isinstance(nodo, ast.ImportFrom):
                 modulos.add((nodo.module or "").split(".")[0])
-        self.assertEqual(modulos & {"harness", "peldano2", "peldano3",
-                                    "peldano4", "run_experiment", "json"},
+        self.assertEqual(modulos & {"harness", "rung2", "rung3",
+                                    "rung4", "run_experiment", "json"},
                          set())
 
     def test_no_escribe_nada(self):
-        src = (REPO / "peldano3" / "order_metrics.py").read_text()
+        src = (REPO / "rung3" / "order_metrics.py").read_text()
         for prohibido in ("write_text", "open(", "Path("):
             with self.subTest(prohibido=prohibido):
                 self.assertNotIn(prohibido, src)

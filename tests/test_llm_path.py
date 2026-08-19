@@ -42,8 +42,8 @@ from harness.domain import generate_corpus
 from harness.dsl import RuleEngine
 from harness.hidden_policy import true_action
 from harness.shadow import run_shadow
-from peldano2.engine2 import PriorityEngine
-from peldano2.shadow2 import run_shadow2
+from rung2.engine2 import PriorityEngine
+from rung2.shadow2 import run_shadow2
 from tests.fixtures import corpus, space
 from tests.doubles import (
     CLAVE_FALSA,
@@ -54,8 +54,8 @@ from tests.doubles import (
     Guion,
     RespuestasFijas,
     Turno,
-    guion_peldano1,
-    guion_peldano2,
+    guion_rung1,
+    guion_rung2,
     registro,
     sdk_falso,
 )
@@ -85,7 +85,7 @@ def proponente1(guion, **kwargs):
 def proponente2(guion, **kwargs):
     cliente = ClienteOpenAIFalso(guion)
     with sdk_falso(openai=cliente):
-        from peldano2.proposers2 import OpenRouterProposer2
+        from rung2.proposers2 import OpenRouterProposer2
 
         return OpenRouterProposer2(**kwargs), cliente
 
@@ -134,7 +134,7 @@ class TestElDoble(unittest.TestCase):
 # The request — rung 1
 # ---------------------------------------------------------------------------
 
-class TestPeticionPeldano1(unittest.TestCase):
+class TestPeticionRung1(unittest.TestCase):
 
     def setUp(self):
         self.caso = un_caso(0)
@@ -305,7 +305,7 @@ class TestPeticionAnthropic(unittest.TestCase):
 # The request — rung 2
 # ---------------------------------------------------------------------------
 
-class TestPeticionPeldano2(unittest.TestCase):
+class TestPeticionRung2(unittest.TestCase):
 
     def setUp(self):
         self.caso = un_caso(0)
@@ -323,7 +323,7 @@ class TestPeticionPeldano2(unittest.TestCase):
         self.assertIn("TICKET EN IMPASSE:", usuario)
 
     def test_cada_version_manda_su_propio_prompt(self):
-        from peldano2.proposers2 import SYSTEM_PROMPT_V1, SYSTEM_PROMPT_V2
+        from rung2.proposers2 import SYSTEM_PROMPT_V1, SYSTEM_PROMPT_V2
 
         for version, esperado in (("v1", SYSTEM_PROMPT_V1),
                                   ("v2", SYSTEM_PROMPT_V2)):
@@ -340,7 +340,7 @@ class TestPeticionPeldano2(unittest.TestCase):
             proponente2(RespuestasFijas(REGLA), prompt_version="v3")
 
     def test_json_object_solo_en_el_primer_intento(self):
-        from peldano2.proposers2 import ProposalError
+        from rung2.proposers2 import ProposalError
 
         prop, cli = proponente2(RespuestasFijas("no es json"))
         with self.assertRaises(ProposalError):
@@ -369,7 +369,7 @@ class TestPeticionPeldano2(unittest.TestCase):
                                 por_canal("email", beats=["R0001"]))
         cliente = ClienteOpenAIFalso(guion)
         with sdk_falso(openai=cliente):
-            from peldano2.proposers2 import OpenRouterProposer2
+            from rung2.proposers2 import OpenRouterProposer2
 
             prop = OpenRouterProposer2()
             res = run_shadow2(generate_corpus(2, seed=17),
@@ -386,7 +386,7 @@ class TestPeticionPeldano2(unittest.TestCase):
 # Replay: the recorded run, whole, without calling anyone
 # ---------------------------------------------------------------------------
 
-class TestReplayPeldano1(unittest.TestCase):
+class TestReplayRung1(unittest.TestCase):
     """Snapshot of `results/llm_run.json`: 2000 cases, 632 escalations.
 
     The responses come from the record itself (see `doubles.py`), so this checks
@@ -397,7 +397,7 @@ class TestReplayPeldano1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.reg = registro("results/llm_run.json")
-        cls.guion = guion_peldano1(cls.reg)
+        cls.guion = guion_rung1(cls.reg)
         cliente = ClienteOpenAIFalso(cls.guion)
         with sdk_falso(openai=cliente):
             from harness.proposers import OpenRouterProposer
@@ -435,7 +435,7 @@ class TestReplayPeldano1(unittest.TestCase):
         self.assertEqual(self.res.metrics["silent_error_rate"], 0.4839)
 
 
-class TestReplayPeldano2(unittest.TestCase):
+class TestReplayRung2(unittest.TestCase):
     """Snapshot of `results2/llm_run2_n100.json`: 100 cases, 42 escalations.
 
     It adds what rung 1 does not have: the neighbourhood in the request and the
@@ -445,11 +445,11 @@ class TestReplayPeldano2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.reg = registro("results2/llm_run2_n100.json")
-        cls.guion = guion_peldano2(cls.reg)
+        cls.guion = guion_rung2(cls.reg)
         cliente = ClienteOpenAIFalso(cls.guion)
         engine = PriorityEngine(space=space())
         with sdk_falso(openai=cliente):
-            from peldano2.proposers2 import OpenRouterProposer2
+            from rung2.proposers2 import OpenRouterProposer2
 
             prop = OpenRouterProposer2(model=cls.reg["model"],
                                        prompt_version="v1")
@@ -500,7 +500,7 @@ class TestLaTiradaComoLaLanzaElComando(unittest.TestCase):
         from unittest import mock
 
         cls.reg = registro("results/llm_run.json")
-        completo = guion_peldano1(cls.reg)
+        completo = guion_rung1(cls.reg)
         cls.guion = Guion([t for t in completo.turnos if t.idx < cls.N])
         cls.antes = cls._huella()
 

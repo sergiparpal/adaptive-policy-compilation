@@ -329,7 +329,7 @@ in either direction.
 
 The record carries **`code_dirty: true`** at commit `2a598530`, and that is
 honest rather than alarming: the runner that produced it,
-`peldano3/order_metrics_run.py`, was untracked when it ran, which is what the
+`rung3/order_metrics_run.py`, was untracked when it ran, which is what the
 flag is for. What identifies the code is **`code_digest 1ffac0092a1f6c06`**,
 which is a digest of content and therefore survives the rebase that renames
 every commit on merge â€” the commit SHA does not, as PR #13's description found
@@ -754,7 +754,7 @@ on the corpus, and the two censuses. It is cheap for the reason the entry gave â
 having been the 260 s that dominated the first part.
 
 **`code_dirty: true` at commit `a7e2d2a6`, for the same reason as the first
-part**: the runner that produced this record, `peldano3/order_metrics_corpus.py`,
+part**: the runner that produced this record, `rung3/order_metrics_corpus.py`,
 was untracked when it ran. What identifies the code is `code_digest
 99184aa53d866fac`; what identifies the **orders** is neither, it is the parity
 gate, and the parity gate is exact on all 31 rows. **That digest covers code

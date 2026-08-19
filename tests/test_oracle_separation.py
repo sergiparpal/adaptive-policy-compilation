@@ -9,7 +9,7 @@ It is the claim on which the figures meaning anything depends, and until now it
 lived only in a docstring. These tests make it mechanical: they read each
 module's AST and look at who imports what. An import is enough to fail —it does
 not need to be used— because an unused import is exactly what was in
-`peldano4/sweep.py` until August 6, 2026, contradicting in writing what
+`rung4/sweep.py` until August 6, 2026, contradicting in writing what
 `FINDINGS4.md` claimed.
 
 The same control covers the other end: in rung 4, `feedback.py` must remain the
@@ -34,9 +34,9 @@ BUCLE_ONLINE = [
     "harness/dsl.py",
     "harness/domain.py",
     "harness/proposers.py",
-    "peldano2/engine2.py",
-    "peldano2/proposers2.py",
-    "peldano2/hidden_priority.py",
+    "rung2/engine2.py",
+    "rung2/proposers2.py",
+    "rung2/hidden_priority.py",
 ]
 
 
@@ -82,11 +82,11 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
             "harness/subsumption_check.py",
             "harness/learned_subsumption.py",
             "run_experiment.py",
-            "peldano2/shadow2.py",
-            "peldano2/ceiling_check2.py",
-            "peldano3/order_search.py",
-            "peldano3/budget_and_balance.py",
-            "peldano3/optimizer_check.py",   # offline: the optimizer's own ceiling
+            "rung2/shadow2.py",
+            "rung2/ceiling_check2.py",
+            "rung3/order_search.py",
+            "rung3/budget_and_balance.py",
+            "rung3/optimizer_check.py",   # offline: the optimizer's own ceiling
             # offline: the weighted optimizer's ceiling. Added 2026-08-13, and
             # deliberately: it first tried to count the classes off the masks to
             # avoid this import, and the masks give the per-class CEILING, which
@@ -94,12 +94,12 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
             # the hidden policy, false of the 577 rules by 98 cases in 1005.
             # Avoiding the oracle bought nothing and cost a defect the gate
             # could not see.
-            "peldano3/optimizer_check_wt.py",
-            "peldano3/order_search_ls.py",   # offline: labels the two instances
-            "peldano4/feedback.py",
+            "rung3/optimizer_check_wt.py",
+            "rung3/order_search_ls.py",   # offline: labels the two instances
+            "rung4/feedback.py",
         }
         encontrados = set()
-        for root in ("harness", "peldano2", "peldano3", "peldano4"):
+        for root in ("harness", "rung2", "rung3", "rung4"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -111,12 +111,12 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
         self.assertEqual(encontrados, permitidos)
 
 
-class TestElCanalDelPeldano4(unittest.TestCase):
+class TestElCanalDelRung4(unittest.TestCase):
     """The channel is the artefact that contains the risk: if the oracle slips
     in somewhere else, rung 4 measures full supervision."""
 
-    def test_feedback_es_el_unico_del_peldano_4_que_toca_el_oraculo(self):
-        tocan = {f.name for f in (REPO / "peldano4").glob("*.py")
+    def test_feedback_es_el_unico_del_rung_4_que_toca_el_oraculo(self):
+        tocan = {f.name for f in (REPO / "rung4").glob("*.py")
                  if imports_de(f) & ORACULO}
         self.assertEqual(tocan, {"feedback.py"})
 
@@ -125,7 +125,7 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         signature does not admit the true labels by any route."""
         import inspect
 
-        from peldano4.sweep import greedy_from_reports
+        from rung4.sweep import greedy_from_reports
 
         params = list(inspect.signature(greedy_from_reports).parameters)
         self.assertEqual(params, ["rules", "pool", "reported", "action", "born"])
@@ -135,7 +135,7 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         """Its output is strictly poorer: a subset of the cases, and with noise.
         With coverage 0 it emits nothing."""
         from harness.domain import generate_corpus
-        from peldano4.feedback import Channel
+        from rung4.feedback import Channel
 
         corpus = generate_corpus(50, seed=17)
         ventana = list(range(50))
@@ -152,7 +152,7 @@ class TestElCanalDelPeldano4(unittest.TestCase):
         not i.i.d."""
         from harness.domain import generate_corpus
         from harness.hidden_policy import true_action
-        from peldano4.feedback import Channel
+        from rung4.feedback import Channel
 
         corpus = generate_corpus(200, seed=17)
         ventana = list(range(200))

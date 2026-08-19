@@ -40,7 +40,7 @@ WHAT IS STORED, AND WHAT EACH FIELD IS FOR
   `git_dirty: true` because of the previous one's output. The flag was not
   lying; it was measuring something else. See results2/NOTA_REGISTRO.md.
   code_digest     sha256 (16 hex) of the code that produces the figures: every
-                  .py in harness/, peldano2/, peldano3/, peldano4/ and
+                  .py in harness/, rung2/, rung3/, rung4/ and
                   run_experiment.py. It identifies the code even if the tree is
                   dirty or there is no git. `tests/` is left out on purpose:
                   changing a test changes no number.
@@ -63,7 +63,7 @@ from typing import Any
 REPO = Path(__file__).resolve().parent.parent
 
 # Code that produces figures. Order does not matter: the digest sorts by path.
-CODE_ROOTS = ("harness", "peldano2", "peldano3", "peldano4", "run_experiment.py")
+CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
 
 DIGEST_CHARS = 16
 

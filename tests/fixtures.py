@@ -12,7 +12,7 @@ from functools import cache
 from harness.ceiling_check import HIDDEN_DSL
 from harness.domain import Case, generate_corpus
 from harness.dsl import Condition
-from peldano2.engine2 import PriorityEngine, Rule2, Space
+from rung2.engine2 import PriorityEngine, Rule2, Space
 
 # The experiment's corpus. Seed 17 and n=2000 are not parameters: they are part
 # of the specification (hard rule 4 of CLAUDE.md).

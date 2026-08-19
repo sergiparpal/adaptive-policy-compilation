@@ -21,14 +21,14 @@ import hashlib
 import json
 import sys
 
-from peldano3.local_search import (declared_starts, greedy_order_from_masks,
+from rung3.local_search import (declared_starts, greedy_order_from_masks,
                                    multistart)
-from peldano3.optimizer_check import (hidden_rules, masks_over_corpus,
+from rung3.optimizer_check import (hidden_rules, masks_over_corpus,
                                       tail_key_factory)
-from peldano3.order_search import (build_tables, evaluate, greedy_order, load,
+from rung3.order_search import (build_tables, evaluate, greedy_order, load,
                                    split, subsumption_below)
-from peldano4.feedback import Channel
-from peldano4.sweep import greedy_from_reports, pi0_decisions
+from rung4.feedback import Channel
+from rung4.sweep import greedy_from_reports, pi0_decisions
 
 
 def digest(seq) -> str:

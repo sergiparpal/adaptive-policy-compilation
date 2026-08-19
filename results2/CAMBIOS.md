@@ -1,7 +1,7 @@
 # Changelog — rung 2
 
 > The prompt fragments quoted below are the **literal Spanish text** that lives
-> in `peldano2/proposers2.py`; the v2 is built by literal substitution over the
+> in `rung2/proposers2.py`; the v2 is built by literal substitution over the
 > v1, so they are reproduced verbatim. An English rendering follows each one in
 > italics.
 
@@ -127,9 +127,9 @@ loop).
 ### Reproducing
 
 ```bash
-python3 -m peldano2.run2 --n 100 --seed 17 --prompt-version v1 --tag n100
-python3 -m peldano2.run2 --n 100 --seed 17 --prompt-version v2 --tag n100_v2
-python3 -m peldano2.compare_runs results2/llm_run2_*.json
+python3 -m rung2.run2 --n 100 --seed 17 --prompt-version v1 --tag n100
+python3 -m rung2.run2 --n 100 --seed 17 --prompt-version v2 --tag n100_v2
+python3 -m rung2.compare_runs results2/llm_run2_*.json
 ```
 
 Each run stores its `prompt_version` and the full text of the `system_prompt` it

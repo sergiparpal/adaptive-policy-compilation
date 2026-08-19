@@ -87,7 +87,7 @@ own standard deviation.
 > The audit (`results3/FINDINGS_AUDIT.md`, `PLAN_AUDIT.md` when this erratum was
 > written) re-ran this sweep with the channel untouched, the
 > same π₀, the same three splits and the same seed 17, replacing only the learner:
-> the multi-start local search declared in `peldano3/local_search.py`. All figures
+> the multi-start local search declared in `rung3/local_search.py`. All figures
 > below are on the CORPUS test half, the same surface as the table above.
 >
 > ```
@@ -115,7 +115,7 @@ own standard deviation.
 > 0.6157 and 0.5757 against a space bound of 0.8784 — but the *direction* is the
 > same, so the withdrawal does not depend on which surface is used.
 >
-> Record: `results4/sweep_ls.json`, reproduced with `python3 -m peldano4.sweep_ls`.
+> Record: `results4/sweep_ls.json`, reproduced with `python3 -m rung4.sweep_ls`.
 > Zero API calls. This record's figures are not modified.
 
 **Symmetric supervision is exactly what this rung existed in order not to
@@ -132,14 +132,14 @@ The risk declared when the rung was opened: in a synthetic environment
 "environment feedback" and "hidden policy" are the same function, and without
 bounding the channel this measures full supervision under another name.
 
-Containment: **`peldano4/feedback.py` is the only module in the rung that imports
+Containment: **`rung4/feedback.py` is the only module in the rung that imports
 `true_action`.** It emits `{case -> reported action}` and nothing else. The
 learner receives neither the truth, nor whether the decision was correct, nor
 which cases went unobserved. The truth reappears only in the evaluation, which is
 measurement and not supervision, just as in the three previous rungs.
 
 > **[ERRATUM 2026-08-06]** "The only module that imports `true_action`" is
-> literally false: `peldano4/sweep.py:36` imports it too. The import **is unused**
+> literally false: `rung4/sweep.py:36` imports it too. The import **is unused**
 > (zero calls in the file), but the claim as written is not true and must not be
 > defended by its intent.
 >
@@ -372,12 +372,12 @@ structure of a stratified policy does not live in the rules.
 ## Files
 
 ```
-peldano4/feedback.py    the channel; only module that imports true_action
-peldano4/sweep.py       sweeps, realistic grid and sensitivity to π₀
+rung4/feedback.py    the channel; only module that imports true_action
+rung4/sweep.py       sweeps, realistic grid and sensitivity to π₀
 results4/sweep.json     every measured cell
 ```
 
-Reproducible with `python3 -m peldano4.sweep`. Zero API calls.
+Reproducible with `python3 -m rung4.sweep`. Zero API calls.
 
 Step B — online ordering, with the base growing and feedback arriving with delay
 — was not run: the asymmetry answers the question the rung existed to answer, and

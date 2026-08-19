@@ -48,7 +48,7 @@ THE OLD RECORD IS NOT TOUCHED
 --------------------------------------------------------------------------
 `results3/budget_and_balance.json` is read-only for this work. It is
 deliberately pre-tie-break, so its numbers stay reproducible beside the new
-ones, and `python3 -m peldano3.budget_and_balance` is NEVER run: it has no
+ones, and `python3 -m rung3.budget_and_balance` is NEVER run: it has no
 guard and dumps over that record on finishing. Greedy-today comes from
 importing `budget_and_balance.greedy` and calling it.
 
@@ -57,9 +57,9 @@ the rows of THIS process, so letting `--sections budget` land on the canonical
 name would silently drop §2 — the loss `harness/record_guard.py` exists to
 prevent, and which nearly happened in `sweep_ls` on 2026-08-08.
 
-Usage:  python3 -m peldano3.budget_and_balance_ls
-        python3 -m peldano3.budget_and_balance_ls --sections budget
-        python3 -m peldano3.budget_and_balance_ls --checks
+Usage:  python3 -m rung3.budget_and_balance_ls
+        python3 -m rung3.budget_and_balance_ls --sections budget
+        python3 -m rung3.budget_and_balance_ls --checks
 """
 
 from __future__ import annotations
@@ -74,13 +74,13 @@ from pathlib import Path
 
 from harness.ceiling_check import all_cases
 from harness.provenance import describe, environment
-from peldano3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
-from peldano3.budget_and_balance import greedy as greedy_del_registro
-from peldano3.budget_and_balance import per_class
-from peldano3.optimizer_check_wt import class_counts
-from peldano3.order_search import (build_tables, ceiling, greedy_order, load,
+from rung3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
+from rung3.budget_and_balance import greedy as greedy_del_registro
+from rung3.budget_and_balance import per_class
+from rung3.optimizer_check_wt import class_counts
+from rung3.order_search import (build_tables, ceiling, greedy_order, load,
                                    split, subsumption_below)
-from peldano3.order_search_ls import space_pools
+from rung3.order_search_ls import space_pools
 
 from .local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                            MULTISTART_STARTS, build_masks, coverage_length,

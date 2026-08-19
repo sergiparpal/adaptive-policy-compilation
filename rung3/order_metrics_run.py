@@ -49,8 +49,8 @@ the tie-break to the lowest index, which is what `multistart` applies.
 `validate_prefix_shortcut` runs an independent 65-start search on one split and
 requires the same winner, the same end score and the same order, rule for rule.
 
-Usage:  python3 -m peldano3.order_metrics_run
-        python3 -m peldano3.order_metrics_run --checks   (parity gate only)
+Usage:  python3 -m rung3.order_metrics_run
+        python3 -m rung3.order_metrics_run --checks   (parity gate only)
 """
 
 from __future__ import annotations
@@ -64,17 +64,17 @@ from itertools import combinations
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from peldano3.budget_and_balance import greedy as greedy_del_registro
-from peldano3.budget_and_balance_ls import load_instance, start_spread, subsample
-from peldano3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
+from rung3.budget_and_balance import greedy as greedy_del_registro
+from rung3.budget_and_balance_ls import load_instance, start_spread, subsample
+from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS, build_masks,
                                    declared_starts, multistart, score_order)
-from peldano3.order_metrics import (behavioural_distance, conflicting_pairs,
+from rung3.order_metrics import (behavioural_distance, conflicting_pairs,
                                     decisions, pair_census,
                                     per_class_disagreement, positions_moved,
                                     signature, tau, winners,
                                     attribution_agreement)
-from peldano3.order_search_ls import space_pools, space_truth_masks
+from rung3.order_search_ls import space_pools, space_truth_masks
 
 OUT = Path("results3")
 RECORD = "order_metrics.json"

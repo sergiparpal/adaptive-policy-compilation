@@ -222,7 +222,7 @@ arbitration that also did it badly.
 > harder does not generalize.
 >
 > **The same claim also lives in code, where an erratum cannot reach it.** The
-> module docstring of `peldano3/budget_and_balance.py` states that the greedy
+> module docstring of `rung3/budget_and_balance.py` states that the greedy
 > *"maximizes total correct decisions and **therefore** sacrifices the rare
 > classes: on test it gave 0/21 on ACCOUNT_MANAGER and 0/3 on
 > ONCALL_ESCALATION"*. Both figures remain true of the greedy; the *therefore* is
@@ -234,7 +234,7 @@ arbitration that also did it badly.
 > erratum.
 >
 > **This record's own figures are not modified.** Reproduced with
-> `python3 -m peldano3.budget_and_balance_ls`. Zero API calls.
+> `python3 -m rung3.budget_and_balance_ls`. Zero API calls.
 
 ---
 
@@ -341,7 +341,7 @@ corpus, already paid for. Saying "it works with 50 labels" would omit that cost.
 > search weakness.
 >
 > **This record's own figures are not modified**: they are corrected from above,
-> as rung 1 was. Reproduced with `python3 -m peldano3.budget_and_balance_ls`.
+> as rung 1 was. Reproduced with `python3 -m rung3.budget_and_balance_ls`.
 > Zero API calls.
 
 **High variance at low budget.** At 5%, standard deviation 0.0535 and range
@@ -426,7 +426,7 @@ leaves it **0.1187** below the ceiling on average. Almost all the gap between
 >
 > Records: `results3/order_search_ls.json`,
 > `results3/order_search_ls_fullspace.json`, `results3/optimizer_check.json`.
-> Reproduced with `python3 -m peldano3.order_search_ls`. Zero API calls. **This
+> Reproduced with `python3 -m rung3.order_search_ls`. Zero API calls. **This
 > record's own figures are not modified**: they are corrected from above, as
 > rung 1 was.
 
@@ -479,15 +479,15 @@ search sees labels; the loop does not. Still open.
 ## Files
 
 ```
-peldano3/order_search.py         exact ceiling, greedy search, split, references
-peldano3/budget_and_balance.py   label budget and balanced greedy
+rung3/order_search.py         exact ceiling, greedy search, split, references
+rung3/budget_and_balance.py   label budget and balanced greedy
 
 results3/order_search.json       ceilings, five splits, order found
 results3/budget_and_balance.json supervision curve and objective comparison
 ```
 
-Reproducible with `python3 -m peldano3.order_search` and
-`python3 -m peldano3.budget_and_balance`. Zero API calls.
+Reproducible with `python3 -m rung3.order_search` and
+`python3 -m rung3.budget_and_balance`. Zero API calls.
 
 Step B — ILP (Popper/ILASP) as a gauge of the layer order and as a competitor
 inducing rules on its own — has not been run. It remains unauthorized.
