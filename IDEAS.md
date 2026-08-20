@@ -832,7 +832,7 @@ all have the same root and are not closed by writing code.
   `_env`.
 - **The tests are run by something, not by someone** (August 7, 2026).
   `.githooks/pre-commit` before every commit — enabled with
-  `git config core.hooksPath .githooks` — and `.github/workflows/pruebas.yml` on
+  `git config core.hooksPath .githooks` — and `.github/workflows/tests.yml` on
   every push and every PR, on 3.10 and 3.12: the minimum the README declares and
   the interpreter that produced the records. The workflow additionally checks,
   after running the suite, that `results*/` is still intact, instead of trusting
@@ -859,9 +859,9 @@ deferred.
 - **The records still without `_env` are exactly the ones that cannot be
   reproduced for free.** The deterministic, free ones were re-run on August
   7, 2026 and earned it without a single datum changing — in that same pass
-  `comparativa.json` and `note_audit.json` adopted their new shape,
+  `comparison.json` and `note_audit.json` adopted their new shape,
   `{"_env": ..., "rows": [...]}`, with the same rows; see
-  `results2/NOTA_REGISTRO.md`. Without `_env` there remain `llm_run.json`,
+  `results2/RECORD_NOTES.md`. Without `_env` there remain `llm_run.json`,
   `llm_run_n100_smoke.json` and the eight `llm_run2_*.json`: reproducing them
   costs money and they would not come out the same, because the proposer is not
   deterministic at `temperature 0`. It will appear in each one when there is a
@@ -892,7 +892,7 @@ deferred.
 
 - **A test that reads the figures out of `results*/` and fails when a prose table
   disagrees. Considered on August 9, 2026 and deliberately not written.** It would
-  work in the idiom of `test_automatizacion.py`, which pins the half of a decision
+  work in the idiom of `test_automation.py`, which pins the half of a decision
   that lives in the repository against the half that lives in a file: parse the
   numbers out of the Markdown, look them up in the JSON that owns them, fail on a
   mismatch. It was the alternative to de-duplicating, and the wrong one — it

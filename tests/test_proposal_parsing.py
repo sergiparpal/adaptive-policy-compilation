@@ -20,11 +20,11 @@ from harness.proposers import ProposalError, parse_payload
 from rung2.proposers2 import ProposalError as ProposalError2
 from rung2.proposers2 import parse_payload as parse_payload2
 
-REGLA = '{"action": "T2_TECHNICAL", "conditions": [{"attr": "severity", ' \
+RULE_PAYLOAD = '{"action": "T2_TECHNICAL", "conditions": [{"attr": "severity", ' \
         '"op": "lte", "value": 2}]}'
 
 
-class BaseParseo:
+class ParseBase:
     """The two versions of the parser must behave the same.
 
     Each rung has its own, with its own error class: rung 2 was written as a
@@ -35,46 +35,46 @@ class BaseParseo:
     parse = staticmethod(parse_payload)
     error = ProposalError
 
-    def test_json_pelado(self):
-        self.assertEqual(self.parse(REGLA)["action"], "T2_TECHNICAL")
+    def test_bare_json(self):
+        self.assertEqual(self.parse(RULE_PAYLOAD)["action"], "T2_TECHNICAL")
 
-    def test_con_valla_markdown(self):
-        self.assertEqual(self.parse(f"```json\n{REGLA}\n```")["action"],
+    def test_with_a_markdown_fence(self):
+        self.assertEqual(self.parse(f"```json\n{RULE_PAYLOAD}\n```")["action"],
                          "T2_TECHNICAL")
 
-    def test_con_valla_sin_lenguaje(self):
-        self.assertEqual(self.parse(f"```\n{REGLA}\n```")["action"],
+    def test_with_a_fence_and_no_language(self):
+        self.assertEqual(self.parse(f"```\n{RULE_PAYLOAD}\n```")["action"],
                          "T2_TECHNICAL")
 
-    def test_con_preambulo_y_epilogo(self):
-        texto = f"Claro, aqui tienes la regla:\n{REGLA}\nEspero que te sirva."
-        self.assertEqual(self.parse(texto)["action"], "T2_TECHNICAL")
+    def test_with_preamble_and_epilogue(self):
+        text = f"Claro, aqui tienes la regla:\n{RULE_PAYLOAD}\nEspero que te sirva."
+        self.assertEqual(self.parse(text)["action"], "T2_TECHNICAL")
 
-    def test_con_preambulo_dentro_de_la_valla(self):
-        texto = f"Analizando el ticket...\n```json\n{REGLA}\n```\nListo."
-        self.assertEqual(self.parse(texto)["action"], "T2_TECHNICAL")
+    def test_with_a_preamble_inside_the_fence(self):
+        text = f"Analizando el ticket...\n```json\n{RULE_PAYLOAD}\n```\nListo."
+        self.assertEqual(self.parse(text)["action"], "T2_TECHNICAL")
 
-    def test_con_espacios_y_saltos(self):
-        self.assertEqual(self.parse(f"\n\n  {REGLA}  \n\n")["action"],
+    def test_with_spaces_and_newlines(self):
+        self.assertEqual(self.parse(f"\n\n  {RULE_PAYLOAD}  \n\n")["action"],
                          "T2_TECHNICAL")
 
-    def test_sin_json_levanta_ProposalError(self):
+    def test_without_json_it_raises_ProposalError(self):
         with self.assertRaises(self.error):
             self.parse("No puedo ayudarte con eso.")
 
-    def test_json_roto_levanta_ProposalError(self):
+    def test_broken_json_raises_ProposalError(self):
         with self.assertRaises(self.error):
             self.parse('{"action": "T2_TECHNICAL", "conditions": [')
 
-    def test_llave_de_cierre_antes_que_la_de_apertura(self):
+    def test_closing_brace_before_the_opening_one(self):
         with self.assertRaises(self.error):
             self.parse("} esto no es un objeto {")
 
-    def test_texto_vacio(self):
+    def test_empty_text(self):
         with self.assertRaises(self.error):
             self.parse("")
 
-    def test_el_error_lleva_el_motivo(self):
+    def test_the_error_carries_the_reason(self):
         """`rejected_reason` ends up in the raw record of each case, so the
         reason has to say something."""
         try:
@@ -85,34 +85,34 @@ class BaseParseo:
             self.fail("no levanto ProposalError")
 
 
-class TestParseoRung1(BaseParseo, unittest.TestCase):
+class TestParseRung1(ParseBase, unittest.TestCase):
     parse = staticmethod(parse_payload)
     error = ProposalError
 
 
-class TestParseoRung2(BaseParseo, unittest.TestCase):
+class TestParseRung2(ParseBase, unittest.TestCase):
     parse = staticmethod(parse_payload2)
     error = ProposalError2
 
 
-class TestLosDosParseadoresCoinciden(unittest.TestCase):
+class TestTheTwoParsersAgree(unittest.TestCase):
 
-    ENTRADAS = [REGLA, f"```json\n{REGLA}\n```", f"bla\n{REGLA}\nbla"]
+    INPUTS = [RULE_PAYLOAD, f"```json\n{RULE_PAYLOAD}\n```", f"bla\n{RULE_PAYLOAD}\nbla"]
 
-    def test_mismo_resultado_en_las_entradas_buenas(self):
-        for texto in self.ENTRADAS:
-            with self.subTest(texto[:30]):
-                self.assertEqual(parse_payload(texto), parse_payload2(texto))
+    def test_same_result_on_the_good_inputs(self):
+        for text in self.INPUTS:
+            with self.subTest(text[:30]):
+                self.assertEqual(parse_payload(text), parse_payload2(text))
 
-    def test_mismo_rechazo_en_las_malas(self):
-        for texto in ("", "no", '{"a":'):
-            with self.subTest(texto):
+    def test_same_rejection_on_the_bad_ones(self):
+        for text in ("", "no", '{"a":'):
+            with self.subTest(text):
                 with self.assertRaises(ProposalError):
-                    parse_payload(texto)
+                    parse_payload(text)
                 with self.assertRaises(ProposalError2):
-                    parse_payload2(texto)
+                    parse_payload2(text)
 
-    def test_cada_bucle_captura_su_propia_clase_de_error(self):
+    def test_each_loop_catches_its_own_error_class(self):
         """They are DIFFERENT classes and neither inherits from the other:
         catching the wrong one would let a long run die on the first decorated
         JSON. Each shadow loop imports the one from its own package, and it must

@@ -109,7 +109,7 @@ from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
 from rung3.order_metrics import winners
 from rung3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
                                         parity_band, parity_full_supervision,
-                                        resumen, run_band_1pct,
+                                        summary, run_band_1pct,
                                         run_full_supervision, spearman)
 from rung3.order_metrics_touched import TOUCHED_PUBLISHED, touched_mask
 
@@ -227,11 +227,11 @@ def arrangement(ids, M, n):
 
 
 def atom_census(atoms, n):
-    tam = resumen(sorted(atoms["sizes"]))
+    sizes = summary(sorted(atoms["sizes"]))
     return {
         "n_atoms": len(atoms["patterns"]),
         "n_space": n,
-        "sizes": tam,
+        "sizes": sizes,
         "atoms_matched_by_no_rule": sum(1 for p in atoms["patterns"] if not p),
         "note": "an atom is a class of cases matched by exactly the same set of "
                 "rules. Under first-match-wins the winner is constant on an "
@@ -249,13 +249,13 @@ def touch_by_atom(atoms, touched_points):
     return cnt
 
 
-def mask_from_points(puntos, n):
+def mask_from_points(points, n):
     """A space mask from case indices, in `Space`'s convention. Through a
     bytearray because 134,400 shifts of a 134,400-bit integer is not the same
     price as 134,400 byte writes."""
     nbytes = (n + 7) // 8
     ba = bytearray(nbytes)
-    for i in puntos:
+    for i in points:
         ba[i >> 3] |= 128 >> (i & 7)
     return int.from_bytes(bytes(ba), "big") >> (nbytes * 8 - n)
 
@@ -263,12 +263,12 @@ def mask_from_points(puntos, n):
 def points_of_mask(m, n):
     """The case indices a space mask holds, the inverse of `mask_from_points`
     and by the same byte walk."""
-    fuera = []
+    outside = []
     for bi, byte in enumerate(bytes_of_mask(m, n)):
         if byte:
             base = bi * 8
-            fuera.extend(base + off for off in BITS_OF_BYTE[byte])
-    return fuera
+            outside.extend(base + off for off in BITS_OF_BYTE[byte])
+    return outside
 
 
 # ---------------------------------------------------------------------------
@@ -297,9 +297,9 @@ def kappa_over_rules(ids, M, touched, n_touched, n_space):
 def gate_kappa(kappa):
     """The five numbers the entry declared, against the ones this pool gives."""
     vals = sorted(v for v in kappa.values() if v is not None)
-    res = resumen([round(v, 4) for v in vals])
-    filas = {k: {"recomputed": res[k], "declared": v, "reproduces": res[k] == v}
-             for k, v in KAPPA_DECLARED.items()}
+    res = summary([round(v, 4) for v in vals])
+    rows = {k: {"recomputed": res[k], "declared": v, "reproduces": res[k] == v}
+            for k, v in KAPPA_DECLARED.items()}
     return {
         "what": "kappa over the 577 rules of the pure pool, against the "
                 "five-number summary the prediction declares it derived",
@@ -308,13 +308,13 @@ def gate_kappa(kappa):
         "n_with_extension": len(vals),
         "n_without_extension": sum(1 for v in kappa.values() if v is None),
         "summary_rounded_4": res,
-        "comparison": filas,
+        "comparison": rows,
         "range_factor": round(res["max"] / res["min"], 1) if res["min"] else None,
-        "passes": all(f["reproduces"] for f in filas.values()),
+        "passes": all(f["reproduces"] for f in rows.values()),
     }
 
 
-def winners_by_atom(orden, ids, atoms):
+def winners_by_atom(order, ids, atoms):
     """
     The winning rule index of every atom under one order: first-match-wins, read
     off the atom's matching set instead of the case.
@@ -325,15 +325,15 @@ def winners_by_atom(orden, ids, atoms):
     """
     idx = {rid: k for k, rid in enumerate(ids)}
     pos = [0] * len(ids)
-    for k, rid in enumerate(orden):
+    for k, rid in enumerate(order):
         pos[idx[rid]] = k
-    fuera = []
-    for reglas in atoms["rules"]:
-        fuera.append(min(reglas, key=pos.__getitem__) if reglas else None)
-    return fuera
+    outside = []
+    for rules in atoms["rules"]:
+        outside.append(min(rules, key=pos.__getitem__) if rules else None)
+    return outside
 
 
-def gate_territories(orden, ids, M, sfull, n, atoms, win_atom):
+def gate_territories(order, ids, M, sfull, n, atoms, win_atom):
     """
     The territories of one order, by two independent routes.
 
@@ -343,31 +343,31 @@ def gate_territories(orden, ids, M, sfull, n, atoms, win_atom):
     space with no overlap — which is the invariant `IDEAS.md` names: disjoint,
     and covering every decided case.
     """
-    terr, undecided = winners(orden, M, sfull)
-    por_regla = {}
+    terr, undecided = winners(order, M, sfull)
+    by_rule = {}
     for a, k in enumerate(win_atom):
         if k is not None:
-            por_regla.setdefault(ids[k], []).append(a)
+            by_rule.setdefault(ids[k], []).append(a)
 
-    reconstruido = {rid: mask_from_points(
+    rebuilt = {rid: mask_from_points(
         (i for a in aa for i in atoms["points"][a]), n)
-        for rid, aa in por_regla.items()}
+        for rid, aa in by_rule.items()}
 
     union = 0
-    solapan = 0
+    overlapping = 0
     for m in terr.values():
-        solapan |= union & m
+        overlapping |= union & m
         union |= m
     return {
         "n_rules_with_territory": len(terr),
         "undecided": undecided.bit_count(),
-        "disjoint": solapan == 0,
+        "disjoint": overlapping == 0,
         "covers_the_space": union == sfull,
         "sum_of_territories": sum(m.bit_count() for m in terr.values()),
         "atoms_without_a_winner": sum(1 for k in win_atom if k is None),
-        "atom_route_equals_mask_route": reconstruido == terr,
-        "passes": (solapan == 0 and union == sfull and undecided == 0
-                   and reconstruido == terr
+        "atom_route_equals_mask_route": rebuilt == terr,
+        "passes": (overlapping == 0 and union == sfull and undecided == 0
+                   and rebuilt == terr
                    and sum(m.bit_count() for m in terr.values()) == n),
     }
 
@@ -398,14 +398,14 @@ def pair_scan(act_i, act_j, kap_i, kap_j, sizes, touch):
 
 def sweep_pairs(acts, kaps, sizes, touch):
     """The 2,080 pairs of the 65 end orders, in index order i < j."""
-    fuera = []
+    outside = []
     for i in range(len(acts)):
         for j in range(i + 1, len(acts)):
             dis, hit, rho = pair_scan(acts[i], acts[j], kaps[i], kaps[j],
                                       sizes, touch)
-            fuera.append({"i": i, "j": j, "disagree_space": dis,
-                          "disagree_touched": hit, "rho_hat": rho})
-    return fuera
+            outside.append({"i": i, "j": j, "disagree_space": dis,
+                            "disagree_touched": hit, "rho_hat": rho})
+    return outside
 
 
 def kappa_by_atom(win_atom, ids, kappa):
@@ -430,11 +430,11 @@ def permute_within_atoms(atoms, touch, seed):
     *permuting T within each rule's extension* and not an approximation of it.
     """
     rng = random.Random(seed)
-    puntos = []
+    points = []
     for pts, k in zip(atoms["points"], touch):
         if k:
-            puntos.extend(rng.sample(pts, k) if k < len(pts) else pts)
-    return sorted(puntos)
+            points.extend(rng.sample(pts, k) if k < len(pts) else pts)
+    return sorted(points)
 
 
 def count_preserving_reshuffle(atoms, touch, n_swaps):
@@ -454,82 +454,82 @@ def count_preserving_reshuffle(atoms, touch, n_swaps):
     them into T'' is `apply_moves`, so that what is perturbed stays visible at
     the call site.
     """
-    patrones = atoms["patterns"]
-    tam = atoms["sizes"]
+    patterns = atoms["patterns"]
+    sizes = atoms["sizes"]
     idx = atoms["index_of_pattern"]
-    n_rules = max((p.bit_length() for p in patrones), default=0)
+    n_rules = max((p.bit_length() for p in patterns), default=0)
 
-    arriba, abajo = {}, {}                       # rule -> [(source, sink)]
-    for a, p in enumerate(patrones):
+    above, below = {}, {}                       # rule -> [(source, sink)]
+    for a, p in enumerate(patterns):
         if not touch[a]:
             continue
         for r in range(n_rules):
             bit = 1 << r
             if p & bit:
                 b = idx.get(p & ~bit)
-                if b is not None and touch[b] < tam[b]:
-                    abajo.setdefault(r, []).append((a, b))
+                if b is not None and touch[b] < sizes[b]:
+                    below.setdefault(r, []).append((a, b))
             else:
                 b = idx.get(p | bit)
-                if b is not None and touch[b] < tam[b]:
-                    arriba.setdefault(r, []).append((a, b))
+                if b is not None and touch[b] < sizes[b]:
+                    above.setdefault(r, []).append((a, b))
 
-    usados = set()
-    movimientos = []
-    for r in sorted(set(arriba) & set(abajo)):
-        for (a, b) in arriba[r]:
-            if len(movimientos) >= n_swaps:
+    used_names = set()
+    moves = []
+    for r in sorted(set(above) & set(below)):
+        for (a, b) in above[r]:
+            if len(moves) >= n_swaps:
                 break
-            if {a, b} & usados:
+            if {a, b} & used_names:
                 continue
-            for (c, d) in abajo[r]:
-                if {c, d} & usados or {a, b} & {c, d}:
+            for (c, d) in below[r]:
+                if {c, d} & used_names or {a, b} & {c, d}:
                     continue
-                usados |= {a, b, c, d}
-                movimientos.append({"rule_index": r, "up": [a, b],
-                                    "down": [c, d]})
+                used_names |= {a, b, c, d}
+                moves.append({"rule_index": r, "up": [a, b],
+                              "down": [c, d]})
                 break
-        if len(movimientos) >= n_swaps:
+        if len(moves) >= n_swaps:
             break
-    return movimientos, {"n_rules_with_an_up_link": len(arriba),
-                         "n_rules_with_a_down_link": len(abajo),
-                         "n_rules_with_both": len(set(arriba) & set(abajo)),
-                         "n_atoms_used": len(usados)}
+    return moves, {"n_rules_with_an_up_link": len(above),
+                   "n_rules_with_a_down_link": len(below),
+                   "n_rules_with_both": len(set(above) & set(below)),
+                   "n_atoms_used": len(used_names)}
 
 
-def apply_moves(atoms, touched_points, movimientos):
+def apply_moves(atoms, touched_points, moves):
     """T'' as case indices: each move takes a touched point out of one atom and
     puts an untouched one into another."""
-    en_t = set(touched_points)
-    fuera = set(touched_points)
-    detalle = []
-    for mv in movimientos:
-        for origen, destino in (mv["up"], mv["down"]):
-            sale = next(i for i in atoms["points"][origen] if i in en_t)
-            entra = next(i for i in atoms["points"][destino] if i not in en_t)
-            fuera.discard(sale)
-            fuera.add(entra)
-            en_t.discard(sale)
-            en_t.add(entra)
-            detalle.append({"from_atom": origen, "to_atom": destino,
-                            "point_out": sale, "point_in": entra})
-    return sorted(fuera), detalle
+    in_t = set(touched_points)
+    outside = set(touched_points)
+    detail = []
+    for mv in moves:
+        for origen, destination in (mv["up"], mv["down"]):
+            comes_out = next(i for i in atoms["points"][origen] if i in in_t)
+            enters = next(i for i in atoms["points"][destination] if i not in in_t)
+            outside.discard(comes_out)
+            outside.add(enters)
+            in_t.discard(comes_out)
+            in_t.add(enters)
+            detail.append({"from_atom": origen, "to_atom": destination,
+                           "point_out": comes_out, "point_in": enters})
+    return sorted(outside), detail
 
 
-def permutation_test(nombre, descripcion, kappa, kappa2, pares, pares2,
+def permutation_test(name, description, kappa, kappa2, pairs, pairs2,
                      touched, touched2, catches):
     """One arm of the test, reported as a row: kappa identical, rho_hat
     identical, and what the per-case quantity did."""
     k_dif = [rid for rid in kappa if kappa[rid] != kappa2[rid]]
-    r_dif = [[p["i"], p["j"]] for p, q in zip(pares, pares2)
+    r_dif = [[p["i"], p["j"]] for p, q in zip(pairs, pairs2)
              if p["rho_hat"] != q["rho_hat"]]
-    t_dif = [(p, q) for p, q in zip(pares, pares2)
+    t_dif = [(p, q) for p, q in zip(pairs, pairs2)
              if p["disagree_touched"] != q["disagree_touched"]]
-    d_dif = [1 for p, q in zip(pares, pares2)
+    d_dif = [1 for p, q in zip(pairs, pairs2)
              if p["disagree_space"] != q["disagree_space"]]
     return {
-        "what": nombre,
-        "how": descripcion,
+        "what": name,
+        "how": description,
         "bits_of_T_moved": (touched ^ touched2).bit_count(),
         "T_size_preserved": touched.bit_count() == touched2.bit_count(),
         "kappa_identical": not k_dif,
@@ -563,43 +563,43 @@ def condition_concentrations(space, conds, touched, n_touched, n_space):
     computable from data already on disk, so no honest band could be written for
     it now.
     """
-    fuera = {}
+    outside = {}
     for cs in conds.values():
         for c in cs:
-            clave = (c.attr, c.op,
-                     tuple(c.value) if isinstance(c.value, (list, set, tuple))
-                     else c.value)
-            if clave in fuera:
+            cond_key = (c.attr, c.op,
+                        tuple(c.value) if isinstance(c.value, (list, set, tuple))
+                        else c.value)
+            if cond_key in outside:
                 continue
             m = space.condition_mask(c)
             size = m.bit_count()
-            fuera[clave] = {
+            outside[cond_key] = {
                 "attr": c.attr, "op": c.op, "value": str(c.value),
                 "space_share": round(size / n_space, 6),
                 "touched_share": round((m & touched).bit_count() / n_touched, 6),
                 "concentration": (((m & touched).bit_count() / n_touched)
                                   / (size / n_space)) if size else None,
             }
-    return fuera
+    return outside
 
 
 def marginal_prediction(ids, conds, cc):
     """prod of the per-condition concentrations, per rule."""
-    fuera = {}
+    outside = {}
     for rid in ids:
         v = 1.0
         ok = True
         for c in conds[rid]:
-            clave = (c.attr, c.op,
-                     tuple(c.value) if isinstance(c.value, (list, set, tuple))
-                     else c.value)
-            k = cc[clave]["concentration"]
+            cond_key = (c.attr, c.op,
+                        tuple(c.value) if isinstance(c.value, (list, set, tuple))
+                        else c.value)
+            k = cc[cond_key]["concentration"]
             if k is None:
                 ok = False
                 break
             v *= k
-        fuera[rid] = v if ok else None
-    return fuera
+        outside[rid] = v if ok else None
+    return outside
 
 
 # ---------------------------------------------------------------------------
@@ -668,7 +668,7 @@ def adjudicate(rho_spearman, residual, debajo, floor):
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
+    only_checks = "--checks" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -686,20 +686,20 @@ def main(argv=None) -> int:
     print(f"  instance ready in {inst['seconds_setup']}s: {len(ids)} rules, "
           f"{len(inst['corpus'])} corpus cases, {sn:,} space cases")
 
-    tocado = json.loads((OUT / TOUCHED_RECORD).read_text())
+    touched_one = json.loads((OUT / TOUCHED_RECORD).read_text())
 
     # ------------------------------------------------------------- the mask
-    touched, censo = touched_mask(inst["corpus"])
+    touched, census = touched_mask(inst["corpus"])
     n_touched = touched.bit_count()
     g_mask = {
         "what": "the touched mask, the same object part four built",
         "n_bits": n_touched, "published_n_bits": TOUCHED_PUBLISHED,
-        "census": censo,
+        "census": census,
         "inside_the_space": touched & ~sfull == 0,
         "passes": n_touched == TOUCHED_PUBLISHED and touched & ~sfull == 0,
     }
     print()
-    print(f"MASK GATE — {censo['n_corpus_draws']:,} draws on {n_touched:,} "
+    print(f"MASK GATE — {census['n_corpus_draws']:,} draws on {n_touched:,} "
           f"distinct points, published {TOUCHED_PUBLISHED:,}"
           f"{'  ok' if g_mask['passes'] else '  NO'}")
     if not g_mask["passes"]:
@@ -725,13 +725,13 @@ def main(argv=None) -> int:
     # ------------------------------------------------------------- the atoms
     t0 = time.time()
     atoms = arrangement(ids, sM, sn)
-    censo_atomos = atom_census(atoms, sn)
-    puntos_t = points_of_mask(touched, sn)
-    touch_atom = touch_by_atom(atoms, puntos_t)
+    atom_census_of = atom_census(atoms, sn)
+    points_t = points_of_mask(touched, sn)
+    touch_atom = touch_by_atom(atoms, points_t)
     print()
-    print(f"ARRANGEMENT — {censo_atomos['n_atoms']:,} atoms of the 577 "
-          f"extensions, sizes {censo_atomos['sizes']['min']}–"
-          f"{censo_atomos['sizes']['max']} ({time.time() - t0:.0f}s)")
+    print(f"ARRANGEMENT — {atom_census_of['n_atoms']:,} atoms of the 577 "
+          f"extensions, sizes {atom_census_of['sizes']['min']}–"
+          f"{atom_census_of['sizes']['max']} ({time.time() - t0:.0f}s)")
 
     # ------------------------------------------------------------ regeneration
     print()
@@ -741,12 +741,12 @@ def main(argv=None) -> int:
         runs[s] = run_full_supervision(inst, s)
         print(f"  split {s}: {max(BUDGETS)} starts in {runs[s]['seconds']}s")
 
-    par_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
+    pair_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
     print()
     print("PARITY GATE — against results3/start_budget_check.json")
     print(f"  {'split':>6}{'starts':>8}{'train_score':>13}{'train':>9}"
           f"{'test':>9}{'space':>9}{'':>4}")
-    for f in par_a:
+    for f in pair_a:
         c = f["comparison"]
         print(f"  {f['split']:>6}{f['starts']:>8}{c['train_score'][0]:>13}"
               f"{c['train'][0]:>9.4f}{c['test'][0]:>9.4f}{c['space'][0]:>9.4f}"
@@ -757,22 +757,22 @@ def main(argv=None) -> int:
                     print(f"        {m}: regenerated {mio} vs published {pub}")
 
     band = run_band_1pct(inst)
-    par_b = parity_band(inst, band)
-    malas = [f for f in par_b if not f["passes"]]
+    pair_b = parity_band(inst, band)
+    bad_ones = [f for f in pair_b if not f["passes"]]
     print()
     print("PARITY GATE — the 1% band against "
           "results3/budget_and_balance_ls.json")
-    print(f"  {len(par_b) - len(malas)}/{len(par_b)} cells reproduce exactly")
-    for f in malas:
+    print(f"  {len(pair_b) - len(bad_ones)}/{len(pair_b)} cells reproduce exactly")
+    for f in bad_ones:
         print(f"    split {f['split']} draw {f['draw']}: "
               + ", ".join(f"{m} regenerated {v[0]} vs published {v[1]}"
                           for m, v in f["comparison"].items() if not v[2]))
-    n_filas = len(par_a) + len(par_b)
-    if malas or not all(f["passes"] for f in par_a):
+    n_rows = len(pair_a) + len(pair_b)
+    if bad_ones or not all(f["passes"] for f in pair_a):
         print("\n  STOP: a parity failure means the regenerated orders are not "
               "the measured ones, and nothing below would be about them.")
         return 1
-    print(f"\n  PARITY: PASSES, {n_filas}/{n_filas} rows. The regenerated "
+    print(f"\n  PARITY: PASSES, {n_rows}/{n_rows} rows. The regenerated "
           f"orders are the published ones.")
 
     # ---------------------------------------------------- the 65 orders and D
@@ -789,10 +789,10 @@ def main(argv=None) -> int:
     t0 = time.time()
     g_terr = {"per_order": [], "passes": True}
     for k, o in enumerate(orders):
-        fila = gate_territories(o, ids, sM, sfull, sn, atoms, win_atom[k])
-        fila["order"] = k
-        g_terr["per_order"].append(fila)
-        g_terr["passes"] &= fila["passes"]
+        row = gate_territories(o, ids, sM, sfull, sn, atoms, win_atom[k])
+        row["order"] = k
+        g_terr["per_order"].append(row)
+        g_terr["passes"] &= row["passes"]
     g_terr["what"] = ("every case has exactly one winner under each of the 65 "
                       "orders: the territories are pairwise disjoint, they "
                       "cover the space, nothing is left undecided, and the atom "
@@ -815,38 +815,38 @@ def main(argv=None) -> int:
 
     # ------------------------------------------------------- the pairwise sweep
     t0 = time.time()
-    pares = sweep_pairs(acts, kaps, atoms["sizes"], touch_atom)
-    print(f"  {len(pares):,} pairs swept over the atoms in "
+    pairs = sweep_pairs(acts, kaps, atoms["sizes"], touch_atom)
+    print(f"  {len(pairs):,} pairs swept over the atoms in "
           f"{time.time() - t0:.0f}s")
 
     # ----------------------------------------- the measured ratios, READ
-    filas_pub = {(p["i"], p["j"]): p
-                 for p in tocado[f"pairs_{SET}_touched"]}
-    medidos = {}
-    for p in pares:
-        pub = filas_pub.get((p["i"], p["j"]))
+    rows_pub = {(p["i"], p["j"]): p
+                for p in touched_one[f"pairs_{SET}_touched"]}
+    measured_list = {}
+    for p in pairs:
+        pub = rows_pub.get((p["i"], p["j"]))
         if pub:
-            medidos[(p["i"], p["j"])] = pub["rate_touched"] / pub["rate_space"]
-    razon_pub = tocado["predictions"]["C-d"]["ratios"]["touched_over_space"]
-    res_medidos = resumen(sorted(medidos.values()))
-    reproduce = {
-        k: (res_medidos[k], razon_pub["resumen"][k],
-            res_medidos[k] == razon_pub["resumen"][k])
+            measured_list[(p["i"], p["j"])] = pub["rate_touched"] / pub["rate_space"]
+    reason_pub = touched_one["predictions"]["C-d"]["ratios"]["touched_over_space"]
+    res_measured = summary(sorted(measured_list.values()))
+    reproduces = {
+        k: (res_measured[k], reason_pub["resumen"][k],
+            res_measured[k] == reason_pub["resumen"][k])
         for k in ("n", "min", "p25", "median", "mean", "p75", "max")}
-    reproduce["p75_over_p25"] = (
-        round(res_medidos["p75"] / res_medidos["p25"], 6),
-        razon_pub["p75_over_p25"],
-        round(res_medidos["p75"] / res_medidos["p25"], 6)
-        == razon_pub["p75_over_p25"])
-    reproduce["max_over_min"] = (
-        round(res_medidos["max"] / res_medidos["min"], 6),
-        razon_pub["max_over_min"],
-        round(res_medidos["max"] / res_medidos["min"], 6)
-        == razon_pub["max_over_min"])
-    difieren = [[p["i"], p["j"]] for p in pares
-                if (p["i"], p["j"]) not in filas_pub
-                or p["disagree_space"] != filas_pub[(p["i"], p["j"])]["disagree_space"]
-                or p["disagree_touched"] != filas_pub[(p["i"], p["j"])]["disagree_touched"]]
+    reproduces["p75_over_p25"] = (
+        round(res_measured["p75"] / res_measured["p25"], 6),
+        reason_pub["p75_over_p25"],
+        round(res_measured["p75"] / res_measured["p25"], 6)
+        == reason_pub["p75_over_p25"])
+    reproduces["max_over_min"] = (
+        round(res_measured["max"] / res_measured["min"], 6),
+        reason_pub["max_over_min"],
+        round(res_measured["max"] / res_measured["min"], 6)
+        == reason_pub["max_over_min"])
+    differing = [[p["i"], p["j"]] for p in pairs
+                 if (p["i"], p["j"]) not in rows_pub
+                 or p["disagree_space"] != rows_pub[(p["i"], p["j"])]["disagree_space"]
+                 or p["disagree_touched"] != rows_pub[(p["i"], p["j"])]["disagree_touched"]]
     g_matrix = {
         "what": "the 2,080 measured ratios are READ from the touched record and "
                 "reproduced, never re-measured: their summary comes back "
@@ -856,20 +856,20 @@ def main(argv=None) -> int:
                 "says the read rows are about these orders",
         "source": f"{TOUCHED_RECORD}::pairs_{SET}_touched and "
                   f"::predictions.C-d.ratios.touched_over_space",
-        "n_read": len(medidos), "n_expected": N_PAIRS,
-        "key_sets_identical": set(medidos) == set(filas_pub),
-        "summary_reproduces": reproduce,
-        "n_pairs_whose_counts_differ": len(difieren),
-        "pairs_that_differ": difieren[:20],
-        "passes": (len(medidos) == N_PAIRS and not difieren
-                   and all(v[2] for v in reproduce.values())),
+        "n_read": len(measured_list), "n_expected": N_PAIRS,
+        "key_sets_identical": set(measured_list) == set(rows_pub),
+        "summary_reproduces": reproduces,
+        "n_pairs_whose_counts_differ": len(differing),
+        "pairs_that_differ": differing[:20],
+        "passes": (len(measured_list) == N_PAIRS and not differing
+                   and all(v[2] for v in reproduces.values())),
     }
     print()
     print(f"MATRIX GATE — the 2,080 measured ratios, read from {TOUCHED_RECORD}")
     print(f"  read {g_matrix['n_read']:,}, counts differing on "
           f"{g_matrix['n_pairs_whose_counts_differ']} pairs, summary "
           f"reproduces "
-          f"{all(v[2] for v in reproduce.values())}"
+          f"{all(v[2] for v in reproduces.values())}"
           f"{'  ok' if g_matrix['passes'] else '  NO'}")
     if not g_matrix["passes"]:
         print("  STOP: the read ratios are not the published ones, or not "
@@ -880,12 +880,12 @@ def main(argv=None) -> int:
     print()
     print("PERMUTATION TEST — before any verdict is computed")
     t0 = time.time()
-    p1_puntos = permute_within_atoms(atoms, touch_atom, PERM_SEED)
-    t1 = mask_from_points(p1_puntos, sn)
+    p1_points = permute_within_atoms(atoms, touch_atom, PERM_SEED)
+    t1 = mask_from_points(p1_points, sn)
     k1 = kappa_over_rules(ids, sM, t1, t1.bit_count(), sn)
-    tp1 = touch_by_atom(atoms, p1_puntos)
+    tp1 = touch_by_atom(atoms, p1_points)
     kaps1 = [[k1[ids[k]] if k is not None else 0.0 for k in w] for w in win_atom]
-    pares1 = sweep_pairs(acts, kaps1, atoms["sizes"], tp1)
+    pairs1 = sweep_pairs(acts, kaps1, atoms["sizes"], tp1)
     perm1 = permutation_test(
         "PERM-1, the literal form",
         "a permutation of T inside the atoms of the 577 extensions, seed "
@@ -893,7 +893,7 @@ def main(argv=None) -> int:
         "extension setwise are exactly these, so it is the literal form of "
         "IDEAS.md's 'permuting T within each rule's extension' rather than an "
         "approximation of it.",
-        kappa, k1, pares, pares1, touched, t1,
+        kappa, k1, pairs, pairs1, touched, t1,
         catches=False)
     perm1["cannot_catch"] = (
         "a winner is constant on an atom, so D_ij is a union of atoms and "
@@ -901,26 +901,26 @@ def main(argv=None) -> int:
         "passes this arm as cleanly as the predictor does. That is why PERM-2 "
         "exists, and it is stated here rather than left for a reader to notice.")
 
-    movimientos, censo_enlaces = count_preserving_reshuffle(
+    moves, edge_census = count_preserving_reshuffle(
         atoms, touch_atom, PERM_SWAPS)
-    p2_puntos, detalle = apply_moves(atoms, puntos_t, movimientos)
-    t2 = mask_from_points(p2_puntos, sn)
+    p2_points, detail = apply_moves(atoms, points_t, moves)
+    t2 = mask_from_points(p2_points, sn)
     k2 = kappa_over_rules(ids, sM, t2, t2.bit_count(), sn)
-    tp2 = touch_by_atom(atoms, p2_puntos)
+    tp2 = touch_by_atom(atoms, p2_points)
     kaps2 = [[k2[ids[k]] if k is not None else 0.0 for k in w] for w in win_atom]
-    pares2 = sweep_pairs(acts, kaps2, atoms["sizes"], tp2)
+    pairs2 = sweep_pairs(acts, kaps2, atoms["sizes"], tp2)
     perm2 = permutation_test(
         "PERM-2, the form with teeth",
-        f"{len(movimientos)} cancelling pairs of moves between atoms, each pair "
+        f"{len(moves)} cancelling pairs of moves between atoms, each pair "
         "raising and lowering one rule's count by one so that all 577 counts "
         "are preserved exactly while T changes which atoms it sits in. kappa "
         "cannot move; a predictor reading T per case must.",
-        kappa, k2, pares, pares2, touched, t2,
+        kappa, k2, pairs, pairs2, touched, t2,
         catches=True)
-    perm2["n_move_pairs"] = len(movimientos)
-    perm2["moves"] = detalle[:8]
+    perm2["n_move_pairs"] = len(moves)
+    perm2["moves"] = detail[:8]
     perm2["cap"] = PERM_SWAPS
-    perm2["links"] = censo_enlaces
+    perm2["links"] = edge_census
 
     for arm in (perm1, perm2):
         print(f"  {arm['what']}: {arm['bits_of_T_moved']} bits of T moved, "
@@ -944,25 +944,25 @@ def main(argv=None) -> int:
         return 1
     print(f"  PERMUTATION: PASSES ({g_perm['seconds']}s)")
 
-    if solo_checks:
+    if only_checks:
         print(f"\n  ALL SIX GATES PASS. total cost: {time.time() - t_start:.0f}s")
         return 0
 
     # ------------------------------------------------------ the tautology, named
     tauto = {}
-    for p in pares:
+    for p in pairs:
         r = ((p["disagree_touched"] / n_touched)
              / (p["disagree_space"] / sn)) if p["disagree_space"] else None
         tauto[(p["i"], p["j"])] = r
-    dif_tauto = max(abs(round(tauto[k], 6) - round(medidos[k], 6))
-                    for k in medidos)
+    dif_tauto = max(abs(round(tauto[k], 6) - round(measured_list[k], 6))
+                    for k in measured_list)
     control = {
         "what": "rho_tilde, the predictor the restriction exists to forbid: the "
                 "arrival density of the disagreement set itself, computed with "
                 "per-case access to T",
         "spearman_against_the_measured_ratio": spearman(
-            [tauto[k] for k in sorted(medidos)],
-            [medidos[k] for k in sorted(medidos)]),
+            [tauto[k] for k in sorted(measured_list)],
+            [measured_list[k] for k in sorted(measured_list)]),
         "max_absolute_difference_from_the_measured_ratio_at_6_dp": dif_tauto,
         "note": "it is not merely correlated with the measured ratio, it IS the "
                 "measured ratio: the two agree to the resolution the published "
@@ -973,37 +973,37 @@ def main(argv=None) -> int:
     }
 
     # -------------------------------------------------------------- D-a to D-c
-    xs = [p["rho_hat"] for p in pares]
-    ys = [medidos[(p["i"], p["j"])] for p in pares]
+    xs = [p["rho_hat"] for p in pairs]
+    ys = [measured_list[(p["i"], p["j"])] for p in pairs]
     rho_spearman = spearman(xs, ys)
 
-    residuo = [{"i": p["i"], "j": p["j"],
-                "r": medidos[(p["i"], p["j"])] / p["rho_hat"]}
-               for p in pares if p["rho_hat"]]
-    res_residuo = resumen(sorted(r["r"] for r in residuo))
+    residue = [{"i": p["i"], "j": p["j"],
+                "r": measured_list[(p["i"], p["j"])] / p["rho_hat"]}
+               for p in pairs if p["rho_hat"]]
+    res_residue = summary(sorted(r["r"] for r in residue))
     residual = {
-        "n": len(residuo),
-        "n_dropped_zero_denominator": len(pares) - len(residuo),
-        "resumen": res_residuo,
-        "p75_over_p25": round(res_residuo["p75"] / res_residuo["p25"], 6)
-                        if res_residuo["p25"] else None,
-        "max_over_min": round(res_residuo["max"] / res_residuo["min"], 6)
-                        if res_residuo["min"] else None,
+        "n": len(residue),
+        "n_dropped_zero_denominator": len(pairs) - len(residue),
+        "resumen": res_residue,
+        "p75_over_p25": round(res_residue["p75"] / res_residue["p25"], 6)
+                        if res_residue["p25"] else None,
+        "max_over_min": round(res_residue["max"] / res_residue["min"], 6)
+                        if res_residue["min"] else None,
     }
 
-    tasas_clase = tocado["rates_by_class"]
-    razones_clase = {c: v["touched"] / v["all"] for c, v in tasas_clase.items()}
-    floor = min(razones_clase.values())
-    techo = max(razones_clase.values())
-    bajo_medido = [p for p in pares if medidos[(p["i"], p["j"])] < floor]
+    rates_class = touched_one["rates_by_class"]
+    reasons_class = {c: v["touched"] / v["all"] for c, v in rates_class.items()}
+    floor = min(reasons_class.values())
+    ceiling = max(reasons_class.values())
+    low_measured = [p for p in pairs if measured_list[(p["i"], p["j"])] < floor]
     debajo = {
-        "n_measured_below": len(bajo_medido),
-        "n_rho_hat_below": sum(1 for p in bajo_medido if p["rho_hat"] < floor),
+        "n_measured_below": len(low_measured),
+        "n_rho_hat_below": sum(1 for p in low_measured if p["rho_hat"] < floor),
         "n_measured_below_declared_floor": sum(
-            1 for p in pares if medidos[(p["i"], p["j"])] < CLASS_FLOOR_DECLARED),
+            1 for p in pairs if measured_list[(p["i"], p["j"])] < CLASS_FLOOR_DECLARED),
         "n_measured_above_the_ceiling": sum(
-            1 for p in pares if medidos[(p["i"], p["j"])] > techo),
-        "n_rho_hat_below_over_all_pairs": sum(1 for p in pares
+            1 for p in pairs if measured_list[(p["i"], p["j"])] > ceiling),
+        "n_rho_hat_below_over_all_pairs": sum(1 for p in pairs
                                               if p["rho_hat"] < floor),
     }
 
@@ -1014,14 +1014,14 @@ def main(argv=None) -> int:
     space = Space()
     cc = condition_concentrations(space, inst["conds"], touched, n_touched, sn)
     pred = marginal_prediction(ids, inst["conds"], cc)
-    comunes = [rid for rid in ids
-               if pred[rid] is not None and kappa[rid] is not None]
-    razon_marg = sorted(kappa[rid] / pred[rid] for rid in comunes if pred[rid])
-    res_marg = resumen(razon_marg)
-    por_atributo = {}
+    shared_ones = [rid for rid in ids
+                   if pred[rid] is not None and kappa[rid] is not None]
+    reason_marg = sorted(kappa[rid] / pred[rid] for rid in shared_ones if pred[rid])
+    res_marg = summary(reason_marg)
+    by_attribute = {}
     for v in cc.values():
         if v["concentration"] is not None:
-            por_atributo.setdefault(v["attr"], []).append(v["concentration"])
+            by_attribute.setdefault(v["attr"], []).append(v["concentration"])
     q["D-d"] = {
         "claim": "reported, and it cannot be a prediction: whether kappa_r "
                  "tracks the arrival marginals of the attributes in r's "
@@ -1034,10 +1034,10 @@ def main(argv=None) -> int:
                  "c(cond) is the same concentration computed for a "
                  "one-condition rule. It is what kappa would be if the "
                  "attributes were independent under both measures.",
-        "n_rules": len(comunes),
+        "n_rules": len(shared_ones),
         "n_conditions_distinct": len(cc),
         "spearman_kappa_vs_marginal_prediction": spearman(
-            [kappa[rid] for rid in comunes], [pred[rid] for rid in comunes]),
+            [kappa[rid] for rid in shared_ones], [pred[rid] for rid in shared_ones]),
         "ratio_kappa_over_prediction": res_marg,
         "ratio_p75_over_p25": (round(res_marg["p75"] / res_marg["p25"], 6)
                                if res_marg and res_marg["p25"] else None),
@@ -1048,7 +1048,7 @@ def main(argv=None) -> int:
                                    kv[1]["concentration"] or 0.0))},
         "by_attribute": {a: {"n_conditions": len(v),
                              "min": round(min(v), 6), "max": round(max(v), 6)}
-                         for a, v in sorted(por_atributo.items())},
+                         for a, v in sorted(by_attribute.items())},
         "seconds": round(time.time() - t0, 1),
     }
 
@@ -1119,9 +1119,9 @@ def main(argv=None) -> int:
         "gates": {
             "mask": g_mask,
             "kappa": g_kappa,
-            "parity_rows": n_filas,
-            "parity_full_supervision": par_a,
-            "parity_band_1pct": par_b,
+            "parity_rows": n_rows,
+            "parity_full_supervision": pair_a,
+            "parity_band_1pct": pair_b,
             "matrix": g_matrix,
             "territories": g_terr,
             "permutation": g_perm,
@@ -1133,24 +1133,24 @@ def main(argv=None) -> int:
             "against an independent 65-start run when it was introduced. "
             "MULTISTART_SEED, MULTISTART_STARTS and DECLARED_NEIGHBOURHOOD are "
             "untouched and no figure here is an argument about any of them.",
-        "atoms": censo_atomos,
+        "atoms": atom_census_of,
         "kappa_summary": g_kappa["summary_rounded_4"],
         "kappa_by_rule": {rid: (round(v, 6) if v is not None else None)
                           for rid, v in kappa.items()},
         "class_ratios_touched_over_all": {c: round(v, 6)
-                                          for c, v in sorted(razones_clase.items())},
+                                          for c, v in sorted(reasons_class.items())},
         "class_floor": floor,
-        "class_ceiling": techo,
+        "class_ceiling": ceiling,
         "pairs_below_the_class_floor": debajo,
         "control_rho_tilde": control,
         "residual": residual,
         "pairs_split0_starts65_rules": [
             {"i": p["i"], "j": p["j"],
              "rho_hat": round(p["rho_hat"], 6) if p["rho_hat"] else None,
-             "ratio_measured": round(medidos[(p["i"], p["j"])], 6),
+             "ratio_measured": round(measured_list[(p["i"], p["j"])], 6),
              "disagree_space": p["disagree_space"],
              "disagree_touched": p["disagree_touched"]}
-            for p in pares],
+            for p in pairs],
         "pairs_stored":
             "the full 2,080-row triangle: each pair's rho_hat, the measured "
             "ratio read from the touched record, and the two counts the gate "

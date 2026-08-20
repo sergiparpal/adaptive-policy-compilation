@@ -72,7 +72,7 @@ from .optimizer_check import (hidden_rules, masks_over_corpus, masks_over_space,
 OUT = Path("results3")
 
 # The instance that decides. The corpus is measured and does not validate.
-INSTANCIA_QUE_VALIDA = "espacio exhaustivo"
+VALIDATING_INSTANCE = "espacio exhaustivo"
 
 
 def class_counts(cases):
@@ -109,26 +109,26 @@ def _binom_cdf(k, n, p):
     return sum(comb(n, i) * p ** i * (1.0 - p) ** (n - i) for i in range(k + 1))
 
 
-def _root(f, lo, hi, iters=200):
+def _root(f, got, hi, iters=200):
     """Bisection on a monotone f with a sign change in [lo, hi]."""
-    flo = f(lo)
+    flo = f(got)
     for _ in range(iters):
-        mid = (lo + hi) / 2.0
+        mid = (got + hi) / 2.0
         fm = f(mid)
         if (fm > 0) == (flo > 0):
-            lo, flo = mid, fm
+            got, flo = mid, fm
         else:
             hi = mid
-    return (lo + hi) / 2.0
+    return (got + hi) / 2.0
 
 
 def clopper_pearson(k, n, alpha=0.05):
     """Exact binomial interval. Standard library only, like everything here."""
-    lo = 0.0 if k == 0 else _root(
+    got = 0.0 if k == 0 else _root(
         lambda p: (1.0 - _binom_cdf(k - 1, n, p)) - alpha / 2.0, 0.0, 1.0)
     hi = 1.0 if k == n else _root(
         lambda p: _binom_cdf(k, n, p) - alpha / 2.0, 0.0, 1.0)
-    return lo, hi
+    return got, hi
 
 
 def restart_budget(n_hits, n_random=MULTISTART_STARTS):
@@ -150,16 +150,16 @@ def restart_budget(n_hits, n_random=MULTISTART_STARTS):
     draws that produced the rate, so the interval is the honest part.
     """
     p = n_hits / n_random
-    lo, hi = clopper_pearson(n_hits, n_random)
+    got, hi = clopper_pearson(n_hits, n_random)
     return {
         "hits_of_random_starts": n_hits,
         "random_starts": n_random,
         "hit_rate": round(p, 6),
-        "hit_rate_ci95": [round(lo, 6), round(hi, 6)],
+        "hit_rate_ci95": [round(got, 6), round(hi, 6)],
         "miss_probability": (1.0 - p) ** n_random,
         # ordered low to high: the high hit rate gives the low miss probability
         "miss_probability_ci95": [(1.0 - hi) ** n_random,
-                                  (1.0 - lo) ** n_random],
+                                  (1.0 - got) ** n_random],
         "inherited_claim": {
             "hit_rate": 0.25, "miss_probability": 0.75 ** n_random,
             "source": "local_search.py, medido sin pesos en el paso 0",
@@ -171,7 +171,7 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
     """The weighted gate over one instance. Returns None if the optimum is not
     known here, which aborts the whole check."""
     wt, L, _ = weights_from_counts(ids, action, n)
-    optimo = L * len(n)
+    weighted_optimum = L * len(n)
 
     design = sorted(ids, key=lambda r: born[r])
     greedy = greedy_order_from_masks(ids, M, W, full,
@@ -179,7 +179,7 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
 
     def bal(o):
         """Weighted score as a fraction of the optimum: macro-recall."""
-        return score_order(o, M, W, full, wt) / optimo
+        return score_order(o, M, W, full, wt) / weighted_optimum
 
     def e2e(o):
         return score_order(o, M, W, full) / n_cases
@@ -189,19 +189,19 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
     print(f"INSTANCIA · {name}  ({n_cases:,} casos, {len(ids)} reglas, "
           f"{len(n)} clases)")
     print("=" * 78)
-    print(f"  optimo ponderado = L x clases = {L} x {len(n)} = {optimo}")
+    print(f"  optimo ponderado = L x clases = {L} x {len(n)} = {weighted_optimum}")
     print(f"  casos por clase: "
           + " · ".join(f"{c} {v}" for c, v in sorted(n.items())))
     print()
     print(f"  {'orden':<40}{'balanceado':>12}{'e2e':>10}")
-    for etiqueta, o in (("orden de diseno (optimo conocido)", design),
+    for label, o in (("orden de diseno (optimo conocido)", design),
                         ("orden inverso", list(reversed(design))),
                         ("orden voraz sin pesos (partida)", greedy)):
-        print(f"  {etiqueta:<40}{bal(o):>12.6f}{e2e(o):>10.4f}")
+        print(f"  {label:<40}{bal(o):>12.6f}{e2e(o):>10.4f}")
     print(f"  {'longitud de cobertura del voraz':<40}"
           f"{coverage_length(greedy, M, full):>12d}")
 
-    if score_order(design, M, W, full, wt) != optimo:
+    if score_order(design, M, W, full, wt) != weighted_optimum:
         print("\n  EL ORDEN DE DISENO NO ALCANZA EL OPTIMO PONDERADO.")
         print("  El optimo no es conocido y el paso 0 no mide nada. Se aborta.")
         return None
@@ -214,14 +214,14 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
     print("  DESDE EL OPTIMO — un buscador que se aleja de el esta roto")
     print(f"  {'vecindario':<12}{'sale de el':>12}{'balanceado':>12}"
           f"{'movs':>7}{'perms':>7}")
-    fijo = {}
+    fixed = {}
     for vec in NEIGHBOURHOODS:
         o, st = local_search(design, M, W, full, neighbourhood=vec, wt=wt)
-        fijo[vec] = {"es_punto_fijo": o == design,
-                     "start_score": st["start"], "end_score": st["end"],
-                     "moves": st["moves"], "swaps": st["swaps"]}
+        fixed[vec] = {"es_punto_fijo": o == design,
+                      "start_score": st["start"], "end_score": st["end"],
+                      "moves": st["moves"], "swaps": st["swaps"]}
         print(f"  {vec:<12}{'no' if o == design else 'SI':>12}"
-              f"{st['end']/optimo:>12.6f}{st['moves']:>7}{st['swaps']:>7}")
+              f"{st['end']/weighted_optimum:>12.6f}{st['moves']:>7}{st['swaps']:>7}")
 
     # ---- MULTI-START, with the declared constants ---------------------------
     print()
@@ -234,10 +234,10 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
         t0 = time.time()
         starts = declared_starts(ids, first=greedy)
         o, st = multistart(starts, M, W, full, neighbourhood=vec,
-                           optimum=optimo, wt=wt)
-        sc = [r["end_score"] / optimo for r in st["rows"]]
+                           optimum=weighted_optimum, wt=wt)
+        sc = [r["end_score"] / weighted_optimum for r in st["rows"]]
         st["instance"] = name
-        st["best_balanced"] = round(st["best_score"] / optimo, 6)
+        st["best_balanced"] = round(st["best_score"] / weighted_optimum, 6)
         st["best_e2e"] = round(e2e(o), 6)
         st["mean_balanced"] = round(statistics.mean(sc), 6)
         st["worst_balanced"] = round(min(sc), 6)
@@ -247,25 +247,25 @@ def run_instance(name, ids, M, W, full, n_cases, action, born, n):
         st["seconds"] = round(time.time() - t0, 1)
         # The greedy occupies index 0 and is not one of the restarts, so the
         # rate the budget depends on counts hits among the random starts only.
-        st["greedy_hits"] = st["rows"][0]["end_score"] == optimo
+        st["greedy_hits"] = st["rows"][0]["end_score"] == weighted_optimum
         st["restart_budget"] = restart_budget(
-            sum(1 for r in st["rows"][1:] if r["end_score"] == optimo))
+            sum(1 for r in st["rows"][1:] if r["end_score"] == weighted_optimum))
         multis[vec] = st
-        primero = ("—" if st["starts_until_first_hit"] is None
-                   else f"{st['starts_until_first_hit']} ({st['first_hit_start']})")
+        first_hit = ("—" if st["starts_until_first_hit"] is None
+                     else f"{st['starts_until_first_hit']} ({st['first_hit_start']})")
         aciertan = f"{st['n_hits']}/{st['n_starts']}"
         print(f"  {vec:<12}{st['best_balanced']:>11.6f}"
-              f"{'SI' if st['reached_optimum'] else 'NO':>8}{primero:>18}"
+              f"{'SI' if st['reached_optimum'] else 'NO':>8}{first_hit:>18}"
               f"{aciertan:>11}"
               f"{st['mean_balanced']:>10.6f}{st['worst_balanced']:>10.6f}"
               f"{st['seconds']:>8.0f}")
-    return {"L": L, "n_classes": len(n), "optimum": optimo,
+    return {"L": L, "n_classes": len(n), "optimum": weighted_optimum,
             "cases_per_class": dict(sorted(n.items())),
             "design_balanced": round(bal(design), 6),
             "reverse_balanced": round(bal(list(reversed(design))), 6),
             "greedy_balanced": round(bal(greedy), 6),
             "greedy_e2e": round(e2e(greedy), 6),
-            "desde_el_optimo": fijo, "multiarranque": multis}
+            "desde_el_optimo": fixed, "multiarranque": multis}
 
 
 def main() -> int:
@@ -288,8 +288,8 @@ def main() -> int:
     per = {}
     for inst, (M, W, full, ncas, n) in (
             ("corpus", (cM, cW, cfull, len(corpus), class_counts(corpus))),
-            (INSTANCIA_QUE_VALIDA, (sM, sW, sfull, sn,
-                                    class_counts(all_cases())))):
+            (VALIDATING_INSTANCE, (sM, sW, sfull, sn,
+                                   class_counts(all_cases())))):
         out = run_instance(inst, ids, M, W, full, ncas, action, born, n)
         if out is None:
             return 1
@@ -300,14 +300,14 @@ def main() -> int:
     print("=" * 78)
     print("VEREDICTO")
     print("=" * 78)
-    print(f"  El criterio es alcanzar el optimo sobre el {INSTANCIA_QUE_VALIDA}")
+    print(f"  El criterio es alcanzar el optimo sobre el {VALIDATING_INSTANCE}")
     print(f"  con el vecindario declarado ({DECLARED_NEIGHBOURHOOD}), que es el")
     print("  que van a usar las fases P4 y P5. El corpus se mide y no valida.")
     print()
     print(f"  {'instancia · vecindario':<34}{'balanceado':>12}{'optimo':>8}"
           f"{'1er acierto':>13}{'aciertan':>11}{'punto fijo':>12}")
     verdict = {}
-    for inst in ("corpus", INSTANCIA_QUE_VALIDA):
+    for inst in ("corpus", VALIDATING_INSTANCE):
         for vec in NEIGHBOURHOODS:
             m = per[inst]["multiarranque"][vec]
             f = per[inst]["desde_el_optimo"][vec]
@@ -323,15 +323,15 @@ def main() -> int:
                 "restart_budget": m["restart_budget"],
                 "seconds": m["seconds"],
             }
-            primero = ("—" if m["starts_until_first_hit"] is None
-                       else str(m["starts_until_first_hit"]))
+            first_hit = ("—" if m["starts_until_first_hit"] is None
+                         else str(m["starts_until_first_hit"]))
             aciertan = f"{m['n_hits']}/{m['n_starts']}"
             print(f"  {inst + ' · ' + vec:<34}{m['best_balanced']:>12.6f}"
-                  f"{'SI' if m['reached_optimum'] else 'NO':>8}{primero:>13}"
+                  f"{'SI' if m['reached_optimum'] else 'NO':>8}{first_hit:>13}"
                   f"{aciertan:>11}"
                   f"{'SI' if f['es_punto_fijo'] else 'NO':>12}")
 
-    decide = verdict[f"{INSTANCIA_QUE_VALIDA} · {DECLARED_NEIGHBOURHOOD}"]
+    decide = verdict[f"{VALIDATING_INSTANCE} · {DECLARED_NEIGHBOURHOOD}"]
     passes = decide["reaches_optimum"] and decide["optimum_is_fixed_point"]
     print()
     print(f"  PASO 0 PONDERADO: {'PASA' if passes else 'NO PASA'}")
@@ -358,15 +358,15 @@ def main() -> int:
     print()
     print(f"  {'instancia · vecindario':<34}{'aciertos':>10}{'tasa':>9}"
           f"{'IC95 tasa':>18}{'fallo':>11}{'IC95 fallo':>24}")
-    for inst in ("corpus", INSTANCIA_QUE_VALIDA):
+    for inst in ("corpus", VALIDATING_INSTANCE):
         for vec in NEIGHBOURHOODS:
             b = per[inst]["multiarranque"][vec]["restart_budget"]
-            lo, hi = b["hit_rate_ci95"]
+            got, hi = b["hit_rate_ci95"]
             flo, fhi = b["miss_probability_ci95"]
             print(f"  {inst + ' · ' + vec:<34}"
                   f"{b['hits_of_random_starts']}/{b['random_starts']:<7}"
                   f"{b['hit_rate']:>9.4f}"
-                  f"{f'[{lo:.4f}, {hi:.4f}]':>18}"
+                  f"{f'[{got:.4f}, {hi:.4f}]':>18}"
                   f"{b['miss_probability']:>11.2e}"
                   f"{f'[{flo:.1e}, {fhi:.1e}]':>24}")
     print()
@@ -384,13 +384,13 @@ def main() -> int:
         "what": "phase P2 of step 3 of the audit: the class-weighted local "
                 "search on the perfect policy, whose weighted optimum is "
                 "L x (number of classes) by construction",
-        "criterion": f"the weighted optimum over the {INSTANCIA_QUE_VALIDA} "
+        "criterion": f"the weighted optimum over the {VALIDATING_INSTANCE} "
                      f"with the declared neighbourhood "
                      f"({DECLARED_NEIGHBOURHOOD}); the corpus is measured and "
                      "does not validate",
         "passes": passes,
         "n_rules": len(ids),
-        "n_cases": {"corpus": len(corpus), INSTANCIA_QUE_VALIDA: sn},
+        "n_cases": {"corpus": len(corpus), VALIDATING_INSTANCE: sn},
         "instances": {inst: {k: v for k, v in d.items() if k != "multiarranque"}
                       for inst, d in per.items()},
         "multistart": {

@@ -236,14 +236,14 @@ def main(argv=None) -> int:
                                                                 "asimetrica"))}
     if len(anc) == 2:
         sim = anc["simetrica  a=1"]
-        asi = anc["asimetrica a=0"]
+        like_so = anc["asimetrica a=0"]
         print(f"  simetrica  a=1 : {sim['test']:.4f}  ({sim['vs_born_at']:+.4f} "
               f"vs born_at)   el registro daba +0.2348")
-        print(f"  asimetrica a=0 : {asi['test']:.4f}  ({asi['vs_born_at']:+.4f} "
+        print(f"  asimetrica a=0 : {like_so['test']:.4f}  ({like_so['vs_born_at']:+.4f} "
               f"vs born_at)   el registro daba +0.0671")
         print(f"  razon simetrica/asimetrica: "
-              f"{sim['vs_born_at']/asi['vs_born_at']:.1f}x"
-              if asi["vs_born_at"] else "")
+              f"{sim['vs_born_at']/like_so['vs_born_at']:.1f}x"
+              if like_so["vs_born_at"] else "")
     save()
     print(f"\n  coste total: {time.time()-t_start:.0f}s")
     print(f"-> {OUT/name}")

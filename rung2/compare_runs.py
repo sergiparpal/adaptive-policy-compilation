@@ -22,7 +22,7 @@ from harness.record_guard import FLAG, or_exit, refuse_shrink
 
 from .engine2 import Space, strictly_below
 
-RECORD = Path("results2/comparativa.json")
+RECORD = Path("results2/comparison.json")
 
 
 def analyse(path: Path, space: Space) -> dict:
@@ -71,10 +71,10 @@ def main(argv: list[str]) -> int:
     # No argparse: everything here is positional except the escape hatch, and
     # a shell glob already arrives expanded.
     overwrite = FLAG in argv
-    ficheros = [a for a in argv if a != FLAG]
+    files = [a for a in argv if a != FLAG]
 
     space = Space()
-    rows = [analyse(Path(p), space) for p in sorted(ficheros)]
+    rows = [analyse(Path(p), space) for p in sorted(files)]
 
     # The record is written at the end because computing it is free, but it is
     # checked HERE, before printing a report that suggests everything went
@@ -126,7 +126,7 @@ def main(argv: list[str]) -> int:
     # Aug 7, 2026: the output goes from a bare list to an object so that the
     # `_env` block can be hung off it. The rows are the same, under the "rows"
     # key. The record was re-run that same day with the 8 runs and adopted the
-    # new shape without a single row changing; see results2/NOTA_REGISTRO.md.
+    # new shape without a single row changing; see results2/RECORD_NOTES.md.
     # It still rewrites with whatever is passed as an ARGUMENT — that has not
     # changed and cannot change, it is what the command is for. What is guarded
     # since Aug 8, 2026 is the consequence: it refuses to shrink the record.

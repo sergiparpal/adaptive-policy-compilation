@@ -93,7 +93,7 @@ OUT = Path("results3")
 N_RANDOM_REF = 200          # rung 1 averaged the random order over 200 samples
 
 # The instance that decides. The corpus is measured too and decides nothing.
-INSTANCIA_QUE_VALIDA = "espacio exhaustivo"
+VALIDATING_INSTANCE = "espacio exhaustivo"
 
 
 # ---------------------------------------------------------------------------
@@ -233,11 +233,11 @@ def run_instance(name, ids, M, W, full, n_cases, born, other=None):
         st["score_on_other_instance"] = (
             None if other is None else round(frac_other(o), 6))
         multis[vec] = st
-        primero = ("—" if st["starts_until_first_hit"] is None
-                   else f"{st['starts_until_first_hit']} ({st['first_hit_start']})")
+        first_hit = ("—" if st["starts_until_first_hit"] is None
+                     else f"{st['starts_until_first_hit']} ({st['first_hit_start']})")
         aciertan = f"{st['n_hits']}/{st['n_starts']}"
         print(f"  {vec:<12}{st['best_fraction']:>10.6f}{st['wrong_cases']:>8}"
-              f"{'SI' if st['reached_optimum'] else 'NO':>8}{primero:>18}"
+              f"{'SI' if st['reached_optimum'] else 'NO':>8}{first_hit:>18}"
               f"{aciertan:>11}"
               f"{st['mean_fraction']:>10.6f}{st['worst_fraction']:>10.6f}")
     return singles, multis
@@ -262,7 +262,7 @@ def main() -> int:
     singles, multis = [], {}
     for inst, (M, W, full, n, other) in (
             ("corpus", (cM, cW, cfull, len(corpus), (sM, sW, sfull, sn))),
-            (INSTANCIA_QUE_VALIDA, (sM, sW, sfull, sn,
+            (VALIDATING_INSTANCE, (sM, sW, sfull, sn,
                                     (cM, cW, cfull, len(corpus))))):
         out = run_instance(inst, ids, M, W, full, n, born, other=other)
         if out is None:
@@ -275,13 +275,13 @@ def main() -> int:
     print("=" * 78)
     print("VEREDICTO")
     print("=" * 78)
-    print(f"  El criterio es 1.0000 sobre el {INSTANCIA_QUE_VALIDA}. El corpus se")
+    print(f"  El criterio es 1.0000 sobre el {VALIDATING_INSTANCE}. El corpus se")
     print("  mide y no valida: habria dado por bueno el instrumento que fallaba.")
     print()
     print(f"  {'instancia · vecindario':<34}{'una corrida':>13}"
           f"{'multi-arranque':>16}{'1er acierto':>13}{'aciertan':>11}")
     verdict = {}
-    for inst in ("corpus", INSTANCIA_QUE_VALIDA):
+    for inst in ("corpus", VALIDATING_INSTANCE):
         for vec in NEIGHBOURHOODS:
             single = next(x for x in singles if x["instance"] == inst
                           and x["neighbourhood"] == vec and x["start"] == "voraz")
@@ -297,26 +297,26 @@ def main() -> int:
                 "n_hits": multi["n_hits"], "n_starts": multi["n_starts"],
                 "hit_rate": multi["hit_rate"],
             }
-            primero = ("—" if multi["starts_until_first_hit"] is None
-                       else str(multi["starts_until_first_hit"]))
+            first_hit = ("—" if multi["starts_until_first_hit"] is None
+                         else str(multi["starts_until_first_hit"]))
             aciertan = f"{multi['n_hits']}/{multi['n_starts']}"
             print(f"  {inst + ' · ' + vec:<34}{single['end_score']:>13.6f}"
-                  f"{multi['best_fraction']:>16.6f}{primero:>13}{aciertan:>11}")
+                  f"{multi['best_fraction']:>16.6f}{first_hit:>13}{aciertan:>11}")
 
-    decide = {vec: verdict[f"{INSTANCIA_QUE_VALIDA} · {vec}"]
+    decide = {vec: verdict[f"{VALIDATING_INSTANCE} · {vec}"]
               for vec in NEIGHBOURHOODS}
     passes = any(v["multistart_reaches_optimum"] for v in decide.values())
     print()
     print(f"  PASO 0: {'PASA' if passes else 'NO PASA'}")
     for vec, v in decide.items():
         if v["multistart_reaches_optimum"]:
-            que = "alcanza 1.0000"
-            coste = (f"con {v['starts_until_first_hit']} arranques  "
-                     f"({v['n_hits']}/{v['n_starts']} aciertan)")
+            which = "alcanza 1.0000"
+            cost = (f"con {v['starts_until_first_hit']} arranques  "
+                    f"({v['n_hits']}/{v['n_starts']} aciertan)")
         else:
-            que = f"se queda en {v['multistart']:.6f}"
-            coste = f"{v['multistart_wrong_cases']} casos mal"
-        print(f"    {vec:<12}{que:<24}{coste}")
+            which = f"se queda en {v['multistart']:.6f}"
+            cost = f"{v['multistart_wrong_cases']} casos mal"
+        print(f"    {vec:<12}{which:<24}{cost}")
 
     OUT.mkdir(exist_ok=True)
     (OUT / "optimizer_check.json").write_text(json.dumps({
@@ -325,11 +325,11 @@ def main() -> int:
                             n_random_ref=N_RANDOM_REF),
         "what": "step 0 of the rung 3/4 audit: local search on the perfect "
                 "policy, whose optimum is 1.0000 by construction",
-        "criterion": f"1.0000 over the {INSTANCIA_QUE_VALIDA}; the corpus is "
+        "criterion": f"1.0000 over the {VALIDATING_INSTANCE}; the corpus is "
                      "measured and does not validate",
         "passes": passes,
         "n_rules": len(ids),
-        "n_cases": {"corpus": len(corpus), INSTANCIA_QUE_VALIDA: sn},
+        "n_cases": {"corpus": len(corpus), VALIDATING_INSTANCE: sn},
         "single_runs": singles,
         "multistart": {inst: {vec: {k: v for k, v in st.items() if k != "rows"}
                               for vec, st in per.items()}

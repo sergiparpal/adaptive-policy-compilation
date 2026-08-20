@@ -87,7 +87,7 @@ from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
 from rung3.order_metrics import winners
 from rung3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
                                         parity_band, parity_full_supervision,
-                                        resumen, run_band_1pct,
+                                        summary, run_band_1pct,
                                         run_full_supervision)
 
 OUT = Path("results3")
@@ -122,7 +122,7 @@ RECOMPUTE = (
 # The primitive
 # ---------------------------------------------------------------------------
 
-def holders(orden, M, full):
+def holders(order, M, full):
     """
     The ids of the rules that win at least one case under `orden`, sorted.
 
@@ -132,17 +132,17 @@ def holders(orden, M, full):
     itself is dropped here: what this record carries is identity, and the sizes
     are already published as `sum_of_territories` and the per-class rates.
     """
-    terr, undecided = winners(orden, M, full)
+    terr, undecided = winners(order, M, full)
     return sorted(rid for rid, m in terr.items() if m), undecided.bit_count()
 
 
 def territory_table(orders, M, full):
-    filas = []
+    rows = []
     for k, o in enumerate(orders):
         ids, undecided = holders(o, M, full)
-        filas.append({"order": k, "n_rules_with_territory": len(ids),
-                      "undecided": undecided, "rule_ids": ids})
-    return filas
+        rows.append({"order": k, "n_rules_with_territory": len(ids),
+                     "undecided": undecided, "rule_ids": ids})
+    return rows
 
 
 # ---------------------------------------------------------------------------
@@ -160,39 +160,39 @@ def gate_kappa_read(rec):
     decimals — so the comparison is against the object it actually publishes.
     """
     kappa = {r: v for r, v in rec["kappa_by_rule"].items() if v is not None}
-    publicado = rec["kappa_summary"]
-    recomputado = resumen([round(v, 4) for v in kappa.values()])
-    filas = {k: (recomputado.get(k), v, recomputado.get(k) == v)
-             for k, v in publicado.items()}
+    published = rec["kappa_summary"]
+    recomputed = summary([round(v, 4) for v in kappa.values()])
+    rows = {k: (recomputed.get(k), v, recomputed.get(k) == v)
+            for k, v in published.items()}
     return kappa, {
         "what": "the five-number summary of kappa, recomputed from the per-rule "
                 "values this run READS, against the summary published beside "
                 "them",
         "source": f"{RULES_RECORD}::kappa_by_rule and ::kappa_summary",
         "n_rules": len(kappa),
-        "comparison": filas,
-        "passes": all(v[2] for v in filas.values()),
+        "comparison": rows,
+        "passes": all(v[2] for v in rows.values()),
     }
 
 
-def gate_counts(filas, rec):
+def gate_counts(rows, rec):
     """`n_rules_with_territory` per order against the territory gate of
     `order_metrics_rules.json`, order by order."""
     pub = {f["order"]: f["n_rules_with_territory"]
            for f in rec["gates"]["territories"]["per_order"]}
-    difieren = [{"order": f["order"], "recomputed": f["n_rules_with_territory"],
-                 "published": pub.get(f["order"])}
-                for f in filas if pub.get(f["order"]) != f["n_rules_with_territory"]]
+    differing = [{"order": f["order"], "recomputed": f["n_rules_with_territory"],
+                  "published": pub.get(f["order"])}
+                 for f in rows if pub.get(f["order"]) != f["n_rules_with_territory"]]
     return {
         "what": "the number of rules holding territory under each of the 65 end "
                 "orders, against the gate the earlier record already passed. It "
                 "is what says these are the same territories and not a second "
                 "population of about the same size.",
         "source": f"{RULES_RECORD}::gates.territories.per_order",
-        "n_orders": len(filas),
+        "n_orders": len(rows),
         "n_published": len(pub),
-        "orders_that_differ": difieren,
-        "passes": not difieren and len(filas) == N_ORDERS
+        "orders_that_differ": differing,
+        "passes": not differing and len(rows) == N_ORDERS
                   and len(pub) >= N_ORDERS,
     }
 
@@ -201,24 +201,24 @@ def gate_counts(filas, rec):
 # The derived block, every line of it a lookup
 # ---------------------------------------------------------------------------
 
-def derive(filas, kappa, publicado_max):
-    union = sorted({r for f in filas for r in f["rule_ids"]})
+def derive(rows, kappa, published_max):
+    union = sorted({r for f in rows for r in f["rule_ids"]})
     k_union = sorted(kappa[r] for r in union if r in kappa)
 
-    por_orden = []
-    for f in filas:
+    by_order = []
+    for f in rows:
         ks = [kappa[r] for r in f["rule_ids"] if r in kappa]
-        lo, hi = (min(ks), max(ks)) if ks else (None, None)
-        por_orden.append({
+        got, hi = (min(ks), max(ks)) if ks else (None, None)
+        by_order.append({
             "order": f["order"],
             "n_rules": f["n_rules_with_territory"],
-            "kappa_min": lo, "kappa_max": hi,
-            "range": (hi / lo) if (ks and lo) else None,
+            "kappa_min": got, "kappa_max": hi,
+            "range": (hi / got) if (ks and got) else None,
         })
-    rangos = sorted(v["range"] for v in por_orden if v["range"] is not None)
+    rangos = sorted(v["range"] for v in by_order if v["range"] is not None)
 
-    tope = max(kappa, key=kappa.get)
-    donde = [f["order"] for f in filas if tope in f["rule_ids"]]
+    cap = max(kappa, key=kappa.get)
+    where_at = [f["order"] for f in rows if cap in f["rule_ids"]]
 
     return {
         "union_over_the_65_orders": {
@@ -231,7 +231,7 @@ def derive(filas, kappa, publicado_max):
         "kappa_over_the_union": {
             "n": len(k_union),
             "min": k_union[0] if k_union else None,
-            "median": resumen(k_union)["median"] if k_union else None,
+            "median": summary(k_union)["median"] if k_union else None,
             "max": k_union[-1] if k_union else None,
             "min_rule": min(union, key=lambda r: kappa[r]) if union else None,
             "max_rule": max(union, key=lambda r: kappa[r]) if union else None,
@@ -240,25 +240,25 @@ def derive(filas, kappa, publicado_max):
             "what": "max over min of kappa among the rules that hold territory "
                     "under ONE order: the spread rho_hat actually has available "
                     "inside a single machine, as opposed to across the pool",
-            "per_order": por_orden,
-            "median": resumen(rangos)["median"] if rangos else None,
+            "per_order": by_order,
+            "median": summary(rangos)["median"] if rangos else None,
             "min": rangos[0] if rangos else None,
             "max": rangos[-1] if rangos else None,
         },
         "argmax_kappa_holds_territory": {
-            "rule_id": tope,
-            "kappa": kappa[tope],
-            "published_max": publicado_max,
-            "matches_published_max": round(kappa[tope], 4) == publicado_max,
-            "holds_territory": bool(donde),
-            "n_orders_where_it_holds": len(donde),
-            "orders_where_it_holds": donde[:20],
+            "rule_id": cap,
+            "kappa": kappa[cap],
+            "published_max": published_max,
+            "matches_published_max": round(kappa[cap], 4) == published_max,
+            "holds_territory": bool(where_at),
+            "n_orders_where_it_holds": len(where_at),
+            "orders_where_it_holds": where_at[:20],
             "scope": "the 65 end orders of split 0 at full supervision, the set "
                      "every matrix in FINDINGS_ORDERS.md holds. It says nothing "
                      "about any other order over these rules.",
         },
-        "n_rules_with_territory": resumen(
-            sorted(f["n_rules_with_territory"] for f in filas)),
+        "n_rules_with_territory": summary(
+            sorted(f["n_rules_with_territory"] for f in rows)),
     }
 
 
@@ -266,7 +266,7 @@ def derive(filas, kappa, publicado_max):
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
+    only_checks = "--checks" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -306,12 +306,12 @@ def main(argv=None) -> int:
         runs[s] = run_full_supervision(inst, s)
         print(f"  split {s}: {max(BUDGETS)} starts in {runs[s]['seconds']}s")
 
-    par_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
+    pair_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
     print()
     print("PARITY GATE — against results3/start_budget_check.json")
     print(f"  {'split':>6}{'starts':>8}{'train_score':>13}{'train':>9}"
           f"{'test':>9}{'space':>9}{'':>4}")
-    for f in par_a:
+    for f in pair_a:
         c = f["comparison"]
         print(f"  {f['split']:>6}{f['starts']:>8}{c['train_score'][0]:>13}"
               f"{c['train'][0]:>9.4f}{c['test'][0]:>9.4f}{c['space'][0]:>9.4f}"
@@ -322,33 +322,33 @@ def main(argv=None) -> int:
                     print(f"        {m}: regenerated {mio} vs published {pub}")
 
     band = run_band_1pct(inst)
-    par_b = parity_band(inst, band)
-    malas = [f for f in par_b if not f["passes"]]
+    pair_b = parity_band(inst, band)
+    bad_ones = [f for f in pair_b if not f["passes"]]
     print()
     print("PARITY GATE — the 1% band against "
           "results3/budget_and_balance_ls.json")
-    print(f"  {len(par_b) - len(malas)}/{len(par_b)} cells reproduce exactly")
-    for f in malas:
+    print(f"  {len(pair_b) - len(bad_ones)}/{len(pair_b)} cells reproduce exactly")
+    for f in bad_ones:
         print(f"    split {f['split']} draw {f['draw']}: "
               + ", ".join(f"{m} regenerated {v[0]} vs published {v[1]}"
                           for m, v in f["comparison"].items() if not v[2]))
-    n_filas = len(par_a) + len(par_b)
-    if malas or not all(f["passes"] for f in par_a):
+    n_rows = len(pair_a) + len(pair_b)
+    if bad_ones or not all(f["passes"] for f in pair_a):
         print("\n  STOP: a parity failure means the regenerated orders are not "
               "the measured ones, and nothing below would be about them.")
         return 1
-    print(f"\n  PARITY: PASSES, {n_filas}/{n_filas} rows. The regenerated "
+    print(f"\n  PARITY: PASSES, {n_rows}/{n_rows} rows. The regenerated "
           f"orders are the published ones.")
 
     # ------------------------------------------------------------ the primitive
     s0 = SPLITS_FULL[0]
     t0 = time.time()
     orders = [r["order"] for r in runs[s0]["stats"]["rows"][:N_ORDERS]]
-    filas = territory_table(orders, sM, sfull)
+    rows = territory_table(orders, sM, sfull)
     print(f"\n  who holds territory under each of the {N_ORDERS} orders, in "
           f"{time.time() - t0:.0f}s")
 
-    g_counts = gate_counts(filas, rec)
+    g_counts = gate_counts(rows, rec)
     print()
     print(f"COUNT GATE — against {RULES_RECORD}::gates.territories.per_order")
     print(f"  {g_counts['n_orders']} orders, "
@@ -361,12 +361,12 @@ def main(argv=None) -> int:
         print("  STOP: these are not the territories the earlier record gated.")
         return 1
 
-    if solo_checks:
+    if only_checks:
         print(f"\n  ALL THREE GATES PASS. total cost: "
               f"{time.time() - t_start:.0f}s")
         return 0
 
-    derived = derive(filas, kappa, rec["kappa_summary"]["max"])
+    derived = derive(rows, kappa, rec["kappa_summary"]["max"])
 
     a = derived["argmax_kappa_holds_territory"]
     u = derived["union_over_the_65_orders"]
@@ -431,9 +431,9 @@ def main(argv=None) -> int:
         "budgets": list(BUDGETS),
         "gates": {
             "kappa_read": g_kappa,
-            "parity_rows": n_filas,
-            "parity_full_supervision": par_a,
-            "parity_band_1pct": par_b,
+            "parity_rows": n_rows,
+            "parity_full_supervision": pair_a,
+            "parity_band_1pct": pair_b,
             "counts": g_counts,
         },
         "no_new_search":
@@ -442,7 +442,7 @@ def main(argv=None) -> int:
             "unchanged. MULTISTART_SEED, MULTISTART_STARTS and "
             "DECLARED_NEIGHBOURHOOD are untouched and no figure here is an "
             "argument about any of them.",
-        "rules_with_territory": filas,
+        "rules_with_territory": rows,
         "derived": derived,
         "how_to_recompute_the_derived_block": RECOMPUTE,
         "seconds": {

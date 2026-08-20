@@ -36,92 +36,92 @@ ACTION_DISTRIBUTION = {
 }
 
 
-class TestEspacioDeCasos(unittest.TestCase):
+class TestCaseSpace(unittest.TestCase):
 
-    def test_el_producto_de_los_dominios_es_134400(self):
+    def test_the_product_of_the_domains_is_134400(self):
         n = 1
         for attr in ATTRIBUTES:
             n *= len(DOMAINS[attr])
         self.assertEqual(n, SPACE_SIZE)
 
-    def test_todo_atributo_tiene_dominio_declarado(self):
+    def test_every_attribute_has_a_declared_domain(self):
         self.assertEqual(set(ATTRIBUTES), set(DOMAINS))
 
-    def test_los_numericos_son_los_dos_declarados(self):
+    def test_the_numeric_ones_are_the_two_declared(self):
         self.assertEqual(NUMERIC_ATTRS, {"severity", "prior_tickets_30d"})
         for attr in NUMERIC_ATTRS:
             for v in DOMAINS[attr]:
                 self.assertIsInstance(v, int)
                 self.assertNotIsInstance(v, bool)
 
-    def test_hay_ocho_acciones_sin_repetir(self):
+    def test_there_are_eight_actions_without_repeats(self):
         self.assertEqual(len(ACTIONS), 8)
         self.assertEqual(len(set(ACTIONS)), 8)
 
 
-class TestCorpusCanonico(unittest.TestCase):
+class TestCanonicalCorpus(unittest.TestCase):
 
-    def test_tamano_y_unicos(self):
+    def test_size_and_uniques(self):
         c = corpus()
         self.assertEqual(len(c), CORPUS_N)
         self.assertEqual(len({x.key() for x in c}), UNIQUE_CASES)
 
-    def test_tasa_de_duplicados(self):
+    def test_duplicate_rate(self):
         c = corpus()
         rate = 1 - len({x.key() for x in c}) / len(c)
         self.assertAlmostEqual(rate, DUPLICATE_RATE, places=4)
 
-    def test_es_reproducible(self):
+    def test_is_reproducible(self):
         a = generate_corpus(CORPUS_N, seed=CORPUS_SEED)
         b = generate_corpus(CORPUS_N, seed=CORPUS_SEED)
         self.assertEqual(a, b)
         self.assertEqual(tuple(a), corpus())
 
-    def test_un_prefijo_de_n_mayor_es_el_corpus_de_n_menor(self):
+    def test_a_prefix_of_larger_n_is_the_corpus_of_smaller_n(self):
         """Case i does not depend on how many are requested: --n 100 is a prefix
         of --n 2000. Hence the smoke test and the full run see the same cases
         (what is NOT deterministic is the proposer; see CLAUDE.md, Step 3)."""
         self.assertEqual(generate_corpus(100, seed=CORPUS_SEED),
                          list(corpus()[:100]))
 
-    def test_otra_semilla_da_otro_corpus(self):
+    def test_another_seed_gives_another_corpus(self):
         self.assertNotEqual(generate_corpus(CORPUS_N, seed=18), list(corpus()))
 
-    def test_todos_los_valores_caen_en_su_dominio(self):
+    def test_every_value_falls_in_its_domain(self):
         for case in corpus():
             for attr in ATTRIBUTES:
                 self.assertIn(getattr(case, attr), DOMAINS[attr],
                               msg=f"{attr} fuera de dominio en {case}")
 
-    def test_distribucion_de_la_clase_verdadera(self):
+    def test_true_class_distribution(self):
         got = Counter(true_action(c) for c in corpus())
         self.assertEqual(dict(got.most_common()), ACTION_DISTRIBUTION)
         self.assertEqual(sum(ACTION_DISTRIBUTION.values()), CORPUS_N)
 
-    def test_las_ocho_clases_aparecen(self):
+    def test_the_eight_classes_appear(self):
         self.assertEqual(set(ACTION_DISTRIBUTION), set(ACTIONS))
 
-    def test_baseline_de_clase_mayoritaria(self):
+    def test_majority_class_baseline(self):
         top = max(ACTION_DISTRIBUTION.values())
         self.assertAlmostEqual(top / CORPUS_N, 0.363, places=3)
 
 
 class TestCase(unittest.TestCase):
 
-    def test_key_sigue_el_orden_de_ATTRIBUTES(self):
+    def test_key_follows_the_order_of_ATTRIBUTES(self):
         c = corpus()[0]
         self.assertEqual(c.key(), tuple(getattr(c, a) for a in ATTRIBUTES))
 
-    def test_as_dict_lleva_los_ocho_atributos(self):
+    def test_as_dict_carries_the_eight_attributes(self):
         self.assertEqual(set(corpus()[0].as_dict()), set(ATTRIBUTES))
 
-    def test_es_inmutable_y_hashable(self):
+    def test_is_immutable_and_hashable(self):
         c = corpus()[0]
         hash(c)
         with self.assertRaises(Exception):
             c.severity = 1                      # frozen dataclass
 
-    def test_igualdad_por_valor(self):
+    def test_equality_by_value(self):
         c = corpus()[0]
         self.assertEqual(c, Case(**c.as_dict()))
 

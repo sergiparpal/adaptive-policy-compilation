@@ -138,7 +138,7 @@ below.
 
 `rung2/run2.py` accepts `--prompt-version v1|v2`; both versions of the prompt
 are kept in the code and every run stores in full the one it used. The record of
-the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
+the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 
 > ⚠️ **Reproducing a figure overwrites its own record.** Nearly all the scripts
 > above dump their JSON on finishing, over the published file:
@@ -150,7 +150,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > | `harness/subsumption_check.py` | `results/subsumption.json` | no, on purpose |
 > | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
 > | `rung2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
-> | `rung2/compare_runs.py` | `results2/comparativa.json` | only against shrinking |
+> | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
 > | `rung3/order_search.py` | `results3/order_search.json` | no, on purpose |
@@ -215,7 +215,7 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 >
 > In rungs 1 and 2 the rest of the computation is deterministic and the content
 > comes out identical — what changes is the modification date of a closed record,
-> see [`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md). In rungs 3 and 4
+> see [`results2/RECORD_NOTES.md`](results2/RECORD_NOTES.md). In rungs 3 and 4
 > **the content does change**, because the tie-break fix moves the digits.
 >
 > **The other trap, the one that is about arguments and not about the
@@ -233,8 +233,8 @@ the change is in [`results2/CAMBIOS.md`](results2/CAMBIOS.md).
 > `recorded_at` field moving — which is precisely the check that it still
 > reproduces. The six deterministic, free records in the table already carry it:
 > they were re-run that same day to earn it, with the content identical field by
-> field ([`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md)). In that pass
-> `comparativa.json` and `note_audit.json` also adopted their new shape,
+> field ([`results2/RECORD_NOTES.md`](results2/RECORD_NOTES.md)). In that pass
+> `comparison.json` and `note_audit.json` also adopted their new shape,
 > `{"_env": …, "rows": […]}` instead of the bare list, with the same 8 rows.
 >
 > **For everything else the safeguard is still git**, and for everything else it
@@ -276,7 +276,7 @@ What it covers, and why those things:
 | `test_llm_path.py` | the **whole** LLM path, replaying the recorded runs without spending (see below) |
 | `test_provenance.py` | the `_env` block, that it does not leak the key, and that no JSON writer is left without one |
 | `test_record_guard.py` | the guard on the records that cost money: what it refuses, that it aborts **before** spending a call, that the output name no longer collides across `--n`, and that the free records stay unguarded |
-| `test_automatizacion.py` | that the hook and the CI workflow are still there and still run what they say they run |
+| `test_automation.py` | that the hook and the CI workflow are still there and still run what they say they run |
 
 If a *snapshot* test fails, the expected number **is not updated**: you find out
 what changed and, if the change is legitimate, you date the erratum in the
@@ -340,7 +340,7 @@ and it catches nothing that is trying to get past it, an agent reaching for
 hook or a check in CI, disproportionate for a failure that has happened once and
 altered nothing. A guard trusted for more than it can do is worse than no guard.
 
-[`.github/workflows/pruebas.yml`](.github/workflows/pruebas.yml) does the same on
+[`.github/workflows/tests.yml`](.github/workflows/tests.yml) does the same on
 every push and every PR — including what was pushed with `--no-verify` — on
 **3.10 and 3.12**: the minimum this README declares and the interpreter that
 produced the records. And it adds a step the suite cannot do on its own: check,
@@ -376,7 +376,7 @@ no longer exists — an unsatisfiable required check blocks every merge without
 failing anything. For the same reason the job name is load-bearing: renaming
 `ci-complete` without touching the ruleset blocks every merge, in silence. Half
 of that decision lives in the repository settings and the other half in the
-workflow, so `tests/test_automatizacion.py` pins the half that is versioned.
+workflow, so `tests/test_automation.py` pins the half that is versioned.
 
 The actions are pinned to the **full SHA** with their version in a comment
 alongside, never to a tag: a tag can be repointed by its owner at other code, a
@@ -447,14 +447,14 @@ uncommitted JSON also breaks traceability without touching a line of code. That
 is why the broad flag was not narrowed: it was split in two (August 7, 2026,
 while re-running six records back to back and discovering that each script
 dirtied the tree for the next one with its own output; see
-[`results2/NOTA_REGISTRO.md`](results2/NOTA_REGISTRO.md)).
+[`results2/RECORD_NOTES.md`](results2/RECORD_NOTES.md)).
 
 The field appears in each file when that figure is re-run, so carrying it or not
 splits the records today into two groups:
 
 | they carry it | still without it, and why |
 |---|---|
-| `frontier.json`, `subsumption.json`, `learned_subsumption.json`, `ceiling2.json`, `comparativa.json`, `note_audit.json` — re-run on August 7, 2026, identical content | `llm_run.json`, `llm_run_n100_smoke.json` and the 8 `llm_run2_*.json` runs: reproducing them **costs money** and they do not come out the same (the proposer is not deterministic at `temperature 0`) |
+| `frontier.json`, `subsumption.json`, `learned_subsumption.json`, `ceiling2.json`, `comparison.json`, `note_audit.json` — re-run on August 7, 2026, identical content | `llm_run.json`, `llm_run_n100_smoke.json` and the 8 `llm_run2_*.json` runs: reproducing them **costs money** and they do not come out the same (the proposer is not deterministic at `temperature 0`) |
 | | `order_search.json`, `budget_and_balance.json`, `sweep.json`: they are free and deterministic, but re-running them **does move digits** (the tie-break fix) and it is deferred to be done together with the serious optimizer |
 
 Put another way: what is still missing `_env` is exactly what cannot be

@@ -498,16 +498,16 @@ def adjudicate(measured, space):
                       "within_30pct": abs(v["rate"] / e - 1) <= 0.30 if e else None}
         return out
 
-    filas_c = {s: rows_c(s) for s in SURFACES}
+    by_class = {s: rows_c(s) for s in SURFACES}
     q["S-c"] = {
         "claim": "the per-class rates are preserved across surfaces to within "
                  "+/-30% relative, for the classes with 100 or more corpus "
                  "cases; refuted otherwise.",
         "adjudicates_on": "corpus_full",
-        "classes": sorted(filas_c["corpus_full"]),
-        "by_class": filas_c,
+        "classes": sorted(by_class["corpus_full"]),
+        "by_class": by_class,
         "verdict_by_surface": {
-            s: ("HOLDS" if all(v["within_30pct"] for v in filas_c[s].values())
+            s: ("HOLDS" if all(v["within_30pct"] for v in by_class[s].values())
                 else "REFUTED") for s in SURFACES},
     }
     q["S-c"]["verdict"] = q["S-c"]["verdict_by_surface"]["corpus_full"]
@@ -607,11 +607,11 @@ def adjudicate(measured, space):
 # that path is `main` above. So it branches after the gates and reuses every
 # line of them; what it adds is an argmin and a comparison.
 
-def _lookup(pares):
-    return {(p["i"], p["j"]): p for p in pares}
+def _lookup(pairs):
+    return {(p["i"], p["j"]): p for p in pairs}
 
 
-def minimum_pairs(inst, surf, dec, pares, en_espacio):
+def minimum_pairs(inst, surf, dec, pairs, in_space):
     """
     Every pair attaining the minimum behavioural distance on `surf`, with what
     the same pair does over the space, and — the question the findings raise —
@@ -622,93 +622,93 @@ def minimum_pairs(inst, surf, dec, pares, en_espacio):
     reporting `the` closest pair when three tie would be inventing a
     uniqueness the measurement does not have.
     """
-    minimo = min(p["disagree"] for p in pares)
+    minimum = min(p["disagree"] for p in pairs)
     corpus, idxs = inst["corpus"], surf["idxs"]
-    fuera = []
-    for p in (q for q in pares if q["disagree"] == minimo):
+    outside = []
+    for p in (q for q in pairs if q["disagree"] == minimum):
         dA, dB = dec[p["i"]][0], dec[p["j"]][0]
-        _ag, dis, _un = agreement_masks(dA, dB, surf["masks"][2])
-        casos = []
+        _ag, dis, _one = agreement_masks(dA, dB, surf["masks"][2])
+        cases = []
         for k in range(surf["n"]):
             if dis >> k & 1:
                 i_corpus = idxs[k]
-                casos.append({
+                cases.append({
                     "corpus_index": i_corpus,
                     "true_class": inst["truth"][i_corpus],
                     "key": corpus[i_corpus].key(),
                     "decided_by_i": next(a for a, m in dA.items() if m >> k & 1),
                     "decided_by_j": next(a for a, m in dB.items() if m >> k & 1),
                 })
-        llaves = [c["key"] for c in casos]
-        fuera.append({
+        braces = [c["key"] for c in cases]
+        outside.append({
             "i": p["i"], "j": p["j"],
             "disagree_here": p["disagree"],
-            "disagree_on_the_space": en_espacio[(p["i"], p["j"])]["disagree"],
+            "disagree_on_the_space": in_space[(p["i"], p["j"])]["disagree"],
             "moved_fraction": p["moved_fraction"],
-            "cases": casos,
-            "distinct_tickets": len(set(llaves)),
-            "same_ticket_drawn_twice": len(llaves) > 1 and len(set(llaves)) == 1,
+            "cases": cases,
+            "distinct_tickets": len(set(braces)),
+            "same_ticket_drawn_twice": len(braces) > 1 and len(set(braces)) == 1,
         })
-    return {"min_cases": minimo, "n_pairs_at_minimum": len(fuera),
-            "pairs": fuera}
+    return {"min_cases": minimum, "n_pairs_at_minimum": len(outside),
+            "pairs": outside}
 
 
 def amend_minimum_pairs(inst, surfs, runs, band, t_start):
     """Measure the 257-order sets again, check that nothing published moved, and
     write the identities into the record. Blocking on both counts."""
-    registro = OUT / RECORD
-    if not registro.is_file():
-        print(f"  STOP: {registro} is not there. This amends a record; it does "
+    record = OUT / RECORD
+    if not record.is_file():
+        print(f"  STOP: {record} is not there. This amends a record; it does "
               f"not create one.")
         return 1
-    d = json.loads(registro.read_text())
+    d = json.loads(record.read_text())
 
     print()
     print("MEASURING AGAIN — the 257-order sets, to locate a minimum already "
           "published")
-    dec_c, pares_c = {}, {}
+    dec_c, pairs_c = {}, {}
     for s in SPLITS_FULL:
         orders = [r["order"] for r in runs[s]["stats"]["rows"]]
         for name in SURFACES:
             surf = surfs[s][name]
             v = view(inst, surf)
             dec, dig = decisions_and_signatures(v, orders)
-            pares = pairwise(v, orders, dec, with_taus=False)
-            dec_c[(s, name)], pares_c[(s, name)] = dec, pares
+            pairs = pairwise(v, orders, dec, with_taus=False)
+            dec_c[(s, name)], pairs_c[(s, name)] = dec, pairs
             for k in BUDGETS:
-                nuevo = summarize(
+                fresh = summarize(
                     f"split {s}, fraction 1.0, {k} starts, {surf['label']}",
-                    dig, slice_pairs(pares, k), k)
-                viejo = d["sets"][name][f"split{s}_starts{k}"]
-                distintos = [c for c in viejo if viejo[c] != nuevo.get(c)]
-                if distintos:
+                    dig, slice_pairs(pairs, k), k)
+                old = d["sets"][name][f"split{s}_starts{k}"]
+                different_ones = [c for c in old if old[c] != fresh.get(c)]
+                if different_ones:
                     print(f"\n  STOP: split{s}_starts{k} on {name} no longer "
-                          f"reproduces. Fields that moved: {distintos}")
+                          f"reproduces. Fields that moved: {different_ones}")
                     print("  Nothing is written. A published value changing is "
                           "the finding, and it is reported, not repaired.")
                     return 1
     orders0 = [r["order"] for r in runs[SPLITS_FULL[0]]["stats"]["rows"]]
     dec_s, _dig = decisions_and_signatures(inst, orders0)
-    en_espacio = _lookup(pairwise(inst, orders0, dec_s, with_taus=False))
+    in_space = _lookup(pairwise(inst, orders0, dec_s, with_taus=False))
     print(f"  every one of the {len(SPLITS_FULL) * len(SURFACES) * len(BUDGETS)}"
           f" published set summaries reproduces exactly")
 
     # ---- the argmins, one per corpus surface: they need not be the same pair
     s0 = SPLITS_FULL[0]
-    fuera = {}
+    outside = {}
     for name in SURFACES:
         surf = surfs[s0][name]
-        m = minimum_pairs(inst, surf, dec_c[(s0, name)], pares_c[(s0, name)],
-                          en_espacio)
-        publicado = d["s_e_cross_surface"][name]
-        if m["min_cases"] != publicado["min_cases"]:
+        m = minimum_pairs(inst, surf, dec_c[(s0, name)], pairs_c[(s0, name)],
+                          in_space)
+        published = d["s_e_cross_surface"][name]
+        if m["min_cases"] != published["min_cases"]:
             print(f"\n  STOP: the minimum on {name} is {m['min_cases']} and "
-                  f"the record publishes {publicado['min_cases']}.")
+                  f"the record publishes {published['min_cases']}.")
             print("  Nothing is written. That is the finding.")
             return 1
-        fuera[name] = m
+        outside[name] = m
         print(f"\n  {surf['label']}: minimum {m['min_cases']} cases, reached by "
-              f"{m['n_pairs_at_minimum']} pair(s) of {len(pares_c[(s0, name)]):,}")
+              f"{m['n_pairs_at_minimum']} pair(s) of {len(pairs_c[(s0, name)]):,}")
         for p in m["pairs"]:
             print(f"    orders {p['i']} and {p['j']}: {p['disagree_here']} "
                   f"case(s) here, {p['disagree_on_the_space']:,} over the "
@@ -720,7 +720,7 @@ def amend_minimum_pairs(inst, surfs, runs, band, t_start):
 
     # ---- into the record, beside the value they locate
     for name in SURFACES:
-        d["s_e_cross_surface"][name]["minimum_pairs"] = fuera[name]
+        d["s_e_cross_surface"][name]["minimum_pairs"] = outside[name]
         d["s_e_cross_surface"][name]["minimum_pairs_note"] = (
             "the pairs attaining `min_cases`, recovered by the authorized "
             "re-run of 2026-08-15; see `authorization`. They are NOT in "
@@ -728,7 +728,7 @@ def amend_minimum_pairs(inst, surfs, runs, band, t_start):
             "calls its refutation — a pair at distance 0 here and above 0 on "
             "the space — and whose being null is itself a published fact, "
             "carried also by pairs_zero_on_corpus_positive_on_space: 0.")
-        for p in fuera[name]["pairs"]:
+        for p in outside[name]["pairs"]:
             d["cited_pairs"][f"s_e_minimum_split{s0}_{name}_{p['i']}_{p['j']}"] = \
                 pair_report(view(inst, surfs[s0][name]),
                             orders0[p["i"]], orders0[p["j"]],
@@ -741,9 +741,9 @@ def amend_minimum_pairs(inst, surfs, runs, band, t_start):
         neighbourhood=DECLARED_NEIGHBOURHOOD, multistart_seed=MULTISTART_SEED,
         multistart_starts=MULTISTART_STARTS, budgets=list(BUDGETS),
         seconds=round(time.time() - t_start, 1))
-    registro.write_text(json.dumps(d, indent=2))
+    record.write_text(json.dumps(d, indent=2))
     print(f"\n  nothing published moved. total cost: {time.time() - t_start:.0f}s")
-    print(f"-> {registro}")
+    print(f"-> {record}")
     return 0
 
 
@@ -751,8 +751,8 @@ def amend_minimum_pairs(inst, surfs, runs, band, t_start):
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
-    solo_argmin = "--s-e-argmin" in argv
+    only_checks = "--checks" in argv
+    only_argmin = "--s-e-argmin" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -779,12 +779,12 @@ def main(argv=None) -> int:
                        for s in SPLITS_FULL for k in SURFACES
                        if not (k == "corpus_full" and s != SPLITS_FULL[0])))
 
-    censo = {"published": CENSUS_PUBLISHED,
-             "corpus_full": corpus_full["census"],
-             "passes": all(corpus_full["census"][k] == v
-                           for k, v in CENSUS_PUBLISHED.items()),
-             "corpus_test_by_split": {s: surfs[s]["corpus_test"]["census"]
-                                      for s in SPLITS_FULL}}
+    census = {"published": CENSUS_PUBLISHED,
+              "corpus_full": corpus_full["census"],
+              "passes": all(corpus_full["census"][k] == v
+                            for k, v in CENSUS_PUBLISHED.items()),
+              "corpus_test_by_split": {s: surfs[s]["corpus_test"]["census"]
+                                       for s in SPLITS_FULL}}
     print("\nCENSUS — the corpus pure pool against FINDINGS_ORDERS.md, G2")
     print(f"  published  {CENSUS_PUBLISHED['pairs']:,} pairs, "
           f"{CENSUS_PUBLISHED['co_match']:,} co-match, "
@@ -792,8 +792,8 @@ def main(argv=None) -> int:
     print(f"  measured   {corpus_full['census']['pairs']:,} pairs, "
           f"{corpus_full['census']['co_match']:,} co-match, "
           f"{corpus_full['census']['conflicting']:,} conflict"
-          f"{'  ok' if censo['passes'] else '  NO'}")
-    if not censo["passes"]:
+          f"{'  ok' if census['passes'] else '  NO'}")
+    if not census["passes"]:
         print("  STOP: the corpus masks are not the ones that census was "
               "measured on.")
         return 1
@@ -806,12 +806,12 @@ def main(argv=None) -> int:
         runs[s] = run_full_supervision(inst, s)
         print(f"  split {s}: {max(BUDGETS)} starts in {runs[s]['seconds']}s")
 
-    par_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
+    pair_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
     print()
     print("PARITY GATE — against results3/start_budget_check.json")
     print(f"  {'split':>6}{'starts':>8}{'train_score':>13}{'train':>9}"
           f"{'test':>9}{'space':>9}{'':>4}")
-    for f in par_a:
+    for f in pair_a:
         c = f["comparison"]
         print(f"  {f['split']:>6}{f['starts']:>8}{c['train_score'][0]:>13}"
               f"{c['train'][0]:>9.4f}{c['test'][0]:>9.4f}{c['space'][0]:>9.4f}"
@@ -822,39 +822,39 @@ def main(argv=None) -> int:
                     print(f"        {m}: regenerated {mio} vs published {pub}")
 
     band = run_band_1pct(inst)
-    par_b = parity_band(inst, band)
-    malas = [f for f in par_b if not f["passes"]]
+    pair_b = parity_band(inst, band)
+    bad_ones = [f for f in pair_b if not f["passes"]]
     print()
     print("PARITY GATE — the 1% band against "
           "results3/budget_and_balance_ls.json")
-    print(f"  {len(par_b) - len(malas)}/{len(par_b)} cells reproduce exactly")
-    for f in malas:
+    print(f"  {len(pair_b) - len(bad_ones)}/{len(pair_b)} cells reproduce exactly")
+    for f in bad_ones:
         print(f"    split {f['split']} draw {f['draw']}: "
               + ", ".join(f"{m} regenerated {v[0]} vs published {v[1]}"
                           for m, v in f["comparison"].items() if not v[2]))
 
-    n_filas = len(par_a) + len(par_b)
-    if malas or not all(f["passes"] for f in par_a):
+    n_rows = len(pair_a) + len(pair_b)
+    if bad_ones or not all(f["passes"] for f in pair_a):
         print(f"\n  STOP: a parity failure means the regenerated orders are "
               f"not the measured ones, and nothing below would be about them.")
         return 1
-    print(f"\n  PARITY: PASSES, {n_filas}/{n_filas} rows. The regenerated "
+    print(f"\n  PARITY: PASSES, {n_rows}/{n_rows} rows. The regenerated "
           f"orders are the published ones.")
-    if solo_checks:
+    if only_checks:
         print(f"\n  total cost: {time.time() - t_start:.0f}s")
         return 0
-    if solo_argmin:
+    if only_argmin:
         return amend_minimum_pairs(inst, surfs, runs, band, t_start)
 
     # ----------------------------------------------------------- the measuring
     print()
     print("MEASURING — the same instrument, one surface at a time")
-    medido = {s: {"sets": {}, "class_sizes": {}} for s in SURFACES}
+    measured = {s: {"sets": {}, "class_sizes": {}} for s in SURFACES}
     guardados = {}
-    invariantes = {"d(a,a) = 0": {}, "undecided_either_max": {}}
+    invariants = {"d(a,a) = 0": {}, "undecided_either_max": {}}
 
     # the 257 end orders of each split, on both corpus surfaces
-    dec_corpus, pares_corpus = {}, {}
+    dec_corpus, pairs_corpus = {}, {}
     for s in SPLITS_FULL:
         orders = [r["order"] for r in runs[s]["stats"]["rows"]]
         for name in SURFACES:
@@ -862,102 +862,102 @@ def main(argv=None) -> int:
             v = view(inst, surf)
             t0 = time.time()
             dec, dig = decisions_and_signatures(v, orders)
-            invariantes["d(a,a) = 0"][f"{name}_split{s}"] = identity_is_zero(
+            invariants["d(a,a) = 0"][f"{name}_split{s}"] = identity_is_zero(
                 dec, surf["masks"])
-            pares = pairwise(v, orders, dec, with_taus=False)
+            pairs = pairwise(v, orders, dec, with_taus=False)
             dec_corpus[(s, name)] = dec
-            pares_corpus[(s, name)] = pares
+            pairs_corpus[(s, name)] = pairs
             for k in BUDGETS:
-                medido[name]["sets"][f"split{s}_starts{k}"] = summarize(
+                measured[name]["sets"][f"split{s}_starts{k}"] = summarize(
                     f"split {s}, fraction 1.0, {k} starts, {surf['label']}",
-                    dig, slice_pairs(pares, k), k)
-            resumen_k = medido[name]["sets"][f"split{s}_starts{max(BUDGETS)}"]
-            invariantes["undecided_either_max"][f"{name}_split{s}"] = \
-                resumen_k["undecided_either_max"]
-            print(f"  {surf['label']:<28} split {s}: {len(pares):,} pairs in "
+                    dig, slice_pairs(pairs, k), k)
+            summary_k = measured[name]["sets"][f"split{s}_starts{max(BUDGETS)}"]
+            invariants["undecided_either_max"][f"{name}_split{s}"] = \
+                summary_k["undecided_either_max"]
+            print(f"  {surf['label']:<28} split {s}: {len(pairs):,} pairs in "
                   f"{time.time() - t0:.0f}s, "
-                  f"{resumen_k['n_distinct_signatures']} distinct signatures "
+                  f"{summary_k['n_distinct_signatures']} distinct signatures "
                   f"of {max(BUDGETS)}")
 
     # the same orders over the space, for S-e's cross-surface clause
     t0 = time.time()
     orders0 = [r["order"] for r in runs[SPLITS_FULL[0]]["stats"]["rows"]]
     dec_space, _dig_space = decisions_and_signatures(inst, orders0)
-    pares_space = pairwise(inst, orders0, dec_space, with_taus=False)
-    invariantes["d(a,a) = 0"]["space_split0"] = identity_is_zero(
+    pairs_space = pairwise(inst, orders0, dec_space, with_taus=False)
+    invariants["d(a,a) = 0"]["space_split0"] = identity_is_zero(
         dec_space, inst["space"])
     print(f"  {'exhaustive space':<28} split {SPLITS_FULL[0]}: "
-          f"{len(pares_space):,} pairs in {time.time() - t0:.0f}s "
+          f"{len(pairs_space):,} pairs in {time.time() - t0:.0f}s "
           f"(for S-e only)")
 
     # the 1% cell S-f names, and its tied set
     f_b = next(f for f in band if f["split"] == SPLIT_B and f["draw"] == DRAW_B)
     rows_b = f_b["stats"]["rows"]
     orders_b = [r["order"] for r in rows_b]
-    mejor_b = max(r["end_score"] for r in rows_b)
-    empatados = sorted(r["index"] for r in rows_b
-                       if r["end_score"] == mejor_b)
-    idx = set(empatados)
+    best_b = max(r["end_score"] for r in rows_b)
+    tied = sorted(r["index"] for r in rows_b
+                  if r["end_score"] == best_b)
+    idx = set(tied)
     for name in SURFACES:
         surf = surfs[SPLIT_B][name]
         v = view(inst, surf)
         dec_b, dig_b = decisions_and_signatures(v, orders_b)
-        pares_b = pairwise(v, orders_b, dec_b, with_taus=False)
-        pares_emp = [p for p in pares_b if p["i"] in idx and p["j"] in idx]
-        medido[name]["sets"]["b_all65_split0_draw0"] = summarize(
+        pairs_b = pairwise(v, orders_b, dec_b, with_taus=False)
+        pairs_tied = [p for p in pairs_b if p["i"] in idx and p["j"] in idx]
+        measured[name]["sets"]["b_all65_split0_draw0"] = summarize(
             f"split {SPLIT_B}, fraction 0.01, draw {DRAW_B}, all 65 end "
-            f"orders, {surf['label']}", dig_b, pares_b, len(orders_b))
-        medido[name]["sets"]["b_tied_split0_draw0"] = summarize(
+            f"orders, {surf['label']}", dig_b, pairs_b, len(orders_b))
+        measured[name]["sets"]["b_tied_split0_draw0"] = summarize(
             f"split {SPLIT_B}, fraction 0.01, draw {DRAW_B}, the "
-            f"{len(empatados)} orders tying at the best train score, "
-            f"{surf['label']}", [dig_b[i] for i in empatados], pares_emp,
-            len(empatados))
-        medido[name]["sets"]["b_tied_split0_draw0"]["tied_indices"] = empatados
-        medido[name]["pooled_b_tied"] = per_class_over_pairs(v, dec_b,
-                                                             pares_emp)
-        guardados[f"pairs_b_tied_{name}"] = pares_emp
-        invariantes["d(a,a) = 0"][f"{name}_band"] = identity_is_zero(
+            f"{len(tied)} orders tying at the best train score, "
+            f"{surf['label']}", [dig_b[i] for i in tied], pairs_tied,
+            len(tied))
+        measured[name]["sets"]["b_tied_split0_draw0"]["tied_indices"] = tied
+        measured[name]["pooled_b_tied"] = per_class_over_pairs(v, dec_b,
+                                                               pairs_tied)
+        guardados[f"pairs_b_tied_{name}"] = pairs_tied
+        invariants["d(a,a) = 0"][f"{name}_band"] = identity_is_zero(
             dec_b, surf["masks"])
-    print(f"  1% cell (split {SPLIT_B}, draw {DRAW_B}): {len(empatados)} tied "
-          f"orders, {len(empatados) * (len(empatados) - 1) // 2} pairs, on "
+    print(f"  1% cell (split {SPLIT_B}, draw {DRAW_B}): {len(tied)} tied "
+          f"orders, {len(tied) * (len(tied) - 1) // 2} pairs, on "
           f"both corpus surfaces")
 
     # the whole band, as context for S-f and for nothing else
     t0 = time.time()
-    contexto = band_context(view(inst, corpus_full), band)
+    context = band_context(view(inst, corpus_full), band)
     print(f"  the whole 1% band on {corpus_full['label']} in "
           f"{time.time() - t0:.0f}s (context for S-f)")
 
     # ------------------------------------------- the pooled per-class figures
     for s in SURFACES:
         s0 = SPLITS_FULL[0]
-        medido[s]["pooled_split0_65"] = per_class_over_pairs(
+        measured[s]["pooled_split0_65"] = per_class_over_pairs(
             view(inst, surfs[s0][s]), dec_corpus[(s0, s)],
-            slice_pairs(pares_corpus[(s0, s)], 65))
-        medido[s]["shares"] = share_of_disagreement(medido[s]["pooled_split0_65"])
-        medido[s]["class_sizes"] = {
+            slice_pairs(pairs_corpus[(s0, s)], 65))
+        measured[s]["shares"] = share_of_disagreement(measured[s]["pooled_split0_65"])
+        measured[s]["class_sizes"] = {
             c: m.bit_count() for c, m in surfs[s0][s]["truth"].items()}
         guardados[f"pairs_split0_starts65_{s}"] = slice_pairs(
-            pares_corpus[(s0, s)], 65)
+            pairs_corpus[(s0, s)], 65)
 
-    espacio = json.loads((OUT / "order_metrics.json").read_text())
-    esp_por_clase = espacio["per_class"]["pooled_split0_65"]["by_class"]
-    medido["corpus_class_sizes"] = medido["corpus_full"]["class_sizes"]
-    medido["space_share_security"] = share_of_disagreement(
-        espacio["per_class"]["pooled_split0_65"])["SECURITY_INCIDENT"]
-    medido["reweighted_space_rate"] = round(sum(
-        medido["corpus_class_sizes"][c] / len(inst["corpus"]) * v["rate"]
-        for c, v in esp_por_clase.items()), 6)
+    space_record = json.loads((OUT / "order_metrics.json").read_text())
+    spec_by_class = space_record["per_class"]["pooled_split0_65"]["by_class"]
+    measured["corpus_class_sizes"] = measured["corpus_full"]["class_sizes"]
+    measured["space_share_security"] = share_of_disagreement(
+        space_record["per_class"]["pooled_split0_65"])["SECURITY_INCIDENT"]
+    measured["reweighted_space_rate"] = round(sum(
+        measured["corpus_class_sizes"][c] / len(inst["corpus"]) * v["rate"]
+        for c, v in spec_by_class.items()), 6)
     # the same reweighting, read as a share of the total instead of as a rate:
     # the model S-d's "under 3%" comes from.
-    peso = {c: v["rate"] * medido["corpus_class_sizes"][c]
-            for c, v in esp_por_clase.items()}
-    medido["reweighted_space_share_security"] = round(
-        peso["SECURITY_INCIDENT"] / sum(peso.values()), 6)
+    weight = {c: v["rate"] * measured["corpus_class_sizes"][c]
+              for c, v in spec_by_class.items()}
+    measured["reweighted_space_share_security"] = round(
+        weight["SECURITY_INCIDENT"] / sum(weight.values()), 6)
 
     # ------------------------------------------- how much competition a case
     t0 = time.time()
-    medido["competition"] = {
+    measured["competition"] = {
         "space": competition(inst["ids"], inst["space"][0],
                              inst["conflicting"], sn),
         "corpus_full": competition(inst["ids"], corpus_full["masks"][0],
@@ -971,32 +971,32 @@ def main(argv=None) -> int:
     }
     print(f"\n  competition census in {time.time() - t0:.0f}s — rules over the "
           f"average case: "
-          f"{medido['competition']['space']['rules_per_case_mean']} on the "
-          f"space, {medido['competition']['corpus_full']['rules_per_case_mean']}"
+          f"{measured['competition']['space']['rules_per_case_mean']} on the "
+          f"space, {measured['competition']['corpus_full']['rules_per_case_mean']}"
           f" on the corpus; conflicting pairs live on it: "
-          f"{medido['competition']['space']['conflicting_pairs_per_case_mean']}"
+          f"{measured['competition']['space']['conflicting_pairs_per_case_mean']}"
           f" against "
-          f"{medido['competition']['corpus_full']['conflicting_pairs_per_case_mean']}")
+          f"{measured['competition']['corpus_full']['conflicting_pairs_per_case_mean']}")
 
     # ------------------------------------------------------------------- S-e
     for name in SURFACES:
-        pares = pares_corpus[(SPLITS_FULL[0], name)]
+        pairs = pairs_corpus[(SPLITS_FULL[0], name)]
         n_surf = surfs[SPLITS_FULL[0]][name]["n"]
-        cruce = [(a, b) for a, b in zip(pares, pares_space)
-                 if a["disagree"] == 0 and b["disagree"] > 0]
+        crossing = [(a, b) for a, b in zip(pairs, pairs_space)
+                    if a["disagree"] == 0 and b["disagree"] > 0]
         if any(a["i"] != b["i"] or a["j"] != b["j"]
-               for a, b in zip(pares, pares_space)):
+               for a, b in zip(pairs, pairs_space)):
             raise ValueError("the two pair matrices are not aligned")
-        minimo = min(p["disagree"] for p in pares)
-        medido[name]["s_e"] = {
-            "n_pairs": len(pares),
-            "pairs_zero_on_corpus_positive_on_space": len(cruce),
-            "pairs_zero_on_corpus": sum(1 for p in pares
+        minimum = min(p["disagree"] for p in pairs)
+        measured[name]["s_e"] = {
+            "n_pairs": len(pairs),
+            "pairs_zero_on_corpus_positive_on_space": len(crossing),
+            "pairs_zero_on_corpus": sum(1 for p in pairs
                                         if p["disagree"] == 0),
-            "min_cases": minimo,
-            "min_rate": round(minimo / n_surf, 6),
+            "min_cases": minimum,
+            "min_rate": round(minimum / n_surf, 6),
             "n_surface": n_surf,
-            "example": (cruce[0][0] if cruce else None),
+            "example": (crossing[0][0] if crossing else None),
         }
 
     # ------------------------------------------------------- the cited pairs
@@ -1011,7 +1011,7 @@ def main(argv=None) -> int:
                 f"split {s}: the winner at 65 starts against the winner at "
                 f"257, over {surfs[s][name]['label']}")
 
-    q = adjudicate(medido, espacio)
+    q = adjudicate(measured, space_record)
 
     print()
     print("=" * 78)
@@ -1069,30 +1069,30 @@ def main(argv=None) -> int:
         "budgets": list(BUDGETS),
         "splits": list(SPLITS_FULL),
         "fraction": FRACTION_B,
-        "census_gate": censo,
-        "parity_full_supervision": par_a,
-        "parity_band_1pct": par_b,
-        "parity_rows": n_filas,
-        "invariants": invariantes,
+        "census_gate": census,
+        "parity_full_supervision": pair_a,
+        "parity_band_1pct": pair_b,
+        "parity_rows": n_rows,
+        "invariants": invariants,
         "no_new_search":
             "every order measured here comes out of run_full_supervision and "
             "run_band_1pct of order_metrics_run.py, imported and called "
             "unchanged. The prefix shortcut is not revalidated: it was checked "
             "against an independent 65-start run when it was introduced, and "
             "tests/test_order_metrics_run.py pins the tie-break it rests on.",
-        "sets": {name: medido[name]["sets"] for name in SURFACES},
-        "per_class": {name: {"pooled_split0_65": medido[name]["pooled_split0_65"],
-                             "pooled_b_tied": medido[name]["pooled_b_tied"],
-                             "shares_of_total_disagreement": medido[name]["shares"],
-                             "class_sizes": medido[name]["class_sizes"]}
+        "sets": {name: measured[name]["sets"] for name in SURFACES},
+        "per_class": {name: {"pooled_split0_65": measured[name]["pooled_split0_65"],
+                             "pooled_b_tied": measured[name]["pooled_b_tied"],
+                             "shares_of_total_disagreement": measured[name]["shares"],
+                             "class_sizes": measured[name]["class_sizes"]}
                       for name in SURFACES},
-        "s_e_cross_surface": {name: medido[name]["s_e"] for name in SURFACES},
-        "competition_census": medido["competition"],
-        "reweighted_space_rate": medido["reweighted_space_rate"],
+        "s_e_cross_surface": {name: measured[name]["s_e"] for name in SURFACES},
+        "competition_census": measured["competition"],
+        "reweighted_space_rate": measured["reweighted_space_rate"],
         "reweighted_space_share_security":
-            medido["reweighted_space_share_security"],
-        "space_share_security": medido["space_share_security"],
-        "band_1pct_context_corpus_full": contexto,
+            measured["reweighted_space_share_security"],
+        "space_share_security": measured["space_share_security"],
+        "band_1pct_context_corpus_full": context,
         "cited_pairs": cited,
         "pairs_stored":
             "the full triangle for the 65-order set of split 0 and for the "

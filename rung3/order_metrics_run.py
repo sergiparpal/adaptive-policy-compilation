@@ -64,7 +64,7 @@ from itertools import combinations
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from rung3.budget_and_balance import greedy as greedy_del_registro
+from rung3.budget_and_balance import greedy as greedy_from_record
 from rung3.budget_and_balance_ls import load_instance, start_spread, subsample
 from rung3.local_search import (DECLARED_NEIGHBOURHOOD, MULTISTART_SEED,
                                    MULTISTART_STARTS, build_masks,
@@ -100,7 +100,7 @@ PUBLISHED_A = OUT / "start_budget_check.json"
 PUBLISHED_B = OUT / "budget_and_balance_ls.json"
 
 # The classes §0 bets on, and the one every reversed order collapses to.
-CLASES_ESCASAS = ("ACCOUNT_MANAGER", "T3_ENGINEERING")
+SCARCE_CLASSES = ("ACCOUNT_MANAGER", "T3_ENGINEERING")
 
 
 # ---------------------------------------------------------------------------
@@ -152,8 +152,8 @@ def run_full_supervision(inst, s):
     tr, te = inst["splits"][s]
     train_masks = masks_for(inst, tr)
     test_masks = masks_for(inst, te)
-    greedy = greedy_del_registro(inst["rules"], inst["matched"], inst["truth"],
-                                 inst["action"], tr)
+    greedy = greedy_from_record(inst["rules"], inst["matched"], inst["truth"],
+                                inst["action"], tr)
     starts = declared_starts(inst["ids"], first=greedy, n=BIGGEST - 1)
     if len(starts) != BIGGEST:
         raise ValueError("el presupuesto declarado no cuadra con los arranques")
@@ -184,51 +184,51 @@ def validate_prefix_shortcut(inst, run):
     t0 = time.time()
     best, st = multistart(starts, *run["train_masks"],
                           neighbourhood=DECLARED_NEIGHBOURHOOD)
-    fila = prefix_winner(run["stats"]["rows"], MULTISTART_STARTS + 1)
-    salida = {
+    row = prefix_winner(run["stats"]["rows"], MULTISTART_STARTS + 1)
+    output = {
         "split": s,
         "starts": len(starts),
         "independent_best_score": st["best_score"],
-        "prefix_best_score": fila["end_score"],
+        "prefix_best_score": row["end_score"],
         "independent_best_index": st["best_from_index"],
-        "prefix_best_index": fila["index"],
-        "same_order": best == fila["order"],
+        "prefix_best_index": row["index"],
+        "same_order": best == row["order"],
         "same_rows": [r["end_score"] for r in st["rows"]] ==
                      [r["end_score"] for r in run["stats"]["rows"][:len(starts)]],
         "seconds": round(time.time() - t0, 1),
     }
-    salida["passes"] = (salida["independent_best_score"] == salida["prefix_best_score"]
-                        and salida["independent_best_index"] == salida["prefix_best_index"]
-                        and salida["same_order"] and salida["same_rows"])
-    return salida
+    output["passes"] = (output["independent_best_score"] == output["prefix_best_score"]
+                        and output["independent_best_index"] == output["prefix_best_index"]
+                        and output["same_order"] and output["same_rows"])
+    return output
 
 
 def run_band_1pct(inst):
     """The whole 1% band: five splits by five draws, keeping every end order.
     Regenerated whole because a single cell cannot say whether it is typical."""
-    filas = []
+    rows = []
     for s in range(len(inst["splits"])):
         tr, te = inst["splits"][s]
         test_masks = masks_for(inst, te)
         for d in range(5):
             sub = subsample(tr, FRACTION_B, s, d)
             train_masks = masks_for(inst, sub)
-            greedy = greedy_del_registro(inst["rules"], inst["matched"],
-                                         inst["truth"], inst["action"], sub)
+            greedy = greedy_from_record(inst["rules"], inst["matched"],
+                                        inst["truth"], inst["action"], sub)
             t0 = time.time()
             best, st = multistart(declared_starts(inst["ids"], first=greedy),
                                   *train_masks,
                                   neighbourhood=DECLARED_NEIGHBOURHOOD,
                                   keep_orders=True)
             sc = scores_of(inst, best, train_masks, len(sub), test_masks, len(te))
-            filas.append({
+            rows.append({
                 "split": s, "draw": d, "labels": len(sub), "stats": st,
                 "ls_train": round(st["best_score"] / len(sub), 4),
                 "ls_test": sc["test"], "ls_space": sc["space"],
                 "spread": start_spread(st),
                 "seconds": round(time.time() - t0, 1),
             })
-    return filas
+    return rows
 
 
 # ---------------------------------------------------------------------------
@@ -240,70 +240,70 @@ def parity_full_supervision(inst, runs):
     `start_budget_check.json`. Read from the file, never from a constant here:
     a gate that carries its own expectation is not a gate."""
     pub = json.loads(PUBLISHED_A.read_text())
-    filas = []
+    rows = []
     for run in runs:
         for k in BUDGETS:
-            fila = prefix_winner(run["stats"]["rows"], k)
-            sc = scores_of(inst, fila["order"], run["train_masks"],
+            row = prefix_winner(run["stats"]["rows"], k)
+            sc = scores_of(inst, row["order"], run["train_masks"],
                            run["n_train"], run["test_masks"], run["n_test"])
-            esperado = next(r for r in pub["rows"]
+            expected = next(r for r in pub["rows"]
                             if r["split"] == run["split"] and r["starts"] == k)
-            comp = {m: (sc[m], esperado[m], sc[m] == esperado[m])
+            comp = {m: (sc[m], expected[m], sc[m] == expected[m])
                     for m in ("train_score", "train", "test", "space")}
-            filas.append({
+            rows.append({
                 "split": run["split"], "starts": k,
-                "best_from_index": fila["index"], "best_from": fila["start"],
+                "best_from_index": row["index"], "best_from": row["start"],
                 "n_at_best": sum(1 for r in run["stats"]["rows"][:k]
-                                 if r["end_score"] == fila["end_score"]),
-                "published_n_at_best": esperado["n_at_best"],
+                                 if r["end_score"] == row["end_score"]),
+                "published_n_at_best": expected["n_at_best"],
                 "end_score_distinct": len({r["end_score"]
                                            for r in run["stats"]["rows"][:k]}),
-                "published_end_score_distinct": esperado["end_score_distinct"],
+                "published_end_score_distinct": expected["end_score_distinct"],
                 "comparison": comp,
                 "passes": all(v[2] for v in comp.values()),
             })
-    return filas
+    return rows
 
 
-def parity_band(inst, filas):
+def parity_band(inst, rows):
     """The 1% band against `budget_and_balance_ls.json::label_budget_runs`."""
     pub = json.loads(PUBLISHED_B.read_text())
-    salida = []
-    for f in filas:
-        esperado = next(r for r in pub["label_budget_runs"]
+    output = []
+    for f in rows:
+        expected = next(r for r in pub["label_budget_runs"]
                         if r["fraction"] == FRACTION_B
                         and r["split"] == f["split"] and r["draw"] == f["draw"])
-        comp = {m: (f[m], esperado[m], f[m] == esperado[m])
+        comp = {m: (f[m], expected[m], f[m] == expected[m])
                 for m in ("ls_train", "ls_test", "ls_space")}
-        comp["n_at_best"] = (f["spread"]["n_at_best"], esperado["n_at_best"],
-                             f["spread"]["n_at_best"] == esperado["n_at_best"])
-        salida.append({"split": f["split"], "draw": f["draw"],
+        comp["n_at_best"] = (f["spread"]["n_at_best"], expected["n_at_best"],
+                             f["spread"]["n_at_best"] == expected["n_at_best"])
+        output.append({"split": f["split"], "draw": f["draw"],
                        "comparison": comp,
                        "passes": all(v[2] for v in comp.values())})
-    return salida
+    return output
 
 
 # ---------------------------------------------------------------------------
 # Measuring a set of orders
 # ---------------------------------------------------------------------------
 
-def digest(firma):
+def digest(sig):
     """A short, stable name for a behavioural signature. The signature itself is
     exact — the masks whole — and this is what a record can carry."""
     h = hashlib.sha1()
-    for a, m in firma[0]:
+    for a, m in sig[0]:
         h.update(a.encode())
         h.update(m.to_bytes((m.bit_length() + 7) // 8 or 1, "big"))
     h.update(b"|undecided|")
-    u = firma[1]
+    u = sig[1]
     h.update(u.to_bytes((u.bit_length() + 7) // 8 or 1, "big"))
     return h.hexdigest()[:12]
 
 
-def resumen(valores):
-    if not valores:
+def summary(values):
+    if not values:
         return None
-    v = sorted(valores)
+    v = sorted(values)
     return {"n": len(v), "min": v[0], "p25": v[len(v) // 4],
             "median": statistics.median(v), "mean": round(statistics.mean(v), 6),
             "p75": v[(3 * len(v)) // 4], "max": v[-1]}
@@ -316,16 +316,16 @@ def spearman(xs, ys):
         return None
 
     def rangos(vs):
-        orden = sorted(range(len(vs)), key=lambda i: vs[i])
+        rank_idx = sorted(range(len(vs)), key=lambda i: vs[i])
         r = [0.0] * len(vs)
         i = 0
-        while i < len(orden):
+        while i < len(rank_idx):
             j = i
-            while j + 1 < len(orden) and vs[orden[j + 1]] == vs[orden[i]]:
+            while j + 1 < len(rank_idx) and vs[rank_idx[j + 1]] == vs[rank_idx[i]]:
                 j += 1
-            medio = (i + j) / 2 + 1
+            middle = (i + j) / 2 + 1
             for k in range(i, j + 1):
-                r[orden[k]] = medio
+                r[rank_idx[k]] = middle
             i = j + 1
         return r
 
@@ -355,57 +355,57 @@ def pairwise(inst, orders, dec, with_taus=True):
     4 ms a pair, which over 32,896 pairs is the dominant cost of this file.
     """
     _sM, _sW, sfull, sn = inst["space"]
-    pares = []
+    pairs = []
     for i, j in combinations(range(len(orders)), 2):
         _agree, dis, undecided = behavioural_distance(dec[i][0], dec[j][0], sfull)
         churn = positions_moved(orders[i], orders[j])
-        fila = {"i": i, "j": j, "disagree": dis, "undecided_either": undecided,
-                "rate": round(dis / sn, 6),
-                "moved": churn["moved"],
-                "moved_fraction": round(churn["fraction_moved"], 4),
-                "displacement_median": churn["median"]}
+        row = {"i": i, "j": j, "disagree": dis, "undecided_either": undecided,
+               "rate": round(dis / sn, 6),
+               "moved": churn["moved"],
+               "moved_fraction": round(churn["fraction_moved"], 4),
+               "displacement_median": churn["median"]}
         if with_taus:
-            fila["tau"] = round(tau(orders[i], orders[j]), 4)
-            fila["tau_conflicting"] = round(
+            row["tau"] = round(tau(orders[i], orders[j]), 4)
+            row["tau_conflicting"] = round(
                 tau(orders[i], orders[j], inst["conflicting"]), 4)
-        pares.append(fila)
-    return pares
+        pairs.append(row)
+    return pairs
 
 
-def slice_pairs(pares, k):
+def slice_pairs(pairs, k):
     """The sub-matrix of the first `k` orders."""
-    return [p for p in pares if p["i"] < k and p["j"] < k]
+    return [p for p in pairs if p["i"] < k and p["j"] < k]
 
 
-def summarize(labels, digests, pares, n_orders):
+def summarize(labels, digests, pairs, n_orders):
     """What the record carries about a set: the summaries, never the orders."""
-    tasas = [p["rate"] for p in pares]
+    rates = [p["rate"] for p in pairs]
     out = {
         "labels": labels,
         "n_orders": n_orders,
-        "n_pairs": len(pares),
+        "n_pairs": len(pairs),
         "n_distinct_signatures": len(set(digests[:n_orders])),
         "signatures": digests[:n_orders],
-        "undecided_either_max": max((p["undecided_either"] for p in pares),
+        "undecided_either_max": max((p["undecided_either"] for p in pairs),
                                     default=0),
-        "disagreement": resumen([p["disagree"] for p in pares]),
-        "disagreement_rate": resumen([round(t, 6) for t in tasas]),
-        "moved_fraction": resumen([p["moved_fraction"] for p in pares]),
-        "pairs_identical_behaviour": sum(1 for p in pares if p["disagree"] == 0),
+        "disagreement": summary([p["disagree"] for p in pairs]),
+        "disagreement_rate": summary([round(t, 6) for t in rates]),
+        "moved_fraction": summary([p["moved_fraction"] for p in pairs]),
+        "pairs_identical_behaviour": sum(1 for p in pairs if p["disagree"] == 0),
         "pairs_identical_behaviour_but_moved": sum(
-            1 for p in pares if p["disagree"] == 0 and p["moved"] > 0),
+            1 for p in pairs if p["disagree"] == 0 and p["moved"] > 0),
     }
-    if pares and "tau" in pares[0]:
-        out["tau"] = resumen([p["tau"] for p in pares])
-        out["tau_conflicting"] = resumen([p["tau_conflicting"] for p in pares])
+    if pairs and "tau" in pairs[0]:
+        out["tau"] = summary([p["tau"] for p in pairs])
+        out["tau_conflicting"] = summary([p["tau_conflicting"] for p in pairs])
         out["spearman_tau_vs_disagreement"] = spearman(
-            [p["tau"] for p in pares], tasas)
+            [p["tau"] for p in pairs], rates)
         out["spearman_tau_conflicting_vs_disagreement"] = spearman(
-            [p["tau_conflicting"] for p in pares], tasas)
+            [p["tau_conflicting"] for p in pairs], rates)
     return out
 
 
-def per_class_over_pairs(inst, dec, pares, cuantos=None):
+def per_class_over_pairs(inst, dec, pairs, cuantos=None):
     """
     Per-class disagreement pooled over pairs: total disagreements of the class
     over total cases of the class, summed across pairs.
@@ -418,15 +418,15 @@ def per_class_over_pairs(inst, dec, pares, cuantos=None):
     truth = inst["truth_space"]
     acc = {c: 0 for c in truth}
     tot = {c: 0 for c in truth}
-    usados = pares if cuantos is None else pares[:cuantos]
-    for p in usados:
-        por = per_class_disagreement(dec[p["i"]][0], dec[p["j"]][0], truth)
-        for c, v in por.items():
+    used_names = pairs if cuantos is None else pairs[:cuantos]
+    for p in used_names:
+        share = per_class_disagreement(dec[p["i"]][0], dec[p["j"]][0], truth)
+        for c, v in share.items():
             acc[c] += v["disagree"]
             tot[c] += v["n"]
-    overall = sum(acc.values()) / sum(tot.values()) if usados else None
+    overall = sum(acc.values()) / sum(tot.values()) if used_names else None
     return {
-        "n_pairs": len(usados),
+        "n_pairs": len(used_names),
         "overall_rate": round(overall, 6) if overall is not None else None,
         "by_class": {c: {"n_per_pair": truth[c].bit_count(),
                          "rate": round(acc[c] / tot[c], 6),
@@ -436,7 +436,7 @@ def per_class_over_pairs(inst, dec, pares, cuantos=None):
     }
 
 
-def pair_report(inst, a, b, nombre):
+def pair_report(inst, a, b, name):
     """Everything about one named pair, which is what a finding cites."""
     sM, _sW, sfull, sn = inst["space"]
     action = inst["action"]
@@ -445,16 +445,16 @@ def pair_report(inst, a, b, nombre):
     agree, dis, undecided = behavioural_distance(dA, dB, sfull)
     wA, _ = winners(a, sM, sfull)
     wB, _ = winners(b, sM, sfull)
-    misma = attribution_agreement(wA, wB)
+    same = attribution_agreement(wA, wB)
     churn = positions_moved(a, b)
-    por = per_class_disagreement(dA, dB, inst["truth_space"])
+    share = per_class_disagreement(dA, dB, inst["truth_space"])
     return {
-        "what": nombre,
+        "what": name,
         "agree": agree, "disagree": dis, "undecided_either": undecided,
         "disagreement_rate": round(dis / sn, 6),
         "same_signature": signature(dA, uA) == signature(dB, uB),
-        "same_rule_where_they_agree": misma,
-        "agree_for_different_reasons": agree - misma,
+        "same_rule_where_they_agree": same,
+        "agree_for_different_reasons": agree - same,
         "moved": churn["moved"],
         "moved_fraction": round(churn["fraction_moved"], 4),
         "displacement_max": churn["max"],
@@ -463,7 +463,7 @@ def pair_report(inst, a, b, nombre):
         "tau_conflicting": round(tau(a, b, inst["conflicting"]), 4),
         "per_class": {c: {"n": v["n"], "disagree": v["disagree"],
                           "rate": round(v["rate"], 6)}
-                      for c, v in sorted(por.items())},
+                      for c, v in sorted(share.items())},
     }
 
 
@@ -478,21 +478,21 @@ def pair_report(inst, a, b, nombre):
 # findings; it does not go in the formula. Changing the measure after seeing the
 # premise limp is what §0 exists to prevent.
 
-def evaluate_predictions(inst, sets, pares, band, cited, per_class):
+def evaluate_predictions(inst, sets, pairs, band, cited, per_class):
     _sM, _sW, _sfull, sn = inst["space"]
     q = {}
 
     # ---- Q-a: the winner at 65 against the winner at 257, split 0
-    par = cited["qa_split0"]
+    pair = cited["qa_split0"]
     q["Q-a"] = {
         "claim": "the winner at 65 starts and the winner at 257 disagree on "
                  ">= 6,910 cases of the space (5.1%); below 3,455 the harness "
                  "is wrong, not the prediction",
-        "measured": par["disagree"],
-        "rate": par["disagreement_rate"],
+        "measured": pair["disagree"],
+        "rate": pair["disagreement_rate"],
         "floor_arithmetic": 3455, "threshold": 6910,
-        "verdict": ("HARNESS SUSPECT" if par["disagree"] < 3455
-                    else "HOLDS" if par["disagree"] >= 6910 else "REFUTED"),
+        "verdict": ("HARNESS SUSPECT" if pair["disagree"] < 3455
+                    else "HOLDS" if pair["disagree"] >= 6910 else "REFUTED"),
         "second_split": cited["qa_split4"]["disagree"],
         "second_split_rate": cited["qa_split4"]["disagreement_rate"],
     }
@@ -554,18 +554,18 @@ def evaluate_predictions(inst, sets, pares, band, cited, per_class):
     }
 
     # ---- Q-e: churn overstates functional difference
-    p257 = pares["split0"]
-    ambos = sum(1 for p in p257
-                if p["moved_fraction"] > 0.6 and p["rate"] < 0.30)
+    p257 = pairs["split0"]
+    both = sum(1 for p in p257
+               if p["moved_fraction"] > 0.6 and p["rate"] < 0.30)
     q["Q-e"] = {
         "claim": "more than 60% of rules sit at a different index between two "
                  "end orders while behavioural disagreement stays below 30%; "
                  "churn and disagreement of comparable size refutes",
         "median_moved_fraction": d["moved_fraction"]["median"],
         "median_disagreement_rate": d["disagreement_rate"]["median"],
-        "pairs_over_60_churn_under_30_disagreement": ambos,
+        "pairs_over_60_churn_under_30_disagreement": both,
         "n_pairs": len(p257),
-        "fraction_of_pairs": round(ambos / len(p257), 4),
+        "fraction_of_pairs": round(both / len(p257), 4),
         "verdict": ("HOLDS" if (d["moved_fraction"]["median"] > 0.6
                                 and d["disagreement_rate"]["median"] < 0.30)
                     else "REFUTED"),
@@ -573,10 +573,10 @@ def evaluate_predictions(inst, sets, pares, band, cited, per_class):
 
     # ---- Q-f: disagreement concentrates where material is scarce
     ratios = {c_: per_class["pooled_split0_65"]["by_class"][c_]["ratio_to_overall"]
-              for c_ in CLASES_ESCASAS}
-    par_ratios = {c_: round(par["per_class"][c_]["rate"]
-                            / (par["disagreement_rate"] or 1), 3)
-                  for c_ in CLASES_ESCASAS}
+              for c_ in SCARCE_CLASSES}
+    pair_ratios = {c_: round(pair["per_class"][c_]["rate"]
+                             / (pair["disagreement_rate"] or 1), 3)
+                   for c_ in SCARCE_CLASSES}
     q["Q-f"] = {
         "claim": "the per-class disagreement rate for ACCOUNT_MANAGER and "
                  "T3_ENGINEERING is at least twice the overall rate; either "
@@ -587,7 +587,7 @@ def evaluate_predictions(inst, sets, pares, band, cited, per_class):
             "by_class": {c_: per_class["pooled_split0_65"]["by_class"][c_]
                          for c_ in sorted(inst["truth_space"])}},
         "ratios_pooled": ratios,
-        "ratios_on_the_Q_a_pair": par_ratios,
+        "ratios_on_the_Q_a_pair": pair_ratios,
         "verdict": ("REFUTED" if any(v <= 1.0 for v in ratios.values())
                     else "HOLDS" if all(v >= 2.0 for v in ratios.values())
                     else "PARTIAL"),
@@ -601,18 +601,18 @@ def band_context(inst, band):
     out = []
     for f in band:
         rows = f["stats"]["rows"]
-        mejor = max(r["end_score"] for r in rows)
-        empatados = [r["order"] for r in rows if r["end_score"] == mejor]
-        dec, dig = decisions_and_signatures(inst, empatados)
-        pares = pairwise(inst, empatados, dec, with_taus=False)
+        best = max(r["end_score"] for r in rows)
+        tied = [r["order"] for r in rows if r["end_score"] == best]
+        dec, dig = decisions_and_signatures(inst, tied)
+        pairs = pairwise(inst, tied, dec, with_taus=False)
         out.append({
             "split": f["split"], "draw": f["draw"],
-            "n_tied": len(empatados),
+            "n_tied": len(tied),
             "n_distinct_signatures": len(set(dig)),
-            "median_disagreement": (resumen([p["disagree"] for p in pares])
-                                    ["median"] if pares else None),
-            "median_rate": (round(resumen([p["rate"] for p in pares])["median"], 6)
-                            if pares else None),
+            "median_disagreement": (summary([p["disagree"] for p in pairs])
+                                    ["median"] if pairs else None),
+            "median_rate": (round(summary([p["rate"] for p in pairs])["median"], 6)
+                            if pairs else None),
         })
     return out
 
@@ -621,7 +621,7 @@ def band_context(inst, band):
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
+    only_checks = "--checks" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -650,25 +650,25 @@ def main(argv=None) -> int:
         runs[s] = run_full_supervision(inst, s)
         print(f"  split {s}: {BIGGEST} starts in {runs[s]['seconds']}s")
 
-    atajo = validate_prefix_shortcut(inst, runs[SPLITS_FULL[0]])
-    print(f"\n  prefix shortcut, split {atajo['split']}: an independent "
-          f"{atajo['starts']}-start run ({atajo['seconds']}s)")
-    print(f"    same best score {atajo['independent_best_score']} == "
-          f"{atajo['prefix_best_score']}, same index "
-          f"{atajo['independent_best_index']} == {atajo['prefix_best_index']}, "
-          f"same order {atajo['same_order']}, all 65 rows {atajo['same_rows']}")
-    if not atajo["passes"]:
+    shortcut = validate_prefix_shortcut(inst, runs[SPLITS_FULL[0]])
+    print(f"\n  prefix shortcut, split {shortcut['split']}: an independent "
+          f"{shortcut['starts']}-start run ({shortcut['seconds']}s)")
+    print(f"    same best score {shortcut['independent_best_score']} == "
+          f"{shortcut['prefix_best_score']}, same index "
+          f"{shortcut['independent_best_index']} == {shortcut['prefix_best_index']}, "
+          f"same order {shortcut['same_order']}, all 65 rows {shortcut['same_rows']}")
+    if not shortcut["passes"]:
         print("\n  STOP: the prefix is not the independent run. The budgets "
               "derived from it would not be the measured ones.")
         return 1
 
     # ------------------------------------------------------------ parity gate
-    par_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
+    pair_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
     print()
     print("PARITY GATE — against results3/start_budget_check.json")
     print(f"  {'split':>6}{'starts':>8}{'train_score':>13}{'train':>9}"
           f"{'test':>9}{'space':>9}{'n_at_best':>11}{'':>4}")
-    for f in par_a:
+    for f in pair_a:
         c = f["comparison"]
         print(f"  {f['split']:>6}{f['starts']:>8}{c['train_score'][0]:>13}"
               f"{c['train'][0]:>9.4f}{c['test'][0]:>9.4f}{c['space'][0]:>9.4f}"
@@ -680,46 +680,46 @@ def main(argv=None) -> int:
                     print(f"        {m}: regenerated {mio} vs published {pub}")
 
     band = run_band_1pct(inst)
-    par_b = parity_band(inst, band)
+    pair_b = parity_band(inst, band)
     print()
     print("PARITY GATE — the 1% band against "
           "results3/budget_and_balance_ls.json")
-    malas = [f for f in par_b if not f["passes"]]
-    print(f"  {len(par_b) - len(malas)}/{len(par_b)} cells reproduce exactly")
-    for f in malas:
+    bad_ones = [f for f in pair_b if not f["passes"]]
+    print(f"  {len(pair_b) - len(bad_ones)}/{len(pair_b)} cells reproduce exactly")
+    for f in bad_ones:
         print(f"    split {f['split']} draw {f['draw']}: "
               + ", ".join(f"{m} regenerated {v[0]} vs published {v[1]}"
                           for m, v in f["comparison"].items() if not v[2]))
-    celda = next(f for f in par_b
-                 if f["split"] == SPLIT_B and f["draw"] == DRAW_B)
+    cell = next(f for f in pair_b
+                if f["split"] == SPLIT_B and f["draw"] == DRAW_B)
     print(f"  the cell Q-b names, split {SPLIT_B} draw {DRAW_B}: "
-          f"{'reproduces' if celda['passes'] else 'DOES NOT REPRODUCE'}")
+          f"{'reproduces' if cell['passes'] else 'DOES NOT REPRODUCE'}")
 
-    if malas or not all(f["passes"] for f in par_a):
+    if bad_ones or not all(f["passes"] for f in pair_a):
         print("\n  STOP: a parity failure means the regenerated orders are not "
               "the measured ones, and nothing below would be about them. "
               "Reported as G6.")
         return 1
     print("\n  PARITY: PASSES. The regenerated orders are the published ones.")
-    if solo_checks:
+    if only_checks:
         print(f"\n  total cost: {time.time() - t_start:.0f}s")
         return 0
 
     # ----------------------------------------------------------- the measuring
     print()
     print("MEASURING")
-    sets, pares_por_split, dec_por_split = {}, {}, {}
+    sets, pairs_by_split, dec_by_split = {}, {}, {}
     for s in SPLITS_FULL:
         t0 = time.time()
         orders = [r["order"] for r in runs[s]["stats"]["rows"]]
         dec, dig = decisions_and_signatures(inst, orders)
-        pares = pairwise(inst, orders, dec, with_taus=True)
-        dec_por_split[s], pares_por_split[f"split{s}"] = dec, pares
+        pairs = pairwise(inst, orders, dec, with_taus=True)
+        dec_by_split[s], pairs_by_split[f"split{s}"] = dec, pairs
         for k in BUDGETS:
             sets[f"split{s}_starts{k}"] = summarize(
                 f"split {s}, fraction 1.0, {k} starts",
-                dig, slice_pairs(pares, k), k)
-        print(f"  split {s}: {len(pares):,} pairs in {time.time() - t0:.0f}s, "
+                dig, slice_pairs(pairs, k), k)
+        print(f"  split {s}: {len(pairs):,} pairs in {time.time() - t0:.0f}s, "
               f"{sets[f'split{s}_starts257']['n_distinct_signatures']} distinct "
               f"signatures of {BIGGEST}")
 
@@ -728,25 +728,25 @@ def main(argv=None) -> int:
     rows_b = f_b["stats"]["rows"]
     orders_b = [r["order"] for r in rows_b]
     dec_b, dig_b = decisions_and_signatures(inst, orders_b)
-    pares_b = pairwise(inst, orders_b, dec_b, with_taus=True)
-    mejor_b = max(r["end_score"] for r in rows_b)
-    empatados = [r["index"] for r in rows_b if r["end_score"] == mejor_b]
+    pairs_b = pairwise(inst, orders_b, dec_b, with_taus=True)
+    best_b = max(r["end_score"] for r in rows_b)
+    tied = [r["index"] for r in rows_b if r["end_score"] == best_b]
     sets["b_all65_split0_draw0"] = summarize(
         f"split {SPLIT_B}, fraction 0.01, draw {DRAW_B}, all 65 end orders",
-        dig_b, pares_b, len(orders_b))
-    idx = set(empatados)
-    pares_emp = [p for p in pares_b if p["i"] in idx and p["j"] in idx]
+        dig_b, pairs_b, len(orders_b))
+    idx = set(tied)
+    pairs_tied = [p for p in pairs_b if p["i"] in idx and p["j"] in idx]
     sets["b_tied_split0_draw0"] = summarize(
-        f"split {SPLIT_B}, fraction 0.01, draw {DRAW_B}, the {len(empatados)} "
+        f"split {SPLIT_B}, fraction 0.01, draw {DRAW_B}, the {len(tied)} "
         f"orders tying at the best train score",
-        [dig_b[i] for i in sorted(idx)], pares_emp, len(empatados))
+        [dig_b[i] for i in sorted(idx)], pairs_tied, len(tied))
     sets["b_tied_split0_draw0"]["tied_indices"] = sorted(idx)
-    print(f"  1% cell (split {SPLIT_B}, draw {DRAW_B}): {len(empatados)} tied "
-          f"orders, {len(pares_emp)} pairs, "
+    print(f"  1% cell (split {SPLIT_B}, draw {DRAW_B}): {len(tied)} tied "
+          f"orders, {len(pairs_tied)} pairs, "
           f"{sets['b_tied_split0_draw0']['n_distinct_signatures']} distinct "
           f"signatures")
 
-    contexto = band_context(inst, band)
+    context = band_context(inst, band)
 
     # ------------------------------------------------------ the cited pairs
     cited = {}
@@ -763,45 +763,45 @@ def main(argv=None) -> int:
         cited[f"qa_split{s}"]["from_index_257"] = w257["index"]
 
     rows0 = runs[SPLITS_FULL[0]]["stats"]["rows"][:65]
-    ordenadas = sorted(rows0, key=lambda r: (-r["end_score"], r["index"]))
+    sorted_ids = sorted(rows0, key=lambda r: (-r["end_score"], r["index"]))
     cited["qc_split0"] = pair_report(
-        inst, ordenadas[0]["order"], ordenadas[1]["order"],
+        inst, sorted_ids[0]["order"], sorted_ids[1]["order"],
         "split 0, 65 starts: the best against the runner-up")
-    cited["qc_train_gap"] = ordenadas[0]["end_score"] - ordenadas[1]["end_score"]
+    cited["qc_train_gap"] = sorted_ids[0]["end_score"] - sorted_ids[1]["end_score"]
 
     # G5: where the greedy start's end order sits
     g5 = {}
     for s in SPLITS_FULL:
-        pares = pares_por_split[f"split{s}"]
-        desde_voraz = [p["disagree"] for p in slice_pairs(pares, 65)
+        pairs = pairs_by_split[f"split{s}"]
+        from_greedy = [p["disagree"] for p in slice_pairs(pairs, 65)
                        if p["i"] == 0]
-        resto = [p["disagree"] for p in slice_pairs(pares, 65)
+        resto = [p["disagree"] for p in slice_pairs(pairs, 65)
                  if p["i"] != 0]
         g5[f"split{s}"] = {
-            "greedy_end_order_vs_others": resumen(desde_voraz),
-            "all_other_pairs": resumen(resto),
+            "greedy_end_order_vs_others": summary(from_greedy),
+            "all_other_pairs": summary(resto),
             "greedy_is_an_outlier": (
-                resumen(desde_voraz)["median"] > resumen(resto)["p75"]),
+                summary(from_greedy)["median"] > summary(resto)["p75"]),
         }
 
     # G4: identical behaviour with a different order, on the real instance
     g4 = {}
-    for nombre, pares in list(pares_por_split.items()) + [("b_all65", pares_b)]:
-        iguales = [p for p in pares if p["disagree"] == 0 and p["moved"] > 0]
-        g4[nombre] = {
-            "pairs_identical_behaviour_but_moved": len(iguales),
-            "example": (max(iguales, key=lambda p: p["moved"])
-                        if iguales else None),
+    for name, pairs in list(pairs_by_split.items()) + [("b_all65", pairs_b)]:
+        equal_ones = [p for p in pairs if p["disagree"] == 0 and p["moved"] > 0]
+        g4[name] = {
+            "pairs_identical_behaviour_but_moved": len(equal_ones),
+            "example": (max(equal_ones, key=lambda p: p["moved"])
+                        if equal_ones else None),
         }
 
     per_class = {
         "pooled_split0_65": per_class_over_pairs(
-            inst, dec_por_split[SPLITS_FULL[0]],
-            slice_pairs(pares_por_split["split0"], 65)),
-        "pooled_b_tied": per_class_over_pairs(inst, dec_b, pares_emp),
+            inst, dec_by_split[SPLITS_FULL[0]],
+            slice_pairs(pairs_by_split["split0"], 65)),
+        "pooled_b_tied": per_class_over_pairs(inst, dec_b, pairs_tied),
     }
 
-    q = evaluate_predictions(inst, sets, pares_por_split, contexto, cited,
+    q = evaluate_predictions(inst, sets, pairs_by_split, context, cited,
                              per_class)
 
     print()
@@ -853,17 +853,17 @@ def main(argv=None) -> int:
         "budgets": list(BUDGETS),
         "splits": list(SPLITS_FULL),
         "fraction": FRACTION_B,
-        "prefix_shortcut": atajo,
-        "parity_full_supervision": par_a,
-        "parity_band_1pct": par_b,
+        "prefix_shortcut": shortcut,
+        "parity_full_supervision": pair_a,
+        "parity_band_1pct": pair_b,
         "sets": sets,
         "pairs_stored":
             "the full triangle is stored for the 65-order set of split 0 and "
             "for the tied set of the 1% cell; for the 257-order sets only the "
             "summaries, because 32,896 rows per split is a record nobody reads",
-        "pairs_split0_starts65": slice_pairs(pares_por_split["split0"], 65),
-        "pairs_b_tied": pares_emp,
-        "band_1pct_context": contexto,
+        "pairs_split0_starts65": slice_pairs(pairs_by_split["split0"], 65),
+        "pairs_b_tied": pairs_tied,
+        "band_1pct_context": context,
         "per_class": per_class,
         "cited_pairs": cited,
         "greedy_in_the_cloud": g5,
@@ -885,7 +885,7 @@ def main(argv=None) -> int:
             "search_full_supervision": {s: runs[s]["seconds"]
                                         for s in SPLITS_FULL},
             "search_band_1pct": round(sum(f["seconds"] for f in band), 1),
-            "shortcut_validation": atajo["seconds"],
+            "shortcut_validation": shortcut["seconds"],
             "total": round(time.time() - t_start, 1),
         },
     }

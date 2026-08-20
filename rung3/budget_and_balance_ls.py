@@ -75,7 +75,7 @@ from pathlib import Path
 from harness.ceiling_check import all_cases
 from harness.provenance import describe, environment
 from rung3.budget_and_balance import FRACTIONS, N_DRAWS, N_SPLITS
-from rung3.budget_and_balance import greedy as greedy_del_registro
+from rung3.budget_and_balance import greedy as greedy_from_record
 from rung3.budget_and_balance import per_class
 from rung3.optimizer_check_wt import class_counts
 from rung3.order_search import (build_tables, ceiling, greedy_order, load,
@@ -95,7 +95,7 @@ GROUPS = ("budget", "balanced")
 # json`, splits[0], pool puro — and the born_at figure of the FINDINGS3 erratum
 # of 2026-08-08. They are constants because a check that reads its expectation
 # out of the file it is checking is not a check.
-ESPERADO = {
+EXPECTED = {
     "voraz test": 0.7487,
     "busqueda local test": 0.8472,
     "longitud de cobertura": 559,
@@ -105,7 +105,7 @@ ESPERADO = {
 # `results3/budget_and_balance.json`, PRE-TIE-BREAK: the record this re-measures.
 # `tests/test_budget_ls.py` pins these against that file, so they cannot drift
 # from it, and the file itself is never written.
-PUBLICADO = {
+PUBLISHED_VALUE = {
     1.00: {"labels": 1005, "test_mean": 0.7707, "test_sd": 0.0374,
            "test_min": 0.7425, "test_max": 0.8430},
     0.25: {"labels": 251, "test_mean": 0.7681, "test_sd": 0.0326,
@@ -117,12 +117,12 @@ PUBLICADO = {
     0.01: {"labels": 10, "test_mean": 0.5251, "test_sd": 0.0628,
            "test_min": 0.3850, "test_max": 0.6577},
 }
-PUBLICADO_OBJETIVO = {
+PUBLISHED_OBJECTIVE = {
     "total": {"e2e_test_mean": 0.7707, "balanced_acc_mean": 0.5241},
     "balanced": {"e2e_test_mean": 0.7150, "balanced_acc_mean": 0.6936},
 }
 
-REFERENCIAS = {
+REFERENCES = {
     "born_at corpus": 0.5216, "born_at espacio": 0.3148,
     "aleatorio corpus": 0.4227,
     "ls supervision plena, pool puro (order_search_ls)": 0.8530,
@@ -229,23 +229,23 @@ def start_spread(st):
 # One configuration
 # ---------------------------------------------------------------------------
 
-def run_config(inst, espacio, frac, s, d, test_masks):
+def run_config(inst, space, frac, s, d, test_masks):
     """Greedy and multi-start over one labelled subset, on both surfaces."""
     ids, action, matched = inst["ids"], inst["action"], inst["matched"]
     rules, truth = inst["rules"], inst["truth"]
     tr, te = inst["splits"][s]
-    sM, sW, sfull, sn = espacio["masks"]
+    sM, sW, sfull, sn = space["masks"]
 
     sub = subsample(tr, frac, s, d)
     M, W, full = build_masks(ids, matched, truth, action, sub)
     tM, tW, tfull = test_masks
 
     t0 = time.time()
-    greedy = greedy_del_registro(rules, matched, truth, action, sub)
+    greedy = greedy_from_record(rules, matched, truth, action, sub)
     best, st = search(ids, greedy, M, W, full)
     dt = time.time() - t0
 
-    fila = st["rows"][st["best_from_index"]]
+    entry = st["rows"][st["best_from_index"]]
     row = {
         "fraction": frac, "split": s, "draw": d, "labels": len(sub),
         "greedy_train": round(score_order(greedy, M, W, full) / len(sub), 4),
@@ -254,7 +254,7 @@ def run_config(inst, espacio, frac, s, d, test_masks):
         "ls_train": round(st["best_score"] / len(sub), 4),
         "ls_test": round(score_order(best, tM, tW, tfull) / len(te), 4),
         "ls_space": round(score_order(best, sM, sW, sfull) / sn, 4),
-        "rounds": fila["rounds"],
+        "rounds": entry["rounds"],
         "exhausted": any(r["exhausted"] for r in st["rows"]),
         "coverage_length": coverage_length(greedy, M, full),
         "seconds": round(dt, 1),
@@ -269,16 +269,16 @@ def aggregate(rows, frac):
     """Per-fraction aggregate, in the record's shape."""
     sub = [r for r in rows if r["fraction"] == frac]
     out = {"fraction": frac, "labels": sub[0]["labels"], "n_runs": len(sub)}
-    for quien in ("greedy", "ls"):
-        te = [r[f"{quien}_test"] for r in sub]
-        out[quien] = {
+    for who_holds in ("greedy", "ls"):
+        te = [r[f"{who_holds}_test"] for r in sub]
+        out[who_holds] = {
             "test_mean": round(statistics.mean(te), 4),
             "test_sd": round(statistics.pstdev(te), 4),
             "test_min": round(min(te), 4), "test_max": round(max(te), 4),
             "train_mean": round(statistics.mean(
-                [r[f"{quien}_train"] for r in sub]), 4),
+                [r[f"{who_holds}_train"] for r in sub]), 4),
             "space_mean": round(statistics.mean(
-                [r[f"{quien}_space"] for r in sub]), 4),
+                [r[f"{who_holds}_space"] for r in sub]), 4),
         }
     out["delta_test_mean"] = round(out["ls"]["test_mean"]
                                    - out["greedy"]["test_mean"], 4)
@@ -306,7 +306,7 @@ def aggregate(rows, frac):
 BUDGETS = (64, 128, 256)
 
 
-def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
+def start_budget_check(inst, space, budgets=BUDGETS, splits=None):
     """
     A DIAGNOSTIC, NOT A TUNING, and the distinction is the whole point.
 
@@ -336,7 +336,7 @@ def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
     """
     ids, action, matched = inst["ids"], inst["action"], inst["matched"]
     rules, truth = inst["rules"], inst["truth"]
-    sM, sW, sfull, sn = espacio["masks"]
+    sM, sW, sfull, sn = space["masks"]
     splits = list(range(N_SPLITS)) if splits is None else list(splits)
 
     print()
@@ -355,7 +355,7 @@ def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
         tr, te = inst["splits"][s]
         M, W, full = build_masks(ids, matched, truth, action, tr)
         tM, tW, tfull = build_masks(ids, matched, truth, action, te)
-        greedy = greedy_del_registro(rules, matched, truth, action, tr)
+        greedy = greedy_from_record(rules, matched, truth, action, tr)
         base = declared_starts(ids, first=greedy, n=budgets[0])
         ref = None
         for n in budgets:
@@ -366,7 +366,7 @@ def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
             t0 = time.time()
             best, st = multistart(starts, M, W, full,
                                   neighbourhood=DECLARED_NEIGHBOURHOOD)
-            fila = {
+            entry = {
                 "split": s, "starts": len(starts), "random_starts": n,
                 "train_score": st["best_score"],
                 "train": round(st["best_score"] / len(tr), 4),
@@ -374,45 +374,45 @@ def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
                 "space": round(score_order(best, sM, sW, sfull) / sn, 4),
                 "seconds": round(time.time() - t0, 1),
             }
-            fila.update(start_spread(st))
+            entry.update(start_spread(st))
             if ref is None:
-                ref = fila
-            fila["train_score_delta"] = fila["train_score"] - ref["train_score"]
-            fila["train_delta"] = round(fila["train"] - ref["train"], 4)
-            fila["test_delta"] = round(fila["test"] - ref["test"], 4)
-            fila["space_delta"] = round(fila["space"] - ref["space"], 4)
-            rows.append(fila)
-            print(f"  {s:>5}{fila['starts']:>10}{fila['train']:>9.4f}"
-                  f"{fila['train_score']:>9}{fila['test']:>9.4f}"
-                  f"{fila['space']:>9.4f}{fila['n_at_best']:>13}"
-                  f"{fila['end_score_distinct']:>11}{fila['seconds']:>7.0f}")
+                ref = entry
+            entry["train_score_delta"] = entry["train_score"] - ref["train_score"]
+            entry["train_delta"] = round(entry["train"] - ref["train"], 4)
+            entry["test_delta"] = round(entry["test"] - ref["test"], 4)
+            entry["space_delta"] = round(entry["space"] - ref["space"], 4)
+            rows.append(entry)
+            print(f"  {s:>5}{entry['starts']:>10}{entry['train']:>9.4f}"
+                  f"{entry['train_score']:>9}{entry['test']:>9.4f}"
+                  f"{entry['space']:>9.4f}{entry['n_at_best']:>13}"
+                  f"{entry['end_score_distinct']:>11}{entry['seconds']:>7.0f}")
 
     # -------------------------------------------------- does it generalize?
-    mayor = max(budgets)
-    finales = [r for r in rows if r["random_starts"] == mayor]
-    mueven = [r for r in finales if r["train_score_delta"] > 0]
-    peor_test = [r for r in mueven if r["test_delta"] < 0]
-    peor_esp = [r for r in mueven if r["space_delta"] < 0]
+    greater = max(budgets)
+    final_ones = [r for r in rows if r["random_starts"] == greater]
+    moving = [r for r in final_ones if r["train_score_delta"] > 0]
+    worst_test = [r for r in moving if r["test_delta"] < 0]
+    worst_spec = [r for r in moving if r["space_delta"] < 0]
 
     print()
-    print(f"  Al pasar de {budgets[0]} a {mayor} arranques, sobre "
-          f"{len(finales)} particiones:")
-    print(f"    el mejor train mejora en          {len(mueven)}/{len(finales)}")
-    print(f"    de esas, el test EMPEORA en       {len(peor_test)}/{len(mueven) or 1}")
-    print(f"    de esas, el espacio EMPEORA en    {len(peor_esp)}/{len(mueven) or 1}")
-    if mueven:
+    print(f"  Al pasar de {budgets[0]} a {greater} arranques, sobre "
+          f"{len(final_ones)} particiones:")
+    print(f"    el mejor train mejora en          {len(moving)}/{len(final_ones)}")
+    print(f"    de esas, el test EMPEORA en       {len(worst_test)}/{len(moving) or 1}")
+    print(f"    de esas, el espacio EMPEORA en    {len(worst_spec)}/{len(moving) or 1}")
+    if moving:
         print(f"    media del delta en test           "
-              f"{statistics.mean([r['test_delta'] for r in mueven]):+.4f}")
+              f"{statistics.mean([r['test_delta'] for r in moving]):+.4f}")
         print(f"    media del delta en espacio        "
-              f"{statistics.mean([r['space_delta'] for r in mueven]):+.4f}")
+              f"{statistics.mean([r['space_delta'] for r in moving]):+.4f}")
     print()
-    if len(mueven) == 0:
+    if len(moving) == 0:
         print("  El mejor train NO se mueve en ninguna particion. Es evidencia")
         print("  de convergencia, no prueba: sin optimo conocido sobre esta")
         print("  instancia, nada descarta un arranque 258.")
-    elif len(peor_test) == len(mueven) and len(mueven) > 1:
+    elif len(worst_test) == len(moving) and len(moving) > 1:
         print("  LA INVERSION SE REPITE: donde el train mejora, el test empeora.")
-    elif len(peor_test) > 0:
+    elif len(worst_test) > 0:
         print("  LA INVERSION APARECE, pero no en todas: ver la tabla.")
     else:
         print("  El train mejora sin que el test empeore.")
@@ -422,36 +422,36 @@ def start_budget_check(inst, espacio, budgets=BUDGETS, splits=None):
     print("  la regla 6 con el signo cambiado.")
 
     return {"rows": rows, "budgets": list(budgets), "splits": splits,
-            "best_train_moves": len(mueven) > 0,
-            "n_splits_train_improves": len(mueven),
-            "n_splits_test_worsens": len(peor_test),
-            "n_splits_space_worsens": len(peor_esp),
+            "best_train_moves": len(moving) > 0,
+            "n_splits_train_improves": len(moving),
+            "n_splits_test_worsens": len(worst_test),
+            "n_splits_space_worsens": len(worst_spec),
             "mean_test_delta_where_train_improves": (
-                round(statistics.mean([r["test_delta"] for r in mueven]), 4)
-                if mueven else None),
+                round(statistics.mean([r["test_delta"] for r in moving]), 4)
+                if moving else None),
             "mean_space_delta_where_train_improves": (
-                round(statistics.mean([r["space_delta"] for r in mueven]), 4)
-                if mueven else None)}
+                round(statistics.mean([r["space_delta"] for r in moving]), 4)
+                if moving else None)}
 
 
 # ---------------------------------------------------------------------------
 # P3 — harness parity. No figures.
 # ---------------------------------------------------------------------------
 
-def checks(inst, espacio):
+def checks(inst, space):
     """Three checks against published numbers. If any fails, the instances or
     the surfaces are not the record's and nothing downstream is comparable."""
     ids, action, born = inst["ids"], inst["action"], inst["born"]
     rules, matched, truth = inst["rules"], inst["matched"], inst["truth"]
     tr0, te0 = inst["splits"][0]
-    sM, sW, sfull, sn = espacio["masks"]
+    sM, sW, sfull, sn = space["masks"]
     verdicts = {}
 
     print("=" * 78)
     print("P3 · PARIDAD DEL BANCO DE PRUEBAS  (sin cifras nuevas)")
     print("=" * 78)
 
-    a = greedy_del_registro(rules, matched, truth, action, tr0)
+    a = greedy_from_record(rules, matched, truth, action, tr0)
     b = greedy_order(rules, matched, truth, action, tr0)
     verdicts["voraz de budget_and_balance == voraz de order_search"] = (a == b)
     print(f"  1. voraz de budget_and_balance == voraz de order_search   "
@@ -461,7 +461,7 @@ def checks(inst, espacio):
     tM, tW, tfull = build_masks(ids, matched, truth, action, te0)
     t0 = time.time()
     best, st = search(ids, a, M, W, full)
-    obtenido = {
+    obtained = {
         "voraz test": round(score_order(a, tM, tW, tfull) / len(te0), 4),
         "busqueda local test": round(
             score_order(best, tM, tW, tfull) / len(te0), 4),
@@ -469,33 +469,33 @@ def checks(inst, espacio):
     }
     print(f"\n  2. particion 0, fraccion 100%, pool puro   ({time.time()-t0:.0f}s)")
     print(f"     {'magnitud':<26}{'publicado':>11}{'hoy':>11}")
-    for k, v in obtenido.items():
-        verdicts[k] = (v == ESPERADO[k])
+    for k, v in obtained.items():
+        verdicts[k] = (v == EXPECTED[k])
         fmt = "{:>11.4f}" if isinstance(v, float) else "{:>11d}"
-        print(f"     {k:<26}" + fmt.format(ESPERADO[k]) + fmt.format(v)
+        print(f"     {k:<26}" + fmt.format(EXPECTED[k]) + fmt.format(v)
               + f"{'SI' if verdicts[k] else 'NO':>7}")
 
     born_order = sorted(ids, key=lambda r: born[r])
     verdicts["sorted(ids) es born_at"] = (sorted(ids) == born_order)
     v = round(score_order(born_order, sM, sW, sfull) / sn, 4)
-    verdicts["born_at espacio"] = (v == ESPERADO["born_at espacio"])
+    verdicts["born_at espacio"] = (v == EXPECTED["born_at espacio"])
     print(f"\n  3. banco del espacio exhaustivo ({sn:,} casos)")
     print(f"     {'born_at sobre el espacio':<26}"
-          f"{ESPERADO['born_at espacio']:>11.4f}{v:>11.4f}"
+          f"{EXPECTED['born_at espacio']:>11.4f}{v:>11.4f}"
           f"{'SI' if verdicts['born_at espacio'] else 'NO':>7}")
 
-    todo = all(verdicts.values())
-    print(f"\n  P3: {'PASA' if todo else 'NO PASA'}")
-    if not todo:
+    everything = all(verdicts.values())
+    print(f"\n  P3: {'PASA' if everything else 'NO PASA'}")
+    if not everything:
         print("  Las instancias o las superficies no son las del registro.")
-    return todo, verdicts
+    return everything, verdicts
 
 
 # ---------------------------------------------------------------------------
 # §1 — the label-budget curve
 # ---------------------------------------------------------------------------
 
-def seccion_presupuesto(inst, espacio, rows, budget_rows, save):
+def budget_section(inst, space, rows, budget_rows, save):
     print()
     print("=" * 78)
     print("1. PRESUPUESTO DE ETIQUETAS  (muestreo aleatorio simple del train)")
@@ -515,11 +515,11 @@ def seccion_presupuesto(inst, espacio, rows, budget_rows, save):
     for frac in FRACTIONS:
         for s in range(N_SPLITS):
             for d in range(1 if frac == 1.0 else N_DRAWS):
-                rows.append(run_config(inst, espacio, frac, s, d,
+                rows.append(run_config(inst, space, frac, s, d,
                                        test_masks[s]))
         agg = aggregate(rows, frac)
         budget_rows.append(agg)
-        pub = PUBLICADO[round(frac, 2)]
+        pub = PUBLISHED_VALUE[round(frac, 2)]
         print(f"  {frac:>5.0%}{agg['labels']:>7}{pub['test_mean']:>11.4f}"
               f"{agg['greedy']['test_mean']:>11.4f}"
               f"{agg['ls']['test_mean']:>10.4f}{agg['ls']['test_sd']:>9.4f}"
@@ -534,17 +534,17 @@ def seccion_presupuesto(inst, espacio, rows, budget_rows, save):
 # §2 — the balanced objective
 # ---------------------------------------------------------------------------
 
-def seccion_balanceado(inst, espacio, obj_rows, per_class_split0, save):
+def balanced_section(inst, space, obj_rows, per_class_split0, save):
     ids, action, matched = inst["ids"], inst["action"], inst["matched"]
     rules, truth = inst["rules"], inst["truth"]
-    sM, sW, sfull, sn = espacio["masks"]
-    wt_esp, L_esp, n_esp = espacio["weights"]
+    sM, sW, sfull, sn = space["masks"]
+    wt_spec, L_spec, n_spec = space["weights"]
 
-    def macro_espacio(order):
+    def macro_space(order):
         """Macro-recall over the exhaustive space: the weighted score over its
         maximum. The corpus is long-tailed and the space uniform, so this is
         where a balanced objective and a total one have to diverge."""
-        return score_order(order, sM, sW, sfull, wt_esp) / (L_esp * len(n_esp))
+        return score_order(order, sM, sW, sfull, wt_spec) / (L_spec * len(n_spec))
 
     print()
     print("=" * 78)
@@ -557,27 +557,27 @@ def seccion_balanceado(inst, espacio, obj_rows, per_class_split0, save):
         tM, tW, tfull = build_masks(ids, matched, truth, action, te)
         weights, wt, _counts, _L = balanced_objective(ids, action, truth, tr)
 
-        for objetivo in ("total", "balanced"):
+        for objective in ("total", "balanced"):
             t0 = time.time()
-            w_greedy = None if objetivo == "total" else weights
-            w_search = None if objetivo == "total" else wt
-            greedy = greedy_del_registro(rules, matched, truth, action, tr,
-                                         weights=w_greedy)
+            w_greedy = None if objective == "total" else weights
+            w_search = None if objective == "total" else wt
+            greedy = greedy_from_record(rules, matched, truth, action, tr,
+                                        weights=w_greedy)
             best, st = search(ids, greedy, M, W, full, wt=w_search)
             dt = time.time() - t0
 
-            fila = {"split": s, "objective": objetivo,
-                    "labels": len(tr), "seconds": round(dt, 1)}
-            for quien, order in (("greedy", greedy), ("ls", best)):
+            entry = {"split": s, "objective": objective,
+                     "labels": len(tr), "seconds": round(dt, 1)}
+            for who_holds, order in (("greedy", greedy), ("ls", best)):
                 _t, _ok, _c, bal = per_class(order, matched, truth, action, te)
-                fila[f"{quien}_e2e_test"] = round(
+                entry[f"{who_holds}_e2e_test"] = round(
                     score_order(order, tM, tW, tfull) / len(te), 4)
-                fila[f"{quien}_balanced_acc"] = round(bal, 4)
-                fila[f"{quien}_e2e_space"] = round(
+                entry[f"{who_holds}_balanced_acc"] = round(bal, 4)
+                entry[f"{who_holds}_e2e_space"] = round(
                     score_order(order, sM, sW, sfull) / sn, 4)
-                fila[f"{quien}_macro_space"] = round(macro_espacio(order), 4)
-            fila.update({f"ls_{k}": v for k, v in start_spread(st).items()})
-            obj_rows.append(fila)
+                entry[f"{who_holds}_macro_space"] = round(macro_space(order), 4)
+            entry.update({f"ls_{k}": v for k, v in start_spread(st).items()})
+            obj_rows.append(entry)
 
             if s == 0:
                 t, ok, cc, _ = per_class(greedy, matched, truth, action, te)
@@ -585,8 +585,8 @@ def seccion_balanceado(inst, espacio, obj_rows, per_class_split0, save):
                 for c in t:
                     d = per_class_split0.setdefault(
                         c, {"test": t[c], "ceiling": cc.get(c, 0)})
-                    d[f"greedy_{objetivo}"] = ok.get(c, 0)
-                    d[f"ls_{objetivo}"] = ok2.get(c, 0)
+                    d[f"greedy_{objective}"] = ok.get(c, 0)
+                    d[f"ls_{objective}"] = ok2.get(c, 0)
         save()
         print(f"  particion {s} lista "
               f"({sum(r['seconds'] for r in obj_rows if r['split'] == s):.0f}s)")
@@ -595,45 +595,45 @@ def seccion_balanceado(inst, espacio, obj_rows, per_class_split0, save):
     print()
     print(f"  {'objetivo':<12}{'quien':<8}{'e2e test':>10}{'bal. test':>11}"
           f"{'e2e esp':>10}{'MACRO esp':>11}")
-    resumen = {}
-    for objetivo in ("total", "balanced"):
-        sub = [r for r in obj_rows if r["objective"] == objetivo]
-        resumen[objetivo] = {}
-        for quien in ("greedy", "ls"):
-            d = {k: round(statistics.mean([r[f"{quien}_{k}"] for r in sub]), 4)
+    summary = {}
+    for objective in ("total", "balanced"):
+        sub = [r for r in obj_rows if r["objective"] == objective]
+        summary[objective] = {}
+        for who_holds in ("greedy", "ls"):
+            d = {k: round(statistics.mean([r[f"{who_holds}_{k}"] for r in sub]), 4)
                  for k in ("e2e_test", "balanced_acc", "e2e_space",
                            "macro_space")}
-            resumen[objetivo][quien] = d
-            print(f"  {objetivo:<12}{quien:<8}{d['e2e_test']:>10.4f}"
+            summary[objective][who_holds] = d
+            print(f"  {objective:<12}{who_holds:<8}{d['e2e_test']:>10.4f}"
                   f"{d['balanced_acc']:>11.4f}{d['e2e_space']:>10.4f}"
                   f"{d['macro_space']:>11.4f}")
 
-    for quien in ("greedy", "ls"):
-        coste = (resumen["total"][quien]["e2e_test"]
-                 - resumen["balanced"][quien]["e2e_test"])
-        gana = (resumen["balanced"][quien]["balanced_acc"]
-                - resumen["total"][quien]["balanced_acc"])
-        gana_esp = (resumen["balanced"][quien]["macro_space"]
-                    - resumen["total"][quien]["macro_space"])
-        resumen.setdefault("balancing", {})[quien] = {
-            "cost_e2e_test": round(coste, 4),
-            "gain_balanced_acc_test": round(gana, 4),
-            "gain_macro_space": round(gana_esp, 4),
+    for who_holds in ("greedy", "ls"):
+        cost = (summary["total"][who_holds]["e2e_test"]
+                - summary["balanced"][who_holds]["e2e_test"])
+        wins = (summary["balanced"][who_holds]["balanced_acc"]
+                - summary["total"][who_holds]["balanced_acc"])
+        wins_spec = (summary["balanced"][who_holds]["macro_space"]
+                     - summary["total"][who_holds]["macro_space"])
+        summary.setdefault("balancing", {})[who_holds] = {
+            "cost_e2e_test": round(cost, 4),
+            "gain_balanced_acc_test": round(wins, 4),
+            "gain_macro_space": round(wins_spec, 4),
         }
-        print(f"\n  {quien}: balancear cuesta {coste:+.4f} en e2e test, "
-              f"gana {gana:+.4f} en acierto balanceado")
-        print(f"  {' ' * len(quien)}  y {gana_esp:+.4f} en macro-recall sobre "
+        print(f"\n  {who_holds}: balancear cuesta {cost:+.4f} en e2e test, "
+              f"gana {wins:+.4f} en acierto balanceado")
+        print(f"  {' ' * len(who_holds)}  y {wins_spec:+.4f} en macro-recall sobre "
               f"el espacio exhaustivo")
     print(f"\n  el registro publica: coste -0.0557 · ganancia +0.1695 (voraz)")
-    return resumen
+    return summary
 
 
 # ---------------------------------------------------------------------------
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
-    solo_arranques = "--start-budget" in argv
+    only_checks = "--checks" in argv
+    only_starts = "--start-budget" in argv
     groups = list(GROUPS)
     if "--sections" in argv:
         groups = [g.strip() for g in argv[argv.index("--sections") + 1].split(",")]
@@ -659,22 +659,22 @@ def main(argv=None) -> int:
     t0 = time.time()
     spools = space_pools(inst["ids"], inst["conds"], inst["action"],
                          inst["below"])
-    espacio = {"masks": spools[POOL],
-               "weights": weights_from_counts(inst["ids"], inst["action"],
-                                              class_counts(all_cases()))}
+    space = {"masks": spools[POOL],
+             "weights": weights_from_counts(inst["ids"], inst["action"],
+                                            class_counts(all_cases()))}
     print(f"  mascaras y pesos del espacio en {time.time()-t0:.1f}s")
     print()
 
-    ok, verdicts = checks(inst, espacio)
+    ok, verdicts = checks(inst, space)
     if not ok:
         print("\n  Se para: P3 es bloqueante.")
         return 1
-    if solo_checks:
+    if only_checks:
         print(f"\n  coste total: {time.time() - t_start:.0f}s")
         return 0
 
-    if solo_arranques:
-        d = start_budget_check(inst, espacio)
+    if only_starts:
+        d = start_budget_check(inst, space)
         OUT.mkdir(exist_ok=True)
         (OUT / "start_budget_check.json").write_text(json.dumps({
             "_env": environment(neighbourhood=DECLARED_NEIGHBOURHOOD,
@@ -690,7 +690,7 @@ def main(argv=None) -> int:
                     "here.",
             "surfaces": ["corpus test", "espacio exhaustivo"],
             "pool": POOL, "fraction": 1.0,
-            "n_rules": len(inst["ids"]), "n_space": espacio["masks"][3],
+            "n_rules": len(inst["ids"]), "n_space": space["masks"][3],
             **d,
             "seconds_total": round(time.time() - t_start, 1),
         }, indent=2))
@@ -699,7 +699,7 @@ def main(argv=None) -> int:
         return 0
 
     rows, budget_rows, obj_rows = [], [], []
-    per_class_split0, resumen = {}, {}
+    per_class_split0, summary = {}, {}
 
     def save():
         OUT.mkdir(exist_ok=True)
@@ -717,13 +717,13 @@ def main(argv=None) -> int:
             "train_is": "el subconjunto etiquetado, que es lo que ve el objetivo",
             "groups_run": groups_done, "groups_requested": groups,
             "n_rules": len(inst["ids"]), "n_cases": len(inst["corpus"]),
-            "n_space": espacio["masks"][3],
-            "references": dict(REFERENCIAS,
-                               **{"publicado pre-desempate": PUBLICADO,
-                                  "publicado objetivos": PUBLICADO_OBJETIVO}),
+            "n_space": space["masks"][3],
+            "references": dict(REFERENCES,
+                               **{"publicado pre-desempate": PUBLISHED_VALUE,
+                                  "publicado objetivos": PUBLISHED_OBJECTIVE}),
             "label_budget": budget_rows,
             "label_budget_runs": rows,
-            "objective_comparison": resumen,
+            "objective_comparison": summary,
             "objective_runs": obj_rows,
             "per_class_split0": per_class_split0,
             "checks": checks_out,
@@ -735,38 +735,38 @@ def main(argv=None) -> int:
     checks_out = {"P3": verdicts}
 
     if "budget" in groups:
-        seccion_presupuesto(inst, espacio, rows, budget_rows, save)
+        budget_section(inst, space, rows, budget_rows, save)
         groups_done.append("budget")
         save()
 
     if "balanced" in groups:
-        resumen.update(seccion_balanceado(inst, espacio, obj_rows,
-                                          per_class_split0, save))
+        summary.update(balanced_section(inst, space, obj_rows,
+                                        per_class_split0, save))
         groups_done.append("balanced")
         save()
 
     # ------------------------------------------------- P5 identity and P-a
     if "budget" in groups and "balanced" in groups:
-        iguales = []
+        equal_ones = []
         for r in obj_rows:
             if r["objective"] != "total":
                 continue
             m = next((x for x in rows if x["fraction"] == 1.0
                       and x["split"] == r["split"] and x["draw"] == 0), None)
-            iguales.append(m is not None
-                           and m["greedy_test"] == r["greedy_e2e_test"]
-                           and m["ls_test"] == r["ls_e2e_test"])
-        checks_out["P5 identidad total == fraccion 1.0"] = all(iguales)
+            equal_ones.append(m is not None
+                              and m["greedy_test"] == r["greedy_e2e_test"]
+                              and m["ls_test"] == r["ls_e2e_test"])
+        checks_out["P5 identidad total == fraccion 1.0"] = all(equal_ones)
         print(f"\n  identidad §2 total == §1 fraccion 100%: "
-              f"{'SI' if all(iguales) else 'NO'}")
+              f"{'SI' if all(equal_ones) else 'NO'}")
 
     if budget_rows:
-        fila = budget_rows[0]
+        entry = budget_rows[0]
         checks_out["P-a gate"] = {
-            "esperado": REFERENCIAS[
+            "esperado": REFERENCES[
                 "ls supervision plena, pool puro (order_search_ls)"],
-            "obtenido": fila["ls"]["test_mean"],
-            "coincide": abs(fila["ls"]["test_mean"] - 0.8530) <= 0.0001,
+            "obtenido": entry["ls"]["test_mean"],
+            "coincide": abs(entry["ls"]["test_mean"] - 0.8530) <= 0.0001,
         }
     save()
 

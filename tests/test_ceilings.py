@@ -59,7 +59,7 @@ def medir(engine_decide) -> dict:
             "silent": (1 - ok / out["ACTION"]) if out["ACTION"] else 0.0}
 
 
-class TestTechoPorEspecificidad(unittest.TestCase):
+class TestCeilingBySpecificity(unittest.TestCase):
     """STOP 0 of CLAUDE.md: while this is not ~100%, every LLM run is voided in
     advance. It still is not, and that is the recorded figure."""
 
@@ -69,31 +69,31 @@ class TestTechoPorEspecificidad(unittest.TestCase):
         engine.rules = build_rules()
         cls.m = measure(list(corpus()), engine.decide, "especificidad")
 
-    def test_reparto_de_resultados(self):
+    def test_outcome_split(self):
         self.assertEqual(self.m["action"], SPEC_ACTION)
         self.assertEqual(self.m["impasse"], SPEC_IMPASSE)
         self.assertEqual(self.m["conflict"], SPEC_CONFLICT)
 
-    def test_cobertura(self):
+    def test_coverage(self):
         self.assertAlmostEqual(self.m["coverage"], SPEC_COVERAGE, places=4)
 
-    def test_error_silencioso(self):
+    def test_silent_error(self):
         self.assertAlmostEqual(self.m["silent_error_rate"], SPEC_SILENT, places=4)
         self.assertEqual(self.m["silent_errors_abs"], SPEC_SILENT_ABS)
 
-    def test_exactitud_extremo_a_extremo(self):
+    def test_end_to_end_accuracy(self):
         self.assertAlmostEqual(self.m["accuracy_end_to_end"], SPEC_E2E, places=4)
 
-    def test_el_25_por_ciento_de_conflictos(self):
+    def test_the_25_percent_of_conflicts(self):
         self.assertAlmostEqual(SPEC_CONFLICT / len(corpus()), 0.2525, places=4)
 
-    def test_no_alcanza_la_PARADA_0(self):
+    def test_does_not_reach_STOP_0(self):
         """Documents the state, does not approve it: if one day this fails
         because the ceiling rose to ~100%, all of CLAUDE.md must be revisited."""
         self.assertLess(self.m["accuracy_end_to_end"], 0.995)
 
 
-class TestTechoPorPrioridad(unittest.TestCase):
+class TestCeilingByPriority(unittest.TestCase):
     """With the rules in HIDDEN_RULES order, the oldest winning IS the
     first-match-wins semantics of the policy. It must give exactly 100%."""
 
@@ -103,14 +103,14 @@ class TestTechoPorPrioridad(unittest.TestCase):
         cls.m = measure(list(corpus()),
                         lambda c: decide_by_priority(rules, c), "prioridad")
 
-    def test_cubre_todo_y_acierta_todo(self):
+    def test_covers_everything_and_gets_everything_right(self):
         self.assertEqual(self.m["action"], len(corpus()))
         self.assertEqual(self.m["impasse"], 0)
         self.assertEqual(self.m["conflict"], 0)
         self.assertEqual(self.m["accuracy_end_to_end"], 1.0)
         self.assertEqual(self.m["silent_error_rate"], 0.0)
 
-    def test_el_orden_inverso_no_lo_consigue(self):
+    def test_the_reverse_order_does_not_manage_it(self):
         """The order matters and is not a detail: reversing it destroys the
         policy (12.8% in FINDINGS.md). Here it is enough that it is not 1.0."""
         rules = build_rules()
@@ -120,27 +120,27 @@ class TestTechoPorPrioridad(unittest.TestCase):
         self.assertLess(m["accuracy_end_to_end"], 0.5)
 
 
-class TestSubsuncionSola(unittest.TestCase):
+class TestSubsumptionAlone(unittest.TestCase):
     """Level 1 of the rung 2 engine, with no declared edge at all."""
 
     @classmethod
     def setUpClass(cls):
         cls.m = medir(subsumption_only_engine().decide)
 
-    def test_reparto_y_exactitud(self):
+    def test_split_and_accuracy(self):
         self.assertEqual(self.m["out"]["ACTION"], SUB_ACTION)
         self.assertEqual(self.m["out"]["CONFLICT"], SUB_CONFLICT)
         self.assertEqual(self.m["out"]["IMPASSE"], 0)
         self.assertAlmostEqual(self.m["e2e"], SUB_E2E, places=4)
 
-    def test_error_silencioso_cero(self):
+    def test_silent_error_zero(self):
         """The property that justifies level 1: when it does not know, it
         abstains. Abstaining is correct; inventing is what produces silent
         error."""
         self.assertEqual(self.m["silent"], 0.0)
 
 
-class TestTechoHibrido(unittest.TestCase):
+class TestHybridCeiling(unittest.TestCase):
     """STEP 0 of rung 2. This one does pass: 100% with the policy loaded."""
 
     @classmethod
@@ -148,33 +148,33 @@ class TestTechoHibrido(unittest.TestCase):
         cls.engine, cls.declared, cls.stats = build_hidden_engine(space())
         cls.m = medir(cls.engine.decide)
 
-    def test_ejecuta_la_politica_al_cien_por_cien(self):
+    def test_executes_the_policy_at_a_hundred_percent(self):
         self.assertEqual(self.m["e2e"], 1.0)
         self.assertEqual(self.m["silent"], 0.0)
         self.assertEqual(self.m["out"]["CONFLICT"], 0)
         self.assertEqual(self.m["out"]["IMPASSE"], 0)
 
-    def test_aristas_declaradas(self):
+    def test_declared_edges(self):
         self.assertEqual(self.stats["declared"], HYB_DECLARED_EDGES)
         self.assertEqual(len(self.declared), HYB_DECLARED_EDGES)
 
-    def test_ninguna_arista_minima_es_rechazada(self):
+    def test_no_minimal_edge_is_rejected(self):
         """The edges are derived from the true layer order, so the validator
         should not knock any down. If it knocked one down, the assumption that
         subsumption is sound over this policy would be false."""
         self.assertEqual(self.stats["rejected"], [])
 
-    def test_la_estructura_ordena_61_pares_por_si_sola(self):
-        pares = sum(len(s) for s in self.engine.sub_below.values())
-        self.assertEqual(pares, HYB_SUBSUMPTION_PAIRS)
+    def test_the_structure_orders_61_pairs_on_its_own(self):
+        pairs = sum(len(s) for s in self.engine.sub_below.values())
+        self.assertEqual(pairs, HYB_SUBSUMPTION_PAIRS)
 
-    def test_no_se_declara_el_orden_total(self):
+    def test_the_total_order_is_not_declared(self):
         """Declaring all 406 pairs would be cheating: it would measure whether a
         total order works, whose answer is already known."""
         self.assertEqual(HYB_POSSIBLE_PAIRS, 406)
         self.assertLess(self.stats["declared"], HYB_POSSIBLE_PAIRS)
 
-    def test_el_reparto_de_pares_cuadra(self):
+    def test_the_pair_split_adds_up(self):
         s = self.stats
         total = (s["declared"] + s["skipped_disjoint"]
                  + s["skipped_subsumed_by_structure"] + s["skipped_same_action"]
@@ -182,17 +182,17 @@ class TestTechoHibrido(unittest.TestCase):
         self.assertEqual(total, HYB_POSSIBLE_PAIRS)
 
 
-class TestTablaDeReferenciaDelRung2(unittest.TestCase):
+class TestRung2ReferenceTable(unittest.TestCase):
     """`ceiling_check2.REF` prints the rung 1 figures as a reference. They are
     written by hand; this test checks that they are still true."""
 
-    def test_referencia_de_especificidad(self):
+    def test_specificity_reference(self):
         e2e, silent, conflict = REF["especificidad (rung 1)"]
         self.assertAlmostEqual(e2e, SPEC_E2E, places=4)
         self.assertAlmostEqual(silent, SPEC_SILENT, places=4)
         self.assertEqual(conflict, SPEC_CONFLICT)
 
-    def test_referencia_de_subsuncion(self):
+    def test_subsumption_reference(self):
         e2e, silent, conflict = REF["subsuncion sola (rung 1)"]
         self.assertAlmostEqual(e2e, SUB_E2E, places=4)
         self.assertEqual(silent, 0.0)

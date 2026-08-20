@@ -327,10 +327,10 @@ rung2/note_audit.py         attributes used and notes arguing disjointness
 
 results2/ceiling2.json         Step 0 ceiling
 results2/llm_run2_n100*.json   the eight runs, each with its full prompt
-results2/comparativa.json      comparison table
+results2/comparison.json       comparison table
 results2/note_audit.json       audit of notes and attributes
-results2/CAMBIOS.md            record of the v1 -> v2 change
-results2/NOTA_REGISTRO.md      why the mtime of results/subsumption.json changed
+results2/CHANGELOG.md          record of the v1 -> v2 change
+results2/RECORD_NOTES.md       why the mtime of results/subsumption.json changed
 ```
 
 The full texts of both prompts are inside each `llm_run2_*.json`, in the

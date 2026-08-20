@@ -60,36 +60,36 @@ cd "$(git rev-parse --show-toplevel)"
 # off the person without moving the ability to stop anything.
 
 if git rev-parse -q --verify HEAD >/dev/null 2>&1; then
-    contra=HEAD
+    against=HEAD
 else
-    contra=$(git hash-object -t tree /dev/null)   # first commit: empty tree
+    against=$(git hash-object -t tree /dev/null)   # first commit: empty tree
 fi
 
-planes=""
-otros=""
-estadificado=$(git diff --cached --name-only "$contra")
+plans=""
+others=""
+staged=$(git diff --cached --name-only "$against")
 
-while IFS= read -r fichero; do
-    [ -n "$fichero" ] || continue
-    case "$fichero" in
-        */*)                     otros="$otros $fichero"  ;;
-        PREDICTION.md|PLAN_*.md) planes="$planes $fichero" ;;
-        *)                       otros="$otros $fichero"  ;;
+while IFS= read -r file; do
+    [ -n "$file" ] || continue
+    case "$file" in
+        */*)                     others="$others $file" ;;
+        PREDICTION.md|PLAN_*.md) plans="$plans $file"   ;;
+        *)                       others="$others $file" ;;
     esac
-done <<FIN
-$estadificado
-FIN
+done <<END
+$staged
+END
 
-if [ -n "$planes" ] && [ -n "$otros" ]; then
+if [ -n "$plans" ] && [ -n "$others" ]; then
     echo "pre-commit: este commit mezcla un plan firmado con otros ficheros." >&2
-    echo "            plan: $planes" >&2
-    echo "            resto:$otros" >&2
+    echo "            plan: $plans" >&2
+    echo "            resto:$others" >&2
     echo "" >&2
     echo "            Confirmalos por separado. El plan va en su propio commit," >&2
     echo "            con su propio mensaje, para que la firma se encuentre en" >&2
     echo "            el log en vez de quedar archivada bajo otra cosa." >&2
     echo "" >&2
-    echo "            git reset$planes    # y confirma el resto primero" >&2
+    echo "            git reset$plans    # y confirma el resto primero" >&2
     exit 1
 fi
 

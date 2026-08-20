@@ -78,7 +78,7 @@ from collections import Counter
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from rung3.order_metrics_run import resumen, spearman
+from rung3.order_metrics_run import summary, spearman
 
 OUT = Path("results3")
 RECORD = "rank_transfer.json"
@@ -107,14 +107,14 @@ REWEIGHTING_MODEL = 0.116685
 def load():
     """The three matrices and the three summaries they must reproduce. Read
     only: neither record is opened for writing anywhere in this module."""
-    esp = json.loads((OUT / SPACE_RECORD).read_text())
+    spec = json.loads((OUT / SPACE_RECORD).read_text())
     cor = json.loads((OUT / CORPUS_RECORD).read_text())
     return {
         "space": {
-            "rows": esp[f"pairs_{SET}"],
-            "published": esp["sets"][SET]["disagreement_rate"],
+            "rows": spec[f"pairs_{SET}"],
+            "published": spec["sets"][SET]["disagreement_rate"],
             "from": f"{SPACE_RECORD}::pairs_{SET}",
-            "n_surface": esp["n_space"],
+            "n_surface": spec["n_space"],
         },
         "corpus_full": {
             "rows": cor[f"pairs_{SET}_corpus_full"],
@@ -142,26 +142,26 @@ def keyed(rows):
 
 def gate(mats):
     """Blocking. Returns the report and whether it passes."""
-    claves, filas = {}, {}
+    keys, key_sets = {}, {}
     for s in SURFACES:
         rows = mats[s]["rows"]
         k = [(r["i"], r["j"]) for r in rows]
         idx = {x for p in k for x in p}
-        claves[s] = set(k)
-        filas[s] = {
+        keys[s] = set(k)
+        key_sets[s] = {
             "source": mats[s]["from"],
             "rows": len(rows),
-            "distinct_keys": len(claves[s]),
-            "duplicates": len(k) - len(claves[s]),
+            "distinct_keys": len(keys[s]),
+            "duplicates": len(k) - len(keys[s]),
             "index_min": min(idx), "index_max": max(idx),
             "i_lt_j_always": all(a < b for a, b in k),
-            "n_is_65_choose_2": len(claves[s]) == N_PAIRS,
+            "n_is_65_choose_2": len(keys[s]) == N_PAIRS,
         }
-    identicas = claves["space"] == claves["corpus_full"] == claves["corpus_test"]
+    identical = keys["space"] == keys["corpus_full"] == keys["corpus_test"]
 
     resumenes = {}
     for s in SURFACES:
-        mio = resumen([round(r["rate"], 6) for r in mats[s]["rows"]])
+        mio = summary([round(r["rate"], 6) for r in mats[s]["rows"]])
         pub = mats[s]["published"]
         resumenes[s] = {
             "recomputed": mio, "published": pub, "reproduces": mio == pub,
@@ -169,17 +169,17 @@ def gate(mats):
                            if mio.get(f) != pub.get(f)],
         }
 
-    pasa = (identicas
-            and all(f["duplicates"] == 0 and f["i_lt_j_always"]
-                    and f["n_is_65_choose_2"] and f["index_min"] == 0
-                    and f["index_max"] == N_ORDERS - 1 for f in filas.values())
-            and all(r["reproduces"] for r in resumenes.values()))
+    passes = (identical
+              and all(f["duplicates"] == 0 and f["i_lt_j_always"]
+                      and f["n_is_65_choose_2"] and f["index_min"] == 0
+                      and f["index_max"] == N_ORDERS - 1 for f in key_sets.values())
+              and all(r["reproduces"] for r in resumenes.values()))
     return {
         "what": "this question's parity gate: the three matrices are the same "
                 "2,080 pairs, and each reproduces the summary its own record "
                 "publishes for the set",
-        "key_sets": filas,
-        "key_sets_identical": identicas,
+        "key_sets": key_sets,
+        "key_sets_identical": identical,
         "summaries": resumenes,
         "first_verified": "2026-08-15, before the prediction was committed. It "
                           "reproduces already-published summaries and computes "
@@ -187,7 +187,7 @@ def gate(mats):
                           "carry information about an answer; this record "
                           "carries the result of the run that produced the "
                           "figures below.",
-        "passes": pasa,
+        "passes": passes,
     }
 
 
@@ -195,13 +195,13 @@ def gate(mats):
 # Ties, which is what a rank statistic can be capped by
 # ---------------------------------------------------------------------------
 
-def tie_profile(valores):
+def tie_profile(values):
     """How much of the ordering is decided by nothing: distinct values, the
     largest group sharing one, and the mean group size."""
-    c = Counter(valores)
-    return {"n": len(valores), "distinct_values": len(c),
+    c = Counter(values)
+    return {"n": len(values), "distinct_values": len(c),
             "largest_tie_group": max(c.values()),
-            "mean_group_size": round(len(valores) / len(c), 4),
+            "mean_group_size": round(len(values) / len(c), 4),
             "values_appearing_once": sum(1 for v in c.values() if v == 1)}
 
 
@@ -225,12 +225,12 @@ def tie_ceiling(a, b):
     is already three orders of magnitude away from anything that could move a
     verdict.
     """
-    techo = spearman(sorted(a), sorted(b))
-    if techo is None:
+    ceiling = spearman(sorted(a), sorted(b))
+    if ceiling is None:
         return {"max_attainable_spearman": None}
     return {
-        "max_attainable_spearman": techo,
-        "attenuation_upper_bound": round(1 - techo + 5e-5, 8),
+        "max_attainable_spearman": ceiling,
+        "attenuation_upper_bound": round(1 - ceiling + 5e-5, 8),
         "resolution_note": "spearman rounds to 4 dp; 1.0 means >= 0.99995, so "
                            "the bound carries that half-ulp rather than "
                            "claiming an exact zero",
@@ -250,21 +250,21 @@ def closest(rates, k):
     measurement. `core` is the unambiguous part — everything strictly below the
     boundary — and `boundary_*` says how wide the arbitrary band is.
     """
-    orden = sorted(rates, key=lambda kk: (rates[kk], kk))
-    dentro = orden[:k]
-    frontera = rates[dentro[-1]]
-    en_frontera = [kk for kk in rates if rates[kk] == frontera]
-    nucleo = {kk for kk in rates if rates[kk] < frontera}
+    order = sorted(rates, key=lambda kk: (rates[kk], kk))
+    inside = order[:k]
+    frontier = rates[inside[-1]]
+    on_frontier = [kk for kk in rates if rates[kk] == frontier]
+    core = {kk for kk in rates if rates[kk] < frontier}
     return {
-        "set": set(dentro),
-        "core": nucleo,
-        "boundary_rate": frontera,
-        "boundary_ties_total": len(en_frontera),
-        "boundary_ties_inside": sum(1 for kk in dentro
-                                    if rates[kk] == frontera),
-        "core_size": len(nucleo),
-        "decided_by_tie_break": len(en_frontera) - sum(
-            1 for kk in dentro if rates[kk] == frontera) > 0,
+        "set": set(inside),
+        "core": core,
+        "boundary_rate": frontier,
+        "boundary_ties_total": len(on_frontier),
+        "boundary_ties_inside": sum(1 for kk in inside
+                                    if rates[kk] == frontier),
+        "core_size": len(core),
+        "decided_by_tie_break": len(on_frontier) - sum(
+            1 for kk in inside if rates[kk] == frontier) > 0,
     }
 
 
@@ -272,7 +272,7 @@ def closest(rates, k):
 # R-d, and the draw-noise arithmetic the entry reasons from
 # ---------------------------------------------------------------------------
 
-def veredicto_b_pura(x):
+def verdict_b_pure(x):
     """R-b's rule, as written, kept in one place so the verdict and the
     tie-break sensitivity around it cannot come from two readings of it."""
     if x < 0.20 or x > 0.80:
@@ -280,32 +280,32 @@ def veredicto_b_pura(x):
     return "HOLDS" if 0.35 <= x <= 0.70 else "NEITHER"
 
 
-def rank_of(clave, rates):
+def rank_of(key, rates):
     """1-based position under the declared order, plus the tie-robust reading:
     how many pairs are strictly below it."""
-    orden = sorted(rates, key=lambda kk: (rates[kk], kk))
-    return {"rank": orden.index(clave) + 1,
+    order = sorted(rates, key=lambda kk: (rates[kk], kk))
+    return {"rank": order.index(key) + 1,
             "n_strictly_below": sum(1 for v in rates.values()
-                                    if v < rates[clave]),
+                                    if v < rates[key]),
             "n_sharing_its_rate": sum(1 for v in rates.values()
-                                      if v == rates[clave])}
+                                      if v == rates[key])}
 
 
-def extremes(keys, rates, otra, nombre_otra):
+def extremes(keys, rates, another, other_name):
     """Every pair attaining the minimum here, and where each ranks there."""
-    minimo = min(rates[k] for k in keys)
-    fuera = []
+    minimum = min(rates[k] for k in keys)
+    outside = []
     for k in sorted(keys, key=lambda kk: (rates[kk], kk)):
-        if rates[k] != minimo:
+        if rates[k] != minimum:
             break
-        fuera.append({
+        outside.append({
             "pair": list(k), "rate_here": rates[k],
-            f"rate_on_{nombre_otra}": otra[k],
+            f"rate_on_{other_name}": another[k],
             "rank_here": rank_of(k, rates),
-            f"rank_on_{nombre_otra}": rank_of(k, otra),
+            f"rank_on_{other_name}": rank_of(k, another),
         })
-    return {"minimum_rate": minimo, "n_pairs_attaining": len(fuera),
-            "pairs": fuera}
+    return {"minimum_rate": minimum, "n_pairs_attaining": len(outside),
+            "pairs": outside}
 
 
 def draw_noise(p, n):
@@ -367,10 +367,10 @@ def main(argv=None) -> int:
               f"dups {f['duplicates']}  idx {f['index_min']}..{f['index_max']}  "
               f"summary {'reproduces' if r['reproduces'] else 'DOES NOT'}")
         if not r["reproduces"]:
-            for campo in r["differs_in"]:
-                print(f"      {campo}: recomputed "
-                      f"{r['recomputed'].get(campo)} vs published "
-                      f"{r['published'].get(campo)}")
+            for field in r["differs_in"]:
+                print(f"      {field}: recomputed "
+                      f"{r['recomputed'].get(field)} vs published "
+                      f"{r['published'].get(field)}")
     print(f"  key sets identical across the three: {g['key_sets_identical']}")
     if not g["passes"]:
         print("\n  STOP: the join is not over the rows it claims to be over. "
@@ -379,9 +379,9 @@ def main(argv=None) -> int:
     print("\n  GATE: PASSES.")
 
     # --------------------------------------------------------------- the join
-    tasas = {s: keyed(mats[s]["rows"]) for s in SURFACES}
-    claves = sorted(tasas["space"])
-    listas = {s: [tasas[s][k] for k in claves] for s in SURFACES}
+    rates = {s: keyed(mats[s]["rows"]) for s in SURFACES}
+    keys = sorted(rates["space"])
+    listas = {s: [rates[s][k] for k in keys] for s in SURFACES}
     if any(v <= 0 for s in SURFACES for v in listas[s]):
         print("\n  STOP: a rate is zero or negative, and R-c divides by the "
               "space rate. The entry declares none is; that would be the "
@@ -391,11 +391,11 @@ def main(argv=None) -> int:
     # ---------------------------------------------------------------- R-a
     rho = {s: spearman(listas[s], listas["space"])
            for s in ("corpus_full", "corpus_test")}
-    perfiles = {s: tie_profile(listas[s]) for s in SURFACES}
+    profiles = {s: tie_profile(listas[s]) for s in SURFACES}
     techos = {s: tie_ceiling(listas[s], listas["space"])
               for s in ("corpus_full", "corpus_test")}
 
-    def veredicto_a(x):
+    def verdict_a(x):
         if x < 0.55 or x > 0.97:
             return "REFUTED"
         return "HOLDS" if 0.70 <= x <= 0.93 else "NEITHER"
@@ -407,55 +407,55 @@ def main(argv=None) -> int:
         "adjudicates_on": ADJUDICATES,
         "band": [0.70, 0.93], "refuted_outside": [0.55, 0.97],
         "spearman": rho,
-        "verdict_by_surface": {s: veredicto_a(rho[s]) for s in rho},
-        "verdict": veredicto_a(rho[ADJUDICATES]),
+        "verdict_by_surface": {s: verdict_a(rho[s]) for s in rho},
+        "verdict": verdict_a(rho[ADJUDICATES]),
         "tie_diagnostics": {
             "note": "reported beside rho and adjudicating nothing. The entry "
                     "declares the drafter checked the tie load and concluded it "
                     "does not cap the band; this is that claim made checkable.",
-            "profiles": perfiles,
+            "profiles": profiles,
             "ceilings": techos,
         },
     }
 
     # ---------------------------------------------------------------- R-b
-    cercanos = {s: closest(tasas[s], DECILE) for s in SURFACES}
-    solape = {}
+    nearby = {s: closest(rates[s], DECILE) for s in SURFACES}
+    overlap = {}
     for s in ("corpus_full", "corpus_test"):
-        comun = cercanos["space"]["set"] & cercanos[s]["set"]
-        nucleo = cercanos["space"]["core"] & cercanos[s]["core"]
+        shared = nearby["space"]["set"] & nearby[s]["set"]
+        core = nearby["space"]["core"] & nearby[s]["core"]
         # How much of the answer the tie-break decides. The space side's
         # boundary is unambiguous, so only the corpus side can vary: its core is
         # forced, and the remaining slots are filled from the pairs sharing the
         # boundary rate. Best and worst case over every way of filling them.
-        frontera = {k for k, v in tasas[s].items()
-                    if v == cercanos[s]["boundary_rate"]}
-        huecos = DECILE - cercanos[s]["core_size"]
-        en_ambos = len(cercanos["space"]["set"] & frontera)
-        solape[s] = {
-            "overlap": len(comun),
-            "fraction": round(len(comun) / DECILE, 6),
-            "core_overlap": len(nucleo),
-            "core_sizes": [cercanos["space"]["core_size"],
-                           cercanos[s]["core_size"]],
+        frontier = {k for k, v in rates[s].items()
+                    if v == nearby[s]["boundary_rate"]}
+        gaps = DECILE - nearby[s]["core_size"]
+        in_both = len(nearby["space"]["set"] & frontier)
+        overlap[s] = {
+            "overlap": len(shared),
+            "fraction": round(len(shared) / DECILE, 6),
+            "core_overlap": len(core),
+            "core_sizes": [nearby["space"]["core_size"],
+                           nearby[s]["core_size"]],
             "tie_break_sensitivity": {
-                "slots_filled_from_the_boundary": huecos,
-                "boundary_pairs_also_in_the_space_208": en_ambos,
-                "overlap_min": len(nucleo) + max(
-                    0, huecos - (len(frontera) - en_ambos)),
-                "overlap_max": len(nucleo) + min(huecos, en_ambos),
+                "slots_filled_from_the_boundary": gaps,
+                "boundary_pairs_also_in_the_space_208": in_both,
+                "overlap_min": len(core) + max(
+                    0, gaps - (len(frontier) - in_both)),
+                "overlap_max": len(core) + min(gaps, in_both),
                 "space_boundary_is_unambiguous":
-                    cercanos["space"]["boundary_ties_total"] == 1,
+                    nearby["space"]["boundary_ties_total"] == 1,
             },
         }
-        sens = solape[s]["tie_break_sensitivity"]
+        sens = overlap[s]["tie_break_sensitivity"]
         sens["fraction_min"] = round(sens["overlap_min"] / DECILE, 6)
         sens["fraction_max"] = round(sens["overlap_max"] / DECILE, 6)
         sens["verdict_is_robust_to_the_tie_break"] = (
-            veredicto_b_pura(sens["fraction_min"])
-            == veredicto_b_pura(sens["fraction_max"]))
+            verdict_b_pure(sens["fraction_min"])
+            == verdict_b_pure(sens["fraction_max"]))
 
-    veredicto_b = veredicto_b_pura
+    verdict_b = verdict_b_pure
 
     r_b = {
         "claim": "of the 208 pairs closest on the space, between 35% and 70% "
@@ -463,28 +463,28 @@ def main(argv=None) -> int:
                  "or above 80%.",
         "adjudicates_on": ADJUDICATES,
         "k": DECILE, "band": [0.35, 0.70], "refuted_outside": [0.20, 0.80],
-        "overlap": solape,
-        "boundary": {s: {k: v for k, v in cercanos[s].items()
+        "overlap": overlap,
+        "boundary": {s: {k: v for k, v in nearby[s].items()
                          if k not in ("set", "core")} for s in SURFACES},
         "tie_break": "lowest rate first, ties by (i, j) ascending, as declared "
                      "before the numbers existed",
-        "verdict_by_surface": {s: veredicto_b(solape[s]["fraction"])
-                               for s in solape},
-        "verdict": veredicto_b(solape[ADJUDICATES]["fraction"]),
+        "verdict_by_surface": {s: verdict_b(overlap[s]["fraction"])
+                               for s in overlap},
+        "verdict": verdict_b(overlap[ADJUDICATES]["fraction"]),
     }
 
     # ---------------------------------------------------------------- R-c
-    razones = {}
+    reasons = {}
     for s in ("corpus_full", "corpus_test"):
-        r = [tasas[s][k] / tasas["space"][k] for k in claves]
-        res = resumen(r)
-        razones[s] = {
+        r = [rates[s][k] / rates["space"][k] for k in keys]
+        res = summary(r)
+        reasons[s] = {
             "resumen": res,
             "p75_over_p25": round(res["p75"] / res["p25"], 6),
             "max_over_min": round(res["max"] / res["min"], 6),
         }
 
-    def veredicto_c(x):
+    def verdict_c(x):
         if x < 1.15:
             return "REFUTED"
         return "HOLDS" if x > 1.30 else "NEITHER"
@@ -497,14 +497,14 @@ def main(argv=None) -> int:
         "note": "the ratio is per pair, and p75 and p25 come from resumen() "
                 "over the list of ratios — not from dividing one surface's p75 "
                 "by the other's, which is a different quantity.",
-        "ratios": razones,
+        "ratios": reasons,
         "pooled_ratio_for_context": round(POOLED["corpus_full"]
                                           / POOLED["space"], 6),
         "reweighting_model_for_context": round(REWEIGHTING_MODEL
                                                / POOLED["space"], 6),
-        "verdict_by_surface": {s: veredicto_c(razones[s]["p75_over_p25"])
-                               for s in razones},
-        "verdict": veredicto_c(razones[ADJUDICATES]["p75_over_p25"]),
+        "verdict_by_surface": {s: verdict_c(reasons[s]["p75_over_p25"])
+                               for s in reasons},
+        "verdict": verdict_c(reasons[ADJUDICATES]["p75_over_p25"]),
     }
 
     # ---------------------------------------------------------------- R-d
@@ -513,23 +513,23 @@ def main(argv=None) -> int:
                  "minimum inside this set and where it ranks on the corpus, "
                  "and the converse.",
         "adjudicates": False,
-        "space_minimum": extremes(claves, tasas["space"], tasas["corpus_full"],
+        "space_minimum": extremes(keys, rates["space"], rates["corpus_full"],
                                   "corpus_full"),
-        "corpus_full_minimum": extremes(claves, tasas["corpus_full"],
-                                        tasas["space"], "space"),
-        "corpus_test_minimum": extremes(claves, tasas["corpus_test"],
-                                        tasas["space"], "space"),
+        "corpus_full_minimum": extremes(keys, rates["corpus_full"],
+                                        rates["space"], "space"),
+        "corpus_test_minimum": extremes(keys, rates["corpus_test"],
+                                        rates["space"], "space"),
     }
 
     # ------------------------------- the arithmetic the entry reasons from
-    ruido = draw_noise(POOLED["corpus_full"], mats["corpus_full"]["n_surface"])
-    reparto = {
+    noise = draw_noise(POOLED["corpus_full"], mats["corpus_full"]["n_surface"])
+    split = {
         "what": "the entry argues that which particular cases were drawn "
                 "contributes about 9% relative, against a spread between pairs "
                 "of about 42%, so idiosyncratic draw cannot be what lowers the "
                 "correlation. Both halves are checked here, ON THE SCALE THE "
                 "ENTRY USED.",
-        "draw_noise_cv": ruido,
+        "draw_noise_cv": noise,
         "draw_noise_is": "closed form, sqrt((1-p)/(n p)) at the published "
                          "pooled corpus rate over 2,000 draws: sd over mean. "
                          "Not a measurement.",
@@ -564,13 +564,13 @@ def main(argv=None) -> int:
           f"   attenuation at most "
           f"{techos['corpus_full']['attenuation_upper_bound']:.1e}")
     print(f"  R-b  decile overlap                  "
-          f"{solape['corpus_full']['fraction']:>8.4f}"
+          f"{overlap['corpus_full']['fraction']:>8.4f}"
           f"   band [0.35, 0.70]   {r_b['verdict']}")
-    print(f"       {solape['corpus_full']['overlap']} of {DECILE} shared; "
-          f"boundary ties space {cercanos['space']['boundary_ties_total']}, "
-          f"corpus {cercanos['corpus_full']['boundary_ties_total']}")
+    print(f"       {overlap['corpus_full']['overlap']} of {DECILE} shared; "
+          f"boundary ties space {nearby['space']['boundary_ties_total']}, "
+          f"corpus {nearby['corpus_full']['boundary_ties_total']}")
     print(f"  R-c  ratio p75/p25                   "
-          f"{razones['corpus_full']['p75_over_p25']:>8.4f}"
+          f"{reasons['corpus_full']['p75_over_p25']:>8.4f}"
           f"   > 1.30 holds        {r_c['verdict']}")
     print(f"  R-d  reported: space minimum "
           f"{r_d['space_minimum']['pairs'][0]['pair']} ranks "
@@ -605,7 +605,7 @@ def main(argv=None) -> int:
         "n_pairs": N_PAIRS, "n_orders": N_ORDERS,
         "gate": g,
         "predictions": {"R-a": r_a, "R-b": r_b, "R-c": r_c, "R-d": r_d},
-        "drafters_arithmetic": reparto,
+        "drafters_arithmetic": split,
         "seconds_total": round(time.time() - t_start, 2),
     }
     OUT.mkdir(exist_ok=True)

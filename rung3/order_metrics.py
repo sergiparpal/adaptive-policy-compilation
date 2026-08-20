@@ -226,8 +226,8 @@ def conflicting_pairs(ids, M, action):
     Cost: one big-int AND per pair. Over the exhaustive space and 577 rules that
     is 166,176 ANDs of 134,400 bits, about 0.3 s.
     """
-    orden = sorted(ids)
-    return {(a, b) for a, b in combinations(orden, 2)
+    ids_sorted = sorted(ids)
+    return {(a, b) for a, b in combinations(ids_sorted, 2)
             if action[a] != action[b] and M[a] & M[b]}
 
 
@@ -241,14 +241,14 @@ def pair_census(ids, M, action):
     census is what gets reported per surface (G2) while the set is what `tau`
     consumes.
     """
-    orden = sorted(ids)
+    ids_sorted = sorted(ids)
     co = conf = 0
-    for a, b in combinations(orden, 2):
+    for a, b in combinations(ids_sorted, 2):
         if M[a] & M[b]:
             co += 1
             if action[a] != action[b]:
                 conf += 1
-    n = len(orden)
+    n = len(ids_sorted)
     return {"pairs": n * (n - 1) // 2, "co_match": co, "conflicting": conf,
             "same_action": co - conf}
 

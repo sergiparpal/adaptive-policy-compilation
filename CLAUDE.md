@@ -181,7 +181,7 @@ FINDINGS that publishes the figure.
 
 **You do not have to remember to launch it.** The `.githooks/pre-commit` hook
 runs it before every commit (enable it once with `git config core.hooksPath
-.githooks`) and `.github/workflows/pruebas.yml` on every push. If the hook
+.githooks`) and `.github/workflows/tests.yml` on every push. If the hook
 aborts a commit, `--no-verify` is **not** the default answer: see the previous
 paragraph.
 

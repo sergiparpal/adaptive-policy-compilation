@@ -636,7 +636,7 @@ duplication this project keeps having to undo.
 
 | id | finding | status |
 |---|---|---|
-| **F1** | `tests/test_provenance.py::ESCRITORES` and `tests/test_record_guard.py::LIBRES` under-list the modules that write records, against the README table `ESCRITORES` says it mirrors. | **CONFIRMED.** Reported, not fixed. |
+| **F1** | `tests/test_provenance.py::WRITERS` and `tests/test_record_guard.py::FREE` under-list the modules that write records, against the README table `WRITERS` says it mirrors. | **CONFIRMED.** Reported, not fixed. |
 | **F2** | The 2026-08-06 tie-break fix, per row: never measured on this record. | **CONFIRMED**, changes sign twice, +0.0481 at 1%. Above. |
 | **F3** | Any configuration hitting the `max_rounds` safety net. | **NONE**, 0 of 115, plus 390 weighted searches in P2. |
 | **F4** | Configurations where the local search is worse than the greedy on test. | **6 of 105**, peaking at 10%, none at 1%. Above. |
@@ -735,12 +735,12 @@ under weights, this time in `move+swap`'s favour, 12/64 against 11/64. Nothing
 here argues for changing the declared neighbourhood; what it records is that the
 sample of size one called a tie is no longer one.
 
-**F1 and F7 — a pinned list that stopped mirroring its source.** `ESCRITORES`
+**F1 and F7 — a pinned list that stopped mirroring its source.** `WRITERS`
 says in its own comment that it mirrors the README's overwrite table, and omits
 `rung3.optimizer_check`, `rung3.order_search_ls` and `rung4.sweep_ls`,
-all three of which the README lists. `LIBRES` omits the same three; its other
+all three of which the README lists. `FREE` omits the same three; its other
 absences — `run_experiment`, `run2`, `compare_runs`, `note_audit` — are not drift,
-since those are guarded on purpose and `LIBRES` is the list of writers that must
+since those are guarded on purpose and `FREE` is the list of writers that must
 *not* import the guard. No test catches the omission: one iterates the pinned
 list, so an absent module is never checked, and the other discovers new writers
 but only asks that they carry `_env`, which they all do.

@@ -64,7 +64,7 @@ exactly those where reproducing cannot change anything:
     python3 -m harness.subsumption_check                        # results/subsumption.json
     python3 -m harness.learned_subsumption                      # results/learned_subsumption.json
     python3 -m rung2.ceiling_check2                          # results2/ceiling2.json
-    python3 -m rung2.compare_runs results2/llm_run2_*.json   # results2/comparativa.json
+    python3 -m rung2.compare_runs results2/llm_run2_*.json   # results2/comparison.json
     python3 -m rung2.note_audit  results2/llm_run2_*.json    # results2/note_audit.json
 
 **Not a single datum changed.** Verified by structural comparison against the
@@ -207,3 +207,69 @@ and `tests/doubles.py` replays the runs against them; and the printed output,
 the error messages and the identifiers, because the docs quote those tables as
 expected results and the tests match those messages. When a block in the README
 or in `CLAUDE.md` shows an expected result, compare the **numbers**.
+
+## August 20, 2026 — the `code_digest` moved again: the Spanish the first pass left
+
+The translation of August 7 covered the prose and stopped there, and said so in
+the paragraph above. What it left behind has now been translated too:
+
+- `.gitignore`, whose nine comment lines were the last file entirely in Spanish
+  — it was not in the August 7 enumeration and so was never swept;
+- the two comments left in `tests/test_order_metrics.py`, the only two in 69
+  `.py` files;
+- three GitHub Actions labels (`name: pruebas`, `la suite`, `los registros
+  siguen intactos`) and the `$sucio` variable beside them;
+- the shell variables of `.githooks/pre-commit`;
+- five filenames — `pruebas.yml`, `CAMBIOS.md`, `NOTA_REGISTRO.md`,
+  `comparativa.json` and `test_automatizacion.py` — moved with `git mv`, so the
+  history of each follows the rename;
+- the signature of §0 of `PLAN_BUDGET_LS.md`, translated with Sergi's explicit
+  authorization and in its own commit, as hard rule 2 requires. Not one date,
+  hash or claim in it moved;
+- **the identifiers**: 3,725 name tokens across 45 files — 462 test methods, 74
+  class names, the helper functions, the locals and the parameters.
+
+**This supersedes the last paragraph of the entry above**, which recorded that
+the identifiers would stay in Spanish because the tests matched the messages.
+That reason never covered the identifiers, only the messages; and the rung
+renames of August 19 (`peldano*/` to `rung*/`, which moved test class and method
+names) had already broken the clause. The messages themselves have not moved.
+
+**Consequence on the provenance:** `code_digest` moved again, for the same
+reason as in August:
+
+    before  047e5f9f9b0ca2f3    (at 961a091, after the rung renames)
+    after   4018f64fddd70a23
+
+**Not one figure changed.** The evidence, in the order it was checked:
+
+- the 516 tests pass, and the count is unchanged — which is the check that
+  matters when renaming test methods, because two colliding names in one class
+  would silently drop a test rather than fail;
+- `python3 -m harness.ceiling_check` and `python3 -m rung2.ceiling_check2` print
+  output **byte-identical** to the run before the rename;
+- `python3 -m rung3.optimizer_check` prints identical output except its own
+  provenance line, which is where the digest is reported.
+
+The rewriting was done token by token over the Python grammar, never by textual
+substitution: only NAME tokens were touched, so no string literal and no comment
+could be reached by it. Where the natural English name was already taken in the
+same file by a different identifier, the collision was resolved by hand; the
+cases where a name was merged were reviewed one at a time and are merges of the
+same concept in disjoint scopes.
+
+Because renaming changes how long a name is, 95 continuation lines stopped
+lining up with the bracket they hang from; they were re-indented back. The
+count of continuation lines that do NOT line up is the same as before the
+rename — 100, every one of them pre-existing — and `ruff check` reports the
+same 33 findings, rule for rule, that it reported on the tree before.
+
+**What stays in Spanish, and this time the list is exhaustive:** the prompts of
+`harness/proposers.py` and `rung2/proposers2.py`, because they are the text that
+produced the records and `tests/doubles.py` replays the runs against them; the
+printed output and the error messages, because the docs quote those tables as
+expected results and the tests match those messages; and the Spanish inside the
+records themselves — the `note` fields the model wrote, and four record keys
+(`cota por cobertura`, `voraz test (post arreglo del desempate)`, `techo`) —
+which are data, not prose. When a block in the README or in `CLAUDE.md` shows an
+expected result, compare the **numbers**.

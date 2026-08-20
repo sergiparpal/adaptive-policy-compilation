@@ -103,8 +103,8 @@ def main() -> int:
         for combo, k in c.most_common(15):
             print(f"    {'  '.join(combo)}  ({k})")
 
-    veredicto = "PASA" if e2e >= 0.995 and silent == 0.0 else "NO PASA"
-    print(f"\n  PARADA 0 -> {veredicto}")
+    verdict = "PASA" if e2e >= 0.995 and silent == 0.0 else "NO PASA"
+    print(f"\n  PARADA 0 -> {verdict}")
 
     OUT.mkdir(exist_ok=True)
     (OUT / "ceiling2.json").write_text(json.dumps({
@@ -119,12 +119,12 @@ def main() -> int:
                            for a, b, w in stats["rejected"]],
         "action": n_act, "conflict": out["CONFLICT"], "impasse": out["IMPASSE"],
         "correct": n_ok, "e2e": round(e2e, 4), "silent_error": round(silent, 4),
-        "verdict": veredicto,
+        "verdict": verdict,
         "reference_rung1": {k: {"e2e": v[0], "silent_error": v[1], "conflict": v[2]}
                                for k, v in REF.items()},
     }, indent=2))
     print(f"\n-> {OUT/'ceiling2.json'}")
-    return 0 if veredicto == "PASA" else 1
+    return 0 if verdict == "PASA" else 1
 
 
 if __name__ == "__main__":

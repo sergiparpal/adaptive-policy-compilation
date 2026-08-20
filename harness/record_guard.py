@@ -169,16 +169,16 @@ def refuse_overwrite(path: Path, *, overwrite: bool,
         raise RecordExists(
             f"\nABORTADO: el destino existe y es un directorio.\n\n  {path}\n")
 
-    detalle = "\n".join(_block(path, describe(path)))
-    salidas = "\n".join(f"    {s}" for s in exits)
+    detail = "\n".join(_block(path, describe(path)))
+    outputs = "\n".join(f"    {s}" for s in exits)
     raise RecordExists(
         "\nABORTADO: el destino ya existe y no se sobrescribe solo.\n\n"
-        f"{detalle}\n\n"
+        f"{detail}\n\n"
         "  Este registro cuesta dinero y NO se puede regenerar: el proponente\n"
         "  no es determinista a temperature 0, asi que una tirada nueva no\n"
         "  devolvera lo mismo.\n\n"
         "  Salidas:\n"
-        f"{salidas}\n"
+        f"{outputs}\n"
     )
 
 
@@ -209,14 +209,14 @@ def refuse_shrink(path: Path, new_rows: Sequence[Any], *,
     if len(new_rows) >= len(old):
         return
 
-    tenia = ", ".join(str(r.get("file", "?")) for r in old
-                      if isinstance(r, dict)) or "?"
+    had = ", ".join(str(r.get("file", "?")) for r in old
+                    if isinstance(r, dict)) or "?"
     raise RecordExists(
         "\nABORTADO: escribirias un registro MAS PEQUENO que el que ya hay.\n\n"
         f"  {path}\n"
         f"    filas ahora           {len(old)}\n"
         f"    filas que escribirias {len(new_rows)}\n"
-        f"    tiradas registradas   {tenia}\n\n"
+        f"    tiradas registradas   {had}\n\n"
         "  Estos dos comandos reescriben con lo que se les pase como\n"
         "  ARGUMENTO. Con un fichero suelto en vez del glob, el registro\n"
         "  encoge y las demas tiradas se pierden.\n\n"

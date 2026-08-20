@@ -43,23 +43,23 @@ from rung3.local_search import (MULTISTART_STARTS, balanced_weights,
                                    random_order, score_order, swap_pass,
                                    weights_from_counts)
 
-ACCIONES = ("A", "B", "C")
+ACTION_LIST = ("A", "B", "C")
 
 
-def instancia(n_reglas, n_casos, seed, p_match=0.35):
+def instance(n_rules, n_cases, seed, p_match=0.35):
     """A random synthetic instance: rules with an action and a set of matched
     cases, cases with a label. Small enough to brute force."""
     rng = random.Random(seed)
-    ids = [f"X{k:03d}" for k in range(n_reglas)]
-    action = {rid: rng.choice(ACCIONES) for rid in ids}
-    label = [rng.choice(ACCIONES) for _ in range(n_casos)]
-    pool = [[rid for rid in ids if rng.random() < p_match] for _ in range(n_casos)]
-    idxs = list(range(n_casos))
+    ids = [f"X{k:03d}" for k in range(n_rules)]
+    action = {rid: rng.choice(ACTION_LIST) for rid in ids}
+    label = [rng.choice(ACTION_LIST) for _ in range(n_cases)]
+    pool = [[rid for rid in ids if rng.random() < p_match] for _ in range(n_cases)]
+    idxs = list(range(n_cases))
     M, W, full = build_masks(ids, pool, label, action, idxs)
     return ids, pool, label, action, idxs, M, W, full
 
 
-def puntua_ingenuo(order, pool, label, action, idxs):
+def score_naive(order, pool, label, action, idxs):
     """First-match-wins, written the obvious way. The reference the bitmask
     sweep has to reproduce."""
     rank = {rid: k for k, rid in enumerate(order)}
@@ -73,7 +73,7 @@ def puntua_ingenuo(order, pool, label, action, idxs):
     return ok
 
 
-def puntua_ingenuo_con_pesos(order, pool, label, action, idxs, L, n):
+def score_naive_with_weights(order, pool, label, action, idxs, L, n):
     """The same walk, weighting each case won by L // |its class|. It knows
     nothing about the lemma the fast path rests on — it reads the class off the
     CASE, not off the rule — which is what makes it a reference for it."""
@@ -88,29 +88,29 @@ def puntua_ingenuo_con_pesos(order, pool, label, action, idxs, L, n):
     return ok
 
 
-class TestPuntuacion(unittest.TestCase):
+class TestScoring(unittest.TestCase):
 
-    def test_reproduce_primera_que_casa_calculada_a_mano(self):
+    def test_reproduces_first_match_computed_by_hand(self):
         for seed in range(12):
-            ids, pool, label, action, idxs, M, W, full = instancia(8, 40, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(8, 40, seed)
             o = random_order(ids, seed=seed)
             with self.subTest(seed=seed):
                 self.assertEqual(score_order(o, M, W, full),
-                                 puntua_ingenuo(o, pool, label, action, idxs))
+                                 score_naive(o, pool, label, action, idxs))
 
-    def test_coincide_con_evaluate_del_rung_3(self):
+    def test_agrees_with_evaluate_from_rung_3(self):
         """`order_search.evaluate` is what produced the published figures. The
         two must agree, or the audit would not be comparable with the record."""
         from rung3.order_search import evaluate
         for seed in range(6):
-            ids, pool, label, action, idxs, M, W, full = instancia(9, 50, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(9, 50, seed)
             o = random_order(ids, seed=100 + seed)
             with self.subTest(seed=seed):
                 self.assertAlmostEqual(
                     score_order(o, M, W, full) / len(idxs),
                     evaluate(o, pool, label, action, idxs))
 
-    def test_los_casos_que_nadie_casa_cuentan_como_fallo(self):
+    def test_cases_nobody_matches_count_as_failures(self):
         ids = ["X000"]
         action = {"X000": "A"}
         pool = [[], ["X000"]]
@@ -118,11 +118,11 @@ class TestPuntuacion(unittest.TestCase):
         M, W, full = build_masks(ids, pool, label, action, [0, 1])
         self.assertEqual(score_order(ids, M, W, full), 1)
 
-    def test_la_cola_mas_alla_de_la_cobertura_no_puntua(self):
+    def test_the_tail_beyond_coverage_does_not_score(self):
         """Rules past the point where nothing is pending decide nothing on the
         evaluated set. It is a property of the objective, and it is why the
         search can neither improve nor damage that tail."""
-        ids, pool, label, action, idxs, M, W, full = instancia(10, 30, seed=3)
+        ids, pool, label, action, idxs, M, W, full = instance(10, 30, seed=3)
         o = random_order(ids, seed=3)
         L = coverage_length(o, M, full)
         base = score_order(o, M, W, full)
@@ -133,15 +133,15 @@ class TestPuntuacion(unittest.TestCase):
                 self.assertEqual(score_order(alt, M, W, full), base)
 
 
-class TestVorazSobreMascaras(unittest.TestCase):
+class TestGreedyOverMasks(unittest.TestCase):
     """The audit starts from the greedy of the record. If the mask rewrite were
     not the same construction, everything measured afterwards would be a gain
     over a different baseline."""
 
-    def test_produce_el_mismo_orden_que_el_voraz_del_rung_3(self):
+    def test_produces_the_same_order_as_the_rung_3_greedy(self):
         from rung3.order_search import greedy_order
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(11, 60, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(11, 60, seed)
             born = {rid: k for k, rid in enumerate(ids)}
             rules = [{"rule_id": rid, "action": action[rid], "born_at": born[rid],
                       "conditions": []} for rid in ids]
@@ -151,18 +151,18 @@ class TestVorazSobreMascaras(unittest.TestCase):
                 miss = (M[rid] ^ W[rid]).bit_count()
                 return (w / (w + miss)) if (w + miss) else -1.0
 
-            esperado = greedy_order(rules, pool, label, action, idxs)
-            obtenido = greedy_order_from_masks(
+            expected = greedy_order(rules, pool, label, action, idxs)
+            obtained = greedy_order_from_masks(
                 ids, M, W, full, tail_key=lambda rid: (-prec(rid), born[rid]))
             with self.subTest(seed=seed):
-                self.assertEqual(obtenido, esperado)
+                self.assertEqual(obtained, expected)
 
 
-class TestMejorInsercion(unittest.TestCase):
+class TestBestInsertion(unittest.TestCase):
 
-    def test_iguala_a_la_fuerza_bruta_sobre_todas_las_posiciones(self):
+    def test_equals_brute_force_over_every_position(self):
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(7, 40, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(7, 40, seed)
             o = random_order(ids, seed=seed)
             for k in range(len(o)):
                 resto = o[:k] + o[k + 1:]
@@ -170,16 +170,16 @@ class TestMejorInsercion(unittest.TestCase):
                 for j in range(len(o)):
                     cand = resto[:j] + [o[k]] + resto[j:]
                     bruto.append(score_order(cand, M, W, full))
-                mejor_k, mejor = best_insertion(o, k, M, W, full)
+                best_k, best = best_insertion(o, k, M, W, full)
                 with self.subTest(seed=seed, k=k):
-                    self.assertEqual(mejor, max(bruto))
-                    self.assertEqual(bruto[mejor_k], max(bruto))
+                    self.assertEqual(best, max(bruto))
+                    self.assertEqual(bruto[best_k], max(bruto))
 
-    def test_en_la_posicion_actual_devuelve_la_puntuacion_actual(self):
+    def test_at_the_current_position_it_returns_the_current_score(self):
         """The internal invariant: score(k_cur) must be the score of the order
         as it stands. If it drifts, every reported gain is fiction."""
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(9, 50, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(9, 50, seed)
             o = random_order(ids, seed=seed)
             base = score_order(o, M, W, full)
             for k in range(len(o)):
@@ -188,7 +188,7 @@ class TestMejorInsercion(unittest.TestCase):
                 with self.subTest(seed=seed, k=k):
                     self.assertEqual(score_order(cand, M, W, full), base)
 
-    def test_no_mueve_nada_ante_un_empate(self):
+    def test_moves_nothing_on_a_tie(self):
         """Two rules with the same action are interchangeable: no relocation
         may be applied, or the result would depend on the traversal order the
         way the old tie-break did."""
@@ -201,25 +201,25 @@ class TestMejorInsercion(unittest.TestCase):
             self.assertEqual(best_insertion(ids, k, M, W, full)[0], k)
 
 
-class TestPasadas(unittest.TestCase):
+class TestPasses(unittest.TestCase):
 
-    def test_ninguna_pasada_empeora(self):
+    def test_no_pass_makes_it_worse(self):
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(10, 60, seed)
-            for pasada in (move_pass, swap_pass):
+            ids, pool, label, action, idxs, M, W, full = instance(10, 60, seed)
+            for sweep_pass in (move_pass, swap_pass):
                 o = random_order(ids, seed=seed)
-                antes = score_order(o, M, W, full)
-                pasada(o, M, W, full)
-                with self.subTest(seed=seed, pasada=pasada.__name__):
-                    self.assertGreaterEqual(score_order(o, M, W, full), antes)
+                before = score_order(o, M, W, full)
+                sweep_pass(o, M, W, full)
+                with self.subTest(seed=seed, sweep_pass=sweep_pass.__name__):
+                    self.assertGreaterEqual(score_order(o, M, W, full), before)
                     self.assertEqual(sorted(o), sorted(ids))
 
 
-class TestBusquedaLocal(unittest.TestCase):
+class TestLocalSearch(unittest.TestCase):
 
-    def test_devuelve_una_permutacion_y_la_ganancia_declarada_es_real(self):
+    def test_returns_a_permutation_and_the_declared_gain_is_real(self):
         for seed in range(8):
-            ids, pool, label, action, idxs, M, W, full = instancia(12, 80, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(12, 80, seed)
             o0 = random_order(ids, seed=seed)
             for vec in ("move", "swap", "move+swap"):
                 o, st = local_search(o0, M, W, full, neighbourhood=vec)
@@ -231,12 +231,12 @@ class TestBusquedaLocal(unittest.TestCase):
                     self.assertGreaterEqual(st["gain"], 0)
                     self.assertFalse(st["exhausted"])
 
-    def test_al_parar_esta_en_un_optimo_local_de_su_vecindario(self):
+    def test_on_stopping_it_is_at_a_local_optimum_of_its_neighbourhood(self):
         """The property that makes the audit's answer mean anything: when it
         says 'no improvement left', there really is none in that neighbourhood.
         Checked by enumerating the whole neighbourhood."""
         for seed in range(6):
-            ids, pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(11, 70, seed)
             o0 = random_order(ids, seed=seed)
             n = len(ids)
 
@@ -245,7 +245,7 @@ class TestBusquedaLocal(unittest.TestCase):
             for p, q in itertools.combinations(range(n), 2):
                 alt = list(o)
                 alt[p], alt[q] = alt[q], alt[p]
-                with self.subTest(seed=seed, vecindario="swap", par=(p, q)):
+                with self.subTest(seed=seed, vecindario="swap", pair=(p, q)):
                     self.assertLessEqual(score_order(alt, M, W, full), base)
 
             o, _ = local_search(o0, M, W, full, neighbourhood="move")
@@ -257,9 +257,9 @@ class TestBusquedaLocal(unittest.TestCase):
                     with self.subTest(seed=seed, vecindario="move", k=k, j=j):
                         self.assertLessEqual(score_order(alt, M, W, full), base)
 
-    def test_es_determinista(self):
+    def test_is_deterministic(self):
         for seed in range(6):
-            ids, pool, label, action, idxs, M, W, full = instancia(12, 80, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(12, 80, seed)
             o0 = random_order(ids, seed=seed)
             for vec in ("move", "swap", "move+swap"):
                 a, sa = local_search(o0, M, W, full, neighbourhood=vec)
@@ -268,43 +268,43 @@ class TestBusquedaLocal(unittest.TestCase):
                     self.assertEqual(a, b)
                     self.assertEqual(sa, sb)
 
-    def test_no_toca_el_orden_de_partida(self):
-        ids, pool, label, action, idxs, M, W, full = instancia(10, 50, seed=1)
+    def test_does_not_touch_the_starting_order(self):
+        ids, pool, label, action, idxs, M, W, full = instance(10, 50, seed=1)
         o0 = random_order(ids, seed=1)
-        copia = list(o0)
+        copy = list(o0)
         local_search(o0, M, W, full)
-        self.assertEqual(o0, copia)
+        self.assertEqual(o0, copy)
 
-    def test_alcanza_el_optimo_global_en_instancias_enumerables(self):
+    def test_reaches_the_global_optimum_on_enumerable_instances(self):
         """Not a guarantee — it is a heuristic and this only says it is not
         obviously broken. What Step 0 of the audit measures is precisely this,
         on the one instance whose optimum is known for a reason."""
-        alcanzados = 0
+        reached = 0
         total = 0
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(6, 40, seed)
-            optimo = max(score_order(list(p), M, W, full)
-                         for p in itertools.permutations(ids))
+            ids, pool, label, action, idxs, M, W, full = instance(6, 40, seed)
+            true_optimum = max(score_order(list(p), M, W, full)
+                               for p in itertools.permutations(ids))
             o0 = random_order(ids, seed=seed)
             _o, st = local_search(o0, M, W, full, neighbourhood="move+swap")
             total += 1
-            alcanzados += (st["end"] == optimo)
-            self.assertLessEqual(st["end"], optimo)
-        self.assertGreaterEqual(alcanzados, total // 2)
+            reached += (st["end"] == true_optimum)
+            self.assertLessEqual(st["end"], true_optimum)
+        self.assertGreaterEqual(reached, total // 2)
 
-    def test_rechaza_un_vecindario_desconocido(self):
-        ids, pool, label, action, idxs, M, W, full = instancia(5, 20, seed=0)
+    def test_rejects_an_unknown_neighbourhood(self):
+        ids, pool, label, action, idxs, M, W, full = instance(5, 20, seed=0)
         with self.assertRaises(ValueError):
             local_search(ids, M, W, full, neighbourhood="2-opt")
 
 
-class TestPesosBalanceados(unittest.TestCase):
+class TestBalancedWeights(unittest.TestCase):
     """`balanced_weights` is the whole of the balanced objective: if the weights
     are wrong, the search maximizes something nobody declared."""
 
-    def test_son_enteros_y_compensan_exactamente_el_tamano_de_la_clase(self):
+    def test_they_are_integers_and_exactly_offset_the_class_size(self):
         for seed in range(20):
-            ids, _pool, label, action, idxs, _M, _W, _full = instancia(15, 60, seed)
+            ids, _pool, label, action, idxs, _M, _W, _full = instance(15, 60, seed)
             wt, L, n = balanced_weights(ids, action, label, idxs)
             with self.subTest(seed=seed):
                 for rid in ids:
@@ -316,7 +316,7 @@ class TestPesosBalanceados(unittest.TestCase):
                         # every class contributes the same total weight
                         self.assertEqual(wt[rid] * n[action[rid]], L)
 
-    def test_una_accion_ausente_del_subconjunto_pesa_cero(self):
+    def test_an_action_absent_from_the_subset_weighs_zero(self):
         """It can win nothing there — W[r] is empty — so the value only has to
         exist for the lookup, and it must not invent score."""
         ids = ["X000", "X001"]
@@ -333,82 +333,82 @@ class TestPesosBalanceados(unittest.TestCase):
         self.assertEqual(score_order(["X000", "X001"], M, W, full, wt), L)
 
 
-class TestObjetivoPonderado(unittest.TestCase):
+class TestWeightedObjective(unittest.TestCase):
     """The weighted path against the unweighted one it must generalize, and
     against a naive recomputation it must reproduce."""
 
-    def test_todo_unos_devuelve_exactamente_lo_mismo_que_sin_pesos(self):
+    def test_all_ones_returns_exactly_the_same_as_without_weights(self):
         """The equivalence that keeps the weighted branch from being a second
         algorithm. Every function that takes `wt`, on 50 instances."""
         for seed in range(50):
-            ids, _pool, _label, _action, _idxs, M, W, full = instancia(20, 40, seed)
-            unos = {rid: 1 for rid in ids}
+            ids, _pool, _label, _action, _idxs, M, W, full = instance(20, 40, seed)
+            a_few = {rid: 1 for rid in ids}
             o0 = random_order(ids, seed=seed)
             with self.subTest(seed=seed):
                 self.assertEqual(score_order(o0, M, W, full),
-                                 score_order(o0, M, W, full, unos))
+                                 score_order(o0, M, W, full, a_few))
                 for k in range(len(o0)):
                     self.assertEqual(best_insertion(o0, k, M, W, full),
-                                     best_insertion(o0, k, M, W, full, unos))
-                for pasada in (move_pass, swap_pass):
+                                     best_insertion(o0, k, M, W, full, a_few))
+                for sweep_pass in (move_pass, swap_pass):
                     a, b = list(o0), list(o0)
-                    self.assertEqual(pasada(a, M, W, full),
-                                     pasada(b, M, W, full, unos))
+                    self.assertEqual(sweep_pass(a, M, W, full),
+                                     sweep_pass(b, M, W, full, a_few))
                     self.assertEqual(a, b)
                 for vec in ("move", "swap", "move+swap"):
                     oa, sa = local_search(o0, M, W, full, neighbourhood=vec)
                     ob, sb = local_search(o0, M, W, full, neighbourhood=vec,
-                                          wt=unos)
+                                          wt=a_few)
                     self.assertEqual(oa, ob)
                     self.assertEqual(sa, sb)
 
-    def test_la_puntuacion_iguala_el_recuento_caso_a_caso(self):
+    def test_the_score_equals_the_case_by_case_count(self):
         """The lemma made falsifiable: the fast path reads the class off the
         RULE, the reference reads it off the CASE, and they must agree."""
         for seed in range(20):
-            ids, pool, label, action, idxs, M, W, full = instancia(12, 60, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(12, 60, seed)
             wt, L, n = balanced_weights(ids, action, label, idxs)
             o = random_order(ids, seed=100 + seed)
             with self.subTest(seed=seed):
                 self.assertEqual(
                     score_order(o, M, W, full, wt),
-                    puntua_ingenuo_con_pesos(o, pool, label, action, idxs, L, n))
+                    score_naive_with_weights(o, pool, label, action, idxs, L, n))
 
-    def test_es_el_acierto_balanceado_por_una_constante(self):
+    def test_it_is_balanced_accuracy_up_to_a_constant(self):
         """What makes this objective the BALANCED one, checked against the
         `per_class` of the module that owns the published figure:
         score / (L * |clases|) is exactly its balanced accuracy."""
         from rung3.budget_and_balance import per_class
 
         for seed in range(10):
-            ids, pool, label, action, idxs, M, W, full = instancia(12, 60, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(12, 60, seed)
             wt, L, n = balanced_weights(ids, action, label, idxs)
             o = random_order(ids, seed=200 + seed)
-            _tot, _ok, _ceil, balanceado = per_class(o, pool, label, action, idxs)
+            _tot, _ok, _ceil, balanced = per_class(o, pool, label, action, idxs)
             with self.subTest(seed=seed):
                 self.assertAlmostEqual(
-                    score_order(o, M, W, full, wt) / (L * len(n)), balanceado)
+                    score_order(o, M, W, full, wt) / (L * len(n)), balanced)
 
-    def test_la_mejor_insercion_iguala_a_la_fuerza_bruta_con_pesos(self):
+    def test_best_insertion_equals_brute_force_with_weights(self):
         for seed in range(10):
-            ids, _pool, label, action, idxs, M, W, full = instancia(7, 40, seed)
+            ids, _pool, label, action, idxs, M, W, full = instance(7, 40, seed)
             wt, _L, _n = balanced_weights(ids, action, label, idxs)
             o = random_order(ids, seed=seed)
             for k in range(len(o)):
                 resto = o[:k] + o[k + 1:]
                 bruto = [score_order(resto[:j] + [o[k]] + resto[j:],
                                      M, W, full, wt) for j in range(len(o))]
-                mejor_k, mejor = best_insertion(o, k, M, W, full, wt)
+                best_k, best = best_insertion(o, k, M, W, full, wt)
                 with self.subTest(seed=seed, k=k):
-                    self.assertEqual(mejor, max(bruto))
-                    self.assertEqual(bruto[mejor_k], max(bruto))
+                    self.assertEqual(best, max(bruto))
+                    self.assertEqual(bruto[best_k], max(bruto))
 
-    def test_termina_y_la_ganancia_declarada_es_real(self):
+    def test_terminates_and_the_declared_gain_is_real(self):
         """Termination is what the integer weights buy. If `exhausted` ever
         comes back True, the score stopped being a bounded integer and the
         no-move-on-a-tie rule went with it."""
         for seed in range(20):
-            ids, _pool, label, action, idxs, M, W, full = instancia(14, 70, seed)
+            ids, _pool, label, action, idxs, M, W, full = instance(14, 70, seed)
             wt, _L, _n = balanced_weights(ids, action, label, idxs)
             o0 = random_order(ids, seed=seed)
             for vec in ("move", "swap", "move+swap"):
@@ -420,11 +420,11 @@ class TestObjetivoPonderado(unittest.TestCase):
                     self.assertEqual(st["end"], score_order(o, M, W, full, wt))
                     self.assertGreaterEqual(st["gain"], 0)
 
-    def test_al_parar_esta_en_un_optimo_local_de_su_vecindario(self):
+    def test_on_stopping_it_is_at_a_local_optimum_of_its_neighbourhood(self):
         """The same guarantee the unweighted search is held to, enumerated over
         the whole neighbourhood."""
         for seed in range(6):
-            ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
+            ids, _pool, label, action, idxs, M, W, full = instance(11, 70, seed)
             wt, _L, _n = balanced_weights(ids, action, label, idxs)
             o0 = random_order(ids, seed=seed)
             n = len(ids)
@@ -434,7 +434,7 @@ class TestObjetivoPonderado(unittest.TestCase):
             for p, q in itertools.combinations(range(n), 2):
                 alt = list(o)
                 alt[p], alt[q] = alt[q], alt[p]
-                with self.subTest(seed=seed, vecindario="swap", par=(p, q)):
+                with self.subTest(seed=seed, vecindario="swap", pair=(p, q)):
                     self.assertLessEqual(score_order(alt, M, W, full, wt), base)
 
             o, _ = local_search(o0, M, W, full, neighbourhood="move", wt=wt)
@@ -447,44 +447,44 @@ class TestObjetivoPonderado(unittest.TestCase):
                         self.assertLessEqual(score_order(alt, M, W, full, wt),
                                              base)
 
-    def test_el_multiarranque_acepta_pesos_y_no_empeora_su_primer_arranque(self):
+    def test_the_multistart_accepts_weights_and_does_not_worsen_its_first_start(self):
         for seed in range(5):
-            ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
+            ids, _pool, label, action, idxs, M, W, full = instance(11, 70, seed)
             wt, _L, _n = balanced_weights(ids, action, label, idxs)
-            primero = random_order(ids, seed=seed)
-            starts = declared_starts(ids, first=primero)
-            _solo, st_solo = local_search(primero, M, W, full, wt=wt)
+            first_start = random_order(ids, seed=seed)
+            starts = declared_starts(ids, first=first_start)
+            _only, st_only = local_search(first_start, M, W, full, wt=wt)
             a, sa = multistart(starts, M, W, full, wt=wt)
             b, sb = multistart(starts, M, W, full, wt=wt)
             with self.subTest(seed=seed):
-                self.assertGreaterEqual(sa["best_score"], st_solo["end"])
+                self.assertGreaterEqual(sa["best_score"], st_only["end"])
                 self.assertEqual(a, b)
                 self.assertEqual(sa, sb)
 
-    def test_el_camino_sin_pesos_no_paga_por_los_pesos(self):
+    def test_the_unweighted_path_does_not_pay_for_the_weights(self):
         """P1 asks that the unweighted path not slow down. The gate itself was
         measured against the previous revision, which a test cannot import; what
         is pinned here is the structural half of it — that `wt=None` really is a
         fast path and not the weighted branch with ones — with a loose bound, so
         that it catches a regression and not a busy machine."""
-        ids, _pool, label, action, idxs, M, W, full = instancia(60, 300, seed=7)
-        unos = {rid: 1 for rid in ids}
+        ids, _pool, label, action, idxs, M, W, full = instance(60, 300, seed=7)
+        a_few = {rid: 1 for rid in ids}
         o = random_order(ids, seed=7)
 
-        def cronometra(wt):
-            mejor = float("inf")
+        def time_it(wt):
+            best = float("inf")
             for _ in range(5):
                 t0 = time.perf_counter()
                 for _ in range(20):
                     score_order(o, M, W, full, wt)
-                mejor = min(mejor, time.perf_counter() - t0)
-            return mejor
+                best = min(best, time.perf_counter() - t0)
+            return best
 
-        cronometra(None)                       # calienta
-        self.assertLess(cronometra(None), 1.5 * cronometra(unos))
+        time_it(None)                       # calienta
+        self.assertLess(time_it(None), 1.5 * time_it(a_few))
 
 
-class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
+class TestTheStep0WeightedOptimum(unittest.TestCase):
     """The gate of `optimizer_check_wt` rests on one arithmetic claim: a policy
     that gets every case right reaches recall 1 in every class at once, so it
     maximizes the balanced objective and scores exactly L x |clases|. If that
@@ -497,7 +497,7 @@ class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
     the class size only where every case is winnable — on the hidden policy, and
     not on the 577 rules."""
 
-    def test_un_orden_perfecto_puntua_exactamente_L_por_clases(self):
+    def test_a_perfect_order_scores_exactly_L_over_classes(self):
         ids = ["X000", "X001", "X002"]
         action = {"X000": "A", "X001": "B", "X002": "C"}
         label = ["A"] * 5 + ["B"] * 3 + ["C"] * 2
@@ -507,7 +507,7 @@ class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
         wt, L, n = balanced_weights(ids, action, label, idxs)
         self.assertEqual(score_order(ids, M, W, full, wt), L * len(n))
 
-    def test_el_recuento_del_oraculo_cuenta_todos_los_casos(self):
+    def test_the_oracle_count_counts_every_case(self):
         """What the mask route got wrong: every case belongs to its class,
         winnable or not."""
         from harness.domain import generate_corpus
@@ -517,13 +517,13 @@ class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
         n = class_counts(corpus)
         self.assertEqual(sum(n.values()), len(corpus))
 
-    def test_los_pesos_por_recuento_coinciden_con_los_pesos_por_etiquetas(self):
+    def test_count_weights_agree_with_label_weights(self):
         rng = random.Random(11)
         for seed in range(10):
             ids = [f"X{k:03d}" for k in range(12)]
-            action = {rid: ACCIONES[k % len(ACCIONES)]
+            action = {rid: ACTION_LIST[k % len(ACTION_LIST)]
                       for k, rid in enumerate(ids)}
-            label = [rng.choice(ACCIONES) for _ in range(60)]
+            label = [rng.choice(ACTION_LIST) for _ in range(60)]
             idxs = list(range(len(label)))
             with self.subTest(seed=seed):
                 self.assertEqual(balanced_weights(ids, action, label, idxs),
@@ -531,13 +531,13 @@ class TestElOptimoPonderadoDelPaso0(unittest.TestCase):
                                                      Counter(label)))
 
 
-class TestPoolPorMascara(unittest.TestCase):
+class TestPoolByMask(unittest.TestCase):
     """`order_search_ls.space_pools` derives the subsumption-undefeated pool
     with bit arithmetic instead of walking cases one at a time, because over
     134,400 cases the walk is not affordable. It has to agree, case for case,
     with the `build_tables` that computed the record."""
 
-    def test_el_pool_indefenso_coincide_con_build_tables(self):
+    def test_the_undefended_pool_agrees_with_build_tables(self):
         from rung3.order_search import (build_tables, load,
                                            subsumption_below)
 
@@ -555,97 +555,97 @@ class TestPoolPorMascara(unittest.TestCase):
                     cext[rid] |= bit
         cundef = {}
         for rid in ids:
-            dominado = 0
+            dominated = 0
             for b in below[rid]:
-                dominado |= cext[b]
-            cundef[rid] = cext[rid] & ~dominado
+                dominated |= cext[b]
+            cundef[rid] = cext[rid] & ~dominated
 
         for i in range(0, len(corpus), 13):
-            with self.subTest(caso=i):
+            with self.subTest(case=i):
                 self.assertEqual({rid for rid in ids if cext[rid] >> i & 1},
                                  set(matched[i]))
                 self.assertEqual({rid for rid in ids if cundef[rid] >> i & 1},
                                  set(undef[i]))
 
 
-class TestElRegistroParcialNoPisaElCompleto(unittest.TestCase):
+class TestThePartialRecordDoesNotTreadOnTheFull(unittest.TestCase):
     """`sweep_ls` rewrites its whole document from the rows of the running
     process. A partial run landing on the canonical name would drop the cells
     that carry the finding — it nearly did on 2026-08-08, which is why this is
     pinned rather than left to the comment."""
 
-    def test_solo_la_corrida_completa_usa_el_nombre_canonico(self):
+    def test_only_the_full_run_uses_the_canonical_name(self):
         from rung4.sweep_ls import GROUPS, record_name
 
         self.assertEqual(record_name(list(GROUPS)), "sweep_ls.json")
         self.assertEqual(record_name(list(reversed(GROUPS))), "sweep_ls.json")
-        for parcial in (["noise"], ["anchors"], ["anchors", "asymmetry"]):
-            with self.subTest(parcial=parcial):
-                self.assertNotEqual(record_name(parcial), "sweep_ls.json")
-                self.assertTrue(record_name(parcial).endswith(".json"))
+        for partial in (["noise"], ["anchors"], ["anchors", "asymmetry"]):
+            with self.subTest(partial=partial):
+                self.assertNotEqual(record_name(partial), "sweep_ls.json")
+                self.assertTrue(record_name(partial).endswith(".json"))
 
-    def test_cada_subconjunto_tiene_su_propio_nombre(self):
+    def test_each_subset_has_its_own_name(self):
         from rung4.sweep_ls import record_name
 
-        nombres = {record_name(g) for g in (["anchors"], ["asymmetry"],
+        names = {record_name(g) for g in (["anchors"], ["asymmetry"],
                                             ["noise"], ["anchors", "noise"])}
-        self.assertEqual(len(nombres), 4)
+        self.assertEqual(len(names), 4)
 
 
-class TestMultiArranque(unittest.TestCase):
+class TestMultiStart(unittest.TestCase):
     """Added on August 8, 2026 after Step 0 of the audit found a single run
     insufficient. What is pinned is that the restarts are declared and that
     knowing the optimum cannot leak into the search."""
 
-    def test_los_arranques_son_fijos_y_reproducibles(self):
+    def test_the_starts_are_fixed_and_reproducible(self):
         ids = [f"X{k:03d}" for k in range(9)]
         a = declared_starts(ids)
         b = declared_starts(ids)
         self.assertEqual(a, b)
         self.assertEqual(len(a), MULTISTART_STARTS)
-        for _nombre, o in a:
+        for _name, o in a:
             self.assertEqual(sorted(o), sorted(ids))
 
-    def test_los_presupuestos_mayores_son_anidados(self):
+    def test_larger_budgets_are_nested(self):
         """The property the start-budget diagnostic rests on: the shuffles come
         off `random.Random(17)` in sequence, so 256 starts BEGIN with the same 64
         the record used. Without it, comparing budgets would be comparing two
         different samples and the diagnostic would say nothing."""
         ids = [f"X{k:03d}" for k in range(9)]
-        voraz = list(reversed(sorted(ids)))
-        pequeno = declared_starts(ids, first=voraz, n=64)
+        greedy = list(reversed(sorted(ids)))
+        pequeno = declared_starts(ids, first=greedy, n=64)
         for n in (128, 256):
-            grande = declared_starts(ids, first=voraz, n=n)
+            grande = declared_starts(ids, first=greedy, n=n)
             with self.subTest(n=n):
                 self.assertEqual(grande[:len(pequeno)], pequeno)
                 self.assertEqual(len(grande), n + 1)
 
-    def test_el_voraz_ocupa_la_posicion_cero(self):
+    def test_the_greedy_occupies_position_zero(self):
         """So that a tie goes to it and the multi-start is never worse than the
         single run the audit asked for (`results3/FINDINGS_AUDIT.md`, Step 0)."""
         ids = [f"X{k:03d}" for k in range(9)]
-        voraz = list(reversed(sorted(ids)))
-        starts = declared_starts(ids, first=voraz)
+        greedy = list(reversed(sorted(ids)))
+        starts = declared_starts(ids, first=greedy)
         self.assertEqual(len(starts), MULTISTART_STARTS + 1)
-        self.assertEqual(starts[0], ("voraz", voraz))
+        self.assertEqual(starts[0], ("voraz", greedy))
 
-    def test_no_devuelve_nada_peor_que_su_primer_arranque(self):
+    def test_returns_nothing_worse_than_its_first_start(self):
         for seed in range(6):
-            ids, pool, label, action, idxs, M, W, full = instancia(11, 70, seed)
-            primero = random_order(ids, seed=seed)
-            starts = declared_starts(ids, first=primero)
-            solo, st_solo = local_search(primero, M, W, full)
+            ids, pool, label, action, idxs, M, W, full = instance(11, 70, seed)
+            first_start = random_order(ids, seed=seed)
+            starts = declared_starts(ids, first=first_start)
+            alone, st_only = local_search(first_start, M, W, full)
             _o, st = multistart(starts, M, W, full)
             with self.subTest(seed=seed):
-                self.assertGreaterEqual(st["best_score"], st_solo["end"])
+                self.assertGreaterEqual(st["best_score"], st_only["end"])
                 self.assertEqual(st["n_starts"], MULTISTART_STARTS + 1)
 
-    def test_conocer_el_optimo_no_cambia_lo_que_encuentra(self):
+    def test_knowing_the_optimum_does_not_change_what_it_finds(self):
         """`optimum` is for reporting the cost. If it steered the search, Step 0
         would be validating an instrument that cannot exist in Step 1, where no
         optimum is known."""
         for seed in range(5):
-            ids, pool, label, action, idxs, M, W, full = instancia(10, 60, seed)
+            ids, pool, label, action, idxs, M, W, full = instance(10, 60, seed)
             starts = declared_starts(ids)
             a, sa = multistart(starts, M, W, full, optimum=None)
             b, sb = multistart(starts, M, W, full, optimum=len(idxs))
@@ -654,22 +654,22 @@ class TestMultiArranque(unittest.TestCase):
                 self.assertEqual(sa["best_score"], sb["best_score"])
                 self.assertEqual(sa["best_from_index"], sb["best_from_index"])
 
-    def test_declara_el_coste_de_los_reinicios(self):
+    def test_declares_the_cost_of_the_restarts(self):
         """The first hit and how many hit have to be on the record: they are
         what says whether the restarts were cheap or lucky."""
-        ids, pool, label, action, idxs, M, W, full = instancia(8, 50, seed=2)
+        ids, pool, label, action, idxs, M, W, full = instance(8, 50, seed=2)
         starts = declared_starts(ids)
-        optimo = max(score_order(list(p), M, W, full)
-                     for p in itertools.permutations(ids))
-        _o, st = multistart(starts, M, W, full, optimum=optimo)
+        true_optimum = max(score_order(list(p), M, W, full)
+                           for p in itertools.permutations(ids))
+        _o, st = multistart(starts, M, W, full, optimum=true_optimum)
         self.assertTrue(st["reached_optimum"])
-        self.assertEqual(st["best_score"], optimo)
+        self.assertEqual(st["best_score"], true_optimum)
         self.assertGreaterEqual(st["n_hits"], 1)
         self.assertEqual(st["starts_until_first_hit"], st["first_hit_index"] + 1)
-        self.assertEqual(st["rows"][st["first_hit_index"]]["end_score"], optimo)
+        self.assertEqual(st["rows"][st["first_hit_index"]]["end_score"], true_optimum)
 
-    def test_es_determinista(self):
-        ids, pool, label, action, idxs, M, W, full = instancia(10, 60, seed=4)
+    def test_is_deterministic(self):
+        ids, pool, label, action, idxs, M, W, full = instance(10, 60, seed=4)
         starts = declared_starts(ids)
         for vec in ("move", "swap", "move+swap"):
             a, sa = multistart(starts, M, W, full, neighbourhood=vec)
@@ -678,10 +678,10 @@ class TestMultiArranque(unittest.TestCase):
                 self.assertEqual(a, b)
                 self.assertEqual(sa, sb)
 
-    def test_sin_optimo_no_inventa_aciertos(self):
+    def test_without_an_optimum_it_invents_no_hits(self):
         """With no optimum declared there is nothing to hit, and the fields that
         report the cost must say so rather than defaulting to a success."""
-        ids, pool, label, action, idxs, M, W, full = instancia(9, 50, seed=5)
+        ids, pool, label, action, idxs, M, W, full = instance(9, 50, seed=5)
         _o, st = multistart(declared_starts(ids), M, W, full)
         self.assertFalse(st["reached_optimum"])
         self.assertIsNone(st["first_hit_index"])
@@ -697,7 +697,7 @@ class TestMultiArranque(unittest.TestCase):
 # Small instances and three explicit starts, so the expectation is readable
 # rather than a blob — the property under test is the SHAPE and the arithmetic
 # of the dict, and 65 rows would only make it unreadable.
-ANTES_DE_KEEP_ORDERS = {
+BEFORE_KEEP_ORDERS = {
     0: {"best_order": ["X005", "X003", "X002", "X004", "X001", "X000"],
         "stats": {
             "n_starts": 3, "neighbourhood": "move+swap", "best_score": 13,
@@ -740,7 +740,7 @@ ANTES_DE_KEEP_ORDERS = {
 }
 
 
-def tres_arranques(ids, seed):
+def three_starts(ids, seed):
     """The starts of the snapshot above: named, explicit and independent of
     `declared_starts`, so that changing the declared budget cannot silently
     rewrite the expectation."""
@@ -749,92 +749,92 @@ def tres_arranques(ids, seed):
             ("c", random_order(ids, seed=seed))]
 
 
-class TestMultiArranqueGuardaOrdenes(unittest.TestCase):
+class TestMultiStartKeepsOrders(unittest.TestCase):
     """P1 of `PLAN_ORDER_METRICS.md`: the 64 end orders the multi-start used to
     drop are what the whole instrument is going to measure, and capturing them
     must be ADDITIVE. The risk is not that the new field is wrong — it is that
     reaching for it perturbs the search that produced every published figure."""
 
-    def test_sin_pedirlos_devuelve_exactamente_lo_de_antes(self):
+    def test_unasked_it_returns_exactly_what_it_did_before(self):
         """The gate: against output captured from the previous revision, not
         against the current code's opinion of itself."""
-        for seed, esperado in ANTES_DE_KEEP_ORDERS.items():
-            ids, _pool, _label, _action, _idxs, M, W, full = instancia(6, 30, seed)
-            best, st = multistart(tres_arranques(ids, seed), M, W, full)
+        for seed, expected in BEFORE_KEEP_ORDERS.items():
+            ids, _pool, _label, _action, _idxs, M, W, full = instance(6, 30, seed)
+            best, st = multistart(three_starts(ids, seed), M, W, full)
             with self.subTest(seed=seed):
-                self.assertEqual(best, esperado["best_order"])
-                self.assertEqual(st, esperado["stats"])
+                self.assertEqual(best, expected["best_order"])
+                self.assertEqual(st, expected["stats"])
 
-    def test_el_valor_por_defecto_es_no_guardarlos(self):
+    def test_the_default_is_not_to_keep_them(self):
         """Explicit, because the default is what every record ran on."""
-        ids, _pool, _label, _action, _idxs, M, W, full = instancia(6, 30, seed=0)
-        _b, st = multistart(tres_arranques(ids, 0), M, W, full)
-        for fila in st["rows"]:
-            self.assertNotIn("order", fila)
+        ids, _pool, _label, _action, _idxs, M, W, full = instance(6, 30, seed=0)
+        _b, st = multistart(three_starts(ids, 0), M, W, full)
+        for row in st["rows"]:
+            self.assertNotIn("order", row)
 
-    def test_guardarlos_no_cambia_nada_mas(self):
+    def test_keeping_them_changes_nothing_else(self):
         """Additive over the declared 65 starts: strip the new key and the two
         dicts have to be the same object, best order included."""
         for seed in range(5):
-            ids, _pool, _label, _action, _idxs, M, W, full = instancia(11, 70, seed)
+            ids, _pool, _label, _action, _idxs, M, W, full = instance(11, 70, seed)
             starts = declared_starts(ids, first=random_order(ids, seed=seed))
             a, sa = multistart(starts, M, W, full)
             b, sb = multistart(starts, M, W, full, keep_orders=True)
-            desnudo = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
-                                     for f in sb["rows"]])
+            bare = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
+                                  for f in sb["rows"]])
             with self.subTest(seed=seed):
                 self.assertEqual(a, b)
-                self.assertEqual(sa, desnudo)
+                self.assertEqual(sa, bare)
 
-    def test_tampoco_bajo_pesos(self):
+    def test_nor_under_weights(self):
         """The weighted path is the other one a caller can be on."""
-        ids, _pool, label, action, idxs, M, W, full = instancia(11, 70, seed=3)
+        ids, _pool, label, action, idxs, M, W, full = instance(11, 70, seed=3)
         wt, _L, _n = balanced_weights(ids, action, label, idxs)
         starts = declared_starts(ids, first=random_order(ids, seed=3))
         a, sa = multistart(starts, M, W, full, wt=wt)
         b, sb = multistart(starts, M, W, full, wt=wt, keep_orders=True)
-        desnudo = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
-                                 for f in sb["rows"]])
+        bare = dict(sb, rows=[{k: v for k, v in f.items() if k != "order"}
+                              for f in sb["rows"]])
         self.assertEqual(a, b)
-        self.assertEqual(sa, desnudo)
+        self.assertEqual(sa, bare)
 
-    def test_el_orden_guardado_es_el_que_termina_esa_partida(self):
+    def test_the_saved_order_is_the_one_that_ends_that_round(self):
         """What makes the field worth having: each row's order is the end order
         of ITS start, re-derivable by running the same search alone, and it
         scores what the row says it scores."""
         for seed in range(3):
-            ids, _pool, _label, _action, _idxs, M, W, full = instancia(10, 60, seed)
-            starts = tres_arranques(ids, seed)
+            ids, _pool, _label, _action, _idxs, M, W, full = instance(10, 60, seed)
+            starts = three_starts(ids, seed)
             _b, st = multistart(starts, M, W, full, keep_orders=True)
-            for fila, (_nombre, o0) in zip(st["rows"], starts):
-                solo, _ = local_search(o0, M, W, full)
-                with self.subTest(seed=seed, arranque=fila["start"]):
-                    self.assertEqual(fila["order"], solo)
-                    self.assertEqual(sorted(fila["order"]), sorted(ids))
+            for row, (_name, o0) in zip(st["rows"], starts):
+                alone, _ = local_search(o0, M, W, full)
+                with self.subTest(seed=seed, arranque=row["start"]):
+                    self.assertEqual(row["order"], alone)
+                    self.assertEqual(sorted(row["order"]), sorted(ids))
                     self.assertEqual(
-                        score_order(fila["order"], M, W, full),
-                        fila["end_score"])
+                        score_order(row["order"], M, W, full),
+                        row["end_score"])
 
-    def test_el_ganador_es_el_orden_de_su_fila(self):
+    def test_the_winner_is_the_order_of_its_row(self):
         """The winner is not stored twice with two meanings: what comes back as
         `best_order` is the row at `best_from_index`."""
         for seed in range(4):
-            ids, _pool, _label, _action, _idxs, M, W, full = instancia(10, 60, seed)
+            ids, _pool, _label, _action, _idxs, M, W, full = instance(10, 60, seed)
             best, st = multistart(declared_starts(ids), M, W, full,
                                   keep_orders=True)
             with self.subTest(seed=seed):
                 self.assertEqual(st["rows"][st["best_from_index"]]["order"],
                                  best)
 
-    def test_las_filas_no_comparten_lista_con_el_ganador(self):
+    def test_the_rows_do_not_share_a_list_with_the_winner(self):
         """A caller that reorders what it got back must not rewrite the record
         of the run it got it from."""
-        ids, _pool, _label, _action, _idxs, M, W, full = instancia(9, 50, seed=1)
+        ids, _pool, _label, _action, _idxs, M, W, full = instance(9, 50, seed=1)
         best, st = multistart(declared_starts(ids), M, W, full, keep_orders=True)
-        fila = st["rows"][st["best_from_index"]]["order"]
-        copia = list(fila)
+        row = st["rows"][st["best_from_index"]]["order"]
+        copy = list(row)
         best.reverse()
-        self.assertEqual(fila, copia)
+        self.assertEqual(row, copy)
 
 
 if __name__ == "__main__":

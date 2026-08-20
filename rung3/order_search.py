@@ -215,10 +215,10 @@ def eval_specificity(rules, matched, truth, action, idxs):
         if not m:
             continue
         top = max(ncond[r] for r in m)
-        fin = [r for r in m if ncond[r] == top]
-        if len({action[r] for r in fin}) > 1:
+        end = [r for r in m if ncond[r] == top]
+        if len({action[r] for r in end}) > 1:
             continue                       # CONFLICT
-        if action[min(fin, key=lambda r: born[r])] == truth[i]:
+        if action[min(end, key=lambda r: born[r])] == truth[i]:
             ok += 1
     return ok / len(idxs)
 

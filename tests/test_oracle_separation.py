@@ -26,11 +26,11 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 
-ORACULO = {"hidden_policy", "true_action", "true_rule_id"}
+ORACLE = {"hidden_policy", "true_action", "true_rule_id"}
 
 # Components of the online loop: they see the case, decide and propose. None of
 # them may consult the true policy.
-BUCLE_ONLINE = [
+ONLINE_LOOP = [
     "harness/dsl.py",
     "harness/domain.py",
     "harness/proposers.py",
@@ -40,42 +40,42 @@ BUCLE_ONLINE = [
 ]
 
 
-def imports_de(path: Path) -> set[str]:
+def imports_of(path: Path) -> set[str]:
     """Names imported by the module: both the module and the symbols."""
-    arbol = ast.parse(path.read_text(), filename=str(path))
-    nombres: set[str] = set()
-    for nodo in ast.walk(arbol):
+    tree = ast.parse(path.read_text(), filename=str(path))
+    names: set[str] = set()
+    for nodo in ast.walk(tree):
         if isinstance(nodo, ast.Import):
             for a in nodo.names:
-                nombres.update(a.name.split("."))
+                names.update(a.name.split("."))
         elif isinstance(nodo, ast.ImportFrom):
             if nodo.module:
-                nombres.update(nodo.module.split("."))
+                names.update(nodo.module.split("."))
             for a in nodo.names:
-                nombres.add(a.name)
-    return nombres
+                names.add(a.name)
+    return names
 
 
-class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
+class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
 
-    def test_ningun_componente_online_importa_la_politica(self):
-        for rel in BUCLE_ONLINE:
+    def test_no_online_component_imports_the_policy(self):
+        for rel in ONLINE_LOOP:
             with self.subTest(rel):
-                filtrados = imports_de(REPO / rel) & ORACULO
-                self.assertEqual(filtrados, set(),
-                                 f"{rel} importa del oraculo: {filtrados}")
+                filtered = imports_of(REPO / rel) & ORACLE
+                self.assertEqual(filtered, set(),
+                                 f"{rel} importa del oraculo: {filtered}")
 
-    def test_los_ficheros_vigilados_existen(self):
+    def test_the_watched_files_exist(self):
         """If somebody renames a module, the test above would silently stop
         watching it."""
-        for rel in BUCLE_ONLINE:
+        for rel in ONLINE_LOOP:
             with self.subTest(rel):
                 self.assertTrue((REPO / rel).is_file(), f"falta {rel}")
 
-    def test_quien_si_puede_verlo(self):
+    def test_who_may_see_it(self):
         """Measuring offline and labelling the record do consult the oracle. The
         test pins the list so that growing it is a decision, not an oversight."""
-        permitidos = {
+        allowed_names = {
             "harness/shadow.py",            # labels the record, does not decide
             "harness/cache_baseline.py",    # baseline: the LLM would be right
             "harness/ceiling_check.py",     # offline measurement
@@ -98,29 +98,29 @@ class TestElBucleOnlineNoVeElOraculo(unittest.TestCase):
             "rung3/order_search_ls.py",   # offline: labels the two instances
             "rung4/feedback.py",
         }
-        encontrados = set()
+        found = set()
         for root in ("harness", "rung2", "rung3", "rung4"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
-                if imports_de(f) & ORACULO:
-                    encontrados.add(str(f.relative_to(REPO)))
-        if imports_de(REPO / "run_experiment.py") & ORACULO:
-            encontrados.add("run_experiment.py")
-        encontrados.discard("harness/hidden_policy.py")
-        self.assertEqual(encontrados, permitidos)
+                if imports_of(f) & ORACLE:
+                    found.add(str(f.relative_to(REPO)))
+        if imports_of(REPO / "run_experiment.py") & ORACLE:
+            found.add("run_experiment.py")
+        found.discard("harness/hidden_policy.py")
+        self.assertEqual(found, allowed_names)
 
 
-class TestElCanalDelRung4(unittest.TestCase):
+class TestTheRung4Channel(unittest.TestCase):
     """The channel is the artefact that contains the risk: if the oracle slips
     in somewhere else, rung 4 measures full supervision."""
 
-    def test_feedback_es_el_unico_del_rung_4_que_toca_el_oraculo(self):
+    def test_feedback_is_the_only_rung_4_module_touching_the_oracle(self):
         tocan = {f.name for f in (REPO / "rung4").glob("*.py")
-                 if imports_de(f) & ORACULO}
+                 if imports_of(f) & ORACLE}
         self.assertEqual(tocan, {"feedback.py"})
 
-    def test_el_aprendiz_no_recibe_la_verdad(self):
+    def test_the_learner_does_not_receive_the_truth(self):
         """`greedy_from_reports` only sees {case -> reported action}: its
         signature does not admit the true labels by any route."""
         import inspect
@@ -131,22 +131,22 @@ class TestElCanalDelRung4(unittest.TestCase):
         self.assertEqual(params, ["rules", "pool", "reported", "action", "born"])
         self.assertNotIn("truth", params)
 
-    def test_el_canal_emite_menos_que_la_verdad(self):
+    def test_the_channel_emits_less_than_the_truth(self):
         """Its output is strictly poorer: a subset of the cases, and with noise.
         With coverage 0 it emits nothing."""
         from harness.domain import generate_corpus
         from rung4.feedback import Channel
 
         corpus = generate_corpus(50, seed=17)
-        ventana = list(range(50))
-        decisiones = {i: "T1_GENERAL" for i in ventana}
-        vacio = Channel(coverage=0.0, seed=1).observe(corpus, ventana, decisiones)
-        self.assertEqual(vacio, {})
-        lleno = Channel(coverage=1.0, asymmetry=1.0, seed=1).observe(
-            corpus, ventana, decisiones)
-        self.assertLessEqual(len(lleno), len(ventana))
+        window = list(range(50))
+        decisions = {i: "T1_GENERAL" for i in window}
+        empty = Channel(coverage=0.0, seed=1).observe(corpus, window, decisions)
+        self.assertEqual(empty, {})
+        full_one = Channel(coverage=1.0, asymmetry=1.0, seed=1).observe(
+            corpus, window, decisions)
+        self.assertLessEqual(len(full_one), len(window))
 
-    def test_la_asimetria_condiciona_las_etiquetas_a_los_errores(self):
+    def test_the_asymmetry_conditions_the_labels_on_the_errors(self):
         """With asymmetry 0 only INCORRECT decisions are observed. It is what
         keeps the channel from being the oracle, and what makes the labelled set
         not i.i.d."""
@@ -155,10 +155,10 @@ class TestElCanalDelRung4(unittest.TestCase):
         from rung4.feedback import Channel
 
         corpus = generate_corpus(200, seed=17)
-        ventana = list(range(200))
-        decisiones = {i: true_action(corpus[i]) for i in ventana}   # perfect pi0
+        window = list(range(200))
+        decisions = {i: true_action(corpus[i]) for i in window}   # perfect pi0
         rep = Channel(coverage=1.0, asymmetry=0.0, seed=1).observe(
-            corpus, ventana, decisiones)
+            corpus, window, decisions)
         self.assertEqual(rep, {}, "una pi0 que no falla no genera etiqueta alguna")
 
 
