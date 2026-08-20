@@ -35,11 +35,11 @@ replaces it** (`CLAUDE.md`, hard rule 2: predictions are his). The agent **must
 not** edit this section, before or after seeing any number. Phase P4 does not
 start until this section carries a signature line.
 
-**Firmado por Sergi, 2026-08-13, después de la corrida.** La predicción se redactó el
-2026-08-12 y quedó inmutable en el commit `6b8311b`, antes de que existiera ninguna
-cifra; la autorización para P4 se dio antes de lanzarla y la §0 no se ha editado desde
-entonces — `git log -p PLAN_BUDGET_LS.md` lo verifica. La firma llega tarde; la
-predicción no.
+**Signed by Sergi, 2026-08-13, after the run.** The prediction was drafted on
+2026-08-12 and became immutable in commit `6b8311b`, before any figure existed;
+the authorization for P4 was given before launching it and §0 has not been
+edited since — `git log -p PLAN_BUDGET_LS.md` verifies it. The signature arrives
+late; the prediction does not.
 
 **Mechanism being bet on.** At 1005 labels the train objective separates orders
 finely. At 50 it is an integer out of 50 with massive ties, and at 10 it is
@@ -365,7 +365,7 @@ line for every entry below, confirmed or refuted, plus anything new.
 
 | id | finding | status |
 |---|---|---|
-| **F1** | `tests/test_provenance.py::ESCRITORES` lists neither `rung3.order_search_ls`, `rung4.sweep_ls` nor `rung3.optimizer_check`, though the README table it says it mirrors does list them. Same for `LIBRES` in `tests/test_record_guard.py`. Pre-existing drift between a pinned list and its stated source. **Report it; do not fix it silently as part of this work.** | |
+| **F1** | `tests/test_provenance.py::WRITERS` lists neither `rung3.order_search_ls`, `rung4.sweep_ls` nor `rung3.optimizer_check`, though the README table it says it mirrors does list them. Same for `FREE` in `tests/test_record_guard.py`. Pre-existing drift between a pinned list and its stated source. **Report it; do not fix it silently as part of this work.** | |
 | **F2** | Greedy-today vs published, per row: the size of the 2026-08-06 tie-break fix on this record, never measured. | |
 | **F3** | Any configuration with `exhausted: true` — the safety net was hit, which the module says must not pass silently. | |
 | **F4** | Configurations where LS is worse than the greedy on **test**. Expected at low budget (P-c); it is the finding, not a bug. Count them per fraction. | |
