@@ -25,12 +25,12 @@ from harness.provenance import code_digest, describe, environment
 
 REPO = Path(__file__).resolve().parent.parent
 
-CLAVES = {"recorded_at", "python", "openai", "platform", "pythonhashseed",
-          "git_commit", "git_dirty", "code_dirty", "code_digest"}
+KEYS = {"recorded_at", "python", "openai", "platform", "pythonhashseed",
+        "git_commit", "git_dirty", "code_dirty", "code_digest"}
 
 # Modules that dump a results JSON. The list is in the README, in the table
 # "reproducing a figure overwrites its own record".
-ESCRITORES = [
+WRITERS = [
     "run_experiment",
     "harness.subsumption_check",
     "harness.learned_subsumption",
@@ -75,88 +75,88 @@ CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
 
 class TestEnvironment(unittest.TestCase):
 
-    def test_lleva_las_claves_declaradas(self):
-        self.assertEqual(set(environment()), CLAVES)
+    def test_carries_the_declared_keys(self):
+        self.assertEqual(set(environment()), KEYS)
 
-    def test_es_serializable_a_json(self):
+    def test_is_json_serializable(self):
         json.dumps(environment())
 
-    def test_la_marca_de_tiempo_es_UTC_en_segundos(self):
+    def test_the_timestamp_is_UTC_in_seconds(self):
         self.assertRegex(environment()["recorded_at"],
                          r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
-    def test_admite_campos_extra(self):
+    def test_accepts_extra_fields(self):
         e = environment(seed=17, n=2000)
         self.assertEqual(e["seed"], 17)
         self.assertEqual(e["n"], 2000)
 
-    def test_los_extra_pueden_sobreescribir(self):
+    def test_the_extras_can_overwrite(self):
         self.assertEqual(environment(python="3.99")["python"], "3.99")
 
-    def test_recoge_PYTHONHASHSEED(self):
+    def test_picks_up_PYTHONHASHSEED(self):
         with mock.patch.dict("os.environ", {"PYTHONHASHSEED": "7"}):
             self.assertEqual(environment()["pythonhashseed"], "7")
 
-    def test_sin_PYTHONHASHSEED_queda_null(self):
+    def test_without_PYTHONHASHSEED_it_stays_null(self):
         """`null` means "unset", that is, random. It is information."""
         with mock.patch.dict("os.environ", clear=True):
             self.assertIsNone(environment()["pythonhashseed"])
 
-    def test_NO_filtra_la_clave_de_la_API(self):
-        falsa = "sk-or-v1-000ESTOESUNSECRETO000"
-        with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": falsa,
-                                            "ANTHROPIC_API_KEY": falsa}):
-            volcado = json.dumps(environment())
-        self.assertNotIn(falsa, volcado)
-        self.assertNotIn("API_KEY", volcado)
+    def test_does_NOT_leak_the_API_key(self):
+        fake = "sk-or-v1-000ESTOESUNSECRETO000"
+        with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": fake,
+                                            "ANTHROPIC_API_KEY": fake}):
+            dump = json.dumps(environment())
+        self.assertNotIn(fake, dump)
+        self.assertNotIn("API_KEY", dump)
 
-    def test_describe_es_una_linea(self):
-        linea = describe()
-        self.assertNotIn("\n", linea)
-        self.assertIn("python", linea)
+    def test_describe_is_one_line(self):
+        line = describe()
+        self.assertNotIn("\n", line)
+        self.assertIn("python", line)
 
 
 class TestCodeDigest(unittest.TestCase):
 
-    def test_es_estable_entre_llamadas(self):
+    def test_is_stable_across_calls(self):
         self.assertEqual(code_digest(), code_digest())
 
-    def test_tiene_la_longitud_declarada(self):
+    def test_has_the_declared_length(self):
         self.assertEqual(len(code_digest()), provenance.DIGEST_CHARS)
 
-    def test_cambia_si_cambia_el_codigo(self):
+    def test_changes_if_the_code_changes(self):
         with mock.patch.object(provenance, "REPO", Path(self.tmp)):
-            uno = code_digest()
+            one = code_digest()
             (Path(self.tmp) / "harness" / "x.py").write_text("y = 2\n")
-            dos = code_digest()
-        self.assertNotEqual(uno, dos)
+            two = code_digest()
+        self.assertNotEqual(one, two)
 
-    def test_no_depende_del_nombre_del_directorio_raiz(self):
+    def test_does_not_depend_on_the_root_directory_name(self):
         """The digest is of the content: moving the repo does not change it."""
         with mock.patch.object(provenance, "REPO", Path(self.tmp)):
-            uno = code_digest()
-        otro = Path(self.tmp2)
-        (otro / "harness").mkdir(parents=True)
-        (otro / "harness" / "x.py").write_text("y = 1\n")
-        (otro / "run_experiment.py").write_text("pass\n")
-        with mock.patch.object(provenance, "REPO", otro):
-            dos = code_digest()
-        self.assertEqual(uno, dos)
+            one = code_digest()
+        other = Path(self.tmp2)
+        (other / "harness").mkdir(parents=True)
+        (other / "harness" / "x.py").write_text("y = 1\n")
+        (other / "run_experiment.py").write_text("pass\n")
+        with mock.patch.object(provenance, "REPO", other):
+            two = code_digest()
+        self.assertEqual(one, two)
 
-    def test_no_incluye_las_pruebas(self):
+    def test_does_not_include_the_tests(self):
         """Changing a test changes no figure; the digest must not move because
         of it."""
         self.assertNotIn("tests", provenance.CODE_ROOTS)
 
-    def test_sin_fuentes_devuelve_None(self):
-        with mock.patch.object(provenance, "REPO", Path(self.vacio)):
+    def test_with_no_sources_it_returns_None(self):
+        with mock.patch.object(provenance, "REPO", Path(self.empty)):
             self.assertIsNone(code_digest())
 
     def setUp(self):
         import tempfile
 
         self._dirs = [tempfile.TemporaryDirectory() for _ in range(3)]
-        self.tmp, self.tmp2, self.vacio = (d.name for d in self._dirs)
+        self.tmp, self.tmp2, self.empty = (d.name for d in self._dirs)
         (Path(self.tmp) / "harness").mkdir()
         (Path(self.tmp) / "harness" / "x.py").write_text("y = 1\n")
         (Path(self.tmp) / "run_experiment.py").write_text("pass\n")
@@ -168,7 +168,7 @@ class TestCodeDigest(unittest.TestCase):
 
 class TestGit(unittest.TestCase):
 
-    def test_fuera_de_un_repo_no_revienta(self):
+    def test_outside_a_repo_it_does_not_blow_up(self):
         import tempfile
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -178,14 +178,14 @@ class TestGit(unittest.TestCase):
         self.assertIsNone(e["git_dirty"])
         self.assertIsNone(e["code_dirty"])
 
-    def test_dentro_del_repo_hay_commit(self):
+    def test_inside_the_repo_there_is_a_commit(self):
         e = environment()
         self.assertRegex(e["git_commit"], r"^[0-9a-f]{40}$")
         self.assertIsInstance(e["git_dirty"], bool)
         self.assertIsInstance(e["code_dirty"], bool)
 
 
-class TestLasDosBanderasDeSuciedad(unittest.TestCase):
+class TestTheTwoDirtyFlags(unittest.TestCase):
     """`git_dirty` and `code_dirty` are not redundant, and the difference
     matters.
 
@@ -225,30 +225,30 @@ class TestLasDosBanderasDeSuciedad(unittest.TestCase):
         with mock.patch.object(provenance, "REPO", self.repo):
             return environment()
 
-    def test_con_el_arbol_limpio_las_dos_son_falsas(self):
+    def test_with_a_clean_tree_both_are_false(self):
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (False, False))
 
-    def test_un_registro_modificado_ensucia_el_arbol_pero_no_el_codigo(self):
+    def test_a_modified_record_dirties_the_tree_but_not_the_code(self):
         """The batch case: one script's output does not invalidate the next
         one's commit, and until now the two looked the same."""
         (self.repo / "results" / "cifra.json").write_text('{"a": 1}\n')
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, False))
 
-    def test_el_codigo_modificado_ensucia_las_dos(self):
+    def test_modified_code_dirties_both(self):
         (self.repo / "harness" / "x.py").write_text("y = 2\n")
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
 
-    def test_un_fichero_de_codigo_sin_seguimiento_tambien_cuenta(self):
+    def test_an_untracked_code_file_also_counts(self):
         """A new module without `git add` changes what runs just as a modified
         one does, and the digest already picks it up; the flag must too."""
         (self.repo / "harness" / "nuevo.py").write_text("z = 3\n")
         e = self._env()
         self.assertEqual((e["git_dirty"], e["code_dirty"]), (True, True))
 
-    def test_la_linea_legible_distingue_los_dos_casos(self):
+    def test_the_readable_line_tells_the_two_cases_apart(self):
         with mock.patch.object(provenance, "REPO", self.repo):
             self.assertNotIn("sucio", describe())
             (self.repo / "results" / "cifra.json").write_text('{"a": 1}\n')
@@ -257,28 +257,28 @@ class TestLasDosBanderasDeSuciedad(unittest.TestCase):
             self.assertIn("+codigo-sucio", describe())
 
 
-class TestTodosLosEscritoresRegistranEntorno(unittest.TestCase):
+class TestEveryWriterRecordsEnvironment(unittest.TestCase):
 
-    def test_los_escritores_conocidos_importan_environment(self):
-        for nombre in ESCRITORES:
-            with self.subTest(nombre):
-                mod = importlib.import_module(nombre)
+    def test_the_known_writers_import_environment(self):
+        for name in WRITERS:
+            with self.subTest(name):
+                mod = importlib.import_module(name)
                 self.assertIn("environment", vars(mod),
-                              f"{nombre} no importa harness.provenance.environment")
+                              f"{name} no importa harness.provenance.environment")
 
-    def test_ningun_escritor_de_JSON_se_queda_sin_env(self):
+    def test_no_JSON_writer_is_left_without_env(self):
         """Discovers NEW writers: any `write_text(json.dumps(...))` in the code
         must carry its `_env` block alongside."""
-        sin_env = []
+        without_env = []
         for root in CODE_ROOTS:
             p = REPO / root
-            ficheros = [p] if p.is_file() else [
+            files = [p] if p.is_file() else [
                 f for f in p.rglob("*.py") if "__pycache__" not in f.parts]
-            for f in ficheros:
+            for f in files:
                 src = f.read_text()
                 if re.search(r"write_text\(\s*json\.dumps", src) and '"_env"' not in src:
-                    sin_env.append(str(f.relative_to(REPO)))
-        self.assertEqual(sin_env, [], f"escriben JSON sin procedencia: {sin_env}")
+                    without_env.append(str(f.relative_to(REPO)))
+        self.assertEqual(without_env, [], f"escriben JSON sin procedencia: {without_env}")
 
 
 if __name__ == "__main__":

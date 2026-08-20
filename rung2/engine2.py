@@ -298,12 +298,12 @@ class PriorityEngine:
             return EDGE_SELF
         if winner not in self.ext or loser not in self.ext:
             return EDGE_UNKNOWN
-        ew, el = self.ext[winner], self.ext[loser]
-        if ew & el == 0:
+        ew, item = self.ext[winner], self.ext[loser]
+        if ew & item == 0:
             return EDGE_DISJOINT            # they can never compete: inert
-        if strictly_below(el, ew):
+        if strictly_below(item, ew):
             return EDGE_CONTRADICTS         # subsumption already says otherwise
-        if strictly_below(ew, el):
+        if strictly_below(ew, item):
             return EDGE_OK                  # redundant but consistent; accepted
         if self._reaches(loser, winner):
             return EDGE_CYCLE

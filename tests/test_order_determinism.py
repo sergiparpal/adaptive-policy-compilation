@@ -41,7 +41,7 @@ REPO = Path(__file__).resolve().parent.parent
 HASH_SEEDS = ("0", "1", "2")
 
 
-def correr_hijo(hashseed: str) -> dict:
+def run_child(hashseed: str) -> dict:
     env = dict(os.environ, PYTHONHASHSEED=hashseed)
     p = subprocess.run([sys.executable, "-m", "tests.hashseed_child"],
                        cwd=REPO, env=env, capture_output=True, text=True,
@@ -52,41 +52,41 @@ def correr_hijo(hashseed: str) -> dict:
     return json.loads(p.stdout)
 
 
-class TestInvarianciaAlHashSeed(unittest.TestCase):
+class TestHashSeedInvariance(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.runs = {s: correr_hijo(s) for s in HASH_SEEDS}
+        cls.runs = {s: run_child(s) for s in HASH_SEEDS}
 
-    def test_el_testigo_confirma_que_el_hash_se_aleatoriza(self):
+    def test_the_witness_confirms_the_hash_is_randomized(self):
         """If this fails, the other tests in this class prove nothing."""
-        vistos = {r["set_iteration"] for r in self.runs.values()}
-        self.assertEqual(len(vistos), len(HASH_SEEDS),
+        seen = {r["set_iteration"] for r in self.runs.values()}
+        self.assertEqual(len(seen), len(HASH_SEEDS),
                          "el orden de iteracion del set no cambio entre "
                          "semillas: el resto de esta clase es vacuo")
 
-    def test_el_voraz_del_rung_3_no_depende_del_hash(self):
-        vistos = {r["greedy_p3"] for r in self.runs.values()}
-        self.assertEqual(len(vistos), 1, f"ordenes distintos: {self.runs}")
+    def test_the_rung_3_greedy_does_not_depend_on_the_hash(self):
+        seen = {r["greedy_p3"] for r in self.runs.values()}
+        self.assertEqual(len(seen), 1, f"ordenes distintos: {self.runs}")
 
-    def test_el_voraz_del_rung_4_no_depende_del_hash(self):
-        vistos = {r["greedy_p4"] for r in self.runs.values()}
-        self.assertEqual(len(vistos), 1, f"ordenes distintos: {self.runs}")
+    def test_the_rung_4_greedy_does_not_depend_on_the_hash(self):
+        seen = {r["greedy_p4"] for r in self.runs.values()}
+        self.assertEqual(len(seen), 1, f"ordenes distintos: {self.runs}")
 
-    def test_la_busqueda_local_multiarranque_no_depende_del_hash(self):
+    def test_the_multistart_local_search_does_not_depend_on_the_hash(self):
         """Added August 8, 2026 with the optimizer. Its starts come from a
         declared seed and its argmax never walks a set, but that was believed of
         the greedy too until it was checked here."""
-        for campo in ("multistart_order", "multistart_score", "multistart_from"):
-            with self.subTest(campo):
-                vistos = {r[campo] for r in self.runs.values()}
-                self.assertEqual(len(vistos), 1, f"{campo} difiere: {vistos}")
+        for field in ("multistart_order", "multistart_score", "multistart_from"):
+            with self.subTest(field):
+                seen = {r[field] for r in self.runs.values()}
+                self.assertEqual(len(seen), 1, f"{field} difiere: {seen}")
 
-    def test_la_exactitud_resultante_es_identica(self):
-        vistos = {r["test_p3"] for r in self.runs.values()}
-        self.assertEqual(len(vistos), 1, f"exactitudes distintas: {vistos}")
+    def test_the_resulting_accuracy_is_identical(self):
+        seen = {r["test_p3"] for r in self.runs.values()}
+        self.assertEqual(len(seen), 1, f"exactitudes distintas: {seen}")
 
-    def test_el_material_de_entrada_es_el_esperado(self):
+    def test_the_input_material_is_the_expected_one(self):
         """577 rules: the rung 1 base that rungs 3 and 4 start from. If this
         changes, somebody rewrote results/llm_run.json."""
         for s, r in self.runs.items():
@@ -94,7 +94,7 @@ class TestInvarianciaAlHashSeed(unittest.TestCase):
                 self.assertEqual(r["n_rules"], 577)
 
 
-class TestContratoDelVoraz(unittest.TestCase):
+class TestTheGreedyContract(unittest.TestCase):
     """Properties of the produced order, in the same process."""
 
     @classmethod
@@ -106,19 +106,19 @@ class TestContratoDelVoraz(unittest.TestCase):
         cls.matched, _undef, cls.truth = build_tables(corpus, rules, conds, below)
         cls.train, _test = split(corpus, cls.truth, seed=17)
 
-    def orden(self):
+    def computed_order(self):
         return greedy_order(self.rules, self.matched, self.truth,
                             self.action, self.train)
 
-    def test_es_una_permutacion_de_todas_las_reglas(self):
-        order = self.orden()
+    def test_is_a_permutation_of_every_rule(self):
+        order = self.computed_order()
         self.assertEqual(len(order), len(self.rules))
         self.assertEqual(set(order), {r["rule_id"] for r in self.rules})
 
-    def test_dos_llamadas_dan_el_mismo_orden(self):
-        self.assertEqual(self.orden(), self.orden())
+    def test_two_calls_give_the_same_order(self):
+        self.assertEqual(self.computed_order(), self.computed_order())
 
-    def test_la_particion_es_estable_y_disjunta(self):
+    def test_the_partition_is_stable_and_disjoint(self):
         corpus, rules, ext, conds = load()
         below = subsumption_below(rules, ext)
         _m, _u, truth = build_tables(corpus, rules, conds, below)
@@ -128,16 +128,16 @@ class TestContratoDelVoraz(unittest.TestCase):
         self.assertEqual(set(tr1) & set(te1), set())
         self.assertEqual(len(tr1) + len(te1), 2000)
 
-    def test_las_copias_de_un_caso_caen_del_mismo_lado(self):
+    def test_the_copies_of_a_case_fall_on_the_same_side(self):
         """The split is grouped by case identity: otherwise the test would
         reward memorizing, because 12.8% of the corpus has an exact twin."""
         corpus, rules, ext, conds = load()
         below = subsumption_below(rules, ext)
         _m, _u, truth = build_tables(corpus, rules, conds, below)
         tr, te = split(corpus, truth, seed=17)
-        claves_train = {corpus[i].key() for i in tr}
-        claves_test = {corpus[i].key() for i in te}
-        self.assertEqual(claves_train & claves_test, set())
+        train_keys = {corpus[i].key() for i in tr}
+        test_keys = {corpus[i].key() for i in te}
+        self.assertEqual(train_keys & test_keys, set())
 
 
 if __name__ == "__main__":

@@ -101,12 +101,12 @@ def main() -> int:
     print("  Si ext(A) ⊊ ext(B), todo caso de A casa tambien B, asi que compiten")
     print("  siempre. La subsuncion dice que gana A; la politica dice que gana el")
     print("  de capa mas temprana. Contradiccion si idx(B) < idx(A).")
-    contra = [(a, b) for a, b in pairs if idx_of[b] < idx_of[a]]
-    contra_act = [(a, b) for a, b in contra if act_of[a] != act_of[b]]
-    print(f"\n  contradicciones: {len(contra)} de {comparable} parejas ordenadas")
-    if contra:
-        print(f"  de esas, con ACCIONES DISTINTAS (danyinas): {len(contra_act)}")
-        for a, b in contra[:15]:
+    against = [(a, b) for a, b in pairs if idx_of[b] < idx_of[a]]
+    against_act = [(a, b) for a, b in against if act_of[a] != act_of[b]]
+    print(f"\n  contradicciones: {len(against)} de {comparable} parejas ordenadas")
+    if against:
+        print(f"  de esas, con ACCIONES DISTINTAS (danyinas): {len(against_act)}")
+        for a, b in against[:15]:
             flag = "  <-- acciones distintas" if act_of[a] != act_of[b] else ""
             print(f"    {a}(capa {idx_of[a]:>2}, {act_of[a]}) ≺ "
                   f"{b}(capa {idx_of[b]:>2}, {act_of[b]}){flag}")
@@ -240,7 +240,7 @@ def main() -> int:
             "ordered_pairs": comparable,
             "possible_pairs": total_pairs,
             "incomparable_pairs": total_pairs - comparable,
-            "contradictions_with_layer_order": len(contra),
+            "contradictions_with_layer_order": len(against),
         },
         "arbitration": {
             "specificity": {"action": n - len(spec_conf), "conflict": len(spec_conf),

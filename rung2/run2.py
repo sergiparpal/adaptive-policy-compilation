@@ -60,7 +60,7 @@ def main() -> int:
     # Before generating the corpus and before building the proposer: this run
     # costs money and the destination is checked while nothing has been spent.
     tag = args.tag or default_tag(args.n, args.seed, args.prompt_version)
-    destino = or_exit(
+    destination = or_exit(
         refuse_overwrite,
         Path(args.out) if args.out else OUT / f"llm_run2_{tag}.json",
         overwrite=args.overwrite_record,
@@ -102,8 +102,8 @@ def main() -> int:
     print(f"  {'edge_reasons':<32}{m.get('edge_reasons')}")
     print(f"\n  curva de escalacion por decil: {m['escalation_curve_by_decile']}")
 
-    destino.parent.mkdir(parents=True, exist_ok=True)
-    destino.write_text(json.dumps({
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps({
         "_env": environment(),
         "rung": 2,
         "model": args.model,
@@ -116,7 +116,7 @@ def main() -> int:
         "edge_log": engine.edge_log,
         "records": [vars(r) for r in res.records],
     }, indent=2, default=str))
-    print(f"\n-> {destino}")
+    print(f"\n-> {destination}")
     return 0
 
 

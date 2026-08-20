@@ -53,11 +53,11 @@ from rung3.order_metrics import (agreement_masks, attribution_agreement,
                                     signature, tau, winners)
 from rung3.order_search_ls import space_truth_masks
 
-DEFECTO = "T1_GENERAL"      # the action of H29, the policy's catch-all layer
+DEFAULT = "T1_GENERAL"      # the action of H29, the policy's catch-all layer
 
 
 @cache
-def instancia():
+def instance():
     """The 29 hidden rules over the 134,400 cases, built once for the module.
 
     `masks_over_space` is `optimizer_check`'s, unchanged: the instance this gate
@@ -72,7 +72,7 @@ def instancia():
             "conflicting": conflicting_pairs(ids, M, action)}
 
 
-def pendiente_antes_de(design, k, M, full):
+def slope_before(design, k, M, full):
     """Cases no rule before position k matches, by the obvious loop. The
     independent half of the third check: it does not call the instrument."""
     remaining = full
@@ -81,7 +81,7 @@ def pendiente_antes_de(design, k, M, full):
     return remaining
 
 
-def permutacion_de_pares_libres(design, conflicting):
+def permutation_of_free_pairs(design, conflicting):
     """
     The design order with disjoint adjacent NON-conflicting pairs exchanged.
 
@@ -91,235 +91,235 @@ def permutacion_de_pares_libres(design, conflicting):
     is exactly the set returned, and every one of them is free.
     """
     o = list(design)
-    invertidos = []
+    inverted = []
     k = 0
     while k < len(o) - 1:
-        par = (min(o[k], o[k + 1]), max(o[k], o[k + 1]))
-        if par not in conflicting:
+        pair = (min(o[k], o[k + 1]), max(o[k], o[k + 1]))
+        if pair not in conflicting:
             o[k], o[k + 1] = o[k + 1], o[k]
-            invertidos.append(par)
+            inverted.append(pair)
             k += 2
         else:
             k += 1
-    return o, invertidos
+    return o, inverted
 
 
-class TestElOrdenDeDisenoEsLaPolitica(unittest.TestCase):
+class TestTheDesignOrderIsThePolicy(unittest.TestCase):
     """The anchor. If the instrument, run on the policy, does not give back the
     policy, nothing below it means anything."""
 
-    def test_decide_exactamente_las_etiquetas_verdaderas(self):
-        inst = instancia()
+    def test_decides_exactly_the_true_labels(self):
+        inst = instance()
         d, undecided = decisions(inst["design"], inst["M"], inst["action"],
                                  inst["full"])
         self.assertEqual(undecided, 0)
         self.assertEqual(d, inst["truth"])
 
-    def test_la_verdad_por_clase_parte_el_espacio(self):
-        inst = instancia()
-        junto = 0
+    def test_truth_by_class_partitions_the_space(self):
+        inst = instance()
+        joined = 0
         total = 0
         for m in inst["truth"].values():
-            self.assertEqual(junto & m, 0, "dos clases comparten un caso")
-            junto |= m
+            self.assertEqual(joined & m, 0, "dos clases comparten un caso")
+            joined |= m
             total += m.bit_count()
-        self.assertEqual(junto, inst["full"])
+        self.assertEqual(joined, inst["full"])
         self.assertEqual(total, inst["n"])
 
-    def test_es_la_misma_verdad_que_ya_usaba_el_optimizador(self):
+    def test_is_the_same_truth_the_optimizer_already_used(self):
         """`optimizer_check.masks_over_space` builds this truth for itself and
         keeps it private. The exposed one has to be that one, or two modules
         would be measuring against two oracles."""
-        inst = instancia()
+        inst = instance()
         for rid in inst["ids"]:
             with self.subTest(rid=rid):
                 self.assertEqual(inst["W"][rid],
                                  inst["M"][rid] & inst["truth"][inst["action"][rid]])
 
-    def test_no_se_diferencia_de_si_mismo(self):
-        inst = instancia()
+    def test_does_not_differ_from_itself(self):
+        inst = instance()
         d, _u = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
         self.assertEqual(behavioural_distance(d, d, inst["full"]),
                          (inst["n"], 0, 0))
 
 
-class TestLosParesLibresNoCambianLaMaquina(unittest.TestCase):
+class TestFreePairsDoNotChangeTheMachine(unittest.TestCase):
     """The property the whole instrument rests on, on an instance where the
     pairs are the policy's own and not hand-picked."""
 
-    def test_una_permutacion_de_pares_libres_esta_a_distancia_cero(self):
-        inst = instancia()
-        otro, invertidos = permutacion_de_pares_libres(inst["design"],
-                                                       inst["conflicting"])
-        self.assertGreater(len(invertidos), 0, "no habria nada que comprobar")
+    def test_a_permutation_of_free_pairs_is_at_distance_zero(self):
+        inst = instance()
+        other, inverted = permutation_of_free_pairs(inst["design"],
+                                                    inst["conflicting"])
+        self.assertGreater(len(inverted), 0, "no habria nada que comprobar")
 
         dA, uA = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
-        dB, uB = decisions(otro, inst["M"], inst["action"], inst["full"])
+        dB, uB = decisions(other, inst["M"], inst["action"], inst["full"])
         self.assertEqual(behavioural_distance(dA, dB, inst["full"]),
                          (inst["n"], 0, 0))
         self.assertEqual(signature(dA, uA), signature(dB, uB))
 
-    def test_y_sin_embargo_ha_movido_medio_orden(self):
+    def test_and_yet_it_has_moved_half_the_order(self):
         """Positional churn and behavioural difference are not the same
         quantity, which is the entire reason this module exists."""
-        inst = instancia()
-        otro, invertidos = permutacion_de_pares_libres(inst["design"],
-                                                       inst["conflicting"])
-        churn = positions_moved(inst["design"], otro)
-        self.assertEqual(churn["moved"], 2 * len(invertidos))
+        inst = instance()
+        other, inverted = permutation_of_free_pairs(inst["design"],
+                                                    inst["conflicting"])
+        churn = positions_moved(inst["design"], other)
+        self.assertEqual(churn["moved"], 2 * len(inverted))
         self.assertGreater(churn["fraction_moved"], 0.5)
 
-    def test_el_tau_global_lo_nota_y_el_restringido_no(self):
+    def test_the_global_tau_notices_and_the_restricted_one_does_not(self):
         """Q-d's design premise, checked where the answer is known: a rank
         statistic over all pairs reports a difference that does not exist, and
         restricted to the conflicting pairs it reports none, correctly."""
-        inst = instancia()
-        otro, _inv = permutacion_de_pares_libres(inst["design"],
-                                                 inst["conflicting"])
-        self.assertLess(tau(inst["design"], otro), 1.0)
-        self.assertEqual(tau(inst["design"], otro, inst["conflicting"]), 1.0)
+        inst = instance()
+        other, _inv = permutation_of_free_pairs(inst["design"],
+                                                inst["conflicting"])
+        self.assertLess(tau(inst["design"], other), 1.0)
+        self.assertEqual(tau(inst["design"], other, inst["conflicting"]), 1.0)
 
 
-class TestUnParEnConflictoDesplazaLoQueSeCalculaAMano(unittest.TestCase):
+class TestAConflictingPairShiftsWhatIsComputedByHand(unittest.TestCase):
 
-    def pares_adyacentes_en_conflicto(self, inst):
+    def adjacent_pairs_in_conflict(self, inst):
         design = inst["design"]
         return [(k, design[k], design[k + 1]) for k in range(len(design) - 1)
                 if (min(design[k], design[k + 1]),
                     max(design[k], design[k + 1])) in inst["conflicting"]]
 
-    def test_la_distancia_es_la_interseccion_entre_lo_aun_pendiente(self):
+    def test_the_distance_is_the_intersection_of_what_is_still_pending(self):
         """With the two rules adjacent, the cases that change hands are exactly
         those both match among the ones no earlier rule has taken. Computed here
         with masks and a loop, and compared against what the instrument says."""
-        inst = instancia()
+        inst = instance()
         design, M, action, full = (inst["design"], inst["M"], inst["action"],
                                    inst["full"])
         dA, _u = decisions(design, M, action, full)
-        adyacentes = self.pares_adyacentes_en_conflicto(inst)
-        self.assertGreater(len(adyacentes), 0)
+        adjacent = self.adjacent_pairs_in_conflict(inst)
+        self.assertGreater(len(adjacent), 0)
 
-        esperados = []
-        for k, a, b in adyacentes:
-            pendiente = pendiente_antes_de(design, k, M, full)
-            esperado = (M[a] & M[b] & pendiente).bit_count()
+        expected_ones = []
+        for k, a, b in adjacent:
+            slope = slope_before(design, k, M, full)
+            expected = (M[a] & M[b] & slope).bit_count()
             alt = list(design)
             alt[k], alt[k + 1] = alt[k + 1], alt[k]
             dB, _ = decisions(alt, M, action, full)
             agree, dis, undecided = behavioural_distance(dA, dB, full)
-            with self.subTest(k=k, par=(a, b)):
-                self.assertEqual(dis, esperado)
-                self.assertEqual(agree, inst["n"] - esperado)
+            with self.subTest(k=k, pair=(a, b)):
+                self.assertEqual(dis, expected)
+                self.assertEqual(agree, inst["n"] - expected)
                 self.assertEqual(undecided, 0)
-            esperados.append(esperado)
+            expected_ones.append(expected)
 
-        self.assertTrue(any(e > 0 for e in esperados),
+        self.assertTrue(any(e > 0 for e in expected_ones),
                         "todos vacios: la comprobacion no comprobaria nada")
 
-    def test_estar_en_conflicto_es_necesario_y_no_suficiente(self):
+    def test_being_in_conflict_is_necessary_and_not_sufficient(self):
         """Some adjacent conflicting pairs change nothing at all: they co-match
         somewhere in the space, and nowhere that survives the rules above them.
         Worth pinning, because it is what stops the conflicting-pair census
         from being read as a count of differences that will happen."""
-        inst = instancia()
-        vacios = [
-            (k, a, b) for k, a, b in self.pares_adyacentes_en_conflicto(inst)
+        inst = instance()
+        empty_ones = [
+            (k, a, b) for k, a, b in self.adjacent_pairs_in_conflict(inst)
             if not (inst["M"][a] & inst["M"][b]
-                    & pendiente_antes_de(inst["design"], k, inst["M"],
-                                         inst["full"]))
+                    & slope_before(inst["design"], k, inst["M"],
+                                   inst["full"]))
         ]
-        self.assertGreater(len(vacios), 0)
-        for k, a, b in vacios:
+        self.assertGreater(len(empty_ones), 0)
+        for k, a, b in empty_ones:
             alt = list(inst["design"])
             alt[k], alt[k + 1] = alt[k + 1], alt[k]
             dA, _ = decisions(inst["design"], inst["M"], inst["action"],
                               inst["full"])
             dB, _ = decisions(alt, inst["M"], inst["action"], inst["full"])
-            with self.subTest(par=(a, b)):
+            with self.subTest(pair=(a, b)):
                 self.assertEqual(
                     behavioural_distance(dA, dB, inst["full"])[1], 0)
 
-    def test_el_censo_de_pares_cuadra_consigo_mismo(self):
-        inst = instancia()
-        censo = pair_census(inst["ids"], inst["M"], inst["action"])
-        self.assertEqual(censo["pairs"], 29 * 28 // 2)
-        self.assertEqual(censo["conflicting"], len(inst["conflicting"]))
-        self.assertEqual(censo["co_match"],
-                         censo["conflicting"] + censo["same_action"])
+    def test_the_pair_census_adds_up_with_itself(self):
+        inst = instance()
+        census = pair_census(inst["ids"], inst["M"], inst["action"])
+        self.assertEqual(census["pairs"], 29 * 28 // 2)
+        self.assertEqual(census["conflicting"], len(inst["conflicting"]))
+        self.assertEqual(census["co_match"],
+                         census["conflicting"] + census["same_action"])
 
 
-class TestElOrdenInversoDaLaEscala(unittest.TestCase):
+class TestTheReverseOrderGivesTheScale(unittest.TestCase):
     """The fourth check is not a threshold picked to be passed. Reversing the
     design order puts H29 — `severity >= 1`, the catch-all of the last layer —
     first, so it matches everything and every case is decided T1_GENERAL. The
     numbers below all follow from that."""
 
-    def test_el_inverso_lo_decide_todo_por_defecto(self):
-        inst = instancia()
+    def test_the_reverse_decides_everything_by_default(self):
+        inst = instance()
         d, undecided = decisions(list(reversed(inst["design"])), inst["M"],
                                  inst["action"], inst["full"])
         self.assertEqual(undecided, 0)
-        self.assertEqual(d, {DEFECTO: inst["full"]})
+        self.assertEqual(d, {DEFAULT: inst["full"]})
 
-    def test_acierta_exactamente_la_clase_por_defecto_y_nada_mas(self):
-        inst = instancia()
+    def test_gets_exactly_the_default_class_right_and_nothing_else(self):
+        inst = instance()
         dA, _ = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
         dB, _ = decisions(list(reversed(inst["design"])), inst["M"],
                           inst["action"], inst["full"])
         agree, dis, undecided = behavioural_distance(dA, dB, inst["full"])
-        self.assertEqual(agree, inst["truth"][DEFECTO].bit_count())
+        self.assertEqual(agree, inst["truth"][DEFAULT].bit_count())
         self.assertEqual(dis, inst["n"] - agree)
         self.assertEqual(undecided, 0)
         self.assertGreater(dis / inst["n"], 0.9)
 
         agree_mask, dis_mask, _und = agreement_masks(dA, dB, inst["full"])
-        self.assertEqual(agree_mask, inst["truth"][DEFECTO])
-        self.assertEqual(dis_mask, inst["full"] & ~inst["truth"][DEFECTO])
+        self.assertEqual(agree_mask, inst["truth"][DEFAULT])
+        self.assertEqual(dis_mask, inst["full"] & ~inst["truth"][DEFAULT])
 
-    def test_la_distancia_es_simetrica_a_esta_escala(self):
-        inst = instancia()
+    def test_the_distance_is_symmetric_at_this_scale(self):
+        inst = instance()
         dA, _ = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
         dB, _ = decisions(list(reversed(inst["design"])), inst["M"],
                           inst["action"], inst["full"])
         self.assertEqual(behavioural_distance(dA, dB, inst["full"]),
                          behavioural_distance(dB, dA, inst["full"]))
 
-    def test_por_clase_falla_todas_menos_la_de_por_defecto(self):
-        inst = instancia()
+    def test_per_class_it_fails_all_but_the_default_one(self):
+        inst = instance()
         dA, _ = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
         dB, _ = decisions(list(reversed(inst["design"])), inst["M"],
                           inst["action"], inst["full"])
-        por_clase = per_class_disagreement(dA, dB, inst["truth"])
-        self.assertEqual(set(por_clase), set(inst["truth"]))
-        for c, v in por_clase.items():
+        by_class = per_class_disagreement(dA, dB, inst["truth"])
+        self.assertEqual(set(by_class), set(inst["truth"]))
+        for c, v in by_class.items():
             with self.subTest(clase=c):
                 self.assertEqual(v["undecided_either"], 0)
-                self.assertEqual(v["rate"], 0.0 if c == DEFECTO else 1.0)
+                self.assertEqual(v["rate"], 0.0 if c == DEFAULT else 1.0)
                 self.assertEqual(v["n"], inst["truth"][c].bit_count())
 
-    def test_el_tau_no_distingue_esta_escala_de_la_otra(self):
+    def test_the_tau_does_not_tell_this_scale_from_the_other(self):
         """Both taus bottom out at -1 against the reversed order, where the
         behavioural distance is 96%: the calibration Q-d asks about cannot be
         read off a single pair of extremes."""
-        inst = instancia()
+        inst = instance()
         rev = list(reversed(inst["design"]))
         self.assertEqual(tau(inst["design"], rev), -1.0)
         self.assertEqual(tau(inst["design"], rev, inst["conflicting"]), -1.0)
 
-    def test_donde_coinciden_no_siempre_dispara_la_misma_regla(self):
+    def test_where_they_agree_the_same_rule_does_not_always_fire(self):
         """The attribution shortfall, on the real instance: they agree on the
         T1_GENERAL cases, and on part of those they agree for different
         reasons — H29 in one order, some earlier T1_GENERAL rule in the other."""
-        inst = instancia()
+        inst = instance()
         rev = list(reversed(inst["design"]))
         dA, _ = decisions(inst["design"], inst["M"], inst["action"], inst["full"])
         dB, _ = decisions(rev, inst["M"], inst["action"], inst["full"])
         agree, _dis, _und = behavioural_distance(dA, dB, inst["full"])
         wA, _ = winners(inst["design"], inst["M"], inst["full"])
         wB, _ = winners(rev, inst["M"], inst["full"])
-        misma = attribution_agreement(wA, wB)
-        self.assertGreater(misma, 0)
-        self.assertLess(misma, agree)
+        same = attribution_agreement(wA, wB)
+        self.assertGreater(same, 0)
+        self.assertLess(same, agree)
 
 
 if __name__ == "__main__":

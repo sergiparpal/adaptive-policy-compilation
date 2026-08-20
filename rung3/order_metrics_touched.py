@@ -104,7 +104,7 @@ from rung3.order_metrics import agreement_masks
 from rung3.order_metrics_run import (BUDGETS, SPLITS_FULL, build_instance,
                                         decisions_and_signatures, pairwise,
                                         parity_band, parity_full_supervision,
-                                        per_class_over_pairs, resumen,
+                                        per_class_over_pairs, summary,
                                         run_band_1pct, run_full_supervision)
 
 OUT = Path("results3")
@@ -125,7 +125,7 @@ N_PAIRS = N_ORDERS * (N_ORDERS - 1) // 2          # 2,080
 TOUCHED_PUBLISHED = 1743
 
 # The class the decomposition puts 98.5% of the gap on, and the one C-a names.
-CLASE_C_A = "T2_TECHNICAL"
+CLASS_C_A = "T2_TECHNICAL"
 
 # ---------------------------------------------------------------------------
 # What the record says about itself, as constants so that the committed text and
@@ -179,24 +179,24 @@ def touched_mask(corpus, space=None):
     decomposition and is reported for context: this mask deliberately forgets it.
     """
     space = Space() if space is None else space
-    indice = {c.key(): i for i, c in enumerate(all_cases())}
-    faltan = [k for k in {c.key() for c in corpus} if k not in indice]
-    if faltan:
-        raise ValueError(f"{len(faltan)} corpus cases are not in the case space")
-    golpes = Counter(indice[c.key()] for c in corpus)
+    index = {c.key(): i for i, c in enumerate(all_cases())}
+    missing = [k for k in {c.key() for c in corpus} if k not in index]
+    if missing:
+        raise ValueError(f"{len(missing)} corpus cases are not in the case space")
+    strikes = Counter(index[c.key()] for c in corpus)
     m = 0
-    for i in golpes:
+    for i in strikes:
         m |= 1 << (space.n - 1 - i)
-    reparto = Counter(golpes.values())
+    split = Counter(strikes.values())
     return m, {
         "n_corpus_draws": len(corpus),
-        "n_distinct_points": len(golpes),
+        "n_distinct_points": len(strikes),
         "n_space": space.n,
-        "fraction_of_space": round(len(golpes) / space.n, 6),
-        "max_draws_on_one_point": max(golpes.values()),
-        "mean_draws_per_touched_point": round(len(corpus) / len(golpes), 4),
-        "points_by_multiplicity": {str(k): reparto[k]
-                                   for k in sorted(reparto)},
+        "fraction_of_space": round(len(strikes) / space.n, 6),
+        "max_draws_on_one_point": max(strikes.values()),
+        "mean_draws_per_touched_point": round(len(corpus) / len(strikes), 4),
+        "points_by_multiplicity": {str(k): split[k]
+                                   for k in sorted(split)},
     }
 
 
@@ -222,16 +222,16 @@ def partitions(masks, full):
 # The gates that are this question's own
 # ---------------------------------------------------------------------------
 
-def gate_published_rates(medido, publicado):
+def gate_published_rates(measured, published):
     """The eight `all(c)` and the overall rate, against `order_metrics.json`.
 
     Read from the file, never from a constant here: a gate carrying its own
     expectation is not a gate.
     """
-    filas = {}
-    for c, v in sorted(publicado["by_class"].items()):
-        mio = medido["by_class"].get(c)
-        filas[c] = {
+    rows = {}
+    for c, v in sorted(published["by_class"].items()):
+        mio = measured["by_class"].get(c)
+        rows[c] = {
             "recomputed": mio and mio["rate"], "published": v["rate"],
             "n_recomputed": mio and mio["n_per_pair"],
             "n_published": v["n_per_pair"],
@@ -243,28 +243,28 @@ def gate_published_rates(medido, publicado):
                 "regenerated orders. Parity compares four scores per row; this "
                 "compares the per-class behaviour the question is about.",
         "source": f"{SPACE_RECORD}::per_class.pooled_split0_65",
-        "overall": {"recomputed": medido["overall_rate"],
-                    "published": publicado["overall_rate"],
+        "overall": {"recomputed": measured["overall_rate"],
+                    "published": published["overall_rate"],
                     "reproduces":
-                        medido["overall_rate"] == publicado["overall_rate"]},
-        "n_pairs": {"recomputed": medido["n_pairs"],
-                    "published": publicado["n_pairs"]},
-        "by_class": filas,
-        "passes": all(f["reproduces"] for f in filas.values())
-                  and medido["overall_rate"] == publicado["overall_rate"]
-                  and medido["n_pairs"] == publicado["n_pairs"],
+                        measured["overall_rate"] == published["overall_rate"]},
+        "n_pairs": {"recomputed": measured["n_pairs"],
+                    "published": published["n_pairs"]},
+        "by_class": rows,
+        "passes": all(f["reproduces"] for f in rows.values())
+                  and measured["overall_rate"] == published["overall_rate"]
+                  and measured["n_pairs"] == published["n_pairs"],
     }
 
 
-def gate_matrix(pares, publicados):
+def gate_matrix(pairs, published_ones):
     """All 2,080 per-pair distances against the published matrix, keyed by
     `(i, j)` and never by position."""
-    mio = {(p["i"], p["j"]): p for p in pares}
-    pub = {(p["i"], p["j"]): p for p in publicados}
-    difieren = [list(k) for k in sorted(set(mio) | set(pub))
-                if k not in mio or k not in pub
-                or mio[k]["disagree"] != pub[k]["disagree"]
-                or mio[k]["rate"] != pub[k]["rate"]]
+    mio = {(p["i"], p["j"]): p for p in pairs}
+    pub = {(p["i"], p["j"]): p for p in published_ones}
+    differing = [list(k) for k in sorted(set(mio) | set(pub))
+                 if k not in mio or k not in pub
+                 or mio[k]["disagree"] != pub[k]["disagree"]
+                 or mio[k]["rate"] != pub[k]["rate"]]
     return {
         "what": "the 2,080 per-pair space distances, so that the per-pair half "
                 "of C-d is a re-weighting of the published matrix and not a "
@@ -272,13 +272,13 @@ def gate_matrix(pares, publicados):
         "source": f"{SPACE_RECORD}::pairs_{SET}",
         "n_recomputed": len(mio), "n_published": len(pub),
         "key_sets_identical": set(mio) == set(pub),
-        "pairs_that_differ": difieren[:20],
-        "n_pairs_that_differ": len(difieren),
-        "passes": not difieren and len(mio) == N_PAIRS,
+        "pairs_that_differ": differing[:20],
+        "n_pairs_that_differ": len(differing),
+        "passes": not differing and len(mio) == N_PAIRS,
     }
 
 
-def gate_mask(censo, truth_space, truth_touched, touched, sfull):
+def gate_mask(census, truth_space, truth_touched, touched, sfull):
     """The mask itself: its size, and that the class masks partition both the
     space and it."""
     return {
@@ -288,7 +288,7 @@ def gate_mask(censo, truth_space, truth_touched, touched, sfull):
         "published_source": "FINDINGS_ORDERS.md, part two, S-e: 'the 2000 draws "
                             "touch 1,743 distinct cases'",
         "bits_match_published": touched.bit_count() == TOUCHED_PUBLISHED,
-        "census": censo,
+        "census": census,
         "class_masks_partition_the_space": partitions(truth_space, sfull),
         "class_masks_partition_the_touched_mask": partitions(truth_touched,
                                                              touched),
@@ -304,7 +304,7 @@ def gate_mask(censo, truth_space, truth_touched, touched, sfull):
 # The per-pair half, which is C-d
 # ---------------------------------------------------------------------------
 
-def per_pair_rates(dec, pares, sfull, touched, n_touched):
+def per_pair_rates(dec, pairs, sfull, touched, n_touched):
     """
     Each pair's disagreement restricted to the touched points, beside its rate
     over the whole space.
@@ -313,28 +313,28 @@ def per_pair_rates(dec, pares, sfull, touched, n_touched):
     the same normalization `all` and `touched` use: each is a rate over the
     surface it is measured on.
     """
-    fuera = []
-    for p in pares:
-        _ag, dis, _un = agreement_masks(dec[p["i"]][0], dec[p["j"]][0], sfull)
+    outside = []
+    for p in pairs:
+        _ag, dis, _one = agreement_masks(dec[p["i"]][0], dec[p["j"]][0], sfull)
         t = (dis & touched).bit_count()
-        fuera.append({
+        outside.append({
             "i": p["i"], "j": p["j"],
             "disagree_touched": t,
             "rate_touched": round(t / n_touched, 6),
             "disagree_space": p["disagree"],
             "rate_space": p["rate"],
         })
-    return fuera
+    return outside
 
 
-def ratio_summary(pares, num, den):
+def ratio_summary(pairs, num, den):
     """`resumen()` over a per-pair ratio, with the quantile quotient R-c
     reports. The same `resumen` — quantile by index, not interpolated — that
     produced the 1.880 this is compared against."""
-    r = [p[num] / p[den] for p in pares if p[den]]
-    res = resumen(r)
+    r = [p[num] / p[den] for p in pairs if p[den]]
+    res = summary(r)
     return {
-        "n": len(r), "n_dropped_zero_denominator": len(pares) - len(r),
+        "n": len(r), "n_dropped_zero_denominator": len(pairs) - len(r),
         "resumen": res,
         "p75_over_p25": round(res["p75"] / res["p25"], 6) if res["p25"] else None,
         "max_over_min": round(res["max"] / res["min"], 6) if res["min"] else None,
@@ -348,21 +348,21 @@ def ratio_summary(pares, num, den):
 # NOT re-specified, before or after seeing a number. C-d is REPORTED and carries
 # no verdict, as its own row says.
 
-def signo(x):
+def sign(x):
     return 0 if x == 0 else (1 if x > 0 else -1)
 
 
-def adjudicate(tasas, p_corpus, razones):
+def adjudicate(rates, p_corpus, reasons):
     q = {}
 
     # ---- C-a: the fraction of T2_TECHNICAL's fall carried by WHICH points
-    def f_de(c):
-        t = tasas[c]
+    def f_of(c):
+        t = rates[c]
         den = t["all"] - t["arrivals"]
         return None if den == 0 else round((t["all"] - t["touched"]) / den, 6)
 
-    efes = {c: f_de(c) for c in sorted(tasas)}
-    f = efes[CLASE_C_A]
+    f_values = {c: f_of(c) for c in sorted(rates)}
+    f = f_values[CLASS_C_A]
 
     def v_a(x):
         if x is None:
@@ -378,28 +378,28 @@ def adjudicate(tasas, p_corpus, razones):
                  "Refuted below 0.40 or above 1.10. Nothing forces touched to "
                  "sit between the other two, so f outside [0, 1] is possible "
                  "and is a result, not an error.",
-        "class": CLASE_C_A,
+        "class": CLASS_C_A,
         "band": [0.60, 0.95], "refuted_outside": [0.40, 1.10],
         "f": f,
-        "components": tasas[CLASE_C_A],
-        "f_by_class": efes,
-        "f_outside_unit_interval": {c: v for c, v in efes.items()
+        "components": rates[CLASS_C_A],
+        "f_by_class": f_values,
+        "f_outside_unit_interval": {c: v for c, v in f_values.items()
                                     if v is not None and not 0.0 <= v <= 1.0},
         "verdict": v_a(f),
     }
 
     # ---- C-b: the mechanism is general, not a fact about one class
-    filas_b = {}
-    for c in sorted(tasas):
-        t = tasas[c]
-        s_t, s_a = signo(t["touched"] - t["all"]), signo(t["arrivals"] - t["all"])
-        filas_b[c] = {
+    rows_b = {}
+    for c in sorted(rates):
+        t = rates[c]
+        s_t, s_a = sign(t["touched"] - t["all"]), sign(t["arrivals"] - t["all"])
+        rows_b[c] = {
             "touched_minus_all": round(t["touched"] - t["all"], 6),
             "arrivals_minus_all": round(t["arrivals"] - t["all"], 6),
             "sign_touched": s_t, "sign_arrivals": s_a,
             "signs_match": s_t == s_a,
         }
-    n_match = sum(1 for v in filas_b.values() if v["signs_match"])
+    n_match = sum(1 for v in rows_b.values() if v["signs_match"])
 
     q["C-b"] = {
         "claim": "the sign of touched(c) - all(c) matches the sign of "
@@ -409,19 +409,19 @@ def adjudicate(tasas, p_corpus, razones):
                  "SELF_SERVICE_DEFLECT at 1.103 must go UP, not down, or the "
                  "story is not about which points arrive at all.",
         "threshold": 6, "refuted_at_or_below": 4,
-        "n_classes": len(filas_b), "n_matching": n_match,
-        "by_class": filas_b,
+        "n_classes": len(rows_b), "n_matching": n_match,
+        "by_class": rows_b,
         "the_two_classes_the_row_names": {
-            c: filas_b[c] for c in ("BILLING_SPECIALIST", "SELF_SERVICE_DEFLECT")
-            if c in filas_b},
+            c: rows_b[c] for c in ("BILLING_SPECIALIST", "SELF_SERVICE_DEFLECT")
+            if c in rows_b},
         "verdict": ("HOLDS" if n_match >= 6
                     else "REFUTED" if n_match <= 4 else "NEITHER"),
     }
 
     # ---- C-c: the reconstruction
-    valor = round(sum(p_corpus[c] * tasas[c]["touched"] for c in tasas), 6)
-    original = round(sum(p_corpus[c] * tasas[c]["all"] for c in tasas), 6)
-    medido_corpus = round(sum(p_corpus[c] * tasas[c]["arrivals"] for c in tasas), 6)
+    value = round(sum(p_corpus[c] * rates[c]["touched"] for c in rates), 6)
+    original = round(sum(p_corpus[c] * rates[c]["all"] for c in rates), 6)
+    measured_corpus = round(sum(p_corpus[c] * rates[c]["arrivals"] for c in rates), 6)
 
     def v_c(x):
         if x < 0.035 or x > 0.090:
@@ -435,11 +435,11 @@ def adjudicate(tasas, p_corpus, razones):
                  "0.1167 the original reweighting gave. Refuted outside "
                  "0.035-0.090.",
         "band": [0.043, 0.072], "refuted_outside": [0.035, 0.090],
-        "value": valor,
+        "value": value,
         "original_reweighting_recomputed": original,
         "original_reweighting_published": 0.116685,
         "corpus_pooled_rate_published": 0.057472,
-        "reweighting_of_arrivals_as_a_check": medido_corpus,
+        "reweighting_of_arrivals_as_a_check": measured_corpus,
         "reweighting_of_arrivals_note":
             "the same weights applied to arrivals(c) must give back the pooled "
             "corpus rate up to rounding, because the corpus class sizes ARE the "
@@ -447,7 +447,7 @@ def adjudicate(tasas, p_corpus, razones):
             "finding, and it is here so that the weights can be seen to be the "
             "right ones.",
         "weights": {c: round(p_corpus[c], 6) for c in sorted(p_corpus)},
-        "verdict": v_c(valor),
+        "verdict": v_c(value),
     }
 
     # ---- C-d: reported, not adjudicated
@@ -459,7 +459,7 @@ def adjudicate(tasas, p_corpus, razones):
                  "open. One measurement either way, and no threshold on it.",
         "adjudicates": False,
         "r_c_published_p75_over_p25": 1.880,
-        "ratios": razones,
+        "ratios": reasons,
         "note":
             "three ratios, because the decomposition has two steps and R-c "
             "measured the composition of both. touched/space is the WHICH "
@@ -474,7 +474,7 @@ def adjudicate(tasas, p_corpus, razones):
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    solo_checks = "--checks" in argv
+    only_checks = "--checks" in argv
     t_start = time.time()
 
     print("=" * 78)
@@ -492,20 +492,20 @@ def main(argv=None) -> int:
           f"{len(inst['ids'])} rules, {len(inst['corpus'])} corpus cases, "
           f"{sn:,} space cases")
 
-    espacio = json.loads((OUT / SPACE_RECORD).read_text())
+    space_record = json.loads((OUT / SPACE_RECORD).read_text())
     corpus_rec = json.loads((OUT / CORPUS_RECORD).read_text())
 
     # ------------------------------------------------------------- the mask
     t0 = time.time()
-    touched, censo = touched_mask(inst["corpus"])
+    touched, census = touched_mask(inst["corpus"])
     truth_space = inst["truth_space"]
     truth_touched = restrict(truth_space, touched)
     n_touched = touched.bit_count()
-    g_mask = gate_mask(censo, truth_space, truth_touched, touched, sfull)
+    g_mask = gate_mask(census, truth_space, truth_touched, touched, sfull)
     print()
     print("MASK GATE — the points the corpus touches")
-    print(f"  {censo['n_corpus_draws']:,} draws land on {n_touched:,} distinct "
-          f"points of {sn:,} ({100 * censo['fraction_of_space']:.2f}%), "
+    print(f"  {census['n_corpus_draws']:,} draws land on {n_touched:,} distinct "
+          f"points of {sn:,} ({100 * census['fraction_of_space']:.2f}%), "
           f"published {TOUCHED_PUBLISHED:,}"
           f"{'  ok' if g_mask['bits_match_published'] else '  NO'}")
     print(f"  class masks partition the space "
@@ -526,12 +526,12 @@ def main(argv=None) -> int:
         runs[s] = run_full_supervision(inst, s)
         print(f"  split {s}: {max(BUDGETS)} starts in {runs[s]['seconds']}s")
 
-    par_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
+    pair_a = parity_full_supervision(inst, [runs[s] for s in SPLITS_FULL])
     print()
     print("PARITY GATE — against results3/start_budget_check.json")
     print(f"  {'split':>6}{'starts':>8}{'train_score':>13}{'train':>9}"
           f"{'test':>9}{'space':>9}{'':>4}")
-    for f in par_a:
+    for f in pair_a:
         c = f["comparison"]
         print(f"  {f['split']:>6}{f['starts']:>8}{c['train_score'][0]:>13}"
               f"{c['train'][0]:>9.4f}{c['test'][0]:>9.4f}{c['space'][0]:>9.4f}"
@@ -542,23 +542,23 @@ def main(argv=None) -> int:
                     print(f"        {m}: regenerated {mio} vs published {pub}")
 
     band = run_band_1pct(inst)
-    par_b = parity_band(inst, band)
-    malas = [f for f in par_b if not f["passes"]]
+    pair_b = parity_band(inst, band)
+    bad_ones = [f for f in pair_b if not f["passes"]]
     print()
     print("PARITY GATE — the 1% band against "
           "results3/budget_and_balance_ls.json")
-    print(f"  {len(par_b) - len(malas)}/{len(par_b)} cells reproduce exactly")
-    for f in malas:
+    print(f"  {len(pair_b) - len(bad_ones)}/{len(pair_b)} cells reproduce exactly")
+    for f in bad_ones:
         print(f"    split {f['split']} draw {f['draw']}: "
               + ", ".join(f"{m} regenerated {v[0]} vs published {v[1]}"
                           for m, v in f["comparison"].items() if not v[2]))
 
-    n_filas = len(par_a) + len(par_b)
-    if malas or not all(f["passes"] for f in par_a):
+    n_rows = len(pair_a) + len(pair_b)
+    if bad_ones or not all(f["passes"] for f in pair_a):
         print("\n  STOP: a parity failure means the regenerated orders are not "
               "the measured ones, and nothing below would be about them.")
         return 1
-    print(f"\n  PARITY: PASSES, {n_filas}/{n_filas} rows. The regenerated "
+    print(f"\n  PARITY: PASSES, {n_rows}/{n_rows} rows. The regenerated "
           f"orders are the published ones.")
 
     # ------------------------------------------------- the 65 orders of split 0
@@ -566,11 +566,11 @@ def main(argv=None) -> int:
     t0 = time.time()
     orders = [r["order"] for r in runs[s0]["stats"]["rows"][:N_ORDERS]]
     dec, dig = decisions_and_signatures(inst, orders)
-    pares = pairwise(inst, orders, dec, with_taus=False)
-    print(f"\n  split {s0}: {len(pares):,} pairs of {N_ORDERS} end orders over "
+    pairs = pairwise(inst, orders, dec, with_taus=False)
+    print(f"\n  split {s0}: {len(pairs):,} pairs of {N_ORDERS} end orders over "
           f"the space in {time.time() - t0:.0f}s")
 
-    g_matrix = gate_matrix(pares, espacio[f"pairs_{SET}"])
+    g_matrix = gate_matrix(pairs, space_record[f"pairs_{SET}"])
     print()
     print("MATRIX GATE — the 2,080 per-pair distances against "
           f"{SPACE_RECORD}")
@@ -585,9 +585,9 @@ def main(argv=None) -> int:
 
     # ------------------------------------------------- all(c) and touched(c)
     t0 = time.time()
-    pooled_all = per_class_over_pairs(inst, dec, pares)
+    pooled_all = per_class_over_pairs(inst, dec, pairs)
     g_rates = gate_published_rates(
-        pooled_all, espacio["per_class"]["pooled_split0_65"])
+        pooled_all, space_record["per_class"]["pooled_split0_65"])
     print()
     print(f"RATE GATE — the eight published all(c) against {SPACE_RECORD}")
     for c, f in g_rates["by_class"].items():
@@ -600,69 +600,69 @@ def main(argv=None) -> int:
     if not g_rates["passes"]:
         print("  STOP: the published per-class rates do not reproduce.")
         return 1
-    if solo_checks:
+    if only_checks:
         print(f"\n  ALL FOUR GATES PASS. total cost: {time.time() - t_start:.0f}s")
         return 0
 
     t0 = time.time()
     pooled_touched = per_class_over_pairs(
-        dict(inst, truth_space=truth_touched), dec, pares)
-    print(f"\n  touched(c) over the same {len(pares):,} pairs in "
+        dict(inst, truth_space=truth_touched), dec, pairs)
+    print(f"\n  touched(c) over the same {len(pairs):,} pairs in "
           f"{time.time() - t0:.0f}s")
 
     # arrivals(c): READ, not recomputed. See TRUTH_PROVENANCE.
-    llegadas = corpus_rec["per_class"]["corpus_full"]["pooled_split0_65"]
-    tam_corpus = corpus_rec["per_class"]["corpus_full"]["class_sizes"]
+    arrivals = corpus_rec["per_class"]["corpus_full"]["pooled_split0_65"]
+    corpus_size = corpus_rec["per_class"]["corpus_full"]["class_sizes"]
     n_corpus = corpus_rec["n_corpus"]
 
-    tasas = {}
+    rates = {}
     for c in sorted(truth_space):
-        tasas[c] = {
+        rates[c] = {
             "all": pooled_all["by_class"][c]["rate"],
             "touched": pooled_touched["by_class"][c]["rate"],
-            "arrivals": llegadas["by_class"][c]["rate"],
+            "arrivals": arrivals["by_class"][c]["rate"],
             "n_all": pooled_all["by_class"][c]["n_per_pair"],
             "n_touched": pooled_touched["by_class"][c]["n_per_pair"],
-            "n_arrivals": llegadas["by_class"][c]["n_per_pair"],
+            "n_arrivals": arrivals["by_class"][c]["n_per_pair"],
         }
-    p_corpus = {c: tam_corpus[c] / n_corpus for c in tasas}
+    p_corpus = {c: corpus_size[c] / n_corpus for c in rates}
 
     # ------------------------------------------------------------------- C-d
     t0 = time.time()
-    por_par = per_pair_rates(dec, pares, sfull, touched, n_touched)
+    by_pair = per_pair_rates(dec, pairs, sfull, touched, n_touched)
     pub_corpus = {(p["i"], p["j"]): p["rate"]
                   for p in corpus_rec[f"pairs_{SET}_corpus_full"]}
-    for p in por_par:
+    for p in by_pair:
         p["rate_arrivals"] = pub_corpus[(p["i"], p["j"])]
-    razones = {
-        "touched_over_space": ratio_summary(por_par, "rate_touched",
+    reasons = {
+        "touched_over_space": ratio_summary(by_pair, "rate_touched",
                                             "rate_space"),
-        "arrivals_over_space": ratio_summary(por_par, "rate_arrivals",
+        "arrivals_over_space": ratio_summary(by_pair, "rate_arrivals",
                                              "rate_space"),
-        "arrivals_over_touched": ratio_summary(por_par, "rate_arrivals",
+        "arrivals_over_touched": ratio_summary(by_pair, "rate_arrivals",
                                                "rate_touched"),
     }
-    razones["arrivals_over_space"]["note"] = (
+    reasons["arrivals_over_space"]["note"] = (
         "R-c's own quantity, reproduced here from the two published matrices "
         "joined on (i, j). It must give back 1.880; it is the check that this "
         "file's ratio instrument is the one that produced that figure.")
     print(f"  the three per-pair ratios in {time.time() - t0:.0f}s")
 
     # ------------------------------------------------------- the pooled context
-    dis_touched = sum(p["disagree_touched"] for p in por_par)
-    contexto = {
+    dis_touched = sum(p["disagree_touched"] for p in by_pair)
+    context = {
         "labels": f"split {s0}, fraction 1.0, {N_ORDERS} starts, the "
                   f"{n_touched} touched points of the space",
-        "n_orders": N_ORDERS, "n_pairs": len(por_par),
+        "n_orders": N_ORDERS, "n_pairs": len(by_pair),
         "n_distinct_signatures_over_the_space": len(set(dig)),
         "pooled_rate_over_touched_points": round(
-            dis_touched / (len(por_par) * n_touched), 6),
-        "disagreement_touched": resumen([p["disagree_touched"]
-                                         for p in por_par]),
-        "disagreement_rate_touched": resumen([p["rate_touched"]
-                                              for p in por_par]),
+            dis_touched / (len(by_pair) * n_touched), 6),
+        "disagreement_touched": summary([p["disagree_touched"]
+                                         for p in by_pair]),
+        "disagreement_rate_touched": summary([p["rate_touched"]
+                                              for p in by_pair]),
         "pairs_identical_on_the_touched_points": sum(
-            1 for p in por_par if p["disagree_touched"] == 0),
+            1 for p in by_pair if p["disagree_touched"] == 0),
         "note":
             "the pooled rate here is UNWEIGHTED over the 1,743 touched points "
             "and is not any of the three per-class rates reweighted: it is what "
@@ -671,7 +671,7 @@ def main(argv=None) -> int:
             "S-e's question asked of this surface — the corpus answered zero.",
     }
 
-    q = adjudicate(tasas, p_corpus, razones)
+    q = adjudicate(rates, p_corpus, reasons)
 
     print()
     print("=" * 78)
@@ -679,8 +679,8 @@ def main(argv=None) -> int:
     print("=" * 78)
     print(f"  {'class':<22}{'all(c)':>10}{'touched(c)':>12}{'arrivals(c)':>13}"
           f"{'f(c)':>9}{'signs':>8}")
-    for c in sorted(tasas):
-        t = tasas[c]
+    for c in sorted(rates):
+        t = rates[c]
         f_c = q["C-a"]["f_by_class"][c]
         ok = "match" if q["C-b"]["by_class"][c]["signs_match"] else "-"
         print(f"  {c:<22}{t['all']:>10.4f}{t['touched']:>12.4f}"
@@ -691,17 +691,17 @@ def main(argv=None) -> int:
     print("=" * 78)
     print("C-a..C-d, AS WRITTEN")
     print("=" * 78)
-    print(f"  C-a  f({CLASE_C_A}) = {q['C-a']['f']}   band [0.60, 0.95]   "
+    print(f"  C-a  f({CLASS_C_A}) = {q['C-a']['f']}   band [0.60, 0.95]   "
           f"{q['C-a']['verdict']}")
     print(f"  C-b  signs match in {q['C-b']['n_matching']} of "
           f"{q['C-b']['n_classes']}   at least 6   {q['C-b']['verdict']}")
     print(f"  C-c  reweighting on touched = {q['C-c']['value']}   "
           f"band [0.043, 0.072]   {q['C-c']['verdict']}")
     print(f"  C-d  reported: p75/p25 touched/space "
-          f"{razones['touched_over_space']['p75_over_p25']}, "
-          f"arrivals/space {razones['arrivals_over_space']['p75_over_p25']}, "
+          f"{reasons['touched_over_space']['p75_over_p25']}, "
+          f"arrivals/space {reasons['arrivals_over_space']['p75_over_p25']}, "
           f"arrivals/touched "
-          f"{razones['arrivals_over_touched']['p75_over_p25']}")
+          f"{reasons['arrivals_over_touched']['p75_over_p25']}")
 
     # ------------------------------------------------------------- the record
     payload = {
@@ -743,12 +743,12 @@ def main(argv=None) -> int:
         "n_corpus": len(inst["corpus"]),
         "splits": list(SPLITS_FULL),
         "budgets": list(BUDGETS),
-        "touched_census": censo,
+        "touched_census": census,
         "gates": {
             "mask": g_mask,
-            "parity_rows": n_filas,
-            "parity_full_supervision": par_a,
-            "parity_band_1pct": par_b,
+            "parity_rows": n_rows,
+            "parity_full_supervision": pair_a,
+            "parity_band_1pct": pair_b,
             "matrix": g_matrix,
             "published_rates": g_rates,
         },
@@ -760,14 +760,14 @@ def main(argv=None) -> int:
             "tests/test_order_metrics_run.py pins the tie-break it rests on. "
             "MULTISTART_SEED, MULTISTART_STARTS and DECLARED_NEIGHBOURHOOD are "
             "untouched and no figure here is an argument about any of them.",
-        "rates_by_class": tasas,
+        "rates_by_class": rates,
         "pooled_all": pooled_all,
         "pooled_touched": pooled_touched,
-        "pooled_arrivals_read_from_the_corpus_record": llegadas,
-        "corpus_class_sizes": tam_corpus,
-        "set_summary_over_the_space_published": espacio["sets"][SET],
-        "set_summary_over_the_touched_points": contexto,
-        "pairs_split0_starts65_touched": por_par,
+        "pooled_arrivals_read_from_the_corpus_record": arrivals,
+        "corpus_class_sizes": corpus_size,
+        "set_summary_over_the_space_published": space_record["sets"][SET],
+        "set_summary_over_the_touched_points": context,
+        "pairs_split0_starts65_touched": by_pair,
         "pairs_stored":
             "the full 2,080-row triangle, each row carrying its distance over "
             "the space, over the touched points, and its published rate over "

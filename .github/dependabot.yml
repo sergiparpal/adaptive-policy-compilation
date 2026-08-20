@@ -1,13 +1,13 @@
 # Automatic updates for the CI actions.
 #
 # WHY IT IS NEEDED. The actions are pinned to the full SHA (see
-# .github/workflows/pruebas.yml), which is the right thing —a tag can be
+# .github/workflows/tests.yml), which is the right thing —a tag can be
 # repointed by its owner at other code, a commit cannot— but it has a cost: a
 # SHA does not age noisily. It sits still and silent while the action publishes
 # new versions, and the pin ends up a fossil instead of a choice. This turns
 # that silence into a weekly PR. Dependabot rewrites the SHA and its
 # `# vX.Y.Z` comment together, which is exactly what
-# `tests/test_automatizacion.py` requires.
+# `tests/test_automation.py` requires.
 #
 # WHY ONLY `github-actions`, AND NOT `pip`. There is a `requirements.txt` and a
 # `requirements.lock.txt` here, so unlike the other repositories in this account

@@ -8,7 +8,7 @@
 # It costs zero API calls: the suite calls the measurement functions, never the
 # scripts' `main()`.
 
-name: pruebas
+name: tests
 
 on:
   push:
@@ -78,19 +78,19 @@ jobs:
       # and that it stays that way is part of what is checked. Without `openai`
       # installed, the test comparing the live version with the pin is skipped,
       # just as locally without the venv.
-      - name: la suite
+      - name: the suite
         run: python -m unittest discover
 
       # The suite declares that it does not write to results*/. Here it is
       # checked instead of believed: if one day a test calls a `main()` that
       # dumps its JSON, it shows up here and not when somebody commits the
       # trampled record.
-      - name: los registros siguen intactos
+      - name: the records are still intact
         run: |
-          sucio="$(git status --porcelain -- results results2 results3 results4)"
-          if [ -n "$sucio" ]; then
-            echo "la suite ha escrito en results*/:"
-            echo "$sucio"
+          dirty="$(git status --porcelain -- results results2 results3 results4)"
+          if [ -n "$dirty" ]; then
+            echo "the suite has written to results*/:"
+            echo "$dirty"
             exit 1
           fi
 

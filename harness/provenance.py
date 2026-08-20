@@ -38,7 +38,7 @@ WHAT IS STORED, AND WHAT EACH FIELD IS FOR
   several records back to back. The first runs with a clean tree and from then
   on each script has left its own JSON modified, so all the others recorded
   `git_dirty: true` because of the previous one's output. The flag was not
-  lying; it was measuring something else. See results2/NOTA_REGISTRO.md.
+  lying; it was measuring something else. See results2/RECORD_NOTES.md.
   code_digest     sha256 (16 hex) of the code that produces the figures: every
                   .py in harness/, rung2/, rung3/, rung4/ and
                   run_experiment.py. It identifies the code even if the tree is
@@ -117,10 +117,10 @@ def code_digest() -> str | None:
 def environment(**extra: Any) -> dict[str, Any]:
     """The `_env` block that accompanies every results JSON."""
     commit = _git("rev-parse", "HEAD")
-    arbol = _git("status", "--porcelain")
+    tree = _git("status", "--porcelain")
     # The same status scoped to the code. With `--`, git does not confuse a
     # non-existent path with a branch, and CODE_ROOTS mixes dirs and a file.
-    codigo = _git("status", "--porcelain", "--", *CODE_ROOTS)
+    code = _git("status", "--porcelain", "--", *CODE_ROOTS)
     env: dict[str, Any] = {
         "recorded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "python": platform.python_version(),
@@ -128,8 +128,8 @@ def environment(**extra: Any) -> dict[str, Any]:
         "platform": platform.platform(),
         "pythonhashseed": os.environ.get("PYTHONHASHSEED"),
         "git_commit": commit,
-        "git_dirty": bool(arbol) if arbol is not None else None,
-        "code_dirty": bool(codigo) if codigo is not None else None,
+        "git_dirty": bool(tree) if tree is not None else None,
+        "code_dirty": bool(code) if code is not None else None,
         "code_digest": code_digest(),
     }
     env.update(extra)
@@ -143,14 +143,14 @@ def describe() -> str:
     # The mark says what to distrust. Without git nothing is marked: the commit
     # itself already says that.
     if e["code_dirty"]:
-        marca = "+codigo-sucio"
+        marker = "+codigo-sucio"
     elif e["git_dirty"]:
-        marca = "+arbol-sucio"
+        marker = "+arbol-sucio"
     else:
-        marca = ""
+        marker = ""
     commit = (e["git_commit"] or "sin git")[:8]
     return (f"python {e['python']} · openai {e['openai'] or '—'} · "
-            f"PYTHONHASHSEED {seed} · {commit}{marca} · "
+            f"PYTHONHASHSEED {seed} · {commit}{marker} · "
             f"codigo {e['code_digest']}")
 
 

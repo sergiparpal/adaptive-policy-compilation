@@ -38,7 +38,7 @@ stacking on top of it. Without overlap there is no conflict (0 in all four runs)
 and without conflict declared priority cannot be measured: the mechanism sits
 inert.
 
-Data in `comparativa.json`.
+Data in `comparison.json`.
 
 ### Change 1 — how overlap is framed in the prompt
 

@@ -14,7 +14,7 @@ full, with their prompt, their retries and their parsing; the only thing that
 does not happen is the HTTP request. Replacing the whole proposer would have
 left untested precisely the code that costs money to exercise.
 
-Since the `openai` SDK is not installed without the venv, `sdk_falso` injects a
+Since the `openai` SDK is not installed without the venv, `fake_sdk` injects a
 module into `sys.modules` before building the proposer, and removes it on exit.
 
 WHERE THE RESPONSES COME FROM. There is no script file: they are derived from
@@ -32,7 +32,7 @@ in form. Turn by turn, from the rung 1 record:
                             and what arrived was the empty string.
     2  badly closed JSON    the text is NOT recoverable. One is synthesized that
                             fails at the same line, column and offset as the
-                            record (see `_json_roto`). It reconstructs the
+                            record (see `_broken_json`). It reconstructs the
                             failure mode, not the text.
    19  payload with no      the conditions are not recorded; a payload without
         `action`            `action` reproduces the recorded outcome, which is
@@ -70,15 +70,15 @@ REPO = Path(__file__).resolve().parent.parent
 
 # Never a real key: the proposer reads the real one from the environment (hard
 # rule 7) and the tests check precisely that it reads it from there.
-CLAVE_FALSA = "sk-doble-de-pruebas-esto-no-es-una-clave"
+FAKE_KEY = "sk-doble-de-pruebas-esto-no-es-una-clave"
 
 # max_retries=2 in both proposers -> three calls before giving up.
 INTENTOS = 3
 
-MARCA_TICKET = "TICKET EN IMPASSE:"
+TICKET_MARKER = "TICKET EN IMPASSE:"
 
 
-class Desincronizado(BaseException):
+class OutOfSync(BaseException):
     """The script does not recognize the case it is being asked about.
 
     It inherits from BaseException, not from Exception, ON PURPOSE: both
@@ -92,7 +92,7 @@ class Desincronizado(BaseException):
 
 # Each rung has its own parser and its own error message. The script needs the
 # exact prefix to recover from it the response that arrived.
-SIN_JSON = {1: "sin objeto JSON en la respuesta:", 2: "sin objeto JSON:"}
+NO_JSON = {1: "sin objeto JSON en la respuesta:", 2: "sin objeto JSON:"}
 
 
 # ---------------------------------------------------------------------------
@@ -100,22 +100,22 @@ SIN_JSON = {1: "sin objeto JSON en la respuesta:", 2: "sin objeto JSON:"}
 # ---------------------------------------------------------------------------
 
 @dataclass
-class _Mensaje:
+class _Message:
     content: str | None
 
 
 @dataclass
-class _Opcion:
-    message: _Mensaje
+class _Choice:
+    message: _Message
 
 
 @dataclass
 class _Completion:
-    choices: list[_Opcion]
+    choices: list[_Choice]
 
 
 @dataclass
-class _Bloque:
+class _Block:
     """An Anthropic content block. `type` may not be 'text': the proposer must
     keep only those that are."""
     type: str
@@ -123,86 +123,86 @@ class _Bloque:
 
 
 @dataclass
-class _RespuestaAnthropic:
-    content: list[_Bloque]
+class _AnthropicResponse:
+    content: list[_Block]
 
 
 # ---------------------------------------------------------------------------
 # The fake clients
 # ---------------------------------------------------------------------------
 
-class ClienteOpenAIFalso:
+class FakeOpenAIClient:
     """Compatible with what the proposer uses: `.chat.completions.create`."""
 
-    def __init__(self, guion: Callable[[dict], Any]):
-        self.construido_con: dict[str, Any] = {}    # base_url and api_key
+    def __init__(self, script: Callable[[dict], Any]):
+        self.built_with: dict[str, Any] = {}    # base_url and api_key
         self.peticiones: list[dict] = []
-        self._guion = guion
+        self._script = script
         self.chat = types.SimpleNamespace(
             completions=types.SimpleNamespace(create=self._create))
 
     def _create(self, **kwargs: Any) -> _Completion:
         self.peticiones.append(kwargs)
-        return _Completion(choices=[_Opcion(_Mensaje(self._guion(kwargs)))])
+        return _Completion(choices=[_Choice(_Message(self._script(kwargs)))])
 
 
-class ClienteAnthropicFalso:
+class FakeAnthropicClient:
     """Compatible with what the proposer uses: `.messages.create`."""
 
-    def __init__(self, guion: Callable[[dict], Any]):
-        self.construido_con: dict[str, Any] = {}
+    def __init__(self, script: Callable[[dict], Any]):
+        self.built_with: dict[str, Any] = {}
         self.peticiones: list[dict] = []
-        self._guion = guion
+        self._script = script
         self.messages = types.SimpleNamespace(create=self._create)
 
-    def _create(self, **kwargs: Any) -> _RespuestaAnthropic:
+    def _create(self, **kwargs: Any) -> _AnthropicResponse:
         self.peticiones.append(kwargs)
-        salida = self._guion(kwargs)
-        bloques = ([_Bloque("text", salida)] if isinstance(salida, str)
-                   else list(salida))
-        return _RespuestaAnthropic(content=bloques)
+        output = self._script(kwargs)
+        blocks = ([_Block("text", output)] if isinstance(output, str)
+                  else list(output))
+        return _AnthropicResponse(content=blocks)
 
 
-def _fabrica(cliente):
+def _fabrica(client):
     """What the proposer calls as `OpenAI(...)` or `Anthropic(...)`."""
-    def crear(**kwargs: Any):
-        cliente.construido_con = kwargs
-        return cliente
-    return crear
+    def create(**kwargs: Any):
+        client.built_with = kwargs
+        return client
+    return create
 
 
 @contextmanager
-def sdk_falso(openai: ClienteOpenAIFalso | None = None,
-              anthropic: ClienteAnthropicFalso | None = None):
+def fake_sdk(openai: FakeOpenAIClient | None = None,
+             anthropic: FakeAnthropicClient | None = None):
     """Injects the SDKs and a fake key for the duration of the block.
 
     The MODULE is injected, not the proposer: `from openai import OpenAI` inside
     `__init__` resolves against this. On exit whatever was there is restored,
     installed or not, so that the suite runs the same with and without the venv.
     """
-    previos = {n: sys.modules.get(n) for n in ("openai", "anthropic")}
+    priors = {n: sys.modules.get(n) for n in ("openai", "anthropic")}
     if openai is not None:
         sys.modules["openai"] = types.SimpleNamespace(OpenAI=_fabrica(openai))
     if anthropic is not None:
         sys.modules["anthropic"] = types.SimpleNamespace(
             Anthropic=_fabrica(anthropic))
-    entorno = {"OPENROUTER_API_KEY": CLAVE_FALSA, "ANTHROPIC_API_KEY": CLAVE_FALSA}
+    env = {"OPENROUTER_API_KEY": FAKE_KEY, "ANTHROPIC_API_KEY": FAKE_KEY}
     try:
-        with mock.patch.dict("os.environ", entorno):
+        with mock.patch.dict("os.environ", env):
             yield
     finally:
-        for nombre, modulo in previos.items():
-            if modulo is None:
-                sys.modules.pop(nombre, None)
+        for name, module in priors.items():
+            if module is None:
+                sys.modules.pop(name, None)
             else:
-                sys.modules[nombre] = modulo
+                sys.modules[name] = module
 
 
 # ---------------------------------------------------------------------------
 # Scripts
 # ---------------------------------------------------------------------------
 
-class RespuestasFijas:
+class FixedResponses:
     """Returns texts in order, repeating the last if asked for more."""
 
     def __init__(self, *textos: Any):
@@ -210,77 +210,77 @@ class RespuestasFijas:
         self.n = 0
 
     def __call__(self, kwargs: dict) -> Any:
-        texto = self.textos[min(self.n, len(self.textos) - 1)]
+        text = self.textos[min(self.n, len(self.textos) - 1)]
         self.n += 1
-        return texto
+        return text
 
 
-def ticket_de(kwargs: dict) -> dict:
+def ticket_of(kwargs: dict) -> dict:
     """The case travelling in the request.
 
     It is looked for in ALL user messages because on the retry the last one is
     the repair instruction, not the ticket.
     """
     for m in kwargs["messages"]:
-        if m["role"] == "user" and MARCA_TICKET in m["content"]:
-            return json.loads(m["content"].split(MARCA_TICKET, 1)[1])
+        if m["role"] == "user" and TICKET_MARKER in m["content"]:
+            return json.loads(m["content"].split(TICKET_MARKER, 1)[1])
     raise AssertionError("la peticion no lleva ningun ticket")
 
 
 @dataclass
-class Turno:
+class Turn:
     """One escalation from the record and what the model answered."""
     idx: int
-    caso: dict
-    texto: Any
-    llamadas: int = 1                       # 1, or INTENTOS if the text fails to parse
+    case: dict
+    text: Any
+    calls: int = 1                       # 1, or INTENTOS if the text fails to parse
 
 
 @dataclass
-class Guion:
+class Script:
     """Replays the turns and checks who is being asked about in each one."""
-    turnos: list[Turno]
-    extraer: Callable[[dict], dict] = ticket_de
+    turns: list[Turn]
+    extraer: Callable[[dict], dict] = ticket_of
     _t: int = 0                             # current turn
     _c: int = 0                             # calls consumed from the turn
-    vistos: list[int] = field(default_factory=list)
+    seen: list[int] = field(default_factory=list)
 
     def __call__(self, kwargs: dict) -> Any:
-        if self._t >= len(self.turnos):
-            raise Desincronizado(
-                f"el guion tiene {len(self.turnos)} turnos y se pide uno mas: "
+        if self._t >= len(self.turns):
+            raise OutOfSync(
+                f"el guion tiene {len(self.turns)} turnos y se pide uno mas: "
                 "la ruta escala mas veces que la tirada registrada")
-        turno = self.turnos[self._t]
-        pedido = self.extraer(kwargs)
-        if pedido != turno.caso:
-            raise Desincronizado(
-                f"turno {self._t} (caso {turno.idx}): se esperaba {turno.caso} "
-                f"y se pregunta por {pedido}")
+        turn = self.turns[self._t]
+        requested = self.extraer(kwargs)
+        if requested != turn.case:
+            raise OutOfSync(
+                f"turno {self._t} (caso {turn.idx}): se esperaba {turn.case} "
+                f"y se pregunta por {requested}")
         self._c += 1
         if self._c == 1:
-            self.vistos.append(turno.idx)
-        if self._c >= turno.llamadas:
+            self.seen.append(turn.idx)
+        if self._c >= turn.calls:
             self._t += 1
             self._c = 0
-        return turno.texto
+        return turn.text
 
     @property
     def agotado(self) -> bool:
-        return self._t == len(self.turnos) and self._c == 0
+        return self._t == len(self.turns) and self._c == 0
 
     @property
-    def llamadas_previstas(self) -> int:
-        return sum(t.llamadas for t in self.turnos)
+    def calls_expected(self) -> int:
+        return sum(t.calls for t in self.turns)
 
 
 # ---------------------------------------------------------------------------
 # Reconstruction of the script from a published record
 # ---------------------------------------------------------------------------
 
-POSICION = re.compile(r"line (\d+) column (\d+) \(char (\d+)\)")
+POSITION = re.compile(r"line (\d+) column (\d+) \(char (\d+)\)")
 
 
-def _json_roto(lineno: int, colno: int, pos: int) -> str:
+def _broken_json(lineno: int, colno: int, pos: int) -> str:
     """A text that `json.loads` rejects at EXACTLY that position.
 
     The raw text of the badly closed responses was not stored; what is recorded
@@ -290,71 +290,71 @@ def _json_roto(lineno: int, colno: int, pos: int) -> str:
     """
     if lineno < 3 or colno < 11:
         raise NotImplementedError(f"posicion no reconstruible: {lineno}:{colno}")
-    inicio = pos - (colno - 1)              # index where the bad line starts
+    start = pos - (colno - 1)              # index where the bad line starts
     lineas = [f'"k{i}": "",' for i in range(1, lineno - 1)]
-    sobra = inicio - (2 + sum(len(x) + 1 for x in lineas))
-    if sobra < 0:
+    left_over = start - (2 + sum(len(x) + 1 for x in lineas))
+    if left_over < 0:
         raise NotImplementedError(f"cabecera imposible para char {pos}")
-    lineas[0] = f'"k1": "{"a" * sobra}",'
-    cabecera = "{\n" + "".join(x + "\n" for x in lineas)
-    assert len(cabecera) == inicio, "el relleno de la cabecera no cuadra"
-    return cabecera + '"note": "' + "b" * (colno - 11) + '""y": 1}'
+    lineas[0] = f'"k1": "{"a" * left_over}",'
+    header = "{\n" + "".join(x + "\n" for x in lineas)
+    assert len(header) == start, "el relleno de la cabecera no cuadra"
+    return header + '"note": "' + "b" * (colno - 11) + '""y": 1}'
 
 
-def _texto_de_fallo(rec: dict, caso: dict, sin_json: str) -> str:
+def _failure_text(rec: dict, case: dict, without_json: str) -> str:
     """Reconstructs the response from the recorded reason.
 
     Each branch is a different failure mode, from those enumerated above. An
     unknown reason blows up: better that than a script reproducing something
     else and a green test that means nothing.
     """
-    razon: str = rec["rejected_reason"]
+    reason: str = rec["rejected_reason"]
 
-    if razon.startswith(f"proposal_failed: {sin_json}"):
+    if reason.startswith(f"proposal_failed: {without_json}"):
         # The reason carries the repr of what arrived (first 200 characters).
-        return ast.literal_eval(razon.split(sin_json, 1)[1].strip())
+        return ast.literal_eval(reason.split(without_json, 1)[1].strip())
 
-    if razon.startswith("proposal_failed: JSON invalido"):
-        if "Expecting ',' delimiter" not in razon:
-            raise NotImplementedError(f"error de JSON no reconstruible: {razon}")
-        m = POSICION.search(razon)
-        return _json_roto(*(int(g) for g in m.groups()))
+    if reason.startswith("proposal_failed: JSON invalido"):
+        if "Expecting ',' delimiter" not in reason:
+            raise NotImplementedError(f"error de JSON no reconstruible: {reason}")
+        m = POSITION.search(reason)
+        return _broken_json(*(int(g) for g in m.groups()))
 
-    if razon.startswith("accion invalida"):
-        valor = ast.literal_eval(razon.split(":", 1)[1].strip())
-        cuerpo: dict[str, Any] = {"conditions": [], "note": "sin accion"}
-        if valor is not None:
-            cuerpo["action"] = valor
-        return json.dumps(cuerpo)
+    if reason.startswith("accion invalida"):
+        value = ast.literal_eval(reason.split(":", 1)[1].strip())
+        body: dict[str, Any] = {"conditions": [], "note": "sin accion"}
+        if value is not None:
+            body["action"] = value
+        return json.dumps(body)
 
-    if razon == "la regla no casa el caso que la origino":
+    if reason == "la regla no casa el caso que la origino":
         # The action is recorded; the conditions are not. A single condition
         # false about the case is enough to reproduce the rejection.
-        otra = 1 if caso["severity"] != 1 else 2
+        another = 1 if case["severity"] != 1 else 2
         return json.dumps({
             "action": rec["predicted"],
-            "conditions": [{"attr": "severity", "op": "eq", "value": otra}],
+            "conditions": [{"attr": "severity", "op": "eq", "value": another}],
             "note": "no casa el caso",
         })
 
-    raise NotImplementedError(f"motivo no reconstruible: {razon!r}")
+    raise NotImplementedError(f"motivo no reconstruible: {reason!r}")
 
 
-def _llamadas(texto: Any, parse) -> int:
+def _calls(text: Any, parse) -> int:
     """A turn consumes one call if the text parses, and `INTENTOS` if not."""
     try:
-        parse(texto)
+        parse(text)
     except Exception:                                            # noqa: BLE001
         return INTENTOS
     return 1
 
 
-def _cuerpo_p1(regla: dict) -> dict:
-    return {"action": regla["action"], "conditions": regla["conditions"],
-            "note": regla["note"]}
+def _body_p1(rule: dict) -> dict:
+    return {"action": rule["action"], "conditions": rule["conditions"],
+            "note": rule["note"]}
 
 
-def _cuerpo_p2(regla: dict) -> dict:
+def _body_p2(rule: dict) -> dict:
     """Like rung 1's, plus the priority edges that were proposed.
 
     The accepted ones are in `beats`/`loses_to` and the discarded ones in
@@ -364,43 +364,43 @@ def _cuerpo_p2(regla: dict) -> dict:
     same rule, which is the case in the eight recorded runs: zero accepted
     edges.
     """
-    cuerpo = _cuerpo_p1(regla)
-    beats, loses = list(regla["beats"]), list(regla["loses_to"])
-    for arista in regla["dropped_edges"]:
-        direccion, ref = arista.split(":")[:2]
-        (beats if direccion == "beats" else loses).append(ref)
-    cuerpo["beats"], cuerpo["loses_to"] = beats, loses
-    return cuerpo
+    body = _body_p1(rule)
+    beats, loses = list(rule["beats"]), list(rule["loses_to"])
+    for edge in rule["dropped_edges"]:
+        direction, ref = edge.split(":")[:2]
+        (beats if direction == "beats" else loses).append(ref)
+    body["beats"], body["loses_to"] = beats, loses
+    return body
 
 
-def _turnos(reg: dict, corpus, parse, cuerpo, sin_json: str) -> list[Turno]:
-    reglas = {r["born_at"]: r for r in reg["rules"]}
-    turnos = []
+def _turns(reg: dict, corpus, parse, body, without_json: str) -> list[Turn]:
+    rules = {r["born_at"]: r for r in reg["rules"]}
+    turns = []
     for rec in reg["records"]:
         if not rec["escalated"]:
             continue
-        caso = corpus[rec["idx"]].as_dict()
-        regla = reglas.get(rec["idx"])
-        texto = (json.dumps(cuerpo(regla), ensure_ascii=False, indent=2)
-                 if regla is not None else _texto_de_fallo(rec, caso, sin_json))
-        turnos.append(Turno(rec["idx"], caso, texto, _llamadas(texto, parse)))
-    return turnos
+        case = corpus[rec["idx"]].as_dict()
+        rule = rules.get(rec["idx"])
+        text = (json.dumps(body(rule), ensure_ascii=False, indent=2)
+                if rule is not None else _failure_text(rec, case, without_json))
+        turns.append(Turn(rec["idx"], case, text, _calls(text, parse)))
+    return turns
 
 
-def registro(nombre: str) -> dict:
+def record(name: str) -> dict:
     """A published record, read from the repo."""
-    return json.loads((REPO / nombre).read_text())
+    return json.loads((REPO / name).read_text())
 
 
-def guion_rung1(reg: dict) -> Guion:
+def script_rung1(reg: dict) -> Script:
     from harness.proposers import parse_payload
 
     corpus = generate_corpus(reg["metrics"]["n_cases"], seed=17)
-    return Guion(_turnos(reg, corpus, parse_payload, _cuerpo_p1, SIN_JSON[1]))
+    return Script(_turns(reg, corpus, parse_payload, _body_p1, NO_JSON[1]))
 
 
-def guion_rung2(reg: dict) -> Guion:
+def script_rung2(reg: dict) -> Script:
     from rung2.proposers2 import parse_payload
 
     corpus = generate_corpus(reg["n"], seed=reg["seed"])
-    return Guion(_turnos(reg, corpus, parse_payload, _cuerpo_p2, SIN_JSON[2]))
+    return Script(_turns(reg, corpus, parse_payload, _body_p2, NO_JSON[2]))

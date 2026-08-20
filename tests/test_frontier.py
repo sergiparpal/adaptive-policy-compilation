@@ -44,18 +44,18 @@ MEMORIZATION_FLOOR = 0.1176
 UNIQUE_CASES = 1743
 
 
-def correr_keep_k(k: int) -> dict:
+def run_keep_k(k: int) -> dict:
     engine = RuleEngine()
     return run_shadow(list(corpus()), engine, KeepKProposer(k)).metrics
 
 
-class TestFronteraKeepK(unittest.TestCase):
+class TestKeepKFrontier(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.m = {k: correr_keep_k(k) for k in KEEP_K}
+        cls.m = {k: run_keep_k(k) for k in KEEP_K}
 
-    def test_cifras_publicadas(self):
+    def test_published_figures(self):
         for k, (n_rules, reuse, silent, escal) in KEEP_K.items():
             with self.subTest(k=k):
                 m = self.m[k]
@@ -64,7 +64,7 @@ class TestFronteraKeepK(unittest.TestCase):
                 self.assertAlmostEqual(m["silent_error_rate"], silent, places=4)
                 self.assertAlmostEqual(m["escalation_rate"], escal, places=4)
 
-    def test_el_mock_recibe_la_accion_correcta_gratis(self):
+    def test_the_mock_gets_the_correct_action_for_free(self):
         """Deliberate: it isolates the GENERALIZATION axis from the ACTING one.
         With the real LLM the second source of error appears, measured
         separately."""
@@ -72,7 +72,7 @@ class TestFronteraKeepK(unittest.TestCase):
             with self.subTest(k=k):
                 self.assertEqual(self.m[k]["proposal_action_accuracy"], 1.0)
 
-    def test_los_mocks_nunca_entran_en_conflicto(self):
+    def test_the_mocks_never_enter_conflict(self):
         """All their rules have k conditions: uniform specificity, so the
         tie-break always falls to age. It is the reason these figures do not
         serve as a quality reference."""
@@ -80,56 +80,56 @@ class TestFronteraKeepK(unittest.TestCase):
             with self.subTest(k=k):
                 self.assertEqual(self.m[k]["conflicts"], 0)
 
-    def test_mas_condiciones_es_menos_reutilizacion_y_menos_error(self):
+    def test_more_conditions_is_less_reuse_and_less_error(self):
         reusos = [self.m[k]["reuse_rate"] for k in sorted(KEEP_K)]
-        errores = [self.m[k]["silent_error_rate"] for k in sorted(KEEP_K)]
+        errors = [self.m[k]["silent_error_rate"] for k in sorted(KEEP_K)]
         self.assertEqual(reusos, sorted(reusos, reverse=True))
-        self.assertEqual(errores, sorted(errores, reverse=True))
+        self.assertEqual(errors, sorted(errors, reverse=True))
 
 
-class TestSueloDeMemorizacion(unittest.TestCase):
+class TestMemorizationFloor(unittest.TestCase):
     """keep_k(8) induces nothing: it is the case cache under another name."""
 
     @classmethod
     def setUpClass(cls):
-        cls.m = correr_keep_k(8)
+        cls.m = run_keep_k(8)
 
-    def test_una_regla_por_caso_unico(self):
+    def test_one_rule_per_unique_case(self):
         self.assertEqual(self.m["n_rules"], UNIQUE_CASES)
         self.assertEqual(len({c.key() for c in corpus()}), UNIQUE_CASES)
 
-    def test_memorizar_no_produce_error_silencioso(self):
+    def test_memorizing_produces_no_silent_error(self):
         self.assertEqual(self.m["silent_error_rate"], 0.0)
 
-    def test_el_suelo_es_puro_efecto_de_los_duplicados(self):
+    def test_the_floor_is_pure_effect_of_the_duplicates(self):
         self.assertAlmostEqual(self.m["reuse_rate"], MEMORIZATION_FLOOR, places=4)
         # coverage of keep_k(8) = duplicate rate of the corpus
         self.assertAlmostEqual(self.m["coverage"], 1 - UNIQUE_CASES / 2000, places=4)
 
 
-class TestBaselineDeCache(unittest.TestCase):
+class TestCacheBaseline(unittest.TestCase):
     """The project's null hypothesis: no rules, nearest neighbour."""
 
     @classmethod
     def setUpClass(cls):
         cls.m = run_cache_baseline(list(corpus()), max_dist=2)
 
-    def test_cifras_publicadas(self):
+    def test_published_figures(self):
         self.assertEqual(self.m["n_rules"], CACHE_D2["n_rules"])
         self.assertAlmostEqual(self.m["silent_error_rate"], CACHE_D2["silent"], places=4)
         self.assertAlmostEqual(self.m["escalation_rate"], CACHE_D2["escal"], places=4)
         self.assertAlmostEqual(self.m["coverage"], CACHE_D2["cov"], places=4)
 
-    def test_cubre_algo_menos_que_keep_k4_y_se_equivoca_mucho_mas(self):
+    def test_covers_slightly_less_than_keep_k4_and_errs_far_more(self):
         """It is the comparison that justifies rules existing at all: at similar
         coverage (0.894 versus 0.944), the cache fails on 45% of what it covers
         and keep_k(4) on 17%. Two and a half times more silent error."""
-        keep4 = correr_keep_k(4)
+        keep4 = run_keep_k(4)
         self.assertLess(abs(self.m["coverage"] - keep4["coverage"]), 0.06)
         self.assertGreater(self.m["silent_error_rate"],
                            2.5 * keep4["silent_error_rate"])
 
-    def test_d0_es_memorizacion_exacta(self):
+    def test_d0_is_exact_memorization(self):
         m0 = run_cache_baseline(list(corpus()), max_dist=0)
         self.assertEqual(m0["silent_error_rate"], 0.0)
         self.assertEqual(m0["n_rules"], UNIQUE_CASES)

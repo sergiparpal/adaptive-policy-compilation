@@ -44,7 +44,7 @@ class TestCondition(unittest.TestCase):
         self.assertTrue(c.holds(make_case(customer_tier="free")))
         self.assertFalse(c.holds(make_case(customer_tier="enterprise")))
 
-    def test_lte_y_gte_incluyen_el_extremo(self):
+    def test_lte_and_gte_include_the_endpoint(self):
         self.assertTrue(Condition("severity", "lte", 2).holds(make_case(severity=2)))
         self.assertFalse(Condition("severity", "lte", 2).holds(make_case(severity=3)))
         self.assertTrue(Condition("severity", "gte", 2).holds(make_case(severity=2)))
@@ -55,15 +55,15 @@ class TestCondition(unittest.TestCase):
         self.assertTrue(c.holds(make_case(customer_tier="business")))
         self.assertFalse(c.holds(make_case(customer_tier="pro")))
 
-    def test_operador_desconocido_revienta(self):
+    def test_unknown_operator_blows_up(self):
         with self.assertRaises(AssertionError):
             Condition("severity", "between", 2).holds(make_case())
 
-    def test_el_vocabulario_de_operadores_es_el_declarado(self):
+    def test_the_operator_vocabulary_is_the_declared_one(self):
         self.assertEqual(OPS, {"eq", "neq", "lte", "gte", "in"})
 
 
-class TestValidacion(unittest.TestCase):
+class TestValidation(unittest.TestCase):
     """No LLM judgement takes part here: these are mechanical checks."""
 
     def valid_payload(self, **over):
@@ -72,28 +72,28 @@ class TestValidacion(unittest.TestCase):
         p.update(over)
         return p
 
-    def test_payload_valido(self):
+    def test_valid_payload(self):
         r = validate_rule_payload(self.valid_payload())
         self.assertEqual(r.action, "T2_TECHNICAL")
         self.assertEqual(r.specificity, 1)
         self.assertEqual(r.conditions[0].attr, "severity")
 
-    def test_debe_casar_el_caso_que_la_origino(self):
+    def test_must_match_the_case_that_originated_it(self):
         p = self.valid_payload()
         validate_rule_payload(p, case=make_case(severity=1))
         with self.assertRaises(RuleValidationError):
             validate_rule_payload(p, case=make_case(severity=4))
 
-    def test_la_nota_se_recorta_a_280(self):
+    def test_the_note_is_truncated_to_280(self):
         r = validate_rule_payload(self.valid_payload(note="x" * 500))
         self.assertEqual(len(r.note), 280)
 
-    def test_rule_id_por_defecto(self):
+    def test_default_rule_id(self):
         r = validate_rule_payload(self.valid_payload(rule_id=None))
         self.assertEqual(r.rule_id, "R?")
 
-    def test_rechazos(self):
-        casos = {
+    def test_rejections(self):
+        cases = {
             "payload no es objeto": "no soy un dict",
             "accion inventada": self.valid_payload(action="T9_INVENTADA"),
             "sin accion": self.valid_payload(action=None),
@@ -125,17 +125,17 @@ class TestValidacion(unittest.TestCase):
             "eq fuera de dominio": self.valid_payload(
                 conditions=[{"attr": "product", "op": "eq", "value": "crm"}]),
         }
-        for nombre, payload in casos.items():
-            with self.subTest(nombre):
+        for name, payload in cases.items():
+            with self.subTest(name):
                 with self.assertRaises(RuleValidationError):
                     validate_rule_payload(payload)
 
-    def test_mas_condiciones_que_atributos(self):
+    def test_more_conditions_than_attributes(self):
         conds = [{"attr": "severity", "op": "eq", "value": 1}] * 9
         with self.assertRaises(RuleValidationError):
             validate_rule_payload(self.valid_payload(conditions=conds))
 
-    def test_una_condicion_por_atributo_y_operador_distinto_si_vale(self):
+    def test_one_condition_per_attribute_and_a_different_operator_is_allowed(self):
         r = validate_rule_payload(self.valid_payload(conditions=[
             {"attr": "severity", "op": "gte", "value": 2},
             {"attr": "severity", "op": "lte", "value": 3}]))
@@ -144,14 +144,14 @@ class TestValidacion(unittest.TestCase):
 
 class TestRuleEngine(unittest.TestCase):
 
-    def test_add_asigna_id_correlativo_y_born_at(self):
+    def test_add_assigns_a_sequential_id_and_born_at(self):
         e = RuleEngine()
         a = e.add(rule("?", [("severity", "eq", 1)], "T1_GENERAL"), born_at=7)
         b = e.add(rule("?", [("severity", "eq", 2)], "T1_GENERAL"), born_at=9)
         self.assertEqual((a.rule_id, a.born_at), ("R0001", 7))
         self.assertEqual((b.rule_id, b.born_at), ("R0002", 9))
 
-    def test_impasse_cuando_no_casa_nada(self):
+    def test_impasse_when_nothing_matches(self):
         e = RuleEngine()
         e.rules = [rule("A", [("severity", "eq", 1)], "T1_GENERAL")]
         outcome, winner, matched = e.decide(make_case(severity=4))
@@ -159,7 +159,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertIsNone(winner)
         self.assertEqual(matched, [])
 
-    def test_gana_la_mas_especifica(self):
+    def test_the_most_specific_one_wins(self):
         e = RuleEngine()
         e.rules = [
             rule("GENERICA", [("severity", "eq", 3)], "T1_GENERAL", born_at=0),
@@ -171,7 +171,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertEqual(winner.rule_id, "ESPECIFICA")
         self.assertEqual(len(matched), 2)
 
-    def test_a_igual_especificidad_y_misma_accion_gana_la_mas_antigua(self):
+    def test_at_equal_specificity_and_same_action_the_oldest_wins(self):
         e = RuleEngine()
         e.rules = [
             rule("NUEVA", [("severity", "eq", 3)], "T1_GENERAL", born_at=50),
@@ -181,7 +181,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertEqual(outcome, "ACTION")
         self.assertEqual(winner.rule_id, "VIEJA")
 
-    def test_conflicto_a_igual_especificidad_con_acciones_distintas(self):
+    def test_conflict_at_equal_specificity_with_different_actions(self):
         e = RuleEngine()
         e.rules = [
             rule("A", [("severity", "eq", 3)], "T1_GENERAL", born_at=0),
@@ -192,7 +192,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertIsNone(winner)
         self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
 
-    def test_una_regla_menos_especifica_no_entra_en_el_conflicto(self):
+    def test_a_less_specific_rule_does_not_enter_the_conflict(self):
         """The finalists are only those of maximum specificity."""
         e = RuleEngine()
         e.rules = [
@@ -206,7 +206,7 @@ class TestRuleEngine(unittest.TestCase):
         self.assertEqual(outcome, "CONFLICT")
         self.assertEqual({r.rule_id for r in finalists}, {"A", "B"})
 
-    def test_DEFECTO_REGISTRADO_el_conflicto_precede_al_desempate(self):
+    def test_RECORDED_DEFECT_the_conflict_precedes_the_tiebreak(self):
         """CHARACTERIZATION of the defect documented in CLAUDE.md, not approval.
 
         `decide` returns CONFLICT as soon as the finalists disagree, so the age

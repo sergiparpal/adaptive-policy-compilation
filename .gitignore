@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------
-# Entorno virtual. Se reconstruye con:  python3 -m venv .venv &&
-#                                       .venv/bin/pip install -r requirements.txt
+# Virtual environment. Rebuilt with:  python3 -m venv .venv &&
+#                                     .venv/bin/pip install -r requirements.txt
 # ---------------------------------------------------------------------------
 .venv/
 venv/
@@ -8,7 +8,7 @@ env/
 ENV/
 
 # ---------------------------------------------------------------------------
-# Bytecode y cachés de Python
+# Python bytecode and caches
 # ---------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
@@ -16,7 +16,7 @@ __pycache__/
 *.so
 
 # ---------------------------------------------------------------------------
-# Cachés de herramientas
+# Tool caches
 # ---------------------------------------------------------------------------
 .pytest_cache/
 .ruff_cache/
@@ -25,15 +25,15 @@ __pycache__/
 htmlcov/
 
 # ---------------------------------------------------------------------------
-# Empaquetado
+# Packaging
 # ---------------------------------------------------------------------------
 build/
 dist/
 *.egg-info/
 
 # ---------------------------------------------------------------------------
-# SECRETOS. La clave va en el entorno, nunca en un archivo del repo (regla 7).
-# Estas líneas son una red de seguridad, no una invitación a crear el archivo.
+# SECRETS. The key goes in the environment, never in a file in the repo (rule 7).
+# These lines are a safety net, not an invitation to create the file.
 # ---------------------------------------------------------------------------
 .env
 .env.*
@@ -41,7 +41,7 @@ dist/
 secrets.*
 
 # ---------------------------------------------------------------------------
-# Editores y sistema operativo
+# Editors and operating system
 # ---------------------------------------------------------------------------
 .vscode/
 .idea/
@@ -52,9 +52,9 @@ secrets.*
 Thumbs.db
 
 # ---------------------------------------------------------------------------
-# Salidas transitorias de las tiradas. Los registros SÍ se versionan
-# (results/, results2/, results3/, results4/): son el producto del experimento.
-# Lo que se ignora es el ruido de ejecución.
+# Transient run outputs. The records ARE versioned
+# (results/, results2/, results3/, results4/): they are the product of the
+# experiment. What is ignored is the noise of running it.
 # ---------------------------------------------------------------------------
 *.log
 scratch/

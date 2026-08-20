@@ -52,100 +52,100 @@ REPO = Path(__file__).resolve().parent.parent
 
 
 @cache
-def instancia():
+def instance():
     return load_instance()
 
 
 @cache
-def superficies():
+def surfaces():
     """Exactly the three corpus surfaces the run measured: all 2000 cases, and
     the test half of each of the two splits it regenerated."""
-    inst = instancia()
-    fuera = [("corpus_full", list(range(len(inst["corpus"]))))]
+    inst = instance()
+    outside = [("corpus_full", list(range(len(inst["corpus"]))))]
     for s in (0, 4):
-        fuera.append((f"corpus_test_split{s}", inst["splits"][s][1]))
-    return fuera
+        outside.append((f"corpus_test_split{s}", inst["splits"][s][1]))
+    return outside
 
 
-class TestLaVerdadPorClaseParteCadaSuperficie(unittest.TestCase):
+class TestTruthByClassPartitionsEachSurface(unittest.TestCase):
 
-    def test_las_clases_son_disjuntas_y_cubren_la_superficie(self):
-        for nombre, idxs in superficies():
-            with self.subTest(nombre):
-                truth = truth_masks(instancia(), idxs)
-                junto = 0
+    def test_the_classes_are_disjoint_and_cover_the_surface(self):
+        for name, idxs in surfaces():
+            with self.subTest(name):
+                truth = truth_masks(instance(), idxs)
+                joined = 0
                 total = 0
                 for m in truth.values():
-                    self.assertEqual(junto & m, 0, "dos clases comparten un caso")
-                    junto |= m
+                    self.assertEqual(joined & m, 0, "dos clases comparten un caso")
+                    joined |= m
                     total += m.bit_count()
-                self.assertEqual(junto, (1 << len(idxs)) - 1)
+                self.assertEqual(joined, (1 << len(idxs)) - 1)
                 self.assertEqual(total, len(idxs))
 
-    def test_ninguna_mascara_se_sale_de_la_superficie(self):
+    def test_no_mask_leaves_the_surface(self):
         """A mask from another surface — the 134,400 of the space, say — would
         carry bits above n and the totals would still look plausible."""
-        for nombre, idxs in superficies():
-            with self.subTest(nombre):
-                for c, m in truth_masks(instancia(), idxs).items():
+        for name, idxs in surfaces():
+            with self.subTest(name):
+                for c, m in truth_masks(instance(), idxs).items():
                     self.assertLess(m.bit_length(), len(idxs) + 1, c)
 
-    def test_estan_todas_las_clases_del_dominio(self):
+    def test_every_class_of_the_domain_is_there(self):
         from harness.domain import ACTIONS
 
-        truth = truth_masks(instancia(), list(range(2000)))
+        truth = truth_masks(instance(), list(range(2000)))
         self.assertEqual(set(truth), set(ACTIONS))
 
 
-class TestLaConvencionEsLaDeBuildMasks(unittest.TestCase):
+class TestTheConventionIsBuildMasks(unittest.TestCase):
     """`W[r] = M[r] & truth[action[r]]` is true by construction if and only if
     the truth is in the same convention as the masks: `build_masks` sets bit k
     of W when `action[r]` equals the label of case `idxs[k]`."""
 
-    def test_W_es_M_interseccion_la_clase_de_la_regla(self):
-        inst = instancia()
-        for nombre, idxs in superficies():
+    def test_W_is_M_intersect_the_rules_class(self):
+        inst = instance()
+        for name, idxs in surfaces():
             M, W, _full = masks_for(inst, idxs)
             truth = truth_masks(inst, idxs)
-            with self.subTest(nombre):
+            with self.subTest(name):
                 for rid in inst["ids"]:
                     self.assertEqual(W[rid], M[rid] & truth[inst["action"][rid]],
-                                     f"{nombre}: {rid}")
+                                     f"{name}: {rid}")
 
-    def test_la_convencion_contraria_no_pasaria(self):
+    def test_the_opposite_convention_would_not_pass(self):
         """The teeth of the test above: with the bits reversed — which is what
         `Space` and `space_truth_masks` use — the identity breaks."""
-        inst = instancia()
+        inst = instance()
         idxs = inst["splits"][0][1]
         n = len(idxs)
         M, W, _full = masks_for(inst, idxs)
-        al_reves = {}
+        reversed_order = {}
         for k, i in enumerate(idxs):
             c = inst["truth"][i]
-            al_reves[c] = al_reves.get(c, 0) | (1 << (n - 1 - k))
-        rotas = [rid for rid in inst["ids"]
-                 if W[rid] != M[rid] & al_reves[inst["action"][rid]]]
-        self.assertGreater(len(rotas), 0,
+            reversed_order[c] = reversed_order.get(c, 0) | (1 << (n - 1 - k))
+        broken_ones = [rid for rid in inst["ids"]
+                       if W[rid] != M[rid] & reversed_order[inst["action"][rid]]]
+        self.assertGreater(len(broken_ones), 0,
                            "la convencion contraria pasaria: la prueba de "
                            "arriba no comprueba nada")
 
 
-class TestElCasoKEsElBitK(unittest.TestCase):
+class TestCaseKIsBitK(unittest.TestCase):
     """The convention itself, on three cases whose answer is written by hand."""
 
-    def test_sobre_una_instancia_de_juguete(self):
+    def test_over_a_toy_instance(self):
         inst = {"truth": ["A", "B", "A", "C"]}
         self.assertEqual(truth_masks(inst, [0, 1, 2]),
                          {"A": 0b101, "B": 0b010})
 
-    def test_los_indices_pueden_ser_un_subconjunto_cualquiera(self):
+    def test_the_indices_may_be_any_subset(self):
         """`idxs` is the test half, not a prefix: bit k is the k-th element of
         the list given, not case number k."""
         inst = {"truth": ["A", "B", "A", "C"]}
         self.assertEqual(truth_masks(inst, [3, 1]), {"C": 0b01, "B": 0b10})
 
 
-class TestLasAnotacionesDelRegistroSonLasDelModulo(unittest.TestCase):
+class TestTheRecordAnnotationsAreTheModules(unittest.TestCase):
     """
     The record was annotated by hand after the run, with text the module holds
     as constants. Two copies of a string is exactly the drift the project
@@ -165,16 +165,16 @@ class TestLasAnotacionesDelRegistroSonLasDelModulo(unittest.TestCase):
     def setUpClass(cls):
         cls.d = json.loads((REPO / "results3" / RECORD).read_text())
 
-    def test_las_de_primer_nivel(self):
-        for clave, esperado in (("truth_provenance", TRUTH_PROVENANCE),
+    def test_the_top_level_ones(self):
+        for key, expected in (("truth_provenance", TRUTH_PROVENANCE),
                                 ("post_hoc", POST_HOC),
                                 ("sets_measured", SETS_MEASURED),
                                 ("record_annotations", RECORD_ANNOTATIONS),
                                 ("authorization", AUTHORIZATION)):
-            with self.subTest(clave):
-                self.assertEqual(self.d[clave], esperado)
+            with self.subTest(key):
+                self.assertEqual(self.d[key], expected)
 
-    def test_las_tres_de_dentro_de_predictions(self):
+    def test_the_three_inside_predictions(self):
         q = self.d["predictions"]
         self.assertEqual(q["S-b"]["competition_is_post_hoc"],
                          COMPETITION_IS_POST_HOC)
@@ -183,14 +183,14 @@ class TestLasAnotacionesDelRegistroSonLasDelModulo(unittest.TestCase):
                          s_d_readings(q["S-d"]["share"]["corpus_full"],
                                       q["S-d"]["share"]["corpus_test"]))
 
-    def test_la_clausula_de_S_d_es_la_de_IDEAS_palabra_por_palabra(self):
+    def test_the_S_d_clause_is_the_IDEAS_one_word_for_word(self):
         """The point of quoting it is that it is quoted. If `IDEAS.md` and the
         record drifted apart, the row would be adjudicated against a
         paraphrase."""
-        entrada = (REPO / "IDEAS.md").read_text()
-        cuerpo = S_D_CLAUSE.split("—", 1)[1].strip()
-        aplanado = " ".join(entrada.replace("\n", " ").split())
-        self.assertIn(" ".join(cuerpo.split()), aplanado)
+        entry = (REPO / "IDEAS.md").read_text()
+        body = S_D_CLAUSE.split("—", 1)[1].strip()
+        flattened = " ".join(entry.replace("\n", " ").split())
+        self.assertIn(" ".join(body.split()), flattened)
 
 
 if __name__ == "__main__":

@@ -71,8 +71,8 @@ def llm_out_path(args) -> Path:
     """
     if args.out:
         return Path(args.out)
-    cola = "" if args.seed == PINNED_SEED else f"_seed{args.seed}"
-    return OUT / f"llm_run_n{args.n}{cola}.json"
+    queue = "" if args.seed == PINNED_SEED else f"_seed{args.seed}"
+    return OUT / f"llm_run_n{args.n}{queue}.json"
 
 
 def corpus_stats(corpus) -> dict:
@@ -178,7 +178,7 @@ def cmd_llm(args) -> None:
     # THE FIRST THING, before generating the corpus and before building the
     # proposer: this run costs money and aborting at the end, after 632 calls,
     # would be worse than not guarding at all.
-    destino = or_exit(
+    destination = or_exit(
         refuse_overwrite, llm_out_path(args), overwrite=args.overwrite_record,
         exits=("--out OTRO_FICHERO    escribir en otro sitio",
                f"{FLAG}    sobrescribir este a proposito"))
@@ -228,8 +228,8 @@ def cmd_llm(args) -> None:
     print("\n  AVISO: sin el Paso 0 (python3 -m harness.ceiling_check) en ~100%,")
     print("  estas cifras no son interpretables. Techo medido: 58.75%.")
 
-    destino.parent.mkdir(parents=True, exist_ok=True)
-    destino.write_text(json.dumps({
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps({
         "_env": environment(seed=args.seed, n=args.n, provider=args.provider),
         "model": model,
         "metrics": m,
@@ -239,7 +239,7 @@ def cmd_llm(args) -> None:
         # paying for the run again.
         "records": [vars(r) for r in res.records],
     }, indent=2, default=str))
-    print(f"\n-> {destino}  (reglas con su 'note' + registros crudos)")
+    print(f"\n-> {destination}  (reglas con su 'note' + registros crudos)")
 
 
 def main() -> int:

@@ -32,13 +32,13 @@ except Exception:                                   # noqa: BLE001
     OPENAI_INSTALADO = None
 
 
-def pines(path: Path) -> dict[str, str]:
+def pins(path: Path) -> dict[str, str]:
     out = {}
-    for linea in path.read_text().splitlines():
-        linea = linea.strip()
-        if not linea or linea.startswith("#"):
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
             continue
-        m = PIN.match(linea)
+        m = PIN.match(line)
         if m:
             out[m.group(1).lower().replace("_", "-")] = m.group(2)
     return out
@@ -46,34 +46,34 @@ def pines(path: Path) -> dict[str, str]:
 
 class TestRequirements(unittest.TestCase):
 
-    def test_todo_lo_declarado_esta_clavado_con_igual_igual(self):
-        sueltas = []
-        for linea in REQ.read_text().splitlines():
-            linea = linea.strip()
-            if not linea or linea.startswith("#"):
+    def test_everything_declared_is_pinned_with_double_equals(self):
+        loose_ones = []
+        for line in REQ.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
                 continue
-            if not PIN.match(linea):
-                sueltas.append(linea)
-        self.assertEqual(sueltas, [], f"dependencias sin clavar: {sueltas}")
+            if not PIN.match(line):
+                loose_ones.append(line)
+        self.assertEqual(loose_ones, [], f"dependencias sin clavar: {loose_ones}")
 
-    def test_openai_esta_declarado(self):
-        self.assertIn("openai", pines(REQ))
+    def test_openai_is_declared(self):
+        self.assertIn("openai", pins(REQ))
 
-    def test_el_lock_existe_y_es_consistente(self):
+    def test_the_lock_exists_and_is_consistent(self):
         self.assertTrue(LOCK.is_file())
-        self.assertEqual(pines(LOCK)["openai"], pines(REQ)["openai"])
+        self.assertEqual(pins(LOCK)["openai"], pins(REQ)["openai"])
 
-    def test_el_lock_esta_entero_clavado(self):
-        self.assertGreater(len(pines(LOCK)), 10)
-        no_comentario = [x for x in LOCK.read_text().splitlines()
+    def test_the_lock_is_pinned_throughout(self):
+        self.assertGreater(len(pins(LOCK)), 10)
+        not_a_comment = [x for x in LOCK.read_text().splitlines()
                          if x.strip() and not x.strip().startswith("#")]
-        self.assertEqual(len(no_comentario), len(pines(LOCK)))
+        self.assertEqual(len(not_a_comment), len(pins(LOCK)))
 
     @unittest.skipIf(OPENAI_INSTALADO is None, "openai no instalado (sin venv)")
-    def test_la_version_instalada_es_la_clavada(self):
+    def test_the_installed_version_is_the_pinned_one(self):
         """If this fails, the live environment is no longer the records':
         either reinstall, or update the pin AND note the change."""
-        self.assertEqual(OPENAI_INSTALADO, pines(REQ)["openai"])
+        self.assertEqual(OPENAI_INSTALADO, pins(REQ)["openai"])
 
 
 if __name__ == "__main__":
