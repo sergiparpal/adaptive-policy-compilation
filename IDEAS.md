@@ -1,11 +1,18 @@
 # Parking lot
 
-Status as of August 8, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of August 24, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
-corrected figures in rungs 3 and 4 in place. This is a list of things not done,
+corrected figures in rungs 3 and 4 in place. The pairwise-judgement thread of
+`PLAN_PAIRWISE.md` closed on August 24, 2026 with three signed rows adjudicated —
+`P-c` held, `P-d` and `P-e` refuted — and is written up in `FINDINGS2.md`
+(Stages C and D) and `FINDINGS3.md` §§6-10. This is a list of things not done,
 none of them developed and in no order of precedence.
+
+**Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
+here is a number only where the number IS the open question — a budget to plan
+against, a threshold a next run would have to clear.
 
 ---
 
@@ -53,6 +60,57 @@ none of them developed and in no order of precedence.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What the pairwise thread opens and does not resolve
+
+Closed August 24, 2026. It changed the question put to the proposer — from *write
+a rule* to *which of these two rules should win this ticket* — and answered
+whether that works. It does, and it does not order the base at the budget it was
+tried at. What is left:
+
+- **What the real proposer scores above 400 calls.** The only genuinely
+  expensive item here, and now the only one with a price attached instead of a
+  guess: the channel's ceiling curve says **~800 pairs to clear P-d's band and
+  ~1,600 to beat a free queue ranking** (`FINDINGS3.md` §10). Both the oracle
+  curve and the projection at the proposer's measured accuracy cross there; what
+  the proposer itself does is unmeasured, because its errors are neither
+  independent nor evenly spread and the projection assumes both. This would need
+  its own `PLAN_*.md` with its own signed §0.
+- **Why the parse-failure rate tripled between the two populations.** Same model,
+  same settings, same prompt; 2.4% on the hidden policy's pairs and 8.75% on the
+  learned base's. The population is the only thing that changed and no mechanism
+  is proposed. `FINDINGS2.md`, Stage D.
+- **Why the proposer prefers the rule shown second.** 203 against 162 with the
+  presentation order balanced exactly, so it is not a position artefact and it is
+  not explained either. Whatever it is, it is a property of the elicitation and
+  would show up in any pairwise protocol.
+- **Whether the proposer knows anything beyond a ranking of the queues.** On the
+  pairs a queue hierarchy is structurally unable to answer it scored 5 of 9
+  (`FINDINGS2.md`, Stage C). That is a coin on `n=9` and it is the question the
+  whole thread turns on. A population built *only* from those pairs would answer
+  it cheaply — the hidden policy has few, but the learned base's could be
+  enumerated the same way `edge_budget` enumerates directions.
+- **Whether the channel's ceiling is the protocol or the compilation.** Handed
+  every pair and the right answer to each, pairwise declaration stops short of
+  what the optimizer finds on the same cell (`FINDINGS3.md` §10). The compilation
+  is a topological sort with an arrival tie-break; a minimum-feedback-arc-set
+  treatment of the declared tournament might close part of that gap, and nothing
+  here distinguishes the two explanations.
+- **The pairs where neither rule can be right.** Between a sixth and a quarter of
+  the sampled population, depending on surface: the true action across the whole
+  shared region is a third queue. It is the material problem appearing inside the
+  direction question, and no edge and no order touches it.
+- **Stage E, specified and not authorised.** §11 of `PLAN_PAIRWISE.md`: make the
+  proposer declare, for each rule it overlaps, whether it is an exception to it
+  or a default under it. It has a written spec, two predictions and no signature,
+  and it is the one item here that attacks the authorship problem at its source
+  rather than at the ordering end.
+
+**Two things this thread moved further away rather than closer**, and they are
+annotated in place in the rung 2 list below: `EDGE_CONTRADICTS` still measuring
+nothing, and subsumption-versus-declaration never being put to the test.
 
 ---
 
@@ -785,14 +843,32 @@ none of them developed and in no order of precedence.
   or rule-writing elicitation in general.
 - Whether any prompt or schema gets a proposer that sees the base to write
   overlapping rules. Versions v1 and v2 bound a range; they do not exhaust it.
+  **Untouched by the pairwise thread**, which sidesteps rule-writing entirely and
+  therefore says nothing about it. Stage E of `PLAN_PAIRWISE.md` is the one
+  specified attempt at it.
 - How to get a base that produces conflicts, which is the condition for
   `EDGE_CONTRADICTS` to measure anything. Eight runs produced almost none.
+  **Further away as of 2026-08-24, not closer.** The pairwise protocol filters
+  subsumption-comparable pairs out of its population on purpose — on those a
+  declared edge is inert whichever way the model answers — which is the same
+  thing as guaranteeing that verdict never fires. Two of the six verdicts have
+  now been seen working (`no_solapan` in rung 2, `cierra_ciclo` in Stages C and
+  D); this one would take a protocol that deliberately offers such a pair, and
+  nobody has written one.
 - Whether n=100 is enough. The bases vary by nearly an order of magnitude in size
   across seeds; overlap might emerge only as the base grows.
-- The cost of authorship at scale. What a perfect author declares for the 29
-  hidden rules is in `FINDINGS2.md`; for a learned base it is unknown.
+- ~~The cost of authorship at scale.~~ **Measured 2026-08-24.** The learned
+  base's population of pairs that could carry an edge, what a budget of 400 buys
+  of it, and what the engine does with that many installed are in `FINDINGS2.md`
+  (Stage D, with the dated erratum on the caveat this item came from) and
+  `FINDINGS3.md` §8. The follow-on question — what it would cost to buy enough —
+  is in the pairwise section above with a figure attached.
 - What happens when subsumption and declaration contradict each other in a
-  learned base. That design decision has not been put to the test even once.
+  learned base. That design decision has not been put to the test even once, and
+  **the pairwise thread stepped around it rather than into it**: those are
+  exactly the pairs its population excludes. Testing it means asking for an edge
+  precisely where the structure already answers, which costs calls that buy
+  nothing except this measurement — which may be reason enough.
 - The attributes the proposer does not use — `language` above all, in none of the
   eight runs. The audit is in `FINDINGS2.md` §4.
 
