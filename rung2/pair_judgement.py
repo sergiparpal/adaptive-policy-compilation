@@ -135,17 +135,25 @@ import random
 import re
 import sys
 import time
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
-from harness.ceiling_check import HIDDEN_DSL
+from harness.ceiling_check import HIDDEN_DSL, all_cases
 from harness.domain import ACTIONS, Case
 from harness.dsl import Condition
 from harness.provenance import describe, environment
 from harness.record_guard import FLAG, or_exit, refuse_overwrite
 
 from .engine2 import (EDGE_CONTRADICTS, EDGE_CYCLE, EDGE_DISJOINT, EDGE_OK,
-                      EDGE_SELF, EDGE_UNKNOWN, PriorityEngine, Rule2, Space)
+                      EDGE_SELF, EDGE_UNKNOWN, PriorityEngine, Rule2, Space,
+                      strictly_below)
+# The bit convention has ONE home and this is not it. `pair_benchmark` owns
+# `lowest_case_index` and its MSB-first reasoning; importing it keeps a single
+# source for the rule that decides which case a witness is. The import brings no
+# oracle name into this module — `tests/test_oracle_separation.py` walks the AST
+# of this file and would say so — and `engine2.py`, also on the online-loop list,
+# already reaches into `harness.ceiling_check` the same way.
+from .pair_benchmark import lowest_case_index
 from .proposers2 import ProposalError, parse_payload
 
 REPO = Path(__file__).resolve().parent.parent
@@ -154,6 +162,19 @@ BENCH = Path("results2/pair_benchmark.json")
 OUT = Path("results2")
 RECORD = "pair_judgement_hidden.json"
 RECORD_SMOKE = "pair_judgement_hidden_smoke.json"
+RECORD_LEARNED = "pair_judgement_learned.json"
+RECORD_LEARNED_SMOKE = "pair_judgement_learned_smoke.json"
+
+LEARNED = Path("results/llm_run.json")
+# The population of stage D, measured 2026-08-24 and again by this module every
+# time it runs: pairs of the 577 learned rules whose extensions OVERLAP, that are
+# subsumption-INCOMPARABLE, and whose actions DIFFER — the same three conditions
+# hidden_priority.py applies. 31,850 of the 166,176 pairs, 19.2%. A constant
+# fraction of the quadratic, not a lower order.
+GATE_POPULATION = 31850
+N_LEARNED_RULES = 577
+DEFAULT_BUDGET = 400
+SAMPLE_SEED = 17
 
 MODEL = "deepseek/deepseek-v4-flash"
 TEMPERATURE = 0
@@ -257,6 +278,98 @@ def fresh_engine(rules: dict[str, Rule2]) -> PriorityEngine:
                          action=rule.action), born_at=rule.born_at,
                    keep_id=True)
     return engine
+
+
+# ---------------------------------------------------------------------------
+# The learned base — stage D's population
+# ---------------------------------------------------------------------------
+
+def learned_rules(path: Path = LEARNED):
+    """
+    The 577 rules of rung 1 as `Rule2`, read-only and built clean.
+
+    The record carries no `beats` or `loses_to` — rung 1 had no declared
+    priority — so there is nothing to strip here, unlike the hidden engine. They
+    are still built rather than borrowed, so that no engine's state can reach a
+    rendered rule by accident.
+    """
+    d = json.loads(path.read_text())
+    out = {}
+    for r in d["rules"]:
+        out[r["rule_id"]] = Rule2(
+            rule_id=r["rule_id"],
+            conditions=[Condition(c["attr"], c["op"], c["value"])
+                        for c in r["conditions"]],
+            action=r["action"], born_at=r["born_at"])
+    return out
+
+
+def learned_population(rules, space):
+    """
+    Every pair that could take a declared edge, in a deterministic order.
+
+    The three conditions are `hidden_priority.py`'s, applied to the learned base:
+    the extensions overlap (they can compete), subsumption leaves them
+    incomparable (nothing else resolves it), and the actions differ (otherwise it
+    does not matter who wins).
+
+    **The subsumption filter is not optional.** `PLAN_PAIRWISE.md` §10 records
+    what dropping it costs: on a subsumption-comparable pair no declared edge can
+    enter the graph whichever way the model answers — `try_edge` returns
+    `EDGE_CONTRADICTS` for the broader rule and a redundant `EDGE_OK` that
+    mutates nothing for the narrower — so about one call in ten would be spent on
+    an answer that is inert by construction, and one of those wasted calls would
+    score as an acceptance.
+    """
+    ids = sorted(rules)
+    ext = {rid: space.extension(rules[rid].conditions) for rid in ids}
+    pairs = []
+    # All four boxes exist even when empty. A Counter drops the zeros, and a
+    # record that omits a box reads as though the condition was never applied —
+    # and `gate_population` would raise instead of reporting the miss.
+    stats = Counter({"disjoint": 0, "subsumption_comparable": 0,
+                     "same_action": 0})
+    for i, a in enumerate(ids):
+        ea = ext[a]
+        for b in ids[i + 1:]:
+            eb = ext[b]
+            if ea & eb == 0:
+                stats["disjoint"] += 1
+                continue
+            if strictly_below(ea, eb) or strictly_below(eb, ea):
+                stats["subsumption_comparable"] += 1
+                continue
+            if rules[a].action == rules[b].action:
+                stats["same_action"] += 1
+                continue
+            pairs.append((a, b))
+    stats["population"] = len(pairs)
+    return pairs, ext, dict(stats)
+
+
+def sample_population(pairs, budget, seed=SAMPLE_SEED):
+    """A deterministic sample at seed 17, kept in the population's own order so
+    the record reads the same way whatever the budget."""
+    if budget >= len(pairs):
+        return list(pairs)
+    picked = set(random.Random(seed).sample(range(len(pairs)), budget))
+    return [p for k, p in enumerate(pairs) if k in picked]
+
+
+def gate_population(stats, n_rules):
+    total = n_rules * (n_rules - 1) // 2
+    got = (stats["disjoint"] + stats["subsumption_comparable"]
+           + stats["same_action"] + stats["population"])
+    return {
+        "what": "the three conditions of hidden_priority.py applied to the 577 "
+                "learned rules. The population is what PLAN_PAIRWISE.md §10 "
+                "measured on 2026-08-24 and budgeted stage D on.",
+        "boxes": stats, "n_pairs": total, "boxes_total": got,
+        "expected_population": GATE_POPULATION,
+        "fraction": round(stats["population"] / total, 4),
+        "passes": (got == total and stats["population"] == GATE_POPULATION
+                   and n_rules == N_LEARNED_RULES),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -645,15 +758,307 @@ def kill_switch(rate):
 
 
 # ---------------------------------------------------------------------------
+# Stage D — the learned base, where there is no truth
+# ---------------------------------------------------------------------------
+
+def build_learned_questions(pairs, rules, ext, positions, cases, n):
+    """
+    One row per sampled pair. There is **no winner here and no key**: the row
+    carries the two rules and the witness, and what the model says is the only
+    thing that will decide an edge.
+
+    The witness is the lowest-indexed case of `ext(a) & ext(b)`, deterministic
+    and non-empty by construction — overlap is what put the pair in the
+    population. Unlike stage C it is not restricted to any action, because there
+    is nothing to restrict it to.
+    """
+    rows = []
+    for k, ((a, b), pos) in enumerate(zip(pairs, positions)):
+        inter = ext[a] & ext[b]
+        idx = lowest_case_index(inter, n)
+        ids = (a, b) if pos == 0 else (b, a)
+        first = shown_rule(rules[ids[0]], SHOWN_AS[0])
+        second = shown_rule(rules[ids[1]], SHOWN_AS[1])
+        case = cases[idx]
+        if not rules[a].matches(case) or not rules[b].matches(case):
+            raise AssertionError(
+                f"witness {idx} of {a}/{b} is not matched by both rules: the "
+                f"bit convention is wrong (see the module header)")
+        ea, eb = ext[a].bit_count(), ext[b].bit_count()
+        rows.append({
+            "index": k, "rule_a": a, "rule_b": b,
+            "action_a": rules[a].action, "action_b": rules[b].action,
+            "born_a": rules[a].born_at, "born_b": rules[b].born_at,
+            "extension_a": ea, "extension_b": eb,
+            "a_is_broader": ea > eb,
+            "overlap_cases": inter.bit_count(),
+            "witness_index": idx, "witness": case.as_dict(),
+            "shown_as": {SHOWN_AS[0]: ids[0], SHOWN_AS[1]: ids[1]},
+            "a_shown_as": SHOWN_AS[pos],
+            "question": question(case, first, second),
+        })
+    return rows
+
+
+def classify_learned(answer, row):
+    """
+    Three outcomes and none of them is right or wrong.
+
+    There is no truth for these pairs, so what an answer produces is an EDGE or
+    nothing. `PLAN_PAIRWISE.md` §10 says it in one line and this record repeats
+    it: no correct-edge rate exists here.
+    """
+    if answer == row["action_a"] and answer != row["action_b"]:
+        return "a_beats_b"
+    if answer == row["action_b"] and answer != row["action_a"]:
+        return "b_beats_a"
+    return "none"
+
+
+def learned_verdicts(rows, engine):
+    """The same histogram as stage C, and outside every denominator for the same
+    reason: a witness guarantees overlap and the validator cannot check that the
+    declared winner is the correct one — here there is not even a correct one."""
+    hist = Counter()
+    for r in rows:
+        if r["declared"] == "none":
+            continue
+        w = r["rule_a"] if r["declared"] == "a_beats_b" else r["rule_b"]
+        loser = r["rule_b"] if r["declared"] == "a_beats_b" else r["rule_a"]
+        v = engine.try_edge(w, loser)
+        r["try_edge_verdict"] = v
+        r["declared_winner"] = w
+        r["declared_loser"] = loser
+        hist[v] += 1
+    return {
+        "what": "what try_edge returns for the edge each answer implies, fed "
+                "sequentially into an engine that starts with subsumption and no "
+                "declared edge.",
+        "outside_every_denominator":
+            "yes. The population was filtered so that EDGE_DISJOINT and "
+            "EDGE_CONTRADICTS cannot fire, so acceptance measures the protocol; "
+            "and there is no truth here, so an accepted edge is not a correct "
+            "one under any reading.",
+        "counts": dict(sorted(hist.items())),
+        "unreachable_here": UNREACHABLE,
+        "reachable_here": [EDGE_OK, EDGE_CYCLE],
+    }
+
+
+def revealed_hierarchy(rows):
+    """
+    What the answers say about the queues, independent of the rules.
+
+    Stage C found the proposer's competence is largely a fixed ranking of the
+    eight queues (`results2/pair_judgement_baselines.json`). This is the same
+    question asked of the learned base, and it needs no labels: for each
+    unordered pair of queues, how often each side was named. A model applying a
+    ranking is constant on every one of them.
+
+    It measures a TENDENCY, not a score. Whether the order those answers compile
+    into beats a queue ranking is a different question, and it is scored
+    elsewhere against `results3/queue_hierarchy_floor.json`.
+    """
+    byp = defaultdict(Counter)
+    for r in rows:
+        if r["declared"] == "none":
+            continue
+        w = r["action_a"] if r["declared"] == "a_beats_b" else r["action_b"]
+        loser = r["action_b"] if r["declared"] == "a_beats_b" else r["action_a"]
+        byp[tuple(sorted((w, loser)))][w] += 1
+    varying = {k: dict(v) for k, v in byp.items() if len(v) > 1}
+    return {
+        "what": "for each unordered pair of queues, how often each side was "
+                "named the winner. A proposer applying a fixed ranking is "
+                "constant on every one of them.",
+        "n_queue_pairs": len(byp),
+        "n_varying": len(varying),
+        "constant_fraction": round(1 - len(varying) / len(byp), 4) if byp else None,
+        "per_queue_pair": {" vs ".join(k): dict(v) for k, v in sorted(byp.items())},
+    }
+
+
+def main_learned(argv) -> int:
+    dry_run = "--dry-run" in argv
+    overwrite = FLAG in argv
+    budget = DEFAULT_BUDGET
+    if "--budget" in argv:
+        budget = int(argv[argv.index("--budget") + 1])
+    smoke = budget < 50
+    out = OUT / (RECORD_LEARNED_SMOKE if smoke else RECORD_LEARNED)
+    if "--out" in argv:
+        out = Path(argv[argv.index("--out") + 1])
+
+    t_start = time.time()
+    print("=" * 78)
+    print("STAGE D — the pairwise question over the learned base, where there is "
+          "no truth")
+    print("=" * 78)
+    print(f"  model {MODEL} · temperature {TEMPERATURE} · "
+          f"max_retries {MAX_RETRIES} · sequential")
+    print(f"  {describe()}")
+
+    space = Space()
+    rules = learned_rules()
+    pairs, ext, stats = learned_population(rules, space)
+    g_pop = gate_population(stats, len(rules))
+    sampled = sample_population(pairs, budget)
+    positions = winner_positions(len(sampled))
+    cases = list(all_cases())
+    rows = build_learned_questions(sampled, rules, ext, positions, cases,
+                                   space.n)
+
+    g_leak = gate_no_leak([r["question"] for r in rows])
+    g_pos = gate_position_balance([SHOWN_AS.index(r["a_shown_as"])
+                                   for r in rows])
+    g_sig = gate_signature()
+
+    print()
+    print("POPULATION GATE — the three conditions over the 577 rules")
+    for k, v in stats.items():
+        print(f"  {k:<26}{v:>8}")
+    print(f"  {'of the pairs':<26}{g_pop['n_pairs']:>8}   "
+          f"population {g_pop['fraction']:.1%}, expected {GATE_POPULATION}"
+          f"{'  ok' if g_pop['passes'] else '  NO'}")
+    print()
+    print("GATES — every one of them runs before a single call")
+    for name, g in (("no leak", g_leak), ("position balance", g_pos),
+                    ("P-d/P-e signed", g_sig)):
+        print(f"  {name:<20}{'ok' if g['passes'] else 'NO'}")
+    if not g_pop["passes"]:
+        print("\n  STOP: this is not the population §10 budgeted for.")
+        return 1
+    if not g_leak["passes"]:
+        print("\n  STOP: a question names a rule or carries a declared edge.")
+        return 1
+    if not g_pos["passes"]:
+        print(f"\n  STOP: presentation order not balanced "
+              f"({g_pos['shown_first']} / {g_pos['shown_second']}).")
+        return 1
+
+    if dry_run:
+        print()
+        print(f"  DRY RUN — {len(rows)} questions built, nothing called, "
+              f"nothing written")
+        print(f"  sampled {len(sampled)} of {len(pairs)} at seed {SAMPLE_SEED}")
+        print(f"  P-d/P-e signed: {g_sig['passes']}")
+        print()
+        r = rows[0]
+        print(f"  ONE QUESTION ({r['rule_a']} / {r['rule_b']}, "
+              f"{r['rule_a']} shown as {r['a_shown_as']})")
+        for line in r["question"].splitlines():
+            print(f"    {line}")
+        print(f"\n  cost if run: {len(rows)} calls. Nothing spent here.")
+        return 0
+
+    if not g_sig["passes"]:
+        print("\n  STOP: §0 of PLAN_PAIRWISE.md is unsigned. P-d and P-e govern")
+        print("  this stage's output and a model may not sign them.")
+        return 1
+    g_key = gate_api_key()
+    if not g_key["passes"]:
+        print(f"\n  STOP: OPENROUTER_API_KEY does not reach this process.\n"
+              f"    {g_key['how']}")
+        return 1
+    or_exit(refuse_overwrite, out, overwrite=overwrite,
+            exits=("--out OTHER.json      write somewhere else",
+                   f"{FLAG}   replace it on purpose"))
+
+    judge = Judge()
+    print()
+    print(f"  {len(rows)} calls, one per pair, sequential")
+    failures = 0
+    for k, r in enumerate(rows):
+        try:
+            payload, attempts = judge.ask(r["question"])
+            answer = payload.get("action")
+            r["answer"] = answer if answer in ACTIONS else None
+            r["off_menu"] = answer is not None and answer not in ACTIONS
+            r["raw_answer"] = answer
+            r["why"] = str(payload.get("why", ""))[:280]
+            r["attempts"] = attempts
+            r["parse_failed"] = False
+        except ProposalError as exc:
+            failures += 1
+            r.update({"answer": None, "off_menu": False, "raw_answer": None,
+                      "why": "", "attempts": MAX_RETRIES + 1,
+                      "parse_failed": True, "error": str(exc)[:200]})
+        r["declared"] = classify_learned(r["answer"], r)
+        if (k + 1) % 50 == 0 or k + 1 == len(rows):
+            print(f"    {k + 1}/{len(rows)}")
+
+    engine = PriorityEngine(space=space)
+    for rid in sorted(rules):
+        engine.add(Rule2(rule_id=rid, conditions=list(rules[rid].conditions),
+                         action=rules[rid].action),
+                   born_at=rules[rid].born_at, keep_id=True)
+    hist = learned_verdicts(rows, engine)
+    counts = Counter(r["declared"] for r in rows)
+    accepted = [(r["declared_winner"], r["declared_loser"]) for r in rows
+                if r.get("try_edge_verdict") == EDGE_OK]
+
+    payload = {
+        "_env": environment(model=MODEL, temperature=TEMPERATURE,
+                            max_retries=MAX_RETRIES,
+                            position_seed=POSITION_SEED,
+                            sample_seed=SAMPLE_SEED, budget=budget),
+        "what":
+            "stage D of PLAN_PAIRWISE.md: the pairwise question asked of the 577 "
+            "learned rules of rung 1. One call per sampled pair, sequential.",
+        "stage": "D", "population": "learned base, results/llm_run.json",
+        "there_is_no_truth_here":
+            "no correct-edge rate exists for these pairs and none is computed. "
+            "The hidden policy's layer order says nothing about rules it never "
+            "wrote. What is measured is what the declared edges DO — as a hybrid "
+            "engine, as an order, and as a machine — and that measurement lives "
+            "in its own record.",
+        "partial_run": smoke,
+        "n_population": len(pairs), "n_sampled": len(sampled),
+        "sample": f"deterministic at seed {SAMPLE_SEED}, budget {budget}",
+        "gates": {"population": g_pop, "no_leak": g_leak,
+                  "position_balance": g_pos, "signature": g_sig},
+        "system_prompt": SYSTEM_PROMPT,
+        "what_the_model_was_not_shown":
+            "the same three as stage C: correct_count, beats/loses_to, and the "
+            "rule identifiers. The learned base numbers its rules in birth "
+            "order, which does not encode priority the way the hidden policy's "
+            "layers do — but they are hidden anyway, so the two stages ask the "
+            "same question in the same shape.",
+        "declared": dict(counts),
+        "parse_failures": failures,
+        "off_menu_answers": sum(1 for r in rows if r["off_menu"]),
+        "n_edges_accepted": len(accepted),
+        "accepted_edges": [list(e) for e in accepted],
+        "try_edge_verdicts": hist,
+        "revealed_hierarchy": revealed_hierarchy(rows),
+        "answers": rows,
+        "seconds": round(time.time() - t_start, 1),
+    }
+    OUT.mkdir(exist_ok=True)
+    out.write_text(json.dumps(payload, indent=2))
+
+    rv = payload["revealed_hierarchy"]
+    print()
+    print("=" * 78)
+    print("WHAT CAME BACK — no correct-edge rate exists here")
+    print("=" * 78)
+    print(f"  edges declared {counts['a_beats_b'] + counts['b_beats_a']}   "
+          f"no edge {counts['none']}   (parse failures {failures})")
+    print(f"  accepted by try_edge {len(accepted)}   "
+          f"verdicts {hist['counts']}")
+    print(f"  revealed hierarchy: constant on "
+          f"{rv['n_queue_pairs'] - rv['n_varying']} of {rv['n_queue_pairs']} "
+          f"queue-pairs ({rv['constant_fraction']:.1%})")
+    print(f"\n-> {out}")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     if "--learned" in argv:
-        print("--learned is STAGE D of PLAN_PAIRWISE.md: 300-500 calls over the "
-              "learned base.\nIt is gated twice — on this stage clearing its "
-              "kill switch, and on P-d and P-e\nbeing signed. Not implemented "
-              "here.")
-        return 2
+        return main_learned(argv)
     if "--hidden" not in argv:
         print(__doc__.strip().split("Usage:")[-1])
         return 2
