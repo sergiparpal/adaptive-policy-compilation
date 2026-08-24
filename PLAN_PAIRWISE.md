@@ -81,7 +81,12 @@ what signing is for.*
 | **P-d** | On the learned base (Stage D), the order induced by the declared edges beats the hybrid `born_at` floor Stage A measures | strictly above that floor by `> 0.03` | `≤ floor + 0.03` |
 | **P-e** | That same order lands **inside** the behavioural cloud of the 65 end orders, not outside it | median pairwise disagreement with the 65 `≤ 25%` of the space, measured on the **same pool** as the 65 | `> 25%` of the space |
 
-**Signed by Sergi: ______________________ (date: __________)**
+**Signed by Sergi: I adopt §0 as drafted, without changes: the
+three signable rows — P-c, P-d and P-e — with their bands and their refutation
+lines as they stand, and P-c adjudicated on `correct / 170` with `neither`
+counting as a failure, as the 2026-08-24 amendment sets it. P-a and P-b are
+spent and are not restored. `git diff 44eace3 -- PLAN_PAIRWISE.md` shows only
+this line, so no row of the table moved. Stage C may run. (date: 2026/08/24)**
 
 *Three rows remain signable. P-c governs Stage C; P-d and P-e govern Stage D and
 cannot be adjudicated unless Stage C clears its kill switch first. Stage A and
