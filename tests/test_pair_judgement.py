@@ -254,6 +254,21 @@ class TestThePresentationOrder(unittest.TestCase):
     def test_the_gate_fails_on_a_split_that_is_merely_close(self):
         self.assertFalse(gate_position_balance([0] * 87 + [1] * 83)["passes"])
 
+    def test_a_prefix_of_the_full_deal_is_not_balanced(self):
+        """Why `--limit` truncates the POPULATION and not the rows. The first
+        ten of a deal balanced over 170 come out 4/6 on the declared seed, and a
+        smoke path built that way would fail its own gate before spending
+        anything. This is the shape of the defect, pinned so it cannot come
+        back."""
+        prefix = winner_positions(170)[:10]
+        self.assertFalse(gate_position_balance(prefix)["passes"])
+
+    def test_a_truncated_population_is_balanced_over_what_it_asks(self):
+        for n in (10, 11, 40, 170):
+            with self.subTest(n=n):
+                self.assertTrue(
+                    gate_position_balance(winner_positions(n))["passes"])
+
     def test_the_rows_agree_with_the_deal(self):
         rules = hidden_rules()
         clean, _u, _g, _r = load_benchmark()

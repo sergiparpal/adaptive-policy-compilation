@@ -676,13 +676,20 @@ def main(argv=None) -> int:
     print(f"  {describe()}")
 
     clean, unclean, g_bench, _rec = load_benchmark()
+    n_clean_total = len(clean)
+    # Truncate the POPULATION before dealing, never the rows after. Dealing over
+    # 170 and then keeping the first ten leaves whatever split that prefix
+    # happens to have — 4/6 on the declared seed — and the balance the gate
+    # demands is a property of the pairs actually asked about, not of a
+    # population the run never reaches. Found by the gate itself on the first
+    # smoke path, before a single call was spent.
+    if limit:
+        clean = clean[:limit]
     rules = hidden_rules()
     engine = fresh_engine(rules)
     positions = winner_positions(len(clean))
     rows = build_questions(clean, rules, positions)
     add_breadth(rows, engine)
-    if limit:
-        rows = rows[:limit]
 
     g_leak = gate_no_leak([r["question"] for r in rows])
     g_pos = gate_position_balance([SHOWN_AS.index(r["winner_shown_as"])
@@ -784,7 +791,7 @@ def main(argv=None) -> int:
         "stage": "C", "population": "hidden policy, clean-witness pairs",
         "partial_run": bool(limit),
         "n_asked": len(rows),
-        "n_clean_available": len(clean),
+        "n_clean_available": n_clean_total,
         "n_without_clean_witness": len(unclean),
         "denominator_note":
             "the pairs with no clean witness are outside every denominator, and "
