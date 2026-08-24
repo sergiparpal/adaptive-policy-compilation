@@ -621,6 +621,116 @@ Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.floor_by_pool`
 
 ---
 
+## 7. What a queue ranking alone scores, and what that does to P-d
+
+*Added 2026-08-24. `rung3/queue_hierarchy_floor.py` →
+`results3/queue_hierarchy_floor.json`, `PYTHONHASHSEED=0`, 220 s, zero API
+calls. It is the control Stage C's result made necessary, run before Stage D
+spends anything.*
+
+**Why it exists.** Stage C asked a model 170 times which of two rules should win
+a ticket and got 0.8824. A baseline that reads **no rule at all** — a fixed total
+order over the eight queues — scored 0.9471 on the same pairs, and on the nine
+pairs no queue ordering can reach the model was at 5 of 9
+(`results2/FINDINGS2.md`, Stage C). Stage D spends 300–500 calls asking that
+question of the learned base and compiles the answers into an order, which **P-d**
+bands against the `hibrido` `born_at` floor plus 0.03. So one question has to be
+answered first, and it costs nothing: **how much of that band does a lookup table
+already reach?**
+
+**What a hierarchy is here.** A total order over the eight actions induces one
+over the 577 rules: sort by the rank of the rule's action. It reads no condition,
+no extension, no overlap and no subsumption — only which queue each rule sends a
+ticket to. All **40,320** of them are scored.
+
+### The result, on the pool where declared edges live
+
+```
+hibrido                      floor    +0.03    stage_c     best/40320     mean
+  full corpus               0.4285   0.4585     0.4805         0.5240   0.3676
+  corpus test, split 0      0.4332   0.4632     0.4824         0.5266   0.3670
+  corpus test, 5 splits     0.4315   0.4615     0.4806         0.5250   0.3658
+  space                     0.4257   0.4557     0.5838         0.5997   0.3180
+```
+
+`stage_c` is the ranking Stage C's answer key produced over the **hidden**
+policy's pairs, transferred here unchanged — the closest thing available to *the
+ranking the model appears to be using*, fitted on a different object and so
+costing no labels from this base.
+
+**It clears P-d's band on all four surfaces, at zero calls.** 0.4824 against a
+threshold of 0.4632 on the record's own index set; 0.5838 against 0.4557 over the
+space.
+
+**`best` is a winning ticket and `mean` is the level.** The maximum over the
+40,320 is taken with the labels in hand — the same object as the best of 65
+starts in `PLAN_PAIRWISE.md` §2 — while a hierarchy picked blind is worth 0.3670,
+*below* the `born_at` floor. Knowing which queue ranking to use is the whole
+content of the baseline, and Stage C is where that knowledge came from.
+
+**The tie-break inside a class cannot change the score, and it is provable.**
+Under a class-grouped order the winner of a case belongs to the highest-ranked
+action among those of the rules matching it, and every rule in that class carries
+that action. The decision, and so the score, is a function of the hierarchy alone.
+Both tie-breaks are computed and gated against each other, and eight random
+shuffles within the classes give the identical figure. Two consequences: the
+control cannot have been weakened by a badly chosen tie-break, and `best` is the
+**exact ceiling** of the family rather than the best anyone happened to find.
+
+### The contrast that says where this bites
+
+```
+puro                         floor              stage_c     best/40320
+  corpus test, split 0      0.5216               0.4291         0.5015
+  space                     0.3148               0.5756         0.6058
+```
+
+On the **pure** pool over the corpus the hierarchy is *worse* than arrival order
+— 0.4291 against 0.5216 — and even the best of the 40,320 does not reach the
+floor. The queue ranking is not a strong order in general. **It is strong exactly
+on the machine P-d measures**, which is what makes it a problem for P-d and not a
+curiosity: once subsumption has pruned the pool, most of what is left to decide is
+*which action*, and a ranking of actions is precisely the instrument for that.
+
+### What this does to P-d, stated carefully
+
+**It does not refute it and it does not move it.** P-d was signed on 2026-08-24
+with its band and its refutation line, and it will be adjudicated on the order
+Stage D's declared edges induce, exactly as written. A baseline is not a
+refutation and this record adjudicates nothing.
+
+**What it does is take away the band's power to discriminate.** A declared order
+scoring 0.47 on corpus test would *hold* P-d and would still be **worse than a
+free lookup table**. So a hold can no longer be read as evidence that declaration
+contributes a channel — which is what §10's own interpretation section wanted
+from it: *landing on the floor → declaration contributes no channel; landing
+between floor and the cloud → it contributes and is not enough*. Between the
+floor and the cloud there is now a third thing sitting at 0.4824 that cost
+nothing.
+
+**The comparison that recovers the discrimination costs zero calls**: score the
+declared order and the hierarchy order side by side, on the same pool and the
+same index set. Stage D can report it whatever P-d does. Building that comparison
+is a control and not an amendment; **changing P-d's band is an amendment, and
+after a baseline is known it would be hard rule 6 wearing a different hat.** The
+band stays as signed.
+
+**Files added by this section**
+
+```
+rung3/queue_hierarchy_floor.py       all 40,320 hierarchies, two pools, four
+                                     surfaces, with the floor READ from stage A
+results3/queue_hierarchy_floor.json  the record
+tests/test_queue_hierarchy_floor.py  the induced order reads only the action,
+                                     the enumeration is the whole group, the
+                                     tie-break gate, the floor read gate
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.queue_hierarchy_floor`.
+Under four minutes, zero API calls.
+
+---
+
 ## Files
 
 ```

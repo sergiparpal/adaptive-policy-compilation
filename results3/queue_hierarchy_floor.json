@@ -1,0 +1,849 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-24T14:26:41Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "d9a87b58a8a81bf7be21d4e3ccc2c277bc357626",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "9c36e48b3fbc423c",
+    "n_splits": 5,
+    "p_d_margin": 0.03
+  },
+  "what": "what an order that knows only the queue ranking scores over the 577 learned rules. Stage C found the proposer's competence is largely a fixed queue hierarchy; Stage D spends 300-500 calls compiling its answers into an order. This is the control that says how much of P-d's band a lookup table already reaches, for zero calls and before the money is spent.",
+  "it_is_a_control_not_an_amendment": "P-d's band and refutation line are the ones Sergi signed in \u00a70 on 2026-08-24 and nothing here touches them. A baseline measured beside a prediction can only make its reading stricter.",
+  "what_a_hierarchy_reads": "only which queue each rule sends a ticket to. Not the conditions, not the extension, not overlap, not subsumption, and nothing about any other rule.",
+  "the_three_references": "`best` is the maximum over all 40,320 hierarchies chosen WITH the labels \u2014 a winning ticket, not a level, and it bounds what any queue ranking can do. `mean` is what a hierarchy picked blind is worth, and that one is a level. `stage_c` is the hierarchy Stage C's key produced over the HIDDEN policy's pairs, transferred unchanged: the closest thing to the ranking the model appears to use, fitted on a different object and so costing no labels here.",
+  "tiebreak_is_irrelevant": "PROVABLE, and checked. Under a class-grouped order the winner of a case is the first matching rule, which belongs to the highest-ranked action among those of the rules matching it \u2014 and every rule in that class carries that action. The decision, and so the score, is a function of the hierarchy alone. Both tie-breaks are computed and gated against each other for that reason: the control cannot be weakened by a badly chosen tie-break, and `best` over the 40,320 is the exact ceiling of the whole family rather than the best found so far.",
+  "stage_c_hierarchy": [
+    "SECURITY_INCIDENT",
+    "ONCALL_ESCALATION",
+    "ACCOUNT_MANAGER",
+    "T3_ENGINEERING",
+    "BILLING_SPECIALIST",
+    "T2_TECHNICAL",
+    "SELF_SERVICE_DEFLECT",
+    "T1_GENERAL"
+  ],
+  "p_d_margin": 0.03,
+  "n_rules": 577,
+  "n_cases": 2000,
+  "n_space": 134400,
+  "gates": {
+    "floor_read": {
+      "what": "the born_at floors stage A published, read from the record that owns them and not recomputed here. The gate is on the cells this control reads, not on the record's total: floor_by_pool publishes five per-split rows this one aggregates away.",
+      "source": "results3/floor_by_pool.json::floors (order=born_at, generator=null)",
+      "n_cells": 16,
+      "cells_needed": 8,
+      "missing": [],
+      "passes": true
+    },
+    "tiebreak_irrelevant": {
+      "what": "the two intra-class tie-breaks, compared cell by cell. They must agree: a class-grouped order decides by the hierarchy alone, so nothing at the rule level can move the score.",
+      "n_cells": 16,
+      "cells_that_differ": [],
+      "passes": true
+    }
+  },
+  "rows": [
+    {
+      "n_orders": 40320,
+      "best": 0.4995,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.323375,
+      "median": 0.357,
+      "sd": 0.103563,
+      "worst": 0.141,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_full",
+      "stage_c": 0.4285,
+      "born_at_floor": 0.5115
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.501508,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.321508,
+      "median": 0.351759,
+      "sd": 0.101584,
+      "worst": 0.134673,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "stage_c": 0.429146,
+      "born_at_floor": 0.521608
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.501508,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.323049,
+      "median": 0.352764,
+      "sd": 0.104633,
+      "worst": 0.136683,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "stage_c": 0.438191,
+      "born_at_floor": 0.514573
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.50051,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.322324,
+      "median": 0.351682,
+      "sd": 0.100588,
+      "worst": 0.142712,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "stage_c": 0.420999,
+      "born_at_floor": 0.513761
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.512,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.32535,
+      "median": 0.359,
+      "sd": 0.106335,
+      "worst": 0.133,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "stage_c": 0.439,
+      "born_at_floor": 0.519
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.505988,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.324584,
+      "median": 0.355289,
+      "sd": 0.102685,
+      "worst": 0.146707,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "stage_c": 0.434132,
+      "born_at_floor": 0.505988
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.605804,
+      "best_hierarchy": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.289818,
+      "median": 0.266146,
+      "sd": 0.130031,
+      "worst": 0.087351,
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "space",
+      "stage_c": 0.575595,
+      "born_at_floor": 0.314807
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.524,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.36765,
+      "median": 0.3865,
+      "sd": 0.09002,
+      "worst": 0.197,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "stage_c": 0.4805,
+      "born_at_floor": 0.4285
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.526633,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.367035,
+      "median": 0.386935,
+      "sd": 0.089926,
+      "worst": 0.19598,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "stage_c": 0.482412,
+      "born_at_floor": 0.433166
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.511558,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.359296,
+      "median": 0.378894,
+      "sd": 0.089028,
+      "worst": 0.182915,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "stage_c": 0.469347,
+      "born_at_floor": 0.435176
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.521916,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.365715,
+      "median": 0.379205,
+      "sd": 0.08632,
+      "worst": 0.198777,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "stage_c": 0.477064,
+      "born_at_floor": 0.424057
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.529,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.365383,
+      "median": 0.389,
+      "sd": 0.092157,
+      "worst": 0.195,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "stage_c": 0.484,
+      "born_at_floor": 0.418
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.535928,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.371507,
+      "median": 0.384232,
+      "sd": 0.090042,
+      "worst": 0.204591,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "stage_c": 0.49002,
+      "born_at_floor": 0.447106
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.599702,
+      "best_hierarchy": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.317953,
+      "median": 0.277753,
+      "sd": 0.125442,
+      "worst": 0.115402,
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "space",
+      "stage_c": 0.583817,
+      "born_at_floor": 0.425744
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.4995,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.323375,
+      "median": 0.357,
+      "sd": 0.103563,
+      "worst": 0.141,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_full",
+      "stage_c": 0.4285,
+      "born_at_floor": 0.5115
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.501508,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.321508,
+      "median": 0.351759,
+      "sd": 0.101584,
+      "worst": 0.134673,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "stage_c": 0.429146,
+      "born_at_floor": 0.521608
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.501508,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.323049,
+      "median": 0.352764,
+      "sd": 0.104633,
+      "worst": 0.136683,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "stage_c": 0.438191,
+      "born_at_floor": 0.514573
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.50051,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.322324,
+      "median": 0.351682,
+      "sd": 0.100588,
+      "worst": 0.142712,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "stage_c": 0.420999,
+      "born_at_floor": 0.513761
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.512,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.32535,
+      "median": 0.359,
+      "sd": 0.106335,
+      "worst": 0.133,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "stage_c": 0.439,
+      "born_at_floor": 0.519
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.505988,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.324584,
+      "median": 0.355289,
+      "sd": 0.102685,
+      "worst": 0.146707,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "stage_c": 0.434132,
+      "born_at_floor": 0.505988
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.605804,
+      "best_hierarchy": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.289818,
+      "median": 0.266146,
+      "sd": 0.130031,
+      "worst": 0.087351,
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "space",
+      "stage_c": 0.575595,
+      "born_at_floor": 0.314807
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.524,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.36765,
+      "median": 0.3865,
+      "sd": 0.09002,
+      "worst": 0.197,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "stage_c": 0.4805,
+      "born_at_floor": 0.4285
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.526633,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.367035,
+      "median": 0.386935,
+      "sd": 0.089926,
+      "worst": 0.19598,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "stage_c": 0.482412,
+      "born_at_floor": 0.433166
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.511558,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.359296,
+      "median": 0.378894,
+      "sd": 0.089028,
+      "worst": 0.182915,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "stage_c": 0.469347,
+      "born_at_floor": 0.435176
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.521916,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.365715,
+      "median": 0.379205,
+      "sd": 0.08632,
+      "worst": 0.198777,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "stage_c": 0.477064,
+      "born_at_floor": 0.424057
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.529,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.365383,
+      "median": 0.389,
+      "sd": 0.092157,
+      "worst": 0.195,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "stage_c": 0.484,
+      "born_at_floor": 0.418
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.535928,
+      "best_hierarchy": [
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.371507,
+      "median": 0.384232,
+      "sd": 0.090042,
+      "worst": 0.204591,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "stage_c": 0.49002,
+      "born_at_floor": 0.447106
+    },
+    {
+      "n_orders": 40320,
+      "best": 0.599702,
+      "best_hierarchy": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING"
+      ],
+      "mean": 0.317953,
+      "median": 0.277753,
+      "sd": 0.125442,
+      "worst": 0.115402,
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "space",
+      "stage_c": 0.583817,
+      "born_at_floor": 0.425744
+    },
+    {
+      "tiebreak": "born_at",
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "aggregation": "mean over 5 splits",
+      "n_orders": 40320,
+      "best": 0.504303,
+      "mean": 0.323363,
+      "stage_c": 0.432294,
+      "born_at_floor": 0.514986,
+      "per_split": [
+        {
+          "split": 0,
+          "best": 0.501508,
+          "stage_c": 0.429146
+        },
+        {
+          "split": 1,
+          "best": 0.501508,
+          "stage_c": 0.438191
+        },
+        {
+          "split": 2,
+          "best": 0.50051,
+          "stage_c": 0.420999
+        },
+        {
+          "split": 3,
+          "best": 0.512,
+          "stage_c": 0.439
+        },
+        {
+          "split": 4,
+          "best": 0.505988,
+          "stage_c": 0.434132
+        }
+      ]
+    },
+    {
+      "tiebreak": "born_at",
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "aggregation": "mean over 5 splits",
+      "n_orders": 40320,
+      "best": 0.525007,
+      "mean": 0.365787,
+      "stage_c": 0.480569,
+      "born_at_floor": 0.431501,
+      "per_split": [
+        {
+          "split": 0,
+          "best": 0.526633,
+          "stage_c": 0.482412
+        },
+        {
+          "split": 1,
+          "best": 0.511558,
+          "stage_c": 0.469347
+        },
+        {
+          "split": 2,
+          "best": 0.521916,
+          "stage_c": 0.477064
+        },
+        {
+          "split": 3,
+          "best": 0.529,
+          "stage_c": 0.484
+        },
+        {
+          "split": 4,
+          "best": 0.535928,
+          "stage_c": 0.49002
+        }
+      ]
+    },
+    {
+      "tiebreak": "born_at_reversed",
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "aggregation": "mean over 5 splits",
+      "n_orders": 40320,
+      "best": 0.504303,
+      "mean": 0.323363,
+      "stage_c": 0.432294,
+      "born_at_floor": 0.514986,
+      "per_split": [
+        {
+          "split": 0,
+          "best": 0.501508,
+          "stage_c": 0.429146
+        },
+        {
+          "split": 1,
+          "best": 0.501508,
+          "stage_c": 0.438191
+        },
+        {
+          "split": 2,
+          "best": 0.50051,
+          "stage_c": 0.420999
+        },
+        {
+          "split": 3,
+          "best": 0.512,
+          "stage_c": 0.439
+        },
+        {
+          "split": 4,
+          "best": 0.505988,
+          "stage_c": 0.434132
+        }
+      ]
+    },
+    {
+      "tiebreak": "born_at_reversed",
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "aggregation": "mean over 5 splits",
+      "n_orders": 40320,
+      "best": 0.525007,
+      "mean": 0.365787,
+      "stage_c": 0.480569,
+      "born_at_floor": 0.431501,
+      "per_split": [
+        {
+          "split": 0,
+          "best": 0.526633,
+          "stage_c": 0.482412
+        },
+        {
+          "split": 1,
+          "best": 0.511558,
+          "stage_c": 0.469347
+        },
+        {
+          "split": 2,
+          "best": 0.521916,
+          "stage_c": 0.477064
+        },
+        {
+          "split": 3,
+          "best": 0.529,
+          "stage_c": 0.484
+        },
+        {
+          "split": 4,
+          "best": 0.535928,
+          "stage_c": 0.49002
+        }
+      ]
+    }
+  ],
+  "seconds": 214.0
+}
