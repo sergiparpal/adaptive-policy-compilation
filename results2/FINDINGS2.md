@@ -313,6 +313,121 @@ these eight runs never got to put to the test.
 
 ---
 
+## The labelled pair benchmark
+
+*Added 2026-08-24. `rung2/pair_benchmark.py` → `results2/pair_benchmark.json`, run
+with `PYTHONHASHSEED=0`. Stage B of `PLAN_PAIRWISE.md`. Zero API calls, no model,
+no decision, nothing in `rung2/` modified.*
+
+**Why it exists.** The finding above is that the mechanism works and the material
+never arrives. `PLAN_PAIRWISE.md` changes the question put to the proposer — from
+*write a rule* to *here are two rules that both match this ticket, which queue
+does it go to?* — and the first thing to do with a new question is ask it where
+the answer is already known. This section builds that population. **It measures
+nothing**: it produces pairs, witnesses and a key.
+
+**The four boxes, which are a property of the frozen policy.** `hidden_priority.py`
+sorts the 406 pairs of the 29 hidden rules into 112 disjoint extensions, 61
+already ordered by subsumption, 34 with the same action and **199 declared edges
+with a known winner**, rejecting none. They partition: 112 + 61 + 34 + 199 = 406.
+This run gates on all four and on the zero.
+
+**170 of the 199 carry a clean witness; 29 do not.** A witness is a case from
+`ext(winner) ∩ ext(loser)` — the region where the two rules compete — restricted
+to the cases whose **true** action is the winner's, taking the lowest such index.
+Deterministic: no sampling and no seed. The restriction is not cosmetic, and the
+29 are what it costs.
+
+```
+199  declared edges, winner known
+170  with a clean witness      <- the benchmark, and its denominator
+ 29  with none                 <- recorded, counted apart, outside it
+
+overlap over the 199, cases of the exhaustive space   min 80   median 2,560   max 33,600
+clean cases over the 170                              min 20   median   840   max 16,800
+overlap over the 29 without a witness                 min 200  median 4,200   max 33,600
+```
+
+**What the 29 lose it to, measured rather than assumed.** In every one of them an
+**earlier layer owns the whole overlap**, so the correct queue for every ticket
+there is neither rule's: 29 of 29, no exception. `PLAN_PAIRWISE.md` §7 described
+this as *a third rule from an even earlier layer* — the direction is exactly
+right and the number is not. Only **7 of the 29** lose the region to a single
+rule; the other 22 lose it to between 2 and 13 of them, and the region's true
+action is `SECURITY_INCIDENT` in 28 of the 29 and `ONCALL_ESCALATION` in 14 (a
+pair can have several). `H01` appears among the owners of 25 of the 29 and `H02`
+of 11. The record names the owning rules and their case counts per pair, so this
+is a lookup and not a second measurement.
+
+The clearest instance: `H03 > H04` overlaps on 4,200 cases and **all 4,200** are
+won by `H01`, whose action is `SECURITY_INCIDENT` — neither `T2_TECHNICAL` nor
+`ONCALL_ESCALATION`. There is no ticket in that region whose correct answer is on
+the menu of the two rules shown.
+
+**Read the 29 as a bias and not only as a loss, because that is what the
+denominator means.** They are precisely the pairs where the layer order is
+invisible on the surface of the two rules shown — the ones where a reader with
+only those two rules in front of them could not be right. **The 170 that survive
+are therefore the easier half by construction, and any rate measured on them is
+an UPPER estimate of what a proposer would do on all 199.** They are also the
+larger overlaps: median 4,200 cases against 2,560 over the whole 199, which is
+the same fact from the other side — the wider the region two rules share, the
+more of it an earlier layer has already claimed.
+
+**The population of the 170.** By the winner's action: `SECURITY_INCIDENT` 43,
+`T2_TECHNICAL` 39, `ONCALL_ESCALATION` 24, `T3_ENGINEERING` 24,
+`ACCOUNT_MANAGER` 22, `BILLING_SPECIALIST` 13, `SELF_SERVICE_DEFLECT` 4,
+`T1_GENERAL` 1. Winner and loser never share an action — the 34 same-action pairs
+were filtered upstream — so a pair has exactly one right answer and one wrong one
+among the two rules shown.
+
+**Three gates, all blocking**: the four boxes against `hidden_priority`'s
+published partition; 170 and 29 against what `PLAN_PAIRWISE.md` §7 measured and
+budgeted the next stage on; and byte-identical witnesses from two independent
+builds. `tests/test_pair_benchmark.py` repeats the third across three
+`PYTHONHASHSEED` values in separate processes, with the child printing its own
+randomization witness so the check cannot pass by proving that hashing stopped
+being randomized.
+
+**The bit convention is where this could have gone wrong silently.**
+`engine2.Space` is MSB-first — case index `i` is bit `n-1-i`, so the
+lowest-indexed case in a mask is its **highest** set bit. An LSB-first reading
+returns a valid case index that is not the case the two rules compete over, and
+every figure built on top of it would look plausible. Two assertions run on every
+emitted witness and stop the run: both rules match it, and its true action is the
+winner's. The test suite additionally rebuilds all 199 witnesses with the plan's
+own list comprehension over `true_action` and checks that the mask formulation
+agrees on every one.
+
+**Why this module may see the oracle.** It imports `true_action` and
+`true_rule_id`, and was added to the allowlist in
+`tests/test_oracle_separation.py` deliberately, in the commit that created it. It
+measures offline against a known key, decides nothing, and no component of the
+online loop imports it — and the key is written into the record openly, which is
+what makes this a benchmark rather than a leak.
+
+**What it does not do.** It does not put the question to a model; that is stage C
+of `PLAN_PAIRWISE.md` and it is gated on a signature that does not exist yet. It
+says nothing about the learned base: these are the 29 hand-written rules, whose
+layer order is known. And it does not measure the cost of authorship on a learned
+base — the last caveat above still stands untouched.
+
+**Files added by this section**
+
+```
+rung2/pair_benchmark.py         the 199 declared pairs with their witnesses
+results2/pair_benchmark.json    the record: per pair, the witness ticket, the
+                                overlap, and for the 29 the rules that own it
+tests/test_pair_benchmark.py    the three gates, the bit convention, the two
+                                assertions provoked, determinism across seeds
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung2.pair_benchmark`
+(`--checks` runs the gates alone, `--digest` prints the determinism
+fingerprint). Three seconds, zero API calls.
+
+---
+
 ## Files
 
 ```

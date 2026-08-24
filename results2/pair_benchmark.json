@@ -1,0 +1,4890 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-24T08:58:41Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "023b7fdce89874d852cecd669538a3693a0c7bf5",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "0643fa201f1d3895",
+    "n_rules": 29,
+    "n_pairs": 406
+  },
+  "what": "the pairs of the hidden policy whose correct winner is known by construction, each with a witness ticket drawn from the region where the two rules compete. Built so that the pairwise question can be asked where the answer is already known, before a euro is spent asking it of the learned base. It is a benchmark: it spends no API call, decides nothing and scores no model.",
+  "substrate": "rung2/hidden_priority.py::build_hidden_engine, imported and called unchanged, and rung2/engine2.py. Nothing in rung2/ is modified. The edge set is the minimal one derived from the layer order: extensions overlap, subsumption-incomparable, actions differ.",
+  "why_it_may_see_the_oracle": "it imports true_action and true_rule_id and is on the allowlist of tests/test_oracle_separation.py, added deliberately: it measures offline against a known key and decides nothing. The key is in the record openly, which is what makes it a benchmark.",
+  "witness_rule": "the lowest-indexed case of ext(winner) & ext(loser) whose TRUE action is the winner's. Deterministic: no sampling, no seed. The restriction is not cosmetic \u2014 a third rule from an earlier layer may own part of the overlap, and there the correct queue is neither rule's.",
+  "denominator_note": "the pairs with no clean witness are outside the denominator, and they are precisely the pairs where the layer order is invisible on the surface of the two rules shown. The survivors are therefore the easier half BY CONSTRUCTION, and any rate measured on them is an UPPER estimate of what a proposer would do on all 199. That is not a caveat; it is what the denominator means.",
+  "bit_convention": "engine2.Space is MSB-first: case index i is bit n-1-i, so the lowest-indexed case of a mask is its HIGHEST set bit. Every witness passes the two assertions of pair_row \u2014 both rules match it, and its true action is the winner's \u2014 which is what would fail loudly on the opposite convention.",
+  "n_rules": 29,
+  "n_pairs": 406,
+  "n_space": 134400,
+  "gates": {
+    "partition": {
+      "what": "the four boxes hidden_priority.py sorts the 406 pairs of the 29 hidden rules into. It is a property of the frozen policy, not a figure of this run.",
+      "boxes": {
+        "skipped_disjoint": 112,
+        "skipped_subsumed_by_structure": 61,
+        "skipped_same_action": 34,
+        "declared": 199
+      },
+      "expected": {
+        "skipped_disjoint": 112,
+        "skipped_subsumed_by_structure": 61,
+        "skipped_same_action": 34,
+        "declared": 199
+      },
+      "total": 406,
+      "n_pairs": 406,
+      "rejected_edges": 0,
+      "passes": true
+    },
+    "witnesses": {
+      "what": "how many of the 199 declared pairs have a clean witness. PLAN_PAIRWISE.md \u00a77 measured 170 and 29 on 2026-08-24 and made them a gate on this stage: they are what says this run built the population the next stage was budgeted for.",
+      "clean": 170,
+      "unclean": 29,
+      "expected_clean": 170,
+      "expected_unclean": 29,
+      "n_declared": 199,
+      "passes": true
+    },
+    "determinism": {
+      "what": "two builds from scratch, in the same process, emit the same witnesses. The cross-process check over three PYTHONHASHSEED values is in tests/test_pair_benchmark.py.",
+      "digest": "cba170da6ca445bc",
+      "digest_second_build": "cba170da6ca445bc",
+      "passes": true
+    },
+    "passes": true
+  },
+  "population": {
+    "overlap_over_the_declared_pairs": {
+      "n": 199,
+      "min": 80,
+      "median": 2560,
+      "max": 33600,
+      "note": "cases of the exhaustive space in ext(winner) & ext(loser). None of the 199 is empty: overlap is the condition that made the edge declarable in the first place."
+    },
+    "unclean_pairs": {
+      "n": 29,
+      "winners": {
+        "H03": 11,
+        "H06": 1,
+        "H07": 1,
+        "H08": 5,
+        "H10": 1,
+        "H11": 1,
+        "H12": 4,
+        "H22": 1,
+        "H23": 3,
+        "H25": 1
+      },
+      "losers": {
+        "H04": 1,
+        "H05": 1,
+        "H06": 1,
+        "H07": 1,
+        "H09": 2,
+        "H10": 1,
+        "H13": 6,
+        "H14": 3,
+        "H15": 2,
+        "H17": 1,
+        "H21": 1,
+        "H23": 1,
+        "H24": 1,
+        "H25": 1,
+        "H27": 4,
+        "H28": 2
+      },
+      "note": "no case of the overlap has the winner's action as its truth: an earlier layer owns the whole region, so the correct queue for every ticket there is neither rule's. `owned_by` names the rules and the case counts."
+    },
+    "clean_pairs": {
+      "n": 170,
+      "winner_actions": {
+        "ACCOUNT_MANAGER": 22,
+        "BILLING_SPECIALIST": 13,
+        "ONCALL_ESCALATION": 24,
+        "SECURITY_INCIDENT": 43,
+        "SELF_SERVICE_DEFLECT": 4,
+        "T1_GENERAL": 1,
+        "T2_TECHNICAL": 39,
+        "T3_ENGINEERING": 24
+      },
+      "loser_actions": {
+        "ACCOUNT_MANAGER": 13,
+        "BILLING_SPECIALIST": 15,
+        "ONCALL_ESCALATION": 4,
+        "SELF_SERVICE_DEFLECT": 42,
+        "T1_GENERAL": 32,
+        "T2_TECHNICAL": 45,
+        "T3_ENGINEERING": 19
+      },
+      "clean_cases": {
+        "min": 20,
+        "median": 840.0,
+        "max": 16800
+      }
+    }
+  },
+  "pairs": [
+    {
+      "winner": "H01",
+      "loser": "H04",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 0,
+      "loser_layer_index": 3,
+      "overlap_cases": 4200,
+      "clean_cases": 4200,
+      "clean": true,
+      "witness_index": 79800,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H05",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 0,
+      "loser_layer_index": 4,
+      "overlap_cases": 2100,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 75605,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H06",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 0,
+      "loser_layer_index": 5,
+      "overlap_cases": 4200,
+      "clean_cases": 4200,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H07",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 0,
+      "loser_layer_index": 6,
+      "overlap_cases": 1680,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 77280,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H08",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 7,
+      "overlap_cases": 8400,
+      "clean_cases": 8400,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H09",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 0,
+      "loser_layer_index": 8,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 80640,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H10",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 0,
+      "loser_layer_index": 9,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 76440,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H11",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 0,
+      "loser_layer_index": 10,
+      "overlap_cases": 5760,
+      "clean_cases": 5760,
+      "clean": true,
+      "witness_index": 76470,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H12",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 0,
+      "loser_layer_index": 11,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 76440,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H13",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 0,
+      "loser_layer_index": 12,
+      "overlap_cases": 12800,
+      "clean_cases": 12800,
+      "clean": true,
+      "witness_index": 79850,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H14",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 0,
+      "loser_layer_index": 13,
+      "overlap_cases": 10400,
+      "clean_cases": 10400,
+      "clean": true,
+      "witness_index": 75680,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H15",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 0,
+      "loser_layer_index": 14,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 77280,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H16",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 15,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 77280,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H17",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 0,
+      "loser_layer_index": 16,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 78960,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H18",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 17,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 78960,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H19",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 18,
+      "overlap_cases": 1680,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 94920,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H20",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 19,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H21",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 20,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 75602,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H23",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 22,
+      "overlap_cases": 2100,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 76235,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H26",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 0,
+      "loser_layer_index": 25,
+      "overlap_cases": 400,
+      "clean_cases": 400,
+      "clean": true,
+      "witness_index": 126000,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 4,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H01",
+      "loser": "H27",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 0,
+      "loser_layer_index": 26,
+      "overlap_cases": 16800,
+      "clean_cases": 16800,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H04",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 1,
+      "loser_layer_index": 3,
+      "overlap_cases": 4200,
+      "clean_cases": 4200,
+      "clean": true,
+      "witness_index": 79800,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H05",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 1,
+      "loser_layer_index": 4,
+      "overlap_cases": 2100,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 75605,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H06",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 1,
+      "loser_layer_index": 5,
+      "overlap_cases": 4200,
+      "clean_cases": 4200,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H07",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 1,
+      "loser_layer_index": 6,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 68880,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H08",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 7,
+      "overlap_cases": 16800,
+      "clean_cases": 16800,
+      "clean": true,
+      "witness_index": 67200,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H09",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 1,
+      "loser_layer_index": 8,
+      "overlap_cases": 1680,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 80640,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H10",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 1,
+      "loser_layer_index": 9,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 68040,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H11",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 1,
+      "loser_layer_index": 10,
+      "overlap_cases": 5760,
+      "clean_cases": 5760,
+      "clean": true,
+      "witness_index": 68070,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H12",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 1,
+      "loser_layer_index": 11,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 68040,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H13",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 1,
+      "loser_layer_index": 12,
+      "overlap_cases": 6400,
+      "clean_cases": 6400,
+      "clean": true,
+      "witness_index": 79850,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H14",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 1,
+      "loser_layer_index": 13,
+      "overlap_cases": 5200,
+      "clean_cases": 5200,
+      "clean": true,
+      "witness_index": 75680,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H15",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 1,
+      "loser_layer_index": 14,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 68880,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H16",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 15,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 68880,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H17",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 1,
+      "loser_layer_index": 16,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 70560,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H18",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 17,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 70560,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H19",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 18,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 86520,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H20",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 19,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 67200,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H21",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 20,
+      "overlap_cases": 6720,
+      "clean_cases": 6720,
+      "clean": true,
+      "witness_index": 67202,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H22",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 1,
+      "loser_layer_index": 21,
+      "overlap_cases": 2100,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 67830,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H23",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 22,
+      "overlap_cases": 3150,
+      "clean_cases": 3150,
+      "clean": true,
+      "witness_index": 67835,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H25",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 1,
+      "loser_layer_index": 24,
+      "overlap_cases": 400,
+      "clean_cases": 400,
+      "clean": true,
+      "witness_index": 67200,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H02",
+      "loser": "H28",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 1,
+      "loser_layer_index": 27,
+      "overlap_cases": 16800,
+      "clean_cases": 16800,
+      "clean": true,
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H04",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 2,
+      "loser_layer_index": 3,
+      "overlap_cases": 4200,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 4200
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 4200
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H05",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ONCALL_ESCALATION",
+      "winner_layer_index": 2,
+      "loser_layer_index": 4,
+      "overlap_cases": 2100,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 2100
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 2100
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H06",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 2,
+      "loser_layer_index": 5,
+      "overlap_cases": 4200,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 4200
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 4200
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H07",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 2,
+      "loser_layer_index": 6,
+      "overlap_cases": 3360,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 1680
+        },
+        {
+          "rule_id": "H02",
+          "cases": 1680
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 3360
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H09",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 2,
+      "loser_layer_index": 8,
+      "overlap_cases": 3360,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3360
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 3360
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H10",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 2,
+      "loser_layer_index": 9,
+      "overlap_cases": 6720,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3360
+        },
+        {
+          "rule_id": "H02",
+          "cases": 3360
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 6720
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H11",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 2,
+      "loser_layer_index": 10,
+      "overlap_cases": 11520,
+      "clean_cases": 2880,
+      "clean": true,
+      "witness_index": 101670,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H12",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 2,
+      "loser_layer_index": 11,
+      "overlap_cases": 13440,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 101640,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H13",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 2,
+      "loser_layer_index": 12,
+      "overlap_cases": 12800,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 12800
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 12800
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H14",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 2,
+      "loser_layer_index": 13,
+      "overlap_cases": 10400,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 10400
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 10400
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H15",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 2,
+      "loser_layer_index": 14,
+      "overlap_cases": 6720,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3360
+        },
+        {
+          "rule_id": "H02",
+          "cases": 3360
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 6720
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H17",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 2,
+      "loser_layer_index": 16,
+      "overlap_cases": 6720,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3360
+        },
+        {
+          "rule_id": "H02",
+          "cases": 3360
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 6720
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 2,
+      "loser_layer_index": 21,
+      "overlap_cases": 4200,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 101430,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 2,
+      "loser_layer_index": 22,
+      "overlap_cases": 6300,
+      "clean_cases": 2100,
+      "clean": true,
+      "witness_index": 101435,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H24",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 2,
+      "loser_layer_index": 23,
+      "overlap_cases": 8400,
+      "clean_cases": 8400,
+      "clean": true,
+      "witness_index": 100800,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 2,
+      "loser_layer_index": 24,
+      "overlap_cases": 800,
+      "clean_cases": 400,
+      "clean": true,
+      "witness_index": 100800,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H26",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 2,
+      "loser_layer_index": 25,
+      "overlap_cases": 800,
+      "clean_cases": 400,
+      "clean": true,
+      "witness_index": 117600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 4,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H03",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 2,
+      "loser_layer_index": 27,
+      "overlap_cases": 33600,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 33600
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "SECURITY_INCIDENT": 33600
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H07",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 3,
+      "loser_layer_index": 6,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 14280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H09",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 3,
+      "loser_layer_index": 8,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 13440,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H10",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 3,
+      "loser_layer_index": 9,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 13440,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H11",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 3,
+      "loser_layer_index": 10,
+      "overlap_cases": 1440,
+      "clean_cases": 720,
+      "clean": true,
+      "witness_index": 13470,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H12",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 3,
+      "loser_layer_index": 11,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 13440,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H13",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 3,
+      "loser_layer_index": 12,
+      "overlap_cases": 6400,
+      "clean_cases": 3200,
+      "clean": true,
+      "witness_index": 12650,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H15",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 3,
+      "loser_layer_index": 14,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 14280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H16",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 3,
+      "loser_layer_index": 15,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 14280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H17",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 3,
+      "loser_layer_index": 16,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 15960,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H18",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 3,
+      "loser_layer_index": 17,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 15960,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H20",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 3,
+      "loser_layer_index": 19,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 12600,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H04",
+      "loser": "H21",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 3,
+      "loser_layer_index": 20,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 12602,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H07",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 4,
+      "loser_layer_index": 6,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 10085,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H10",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 4,
+      "loser_layer_index": 9,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 9245,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H11",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 4,
+      "loser_layer_index": 10,
+      "overlap_cases": 720,
+      "clean_cases": 360,
+      "clean": true,
+      "witness_index": 9275,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H12",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 4,
+      "loser_layer_index": 11,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 9245,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H14",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 4,
+      "loser_layer_index": 13,
+      "overlap_cases": 2600,
+      "clean_cases": 1300,
+      "clean": true,
+      "witness_index": 8485,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H15",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 4,
+      "loser_layer_index": 14,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 10085,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H16",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 4,
+      "loser_layer_index": 15,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 10085,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H17",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 4,
+      "loser_layer_index": 16,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 11765,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H18",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 4,
+      "loser_layer_index": 17,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 11765,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H20",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 4,
+      "loser_layer_index": 19,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 8405,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H21",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 4,
+      "loser_layer_index": 20,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 8407,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H05",
+      "loser": "H23",
+      "winner_action": "ONCALL_ESCALATION",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 4,
+      "loser_layer_index": 22,
+      "overlap_cases": 1050,
+      "clean_cases": 525,
+      "clean": true,
+      "witness_index": 9035,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H10",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 5,
+      "loser_layer_index": 9,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 9240,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H11",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 5,
+      "loser_layer_index": 10,
+      "overlap_cases": 1440,
+      "clean_cases": 360,
+      "clean": true,
+      "witness_index": 9270,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H12",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 5,
+      "loser_layer_index": 11,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 9240,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H14",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 5,
+      "loser_layer_index": 13,
+      "overlap_cases": 5200,
+      "clean_cases": 1300,
+      "clean": true,
+      "witness_index": 8480,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H16",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 5,
+      "loser_layer_index": 15,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 10080,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H18",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 5,
+      "loser_layer_index": 17,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 11760,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H20",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 5,
+      "loser_layer_index": 19,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 8400,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H21",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 5,
+      "loser_layer_index": 20,
+      "overlap_cases": 1680,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 8402,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H06",
+      "loser": "H23",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 5,
+      "loser_layer_index": 22,
+      "overlap_cases": 1050,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 525
+        },
+        {
+          "rule_id": "H05",
+          "cases": 525
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 525,
+        "SECURITY_INCIDENT": 525
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H13",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 6,
+      "loser_layer_index": 12,
+      "overlap_cases": 1280,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 640
+        },
+        {
+          "rule_id": "H04",
+          "cases": 640
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 640,
+        "SECURITY_INCIDENT": 640
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H14",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 6,
+      "loser_layer_index": 13,
+      "overlap_cases": 1040,
+      "clean_cases": 260,
+      "clean": true,
+      "witness_index": 10160,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H21",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 6,
+      "loser_layer_index": 20,
+      "overlap_cases": 1344,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 1682,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H22",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 6,
+      "loser_layer_index": 21,
+      "overlap_cases": 420,
+      "clean_cases": 210,
+      "clean": true,
+      "witness_index": 2310,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H23",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 6,
+      "loser_layer_index": 22,
+      "overlap_cases": 630,
+      "clean_cases": 210,
+      "clean": true,
+      "witness_index": 2315,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H25",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 6,
+      "loser_layer_index": 24,
+      "overlap_cases": 80,
+      "clean_cases": 40,
+      "clean": true,
+      "witness_index": 1680,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H07",
+      "loser": "H28",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 6,
+      "loser_layer_index": 27,
+      "overlap_cases": 3360,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 10080,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H09",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 7,
+      "loser_layer_index": 8,
+      "overlap_cases": 1680,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 840
+        },
+        {
+          "rule_id": "H04",
+          "cases": 840
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 840,
+        "SECURITY_INCIDENT": 840
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H10",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 7,
+      "loser_layer_index": 9,
+      "overlap_cases": 6720,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 840,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H11",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 7,
+      "loser_layer_index": 10,
+      "overlap_cases": 5760,
+      "clean_cases": 1440,
+      "clean": true,
+      "witness_index": 870,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H12",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 7,
+      "loser_layer_index": 11,
+      "overlap_cases": 6720,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 840,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H13",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 7,
+      "loser_layer_index": 12,
+      "overlap_cases": 6400,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3200
+        },
+        {
+          "rule_id": "H04",
+          "cases": 3200
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 3200,
+        "SECURITY_INCIDENT": 3200
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H14",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 7,
+      "loser_layer_index": 13,
+      "overlap_cases": 5200,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 2600
+        },
+        {
+          "rule_id": "H05",
+          "cases": 1300
+        },
+        {
+          "rule_id": "H06",
+          "cases": 1300
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 1300,
+        "SECURITY_INCIDENT": 2600,
+        "T3_ENGINEERING": 1300
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H15",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 7,
+      "loser_layer_index": 14,
+      "overlap_cases": 6720,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 1680
+        },
+        {
+          "rule_id": "H02",
+          "cases": 1680
+        },
+        {
+          "rule_id": "H07",
+          "cases": 1680
+        },
+        {
+          "rule_id": "H04",
+          "cases": 840
+        },
+        {
+          "rule_id": "H05",
+          "cases": 420
+        },
+        {
+          "rule_id": "H06",
+          "cases": 420
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 1260,
+        "SECURITY_INCIDENT": 3360,
+        "T3_ENGINEERING": 2100
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H17",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 7,
+      "loser_layer_index": 16,
+      "overlap_cases": 6720,
+      "clean_cases": 1680,
+      "clean": true,
+      "witness_index": 3360,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 7,
+      "loser_layer_index": 21,
+      "overlap_cases": 2100,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 630,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 7,
+      "loser_layer_index": 22,
+      "overlap_cases": 3150,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 635,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 7,
+      "loser_layer_index": 24,
+      "overlap_cases": 400,
+      "clean_cases": 160,
+      "clean": true,
+      "witness_index": 0,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H08",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 7,
+      "loser_layer_index": 27,
+      "overlap_cases": 16800,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 8400
+        },
+        {
+          "rule_id": "H04",
+          "cases": 4200
+        },
+        {
+          "rule_id": "H05",
+          "cases": 2100
+        },
+        {
+          "rule_id": "H06",
+          "cases": 2100
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ONCALL_ESCALATION": 6300,
+        "SECURITY_INCIDENT": 8400,
+        "T3_ENGINEERING": 2100
+      }
+    },
+    {
+      "winner": "H09",
+      "loser": "H10",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 8,
+      "loser_layer_index": 9,
+      "overlap_cases": 3360,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 30240,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H09",
+      "loser": "H11",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "BILLING_SPECIALIST",
+      "winner_layer_index": 8,
+      "loser_layer_index": 10,
+      "overlap_cases": 5760,
+      "clean_cases": 2160,
+      "clean": true,
+      "witness_index": 30270,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H09",
+      "loser": "H21",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 8,
+      "loser_layer_index": 20,
+      "overlap_cases": 672,
+      "clean_cases": 168,
+      "clean": true,
+      "witness_index": 30242,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H09",
+      "loser": "H26",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 8,
+      "loser_layer_index": 25,
+      "overlap_cases": 80,
+      "clean_cases": 40,
+      "clean": true,
+      "witness_index": 63840,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 4,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H09",
+      "loser": "H27",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 8,
+      "loser_layer_index": 26,
+      "overlap_cases": 3360,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 30240,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H13",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 9,
+      "loser_layer_index": 12,
+      "overlap_cases": 2560,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 1280
+        },
+        {
+          "rule_id": "H04",
+          "cases": 640
+        },
+        {
+          "rule_id": "H09",
+          "cases": 640
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 640,
+        "ONCALL_ESCALATION": 640,
+        "SECURITY_INCIDENT": 1280
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H14",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 9,
+      "loser_layer_index": 13,
+      "overlap_cases": 2080,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 26120,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H21",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 9,
+      "loser_layer_index": 20,
+      "overlap_cases": 2688,
+      "clean_cases": 504,
+      "clean": true,
+      "witness_index": 17642,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H22",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 9,
+      "loser_layer_index": 21,
+      "overlap_cases": 840,
+      "clean_cases": 210,
+      "clean": true,
+      "witness_index": 18270,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H23",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 9,
+      "loser_layer_index": 22,
+      "overlap_cases": 1260,
+      "clean_cases": 315,
+      "clean": true,
+      "witness_index": 18275,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H25",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 9,
+      "loser_layer_index": 24,
+      "overlap_cases": 160,
+      "clean_cases": 40,
+      "clean": true,
+      "witness_index": 17640,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H10",
+      "loser": "H28",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 9,
+      "loser_layer_index": 27,
+      "overlap_cases": 6720,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 26040,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H13",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 10,
+      "loser_layer_index": 12,
+      "overlap_cases": 5120,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 2560
+        },
+        {
+          "rule_id": "H09",
+          "cases": 1920
+        },
+        {
+          "rule_id": "H04",
+          "cases": 640
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 1920,
+        "ONCALL_ESCALATION": 640,
+        "SECURITY_INCIDENT": 2560
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H14",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 10,
+      "loser_layer_index": 13,
+      "overlap_cases": 4160,
+      "clean_cases": 1560,
+      "clean": true,
+      "witness_index": 26120,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H21",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 10,
+      "loser_layer_index": 20,
+      "overlap_cases": 2304,
+      "clean_cases": 432,
+      "clean": true,
+      "witness_index": 17672,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H22",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 10,
+      "loser_layer_index": 21,
+      "overlap_cases": 1440,
+      "clean_cases": 540,
+      "clean": true,
+      "witness_index": 18300,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "phone",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H23",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 10,
+      "loser_layer_index": 22,
+      "overlap_cases": 2160,
+      "clean_cases": 810,
+      "clean": true,
+      "witness_index": 18305,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "phone",
+        "prior_tickets_30d": 3,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H24",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 10,
+      "loser_layer_index": 23,
+      "overlap_cases": 2880,
+      "clean_cases": 1440,
+      "clean": true,
+      "witness_index": 34470,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H27",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 10,
+      "loser_layer_index": 26,
+      "overlap_cases": 11520,
+      "clean_cases": 2160,
+      "clean": true,
+      "witness_index": 17670,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H11",
+      "loser": "H28",
+      "winner_action": "BILLING_SPECIALIST",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 10,
+      "loser_layer_index": 27,
+      "overlap_cases": 11520,
+      "clean_cases": 2160,
+      "clean": true,
+      "witness_index": 26070,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H13",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 11,
+      "loser_layer_index": 12,
+      "overlap_cases": 5120,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 2560
+        },
+        {
+          "rule_id": "H09",
+          "cases": 1920
+        },
+        {
+          "rule_id": "H04",
+          "cases": 640
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 1920,
+        "ONCALL_ESCALATION": 640,
+        "SECURITY_INCIDENT": 2560
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H14",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "winner_layer_index": 11,
+      "loser_layer_index": 13,
+      "overlap_cases": 4160,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 2080
+        },
+        {
+          "rule_id": "H11",
+          "cases": 1040
+        },
+        {
+          "rule_id": "H10",
+          "cases": 520
+        },
+        {
+          "rule_id": "H05",
+          "cases": 260
+        },
+        {
+          "rule_id": "H06",
+          "cases": 260
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "BILLING_SPECIALIST": 1560,
+        "ONCALL_ESCALATION": 260,
+        "SECURITY_INCIDENT": 2080,
+        "T3_ENGINEERING": 260
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H21",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 11,
+      "loser_layer_index": 20,
+      "overlap_cases": 2688,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 672
+        },
+        {
+          "rule_id": "H02",
+          "cases": 672
+        },
+        {
+          "rule_id": "H10",
+          "cases": 504
+        },
+        {
+          "rule_id": "H08",
+          "cases": 336
+        },
+        {
+          "rule_id": "H04",
+          "cases": 168
+        },
+        {
+          "rule_id": "H09",
+          "cases": 168
+        },
+        {
+          "rule_id": "H05",
+          "cases": 84
+        },
+        {
+          "rule_id": "H06",
+          "cases": 84
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 168,
+        "BILLING_SPECIALIST": 504,
+        "ONCALL_ESCALATION": 252,
+        "SECURITY_INCIDENT": 1344,
+        "T2_TECHNICAL": 336,
+        "T3_ENGINEERING": 84
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H23",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 11,
+      "loser_layer_index": 22,
+      "overlap_cases": 2520,
+      "clean_cases": 90,
+      "clean": true,
+      "witness_index": 35075,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "billing",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H27",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 11,
+      "loser_layer_index": 26,
+      "overlap_cases": 13440,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H01",
+          "cases": 3360
+        },
+        {
+          "rule_id": "H02",
+          "cases": 3360
+        },
+        {
+          "rule_id": "H10",
+          "cases": 2520
+        },
+        {
+          "rule_id": "H08",
+          "cases": 1680
+        },
+        {
+          "rule_id": "H04",
+          "cases": 840
+        },
+        {
+          "rule_id": "H09",
+          "cases": 840
+        },
+        {
+          "rule_id": "H05",
+          "cases": 420
+        },
+        {
+          "rule_id": "H06",
+          "cases": 420
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 840,
+        "BILLING_SPECIALIST": 2520,
+        "ONCALL_ESCALATION": 1260,
+        "SECURITY_INCIDENT": 6720,
+        "T2_TECHNICAL": 1680,
+        "T3_ENGINEERING": 420
+      }
+    },
+    {
+      "winner": "H12",
+      "loser": "H28",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 11,
+      "loser_layer_index": 27,
+      "overlap_cases": 13440,
+      "clean_cases": 240,
+      "clean": true,
+      "witness_index": 42840,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H15",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 12,
+      "loser_layer_index": 14,
+      "overlap_cases": 2560,
+      "clean_cases": 640,
+      "clean": true,
+      "witness_index": 31130,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H16",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 15,
+      "overlap_cases": 5120,
+      "clean_cases": 1920,
+      "clean": true,
+      "witness_index": 31130,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H17",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 12,
+      "loser_layer_index": 16,
+      "overlap_cases": 2560,
+      "clean_cases": 640,
+      "clean": true,
+      "witness_index": 32810,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H18",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 17,
+      "overlap_cases": 5120,
+      "clean_cases": 1920,
+      "clean": true,
+      "witness_index": 32810,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H19",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 18,
+      "overlap_cases": 1280,
+      "clean_cases": 640,
+      "clean": true,
+      "witness_index": 31970,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H20",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 19,
+      "overlap_cases": 2560,
+      "clean_cases": 640,
+      "clean": true,
+      "witness_index": 29450,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H21",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 20,
+      "overlap_cases": 2560,
+      "clean_cases": 640,
+      "clean": true,
+      "witness_index": 29452,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H13",
+      "loser": "H27",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 12,
+      "loser_layer_index": 26,
+      "overlap_cases": 12800,
+      "clean_cases": 3200,
+      "clean": true,
+      "witness_index": 29450,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H15",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 13,
+      "loser_layer_index": 14,
+      "overlap_cases": 2080,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 26960,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H16",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 15,
+      "overlap_cases": 4160,
+      "clean_cases": 1560,
+      "clean": true,
+      "witness_index": 26960,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H17",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T3_ENGINEERING",
+      "winner_layer_index": 13,
+      "loser_layer_index": 16,
+      "overlap_cases": 2080,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 28640,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H18",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 17,
+      "overlap_cases": 4160,
+      "clean_cases": 1560,
+      "clean": true,
+      "witness_index": 28640,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H19",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 18,
+      "overlap_cases": 1040,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 27800,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H20",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 19,
+      "overlap_cases": 2080,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 25280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H21",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 20,
+      "overlap_cases": 2080,
+      "clean_cases": 416,
+      "clean": true,
+      "witness_index": 25282,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H23",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 22,
+      "overlap_cases": 2600,
+      "clean_cases": 780,
+      "clean": true,
+      "witness_index": 25915,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 8,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H14",
+      "loser": "H27",
+      "winner_action": "ACCOUNT_MANAGER",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 13,
+      "loser_layer_index": 26,
+      "overlap_cases": 10400,
+      "clean_cases": 2080,
+      "clean": true,
+      "witness_index": 25280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 8,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H15",
+      "loser": "H21",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 14,
+      "loser_layer_index": 20,
+      "overlap_cases": 2688,
+      "clean_cases": 860,
+      "clean": true,
+      "witness_index": 1682,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H15",
+      "loser": "H22",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 14,
+      "loser_layer_index": 21,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 2310,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H15",
+      "loser": "H23",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 14,
+      "loser_layer_index": 22,
+      "overlap_cases": 1260,
+      "clean_cases": 460,
+      "clean": true,
+      "witness_index": 2315,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H15",
+      "loser": "H25",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 14,
+      "loser_layer_index": 24,
+      "overlap_cases": 160,
+      "clean_cases": 80,
+      "clean": true,
+      "witness_index": 1680,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H15",
+      "loser": "H28",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 14,
+      "loser_layer_index": 27,
+      "overlap_cases": 6720,
+      "clean_cases": 940,
+      "clean": true,
+      "witness_index": 10080,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 15,
+      "loser_layer_index": 21,
+      "overlap_cases": 1680,
+      "clean_cases": 840,
+      "clean": true,
+      "witness_index": 35910,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 15,
+      "loser_layer_index": 22,
+      "overlap_cases": 2520,
+      "clean_cases": 920,
+      "clean": true,
+      "witness_index": 35915,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H24",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 15,
+      "loser_layer_index": 23,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 35280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 15,
+      "loser_layer_index": 24,
+      "overlap_cases": 320,
+      "clean_cases": 160,
+      "clean": true,
+      "witness_index": 35280,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H26",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 15,
+      "loser_layer_index": 25,
+      "overlap_cases": 320,
+      "clean_cases": 240,
+      "clean": true,
+      "witness_index": 52080,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 4,
+        "customer_tier": "free",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H16",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 15,
+      "loser_layer_index": 27,
+      "overlap_cases": 13440,
+      "clean_cases": 1040,
+      "clean": true,
+      "witness_index": 43680,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H17",
+      "loser": "H21",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 16,
+      "loser_layer_index": 20,
+      "overlap_cases": 2688,
+      "clean_cases": 524,
+      "clean": true,
+      "witness_index": 11762,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H17",
+      "loser": "H22",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 16,
+      "loser_layer_index": 21,
+      "overlap_cases": 840,
+      "clean_cases": 210,
+      "clean": true,
+      "witness_index": 20790,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H17",
+      "loser": "H23",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 16,
+      "loser_layer_index": 22,
+      "overlap_cases": 1260,
+      "clean_cases": 250,
+      "clean": true,
+      "witness_index": 20795,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H17",
+      "loser": "H25",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 16,
+      "loser_layer_index": 24,
+      "overlap_cases": 160,
+      "clean_cases": 40,
+      "clean": true,
+      "witness_index": 20160,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H17",
+      "loser": "H28",
+      "winner_action": "T3_ENGINEERING",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 16,
+      "loser_layer_index": 27,
+      "overlap_cases": 6720,
+      "clean_cases": 940,
+      "clean": true,
+      "witness_index": 11760,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 17,
+      "loser_layer_index": 21,
+      "overlap_cases": 1680,
+      "clean_cases": 1050,
+      "clean": true,
+      "witness_index": 3990,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 17,
+      "loser_layer_index": 22,
+      "overlap_cases": 2520,
+      "clean_cases": 1130,
+      "clean": true,
+      "witness_index": 3995,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H24",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 17,
+      "loser_layer_index": 23,
+      "overlap_cases": 3360,
+      "clean_cases": 3360,
+      "clean": true,
+      "witness_index": 36960,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 17,
+      "loser_layer_index": 24,
+      "overlap_cases": 320,
+      "clean_cases": 200,
+      "clean": true,
+      "witness_index": 3360,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H26",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 17,
+      "loser_layer_index": 25,
+      "overlap_cases": 320,
+      "clean_cases": 240,
+      "clean": true,
+      "witness_index": 53760,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 4,
+        "customer_tier": "free",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H18",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 17,
+      "loser_layer_index": 27,
+      "overlap_cases": 13440,
+      "clean_cases": 1040,
+      "clean": true,
+      "witness_index": 45360,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "business",
+        "product": "integrations",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H19",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 18,
+      "loser_layer_index": 21,
+      "overlap_cases": 420,
+      "clean_cases": 210,
+      "clean": true,
+      "witness_index": 19950,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "mobile",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H19",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 18,
+      "loser_layer_index": 22,
+      "overlap_cases": 630,
+      "clean_cases": 250,
+      "clean": true,
+      "witness_index": 19955,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "mobile",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H19",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 18,
+      "loser_layer_index": 24,
+      "overlap_cases": 80,
+      "clean_cases": 40,
+      "clean": true,
+      "witness_index": 19320,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "free",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H19",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 18,
+      "loser_layer_index": 27,
+      "overlap_cases": 3360,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 27720,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "mobile",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H20",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 19,
+      "loser_layer_index": 21,
+      "overlap_cases": 840,
+      "clean_cases": 420,
+      "clean": true,
+      "witness_index": 630,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H20",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 19,
+      "loser_layer_index": 22,
+      "overlap_cases": 1260,
+      "clean_cases": 460,
+      "clean": true,
+      "witness_index": 635,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H20",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 19,
+      "loser_layer_index": 24,
+      "overlap_cases": 160,
+      "clean_cases": 80,
+      "clean": true,
+      "witness_index": 0,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H20",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 19,
+      "loser_layer_index": 27,
+      "overlap_cases": 6720,
+      "clean_cases": 520,
+      "clean": true,
+      "witness_index": 25200,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H21",
+      "loser": "H22",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 20,
+      "loser_layer_index": 21,
+      "overlap_cases": 840,
+      "clean_cases": 252,
+      "clean": true,
+      "witness_index": 632,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H21",
+      "loser": "H23",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 20,
+      "loser_layer_index": 22,
+      "overlap_cases": 1260,
+      "clean_cases": 268,
+      "clean": true,
+      "witness_index": 637,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H21",
+      "loser": "H25",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 20,
+      "loser_layer_index": 24,
+      "overlap_cases": 160,
+      "clean_cases": 48,
+      "clean": true,
+      "witness_index": 2,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 1,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H21",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 20,
+      "loser_layer_index": 27,
+      "overlap_cases": 6720,
+      "clean_cases": 208,
+      "clean": true,
+      "witness_index": 25202,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "pt"
+      }
+    },
+    {
+      "winner": "H22",
+      "loser": "H23",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 21,
+      "loser_layer_index": 22,
+      "overlap_cases": 4200,
+      "clean_cases": 450,
+      "clean": true,
+      "witness_index": 34235,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 3,
+        "customer_tier": "free",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H22",
+      "loser": "H27",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 21,
+      "loser_layer_index": 26,
+      "overlap_cases": 4200,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H02",
+          "cases": 2100
+        },
+        {
+          "rule_id": "H08",
+          "cases": 840
+        },
+        {
+          "rule_id": "H07",
+          "cases": 210
+        },
+        {
+          "rule_id": "H10",
+          "cases": 210
+        },
+        {
+          "rule_id": "H15",
+          "cases": 210
+        },
+        {
+          "rule_id": "H17",
+          "cases": 210
+        },
+        {
+          "rule_id": "H19",
+          "cases": 210
+        },
+        {
+          "rule_id": "H20",
+          "cases": 210
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "BILLING_SPECIALIST": 210,
+        "SECURITY_INCIDENT": 2100,
+        "T2_TECHNICAL": 1260,
+        "T3_ENGINEERING": 630
+      }
+    },
+    {
+      "winner": "H23",
+      "loser": "H24",
+      "winner_action": "T1_GENERAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 22,
+      "loser_layer_index": 23,
+      "overlap_cases": 2100,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H03",
+          "cases": 1050
+        },
+        {
+          "rule_id": "H22",
+          "cases": 420
+        },
+        {
+          "rule_id": "H16",
+          "cases": 210
+        },
+        {
+          "rule_id": "H18",
+          "cases": 210
+        },
+        {
+          "rule_id": "H11",
+          "cases": 180
+        },
+        {
+          "rule_id": "H12",
+          "cases": 30
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "BILLING_SPECIALIST": 180,
+        "SELF_SERVICE_DEFLECT": 450,
+        "T2_TECHNICAL": 1470
+      }
+    },
+    {
+      "winner": "H23",
+      "loser": "H25",
+      "winner_action": "T1_GENERAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 22,
+      "loser_layer_index": 24,
+      "overlap_cases": 200,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H02",
+          "cases": 50
+        },
+        {
+          "rule_id": "H03",
+          "cases": 50
+        },
+        {
+          "rule_id": "H08",
+          "cases": 20
+        },
+        {
+          "rule_id": "H22",
+          "cases": 20
+        },
+        {
+          "rule_id": "H12",
+          "cases": 10
+        },
+        {
+          "rule_id": "H16",
+          "cases": 10
+        },
+        {
+          "rule_id": "H18",
+          "cases": 10
+        },
+        {
+          "rule_id": "H07",
+          "cases": 5
+        },
+        {
+          "rule_id": "H10",
+          "cases": 5
+        },
+        {
+          "rule_id": "H15",
+          "cases": 5
+        },
+        {
+          "rule_id": "H17",
+          "cases": 5
+        },
+        {
+          "rule_id": "H19",
+          "cases": 5
+        },
+        {
+          "rule_id": "H20",
+          "cases": 5
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "BILLING_SPECIALIST": 5,
+        "SECURITY_INCIDENT": 50,
+        "SELF_SERVICE_DEFLECT": 30,
+        "T2_TECHNICAL": 100,
+        "T3_ENGINEERING": 15
+      }
+    },
+    {
+      "winner": "H23",
+      "loser": "H26",
+      "winner_action": "T1_GENERAL",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "winner_layer_index": 22,
+      "loser_layer_index": 25,
+      "overlap_cases": 150,
+      "clean_cases": 20,
+      "clean": true,
+      "witness_index": 55235,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 4,
+        "customer_tier": "pro",
+        "product": "dashboard",
+        "channel": "phone",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H23",
+      "loser": "H27",
+      "winner_action": "T1_GENERAL",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 22,
+      "loser_layer_index": 26,
+      "overlap_cases": 6300,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H02",
+          "cases": 2100
+        },
+        {
+          "rule_id": "H01",
+          "cases": 1050
+        },
+        {
+          "rule_id": "H08",
+          "cases": 840
+        },
+        {
+          "rule_id": "H05",
+          "cases": 525
+        },
+        {
+          "rule_id": "H10",
+          "cases": 315
+        },
+        {
+          "rule_id": "H14",
+          "cases": 260
+        },
+        {
+          "rule_id": "H15",
+          "cases": 250
+        },
+        {
+          "rule_id": "H17",
+          "cases": 250
+        },
+        {
+          "rule_id": "H19",
+          "cases": 250
+        },
+        {
+          "rule_id": "H20",
+          "cases": 250
+        },
+        {
+          "rule_id": "H07",
+          "cases": 210
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "ACCOUNT_MANAGER": 260,
+        "BILLING_SPECIALIST": 315,
+        "ONCALL_ESCALATION": 525,
+        "SECURITY_INCIDENT": 3150,
+        "T2_TECHNICAL": 1340,
+        "T3_ENGINEERING": 710
+      }
+    },
+    {
+      "winner": "H25",
+      "loser": "H27",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T2_TECHNICAL",
+      "winner_layer_index": 24,
+      "loser_layer_index": 26,
+      "overlap_cases": 800,
+      "clean_cases": 0,
+      "clean": false,
+      "witness_index": null,
+      "witness": null,
+      "owned_by": [
+        {
+          "rule_id": "H02",
+          "cases": 400
+        },
+        {
+          "rule_id": "H08",
+          "cases": 160
+        },
+        {
+          "rule_id": "H07",
+          "cases": 40
+        },
+        {
+          "rule_id": "H10",
+          "cases": 40
+        },
+        {
+          "rule_id": "H15",
+          "cases": 40
+        },
+        {
+          "rule_id": "H17",
+          "cases": 40
+        },
+        {
+          "rule_id": "H19",
+          "cases": 40
+        },
+        {
+          "rule_id": "H20",
+          "cases": 40
+        }
+      ],
+      "true_actions_over_the_overlap": {
+        "BILLING_SPECIALIST": 40,
+        "SECURITY_INCIDENT": 400,
+        "T2_TECHNICAL": 240,
+        "T3_ENGINEERING": 120
+      }
+    },
+    {
+      "winner": "H26",
+      "loser": "H28",
+      "winner_action": "SELF_SERVICE_DEFLECT",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 25,
+      "loser_layer_index": 27,
+      "overlap_cases": 800,
+      "clean_cases": 190,
+      "clean": true,
+      "witness_index": 58800,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 4,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    },
+    {
+      "winner": "H27",
+      "loser": "H28",
+      "winner_action": "T2_TECHNICAL",
+      "loser_action": "T1_GENERAL",
+      "winner_layer_index": 26,
+      "loser_layer_index": 27,
+      "overlap_cases": 33600,
+      "clean_cases": 1040,
+      "clean": true,
+      "witness_index": 25200,
+      "witness": {
+        "has_security_keyword": false,
+        "severity": 2,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      }
+    }
+  ],
+  "seconds": 2.6
+}

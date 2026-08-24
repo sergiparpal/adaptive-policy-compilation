@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of August 16, 2026. **Not a history** — that is the four
+What is known, as of August 24, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md)
 and [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), each with its
 dated errata in place. Every figure here already exists in one of them.
@@ -124,7 +124,12 @@ carries `G1`–`G6` instead — and `S`, `R`, `C` and `D` from the registers of 
 two, three, four and five of the same record. **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
 band; and `S-g`, `C-e` and `D-e`, which the records add as *(not predicted)* and
-which nobody signed.
+which nobody signed. **And `P-a` and `P-b` of `PLAN_PAIRWISE.md`, which are
+neither**: they were measured on 2026-08-24 *before* anyone signed them, so they
+are **spent** — not signed and not adjudicable, in no column of the table and not
+in the denominator. §0.1 of that plan records them as outcomes and does not
+restore them as predictions. `P-c`, `P-d` and `P-e` remain unsigned and enter
+nothing until they are.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -166,6 +171,20 @@ and never reached the starting point. Eight runs, ~200 escalations: **2
 conflicts, 14 proposed edges, 0 accepted**. `language` appears in 0 of the 8
 bases, `channel` and `prior_tickets_30d` in 1 each, though hidden layers built on
 them decide 14.5% of the corpus.
+
+**And the population for asking it the other question now exists, with its answer
+key.** The 199 declared edges are published pair by pair, each with a witness
+ticket drawn from the region where the two rules compete and the queue the hidden
+policy sends that ticket to ([`results2/FINDINGS2.md`](results2/FINDINGS2.md),
+*the labelled pair benchmark*;
+[`pair_benchmark.json`](results2/pair_benchmark.json)). **170 of the 199 carry
+such a witness and 29 do not** — in every one of those an earlier layer owns the
+whole overlap, so the correct queue for every ticket in it is neither rule's, and
+they are counted outside the denominator. That makes the 170 the easier half by
+construction, and any rate measured on them an **upper** estimate of what a
+proposer would do on all 199. Nothing has been asked of a model: the stage of
+[`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) that does costs money and is gated on a
+row nobody has signed.
 
 **The material contained the signal; the arbitration destroyed it.** The same 577
 rules that specificity turned into 0.1829 admit an order scoring **0.8530 ±
@@ -302,6 +321,27 @@ used it**, and for no reason found here: choosing it by reading test or space
 figures would be the failure this project studies, whichever way they came out
 ([`start_budget_check.json`](results3/start_budget_check.json), FINDINGS_AUDIT
 Step 3).
+
+**What an order that searches for nothing scores, on both pools.** The `hibrido`
+pool — subsumption plus a declared order, the machine where declared edges live —
+had a world record and no floor: nothing measured what *walking* scores there. It
+does now, over the full corpus, corpus test (split 0 and the five-split mean) and
+the space, with both random-order generators reported separately
+([`results3/FINDINGS3.md`](results3/FINDINGS3.md) §6,
+[`floor_by_pool.json`](results3/floor_by_pool.json)). Three things it settles,
+each naming its surface and its pool. **The hybrid floor is not the pure one
+minus a constant**: it is below it on the three corpus index sets (by 0.083 to
+0.088) and above it on the space (by 0.111). **`born_at` is worse than shuffling
+is a pure-pool statement** — over the space it scores 0.3148 against 0.3768 and
+0.3864 on `puro`, and 0.4257 against 0.3867 and 0.3903 on `hibrido`. FINDINGS3
+§1's 2026-08-08 erratum holds on the pool it was measured on and the sign
+reverses on the other; none of its figures moves. **And reversing `born_at` —
+the label-free heuristic worth +0.2520 over the space — is worth +0.0116 on the
+pool that matters for declaration.** The two
+reversed figures [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) cited as *left
+unconfirmed* reproduce exactly and now have an owning record; its §2 and its
+§9.6 carry the dated erratum. This record **carries no prediction**: the two rows
+that predicted it were spent before signature (`PLAN_PAIRWISE.md` §0.1).
 
 **An ordering problem and a material problem are different things.** Six classes
 of eight — 1774 of 2000 cases — are pure ordering. `SECURITY_INCIDENT` (20 cases)
