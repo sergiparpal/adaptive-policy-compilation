@@ -59,6 +59,7 @@ Usage:  PYTHONHASHSEED=0 python3 -m rung3.declared_order
 from __future__ import annotations
 
 import json
+import random
 import statistics
 import sys
 import time
@@ -66,7 +67,7 @@ from collections import Counter
 from pathlib import Path
 
 from harness.provenance import describe, environment
-from rung2.engine2 import PriorityEngine, Rule2, Space
+from rung2.engine2 import EDGE_OK, PriorityEngine, Rule2, Space
 from rung2.pair_judgement import learned_rules
 from rung3.floor_by_pool import (CORPUS_FULL, POOLS, SPACE, corpus_instances,
                                  floor, index_sets_of)
@@ -92,6 +93,12 @@ SPLIT_SEED = 17
 # verdicts can be read off, never to be adjusted.
 P_D_MARGIN = 0.03
 P_E_BAND = 0.25
+
+# The direction control. Declared here rather than chosen after seeing a
+# figure: 50 draws is the count every random baseline in this repository
+# uses, and 17 is the project's seed.
+N_DIRECTION_DRAWS = 50
+DIRECTION_SEED = 17
 
 
 # ---------------------------------------------------------------------------
@@ -208,6 +215,83 @@ def engine_metrics(rules, edges, corpus, idxs, truth):
 
 
 # ---------------------------------------------------------------------------
+# The direction control — is it the model's choices or the compilation?
+# ---------------------------------------------------------------------------
+
+def fresh_engine(rules):
+    engine = PriorityEngine(space=Space())
+    for rid in sorted(rules):
+        engine.add(Rule2(rule_id=rid, conditions=list(rules[rid].conditions),
+                         action=rules[rid].action),
+                   born_at=rules[rid].born_at, keep_id=True)
+    return engine
+
+
+def accepted_from(rows, directions, rules):
+    """
+    The edges a set of directions produces, fed sequentially into a fresh
+    engine.
+
+    Sequentially and through `try_edge`, because whether an edge closes a cycle
+    depends on the ones already in — so a control that installed them any other
+    way would not be comparable with the run.
+    """
+    engine = fresh_engine(rules)
+    out = []
+    for row, forward in zip(rows, directions):
+        w, loser = ((row["rule_a"], row["rule_b"]) if forward
+                    else (row["rule_b"], row["rule_a"]))
+        if engine.try_edge(w, loser) == EDGE_OK:
+            out.append((w, loser))
+    return out
+
+
+def direction_controls(rows, rules, ids, born, instance,
+                       n_draws=N_DIRECTION_DRAWS, seed=DIRECTION_SEED):
+    """
+    The same 365 pairs, the same compilation, the same scoring — and only the
+    DIRECTION of each edge changed.
+
+    This is what separates two explanations of a low score that would otherwise
+    be indistinguishable: the model chose badly, or compiling any set of edges
+    this way hurts. If a coin on direction lands where the model does, the
+    compilation is the problem and no conclusion about the proposer survives.
+
+    Three readings: the model's own directions, every one of them reversed, and
+    `n_draws` coins. The coin distribution is what the other two are read
+    against, and its deviation is what says whether a gap is a difference or a
+    sign.
+    """
+    model = [r["declared"] == "a_beats_b" for r in rows]
+    def score(dirs):
+        return floor(topological_order(
+            ids, accepted_from(rows, dirs, rules), born), instance)
+
+    draws = []
+    for k in range(n_draws):
+        rnd = random.Random(seed + k)
+        draws.append(score([rnd.random() < 0.5 for _ in rows]))
+    m, inv = score(model), score([not d for d in model])
+    mean, sd = statistics.mean(draws), statistics.pstdev(draws)
+    return {
+        "what": "the same pairs, the same compilation and the same scoring, with "
+                "only the DIRECTION of each edge changed. It separates `the "
+                "model chose badly` from `compiling any edges this way hurts`, "
+                "which a single low score cannot.",
+        "surface": "corpus test split 0, hibrido pool — P-d's own cell",
+        "n_pairs": len(rows), "n_draws": n_draws, "seed": seed,
+        "model": round(m, 6),
+        "model_inverted": round(inv, 6),
+        "coin": {"mean": round(mean, 6), "sd": round(sd, 6),
+                 "min": round(min(draws), 6), "max": round(max(draws), 6)},
+        "model_minus_coin": round(m - mean, 6),
+        "model_in_coin_deviations": round((m - mean) / sd, 3) if sd else None,
+        "inverted_minus_coin": round(inv - mean, 6),
+        "inverted_in_coin_deviations": round((inv - mean) / sd, 3) if sd else None,
+    }
+
+
+# ---------------------------------------------------------------------------
 # Reading what other records own
 # ---------------------------------------------------------------------------
 
@@ -315,6 +399,24 @@ def main(argv=None) -> int:
     print(f"       the free queue ranking scores "
           f"{p_d['control_queue_hierarchy']:.4f} on the same cell")
 
+    # --- the direction control -------------------------------------------
+    rows_with_edge = [r for r in json.loads(SOURCE.read_text())["answers"]
+                      if r["declared"] != "none"]
+    ctrl = direction_controls(rows_with_edge, learned_rules(), ids, born,
+                              instances[("corpus_test_split0", "hibrido")])
+    print()
+    print("=" * 78)
+    print("THE DIRECTION CONTROL — the model's choices, or the compilation?")
+    print("=" * 78)
+    print(f"  {'the model':<22}{ctrl['model']:>9.4f}")
+    print(f"  {'a coin on direction':<22}{ctrl['coin']['mean']:>9.4f}  "
+          f"sd {ctrl['coin']['sd']:.4f}   ({ctrl['n_draws']} draws)")
+    print(f"  {'the model INVERTED':<22}{ctrl['model_inverted']:>9.4f}")
+    print(f"  {'the born_at floor':<22}"
+          f"{floors[('hibrido', 'corpus_test_split0')]:>9.4f}")
+    print(f"  model sits {ctrl['model_in_coin_deviations']:+.2f} deviations from "
+          f"the coin; inverted {ctrl['inverted_in_coin_deviations']:+.2f}")
+
     # --- 3. as a machine, against 65 regenerated on the HYBRID pool -------
     print()
     print("=" * 78)
@@ -377,6 +479,7 @@ def main(argv=None) -> int:
         "gates": {"order_respects_edges": g_edges},
         "as_a_hybrid_engine": eng,
         "as_an_order": as_order,
+        "direction_control": ctrl,
         "P_d": p_d,
         "P_e": p_e,
         "control":

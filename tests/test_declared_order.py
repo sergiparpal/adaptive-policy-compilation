@@ -25,7 +25,9 @@ from __future__ import annotations
 
 import unittest
 
-from rung3.declared_order import (P_D_MARGIN, P_E_BAND,
+from rung3.declared_order import (DIRECTION_SEED, N_DIRECTION_DRAWS,
+                                  P_D_MARGIN, P_E_BAND, accepted_from,
+                                  direction_controls,
                                   gate_order_respects_edges, rules_moved,
                                   topological_order)
 
@@ -124,6 +126,85 @@ class TestHowMuchActuallyMoved(unittest.TestCase):
         run that moved nothing must not read like one that moved everything."""
         order = topological_order(IDS, [("R0006", "R0001")], BORN)
         self.assertGreater(rules_moved(order, BORN, IDS), 1)
+
+
+class TestTheDirectionControl(unittest.TestCase):
+    """
+    The line that separates `the model chose badly` from `compiling any edges
+    this way hurts`. A single low score cannot tell them apart, and without this
+    the whole reading of P-d's refutation would rest on an assumption.
+
+    Everything below is on four rules written out by hand, so no figure of the
+    finding appears here.
+    """
+
+    def rules(self):
+        """
+        Extensions that OVERLAP without either containing the other, which is
+        what the real population requires. The first version of this fixture
+        built nested ones — `severity gte k` for increasing k — and `try_edge`
+        answered `contradice_subsuncion` one way and a redundant `ok` the other,
+        so the forward direction accepted nothing. Those are exactly the pairs
+        §10 filters out, and building the control on them tested nothing.
+        """
+        from harness.dsl import Condition
+        from rung2.engine2 import Rule2 as R
+
+        shapes = [("gte", 2, "AAA"), ("lte", 3, "BBB")]
+        out = {}
+        for i, rid in enumerate(IDS):
+            op, value, act = shapes[i % 2]
+            out[rid] = R(rule_id=rid, action=act, born_at=i,
+                         conditions=[Condition("severity", op, value)])
+        return out
+
+    def rows(self):
+        return [{"rule_a": "R0001", "rule_b": "R0002", "declared": "a_beats_b"},
+                {"rule_a": "R0003", "rule_b": "R0004", "declared": "b_beats_a"}]
+
+    def test_the_edges_follow_the_directions_given(self):
+        rules = self.rules()
+        fwd = accepted_from(self.rows(), [True, True], rules)
+        back = accepted_from(self.rows(), [False, False], rules)
+        self.assertEqual(fwd, [(lo, w) for w, lo in back])
+
+    def test_it_runs_the_edges_through_try_edge_and_not_around_it(self):
+        """A self-edge is refused, so it must not reach the compiled order. If
+        the control installed edges any other way it would not be comparable
+        with the run, where cycles are refused as they arrive."""
+        rules = self.rules()
+        same = [{"rule_a": "R0001", "rule_b": "R0001", "declared": "a_beats_b"}]
+        self.assertEqual(accepted_from(same, [True], rules), [])
+
+    def test_the_three_readings_are_all_present(self):
+        rules = self.rules()
+        inst = ({r: 0 for r in IDS}, {r: 0 for r in IDS}, 0, 1)
+        c = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=3)
+        for k in ("model", "model_inverted", "coin"):
+            self.assertIn(k, c)
+        self.assertEqual(c["n_draws"], 3)
+        self.assertEqual(c["n_pairs"], 2)
+
+    def test_the_coin_is_read_in_its_own_deviations(self):
+        """A gap without the spread beside it is unreadable, which is the whole
+        lesson of the random-baseline rows in FINDINGS3."""
+        rules = self.rules()
+        inst = ({r: 0 for r in IDS}, {r: 0 for r in IDS}, 0, 1)
+        c = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=3)
+        self.assertIn("sd", c["coin"])
+        self.assertIn("model_in_coin_deviations", c)
+        self.assertIn("inverted_in_coin_deviations", c)
+
+    def test_it_is_deterministic(self):
+        rules = self.rules()
+        inst = ({r: 0 for r in IDS}, {r: 0 for r in IDS}, 0, 1)
+        a = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=4)
+        b = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=4)
+        self.assertEqual(a, b)
+
+    def test_the_constants_are_the_repositorys_own(self):
+        self.assertEqual(N_DIRECTION_DRAWS, 50)
+        self.assertEqual(DIRECTION_SEED, 17)
 
 
 class TestTheBandsAreTheSignedOnes(unittest.TestCase):
