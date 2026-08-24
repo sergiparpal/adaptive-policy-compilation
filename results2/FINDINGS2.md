@@ -311,6 +311,19 @@ Step 0 are what a perfect author declares for 29 rules. How many would be needed
 for a learned base, and whether a proposer could produce them, is precisely what
 these eight runs never got to put to the test.
 
+> **[ERRATUM 2026-08-24] Both halves are measured now, and the first answers the
+> second.** Stage D below asked a proposer for 400 of those edges and got 344
+> into the graph. The population needing one is **31,850** pairs, so 400 calls
+> buy **1.3%** of it — and with those 344 installed the engine abstains on **89%**
+> of corpus test (`results3/FINDINGS3.md` §8). The authorship cost of a 577-rule
+> learned base is not of the order of the 199 edges a perfect author declares for
+> 29 rules.
+>
+> Whether a proposer *could* produce them is answered separately, and badly: the
+> order those 344 edges induce scores **below** the arrival order they started
+> from, and inverting every one of them scores above it. The caveat is
+> discharged; what replaces it is not more encouraging.
+
 ---
 
 ## The labelled pair benchmark
@@ -586,6 +599,97 @@ The smoke path is kept and labelled `partial_run`. Its 10/10 says nothing: the
 benchmark is ordered by the winner's layer, so its first ten pairs all have `H01`
 as winner — a security keyword against anything else, the easiest slice there is.
 It was run to check the shape of the output, and that is all it checked.
+
+---
+
+## Stage D — the same question over the learned base, where there is no truth
+
+*Run 2026-08-24 with `PYTHONHASHSEED=0`. `rung2/pair_judgement.py --learned` →
+`results2/pair_judgement_learned.json`, 400 calls at
+`deepseek/deepseek-v4-flash`, temperature 0, sequential, 51 minutes, cents. What
+the edges DO is scored in `results3/FINDINGS3.md` §8; this section is the run.*
+
+**The population, and the filter that is not optional.** The three conditions
+`hidden_priority.py` uses, applied to the 577 rules of rung 1:
+
+```
+166,176  pairs of the 577 rules
+112,556  disjoint extensions              (can never compete)
+  8,599  subsumption-comparable           (structure already decides)
+ 13,171  same action                      (it does not matter who wins)
+ 31,850  the population — 19.2%
+```
+
+A constant fraction of the quadratic, not a lower order. The 8,599 are the box
+worth naming: on those a declared edge cannot enter the graph whichever way the
+model answers — `try_edge` returns `EDGE_CONTRADICTS` for the broader rule and a
+redundant `EDGE_OK` that mutates nothing for the narrower — so dropping that
+filter would have spent about one call in ten on an answer inert by construction,
+and one of those wasted calls would have scored as an acceptance.
+
+**400 pairs sampled deterministically at seed 17: 1.3% of the population.**
+
+### What came back
+
+```
+365  named one of the two queues          162 a-beats-b · 203 b-beats-a
+ 35  named nothing                        all 35 parse failures, 0 off-menu
+344  edges entered the graph
+ 21  refused, cierra_ciclo
+```
+
+**Which rejection verdicts have now been seen working, stated precisely.** Rung
+2's fourteen rejected edges were all `no_solapan`, and this protocol makes that
+one unreachable by drawing every witness from the intersection. What it exercises
+instead is `cierra_ciclo`: **8 refusals in Stage C and 21 here**. Two of the six
+verdicts have now been observed doing work in a real run.
+
+**`EDGE_CONTRADICTS` still has not, and this protocol cannot make it.** The
+caveat `PLAN_PAIRWISE.md` §5.3 records — *any conclusion resting on it rests on a
+counter nobody has seen work* — stands untouched: the population filters
+subsumption-comparable pairs out precisely so that no call is wasted on one, which
+is the same thing as guaranteeing that verdict never fires. Retiring the caveat
+would take a protocol that deliberately offers such a pair, and this is not one.
+
+**Two numbers that are not conclusions and are recorded anyway.** The parse
+failure rate is **8.75%** here against 2.4% in Stage C, on the same model, the
+same settings and the same prompt; the population is the only thing that changed.
+And the direction split is 203/162 towards the rule shown **second**, while the
+presentation order is balanced exactly 200/200 — so it is not a position
+artefact, and what it is instead is not measured here.
+
+### The control this stage was authorised with
+
+Stage C found the proposer's competence is largely a fixed ranking of the eight
+queues. The same question asked of these answers, needing no labels: for each
+unordered pair of queues, how often each side was named.
+
+**Constant on 14 of the 24 queue-pairs it was asked about — 58.3%.** Stage C's
+proposer was constant on 18 of 27, 66.7%. So it varies somewhat more here: it is
+reading something beyond the ranking. Whether what it reads helps is the question
+`results3/FINDINGS3.md` §8 answers, and the answer is no.
+
+### What this section does not say
+
+**No correct-edge rate exists here and none is computed.** The hidden policy's
+layer order says nothing about rules it never wrote. Acceptance is not a result
+either: every witness comes from `ext(A) ∩ ext(B)`, so `EDGE_DISJOINT` — the
+verdict that rejected all 14 edges rung 2 ever got — is unreachable by
+construction, and the 344/365 acceptance measures the protocol.
+
+**Files added by this section**
+
+```
+rung2/pair_judgement.py --learned          the population, the sample, the calls
+results2/pair_judgement_learned.json       the record: 400 answers, per pair
+results2/pair_judgement_learned_smoke.json the 10-pair smoke path
+```
+
+Reproducible with
+`PYTHONHASHSEED=0 python3 -m rung2.pair_judgement --learned --budget 400`;
+`--dry-run` builds every question and spends nothing. The destination is guarded
+by `harness/record_guard.py`: the record cost money and a re-run does not give
+the same thing back.
 
 ---
 

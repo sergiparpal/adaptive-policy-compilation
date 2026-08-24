@@ -96,13 +96,13 @@ a count behind it.
 | **R** · rank transfer | 4 | 3 | **1** | 1 | 1 | 1 |
 | **C** · the touched points | 4 | 3 | **0** | 1 | 2 | 1 |
 | **D** · the rule level | 4 | 3 | **2** | 0 | 1 | 1 |
-| **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 1 | **0** | 0 | 1 | 0 |
-| **total** | **27** | **22** | **9** | **2** | **11** | **3** |
+| **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 3 | **2** | 0 | 1 | 0 |
+| **total** | **27** | **24** | **11** | **2** | **11** | **3** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
-`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`. Hold: `Q-a`, `Q-b`, `Q-c`,
-`Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`. Reported: `R-d`, `C-d`,
-`D-d`.
+`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`. Hold: `Q-a`,
+`Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`.
+Reported: `R-d`, `C-d`, `D-d`.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -114,8 +114,8 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 9 of 22 = **40.9%**
-refuted; without them, 7 of 16 = **43.8%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 11 of 24 = **45.8%**
+refuted; without them, 9 of 18 = **50.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 3.8 points the flattering way, which is exactly why saying so is not optional.
 
@@ -123,9 +123,10 @@ drafter and the sample size, not because of the figure — and it moves the figu
 of §0, one by one* in the first part of
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) — its register table
 carries `G1`–`G6` instead — and `S`, `R`, `C` and `D` from the registers of parts
-two, three, four and five of the same record; and `P` from the Stage C section
-of [`results2/FINDINGS2.md`](results2/FINDINGS2.md). `P-d` and `P-e` are signed
-and unadjudicated: they govern Stage D, which has not run.
+two, three, four and five of the same record; and `P` from the Stage C and
+Stage D sections of [`results2/FINDINGS2.md`](results2/FINDINGS2.md) and §8 of
+[`results3/FINDINGS3.md`](results3/FINDINGS3.md). All three `P` rows are
+adjudicated: the thread is closed.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -394,10 +395,45 @@ the whole content of the baseline, and Stage C is where that knowledge came from
 over the corpus the same family is *worse* than arrival order, 0.4291 against
 0.5216, and even the best of the 40,320 does not reach the floor. Once
 subsumption has pruned the pool, most of what is left to decide is *which
-action*, and a ranking of actions is the instrument for that. **P-d is not
-refuted and its band does not move** — it is signed and will be adjudicated as
-written — but a hold can no longer be read as evidence that declaration
-contributes a channel, because a free lookup table sits above the band already.
+action*, and a ranking of actions is the instrument for that.
+
+The band does not move — it is signed — and what the control took away was the
+power of a *hold* to mean anything, since a free lookup table sits above it
+already. **In the event it is the refutation that needed the control**: P-d
+landed below the floor, and the ranking's 0.4824 is what says the gap is 0.074
+rather than a rounding error. See the entry below.
+
+**And the edges the proposer actually wrote make the order worse than doing
+nothing.** 400 calls over the learned base bought 344 declared edges — 1.3% of
+the 31,850 pairs that could carry one — and the order they induce scores
+**0.4080** on the `hibrido` pool at corpus test split 0, against a `born_at`
+floor of 0.4332 and a P-d threshold of 0.4632
+([`results3/FINDINGS3.md`](results3/FINDINGS3.md) §8,
+[`declared_order.json`](results3/declared_order.json)). **`P-d` is refuted**, and
+not by falling short of the margin: by landing below the floor.
+
+**It is the model's choices and not the compilation, and that was checked.** The
+same pairs, the same compilation, only the direction of each edge changed: a coin
+lands at **0.4314** (sd 0.0243, 50 draws), on the floor; the model sits 0.96
+deviations below it and **inverting every one of its answers** puts it at 0.4432,
+above the floor. Each gap is inside one deviation, so each alone is a sign — but
+they point the same way, and the span from the model to its own inverse is about
+one and a half deviations. Same shape as rung 1's finding about arrival order:
+*it does not lack signal, it lacks a sign.*
+
+**`P-e` is refuted too, and by a wide margin.** Behavioural distance from 65 end
+orders **regenerated on the hybrid pool** — never the published `puro` ones —
+comes out at a median **0.4497** of the exhaustive space against a band of ≤0.25.
+The declared order is not inside the cloud; it is a different machine from all 65,
+whose own members disagree with one another by up to about 20%.
+
+**And the authorship cost is now measured.** With those 344 edges installed the
+engine reaches e2e **0.0673** and **abstains on 89%** of corpus test: 885
+CONFLICTs in 995 cases, silent error 0.3909 over the 110 it commits to. Rung 2's
+hidden policy needs 199 edges for 29 rules and reaches 1.0000; a 577-rule learned
+base is not in that neighbourhood. The mechanism is doing what it should — nobody
+told it who wins, so it abstains — which is why the conflict rate is the honest
+reading and the e2e is not.
 
 **An ordering problem and a material problem are different things.** Six classes
 of eight — 1774 of 2000 cases — are pure ordering. `SECURITY_INCIDENT` (20 cases)

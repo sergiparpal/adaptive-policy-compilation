@@ -731,6 +731,142 @@ Under four minutes, zero API calls.
 
 ---
 
+## 8. What the declared edges do — P-d and P-e, both refuted
+
+*Added 2026-08-24. `rung3/declared_order.py` → `results3/declared_order.json`,
+`PYTHONHASHSEED=0`, 339 s, zero API calls. It scores the 344 edges Stage D
+bought (`results2/FINDINGS2.md`, Stage D) and adjudicates two signed rows.*
+
+**There is no truth for those pairs and none is invented here.** Nothing below is
+a correct-edge rate. What is measured is what the edges *do*.
+
+### As an order
+
+The edges are a partial order; compiling them is a topological sort whose ready
+set is drained in `born_at` order, so a rule no edge touches keeps its arrival
+position. `born_at` **is** the floor, so the comparison is exactly *what the edges
+added to it*. A gate checks the compiled order honours all 344; none is broken.
+
+**575 of the 577 rules moved off their arrival position.** 344 edges is 1.1% of
+the 31,850 pairs that could carry one, but the sort cascades: a rule held back
+shifts everything behind it. So this is the edges' global effect and not a local
+tweak.
+
+```
+pool     surface              declared    floor  hierarchy   vs floor   vs hier
+puro     full corpus            0.4700   0.5115     0.4285    -0.0415   +0.0415
+puro     corpus test, split 0   0.4764   0.5216     0.4291    -0.0452   +0.0472
+puro     space                  0.3830   0.3148     0.5756    +0.0682   -0.1926
+hibrido  full corpus            0.4060   0.4285     0.4805    -0.0225   -0.0745
+hibrido  corpus test, split 0   0.4080   0.4332     0.4824    -0.0251   -0.0744
+hibrido  space                  0.4564   0.4257     0.5838    +0.0306   -0.1274
+```
+
+**P-d is REFUTED.** Signed at *strictly above the floor by more than 0.03*, it
+needed 0.4632 on the `hibrido` pool at corpus test split 0 and got **0.4080** —
+**below the floor itself**, by 0.0251. The declared edges did not fail to add
+enough; they made the order worse than doing nothing.
+
+The free queue ranking scores **0.4824** on that same cell. The control was built
+because a *hold* would have been unreadable; in the event it is the refutation
+that needs it, and it says the gap is 0.074 rather than a rounding error.
+
+### The direction control — the model's choices, not the compilation
+
+A single low score cannot separate *the model chose badly* from *compiling any
+edges this way hurts*. So: the same 365 pairs, the same compilation, the same
+scoring, and only the **direction** of each edge changed.
+
+```
+the model                0.4080
+a coin on direction      0.4314   sd 0.0243   (50 draws, seed 17)
+the model INVERTED       0.4432
+the born_at floor        0.4332
+```
+
+**A coin lands on the floor** — 0.4314 against 0.4332 — so the compilation is not
+what costs the 0.025. The model sits **0.96 deviations below the coin** and
+inverting every one of its answers puts it **0.48 above**, and above the floor.
+
+Read carefully: both gaps are inside one deviation of the coin distribution, so
+each on its own is a **sign and not an established effect**. What is harder to
+dismiss is that they point the same way, and that the span from the model to its
+own inverse is 0.0352 — about one and a half coin deviations. On this base, with
+this model and this prompt, **the declared direction carries signal with the wrong
+sign.**
+
+That is the same shape as `results/FINDINGS.md`'s finding about arrival order —
+*it does not lack signal, it lacks a sign* — arrived at by a different route and
+on a different channel.
+
+### As a machine — P-e
+
+The 65 end orders were **regenerated on the hybrid pool**, not read from
+`order_metrics.json`, whose 65 are `puro`: a hybrid order and a pure order can
+decide differently for no reason except the pool, and that difference would enter
+the distance as if it were disagreement about priority. 296 s, `move+swap`, seed
+17, 64 starts plus the greedy.
+
+Behavioural distance over the exhaustive space, hybrid pool: **median 0.4497**,
+min 0.3482, max 0.5490.
+
+**P-e is REFUTED.** Signed at *median pairwise disagreement ≤ 25% of the space*,
+it landed at 45.0% — nearly twice the band, and well outside a cloud whose own
+members disagree with one another by up to about 20%. The declared order is not
+inside the behavioural cloud; it is a different machine from all 65.
+
+### As a hybrid engine — the number that reframes the rest
+
+```
+e2e             0.0673        995 corpus test cases
+CONFLICT        0.8894        885 of 995
+IMPASSE         0.0000
+ACTION            110 cases committed
+silent error    0.3909        of those 110
+```
+
+With 344 declared edges installed, **the engine abstains on 89% of the corpus**.
+Rung 2's hidden policy reaches e2e 1.0000 with zero conflicts on 199 edges over
+**29** rules; here 344 edges over **577** rules leave almost everything
+unresolved.
+
+That is not a failure of the edges' quality — it is the authorship cost showing
+its true size. `results2/FINDINGS2.md` closes with *the cost of authorship is not
+measured on a learned base*. It is now, and the answer is that **400 calls buy
+1.3% of the pairs that need one**, and the engine behaves accordingly. The
+conflict rate is the honest reading of that: the mechanism is abstaining, which
+is what it is supposed to do when nobody has told it who wins.
+
+### What this closes and what it does not
+
+**It closes the pairwise-judgement thread as specified.** Three signed rows,
+three verdicts: P-c held on the hidden policy, P-d and P-e are refuted on the
+learned base. The change of question works as a *format* — 91% of the calls
+returned a well-formed edge — and the edges it produces do not order the base.
+
+**It does not show the model cannot do this.** One base, one model, one prompt,
+one budget, and a direction control whose two halves are each inside a deviation.
+What it shows is that this protocol, at this budget, produced an order worse than
+arrival order and a machine outside the cloud.
+
+**And it does not touch the second material problem.** For `T3_ENGINEERING` and
+`ACCOUNT_MANAGER` no correct rule exists at all; no edge and no order recovers
+those cases, and nothing here changes that.
+
+**Files added by this section**
+
+```
+rung3/declared_order.py            the three scorings, the direction control
+results3/declared_order.json       the record
+tests/test_declared_order.py       the compilation, which is where a wrong
+                                   answer would have looked right
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.declared_order`. Under six
+minutes, zero API calls.
+
+---
+
 ## Files
 
 ```
