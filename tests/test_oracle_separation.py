@@ -37,6 +37,13 @@ ONLINE_LOOP = [
     "rung2/engine2.py",
     "rung2/proposers2.py",
     "rung2/hidden_priority.py",
+    # Added 2026-08-24 with stage C of PLAN_PAIRWISE.md. It puts a ticket and
+    # two rules in front of a model and asks which queue the ticket goes to, so
+    # it is a proposer path and belongs on this side of the line. It SCORES the
+    # answers too, and the key for that is a lookup into
+    # results2/pair_benchmark.json — which carries it openly — never the oracle.
+    # If that ever changes route, this is what says so.
+    "rung2/pair_judgement.py",
 ]
 
 
