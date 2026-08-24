@@ -1000,6 +1000,107 @@ seconds, zero API calls.
 
 ---
 
+## 10. The channel does pay with more edges, and 400 was the worst place to ask
+
+*Added 2026-08-24. `rung3/edge_budget.py` → `results3/edge_budget.json`,
+`PYTHONHASHSEED=0`, 173 s, **zero API calls**. **POST-RUN**, like §9: written
+after P-d and P-e were adjudicated.*
+
+**Why it needs no money.** §9 left one question open — whether the pairwise
+channel pays at a budget nobody paid for — and the oracle's direction is
+computable offline for every one of the 31,850 pairs. So the channel's **ceiling**
+as a function of budget is free. The proposer's own curve beyond 400 is not, and
+this does not pretend otherwise: it projects at the accuracy §9 measured and says
+so on every line.
+
+Everything below is on **one cell**: `hibrido` pool, corpus test split 0 — P-d's
+own. Budgets are **nested**: the population shuffled once at seed 17, each budget
+a prefix of that shuffle. A tie offers no edge.
+
+```
+  budget   edges   oracle    noisy     coin   coin sd
+     400     303   0.4533   0.4471   0.4556    0.0239
+     800     604   0.4774   0.4633   0.4472    0.0227
+    1600    1174   0.5497   0.4981   0.4519    0.0182
+    3200    2303   0.6030   0.4982   0.4553    0.0264
+    6400    4484   0.6492   0.5443   0.4897    0.0249
+   12800    8815   0.6683   0.5566   0.4877    0.0314
+   25600   17521   0.6834   0.5652   0.4951    0.0290
+   31850   21692   0.6784   0.5628   0.4977    0.0292
+```
+
+`oracle` is exact: every offered pair pointed at the rule that gets more of the
+shared region right. `noisy` is a **projection**, the same directions flipped
+independently at 0.3022 — the rate §9 measured the proposer missing — and it is
+the shape of the answer rather than the answer, because Stage C found the
+proposer's accuracy varies by queue-pair and its errors are therefore neither
+independent nor evenly spread.
+
+### The ladder, all of it on the same cell
+
+```
+born_at floor, which is a budget of zero            0.4332
+the model's 344 edges at budget 400                 0.4080
+P-d's threshold                                     0.4632
+a free queue ranking (§7)                           0.4824
+the channel at 70% accuracy, exhausted              0.5652
+the channel with a perfect chooser, exhausted       0.6834
+the searched order, best of 65 starts               0.7678
+the coverage bound (FULL corpus, not this cell)     0.8540
+```
+
+### Three things this settles
+
+**1. The channel pays, and P-d would have held at 800.** The oracle crosses P-d's
+threshold at **800** and so does the 70%-accurate projection — 0.4633 against
+0.4632, by a hair, but the next rung up is 0.4981. Doubling the budget flips the
+verdict. **P-d was refuted at the one budget in this range where nothing could
+have been distinguished from anything.**
+
+**2. At 400 the three curves are the same number.** 0.4533, 0.4471 and 0.4556,
+against a coin deviation of 0.0239. A perfect chooser, a 70% chooser and a coin
+are indistinguishable there. That is §9's conclusion arrived at from the other
+side, and it is the sharpest statement of what went wrong: the budget was chosen
+before anyone knew the curve, and it landed on the flat part.
+
+**3. Accuracy does not wash out with volume.** The gap between the perfect
+chooser and the 70% one is 0.12 at full budget and does not close — 0.6834
+against 0.5652. More edges do not compensate for choosing them badly, which is
+worth stating because the opposite is the natural guess.
+
+### And the ceiling of the whole channel is below what search reaches
+
+An **exhausted** pairwise channel with a **perfect** chooser reaches **0.6834**
+where the searched order on the same cell reaches **0.7678**. The gap is 0.084
+and it is not a budget effect — the curve is flat from 12,800 on, and at 31,850
+it is slightly *lower* than at 25,600, because more edges mean more constraints
+and more cycle refusals with no compensating gain.
+
+So the pairwise channel is not an alternative route to what search finds. Even
+handed every pair and the right answer to each, it stops well short. What it is
+instead is a route that needs no labels of the kind search uses — and that
+comparison, oracle against oracle, is not the one that matters for a proposer.
+
+### What is measured and what is projected, one last time
+
+**Measured, exactly**: the oracle curve, the coin curve, and their crossings.
+**Projected, under a stated assumption**: the noisy curve. **Not measured at
+all**: what the actual proposer scores at any budget above 400. That would take
+calls, and the honest budget for the question §9 left open is now known —
+somewhere around 800 to answer P-d, around 1,600 to beat a free queue ranking.
+
+**Files added by this section**
+
+```
+rung3/edge_budget.py         the four curves, nested at seed 17
+results3/edge_budget.json    the record, with its provenance field
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.edge_budget`. Three minutes,
+zero API calls.
+
+---
+
 ## Files
 
 ```
