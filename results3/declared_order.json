@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-08-24T15:51:48Z",
+    "recorded_at": "2026-08-24T17:34:37Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": "0",
-    "git_commit": "d11a35eeaa37cb134838de9d06049fcde51ca8f0",
+    "git_commit": "165e305ecefe75d31f26279e7bc99c586295c3c1",
     "git_dirty": false,
     "code_dirty": false,
-    "code_digest": "a6ade57d97b2c1a2",
+    "code_digest": "32896efd6e29a61a",
     "n_orders": 65,
     "split": 0,
     "neighbourhood": "move+swap",
@@ -148,5 +148,5 @@
     "verdict": "REFUTED"
   },
   "control": "the queue-ranking column is read from results3/queue_hierarchy_floor.json and is the order a fixed ranking of the eight queues induces, at zero calls. It is reported beside P-d and never in place of it: P-d is adjudicated on its signed band.",
-  "seconds": 339.5
+  "seconds": 313.1
 }
