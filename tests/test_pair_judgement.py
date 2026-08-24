@@ -32,15 +32,21 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from harness.domain import ACTIONS, Case
+from rung2.engine2 import Rule2
 from rung2.hidden_priority import build_hidden_engine
-from rung2.pair_judgement import (FLOOR_COIN, MAX_RETRIES, MAX_TOKENS, MODEL,
+from rung2.pair_judgement import (FLOOR_COIN, GATE_POPULATION, MAX_RETRIES,
+                                  MAX_TOKENS, MODEL, N_LEARNED_RULES,
                                   POSITION_SEED, SHOWN_AS, TEMPERATURE,
                                   Judge, add_breadth, breakdowns,
-                                  build_questions, classify, fresh_engine,
-                                  gate_no_leak, gate_position_balance,
-                                  gate_signature, hidden_rules, kill_switch,
-                                  load_benchmark, question, rates, shown_rule,
-                                  verdict_histogram, winner_positions)
+                                  build_learned_questions, build_questions,
+                                  classify, classify_learned, fresh_engine,
+                                  gate_no_leak, gate_population,
+                                  gate_position_balance, gate_signature,
+                                  hidden_rules, kill_switch, learned_population,
+                                  learned_rules, load_benchmark, question,
+                                  rates, revealed_hierarchy, sample_population,
+                                  shown_rule, verdict_histogram,
+                                  winner_positions)
 from rung2.proposers2 import ProposalError
 from tests.doubles import FakeOpenAIClient, FixedResponses, fake_sdk
 
@@ -589,6 +595,214 @@ class TestThePopulation(unittest.TestCase):
         """If every winner were the broader rule the split would test nothing."""
         sides = {r["winner_is_broader"] for r in self.rows}
         self.assertEqual(sides, {True, False})
+
+
+# ---------------------------------------------------------------------------
+# Stage D — the learned base
+# ---------------------------------------------------------------------------
+
+class _StubSpace:
+    """Extensions handed over directly, so the three conditions can be checked on
+    four rules written out by hand instead of on 134,400 cases."""
+
+    def __init__(self, ext_by_marker):
+        self._ext = ext_by_marker
+
+    def extension(self, conditions):
+        return self._ext[conditions[0].value]
+
+
+def _rule(rid, action, marker, born=0):
+    from harness.dsl import Condition
+
+    return Rule2(rule_id=rid, action=action, born_at=born,
+                 conditions=[Condition("severity", "eq", marker)])
+
+
+class TestTheLearnedPopulation(unittest.TestCase):
+    """The three conditions of `hidden_priority.py`, applied to another base."""
+
+    def population(self, spec):
+        rules, ext = {}, {}
+        for rid, (action, mask) in spec.items():
+            rules[rid] = _rule(rid, action, rid)
+            ext[rid] = mask
+        return learned_population(rules, _StubSpace(ext))
+
+    def test_disjoint_extensions_are_excluded(self):
+        pairs, _e, stats = self.population(
+            {"R1": ("AAA", 0b1100), "R2": ("BBB", 0b0011)})
+        self.assertEqual(pairs, [])
+        self.assertEqual(stats["disjoint"], 1)
+
+    def test_subsumption_comparable_pairs_are_excluded(self):
+        """§10: on those a declared edge is inert whichever way the model
+        answers, so the call is wasted and one of them would score as an
+        acceptance."""
+        pairs, _e, stats = self.population(
+            {"R1": ("AAA", 0b1111), "R2": ("BBB", 0b0011)})
+        self.assertEqual(pairs, [])
+        self.assertEqual(stats["subsumption_comparable"], 1)
+
+    def test_same_action_pairs_are_excluded(self):
+        pairs, _e, stats = self.population(
+            {"R1": ("AAA", 0b1110), "R2": ("AAA", 0b0111)})
+        self.assertEqual(pairs, [])
+        self.assertEqual(stats["same_action"], 1)
+
+    def test_what_survives_overlaps_is_incomparable_and_disagrees(self):
+        pairs, _e, stats = self.population(
+            {"R1": ("AAA", 0b1110), "R2": ("BBB", 0b0111)})
+        self.assertEqual(pairs, [("R1", "R2")])
+        self.assertEqual(stats["population"], 1)
+
+    def test_the_boxes_partition_every_pair(self):
+        spec = {"R1": ("AAA", 0b1110), "R2": ("BBB", 0b0111),
+                "R3": ("CCC", 0b0001), "R4": ("AAA", 0b1000)}
+        _p, _e, stats = self.population(spec)
+        n = len(spec)
+        self.assertEqual(stats["disjoint"] + stats["subsumption_comparable"]
+                         + stats["same_action"] + stats["population"],
+                         n * (n - 1) // 2)
+
+    def test_the_order_is_deterministic_and_sorted(self):
+        spec = {"R3": ("AAA", 0b1110), "R1": ("BBB", 0b0111),
+                "R2": ("CCC", 0b1011)}
+        pairs, _e, _s = self.population(spec)
+        self.assertEqual(pairs, sorted(pairs))
+
+
+class TestThePopulationGate(unittest.TestCase):
+
+    def stats(self, **kw):
+        base = {"subsumption_comparable": 8599, "same_action": 13171,
+                "population": GATE_POPULATION}
+        base.update(kw)
+        base["disjoint"] = (166176 - base["subsumption_comparable"]
+                            - base["same_action"] - base["population"])
+        return base
+
+    def test_it_passes_on_the_measured_population(self):
+        g = gate_population(self.stats(), N_LEARNED_RULES)
+        self.assertTrue(g["passes"])
+        self.assertEqual(g["n_pairs"], 166176)
+        self.assertEqual(g["fraction"], round(GATE_POPULATION / 166176, 4))
+
+    def test_a_different_population_fails(self):
+        g = gate_population(self.stats(population=GATE_POPULATION + 1),
+                            N_LEARNED_RULES)
+        self.assertFalse(g["passes"])
+
+    def test_a_different_base_fails(self):
+        """If the rule count moves, somebody rewrote results/llm_run.json."""
+        self.assertFalse(gate_population(self.stats(), 576)["passes"])
+
+    def test_boxes_that_do_not_add_up_fail(self):
+        bad = self.stats()
+        bad["disjoint"] += 1
+        self.assertFalse(gate_population(bad, N_LEARNED_RULES)["passes"])
+
+
+class TestTheSample(unittest.TestCase):
+
+    POP = [(f"R{i:04d}", f"R{i + 1:04d}") for i in range(1000)]
+
+    def test_it_is_deterministic(self):
+        self.assertEqual(sample_population(self.POP, 50),
+                         sample_population(self.POP, 50))
+
+    def test_it_takes_the_budget_and_no_more(self):
+        self.assertEqual(len(sample_population(self.POP, 50)), 50)
+
+    def test_it_keeps_the_populations_own_order(self):
+        got = sample_population(self.POP, 50)
+        self.assertEqual(got, [p for p in self.POP if p in set(got)])
+
+    def test_a_budget_over_the_population_takes_all_of_it(self):
+        self.assertEqual(sample_population(self.POP, 99999), self.POP)
+
+    def test_another_seed_samples_differently(self):
+        self.assertNotEqual(sample_population(self.POP, 50),
+                            sample_population(self.POP, 50, seed=18))
+
+
+class TestTheThreeOutcomesOverTheLearnedBase(unittest.TestCase):
+    """None of them is right or wrong: there is no truth for these pairs."""
+
+    ROW = {"action_a": "AAA", "action_b": "BBB"}
+
+    def test_naming_a_s_queue_declares_a_beats_b(self):
+        self.assertEqual(classify_learned("AAA", self.ROW), "a_beats_b")
+
+    def test_naming_b_s_queue_declares_the_other_edge(self):
+        self.assertEqual(classify_learned("BBB", self.ROW), "b_beats_a")
+
+    def test_a_third_queue_declares_nothing(self):
+        self.assertEqual(classify_learned("CCC", self.ROW), "none")
+
+    def test_no_answer_declares_nothing(self):
+        self.assertEqual(classify_learned(None, self.ROW), "none")
+
+
+class TestTheRevealedHierarchy(unittest.TestCase):
+
+    def rows(self, *spec):
+        return [{"action_a": a, "action_b": b, "declared": d}
+                for a, b, d in spec]
+
+    def test_a_constant_answer_makes_the_pair_constant(self):
+        r = revealed_hierarchy(self.rows(("AAA", "BBB", "a_beats_b"),
+                                         ("BBB", "AAA", "b_beats_a")))
+        self.assertEqual(r["n_varying"], 0)
+        self.assertEqual(r["constant_fraction"], 1.0)
+
+    def test_answering_both_ways_makes_it_vary(self):
+        r = revealed_hierarchy(self.rows(("AAA", "BBB", "a_beats_b"),
+                                         ("AAA", "BBB", "b_beats_a")))
+        self.assertEqual(r["n_varying"], 1)
+        self.assertEqual(r["constant_fraction"], 0.0)
+
+    def test_rows_that_declared_nothing_do_not_enter(self):
+        r = revealed_hierarchy(self.rows(("AAA", "BBB", "a_beats_b"),
+                                         ("AAA", "BBB", "none")))
+        self.assertEqual(r["n_queue_pairs"], 1)
+        self.assertEqual(r["per_queue_pair"]["AAA vs BBB"], {"AAA": 1})
+
+
+class TestTheLearnedBaseIsTheOneRungOneWrote(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.rules = learned_rules()
+
+    def test_it_is_the_577(self):
+        self.assertEqual(len(self.rules), N_LEARNED_RULES)
+
+    def test_no_rule_carries_a_declared_edge(self):
+        """Rung 1 had no declared priority, so there is nothing to strip — and
+        this is what says so rather than assuming it."""
+        for rid, rule in self.rules.items():
+            with self.subTest(rid):
+                self.assertEqual(rule.beats, [])
+                self.assertEqual(rule.loses_to, [])
+
+    def test_no_question_over_this_base_names_a_rule_either(self):
+        from harness.ceiling_check import all_cases
+        from rung2.engine2 import Space
+
+        space = Space()
+        pairs, ext, _stats = learned_population(self.rules, space)
+        sampled = sample_population(pairs, 12)
+        rows = build_learned_questions(sampled, self.rules, ext,
+                                       winner_positions(len(sampled)),
+                                       list(all_cases()), space.n)
+        self.assertTrue(gate_no_leak([r["question"] for r in rows])["passes"])
+        for r in rows:
+            with self.subTest(f"{r['rule_a']}/{r['rule_b']}"):
+                self.assertNotIn(r["rule_a"], r["question"])
+                self.assertNotIn(r["rule_b"], r["question"])
+                self.assertEqual(r["shown_as"][r["a_shown_as"]], r["rule_a"])
+                self.assertGreater(r["overlap_cases"], 0)
 
 
 if __name__ == "__main__":
