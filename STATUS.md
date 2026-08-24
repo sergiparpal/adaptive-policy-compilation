@@ -430,8 +430,26 @@ and **the oracle's own directions on the same 400 pairs reach only 0.4593, still
 under P-d's 0.4632 threshold and still inside the coin distribution**. So **P-d
 was not refuted because the proposer chose badly — it was refuted because 344
 edges cannot move a 577-rule order across a 0.03 margin, whoever picks their
-direction.** What a next attempt would have to change is the budget, not the
-prompt. §8's `signal with the wrong sign` is withdrawn there by a dated erratum.
+direction.** §8's `signal with the wrong sign` is withdrawn there by a dated
+erratum.
+
+**And the budget that would have worked is now known, for zero calls.** The
+oracle's direction is computable offline on all 31,850 pairs, so the channel's
+ceiling against budget is free ([`results3/FINDINGS3.md`](results3/FINDINGS3.md)
+§10, [`edge_budget.json`](results3/edge_budget.json)). All on P-d's own cell:
+**at 400 a perfect chooser, a 70% chooser and a coin are the same number** —
+0.4533, 0.4471, 0.4556 against a coin deviation of 0.0239. Both cross P-d's
+0.4632 threshold at **800** and a free queue ranking at **1,600**. So P-d was
+adjudicated at the one budget in the range where nothing could be distinguished
+from anything, and **doubling it would have flipped the verdict**.
+
+**Accuracy does not wash out with volume**: exhausted, a perfect chooser reaches
+0.6834 and a 70% chooser 0.5652, and that 0.12 does not close. **And the whole
+channel tops out below search**: 0.6834 against the searched order's 0.7678 on
+the same cell, flat from 12,800 edges on. Handed every pair and the right answer
+to each, pairwise declaration still stops 0.084 short of what the optimizer
+finds. The oracle and noisy curves are exact and projected respectively; what the
+actual proposer scores above 400 is unmeasured and would take calls.
 
 **`P-e` is refuted too, and by a wide margin.** Behavioural distance from 65 end
 orders **regenerated on the hybrid pool** — never the published `puro` ones —
