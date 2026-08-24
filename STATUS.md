@@ -378,6 +378,27 @@ over the 199 declared edges would be **0.7538**. The pull toward the narrower
 rule shows up too: the wrong-edge rate doubles, 0.1212 against 0.0597, when the
 rule that should win is the broader one.
 
+**And a ranking of the eight queues, at zero calls, already clears the band the
+next stage was going to be judged on.** A total order over the actions induces
+one over the 577 rules — sort by the rank of the rule's action, reading no
+condition, no extension and no subsumption. The ranking Stage C's answer key
+produced over the *hidden* policy's pairs, transferred unchanged, scores
+**0.4824** on the `hibrido` pool, corpus test split 0, against P-d's threshold of
+0.4632; over the space, 0.5838 against 0.4557
+([`results3/FINDINGS3.md`](results3/FINDINGS3.md) §7,
+[`queue_hierarchy_floor.json`](results3/queue_hierarchy_floor.json)). A hierarchy
+picked *blind* is worth 0.3670, below the floor — knowing which ranking to use is
+the whole content of the baseline, and Stage C is where that knowledge came from.
+
+**It is strong exactly where P-d measures and nowhere else.** On the `puro` pool
+over the corpus the same family is *worse* than arrival order, 0.4291 against
+0.5216, and even the best of the 40,320 does not reach the floor. Once
+subsumption has pruned the pool, most of what is left to decide is *which
+action*, and a ranking of actions is the instrument for that. **P-d is not
+refuted and its band does not move** — it is signed and will be adjudicated as
+written — but a hold can no longer be read as evidence that declaration
+contributes a channel, because a free lookup table sits above the band already.
+
 **An ordering problem and a material problem are different things.** Six classes
 of eight — 1774 of 2000 cases — are pure ordering. `SECURITY_INCIDENT` (20 cases)
 and `ONCALL_ESCALATION` (7) are **100% recoverable** and rung 1 gave **0/17** and
