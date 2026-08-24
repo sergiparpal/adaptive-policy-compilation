@@ -84,6 +84,14 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "run_experiment.py",
             "rung2/shadow2.py",
             "rung2/ceiling_check2.py",
+            # offline: the labelled pair benchmark. Added 2026-08-24, and
+            # deliberately. It imports true_action and true_rule_id to build the
+            # KEY of a benchmark — which of two rules the hidden policy makes win
+            # over the region where they compete, and which earlier-layer rule
+            # owns that region when neither does. It decides nothing, no component
+            # of the online loop imports it, and the key it writes is in the record
+            # openly: that is what makes it a benchmark rather than a leak.
+            "rung2/pair_benchmark.py",
             "rung3/order_search.py",
             "rung3/budget_and_balance.py",
             "rung3/optimizer_check.py",   # offline: the optimizer's own ceiling
