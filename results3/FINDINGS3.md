@@ -799,6 +799,27 @@ That is the same shape as `results/FINDINGS.md`'s finding about arrival order �
 *it does not lack signal, it lacks a sign* — arrived at by a different route and
 on a different channel.
 
+> **[ERRATUM 2026-08-24] The last two paragraphs are wrong, and §9 measures the
+> thing they inferred.** The sign is not inverted. Asked directly — of the
+> declared edges on pairs where one rule is strictly better over the region the
+> two share, how many point at it — the answer is **194 of 278, 0.6978**, which
+> is **6.6 standard errors above a coin**, and 0.6299 on the corpus surface, 4.4
+> above. The declared direction is right about seven times in ten.
+>
+> What was wrong was reading an order-level score as evidence about directions.
+> With the null sharpened from 50 draws to 2,000, the model's 0.4080 has
+> **14.7%** of coins at or below it: unremarkable, not a deficit. The `sign and
+> not an established effect` hedge was right and the sentence that followed it
+> went further than the hedge allowed.
+>
+> **What replaces it is a stronger finding, not a weaker one.** Compiling the
+> ORACLE's own directions on these same 400 pairs scores 0.4523 and 0.4593 —
+> above the floor, below P-d's 0.4632 threshold, and still inside the coin
+> distribution. At this budget the direction of the edges barely moves the
+> order whoever chooses it, so **P-d was not refuted because the model chose
+> badly. It was refuted because 344 edges cannot move a 577-rule order across a
+> 0.03 margin at all.** §9 has the figures.
+
 ### As a machine — P-e
 
 The 65 end orders were **regenerated on the hybrid pool**, not read from
@@ -864,6 +885,118 @@ tests/test_declared_order.py       the compilation, which is where a wrong
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.declared_order`. Under six
 minutes, zero API calls.
+
+---
+
+## 9. The direction is right; the compilation is where it is lost
+
+*Added 2026-08-24. `rung3/edge_direction.py` → `results3/edge_direction.json`,
+`PYTHONHASHSEED=0`, 20 s, zero API calls — it reads the 400 answers Stage D
+already paid for. **POST-RUN**: written after P-d and P-e were adjudicated, by
+someone who had already seen the direction control. Nothing here is a bet that
+could have failed and no signed row moves.*
+
+**A different truth from the one §10 denied.** `PLAN_PAIRWISE.md` §10 says *there
+is no truth for these pairs*, and about the object it means — the hidden policy's
+**layer order** over rules it never wrote — that is right and stays right. This
+measures another one and never calls it a layer relation: over the cases in
+`ext(A) ∩ ext(B)`, **which rule's action is the true action more often**. Ties,
+and pairs where neither rule is ever right, go outside every denominator.
+
+### 1. Does the declared direction point at the better rule? Yes, clearly
+
+```
+surface   pointed at it    n    rate      se     vs a coin
+space         194          278   0.6978   0.0300   +6.60 sd
+corpus        177          281   0.6299   0.0298   +4.36 sd
+
+outside the denominator
+space     tie 32 · neither ever right 66 · no edge declared 24
+corpus    tie  2 · neither ever right 93 · no edge declared 24
+```
+
+**The model is right about seven times in ten**, and on this denominator that is
+six standard errors from a coin. The pairwise question does elicit real
+information about which of two rules should win.
+
+**The `neither` box is the material problem again**: on 66 pairs over the space
+and 93 over the corpus, the true action on the shared region is some third queue
+throughout, so neither rule can be the right winner. That is 17% and 23% of the
+sample, and no edge fixes it.
+
+### 2. Would the right direction have helped? Barely
+
+The same 400 pairs with every edge pointing at the better rule, compiled and
+scored exactly as the run's were — `hibrido` pool, corpus test split 0:
+
+```
+the model                 0.4080
+the model INVERTED        0.4432
+the ORACLE's direction    0.4523   (space definition of better)
+the ORACLE's direction    0.4593   (corpus definition)
+the born_at floor         0.4332
+P-d's threshold           0.4632
+```
+
+**Even the oracle's own directions do not clear P-d's band.** 0.4593 against
+0.4632, on a channel where every edge points the right way by construction.
+
+### 3. The null, sharpened from 50 draws to 2,000
+
+```
+coin on direction   mean 0.4318   sd 0.0228   [0.3538, 0.4985]
+
+                    score    coins at or below    coins at or above
+the model          0.4080          14.7%                86.2%
+inverted           0.4432          69.7%                32.3%
+oracle, space      0.4523          82.5%                18.7%
+oracle, corpus     0.4593          88.9%                12.1%
+```
+
+**Every one of them sits inside the coin distribution.** The model is not
+significantly below it; the oracle is not significantly above it.
+
+### What this establishes, and what it withdraws
+
+**It withdraws §8's `signal with the wrong sign`**, which is why that section now
+carries a dated erratum. The inference ran from an order-level score to a claim
+about directions, and the direct measurement contradicts it: the directions are
+right 70% of the time. The hedge in §8 — *a sign and not an established effect* —
+was correct, and the sentence after it went further than the hedge allowed.
+
+**What replaces it is stronger.** The pairwise channel carries real signal about
+which rule should win, and **that signal does not survive compilation into an
+order at this budget**. 344 edges over 577 rules is 1.1% of the pairs that could
+carry one; the coin's own spread over direction, 0.0228, swamps the 0.051 that
+separates the model from the oracle. So:
+
+> **P-d was not refuted because the proposer chose badly. It was refuted because
+> 344 edges cannot move a 577-rule order across a 0.03 margin, whoever chooses
+> their direction.** The band was out of reach at this budget before a single
+> call was made.
+
+That is a statement about the protocol, not about the model, and it is the one
+that transfers. It also says what a next attempt would have to change: **the
+budget, not the prompt.** Whether the channel pays at 3,000 edges or 30,000 is
+unmeasured, and this record cannot say — what it can say is that measuring it at
+400 was never going to answer the question P-d asked.
+
+**It does not rehabilitate the proposer either.** Seven in ten on a two-way
+choice, on the half of the population where a better rule exists at all, with 17%
+to 23% of pairs having no right answer among the two shown — that is the same
+proposer Stage C measured, doing about as well, and the queue-ranking control of
+§7 still applies to it.
+
+**Files added by this section**
+
+```
+rung3/edge_direction.py         the better rule per pair, the oracle's own
+                                directions compiled, and a 2,000-draw null
+results3/edge_direction.json    the record, with its provenance field
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.edge_direction`. Twenty
+seconds, zero API calls.
 
 ---
 
