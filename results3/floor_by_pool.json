@@ -1,0 +1,1056 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-24T08:58:38Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "023b7fdce89874d852cecd669538a3693a0c7bf5",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "0643fa201f1d3895",
+    "n_splits": 5,
+    "n_random": 50,
+    "split_seed": 17
+  },
+  "what": "what an order that searches for NOTHING scores, on both pools and on all three surfaces. The cell PLAN_PAIRWISE.md \u00a73 marks NOT MEASURED \u2014 born_at over the hibrido pool \u2014 is the floor any declared order has to be scored against, and it did not exist before this record. Three further figures had no owning record either: born_at and the random mean over the FULL corpus, and reversed born_at over the space. No search of any kind; no API calls; results/llm_run.json is read-only.",
+  "carries_no_prediction": "PLAN_PAIRWISE.md \u00a70.1. P-a and P-b predicted these figures and were measured on 2026-08-24 before anybody signed them, so they are spent and are not restored. Nothing here may be reported as a band that held. What the stage keeps is giving the figures an owner, a script and an _env.",
+  "surface_note": "corpus_full is the 2000 draws of the modelled arrival distribution at seed 17; corpus_test_split0 is split(corpus, truth, seed=17)[1], the record's own index set and the only one that reproduces 0.5216 and 0.4227; corpus_test_5splits is the mean over seeds 17..21 and is the more stable statistic but reproduces neither; space is the uniform measure over all 134,400 attribute combinations. Over the same 2,080 pairs the two surfaces rank at Spearman 0.34: a figure on one cannot be reweighted into a figure on the other.",
+  "pool_note": "puro is first-match-wins over a total order with subsumption OFF. hibrido is subsumption as a non-overridable base level plus a declared order on top, which is where declared edges live. They are different machines and their figures never chain.",
+  "generator_note": "trap 5.5 of PLAN_PAIRWISE.md. Two random-order generators exist in the tree and they disagree; the record's corpus figures came from one and its space figure from the other, and no single generator reproduces all three. Every random row names its generator.",
+  "n_rules": 577,
+  "n_cases": 2000,
+  "n_space": 134400,
+  "splits": {
+    "corpus_test_split0": {
+      "seed": 17,
+      "n_test": 995
+    },
+    "corpus_test_split1": {
+      "seed": 18,
+      "n_test": 995
+    },
+    "corpus_test_split2": {
+      "seed": 19,
+      "n_test": 981
+    },
+    "corpus_test_split3": {
+      "seed": 20,
+      "n_test": 1000
+    },
+    "corpus_test_split4": {
+      "seed": 21,
+      "n_test": 1002
+    }
+  },
+  "gates": {
+    "what": "six figures that are NOT new and must come out. Four gate against a record and two against an unowned probe; `kind` says which per row. A probe that gates is still a probe. A miss on G2, G4 or G6 is a generator mismatch until proven otherwise.",
+    "rows": [
+      {
+        "id": "G1",
+        "pool": "puro",
+        "surface": "corpus_test_split0",
+        "order": "born_at",
+        "generator": null,
+        "protocol": "split 0 only \u2014 NOT the five-split mean (trap 5.6)",
+        "target": 0.5216,
+        "tol": 0.0002,
+        "kind": "record",
+        "source": "results3/order_search.json::references_split0.born_at_test",
+        "measured": 0.521608,
+        "delta": 8e-06,
+        "passes": true
+      },
+      {
+        "id": "G2",
+        "pool": "puro",
+        "surface": "corpus_test_split0",
+        "order": "random",
+        "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+        "protocol": "the order_search.py generator (trap 5.5), split 0 only",
+        "target": 0.4227,
+        "tol": 0.002,
+        "kind": "record",
+        "sd_target": null,
+        "source": "results3/order_search.json::references_split0.random_test_mean",
+        "measured": 0.422714,
+        "delta": 1.4e-05,
+        "passes": true,
+        "measured_sd": {
+          "pstdev": 0.070995,
+          "stdev": 0.071715
+        },
+        "sd_is_blocking": false
+      },
+      {
+        "id": "G3",
+        "pool": "puro",
+        "surface": "corpus_full",
+        "order": "born_at",
+        "generator": null,
+        "protocol": "all 2000 indices",
+        "target": 0.5115,
+        "tol": 0.0002,
+        "kind": "probe",
+        "source": "CHAT_SUMMARY.md \u00a72.1 erratum of 2026-08-12, cited in ARBITRATION_REPORT.md \u00a72. No record owns it.",
+        "measured": 0.5115,
+        "delta": 0.0,
+        "passes": true
+      },
+      {
+        "id": "G4",
+        "pool": "puro",
+        "surface": "corpus_full",
+        "order": "random",
+        "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+        "protocol": "the order_search.py generator (trap 5.5), all 2000 indices",
+        "target": 0.4172,
+        "tol": 0.002,
+        "kind": "probe",
+        "sd_target": 0.0711,
+        "source": "CHAT_SUMMARY.md \u00a72.1 erratum of 2026-08-12, cited in ARBITRATION_REPORT.md \u00a72. No record owns it.",
+        "measured": 0.41723,
+        "delta": 3e-05,
+        "passes": true,
+        "measured_sd": {
+          "pstdev": 0.071056,
+          "stdev": 0.071777
+        },
+        "sd_is_blocking": false,
+        "sd_delta": {
+          "pstdev": 4.4e-05,
+          "stdev": 0.000677
+        }
+      },
+      {
+        "id": "G5",
+        "pool": "puro",
+        "surface": "space",
+        "order": "born_at",
+        "generator": null,
+        "protocol": "space_pools, normalised by n",
+        "target": 0.3148,
+        "tol": 0.0002,
+        "kind": "record",
+        "source": "results3/FINDINGS3.md erratum of 2026-08-08, and results3/budget_and_balance_ls.json::references['born_at espacio']",
+        "measured": 0.314807,
+        "delta": 7e-06,
+        "passes": true
+      },
+      {
+        "id": "G6",
+        "pool": "puro",
+        "surface": "space",
+        "order": "random",
+        "generator": "local_search.random_order(ids, seed), seeds 0..49",
+        "protocol": "random_order(ids, seed), seeds 0..49 (trap 5.5)",
+        "target": 0.3768,
+        "tol": 0.002,
+        "kind": "record",
+        "sd_target": 0.1026,
+        "source": "results3/FINDINGS3.md erratum of 2026-08-08",
+        "measured": 0.376763,
+        "delta": 3.7e-05,
+        "passes": true,
+        "measured_sd": {
+          "pstdev": 0.102601,
+          "stdev": 0.103642
+        },
+        "sd_is_blocking": false,
+        "sd_delta": {
+          "pstdev": 1e-06,
+          "stdev": 0.001042
+        }
+      }
+    ],
+    "generators_differ_only_in_the_rng": {
+      "what": "the rules' appearance order in results/llm_run.json against sorted(ids). If they are equal, the only thing separating the two random generators is how the RNG is advanced.",
+      "appearance_equals_sorted": true,
+      "n_rules": 577
+    },
+    "passes": true
+  },
+  "floors": [
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "value": 0.4285,
+      "n_cases": 2000
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "value": 0.431501,
+      "aggregation": "mean over 5 splits",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.433166,
+          "n_cases": 995
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.435176,
+          "n_cases": 995
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.424057,
+          "n_cases": 981
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.418,
+          "n_cases": 1000
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.447106,
+          "n_cases": 1002
+        }
+      ]
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "value": 0.433166,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "value": 0.435176,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "value": 0.424057,
+      "n_cases": 981
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "value": 0.418,
+      "n_cases": 1000
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "value": 0.447106,
+      "n_cases": 1002
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "space",
+      "value": 0.425744,
+      "n_cases": 134400
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_full",
+      "value": 0.5115,
+      "n_cases": 2000
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "value": 0.514986,
+      "aggregation": "mean over 5 splits",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.521608,
+          "n_cases": 995
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.514573,
+          "n_cases": 995
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.513761,
+          "n_cases": 981
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.519,
+          "n_cases": 1000
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.505988,
+          "n_cases": 1002
+        }
+      ]
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "value": 0.521608,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "value": 0.514573,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "value": 0.513761,
+      "n_cases": 981
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "value": 0.519,
+      "n_cases": 1000
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "value": 0.505988,
+      "n_cases": 1002
+    },
+    {
+      "order": "born_at",
+      "generator": null,
+      "pool": "puro",
+      "surface": "space",
+      "value": 0.314807,
+      "n_cases": 134400
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "value": 0.5165,
+      "n_cases": 2000
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "value": 0.523033,
+      "aggregation": "mean over 5 splits",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.532663,
+          "n_cases": 995
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.502513,
+          "n_cases": 995
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.527013,
+          "n_cases": 981
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.541,
+          "n_cases": 1000
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.511976,
+          "n_cases": 1002
+        }
+      ]
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "value": 0.532663,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "value": 0.502513,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "value": 0.527013,
+      "n_cases": 981
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "value": 0.541,
+      "n_cases": 1000
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "value": 0.511976,
+      "n_cases": 1002
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "hibrido",
+      "surface": "space",
+      "value": 0.437314,
+      "n_cases": 134400
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_full",
+      "value": 0.542,
+      "n_cases": 2000
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "value": 0.545151,
+      "aggregation": "mean over 5 splits",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.546734,
+          "n_cases": 995
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.541709,
+          "n_cases": 995
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.547401,
+          "n_cases": 981
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.546,
+          "n_cases": 1000
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.543912,
+          "n_cases": 1002
+        }
+      ]
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "value": 0.546734,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "value": 0.541709,
+      "n_cases": 995
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "value": 0.547401,
+      "n_cases": 981
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "value": 0.546,
+      "n_cases": 1000
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "value": 0.543912,
+      "n_cases": 1002
+    },
+    {
+      "order": "born_at_reversed",
+      "generator": null,
+      "pool": "puro",
+      "surface": "space",
+      "value": 0.566815,
+      "n_cases": 134400
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "value": 0.42619,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.047147,
+      "stdev": 0.047626,
+      "min": 0.3305,
+      "max": 0.5235
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "value": 0.43079,
+      "aggregation": "mean over 5 splits of the mean over 50 draws",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.43399,
+          "n_cases": null
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.420261,
+          "n_cases": null
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.429929,
+          "n_cases": null
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.43494,
+          "n_cases": null
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.43483,
+          "n_cases": null
+        }
+      ]
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "value": 0.43399,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.045457,
+      "stdev": 0.045918,
+      "min": 0.346734,
+      "max": 0.510553
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "value": 0.420261,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.051543,
+      "stdev": 0.052067,
+      "min": 0.305528,
+      "max": 0.510553
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "value": 0.429929,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.047643,
+      "stdev": 0.048126,
+      "min": 0.340469,
+      "max": 0.53211
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "value": 0.43494,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.04725,
+      "stdev": 0.047729,
+      "min": 0.327,
+      "max": 0.541
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "value": 0.43483,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.048123,
+      "stdev": 0.048612,
+      "min": 0.324351,
+      "max": 0.536926
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "hibrido",
+      "surface": "space",
+      "value": 0.386738,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.044523,
+      "stdev": 0.044975,
+      "min": 0.293006,
+      "max": 0.506101
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_full",
+      "value": 0.42117,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.070584,
+      "stdev": 0.071301,
+      "min": 0.253,
+      "max": 0.568
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "value": 0.424754,
+      "aggregation": "mean over 5 splits of the mean over 50 draws",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.425085,
+          "n_cases": null
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.420322,
+          "n_cases": null
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.423017,
+          "n_cases": null
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.42788,
+          "n_cases": null
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.427465,
+          "n_cases": null
+        }
+      ]
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "value": 0.425085,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.068996,
+      "stdev": 0.069696,
+      "min": 0.257286,
+      "max": 0.566834
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "value": 0.420322,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.069242,
+      "stdev": 0.069945,
+      "min": 0.253266,
+      "max": 0.561809
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "value": 0.423017,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.075726,
+      "stdev": 0.076495,
+      "min": 0.240571,
+      "max": 0.582059
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "value": 0.42788,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.070798,
+      "stdev": 0.071517,
+      "min": 0.261,
+      "max": 0.575
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "value": 0.427465,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.072856,
+      "stdev": 0.073595,
+      "min": 0.248503,
+      "max": 0.58483
+    },
+    {
+      "order": "random",
+      "generator": "local_search.random_order(ids, seed), seeds 0..49",
+      "pool": "puro",
+      "surface": "space",
+      "value": 0.376763,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.102601,
+      "stdev": 0.103642,
+      "min": 0.195312,
+      "max": 0.582701
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "value": 0.43324,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.038351,
+      "stdev": 0.03874,
+      "min": 0.353,
+      "max": 0.5275
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_5splits",
+      "value": 0.438561,
+      "aggregation": "mean over 5 splits of the mean over 50 draws",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.444462,
+          "n_cases": null
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.428523,
+          "n_cases": null
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.437044,
+          "n_cases": null
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.4416,
+          "n_cases": null
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.441178,
+          "n_cases": null
+        }
+      ]
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "value": 0.444462,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.038177,
+      "stdev": 0.038565,
+      "min": 0.360804,
+      "max": 0.551759
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_split1",
+      "value": 0.428523,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.040346,
+      "stdev": 0.040756,
+      "min": 0.338693,
+      "max": 0.512563
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_split2",
+      "value": 0.437044,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.043718,
+      "stdev": 0.044162,
+      "min": 0.364934,
+      "max": 0.540265
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_split3",
+      "value": 0.4416,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.038453,
+      "stdev": 0.038843,
+      "min": 0.372,
+      "max": 0.544
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "corpus_test_split4",
+      "value": 0.441178,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.040995,
+      "stdev": 0.041411,
+      "min": 0.352295,
+      "max": 0.550898
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "hibrido",
+      "surface": "space",
+      "value": 0.390342,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.053381,
+      "stdev": 0.053923,
+      "min": 0.27401,
+      "max": 0.506161
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_full",
+      "value": 0.41723,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.071056,
+      "stdev": 0.071777,
+      "min": 0.2815,
+      "max": 0.5455
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_5splits",
+      "value": 0.421929,
+      "aggregation": "mean over 5 splits of the mean over 50 draws",
+      "per_split": [
+        {
+          "split": 0,
+          "seed": 17,
+          "value": 0.422714,
+          "n_cases": null
+        },
+        {
+          "split": 1,
+          "seed": 18,
+          "value": 0.418432,
+          "n_cases": null
+        },
+        {
+          "split": 2,
+          "seed": 19,
+          "value": 0.420347,
+          "n_cases": null
+        },
+        {
+          "split": 3,
+          "seed": 20,
+          "value": 0.42376,
+          "n_cases": null
+        },
+        {
+          "split": 4,
+          "seed": 21,
+          "value": 0.424391,
+          "n_cases": null
+        }
+      ]
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "value": 0.422714,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.070995,
+      "stdev": 0.071715,
+      "min": 0.287437,
+      "max": 0.544724
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_split1",
+      "value": 0.418432,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.06862,
+      "stdev": 0.069316,
+      "min": 0.285427,
+      "max": 0.537688
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_split2",
+      "value": 0.420347,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.074339,
+      "stdev": 0.075093,
+      "min": 0.275229,
+      "max": 0.551478
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_split3",
+      "value": 0.42376,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.071721,
+      "stdev": 0.072449,
+      "min": 0.291,
+      "max": 0.571
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "corpus_test_split4",
+      "value": 0.424391,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.071087,
+      "stdev": 0.071809,
+      "min": 0.290419,
+      "max": 0.548902
+    },
+    {
+      "order": "random",
+      "generator": "order_search.py:344-350, one random.Random(17) shuffling the appearance order 50 times in sequence",
+      "pool": "puro",
+      "surface": "space",
+      "value": 0.386393,
+      "aggregation": "mean of 50 draws",
+      "pstdev": 0.098139,
+      "stdev": 0.099135,
+      "min": 0.223884,
+      "max": 0.568266
+    }
+  ],
+  "seconds": 2.0
+}

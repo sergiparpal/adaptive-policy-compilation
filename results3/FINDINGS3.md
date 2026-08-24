@@ -476,6 +476,151 @@ search sees labels; the loop does not. Still open.
 
 ---
 
+## 6. The floor by pool — what an order that searches for nothing scores
+
+*Added 2026-08-24. `rung3/floor_by_pool.py` → `results3/floor_by_pool.json`, run
+with `PYTHONHASHSEED=0`. No search of any kind — no greedy, no local search, no
+multi-start — and zero API calls. `results/llm_run.json` is read-only. It is
+stage A of `PLAN_PAIRWISE.md`.*
+
+**What was missing.** `results3/order_search_ls.json` carries a `"pool"` field on
+every row and, under it, only greedy and local-search scores. There was a world
+record for the `hibrido` pool and no measurement at all of what *walking* scores
+there — and `hibrido` is the pool where declared edges live. Three further
+figures had no owning record either: `born_at` and the random mean over the
+**full** corpus, and reversed `born_at` over the space. They came from the ad hoc
+probe of `CHAT_SUMMARY.md` §2.1, which declares its own protocol unofficial.
+
+**The gate, which ran first and is blocking.** Six figures that are not new
+reproduce under the protocol each one was measured with: `born_at` 0.5216 and
+the random mean 0.4227 on corpus test **split 0** (this record,
+`order_search.json`); 0.5115 and 0.4172 on the **full** corpus (the unowned
+probe); 0.3148 and 0.3768 over the space (§1's erratum of 2026-08-08, and
+`budget_and_balance_ls.json`). All six land inside their tolerance, and the two
+published deviations reproduce as population deviations: 0.0711 and 0.1026.
+
+**The generator is part of the protocol, and there are two of them.**
+`local_search.random_order(ids, seed)` sorts the ids and shuffles once per seed;
+`order_search.py:344-350` advances a single `random.Random(17)` fifty times over
+the rules' appearance order. The corpus figures above came from the second and
+the space figure from the first — no single generator reproduces all three. Every
+random line below therefore names its generator, and both are reported for every
+cell.
+
+### The floors
+
+Order families that search for nothing, both pools, four index sets. `puro` is
+first-match-wins with subsumption off; `hibrido` is subsumption as a
+non-overridable base level with an order on top, and it is a different machine —
+these columns do not chain.
+
+```
+                                        puro   hibrido        sd puro / hibrido
+
+FULL CORPUS, 2000 cases
+  born_at                             0.5115    0.4285
+  born_at reversed                    0.5420    0.5165
+  random x50, order_search.py         0.4172    0.4332        0.0711 / 0.0384
+  random x50, random_order            0.4212    0.4262        0.0706 / 0.0471
+
+CORPUS TEST, SPLIT 0 (seed 17) — the record's index set, 995 cases
+  born_at                             0.5216    0.4332
+  born_at reversed                    0.5467    0.5327
+  random x50, order_search.py         0.4227    0.4445        0.0710 / 0.0382
+  random x50, random_order            0.4251    0.4340        0.0690 / 0.0455
+
+CORPUS TEST, MEAN OF 5 SPLITS (seeds 17..21) — reproduces neither
+  born_at                             0.5150    0.4315
+  born_at reversed                    0.5452    0.5230
+  random x50, order_search.py         0.4219    0.4386        (mean of 5 means)
+  random x50, random_order            0.4248    0.4308        (mean of 5 means)
+
+SPACE, all 134,400 combinations
+  born_at                             0.3148    0.4257
+  born_at reversed                    0.5668    0.4373
+  random x50, order_search.py         0.3864    0.3903        0.0981 / 0.0534
+  random x50, random_order            0.3768    0.3867        0.1026 / 0.0445
+```
+
+The two corpus-test blocks are two index sets, not one figure and its refinement.
+Split 0 is the only one that reproduces 0.5216 and 0.4227; the five-split mean is
+the more stable statistic and reproduces neither. Its random rows are a **mean
+over five splits of a mean over fifty draws** — two aggregations stacked, which is
+why they carry no single deviation.
+
+### What the new cells say
+
+**The `hibrido` floor is not the `puro` floor with a constant subtracted.** On the
+three corpus surfaces it is *below* the pure one by 0.083 to 0.088; over the space
+it is *above* it by 0.111. The order of the two pools reverses with the surface,
+so neither pair licenses reading the other.
+
+**Over the space, arrival order beats a shuffle on the hybrid pool and loses to
+one on the pure pool.** 0.4257 against 0.3867 and 0.3903 on `hibrido`; 0.3148
+against 0.3768 and 0.3864 on `puro`. What §1's erratum of 2026-08-08 says —
+*over the case space, `born_at` is worse than shuffling* — is a **pure-pool**
+statement and does not survive the change of pool. The hybrid margin is
++0.039 and +0.035 against
+deviations of 0.0445 and 0.0534: under one deviation, so it is a sign and not an
+improvement, in the same sense that erratum used the phrase.
+
+**Over the corpus, arrival order on the hybrid pool is indistinguishable from a
+shuffle, and which side of it you land on depends on the generator.** On the full
+corpus `born_at` scores 0.4285, above `random_order`'s 0.4262 and below
+`order_search.py`'s 0.4332. Both gaps are under a sixth of the corresponding
+deviation. A write-up naming one generator could have published either sign of the
+same comparison; that is the concrete cost of the unlabelled random baseline, and
+it is why every line above carries its generator.
+
+**Reversal is worth almost nothing on the pool where declared edges live.** Over
+the space, reversing `born_at` gains **+0.2520** on `puro` (0.3148 → 0.5668) and
+**+0.0116** on `hibrido` (0.4257 → 0.4373). The headline of the probe — a
+label-free heuristic recovering most of what a search with an oracle recovers — is
+a property of the pure pool. Over the corpus the contrast runs the other way and
+is much smaller: the hybrid pool gains +0.088 to +0.100 from reversal and the pure
+pool +0.025 to +0.031.
+
+**The hybrid pool's random orders vary about half as much as the pure pool's**
+(deviations 0.0382-0.0534 against 0.0690-0.1026, on all four index sets).
+Subsumption prunes the pool before the order is consulted, so on the cases it
+resolves there is nothing left for a permutation to move; `FINDINGS_AUDIT.md`
+measures one instance of that pruning — 181 of the 577 rules match nothing on
+corpus train once subsumption has run. **That is a reading of the deviations
+and of a figure measured on one surface, not a measurement of its own**: what
+this record establishes is the spread, not its cause.
+
+### What this record does not claim
+
+**It carries no prediction.** `PLAN_PAIRWISE.md` §0.1: the two rows that predicted
+these figures were measured on 2026-08-24 before anyone signed them, by an audit
+that ran this stage's gate to check that a correct implementation could pass it.
+They are spent and are not restored. Nothing here may be reported as a band that
+held; what the stage delivers is an owner, a script and an `_env` for figures that
+had none.
+
+**It leaves one thing for the stage that uses it.** `PLAN_PAIRWISE.md` §10
+scores a declared order against "the `hibrido` `born_at` floor", on corpus
+test, without saying which of the two corpus-test index sets that is:
+**0.4332** on split 0, or **0.4315** as the five-split mean. The two differ
+by 0.0017 and the band drafted for that comparison is ±0.03, so the choice is
+unlikely to change a verdict — but it has to be made before the figure exists,
+not after, and it is not this record's to make.
+
+**Files added by this section**
+
+```
+rung3/floor_by_pool.py            the floors: two pools, four index sets, two
+                                  random generators, six-row reproduction gate
+results3/floor_by_pool.json       the record
+tests/test_floor_by_pool.py       the gate is blocking, the generators are
+                                  transcribed, no figure pinned
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.floor_by_pool`
+(`--checks` runs the gate alone). Two seconds, zero API calls.
+
+---
+
 ## Files
 
 ```
