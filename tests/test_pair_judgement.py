@@ -288,7 +288,7 @@ def _rows(correct, wrong, neither, **kw):
 
 
 class TestTheTwoDenominators(unittest.TestCase):
-    """§0 names neither, so the record must carry both and pick neither."""
+    """§0 names the first, so the record must carry both and mark which."""
 
     def test_both_rates_are_computed(self):
         r = rates(_rows(60, 30, 10))
@@ -297,14 +297,38 @@ class TestTheTwoDenominators(unittest.TestCase):
         self.assertEqual(r["over_two_way_answers"]["value"], round(60 / 90, 4))
         self.assertEqual(r["over_two_way_answers"]["denominator"], 90)
 
-    def test_neither_counts_as_a_failure_in_the_conservative_one(self):
+    def test_neither_counts_as_a_failure_in_the_adjudicating_one(self):
+        """The whole reason §0 picked it: a coin between the two rules always
+        commits, so a model that declines to answer has not been beaten there —
+        it has declined to play."""
         with_neither = rates(_rows(60, 30, 10))["over_all_pairs"]["value"]
         without = rates(_rows(60, 30, 0))["over_all_pairs"]["value"]
         self.assertLess(with_neither, without)
 
-    def test_the_record_does_not_choose_which_adjudicates(self):
+    def test_neither_is_free_in_the_one_that_adjudicates_nothing(self):
+        """The counterpart, and the reason it does not adjudicate: the two-way
+        rate is blind to a refusal to commit."""
+        a = rates(_rows(60, 30, 10))["over_two_way_answers"]["value"]
+        b = rates(_rows(60, 30, 0))["over_two_way_answers"]["value"]
+        self.assertEqual(a, b)
+
+    def test_exactly_one_of_the_two_adjudicates_and_it_is_named(self):
         r = rates(_rows(60, 30, 10))
-        self.assertIn("NOT DECIDED", r["which_adjudicates_P_c"])
+        self.assertTrue(r["over_all_pairs"]["adjudicates_P_c"])
+        self.assertFalse(r["over_two_way_answers"]["adjudicates_P_c"])
+        self.assertTrue(r["which_adjudicates_P_c"].startswith("over_all_pairs"))
+
+    def test_the_adjudicating_rate_is_never_the_flattering_one(self):
+        """Whatever the run looks like, the rate P-c is read on is at most the
+        other. If that ever inverted, the choice §0 made would have stopped
+        being the strict one."""
+        for c, w, n in ((60, 30, 10), (5, 5, 160), (170, 0, 0), (0, 0, 170)):
+            with self.subTest(f"{c}/{w}/{n}"):
+                r = rates(_rows(c, w, n))
+                strict = r["over_all_pairs"]["value"]
+                loose = r["over_two_way_answers"]["value"]
+                if loose is not None:
+                    self.assertLessEqual(strict, loose)
 
     def test_both_floors_travel_with_the_rates(self):
         f = rates(_rows(1, 1, 1))["floors"]

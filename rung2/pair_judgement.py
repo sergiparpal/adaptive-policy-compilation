@@ -78,7 +78,7 @@ denominator**, next to the list of verdicts this protocol makes unreachable and
 why. Of the six, only `EDGE_OK` and `EDGE_CYCLE` can ever fire here.
 
 --------------------------------------------------------------------------
-TWO DENOMINATORS, AND §0 NAMES NEITHER
+TWO DENOMINATORS, AND §0 NAMES THE FIRST
 --------------------------------------------------------------------------
 An answer is `correct` (the winner's queue), `wrong` (the loser's) or `neither`
 (any other queue, off-menu, or unparseable). So there are two rates:
@@ -86,12 +86,17 @@ An answer is `correct` (the winner's queue), `wrong` (the loser's) or `neither`
   over_all_pairs        correct / 170          `neither` counts as a failure
   over_two_way_answers  correct / (correct + wrong)
 
-They are not interchangeable and the second is the more flattering. P-c bands
-"the proposer's correct-edge rate" against a coin between the two rules shown,
-which argues for the second; excluding failures from a denominator is what
-`FINDINGS3.md` §3 already records going wrong. **Both are written, both are
-labelled, and neither is marked as the one that adjudicates P-c** — that belongs
-in §0, decided before the figures exist and not after.
+**§0 adjudicates P-c on the first**, amended 2026-08-24 before this stage had
+run. The reason is the floor, not a taste for severity: a coin between the two
+rules shown ALWAYS commits, so its 0.50 is the same number under either
+denominator, and a model answering `neither` has not been beaten by the coin
+there — it has declined to play. Scoring on `correct / (correct + wrong)` would
+compare it on the subset where it committed against a baseline that commits
+everywhere. `FINDINGS3.md` §3 records what unlabelled denominators cost.
+
+Both are written anyway, the second labelled as adjudicating nothing, and the
+`neither` tally sits beside them: failing by declining to answer and failing by
+answering wrongly are different findings.
 
 Two floors are carried for the reading: **0.3877**, `proposal_action_accuracy`
 from `results/llm_run.json`, the same operation under the old framing and too
@@ -481,8 +486,13 @@ def classify(answer, winner_action, loser_action) -> str:
 
 def rates(rows):
     """
-    Both denominators, both labelled. Neither is marked as adjudicating P-c:
-    §0 does not name one and this record does not get to choose after the fact.
+    Both denominators, both labelled, and §0's choice marked on the row rather
+    than left to the reader.
+
+    The adjudicating one is `over_all_pairs`. The other is computed and
+    published because the gap between them is information — a run that fails by
+    declining to answer is not the run that fails by answering wrongly — and it
+    decides nothing.
     """
     c = Counter(r["outcome"] for r in rows)
     two_way = c["correct"] + c["wrong"]
@@ -491,19 +501,28 @@ def rates(rows):
         "over_all_pairs": {
             "value": round(c["correct"] / len(rows), 4) if rows else None,
             "denominator": len(rows),
-            "what": "`neither` counts as a failure. The conservative reading.",
+            "adjudicates_P_c": True,
+            "what": "`neither` counts as a failure. The rate P-c is adjudicated "
+                    "on (§0 of PLAN_PAIRWISE.md, amended 2026-08-24 before this "
+                    "stage ran): a coin between the two rules always commits, so "
+                    "its 0.50 is the same number under either denominator, and a "
+                    "model that answers `neither` has declined to play rather "
+                    "than been beaten there.",
         },
         "over_two_way_answers": {
             "value": round(c["correct"] / two_way, 4) if two_way else None,
             "denominator": two_way,
+            "adjudicates_P_c": False,
             "what": "only the pairs where the model named one of the two rules' "
-                    "queues. Comparable with a coin between two options, and the "
-                    "more flattering of the two.",
+                    "queues. The more flattering of the two, and it adjudicates "
+                    "nothing: it would compare the model on the subset where it "
+                    "committed against a baseline that commits everywhere. "
+                    "Published because the gap between the two IS information "
+                    "about how the failures fall.",
         },
-        "which_adjudicates_P_c": "NOT DECIDED. §0 of PLAN_PAIRWISE.md bands "
-                                 "'the correct-edge rate' without naming a "
-                                 "denominator. It has to be named in the "
-                                 "signature, not here and not afterwards.",
+        "which_adjudicates_P_c": "over_all_pairs. §0 of PLAN_PAIRWISE.md names "
+                                 "it, amended 2026-08-24 before this stage had "
+                                 "run and before any figure of it existed.",
         "floors": {
             "old_framing_proposal_action_accuracy": FLOOR_OLD_FRAMING,
             "coin_between_the_two_rules_shown": FLOOR_COIN,
@@ -794,10 +813,9 @@ def main(argv=None) -> int:
         "parse_failures": failures,
         "off_menu_answers": sum(1 for r in rows if r["off_menu"]),
         "try_edge_verdicts": hist,
-        "kill_switch_over_two_way_answers": kill_switch(
+        "kill_switch": kill_switch(rate_block["over_all_pairs"]["value"]),
+        "kill_switch_on_the_non_adjudicating_rate": kill_switch(
             rate_block["over_two_way_answers"]["value"]),
-        "kill_switch_over_all_pairs": kill_switch(
-            rate_block["over_all_pairs"]["value"]),
         "pairs_without_a_clean_witness": [
             {"winner": p["winner"], "loser": p["loser"],
              "overlap_cases": p["overlap_cases"]} for p in unclean],
@@ -816,8 +834,9 @@ def main(argv=None) -> int:
           f"neither {c['neither']}   (parse failures {failures})")
     for key in ("over_all_pairs", "over_two_way_answers"):
         b = rate_block[key]
-        print(f"  {key:<24}{b['value']}   n={b['denominator']}")
-    print("  which adjudicates P-c: NOT DECIDED — it belongs in §0")
+        mark = "  <- adjudicates P-c" if b["adjudicates_P_c"] else ""
+        print(f"  {key:<24}{b['value']}   n={b['denominator']}{mark}")
+    print(f"  {payload['kill_switch']['band']}")
     print(f"\n-> {out}")
     return 0
 
