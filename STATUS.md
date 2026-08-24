@@ -416,10 +416,22 @@ not by falling short of the margin: by landing below the floor.
 same pairs, the same compilation, only the direction of each edge changed: a coin
 lands at **0.4314** (sd 0.0243, 50 draws), on the floor; the model sits 0.96
 deviations below it and **inverting every one of its answers** puts it at 0.4432,
-above the floor. Each gap is inside one deviation, so each alone is a sign — but
-they point the same way, and the span from the model to its own inverse is about
-one and a half deviations. Same shape as rung 1's finding about arrival order:
-*it does not lack signal, it lacks a sign.*
+above the floor. Each gap is inside one deviation, so each alone is a sign and
+not an effect.
+
+**And asked directly, the direction turns out to be right, which is the more
+useful answer.** Of the declared edges on pairs where one rule is strictly better
+over the region the two share, **194 of 278 point at it — 0.6978, six standard
+errors above a coin** ([`results3/FINDINGS3.md`](results3/FINDINGS3.md) §9,
+[`edge_direction.json`](results3/edge_direction.json)). The pairwise question
+elicits real information. What it does not survive is compilation: with the null
+sharpened to 2,000 draws the model's order sits at the 15th percentile of coins,
+and **the oracle's own directions on the same 400 pairs reach only 0.4593, still
+under P-d's 0.4632 threshold and still inside the coin distribution**. So **P-d
+was not refuted because the proposer chose badly — it was refuted because 344
+edges cannot move a 577-rule order across a 0.03 margin, whoever picks their
+direction.** What a next attempt would have to change is the budget, not the
+prompt. §8's `signal with the wrong sign` is withdrawn there by a dated erratum.
 
 **`P-e` is refuted too, and by a wide margin.** Behavioural distance from 65 end
 orders **regenerated on the hybrid pool** — never the published `puro` ones —
