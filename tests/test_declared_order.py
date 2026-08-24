@@ -27,9 +27,9 @@ import unittest
 
 from rung3.declared_order import (DIRECTION_SEED, N_DIRECTION_DRAWS,
                                   P_D_MARGIN, P_E_BAND, accepted_from,
-                                  direction_controls,
-                                  gate_order_respects_edges, rules_moved,
-                                  topological_order)
+                                  direction_controls, fresh_engine,
+                                  gate_order_respects_edges, reset_declared,
+                                  rules_moved, topological_order)
 
 IDS = [f"R{i:04d}" for i in range(1, 7)]
 BORN = {rid: i for i, rid in enumerate(IDS)}
@@ -201,6 +201,38 @@ class TestTheDirectionControl(unittest.TestCase):
         a = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=4)
         b = direction_controls(self.rows(), rules, IDS, BORN, inst, n_draws=4)
         self.assertEqual(a, b)
+
+    def test_a_reset_engine_is_indistinguishable_from_a_fresh_one(self):
+        """The optimisation that makes a 2,000-draw null affordable, and the
+        only way it could be wrong: `try_edge` mutates `decl_below` and
+        `decl_above` and nothing else, so clearing them must be the identity.
+        If it ever stopped being one, every null in this thread would be
+        computed on an engine carrying somebody else's edges."""
+        rules = self.rules()
+        engine = fresh_engine(rules)
+        for dirs in ([True, True], [False, False], [True, False]):
+            with self.subTest(dirs=dirs):
+                fresh = accepted_from(self.rows(), dirs, rules)
+                reused = accepted_from(self.rows(), dirs, rules, engine)
+                self.assertEqual(fresh, reused)
+
+    def test_the_reset_leaves_subsumption_alone(self):
+        rules = self.rules()
+        engine = fresh_engine(rules)
+        before = {r: set(v) for r, v in engine.sub_below.items()}
+        accepted_from(self.rows(), [True, True], rules, engine)
+        reset_declared(engine)
+        self.assertEqual(engine.sub_below, before)
+        self.assertEqual({r for r, v in engine.decl_below.items() if v}, set())
+
+    def test_a_reused_engine_does_not_carry_the_previous_draws_edges(self):
+        """Without the reset the second call would see the first call's graph
+        and refuse edges as cycles that are not."""
+        rules = self.rules()
+        engine = fresh_engine(rules)
+        first = accepted_from(self.rows(), [True, True], rules, engine)
+        second = accepted_from(self.rows(), [True, True], rules, engine)
+        self.assertEqual(first, second)
 
     def test_the_constants_are_the_repositorys_own(self):
         self.assertEqual(N_DIRECTION_DRAWS, 50)

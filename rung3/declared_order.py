@@ -227,16 +227,37 @@ def fresh_engine(rules):
     return engine
 
 
-def accepted_from(rows, directions, rules):
+def reset_declared(engine):
     """
-    The edges a set of directions produces, fed sequentially into a fresh
-    engine.
+    Drop every declared edge and leave subsumption untouched.
+
+    Exactly the state `fresh_engine` returns, and the reason it exists: building
+    one costs a 577x577 subsumption lattice over 134,400-bit masks, which is
+    seconds. A null distribution wants thousands of draws and only the declared
+    edges differ between them, so rebuilding the lattice each time is the whole
+    cost of the measurement and none of its content. `try_edge` mutates
+    `decl_below` and `decl_above` and nothing else, so clearing them is the
+    identity and not an approximation.
+    """
+    for rid in engine.decl_below:
+        engine.decl_below[rid] = set()
+        engine.decl_above[rid] = set()
+    return engine
+
+
+def accepted_from(rows, directions, rules, engine=None):
+    """
+    The edges a set of directions produces, fed sequentially into an engine
+    carrying subsumption and no declared edge.
 
     Sequentially and through `try_edge`, because whether an edge closes a cycle
     depends on the ones already in — so a control that installed them any other
     way would not be comparable with the run.
+
+    `engine` lets a caller hand in one already built; it is reset before use, so
+    passing one is indistinguishable from building a fresh one except in time.
     """
-    engine = fresh_engine(rules)
+    engine = fresh_engine(rules) if engine is None else reset_declared(engine)
     out = []
     for row, forward in zip(rows, directions):
         w, loser = ((row["rule_a"], row["rule_b"]) if forward
@@ -263,9 +284,11 @@ def direction_controls(rows, rules, ids, born, instance,
     sign.
     """
     model = [r["declared"] == "a_beats_b" for r in rows]
+    engine = fresh_engine(rules)
+
     def score(dirs):
         return floor(topological_order(
-            ids, accepted_from(rows, dirs, rules), born), instance)
+            ids, accepted_from(rows, dirs, rules, engine), born), instance)
 
     draws = []
     for k in range(n_draws):
