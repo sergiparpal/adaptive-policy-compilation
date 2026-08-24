@@ -1,0 +1,681 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-24T13:09:23Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "267d4ab6d6541c1308e9db82e8b8ad5c3f12e452",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "828cae26154a6cf9",
+    "model": "deepseek/deepseek-v4-flash",
+    "temperature": 0,
+    "max_retries": 2,
+    "position_seed": 17
+  },
+  "what": "stage C of PLAN_PAIRWISE.md: the pairwise question asked of the hidden policy's labelled pairs, where the correct winner is known by construction. One call per pair, sequential.",
+  "stage": "C",
+  "population": "hidden policy, clean-witness pairs",
+  "partial_run": true,
+  "n_asked": 10,
+  "n_clean_available": 170,
+  "n_without_clean_witness": 29,
+  "denominator_note": "the pairs with no clean witness are outside every denominator, and they are the pairs where the layer order is invisible on the surface of the two rules shown. The pairs asked about are therefore the easier half by construction, and every rate below is an UPPER estimate of what the proposer would do on all 199 (results2/FINDINGS2.md, the labelled pair benchmark).",
+  "what_the_model_was_not_shown": "correct_count (Rule2.render omits it); beats and loses_to (the rules are built from HIDDEN_DSL with both empty, never off an engine that carries the declared edges); and the H-identifiers, which are numbered in layer order \u2014 the two rules are shown as A and B, and gate_no_leak checks the emitted text rather than the construction.",
+  "system_prompt": "Eres el arbitro de un sistema de triaje de tickets.\n\nDos reglas del manual casan ESTE ticket y lo mandan a colas DISTINTAS. Ninguna\nde las dos esta contenida en la otra, asi que la estructura no decide: hace\nfalta un criterio.\n\nTu unica tarea es decir a que cola va este ticket.\n\nNO escribas reglas nuevas. NO propongas cambios en el manual. NO expliques como\ndeberia arbitrar el motor. Solo la cola.\n\nLas colas posibles son:\n\n  T1_GENERAL\n  T2_TECHNICAL\n  T3_ENGINEERING\n  BILLING_SPECIALIST\n  SECURITY_INCIDENT\n  ACCOUNT_MANAGER\n  ONCALL_ESCALATION\n  SELF_SERVICE_DEFLECT\n\nResponde UNICAMENTE con un objeto JSON, sin texto alrededor:\n\n  {\"action\": \"<COLA>\", \"why\": \"<una frase, como maximo 30 palabras>\"}\n\n`action` tiene que ser exactamente una de las colas de la lista.\n",
+  "prompt_language": "Spanish, deliberately. Model, temperature, response_format and max_retries are rung 2's so the comparison against 0.3877 holds; translating the prompt would add a second variable to it.",
+  "gates": {
+    "benchmark": {
+      "what": "the benchmark this stage reads is the one stage B gated: 199 declared pairs, 170 with a clean witness.",
+      "source": "results2/pair_benchmark.json",
+      "n_declared": 199,
+      "n_clean": 170,
+      "expected_declared": 199,
+      "expected_clean": 170,
+      "passes": true
+    },
+    "no_leak": {
+      "what": "every question, checked as text: no H-identifier (they are numbered in layer order and the earlier layer always wins) and no `[gana a ...]` / `[pierde con ...]` annotation (Rule2.render prints them whenever beats/loses_to is populated, and those are the very edges this stage asks the model to reproduce).",
+      "n_questions": 10,
+      "questions_naming_a_rule_id": [],
+      "questions_carrying_a_declared_edge": [],
+      "passes": true
+    },
+    "position_balance": {
+      "what": "the winner is shown first in half the pairs and second in the other half. The benchmark lists the winner first in every row, so an unbalanced presentation would make 'always answer the first' a strategy.",
+      "seed": 17,
+      "shown_first": 5,
+      "shown_second": 5,
+      "passes": true
+    },
+    "signature": {
+      "what": "the signature line of \u00a70 of PLAN_PAIRWISE.md. P-c governs this stage's output and a model may not sign it (hard rule 2).",
+      "source": "/home/sergi/code/adaptive-policy-compilation/PLAN_PAIRWISE.md",
+      "line_found": true,
+      "line": "**Signed by Sergi: I adopt \u00a70 as drafted, without changes: the",
+      "passes": true
+    },
+    "api_key": {
+      "what": "OPENROUTER_API_KEY reaches the process environment. Its value is never read aloud, stored or written; only its length.",
+      "passes": true,
+      "how": "eval \"$(grep -m1 '^export OPENROUTER_API_KEY=' ~/.bashrc)\""
+    }
+  },
+  "rates": {
+    "counts": {
+      "correct": 10,
+      "wrong": 0,
+      "neither": 0
+    },
+    "over_all_pairs": {
+      "value": 1.0,
+      "denominator": 10,
+      "adjudicates_P_c": true,
+      "what": "`neither` counts as a failure. The rate P-c is adjudicated on (\u00a70 of PLAN_PAIRWISE.md, amended 2026-08-24 before this stage ran): a coin between the two rules always commits, so its 0.50 is the same number under either denominator, and a model that answers `neither` has declined to play rather than been beaten there."
+    },
+    "over_two_way_answers": {
+      "value": 1.0,
+      "denominator": 10,
+      "adjudicates_P_c": false,
+      "what": "only the pairs where the model named one of the two rules' queues. The more flattering of the two, and it adjudicates nothing: it would compare the model on the subset where it committed against a baseline that commits everywhere. Published because the gap between the two IS information about how the failures fall."
+    },
+    "which_adjudicates_P_c": "over_all_pairs. \u00a70 of PLAN_PAIRWISE.md names it, amended 2026-08-24 before this stage had run and before any figure of it existed.",
+    "floors": {
+      "old_framing_proposal_action_accuracy": 0.3877,
+      "coin_between_the_two_rules_shown": 0.5
+    }
+  },
+  "breakdowns": {
+    "by_position_of_the_winner": {
+      "what": "a gap between the two IS the position bias, and it is the reason the presentation order is balanced at all.",
+      "shown_first": {
+        "n": 5,
+        "correct": 5,
+        "wrong": 0,
+        "neither": 0,
+        "correct_over_all": 1.0,
+        "wrong_over_two_way": 0.0
+      },
+      "shown_second": {
+        "n": 5,
+        "correct": 5,
+        "wrong": 0,
+        "neither": 0,
+        "correct_over_all": 1.0,
+        "wrong_over_two_way": 0.0
+      }
+    },
+    "by_breadth_of_the_winner": {
+      "what": "the wrong-edge rate split by whether the CORRECT winner is the broader or the narrower rule of the pair. It tests the `narrow != correct` mechanism directly: a model crowning the narrower rule scores badly exactly where the winner is the broader one.",
+      "winner_is_broader": {
+        "n": 9,
+        "correct": 9,
+        "wrong": 0,
+        "neither": 0,
+        "correct_over_all": 1.0,
+        "wrong_over_two_way": 0.0
+      },
+      "winner_is_narrower": {
+        "n": 1,
+        "correct": 1,
+        "wrong": 0,
+        "neither": 0,
+        "correct_over_all": 1.0,
+        "wrong_over_two_way": 0.0
+      }
+    },
+    "by_winner_action": {
+      "SECURITY_INCIDENT": {
+        "n": 10,
+        "correct": 10,
+        "wrong": 0,
+        "neither": 0,
+        "correct_over_all": 1.0,
+        "wrong_over_two_way": 0.0
+      }
+    }
+  },
+  "parse_failures": 0,
+  "off_menu_answers": 0,
+  "try_edge_verdicts": {
+    "what": "what try_edge returns for the edge each answer implies, fed sequentially into an engine that starts with subsumption and no declared edge.",
+    "outside_every_denominator": "yes, and deliberately. A witness guarantees overlap, so the acceptance rate measures the protocol and not the proposer; and the validator cannot check that the declared winner is the correct one, so an accepted edge may be false.",
+    "counts": {
+      "ok": 10
+    },
+    "unreachable_here": {
+      "no_solapan": "every witness comes from ext(A) & ext(B), so the two extensions overlap by construction. This is the verdict that rejected all 14 edges rung 2 ever got, and this protocol makes it impossible.",
+      "contradice_subsuncion": "hidden_priority filtered subsumption-comparable pairs out upstream, so ext(loser) is never strictly inside ext(winner).",
+      "auto_referencia": "the two rules of a pair are always distinct.",
+      "regla_inexistente": "both rules are in the engine before any edge is offered."
+    },
+    "also_unreachable": {
+      "redundant ok": "engine2.py:302-306 returns EDGE_OK without touching decl_below/decl_above when ext(winner) is strictly inside ext(loser). Filtered upstream like EDGE_CONTRADICTS."
+    },
+    "reachable_here": [
+      "ok",
+      "cierra_ciclo"
+    ]
+  },
+  "kill_switch": {
+    "rate_read": 1.0,
+    "band": "P-c HOLDS and Stage D may run, subject to its own signed rows P-d and P-e.",
+    "note": "reported only. This script launches nothing under any outcome, and the denominator this was read on is named beside it."
+  },
+  "kill_switch_on_the_non_adjudicating_rate": {
+    "rate_read": 1.0,
+    "band": "P-c HOLDS and Stage D may run, subject to its own signed rows P-d and P-e.",
+    "note": "reported only. This script launches nothing under any outcome, and the denominator this was read on is named beside it."
+  },
+  "pairs_without_a_clean_witness": [
+    {
+      "winner": "H03",
+      "loser": "H04",
+      "overlap_cases": 4200
+    },
+    {
+      "winner": "H03",
+      "loser": "H05",
+      "overlap_cases": 2100
+    },
+    {
+      "winner": "H03",
+      "loser": "H06",
+      "overlap_cases": 4200
+    },
+    {
+      "winner": "H03",
+      "loser": "H07",
+      "overlap_cases": 3360
+    },
+    {
+      "winner": "H03",
+      "loser": "H09",
+      "overlap_cases": 3360
+    },
+    {
+      "winner": "H03",
+      "loser": "H10",
+      "overlap_cases": 6720
+    },
+    {
+      "winner": "H03",
+      "loser": "H13",
+      "overlap_cases": 12800
+    },
+    {
+      "winner": "H03",
+      "loser": "H14",
+      "overlap_cases": 10400
+    },
+    {
+      "winner": "H03",
+      "loser": "H15",
+      "overlap_cases": 6720
+    },
+    {
+      "winner": "H03",
+      "loser": "H17",
+      "overlap_cases": 6720
+    },
+    {
+      "winner": "H03",
+      "loser": "H28",
+      "overlap_cases": 33600
+    },
+    {
+      "winner": "H06",
+      "loser": "H23",
+      "overlap_cases": 1050
+    },
+    {
+      "winner": "H07",
+      "loser": "H13",
+      "overlap_cases": 1280
+    },
+    {
+      "winner": "H08",
+      "loser": "H09",
+      "overlap_cases": 1680
+    },
+    {
+      "winner": "H08",
+      "loser": "H13",
+      "overlap_cases": 6400
+    },
+    {
+      "winner": "H08",
+      "loser": "H14",
+      "overlap_cases": 5200
+    },
+    {
+      "winner": "H08",
+      "loser": "H15",
+      "overlap_cases": 6720
+    },
+    {
+      "winner": "H08",
+      "loser": "H28",
+      "overlap_cases": 16800
+    },
+    {
+      "winner": "H10",
+      "loser": "H13",
+      "overlap_cases": 2560
+    },
+    {
+      "winner": "H11",
+      "loser": "H13",
+      "overlap_cases": 5120
+    },
+    {
+      "winner": "H12",
+      "loser": "H13",
+      "overlap_cases": 5120
+    },
+    {
+      "winner": "H12",
+      "loser": "H14",
+      "overlap_cases": 4160
+    },
+    {
+      "winner": "H12",
+      "loser": "H21",
+      "overlap_cases": 2688
+    },
+    {
+      "winner": "H12",
+      "loser": "H27",
+      "overlap_cases": 13440
+    },
+    {
+      "winner": "H22",
+      "loser": "H27",
+      "overlap_cases": 4200
+    },
+    {
+      "winner": "H23",
+      "loser": "H24",
+      "overlap_cases": 2100
+    },
+    {
+      "winner": "H23",
+      "loser": "H25",
+      "overlap_cases": 200
+    },
+    {
+      "winner": "H23",
+      "loser": "H27",
+      "overlap_cases": 6300
+    },
+    {
+      "winner": "H25",
+      "loser": "H27",
+      "overlap_cases": 800
+    }
+  ],
+  "answers": [
+    {
+      "index": 0,
+      "winner": "H01",
+      "loser": "H04",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "witness_index": 79800,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 4200,
+      "shown_as": {
+        "A": "H04",
+        "B": "H01"
+      },
+      "winner_shown_as": "B",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION\n  B: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"enterprise\",\n  \"product\": \"dashboard\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 8400,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Security keyword present with high severity and enterprise tier; security incident takes priority.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 1,
+      "winner": "H01",
+      "loser": "H05",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ONCALL_ESCALATION",
+      "witness_index": 75605,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": true,
+        "language": "en"
+      },
+      "overlap_cases": 2100,
+      "shown_as": {
+        "A": "H01",
+        "B": "H05"
+      },
+      "winner_shown_as": "A",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n  B: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"dashboard\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": true,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 4200,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "La regla A es m\u00e1s espec\u00edfica al requerir un keyword de seguridad, priorizando sobre la regla B.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 2,
+      "winner": "H01",
+      "loser": "H06",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 4200,
+      "shown_as": {
+        "A": "H01",
+        "B": "H06"
+      },
+      "winner_shown_as": "A",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n  B: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"dashboard\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 8400,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Security keyword present and business tier; security incident takes precedence over engineering.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 3,
+      "winner": "H01",
+      "loser": "H07",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T3_ENGINEERING",
+      "witness_index": 77280,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "api",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 1680,
+      "shown_as": {
+        "A": "H07",
+        "B": "H01"
+      },
+      "winner_shown_as": "B",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING\n  B: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"api\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 6720,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "El ticket contiene un keyword de seguridad y es de un cliente business, priorizando la seguridad.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 4,
+      "winner": "H01",
+      "loser": "H08",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "T2_TECHNICAL",
+      "witness_index": 75600,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 8400,
+      "shown_as": {
+        "A": "H01",
+        "B": "H08"
+      },
+      "winner_shown_as": "A",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n  B: SI severity eq 1 ENTONCES T2_TECHNICAL\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"dashboard\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 33600,
+      "winner_is_broader": false,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Ambas reglas casan, pero la seguridad con cliente empresarial es prioritaria sobre severidad t\u00e9cnica.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 5,
+      "winner": "H01",
+      "loser": "H09",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "witness_index": 80640,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 3360,
+      "shown_as": {
+        "A": "H09",
+        "B": "H01"
+      },
+      "winner_shown_as": "B",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\n  B: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"enterprise\",\n  \"product\": \"billing\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 6720,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "El ticket tiene keyword de seguridad y es enterprise, priorizando seguridad sobre billing.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 6,
+      "winner": "H01",
+      "loser": "H10",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "witness_index": 76440,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 3360,
+      "shown_as": {
+        "A": "H01",
+        "B": "H10"
+      },
+      "winner_shown_as": "A",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n  B: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"billing\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 13440,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "El ticket tiene keyword de seguridad y cliente business, prioridad sobre billing.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 7,
+      "winner": "H01",
+      "loser": "H11",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "BILLING_SPECIALIST",
+      "witness_index": 76470,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 3,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 5760,
+      "shown_as": {
+        "A": "H01",
+        "B": "H11"
+      },
+      "winner_shown_as": "A",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n  B: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"billing\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 3,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 23040,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Regla A prioriza seguridad sobre facturaci\u00f3n.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 8,
+      "winner": "H01",
+      "loser": "H12",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "SELF_SERVICE_DEFLECT",
+      "witness_index": 76440,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "business",
+        "product": "billing",
+        "channel": "portal",
+        "prior_tickets_30d": 0,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 6720,
+      "shown_as": {
+        "A": "H12",
+        "B": "H01"
+      },
+      "winner_shown_as": "B",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT\n  B: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"business\",\n  \"product\": \"billing\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 0,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 26880,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Security keyword present and customer tier business, overriding billing deflect.",
+      "attempts": 2,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    },
+    {
+      "index": 9,
+      "winner": "H01",
+      "loser": "H13",
+      "winner_action": "SECURITY_INCIDENT",
+      "loser_action": "ACCOUNT_MANAGER",
+      "witness_index": 79850,
+      "witness": {
+        "has_security_keyword": true,
+        "severity": 1,
+        "customer_tier": "enterprise",
+        "product": "dashboard",
+        "channel": "portal",
+        "prior_tickets_30d": 5,
+        "off_hours": false,
+        "language": "en"
+      },
+      "overlap_cases": 12800,
+      "shown_as": {
+        "A": "H13",
+        "B": "H01"
+      },
+      "winner_shown_as": "B",
+      "question": "LAS DOS REGLAS QUE CASAN EL TICKET:\n  A: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER\n  B: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\n\nTICKET:\n{\n  \"has_security_keyword\": true,\n  \"severity\": 1,\n  \"customer_tier\": \"enterprise\",\n  \"product\": \"dashboard\",\n  \"channel\": \"portal\",\n  \"prior_tickets_30d\": 5,\n  \"off_hours\": false,\n  \"language\": \"en\"\n}",
+      "winner_extension": 33600,
+      "loser_extension": 25600,
+      "winner_is_broader": true,
+      "answer": "SECURITY_INCIDENT",
+      "off_menu": false,
+      "raw_answer": "SECURITY_INCIDENT",
+      "why": "Ambas reglas casan, pero seguridad prima sobre cuenta por severidad y naturaleza del ticket.",
+      "attempts": 1,
+      "parse_failed": false,
+      "outcome": "correct",
+      "try_edge_verdict": "ok"
+    }
+  ],
+  "seconds": 46.5
+}
