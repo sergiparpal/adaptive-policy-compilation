@@ -142,6 +142,37 @@ without searching anything.
 > corpus *test*. The two figures of the reversed order are the ones left unconfirmed.
 > Reproducing them costs minutes and zero calls.
 
+> **[ERRATUM 2026-08-24] Measured. All six reproduce, the block now has an owning record, and
+> the strongest of the six is a PURE-POOL figure.**
+>
+> `rung3/floor_by_pool.py` → `results3/floor_by_pool.json`, run with `PYTHONHASHSEED=0`, zero
+> API calls. Its six-row gate reproduces every baseline this warning already accepted, and the
+> two it left unconfirmed come out exactly as cited: **0.5420** over the full corpus and
+> **0.5668** over the space, both pure pool. The paragraph above stands as written. The
+> sentence "they have no record that owns them" no longer holds for any of the six, and
+> §9's point 6 carries its own erratum saying so.
+>
+> **What the new record adds, and it qualifies the reading rather than the figures.** The
+> comparison chain above is pure-pool throughout and internally consistent — 0.4931 is the
+> record's greedy carried onto the space and 0.6105 the local search fitted on corpus train,
+> both `puro`. Over the **hybrid** pool, which is the machine where declared edges live, the
+> same reversal is worth almost nothing:
+>
+> ```
+>                                        puro    hibrido
+>   born_at, space                     0.3148     0.4257
+>   born_at REVERSED, space            0.5668     0.4373
+>   gain from reversing               +0.2520    +0.0116
+> ```
+>
+> The shape survives the change of pool and the magnitude does not: on `hibrido` the reversed
+> order still sits above the greedy carried onto the space (0.4332) and below the local search
+> (0.4970), but it clears the greedy by 0.0041 instead of 0.0737. **"Without a single label
+> and without searching anything" is a statement about the pure pool.** The two pools are
+> different machines and their figures never chain, so this neither corrects the paragraph
+> above nor extends it — it says which machine it is about. `results3/FINDINGS3.md` §6 owns
+> the figures.
+
 What it means, carefully: **arrival order does not lack signal, it lacks a sign.** The rules
 born early are defaults fitted to the common distribution —what the corpus rewards and a
 uniform measure does not—, so reversing it is a much better approximation *to the policy*
@@ -709,6 +740,14 @@ outside the denominator —the convention the predictions thread already uses.
    do verify exactly against `FINDINGS3.md`. They are cited with that warning in place, and
    if they ever support a conclusion they have to be measured first — it costs minutes and
    zero calls.
+
+   > **[ERRATUM 2026-08-24] Zero, now.** Both were measured by `rung3/floor_by_pool.py` and
+   > both reproduce exactly; `results3/floor_by_pool.json` owns them, along with the two
+   > full-corpus baselines (0.5115 and 0.4172) that the same probe had left unowned. The
+   > condition this point set — measure them before they support a conclusion — is met. What
+   > it did not anticipate is that 0.5668 is a **pure-pool** figure: on the hybrid pool the
+   > same reversal gains 0.0116 rather than 0.2520. The erratum in §2 carries that.
+
 7. **This report has executed nothing.** It is a reading of the records, with the figures
    checked against the `FINDINGS` that owns each one —except the two of the previous point—
    and against the code where the code was the source (the validator's six verdicts, the
