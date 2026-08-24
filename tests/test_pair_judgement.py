@@ -196,11 +196,25 @@ class TestTheSignatureGate(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             self.assertFalse(gate_signature(Path(tmp) / "absent.md")["passes"])
 
-    def test_the_real_plan_is_still_unsigned(self):
-        """If this ever fails, P-c has been signed and stage C may run. It is
-        here so that the change is visible in the suite rather than only in a
-        terminal."""
-        self.assertFalse(gate_signature()["passes"])
+    def test_the_verdict_on_the_real_plan_follows_its_own_line(self):
+        """
+        The durable contract, and it holds signed or unsigned: the gate finds
+        §0's line in the real plan, and its verdict is what that line says.
+
+        It replaces `test_the_real_plan_is_still_unsigned`, which asserted the
+        plan had not been signed yet. That one was a scaffold with a designed
+        expiry — it existed so that signing would show up in the suite instead
+        of only in a terminal, and on 2026-08-24 it did exactly that, failing
+        the commit that carried the signature. Pinning "still unsigned" any
+        longer would have meant pinning a state the project is supposed to leave.
+
+        What is worth keeping is that the gate can still FIND the line. If §0's
+        signature block is renamed or removed, `line_found` goes false, the gate
+        refuses to spend, and this says which of the two happened.
+        """
+        g = gate_signature()
+        self.assertTrue(g["line_found"], "§0's signature line is gone")
+        self.assertEqual(g["passes"], "___" not in g["line"])
 
 
 # ---------------------------------------------------------------------------
