@@ -42,11 +42,42 @@ written as a **kill switch in §9 and not as the refutation line**, because the 
 answer different questions: the refutation line asks whether the claim was wrong,
 the kill switch asks whether to spend more money.
 
+**The first draft of P-c also left its denominator unnamed, and there are two of
+them.** An answer is `correct` (the winner's queue), `wrong` (the loser's) or
+`neither` — another queue, off the menu, or unparseable. So "the correct-edge
+rate" is either `correct / 170` or `correct / (correct + wrong)`, and the second
+is the more flattering. **P-c is adjudicated on the first**, `neither` counting
+as a failure, and the row below says so.
+
+The reason is the floor it is measured against, not a preference for severity. A
+coin between the two rules shown **always commits**: over 170 pairs it names one
+of the two every time and is right on about half, so its rate is 0.50 whichever
+way you count it. A model that answers `neither` has not been beaten by the coin
+there — it has declined to play. Scoring it on `correct / (correct + wrong)`
+compares it on the subset where it committed against a baseline that commits
+everywhere, which makes every failure to commit free. `results3/FINDINGS3.md` §3
+already records what happens when three denominators travel unlabelled in one
+block.
+
+Two things follow, and they are written here rather than discovered later. The
+`neither` count is **reported beside the rate**, because a run that fails P-c by
+declining to answer and one that fails it by answering wrongly are different
+findings. And both rates go in the record — the second labelled as the
+non-adjudicating one — so a reader can see the gap instead of taking this
+paragraph's word for it.
+
+*Amended 2026-08-24, before Stage C had run and before any figure of it existed.
+The instrument was already written when this was settled, which is why the
+stricter of the two readings is the one adopted: an author who has seen the
+shape of the apparatus but none of its output should not be picking the
+denominator that flatters it. Sergi may overrule this in the signature; that is
+what signing is for.*
+
 | id | claim | band | refuted by |
 |---|---|---|---|
 | **P-a** | — | **SPENT before signature, see §0.1** | — |
 | **P-b** | — | **SPENT before signature, see §0.1** | — |
-| **P-c** | On the hidden policy's labelled pairs (Stage C), the proposer's correct-edge rate beats a coin between the two rules it is shown | `> 0.60` | `≤ 0.60` |
+| **P-c** | On the hidden policy's labelled pairs (Stage C), the proposer's correct-edge rate **over all 170 pairs, `neither` counting as a failure**, beats a coin between the two rules it is shown | `> 0.60` | `≤ 0.60` |
 | **P-d** | On the learned base (Stage D), the order induced by the declared edges beats the hybrid `born_at` floor Stage A measures | strictly above that floor by `> 0.03` | `≤ floor + 0.03` |
 | **P-e** | That same order lands **inside** the behavioural cloud of the 65 end orders, not outside it | median pairwise disagreement with the 65 `≤ 25%` of the space, measured on the **same pool** as the 65 | `> 25%` of the space |
 
@@ -586,6 +617,13 @@ learned base.
   - answer == winner's action → **correct edge**
   - answer == loser's action → **wrong edge**
   - anything else (another queue, unparseable) → **neither**, counted apart
+
+  **`neither` is inside P-c's denominator and counts as a failure**
+  (§0). It is *counted apart* in the sense that its own tally is
+  published beside the rate — failing by declining to answer and
+  failing by answering wrongly are different findings — not in the
+  sense of being removed from it. `correct / (correct + wrong)` is
+  recorded too and adjudicates nothing.
 - Model and settings identical to rung 2 so the comparison holds:
   `deepseek/deepseek-v4-flash`, `temperature=0`, `response_format={"type":
   "json_object"}`, `max_retries=2`. Reuse `rung2.proposers2.parse_payload`; write a
@@ -602,7 +640,12 @@ learned base.
   that beats 0.3877 but not 0.50 has demonstrated nothing except that showing two
   options narrows the choice to two options.
 
-The refutation line of **P-c** uses the coin, deliberately.
+**This paragraph used to say "the refutation line of P-c uses the coin,
+deliberately", and it stopped being true when the band moved.** The refutation
+line went to `≤ 0.60` — the band's own edge — when §0 closed its three dead
+zones, and this sentence was left behind one paragraph above the text that
+corrects it. The coin is the **kill switch**, not the refutation line. What
+follows is the reconciliation, and it is the one to read.
 
 **The refutation line and the kill switch are two different lines, and §0 now
 keeps them apart.** P-c is refuted at `≤ 0.60` — its band's own edge, so no dead
