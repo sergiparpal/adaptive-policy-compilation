@@ -428,6 +428,167 @@ fingerprint). Three seconds, zero API calls.
 
 ---
 
+## Stage C — the pairwise question, and what its rate is made of
+
+*Run 2026-08-24 with `PYTHONHASHSEED=0`. `rung2/pair_judgement.py --hidden` →
+`results2/pair_judgement_hidden.json`, 170 calls at
+`deepseek/deepseek-v4-flash`, temperature 0, sequential, 18 minutes, cents.
+`rung2/pair_judgement_baselines.py` → `results2/pair_judgement_baselines.json`,
+zero API calls. Stage C of `PLAN_PAIRWISE.md`, run after Sergi signed §0 in
+`a69f9ca`.*
+
+**The question.** Instead of *write a rule*, the model was shown a ticket, two
+rules that both match it, and asked which queue the ticket goes to. The correct
+answer is known by construction: the winner's action, from the hidden policy's
+layer order. Population: the 170 clean-witness pairs of the benchmark above.
+
+### The result
+
+```
+correct 150   wrong 16   neither 4   (all 4 parse failures, 0 off-menu)
+
+over all 170 pairs, `neither` a failure      0.8824   <- adjudicates P-c
+over the 166 two-way answers                 0.9036
+                                     floors: 0.3877  proposal_action_accuracy
+                                             0.5000  a coin between the two
+```
+
+**P-c holds.** It was signed at band `> 0.60`, refuted at `≤ 0.60`, adjudicated
+on `correct / 170` — the denominator §0 named on 2026-08-24, before the run. The
+rate clears the band and both floors.
+
+Two protocol facts, both clean. **Position bias is zero**: the winner was shown
+first in 85 pairs and second in 85, and the rate is **0.8824 in both** — 75
+correct out of 85 either way. And the format holds: 4 parse failures in 170, no
+answer outside the eight queues, one retry recovered.
+
+### And the baseline that reads no rule beats it
+
+A **fixed total order over the eight queues** — answer with the higher-ranked of
+the two on offer, reading no rule, no ticket, no condition — scores **161/170 =
+0.9471**. That is more than the model got while being shown both rules.
+
+```
+best fixed queue hierarchy, over all 40,320 orders     0.9471   161/170
+the same 40,320 orders: mean 0.5000, median 0.5000, sd 0.1346, worst 0.0529
+the model, shown both rules and the ticket             0.8824   150/170
+```
+
+**That order is a world record and must be read as one.** It is chosen by brute
+force *with the answer key in hand*; nothing without labels could pick it. It is
+the same kind of object as the best of 65 starts in §2 of the plan — a winning
+ticket, not a level — which is why the whole distribution is published beside it,
+and why the mean is exactly 0.5 by symmetry rather than by measurement.
+
+What it legitimately bounds is the thing worth knowing: **at most 9 of the 170
+pairs require reading the rules at all.**
+
+### The decomposition, which is the actual finding
+
+```
+                                 n     model correct    rate
+where the hierarchy is right    161      145           0.9006
+where the hierarchy is wrong      9        5           0.5556   (a coin is 0.50)
+```
+
+The nine are the pairs a queue ordering is *structurally* unable to answer: five
+queue-pairs appear in the benchmark with **both** winners — `T2_TECHNICAL` vs
+`BILLING_SPECIALIST`, `T3_ENGINEERING` vs `ACCOUNT_MANAGER` and three more,
+covering 29 rule-pairs between them — so no ranking of queues can serve both
+directions. Those nine are the only pairs here where priority is a fact about the
+two *rules* rather than about the two *queues*, and they are the only ones where
+a correct answer is evidence about pairwise judgement.
+
+**On them the model is at 5 of 9.** That is a coin, on n=9.
+
+**The model is not itself a hierarchy**, and this is worth separating: on 9 of
+the 27 queue-pairs it was asked about it did not always answer the same queue. It
+is reading something. What the decomposition says is that what it reads does not
+help where the hierarchy runs out.
+
+### The rest of the record
+
+**By breadth of the correct winner**, the split §9 asked for because it tests
+`narrow ≠ correct` directly:
+
+```
+the correct winner is the broader rule    n=101   0.8614   wrong-edge 0.1212
+the correct winner is the narrower rule   n= 69   0.9130   wrong-edge 0.0597
+```
+
+Twice the wrong-edge rate when the broader rule is the one that should win. The
+pull toward the narrower rule is real and it is the same pull that gives
+subsumption 53.12% silent error over the learned base — measured here on a
+policy where the right answer is known, and on a model rather than on a
+criterion.
+
+**By the winner's queue**: `ONCALL_ESCALATION` 24/24 and `SECURITY_INCIDENT`
+41/43 at the top, `ACCOUNT_MANAGER` 17/22 and `T3_ENGINEERING` 20/24 at the
+bottom. The single `T1_GENERAL` pair was answered wrongly.
+
+**The `try_edge` histogram, outside every denominator** and recorded because it
+is free: 158 `ok`, 8 `cierra_ciclo`. Of the six verdicts only those two can fire
+here — a witness guarantees overlap, so `EDGE_DISJOINT`, the verdict that
+rejected all 14 edges rung 2 ever got, is unreachable by construction. **The
+acceptance rate is 166/166 minus the cycles and it measures the protocol, not the
+proposer.** It is not a result and it is not in any denominator.
+
+### What this does and does not establish
+
+**It does establish that the change of question works as a format.** Rung 2 got
+2 conflicts and 0 accepted edges out of eight runs; this got 166 well-formed
+answers out of 170 with no position bias and no off-menu queue. The mechanism
+that had no material now has material.
+
+**It does not establish that the model supplies priority.** 0.8824 is mostly a
+queue hierarchy, and where the hierarchy cannot reach the model is at chance.
+Both sentences are true at once and the second is the one that transfers.
+
+**And the 0.8824 is an upper estimate for the full edge set.** The 29 pairs with
+no clean witness are outside the denominator by construction, and they are
+precisely the ones where the layer order is invisible on the surface of the two
+rules shown. If every one of them were wrong the rate over all 199 declared edges
+would be **150/199 = 0.7538**; the true figure is somewhere between that and
+0.8824, and this protocol cannot narrow it.
+
+### What Stage D must now control for, before spending anything
+
+`PLAN_PAIRWISE.md` §10 samples 300–500 pairs of the learned base and scores the
+declared edges as an order. **There is no truth for those pairs**, so the
+decomposition above cannot be repeated there — which makes it more important, not
+less, that the control is built in *before* the calls.
+
+The cheap control this run points at: **compare the declared order against the
+order a fixed queue hierarchy would induce over the same 577 rules**, which costs
+zero calls. If the two agree, the 300–500 calls bought an ordering that a lookup
+table would have produced. §10 as signed does not ask for that comparison, and
+the figures above say it is the first thing it should ask for.
+
+That is a change to a signed plan and it is not the agent's to make.
+
+**Files added by this section**
+
+```
+rung2/pair_judgement.py                  the pairwise question, with the gates
+                                         that refuse to spend while P-c is
+                                         unsigned and while a question could leak
+rung2/pair_judgement_baselines.py        the queue-hierarchy baseline and the
+                                         decomposition; reads, never rewrites
+results2/pair_judgement_hidden.json      the run: 170 answers, per-pair
+results2/pair_judgement_hidden_smoke.json  the 10-pair smoke path
+results2/pair_judgement_baselines.json   the baseline record
+tests/test_pair_judgement.py             the three leaks, the four gates
+tests/test_pair_judgement_baselines.py   the arithmetic, and the permutation
+                                         identity that says the maximum is one
+```
+
+The smoke path is kept and labelled `partial_run`. Its 10/10 says nothing: the
+benchmark is ordered by the winner's layer, so its first ten pairs all have `H01`
+as winner — a security keyword against anything else, the easiest slice there is.
+It was run to check the shape of the output, and that is all it checked.
+
+---
+
 ## Files
 
 ```

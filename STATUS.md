@@ -64,8 +64,8 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Twenty-four rows have been signed before the figures they name existed. This is
-their scoreboard**, and it is a fact about the drafter rather than about the
+**Twenty-seven rows have been signed before the figures they name existed. This
+is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
 which way their bands usually err — and a note like that is worth nothing without
@@ -96,11 +96,13 @@ a count behind it.
 | **R** · rank transfer | 4 | 3 | **1** | 1 | 1 | 1 |
 | **C** · the touched points | 4 | 3 | **0** | 1 | 2 | 1 |
 | **D** · the rule level | 4 | 3 | **2** | 0 | 1 | 1 |
-| **total** | **24** | **21** | **9** | **2** | **10** | **3** |
+| **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 1 | **0** | 0 | 1 | 0 |
+| **total** | **27** | **22** | **9** | **2** | **11** | **3** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`. Hold: `Q-a`, `Q-b`, `Q-c`,
-`Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`. Reported: `R-d`, `C-d`, `D-d`.
+`Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`. Reported: `R-d`, `C-d`,
+`D-d`.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -112,8 +114,8 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 9 of 21 = **42.9%**
-refuted; without them, 7 of 15 = **46.7%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 9 of 22 = **40.9%**
+refuted; without them, 7 of 16 = **43.8%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 3.8 points the flattering way, which is exactly why saying so is not optional.
 
@@ -121,15 +123,20 @@ drafter and the sample size, not because of the figure — and it moves the figu
 of §0, one by one* in the first part of
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) — its register table
 carries `G1`–`G6` instead — and `S`, `R`, `C` and `D` from the registers of parts
-two, three, four and five of the same record. **Excluded, and this is what makes
+two, three, four and five of the same record; and `P` from the Stage C section
+of [`results2/FINDINGS2.md`](results2/FINDINGS2.md). `P-d` and `P-e` are signed
+and unadjudicated: they govern Stage D, which has not run.
+
+**Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
 band; and `S-g`, `C-e` and `D-e`, which the records add as *(not predicted)* and
 which nobody signed. **And `P-a` and `P-b` of `PLAN_PAIRWISE.md`, which are
 neither**: they were measured on 2026-08-24 *before* anyone signed them, so they
 are **spent** — not signed and not adjudicable, in no column of the table and not
 in the denominator. §0.1 of that plan records them as outcomes and does not
-restore them as predictions. `P-c`, `P-d` and `P-e` remain unsigned and enter
-nothing until they are.
+restore them as predictions. `P-c`, `P-d` and `P-e` are a different case: Sergi
+signed them on 2026-08-24, before any figure of theirs existed, and they are in
+the table above.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -342,6 +349,34 @@ reversed figures [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) cited as *left
 unconfirmed* reproduce exactly and now have an owning record; its §2 and its
 §9.6 carry the dated erratum. This record **carries no prediction**: the two rows
 that predicted it were spent before signature (`PLAN_PAIRWISE.md` §0.1).
+
+**The proposer can pick the right queue between two rules, and most of that is a
+queue hierarchy.** Asked 170 times which queue a ticket goes to when two rules
+that both match it disagree — the answer known by construction from the hidden
+policy's layer order — it answered correctly **150 times, 0.8824** over all 170
+with `neither` counting as a failure, against floors of 0.3877 and a 0.50 coin
+([`results2/FINDINGS2.md`](results2/FINDINGS2.md), Stage C;
+[`pair_judgement_hidden.json`](results2/pair_judgement_hidden.json)). Position
+bias is zero — 85 pairs each way, 0.8824 both — and 4 of 170 failed to parse.
+**That is the signed row `P-c` holding**, at band `> 0.60`.
+
+**But a fixed order over the eight queues, reading no rule at all, scores
+0.9471** — 161 of 170, more than the model got while being shown both rules
+([`pair_judgement_baselines.json`](results2/pair_judgement_baselines.json)). That
+order is chosen by brute force with the key in hand over all 40,320 permutations,
+so it is a winning ticket and not a level; what it bounds is that **at most 9 of
+the 170 pairs require reading the rules**. Five queue-pairs appear with both
+winners, which is what no ranking of queues can serve. **On those nine the model
+is at 5 of 9** — a coin. So the change of question works as a format, and it has
+not been shown to supply priority where a hierarchy runs out. Both hold at once
+and the second is the one that transfers.
+
+**And it is an upper estimate.** The 29 pairs with no clean witness are outside
+the denominator by construction and are the ones where the layer order is
+invisible on the surface of the two rules; if all of them were wrong the rate
+over the 199 declared edges would be **0.7538**. The pull toward the narrower
+rule shows up too: the wrong-edge rate doubles, 0.1212 against 0.0597, when the
+rule that should win is the broader one.
 
 **An ordering problem and a material problem are different things.** Six classes
 of eight — 1774 of 2000 cases — are pure ordering. `SECURITY_INCIDENT` (20 cases)
