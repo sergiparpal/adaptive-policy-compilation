@@ -16,7 +16,7 @@ of 29 rules spread over 8 priority layers.
 > and the scripts still print their tables in Spanish. When a block below shows
 > expected output, compare the **numbers**, not the words.
 
-## Four closed rungs, and where their figures live
+## Four closed rungs, one closed thread, and where their figures live
 
 **A figure has exactly two homes: the FINDINGS record that owns it, and
 [`STATUS.md`](STATUS.md), which indexes it and names the surface it was measured
@@ -32,12 +32,15 @@ up in four places at once.
 | **3** · priority by search | whether rung 1's material contained an order worth having | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
+| **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 
 Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
-re-measured on August 8, 2026 and their headline figures moved, with the
-originals kept beside the new ones rather than replaced. **Read the erratum
-before citing any number.** [`IDEAS.md`](IDEAS.md) keeps what remains open,
-including the known technical debt.
+re-measured on August 8, 2026 and their headline figures moved, and on August 24,
+2026 `FINDINGS3.md` §8 withdrew a conclusion of its own that §9 then measured
+directly. In both cases the original text is kept beside the correction rather
+than replaced. **Read the erratum before citing any number.**
+[`IDEAS.md`](IDEAS.md) keeps what remains open, including the known technical
+debt.
 
 > **From "Rung 1" onwards, this file describes the specification and the
 > operating procedure of that rung.** They remain valid as procedure, not as
@@ -84,7 +87,30 @@ python3 -m rung3.rank_transfer     # joins the two records above (seconds)
 python3 -m rung3.order_metrics_touched  # the space, restricted to the points
                                       # the corpus touches (7 min)
 python3 -m rung3.order_metrics_touched --checks   # its four gates only
+
+# --- P · pairwise judgement (the free half) -------------------------------
+python3 -m rung3.floor_by_pool     # what a no-search order scores, both pools
+python3 -m rung2.pair_benchmark    # the 199 labelled pairs and their witnesses
+python3 -m rung2.pair_benchmark --checks       # its three gates only
+python3 -m rung3.queue_hierarchy_floor  # what a queue ranking scores (4 min)
+python3 -m rung2.pair_judgement_baselines  # what the stage C rate is made of
+python3 -m rung3.declared_order    # the three scorings + the control (6 min)
+python3 -m rung3.edge_direction    # is the direction right, and would right help
+python3 -m rung3.edge_budget       # does the channel pay with more edges (3 min)
 ```
+
+**The two commands of that thread that cost money are not in the block above**,
+and neither runs while §0 of [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) is unsigned —
+a gate refuses before the client is even constructed. `--dry-run` builds every
+question, checks every gate and spends nothing:
+
+```bash
+python3 -m rung2.pair_judgement --hidden  --dry-run   # 170 calls if run
+python3 -m rung2.pair_judgement --learned --dry-run   # 400 calls if run
+```
+
+Their destinations are guarded by `harness/record_guard.py`: those records cost
+money and a re-run does not give the same thing back.
 
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
@@ -744,7 +770,8 @@ adaptive-policy-compilation/
 ├── run_experiment.py        rung 1 CLI (frontier · llm · models)
 ├── requirements.txt         `openai` pinned, for the real proposer
 ├── requirements.lock.txt    transitive closure of the records' environment
-├── README.md  CLAUDE.md  IDEAS.md  PREDICTION.md  LICENSE  .gitignore
+├── README.md  CLAUDE.md  IDEAS.md  STATUS.md  LICENSE  .gitignore
+├── PREDICTION.md  PLAN_*.md   signed plans — each travels alone in its commit
 │
 ├── harness/                 RUNG 1 — frozen spec and original engine
 │   ├── domain.py            case, actions, corpus (seed 17)          [FROZEN]
@@ -764,15 +791,40 @@ adaptive-policy-compilation/
 │   ├── hidden_priority.py   the 29 rules with their minimal edges
 │   ├── ceiling_check2.py    STEP 0 of rung 2 (gives 100%)
 │   ├── proposers2.py        v1/v2 prompts and bounded neighbourhood
-│   └── shadow2.py  run2.py  compare_runs.py  note_audit.py
+│   ├── shadow2.py  run2.py  compare_runs.py  note_audit.py
+│   │                        —— pairwise judgement ——
+│   ├── pair_benchmark.py    the 199 labelled pairs, with witnesses
+│   ├── pair_judgement.py    the pairwise question · THE ONLY MODULE THAT SPENDS
+│   └── pair_judgement_baselines.py  what the stage C rate is made of
 │
 ├── rung3/                order by search over the corpus, no LLM
 │   ├── order_search.py      coverage bound, greedy search, split
-│   └── budget_and_balance.py  label budget and balanced greedy
+│   ├── budget_and_balance.py  label budget and balanced greedy
+│   │                        —— the audited optimizer ——
+│   ├── local_search.py      move/swap, multi-start · the DECLARED optimizer
+│   ├── optimizer_check.py   its ceiling, against a known optimum
+│   ├── optimizer_check_wt.py  the same for the class-weighted objective
+│   ├── order_search_ls.py   rung 3 redone with it
+│   ├── budget_and_balance_ls.py  the label curve redone with it
+│   │                        —— orders compared AS orders ——
+│   ├── order_metrics.py     what an order decides; behavioural distance
+│   ├── order_metrics_run.py  regenerates the end orders and gates them
+│   ├── order_metrics_corpus.py  the same, over the arrival distribution
+│   ├── order_metrics_touched.py  the space restricted to points the corpus hits
+│   ├── order_metrics_rules.py  arrival concentration at the rule level
+│   ├── rank_transfer.py     joins the space and corpus records
+│   ├── territory_holders.py  which rules ever win a case
+│   │                        —— pairwise judgement ——
+│   ├── floor_by_pool.py     what a no-search order scores, both pools
+│   ├── queue_hierarchy_floor.py  what a ranking of the 8 queues alone scores
+│   ├── declared_order.py    the three scorings of stage D, and the control
+│   ├── edge_direction.py    is the declared direction right, and does it help
+│   └── edge_budget.py       does the channel pay with more edges
 │
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle
-│   └── sweep.py             coverage, asymmetry, delay and noise sweeps
+│   ├── sweep.py             coverage, asymmetry, delay and noise sweeps
+│   └── sweep_ls.py          the same, with the audited optimizer
 │
 ├── tests/                   the suite · `python3 -m unittest discover`
 │   ├── fixtures.py          corpus and exhaustive space, built once

@@ -6,11 +6,12 @@ An experiment on **adaptive policy compilation**: a cheap symbolic engine
 resolves the cases it covers; when it fails to cover one (an impasse), an LLM
 acts and writes a new rule so that next time it does cover it.
 
-**Four rungs are closed, and none of their figures are in this file.** What is
-established, on which surface it was measured, what was withdrawn and why, and
-what is open: `STATUS.md`. Each figure it indexes belongs to a FINDINGS record
-that owns it and carries its dated errata in place. **Read `STATUS.md` before
-proposing anything, and read the erratum before citing any number.**
+**Four rungs and one further thread are closed, and none of their figures are in
+this file.** What is established, on which surface it was measured, what was
+withdrawn and why, and what is open: `STATUS.md`. Each figure it indexes belongs
+to a FINDINGS record that owns it and carries its dated errata in place. **Read
+`STATUS.md` before proposing anything, and read the erratum before citing any
+number.**
 
 **No figure belongs in this file, and none is to be added.** This one is loaded
 into every session and framed as authority, so a number written here is taken as
@@ -43,6 +44,26 @@ instrument before the instrument measures anything else.
     python3 -m rung3.order_search_ls     # rung 3 with the declared optimizer
     python3 -m rung4.sweep_ls            # rung 4 with the declared optimizer
     python3 -m rung3.order_search_ls --full-space-search
+
+**The pairwise-judgement thread of `PLAN_PAIRWISE.md` closed on August 24, 2026**
+with three signed rows adjudicated. Its procedure is the plan itself; its
+write-ups are `results2/FINDINGS2.md` (Stages C and D) and `results3/FINDINGS3.md`
+§§6-10. Almost all of it is free:
+
+    python3 -m rung3.floor_by_pool          # blocking six-row reproduction gate
+    python3 -m rung2.pair_benchmark         # the labelled pairs and witnesses
+    python3 -m rung3.queue_hierarchy_floor  # what a queue ranking alone scores
+    python3 -m rung2.pair_judgement_baselines
+    python3 -m rung3.declared_order         # the three scorings and the control
+    python3 -m rung3.edge_direction
+    python3 -m rung3.edge_budget
+
+**The exception is `rung2/pair_judgement.py`, the only module in the repository
+that spends.** It refuses to run while §0 of `PLAN_PAIRWISE.md` is unsigned — a
+gate that stops before the client is even constructed, with no flag that skips it
+— and `--dry-run` builds every question, runs every gate and spends nothing. Do
+not remove that gate and do not sign the plan: hard rule 2 below, and §0 of the
+plan restates it. A model may draft a band and may not sign it.
 
 The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before
@@ -118,9 +139,10 @@ Since August 8, 2026 the rule is also enforced by the code, in
 it writes `results/llm_run_n<N>.json`, so `--n 100` and `--n 2000` no longer
 share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
-`--overwrite-record`. The same guard covers `rung2/run2.py`. **The guard is
-not authorization**: the norm above still holds, and the flag is not typed
-without Sergi asking for it.
+`--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
+2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them.
+**The guard is not authorization**: the norm above still holds, and the flag is
+not typed without Sergi asking for it.
 
 **5. DO NOT adjust the prompt or the schema before having a recorded result.**
 First you measure, then you iterate.
@@ -330,11 +352,30 @@ policy whose optimum is known independently of any of these numbers — that is
 what made it legitimate, and it is the only thing that would make it legitimate
 again.
 
+**A signed band is not a constant you may edit.** `P_D_MARGIN` and `P_E_BAND` in
+`rung3/declared_order.py` are transcriptions of rows Sergi signed in §0 of
+`PLAN_PAIRWISE.md` before any of their figures existed, and a test says so
+precisely so that moving one is visible. Both rows came out **refuted**. Nudging
+either constant would turn a refutation into a hold by editing a line of Python,
+which is hard rule 6 in its purest form. The same goes for the seeds and draw
+counts of that thread — `POSITION_SEED`, `SAMPLE_SEED`, `SHUFFLE_SEED`,
+`DIRECTION_SEED`, `N_DIRECTION_DRAWS` — all fixed before the runs that used them.
+
+**Two of that thread's records are post-run and say so.** `edge_direction` and
+`edge_budget` carry a `provenance` field declaring they were written after P-d
+and P-e were adjudicated, by someone who had already seen the result. Nothing in
+them is a bet that could have failed. If you add to that thread, keep the field:
+a measurement that could not have surprised its author is worth less than one
+that could, and the record is where that difference is recorded rather than
+assumed.
+
 **On which surface a figure is measured**, see `STATUS.md`, "Before reading any
 figure". Rungs 1 to 4 published corpus figures without labelling them. Do not
-continue that: name the surface, and where both are available report both.
+continue that: name the surface, and where both are available report both. The
+pairwise thread adds a third label that is just as load-bearing: **which pool**,
+`puro` or `hibrido`. They are different machines and their figures never chain.
 
 What is pending and open is in `IDEAS.md`, including what each rung left
-unresolved. Of the original list only the empirical impasse has been touched —
-partially, in rung 4 —; concept drift, regret, ILP as a competitor, ASP and real
-activation are still undone.
+unresolved and what the pairwise thread opened. Of the original list only the
+empirical impasse has been touched — partially, in rung 4 —; concept drift,
+regret, ILP as a competitor, ASP and real activation are still undone.
