@@ -149,6 +149,28 @@ P_E_BAND = 0.25
 N_DIRECTION_DRAWS = 50
 DIRECTION_SEED = 17
 
+# §0 of PLAN_PROPOSER_1600.md, transcribed on 2026-08-25 before any figure of
+# that plan existed. B-b says the order beats what a FREE ranking of the eight
+# queues scores; B-c says it reaches the projection built from its own measured
+# accuracy. Two other records own the figures these were transcribed from, and
+# `gate_lines_still_hold` checks they still say so — a band is what was signed
+# and the record is what it was signed against, so a drift between them is a
+# discrepancy to report rather than to absorb.
+B_B_LINE = 0.4824   # results3/queue_hierarchy_floor.json, hibrido / test split 0
+B_C_LINE = 0.4981   # results3/edge_budget.json, the 1,600 row of the noisy curve
+
+# This plan's own, declared before its figures exist. 200 rather than
+# edge_budget's 10 because that module scored eight budgets and this one scores
+# one, so the deviation can be ESTIMATED rather than merely indicated — and §8
+# says the reading of B-c turns on it: a refutation by less than the projection's
+# own deviation is a different event from one by three of them. The closed
+# thread's N_DIRECTION_DRAWS stays at 50; it belongs to an adjudicated row.
+READING_DRAWS = 200
+READING_SEED = 17
+READING_BUDGET = 1600
+ABOUT = "the 1,600-pair sample of PLAN_PROPOSER_1600.md"
+BUDGET_RECORD = OUT / "edge_budget.json"
+
 
 # ---------------------------------------------------------------------------
 # The order the edges induce
@@ -364,6 +386,238 @@ def direction_controls(rows, rules, ids, born, instance,
 
 
 # ---------------------------------------------------------------------------
+# B-b and B-c — the order against the free ranking and against the projection
+# ---------------------------------------------------------------------------
+
+def read_budget_row(path=BUDGET_RECORD, budget=READING_BUDGET):
+    """The coin and the projection at this budget, from the record that owns
+    them. Read, never transcribed twice."""
+    rec = json.loads(Path(path).read_text())
+    row = next((r for r in rec["curves"] if r["budget"] == budget), None)
+    if row is None:
+        return None
+    return {k: row[k] for k in ("budget", "offered", "ties_offering_nothing",
+                                "oracle", "noisy_mean", "noisy_sd",
+                                "coin_mean", "coin_sd")}
+
+
+def gate_lines_still_hold(hierarchy, budget_row):
+    """
+    The two lines §0 transcribed are still what their records say.
+
+    §0 signed `> 0.4824` and `>= 0.4981` against figures two other records own.
+    If one of those records moves — re-run, corrected, regenerated — the band
+    does not follow it: what was signed is the number. So the mismatch is
+    surfaced instead of being silently absorbed on either side.
+    """
+    got_b = hierarchy
+    got_c = budget_row["noisy_mean"] if budget_row else None
+    ok_b = got_b is not None and abs(got_b - B_B_LINE) < 5e-5
+    ok_c = got_c is not None and abs(got_c - B_C_LINE) < 5e-5
+    return {
+        "what": "B-b's and B-c's lines were transcribed from §0 before any "
+                "figure of this plan existed. Their owning records are checked "
+                "to still say the same thing; a drift is reported, and the band "
+                "stays as signed either way.",
+        "B_b_line_signed": B_B_LINE,
+        "B_b_line_in_its_record": got_b,
+        "B_b_owner": "results3/queue_hierarchy_floor.json",
+        "B_c_line_signed": B_C_LINE,
+        "B_c_line_in_its_record": got_c,
+        "B_c_owner": f"results3/edge_budget.json, budget {READING_BUDGET}",
+        "passes": ok_b and ok_c,
+    }
+
+
+def oracle_directions_from_split(rows, split_path, key="better_space"):
+    """
+    The oracle's own direction per row, READ from the Stage A record.
+
+    True where `a` is the better rule, False where `b` is, None on a tie or on
+    the material problem — where the channel has nothing to say and forcing a
+    direction would credit it with a coin flip it never made.
+
+    Read rather than recomputed for the reason `read_split` gives: the verdicts
+    were fixed and gated before a call was made, and deriving them again beside
+    the thing they score would let them move with it.
+
+    Returns `(directions, n_missing)`. A pair the split record does not carry is
+    counted apart from a tie and never folded into it: the caller refuses to
+    build the projection at all rather than build it on a silently smaller set
+    of offers.
+    """
+    by_pair = {(r["rule_a"], r["rule_b"]): r[key]
+               for r in json.loads(Path(split_path).read_text())["oracle"]}
+    out, missing = [], 0
+    for r in rows:
+        pair = (r["rule_a"], r["rule_b"])
+        if pair not in by_pair:
+            # NOT the same event as a tie, and the caller must not be allowed to
+            # confuse them. A tie is the channel having nothing to say; an absent
+            # pair is the wrong split record, and it would quietly shrink the
+            # projection's offers instead of failing.
+            missing += 1
+            out.append(None)
+            continue
+        v = by_pair[pair]
+        out.append(True if v == "a" else False if v == "b" else None)
+    return out, missing
+
+
+def readings_on_this_sample(rows, oracle_dirs, miss_rate, rules, ids, born,
+                            instance, engine, n_draws=READING_DRAWS,
+                            seed=READING_SEED):
+    """
+    The coin and the projection, recomputed on THIS sample.
+
+    `edge_budget`'s 0.4519 and 0.4981 sit on a prefix of its own shuffle, and
+    this sample is a different 1,600 pairs — §5.1 of the plan is about exactly
+    that, and over this population the shuffle's first 400 and Stage D's first
+    400 share not one pair. So the lines §0 signed orient the reading and these
+    two figures are what it is actually read against.
+
+    The projection flips each oracle direction independently at `miss_rate`,
+    which is the assumption `edge_budget` states and labels: the real proposer's
+    errors need not be independent nor evenly spread, and B-d is the measurement
+    of whether they are. If B-c is refuted while B-d holds, this is the figure
+    that says the projection was the wrong model rather than the proposer being
+    worse than one.
+
+    The three offer different numbers of edges and the record says so rather
+    than leaving it to be noticed: the coin offers one on every pair, the
+    projection stays silent on the oracle's ties, and the model stays silent
+    wherever it declined.
+    """
+    # Imported here and not at the top: `edge_budget` imports this module, so a
+    # module-level import would close the cycle. The scoring is the closed
+    # thread's, called and not copied — rule C of the plan.
+    from rung3.edge_budget import score_directions
+
+    coin, projection = [], []
+    for k in range(n_draws):
+        rnd = random.Random(seed + k)
+        coin.append(score_directions(
+            rows, [rnd.random() < 0.5 for _ in rows], rules, ids, born,
+            instance, engine)[0])
+        rnd = random.Random(seed + 100000 + k)
+        flipped = [d if d is None or rnd.random() >= miss_rate else not d
+                   for d in oracle_dirs]
+        projection.append(score_directions(rows, flipped, rules, ids, born,
+                                           instance, engine)[0])
+    oracle_score, oracle_edges = score_directions(rows, oracle_dirs, rules, ids,
+                                                  born, instance, engine)
+    def block(draws):
+        return {"mean": round(statistics.mean(draws), 6),
+                "sd": round(statistics.pstdev(draws), 6),
+                "min": round(min(draws), 6), "max": round(max(draws), 6)}
+    return {
+        "what": "the coin and the projection recomputed on THIS sample rather "
+                "than on edge_budget's shuffle prefix, which is a different "
+                "1,600 pairs.",
+        "n_pairs": len(rows), "n_draws": n_draws, "seed": seed,
+        "miss_rate_used": round(miss_rate, 4),
+        "miss_rate_source": "1 - B-a's measured rate, space definition",
+        "the_projections_assumption":
+            "each direction flipped independently and at a uniform rate. Stage C "
+            "found the proposer's accuracy varies by queue-pair, so its errors "
+            "need not satisfy it; B-d is the measurement of whether they do.",
+        "coin": block(coin),
+        "projection": block(projection),
+        "oracle": round(oracle_score, 6),
+        "oracle_edges_accepted": oracle_edges,
+        "offers": "the coin offers an edge on every pair, the projection stays "
+                  "silent on the oracle's ties, and the model stays silent "
+                  "wherever it declined. Three different offer counts, and the "
+                  "scores are not interchangeable because of it.",
+    }
+
+
+def not_the_population_for(block, about):
+    """
+    The same computation on the population the row is NOT about.
+
+    Symmetric with `not_adjudicated_here`, and for the same reason read the other
+    way round. P-d and P-e were signed on Stage D's 400 and must not be
+    re-adjudicated on 1,600; B-b and B-c are claims about the 1,600 and must not
+    read like verdicts when this module runs on the 400. Both directions produce a
+    number shaped like a reading, and in both the figure stays and the reading
+    goes.
+    """
+    out = dict(block)
+    out.pop("band_holds", None)
+    out["adjudicates"] = False
+    out["reading_on_another_population"] = block.get("band_holds")
+    out["note"] = (
+        f"{block['row']} is a claim about {about}. What is here is the same "
+        f"computation on Stage D's 400 pairs, reported so the two budgets can be "
+        f"compared, and never a reading of the row.")
+    return out
+
+
+def b_b_reading(score, hierarchy_measured):
+    """`B-b`: does the order beat what a FREE ranking of the eight queues gets?"""
+    return {
+        "row": "B-b",
+        "claim": "the order the proposer's edges induce beats what a free "
+                 "ranking of the eight queues scores",
+        "band": f"> {B_B_LINE}", "refuted_by": f"<= {B_B_LINE}",
+        "denominator": "the order's score on hibrido, corpus test split 0",
+        "line": B_B_LINE, "line_owner": "results3/queue_hierarchy_floor.json",
+        "line_as_measured_now": hierarchy_measured,
+        "measured": round(score, 6),
+        "margin": round(score - B_B_LINE, 6),
+        # Compared at the precision the record publishes, for the reason
+        # `b_a_reading` gives: a verdict must not turn on a binary
+        # representation of a decimal printed as exact.
+        "band_holds": round(score, 6) > B_B_LINE,
+        "why_it_matters":
+            "the ranking reads no rule and costs no call. An order that does not "
+            "beat it bought nothing with its budget, whatever it scores against "
+            "the arrival floor.",
+        "adjudication":
+            "`band_holds` is the reading. Whether the row is adjudicated at all "
+            "depends on §0 being signed, which is checked where the calls are "
+            "made and not here.",
+    }
+
+
+def b_c_reading(score, recomputed):
+    """`B-c`: does it reach the projection built from its own measured accuracy?"""
+    proj = recomputed["projection"] if recomputed else None
+    dev = proj["sd"] if proj else None
+    gap = round(score - B_C_LINE, 6)
+    return {
+        "row": "B-c",
+        "claim": "the order reaches the projection made from the proposer's own "
+                 "measured accuracy",
+        "band": f">= {B_C_LINE}", "refuted_by": f"< {B_C_LINE}",
+        "denominator": "the same score — hibrido, corpus test split 0",
+        "line": B_C_LINE,
+        "line_owner": f"results3/edge_budget.json, budget {READING_BUDGET}",
+        "measured": round(score, 6),
+        "margin": gap,
+        "band_holds": round(score, 6) >= B_C_LINE,
+        "read_against_this_sample": recomputed and {
+            "projection_mean": proj["mean"], "projection_sd": proj["sd"],
+            "coin_mean": recomputed["coin"]["mean"],
+            "coin_sd": recomputed["coin"]["sd"],
+            "oracle": recomputed["oracle"],
+            "gap_in_projection_deviations": (
+                round((score - proj["mean"]) / dev, 2) if dev else None),
+            "note": "§8: a refutation by less than the projection's own "
+                    "deviation is a different event from one by three of them, "
+                    "and the record says which. The signed line is the figure "
+                    "edge_budget published on ITS shuffle; this is the same "
+                    "quantity on the pairs actually asked about.",
+        },
+        "adjudication":
+            "`band_holds` is the reading against the SIGNED line. Whether the "
+            "row is adjudicated at all depends on §0 being signed, which is "
+            "checked where the calls are made and not here.",
+    }
+
+
+# ---------------------------------------------------------------------------
 # Reading what other records own
 # ---------------------------------------------------------------------------
 
@@ -385,6 +639,10 @@ def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     t_start = time.time()
     source, out, is_stage_d = parse_source(argv)
+    split_path = (Path(argv[argv.index("--split") + 1])
+                  if "--split" in argv else None)
+    accuracy_path = (Path(argv[argv.index("--accuracy") + 1])
+                     if "--accuracy" in argv else None)
     if not source.exists():
         print(f"ABORTED: {source} is not there. Stage D has not run.")
         return 1
@@ -491,6 +749,64 @@ def main(argv=None) -> int:
     print(f"  model sits {ctrl['model_in_coin_deviations']:+.2f} deviations from "
           f"the coin; inverted {ctrl['inverted_in_coin_deviations']:+.2f}")
 
+    # --- B-b and B-c ------------------------------------------------------
+    hier_now = pd_row["queue_hierarchy"]
+    budget_row = read_budget_row() if BUDGET_RECORD.exists() else None
+    g_lines = gate_lines_still_hold(hier_now, budget_row)
+    b_b = b_b_reading(pd_row["declared"], hier_now)
+
+    recomputed = None
+    if split_path is not None and accuracy_path is not None:
+        b_a = json.loads(Path(accuracy_path).read_text()).get("B_a") or {}
+        rate = b_a.get("measured")
+        if rate is None:
+            print("\n  B-c's recomputed baselines need B-a's rate and "
+                  f"{accuracy_path} does not carry one.")
+        else:
+            all_rows = list(src["answers"])
+            oracle_dirs, missing = oracle_directions_from_split(all_rows,
+                                                                split_path)
+            if missing:
+                print(f"\n  {missing} of {len(all_rows)} answered pairs are not "
+                      f"in {split_path}. That is the wrong split record, not a "
+                      f"set of ties, and the projection is NOT built on it.")
+            else:
+                recomputed = readings_on_this_sample(
+                    all_rows, oracle_dirs, 1 - rate, learned_rules(), ids, born,
+                    instances[("corpus_test_split0", "hibrido")],
+                    fresh_engine(learned_rules()))
+    b_c = b_c_reading(pd_row["declared"], recomputed)
+
+    print()
+    print("=" * 78)
+    print("B-b AND B-c — against the free ranking, and against the projection")
+    print("=" * 78)
+    if is_stage_d:
+        print(f"  NOT A READING OF EITHER ROW: they are claims about {ABOUT},")
+        print("  and this is the same computation on Stage D's 400.")
+    print(f"  {'the order':<34}{b_b['measured']:>9.4f}")
+    print(f"  {'B-b: a free queue ranking':<34}{B_B_LINE:>9.4f}   "
+          f"margin {b_b['margin']:+.4f}  "
+          f"{'above' if b_b['band_holds'] else 'NOT above'}")
+    print(f"  {'B-c: the projection at 1,600':<34}{B_C_LINE:>9.4f}   "
+          f"margin {b_c['margin']:+.4f}  "
+          f"{'reached' if b_c['band_holds'] else 'NOT reached'}")
+    if not g_lines["passes"]:
+        print("  WARNING: a line no longer matches the record that owns it — "
+              "see the gate. The band stays as signed.")
+    if recomputed:
+        r = recomputed
+        print(f"\n  recomputed on THIS sample ({r['n_draws']} draws, "
+              f"miss rate {r['miss_rate_used']}):")
+        print(f"    {'coin':<20}{r['coin']['mean']:>9.4f}  "
+              f"sd {r['coin']['sd']:.4f}")
+        print(f"    {'projection':<20}{r['projection']['mean']:>9.4f}  "
+              f"sd {r['projection']['sd']:.4f}")
+        print(f"    {'oracle':<20}{r['oracle']:>9.4f}")
+        d = b_c["read_against_this_sample"]["gap_in_projection_deviations"]
+        if d is not None:
+            print(f"    the order sits {d:+.2f} projection deviations from it")
+
     # --- 3. as a machine, against 65 regenerated on the HYBRID pool -------
     print()
     print("=" * 78)
@@ -554,6 +870,10 @@ def main(argv=None) -> int:
         "as_a_hybrid_engine": eng,
         "as_an_order": as_order,
         "direction_control": ctrl,
+        "B_b": not_the_population_for(b_b, ABOUT) if is_stage_d else b_b,
+        "B_c": not_the_population_for(b_c, ABOUT) if is_stage_d else b_c,
+        "recomputed_on_this_sample": recomputed,
+        "gates_on_the_lines": g_lines,
         "P_d": p_d if is_stage_d else not_adjudicated_here(p_d),
         "P_e": p_e if is_stage_d else not_adjudicated_here(p_e),
         "control":
