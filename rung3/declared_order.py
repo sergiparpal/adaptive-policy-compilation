@@ -89,6 +89,55 @@ N_ORDERS = 65
 SPLIT = 0
 SPLIT_SEED = 17
 
+
+def parse_source(argv):
+    """
+    `--source` names the answers to score; `--out` names where the scoring goes.
+
+    They come as a pair on purpose. `PLAN_PROPOSER_1600.md` scores a second,
+    larger population with this same code — rule C of its §4, so that the
+    400-point and the 1,600-point are not made incomparable by a
+    reimplementation — and the destination of that scoring must never be able to
+    land on the closed thread's record by omission. So a non-default `--source`
+    without an `--out` aborts, and the default pair is the only one that writes
+    `declared_order.json`.
+    """
+    source = SOURCE
+    out = OUT / RECORD
+    if "--source" in argv:
+        source = Path(argv[argv.index("--source") + 1])
+    if "--out" in argv:
+        out = Path(argv[argv.index("--out") + 1])
+    elif source != SOURCE:
+        raise SystemExit(
+            f"\nABORTED: --source {source} without --out.\n\n"
+            f"  {OUT / RECORD} is the closed thread's record and P-d and P-e "
+            f"were\n  adjudicated on it. Another population needs another "
+            f"destination:\n\n"
+            f"    --out {OUT}/declared_order_1600.json\n")
+    return source, out, source == SOURCE
+
+
+def not_adjudicated_here(block):
+    """
+    The same computation on another population, with the verdict taken off.
+
+    P-d and P-e were signed in §0 of `PLAN_PAIRWISE.md` and adjudicated on Stage
+    D's 400 pairs. Scoring a different population with the same code produces the
+    same NUMBER shaped like a verdict, and a record that printed it as one would
+    let a row be re-adjudicated by rerunning it on more data — which is hard rule
+    6 with extra steps. So the figure stays and the word `verdict` goes.
+    """
+    out = {k: v for k, v in block.items() if k != "verdict"}
+    out["adjudicates"] = False
+    out["above_the_threshold"] = block["verdict"] == "HOLDS"
+    out["note"] = (
+        f"{block['row']} was signed in §0 of PLAN_PAIRWISE.md and adjudicated on "
+        f"Stage D's 400 pairs; it keeps that verdict and this is not a second "
+        f"reading of it. What is here is the same computation on another "
+        f"population, reported and never substituted.")
+    return out
+
 # P-d and P-e, as signed in §0 of PLAN_PAIRWISE.md on 2026-08-24. Carried so the
 # verdicts can be read off, never to be adjusted.
 P_D_MARGIN = 0.03
@@ -333,11 +382,13 @@ def read_hierarchy(path=HIERARCHY_RECORD):
 # ---------------------------------------------------------------------------
 
 def main(argv=None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
     t_start = time.time()
-    if not SOURCE.exists():
-        print(f"ABORTED: {SOURCE} is not there. Stage D has not run.")
+    source, out, is_stage_d = parse_source(argv)
+    if not source.exists():
+        print(f"ABORTED: {source} is not there. Stage D has not run.")
         return 1
-    src = json.loads(SOURCE.read_text())
+    src = json.loads(source.read_text())
     edges = [tuple(e) for e in src["accepted_edges"]]
 
     corpus, rule_records, ext, conds = load()
@@ -423,7 +474,7 @@ def main(argv=None) -> int:
           f"{p_d['control_queue_hierarchy']:.4f} on the same cell")
 
     # --- the direction control -------------------------------------------
-    rows_with_edge = [r for r in json.loads(SOURCE.read_text())["answers"]
+    rows_with_edge = [r for r in src["answers"]
                       if r["declared"] != "none"]
     ctrl = direction_controls(rows_with_edge, learned_rules(), ids, born,
                               instances[("corpus_test_split0", "hibrido")])
@@ -490,7 +541,7 @@ def main(argv=None) -> int:
         "there_is_no_truth_for_the_pairs":
             "no correct-edge rate exists for the 400 pairs and none is computed "
             "anywhere. Every figure here is about what the edges DO.",
-        "source": str(SOURCE),
+        "source": str(source),
         "n_edges": len(edges), "n_rules": len(ids), "n_space": n_space,
         "rules_moved_off_arrival": moved,
         "order_note":
@@ -503,8 +554,8 @@ def main(argv=None) -> int:
         "as_a_hybrid_engine": eng,
         "as_an_order": as_order,
         "direction_control": ctrl,
-        "P_d": p_d,
-        "P_e": p_e,
+        "P_d": p_d if is_stage_d else not_adjudicated_here(p_d),
+        "P_e": p_e if is_stage_d else not_adjudicated_here(p_e),
         "control":
             "the queue-ranking column is read from "
             "results3/queue_hierarchy_floor.json and is the order a fixed "
@@ -514,9 +565,9 @@ def main(argv=None) -> int:
         "seconds": round(time.time() - t_start, 1),
     }
     OUT.mkdir(exist_ok=True)
-    (OUT / RECORD).write_text(json.dumps(payload, indent=2))
+    out.write_text(json.dumps(payload, indent=2))
     print(f"\n  total cost: {time.time() - t_start:.0f}s, zero API calls")
-    print(f"-> {OUT / RECORD}")
+    print(f"-> {out}")
     return 0
 
 

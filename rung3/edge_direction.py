@@ -94,6 +94,40 @@ N_NULL_DRAWS = 2000
 NULL_SEED = 17
 SPLIT_SEED = 17
 
+
+def parse_source(argv):
+    """
+    `--source` names the answers, `--out` the record, `--split` the pre-call
+    partition `B-d` is a claim about.
+
+    Source and out come as a pair for the reason `declared_order.parse_source`
+    gives: `results3/edge_direction.json` is the closed thread's record and no
+    other population may land on it by omission.
+
+    `--split` is separate and optional because it is not a scoring choice. The
+    partition is computed BEFORE any call, by `rung2.pair_sample_1600`, and read
+    here rather than recomputed: a split derived from the answers afterwards
+    would be free to move with them, and `B-d` would stop being a prediction.
+    """
+    # `split_path`, not `split`: this module imports `order_search.split`, which
+    # is the train/test partition of the corpus and has nothing to do with B-d's.
+    source, split_path = SOURCE, None
+    out = OUT / RECORD
+    if "--source" in argv:
+        source = Path(argv[argv.index("--source") + 1])
+    if "--split" in argv:
+        split_path = Path(argv[argv.index("--split") + 1])
+    if "--out" in argv:
+        out = Path(argv[argv.index("--out") + 1])
+    elif source != SOURCE:
+        raise SystemExit(
+            f"\nABORTED: --source {source} without --out.\n\n"
+            f"  {OUT / RECORD} belongs to the 400 pairs of Stage D. Another "
+            f"population\n  needs another destination:\n\n"
+            f"    --out {OUT}/edge_direction_1600.json\n")
+    return source, out, split_path
+
+
 PROVENANCE = (
     "POST-RUN measurement, written after P-d and P-e were adjudicated and by "
     "someone who had already seen the direction control. Nothing here is a bet "
@@ -184,6 +218,69 @@ def agreement(rows, key):
 
 
 # ---------------------------------------------------------------------------
+# B-d — where the errors fall
+# ---------------------------------------------------------------------------
+
+def read_split(path, key):
+    """
+    `{(a, b): "reachable" | "unreachable"}` from the Stage A record.
+
+    Read, not recomputed. The partition is a property of the SAMPLE and of the
+    oracle, both fixed before a call was made and both gated there; deriving it
+    again from the answers would let it move with the thing it is supposed to
+    predict.
+    """
+    rec = json.loads(Path(path).read_text())
+    field = {"better_space": "queue_ranking_space",
+             "better_corpus": "queue_ranking_corpus"}[key]
+    return {(r["rule_a"], r["rule_b"]): r[field] for r in rec["oracle"]
+            if r[field] is not None}
+
+
+def agreement_by_side(rows, key, side):
+    """
+    `B-d`: the same rate as `agreement`, on each side of the split, each with
+    its own `n`.
+
+    The two sides are scored by calling `agreement` rather than by a second
+    implementation of it, so a difference between them is a difference in the
+    pairs and not in the arithmetic.
+
+    A pair with no side is one with no strict better rule — a tie or the material
+    problem — and `agreement` already puts those outside every denominator, so
+    the partition loses nothing it would have counted.
+    """
+    parts = {"reachable": [], "unreachable": [], "no_side": []}
+    for r in rows:
+        parts[side.get((r["rule_a"], r["rule_b"]), "no_side")].append(r)
+    scored = {k: agreement(parts[k], key) for k in ("reachable", "unreachable")}
+    ru, rr = scored["unreachable"]["rate"], scored["reachable"]["rate"]
+    return {
+        "what": "B-d of PLAN_PROPOSER_1600.md: the direction rate on the pairs a "
+                "fixed queue ranking cannot answer, against the rate on the ones "
+                "it can. The band says the first is LOWER — that the proposer's "
+                "errors concentrate where they cost most.",
+        "the_split": "a queue-pair a ranking cannot answer is one that appears "
+                     "with both better-rules. Computed before any call by "
+                     "rung2.pair_sample_1600 and read here, never recomputed "
+                     "from the answers.",
+        "surface": key,
+        "reachable": scored["reachable"],
+        "unreachable": scored["unreachable"],
+        "n_without_a_side": len(parts["no_side"]),
+        "rate_unreachable": ru, "rate_reachable": rr,
+        "difference": round(ru - rr, 4) if (ru is not None and rr is not None)
+                      else None,
+        "band_holds": (ru < rr) if (ru is not None and rr is not None) else None,
+        "adjudication":
+            "the band is `rate(unreachable) < rate(reachable)` and its edge is "
+            "its own refutation line. `band_holds` is the reading; whether the "
+            "row is adjudicated at all depends on §0 being signed, which is "
+            "checked where the calls are made and not here.",
+    }
+
+
+# ---------------------------------------------------------------------------
 # Question 2 — the ceiling of the channel at this budget
 # ---------------------------------------------------------------------------
 
@@ -241,11 +338,13 @@ def rank_in(draws, value):
 # ---------------------------------------------------------------------------
 
 def main(argv=None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
     t_start = time.time()
-    if not SOURCE.exists():
-        print(f"ABORTED: {SOURCE} is not there. Stage D has not run.")
+    source, out, split_path = parse_source(argv)
+    if not source.exists():
+        print(f"ABORTED: {source} is not there. Stage D has not run.")
         return 1
-    src = json.loads(SOURCE.read_text())
+    src = json.loads(source.read_text())
     rows = list(src["answers"])
 
     corpus, rule_records, ext_c, conds = load()
@@ -287,6 +386,20 @@ def main(argv=None) -> int:
               f"{g['rate']}   se {g['standard_error']}   "
               f"{g['deviations_from_a_coin']:+.2f} deviations from a coin")
         print(f"          outside: {g['outside_the_denominator']}")
+
+    by_side = None
+    if split_path is not None:
+        by_side = {k: agreement_by_side(rows, f"better_{k}",
+                                        read_split(split_path, f"better_{k}"))
+                   for k in ("space", "corpus")}
+        print()
+        print("1b. B-d — WHERE THE ERRORS FALL "
+              "(band: unreachable BELOW reachable)")
+        for k, b in by_side.items():
+            u, r = b["unreachable"], b["reachable"]
+            print(f"  {k:<8}unreachable {u['rate']} (n {u['n']})   "
+                  f"reachable {r['rate']} (n {r['n']})   "
+                  f"difference {b['difference']:+}")
 
     rules = learned_rules()
     engine = fresh_engine(rules)
@@ -340,6 +453,7 @@ def main(argv=None) -> int:
             "space counts every case once; corpus counts them as often as they "
             "arrive. Both are reported and neither is picked.",
         "n_pairs": len(rows),
+        "source": str(source),
         "agreement_with_the_better_rule": agr,
         "scores_hibrido_corpus_test_split0": {
             k: round(v, 6) for k, v in scores.items()},
@@ -355,10 +469,13 @@ def main(argv=None) -> int:
             "corpus_wins_a", "corpus_wins_b", "better_corpus")} for r in rows],
         "seconds": round(time.time() - t_start, 1),
     }
+    if by_side is not None:
+        payload["B_d_direction_by_queue_ranking_side"] = by_side
+        payload["split_source"] = str(split_path)
     OUT.mkdir(exist_ok=True)
-    (OUT / RECORD).write_text(json.dumps(payload, indent=2))
+    out.write_text(json.dumps(payload, indent=2))
     print(f"\n  total cost: {time.time() - t_start:.0f}s, zero API calls")
-    print(f"-> {OUT / RECORD}")
+    print(f"-> {out}")
     return 0
 
 
