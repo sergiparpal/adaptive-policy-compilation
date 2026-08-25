@@ -78,7 +78,7 @@ from pathlib import Path
 
 from harness.provenance import describe, environment
 from rung2.engine2 import Space
-from rung2.pair_judgement import learned_rules
+from rung2.pair_judgement import SHOWN_AS, learned_rules
 from rung3.declared_order import (accepted_from, fresh_engine,
                                   topological_order)
 from rung3.floor_by_pool import floor
@@ -89,6 +89,15 @@ from rung3.order_search_ls import space_truth_masks
 OUT = Path("results3")
 RECORD = "edge_direction.json"
 SOURCE = Path("results2/pair_judgement_learned.json")
+
+# §0 of PLAN_PROPOSER_1600.md, transcribed on 2026-08-25 before any figure of
+# that plan existed. B-a says the direction rate is stable between budgets; the
+# anchor is what Stage D measured on 400 pairs under the space definition, and
+# the band's edge is its own refutation line. Carried so the reading can be
+# printed, never to be adjusted — moving either would turn a refutation into a
+# hold by editing a line of Python, which is hard rule 6 in its purest form.
+B_A_ANCHOR = 0.6978
+B_A_BAND = 0.05
 
 N_NULL_DRAWS = 2000
 NULL_SEED = 17
@@ -280,6 +289,113 @@ def agreement_by_side(rows, key, side):
     }
 
 
+def b_a_reading(agr, anchor=B_A_ANCHOR, band=B_A_BAND):
+    """
+    `B-a`: is the direction rate at this budget close to what 400 pairs gave?
+
+    The row is about STABILITY, not about height: a rate far above the anchor
+    refutes it exactly as a rate far below does, because what it claims is that
+    the proposer is the same instrument at both budgets. Two-sided by
+    construction, and the band's edge is its own refutation line.
+
+    The denominator is §9's own — pairs with a strict better rule under the space
+    definition AND a declared edge — which is `agreement`'s, unchanged. Naming it
+    here rather than choosing it afterwards is the defect `PLAN_PAIRWISE.md` §0
+    had to repair by amendment for P-c.
+    """
+    rate = agr["rate"]
+    if rate is None:
+        return {"row": "B-a", "measured": None, "adjudicable": False,
+                "why_not": "no pair has both a strict better rule and an edge"}
+    # Rounded to the precision `agreement` publishes the rate at, and compared
+    # there. `0.6978 - 0.05` is not `0.6478` in binary, so an unrounded
+    # comparison puts the band's own edge outside it — and §0 writes `<=`, which
+    # means the edge is inside. Whether a row holds must not depend on the
+    # representation of a decimal the record prints as exact.
+    dev = round(abs(rate - anchor), 4)
+    return {
+        "row": "B-a",
+        "claim": "the proposer's correct-direction rate is stable between "
+                 "budgets: at this budget it is close to what 400 gave",
+        "band": f"|rate - {anchor}| <= {band}",
+        "refuted_by": f"> {band}",
+        "denominator": "pairs with a strict better rule under the SPACE "
+                       "definition and a declared edge — §9's own",
+        "surface": agr["surface"],
+        "anchor_at_400": anchor, "anchor_owner": "results3/edge_direction.json",
+        "measured": rate, "n": agr["n"],
+        "standard_error": agr["standard_error"],
+        "absolute_difference": dev,
+        "band_holds": dev <= band,
+        "difference_in_standard_errors": (
+            round(dev / agr["standard_error"], 2)
+            if agr["standard_error"] else None),
+        "adjudication":
+            "`band_holds` is the reading. Whether the row is adjudicated at all "
+            "depends on §0 being signed, which is checked where the calls are "
+            "made and not here.",
+    }
+
+
+def direction_by_position(rows, key):
+    """
+    Does the proposer prefer the rule it was SHOWN FIRST?
+
+    Stage D came back 203 `b_beats_a` against 162 `a_beats_b` and
+    `results2/FINDINGS2.md` left the asymmetry unexplained. Presentation order is
+    balanced exactly — `winner_positions` deals half the pairs each way — so under
+    a proposer indifferent to position the winner falls first half the time, and
+    a deviation is a positional bias rather than a property of the rules.
+
+    At four times the sample this is either a real effect or a coincidence that
+    will not survive, which is the only reason to look again. **It is outside
+    every denominator of §0**: no row of the plan predicts it, and it is recorded
+    beside them rather than among them.
+
+    Two readings, because they are different questions. Which side the answer
+    lands on is about the proposer's taste; whether it is RIGHT more often from
+    one side is about whether that taste costs anything, and the second is
+    computed by calling `agreement` on each half rather than by a second
+    implementation of it.
+    """
+    first = second = 0
+    declared = Counter()
+    halves = {SHOWN_AS[0]: [], SHOWN_AS[1]: []}
+    for r in rows:
+        if r["declared"] == "none":
+            continue
+        halves[r["a_shown_as"]].append(r)
+        declared[r["declared"]] += 1
+        a_first = r["a_shown_as"] == SHOWN_AS[0]
+        if (r["declared"] == "a_beats_b") == a_first:
+            first += 1
+        else:
+            second += 1
+    n = first + second
+    rate = first / n if n else None
+    se = (0.25 / n) ** 0.5 if n else None
+    return {
+        "what": "of the edges declared, how often the winner is the rule that "
+                "was shown FIRST. Presentation order is balanced exactly, so "
+                "0.50 is indifference and a deviation is positional bias.",
+        "outside_every_denominator":
+            "yes. No row of §0 predicts it. Stage D's 203/162 was left "
+            "unexplained in results2/FINDINGS2.md and this is the same count at "
+            "four times the sample, reported beside the rows and never among "
+            "them.",
+        "surface": key,
+        "n_edges": n,
+        "winner_shown_first": first, "winner_shown_second": second,
+        "rate_first": round(rate, 4) if rate is not None else None,
+        "standard_error": round(se, 4) if se else None,
+        "deviations_from_indifference": (
+            round((rate - 0.5) / se, 3) if se else None),
+        "declared_counts": dict(sorted(declared.items())),
+        "agreement_by_where_rule_a_was_shown": {
+            f"a_shown_as_{k}": agreement(v, key) for k, v in halves.items()},
+    }
+
+
 # ---------------------------------------------------------------------------
 # Question 2 — the ceiling of the channel at this budget
 # ---------------------------------------------------------------------------
@@ -401,6 +517,28 @@ def main(argv=None) -> int:
                   f"reachable {r['rate']} (n {r['n']})   "
                   f"difference {b['difference']:+}")
 
+    b_a = b_a_reading(agr["space"])
+    print()
+    print("1c. B-a — IS THE RATE STABLE BETWEEN BUDGETS? "
+          f"(band: within {B_A_BAND} of {B_A_ANCHOR})")
+    if b_a.get("measured") is None:
+        print("  unadjudicable: no pair has both a strict better rule and an edge")
+    else:
+        print(f"  measured {b_a['measured']} on n {b_a['n']}   "
+              f"anchor {b_a['anchor_at_400']}   "
+              f"difference {b_a['absolute_difference']:+.4f}"
+              f"  ->  {'within the band' if b_a['band_holds'] else 'OUTSIDE'}")
+
+    by_pos = direction_by_position(rows, "better_space")
+    print()
+    print("1d. PRESENTATION POSITION — outside every denominator")
+    print(f"  winner shown first {by_pos['winner_shown_first']} / "
+          f"second {by_pos['winner_shown_second']}   "
+          f"rate {by_pos['rate_first']}   "
+          f"{by_pos['deviations_from_indifference']:+.2f} deviations from "
+          f"indifference")
+    print(f"  declared: {by_pos['declared_counts']}")
+
     rules = learned_rules()
     engine = fresh_engine(rules)
     with_edge = [r for r in rows if r["declared"] != "none"]
@@ -455,6 +593,8 @@ def main(argv=None) -> int:
         "n_pairs": len(rows),
         "source": str(source),
         "agreement_with_the_better_rule": agr,
+        "B_a": b_a,
+        "presentation_position": by_pos,
         "scores_hibrido_corpus_test_split0": {
             k: round(v, 6) for k, v in scores.items()},
         "born_at_floor": round(floor_born, 6),
