@@ -35,7 +35,7 @@ any other, and none may be compared to one that does.
 | **B-c** | It reaches the projection made from its own measured accuracy | the same score | `≥ 0.4981` | `< 0.4981` |
 | **B-d** | Its errors concentrate where they cost most: the direction rate is **lower** on the pairs a queue ranking cannot answer than on the ones it can | the two rates, each on its own side of the split, both reported with their `n` | `rate(unreachable) < rate(reachable)` | `rate(unreachable) ≥ rate(reachable)` |
 
-**Signed by Sergi: ______________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-08-25)**
 
 **What the drafter expects, written down so the scoreboard can score it.** `B-a`
 holds, `B-b` holds, `B-c` is **refuted**, `B-d` holds. The reasoning is one
