@@ -25,10 +25,14 @@ from __future__ import annotations
 
 import unittest
 
-from rung3.declared_order import (DIRECTION_SEED, N_DIRECTION_DRAWS,
-                                  P_D_MARGIN, P_E_BAND, accepted_from,
-                                  direction_controls, fresh_engine,
-                                  gate_order_respects_edges, reset_declared,
+from pathlib import Path
+
+from rung3.declared_order import (DIRECTION_SEED, N_DIRECTION_DRAWS, OUT,
+                                  P_D_MARGIN, P_E_BAND, RECORD, SOURCE,
+                                  accepted_from, direction_controls,
+                                  fresh_engine, gate_order_respects_edges,
+                                  not_adjudicated_here, parse_source,
+                                  reset_declared,
                                   rules_moved, topological_order)
 
 IDS = [f"R{i:04d}" for i in range(1, 7)]
@@ -247,6 +251,64 @@ class TestTheBandsAreTheSignedOnes(unittest.TestCase):
 
     def test_p_e_band(self):
         self.assertEqual(P_E_BAND, 0.25)
+
+
+class TestTheSourceAndItsDestination(unittest.TestCase):
+    """`PLAN_PROPOSER_1600.md` scores a second population with this same code —
+    rule C of its §4 — and the closed thread's record must stay out of reach."""
+
+    def test_no_arguments_reads_and_writes_the_closed_thread(self):
+        source, out, is_stage_d = parse_source([])
+        self.assertEqual(source, SOURCE)
+        self.assertEqual(out, OUT / RECORD)
+        self.assertTrue(is_stage_d)
+
+    def test_another_source_without_a_destination_aborts(self):
+        with self.assertRaises(SystemExit):
+            parse_source(["--source", "results2/pair_judgement_1600.json"])
+
+    def test_another_source_with_a_destination_is_not_stage_d(self):
+        source, out, is_stage_d = parse_source(
+            ["--source", "results2/pair_judgement_1600.json",
+             "--out", "results3/declared_order_1600.json"])
+        self.assertEqual(source, Path("results2/pair_judgement_1600.json"))
+        self.assertEqual(out, Path("results3/declared_order_1600.json"))
+        self.assertFalse(is_stage_d)
+
+    def test_the_closed_source_may_be_written_elsewhere(self):
+        source, out, is_stage_d = parse_source(["--out", "/tmp/scratch.json"])
+        self.assertEqual(source, SOURCE)
+        self.assertTrue(is_stage_d)
+
+
+class TestASignedRowIsNotReAdjudicated(unittest.TestCase):
+    """P-d and P-e were signed in §0 of `PLAN_PAIRWISE.md` and adjudicated on
+    Stage D's 400 pairs. The same code on a bigger population produces the same
+    number shaped like a verdict, and a record that printed it as one would let a
+    row be re-adjudicated by rerunning it on more data."""
+
+    BLOCK = {"row": "P-d", "band": "> floor + 0.03", "measured": 0.52,
+             "threshold": 0.4632, "verdict": "HOLDS"}
+
+    def test_the_word_verdict_is_gone(self):
+        self.assertNotIn("verdict", not_adjudicated_here(self.BLOCK))
+
+    def test_the_figure_stays(self):
+        out = not_adjudicated_here(self.BLOCK)
+        self.assertEqual(out["measured"], 0.52)
+        self.assertEqual(out["threshold"], 0.4632)
+
+    def test_it_still_says_which_side_of_the_line_it_fell(self):
+        """Withholding the verdict is not withholding the reading."""
+        self.assertTrue(not_adjudicated_here(self.BLOCK)["above_the_threshold"])
+        below = dict(self.BLOCK, verdict="REFUTED")
+        self.assertFalse(not_adjudicated_here(below)["above_the_threshold"])
+
+    def test_it_names_the_row_and_where_it_was_adjudicated(self):
+        note = not_adjudicated_here(self.BLOCK)["note"]
+        self.assertIn("P-d", note)
+        self.assertIn("PLAN_PAIRWISE.md", note)
+        self.assertFalse(not_adjudicated_here(self.BLOCK)["adjudicates"])
 
 
 if __name__ == "__main__":

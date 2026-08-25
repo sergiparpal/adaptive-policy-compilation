@@ -27,6 +27,7 @@ Nothing here makes a network call: the client is exercised through
 from __future__ import annotations
 
 import inspect
+import json
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -36,14 +37,17 @@ from rung2.engine2 import Rule2
 from rung2.hidden_priority import build_hidden_engine
 from rung2.pair_judgement import (FLOOR_COIN, GATE_POPULATION, MAX_RETRIES,
                                   MAX_TOKENS, MODEL, N_LEARNED_RULES,
-                                  POSITION_SEED, SHOWN_AS, TEMPERATURE,
+                                  PLAN, PLAN_1600, POSITION_SEED, SHOWN_AS,
+                                  TEMPERATURE,
                                   Judge, add_breadth, breakdowns,
                                   build_learned_questions, build_questions,
                                   classify, classify_learned, fresh_engine,
                                   gate_no_leak, gate_population,
                                   gate_position_balance, gate_signature,
-                                  hidden_rules, kill_switch, learned_population,
-                                  learned_rules, load_benchmark, question,
+                                  gate_sample_record, hidden_rules,
+                                  kill_switch, learned_population,
+                                  learned_rules, load_benchmark, load_sample,
+                                  question,
                                   rates, revealed_hierarchy, sample_population,
                                   shown_rule, verdict_histogram,
                                   winner_positions)
@@ -803,6 +807,125 @@ class TestTheLearnedBaseIsTheOneRungOneWrote(unittest.TestCase):
                 self.assertNotIn(r["rule_b"], r["question"])
                 self.assertEqual(r["shown_as"][r["a_shown_as"]], r["rule_a"])
                 self.assertGreater(r["overlap_cases"], 0)
+
+
+class TestTheGateReadsThePlanThatGovernsTheRun(unittest.TestCase):
+    """
+    The one that stops 1,200 calls being spent on unsigned rows.
+
+    §0 of `PLAN_PAIRWISE.md` was signed on 2026-08-24. A run under
+    `PLAN_PROPOSER_1600.md` that checked the closed thread's signature would
+    find it valid and report `ok` — which is worse than having no gate, because
+    a gate that reads the wrong file is believed.
+    """
+
+    def test_the_two_plans_are_different_files(self):
+        self.assertNotEqual(PLAN, PLAN_1600)
+        self.assertEqual(PLAN_1600.name, "PLAN_PROPOSER_1600.md")
+
+    def test_the_verdict_follows_the_file_it_is_given(self):
+        with TemporaryDirectory() as tmp:
+            signed = Path(tmp) / "PLAN_SIGNED.md"
+            signed.write_text(f"# x\n\n{SIGNED}\n")
+            unsigned = Path(tmp) / "PLAN_UNSIGNED.md"
+            unsigned.write_text(f"# x\n\n{BLANK}\n")
+            self.assertTrue(gate_signature(signed)["passes"])
+            self.assertFalse(gate_signature(unsigned)["passes"])
+
+    def test_a_signed_plan_does_not_vouch_for_another(self):
+        with TemporaryDirectory() as tmp:
+            signed = Path(tmp) / "PLAN_SIGNED.md"
+            signed.write_text(f"# x\n\n{SIGNED}\n")
+            unsigned = Path(tmp) / "PLAN_UNSIGNED.md"
+            unsigned.write_text(f"# x\n\n{BLANK}\n")
+            self.assertNotEqual(gate_signature(signed)["passes"],
+                                gate_signature(unsigned)["passes"])
+
+    def test_the_gate_names_the_file_and_the_rows_it_read(self):
+        """A record whose gate says `PLAN_PAIRWISE.md` when the run was governed
+        by another plan is a gate nobody can audit afterwards."""
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "PLAN_PROPOSER_1600.md"
+            path.write_text(f"# x\n\n{BLANK}\n")
+            g = gate_signature(path, "B-a to B-d")
+            self.assertIn("PLAN_PROPOSER_1600.md", g["what"])
+            self.assertIn("B-a to B-d", g["what"])
+
+    def test_the_1600_plan_is_unsigned_today(self):
+        """If this ever fails, Sergi signed §0 — and then it is the plan's own
+        signature that says so, not this test."""
+        g = gate_signature(PLAN_1600, "B-a to B-d")
+        if g["passes"]:
+            self.skipTest("§0 of PLAN_PROPOSER_1600.md has been signed")
+        self.assertFalse(g["passes"])
+
+
+class TestTheSampleReachesTheAskingPathAsIdentityOnly(unittest.TestCase):
+    """`rung2/pair_judgement` is on the online-loop list. Stage A's record holds
+    the oracle's verdicts in a second block, and the projection at the boundary
+    is what keeps them out of here."""
+
+    def record(self, tmp):
+        path = Path(tmp) / "sample.json"
+        path.write_text(json.dumps({
+            "plan": "PLAN_PROPOSER_1600.md",
+            "gates": {"population": {"passes": True}},
+            "pairs": [{"index": 0, "rule_a": "R0001", "rule_b": "R0002",
+                       "source": "stage_d"}],
+            "oracle": [{"index": 0, "rule_a": "R0001", "rule_b": "R0002",
+                        "better_space": "a", "queue_ranking_space": "reachable"}],
+        }))
+        return path
+
+    def test_it_hands_over_tuples_and_not_rows(self):
+        with TemporaryDirectory() as tmp:
+            pairs, _rec = load_sample(self.record(tmp))
+            self.assertEqual(pairs, [("R0001", "R0002")])
+
+    def test_no_verdict_survives_the_projection(self):
+        with TemporaryDirectory() as tmp:
+            pairs, _rec = load_sample(self.record(tmp))
+            for p in pairs:
+                self.assertEqual(len(p), 2)
+                self.assertTrue(all(isinstance(x, str) for x in p))
+
+    def test_a_missing_sample_stops_the_run(self):
+        with TemporaryDirectory() as tmp:
+            with self.assertRaises(SystemExit):
+                load_sample(Path(tmp) / "absent.json")
+
+
+class TestTheSampleGate(unittest.TestCase):
+
+    BASE = {"plan": "PLAN_PROPOSER_1600.md",
+            "gates": {"population": {"passes": True},
+                      "split_populated": {"passes": True}},
+            "pairs": [{"rule_a": "R1", "rule_b": "R2"}] * 4}
+
+    def gate(self, **over):
+        rec = dict(self.BASE)
+        rec.update(over)
+        return gate_sample_record(rec, Path("x.json"), 4)
+
+    def test_a_good_record_passes(self):
+        self.assertTrue(self.gate()["passes"])
+
+    def test_a_record_from_another_plan_fails(self):
+        self.assertFalse(self.gate(plan="PLAN_PAIRWISE.md")["passes"])
+
+    def test_a_failed_gate_upstream_fails_it(self):
+        g = self.gate(gates={"split_populated": {"passes": False}})
+        self.assertFalse(g["passes"])
+        self.assertEqual(g["gates_that_failed"], ["split_populated"])
+
+    def test_the_wrong_size_fails_it(self):
+        """The quiet one: `--budget 1600` with a 400-pair file asks 400
+        questions and writes a record that says 1,600."""
+        rec = dict(self.BASE)
+        self.assertFalse(gate_sample_record(rec, Path("x.json"), 1600)["passes"])
+
+    def test_a_record_with_no_gates_at_all_fails(self):
+        self.assertFalse(self.gate(gates={})["passes"])
 
 
 if __name__ == "__main__":

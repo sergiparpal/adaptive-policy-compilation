@@ -125,6 +125,14 @@ Usage:
     python3 -m rung2.pair_judgement --hidden --dry-run     # free, spends nothing
     python3 -m rung2.pair_judgement --hidden --limit 10    # the smoke path
     python3 -m rung2.pair_judgement --hidden               # 170 calls, cents
+
+    # Stage B of PLAN_PROPOSER_1600.md. `--sample` names the population Stage A
+    # built and gated; `--reuse` or `--reask-all` is §2's choice and has no
+    # default; the signature gate reads THAT plan's §0 and not the closed
+    # thread's. All of it is refused while §0 is unsigned, and --dry-run builds
+    # every question and spends nothing.
+    python3 -m rung2.pair_judgement --learned --budget 1600 \
+        --sample results2/pair_sample_1600.json --reuse --dry-run
 """
 
 from __future__ import annotations
@@ -158,12 +166,19 @@ from .proposers2 import ProposalError, parse_payload
 
 REPO = Path(__file__).resolve().parent.parent
 PLAN = REPO / "PLAN_PAIRWISE.md"
+# The pairwise thread closed on 2026-08-24 with §0 of PLAN_PAIRWISE.md SIGNED.
+# That signature must not carry a second, larger run: PLAN_PROPOSER_1600.md asks
+# a different question at a different budget, its rows are its own, and the
+# --sample path below gates on ITS §0 and never on the closed thread's.
+PLAN_1600 = REPO / "PLAN_PROPOSER_1600.md"
 BENCH = Path("results2/pair_benchmark.json")
 OUT = Path("results2")
 RECORD = "pair_judgement_hidden.json"
 RECORD_SMOKE = "pair_judgement_hidden_smoke.json"
 RECORD_LEARNED = "pair_judgement_learned.json"
 RECORD_LEARNED_SMOKE = "pair_judgement_learned_smoke.json"
+RECORD_1600 = "pair_judgement_1600.json"
+RECORD_1600_SMOKE = "pair_judgement_1600_smoke.json"
 
 LEARNED = Path("results/llm_run.json")
 # The population of stage D, measured 2026-08-24 and again by this module every
@@ -356,6 +371,51 @@ def sample_population(pairs, budget, seed=SAMPLE_SEED):
     return [p for k, p in enumerate(pairs) if k in picked]
 
 
+def load_sample(path: Path):
+    """
+    The pairs Stage A of `PLAN_PROPOSER_1600.md` built, **identity only**.
+
+    Its record carries two blocks and this reads one of them. `pairs` is which
+    two rules and where they came from; `oracle` is which of the two gets more of
+    the shared region right, and this module — on the online-loop list of
+    `tests/test_oracle_separation.py` — never reads it. The projection to tuples
+    happens here, at the boundary, so nothing downstream can reach a field this
+    function did not hand over.
+    """
+    if not path.exists():
+        raise SystemExit(
+            f"\nABORTED: {path} is not there.\n\n"
+            "  The 1,600-pair population is built by Stage A. Run:\n"
+            "    PYTHONHASHSEED=0 python3 -m rung2.pair_sample_1600\n")
+    rec = json.loads(path.read_text())
+    return [(r["rule_a"], r["rule_b"]) for r in rec["pairs"]], rec
+
+
+def gate_sample_record(rec, path, budget):
+    """
+    The sample handed in is Stage A's, it passed its own gates, and it is the
+    size the budget claims.
+
+    Every one of these is a way to spend 1,200 calls on the wrong population, and
+    the last one is the quiet one: `--budget 1600` with a 400-pair file asks 400
+    questions and writes a record that says 1,600.
+    """
+    gates = rec.get("gates") or {}
+    failed = sorted(k for k, g in gates.items() if not g.get("passes"))
+    n = len(rec.get("pairs") or [])
+    return {
+        "what": "the file --sample names is Stage A's record, every gate in it "
+                "passed, and it holds exactly the budget's worth of pairs.",
+        "source": str(path),
+        "plan_named_by_the_record": rec.get("plan"),
+        "expected_plan": PLAN_1600.name,
+        "n_pairs": n, "expected": budget,
+        "gates_that_failed": failed,
+        "passes": (rec.get("plan") == PLAN_1600.name and not failed
+                   and n == budget and bool(gates)),
+    }
+
+
 def gate_population(stats, n_rules):
     total = n_rules * (n_rules - 1) // 2
     got = (stats["disjoint"] + stats["subsumption_comparable"]
@@ -420,12 +480,19 @@ def load_benchmark(path: Path = BENCH):
 # The gates that run before a single call
 # ---------------------------------------------------------------------------
 
-def gate_signature(path: Path = PLAN):
+def gate_signature(path: Path = PLAN, rows: str = "P-c"):
     """
-    §0 of `PLAN_PAIRWISE.md` must carry a signature. Blanks mean unsigned.
+    §0 of the plan that governs this run must carry a signature. Blanks mean
+    unsigned.
 
     No flag skips this. The way past it is to sign the plan — and the signature
     commit travels alone, staged by name (hard rule 2 of `CLAUDE.md`).
+
+    **The plan is an argument because there is more than one.** §0 of
+    `PLAN_PAIRWISE.md` was signed on 2026-08-24 and adjudicated; a run under
+    `PLAN_PROPOSER_1600.md` that checked the closed thread's signature would find
+    it valid and spend 1,200 calls on rows nobody has signed. A gate that reads
+    the wrong file is worse than no gate, because it reports `ok`.
     """
     line = None
     if path.exists():
@@ -435,8 +502,8 @@ def gate_signature(path: Path = PLAN):
                 break
     signed = bool(line) and not re.search(r"_{3,}", line)
     return {
-        "what": "the signature line of §0 of PLAN_PAIRWISE.md. P-c governs this "
-                "stage's output and a model may not sign it (hard rule 2).",
+        "what": f"the signature line of §0 of {path.name}. {rows} governs this "
+                f"stage's output and a model may not sign it (hard rule 2).",
         "source": str(path),
         "line_found": line is not None,
         "line": line,
@@ -878,21 +945,55 @@ def revealed_hierarchy(rows):
     }
 
 
+UNMADE_CHOICE = """
+ABORTADO: --sample sin --reuse ni --reask-all.
+
+  §2 de PLAN_PROPOSER_1600.md deja esta eleccion para el momento de la firma y
+  dice que no es del redactor. No hay valor por defecto a proposito: las dos
+  opciones cuestan dinero distinto y compran cosas distintas.
+
+    --reuse       1.200 llamadas. Las 400 de la etapa D se reaprovechan, el
+                  anidamiento es exacto y las fechas no lo son.
+    --reask-all   1.600 llamadas. Una sola fecha, y las 400 pasan a ser una
+                  REPLICA de la etapa D bajo protocolo identico: cuanto se
+                  mueven las respuestas de un proponente entre dos dias.
+"""
+
+
 def main_learned(argv) -> int:
     dry_run = "--dry-run" in argv
     overwrite = FLAG in argv
     budget = DEFAULT_BUDGET
     if "--budget" in argv:
         budget = int(argv[argv.index("--budget") + 1])
-    smoke = budget < 50
-    out = OUT / (RECORD_LEARNED_SMOKE if smoke else RECORD_LEARNED)
+    sample_path = None
+    if "--sample" in argv:
+        sample_path = Path(argv[argv.index("--sample") + 1])
+    limit = None
+    if "--limit" in argv:
+        limit = int(argv[argv.index("--limit") + 1])
+    reuse, reask = "--reuse" in argv, "--reask-all" in argv
+
+    if sample_path is None:
+        smoke = budget < 50
+        out = OUT / (RECORD_LEARNED_SMOKE if smoke else RECORD_LEARNED)
+    else:
+        if reuse == reask:
+            print(UNMADE_CHOICE)
+            return 2
+        smoke = limit is not None
+        out = OUT / (RECORD_1600_SMOKE if smoke else RECORD_1600)
     if "--out" in argv:
         out = Path(argv[argv.index("--out") + 1])
 
     t_start = time.time()
     print("=" * 78)
-    print("STAGE D — the pairwise question over the learned base, where there is "
-          "no truth")
+    if sample_path is None:
+        print("STAGE D — the pairwise question over the learned base, where "
+              "there is no truth")
+    else:
+        print("STAGE B of PLAN_PROPOSER_1600 — the same question at the budget "
+              "that discriminates")
     print("=" * 78)
     print(f"  model {MODEL} · temperature {TEMPERATURE} · "
           f"max_retries {MAX_RETRIES} · sequential")
@@ -902,16 +1003,62 @@ def main_learned(argv) -> int:
     rules = learned_rules()
     pairs, ext, stats = learned_population(rules, space)
     g_pop = gate_population(stats, len(rules))
-    sampled = sample_population(pairs, budget)
-    positions = winner_positions(len(sampled))
     cases = list(all_cases())
-    rows = build_learned_questions(sampled, rules, ext, positions, cases,
-                                   space.n)
+
+    # Stage D's output is governed by P-d and P-e, and Stage C's — `main`, not
+    # this function — by P-c. The gate has always read the same file; until
+    # 2026-08-25 it also always said `P-c`, in a record that was Stage D's.
+    plan, governs, g_sample = PLAN, "P-d/P-e", None
+    held, held_date = {}, None
+    if sample_path is None:
+        sampled = sample_population(pairs, budget)
+        to_ask = sampled
+    else:
+        plan, governs = PLAN_1600, "B-a to B-d"
+        sampled, sample_rec = load_sample(sample_path)
+        if "--budget" not in argv:
+            budget = len(sampled)
+        g_sample = gate_sample_record(sample_rec, sample_path, budget)
+        if reuse:
+            base = json.loads((OUT / RECORD_LEARNED).read_text())
+            held = {(r["rule_a"], r["rule_b"]): r for r in base["answers"]}
+            held_date = (base.get("_env") or {}).get("recorded_at")
+        to_ask = [p for p in sampled if p not in held]
+        if limit:
+            # Truncate the POPULATION before dealing, never the rows after.
+            # Stage C found this on its own first smoke path: dealing over the
+            # whole population and keeping a prefix leaves whatever split that
+            # prefix happens to have, and the balance the gate demands is a
+            # property of the pairs actually asked about.
+            to_ask, held = to_ask[:limit], {}
+            sampled = to_ask
+
+    positions = winner_positions(len(to_ask))
+    fresh = build_learned_questions(to_ask, rules, ext, positions, cases,
+                                    space.n)
+
+    if sample_path is None:
+        rows = fresh
+    else:
+        # In the sample's order, which is the population's own — the same order
+        # Stage D asked in. `try_edge` is fed sequentially and whether an edge
+        # closes a cycle depends on the ones already in, so the order the rows
+        # are written in is part of the measurement and not presentation.
+        by_pair = {(r["rule_a"], r["rule_b"]): r for r in fresh}
+        now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        rows = []
+        for k, pair in enumerate(sampled):
+            reused = pair in held
+            r = dict(held[pair]) if reused else by_pair[pair]
+            r["index"] = k
+            r["answer_from"] = "stage_d" if reused else "this_run"
+            r["answered_at"] = held_date if reused else now
+            rows.append(r)
 
     g_leak = gate_no_leak([r["question"] for r in rows])
     g_pos = gate_position_balance([SHOWN_AS.index(r["a_shown_as"])
                                    for r in rows])
-    g_sig = gate_signature()
+    g_sig = gate_signature(plan, governs)
 
     print()
     print("POPULATION GATE — the three conditions over the 577 rules")
@@ -922,11 +1069,21 @@ def main_learned(argv) -> int:
           f"{'  ok' if g_pop['passes'] else '  NO'}")
     print()
     print("GATES — every one of them runs before a single call")
-    for name, g in (("no leak", g_leak), ("position balance", g_pos),
-                    ("P-d/P-e signed", g_sig)):
+    checks = [("no leak", g_leak), ("position balance", g_pos),
+              (f"{governs} signed", g_sig)]
+    if g_sample is not None:
+        checks.insert(0, ("the sample", g_sample))
+    for name, g in checks:
         print(f"  {name:<20}{'ok' if g['passes'] else 'NO'}")
     if not g_pop["passes"]:
         print("\n  STOP: this is not the population §10 budgeted for.")
+        return 1
+    if g_sample is not None and not g_sample["passes"]:
+        print(f"\n  STOP: {sample_path} is not Stage A's gated record for "
+              f"{PLAN_1600.name} at {budget} pairs "
+              f"(it holds {g_sample['n_pairs']}, plan "
+              f"{g_sample['plan_named_by_the_record']}, failed gates "
+              f"{g_sample['gates_that_failed']}).")
         return 1
     if not g_leak["passes"]:
         print("\n  STOP: a question names a rule or carries a declared edge.")
@@ -940,19 +1097,25 @@ def main_learned(argv) -> int:
         print()
         print(f"  DRY RUN — {len(rows)} questions built, nothing called, "
               f"nothing written")
-        print(f"  sampled {len(sampled)} of {len(pairs)} at seed {SAMPLE_SEED}")
-        print(f"  P-d/P-e signed: {g_sig['passes']}")
+        if sample_path is None:
+            print(f"  sampled {len(sampled)} of {len(pairs)} at seed "
+                  f"{SAMPLE_SEED}")
+        else:
+            print(f"  {len(rows)} pairs from {sample_path}, "
+                  f"{len(held)} answers already held, "
+                  f"{len(fresh)} to ask   ({'reuse' if reuse else 'reask-all'})")
+        print(f"  {governs} signed: {g_sig['passes']}   ({plan.name})")
         print()
         r = rows[0]
         print(f"  ONE QUESTION ({r['rule_a']} / {r['rule_b']}, "
               f"{r['rule_a']} shown as {r['a_shown_as']})")
         for line in r["question"].splitlines():
             print(f"    {line}")
-        print(f"\n  cost if run: {len(rows)} calls. Nothing spent here.")
+        print(f"\n  cost if run: {len(fresh)} calls. Nothing spent here.")
         return 0
 
     if not g_sig["passes"]:
-        print("\n  STOP: §0 of PLAN_PAIRWISE.md is unsigned. P-d and P-e govern")
+        print(f"\n  STOP: §0 of {plan.name} is unsigned. {governs} govern")
         print("  this stage's output and a model may not sign them.")
         return 1
     g_key = gate_api_key()
@@ -966,9 +1129,20 @@ def main_learned(argv) -> int:
 
     judge = Judge()
     print()
-    print(f"  {len(rows)} calls, one per pair, sequential")
+    print(f"  {len(fresh)} calls, one per unanswered pair, sequential")
+    if held:
+        print(f"  {len(held)} answers reused from Stage D, dated "
+              f"{held_date} — §2 of the plan, and §5.5: the date is not held "
+              f"fixed and every row says which one it carries")
     failures = 0
+    asked = 0
     for k, r in enumerate(rows):
+        if r.get("answer_from") == "stage_d":
+            # Verbatim, down to `declared`. Recomputing it would give the same
+            # answer today and would be a second implementation of the thing
+            # that produced the record.
+            continue
+        asked += 1
         try:
             payload, attempts = judge.ask(r["question"])
             answer = payload.get("action")
@@ -984,8 +1158,8 @@ def main_learned(argv) -> int:
                       "why": "", "attempts": MAX_RETRIES + 1,
                       "parse_failed": True, "error": str(exc)[:200]})
         r["declared"] = classify_learned(r["answer"], r)
-        if (k + 1) % 50 == 0 or k + 1 == len(rows):
-            print(f"    {k + 1}/{len(rows)}")
+        if asked % 50 == 0 or asked == len(fresh):
+            print(f"    {asked}/{len(fresh)}")
 
     engine = PriorityEngine(space=space)
     for rid in sorted(rules):
@@ -1013,7 +1187,7 @@ def main_learned(argv) -> int:
             "engine, as an order, and as a machine — and that measurement lives "
             "in its own record.",
         "partial_run": smoke,
-        "n_population": len(pairs), "n_sampled": len(sampled),
+        "n_population": len(pairs), "n_sampled": len(rows),
         "sample": f"deterministic at seed {SAMPLE_SEED}, budget {budget}",
         "gates": {"population": g_pop, "no_leak": g_leak,
                   "position_balance": g_pos, "signature": g_sig},
@@ -1034,6 +1208,30 @@ def main_learned(argv) -> int:
         "answers": rows,
         "seconds": round(time.time() - t_start, 1),
     }
+    if sample_path is not None:
+        payload["gates"]["sample"] = g_sample
+        payload.update({
+            "plan": PLAN_1600.name, "stage": "B",
+            "what":
+                "Stage B of PLAN_PROPOSER_1600.md: the pairwise question of "
+                "Stage D asked over 1,600 pairs instead of 400, because "
+                "results3/FINDINGS3.md §10 showed that at 400 a perfect chooser, "
+                "a 70%-accurate one and a coin are the same number. Same prompt, "
+                "same model, same settings — rule 5 of its §4.",
+            "sample_record": str(sample_path),
+            "answers_reused": len(held),
+            "calls_made": asked,
+            "the_choice_of_§2":
+                ("reuse: the 400 of Stage D were not re-asked, so the nesting is "
+                 "exact and the dates are not"
+                 if reuse else
+                 "reask-all: every pair was asked on one date, and the 400 are a "
+                 "replication of Stage D under an identical protocol"),
+            "the_date_is_not_held_fixed":
+                "each row carries `answered_at`, the date the answer it holds "
+                "came from. §5.5 of the plan: whichever option was taken, any "
+                "comparison between the two halves is labelled with it.",
+        })
     OUT.mkdir(exist_ok=True)
     out.write_text(json.dumps(payload, indent=2))
 
