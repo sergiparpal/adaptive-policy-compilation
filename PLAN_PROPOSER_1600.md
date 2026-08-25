@@ -160,6 +160,26 @@ is not a superset of `random.sample(N, 400)`. The extension must therefore be
 built as *Stage D's 400, plus 1,200 drawn from the complement* — never by
 re-running a sampler at a larger size and hoping.
 
+> **ERRATUM, 2026-08-25, found while implementing §6.** The first half of that
+> paragraph holds and holds hard: over this population the shuffle's first 400
+> and the sample's first 400 share **not one pair**. The second half is **false
+> at this scale**. `random.Random(17).sample(range(31850), 400)` *is* an exact
+> prefix of `random.Random(17).sample(range(31850), 1600)` under CPython 3.12:
+> both budgets take the selection-set branch of `random.sample`, so they share
+> one draw stream and the smaller comes out inside the larger.
+>
+> **The instruction does not change and neither does anything downstream** — the
+> load-bearing word in it was always *hoping*. The nesting is an undocumented
+> implementation detail: it disappears as soon as the two budgets straddle the
+> branch boundary of the sampler's `setsize` heuristic, which depends on both `n`
+> and `k`, and it is not a promise the language makes. `tests/test_pair_sample_1600.py`
+> carries the counterexample and the coincidence side by side, and Stage A rests
+> on the complement plus `gate_base_is_a_subset`, which checks the result instead
+> of trusting the route.
+>
+> Written by the drafter, before §0 was signed and before any figure of this plan
+> existed. No row moves and no band is touched.
+
 **5.2 — The proposer's `no edge` and the oracle's `tie` are different events.**
 At 1,600 the oracle offers nothing on 353 pairs, because neither rule is ever
 right or both are right equally often. The proposer offers nothing when it names
