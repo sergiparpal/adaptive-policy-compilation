@@ -70,28 +70,52 @@ a rule* to *which of these two rules should win this ticket* — and answered
 whether that works. It does, and it does not order the base at the budget it was
 tried at. What is left:
 
-- **What the real proposer scores above 400 calls.** The only genuinely
-  expensive item here, and now the only one with a price attached instead of a
-  guess: the channel's ceiling curve says **~800 pairs to clear P-d's band and
-  ~1,600 to beat a free queue ranking** (`FINDINGS3.md` §10). Both the oracle
-  curve and the projection at the proposer's measured accuracy cross there; what
-  the proposer itself does is unmeasured, because its errors are neither
-  independent nor evenly spread and the projection assumes both. This would need
-  its own `PLAN_*.md` with its own signed §0.
-- **Why the parse-failure rate tripled between the two populations.** Same model,
-  same settings, same prompt; 2.4% on the hidden policy's pairs and 8.75% on the
-  learned base's. The population is the only thing that changed and no mechanism
-  is proposed. `FINDINGS2.md`, Stage D.
-- **Why the proposer prefers the rule shown second.** 203 against 162 with the
-  presentation order balanced exactly, so it is not a position artefact and it is
-  not explained either. Whatever it is, it is a property of the elicitation and
-  would show up in any pairwise protocol.
-- **Whether the proposer knows anything beyond a ranking of the queues.** On the
-  pairs a queue hierarchy is structurally unable to answer it scored 5 of 9
-  (`FINDINGS2.md`, Stage C). That is a coin on `n=9` and it is the question the
-  whole thread turns on. A population built *only* from those pairs would answer
-  it cheaply — the hidden policy has few, but the learned base's could be
-  enumerated the same way `edge_budget` enumerates directions.
+- ~~**What the real proposer scores above 400 calls.**~~ **CLOSED at one budget,
+  August 26, 2026** by `PLAN_PROPOSER_1600.md` — 1,200 calls, four signed rows,
+  `FINDINGS3.md` §11. At 1,600 pairs the proposer's order scores **0.4804** on
+  `hibrido` / corpus test split 0. It clears P-d's 0.4632 threshold, as §10
+  predicted, and **does not** beat the free queue ranking's 0.4824 — §10's
+  "~1,600 to beat a free queue ranking" is retracted there by a dated erratum. The
+  projection was not miscomputed: its assumption was, and `B-d` is what refutes
+  it.
+  **What it opens instead:** whether *any* budget clears the ranking. The oracle
+  curve is flat from 12,800 on and tops out at 0.6834 against search's 0.7678, so
+  the room is bounded — and `B-d` says the proposer spends its errors precisely
+  where a ranking is silent, which no budget repairs. Answering it costs 12,800
+  calls at ~19 s each, which is three days of wall clock for a question whose
+  ceiling is already known. **The cheaper question is the fourth item below**, and
+  it is now the one worth doing.
+- ~~**Why the parse-failure rate tripled between the two populations.**~~
+  **PROBABLY NOT A THING, August 26, 2026.** 2.4% on the hidden policy's pairs
+  (n 170) and 8.75% on the learned base's (n 400) — and **5.12% on the same
+  population at n 1,600** (`FINDINGS3.md` §11). The rate sits between the two
+  earlier values at four times the sample, which is what sampling noise on small
+  denominators looks like and not what a mechanism looks like. Kept as a line
+  rather than deleted because nothing was *shown* to be absent; the prompt was
+  never touched, which was the point.
+- **Why the proposer prefers the rule shown second.** 203 against 162 at 400,
+  **and 781 against 698 at 1,600** — the asymmetry survived quadrupling
+  (`FINDINGS3.md` §11). **Sharpened, August 26, 2026, into two separate facts that
+  were being conflated.** There *is* a position effect and it is now significant:
+  the winner is the rule shown FIRST 801 times against 678, 0.5416, +3.20
+  deviations from indifference — where at 400 it was +1.52 and unreadable. But it
+  is nearly free, since the direction rate is 0.7143 when `rule_a` was shown first
+  and 0.7473 when shown second. So position moves *which side gets named* and
+  barely moves *whether the naming is right*, and it does **not** explain the
+  a/b asymmetry, which is a different question and still unexplained.
+- **Whether the proposer knows anything beyond a ranking of the queues.**
+  **ANSWERED IN PART, August 26, 2026, and it is the thread's central result.**
+  Stage C's 5 of 9 was a coin on `n=9`; `B-d` puts it on n 654 against n 451. On
+  the pairs a fixed ranking **cannot** answer the proposer's direction rate is
+  **0.6391**; on the ones it **can**, **0.8647** (0.5813 against 0.9181 over the
+  corpus surface). So it does know *something* beyond a ranking — 0.64 is not a
+  coin — but its competence is concentrated where the ranking already succeeds,
+  and that is why 1,200 calls compile into an order the ranking matches for free.
+  **What is left of the item** is the cheap version that would isolate it: a
+  population built *only* from unreachable pairs, which `pair_sample_1600.py`
+  already knows how to identify. At 1,600 that is 654 of them, so a run of that
+  size on nothing else would measure the interesting half at four times the
+  density, for the same money.
 - **Whether the channel's ceiling is the protocol or the compilation.** Handed
   every pair and the right answer to each, pairwise declaration stops short of
   what the optimizer finds on the same cell (`FINDINGS3.md` §10). The compilation
