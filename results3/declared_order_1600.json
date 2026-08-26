@@ -1,0 +1,227 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-26T18:41:37Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "da46e3e68ec3b477b8af04f6d4333c496449f211",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "6f80ad5e08c948db",
+    "n_orders": 65,
+    "split": 0,
+    "neighbourhood": "move+swap",
+    "multistart_seed": 17,
+    "multistart_starts": 64
+  },
+  "what": "what the declared edges of stage D do: as a hybrid engine, as an order against the floor stage A measured, and as a machine against 65 end orders regenerated on the hybrid pool. Plus the queue-ranking control. Zero API calls.",
+  "there_is_no_truth_for_the_pairs": "no correct-edge rate exists for the 400 pairs and none is computed anywhere. Every figure here is about what the edges DO.",
+  "source": "results2/pair_judgement_1600.json",
+  "n_edges": 1310,
+  "n_rules": 577,
+  "n_space": 134400,
+  "rules_moved_off_arrival": 576,
+  "order_note": "topological sort of the declared edges with the ready set drained in born_at order, so a rule no edge touches keeps its arrival position. born_at IS the floor, so P-d compares exactly what the edges added to it \u2014 and most of the order is the tie-break, which is why `rules_moved_off_arrival` is published beside every figure.",
+  "gates": {
+    "order_respects_edges": {
+      "what": "every accepted edge must place its winner before its loser. If it did not, the compiled order would not be the one the edges induce and P-d would be adjudicated on something else.",
+      "n_edges": 1310,
+      "n_broken": 0,
+      "broken": [],
+      "passes": true
+    }
+  },
+  "as_a_hybrid_engine": {
+    "what": "the 577 rules in a PriorityEngine with the accepted edges installed, deciding corpus test. Compared against hibrido figures only: a hybrid result read against a pure one inflates the bar by about 0.08.",
+    "n_cases": 995,
+    "edges_installed": {
+      "ok": 1310
+    },
+    "outcomes": {
+      "CONFLICT": 720,
+      "ACTION": 275
+    },
+    "e2e": 0.1819,
+    "committed": 275,
+    "silent_error": 0.3418,
+    "silent_error_denominator": 275,
+    "conflict_rate": 0.7236,
+    "impasse_rate": 0.0
+  },
+  "as_an_order": [
+    {
+      "pool": "puro",
+      "surface": "corpus_full",
+      "declared": 0.4905,
+      "born_at_floor": 0.5115,
+      "queue_hierarchy": 0.4285,
+      "over_floor": -0.021,
+      "over_hierarchy": 0.062
+    },
+    {
+      "pool": "puro",
+      "surface": "corpus_test_split0",
+      "declared": 0.491457,
+      "born_at_floor": 0.521608,
+      "queue_hierarchy": 0.429146,
+      "over_floor": -0.030151,
+      "over_hierarchy": 0.062311
+    },
+    {
+      "pool": "puro",
+      "surface": "space",
+      "declared": 0.480506,
+      "born_at_floor": 0.314807,
+      "queue_hierarchy": 0.575595,
+      "over_floor": 0.165699,
+      "over_hierarchy": -0.095089
+    },
+    {
+      "pool": "hibrido",
+      "surface": "corpus_full",
+      "declared": 0.4695,
+      "born_at_floor": 0.4285,
+      "queue_hierarchy": 0.4805,
+      "over_floor": 0.041,
+      "over_hierarchy": -0.011
+    },
+    {
+      "pool": "hibrido",
+      "surface": "corpus_test_split0",
+      "declared": 0.480402,
+      "born_at_floor": 0.433166,
+      "queue_hierarchy": 0.482412,
+      "over_floor": 0.047236,
+      "over_hierarchy": -0.00201
+    },
+    {
+      "pool": "hibrido",
+      "surface": "space",
+      "declared": 0.546317,
+      "born_at_floor": 0.425744,
+      "queue_hierarchy": 0.583817,
+      "over_floor": 0.120573,
+      "over_hierarchy": -0.0375
+    }
+  ],
+  "direction_control": {
+    "what": "the same pairs, the same compilation and the same scoring, with only the DIRECTION of each edge changed. It separates `the model chose badly` from `compiling any edges this way hurts`, which a single low score cannot.",
+    "surface": "corpus test split 0, hibrido pool \u2014 P-d's own cell",
+    "n_pairs": 1479,
+    "n_draws": 50,
+    "seed": 17,
+    "model": 0.480402,
+    "model_inverted": 0.437186,
+    "coin": {
+      "mean": 0.469327,
+      "sd": 0.027637,
+      "min": 0.41005,
+      "max": 0.536683
+    },
+    "model_minus_coin": 0.011075,
+    "model_in_coin_deviations": 0.401,
+    "inverted_minus_coin": -0.032141,
+    "inverted_in_coin_deviations": -1.163
+  },
+  "B_b": {
+    "row": "B-b",
+    "claim": "the order the proposer's edges induce beats what a free ranking of the eight queues scores",
+    "band": "> 0.4824",
+    "refuted_by": "<= 0.4824",
+    "denominator": "the order's score on hibrido, corpus test split 0",
+    "line": 0.4824,
+    "line_owner": "results3/queue_hierarchy_floor.json",
+    "line_as_measured_now": 0.482412,
+    "measured": 0.480402,
+    "margin": -0.001998,
+    "band_holds": false,
+    "why_it_matters": "the ranking reads no rule and costs no call. An order that does not beat it bought nothing with its budget, whatever it scores against the arrival floor.",
+    "adjudication": "`band_holds` is the reading. Whether the row is adjudicated at all depends on \u00a70 being signed, which is checked where the calls are made and not here."
+  },
+  "B_c": {
+    "row": "B-c",
+    "claim": "the order reaches the projection made from the proposer's own measured accuracy",
+    "band": ">= 0.4981",
+    "refuted_by": "< 0.4981",
+    "denominator": "the same score \u2014 hibrido, corpus test split 0",
+    "line": 0.4981,
+    "line_owner": "results3/edge_budget.json, budget 1600",
+    "measured": 0.480402,
+    "margin": -0.017698,
+    "band_holds": false,
+    "read_against_this_sample": {
+      "projection_mean": 0.501095,
+      "projection_sd": 0.027982,
+      "coin_mean": 0.469704,
+      "coin_sd": 0.031941,
+      "oracle": 0.573869,
+      "gap_in_projection_deviations": -0.74,
+      "note": "\u00a78: a refutation by less than the projection's own deviation is a different event from one by three of them, and the record says which. The signed line is the figure edge_budget published on ITS shuffle; this is the same quantity on the pairs actually asked about."
+    },
+    "adjudication": "`band_holds` is the reading against the SIGNED line. Whether the row is adjudicated at all depends on \u00a70 being signed, which is checked where the calls are made and not here."
+  },
+  "recomputed_on_this_sample": {
+    "what": "the coin and the projection recomputed on THIS sample rather than on edge_budget's shuffle prefix, which is a different 1,600 pairs.",
+    "n_pairs": 1600,
+    "n_draws": 200,
+    "seed": 17,
+    "miss_rate_used": 0.2688,
+    "miss_rate_source": "1 - B-a's measured rate, space definition",
+    "the_projections_assumption": "each direction flipped independently and at a uniform rate. Stage C found the proposer's accuracy varies by queue-pair, so its errors need not satisfy it; B-d is the measurement of whether they do.",
+    "coin": {
+      "mean": 0.469704,
+      "sd": 0.031941,
+      "min": 0.384925,
+      "max": 0.570854
+    },
+    "projection": {
+      "mean": 0.501095,
+      "sd": 0.027982,
+      "min": 0.41608,
+      "max": 0.565829
+    },
+    "oracle": 0.573869,
+    "oracle_edges_accepted": 1126,
+    "offers": "the coin offers an edge on every pair, the projection stays silent on the oracle's ties, and the model stays silent wherever it declined. Three different offer counts, and the scores are not interchangeable because of it."
+  },
+  "gates_on_the_lines": {
+    "what": "B-b's and B-c's lines were transcribed from \u00a70 before any figure of this plan existed. Their owning records are checked to still say the same thing; a drift is reported, and the band stays as signed either way.",
+    "B_b_line_signed": 0.4824,
+    "B_b_line_in_its_record": 0.482412,
+    "B_b_owner": "results3/queue_hierarchy_floor.json",
+    "B_c_line_signed": 0.4981,
+    "B_c_line_in_its_record": 0.49809,
+    "B_c_owner": "results3/edge_budget.json, budget 1600",
+    "passes": true
+  },
+  "P_d": {
+    "row": "P-d",
+    "band": "> floor + 0.03",
+    "refuted_by": "<= floor + 0.03",
+    "surface": "corpus test split 0, hibrido pool",
+    "floor": 0.433166,
+    "threshold": 0.463166,
+    "measured": 0.480402,
+    "control_queue_hierarchy": 0.482412,
+    "control_note": "the queue-ranking order clears the same threshold at zero calls (results3/queue_hierarchy_floor.json). The verdict above is P-d as signed; this line is what says whether a hold means anything.",
+    "adjudicates": false,
+    "above_the_threshold": true,
+    "note": "P-d was signed in \u00a70 of PLAN_PAIRWISE.md and adjudicated on Stage D's 400 pairs; it keeps that verdict and this is not a second reading of it. What is here is the same computation on another population, reported and never substituted."
+  },
+  "P_e": {
+    "row": "P-e",
+    "band": "median pairwise disagreement <= 0.25",
+    "refuted_by": "> 0.25",
+    "surface": "exhaustive space, hibrido pool, 65 end orders regenerated there \u2014 never the published puro ones",
+    "n_orders": 65,
+    "median": 0.466332,
+    "min": 0.331771,
+    "max": 0.614807,
+    "adjudicates": false,
+    "above_the_threshold": false,
+    "note": "P-e was signed in \u00a70 of PLAN_PAIRWISE.md and adjudicated on Stage D's 400 pairs; it keeps that verdict and this is not a second reading of it. What is here is the same computation on another population, reported and never substituted."
+  },
+  "control": "the queue-ranking column is read from results3/queue_hierarchy_floor.json and is the order a fixed ranking of the eight queues induces, at zero calls. It is reported beside P-d and never in place of it: P-d is adjudicated on its signed band.",
+  "seconds": 510.0
+}
