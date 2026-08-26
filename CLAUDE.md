@@ -58,12 +58,32 @@ write-ups are `results2/FINDINGS2.md` (Stages C and D) and `results3/FINDINGS3.m
     python3 -m rung3.edge_direction
     python3 -m rung3.edge_budget
 
+**A second thread, `PLAN_PROPOSER_1600.md`, closed on August 26, 2026** with four
+more signed rows — the first of the two that were signed *before* the calls rather
+than written after them. Its write-up is `results3/FINDINGS3.md` §11, which also
+carries a dated erratum to §10. Its scoring is free and reads answers already paid
+for:
+
+    python3 -m rung2.pair_sample_1600       # the nested 1,600-pair sample, gated
+    python3 -m rung3.edge_direction --source results2/pair_judgement_1600.json \
+        --out results3/edge_direction_1600.json --split results2/pair_sample_1600.json
+    python3 -m rung3.declared_order --source results2/pair_judgement_1600.json \
+        --out results3/declared_order_1600.json --split results2/pair_sample_1600.json \
+        --accuracy results3/edge_direction_1600.json
+
 **The exception is `rung2/pair_judgement.py`, the only module in the repository
-that spends.** It refuses to run while §0 of `PLAN_PAIRWISE.md` is unsigned — a
-gate that stops before the client is even constructed, with no flag that skips it
-— and `--dry-run` builds every question, runs every gate and spends nothing. Do
-not remove that gate and do not sign the plan: hard rule 2 below, and §0 of the
-plan restates it. A model may draft a band and may not sign it.
+that spends.** It refuses to run while §0 of **the plan that governs the run** is
+unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
+`--sample` run — a gate that stops before the client is even constructed, with no
+flag that skips it, and `--dry-run` builds every question, runs every gate and
+spends nothing. **The plan is an argument because there is more than one**: until
+2026-08-25 the gate read `PLAN_PAIRWISE.md` whatever it was gating, so a 1,600-pair
+run would have found that closed thread's signature, reported `ok`, and spent
+1,200 calls on rows nobody had signed. A gate that reads the wrong file is worse
+than no gate, because it is believed.
+
+Do not remove that gate and do not sign any plan: hard rule 2 below, and §0 of
+each plan restates it. A model may draft a band and may not sign it.
 
 The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before

@@ -64,7 +64,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Twenty-seven rows have been signed before the figures they name existed. This
+**Thirty-one rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -97,12 +97,13 @@ a count behind it.
 | **C** · the touched points | 4 | 3 | **0** | 1 | 2 | 1 |
 | **D** · the rule level | 4 | 3 | **2** | 0 | 1 | 1 |
 | **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 3 | **2** | 0 | 1 | 0 |
-| **total** | **27** | **24** | **11** | **2** | **11** | **3** |
+| **B** · the proposer at 1,600 (§0 of `PLAN_PROPOSER_1600.md`) | 4 | 4 | **2** | 0 | 2 | 0 |
+| **total** | **31** | **28** | **13** | **2** | **13** | **3** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
-`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`. Hold: `Q-a`,
-`Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`.
-Reported: `R-d`, `C-d`, `D-d`.
+`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`.
+Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`,
+`P-c`, `B-a`, `B-d`. Reported: `R-d`, `C-d`, `D-d`.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -138,6 +139,33 @@ in the denominator. §0.1 of that plan records them as outcomes and does not
 restore them as predictions. `P-c`, `P-d` and `P-e` are a different case: Sergi
 signed them on 2026-08-24, before any figure of theirs existed, and they are in
 the table above.
+
+**The `B` rows are the thread's first pre-registered ones.** Sergi signed §0 of
+`PLAN_PROPOSER_1600.md` on 2026-08-25, in its own commit and before a single one
+of the 1,200 calls was made — `gate_signature` refuses to run the stage otherwise.
+§9 and §10 of [`FINDINGS3.md`](results3/FINDINGS3.md) are labelled POST-RUN and
+are not calibration events; §11 is, and it is the first in the pairwise thread
+that could have surprised its author.
+
+**`B-b` is refuted by 0.0020 and that is not a defeat.** The compiled order scores
+0.4804 on `hibrido` / corpus test split 0 against a free queue ranking's 0.4824,
+where a coin on direction over the same sample has sd 0.0319. The band's edge is
+its own refutation line, so the verdict stands as signed; the reading beside it is
+that **1,200 calls bought an order indistinguishable from a baseline that reads no
+rule.** `B-c` is refuted by −0.74 of the projection's own deviations, which §8 of
+the plan asked to be distinguished from a three-deviation miss.
+
+**`B-d` is the mechanism, and it is why the other two land where they do.** The
+proposer's direction rate is **0.8647** on the pairs a queue ranking can already
+answer and **0.6391** on the ones it cannot (n 451 and 654; 0.9181 against 0.5813
+over the corpus surface). Its accurate part is redundant with a free baseline and
+its errors concentrate exactly where that baseline is silent. **`B-a` holds**: the
+rate is 0.7312 at 1,600 against 0.6978 at 400, so the instrument did not move —
+whatever went wrong, it was not that.
+
+**The drafter predicted three of the four**, expecting `B-b` to hold. That
+expectation is in §0 of the plan, was written before the calls, and is a fact
+about the drafter in the same way the table above is.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -450,6 +478,30 @@ the same cell, flat from 12,800 edges on. Handed every pair and the right answer
 to each, pairwise declaration still stops 0.084 short of what the optimizer
 finds. The oracle and noisy curves are exact and projected respectively; what the
 actual proposer scores above 400 is unmeasured and would take calls.
+
+> **ERRATUM, 2026-08-26 — the last two claims above have been measured.** *"a free
+> queue ranking at 1,600"* is **retracted**: the real proposer was asked at 1,600
+> and its order scores **0.4804** against the ranking's 0.4824, so it ties it two
+> thousandths low rather than crossing it. And *"what the actual proposer scores
+> above 400 is unmeasured"* is no longer true at that budget. The projection was
+> not miscomputed — its stated assumption, errors flipping independently and at a
+> uniform rate, is what `B-d` refutes. Everything else in these two paragraphs
+> stands, including that P-d's quantity does clear its threshold at this budget.
+> [`FINDINGS3.md`](results3/FINDINGS3.md) §11 and its erratum to §10;
+> [`declared_order_1600.json`](results3/declared_order_1600.json).
+
+**What the real proposer buys at 1,600 pairs, measured.** 1,200 calls on top of
+Stage D's 400, `hibrido` pool / corpus test split 0. Its direction rate holds at
+**0.7312** (n 1105, space definition) against 0.6978 at 400 — the instrument did
+not move — and the order those edges compile into scores **0.4804**: over the
+0.4332 arrival floor by 0.0472, and level with a free queue ranking that reads no
+rule. **The rate is 15 deviations above a coin at the pair level and the order is
+0.40 deviations above one.** Almost everything the channel is told is lost in
+compilation, which is §9's conclusion at four times the budget. The four signed
+rows and their figures are in [`FINDINGS3.md`](results3/FINDINGS3.md) §11;
+records [`pair_judgement_1600.json`](results2/pair_judgement_1600.json),
+[`edge_direction_1600.json`](results3/edge_direction_1600.json) and
+[`declared_order_1600.json`](results3/declared_order_1600.json).
 
 **`P-e` is refuted too, and by a wide margin.** Behavioural distance from 65 end
 orders **regenerated on the hybrid pool** — never the published `puro` ones —

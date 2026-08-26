@@ -1089,6 +1089,25 @@ all**: what the actual proposer scores at any budget above 400. That would take
 calls, and the honest budget for the question §9 left open is now known —
 somewhere around 800 to answer P-d, around 1,600 to beat a free queue ranking.
 
+> **ERRATUM, 2026-08-26.** The last clause of that sentence is **wrong**, and §11
+> is the measurement that says so. The proposer was asked at 1,600 and its order
+> scores **0.4804** against the free queue ranking's **0.4824** — it does not beat
+> it, it ties it two thousandths low. The projection this section published for
+> that budget, **0.4981**, sits 0.0177 above what the proposer actually reached.
+>
+> The projection was not miscomputed; its **assumption** was wrong, and this
+> section named it: errors flipped *independently and at a uniform rate*. §11's
+> `B-d` measures that assumption directly for the first time and refutes it — the
+> proposer's direction rate is 0.8647 on the pairs a queue ranking can already
+> answer and 0.6391 on the ones it cannot. Errors that concentrate on the
+> informative pairs buy less order than the same number of errors spread evenly,
+> which is exactly the gap between 0.4981 and 0.4804.
+>
+> What this section got **right** is not withdrawn: the channel does pay with more
+> edges, 400 was the worst place to ask, and P-d clears its threshold at this
+> budget — 0.4804 against 0.4632. Only the sentence about beating a queue ranking
+> at 1,600 is retracted.
+
 **Files added by this section**
 
 ```
@@ -1098,6 +1117,252 @@ results3/edge_budget.json    the record, with its provenance field
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.edge_budget`. Three minutes,
 zero API calls.
+
+---
+
+## 11. The real proposer at 1,600: it holds its accuracy, and buys nothing with it
+
+*Added 2026-08-26. `PLAN_PROPOSER_1600.md`, §0 signed 2026-08-25 before any figure
+of it existed. `rung2/pair_judgement.py` → `results2/pair_judgement_1600.json`
+(**1,200 API calls**, 4 h 11); `rung3/edge_direction.py` →
+`results3/edge_direction_1600.json` and `rung3/declared_order.py` →
+`results3/declared_order_1600.json`, both `PYTHONHASHSEED=0` and **zero API
+calls**. This is the first section of the thread that is **pre-registered rather
+than post-run**: the four rows were signed before the calls were made.*
+
+Everything below is on **one cell**: `hibrido` pool, corpus test split 0. Where a
+figure sits elsewhere it is labelled. The population is 1,600 pairs — Stage D's
+400 plus 1,200 drawn uniformly from the remaining 31,450 at seed 25 — so the two
+budgets are **nested** and the comparison between them is one population at two
+sizes.
+
+### The four rows
+
+```
+row  band                        measured              verdict
+B-a  |rate - 0.6978| <= 0.05     0.7312  (n 1105)      HOLDS
+B-b  > 0.4824                    0.4804                REFUTED
+B-c  >= 0.4981                   0.4804                REFUTED
+B-d  unreachable < reachable     0.6391 vs 0.8647      HOLDS
+```
+
+The drafter's own expectation, recorded in §0 before the calls: *B-a holds, B-b
+holds, B-c refuted, B-d holds*. **Three of four.** `B-b` is the miss, and the way
+it misses is the finding.
+
+### B-a — the proposer is the same instrument at both budgets
+
+Of the pairs with a strict better rule under the **space** definition **and** a
+declared edge, the fraction of edges pointing at the better rule:
+
+```
+                        n      rate      se     deviations from a coin
+400  (Stage D)        278    0.6978   0.030          +6.60
+1600 (Stage B)       1105    0.7312   0.015         +15.37
+```
+
+`|0.7312 - 0.6978| = 0.0334`, inside the signed 0.05. Over the corpus surface the
+same quantity is 0.6715 on n 1093. The proposer did not degrade, did not improve
+materially, and quadrupling the sample bought a rate two standard errors from the
+one measured on 400. **Whatever goes wrong later, it is not that the instrument
+moved.**
+
+### B-b — 1,200 calls to tie a free queue ranking, two thousandths low
+
+```
+pool     surface              declared    floor  ranking  vs floor  vs ranking
+puro     corpus_full            0.4905   0.5115   0.4285   -0.0210    +0.0620
+puro     corpus_test_split0     0.4915   0.5216   0.4291   -0.0302    +0.0623
+puro     space                  0.4805   0.3148   0.5756   +0.1657    -0.0951
+hibrido  corpus_full            0.4695   0.4285   0.4805   +0.0410    -0.0110
+hibrido  corpus_test_split0     0.4804   0.4332   0.4824   +0.0472    -0.0020
+hibrido  space                  0.5463   0.4257   0.5838   +0.1206    -0.0375
+```
+
+`B-b` is the `hibrido` / corpus test split 0 row and it is **refuted by 0.0020**.
+
+**That number should not be read as a defeat by the ranking.** The coin's own
+spread on this exact sample is sd 0.0319 over 200 draws, so the margin is a
+fifteenth of a deviation. The signed band is `> 0.4824` and its edge is its own
+refutation line, so the verdict is REFUTED and stays REFUTED; the honest sentence
+beside it is that **after 1,200 calls the compiled order and a free ranking of
+eight queues are the same number.**
+
+What did move is the floor: +0.0472 over `born_at`, against +0.0000 at 400 —
+Stage D's 344 edges scored 0.4080, *below* the 0.4332 floor. So the budget bought
+a real gain over arrival order. It did not buy a gain over a baseline that reads
+no rule and costs nothing.
+
+### B-c — refuted, and inside the projection's own noise
+
+```
+                                        value       sd
+the order                              0.4804        —
+the projection, as §10 published it    0.4981   0.0155   (edge_budget's shuffle)
+the projection, on THIS sample         0.5011   0.0280   (200 draws)
+a coin on direction, on THIS sample    0.4697   0.0319   (200 draws)
+the oracle, on THIS sample             0.5739        —
+```
+
+The order sits **−0.74 projection deviations** below it. §8 of the plan asked for
+this distinction explicitly: a refutation by less than the projection's own
+deviation is a different event from one by three of them, and this is the first
+kind. `B-c` is refuted as signed, and the projection is not thereby shown to be
+wildly optimistic — only optimistic, and for a reason `B-d` names.
+
+### B-d — the errors fall exactly where they cost most
+
+The split is a property of the **oracle and the sample**, fixed and gated by
+`rung2/pair_sample_1600.py` before a single call was made, and read here rather
+than derived from the answers it predicts. A queue-pair a fixed ranking cannot
+answer is one that appears with **both** better-rules.
+
+```
+surface   side          n      rate
+space     unreachable  654    0.6391
+space     reachable    451    0.8647     difference -0.2256
+corpus    unreachable  800    0.5813
+corpus    reachable    293    0.9181     difference -0.3368
+```
+
+**This is the mechanism, and it explains B-b and B-c together.** The proposer is
+near-excellent — 0.86, and 0.92 on the corpus surface — precisely on the pairs a
+free queue ranking already gets right, and drops to 0.64 (0.58) precisely on the
+pairs that carry the information a ranking does not have. Stage C's finding that
+its competence is largely a fixed ranking of the eight queues
+(`results2/pair_judgement_baselines.json`) is here again, measured on the learned
+base and against the oracle rather than against a label.
+
+So the 1,200 calls bought a rate of 0.7312 whose *accurate part* is redundant with
+a baseline that costs nothing, and whose *errors* are concentrated where the
+baseline is silent. An order compiled from that cannot beat the baseline, and the
+budget is not what stopped it.
+
+### A rate 15 deviations above a coin that produces an order 0.40 deviations above one
+
+```
+the model's order                            0.4804
+a coin on direction, 2000 draws       mean   0.4672  sd 0.0290   -> +0.40 dev
+the model INVERTED                           0.4372              -> -1.16 dev
+every direction from the oracle              0.5246              -> p(high) 0.023
+```
+
+Knowing which of two rules is better **73% of the time** yields an order
+indistinguishable from choosing at random (`p(low) 0.68`). Even the **oracle's own
+directions** on these 1,600 pairs reach only 0.5246 here. The pairwise channel
+loses most of what is put into it in compilation, which is §9's conclusion holding
+at four times the budget with a much sharper instrument.
+
+### What the calls actually returned
+
+```
+                     Stage D (400)    Stage B (1600)
+parse failures      35  = 8.75%      82  = 5.12%
+no edge             35  = 8.75%      121 = 7.56%
+a_beats_b                     162             698
+b_beats_a                     203             781
+accepted by try_edge          344            1310
+cycles refused                 21             169
+rules moved off arrival   575/577         576/577
+queue-pairs constant        14/24           10/25
+```
+
+**The parse-failure rate came down.** `IDEAS.md` carried its tripling from 2.4%
+(Stage C) to 8.75% (Stage D) as an unexplained mechanism, with the same model,
+settings and prompt. At four times the sample it is 5.12%, between the two. The
+tripling looks like sampling noise on small denominators rather than a shift, and
+**the prompt was not touched** — rule 5 of the plan, and the whole point of
+recording a surprise instead of chasing it.
+
+**Cycles rose faster than edges.** 169 refused against 21, which is 11.4% of
+declared edges against 5.8%. As the graph fills, more of what the proposer says
+cannot be installed at all, and the accepted set is increasingly shaped by which
+answers arrived first. At the full population §10 already showed this turning
+negative.
+
+### The presentation-position asymmetry, outside every denominator
+
+No row predicts it and it is reported apart from them. Presentation order is
+balanced exactly by construction.
+
+```
+                          winner shown first   rate    deviations
+400  (Stage D)                 197 / 168      0.5397      +1.52
+1600 (Stage B)                 801 / 678      0.5416      +3.20
+```
+
+**The effect held its size and became significant.** The proposer prefers the rule
+it is shown first, by about four points. But it is nearly free: the direction rate
+is 0.7143 when `rule_a` was shown first and 0.7473 when it was shown second, so
+the bias moves which side gets named far more than whether the naming is right.
+This does **not** explain Stage D's 203/162, which is about which rule wins and
+survives at 698/781 — the two are different questions and conflating them is how
+the asymmetry stayed unexplained.
+
+### As a hybrid engine, for completeness
+
+```
+                   400 edges    1310 edges
+e2e                   0.0673        0.1819
+silent error          0.3909        0.3418   (n 110 -> 275)
+CONFLICT rate         0.8894        0.7236
+IMPASSE rate          0.0000        0.0000
+```
+
+More edges resolve more cases — CONFLICT falls 0.17 and e2e nearly triples — and
+the cases newly resolved are wrong about a third of the time. Both rates are
+published with their own denominators because they have different ones: `silent
+error` is over the cases the engine COMMITS to.
+
+### What this settles, and what it does not
+
+**Settles.** The question `IDEAS.md` carried as *what the real proposer scores
+above 400 calls* is answered at one budget: **0.4804 at 1,600**, on `hibrido` /
+corpus test split 0. §10's projection for that budget was 0.4981, and §10's
+sentence about beating a queue ranking at 1,600 is retracted in its own erratum.
+
+**Does not settle.** Whether more budget would eventually clear the ranking. §10's
+oracle curve is flat from 12,800 on and its ceiling is 0.6834 against search's
+0.7678, so the room is real but bounded — and `B-d` says the proposer spends its
+errors in the worst possible place, which no budget repairs.
+
+**Does not touch.** The material problem. Of the 1,600 pairs, **282** have no
+right winner among the two rules shown under the space definition and **409**
+under the corpus one — between a sixth and a quarter, as before. No edge fixes a
+pair where the truth is a third queue.
+
+**P-d and P-e are not re-adjudicated here.** They were signed in §0 of
+`PLAN_PAIRWISE.md` and adjudicated on Stage D's 400; both records carry the same
+computation on this population with the word `verdict` removed and
+`adjudicates: false` in its place. For the record and not as a verdict: the P-d
+quantity is 0.4804 against its 0.4632 threshold, which is §10's prediction that a
+larger budget flips it, and the P-e quantity is a median behavioural distance of
+0.4663 against its 0.25 band.
+
+**Files added by this section**
+
+```
+rung2/pair_sample_1600.py            the nested 1,600-pair sample and its gates
+results2/pair_sample_1600.json       the sample, the oracle's verdicts, B-d's split
+results2/pair_judgement_1600.json    1,200 calls; 400 answers reused from Stage D
+results3/edge_direction_1600.json    B-a, B-d, the position split
+results3/declared_order_1600.json    B-b, B-c, the recomputed coin and projection
+```
+
+Reproducible for free from the answers already paid for:
+
+```
+PYTHONHASHSEED=0 python3 -m rung2.pair_sample_1600
+PYTHONHASHSEED=0 python3 -m rung3.edge_direction --source results2/pair_judgement_1600.json \
+    --out results3/edge_direction_1600.json --split results2/pair_sample_1600.json
+PYTHONHASHSEED=0 python3 -m rung3.declared_order --source results2/pair_judgement_1600.json \
+    --out results3/declared_order_1600.json --split results2/pair_sample_1600.json \
+    --accuracy results3/edge_direction_1600.json
+```
+
+Four minutes and nine minutes respectively. The 1,200 calls are not reproducible:
+the proposer is not deterministic at temperature 0, and `harness/record_guard.py`
+guards the record for that reason.
 
 ---
 
