@@ -490,6 +490,19 @@ actual proposer scores above 400 is unmeasured and would take calls.
 > [`FINDINGS3.md`](results3/FINDINGS3.md) §11 and its erratum to §10;
 > [`declared_order_1600.json`](results3/declared_order_1600.json).
 
+**The order that was available lived where the proposer was random.** Splitting
+the 1,600 run's 1,310 accepted edges by whether a fixed queue ranking could answer
+their queue-pair, and compiling each side alone against a coin on its own rows: a
+perfect chooser scores **+3.33 coin deviations** on the pairs a ranking cannot
+answer and **+0.79** on the ones it can, so essentially all the winnable order is
+on the first side. The proposer is at **−0.58** there — inside noise, so no better
+than a coin — and its headroom to the oracle is 0.1156 against 0.0050. **A
+direction rate of 0.6391 on those pairs is therefore worth nothing at the order
+level**: a ranking-shaped error is not a random error, and correlated errors
+cancel the correct answers rather than adding to them. POST-RUN, adjudicates
+nothing ([`FINDINGS3.md`](results3/FINDINGS3.md) §12,
+[`edge_sides.json`](results3/edge_sides.json)).
+
 **What the real proposer buys at 1,600 pairs, measured.** 1,200 calls on top of
 Stage D's 400, `hibrido` pool / corpus test split 0. Its direction rate holds at
 **0.7312** (n 1105, space definition) against 0.6978 at 400 — the instrument did

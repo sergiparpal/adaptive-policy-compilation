@@ -111,17 +111,30 @@ tried at. What is left:
   corpus surface). So it does know *something* beyond a ranking — 0.64 is not a
   coin — but its competence is concentrated where the ranking already succeeds,
   and that is why 1,200 calls compile into an order the ranking matches for free.
-  **What is left of the item** is the cheap version that would isolate it: a
-  population built *only* from unreachable pairs, which `pair_sample_1600.py`
-  already knows how to identify. At 1,600 that is 654 of them, so a run of that
-  size on nothing else would measure the interesting half at four times the
-  density, for the same money.
+  **And the cheap version of it is now closed too, August 26, 2026, before it was
+  specified.** The follow-up proposed here was a population built *only* from
+  unreachable pairs — 654 of the 1,600 — asked at four times the density for the
+  same money. `FINDINGS3.md` §12 says do not: compiling that side's 600 edges
+  alone puts the proposer at **−0.58 coin deviations**, inside noise, while a
+  perfect chooser on the same rows reaches **+3.33**. The 0.6391 rate is worth
+  **nothing at the order level**, so a run that sharpens the rate sharpens a
+  number whose value is already measured as zero. **The rate is not the
+  bottleneck.**
 - **Whether the channel's ceiling is the protocol or the compilation.** Handed
   every pair and the right answer to each, pairwise declaration stops short of
   what the optimizer finds on the same cell (`FINDINGS3.md` §10). The compilation
   is a topological sort with an arrival tie-break; a minimum-feedback-arc-set
   treatment of the declared tournament might close part of that gap, and nothing
   here distinguishes the two explanations.
+  **Promoted to the item worth doing next, August 26, 2026.** §12 narrowed what it
+  has to explain: on the unreachable pairs the oracle reaches +3.33 coin
+  deviations where the proposer reaches −0.58, so the information is in the
+  protocol and something downstream of it is losing it. Two candidates remain and
+  §12 does not separate them — the proposer's errors being correlated in the
+  ranking's direction, or the topological sort with its arrival tie-break. **A
+  minimum-feedback-arc-set compilation changes the second while holding the
+  answers fixed**, which is exactly the control that tells them apart, and it
+  costs no calls at all.
 - **The pairs where neither rule can be right.** Between a sixth and a quarter of
   the sampled population, depending on surface: the true action across the whole
   shared region is a third queue. It is the material problem appearing inside the
