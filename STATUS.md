@@ -9,7 +9,8 @@ dated errata in place. Every figure here already exists in one of them.
 does not cover (an *impasse*), an LLM acts and writes a rule so that next time it
 does. Ticket triage: 8 attributes, 8 queues, a hidden policy of 29 rules in 8
 priority layers. Four rungs closed, plus an audit of the instrument behind two of
-them.
+them, plus two pairwise threads — `PLAN_PAIRWISE.md` and `PLAN_PROPOSER_1600.md`,
+seven signed rows between them.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
