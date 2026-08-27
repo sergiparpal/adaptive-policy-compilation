@@ -1,0 +1,101 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-27T15:22:50Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "5a0185fdc728b614951b2bf880d0dd4b489b168f",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "3f5708d4b46cbc18",
+    "n_draws": 200,
+    "seed": 17
+  },
+  "what": "the 1,600-pair run's declared edges split by whether a fixed queue ranking could answer their queue-pair, each subset compiled and scored on its own against its own coin and its own oracle. Reads answers already paid for; zero API calls.",
+  "provenance": "POST-RUN: written after B-a to B-d were adjudicated, by someone who had already seen B-d hold. Nothing here is a bet that could have failed, no signed row moves, and it adjudicates nothing. Zero API calls.",
+  "adjudicates_nothing": "no row of PLAN_PROPOSER_1600.md is read here and none moves. B-d measured the RATE on each side; this measures what each side's edges BUY, which is a different quantity and carries no band.",
+  "surface": "hibrido pool, corpus test split 0 \u2014 B-b's own cell",
+  "the_split": "read from results2/pair_sample_1600.json, fixed and gated before any call was made, never recomputed from answers.",
+  "why_each_subset_has_its_own_coin": "a subset with more edges scores higher for having more edges. Comparing two sides' raw scores would measure the split's sizes. Each is read against the same rows with only the direction randomised, so what it is worth is its distance from that.",
+  "compiled_independently": "whether an edge closes a cycle depends on the edges already in, so the edges a subset yields ALONE are not the subset of the edges the whole run yielded. Both counts are published.",
+  "source": "results2/pair_judgement_1600.json",
+  "split": "results2/pair_sample_1600.json",
+  "born_at_floor": 0.433166,
+  "n_declared_edges": 1479,
+  "by_side": {
+    "reachable": {
+      "n_rows": 451,
+      "model": 0.439196,
+      "model_edges_accepted": 421,
+      "coin": {
+        "mean": 0.428839,
+        "sd": 0.01949,
+        "min": 0.384925,
+        "max": 0.482412
+      },
+      "model_minus_coin": 0.010357,
+      "model_in_coin_deviations": 0.53,
+      "oracle": 0.444221,
+      "oracle_edges_accepted": 446,
+      "oracle_offers": 451,
+      "oracle_in_coin_deviations": 0.79,
+      "headroom_model_to_oracle": 0.005025
+    },
+    "unreachable": {
+      "n_rows": 654,
+      "model": 0.425126,
+      "model_edges_accepted": 600,
+      "coin": {
+        "mean": 0.442261,
+        "sd": 0.029568,
+        "min": 0.363819,
+        "max": 0.506533
+      },
+      "model_minus_coin": -0.017136,
+      "model_in_coin_deviations": -0.58,
+      "oracle": 0.540704,
+      "oracle_edges_accepted": 620,
+      "oracle_offers": 654,
+      "oracle_in_coin_deviations": 3.33,
+      "headroom_model_to_oracle": 0.115578
+    },
+    "no_side": {
+      "n_rows": 374,
+      "model": 0.455276,
+      "model_edges_accepted": 345,
+      "coin": {
+        "mean": 0.449508,
+        "sd": 0.028231,
+        "min": 0.375879,
+        "max": 0.536683
+      },
+      "model_minus_coin": 0.005769,
+      "model_in_coin_deviations": 0.2,
+      "oracle": 0.433166,
+      "oracle_edges_accepted": 0,
+      "oracle_offers": 0,
+      "oracle_in_coin_deviations": -0.58,
+      "headroom_model_to_oracle": -0.022111
+    },
+    "all": {
+      "n_rows": 1479,
+      "model": 0.480402,
+      "model_edges_accepted": 1310,
+      "coin": {
+        "mean": 0.469241,
+        "sd": 0.026647,
+        "min": 0.396985,
+        "max": 0.536683
+      },
+      "model_minus_coin": 0.011161,
+      "model_in_coin_deviations": 0.42,
+      "oracle": 0.535678,
+      "oracle_edges_accepted": 1050,
+      "oracle_offers": 1105,
+      "oracle_in_coin_deviations": 2.49,
+      "headroom_model_to_oracle": 0.055276
+    }
+  },
+  "seconds": 42.4
+}
