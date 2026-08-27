@@ -1,0 +1,158 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-27T16:43:32Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "12265d187dd0a86f5dac84887aa9be039f83f2da",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "9d0674fd9a6ec576",
+    "fas_seed": 17,
+    "coin_seed": 17,
+    "fas_max_rounds": 200
+  },
+  "what": "the same 1,479 declared edges compiled two ways \u2014 the topological sort that refuses cycle-closing edges as they arrive, and a minimum-feedback-arc-set search that keeps every edge and minimises violations. Zero API calls.",
+  "provenance": "POST-RUN with a stated expectation. Written after \u00a712, by someone who had already seen the proposer sit at -0.58 coin deviations on the unreachable side. The expectation below was written BEFORE this module was run and is NOT a signed row: it is not on STATUS.md's scoreboard and it is not a calibration event. Zero API calls.",
+  "expectation_written_before_the_run": "Written before the run. MFAS honours materially more of the 1,479 declared edges than the topological compilation, which discards 169 to cycle refusal. The MODEL's score does not improve materially, because \u00a712 measured its directions at coin level exactly where the winnable order is, and compiling noise more faithfully compiles noise. The ORACLE's score does improve, because those directions carry signal and losing 169 of them is a real loss. If both improve, the compilation was the bottleneck for both; if neither does, the sort was losing nothing and the loss is in the answers.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves. This is a control for \u00a712, not a prediction anyone signed.",
+  "the_objective_never_sees_the_truth": "the search minimises violations of declared edges and nothing else. The truth enters only to score the finished order, as in every other module here. An optimizer that saw the labels would be order_search_ls, which answers a different question.",
+  "why_it_stays_comparable": "the search starts from born_at and moves a vertex only on strict improvement, so a rule with no incident declared edge has delta zero everywhere and keeps its arrival position \u2014 the property that makes born_at the floor and the comparison `what did the edges add`.",
+  "fidelity_is_measured_on_all_declared_edges": "including the ones try_edge refused. A refusal is a property of the compilation, not of what the proposer said, so scoring the baseline only on the edges it chose to keep would score it against its own choices.",
+  "surface": "hibrido pool, corpus test split 0",
+  "source": "results2/pair_judgement_1600.json",
+  "split": "results2/pair_sample_1600.json",
+  "born_at_floor": 0.433166,
+  "gates": {
+    "model": {
+      "what": "the FAS search must honour at least as many declared edges as the topological sort. Otherwise a score difference between the two compilations is a fact about the search and not about compilation.",
+      "topological_violations": 129,
+      "mfas_violations": 66,
+      "passes": true
+    },
+    "oracle": {
+      "what": "the FAS search must honour at least as many declared edges as the topological sort. Otherwise a score difference between the two compilations is a fact about the search and not about compilation.",
+      "topological_violations": 24,
+      "mfas_violations": 5,
+      "passes": true
+    },
+    "coin": {
+      "what": "the FAS search must honour at least as many declared edges as the topological sort. Otherwise a score difference between the two compilations is a fact about the search and not about compilation.",
+      "topological_violations": 376,
+      "mfas_violations": 201,
+      "passes": true
+    }
+  },
+  "arms": {
+    "model": {
+      "n_declared_edges": 1479,
+      "topological": {
+        "edges_installed": 1310,
+        "edges_refused_as_cycles": 169,
+        "violations_of_the_declared_set": 129,
+        "honoured": 1350,
+        "score": 0.480402
+      },
+      "mfas": {
+        "search": {
+          "starts": {
+            "born_at": {
+              "violations_from_this_start": 77,
+              "moves": 321
+            },
+            "topological": {
+              "violations_from_this_start": 74,
+              "moves": 46
+            },
+            "net_wins": {
+              "violations_from_this_start": 66,
+              "moves": 125
+            }
+          },
+          "best_start": "net_wins",
+          "violations": 66,
+          "moves": 125
+        },
+        "violations_of_the_declared_set": 66,
+        "honoured": 1413,
+        "score": 0.433166
+      },
+      "extra_edges_honoured": 63,
+      "score_gain": -0.047236
+    },
+    "oracle": {
+      "n_declared_edges": 1105,
+      "topological": {
+        "edges_installed": 1050,
+        "edges_refused_as_cycles": 55,
+        "violations_of_the_declared_set": 24,
+        "honoured": 1081,
+        "score": 0.535678
+      },
+      "mfas": {
+        "search": {
+          "starts": {
+            "born_at": {
+              "violations_from_this_start": 28,
+              "moves": 281
+            },
+            "topological": {
+              "violations_from_this_start": 5,
+              "moves": 18
+            },
+            "net_wins": {
+              "violations_from_this_start": 17,
+              "moves": 92
+            }
+          },
+          "best_start": "topological",
+          "violations": 5,
+          "moves": 18
+        },
+        "violations_of_the_declared_set": 5,
+        "honoured": 1100,
+        "score": 0.545729
+      },
+      "extra_edges_honoured": 19,
+      "score_gain": 0.01005
+    },
+    "coin": {
+      "n_declared_edges": 1479,
+      "topological": {
+        "edges_installed": 1030,
+        "edges_refused_as_cycles": 449,
+        "violations_of_the_declared_set": 376,
+        "honoured": 1103,
+        "score": 0.498492
+      },
+      "mfas": {
+        "search": {
+          "starts": {
+            "born_at": {
+              "violations_from_this_start": 237,
+              "moves": 326
+            },
+            "topological": {
+              "violations_from_this_start": 201,
+              "moves": 138
+            },
+            "net_wins": {
+              "violations_from_this_start": 214,
+              "moves": 209
+            }
+          },
+          "best_start": "topological",
+          "violations": 201,
+          "moves": 138
+        },
+        "violations_of_the_declared_set": 201,
+        "honoured": 1278,
+        "score": 0.436181
+      },
+      "extra_edges_honoured": 175,
+      "score_gain": -0.062312
+    }
+  },
+  "seconds": 2.6
+}
