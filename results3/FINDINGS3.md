@@ -1585,6 +1585,127 @@ seconds, zero API calls.
 
 ---
 
+## 14. Nothing chooses better than chance — and 0.4824 was never reachable
+
+*Added 2026-08-26. `rung3/edge_dropping.py` → `results3/edge_dropping.json`,
+`PYTHONHASHSEED=0`, 28 s, **zero API calls**. **POST-RUN, with an expectation
+written before the run.** **Not a signed row**, not on `STATUS.md`'s scoreboard,
+not a calibration event.*
+
+§13 left one route open: the cycle-refusing sort was dropping 169 edges by arrival
+accident and that dropping *helped*, so a compilation that drops **deliberately**
+might do better. This tests it, and it also answers a question the thread had been
+assuming rather than measuring.
+
+### The trap this is built around
+
+**"Drop edges until the score improves" is hard rule 6 wearing a hat.** A rule
+that consults the score is search with extra steps. So three constraints, all
+fixed before the run:
+
+1. **Every rule reads only the answers.** §12's reachable/unreachable split is
+   derived from the **oracle** and is therefore forbidden as a dropping criterion,
+   however tempting — the right diagnostic and the wrong instrument.
+2. **Every rule is reported, not the best one.**
+3. **Every filter is read against a random drop of the same size.** §13 showed
+   dropping *at all* moves the score, so a filter compared only against "keep
+   everything" measures how many edges it removed and calls it selection.
+
+The ranking is the proposer's own: Copeland over the queue pairs it decided, from
+the 1,479 answers and nothing else, ties broken by how often a queue was named a
+winner and then alphabetically.
+
+```
+1. ONCALL_ESCALATION   2. SECURITY_INCIDENT   3. T3_ENGINEERING
+4. BILLING_SPECIALIST  5. ACCOUNT_MANAGER     6. SELF_SERVICE_DEFLECT
+7. T2_TECHNICAL        8. T1_GENERAL
+```
+
+### No filter beats its own control
+
+```
+filter          kept     topo     mfas  rnd topo      sd   devs  rnd mfas      sd   devs
+keep_all        1479   0.4804   0.4332    0.4626  0.0144  +1.24    0.4344  0.0066  -0.19
+consistent      1194   0.4372   0.4442    0.4509  0.0210  -0.65    0.4376  0.0184  +0.36
+inconsistent     285   0.4070   0.4070    0.4271  0.0292  -0.69    0.4330  0.0325  -0.80
+born_at floor          0.4332
+```
+
+Every filter sits within **0.7 deviations** of dropping the same number at random,
+in both compilations. **Nothing here is a selection effect.** Keeping the
+proposer's self-consistent core does nothing; keeping only the edges where it
+contradicted its own majority does nothing.
+
+### The arrival accident was not a selection either
+
+The right control is the **same edges fed in a random arrival order** and refused
+by the same mechanism — which isolates whether arrival order specifically is worth
+anything. The baseline's 0.4804 sits **+1.24 deviations** above that control's
+0.4626 (sd 0.0144). Suggestive, not significant, and not a rule anyone could have
+chosen in advance.
+
+> **A control that was wrong, recorded rather than quietly fixed.** The first
+> version sampled 1,310 rows — the number the accident keeps. Those go through
+> `try_edge` again and install about **1,166**, some 144 fewer than the baseline's
+> 1,310, which are all installed by construction. The gap it reported was partly a
+> smaller edge set. Measured at 20 draws before being discarded.
+
+### And the line the thread had been aiming at was out of reach all along
+
+**Added after seeing `consistent` land near the floor rather than near 0.4824, and
+labelled as a diagnostic rather than folded in.** It changes what was *declared*
+rather than which declarations are kept, so it is not a candidate filter.
+
+A **perfect follower of that same ranking**, answering all 1,479 pairs, scores
+**0.4402** topological and **0.4302** MFAS. The same ranking applied as a **lookup
+over all 577 rules** scores **0.4824**.
+
+**1,479 pairs is 4.6% of the 31,850 that could carry an edge.** A ranking applied
+as a lookup orders every rule; the same ranking expressed as edges at this budget
+orders 4.6% of the pairs and leaves the rest at arrival order. They are not the
+same object and they do not score alike.
+
+So **`B-b`'s 0.4824 was not reachable through this channel at 1,600 pairs by any
+ranking-following strategy, perfect play included.** `B-b` is refuted as signed and
+the verdict stands; what changes is what the refutation *means*. It was read as
+*the proposer failed to beat a free baseline*. It is at least as much *the channel
+cannot express that baseline at this budget* — and the proposer's 0.4804 is in fact
+**above** the perfect ranking-follower's 0.4402 under the same compilation.
+
+Under MFAS the distinction dissolves and everything collapses toward the floor:
+model 0.4332, follower 0.4302, floor 0.4332. Which is §13 again — the variation
+under the topological sort is its lossiness, not the answers.
+
+### The expectation, and the half of it that was wrong
+
+Written before the run: *`consistent` lands near the queue ranking's level;
+`inconsistent` at or below the floor; the arrival accident is not special.*
+
+The second and third held. **The first was wrong**, and usefully so: `consistent`
+landed at 0.4372/0.4442, near the floor and nowhere near 0.4824. The reason is the
+4.6% above — compiling a ranking as sparse pairwise edges is not applying it — and
+that error is what produced the diagnostic that reframes `B-b`.
+
+### What it closes
+
+**`IDEAS.md`'s deliberate-dropping route is closed, and the channel has no
+remaining excuse.** Not the budget (§10), not the compilation (§13), not the
+selection of what to compile (here). What is left is the finding itself: the
+proposer's competence is a queue ranking, a queue ranking is worth 0.4824 as a
+lookup and about 0.44 as sparse edges, and neither is near the 0.7678 search finds.
+
+**Files added by this section**
+
+```
+rung3/edge_dropping.py        the filters, their controls and the diagnostic
+results3/edge_dropping.json   the record, with its expectation field
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.edge_dropping`. Thirty
+seconds, zero API calls.
+
+---
+
 ## Files
 
 ```
