@@ -1,0 +1,137 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-27T17:10:16Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "8ee9b0d8b842ec7987720b9516d4978dfe10f591",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "8f738b95af0386ee",
+    "random_draws": 50,
+    "random_seed": 17
+  },
+  "what": "whether a truth-free rule for dropping declared edges beats dropping the same number at random, and whether the topological sort's cycle accident was ever a selection. Zero API calls.",
+  "provenance": "POST-RUN with an expectation written before the run, in the module and in this record. NOT a signed row, not on STATUS.md's scoreboard, not a calibration event. Zero API calls.",
+  "expectation_written_before_the_run": "Written before the run. `consistent` lands near the queue ranking's level and beats neither it nor the baseline by anything surviving its own random control, because compiling the proposer's self-consistent core is compiling a queue ranking. `inconsistent` lands at or below the arrival floor. And the baseline's 169-edge cycle accident is not special: the same edges in a random arrival order should reach about what the topological sort reaches.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves. The rules were fixed before the run and every one of them is reported, not the best.",
+  "no_rule_here_sees_the_truth": "the ranking is Copeland over the queue pairs the proposer itself decided, from the 1,479 answers and nothing else. \u00a712's reachable/unreachable split is derived from the ORACLE and is therefore forbidden as a dropping criterion \u2014 it is the right diagnostic and the wrong instrument.",
+  "every_filter_has_a_same_size_random_control": "\u00a713 showed that dropping at all moves the score, so a filter read only against `keep everything` would measure how many edges it removed and call it selection.",
+  "surface": "hibrido pool, corpus test split 0",
+  "source": "results2/pair_judgement_1600.json",
+  "born_at_floor": 0.433166,
+  "queue_ranking_reference": 0.4824,
+  "queue_ranking_reference_note": "results3/queue_hierarchy_floor.json's stage_c row: Stage C's hierarchy transferred from the HIDDEN policy's labelled pairs. Free on this cell because it was fitted on another object, which makes it a fair reference line and a poor dropping criterion.",
+  "revealed_ranking": {
+    "order": [
+      "ONCALL_ESCALATION",
+      "SECURITY_INCIDENT",
+      "T3_ENGINEERING",
+      "BILLING_SPECIALIST",
+      "ACCOUNT_MANAGER",
+      "SELF_SERVICE_DEFLECT",
+      "T2_TECHNICAL",
+      "T1_GENERAL"
+    ],
+    "copeland": {
+      "ACCOUNT_MANAGER": 3,
+      "BILLING_SPECIALIST": 3,
+      "ONCALL_ESCALATION": 6,
+      "SECURITY_INCIDENT": 5,
+      "SELF_SERVICE_DEFLECT": 2,
+      "T1_GENERAL": 0,
+      "T2_TECHNICAL": 1,
+      "T3_ENGINEERING": 5
+    },
+    "derived_from": "the 1,479 declared answers"
+  },
+  "filters": {
+    "keep_all": {
+      "n_kept": 1479,
+      "topological": 0.480402,
+      "mfas": 0.433166,
+      "violations_topological": 129,
+      "violations_mfas": 66,
+      "control_random_same_size": {
+        "n_draws": 50,
+        "n_kept": 1479,
+        "topological": {
+          "mean": 0.462613,
+          "sd": 0.014393
+        },
+        "mfas": {
+          "mean": 0.434432,
+          "sd": 0.006596
+        }
+      },
+      "topological_in_control_deviations": 1.24,
+      "mfas_in_control_deviations": -0.19
+    },
+    "consistent": {
+      "n_kept": 1194,
+      "topological": 0.437186,
+      "mfas": 0.444221,
+      "violations_topological": 20,
+      "violations_mfas": 0,
+      "control_random_same_size": {
+        "n_draws": 50,
+        "n_kept": 1194,
+        "topological": {
+          "mean": 0.450935,
+          "sd": 0.021027
+        },
+        "mfas": {
+          "mean": 0.437568,
+          "sd": 0.018439
+        }
+      },
+      "topological_in_control_deviations": -0.65,
+      "mfas_in_control_deviations": 0.36
+    },
+    "inconsistent": {
+      "n_kept": 285,
+      "topological": 0.407035,
+      "mfas": 0.407035,
+      "violations_topological": 8,
+      "violations_mfas": 0,
+      "control_random_same_size": {
+        "n_draws": 50,
+        "n_kept": 285,
+        "topological": {
+          "mean": 0.427055,
+          "sd": 0.029182
+        },
+        "mfas": {
+          "mean": 0.432985,
+          "sd": 0.032522
+        }
+      },
+      "topological_in_control_deviations": -0.69,
+      "mfas_in_control_deviations": -0.8
+    }
+  },
+  "diagnostic_a_perfect_ranking_follower": {
+    "n_kept": 1479,
+    "topological": 0.440201,
+    "mfas": 0.430151,
+    "violations_topological": 33,
+    "violations_mfas": 2,
+    "what": "the same 1,479 pairs answered by a perfect follower of the proposer's own revealed ranking. NOT a filter and not a candidate dropping rule: it changes what was declared rather than which declarations are kept.",
+    "provenance": "added AFTER seeing `consistent` land near the floor rather than near 0.4824, to test whether that line is reachable through this channel at this budget at all. Labelled rather than folded in.",
+    "the_line_it_is_read_against": 0.4824,
+    "why_they_can_differ": "a ranking applied as a LOOKUP orders all 577 rules; 1,479 pairs is 4.6% of the 31,850 that could carry an edge, so the edges encode a sparse shadow of the same ranking."
+  },
+  "the_arrival_accident": {
+    "what": "the topological sort's own cycle refusal \u2014 169 of 1,479 edges dropped first-come-first-served \u2014 read against the SAME edges fed in a random arrival order and refused by the same mechanism. It isolates whether arrival order specifically is worth anything.",
+    "n_installed_by_the_accident": 1310,
+    "score": 0.480402,
+    "control_same_edges_random_arrival_order": {
+      "mean": 0.462613,
+      "sd": 0.014393
+    },
+    "in_control_deviations": 1.24,
+    "a_control_that_was_wrong_and_is_recorded": "keeping 1,310 rows at random instead. Those go through try_edge again and install about 1,166 \u2014 some 144 fewer than the baseline's 1,310, which are all installed by construction \u2014 so the gap would have been partly a smaller edge set. Measured at 20 draws before being discarded."
+  },
+  "seconds": 27.7
+}
