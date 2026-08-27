@@ -1366,6 +1366,105 @@ guards the record for that reason.
 
 ---
 
+## 12. Where the order was available, and where the proposer was random
+
+*Added 2026-08-26. `rung3/edge_sides.py` → `results3/edge_sides.json`,
+`PYTHONHASHSEED=0`, 42 s, **zero API calls**. **POST-RUN**, like §9 and §10:
+written after `B-a` to `B-d` were adjudicated, by someone who had already seen
+`B-d` hold. **It adjudicates nothing** and no signed row moves — it is reported
+beside §11's rows, never among them.*
+
+`B-d` measured the proposer's direction **rate** on each side of the split. §11
+measured what all 1,310 edges **compile into**. Neither says what each side
+**buys**, and a rate is not a score: the reachable side could be carrying the
+whole order and the unreachable side none of it, or the reverse, and `B-b` would
+read 0.4804 either way.
+
+All on `hibrido` pool, corpus test split 0 — `B-b`'s own cell. Each subset is
+compiled **independently, through a fresh engine**, because whether an edge closes
+a cycle depends on the edges already in; the edges a subset yields alone are not
+the subset of the edges the whole run yielded, and both counts are published.
+
+### Each side against its own coin, because sizes differ
+
+**A subset with more edges scores higher for having more edges.** 654 rows and 451
+rows do not start level, so comparing their raw scores would measure the split's
+sizes and call it competence. Each side is therefore read against a coin on **its
+own rows** — same compilation, same scoring, only the direction randomised, 200
+draws — and against **its own oracle**, which is the ceiling available to any
+proposer on those rows.
+
+```
+side           rows  edges    model     coin      sd     devs   oracle  o devs
+reachable       451    421   0.4392   0.4288  0.0195   +0.53   0.4442   +0.79
+unreachable     654    600   0.4251   0.4423  0.0296   -0.58   0.5407   +3.33
+no_side         374    345   0.4553   0.4495  0.0282   +0.20   0.4332   -0.58
+all            1479   1310   0.4804   0.4692  0.0266   +0.42   0.5357   +2.49
+born_at floor                0.4332
+```
+
+### The two things this says
+
+**1. Every bit of available order lives on the side a ranking cannot answer.** A
+perfect chooser on the unreachable pairs scores **+3.33 coin deviations**; on the
+reachable pairs it manages **+0.79**, and its headroom over the proposer there is
+**0.0050** — five ten-thousandths. The pairs a free queue ranking already answers
+have almost nothing left to win, whoever answers them. That is the structural
+reason `B-b` could not have been won on the reachable side however good the
+proposer was on it, and it is worth stating because `B-d`'s 0.8647 invites the
+opposite reading.
+
+**2. On the side that matters the proposer is indistinguishable from random.**
+−0.58 deviations, which is inside noise: the honest statement is **no better than
+a coin**, not *worse than one*. Its headroom to the oracle there is **0.1156**,
+twenty-three times the reachable side's.
+
+So the 0.6391 direction rate `B-d` measured on the unreachable pairs is worth
+**nothing at the order level**. Getting 64% of those directions right buys no more
+order than getting them at random — because a ranking-shaped error is not a random
+error. When the proposer is wrong on a pair a ranking cannot answer, it is wrong
+in the direction the ranking would have chosen, and correlated errors of that kind
+cancel the correct answers instead of adding to them.
+
+**And the +0.42 the whole run scores comes from the two subsets with no headroom.**
+`reachable` at +0.53 and `no_side` at +0.20, on 0.0050 and −0.0221 of headroom
+respectively.
+
+### An invariant that came out exactly
+
+`no_side`'s oracle is **0.4332**, the `born_at` floor to the digit, and its oracle
+offers are **0**. Those pairs have no strict better rule, so a perfect chooser
+declares nothing on them and the compiled order is arrival order. It is the one
+structural check the decomposition has — it would break the moment the split and
+the oracle disagreed about which pairs have a winner — and
+`tests/test_edge_sides.py` pins it.
+
+### What it changes about what to do next
+
+**It closes the density run before it was specified.** `IDEAS.md` carried a cheap
+follow-up: a population built only from unreachable pairs, 1,600 calls at four
+times the density. That would sharpen a rate whose order-level value is measurably
+zero. **The rate is not the bottleneck and more of it is not the answer.**
+
+**It moves the live question to the compilation.** The oracle reaches +3.33
+deviations on the same rows the proposer reaches −0.58, so the information is
+there and the protocol can carry it. What loses it is either the proposer's
+correlated errors or the topological sort with an arrival tie-break — and
+`IDEAS.md`'s minimum-feedback-arc-set item is the free experiment that separates
+those two, because it changes the compilation while holding the answers fixed.
+
+**Files added by this section**
+
+```
+rung3/edge_sides.py         the decomposition, its coins and its oracles
+results3/edge_sides.json    the record, with its provenance field
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.edge_sides`. Forty seconds,
+zero API calls.
+
+---
+
 ## Files
 
 ```
