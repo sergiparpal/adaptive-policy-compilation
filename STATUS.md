@@ -490,6 +490,20 @@ actual proposer scores above 400 is unmeasured and would take calls.
 > [`FINDINGS3.md`](results3/FINDINGS3.md) §11 and its erratum to §10;
 > [`declared_order_1600.json`](results3/declared_order_1600.json).
 
+**It is the answers, not the compilation — and the sort was hiding it.** The same
+1,479 declared edges compiled by minimum feedback arc set instead of the
+cycle-refusing topological sort, which silently drops 169 of them first-come-
+first-served. Violations fall in every arm and the score goes the other way in two:
+the **oracle gains +0.0100** from honouring 19 more of its own edges, while the
+**model loses 0.0472** and a **coin loses 0.0623**. So a better compilation is
+worth something when the directions are right, and the proposer's edges — honoured
+fully — are worse than not honouring them. **Part of §11's 0.4804 was the
+compilation's lossiness protecting the score**, which is a different quantity from
+what the edges buy and was not separated until now. POST-RUN with an expectation
+written before the run, not a signed row
+([`FINDINGS3.md`](results3/FINDINGS3.md) §13,
+[`mfas_compilation.json`](results3/mfas_compilation.json)).
+
 **The order that was available lived where the proposer was random.** Splitting
 the 1,600 run's 1,310 accepted edges by whether a fixed queue ranking could answer
 their queue-pair, and compiling each side alone against a coin on its own rows: a

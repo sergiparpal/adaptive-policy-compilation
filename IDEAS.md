@@ -126,15 +126,22 @@ tried at. What is left:
   is a topological sort with an arrival tie-break; a minimum-feedback-arc-set
   treatment of the declared tournament might close part of that gap, and nothing
   here distinguishes the two explanations.
-  **Promoted to the item worth doing next, August 26, 2026.** §12 narrowed what it
-  has to explain: on the unreachable pairs the oracle reaches +3.33 coin
-  deviations where the proposer reaches −0.58, so the information is in the
-  protocol and something downstream of it is losing it. Two candidates remain and
-  §12 does not separate them — the proposer's errors being correlated in the
-  ranking's direction, or the topological sort with its arrival tie-break. **A
-  minimum-feedback-arc-set compilation changes the second while holding the
-  answers fixed**, which is exactly the control that tells them apart, and it
-  costs no calls at all.
+  **CLOSED August 26, 2026 by `FINDINGS3.md` §13, and it closed the unhelpful
+  way.** The minimum-feedback-arc-set compilation was run: same 1,479 edges, same
+  cell, only the rule that turns pairwise claims into an order. Violations fall in
+  every arm — 129→66 for the model, 24→5 for the oracle, 376→201 for a coin — and
+  the score goes the other way in two of them. The **oracle gains +0.0100**, so the
+  mechanism does work when the directions are right; the **model loses 0.0472** and
+  a **coin loses 0.0623**. **The compilation was not the bottleneck**, and the
+  proposer's answers do not contain the order however faithfully they are
+  compiled.
+  **What it exposed instead:** the cycle-refusing sort was discarding 169 edges
+  first-come-first-served and thereby *protecting* the score, so part of §11's
+  0.4804 was the compilation's lossiness rather than what the edges buy. Those are
+  different quantities and nothing had separated them. **If anything is left here
+  it is that**: a compilation that drops edges deliberately rather than by
+  arrival accident — dropping the ones a queue ranking would have supplied, say —
+  is the only version of this route §13 does not rule out, and it is free.
 - **The pairs where neither rule can be right.** Between a sixth and a quarter of
   the sampled population, depending on surface: the true action across the whole
   shared region is a third queue. It is the material problem appearing inside the
