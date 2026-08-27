@@ -16,7 +16,7 @@ of 29 rules spread over 8 priority layers.
 > and the scripts still print their tables in Spanish. When a block below shows
 > expected output, compare the **numbers**, not the words.
 
-## Four closed rungs, one closed thread, and where their figures live
+## Four closed rungs, two closed threads, and where their figures live
 
 **A figure has exactly two homes: the FINDINGS record that owns it, and
 [`STATUS.md`](STATUS.md), which indexes it and names the surface it was measured
@@ -33,6 +33,7 @@ up in four places at once.
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
+| **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–14 |
 
 Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
 re-measured on August 8, 2026 and their headline figures moved, and on August 24,
@@ -97,17 +98,45 @@ python3 -m rung2.pair_judgement_baselines  # what the stage C rate is made of
 python3 -m rung3.declared_order    # the three scorings + the control (6 min)
 python3 -m rung3.edge_direction    # is the direction right, and would right help
 python3 -m rung3.edge_budget       # does the channel pay with more edges (3 min)
+
+# --- B · the proposer at 1,600 (the free half) ----------------------------
+python3 -m rung2.pair_sample_1600  # the nested 1,600-pair sample and its gates
+python3 -m rung3.edge_sides        # what each side of the split BUYS
+python3 -m rung3.mfas_compilation  # is it the answers or the compilation
+python3 -m rung3.edge_dropping     # does deliberate dropping beat chance
 ```
 
-**The two commands of that thread that cost money are not in the block above**,
-and neither runs while §0 of [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) is unsigned —
-a gate refuses before the client is even constructed. `--dry-run` builds every
-question, checks every gate and spends nothing:
+The two scorings of that thread take the records it produced, so they carry
+their source and destination explicitly:
+
+```bash
+python3 -m rung3.edge_direction --source results2/pair_judgement_1600.json \
+    --out results3/edge_direction_1600.json --split results2/pair_sample_1600.json
+python3 -m rung3.declared_order --source results2/pair_judgement_1600.json \
+    --out results3/declared_order_1600.json --split results2/pair_sample_1600.json \
+    --accuracy results3/edge_direction_1600.json
+```
+
+**The three commands of those threads that cost money are not in the blocks
+above**, and none of them runs while §0 of **the plan that governs the run** is
+unsigned — a gate refuses before the client is even constructed. **Which plan is
+an argument, because there is more than one**: until 2026-08-25 the gate read
+`PLAN_PAIRWISE.md` whatever it was gating, so a 1,600-pair run would have found
+that closed thread's signature, reported `ok`, and spent 1,200 calls on rows
+nobody had signed. `--dry-run` builds every question, checks every gate and spends
+nothing:
 
 ```bash
 python3 -m rung2.pair_judgement --hidden  --dry-run   # 170 calls if run
 python3 -m rung2.pair_judgement --learned --dry-run   # 400 calls if run
+python3 -m rung2.pair_judgement --learned --budget 1600 \
+    --sample results2/pair_sample_1600.json --reuse --dry-run  # 1200 if run
 ```
+
+The first two are gated on [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md), the third on
+[`PLAN_PROPOSER_1600.md`](PLAN_PROPOSER_1600.md). The third also refuses without
+`--reuse` or `--reask-all`: §2 of its plan makes that a decision about money, and
+the module will not take a default for it.
 
 Their destinations are guarded by `harness/record_guard.py`: those records cost
 money and a re-run does not give the same thing back.
@@ -795,7 +824,8 @@ adaptive-policy-compilation/
 │   │                        —— pairwise judgement ——
 │   ├── pair_benchmark.py    the 199 labelled pairs, with witnesses
 │   ├── pair_judgement.py    the pairwise question · THE ONLY MODULE THAT SPENDS
-│   └── pair_judgement_baselines.py  what the stage C rate is made of
+│   ├── pair_judgement_baselines.py  what the stage C rate is made of
+│   └── pair_sample_1600.py  the nested 1,600-pair sample, gated before it spends
 │
 ├── rung3/                order by search over the corpus, no LLM
 │   ├── order_search.py      coverage bound, greedy search, split
@@ -819,7 +849,11 @@ adaptive-policy-compilation/
 │   ├── queue_hierarchy_floor.py  what a ranking of the 8 queues alone scores
 │   ├── declared_order.py    the three scorings of stage D, and the control
 │   ├── edge_direction.py    is the declared direction right, and does it help
-│   └── edge_budget.py       does the channel pay with more edges
+│   ├── edge_budget.py       does the channel pay with more edges
+│   │                        —— the proposer at 1,600 ——
+│   ├── edge_sides.py        what each side of the queue-ranking split buys
+│   ├── mfas_compilation.py  the answers or the compilation? same edges, fewer lost
+│   └── edge_dropping.py     does deliberate dropping beat chance
 │
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle

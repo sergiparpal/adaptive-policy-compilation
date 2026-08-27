@@ -6,7 +6,7 @@ An experiment on **adaptive policy compilation**: a cheap symbolic engine
 resolves the cases it covers; when it fails to cover one (an impasse), an LLM
 acts and writes a new rule so that next time it does cover it.
 
-**Four rungs and one further thread are closed, and none of their figures are in
+**Four rungs and two further threads are closed, and none of their figures are in
 this file.** What is established, on which surface it was measured, what was
 withdrawn and why, and what is open: `STATUS.md`. Each figure it indexes belongs
 to a FINDINGS record that owns it and carries its dated errata in place. **Read
@@ -70,6 +70,21 @@ for:
     python3 -m rung3.declared_order --source results2/pair_judgement_1600.json \
         --out results3/declared_order_1600.json --split results2/pair_sample_1600.json \
         --accuracy results3/edge_direction_1600.json
+
+**Three follow-ups closed that thread's remaining routes**, §§12-14 of the same
+record, all free and all POST-RUN — they carry expectations but no signed row, so
+none of them is on `STATUS.md`'s scoreboard:
+
+    python3 -m rung3.edge_sides         # what each side of the split BUYS
+    python3 -m rung3.mfas_compilation   # the answers, or the compilation?
+    python3 -m rung3.edge_dropping      # does deliberate dropping beat chance
+
+**§14 narrows a signed row without moving it.** `B-b` was signed against a free
+queue ranking's 0.4824, and §14 measures that a *perfect* follower of that ranking
+scores about 0.44 at this budget, because 1,600 pairs is 4.6% of the 31,850 that
+could carry an edge. The row stays refuted exactly as signed; what it means is
+narrower than it reads, and `STATUS.md` says so beside the row rather than only in
+the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, the only module in the repository
 that spends.** It refuses to run while §0 of **the plan that governs the run** is
