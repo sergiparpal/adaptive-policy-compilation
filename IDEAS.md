@@ -142,6 +142,21 @@ tried at. What is left:
   it is that**: a compilation that drops edges deliberately rather than by
   arrival accident — dropping the ones a queue ranking would have supplied, say —
   is the only version of this route §13 does not rule out, and it is free.
+  **CLOSED TOO, August 26, 2026, by §14.** Truth-free dropping rules — keep the
+  proposer's self-consistent core, keep only the edges where it contradicts its
+  own majority — land within **0.7 deviations** of dropping the same number at
+  random, in both compilations. The arrival accident itself sits +1.24 deviations
+  above the same edges in a random arrival order: suggestive, not significant, and
+  not a rule anyone could have chosen in advance. **Nothing chooses better than
+  chance.**
+  **And §14 answered a question the thread had assumed rather than measured.** A
+  PERFECT follower of the proposer's own ranking, answering all 1,479 pairs,
+  scores **0.4402** where that ranking applied as a lookup over all 577 rules
+  scores **0.4824**. 1,479 pairs is 4.6% of the 31,850 that could carry an edge,
+  so **the channel at this budget cannot express the baseline `B-b` was signed
+  against** — and the proposer's 0.4804 is above that perfect follower's 0.4402.
+  `B-b` stands refuted as signed; what it measures is at least as much the budget
+  as the proposer.
 - **The pairs where neither rule can be right.** Between a sixth and a quarter of
   the sampled population, depending on surface: the true action across the whole
   shared region is a third queue. It is the material problem appearing inside the

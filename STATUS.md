@@ -490,6 +490,21 @@ actual proposer scores above 400 is unmeasured and would take calls.
 > [`FINDINGS3.md`](results3/FINDINGS3.md) §11 and its erratum to §10;
 > [`declared_order_1600.json`](results3/declared_order_1600.json).
 
+**Nothing chooses better than chance, and B-b's line was never reachable at that
+budget.** Truth-free rules for dropping declared edges — keep the proposer's
+self-consistent core, keep only where it contradicts its own majority — all sit
+within **0.7 deviations** of dropping the same number at random, in both
+compilations. The topological sort's arrival accident sits +1.24 deviations above
+the same edges in a random arrival order: suggestive, not significant. **And a
+perfect follower of the proposer's own queue ranking, answering all 1,479 pairs,
+scores 0.4402** where that ranking applied as a lookup over all 577 rules scores
+0.4824. 1,479 pairs is 4.6% of the 31,850 that could carry an edge, so the channel
+at this budget cannot express the baseline `B-b` was signed against — **`B-b` is
+refuted as signed and what it measures is at least as much the budget as the
+proposer**, whose 0.4804 is in fact above that perfect follower's 0.4402. POST-RUN,
+not a signed row ([`FINDINGS3.md`](results3/FINDINGS3.md) §14,
+[`edge_dropping.json`](results3/edge_dropping.json)).
+
 **It is the answers, not the compilation — and the sort was hiding it.** The same
 1,479 declared edges compiled by minimum feedback arc set instead of the
 cycle-refusing topological sort, which silently drops 169 of them first-come-
