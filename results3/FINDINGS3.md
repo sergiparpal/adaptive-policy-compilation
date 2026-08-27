@@ -1465,6 +1465,126 @@ zero API calls.
 
 ---
 
+## 13. It is the answers, not the compilation — and the sort was hiding it
+
+*Added 2026-08-26. `rung3/mfas_compilation.py` → `results3/mfas_compilation.json`,
+`PYTHONHASHSEED=0`, 3 s, **zero API calls**. **POST-RUN, with an expectation
+written before the run** and recorded in the module and the record. **It is not a
+signed row**: it is not on `STATUS.md`'s scoreboard and it is not a calibration
+event. It adjudicates nothing.*
+
+§12 left two candidates for where the pairwise channel loses what it is told, and
+did not separate them: the proposer's errors are correlated in the ranking's
+direction, or the compilation loses it. This changes **only** the compilation —
+same 1,479 declared edges, same rules, same cell — and separates them.
+
+### What the baseline was quietly discarding
+
+`try_edge` refuses any edge that would close a cycle **in the order it arrives**.
+Of 1,479 declared edges it installed 1,310 and dropped **169**, and which 169
+depends on nothing but sequence. The compiled order then honours every edge it
+kept, so `gate_order_respects_edges` passes and the pipeline looks lossless from
+inside while having thrown away 11% of what it was told.
+
+Minimum feedback arc set keeps every edge and minimises violations. Both
+compilations are therefore scored on the same fidelity metric — **violations over
+all 1,479** — which is the number the two can be compared on and which no record
+before this one published.
+
+### The instrument failed its own gate first, and that is recorded
+
+The first run of this module searched only from the `born_at` order and finished
+with **28** violations on the oracle's edges where the topological sort achieved
+**24**. A search that loses to the baseline at the baseline's own objective cannot
+say anything about compilation: the score difference would have been a fact about
+the search. The baseline is now one of three declared starts, so `mfas <=
+topological` holds by construction, and `gate_beats_the_baseline` blocks the run
+rather than trusting it. It is the same discipline as `harness.ceiling_check` —
+measure the instrument before the instrument measures anything.
+
+### The result
+
+```
+arm        edges  topo hon.  mfas hon.  +held     topo     mfas     gain
+model       1479       1350       1413    +63   0.4804   0.4332  -0.0472
+oracle      1105       1081       1100    +19   0.5357   0.5457  +0.0100
+coin        1479       1103       1278   +175   0.4985   0.4362  -0.0623
+born_at                                         0.4332
+```
+
+Violations fell in every arm — 129 → 66 for the model, 24 → 5 for the oracle, 376
+→ 201 for the coin. **The compilation got strictly better at its stated job in all
+three, and the score went the other way in two of them.**
+
+### The three readings, and the expectation they were checked against
+
+The expectation written before the run: *MFAS honours materially more edges; the
+model's score does not improve materially; the oracle's does.* **All three held,
+and the model's held more strongly than stated** — it did not fail to improve, it
+fell 0.0472.
+
+**1. The mechanism works when the input carries signal.** The oracle gains
+**+0.0100** from honouring 19 more of its own edges. So a better compilation is
+worth something, and cycle refusal was a real loss — for directions that are
+right.
+
+**2. The model behaves like the coin.** Both degrade under faithful compilation,
+by 0.0472 and 0.0623. The proposer's declared edges are not merely uninformative
+about the order: **honoured fully, they are worse than not honouring them.**
+
+**3. The topological sort was accidentally protecting the score.** Discarding 169
+edges first-come-first-served happened to discard harmful ones, and that is where
+a good part of §11's 0.4804 came from. The figure stands — it is what that
+compilation gives — but *what the proposer's edges buy* and *what that
+compilation's lossiness buys* were not separated until now, and they are not the
+same quantity.
+
+### An exact coincidence, checked rather than assumed
+
+The model's MFAS order scores **0.433166**, the `born_at` floor **to the digit**.
+It is not the arrival order: it differs from it in **576 of 577** positions. Both
+land on 431 correct of 995 test cases — the same count by different routes, which
+is unremarkable on a denominator of 995 and would have been a bug on any other. It
+was checked because exact equality invites suspicion, and the check is the reason
+it can be reported as a coincidence.
+
+### What keeps it comparable
+
+Every start has the property and the search preserves it: a rule with no incident
+declared edge has a delta of zero at every position, so it is never moved on its
+own account and **the untouched rules keep their arrival order relative to each
+other**. Their absolute indices shift as constrained rules move past them, which is
+equally true of Kahn's algorithm — §11 reports 576 of 577 rules off their arrival
+index for exactly that reason. **No random restarts**: they would scramble the
+untouched rules against each other and change the score for a reason having
+nothing to do with the edges.
+
+**The objective never sees the truth.** It minimises violations of declared edges
+and nothing else; the truth enters only to score the finished order. An optimizer
+that saw the labels would be `order_search_ls`, which reaches 0.7678 and answers a
+different question.
+
+### What it settles
+
+**The compilation is not the bottleneck, and §12's first candidate is the one that
+survives.** The information is in the protocol — the oracle improves under a
+compilation that keeps more of it — and the proposer's answers do not contain the
+order however faithfully they are compiled. `IDEAS.md`'s minimum-feedback-arc-set
+item is closed by this section, and it closed in the direction that removes an
+excuse rather than one that offers a route.
+
+**Files added by this section**
+
+```
+rung3/mfas_compilation.py        the two compilations, the arms and the gate
+results3/mfas_compilation.json   the record, with its expectation field
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.mfas_compilation`. Three
+seconds, zero API calls.
+
+---
+
 ## Files
 
 ```
