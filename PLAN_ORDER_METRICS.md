@@ -1,5 +1,35 @@
 # PLAN — An instrument that measures orders, not scores
 
+> **[CLOSED 2026-08-14] Executed in full.** §0 was drafted and committed in
+> `0f2dcf8` before any figure existed and signed unchanged in `2a59853` the same
+> day. **The figures are owned by
+> [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md)**, which also owns
+> the filled `G1`-`G6` register that §4 leaves blank here on purpose, and no
+> number is to be read off this file. Of the six `Q` rows §0 signed, **all six
+> were adjudicated: `Q-d` and `Q-f` refuted, the other four held** — the
+> scoreboard is in [`STATUS.md`](STATUS.md). Nothing below is pending work; the
+> instrument it built is `rung3/order_metrics*.py`, and its blocking step 0 is
+> `tests/test_order_metrics_gate.py`.
+>
+> **This banner touches neither §0 nor §4's status column**, which are the two
+> things this plan says are not edited after signing. It sits above both and
+> travels alone, as `e59f36f` did for `PLAN_BUDGET_LS.md` — which is where the
+> convention of closing a plan in the file itself comes from, so that anyone
+> opening it reads the closure first.
+>
+> **It does cost §0's signature block one command, so the replacement goes here
+> rather than in a later reader's surprise.** The signature says `git diff
+> 0f2dcf8 -- PLAN_ORDER_METRICS.md` shows only that line and the §4 pointer. That
+> was true until this banner existed; a two-dot diff against the working tree is
+> cumulative, so it now shows this text too — 29 insertions where the claim
+> predicts 10. **Bound it at the signing commit and it says exactly what it said:**
+>
+>     git diff 0f2dcf8 2a59853 -- PLAN_ORDER_METRICS.md
+>
+> §0 itself is unedited either way, and `git log -p PLAN_ORDER_METRICS.md` shows
+> that without needing a range. The signature is not touched to say so, because
+> it is Sergi's.
+
 **Destination:** repository root, beside `PLAN_BUDGET_LS.md`. **Drafted:**
 2026-08-14. **For:** execution by a coding agent, start to finish, without
 further design decisions.
