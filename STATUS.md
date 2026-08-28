@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of August 24, 2026. **Not a history** — that is the four
+What is known, as of August 27, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md)
 and [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), each with its
 dated errata in place. Every figure here already exists in one of them.

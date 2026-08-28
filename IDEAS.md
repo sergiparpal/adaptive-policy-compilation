@@ -1,14 +1,18 @@
 # Parking lot
 
-Status as of August 24, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of August 27, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
 corrected figures in rungs 3 and 4 in place. The pairwise-judgement thread of
 `PLAN_PAIRWISE.md` closed on August 24, 2026 with three signed rows adjudicated —
 `P-c` held, `P-d` and `P-e` refuted — and is written up in `FINDINGS2.md`
-(Stages C and D) and `FINDINGS3.md` §§6-10. This is a list of things not done,
-none of them developed and in no order of precedence.
+(Stages C and D) and `FINDINGS3.md` §§6-10. **A second thread,
+`PLAN_PROPOSER_1600.md`, closed on August 26, 2026** with four more signed rows —
+`B-b` and `B-c` refuted, `B-a` and `B-d` held — written up in `FINDINGS3.md` §11,
+and §§12-15 of that record close its remaining routes without a signed row
+between them. This is a list of things not done, none of them developed and in no
+order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
