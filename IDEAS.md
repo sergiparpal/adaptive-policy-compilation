@@ -83,8 +83,17 @@ tried at. What is left:
   the room is bounded — and `B-d` says the proposer spends its errors precisely
   where a ranking is silent, which no budget repairs. Answering it costs 12,800
   calls at ~19 s each, which is three days of wall clock for a question whose
-  ceiling is already known. **The cheaper question is the fourth item below**, and
-  it is now the one worth doing.
+  ceiling is already known.
+  **This is the only item in this section that still costs money, and it is not
+  recommended.** It would need its own `PLAN_*.md` with its own signed §0, since
+  `rung2/pair_judgement.py` refuses to spend against an unsigned plan and no flag
+  skips that. It is left written down rather than deleted because a price and a
+  reason to decline are worth more than silence — but §§12-14 removed every
+  argument for paying it: the rate is not the bottleneck (§12), the compilation is
+  not either (§13), and nothing selects better than chance (§14).
+  *A pointer here to "the cheaper question, the fourth item below" was removed on
+  2026-08-27: that item's cheap version was itself closed by §12 on the 26th, so
+  the sentence outlived what it pointed at by one day.*
 - ~~**Why the parse-failure rate tripled between the two populations.**~~
   **PROBABLY NOT A THING, August 26, 2026.** 2.4% on the hidden policy's pairs
   (n 170) and 8.75% on the learned base's (n 400) — and **5.12% on the same
