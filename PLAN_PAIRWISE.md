@@ -1,5 +1,38 @@
 # PLAN_PAIRWISE — declared priority by pairwise judgement
 
+> **[CLOSED 2026-08-24] Executed through Stage D, and §0 is signed.** Sergi
+> signed `P-c`, `P-d` and `P-e` on 2026-08-24 and all three were adjudicated:
+> **`P-c` held; `P-d` and `P-e` were refuted.** `P-a` and `P-b` are neither —
+> they were measured before anyone signed them, and §0.1 records them as spent
+> rather than restoring them as predictions. **The figures are owned by
+> [`results2/FINDINGS2.md`](results2/FINDINGS2.md), Stages C and D, and
+> [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6-10**, and no number is to
+> be read off this file; the scoreboard is in [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `Status: drafted, unsigned`. That is the
+> status this file carried while it was being drafted, and it has been false
+> since 2026-08-24.** It is kept unedited, as the records keep their superseded
+> text beside the correction rather than in place of it. The paragraph under it
+> still states the rule correctly, and the rule still binds the one thing here
+> that is not spent: **Stage E, §11, specified and never authorised.**
+>
+> This banner does not touch §0, which is the section this plan says is not
+> edited. It sits above it, and it travels alone, as `e59f36f` did for
+> `PLAN_BUDGET_LS.md`.
+>
+> **It does cost §0's signature block one command, so the replacement goes here
+> rather than in a later reader's surprise.** Sergi's signature says `git diff
+> 44eace3 -- PLAN_PAIRWISE.md` shows only that line. That was true until this
+> banner existed; a two-dot diff against the working tree is cumulative, so it
+> now shows this text too. **Bound it at the signing commit and it says exactly
+> what it said:**
+>
+>     git diff 44eace3 681d2c9 -- PLAN_PAIRWISE.md
+>
+> §0 itself is unedited either way, and `git log -p PLAN_PAIRWISE.md` shows that
+> without needing a range. The signature is not touched to say so, because it is
+> Sergi's.
+
 **Status: drafted, unsigned. Two of its five rows are already spent — see §0.1.**
 §0 carries prediction bands drafted by Claude on 2026-08-23. Under hard rule 2 of
 `CLAUDE.md` a model may draft a band but may not sign it: **no stage runs until
