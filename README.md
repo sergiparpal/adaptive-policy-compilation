@@ -33,7 +33,7 @@ up in four places at once.
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
-| **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–14 |
+| **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 
 Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
 re-measured on August 8, 2026 and their headline figures moved, and on August 24,
@@ -104,6 +104,7 @@ python3 -m rung2.pair_sample_1600  # the nested 1,600-pair sample and its gates
 python3 -m rung3.edge_sides        # what each side of the split BUYS
 python3 -m rung3.mfas_compilation  # is it the answers or the compilation
 python3 -m rung3.edge_dropping     # does deliberate dropping beat chance
+python3 -m rung3.answer_asymmetry  # why it names rule_b more often
 ```
 
 The two scorings of that thread take the records it produced, so they carry
@@ -853,7 +854,8 @@ adaptive-policy-compilation/
 │   │                        —— the proposer at 1,600 ——
 │   ├── edge_sides.py        what each side of the queue-ranking split buys
 │   ├── mfas_compilation.py  the answers or the compilation? same edges, fewer lost
-│   └── edge_dropping.py     does deliberate dropping beat chance
+│   ├── edge_dropping.py     does deliberate dropping beat chance
+│   └── answer_asymmetry.py  the a/b asymmetry, and the position effect
 │
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle

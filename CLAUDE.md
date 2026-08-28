@@ -78,6 +78,7 @@ none of them is on `STATUS.md`'s scoreboard:
     python3 -m rung3.edge_sides         # what each side of the split BUYS
     python3 -m rung3.mfas_compilation   # the answers, or the compilation?
     python3 -m rung3.edge_dropping      # does deliberate dropping beat chance
+    python3 -m rung3.answer_asymmetry   # why it names rule_b more often (§15)
 
 **§14 narrows a signed row without moving it.** `B-b` was signed against a free
 queue ranking's 0.4824, and §14 measures that a *perfect* follower of that ranking
