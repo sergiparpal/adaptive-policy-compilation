@@ -1,0 +1,177 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-28T11:05:07Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "d5130ac5a6bbadc17eecfae992a7cef7916668cb",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "590ef4f276290c22"
+  },
+  "what": "why the proposer names `rule_b` more often than `rule_a`, the pairwise thread's last open question. Reads answers already paid for; zero API calls.",
+  "provenance": "POST-RUN, written after PLAN_PROPOSER_1600 closed. It adjudicates nothing and no signed row moves. The four hypotheses were declared before the measurement and all four are reported, including the drafter's favourite, which was wrong. Zero API calls.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves.",
+  "two_effects_were_being_called_one": "`rule_b` is the LATER-BORN rule in 100% of pairs by construction, never necessarily the one shown second; presentation order is dealt separately and balanced exactly. Naming `b` more often and preferring the rule shown second are different claims about different axes, and conflating them is how this stayed open.",
+  "no_truth_enters": "every quantity is a property of what was said and of the rules' shapes. The ranking is the proposer's own, Copeland over the queue pairs it decided.",
+  "hypotheses_declared_before_the_measurement": {
+    "H1_specificity": "it prefers the narrower rule; its own `why` texts say so",
+    "H2_the_ranking": "the queue ranking again \u2014 following it produces the asymmetry without any preference for `b`",
+    "H3_birth_order": "recency as such. NOT SEPARABLE: `b` is later-born in 100% of pairs, so this restates the question",
+    "H4_position": "the presentation slot"
+  },
+  "n_declared_edges": 1479,
+  "revealed_ranking": [
+    "ONCALL_ESCALATION",
+    "SECURITY_INCIDENT",
+    "T3_ENGINEERING",
+    "BILLING_SPECIALIST",
+    "ACCOUNT_MANAGER",
+    "SELF_SERVICE_DEFLECT",
+    "T2_TECHNICAL",
+    "T1_GENERAL"
+  ],
+  "base_rates_of_the_population": {
+    "b_is_the_narrower_rule": 0.4814,
+    "b_is_later_born": 1.0,
+    "the_ranking_favours_b": 0.526
+  },
+  "marginal_rates": {
+    "names_b": {
+      "what": "names_b",
+      "n": 1479,
+      "hits": 781,
+      "rate": 0.5281,
+      "standard_error": 0.013,
+      "deviations_from_a_coin": 2.16
+    },
+    "names_broader": {
+      "what": "names_broader",
+      "n": 1479,
+      "hits": 893,
+      "rate": 0.6038,
+      "standard_error": 0.013,
+      "deviations_from_a_coin": 7.98
+    },
+    "names_later_born": {
+      "what": "names_later_born",
+      "n": 1479,
+      "hits": 781,
+      "rate": 0.5281,
+      "standard_error": 0.013,
+      "deviations_from_a_coin": 2.16
+    },
+    "follows_ranking": {
+      "what": "follows_ranking",
+      "n": 1479,
+      "hits": 1194,
+      "rate": 0.8073,
+      "standard_error": 0.013,
+      "deviations_from_a_coin": 23.64
+    },
+    "names_first_shown": {
+      "what": "names_first_shown",
+      "n": 1479,
+      "hits": 801,
+      "rate": 0.5416,
+      "standard_error": 0.013,
+      "deviations_from_a_coin": 3.2
+    }
+  },
+  "H2_symmetry_of_following": {
+    "what": "the rate at which it follows its own queue ranking, split by which side the ranking points at. Equal rates mean the a/b asymmetry belongs to the population and not to the proposer.",
+    "when_the_ranking_favours_a": {
+      "what": "follows the ranking",
+      "n": 701,
+      "hits": 557,
+      "rate": 0.7946,
+      "standard_error": 0.0189,
+      "deviations_from_a_coin": 15.6
+    },
+    "when_the_ranking_favours_b": {
+      "what": "follows the ranking",
+      "n": 778,
+      "hits": 637,
+      "rate": 0.8188,
+      "standard_error": 0.0179,
+      "deviations_from_a_coin": 17.78
+    },
+    "difference": 0.0242,
+    "standard_error": 0.026,
+    "deviations": 0.93
+  },
+  "H2_naming_b_predicted_from_the_ranking": {
+    "what": "naming `b` predicted from the ranking alone: the ranking favours `b` on some fraction of pairs and the proposer follows it at some rate, and those two numbers alone give a prediction.",
+    "ranking_favours_b_in": 0.526,
+    "follows_the_ranking": 0.8073,
+    "predicted": 0.516,
+    "observed": 0.5281,
+    "residual": 0.0121,
+    "residual_in_standard_errors": 0.93
+  },
+  "H1_vs_H2_where_they_disagree": {
+    "ranking_and_breadth_agree": {
+      "n": 922,
+      "follows_ranking": {
+        "what": "follows the ranking",
+        "n": 922,
+        "hits": 765,
+        "rate": 0.8297,
+        "standard_error": 0.0165,
+        "deviations_from_a_coin": 20.02
+      },
+      "names_broader": {
+        "what": "names the broader rule",
+        "n": 922,
+        "hits": 765,
+        "rate": 0.8297,
+        "standard_error": 0.0165,
+        "deviations_from_a_coin": 20.02
+      }
+    },
+    "they_disagree": {
+      "n": 557,
+      "follows_ranking": {
+        "what": "follows the ranking",
+        "n": 557,
+        "hits": 429,
+        "rate": 0.7702,
+        "standard_error": 0.0212,
+        "deviations_from_a_coin": 12.75
+      },
+      "names_broader": {
+        "what": "names the broader rule",
+        "n": 557,
+        "hits": 128,
+        "rate": 0.2298,
+        "standard_error": 0.0212,
+        "deviations_from_a_coin": -12.75
+      }
+    },
+    "what": "on the disagreeing pairs a ranking-follower and a breadth-preferrer choose differently, so the split decides between H1 and H2. On the agreeing pairs both predict the same answer and nothing can be learned."
+  },
+  "H4_position": {
+    "what": "the rate at which it follows its own ranking, split by whether the rule that ranking favours was shown first or second. This is not a preference but an ACCURACY difference: the same proposer applying the same ranking, worse from one slot.",
+    "favoured_shown_first": {
+      "what": "follows the ranking",
+      "n": 730,
+      "hits": 623,
+      "rate": 0.8534,
+      "standard_error": 0.0185,
+      "deviations_from_a_coin": 19.1
+    },
+    "favoured_shown_second": {
+      "what": "follows the ranking",
+      "n": 749,
+      "hits": 571,
+      "rate": 0.7623,
+      "standard_error": 0.0183,
+      "deviations_from_a_coin": 14.36
+    },
+    "difference": 0.0911,
+    "standard_error": 0.026,
+    "deviations": 3.5
+  },
+  "seconds": 0.3
+}
