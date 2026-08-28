@@ -1,5 +1,22 @@
 # PLAN_PROPOSER_1600 — the real proposer, at the budget that discriminates
 
+> **[CLOSED 2026-08-26] Executed in full, and §0 is signed.** Sergi signed `B-a`
+> to `B-d` on 2026-08-25, **before the 1,200 calls rather than after them**, and
+> all four were adjudicated: **`B-b` and `B-c` refuted; `B-a` and `B-d` held.**
+> **The figures are owned by [`results3/FINDINGS3.md`](results3/FINDINGS3.md)
+> §11**, which also carries a dated erratum to §10, and no number is to be read
+> off this file; the scoreboard is in [`STATUS.md`](STATUS.md). §§12-15 of the
+> same record close this thread's remaining routes: they are POST-RUN, carry
+> expectations but no signed row, and are therefore on no scoreboard. **§14
+> narrows `B-b` without moving it** — the row stays refuted exactly as signed,
+> and `STATUS.md` says so beside the row.
+>
+> **The line immediately below says `unsigned`. That is the status this file
+> carried while it was being drafted, and it has been false since 2026-08-25.**
+> It is kept unedited and this banner is its correction; the paragraph under it
+> still states hard rule 2 correctly. The banner does not touch §0, and it
+> travels alone.
+
 **Status: drafted by Claude on 2026-08-25, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **No stage runs until
 Sergi has signed the rows that govern its output**, and the signature has to land
