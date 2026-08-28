@@ -491,6 +491,19 @@ actual proposer scores above 400 is unmeasured and would take calls.
 > [`FINDINGS3.md`](results3/FINDINGS3.md) §11 and its erratum to §10;
 > [`declared_order_1600.json`](results3/declared_order_1600.json).
 
+**The a/b asymmetry was never an effect; the position bias is.** The proposer
+naming `rule_b` more often — 203/162 at 400 pairs, 781/698 at 1,600, unexplained
+since Stage D — is entirely its queue ranking: `rule_b` is the later-born rule in
+every pair, the ranking favours it on 0.5260 of them, and following it 0.8073 of
+the time predicts naming `b` at 0.5160 against an observed 0.5281, a residual of
++0.93 standard errors. **What is real is a primacy effect, and it costs accuracy
+rather than merely shifting taste**: the proposer applies its own ranking 0.8534 of
+the time when the favoured rule is shown first and 0.7623 when shown second, +3.50
+deviations. Specificity was refuted on the way — it names the BROADER rule, against
+what its own explanations say, and that too rides on the ranking. POST-RUN,
+adjudicates nothing ([`FINDINGS3.md`](results3/FINDINGS3.md) §15,
+[`answer_asymmetry.json`](results3/answer_asymmetry.json)).
+
 **Nothing chooses better than chance, and B-b's line was never reachable at that
 budget.** Truth-free rules for dropping declared edges — keep the proposer's
 self-consistent core, keep only where it contradicts its own majority — all sit

@@ -102,7 +102,31 @@ tried at. What is left:
   denominators looks like and not what a mechanism looks like. Kept as a line
   rather than deleted because nothing was *shown* to be absent; the prompt was
   never touched, which was the point.
-- **Why the proposer prefers the rule shown second.** 203 against 162 at 400,
+- ~~**Why the proposer prefers the rule shown second.**~~ **CLOSED August 27,
+  2026 by `FINDINGS3.md` §15 — it was never an effect.** Two things were being
+  called one: `rule_b` is the LATER-BORN rule in 100% of pairs by construction and
+  never necessarily the one shown second. The a/b asymmetry is entirely the queue
+  ranking: the ranking favours `b` on 0.5260 of pairs and the proposer follows it
+  0.8073 of the time, which predicts naming `b` at 0.5160 against an observed
+  0.5281 — a residual of +0.93 standard errors. It follows its ranking equally
+  whichever side it points at (+0.93 deviations). **The asymmetry belonged to the
+  pairs that were sampled, not to the proposer.**
+  **And a hypothesis died usefully.** Specificity — it names the BROADER rule
+  0.6038 of the time, the opposite of what its own `why` texts claim, and on the
+  557 pairs where breadth and the ranking conflict it follows the ranking 0.7702
+  and names the broader rule 0.2298. Breadth rides on the ranking and is not a
+  preference. The gap between what the proposer says it is doing and what it does
+  is noted in §15 as one sentence, not measured: a proper treatment of the `why`
+  texts would be its own work, **and that is a real item nobody has opened.**
+  **WHAT REPLACES IT, and it is sharper than what it replaces:** the position
+  effect is real and it is an ACCURACY effect, not a taste. The proposer applies
+  its own ranking 0.8534 of the time when the favoured rule is shown first and
+  0.7623 when shown second — **nine points, +3.50 deviations**. Balanced
+  presentation removes the trivial account and nothing here explains the rest. It
+  is a property of the elicitation rather than of this policy or this rule base,
+  so it would show up in any pairwise protocol — which is what makes it worth
+  carrying. Free to attack: the answers are already paid for.
+- **The old wording of that item, kept for the record.** 203 against 162 at 400,
   **and 781 against 698 at 1,600** — the asymmetry survived quadrupling
   (`FINDINGS3.md` §11). **Sharpened, August 26, 2026, into two separate facts that
   were being conflated.** There *is* a position effect and it is now significant:

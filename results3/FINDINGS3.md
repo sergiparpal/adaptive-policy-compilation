@@ -1706,6 +1706,131 @@ seconds, zero API calls.
 
 ---
 
+## 15. The asymmetry was never a thing — but the position effect is
+
+*Added 2026-08-27. `rung3/answer_asymmetry.py` → `results3/answer_asymmetry.json`,
+`PYTHONHASHSEED=0`, under a second, **zero API calls**. **POST-RUN**, written
+after the thread closed. **It adjudicates nothing** and no signed row moves. The
+four hypotheses were declared before the measurement and all four are reported,
+including the drafter's favourite, which was wrong.*
+
+Stage D came back 203 `b_beats_a` against 162 `a_beats_b`; `results2/FINDINGS2.md`
+left it unexplained and it survived quadrupling, 781 against 698. It was the
+pairwise thread's last genuinely open question.
+
+### It survived because two effects were being called one thing
+
+**`rule_b` is not a position.** The pairs are ordered by rule id, ids are assigned
+in birth order, so `rule_b` is the **later-born** rule in 100% of pairs and never
+necessarily the one shown second — presentation order is dealt separately and
+balanced exactly. *Naming `b` more often* and *preferring the rule shown second*
+are different claims about different axes. Conflating them is how this stayed open
+through three sections.
+
+That also disposes of one hypothesis before any measurement: **birth order is not
+separable from the asymmetry**, since `names_b` and `names_later_born` are
+necessarily the same number. It restates the question rather than answering it,
+and it is kept in the table to make that visible.
+
+### The four hypotheses and their marginals
+
+```
+                     rate      devs     base rate of the population
+names_b            0.5281     +2.16     the ranking favours b   0.5260
+names_broader      0.6038     +7.98     b is the narrower rule  0.4814
+names_later_born   0.5281     +2.16     b is later-born         1.0000
+follows_ranking    0.8073    +23.64
+names_first_shown  0.5416     +3.20
+```
+
+A marginal cannot separate `H1` from `H2`: breadth and the ranking's favourite
+coincide on **922 of 1,479** pairs, so each would look like the other.
+
+### H2 — the asymmetry is the population's, not the proposer's
+
+Two independent ways of asking, both saying the same thing.
+
+**Symmetry.** It follows its own ranking **0.7946** when the ranking favours `a`
+and **0.8188** when it favours `b` — a difference of +0.0242, **+0.93 deviations**.
+A `b`-preference the ranking did not explain would have shown up here as following
+it more when it happens to point at `b`. It does not.
+
+**Prediction.** The ranking favours `b` on 0.5260 of pairs and the proposer follows
+it 0.8073 of the time. Those two numbers alone predict naming `b` at **0.5160**
+against an observed **0.5281** — a residual of **+0.0121, +0.93 standard errors**.
+
+**So the asymmetry is a property of the pairs that were sampled, not of the
+proposer.** The queue ranking happens to favour the later-born rule slightly more
+often than not, and a ranking-follower inherits that. Nothing needs explaining.
+
+### H1 — and the drafter's favourite hypothesis was wrong twice over
+
+`H1` said it prefers the **narrower** rule, on the evidence of its own `why`
+texts — *"La regla A es mas especifica..."*. The marginal already contradicts it:
+it names the **broader** rule 0.6038 of the time, +7.98 deviations the other way.
+
+But the marginal is not the test. **The pairs that decide are the 557 where the
+ranking and breadth point in opposite directions**, because there a
+ranking-follower and a breadth-preferrer choose differently:
+
+```
+                              n     follows ranking   names broader
+ranking and breadth agree   922            0.8297          0.8297
+they disagree               557            0.7702          0.2298
+```
+
+Where they conflict it follows the ranking **0.7702**, +12.75 deviations from a
+coin, and names the broader rule only 0.2298. **Breadth is not a preference of its
+own; it rides on the ranking**, which favours broad rules on 62.3% of these pairs.
+
+So `H1` is refuted, and the interesting part is *how*: the proposer's stated reason
+and its behaviour point in opposite directions. It says "more specific" and it
+names the broader rule — and neither is what it is actually doing, which is
+applying a queue ranking. **This is one sentence and not a measurement**: nothing
+here reads those strings systematically, and a proper treatment of the `why` texts
+would be its own work.
+
+### H4 — the position effect is real, and it is not a preference
+
+The earlier reading was that the winner is the rule shown first 0.5416 of the time,
++3.20 deviations. That is a preference. The sharper question is whether the slot
+changes how **reliably** it applies its own ranking:
+
+```
+the ranking's favourite shown first :  0.8534
+the ranking's favourite shown second:  0.7623
+difference +0.0911, +3.50 deviations
+```
+
+**Same proposer, same ranking, nine points worse from the second slot.** It is an
+accuracy effect and not a taste, it is the largest well-identified bias in the
+thread after the ranking itself, and it is the one thing here that would show up in
+any pairwise elicitation protocol.
+
+### What it closes and what it leaves
+
+**Closed.** The a/b asymmetry, which was never an effect. `IDEAS.md`'s last open
+pairwise question goes with it.
+
+**Left open, and newly sharp.** Why the second slot costs nine points of adherence.
+Nothing here explains it — balanced presentation removes the trivial account, and
+the remaining candidates (attention to the first-described option, the shape of the
+prompt) are not distinguishable from this record. It is a property of the
+elicitation rather than of this policy or this rule base, which is what makes it
+worth naming.
+
+**Files added by this section**
+
+```
+rung3/answer_asymmetry.py        the features, the conflict test, the position test
+results3/answer_asymmetry.json   the record, with its four declared hypotheses
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.answer_asymmetry`. Under a
+second, zero API calls.
+
+---
+
 ## Files
 
 ```
