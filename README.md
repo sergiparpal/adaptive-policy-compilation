@@ -47,6 +47,27 @@ debt.
 > operating procedure of that rung.** They remain valid as procedure, not as
 > project status.
 
+### Two documents that read the records instead of adding to them
+
+Two more files sit at the root, and until now nothing indexed them:
+[`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md), the report on *which rule wins
+when several match and disagree*, written against the records as they stood on
+2026-08-16; and [`CHAT_SUMMARY.md`](CHAT_SUMMARY.md), the summary of the
+conversation of August 11, 2026, reviewed once against the records it cites —
+on August 12, which its own header says is still the last review — and corrected
+in four places since. **Neither owns a figure and neither is a record.** They cite, with the
+record that owns each number named; where one disagrees with a record, the
+record wins; and both carry their own dated errata in place, exactly as the
+FINDINGS do.
+
+**They are worth the detour before writing a new analysis**, which is what §9.8
+of the first is about: it re-derived three corrections the second had already
+made, by another route and without knowing them. Two independent readings
+converging is evidence for the conclusions — and a warning that this repository
+already contains analysis a new document may be repeating. §4, rule C of
+[`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) turns that into a step rather than a
+suggestion.
+
 ---
 
 ## Reproducing the four rungs
@@ -802,6 +823,8 @@ adaptive-policy-compilation/
 ├── requirements.lock.txt    transitive closure of the records' environment
 ├── README.md  CLAUDE.md  IDEAS.md  STATUS.md  LICENSE  .gitignore
 ├── PREDICTION.md  PLAN_*.md   signed plans — each travels alone in its commit
+├── ARBITRATION_REPORT.md    two readings of the records; they own no figure —
+├── CHAT_SUMMARY.md          see *Two documents that read the records*, above
 │
 ├── harness/                 RUNG 1 — frozen spec and original engine
 │   ├── domain.py            case, actions, corpus (seed 17)          [FROZEN]
