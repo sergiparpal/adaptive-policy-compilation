@@ -27,6 +27,17 @@ remains valid as a procedure but **not** as the status of the project.
 Read `README.md` before touching anything. `IDEAS.md` keeps the list of what is
 open.
 
+**Before writing a new analytical document, read the two that already exist.**
+`ARBITRATION_REPORT.md` — which rule wins when several match and disagree — and
+`CHAT_SUMMARY.md` — the conversation of August 11, 2026, with the errata it has
+issued against itself since. Neither owns a figure, both carry their errata in
+place, and the record wins wherever one disagrees with it. §9.8 of the first
+records that it re-derived three of the second's corrections by another
+route without knowing them; §4, rule C of `PLAN_PAIRWISE.md` makes reading them a
+step and not a suggestion. **Do not make it three times.** They are indexed
+nowhere but the README's structure tree and the section *Two documents that read
+the records instead of adding to them*, which is why the pointer is here.
+
 **The operating procedure of rungs 2, 3 and 4 is not in this file**, which only
 describes that of rung 1. It is in the README, section "Reproducing the four
 rungs". Everything in those three rungs costs zero API calls and runs on the
