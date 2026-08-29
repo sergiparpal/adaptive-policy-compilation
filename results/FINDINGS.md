@@ -55,6 +55,27 @@ each) and steals 246 cases from them. The catch-all H29 has 1 condition and
 therefore ties on specificity with every single-condition layer rule, generating
 a conflict instead of yielding.
 
+> **[NOTE 2026-08-29] That last sentence is now measured, and it is a large part
+> of the 505.** H29 is `lambda c: True` and has no conditions; the DSL requires at
+> least one, so it is encoded `severity gte 1` and the engine counts it as
+> specific. Give it its true rank — a control that reads only `DOMAINS` and the
+> rule, no layer order and no oracle — and **39.8% of the corpus conflicts turn
+> out to be that encoding**, e2e 0.5875 → 0.6880. On the exhaustive space the
+> same control moves 13.6% of them, 0.2725 → 0.3458.
+>
+> **No figure above moves**, and this is not an erratum: the control re-measures
+> this section's row through the same objects that produced it and blocks unless
+> it comes back to the digit. The silent-error count is identical under both
+> arbitrations on both surfaces — the artifact inflated abstention, never error.
+> And the impossibility below is untouched, because it is internal to the policy
+> and mentions no encoding.
+>
+> The four rows, the per-class table and the residue are owned by
+> [`FINDINGS_DEFAULT_RULE.md`](FINDINGS_DEFAULT_RULE.md); the figures cited here
+> belong to it. POST-RUN and on no scoreboard: it was written by someone who had
+> already seen the number. Item 2 of [`EXTERNAL_REVIEW.md`](../EXTERNAL_REVIEW.md),
+> whose §3 ran the two corpus rows in memory and left them owned by nothing.
+
 Proof that no monotone function of specificity can work, using only rules from
 the policy itself: H01 (2 conditions) must beat H03 (1), and H16 (1) must beat
 H24 (2). The two requirements are incompatible under any criterion monotone in

@@ -68,6 +68,11 @@ WRITERS = [
     # it never recomputes — and writes territory_holders.json, correcting the
     # reading of a figure rather than any of its values.
     "rung3.territory_holders",
+    # The default-rule control, added 2026-08-29 with the module. A seventh
+    # writer and the first one under `harness/` on this list: it writes
+    # results/default_rule_control.json and reads nothing, and it is here for
+    # the same reason as the six above — this list only ever grows.
+    "harness.default_rule_control",
 ]
 
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")

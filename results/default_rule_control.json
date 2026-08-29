@@ -1,0 +1,578 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-29T09:33:14Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "f4b1b0f32415ef7ce4bcab309f6ca584c1f78911",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "29485ddbe33f59e8",
+    "n_corpus": 2000,
+    "seed": 17
+  },
+  "what": "rung 1's specificity ceiling with the catch-all at its true rank, beside the published encoding, on both surfaces",
+  "provenance": "POST-RUN. The two corpus rows were run in memory on 2026-08-29 during the adjudication of EXTERNAL_REVIEW.md and are printed in its \u00a73; this module is item 2 of that plan, written by someone who had already seen 0.6880. Nothing here is a bet that could have failed, no signed row moves, and it enters no scoreboard.",
+  "criterion": "the same specificity arbitration, applied to the policy as written instead of to the transcription the schema forced. Vacuity is decided from DOMAINS and the rule alone: no layer order and no oracle take part in the ranking.",
+  "artifact": {
+    "rule": "H29",
+    "in_the_policy": "lambda c: True",
+    "in_the_dsl": [
+      {
+        "attr": "severity",
+        "op": "gte",
+        "value": 1
+      }
+    ],
+    "why": "validate_rule_payload requires at least one condition",
+    "specificity_in_the_dsl": 1,
+    "effective_specificity": 0,
+    "rules_with_a_vacuous_condition": [
+      "H29"
+    ],
+    "vacuous_conditions": {
+      "H29": [
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 1
+        }
+      ]
+    }
+  },
+  "gate_published_row": {
+    "checks": {
+      "action": {
+        "measured": 1495,
+        "published": 1495,
+        "passes": true
+      },
+      "impasse": {
+        "measured": 0,
+        "published": 0,
+        "passes": true
+      },
+      "conflict": {
+        "measured": 505,
+        "published": 505,
+        "passes": true
+      },
+      "silent_errors_abs": {
+        "measured": 320,
+        "published": 320,
+        "passes": true
+      },
+      "coverage": {
+        "measured": 0.7475,
+        "published": 0.7475,
+        "passes": true
+      },
+      "silent_error_rate": {
+        "measured": 0.214,
+        "published": 0.214,
+        "passes": true
+      },
+      "accuracy_end_to_end": {
+        "measured": 0.5875,
+        "published": 0.5875,
+        "passes": true
+      }
+    },
+    "passes": true
+  },
+  "rows": [
+    {
+      "surface": "corpus (n=2000, seed 17)",
+      "arbitration": "specificity, as published",
+      "n": 2000,
+      "action": 1495,
+      "impasse": 0,
+      "conflict": 505,
+      "coverage": 0.7475,
+      "silent_errors_abs": 320,
+      "silent_error_rate": 0.214047,
+      "accuracy_end_to_end": 0.5875
+    },
+    {
+      "surface": "corpus (n=2000, seed 17)",
+      "arbitration": "specificity, catch-all at its true rank",
+      "n": 2000,
+      "action": 1696,
+      "impasse": 0,
+      "conflict": 304,
+      "coverage": 0.848,
+      "silent_errors_abs": 320,
+      "silent_error_rate": 0.188679,
+      "accuracy_end_to_end": 0.688
+    },
+    {
+      "surface": "exhaustive space (134,400)",
+      "arbitration": "specificity, as published",
+      "n": 134400,
+      "action": 62102,
+      "impasse": 0,
+      "conflict": 72298,
+      "coverage": 0.462068,
+      "silent_errors_abs": 25474,
+      "silent_error_rate": 0.410196,
+      "accuracy_end_to_end": 0.27253
+    },
+    {
+      "surface": "exhaustive space (134,400)",
+      "arbitration": "specificity, catch-all at its true rank",
+      "n": 134400,
+      "action": 71955,
+      "impasse": 0,
+      "conflict": 62445,
+      "coverage": 0.535379,
+      "silent_errors_abs": 25474,
+      "silent_error_rate": 0.354027,
+      "accuracy_end_to_end": 0.345841
+    }
+  ],
+  "what_moves": {
+    "corpus (n=2000, seed 17)": {
+      "published_conflicts_with_the_catchall_as_finalist": 276,
+      "of_those_resolved": 201,
+      "resolved_correct": 201,
+      "resolved_wrong": 0,
+      "still_conflict": 304,
+      "resolved_by_true_class": {
+        "SELF_SERVICE_DEFLECT": 46,
+        "T2_TECHNICAL": 155
+      },
+      "residual_conflict_sets": 61,
+      "residual_conflict_sets_with_the_catchall": 0,
+      "top_residual_conflicts": [
+        {
+          "finalists": [
+            "H11",
+            "H24"
+          ],
+          "actions": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H11",
+          "cases": 95
+        },
+        {
+          "finalists": [
+            "H16",
+            "H28"
+          ],
+          "actions": [
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "effective_specificity": 1,
+          "first_match_wins": "H16",
+          "cases": 37
+        },
+        {
+          "finalists": [
+            "H12",
+            "H28"
+          ],
+          "actions": [
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "effective_specificity": 1,
+          "first_match_wins": "H12",
+          "cases": 17
+        },
+        {
+          "finalists": [
+            "H18",
+            "H28"
+          ],
+          "actions": [
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "effective_specificity": 1,
+          "first_match_wins": "H18",
+          "cases": 16
+        },
+        {
+          "finalists": [
+            "H11",
+            "H14"
+          ],
+          "actions": [
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H11",
+          "cases": 12
+        },
+        {
+          "finalists": [
+            "H09",
+            "H11",
+            "H13"
+          ],
+          "actions": [
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H09",
+          "cases": 9
+        },
+        {
+          "finalists": [
+            "H10",
+            "H25"
+          ],
+          "actions": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H10",
+          "cases": 8
+        },
+        {
+          "finalists": [
+            "H20",
+            "H25"
+          ],
+          "actions": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H20",
+          "cases": 7
+        },
+        {
+          "finalists": [
+            "H10",
+            "H11",
+            "H14"
+          ],
+          "actions": [
+            "BILLING_SPECIALIST",
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H10",
+          "cases": 5
+        },
+        {
+          "finalists": [
+            "H03",
+            "H12"
+          ],
+          "actions": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "effective_specificity": 1,
+          "first_match_wins": "H03",
+          "cases": 5
+        }
+      ],
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "pub_ACTION": 73,
+          "ctl_ACTION": 73,
+          "pub_correct": 73,
+          "ctl_correct": 73,
+          "pub_CONFLICT": 36,
+          "ctl_CONFLICT": 36
+        },
+        "T1_GENERAL": {
+          "pub_ACTION": 255,
+          "ctl_ACTION": 255,
+          "pub_correct": 255,
+          "ctl_correct": 255
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "pub_ACTION": 432,
+          "ctl_ACTION": 478,
+          "pub_correct": 426,
+          "ctl_correct": 472,
+          "pub_CONFLICT": 63,
+          "ctl_CONFLICT": 17
+        },
+        "T2_TECHNICAL": {
+          "pub_ACTION": 483,
+          "ctl_ACTION": 638,
+          "pub_correct": 176,
+          "ctl_correct": 331,
+          "pub_CONFLICT": 243,
+          "ctl_CONFLICT": 88
+        },
+        "BILLING_SPECIALIST": {
+          "pub_ACTION": 150,
+          "ctl_ACTION": 150,
+          "pub_correct": 144,
+          "ctl_correct": 144,
+          "pub_CONFLICT": 121,
+          "ctl_CONFLICT": 121
+        },
+        "SECURITY_INCIDENT": {
+          "pub_CONFLICT": 17,
+          "ctl_CONFLICT": 17,
+          "pub_ACTION": 3,
+          "ctl_ACTION": 3,
+          "pub_correct": 3,
+          "ctl_correct": 3
+        },
+        "T3_ENGINEERING": {
+          "pub_ACTION": 96,
+          "ctl_ACTION": 96,
+          "pub_correct": 95,
+          "ctl_correct": 95,
+          "pub_CONFLICT": 21,
+          "ctl_CONFLICT": 21
+        },
+        "ONCALL_ESCALATION": {
+          "pub_ACTION": 3,
+          "ctl_ACTION": 3,
+          "pub_correct": 3,
+          "ctl_correct": 3,
+          "pub_CONFLICT": 4,
+          "ctl_CONFLICT": 4
+        }
+      },
+      "gate_no_action_changes": true,
+      "gate_no_resolution_is_wrong": true
+    },
+    "exhaustive space (134,400)": {
+      "published_conflicts_with_the_catchall_as_finalist": 11973,
+      "of_those_resolved": 9853,
+      "resolved_correct": 9853,
+      "resolved_wrong": 0,
+      "still_conflict": 62445,
+      "resolved_by_true_class": {
+        "T2_TECHNICAL": 9678,
+        "SELF_SERVICE_DEFLECT": 175
+      },
+      "residual_conflict_sets": 269,
+      "residual_conflict_sets_with_the_catchall": 0,
+      "top_residual_conflicts": [
+        {
+          "finalists": [
+            "H01",
+            "H13"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H01",
+          "cases": 5120
+        },
+        {
+          "finalists": [
+            "H01",
+            "H14"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H01",
+          "cases": 3640
+        },
+        {
+          "finalists": [
+            "H11",
+            "H24"
+          ],
+          "actions": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H11",
+          "cases": 2160
+        },
+        {
+          "finalists": [
+            "H02",
+            "H20"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H02",
+          "cases": 2136
+        },
+        {
+          "finalists": [
+            "H02",
+            "H17"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "T3_ENGINEERING"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H02",
+          "cases": 2136
+        },
+        {
+          "finalists": [
+            "H02",
+            "H10",
+            "H11"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST",
+            "BILLING_SPECIALIST"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H02",
+          "cases": 1872
+        },
+        {
+          "finalists": [
+            "H09",
+            "H11",
+            "H13"
+          ],
+          "actions": [
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H09",
+          "cases": 1280
+        },
+        {
+          "finalists": [
+            "H01",
+            "H09",
+            "H11",
+            "H13"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H01",
+          "cases": 1280
+        },
+        {
+          "finalists": [
+            "H02",
+            "H07",
+            "H15"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "T3_ENGINEERING",
+            "T3_ENGINEERING"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H02",
+          "cases": 1068
+        },
+        {
+          "finalists": [
+            "H02",
+            "H15"
+          ],
+          "actions": [
+            "SECURITY_INCIDENT",
+            "T3_ENGINEERING"
+          ],
+          "effective_specificity": 2,
+          "first_match_wins": "H02",
+          "cases": 1068
+        }
+      ],
+      "per_class": {
+        "T2_TECHNICAL": {
+          "pub_CONFLICT": 14119,
+          "ctl_CONFLICT": 4441,
+          "pub_ACTION": 22601,
+          "ctl_ACTION": 32279,
+          "pub_correct": 5232,
+          "ctl_correct": 14910
+        },
+        "T3_ENGINEERING": {
+          "pub_CONFLICT": 3114,
+          "ctl_CONFLICT": 3114,
+          "pub_ACTION": 5066,
+          "ctl_ACTION": 5066,
+          "pub_correct": 4356,
+          "ctl_correct": 4356
+        },
+        "ONCALL_ESCALATION": {
+          "pub_ACTION": 1735,
+          "ctl_ACTION": 1735,
+          "pub_correct": 1735,
+          "ctl_correct": 1735,
+          "pub_CONFLICT": 4565,
+          "ctl_CONFLICT": 4565
+        },
+        "BILLING_SPECIALIST": {
+          "pub_CONFLICT": 3083,
+          "ctl_CONFLICT": 3083,
+          "pub_ACTION": 3757,
+          "ctl_ACTION": 3757,
+          "pub_correct": 2902,
+          "ctl_correct": 2902
+        },
+        "ACCOUNT_MANAGER": {
+          "pub_CONFLICT": 6700,
+          "ctl_CONFLICT": 6700,
+          "pub_ACTION": 9740,
+          "ctl_ACTION": 9740,
+          "pub_correct": 8960,
+          "ctl_correct": 8960
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "pub_ACTION": 3950,
+          "ctl_ACTION": 4125,
+          "pub_correct": 3440,
+          "ctl_correct": 3615,
+          "pub_CONFLICT": 350,
+          "ctl_CONFLICT": 175
+        },
+        "T1_GENERAL": {
+          "pub_ACTION": 5220,
+          "ctl_ACTION": 5220,
+          "pub_correct": 5220,
+          "ctl_correct": 5220
+        },
+        "SECURITY_INCIDENT": {
+          "pub_CONFLICT": 40367,
+          "ctl_CONFLICT": 40367,
+          "pub_ACTION": 10033,
+          "ctl_ACTION": 10033,
+          "pub_correct": 4783,
+          "ctl_correct": 4783
+        }
+      },
+      "gate_no_action_changes": true,
+      "gate_no_resolution_is_wrong": true
+    }
+  },
+  "n_rules": 29,
+  "n_cases": {
+    "corpus (n=2000, seed 17)": 2000,
+    "exhaustive space (134,400)": 134400
+  },
+  "seconds": 4.4
+}

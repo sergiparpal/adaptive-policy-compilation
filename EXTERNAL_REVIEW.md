@@ -29,8 +29,9 @@ default rule rather than the thesis it is cited for.**
 
 The corrected order of work is: settle a documentation contradiction (**done** —
 the hidden policy was written by Claude, and `results/FINDINGS.md` carries the
-dated erratum), measure the default-rule control (free, minutes), measure the hybrid
-ceiling on the space (free, already named as pending by
+dated erratum), measure the default-rule control (**done** — item 2 below, owned
+by [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md)),
+measure the hybrid ceiling on the space (free, already named as pending by
 [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) §9.2), **write up the pairwise
 thread** — which is the part with the shape of a paper — and only then the
 sensitivity sweep and ILP, which reinforce the frame rather than block it.
@@ -88,7 +89,7 @@ sensitivity sweep and ILP, which reinforce the frame rather than block it.
 ### 1.3 The contradiction the review exposed by being wrong about it
 
 The reviewer said the hidden policy was written by a model; the first adjudication
-called that false, citing [`results/FINDINGS.md:107`](results/FINDINGS.md:107),
+called that false, citing [`results/FINDINGS.md:128`](results/FINDINGS.md:128),
 *"Over the hidden policy, written by a human"*. **That adjudication was wrong.**
 [`README.md:718`](README.md:718) says, and said in the version the reviewer read:
 
@@ -102,7 +103,7 @@ proposer's family, and `FINDINGS.md` uses "written by a human" to read the
 subsumption silent error of 0.0000 as *"a virtue of the author"*.
 
 **Settled by Sergi on 2026-08-29: Claude wrote it.** `README.md:718` states the
-fact and `results/FINDINGS.md:107` is false. A **dated erratum** now sits beside
+fact and `results/FINDINGS.md:128` is false. A **dated erratum** now sits beside
 that figure rather than a silent edit, per the repository's convention for a line
 that interprets a figure.
 
@@ -236,6 +237,29 @@ closed. They are cited here with that warning in place, and **if they are ever t
 support a conclusion they must be measured by a module first**. That is item 2 of
 the plan.
 
+> **[NOTE 2026-08-29] They are figures now, and they are not this document's.**
+> Item 2 is done: `harness/default_rule_control.py`,
+> `results/default_rule_control.json`, `tests/test_default_rule_control.py`, and
+> the record that **owns** them is
+> [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md). Both
+> rows reproduce to the digit, and the module makes the published row a blocking
+> gate rather than a row of its own.
+>
+> **Two things the in-memory pair did not say.** The *"roughly 40%"* above is a
+> **corpus** figure: on the exhaustive space the same control moves 13.6% of the
+> conflicts, 0.2725 → 0.3458, and this document should have labelled it. And the
+> silent-error count is identical under both arbitrations on both surfaces — the
+> artifact inflated the rate at which the engine abstains and never made it
+> wrong, which is provable and is proved in the module. The per-class table adds
+> the reading that matters most: the whole gain is in the two commonest classes,
+> and `SECURITY_INCIDENT` and `ONCALL_ESCALATION` move by zero.
+>
+> **One pointer moved with it**, and not silently: route 1 of `FINDINGS.md` gained
+> the note that points here, so the *"written by a human"* line §1.3 cites is at
+> `results/FINDINGS.md:128` and no longer at `:107`. The three references in this
+> document were repointed. A locator that is wrong is worse than one that is
+> edited, because it is believed.
+
 **And they can never carry a signed band.** The number was seen before any band
 could be drafted, so whatever record owns it declares `provenance: POST-RUN`, the
 convention `edge_direction` and `edge_budget` already use, and it does not enter
@@ -259,12 +283,12 @@ figures do not yet exist and which therefore *can* be pre-registered; items 2 an
 ### 1 · Settle the authorship contradiction · free · ~~one word~~ **DONE 2026-08-29**
 
 §1.3. Sergi settled it: Claude wrote the hidden policy, so `README.md:718` states
-the fact and `results/FINDINGS.md:107` is false. The erratum is dated and in place
+the fact and `results/FINDINGS.md:128` is false. The erratum is dated and in place
 beside the figure it heads; no figure moved and no other document needed touching.
 It found the defect in the first pass an outside reader made, which is the
 argument for item 6 of §5.
 
-### 2 · The default-rule control · free · minutes · POST-RUN
+### 2 · The default-rule control · free · ~~minutes~~ 5 s · POST-RUN · **DONE 2026-08-29**
 
 §3. A module that measures the ceiling under specificity with the default rule
 given its true rank, alongside the published encoding, so the pair is
@@ -280,6 +304,27 @@ both, so neither drifts.
 *Why first among the measurements:* it costs minutes, it is the first objection a
 referee raises, and having it answered with a number before the question is asked
 is worth more than the sweep that answers a broader version of it later.
+
+**Done, and every constraint held.** `harness/default_rule_control.py` — a new
+file beside `ceiling_check.py`, no frozen file touched — writes
+`results/default_rule_control.json` and is owned by
+[`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md); the
+published row is a **blocking gate**, not a row, so 0.5875 cannot move quietly;
+`tests/test_default_rule_control.py` pins all four rows. It went past the plan in
+three places, and each was the repository's own convention asking for it:
+
+- **Both surfaces**, because `STATUS.md` says to name the surface and report both
+  where both are available. The *"roughly 40%"* of §3 is 13.6% on the space, and
+  that difference is now on the record instead of being discovered later by a
+  reader.
+- **The ranking is oracle-free by construction** — vacuity is read off `DOMAINS`
+  and the rule alone — which is what separates correcting an encoding artifact
+  from handing the criterion the layer order it is being tested on. It is stated
+  in the module and checked in the test.
+- **Two invariants the control cannot violate**, proved and then checked over all
+  134,400 cases: it never changes a decision already taken and never resolves a
+  conflict wrongly. That is why the silent-error count is identical in all four
+  rows.
 
 ### 3 · The hybrid ceiling on the exhaustive space · free · minutes
 
@@ -348,7 +393,10 @@ left where `STATUS.md` has it.
 
 1. **It has executed one thing**, the two rows of §3, and they are declared
    unowned there. Everything else is a reading of records and of code, each figure
-   attributed to the record that owns it.
+   attributed to the record that owns it. **[NOTE 2026-08-29]** They stopped being
+   unowned the same day: item 2 was built, and
+   [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md) owns
+   them. This document still owns no figure.
 2. **It could not settle §1.3 by itself.** Which of the two documents stated the
    fact is not derivable from the tree — git authorship reads the same either
    way. Sergi closed it on 2026-08-29 and the erratum is in place; the limit
