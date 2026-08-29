@@ -111,15 +111,100 @@ is answered and the 0.5875 generalizes to the family as drawn.
 
 ## 1. The one knob, and everything held against it
 
+> **[AMENDED 2026-08-29 — the construction below replaces the one this section
+> carried, after `A-g4` aborted it and before any figure of any row existed.]**
+>
+> **What was there.** A member of the family was *the 29 hidden rules
+> re-assigned to the 29 positions*: permute the rules themselves, and the
+> multiset of condition counts is permuted with them. It was the most literal
+> reading of *the knob is the assignment, not the material*, and it made the
+> hidden policy a member by the identity permutation.
+>
+> **What killed it, measured before anything else ran.** `A-g4` — *no rule fully
+> shadowed by the ones above it* — is not a filter on that family, it is a wall:
+>
+> - **0 of 24,888** ρ-accepted permutations, across all 13 bins, have zero
+>   shadowed rules.
+> - **The hidden policy itself fails it.** `H21`, `H25` and `H27` never win a
+>   case over the 134,400 — confirmed against `harness.hidden_policy.true_rule_id`
+>   and not against the new code.
+> - **The confound `A-g4` exists to prevent is perfect.** Mean dead rules per draw
+>   runs **5.39 at ρ = −0.6 to 16.38 at ρ = +0.5**, Spearman(ρ, dead) over the 13
+>   bins = **1.0**. At the top bin more than half the policy is dead: the
+>   effective size is ~13 rules, not 29.
+>
+> **Why that is fatal and not loosenable.** `A-b`'s curve would confound
+> *alignment helps* with *the policy got smaller*, at correlation 1.0 with the
+> knob. And `A-a` would compare a hidden policy with 3 dead rules against
+> neighbours whose minimum at its own ρ is 6 and whose mean is 10.8 — an outlier
+> on a second axis before a single e2e is computed.
+>
+> **It is not a bug in the generator.** It is what ρ measures seen from the other
+> side: ρ high means broad rules deep and narrow rules shallow, and a broad rule
+> placed high deletes the tail beneath it. In a real manual the late rules are
+> reachable *because* the early ones are narrow; permuting that destroys half the
+> manual.
+>
+> **What replaces it** is below: the counts are still permuted, and the rule
+> **bodies are synthesised** from this manual's own condition vocabulary, each one
+> required to claim a case no earlier rule has claimed. Reachability becomes a
+> property of the construction, and `A-g4` goes back to being what a gate is for —
+> a check that can fail if the construction is wrong.
+>
+> **What it costs, stated rather than discovered later.** The family stops being
+> *the same rules re-ordered* and becomes *policies built from this manual's own
+> atoms, with its counts and its actions*. §9's limit 1 gets **sharper**: the
+> family was already declared to be this policy's neighbourhood rather than the
+> space of real manuals, and now the neighbourhood is synthetic in the bodies too.
+> Against that: the first construction's neighbourhood was made mostly of objects
+> nobody would write — policies with sixteen dead rules — so it was not a
+> neighbourhood of manuals at all.
+>
+> **No band moves.** The five rows of §0 keep their bands and their refutation
+> lines to the digit. What changes is what a *policy* is, which is what those rows
+> are about, so §0's signature does not silently carry over and this amendment
+> carries its own.
+>
+> **Nothing of any row was computed to reach this.** Only ρ, dead-rule counts and
+> bin reachability — §4 quantities, which carry no band and adjudicate nothing. No
+> e2e, on any surface, under either encoding, exists yet.
+
+**Signed by Sergi: Sergi Parpal (date: 2026-08-29)**
+
+*Outside the quotation deliberately: the gate reads signature lines at the start
+of a line, and one indented into a blockquote would be invisible to it. §8 says
+what the gate now has to do with there being two of them.*
+
 **ρ is the Spearman rank correlation between a rule's layer index and its number
 of conditions**, computed over the rules of the policy. The hidden policy's own ρ
-is approximately −0.18; **the run recomputes it and no row reads it from this
-file.**
+is **−0.1532**, recomputed by the run and read from nowhere else. *(The −0.18 in
+circulation, including [`EXTERNAL_REVIEW.md`](EXTERNAL_REVIEW.md) §1.5 which owns
+it nowhere, is the same statistic against the **rule** index rather than the
+**layer** index. This section defines the layer one.)*
 
-**The knob is the assignment, not the material.** For each draw the generator
-permutes a **fixed multiset of condition counts** across a **fixed layer
-structure**, and rejects until the achieved ρ falls in the target bin. Held
-constant across every point of the sweep, so that ρ is the only thing that moves:
+**The knob is the assignment; the material is rebuilt from fixed parts.** For each
+draw the generator, in this order:
+
+1. **permutes a fixed multiset of condition counts** across a **fixed layer
+   structure**, and rejects until the achieved ρ falls within 0.02 of the target
+   bin centre;
+2. **pins the catch-all to the last position**, where the layer structure puts the
+   defaults layer — anywhere else it deletes everything below it;
+3. **synthesises a body for each remaining rule**, walking the order from the top:
+   a rule of assigned count `k` draws `k` conditions, without replacement and with
+   distinct attributes, from **the hidden policy's own condition vocabulary** —
+   the 23 distinct conditions its 29 rules are built from, the catch-all's
+   excluded — and is redrawn until its extension contains at least one case no
+   earlier rule has already claimed;
+4. **assigns actions by permuting the hidden policy's own action multiset**, so
+   that how often two rules disagree is not a second thing moving with ρ.
+
+Drawing bodies from the manual's own vocabulary rather than from the whole DSL is
+what keeps the family recognisable as this policy's neighbourhood: the atoms and
+their breadth are the ones a person chose, and only their combination is new.
+
+Held constant across every point of the sweep, so that ρ is the only thing that
+moves:
 
 | held fixed | value | why |
 |---|---|---|
@@ -127,13 +212,27 @@ constant across every point of the sweep, so that ρ is the only thing that move
 | number of layers | 8 | the stratification depth is not the variable |
 | layer sizes | the hidden policy's: 3, 5, 4, 2, 6, 3, 3, 3 | same |
 | multiset of condition counts | the hidden policy's, exactly | this is what gets permuted; drawing new counts would move ρ *and* the specificity distribution together |
+| multiset of actions | the hidden policy's, exactly, permuted | how often two matching rules disagree is a driver of CONFLICT; letting it drift would put a second thing on the knob |
+| condition vocabulary | the 23 distinct conditions of the hidden policy, the catch-all's excluded | the atoms and their breadth stay the ones a person chose; only the combination is drawn |
 | action vocabulary | the 8 of `harness.domain` | |
+| every rule reachable | by construction, step 3 | the first construction left up to 16 of 29 rules dead and the count was perfectly correlated with ρ |
 | domain, attribute weights, corpus | frozen — hard rule 4 | the corpus is policy-independent by construction, so the same 2,000 cases are relabelled per policy |
 | the engine | `harness.dsl.RuleEngine`, untouched — hard rule 1 | the point is to measure *this* arbitration, not a new one |
 
-**The hidden policy is a member of its own family**, reachable by supplying its
-own permutation. That is what makes `A-a` a comparison and not an analogy, and
-check `A-g3` pins it.
+**The hidden policy is a member of its own family**, and remains one under this
+construction: its counts, its actions and its bodies are all inside what the
+generator draws from, so supplying its own permutation and its own bodies
+reproduces it exactly. That is what makes `A-a` a comparison and not an analogy,
+and check `A-g3` — unchanged by this amendment — pins it by requiring the
+generator's own evaluation path to return `0.5875 / 505 / 0.2140` on the corpus.
+
+**What `A-g4` now checks, and it is no longer a formality.** Step 3 makes every
+rule claim a case when it is placed, so a policy with a dead rule can only come
+from a defect in the construction — which is exactly what a blocking gate is for.
+It also keeps reporting the **effective size per draw**, because the quantity that
+sank the first construction has to stay visible: if dead rules ever reappear, or
+if effective size correlates with ρ at all, the curve is confounded again and the
+run aborts rather than publishing it.
 
 **Two encodings, every point, always.** Each policy is measured twice: with the
 catch-all encoded as the DSL forces it (`severity gte 1`, one condition, which
@@ -285,9 +384,17 @@ is that the bands were signed before the figures existed. On a free run the only
 thing standing between a draft and a post-hoc band is the commit order, and a
 commit order is an honour system.
 
-`sweep.py` refuses to **write its record** while §0 of **this file** is unsigned.
-No flag skips it; a `--dry-run` builds every policy, runs `A-g1` to `A-g4` and
-writes nothing.
+`sweep.py` refuses to **write its record** while **this file** is unsigned. No
+flag skips it; a `--dry-run` builds every policy, runs `A-g1` to `A-g4` and writes
+nothing.
+
+**And since 2026-08-29 there are two signatures, so the gate counts them.** The §1
+amendment carries its own, because it changes what a *policy* is and §0's
+signature does not silently carry over that. The gate therefore collects **every**
+line beginning `**Signed by Sergi:`, requires **at least two**, and requires
+**none** of them to still carry blanks. `rung2/pair_judgement.py::gate_signature`
+stops at the first match, which here would read §0, find it signed and report `ok`
+over an unsigned §1 — the same failure as reading the wrong file, one file in.
 
 **It reads `PLAN_SENSITIVITY.md` and no other plan.** Until 2026-08-25 the
 existing gate read `PLAN_PAIRWISE.md` whatever it was gating, so a run under a
