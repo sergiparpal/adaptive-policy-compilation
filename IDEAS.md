@@ -11,7 +11,8 @@ corrected figures in rungs 3 and 4 in place. The pairwise-judgement thread of
 `PLAN_PROPOSER_1600.md`, closed on August 26, 2026** with four more signed rows —
 `B-b` and `B-c` refuted, `B-a` and `B-d` held — written up in `FINDINGS3.md` §11,
 and §§12-15 of that record close its remaining routes without a signed row
-between them. This is a list of things not done, none of them developed and in no
+between them. **`PAIRWISE_WRITEUP.md` is both threads read as one result**; it
+owns no figure and adds no step. This is a list of things not done, none of them developed and in no
 order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
