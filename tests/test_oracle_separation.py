@@ -88,6 +88,14 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "harness/ceiling_check.py",     # offline measurement
             "harness/subsumption_check.py",
             "harness/learned_subsumption.py",
+            # offline: the default-rule control, added 2026-08-29. It measures
+            # the same ceiling as `ceiling_check.py` with the catch-all at its
+            # true rank, so it needs `true_action` to score — and only to score.
+            # The RANKING it introduces is oracle-free by construction: vacuity
+            # is read off DOMAINS and the rule itself. That is what makes it a
+            # control on the encoding rather than a criterion handed the answer,
+            # and it is stated in the module's docstring.
+            "harness/default_rule_control.py",
             "run_experiment.py",
             "rung2/shadow2.py",
             "rung2/ceiling_check2.py",

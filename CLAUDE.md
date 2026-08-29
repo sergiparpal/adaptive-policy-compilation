@@ -277,6 +277,16 @@ its surface, is in `STATUS.md`, and the record that owns it is
 `results/FINDINGS.md`. Specificity-based arbitration cannot execute a policy
 prioritized by layers. While it stays there, every LLM run is voided in advance.
 
+**Part of that ceiling's conflict rate is an encoding artifact, and since
+2026-08-29 there is a control that says how much.** The catch-all is
+`lambda c: True`, the DSL requires at least one condition, and the engine counts
+conditions. `python3 -m harness.default_rule_control` measures the same ceiling
+with the catch-all at its true rank, on both surfaces, and makes the published row
+a blocking gate so it cannot move quietly. Free, seconds, POST-RUN; the record
+that owns its figures is `results/FINDINGS_DEFAULT_RULE.md`. **It does not lift
+STOP 0** and it changes nothing above: the corrected ceiling is still nowhere near
+~100%.
+
 **STOP 0.** If the ceiling is not ~100%, stop and say so. Do not go on to
 Step 1.
 

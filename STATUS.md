@@ -1,9 +1,10 @@
 # Status
 
-What is known, as of August 27, 2026. **Not a history** — that is the four
-`FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md)
-and [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), each with its
-dated errata in place. Every figure here already exists in one of them.
+What is known, as of August 29, 2026. **Not a history** — that is the four
+`FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
+[`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
+[`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md), each with
+its dated errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
 does not cover (an *impasse*), an LLM acts and writes a rule so that next time it
@@ -185,6 +186,16 @@ criteria falsified, perfect policy loaded, no LLM, on the corpus —
 
 - *specificity*: e2e **0.5875**, CONFLICT 25.3%. No monotone function of it can
   work — H01 (2 conditions) must beat H03 (1), H16 (1) must beat H24 (2).
+  **Two fifths of that conflict rate is an encoding artifact, and the rest is the
+  finding.** The catch-all is `lambda c: True` and the DSL requires a condition,
+  so it is written `severity gte 1` and ties instead of yielding. Give it its true
+  rank — no oracle, no layer order — and **39.8%** of the corpus conflicts go,
+  e2e 0.5875 → **0.6880**; on the exhaustive space **13.6%** of them, 0.2725 →
+  **0.3458**. The silent-error count does not move on either surface: the artifact
+  inflated abstention, never error. The gain is entirely in the two commonest
+  classes and `SECURITY_INCIDENT` and `ONCALL_ESCALATION` gain nothing.
+  POST-RUN, no signed row, not a calibration event —
+  [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md).
 - *arrival order*: 100% in design order, 12.8% reversed, **49.3%** random. It
   carries no signal of its own, and in a learned base it runs backwards: defaults
   are born early, exceptions late.

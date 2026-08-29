@@ -32,6 +32,7 @@ up in four places at once.
 | **3** · priority by search | whether rung 1's material contained an order worth having | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) |
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
+| **control** · the default rule | how much of rung 1's conflict rate is the DSL's one-condition minimum rather than the thesis it is cited for | [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 
@@ -86,6 +87,8 @@ what it should print.
 # --- RUNG 1 · the engine ceiling and the frontier ------------------------
 python3 -m harness.ceiling_check      # specificity engine vs. design order
 python3 run_experiment.py frontier    # the keep_k mocks and the cache baseline
+python3 -m harness.default_rule_control  # the same ceiling with the catch-all at
+                                      # its true rank, beside the published row
 
 # --- RUNG 2 · hybrid engine: subsumption + declared priority -------------
 python3 -m rung2.ceiling_check2    # STOP 0 of rung 2; must PASS
@@ -231,6 +234,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `run_experiment.py frontier` | `results/frontier.json` | no, on purpose |
 > | `run_experiment.py llm` | `results/llm_run_n<N>.json` | **yes** |
 > | `harness/subsumption_check.py` | `results/subsumption.json` | no, on purpose |
+> | `harness/default_rule_control.py` | `results/default_rule_control.json` | no, on purpose |
 > | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
 > | `rung2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
@@ -348,6 +352,7 @@ What it covers, and why those things:
 |---|---|
 | `test_encoding_invariant.py` | the 29 DSL rules ≡ their lambdas, and first-match-wins ≡ `true_action`, over the **134,400** combinations. This is the claim that "execution failure, not representation failure" rests on |
 | `test_ceilings.py` | the four ceilings to the digit, with their conflict counts and the declared edges |
+| `test_default_rule_control.py` | the fifth ceiling, on both surfaces: the specificity engine with the catch-all at its true rank, plus the two invariants that say the control never changes a decision already taken and never resolves a conflict wrongly |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -651,6 +656,24 @@ in advance — which is what happened to the run of August 5, 2026 (see
 It costs zero API calls and is re-run after **any** change to the DSL, to the
 arbitration or to the hidden policy.
 
+**Part of what that ceiling counts as a conflict is an encoding artifact, and
+since 2026-08-29 a control says how much.** The catch-all is `lambda c: True`, the
+schema requires at least one condition, so it is written `severity gte 1` and the
+engine counts it as specific — it ties with every single-condition layer rule
+instead of yielding.
+
+```bash
+python3 -m harness.default_rule_control
+```
+
+Same ceiling, same criterion, the catch-all at its true rank; both surfaces; and
+the published row is a **blocking gate** rather than a row, so it cannot move
+quietly. The ranking it uses reads only `DOMAINS` and the rule — no layer order,
+no oracle — which is what makes it a control on the encoding rather than a
+criterion handed the answer. **It does not lift STOP 0.** Its figures are owned by
+[`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md) and indexed
+in [`STATUS.md`](STATUS.md).
+
 ---
 
 ## Getting started (5 minutes)
@@ -843,6 +866,7 @@ adaptive-policy-compilation/
 │   ├── provenance.py        the `_env` block attached to every JSON
 │   ├── record_guard.py      refusal to overwrite the records that cost money
 │   ├── ceiling_check.py     STEP 0 · ceiling of the specificity engine
+│   ├── default_rule_control.py  the same ceiling with the catch-all at its rank
 │   ├── subsumption_check.py partial order by semantic subsumption
 │   └── learned_subsumption.py  the same criterion over the learned base
 │
