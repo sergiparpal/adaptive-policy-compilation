@@ -207,9 +207,23 @@ criteria falsified, perfect policy loaded, no LLM, on the corpus —
 29 DSL rules are equivalent to their lambdas, and first-match-wins reproduces the
 policy exactly.
 
-**The mechanism for executing declared priority works.** Subsumption plus 199
-declared edges: e2e **1.0000**, silent error 0.0000, zero conflicts, zero
-impasses, on the corpus — [`results2/FINDINGS2.md`](results2/FINDINGS2.md).
+**The mechanism for executing declared priority works, and on both surfaces.**
+Subsumption plus 199 declared edges: e2e **1.0000**, silent error 0.0000, zero
+conflicts, zero impasses, on the corpus **and over the 134,400 combinations** —
+[`results2/FINDINGS2.md`](results2/FINDINGS2.md), *The same ceiling on the other
+surface*. The space row is the one that says *policy-equivalent* rather than *fits
+the sample*, and it follows from three premises the record checks and blocks on
+rather than from the engine alone.
+
+**What does not travel between the surfaces is level 1 and the price of the
+edges.** Subsumption alone covers **0.6315** of the arrivals and **0.2612** of the
+function, so the 199 edges buy +0.3685 on one surface and **+0.7388** on the
+other; its silent error is 0.0000 on both, which upgrades rung 1's soundness
+result from a corpus figure to a statement about the whole function. And **51 of
+the 199 edges are never exercised by the corpus** — 12 are load-bearing on the
+space and never on the corpus, 0 the other way — so an authorship cost read off
+the arrivals is a floor, not the price. POST-RUN, no signed row; it closes
+[`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) §9.2.
 
 **The proposer does not feed it.** Shown the base, the overlap arithmetic
 resolved for it and an explicit instruction to overlap, it writes mostly disjoint

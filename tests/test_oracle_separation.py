@@ -99,6 +99,11 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "run_experiment.py",
             "rung2/shadow2.py",
             "rung2/ceiling_check2.py",
+            # offline: the same ceiling on the exhaustive space, added
+            # 2026-08-29. It scores, and only scores: the engine it measures is
+            # built by hidden_priority from the layer order, which is where this
+            # rung's knowledge of the truth already lived and openly.
+            "rung2/ceiling_check2_space.py",
             # offline: the labelled pair benchmark. Added 2026-08-24, and
             # deliberately. It imports true_action and true_rule_id to build the
             # KEY of a benchmark — which of two rules the hidden policy makes win

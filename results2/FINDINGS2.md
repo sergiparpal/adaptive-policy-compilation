@@ -55,6 +55,16 @@ HYBRID (rung 2)                      1.0000    0.0000         0        0
 redesign **works**. Reproducible for free with
 `python3 -m rung2.ceiling_check2`.
 
+> **[NOTE 2026-08-29] That table is a CORPUS table, and the row now has its other
+> surface.** Over the 134,400 combinations the hybrid engine also gives 1.0000,
+> with zero conflicts and zero impasses, so the 1.0000 above is not *"it fits the
+> 1,743 cases the corpus touches"* — the engine is **policy-equivalent** to the
+> hidden policy. The other two rows do not travel like that: subsumption alone
+> falls from 0.6315 to **0.2612**, so what the 199 edges buy is +0.3685 on the
+> arrivals and **+0.7388** on the function. Section *The same ceiling on the other
+> surface*, at the foot of this record, owns those figures and the reading;
+> `ARBITRATION_REPORT.md` §9.2 is what asked for them.
+
 **Second: no material arrives to exercise it.** This is what these eight runs
 measure, and it is independent of the above. A correct mechanism that receives no
 input is not refuted by that; it is left unmeasured.
@@ -693,12 +703,130 @@ the same thing back.
 
 ---
 
+## The same ceiling on the other surface
+
+Added August 29, 2026. Zero API calls, four seconds. It closes limit 2 of
+[`ARBITRATION_REPORT.md`](../ARBITRATION_REPORT.md) §9 — *"the hybrid engine's
+1.0000 is a corpus figure … it is the cheapest pending check of all the ones
+named here"* — and it is item 3 of [`EXTERNAL_REVIEW.md`](../EXTERNAL_REVIEW.md)'s
+plan. Reproducible with `python3 -m rung2.ceiling_check2_space`;
+`results2/ceiling2_space.json` is the raw record.
+
+> **PROVENANCE: POST-RUN.** Written after the figures were seen; no band was
+> drafted, none is claimed, no signed row moves. **Unlike the default-rule
+> control, this one's figures did not exist beforehand**, so it could have been
+> pre-registered, and §4 of `EXTERNAL_REVIEW.md` — which says items 4 and 5 are
+> *"the only two whose figures do not yet exist"* — is wrong about this item. The
+> mitigation is partial and stating it exactly is the point: **the ceiling was
+> derivable in advance** from two facts already in the records (see *Why the
+> 1.0000 is not luck*), so a band on it would have been a bet on arithmetic; **the
+> other three figures were not derivable** and could have carried one.
+
+### The four rows
+
+Perfect policy loaded, 29 rules, no LLM.
+
+| surface | arbitration | coverage | e2e | CONFLICT | silent |
+|---|---|---|---|---|---|
+| corpus (n=2000, seed 17) | hybrid: subsumption + 199 edges | 1.0000 | **1.0000** | 0 | 0 |
+| exhaustive space (134,400) | hybrid: subsumption + 199 edges | 1.0000 | **1.0000** | 0 | 0 |
+| corpus (n=2000, seed 17) | subsumption alone (level 1) | 0.6315 | 0.6315 | 737 | 0 |
+| exhaustive space (134,400) | subsumption alone (level 1) | **0.2612** | **0.2612** | 99,298 | 0 |
+
+The first and third rows are the published ones and they are **gates** here, not
+results: the module re-measures them and refuses to print anything if either has
+moved. Row 3 belongs to [`../results/FINDINGS.md`](../results/FINDINGS.md),
+route 3.
+
+**What 1.0000 means is not the same on the two surfaces**, which is the whole
+reason for measuring twice. On the corpus it means *fits the sample*: 2,000 draws
+touch 1,743 distinct cases and leave the rest of the function unconstrained — an
+order can be perfect on the corpus and be 0.9455 as a function
+([`../results3/FINDINGS_AUDIT.md`](../results3/FINDINGS_AUDIT.md), Step 0). On the
+space it means **policy-equivalent**: on every case that exists, the engine
+decides what first-match-wins decides. That is the claim rung 2 was always read as
+making, and until now it was not the claim that had been measured.
+
+### Why the 1.0000 is not luck
+
+It follows from three facts, each already published elsewhere, and the module
+measures all three and blocks on them rather than assuming any:
+
+1. **Subsumption never contradicts the layer order** — 0 of the 406 pairs
+   (`../results/FINDINGS.md`, route 3).
+2. **The validator rejected no declared edge** — 0 of 199.
+3. **No pair that needs an edge lacks one**: overlapping, incomparable by
+   subsumption, and disagreeing on the action.
+
+Given those, take the earliest-born rule `A` matching a case — its action is the
+truth. Any other matching rule `B` is either subsumed by `A` (defeated), or
+incomparable with a different action (defeated by the declared edge premise 3
+guarantees), or carries `A`'s action (harmless). `A` itself is never defeated,
+because that would need premise 1 to fail or an edge pointing backwards, and none
+is declared. So the undefeated set is action-unanimous on `A`'s action, on
+**every** case.
+
+**The consequence is worth more than the figure.** The ceiling does not depend on
+the surface at all; it depends on those three premises. A learned base has no
+**author** to satisfy premise 1 — `../results/FINDINGS.md`'s own formulation is
+that subsumption is a proxy for *authored* priority, and the 0.0000 measures a
+virtue of the author — and rung 1 measured the consequence: that same criterion
+gives 53.12% silent error over the 577 learned rules. The 1.0000 is a property of
+a well-authored policy plus a complete set of edges, not of the engine alone.
+
+### What the corpus could not have said
+
+**Level 1 alone falls by more than half.** Subsumption covers 63.15% of the
+arrivals and 26.12% of the function. The structure an author puts into the shape
+of the rules carries most of what a deployed system sees and a quarter of what the
+policy is. Its silent error is **0.0000 on both surfaces**, which upgrades rung 1's
+soundness result from a corpus figure to a statement about the whole function:
+level 1 abstains rather than inventing, everywhere, not just on the sampled cases.
+
+**So the edges buy +0.3685 on the corpus and +0.7388 on the space.** The same 199
+edges, twice the work. Read as authorship cost: the fraction of the policy that
+has to be *declared* rather than *derived* is twice as large as the arrival
+distribution suggests.
+
+**And a quarter of that authorship never shows up in the arrivals at all.**
+
+| | corpus | space |
+|---|---|---|
+| edges that ever fire (both endpoints match one case) | 148 of 199 | **199 of 199** |
+| edges that are ever the sole defeater of their loser | 60 | 72 |
+| cases whose decision needs a declared edge | 737 (0.3685) | 99,298 (0.7388) |
+
+**51 of the 199 edges are never exercised by the corpus** — their two rules never
+match the same arriving ticket, so no run over the corpus can tell whether they
+are right, wrong or missing. And the asymmetry is one-directional: 12 edges are
+the sole defeater somewhere on the space and never on the corpus, **0 the other
+way**. The corpus's load-bearing set is a strict subset of the space's, so an
+authorship cost read off the arrivals is a **floor**, not the price.
+
+**On removability, precisely.** An edge that is never the sole defeater on a
+surface can be deleted, one at a time, without changing a single decision on that
+surface. That does not license deleting a set of them at once — two edges can be
+individually redundant and jointly necessary — and joint removability is not
+measured here.
+
+### What this section does not say
+
+It says nothing about the **learned** base: every figure above has the perfect
+policy loaded, and the 199 edges are derived from a layer order the proposer never
+saw. Rung 2's actual finding — that the mechanism never received material, 2
+conflicts and 0 accepted edges in eight runs — is untouched by any of this. Nor
+does it make the space the right surface for a deployment claim: the two answer
+different questions, and this record now names which one each figure answers.
+
+---
+
 ## Files
 
 ```
 rung2/engine2.py            hybrid engine: subsumption + declared priority
 rung2/hidden_priority.py    the 29 rules with their derived minimal edges
 rung2/ceiling_check2.py     STEP 0 — engine ceiling
+rung2/ceiling_check2_space.py  the same ceiling over the 134,400 combinations
 rung2/proposers2.py         prompts v1 and v2, neighbourhood v1 and v2
 rung2/shadow2.py            shadow loop
 rung2/run2.py               run CLI
@@ -706,6 +834,7 @@ rung2/compare_runs.py       comparison across runs
 rung2/note_audit.py         attributes used and notes arguing disjointness
 
 results2/ceiling2.json         Step 0 ceiling
+results2/ceiling2_space.json   Step 0 on the exhaustive space, and per edge
 results2/llm_run2_n100*.json   the eight runs, each with its full prompt
 results2/comparison.json       comparison table
 results2/note_audit.json       audit of notes and attributes

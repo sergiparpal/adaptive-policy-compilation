@@ -47,6 +47,7 @@ rungs". Everything in those three rungs costs zero API calls and runs on the
 standard library:
 
     python3 -m rung2.ceiling_check2      # hybrid engine ceiling
+    python3 -m rung2.ceiling_check2_space  # the same, on the exhaustive space
     python3 -m rung3.order_search        # coverage bound and searched order
     python3 -m rung4.sweep               # feedback-channel sweeps
 
