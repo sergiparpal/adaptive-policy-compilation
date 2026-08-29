@@ -27,16 +27,19 @@ remains valid as a procedure but **not** as the status of the project.
 Read `README.md` before touching anything. `IDEAS.md` keeps the list of what is
 open.
 
-**Before writing a new analytical document, read the two that already exist.**
-`ARBITRATION_REPORT.md` — which rule wins when several match and disagree — and
+**Before writing a new analytical document, read the three that already exist.**
+`ARBITRATION_REPORT.md` — which rule wins when several match and disagree —
 `CHAT_SUMMARY.md` — the conversation of August 11, 2026, with the errata it has
-issued against itself since. Neither owns a figure, both carry their errata in
-place, and the record wins wherever one disagrees with it. §9.8 of the first
-records that it re-derived three of the second's corrections by another
-route without knowing them; §4, rule C of `PLAN_PAIRWISE.md` makes reading them a
-step and not a suggestion. **Do not make it three times.** They are indexed
-nowhere but the README's structure tree and the section *Two documents that read
-the records instead of adding to them*, which is why the pointer is here.
+issued against itself since — and `EXTERNAL_REVIEW.md` — the 2026-08-29 reading
+from outside the project, adjudicated against the code, with the plan that came
+out of it. None owns a figure, all carry their errata in place, and the record
+wins wherever one disagrees with it. §9.8 of the first records that it re-derived
+three of the second's corrections by another route without knowing them; §4, rule
+C of `PLAN_PAIRWISE.md` makes reading them a step and not a suggestion. **It has
+now happened twice** — §1.4 of the third restates a limit §9.1 of the first
+already carried — so **do not make it a fourth time.** They are indexed nowhere
+but the README's structure tree and the section *Three documents that read the
+records instead of adding to them*, which is why the pointer is here.
 
 **The operating procedure of rungs 2, 3 and 4 is not in this file**, which only
 describes that of rung 1. It is in the README, section "Reproducing the four

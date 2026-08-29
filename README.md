@@ -47,24 +47,30 @@ debt.
 > operating procedure of that rung.** They remain valid as procedure, not as
 > project status.
 
-### Two documents that read the records instead of adding to them
+### Three documents that read the records instead of adding to them
 
-Two more files sit at the root, and until now nothing indexed them:
+Three more files sit at the root, and until recently nothing indexed them:
 [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md), the report on *which rule wins
 when several match and disagree*, written against the records as they stood on
-2026-08-16; and [`CHAT_SUMMARY.md`](CHAT_SUMMARY.md), the summary of the
+2026-08-16; [`CHAT_SUMMARY.md`](CHAT_SUMMARY.md), the summary of the
 conversation of August 11, 2026, reviewed once against the records it cites —
 on August 12, which its own header says is still the last review — and corrected
-in four places since. **Neither owns a figure and neither is a record.** They cite, with the
-record that owns each number named; where one disagrees with a record, the
-record wins; and both carry their own dated errata in place, exactly as the
-FINDINGS do.
+in four places since; and [`EXTERNAL_REVIEW.md`](EXTERNAL_REVIEW.md), a reading
+of the project written from outside it on 2026-08-29 by a model that had only the
+public tree, adjudicated line by line against the code and the records, with the
+plan that came out of the contrast. **None owns a figure and none is a record.**
+They cite, with the record that owns each number named; where one disagrees with
+a record, the record wins; and all three carry their own dated errata in place,
+exactly as the FINDINGS do.
 
 **They are worth the detour before writing a new analysis**, which is what §9.8
 of the first is about: it re-derived three corrections the second had already
-made, by another route and without knowing them. Two independent readings
-converging is evidence for the conclusions — and a warning that this repository
-already contains analysis a new document may be repeating. §4, rule C of
+made, by another route and without knowing them. **The third document is that
+warning coming true a second time**: its §1.4 records that the review's headline
+recommendation restates a limit §9.1 of the first already had written down, this
+time from a reader who had seen neither. Three independent readings converging is
+evidence for the conclusions — and a warning that this repository already
+contains analysis a new document may be repeating. §4, rule C of
 [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) turns that into a step rather than a
 suggestion.
 
@@ -823,8 +829,9 @@ adaptive-policy-compilation/
 ├── requirements.lock.txt    transitive closure of the records' environment
 ├── README.md  CLAUDE.md  IDEAS.md  STATUS.md  LICENSE  .gitignore
 ├── PREDICTION.md  PLAN_*.md   signed plans — each travels alone in its commit
-├── ARBITRATION_REPORT.md    two readings of the records; they own no figure —
-├── CHAT_SUMMARY.md          see *Two documents that read the records*, above
+├── ARBITRATION_REPORT.md    three readings of the records; they own no figure —
+├── CHAT_SUMMARY.md          see *Three documents that read the records*, above
+├── EXTERNAL_REVIEW.md       the 2026-08-29 review from outside, adjudicated
 │
 ├── harness/                 RUNG 1 — frozen spec and original engine
 │   ├── domain.py            case, actions, corpus (seed 17)          [FROZEN]

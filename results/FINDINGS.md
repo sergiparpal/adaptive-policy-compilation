@@ -112,6 +112,41 @@ ACTION 1263   CONFLICT 737 (36.9%)
 silent error 0.0000  (0 of 1263)   e2e 0.6315
 ```
 
+> **[ERRATUM 2026-08-29] "written by a human" is false: Claude wrote it. The
+> reading it heads is unaffected; the generalization is worse off.**
+>
+> The hidden policy, the harness and the DSL were written by Claude. `README.md`,
+> section *Getting started*, has said so all along and uses it to argue the
+> proposer should come from another family. This header is the only line in the
+> repository that claims otherwise. Everywhere else the word is **hand-written**,
+> which means *authored* as against *accumulated by the run*, and under that
+> meaning those lines stand as written — including this section's own "it
+> measures a virtue of the author" and "the learned base has no author in that
+> sense".
+>
+> **No figure moves.** The 61 of 406, the 0 contradictions, the 0.0000 and the
+> 0.6315 reproduce. Nor does the argument: subsumption is sound here because
+> whoever wrote the policy put the exceptions before the defaults, which never
+> depended on who that was. `STATUS.md` indexes the figure without the word and
+> needs no change.
+>
+> **What does change is not a wording matter.** The engine, the DSL and the
+> policy it is measured against come from one hand. The falsification of
+> specificity survives that intact, because it rests on an impossibility internal
+> to the policy — `H01` must beat `H03` and `H16` must beat `H24`, incompatible
+> under any criterion monotone in the number of conditions — and not on a
+> correlation somebody chose. **The generalization does not survive it as
+> cheaply.** `ARBITRATION_REPORT.md` §9.1 already records the limit: the policy
+> may be adversarial to specificity by construction, and how often real policies
+> have that shape is unmeasured here. With the authorship corrected, that limit
+> is sharper than §9.1 states it — the policy was written by the same author as
+> the engine that fails on it — which is the argument for running the sensitivity
+> sweep §9.1 names, rather than leaving it written down for a fourth reader to
+> re-derive.
+>
+> Found on 2026-08-29 by an outside reading that had only the public tree, took
+> the README at its word, and was told it was wrong. `EXTERNAL_REVIEW.md` §1.3.
+
 Zero contradictions, and soundness follows from that: if some matching rule were
 strictly below the earliest-layer rule, that pair would contradict the layer
 order; since there are none, the correct rule is always in the minimal set. The
