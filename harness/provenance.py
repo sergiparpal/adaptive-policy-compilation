@@ -63,7 +63,10 @@ from typing import Any
 REPO = Path(__file__).resolve().parent.parent
 
 # Code that produces figures. Order does not matter: the digest sorts by path.
-CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
+# `sensitivity` added 2026-08-29 with the package: it produces figures, so a
+# digest that ignored it would identify the wrong code for its records.
+CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity",
+              "run_experiment.py")
 
 DIGEST_CHARS = 16
 

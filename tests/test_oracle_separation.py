@@ -127,7 +127,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "rung4/feedback.py",
         }
         found = set()
-        for root in ("harness", "rung2", "rung3", "rung4"):
+        for root in ("harness", "rung2", "rung3", "rung4", "sensitivity"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

@@ -89,6 +89,18 @@ mocks are structurally immune to the defect that destroys the real policy.
 error versus 0.214, and 0.780 e2e versus 0.588. The "region to beat" was above
 the system's ceiling.
 
+> **[NOTE 2026-08-29] 0.5875 is not a worst case, and that is measured now.**
+> Over 100 synthetic manuals built from this policy's own conditions, condition
+> counts, actions and layer structure, at its own ρ, the hidden policy ranks
+> **101 of 101 on the corpus** and 100 of 101 on the exhaustive space. Specificity
+> fails on nearly the friendliest arrangement its own material allows. Across 13
+> values of ρ the curve is monotone at Spearman −0.9945 and runs the way the
+> mechanism predicts — specificity agrees with first-match-wins when the narrow
+> rules come first — and every draw at ρ = 0 contains at least one precedence pair
+> the condition counts violate. Five signed rows, three held; owned by
+> [`../results_sensitivity/FINDINGS_SENSITIVITY.md`](../results_sensitivity/FINDINGS_SENSITIVITY.md).
+> **No figure above moves.**
+
 Reproducible: `python3 -m harness.ceiling_check`.
 
 ### 2. Arrival order — age of the rule

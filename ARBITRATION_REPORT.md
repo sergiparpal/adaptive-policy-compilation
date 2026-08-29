@@ -717,6 +717,23 @@ outside the denominator —the convention the predictions thread already uses.
    experiment measures and does not defuse it for the generalization: how often real manuals
    have broad overrides on top is still unmeasured here and anywhere else in this
    repository.
+
+   > **[ERRATUM 2026-08-29] Measured, over a family this policy is a member of,
+   > and the answer inverts the worry.** `PLAN_SENSITIVITY.md`, five signed rows,
+   > owned by `results_sensitivity/FINDINGS_SENSITIVITY.md`. This point feared the
+   > hidden policy might be *adversarial to specificity by construction*. Over 100
+   > manuals built from its own conditions, condition counts, actions and layer
+   > structure, at its own ρ, it is the **friendliest** arrangement measured —
+   > rank 101 of 101 on the corpus — and specificity fails on it anyway. The
+   > 0.5875 is not a hostile draw; it is close to the best its own material
+   > allows.
+   >
+   > **What the sweep does not settle is the sentence's last clause.** The family
+   > is this policy's neighbourhood, not the space of real manuals, and how often
+   > real manuals have any given shape remains unmeasured here — §9 of the plan
+   > declares that limit before running rather than after. What is now measured is
+   > the dose-response: across 13 values of ρ the curve is monotone at Spearman
+   > −0.9945, and it runs the opposite way to the direction the plan drafted.
 2. **The hybrid engine's 1.0000 is a corpus figure.** Over the exhaustive space that engine
    has not been measured, and this report has argued in §6 that the two surfaces do not even
    rank the same. It is the cheapest pending check of all the ones named here.

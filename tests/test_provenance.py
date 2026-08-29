@@ -77,9 +77,15 @@ WRITERS = [
     # writer and a separate record: it must never land on results2/ceiling2.json,
     # which owns the corpus figures of rung 2's Step 0.
     "rung2.ceiling_check2_space",
+    # The sensitivity family, added 2026-08-29 with the package. Two writers, and
+    # they are separate records on purpose: the gate's verdict must be readable
+    # without the sweep, since the gate is what says whether the sweep may run.
+    "sensitivity.generator_check",
+    "sensitivity.sweep",
 ]
 
-CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
+CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity",
+               "run_experiment.py")
 
 
 class TestEnvironment(unittest.TestCase):

@@ -44,6 +44,12 @@ against, a threshold a next run would have to clear.
   (no) — and cost zero API calls. `results3/FINDINGS_AUDIT.md`,
   `results3/optimizer_check.json`, `results3/order_search_ls.json`,
   `results4/sweep_ls.json`.
+- **The sensitivity sweep: how much of rung 1's failure is this policy's shape.**
+  August 29, 2026, `PLAN_SENSITIVITY.md`, five signed rows. It answers the
+  objection `ARBITRATION_REPORT.md` §9.1 raised and three readers reached
+  independently — and it answers it the other way round: the hidden policy is
+  **better** for specificity than 100 of 101 manuals built from its own material
+  at its own ρ, so 0.5875 is not a worst case. `results_sensitivity/`.
 - **Re-run rungs 3 and 4 with the tie-break fixed.** Done in the same pass, which
   is what made the two effects separable: the tie-break moved the fourth decimal
   and the algorithm moved the second. The fragility was variance, not bias.
