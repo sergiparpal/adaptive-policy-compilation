@@ -90,7 +90,7 @@ sensitivity sweep and ILP, which reinforce the frame rather than block it.
 ### 1.3 The contradiction the review exposed by being wrong about it
 
 The reviewer said the hidden policy was written by a model; the first adjudication
-called that false, citing [`results/FINDINGS.md:128`](results/FINDINGS.md:128),
+called that false, citing [`results/FINDINGS.md:140`](results/FINDINGS.md:140),
 *"Over the hidden policy, written by a human"*. **That adjudication was wrong.**
 [`README.md:718`](README.md:718) says, and said in the version the reviewer read:
 
@@ -104,7 +104,7 @@ proposer's family, and `FINDINGS.md` uses "written by a human" to read the
 subsumption silent error of 0.0000 as *"a virtue of the author"*.
 
 **Settled by Sergi on 2026-08-29: Claude wrote it.** `README.md:718` states the
-fact and `results/FINDINGS.md:128` is false. A **dated erratum** now sits beside
+fact and `results/FINDINGS.md:140` is false. A **dated erratum** now sits beside
 that figure rather than a silent edit, per the repository's convention for a line
 that interprets a figure.
 
@@ -260,6 +260,14 @@ the plan.
 > `results/FINDINGS.md:128` and no longer at `:107`. The three references in this
 > document were repointed. A locator that is wrong is worse than one that is
 > edited, because it is believed.
+>
+> **[NOTE 2026-08-29, later the same day] It moved again, to `:140`**, when route 1
+> gained the sensitivity sweep's note. Twice in one day is the pattern rather than
+> the accident: **a `file:line` pointer into a record that carries its errata in
+> place breaks every time that record is corrected**, which is the one thing this
+> repository guarantees will keep happening. The three references now read `:140`;
+> whoever writes the next document should quote the line and name its section
+> instead of counting lines to it.
 
 **And they can never carry a signed band.** The number was seen before any band
 could be drafted, so whatever record owns it declares `provenance: POST-RUN`, the
@@ -293,7 +301,7 @@ figures do not yet exist and which therefore *can* be pre-registered; items 2 an
 ### 1 · Settle the authorship contradiction · free · ~~one word~~ **DONE 2026-08-29**
 
 §1.3. Sergi settled it: Claude wrote the hidden policy, so `README.md:718` states
-the fact and `results/FINDINGS.md:128` is false. The erratum is dated and in place
+the fact and `results/FINDINGS.md:140` is false. The erratum is dated and in place
 beside the figure it heads; no figure moved and no other document needed touching.
 It found the defect in the first pass an outside reader made, which is the
 argument for item 6 of §5.
@@ -428,7 +436,7 @@ together produces:
   differently when the hedge is on the record beforehand, and §1 of the write-up is
   that history.
 
-### 5 · The sensitivity sweep · free, deterministic · pre-registrable
+### 5 · The sensitivity sweep · free, deterministic · pre-registered · **DONE 2026-08-29**
 
 §1.4 and §1.5. Parameterize the correlation between priority layer and condition
 count over a family of synthetic policies, and plot engine accuracy against it.
@@ -445,6 +453,30 @@ own labelling. Free and deterministic, but not an afternoon of `sed`.
 before anything runs, is available here in a way it was not for item 2. That plan
 travels alone (hard rule 2; `.githooks/pre-commit` rejects the accompanied
 version).
+
+**Done, and it was pre-registered exactly as this paragraph asks.**
+`PLAN_SENSITIVITY.md`, five bands signed before a policy was drawn, a gate that
+refuses to write the record otherwise, and
+[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md)
+owning the figures. **Three rows held and two were refuted, and the two say more
+than the three:**
+
+- **`A-b` refuted at −0.9945 against a band of ≥ 0.85.** The curve is monotone
+  across 13 bins on both surfaces — and the drafter had the sign of ρ backwards.
+  Specificity does better the more a manual puts its **narrow** rules first, which
+  is negative ρ, and `A-b` asserted the opposite.
+- **`A-a` refuted *upward*.** The hidden policy scores above its own family at its
+  own ρ — rank 100 of 101 on the space, **101 of 101 on the corpus**. §4 of this
+  document predicted a refutation and gave the wrong reason, and §0 of the plan
+  said a refutation would make rung 1's headline *narrower*. It makes it
+  **broader**: 0.5875 was measured on nearly the most favourable arrangement of
+  its own material, and specificity fails on it anyway.
+
+**And the check the plan put first killed the plan's own family design.** `A-g4`
+found that re-assigning the 29 hidden rules over their own layer structure leaves
+up to 16 of them dead, perfectly correlated with ρ — so the curve would have
+confounded *alignment helps* with *the policy got smaller*. §1 was amended and
+re-signed before anything was measured; §5 of the plan's own record carries it.
 
 ### 6 · ILP as a competitor · free, specified, **not authorized**
 

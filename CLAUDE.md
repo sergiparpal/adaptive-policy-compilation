@@ -89,6 +89,21 @@ for:
         --out results3/declared_order_1600.json --split results2/pair_sample_1600.json \
         --accuracy results3/edge_direction_1600.json
 
+**The sensitivity sweep of `PLAN_SENSITIVITY.md` closed on August 29, 2026** with
+five signed rows adjudicated — the first pre-registered work outside the pairwise
+threads. Its record is `results_sensitivity/FINDINGS_SENSITIVITY.md`. Free, two
+minutes, and the first command is blocking in the same sense as
+`harness.ceiling_check`: it killed the plan's original family design before any
+row was read, which is why §1 of that plan carries a signed amendment.
+
+    python3 -m sensitivity.generator_check   # A-g1..A-g4; must pass first
+    python3 -m sensitivity.sweep             # refuses to write while unsigned
+
+**That gate counts signatures rather than stopping at the first.** The plan has
+two — §0's table and §1's amendment — and a gate that read only the first would
+find §0 signed and report `ok` over an unsigned §1. Do not copy
+`gate_signature` from `rung2/pair_judgement.py` into a plan with more than one.
+
 **Three follow-ups closed that thread's remaining routes**, §§12-14 of the same
 record, all free and all POST-RUN — they carry expectations but no signed row, so
 none of them is on `STATUS.md`'s scoreboard:

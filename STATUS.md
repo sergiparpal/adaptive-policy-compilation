@@ -11,7 +11,9 @@ does not cover (an *impasse*), an LLM acts and writes a rule so that next time i
 does. Ticket triage: 8 attributes, 8 queues, a hidden policy of 29 rules in 8
 priority layers. Four rungs closed, plus an audit of the instrument behind two of
 them, plus two pairwise threads — `PLAN_PAIRWISE.md` and `PLAN_PROPOSER_1600.md`,
-seven signed rows between them.
+seven signed rows between them — plus the sensitivity sweep of
+`PLAN_SENSITIVITY.md`, five more, which asks how much of rung 1's failure is this
+policy's shape.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -66,7 +68,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Thirty-one rows have been signed before the figures they name existed. This
+**Thirty-six rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -100,12 +102,14 @@ a count behind it.
 | **D** · the rule level | 4 | 3 | **2** | 0 | 1 | 1 |
 | **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 3 | **2** | 0 | 1 | 0 |
 | **B** · the proposer at 1,600 (§0 of `PLAN_PROPOSER_1600.md`) | 4 | 4 | **2** | 0 | 2 | 0 |
-| **total** | **31** | **28** | **13** | **2** | **13** | **3** |
+| **A** · the sensitivity sweep (§0 of `PLAN_SENSITIVITY.md`) | 5 | 5 | **2** | 0 | 3 | 0 |
+| **total** | **36** | **33** | **15** | **2** | **16** | **3** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
-`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`.
-Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`,
-`P-c`, `B-a`, `B-d`. Reported: `R-d`, `C-d`, `D-d`.
+`S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
+`A-a`, `A-b`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`,
+`C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`. Reported: `R-d`, `C-d`,
+`D-d`.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -117,10 +121,20 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 11 of 24 = **45.8%**
-refuted; without them, 9 of 18 = **50.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 15 of 33 = **45.5%**
+refuted; without them, 13 of 27 = **48.1%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-3.8 points the flattering way, which is exactly why saying so is not optional.
+2.6 points the flattering way, which is exactly why saying so is not optional.
+
+> **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
+> landed, and this file is where it should have been caught.** It read *11 of 24 =
+> 45.8%* and *9 of 18 = 50.0%*, which were the counts before `PLAN_PROPOSER_1600`
+> added four rows and two refutations; the table three paragraphs above had moved
+> and the ratio below it had not. It is exactly the failure this repository
+> legislates against everywhere else — a number copied where no test can reach it,
+> going stale in silence — committed inside the section whose whole subject is
+> keeping a count honest. The figures above are recomputed with `A` included and
+> the arithmetic is the same convention, unchanged.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -129,7 +143,9 @@ carries `G1`–`G6` instead — and `S`, `R`, `C` and `D` from the registers of 
 two, three, four and five of the same record; and `P` from the Stage C and
 Stage D sections of [`results2/FINDINGS2.md`](results2/FINDINGS2.md) and §8 of
 [`results3/FINDINGS3.md`](results3/FINDINGS3.md). All three `P` rows are
-adjudicated: the thread is closed.
+adjudicated: the thread is closed. `A` comes from
+[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md),
+which owns all five.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -176,6 +192,22 @@ measurement.
 expectation is in §0 of the plan, was written before the calls, and is a fact
 about the drafter in the same way the table above is.
 
+**The `A` rows are the first pre-registered work outside the pairwise threads, and
+two of the five bands are the signer's.** Sergi signed §0 of `PLAN_SENSITIVITY.md`
+on 2026-08-29 before a single policy was drawn, tightening `A-b` from 0.80 to 0.85
+and `A-d` from 0.50 to 0.60 at signature time; a gate refuses to write the record
+otherwise. A hold or a miss on those two is weaker evidence about the drafter's
+calibration than the other three, and that is recorded in the plan beside the
+table rather than left to be inferred.
+
+**`A-a` is refuted upward, and that is the sweep's finding.** The drafter
+predicted the refutation and gave the wrong reason — it expected the hidden policy
+to score **below** its family at its own ρ and it scores **above**, rank 100 of
+101 on the space and **101 of 101 on the corpus**. Four of five verdicts came out
+as drafted; the one it got right, it got right for the wrong reason. **`A-b` is
+the miss**, and it misses at −0.9945 against a band of ≥ 0.85: the curve is about
+as real as a curve gets and the drafter had the sign of ρ backwards.
+
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
 dead zone. The numerator is right and the denominator matches nothing: 20 rows
@@ -203,12 +235,27 @@ criteria falsified, perfect policy loaded, no LLM, on the corpus —
   classes and `SECURITY_INCIDENT` and `ONCALL_ESCALATION` gain nothing.
   POST-RUN, no signed row, not a calibration event —
   [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md).
+  **And the artifact is a constant offset across a whole family, not a distortion
+  of the shape**: over 1,300 synthetic policies correcting the catch-all lifts e2e
+  by 0.0122 to 0.0234 at every ρ and changes the ordering of the bins by nothing
+  (`A-e`, difference 0.0000).
 - *arrival order*: 100% in design order, 12.8% reversed, **49.3%** random. It
   carries no signal of its own, and in a learned base it runs backwards: defaults
   are born early, exceptions late.
 - *subsumption*: silent error **0.0000** over the hand-written policy, **53.12%**
   over the learned base. A proxy for *authored* priority — the 0.0000 measures a
   virtue of the author.
+
+**And 0.5875 is not a worst case: it is nearly the best arrangement of its own
+material.** Over 100 synthetic manuals built from the hidden policy's own
+conditions, condition counts, actions and layer structure, at its own ρ, it ranks
+**101 of 101 on the corpus** and 100 of 101 on the space — and specificity fails
+on it anyway. Across 13 values of ρ the curve is monotone at Spearman **−0.9945**,
+in the direction opposite to the one the plan predicted: specificity does better
+the more a manual puts its **narrow** rules first, and even its best bin medians
+0.3605 on the corpus. Every one of the 100 draws at ρ = 0 contains at least one
+precedence pair the condition counts violate. Five signed rows, three held —
+[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md).
 
 **Execution failure, not representation failure.** Over the exhaustive space the
 29 DSL rules are equivalent to their lambdas, and first-match-wins reproduces the

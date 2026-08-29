@@ -1,0 +1,2104 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-29T21:01:50Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "6058637ce3c92f1b5739a65c39d9adc149aad031",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "f2ae5353cf0ff113",
+    "check_seed": 17,
+    "draws_per_bin": 10,
+    "space_draws_per_bin": 2
+  },
+  "what": "A-g1 to A-g4 of PLAN_SENSITIVITY.md \u00a74: the blocking checks on the family generator, run before any row is read",
+  "carries_no_band": "these four adjudicate nothing and are excluded from every denominator, per \u00a74",
+  "rho_grid": {
+    "centres": [
+      -0.6,
+      -0.5,
+      -0.4,
+      -0.3,
+      -0.2,
+      -0.153206,
+      -0.1,
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "tolerance": 0.02,
+    "rho_hidden": -0.153206,
+    "declared_in": "sensitivity/generator.py, before any figure of the sweep existed"
+  },
+  "a_g1": {
+    "rows": [
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.6,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.5,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.4,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.3,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.2,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.153206,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": -0.1,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.0,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.1,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.2,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.3,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.4,
+        "draw": 9,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 0,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 0,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 1,
+        "surface": "corpus"
+      },
+      {
+        "n": 134400,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 1,
+        "surface": "space"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 2,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 3,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 4,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 5,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 6,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 7,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 8,
+        "surface": "corpus"
+      },
+      {
+        "n": 2000,
+        "impasses": 0,
+        "disagreements_with_the_fast_truth": 0,
+        "e2e": 1.0,
+        "passes": true,
+        "bin": 0.5,
+        "draw": 9,
+        "surface": "corpus"
+      }
+    ],
+    "passes": true
+  },
+  "a_g2": {
+    "per_bin": [
+      {
+        "centre": -0.6,
+        "draws": 10,
+        "attempts": 13,
+        "acceptance_rate": 0.7692,
+        "max_rho_deviation": 0.019525,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.5,
+        "draws": 10,
+        "attempts": 14,
+        "acceptance_rate": 0.7143,
+        "max_rho_deviation": 0.019025,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.4,
+        "draws": 10,
+        "attempts": 24,
+        "acceptance_rate": 0.4167,
+        "max_rho_deviation": 0.017654,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.3,
+        "draws": 10,
+        "attempts": 20,
+        "acceptance_rate": 0.5,
+        "max_rho_deviation": 0.018154,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.2,
+        "draws": 10,
+        "attempts": 22,
+        "acceptance_rate": 0.4545,
+        "max_rho_deviation": 0.019101,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.153206,
+        "draws": 10,
+        "attempts": 18,
+        "acceptance_rate": 0.5556,
+        "max_rho_deviation": 0.019653,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.1,
+        "draws": 10,
+        "attempts": 25,
+        "acceptance_rate": 0.4,
+        "max_rho_deviation": 0.018366,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.0,
+        "draws": 10,
+        "attempts": 21,
+        "acceptance_rate": 0.4762,
+        "max_rho_deviation": 0.016527,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.1,
+        "draws": 10,
+        "attempts": 36,
+        "acceptance_rate": 0.2778,
+        "max_rho_deviation": 0.016133,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.2,
+        "draws": 10,
+        "attempts": 30,
+        "acceptance_rate": 0.3333,
+        "max_rho_deviation": 0.019994,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.3,
+        "draws": 10,
+        "attempts": 47,
+        "acceptance_rate": 0.2128,
+        "max_rho_deviation": 0.019047,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.4,
+        "draws": 10,
+        "attempts": 64,
+        "acceptance_rate": 0.1562,
+        "max_rho_deviation": 0.016314,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.5,
+        "draws": 10,
+        "attempts": 53,
+        "acceptance_rate": 0.1887,
+        "max_rho_deviation": 0.019835,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      }
+    ],
+    "passes": true
+  },
+  "a_g3": {
+    "against_the_frozen_engine": {
+      "action": {
+        "mine": 1495,
+        "engine": 1495,
+        "equal": true
+      },
+      "conflict": {
+        "mine": 505,
+        "engine": 505,
+        "equal": true
+      },
+      "impasse": {
+        "mine": 0,
+        "engine": 0,
+        "equal": true
+      },
+      "correct": {
+        "mine": 1175,
+        "engine": 1175,
+        "equal": true
+      },
+      "silent_errors_abs": {
+        "mine": 320,
+        "engine": 320,
+        "equal": true
+      }
+    },
+    "against_the_published_row": {
+      "accuracy_end_to_end": {
+        "measured": 0.5875,
+        "published": 0.5875,
+        "equal": true
+      },
+      "conflict": {
+        "measured": 505,
+        "published": 505,
+        "equal": true
+      },
+      "silent_error_rate": {
+        "measured": 0.214,
+        "published": 0.214,
+        "equal": true
+      }
+    },
+    "passes": true
+  },
+  "a_g4": {
+    "per_bin": [
+      {
+        "centre": -0.6,
+        "draws": 10,
+        "attempts": 13,
+        "acceptance_rate": 0.7692,
+        "max_rho_deviation": 0.019525,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.5,
+        "draws": 10,
+        "attempts": 14,
+        "acceptance_rate": 0.7143,
+        "max_rho_deviation": 0.019025,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.4,
+        "draws": 10,
+        "attempts": 24,
+        "acceptance_rate": 0.4167,
+        "max_rho_deviation": 0.017654,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.3,
+        "draws": 10,
+        "attempts": 20,
+        "acceptance_rate": 0.5,
+        "max_rho_deviation": 0.018154,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.2,
+        "draws": 10,
+        "attempts": 22,
+        "acceptance_rate": 0.4545,
+        "max_rho_deviation": 0.019101,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.153206,
+        "draws": 10,
+        "attempts": 18,
+        "acceptance_rate": 0.5556,
+        "max_rho_deviation": 0.019653,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": -0.1,
+        "draws": 10,
+        "attempts": 25,
+        "acceptance_rate": 0.4,
+        "max_rho_deviation": 0.018366,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.0,
+        "draws": 10,
+        "attempts": 21,
+        "acceptance_rate": 0.4762,
+        "max_rho_deviation": 0.016527,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.1,
+        "draws": 10,
+        "attempts": 36,
+        "acceptance_rate": 0.2778,
+        "max_rho_deviation": 0.016133,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.2,
+        "draws": 10,
+        "attempts": 30,
+        "acceptance_rate": 0.3333,
+        "max_rho_deviation": 0.019994,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.3,
+        "draws": 10,
+        "attempts": 47,
+        "acceptance_rate": 0.2128,
+        "max_rho_deviation": 0.019047,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.4,
+        "draws": 10,
+        "attempts": 64,
+        "acceptance_rate": 0.1562,
+        "max_rho_deviation": 0.016314,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      },
+      {
+        "centre": 0.5,
+        "draws": 10,
+        "attempts": 53,
+        "acceptance_rate": 0.1887,
+        "max_rho_deviation": 0.019835,
+        "a_g2_passes": true,
+        "dead_rules_seen": [
+          0
+        ],
+        "effective_size": [
+          29
+        ],
+        "a_g4_passes": true,
+        "a_g1_corpus_passes": true,
+        "a_g1_space_passes": true
+      }
+    ],
+    "passes": true
+  },
+  "passes": true,
+  "seconds": 61.1
+}

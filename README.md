@@ -33,6 +33,7 @@ up in four places at once.
 | **4** · priority from feedback | whether that order is learnable from what a deployed system observes | [`results4/FINDINGS4.md`](results4/FINDINGS4.md) |
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
 | **control** · the default rule | how much of rung 1's conflict rate is the DSL's one-condition minimum rather than the thesis it is cited for | [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md) |
+| **A** · the sensitivity sweep | how much of rung 1's failure is this policy's shape, over a family of 1,300 synthetic manuals | [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 
@@ -118,6 +119,11 @@ python3 -m rung3.budget_and_balance  # label curve and balanced greedy
 
 # --- RUNG 4 · order learned from a feedback channel ----------------------
 python3 -m rung4.sweep             # coverage/asymmetry/delay/noise sweeps
+
+# --- A · the sensitivity family, a control on rung 1 ----------------------
+python3 -m sensitivity.generator_check   # A-g1..A-g4, blocking, first and alone
+python3 -m sensitivity.sweep             # 13 ρ bins × 100 draws; gated on §0
+python3 -m sensitivity.sweep --dry-run   # draws everything, writes nothing
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
 python3 -m rung3.optimizer_check   # optimizer ceiling: must give 1.0000
@@ -255,6 +261,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
 > | `rung2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
 > | `rung2/ceiling_check2_space.py` | `results2/ceiling2_space.json` | no, on purpose |
+> | `sensitivity/generator_check.py` | `results_sensitivity/generator_check.json` | no, on purpose |
+> | `sensitivity/sweep.py` | `results_sensitivity/sweep.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
@@ -372,6 +380,7 @@ What it covers, and why those things:
 | `test_ceilings.py` | the four ceilings to the digit, with their conflict counts and the declared edges |
 | `test_default_rule_control.py` | the fifth ceiling, on both surfaces: the specificity engine with the catch-all at its true rank, plus the two invariants that say the control never changes a decision already taken and never resolves a conflict wrongly |
 | `test_ceiling2_space.py` | the hybrid ceiling over the exhaustive space, level 1 alone on both surfaces, and the three premises that make the space figure a consequence rather than a coincidence |
+| `test_sensitivity.py` | the sensitivity instrument: the five signed bands as named constants, the two constants of §8, the ρ grid, `A-g3`'s parity against the frozen engine, and the gate that counts signatures instead of stopping at the first. **No figure of the sweep** |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -932,6 +941,12 @@ adaptive-policy-compilation/
 │   ├── edge_dropping.py     does deliberate dropping beat chance
 │   └── answer_asymmetry.py  the a/b asymmetry, and the position effect
 │
+├── sensitivity/          A · a family of synthetic manuals, swept by ρ
+│   ├── generator.py         counts permuted, bodies drawn from the manual's own
+│   ├── measure.py           the evaluation path, both surfaces, both encodings
+│   ├── generator_check.py   A-g1..A-g4 · blocking, and it killed the first family
+│   └── sweep.py             the five signed rows, gated on PLAN_SENSITIVITY.md
+│
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   ├── sweep.py             coverage, asymmetry, delay and noise sweeps
@@ -947,7 +962,7 @@ adaptive-policy-compilation/
 ├── .github/workflows/       the suite on every push and PR, on 3.10 and 3.12
 ├── .github/dependabot.yml   bumps the actions; does NOT touch the pip pins
 │
-└── results/  results2/  results3/  results4/
+└── results/  results2/  results3/  results4/  results_sensitivity/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
