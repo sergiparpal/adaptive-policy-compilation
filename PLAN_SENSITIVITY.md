@@ -43,19 +43,52 @@ corpus is 2,000 draws over attributes that were sampled without reference to any
 policy, so it is a legitimate second surface and is reported everywhere, but the
 space is the one the bands are set on.
 
+**Amended 2026-08-29, before signature and before any figure of this plan
+exists.** Sergi tightened two bands: `A-b` from `≥ 0.80` to `≥ 0.85`, and `A-d`
+from `≥ 0.50` to `≥ 0.60`. Both moves make the row **harder** to hold; no band was
+loosened, and no claim, denominator, surface or refutation convention changed. The
+drafter's expectations below are unchanged, and what each tightened row now
+tolerates is stated with them.
+
+**It is recorded because it changes what the scoreboard may read into those two
+rows.** [`STATUS.md`](STATUS.md)'s count of signed rows is *a fact about the
+drafter*; `A-b` and `A-d` are now the drafter's claims with the **signer's** lines
+on two of them. A hold or a miss on either is weaker evidence about the drafter's
+calibration than the other three, and the row that the plan is really worth
+running for — `A-a` — is untouched by this.
+
 | id | claim | denominator | band | refuted by |
 |---|---|---|---|---|
 | **A-a** | **The hidden policy is not an outlier in its own family.** At its own ρ, its e2e under specificity sits inside the family's spread | the family draws at the ρ bin containing the hidden policy, e2e on the space, published catch-all encoding | inside the central **90%** of that bin | outside it |
-| **A-b** | **The curve is real**: e2e under specificity rises with ρ across the swept range | median e2e per ρ bin, space | Spearman(ρ, median e2e) **≥ 0.80** | **< 0.80** |
+| **A-b** | **The curve is real**: e2e under specificity rises with ρ across the swept range | median e2e per ρ bin, space | Spearman(ρ, median e2e) **≥ 0.85** | **< 0.85** |
 | **A-c** | **Alignment is not enough**: even at maximum ρ, specificity does not execute the policies, because equal counts still tie and a tie with different actions is CONFLICT | median e2e at the top ρ bin, space | **≤ 0.95** | **> 0.95** |
-| **A-d** | **The shape is common, not exotic**: at ρ = 0 most policies contain at least one *required* precedence pair that the condition counts violate, so no monotone function of specificity can execute them | fraction of draws in the ρ = 0 bin with ≥ 1 violation; structural, no engine involved | **≥ 0.50** | **< 0.50** |
+| **A-d** | **The shape is common, not exotic**: at ρ = 0 most policies contain at least one *required* precedence pair that the condition counts violate, so no monotone function of specificity can execute them | fraction of draws in the ρ = 0 bin with ≥ 1 violation; structural, no engine involved | **≥ 0.60** | **< 0.60** |
 | **A-e** | **The default rule is a pedestal, not the shape**: correcting the catch-all's rank lifts the curve without bending it | \|Spearman(ρ, median e2e) published − Spearman(ρ, median e2e) corrected\|, space | **≤ 0.15** | **> 0.15** |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: I adopt §0 with the two bands amended today at my request — A-b at ≥ 0.85 and A-d at ≥ 0.60 — and the other three rows as drafted. (date: 2026-08-29)**
 
 **What the drafter expects, written down so the scoreboard can score it.**
 `A-b`, `A-c`, `A-d` and `A-e` hold. **`A-a` is refuted**, and it is the row worth
 running the plan for.
+
+**The two tightened rows are still expected to hold, and this is what each now
+tolerates.** `A-b` is a Spearman over **13** bin medians, so `< 0.85` requires
+`Σd² > 54`: several bins badly out of order, not one inversion — a curve with a
+single adjacent swap still scores 0.99. Moving the line from 0.80 to 0.85 removes
+the range where the row could have been held by a visibly ragged curve, which is
+the right direction for a row whose whole claim is *the curve is real*. `A-d` is a
+fraction over 100 draws in one bin, and the drafter expects it **well above either
+line**: at ρ = 0 the counts are permuted at random across a structure whose
+required inequalities number in the hundreds — the hidden policy alone yields at
+least the 199 that `hidden_priority` declares — so a draw with *zero* violations
+would need an almost perfect accident.
+
+**Which makes `A-d` the weakest of the five as a test, at 0.60 no less than at
+0.50, and that is said here rather than discovered afterwards.** If it lands near
+1.00 it will have confirmed something the impossibility proof already implies,
+and its value will be the *number* it puts on «common», not the verdict. The row
+stays because that number is worth owning; the caveat stays because a band both
+lines clear is not a test.
 
 The reasoning is one paragraph. A random permutation of the condition counts
 across the layer structure hits a given ρ by many different arrangements; the
