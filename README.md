@@ -92,6 +92,8 @@ python3 -m harness.default_rule_control  # the same ceiling with the catch-all a
 
 # --- RUNG 2 · hybrid engine: subsumption + declared priority -------------
 python3 -m rung2.ceiling_check2    # STOP 0 of rung 2; must PASS
+python3 -m rung2.ceiling_check2_space  # the same ceiling over the 134,400
+                                   # combinations, and what the 199 edges buy
 python3 -m rung2.compare_runs results2/llm_run2_*.json   # the 8 runs
 python3 -m rung2.note_audit  results2/llm_run2_*.json    # attributes and notes
 
@@ -237,6 +239,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `harness/default_rule_control.py` | `results/default_rule_control.json` | no, on purpose |
 > | `harness/learned_subsumption.py` | `results/learned_subsumption.json` | no, on purpose |
 > | `rung2/ceiling_check2.py` | `results2/ceiling2.json` | no, on purpose |
+> | `rung2/ceiling_check2_space.py` | `results2/ceiling2_space.json` | no, on purpose |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
@@ -353,6 +356,7 @@ What it covers, and why those things:
 | `test_encoding_invariant.py` | the 29 DSL rules ≡ their lambdas, and first-match-wins ≡ `true_action`, over the **134,400** combinations. This is the claim that "execution failure, not representation failure" rests on |
 | `test_ceilings.py` | the four ceilings to the digit, with their conflict counts and the declared edges |
 | `test_default_rule_control.py` | the fifth ceiling, on both surfaces: the specificity engine with the catch-all at its true rank, plus the two invariants that say the control never changes a decision already taken and never resolves a conflict wrongly |
+| `test_ceiling2_space.py` | the hybrid ceiling over the exhaustive space, level 1 alone on both surfaces, and the three premises that make the space figure a consequence rather than a coincidence |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -874,6 +878,7 @@ adaptive-policy-compilation/
 │   ├── engine2.py           two-level arbitration
 │   ├── hidden_priority.py   the 29 rules with their minimal edges
 │   ├── ceiling_check2.py    STEP 0 of rung 2 (gives 100%)
+│   ├── ceiling_check2_space.py  the same, over the 134,400 combinations
 │   ├── proposers2.py        v1/v2 prompts and bounded neighbourhood
 │   ├── shadow2.py  run2.py  compare_runs.py  note_audit.py
 │   │                        —— pairwise judgement ——

@@ -31,8 +31,9 @@ The corrected order of work is: settle a documentation contradiction (**done** �
 the hidden policy was written by Claude, and `results/FINDINGS.md` carries the
 dated erratum), measure the default-rule control (**done** — item 2 below, owned
 by [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md)),
-measure the hybrid ceiling on the space (free, already named as pending by
-[`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) §9.2), **write up the pairwise
+measure the hybrid ceiling on the space (**done** — item 3 below; the erratum is
+in [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) §9.2, which asked for it),
+**write up the pairwise
 thread** — which is the part with the shape of a paper — and only then the
 sensitivity sweep and ILP, which reinforce the frame rather than block it.
 
@@ -280,6 +281,15 @@ draft one but may not sign it (hard rule 2). Items 4 and 5 are the only two whos
 figures do not yet exist and which therefore *can* be pre-registered; items 2 and
 3 are post-run and item 3 is a write-up.
 
+> **[ERRATUM 2026-08-29] Two errors in that sentence, and the first one cost a
+> pre-registration.** Item **3**'s figures did not exist either — nobody had
+> measured the hybrid engine over the space — so it was pre-registrable and this
+> sentence is what classified it as post-run. It was then executed post-run on
+> that classification, and its record says which of its figures could have carried
+> a band (the ceiling was derivable in advance; the level-1 space row and the edge
+> asymmetry were not). Only item **2** was genuinely post-run: §3 above had already
+> run and printed its two rows. And the write-up is item **4**, not item 3.
+
 ### 1 · Settle the authorship contradiction · free · ~~one word~~ **DONE 2026-08-29**
 
 §1.3. Sergi settled it: Claude wrote the hidden policy, so `README.md:718` states
@@ -326,7 +336,7 @@ three places, and each was the repository's own convention asking for it:
   conflict wrongly. That is why the silent-error count is identical in all four
   rows.
 
-### 3 · The hybrid ceiling on the exhaustive space · free · minutes
+### 3 · The hybrid ceiling on the exhaustive space · free · ~~minutes~~ 4 s · **DONE 2026-08-29**
 
 **Not this document's idea.** [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md)
 §9.2: rung 2's 1.0000 is a corpus figure, the hybrid engine has never been
@@ -341,6 +351,39 @@ result is that the two surfaces neither rate nor rank alike
 ([`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md), parts two and
 three; Spearman 0.34 over 2,080 pairs). An unlabelled ceiling is the one thing
 `STATUS.md`'s *Before reading any figure* says not to leave standing.
+
+**Done, and the ceiling was the least interesting of the four figures.**
+`rung2/ceiling_check2_space.py`, owned by
+[`results2/FINDINGS2.md`](results2/FINDINGS2.md), *The same ceiling on the other
+surface*. Over the 134,400 combinations the hybrid engine also gives 1.0000, with
+zero conflicts and zero impasses — so the corpus 1.0000 was not *"fits the
+sample"* and the engine is **policy-equivalent** to the hidden policy. But that
+row was derivable in advance from two facts already recorded, and the module says
+so by proving it and then checking its three premises as blocking gates. What was
+NOT derivable, and is what the check bought:
+
+- **Level 1 alone falls from 0.6315 to 0.2612.** Subsumption carries 63% of the
+  arrivals and 26% of the function, so the 199 edges buy +0.3685 on one surface
+  and **+0.7388** on the other. Its silent error is 0.0000 on both, which upgrades
+  rung 1's soundness result from a corpus figure to a statement about the whole
+  function.
+- **51 of the 199 edges are never exercised by the corpus.** Their two rules never
+  match the same arriving ticket. 12 edges are load-bearing on the space and never
+  on the corpus; **0 the other way**. An authorship cost read off the arrivals is a
+  floor, not the price.
+
+**And this item's own classification was wrong**, which §5 now records: its
+figures did not exist, so it could have been pre-registered.
+
+*The plan's own error, since it is this document's:* the sentence introducing §4
+says items 4 and 5 are *"the only two whose figures do not yet exist and which
+therefore can be pre-registered"*, and calls items 2 and 3 post-run. That is right
+about item 2 — `EXTERNAL_REVIEW.md` §3 had already run and printed those two rows —
+and wrong about item 3, whose figures did not exist anywhere until 2026-08-29. It
+was executed post-run anyway, on the classification the plan gave it, and the
+record declares `provenance: POST-RUN` and says which of its figures could have
+carried a band. That is the honest version, not a repair: the band is gone either
+way.
 
 ### 4 · Write up the pairwise thread · free · the actual deliverable
 
@@ -414,7 +457,16 @@ left where `STATUS.md` has it.
    them*; `CLAUDE.md`'s pointer names all three. **`PLAN_SENSITIVITY.md` is
    deliberately not indexed yet**: it is unsigned, and the repository indexes a
    plan when it is operative.
-6. **One process observation, which is the reviewer's and is worth keeping.** The
+6. **[ADDED 2026-08-29] It mis-classified one of its own items, and that is the
+   most expensive kind of error this document can make.** §4's preamble called
+   item 3 post-run when its figures did not exist, so a pre-registrable
+   measurement was executed without a band. The erratum is dated at the preamble;
+   the record `results2/FINDINGS2.md` carries the consequence rather than hiding
+   it. Nothing can restore the band — that is the point of the convention — and
+   what is left is the note for whoever writes the next plan: **classify each item
+   by asking whether its figure exists, not by which side of the document it came
+   from.**
+7. **One process observation, which is the reviewer's and is worth keeping.** The
    contrast that produced §3 came from handing an outside reading to something
    with repository access and instructions to verify. It found an encoding
    artifact in a headline figure that neither party would have found alone. It is

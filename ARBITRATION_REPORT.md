@@ -720,6 +720,20 @@ outside the denominator —the convention the predictions thread already uses.
 2. **The hybrid engine's 1.0000 is a corpus figure.** Over the exhaustive space that engine
    has not been measured, and this report has argued in §6 that the two surfaces do not even
    rank the same. It is the cheapest pending check of all the ones named here.
+
+   > **[ERRATUM 2026-08-29] Measured, and it cost four seconds.** Over the 134,400
+   > combinations the hybrid engine also gives 1.0000, with zero conflicts and zero
+   > impasses, so the figure is not "it fits the sample": the engine is policy-equivalent
+   > to the hidden policy. `rung2/ceiling_check2_space.py`, owned by
+   > `results2/FINDINGS2.md`, *The same ceiling on the other surface*.
+   >
+   > **This point was right about the surface and wrong about which row would move.** The
+   > ceiling does not depend on the surface — it follows from three premises the record now
+   > checks and blocks on — but the LEVEL 1 row does: subsumption alone falls from 0.6315
+   > over the arrivals to **0.2612** over the function, so what the 199 declared edges buy
+   > goes from +0.3685 to +0.7388. And **51 of those 199 edges are never exercised by the
+   > corpus at all**, with 12 load-bearing on the space and never on the corpus and 0 the
+   > other way: the authorship cost of §9.3 read off the arrivals is a floor, not the price.
 3. **The 199 edges are the authorship cost of a perfect author over 29 rules.** How many
    would be needed over a learned base, and whether a proposer could produce them, is
    exactly what the eight runs never got to put to the test. P2 suggests the real cost is

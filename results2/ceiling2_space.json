@@ -1,0 +1,2054 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-29T11:38:18Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "3c344fa21348e7d1f09028e83d9f7b869ec77575",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "1c0afca53553ccca",
+    "n_corpus": 2000,
+    "seed": 17
+  },
+  "what": "the rung 2 hybrid ceiling measured over the exhaustive space as well as the corpus, with level 1 alone on both surfaces and what the 199 declared edges buy on each",
+  "provenance": "POST-RUN. Written after the figures were seen; no band was drafted, none is claimed, no signed row moves. Unlike item 2's control the figures did not exist beforehand, so the ceiling could have been pre-registered \u2014 though it was derivable from two facts already recorded, which the module's proof gives. The level-1 space figure and the edge asymmetry were not derivable and could have carried a band. EXTERNAL_REVIEW.md \u00a74 says items 4 and 5 are the only ones whose figures do not yet exist; about this item that is wrong.",
+  "closes": "ARBITRATION_REPORT.md \u00a79.2, limit 2 \u2014 'the cheapest pending check of all the ones named here'; item 3 of EXTERNAL_REVIEW.md's plan",
+  "meaning": {
+    "corpus (n=2000, seed 17)": "1.0000 means it fits the sample: 2,000 draws touch 1,743 distinct cases and leave the rest of the function unconstrained",
+    "exhaustive space (134,400)": "1.0000 means policy-equivalent: on every case that exists, the engine decides what first-match-wins decides"
+  },
+  "gates": {
+    "rows": [
+      {
+        "row": "hybrid \u00b7 corpus \u00b7 results2/FINDINGS2.md",
+        "field": "action",
+        "measured": 2000,
+        "published": 2000,
+        "passes": true
+      },
+      {
+        "row": "hybrid \u00b7 corpus \u00b7 results2/FINDINGS2.md",
+        "field": "conflict",
+        "measured": 0,
+        "published": 0,
+        "passes": true
+      },
+      {
+        "row": "hybrid \u00b7 corpus \u00b7 results2/FINDINGS2.md",
+        "field": "impasse",
+        "measured": 0,
+        "published": 0,
+        "passes": true
+      },
+      {
+        "row": "hybrid \u00b7 corpus \u00b7 results2/FINDINGS2.md",
+        "field": "e2e",
+        "measured": 1.0,
+        "published": 1.0,
+        "passes": true
+      },
+      {
+        "row": "hybrid \u00b7 corpus \u00b7 results2/FINDINGS2.md",
+        "field": "silent",
+        "measured": 0.0,
+        "published": 0.0,
+        "passes": true
+      },
+      {
+        "row": "level 1 \u00b7 corpus \u00b7 results/FINDINGS.md route 3",
+        "field": "action",
+        "measured": 1263,
+        "published": 1263,
+        "passes": true
+      },
+      {
+        "row": "level 1 \u00b7 corpus \u00b7 results/FINDINGS.md route 3",
+        "field": "conflict",
+        "measured": 737,
+        "published": 737,
+        "passes": true
+      },
+      {
+        "row": "level 1 \u00b7 corpus \u00b7 results/FINDINGS.md route 3",
+        "field": "impasse",
+        "measured": 0,
+        "published": 0,
+        "passes": true
+      },
+      {
+        "row": "level 1 \u00b7 corpus \u00b7 results/FINDINGS.md route 3",
+        "field": "e2e",
+        "measured": 0.6315,
+        "published": 0.6315,
+        "passes": true
+      },
+      {
+        "row": "level 1 \u00b7 corpus \u00b7 results/FINDINGS.md route 3",
+        "field": "silent",
+        "measured": 0.0,
+        "published": 0.0,
+        "passes": true
+      },
+      {
+        "row": "structure",
+        "field": "declared edges",
+        "measured": 199,
+        "published": 199,
+        "passes": true
+      },
+      {
+        "row": "structure",
+        "field": "subsumption pairs",
+        "measured": 61,
+        "published": 61,
+        "passes": true
+      }
+    ],
+    "engines_differ_only_in_level_2": true,
+    "premises": {
+      "subsumption_contradicts_the_layer_order": [],
+      "edges_rejected_by_the_validator": [],
+      "pairs_that_need_an_edge_and_lack_one": [],
+      "passes": true
+    },
+    "passes": true
+  },
+  "n_rules": 29,
+  "declared_edges": 199,
+  "subsumption_pairs": 61,
+  "rows": [
+    {
+      "surface": "corpus (n=2000, seed 17)",
+      "arbitration": "hybrid (subsumption + 199 declared edges)",
+      "n": 2000,
+      "action": 2000,
+      "conflict": 0,
+      "impasse": 0,
+      "coverage": 1.0,
+      "correct": 2000,
+      "accuracy_end_to_end": 1.0,
+      "silent_error_rate": 0.0,
+      "silent_errors_abs": 0
+    },
+    {
+      "surface": "exhaustive space (134,400)",
+      "arbitration": "hybrid (subsumption + 199 declared edges)",
+      "n": 134400,
+      "action": 134400,
+      "conflict": 0,
+      "impasse": 0,
+      "coverage": 1.0,
+      "correct": 134400,
+      "accuracy_end_to_end": 1.0,
+      "silent_error_rate": 0.0,
+      "silent_errors_abs": 0
+    },
+    {
+      "surface": "corpus (n=2000, seed 17)",
+      "arbitration": "subsumption alone (level 1)",
+      "n": 2000,
+      "action": 1263,
+      "conflict": 737,
+      "impasse": 0,
+      "coverage": 0.6315,
+      "correct": 1263,
+      "accuracy_end_to_end": 0.6315,
+      "silent_error_rate": 0.0,
+      "silent_errors_abs": 0
+    },
+    {
+      "surface": "exhaustive space (134,400)",
+      "arbitration": "subsumption alone (level 1)",
+      "n": 134400,
+      "action": 35102,
+      "conflict": 99298,
+      "impasse": 0,
+      "coverage": 0.261176,
+      "correct": 35102,
+      "accuracy_end_to_end": 0.261176,
+      "silent_error_rate": 0.0,
+      "silent_errors_abs": 0
+    }
+  ],
+  "step_0_on_the_space": true,
+  "what_the_edges_buy": {
+    "corpus (n=2000, seed 17)": {
+      "level_1_alone": 0.6315,
+      "hybrid": 1.0,
+      "bought_by_the_edges": 0.3685,
+      "cases_needing_an_edge": 737,
+      "level_1_conflicts": 737,
+      "consistent": true,
+      "edges_that_ever_fire": 148,
+      "edges_never_firing": 51,
+      "edges_ever_sole_defeater": 60
+    },
+    "exhaustive space (134,400)": {
+      "level_1_alone": 0.261176,
+      "hybrid": 1.0,
+      "bought_by_the_edges": 0.738824,
+      "cases_needing_an_edge": 99298,
+      "level_1_conflicts": 99298,
+      "consistent": true,
+      "edges_that_ever_fire": 199,
+      "edges_never_firing": 0,
+      "edges_ever_sole_defeater": 72
+    }
+  },
+  "edge_asymmetry": {
+    "edges_never_exercised_by_the_corpus": [
+      [
+        "H01",
+        "H04"
+      ],
+      [
+        "H01",
+        "H05"
+      ],
+      [
+        "H01",
+        "H07"
+      ],
+      [
+        "H01",
+        "H09"
+      ],
+      [
+        "H01",
+        "H13"
+      ],
+      [
+        "H01",
+        "H15"
+      ],
+      [
+        "H01",
+        "H17"
+      ],
+      [
+        "H01",
+        "H21"
+      ],
+      [
+        "H01",
+        "H23"
+      ],
+      [
+        "H02",
+        "H04"
+      ],
+      [
+        "H02",
+        "H05"
+      ],
+      [
+        "H02",
+        "H07"
+      ],
+      [
+        "H02",
+        "H09"
+      ],
+      [
+        "H02",
+        "H13"
+      ],
+      [
+        "H02",
+        "H17"
+      ],
+      [
+        "H02",
+        "H18"
+      ],
+      [
+        "H02",
+        "H22"
+      ],
+      [
+        "H02",
+        "H23"
+      ],
+      [
+        "H03",
+        "H04"
+      ],
+      [
+        "H03",
+        "H05"
+      ],
+      [
+        "H03",
+        "H07"
+      ],
+      [
+        "H03",
+        "H09"
+      ],
+      [
+        "H03",
+        "H13"
+      ],
+      [
+        "H03",
+        "H17"
+      ],
+      [
+        "H03",
+        "H23"
+      ],
+      [
+        "H04",
+        "H11"
+      ],
+      [
+        "H05",
+        "H07"
+      ],
+      [
+        "H05",
+        "H10"
+      ],
+      [
+        "H05",
+        "H11"
+      ],
+      [
+        "H05",
+        "H12"
+      ],
+      [
+        "H05",
+        "H14"
+      ],
+      [
+        "H05",
+        "H15"
+      ],
+      [
+        "H05",
+        "H16"
+      ],
+      [
+        "H05",
+        "H21"
+      ],
+      [
+        "H05",
+        "H23"
+      ],
+      [
+        "H06",
+        "H23"
+      ],
+      [
+        "H07",
+        "H13"
+      ],
+      [
+        "H07",
+        "H14"
+      ],
+      [
+        "H07",
+        "H22"
+      ],
+      [
+        "H07",
+        "H23"
+      ],
+      [
+        "H08",
+        "H23"
+      ],
+      [
+        "H09",
+        "H21"
+      ],
+      [
+        "H10",
+        "H13"
+      ],
+      [
+        "H13",
+        "H19"
+      ],
+      [
+        "H14",
+        "H17"
+      ],
+      [
+        "H17",
+        "H22"
+      ],
+      [
+        "H17",
+        "H23"
+      ],
+      [
+        "H19",
+        "H23"
+      ],
+      [
+        "H21",
+        "H22"
+      ],
+      [
+        "H21",
+        "H23"
+      ],
+      [
+        "H23",
+        "H25"
+      ]
+    ],
+    "sole_defeater_on_the_space_only": [
+      [
+        "H03",
+        "H23"
+      ],
+      [
+        "H04",
+        "H20"
+      ],
+      [
+        "H04",
+        "H21"
+      ],
+      [
+        "H05",
+        "H07"
+      ],
+      [
+        "H06",
+        "H21"
+      ],
+      [
+        "H08",
+        "H22"
+      ],
+      [
+        "H08",
+        "H23"
+      ],
+      [
+        "H13",
+        "H19"
+      ],
+      [
+        "H13",
+        "H21"
+      ],
+      [
+        "H14",
+        "H17"
+      ],
+      [
+        "H14",
+        "H23"
+      ],
+      [
+        "H19",
+        "H23"
+      ]
+    ],
+    "sole_defeater_on_the_corpus_only": []
+  },
+  "per_edge": [
+    {
+      "winner": "H01",
+      "loser": "H04",
+      "fires_corpus": 0,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H05",
+      "fires_corpus": 0,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H06",
+      "fires_corpus": 1,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H07",
+      "fires_corpus": 0,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H08",
+      "fires_corpus": 1,
+      "fires_space": 8400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H09",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H10",
+      "fires_corpus": 1,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H11",
+      "fires_corpus": 1,
+      "fires_space": 5760,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H12",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H13",
+      "fires_corpus": 0,
+      "fires_space": 12800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H14",
+      "fires_corpus": 2,
+      "fires_space": 10400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H15",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H16",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 1,
+      "sole_space": 1040
+    },
+    {
+      "winner": "H01",
+      "loser": "H17",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H18",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 1,
+      "sole_space": 1040
+    },
+    {
+      "winner": "H01",
+      "loser": "H19",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H20",
+      "fires_corpus": 2,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H21",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H26",
+      "fires_corpus": 2,
+      "fires_space": 400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H01",
+      "loser": "H27",
+      "fires_corpus": 4,
+      "fires_space": 16800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H04",
+      "fires_corpus": 0,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H05",
+      "fires_corpus": 0,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H06",
+      "fires_corpus": 1,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H07",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H08",
+      "fires_corpus": 5,
+      "fires_space": 16800,
+      "sole_corpus": 4,
+      "sole_space": 6720
+    },
+    {
+      "winner": "H02",
+      "loser": "H09",
+      "fires_corpus": 0,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H10",
+      "fires_corpus": 5,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H11",
+      "fires_corpus": 3,
+      "fires_space": 5760,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H12",
+      "fires_corpus": 5,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H13",
+      "fires_corpus": 0,
+      "fires_space": 6400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H14",
+      "fires_corpus": 1,
+      "fires_space": 5200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H15",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H16",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H17",
+      "fires_corpus": 0,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H18",
+      "fires_corpus": 0,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H19",
+      "fires_corpus": 2,
+      "fires_space": 3360,
+      "sole_corpus": 1,
+      "sole_space": 1680
+    },
+    {
+      "winner": "H02",
+      "loser": "H20",
+      "fires_corpus": 6,
+      "fires_space": 6720,
+      "sole_corpus": 4,
+      "sole_space": 3360
+    },
+    {
+      "winner": "H02",
+      "loser": "H21",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 1,
+      "sole_space": 1344
+    },
+    {
+      "winner": "H02",
+      "loser": "H22",
+      "fires_corpus": 0,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 3150,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H25",
+      "fires_corpus": 2,
+      "fires_space": 400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H02",
+      "loser": "H28",
+      "fires_corpus": 4,
+      "fires_space": 16800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H04",
+      "fires_corpus": 0,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H05",
+      "fires_corpus": 0,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H06",
+      "fires_corpus": 1,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H07",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H09",
+      "fires_corpus": 0,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H10",
+      "fires_corpus": 5,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H11",
+      "fires_corpus": 9,
+      "fires_space": 11520,
+      "sole_corpus": 6,
+      "sole_space": 2880
+    },
+    {
+      "winner": "H03",
+      "loser": "H12",
+      "fires_corpus": 18,
+      "fires_space": 13440,
+      "sole_corpus": 7,
+      "sole_space": 480
+    },
+    {
+      "winner": "H03",
+      "loser": "H13",
+      "fires_corpus": 0,
+      "fires_space": 12800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H14",
+      "fires_corpus": 2,
+      "fires_space": 10400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H15",
+      "fires_corpus": 1,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H17",
+      "fires_corpus": 0,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H03",
+      "loser": "H22",
+      "fires_corpus": 1,
+      "fires_space": 4200,
+      "sole_corpus": 1,
+      "sole_space": 900
+    },
+    {
+      "winner": "H03",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 6300,
+      "sole_corpus": 0,
+      "sole_space": 420
+    },
+    {
+      "winner": "H03",
+      "loser": "H24",
+      "fires_corpus": 34,
+      "fires_space": 8400,
+      "sole_corpus": 22,
+      "sole_space": 3150
+    },
+    {
+      "winner": "H03",
+      "loser": "H25",
+      "fires_corpus": 6,
+      "fires_space": 800,
+      "sole_corpus": 3,
+      "sole_space": 210
+    },
+    {
+      "winner": "H03",
+      "loser": "H26",
+      "fires_corpus": 7,
+      "fires_space": 800,
+      "sole_corpus": 3,
+      "sole_space": 210
+    },
+    {
+      "winner": "H03",
+      "loser": "H28",
+      "fires_corpus": 9,
+      "fires_space": 33600,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H07",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 1,
+      "sole_space": 840
+    },
+    {
+      "winner": "H04",
+      "loser": "H09",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H10",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H11",
+      "fires_corpus": 0,
+      "fires_space": 1440,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H12",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H13",
+      "fires_corpus": 1,
+      "fires_space": 6400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H15",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H16",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H17",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H18",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H04",
+      "loser": "H20",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 200
+    },
+    {
+      "winner": "H04",
+      "loser": "H21",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 80
+    },
+    {
+      "winner": "H05",
+      "loser": "H07",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 420
+    },
+    {
+      "winner": "H05",
+      "loser": "H10",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H11",
+      "fires_corpus": 0,
+      "fires_space": 720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H12",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H14",
+      "fires_corpus": 0,
+      "fires_space": 2600,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H15",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H16",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H17",
+      "fires_corpus": 1,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H18",
+      "fires_corpus": 1,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H20",
+      "fires_corpus": 2,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H21",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H05",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 1050,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H10",
+      "fires_corpus": 4,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H11",
+      "fires_corpus": 3,
+      "fires_space": 1440,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H12",
+      "fires_corpus": 4,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H14",
+      "fires_corpus": 4,
+      "fires_space": 5200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H16",
+      "fires_corpus": 2,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H18",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H06",
+      "loser": "H20",
+      "fires_corpus": 5,
+      "fires_space": 1680,
+      "sole_corpus": 1,
+      "sole_space": 160
+    },
+    {
+      "winner": "H06",
+      "loser": "H21",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 64
+    },
+    {
+      "winner": "H06",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 1050,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H13",
+      "fires_corpus": 0,
+      "fires_space": 1280,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H14",
+      "fires_corpus": 0,
+      "fires_space": 1040,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H21",
+      "fires_corpus": 3,
+      "fires_space": 1344,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H22",
+      "fires_corpus": 0,
+      "fires_space": 420,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 630,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H25",
+      "fires_corpus": 1,
+      "fires_space": 80,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H07",
+      "loser": "H28",
+      "fires_corpus": 3,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H09",
+      "fires_corpus": 1,
+      "fires_space": 1680,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H10",
+      "fires_corpus": 22,
+      "fires_space": 6720,
+      "sole_corpus": 16,
+      "sole_space": 1680
+    },
+    {
+      "winner": "H08",
+      "loser": "H11",
+      "fires_corpus": 10,
+      "fires_space": 5760,
+      "sole_corpus": 6,
+      "sole_space": 1440
+    },
+    {
+      "winner": "H08",
+      "loser": "H12",
+      "fires_corpus": 22,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H13",
+      "fires_corpus": 1,
+      "fires_space": 6400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H14",
+      "fires_corpus": 4,
+      "fires_space": 5200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H15",
+      "fires_corpus": 20,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H08",
+      "loser": "H17",
+      "fires_corpus": 12,
+      "fires_space": 6720,
+      "sole_corpus": 10,
+      "sole_space": 1680
+    },
+    {
+      "winner": "H08",
+      "loser": "H22",
+      "fires_corpus": 1,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 168
+    },
+    {
+      "winner": "H08",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 3150,
+      "sole_corpus": 0,
+      "sole_space": 84
+    },
+    {
+      "winner": "H08",
+      "loser": "H25",
+      "fires_corpus": 11,
+      "fires_space": 400,
+      "sole_corpus": 1,
+      "sole_space": 28
+    },
+    {
+      "winner": "H08",
+      "loser": "H28",
+      "fires_corpus": 16,
+      "fires_space": 16800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H09",
+      "loser": "H10",
+      "fires_corpus": 6,
+      "fires_space": 3360,
+      "sole_corpus": 5,
+      "sole_space": 840
+    },
+    {
+      "winner": "H09",
+      "loser": "H11",
+      "fires_corpus": 13,
+      "fires_space": 5760,
+      "sole_corpus": 13,
+      "sole_space": 2160
+    },
+    {
+      "winner": "H09",
+      "loser": "H21",
+      "fires_corpus": 0,
+      "fires_space": 672,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H09",
+      "loser": "H26",
+      "fires_corpus": 3,
+      "fires_space": 80,
+      "sole_corpus": 3,
+      "sole_space": 40
+    },
+    {
+      "winner": "H09",
+      "loser": "H27",
+      "fires_corpus": 6,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H10",
+      "loser": "H13",
+      "fires_corpus": 0,
+      "fires_space": 2560,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H10",
+      "loser": "H14",
+      "fires_corpus": 10,
+      "fires_space": 2080,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H10",
+      "loser": "H21",
+      "fires_corpus": 10,
+      "fires_space": 2688,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H10",
+      "loser": "H22",
+      "fires_corpus": 1,
+      "fires_space": 840,
+      "sole_corpus": 1,
+      "sole_space": 24
+    },
+    {
+      "winner": "H10",
+      "loser": "H23",
+      "fires_corpus": 1,
+      "fires_space": 1260,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H10",
+      "loser": "H25",
+      "fires_corpus": 11,
+      "fires_space": 160,
+      "sole_corpus": 5,
+      "sole_space": 28
+    },
+    {
+      "winner": "H10",
+      "loser": "H28",
+      "fires_corpus": 26,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H13",
+      "fires_corpus": 9,
+      "fires_space": 5120,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H14",
+      "fires_corpus": 23,
+      "fires_space": 4160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H21",
+      "fires_corpus": 5,
+      "fires_space": 2304,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H22",
+      "fires_corpus": 6,
+      "fires_space": 1440,
+      "sole_corpus": 6,
+      "sole_space": 360
+    },
+    {
+      "winner": "H11",
+      "loser": "H23",
+      "fires_corpus": 6,
+      "fires_space": 2160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H24",
+      "fires_corpus": 101,
+      "fires_space": 2880,
+      "sole_corpus": 92,
+      "sole_space": 1260
+    },
+    {
+      "winner": "H11",
+      "loser": "H27",
+      "fires_corpus": 63,
+      "fires_space": 11520,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H11",
+      "loser": "H28",
+      "fires_corpus": 66,
+      "fires_space": 11520,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H12",
+      "loser": "H13",
+      "fires_corpus": 9,
+      "fires_space": 5120,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H12",
+      "loser": "H14",
+      "fires_corpus": 23,
+      "fires_space": 4160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H12",
+      "loser": "H21",
+      "fires_corpus": 10,
+      "fires_space": 2688,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H12",
+      "loser": "H23",
+      "fires_corpus": 7,
+      "fires_space": 2520,
+      "sole_corpus": 1,
+      "sole_space": 60
+    },
+    {
+      "winner": "H12",
+      "loser": "H27",
+      "fires_corpus": 116,
+      "fires_space": 13440,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H12",
+      "loser": "H28",
+      "fires_corpus": 103,
+      "fires_space": 13440,
+      "sole_corpus": 17,
+      "sole_space": 200
+    },
+    {
+      "winner": "H13",
+      "loser": "H15",
+      "fires_corpus": 2,
+      "fires_space": 2560,
+      "sole_corpus": 2,
+      "sole_space": 640
+    },
+    {
+      "winner": "H13",
+      "loser": "H16",
+      "fires_corpus": 10,
+      "fires_space": 5120,
+      "sole_corpus": 8,
+      "sole_space": 1280
+    },
+    {
+      "winner": "H13",
+      "loser": "H17",
+      "fires_corpus": 2,
+      "fires_space": 2560,
+      "sole_corpus": 2,
+      "sole_space": 640
+    },
+    {
+      "winner": "H13",
+      "loser": "H18",
+      "fires_corpus": 5,
+      "fires_space": 5120,
+      "sole_corpus": 3,
+      "sole_space": 1280
+    },
+    {
+      "winner": "H13",
+      "loser": "H19",
+      "fires_corpus": 0,
+      "fires_space": 1280,
+      "sole_corpus": 0,
+      "sole_space": 640
+    },
+    {
+      "winner": "H13",
+      "loser": "H20",
+      "fires_corpus": 4,
+      "fires_space": 2560,
+      "sole_corpus": 3,
+      "sole_space": 640
+    },
+    {
+      "winner": "H13",
+      "loser": "H21",
+      "fires_corpus": 1,
+      "fires_space": 2560,
+      "sole_corpus": 0,
+      "sole_space": 256
+    },
+    {
+      "winner": "H13",
+      "loser": "H27",
+      "fires_corpus": 8,
+      "fires_space": 12800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H14",
+      "loser": "H15",
+      "fires_corpus": 1,
+      "fires_space": 2080,
+      "sole_corpus": 1,
+      "sole_space": 520
+    },
+    {
+      "winner": "H14",
+      "loser": "H16",
+      "fires_corpus": 13,
+      "fires_space": 4160,
+      "sole_corpus": 12,
+      "sole_space": 1040
+    },
+    {
+      "winner": "H14",
+      "loser": "H17",
+      "fires_corpus": 0,
+      "fires_space": 2080,
+      "sole_corpus": 0,
+      "sole_space": 520
+    },
+    {
+      "winner": "H14",
+      "loser": "H18",
+      "fires_corpus": 7,
+      "fires_space": 4160,
+      "sole_corpus": 7,
+      "sole_space": 1040
+    },
+    {
+      "winner": "H14",
+      "loser": "H19",
+      "fires_corpus": 5,
+      "fires_space": 1040,
+      "sole_corpus": 4,
+      "sole_space": 520
+    },
+    {
+      "winner": "H14",
+      "loser": "H20",
+      "fires_corpus": 6,
+      "fires_space": 2080,
+      "sole_corpus": 5,
+      "sole_space": 520
+    },
+    {
+      "winner": "H14",
+      "loser": "H21",
+      "fires_corpus": 3,
+      "fires_space": 2080,
+      "sole_corpus": 1,
+      "sole_space": 208
+    },
+    {
+      "winner": "H14",
+      "loser": "H23",
+      "fires_corpus": 2,
+      "fires_space": 2600,
+      "sole_corpus": 0,
+      "sole_space": 260
+    },
+    {
+      "winner": "H14",
+      "loser": "H27",
+      "fires_corpus": 22,
+      "fires_space": 10400,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H15",
+      "loser": "H21",
+      "fires_corpus": 6,
+      "fires_space": 2688,
+      "sole_corpus": 3,
+      "sole_space": 440
+    },
+    {
+      "winner": "H15",
+      "loser": "H22",
+      "fires_corpus": 2,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H15",
+      "loser": "H23",
+      "fires_corpus": 1,
+      "fires_space": 1260,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H15",
+      "loser": "H25",
+      "fires_corpus": 8,
+      "fires_space": 160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H15",
+      "loser": "H28",
+      "fires_corpus": 16,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H16",
+      "loser": "H22",
+      "fires_corpus": 12,
+      "fires_space": 1680,
+      "sole_corpus": 10,
+      "sole_space": 420
+    },
+    {
+      "winner": "H16",
+      "loser": "H23",
+      "fires_corpus": 8,
+      "fires_space": 2520,
+      "sole_corpus": 2,
+      "sole_space": 290
+    },
+    {
+      "winner": "H16",
+      "loser": "H24",
+      "fires_corpus": 163,
+      "fires_space": 3360,
+      "sole_corpus": 154,
+      "sole_space": 1470
+    },
+    {
+      "winner": "H16",
+      "loser": "H25",
+      "fires_corpus": 30,
+      "fires_space": 320,
+      "sole_corpus": 21,
+      "sole_space": 70
+    },
+    {
+      "winner": "H16",
+      "loser": "H26",
+      "fires_corpus": 30,
+      "fires_space": 320,
+      "sole_corpus": 27,
+      "sole_space": 145
+    },
+    {
+      "winner": "H16",
+      "loser": "H28",
+      "fires_corpus": 79,
+      "fires_space": 13440,
+      "sole_corpus": 38,
+      "sole_space": 960
+    },
+    {
+      "winner": "H17",
+      "loser": "H21",
+      "fires_corpus": 3,
+      "fires_space": 2688,
+      "sole_corpus": 2,
+      "sole_space": 440
+    },
+    {
+      "winner": "H17",
+      "loser": "H22",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H17",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 1260,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H17",
+      "loser": "H25",
+      "fires_corpus": 3,
+      "fires_space": 160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H17",
+      "loser": "H28",
+      "fires_corpus": 8,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H18",
+      "loser": "H22",
+      "fires_corpus": 4,
+      "fires_space": 1680,
+      "sole_corpus": 4,
+      "sole_space": 420
+    },
+    {
+      "winner": "H18",
+      "loser": "H23",
+      "fires_corpus": 5,
+      "fires_space": 2520,
+      "sole_corpus": 3,
+      "sole_space": 290
+    },
+    {
+      "winner": "H18",
+      "loser": "H24",
+      "fires_corpus": 76,
+      "fires_space": 3360,
+      "sole_corpus": 72,
+      "sole_space": 1470
+    },
+    {
+      "winner": "H18",
+      "loser": "H25",
+      "fires_corpus": 10,
+      "fires_space": 320,
+      "sole_corpus": 7,
+      "sole_space": 70
+    },
+    {
+      "winner": "H18",
+      "loser": "H26",
+      "fires_corpus": 8,
+      "fires_space": 320,
+      "sole_corpus": 7,
+      "sole_space": 145
+    },
+    {
+      "winner": "H18",
+      "loser": "H28",
+      "fires_corpus": 41,
+      "fires_space": 13440,
+      "sole_corpus": 18,
+      "sole_space": 960
+    },
+    {
+      "winner": "H19",
+      "loser": "H22",
+      "fires_corpus": 1,
+      "fires_space": 420,
+      "sole_corpus": 1,
+      "sole_space": 168
+    },
+    {
+      "winner": "H19",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 630,
+      "sole_corpus": 0,
+      "sole_space": 116
+    },
+    {
+      "winner": "H19",
+      "loser": "H25",
+      "fires_corpus": 1,
+      "fires_space": 80,
+      "sole_corpus": 1,
+      "sole_space": 28
+    },
+    {
+      "winner": "H19",
+      "loser": "H28",
+      "fires_corpus": 12,
+      "fires_space": 3360,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H20",
+      "loser": "H22",
+      "fires_corpus": 4,
+      "fires_space": 840,
+      "sole_corpus": 3,
+      "sole_space": 168
+    },
+    {
+      "winner": "H20",
+      "loser": "H23",
+      "fires_corpus": 2,
+      "fires_space": 1260,
+      "sole_corpus": 1,
+      "sole_space": 116
+    },
+    {
+      "winner": "H20",
+      "loser": "H25",
+      "fires_corpus": 10,
+      "fires_space": 160,
+      "sole_corpus": 6,
+      "sole_space": 28
+    },
+    {
+      "winner": "H20",
+      "loser": "H28",
+      "fires_corpus": 33,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H21",
+      "loser": "H22",
+      "fires_corpus": 0,
+      "fires_space": 840,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H21",
+      "loser": "H23",
+      "fires_corpus": 0,
+      "fires_space": 1260,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H21",
+      "loser": "H25",
+      "fires_corpus": 5,
+      "fires_space": 160,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H21",
+      "loser": "H28",
+      "fires_corpus": 6,
+      "fires_space": 6720,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H22",
+      "loser": "H23",
+      "fires_corpus": 17,
+      "fires_space": 4200,
+      "sole_corpus": 5,
+      "sole_space": 420
+    },
+    {
+      "winner": "H22",
+      "loser": "H27",
+      "fires_corpus": 8,
+      "fires_space": 4200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H23",
+      "loser": "H24",
+      "fires_corpus": 15,
+      "fires_space": 2100,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H23",
+      "loser": "H25",
+      "fires_corpus": 0,
+      "fires_space": 200,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H23",
+      "loser": "H26",
+      "fires_corpus": 1,
+      "fires_space": 150,
+      "sole_corpus": 1,
+      "sole_space": 20
+    },
+    {
+      "winner": "H23",
+      "loser": "H27",
+      "fires_corpus": 4,
+      "fires_space": 6300,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H25",
+      "loser": "H27",
+      "fires_corpus": 34,
+      "fires_space": 800,
+      "sole_corpus": 0,
+      "sole_space": 0
+    },
+    {
+      "winner": "H26",
+      "loser": "H28",
+      "fires_corpus": 22,
+      "fires_space": 800,
+      "sole_corpus": 7,
+      "sole_space": 150
+    },
+    {
+      "winner": "H27",
+      "loser": "H28",
+      "fires_corpus": 95,
+      "fires_space": 33600,
+      "sole_corpus": 0,
+      "sole_space": 0
+    }
+  ],
+  "seconds": 3.8
+}

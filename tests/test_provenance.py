@@ -73,6 +73,10 @@ WRITERS = [
     # results/default_rule_control.json and reads nothing, and it is here for
     # the same reason as the six above — this list only ever grows.
     "harness.default_rule_control",
+    # The hybrid ceiling on the exhaustive space, added 2026-08-29. An eighth
+    # writer and a separate record: it must never land on results2/ceiling2.json,
+    # which owns the corpus figures of rung 2's Step 0.
+    "rung2.ceiling_check2_space",
 ]
 
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "run_experiment.py")
