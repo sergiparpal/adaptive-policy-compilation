@@ -36,6 +36,15 @@ up in four places at once.
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 
+**The two `P`/`B` rows have a write-up.**
+[`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
+instead of fifteen sections: the proposer answers the pairwise question well and
+the answer contains almost no priority, with the free baseline that makes the
+second half readable, the mechanism that joins the two, and the four things that
+could have been blamed and were each ruled out by a free measurement. **It owns no
+figure** — every number in it names the record that owns it, its surface and its
+pool.
+
 Each FINDINGS carries its **dated errata in place**: rungs 3 and 4 were
 re-measured on August 8, 2026 and their headline figures moved, and on August 24,
 2026 `FINDINGS3.md` §8 withdrew a conclusion of its own that §9 then measured
@@ -63,6 +72,12 @@ plan that came out of the contrast. **None owns a figure and none is a record.**
 They cite, with the record that owns each number named; where one disagrees with
 a record, the record wins; and all three carry their own dated errata in place,
 exactly as the FINDINGS do.
+
+**A fourth root document is not one of these three.**
+[`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) also owns no figure and also cites
+with the owner named, but it is not a reading of the records against each other —
+it is the **write-up** of one thread's result, and it is indexed above with the
+rungs it belongs to. It is the deliverable; these three are the criticism.
 
 **They are worth the detour before writing a new analysis**, which is what §9.8
 of the first is about: it re-derived three corrections the second had already
@@ -859,6 +874,7 @@ adaptive-policy-compilation/
 ├── ARBITRATION_REPORT.md    three readings of the records; they own no figure —
 ├── CHAT_SUMMARY.md          see *Three documents that read the records*, above
 ├── EXTERNAL_REVIEW.md       the 2026-08-29 review from outside, adjudicated
+├── PAIRWISE_WRITEUP.md      the P and B threads as one result; owns no figure
 │
 ├── harness/                 RUNG 1 — frozen spec and original engine
 │   ├── domain.py            case, actions, corpus (seed 17)          [FROZEN]

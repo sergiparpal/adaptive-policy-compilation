@@ -165,6 +165,13 @@ its errors concentrate exactly where that baseline is silent. **`B-a` holds**: t
 rate is 0.7312 at 1,600 against 0.6978 at 400, so the instrument did not move —
 whatever went wrong, it was not that.
 
+**Both threads are written up as one result** in
+[`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md), which owns no figure and adds no
+measurement: the pair-level rate and the order-level score as a single claim, the
+free queue-ranking baseline that makes the second readable, and the four
+candidates — budget, compilation, selection, instrument — each ruled out by a free
+measurement.
+
 **The drafter predicted three of the four**, expecting `B-b` to hold. That
 expectation is in §0 of the plan, was written before the calls, and is a fact
 about the drafter in the same way the table above is.

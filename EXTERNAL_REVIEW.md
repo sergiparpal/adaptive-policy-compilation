@@ -33,8 +33,8 @@ dated erratum), measure the default-rule control (**done** — item 2 below, own
 by [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md)),
 measure the hybrid ceiling on the space (**done** — item 3 below; the erratum is
 in [`ARBITRATION_REPORT.md`](ARBITRATION_REPORT.md) §9.2, which asked for it),
-**write up the pairwise
-thread** — which is the part with the shape of a paper — and only then the
+**write up the pairwise thread** — which is the part with the shape of a paper, and
+is **done**: [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) — and only then the
 sensitivity sweep and ILP, which reinforce the frame rather than block it.
 
 ---
@@ -385,7 +385,7 @@ record declares `provenance: POST-RUN` and says which of its figures could have
 carried a band. That is the honest version, not a repair: the band is gone either
 way.
 
-### 4 · Write up the pairwise thread · free · the actual deliverable
+### 4 · Write up the pairwise thread · free · the actual deliverable · **DONE 2026-08-29**
 
 §2. The material is complete: `PLAN_PAIRWISE.md` and `PLAN_PROPOSER_1600.md`
 closed, seven signed rows adjudicated, §§6–15 of
@@ -404,6 +404,29 @@ narrower than it reads); and the surface/pool labels on every number.
 `ARBITRATION_REPORT.md` §8's last rule-out — do not build more apparatus before
 having material — and the reviewer's independent "rung 5" warning converge here:
 **the value already present is extracted by writing it, not by adding a step.**
+
+**Done: [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md), and it adds no step.** No
+module, no record, no figure of its own; every number in it names the record that
+owns it, its surface and its pool. It carries the five things listed above, and
+three the plan did not ask for because they are what reading the fifteen sections
+together produces:
+
+- **The claim is sharper than §2's.** §2 says the proposer *"cannot turn that
+  ability into a declared order an executor can use"*. §§12–14 say why, and it is
+  not a conversion loss: on the side of the split where all the available order
+  lives, the proposer's edges score **0.58 deviations below a coin**, because a
+  ranking-shaped error is not a random error and correlated errors cancel the
+  correct answers instead of adding to them. The write-up leads with *the answer
+  contains almost no priority*, which is what the records support.
+- **The elimination is the spine.** Budget (§10, §14), compilation (§13),
+  selection (§14) and instrument (`B-a`) were each ruled out by a free
+  measurement, and stating them as a list is what makes the finding hard to
+  dismiss.
+- **The bet is dated.** [`CHAT_SUMMARY.md`](CHAT_SUMMARY.md) §2.2 proposed this
+  experiment on 2026-08-11 and then argued against its own proposal twice before
+  anything ran — *"bet with a low prior, not conclusion"*. A negative result reads
+  differently when the hedge is on the record beforehand, and §1 of the write-up is
+  that history.
 
 ### 5 · The sensitivity sweep · free, deterministic · pre-registrable
 

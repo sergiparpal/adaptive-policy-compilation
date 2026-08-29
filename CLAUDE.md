@@ -63,7 +63,10 @@ instrument before the instrument measures anything else.
 **The pairwise-judgement thread of `PLAN_PAIRWISE.md` closed on August 24, 2026**
 with three signed rows adjudicated. Its procedure is the plan itself; its
 write-ups are `results2/FINDINGS2.md` (Stages C and D) and `results3/FINDINGS3.md`
-§§6-10. Almost all of it is free:
+§§6-10. **`PAIRWISE_WRITEUP.md` presents that thread and the next one as a single
+result** — it owns no figure and is not one of the three analytical documents
+above; it is what those fifteen sections say when read together. Almost all of it
+is free:
 
     python3 -m rung3.floor_by_pool          # blocking six-row reproduction gate
     python3 -m rung2.pair_benchmark         # the labelled pairs and witnesses
