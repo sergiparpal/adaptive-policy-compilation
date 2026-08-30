@@ -406,24 +406,14 @@ class TestWhatIsLeftUnguarded(unittest.TestCase):
     that only `recorded_at` moves is the signal that everything still holds. And
     `order_search`, `budget_and_balance` and `sweep` are pending a re-run with a
     serious optimizer — that work is planned and the guard must not obstruct it.
+
+    **`FREE` was deleted on 2026-08-30.** It named six free writers of the
+    forty the tree holds — finding F1 of `results3/FINDINGS_AUDIT.md` — and
+    what it asserted is now asserted over every unguarded writer by
+    `tests/test_writer_lists.py::TestOnlyWhatCostsMoneyIsGuarded`. What stays
+    here is the one check a per-module derivation cannot make: `frontier` and
+    `llm` are the same file with different answers.
     """
-
-    FREE = [
-        "harness.subsumption_check",
-        "harness.learned_subsumption",
-        "rung2.ceiling_check2",
-        "rung3.order_search",
-        "rung3.budget_and_balance",
-        "rung4.sweep",
-    ]
-
-    def test_the_deterministic_free_ones_do_not_import_the_guard(self):
-        import importlib
-
-        for name in self.FREE:
-            with self.subTest(name):
-                mod = importlib.import_module(name)
-                self.assertNotIn("refuse_overwrite", vars(mod))
 
     def test_frontier_is_not_guarded(self):
         """`run_experiment.py frontier` shares a module with `llm`, so it is

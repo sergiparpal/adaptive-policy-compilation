@@ -9,11 +9,14 @@ thinking.
 The last class walks the code looking for JSON writers and requires all of them
 to hang their `_env`. It is what prevents the next script added from producing
 records without provenance again, which is how the original debt came about.
+
+The hand list of writers that used to live here is gone: it under-listed the tree
+for six days without anyone noticing (F1 and F7 of the optimizer audit), and
+`tests/test_writer_lists.py` derives it instead.
 """
 
 from __future__ import annotations
 
-import importlib
 import json
 import re
 import unittest
@@ -28,70 +31,10 @@ REPO = Path(__file__).resolve().parent.parent
 KEYS = {"recorded_at", "python", "openai", "platform", "pythonhashseed",
         "git_commit", "git_dirty", "code_dirty", "code_digest"}
 
-# Modules that dump a results JSON. The list is in the README, in the table
-# "reproducing a figure overwrites its own record".
-WRITERS = [
-    "run_experiment",
-    "harness.subsumption_check",
-    "harness.learned_subsumption",
-    "rung2.ceiling_check2",
-    "rung2.compare_runs",
-    "rung2.note_audit",
-    "rung2.run2",
-    "rung3.order_search",
-    "rung3.budget_and_balance",
-    "rung4.sweep",
-    # Added 2026-08-15 with the module. It does not close F1 of the optimizer
-    # audit — this list still under-lists the writers the README table carries —
-    # it only keeps the newest one from joining the omission.
-    "rung3.order_metrics_run",
-    # The same instrument on the corpus surface, added 2026-08-15. A separate
-    # writer because it is a separate record: it must never land on
-    # order_metrics.json, which owns the space figures.
-    "rung3.order_metrics_corpus",
-    # The join of those two records, added 2026-08-15. It writes a record and
-    # reads two, so it belongs here; adding it widens what this test covers,
-    # which is the only direction this list is ever allowed to move.
-    "rung3.rank_transfer",
-    # The space restricted to the points the corpus touches, added 2026-08-16.
-    # A fourth writer for the same reason as the second: it must never land on
-    # order_metrics.json or order_metrics_corpus.json, which own the two
-    # surfaces it compares.
-    "rung3.order_metrics_touched",
-    # The same 2,080 pairs read at the level of the rules, added 2026-08-16. A
-    # fifth writer and a fifth record: it reads three of the four above and
-    # rewrites none of them. Adding it here widens what this test covers, which
-    # is the only direction this list is ever allowed to move.
-    "rung3.order_metrics_rules",
-    # Who holds territory, added 2026-08-16 with the audit note on part five.
-    # A sixth writer: it reads order_metrics_rules.json — kappa included, which
-    # it never recomputes — and writes territory_holders.json, correcting the
-    # reading of a figure rather than any of its values.
-    "rung3.territory_holders",
-    # The default-rule control, added 2026-08-29 with the module. A seventh
-    # writer and the first one under `harness/` on this list: it writes
-    # results/default_rule_control.json and reads nothing, and it is here for
-    # the same reason as the six above — this list only ever grows.
-    "harness.default_rule_control",
-    # The hybrid ceiling on the exhaustive space, added 2026-08-29. An eighth
-    # writer and a separate record: it must never land on results2/ceiling2.json,
-    # which owns the corpus figures of rung 2's Step 0.
-    "rung2.ceiling_check2_space",
-    # The sensitivity family, added 2026-08-29 with the package. Two writers, and
-    # they are separate records on purpose: the gate's verdict must be readable
-    # without the sweep, since the gate is what says whether the sweep may run.
-    "sensitivity.generator_check",
-    "sensitivity.sweep",
-    # The ILP competitor, added 2026-08-30 with the package. Two writers and two
-    # records, for the reason the sensitivity pair has two: the gate's verdict has
-    # to be readable without the comparison, since the gate is what says whether
-    # the comparison may be believed.
-    "ilp.induce_check",
-    "ilp.compare",
-]
-
-CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
-               "run_experiment.py")
+# Imported, not repeated. A second copy of this tuple is the defect F1 is about:
+# when `sensitivity` and `ilp` were added, two places had to be edited and only a
+# failing test caught the second. `tests/test_writer_lists.py` derives from it.
+from harness.provenance import CODE_ROOTS
 
 
 class TestEnvironment(unittest.TestCase):
@@ -279,13 +222,11 @@ class TestTheTwoDirtyFlags(unittest.TestCase):
 
 
 class TestEveryWriterRecordsEnvironment(unittest.TestCase):
-
-    def test_the_known_writers_import_environment(self):
-        for name in WRITERS:
-            with self.subTest(name):
-                mod = importlib.import_module(name)
-                self.assertIn("environment", vars(mod),
-                              f"{name} no importa harness.provenance.environment")
+    """**`WRITERS` was deleted on 2026-08-30 and this class kept only the half
+    that was already derived.** The hand list under-listed the tree — finding F1
+    of `results3/FINDINGS_AUDIT.md` — and what it asserted is now asserted over
+    every writer by `tests/test_writer_lists.py`, which also checks that the
+    README table still mirrors the tree."""
 
     def test_no_JSON_writer_is_left_without_env(self):
         """Discovers NEW writers: any `write_text(json.dumps(...))` in the code
