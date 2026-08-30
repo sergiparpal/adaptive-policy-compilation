@@ -309,6 +309,13 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > from the moment the pairwise thread started adding writers. The pinned lists
 > in `tests/` are still F1 and still unfixed; this table is complete again, and
 > the audit's F7 line now carries its own dated note.
+>
+> **[NOTE 2026-08-30, later the same day] F1 is closed and this table is now
+> checked.** `tests/test_writer_lists.py` derives the writers from the tree and
+> fails if this table and the tree disagree **in either direction**, so a row
+> missing here or a module deleted from under a row breaks the suite instead of
+> waiting for an audit. The pinned lists it replaced were deleted rather than
+> updated: a list that has to be remembered is the defect, not its contents.
 
 > Of everything executed in this README, only `harness/ceiling_check.py` and
 > `run_experiment.py models` write nothing — plus the two `--dry-run` forms,
@@ -412,6 +419,7 @@ What it covers, and why those things:
 | `test_ceiling2_space.py` | the hybrid ceiling over the exhaustive space, level 1 alone on both surfaces, and the three premises that make the space figure a consequence rather than a coincidence |
 | `test_sensitivity.py` | the sensitivity instrument: the five signed bands as named constants, the two constants of §8, the ρ grid, `A-g3`'s parity against the frozen engine, and the gate that counts signatures instead of stopping at the first. **No figure of the sweep** |
 | `test_ilp.py` | the ILP instrument: the four signed bands, the 224-condition language with the 29 hidden rules inside it, `I-g3`'s no-leak property, first-match-wins on a list checkable by hand, and the gate. **No figure of the four rows** |
+| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the three that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
