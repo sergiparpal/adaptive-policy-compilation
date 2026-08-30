@@ -104,6 +104,20 @@ two — §0's table and §1's amendment — and a gate that read only the first 
 find §0 signed and report `ok` over an unsigned §1. Do not copy
 `gate_signature` from `rung2/pair_judgement.py` into a plan with more than one.
 
+**ILP as a competitor closed on August 30, 2026**, opened by Sergi and
+pre-registered as `PLAN_ILP.md`. Four signed rows; its record is
+`results_ilp/FINDINGS_ILP.md`. Free, seconds, and the first command is blocking:
+it killed the search method the plan itself declared, which is why §1 of that plan
+carries a signed amendment.
+
+    python3 -m ilp.induce_check   # I-g1..I-g4; must pass first
+    python3 -m ilp.compare        # refuses to write while unsigned
+
+**`requirements-ilp.txt` is not `requirements.txt` and must not be merged into
+it.** That file is the environment the paid records were produced with. The
+inducer runs on the standard library; `clingo` is pinned separately and is needed
+only to reproduce the encoding `I-g1` rejected.
+
 **Three follow-ups closed that thread's remaining routes**, §§12-14 of the same
 record, all free and all POST-RUN — they carry expectations but no signed row, so
 none of them is on `STATUS.md`'s scoreboard:

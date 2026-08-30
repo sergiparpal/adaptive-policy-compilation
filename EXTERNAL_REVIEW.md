@@ -478,12 +478,34 @@ up to 16 of them dead, perfectly correlated with ρ — so the curve would have
 confounded *alignment helps* with *the policy got smaller*. §1 was amended and
 re-signed before anything was measured; §5 of the plan's own record carries it.
 
-### 6 · ILP as a competitor · free, specified, **not authorized**
+### 6 · ILP as a competitor · free, specified · ~~not authorized~~ **DONE 2026-08-30**
 
 Step B of rung 3, never run. `STATUS.md` lists it open and *still unauthorized*,
 which under this repository's convention means the scope is Sergi's to open, not
 a task to pick up. Recorded here as the reviewer independently reached it, and
 left where `STATUS.md` has it.
+
+**Sergi opened it on 2026-08-29 and it ran on the 30th**, pre-registered as
+`PLAN_ILP.md` with four signed bands and a gate.
+[`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) owns the figures.
+**One row held, two were refuted and one was refused a verdict by its own gate** —
+the drafter had expected all four to hold, which is the worst calibration event on
+`STATUS.md`'s scoreboard.
+
+- **Not Popper and not ILASP.** Popper needs SWI-Prolog, absent and requiring
+  root; ILASP is a closed binary with nothing to pin; and the `popper` package on
+  PyPI is an unrelated CLI for reproducible papers. What ran is sequential
+  covering over a declared 224-condition language, gated by an `I-g1` that
+  recovers the hidden policy exactly — 28 rules, 1.000000 over the 134,400.
+- **The answer to *what is the proposer for?* has two halves and both are needed.**
+  On the material the proposer had, the inducer beats an oracle-using search over
+  its 577 rules **0.8814 against 0.8472** on corpus test split 0 — in half a second,
+  with no model. On the exhaustive space it **loses by 0.17**, 0.4304 against
+  0.6033. A method that wins the arrival distribution and loses the function is
+  what the surface labels were introduced for.
+- **And the plan's declared search method was killed by its own gate**, exactly as
+  item 5's family design was. §1 carries a signed amendment; `ilp/asp_encoding.py`
+  is kept so the failure reproduces.
 
 ---
 

@@ -1,0 +1,16 @@
+# Dependencies of the ILP competitor of PLAN_ILP.md, and of nothing else.
+#
+# DELIBERATELY NOT IN requirements.txt. That file is the environment the PAID
+# records were produced with, and its `openai` pin is what makes them
+# rebuildable; adding an unrelated solver to it would corrupt that meaning.
+# Nothing in `harness/`, `rung2/`, `rung3/`, `rung4/` or `sensitivity/` imports
+# clingo, and the test suite skips the solver tests when it is absent — so the
+# repository still runs on the standard library without this file.
+#
+# ENVIRONMENT THE ILP RECORDS WERE PRODUCED WITH
+#   Python 3.12.3 (GCC 13.3.0) on Linux x86_64
+#   clingo 5.8.2   (wheel, no build step)
+#
+# Pinned, not bounded, for the reason requirements.txt gives: a bounded version
+# means "whichever was around that day" and makes a recorded run unrebuildable.
+clingo==5.8.2

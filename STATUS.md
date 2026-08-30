@@ -68,7 +68,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Thirty-six rows have been signed before the figures they name existed. This
+**Forty rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -103,13 +103,19 @@ a count behind it.
 | **P** · pairwise judgement (§0 of `PLAN_PAIRWISE.md`) | 3 | 3 | **2** | 0 | 1 | 0 |
 | **B** · the proposer at 1,600 (§0 of `PLAN_PROPOSER_1600.md`) | 4 | 4 | **2** | 0 | 2 | 0 |
 | **A** · the sensitivity sweep (§0 of `PLAN_SENSITIVITY.md`) | 5 | 5 | **2** | 0 | 3 | 0 |
-| **total** | **36** | **33** | **15** | **2** | **16** | **3** |
+| **I** · ILP as a competitor (§0 of `PLAN_ILP.md`) | 4 | 3 | **2** | 0 | 1 | 0 |
+| **total** | **40** | **36** | **17** | **2** | **17** | **3** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`,
-`C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`. Reported: `R-d`, `C-d`,
-`D-d`.
+`A-a`, `A-b`, `I-a`, `I-c`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
+`R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`.
+Reported: `R-d`, `C-d`, `D-d`.
+
+**`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
+at one declared beam width and is refuted at the other, so `I-g4` refuses it a
+verdict rather than letting the favourable beam pick one. It is in the *signed*
+column and out of the *adjudicated* one.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -121,10 +127,10 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 15 of 33 = **45.5%**
-refuted; without them, 13 of 27 = **48.1%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 17 of 36 = **47.2%**
+refuted; without them, 15 of 30 = **50.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-2.6 points the flattering way, which is exactly why saying so is not optional.
+2.8 points the flattering way, which is exactly why saying so is not optional.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -768,9 +774,15 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    produces conflicts, and the 66.7%/64.2% material gap has no explanation.
    Undiscriminated: the framing (one ticket, one rule), the model, or rule-writing
    elicitation in general. FINDINGS2, "Why this is NOT a capability failure".
-3. **ILP (Popper/ILASP) as a competitor.** Specified as Step B of rung 3, never
-   run, still unauthorized. Decides whether the LLM proposer does work a cheaper
-   inducer could not.
+3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
+   pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
+   here — but sequential covering over a declared language, gated by an `I-g1`
+   that recovers the hidden policy exactly. **On the material the proposer had it
+   beats an oracle-using search over the LLM's 577 rules by 0.0342 on the
+   arrivals and loses to it by 0.17 as a function.**
+   [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md). What is left open
+   is narrower: `ONCALL_ESCALATION` never escalated once, so what the loop never
+   asked about, no method can learn.
 
 ---
 
