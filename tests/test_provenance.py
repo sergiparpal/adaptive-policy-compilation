@@ -82,9 +82,15 @@ WRITERS = [
     # without the sweep, since the gate is what says whether the sweep may run.
     "sensitivity.generator_check",
     "sensitivity.sweep",
+    # The ILP competitor, added 2026-08-30 with the package. Two writers and two
+    # records, for the reason the sensitivity pair has two: the gate's verdict has
+    # to be readable without the comparison, since the gate is what says whether
+    # the comparison may be believed.
+    "ilp.induce_check",
+    "ilp.compare",
 ]
 
-CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity",
+CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
                "run_experiment.py")
 
 

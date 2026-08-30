@@ -1,0 +1,159 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-30T07:09:16Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "9f04437875d4919d60ad781f7ddcf9cb7a5f57fd",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "b9631ae87b85d766",
+    "beams": [
+      40,
+      120
+    ],
+    "max_conditions": 3,
+    "max_rules": 200
+  },
+  "what": "I-g1 to I-g4 of PLAN_ILP.md \u00a74: the blocking checks on the inducer, run before any row is read",
+  "carries_no_band": "these four adjudicate nothing and are excluded from every denominator, per \u00a74",
+  "instances": {
+    "space": {
+      "name": "space",
+      "n": 134400,
+      "classes": 8,
+      "by_class": {
+        "SECURITY_INCIDENT": 50400,
+        "T2_TECHNICAL": 36720,
+        "ACCOUNT_MANAGER": 16440,
+        "T3_ENGINEERING": 8180,
+        "BILLING_SPECIALIST": 6840,
+        "ONCALL_ESCALATION": 6300,
+        "T1_GENERAL": 5220,
+        "SELF_SERVICE_DEFLECT": 4300
+      }
+    },
+    "train_316": {
+      "name": "train_316",
+      "n": 316,
+      "classes": 6,
+      "by_class": {
+        "SELF_SERVICE_DEFLECT": 114,
+        "T2_TECHNICAL": 99,
+        "T1_GENERAL": 53,
+        "BILLING_SPECIALIST": 35,
+        "ACCOUNT_MANAGER": 12,
+        "T3_ENGINEERING": 3
+      }
+    },
+    "train_632": {
+      "name": "train_632",
+      "n": 632,
+      "classes": 7,
+      "by_class": {
+        "SELF_SERVICE_DEFLECT": 222,
+        "T2_TECHNICAL": 200,
+        "T1_GENERAL": 99,
+        "BILLING_SPECIALIST": 73,
+        "ACCOUNT_MANAGER": 29,
+        "T3_ENGINEERING": 6,
+        "SECURITY_INCIDENT": 3
+      }
+    },
+    "test": {
+      "name": "test",
+      "n": 995,
+      "classes": 8,
+      "by_class": {
+        "T2_TECHNICAL": 364,
+        "SELF_SERVICE_DEFLECT": 242,
+        "BILLING_SPECIALIST": 136,
+        "T1_GENERAL": 128,
+        "T3_ENGINEERING": 57,
+        "ACCOUNT_MANAGER": 55,
+        "SECURITY_INCIDENT": 10,
+        "ONCALL_ESCALATION": 3
+      }
+    }
+  },
+  "superseded_encoding": {
+    "encoding": "ilp/asp_encoding.py \u2014 conditions chosen per slot, clingo 5.8.2",
+    "60_cases_60s": {
+      "train": "60/60",
+      "optimum_proved": false
+    },
+    "316_cases_60s": {
+      "train": "173/316 = 0.5475",
+      "hit_the_cap": true,
+      "optimum_proved": false
+    },
+    "316_cases_300s": {
+      "train": "205/316 = 0.6487",
+      "hit_the_cap": true,
+      "optimum_proved": false
+    },
+    "space_fact_base": 16128000,
+    "why_it_was_replaced": "it cannot fit its own training set, and I-g1's instance is 425x larger than the one it fails on"
+  },
+  "i_g1": {
+    "instance": "space, complete labels, 134,400 cases",
+    "rows": [
+      {
+        "beam": 40,
+        "n_rules": 28,
+        "n_conditions": 52,
+        "left_undecided": 0,
+        "hit_the_cap": false,
+        "accuracy_end_to_end": 1.0,
+        "seconds": 4.79,
+        "passes": true
+      },
+      {
+        "beam": 120,
+        "n_rules": 29,
+        "n_conditions": 55,
+        "left_undecided": 0,
+        "hit_the_cap": false,
+        "accuracy_end_to_end": 1.0,
+        "seconds": 10.14,
+        "passes": true
+      }
+    ],
+    "passes": true
+  },
+  "i_g2": {
+    "conditions_in_the_language": 224,
+    "hidden_conditions_outside_it": [],
+    "the_29_score": 1.0,
+    "passes": true
+  },
+  "i_g3": {
+    "signature": [
+      "ext",
+      "truth",
+      "n",
+      "beam",
+      "max_conditions",
+      "max_rules"
+    ],
+    "takes_only_masks": true,
+    "forbidden_names_imported_by_the_inducer": [],
+    "passes": true
+  },
+  "i_g4": {
+    "beams": [
+      40,
+      120
+    ],
+    "the_method_proves_nothing": true,
+    "i_g1_by_beam": {
+      "40": 1.0,
+      "120": 1.0
+    },
+    "stable_across_beams": true,
+    "passes": true
+  },
+  "passes": true,
+  "seconds": 24.4
+}

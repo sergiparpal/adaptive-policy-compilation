@@ -125,9 +125,17 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "rung3/optimizer_check_wt.py",
             "rung3/order_search_ls.py",   # offline: labels the two instances
             "rung4/feedback.py",
+            # offline: the ILP instances, added 2026-08-30. It LABELS the
+            # examples — which is what the proposer also received per case — and
+            # it is deliberately the only module in `ilp/` that may. `induce.py`
+            # takes bitmasks and nothing else, `I-g3` checks that on its
+            # signature and on its imports, and `tests/test_ilp.py` pins it: a
+            # competitor that could see the oracle would not be a competitor.
+            "ilp/instances.py",
         }
         found = set()
-        for root in ("harness", "rung2", "rung3", "rung4", "sensitivity"):
+        for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
+                     "ilp"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

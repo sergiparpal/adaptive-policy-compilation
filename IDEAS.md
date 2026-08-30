@@ -44,6 +44,11 @@ against, a threshold a next run would have to clear.
   (no) — and cost zero API calls. `results3/FINDINGS_AUDIT.md`,
   `results3/optimizer_check.json`, `results3/order_search_ls.json`,
   `results4/sweep_ls.json`.
+- **ILP as a competitor.** August 30, 2026, `PLAN_ILP.md`, four signed rows —
+  one held, two refuted, one refused a verdict by its own gate. On the material
+  the proposer had, a sequential-covering inducer beats an oracle-using search
+  over the LLM's 577 rules on the arrivals and loses to it as a function.
+  `results_ilp/`.
 - **The sensitivity sweep: how much of rung 1's failure is this policy's shape.**
   August 29, 2026, `PLAN_SENSITIVITY.md`, five signed rows. It answers the
   objection `ARBITRATION_REPORT.md` §9.1 raised and three readers reached
@@ -58,10 +63,13 @@ against, a threshold a next run would have to clear.
 
 ## Pending and already specified
 
-- **ILP (Popper/ILASP) over the hidden policy and the corpus.** It was Step B of
-  rung 3 and was never run. Two measurements in one: whether it recovers the
-  layer order, and as a competing baseline — what accuracy it reaches inducing
-  rules on its own, without an LLM.
+- **~~ILP over the hidden policy and the corpus.~~ Run on 2026-08-30**, and moved
+  to *No longer here*. What it leaves behind is narrower and is new: **the impasse
+  loop never escalated a single `ONCALL_ESCALATION` case** in the n=2000 run, and
+  only three `SECURITY_INCIDENT` ones. What the loop never asks about, no
+  proposer and no inducer can learn — and no row of any thread has measured what
+  that costs. It is a property of the escalation trigger, not of either
+  competitor.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A

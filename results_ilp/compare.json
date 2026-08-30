@@ -1,0 +1,3654 @@
+{
+  "_env": {
+    "recorded_at": "2026-08-30T07:09:29Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "9f04437875d4919d60ad781f7ddcf9cb7a5f57fd",
+    "git_dirty": true,
+    "code_dirty": true,
+    "code_digest": "b9631ae87b85d766",
+    "beams": [
+      40,
+      120
+    ],
+    "split_seed": 17
+  },
+  "what": "I-a to I-d of PLAN_ILP.md: a symbolic inducer as a competitor to the LLM proposer, on the material the proposer saw",
+  "plan": {
+    "file": "PLAN_ILP.md",
+    "signatures": [
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**",
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**"
+    ]
+  },
+  "bands": {
+    "I_A_MIN": 0.853,
+    "I_B_CEILING": {
+      "T3_ENGINEERING": 0.3333333333333333,
+      "ACCOUNT_MANAGER": 0.3577981651376147
+    },
+    "I_C_MIN": 0.5,
+    "I_D_MAX": 58
+  },
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_ILP.md, of which there must be at least 2: \u00a70's table and \u00a71's amendment of 2026-08-30",
+    "source": "PLAN_ILP.md",
+    "found": 2,
+    "lines": [
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**",
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**"
+    ],
+    "unsigned": [],
+    "passes": true
+  },
+  "instances": {
+    "train_316": {
+      "name": "train_316",
+      "n": 316,
+      "classes": 6,
+      "by_class": {
+        "SELF_SERVICE_DEFLECT": 114,
+        "T2_TECHNICAL": 99,
+        "T1_GENERAL": 53,
+        "BILLING_SPECIALIST": 35,
+        "ACCOUNT_MANAGER": 12,
+        "T3_ENGINEERING": 3
+      }
+    },
+    "train_632": {
+      "name": "train_632",
+      "n": 632,
+      "classes": 7,
+      "by_class": {
+        "SELF_SERVICE_DEFLECT": 222,
+        "T2_TECHNICAL": 200,
+        "T1_GENERAL": 99,
+        "BILLING_SPECIALIST": 73,
+        "ACCOUNT_MANAGER": 29,
+        "T3_ENGINEERING": 6,
+        "SECURITY_INCIDENT": 3
+      }
+    },
+    "test": {
+      "name": "test",
+      "n": 995,
+      "classes": 8,
+      "by_class": {
+        "T2_TECHNICAL": 364,
+        "SELF_SERVICE_DEFLECT": 242,
+        "BILLING_SPECIALIST": 136,
+        "T1_GENERAL": 128,
+        "T3_ENGINEERING": 57,
+        "ACCOUNT_MANAGER": 55,
+        "SECURITY_INCIDENT": 10,
+        "ONCALL_ESCALATION": 3
+      }
+    },
+    "space": {
+      "name": "space",
+      "n": 134400,
+      "classes": 8,
+      "by_class": {
+        "SECURITY_INCIDENT": 50400,
+        "T2_TECHNICAL": 36720,
+        "ACCOUNT_MANAGER": 16440,
+        "T3_ENGINEERING": 8180,
+        "BILLING_SPECIALIST": 6840,
+        "ONCALL_ESCALATION": 6300,
+        "T1_GENERAL": 5220,
+        "SELF_SERVICE_DEFLECT": 4300
+      }
+    }
+  },
+  "runs": {
+    "train_316|40": {
+      "train": "train_316",
+      "beam": 40,
+      "n_rules": 37,
+      "n_conditions": 68,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "seconds": 0.29,
+      "train_score": {
+        "n": 316,
+        "decided": 316,
+        "undecided": 0,
+        "correct": 316,
+        "accuracy_end_to_end": 1.0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 12,
+            "correct": 12,
+            "accuracy": 1.0
+          },
+          "T1_GENERAL": {
+            "n": 53,
+            "correct": 53,
+            "accuracy": 1.0
+          },
+          "T2_TECHNICAL": {
+            "n": 99,
+            "correct": 99,
+            "accuracy": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 114,
+            "correct": 114,
+            "accuracy": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 35,
+            "correct": 35,
+            "accuracy": 1.0
+          },
+          "T3_ENGINEERING": {
+            "n": 3,
+            "correct": 3,
+            "accuracy": 1.0
+          }
+        }
+      },
+      "test": {
+        "n": 995,
+        "decided": 995,
+        "undecided": 0,
+        "correct": 772,
+        "accuracy_end_to_end": 0.7758793969849246,
+        "per_class": {
+          "SELF_SERVICE_DEFLECT": {
+            "n": 242,
+            "correct": 228,
+            "accuracy": 0.9421487603305785
+          },
+          "BILLING_SPECIALIST": {
+            "n": 136,
+            "correct": 104,
+            "accuracy": 0.7647058823529411
+          },
+          "T2_TECHNICAL": {
+            "n": 364,
+            "correct": 307,
+            "accuracy": 0.8434065934065934
+          },
+          "T1_GENERAL": {
+            "n": 128,
+            "correct": 111,
+            "accuracy": 0.8671875
+          },
+          "SECURITY_INCIDENT": {
+            "n": 10,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 21,
+            "accuracy": 0.38181818181818183
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 1,
+            "accuracy": 0.017543859649122806
+          },
+          "ONCALL_ESCALATION": {
+            "n": 3,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "space": {
+        "n": 134400,
+        "decided": 134400,
+        "undecided": 0,
+        "correct": 47469,
+        "accuracy_end_to_end": 0.3531919642857143,
+        "per_class": {
+          "T2_TECHNICAL": {
+            "n": 36720,
+            "correct": 28660,
+            "accuracy": 0.7805010893246187
+          },
+          "T3_ENGINEERING": {
+            "n": 8180,
+            "correct": 337,
+            "accuracy": 0.04119804400977995
+          },
+          "ONCALL_ESCALATION": {
+            "n": 6300,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 6840,
+            "correct": 5792,
+            "accuracy": 0.8467836257309942
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 16440,
+            "correct": 3902,
+            "accuracy": 0.23734793187347933
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 4300,
+            "correct": 4068,
+            "accuracy": 0.946046511627907
+          },
+          "T1_GENERAL": {
+            "n": 5220,
+            "correct": 4710,
+            "accuracy": 0.9022988505747126
+          },
+          "SECURITY_INCIDENT": {
+            "n": 50400,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "corpus": {
+        "n": 2000,
+        "decided": 2000,
+        "undecided": 0,
+        "correct": 1592,
+        "accuracy_end_to_end": 0.796,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 109,
+            "correct": 44,
+            "accuracy": 0.4036697247706422
+          },
+          "T1_GENERAL": {
+            "n": 255,
+            "correct": 232,
+            "accuracy": 0.9098039215686274
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 495,
+            "correct": 472,
+            "accuracy": 0.9535353535353536
+          },
+          "T2_TECHNICAL": {
+            "n": 726,
+            "correct": 632,
+            "accuracy": 0.8705234159779615
+          },
+          "BILLING_SPECIALIST": {
+            "n": 271,
+            "correct": 208,
+            "accuracy": 0.7675276752767528
+          },
+          "SECURITY_INCIDENT": {
+            "n": 20,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 117,
+            "correct": 4,
+            "accuracy": 0.03418803418803419
+          },
+          "ONCALL_ESCALATION": {
+            "n": 7,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "rules": [
+        {
+          "rule_id": "L01",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            },
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "portal",
+                "phone"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L02",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L03",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L04",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L05",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L06",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L07",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 19
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L08",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L09",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "de"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L10",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L11",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L12",
+          "conditions": [
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "phone"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L13",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L14",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 4
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L15",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 5
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L16",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L17",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "channel",
+              "op": "neq",
+              "value": "email"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L18",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L19",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "de"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L20",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L21",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "es"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L22",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "language",
+              "op": "in",
+              "value": [
+                "es",
+                "fr"
+              ]
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L23",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 7
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L24",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L25",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L26",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L27",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L28",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L29",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L30",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "pro"
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L31",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "free",
+                "pro"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L32",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 1
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L33",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 3
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L34",
+          "conditions": [
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "portal"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L35",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "pro"
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L36",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L37",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        }
+      ]
+    },
+    "train_316|120": {
+      "train": "train_316",
+      "beam": 120,
+      "n_rules": 30,
+      "n_conditions": 57,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "seconds": 0.82,
+      "train_score": {
+        "n": 316,
+        "decided": 316,
+        "undecided": 0,
+        "correct": 316,
+        "accuracy_end_to_end": 1.0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 12,
+            "correct": 12,
+            "accuracy": 1.0
+          },
+          "T1_GENERAL": {
+            "n": 53,
+            "correct": 53,
+            "accuracy": 1.0
+          },
+          "T2_TECHNICAL": {
+            "n": 99,
+            "correct": 99,
+            "accuracy": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 114,
+            "correct": 114,
+            "accuracy": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 35,
+            "correct": 35,
+            "accuracy": 1.0
+          },
+          "T3_ENGINEERING": {
+            "n": 3,
+            "correct": 3,
+            "accuracy": 1.0
+          }
+        }
+      },
+      "test": {
+        "n": 995,
+        "decided": 995,
+        "undecided": 0,
+        "correct": 759,
+        "accuracy_end_to_end": 0.7628140703517587,
+        "per_class": {
+          "SELF_SERVICE_DEFLECT": {
+            "n": 242,
+            "correct": 212,
+            "accuracy": 0.8760330578512396
+          },
+          "BILLING_SPECIALIST": {
+            "n": 136,
+            "correct": 84,
+            "accuracy": 0.6176470588235294
+          },
+          "T2_TECHNICAL": {
+            "n": 364,
+            "correct": 313,
+            "accuracy": 0.8598901098901099
+          },
+          "T1_GENERAL": {
+            "n": 128,
+            "correct": 115,
+            "accuracy": 0.8984375
+          },
+          "SECURITY_INCIDENT": {
+            "n": 10,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 24,
+            "accuracy": 0.43636363636363634
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 11,
+            "accuracy": 0.19298245614035087
+          },
+          "ONCALL_ESCALATION": {
+            "n": 3,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "space": {
+        "n": 134400,
+        "decided": 134400,
+        "undecided": 0,
+        "correct": 49934,
+        "accuracy_end_to_end": 0.37153273809523807,
+        "per_class": {
+          "T2_TECHNICAL": {
+            "n": 36720,
+            "correct": 29172,
+            "accuracy": 0.7944444444444444
+          },
+          "T3_ENGINEERING": {
+            "n": 8180,
+            "correct": 1126,
+            "accuracy": 0.13765281173594132
+          },
+          "ONCALL_ESCALATION": {
+            "n": 6300,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 6840,
+            "correct": 5177,
+            "accuracy": 0.7568713450292398
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 16440,
+            "correct": 5660,
+            "accuracy": 0.3442822384428224
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 4300,
+            "correct": 3918,
+            "accuracy": 0.9111627906976745
+          },
+          "T1_GENERAL": {
+            "n": 5220,
+            "correct": 4881,
+            "accuracy": 0.9350574712643678
+          },
+          "SECURITY_INCIDENT": {
+            "n": 50400,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "corpus": {
+        "n": 2000,
+        "decided": 2000,
+        "undecided": 0,
+        "correct": 1585,
+        "accuracy_end_to_end": 0.7925,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 109,
+            "correct": 51,
+            "accuracy": 0.46788990825688076
+          },
+          "T1_GENERAL": {
+            "n": 255,
+            "correct": 239,
+            "accuracy": 0.9372549019607843
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 495,
+            "correct": 447,
+            "accuracy": 0.9030303030303031
+          },
+          "T2_TECHNICAL": {
+            "n": 726,
+            "correct": 647,
+            "accuracy": 0.8911845730027548
+          },
+          "BILLING_SPECIALIST": {
+            "n": 271,
+            "correct": 177,
+            "accuracy": 0.6531365313653137
+          },
+          "SECURITY_INCIDENT": {
+            "n": 20,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 117,
+            "correct": 24,
+            "accuracy": 0.20512820512820512
+          },
+          "ONCALL_ESCALATION": {
+            "n": 7,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "rules": [
+        {
+          "rule_id": "L01",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            },
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "portal",
+                "phone"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L02",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L03",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L04",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L05",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L06",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "pro",
+                "business"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L07",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L08",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L09",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L10",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L11",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L12",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L13",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L14",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L15",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 4
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L16",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L17",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "channel",
+              "op": "neq",
+              "value": "email"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L18",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 5
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L19",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "de"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L20",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "free"
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "es"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L21",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 3
+            },
+            {
+              "attr": "language",
+              "op": "in",
+              "value": [
+                "es",
+                "pt",
+                "fr"
+              ]
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L22",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L23",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L24",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L25",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L26",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L27",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 3
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L28",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "pro"
+            },
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L29",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "neq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L30",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        }
+      ]
+    },
+    "train_632|40": {
+      "train": "train_632",
+      "beam": 40,
+      "n_rules": 46,
+      "n_conditions": 83,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "seconds": 0.45,
+      "train_score": {
+        "n": 632,
+        "decided": 632,
+        "undecided": 0,
+        "correct": 632,
+        "accuracy_end_to_end": 1.0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 29,
+            "correct": 29,
+            "accuracy": 1.0
+          },
+          "T1_GENERAL": {
+            "n": 99,
+            "correct": 99,
+            "accuracy": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 222,
+            "correct": 222,
+            "accuracy": 1.0
+          },
+          "T2_TECHNICAL": {
+            "n": 200,
+            "correct": 200,
+            "accuracy": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 73,
+            "correct": 73,
+            "accuracy": 1.0
+          },
+          "SECURITY_INCIDENT": {
+            "n": 3,
+            "correct": 3,
+            "accuracy": 1.0
+          },
+          "T3_ENGINEERING": {
+            "n": 6,
+            "correct": 6,
+            "accuracy": 1.0
+          }
+        }
+      },
+      "test": {
+        "n": 995,
+        "decided": 995,
+        "undecided": 0,
+        "correct": 877,
+        "accuracy_end_to_end": 0.8814070351758794,
+        "per_class": {
+          "SELF_SERVICE_DEFLECT": {
+            "n": 242,
+            "correct": 229,
+            "accuracy": 0.9462809917355371
+          },
+          "BILLING_SPECIALIST": {
+            "n": 136,
+            "correct": 125,
+            "accuracy": 0.9191176470588235
+          },
+          "T2_TECHNICAL": {
+            "n": 364,
+            "correct": 342,
+            "accuracy": 0.9395604395604396
+          },
+          "T1_GENERAL": {
+            "n": 128,
+            "correct": 123,
+            "accuracy": 0.9609375
+          },
+          "SECURITY_INCIDENT": {
+            "n": 10,
+            "correct": 5,
+            "accuracy": 0.5
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 42,
+            "accuracy": 0.7636363636363637
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 11,
+            "accuracy": 0.19298245614035087
+          },
+          "ONCALL_ESCALATION": {
+            "n": 3,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "space": {
+        "n": 134400,
+        "decided": 134400,
+        "undecided": 0,
+        "correct": 57844,
+        "accuracy_end_to_end": 0.4303869047619048,
+        "per_class": {
+          "T2_TECHNICAL": {
+            "n": 36720,
+            "correct": 26176,
+            "accuracy": 0.7128540305010893
+          },
+          "T3_ENGINEERING": {
+            "n": 8180,
+            "correct": 814,
+            "accuracy": 0.09951100244498777
+          },
+          "ONCALL_ESCALATION": {
+            "n": 6300,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 6840,
+            "correct": 6108,
+            "accuracy": 0.8929824561403509
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 16440,
+            "correct": 9490,
+            "accuracy": 0.5772506082725061
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 4300,
+            "correct": 4002,
+            "accuracy": 0.9306976744186046
+          },
+          "T1_GENERAL": {
+            "n": 5220,
+            "correct": 4970,
+            "accuracy": 0.9521072796934866
+          },
+          "SECURITY_INCIDENT": {
+            "n": 50400,
+            "correct": 6284,
+            "accuracy": 0.12468253968253969
+          }
+        }
+      },
+      "corpus": {
+        "n": 2000,
+        "decided": 2000,
+        "undecided": 0,
+        "correct": 1748,
+        "accuracy_end_to_end": 0.874,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 109,
+            "correct": 70,
+            "accuracy": 0.6422018348623854
+          },
+          "T1_GENERAL": {
+            "n": 255,
+            "correct": 249,
+            "accuracy": 0.9764705882352941
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 495,
+            "correct": 470,
+            "accuracy": 0.9494949494949495
+          },
+          "T2_TECHNICAL": {
+            "n": 726,
+            "correct": 688,
+            "accuracy": 0.9476584022038568
+          },
+          "BILLING_SPECIALIST": {
+            "n": 271,
+            "correct": 243,
+            "accuracy": 0.8966789667896679
+          },
+          "SECURITY_INCIDENT": {
+            "n": 20,
+            "correct": 9,
+            "accuracy": 0.45
+          },
+          "T3_ENGINEERING": {
+            "n": 117,
+            "correct": 19,
+            "accuracy": 0.1623931623931624
+          },
+          "ONCALL_ESCALATION": {
+            "n": 7,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "rules": [
+        {
+          "rule_id": "L01",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "portal",
+                "phone"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L02",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "pro",
+                "business"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L03",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L04",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L05",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L06",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L07",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L08",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L09",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 0
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L10",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L11",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L12",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "de"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L13",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L14",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "fr"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L15",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 20
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L16",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "business"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L17",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L18",
+          "conditions": [
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "chat",
+                "phone"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 12
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L19",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 9
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L20",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SECURITY_INCIDENT"
+        },
+        {
+          "rule_id": "L21",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 13
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L22",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 13
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L23",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L24",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L25",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L26",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "billing"
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "en"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L27",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 1
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "es"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L28",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "enterprise"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L29",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "en"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L30",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L31",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L32",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 2
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L33",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L34",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "channel",
+              "op": "neq",
+              "value": "email"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L35",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L36",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L37",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "neq",
+              "value": "billing"
+            },
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "portal",
+                "chat"
+              ]
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L38",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L39",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "pt"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L40",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 8
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L41",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 0
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L42",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L43",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L44",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L45",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L46",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        }
+      ]
+    },
+    "train_632|120": {
+      "train": "train_632",
+      "beam": 120,
+      "n_rules": 54,
+      "n_conditions": 101,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "seconds": 1.68,
+      "train_score": {
+        "n": 632,
+        "decided": 632,
+        "undecided": 0,
+        "correct": 632,
+        "accuracy_end_to_end": 1.0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 29,
+            "correct": 29,
+            "accuracy": 1.0
+          },
+          "T1_GENERAL": {
+            "n": 99,
+            "correct": 99,
+            "accuracy": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 222,
+            "correct": 222,
+            "accuracy": 1.0
+          },
+          "T2_TECHNICAL": {
+            "n": 200,
+            "correct": 200,
+            "accuracy": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 73,
+            "correct": 73,
+            "accuracy": 1.0
+          },
+          "SECURITY_INCIDENT": {
+            "n": 3,
+            "correct": 3,
+            "accuracy": 1.0
+          },
+          "T3_ENGINEERING": {
+            "n": 6,
+            "correct": 6,
+            "accuracy": 1.0
+          }
+        }
+      },
+      "test": {
+        "n": 995,
+        "decided": 995,
+        "undecided": 0,
+        "correct": 877,
+        "accuracy_end_to_end": 0.8814070351758794,
+        "per_class": {
+          "SELF_SERVICE_DEFLECT": {
+            "n": 242,
+            "correct": 238,
+            "accuracy": 0.9834710743801653
+          },
+          "BILLING_SPECIALIST": {
+            "n": 136,
+            "correct": 121,
+            "accuracy": 0.8897058823529411
+          },
+          "T2_TECHNICAL": {
+            "n": 364,
+            "correct": 335,
+            "accuracy": 0.9203296703296703
+          },
+          "T1_GENERAL": {
+            "n": 128,
+            "correct": 118,
+            "accuracy": 0.921875
+          },
+          "SECURITY_INCIDENT": {
+            "n": 10,
+            "correct": 3,
+            "accuracy": 0.3
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 41,
+            "accuracy": 0.7454545454545455
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 21,
+            "accuracy": 0.3684210526315789
+          },
+          "ONCALL_ESCALATION": {
+            "n": 3,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "space": {
+        "n": 134400,
+        "decided": 134400,
+        "undecided": 0,
+        "correct": 52934,
+        "accuracy_end_to_end": 0.39385416666666667,
+        "per_class": {
+          "T2_TECHNICAL": {
+            "n": 36720,
+            "correct": 25828,
+            "accuracy": 0.7033769063180828
+          },
+          "T3_ENGINEERING": {
+            "n": 8180,
+            "correct": 1683,
+            "accuracy": 0.20574572127139365
+          },
+          "ONCALL_ESCALATION": {
+            "n": 6300,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "BILLING_SPECIALIST": {
+            "n": 6840,
+            "correct": 6007,
+            "accuracy": 0.8782163742690059
+          },
+          "ACCOUNT_MANAGER": {
+            "n": 16440,
+            "correct": 10066,
+            "accuracy": 0.6122871046228711
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 4300,
+            "correct": 4179,
+            "accuracy": 0.9718604651162791
+          },
+          "T1_GENERAL": {
+            "n": 5220,
+            "correct": 4212,
+            "accuracy": 0.8068965517241379
+          },
+          "SECURITY_INCIDENT": {
+            "n": 50400,
+            "correct": 959,
+            "accuracy": 0.01902777777777778
+          }
+        }
+      },
+      "corpus": {
+        "n": 2000,
+        "decided": 2000,
+        "undecided": 0,
+        "correct": 1746,
+        "accuracy_end_to_end": 0.873,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 109,
+            "correct": 68,
+            "accuracy": 0.6238532110091743
+          },
+          "T1_GENERAL": {
+            "n": 255,
+            "correct": 237,
+            "accuracy": 0.9294117647058824
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "n": 495,
+            "correct": 485,
+            "accuracy": 0.9797979797979798
+          },
+          "T2_TECHNICAL": {
+            "n": 726,
+            "correct": 676,
+            "accuracy": 0.931129476584022
+          },
+          "BILLING_SPECIALIST": {
+            "n": 271,
+            "correct": 238,
+            "accuracy": 0.8782287822878229
+          },
+          "SECURITY_INCIDENT": {
+            "n": 20,
+            "correct": 4,
+            "accuracy": 0.2
+          },
+          "T3_ENGINEERING": {
+            "n": 117,
+            "correct": 38,
+            "accuracy": 0.3247863247863248
+          },
+          "ONCALL_ESCALATION": {
+            "n": 7,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        }
+      },
+      "rules": [
+        {
+          "rule_id": "L01",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "portal",
+                "phone"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L02",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "pro",
+                "business"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L03",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L04",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L05",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L06",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L07",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L08",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L09",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L10",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L11",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "de"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L12",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 5
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L13",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 7
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L14",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 11
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L15",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "language",
+              "op": "eq",
+              "value": "fr"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L16",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 20
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L17",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "business"
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L18",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 3
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L19",
+          "conditions": [
+            {
+              "attr": "channel",
+              "op": "in",
+              "value": [
+                "chat",
+                "phone"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L20",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L21",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 11
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L22",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 9
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L23",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L24",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 10
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L25",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 6
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L26",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "pro",
+                "business"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 6
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L27",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "chat"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L28",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L29",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L30",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 3
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L31",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 3
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L32",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "phone"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L33",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "pro",
+                "business"
+              ]
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 5
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L34",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L35",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L36",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 4
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L37",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L38",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 4
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L39",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L40",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L41",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 8
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L42",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "neq",
+              "value": 9
+            }
+          ],
+          "action": "T2_TECHNICAL"
+        },
+        {
+          "rule_id": "L43",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L44",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L45",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L46",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 9
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L47",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SECURITY_INCIDENT"
+        },
+        {
+          "rule_id": "L48",
+          "conditions": [
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 7
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L49",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "language",
+              "op": "neq",
+              "value": "pt"
+            }
+          ],
+          "action": "BILLING_SPECIALIST"
+        },
+        {
+          "rule_id": "L50",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "channel",
+              "op": "neq",
+              "value": "phone"
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        },
+        {
+          "rule_id": "L51",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "action": "T3_ENGINEERING"
+        },
+        {
+          "rule_id": "L52",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            }
+          ],
+          "action": "ACCOUNT_MANAGER"
+        },
+        {
+          "rule_id": "L53",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            }
+          ],
+          "action": "T1_GENERAL"
+        },
+        {
+          "rule_id": "L54",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": false
+            }
+          ],
+          "action": "SELF_SERVICE_DEFLECT"
+        }
+      ]
+    }
+  },
+  "rows": {
+    "I-a": {
+      "row": "I-a",
+      "band": "> 0.853",
+      "refuted_by": "<= 0.853",
+      "trained_on": "train_316",
+      "surface": "corpus test split 0, puro",
+      "by_beam": {
+        "40": 0.775879,
+        "120": 0.762814
+      },
+      "verdict_by_beam": {
+        "40": "REFUTED",
+        "120": "REFUTED"
+      },
+      "stable": true,
+      "reported_beside": {
+        "train_632": {
+          "40": 0.881407,
+          "120": 0.881407
+        }
+      },
+      "verdict": "REFUTED"
+    },
+    "I-b": {
+      "row": "I-b",
+      "band": "above the ceiling in both classes",
+      "refuted_by": "at or below it in either",
+      "trained_on": "train_632",
+      "surface": "corpus test split 0",
+      "by_beam": {
+        "40": {
+          "T3_ENGINEERING": {
+            "accuracy": 0.192982,
+            "correct": 11,
+            "n": 57,
+            "ceiling": 0.333333,
+            "above": false
+          },
+          "ACCOUNT_MANAGER": {
+            "accuracy": 0.763636,
+            "correct": 42,
+            "n": 55,
+            "ceiling": 0.357798,
+            "above": true
+          }
+        },
+        "120": {
+          "T3_ENGINEERING": {
+            "accuracy": 0.368421,
+            "correct": 21,
+            "n": 57,
+            "ceiling": 0.333333,
+            "above": true
+          },
+          "ACCOUNT_MANAGER": {
+            "accuracy": 0.745455,
+            "correct": 41,
+            "n": 55,
+            "ceiling": 0.357798,
+            "above": true
+          }
+        }
+      },
+      "verdict_by_beam": {
+        "40": "REFUTED",
+        "120": "HOLDS"
+      },
+      "stable": false,
+      "warning": "PLAN_ILP.md \u00a71's amendment: T3_ENGINEERING has 6 training examples and ACCOUNT_MANAGER 29 in this set. The row can be refuted by scarcity rather than by induction.",
+      "verdict": "UNSTABLE ACROSS BEAMS \u2014 not a verdict"
+    },
+    "I-c": {
+      "row": "I-c",
+      "band": ">= 0.5",
+      "refuted_by": "< 0.5",
+      "trained_on": "train_316",
+      "surface": "exhaustive space, 134,400",
+      "by_beam": {
+        "40": 0.353192,
+        "120": 0.371533
+      },
+      "verdict_by_beam": {
+        "40": "REFUTED",
+        "120": "REFUTED"
+      },
+      "stable": true,
+      "verdict": "REFUTED"
+    },
+    "I-d": {
+      "row": "I-d",
+      "band": "<= 58",
+      "refuted_by": "> 58",
+      "trained_on": "train_316",
+      "against": {
+        "hidden_policy": 29,
+        "learned_base": 577
+      },
+      "by_beam": {
+        "40": 37,
+        "120": 30
+      },
+      "verdict_by_beam": {
+        "40": "HOLDS",
+        "120": "HOLDS"
+      },
+      "stable": true,
+      "verdict": "HOLDS"
+    }
+  },
+  "seconds": 12.8
+}
