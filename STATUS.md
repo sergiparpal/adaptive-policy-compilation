@@ -1,9 +1,11 @@
 # Status
 
-What is known, as of August 29, 2026. **Not a history** — that is the four
+What is known, as of August 30, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
-[`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md), each with
+[`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
+[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md)
+and [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md), each with
 its dated errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it

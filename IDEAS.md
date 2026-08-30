@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of August 27, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of August 30, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -12,7 +12,14 @@ corrected figures in rungs 3 and 4 in place. The pairwise-judgement thread of
 `B-b` and `B-c` refuted, `B-a` and `B-d` held — written up in `FINDINGS3.md` §11,
 and §§12-15 of that record close its remaining routes without a signed row
 between them. **`PAIRWISE_WRITEUP.md` is both threads read as one result**; it
-owns no figure and adds no step. This is a list of things not done, none of them developed and in no
+owns no figure and adds no step.
+
+**Two further threads closed on August 29 and 30, 2026**, both pre-registered:
+the sensitivity sweep of `PLAN_SENSITIVITY.md` (five signed rows, three held) and
+ILP as a competitor, `PLAN_ILP.md` (four signed rows, one held and one refused a
+verdict by its own gate). They are written up in `results_sensitivity/` and
+`results_ilp/`, and with the second the plan of `EXTERNAL_REVIEW.md` is closed
+entire. This is a list of things not done, none of them developed and in no
 order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears

@@ -288,9 +288,32 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `rung3/order_metrics_touched.py` | `results3/order_metrics_touched.json` | no, on purpose |
 > | `rung3/order_metrics_rules.py` | `results3/order_metrics_rules.json` | no, on purpose |
 > | `rung3/territory_holders.py` | `results3/territory_holders.json` | no, on purpose |
+> | `rung2/pair_benchmark.py` | `results2/pair_benchmark.json` | no, on purpose |
+> | `rung2/pair_judgement.py` | `results2/pair_judgement_*.json` | **yes** — it is the only module that spends |
+> | `rung2/pair_judgement_baselines.py` | `results2/pair_judgement_baselines.json` | no, on purpose |
+> | `rung2/pair_sample_1600.py` | `results2/pair_sample_1600.json` | no, on purpose |
+> | `rung3/floor_by_pool.py` | `results3/floor_by_pool.json` | no, on purpose |
+> | `rung3/queue_hierarchy_floor.py` | `results3/queue_hierarchy_floor.json` | no, on purpose |
+> | `rung3/declared_order.py` | `results3/declared_order*.json` | no, on purpose |
+> | `rung3/edge_direction.py` | `results3/edge_direction*.json` | no, on purpose |
+> | `rung3/edge_budget.py` | `results3/edge_budget.json` | no, on purpose |
+> | `rung3/edge_sides.py` | `results3/edge_sides.json` | no, on purpose |
+> | `rung3/mfas_compilation.py` | `results3/mfas_compilation.json` | no, on purpose |
+> | `rung3/edge_dropping.py` | `results3/edge_dropping.json` | no, on purpose |
+> | `rung3/answer_asymmetry.py` | `results3/answer_asymmetry.json` | no, on purpose |
 >
+> **[NOTE 2026-08-30] Thirteen rows were added on this date and the table had
+> been incomplete since 2026-08-24.** `results3/FINDINGS_AUDIT.md` records the
+> under-listing of the pinned lists as F1 and says of the README table that F7
+> *"resolved it, which now carries all of them"* — true when written, and false
+> from the moment the pairwise thread started adding writers. The pinned lists
+> in `tests/` are still F1 and still unfixed; this table is complete again, and
+> the audit's F7 line now carries its own dated note.
+
 > Of everything executed in this README, only `harness/ceiling_check.py` and
-> `run_experiment.py models` write nothing.
+> `run_experiment.py models` write nothing — plus the two `--dry-run` forms,
+> `sensitivity/sweep.py --dry-run` and `ilp/compare.py --dry-run`, which build
+> every policy, run every gate and write no record on purpose.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
