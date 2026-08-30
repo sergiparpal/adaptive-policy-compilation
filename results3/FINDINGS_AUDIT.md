@@ -643,6 +643,7 @@ duplication this project keeps having to undo.
 | **F5** | Per-fraction cost: the plan's probe had partial budgets slower than full supervision. | **REFUTED as stated.** Cost falls monotonically. |
 | **F6** | Any class whose `ceiling` differs from the published `per_class_split0`. | **NONE.** All eight identical. |
 | **F7** | This work adds record writers absent from both pinned lists and the README table. | **Resolved for the README**, which now carries all three rows. The pinned lists are F1 and stay unfixed. |
+| | | > **[NOTE 2026-08-30] The resolution lapsed and has been restored.** From 2026-08-24 the pairwise thread added thirteen writers and none reached the README table, so F7's *"now carries all of them"* stopped being true within days of being written. The table was completed on 2026-08-30 and carries a note saying so. **F1 is untouched**: the pinned lists in `tests/` still under-list, and a claim that a table mirrors a source is worth what the next person adding a writer remembers. |
 | **F8** | Pairwise `swap` alone cannot reach the weighted optimum either. | **CONFIRMED**, 0 of 64 on both instances. |
 | **F9** | Under weights the optimum is never reached from the greedy start. | **CONFIRMED**, always from a restart. |
 | **F10** | `class_counts_from_masks` returned the per-class **ceiling**, not the class size. **The P2 gate could not see it.** | **CONFIRMED and fixed** before any figure was produced. |

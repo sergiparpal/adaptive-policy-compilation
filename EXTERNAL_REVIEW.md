@@ -534,6 +534,16 @@ the drafter had expected all four to hold, which is the worst calibration event 
    them*; `CLAUDE.md`'s pointer names all three. **`PLAN_SENSITIVITY.md` is
    deliberately not indexed yet**: it is unsigned, and the repository indexes a
    plan when it is operative.
+
+   > **[NOTE 2026-08-30] Both plans are operative and both are indexed.** Sergi
+   > signed §0 of `PLAN_SENSITIVITY.md` on 2026-08-29 and §0 of `PLAN_ILP.md` on
+   > the 30th, so the condition this point sets — *the repository indexes a plan
+   > when it is operative* — is met and discharged: both are named in
+   > `README.md`, `CLAUDE.md`, `STATUS.md` and `IDEAS.md`, and both carry a
+   > **second** signature besides, because the blocking checks of each forced an
+   > amendment to §1 before any row was read. A fourth root document appeared with
+   > them, `PAIRWISE_WRITEUP.md`, indexed in the same commit that added it — which
+   > is this point's own rule applied to the item it was written about.
 6. **[ADDED 2026-08-29] It mis-classified one of its own items, and that is the
    most expensive kind of error this document can make.** §4's preamble called
    item 3 post-run when its figures did not exist, so a pre-registrable
