@@ -20,8 +20,27 @@ policy's shape.
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
 proposer declare it, learn it from observed behaviour — the first is falsified,
-the second was never exercised, and the third recovers 61% of what full
-supervision buys.
+the second has been tried in two forms and supplied almost none of it, and the
+third recovers 61% of what full supervision buys, on corpus test.
+
+> **[ERRATUM 2026-09-28] The second clause had been stale since the pairwise
+> threads closed, and it is this file's headline.** It read *the second was never
+> exercised*, which was true when it was written on 2026-08-09 (`8487a63`): rung 2
+> gave the proposer a mechanism that executes declared priority, its rules barely
+> overlapped, and none of the edges it proposed was accepted. It stopped being true
+> when [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) and
+> [`PLAN_PROPOSER_1600.md`](PLAN_PROPOSER_1600.md) asked the proposer for priority
+> pair by pair, at 400 and then 1,600 pairs of the learned base: it answers well at
+> the pair level, and its answers, compiled on the `hibrido` pool and scored on
+> corpus test split 0, at best tie a free ranking of the queues that reads no rule
+> — *the answer contains almost no priority*, in the words of
+> [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md). The body below reports both
+> threads; only this sentence, untouched since it was written, was never
+> revisited. **What has still never been run is declaration imposed at write
+> time**: Stage E, §11 of `PLAN_PAIRWISE.md`, specified and not authorised. The
+> third clause now names its surface, which the erratum to §1 of
+> [`FINDINGS4.md`](results4/FINDINGS4.md) fixes as corpus test; its figure did not
+> move.
 
 ---
 
