@@ -199,8 +199,16 @@ All on the corpus. Nothing here is produced by this plan.
 | rung 1's reuse | 0.1577 | voided: 594 of its 632 escalations were CONFLICT | `results/llm_run.json` |
 | rung 1's proposal action accuracy | 0.3877 | the acting axis, over those 632 escalations | `results/llm_run.json` |
 | rung 2's engine | 1.0000 | the hidden policy executed, corpus and space | `results2/ceiling2.json`, `results2/ceiling2_space.json` |
-| the eight n=100 runs | §0 | the metrics blocks the drafter has read | `results2/llm_run2_n100*.json` |
+| the eight n=100 runs | §0 | the metrics blocks the drafter has read | `results2/FINDINGS2.md`, *Caveats*, erratum of 2026-09-29 — read off `results2/llm_run2_n100*.json` |
 | the rare classes | 20 and 7 | `SECURITY_INCIDENT` and `ONCALL_ESCALATION` among the 2,000 | `results3/FINDINGS3.md` §2 |
+
+> **[NOTE 2026-09-29] The eight n=100 runs have an owner now, and the row above
+> points at it.** When this plan was drafted, no record had read their
+> `reuse_rate`, and the header says so. Later the same day
+> [`results2/FINDINGS2.md`](results2/FINDINGS2.md) took the eight rows in a dated
+> erratum under its n=100 caveat, and `STATUS.md` indexes them. Written by the
+> drafter before §0 was signed: no band moves, no row of §0 is touched, and what
+> the drafter had seen when drafting is unchanged.
 
 ---
 
