@@ -77,7 +77,7 @@ is published beside it. With `R = 1` the median is the run.
 | **U-e** | **The base stays partitioned as it grows**: showing the base keeps overlap suppressed at twenty times the horizon | `CONFLICT` outcomes over the 2,000 cases | **≤ 20** | **> 20** |
 | **U-f** | *Reported, not adjudicated.* **Stage A**: the eight n=100 records read for the founding question for the first time | per run and pooled by prompt: `reuse_rate`, the split of the silent error by birth action, and `U-b`'s gap against the `keep_k` frontier on each run's own corpus at n=100 | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-09-29)**
 
 **Why `U-f` cannot carry a band.** Its inputs have been on disk since 2026-08-07
 and the drafter has read their top-level metrics, listed below. That is the case
