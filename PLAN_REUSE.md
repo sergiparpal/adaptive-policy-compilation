@@ -272,6 +272,14 @@ pooled over the cases those rules decide. The gap is computed per run; if a run'
 right-born rules decide no case, its gap is undefined and published as such, and
 if no run has a gap, `U-b` is unadjudicable and says so.
 
+> **[NOTE 2026-09-29] `F`'s two edges, found while implementing it.** A `keep_k`
+> that decides no case has no silent error and says nothing about error, so its
+> point is dropped; and beyond the highest reuse, `F` is flat, as it is below the
+> lowest. Neither can happen at n=2000 — all eight `keep_k` decide cases there,
+> and `keep_k(1)` reuses every rule — so `U-b` is untouched; only `U-f`, at
+> n=100, can meet them. Written by the drafter before §0 was signed: no band
+> moves and no row of §0 is touched.
+
 **5.3 — A rule's birth is the escalation at its `born_at`.** Failed proposals and
 rejected rules produce no rule. A rule whose birth escalation is missing, or
 carries no `proposal_action_correct`, is a defect of the record and stops the
@@ -327,6 +335,20 @@ check like these, and both carry a signed amendment for it
   over seeds 17 to 20 — is any case matched by more than one rule. If either
   fails, `F` is not the reference §5.2 says it is, and `U-b` is unadjudicable.
 - **U-g4 — The signature**, §10.
+
+> **[NOTE 2026-09-29] Run before signature, with Sergi's leave, and all three
+> pass.** `python3 -m reuse.run --dry-run`, zero API calls, nothing written:
+> `U-g1` — corpus and space at 1.0000, no silent error, no CONFLICT, no IMPASSE,
+> and the suite green; `U-g2` — the eight records reproduce themselves, 8 of 8;
+> `U-g3` — `keep_k` reproduces `results/frontier.json`, and no case is matched by
+> more than one of its rules. The checks were brought forward so that a failure
+> would become a fix to this draft rather than a signed amendment, as it did in
+> both of the last two plans; none did. One change of method, not of check:
+> `U-g1` measures the two ceilings in memory with
+> `rung2.ceiling_check2_space.measure` instead of running the two commands,
+> which rewrite their own published records. The dry run prints pass or fail
+> and figures already published, never one of Stage A. Written by the drafter
+> before §0 was signed: no band moves and no row of §0 is touched.
 
 ---
 
@@ -407,6 +429,14 @@ forces an amendment — as it did in both of the last two plans — the amendmen
 carries its own signature line, and a gate that reads every line cannot report
 `ok` over it. No flag skips the gate; `--dry-run` runs `U-g1` to `U-g3` and writes
 nothing.
+
+> **[NOTE 2026-09-29] Four modules write, not two, and all four refuse.** The
+> paragraph above counts `readout.py` and `run.py`, and the layout below it names
+> two more writers: `frontier.py`, whose record holds Stage A's reference points,
+> and `score.py`, which writes Stage C's. The implementation gates all four, each
+> before it measures, builds or writes anything, and `run.py` before it builds
+> the client. Written by the drafter before §0 was signed: no band moves and no
+> row of §0 is touched.
 
 **Constants fixed here, before any figure exists, not to be tuned afterwards and
 pinned by tests:** `N = 2000`, `SEED = 17`, `PROMPT = "v1"`,
