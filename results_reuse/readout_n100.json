@@ -1,0 +1,529 @@
+{
+  "_env": {
+    "recorded_at": "2026-09-29T21:51:25Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "9a52cb1faa5f6a1751301c2e45cfe4373b020998",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "9a0d029d57d243f2"
+  },
+  "plan": "PLAN_REUSE.md",
+  "stage": "A",
+  "row": "U-f",
+  "provenance": "REPORTED, NOT ADJUDICATED: its inputs have been on disk since 2026-08-07 and the drafter had read their metrics blocks (\u00a70)",
+  "surface": "corpus \u2014 each run's own, n=100, in arrival order",
+  "gates": {
+    "U-g1": {
+      "what": "the hidden policy executed at 1.0000 on corpus and space; the suite green",
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1062,
+        "result": "OK (skipped=2)",
+        "seconds": 56.4,
+        "passes": true
+      },
+      "passes": true
+    },
+    "U-g2": {
+      "passes": true,
+      "records": 8
+    },
+    "U-g3": {
+      "what": "keep_k(1..8) over the n=2000 corpus reproduces results/frontier.json exactly, and no case of any run \u2014 n=2000, or n=100 over seeds 17 to 20 \u2014 is matched by more than one rule",
+      "reproduces_published": true,
+      "k_not_reproduced": [],
+      "most_rules_matching_one_case": 1,
+      "passes": true
+    },
+    "U-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REUSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REUSE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "records": [
+    "results2/llm_run2_n100.json",
+    "results2/llm_run2_n100_seed18.json",
+    "results2/llm_run2_n100_seed19.json",
+    "results2/llm_run2_n100_seed20.json",
+    "results2/llm_run2_n100_v2.json",
+    "results2/llm_run2_n100_v2_seed18.json",
+    "results2/llm_run2_n100_v2_seed19.json",
+    "results2/llm_run2_n100_v2_seed20.json"
+  ],
+  "runs": [
+    {
+      "prompt": "v1",
+      "seed": 17,
+      "n": 100,
+      "rules": 40,
+      "reuse_rate": 0.6,
+      "silent_error_rate": 0.7241,
+      "proposal_action_accuracy": 0.381,
+      "e2e_accuracy": 0.16,
+      "split": {
+        "silent_errors": 42,
+        "by_rules_born_wrong": 34,
+        "by_rules_born_right": 8,
+        "share_born_wrong": 0.8095238095238095
+      },
+      "right_born": {
+        "rules": 16,
+        "reused": 8,
+        "decided": 19,
+        "correct": 11,
+        "reuse_rate": 0.5,
+        "silent_error": 0.42105263157894735
+      },
+      "F_at_their_reuse": 0.1404754981376092,
+      "gap": 0.28057713344133817,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "ACCOUNT_MANAGER": 5,
+        "T1_GENERAL": 3,
+        "SELF_SERVICE_DEFLECT": 10,
+        "T2_TECHNICAL": 17,
+        "BILLING_SPECIALIST": 6,
+        "SECURITY_INCIDENT": 1
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 1,
+        "escalated": 1,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 1.0,
+        "dead_rules": 16,
+        "top_decile_fire_share": 0.43103448275862066
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v1",
+      "seed": 18,
+      "n": 100,
+      "rules": 14,
+      "reuse_rate": 0.7857,
+      "silent_error_rate": 0.7442,
+      "proposal_action_accuracy": 0.3571,
+      "e2e_accuracy": 0.22,
+      "split": {
+        "silent_errors": 64,
+        "by_rules_born_wrong": 56,
+        "by_rules_born_right": 8,
+        "share_born_wrong": 0.875
+      },
+      "right_born": {
+        "rules": 5,
+        "reused": 5,
+        "decided": 28,
+        "correct": 20,
+        "reuse_rate": 1.0,
+        "silent_error": 0.2857142857142857
+      },
+      "F_at_their_reuse": 0.631578947368421,
+      "gap": -0.3458646616541353,
+      "memorization_floor": 0.02040816326530612,
+      "escalations_by_truth": {
+        "SELF_SERVICE_DEFLECT": 1,
+        "BILLING_SPECIALIST": 2,
+        "T3_ENGINEERING": 2,
+        "T2_TECHNICAL": 4,
+        "ACCOUNT_MANAGER": 2,
+        "T1_GENERAL": 3
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 2.0,
+        "dead_rules": 3,
+        "top_decile_fire_share": 0.3953488372093023
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v1",
+      "seed": 19,
+      "n": 100,
+      "rules": 12,
+      "reuse_rate": 0.8333,
+      "silent_error_rate": 0.5116,
+      "proposal_action_accuracy": 0.4286,
+      "e2e_accuracy": 0.42,
+      "split": {
+        "silent_errors": 44,
+        "by_rules_born_wrong": 27,
+        "by_rules_born_right": 17,
+        "share_born_wrong": 0.6136363636363636
+      },
+      "right_born": {
+        "rules": 6,
+        "reused": 6,
+        "decided": 59,
+        "correct": 42,
+        "reuse_rate": 1.0,
+        "silent_error": 0.288135593220339
+      },
+      "F_at_their_reuse": 0.6736842105263158,
+      "gap": -0.3855486173059768,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "BILLING_SPECIALIST": 1,
+        "SELF_SERVICE_DEFLECT": 1,
+        "T2_TECHNICAL": 7,
+        "T1_GENERAL": 3,
+        "T3_ENGINEERING": 2
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 5.0,
+        "dead_rules": 2,
+        "top_decile_fire_share": 0.4418604651162791
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v1",
+      "seed": 20,
+      "n": 100,
+      "rules": 26,
+      "reuse_rate": 0.7692,
+      "silent_error_rate": 0.7361,
+      "proposal_action_accuracy": 0.4286,
+      "e2e_accuracy": 0.19,
+      "split": {
+        "silent_errors": 53,
+        "by_rules_born_wrong": 43,
+        "by_rules_born_right": 10,
+        "share_born_wrong": 0.8113207547169812
+      },
+      "right_born": {
+        "rules": 12,
+        "reused": 7,
+        "decided": 28,
+        "correct": 18,
+        "reuse_rate": 0.5833333333333334,
+        "silent_error": 0.3571428571428571
+      },
+      "F_at_their_reuse": 0.18238651593270583,
+      "gap": 0.17475634121015127,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "T2_TECHNICAL": 15,
+        "T3_ENGINEERING": 2,
+        "BILLING_SPECIALIST": 1,
+        "SELF_SERVICE_DEFLECT": 4,
+        "T1_GENERAL": 5,
+        "ACCOUNT_MANAGER": 1
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 1.0,
+        "dead_rules": 6,
+        "top_decile_fire_share": 0.4444444444444444
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v2",
+      "seed": 17,
+      "n": 100,
+      "rules": 6,
+      "reuse_rate": 0.8333,
+      "silent_error_rate": 0.7553,
+      "proposal_action_accuracy": 0.3333,
+      "e2e_accuracy": 0.23,
+      "split": {
+        "silent_errors": 71,
+        "by_rules_born_wrong": 34,
+        "by_rules_born_right": 37,
+        "share_born_wrong": 0.4788732394366197
+      },
+      "right_born": {
+        "rules": 2,
+        "reused": 2,
+        "decided": 56,
+        "correct": 19,
+        "reuse_rate": 1.0,
+        "silent_error": 0.6607142857142857
+      },
+      "F_at_their_reuse": 0.9387755102040817,
+      "gap": -0.278061224489796,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "ACCOUNT_MANAGER": 1,
+        "T1_GENERAL": 1,
+        "SELF_SERVICE_DEFLECT": 1,
+        "T2_TECHNICAL": 2,
+        "BILLING_SPECIALIST": 1
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 1,
+        "escalated": 0,
+        "decided_by_a_rule": 1,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 15.0,
+        "dead_rules": 1,
+        "top_decile_fire_share": 0.3617021276595745
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v2",
+      "seed": 18,
+      "n": 100,
+      "rules": 9,
+      "reuse_rate": 1.0,
+      "silent_error_rate": 0.7,
+      "proposal_action_accuracy": 0.2,
+      "e2e_accuracy": 0.27,
+      "split": {
+        "silent_errors": 63,
+        "by_rules_born_wrong": 44,
+        "by_rules_born_right": 19,
+        "share_born_wrong": 0.6984126984126984
+      },
+      "right_born": {
+        "rules": 2,
+        "reused": 2,
+        "decided": 31,
+        "correct": 12,
+        "reuse_rate": 1.0,
+        "silent_error": 0.6129032258064516
+      },
+      "F_at_their_reuse": 0.631578947368421,
+      "gap": -0.018675721561969394,
+      "memorization_floor": 0.02040816326530612,
+      "escalations_by_truth": {
+        "SELF_SERVICE_DEFLECT": 2,
+        "BILLING_SPECIALIST": 5,
+        "T3_ENGINEERING": 1,
+        "T2_TECHNICAL": 1,
+        "ACCOUNT_MANAGER": 1
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 6,
+        "dead_rules": 0,
+        "top_decile_fire_share": 0.26666666666666666
+      },
+      "conflict_share_of_escalations": 0.1
+    },
+    {
+      "prompt": "v2",
+      "seed": 19,
+      "n": 100,
+      "rules": 12,
+      "reuse_rate": 0.6667,
+      "silent_error_rate": 0.6023,
+      "proposal_action_accuracy": 0.4167,
+      "e2e_accuracy": 0.35,
+      "split": {
+        "silent_errors": 53,
+        "by_rules_born_wrong": 35,
+        "by_rules_born_right": 18,
+        "share_born_wrong": 0.660377358490566
+      },
+      "right_born": {
+        "rules": 5,
+        "reused": 4,
+        "decided": 50,
+        "correct": 32,
+        "reuse_rate": 0.8,
+        "silent_error": 0.36
+      },
+      "F_at_their_reuse": 0.6736842105263158,
+      "gap": -0.3136842105263158,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "BILLING_SPECIALIST": 1,
+        "SELF_SERVICE_DEFLECT": 1,
+        "T2_TECHNICAL": 6,
+        "T1_GENERAL": 3,
+        "ACCOUNT_MANAGER": 1
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 1.5,
+        "dead_rules": 4,
+        "top_decile_fire_share": 0.4431818181818182
+      },
+      "conflict_share_of_escalations": 0.0
+    },
+    {
+      "prompt": "v2",
+      "seed": 20,
+      "n": 100,
+      "rules": 26,
+      "reuse_rate": 0.6154,
+      "silent_error_rate": 0.8873,
+      "proposal_action_accuracy": 0.2414,
+      "e2e_accuracy": 0.08,
+      "split": {
+        "silent_errors": 63,
+        "by_rules_born_wrong": 54,
+        "by_rules_born_right": 9,
+        "share_born_wrong": 0.8571428571428571
+      },
+      "right_born": {
+        "rules": 7,
+        "reused": 5,
+        "decided": 12,
+        "correct": 3,
+        "reuse_rate": 0.7142857142857143,
+        "silent_error": 0.75
+      },
+      "F_at_their_reuse": 0.5878796927246043,
+      "gap": 0.16212030727539573,
+      "memorization_floor": 0.0,
+      "escalations_by_truth": {
+        "T2_TECHNICAL": 8,
+        "T3_ENGINEERING": 5,
+        "BILLING_SPECIALIST": 3,
+        "SELF_SERVICE_DEFLECT": 4,
+        "T1_GENERAL": 6,
+        "ACCOUNT_MANAGER": 3
+      },
+      "ONCALL_ESCALATION": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "SECURITY_INCIDENT": {
+        "cases": 0,
+        "escalated": 0,
+        "decided_by_a_rule": 0,
+        "decided_rightly": 0
+      },
+      "fires": {
+        "median_fires_per_rule": 1.0,
+        "dead_rules": 10,
+        "top_decile_fire_share": 0.4225352112676056
+      },
+      "conflict_share_of_escalations": 0.034482758620689655
+    }
+  ],
+  "pooled_by_prompt": {
+    "v1": {
+      "runs": 4,
+      "silent_errors": 203,
+      "share_born_wrong": 0.7881773399014779,
+      "right_born": {
+        "rules": 39,
+        "reused": 26,
+        "decided": 134,
+        "correct": 91,
+        "reuse_rate": 0.6666666666666666,
+        "silent_error": 0.32089552238805974
+      },
+      "F_at_their_reuse": 0.4620412957750774,
+      "gap": -0.14114577338701767
+    },
+    "v2": {
+      "runs": 4,
+      "silent_errors": 250,
+      "share_born_wrong": 0.668,
+      "right_born": {
+        "rules": 16,
+        "reused": 13,
+        "decided": 149,
+        "correct": 66,
+        "reuse_rate": 0.8125,
+        "silent_error": 0.5570469798657718
+      },
+      "F_at_their_reuse": 0.7308544107298092,
+      "gap": -0.17380743086403738
+    }
+  }
+}
