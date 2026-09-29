@@ -386,6 +386,17 @@ rules.
 cases under its own tag: it checks the client, the key and the shape of the
 record, costs a handful of calls, and adjudicates nothing.
 
+> **[NOTE 2026-09-30] The smoke run's check is now enforced, after it caught a
+> rejected key.** The first smoke run met `401 — User not found` on all 20 calls
+> and still wrote a record, because the loop counts a failed proposal and carries
+> on. It is kept as `results_reuse/run_n20_smoke_401.json` and recorded in
+> `FINDINGS_REUSE.md`, Stage B. Since the same day `reuse/run.py` refuses
+> `--rep` unless a smoke record under this plan's protocol shows at least one
+> proposal that parsed and one rule born. That is what this section already asked
+> the smoke run to check, made mechanical. No band, row, constant or choice moves;
+> this note carries no signature line, so the gate reads the same one line it read
+> at signature, and it travels alone.
+
 ---
 
 ## 9. Stage C — scoring, and the five adjudications (free)
