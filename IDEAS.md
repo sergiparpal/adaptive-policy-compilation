@@ -232,6 +232,77 @@ nothing, and subsumption-versus-declaration never being put to the test.
 
 ---
 
+## What `ARBITRATION_REPORT.md` §7 proposes and nothing has run
+
+*Added 2026-09-29.* That report's §7 makes five proposals, written on 2026-08-17
+as directional drafts — no band and no signature, as the section says of itself.
+Two became work under other names: P1 is the pairwise thread above and P3 is its
+Stage E. Half of a third was built: P5's benchmark is that thread's Stage B. The
+rest never reached this file. The report is indexed as a document to read before
+writing another, not as a list of what is open, so for six weeks three open items
+lived only in its §7. They are carried here as the report left them, each with
+what the records have measured since that bears on it. **None is measured, none
+has a band, and each is pre-registrable**, because none of its figures exists —
+which is the test `EXTERNAL_REVIEW.md` §5.6 says to classify by. A model may
+draft a band for one of them and may not sign it.
+
+- **P2 · Deferred elicitation, over the live subgraph.** Ask for an edge when two
+  rules contend over a real case instead of when a rule is born: the impasse
+  discipline applied to arbitration. It needs a base whose rules contend at all,
+  which rung 2's did not — two conflicts in eight runs (`FINDINGS2.md`, *The
+  priority mechanism never received material*) — and the report argues it over
+  rung 1's 577 rules. **What is open is the cost claim**: that the edges needed
+  for a given e2e grow sublinearly in the size of the base when only the pairs
+  contending over observed traffic are asked. The report tones down its own
+  strong form — the pairs that can change a decision are a constant fraction of
+  the quadratic, not a lower order — and leaves the difference between declaring
+  up front and declaring on contention empirical and unmeasured. Two records bear
+  on it without answering it. On the hidden policy the edges the corpus needs are
+  a strict subset of those the function needs, and a quarter of the 199 never
+  fire on the corpus at all, so an elicitation deferred to the arrivals pays a
+  floor and never learns about the rest (`FINDINGS2.md`, *The same ceiling on the
+  other surface*). And `FINDINGS3.md` §10 prices the pairwise channel against
+  budget with the oracle choosing, on one base and with pairs drawn uniformly
+  from the offline-overlap population — neither the traffic sieve nor the growth
+  in base size the claim is about. With the oracle choosing, the claim is about
+  the base and the corpus rather than the model: free in calls, not in code.
+- **P4 · Search over k-stratified orders instead of total ones.** Assign the
+  rules to *k* strata, sweep *k*, and let a tie inside a stratum escalate
+  instead of being broken by index. **Its value does not depend on what the
+  truth looks like**: the number of undetermined pairs becomes an output of the
+  system instead of a hidden property of the order of the starts — the
+  identifiability problem `results3/FINDINGS_ORDERS.md` measured, made visible
+  where it is produced. The report's prediction is that the number of distinct
+  behavioural machines collapses against the 65 and 257 of that record while
+  test score holds until *k* is small; if it does not collapse, stratification
+  is not the missing structure. **Its weak link is declared in the report**: the
+  hidden policy's eight layers say nothing about 577 learned rules whose relation
+  to them is unknown — rung 2 found the proposer partitioning rather than
+  stratifying — so a score flattening near *k* = 8 would be a coincidence worth
+  a look and not a confirmation. Nothing since has touched it and no module
+  searches over strata. Free in calls; a new search, which here means a new
+  instrument with a blocking check of its own before any figure it produces is
+  read.
+- **P5 · Which information buys arbitration.** Half of it exists: the benchmark —
+  `rung2/hidden_priority.py`'s 199 edges with known winner, given witnesses by
+  Stage B (`results2/pair_benchmark.json`) — and Stage C asked 170 of its pairs.
+  The other half is still what the report named as missing: the same pairs asked
+  at increasing levels of information, from the two rules alone through examples
+  and counterexamples to provenance, to find out which of them adds anything
+  instead of assuming it. Stage C ran a single level, the witness ticket and
+  exactly two rules (`PLAN_PAIRWISE.md` §9). **Two things measured since
+  constrain any run of it.** On those 170 pairs the best fixed ranking of the
+  eight queues, picked with the key in hand, leaves at most nine that need a rule
+  read at all (`FINDINGS2.md`, Stage C), so a level that helps can only show it
+  on nine pairs; the population where a ranking runs out is the learned base's
+  (`FINDINGS3.md` §11, `B-d`), whose key is the oracle's direction over the
+  shared region rather than a winner known by construction. And the order in
+  which the two rules are shown costs the proposer accuracy (`FINDINGS3.md`
+  §15), so levels compared with position left free would be measuring position
+  as well. Costs calls: its own `PLAN_*.md`, with §0 signed before the first one.
+
+---
+
 ## What rung 4 opens and does not resolve
 
 - ~~The greedy search is a weak optimizer, and that contaminates backwards.~~
