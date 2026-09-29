@@ -19,6 +19,7 @@ something that fails the test if it is ever constructed.
 from __future__ import annotations
 
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -340,6 +341,86 @@ class TestNothingIsBuiltOrWrittenUnsigned(unittest.TestCase):
         with mock.patch.object(gates, "run_all", return_value=fake_checks(False)), \
              mock.patch.object(gates, "report"), mock.patch("builtins.print"):
             self.assertEqual(stage_b.main(["--dry-run"]), 1)
+
+
+SIGNED = {**UNSIGNED, "passes": True, "unsigned": 0}
+FIRST_SMOKE = Path("results_reuse/run_n20_smoke_401.json")
+
+
+def smoke_record(**over) -> dict:
+    rec = {"plan": str(plan.PLAN), "model": plan.MODEL, "prompt_version": plan.PROMPT,
+           "seed": plan.SEED, "n": plan.SMOKE_N,
+           "metrics": {"escalations": 20, "failed_proposals": 0, "n_rules": 12}}
+    rec.update(over)
+    return rec
+
+
+class TestTheFullRunsWaitForASmokeRunThatWorked(unittest.TestCase):
+    """Step 2b of `reuse/run.py`, added on 2026-09-30 after the first smoke run
+    met a key OpenRouter rejected on all 20 calls and still wrote a record."""
+
+    def check(self, rec: dict | None) -> tuple[bool, str]:
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "smoke.json"
+            if rec is not None:
+                p.write_text(json.dumps(rec))
+            return stage_b.smoke_check(p)
+
+    def test_no_smoke_record_no_run(self):
+        self.assertFalse(self.check(None)[0])
+
+    def test_a_smoke_run_whose_every_proposal_failed(self):
+        self.assertFalse(self.check(smoke_record(metrics={
+            "escalations": 20, "failed_proposals": 20, "n_rules": 0}))[0])
+
+    def test_parsed_proposals_and_no_rule(self):
+        self.assertFalse(self.check(smoke_record(metrics={
+            "escalations": 20, "failed_proposals": 3, "n_rules": 0}))[0])
+
+    def test_a_smoke_run_under_another_protocol(self):
+        self.assertFalse(self.check(smoke_record(model="another/model"))[0])
+        self.assertFalse(self.check(smoke_record(prompt_version="v2"))[0])
+
+    def test_a_smoke_run_that_worked(self):
+        self.assertTrue(self.check(smoke_record())[0])
+
+    def test_the_first_smoke_run_would_not_have_opened_the_runs(self):
+        """The record that motivated the check fails it."""
+        ok, why = stage_b.smoke_check(FIRST_SMOKE)
+        self.assertFalse(ok)
+        self.assertIn("none of the 20 proposals", why)
+
+    def test_rep_refuses_before_the_checks_or_the_client(self):
+        with tempfile.TemporaryDirectory() as d:
+            missing = Path(d) / "no_smoke.json"
+            with mock.patch.object(plan, "gate_signature", return_value=SIGNED), \
+                 mock.patch.object(plan, "SMOKE_PATH", missing), \
+                 mock.patch.object(gates, "run_all",
+                                   side_effect=AssertionError("checks ran")) as checks, \
+                 mock.patch.object(stage_b, "OpenRouterProposer2",
+                                   side_effect=AssertionError("client built")) as client, \
+                 mock.patch.object(Path, "write_text",
+                                   side_effect=AssertionError("wrote")) as write:
+                with self.assertRaises(SystemExit):
+                    stage_b.main(["--rep", "1"])
+        checks.assert_not_called()
+        client.assert_not_called()
+        write.assert_not_called()
+
+    def test_rep_goes_on_to_the_checks_after_a_smoke_run_that_worked(self):
+        with tempfile.TemporaryDirectory() as d:
+            good = Path(d) / "smoke.json"
+            good.write_text(json.dumps(smoke_record()))
+            with mock.patch.object(plan, "gate_signature", return_value=SIGNED), \
+                 mock.patch.object(plan, "SMOKE_PATH", good), \
+                 mock.patch.object(gates, "run_all",
+                                   side_effect=RuntimeError("reached the checks")), \
+                 mock.patch.object(stage_b, "OpenRouterProposer2",
+                                   side_effect=AssertionError("client built")) as client, \
+                 mock.patch("builtins.print"):
+                with self.assertRaisesRegex(RuntimeError, "reached the checks"):
+                    stage_b.main(["--rep", "1"])
+        client.assert_not_called()
 
 
 if __name__ == "__main__":
