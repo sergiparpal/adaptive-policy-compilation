@@ -44,6 +44,10 @@ ONLINE_LOOP = [
     # results2/pair_benchmark.json — which carries it openly — never the oracle.
     # If that ever changes route, this is what says so.
     "rung2/pair_judgement.py",
+    # Added 2026-09-29 with PLAN_REUSE.md. It builds rung 2's proposer and runs
+    # its loop, so it is a proposer path. The loop it calls labels the record,
+    # as it always has; the module itself reads the oracle through nothing.
+    "reuse/run.py",
 ]
 
 
@@ -135,7 +139,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         }
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
-                     "ilp"):
+                     "ilp", "reuse"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

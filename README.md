@@ -270,6 +270,10 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `sensitivity/sweep.py` | `results_sensitivity/sweep.json` | **refuses while the plan is unsigned** |
 > | `ilp/induce_check.py` | `results_ilp/induce_check.json` | no, on purpose |
 > | `ilp/compare.py` | `results_ilp/compare.json` | **refuses while the plan is unsigned** |
+> | `reuse/frontier.py` | `results_reuse/frontier.json` | **refuses while the plan is unsigned** |
+> | `reuse/readout.py` | `results_reuse/readout_n100.json` | **refuses while the plan is unsigned** |
+> | `reuse/run.py` | `results_reuse/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
+> | `reuse/score.py` | `results_reuse/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
