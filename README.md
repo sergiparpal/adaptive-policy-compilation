@@ -37,6 +37,7 @@ up in four places at once.
 | **I** · ILP as a competitor | what the LLM proposer buys that a symbolic inducer on the same 632 examples would not | [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
+| **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — **open**: Stage A has run, Stage B has not | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -197,6 +198,21 @@ The first two are gated on [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md), the third on
 `--reuse` or `--reask-all`: §2 of its plan makes that a decision about money, and
 the module will not take a default for it.
 
+**[`PLAN_REUSE.md`](PLAN_REUSE.md) is open**, signed on 2026-09-29, and its record
+is [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), which
+grows by stage. Its gate reads that plan and no other, counts every signature
+line, and guards all four of its writers — the free ones too. The first command
+is blocking and writes nothing. Stage A has run; **Stage B spends, and waits for
+Sergi's go-ahead on the spend**, one run after another:
+
+```bash
+python3 -m reuse.run --dry-run            # U-g1..U-g4, blocking; writes nothing
+python3 -m reuse.readout                  # Stage A · the eight n=100 records
+.venv/bin/python -m reuse.run --smoke     # Stage B · spends · the smoke run first
+.venv/bin/python -m reuse.run --rep 1     # then --rep 2 and --rep 3, never in parallel
+python3 -m reuse.score                    # Stage C · the five rows
+```
+
 Their destinations are guarded by `harness/record_guard.py`: those records cost
 money and a re-run does not give the same thing back.
 
@@ -293,7 +309,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `rung3/order_metrics_rules.py` | `results3/order_metrics_rules.json` | no, on purpose |
 > | `rung3/territory_holders.py` | `results3/territory_holders.json` | no, on purpose |
 > | `rung2/pair_benchmark.py` | `results2/pair_benchmark.json` | no, on purpose |
-> | `rung2/pair_judgement.py` | `results2/pair_judgement_*.json` | **yes** — it is the only module that spends |
+> | `rung2/pair_judgement.py` | `results2/pair_judgement_*.json` | **yes** — it spends, gated on the plan that governs the run |
 > | `rung2/pair_judgement_baselines.py` | `results2/pair_judgement_baselines.json` | no, on purpose |
 > | `rung2/pair_sample_1600.py` | `results2/pair_sample_1600.json` | no, on purpose |
 > | `rung3/floor_by_pool.py` | `results3/floor_by_pool.json` | no, on purpose |
@@ -322,9 +338,10 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > updated: a list that has to be remembered is the defect, not its contents.
 
 > Of everything executed in this README, only `harness/ceiling_check.py` and
-> `run_experiment.py models` write nothing — plus the two `--dry-run` forms,
+> `run_experiment.py models` write nothing — plus the `--dry-run` forms:
 > `sensitivity/sweep.py --dry-run` and `ilp/compare.py --dry-run`, which build
-> every policy, run every gate and write no record on purpose.
+> every policy, run every gate and write no record on purpose, and the four of
+> `reuse/`, which run `PLAN_REUSE.md`'s blocking checks and write nothing.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -423,7 +440,8 @@ What it covers, and why those things:
 | `test_ceiling2_space.py` | the hybrid ceiling over the exhaustive space, level 1 alone on both surfaces, and the three premises that make the space figure a consequence rather than a coincidence |
 | `test_sensitivity.py` | the sensitivity instrument: the five signed bands as named constants, the two constants of §8, the ρ grid, `A-g3`'s parity against the frozen engine, and the gate that counts signatures instead of stopping at the first. **No figure of the sweep** |
 | `test_ilp.py` | the ILP instrument: the four signed bands, the 224-condition language with the 29 hidden rules inside it, `I-g3`'s no-leak property, first-match-wins on a list checkable by hand, and the gate. **No figure of the four rows** |
-| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the three that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
+| `test_reuse.py` | the `PLAN_REUSE.md` instrument: §10's constants and §0's five lines, each verdict at its edge, `F` checked by hand, births and the split on a record small enough to check by hand, `U-g2` and `U-g3` on the real inputs, and every writer refusing unsigned before it builds the client or writes. **No figure of the plan** |
+| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the four that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -998,6 +1016,15 @@ adaptive-policy-compilation/
 │   ├── induce_check.py      I-g1..I-g4 · blocking
 │   └── compare.py           the four rows, gated on PLAN_ILP.md
 │
+├── reuse/                U · the founding question, on rung 2's engine
+│   ├── plan.py              the gate and §10's constants; §0's five lines
+│   ├── analysis.py          births, the split by birth, F and the gap
+│   ├── frontier.py          keep_k through the frozen loop · U-g3
+│   ├── gates.py             U-g1..U-g4 · blocking, run before any write
+│   ├── readout.py           Stage A · the eight n=100 records
+│   ├── run.py               Stage B · rung 2's loop at n=2000 · spends
+│   └── score.py             Stage C · the five rows, gated on PLAN_REUSE.md
+│
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle
 │   ├── sweep.py             coverage, asymmetry, delay and noise sweeps
@@ -1014,6 +1041,7 @@ adaptive-policy-compilation/
 ├── .github/dependabot.yml   bumps the actions; does NOT touch the pip pins
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
+    results_reuse/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
