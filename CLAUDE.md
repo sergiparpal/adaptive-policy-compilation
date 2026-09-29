@@ -134,8 +134,9 @@ could carry an edge. The row stays refuted exactly as signed; what it means is
 narrower than it reads, and `STATUS.md` says so beside the row rather than only in
 the FINDINGS.
 
-**The exception is `rung2/pair_judgement.py`, the only module in the repository
-that spends.** It refuses to run while §0 of **the plan that governs the run** is
+**The exception is `rung2/pair_judgement.py`, which spends** — and since
+2026-09-29 so does `reuse/run.py`, below. It refuses to run while §0 of **the
+plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
 flag that skips it, and `--dry-run` builds every question, runs every gate and
@@ -147,6 +148,22 @@ than no gate, because it is believed.
 
 Do not remove that gate and do not sign any plan: hard rule 2 below, and §0 of
 each plan restates it. A model may draft a band and may not sign it.
+
+**`PLAN_REUSE.md` is open: the founding question, on rung 2's engine.** Sergi
+signed §0 on 2026-09-29, before any of its figures existed, and its record is
+`results_reuse/FINDINGS_REUSE.md`, which grows by stage. Stage A is free and has
+run. **Stage B spends** — a smoke run, then the runs §2 of the plan fixes, one
+after another — **and does not start without Sergi's go-ahead on the spend**:
+the signature authorizes the plan, not the money. Stage C scores. The first
+command is blocking and writes nothing, and every writer in `reuse/` refuses
+while the plan carries a blank signature line — the gate reads `PLAN_REUSE.md`
+and no other plan, and counts every such line:
+
+    python3 -m reuse.run --dry-run            # U-g1..U-g4; must pass first
+    python3 -m reuse.readout                  # Stage A, free — already run
+    .venv/bin/python -m reuse.run --smoke     # Stage B: spends, on Sergi's go
+    .venv/bin/python -m reuse.run --rep 1     # then 2, then 3 — never side by side
+    python3 -m reuse.score                    # Stage C
 
 The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before
@@ -223,7 +240,8 @@ it writes `results/llm_run_n<N>.json`, so `--n 100` and `--n 2000` no longer
 share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
-2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them.
+2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
+and, since 2026-09-29, `reuse/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
