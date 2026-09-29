@@ -17,6 +17,12 @@ thing that could forbid it has spoken:
   2. The signature (`U-g4`). While `PLAN_REUSE.md` carries a blank signature
      line this module exits here — before the checks, the destination, the
      corpus or the client. No flag skips it.
+  2b. For `--rep`, the smoke run (§8). A full run refuses unless a smoke record
+     exists under this plan's protocol and shows at least one proposal that
+     parsed and one rule born. Added 2026-09-30, after the first smoke run met
+     a key OpenRouter rejected on all 20 calls and still wrote a record: the
+     loop counts a failed proposal and carries on, so a full run with that key
+     would have spent hours on a record with no model output in it.
   3. `U-g1` to `U-g3`, blocking.
   4. The destination: a paid record is never overwritten
      (`harness/record_guard.py`), and the flag that would is not typed without
@@ -50,6 +56,30 @@ def destination(args: argparse.Namespace) -> Path:
     return plan.SMOKE_PATH if args.smoke else plan.run_path(args.rep)
 
 
+def smoke_check(path: Path | None = None) -> tuple[bool, str]:
+    """§8: the smoke run checks the client, the key and the shape of the record.
+    This is that check made mechanical — step 2b of the module docstring."""
+    path = path or plan.SMOKE_PATH
+    if not path.exists():
+        return False, f"no smoke record at {path}; run --smoke first"
+    rec = json.loads(path.read_text())
+    expected = {"plan": str(plan.PLAN), "model": plan.MODEL,
+                "prompt_version": plan.PROMPT, "seed": plan.SEED, "n": plan.SMOKE_N}
+    wrong = {k: rec.get(k) for k, v in expected.items() if rec.get(k) != v}
+    if wrong:
+        return False, f"{path} was not produced under this protocol: {wrong}"
+    m = rec.get("metrics", {})
+    escalations = m.get("escalations", 0)
+    parsed = escalations - m.get("failed_proposals", 0)
+    if parsed < 1:
+        return False, (f"none of the {escalations} proposals in {path} parsed: "
+                       "the client or the key is not working")
+    if m.get("n_rules", 0) < 1:
+        return False, f"{parsed} proposals in {path} parsed and no rule was born"
+    return True, (f"{path}: {parsed} of {escalations} proposals parsed, "
+                  f"{m['n_rules']} rules born")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         description="Stage B of PLAN_REUSE.md: rung 2's loop at n=2000 (spends).")
@@ -71,6 +101,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if checks.blocking_pass else 1
 
     plan.refuse_unsigned("reuse/run.py spends")
+
+    if args.rep is not None:
+        ok, why = smoke_check()
+        if not ok:
+            sys.exit(f"\nREFUSED: reuse/run.py --rep {args.rep} before a smoke run "
+                     f"that worked — {why}.\n  Nothing was built, spent or "
+                     "written.\n")
+        print(f"smoke check: {why}")
 
     checks = gates.run_all(suite=True)
     gates.report(checks)
@@ -122,6 +160,11 @@ def main(argv: list[str] | None = None) -> int:
         "records": [vars(r) for r in res.records],
     }, indent=2, default=str))
     print(f"\n-> {target}\n  {describe()}")
+    if args.smoke:
+        ok, why = smoke_check(target)
+        print(f"\nsmoke check: {'PASS — the full runs may start' if ok else 'FAIL'}"
+              f" · {why}")
+        return 0 if ok else 1
     return 0
 
 

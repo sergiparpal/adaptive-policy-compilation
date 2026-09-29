@@ -124,19 +124,40 @@ caveat.
 
 ---
 
-## Stages B and C
+## Stage B
 
-Not run. Stage B spends — a 20-case smoke run, then three runs of n=2000, prompt
-v1, seed 17 — and waits for Sergi's go-ahead on the spend. Stage C scores
-`U-a` to `U-e` on the median over those runs.
+Sergi gave the go-ahead on the spend on 2026-09-30: a 20-case smoke run first,
+then three runs of n=2000, prompt v1, seed 17, one after another.
+
+**The first smoke run caught a key OpenRouter does not accept.** `reuse.run
+--smoke`, 2026-09-30. The blocking checks passed. Then all 20 escalations failed
+with `401 — User not found`, no rule was born, and nothing was generated or
+spent. The record is kept as [`run_n20_smoke_401.json`](run_n20_smoke_401.json),
+so that the smoke run's own name stays free for the rerun under a working key.
+
+This is the check §8 of the plan describes, doing its job. The loop counts a
+failed proposal and carries on, so with that key each full run would have spent
+hours producing a record with no model output in it. **Since the same day the
+full runs refuse to start without a smoke record, under this plan's protocol,
+that shows at least one proposal that parsed and one rule born**
+(`reuse/run.py`, step 2b). This record fails that check, and
+`tests/test_reuse.py` pins that it does.
+
+The three runs have not started: they wait for a key that works.
+
+## Stage C
+
+Not run. It scores `U-a` to `U-e` on the median over Stage B's three runs.
 
 ---
 
 ## Files
 
 ```
-results_reuse/readout_n100.json   Stage A, U-f — the figures of this section
+results_reuse/readout_n100.json   Stage A, U-f — the figures of its section
+results_reuse/run_n20_smoke_401.json   the first smoke run: 20 × 401, no output
 reuse/readout.py                  Stage A
+reuse/run.py                      Stage B; step 2b waits for a smoke run that worked
 reuse/analysis.py                 §5.2 and §5.3: births, the split, the gap
 reuse/frontier.py                 keep_k through the frozen loop; U-g3
 reuse/gates.py                    U-g1 to U-g4
