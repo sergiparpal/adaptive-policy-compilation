@@ -307,6 +307,48 @@ seeds with an identical prompt that the quantity is noise; the conclusions rest
 on the overlap, the attributes and the notes, which are stable. Nothing here says
 what would happen at n=2000.
 
+> **[ERRATUM 2026-09-29] This record never read the metric the project was built
+> to measure, and all eight runs recorded it.** `rung2/run2.py` prints
+> `reuse_rate` right after the rule count and writes it into every record. This
+> record left it out, and so did `comparison.json`, which is built over the eight
+> runs — and with it the proposer's own accuracy on the tickets it was shown. Read
+> off each record's `metrics` block, as recorded:
+>
+> ```
+> prompt  seed  rules   reuse  silent err  proposal acc   e2e  CONFLICT
+> v1        17     40  0.6000      0.7241        0.3810  0.16         0
+> v1        18     14  0.7857      0.7442        0.3571  0.22         0
+> v1        19     12  0.8333      0.5116        0.4286  0.42         0
+> v1        20     26  0.7692      0.7361        0.4286  0.19         0
+> v2        17      6  0.8333      0.7553        0.3333  0.23         0
+> v2        18      9  1.0000      0.7000        0.2000  0.27         1
+> v2        19     12  0.6667      0.6023        0.4167  0.35         0
+> v2        20     26  0.6154      0.8873        0.2414  0.08         1
+> ```
+>
+> **Reuse clears the 0.30 of `PREDICTION.md`'s stopping threshold in all eight
+> runs, and in all eight the rules are wrong on most of the cases they decide.**
+> It is the partition this record describes, seen through the metric it did not
+> read: broad disjoint rules fire, so they count as reused, and nothing in the
+> loop can see that they are wrong. The one base whose silent error this record
+> did cite, `v2` seed 17's 0.7553, is the one `CHAT_SUMMARY.md` §1 read as a
+> partition that *"eliminates the error detector"*; the other seven say the same.
+> **Reuse needs no conflict, so the drought that left declared priority without
+> material never touched it**: 153 of the 155 escalations were coverage impasses.
+> (155 is the count off these eight blocks; this record's summary says *~200*.)
+> The caution in `CLAUDE.md` Step 3 — with 100 cases almost no rule gets the
+> chance to fire twice — was written for rung 1's smoke test, whose rules
+> conflicted; these fired a median of 1 to 15 times each.
+>
+> **What keeps it from answering the founding question.** A hundred cases is a
+> twentieth of the horizon the question was posed at, and the memorization floor
+> has only been measured at n=2000. And the figure does not separate the two axes
+> `CLAUDE.md` Step 5 keeps apart: with the right queue chosen 0.20 to 0.43 of the
+> time, much of that silent error may be the action the proposer chose rather than
+> the reach of the rules it wrote. Neither the split nor the floor at n=100 has
+> been computed. [`STATUS.md`](../STATUS.md), *What this does not show*, carries
+> the correction on its side.
+
 **Non-determinism at temperature 0.** Verified in rung 1: same prompt, same case,
 same seed, different rules. That is why each configuration was run with four
 different corpora instead of one, and why the number of rules is not used as

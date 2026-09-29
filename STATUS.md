@@ -823,6 +823,28 @@ Rung 2 built an engine with a 1.0000 ceiling, and then the change that made
 declared priority possible — showing the proposer the base — is the one that left
 it without material: 2 conflicts in 8 runs.
 
+> **[ERRATUM 2026-09-29] That paragraph ran two kinds of material together, and
+> rung 2 had one of them.** It has read this way since `8487a63` wrote it on
+> 2026-08-09, two days after the eight n=100 runs were committed. Rung 2 had no
+> material for *declared priority*, which needs conflicts. It had all it needed
+> for *reuse*, which does not: a rule is reused when it decides a later case, and
+> 153 of the eight runs' 155 escalations were coverage impasses under the 1.0000
+> engine. `rung2/run2.py` wrote the figure into every record and no record read it
+> until [`results2/FINDINGS2.md`](results2/FINDINGS2.md), *Caveats*, took the
+> eight rows today: **reuse 0.60 to 1.00, above the 0.30 of the stopping threshold
+> in [`PREDICTION.md`](PREDICTION.md) in all eight — with silent error 0.51 to
+> 0.89, and a proposer that chose the right queue for the ticket in front of it
+> 0.20 to 0.43 of the time.**
+>
+> **The headline of this section still stands, and both are true.** The rules get
+> reused, in the terms the question was signed in, at a hundred cases in this
+> configuration; and the question has still not been measured cleanly. A hundred
+> cases is a twentieth of the horizon, the memorization floor below exists only at
+> n=2000, and the figure mixes the two error axes `CLAUDE.md` Step 5 keeps apart —
+> which is why reuse that high beside silent error that high reads as the
+> partition [`CHAT_SUMMARY.md`](CHAT_SUMMARY.md) §1 described, not as induction.
+> The section said only the second half. No other figure in this file moved.
+
 Whatever measures it next must clear the memorization floor: `keep_k(k=8)`
 reaches **0.1176** reuse without inducing anything, purely from the corpus's
 12.8% duplicates ([`results/frontier.json`](results/frontier.json)). A figure near
