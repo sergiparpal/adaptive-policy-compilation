@@ -37,7 +37,7 @@ up in four places at once.
 | **I** · ILP as a competitor | what the LLM proposer buys that a symbolic inducer on the same 632 examples would not | [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
-| **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — **open**: Stage A has run, Stage B has not | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
+| **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — closed 2026-09-30 | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -198,19 +198,23 @@ The first two are gated on [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md), the third on
 `--reuse` or `--reask-all`: §2 of its plan makes that a decision about money, and
 the module will not take a default for it.
 
-**[`PLAN_REUSE.md`](PLAN_REUSE.md) is open**, signed on 2026-09-29, and its record
-is [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), which
-grows by stage. Its gate reads that plan and no other, counts every signature
-line, and guards all four of its writers — the free ones too. The first command
-is blocking and writes nothing. Stage A has run; **Stage B spends, and waits for
-Sergi's go-ahead on the spend**, one run after another:
+**[`PLAN_REUSE.md`](PLAN_REUSE.md) closed on 2026-09-30**, the founding question on
+rung 2's engine. Sergi signed §0 on 2026-09-29 and an amendment to §1 the next day
+— the proposer's calls do not reason — each before any figure it governs existed.
+Its record is [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md).
+Its gate reads that plan and no other, requires both signatures, and guards all
+four of its writers, the free ones too.
+
+Stages A and C are free, and they reproduce from the committed records. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same draws back. A paid run does not start without Sergi asking for it.
 
 ```bash
 python3 -m reuse.run --dry-run            # U-g1..U-g4, blocking; writes nothing
 python3 -m reuse.readout                  # Stage A · the eight n=100 records
-.venv/bin/python -m reuse.run --smoke     # Stage B · spends · the smoke run first
+python3 -m reuse.score                    # Stage C · the five rows, from the runs
+.venv/bin/python -m reuse.run --smoke     # Stage B · spends · only on Sergi's say
 .venv/bin/python -m reuse.run --rep 1     # then --rep 2 and --rep 3, never in parallel
-python3 -m reuse.score                    # Stage C · the five rows
 ```
 
 Their destinations are guarded by `harness/record_guard.py`: those records cost
@@ -651,6 +655,14 @@ architecture does not hold up and we stop.
 **That objective was not met.** The run was voided by the engine ceiling before
 reuse was interpretable, and it still has not been measured cleanly. What was
 established is in the four records above.
+
+> **[NOTE 2026-09-30] It has been measured since, on rung 2's engine**, by
+> [`PLAN_REUSE.md`](PLAN_REUSE.md): three runs at this rung's horizon, with the two
+> error axes kept apart. The rules are reused, and most of their errors are born
+> with them. Part of what escalated was still conflict, so the reading carries
+> this rung's caveat. The figures are in
+> [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), which owns
+> them, and [`STATUS.md`](STATUS.md), which indexes them. None is copied here.
 
 ---
 

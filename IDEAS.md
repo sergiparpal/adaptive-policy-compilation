@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of August 30, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of September 30, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -19,8 +19,12 @@ the sensitivity sweep of `PLAN_SENSITIVITY.md` (five signed rows, three held) an
 ILP as a competitor, `PLAN_ILP.md` (four signed rows, one held and one refused a
 verdict by its own gate). They are written up in `results_sensitivity/` and
 `results_ilp/`, and with the second the plan of `EXTERNAL_REVIEW.md` is closed
-entire. This is a list of things not done, none of them developed and in no
-order of precedence.
+entire.
+
+**The founding question closed on September 30, 2026**, on rung 2's engine:
+`PLAN_REUSE.md`, six signed rows, four held, one refuted and one reported,
+written up in `results_reuse/`. This is a list of things not done, none of them
+developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -51,6 +55,11 @@ against, a threshold a next run would have to clear.
   (no) — and cost zero API calls. `results3/FINDINGS_AUDIT.md`,
   `results3/optimizer_check.json`, `results3/order_search_ls.json`,
   `results4/sweep_ls.json`.
+- **The founding question, on the engine that can answer it.** September 30,
+  2026, `PLAN_REUSE.md`: rung 2's loop at n=2000, three runs, with the error axes
+  kept apart. The rules get reused, and most of their errors are born with them.
+  The rarest queue is never asked about, which settles that the ILP thread's limit
+  comes from compilation by impasse, not from rung 1's trigger. `results_reuse/`.
 - **ILP as a competitor.** August 30, 2026, `PLAN_ILP.md`, four signed rows —
   one held, two refuted, one refused a verdict by its own gate. On the material
   the proposer had, a sequential-covering inducer beats an oracle-using search
@@ -77,6 +86,12 @@ against, a threshold a next run would have to clear.
   proposer and no inducer can learn — and no row of any thread has measured what
   that costs. It is a property of the escalation trigger, not of either
   competitor.
+  **[NOTE 2026-09-30] Narrowed by `PLAN_REUSE.md`'s `U-d`, refuted.** It is not
+  rung 1's trigger either. A loop that escalates only on missing coverage also
+  never escalated `ONCALL_ESCALATION`, in any of three runs: a broad rule reached
+  its region first and decided all of it wrongly. What is left is a trigger that
+  would ask about a class before a rule swallows it, and nobody has specified
+  one.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -86,6 +101,35 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_REUSE.md` opens and does not resolve
+
+Closed September 30, 2026. It asked the founding question on the engine that can
+answer it, and answered it in the terms it was signed in: the rules get reused.
+What that answer leaves:
+
+- **Fidelity: whether a compiled rule decides a later case the way the model
+  would have.** The cleanest form of the question. The plan measured it only
+  through a proxy, the split by birth (its §12.1). Measuring it needs the model's
+  answers on cases the rules decided, so it costs calls and a second protocol. It
+  is the natural next plan.
+- **What the accepted edges buy.** Stage B's three runs are the first in this
+  project where the proposer's declared edges entered the graph. Nobody has scored
+  what they do to the engine's decisions. The records hold everything needed, so
+  it is free.
+- **Whether the two thin holds are holds.** `U-b` and `U-c` sit on their lines,
+  each with one run of three on the wrong side. A second set of three runs under
+  the same protocol would show whether the median moves across either line. It
+  costs cents, and it needs its own signed plan, because §0's rows are
+  adjudicated and not to be re-read.
+- **A steadier reading of the scope axis.** `U-b` reads a heuristic whose error
+  jumps between two adjacent points of reuse. A finer frontier, or a blind one —
+  the plan's §12.2 explains why `random_k` is not it as it stands — would read the
+  same axis without the jump.
+- **A trigger that asks about a class before a rule swallows it.** `U-d`'s
+  refutation, from the other side; see *Pending and already specified*.
 
 ---
 
@@ -1044,8 +1088,17 @@ draft a band for one of them and may not sign it.
   now been seen working (`no_solapan` in rung 2, `cierra_ciclo` in Stages C and
   D); this one would take a protocol that deliberately offers such a pair, and
   nobody has written one.
-- Whether n=100 is enough. The bases vary by nearly an order of magnitude in size
-  across seeds; overlap might emerge only as the base grows.
+  **[NOTE 2026-09-30] The first half is answered, and the verdict still has not
+  fired.** At n=2000 the base produces conflicts: `PLAN_REUSE.md`'s three runs all
+  had them, and accepted the proposer's edges. But `contradice_subsuncion` fired in
+  none of them. A base with conflicts turns out not to be enough; the proposer has
+  still never been caught declaring against subsumption.
+- ~~Whether n=100 is enough.~~ The bases vary by nearly an order of magnitude in
+  size across seeds; overlap might emerge only as the base grows.
+  **Answered 2026-09-30, at n=2000, by `PLAN_REUSE.md`'s Stage B.** It does emerge.
+  Every run produced CONFLICTs, and the proposer's declared edges were accepted
+  for the first time. The base still stayed within `U-e`'s line on the median.
+  Figures in `results_reuse/FINDINGS_REUSE.md`.
 - ~~The cost of authorship at scale.~~ **Measured 2026-08-24.** The learned
   base's population of pairs that could carry an edge, what a budget of 400 buys
   of it, and what the engine does with that many installed are in `FINDINGS2.md`

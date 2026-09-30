@@ -1,11 +1,12 @@
 # Status
 
-What is known, as of August 30, 2026. **Not a history** — that is the four
+What is known, as of September 30, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
-[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md)
-and [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md), each with
+[`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md),
+[`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) and
+[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), each with
 its dated errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
@@ -15,7 +16,9 @@ priority layers. Four rungs closed, plus an audit of the instrument behind two o
 them, plus two pairwise threads — `PLAN_PAIRWISE.md` and `PLAN_PROPOSER_1600.md`,
 seven signed rows between them — plus the sensitivity sweep of
 `PLAN_SENSITIVITY.md`, five more, which asks how much of rung 1's failure is this
-policy's shape.
+policy's shape, plus ILP as a competitor in `PLAN_ILP.md`, plus **the founding
+question itself, on the engine that can answer it, in `PLAN_REUSE.md`** — six
+signed rows, closed on 2026-09-30.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -89,7 +92,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Forty rows have been signed before the figures they name existed. This
+**Forty-six rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -125,13 +128,14 @@ a count behind it.
 | **B** · the proposer at 1,600 (§0 of `PLAN_PROPOSER_1600.md`) | 4 | 4 | **2** | 0 | 2 | 0 |
 | **A** · the sensitivity sweep (§0 of `PLAN_SENSITIVITY.md`) | 5 | 5 | **2** | 0 | 3 | 0 |
 | **I** · ILP as a competitor (§0 of `PLAN_ILP.md`) | 4 | 3 | **2** | 0 | 1 | 0 |
-| **total** | **40** | **36** | **17** | **2** | **17** | **3** |
+| **U** · the founding question (§0 of `PLAN_REUSE.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
+| **total** | **46** | **41** | **18** | **2** | **21** | **4** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`, `I-a`, `I-c`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
-`R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`.
-Reported: `R-d`, `C-d`, `D-d`.
+`A-a`, `A-b`, `I-a`, `I-c`, `U-d`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`,
+`S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`,
+`I-d`, `U-a`, `U-b`, `U-c`, `U-e`. Reported: `R-d`, `C-d`, `D-d`, `U-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -148,10 +152,10 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 17 of 36 = **47.2%**
-refuted; without them, 15 of 30 = **50.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 18 of 41 = **43.9%**
+refuted; without them, 16 of 35 = **45.7%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-2.8 points the flattering way, which is exactly why saying so is not optional.
+1.8 points the flattering way, which is exactly why saying so is not optional.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -162,6 +166,11 @@ drafter and the sample size, not because of the figure — and it moves the figu
 > going stale in silence — committed inside the section whose whole subject is
 > keeping a count honest. The figures above are recomputed with `A` included and
 > the arithmetic is the same convention, unchanged.
+>
+> **[NOTE 2026-09-30] Recomputed with the `U` thread, in the same commit as its
+> row.** Six rows were signed, five adjudicated, one refuted and one reported. The
+> table, the named lists, the count of signed rows in the heading and the two
+> ratios above moved together, so this time nothing was left behind.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -172,7 +181,10 @@ Stage D sections of [`results2/FINDINGS2.md`](results2/FINDINGS2.md) and §8 of
 [`results3/FINDINGS3.md`](results3/FINDINGS3.md). All three `P` rows are
 adjudicated: the thread is closed. `A` comes from
 [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md),
-which owns all five.
+which owns all five; `I` from [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md);
+and `U` from the Stage C section of
+[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), with `U-f`
+from its Stage A.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -234,6 +246,16 @@ to score **below** its family at its own ρ and it scores **above**, rank 100 of
 as drafted; the one it got right, it got right for the wrong reason. **`A-b` is
 the miss**, and it misses at −0.9945 against a band of ≥ 0.85: the curve is about
 as real as a curve gets and the drafter had the sign of ρ backwards.
+
+**The `U` rows ask the question the project was built for, and the drafter got
+three of five.** Sergi signed §0 of `PLAN_REUSE.md` on 2026-09-29, before any of
+its figures existed. He signed an amendment to §1 on 2026-09-30, before any full
+run: the proposer's calls do not reason. A gate refuses every writer of the plan
+otherwise. The drafter expected `U-a` to `U-d` to hold and `U-e` to be refuted;
+**`U-d` was refuted and `U-e` held.** Two of the holds sit on their lines —
+`U-c` at 0.6024 against 0.60 and `U-b` at +0.0207 against 0 — and each has one run
+of three on the wrong side. `U-f` is reported: its inputs had been on disk since
+August, and the drafter had read their metrics.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -736,6 +758,33 @@ volume of labels is proportional to the error rate of the system observed, so
 observing a worse π₀ produces a better order. A property of the channel, not of
 the learner — the one section of rung 4 the audit left standing (FINDINGS4 §3).
 
+**The founding question, measured on the engine that can answer it: the rules get
+reused, and most of their errors are born with them.** `PLAN_REUSE.md` ran rung
+2's loop — the engine that executes the hidden policy at 1.0000 — over rung 1's
+2,000 cases, three times, with prompt v1 and reasoning off. These are medians of
+the three runs, on the corpus, from
+[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md):
+
+- **Reused.** Reuse is **0.7381**, far above the 0.30 stopping threshold of
+  2026-08-05 and the 0.1176 memorization floor (`U-a` holds). It carries **rung
+  1's caveat**: a median 0.2857 of the escalations were CONFLICT, so part of what
+  escalated was the arbitration.
+- **Wrong at birth.** About three silent errors in five come from rules born with
+  the wrong queue (`U-c` holds, at 0.6024 against 0.60). The proposer chose the
+  right queue for the ticket in front of it about half the time.
+- **No better than a heuristic on scope.** On the scope axis, the rules born right
+  err about as much as a fixed heuristic handed the right action (`U-b` holds, at
+  +0.0207). That margin moves with where their reuse lands on a steep frontier.
+- **The rarest queue is never asked about.** All 7 `ONCALL_ESCALATION` cases were
+  decided by a rule, wrongly, in every run, and none escalated (`U-d` refuted). So
+  the ILP thread's *what the loop never asks about, no method can learn* belongs
+  to compilation by impasse, not to rung 1's conflict trigger.
+- **Declared priority got material for the first time.** Edges were accepted in
+  every run. `contradice_subsuncion` still never fired.
+
+Stage A found the same shape at n=100 in the eight August runs; it is reported,
+not adjudicated.
+
 ---
 
 ## What was withdrawn, and why
@@ -795,6 +844,10 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    produces conflicts, and the 66.7%/64.2% material gap has no explanation.
    Undiscriminated: the framing (one ticket, one rule), the model, or rule-writing
    elicitation in general. FINDINGS2, "Why this is NOT a capability failure".
+   **[NOTE 2026-09-30]** At n=2000 the base does produce conflicts, and the
+   proposer's declared edges were accepted in every run of `PLAN_REUSE.md`'s
+   Stage B. So the mechanism has material now. What those edges buy has not been
+   measured.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -803,15 +856,44 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    arrivals and loses to it by 0.17 as a function.**
    [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md). What is left open
    is narrower: `ONCALL_ESCALATION` never escalated once, so what the loop never
-   asked about, no method can learn.
+   asked about, no method can learn. **[NOTE 2026-09-30]** `U-d` settles whose
+   property that is: a loop that escalates on coverage never asked about it either,
+   in three runs. What is open now is a trigger that would ask, and none is
+   specified.
+4. **Fidelity: whether a compiled rule decides a later case the way the model
+   would have.** That is the cleanest form of the founding question, and
+   `PLAN_REUSE.md` measured it only through a proxy, the split by birth (its
+   §12.1). It needs the model's answers on cases the rules decided, so it costs
+   calls.
 
 ---
 
 ## What this does not show
 
 **The original hypothesis — do the LLM's rules get reused, or does it memorize
-cases? — has still never been measured cleanly.** It is the question the project
-was built to answer.
+cases? — was measured on 2026-09-30, and it is not clean in the one sense rung 1
+was voided for.** It is the question the project was built to answer.
+
+> **[ERRATUM 2026-09-30] The sentence above read *has still never been measured
+> cleanly*.** That was true from rung 1's voided run of 2026-08-05 until
+> `PLAN_REUSE.md`'s Stage C. That plan asked the question at the horizon it was
+> posed at, n=2000, on rung 2's engine, whose ceiling is 1.0000 on both surfaces.
+> It asked three times, with the two error axes separated and this horizon's
+> memorization floor beside the result. **In the terms signed on 2026-08-05 the
+> answer is *reused*:** 0.7381 on the median, far above the 0.30 threshold and the
+> 0.1176 floor below.
+>
+> **It is not clean in the sense rung 1 was voided for; that problem was reduced,
+> not removed.** A median 0.2857 of the escalations were CONFLICT, against rung
+> 1's 94%, so part of what escalated was the arbitration. §0 of that plan fixed
+> this in advance as a caveat on the reading, not on the verdict.
+>
+> **And the answer is not the one the project was built to hope for.** The rules
+> are reused and mostly wrong; most of their errors are born with them; the rarest
+> queue is never asked about. See
+> [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) and *What is
+> established* above. The erratum of 2026-09-29 below says *the headline of this
+> section still stands*; it did when it was written, and this one supersedes it.
 
 Rung 1's **0.158 reuse** describes the arbitration, not the induction: 594 of its
 632 escalations (94%) were CONFLICT, exactly what specificity-based arbitration
