@@ -174,7 +174,7 @@ carries rung 1's caveat next to `U-a` instead of letting it read as clean.
 > **No band moves and no row of §0.** §10's constants gain one, `REASONING`, and
 > the gate's minimum becomes two.
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-09-30)**
 
 *Outside the quotation deliberately, as in `PLAN_ILP.md`: the gate reads
 signature lines at the start of a line, and one inside a blockquote would be
