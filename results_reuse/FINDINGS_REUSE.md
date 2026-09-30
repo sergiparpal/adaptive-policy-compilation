@@ -180,8 +180,13 @@ setting, so this record cannot open the full runs, and `tests/test_reuse.py`
 pins that it cannot. The gate requires both signatures, §0's and the
 amendment's.
 
-The three runs have not started. They wait for Sergi's signature of the
-amendment and then a fourth smoke run under it.
+**The fourth smoke run, under the signed amendment, passed.** Also 2026-09-30,
+from the commit that carries Sergi's signature of the amendment, with the key
+check and every blocking check passing first. Its 20 cases gave **14
+escalations, 14 proposals parsed and 14 rules born**, and the run took about
+five minutes end to end, against about twenty-five for the third. The record is
+[`run_n20_smoke.json`](run_n20_smoke.json), and it carries its setting,
+`reasoning: {"effort": "none"}`. It opens the three runs.
 
 ## Stage C
 
@@ -196,6 +201,7 @@ results_reuse/readout_n100.json   Stage A, U-f — the figures of its section
 results_reuse/run_n20_smoke_401.json   the first smoke run: 20 × 401, no output
 results_reuse/run_n20_smoke_401_management_key.json   the second: a management key
 results_reuse/run_n20_smoke_reasoning_on.json   the third: passed, a third empty
+results_reuse/run_n20_smoke.json   the fourth, reasoning off: 14 of 14, opens the runs
 reuse/readout.py                  Stage A
 reuse/run.py                      Stage B; 2b waits for a smoke run that worked,
                                   2c refuses a management key before any call
