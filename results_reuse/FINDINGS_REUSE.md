@@ -143,7 +143,21 @@ that shows at least one proposal that parsed and one rule born**
 (`reuse/run.py`, step 2b). This record fails that check, and
 `tests/test_reuse.py` pins that it does.
 
-The three runs have not started: they wait for a key that works.
+**The second smoke run met a management key, and the check refused it as
+built.** Also 2026-09-30, after the key in `~/.bashrc` was replaced: the same 20 ×
+`401 — User not found`, no rule born, nothing generated or spent, and step 2b
+kept the full runs closed. The record is kept as
+[`run_n20_smoke_401_management_key.json`](run_n20_smoke_401_management_key.json).
+The cause was read off OpenRouter's own key endpoint: the new key is a
+**management key**. That kind of key authenticates the endpoint — it answered 200
+— and reads the account's credits, but cannot call a model. **So a 200 from that
+endpoint is not a check that a key works.** Since the same day `reuse/run.py`
+asks the endpoint before the smoke run and before every full run, and refuses a
+management key or any answer but 200 (step 2c). That takes a second, where the
+smoke run took about twelve minutes to fail.
+
+The three runs have not started: they wait for an API key that is not a
+management key.
 
 ## Stage C
 
@@ -156,8 +170,10 @@ Not run. It scores `U-a` to `U-e` on the median over Stage B's three runs.
 ```
 results_reuse/readout_n100.json   Stage A, U-f — the figures of its section
 results_reuse/run_n20_smoke_401.json   the first smoke run: 20 × 401, no output
+results_reuse/run_n20_smoke_401_management_key.json   the second: a management key
 reuse/readout.py                  Stage A
-reuse/run.py                      Stage B; step 2b waits for a smoke run that worked
+reuse/run.py                      Stage B; 2b waits for a smoke run that worked,
+                                  2c refuses a management key before any call
 reuse/analysis.py                 §5.2 and §5.3: births, the split, the gap
 reuse/frontier.py                 keep_k through the frozen loop; U-g3
 reuse/gates.py                    U-g1 to U-g4

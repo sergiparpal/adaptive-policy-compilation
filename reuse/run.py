@@ -23,6 +23,11 @@ thing that could forbid it has spoken:
      a key OpenRouter rejected on all 20 calls and still wrote a record: the
      loop counts a failed proposal and carries on, so a full run with that key
      would have spent hours on a record with no model output in it.
+  2c. The key, for `--smoke` and `--rep`: OpenRouter's key endpoint, free, must
+     accept it and must not call it a management key. Added the same day, after
+     the second smoke run met a management key — which that endpoint accepts,
+     and which reads the account's credits and cannot call a model. The smoke
+     run took twelve minutes to fail on it; this takes a second.
   3. `U-g1` to `U-g3`, blocking.
   4. The destination: a paid record is never overwritten
      (`harness/record_guard.py`), and the flag that would is not typed without
@@ -38,7 +43,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 from harness.domain import generate_corpus
@@ -80,6 +88,43 @@ def smoke_check(path: Path | None = None) -> tuple[bool, str]:
                   f"{m['n_rules']} rules born")
 
 
+KEY_INFO_URL = "https://openrouter.ai/api/v1/key"
+
+
+def fetch_key_info(key: str) -> tuple[int, dict]:
+    """GET OpenRouter's key endpoint. Free: it reads, and calls no model."""
+    request = urllib.request.Request(KEY_INFO_URL,
+                                     headers={"Authorization": f"Bearer {key}"})
+    try:
+        with urllib.request.urlopen(request, timeout=20) as resp:
+            return resp.status, json.loads(resp.read().decode() or "{}")
+    except urllib.error.HTTPError as e:
+        try:
+            return e.code, json.loads(e.read().decode() or "{}")
+        except ValueError:
+            return e.code, {}
+
+
+def key_check(fetch=None) -> tuple[bool, str]:
+    """Step 2c of the module docstring. Nothing it prints or returns carries the
+    key or its label."""
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key:
+        return False, "OPENROUTER_API_KEY is not in the environment (hard rule 7)"
+    try:
+        status, body = (fetch or fetch_key_info)(key)
+    except Exception as exc:  # noqa: BLE001 — the network, not the key
+        return False, (f"OpenRouter's key endpoint could not be reached "
+                       f"({type(exc).__name__})")
+    if status != 200:
+        return False, f"OpenRouter does not accept the key: HTTP {status}"
+    data = body.get("data") or {}
+    if data.get("is_management_key") or data.get("is_provisioning_key"):
+        return False, ("the key is a management key: it reads the key's metadata "
+                       "and the account's credits, and cannot call a model")
+    return True, "an API key OpenRouter accepts, and not a management key"
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         description="Stage B of PLAN_REUSE.md: rung 2's loop at n=2000 (spends).")
@@ -109,6 +154,12 @@ def main(argv: list[str] | None = None) -> int:
                      f"that worked — {why}.\n  Nothing was built, spent or "
                      "written.\n")
         print(f"smoke check: {why}")
+
+    ok, why = key_check()
+    if not ok:
+        sys.exit(f"\nREFUSED: reuse/run.py — {why}.\n  Nothing was built, spent "
+                 "or written.\n")
+    print(f"key check: {why}")
 
     checks = gates.run_all(suite=True)
     gates.report(checks)
