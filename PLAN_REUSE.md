@@ -396,6 +396,16 @@ record, costs a handful of calls, and adjudicates nothing.
 > the smoke run to check, made mechanical. No band, row, constant or choice moves;
 > this note carries no signature line, so the gate reads the same one line it read
 > at signature, and it travels alone.
+>
+> **[NOTE 2026-09-30, later the same day] And the key is checked before any
+> call.** The second smoke run met a management key, which OpenRouter's key
+> endpoint accepts and every completion call refuses; it is kept as
+> `results_reuse/run_n20_smoke_401_management_key.json`. `reuse/run.py` now asks
+> that endpoint before the smoke run and before every full run, and refuses a
+> management key or any answer but 200. It is the other half of what this section
+> asked the smoke run to check, the key, made to fail in a second rather than
+> twelve minutes. Nothing a signature binds moves, and no signature line is
+> added.
 
 ---
 
