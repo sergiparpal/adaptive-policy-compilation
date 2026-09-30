@@ -135,6 +135,51 @@ carries rung 1's caveat next to `U-a` instead of letting it read as clean.
 
 ## 1. What is being bought, and what is already paid for
 
+> **[AMENDED 2026-09-30 — one change to the client, found by §8's smoke run
+> before any figure of §0 existed.]**
+>
+> **The model now reasons by default, and the budget this section fixes does not
+> fit it.** The third smoke run passed step 2b with 10 rules born. But 5 of its 15
+> proposals came back empty or cut off mid-JSON, against 9 of 155 in the eight
+> August runs. OpenRouter's documentation says why: reasoning tokens count
+> against `max_tokens`, and when reasoning spends the budget the answer comes back
+> empty with `finish_reason: "length"`. The proposer caps an answer at 1,200
+> tokens. Two one-line calls on 2026-09-30 measured the default: 20 reasoning
+> tokens for a six-token reply, and none with `reasoning: {"effort": "none"}` —
+> the one setting the documentation says disables reasoning entirely.
+> `exclude: true` only hides the reasoning, which is still spent.
+>
+> **The change: every call the proposer makes carries
+> `reasoning: {"effort": "none"}`.** Nothing else in this section moves. The
+> model is the same, prompt v1 is unedited, and temperature, `max_tokens`,
+> `response_format` and retries are unchanged, as are the corpus and the seed.
+> Hard rule 5 is untouched: no prompt, no schema. `rung2/proposers2.py` gains an
+> optional parameter whose default sends nothing new, so the replay of the August
+> records does not change.
+>
+> **Why off, and not a larger budget.** Under the same cap, the eight August runs
+> lost 9 of 155 proposals. That suggests the model reasoned less then, or not at
+> all — a guess, because whether August's calls reasoned is not recorded. Off is
+> the drafter's best estimate of the instrument August measured, and it keeps
+> Stage A's comparison as close as it can be. A larger budget would keep today's
+> reasoning and move further from August. **§5.5's date variable stands, and now
+> has a known mechanism behind it.**
+>
+> **What follows from it.** The smoke check compares the reasoning setting too, so
+> a smoke record made without it cannot open the full runs. The third smoke record
+> is kept as `results_reuse/run_n20_smoke_reasoning_on.json`, and a fourth smoke
+> run under this setting comes before any full run. The gate now requires two
+> filled signature lines — §0's and this one — so neither can go missing.
+>
+> **No band moves and no row of §0.** §10's constants gain one, `REASONING`, and
+> the gate's minimum becomes two.
+
+**Signed by Sergi: ________________________ (date: ______________)**
+
+*Outside the quotation deliberately, as in `PLAN_ILP.md`: the gate reads
+signature lines at the start of a line, and one inside a blockquote would be
+invisible to it.*
+
 **Already paid for, and free to read: the eight n=100 records**,
 `results2/llm_run2_n100*.json` — four with prompt v1 and four with v2, over the
 corpora of seeds 17 to 20 (FINDINGS2, *Caveats*), committed on 2026-08-07. Stage
