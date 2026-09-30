@@ -156,8 +156,32 @@ asks the endpoint before the smoke run and before every full run, and refuses a
 management key or any answer but 200 (step 2c). That takes a second, where the
 smoke run took about twelve minutes to fail.
 
-The three runs have not started: they wait for an API key that is not a
-management key.
+**The third smoke run, under an API key, passed and showed the model has
+changed.** Also 2026-09-30, from `3952e5b`. The key check passed, then the
+blocking checks, and step 2b opened the full runs: 15 escalations, 10 rules born.
+**But 5 of the 15 proposals came back empty, or cut off in the middle of the
+JSON**, against 9 of 155 in the eight August runs, and the 20 cases took about 25
+minutes. The record is kept as
+[`run_n20_smoke_reasoning_on.json`](run_n20_smoke_reasoning_on.json).
+
+The cause was measured, not guessed. OpenRouter lists reasoning parameters for
+`deepseek/deepseek-v4-flash`, and documents that reasoning tokens count against
+`max_tokens`: a budget spent on reasoning comes back empty with
+`finish_reason: "length"`. The proposer caps each answer at 1,200 tokens. Two
+one-line calls on the same day gave 20 reasoning tokens for a six-token reply by
+default, and none with `reasoning: {"effort": "none"}`. **The model reasons by
+default now.** Whether it did in August is not recorded, and this is §5.5's date
+variable with a mechanism found behind it.
+
+**Sergi chose to turn reasoning off**, and §1 of the plan carries the amendment:
+every call the proposer makes sends `reasoning: {"effort": "none"}`, and nothing
+else moves — no prompt, no schema, no band. The smoke check now compares the
+setting, so this record cannot open the full runs, and `tests/test_reuse.py`
+pins that it cannot. The gate requires both signatures, §0's and the
+amendment's.
+
+The three runs have not started. They wait for Sergi's signature of the
+amendment and then a fourth smoke run under it.
 
 ## Stage C
 
@@ -171,6 +195,7 @@ Not run. It scores `U-a` to `U-e` on the median over Stage B's three runs.
 results_reuse/readout_n100.json   Stage A, U-f — the figures of its section
 results_reuse/run_n20_smoke_401.json   the first smoke run: 20 × 401, no output
 results_reuse/run_n20_smoke_401_management_key.json   the second: a management key
+results_reuse/run_n20_smoke_reasoning_on.json   the third: passed, a third empty
 reuse/readout.py                  Stage A
 reuse/run.py                      Stage B; 2b waits for a smoke run that worked,
                                   2c refuses a management key before any call

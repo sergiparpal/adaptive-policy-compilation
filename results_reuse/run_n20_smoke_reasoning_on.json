@@ -1,0 +1,800 @@
+{
+  "_env": {
+    "recorded_at": "2026-09-30T10:13:11Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "3952e5be95566fb711324d36673ee2478ac79e34",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a8ed6f659af7bd2e"
+  },
+  "plan": "PLAN_REUSE.md",
+  "stage": "B",
+  "rep": "smoke",
+  "rung": 2,
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 20,
+  "seed": 17,
+  "prompt_version": "v1",
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "gates": {
+    "U-g1": {
+      "what": "the hidden policy executed at 1.0000 on corpus and space; the suite green",
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1080,
+        "result": "OK (skipped=1)",
+        "seconds": 56.7,
+        "passes": true
+      },
+      "passes": true
+    },
+    "U-g2": {
+      "passes": true,
+      "records": 8
+    },
+    "U-g3": {
+      "what": "keep_k(1..8) over the n=2000 corpus reproduces results/frontier.json exactly, and no case of any run \u2014 n=2000, or n=100 over seeds 17 to 20 \u2014 is matched by more than one rule",
+      "reproduces_published": true,
+      "k_not_reproduced": [],
+      "most_rules_matching_one_case": 1,
+      "passes": true
+    },
+    "U-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REUSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REUSE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "metrics": {
+    "n_cases": 20,
+    "n_rules": 10,
+    "hidden_policy_size": 29,
+    "rejected_rules": 0,
+    "failed_proposals": 5,
+    "escalations": 15,
+    "escalation_rate": 0.75,
+    "escalation_curve_by_decile": [
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "final_decile_escalation_rate": 0.0,
+    "impasses": 15,
+    "conflicts": 0,
+    "coverage": 0.25,
+    "shadow_accuracy": 0.6,
+    "silent_error_rate": 0.4,
+    "silent_errors_abs": 2,
+    "e2e_accuracy": 0.15,
+    "reuse_rate": 0.3,
+    "median_fires_per_rule": 0.0,
+    "dead_rules": 7,
+    "proposal_action_accuracy": 0.4,
+    "llm_calls": 15,
+    "edges_proposed": 0,
+    "edges_accepted": 0,
+    "edge_reasons": {},
+    "subsumption_pairs": 0,
+    "rules_with_edges": 0,
+    "escalations_with_base_shown": 14,
+    "escalations_on_conflict": 0
+  },
+  "rules": [
+    {
+      "rule_id": "R0001",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 0,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Caso de soporte t\u00e9cnico de producto dashboard con severidad baja; al ser la primera regla no hay conflictos previos."
+    },
+    {
+      "rule_id": "R0002",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 1,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de dashboard con severidad 3 en horario no laboral. No hay regla existente que cubra esta combinaci\u00f3n, y no se solapa con R0001 (severity 4). Se asigna a T2_TECHNICAL por ser un problema t\u00e9cnico de severidad media."
+    },
+    {
+      "rule_id": "R0003",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 2,
+      "fire_count": 2,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Caso an\u00e1logo a R0001 pero para el producto mobile: severidad baja en mobile se resuelve en la cola t\u00e9cnica; no se solapa con R0001/R0002 porque el producto es distinto, por lo que no se requiere prioridad declarada."
+    },
+    {
+      "rule_id": "R0004",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 5,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Regla an\u00e1loga a R0001/R0003 para el producto integrations con severidad 4; no se solapa con las existentes porque el producto es distinto, por lo que no requiere prioridad declarada."
+    },
+    {
+      "rule_id": "R0005",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 7,
+      "fire_count": 1,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "API issues with severity 3 are technical but not critical; consistent with pattern for other products at severity 4, but here severity 3 also warrants technical support. No overlapping rules exist."
+    },
+    {
+      "rule_id": "R0006",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 8,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Caso no cubierto: mobile con severidad 3; se asigna a T2_TECHNICAL por analog\u00eda con R0003 (mobile severidad 4) y R0005 (api severidad 3), sin solaparse con ninguna regla existente."
+    },
+    {
+      "rule_id": "R0007",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 9,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Regla general para integraciones con severidad 3, misma accion que otras combinaciones producto/severidad similares; no se solapa con reglas existentes porque R0004 cubre severidad 4 y las demas son de otros productos."
+    },
+    {
+      "rule_id": "R0008",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 10,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Caso an\u00e1logo a los existentes: API con severidad 4 debe ir a T2; no solapa reglas previas porque ninguna cubre api+severidad 4."
+    },
+    {
+      "rule_id": "R0009",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 14,
+      "fire_count": 2,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Billing product with severity 3 is not covered by existing product-specific rules; routing to billing specialist generalizes this case."
+    },
+    {
+      "rule_id": "R0010",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 2
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 15,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Severity 2 en dashboard es m\u00e1s cr\u00edtico que los casos cubiertos por reglas existentes (severity 3 y 4), por lo que merece la misma cola t\u00e9cnica. No hay solapamiento con reglas previas porque los rangos de severity son disjuntos."
+    }
+  ],
+  "edge_log": [],
+  "records": [
+    {
+      "idx": 0,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H13",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 1,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 2,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 3,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ' {\\n  \"action\": \"T2_TECHNICAL\",\\n  \"conditions\": [\\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"'"
+    },
+    {
+      "idx": 4,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 5,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 6,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0004",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ' '"
+    },
+    {
+      "idx": 7,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0002",
+        "R0004"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 8,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0005",
+        "R0001",
+        "R0002",
+        "R0004"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 9,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0003",
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 10,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 11,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0001",
+        "R0002",
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0008"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ''"
+    },
+    {
+      "idx": 12,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0006",
+        "R0001",
+        "R0004",
+        "R0005",
+        "R0007",
+        "R0008",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ' '"
+    },
+    {
+      "idx": 13,
+      "outcome": "IMPASSE",
+      "predicted": null,
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": null,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002",
+        "R0003",
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0008"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": "proposal_failed: sin objeto JSON: ''"
+    },
+    {
+      "idx": 14,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0002",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0003",
+        "R0001",
+        "R0004",
+        "R0008"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 15,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0003",
+        "R0002",
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0008",
+        "R0009"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 16,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 17,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0009",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 18,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0009",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 19,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": true,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    }
+  ]
+}
