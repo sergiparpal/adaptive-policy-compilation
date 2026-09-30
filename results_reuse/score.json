@@ -1,0 +1,359 @@
+{
+  "_env": {
+    "recorded_at": "2026-09-30T13:59:26Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "24eafc452ee7167f9e194e053ff8553465295a8c",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "f2393cf82f2a534a"
+  },
+  "plan": "PLAN_REUSE.md",
+  "stage": "C",
+  "surface": "corpus \u2014 n=2000, seed 17, in arrival order",
+  "provenance": "PRE-REGISTERED: \u00a70 signed before any of these figures existed",
+  "gates": {
+    "U-g1": {
+      "what": "the hidden policy executed at 1.0000 on corpus and space; the suite green",
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1087,
+        "result": "OK (skipped=2)",
+        "seconds": 57.3,
+        "passes": true
+      },
+      "passes": true
+    },
+    "U-g2": {
+      "passes": true,
+      "records": 8
+    },
+    "U-g3": {
+      "what": "keep_k(1..8) over the n=2000 corpus reproduces results/frontier.json exactly, and no case of any run \u2014 n=2000, or n=100 over seeds 17 to 20 \u2014 is matched by more than one rule",
+      "reproduces_published": true,
+      "k_not_reproduced": [],
+      "most_rules_matching_one_case": 1,
+      "passes": true
+    },
+    "U-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REUSE.md, of which there must be at least 2. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REUSE.md",
+      "found": 2,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "frontier_points": [
+    [
+      1.0,
+      0.9209
+    ],
+    [
+      1.0,
+      0.7721
+    ],
+    [
+      0.8966,
+      0.6088
+    ],
+    [
+      0.7965,
+      0.1728
+    ],
+    [
+      0.7237,
+      0.1568
+    ],
+    [
+      0.3208,
+      0.0014
+    ],
+    [
+      0.2188,
+      0.0
+    ],
+    [
+      0.1176,
+      0.0
+    ]
+  ],
+  "verdicts": {
+    "U-a": {
+      "per_run": [
+        0.5323,
+        0.8387,
+        0.7381
+      ],
+      "median": 0.7381,
+      "verdict": "holds"
+    },
+    "U-b": {
+      "per_run": [
+        0.3419462037968761,
+        -0.08153745258713208,
+        0.020747875845542996
+      ],
+      "median": 0.020747875845542996,
+      "verdict": "holds"
+    },
+    "U-c": {
+      "per_run": [
+        0.6490008688097306,
+        0.6023875114784206,
+        0.5879828326180258
+      ],
+      "median": 0.6023875114784206,
+      "verdict": "holds"
+    },
+    "U-d": {
+      "per_run": [
+        0,
+        0,
+        0
+      ],
+      "median": 0,
+      "verdict": "refuted"
+    },
+    "U-e": {
+      "per_run": [
+        30,
+        5,
+        12
+      ],
+      "median": 12,
+      "verdict": "holds"
+    }
+  },
+  "runs": [
+    {
+      "rep": 1,
+      "problems": [],
+      "rows": {
+        "U-a": 0.5323,
+        "U-b": 0.3419462037968761,
+        "U-c": 0.6490008688097306,
+        "U-d": 0,
+        "U-e": 30
+      },
+      "beside": {
+        "right_born": {
+          "rules": 30,
+          "reused": 17,
+          "decided": 922,
+          "correct": 518,
+          "reuse_rate": 0.5666666666666667,
+          "silent_error": 0.43817787418655096
+        },
+        "F_at_their_reuse": 0.09623167038967484,
+        "split": {
+          "silent_errors": 1151,
+          "by_rules_born_wrong": 747,
+          "by_rules_born_right": 404,
+          "share_born_wrong": 0.6490008688097306
+        },
+        "fires": {
+          "median_fires_per_rule": 13.0,
+          "dead_rules": 29,
+          "top_decile_fire_share": 0.4540763673890609
+        },
+        "n_rules": 62,
+        "e2e_accuracy": 0.3935,
+        "silent_error_rate": 0.5939,
+        "proposal_action_accuracy": 0.4839,
+        "escalations": 62,
+        "escalation_curve_by_decile": [
+          0.18,
+          0.025,
+          0.025,
+          0.025,
+          0.005,
+          0.015,
+          0.01,
+          0.01,
+          0.005,
+          0.01
+        ],
+        "conflict_share_of_escalations": 0.4838709677419355,
+        "U-a_carries_rung_1_caveat": true,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided_by_a_rule": 7,
+          "decided_rightly": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 15,
+          "decided_by_a_rule": 5,
+          "decided_rightly": 5
+        },
+        "edges_proposed": 33,
+        "edges_accepted": 30,
+        "edge_verdicts": {
+          "no_solapan": 3,
+          "ok": 30
+        },
+        "contradice_subsuncion": 0
+      }
+    },
+    {
+      "rep": 2,
+      "problems": [],
+      "rows": {
+        "U-a": 0.8387,
+        "U-b": -0.08153745258713208,
+        "U-c": 0.6023875114784206,
+        "U-d": 0,
+        "U-e": 5
+      },
+      "beside": {
+        "right_born": {
+          "rules": 15,
+          "reused": 13,
+          "decided": 1091,
+          "correct": 658,
+          "reuse_rate": 0.8666666666666667,
+          "silent_error": 0.39688359303391385
+        },
+        "F_at_their_reuse": 0.4784210456210459,
+        "split": {
+          "silent_errors": 1089,
+          "by_rules_born_wrong": 656,
+          "by_rules_born_right": 433,
+          "share_born_wrong": 0.6023875114784206
+        },
+        "fires": {
+          "median_fires_per_rule": 35,
+          "dead_rules": 5,
+          "top_decile_fire_share": 0.38750634840020315
+        },
+        "n_rules": 31,
+        "e2e_accuracy": 0.44,
+        "silent_error_rate": 0.5531,
+        "proposal_action_accuracy": 0.4839,
+        "escalations": 31,
+        "escalation_curve_by_decile": [
+          0.14,
+          0.01,
+          0.0,
+          0.005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "conflict_share_of_escalations": 0.16129032258064516,
+        "U-a_carries_rung_1_caveat": false,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided_by_a_rule": 7,
+          "decided_rightly": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 3,
+          "decided_by_a_rule": 17,
+          "decided_rightly": 6
+        },
+        "edges_proposed": 6,
+        "edges_accepted": 6,
+        "edge_verdicts": {
+          "ok": 6
+        },
+        "contradice_subsuncion": 0
+      }
+    },
+    {
+      "rep": 3,
+      "problems": [],
+      "rows": {
+        "U-a": 0.7381,
+        "U-b": 0.020747875845542996,
+        "U-c": 0.5879828326180258,
+        "U-d": 0,
+        "U-e": 12
+      },
+      "beside": {
+        "right_born": {
+          "rules": 23,
+          "reused": 19,
+          "decided": 1191,
+          "correct": 807,
+          "reuse_rate": 0.8260869565217391,
+          "silent_error": 0.3224181360201511
+        },
+        "F_at_their_reuse": 0.30167026017460813,
+        "split": {
+          "silent_errors": 932,
+          "by_rules_born_wrong": 548,
+          "by_rules_born_right": 384,
+          "share_born_wrong": 0.5879828326180258
+        },
+        "fires": {
+          "median_fires_per_rule": 24.0,
+          "dead_rules": 11,
+          "top_decile_fire_share": 0.4305413687436159
+        },
+        "n_rules": 42,
+        "e2e_accuracy": 0.513,
+        "silent_error_rate": 0.476,
+        "proposal_action_accuracy": 0.5476,
+        "escalations": 42,
+        "escalation_curve_by_decile": [
+          0.155,
+          0.015,
+          0.005,
+          0.01,
+          0.005,
+          0.005,
+          0.005,
+          0.0,
+          0.005,
+          0.005
+        ],
+        "conflict_share_of_escalations": 0.2857142857142857,
+        "U-a_carries_rung_1_caveat": true,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided_by_a_rule": 7,
+          "decided_rightly": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 2,
+          "decided_by_a_rule": 18,
+          "decided_rightly": 18
+        },
+        "edges_proposed": 36,
+        "edges_accepted": 28,
+        "edge_verdicts": {
+          "no_solapan": 8,
+          "ok": 28
+        },
+        "contradice_subsuncion": 0
+      }
+    }
+  ]
+}
