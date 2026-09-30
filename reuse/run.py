@@ -4,10 +4,13 @@ prompt v1. **The only module of the plan that spends.**
 
 The loop is rung 2's, called and not copied (rule A): a fresh
 `PriorityEngine(space=Space())`, `OpenRouterProposer2(model, prompt_version="v1")`
-and `run_shadow2`, exactly as the four v1 records of 2026-08-07 were produced.
-Only the horizon changes, and the number of repetitions. The record keeps
-`rung2/run2.py`'s layout, so that Stage C reads the eight old records and these
-with the same functions.
+and `run_shadow2`, as the four v1 records of 2026-08-07 were produced. Only the
+horizon changes, the number of repetitions, and — by §1's amendment of
+2026-09-30, signed separately — one client parameter: every call carries
+`reasoning: {"effort": "none"}`, because the hosted model now reasons by default
+and its reasoning spent the 1,200-token budget on a third of the third smoke
+run's answers. The record keeps `rung2/run2.py`'s layout plus that setting, so
+that Stage C reads the eight old records and these with the same functions.
 
 THE ORDER OF EVENTS IS THE POINT, and nothing that costs is built before the
 thing that could forbid it has spoken:
@@ -72,7 +75,8 @@ def smoke_check(path: Path | None = None) -> tuple[bool, str]:
         return False, f"no smoke record at {path}; run --smoke first"
     rec = json.loads(path.read_text())
     expected = {"plan": str(plan.PLAN), "model": plan.MODEL,
-                "prompt_version": plan.PROMPT, "seed": plan.SEED, "n": plan.SMOKE_N}
+                "prompt_version": plan.PROMPT, "reasoning": plan.REASONING,
+                "seed": plan.SEED, "n": plan.SMOKE_N}
     wrong = {k: rec.get(k) for k, v in expected.items() if rec.get(k) != v}
     if wrong:
         return False, f"{path} was not produced under this protocol: {wrong}"
@@ -173,7 +177,8 @@ def main(argv: list[str] | None = None) -> int:
     n = plan.SMOKE_N if args.smoke else plan.N
     corpus = generate_corpus(n, seed=plan.SEED)
     engine = PriorityEngine(space=Space())
-    proposer = OpenRouterProposer2(model=plan.MODEL, prompt_version=plan.PROMPT)
+    proposer = OpenRouterProposer2(model=plan.MODEL, prompt_version=plan.PROMPT,
+                                   reasoning=plan.REASONING)
 
     print(f"\n{plan.PLAN} · stage B · {'smoke' if args.smoke else f'run {args.rep}'}:"
           f" {n} cases with {proposer.name}")
@@ -203,6 +208,7 @@ def main(argv: list[str] | None = None) -> int:
         "n": n,
         "seed": plan.SEED,
         "prompt_version": plan.PROMPT,
+        "reasoning": plan.REASONING,
         "system_prompt": proposer.system_prompt,
         "gates": checks.summary(),
         "metrics": m,

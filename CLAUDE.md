@@ -157,7 +157,10 @@ after another — **and does not start without Sergi's go-ahead on the spend**:
 the signature authorizes the plan, not the money. Stage C scores. The first
 command is blocking and writes nothing, and every writer in `reuse/` refuses
 while the plan carries a blank signature line — the gate reads `PLAN_REUSE.md`
-and no other plan, and counts every such line:
+and no other plan, and counts every such line. **§1 carries an amendment of
+2026-09-30 with its own signature line** — the proposer's calls do not reason,
+because the hosted model now does by default and spends the answer's budget on
+it — and the gate requires both signatures:
 
     python3 -m reuse.run --dry-run            # U-g1..U-g4; must pass first
     python3 -m reuse.readout                  # Stage A, free — already run

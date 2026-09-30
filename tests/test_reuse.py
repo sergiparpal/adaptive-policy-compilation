@@ -26,6 +26,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from harness.domain import generate_corpus
 from reuse import analysis, frontier, gates, plan
 from reuse import readout as stage_a
 from reuse import run as stage_b
@@ -43,6 +44,12 @@ class TestTheConstantsAreTheSignedOnes(unittest.TestCase):
         self.assertEqual(plan.MODEL, "deepseek/deepseek-v4-flash")
         self.assertEqual(plan.REPS, 3)
         self.assertEqual(plan.SMOKE_N, 20)
+
+    def test_the_amendment_to_section_1(self):
+        """2026-09-30: the proposer's calls do not reason, and the gate needs
+        both signatures — §0's and the amendment's."""
+        self.assertEqual(plan.REASONING, {"effort": "none"})
+        self.assertEqual(plan.MIN_SIGNATURES, 2)
 
     def test_the_five_lines_of_section_0(self):
         self.assertEqual(plan.U_A_MIN_REUSE, 0.30)
@@ -85,9 +92,16 @@ class TestTheGateCountsEverySignature(unittest.TestCase):
             "**Signed by Sergi: ________________________ (date: ______________)**\n"
         )["passes"])
 
-    def test_a_signed_line_passes(self):
+    def test_two_signed_lines_pass(self):
         self.assertTrue(self.gate(
-            "**Signed by Sergi: Sergi Parpal (date: 2026-10-01)**\n")["passes"])
+            "**Signed by Sergi: Sergi Parpal (date: 2026-09-29)**\n\n"
+            "**Signed by Sergi: Sergi Parpal (date: 2026-09-30)**\n")["passes"])
+
+    def test_a_plan_whose_amendment_line_went_missing_does_not_pass(self):
+        """One signed line is §0 alone: the minimum of two is what stops the
+        amendment's line from being deleted instead of signed."""
+        self.assertFalse(self.gate(
+            "**Signed by Sergi: Sergi Parpal (date: 2026-09-29)**\n")["passes"])
 
     def test_a_signed_table_does_not_cover_an_unsigned_amendment(self):
         g = self.gate("**Signed by Sergi: Sergi Parpal (date: 2026-10-01)**\n\n"
@@ -350,7 +364,7 @@ FIRST_SMOKE = Path("results_reuse/run_n20_smoke_401.json")
 
 def smoke_record(**over) -> dict:
     rec = {"plan": str(plan.PLAN), "model": plan.MODEL, "prompt_version": plan.PROMPT,
-           "seed": plan.SEED, "n": plan.SMOKE_N,
+           "reasoning": plan.REASONING, "seed": plan.SEED, "n": plan.SMOKE_N,
            "metrics": {"escalations": 20, "failed_proposals": 0, "n_rules": 12}}
     rec.update(over)
     return rec
@@ -382,12 +396,37 @@ class TestTheFullRunsWaitForASmokeRunThatWorked(unittest.TestCase):
         self.assertFalse(self.check(smoke_record(model="another/model"))[0])
         self.assertFalse(self.check(smoke_record(prompt_version="v2"))[0])
 
+    def test_a_smoke_run_that_reasoned_cannot_open_the_runs(self):
+        """§1's amendment: a smoke record made under another reasoning setting —
+        or before the setting existed — tested another instrument."""
+        self.assertFalse(self.check(smoke_record(reasoning=None))[0])
+        rec = smoke_record()
+        del rec["reasoning"]
+        self.assertFalse(self.check(rec)[0])
+
+    def test_the_third_smoke_run_passed_step_2b_and_cannot_open_them_now(self):
+        """It bore rules, so it would have passed the check as it stood when it
+        ran; it was made with the model reasoning, so it fails the check now."""
+        rec = json.loads(THIRD_SMOKE.read_text())
+        self.assertGreaterEqual(rec["metrics"]["n_rules"], 1)
+        self.assertNotIn("reasoning", rec)
+        self.assertFalse(stage_b.smoke_check(THIRD_SMOKE)[0])
+
     def test_a_smoke_run_that_worked(self):
         self.assertTrue(self.check(smoke_record())[0])
 
+    def on_its_own_terms(self, path: Path) -> tuple[bool, str]:
+        """The record as if made under today's protocol: what fails then is the
+        record itself, not the reasoning setting it predates."""
+        rec = json.loads(path.read_text())
+        rec["reasoning"] = plan.REASONING
+        return self.check(rec)
+
     def test_the_first_smoke_run_would_not_have_opened_the_runs(self):
-        """The record that motivated the check fails it."""
-        ok, why = stage_b.smoke_check(FIRST_SMOKE)
+        """The record that motivated the check fails it — as it stands, on the
+        reasoning setting it predates, and on its own terms too."""
+        self.assertFalse(stage_b.smoke_check(FIRST_SMOKE)[0])
+        ok, why = self.on_its_own_terms(FIRST_SMOKE)
         self.assertFalse(ok)
         self.assertIn("none of the 20 proposals", why)
 
@@ -426,7 +465,8 @@ class TestTheFullRunsWaitForASmokeRunThatWorked(unittest.TestCase):
         client.assert_not_called()
 
     def test_the_second_smoke_run_would_not_have_opened_the_runs_either(self):
-        ok, why = stage_b.smoke_check(SECOND_SMOKE)
+        self.assertFalse(stage_b.smoke_check(SECOND_SMOKE)[0])
+        ok, why = self.on_its_own_terms(SECOND_SMOKE)
         self.assertFalse(ok)
         self.assertIn("none of the 20 proposals", why)
 
@@ -520,6 +560,45 @@ class TestTheKeyIsCheckedBeforeAnythingIsCalled(unittest.TestCase):
             os.environ.pop("OPENROUTER_API_KEY", None)
             self.assertEqual(stage_b.main(["--dry-run"]), 0)
         fetch.assert_not_called()
+
+
+THIRD_SMOKE = Path("results_reuse/run_n20_smoke_reasoning_on.json")
+
+
+class TestTheProposerCanBeToldNotToReason(unittest.TestCase):
+    """`rung2/proposers2.py`'s `reasoning` parameter, added for §1's amendment.
+    Built against the recorded SDK double, so nothing reaches the network."""
+
+    def calls(self, reasoning, *answers) -> list[dict]:
+        from tests.doubles import FakeOpenAIClient, FixedResponses, fake_sdk
+        client = FakeOpenAIClient(FixedResponses(*answers))
+        with fake_sdk(openai=client):
+            from rung2.proposers2 import OpenRouterProposer2
+            proposer = OpenRouterProposer2(reasoning=reasoning)
+        case = generate_corpus(1, seed=17)[0]
+        proposer.propose(case, "")
+        return client.peticiones
+
+    GOOD = ('{"action": "T1_GENERAL", "conditions": '
+            '[{"attr": "severity", "op": "eq", "value": 3}], "note": "x"}')
+
+    def test_every_call_carries_it_retries_included(self):
+        calls = self.calls(plan.REASONING, "", "", self.GOOD)
+        self.assertEqual(len(calls), 3)
+        for kwargs in calls:
+            self.assertEqual(kwargs["extra_body"], {"reasoning": {"effort": "none"}})
+
+    def test_by_default_nothing_new_is_sent(self):
+        """What keeps every record made before 2026-09-30 replaying as it did."""
+        for kwargs in self.calls(None, "", self.GOOD):
+            self.assertNotIn("extra_body", kwargs)
+
+    def test_stage_b_builds_the_proposer_with_the_amended_setting(self):
+        """The call in `reuse/run.py` passes `plan.REASONING` — checked on the
+        source, since building it for real would need a key and a network."""
+        source = Path("reuse/run.py").read_text()
+        self.assertIn("reasoning=plan.REASONING", source)
+        self.assertIn('"reasoning": plan.REASONING', source)
 
 
 if __name__ == "__main__":

@@ -3,11 +3,12 @@ The gate and the constants of `PLAN_REUSE.md`, in one place.
 
 THE GATE READS THIS PLAN AND NO OTHER, AND IT COUNTS SIGNATURES. Every line of
 `PLAN_REUSE.md` that starts `**Signed by Sergi:` must be filled in, and there
-must be at least one. §0's table carries one today; an amendment forced by a
-blocking check would carry its own, as both of the last two plans' did. A gate
-that stopped at the first line would find §0 signed and report ok over an
-unsigned amendment — which is why `CLAUDE.md` says not to copy
-`rung2/pair_judgement.py`'s gate into a plan that may carry more than one.
+must be at least two: §0's table, and the amendment §8's smoke run forced into §1
+on 2026-09-30 — the proposer's calls do not reason. A gate that stopped at the
+first line would find §0 signed and report ok over the unsigned amendment, which
+is why `CLAUDE.md` says not to copy `rung2/pair_judgement.py`'s gate into a plan
+that carries more than one; and a minimum of two means deleting the amendment's
+line cannot pass either.
 
 Every module of this package that writes a record calls `refuse_unsigned`
 before it writes anything, and `reuse/run.py` calls it before it constructs the
@@ -31,7 +32,7 @@ PLAN = Path("PLAN_REUSE.md")
 OUT = Path("results_reuse")
 
 SIGNATURE = "**Signed by Sergi:"
-MIN_SIGNATURES = 1                 # §0's table; an amendment adds its own line
+MIN_SIGNATURES = 2                 # §0's table and §1's amendment of 2026-09-30
 BLANKS = re.compile(r"_{3,}")
 
 # --- §10: the protocol, fixed before any figure ------------------------------
@@ -41,6 +42,10 @@ PROMPT = "v1"
 MODEL = "deepseek/deepseek-v4-flash"
 REPS = 3                           # "unless the signature says otherwise" (§2)
 SMOKE_N = 20                       # §8: the smoke run, before the first full one
+# §1's amendment of 2026-09-30: the proposer's calls do not reason. OpenRouter
+# documents `effort: none` as the one setting that disables reasoning entirely;
+# `exclude` only hides it, and reasoning tokens count against `max_tokens`.
+REASONING = {"effort": "none"}
 
 # --- §0: the five lines ------------------------------------------------------
 U_A_MIN_REUSE = 0.30               # U-a holds at reuse_rate >= 0.30
@@ -77,7 +82,7 @@ SMOKE_PATH = OUT / f"run_n{SMOKE_N}_smoke.json"
 
 
 def gate_signature(path: Path = PLAN) -> dict:
-    """Every signature line in the plan filled in, and at least one of them."""
+    """Every signature line in the plan filled in, and at least MIN_SIGNATURES."""
     lines = ([l.strip() for l in path.read_text().splitlines()
               if l.startswith(SIGNATURE)] if path.exists() else [])
     unsigned = [l for l in lines if BLANKS.search(l)]

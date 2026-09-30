@@ -263,7 +263,11 @@ class OpenRouterProposer2:
     neighbourhood of the base. It never receives the true action."""
 
     def __init__(self, model: str = "deepseek/deepseek-v4-flash", max_retries: int = 2,
-                 prompt_version: str = "v1"):
+                 prompt_version: str = "v1", reasoning: dict[str, Any] | None = None):
+        """`reasoning`, added 2026-09-30 for the amendment to §1 of
+        PLAN_REUSE.md: when given, every call carries it as OpenRouter's
+        `reasoning` parameter. The default sends nothing new, so every record
+        this class produced before that date replays as it did."""
         from openai import OpenAI
 
         if prompt_version not in PROMPTS:
@@ -274,6 +278,7 @@ class OpenRouterProposer2:
         self.system_prompt = PROMPTS[prompt_version]
         self.render = RENDERERS[prompt_version]
         self.max_retries = max_retries
+        self.reasoning = reasoning
         self._client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
@@ -297,6 +302,8 @@ class OpenRouterProposer2:
                 }
                 if attempt == 0:
                     kwargs["response_format"] = {"type": "json_object"}
+                if self.reasoning is not None:
+                    kwargs["extra_body"] = {"reasoning": self.reasoning}
                 resp = self._client.chat.completions.create(**kwargs)
                 payload = parse_payload(resp.choices[0].message.content or "")
                 return payload.get("action"), payload
