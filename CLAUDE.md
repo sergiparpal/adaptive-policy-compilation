@@ -269,6 +269,14 @@ it:
 
 Check with `${#OPENROUTER_API_KEY}` (the length), never with its value.
 
+**A key that loads and authenticates can still be unable to call a model.**
+OpenRouter's *management* keys answer its key endpoint (`/api/v1/key`) with a
+200 and read the account's credits, and every completion call refuses them with
+`401 — User not found`. That cost two smoke runs of `PLAN_REUSE.md` on
+2026-09-30. `reuse/run.py` now asks that endpoint first and refuses a
+management key. For any other paid command, read `is_management_key` off the
+same endpoint before spending: a 200 alone proves nothing.
+
 ---
 
 ## Sequence, with mandatory stops

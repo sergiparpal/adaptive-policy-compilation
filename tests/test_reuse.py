@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -413,6 +414,8 @@ class TestTheFullRunsWaitForASmokeRunThatWorked(unittest.TestCase):
             good.write_text(json.dumps(smoke_record()))
             with mock.patch.object(plan, "gate_signature", return_value=SIGNED), \
                  mock.patch.object(plan, "SMOKE_PATH", good), \
+                 mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": "test"}), \
+                 mock.patch.object(stage_b, "fetch_key_info", return_value=API_KEY), \
                  mock.patch.object(gates, "run_all",
                                    side_effect=RuntimeError("reached the checks")), \
                  mock.patch.object(stage_b, "OpenRouterProposer2",
@@ -421,6 +424,102 @@ class TestTheFullRunsWaitForASmokeRunThatWorked(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, "reached the checks"):
                     stage_b.main(["--rep", "1"])
         client.assert_not_called()
+
+    def test_the_second_smoke_run_would_not_have_opened_the_runs_either(self):
+        ok, why = stage_b.smoke_check(SECOND_SMOKE)
+        self.assertFalse(ok)
+        self.assertIn("none of the 20 proposals", why)
+
+
+SECOND_SMOKE = Path("results_reuse/run_n20_smoke_401_management_key.json")
+API_KEY = (200, {"data": {"is_management_key": False, "is_provisioning_key": False}})
+MANAGEMENT_KEY = (200, {"data": {"is_management_key": True, "is_provisioning_key": True}})
+
+
+class TestTheKeyIsCheckedBeforeAnythingIsCalled(unittest.TestCase):
+    """Step 2c of `reuse/run.py`, added on 2026-09-30 after the second smoke run
+    met a management key: OpenRouter's key endpoint accepts one — it answered
+    200 — and every completion call refuses it. **No test here reaches the
+    network**: the endpoint is always replaced."""
+
+    def check(self, answer=None, *, key: str | None = "test", raises=None):
+        fetch = mock.Mock(return_value=answer, side_effect=raises)
+        with mock.patch.dict(os.environ):
+            os.environ.pop("OPENROUTER_API_KEY", None)
+            if key is not None:
+                os.environ["OPENROUTER_API_KEY"] = key
+            return stage_b.key_check(fetch), fetch
+
+    def test_an_api_key(self):
+        (ok, _), _ = self.check(API_KEY)
+        self.assertTrue(ok)
+
+    def test_a_management_key_is_refused(self):
+        (ok, why), _ = self.check(MANAGEMENT_KEY)
+        self.assertFalse(ok)
+        self.assertIn("management key", why)
+
+    def test_a_key_the_endpoint_rejects(self):
+        (ok, why), _ = self.check((401, {"error": {"code": 401}}))
+        self.assertFalse(ok)
+        self.assertIn("HTTP 401", why)
+
+    def test_no_key_in_the_environment_asks_nothing(self):
+        (ok, why), fetch = self.check(API_KEY, key=None)
+        self.assertFalse(ok)
+        self.assertIn("hard rule 7", why)
+        fetch.assert_not_called()
+
+    def test_an_unreachable_endpoint_refuses_rather_than_crashes(self):
+        (ok, why), _ = self.check(raises=OSError("no route"))
+        self.assertFalse(ok)
+        self.assertIn("could not be reached", why)
+
+    def test_nothing_it_says_carries_the_key(self):
+        secret = "sk-or-v1-" + "0" * 64
+        for answer in (API_KEY, MANAGEMENT_KEY, (401, {})):
+            (_, why), _ = self.check(answer, key=secret)
+            self.assertNotIn(secret, why)
+
+    def refused(self, argv: list[str], smoke: dict | None) -> None:
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "smoke.json"
+            if smoke is not None:
+                path.write_text(json.dumps(smoke))
+            with mock.patch.object(plan, "gate_signature", return_value=SIGNED), \
+                 mock.patch.object(plan, "SMOKE_PATH", path), \
+                 mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": "test"}), \
+                 mock.patch.object(stage_b, "fetch_key_info",
+                                   return_value=MANAGEMENT_KEY), \
+                 mock.patch.object(gates, "run_all",
+                                   side_effect=AssertionError("checks ran")) as checks, \
+                 mock.patch.object(stage_b, "OpenRouterProposer2",
+                                   side_effect=AssertionError("client built")) as client, \
+                 mock.patch.object(Path, "write_text",
+                                   side_effect=AssertionError("wrote")) as write, \
+                 mock.patch("builtins.print"):
+                with self.assertRaises(SystemExit):
+                    stage_b.main(argv)
+        checks.assert_not_called()
+        client.assert_not_called()
+        write.assert_not_called()
+
+    def test_the_smoke_run_refuses_a_management_key_before_the_checks(self):
+        self.refused(["--smoke"], None)
+
+    def test_a_full_run_refuses_one_even_after_a_smoke_run_that_worked(self):
+        self.refused(["--rep", "1"], smoke_record())
+
+    def test_the_dry_run_needs_no_key(self):
+        with mock.patch.dict(os.environ), \
+             mock.patch.object(gates, "run_all", return_value=fake_checks()), \
+             mock.patch.object(gates, "report"), \
+             mock.patch.object(stage_b, "fetch_key_info",
+                               side_effect=AssertionError("asked")) as fetch, \
+             mock.patch("builtins.print"):
+            os.environ.pop("OPENROUTER_API_KEY", None)
+            self.assertEqual(stage_b.main(["--dry-run"]), 0)
+        fetch.assert_not_called()
 
 
 if __name__ == "__main__":
