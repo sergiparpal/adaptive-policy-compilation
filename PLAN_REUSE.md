@@ -1,5 +1,20 @@
 # PLAN_REUSE — the founding question, on the engine that can answer it
 
+> **[CLOSED 2026-09-30] Executed in full, with §0 and §1's amendment signed.**
+> Sergi signed §0 on 2026-09-29, before any figure of the plan existed. He signed
+> the amendment to §1 on 2026-09-30, before any full run: the proposer's calls do
+> not reason. All five rows were adjudicated on the median of three runs: **`U-d`
+> refuted; `U-a`, `U-b`, `U-c` and `U-e` hold**, and `U-f` is reported. **The
+> figures are owned by
+> [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md)**, and no
+> result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-09-29. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> the amendment, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-09-29, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
