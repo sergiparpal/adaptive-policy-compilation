@@ -149,24 +149,24 @@ than no gate, because it is believed.
 Do not remove that gate and do not sign any plan: hard rule 2 below, and §0 of
 each plan restates it. A model may draft a band and may not sign it.
 
-**`PLAN_REUSE.md` is open: the founding question, on rung 2's engine.** Sergi
-signed §0 on 2026-09-29, before any of its figures existed, and its record is
-`results_reuse/FINDINGS_REUSE.md`, which grows by stage. Stage A is free and has
-run. **Stage B spends** — a smoke run, then the runs §2 of the plan fixes, one
-after another — **and does not start without Sergi's go-ahead on the spend**:
-the signature authorizes the plan, not the money. Stage C scores. The first
-command is blocking and writes nothing, and every writer in `reuse/` refuses
-while the plan carries a blank signature line — the gate reads `PLAN_REUSE.md`
-and no other plan, and counts every such line. **§1 carries an amendment of
-2026-09-30 with its own signature line** — the proposer's calls do not reason,
-because the hosted model now does by default and spends the answer's budget on
-it — and the gate requires both signatures:
+**`PLAN_REUSE.md` closed on 2026-09-30: the founding question, on rung 2's
+engine.** Six signed rows: five adjudicated, one reported. Sergi signed §0 on
+2026-09-29 and an amendment to §1 on 2026-09-30, each before any figure it
+governs existed. The amendment says the proposer's calls do not reason: the hosted
+model now reasons by default and spends the answer's budget on it. The record is
+`results_reuse/FINDINGS_REUSE.md`, and `STATUS.md` indexes its figures. **Stages A
+and C are free and reproduce from the committed records. Stage B spent**: its
+records are guarded, and a re-run neither overwrites them nor gives the same draws
+back, so a paid run does not start without Sergi asking for it. The first command
+is blocking and writes nothing. Every writer in `reuse/` refuses while the plan
+carries a blank signature line; the gate reads `PLAN_REUSE.md` and no other plan,
+counts every such line, and requires both signatures:
 
     python3 -m reuse.run --dry-run            # U-g1..U-g4; must pass first
-    python3 -m reuse.readout                  # Stage A, free — already run
-    .venv/bin/python -m reuse.run --smoke     # Stage B: spends, on Sergi's go
+    python3 -m reuse.readout                  # Stage A, free
+    python3 -m reuse.score                    # Stage C, free, from the runs
+    .venv/bin/python -m reuse.run --smoke     # Stage B: spends — only if asked
     .venv/bin/python -m reuse.run --rep 1     # then 2, then 3 — never side by side
-    python3 -m reuse.score                    # Stage C
 
 The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before
