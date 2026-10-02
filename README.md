@@ -38,6 +38,7 @@ up in four places at once.
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 | **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — closed 2026-09-30 | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
+| **F** · fidelity | whether a compiled rule decides a later case the way the model would have, asked afresh on the same case — **open**: Stage A has run, Stage B has not | [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -217,6 +218,26 @@ python3 -m reuse.score                    # Stage C · the five rows, from the r
 .venv/bin/python -m reuse.run --rep 1     # then --rep 2 and --rep 3, never in parallel
 ```
 
+**[`PLAN_FIDELITY.md`](PLAN_FIDELITY.md) is open**, signed by Sergi on 2026-10-02
+before any of its figures existed. It asks the founding question in the form
+`PLAN_REUSE.md` measured only through a proxy: on a case a compiled rule decided,
+would the model, asked afresh, have chosen the same queue, and been right more
+often than the rule? It re-asks the model on prompts rebuilt from that plan's
+Stage B records, so nothing is re-run. Its record is
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
+which grows by stage. Its gate reads that plan and no other, counts every
+signature line, and guards all three of its writers, the free ones too. Stage A
+has run. **Stage B spends, and waits for Sergi's go-ahead on the spend**, one
+session after another, each record committed before the next:
+
+```bash
+python3 -m fidelity.ask --dry-run                  # F-g1..F-g4, blocking; writes nothing
+python3 -m fidelity.sample                         # Stage A · the draw and the free readout
+.venv/bin/python -m fidelity.ask --session smoke   # Stage B · spends · the smoke run first
+.venv/bin/python -m fidelity.ask --session births  # then base1, base2, base3, ticket_only
+python3 -m fidelity.score                          # Stage C · the five rows
+```
+
 Their destinations are guarded by `harness/record_guard.py`: those records cost
 money and a re-run does not give the same thing back.
 
@@ -348,7 +369,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `run_experiment.py models` write nothing — plus the `--dry-run` forms:
 > `sensitivity/sweep.py --dry-run` and `ilp/compare.py --dry-run`, which build
 > every policy, run every gate and write no record on purpose, and the four of
-> `reuse/`, which run `PLAN_REUSE.md`'s blocking checks and write nothing.
+> `reuse/`, which run `PLAN_REUSE.md`'s blocking checks and write nothing, and
+> the three of `fidelity/`, which run `PLAN_FIDELITY.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -448,7 +470,8 @@ What it covers, and why those things:
 | `test_sensitivity.py` | the sensitivity instrument: the five signed bands as named constants, the two constants of §8, the ρ grid, `A-g3`'s parity against the frozen engine, and the gate that counts signatures instead of stopping at the first. **No figure of the sweep** |
 | `test_ilp.py` | the ILP instrument: the four signed bands, the 224-condition language with the 29 hidden rules inside it, `I-g3`'s no-leak property, first-match-wins on a list checkable by hand, and the gate. **No figure of the four rows** |
 | `test_reuse.py` | the `PLAN_REUSE.md` instrument: §10's constants and §0's five lines, each verdict at its edge, `F` checked by hand, births and the split on a record small enough to check by hand, `U-g2` and `U-g3` on the real inputs, every writer refusing unsigned before it builds the client or writes, the full runs refusing without a smoke run that worked, every paid run refusing a management key — with OpenRouter's endpoint always replaced, so no test reaches the network — and §1's amendment: the proposer's `reasoning` setting sent on every call, retries included, and never by default. **No figure of the plan** |
-| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the four that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
+| `test_fidelity.py` | the `PLAN_FIDELITY.md` instrument: §10's constants and §0's five lines, each verdict at its edge, the gate on one signature line with `PLAN_REUSE.md`'s default untouched, `F-g2` on the three Stage B records and its teeth, every birth prompt against the request rung 2's loop built when the SDK double replays the four v1 n=100 records, the draw and the sessions on the real records, Stage C's arithmetic by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, and Stage B end to end through the double — resuming, and stopping on an outage. **No figure of the plan** |
+| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the five that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -1031,6 +1054,14 @@ adaptive-policy-compilation/
 │   ├── induce_check.py      I-g1..I-g4 · blocking
 │   └── compare.py           the four rows, gated on PLAN_ILP.md
 │
+├── fidelity/             F · the model re-asked on the cases its rules decided
+│   ├── plan.py              the gate and §10's constants; §0's five lines
+│   ├── replay.py            a Stage B record rebuilt case by case · F-g2
+│   ├── prompts.py           birth, B and ticket-only prompts, rung 2's own
+│   ├── sample.py            Stage A · F-g1..F-g3, the draw, the free readout
+│   ├── ask.py               Stage B · the calls · spends
+│   └── score.py             Stage C · the five rows, gated on PLAN_FIDELITY.md
+│
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
 │   ├── analysis.py          births, the split by birth, F and the gap
@@ -1056,7 +1087,7 @@ adaptive-policy-compilation/
 ├── .github/dependabot.yml   bumps the actions; does NOT touch the pip pins
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
-    results_reuse/
+    results_reuse/  results_fidelity/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
