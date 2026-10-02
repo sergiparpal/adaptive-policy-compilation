@@ -214,6 +214,32 @@ before any base session ran:
 from this record, and owns the figure. It is written here because it was known
 before the bases were asked, and the record should say what was known when.
 
+**The base1 session: 1,214 answers of 1,222 valid, in two segments.** On Sergi's
+go-ahead, `fidelity.ask --session base1`, 2026-10-02, `PYTHONHASHSEED=0`, from
+`9ce7a69` and a clean tree. The record is [`ask_base1.json`](ask_base1.json).
+
+- **The first segment was cut at 306 answers.** It ran as a background command,
+  and the harness ends those after about 30 minutes. The partial file kept
+  every answer (§5.8). Only the call in flight was lost; it was paid for and is
+  in no record.
+- **The second segment resumed in Sergi's terminal**, at 18:57:52Z, which the
+  record keeps under `resumed_at`. No prompt was asked twice in a pass.
+- **Two refused attempts came between them.** §8's key check refused a key twice,
+  each time before any call. The shell's startup was replacing the key
+  `CLAUDE.md` rule 7 documents with one OpenRouter rejects. Loading the key the
+  way rule 7 documents fixed it.
+- **The eight failures fall on seven items**, all in the uniform draw: `d1:171`
+  failed in both passes. Each came back empty or cut off mid-JSON after three
+  attempts.
+- **That is the symptom the reasoning setting cured on 2026-09-30**, then at 5
+  of 15 calls and here at 8 of 1,222. Why these eight is not known: the record
+  does not keep `finish_reason`.
+- **Run 1's value is defined.** 7 of the 600 drawn items lack a valid pair,
+  0.0117, under §5.5's 0.05.
+- **The pace by the wall clock: about 119 minutes of calling**, 5.9 s per
+  answer. Over the same spans the per-call timer adds up to about 5% more than
+  the wall clock does, and why is not known; its median is 4.09 s.
+
 ---
 
 ## Files
@@ -225,6 +251,8 @@ results_fidelity/ask_smoke.json   Stage B, the smoke session: 15 of 15 valid;
                                it opens the other sessions and enters no row
 results_fidelity/ask_births.json  Stage B, the births session: 268 of 270 valid,
                                the two failures one prompt; F-a's record
+results_fidelity/ask_base1.json   Stage B, base 1: 1,214 of 1,222 valid, in two
+                               segments, resumed once
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
