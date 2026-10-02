@@ -135,7 +135,8 @@ narrower than it reads, and `STATUS.md` says so beside the row rather than only 
 the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
-2026-09-29 so does `reuse/run.py`, below. It refuses to run while §0 of **the
+2026-09-29 so does `reuse/run.py`, and since 2026-10-02 `fidelity/ask.py`, both
+below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -172,6 +173,28 @@ The last three are long runs, because the multi-start repeats the search many
 times per instance; the README's reproduction block gives their durations before
 you launch one. The four originals are left in place and unmodified, so the
 pre-audit figures stay reproducible next to the corrected ones.
+
+**`PLAN_FIDELITY.md` is open: the founding question in its cleanest form.** Sergi
+signed §0 on 2026-10-02, before any figure it governs existed. It asks whether a
+compiled rule decides a later case the way the model would have. It re-asks the
+model, under prompt v1 and with reasoning off, on prompts rebuilt from
+`PLAN_REUSE.md`'s Stage B records, with every rule that matches the ticket hidden.
+The record is `results_fidelity/FINDINGS_FIDELITY.md`, which grows by stage.
+**Stage A is free and has run. Stage B spends, and does not start without Sergi
+asking for it**: one session after another, each record committed before the next.
+Every writer in `fidelity/` refuses while the plan carries a blank signature line;
+the gate reads `PLAN_FIDELITY.md` and no other plan and counts every such line.
+The first command is blocking and writes nothing:
+
+    python3 -m fidelity.ask --dry-run                   # F-g1..F-g4; must pass first
+    python3 -m fidelity.sample                          # Stage A, free
+    .venv/bin/python -m fidelity.ask --session smoke    # Stage B: spends — only if asked
+    .venv/bin/python -m fidelity.ask --session births   # then base1, base2, base3, ticket_only
+    python3 -m fidelity.score                           # Stage C, free, from the sessions
+
+**A session that dies keeps what it paid for.** Answers are appended to a
+git-ignored partial file, and the same command resumes there. A run of failed
+calls stops a session without recording them, because an outage is not answers.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
@@ -244,7 +267,7 @@ share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
-and, since 2026-09-29, `reuse/run.py`.
+and, since 2026-09-29, `reuse/run.py`, and since 2026-10-02, `fidelity/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
