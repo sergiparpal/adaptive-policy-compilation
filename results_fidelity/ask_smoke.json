@@ -1,0 +1,888 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-02T13:25:29Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "4f4c16cd6ea2bf04c6c184c43472f613357bc23c",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "7e8dae283b389c71"
+  },
+  "plan": "PLAN_FIDELITY.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "temperature": 0,
+  "max_tokens": 1200,
+  "max_retries": 2,
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "sample_record": "results_fidelity/sample.json",
+  "sample_sha256": "ca65d4d6cfafdea0e1c66dd795d9c13e185aabef849c4548c7d01d30370eec7e",
+  "gates": {
+    "F-g1": {
+      "what": "the suite is green, and each Stage B record reproduces its own metrics, fire counts, births and corpus labels, under Stage B's model and reasoning setting",
+      "records": {
+        "run1": {
+          "problems": [],
+          "passes": true
+        },
+        "run2": {
+          "problems": [],
+          "passes": true
+        },
+        "run3": {
+          "problems": [],
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1157,
+        "result": "OK (skipped=1)",
+        "seconds": 62.6,
+        "passes": true
+      },
+      "passes": true
+    },
+    "F-g2": {
+      "what": "each run rebuilt case by case from its record alone reproduces every decision, screen, edge verdict and final count, and its system prompt is v1's",
+      "runs": {
+        "run1": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        },
+        "run2": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        },
+        "run3": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        }
+      },
+      "passes": true
+    },
+    "F-g3": {
+      "what": "no B screen shows a rule matching its ticket or the deciding rule, and each carries v1's coverage header; ticket-only prompts are the empty-base rendering; the draw, the census and the smoke run are what \u00a72 and \u00a78 sign",
+      "prompts": {
+        "birth": 135,
+        "hidden": 1841,
+        "ticket_only": 301
+      },
+      "first_problems": [],
+      "F-d_population": {
+        "per_run": {
+          "run1": {
+            "silent_errors_in_draw": 341,
+            "oncall_census": 7
+          },
+          "run2": {
+            "silent_errors_in_draw": 346,
+            "oncall_census": 7
+          },
+          "run3": {
+            "silent_errors_in_draw": 278,
+            "oncall_census": 7
+          }
+        },
+        "minimum": 100,
+        "F-d_adjudicable": true
+      },
+      "passes": true
+    },
+    "F-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_FIDELITY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_FIDELITY.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-02T13:24:48Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-02T13:25:29Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 0,
+      "id": "b3:1",
+      "kind": "birth",
+      "run": 3,
+      "idx": 1,
+      "digest": "a2333f522879ad2e",
+      "shown_ids": [
+        "R0001"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un cliente pro con severidad 3 (media), producto dashboard, fuera de horario laboral. No hay regla existente que cubra este perfil. Se asigna a T2_TECHNICAL porque es un problema t\u00e9cnico de nivel medio en horario no cr\u00edtico, sin indicios de seguridad ni facturaci\u00f3n. La regla es generalizable: clientes pro con severidad <=3 y producto dashboard en off_hours van a T2_TECHNICAL."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "T1_GENERAL",
+        "truth_rule": "H29",
+        "recorded_answer": "T2_TECHNICAL",
+        "recorded_answer_right": false
+      },
+      "seconds": 3.1,
+      "asked_at": "2026-10-02T13:24:51Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 1,
+      "id": "b1:11",
+      "kind": "birth",
+      "run": 1,
+      "idx": 11,
+      "digest": "e7f5e661f97a6d5f",
+      "shown_ids": [
+        "R0001",
+        "R0002",
+        "R0004",
+        "R0005",
+        "R0007",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0003",
+        "R0006"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un cliente business con producto billing y severidad 2 (no cr\u00edtica). No existe regla para business+billing con severidad media; las reglas existentes cubren pro/free o billing con severidad 4. Se asigna a T2_TECHNICAL porque billing no es cr\u00edtico y requiere soporte t\u00e9cnico, no especialista de facturaci\u00f3n (severidad 2 no es baja)."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "BILLING_SPECIALIST",
+        "truth_rule": "H10",
+        "recorded_answer": "T2_TECHNICAL",
+        "recorded_answer_right": false
+      },
+      "seconds": 2.04,
+      "asked_at": "2026-10-02T13:24:53Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 2,
+      "id": "b1:33",
+      "kind": "birth",
+      "run": 1,
+      "idx": 33,
+      "digest": "0d01ec1449ebe965",
+      "shown_ids": [
+        "R0006",
+        "R0001",
+        "R0011",
+        "R0003",
+        "R0007",
+        "R0016",
+        "R0014",
+        "R0015",
+        "R0005",
+        "R0017",
+        "R0004",
+        "R0009"
+      ],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un cliente business con producto billing y severidad 4 (baja). Las reglas existentes para business+billing solo cubren severidad <=3 (R0011) o son para free/pro. Para severidad 4 en business+billing no hay regla, pero por analog\u00eda con R0007 (pro+billing+severity>=4 -> BILLING_SPECIALIST) y dado que business es un tier superior a pro, la acci\u00f3n m\u00e1s adecuada es BILLING_SPECIALIST. La regla es un caso particular de business+billing+severity>=4, no se solapa con otras reglas existentes porque ninguna cubre esa combinaci\u00f3n."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SELF_SERVICE_DEFLECT",
+        "truth_rule": "H12",
+        "recorded_answer": "BILLING_SPECIALIST",
+        "recorded_answer_right": false
+      },
+      "seconds": 2.31,
+      "asked_at": "2026-10-02T13:24:55Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 3,
+      "id": "b1:4",
+      "kind": "birth",
+      "run": 1,
+      "idx": 4,
+      "digest": "e7dc4982d75de4f6",
+      "shown_ids": [
+        "R0001",
+        "R0003",
+        "R0004",
+        "R0002"
+      ],
+      "action": "T1_GENERAL",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "free"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "gte",
+            "value": 1
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un usuario free con severidad baja (4) pero con 13 tickets previos en 30 d\u00edas, lo que indica un patr\u00f3n de uso intensivo que no debe ser desviado a autoservicio. La regla R0003 solo aplica si prior_tickets_30d es 0, por lo que este ticket cae fuera de ella. Al no haber otra regla que case, se asigna a T1_GENERAL como cola por defecto para usuarios free con actividad reciente."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SELF_SERVICE_DEFLECT",
+        "truth_rule": "H24",
+        "recorded_answer": "SELF_SERVICE_DEFLECT",
+        "recorded_answer_right": true
+      },
+      "seconds": 2.33,
+      "asked_at": "2026-10-02T13:24:58Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 4,
+      "id": "b1:1235",
+      "kind": "birth",
+      "run": 1,
+      "idx": 1235,
+      "digest": "c65f18dd23de2492",
+      "shown_ids": [
+        "R0002",
+        "R0021",
+        "R0031",
+        "R0032",
+        "R0036",
+        "R0037",
+        "R0038",
+        "R0039",
+        "R0040",
+        "R0041",
+        "R0042",
+        "R0043"
+      ],
+      "action": "SECURITY_INCIDENT",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [
+          "R0002"
+        ],
+        "loses_to": [],
+        "note": "El ticket tiene has_security_keyword=true, lo que activa todas las reglas de seguridad (R0021, R0031, etc.). Aunque tambi\u00e9n casa R0002 (pro, severity\u22643, dashboard, off_hours), la seguridad debe primar sobre cualquier otra consideraci\u00f3n t\u00e9cnica. La regla general es: cualquier ticket con indicador de seguridad debe ir a SECURITY_INCIDENT, independientemente de otros atributos. Se declara beats sobre R0002 porque ambas casan y no hay contenci\u00f3n (R0002 tiene condiciones adicionales que no est\u00e1n en la regla de seguridad), y la seguridad debe ganar."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SECURITY_INCIDENT",
+        "truth_rule": "H02",
+        "recorded_answer": "SECURITY_INCIDENT",
+        "recorded_answer_right": true
+      },
+      "seconds": 2.45,
+      "asked_at": "2026-10-02T13:25:00Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 5,
+      "id": "d1:798",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 798,
+      "digest": "2383513f535caca6",
+      "shown_ids": [
+        "R0001",
+        "R0016",
+        "R0026",
+        "R0027",
+        "R0004",
+        "R0007",
+        "R0011",
+        "R0021",
+        "R0020",
+        "R0012",
+        "R0031",
+        "R0032"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es pro, billing, severity 3. La regla R0012 cubre el mismo caso pero con off_hours=true, por lo que no casa. La regla R0007 cubre billing con severity gte 4, no aplica. La regla m\u00e1s espec\u00edfica que casa es esta nueva, que es un subcaso de R0012 (sin off_hours) y no se solapa con otras reglas existentes de forma no contenida, por lo que no necesita declarar prioridad."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "BILLING_SPECIALIST",
+        "truth_rule": "H11",
+        "rule_id": "R0015",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": false,
+        "uniform": true,
+        "census": null
+      },
+      "seconds": 2.07,
+      "asked_at": "2026-10-02T13:25:02Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 6,
+      "id": "d1:1919",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 1919,
+      "digest": "c5994ddb69f27635",
+      "shown_ids": [
+        "R0001",
+        "R0008",
+        "R0010",
+        "R0015",
+        "R0026",
+        "R0022",
+        "R0004",
+        "R0021",
+        "R0014",
+        "R0020",
+        "R0031",
+        "R0032"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es pro, api, severity 3. La regla R0022 cubre pro+api pero con severity gte 4, no casa. No hay regla exacta para pro+api+severity lte 3; se crea esta regla general que cubre el caso y futuros an\u00e1logos. No se solapa con otras reglas existentes de forma no contenida, por lo que no necesita declarar prioridad."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "truth_rule": "H16",
+        "rule_id": "R0027",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": true,
+        "uniform": true,
+        "census": null
+      },
+      "seconds": 2.34,
+      "asked_at": "2026-10-02T13:25:04Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 7,
+      "id": "d1:951",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 951,
+      "digest": "67a3aa9d3961d7ac",
+      "shown_ids": [
+        "R0001",
+        "R0016",
+        "R0005",
+        "R0007",
+        "R0003",
+        "R0018",
+        "R0021",
+        "R0031",
+        "R0032",
+        "R0036",
+        "R0037",
+        "R0038"
+      ],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "free"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un usuario free, producto billing, severidad 4 (baja). Las reglas existentes para free+billing con severidad <=3 van a T2_TECHNICAL, y para free+billing con severidad >=4 no hay regla espec\u00edfica. Dado que billing es un producto que requiere manejo especializado incluso en severidad baja para usuarios free, se crea una regla que env\u00eda a BILLING_SPECIALIST. Esta regla es un subcaso de R0001 (enterprise) pero no se solapa con ella porque customer_tier es diferente; tampoco se solapa con R0016 (severity <=3) porque aqu\u00ed severity >=4. No hay conflictos con otras reglas existentes."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SELF_SERVICE_DEFLECT",
+        "truth_rule": "H12",
+        "rule_id": "R0006",
+        "rule_action": "SELF_SERVICE_DEFLECT",
+        "rule_right": true,
+        "uniform": true,
+        "census": null
+      },
+      "seconds": 3.28,
+      "asked_at": "2026-10-02T13:25:08Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 8,
+      "id": "d1:599",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 599,
+      "digest": "a25aa838868bf0ab",
+      "shown_ids": [
+        "R0006",
+        "R0013",
+        "R0001",
+        "R0008",
+        "R0009",
+        "R0015",
+        "R0010",
+        "R0003",
+        "R0011",
+        "R0005",
+        "R0026",
+        "R0024"
+      ],
+      "action": "SECURITY_INCIDENT",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Regla general: cualquier ticket con has_security_keyword=true debe ir a SECURITY_INCIDENT, independientemente del resto de atributos. Al ser un caso ortogonal (no contenido en ninguna regla existente), no necesita prioridad declarada."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SECURITY_INCIDENT",
+        "truth_rule": "H02",
+        "rule_id": "R0021",
+        "rule_action": "SECURITY_INCIDENT",
+        "rule_right": true,
+        "uniform": false,
+        "census": "SECURITY_INCIDENT"
+      },
+      "seconds": 3.56,
+      "asked_at": "2026-10-02T13:25:11Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 9,
+      "id": "d1:481",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 481,
+      "digest": "07af0b818537f91e",
+      "shown_ids": [
+        "R0001",
+        "R0009",
+        "R0010",
+        "R0024",
+        "R0011",
+        "R0004",
+        "R0014",
+        "R0029",
+        "R0019",
+        "R0021",
+        "R0031",
+        "R0032"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es business, mobile, severidad 2. La regla R0029 cubre business, mobile, severidad >=4, pero no contiene este caso. La regla propuesta cubre business, mobile, severidad <=3, que es un subconjunto de R0029 (severidad 2 est\u00e1 en el rango complementario). Como no hay solapamiento conflictivo, no se declara prioridad."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "truth_rule": "H19",
+        "rule_id": "R0017",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": true,
+        "uniform": true,
+        "census": null
+      },
+      "seconds": 5.44,
+      "asked_at": "2026-10-02T13:25:19Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 10,
+      "id": "t:155",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 155,
+      "digest": "3269979ade082ff3",
+      "shown_ids": [],
+      "action": "SECURITY_INCIDENT",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "La presencia de una palabra clave de seguridad es el indicador m\u00e1s fuerte de un incidente de seguridad, independientemente de otros atributos. Esta regla cubre todos los tickets con has_security_keyword=true, y al ser la primera regla, no necesita declarar prioridad frente a ninguna otra."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SECURITY_INCIDENT",
+        "rare": "SECURITY_INCIDENT",
+        "sources": []
+      },
+      "seconds": 1.82,
+      "asked_at": "2026-10-02T13:25:21Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 11,
+      "id": "t:739",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 739,
+      "digest": "3f456c1e77c7fbd4",
+      "shown_ids": [],
+      "action": "SECURITY_INCIDENT",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Cualquier ticket con indicador de seguridad debe ir a SECURITY_INCIDENT, independientemente de otros atributos, porque la seguridad es prioritaria y no debe mezclarse con flujos normales."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "SECURITY_INCIDENT",
+        "rare": "SECURITY_INCIDENT",
+        "sources": []
+      },
+      "seconds": 3.02,
+      "asked_at": "2026-10-02T13:25:24Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 12,
+      "id": "t:678",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 678,
+      "digest": "679d12aa9c9560d6",
+      "shown_ids": [],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. El ticket es de billing, severidad baja, cliente pro, canal portal, sin keyword de seguridad. Se asigna a BILLING_SPECIALIST porque el producto es billing y no hay reglas previas que lo contradigan."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "BILLING_SPECIALIST",
+        "rare": null,
+        "sources": [
+          {
+            "run": 3,
+            "idx": 678,
+            "rule_action": "BILLING_SPECIALIST"
+          }
+        ]
+      },
+      "seconds": 1.66,
+      "asked_at": "2026-10-02T13:25:25Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 13,
+      "id": "t:1960",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 1960,
+      "digest": "5573743d1bdad46e",
+      "shown_ids": [],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla: cualquier ticket de billing con severidad no cr\u00edtica (4) se deriva al especialista de billing, independientemente del tier o idioma."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "ACCOUNT_MANAGER",
+        "rare": null,
+        "sources": [
+          {
+            "run": 3,
+            "idx": 1960,
+            "rule_action": "T1_GENERAL"
+          }
+        ]
+      },
+      "seconds": 1.86,
+      "asked_at": "2026-10-02T13:25:27Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 14,
+      "id": "t:230",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 230,
+      "digest": "3f4600fb1e461e1d",
+      "shown_ids": [],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "customer_tier",
+            "op": "neq",
+            "value": "enterprise"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Cualquier ticket de billing que no sea enterprise debe ir a BILLING_SPECIALIST, ya que es un producto especializado y el tier enterprise tiene canales dedicados."
+      },
+      "failure": null,
+      "labels": {
+        "truth": "BILLING_SPECIALIST",
+        "rare": null,
+        "sources": [
+          {
+            "run": 1,
+            "idx": 230,
+            "rule_action": "T2_TECHNICAL"
+          }
+        ]
+      },
+      "seconds": 1.5,
+      "asked_at": "2026-10-02T13:25:29Z"
+    }
+  ]
+}

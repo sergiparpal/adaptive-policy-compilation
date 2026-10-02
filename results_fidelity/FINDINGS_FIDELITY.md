@@ -146,11 +146,44 @@ Every one of the 1,841 B prompts in the sessions passed `F-g3`'s checks.
 
 ---
 
+## Stage B
+
+Sergi gave the go-ahead for the smoke session on 2026-10-02, and for nothing
+beyond it. Each later session waits for its own go-ahead (§8).
+
+**The smoke session passed and opens the others.** `fidelity.ask --session
+smoke`, 2026-10-02, with `PYTHONHASHSEED=0`, from `4f4c16c` on `main` and a
+clean tree. The checks of §8 ran in order before any call. The key was an API
+key OpenRouter accepts, not a management key. `F-g1` to `F-g4` passed, with the
+suite green at 1,157 tests. Stage A's record held the same draw, sessions and
+prompts the checks rebuilt.
+
+- **All 15 answers were valid** (5 birth prompts, 5 B prompts, 5 ticket-only
+  prompts), and none failed.
+- **Every call carried `reasoning: {"effort": "none"}`**, and so does the
+  record.
+- **The partial file was gone once the record was written.**
+
+The record is [`ask_smoke.json`](ask_smoke.json). Its answers enter no row, and
+none is read here.
+
+**The pace is a fifth of what §1 planned on.** The calls took 2.33 s at the
+median, from 1.50 to 5.44 s, and 38.8 s in all. That is 2.59 s on average,
+against the 12.6 s §1 budgeted from the longest earlier session. At this pace
+the five remaining sessions, 4,280 calls, take about three hours rather than
+fifteen. Fifteen calls are few, and run 1 of `PLAN_REUSE.md` ran about four
+times slower than runs 2 and 3 on the same day. So the planning figure stays
+§1's, and this one is reported beside it.
+
+---
+
 ## Files
 
 ```
 results_fidelity/sample.json   Stage A, F-f's free half: the checks, the draw,
                                the sessions with every prompt's digest, the readout
+results_fidelity/ask_smoke.json   Stage B, the smoke session: 15 of 15 valid;
+                               it opens the other sessions and enters no row
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
