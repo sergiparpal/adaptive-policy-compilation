@@ -294,6 +294,9 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `reuse/readout.py` | `results_reuse/readout_n100.json` | **refuses while the plan is unsigned** |
 > | `reuse/run.py` | `results_reuse/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `reuse/score.py` | `results_reuse/score.json` | **refuses while the plan is unsigned** |
+> | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
+> | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
+> | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |

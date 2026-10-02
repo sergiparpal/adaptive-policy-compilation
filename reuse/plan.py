@@ -81,19 +81,23 @@ def run_path(rep: int) -> Path:
 SMOKE_PATH = OUT / f"run_n{SMOKE_N}_smoke.json"
 
 
-def gate_signature(path: Path = PLAN) -> dict:
-    """Every signature line in the plan filled in, and at least MIN_SIGNATURES."""
+def gate_signature(path: Path = PLAN, minimum: int = MIN_SIGNATURES) -> dict:
+    """Every signature line in the plan filled in, and at least `minimum`.
+
+    `minimum` added 2026-10-02 for `PLAN_FIDELITY.md`, whose gate reuses this
+    counting instead of copying it (its §10). The default is this plan's own,
+    so `PLAN_REUSE.md`'s gate reads exactly as it did."""
     lines = ([l.strip() for l in path.read_text().splitlines()
               if l.startswith(SIGNATURE)] if path.exists() else [])
     unsigned = [l for l in lines if BLANKS.search(l)]
     return {
         "what": (f"every line starting `{SIGNATURE}` in {path.name}, of which "
-                 f"there must be at least {MIN_SIGNATURES}. A gate that stopped "
+                 f"there must be at least {minimum}. A gate that stopped "
                  "at the first would report ok over an unsigned amendment."),
         "source": str(path),
         "found": len(lines),
         "unsigned": len(unsigned),
-        "passes": len(lines) >= MIN_SIGNATURES and not unsigned,
+        "passes": len(lines) >= minimum and not unsigned,
     }
 
 

@@ -48,6 +48,12 @@ ONLINE_LOOP = [
     # its loop, so it is a proposer path. The loop it calls labels the record,
     # as it always has; the module itself reads the oracle through nothing.
     "reuse/run.py",
+    # Added 2026-10-02 with PLAN_FIDELITY.md. `prompts.py` builds rung 2's
+    # proposer requests on a rebuilt base, and `ask.py` sends them, so both are
+    # proposer paths. The labels they carry into a record are copied from
+    # PLAN_REUSE.md's records, never computed.
+    "fidelity/prompts.py",
+    "fidelity/ask.py",
 ]
 
 
@@ -139,7 +145,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         }
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
-                     "ilp", "reuse"):
+                     "ilp", "reuse", "fidelity"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

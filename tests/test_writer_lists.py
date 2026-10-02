@@ -175,11 +175,13 @@ class TestOnlyWhatCostsMoneyIsGuarded(unittest.TestCase):
         self.assertEqual(guarded(), marked)
 
     def test_the_guarded_writers_are_the_ones_that_spend(self):
-        """Four modules, and each of them costs API calls: the rung 1 run, the
-        rung 2 runs, the pairwise judgement, and — since 2026-09-29 —
-        `PLAN_REUSE.md`'s Stage B, which refuses while that plan is unsigned."""
+        """Five modules, and each of them costs API calls: the rung 1 run, the
+        rung 2 runs, the pairwise judgement, `PLAN_REUSE.md`'s Stage B since
+        2026-09-29, and `PLAN_FIDELITY.md`'s since 2026-10-02. The last two
+        refuse while their plan is unsigned."""
         self.assertEqual(guarded(), {"run_experiment.py", "rung2/run2.py",
-                                     "rung2/pair_judgement.py", "reuse/run.py"})
+                                     "rung2/pair_judgement.py", "reuse/run.py",
+                                     "fidelity/ask.py"})
 
     def test_no_free_writer_imports_the_guard(self):
         for module in sorted(writers() - guarded()):
@@ -208,6 +210,7 @@ class TestTheDerivationItself(unittest.TestCase):
         self.assertIn("sensitivity", CODE_ROOTS)
         self.assertIn("ilp", CODE_ROOTS)
         self.assertIn("reuse", CODE_ROOTS)
+        self.assertIn("fidelity", CODE_ROOTS)
         for module in writers():
             with self.subTest(module):
                 self.assertTrue(any(module == r or module.startswith(r + "/")

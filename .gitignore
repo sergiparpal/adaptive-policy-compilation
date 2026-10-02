@@ -59,3 +59,7 @@ Thumbs.db
 *.log
 scratch/
 tmp/
+# A Stage B session of PLAN_FIDELITY.md appends its answers here as they
+# arrive, so that an interruption loses nothing paid for; the file goes once
+# the session's record is written (fidelity/ask.py).
+results_fidelity/*.partial.jsonl
