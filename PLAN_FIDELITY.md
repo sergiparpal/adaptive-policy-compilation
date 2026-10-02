@@ -84,7 +84,7 @@ answer is *valid* when its `action` is one of the eight queues (§5.5).
 | **F-e** | **The rarest queue was lost to compilation, not to the model.** Asked about the tickets the rules swallowed, the model names `ONCALL_ESCALATION` | of the 7 `ONCALL_ESCALATION` tickets, all decided by a rule in every run and asked as a census (§2.3): the number on which **both** fresh answers name `ONCALL_ESCALATION` | **≥ 1** | **0** |
 | **F-f** | *Reported, not adjudicated.* **What the screen holds, and the model without it** | Stage A, free: the replay, what each design of §2.1 would put on the screen, the concentration of decisions over rules, and two free baselines for the B arm. Stage C: the ticket-only arm, if §2.1 adopts it | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-02)**
 
 **Why `F-f` cannot carry a band.** Part of its free half is figures the drafter
 has already computed (below). The rest is computable from data already on disk.
