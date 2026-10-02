@@ -175,6 +175,45 @@ fifteen. Fifteen calls are few, and run 1 of `PLAN_REUSE.md` ran about four
 times slower than runs 2 and 3 on the same day. So the planning figure stays
 §1's, and this one is reported beside it.
 
+**The births session: 268 answers of 270 valid.** Sergi gave the go-ahead for
+this session alone. `fidelity.ask --session births`, 2026-10-02,
+`PYTHONHASHSEED=0`, from `bc5d94f` and a clean tree. The smoke check, the key
+check, `F-g1` to `F-g4` and the Stage A match all passed before any call. Each
+of the 135 birth prompts was asked twice, in two passes. The record is
+[`ask_births.json`](ask_births.json).
+
+- **Both failures are one prompt**, `b1:598`, the birth at case 598 of run 1.
+  In each pass it came back empty three times, retries included, about 44 s per
+  pass. It is a conflict screen showing twelve rules, the most a screen shows.
+  At birth, on 2026-09-30, the proposer answered it with 11 declared edges,
+  where no other birth of the three runs has more than 7.
+- **Why it came back empty is not known.** That its answer was by far the
+  longest fits a reply cut by the 1,200-token cap. Checking it would cost calls
+  outside the protocol, so it was not checked.
+- **What §5.5 does with it.** The prompt leaves `F-a`'s denominator: 134 of the
+  135 birth prompts have two valid answers. The breaker did not trip, and
+  rightly: two failures a pass apart are not an outage.
+- **The pace was 2.89 s per call at the median and 4.56 s on average**, pulled
+  up by those two and a slower tail: 20.5 minutes of calls.
+
+**`F-a`, read once the births were in, as §8 intends: provisional.** §8 runs
+the births before the bases so that the instrument is measured before most of
+the spend. So `F-a` was computed with Stage C's own function on this record,
+before any base session ran:
+
+- **The value.** `S − A = −0.0075`: the two fresh answers agree 0.9254 of the
+  time, and a fresh answer agrees with the one recorded on 2026-09-30 0.9328 of
+  the time. The standard error is 0.0191, over 134 prompts.
+- **Per run**: −0.0246, −0.0161 and +0.0238.
+- **Against the line.** At the signed line, ≤ 0.05, it would hold, and not
+  thin.
+- **Accuracy.** The fresh answers are right 0.5261 of the time, against 0.5000
+  for the recorded ones on the same prompts.
+
+**This is not the verdict.** Stage C adjudicates `F-a` with the other rows,
+from this record, and owns the figure. It is written here because it was known
+before the bases were asked, and the record should say what was known when.
+
 ---
 
 ## Files
@@ -184,6 +223,8 @@ results_fidelity/sample.json   Stage A, F-f's free half: the checks, the draw,
                                the sessions with every prompt's digest, the readout
 results_fidelity/ask_smoke.json   Stage B, the smoke session: 15 of 15 valid;
                                it opens the other sessions and enters no row
+results_fidelity/ask_births.json  Stage B, the births session: 268 of 270 valid,
+                               the two failures one prompt; F-a's record
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
