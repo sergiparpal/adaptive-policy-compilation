@@ -120,6 +120,16 @@ this section, not a silent edit.
   matched rules. It reproduces every escalation's neighbourhood, ids and kind,
   every edge verdict, and every rule's final counts. **Without the edges it
   diverges on 74, 32 and 122 cases, so the check has teeth.**
+
+  > **[ERRATUM 2026-10-02] It departs on 37, 16 and 61 cases.** Stage A
+  > measured it with a module ([`FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
+  > Stage A). The drafter's probe counted each departing case twice: once for
+  > the decision that departed, and once for the birth the rebuild then failed
+  > to find there. Every one of the three figures halves exactly. The check still
+  > has teeth: without its edges, every run's rebuild departs from its record.
+  > This is the one figure of this list that did not reproduce. Written after
+  > the signature, as this section asks for a figure that does not reproduce. No
+  > band, row, line or choice moves, and no signature line is added.
 - **What v1 would show on each decided case.** There are 1,938, 1,969 and 1,958
   of them, 5,865 in all. Under each design of §2.1:
   - **A.** The deciding rule is on the screen in **5,864 of 5,865** and first in
