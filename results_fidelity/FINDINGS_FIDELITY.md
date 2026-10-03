@@ -251,6 +251,19 @@ passed before any call. The record is [`ask_base2.json`](ask_base2.json).
   The per-call timer adds up to about 8% more over the same span, the gap
   `base1` showed; its median is 4.88 s.
 
+**The base3 session: 1,223 answers of 1,226 valid.** On Sergi's go-ahead,
+`fidelity.ask --session base3`, 2026-10-03, `PYTHONHASHSEED=0`, run in Sergi's
+terminal from `bed22d3` and a clean tree, in one segment. The checks of §8
+passed before any call. The record is [`ask_base3.json`](ask_base3.json).
+
+- **Three failures on two items**, both in the uniform draw, each coming back
+  empty after three attempts: `d3:297` in both passes and `d3:74` in the
+  second.
+- **Run 3's value is defined.** 2 of the 600 drawn items lack a valid pair,
+  0.0033.
+- **The pace by the wall clock: 91.8 minutes of calling**, 4.5 s per answer.
+  The per-call timer adds up to about 7% more; its median is 3.56 s.
+
 ---
 
 ## Files
@@ -265,6 +278,7 @@ results_fidelity/ask_births.json  Stage B, the births session: 268 of 270 valid,
 results_fidelity/ask_base1.json   Stage B, base 1: 1,214 of 1,222 valid, in two
                                segments, resumed once
 results_fidelity/ask_base2.json   Stage B, base 2: 1,234 of 1,234 valid
+results_fidelity/ask_base3.json   Stage B, base 3: 1,223 of 1,226 valid
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
