@@ -240,6 +240,17 @@ go-ahead, `fidelity.ask --session base1`, 2026-10-02, `PYTHONHASHSEED=0`, from
   answer. Over the same spans the per-call timer adds up to about 5% more than
   the wall clock does, and why is not known; its median is 4.09 s.
 
+**The base2 session: 1,234 answers of 1,234 valid.** On Sergi's go-ahead,
+`fidelity.ask --session base2`, 2026-10-02, `PYTHONHASHSEED=0`, run in Sergi's
+terminal from `7b627a8` and a clean tree, in one segment. The checks of §8
+passed before any call. The record is [`ask_base2.json`](ask_base2.json).
+
+- **No call failed.** Every one of the 617 items has two valid answers: the 600
+  drawn and 17 rare-class decisions the draw missed.
+- **The pace by the wall clock: 118.7 minutes of calling**, 5.8 s per answer.
+  The per-call timer adds up to about 8% more over the same span, the gap
+  `base1` showed; its median is 4.88 s.
+
 ---
 
 ## Files
@@ -253,6 +264,7 @@ results_fidelity/ask_births.json  Stage B, the births session: 268 of 270 valid,
                                the two failures one prompt; F-a's record
 results_fidelity/ask_base1.json   Stage B, base 1: 1,214 of 1,222 valid, in two
                                segments, resumed once
+results_fidelity/ask_base2.json   Stage B, base 2: 1,234 of 1,234 valid
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
