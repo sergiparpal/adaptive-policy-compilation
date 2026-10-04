@@ -264,6 +264,25 @@ passed before any call. The record is [`ask_base3.json`](ask_base3.json).
 - **The pace by the wall clock: 91.8 minutes of calling**, 4.5 s per answer.
   The per-call timer adds up to about 7% more; its median is 3.56 s.
 
+**The ticket-only session: 328 answers of 328 valid.** On Sergi's go-ahead,
+`fidelity.ask --session ticket_only`, 2026-10-03, `PYTHONHASHSEED=0`, run in
+Sergi's terminal from `30bb483` and a clean tree, in one segment. The checks of
+§8 passed before any call. The record is
+[`ask_ticket_only.json`](ask_ticket_only.json).
+
+- **What was asked.** The 301 distinct tickets once, and the 27 rare-class
+  tickets a second time, exactly as Stage A planned them.
+- **No call failed.**
+- **The pace by the wall clock: 20.8 minutes**, 3.8 s per answer.
+- **A second launch of the same session spent nothing.** Once this record
+  existed, `harness/record_guard.py` refused that launch before the client was
+  built.
+
+**Stage B is complete: 4,295 calls, 4,282 answers valid.** The 13 failures are
+listed by session above: 2 in the births session, 8 in `base1` and 3 in
+`base3`. Each of the three bases has a defined value under §5.5, and `F-a` has
+two valid answers on 134 of its 135 prompts.
+
 ---
 
 ## Files
@@ -279,6 +298,8 @@ results_fidelity/ask_base1.json   Stage B, base 1: 1,214 of 1,222 valid, in two
                                segments, resumed once
 results_fidelity/ask_base2.json   Stage B, base 2: 1,234 of 1,234 valid
 results_fidelity/ask_base3.json   Stage B, base 3: 1,223 of 1,226 valid
+results_fidelity/ask_ticket_only.json   Stage B, the ticket-only arm: 328 of 328
+                               valid; F-f's paid half
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
