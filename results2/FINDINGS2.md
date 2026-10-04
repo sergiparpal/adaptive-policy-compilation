@@ -477,6 +477,15 @@ says nothing about the learned base: these are the 29 hand-written rules, whose
 layer order is known. And it does not measure the cost of authorship on a learned
 base — the last caveat above still stands untouched.
 
+> **[NOTE 2026-10-04] Two clauses of that paragraph went stale the day it was
+> written.** The signature it says does not exist yet was given that afternoon:
+> Sergi signed §0 of `PLAN_PAIRWISE.md` in `681d2c9`, and the next section
+> reports Stage C. The caveat it calls untouched carries an erratum dated the
+> same day, above, which says Stage D measured both its halves. What the
+> paragraph says of this section still holds: it asks no model, reads no learned
+> base and measures no cost of authorship. `STATUS.md` carried the first clause
+> as a claim about the present, and has its own erratum for it.
+
 **Files added by this section**
 
 ```
@@ -501,6 +510,11 @@ fingerprint). Three seconds, zero API calls.
 `rung2/pair_judgement_baselines.py` → `results2/pair_judgement_baselines.json`,
 zero API calls. Stage C of `PLAN_PAIRWISE.md`, run after Sergi signed §0 in
 `a69f9ca`.*
+
+> **[NOTE 2026-10-04] `a69f9ca` is not on `main`.** It is the signing commit as
+> it stood on its branch, and pull request #40 merged it by rebase, which
+> rewrote its hash. On `main` the same commit is `681d2c9`: same message, same
+> change.
 
 **The question.** Instead of *write a rule*, the model was shown a ticket, two
 rules that both match it, and asked which queue the ticket goes to. The correct
