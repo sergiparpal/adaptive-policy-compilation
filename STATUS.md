@@ -372,6 +372,21 @@ proposer would do on all 199. Nothing has been asked of a model: the stage of
 [`PLAN_PAIRWISE.md`](PLAN_PAIRWISE.md) that does costs money and is gated on a
 row nobody has signed.
 
+> **[ERRATUM 2026-10-04] The last sentence above went stale the afternoon it was
+> written.** It reads *nothing has been asked of a model*, and says the stage that
+> would ask *is gated on a row nobody has signed*. Both were true when `d280d6a`
+> wrote them on 2026-08-24, and neither survived three hours: Sergi signed `P-c`,
+> `P-d` and `P-e` in `681d2c9`, and Stage C asked the model 170 of these pairs,
+> where `P-c` held (`fcc8b0c`). That run is reported below, under *The proposer
+> can pick the right queue between two rules*, an entry `93c07d7` added a minute
+> after the run without touching this one. `d280d6a` also wrote the same claim
+> into the Stage B section of [`results2/FINDINGS2.md`](results2/FINDINGS2.md),
+> where it says what Stage B did not do and the section after it reports Stage C;
+> here it described the present. The rest of the paragraph stands, including the
+> caveat that a rate on the 170 is an upper estimate for all 199, which *And it is
+> an upper estimate* below carries forward. Found on 2026-10-04, reading this file
+> for what is open. No figure moves.
+
 **The material contained the signal; the arbitration destroyed it.** The same 577
 rules that specificity turned into 0.1829 admit an order scoring **0.8530 ±
 0.0062 on corpus test** — *the best of 65 starts, and not a converged value; see
