@@ -11,6 +11,14 @@
 > number is to be read off this file. Nothing below is pending work: what is kept
 > here is §0, the prediction immutable before any number existed, and its four
 > refuted bets.
+>
+> **[ERRATUM 2026-10-04] The signature did not come in #8.** The §0 line came
+> with [#7](https://github.com/sergiparpal/adaptive-policy-compilation/pull/7),
+> inside `18d6c7e`, the commit about the start-budget diagnostic that
+> [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) describes.
+> [#8](https://github.com/sergiparpal/adaptive-policy-compilation/pull/8) does
+> not touch this file: what it brought about the signature is `0909859`, that
+> record's account of how the signature got in.
 
 **Destination:** repository root, next to `PLAN_AUDIT` (referenced from
 `rung3/local_search.py`). **Drafted:** 2026-08-12. **For:** execution by a
