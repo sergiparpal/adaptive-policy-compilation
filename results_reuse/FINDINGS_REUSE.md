@@ -244,6 +244,22 @@ with the wrong queue: the proposer chose the right queue for the ticket in front
 of it 0.4839, 0.4839 and 0.5476 of the time, and roughly half its rules were born
 wrong.
 
+> **[ERRATUM 2026-10-04] The reading, not the figure.** `U-c`'s statistic and
+> verdict stand. What does not stand is the reading beside them: that the other
+> two silent errors in five, made by rules born right, are scope errors the model
+> would not make.
+>
+> [`PLAN_FIDELITY.md`](../PLAN_FIDELITY.md) asked the model afresh on the cases
+> the rules decided ([`FINDINGS_FIDELITY.md`](../results_fidelity/FINDINGS_FIDELITY.md),
+> Stage C, `F-d`). On the rules' errors it is wrong too 0.7955 of the time, on
+> the median of the three runs. On the errors of rules born right it is wrong
+> 0.8661, 0.6558 and 0.8596 of the time by run. Case by case, the split by birth
+> and its fresh answers agree on whose error it was 0.5507, 0.6171 and 0.5830 of
+> the time.
+>
+> **So most of the silent error is the model's own, more of it than the split
+> says, and the split is a poor guide to which.**
+
 **3. On the scope axis alone, the rules err about as much as the heuristic at
 their reuse — and the number says more about the frontier than about the rules.**
 `U-b` holds at +0.0207 against a line of 0, with one run negative. The rules born
@@ -254,6 +270,11 @@ the frontier is steep exactly where they land: between reuse 0.7965 (silent erro
 segment, where `F` is 0.4784 and 0.3017. The gap moves more with where the reuse
 lands than with the rules' own error — the warning Stage A's §4 gave at n=100. It
 is a hold as signed, and it is not a margin.
+
+> **[NOTE 2026-10-04]** Most of the errors this point reads on the scope axis are
+> ones the model, asked afresh, would make on those very tickets: see the
+> erratum to point 2. `U-b` stands as signed. What its gap measures is less the
+> rules' scope than it reads.
 
 **4. The rarest queue was never asked about, in any run.** In all three runs, all
 7 `ONCALL_ESCALATION` cases were decided by a rule, and all 7 wrongly every time;
@@ -289,7 +310,10 @@ run:
 
 - **Fidelity.** The split by birth is a proxy for whether a compiled rule decides
   as the model would have (§12.1). It is not a measurement of it, and the next
-  plan is the one that measures it.
+  plan is the one that measures it. **[NOTE 2026-10-04] Measured** by
+  `PLAN_FIDELITY.md`: the rules decide unlike the model would, and compiling
+  loses it nothing on the cases they decide. The erratum to point 2 says what
+  that does to the proxy.
 - **The instrument's date.** These runs were asked on 2026-09-30 with reasoning
   off; August's were asked with whatever the model did then, which is not
   recorded (§5.5 and §1's amendment). Stage A's n=100 figures and these are not a

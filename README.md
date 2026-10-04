@@ -38,7 +38,7 @@ up in four places at once.
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 | **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — closed 2026-09-30 | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
-| **F** · fidelity | whether a compiled rule decides a later case the way the model would have, asked afresh on the same case — **open**: Stage A has run, Stage B has not | [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md) |
+| **F** · fidelity | whether a compiled rule decides a later case the way the model would have, asked afresh on the same case — closed 2026-10-04 | [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -218,24 +218,27 @@ python3 -m reuse.score                    # Stage C · the five rows, from the r
 .venv/bin/python -m reuse.run --rep 1     # then --rep 2 and --rep 3, never in parallel
 ```
 
-**[`PLAN_FIDELITY.md`](PLAN_FIDELITY.md) is open**, signed by Sergi on 2026-10-02
-before any of its figures existed. It asks the founding question in the form
-`PLAN_REUSE.md` measured only through a proxy: on a case a compiled rule decided,
-would the model, asked afresh, have chosen the same queue, and been right more
-often than the rule? It re-asks the model on prompts rebuilt from that plan's
-Stage B records, so nothing is re-run. Its record is
-[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
-which grows by stage. Its gate reads that plan and no other, counts every
-signature line, and guards all three of its writers, the free ones too. Stage A
-has run. **Stage B spends, and waits for Sergi's go-ahead on the spend**, one
-session after another, each record committed before the next:
+**[`PLAN_FIDELITY.md`](PLAN_FIDELITY.md) closed on 2026-10-04**: the founding
+question in its cleanest form. Sergi signed §0 on 2026-10-02, before any of its
+figures existed. On a case a compiled rule decided, would the model, asked
+afresh, have chosen the same queue, and been right more often than the rule? It
+re-asked the model on prompts rebuilt from `PLAN_REUSE.md`'s Stage B records, so
+nothing was re-run. Its record is
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md).
+Its gate reads that plan and no other, counts every signature line, and guards
+all three of its writers, the free ones too.
+
+Stages A and C are free, and they reproduce from the committed records. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same answers back. A paid session does not start without Sergi asking for
+it, and one that is interrupted resumes where it stopped.
 
 ```bash
 python3 -m fidelity.ask --dry-run                  # F-g1..F-g4, blocking; writes nothing
 python3 -m fidelity.sample                         # Stage A · the draw and the free readout
-.venv/bin/python -m fidelity.ask --session smoke   # Stage B · spends · the smoke run first
+python3 -m fidelity.score                          # Stage C · the five rows, from the sessions
+.venv/bin/python -m fidelity.ask --session smoke   # Stage B · spends · only on Sergi's say
 .venv/bin/python -m fidelity.ask --session births  # then base1, base2, base3, ticket_only
-python3 -m fidelity.score                          # Stage C · the five rows
 ```
 
 Their destinations are guarded by `harness/record_guard.py`: those records cost
