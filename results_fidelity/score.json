@@ -1,16 +1,23 @@
 {
   "_env": {
-    "recorded_at": "2026-10-04T12:27:43Z",
+    "recorded_at": "2026-10-04T12:57:56Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": "0",
-    "git_commit": "43c406566ce71b6cb3924d2efeb781f9a81856eb",
+    "git_commit": "93192f7fe3aab98da54a49f2b8bfe2b5bdc9e3ad",
     "git_dirty": false,
     "code_dirty": false,
-    "code_digest": "91cdebf01ae58e2d"
+    "code_digest": "d3ddd613bc256d1b"
   },
   "plan": "PLAN_FIDELITY.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 2000,
   "stage": "C",
   "surface": "corpus \u2014 seed 17, n=2000, in arrival order: the decided cases and births of PLAN_REUSE.md's three Stage B runs",
   "provenance": "PRE-REGISTERED: \u00a70 signed before any of these figures existed",
@@ -33,9 +40,9 @@
       },
       "suite": {
         "ran": true,
-        "tests": 1158,
+        "tests": 1159,
         "result": "OK (skipped=2)",
-        "seconds": 62.3,
+        "seconds": 62.2,
         "passes": true
       },
       "passes": true
