@@ -439,6 +439,25 @@ class TestTheArithmetic(unittest.TestCase):
         self.assertFalse(bad["validity"]["defined"])
         self.assertIsNone(bad["rows"]["F-b"])
 
+    def test_the_ticket_only_arm_is_matched_case_by_case(self):
+        """Two drawn decisions behind one ticket: C right on both, B right on
+        one, the rule right on neither; a third case lacks a B answer and is
+        left out of the matched counts."""
+        rows = [{"id": "t:5", "kind": prompts.TICKET_ONLY, "run": None, "idx": 5,
+                 "pass": 1, "action": "A", "valid": True, "payload": None,
+                 "labels": {"truth": "A", "rare": None, "sources": [
+                     {"run": 1, "idx": 5, "rule_action": "B"},
+                     {"run": 2, "idx": 5, "rule_action": "C"},
+                     {"run": 3, "idx": 5, "rule_action": "A"}]}}]
+        bases = {1: {"d1:5": entry("A", "A", r="B", idx=5)},
+                 2: {"d2:5": entry("B", "B", r="C", idx=5)},
+                 3: {"d3:5": entry(None, None, r="A", idx=5)}}
+        m = score.ticket_only_arm(rows, bases)["matched_on_the_same_cases"]
+        self.assertEqual((m["all"]["cases"], m["all"]["ticket_only_right"],
+                          m["all"]["B_right"], m["all"]["rule_right"]), (2, 2, 1, 0))
+        self.assertEqual(m["run2"]["B_accuracy"], 0.0)
+        self.assertNotIn("run3", m)
+
     def test_the_median_and_its_standard_error(self):
         runs = [{"rows": {"F-c": v}, "standard_errors": {"F-c": se}}
                 for v, se in ((0.01, 0.02), (0.05, 0.01), (None, None))]

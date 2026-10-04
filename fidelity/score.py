@@ -432,7 +432,35 @@ def ticket_only_arm(rows: list[dict], bases: dict[int, dict[str, dict]]) -> dict
             "agreement_with_the_rule": agree_rule / sources if sources else None,
             "agreement_with_the_B_answer_on_the_same_case": (agree_b / with_b
                                                              if with_b else None),
+            "matched_on_the_same_cases": matched_accuracy(sub, bases),
             "rare_tickets_answers_by_queue": {q: dict(c) for q, c in rare.items()}}
+
+
+def matched_accuracy(sub: list[dict], bases: dict[int, dict[str, dict]]) -> dict:
+    """The model without its screen, with it, and the rule, right on the same
+    cases. These are the drawn decisions behind the ticket-only subsample, each
+    with a valid first answer in both arms. Added after Stage C first ran
+    (POST-RUN): the accuracies above compare a subsample with all 600 drawn,
+    and §2.1 built this arm to tell the model from its screen."""
+    counts: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    for e in sub:
+        a, y = e["answers"].get(1), e["labels"]["truth"]
+        for s in e["labels"]["sources"]:
+            b = bases.get(s["run"], {}).get(f"d{s['run']}:{s['idx']}")
+            ab = b["answers"].get(1) if b is not None else None
+            if a is None or ab is None:
+                continue
+            for key in (f"run{s['run']}", "all"):
+                c = counts[key]
+                c["cases"] += 1
+                c["ticket_only_right"] += a == y
+                c["B_right"] += ab == y
+                c["rule_right"] += s["rule_action"] == y
+    return {key: {**dict(c),
+                  "ticket_only_accuracy": c["ticket_only_right"] / c["cases"],
+                  "B_accuracy": c["B_right"] / c["cases"],
+                  "rule_accuracy": c["rule_right"] / c["cases"]}
+            for key, c in sorted(counts.items())}
 
 
 def adjudicate(births_score: dict, per_run: list[dict]) -> dict[str, dict]:
