@@ -240,9 +240,10 @@ working tree is how this gets broken. Committing them is not the problem —
 committing them accompanied is, because a signature that shares a commit with a
 diagnostic is filed under the diagnostic and stops being findable in the log.
 That is not hypothetical: on August 13, 2026 Sergi's signature of §0 of
-`PLAN_BUDGET_LS.md` arrived inside `b9b0f5f`, a commit about the start-budget
-diagnostic whose message never mentions it. Nothing was altered; the act simply
-became unauditable from the file's own history.
+`PLAN_BUDGET_LS.md` arrived inside `18d6c7e` (`b9b0f5f` on its branch, before
+PR #7's rebase merge), a commit about the start-budget diagnostic whose message
+never mentions it. Nothing was altered; the act simply became unauditable from
+the file's own history.
 
 Since August 14, 2026 `.githooks/pre-commit` refuses that commit. **The guard
 does not make this rule safe**: it runs pre-commit and `--no-verify` skips it
