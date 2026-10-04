@@ -1,0 +1,878 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-04T12:27:43Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "43c406566ce71b6cb3924d2efeb781f9a81856eb",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "91cdebf01ae58e2d"
+  },
+  "plan": "PLAN_FIDELITY.md",
+  "stage": "C",
+  "surface": "corpus \u2014 seed 17, n=2000, in arrival order: the decided cases and births of PLAN_REUSE.md's three Stage B runs",
+  "provenance": "PRE-REGISTERED: \u00a70 signed before any of these figures existed",
+  "gates": {
+    "F-g1": {
+      "what": "the suite is green, and each Stage B record reproduces its own metrics, fire counts, births and corpus labels, under Stage B's model and reasoning setting",
+      "records": {
+        "run1": {
+          "problems": [],
+          "passes": true
+        },
+        "run2": {
+          "problems": [],
+          "passes": true
+        },
+        "run3": {
+          "problems": [],
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1158,
+        "result": "OK (skipped=2)",
+        "seconds": 62.3,
+        "passes": true
+      },
+      "passes": true
+    },
+    "F-g2": {
+      "what": "each run rebuilt case by case from its record alone reproduces every decision, screen, edge verdict and final count, and its system prompt is v1's",
+      "runs": {
+        "run1": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        },
+        "run2": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        },
+        "run3": {
+          "decisions_departing": 0,
+          "screens_departing": 0,
+          "edge_problems": 0,
+          "rules_whose_counts_depart": 0,
+          "system_prompt_is_v1": true,
+          "first_problems": [],
+          "passes": true
+        }
+      },
+      "passes": true
+    },
+    "F-g3": {
+      "what": "no B screen shows a rule matching its ticket or the deciding rule, and each carries v1's coverage header; ticket-only prompts are the empty-base rendering; the draw, the census and the smoke run are what \u00a72 and \u00a78 sign",
+      "prompts": {
+        "birth": 135,
+        "hidden": 1841,
+        "ticket_only": 301
+      },
+      "first_problems": [],
+      "F-d_population": {
+        "per_run": {
+          "run1": {
+            "silent_errors_in_draw": 341,
+            "oncall_census": 7
+          },
+          "run2": {
+            "silent_errors_in_draw": 346,
+            "oncall_census": 7
+          },
+          "run3": {
+            "silent_errors_in_draw": 278,
+            "oncall_census": 7
+          }
+        },
+        "minimum": 100,
+        "F-d_adjudicable": true
+      },
+      "passes": true
+    },
+    "F-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_FIDELITY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_FIDELITY.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "sample_sha256": "ca65d4d6cfafdea0e1c66dd795d9c13e185aabef849c4548c7d01d30370eec7e",
+  "verdicts": {
+    "F-a": {
+      "value": -0.007462686567164179,
+      "standard_error": 0.01908661913601684,
+      "per_run": {
+        "run1": -0.02459016393442623,
+        "run2": -0.016129032258064516,
+        "run3": 0.023809523809523808
+      },
+      "line": 0.05,
+      "verdict": "holds",
+      "thin": false
+    },
+    "F-b": {
+      "per_run": [
+        0.18381112984822934,
+        0.26416666666666666,
+        0.13879598662207357
+      ],
+      "median": 0.18381112984822934,
+      "standard_error_of_the_median_run": 0.01627387816416037,
+      "line": 0.1,
+      "verdict": "holds",
+      "thin": false
+    },
+    "F-c": {
+      "per_run": [
+        -0.012647554806070826,
+        0.03833333333333333,
+        -0.04598662207357859
+      ],
+      "median": -0.012647554806070826,
+      "standard_error_of_the_median_run": 0.01616359986504771,
+      "line": 0.0,
+      "verdict": "refuted",
+      "thin": true
+    },
+    "F-d": {
+      "per_run": [
+        0.7955223880597015,
+        0.7413294797687862,
+        0.8790613718411552
+      ],
+      "median": 0.7955223880597015,
+      "standard_error_of_the_median_run": 0.017663846532001242,
+      "line": 0.6,
+      "verdict": "holds",
+      "thin": false
+    },
+    "F-e": {
+      "per_run": [
+        3,
+        0,
+        2
+      ],
+      "median": 2,
+      "standard_error_of_the_median_run": null,
+      "line": 1,
+      "verdict": "holds",
+      "thin": false
+    }
+  },
+  "births": {
+    "value": -0.007462686567164179,
+    "S": 0.9253731343283582,
+    "A": 0.9328358208955224,
+    "n": 134,
+    "prompts": 135,
+    "standard_error": 0.01908661913601684,
+    "per_run": {
+      "run1": -0.02459016393442623,
+      "run2": -0.016129032258064516,
+      "run3": 0.023809523809523808
+    },
+    "accuracy": {
+      "recorded_answers": 0.5,
+      "fresh_answers": 0.5261194029850746
+    }
+  },
+  "runs": [
+    {
+      "run": 1,
+      "population": {
+        "decided": 1938,
+        "silent_errors": 1151
+      },
+      "validity": {
+        "sampled": 600,
+        "lacking_a_valid_pair": 7,
+        "defined": true
+      },
+      "rows": {
+        "F-b": 0.18381112984822934,
+        "F-c": -0.012647554806070826,
+        "F-d": 0.7955223880597015,
+        "F-e": 3
+      },
+      "standard_errors": {
+        "F-b": 0.01627387816416037,
+        "F-c": 0.01616359986504771,
+        "F-d": 0.017663846532001242,
+        "F-e": null
+      },
+      "beside": {
+        "S": 0.8920741989881956,
+        "A": 0.7082630691399663,
+        "n": 593,
+        "silent_errors_scored": 335,
+        "model_accuracy": 0.42242833052276557,
+        "rule_accuracy": 0.4350758853288364,
+        "cells": {
+          "answers": 1186,
+          "both_right": 364,
+          "loss": 137,
+          "gain": 152,
+          "both_wrong_same_queue": 476,
+          "both_wrong_other_queues": 57,
+          "shares": {
+            "loss": 0.11551433389544688,
+            "both_right": 0.3069139966273187,
+            "gain": 0.1281618887015177,
+            "both_wrong_same_queue": 0.40134907251264756,
+            "both_wrong_other_queues": 0.048060708263069137
+          }
+        },
+        "by_birth": {
+          "born_right": {
+            "n": 275,
+            "S": 0.9054545454545454,
+            "A": 0.8218181818181818,
+            "gap": 0.08363636363636363,
+            "model_accuracy": 0.5490909090909091,
+            "rule_accuracy": 0.5927272727272728,
+            "difference": -0.04363636363636364,
+            "own_error_share": 0.8660714285714286
+          },
+          "born_wrong": {
+            "n": 318,
+            "S": 0.8805031446540881,
+            "A": 0.610062893081761,
+            "gap": 0.27044025157232704,
+            "model_accuracy": 0.3128930817610063,
+            "rule_accuracy": 0.29874213836477986,
+            "difference": 0.014150943396226415,
+            "own_error_share": 0.7600896860986547
+          }
+        },
+        "proxy_against_measurement": {
+          "answers_on_rule_errors": 670,
+          "concordant": 369,
+          "share": 0.5507462686567164
+        },
+        "per_rule": {
+          "R0001": {
+            "sampled": 25,
+            "rule_action": "T1_GENERAL",
+            "S": 0.96,
+            "A": 0.0,
+            "model_accuracy": 0.18,
+            "rule_accuracy": 0.28,
+            "difference": -0.1
+          },
+          "R0006": {
+            "sampled": 86,
+            "rule_action": "SELF_SERVICE_DEFLECT",
+            "S": 0.813953488372093,
+            "A": 0.12209302325581395,
+            "model_accuracy": 0.5232558139534884,
+            "rule_accuracy": 0.5581395348837209,
+            "difference": -0.03488372093023256
+          },
+          "R0007": {
+            "sampled": 22,
+            "rule_action": "BILLING_SPECIALIST",
+            "S": 0.5454545454545454,
+            "A": 0.4318181818181818,
+            "model_accuracy": 0.22727272727272727,
+            "rule_accuracy": 0.5909090909090909,
+            "difference": -0.36363636363636365
+          },
+          "R0008": {
+            "sampled": 23,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 0.6521739130434783,
+            "rule_accuracy": 0.6521739130434783,
+            "difference": 0.0
+          },
+          "R0009": {
+            "sampled": 22,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9090909090909091,
+            "A": 0.9090909090909091,
+            "model_accuracy": 0.4090909090909091,
+            "rule_accuracy": 0.4090909090909091,
+            "difference": 0.0
+          },
+          "R0010": {
+            "sampled": 22,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 0.8181818181818182,
+            "rule_accuracy": 0.8181818181818182,
+            "difference": 0.0
+          },
+          "R0013": {
+            "sampled": 48,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9583333333333334,
+            "A": 0.9583333333333334,
+            "model_accuracy": 0.4583333333333333,
+            "rule_accuracy": 0.4375,
+            "difference": 0.020833333333333332
+          },
+          "R0015": {
+            "sampled": 23,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.7,
+            "A": 0.8,
+            "model_accuracy": 0.2,
+            "rule_accuracy": 0.05,
+            "difference": 0.15
+          },
+          "R0016": {
+            "sampled": 43,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.925,
+            "A": 0.9625,
+            "model_accuracy": 0.1375,
+            "rule_accuracy": 0.1,
+            "difference": 0.0375
+          },
+          "R0022": {
+            "sampled": 22,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 1.0,
+            "rule_accuracy": 1.0,
+            "difference": 0.0
+          },
+          "R0024": {
+            "sampled": 21,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9047619047619048,
+            "A": 0.9047619047619048,
+            "model_accuracy": 0.2619047619047619,
+            "rule_accuracy": 0.2857142857142857,
+            "difference": -0.023809523809523808
+          },
+          "R0026": {
+            "sampled": 23,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 0.9565217391304348,
+            "model_accuracy": 0.43478260869565216,
+            "rule_accuracy": 0.4782608695652174,
+            "difference": -0.043478260869565216
+          },
+          "R0027": {
+            "sampled": 22,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9090909090909091,
+            "A": 0.9545454545454546,
+            "model_accuracy": 0.7272727272727273,
+            "rule_accuracy": 0.7272727272727273,
+            "difference": 0.0
+          }
+        },
+        "alarm": {
+          "answers_disagreeing": 346,
+          "answers_agreeing": 840,
+          "rule_wrong_where_disagreeing": 0.5606936416184971,
+          "rule_wrong_where_agreeing": 0.5666666666666667
+        },
+        "ONCALL": {
+          "tickets": 7,
+          "named_by_both": 3,
+          "lacking_a_valid_pair": 0,
+          "answers_by_queue": {
+            "ONCALL_ESCALATION": 9,
+            "T2_TECHNICAL": 4,
+            "T3_ENGINEERING": 1
+          }
+        },
+        "SECURITY": {
+          "decisions": 5,
+          "rule_wrong": 0,
+          "answers_naming_it": 10,
+          "answers_naming_it_where_the_rule_was_wrong": 0,
+          "answers": 10
+        },
+        "run_itself": {
+          "calls": 1222,
+          "failed": 8,
+          "invalid_actions": 0,
+          "written_rules_that_would_validate": 1198,
+          "median_seconds_per_call": 4.09
+        }
+      }
+    },
+    {
+      "run": 2,
+      "population": {
+        "decided": 1969,
+        "silent_errors": 1089
+      },
+      "validity": {
+        "sampled": 600,
+        "lacking_a_valid_pair": 0,
+        "defined": true
+      },
+      "rows": {
+        "F-b": 0.26416666666666666,
+        "F-c": 0.03833333333333333,
+        "F-d": 0.7413294797687862,
+        "F-e": 0
+      },
+      "standard_errors": {
+        "F-b": 0.017225570184936694,
+        "F-c": 0.01675525225224463,
+        "F-d": 0.01899083535388688,
+        "F-e": null
+      },
+      "beside": {
+        "S": 0.9083333333333333,
+        "A": 0.6441666666666667,
+        "n": 600,
+        "silent_errors_scored": 346,
+        "model_accuracy": 0.46166666666666667,
+        "rule_accuracy": 0.42333333333333334,
+        "cells": {
+          "answers": 1200,
+          "both_right": 375,
+          "loss": 179,
+          "gain": 133,
+          "both_wrong_same_queue": 398,
+          "both_wrong_other_queues": 115,
+          "shares": {
+            "both_wrong_same_queue": 0.33166666666666667,
+            "both_right": 0.3125,
+            "loss": 0.14916666666666667,
+            "gain": 0.11083333333333334,
+            "both_wrong_other_queues": 0.09583333333333334
+          }
+        },
+        "by_birth": {
+          "born_right": {
+            "n": 335,
+            "S": 0.8865671641791045,
+            "A": 0.5895522388059702,
+            "gap": 0.29701492537313434,
+            "model_accuracy": 0.5477611940298508,
+            "rule_accuracy": 0.5880597014925373,
+            "difference": -0.04029850746268657,
+            "own_error_share": 0.6557971014492754
+          },
+          "born_wrong": {
+            "n": 265,
+            "S": 0.9358490566037736,
+            "A": 0.7132075471698113,
+            "gap": 0.22264150943396227,
+            "model_accuracy": 0.35283018867924526,
+            "rule_accuracy": 0.21509433962264152,
+            "difference": 0.13773584905660377,
+            "own_error_share": 0.7980769230769231
+          }
+        },
+        "proxy_against_measurement": {
+          "answers_on_rule_errors": 692,
+          "concordant": 427,
+          "share": 0.6170520231213873
+        },
+        "per_rule": {
+          "R0001": {
+            "sampled": 32,
+            "rule_action": "T1_GENERAL",
+            "S": 0.875,
+            "A": 0.0,
+            "model_accuracy": 0.265625,
+            "rule_accuracy": 0.0625,
+            "difference": 0.203125
+          },
+          "R0004": {
+            "sampled": 33,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 0.9393939393939394,
+            "model_accuracy": 0.48484848484848486,
+            "rule_accuracy": 0.5454545454545454,
+            "difference": -0.06060606060606061
+          },
+          "R0005": {
+            "sampled": 97,
+            "rule_action": "SELF_SERVICE_DEFLECT",
+            "S": 0.8556701030927835,
+            "A": 0.10309278350515463,
+            "model_accuracy": 0.5,
+            "rule_accuracy": 0.4329896907216495,
+            "difference": 0.06701030927835051
+          },
+          "R0006": {
+            "sampled": 55,
+            "rule_action": "BILLING_SPECIALIST",
+            "S": 0.6909090909090909,
+            "A": 0.5636363636363636,
+            "model_accuracy": 0.34545454545454546,
+            "rule_accuracy": 0.45454545454545453,
+            "difference": -0.10909090909090909
+          },
+          "R0007": {
+            "sampled": 51,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 0.6666666666666666,
+            "rule_accuracy": 0.6666666666666666,
+            "difference": 0.0
+          },
+          "R0008": {
+            "sampled": 85,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9882352941176471,
+            "A": 0.9941176470588236,
+            "model_accuracy": 0.3588235294117647,
+            "rule_accuracy": 0.35294117647058826,
+            "difference": 0.0058823529411764705
+          },
+          "R0011": {
+            "sampled": 45,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.7777777777777778,
+            "A": 0.3,
+            "model_accuracy": 0.5555555555555556,
+            "rule_accuracy": 0.1111111111111111,
+            "difference": 0.4444444444444444
+          },
+          "R0019": {
+            "sampled": 40,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.975,
+            "A": 0.9375,
+            "model_accuracy": 0.7625,
+            "rule_accuracy": 0.825,
+            "difference": -0.0625
+          }
+        },
+        "alarm": {
+          "answers_disagreeing": 427,
+          "answers_agreeing": 773,
+          "rule_wrong_where_disagreeing": 0.6885245901639344,
+          "rule_wrong_where_agreeing": 0.5148771021992238
+        },
+        "ONCALL": {
+          "tickets": 7,
+          "named_by_both": 0,
+          "lacking_a_valid_pair": 0,
+          "answers_by_queue": {
+            "T3_ENGINEERING": 6,
+            "T2_TECHNICAL": 7,
+            "BILLING_SPECIALIST": 1
+          }
+        },
+        "SECURITY": {
+          "decisions": 17,
+          "rule_wrong": 11,
+          "answers_naming_it": 31,
+          "answers_naming_it_where_the_rule_was_wrong": 21,
+          "answers": 34
+        },
+        "run_itself": {
+          "calls": 1234,
+          "failed": 0,
+          "invalid_actions": 0,
+          "written_rules_that_would_validate": 1214,
+          "median_seconds_per_call": 4.88
+        }
+      }
+    },
+    {
+      "run": 3,
+      "population": {
+        "decided": 1958,
+        "silent_errors": 932
+      },
+      "validity": {
+        "sampled": 600,
+        "lacking_a_valid_pair": 2,
+        "defined": true
+      },
+      "rows": {
+        "F-b": 0.13879598662207357,
+        "F-c": -0.04598662207357859,
+        "F-d": 0.8790613718411552,
+        "F-e": 2
+      },
+      "standard_errors": {
+        "F-b": 0.013194355409874214,
+        "F-c": 0.013009136038383912,
+        "F-d": 0.015666145451992478,
+        "F-e": null
+      },
+      "beside": {
+        "S": 0.9498327759197325,
+        "A": 0.8110367892976589,
+        "n": 598,
+        "silent_errors_scored": 277,
+        "model_accuracy": 0.4908026755852843,
+        "rule_accuracy": 0.5367892976588629,
+        "cells": {
+          "answers": 1196,
+          "both_right": 520,
+          "loss": 67,
+          "gain": 122,
+          "both_wrong_same_queue": 450,
+          "both_wrong_other_queues": 37,
+          "shares": {
+            "both_right": 0.43478260869565216,
+            "both_wrong_same_queue": 0.3762541806020067,
+            "gain": 0.1020066889632107,
+            "loss": 0.056020066889632104,
+            "both_wrong_other_queues": 0.030936454849498328
+          }
+        },
+        "by_birth": {
+          "born_right": {
+            "n": 365,
+            "S": 0.9561643835616438,
+            "A": 0.8123287671232877,
+            "gap": 0.14383561643835616,
+            "model_accuracy": 0.5904109589041096,
+            "rule_accuracy": 0.6876712328767123,
+            "difference": -0.09726027397260274,
+            "own_error_share": 0.8596491228070176
+          },
+          "born_wrong": {
+            "n": 233,
+            "S": 0.9399141630901288,
+            "A": 0.8090128755364807,
+            "gap": 0.13090128755364808,
+            "model_accuracy": 0.33476394849785407,
+            "rule_accuracy": 0.30042918454935624,
+            "difference": 0.034334763948497854,
+            "own_error_share": 0.8926380368098159
+          }
+        },
+        "proxy_against_measurement": {
+          "answers_on_rule_errors": 554,
+          "concordant": 323,
+          "share": 0.5830324909747292
+        },
+        "per_rule": {
+          "R0001": {
+            "sampled": 38,
+            "rule_action": "T1_GENERAL",
+            "S": 0.8421052631578947,
+            "A": 0.02631578947368421,
+            "model_accuracy": 0.39473684210526316,
+            "rule_accuracy": 0.15789473684210525,
+            "difference": 0.23684210526315788
+          },
+          "R0002": {
+            "sampled": 98,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.979381443298969,
+            "A": 0.979381443298969,
+            "model_accuracy": 0.3917525773195876,
+            "rule_accuracy": 0.4020618556701031,
+            "difference": -0.010309278350515464
+          },
+          "R0004": {
+            "sampled": 41,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 0.34146341463414637,
+            "rule_accuracy": 0.34146341463414637,
+            "difference": 0.0
+          },
+          "R0008": {
+            "sampled": 72,
+            "rule_action": "T2_TECHNICAL",
+            "S": 0.9436619718309859,
+            "A": 0.9647887323943662,
+            "model_accuracy": 0.6267605633802817,
+            "rule_accuracy": 0.6056338028169014,
+            "difference": 0.02112676056338028
+          },
+          "R0009": {
+            "sampled": 22,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 0.7272727272727273,
+            "rule_accuracy": 0.7272727272727273,
+            "difference": 0.0
+          },
+          "R0011": {
+            "sampled": 22,
+            "rule_action": "BILLING_SPECIALIST",
+            "S": 1.0,
+            "A": 0.9545454545454546,
+            "model_accuracy": 0.5454545454545454,
+            "rule_accuracy": 0.5909090909090909,
+            "difference": -0.045454545454545456
+          },
+          "R0012": {
+            "sampled": 37,
+            "rule_action": "BILLING_SPECIALIST",
+            "S": 0.8108108108108109,
+            "A": 0.7972972972972973,
+            "model_accuracy": 0.527027027027027,
+            "rule_accuracy": 0.6756756756756757,
+            "difference": -0.14864864864864866
+          },
+          "R0014": {
+            "sampled": 28,
+            "rule_action": "T2_TECHNICAL",
+            "S": 1.0,
+            "A": 1.0,
+            "model_accuracy": 1.0,
+            "rule_accuracy": 1.0,
+            "difference": 0.0
+          },
+          "R0015": {
+            "sampled": 22,
+            "rule_action": "SELF_SERVICE_DEFLECT",
+            "S": 1.0,
+            "A": 0.0,
+            "model_accuracy": 0.0,
+            "rule_accuracy": 1.0,
+            "difference": -1.0
+          },
+          "R0018": {
+            "sampled": 24,
+            "rule_action": "SELF_SERVICE_DEFLECT",
+            "S": 1.0,
+            "A": 0.0,
+            "model_accuracy": 0.5416666666666666,
+            "rule_accuracy": 0.4583333333333333,
+            "difference": 0.08333333333333333
+          }
+        },
+        "alarm": {
+          "answers_disagreeing": 226,
+          "answers_agreeing": 970,
+          "rule_wrong_where_disagreeing": 0.46017699115044247,
+          "rule_wrong_where_agreeing": 0.4639175257731959
+        },
+        "ONCALL": {
+          "tickets": 7,
+          "named_by_both": 2,
+          "lacking_a_valid_pair": 0,
+          "answers_by_queue": {
+            "ONCALL_ESCALATION": 5,
+            "T2_TECHNICAL": 8,
+            "BILLING_SPECIALIST": 1
+          }
+        },
+        "SECURITY": {
+          "decisions": 18,
+          "rule_wrong": 0,
+          "answers_naming_it": 28,
+          "answers_naming_it_where_the_rule_was_wrong": 0,
+          "answers": 36
+        },
+        "run_itself": {
+          "calls": 1226,
+          "failed": 3,
+          "invalid_actions": 0,
+          "written_rules_that_would_validate": 1223,
+          "median_seconds_per_call": 3.56
+        }
+      }
+    }
+  ],
+  "F-f": {
+    "stage_a_baselines_per_run": {
+      "run1": {
+        "n": 600,
+        "plurality_agrees_with_rule": 406,
+        "plurality_right": 181,
+        "first_shown_agrees_with_rule": 129,
+        "first_shown_right": 137,
+        "rule_right": 259
+      },
+      "run2": {
+        "n": 600,
+        "plurality_agrees_with_rule": 326,
+        "plurality_right": 221,
+        "first_shown_agrees_with_rule": 103,
+        "first_shown_right": 207,
+        "rule_right": 254
+      },
+      "run3": {
+        "n": 600,
+        "plurality_agrees_with_rule": 273,
+        "plurality_right": 163,
+        "first_shown_agrees_with_rule": 343,
+        "first_shown_right": 202,
+        "rule_right": 322
+      }
+    },
+    "ticket_only": {
+      "tickets": 276,
+      "accuracy": 0.5253623188405797,
+      "agreement_with_the_rule": 0.6466666666666666,
+      "agreement_with_the_B_answer_on_the_same_case": 0.6433333333333333,
+      "matched_on_the_same_cases": {
+        "all": {
+          "cases": 300,
+          "ticket_only_right": 157,
+          "B_right": 138,
+          "rule_right": 128,
+          "ticket_only_accuracy": 0.5233333333333333,
+          "B_accuracy": 0.46,
+          "rule_accuracy": 0.4266666666666667
+        },
+        "run1": {
+          "cases": 100,
+          "ticket_only_right": 52,
+          "B_right": 39,
+          "rule_right": 34,
+          "ticket_only_accuracy": 0.52,
+          "B_accuracy": 0.39,
+          "rule_accuracy": 0.34
+        },
+        "run2": {
+          "cases": 100,
+          "ticket_only_right": 51,
+          "B_right": 48,
+          "rule_right": 39,
+          "ticket_only_accuracy": 0.51,
+          "B_accuracy": 0.48,
+          "rule_accuracy": 0.39
+        },
+        "run3": {
+          "cases": 100,
+          "ticket_only_right": 54,
+          "B_right": 51,
+          "rule_right": 55,
+          "ticket_only_accuracy": 0.54,
+          "B_accuracy": 0.51,
+          "rule_accuracy": 0.55
+        }
+      },
+      "rare_tickets_answers_by_queue": {
+        "SECURITY_INCIDENT": {
+          "SECURITY_INCIDENT": 40
+        },
+        "ONCALL_ESCALATION": {
+          "ONCALL_ESCALATION": 14
+        }
+      }
+    }
+  },
+  "pace_per_session": {
+    "births": 2.885,
+    "base1": 4.09,
+    "base2": 4.88,
+    "base3": 3.56,
+    "ticket_only": 3.165
+  }
+}

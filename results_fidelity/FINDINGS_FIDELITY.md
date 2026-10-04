@@ -1,16 +1,34 @@
 # Would the model have decided as its rules do? — findings
 
 Record opened on October 2, 2026, under [`PLAN_FIDELITY.md`](../PLAN_FIDELITY.md).
-Sergi signed §0 on 2026-10-02, before any figure below existed, in `4c81b17`
-(pull request #81). Stage A's record names `3e6136f` in its `_env`: the package
-commit on its branch. A rebase merge gives both commits new hashes on `main`.
-**This record owns every figure in it.**
+Sergi signed §0 on 2026-10-02, before any figure below existed: `ebe124d` on
+`main`, merged from `4c81b17` in pull request #81. Every record names in its
+`_env` the commit of the branch it was written on. A rebase merge gives those
+commits new hashes on `main` with the same trees: Stage A's `3e6136f` is
+`1b15ce1` there. **This record owns every figure in it.**
+
+**Stage C adjudicated all five signed rows on 2026-10-04: four hold and one is
+refuted.** `F-c` is the refutation, and it is thin.
+
+- **The rules decide unlike the model would** (`F-b`).
+- **Yet on the decisions they make, the model asked afresh is not right more
+  often.** It gains where a rule was born wrong and loses where one was born
+  right, and the two cancel.
+- **Most of the silent error is the model's own** (`F-d`).
+- **The rarest queue is one the model knows** (`F-e`). Without its screen of
+  compiled rules, the model names it on every one of its tickets (`F-f`).
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Row `F-f` carries no band.
 > Part of it reproduces figures the drafter computed with a scratch probe before
 > drafting, which §0 of the plan declares as already seen. The rest, the two
 > free baselines, is computable from data on disk. Those two were computed here
 > for the first time, after the signature. Zero API calls.
+>
+> **PROVENANCE, STAGES B AND C: PRE-REGISTERED.** `F-a` to `F-e` were signed
+> before any of their figures existed. `F-a` was read once, provisionally,
+> after the births session and before any base session, as Stage B records.
+> Stage C adjudicated it. `F-f`'s comparison on the same cases was added after
+> Stage C first ran: POST-RUN, and reported only.
 
 ---
 
@@ -285,6 +303,160 @@ two valid answers on 134 of its 135 prompts.
 
 ---
 
+## Stage C — the five adjudications
+
+**What was run.** `python3 -m fidelity.score`, on 2026-10-04, with
+`PYTHONHASHSEED=0`, from `43c4065` and a clean tree. Every blocking check passed
+first, and every Stage B record carried this plan's protocol and Stage A's
+digest. The record is [`score.json`](score.json).
+
+**Stage C ran twice, and the second run is the record.** Its first run, from
+`75aa22f`, was never committed. Its F-f block compared the ticket-only arm's
+accuracy, over a subsample, with the B arm's over all 600 drawn decisions.
+`43c4065` added the comparison on the same cases (POST-RUN, reported only).
+The second run reproduced the first's verdicts, per-run values and births
+block exactly.
+
+**Surface: the corpus.** That is the decided cases and births of
+`PLAN_REUSE.md`'s three Stage B runs, seed 17, in arrival order. `F-b` to `F-e`
+are read on the median of the three runs, and `F-a` pooled over the births.
+
+| row | statistic | run 1 | run 2 | run 3 | value | band | verdict |
+|---|---|---|---|---|---|---|---|
+| `F-a` | `S − A` against the answer of 2026-09-30, births | −0.0246 | −0.0161 | +0.0238 | **−0.0075** (se 0.0191, n 134) | ≤ 0.05 | **holds** |
+| `F-b` | `S − A` against the deciding rule | 0.1838 | 0.2642 | 0.1388 | **0.1838** (se 0.0163) | ≥ 0.10 | **holds** |
+| `F-c` | the model's accuracy minus the rule's | −0.0126 | +0.0383 | −0.0460 | **−0.0126** (se 0.0162) | > 0 | **refuted, thin** |
+| `F-d` | on the rule's errors, the share the model is wrong too | 0.7955 | 0.7413 | 0.8791 | **0.7955** (se 0.0177) | ≥ 0.60 | **holds** |
+| `F-e` | `ONCALL_ESCALATION` tickets named so by both answers, of 7 | 3 | 0 | 2 | **2** | ≥ 1 | **holds** |
+
+**The drafter expected all five to hold, and got four.** It trusted `F-d` least,
+then `F-e`, then `F-c`. `F-c` is the refutation, and it lands within one
+standard error of its line, as §0 labels in advance. `F-d` held well above the
+line the drafter expected it to sit on. `F-e` held at the count of one or two
+the drafter expected.
+
+### What the verdicts say
+
+**1. The instrument had not moved.** `F-a` holds. Re-asked their birth prompts,
+the model agrees with its answers of 2026-09-30 (0.9328) as often as with itself
+(0.9254). The fresh answers are right 0.5261 of the time, the recorded ones
+0.5000. So whatever separates the model from its rules below, it is not a
+different model.
+
+**2. Compiled rules decide unlike the model would.** `F-b` holds in every run.
+Asked twice, the model agrees with itself 0.8921, 0.9083 and 0.9498 of the time.
+It agrees with the rule that decided the case 0.7083, 0.6442 and 0.8110 of the
+time. If a rule were just one more draw of the model, those two would match.
+Instead about one decision in five goes to a queue the model, asked afresh,
+would not choose.
+
+**3. But compiling does not lose capability on the decisions it makes.** `F-c`
+is refuted, thinly. Asked afresh, the model is right 0.4224, 0.4617 and 0.4908
+of the time, where the rules are right 0.4351, 0.4233 and 0.5368. It does better
+in run 2 alone. The disagreement of point 2 is real; it is not a loss.
+
+**The two pulls of §0 are both there, and they cancel.**
+
+| | run 1 | run 2 | run 3 |
+|---|---|---|---|
+| rules born wrong: the model minus the rule | +0.0142 | +0.1377 | +0.0343 |
+| rules born right: the model minus the rule | −0.0436 | −0.0403 | −0.0973 |
+
+On decisions by rules born wrong, the model asked afresh would do better:
+compiling froze a bad answer. On decisions by rules born right it would do
+worse: the rule holds a right answer the model does not reliably give again.
+
+**4. Most of the silent error is the model's own, more than the proxy said.**
+`F-d` holds at 0.7955. On the cases a rule decided wrongly, the model asked
+afresh is wrong too about four times in five. Mostly it is wrong the same way:
+it repeats the rule's own wrong queue on 476 of 670, 398 of 692 and 450 of 554
+answers.
+
+`U-c`'s split by birth put three silent errors in five on the rules born wrong,
+and read the rest as scope errors the model would not make. **The direct
+measure says the rest are mostly the model's too.** On the errors of rules born
+right, the model is wrong 0.8661, 0.6558 and 0.8596 of the time. Case by case,
+the split by birth and the fresh answer agree on whose error it was 0.5507,
+0.6171 and 0.5830 of the time. **As a proxy for the error being the model's own,
+the split by birth undercounts it, and case by case it is little better than a
+coin.**
+
+**5. The rarest queue is in the model, and the screen can talk it out of it.**
+`F-e` holds at a median of 2. Under design B, both answers name
+`ONCALL_ESCALATION` on 3, 0 and 2 of the seven tickets. Without a screen (`F-f`,
+below), they name it on all seven, 14 answers of 14. So the queue `U-d` found
+the loop never asked about is one the model knows. In run 2's base, the compiled
+rules on its screen talked it out of the queue every time.
+
+### Recorded beside the rows, and never in a denominator
+
+- **The infidelity sits in a few rules.** These are figures for rules with at
+  least 20 sampled decisions.
+  - `R0001` (*enterprise, any severity → `T1_GENERAL`*, born at case 0 in every
+    run): the model agrees with it on 0.00, 0.00 and 0.03 of its decisions. Its
+    accuracy minus the rule's is −0.10, +0.20 and +0.24.
+  - The rules sending tickets to `SELF_SERVICE_DEFLECT` draw agreement from 0.00
+    to 0.12. Run 3's `R0015` is right on all 22 sampled decisions where the
+    model, asked afresh, is right on none.
+  - The `T2_TECHNICAL` rules mostly draw agreement of 0.8 to 1.0 and an accuracy
+    difference near zero. Run 2's `R0011` is the exception: agreement 0.30, the
+    model 0.44 ahead.
+- **Disagreement is no alarm.** Where a fresh answer disagrees with the rule,
+  the rule is wrong 0.5607, 0.6885 and 0.4602 of the time. Where it agrees, it is
+  wrong 0.5667, 0.5149 and 0.4639 of the time. Only run 2 shows any signal, so
+  re-asking the model would not have found the rules' errors in the other two.
+- **`SECURITY_INCIDENT`, in counts.** Run 2's rules decided 11 of the class's 17
+  cases wrongly. Asked afresh under B, the model named `SECURITY_INCIDENT` on 21
+  of those 22 answers: rung 1's *compilation destroyed capability*
+  ([`PREDICTION.md`](../PREDICTION.md)), seen again in one base of three. In
+  runs 1 and 3 every compiled decision on the class was right. There the model
+  named the class on 10 of 10 answers and on 28 of 36.
+- **`F-f`, the model without its screen.** On the same 300 drawn decisions, one
+  answer from each arm:
+
+  | | run 1 | run 2 | run 3 | all |
+  |---|---|---|---|---|
+  | ticket only (no screen) | 0.52 | 0.51 | 0.54 | **0.5233** |
+  | design B (the screen) | 0.39 | 0.48 | 0.51 | **0.4600** |
+  | the deciding rule | 0.34 | 0.39 | 0.55 | **0.4267** |
+
+  - **Without its screen the model does better in every run.** By 0.06 pooled
+    it beats itself with the screen, and by 0.10 it beats the rules.
+  - **Each figure is 100 cases with one answer per arm.** This record computes
+    no standard error for them, so they are a sign in a consistent direction,
+    not a measured effect.
+  - **The rare classes, without the screen.** On all 27 rare-class tickets it
+    names the true queue in every answer: `SECURITY_INCIDENT` 40 of 40 and
+    `ONCALL_ESCALATION` 14 of 14.
+  - **Beside the copier.** Stage A's copier answering its screen's plurality is
+    right 0.3017, 0.3683 and 0.2717 of the time, and the model under B 0.4224,
+    0.4617 and 0.4908. So the model under B reads more than its screen. But the
+    screen still costs it, and nothing in §0 measured that.
+- **The run itself.**
+  - **Failures:** 13 of 4,295 calls, none an outage.
+  - **Written rules that would validate:** 1,198, 1,214 and 1,223 of the 1,222,
+    1,234 and 1,226 calls of the three base sessions.
+  - **Median seconds per call by the timer:** births 2.89, the bases 4.09, 4.88
+    and 3.56, ticket only 3.17.
+
+### What Stage C does not settle
+
+- **Why the screen costs the model.** The B screen shows the nearest compiled
+  rules, and the model answers from it more than it should (§5.2). Whether any
+  context would do the same, or only a screen of compiled rules, is not
+  measured. Nor is whether the cost would survive more than one answer per
+  ticket.
+- **Whether the gains and losses of point 3 cancel elsewhere.** They cancel
+  here, over one corpus and three bases of one model.
+- **Why thirteen calls came back empty or cut off.** The records keep no
+  `finish_reason`.
+- **A trigger.** Point 5 says the rarest queue was in the model. The alarm above
+  says disagreement with a fresh answer would not have found the rules' errors.
+  A trigger that asks about a class before a rule swallows it is still another
+  plan.
+
+---
+
 ## Files
 
 ```
@@ -300,6 +472,8 @@ results_fidelity/ask_base2.json   Stage B, base 2: 1,234 of 1,234 valid
 results_fidelity/ask_base3.json   Stage B, base 3: 1,223 of 1,226 valid
 results_fidelity/ask_ticket_only.json   Stage B, the ticket-only arm: 328 of 328
                                valid; F-f's paid half
+results_fidelity/score.json    Stage C: F-a to F-e, per run and on the median,
+                               and everything recorded beside them
 fidelity/plan.py               the gate and §10's constants; §0's five lines
 fidelity/replay.py             a Stage B record rebuilt case by case; F-g2
 fidelity/prompts.py            the three prompts, built with rung 2's functions
