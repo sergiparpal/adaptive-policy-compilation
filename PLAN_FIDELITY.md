@@ -1,5 +1,19 @@
 # PLAN_FIDELITY — would the model have decided as its rules do?
 
+> **[CLOSED 2026-10-04] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-02, before any figure of the plan existed. All five rows were
+> adjudicated on 2026-10-04: `F-a` pooled over the births, the rest on the median
+> of three bases. **`F-c` is refuted, thinly; `F-a`, `F-b`, `F-d` and `F-e`
+> hold**, and `F-f` is reported. **The figures are owned by
+> [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-02. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its erratum, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-01, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
