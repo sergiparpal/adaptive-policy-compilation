@@ -317,6 +317,18 @@ accuracy, over a subsample, with the B arm's over all 600 drawn decisions.
 The second run reproduced the first's verdicts, per-run values and births
 block exactly.
 
+> **[NOTE 2026-10-04] A third run is now the record, and nothing it adjudicates
+> moved.** The second run's `score.json` named the plan and no other part of the
+> protocol it scored. Rule C of the plan's §4 asks every new record for the
+> reasoning setting, and every other record here carries it. `93192f7` writes the
+> fields the session records carry: plan, model, prompt version, reasoning
+> setting, seed and n. A test pins them. Stage C was run again from that commit,
+> with `PYTHONHASHSEED=0` and a clean tree. Against the second run, the verdicts,
+> per-run values, births block, `F-f`, pace and sample digest are identical.
+> Three things changed: `_env`, the five fields added beside `plan`, and the
+> blocking suite's count of tests, from 1,158 to 1,159. The added test is the one
+> that pins those fields.
+
 **Surface: the corpus.** That is the decided cases and births of
 `PLAN_REUSE.md`'s three Stage B runs, seed 17, in arrival order. `F-b` to `F-e`
 are read on the median of the three runs, and `F-a` pooled over the births.
