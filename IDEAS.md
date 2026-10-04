@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of September 30, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 4, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -23,7 +23,9 @@ entire.
 
 **The founding question closed on September 30, 2026**, on rung 2's engine:
 `PLAN_REUSE.md`, six signed rows, four held, one refuted and one reported,
-written up in `results_reuse/`. This is a list of things not done, none of them
+written up in `results_reuse/`. **Fidelity, its cleanest form, closed on October
+4, 2026**: `PLAN_FIDELITY.md`, six more signed rows with the same split, written
+up in `results_fidelity/`. This is a list of things not done, none of them
 developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -55,6 +57,12 @@ against, a threshold a next run would have to clear.
   (no) — and cost zero API calls. `results3/FINDINGS_AUDIT.md`,
   `results3/optimizer_check.json`, `results3/order_search_ls.json`,
   `results4/sweep_ls.json`.
+- **Fidelity: whether a compiled rule decides a later case the way the model
+  would have.** October 4, 2026, `PLAN_FIDELITY.md`. The model was re-asked on
+  1,800 decided cases of `PLAN_REUSE.md`'s three bases, with every rule that
+  matches the ticket hidden. The rules decide unlike it would and lose it
+  nothing on the cases they decide, and most of their error is its own.
+  `results_fidelity/`.
 - **The founding question, on the engine that can answer it.** September 30,
   2026, `PLAN_REUSE.md`: rung 2's loop at n=2000, three runs, with the error axes
   kept apart. The rules get reused, and most of their errors are born with them.
@@ -92,6 +100,13 @@ against, a threshold a next run would have to clear.
   its region first and decided all of it wrongly. What is left is a trigger that
   would ask about a class before a rule swallows it, and nobody has specified
   one.
+  **[NOTE 2026-10-04] The queue is in the model, and re-asking the model is not
+  the trigger.** `PLAN_FIDELITY.md` asked the model about the seven tickets
+  without a screen of compiled rules, and it named `ONCALL_ESCALATION` on every
+  one. Shown that screen, it missed most of them in two bases and all of them in
+  the third. Escalating where a fresh answer disagrees with the rule would not
+  do either: in two runs of three the rules are wrong as often where the model
+  agrees as where it disagrees.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -104,17 +119,47 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_FIDELITY.md` opens and does not resolve
+
+Closed October 4, 2026. It asked whether a compiled rule decides a later case the
+way the model would have, and answered it. The rules do not, and on the cases
+they decide, compiling loses the model nothing. What that answer leaves:
+
+- **What a screen of compiled rules does to the model.** Beside its rows, the
+  plan asked the model without a screen on a subsample.
+  - **Accuracy.** On the same cases the model was right more often without the
+    screen than with it, in every base.
+  - **The rare queues.** Without a screen it named both rare queues every time.
+    Shown its compiled rules, it missed the rarest one on most tickets of two
+    bases and all of a third.
+  - **How strong.** It is one answer per case, on a hundred cases a base: a sign,
+    not an effect.
+  - **What follows if it holds.** Compiling's cost is then not in the decisions
+    the rules make, but in what showing them to the model does to its next
+    answers. Measuring that takes calls: the ticket-only arm on the whole draw,
+    twice.
+- **Why the gains and losses cancel.** The model does better than rules born
+  wrong and worse than rules born right, and here the two balance. Whether they
+  balance for another model, prompt or corpus is unmeasured.
+- **A trigger that would ask.** See *Pending and already specified*: the queue is
+  in the model, and disagreement with a fresh answer is not the trigger.
+- **The empty answers.** A handful of calls came back empty or cut off mid-JSON
+  after three attempts, the symptom reasoning caused on 2026-09-30. One prompt
+  failed every time: the birth with by far the most declared edges. The records
+  keep no `finish_reason`, so the cause is a guess, and recording it would
+  settle it.
+
+---
+
 ## What `PLAN_REUSE.md` opens and does not resolve
 
 Closed September 30, 2026. It asked the founding question on the engine that can
 answer it, and answered it in the terms it was signed in: the rules get reused.
 What that answer leaves:
 
-- **Fidelity: whether a compiled rule decides a later case the way the model
-  would have.** The cleanest form of the question. The plan measured it only
-  through a proxy, the split by birth (its §12.1). Measuring it needs the model's
-  answers on cases the rules decided, so it costs calls and a second protocol. It
-  is the natural next plan.
+- **~~Fidelity: whether a compiled rule decides a later case the way the model
+  would have.~~ Measured on 2026-10-04** by `PLAN_FIDELITY.md`, and moved to *No
+  longer here*. What it leaves is in its own section, above.
 - **What the accepted edges buy.** Stage B's three runs are the first in this
   project where the proposer's declared edges entered the graph. Nobody has scored
   what they do to the engine's decisions. The records hold everything needed, so
@@ -127,9 +172,13 @@ What that answer leaves:
 - **A steadier reading of the scope axis.** `U-b` reads a heuristic whose error
   jumps between two adjacent points of reuse. A finer frontier, or a blind one —
   the plan's §12.2 explains why `random_k` is not it as it stands — would read the
-  same axis without the jump.
+  same axis without the jump. **[NOTE 2026-10-04]** Most of what `U-b` reads on
+  the scope axis is error the model, asked afresh, would make on the same ticket
+  (`PLAN_FIDELITY.md`, `F-d`). A steadier frontier would read the model's
+  knowledge more than the rules' scope.
 - **A trigger that asks about a class before a rule swallows it.** `U-d`'s
-  refutation, from the other side; see *Pending and already specified*.
+  refutation, from the other side; see *Pending and already specified*, narrowed
+  there by `PLAN_FIDELITY.md` on 2026-10-04.
 
 ---
 

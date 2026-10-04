@@ -1,12 +1,13 @@
 # Status
 
-What is known, as of September 30, 2026. **Not a history** — that is the four
+What is known, as of October 4, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
 [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md),
-[`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) and
-[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), each with
+[`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md),
+[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) and
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md), each with
 its dated errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
@@ -18,7 +19,8 @@ seven signed rows between them — plus the sensitivity sweep of
 `PLAN_SENSITIVITY.md`, five more, which asks how much of rung 1's failure is this
 policy's shape, plus ILP as a competitor in `PLAN_ILP.md`, plus **the founding
 question itself, on the engine that can answer it, in `PLAN_REUSE.md`** — six
-signed rows, closed on 2026-09-30.
+signed rows, closed on 2026-09-30 — plus **its cleanest form, fidelity, in
+`PLAN_FIDELITY.md`**: six more, closed on 2026-10-04.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -92,7 +94,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Forty-six rows have been signed before the figures they name existed. This
+**Fifty-two rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -129,13 +131,15 @@ a count behind it.
 | **A** · the sensitivity sweep (§0 of `PLAN_SENSITIVITY.md`) | 5 | 5 | **2** | 0 | 3 | 0 |
 | **I** · ILP as a competitor (§0 of `PLAN_ILP.md`) | 4 | 3 | **2** | 0 | 1 | 0 |
 | **U** · the founding question (§0 of `PLAN_REUSE.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
-| **total** | **46** | **41** | **18** | **2** | **21** | **4** |
+| **F** · fidelity (§0 of `PLAN_FIDELITY.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
+| **total** | **52** | **46** | **19** | **2** | **25** | **5** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`, `I-a`, `I-c`, `U-d`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`,
-`S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`,
-`I-d`, `U-a`, `U-b`, `U-c`, `U-e`. Reported: `R-d`, `C-d`, `D-d`, `U-f`.
+`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`,
+`S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`,
+`A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`. Reported:
+`R-d`, `C-d`, `D-d`, `U-f`, `F-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -152,10 +156,10 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 18 of 41 = **43.9%**
-refuted; without them, 16 of 35 = **45.7%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 19 of 46 = **41.3%**
+refuted; without them, 17 of 40 = **42.5%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-1.8 points the flattering way, which is exactly why saying so is not optional.
+1.2 points the flattering way, which is exactly why saying so is not optional.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -171,6 +175,11 @@ drafter and the sample size, not because of the figure — and it moves the figu
 > row.** Six rows were signed, five adjudicated, one refuted and one reported. The
 > table, the named lists, the count of signed rows in the heading and the two
 > ratios above moved together, so this time nothing was left behind.
+>
+> **[NOTE 2026-10-04] Recomputed with the `F` thread, in the same commit as its
+> row.** Six rows were signed, five adjudicated, one refuted and one reported. The
+> table, the named lists, the count of signed rows in the heading and the two
+> ratios above moved together again.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -184,7 +193,9 @@ adjudicated: the thread is closed. `A` comes from
 which owns all five; `I` from [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md);
 and `U` from the Stage C section of
 [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), with `U-f`
-from its Stage A.
+from its Stage A; and `F` from the Stage C section of
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
+with `F-f` from its Stages A and C.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -256,6 +267,16 @@ otherwise. The drafter expected `U-a` to `U-d` to hold and `U-e` to be refuted;
 `U-c` at 0.6024 against 0.60 and `U-b` at +0.0207 against 0 — and each has one run
 of three on the wrong side. `U-f` is reported: its inputs had been on disk since
 August, and the drafter had read their metrics.
+
+**The `F` rows ask the founding question in its cleanest form, and the drafter
+got four of five.** Sergi signed §0 of `PLAN_FIDELITY.md` on 2026-10-02, before
+any of its figures existed. A gate refuses every writer of the plan otherwise.
+The drafter expected all five to hold, and named the ones it trusted least:
+`F-d`, then `F-e`, then `F-c`. **`F-c` was refuted, and thinly**: −0.0126 on the
+median against a line of 0, inside one standard error, the label §0 fixed in
+advance. `F-d` held at 0.7955, well above the line the drafter expected it to
+sit on. `F-a` was read once, provisionally, before any base session ran, as §8
+of the plan intends, and the record says so. `F-f` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -771,7 +792,9 @@ the three runs, on the corpus, from
   escalated was the arbitration.
 - **Wrong at birth.** About three silent errors in five come from rules born with
   the wrong queue (`U-c` holds, at 0.6024 against 0.60). The proposer chose the
-  right queue for the ticket in front of it about half the time.
+  right queue for the ticket in front of it about half the time. **Measured
+  directly, about four silent errors in five are ones the model asked afresh
+  would make too** (`F-d`, below), so the split by birth undercounts them.
 - **No better than a heuristic on scope.** On the scope axis, the rules born right
   err about as much as a fixed heuristic handed the right action (`U-b` holds, at
   +0.0207). That margin moves with where their reuse lands on a steep frontier.
@@ -784,6 +807,36 @@ the three runs, on the corpus, from
 
 Stage A found the same shape at n=100 in the eight August runs; it is reported,
 not adjudicated.
+
+**Fidelity, measured: the rules decide unlike the model would, and compiling
+loses it nothing on the cases they decide.** `PLAN_FIDELITY.md` re-asked the
+model, twice, on 600 decided cases of each of `PLAN_REUSE.md`'s three bases. It
+used prompt v1 with every rule that matches the ticket hidden, so that each
+case was the coverage impasse it would have been. Medians of the three runs, on
+the corpus, from
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md):
+
+- **Unfaithful.** The model agrees with itself 0.89 to 0.95 of the time, and
+  with the rule that decided the case 0.64 to 0.81 (`F-b` holds, at 0.1838
+  against 0.10). The instrument had not moved since the rules were written
+  (`F-a` holds, at −0.0075).
+- **Not costly.** Asked afresh, it is not right more often than the rules
+  (`F-c` refuted, thinly, at −0.0126). It does better where a rule was born
+  wrong and worse where one was born right, and the two cancel.
+- **The error is the model's own, more than the proxy said.** On the rules'
+  errors it is wrong too 0.7955 of the time, mostly with the rule's own wrong
+  queue (`F-d` holds). Case by case, `U-c`'s split by birth agrees with that
+  0.55 to 0.62 of the time.
+- **The rarest queue is in the model.** Shown its screen of compiled rules, it
+  names `ONCALL_ESCALATION` on 3, 0 and 2 of the seven tickets (`F-e` holds, at
+  2). Without a screen it names it on all seven, 14 answers of 14.
+- **And the screen seems to cost it.** On the same 300 cases, one answer each:
+  without a screen it is right 0.5233 of the time, with it 0.4600, and the
+  rules 0.4267. It is a sign in the same direction in every run, not a measured
+  effect. Disagreement with a fresh answer does not find the rules' errors in
+  two runs of three.
+
+The last two are reported, not adjudicated.
 
 ---
 
@@ -859,12 +912,20 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    asked about, no method can learn. **[NOTE 2026-09-30]** `U-d` settles whose
    property that is: a loop that escalates on coverage never asked about it either,
    in three runs. What is open now is a trigger that would ask, and none is
-   specified.
-4. **Fidelity: whether a compiled rule decides a later case the way the model
-   would have.** That is the cleanest form of the founding question, and
-   `PLAN_REUSE.md` measured it only through a proxy, the split by birth (its
-   §12.1). It needs the model's answers on cases the rules decided, so it costs
-   calls.
+   specified. **[NOTE 2026-10-04]** The queue is in the model: asked without a
+   screen of compiled rules, it names `ONCALL_ESCALATION` on all seven tickets
+   (`F-f`). And disagreement with a fresh answer is not that trigger, since it
+   finds the rules' errors in one run of three.
+4. **~~Fidelity: whether a compiled rule decides a later case the way the model
+   would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
+   **The rules decide unlike the model would, and compiling loses it nothing on
+   the cases they decide**; most of their error is the model's own.
+   [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md).
+   What is left open is what the thread found beside its rows. **The model's
+   screen of compiled rules seems to cost it accuracy**, and the rarest queue,
+   which it names on every ticket without that screen. That was measured on 100
+   cases a run with one answer each, so it is a sign rather than an effect, and
+   measuring it would cost calls.
 
 ---
 

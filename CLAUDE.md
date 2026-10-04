@@ -174,27 +174,32 @@ times per instance; the README's reproduction block gives their durations before
 you launch one. The four originals are left in place and unmodified, so the
 pre-audit figures stay reproducible next to the corrected ones.
 
-**`PLAN_FIDELITY.md` is open: the founding question in its cleanest form.** Sergi
-signed §0 on 2026-10-02, before any figure it governs existed. It asks whether a
-compiled rule decides a later case the way the model would have. It re-asks the
-model, under prompt v1 and with reasoning off, on prompts rebuilt from
+**`PLAN_FIDELITY.md` closed on 2026-10-04: the founding question in its cleanest
+form.** Six signed rows: five adjudicated, one reported. Sergi signed §0 on
+2026-10-02, before any figure it governs existed. It asked whether a compiled
+rule decides a later case the way the model would have. It re-asked the model,
+under prompt v1 and with reasoning off, on prompts rebuilt from
 `PLAN_REUSE.md`'s Stage B records, with every rule that matches the ticket hidden.
-The record is `results_fidelity/FINDINGS_FIDELITY.md`, which grows by stage.
-**Stage A is free and has run. Stage B spends, and does not start without Sergi
-asking for it**: one session after another, each record committed before the next.
-Every writer in `fidelity/` refuses while the plan carries a blank signature line;
-the gate reads `PLAN_FIDELITY.md` and no other plan and counts every such line.
-The first command is blocking and writes nothing:
+The record is `results_fidelity/FINDINGS_FIDELITY.md`, and `STATUS.md` indexes
+its figures. **Stages A and C are free and reproduce from the committed records.
+Stage B spent**: its records are guarded, and a re-run neither overwrites them
+nor gives the same answers back, so a paid session does not start without Sergi
+asking for it. Every writer in `fidelity/` refuses while the plan carries a blank
+signature line; the gate reads `PLAN_FIDELITY.md` and no other plan and counts
+every such line. The first command is blocking and writes nothing:
 
     python3 -m fidelity.ask --dry-run                   # F-g1..F-g4; must pass first
     python3 -m fidelity.sample                          # Stage A, free
+    python3 -m fidelity.score                           # Stage C, free, from the sessions
     .venv/bin/python -m fidelity.ask --session smoke    # Stage B: spends — only if asked
     .venv/bin/python -m fidelity.ask --session births   # then base1, base2, base3, ticket_only
-    python3 -m fidelity.score                           # Stage C, free, from the sessions
 
 **A session that dies keeps what it paid for.** Answers are appended to a
 git-ignored partial file, and the same command resumes there. A run of failed
 calls stops a session without recording them, because an outage is not answers.
+**A session longer than about half an hour outlives a background command of the
+agent's harness**, which ends it at that limit. Run long sessions in Sergi's
+terminal, with the key loaded as rule 7 says.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
