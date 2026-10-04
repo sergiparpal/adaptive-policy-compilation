@@ -790,6 +790,13 @@ class TestStageCOverRecordsTheDoubleProduced(unittest.TestCase):
         self.assertEqual(self.score["sample_sha256"], ask.sample_sha256())
         self.assertIsNotNone(self.score["F-f"]["ticket_only"])
 
+    def test_its_record_carries_the_protocol_it_scored(self):
+        """Rule C: every record carries the reasoning setting. Stage C's first
+        committed record went out without it."""
+        self.assertEqual(self.score["reasoning"], plan.REASONING)
+        for key, value in ask.protocol().items():
+            self.assertEqual(self.score[key], value, key)
+
     def test_the_arithmetic_on_answers_that_never_vary(self):
         """Every answer is T2_TECHNICAL: the two answers always agree, no
         ONCALL ticket is named, and A is the share of rules that send to T2."""
