@@ -211,6 +211,7 @@ class TestTheDerivationItself(unittest.TestCase):
         self.assertIn("ilp", CODE_ROOTS)
         self.assertIn("reuse", CODE_ROOTS)
         self.assertIn("fidelity", CODE_ROOTS)
+        self.assertIn("edges", CODE_ROOTS)
         for module in writers():
             with self.subTest(module):
                 self.assertTrue(any(module == r or module.startswith(r + "/")
