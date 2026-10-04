@@ -354,6 +354,36 @@ figure exists**.
     `PYTHONHASHSEED`, by `tests/hashseed_child.py`'s method.
 - **W-g4 — The signature**, §8.
 
+> **[NOTE 2026-10-05] Run before signature, with Sergi's leave, and all three
+> pass.** `PYTHONHASHSEED=0 python3 -m edges.score --dry-run`, zero API calls,
+> nothing written, 70 s.
+>
+> - **`W-g1`.** Corpus and space at 1.0000, and the suite green. The three
+>   records reproduce themselves. The space labels partition the space, with
+>   `T2_TECHNICAL` at 36,720.
+> - **`W-g2`.** Each run rebuilds exactly. Without its edges it departs only
+>   from ACTION to CONFLICT, on 37, 16 and 61 cases.
+> - **`W-g3`.** The counterfactual rebuild is the identity on the three runs.
+>
+> **Two details of method and one addition, none of which moves a band:**
+>
+> - **Three hash seeds, not two.** `W-g3` compares the coin under 0, 1 and 2,
+>   beside a witness that does depend on the hash and changes between them, as
+>   `tests/test_order_determinism.py` does.
+> - **No duplicates.** `W-g3` also refuses an accepted edge over a pair already
+>   installed: a third kind that §5.1 does not name. It finds none, so every
+>   accepted edge is installed or consistent with subsumption.
+> - ***Never reads a label of `D`*, said precisely.** `W-g1` compares each
+>   record's labels with those the frozen loop writes, case by case, which is
+>   `F-g1`'s check, and prints pass or fail. No figure is computed from them.
+>
+> **Timed without reading a label.** The stage's 2,000 coin draws take 2 to 7 s
+> a run, and a final base over the whole space 1 to 2 s, so §2.2's *minutes*
+> is seconds. The hash check's two constants, three seeds and 25 draws, decide
+> no figure. Neither the dry run nor the timing printed anything §0 does not
+> already declare. Written by the drafter before §0 was signed: no band moves
+> and no row of §0 is touched.
+
 ---
 
 ## 7. The stage — scoring (free)
