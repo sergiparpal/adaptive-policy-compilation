@@ -351,6 +351,12 @@ precisely so this case is distinguishable from a code change
 (`harness/provenance.py`); a `true` with no explanation beside it is not
 traceability, so this is the explanation.
 
+> **[NOTE 2026-10-04] `a69890b` is not on `main`.** It is the commit the
+> record's `_env` stamped on its branch, and pull request #7 merged that branch
+> by rebase, which gave every commit in it a new hash. On `main` the same change
+> is `19db90a`. The record stays as it is: its `_env` says what ran, and this
+> note says where to find it.
+
 **How the step was executed, and one procedural gap.** Seven phases, each
 committed before the next: the plan first, so the phases are measured against
 something already on the record; then the weighted objective; then two blocking
@@ -387,6 +393,14 @@ auditing the plan with `git log --oneline -- PLAN_BUDGET_LS.md` therefore lands
 on a commit about a diagnostic, not on a signing event. Nothing was altered and
 the diff is honest, but the signing is the one act in this step that should have
 had a commit of its own, and staging by wildcard is what cost it.
+
+> **[NOTE 2026-10-04] `6b8311b` and `b9b0f5f` are not on `main` either.** They
+> are branch hashes from the same rebase merge of pull request #7: on `main` the
+> plan entered in `35a82f5` and the signature in `18d6c7e`, with the same
+> changes. What the two paragraphs above say still holds there by content:
+> `git log --oneline -- PLAN_BUDGET_LS.md` on `main` shows the signature arriving
+> in `18d6c7e`, the commit about the diagnostic. §0 of the plan cites `6b8311b`
+> too, and an agent does not edit §0, so its `main` hash is written down here.
 
 *Addendum, 2026-08-14.* The route this took is now closed at the cheapest point:
 `.githooks/pre-commit` refuses a commit that stages `PREDICTION.md` or a root

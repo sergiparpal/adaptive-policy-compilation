@@ -779,6 +779,15 @@ string additions and nothing else. The module holds the same text as constants
 and emits it, so a fresh run would reproduce the file — except its `code_digest`,
 which identifies the code as it stood when the numbers were computed.
 
+> **[NOTE 2026-10-04] `b964823` is not on `main`, so on a fresh clone that
+> command fails.** It is a branch hash that pull request #21's rebase merge
+> rewrote. On `main` the same commit is `d672caf`, and the file is
+> byte-identical in the two, so this is the same command:
+> `git diff d672caf -- results3/order_metrics_corpus.json`. Run today, it also
+> shows what the authorized re-run above added: the pair identities and the
+> authorization, with its `_env_amendment`. No value present at `d672caf` has
+> changed except the rewritten `refutation_note`.
+
 ---
 
 ## What the corpus part does not settle
@@ -827,6 +836,10 @@ code before any of these numbers existed — commit `73719ec`, landed in **PR
 #22**; these figures arrived in **PR #23**, which is what makes the order of the
 two checkable in the log rather than asserted here. Record:
 [`rank_transfer.json`](rank_transfer.json).
+
+> **[NOTE 2026-10-04] On `main` that commit is `b9a182c`.** `73719ec` is its
+> hash on the branch that pull request #22 merged by rebase; the PR, which the
+> paragraph names, is what a reader can follow either way.
 
 **The question the two parts above left open.** The corpus part settled that the
 *level* does not transfer — 5.75% against 20.35% — and that *where* the

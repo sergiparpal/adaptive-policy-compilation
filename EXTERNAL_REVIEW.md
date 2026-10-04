@@ -544,6 +544,10 @@ the drafter had expected all four to hold, which is the worst calibration event 
    > amendment to §1 before any row was read. A fourth root document appeared with
    > them, `PAIRWISE_WRITEUP.md`, indexed in the same commit that added it — which
    > is this point's own rule applied to the item it was written about.
+
+   > **[NOTE 2026-10-04] `e1d1db3` is not on `main`.** It is that commit's hash
+   > on its branch, which pull request #57 merged by rebase. On `main` the same
+   > change is `a2d1e27`.
 6. **[ADDED 2026-08-29] It mis-classified one of its own items, and that is the
    most expensive kind of error this document can make.** §4's preamble called
    item 3 post-run when its figures did not exist, so a pre-registrable
