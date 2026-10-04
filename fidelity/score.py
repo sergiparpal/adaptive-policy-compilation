@@ -536,7 +536,11 @@ def main(argv: list[str] | None = None) -> int:
     plan.OUT.mkdir(exist_ok=True)
     plan.SCORE_PATH.write_text(json.dumps({
         "_env": environment(),
-        "plan": str(plan.PLAN),
+        # The protocol it scored: plan, model, prompt, reasoning setting, seed and
+        # n, the fields every session record carries and this one checked. Rule C
+        # of the plan asks every record for the reasoning setting; added
+        # 2026-10-04, after the first record of this stage went out without it.
+        **ask.protocol(),
         "stage": "C",
         "surface": ("corpus — seed 17, n=2000, in arrival order: the decided cases "
                     "and births of PLAN_REUSE.md's three Stage B runs"),
