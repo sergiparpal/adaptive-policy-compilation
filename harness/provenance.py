@@ -65,10 +65,11 @@ REPO = Path(__file__).resolve().parent.parent
 # Code that produces figures. Order does not matter: the digest sorts by path.
 # `sensitivity` added 2026-08-29 with the package: it produces figures, so a
 # digest that ignored it would identify the wrong code for its records. `reuse`
-# added 2026-09-29 with PLAN_REUSE.md's package, for the same reason, and
-# `fidelity` 2026-10-02 with PLAN_FIDELITY.md's.
+# added 2026-09-29 with PLAN_REUSE.md's package, for the same reason,
+# `fidelity` 2026-10-02 with PLAN_FIDELITY.md's, and `edges` 2026-10-05 with
+# PLAN_EDGES.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
-              "reuse", "fidelity", "run_experiment.py")
+              "reuse", "fidelity", "edges", "run_experiment.py")
 
 DIGEST_CHARS = 16
 
