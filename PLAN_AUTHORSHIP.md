@@ -66,7 +66,7 @@ reading of `PLAN_REUSE.md`'s three bases, and every line below is set against it
 |---|---|---|---|---|
 | **E-a** | **The discipline nests the base**: made to place every rule it writes, the proposer writes exceptions inside the rules they override | nested pairs over all pairs, `reuse/structure.py`'s `nested_share`, of each final base. Pairs carry no surface. Baseline median 0.0160 over distinct rules, the comparison, since v1e refuses copies; 0.0194 with them | **≥ 0.05** | **< 0.05** |
 | **E-b** | **Subsumption becomes sound at the same coverage**: P3's first prediction, re-anchored to this loop | subsumption alone over each final base, **full corpus**: its silent error, and its coverage. Baseline medians 0.5521 and 0.966 | **silent error ≤ 0.45 and coverage ≥ 0.90** | **silent error > 0.45, or coverage < 0.90** |
-| **E-c** | **Imposed declaration orders what subsumption leaves, over the function** | the share of the order's room the installed edges fill, **exhaustive space**: (end to end with every installed edge − end to end of subsumption alone) / (hybrid bound − end to end of subsumption alone), on each final base. Baseline 0.3001, 0.3834 and 0.7807, median 0.3834 | **≥ 0.50** | **< 0.50** |
+| **E-c** | **Imposed declaration orders what subsumption leaves, over the function** | the share of the order's room the installed edges fill, **exhaustive space**: (end to end with every installed edge − end to end of subsumption alone) / (hybrid bound − end to end of subsumption alone), on each final base. Baseline 0.3000, 0.3833 and 0.7806, median 0.3833 | **≥ 0.50** | **< 0.50** |
 | **E-d** | **Made to declare against every rule it overlaps, the proposer contradicts subsumption** | `contradice_subsuncion` verdicts, pooled over the runs. In every run the repository has made, this count is zero | **≥ 1** | **0** |
 | **E-e** | *Reported, not adjudicated.* What the rows rest on, and what they could hide | per run, beside the baseline: E-c on the full corpus; E-a to E-c with the edges of each channel alone (§5.3); the online figures of the loop, `PLAN_REUSE.md`'s set; calls, repair rounds and rejections by reason; overlap among distinct rules, and born rules that overlap nothing; declarations by verdict; `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations | — | — |
 
@@ -95,8 +95,9 @@ auditable.** Everything `results_reuse/structure.json` publishes, which is every
 figure of the baseline above, and the whole of `FINDINGS_REUSE.md`. From
 `FINDINGS_EDGES.md`, each final base's end to end with and without its edges on
 both surfaces; the three baseline shares of E-c were computed from that table
-and `structure.json` while drafting, 0.3001, 0.3834 and 0.7807 over the space
-and 0.2326, 0.3636 and 0.4429 on the corpus. And the baseline's nesting over
+and `structure.json` while drafting, and `E-g2` recomputed them exactly before
+signature, 0.3000, 0.3833 and 0.7806 over the space and 0.2326, 0.3636 and
+0.4429 on the corpus (§7's note). And the baseline's nesting over
 distinct rules, computed while drafting because the copies inflate it: 0.0160,
 0.0277 and 0.0043, where the copies alone made 54 of run 1's 63 nested pairs.
 `FINDINGS_FIDELITY.md`,
@@ -113,7 +114,7 @@ proposal path, `rung2/proposers2.py` and `rung2/shadow2.py`, read to write §5.
 - **E-c.** With a declaration on every overlap and a way to order rules already
   in conflict, most conflicts get an edge. The proposer's direction is right
   about three times in four over the function, 0.7556 at write time (`W-b`) and
-  0.7312 pair by pair (`B-a`). The baseline's median share, 0.3834, came from 50
+  0.7312 pair by pair (`B-a`). The baseline's median share, 0.3833, came from 50
   installed edges.
 - **E-d.** The discipline asks for a declaration on every nested pair, and one
   narrower rule called a default, once in three runs, holds the row. v1 told the
@@ -203,7 +204,7 @@ unless the signature line says otherwise.**
 | figure | value | what it is | owning record |
 |---|---|---|---|
 | baseline, per run | §0 | `PLAN_REUSE.md`'s three final bases, read whole: nesting, subsumption alone, bounds, copies | `results_reuse/structure.json` |
-| baseline end to end with edges | 0.3063, 0.2951, 0.5536 over the space; 0.4035, 0.4470, 0.5245 on the corpus | each final base with its installed edges | `results_edges/FINDINGS_EDGES.md` |
+| baseline end to end with edges | 0.3063, 0.2951, 0.5536 over the space; 0.4035, 0.4470, 0.5245 on the corpus | each final base with its installed edges | `results_edges/score.json`, tabled in `results_edges/FINDINGS_EDGES.md` |
 | the copies and what they carried | 35 of 64 accepted edges | later copies, every one born on a CONFLICT | `results_reuse/structure.json`, `post_run` |
 | the hand-written policy | nested 0.1502, subsumption silent error 0.0000 | the author's discipline P3 tries to impose | `results/subsumption.json` |
 | rung 1's base | nested 0.0517, subsumption silent error 0.5312 at coverage 0.0800 | P3's original anchor, corpus | `results/learned_subsumption.json` |
@@ -257,7 +258,8 @@ D. **The constants of §11 are fixed here and pinned by tests.**
 the system prompt, the neighbourhood of at most `MAX_SHOWN = 12` rules, the base
 rendering, the answer's fields, the rule that it must match the ticket, and the
 model's settings. The draft wording below is the drafter's. The package freezes
-it, and Sergi may change it before signing and not after.
+it, at fingerprint `72b611ad60c0278e`, and Sergi may change it before signing and
+not after.
 
 **5.1 — The paragraph on what to declare.** v1 says: *"solo necesitas declarar
 prioridad frente a reglas que se solapan con la tuya sin que una contenga a la
@@ -391,9 +393,9 @@ draft rather than a signed amendment.
 - **E-g2 — The baseline reproduces.** `reuse/structure.py`'s profiles of the
   three final bases recompute and equal `results_reuse/structure.json`, and each
   base's end to end with its installed edges, rebuilt from its record, equals
-  `FINDINGS_EDGES.md`'s table on both surfaces, to the four decimals it
-  publishes. So E-c's baseline shares are the ones §0 declares, to that
-  precision, and so is E-a's nesting over distinct rules.
+  what `results_edges/score.json` publishes, exactly, on both surfaces. So E-c's
+  baseline shares and E-a's nesting over distinct rules are the ones §0
+  declares, to the fourth decimal.
 - **E-g3 — The loop and the validator do what §5 says, and nothing else.**
   - With §5's changes switched off, the new loop, replaying the proposals of a
     recorded v1 run, reproduces that run's records case by case.
@@ -411,6 +413,21 @@ ended: the key endpoint answers 200 for a key that is not a management key; a
 smoke run of 20 cases under this protocol shows at least one proposal parsed and
 one rule born, and its record carries every field of §5.4. A full run refuses
 without that smoke record.
+
+> **[NOTE 2026-10-05] Run before signature, and all three pass.**
+> `python3 -m authorship.run --dry-run`, zero API calls, nothing written.
+> `E-g1`: the hidden policy's 199 edges entered through v1e's declaration path,
+> all accepted, and 1.0000 on corpus and space, with the suite green. `E-g2`: the
+> three bases reproduce `structure.json` and `results_edges/score.json` exactly.
+> `E-g3`: the labels agree, the smoke corpus is the head of the full one, all
+> three v1 runs replay through the loop record by record, the copy check finds
+> exactly the 44, and the texts hash to `72b611ad60c0278e`.
+>
+> **One correction came out of `E-g2`.** The drafter had computed E-c's baseline
+> shares from `FINDINGS_EDGES.md`'s table, rounded to four decimals, and each came
+> out one too high in the fourth decimal. §0 now carries the exact ones, 0.3000,
+> 0.3833 and 0.7806, and the median 0.3833. No band moves and no row's claim
+> changes. Written by the drafter before §0 was signed.
 
 ---
 
@@ -490,8 +507,8 @@ authorship/plan.py       the gate, the constants, §0's lines
 authorship/protocol.py   v1e: §5's paragraphs and repair message, the validator,
                          the order answer, the fingerprint
 authorship/loop.py       rung 2's loop with v1e's proposal path; engine2 called
-authorship/gates.py      E-g1 to E-g3, and Stage B's own checks
-authorship/run.py        Stage B; spends; guarded
+authorship/gates.py      E-g1 to E-g4
+authorship/run.py        Stage B, its smoke and key checks; spends; guarded
 authorship/score.py      Stage C: E-a to E-d, and E-e
 results_authorship/FINDINGS_AUTHORSHIP.md  run_n20_smoke.json
 results_authorship/run_n2000_r1.json … run_n2000_r{R}.json  score.json
