@@ -37,7 +37,7 @@ from rung2.engine2 import PriorityEngine
 from rung2.proposers2 import SYSTEM_PROMPT_V1, neighbourhood, render_base_v1
 from rung2.shadow2 import run_shadow2
 
-from edges import gates, plan, score
+from edges import gates, plan, readings, score
 from edges import rebuild as rb
 from reuse import plan as reuse_plan
 from tests.fixtures import space
@@ -291,6 +291,17 @@ class TestTheRebuildOnAScriptedRun(unittest.TestCase):
         self.assertEqual(s["right"] + s["wrong_direction"],
                          s["any_direction_could_be_right"])
 
+    def test_the_post_run_readings_add_up_on_the_scripted_run(self):
+        rules = readings.deciding_rules(self.rec, self.d, self.classes)
+        self.assertEqual(sum(r["decided"] for r in rules), len(self.d))
+        queues = readings.by_queue(self.rec, self.d)
+        self.assertEqual(sum(q["decided"] for q in queues.values()), len(self.d))
+        for q in queues.values():
+            self.assertEqual(q["decided"] - q["right"],
+                             sum(q["true_queue_of_the_wrong"].values()))
+        sec = readings.security(self.rec, self.d)
+        self.assertLessEqual(sec["of_which_through_an_edge"], sec["right_decisions"])
+
 
 class TestTheStageBRecords(unittest.TestCase):
     """`W-g2` and `W-g3` on the three records: identities, no label read, silent
@@ -358,6 +369,17 @@ class TestTheArithmetic(unittest.TestCase):
         self.assertEqual((r["n"], r["hits"], r["toward_loser"], r["tie"],
                           r["neither_ever_right"]), (3, 2, 1, 1, 1))
 
+    def test_the_coin_read_among_resolved_and_net_by_hand(self):
+        r = readings.coin_readings([1, 2, 0], [1, 2, 0], 3, 1)
+        # the third draw resolves nothing and is left out of the first reading
+        self.assertEqual(r["right_among_resolved"]["draws"], 2)
+        self.assertEqual(r["right_among_resolved"]["proposer"], 0.75)
+        self.assertEqual(r["right_among_resolved"]["mean"], 0.5)
+        self.assertEqual(r["right_among_resolved"]["share_at_least_the_proposer"], 0.0)
+        self.assertEqual(r["right_minus_wrong"]["proposer"], 2)
+        self.assertEqual(r["right_minus_wrong"]["share_at_least_the_proposer"], 0.0)
+        self.assertEqual(r["right_minus_wrong"]["mean"], 0.0)
+
     def test_space_labels_by_case_index_are_msb_first(self):
         self.assertEqual(score.labels_by_index({"A": 0b1010, "B": 0b0101}, 4),
                          ["A", "B", "A", "B"])
@@ -420,6 +442,20 @@ class TestNothingIsMeasuredOrWrittenUnsigned(unittest.TestCase):
                  mock.patch("builtins.print"):
                 self.assertEqual(score.main(["--dry-run"]), code)
                 write.assert_not_called()
+
+    def test_the_post_run_readings_refuse_before_anything_too(self):
+        with mock.patch.object(plan, "gate_signature", return_value=UNSIGNED), \
+             mock.patch.object(gates, "run_all",
+                               side_effect=AssertionError("checks ran")) as checks, \
+             mock.patch.object(Path, "read_text",
+                               side_effect=AssertionError("read")) as read, \
+             mock.patch.object(Path, "write_text",
+                               side_effect=AssertionError("wrote")) as write:
+            with self.assertRaises(SystemExit):
+                readings.main([])
+        checks.assert_not_called()
+        read.assert_not_called()
+        write.assert_not_called()
 
     def test_the_stage_reads_this_plan_and_no_other(self):
         self.assertNotEqual(plan.PLAN, reuse_plan.PLAN)
