@@ -144,6 +144,19 @@ a new one overlaps, and a rule that overlaps nothing needs none.
   partitioning removes the error detector, now produced by the protocol meant to
   impose stratification.
 
+### `E-c` on the corpus, and by channel
+
+§0 asks `E-e` to report both, and adjudicates neither.
+
+- **On the corpus the order had almost no room.** 15 and 47 arrivals of 2,000
+  in runs 1 and 2, none in run 3. The installed edges filled 1.0000 and 0.4681
+  of it, lifting the end to end from 0.3525 to 0.3600 and from 0.3855 to
+  0.3965. The baseline's shares were 0.2326, 0.3636 and 0.4429.
+- **By channel there is nothing to split.** The order channel installed no
+  edge. Read with the write channel's edges alone every row is the row itself;
+  read with the order channel's alone, `E-c`'s share is 0 where it is defined,
+  because the end to end is subsumption's.
+
 ### The loop's own figures, beside the baseline
 
 | per run | baseline: 1 · 2 · 3 | Stage E: 1 · 2 · 3 |
