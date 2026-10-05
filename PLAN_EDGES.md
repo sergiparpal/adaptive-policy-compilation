@@ -59,7 +59,7 @@ because 29 of the 50 shared regions hold two arriving cases or fewer (§5.7).
 | **W-c** | **At the decision level, the proposer's directions buy no more than a coin's** | the share of 2,000 coin draws whose right decisions over `D` are at least the proposer's. A draw points every edge of `E` by a fair coin and rebuilds each run with its births and the timing of its edges as recorded (§5.3) | **≥ 0.05** | **< 0.05** |
 | **W-d** | *Reported, not adjudicated.* **What reading the three rows needs** | the census of §5.1; each row per run; `W-a`'s errors split into material and direction (§5.9); the oracle's and the inverted directions over `D`; `W-b` by the corpus definition; and each final base with and without its edges, on both surfaces | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-05)**
 
 **Standard errors, and the thin label.** `W-a`'s is clustered by the rule that
 decided the case, its `winner_id`, because an edge decides its region in
