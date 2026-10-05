@@ -19,8 +19,10 @@ refuted and one holds. The fourth, `E-c`, is unadjudicable.**
   coverage (`E-b` is refuted).
 - **One run left nothing to order** (`E-c` is unadjudicable). In the two that
   did, the installed edges filled all of the order's room over the space and
-  58% of it, both above the line, and §0's rule makes the row unadjudicable
-  rather than read on the median of the rest.
+  58% of it, both above the line. The scorer, merged before the signature, reads
+  a median over a run without a share as undefined, so the row is not read on
+  the two that remain. **Under any other reading of the median it would
+  hold**, as the section on the verdicts says.
 - **The proposer contradicted subsumption 8 times** (`E-d` holds). It is the
   first time the verdict `contradice_subsuncion` has fired in any run of the
   project.
@@ -34,8 +36,11 @@ refuted and one holds. The fourth, `E-c`, is unadjudicable.**
 > was added to `authorship/score.py` after the stage's first scoring, which
 > wrote `E-e` for the runs only, though §0 asks for it beside the baseline. The
 > second scoring, from the commit that added it, reproduced every verdict and
-> every figure of the first. Everything labelled **POST-RUN** below was read
-> after the verdicts existed. Stage B spent 243 calls, cents; Stage C spent none.
+> every figure of the first. **The reading that leaves `E-c` unadjudicable is
+> the scorer's, not §0's**: §0 does not say what one run without a share does to
+> the median, and `authorship/score.py` does, merged before the signature.
+> Everything labelled **POST-RUN** below was read after the verdicts existed.
+> Stage B spent 243 calls, cents; Stage C spent none.
 
 ---
 
@@ -91,13 +96,22 @@ Each statistic on each final base read whole, from case 0, as
 - **`E-c`: the row cannot be read, and the reason is the finding.** Run 3's base
   holds one overlapping pair of 435, and that pair is nested. No pair could carry
   an edge, subsumption leaves no conflict over the space, and the order's room is
-  zero points, so the share is undefined. §0 fixed before the runs that an
-  undefined share in any run makes the row unadjudicable, and the record does
-  not take the median of the other two. **Those two are above the line**:
+  zero points, so the share is undefined. **The other two runs are above the
+  line**:
   - run 1: a room of 33,600 points of the space, all of it filled; the edges
     lift the end to end from 0.1823 to 0.4323, the hybrid bound;
   - run 2: a room of 27,560 points, 58% filled, from 0.1841 to 0.3030.
   They are two runs, not the row.
+- **That verdict rests on a reading, and the reading is the scorer's.** §0 says
+  that a room of zero leaves the share undefined, and that if the median is
+  undefined the row is unadjudicable. It does not say what one undefined run
+  does to a median of three. `authorship/score.py` does: a median over a run
+  without a share is undefined, and a test pins it. Both were merged with the
+  package, before the signature and before any run. **Under any other reading
+  of the median the row holds**: whatever value run 3's share is given, the
+  median of the three is 0.5798 or above, and without run 3 it is 0.7899. The
+  record keeps the reading written down before the runs. Adopting another now
+  would also adopt the verdict the drafter expected.
 - **`E-d`: made to place a contained rule, the proposer sometimes called it a
   default.** 2 and 6 such declarations in runs 1 and 2, none in run 3. Level 1
   refused each one, as the engine was built to. v1 had told the proposer not to
@@ -162,9 +176,11 @@ on 2026-10-05 (§6.4).
 refuted.** `E-a`, `E-b` and `E-d` came out as expected. `E-c`, the row the
 drafter trusted least, came out neither: the plan named the partition trap in
 §6.3 and did not guard the statistic against it, so the run that fell into the
-trap took the row with it. A plan that reads a share of a room should say in §0
-what a run without room counts as, and this one did; what it did not foresee is
-that a run would have none.
+trap took the row with it. §0 said that a run without room has no share, and
+left what that does to a median of three to the scorer. **A plan that
+adjudicates a median of shares should say in §0 itself what one run without room
+does to the median**, because that sentence decides the row as surely as the
+band does.
 
 ---
 
