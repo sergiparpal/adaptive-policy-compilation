@@ -142,6 +142,35 @@ class TestTheGates(unittest.TestCase):
         self.assertEqual([r["born_at"] for r in rules], list(range(29)))
 
 
+class TestTheVehicles(unittest.TestCase):
+
+    def test_later_copies_are_read_off_the_record(self):
+        import json
+        import tempfile
+        cond = [{"attr": "k", "op": "eq", "value": True}]
+        record = {
+            "rules": [
+                {"rule_id": "R1", "conditions": cond, "born_at": 0, "fire_count": 9},
+                {"rule_id": "R2", "conditions": [{"attr": "s", "op": "eq", "value": 1}],
+                 "born_at": 1, "fire_count": 3},
+                {"rule_id": "R3", "conditions": cond, "born_at": 2, "fire_count": 0},
+            ],
+            "records": [{"idx": 0, "outcome": "IMPASSE", "edges_accepted": 0},
+                        {"idx": 1, "outcome": "IMPASSE", "edges_accepted": 0},
+                        {"idx": 2, "outcome": "CONFLICT", "edges_accepted": 1},
+                        {"idx": 3, "outcome": "ACTION", "edges_accepted": 0}],
+        }
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "run.json"
+            path.write_text(json.dumps(record))
+            got = st.vehicles(path)
+        self.assertEqual((got["later_copies"], got["born_on"],
+                          got["edges_accepted_at_their_births"],
+                          got["edges_accepted_in_the_run"], got["cases_they_decided"]),
+                         (1, {"CONFLICT": 1}, 1, 1, 0))
+        self.assertEqual(got["rows"][0]["copy_of"], "R1")
+
+
 class TestNothingIsMeasuredOrWrittenUnsigned(unittest.TestCase):
 
     def test_it_refuses_before_measuring(self):

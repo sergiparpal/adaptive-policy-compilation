@@ -85,6 +85,18 @@ PROVENANCE
 its record, and committed before it ran. A baseline for a plan not yet drafted;
 not a signed row, not on `STATUS.md`'s scoreboard, not a calibration event.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN, AND LABELLED SO
+--------------------------------------------------------------------------
+The first run found clause 4 refuted on every base: hundreds of pairs written the
+same, all with the same queue. `vehicles` says what those copies are: for each
+group of rules written the same in a run, which was born first, and for every
+later copy the outcome of the escalation it was born on, the edges the engine
+accepted at that escalation, and how many cases the copy decided. It was written
+after the readings above existed, reads only the run records, and changes none
+of them. The section of `FINDINGS_REUSE.md` that reads it says whether the run
+from the commit that added it reproduced the first run's figures.
+
     python3 -m reuse.structure --dry-run   # the gates on the references; writes nothing
     python3 -m reuse.structure             # refuses while PLAN_REUSE.md is unsigned
 """
@@ -286,6 +298,34 @@ def copies(rules, ext, action, listed: bool) -> dict:
     return out
 
 
+def vehicles(path: Path) -> dict:
+    """
+    The copies of a run, read off its record: for each group of rules written
+    the same, the first-born, and for each later copy the escalation it was born
+    on, the edges accepted there, and the cases it decided. Added after the first
+    run; see the module's last section.
+    """
+    d = json.loads(path.read_text())
+    byid = {r["rule_id"]: r for r in d["rules"]}
+    at = {r["idx"]: r for r in d["records"]}
+    later = []
+    for g in groups({r["rule_id"]: written(r["conditions"]) for r in d["rules"]}):
+        first, *rest = sorted(g, key=lambda r: (byid[r]["born_at"], r))
+        for rid in rest:
+            b = byid[rid]["born_at"]
+            later.append({"rule_id": rid, "copy_of": first, "born_at": b,
+                          "born_on": at[b]["outcome"],
+                          "edges_accepted_at_birth": at[b]["edges_accepted"],
+                          "cases_decided": byid[rid]["fire_count"]})
+    return {"later_copies": len(later),
+            "born_on": dict(Counter(c["born_on"] for c in later)),
+            "edges_accepted_at_their_births": sum(c["edges_accepted_at_birth"]
+                                                  for c in later),
+            "edges_accepted_in_the_run": sum(r["edges_accepted"] for r in d["records"]),
+            "cases_they_decided": sum(c["cases_decided"] for c in later),
+            "rows": later}
+
+
 def profile(rules, corpus, space, tmask, listed: bool = True) -> dict:
     ids = [r["rule_id"] for r in rules]
     action = {r["rule_id"]: r["action"] for r in rules}
@@ -431,6 +471,14 @@ def measure(dry_run: bool = False):
         "gates": gates,
         "profiles": profiles,
         "expectation_read": read_expectation(profiles),
+        "post_run": {
+            "what": "the later copies of each run: the escalation each was born on, "
+                    "the edges accepted there, and the cases it decided",
+            "provenance": "ADDED AFTER THE FIRST RUN, which refuted clause 4 on "
+                          "every base, to say what the copies are. It reads only "
+                          "the run records and moves no reading above.",
+            "vehicles": {name: vehicles(plan.run_path(rep))
+                         for rep, name in enumerate(BASES, start=1)}},
         "seconds": round(time.time() - t_start, 1),
     }
     return _rounded(payload), gates, passes
@@ -481,6 +529,14 @@ def main(argv: list[str] | None = None) -> int:
         mark = {True: "holds", False: "does not hold", None: "unreadable"}[e["holds"]]
         print(f"    ({e['clause']}) {e['base']:<9} {e['reading']!s:<10} against "
               f"{e['line']!s:<8} {mark}")
+
+    print("\n  post-run: the later copies, the escalations they were born on, "
+          "the edges accepted there:")
+    for name, v in payload["post_run"]["vehicles"].items():
+        print(f"    {name:<9} {v['later_copies']:>3} copies, born on {v['born_on']}, "
+              f"{v['edges_accepted_at_their_births']} of the run's "
+              f"{v['edges_accepted_in_the_run']} accepted edges, "
+              f"{v['cases_they_decided']} cases decided")
 
     RECORD.write_text(json.dumps(payload, indent=2) + "\n")
     print(f"\n  total cost: {payload['seconds']:.0f}s, zero API calls")
