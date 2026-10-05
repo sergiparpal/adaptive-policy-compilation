@@ -1719,6 +1719,15 @@ selection of what to compile (here). What is left is the finding itself: the
 proposer's competence is a queue ranking, a queue ranking is worth 0.4824 as a
 lookup and about 0.44 as sparse edges, and neither is near the 0.7678 search finds.
 
+> **[NOTE 2026-10-05] Selection was not ruled out; at this budget it was not
+> testable.** §16 measured the instrument. An oracle that keeps the right edges
+> first sits only +0.9 to +1.6 deviations above chance at 1,194 edges under the
+> corpus definition, and +1.1 to +1.3 at 285. So filters within 0.7 deviations of
+> chance were read by an instrument that a perfect selection barely moves. The
+> paragraph above stands for the budget and the compilation. For the selection,
+> *untestable at 1,479 edges* replaces *ruled out*. No figure of this section
+> moves.
+
 **Files added by this section**
 
 ```
@@ -1889,6 +1898,134 @@ results3/answer_asymmetry.json   the record, with its four declared hypotheses
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.answer_asymmetry`. Under a
 second, zero API calls.
+
+---
+
+## 16. What §14's instrument could have shown — a perfect selection barely moves it
+
+*Added 2026-10-05. `rung3/filter_headroom.py` → `results3/filter_headroom.json`,
+`PYTHONHASHSEED=0`, from a clean tree, 311 s, **zero API calls**. **POST-RUN**: a
+scratch probe of 60 draws measured the headroom first, while deciding whether
+`PLAN_WHY.md`'s §10.5 could be pre-registered, and this module was written after
+seeing it. **It adjudicates nothing** and no signed row moves.*
+
+§14 read three truth-free filters against a same-size random choice, found every
+one within 0.7 deviations of chance, and concluded *nothing chooses better than
+chance*. Before the proposer's stated reasons were read the same way, this
+section asks what the instrument could show at all.
+
+**The ceiling of any filter is an oracle.** At a given size, keep first the edges
+whose declared winner is the better rule over the shared region, then those with
+no strictly better rule, then the wrong ones. No truth-free filter of that size
+selects better. Its distance from chance is the most any filter could show; the
+same order reversed, the anti selector, gives the floor.
+
+**The control keeps arrival order.** The topological compilation refuses cycles
+first-come-first-served, so a control that shuffles arrival changes two things at
+once. Here the random choice keeps the order the edges arrived in, 200 draws per
+size. §14's own control, shuffled, is measured beside it at §14's sizes. **The
+instrument is §14's**: its three published scores reproduce to the digit, and the
+module refuses to write otherwise.
+
+### The headroom, on §14's cell
+
+`hibrido` pool, corpus test split 0. Each cell gives deviations from the random
+control of the same size, topological / MFAS.
+
+```
+    n   random topo     random mfas     oracle cor  oracle spa   anti cor    anti spa
+ 1393   0.4760 (.0115)  0.4372 (.0139)  +0.6/+1.3   +1.2/+1.7    +0.3/-2.0   +0.2/-2.4
+ 1194   0.4640 (.0195)  0.4369 (.0191)  +1.6/+0.9   -0.3/+0.7    +0.8/-2.1   -1.3/-1.7
+  971   0.4503 (.0222)  0.4403 (.0231)  +2.3/+3.0   +0.7/+1.1    -0.0/-3.6   -1.1/-2.9
+  817   0.4378 (.0258)  0.4349 (.0233)  +0.7/+0.9   +1.1/+1.4    -2.7/-2.1   -0.8/+0.1
+  662   0.4326 (.0273)  0.4345 (.0281)  +2.2/+2.1   +2.3/+2.2    -2.0/-5.5   -2.3/-2.3
+  508   0.4282 (.0280)  0.4329 (.0272)  +1.9/+1.8   +2.9/+2.8    -1.3/-4.9   -3.1/-3.3
+  285   0.4282 (.0285)  0.4272 (.0293)  +1.3/+1.3   +1.1/+1.1    -1.6/-0.6   -2.3/-2.2
+```
+
+**A perfect selector sits between −0.3 and +3.0 deviations above chance, about
++1.3 at the median, and not monotonically in size.** At §14's own sizes it is
++0.9 to +1.6 for 1,194 edges under the corpus definition, and −0.3 to +0.7 under
+the space's. For 285 edges it is +1.1 to +1.3. So §14's filters, within 0.7 deviations of chance, were read by an
+instrument that a perfect selection moves by about one deviation.
+
+**The floor is deeper than the ceiling is high, above all under MFAS.** Keeping the
+wrong edges first costs up to 5.5 deviations, where keeping the right ones gains
+at most 3.0. Compiled faithfully, a wrong edge hurts more than a right one helps,
+which is §13's result seen from the selection side.
+
+### The filters, inside the headroom
+
+Each against the random control of its own size, kept in arrival order; §14's
+shuffled control beside, where §14 used one.
+
+```
+filter         kept     topo     mfas   devs topo  devs mfas   §14's control
+keep_all       1479   0.4804   0.4332        —          —      +1.06 / -0.34
+consistent     1194   0.4372   0.4442     -1.37      +0.38     -0.68 / +0.47
+inconsistent    285   0.4070   0.4070     -0.74      -0.69     -0.71 / -0.77
+spec            817   0.4442   0.4442     +0.25      +0.40
+no_spec         662   0.4221   0.3940     -0.38      -1.44
+queue           508   0.3839   0.3839     -1.58      -1.80
+no_queue        971   0.4774   0.4985     +1.22      +2.52
+no_count       1393   0.4704   0.4362     -0.49      -0.08
+```
+
+The last five are the cuts `PLAN_WHY.md`'s frozen codebook makes by the reason
+the proposer gave: specificity, a queue's importance, an explicit count of
+conditions.
+
+- **The specificity cuts do nothing, in either compilation**, as that plan's
+  `Y-d` found at the pair level.
+- **The count cut does nothing**: 86 edges is too few to move the order.
+- **The control matters for `consistent`'s topological reading**: −1.37 with
+  arrival kept against −0.68 shuffled. Both are inside the noise, and §14's
+  verdict on it does not change.
+
+### One cut came near the ceiling — POST-RUN, a lead and not a result
+
+**Dropping the edges whose reason is a queue's importance**, mostly the security
+keyword, leaves 971 edges. Compiled by MFAS they score **0.4985**, +2.52 deviations
+above chance, where the oracle of that size reaches +3.0. Keeping only those
+edges goes the other way: 508 edges at −1.58 and −1.80. It is the one cut here that
+approaches the ceiling. Its mechanism is on the record twice: that rule of thumb
+is wrong more often than not where tickets arrive
+([`FINDINGS_EDGES.md`](../results_edges/FINDINGS_EDGES.md),
+[`FINDINGS_WHY.md`](../results_why/FINDINGS_WHY.md), `Y-e`).
+
+**Three things keep it a lead.**
+
+- **It was read after the fact**: one cut of seven, in one compilation of two.
+- **It is measured on the corpus only.** Over the function the same edges point
+  at the better rule three times in four (`FINDINGS_EDGES.md`, `W-b`), so on the
+  exhaustive space the cut would be expected to cost, not gain. Nothing here
+  measures it there.
+- **0.4985 sits above the free queue ranking's 0.4824**, which §14 called out of
+  reach for this channel at this budget. It is one cut of seven, read in MFAS on
+  one cell, and it does not reopen that line.
+
+### What this changes
+
+- **§14's *nothing chooses better than chance* stands as measured and says less
+  than it read.** Selection was not ruled out by a free measurement. At 1,479 edges
+  it was not testable: even the oracle barely clears chance. `PAIRWISE_WRITEUP.md`'s
+  elimination of four candidates is three, and an untestable one. The dated note
+  in §14 says so.
+- **`PLAN_WHY.md`'s §10.5 is answered as far as this instrument allows.** The
+  specificity and count cuts do nothing. The queue cut is the lead above.
+- **What would test selection** is more edges, which cost calls, or a cell where a
+  perfect selection moves the order by more. Neither is free.
+
+**Files added by this section**
+
+```
+rung3/filter_headroom.py         the selectors, the controls, the gate, the filters
+results3/filter_headroom.json    the record
+tests/test_filter_headroom.py    the selectors, the samplers, the partitions
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.filter_headroom`. About five
+minutes, zero API calls.
 
 ---
 
