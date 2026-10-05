@@ -261,6 +261,15 @@ tried at. What is left:
   denominators looks like and not what a mechanism looks like. Kept as a line
   rather than deleted because nothing was *shown* to be absent; the prompt was
   never touched, which was the point.
+  **[ERRATUM 2026-10-05] Reopened: the 5.12% had the wrong denominator.** The 82
+  failures were in the 1,200 new calls, so the rate is 6.83%; the other 400
+  answers were Stage D's, reused. The learned base's two batches agree with each
+  other, 8.75% and 6.83% (two-sided Fisher p = 0.22). Each sits above the hidden
+  policy's 4 in 170 (p = 0.006 and 0.026). So the rate looks like a property of
+  the population of pairs, about three times as high on the learned base's, and
+  why is open again. The records keep no `finish_reason`, as the empty answers
+  of `PLAN_FIDELITY.md` also found, so the cause stays a guess until one is
+  recorded. `FINDINGS3.md` §11, erratum of the same date.
 - ~~**Why the proposer prefers the rule shown second.**~~ **CLOSED August 27,
   2026 by `FINDINGS3.md` §15 — it was never an effect.** Two things were being
   called one: `rule_b` is the LATER-BORN rule in 100% of pairs by construction and
