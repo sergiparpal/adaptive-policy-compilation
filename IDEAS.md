@@ -181,7 +181,10 @@ leaves:
   - **Why rung 1's loop wrote the same rule again.** Its record keeps each case's
     outcome and not which rules tied, so whether a copy was born on a case its
     earlier copies had sent to escalation would take replaying rung 1's engine.
-  - **Whether the bases `PLAN_REUSE.md`'s loop wrote hold copies too.**
+  - ~~**Whether the bases `PLAN_REUSE.md`'s loop wrote hold copies too.**~~
+    **Counted on 2026-10-05**, `FINDINGS_REUSE.md`, *The three bases, read for
+    Stage E*: none with another queue, and many with the same one, each born on
+    a CONFLICT to carry an edge.
 - **The slot, unspoken.** The proposer gives the list's order as the reason in 8
   answers of 1,114, while the slot decides at least one in twelve. The paid
   re-ask `IDEAS.md` carries under `PLAN_PRIMACY.md` would show whether the
@@ -486,6 +489,17 @@ tried at. What is left:
   or a default under it. It has a written spec, two predictions and no signature,
   and it is the one item here that attacks the authorship problem at its source
   rather than at the ordering end.
+  **[NOTE 2026-10-05] Its baseline is measured, on the loop a plan would run it
+  on** (`FINDINGS_REUSE.md`, *The three bases, read for Stage E*). On
+  `PLAN_REUSE.md`'s three bases the second prediction has nothing to measure:
+  the gap between the hybrid and pure bounds is already zero, or 0.0005. The
+  first splits by surface. On the corpus subsumption decides nearly everything
+  and sits at what any order could reach, so a lower silent error there would
+  have to come from rules carrying the right queue; over the space it sits 0.19
+  to 0.46 below that, which is where declared priority has room. And a plan has
+  to say what the proposer does on a conflict. Today the protocol can only answer with a
+  rule, and the proposer answers with a copy of the rule it wants to win, which
+  is how 35 of the 64 accepted edges arrived.
 
 **Two things this thread moved further away rather than closer**, and they are
 annotated in place in the rung 2 list below: `EDGE_CONTRADICTS` still measuring

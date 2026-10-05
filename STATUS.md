@@ -995,6 +995,21 @@ the three runs, on the corpus, from
 Stage A found the same shape at n=100 in the eight August runs; it is reported,
 not adjudicated.
 
+**And the bases that loop wrote leave Stage E little to order where tickets
+arrive, and much over the function.** Read whole from case 0, subsumption alone
+decides 96% to 99% of the corpus on each of the three, against 8% on rung 1's
+base, and is wrong 0.47 to 0.59 of the time. On the corpus its end to end sits
+within 0.04 of the hybrid coverage bound, the most any order over its pool could
+reach, which is only 0.42 to 0.54. Over the space it sits 0.19 to 0.46 below that
+bound. The gap Stage E's second prediction would narrow, between the hybrid and
+pure bounds, is already zero or 0.0005 on the corpus and at most 0.006 over the
+space. **The proposer declared most of its priority on copies**:
+every rule written again was born on a CONFLICT, never decided a case, and
+carried 35 of the 64 accepted edges, because the protocol answers an escalation
+only with a rule. POST-RUN, with an expectation whose fourth clause failed
+([`FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), *The three bases, read
+for Stage E*; [`structure.json`](results_reuse/structure.json)).
+
 **Fidelity, measured: the rules decide unlike the model would, and compiling
 loses it nothing on the cases they decide.** `PLAN_FIDELITY.md` re-asked the
 model, twice, on 600 decided cases of each of `PLAN_REUSE.md`'s three bases. It
