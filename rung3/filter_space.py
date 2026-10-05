@@ -88,6 +88,18 @@ PROVENANCE
 its record, and committed before it ran. Not a signed row, not on `STATUS.md`'s
 scoreboard, not a calibration event. Zero API calls.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN, AND LABELLED SO
+--------------------------------------------------------------------------
+The first run put `no_queue` in MFAS eleven deviations below its control, far
+under every anti selection, so `post_run` says where that loss sits: for each
+filter's two orders, the cases of the space each queue decides and decides
+right, beside how many cases of the space each queue is the truth for; and the
+winners `queues_named` reads now cover every filter, not two. It was written
+after the readings above existed, it reads nothing they did not, and it changes
+none of them. §17 of `FINDINGS3.md` says whether the run from the commit that
+added it reproduced the first run's figures.
+
 Usage:  PYTHONHASHSEED=0 python3 -m rung3.filter_space
 """
 
@@ -102,6 +114,7 @@ from collections import Counter
 from pathlib import Path
 
 from harness.provenance import describe, environment
+from rung2.engine2 import Space
 from rung2.pair_judgement import learned_rules
 from rung3.declared_order import accepted_from, fresh_engine, topological_order
 from rung3.edge_direction import agreement
@@ -113,7 +126,7 @@ from rung3.floor_by_pool import floor
 from rung3.local_search import build_masks
 from rung3.mfas_compilation import mfas_order
 from rung3.order_search import build_tables, load, split, subsumption_below
-from rung3.order_search_ls import space_pools
+from rung3.order_search_ls import space_pools, space_truth_masks
 
 OUT = Path("results3")
 RECORD = "filter_space.json"
@@ -321,6 +334,29 @@ def queues_named(kept) -> dict:
                         else r["action_b"] for r in kept).most_common())
 
 
+def decided_by_queue(order, instance, action) -> dict:
+    """
+    {queue: {"decided", "right"}} over an instance: the cases the rules of each
+    queue decide under `order`, and how many of those they decide right.
+
+    The same walk as `local_search.score_order`, kept apart by the deciding
+    rule's queue, so the `right` column sums to the score times the size.
+    Added after the first run; see the module's last section.
+    """
+    M, W, full, _n = instance
+    remaining, out = full, {}
+    for rid in order:
+        fires = M[rid] & remaining
+        if fires:
+            q = out.setdefault(action[rid], {"decided": 0, "right": 0})
+            q["decided"] += fires.bit_count()
+            q["right"] += (W[rid] & fires).bit_count()
+            remaining ^= fires
+            if not remaining:
+                break
+    return dict(sorted(out.items()))
+
+
 # ---------------------------------------------------------------------------
 
 def instruments():
@@ -346,13 +382,16 @@ def measure():
             if r["declared"] != "none"]
     truth = {o["index"]: o for o in json.loads(SAMPLE.read_text())["oracle"]}
     rules, ids, born, instances, engine = instruments()
+    action = {rid: rules[rid].action for rid in ids}
 
     def compile_both(kept):
         return scored(compile_orders(kept, rules, ids, born, engine), instances)
 
     _order, rank, _c = revealed_ranking(rows)
     cuts = filters(rows, rank)
-    scores = {name: compile_both(kept) for name, kept in cuts.items()}
+    orders = {name: compile_orders(kept, rules, ids, born, engine)
+              for name, kept in cuts.items()}
+    scores = {name: scored(o, instances) for name, o in orders.items()}
     sizes = sorted({len(k) for k in cuts.values()} - {len(rows)}, reverse=True)
 
     headroom = {s: {} for s in SURFACES}
@@ -431,11 +470,22 @@ def measure():
         "diagnostics": {
             "what": "read beside the scores, not against anything: how often each "
                     "cut's edges point at the better rule under each definition, by "
-                    "rung3/edge_direction.py's convention, and which queue the edges "
-                    "of the two queue cuts name as the winner",
+                    "rung3/edge_direction.py's convention, and which queue each "
+                    "cut's edges name as the winner",
             "direction_by_cut": direction_by_cut(cuts, truth),
-            "queues_named": {name: queues_named(cuts[name])
-                             for name in ("queue", "no_queue")}},
+            "queues_named": {name: queues_named(kept) for name, kept in cuts.items()}},
+        "post_run": {
+            "what": "where each filter's two orders decide on the space, and decide "
+                    "right, by the queue of the deciding rule, beside the cases of the "
+                    "space each queue is the truth for",
+            "provenance": "ADDED AFTER THE FIRST RUN, which put no_queue in MFAS "
+                          "eleven deviations below its control, to say where that loss "
+                          "sits. It reads nothing new and moves no reading above.",
+            "truth_by_queue": {q: m.bit_count() for q, m in
+                               sorted(space_truth_masks(Space()).items())},
+            "by_filter": {name: {c: decided_by_queue(o, instances["space"], action)
+                                 for c, o in orders[name].items()}
+                          for name in cuts}},
         "seconds": round(time.time() - t_start, 1),
     }
     return _rounded(payload), g1, g2
@@ -504,6 +554,14 @@ def main(argv=None) -> int:
               f"   {by['corpus']['rate']:.4f} (n {by['corpus']['n']})")
     for name, q in payload["diagnostics"]["queues_named"].items():
         print(f"    queues named by `{name}`: {q}")
+
+    post = payload["post_run"]
+    truth_si = post["truth_by_queue"]["SECURITY_INCIDENT"]
+    print(f"\n  post-run: SECURITY_INCIDENT decided right on the space, of {truth_si}"
+          f" points whose truth it is (topological / mfas):")
+    for name, by in post["by_filter"].items():
+        got = [by[c].get("SECURITY_INCIDENT", {"right": 0})["right"] for c in COMPILATIONS]
+        print(f"    {name:<13} {got[0]:>6} / {got[1]:>6}")
 
     OUT.mkdir(exist_ok=True)
     (OUT / RECORD).write_text(json.dumps(payload, indent=2) + "\n")

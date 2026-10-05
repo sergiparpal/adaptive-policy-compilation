@@ -184,6 +184,18 @@ class TestTheDiagnostics(unittest.TestCase):
         self.assertEqual(fs.queues_named([row(0), row(1, "b_beats_a"), row(2)]),
                          {X: 2, Y: 1})
 
+    def test_decided_by_queue_splits_the_score_by_the_deciding_queue(self):
+        # r1 (X) takes two cases and is right on one; r2 (Y) takes what is left
+        # of its own and is right on it; r3 (X) is reached by nothing.
+        inst = ({"r1": 0b0011, "r2": 0b0110, "r3": 0b0001},
+                {"r1": 0b0001, "r2": 0b0100, "r3": 0b0001}, 0b1111, 4)
+        action = {"r1": X, "r2": Y, "r3": X}
+        got = fs.decided_by_queue(["r1", "r2", "r3"], inst, action)
+        self.assertEqual(got, {X: {"decided": 2, "right": 1},
+                               Y: {"decided": 1, "right": 1}})
+        score = fs.scored({"o": ["r1", "r2", "r3"]}, {"s": inst})["s"]["o"]
+        self.assertEqual(sum(q["right"] for q in got.values()), score * inst[3])
+
 
 if __name__ == "__main__":
     unittest.main()
