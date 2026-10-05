@@ -168,6 +168,7 @@ python3 -m rung3.edge_sides        # what each side of the split BUYS
 python3 -m rung3.mfas_compilation  # is it the answers or the compilation
 python3 -m rung3.edge_dropping     # does deliberate dropping beat chance
 python3 -m rung3.answer_asymmetry  # why it names rule_b more often
+python3 -m rung3.filter_headroom   # how much any selection could have shown
 ```
 
 The two scorings of that thread take the records it produced, so they carry
@@ -410,6 +411,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `rung3/mfas_compilation.py` | `results3/mfas_compilation.json` | no, on purpose |
 > | `rung3/edge_dropping.py` | `results3/edge_dropping.json` | no, on purpose |
 > | `rung3/answer_asymmetry.py` | `results3/answer_asymmetry.json` | no, on purpose |
+> | `rung3/filter_headroom.py` | `results3/filter_headroom.json` | no, on purpose |
 >
 > **[NOTE 2026-08-30] Thirteen rows were added on this date and the table had
 > been incomplete since 2026-08-24.** `results3/FINDINGS_AUDIT.md` records the
@@ -1111,7 +1113,8 @@ adaptive-policy-compilation/
 │   ├── edge_sides.py        what each side of the queue-ranking split buys
 │   ├── mfas_compilation.py  the answers or the compilation? same edges, fewer lost
 │   ├── edge_dropping.py     does deliberate dropping beat chance
-│   └── answer_asymmetry.py  the a/b asymmetry, and the position effect
+│   ├── answer_asymmetry.py  the a/b asymmetry, and the position effect
+│   └── filter_headroom.py   how much any selection of the edges could have shown
 │
 ├── sensitivity/          A · a family of synthetic manuals, swept by ρ
 │   ├── generator.py         counts permuted, bodies drawn from the manual's own
