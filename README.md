@@ -984,6 +984,12 @@ parameterized by coverage, asymmetry, delay and noise. The rest is still
 undone, including **ILP as a competitor**, which was specified as Step B of
 rung 3 and never run.
 
+> **[NOTE 2026-10-05] ILP as a competitor has been run since**, on August 30,
+> 2026, pre-registered as [`PLAN_ILP.md`](PLAN_ILP.md). Its figures are in
+> [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md), which owns them,
+> and [`STATUS.md`](STATUS.md), which indexes them. None is copied here. The
+> paragraph above went on saying *never run* for five weeks after.
+
 (Rung 2 added **declared priority**, which was not on this list because in
 rung 1 it had not yet been identified as the missing piece.)
 

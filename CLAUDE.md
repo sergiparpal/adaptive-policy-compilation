@@ -548,6 +548,7 @@ pairwise thread adds a third label that is just as load-bearing: **which pool**,
 `puro` or `hibrido`. They are different machines and their figures never chain.
 
 What is pending and open is in `IDEAS.md`, including what each rung left
-unresolved and what the pairwise thread opened. Of the original list only the
-empirical impasse has been touched — partially, in rung 4 —; concept drift,
-regret, ILP as a competitor, ASP and real activation are still undone.
+unresolved and what the pairwise thread opened. What rung 1 left out on purpose
+is in the README, *What was deliberately NOT here in rung 1*, which says what of
+it has been done since. It is not restated here: the copy this paragraph carried
+still called ILP as a competitor undone five weeks after `PLAN_ILP.md` closed.
