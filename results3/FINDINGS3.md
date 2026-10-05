@@ -1920,6 +1920,14 @@ no strictly better rule, then the wrong ones. No truth-free filter of that size
 selects better. Its distance from chance is the most any filter could show; the
 same order reversed, the anti selector, gives the floor.
 
+> **[NOTE 2026-10-05] A ceiling of selection by direction, not of selection.**
+> Over the exhaustive space, §17 finds truth-free cuts on both sides of the band
+> this oracle and its reverse draw. One sits above the oracle of its size under
+> either definition, and one about ten deviations below the anti. There, what an
+> edge governs counts for more than which way it points. On this cell the band
+> held but for two topological readings just below the anti, so the reading of
+> §14 below stands, and its *untestable* means untestable by direction.
+
 **The control keeps arrival order.** The topological compilation refuses cycles
 first-come-first-served, so a control that shuffles arrival changes two things at
 once. Here the random choice keeps the order the edges arrived in, 200 draws per
@@ -2004,6 +2012,12 @@ is wrong more often than not where tickets arrive
   reach for this channel at this budget. It is one cut of seven, read in MFAS on
   one cell, and it does not reopen that line.
 
+> **[NOTE 2026-10-05] Measured over the space by §17, and it reverses.** There
+> the same cut scores 0.2775 in MFAS, 11.28 deviations below its control and
+> below the `born_at` floor. Every edge that names `SECURITY_INCIDENT` the winner
+> carries a queue reason, and over the space that queue is the truth for three
+> points in eight. The lead was the keyword's split between the two surfaces.
+
 ### What this changes
 
 - **§14's *nothing chooses better than chance* stands as measured and says less
@@ -2025,6 +2039,189 @@ tests/test_filter_headroom.py    the selectors, the samplers, the partitions
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.filter_headroom`. About five
+minutes, zero API calls.
+
+---
+
+## 17. §16's lead over the function — it reverses, and the oracle bounds only direction
+
+*Added 2026-10-05. `rung3/filter_space.py` → `results3/filter_space.json`,
+`PYTHONHASHSEED=0`, from a clean tree, five minutes, **zero API calls**.
+**POST-RUN with an expectation written before the run**: it is in the module, in
+the commit *rung3/filter_space.py: §16's cuts scored over the space, the
+expectation first*, made before the module first ran. A diagnostic was added
+after that first run, in its own commit and labelled so; the record comes from a
+second run at that commit, which reproduced every figure of the first. Not a
+signed row, and it adjudicates nothing.*
+
+§16 found one cut near its ceiling: dropping the edges whose stated reason is a
+queue's importance. It named three things that keep it a lead, and one was free
+to settle: it had been measured on the corpus only. The security keyword it
+mostly stands for is 3% of the arrivals and half of the space. This section
+compiles every selection §16 compiled, from the same draws, and scores each order
+on the `hibrido` pool over the exhaustive space.
+
+**Two gates passed before anything was read.** Every one of the 217 figures of
+[`filter_headroom.json`](filter_headroom.json) reproduces from the orders this
+module compiled, scored on §16's own cell, so these are §16's orders. And the
+space is the published one: `born_at` scores 0.4257 and `keep_all` compiled
+topologically 0.5463, as [`queue_hierarchy_floor.json`](queue_hierarchy_floor.json)
+and [`declared_order_1600.json`](declared_order_1600.json) hold them.
+
+### The headroom, over the space
+
+`hibrido` pool, exhaustive space. Each cell gives deviations from the random
+control of the same size, topological / MFAS.
+
+```
+    n   random topo     random mfas     oracle cor  oracle spa   anti cor    anti spa
+ 1393   0.5414 (.0109)  0.4957 (.0210)  +0.7/+0.3   +0.9/-0.5    +0.5/-0.8   +0.3/-1.1
+ 1194   0.5319 (.0176)  0.5017 (.0229)  +0.7/+1.8   +1.0/+2.0    +1.6/-0.8   +0.8/-0.8
+  971   0.5124 (.0201)  0.4994 (.0197)  +1.6/+2.3   +1.6/+2.2    +1.5/-1.5   +0.9/-1.0
+  817   0.5004 (.0224)  0.4950 (.0199)  +1.3/+1.7   +1.8/+2.3    -0.0/+0.3   +1.8/+2.3
+  662   0.4899 (.0250)  0.4919 (.0222)  +0.6/+0.6   +2.1/+2.3    -0.3/-2.3   -2.5/-3.0
+  508   0.4796 (.0242)  0.4871 (.0257)  +1.0/+0.7   +2.7/+2.3    +0.3/-1.5   -2.3/-2.5
+  285   0.4586 (.0230)  0.4721 (.0299)  +2.1/+1.1   +3.3/+2.1    -1.9/-1.5   -2.1/-2.1
+```
+
+- **By direction, selection is about as hard to see over the function as over
+  the arrivals.** The oracle sits between −0.5 and +3.3 deviations above chance,
+  about +2 at the median under the space's own definition. On §16's cell it sat
+  between −0.3 and +3.0.
+- **The anti selector is no floor here.** At 817 edges, keeping the wrong ones
+  first under the space's definition scores +1.8 and +2.3 above chance. On §16's
+  cell the same selection sat at −0.8 and +0.1.
+
+### The filters, over the space
+
+Each against the random control of its own size, kept in arrival order. §16's
+corpus readings beside.
+
+```
+filter         kept     topo     mfas   devs topo  devs mfas    on the corpus
+keep_all       1479   0.5463   0.4829        —          —            —
+consistent     1194   0.5516   0.5519     +1.12      +2.20     -1.37 / +0.38
+inconsistent    285   0.4007   0.4007     -2.52      -2.39     -0.74 / -0.69
+spec            817   0.4384   0.4386     -2.77      -2.84     +0.25 / +0.40
+no_spec         662   0.5190   0.4897     +1.17      -0.10     -0.38 / -1.44
+queue           508   0.5157   0.5157     +1.49      +1.11     -1.58 / -1.80
+no_queue        971   0.4401   0.2775     -3.59     -11.28     +1.22 / +2.52
+no_count       1393   0.5444   0.5383     +0.27      +2.03     -0.49 / -0.08
+```
+
+The reference lines over the space are the `born_at` floor, 0.4257, and the free
+queue ranking, 0.5838.
+
+**The lead reverses, and violently.** Dropping the queue-reason edges gained 2.52
+deviations in MFAS on the corpus. Over the space it loses 11.28. The order scores
+0.2775, below the `born_at` floor by 0.15 and far under every anti selection.
+Topologically it loses 3.59. Keeping only those 508 edges goes the other way:
++1.49 and +1.11.
+
+**The expectation got the sign right and the size badly wrong.**
+
+- **Clauses 1 and 2 hold**: `no_queue` lands below its control and `queue` above
+  it, in both compilations.
+- **Clause 3 fails.** It expected the reversal to be weaker than the corpus gain,
+  and it is four and a half times its size.
+- **The reasoning read the wrong quantity.** It weighed the two cuts' direction
+  rates, 0.7649 against 0.7154 over the space, and not how much of the function
+  the edges govern. It is the drafter's documented error once more, the one the
+  standing note in `IDEAS.md` describes: underestimating how violently a change
+  of surface changes things.
+
+### Where the loss sits — POST-RUN
+
+*Read from the diagnostic added after the first run.*
+
+- **Every edge that names `SECURITY_INCIDENT` the winner carries a queue reason.**
+  287 of the 508 edges `queue` keeps do, and none of the 971 `no_queue` keeps.
+- **Over the space that queue is the truth for 50,400 of the 134,400 points**,
+  three quarters of the half that carries the keyword. On the corpus it is 20
+  arrivals of 2,000.
+- **With every edge kept, the two orders get 49,340 and 40,720 of those points
+  right**, topological and MFAS. With the queue edges dropped they get 35,405 and
+  5,877.
+- **In that MFAS order the keyword's territory goes to broad rules of other
+  queues.** `T2_TECHNICAL` rules decide 65,414 points of the space and
+  `T3_ENGINEERING` rules 34,110, against 31,144 and 9,600 with every edge kept.
+  MFAS honours what is left, and nothing left holds the keyword rules above them.
+
+**The same edges sort every other filter over the space.**
+
+```
+filter         SECURITY_INCIDENT    devs topo / mfas    SECURITY_INCIDENT right,
+               named winner, kept                       topo / mfas
+consistent          287              +1.12 /  +2.20       47,450 / 47,450
+no_count            287              +0.27 /  +2.03       48,940 / 48,940
+queue               287              +1.49 /  +1.11       43,650 / 43,650
+no_spec             253              +1.17 /  -0.10       43,230 / 42,000
+spec                 34              -2.77 /  -2.84       35,150 / 35,150
+inconsistent          0              -2.52 /  -2.39       29,770 / 29,770
+no_queue              0              -3.59 / -11.28       35,405 /  5,877
+```
+
+The three cuts that keep all 287 of those edges sit at or above chance in both
+compilations. The three that keep 34 or none sit below it in both. `no_spec`,
+which keeps 253, sits between. **Over the space a cut's reading is mostly which
+of those edges it keeps.** That includes `consistent`, the self-consistent core
+§14 found inert on the corpus. Its +2.20 in MFAS is the oracle's level, and it
+holds every one of the 287 edges, because the proposer's own ranking puts
+`SECURITY_INCIDENT` second of eight, behind only `ONCALL_ESCALATION`
+([`edge_dropping.json`](edge_dropping.json)). Its complement holds none and sits
+below the anti selector. That is a fact about the keyword, not a selection by
+self-consistency.
+
+### The oracle bounds selection by direction, not selection
+
+§16 took its oracle as the most any selection of a given size could show: the
+edges whose declared winner is the better rule, kept first. **Over the space two
+truth-free cuts land outside the band it draws.**
+
+- `no_count` in MFAS sits 2.03 deviations above chance, where the oracle of its
+  size sits at +0.3 and −0.5.
+- `no_queue` sits ten deviations below the anti selector of its size.
+
+Whether an edge points the right way over the region its two rules share says
+little about what it does to an order over the function. What it governs counts
+for more. **On §16's own cell the band was looser than §16 said, but only just**:
+two topological readings, `consistent` and `no_count`, sit below the anti
+selection of their size under either definition, by 0.07 and 0.7 deviations. So
+§16's reading of §14 stands where it was made, and its *untestable* means
+untestable by direction.
+
+### What this changes
+
+- **§16's lead is a corpus lead.** Over the function the same cut makes the
+  largest move any selection of these edges has made against its control, and
+  makes it downward. It drops every edge that names `SECURITY_INCIDENT` the
+  winner, and over the function that queue is the truth for three points in
+  eight.
+- **It is `FINDINGS_EDGES.md`'s split again, from the pairwise side.** The
+  security keyword is right over the function and costly where tickets arrive,
+  and a cut by the proposer's stated reason inherits whichever surface it is read
+  on.
+- **§16's ceiling is a ceiling of selection by direction.** A dated note in §16
+  says so.
+
+### What it does not settle
+
+- **The lead itself.** It is still untested on a population it was not found on,
+  which would take new answers.
+- **The most a selection could show, on either surface.** Ranking edges by what
+  they do to the order would be search as a filter, and is legitimate only as an
+  oracle. It is free in calls and not measured.
+
+**Files added by this section**
+
+```
+rung3/filter_space.py         the two surfaces from one compilation, the gates,
+                              the expectation, the post-run diagnostic
+results3/filter_space.json    the record
+tests/test_filter_space.py    §16's draws, the gates, the clauses, the diagnostics
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.filter_space`. About five
 minutes, zero API calls.
 
 ---

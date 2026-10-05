@@ -1,0 +1,1274 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-05T15:40:48Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "e6f2a00975890e974c99acd1f4e4de66331acadd",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "01ae0017ee8e6d41",
+    "draws": 200,
+    "seed": "filter_headroom"
+  },
+  "what": "\u00a716's selections of the 1,600 run's declared edges, compiled as \u00a716 compiled them and scored on the hibrido pool over the exhaustive space: the headroom of any selection there, and the eight filters inside it. Zero API calls.",
+  "provenance": "POST-RUN with an expectation written before the run, in the module and in this record, and committed before it ran. Not a signed row, not on STATUS.md's scoreboard, not a calibration event. Zero API calls.",
+  "expectation_written_before_the_run": "Written before the run and committed before it ran. On the space the queue cut reverses. (1) `no_queue` lands below its same-size random control, in both compilations. (2) `queue` lands above its same-size random control, in both compilations. (3) The reversal is weaker than the corpus gain: `no_queue`'s MFAS reading on the space is smaller in absolute value than its +2.52 on the corpus. The reasons: the queue edges are mostly the security keyword, half of the space against 3% of the arrivals. Over the function the write-time edges of that rule of thumb point at the better rule three times in four, and the held-out batch's `queue` answers name it more often than the rest do. But that advantage is small on the space, and development has it the other way, against a gap on the corpus that is larger and has the same sign in both batches.",
+  "what_the_drafter_had_seen": "Everything \u00a716 publishes, on the corpus. On the space, three figures and no selection: keep_all compiled topologically, 0.5463 on hibrido (declared_order_1600.json), the free queue ranking, 0.5838, and the born_at floor, 0.4257 (queue_hierarchy_floor.json). The direction rates by code in FINDINGS_WHY.md: on the held-out batch `queue` answers name the better rule 0.8008 of the time on the space and 0.6300 on the corpus, against 0.7424 and 0.6860 for all, and in development the `queue` answers were behind the rest on both. FINDINGS_EDGES.md's W-b: the write-time edges point at the better rule three times in four over the function. No score of any selection or filter on the space had been computed.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves.",
+  "surface": "hibrido pool, exhaustive space, 134,400 points",
+  "the_corpus_side_is_not_written_again": "every corpus figure of the same orders is results3/filter_headroom.json's, which owns it. Gate 1 says each one reproduced; none is copied here.",
+  "gates": {
+    "filter_headroom_reproduces": {
+      "what": "every figure of results3/filter_headroom.json, from the orders this module compiled, scored on \u00a716's own cell",
+      "rows": {
+        "born_at_floor": {
+          "figures": 1,
+          "passes": true,
+          "first_differences": []
+        },
+        "headroom_by_size": {
+          "figures": 154,
+          "passes": true,
+          "first_differences": []
+        },
+        "shuffled_controls_at_14s_sizes": {
+          "figures": 18,
+          "passes": true,
+          "first_differences": []
+        },
+        "filters": {
+          "figures": 44,
+          "passes": true,
+          "first_differences": []
+        }
+      },
+      "passes": true
+    },
+    "the_space_is_the_published_one": {
+      "what": "born_at and keep_all, scored on hibrido over the space, against the records that published them",
+      "rows": {
+        "born_at_floor": {
+          "measured": 0.425744,
+          "published": 0.425744,
+          "owner": "results3/queue_hierarchy_floor.json",
+          "passes": true
+        },
+        "keep_all_topological": {
+          "measured": 0.546317,
+          "published": 0.546317,
+          "owner": "results3/declared_order_1600.json",
+          "passes": true
+        }
+      },
+      "passes": true
+    },
+    "passes": true
+  },
+  "references": {
+    "queue_ranking_stage_c": 0.583817,
+    "queue_ranking_owner": "results3/queue_hierarchy_floor.json",
+    "keep_all_topological_owner": "results3/declared_order_1600.json",
+    "born_at_floor_owner": "results3/queue_hierarchy_floor.json"
+  },
+  "born_at_floor": 0.425744,
+  "headroom_by_size": {
+    "1393": {
+      "random_in_arrival_order": {
+        "n_kept": 1393,
+        "draws": 200,
+        "topological": {
+          "mean": 0.541395,
+          "sd": 0.010889
+        },
+        "mfas": {
+          "mean": 0.495651,
+          "sd": 0.020981
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.549144,
+        "mfas": 0.501228,
+        "topological_deviations": 0.71,
+        "mfas_deviations": 0.27
+      },
+      "anti_corpus": {
+        "topological": 0.546615,
+        "mfas": 0.478906,
+        "topological_deviations": 0.48,
+        "mfas_deviations": -0.8
+      },
+      "oracle_space": {
+        "topological": 0.551042,
+        "mfas": 0.485454,
+        "topological_deviations": 0.89,
+        "mfas_deviations": -0.49
+      },
+      "anti_space": {
+        "topological": 0.544829,
+        "mfas": 0.472396,
+        "topological_deviations": 0.32,
+        "mfas_deviations": -1.11
+      }
+    },
+    "1194": {
+      "random_in_arrival_order": {
+        "n_kept": 1194,
+        "draws": 200,
+        "topological": {
+          "mean": 0.531905,
+          "sd": 0.017587
+        },
+        "mfas": {
+          "mean": 0.501652,
+          "sd": 0.022882
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.544606,
+        "mfas": 0.542254,
+        "topological_deviations": 0.72,
+        "mfas_deviations": 1.77
+      },
+      "anti_corpus": {
+        "topological": 0.559784,
+        "mfas": 0.483519,
+        "topological_deviations": 1.59,
+        "mfas_deviations": -0.79
+      },
+      "oracle_space": {
+        "topological": 0.548802,
+        "mfas": 0.547277,
+        "topological_deviations": 0.96,
+        "mfas_deviations": 1.99
+      },
+      "anti_space": {
+        "topological": 0.546057,
+        "mfas": 0.483817,
+        "topological_deviations": 0.8,
+        "mfas_deviations": -0.78
+      }
+    },
+    "971": {
+      "random_in_arrival_order": {
+        "n_kept": 971,
+        "draws": 200,
+        "topological": {
+          "mean": 0.512366,
+          "sd": 0.020142
+        },
+        "mfas": {
+          "mean": 0.499416,
+          "sd": 0.019671
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.544635,
+        "mfas": 0.545417,
+        "topological_deviations": 1.6,
+        "mfas_deviations": 2.34
+      },
+      "anti_corpus": {
+        "topological": 0.542485,
+        "mfas": 0.46994,
+        "topological_deviations": 1.5,
+        "mfas_deviations": -1.5
+      },
+      "oracle_space": {
+        "topological": 0.545565,
+        "mfas": 0.543185,
+        "topological_deviations": 1.65,
+        "mfas_deviations": 2.23
+      },
+      "anti_space": {
+        "topological": 0.531362,
+        "mfas": 0.479985,
+        "topological_deviations": 0.94,
+        "mfas_deviations": -0.99
+      }
+    },
+    "817": {
+      "random_in_arrival_order": {
+        "n_kept": 817,
+        "draws": 200,
+        "topological": {
+          "mean": 0.500429,
+          "sd": 0.022354
+        },
+        "mfas": {
+          "mean": 0.495038,
+          "sd": 0.019882
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.528862,
+        "mfas": 0.528862,
+        "topological_deviations": 1.27,
+        "mfas_deviations": 1.7
+      },
+      "anti_corpus": {
+        "topological": 0.499814,
+        "mfas": 0.500967,
+        "topological_deviations": -0.03,
+        "mfas_deviations": 0.3
+      },
+      "oracle_space": {
+        "topological": 0.54128,
+        "mfas": 0.54128,
+        "topological_deviations": 1.83,
+        "mfas_deviations": 2.33
+      },
+      "anti_space": {
+        "topological": 0.539621,
+        "mfas": 0.540551,
+        "topological_deviations": 1.75,
+        "mfas_deviations": 2.29
+      }
+    },
+    "662": {
+      "random_in_arrival_order": {
+        "n_kept": 662,
+        "draws": 200,
+        "topological": {
+          "mean": 0.48987,
+          "sd": 0.024985
+        },
+        "mfas": {
+          "mean": 0.4919,
+          "sd": 0.022214
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.504345,
+        "mfas": 0.504345,
+        "topological_deviations": 0.58,
+        "mfas_deviations": 0.56
+      },
+      "anti_corpus": {
+        "topological": 0.482143,
+        "mfas": 0.440067,
+        "topological_deviations": -0.31,
+        "mfas_deviations": -2.33
+      },
+      "oracle_space": {
+        "topological": 0.543222,
+        "mfas": 0.543222,
+        "topological_deviations": 2.14,
+        "mfas_deviations": 2.31
+      },
+      "anti_space": {
+        "topological": 0.428051,
+        "mfas": 0.42474,
+        "topological_deviations": -2.47,
+        "mfas_deviations": -3.02
+      }
+    },
+    "508": {
+      "random_in_arrival_order": {
+        "n_kept": 508,
+        "draws": 200,
+        "topological": {
+          "mean": 0.479602,
+          "sd": 0.024223
+        },
+        "mfas": {
+          "mean": 0.487097,
+          "sd": 0.025703
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.504308,
+        "mfas": 0.504308,
+        "topological_deviations": 1.02,
+        "mfas_deviations": 0.67
+      },
+      "anti_corpus": {
+        "topological": 0.486347,
+        "mfas": 0.448103,
+        "topological_deviations": 0.28,
+        "mfas_deviations": -1.52
+      },
+      "oracle_space": {
+        "topological": 0.545789,
+        "mfas": 0.545789,
+        "topological_deviations": 2.73,
+        "mfas_deviations": 2.28
+      },
+      "anti_space": {
+        "topological": 0.422954,
+        "mfas": 0.424107,
+        "topological_deviations": -2.34,
+        "mfas_deviations": -2.45
+      }
+    },
+    "285": {
+      "random_in_arrival_order": {
+        "n_kept": 285,
+        "draws": 200,
+        "topological": {
+          "mean": 0.458571,
+          "sd": 0.022962
+        },
+        "mfas": {
+          "mean": 0.472057,
+          "sd": 0.029921
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.506176,
+        "mfas": 0.506176,
+        "topological_deviations": 2.07,
+        "mfas_deviations": 1.14
+      },
+      "anti_corpus": {
+        "topological": 0.415141,
+        "mfas": 0.427121,
+        "topological_deviations": -1.89,
+        "mfas_deviations": -1.5
+      },
+      "oracle_space": {
+        "topological": 0.534301,
+        "mfas": 0.534301,
+        "topological_deviations": 3.3,
+        "mfas_deviations": 2.08
+      },
+      "anti_space": {
+        "topological": 0.409933,
+        "mfas": 0.409933,
+        "topological_deviations": -2.12,
+        "mfas_deviations": -2.08
+      }
+    }
+  },
+  "shuffled_controls_at_14s_sizes": {
+    "keep_all": {
+      "n_kept": 1479,
+      "draws": 200,
+      "topological": {
+        "mean": 0.537578,
+        "sd": 0.006813
+      },
+      "mfas": {
+        "mean": 0.495204,
+        "sd": 0.022913
+      }
+    },
+    "consistent": {
+      "n_kept": 1194,
+      "draws": 200,
+      "topological": {
+        "mean": 0.524514,
+        "sd": 0.016264
+      },
+      "mfas": {
+        "mean": 0.498829,
+        "sd": 0.02171
+      }
+    },
+    "inconsistent": {
+      "n_kept": 285,
+      "draws": 200,
+      "topological": {
+        "mean": 0.457238,
+        "sd": 0.021881
+      },
+      "mfas": {
+        "mean": 0.47362,
+        "sd": 0.030884
+      }
+    }
+  },
+  "filters": {
+    "keep_all": {
+      "n_kept": 1479,
+      "topological": 0.546317,
+      "mfas": 0.482924,
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": 1.28,
+        "mfas_deviations": -0.54
+      }
+    },
+    "consistent": {
+      "n_kept": 1194,
+      "topological": 0.551592,
+      "mfas": 0.55189,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 1.12,
+        "mfas_deviations": 2.2
+      },
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": 1.66,
+        "mfas_deviations": 2.44
+      }
+    },
+    "inconsistent": {
+      "n_kept": 285,
+      "topological": 0.40067,
+      "mfas": 0.40067,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -2.52,
+        "mfas_deviations": -2.39
+      },
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": -2.59,
+        "mfas_deviations": -2.36
+      }
+    },
+    "spec": {
+      "n_kept": 817,
+      "topological": 0.43843,
+      "mfas": 0.438616,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -2.77,
+        "mfas_deviations": -2.84
+      }
+    },
+    "no_spec": {
+      "n_kept": 662,
+      "topological": 0.51901,
+      "mfas": 0.489658,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 1.17,
+        "mfas_deviations": -0.1
+      }
+    },
+    "queue": {
+      "n_kept": 508,
+      "topological": 0.515662,
+      "mfas": 0.515662,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 1.49,
+        "mfas_deviations": 1.11
+      }
+    },
+    "no_queue": {
+      "n_kept": 971,
+      "topological": 0.440104,
+      "mfas": 0.277507,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -3.59,
+        "mfas_deviations": -11.28
+      }
+    },
+    "no_count": {
+      "n_kept": 1393,
+      "topological": 0.544382,
+      "mfas": 0.538281,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 0.27,
+        "mfas_deviations": 2.03
+      }
+    }
+  },
+  "expectation_read": [
+    {
+      "clause": "1",
+      "filter": "no_queue",
+      "compilation": "topological",
+      "claim": "below the control",
+      "deviations": -3.59,
+      "holds": true
+    },
+    {
+      "clause": "1",
+      "filter": "no_queue",
+      "compilation": "mfas",
+      "claim": "below the control",
+      "deviations": -11.28,
+      "holds": true
+    },
+    {
+      "clause": "2",
+      "filter": "queue",
+      "compilation": "topological",
+      "claim": "above the control",
+      "deviations": 1.49,
+      "holds": true
+    },
+    {
+      "clause": "2",
+      "filter": "queue",
+      "compilation": "mfas",
+      "claim": "above the control",
+      "deviations": 1.11,
+      "holds": true
+    },
+    {
+      "clause": "3",
+      "filter": "no_queue",
+      "compilation": "mfas",
+      "claim": "|deviations| < 2.52",
+      "deviations": -11.28,
+      "holds": false
+    }
+  ],
+  "diagnostics": {
+    "what": "read beside the scores, not against anything: how often each cut's edges point at the better rule under each definition, by rung3/edge_direction.py's convention, and which queue each cut's edges name as the winner",
+    "direction_by_cut": {
+      "keep_all": {
+        "space": {
+          "n": 1105,
+          "rate": 0.7312,
+          "standard_error": 0.015,
+          "outside_the_denominator": {
+            "neither_ever_right": 259,
+            "tie": 115
+          }
+        },
+        "corpus": {
+          "n": 1093,
+          "rate": 0.6715,
+          "standard_error": 0.0151,
+          "outside_the_denominator": {
+            "neither_ever_right": 380,
+            "tie": 6
+          }
+        }
+      },
+      "consistent": {
+        "space": {
+          "n": 888,
+          "rate": 0.8288,
+          "standard_error": 0.0168,
+          "outside_the_denominator": {
+            "neither_ever_right": 222,
+            "tie": 84
+          }
+        },
+        "corpus": {
+          "n": 862,
+          "rate": 0.7657,
+          "standard_error": 0.017,
+          "outside_the_denominator": {
+            "neither_ever_right": 327,
+            "tie": 5
+          }
+        }
+      },
+      "inconsistent": {
+        "space": {
+          "n": 217,
+          "rate": 0.3318,
+          "standard_error": 0.0339,
+          "outside_the_denominator": {
+            "tie": 31,
+            "neither_ever_right": 37
+          }
+        },
+        "corpus": {
+          "n": 231,
+          "rate": 0.3203,
+          "standard_error": 0.0329,
+          "outside_the_denominator": {
+            "neither_ever_right": 53,
+            "tie": 1
+          }
+        }
+      },
+      "spec": {
+        "space": {
+          "n": 637,
+          "rate": 0.7284,
+          "standard_error": 0.0198,
+          "outside_the_denominator": {
+            "neither_ever_right": 137,
+            "tie": 43
+          }
+        },
+        "corpus": {
+          "n": 639,
+          "rate": 0.7074,
+          "standard_error": 0.0198,
+          "outside_the_denominator": {
+            "neither_ever_right": 174,
+            "tie": 4
+          }
+        }
+      },
+      "no_spec": {
+        "space": {
+          "n": 468,
+          "rate": 0.735,
+          "standard_error": 0.0231,
+          "outside_the_denominator": {
+            "neither_ever_right": 122,
+            "tie": 72
+          }
+        },
+        "corpus": {
+          "n": 454,
+          "rate": 0.6211,
+          "standard_error": 0.0235,
+          "outside_the_denominator": {
+            "neither_ever_right": 206,
+            "tie": 2
+          }
+        }
+      },
+      "queue": {
+        "space": {
+          "n": 353,
+          "rate": 0.7649,
+          "standard_error": 0.0266,
+          "outside_the_denominator": {
+            "neither_ever_right": 109,
+            "tie": 46
+          }
+        },
+        "corpus": {
+          "n": 312,
+          "rate": 0.5865,
+          "standard_error": 0.0283,
+          "outside_the_denominator": {
+            "neither_ever_right": 193,
+            "tie": 3
+          }
+        }
+      },
+      "no_queue": {
+        "space": {
+          "n": 752,
+          "rate": 0.7154,
+          "standard_error": 0.0182,
+          "outside_the_denominator": {
+            "neither_ever_right": 150,
+            "tie": 69
+          }
+        },
+        "corpus": {
+          "n": 781,
+          "rate": 0.7055,
+          "standard_error": 0.0179,
+          "outside_the_denominator": {
+            "neither_ever_right": 187,
+            "tie": 3
+          }
+        }
+      },
+      "no_count": {
+        "space": {
+          "n": 1042,
+          "rate": 0.7418,
+          "standard_error": 0.0155,
+          "outside_the_denominator": {
+            "neither_ever_right": 242,
+            "tie": 109
+          }
+        },
+        "corpus": {
+          "n": 1032,
+          "rate": 0.6802,
+          "standard_error": 0.0156,
+          "outside_the_denominator": {
+            "neither_ever_right": 355,
+            "tie": 6
+          }
+        }
+      }
+    },
+    "queues_named": {
+      "keep_all": {
+        "T2_TECHNICAL": 371,
+        "BILLING_SPECIALIST": 291,
+        "SECURITY_INCIDENT": 287,
+        "SELF_SERVICE_DEFLECT": 232,
+        "T1_GENERAL": 144,
+        "ONCALL_ESCALATION": 91,
+        "T3_ENGINEERING": 50,
+        "ACCOUNT_MANAGER": 13
+      },
+      "consistent": {
+        "SECURITY_INCIDENT": 287,
+        "BILLING_SPECIALIST": 287,
+        "T2_TECHNICAL": 273,
+        "SELF_SERVICE_DEFLECT": 199,
+        "ONCALL_ESCALATION": 91,
+        "T3_ENGINEERING": 49,
+        "ACCOUNT_MANAGER": 8
+      },
+      "inconsistent": {
+        "T1_GENERAL": 144,
+        "T2_TECHNICAL": 98,
+        "SELF_SERVICE_DEFLECT": 33,
+        "ACCOUNT_MANAGER": 5,
+        "BILLING_SPECIALIST": 4,
+        "T3_ENGINEERING": 1
+      },
+      "spec": {
+        "T2_TECHNICAL": 277,
+        "BILLING_SPECIALIST": 202,
+        "SELF_SERVICE_DEFLECT": 165,
+        "T1_GENERAL": 84,
+        "SECURITY_INCIDENT": 34,
+        "T3_ENGINEERING": 29,
+        "ONCALL_ESCALATION": 18,
+        "ACCOUNT_MANAGER": 8
+      },
+      "no_spec": {
+        "SECURITY_INCIDENT": 253,
+        "T2_TECHNICAL": 94,
+        "BILLING_SPECIALIST": 89,
+        "ONCALL_ESCALATION": 73,
+        "SELF_SERVICE_DEFLECT": 67,
+        "T1_GENERAL": 60,
+        "T3_ENGINEERING": 21,
+        "ACCOUNT_MANAGER": 5
+      },
+      "queue": {
+        "SECURITY_INCIDENT": 287,
+        "ONCALL_ESCALATION": 84,
+        "BILLING_SPECIALIST": 36,
+        "T2_TECHNICAL": 32,
+        "T1_GENERAL": 28,
+        "SELF_SERVICE_DEFLECT": 25,
+        "T3_ENGINEERING": 12,
+        "ACCOUNT_MANAGER": 4
+      },
+      "no_queue": {
+        "T2_TECHNICAL": 339,
+        "BILLING_SPECIALIST": 255,
+        "SELF_SERVICE_DEFLECT": 207,
+        "T1_GENERAL": 116,
+        "T3_ENGINEERING": 38,
+        "ACCOUNT_MANAGER": 9,
+        "ONCALL_ESCALATION": 7
+      },
+      "no_count": {
+        "T2_TECHNICAL": 342,
+        "BILLING_SPECIALIST": 288,
+        "SECURITY_INCIDENT": 287,
+        "SELF_SERVICE_DEFLECT": 195,
+        "T1_GENERAL": 132,
+        "ONCALL_ESCALATION": 91,
+        "T3_ENGINEERING": 47,
+        "ACCOUNT_MANAGER": 11
+      }
+    }
+  },
+  "post_run": {
+    "what": "where each filter's two orders decide on the space, and decide right, by the queue of the deciding rule, beside the cases of the space each queue is the truth for",
+    "provenance": "ADDED AFTER THE FIRST RUN, which put no_queue in MFAS eleven deviations below its control, to say where that loss sits. It reads nothing new and moves no reading above.",
+    "truth_by_queue": {
+      "ACCOUNT_MANAGER": 16440,
+      "BILLING_SPECIALIST": 6840,
+      "ONCALL_ESCALATION": 6300,
+      "SECURITY_INCIDENT": 50400,
+      "SELF_SERVICE_DEFLECT": 4300,
+      "T1_GENERAL": 5220,
+      "T2_TECHNICAL": 36720,
+      "T3_ENGINEERING": 8180
+    },
+    "by_filter": {
+      "keep_all": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 8830,
+            "right": 5480
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 7150,
+            "right": 3385
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 65090,
+            "right": 49340
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3110,
+            "right": 740
+          },
+          "T1_GENERAL": {
+            "decided": 6010,
+            "right": 1135
+          },
+          "T2_TECHNICAL": {
+            "decided": 39115,
+            "right": 12685
+          },
+          "T3_ENGINEERING": {
+            "decided": 5095,
+            "right": 660
+          }
+        },
+        "mfas": {
+          "ACCOUNT_MANAGER": {
+            "decided": 1340,
+            "right": 890
+          },
+          "BILLING_SPECIALIST": {
+            "decided": 7445,
+            "right": 4865
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 23920,
+            "right": 5980
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 57520,
+            "right": 40720
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 1940,
+            "right": 540
+          },
+          "T1_GENERAL": {
+            "decided": 1491,
+            "right": 335
+          },
+          "T2_TECHNICAL": {
+            "decided": 31144,
+            "right": 9675
+          },
+          "T3_ENGINEERING": {
+            "decided": 9600,
+            "right": 1900
+          }
+        }
+      },
+      "consistent": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 9390,
+            "right": 6120
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 16600,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 60110,
+            "right": 47450
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 4854,
+            "right": 1044
+          },
+          "T1_GENERAL": {
+            "decided": 5126,
+            "right": 1165
+          },
+          "T2_TECHNICAL": {
+            "decided": 35580,
+            "right": 11575
+          },
+          "T3_ENGINEERING": {
+            "decided": 2740,
+            "right": 480
+          }
+        },
+        "mfas": {
+          "BILLING_SPECIALIST": {
+            "decided": 9390,
+            "right": 6120
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 16600,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 61760,
+            "right": 47450
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3359,
+            "right": 1044
+          },
+          "T1_GENERAL": {
+            "decided": 4916,
+            "right": 1165
+          },
+          "T2_TECHNICAL": {
+            "decided": 35635,
+            "right": 11615
+          },
+          "T3_ENGINEERING": {
+            "decided": 2740,
+            "right": 480
+          }
+        }
+      },
+      "inconsistent": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 11730,
+            "right": 4490
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 4090,
+            "right": 740
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 39575,
+            "right": 29770
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 1350,
+            "right": 310
+          },
+          "T1_GENERAL": {
+            "decided": 13711,
+            "right": 2270
+          },
+          "T2_TECHNICAL": {
+            "decided": 62444,
+            "right": 15990
+          },
+          "T3_ENGINEERING": {
+            "decided": 1500,
+            "right": 280
+          }
+        },
+        "mfas": {
+          "BILLING_SPECIALIST": {
+            "decided": 11730,
+            "right": 4490
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 4090,
+            "right": 740
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 39575,
+            "right": 29770
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 1350,
+            "right": 310
+          },
+          "T1_GENERAL": {
+            "decided": 13711,
+            "right": 2270
+          },
+          "T2_TECHNICAL": {
+            "decided": 62444,
+            "right": 15990
+          },
+          "T3_ENGINEERING": {
+            "decided": 1500,
+            "right": 280
+          }
+        }
+      },
+      "spec": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 8990,
+            "right": 4360
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 6085,
+            "right": 1945
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 49250,
+            "right": 35150
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3055,
+            "right": 475
+          },
+          "T1_GENERAL": {
+            "decided": 6171,
+            "right": 1340
+          },
+          "T2_TECHNICAL": {
+            "decided": 57169,
+            "right": 14775
+          },
+          "T3_ENGINEERING": {
+            "decided": 3680,
+            "right": 880
+          }
+        },
+        "mfas": {
+          "BILLING_SPECIALIST": {
+            "decided": 8990,
+            "right": 4360
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 6085,
+            "right": 1945
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 49250,
+            "right": 35150
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3055,
+            "right": 475
+          },
+          "T1_GENERAL": {
+            "decided": 6146,
+            "right": 1340
+          },
+          "T2_TECHNICAL": {
+            "decided": 57194,
+            "right": 14800
+          },
+          "T3_ENGINEERING": {
+            "decided": 3680,
+            "right": 880
+          }
+        }
+      },
+      "no_spec": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 12640,
+            "right": 6560
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 15760,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 55705,
+            "right": 43230
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 1785,
+            "right": 520
+          },
+          "T1_GENERAL": {
+            "decided": 10860,
+            "right": 1810
+          },
+          "T2_TECHNICAL": {
+            "decided": 36030,
+            "right": 11095
+          },
+          "T3_ENGINEERING": {
+            "decided": 1620,
+            "right": 240
+          }
+        },
+        "mfas": {
+          "ACCOUNT_MANAGER": {
+            "decided": 3090,
+            "right": 2315
+          },
+          "BILLING_SPECIALIST": {
+            "decided": 6970,
+            "right": 4440
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 25200,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 58800,
+            "right": 42000
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 2080,
+            "right": 535
+          },
+          "T1_GENERAL": {
+            "decided": 4835,
+            "right": 910
+          },
+          "T2_TECHNICAL": {
+            "decided": 24925,
+            "right": 7550
+          },
+          "T3_ENGINEERING": {
+            "decided": 8500,
+            "right": 1760
+          }
+        }
+      },
+      "queue": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 11760,
+            "right": 6120
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 14920,
+            "right": 5985
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 56355,
+            "right": 43650
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 2520,
+            "right": 510
+          },
+          "T1_GENERAL": {
+            "decided": 13466,
+            "right": 2330
+          },
+          "T2_TECHNICAL": {
+            "decided": 33759,
+            "right": 10470
+          },
+          "T3_ENGINEERING": {
+            "decided": 1620,
+            "right": 240
+          }
+        },
+        "mfas": {
+          "BILLING_SPECIALIST": {
+            "decided": 11760,
+            "right": 6120
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 14920,
+            "right": 5985
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 56355,
+            "right": 43650
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 2520,
+            "right": 510
+          },
+          "T1_GENERAL": {
+            "decided": 13466,
+            "right": 2330
+          },
+          "T2_TECHNICAL": {
+            "decided": 33759,
+            "right": 10470
+          },
+          "T3_ENGINEERING": {
+            "decided": 1620,
+            "right": 240
+          }
+        }
+      },
+      "no_queue": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 10550,
+            "right": 5480
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 6680,
+            "right": 1580
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 47680,
+            "right": 35405
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3635,
+            "right": 590
+          },
+          "T1_GENERAL": {
+            "decided": 7455,
+            "right": 1500
+          },
+          "T2_TECHNICAL": {
+            "decided": 56400,
+            "right": 14255
+          },
+          "T3_ENGINEERING": {
+            "decided": 2000,
+            "right": 340
+          }
+        },
+        "mfas": {
+          "ACCOUNT_MANAGER": {
+            "decided": 1865,
+            "right": 520
+          },
+          "BILLING_SPECIALIST": {
+            "decided": 14630,
+            "right": 5335
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 4700,
+            "right": 1215
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 7247,
+            "right": 5877
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 4643,
+            "right": 700
+          },
+          "T1_GENERAL": {
+            "decided": 1791,
+            "right": 330
+          },
+          "T2_TECHNICAL": {
+            "decided": 65414,
+            "right": 19805
+          },
+          "T3_ENGINEERING": {
+            "decided": 34110,
+            "right": 3515
+          }
+        }
+      },
+      "no_count": {
+        "topological": {
+          "BILLING_SPECIALIST": {
+            "decided": 8630,
+            "right": 5480
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 16600,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 64640,
+            "right": 48940
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3110,
+            "right": 740
+          },
+          "T1_GENERAL": {
+            "decided": 6065,
+            "right": 1190
+          },
+          "T2_TECHNICAL": {
+            "decided": 32920,
+            "right": 10275
+          },
+          "T3_ENGINEERING": {
+            "decided": 2435,
+            "right": 240
+          }
+        },
+        "mfas": {
+          "BILLING_SPECIALIST": {
+            "decided": 8630,
+            "right": 5480
+          },
+          "ONCALL_ESCALATION": {
+            "decided": 16600,
+            "right": 6300
+          },
+          "SECURITY_INCIDENT": {
+            "decided": 64640,
+            "right": 48940
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "decided": 3205,
+            "right": 740
+          },
+          "T1_GENERAL": {
+            "decided": 5166,
+            "right": 725
+          },
+          "T2_TECHNICAL": {
+            "decided": 33724,
+            "right": 9920
+          },
+          "T3_ENGINEERING": {
+            "decided": 2435,
+            "right": 240
+          }
+        }
+      }
+    }
+  },
+  "seconds": 300.5
+}
