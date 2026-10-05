@@ -1274,6 +1274,31 @@ tripling looks like sampling noise on small denominators rather than a shift, an
 **the prompt was not touched** — rule 5 of the plan, and the whole point of
 recording a surprise instead of chasing it.
 
+> **[ERRATUM 2026-10-05] The 5.12% divides one batch's failures by both batches'
+> rows, and the reading drawn from it does not survive the right denominator.**
+> The record's `parse_failures`, 82, counts the calls this run made: 1,200, since
+> the other 400 answers are Stage D's, reused. So the new calls failed to parse 82
+> times in 1,200, **6.83%**. The record's 1,600 rows hold 117 parse failures,
+> 7.31%, but that pools Stage D's 35 and is not a new sample. The table's `no
+> edge` row counts rows and stands: 121 of 1,600, which are 117 parse failures
+> and 4 answers that parsed without an action.
+>
+> - ***Came down* is not shown.** Stage D's 35 in 400, 8.75%, against the new
+>   calls' 6.83% gives a two-sided Fisher p of 0.22. The learned base's two
+>   batches agree.
+> - ***Sampling noise rather than a shift* does not follow.** Each batch of the
+>   learned base sits above Stage C's 4 failures in 170, 2.35%: Fisher p = 0.006
+>   for Stage D and 0.026 for the new calls. A third measurement of one
+>   population that agrees with the second says nothing in favour of the first
+>   two populations being alike. The tripling looks like a property of the
+>   population of pairs, which is what `results2/FINDINGS2.md` recorded at Stage
+>   D: *the population is the only thing that changed*. Why is open again.
+> - ***The prompt was not touched*** stands.
+>
+> Found on 2026-10-05 while drafting blocking checks over this record: their
+> first draft compared the 82 with the rows' parse failures and failed. Nothing
+> else in this section moves.
+
 **Cycles rose faster than edges.** 169 refused against 21, which is 11.4% of
 declared edges against 5.8%. As the graph fills, more of what the proposer says
 cannot be installed at all, and the accepted set is increasingly shaped by which
