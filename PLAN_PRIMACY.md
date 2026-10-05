@@ -22,8 +22,8 @@ things that reshape the question:
 - **Why cannot be answered from the answers paid for.** The rule listed first is
   always labelled `A`, and its queue is the first queue the question names.
 
-[`IDEAS.md`](IDEAS.md) carries the item as free to attack. **What is left that
-the paid answers can answer is where the slot decides**, and whether it does
+[`IDEAS.md`](IDEAS.md) carries the item as free to attack. **What the answers
+already paid for can still say is where the slot decides**, and whether it does
 anything to an answer besides deciding which rule it names.
 
 **What it would change.** Whether the slot acts as a tiebreaker where the
@@ -72,7 +72,10 @@ line is labelled *thin* beside it, and the label does not change the verdict.**
 If either slot of `L-a`'s queue pair holds fewer than 20 declared answers, it is
 unadjudicable and says so.
 
-**Why `L-a`'s line is 0.20.** It sits between two readings of the effect.
+**Why `L-a`'s line is 0.20.** Three readings of the effect predict different
+values on a pair the proposer splits evenly, and 0.20 separates the third from
+the other two.
+
 - **A uniform pull.** The pull calibrated on §15's two rates is half the gap
   between their log-odds, about 0.30. On a pair the proposer is truly undecided
   about, it gives a `d` of about 0.15.
@@ -286,8 +289,8 @@ against a fixed line instead. `L-c`'s readings by queue pair carry the same
 caution, and say so.
 
 **5.7 — Two batches, two dates, one model.** The 400 reused answers were given
-on 2026-08-24 and the 1,200 a day or two later. Each batch was dealt and balanced
-on its own. The proposer is not deterministic at temperature 0. `L-c` reads each
+on 2026-08-24 and the 1,200 on 2026-08-25. Each batch was dealt and balanced on
+its own. The proposer is not deterministic at temperature 0. `L-c` reads each
 batch.
 
 **5.8 — The record's `parse_failures` counts calls, not rows.** Its 82 are the
@@ -486,8 +489,9 @@ drifted before when it was left for later:
    - **relabelled**, the original order with the labels swapped, so the rule
      listed first is `B`.
 
-   The hosted model reasons by default since 2026-09-30, so every call would
-   turn reasoning off, as `PLAN_REUSE.md`'s amendment did. What it would buy:
+   The hosted model now reasons by default, which `PLAN_REUSE.md` found on
+   2026-09-30, so every call would turn reasoning off, as that plan's amendment
+   did. What it would buy:
    - flips under reversal against flips in the control give the share the slot
      decides, not a floor;
    - the relabelled arm separates position from label;
