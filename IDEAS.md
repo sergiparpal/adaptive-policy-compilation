@@ -29,9 +29,11 @@ up in `results_fidelity/`. **What the edges it declared bought closed on October
 5, 2026**: `PLAN_EDGES.md`, four signed rows, one held, two refuted and one
 reported, written up in `results_edges/`. **Where the presentation slot decides
 the pairwise answers closed the same day**: `PLAN_PRIMACY.md`, three signed rows,
-one held, one refuted and one reported, written up in `results_primacy/`. This is
-a list of things not done, none of them developed and in no order of
-precedence.
+one held, one refuted and one reported, written up in `results_primacy/`. **What
+the proposer says it is doing closed after it**: `PLAN_WHY.md`, five signed rows
+set on a development set, four held and one reported, written up in
+`results_why/`. This is a list of things not done, none of them developed and in
+no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -41,6 +43,12 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **What the `why` texts say.** October 5, 2026, `PLAN_WHY.md`, zero calls. When
+  the proposer says the rule it names is more specific, the claim is true of the
+  extension about half the time. By "specific" it means a rule that names a
+  product or an exact value, and the reason it gives does not mark its right
+  answers. It names the list's order as the reason in 8 answers of 1,114.
+  `results_why/`.
 - **Where the slot decides.** October 5, 2026, `PLAN_PRIMACY.md`, zero calls. In
   the 1,600 pairwise answers the slot decides about one in twelve at least. It
   does nothing else to an answer that the record can see, and it sits mostly on
@@ -131,6 +139,32 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_WHY.md` opens and does not resolve
+
+Closed October 5, 2026. It read the sentence the proposer wrote beside each
+pairwise answer, with a codebook frozen on a development set, and answered what
+it means by specific and whether its reasons mark its right answers. What that
+leaves:
+
+- **What a `why`-based selection does to the compiled order.** The rows read the
+  pair level, where the reason carries no signal. Keeping or dropping edges by
+  their stated reason is §14's question at the order level. It is free, and it
+  needs its own row (§10.5 of the plan).
+- **Rules with identical conditions and different queues.** Five of the 1,600
+  sampled pairs are two rules of rung 1's base written with the same conditions
+  in another order, sending the ticket to different queues. How many such pairs
+  the whole 577-rule base holds is not counted, and it costs nothing to count. On
+  them the proposer falls back on the order and says so.
+- **The slot, unspoken.** The proposer gives the list's order as the reason in 8
+  answers of 1,114, while the slot decides at least one in twelve. The paid
+  re-ask `IDEAS.md` carries under `PLAN_PRIMACY.md` would show whether the
+  reasons change when the order does.
+- **Any next codebook should anchor its patterns.** `m[aá]s condiciones` matched
+  inside *"mismas condiciones"*, one false positive in 1,114. It moved no row,
+  and a pattern without a word boundary is a defect to avoid, not to copy.
 
 ---
 
@@ -323,6 +357,9 @@ tried at. What is left:
   preference. The gap between what the proposer says it is doing and what it does
   is noted in §15 as one sentence, not measured: a proper treatment of the `why`
   texts would be its own work, **and that is a real item nobody has opened.**
+  **[NOTE 2026-10-05] Opened and measured by `PLAN_WHY.md`.** Its "more specific"
+  is true of the extension about half the time and means a categorical or exact
+  condition, not a count. `results_why/`.
   **WHAT REPLACES IT, and it is sharper than what it replaces:** the position
   effect is real and it is an ACCURACY effect, not a taste. The proposer applies
   its own ranking 0.8534 of the time when the favoured rule is shown first and
