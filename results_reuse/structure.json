@@ -1,0 +1,1082 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-05T16:16:30Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ed13bea8f62bebe942df7ee845f49b9906b767a3",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "5275ff95fd4ec4d9"
+  },
+  "plan": "PLAN_REUSE.md",
+  "what": "the structure of PLAN_REUSE.md's three final bases, loaded whole from case 0, beside the hand-written policy and rung 1's base: pairs, subsumption alone, the coverage bounds and copies. The baseline for Stage E of PLAN_PAIRWISE.md \u00a711. Zero API calls.",
+  "provenance": "POST-RUN with an expectation written before the run, in the module and in this record, and committed before it ran. A baseline for a plan not yet drafted: Stage E of PLAN_PAIRWISE.md \u00a711. Not a signed row, not on STATUS.md's scoreboard, not a calibration event. Zero API calls.",
+  "expectation_written_before_the_run": "Written before the run and committed before it ran. For each of the three bases: (1) it nests less than the hand-written policy; (2) subsumption alone decides more of the corpus than on rung 1's base; (3) its silent error on the corpus is above half of rung 1's; (4) no two of its rules are written the same, with the same queue or another; (5) the gap between its pure and hybrid bounds on the corpus is below rung 1's. The reasons: rung 2's proposer, shown the base, writes mostly disjoint rules, so there is little nesting to prune and few conflicts to leave open; most of the rules' errors are born with them; and a rule born on an impasse cannot copy one that already covers its ticket.",
+  "what_the_drafter_had_seen": "The published figures of the two references. Of PLAN_REUSE.md's three runs, their records' metrics and what FINDINGS_REUSE.md and FINDINGS_EDGES.md publish: 62, 31 and 42 escalations, a median of 12 CONFLICTs with 30 in run 1, 30, 6 and 28 accepted edges of which 50 were installed, and run 1's rule count. FINDINGS2.md's overlap at n=100: 17.5% of pairs without the base shown, 1.60% with it. No pair of rules of any of the three bases had been compared.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves.",
+  "surfaces": {
+    "corpus": "the full corpus, 2,000 cases, seed 17",
+    "space": "the exhaustive space, 134,400 points, each once"
+  },
+  "loaded_whole": "every rule of a base present from case 0, as harness/learned_subsumption.py loaded rung 1's. Not what the loop decided as the base grew: FINDINGS_REUSE.md owns that.",
+  "gates": {
+    "hand_written": [
+      {
+        "what": "nested pairs, of possible",
+        "measured": [
+          61,
+          406
+        ],
+        "published": [
+          61,
+          406
+        ],
+        "owner": "results/subsumption.json",
+        "passes": true
+      },
+      {
+        "what": "subsumption on the corpus: decided, conflicts, right",
+        "measured": [
+          1263,
+          737,
+          1263
+        ],
+        "published": [
+          1263,
+          737,
+          1263
+        ],
+        "owner": "results/subsumption.json",
+        "passes": true
+      },
+      {
+        "what": "subsumption over the space: decided, conflicts, impasses, right",
+        "measured": [
+          35102,
+          99298,
+          0,
+          35102
+        ],
+        "published": [
+          35102,
+          99298,
+          0,
+          35102
+        ],
+        "owner": "results2/ceiling2_space.json",
+        "passes": true
+      },
+      {
+        "what": "the population: the declared edges",
+        "measured": 199,
+        "published": 199,
+        "owner": "rung2/pair_judgement.py, N_DECLARED",
+        "passes": true
+      }
+    ],
+    "rung1": [
+      {
+        "what": "nested pairs, of possible",
+        "measured": [
+          8599,
+          166176
+        ],
+        "published": [
+          8599,
+          166176
+        ],
+        "owner": "results/learned_subsumption.json",
+        "passes": true
+      },
+      {
+        "what": "subsumption on the corpus: decided, conflicts, impasses, right",
+        "measured": [
+          160,
+          1840,
+          0,
+          75
+        ],
+        "published": [
+          160,
+          1840,
+          0,
+          75
+        ],
+        "owner": "results/learned_subsumption.json",
+        "passes": true
+      },
+      {
+        "what": "the population",
+        "measured": 31850,
+        "published": 31850,
+        "owner": "rung2/pair_judgement.py, GATE_POPULATION",
+        "passes": true
+      },
+      {
+        "what": "coverage bounds, corpus and space, both pools",
+        "measured": {
+          "puro": [
+            0.901,
+            0.8784
+          ],
+          "hibrido": [
+            0.854,
+            0.8531
+          ]
+        },
+        "published": {
+          "puro": [
+            0.901,
+            0.8784
+          ],
+          "hibrido": [
+            0.854,
+            0.8531
+          ]
+        },
+        "owner": "results3/order_search_ls.json",
+        "passes": true
+      },
+      {
+        "what": "copies, both definitions",
+        "measured": {
+          "written": [
+            83,
+            307,
+            {
+              "same_queue": 655,
+              "different_queue": 93
+            }
+          ],
+          "covering": [
+            84,
+            325,
+            {
+              "same_queue": 757,
+              "different_queue": 114
+            }
+          ]
+        },
+        "published": {
+          "written": [
+            83,
+            307,
+            {
+              "same_queue": 655,
+              "different_queue": 93
+            }
+          ],
+          "covering": [
+            84,
+            325,
+            {
+              "same_queue": 757,
+              "different_queue": 114
+            }
+          ]
+        },
+        "owner": "results3/identical_rules.json",
+        "passes": true
+      }
+    ],
+    "records": [
+      {
+        "what": "reuse_r1: its rules, against its record's n_rules",
+        "measured": 62,
+        "published": 62,
+        "owner": "results_reuse/run_n2000_r1.json",
+        "passes": true
+      },
+      {
+        "what": "reuse_r2: its rules, against its record's n_rules",
+        "measured": 31,
+        "published": 31,
+        "owner": "results_reuse/run_n2000_r2.json",
+        "passes": true
+      },
+      {
+        "what": "reuse_r3: its rules, against its record's n_rules",
+        "measured": 42,
+        "published": 42,
+        "owner": "results_reuse/run_n2000_r3.json",
+        "passes": true
+      }
+    ]
+  },
+  "profiles": {
+    "hand_written": {
+      "rules": 29,
+      "empty_extension": 0,
+      "pairs": {
+        "possible": 406,
+        "overlapping": 294,
+        "nested": 61,
+        "population": 199,
+        "overlapping_share": 0.724138,
+        "nested_share": 0.150246,
+        "overlap_degree": {
+          "mean": 20.275862,
+          "max": 28
+        }
+      },
+      "subsumption": {
+        "corpus": {
+          "n": 2000,
+          "action": 1263,
+          "conflict": 737,
+          "impasse": 0,
+          "correct": 1263,
+          "coverage": 0.6315,
+          "silent_error": 0.0,
+          "e2e": 0.6315
+        },
+        "space": {
+          "n": 134400,
+          "action": 35102,
+          "conflict": 99298,
+          "impasse": 0,
+          "correct": 35102,
+          "coverage": 0.261176,
+          "silent_error": 0.0,
+          "e2e": 0.261176
+        }
+      },
+      "bounds": {
+        "puro": {
+          "corpus": 1.0,
+          "space": 1.0
+        },
+        "hibrido": {
+          "corpus": 1.0,
+          "space": 1.0
+        },
+        "gap": {
+          "corpus": 0.0,
+          "space": 0.0
+        }
+      },
+      "copies": {
+        "written": {
+          "groups": 0,
+          "rules_in_groups": 0,
+          "pairs": {
+            "same_queue": 0,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        },
+        "covering": {
+          "groups": 0,
+          "rules_in_groups": 0,
+          "pairs": {
+            "same_queue": 0,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        }
+      }
+    },
+    "rung1": {
+      "rules": 577,
+      "empty_extension": 0,
+      "pairs": {
+        "possible": 166176,
+        "overlapping": 53620,
+        "nested": 8599,
+        "population": 31850,
+        "overlapping_share": 0.32267,
+        "nested_share": 0.051746,
+        "overlap_degree": {
+          "mean": 185.857886,
+          "max": 495
+        }
+      },
+      "subsumption": {
+        "corpus": {
+          "n": 2000,
+          "action": 160,
+          "conflict": 1840,
+          "impasse": 0,
+          "correct": 75,
+          "coverage": 0.08,
+          "silent_error": 0.53125,
+          "e2e": 0.0375
+        },
+        "space": {
+          "n": 134400,
+          "action": 5661,
+          "conflict": 128739,
+          "impasse": 0,
+          "correct": 1620,
+          "coverage": 0.042121,
+          "silent_error": 0.713831,
+          "e2e": 0.012054
+        }
+      },
+      "bounds": {
+        "puro": {
+          "corpus": 0.901,
+          "space": 0.878423
+        },
+        "hibrido": {
+          "corpus": 0.854,
+          "space": 0.853118
+        },
+        "gap": {
+          "corpus": 0.047,
+          "space": 0.025305
+        }
+      },
+      "copies": {
+        "written": {
+          "groups": 83,
+          "rules_in_groups": 307,
+          "pairs": {
+            "same_queue": 655,
+            "different_queue": 93
+          }
+        },
+        "covering": {
+          "groups": 84,
+          "rules_in_groups": 325,
+          "pairs": {
+            "same_queue": 757,
+            "different_queue": 114
+          }
+        }
+      }
+    },
+    "reuse_r1": {
+      "rules": 62,
+      "empty_extension": 0,
+      "pairs": {
+        "possible": 1891,
+        "overlapping": 1338,
+        "nested": 63,
+        "population": 896,
+        "overlapping_share": 0.707562,
+        "nested_share": 0.033316,
+        "overlap_degree": {
+          "mean": 43.16129,
+          "max": 61
+        }
+      },
+      "subsumption": {
+        "corpus": {
+          "n": 2000,
+          "action": 1932,
+          "conflict": 68,
+          "impasse": 0,
+          "correct": 797,
+          "coverage": 0.966,
+          "silent_error": 0.587474,
+          "e2e": 0.3985
+        },
+        "space": {
+          "n": 134400,
+          "action": 70560,
+          "conflict": 63840,
+          "impasse": 0,
+          "correct": 23520,
+          "coverage": 0.525,
+          "silent_error": 0.666667,
+          "e2e": 0.175
+        }
+      },
+      "bounds": {
+        "puro": {
+          "corpus": 0.4205,
+          "space": 0.61875
+        },
+        "hibrido": {
+          "corpus": 0.42,
+          "space": 0.6125
+        },
+        "gap": {
+          "corpus": 0.0005,
+          "space": 0.00625
+        }
+      },
+      "copies": {
+        "written": {
+          "groups": 2,
+          "rules_in_groups": 30,
+          "pairs": {
+            "same_queue": 379,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        },
+        "covering": {
+          "groups": 2,
+          "rules_in_groups": 30,
+          "pairs": {
+            "same_queue": 379,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        }
+      }
+    },
+    "reuse_r2": {
+      "rules": 31,
+      "empty_extension": 0,
+      "pairs": {
+        "possible": 465,
+        "overlapping": 110,
+        "nested": 9,
+        "population": 78,
+        "overlapping_share": 0.236559,
+        "nested_share": 0.019355,
+        "overlap_degree": {
+          "mean": 7.096774,
+          "max": 28
+        }
+      },
+      "subsumption": {
+        "corpus": {
+          "n": 2000,
+          "action": 1978,
+          "conflict": 22,
+          "impasse": 0,
+          "correct": 886,
+          "coverage": 0.989,
+          "silent_error": 0.552073,
+          "e2e": 0.443
+        },
+        "space": {
+          "n": 134400,
+          "action": 109200,
+          "conflict": 25200,
+          "impasse": 0,
+          "correct": 30000,
+          "coverage": 0.8125,
+          "silent_error": 0.725275,
+          "e2e": 0.223214
+        }
+      },
+      "bounds": {
+        "puro": {
+          "corpus": 0.454,
+          "space": 0.410714
+        },
+        "hibrido": {
+          "corpus": 0.454,
+          "space": 0.410714
+        },
+        "gap": {
+          "corpus": 0.0,
+          "space": 0.0
+        }
+      },
+      "copies": {
+        "written": {
+          "groups": 2,
+          "rules_in_groups": 7,
+          "pairs": {
+            "same_queue": 9,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        },
+        "covering": {
+          "groups": 2,
+          "rules_in_groups": 7,
+          "pairs": {
+            "same_queue": 9,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        }
+      }
+    },
+    "reuse_r3": {
+      "rules": 42,
+      "empty_extension": 0,
+      "pairs": {
+        "possible": 861,
+        "overlapping": 318,
+        "nested": 10,
+        "population": 267,
+        "overlapping_share": 0.369338,
+        "nested_share": 0.011614,
+        "overlap_degree": {
+          "mean": 15.142857,
+          "max": 38
+        }
+      },
+      "subsumption": {
+        "corpus": {
+          "n": 2000,
+          "action": 1925,
+          "conflict": 75,
+          "impasse": 0,
+          "correct": 1018,
+          "coverage": 0.9625,
+          "silent_error": 0.471169,
+          "e2e": 0.509
+        },
+        "space": {
+          "n": 134400,
+          "action": 71280,
+          "conflict": 63120,
+          "impasse": 0,
+          "correct": 26440,
+          "coverage": 0.530357,
+          "silent_error": 0.629068,
+          "e2e": 0.196726
+        }
+      },
+      "bounds": {
+        "puro": {
+          "corpus": 0.544,
+          "space": 0.653869
+        },
+        "hibrido": {
+          "corpus": 0.544,
+          "space": 0.653869
+        },
+        "gap": {
+          "corpus": 0.0,
+          "space": 0.0
+        }
+      },
+      "copies": {
+        "written": {
+          "groups": 4,
+          "rules_in_groups": 15,
+          "pairs": {
+            "same_queue": 39,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        },
+        "covering": {
+          "groups": 4,
+          "rules_in_groups": 15,
+          "pairs": {
+            "same_queue": 39,
+            "different_queue": 0
+          },
+          "different_queue_pairs": []
+        }
+      }
+    }
+  },
+  "expectation_read": [
+    {
+      "clause": "1",
+      "base": "reuse_r1",
+      "what": "nested share below the hand-written policy's",
+      "reading": 0.033316,
+      "line": 0.150246,
+      "holds": true
+    },
+    {
+      "clause": "1",
+      "base": "reuse_r2",
+      "what": "nested share below the hand-written policy's",
+      "reading": 0.019355,
+      "line": 0.150246,
+      "holds": true
+    },
+    {
+      "clause": "1",
+      "base": "reuse_r3",
+      "what": "nested share below the hand-written policy's",
+      "reading": 0.011614,
+      "line": 0.150246,
+      "holds": true
+    },
+    {
+      "clause": "2",
+      "base": "reuse_r1",
+      "what": "corpus coverage of subsumption above rung 1's",
+      "reading": 0.966,
+      "line": 0.08,
+      "holds": true
+    },
+    {
+      "clause": "2",
+      "base": "reuse_r2",
+      "what": "corpus coverage of subsumption above rung 1's",
+      "reading": 0.989,
+      "line": 0.08,
+      "holds": true
+    },
+    {
+      "clause": "2",
+      "base": "reuse_r3",
+      "what": "corpus coverage of subsumption above rung 1's",
+      "reading": 0.9625,
+      "line": 0.08,
+      "holds": true
+    },
+    {
+      "clause": "3",
+      "base": "reuse_r1",
+      "what": "corpus silent error of subsumption above half of rung 1's",
+      "reading": 0.587474,
+      "line": 0.265625,
+      "holds": true
+    },
+    {
+      "clause": "3",
+      "base": "reuse_r2",
+      "what": "corpus silent error of subsumption above half of rung 1's",
+      "reading": 0.552073,
+      "line": 0.265625,
+      "holds": true
+    },
+    {
+      "clause": "3",
+      "base": "reuse_r3",
+      "what": "corpus silent error of subsumption above half of rung 1's",
+      "reading": 0.471169,
+      "line": 0.265625,
+      "holds": true
+    },
+    {
+      "clause": "4",
+      "base": "reuse_r1",
+      "what": "pairs written the same, same queue or another, equal to none",
+      "reading": 379,
+      "line": 0,
+      "holds": false
+    },
+    {
+      "clause": "4",
+      "base": "reuse_r2",
+      "what": "pairs written the same, same queue or another, equal to none",
+      "reading": 9,
+      "line": 0,
+      "holds": false
+    },
+    {
+      "clause": "4",
+      "base": "reuse_r3",
+      "what": "pairs written the same, same queue or another, equal to none",
+      "reading": 39,
+      "line": 0,
+      "holds": false
+    },
+    {
+      "clause": "5",
+      "base": "reuse_r1",
+      "what": "corpus gap between the pure and hybrid bounds below rung 1's",
+      "reading": 0.0005,
+      "line": 0.047,
+      "holds": true
+    },
+    {
+      "clause": "5",
+      "base": "reuse_r2",
+      "what": "corpus gap between the pure and hybrid bounds below rung 1's",
+      "reading": 0.0,
+      "line": 0.047,
+      "holds": true
+    },
+    {
+      "clause": "5",
+      "base": "reuse_r3",
+      "what": "corpus gap between the pure and hybrid bounds below rung 1's",
+      "reading": 0.0,
+      "line": 0.047,
+      "holds": true
+    }
+  ],
+  "post_run": {
+    "what": "the later copies of each run: the escalation each was born on, the edges accepted there, and the cases it decided",
+    "provenance": "ADDED AFTER THE FIRST RUN, which refuted clause 4 on every base, to say what the copies are. It reads only the run records and moves no reading above.",
+    "vehicles": {
+      "reuse_r1": {
+        "later_copies": 28,
+        "born_on": {
+          "CONFLICT": 28
+        },
+        "edges_accepted_at_their_births": 17,
+        "edges_accepted_in_the_run": 30,
+        "cases_they_decided": 0,
+        "rows": [
+          {
+            "rule_id": "R0057",
+            "copy_of": "R0001",
+            "born_at": 1264,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0031",
+            "copy_of": "R0021",
+            "born_at": 154,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0032",
+            "copy_of": "R0021",
+            "born_at": 155,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0036",
+            "copy_of": "R0021",
+            "born_at": 167,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0037",
+            "copy_of": "R0021",
+            "born_at": 238,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0038",
+            "copy_of": "R0021",
+            "born_at": 270,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0039",
+            "copy_of": "R0021",
+            "born_at": 342,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0040",
+            "copy_of": "R0021",
+            "born_at": 346,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0041",
+            "copy_of": "R0021",
+            "born_at": 394,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0042",
+            "copy_of": "R0021",
+            "born_at": 529,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0043",
+            "copy_of": "R0021",
+            "born_at": 547,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0044",
+            "copy_of": "R0021",
+            "born_at": 577,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0045",
+            "copy_of": "R0021",
+            "born_at": 580,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0047",
+            "copy_of": "R0021",
+            "born_at": 676,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0048",
+            "copy_of": "R0021",
+            "born_at": 739,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0049",
+            "copy_of": "R0021",
+            "born_at": 751,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0050",
+            "copy_of": "R0021",
+            "born_at": 754,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0051",
+            "copy_of": "R0021",
+            "born_at": 770,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0052",
+            "copy_of": "R0021",
+            "born_at": 956,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0053",
+            "copy_of": "R0021",
+            "born_at": 1063,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0054",
+            "copy_of": "R0021",
+            "born_at": 1078,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0055",
+            "copy_of": "R0021",
+            "born_at": 1082,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0056",
+            "copy_of": "R0021",
+            "born_at": 1235,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0058",
+            "copy_of": "R0021",
+            "born_at": 1504,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0059",
+            "copy_of": "R0021",
+            "born_at": 1514,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0060",
+            "copy_of": "R0021",
+            "born_at": 1704,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0061",
+            "copy_of": "R0021",
+            "born_at": 1802,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0062",
+            "copy_of": "R0021",
+            "born_at": 1871,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          }
+        ]
+      },
+      "reuse_r2": {
+        "later_copies": 5,
+        "born_on": {
+          "CONFLICT": 5
+        },
+        "edges_accepted_at_their_births": 6,
+        "edges_accepted_in_the_run": 6,
+        "cases_they_decided": 0,
+        "rows": [
+          {
+            "rule_id": "R0013",
+            "copy_of": "R0012",
+            "born_at": 23,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0028",
+            "copy_of": "R0012",
+            "born_at": 167,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0029",
+            "copy_of": "R0012",
+            "born_at": 270,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0030",
+            "copy_of": "R0018",
+            "born_at": 342,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 2,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0031",
+            "copy_of": "R0018",
+            "born_at": 676,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          }
+        ]
+      },
+      "reuse_r3": {
+        "later_copies": 11,
+        "born_on": {
+          "CONFLICT": 11
+        },
+        "edges_accepted_at_their_births": 12,
+        "edges_accepted_in_the_run": 28,
+        "cases_they_decided": 0,
+        "rows": [
+          {
+            "rule_id": "R0028",
+            "copy_of": "R0013",
+            "born_at": 154,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0035",
+            "copy_of": "R0013",
+            "born_at": 598,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0036",
+            "copy_of": "R0013",
+            "born_at": 739,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0037",
+            "copy_of": "R0013",
+            "born_at": 770,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0038",
+            "copy_of": "R0013",
+            "born_at": 906,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 2,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0039",
+            "copy_of": "R0013",
+            "born_at": 1082,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0040",
+            "copy_of": "R0013",
+            "born_at": 1349,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 0,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0041",
+            "copy_of": "R0013",
+            "born_at": 1654,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 2,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0031",
+            "copy_of": "R0014",
+            "born_at": 169,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0034",
+            "copy_of": "R0027",
+            "born_at": 284,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          },
+          {
+            "rule_id": "R0042",
+            "copy_of": "R0033",
+            "born_at": 1899,
+            "born_on": "CONFLICT",
+            "edges_accepted_at_birth": 1,
+            "cases_decided": 0
+          }
+        ]
+      }
+    }
+  },
+  "seconds": 5.5
+}

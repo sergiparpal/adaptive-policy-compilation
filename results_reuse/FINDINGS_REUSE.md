@@ -336,6 +336,134 @@ run:
 
 ---
 
+## The three bases, read for Stage E — POST-RUN
+
+*Added 2026-10-05. `reuse/structure.py` → `results_reuse/structure.json`,
+`PYTHONHASHSEED=0`, from a clean tree, 6 s, **zero API calls**. **POST-RUN with
+an expectation written before the run**: it is in the module, in the commit
+*reuse/structure.py: PLAN_REUSE.md's three bases, read for Stage E, the
+expectation first*, made before the module profiled any of the three bases. A
+diagnostic was added after that first run, in its own commit and labelled so; the
+record comes from a second run at that commit, which reproduced every figure of
+the first. A baseline for a plan not yet drafted, Stage E of
+[`PLAN_PAIRWISE.md`](../PLAN_PAIRWISE.md) §11. Not a signed row, and it
+adjudicates nothing.*
+
+Stage E would make the proposer declare, for each rule a new one overlaps,
+whether it is an exception to it or a default under it. Its two predictions were
+written in August against rung 1's base: subsumption's silent error over a base
+written that way falls well below 53.12% at comparable or greater coverage, and
+the 0.047 gap between the hybrid and pure coverage bounds narrows. A plan that ran
+it would sit on this plan's loop, so its baseline is Stage B's three final bases,
+not rung 1's.
+
+Each base is loaded whole from case 0, as `harness/learned_subsumption.py` loaded
+rung 1's. That is a property of the final base; what the loop decided as the base
+grew is Stage C's.
+
+**Every gate passed before any of the three was profiled.** The hand-written
+policy and rung 1's base reproduce every published figure the module reads: their
+nesting, subsumption on the corpus and, for the policy, over the space, the
+population that could carry an edge, and rung 1's bounds and copies. Each run's
+rule count is its record's.
+
+### The baseline
+
+Full corpus, 2,000 cases. `nested` and `overlap` are shares of all pairs, and
+`copies` counts pairs of rules written the same.
+
+```
+               rules  nested  overlap  population  subsumption      bounds                 copies
+                                                   cover   error    pure    hybrid  gap
+hand-written      29  0.1502  0.7241         199   0.6315  0.0000   1.0000  1.0000  0.0000      0
+rung 1's base    577  0.0517  0.3227      31,850   0.0800  0.5312   0.9010  0.8540  0.0470    748
+run 1             62  0.0333  0.7076         896   0.9660  0.5875   0.4205  0.4200  0.0005    379
+run 2             31  0.0194  0.2366          78   0.9890  0.5521   0.4540  0.4540  0.0000      9
+run 3             42  0.0116  0.3693         267   0.9625  0.4712   0.5440  0.5440  0.0000     39
+```
+
+Over the exhaustive space:
+
+```
+               subsumption      bounds
+               cover   error    pure    hybrid  gap
+hand-written   0.2612  0.0000   1.0000  1.0000  0.0000
+rung 1's base  0.0421  0.7138   0.8784  0.8531  0.0253
+run 1          0.5250  0.6667   0.6188  0.6125  0.0063
+run 2          0.8125  0.7253   0.4107  0.4107  0.0000
+run 3          0.5304  0.6291   0.6539  0.6539  0.0000
+```
+
+- **Subsumption is not mute on these bases.** On rung 1's it decided 8% of the
+  corpus. On these it decides 96% to 99%, and over the space 53% to 81%.
+- **On the corpus it is wrong about half the time, and the material is why.** Its
+  silent error there is 0.47 to 0.59. But the hybrid bound, the most any order
+  over the pool it leaves could reach, is only 0.42 to 0.54, and subsumption's end
+  to end, 0.40, 0.44 and 0.51, comes within 0.01 to 0.04 of it. Where tickets
+  arrive, no order does much better with these rules.
+- **Over the space the order has room.** There subsumption leaves 19% to 48% of
+  the points in conflict, and its end to end, 0.18, 0.22 and 0.20, sits 0.19 to
+  0.46 below the hybrid bound. The rules are wrong there too, 0.63 to 0.73 of the
+  points it decides, but most of what an order could add lies over the function.
+- **There is no gap to narrow.** The hybrid bound equals the pure one in two runs
+  and sits 0.0005 below it in the third; over the space the gap is 0.006 in run 1
+  and 0 in the others. Nesting is 1% to 3% of pairs, so subsumption prunes almost
+  nothing.
+
+### The copies, and what they carry
+
+- **No two rules of these bases are written the same with different queues.**
+  Rung 1's base holds 93 such pairs (`FINDINGS3.md` §18).
+- **Copies with the same queue are many**: 379, 9 and 39 pairs. As written, the
+  three bases hold 34, 26 and 31 distinct rules. In run 1,
+  `has_security_keyword eq True → SECURITY_INCIDENT` was written 28 times.
+- **They are how the proposer declared priority — POST-RUN.** Every copy after
+  the first was born on a CONFLICT escalation, 28, 5 and 11 of them, and none ever
+  decided a case. At their births the engine accepted 17, 6 and 12 edges: 35 of
+  the 64 the three runs accepted.
+- **The protocol explains it.** It answers every escalation with a rule that must
+  match the ticket, with optional `beats` and `loses_to`, and has no way to order
+  two rules already in the base. So on a CONFLICT the proposer writes the rule it
+  wants to win again and hangs the edge on the copy. The copy never decides: it
+  ties with the original, and a decided case is credited to the oldest rule left
+  undefeated ([`FINDINGS_EDGES.md`](../results_edges/FINDINGS_EDGES.md)).
+
+### The expectation
+
+**Four clauses hold on every base, and one fails on every base.**
+
+- **Clauses 1, 2, 3 and 5 hold**: less nesting than the hand-written policy, more
+  corpus coverage than rung 1's base, silent error above half of rung 1's, and a
+  bound gap below rung 1's.
+- **Clause 4 fails**: it expected no rule written twice. Its reasoning held for
+  impasses, where a copy cannot be born, and missed conflicts, where the protocol
+  asks for a rule over a ticket the base already covers.
+
+### What this changes for Stage E
+
+- **Its second prediction has nothing to measure on this loop.** The gap it would
+  narrow is already zero, or 0.0005, on the corpus, and at most 0.006 over the
+  space.
+- **Its first splits by surface.** Rung 1's subsumption was mute and wrong. On
+  these bases it is loud and wrong. On the corpus its end to end sits at what any
+  order could reach, so a lower silent error there at comparable coverage would
+  have to come from rules that carry the right queue more often, and
+  `FINDINGS_FIDELITY.md` places most of the rules' errors in the model itself.
+  Over the space it sits 0.19 to 0.46 below that, and there declared priority has
+  room. A plan should name the surface of each row.
+- **A plan has to say what the proposer does on a conflict.** Today it can only
+  answer with a rule, and it answers with a copy. A declaration made at write
+  time keeps that vehicle unless the plan gives it another.
+
+### What it does not settle
+
+- **The loop's own figures.** The bases are read whole, from case 0. What the
+  engine decided while they grew is Stage C's.
+- **Other draws.** Three runs of one model, which spread widely; the baseline
+  carries that spread.
+
+---
+
 ## Files
 
 ```
@@ -353,4 +481,7 @@ reuse/analysis.py                 §5.2 and §5.3: births, the split, the gap
 reuse/frontier.py                 keep_k through the frozen loop; U-g3
 reuse/gates.py                    U-g1 to U-g4
 reuse/score.py                    Stage C
+results_reuse/structure.json      POST-RUN: the three bases, read for Stage E
+reuse/structure.py                the profiles, their gates, the expectation,
+                                  and the copies' vehicles
 ```
