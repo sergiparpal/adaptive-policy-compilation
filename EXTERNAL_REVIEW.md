@@ -200,6 +200,15 @@ Both halves are measured, and the mechanism is measured too:
   accurate part is redundant with a free baseline and its errors concentrate
   exactly where that baseline is silent.
 
+> **[ERRATUM 2026-10-05] *A primacy effect costing accuracy* is more than §15's
+> counts say.** Its two rates are the first-shown rate read through the ranking,
+> fixed by arithmetic from §15's other counts, so they cannot tell a taste for the
+> first slot from a loss of accuracy in the second. What the randomised deal
+> licenses is that the slot decided at least about one edge direction in eleven;
+> whether that costs accuracy on net is not identified.
+> [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §15 carries the erratum. The
+> synthesis above does not rest on it and stands.
+
 That is negative, mechanical, pre-registered in part, and has the baseline the
 review spent three messages asking for. It is the opposite of *"the project says
 nothing about LLMs"*, and it is the part with the shape of a paper.

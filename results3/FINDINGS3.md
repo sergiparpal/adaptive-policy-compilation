@@ -1807,6 +1807,42 @@ accuracy effect and not a taste, it is the largest well-identified bias in the
 thread after the ranking itself, and it is the one thing here that would show up in
 any pairwise elicitation protocol.
 
+> **[ERRATUM 2026-10-05] H4 is the first-shown rate read through the ranking, so it
+> cannot say *accuracy and not taste*.** Presentation was balanced, and the block
+> above is fixed by two counts this section already publishes and by how the slots
+> fell. Of 1,479 edges the proposer follows its ranking on 1,194 and names the rule
+> shown first on 801. The ranking's favourite was shown first on 730 and second on
+> 749. So the favourite shown first and followed is (1,194 + 801 − 749) / 2 = 623,
+> and shown second and followed 1,194 − 623 = 571: the two rates of the block.
+> **H4 is not a sharper question than the 0.5416 it set aside. It is the same
+> count.**
+>
+> - **It does not decide between a taste and a loss of accuracy.** A taste for the
+>   first slot raises adherence when the favourite is shown first and lowers it
+>   when the favourite is shown second, which is this pattern. *Nine points worse
+>   from the second slot* is as much nine points better from the first. Every
+>   answer was given from one slot or the other, so there is no baseline.
+> - **What the deal does license is a floor.** `winner_positions` dealt the slots
+>   by a seeded shuffle that reads no rule. So the difference, +0.0911 with its
+>   standard error of 0.026, is a lower bound on the share of edges whose direction
+>   the slot decided: about one in eleven. The ranking is fitted on these same
+>   answers; read without it, as twice the first-shown rate minus one, the floor is
+>   0.0832. **Whether the slot costs accuracy on net is not identified**: each pair
+>   was asked in one order.
+> - ***Any pairwise elicitation protocol* went beyond the records.** Stage C put
+>   the same prompt to the same model over the hidden policy's 170 pairs. Its
+>   breakdown by position in `results2/pair_judgement_hidden.json` names the rule
+>   shown first in 75 + 9 = 84 of 166 two-way answers, 0.506. Against 0.5416 the
+>   difference is 0.87 standard errors, so neither rate is evidence against the
+>   other. In this repository the effect has been seen on one population of two.
+> - ***Left open*, below, cannot be answered from these records.** The rule shown
+>   first is always labelled `A`, and its queue is the first queue named in the
+>   question. Position, label and the order of the queue names never come apart in
+>   any answer paid for.
+>
+> No count of this section moves, and the a/b asymmetry stays closed. Found on
+> 2026-10-05, opening the position effect as an item of its own.
+
 ### What it closes and what it leaves
 
 **Closed.** The a/b asymmetry, which was never an effect. `IDEAS.md`'s last open

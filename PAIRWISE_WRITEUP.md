@@ -478,6 +478,23 @@ protocol. Why the second slot costs nine points is unexplained here and is the
 sharpest thing the thread leaves open.
 ([`FINDINGS3.md`](results3/FINDINGS3.md) §15.)
 
+> **[ERRATUM 2026-10-05] Three clauses of this point say more than §15's counts.**
+>
+> - ***An accuracy effect and not a taste.*** The two rates are the first-shown
+>   rate read through the ranking, fixed by arithmetic from §15's other counts, so
+>   they cannot separate the two. What the randomised deal licenses is that the
+>   slot decided at least about one edge direction in eleven.
+> - ***It would show up in any pairwise elicitation protocol.*** Stage C, reported
+>   near the top of this document with the same prompt over the hidden policy's
+>   pairs, named the rule shown first in 84 of 166 two-way answers. In this
+>   repository the effect has been seen on one population of two.
+> - ***Why the second slot costs nine points*** cannot be answered from the
+>   answers paid for. The rule shown first is always labelled `A`, and its queue
+>   is named first.
+>
+> [`FINDINGS3.md`](results3/FINDINGS3.md) §15 carries the erratum and owns the
+> arithmetic. No figure here moves.
+
 **5. Negative results survive better when the apparatus is gated.** Three of the
 readings above were only trustworthy because an instrument was validated before it
 was believed: the six-row reproduction gate of the floor (§6), the `mfas ≤
