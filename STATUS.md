@@ -820,6 +820,19 @@ proposer**, whose 0.4804 is in fact above that perfect follower's 0.4402. POST-R
 not a signed row ([`FINDINGS3.md`](results3/FINDINGS3.md) §14,
 [`edge_dropping.json`](results3/edge_dropping.json)).
 
+> **[NOTE 2026-10-05] *Nothing chooses better than chance* is a null with almost
+> no power.** §16 of `FINDINGS3.md` measured what the instrument could show. An
+> oracle that keeps the right edges first sits between −0.3 and +3.0 deviations
+> above a same-size random choice, about +1.3 at the median. At §14's sizes it is
+> +0.9 to +1.6 under the corpus definition. So the selection was not ruled out:
+> at 1,479 edges it was not testable. Wrong edges hurt more than right ones help,
+> down to −5.5 deviations under MFAS. Read inside that headroom, the proposer's
+> stated reasons cut nothing, but one cut. Dropping the edges whose reason is a
+> queue's importance, mostly the security keyword, comes near the ceiling in MFAS
+> on the corpus: +2.52 against the oracle's +3.0. That is a post-run lead, one
+> cut of seven, on one surface
+> ([`filter_headroom.json`](results3/filter_headroom.json)).
+
 **It is the answers, not the compilation — and the sort was hiding it.** The same
 1,479 declared edges compiled by minimum feedback arc set instead of the
 cycle-refusing topological sort, which silently drops 169 of them first-come-

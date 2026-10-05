@@ -149,10 +149,18 @@ pairwise answer, with a codebook frozen on a development set, and answered what
 it means by specific and whether its reasons mark its right answers. What that
 leaves:
 
-- **What a `why`-based selection does to the compiled order.** The rows read the
-  pair level, where the reason carries no signal. Keeping or dropping edges by
-  their stated reason is §14's question at the order level. It is free, and it
-  needs its own row (§10.5 of the plan).
+- ~~**What a `why`-based selection does to the compiled order.**~~ **Measured
+  POST-RUN on 2026-10-05, `FINDINGS3.md` §16, and the instrument can barely see
+  it.** Even an oracle selection clears chance by about one deviation at these
+  sizes. So no row was signed: it could not have been refuted in a way that
+  meant anything. The specificity and count cuts do nothing.
+- **Dropping the edges whose reason is a queue's importance, on the space.** The
+  one cut of §16 that came near the ceiling: in MFAS on the corpus, +2.52
+  deviations against the oracle's +3.0, and above the free queue ranking. It is
+  mostly the security keyword, which the corpus and the space weigh in opposite
+  directions. So the same cut is expected to cost on the exhaustive space, and
+  nobody has measured it there. That is free. A test of the lead itself needs a
+  population it was not found on, which means new answers.
 - **Rules with identical conditions and different queues.** Five of the 1,600
   sampled pairs are two rules of rung 1's base written with the same conditions
   in another order, sending the ticket to different queues. How many such pairs
@@ -440,6 +448,11 @@ tried at. What is left:
   above the same edges in a random arrival order: suggestive, not significant, and
   not a rule anyone could have chosen in advance. **Nothing chooses better than
   chance.**
+  **[NOTE 2026-10-05] And nothing could have, by much.** `FINDINGS3.md` §16: even
+  an oracle that keeps the right edges first sits about one deviation above
+  chance at these sizes. The route is not closed by a measurement. At this
+  budget it is untestable, and testing it would take more edges, which cost
+  calls.
   **And §14 answered a question the thread had assumed rather than measured.** A
   PERFECT follower of the proposer's own ranking, answering all 1,479 pairs,
   scores **0.4402** where that ranking applied as a lookup over all 577 rules
