@@ -69,7 +69,8 @@ REPO = Path(__file__).resolve().parent.parent
 # `fidelity` 2026-10-02 with PLAN_FIDELITY.md's, and `edges` 2026-10-05 with
 # PLAN_EDGES.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
-              "reuse", "fidelity", "edges", "primacy", "run_experiment.py")
+              "reuse", "fidelity", "edges", "primacy", "why",
+              "run_experiment.py")
 
 DIGEST_CHARS = 16
 
