@@ -63,3 +63,5 @@ tmp/
 # arrive, so that an interruption loses nothing paid for; the file goes once
 # the session's record is written (fidelity/ask.py).
 results_fidelity/*.partial.jsonl
+# The same for a Stage B run of PLAN_AUTHORSHIP.md (authorship/run.py).
+results_authorship/*.partial.jsonl

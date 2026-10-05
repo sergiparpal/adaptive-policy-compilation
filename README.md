@@ -377,6 +377,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `reuse/run.py` | `results_reuse/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `reuse/score.py` | `results_reuse/score.json` | **refuses while the plan is unsigned** |
 > | `reuse/structure.py` | `results_reuse/structure.json` | **refuses while the plan is unsigned** |
+> | `authorship/run.py` | `results_authorship/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
+> | `authorship/score.py` | `results_authorship/score.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |

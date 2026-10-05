@@ -54,6 +54,13 @@ ONLINE_LOOP = [
     # PLAN_REUSE.md's records, never computed.
     "fidelity/prompts.py",
     "fidelity/ask.py",
+    # Added 2026-10-05 with PLAN_AUTHORSHIP.md. `protocol.py` builds v1e's
+    # requests, `loop.py` runs rung 2's loop with v1e's proposal path, and
+    # `run.py` sends the requests, so all three are proposer paths. The loop is
+    # handed its labels, read off PLAN_REUSE.md's records; it computes none.
+    "authorship/protocol.py",
+    "authorship/loop.py",
+    "authorship/run.py",
 ]
 
 
@@ -145,7 +152,8 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         }
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
-                     "ilp", "reuse", "fidelity", "edges", "primacy", "why"):
+                     "ilp", "reuse", "fidelity", "edges", "primacy", "why",
+                     "authorship"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

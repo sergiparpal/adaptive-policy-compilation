@@ -175,13 +175,14 @@ class TestOnlyWhatCostsMoneyIsGuarded(unittest.TestCase):
         self.assertEqual(guarded(), marked)
 
     def test_the_guarded_writers_are_the_ones_that_spend(self):
-        """Five modules, and each of them costs API calls: the rung 1 run, the
+        """Six modules, and each of them costs API calls: the rung 1 run, the
         rung 2 runs, the pairwise judgement, `PLAN_REUSE.md`'s Stage B since
-        2026-09-29, and `PLAN_FIDELITY.md`'s since 2026-10-02. The last two
-        refuse while their plan is unsigned."""
+        2026-09-29, `PLAN_FIDELITY.md`'s since 2026-10-02, and
+        `PLAN_AUTHORSHIP.md`'s since 2026-10-05. The last three refuse while
+        their plan is unsigned."""
         self.assertEqual(guarded(), {"run_experiment.py", "rung2/run2.py",
                                      "rung2/pair_judgement.py", "reuse/run.py",
-                                     "fidelity/ask.py"})
+                                     "fidelity/ask.py", "authorship/run.py"})
 
     def test_no_free_writer_imports_the_guard(self):
         for module in sorted(writers() - guarded()):
