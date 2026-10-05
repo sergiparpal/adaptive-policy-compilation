@@ -16,6 +16,7 @@ measurement*: *a proper treatment of the why texts would be its own work*.
 the repository reads those sentences systematically.
 
 **What it would change.** Two things the project has assumed and not measured.
+
 - **Whether the proposer's account of its choice is true, and in what sense.** If
   "more specific" means fewer points of the space, the claim can be checked. If it
   means something else, the record should say what.
@@ -31,6 +32,7 @@ costs nothing.
 **The design is development and held-out, and Sergi chose it on 2026-10-05.**
 Coding text takes a codebook, and building one means reading text, which spends
 whatever is read. So the codebook was built and frozen on a development set:
+
 - the 365 `why` sentences of the 400 answers Stage D of `PLAN_PAIRWISE.md` paid
   for, answered on 2026-08-24;
 - the 166 of Stage C, the hidden policy's pairs.
@@ -106,8 +108,8 @@ day apart. **They are bets that a reading generalises from 365 answers to 1,114,
 not bets that test the drafter's foresight.** If nothing differs between the
 batches, `Y-a` to `Y-c` each hold about nineteen times in twenty, `Y-d` about nine
 in ten at the difference development measured, and all four together about
-three times in four. `STATUS.md`'s scoreboard counts them like
-any row. The record says beside each verdict that it was set on development.
+three times in four. `STATUS.md`'s scoreboard counts them like any row. The
+record says beside each verdict that it was set on development.
 
 **Why `Y-e` cannot carry a band.** Its readings say what the four rows need to be
 read: which reasons the proposer gives, where, in which language, and what they
@@ -121,13 +123,17 @@ auditable.**
   `results2/FINDINGS2.md` and `results_primacy/FINDINGS_PRIMACY.md` publish.
 - **Every development sentence, read in full**: Stage D's 365 and Stage C's 166.
   Each was read beside the slot of the named rule, whether it is the broader one
-  and how many conditions each rule lists, and the development figures above
-  were computed from them. They were read from the two records that hold nothing
-  else, `results2/pair_judgement_learned.json` and
+  and how many conditions each rule lists. They were read from the two records
+  that hold nothing else, `results2/pair_judgement_learned.json` and
   `results2/pair_judgement_hidden.json`.
+- **Every development figure this plan quotes, and others computed on the way**:
+  the direction rate by code on both definitions, the codes by B-d's side, the
+  labels and languages, the three parts of the categorical edge one by one, and
+  how `prio` falls among the other codes.
 - **The held-out set's form, not its content**: 1,200 answers, 1,114 of them
   declared and every one with a `why`. It shares no pair with the development
-  batch, and no sentence is truncated at the record's 280 characters.
+  batch. Over both batches the median sentence is 92 characters and the longest
+  275, so none is truncated at the record's 280.
 - **The blocking checks' output** (§6), which prints pass or fail, counts the
   records publish and development figures.
 - **Not seen, because nobody has computed them**:
@@ -277,8 +283,9 @@ When a development sentence names one label only, it is the named rule's, all
 144 times.
 
 **5.8 — `prio` is a verb of conclusion, not a reason.** *"…so it takes
-precedence"* follows a specificity argument as often as a security one. It is
-counted and reported, and no row reads it.
+precedence"* closes arguments of every kind: in development it went with 55
+specificity arguments, 87 about a queue's importance and 37 that made neither. It
+is counted and reported, and no row reads it.
 
 **5.9 — Stage C is another population.** The hidden policy's pairs, read as
 development, its figures declared in §8 and reported beside the held-out ones.
