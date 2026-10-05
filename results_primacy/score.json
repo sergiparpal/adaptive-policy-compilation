@@ -1,0 +1,787 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-05T11:00:41Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "63b901c7e0cf686b902353b30a17415bcde595a8",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "9ea0b2615b11e599"
+  },
+  "plan": "PLAN_PRIMACY.md",
+  "stage": "scoring",
+  "surface": {
+    "L-a": "none: a property of the answers on one queue pair; no truth enters it",
+    "L-b": "none: a property of the answers; no truth enters it",
+    "L-c": "none, except where a block names the definition of the better rule, space or corpus, read from results2/pair_sample_1600.json"
+  },
+  "provenance": "PRE-REGISTERED: \u00a70 signed before any of these figures existed",
+  "constants": {
+    "source": "results2/pair_judgement_1600.json",
+    "position_seed": 17,
+    "l_a_queue_pair": [
+      "SELF_SERVICE_DEFLECT",
+      "T2_TECHNICAL"
+    ],
+    "l_a_selection": {
+      "min_rows": 30,
+      "majority_below": 0.6
+    },
+    "l_a_min_side": 20,
+    "reading_min_rows": 30,
+    "lines": {
+      "L-a": 0.2,
+      "L-b": 0.025
+    }
+  },
+  "gates": {
+    "L-g1": {
+      "suite": {
+        "ran": true,
+        "tests": 1234,
+        "result": "OK (skipped=2)",
+        "seconds": 64.9,
+        "passes": true
+      },
+      "published": {
+        "position": {
+          "first_listed": [
+            801,
+            1479
+          ],
+          "first_listed_published": [
+            801,
+            1479
+          ],
+          "h4": {
+            "favoured_shown_first": [
+              623,
+              730
+            ],
+            "favoured_shown_second": [
+              571,
+              749
+            ]
+          },
+          "h4_published": {
+            "favoured_shown_first": [
+              623,
+              730
+            ],
+            "favoured_shown_second": [
+              571,
+              749
+            ]
+          },
+          "passes": true
+        },
+        "stage_c": {
+          "counts": {
+            "shown_first": {
+              "correct": 75,
+              "wrong": 7,
+              "neither": 3
+            },
+            "shown_second": {
+              "correct": 75,
+              "wrong": 9,
+              "neither": 1
+            }
+          },
+          "passes": true
+        },
+        "b_d": {
+          "surfaces": {
+            "space": {
+              "strict_reachable_unreachable": [
+                1194,
+                481,
+                713
+              ],
+              "published": [
+                1194,
+                481,
+                713
+              ]
+            },
+            "corpus": {
+              "strict_reachable_unreachable": [
+                1184,
+                308,
+                876
+              ],
+              "published": [
+                1184,
+                308,
+                876
+              ]
+            },
+            "declared_on_each_side_space": {
+              "got": [
+                451,
+                654
+              ],
+              "published": [
+                451,
+                654
+              ]
+            }
+          },
+          "passes": true
+        }
+      },
+      "passes": true
+    },
+    "L-g2": {
+      "deals": {
+        "fresh": {
+          "n": 1200,
+          "is_the_deal": true,
+          "expected_n": 1200
+        },
+        "stage_d": {
+          "n": 400,
+          "is_the_deal": true,
+          "expected_n": 400
+        },
+        "reused_are_stage_d": {
+          "n": 400,
+          "copied": 400
+        },
+        "stage_c": {
+          "n": 170,
+          "is_the_deal": true,
+          "expected_n": 170
+        }
+      },
+      "passes": true
+    },
+    "L-g3": {
+      "l_a_queue_pair": {
+        "picked": [
+          "SELF_SERVICE_DEFLECT vs T2_TECHNICAL"
+        ],
+        "split_published": {
+          "SELF_SERVICE_DEFLECT": 86,
+          "T2_TECHNICAL": 82
+        },
+        "passes": true
+      },
+      "favoured": {
+        "ties": [],
+        "rows_counted_apart": 0
+      },
+      "passes": true
+    },
+    "L-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_PRIMACY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_PRIMACY.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "verdicts": {
+    "L-a": {
+      "value": 0.123634,
+      "se": 0.077006,
+      "line": 0.2,
+      "verdict": "refuted",
+      "thin": true
+    },
+    "L-b": {
+      "value": -0.005074,
+      "se": 0.013223,
+      "line": 0.025,
+      "verdict": "holds",
+      "thin": false
+    }
+  },
+  "L-a": {
+    "n1": 74,
+    "hits1": 43,
+    "p1": 0.581081,
+    "n2": 94,
+    "hits2": 43,
+    "p2": 0.457447,
+    "difference": 0.123634,
+    "standard_error": 0.077006,
+    "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided",
+    "queue_pair": "SELF_SERVICE_DEFLECT vs T2_TECHNICAL",
+    "reference_queue": "SELF_SERVICE_DEFLECT"
+  },
+  "L-b": {
+    "n1": 807,
+    "hits1": 59,
+    "p1": 0.07311,
+    "n2": 793,
+    "hits2": 62,
+    "p2": 0.078184,
+    "difference": -0.005074,
+    "standard_error": 0.013223,
+    "what": "share of rows with no edge when the favoured rule is listed second, minus the share when it is listed first",
+    "counted_apart": 0,
+    "parse_failures": {
+      "favoured_second": 55,
+      "favoured_first": 62
+    },
+    "no_edge_without_a_parse_failure": {
+      "favoured_second": 4,
+      "favoured_first": 0
+    }
+  },
+  "L-c": {
+    "overall": {
+      "first_listed": {
+        "n": 1479,
+        "hits": 801,
+        "rate": 0.541582,
+        "twice_minus_one": 0.083164,
+        "standard_error": 0.013001,
+        "deviations_from_a_coin": 3.198313
+      },
+      "slot_effect_rule_a_reference": {
+        "n1": 728,
+        "hits1": 374,
+        "p1": 0.513736,
+        "n2": 751,
+        "hits2": 324,
+        "p2": 0.431425,
+        "difference": 0.082311,
+        "standard_error": 0.02588,
+        "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+      },
+      "slot_effect_favoured_reference": {
+        "n1": 731,
+        "hits1": 625,
+        "p1": 0.854993,
+        "n2": 748,
+        "hits2": 572,
+        "p2": 0.764706,
+        "difference": 0.090287,
+        "standard_error": 0.020252,
+        "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+      }
+    },
+    "by_b_d_side": {
+      "space": {
+        "reachable": {
+          "first_listed": {
+            "n": 451,
+            "hits": 249,
+            "rate": 0.552106,
+            "twice_minus_one": 0.104213,
+            "standard_error": 0.023544,
+            "deviations_from_a_coin": 2.213144
+          },
+          "slot_effect": {
+            "n1": 240,
+            "hits1": 214,
+            "p1": 0.891667,
+            "n2": 211,
+            "hits2": 176,
+            "p2": 0.834123,
+            "difference": 0.057543,
+            "standard_error": 0.03253,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "unreachable": {
+          "first_listed": {
+            "n": 654,
+            "hits": 349,
+            "rate": 0.533639,
+            "twice_minus_one": 0.067278,
+            "standard_error": 0.019552,
+            "deviations_from_a_coin": 1.720536
+          },
+          "slot_effect": {
+            "n1": 311,
+            "hits1": 212,
+            "p1": 0.681672,
+            "n2": 343,
+            "hits2": 206,
+            "p2": 0.600583,
+            "difference": 0.081089,
+            "standard_error": 0.037378,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "all_strict": {
+          "first_listed": {
+            "n": 1105,
+            "hits": 598,
+            "rate": 0.541176,
+            "twice_minus_one": 0.082353,
+            "standard_error": 0.015041,
+            "deviations_from_a_coin": 2.737539
+          },
+          "slot_effect": {
+            "n1": 551,
+            "hits1": 426,
+            "p1": 0.77314,
+            "n2": 554,
+            "hits2": 382,
+            "p2": 0.689531,
+            "difference": 0.083609,
+            "standard_error": 0.026547,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "no_strict_better": {
+          "first_listed": {
+            "n": 374,
+            "hits": 203,
+            "rate": 0.542781,
+            "twice_minus_one": 0.085561,
+            "standard_error": 0.025854,
+            "deviations_from_a_coin": 1.654681
+          }
+        }
+      },
+      "corpus": {
+        "reachable": {
+          "first_listed": {
+            "n": 293,
+            "hits": 153,
+            "rate": 0.522184,
+            "twice_minus_one": 0.044369,
+            "standard_error": 0.02921,
+            "deviations_from_a_coin": 0.759468
+          },
+          "slot_effect": {
+            "n1": 143,
+            "hits1": 136,
+            "p1": 0.951049,
+            "n2": 150,
+            "hits2": 133,
+            "p2": 0.886667,
+            "difference": 0.064382,
+            "standard_error": 0.031551,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "unreachable": {
+          "first_listed": {
+            "n": 800,
+            "hits": 432,
+            "rate": 0.54,
+            "twice_minus_one": 0.08,
+            "standard_error": 0.017678,
+            "deviations_from_a_coin": 2.262742
+          },
+          "slot_effect": {
+            "n1": 397,
+            "hits1": 247,
+            "p1": 0.622166,
+            "n2": 403,
+            "hits2": 218,
+            "p2": 0.540943,
+            "difference": 0.081223,
+            "standard_error": 0.034761,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "all_strict": {
+          "first_listed": {
+            "n": 1093,
+            "hits": 585,
+            "rate": 0.535224,
+            "twice_minus_one": 0.070448,
+            "standard_error": 0.015124,
+            "deviations_from_a_coin": 2.32906
+          },
+          "slot_effect": {
+            "n1": 540,
+            "hits1": 383,
+            "p1": 0.709259,
+            "n2": 553,
+            "hits2": 351,
+            "p2": 0.63472,
+            "difference": 0.07454,
+            "standard_error": 0.028304,
+            "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+          }
+        },
+        "no_strict_better": {
+          "first_listed": {
+            "n": 386,
+            "hits": 216,
+            "rate": 0.559585,
+            "twice_minus_one": 0.119171,
+            "standard_error": 0.025449,
+            "deviations_from_a_coin": 2.341338
+          }
+        }
+      }
+    },
+    "by_batch": {
+      "stage_d": {
+        "first_listed": {
+          "n": 365,
+          "hits": 197,
+          "rate": 0.539726,
+          "twice_minus_one": 0.079452,
+          "standard_error": 0.026171,
+          "deviations_from_a_coin": 1.517929
+        },
+        "slot_effect": {
+          "n1": 178,
+          "hits1": 86,
+          "p1": 0.483146,
+          "n2": 187,
+          "hits2": 76,
+          "p2": 0.406417,
+          "difference": 0.076729,
+          "standard_error": 0.051894,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "this_run": {
+        "first_listed": {
+          "n": 1114,
+          "hits": 604,
+          "rate": 0.54219,
+          "twice_minus_one": 0.084381,
+          "standard_error": 0.014981,
+          "deviations_from_a_coin": 2.816341
+        },
+        "slot_effect": {
+          "n1": 550,
+          "hits1": 288,
+          "p1": 0.523636,
+          "n2": 564,
+          "hits2": 248,
+          "p2": 0.439716,
+          "difference": 0.08392,
+          "standard_error": 0.029839,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      }
+    },
+    "by_queue_pair": {
+      "T1_GENERAL vs T2_TECHNICAL": {
+        "declared": 361,
+        "majority_share": 0.756233,
+        "first_listed": {
+          "n": 361,
+          "hits": 224,
+          "rate": 0.620499,
+          "twice_minus_one": 0.240997,
+          "standard_error": 0.026316,
+          "deviations_from_a_coin": 4.578947
+        },
+        "slot_effect": {
+          "n1": 175,
+          "hits1": 63,
+          "p1": 0.36,
+          "n2": 186,
+          "hits2": 25,
+          "p2": 0.134409,
+          "difference": 0.225591,
+          "standard_error": 0.044069,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "BILLING_SPECIALIST vs T1_GENERAL": {
+        "declared": 180,
+        "majority_share": 0.927778,
+        "first_listed": {
+          "n": 180,
+          "hits": 92,
+          "rate": 0.511111,
+          "twice_minus_one": 0.022222,
+          "standard_error": 0.037268,
+          "deviations_from_a_coin": 0.298142
+        },
+        "slot_effect": {
+          "n1": 87,
+          "hits1": 83,
+          "p1": 0.954023,
+          "n2": 93,
+          "hits2": 84,
+          "p2": 0.903226,
+          "difference": 0.050797,
+          "standard_error": 0.038001,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "SELF_SERVICE_DEFLECT vs T2_TECHNICAL": {
+        "declared": 168,
+        "majority_share": 0.511905,
+        "first_listed": {
+          "n": 168,
+          "hits": 94,
+          "rate": 0.559524,
+          "twice_minus_one": 0.119048,
+          "standard_error": 0.038576,
+          "deviations_from_a_coin": 1.543033
+        },
+        "slot_effect": {
+          "n1": 74,
+          "hits1": 43,
+          "p1": 0.581081,
+          "n2": 94,
+          "hits2": 43,
+          "p2": 0.457447,
+          "difference": 0.123634,
+          "standard_error": 0.077006,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "SELF_SERVICE_DEFLECT vs T1_GENERAL": {
+        "declared": 155,
+        "majority_share": 0.729032,
+        "first_listed": {
+          "n": 155,
+          "hits": 82,
+          "rate": 0.529032,
+          "twice_minus_one": 0.058065,
+          "standard_error": 0.040161,
+          "deviations_from_a_coin": 0.722897
+        },
+        "slot_effect": {
+          "n1": 80,
+          "hits1": 60,
+          "p1": 0.75,
+          "n2": 75,
+          "hits2": 53,
+          "p2": 0.706667,
+          "difference": 0.043333,
+          "standard_error": 0.071467,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "SECURITY_INCIDENT vs T2_TECHNICAL": {
+        "declared": 123,
+        "majority_share": 1.0,
+        "first_listed": {
+          "n": 123,
+          "hits": 55,
+          "rate": 0.447154,
+          "twice_minus_one": -0.105691,
+          "standard_error": 0.045083,
+          "deviations_from_a_coin": -1.172171
+        },
+        "slot_effect": {
+          "n1": 55,
+          "hits1": 55,
+          "p1": 1.0,
+          "n2": 68,
+          "hits2": 68,
+          "p2": 1.0,
+          "difference": 0.0,
+          "standard_error": 0.0,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "BILLING_SPECIALIST vs SELF_SERVICE_DEFLECT": {
+        "declared": 118,
+        "majority_share": 0.728814,
+        "first_listed": {
+          "n": 118,
+          "hits": 48,
+          "rate": 0.40678,
+          "twice_minus_one": -0.186441,
+          "standard_error": 0.046029,
+          "deviations_from_a_coin": -2.025264
+        },
+        "slot_effect": {
+          "n1": 48,
+          "hits1": 32,
+          "p1": 0.666667,
+          "n2": 70,
+          "hits2": 54,
+          "p2": 0.771429,
+          "difference": -0.104762,
+          "standard_error": 0.084549,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "BILLING_SPECIALIST vs SECURITY_INCIDENT": {
+        "declared": 75,
+        "majority_share": 0.973333,
+        "first_listed": {
+          "n": 75,
+          "hits": 40,
+          "rate": 0.533333,
+          "twice_minus_one": 0.066667,
+          "standard_error": 0.057735,
+          "deviations_from_a_coin": 0.57735
+        },
+        "slot_effect": {
+          "n1": 35,
+          "hits1": 1,
+          "p1": 0.028571,
+          "n2": 40,
+          "hits2": 1,
+          "p2": 0.025,
+          "difference": 0.003571,
+          "standard_error": 0.037448,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "ONCALL_ESCALATION vs T2_TECHNICAL": {
+        "declared": 60,
+        "majority_share": 0.966667,
+        "first_listed": {
+          "n": 60,
+          "hits": 33,
+          "rate": 0.55,
+          "twice_minus_one": 0.1,
+          "standard_error": 0.06455,
+          "deviations_from_a_coin": 0.774597
+        },
+        "slot_effect": {
+          "n1": 31,
+          "hits1": 31,
+          "p1": 1.0,
+          "n2": 29,
+          "hits2": 27,
+          "p2": 0.931034,
+          "difference": 0.068966,
+          "standard_error": 0.047054,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "SECURITY_INCIDENT vs T1_GENERAL": {
+        "declared": 55,
+        "majority_share": 1.0,
+        "first_listed": {
+          "n": 55,
+          "hits": 29,
+          "rate": 0.527273,
+          "twice_minus_one": 0.054545,
+          "standard_error": 0.06742,
+          "deviations_from_a_coin": 0.40452
+        },
+        "slot_effect": {
+          "n1": 29,
+          "hits1": 29,
+          "p1": 1.0,
+          "n2": 26,
+          "hits2": 26,
+          "p2": 1.0,
+          "difference": 0.0,
+          "standard_error": 0.0,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "BILLING_SPECIALIST vs T2_TECHNICAL": {
+        "declared": 40,
+        "majority_share": 0.8,
+        "first_listed": {
+          "n": 40,
+          "hits": 23,
+          "rate": 0.575,
+          "twice_minus_one": 0.15,
+          "standard_error": 0.079057,
+          "deviations_from_a_coin": 0.948683
+        },
+        "slot_effect": {
+          "n1": 23,
+          "hits1": 19,
+          "p1": 0.826087,
+          "n2": 17,
+          "hits2": 13,
+          "p2": 0.764706,
+          "difference": 0.061381,
+          "standard_error": 0.129733,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      },
+      "SECURITY_INCIDENT vs SELF_SERVICE_DEFLECT": {
+        "declared": 31,
+        "majority_share": 1.0,
+        "first_listed": {
+          "n": 31,
+          "hits": 18,
+          "rate": 0.580645,
+          "twice_minus_one": 0.16129,
+          "standard_error": 0.089803,
+          "deviations_from_a_coin": 0.898027
+        },
+        "slot_effect": {
+          "n1": 18,
+          "hits1": 18,
+          "p1": 1.0,
+          "n2": 13,
+          "hits2": 13,
+          "p2": 1.0,
+          "difference": 0.0,
+          "standard_error": 0.0,
+          "what": "share naming the reference rule when it is listed first, minus the share when it is listed second; a lower bound on the share of answers the slot decided"
+        }
+      }
+    },
+    "by_breadth_of_the_rule_listed_first": {
+      "broader_first": {
+        "first_listed": {
+          "n": 733,
+          "hits": 471,
+          "rate": 0.642565,
+          "twice_minus_one": 0.28513,
+          "standard_error": 0.018468,
+          "deviations_from_a_coin": 7.719591
+        }
+      },
+      "narrower_first": {
+        "first_listed": {
+          "n": 727,
+          "hits": 319,
+          "rate": 0.43879,
+          "twice_minus_one": -0.122421,
+          "standard_error": 0.018544,
+          "deviations_from_a_coin": -3.300827
+        }
+      },
+      "equal_extensions_counted_apart": 20
+    },
+    "stage_c": {
+      "what": "the hidden policy's 170 pairs, the same prompt and model; two-way answers only",
+      "first_listed": {
+        "n": 166,
+        "hits": 84,
+        "rate": 0.506024,
+        "twice_minus_one": 0.012048,
+        "standard_error": 0.038808,
+        "deviations_from_a_coin": 0.15523
+      },
+      "slot_effect_winner_reference": {
+        "n1": 82,
+        "hits1": 75,
+        "p1": 0.914634,
+        "n2": 84,
+        "hits2": 75,
+        "p2": 0.892857,
+        "difference": 0.021777,
+        "standard_error": 0.045728
+      }
+    },
+    "retries_by_favoured_slot": {
+      "what": "among rows with an answer, the share that needed a retry when the favoured rule is listed second, minus when listed first",
+      "n1": 748,
+      "hits1": 232,
+      "p1": 0.31016,
+      "n2": 731,
+      "hits2": 224,
+      "p2": 0.30643,
+      "difference": 0.003731,
+      "standard_error": 0.024016
+    },
+    "l_a_queue_pair_against_the_truth": {
+      "space": {
+        "n": 129,
+        "named_the_better_rule": 65,
+        "rate": 0.503876
+      },
+      "corpus": {
+        "n": 163,
+        "named_the_better_rule": 85,
+        "rate": 0.521472
+      }
+    }
+  }
+}
