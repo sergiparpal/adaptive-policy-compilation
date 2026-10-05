@@ -1,0 +1,646 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-05T08:55:13Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "5f817b4c4f961074cdc3e3354ffffe43b524a492",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "d8f82bac772263ba"
+  },
+  "plan": "PLAN_EDGES.md",
+  "provenance": "POST-RUN: written after W-a to W-c were adjudicated, by someone who had read results_edges/score.json. Nothing here is a bet that could have failed, and no verdict moves.",
+  "source": {
+    "record": "results_edges/score.json",
+    "its_commit": "c0a8df77dc73b2772eb60b744a3b6047ecfeb3e6"
+  },
+  "surface": {
+    "coin, deciding, queues, security": "corpus, D",
+    "keyword": "the space, over each installed edge's shared region",
+    "keyword_surfaces": "both"
+  },
+  "gates": {
+    "W-g1": {
+      "ceilings": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": false,
+        "passes": null
+      },
+      "space_labels": {
+        "points": 134400,
+        "t2_points": 36720,
+        "passes": true
+      },
+      "passes": true
+    },
+    "W-g2": {
+      "departures": {
+        "run1": {
+          "action_to_conflict": 37
+        },
+        "run2": {
+          "action_to_conflict": 16
+        },
+        "run3": {
+          "action_to_conflict": 61
+        }
+      },
+      "passes": true
+    },
+    "W-g3": {
+      "runs": {
+        "run1": true,
+        "run2": true,
+        "run3": true
+      },
+      "hash_seeds": {
+        "passes": null
+      },
+      "passes": true
+    },
+    "W-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_EDGES.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_EDGES.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "runs": {
+    "run1": {
+      "d": [
+        363,
+        402,
+        448,
+        458,
+        483,
+        599,
+        613,
+        679,
+        711,
+        775,
+        836,
+        906,
+        942,
+        1003,
+        1041,
+        1077,
+        1097,
+        1105,
+        1196,
+        1215,
+        1302,
+        1338,
+        1349,
+        1401,
+        1408,
+        1480,
+        1548,
+        1591,
+        1613,
+        1654,
+        1707,
+        1721,
+        1742,
+        1895,
+        1961,
+        1986,
+        1998
+      ],
+      "coin": {
+        "right_among_resolved": {
+          "proposer": 0.13513513513513514,
+          "mean": 0.14605631659713866,
+          "sd": 0.10617028531278348,
+          "draws": 1999,
+          "share_at_least_the_proposer": 0.51975987993997
+        },
+        "right_minus_wrong": {
+          "proposer": -27,
+          "mean": -13.2835,
+          "sd": 6.811396901517338,
+          "draws": 2000,
+          "share_at_least_the_proposer": 0.996
+        }
+      },
+      "deciding_rules": [
+        {
+          "rule_id": "R0021",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SECURITY_INCIDENT",
+          "born_at": 44,
+          "birth_screen": "vecindario",
+          "decided": 37,
+          "right": 5,
+          "installed_edges_won": 0,
+          "of_which_declared_at_its_birth": 0,
+          "installed_edges_lost": 0
+        }
+      ],
+      "queues": {
+        "SECURITY_INCIDENT": {
+          "decided": 37,
+          "right": 5,
+          "true_queue_of_the_wrong": {
+            "T2_TECHNICAL": 32
+          }
+        }
+      },
+      "keyword_groups": [
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T2_TECHNICAL",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 11
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "SELF_SERVICE_DEFLECT",
+          "inside_the_keyword": true,
+          "space_verdict": "neither_ever_right",
+          "edges": 3
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "BILLING_SPECIALIST",
+          "inside_the_keyword": true,
+          "space_verdict": "neither_ever_right",
+          "edges": 1
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T2_TECHNICAL",
+          "inside_the_keyword": true,
+          "space_verdict": "b",
+          "edges": 1
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T1_GENERAL",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 1
+        }
+      ],
+      "security": {
+        "right_decisions": 5,
+        "of_which_through_an_edge": 5
+      }
+    },
+    "run2": {
+      "d": [
+        363,
+        402,
+        448,
+        529,
+        547,
+        580,
+        599,
+        679,
+        711,
+        751,
+        775,
+        1077,
+        1078,
+        1401,
+        1480,
+        1514
+      ],
+      "coin": {
+        "right_among_resolved": {
+          "proposer": 0.375,
+          "mean": 0.42147755193501585,
+          "sd": 0.2022319786071758,
+          "draws": 1869,
+          "share_at_least_the_proposer": 0.5291599785981809
+        },
+        "right_minus_wrong": {
+          "proposer": -4,
+          "mean": -2.075,
+          "sd": 2.6117762155284283,
+          "draws": 2000,
+          "share_at_least_the_proposer": 0.757
+        }
+      },
+      "deciding_rules": [
+        {
+          "rule_id": "R0012",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "SECURITY_INCIDENT",
+          "born_at": 19,
+          "birth_screen": "vecindario",
+          "decided": 15,
+          "right": 5,
+          "installed_edges_won": 0,
+          "of_which_declared_at_its_birth": 0,
+          "installed_edges_lost": 0
+        },
+        {
+          "rule_id": "R0018",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 1
+            }
+          ],
+          "action": "SECURITY_INCIDENT",
+          "born_at": 44,
+          "birth_screen": "vecindario",
+          "decided": 1,
+          "right": 1,
+          "installed_edges_won": 0,
+          "of_which_declared_at_its_birth": 0,
+          "installed_edges_lost": 0
+        }
+      ],
+      "queues": {
+        "SECURITY_INCIDENT": {
+          "decided": 16,
+          "right": 6,
+          "true_queue_of_the_wrong": {
+            "T2_TECHNICAL": 10
+          }
+        }
+      },
+      "keyword_groups": [
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T2_TECHNICAL",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 6
+        }
+      ],
+      "security": {
+        "right_decisions": 6,
+        "of_which_through_an_edge": 6
+      }
+    },
+    "run3": {
+      "d": [
+        23,
+        44,
+        155,
+        164,
+        167,
+        316,
+        342,
+        394,
+        411,
+        483,
+        529,
+        542,
+        547,
+        580,
+        676,
+        711,
+        751,
+        754,
+        775,
+        827,
+        833,
+        942,
+        956,
+        994,
+        1003,
+        1063,
+        1077,
+        1078,
+        1159,
+        1215,
+        1235,
+        1264,
+        1312,
+        1324,
+        1338,
+        1361,
+        1388,
+        1389,
+        1401,
+        1406,
+        1434,
+        1442,
+        1480,
+        1504,
+        1514,
+        1538,
+        1548,
+        1550,
+        1591,
+        1704,
+        1707,
+        1742,
+        1748,
+        1781,
+        1802,
+        1839,
+        1871,
+        1924,
+        1961,
+        1986,
+        1998
+      ],
+      "coin": {
+        "right_among_resolved": {
+          "proposer": 0.4262295081967213,
+          "mean": 0.41951159722612635,
+          "sd": 0.15267391518630016,
+          "draws": 2000,
+          "share_at_least_the_proposer": 0.5215
+        },
+        "right_minus_wrong": {
+          "proposer": -9,
+          "mean": -4.194,
+          "sd": 7.783852773530599,
+          "draws": 2000,
+          "share_at_least_the_proposer": 0.7345
+        }
+      },
+      "deciding_rules": [
+        {
+          "rule_id": "R0013",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "action": "SECURITY_INCIDENT",
+          "born_at": 19,
+          "birth_screen": "vecindario",
+          "decided": 41,
+          "right": 15,
+          "installed_edges_won": 15,
+          "of_which_declared_at_its_birth": 6,
+          "installed_edges_lost": 0
+        },
+        {
+          "rule_id": "R0014",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 4
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "action": "T2_TECHNICAL",
+          "born_at": 28,
+          "birth_screen": "vecindario",
+          "decided": 11,
+          "right": 11,
+          "installed_edges_won": 0,
+          "of_which_declared_at_its_birth": 0,
+          "installed_edges_lost": 1
+        },
+        {
+          "rule_id": "R0027",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 4
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 4
+            }
+          ],
+          "action": "T2_TECHNICAL",
+          "born_at": 152,
+          "birth_screen": "vecindario",
+          "decided": 9,
+          "right": 0,
+          "installed_edges_won": 0,
+          "of_which_declared_at_its_birth": 0,
+          "installed_edges_lost": 1
+        }
+      ],
+      "queues": {
+        "SECURITY_INCIDENT": {
+          "decided": 41,
+          "right": 15,
+          "true_queue_of_the_wrong": {
+            "T2_TECHNICAL": 26
+          }
+        },
+        "T2_TECHNICAL": {
+          "decided": 20,
+          "right": 11,
+          "true_queue_of_the_wrong": {
+            "SELF_SERVICE_DEFLECT": 9
+          }
+        }
+      },
+      "keyword_groups": [
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T2_TECHNICAL",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 11
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T2_TECHNICAL",
+          "inside_the_keyword": true,
+          "space_verdict": "b",
+          "edges": 9
+        },
+        {
+          "winner_action": "T2_TECHNICAL",
+          "loser_action": "SELF_SERVICE_DEFLECT",
+          "inside_the_keyword": false,
+          "space_verdict": "a",
+          "edges": 2
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "BILLING_SPECIALIST",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 2
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "T1_GENERAL",
+          "inside_the_keyword": true,
+          "space_verdict": "a",
+          "edges": 1
+        },
+        {
+          "winner_action": "SECURITY_INCIDENT",
+          "loser_action": "BILLING_SPECIALIST",
+          "inside_the_keyword": true,
+          "space_verdict": "neither_ever_right",
+          "edges": 1
+        },
+        {
+          "winner_action": "T2_TECHNICAL",
+          "loser_action": "SELF_SERVICE_DEFLECT",
+          "inside_the_keyword": false,
+          "space_verdict": "b",
+          "edges": 1
+        }
+      ],
+      "security": {
+        "right_decisions": 18,
+        "of_which_through_an_edge": 15
+      }
+    }
+  },
+  "pooled": {
+    "coin": {
+      "right_among_resolved": {
+        "proposer": 0.32456140350877194,
+        "mean": 0.3272104507669698,
+        "sd": 0.09349481902218833,
+        "draws": 2000,
+        "share_at_least_the_proposer": 0.5235
+      },
+      "right_minus_wrong": {
+        "proposer": -40,
+        "mean": -19.5525,
+        "sd": 10.582780530182037,
+        "draws": 2000,
+        "share_at_least_the_proposer": 0.9755
+      }
+    },
+    "keyword_groups": [
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "T2_TECHNICAL",
+        "inside_the_keyword": true,
+        "space_verdict": "a",
+        "edges": 28
+      },
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "T2_TECHNICAL",
+        "inside_the_keyword": true,
+        "space_verdict": "b",
+        "edges": 10
+      },
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "SELF_SERVICE_DEFLECT",
+        "inside_the_keyword": true,
+        "space_verdict": "neither_ever_right",
+        "edges": 3
+      },
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "BILLING_SPECIALIST",
+        "inside_the_keyword": true,
+        "space_verdict": "neither_ever_right",
+        "edges": 2
+      },
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "T1_GENERAL",
+        "inside_the_keyword": true,
+        "space_verdict": "a",
+        "edges": 2
+      },
+      {
+        "winner_action": "T2_TECHNICAL",
+        "loser_action": "SELF_SERVICE_DEFLECT",
+        "inside_the_keyword": false,
+        "space_verdict": "a",
+        "edges": 2
+      },
+      {
+        "winner_action": "SECURITY_INCIDENT",
+        "loser_action": "BILLING_SPECIALIST",
+        "inside_the_keyword": true,
+        "space_verdict": "a",
+        "edges": 2
+      },
+      {
+        "winner_action": "T2_TECHNICAL",
+        "loser_action": "SELF_SERVICE_DEFLECT",
+        "inside_the_keyword": false,
+        "space_verdict": "b",
+        "edges": 1
+      }
+    ]
+  },
+  "keyword_surfaces": {
+    "corpus": {
+      "tickets": 71,
+      "true_queue": {
+        "T2_TECHNICAL": 51,
+        "SECURITY_INCIDENT": 20
+      }
+    },
+    "space": {
+      "points": 67200,
+      "true_queue": {
+        "T2_TECHNICAL": 16800,
+        "SECURITY_INCIDENT": 50400
+      }
+    }
+  }
+}
