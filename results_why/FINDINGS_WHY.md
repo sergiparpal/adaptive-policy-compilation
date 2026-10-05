@@ -200,6 +200,12 @@ confirm.
 Five pairs are an anecdote. They are also the one place in the record where the
 content gives the proposer nothing to go on.
 
+> **[NOTE 2026-10-05] The whole base is counted in
+> [`FINDINGS3.md`](../results3/FINDINGS3.md) §18.** These five reproduce there,
+> as 5 of the 93 pairs written the same with different queues among the 31,850
+> the sample was drawn from, and 307 of the 577 rules have a copy written the
+> same. No figure here moves.
+
 ---
 
 ## The codebook, checked by hand — POST-RUN

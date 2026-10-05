@@ -127,11 +127,20 @@ none of them is on `STATUS.md`'s scoreboard:
     python3 -m rung3.edge_dropping      # does deliberate dropping beat chance
     python3 -m rung3.answer_asymmetry   # why it names rule_b more often (§15)
     python3 -m rung3.filter_headroom    # what §14's instrument could show (§16)
+    python3 -m rung3.filter_space       # §16's cuts over the space (§17)
+    python3 -m rung3.identical_rules    # rules written twice (§18)
 
 **§16 qualifies §14.** It measures what a perfect, oracle-chosen selection of the
 same edges scores against chance on §14's cell, and it barely moves the order. So
 §14's *nothing chooses better than chance* means the selection was untestable at
 this budget, not ruled out. Read §16 before citing §14 as an elimination.
+
+**§17 qualifies §16 in turn.** Over the space, §16's one lead, dropping the
+edges whose stated reason is a queue's importance, reverses, and moves the order
+further than any selection moved it on the corpus: those are the edges that
+name `SECURITY_INCIDENT` the winner. And §16's oracle is the best selection *by
+direction*, not the best selection: over the space truth-free cuts land on both
+sides of the band it draws. Read §17 before citing §16's lead or its ceiling.
 
 **§14 narrows a signed row without moving it.** `B-b` was signed against a free
 queue ranking's 0.4824, and §14 measures that a *perfect* follower of that ranking

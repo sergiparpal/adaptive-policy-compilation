@@ -382,6 +382,12 @@ compilations. Nothing there is a selection effect.
 > [`FINDINGS3.md`](results3/FINDINGS3.md): a perfect selection of the same sizes
 > sits only about one deviation above chance. *Untestable at this budget* replaces
 > *ruled out*.
+>
+> **[NOTE 2026-10-05, later] *Perfect* there means perfect by direction.** §17 of
+> [`FINDINGS3.md`](results3/FINDINGS3.md): over the exhaustive space, truth-free
+> cuts land on both sides of the band that selection and its reverse draw, so it
+> is not the most a selection could do. On §14's cell the band held but for two
+> readings just outside it, and *untestable* stands, by direction.
 
 **The instrument — ruled out by `B-a`**, above: the direction rate is the same at
 400 and at 1,600.

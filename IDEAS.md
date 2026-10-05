@@ -154,18 +154,34 @@ leaves:
   it.** Even an oracle selection clears chance by about one deviation at these
   sizes. So no row was signed: it could not have been refuted in a way that
   meant anything. The specificity and count cuts do nothing.
-- **Dropping the edges whose reason is a queue's importance, on the space.** The
-  one cut of §16 that came near the ceiling: in MFAS on the corpus, +2.52
-  deviations against the oracle's +3.0, and above the free queue ranking. It is
-  mostly the security keyword, which the corpus and the space weigh in opposite
-  directions. So the same cut is expected to cost on the exhaustive space, and
-  nobody has measured it there. That is free. A test of the lead itself needs a
-  population it was not found on, which means new answers.
-- **Rules with identical conditions and different queues.** Five of the 1,600
-  sampled pairs are two rules of rung 1's base written with the same conditions
-  in another order, sending the ticket to different queues. How many such pairs
-  the whole 577-rule base holds is not counted, and it costs nothing to count. On
-  them the proposer falls back on the order and says so.
+  **[NOTE 2026-10-05, later]** That is the corpus. Over the space the same cuts
+  move by up to eleven deviations, sorted by whether they keep the edges that
+  name `SECURITY_INCIDENT` the winner (`FINDINGS3.md` §17).
+- ~~**Dropping the edges whose reason is a queue's importance, on the space.**~~
+  **Measured POST-RUN on 2026-10-05, `FINDINGS3.md` §17, and it reverses.** Over
+  the space the cut sinks the MFAS order eleven deviations below its control and
+  under the `born_at` floor. Every edge that names `SECURITY_INCIDENT` the winner
+  carries a queue reason, and over the space that queue is the truth for three
+  points in eight. The lead was the keyword's split between the two surfaces. A
+  test of the lead on the corpus still needs a population it was not found on,
+  which means new answers. What it opens:
+  - **The most a selection could show.** §16's oracle ranks edges by direction,
+    and over the space truth-free cuts land on both sides of the band it draws.
+    A ceiling for selection in general would rank edges by what they do to the
+    order. As a filter that is search under another name, which §14 forbids; as
+    an oracle it is legitimate, and free in calls.
+- ~~**Rules with identical conditions and different queues.**~~ **Counted
+  POST-RUN on 2026-10-05, `FINDINGS3.md` §18.** 93 pairs are written the same
+  and send the ticket to different queues, every one in the population, against
+  about 100 that the sample's five predicted. They are part of something larger:
+  307 of the 577 rules have a copy written the same, so as written the base
+  holds 353 distinct rules. The copy written later is the better rule more
+  often, so arrival order picks the worse one. What it leaves, both free in
+  calls:
+  - **Why rung 1's loop wrote the same rule again.** Its record keeps each case's
+    outcome and not which rules tied, so whether a copy was born on a case its
+    earlier copies had sent to escalation would take replaying rung 1's engine.
+  - **Whether the bases `PLAN_REUSE.md`'s loop wrote hold copies too.**
 - **The slot, unspoken.** The proposer gives the list's order as the reason in 8
   answers of 1,114, while the slot decides at least one in twelve. The paid
   re-ask `IDEAS.md` carries under `PLAN_PRIMACY.md` would show whether the
