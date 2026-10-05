@@ -243,6 +243,25 @@ share it reports is a floor. **And its `L-a` chose where to look by an aggregate
 split, and the effect was elsewhere.** A plan that looks for a position effect
 should select by something that bears on each pair. Do not copy that selection.
 
+**`PLAN_WHY.md` closed on 2026-10-05: what the proposer says it is doing,
+against what it does.** Five signed rows: four adjudicated, one reported. Sergi
+signed §0 on 2026-10-05, before any held-out sentence was coded. It coded the
+sentence the proposer wrote beside each pairwise answer, with a codebook frozen
+on a development set, and read the batch answered the next day. The record is
+`results_why/FINDINGS_WHY.md`, and `STATUS.md` indexes its figures. **Everything
+in it is free** and reproduces from the committed records. Its one writer refuses
+while the plan carries a blank signature line, and the gate reads `PLAN_WHY.md`
+and no other plan. The first command is blocking and writes nothing:
+
+    python3 -m why.score --dry-run   # Y-g1..Y-g4; must pass first
+    python3 -m why.score             # Y-a to Y-d, the readings of Y-e
+
+**Its bands were set on a development set, so its holds say a reading
+generalises, not that the drafter foresaw anything.** The scoreboard marks the
+row so and gives the ratios without it. A plan built the same way should say so
+in its §0, as this one did. **And anchor a codebook's patterns**:
+`m[aá]s condiciones` matched inside *"mismas condiciones"*.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 

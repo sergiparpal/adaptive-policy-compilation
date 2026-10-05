@@ -8,9 +8,10 @@ What is known, as of October 5, 2026. **Not a history** — that is the four
 [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md),
 [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md),
 [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
-[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md) and
-[`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md), each
-with its dated errata in place. Every figure here already exists in one of them.
+[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md),
+[`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md) and
+[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md), each with its dated
+errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
 does not cover (an *impasse*), an LLM acts and writes a rule so that next time it
@@ -25,7 +26,9 @@ signed rows, closed on 2026-09-30 — plus **its cleanest form, fidelity, in
 `PLAN_FIDELITY.md`**: six more, closed on 2026-10-04 — plus **what the edges the
 proposer declared at write time bought, in `PLAN_EDGES.md`**: four more, closed
 on 2026-10-05 — plus **where the presentation slot decides the pairwise answers,
-in `PLAN_PRIMACY.md`**: three more, closed the same day.
+in `PLAN_PRIMACY.md`**: three more, closed the same day — plus **what the
+proposer says it is doing, against what it does, in `PLAN_WHY.md`**: five more,
+closed the same day too.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -117,7 +120,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Fifty-nine rows have been signed before the figures they name existed. This
+**Sixty-four rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -157,15 +160,16 @@ a count behind it.
 | **F** · fidelity (§0 of `PLAN_FIDELITY.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
 | **W** · declared edges (§0 of `PLAN_EDGES.md`) | 4 | 3 | **2** | 0 | 1 | 1 |
 | **L** · the slot listed first (§0 of `PLAN_PRIMACY.md`) | 3 | 2 | **1** | 0 | 1 | 1 |
-| **total** | **59** | **51** | **22** | **2** | **27** | **7** |
+| **Y** · the why texts (§0 of `PLAN_WHY.md`) — *bands set on a development set* | 5 | 4 | **0** | 0 | 4 | 1 |
+| **total** | **64** | **55** | **22** | **2** | **31** | **8** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`. Hold: `Q-a`, `Q-b`,
 `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`,
 `A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`,
-`F-e`, `W-a`, `L-b`. Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`,
-`L-c`.
+`F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`. Reported: `R-d`, `C-d`, `D-d`,
+`U-f`, `F-f`, `W-d`, `L-c`, `Y-e`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -182,10 +186,15 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 22 of 51 = **43.1%**
-refuted; without them, 20 of 45 = **44.4%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 22 of 55 = **40.0%**
+refuted; without them, 20 of 49 = **40.8%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-1.3 points the flattering way, which is exactly why saying so is not optional.
+0.8 points the flattering way, which is exactly why saying so is not optional.
+**The `Y` rows flatter it more, and for a reason of design.** Their bands were
+set on a development set from the same model a day earlier, so they bet that a
+reading generalises rather than test the drafter's foresight. Without them the
+two ratios are 22 of 51 = **43.1%** and 20 of 45 = **44.4%**, which is the reading
+the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -216,6 +225,13 @@ drafter and the sample size, not because of the figure — and it moves the figu
 > same commit as its row.** Three rows were signed, two adjudicated, one refuted
 > and one reported. The table, the named lists, the count in the heading and the
 > two ratios moved together; the gap between them is still 1.3 points.
+>
+> **[NOTE 2026-10-05, later still] Recomputed with the `Y` thread, in the same
+> commit as its row.** Five rows were signed, four adjudicated, all four held,
+> and one reported. The table, the named lists, the count in the heading and the
+> two ratios moved together; the gap between them is now 0.8 points. The ratios
+> without the `Y` rows are given beside them, for the reason the paragraph above
+> says.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -235,7 +251,9 @@ with `F-f` from its Stages A and C; and `W` from
 [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md), which owns
 all four; and `L` from
 [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
-which owns all three.
+which owns all three; and `Y` from
+[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md), which owns all
+five.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -338,6 +356,14 @@ otherwise. The drafter expected both rows to hold, and trusted `L-a` least.
 **`L-a` was refuted, thinly**: on the queue pair the proposer splits evenly, the
 slot effect is +0.1236 against a line of 0.20, inside one standard error. `L-b`
 held. `L-c` is reported.
+
+**The `Y` rows ask what the proposer says it is doing, and all four held — as
+rows set on a development set were expected to.** Sergi signed §0 of
+`PLAN_WHY.md` on 2026-10-05, before any held-out sentence was coded. Its codebook
+was frozen on 365 development sentences, and the rows were read on the 1,114 of
+the next day's batch. §0 said before the run that four holds would mean the
+readings generalise and nothing about foresight, and the scoreboard above marks
+the row so. `Y-e` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -760,6 +786,24 @@ share of answers it decided.
 - **Mostly one queue pair.** On `T1_GENERAL vs T2_TECHNICAL` the slot decides at
   least a fifth of 361 answers, +0.2256. The other 1,118 name the rule listed
   first within noise of a coin. Post-run, picked out after the verdicts.
+
+**And what the proposer says, measured.** `PLAN_WHY.md` coded the sentence it
+wrote beside each answer, with a codebook frozen on a development set, and read
+the 1,114 sentences of the held-out batch
+([`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md)).
+
+- **Its "more specific" is true of the extension about half the time.** Answers
+  that argue it name the narrower rule 0.5256 of the time, against 0.3941 across
+  all answers (`Y-a`).
+- **It is not a count of conditions** (`Y-b`). **It is a categorical or exact
+  condition the other rule lacks**: 0.7658 against 0.4435 (`Y-c`). For this
+  proposer, specificity is how a rule is written, not what it covers.
+- **The reason does not mark the right answers**: 0.7395 against 0.7470 on the
+  space (`Y-d`). When it counts conditions, rung 1's criterion, it is right about
+  as often as a coin.
+- **It almost never names the order.** 8 sentences of 1,114 give the list's
+  order as the reason, all for the rule listed first, against a slot that
+  decides at least one answer in twelve. Post-run.
 
 **Nothing chooses better than chance, and B-b's line was never reachable at that
 budget.** Truth-free rules for dropping declared edges — keep the proposer's
