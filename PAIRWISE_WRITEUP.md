@@ -57,6 +57,13 @@ free measurement:** the budget (§10, §14), the compilation (§13), the selecti
 which edges to keep (§14), and the instrument (§11 `B-a` — the direction rate is
 the same at 400 and at 1,600).
 
+> **[NOTE 2026-10-05] The third was not ruled out; at this budget it was not
+> testable.** [`FINDINGS3.md`](results3/FINDINGS3.md) §16 measured §14's
+> instrument: even an oracle that keeps the right edges first sits only about one
+> deviation above chance at §14's sizes. So three candidates were ruled out, and
+> the selection could not have been. The finding this document leads with rests on
+> the other three and on `B-d`, and it stands.
+
 **What it cost to find out:** 1,770 API calls across three runs. Every one of the
 ten sections that interpret them cost zero.
 
@@ -370,6 +377,11 @@ deliberate dropping might help more. Every filter is read against a random drop 
 the same size, because *"drop edges until the score improves"* is hard rule 6 with a
 hat on. Every filter lands within **0.7 deviations** of its own control, in both
 compilations. Nothing there is a selection effect.
+
+> **[NOTE 2026-10-05] And nothing there could have been one by much.** §16 of
+> [`FINDINGS3.md`](results3/FINDINGS3.md): a perfect selection of the same sizes
+> sits only about one deviation above chance. *Untestable at this budget* replaces
+> *ruled out*.
 
 **The instrument — ruled out by `B-a`**, above: the direction rate is the same at
 400 and at 1,600.

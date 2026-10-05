@@ -445,6 +445,12 @@ together produces:
   differently when the hedge is on the record beforehand, and §1 of the write-up is
   that history.
 
+> **[NOTE 2026-10-05] One leg of the spine was untestable, not ruled out.**
+> [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §16 measured §14's instrument:
+> even an oracle that keeps the right edges first barely clears chance at §14's
+> sizes. So the selection was not *ruled out by a free measurement*; at 1,479
+> edges it could not have been tested. The other three legs stand.
+
 ### 5 · The sensitivity sweep · free, deterministic · pre-registered · **DONE 2026-08-29**
 
 §1.4 and §1.5. Parameterize the correlation between priority layer and condition

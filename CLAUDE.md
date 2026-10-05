@@ -126,6 +126,12 @@ none of them is on `STATUS.md`'s scoreboard:
     python3 -m rung3.mfas_compilation   # the answers, or the compilation?
     python3 -m rung3.edge_dropping      # does deliberate dropping beat chance
     python3 -m rung3.answer_asymmetry   # why it names rule_b more often (§15)
+    python3 -m rung3.filter_headroom    # what §14's instrument could show (§16)
+
+**§16 qualifies §14.** It measures what a perfect, oracle-chosen selection of the
+same edges scores against chance on §14's cell, and it barely moves the order. So
+§14's *nothing chooses better than chance* means the selection was untestable at
+this budget, not ruled out. Read §16 before citing §14 as an elimination.
 
 **§14 narrows a signed row without moving it.** `B-b` was signed against a free
 queue ranking's 0.4824, and §14 measures that a *perfect* follower of that ranking
