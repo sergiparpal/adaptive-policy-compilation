@@ -710,6 +710,20 @@ what its own explanations say, and that too rides on the ranking. POST-RUN,
 adjudicates nothing ([`FINDINGS3.md`](results3/FINDINGS3.md) §15,
 [`answer_asymmetry.json`](results3/answer_asymmetry.json)).
 
+> **[ERRATUM 2026-10-05] *It costs accuracy rather than merely shifting taste* is
+> more than these counts say.** With presentation balanced, the 0.8534 and 0.7623
+> follow by arithmetic from the 0.8073 and the 0.5416 above and how the slots
+> fell. They are the first-shown preference read through the ranking, and cannot
+> tell a taste for the first slot from a loss in the second. **What the randomised
+> deal licenses is a floor**: the slot decided the direction of at least about one
+> edge in eleven, +0.0911 with a standard error of 0.026. Whether that costs
+> accuracy on net is not identified, since each pair was asked in one order. **And
+> it has been seen on one population of two.** Stage C, the same model and prompt
+> over the hidden policy's pairs, named the rule shown first in 84 of 166 answers,
+> 0.506. The difference is 0.87 standard errors, so neither rate is evidence
+> against the other. `FINDINGS3.md` §15 owns the arithmetic, in its erratum of the
+> same date. No figure moves.
+
 **Nothing chooses better than chance, and B-b's line was never reachable at that
 budget.** Truth-free rules for dropping declared edges — keep the proposer's
 self-consistent core, keep only where it contradicts its own majority — all sit

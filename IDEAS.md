@@ -285,6 +285,18 @@ tried at. What is left:
   is a property of the elicitation rather than of this policy or this rule base,
   so it would show up in any pairwise protocol — which is what makes it worth
   carrying. Free to attack: the answers are already paid for.
+  **[ERRATUM 2026-10-05] *An ACCURACY effect, not a taste* does not follow, and
+  *it would show up in any pairwise protocol* is a conjecture.** The two rates are
+  the first-shown rate read through the ranking, fixed by arithmetic from figures
+  already published, so they cannot separate a taste for the first slot from a
+  loss in the second. What the randomised deal licenses is a floor: the slot
+  decided at least about one edge direction in eleven. Stage C, the same prompt
+  over the hidden policy's pairs, named the rule shown first about half the time:
+  one population of two. **What is open is narrower, and it splits by price.**
+  *Where* the slot decides can be read for free from the answers already paid
+  for. *Why* cannot: the rule shown first is always labelled `A` and its queue is
+  named first, so position, label and order never come apart in them.
+  `FINDINGS3.md` §15, erratum of the same date.
 - **The old wording of that item, kept for the record.** 203 against 162 at 400,
   **and 781 against 698 at 1,600** — the asymmetry survived quadrupling
   (`FINDINGS3.md` §11). **Sharpened, August 26, 2026, into two separate facts that
