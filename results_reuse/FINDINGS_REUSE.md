@@ -293,6 +293,14 @@ Rung 2's eight n=100 runs had proposed 14 and had none accepted. The verdict bui
 to catch a proposer contradicting subsumption, `contradice_subsuncion`, fired in
 none of the three runs, so it is still unobserved in a real run.
 
+> **[NOTE 2026-10-05] Accepted is not installed, and what the installed edges
+> bought is now measured.** 14 of the 64 accepted edges agree with subsumption.
+> `try_edge` accepts such an edge without installing it, so 50 entered the
+> graph. On the arrivals they were right on 37 of the 114 cases they decided.
+> Over the function their direction was right three times in four
+> ([`FINDINGS_EDGES.md`](../results_edges/FINDINGS_EDGES.md)). The counts above
+> stand.
+
 **Recorded beside the rows and never in a denominator** — counts and rates by
 run:
 

@@ -39,6 +39,7 @@ up in four places at once.
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 | **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — closed 2026-09-30 | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
 | **F** · fidelity | whether a compiled rule decides a later case the way the model would have, asked afresh on the same case — closed 2026-10-04 | [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md) |
+| **W** · declared edges | what the edges the proposer declared at write time bought, once a growing base gave them material: on the cases they decided, against a coin, and over the function — closed 2026-10-05 | [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -244,6 +245,24 @@ python3 -m fidelity.score                          # Stage C · the five rows, f
 Their destinations are guarded by `harness/record_guard.py`: those records cost
 money and a re-run does not give the same thing back.
 
+**[`PLAN_EDGES.md`](PLAN_EDGES.md) closed on 2026-10-05**: what the edges the
+proposer declared at write time bought, once `PLAN_REUSE.md`'s growing base gave
+them material. Sergi signed §0 on 2026-10-05, before any of its figures existed.
+It rebuilt each Stage B run from its record and scored the edges three ways: on
+the cases they decided, against a coin over their directions, and over the
+function. Its record is
+[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md). Its gate
+reads that plan and no other, and guards both of its writers.
+
+**It spends nothing.** It reproduces from the committed records in about two
+minutes, most of it the suite inside its first check.
+
+```bash
+python3 -m edges.score --dry-run   # W-g1..W-g4, blocking; writes nothing
+python3 -m edges.score             # the census, W-a to W-c, and W-d
+python3 -m edges.readings          # POST-RUN · the readings the verdicts needed
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -375,7 +394,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `sensitivity/sweep.py --dry-run` and `ilp/compare.py --dry-run`, which build
 > every policy, run every gate and write no record on purpose, and the four of
 > `reuse/`, which run `PLAN_REUSE.md`'s blocking checks and write nothing, and
-> the three of `fidelity/`, which run `PLAN_FIDELITY.md`'s.
+> the three of `fidelity/`, which run `PLAN_FIDELITY.md`'s, and
+> `edges/score.py --dry-run`, which runs `PLAN_EDGES.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -476,6 +496,7 @@ What it covers, and why those things:
 | `test_ilp.py` | the ILP instrument: the four signed bands, the 224-condition language with the 29 hidden rules inside it, `I-g3`'s no-leak property, first-match-wins on a list checkable by hand, and the gate. **No figure of the four rows** |
 | `test_reuse.py` | the `PLAN_REUSE.md` instrument: §10's constants and §0's five lines, each verdict at its edge, `F` checked by hand, births and the split on a record small enough to check by hand, `U-g2` and `U-g3` on the real inputs, every writer refusing unsigned before it builds the client or writes, the full runs refusing without a smoke run that worked, every paid run refusing a management key — with OpenRouter's endpoint always replaced, so no test reaches the network — and §1's amendment: the proposer's `reasoning` setting sent on every call, retries included, and never by default. **No figure of the plan** |
 | `test_fidelity.py` | the `PLAN_FIDELITY.md` instrument: §10's constants and §0's five lines, each verdict at its edge, the gate on one signature line with `PLAN_REUSE.md`'s default untouched, `F-g2` on the three Stage B records and its teeth, every birth prompt against the request rung 2's loop built when the SDK double replays the four v1 n=100 records, the draw and the sessions on the real records, Stage C's arithmetic by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, and Stage B end to end through the double — resuming, and stopping on an outage. **No figure of the plan** |
+| `test_edges.py` | the `PLAN_EDGES.md` instrument: §8's constants and §0's three lines, each verdict at its edge, the gate counting every signature line, the counterfactual rebuild on a scripted run — the record given the declared directions, the replay without edges given none, every departure an ACTION that becomes a CONFLICT, every birth in every arm —, `W-g2` and `W-g3`'s identities on the three Stage B records, the stage's arithmetic and the post-run readings by hand, and both writers refusing unsigned before they measure, read or write. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the five that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1067,6 +1088,13 @@ adaptive-policy-compilation/
 │   ├── ask.py               Stage B · the calls · spends
 │   └── score.py             Stage C · the five rows, gated on PLAN_FIDELITY.md
 │
+├── edges/                W · what the edges declared at write time bought
+│   ├── plan.py              the gate and §8's constants; §0's three lines
+│   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
+│   ├── gates.py             W-g1..W-g4 · blocking, run before any write
+│   ├── score.py             the stage · the census, W-a to W-c, W-d
+│   └── readings.py          POST-RUN readings of the stage's record
+│
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
 │   ├── analysis.py          births, the split by birth, F and the gap
@@ -1092,7 +1120,7 @@ adaptive-policy-compilation/
 ├── .github/dependabot.yml   bumps the actions; does NOT touch the pip pins
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
-    results_reuse/  results_fidelity/
+    results_reuse/  results_fidelity/  results_edges/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
