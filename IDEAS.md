@@ -27,8 +27,11 @@ written up in `results_reuse/`. **Fidelity, its cleanest form, closed on October
 4, 2026**: `PLAN_FIDELITY.md`, six more signed rows with the same split, written
 up in `results_fidelity/`. **What the edges it declared bought closed on October
 5, 2026**: `PLAN_EDGES.md`, four signed rows, one held, two refuted and one
-reported, written up in `results_edges/`. This is a list of things not done,
-none of them developed and in no order of precedence.
+reported, written up in `results_edges/`. **Where the presentation slot decides
+the pairwise answers closed the same day**: `PLAN_PRIMACY.md`, three signed rows,
+one held, one refuted and one reported, written up in `results_primacy/`. This is
+a list of things not done, none of them developed and in no order of
+precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -38,6 +41,11 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Where the slot decides.** October 5, 2026, `PLAN_PRIMACY.md`, zero calls. In
+  the 1,600 pairwise answers the slot decides about one in twelve at least. It
+  does nothing else to an answer that the record can see, and it sits mostly on
+  one queue pair, `T1_GENERAL vs T2_TECHNICAL` (post-run). Why it decides is
+  still open, in its own section below. `results_primacy/`.
 - **What the accepted edges buy.** October 5, 2026, `PLAN_EDGES.md`. The 50 edges
   the engine installed in `PLAN_REUSE.md`'s three runs were right on a third of
   the cases they decided. Over the function their direction was right three
@@ -123,6 +131,35 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_PRIMACY.md` opens and does not resolve
+
+Closed October 5, 2026. It asked where the presentation slot decides the
+pairwise answers already paid for, and answered as far as one order per pair
+allows. What that answer leaves:
+
+- **Why the slot decides.** The rule listed first is always labelled `A`, and its
+  queue is the first the question names. Only new calls separate position from
+  label and from that order. §10.5 of the plan specifies them without
+  authorising them: N pairs re-asked reversed, unchanged as a control, and
+  relabelled, with reasoning off. At N = 400 that is 1,200 calls: cents, and
+  about six hours in Sergi's terminal. It would also turn every floor into a
+  share, and say what asking both orders is worth. It needs its own plan and
+  signature.
+- **Why `T1_GENERAL vs T2_TECHNICAL`.** Most of the effect sits on that pair, and
+  it was picked out after the verdicts. Two generic support queues are not a
+  mechanism. If the re-ask above is ever run, that pair is where it has the power
+  to see something.
+- **An even aggregate split does not mark where the slot decides.** `L-a`
+  selected its pair by the split, and the effect was elsewhere. The next plan
+  that looks for a position effect should select by something that bears on
+  each pair, not by an aggregate.
+- **Nearly a third of the answers needed a second call**, whichever slot held the
+  favoured rule (`results_primacy/FINDINGS_PRIMACY.md`, under `L-b`). The first
+  call asks for a JSON object and the retry does not, and the records keep no
+  reason for the failure. It bears on the parse-failure item reopened below.
 
 ---
 
@@ -306,6 +343,10 @@ tried at. What is left:
   for. *Why* cannot: the rule shown first is always labelled `A` and its queue is
   named first, so position, label and order never come apart in them.
   `FINDINGS3.md` §15, erratum of the same date.
+  **[NOTE 2026-10-05] *Where* is measured, by `PLAN_PRIMACY.md`.** About one
+  answer in twelve at least, nothing else to the answer, the same on both sides
+  of B-d, and mostly on `T1_GENERAL vs T2_TECHNICAL`. *Why* has its own section
+  above, with the price of the calls it would take. `results_primacy/`.
 - **The old wording of that item, kept for the record.** 203 against 162 at 400,
   **and 781 against 698 at 1,600** — the asymmetry survived quadrupling
   (`FINDINGS3.md` §11). **Sharpened, August 26, 2026, into two separate facts that

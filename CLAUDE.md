@@ -222,6 +222,27 @@ decides fewer cases, not worse ones. The record says so beside the verdict. A
 coin control over declared edges should compare accuracy among the cases each
 arm resolves. Do not copy that statistic.
 
+**`PLAN_PRIMACY.md` closed on 2026-10-05: where the presentation slot decides
+the pairwise answers.** Three signed rows: two adjudicated, one reported. Sergi
+signed §0 on 2026-10-05, before any figure it governs existed. It read the
+answers `PLAN_PROPOSER_1600.md` paid for, with the truth per pair, after checking
+that every slot was the seeded deal. The record is
+`results_primacy/FINDINGS_PRIMACY.md`, and `STATUS.md` indexes its figures.
+**Everything in it is free** and reproduces from the committed records. Its one
+writer refuses while the plan carries a blank signature line, and the gate reads
+`PLAN_PRIMACY.md` and no other plan. The first command is blocking and writes
+nothing:
+
+    python3 -m primacy.score --dry-run   # L-g1..L-g4; must pass first
+    python3 -m primacy.score             # L-a, L-b, the readings of L-c
+
+**In those answers, position, label and the order of the queue names are one
+variable.** The rule listed first is always labelled `A`, and its queue is named
+first. No reading of them can say why the slot decides, only where, and every
+share it reports is a floor. **And its `L-a` chose where to look by an aggregate
+split, and the effect was elsewhere.** A plan that looks for a position effect
+should select by something that bears on each pair. Do not copy that selection.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
