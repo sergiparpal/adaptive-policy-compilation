@@ -342,6 +342,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
+> | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
 > | `rung2/run2.py` | `results2/llm_run2_<tag>.json` | **yes** |
