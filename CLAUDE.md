@@ -181,6 +181,7 @@ counts every such line, and requires both signatures:
     python3 -m reuse.run --dry-run            # U-g1..U-g4; must pass first
     python3 -m reuse.readout                  # Stage A, free
     python3 -m reuse.score                    # Stage C, free, from the runs
+    python3 -m reuse.structure                # POST-RUN: the bases, read for Stage E
     .venv/bin/python -m reuse.run --smoke     # Stage B: spends — only if asked
     .venv/bin/python -m reuse.run --rep 1     # then 2, then 3 — never side by side
 
