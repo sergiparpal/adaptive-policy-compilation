@@ -169,6 +169,7 @@ python3 -m rung3.mfas_compilation  # is it the answers or the compilation
 python3 -m rung3.edge_dropping     # does deliberate dropping beat chance
 python3 -m rung3.answer_asymmetry  # why it names rule_b more often
 python3 -m rung3.filter_headroom   # how much any selection could have shown
+python3 -m rung3.filter_space      # the same cuts, scored on the space
 ```
 
 The two scorings of that thread take the records it produced, so they carry
@@ -412,6 +413,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `rung3/edge_dropping.py` | `results3/edge_dropping.json` | no, on purpose |
 > | `rung3/answer_asymmetry.py` | `results3/answer_asymmetry.json` | no, on purpose |
 > | `rung3/filter_headroom.py` | `results3/filter_headroom.json` | no, on purpose |
+> | `rung3/filter_space.py` | `results3/filter_space.json` | no, on purpose |
 >
 > **[NOTE 2026-08-30] Thirteen rows were added on this date and the table had
 > been incomplete since 2026-08-24.** `results3/FINDINGS_AUDIT.md` records the
@@ -1114,7 +1116,8 @@ adaptive-policy-compilation/
 │   ├── mfas_compilation.py  the answers or the compilation? same edges, fewer lost
 │   ├── edge_dropping.py     does deliberate dropping beat chance
 │   ├── answer_asymmetry.py  the a/b asymmetry, and the position effect
-│   └── filter_headroom.py   how much any selection of the edges could have shown
+│   ├── filter_headroom.py   how much any selection of the edges could have shown
+│   └── filter_space.py      the same selections, scored over the space
 │
 ├── sensitivity/          A · a family of synthetic manuals, swept by ρ
 │   ├── generator.py         counts permuted, bodies drawn from the manual's own
