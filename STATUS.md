@@ -805,6 +805,17 @@ the 1,114 sentences of the held-out batch
   order as the reason, all for the rule listed first, against a slot that
   decides at least one answer in twelve. Post-run.
 
+**And the base those answers were asked about is half copies.** 307 of rung 1's
+577 rules have a copy written with the same conditions, so as written the base
+holds 353 distinct rules. 93 pairs of copies send the ticket to different queues,
+nearly all among the generic queues, and no order can split one: whichever copy
+is placed first decides every ticket of theirs that reaches the two. Over the
+space the hidden policy agrees more often with the copy written later in 49 of
+them and the earlier in 29, so arrival order picks the worse one more often.
+POST-RUN, a census
+([`FINDINGS3.md`](results3/FINDINGS3.md) §18,
+[`identical_rules.json`](results3/identical_rules.json)).
+
 **Nothing chooses better than chance, and B-b's line was never reachable at that
 budget.** Truth-free rules for dropping declared edges — keep the proposer's
 self-consistent core, keep only where it contradicts its own majority — all sit
@@ -832,6 +843,17 @@ not a signed row ([`FINDINGS3.md`](results3/FINDINGS3.md) §14,
 > on the corpus: +2.52 against the oracle's +3.0. That is a post-run lead, one
 > cut of seven, on one surface
 > ([`filter_headroom.json`](results3/filter_headroom.json)).
+>
+> **[NOTE 2026-10-05, later] Over the space that lead reverses, violently.** §17
+> of `FINDINGS3.md` scored §16's selections over the exhaustive space. The same
+> cut goes from +2.52 deviations on the corpus to **−11.28** in MFAS, 0.2775,
+> under the `born_at` floor. Every edge that names `SECURITY_INCIDENT` the winner
+> carries a queue reason, and over the space that queue is the truth for three
+> points in eight. The lead was the keyword's split between the surfaces. **And
+> §16's oracle bounds selection by direction only**: over the space one
+> truth-free cut sits above the oracle of its size and another ten deviations
+> below the anti. POST-RUN, with an expectation written before the run whose
+> third clause failed ([`filter_space.json`](results3/filter_space.json)).
 
 **It is the answers, not the compilation — and the sort was hiding it.** The same
 1,479 declared edges compiled by minimum feedback arc set instead of the
