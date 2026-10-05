@@ -81,7 +81,7 @@ rules shown. `Y-d` reads the exhaustive space's definition of the better rule.
 | **Y-d** | **The reason it gives does not tell its right answers from its wrong ones** | over the held-out answers on pairs with a strictly better rule on the space: the share naming it among answers coded `spec`, minus the same share among answers not coded `spec` | **\|difference\| < 0.06** | **\|difference\| ≥ 0.06** |
 | **Y-e** | *Reported, not adjudicated.* **What reading the four rows needs** | §7's readings: the census of codes, labels and languages; the direction rate by code under both definitions; the codes by B-d's side; the labels against the named rule; every `order` sentence and five quotations per code; every held-out row with its codes; the development figures beside them | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-05)**
 
 **Standard errors, and the thin label.** `Y-a`'s and `Y-b`'s are binomial; `Y-c`'s
 and `Y-d`'s are the unpooled error of a difference of two shares. **A verdict
