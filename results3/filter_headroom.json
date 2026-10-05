@@ -1,0 +1,457 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-05T14:01:14Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "4d0214cba24394d95b5ff8d5a140ad7084c6d32a",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "76d84a45c809dd06",
+    "draws": 200,
+    "seed": "filter_headroom"
+  },
+  "what": "the ceiling and floor of any selection of the 1,600 run's declared edges against a same-size random choice, on \u00a714's cell, and \u00a714's and PLAN_WHY.md's filters read inside them. Zero API calls.",
+  "provenance": "POST-RUN. The headroom was first measured on 2026-10-05 by a scratch probe of 60 draws, while deciding whether PLAN_WHY.md's \u00a710.5 could be pre-registered, and this module was written after seeing it. Not a signed row, not on STATUS.md's scoreboard, not a calibration event. The filters are read against the headroom and adjudicate nothing. Zero API calls.",
+  "adjudicates_nothing": "no row of any plan is read here and none moves.",
+  "surface": "hibrido pool, corpus test split 0",
+  "selectors": {
+    "oracle": "the edges whose declared winner is the better rule over the shared region first, then those with no strictly better rule, then the wrong ones, ties by arrival, kept in arrival order",
+    "anti": "the oracle's order reversed",
+    "definitions": "rung3/edge_direction.py's space and corpus, read from results2/pair_sample_1600.json"
+  },
+  "controls": {
+    "random_in_arrival_order": "the same number at random, kept in the order they arrived; the control for selection alone",
+    "shuffled_as_in_14": "the same number at random in a random arrival order, \u00a714's own; only at \u00a714's sizes"
+  },
+  "gate_14_reproduces": {
+    "what": "\u00a714's keep_all, consistent and inconsistent, both compilations, from results3/edge_dropping.json",
+    "rows": {
+      "keep_all": {
+        "measured": [
+          0.480402,
+          0.433166
+        ],
+        "published": [
+          0.480402,
+          0.433166
+        ],
+        "passes": true
+      },
+      "consistent": {
+        "measured": [
+          0.437186,
+          0.444221
+        ],
+        "published": [
+          0.437186,
+          0.444221
+        ],
+        "passes": true
+      },
+      "inconsistent": {
+        "measured": [
+          0.407035,
+          0.407035
+        ],
+        "published": [
+          0.407035,
+          0.407035
+        ],
+        "passes": true
+      }
+    },
+    "passes": true
+  },
+  "born_at_floor": 0.433166,
+  "headroom_by_size": {
+    "1393": {
+      "random_in_arrival_order": {
+        "n_kept": 1393,
+        "draws": 200,
+        "topological": {
+          "mean": 0.476005,
+          "sd": 0.011537
+        },
+        "mfas": {
+          "mean": 0.437231,
+          "sd": 0.013927
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.483417,
+        "mfas": 0.455276,
+        "topological_deviations": 0.64,
+        "mfas_deviations": 1.3
+      },
+      "anti_corpus": {
+        "topological": 0.479397,
+        "mfas": 0.409045,
+        "topological_deviations": 0.29,
+        "mfas_deviations": -2.02
+      },
+      "oracle_space": {
+        "topological": 0.490452,
+        "mfas": 0.460302,
+        "topological_deviations": 1.25,
+        "mfas_deviations": 1.66
+      },
+      "anti_space": {
+        "topological": 0.478392,
+        "mfas": 0.40402,
+        "topological_deviations": 0.21,
+        "mfas_deviations": -2.38
+      }
+    },
+    "1194": {
+      "random_in_arrival_order": {
+        "n_kept": 1194,
+        "draws": 200,
+        "topological": {
+          "mean": 0.46399,
+          "sd": 0.019545
+        },
+        "mfas": {
+          "mean": 0.43694,
+          "sd": 0.019057
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.495477,
+        "mfas": 0.453266,
+        "topological_deviations": 1.61,
+        "mfas_deviations": 0.86
+      },
+      "anti_corpus": {
+        "topological": 0.480402,
+        "mfas": 0.396985,
+        "topological_deviations": 0.84,
+        "mfas_deviations": -2.1
+      },
+      "oracle_space": {
+        "topological": 0.457286,
+        "mfas": 0.449246,
+        "topological_deviations": -0.34,
+        "mfas_deviations": 0.65
+      },
+      "anti_space": {
+        "topological": 0.439196,
+        "mfas": 0.40402,
+        "topological_deviations": -1.27,
+        "mfas_deviations": -1.73
+      }
+    },
+    "971": {
+      "random_in_arrival_order": {
+        "n_kept": 971,
+        "draws": 200,
+        "topological": {
+          "mean": 0.450327,
+          "sd": 0.022176
+        },
+        "mfas": {
+          "mean": 0.440327,
+          "sd": 0.023112
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.501508,
+        "mfas": 0.508543,
+        "topological_deviations": 2.31,
+        "mfas_deviations": 2.95
+      },
+      "anti_corpus": {
+        "topological": 0.450251,
+        "mfas": 0.357789,
+        "topological_deviations": -0.0,
+        "mfas_deviations": -3.57
+      },
+      "oracle_space": {
+        "topological": 0.466332,
+        "mfas": 0.465327,
+        "topological_deviations": 0.72,
+        "mfas_deviations": 1.08
+      },
+      "anti_space": {
+        "topological": 0.427136,
+        "mfas": 0.373869,
+        "topological_deviations": -1.05,
+        "mfas_deviations": -2.88
+      }
+    },
+    "817": {
+      "random_in_arrival_order": {
+        "n_kept": 817,
+        "draws": 200,
+        "topological": {
+          "mean": 0.437779,
+          "sd": 0.025769
+        },
+        "mfas": {
+          "mean": 0.434889,
+          "sd": 0.02331
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.455276,
+        "mfas": 0.455276,
+        "topological_deviations": 0.68,
+        "mfas_deviations": 0.87
+      },
+      "anti_corpus": {
+        "topological": 0.368844,
+        "mfas": 0.38593,
+        "topological_deviations": -2.68,
+        "mfas_deviations": -2.1
+      },
+      "oracle_space": {
+        "topological": 0.466332,
+        "mfas": 0.466332,
+        "topological_deviations": 1.11,
+        "mfas_deviations": 1.35
+      },
+      "anti_space": {
+        "topological": 0.417085,
+        "mfas": 0.436181,
+        "topological_deviations": -0.8,
+        "mfas_deviations": 0.06
+      }
+    },
+    "662": {
+      "random_in_arrival_order": {
+        "n_kept": 662,
+        "draws": 200,
+        "topological": {
+          "mean": 0.432598,
+          "sd": 0.027277
+        },
+        "mfas": {
+          "mean": 0.434487,
+          "sd": 0.028095
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.493467,
+        "mfas": 0.493467,
+        "topological_deviations": 2.23,
+        "mfas_deviations": 2.1
+      },
+      "anti_corpus": {
+        "topological": 0.378894,
+        "mfas": 0.279397,
+        "topological_deviations": -1.97,
+        "mfas_deviations": -5.52
+      },
+      "oracle_space": {
+        "topological": 0.495477,
+        "mfas": 0.495477,
+        "topological_deviations": 2.31,
+        "mfas_deviations": 2.17
+      },
+      "anti_space": {
+        "topological": 0.368844,
+        "mfas": 0.370854,
+        "topological_deviations": -2.34,
+        "mfas_deviations": -2.26
+      }
+    },
+    "508": {
+      "random_in_arrival_order": {
+        "n_kept": 508,
+        "draws": 200,
+        "topological": {
+          "mean": 0.428231,
+          "sd": 0.027991
+        },
+        "mfas": {
+          "mean": 0.43294,
+          "sd": 0.027244
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.482412,
+        "mfas": 0.482412,
+        "topological_deviations": 1.94,
+        "mfas_deviations": 1.82
+      },
+      "anti_corpus": {
+        "topological": 0.392965,
+        "mfas": 0.299497,
+        "topological_deviations": -1.26,
+        "mfas_deviations": -4.9
+      },
+      "oracle_space": {
+        "topological": 0.508543,
+        "mfas": 0.508543,
+        "topological_deviations": 2.87,
+        "mfas_deviations": 2.78
+      },
+      "anti_space": {
+        "topological": 0.342714,
+        "mfas": 0.343719,
+        "topological_deviations": -3.06,
+        "mfas_deviations": -3.27
+      }
+    },
+    "285": {
+      "random_in_arrival_order": {
+        "n_kept": 285,
+        "draws": 200,
+        "topological": {
+          "mean": 0.428216,
+          "sd": 0.028528
+        },
+        "mfas": {
+          "mean": 0.427246,
+          "sd": 0.029301
+        }
+      },
+      "oracle_corpus": {
+        "topological": 0.464322,
+        "mfas": 0.464322,
+        "topological_deviations": 1.27,
+        "mfas_deviations": 1.27
+      },
+      "anti_corpus": {
+        "topological": 0.38392,
+        "mfas": 0.41005,
+        "topological_deviations": -1.55,
+        "mfas_deviations": -0.59
+      },
+      "oracle_space": {
+        "topological": 0.460302,
+        "mfas": 0.460302,
+        "topological_deviations": 1.12,
+        "mfas_deviations": 1.13
+      },
+      "anti_space": {
+        "topological": 0.362814,
+        "mfas": 0.362814,
+        "topological_deviations": -2.29,
+        "mfas_deviations": -2.2
+      }
+    }
+  },
+  "shuffled_controls_at_14s_sizes": {
+    "keep_all": {
+      "n_kept": 1479,
+      "draws": 200,
+      "topological": {
+        "mean": 0.462307,
+        "sd": 0.017064
+      },
+      "mfas": {
+        "mean": 0.435945,
+        "sd": 0.00825
+      }
+    },
+    "consistent": {
+      "n_kept": 1194,
+      "draws": 200,
+      "topological": {
+        "mean": 0.451754,
+        "sd": 0.021429
+      },
+      "mfas": {
+        "mean": 0.434714,
+        "sd": 0.020117
+      }
+    },
+    "inconsistent": {
+      "n_kept": 285,
+      "draws": 200,
+      "topological": {
+        "mean": 0.426513,
+        "sd": 0.027334
+      },
+      "mfas": {
+        "mean": 0.428874,
+        "sd": 0.028245
+      }
+    }
+  },
+  "filters": {
+    "keep_all": {
+      "n_kept": 1479,
+      "topological": 0.480402,
+      "mfas": 0.433166,
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": 1.06,
+        "mfas_deviations": -0.34
+      }
+    },
+    "consistent": {
+      "n_kept": 1194,
+      "topological": 0.437186,
+      "mfas": 0.444221,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -1.37,
+        "mfas_deviations": 0.38
+      },
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": -0.68,
+        "mfas_deviations": 0.47
+      }
+    },
+    "inconsistent": {
+      "n_kept": 285,
+      "topological": 0.407035,
+      "mfas": 0.407035,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -0.74,
+        "mfas_deviations": -0.69
+      },
+      "against_shuffled_control_as_in_14": {
+        "topological_deviations": -0.71,
+        "mfas_deviations": -0.77
+      }
+    },
+    "spec": {
+      "n_kept": 817,
+      "topological": 0.444221,
+      "mfas": 0.444221,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 0.25,
+        "mfas_deviations": 0.4
+      }
+    },
+    "no_spec": {
+      "n_kept": 662,
+      "topological": 0.422111,
+      "mfas": 0.39397,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -0.38,
+        "mfas_deviations": -1.44
+      }
+    },
+    "queue": {
+      "n_kept": 508,
+      "topological": 0.38392,
+      "mfas": 0.38392,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -1.58,
+        "mfas_deviations": -1.8
+      }
+    },
+    "no_queue": {
+      "n_kept": 971,
+      "topological": 0.477387,
+      "mfas": 0.498492,
+      "against_random_in_arrival_order": {
+        "topological_deviations": 1.22,
+        "mfas_deviations": 2.52
+      }
+    },
+    "no_count": {
+      "n_kept": 1393,
+      "topological": 0.470352,
+      "mfas": 0.436181,
+      "against_random_in_arrival_order": {
+        "topological_deviations": -0.49,
+        "mfas_deviations": -0.08
+      }
+    }
+  },
+  "seconds": 311.4
+}
