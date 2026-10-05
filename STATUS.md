@@ -1,13 +1,14 @@
 # Status
 
-What is known, as of October 4, 2026. **Not a history** — that is the four
+What is known, as of October 5, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
 [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md),
 [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md),
-[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) and
-[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md), each with
+[`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md),
+[`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md) and
+[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md), each with
 its dated errata in place. Every figure here already exists in one of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
@@ -20,7 +21,9 @@ seven signed rows between them — plus the sensitivity sweep of
 policy's shape, plus ILP as a competitor in `PLAN_ILP.md`, plus **the founding
 question itself, on the engine that can answer it, in `PLAN_REUSE.md`** — six
 signed rows, closed on 2026-09-30 — plus **its cleanest form, fidelity, in
-`PLAN_FIDELITY.md`**: six more, closed on 2026-10-04.
+`PLAN_FIDELITY.md`**: six more, closed on 2026-10-04 — plus **what the edges the
+proposer declared at write time bought, in `PLAN_EDGES.md`**: four more, closed
+on 2026-10-05.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -46,6 +49,24 @@ third recovers 61% of what full supervision buys, on corpus test.
 > third clause now names its surface, which the erratum to §1 of
 > [`FINDINGS4.md`](results4/FINDINGS4.md) fixes as corpus test; its figure did not
 > move.
+>
+> **[NOTE 2026-10-05] The second way's first form now has its score with
+> material, and the score splits by surface.** That form is declaration at write
+> time, which rung 2 gave the proposer and which had no material at n=100. In
+> `PLAN_REUSE.md`'s three runs at n=2000 the engine installed 50 of the edges the
+> proposer declared ([`PLAN_EDGES.md`](PLAN_EDGES.md)).
+>
+> - **On the arrivals they supplied nothing a coin does not.** They were right
+>   on a third of the cases they decided. On the cases a coin resolves, a coin
+>   is right as often.
+> - **Over the function, their direction points at the better rule three times
+>   in four**, measured on the exhaustive space.
+> - **Nearly all of them are one rule of thumb about one attribute**, the
+>   security keyword, which the two surfaces weigh differently.
+>
+> So the second clause stands on the corpus, the surface the third clause names,
+> and not on the space. Stage E is still the one form never run.
+> [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md).
 
 ---
 
@@ -94,7 +115,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Fifty-two rows have been signed before the figures they name existed. This
+**Fifty-six rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -132,14 +153,15 @@ a count behind it.
 | **I** · ILP as a competitor (§0 of `PLAN_ILP.md`) | 4 | 3 | **2** | 0 | 1 | 0 |
 | **U** · the founding question (§0 of `PLAN_REUSE.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
 | **F** · fidelity (§0 of `PLAN_FIDELITY.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
-| **total** | **52** | **46** | **19** | **2** | **25** | **5** |
+| **W** · declared edges (§0 of `PLAN_EDGES.md`) | 4 | 3 | **2** | 0 | 1 | 1 |
+| **total** | **56** | **49** | **21** | **2** | **26** | **6** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`,
-`S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`,
-`A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`. Reported:
-`R-d`, `C-d`, `D-d`, `U-f`, `F-f`.
+`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`. Hold: `Q-a`, `Q-b`,
+`Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`,
+`A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`,
+`F-e`, `W-a`. Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -156,10 +178,10 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 19 of 46 = **41.3%**
-refuted; without them, 17 of 40 = **42.5%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 21 of 49 = **42.9%**
+refuted; without them, 19 of 43 = **44.2%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-1.2 points the flattering way, which is exactly why saying so is not optional.
+1.3 points the flattering way, which is exactly why saying so is not optional.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -180,6 +202,11 @@ drafter and the sample size, not because of the figure — and it moves the figu
 > row.** Six rows were signed, five adjudicated, one refuted and one reported. The
 > table, the named lists, the count of signed rows in the heading and the two
 > ratios above moved together again.
+>
+> **[NOTE 2026-10-05] Recomputed with the `W` thread, in the same commit as its
+> row.** Four rows were signed, three adjudicated, two refuted and one reported.
+> The table, the named lists, the count in the heading, the two ratios and the
+> gap between them, now 1.3 points, moved together.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -195,7 +222,9 @@ and `U` from the Stage C section of
 [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md), with `U-f`
 from its Stage A; and `F` from the Stage C section of
 [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
-with `F-f` from its Stages A and C.
+with `F-f` from its Stages A and C; and `W` from
+[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md), which owns
+all four.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -277,6 +306,19 @@ median against a line of 0, inside one standard error, the label §0 fixed in
 advance. `F-d` held at 0.7955, well above the line the drafter expected it to
 sit on. `F-a` was read once, provisionally, before any base session ran, as §8
 of the plan intends, and the record says so. `F-f` is reported.
+
+**The `W` rows ask what declared priority bought once it had material, and the
+drafter got one of three.** Sergi signed §0 of `PLAN_EDGES.md` on 2026-10-05,
+before any of its figures existed. Nothing in it costs a call, and a gate refuses
+its writers otherwise. The drafter expected all three to hold, and trusted `W-b`
+least, then `W-c`. **Both were refuted.**
+
+- **`W-b` was refuted upward.** Over the function the declared direction is
+  right more often than the pairwise question's, not less.
+- **`W-c` was refuted by resolution, not accuracy.** The record names that as a
+  defect of the statistic, not a reprieve, and the verdict stands as signed.
+
+`W-a` held. `W-d` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -853,6 +895,32 @@ the corpus, from
 
 The last two are reported, not adjudicated.
 
+**What declared priority bought, measured: right over the function, wrong where
+tickets arrive.** `PLAN_EDGES.md` scored the edges the proposer declared at write
+time in `PLAN_REUSE.md`'s three runs. The engine had installed 50 of them, and
+they decided 114 cases. Pooled over the three runs, from
+[`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md):
+
+- **Right a third of the time on the arrivals.** On the cases they decided the
+  edges were right 0.3246 of the time, worse than the base they sit in (`W-a`
+  holds).
+- **Right three times in four over the function.** For 34 of 45 edges the
+  declared winner is the better rule over the shared region on the exhaustive
+  space: 0.7556, above the pairwise question's 0.6978 and 0.7312 (`W-b` refuted
+  upward). By the corpus definition it is 0.4118.
+- **Better than a coin only by resolving more.** A coin matches the proposer's
+  right decisions in 0.0005 of draws (`W-c` refuted), because a flipped edge
+  leaves its conflict open. Among the cases it resolves, a coin is right 0.3272
+  of the time and the proposer 0.3246. That reading is post-run.
+- **One rule of thumb, two surfaces.** 47 of the 50 edges say that on a ticket
+  with the security keyword `SECURITY_INCIDENT` wins. The hidden policy sends
+  three quarters of the space's keyword points there, and 20 of the corpus's 71
+  keyword tickets. From their edges the final bases gain 0.07 to 0.36 of e2e over
+  the function, and 0.004 to 0.016 on the arrivals. Post-run.
+- **A rare class gained.** 5, 6 and 15 of `SECURITY_INCIDENT`'s right compiled
+  decisions came through an edge. The price was 68 `T2_TECHNICAL` tickets sent
+  there.
+
 ---
 
 ## What was withdrawn, and why
@@ -916,6 +984,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    proposer's declared edges were accepted in every run of `PLAN_REUSE.md`'s
    Stage B. So the mechanism has material now. What those edges buy has not been
    measured.
+   **[NOTE 2026-10-05] Measured by `PLAN_EDGES.md`.** On the arrivals the edges
+   were right on a third of the cases they decided. Over the function their
+   direction was right three times in four. Nearly all of it is one rule about
+   the security keyword, the attribute the two surfaces weigh most differently.
+   What is open now is whether declaration at write time carries direction
+   beyond that one attribute.
+   [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

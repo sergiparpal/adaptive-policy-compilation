@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 4, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 5, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -25,8 +25,10 @@ entire.
 `PLAN_REUSE.md`, six signed rows, four held, one refuted and one reported,
 written up in `results_reuse/`. **Fidelity, its cleanest form, closed on October
 4, 2026**: `PLAN_FIDELITY.md`, six more signed rows with the same split, written
-up in `results_fidelity/`. This is a list of things not done, none of them
-developed and in no order of precedence.
+up in `results_fidelity/`. **What the edges it declared bought closed on October
+5, 2026**: `PLAN_EDGES.md`, four signed rows, one held, two refuted and one
+reported, written up in `results_edges/`. This is a list of things not done,
+none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -36,6 +38,11 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **What the accepted edges buy.** October 5, 2026, `PLAN_EDGES.md`. The 50 edges
+  the engine installed in `PLAN_REUSE.md`'s three runs were right on a third of
+  the cases they decided. Over the function their direction was right three
+  times in four. They are one rule of thumb about the security keyword, which
+  the two surfaces weigh differently. `results_edges/`.
 - **Give the proposer the existing rule base as context.** Rung 2. It reduced
   the overlap between its rules by a factor of 10 and left the declared-priority
   mechanism — which that same change was meant to enable — with no material.
@@ -119,6 +126,40 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_EDGES.md` opens and does not resolve
+
+Closed October 5, 2026. It asked what the edges the proposer declared at write
+time bought once a growing base gave them material. It answered on both
+surfaces: little, and badly, where tickets arrive, and a great deal over the
+function. What that answer leaves:
+
+- **Whether declaration at write time carries direction beyond one attribute.**
+  47 of the 50 installed edges are one rule of thumb: on a ticket with the
+  security keyword, `SECURITY_INCIDENT` wins. That attribute is the one the
+  corpus and the space weigh most differently, and three other edges are not a
+  population. A base whose conflicts fall elsewhere would say whether the split
+  by surface belongs to the channel or to the attribute. That means another
+  corpus, or other draws of the proposer, and it costs calls: new runs of the
+  loop.
+- **A coin control that does not reward resolving.** `W-c` counted right
+  decisions, and a flipped edge leaves its conflict open. So the count measured
+  resolution, and the record says so beside the verdict. Accuracy among the
+  cases each arm resolves is the comparison it should have made. That figure
+  now exists for this population, so it is spent here. Any next coin control
+  over declared edges should name it in its §0.
+- **The trajectory, and what escalating would have bought.** Both take calls.
+  One is what the loop would have done without its edges. The other is what the
+  model would have answered on the conflict screens those cases would have
+  reached (§10 of the plan).
+- **The objective the edges chose.** They bought most of `SECURITY_INCIDENT`'s
+  right compiled decisions and paid for them in `T2_TECHNICAL` tickets. Which
+  class a declaration protects is the undeclared knob of `FINDINGS3.md` §3,
+  reached by another route.
+- **Stage E.** Imposed declaration is still the one form of the second way never
+  run. See the pairwise section below.
+
+---
+
 ## What `PLAN_FIDELITY.md` opens and does not resolve
 
 Closed October 4, 2026. It asked whether a compiled rule decides a later case the
@@ -160,10 +201,9 @@ What that answer leaves:
 - **~~Fidelity: whether a compiled rule decides a later case the way the model
   would have.~~ Measured on 2026-10-04** by `PLAN_FIDELITY.md`, and moved to *No
   longer here*. What it leaves is in its own section, above.
-- **What the accepted edges buy.** Stage B's three runs are the first in this
-  project where the proposer's declared edges entered the graph. Nobody has scored
-  what they do to the engine's decisions. The records hold everything needed, so
-  it is free.
+- **~~What the accepted edges buy.~~ Measured on 2026-10-05** by
+  `PLAN_EDGES.md`, and moved to *No longer here*. What it leaves is in its own
+  section, above.
 - **Whether the two thin holds are holds.** `U-b` and `U-c` sit on their lines,
   each with one run of three on the wrong side. A second set of three runs under
   the same protocol would show whether the median moves across either line. It

@@ -201,6 +201,27 @@ calls stops a session without recording them, because an outage is not answers.
 agent's harness**, which ends it at that limit. Run long sessions in Sergi's
 terminal, with the key loaded as rule 7 says.
 
+**`PLAN_EDGES.md` closed on 2026-10-05: what the edges the proposer declared at
+write time bought.** Four signed rows: three adjudicated, one reported. Sergi
+signed §0 on 2026-10-05, before any figure it governs existed. It scored the
+edges `PLAN_REUSE.md`'s engine installed in Stage B: on the cases they decided,
+against a coin over their directions, and over the function. The record is
+`results_edges/FINDINGS_EDGES.md`, and `STATUS.md` indexes its figures.
+**Everything in it is free** and reproduces from the committed records. Both
+writers in `edges/` refuse while the plan carries a blank signature line, and
+the gate reads `PLAN_EDGES.md` and no other plan. The first command is blocking
+and writes nothing:
+
+    python3 -m edges.score --dry-run   # W-g1..W-g4; must pass first
+    python3 -m edges.score             # the census, W-a to W-c, W-d
+    python3 -m edges.readings          # POST-RUN readings of the stage's record
+
+**Its `W-c` counts right decisions, and that rewards resolving.** A flipped edge
+leaves its conflict open instead of handing it to the other rule, so a coin
+decides fewer cases, not worse ones. The record says so beside the verdict. A
+coin control over declared edges should compare accuracy among the cases each
+arm resolves. Do not copy that statistic.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
