@@ -70,7 +70,7 @@ reading of `PLAN_REUSE.md`'s three bases, and every line below is set against it
 | **E-d** | **Made to declare against every rule it overlaps, the proposer contradicts subsumption** | `contradice_subsuncion` verdicts, pooled over the runs. In every run the repository has made, this count is zero | **≥ 1** | **0** |
 | **E-e** | *Reported, not adjudicated.* What the rows rest on, and what they could hide | per run, beside the baseline: E-c on the full corpus; E-a to E-c with the edges of each channel alone (§5.3); the online figures of the loop, `PLAN_REUSE.md`'s set; calls, repair rounds and rejections by reason; overlap among distinct rules, and born rules that overlap nothing; declarations by verdict; `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-05)**
 
 **Why E-c is a share and not a score.** A final base written under another
 protocol is another base, and its end to end mixes what its rules carry with how
