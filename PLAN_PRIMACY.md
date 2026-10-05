@@ -64,7 +64,7 @@ minus the share naming it when it is listed second (§5.4). A queue pair's
 | **L-b** | **Where the slot and the proposer's favourite disagree, the answers do not break more often.** Whether the favoured rule is listed first or second does not change how often an answer yields no edge | over the 1,600 rows whose queue pair has a favoured queue: the share with no edge when the favoured rule is listed second, minus the share when it is listed first | **\|difference\| < 0.025** | **\|difference\| ≥ 0.025** |
 | **L-c** | *Reported, not adjudicated.* **What reading the two rows needs** | §7's readings: the first-listed rate and `d` overall; on B-d's two sides and on the pairs with no strictly better rule, under both definitions; by batch; by queue pair; by the breadth of the rule listed first; on Stage C. `L-b`'s split into parse failures and the rest, and the retries. On `L-a`'s queue pair, how often the answer names the better rule | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-05)**
 
 **Standard errors, and the thin label.** `L-a`'s and `L-b`'s are the unpooled
 error of a difference of two shares. **A verdict within one standard error of its
