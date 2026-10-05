@@ -2226,6 +2226,110 @@ minutes, zero API calls.
 
 ---
 
+## 18. Rules written twice — half the base is copies, and 93 pairs disagree
+
+*Added 2026-10-05. `rung3/identical_rules.py` → `results3/identical_rules.json`,
+`PYTHONHASHSEED=0`, from a clean tree at the module's own commit, 3 s, **zero API
+calls**. **POST-RUN**: a census asked for after
+[`FINDINGS_WHY.md`](../results_why/FINDINGS_WHY.md) reported five such pairs,
+with one expectation written into the module and committed before it ran. Not a
+signed row, and it adjudicates nothing.*
+
+`FINDINGS_WHY.md` found 5 of the 1,600 sampled pairs whose two rules carry the
+same conditions in another order and send the ticket to different queues. On
+them the proposer had nothing but the order to go on, and said so. How many such
+pairs the whole base holds had not been counted.
+
+**Two definitions of the same rule.**
+
+- **Written the same**: the same (attribute, operator, value) triples in any
+  order, an `in` list read as a set.
+- **Covering the same**: the same non-empty extension over the exhaustive space.
+  It contains the first.
+
+**Three gates passed before anything was read.** The population recomputes to
+31,850 pairs. `FINDINGS_WHY.md`'s reading reproduces: five such pairs in the
+sample, all five in the batch answered on 2026-08-25, with `R0147`/`R0435` and
+`R0164`/`R0447` among them. And every pair written the same covers the same
+tickets.
+
+### The count
+
+```
+                     groups  rules  pairs, same queue  pairs, different queues
+written the same         83    307                655                       93
+covering the same        84    325                757                      114
+```
+
+- **The expectation held.** Five in a uniform sample of 1,600 predicted about
+  100 such pairs in the population, between about 32 and 232. There are 93,
+  every one of them in the population.
+- **307 of the 577 rules have a copy written the same.** As written, the base
+  holds 353 distinct rules, 577 − 307 + 83; by the tickets they cover, 336. Most
+  copies agree on the queue, 655 pairs of 748. `product eq billing` alone was
+  written 16 times, with `severity gte 3` beside it 17 times, and
+  `has_security_keyword eq True` 12 times, each always to the same queue.
+- **The 93 that disagree sit in 21 groups of 85 rules, among the generic
+  queues.** `SELF_SERVICE_DEFLECT vs T1_GENERAL` 45 pairs, `T1_GENERAL vs
+  T2_TECHNICAL` 33, `BILLING_SPECIALIST vs T1_GENERAL` 12, and 3 others.
+- **Covering adds 21 pairs written differently**, through a range that holds
+  one value or a bound that excludes nothing: `severity eq 4` against
+  `severity gte 4`, since severity stops at 4, or a `prior_tickets_30d lte 20`,
+  which is all of that attribute.
+
+### Which of the two is right
+
+- **They were written far apart.** The two rules of a pair were born a median
+  595 cases apart, between 19 and 1,842.
+- **The rule written second is the better one more often.** Over their shared
+  territory the hidden policy agrees more often with the later rule in 49 pairs
+  and with the earlier in 29, on the space, and 52 and 28 on the corpus. Over the
+  space neither queue is ever right in 13 pairs, 12 of them `T1_GENERAL vs
+  T2_TECHNICAL`.
+- **They reach half the arrivals.** 974 of the 2,000 are matched by both rules
+  of at least one such pair, and 30,670 of the 134,400 points of the space. A
+  rule placed above both decides those first, so this is reach and not what the
+  pairs decide.
+
+### What it means for an order
+
+**Such a pair is a choice no order can split.** Neither extension is strictly
+inside the other, so subsumption leaves the two incomparable, and in the
+`hibrido` pool they survive on exactly the same cases. Whatever order a search or
+a set of edges produces, one of the two decides every ticket of their territory
+that reaches them and the other decides none. No position gives each a part.
+
+**Arrival order picks the worse one more often.** `born_at` places the rule
+written first above its copy, and on these pairs that is the worse rule 49 times
+against 29 over the space. It points the same way as §6, where reversing
+`born_at` beats it on every surface and in both pools, and this section does not
+measure how much of that it is.
+
+### What it does not settle
+
+- **Why rung 1's loop wrote the same rule again.** Rung 1's record keeps each
+  case's outcome and not which rules tied, so whether a copy was written on a
+  case its earlier copies had sent to escalation is not read here.
+- **Other bases.** The three bases `PLAN_REUSE.md`'s loop wrote at n=2000 were
+  not counted.
+- **What the copies cost.** The 655 that agree change no decision. The 93 that
+  disagree are fixed by the order, and no figure here says what fixing them
+  either way would score.
+
+**Files added by this section**
+
+```
+rung3/identical_rules.py         the two definitions, the census, the gates
+results3/identical_rules.json    the record, every pair listed
+tests/test_identical_rules.py    the definitions, the census on a small world,
+                                 the gates, the interval's arithmetic
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.identical_rules`. Seconds,
+zero API calls.
+
+---
+
 ## Files
 
 ```
