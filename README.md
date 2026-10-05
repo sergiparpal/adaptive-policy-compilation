@@ -210,7 +210,7 @@ rung 2's engine. Sergi signed §0 on 2026-09-29 and an amendment to §1 the next
 — the proposer's calls do not reason — each before any figure it governs existed.
 Its record is [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md).
 Its gate reads that plan and no other, requires both signatures, and guards all
-four of its writers, the free ones too.
+five of its writers, the free ones too.
 
 Stages A and C are free, and they reproduce from the committed records. **Stage B
 spent**: its records are guarded, and a re-run neither overwrites them nor gives
@@ -220,6 +220,7 @@ the same draws back. A paid run does not start without Sergi asking for it.
 python3 -m reuse.run --dry-run            # U-g1..U-g4, blocking; writes nothing
 python3 -m reuse.readout                  # Stage A · the eight n=100 records
 python3 -m reuse.score                    # Stage C · the five rows, from the runs
+python3 -m reuse.structure                # POST-RUN · the bases, read for Stage E
 .venv/bin/python -m reuse.run --smoke     # Stage B · spends · only on Sergi's say
 .venv/bin/python -m reuse.run --rep 1     # then --rep 2 and --rep 3, never in parallel
 ```
@@ -375,6 +376,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `reuse/readout.py` | `results_reuse/readout_n100.json` | **refuses while the plan is unsigned** |
 > | `reuse/run.py` | `results_reuse/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `reuse/score.py` | `results_reuse/score.json` | **refuses while the plan is unsigned** |
+> | `reuse/structure.py` | `results_reuse/structure.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
@@ -1171,7 +1173,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             U-g1..U-g4 · blocking, run before any write
 │   ├── readout.py           Stage A · the eight n=100 records
 │   ├── run.py               Stage B · rung 2's loop at n=2000 · spends
-│   └── score.py             Stage C · the five rows, gated on PLAN_REUSE.md
+│   ├── score.py             Stage C · the five rows, gated on PLAN_REUSE.md
+│   └── structure.py         POST-RUN · the final bases, read for Stage E
 │
 ├── rung4/                priority learned from a feedback channel
 │   ├── feedback.py          the channel; the only one that consults the oracle
