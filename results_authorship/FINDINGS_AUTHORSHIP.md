@@ -1,0 +1,218 @@
+# Stage E, the discipline of authorship imposed at write time — findings
+
+Record opened on October 6, 2026, under [`PLAN_AUTHORSHIP.md`](../PLAN_AUTHORSHIP.md).
+Sergi signed §0 on 2026-10-05, before any figure below existed, in a commit of
+its own: *PLAN_AUTHORSHIP.md signed by Sergi*. Stage B's four records,
+[`run_n20_smoke.json`](run_n20_smoke.json) and
+[`run_n2000_r1.json`](run_n2000_r1.json) to [`run_n2000_r3.json`](run_n2000_r3.json),
+name in their `_env` the commits they ran from, by their hashes on the branch
+they were made on. A rebase merge gives those commits new hashes on `main` with
+the same trees, so they are named here by their subjects. Stage C's record is
+[`score.json`](score.json). **This record owns every figure in it.**
+
+**The stage adjudicated three of its four signed rows on 2026-10-06: two are
+refuted and one holds. The fourth, `E-c`, is unadjudicable.**
+
+- **The discipline did not nest the base** (`E-a` is refuted). Nested pairs fell
+  below the baseline's.
+- **Subsumption over the bases is wrong more often, not less**, at the same
+  coverage (`E-b` is refuted).
+- **One run left nothing to order** (`E-c` is unadjudicable). In the two that
+  did, the installed edges filled all of the order's room over the space and
+  58% of it, both above the line, and §0's rule makes the row unadjudicable
+  rather than read on the median of the rest.
+- **The proposer contradicted subsumption 8 times** (`E-d` holds). It is the
+  first time the verdict `contradice_subsuncion` has fired in any run of the
+  project.
+- **The proposer met the discipline by not overlapping** (`E-e`, reported). In
+  the three runs, 70% to 97% of the rules it wrote overlap no rule before them,
+  against 27% to 39% in the baseline, and not one CONFLICT arose in 6,000
+  arrivals. The order answer was never used.
+
+> **PROVENANCE: PRE-REGISTERED.** `E-a` to `E-d` were signed before any of their
+> figures existed. **`E-e` is reported, not adjudicated.** Its baseline column
+> was added to `authorship/score.py` after the stage's first scoring, which
+> wrote `E-e` for the runs only, though §0 asks for it beside the baseline. The
+> second scoring, from the commit that added it, reproduced every verdict and
+> every figure of the first. Everything labelled **POST-RUN** below was read
+> after the verdicts existed. Stage B spent 243 calls, cents; Stage C spent none.
+
+---
+
+## What was run
+
+**Stage B**, `authorship/run.py`, under v1e, each from a clean tree after the key
+check and `E-g1` to `E-g4`, all passing.
+
+| record | from the commit | calls | rules born | refused | repair rounds |
+|---|---|---|---|---|---|
+| smoke, 20 cases | *PLAN_AUTHORSHIP.md signed by Sergi* | 18 | 17 | 0 | 1 |
+| run 1, 2,000 cases | *…'s smoke run: 18 calls parsed, 17 rules born, a repair round exercised* | 50 | 41 | 1 | 8 |
+| run 2, 2,000 cases | *…'s run 1: 42 escalations, 41 rules born, 8 repair rounds* | 144 | 120 | 1 | 23 |
+| run 3, 2,000 cases | *…'s run 2: 121 escalations, 120 rules born, 23 repair rounds* | 31 | 30 | 1 | 0 |
+
+**Every one of the 243 answers ended with `finish_reason` "stop"**, and 238 came
+on the first attempt. No run was interrupted, none resumed, and none met a
+failed call. Each record was committed before the next run began. The three
+refusals were one rule that did not match its ticket and one with a duplicated
+condition, both v1's checks, and one rule a repair round left unplaced.
+
+**Stage C**, `PYTHONHASHSEED=0 python3 -m authorship.score`, zero API calls,
+after `E-g1` to `E-g4` passed again: the hidden policy at 1.0000 through v1e's
+declaration path, the baseline reproduced, the v1 replay, the 44 copies and the
+fingerprint. It ran twice, as the provenance says; the record is the second.
+
+---
+
+## The four rows
+
+Each statistic on each final base read whole, from case 0, as
+`reuse/structure.py` read the baseline. The median adjudicates.
+
+| row | statistic, surface | band | run 1 | run 2 | run 3 | median | baseline | verdict |
+|---|---|---|---|---|---|---|---|---|
+| **E-a** | nested pairs over all pairs | ≥ 0.05 | 0.0037 | 0.0014 | 0.0023 | **0.0023** | 0.0160 | **refuted** |
+| **E-b** | subsumption alone, full corpus: silent error, coverage | ≤ 0.45 and ≥ 0.90 | 0.6448, 0.9925 | 0.6050, 0.9760 | 0.6890, 1.0000 | **0.6448, 0.9925** | 0.5521, 0.966 | **refuted** |
+| **E-c** | share of the order's room the installed edges fill, exhaustive space | ≥ 0.50 | 1.0000 | 0.5798 | undefined | **undefined** | 0.3833 | **unadjudicable** |
+| **E-d** | `contradice_subsuncion` verdicts, pooled | ≥ 1 | 2 | 6 | 0 | **8** | 0 | **holds** |
+
+### What the verdicts say
+
+- **`E-a`: the proposer did not write exceptions inside the rules they override.**
+  3 nested pairs of 820, 10 of 7,140 and 1 of 435. The baseline, over distinct
+  rules, had 0.0160 at the median. The drafter expected the refutation: a
+  declaration works without nesting.
+- **`E-b`: the bases are no sounder.** Subsumption alone decides nearly all the
+  corpus and is wrong on 0.60 to 0.69 of what it decides, against 0.47 to 0.59 in
+  the baseline. Over the space the same figure is 0.76 to 0.85. The drafter
+  expected this one too: on the corpus subsumption sits at what the rules allow,
+  and a discipline about placing rules does not change which queue the model
+  writes.
+- **`E-c`: the row cannot be read, and the reason is the finding.** Run 3's base
+  holds one overlapping pair of 435, and that pair is nested. No pair could carry
+  an edge, subsumption leaves no conflict over the space, and the order's room is
+  zero points, so the share is undefined. §0 fixed before the runs that an
+  undefined share in any run makes the row unadjudicable, and the record does
+  not take the median of the other two. **Those two are above the line**:
+  - run 1: a room of 33,600 points of the space, all of it filled; the edges
+    lift the end to end from 0.1823 to 0.4323, the hybrid bound;
+  - run 2: a room of 27,560 points, 58% filled, from 0.1841 to 0.3030.
+  They are two runs, not the row.
+- **`E-d`: made to place a contained rule, the proposer sometimes called it a
+  default.** 2 and 6 such declarations in runs 1 and 2, none in run 3. Level 1
+  refused each one, as the engine was built to. v1 had told the proposer not to
+  declare on nested pairs, so the verdict had never had a chance to fire.
+
+---
+
+## How the proposer met the discipline — `E-e`, reported
+
+**It overlapped less.** The discipline asks for a declaration against every rule
+a new one overlaps, and a rule that overlaps nothing needs none.
+
+| per run | baseline (v1): 1 · 2 · 3 | Stage E (v1e): 1 · 2 · 3 |
+|---|---|---|
+| rules born | 62 · 31 · 42 | 41 · 120 · 30 |
+| born overlapping no earlier rule | 17 · 12 · 12 | **32 · 84 · 29** |
+| as a share of the rules born | 0.27 · 0.39 · 0.29 | **0.78 · 0.70 · 0.97** |
+| overlap among distinct rules | 0.0713 · 0.1138 · 0.0710 | **0.0366 · 0.0115 · 0.0023** |
+| CONFLICTs in the loop's 2,000 arrivals | 30 · 5 · 12 | **0 · 0 · 0** |
+
+- **No CONFLICT, so no order answer.** The order channel installed no edge in
+  any run, and every installed edge came with a rule: 28, 76 and 1 accepted, 2, 6
+  and 0 refused as contradicting subsumption.
+- **Half the declarations were inert.** 29, 68 and 29 cited a rule the new one
+  does not overlap, refused as `no_solapan`. The proposer placed itself against
+  rules it was shown, not against the overlap the engine computes, and the
+  repair rounds supplied the rest.
+- **This is the trap §6.3 of the plan named**: *a proposer can obey by
+  partitioning*. It is also the mechanism `ARBITRATION_REPORT.md` §3 describes,
+  partitioning removes the error detector, now produced by the protocol meant to
+  impose stratification.
+
+### The loop's own figures, beside the baseline
+
+| per run | baseline: 1 · 2 · 3 | Stage E: 1 · 2 · 3 |
+|---|---|---|
+| reuse | 0.5323 · 0.8387 · 0.7381 | 1.0000 · 0.9083 · 0.9667 |
+| silent error | 0.5939 · 0.5531 · 0.4760 | 0.6420 · 0.6051 · 0.6887 |
+| proposal action accuracy | 0.4839 · 0.4839 · 0.5476 | 0.4524 · 0.4380 · 0.2903 |
+| end to end | 0.3935 · 0.4400 · 0.5130 | 0.3505 · 0.3710 · 0.3065 |
+
+**More reused, more often wrong, and the proposer chose the right queue less
+often.** Two caveats the plan declared bear on the last two lines: a repair round
+puts more rules in front of the model, which `PLAN_FIDELITY.md` found a sign may
+cost it accuracy (§6.2), and the baseline was asked on 2026-09-30 and these runs
+on 2026-10-05 (§6.4).
+
+### The two rare queues
+
+- **`ONCALL_ESCALATION`**: no rule decides any of its 7 tickets right, in any
+  run of either protocol. Stage E escalated 0, 2 and 1 of them, against none in
+  the baseline. The trigger is v1's, and the plan expected nothing better.
+- **`SECURITY_INCIDENT`**: of its 20 tickets, the rules decided 19, 18 and 20,
+  and decided right 14, 5 and 0. The baseline's rules decided 5, 17 and 18, and
+  decided right 5, 6 and 18.
+
+---
+
+## The expectation, against the verdicts
+
+**The drafter expected `E-c` and `E-d` to hold and `E-a` and `E-b` to be
+refuted.** `E-a`, `E-b` and `E-d` came out as expected. `E-c`, the row the
+drafter trusted least, came out neither: the plan named the partition trap in
+§6.3 and did not guard the statistic against it, so the run that fell into the
+trap took the row with it. A plan that reads a share of a room should say in §0
+what a run without room counts as, and this one did; what it did not foresee is
+that a run would have none.
+
+---
+
+## What this settles, and what it does not
+
+**What it settles.**
+
+- **The third form of the second way has now been run.** Declaration imposed at
+  write time, on this loop, produced partition rather than stratification. The
+  proposer avoided most of the overlaps it would have had to declare.
+- **P3's mechanism does not work through the base.** The discipline neither
+  nested the rules (`E-a`) nor made subsumption over them sounder (`E-b`).
+- **`contradice_subsuncion` has fired.** The counter `ARBITRATION_REPORT.md` §5
+  called *a counter nobody has seen work* has now counted 8 contradictions, in
+  two runs of three.
+
+**What it does not settle.**
+
+- **Whether imposed declaration supplies order.** `E-c` is unadjudicable. Where
+  the proposer did overlap, its edges filled the room well, in two runs. A
+  protocol that kept the proposer overlapping, v2's instruction to overlap
+  joined to this discipline for instance, would be the test, and it is another
+  plan.
+- **The discipline alone.** The order answer was never used, so the bundle §6.1
+  warned about reduced to the discipline and the copy refusal. Whether the
+  partition comes from the requirement or from the instruction that states it
+  cannot be separated in these runs.
+- **The screen and the date** (§6.2, §6.4), which bear on the loop's own
+  figures.
+- **One model, one corpus, three draws.**
+
+---
+
+## Files
+
+```
+results_authorship/run_n20_smoke.json    Stage B: the smoke run
+results_authorship/run_n2000_r1.json … run_n2000_r3.json   Stage B: the three runs
+results_authorship/score.json            Stage C: E-a to E-d, E-e, the baseline
+authorship/plan.py                       the gate, §11's constants, §0's lines
+authorship/protocol.py                   v1e's texts, the validator, the proposer
+authorship/loop.py                       rung 2's loop with v1e's proposal path
+authorship/gates.py                      E-g1 to E-g4
+authorship/run.py                        Stage B: spends; guarded
+authorship/score.py                      Stage C
+tests/test_authorship.py                 the instrument, no figure
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m authorship.score`, about a minute
+and a half, zero API calls. `python3 -m authorship.run --dry-run` runs the
+blocking checks and writes nothing.
