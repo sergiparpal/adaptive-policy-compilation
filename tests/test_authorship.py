@@ -388,6 +388,23 @@ class TestStageCsArithmetic(unittest.TestCase):
         v = score.verdicts([self.run_(0.1, 0.1, 0.89, 0.6, 0)] * 3)
         self.assertFalse(v["E-b"]["holds"])
 
+    def test_born_overlapping_nothing_is_read_in_birth_order(self):
+        def r(rid, born, **conds):
+            return {"rule_id": rid, "born_at": born,
+                    "conditions": [{"attr": a, "op": "eq", "value": v}
+                                   for a, v in conds.items()]}
+        rules = [r("R2", 5, customer_tier="free"), r("R1", 1, product="billing"),
+                 r("R3", 9, product="api")]
+        # R1 meets nothing before it; R2 meets R1 (billing & free); R3 meets R2.
+        self.assertEqual(score.born_overlapping_nothing(rules, Space()), 1)
+
+    def test_the_baseline_beside_e_e(self):
+        got = score.baseline_e(gates.load(plan.baseline_path(2)), Space())
+        self.assertEqual(set(got), {"rep", "online", "escalations", "born",
+                                    "born_overlapping_nothing", "distinct_overlap",
+                                    "declarations", score.ONCALL, score.SECURITY})
+        self.assertTrue(all(k.startswith("write:") for k in got["declarations"]))
+
     def test_an_undefined_share_in_any_run_is_unadjudicable(self):
         runs = [self.run_(0.1, 0.4, 0.95, 0.6, 1)] * 2 + [self.run_(0.1, 0.4, 0.95, None, 0)]
         self.assertTrue(score.verdicts(runs)["E-c"]["unadjudicable"])

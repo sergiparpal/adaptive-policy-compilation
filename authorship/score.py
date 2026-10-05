@@ -76,6 +76,22 @@ def distinct_overlap(rules: list[dict], space: Space) -> float | None:
     return hit / pairs if pairs else None
 
 
+def born_overlapping_nothing(rules: list[dict], space: Space) -> int:
+    """Rules whose extension met no rule born before them, replayed over the
+    base in birth order. Under v1e it is what each birth recorded as an empty
+    `O`, and `score_run` checks the two agree; for a v1 run it is the only way to
+    read it."""
+    seen: list[int] = []
+    alone = 0
+    for r in sorted(rules, key=lambda r: (r["born_at"], r["rule_id"])):
+        e = space.extension([Condition(c["attr"], c["op"], c["value"])
+                             for c in r["conditions"]])
+        if not any(e & x for x in seen):
+            alone += 1
+        seen.append(e)
+    return alone
+
+
 def rare(record: dict, queue: str) -> dict[str, int]:
     rows = [r for r in record["records"] if r["truth"] == queue]
     decided = [r for r in rows if not r["escalated"] and r["outcome"] == "ACTION"]
@@ -105,6 +121,7 @@ def score_run(record: dict, corpus, space: Space, tmask: dict[str, int]) -> dict
     calls = [c for e in escalations for c in e["calls"]]
     born = [e for e in escalations if e["verdict"] == p.BORN]
     born_alone = sum(1 for e in born if not (e["calls"][-1].get("overlapped") or []))
+    replayed = born_overlapping_nothing(rules, space)
     return {
         "rep": record.get("rep"),
         "E-a": profile["pairs"]["nested_share"],
@@ -123,12 +140,34 @@ def score_run(record: dict, corpus, space: Space, tmask: dict[str, int]) -> dict
             "finish_reasons": dict(Counter(str(c["finish_reason"]) for c in calls)),
             "born": len(born),
             "born_overlapping_nothing": born_alone,
+            "born_overlapping_nothing_replayed": replayed,
+            "the_two_readings_agree": born_alone == replayed,
             "distinct_overlap": distinct_overlap(rules, space),
             "declarations": dict(Counter(f"{ch}:{why}" for (_w, _l, why), ch
                                          in zip(log, chans))),
             ONCALL: rare(record, ONCALL),
             SECURITY: rare(record, SECURITY),
         },
+    }
+
+
+def baseline_e(record: dict, space: Space) -> dict[str, Any]:
+    """E-e's figures for one of `PLAN_REUSE.md`'s runs, so that each is read
+    beside the baseline as §0 asks. A v1 run made one call per escalation, plus
+    retries it did not record, and had no repair round and no order channel.
+    E-c's baseline on both surfaces is `E-g2`'s, in the gates."""
+    rules = base_rules(record)
+    log = record.get("edge_log") or []
+    return {
+        "rep": record.get("rep"),
+        "online": {k: record["metrics"].get(k) for k in ONLINE},
+        "escalations": record["metrics"].get("escalations"),
+        "born": len(rules),
+        "born_overlapping_nothing": born_overlapping_nothing(rules, space),
+        "distinct_overlap": distinct_overlap(rules, space),
+        "declarations": dict(Counter(f"write:{why}" for _w, _l, why in log)),
+        ONCALL: rare(record, ONCALL),
+        SECURITY: rare(record, SECURITY),
     }
 
 
@@ -194,6 +233,8 @@ def main(argv: list[str] | None = None) -> int:
     space = Space()
     tmask = space_truth_masks(space)
     runs = [score_run(r, corpus, space, tmask) for r in found]
+    baseline = [baseline_e(gates.load(plan.baseline_path(rep)), space)
+                for rep in plan.BASELINE_REPS]
     rows = verdicts(runs)
     for name, v in rows.items():
         state = ("unadjudicable" if v["unadjudicable"] else
@@ -213,6 +254,15 @@ def main(argv: list[str] | None = None) -> int:
         "gates": checks.summary(),
         "verdicts": rows,
         "runs": runs,
+        "baseline": {
+            "what": "E-e's figures for PLAN_REUSE.md's three runs, to read beside "
+                    "the runs' as §0 asks. E-c's baseline is E-g2's, in the gates.",
+            "provenance": "Added to this module after its first run, which wrote E-e "
+                          "for the runs and not beside the baseline: found while "
+                          "writing FINDINGS_AUTHORSHIP.md, which says whether the "
+                          "run that added it reproduced the first run's verdicts "
+                          "and figures.",
+            "runs": baseline},
     }), indent=2, default=str) + "\n")
     print(f"\n-> {plan.SCORE_PATH}\n  {describe()}")
     return 0
