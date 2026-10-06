@@ -69,7 +69,7 @@ three runs, which offered declaration; and v1e, the protocol of
 | **O-c** | **The declarations point at the better rule over the function at least seven times in ten** | `W-b`'s statistic: among the installed edges between rules of different queues that have a strict better rule over their shared region, **exhaustive space**, the share whose declared winner is that rule, **pooled over the runs**. With no such edge in any run, the row is unadjudicable. v1 34 of 45, 0.7556; v1e 58 of 84, 0.6905 | **≥ 0.70** | **< 0.70** |
 | **O-d** | *Reported, not adjudicated.* What the rows rest on, and what they could hide | per run, beside both baselines: O-b on the full corpus; O-b and O-c with each channel's edges alone; the loop's online figures, `PLAN_REUSE.md`'s set; calls, repair rounds and refusals by reason, with `finish_reason`; born rules that overlap nothing at all, and overlap among distinct rules; declarations by verdict and by whether the two queues agree; every `contradice_subsuncion`, read against the truth as `authorship/refused.py` reads it; CONFLICTs and order answers; `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations and compiled decisions | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-06)**
 
 **Why O-a is a row and not a note.** `E-c` had no verdict because one run left
 nothing to order, and nothing in its §0 named the partition that caused it. O-a
