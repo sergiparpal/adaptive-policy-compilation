@@ -322,6 +322,7 @@ one that is interrupted resumes where it stopped.
 ```bash
 python3 -m authorship.run --dry-run            # E-g1..E-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m authorship.score   # Stage C · E-a to E-d, and E-e
+PYTHONHASHSEED=0 python3 -m authorship.refused # POST-RUN · the refused declarations
 .venv/bin/python -m authorship.run --smoke     # Stage B · spends · only on Sergi's say
 .venv/bin/python -m authorship.run --rep 1     # then --rep 2 and --rep 3, never in parallel
 ```
@@ -403,6 +404,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `reuse/structure.py` | `results_reuse/structure.json` | **refuses while the plan is unsigned** |
 > | `authorship/run.py` | `results_authorship/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `authorship/score.py` | `results_authorship/score.json` | **refuses while the plan is unsigned** |
+> | `authorship/refused.py` | `results_authorship/refused.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
@@ -1200,7 +1202,8 @@ adaptive-policy-compilation/
 │   ├── loop.py              rung 2's loop with v1e's proposal path
 │   ├── gates.py             E-g1..E-g3 · blocking, run before any write
 │   ├── run.py               Stage B · the three runs · spends
-│   └── score.py             Stage C · E-a to E-d, E-e, gated on PLAN_AUTHORSHIP.md
+│   ├── score.py             Stage C · E-a to E-d, E-e, gated on PLAN_AUTHORSHIP.md
+│   └── refused.py           POST-RUN · the declarations level 1 refused, against the truth
 │
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
