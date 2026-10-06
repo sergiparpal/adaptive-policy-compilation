@@ -32,6 +32,15 @@
 > §0 itself is unedited either way, and `git log -p PLAN_PAIRWISE.md` shows that
 > without needing a range. The signature is not touched to say so, because it is
 > Sergi's.
+>
+> **[NOTE 2026-10-06] Stage E has run, under a plan of its own.** §11 was
+> specified here and never authorised here, and that stands: nothing in this
+> file's signature covers it. It was specified again as
+> [`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md), which Sergi signed on 2026-10-05,
+> and closed on 2026-10-06; its record is
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
+> The same runs retire §5.3's caveat: `EDGE_CONTRADICTS` fired there. §0, §5.3
+> and §11 are not edited. This note sits in the banner, and travels alone.
 
 **Status: drafted, unsigned. Two of its five rows are already spent — see §0.1.**
 §0 carries prediction bands drafted by Claude on 2026-08-23. Under hard rule 2 of
