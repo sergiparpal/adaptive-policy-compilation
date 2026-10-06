@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 5, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 6, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -32,8 +32,10 @@ the pairwise answers closed the same day**: `PLAN_PRIMACY.md`, three signed rows
 one held, one refuted and one reported, written up in `results_primacy/`. **What
 the proposer says it is doing closed after it**: `PLAN_WHY.md`, five signed rows
 set on a development set, four held and one reported, written up in
-`results_why/`. This is a list of things not done, none of them developed and in
-no order of precedence.
+`results_why/`. **Stage E, declaration imposed at write time, closed on October
+6, 2026**: `PLAN_AUTHORSHIP.md`, five signed rows, two refuted, one held, one
+without a verdict and one reported, written up in `results_authorship/`. This is
+a list of things not done, none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -43,6 +45,13 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Stage E: declaration imposed at write time.** October 6, 2026,
+  `PLAN_AUTHORSHIP.md`, cents. Required to declare against every rule it
+  overlapped, the proposer overlapped less, and no CONFLICT arose in three runs.
+  The discipline neither nested the base nor made subsumption over it sounder,
+  and `contradice_subsuncion` fired for the first time. Whether the declarations
+  supply order has no verdict, because one run left nothing to order. What it
+  leaves is in its own section below. `results_authorship/`.
 - **What the `why` texts say.** October 5, 2026, `PLAN_WHY.md`, zero calls. When
   the proposer says the rule it names is more specific, the claim is true of the
   extension about half the time. By "specific" it means a rule that names a
@@ -139,6 +148,42 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_AUTHORSHIP.md` opens and does not resolve
+
+Closed October 6, 2026. It ran Stage E, the third form of the second way:
+declaration imposed at write time, on `PLAN_REUSE.md`'s loop. The proposer met
+the requirement by overlapping less. What that leaves:
+
+- **Whether imposed declaration supplies order.** `E-c` has no verdict, because
+  one run of three left nothing to order. Where the proposer did overlap, its
+  edges filled the room well over the space, in two runs. A protocol that kept
+  the proposer overlapping would test it: v2's instruction to overlap joined to
+  this discipline, for instance. It costs calls, and it needs its own plan and
+  signature.
+- **The requirement, or the paragraph that states it.** The order answer was
+  never used, so the bundle reduced to the requirement and the copy refusal.
+  Whether the partition comes from being made to declare or from being told to,
+  these runs cannot separate. Telling without enforcing, with no repair round,
+  would. Calls again.
+- **What the screen and the date did to the loop's own figures.** The proposer
+  chose the right queue less often than in the baseline. A repair round puts
+  more rules in front of the model, which `PLAN_FIDELITY.md` found a sign may
+  cost it, and the two sets of runs are five days apart. Neither is separated
+  (§6.2 and §6.4 of the plan).
+- **Whether the declarations level 1 refused were right.** Each of the 8 says a
+  broader rule should beat a rule inside it, on the narrower rule's region.
+  Where the two carry different queues, whether the broader one's is the truth
+  there more often would say what the refusal cost or saved. That is the
+  rung 2 item on subsumption against declaration, below, with material at last.
+  Free, from the records, and nobody has measured it.
+- **A median of shares needs §0 to say what a run without room does to it.**
+  `E-c`'s §0 said such a run has no share and left the median to the scorer,
+  whose reading, merged before the signature, made the row unadjudicable where
+  any other reading of the median holds it. The next plan that adjudicates a
+  median of shares should settle it in §0 itself.
 
 ---
 
@@ -253,8 +298,9 @@ function. What that answer leaves:
   right compiled decisions and paid for them in `T2_TECHNICAL` tickets. Which
   class a declaration protects is the undeclared knob of `FINDINGS3.md` §3,
   reached by another route.
-- **Stage E.** Imposed declaration is still the one form of the second way never
-  run. See the pairwise section below.
+- ~~**Stage E.**~~ **Run on 2026-10-06** as `PLAN_AUTHORSHIP.md`, and moved to
+  *No longer here*. On this loop it produced partition rather than
+  stratification. What it leaves is in its own section, above.
 
 ---
 
@@ -484,7 +530,7 @@ tried at. What is left:
   the sampled population, depending on surface: the true action across the whole
   shared region is a third queue. It is the material problem appearing inside the
   direction question, and no edge and no order touches it.
-- **Stage E, specified and not authorised.** §11 of `PLAN_PAIRWISE.md`: make the
+- ~~**Stage E, specified and not authorised.**~~ §11 of `PLAN_PAIRWISE.md`: make the
   proposer declare, for each rule it overlaps, whether it is an exception to it
   or a default under it. It has a written spec, two predictions and no signature,
   and it is the one item here that attacks the authorship problem at its source
@@ -500,10 +546,19 @@ tried at. What is left:
   to say what the proposer does on a conflict. Today the protocol can only answer with a
   rule, and the proposer answers with a copy of the rule it wants to win, which
   is how 35 of the 64 accepted edges arrived.
+  **[NOTE 2026-10-06] Run as `PLAN_AUTHORSHIP.md`, and closed.** Sergi signed it
+  on 2026-10-05, and it ran on that loop three times at n=2000. Its first
+  prediction, re-anchored as `E-b`, was refuted: subsumption over the bases is
+  wrong more often, not less. Its second had nothing to measure on this loop and
+  was not carried. The proposer met the discipline by overlapping less, so
+  whether the declarations supply order has no verdict (`E-c`). What it leaves
+  is in *What `PLAN_AUTHORSHIP.md` opens*, above.
 
 **Two things this thread moved further away rather than closer**, and they are
 annotated in place in the rung 2 list below: `EDGE_CONTRADICTS` still measuring
 nothing, and subsumption-versus-declaration never being put to the test.
+**[NOTE 2026-10-06]** Both moved with `PLAN_AUTHORSHIP.md`, and the rung 2 list
+says how.
 
 ---
 
@@ -512,7 +567,7 @@ nothing, and subsumption-versus-declaration never being put to the test.
 *Added 2026-09-29.* That report's §7 makes five proposals, written on 2026-08-17
 as directional drafts — no band and no signature, as the section says of itself.
 Two became work under other names: P1 is the pairwise thread above and P3 is its
-Stage E. Half of a third was built: P5's benchmark is that thread's Stage B. The
+Stage E, run on 2026-10-06 as `PLAN_AUTHORSHIP.md`. Half of a third was built: P5's benchmark is that thread's Stage B. The
 rest never reached this file. The report is indexed as a document to read before
 writing another, not as a list of what is open, so for six weeks three open items
 lived only in its §7. They are carried here as the report left them, each with
@@ -541,6 +596,9 @@ draft a band for one of them and may not sign it.
   from the offline-overlap population — neither the traffic sieve nor the growth
   in base size the claim is about. With the oracle choosing, the claim is about
   the base and the corpus rather than the model: free in calls, not in code.
+  **[NOTE 2026-10-06]** `PLAN_AUTHORSHIP.md` offered the proposer an order answer
+  on every CONFLICT, which is this proposal at write time, and the answer was
+  never used: under its discipline no CONFLICT arose. It bears on nothing above.
 - **P4 · Search over k-stratified orders instead of total ones.** Assign the
   rules to *k* strata, sweep *k*, and let a tie inside a stratum escalate
   instead of being broken by index. **Its value does not depend on what the
@@ -1305,11 +1363,17 @@ draft a band for one of them and may not sign it.
 - Why the proposer partitions instead of stratifying. Undiscriminated
   candidates: the framing of the task (one ticket, one rule), the specific model,
   or rule-writing elicitation in general.
+  **[NOTE 2026-10-06]** Made to declare against every rule it overlapped, it
+  partitioned more (`PLAN_AUTHORSHIP.md`, `E-e`). That does not tell the three
+  candidates apart. It does show a protocol pushing the partition further.
 - Whether any prompt or schema gets a proposer that sees the base to write
   overlapping rules. Versions v1 and v2 bound a range; they do not exhaust it.
   **Untouched by the pairwise thread**, which sidesteps rule-writing entirely and
   therefore says nothing about it. Stage E of `PLAN_PAIRWISE.md` is the one
   specified attempt at it.
+  **[NOTE 2026-10-06] Run as `PLAN_AUTHORSHIP.md`, and it went the other way.**
+  Required to declare against every rule it overlapped, the proposer overlapped
+  less than under v1 on the same loop.
 - How to get a base that produces conflicts, which is the condition for
   `EDGE_CONTRADICTS` to measure anything. Eight runs produced almost none.
   **Further away as of 2026-08-24, not closer.** The pairwise protocol filters
@@ -1324,6 +1388,12 @@ draft a band for one of them and may not sign it.
   had them, and accepted the proposer's edges. But `contradice_subsuncion` fired in
   none of them. A base with conflicts turns out not to be enough; the proposer has
   still never been caught declaring against subsumption.
+  **[NOTE 2026-10-06] It has fired.** `PLAN_AUTHORSHIP.md`'s protocol asked for
+  a declaration against every rule a new one overlaps, nested ones included. The
+  proposer declared against subsumption 8 times in two runs of three, and level
+  1 refused each (`E-d` holds). What it took is what the note of 2026-08-24
+  said: a protocol that offers such a pair. v1 told the proposer not to declare
+  on nested pairs, and those runs had no conflicts at all.
 - ~~Whether n=100 is enough.~~ The bases vary by nearly an order of magnitude in
   size across seeds; overlap might emerge only as the base grows.
   **Answered 2026-09-30, at n=2000, by `PLAN_REUSE.md`'s Stage B.** It does emerge.
@@ -1342,6 +1412,11 @@ draft a band for one of them and may not sign it.
   exactly the pairs its population excludes. Testing it means asking for an edge
   precisely where the structure already answers, which costs calls that buy
   nothing except this measurement — which may be reason enough.
+  **[NOTE 2026-10-06] Met for the first time, and not yet scored.** In
+  `PLAN_AUTHORSHIP.md`'s runs the proposer declared a broader rule the winner
+  over a rule inside it, 8 times, and level 1 refused each declaration as
+  designed. Whether obeying would have been right is free to measure from the
+  records; see *What `PLAN_AUTHORSHIP.md` opens*.
 - The attributes the proposer does not use — `language` above all, in none of the
   eight runs. The audit is in `FINDINGS2.md` §4.
 

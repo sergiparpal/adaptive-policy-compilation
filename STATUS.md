@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 5, 2026. **Not a history** — that is the four
+What is known, as of October 6, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -9,9 +9,11 @@ What is known, as of October 5, 2026. **Not a history** — that is the four
 [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md),
 [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
 [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md),
-[`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md) and
-[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md), each with its dated
-errata in place. Every figure here already exists in one of them.
+[`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
+[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md) and
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+each with its dated errata in place. Every figure here already exists in one
+of them.
 
 **The project.** A cheap symbolic engine resolves the cases it covers; on one it
 does not cover (an *impasse*), an LLM acts and writes a rule so that next time it
@@ -28,12 +30,14 @@ proposer declared at write time bought, in `PLAN_EDGES.md`**: four more, closed
 on 2026-10-05 — plus **where the presentation slot decides the pairwise answers,
 in `PLAN_PRIMACY.md`**: three more, closed the same day — plus **what the
 proposer says it is doing, against what it does, in `PLAN_WHY.md`**: five more,
-closed the same day too.
+closed the same day too — plus **the second way's third form, declaration
+imposed at write time, in `PLAN_AUTHORSHIP.md`**: five more, closed on
+2026-10-06.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
 proposer declare it, learn it from observed behaviour — the first is falsified,
-the second has been tried in two forms and supplied almost none of it, and the
+the second has been tried in three forms and supplied almost none of it, and the
 third recovers 61% of what full supervision buys, on corpus test.
 
 > **[ERRATUM 2026-09-28] The second clause had been stale since the pairwise
@@ -72,6 +76,28 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So the second clause stands on the corpus, the surface the third clause names,
 > and not on the space. Stage E is still the one form never run.
 > [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md).
+>
+> **[NOTE 2026-10-06] The third form has now run, and the second clause counts
+> it.** The clause read *two forms* until this note, and the two notes above call
+> Stage E never run, which was true when each was written. Stage E is declaration
+> imposed at write time, run as [`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md): a rule
+> that overlapped another was refused until the proposer declared it an exception
+> to it or a default under it.
+>
+> - **The proposer met the requirement by overlapping less.** Most of the rules
+>   it wrote overlap no rule written before them, and no CONFLICT arose in three
+>   runs of 2,000 arrivals.
+> - **On the corpus that left the order almost nothing to do.** Its room was 15
+>   and 47 arrivals of 2,000 in two runs, and none in the third.
+> - **Over the space the row is unadjudicable.** The run with no room makes the
+>   median undefined, as the scorer reads it. In the other two runs the edges
+>   filled all of the room and 58% of it.
+> - **The bases came out no sounder.** On the corpus, subsumption over them is
+>   wrong more often than over v1's.
+>
+> So the clause holds on the corpus for the third form too, and over the space
+> the third form has no verdict.
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
 
 ---
 
@@ -120,7 +146,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Sixty-four rows have been signed before the figures they name existed. This
+**Sixty-nine rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -161,20 +187,27 @@ a count behind it.
 | **W** · declared edges (§0 of `PLAN_EDGES.md`) | 4 | 3 | **2** | 0 | 1 | 1 |
 | **L** · the slot listed first (§0 of `PLAN_PRIMACY.md`) | 3 | 2 | **1** | 0 | 1 | 1 |
 | **Y** · the why texts (§0 of `PLAN_WHY.md`) — *bands set on a development set* | 5 | 4 | **0** | 0 | 4 | 1 |
-| **total** | **64** | **55** | **22** | **2** | **31** | **8** |
+| **E** · declaration imposed (§0 of `PLAN_AUTHORSHIP.md`) | 5 | 3 | **2** | 0 | 1 | 1 |
+| **total** | **69** | **58** | **24** | **2** | **32** | **9** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`. Hold: `Q-a`, `Q-b`,
-`Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`,
-`A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`,
-`F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`. Reported: `R-d`, `C-d`, `D-d`,
-`U-f`, `F-f`, `W-d`, `L-c`, `Y-e`.
+`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`.
+Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`,
+`P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`,
+`F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`, `E-d`.
+Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
 verdict rather than letting the favourable beam pick one. It is in the *signed*
 column and out of the *adjudicated* one.
+**`E-c` is the second, for another reason.** One run of three left the order no
+room, so that run's share is undefined. §0 makes the row unadjudicable if the
+median is undefined, and `authorship/score.py`, merged before the signature,
+reads a median over such a run as undefined. **Under any other reading of that
+median the row would hold**, because the other two runs are above its line. It
+is in the *signed* column and out of the *adjudicated* one, beside `I-b`.
 **Dead zone: `R-b` and `C-a`** — a row landing between its band and its
 refutation line, which is a drafting defect and not a result. **`D` has none**,
 because after those two the D entry declared every band's edges to be its own
@@ -186,14 +219,14 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 22 of 55 = **40.0%**
-refuted; without them, 20 of 49 = **40.8%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 24 of 58 = **41.4%**
+refuted; without them, 22 of 52 = **42.3%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.8 points the flattering way, which is exactly why saying so is not optional.
+0.9 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows flatter it more, and for a reason of design.** Their bands were
 set on a development set from the same model a day earlier, so they bet that a
 reading generalises rather than test the drafter's foresight. Without them the
-two ratios are 22 of 51 = **43.1%** and 20 of 45 = **44.4%**, which is the reading
+two ratios are 24 of 54 = **44.4%** and 22 of 48 = **45.8%**, which is the reading
 the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
@@ -232,6 +265,12 @@ the calibration note should take.
 > two ratios moved together; the gap between them is now 0.8 points. The ratios
 > without the `Y` rows are given beside them, for the reason the paragraph above
 > says.
+>
+> **[NOTE 2026-10-06] Recomputed with the `E` thread, in the same commit as its
+> row.** Five rows were signed and three adjudicated: two refuted and one held.
+> One was reported, and one is signed and not adjudicated, like `I-b`. The table,
+> the named lists, the count in the heading, the two ratios and the two without
+> the `Y` rows moved together; the gap between the first two is now 0.9 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -253,7 +292,9 @@ all four; and `L` from
 [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
 which owns all three; and `Y` from
 [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md), which owns all
-five.
+five; and `E` from
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+which owns all five.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -364,6 +405,23 @@ was frozen on 365 development sentences, and the rows were read on the 1,114 of
 the next day's batch. §0 said before the run that four holds would mean the
 readings generalise and nothing about foresight, and the scoreboard above marks
 the row so. `Y-e` is reported.
+
+**The `E` rows ask whether declaration imposed at write time stratifies the base,
+and the three that were read came out as the drafter expected.** Sergi signed §0
+of `PLAN_AUTHORSHIP.md` on 2026-10-05, before any of its figures existed, and a
+gate refuses its writers otherwise. The drafter expected `E-a` and `E-b` to be
+refuted and `E-c` and `E-d` to hold, and trusted `E-c` least.
+
+- **`E-a` and `E-b` were refuted, as expected.** They carry the claims of P3 in
+  `ARBITRATION_REPORT.md` §7, which the drafter wrote down to be tested and bet
+  against: two refutations the drafter predicted, not two misses.
+- **`E-d` held.** `contradice_subsuncion` fired for the first time in the
+  project.
+- **`E-c` came out neither.** The proposer met the discipline by overlapping
+  less, one run left the order no room, and the row is unadjudicable on the
+  scorer's reading, as above.
+
+`E-e` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -990,7 +1048,8 @@ the three runs, on the corpus, from
   the ILP thread's *what the loop never asks about, no method can learn* belongs
   to compilation by impasse, not to rung 1's conflict trigger.
 - **Declared priority got material for the first time.** Edges were accepted in
-  every run. `contradice_subsuncion` still never fired.
+  every run. `contradice_subsuncion` still never fired. **[NOTE 2026-10-06]** It
+  has fired since, under the protocol of `PLAN_AUTHORSHIP.md` (`E-d`, below).
 
 Stage A found the same shape at n=100 in the eight August runs; it is reported,
 not adjudicated.
@@ -1066,6 +1125,35 @@ they decided 114 cases. Pooled over the three runs, from
   decisions came through an edge. The price was 68 `T2_TECHNICAL` tickets sent
   there.
 
+**Declaration imposed at write time, measured: the proposer met it by not
+overlapping.** `PLAN_AUTHORSHIP.md` ran `PLAN_REUSE.md`'s loop three more times at
+n=2000, under a protocol that refused a rule overlapping another until the
+proposer declared it an exception to it or a default under it, nested rules
+included. Each final base is read whole, from case 0, and the figures are from
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md):
+
+- **It did not nest the base.** Nested pairs are 0.0023 of all pairs on the
+  median of the three runs, against the baseline's 0.0160 (`E-a` refuted).
+- **Subsumption over the bases is wrong more often, not less.** On the full
+  corpus, on the median, it is wrong on 0.6448 of what it decides, at a coverage
+  of 0.9925, against the baseline's 0.5521 (`E-b` refuted).
+- **One run left nothing to order** (`E-c` unadjudicable). Its base holds one
+  overlapping pair, and that pair is nested. Over the space, the installed edges
+  of the other two runs filled all of the order's room and 58% of it. The row's
+  verdict rests on the scorer's reading of the median, set out in the scoreboard
+  above.
+- **The proposer contradicted subsumption, for the first time in the project.**
+  8 declarations pooled, in two runs of three, each refused by level 1 (`E-d`
+  holds). v1 had told it not to declare on nested pairs.
+- **It overlapped less.** 70% to 97% of the rules it wrote overlap no rule before
+  them, against 27% to 39% in the baseline. No CONFLICT arose in 6,000 arrivals,
+  so the order answer was never used. Reported, not adjudicated (`E-e`).
+
+Beside the baseline's, the loop's own figures show more reuse, more silent
+error, and a proposer that chose the right queue less often. Two caveats the
+plan declared bear on them: the longer screen a repair round shows the model,
+and the five days between the two sets of runs.
+
 ---
 
 ## What was withdrawn, and why
@@ -1136,6 +1224,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    What is open now is whether declaration at write time carries direction
    beyond that one attribute.
    [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md).
+   **[NOTE 2026-10-06] Imposing the declaration made the proposer partition
+   more, not less** (`PLAN_AUTHORSHIP.md`, `E-e`). That does not tell the three
+   candidates apart. It does leave the third form of the second way without a
+   verdict over the space: whether imposed declaration supplies order needs a
+   protocol that keeps the proposer overlapping, and none has been written.
+   [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
