@@ -150,8 +150,8 @@ narrower than it reads, and `STATUS.md` says so beside the row rather than only 
 the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
-2026-09-29 so does `reuse/run.py`, and since 2026-10-02 `fidelity/ask.py`, both
-below. It refuses to run while §0 of **the
+2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, and
+since 2026-10-05 `authorship/run.py`, all three below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -278,6 +278,32 @@ row so and gives the ratios without it. A plan built the same way should say so
 in its §0, as this one did. **And anchor a codebook's patterns**:
 `m[aá]s condiciones` matched inside *"mismas condiciones"*.
 
+**`PLAN_AUTHORSHIP.md` closed on 2026-10-06: Stage E, declaration imposed at
+write time.** Five signed rows: three adjudicated, one reported, and one signed
+and not adjudicated. Sergi signed §0 on 2026-10-05, before any figure it governs
+existed. It ran `PLAN_REUSE.md`'s loop under a protocol that refuses a rule
+overlapping another until the proposer declares it an exception to it or a
+default under it. The record is `results_authorship/FINDINGS_AUTHORSHIP.md`, and
+`STATUS.md` indexes its figures. **Stage C is free and reproduces from the
+committed records. Stage B spent**: its records are guarded, and a re-run
+neither overwrites them nor gives the same rules back, so a paid run does not
+start without Sergi asking for it. Both writers in `authorship/` refuse while
+the plan carries a blank signature line, and the gate reads `PLAN_AUTHORSHIP.md`
+and no other plan. The first command is blocking and writes nothing:
+
+    python3 -m authorship.run --dry-run            # E-g1..E-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m authorship.score   # Stage C, free, from the runs
+    .venv/bin/python -m authorship.run --smoke     # Stage B: spends — only if asked
+    .venv/bin/python -m authorship.run --rep 1     # then 2, then 3 — never side by side
+
+**Its `E-c` was decided by the scorer, not by §0.** The proposer met the
+discipline by not overlapping, and one run left the order no room. §0 said only
+that such a run has no share. What one such run does to a median of three was
+settled in `authorship/score.py`, before the signature, and under any other
+reading of that median the row would hold. A plan that adjudicates a median of
+a statistic a run can leave undefined should settle that in §0 itself. **And a
+plan that charges a proposer for overlapping should expect it to stop.**
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
@@ -350,7 +376,8 @@ share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
-and, since 2026-09-29, `reuse/run.py`, and since 2026-10-02, `fidelity/ask.py`.
+and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, and
+since 2026-10-05, `authorship/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

@@ -42,6 +42,7 @@ up in four places at once.
 | **W** · declared edges | what the edges the proposer declared at write time bought, once a growing base gave them material: on the cases they decided, against a coin, and over the function — closed 2026-10-05 | [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md) |
 | **L** · the slot listed first | where the presentation slot decides the pairwise answers already paid for, and whether it does anything else to them — closed 2026-10-05 | [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md) |
 | **Y** · the why texts | what the proposer says it is doing beside each pairwise answer, against what it does, with a codebook frozen on a development set — closed 2026-10-05 | [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md) |
+| **E** · declaration imposed | whether a proposer made to declare, against every rule a new one overlaps, whether it is an exception to it or a default under it, writes a stratified base — Stage E, the second way's third form — closed 2026-10-06 | [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -302,6 +303,29 @@ python3 -m why.score --dry-run   # Y-g1..Y-g4, blocking; writes nothing
 python3 -m why.score             # Y-a to Y-d, and the readings of Y-e
 ```
 
+**[`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md) closed on 2026-10-06**: Stage E,
+declaration imposed at write time, on `PLAN_REUSE.md`'s loop. Sergi signed §0 on
+2026-10-05, before any of its figures existed. Under its protocol, v1e, a rule
+that overlaps another is refused until the proposer declares it an exception to
+it or a default under it, nested rules included. Its record is
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
+Its gate reads that plan and no other, and guards both of its writers. Its
+Stage A writes nothing: the baseline is `reuse/structure.py`'s reading of
+`PLAN_REUSE.md`'s bases, in that plan's block above, with `PLAN_EDGES.md`'s
+table, and `E-g2` reproduces both.
+
+Stage C is free, and it reproduces from the committed records. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same rules back. A paid run does not start without Sergi asking for it, and
+one that is interrupted resumes where it stopped.
+
+```bash
+python3 -m authorship.run --dry-run            # E-g1..E-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m authorship.score   # Stage C · E-a to E-d, and E-e
+.venv/bin/python -m authorship.run --smoke     # Stage B · spends · only on Sergi's say
+.venv/bin/python -m authorship.run --rep 1     # then --rep 2 and --rep 3, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -444,7 +468,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > the three of `fidelity/`, which run `PLAN_FIDELITY.md`'s, and
 > `edges/score.py --dry-run`, which runs `PLAN_EDGES.md`'s, and
 > `primacy/score.py --dry-run`, which runs `PLAN_PRIMACY.md`'s, and
-> `why/score.py --dry-run`, which runs `PLAN_WHY.md`'s.
+> `why/score.py --dry-run`, which runs `PLAN_WHY.md`'s, and
+> `authorship/run.py --dry-run`, which runs `PLAN_AUTHORSHIP.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -548,7 +573,8 @@ What it covers, and why those things:
 | `test_why.py` | the `PLAN_WHY.md` instrument: the constants, the codebook's fingerprint and the development figures pinned, each verdict at its edge, the gate counting every signature line, the codebook on hand-written sentences in Spanish, English and Chinese, the labels and the categorical edge by hand, the rows and §0's statistics by hand, the whole stage end to end on a synthetic record, `Y-g1` to `Y-g3` on the real records with a changed fingerprint, figure and sentence caught, the checks handing the codebook only development sentences, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
 | `test_primacy.py` | the `PLAN_PRIMACY.md` instrument: §8's constants and §0's two lines, each verdict at its edge, the gate counting every signature line, §0's definitions by hand — the slot effect, its symmetry on one queue pair, the favoured queue and a tie —, the whole stage end to end on a synthetic record whose verdicts are worked by hand, `L-g1` to `L-g3` on the real records with a tampered deal and a tampered row caught, the dry run's checks never reaching §0's statistics, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
 | `test_edges.py` | the `PLAN_EDGES.md` instrument: §8's constants and §0's three lines, each verdict at its edge, the gate counting every signature line, the counterfactual rebuild on a scripted run — the record given the declared directions, the replay without edges given none, every departure an ACTION that becomes a CONFLICT, every birth in every arm —, `W-g2` and `W-g3`'s identities on the three Stage B records, the stage's arithmetic and the post-run readings by hand, and both writers refusing unsigned before they measure, read or write. **No figure of the plan** |
-| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the five that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
+| `test_authorship.py` | the `PLAN_AUTHORSHIP.md` instrument: §11's constants and §0's lines, the gate reading that plan and counting, v1e as v1 with one paragraph replaced and its texts hashing to the declared fingerprint, the order paragraph shown only on a conflict, the validator — copies, overlaps, what counts as placed, the seeded listing —, the loop on small worlds through an order answer, a copy, a repair round that places and one that does not, and a failed call, v1's line replayed on a recorded baseline run, the resume — a changed request refused, an outage stopping without keeping its failures —, the smoke check, every writer refusing unsigned, and Stage C's arithmetic by hand, each row at its line and an undefined share unadjudicable. **No figure of the plan** |
+| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the six that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -1168,6 +1194,14 @@ adaptive-policy-compilation/
 │   ├── gates.py             Y-g1..Y-g4 · blocking, run before any write
 │   └── score.py             the stage · Y-a to Y-d, the readings of Y-e
 │
+├── authorship/           E · declaration imposed at write time, Stage E
+│   ├── plan.py              the gate and §11's constants; §0's lines; the fingerprint
+│   ├── protocol.py          v1e's texts, the validator, the proposer
+│   ├── loop.py              rung 2's loop with v1e's proposal path
+│   ├── gates.py             E-g1..E-g3 · blocking, run before any write
+│   ├── run.py               Stage B · the three runs · spends
+│   └── score.py             Stage C · E-a to E-d, E-e, gated on PLAN_AUTHORSHIP.md
+│
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
 │   ├── analysis.py          births, the split by birth, F and the gap
@@ -1195,6 +1229,7 @@ adaptive-policy-compilation/
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
+    results_authorship/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
