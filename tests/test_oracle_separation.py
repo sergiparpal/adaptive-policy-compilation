@@ -61,6 +61,13 @@ ONLINE_LOOP = [
     "authorship/protocol.py",
     "authorship/loop.py",
     "authorship/run.py",
+    # Added 2026-10-06 with PLAN_OVERLAP.md, for the same reasons: `protocol.py`
+    # builds v2e's requests, `loop.py` runs rung 2's loop with v2e's proposal
+    # path, and `run.py` sends the requests. The loop is handed its labels, read
+    # off PLAN_REUSE.md's records; it computes none.
+    "overlap/protocol.py",
+    "overlap/loop.py",
+    "overlap/run.py",
 ]
 
 
@@ -153,7 +160,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
                      "ilp", "reuse", "fidelity", "edges", "primacy", "why",
-                     "authorship"):
+                     "authorship", "overlap"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

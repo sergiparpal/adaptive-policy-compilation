@@ -65,3 +65,5 @@ tmp/
 results_fidelity/*.partial.jsonl
 # The same for a Stage B run of PLAN_AUTHORSHIP.md (authorship/run.py).
 results_authorship/*.partial.jsonl
+# And of PLAN_OVERLAP.md (overlap/run.py).
+results_overlap/*.partial.jsonl

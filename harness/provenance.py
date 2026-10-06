@@ -66,11 +66,11 @@ REPO = Path(__file__).resolve().parent.parent
 # `sensitivity` added 2026-08-29 with the package: it produces figures, so a
 # digest that ignored it would identify the wrong code for its records. `reuse`
 # added 2026-09-29 with PLAN_REUSE.md's package, for the same reason,
-# `fidelity` 2026-10-02 with PLAN_FIDELITY.md's, and `edges` 2026-10-05 with
-# PLAN_EDGES.md's.
+# `fidelity` 2026-10-02 with PLAN_FIDELITY.md's, `edges` 2026-10-05 with
+# PLAN_EDGES.md's, and `overlap` 2026-10-06 with PLAN_OVERLAP.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
               "reuse", "fidelity", "edges", "primacy", "why", "authorship",
-              "run_experiment.py")
+              "overlap", "run_experiment.py")
 
 DIGEST_CHARS = 16
 
