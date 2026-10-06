@@ -1,0 +1,1612 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-06T12:56:58Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ab315f6fd7bba3cd5586efaa7ca24edbf3a46a45",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "f9481625685f4653"
+  },
+  "plan": "PLAN_OVERLAP.md",
+  "stage": "B",
+  "rep": "smoke",
+  "rung": 2,
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 20,
+  "seed": 17,
+  "prompt_version": "v2e",
+  "reasoning": {
+    "effort": "none"
+  },
+  "repair_rounds": 1,
+  "listing_seed": 17,
+  "fingerprint": "0acc97d11c37d769",
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nEl solape entre reglas es NORMAL y es lo que se espera. Una regla que no se\nsolapa con ninguna otra cubre solo el rincon del que nacio y no generaliza nada.\nEscribe la regla al nivel de abstraccion que creas correcto AUNQUE pise a otras,\ny usa `beats` / `loses_to` para decir quien manda donde se pisen. No estreches\nuna regla ni le a\u00f1adas condiciones para esquivar a otra: eso no resuelve el\nconflicto, lo esconde.\n\nTienes que situar tu regla frente a TODA regla existente con la que se solape y\nque mande los tickets a OTRA cola, la contenga o no: si tu regla es una EXCEPCION\na ella, de modo que la tuya manda donde casen las dos, ponla en `beats`; si es un\ncaso GENERAL por debajo de ella, de modo que la otra manda, ponla en `loses_to`.\nSi una de las dos contiene a la otra, el nivel 1 ya hace ganar a la mas\ncontenida: declararlo lo confirma, declarar lo contrario lo contradice, y el motor\nlo registrara. Frente a una regla de tu MISMA cola no declares nada: donde se\npisan deciden lo mismo. Una regla que se solape con otra de distinta cola sin\nsituarse frente a ella se te devolvera con la lista de las que faltan.\n\nCuidado con la aritmetica de conjuntos: dos reglas que mencionan los mismos\natributos pueden no compartir ni un solo caso. El motor te marca abajo, para\ncada regla, que condiciones incumple este ticket y que pares son disjuntos.\nEsos datos estan calculados sobre el espacio completo de casos: fiate de ellos\nantes que de tu propia estimacion.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "order_paragraph": "Si este ticket ha escalado porque varias reglas existentes chocan, puedes, en\nlugar de escribir una regla nueva, ordenarlas entre si. Responde entonces\n{\"action\": \"<cola para este ticket>\", \"order\": [{\"winner\": \"<id>\", \"loser\":\n\"<id>\"}], \"note\": \"<una frase>\"}, citando solo reglas de la lista. No escribas\nuna copia de una regla existente: una regla que cubre exactamente los mismos\ncasos que otra se rechaza.",
+  "repair_template": "Tu regla se solapa con estas reglas existentes de OTRA cola, frente a las que no\nte has situado:\n{lista}\nResponde de nuevo con el mismo formato y cita cada una en `beats` o `loses_to`,\no cambia la regla.",
+  "labels_from": "results_reuse/run_n2000_r1.json",
+  "resumed": false,
+  "gates": {
+    "O-g1": {
+      "passes": true,
+      "declarations": 253,
+      "installed": 199,
+      "exempted": 41,
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1392,
+        "result": "OK (skipped=1)",
+        "seconds": 82.6,
+        "passes": true
+      }
+    },
+    "O-g2": {
+      "passes": true,
+      "checks": {
+        "O-a v1": true,
+        "O-b v1": true,
+        "O-c v1": true,
+        "O-a v1e": true,
+        "O-b v1e": true,
+        "O-c v1e": true,
+        "O-c v1e by run": true,
+        "v1e installed": true,
+        "by queue": true,
+        "v1's O-c is W-b": true,
+        "v1e's O-b is E-c": true,
+        "O-a at n=100": true
+      }
+    },
+    "O-g3": {
+      "what": "the labels, the head of the corpus, rung 2's v2 runs replayed through the loop, the exempted split on v1e's recorded sets, and the v2e texts' hash",
+      "labels_agree": true,
+      "smoke_is_the_head": true,
+      "replays": true,
+      "exempted_splits": true,
+      "fingerprint": true,
+      "split_rows": [
+        {
+          "calls": 49,
+          "matched": 49,
+          "passes": true
+        },
+        {
+          "calls": 144,
+          "matched": 144,
+          "passes": true
+        },
+        {
+          "calls": 30,
+          "matched": 30,
+          "passes": true
+        }
+      ],
+      "fingerprint_measured": "0acc97d11c37d769",
+      "fingerprint_declared": "0acc97d11c37d769",
+      "passes": true
+    },
+    "O-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_OVERLAP.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_OVERLAP.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "metrics": {
+    "n_cases": 20,
+    "n_rules": 10,
+    "hidden_policy_size": 29,
+    "rejected_rules": 0,
+    "failed_proposals": 0,
+    "escalations": 10,
+    "escalation_rate": 0.5,
+    "escalation_curve_by_decile": [
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.0,
+      0.5,
+      0.0,
+      0.5,
+      0.5,
+      0.0
+    ],
+    "final_decile_escalation_rate": 0.0,
+    "impasses": 10,
+    "conflicts": 0,
+    "coverage": 0.5,
+    "shadow_accuracy": 0.8,
+    "silent_error_rate": 0.2,
+    "silent_errors_abs": 2,
+    "e2e_accuracy": 0.4,
+    "reuse_rate": 0.4,
+    "median_fires_per_rule": 0.0,
+    "dead_rules": 6,
+    "proposal_action_accuracy": 0.6,
+    "llm_calls": 10,
+    "edges_proposed": 13,
+    "edges_accepted": 1,
+    "edge_reasons": {
+      "no_solapan": 11,
+      "contradice_subsuncion": 1,
+      "ok": 1
+    },
+    "subsumption_pairs": 1,
+    "rules_with_edges": 1,
+    "escalations_with_base_shown": 9,
+    "escalations_on_conflict": 0
+  },
+  "calls": 11,
+  "rules": [
+    {
+      "rule_id": "R0001",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 4
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "chat"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 7
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 0,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Primera regla del sistema. Cubre tickets de cliente enterprise con severidad baja (4) en dashboard por chat, sin urgencia ni seguridad. Se asigna a T1_GENERAL por ser un caso rutinario de baja criticidad, sin necesidad de escalar a t\u00e9cnicos o ingenieros."
+    },
+    {
+      "rule_id": "R0002",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 3
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 1,
+      "fire_count": 1,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:R0001:no_solapan"
+      ],
+      "note": "El ticket es de un usuario pro con severidad 3 en dashboard fuera de horario laboral. La regla R0001 cubre enterprise en horario normal, pero no aplica aqu\u00ed. Creo una regla espec\u00edfica para tickets de dashboard con severidad <=3 en off_hours, que debe ganar a R0001 cuando ambas ca"
+    },
+    {
+      "rule_id": "R0003",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "chat"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 0
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "born_at": 2,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un usuario free, severidad baja (4), producto mobile, sin historial reciente, en horario normal y sin keywords de seguridad. No encaja en ninguna regla existente (R0001 y R0002 requieren enterprise/dashboard/off_hours). La acci\u00f3n m\u00e1s adecuada es desviar a autoserv"
+    },
+    {
+      "rule_id": "R0004",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "mobile",
+            "api",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 3,
+      "fire_count": 4,
+      "correct_count": 3,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "loses_to:R0001:no_solapan",
+        "loses_to:R0003:no_solapan"
+      ],
+      "note": "El ticket es de severidad 2, producto mobile, fuera de horario falso, sin keywords de seguridad. La regla cubre incidencias t\u00e9cnicas de severidad no cr\u00edtica en productos no-dashboard fuera de horario laboral, que requieren soporte t\u00e9cnico. Se solapa con R0001 (enterprise/dashboar"
+    },
+    {
+      "rule_id": "R0005",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "mobile",
+            "api",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 4,
+      "fire_count": 2,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:R0003:contradice_subsuncion"
+      ],
+      "note": "La regla se solapa con R0003 porque ambas pueden cubrir tickets con product=mobile, severity>=4, off_hours=false, pero R0003 requiere adem\u00e1s customer_tier=free, channel=chat y prior_tickets_30d<=0. Mi regla es m\u00e1s general (no exige esas condiciones) y env\u00eda a T2_TECHNICAL, mientr"
+    },
+    {
+      "rule_id": "R0006",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "mobile",
+            "api",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 4
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 5,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un producto t\u00e9cnico (integrations), severidad baja (4) y en horario no laboral. Las reglas existentes para productos t\u00e9cnicos con severidad baja solo cubren off_hours=false, dejando fuera este caso. Se crea una regla que cubre off_hours=true para estos productos, "
+    },
+    {
+      "rule_id": "R0007",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 6,
+      "fire_count": 3,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de billing con severidad baja (4), no encaja en las reglas t\u00e9cnicas existentes. Se crea una regla general para billing con severidad >=3 (incluye 3 y 4) que va a BILLING_SPECIALIST, cubriendo este caso y otros similares de facturaci\u00f3n no urgente."
+    },
+    {
+      "rule_id": "R0008",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 2
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 11,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "loses_to:R0007:no_solapan"
+      ],
+      "note": "El ticket es billing, severidad 2 (no baja), fuera de horas. R0007 cubre billing con severidad >=3, pero este ticket tiene severidad 2, por lo que no casa. Mi regla cubre billing con severidad <=2 en off_hours, un caso que ninguna regla existente cubre. Como R0007 es m\u00e1s general "
+    },
+    {
+      "rule_id": "R0009",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 3
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 15,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [
+        "R0001"
+      ],
+      "dropped_edges": [
+        "loses_to:R0004:no_solapan",
+        "loses_to:R0002:no_solapan",
+        "loses_to:R0005:no_solapan",
+        "loses_to:R0007:no_solapan",
+        "loses_to:R0008:no_solapan",
+        "loses_to:R0006:no_solapan",
+        "loses_to:R0003:no_solapan"
+      ],
+      "note": "El ticket es un dashboard con severidad 2 en horario normal, sin coincidir con ninguna regla existente. La regla generaliza a todos los tickets de dashboard con severidad <=3 en horario normal, que son t\u00e9cnicos. Se declara loses_to a todas las reglas existentes porque ninguna cub"
+    },
+    {
+      "rule_id": "R0010",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "mobile",
+            "api",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 3
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 16,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es un producto t\u00e9cnico (api), severidad 3 (no cr\u00edtica), en horario no laboral. Ninguna regla existente cubre exactamente esta combinaci\u00f3n (R0004 requiere off_hours=false, R0002 requiere dashboard, R0006 requiere severity>=4). La regla generaliza a todos los productos t\u00e9"
+    }
+  ],
+  "edge_log": [
+    [
+      "R0002",
+      "R0001",
+      "no_solapan"
+    ],
+    [
+      "R0001",
+      "R0004",
+      "no_solapan"
+    ],
+    [
+      "R0003",
+      "R0004",
+      "no_solapan"
+    ],
+    [
+      "R0005",
+      "R0003",
+      "contradice_subsuncion"
+    ],
+    [
+      "R0007",
+      "R0008",
+      "no_solapan"
+    ],
+    [
+      "R0004",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0002",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0005",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0007",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0001",
+      "R0009",
+      "ok"
+    ],
+    [
+      "R0008",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0006",
+      "R0009",
+      "no_solapan"
+    ],
+    [
+      "R0003",
+      "R0009",
+      "no_solapan"
+    ]
+  ],
+  "edge_channels": [
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write"
+  ],
+  "records": [
+    {
+      "idx": 0,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H13",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 1,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 1,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 2,
+      "outcome": "IMPASSE",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 3,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0002",
+        "R0001",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 2,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan",
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 4,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0003",
+        "R0004",
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 1,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "contradice_subsuncion"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 5,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0002",
+        "R0004",
+        "R0003",
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 6,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0004",
+        "R0006",
+        "R0002",
+        "R0001",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 7,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 8,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 9,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": true,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 10,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 11,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0002",
+        "R0007",
+        "R0004",
+        "R0006",
+        "R0005",
+        "R0001",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 1,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 12,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 13,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": "R0002",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 14,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0007",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 15,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0002",
+        "R0005",
+        "R0007",
+        "R0001",
+        "R0008",
+        "R0006",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 8,
+      "edges_accepted": 1,
+      "edge_reasons": [
+        "no_solapan",
+        "no_solapan",
+        "no_solapan",
+        "no_solapan",
+        "ok",
+        "no_solapan",
+        "no_solapan",
+        "no_solapan"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 16,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0002",
+        "R0007",
+        "R0006",
+        "R0005",
+        "R0008",
+        "R0009",
+        "R0001",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 17,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": false,
+      "winner_id": "R0007",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 18,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0007",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 19,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    }
+  ],
+  "escalations": [
+    {
+      "idx": 0,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 4},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n    {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"chat\"},\n    {\"attr\": \"prior_tickets_30d\", \"op\": \"lte\", \"value\": 7},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false},\n    {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Primera regla del sistema. Cubre tickets de cliente enterprise con severidad baja (4) en dashboard por chat, sin urgencia ni seguridad. Se asigna a T1_GENERAL por ser un caso rutinario de baja criticidad, sin necesidad de escalar a t\u00e9cnicos o ingenieros.\"\n}",
+          "payload": {
+            "action": "T1_GENERAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 4
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "chat"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "lte",
+                "value": 7
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Primera regla del sistema. Cubre tickets de cliente enterprise con severidad baja (4) en dashboard por chat, sin urgencia ni seguridad. Se asigna a T1_GENERAL por ser un caso rutinario de baja criticidad, sin necesidad de escalar a t\u00e9cnicos o ingenieros."
+          },
+          "failure": null,
+          "seconds": 5.93,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0001",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 1,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 3},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n  ],\n  \"beats\": [\"R0001\"],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de un usuario pro con severidad 3 en dashboard fuera de horario laboral. La regla R0001 cubre enterprise en horario normal, pero no aplica aqu\u00ed. Creo una regla espec\u00edfica para tickets de dashboard con severidad <=3 en off_hours, que debe ganar a R0001 cuando ambas casen (por ser m\u00e1s espec\u00edfica en off_hours y severidad), pero como R0001 no casa este ticket, el conflicto es te\u00f3rico; se declara beats para ordenar el solape potencial.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [
+              "R0001"
+            ],
+            "loses_to": [],
+            "note": "El ticket es de un usuario pro con severidad 3 en dashboard fuera de horario laboral. La regla R0001 cubre enterprise en horario normal, pero no aplica aqu\u00ed. Creo una regla espec\u00edfica para tickets de dashboard con severidad <=3 en off_hours, que debe ganar a R0001 cuando ambas casen (por ser m\u00e1s espec\u00edfica en off_hours y severidad), pero como R0001 no casa este ticket, el conflicto es te\u00f3rico; se declara beats para ordenar el solape potencial."
+          },
+          "failure": null,
+          "seconds": 4.48,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0002",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 2,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"SELF_SERVICE_DEFLECT\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 4},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"},\n    {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"chat\"},\n    {\"attr\": \"prior_tickets_30d\", \"op\": \"lte\", \"value\": 0},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false},\n    {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de un usuario free, severidad baja (4), producto mobile, sin historial reciente, en horario normal y sin keywords de seguridad. No encaja en ninguna regla existente (R0001 y R0002 requieren enterprise/dashboard/off_hours). La acci\u00f3n m\u00e1s adecuada es desviar a autoservicio, ya que no justifica soporte humano. La regla se abstrae a 'free + severidad >= 4 + sin historial + sin seguridad' para cubrir casos an\u00e1logos futuros. No se solapa con R0001 ni R0002 porque fija customer_tier=free y product=mobile, mientras que R0001 exige enterprise y dashboard, y R0002 exige dashboard y off_hours=true; por tanto, son disjuntas.\"\n}",
+          "payload": {
+            "action": "SELF_SERVICE_DEFLECT",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 4
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "chat"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "lte",
+                "value": 0
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "El ticket es de un usuario free, severidad baja (4), producto mobile, sin historial reciente, en horario normal y sin keywords de seguridad. No encaja en ninguna regla existente (R0001 y R0002 requieren enterprise/dashboard/off_hours). La acci\u00f3n m\u00e1s adecuada es desviar a autoservicio, ya que no justifica soporte humano. La regla se abstrae a 'free + severidad >= 4 + sin historial + sin seguridad' para cubrir casos an\u00e1logos futuros. No se solapa con R0001 ni R0002 porque fija customer_tier=free y product=mobile, mientras que R0001 exige enterprise y dashboard, y R0002 exige dashboard y off_hours=true; por tanto, son disjuntas."
+          },
+          "failure": null,
+          "seconds": 2.2,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0003",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 3,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": " {\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 3},\n    {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"api\", \"integrations\"]},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [],\n  \"loses_to\": [\"R0001\", \"R0003\"],\n  \"note\": \"El ticket es de severidad 2, producto mobile, fuera de horario falso, sin keywords de seguridad. La regla cubre incidencias t\u00e9cnicas de severidad no cr\u00edtica en productos no-dashboard fuera de horario laboral, que requieren soporte t\u00e9cnico. Se solapa con R0001 (enterprise/dashboard/chat) y R0003 (free/mobile/chat) pero ambas son m\u00e1s espec\u00edficas en tier o canal, por lo que ceden ante ellas.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [
+              "R0001",
+              "R0003"
+            ],
+            "note": "El ticket es de severidad 2, producto mobile, fuera de horario falso, sin keywords de seguridad. La regla cubre incidencias t\u00e9cnicas de severidad no cr\u00edtica en productos no-dashboard fuera de horario laboral, que requieren soporte t\u00e9cnico. Se solapa con R0001 (enterprise/dashboard/chat) y R0003 (free/mobile/chat) pero ambas son m\u00e1s espec\u00edficas en tier o canal, por lo que ceden ante ellas."
+          },
+          "failure": null,
+          "seconds": 8.09,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0004",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 4,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"api\", \"integrations\"]},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 4},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de producto mobile, severidad 4 (baja), fuera de horas laborales. La regla R0004 cubre mobile pero requiere severity <=3, por lo que no casa. Se crea una regla complementaria para severity >=4 en los mismos productos, enviando a T2_TECHNICAL, que es la cola t\u00e9cnica adecuada para problemas de producto. No se solapa con ninguna regla existente porque R0004 requiere severity <=3 y esta requiere >=4, y las dem\u00e1s reglas tienen condiciones disjuntas (product dashboard, off_hours true, prior_tickets_30d <=0, etc.).\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 4
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "El ticket es de producto mobile, severidad 4 (baja), fuera de horas laborales. La regla R0004 cubre mobile pero requiere severity <=3, por lo que no casa. Se crea una regla complementaria para severity >=4 en los mismos productos, enviando a T2_TECHNICAL, que es la cola t\u00e9cnica adecuada para problemas de producto. No se solapa con ninguna regla existente porque R0004 requiere severity <=3 y esta requiere >=4, y las dem\u00e1s reglas tienen condiciones disjuntas (product dashboard, off_hours true, prior_tickets_30d <=0, etc.)."
+          },
+          "failure": null,
+          "seconds": 5.44,
+          "overlapped": [
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": [
+            "R0003"
+          ],
+          "listed": [
+            "R0003"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"api\", \"integrations\"]},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 4},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [\"R0003\"],\n  \"loses_to\": [],\n  \"note\": \"La regla se solapa con R0003 porque ambas pueden cubrir tickets con product=mobile, severity>=4, off_hours=false, pero R0003 requiere adem\u00e1s customer_tier=free, channel=chat y prior_tickets_30d<=0. Mi regla es m\u00e1s general (no exige esas condiciones) y env\u00eda a T2_TECHNICAL, mientras que R0003 env\u00eda a SELF_SERVICE_DEFLECT. Dado que el ticket actual tiene prior_tickets_30d=13 (no cumple la condici\u00f3n de R0003), pero mi regla s\u00ed lo cubre, declaro que mi regla gana (beats) a R0003 para que en los casos donde ambas casen (free, chat, prior_tickets_30d<=0, mobile, severity>=4, off_hours=false) se env\u00ede a T2_TECHNICAL, ya que un usuario con historial reciente de tickets merece atenci\u00f3n t\u00e9cnica en lugar de autoservicio.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 4
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [
+              "R0003"
+            ],
+            "loses_to": [],
+            "note": "La regla se solapa con R0003 porque ambas pueden cubrir tickets con product=mobile, severity>=4, off_hours=false, pero R0003 requiere adem\u00e1s customer_tier=free, channel=chat y prior_tickets_30d<=0. Mi regla es m\u00e1s general (no exige esas condiciones) y env\u00eda a T2_TECHNICAL, mientras que R0003 env\u00eda a SELF_SERVICE_DEFLECT. Dado que el ticket actual tiene prior_tickets_30d=13 (no cumple la condici\u00f3n de R0003), pero mi regla s\u00ed lo cubre, declaro que mi regla gana (beats) a R0003 para que en los casos donde ambas casen (free, chat, prior_tickets_30d<=0, mobile, severity>=4, off_hours=false) se env\u00ede a T2_TECHNICAL, ya que un usuario con historial reciente de tickets merece atenci\u00f3n t\u00e9cnica en lugar de autoservicio."
+          },
+          "failure": null,
+          "seconds": 3.72,
+          "overlapped": [
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0005",
+      "copy_of": null,
+      "listed": [
+        "R0003"
+      ],
+      "order": []
+    },
+    {
+      "idx": 5,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\"action\": \"T2_TECHNICAL\", \"conditions\": [{\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"api\", \"integrations\"]}, {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 4}, {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}], \"beats\": [], \"loses_to\": [], \"note\": \"El ticket es de un producto t\u00e9cnico (integrations), severidad baja (4) y en horario no laboral. Las reglas existentes para productos t\u00e9cnicos con severidad baja solo cubren off_hours=false, dejando fuera este caso. Se crea una regla que cubre off_hours=true para estos productos, sin solaparse con las reglas existentes (R0005 y R0004 requieren off_hours=false, R0002 requiere dashboard, R0003 requiere mobile+chat+0 tickets previos, R0001 requiere enterprise).\"}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 4
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "El ticket es de un producto t\u00e9cnico (integrations), severidad baja (4) y en horario no laboral. Las reglas existentes para productos t\u00e9cnicos con severidad baja solo cubren off_hours=false, dejando fuera este caso. Se crea una regla que cubre off_hours=true para estos productos, sin solaparse con las reglas existentes (R0005 y R0004 requieren off_hours=false, R0002 requiere dashboard, R0003 requiere mobile+chat+0 tickets previos, R0001 requiere enterprise)."
+          },
+          "failure": null,
+          "seconds": 7.01,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0006",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 6,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 2,
+          "raw": "{\n  \"action\": \"BILLING_SPECIALIST\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de billing con severidad baja (4), no encaja en las reglas t\u00e9cnicas existentes. Se crea una regla general para billing con severidad >=3 (incluye 3 y 4) que va a BILLING_SPECIALIST, cubriendo este caso y otros similares de facturaci\u00f3n no urgente.\"\n}",
+          "payload": {
+            "action": "BILLING_SPECIALIST",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "El ticket es de billing con severidad baja (4), no encaja en las reglas t\u00e9cnicas existentes. Se crea una regla general para billing con severidad >=3 (incluye 3 y 4) que va a BILLING_SPECIALIST, cubriendo este caso y otros similares de facturaci\u00f3n no urgente."
+          },
+          "failure": null,
+          "seconds": 25.59,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0007",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 11,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n  ],\n  \"beats\": [],\n  \"loses_to\": [\"R0007\"],\n  \"note\": \"El ticket es billing, severidad 2 (no baja), fuera de horas. R0007 cubre billing con severidad >=3, pero este ticket tiene severidad 2, por lo que no casa. Mi regla cubre billing con severidad <=2 en off_hours, un caso que ninguna regla existente cubre. Como R0007 es m\u00e1s general en severidad (gte 3) y mi regla es una excepci\u00f3n de menor severidad, declaro loses_to para que R0007 gane cuando ambas casen (severidad 3), pero aqu\u00ed no casan.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [],
+            "loses_to": [
+              "R0007"
+            ],
+            "note": "El ticket es billing, severidad 2 (no baja), fuera de horas. R0007 cubre billing con severidad >=3, pero este ticket tiene severidad 2, por lo que no casa. Mi regla cubre billing con severidad <=2 en off_hours, un caso que ninguna regla existente cubre. Como R0007 es m\u00e1s general en severidad (gte 3) y mi regla es una excepci\u00f3n de menor severidad, declaro loses_to para que R0007 gane cuando ambas casen (severidad 3), pero aqu\u00ed no casan."
+          },
+          "failure": null,
+          "seconds": 4.94,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0008",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 15,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 3},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false}\n  ],\n  \"beats\": [],\n  \"loses_to\": [\"R0004\", \"R0002\", \"R0005\", \"R0007\", \"R0001\", \"R0008\", \"R0006\", \"R0003\"],\n  \"note\": \"El ticket es un dashboard con severidad 2 en horario normal, sin coincidir con ninguna regla existente. La regla generaliza a todos los tickets de dashboard con severidad <=3 en horario normal, que son t\u00e9cnicos. Se declara loses_to a todas las reglas existentes porque ninguna cubre este caso y las reglas m\u00e1s espec\u00edficas (como R0004, R0002, etc.) deben prevalecer cuando apliquen.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [
+              "R0004",
+              "R0002",
+              "R0005",
+              "R0007",
+              "R0001",
+              "R0008",
+              "R0006",
+              "R0003"
+            ],
+            "note": "El ticket es un dashboard con severidad 2 en horario normal, sin coincidir con ninguna regla existente. La regla generaliza a todos los tickets de dashboard con severidad <=3 en horario normal, que son t\u00e9cnicos. Se declara loses_to a todas las reglas existentes porque ninguna cubre este caso y las reglas m\u00e1s espec\u00edficas (como R0004, R0002, etc.) deben prevalecer cuando apliquen."
+          },
+          "failure": null,
+          "seconds": 1.27,
+          "overlapped": [
+            "R0001"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0009",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 16,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": "{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"api\", \"integrations\"]},\n    {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 3},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es un producto t\u00e9cnico (api), severidad 3 (no cr\u00edtica), en horario no laboral. Ninguna regla existente cubre exactamente esta combinaci\u00f3n (R0004 requiere off_hours=false, R0002 requiere dashboard, R0006 requiere severity>=4). La regla generaliza a todos los productos t\u00e9cnicos con severidad <=3 en off_hours, llenando un hueco l\u00f3gico entre R0004 y R0006. No se solapa con ninguna regla de otra cola porque las reglas de billing, dashboard, enterprise, free, etc. son disjuntas en producto o tier.\"\n}",
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "El ticket es un producto t\u00e9cnico (api), severidad 3 (no cr\u00edtica), en horario no laboral. Ninguna regla existente cubre exactamente esta combinaci\u00f3n (R0004 requiere off_hours=false, R0002 requiere dashboard, R0006 requiere severity>=4). La regla generaliza a todos los productos t\u00e9cnicos con severidad <=3 en off_hours, llenando un hueco l\u00f3gico entre R0004 y R0006. No se solapa con ninguna regla de otra cola porque las reglas de billing, dashboard, enterprise, free, etc. son disjuntas en producto o tier."
+          },
+          "failure": null,
+          "seconds": 1.73,
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0010",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    }
+  ]
+}
