@@ -64,9 +64,9 @@ three runs, which offered declaration; and v1e, the protocol of
 
 | id | claim | statistic, and surface | band | refuted by |
 |---|---|---|---|---|
-| **O-a** | **The proposer keeps overlapping where it has to declare**: told that overlap is normal, and asked to declare only against rules of another queue, it does not partition | the share of born rules that overlap no rule born before them with a different queue, each final base, median over the runs. Overlap is computed over the exhaustive space; the statistic counts rules. v1 0.3226, 0.4839 and 0.3333, median 0.3333; v1e 0.8049, 0.7917 and 0.9667, median 0.8049 | **≤ 0.50** | **> 0.50** |
+| **O-a** | **The proposer keeps overlapping where it has to declare**: told that overlap is normal, and asked to declare only against rules of another queue, it does not partition | the share of born rules that overlap no rule born before them with a different queue, each final base, median over the runs. Overlap is computed over the exhaustive space; the statistic counts rules. A run in which no rule is born counts at 1.00, the most partitioned a run can be. v1 0.3226, 0.4839 and 0.3333, median 0.3333; v1e 0.8049, 0.7917 and 0.9667, median 0.8049 | **≤ 0.50** | **> 0.50** |
 | **O-b** | **Imposed declaration orders what subsumption leaves, over the function** | `E-c`'s statistic: the share of the order's room the installed edges fill, **exhaustive space**, each final base. **Median over the runs whose room is not zero**: a run without room is named and left out, the median of two runs is their mean, and with fewer than two runs with room the row is unadjudicable. v1 0.3000, 0.3833 and 0.7806, median 0.3833; v1e 1.0000, 0.5798 and no room, 0.7899 under this rule | **≥ 0.50** | **< 0.50** |
-| **O-c** | **The declarations point at the better rule over the function at least seven times in ten** | `W-b`'s statistic: among the installed edges between rules of different queues that have a strict better rule over their shared region, **exhaustive space**, the share whose declared winner is that rule, **pooled over the runs**. v1 34 of 45, 0.7556; v1e 58 of 84, 0.6905 | **≥ 0.70** | **< 0.70** |
+| **O-c** | **The declarations point at the better rule over the function at least seven times in ten** | `W-b`'s statistic: among the installed edges between rules of different queues that have a strict better rule over their shared region, **exhaustive space**, the share whose declared winner is that rule, **pooled over the runs**. With no such edge in any run, the row is unadjudicable. v1 34 of 45, 0.7556; v1e 58 of 84, 0.6905 | **≥ 0.70** | **< 0.70** |
 | **O-d** | *Reported, not adjudicated.* What the rows rest on, and what they could hide | per run, beside both baselines: O-b on the full corpus; O-b and O-c with each channel's edges alone; the loop's online figures, `PLAN_REUSE.md`'s set; calls, repair rounds and refusals by reason, with `finish_reason`; born rules that overlap nothing at all, and overlap among distinct rules; declarations by verdict and by whether the two queues agree; every `contradice_subsuncion`, read against the truth as `authorship/refused.py` reads it; CONFLICTs and order answers; `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations and compiled decisions | — | — |
 
 **Signed by Sergi: ________________________ (date: ______________)**
@@ -120,10 +120,13 @@ before signature:
 - **The declarations by queue.** Under v1e, 83 of its 239 declarations were
   between rules of one queue, and 27 of the 113 that were not refused as
   `no_solapan`. Under v1, 6 of 75, and 1 of the 64 accepted.
-- **The hidden policy needs no edge between rules of one queue.** All 199 of its
-  edges join two queues, and placed through v1e's declaration path with the
-  exemption applied it executes at 1.0000 on corpus and space. The exemption
-  costs a perfect author nothing.
+- **The hidden policy needs no edge between rules of one queue.** Rung 2's
+  minimal edges skip such pairs by construction, and all 199 join two queues.
+  Written under v2e's discipline, every rule placed against every earlier rule
+  of another queue it overlaps in the direction of the layer order, it makes 253
+  declarations, all accepted: its 199 edges installed, the rest redundant with
+  subsumption, and 41 overlaps within a queue exempted. It executes at 1.0000 on
+  corpus and space. The exemption costs a perfect author nothing.
 
 **Not seen, because nothing has produced them**: any answer to the protocol of
 §5, any base it writes, and every figure of Stage B.
@@ -380,21 +383,22 @@ baselines' plans did, so that a failure becomes a fix to this draft rather than 
 signed amendment.
 
 - **O-g1 — STOP 0, for the engine and the exempted declaration path.** The hidden
-  policy's 29 rules enter a fresh rung 2 engine one by one, each placing itself
-  against the earlier rules of another queue only, through this plan's
-  declaration path. All 199 edges are accepted, and the engine executes the
-  policy at 1.0000 with no silent error, CONFLICT or IMPASSE, on the corpus and
-  over the space. And `python3 -m unittest discover` is green. Computed while
-  drafting through v1e's path with the exemption applied: it passes.
+  policy written under v2e's discipline: its 29 rules enter a fresh rung 2 engine
+  one by one, each placed against every earlier rule of another queue it
+  overlaps, `O` as §5.2 computes it, in the direction of the layer order and
+  through the loop's own installation. Every declaration is accepted, the 199
+  edges installed are the policy's, and the engine executes the policy at
+  1.0000 with no silent error, CONFLICT or IMPASSE, on the corpus and over the
+  space. And `python3 -m unittest discover` is green.
 - **O-g2 — The baselines reproduce.** Every figure §0 takes from v1 and v1e,
   recomputed from the six records and rung 2's eight, to the digit §0 gives it:
   O-a's statistic, O-b's shares under its rule and pooled, O-c's counts and the
   declarations by queue. v1's O-c equals `results_edges/score.json`'s `W-b`
   exactly, and v1e's O-b shares equal `results_authorship/score.json`'s `E-c`.
 - **O-g3 — The loop and the validator do what §5 says, and nothing else.**
-  - With the discipline switched off, the loop replays rung 2's v2 record at
-    seed 17, whose corpus is the head of this plan's, case by case, rule by rule
-    and verdict by verdict.
+  - With the discipline switched off, the loop replays rung 2's four v2
+    records, each on its own corpus, case by case, rule by rule and verdict by
+    verdict.
   - With it on, applied to v1e's recorded proposals, every birth's `O` is v1e's
     recorded `O` without the rules of the new rule's queue.
   - The labels the loop reads agree across both baselines' records and with rung
@@ -409,6 +413,28 @@ endpoint answers 200 for a key that is not a management key; a smoke run of 20
 cases under this protocol shows at least one proposal parsed and one rule born,
 and its record carries every field of §5.4. A full run refuses without that
 smoke record.
+
+> **[NOTE 2026-10-06] Run before signature, and all three pass.**
+> `python3 -m overlap.run --dry-run`, zero API calls, nothing written. `O-g1`:
+> the hidden policy written under v2e, 253 declarations all accepted, its 199
+> edges installed, 41 overlaps within a queue exempted, 1.0000 on corpus and
+> space, with the suite green. `O-g2`: every baseline figure §0 declares comes
+> out of the instrument Stage C will use, with v1's O-c equal to `W-b` and v1e's
+> O-b shares to `E-c` as published. `O-g3`: rung 2's four v2 runs replay through
+> the loop, the exempted split gives back every overlapped set v1e's three runs
+> recorded, the labels agree, the smoke corpus is the head of the full one, and
+> the texts hash to `0acc97d11c37d769`.
+>
+> **What changed in this draft on the way, none of it a band.** §0 now says
+> what O-a reads for a run in which no rule is born, and that O-c has no
+> verdict with no edge to read: the package needed both, and the second is the
+> question `E-c` left to its scorer. `O-g1` now writes the hidden policy under
+> the discipline itself, every overlapped rule of another queue placed, and §0
+> gives its counts; it had entered only the policy's 199 edges. `O-g3` replays
+> all four of rung 2's v2 runs, not one: the run at seed 17 installed no edge,
+> and the replay had to learn to rebuild a failed call and a refused rule, which
+> `PLAN_REUSE.md`'s records never held. Written by the drafter before §0 was
+> signed.
 
 ---
 
@@ -486,6 +512,7 @@ overlap/plan.py       the gate, the constants, §0's lines
 overlap/protocol.py   v2e: §5's paragraph and repair message, the exempted
                       validator, the fingerprint; authorship's proposer extended
 overlap/loop.py       the loop with v2e's proposal path; authorship's called
+overlap/rows.py       §0's statistics, one instrument for baselines and runs
 overlap/gates.py      O-g1 to O-g4
 overlap/run.py        Stage B, its smoke and key checks; spends; guarded
 overlap/score.py      Stage C: O-a to O-c, and O-d
