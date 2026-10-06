@@ -1,5 +1,20 @@
 # PLAN_AUTHORSHIP — Stage E: the discipline of authorship, imposed at write time
 
+> **[CLOSED 2026-10-06] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-05, before any figure of the plan existed. Three rows were adjudicated
+> on the median of three runs: **`E-a` and `E-b` refuted, `E-d` holds**. **`E-c`
+> is unadjudicable**: one run left the order no room, and `authorship/score.py`,
+> merged before the signature, reads a median over such a run as undefined,
+> where §0 does not say. `E-e` is reported. **The figures are owned by
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-05. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its notes, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-05, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
