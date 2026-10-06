@@ -1,0 +1,787 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-06T10:48:50Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "55bf1f15b0ef01e66cce52773b31327e451138ae",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "f245f5afaa29e570"
+  },
+  "plan": "PLAN_AUTHORSHIP.md",
+  "provenance": "POST-RUN: asked for after PLAN_AUTHORSHIP.md's verdicts existed. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
+  "source": {
+    "record": "results_authorship/score.json",
+    "its_commit": "a9dd191a3723f4af327f1178694877ce8c162c91"
+  },
+  "surfaces": {
+    "space": "the exhaustive space, over each pair's shared region",
+    "corpus": "the 2,000 arrivals matching both rules, as they arrive"
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "rep": 1,
+      "what": "the refusals E-d counted",
+      "measured": 2,
+      "published": 2,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 1,
+      "what": "each still contradicts subsumption",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 1,
+      "what": "the base Stage C scored",
+      "measured": {
+        "space": 0.432292,
+        "corpus": 0.36
+      },
+      "published": {
+        "space": 0.432292,
+        "corpus": 0.36
+      },
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 2,
+      "what": "the refusals E-d counted",
+      "measured": 6,
+      "published": 6,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 2,
+      "what": "each still contradicts subsumption",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 2,
+      "what": "the base Stage C scored",
+      "measured": {
+        "space": 0.302976,
+        "corpus": 0.3965
+      },
+      "published": {
+        "space": 0.302976,
+        "corpus": 0.3965
+      },
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 3,
+      "what": "the refusals E-d counted",
+      "measured": 0,
+      "published": 0,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 3,
+      "what": "each still contradicts subsumption",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 3,
+      "what": "the base Stage C scored",
+      "measured": {
+        "space": 0.14494,
+        "corpus": 0.311
+      },
+      "published": {
+        "space": 0.14494,
+        "corpus": 0.311
+      },
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "the truth partitions the space",
+      "measured": 134400,
+      "published": 134400,
+      "passes": true
+    }
+  ],
+  "declarations": [
+    {
+      "winner": "R0028",
+      "loser": "R0019",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 71,
+        "loser": 35
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 4
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ]
+      },
+      "space": {
+        "region": 5040,
+        "truth_is_winner": 320,
+        "truth_is_loser": 320,
+        "better": "tie"
+      },
+      "corpus": {
+        "region": 14,
+        "truth_is_winner": 6,
+        "truth_is_loser": 6,
+        "better": "tie"
+      },
+      "rep": 1
+    },
+    {
+      "winner": "R0032",
+      "loser": "R0017",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 105,
+        "loser": 32
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 4
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ]
+      },
+      "space": {
+        "region": 5040,
+        "truth_is_winner": 320,
+        "truth_is_loser": 320,
+        "better": "tie"
+      },
+      "corpus": {
+        "region": 21,
+        "truth_is_winner": 5,
+        "truth_is_loser": 5,
+        "better": "tie"
+      },
+      "rep": 1
+    },
+    {
+      "winner": "R0068",
+      "loser": "R0025",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 191,
+        "loser": 33
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "SELF_SERVICE_DEFLECT"
+      },
+      "same_queue": false,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 4
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 4
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "space": {
+        "region": 40,
+        "truth_is_winner": 0,
+        "truth_is_loser": 40,
+        "better": "b"
+      },
+      "corpus": {
+        "region": 2,
+        "truth_is_winner": 0,
+        "truth_is_loser": 2,
+        "better": "b"
+      },
+      "rep": 2
+    },
+    {
+      "winner": "R0096",
+      "loser": "R0062",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 505,
+        "loser": 160
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "free"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "free"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "space": {
+        "region": 40,
+        "truth_is_winner": 20,
+        "truth_is_loser": 20,
+        "better": "tie"
+      },
+      "corpus": {
+        "region": 2,
+        "truth_is_winner": 2,
+        "truth_is_loser": 2,
+        "better": "tie"
+      },
+      "rep": 2
+    },
+    {
+      "winner": "R0106",
+      "loser": "R0075",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 654,
+        "loser": 245
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          }
+        ]
+      },
+      "space": {
+        "region": 240,
+        "truth_is_winner": 0,
+        "truth_is_loser": 0,
+        "better": "neither_ever_right"
+      },
+      "corpus": {
+        "region": 7,
+        "truth_is_winner": 0,
+        "truth_is_loser": 0,
+        "better": "neither_ever_right"
+      },
+      "rep": 2
+    },
+    {
+      "winner": "R0109",
+      "loser": "R0103",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 743,
+        "loser": 605
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 3
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": false
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 3
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "space": {
+        "region": 40,
+        "truth_is_winner": 0,
+        "truth_is_loser": 0,
+        "better": "neither_ever_right"
+      },
+      "corpus": {
+        "region": 1,
+        "truth_is_winner": 0,
+        "truth_is_loser": 0,
+        "better": "neither_ever_right"
+      },
+      "rep": 2
+    },
+    {
+      "winner": "R0115",
+      "loser": "R0073",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 1113,
+        "loser": 225
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "gte",
+            "value": 3
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "gte",
+            "value": 3
+          }
+        ]
+      },
+      "space": {
+        "region": 1440,
+        "truth_is_winner": 200,
+        "truth_is_loser": 200,
+        "better": "tie"
+      },
+      "corpus": {
+        "region": 13,
+        "truth_is_winner": 8,
+        "truth_is_loser": 8,
+        "better": "tie"
+      },
+      "rep": 2
+    },
+    {
+      "winner": "R0119",
+      "loser": "R0116",
+      "channel": "write",
+      "in_final_base": true,
+      "strictly_inside": true,
+      "being_born": "winner",
+      "born_at": {
+        "winner": 1773,
+        "loser": 1285
+      },
+      "queues": {
+        "winner": "T2_TECHNICAL",
+        "loser": "T2_TECHNICAL"
+      },
+      "same_queue": true,
+      "conditions": {
+        "winner": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": false
+          }
+        ],
+        "loser": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "space": {
+        "region": 120,
+        "truth_is_winner": 60,
+        "truth_is_loser": 60,
+        "better": "tie"
+      },
+      "corpus": {
+        "region": 4,
+        "truth_is_winner": 3,
+        "truth_is_loser": 3,
+        "better": "tie"
+      },
+      "rep": 2
+    }
+  ],
+  "pooled": {
+    "space": {
+      "winner_better": 0,
+      "loser_better": 1,
+      "rate": 0.0,
+      "tie": 5,
+      "neither_ever_right": 2
+    },
+    "corpus": {
+      "winner_better": 0,
+      "loser_better": 1,
+      "rate": 0.0,
+      "tie": 5,
+      "neither_ever_right": 2
+    }
+  },
+  "expectation": [
+    {
+      "clause": "by construction",
+      "what": "the declared winner is the rule being born",
+      "reading": 8,
+      "of": 8,
+      "holds": true
+    },
+    {
+      "clause": 1,
+      "what": "at least five of the eight carry different queues",
+      "reading": 1,
+      "of": 8,
+      "holds": false
+    },
+    {
+      "clause": "2, space",
+      "what": "the declared winner better in more than half",
+      "reading": 0.0,
+      "holds": false
+    },
+    {
+      "clause": "2, corpus",
+      "what": "the declared winner better in half or fewer",
+      "reading": 0.0,
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "most name SECURITY_INCIDENT as the winner's queue",
+      "reading": 0,
+      "of": 8,
+      "holds": false
+    }
+  ]
+}

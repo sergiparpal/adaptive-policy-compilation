@@ -25,7 +25,10 @@ refuted and one holds. The fourth, `E-c`, is unadjudicable.**
   hold**, as the section on the verdicts says.
 - **The proposer contradicted subsumption 8 times** (`E-d` holds). It is the
   first time the verdict `contradice_subsuncion` has fired in any run of the
-  project.
+  project. **[NOTE 2026-10-06, later]** Seven of the eight were between rules
+  carrying one queue, where no decision changes. On the eighth, level 1 was
+  right over the whole region. POST-RUN, in *The eight refused declarations*,
+  below.
 - **The proposer met the discipline by not overlapping** (`E-e`, reported). In
   the three runs, 70% to 97% of the rules it wrote overlap no rule before them,
   against 27% to 39% in the baseline, and not one CONFLICT arose in 6,000
@@ -116,6 +119,9 @@ Each statistic on each final base read whole, from case 0, as
   default.** 2 and 6 such declarations in runs 1 and 2, none in run 3. Level 1
   refused each one, as the engine was built to. v1 had told the proposer not to
   declare on nested pairs, so the verdict had never had a chance to fire.
+  **[NOTE 2026-10-06, later]** In all eight the rule being placed contains the
+  earlier one, and the proposer called the earlier one the default. Seven of
+  the eight pairs carry one queue. See *The eight refused declarations*, below.
 
 ---
 
@@ -227,21 +233,96 @@ band does.
 
 ---
 
+## The eight refused declarations — POST-RUN
+
+*Added 2026-10-06. `authorship/refused.py` → [`refused.json`](refused.json),
+`PYTHONHASHSEED=0`, from a clean tree, **zero API calls**. **POST-RUN with an
+expectation written before the reading**: it is in the module's docstring, in
+the commit *authorship/refused.py: the declarations level 1 refused, the
+expectation first*, made before the module had read any of the eight. Its four
+gates passed: the refusals are the ones `E-d` counted, each still contradicts
+subsumption on the final base, that base reproduces Stage C's end to end on
+both surfaces, and the truth masks partition the space. Not a signed row, and it
+adjudicates nothing.*
+
+`E-d` counted the declarations, and this reads whether they were right. Each
+says that a rule should beat a rule strictly inside it, so over the narrower
+rule's region the truth says which of the two queues holds. That is how `W-b` of
+`PLAN_EDGES.md` read the installed edges.
+
+**Seven of the eight were idle.**
+
+- **All eight are a new rule claiming to beat an earlier rule inside it**, as
+  the records force: no CONFLICT arose, so every rule was born on a ticket no
+  earlier rule matched, and none of them can sit inside an earlier one.
+- **Each new rule is the earlier one with a bound loosened.** Severity at most
+  3 becomes at most 4; severity exactly 2 becomes at most 2; prior tickets
+  exactly 0 or 2 become at most 2. Two of them drop a condition as well. All
+  eight new rules send the ticket to `T2_TECHNICAL`.
+- **Seven carry the same queue as the rule they claim to beat.** Over the
+  narrower region nothing changes whichever way level 1 rules, so the refusal
+  cost nothing and saved nothing. On two of them the truth over that region is
+  never `T2_TECHNICAL`: 240 and 40 points of the space where both rules are
+  wrong.
+- **On the one pair with different queues, level 1 was right everywhere.** In
+  run 2, `R0068`, which sends the ticket to `T2_TECHNICAL`, claimed to beat
+  `R0025`, which sends it to `SELF_SERVICE_DEFLECT`. Over `R0025`'s region the
+  truth is `SELF_SERVICE_DEFLECT` on all 40 points of the space and on both of
+  its arrivals, and `T2_TECHNICAL` on none.
+
+**So subsumption against declaration has met its first case, and only one.**
+Where something was at stake, subsumption was right and the declaration was
+wrong. One pair is a reading, not a rate.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| by construction | the declared winner is the rule being born | 8 of 8 | held |
+| 1 | at least 5 of the 8 carry different queues | 1 of 8 | **failed** |
+| 2, space | the declared winner is the better rule in more than half of the strict pairs | 0 of 1 | **failed** |
+| 2, corpus | the same in half or fewer | 0 of 1 | held |
+| 3 | most name `SECURITY_INCIDENT` as the winner's queue | 0 of 8 | **failed** |
+
+**The drafter read the eight as edges like `PLAN_EDGES.md`'s, and they were
+not.** Those were claims about whose queue holds where two rules disagree, and
+nearly all of them were about the security keyword. Under v1e the proposer has
+to declare against every rule it overlaps, whether the queues agree or not, and
+when it widens a rule it calls the wider one the winner. What the expectation
+missed is the discipline itself: it asks for a declaration where nothing is at
+stake. The corpus clause held only because the one strict pair went against the
+declared winner on both surfaces.
+
+### What it changes
+
+- **`E-d` stands as signed, and seven of the eight contradictions it counted
+  are idle.** Each is a widening declared as a priority between rules with one
+  queue, which no arbitration can make matter.
+- **The discipline asked for declarations where nothing was at stake, and got
+  them.** How many of the declarations level 1 accepted are between rules with
+  one queue is not read here. It is free.
+
+---
+
 ## Files
 
 ```
 results_authorship/run_n20_smoke.json    Stage B: the smoke run
 results_authorship/run_n2000_r1.json … run_n2000_r3.json   Stage B: the three runs
 results_authorship/score.json            Stage C: E-a to E-d, E-e, the baseline
+results_authorship/refused.json          POST-RUN: the eight refused declarations
 authorship/plan.py                       the gate, §11's constants, §0's lines
 authorship/protocol.py                   v1e's texts, the validator, the proposer
 authorship/loop.py                       rung 2's loop with v1e's proposal path
 authorship/gates.py                      E-g1 to E-g4
 authorship/run.py                        Stage B: spends; guarded
 authorship/score.py                      Stage C
+authorship/refused.py                    POST-RUN: the refused declarations
 tests/test_authorship.py                 the instrument, no figure
+tests/test_authorship_refused.py         the POST-RUN reading, no figure
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m authorship.score`, about a minute
-and a half, zero API calls. `python3 -m authorship.run --dry-run` runs the
+and a half, zero API calls, and the POST-RUN section with
+`PYTHONHASHSEED=0 python3 -m authorship.refused`. `python3 -m authorship.run --dry-run` runs the
 blocking checks and writes nothing.
