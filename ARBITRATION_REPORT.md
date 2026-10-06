@@ -446,6 +446,16 @@ from its own hypothesis.
 but because the situation in which it can increment was never reached. Any conclusion
 resting on it rests on a counter nobody has seen work.
 
+> **[NOTE 2026-10-06] It has incremented now, and what it needed was a question, not a
+> conflict.** [`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md) asked the proposer to declare
+> against every rule a new one overlaps, nested ones included, on `PLAN_REUSE.md`'s loop.
+> The verdict fired 8 times in two runs of three, and level 1 refused each declaration, as
+> designed (`E-d`,
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md)).
+> Those runs had no conflicts at all. What they had is a protocol that asks on nested
+> pairs, which v1 told the proposer not to do. Whether the declarations it refused were
+> right has not been measured.
+
 ---
 
 ## 6. Underneath everything: the order is not identified
@@ -635,6 +645,20 @@ nobody has posed.*
    narrows. This is the one that decides whether level 1 stops having a price or merely
    stops lying. If soundness improves and the bound does not move, P3 fixes half the problem
    and subsumption still costs a third of the base.
+
+> **[NOTE 2026-10-06] Run, as Stage E of `PLAN_PAIRWISE.md`, under a plan of its own.**
+> [`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md), signed on 2026-10-05, read both predictions
+> on `PLAN_REUSE.md`'s loop at n=2000 instead of the 577 rules this section reads. **The
+> first was carried as `E-b` and refuted**: on the corpus, subsumption over the bases
+> written under the discipline is wrong more often than over the baseline's, at comparable
+> coverage. **The second was not carried**: on that loop the gap between the two bounds was
+> already zero or near it, so it had nothing to narrow. **And the proposer met the
+> discipline by overlapping less.** Most of the rules it wrote overlap nothing written
+> before them, and no CONFLICT arose in 6,000 arrivals: the partition §3 describes, which
+> removes the error detector, produced by the protocol meant to impose stratification. The
+> figures are in
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+> and what the run leaves open in [`IDEAS.md`](IDEAS.md).
 
 ### P4 · Restricting the hypothesis class to **k-stratified** orders
 

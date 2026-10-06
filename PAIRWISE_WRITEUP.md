@@ -548,6 +548,15 @@ not fired in any real run, and this protocol cannot make it: the population filt
 subsumption-comparable pairs out precisely so no call is wasted on one. The caveat
 `PLAN_PAIRWISE.md` §5.3 records stands untouched.
 
+> **[NOTE 2026-10-06] It has been seen working since, under another protocol.**
+> [`PLAN_AUTHORSHIP.md`](PLAN_AUTHORSHIP.md) asked the proposer to declare against every
+> rule a new one overlaps, nested ones included: the pairs this protocol filters out.
+> `contradice_subsuncion` fired 8 times in two runs of three, and level 1 refused each
+> declaration (`E-d`,
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md)).
+> So §5.3's caveat no longer stands. What the paragraph above says of the pairwise
+> protocol still holds: it cannot make the verdict fire.
+
 **The 1,200 calls are not reproducible.** The proposer is not deterministic at
 temperature 0, and `harness/record_guard.py` guards those records for that reason.
 Everything derived from them is free and reproducible to the digit.

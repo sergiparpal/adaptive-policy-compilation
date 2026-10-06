@@ -300,6 +300,14 @@ none of the three runs, so it is still unobserved in a real run.
 > Over the function their direction was right three times in four
 > ([`FINDINGS_EDGES.md`](../results_edges/FINDINGS_EDGES.md)). The counts above
 > stand.
+>
+> **[NOTE 2026-10-06] `contradice_subsuncion` has been observed since, on this
+> loop.** [`PLAN_AUTHORSHIP.md`](../PLAN_AUTHORSHIP.md) asked the proposer to
+> declare against every rule a new one overlaps, nested ones included, and the
+> verdict fired 8 times in two runs of three (`E-d`,
+> [`FINDINGS_AUTHORSHIP.md`](../results_authorship/FINDINGS_AUTHORSHIP.md)). In
+> the three runs above, v1 told the proposer not to declare on nested pairs,
+> which is where it can fire.
 
 **Recorded beside the rows and never in a denominator** — counts and rates by
 run:
@@ -454,6 +462,17 @@ run 3          0.5304  0.6291   0.6539  0.6539  0.0000
 - **A plan has to say what the proposer does on a conflict.** Today it can only
   answer with a rule, and it answers with a copy. A declaration made at write
   time keeps that vehicle unless the plan gives it another.
+
+> **[NOTE 2026-10-06] The plan this section was a baseline for has been drafted,
+> signed and run.** [`PLAN_AUTHORSHIP.md`](../PLAN_AUTHORSHIP.md), on this loop,
+> three runs at n=2000. Its `E-g2` reproduced this section's figures exactly
+> before any run. It took all three points above: it did not carry the second
+> prediction, it read the first on the corpus and the order's room over the
+> space, and it gave the proposer an order answer on a conflict and refused
+> copies. **The answer was never used, because no conflict arose**: the proposer
+> met the discipline by overlapping less. The first prediction, carried as
+> `E-b`, was refuted
+> ([`FINDINGS_AUTHORSHIP.md`](../results_authorship/FINDINGS_AUTHORSHIP.md)).
 
 ### What it does not settle
 

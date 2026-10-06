@@ -717,6 +717,16 @@ subsumption-comparable pairs out precisely so that no call is wasted on one, whi
 is the same thing as guaranteeing that verdict never fires. Retiring the caveat
 would take a protocol that deliberately offers such a pair, and this is not one.
 
+> **[NOTE 2026-10-06] Such a protocol has run, and the verdict fired.**
+> [`PLAN_AUTHORSHIP.md`](../PLAN_AUTHORSHIP.md) asked the proposer to declare against
+> every rule a new one overlaps, nested ones included, on `PLAN_REUSE.md`'s loop.
+> `contradice_subsuncion` fired 8 times in two runs of three, and level 1 refused each
+> declaration (`E-d`,
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](../results_authorship/FINDINGS_AUTHORSHIP.md)).
+> A third rejection verdict has now done work in a real run, and the caveat is retired:
+> the counter works. What the declarations it refused would have done, had level 1
+> obeyed them, is not measured.
+
 **Two numbers that are not conclusions and are recorded anyway.** The parse
 failure rate is **8.75%** here against 2.4% in Stage C, on the same model, the
 same settings and the same prompt; the population is the only thing that changed.
