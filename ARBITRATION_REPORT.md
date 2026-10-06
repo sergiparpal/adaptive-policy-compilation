@@ -455,6 +455,12 @@ resting on it rests on a counter nobody has seen work.
 > Those runs had no conflicts at all. What they had is a protocol that asks on nested
 > pairs, which v1 told the proposer not to do. Whether the declarations it refused were
 > right has not been measured.
+>
+> **[NOTE 2026-10-06, later] Measured, POST-RUN.** Seven of the eight were between rules
+> carrying one queue, where no decision changes whichever way level 1 rules. On the one
+> pair with different queues, level 1 was right on every point of the region:
+> [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+> *The eight refused declarations*.
 
 ---
 

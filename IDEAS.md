@@ -173,12 +173,17 @@ the requirement by overlapping less. What that leaves:
   more rules in front of the model, which `PLAN_FIDELITY.md` found a sign may
   cost it, and the two sets of runs are five days apart. Neither is separated
   (§6.2 and §6.4 of the plan).
-- **Whether the declarations level 1 refused were right.** Each of the 8 says a
-  broader rule should beat a rule inside it, on the narrower rule's region.
-  Where the two carry different queues, whether the broader one's is the truth
-  there more often would say what the refusal cost or saved. That is the
-  rung 2 item on subsumption against declaration, below, with material at last.
-  Free, from the records, and nobody has measured it.
+- ~~**Whether the declarations level 1 refused were right.**~~ **Measured
+  POST-RUN on 2026-10-06** (`FINDINGS_AUTHORSHIP.md`, *The eight refused
+  declarations*). Seven of the eight were between rules with one queue: a rule
+  widened and declared the winner over the rule it widens, where nothing is at
+  stake. On the one pair with different queues, level 1 was right on every
+  point of the region. What it leaves, both free:
+  - **How many of the declarations level 1 accepted are idle the same way.**
+    An edge between two rules with one queue changes no decision either.
+  - **A discipline that asks only where something is at stake.** v1e asks for
+    a declaration against every overlapped rule, whatever its queue. A next
+    protocol could exempt pairs whose queues agree; it would cost calls to run.
 - **A median of shares needs §0 to say what a run without room does to it.**
   `E-c`'s §0 said such a run has no share and left the median to the scorer,
   whose reading, merged before the signature, made the row unadjudicable where
@@ -1417,6 +1422,12 @@ draft a band for one of them and may not sign it.
   over a rule inside it, 8 times, and level 1 refused each declaration as
   designed. Whether obeying would have been right is free to measure from the
   records; see *What `PLAN_AUTHORSHIP.md` opens*.
+  **[NOTE 2026-10-06, later] Scored, POST-RUN, and only one case was at
+  stake.** Seven of the eight were between rules with one queue, where no
+  decision changes. On the eighth, subsumption was right and the declaration
+  wrong, on every point of the region (`FINDINGS_AUTHORSHIP.md`, *The eight
+  refused declarations*). One pair is a reading. More material would take a
+  protocol that asks on nested pairs whose queues differ, and calls.
 - The attributes the proposer does not use — `language` above all, in none of the
   eight runs. The audit is in `FINDINGS2.md` §4.
 

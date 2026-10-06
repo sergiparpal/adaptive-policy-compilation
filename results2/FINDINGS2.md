@@ -726,6 +726,12 @@ would take a protocol that deliberately offers such a pair, and this is not one.
 > A third rejection verdict has now done work in a real run, and the caveat is retired:
 > the counter works. What the declarations it refused would have done, had level 1
 > obeyed them, is not measured.
+>
+> **[NOTE 2026-10-06, later] Measured, POST-RUN.** Seven of the eight were between
+> rules carrying one queue, so obeying them would have changed no decision. On the
+> one pair with different queues, level 1 was right on every point of the region
+> ([`FINDINGS_AUTHORSHIP.md`](../results_authorship/FINDINGS_AUTHORSHIP.md),
+> *The eight refused declarations*).
 
 **Two numbers that are not conclusions and are recorded anyway.** The parse
 failure rate is **8.75%** here against 2.4% in Stage C, on the same model, the
