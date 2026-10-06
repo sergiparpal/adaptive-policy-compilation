@@ -288,6 +288,12 @@ later, which is why its figures differ from the run's own.
   the conflict screens these cases would have reached (§10.2).
 - **Imposed declaration.** v1 lets the proposer declare or not. Stage E of
   [`PLAN_PAIRWISE.md`](../PLAN_PAIRWISE.md) remains the form never run (§10.3).
+  **[NOTE 2026-10-06] Run since**, as
+  [`PLAN_AUTHORSHIP.md`](../PLAN_AUTHORSHIP.md), on the same loop. Made to
+  declare against every rule it overlapped, the proposer overlapped less.
+  Whether its declarations order what subsumption leaves over the function has
+  no verdict, because one run of three left the order no room (`E-c`,
+  [`FINDINGS_AUTHORSHIP.md`](../results_authorship/FINDINGS_AUTHORSHIP.md)).
 - **Accuracy among resolved cases, pre-registered.** That is the comparison
   `W-c` should have made. Its figure now exists, so it can only be reported:
   0.3272 for a coin, 0.3246 for the proposer.
