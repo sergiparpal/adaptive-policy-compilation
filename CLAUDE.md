@@ -293,6 +293,7 @@ and no other plan. The first command is blocking and writes nothing:
 
     python3 -m authorship.run --dry-run            # E-g1..E-g4; must pass first
     PYTHONHASHSEED=0 python3 -m authorship.score   # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m authorship.refused # POST-RUN: the refused declarations
     .venv/bin/python -m authorship.run --smoke     # Stage B: spends — only if asked
     .venv/bin/python -m authorship.run --rep 1     # then 2, then 3 — never side by side
 

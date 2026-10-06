@@ -1144,7 +1144,11 @@ included. Each final base is read whole, from case 0, and the figures are from
   above.
 - **The proposer contradicted subsumption, for the first time in the project.**
   8 declarations pooled, in two runs of three, each refused by level 1 (`E-d`
-  holds). v1 had told it not to declare on nested pairs.
+  holds). v1 had told it not to declare on nested pairs. **[NOTE 2026-10-06,
+  later]** Seven of the eight were idle: a rule widened, with the same queue,
+  and declared the winner over the rule it widens. On the one pair with
+  different queues, level 1 was right on every point of the region. POST-RUN,
+  one case, a reading and not a rate (*The eight refused declarations*).
 - **It overlapped less.** 70% to 97% of the rules it wrote overlap no rule before
   them, against 27% to 39% in the baseline. No CONFLICT arose in 6,000 arrivals,
   so the order answer was never used. Reported, not adjudicated (`E-e`).
