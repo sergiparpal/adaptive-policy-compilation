@@ -1,0 +1,924 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-07T18:17:43Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "981e0be087fdc25750b09a7a49f2e5bd45e1eb46",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "f9481625685f4653"
+  },
+  "plan": "PLAN_OVERLAP.md",
+  "stage": "C",
+  "surfaces": {
+    "O-a": "births, overlap read over the exhaustive space",
+    "O-b": "the exhaustive space, 134,400 points",
+    "O-c": "the exhaustive space, over each edge's shared region"
+  },
+  "read_whole": "every final base read from case 0",
+  "gates": {
+    "O-g1": {
+      "passes": true,
+      "declarations": 253,
+      "installed": 199,
+      "exempted": 41,
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1392,
+        "result": "OK (skipped=2)",
+        "seconds": 129.6,
+        "passes": true
+      }
+    },
+    "O-g2": {
+      "passes": true,
+      "checks": {
+        "O-a v1": true,
+        "O-b v1": true,
+        "O-c v1": true,
+        "O-a v1e": true,
+        "O-b v1e": true,
+        "O-c v1e": true,
+        "O-c v1e by run": true,
+        "v1e installed": true,
+        "by queue": true,
+        "v1's O-c is W-b": true,
+        "v1e's O-b is E-c": true,
+        "O-a at n=100": true
+      }
+    },
+    "O-g3": {
+      "what": "the labels, the head of the corpus, rung 2's v2 runs replayed through the loop, the exempted split on v1e's recorded sets, and the v2e texts' hash",
+      "labels_agree": true,
+      "smoke_is_the_head": true,
+      "replays": true,
+      "exempted_splits": true,
+      "fingerprint": true,
+      "split_rows": [
+        {
+          "calls": 49,
+          "matched": 49,
+          "passes": true
+        },
+        {
+          "calls": 144,
+          "matched": 144,
+          "passes": true
+        },
+        {
+          "calls": 30,
+          "matched": 30,
+          "passes": true
+        }
+      ],
+      "fingerprint_measured": "0acc97d11c37d769",
+      "fingerprint_declared": "0acc97d11c37d769",
+      "passes": true
+    },
+    "O-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_OVERLAP.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_OVERLAP.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "verdicts": {
+    "O-a": {
+      "row": "O-a",
+      "reading": 0.804878,
+      "line": "<= 0.5",
+      "per_run": [
+        0.254545,
+        0.804878,
+        1.0
+      ],
+      "holds": false,
+      "unadjudicable": false
+    },
+    "O-b": {
+      "row": "O-b",
+      "reading": 0.866008,
+      "line": ">= 0.5, on at least 2 runs with room",
+      "per_run": [
+        0.732015,
+        1.0,
+        null
+      ],
+      "runs_with_room": [
+        1,
+        2
+      ],
+      "left_out": [
+        3
+      ],
+      "holds": true,
+      "unadjudicable": false
+    },
+    "O-c": {
+      "row": "O-c",
+      "reading": 0.93617,
+      "line": ">= 0.7",
+      "hits": 44,
+      "strict": 47,
+      "per_run": [
+        [
+          23,
+          26
+        ],
+        [
+          21,
+          21
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "holds": true,
+      "unadjudicable": false
+    }
+  },
+  "o_b_pooled_reported": 0.805039,
+  "runs": [
+    {
+      "rep": 1,
+      "O-a": 0.254545,
+      "O-b": 0.732015,
+      "O-c": {
+        "hits": 23,
+        "misses": 3,
+        "tie": 28,
+        "neither_ever_right": 4,
+        "installed": 58,
+        "installed_same_queue": 0
+      },
+      "O-d": {
+        "births": {
+          "born": 55,
+          "alone": 12,
+          "alone_from_other_queues": 14
+        },
+        "born_without_o_recorded": 14,
+        "the_two_readings_agree": true,
+        "o_b_on_the_corpus": 0.259259,
+        "by_channel": {
+          "all": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.516592,
+                "alone": 0.150149,
+                "bound": 0.650744,
+                "room": 0.500595,
+                "share": 0.732015
+              },
+              "corpus": {
+                "e2e": 0.362,
+                "alone": 0.3515,
+                "bound": 0.392,
+                "room": 0.0405,
+                "share": 0.259259
+              }
+            },
+            "direction": {
+              "hits": 23,
+              "misses": 3,
+              "tie": 28,
+              "neither_ever_right": 4,
+              "installed": 58,
+              "installed_same_queue": 0
+            }
+          },
+          "write": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.516592,
+                "alone": 0.150149,
+                "bound": 0.650744,
+                "room": 0.500595,
+                "share": 0.732015
+              },
+              "corpus": {
+                "e2e": 0.362,
+                "alone": 0.3515,
+                "bound": 0.392,
+                "room": 0.0405,
+                "share": 0.259259
+              }
+            },
+            "direction": {
+              "hits": 23,
+              "misses": 3,
+              "tie": 28,
+              "neither_ever_right": 4,
+              "installed": 58,
+              "installed_same_queue": 0
+            }
+          },
+          "order": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.150149,
+                "alone": 0.150149,
+                "bound": 0.650744,
+                "room": 0.500595,
+                "share": 0.0
+              },
+              "corpus": {
+                "e2e": 0.3515,
+                "alone": 0.3515,
+                "bound": 0.392,
+                "room": 0.0405,
+                "share": 0.0
+              }
+            },
+            "direction": {
+              "hits": 0,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 0,
+              "installed_same_queue": 0
+            }
+          }
+        },
+        "profile": {
+          "rules": 55,
+          "empty_extension": 0,
+          "pairs": {
+            "possible": 1485,
+            "overlapping": 84,
+            "nested": 3,
+            "population": 60,
+            "overlapping_share": 0.056566,
+            "nested_share": 0.00202,
+            "overlap_degree": {
+              "mean": 3.054545,
+              "max": 53
+            }
+          },
+          "subsumption": {
+            "corpus": {
+              "n": 2000,
+              "action": 1907,
+              "conflict": 93,
+              "impasse": 0,
+              "correct": 703,
+              "coverage": 0.9535,
+              "silent_error": 0.631358,
+              "e2e": 0.3515
+            },
+            "space": {
+              "n": 134400,
+              "action": 66120,
+              "conflict": 68280,
+              "impasse": 0,
+              "correct": 20180,
+              "coverage": 0.491964,
+              "silent_error": 0.694797,
+              "e2e": 0.150149
+            }
+          },
+          "bounds": {
+            "puro": {
+              "corpus": 0.392,
+              "space": 0.650744
+            },
+            "hibrido": {
+              "corpus": 0.392,
+              "space": 0.650744
+            },
+            "gap": {
+              "corpus": 0.0,
+              "space": 0.0
+            }
+          },
+          "copies": {
+            "written": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            },
+            "covering": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            }
+          }
+        },
+        "online": {
+          "reuse_rate": 1.0,
+          "silent_error_rate": 0.6404,
+          "proposal_action_accuracy": 0.4821,
+          "e2e_accuracy": 0.3495,
+          "escalations": 56,
+          "conflicts": 1,
+          "n_rules": 55
+        },
+        "calls": 65,
+        "rounds_per_escalation": {
+          "1": 47,
+          "2": 9
+        },
+        "verdicts": {
+          "nacida": 55,
+          "copia": 1
+        },
+        "finish_reasons": {
+          "stop": 65
+        },
+        "distinct_overlap": 0.056566,
+        "same_queue_sizes": {
+          "0": 42,
+          "1": 17,
+          "2": 4,
+          "3": 1
+        },
+        "declarations": {
+          "cierra_ciclo/different": 2,
+          "installed/different": 58,
+          "no_solapan/different": 7,
+          "no_solapan/same": 10
+        },
+        "declarations_by_channel": {
+          "write:ok": 58,
+          "write:no_solapan": 17,
+          "write:cierra_ciclo": 2
+        },
+        "contradictions": [],
+        "order_answers": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 0,
+          "decided": 20,
+          "decided_right": 20
+        }
+      }
+    },
+    {
+      "rep": 2,
+      "O-a": 0.804878,
+      "O-b": 1.0,
+      "O-c": {
+        "hits": 21,
+        "misses": 0,
+        "tie": 0,
+        "neither_ever_right": 0,
+        "installed": 21,
+        "installed_same_queue": 0
+      },
+      "O-d": {
+        "births": {
+          "born": 41,
+          "alone": 30,
+          "alone_from_other_queues": 33
+        },
+        "born_without_o_recorded": 33,
+        "the_two_readings_agree": true,
+        "o_b_on_the_corpus": 1.0,
+        "by_channel": {
+          "all": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.497917,
+                "alone": 0.310417,
+                "bound": 0.497917,
+                "room": 0.1875,
+                "share": 1.0
+              },
+              "corpus": {
+                "e2e": 0.3485,
+                "alone": 0.341,
+                "bound": 0.3485,
+                "room": 0.0075,
+                "share": 1.0
+              }
+            },
+            "direction": {
+              "hits": 21,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 21,
+              "installed_same_queue": 0
+            }
+          },
+          "write": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.497917,
+                "alone": 0.310417,
+                "bound": 0.497917,
+                "room": 0.1875,
+                "share": 1.0
+              },
+              "corpus": {
+                "e2e": 0.3485,
+                "alone": 0.341,
+                "bound": 0.3485,
+                "room": 0.0075,
+                "share": 1.0
+              }
+            },
+            "direction": {
+              "hits": 21,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 21,
+              "installed_same_queue": 0
+            }
+          },
+          "order": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.310417,
+                "alone": 0.310417,
+                "bound": 0.497917,
+                "room": 0.1875,
+                "share": 0.0
+              },
+              "corpus": {
+                "e2e": 0.341,
+                "alone": 0.341,
+                "bound": 0.3485,
+                "room": 0.0075,
+                "share": 0.0
+              }
+            },
+            "direction": {
+              "hits": 0,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 0,
+              "installed_same_queue": 0
+            }
+          }
+        },
+        "profile": {
+          "rules": 41,
+          "empty_extension": 0,
+          "pairs": {
+            "possible": 820,
+            "overlapping": 25,
+            "nested": 1,
+            "population": 21,
+            "overlapping_share": 0.030488,
+            "nested_share": 0.00122,
+            "overlap_degree": {
+              "mean": 1.219512,
+              "max": 21
+            }
+          },
+          "subsumption": {
+            "corpus": {
+              "n": 2000,
+              "action": 1984,
+              "conflict": 15,
+              "impasse": 1,
+              "correct": 682,
+              "coverage": 0.992,
+              "silent_error": 0.65625,
+              "e2e": 0.341
+            },
+            "space": {
+              "n": 134400,
+              "action": 102320,
+              "conflict": 25200,
+              "impasse": 6880,
+              "correct": 41720,
+              "coverage": 0.76131,
+              "silent_error": 0.59226,
+              "e2e": 0.310417
+            }
+          },
+          "bounds": {
+            "puro": {
+              "corpus": 0.3485,
+              "space": 0.497917
+            },
+            "hibrido": {
+              "corpus": 0.3485,
+              "space": 0.497917
+            },
+            "gap": {
+              "corpus": 0.0,
+              "space": 0.0
+            }
+          },
+          "copies": {
+            "written": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            },
+            "covering": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            }
+          }
+        },
+        "online": {
+          "reuse_rate": 0.9268,
+          "silent_error_rate": 0.6527,
+          "proposal_action_accuracy": 0.4048,
+          "e2e_accuracy": 0.34,
+          "escalations": 42,
+          "conflicts": 0,
+          "n_rules": 41
+        },
+        "calls": 49,
+        "rounds_per_escalation": {
+          "1": 35,
+          "2": 7
+        },
+        "verdicts": {
+          "nacida": 41,
+          "sin_situar": 1
+        },
+        "finish_reasons": {
+          "stop": 49
+        },
+        "distinct_overlap": 0.030488,
+        "same_queue_sizes": {
+          "0": 43,
+          "1": 6
+        },
+        "declarations": {
+          "installed/different": 21,
+          "no_solapan/different": 17,
+          "no_solapan/same": 6
+        },
+        "declarations_by_channel": {
+          "write:no_solapan": 23,
+          "write:ok": 21
+        },
+        "contradictions": [],
+        "order_answers": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 3,
+          "decided": 17,
+          "decided_right": 14
+        }
+      }
+    },
+    {
+      "rep": 3,
+      "O-a": 1.0,
+      "O-b": null,
+      "O-c": {
+        "hits": 0,
+        "misses": 0,
+        "tie": 0,
+        "neither_ever_right": 0,
+        "installed": 0,
+        "installed_same_queue": 0
+      },
+      "O-d": {
+        "births": {
+          "born": 11,
+          "alone": 8,
+          "alone_from_other_queues": 11
+        },
+        "born_without_o_recorded": 11,
+        "the_two_readings_agree": true,
+        "o_b_on_the_corpus": null,
+        "by_channel": {
+          "all": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.287798,
+                "alone": 0.287798,
+                "bound": 0.287798,
+                "room": 0.0,
+                "share": null
+              },
+              "corpus": {
+                "e2e": 0.49,
+                "alone": 0.49,
+                "bound": 0.49,
+                "room": 0.0,
+                "share": null
+              }
+            },
+            "direction": {
+              "hits": 0,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 0,
+              "installed_same_queue": 0
+            }
+          },
+          "write": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.287798,
+                "alone": 0.287798,
+                "bound": 0.287798,
+                "room": 0.0,
+                "share": null
+              },
+              "corpus": {
+                "e2e": 0.49,
+                "alone": 0.49,
+                "bound": 0.49,
+                "room": 0.0,
+                "share": null
+              }
+            },
+            "direction": {
+              "hits": 0,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 0,
+              "installed_same_queue": 0
+            }
+          },
+          "order": {
+            "fill": {
+              "reinstall_problems": [],
+              "space": {
+                "e2e": 0.287798,
+                "alone": 0.287798,
+                "bound": 0.287798,
+                "room": 0.0,
+                "share": null
+              },
+              "corpus": {
+                "e2e": 0.49,
+                "alone": 0.49,
+                "bound": 0.49,
+                "room": 0.0,
+                "share": null
+              }
+            },
+            "direction": {
+              "hits": 0,
+              "misses": 0,
+              "tie": 0,
+              "neither_ever_right": 0,
+              "installed": 0,
+              "installed_same_queue": 0
+            }
+          }
+        },
+        "profile": {
+          "rules": 11,
+          "empty_extension": 0,
+          "pairs": {
+            "possible": 55,
+            "overlapping": 3,
+            "nested": 1,
+            "population": 0,
+            "overlapping_share": 0.054545,
+            "nested_share": 0.018182,
+            "overlap_degree": {
+              "mean": 0.545455,
+              "max": 2
+            }
+          },
+          "subsumption": {
+            "corpus": {
+              "n": 2000,
+              "action": 2000,
+              "conflict": 0,
+              "impasse": 0,
+              "correct": 980,
+              "coverage": 1.0,
+              "silent_error": 0.51,
+              "e2e": 0.49
+            },
+            "space": {
+              "n": 134400,
+              "action": 134400,
+              "conflict": 0,
+              "impasse": 0,
+              "correct": 38680,
+              "coverage": 1.0,
+              "silent_error": 0.712202,
+              "e2e": 0.287798
+            }
+          },
+          "bounds": {
+            "puro": {
+              "corpus": 0.49,
+              "space": 0.287798
+            },
+            "hibrido": {
+              "corpus": 0.49,
+              "space": 0.287798
+            },
+            "gap": {
+              "corpus": 0.0,
+              "space": 0.0
+            }
+          },
+          "copies": {
+            "written": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            },
+            "covering": {
+              "groups": 0,
+              "rules_in_groups": 0,
+              "pairs": {
+                "same_queue": 0,
+                "different_queue": 0
+              },
+              "different_queue_pairs": []
+            }
+          }
+        },
+        "online": {
+          "reuse_rate": 1.0,
+          "silent_error_rate": 0.5098,
+          "proposal_action_accuracy": 0.4545,
+          "e2e_accuracy": 0.4875,
+          "escalations": 11,
+          "conflicts": 0,
+          "n_rules": 11
+        },
+        "calls": 11,
+        "rounds_per_escalation": {
+          "1": 11
+        },
+        "verdicts": {
+          "nacida": 11
+        },
+        "finish_reasons": {
+          "stop": 11
+        },
+        "distinct_overlap": 0.054545,
+        "same_queue_sizes": {
+          "0": 8,
+          "1": 3
+        },
+        "declarations": {
+          "no_solapan/different": 4,
+          "no_solapan/same": 1,
+          "redundant/same": 1
+        },
+        "declarations_by_channel": {
+          "write:no_solapan": 5,
+          "write:ok": 1
+        },
+        "contradictions": [],
+        "order_answers": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 0,
+          "decided": 20,
+          "decided_right": 0
+        }
+      }
+    }
+  ],
+  "baselines": {
+    "v1": {
+      "o_a": [
+        0.3226,
+        0.4839,
+        0.3333
+      ],
+      "o_a_median": 0.3333,
+      "o_b_shares": [
+        0.3,
+        0.3833,
+        0.7806
+      ],
+      "o_b": {
+        "reading": 0.3833,
+        "runs_with_room": [
+          1,
+          2,
+          3
+        ],
+        "left_out": [],
+        "unadjudicable": false
+      },
+      "o_b_pooled": 0.5175,
+      "o_c": {
+        "hits": 34,
+        "strict": 45,
+        "reading": 0.755556
+      },
+      "by_queue": {
+        "installed/different": 50,
+        "no_solapan/different": 6,
+        "no_solapan/same": 5,
+        "redundant/different": 13,
+        "redundant/same": 1
+      }
+    },
+    "v1e": {
+      "o_a": [
+        0.8049,
+        0.7917,
+        0.9667
+      ],
+      "o_a_median": 0.8049,
+      "o_b_shares": [
+        1.0,
+        0.5798,
+        null
+      ],
+      "o_b": {
+        "reading": 0.7899,
+        "runs_with_room": [
+          1,
+          2
+        ],
+        "left_out": [
+          3
+        ],
+        "unadjudicable": false
+      },
+      "o_b_pooled": 0.8107,
+      "o_c": {
+        "hits": 58,
+        "strict": 84,
+        "reading": 0.690476
+      },
+      "by_queue": {
+        "contradice_subsuncion/same": 7,
+        "installed/different": 84,
+        "installed/same": 15,
+        "no_solapan/different": 70,
+        "no_solapan/same": 56,
+        "redundant/same": 5,
+        "contradice_subsuncion/different": 1,
+        "redundant/different": 1
+      }
+    }
+  }
+}
