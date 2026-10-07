@@ -150,8 +150,9 @@ narrower than it reads, and `STATUS.md` says so beside the row rather than only 
 the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
-2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, and
-since 2026-10-05 `authorship/run.py`, all three below. It refuses to run while §0 of **the
+2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
+2026-10-05 `authorship/run.py`, and since 2026-10-06 `overlap/run.py`, all four
+below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -305,6 +306,32 @@ reading of that median the row would hold. A plan that adjudicates a median of
 a statistic a run can leave undefined should settle that in §0 itself. **And a
 plan that charges a proposer for overlapping should expect it to stop.**
 
+**`PLAN_OVERLAP.md` closed on 2026-10-07: Stage E asked again, with the proposer
+told to overlap.** Four signed rows: three adjudicated, one reported. Sergi
+signed §0 on 2026-10-06, before any figure it governs existed. It ran
+`PLAN_REUSE.md`'s loop under v2e: rung 2's v2, which tells the proposer that
+overlap is normal, with `PLAN_AUTHORSHIP.md`'s discipline asked only where the
+queues differ. The record is `results_overlap/FINDINGS_OVERLAP.md`, and
+`STATUS.md` indexes its figures. **Stage C is free and reproduces from the
+committed records. Stage B spent**: its records are guarded, and a re-run
+neither overwrites them nor gives the same rules back, so a paid run does not
+start without Sergi asking for it. Both writers in `overlap/` refuse while the
+plan carries a blank signature line, and the gate reads `PLAN_OVERLAP.md` and no
+other plan. `authorship/` is called by it and not edited. The first command is
+blocking and writes nothing:
+
+    python3 -m overlap.run --dry-run            # O-g1..O-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m overlap.score   # Stage C, free, from the runs
+    .venv/bin/python -m overlap.run --smoke     # Stage B: spends — only if asked
+    .venv/bin/python -m overlap.run --rep 1     # then 2, then 3 — never side by side
+
+**Its `O-c` holds on one rule of thumb.** Read after the verdicts, nearly all of
+its strict pairs are a single declaration about the security keyword, installed
+against dozens of rules and counted once per edge. A rate over declared edges
+can rest on one declaration: a plan that reads one should say in §0 how it
+weighs edges that share a winner. **And §0's rule for a run without room did its
+work**: a run had none, and the verdict needed no reading.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
@@ -377,8 +404,8 @@ share a file — and if the destination is occupied it aborts before spending a
 call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
-and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, and
-since 2026-10-05, `authorship/run.py`.
+and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
+2026-10-05, `authorship/run.py`, and since 2026-10-06, `overlap/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

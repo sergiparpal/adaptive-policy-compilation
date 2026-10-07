@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 6, 2026. **Not a history** — that is the four
+What is known, as of October 7, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -10,8 +10,9 @@ What is known, as of October 6, 2026. **Not a history** — that is the four
 [`results_fidelity/FINDINGS_FIDELITY.md`](results_fidelity/FINDINGS_FIDELITY.md),
 [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md),
 [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
-[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md) and
-[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+[`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md),
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md) and
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -32,7 +33,8 @@ in `PLAN_PRIMACY.md`**: three more, closed the same day — plus **what the
 proposer says it is doing, against what it does, in `PLAN_WHY.md`**: five more,
 closed the same day too — plus **the second way's third form, declaration
 imposed at write time, in `PLAN_AUTHORSHIP.md`**: five more, closed on
-2026-10-06.
+2026-10-06 — plus **that form asked again, with the proposer told to overlap,
+in `PLAN_OVERLAP.md`**: four more, closed on 2026-10-07.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -98,6 +100,24 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So the clause holds on the corpus for the third form too, and over the space
 > the third form has no verdict.
 > [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
+>
+> **[NOTE 2026-10-07] Over the space the third form has a verdict now, and it is
+> the first form's.** [`PLAN_OVERLAP.md`](PLAN_OVERLAP.md) asked again with the
+> proposer told that overlap is normal, and asked to declare only where the
+> queues differ.
+>
+> - **It still partitioned in two runs of three** (`O-a` refuted).
+> - **Where it left room, its declarations filled most of it over the
+>   function** (`O-b` holds), and they pointed at the better rule 44 times in 47
+>   (`O-c` holds).
+> - **Read after the verdicts, nearly all of that is one rule of thumb**: a
+>   ticket with the security keyword goes to `SECURITY_INCIDENT`, the rule
+>   behind the first form's edges.
+> - **On the corpus the order's room was 81 and 15 arrivals of 2,000.**
+>
+> So the clause stands on the corpus for all three forms. Over the space, the
+> first form and the third both supply order, and both through that one rule.
+> [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md).
 
 ---
 
@@ -146,7 +166,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Sixty-nine rows have been signed before the figures they name existed. This
+**Seventy-three rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -188,15 +208,17 @@ a count behind it.
 | **L** · the slot listed first (§0 of `PLAN_PRIMACY.md`) | 3 | 2 | **1** | 0 | 1 | 1 |
 | **Y** · the why texts (§0 of `PLAN_WHY.md`) — *bands set on a development set* | 5 | 4 | **0** | 0 | 4 | 1 |
 | **E** · declaration imposed (§0 of `PLAN_AUTHORSHIP.md`) | 5 | 3 | **2** | 0 | 1 | 1 |
-| **total** | **69** | **58** | **24** | **2** | **32** | **9** |
+| **O** · imposed, with overlap asked for (§0 of `PLAN_OVERLAP.md`) | 4 | 3 | **1** | 0 | 2 | 1 |
+| **total** | **73** | **61** | **25** | **2** | **34** | **10** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
-`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`.
-Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`, `D-b`,
-`P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`, `U-e`,
-`F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`, `E-d`.
-Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`.
+`A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
+`O-a`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`,
+`D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`,
+`U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`,
+`E-d`, `O-b`, `O-c`. Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`,
+`Y-e`, `E-e`, `O-d`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -219,14 +241,14 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 24 of 58 = **41.4%**
-refuted; without them, 22 of 52 = **42.3%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 25 of 61 = **41.0%**
+refuted; without them, 23 of 55 = **41.8%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.9 points the flattering way, which is exactly why saying so is not optional.
+0.8 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows flatter it more, and for a reason of design.** Their bands were
 set on a development set from the same model a day earlier, so they bet that a
 reading generalises rather than test the drafter's foresight. Without them the
-two ratios are 24 of 54 = **44.4%** and 22 of 48 = **45.8%**, which is the reading
+two ratios are 25 of 57 = **43.9%** and 23 of 51 = **45.1%**, which is the reading
 the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
@@ -271,6 +293,12 @@ the calibration note should take.
 > One was reported, and one is signed and not adjudicated, like `I-b`. The table,
 > the named lists, the count in the heading, the two ratios and the two without
 > the `Y` rows moved together; the gap between the first two is now 0.9 points.
+>
+> **[NOTE 2026-10-07] Recomputed with the `O` thread, in the same commit as its
+> row.** Four rows were signed and three adjudicated: one refuted and two held.
+> One was reported. The table, the named lists, the count in the heading, the two
+> ratios and the two without the `Y` rows moved together; the gap between the
+> first two is now 0.8 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -294,7 +322,9 @@ which owns all three; and `Y` from
 [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md), which owns all
 five; and `E` from
 [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
-which owns all five.
+which owns all five; and `O` from
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
+which owns all four.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -422,6 +452,21 @@ refuted and `E-c` and `E-d` to hold, and trusted `E-c` least.
   scorer's reading, as above.
 
 `E-e` is reported.
+
+**The `O` rows ask Stage E's question again with the proposer told to overlap,
+and the drafter got two of three.** Sergi signed §0 of `PLAN_OVERLAP.md` on
+2026-10-06, before any of its figures existed, and a gate refuses its writers
+otherwise. The drafter expected `O-b` to hold and `O-a` and `O-c` to be refuted,
+and trusted `O-a` least.
+
+- **`O-a` was refuted and `O-b` held, as expected.** §0 had said what a run
+  without room does to `O-b`, and run 3 had none: the rule decided, and the
+  verdict needed no reading. That is `E-c`'s lesson, applied.
+- **`O-c` held, against the drafter's expectation**, at 0.9362 against a line of
+  0.70. Read after the verdicts, 43 of its 47 strict pairs are one declaration
+  about the security keyword, and the record says so beside the verdict.
+
+`O-d` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -1158,6 +1203,32 @@ error, and a proposer that chose the right queue less often. Two caveats the
 plan declared bear on them: the longer screen a repair round shows the model,
 and the five days between the two sets of runs.
 
+**Declaration imposed again, with the proposer told to overlap: it still
+partitioned, and where it did not, its edges ordered the function through one
+rule.** `PLAN_OVERLAP.md` ran `PLAN_REUSE.md`'s loop three more times at n=2000,
+under v2e: rung 2's v2, which tells the proposer that overlap is normal and shows
+it the engine's set arithmetic, with v1e's discipline asked only where the
+queues differ. Each final base is read whole, from case 0, and the figures are
+from
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md):
+
+- **It partitioned in two runs of three.** On the median, 0.8049 of the rules it
+  wrote overlap no earlier rule of another queue (`O-a` refuted). Run 1, at
+  0.2545, overlapped more than any v1 run.
+- **Where it left room, its edges filled most of it over the space**: 73% and
+  all of it in runs 1 and 2, 0.8660 under §0's rule (`O-b` holds). Run 3 left
+  none.
+- **They pointed at the better rule 44 times in 47** (`O-c` holds). Read
+  POST-RUN, 43 of the 47 are one declaration: a ticket with the security keyword
+  goes to `SECURITY_INCIDENT` before `T2_TECHNICAL`. Those edges also carry most
+  of `O-b`'s fill. It is the rule of thumb behind v1's edges, `W-b` above.
+- **Asking only where the queues differ removed the idle edges and the
+  contradictions**: none was installed between rules of one queue, and none
+  contradicted subsumption, against 15 and 8 under v1e (`O-d`).
+
+On the corpus the order's room was 81 and 15 arrivals of 2,000. On the median,
+the loop's end to end is 0.4400 under v1, 0.3505 under v1e and 0.3495 under v2e.
+
 ---
 
 ## What was withdrawn, and why
@@ -1234,6 +1305,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    verdict over the space: whether imposed declaration supplies order needs a
    protocol that keeps the proposer overlapping, and none has been written.
    [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md).
+   **[NOTE 2026-10-07] Written and run as `PLAN_OVERLAP.md`.** Told that overlap
+   is normal, the proposer still partitioned in two runs of three (`O-a`). Where
+   it overlapped, its declarations ordered the function through the keyword rule
+   of thumb (`O-b`, `O-c`, read POST-RUN). What is open now is what `PLAN_EDGES.md`
+   left: whether declaration carries direction beyond that one attribute. Under
+   v2e, four strict pairs went one right.
+   [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
