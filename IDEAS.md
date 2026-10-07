@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 6, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 7, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -34,8 +34,11 @@ the proposer says it is doing closed after it**: `PLAN_WHY.md`, five signed rows
 set on a development set, four held and one reported, written up in
 `results_why/`. **Stage E, declaration imposed at write time, closed on October
 6, 2026**: `PLAN_AUTHORSHIP.md`, five signed rows, two refuted, one held, one
-without a verdict and one reported, written up in `results_authorship/`. This is
-a list of things not done, none of them developed and in no order of precedence.
+without a verdict and one reported, written up in `results_authorship/`. **Asked
+again with the proposer told to overlap, it closed on October 7, 2026**:
+`PLAN_OVERLAP.md`, four signed rows, one refuted, two held and one reported,
+written up in `results_overlap/`. This is a list of things not done, none of
+them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -45,6 +48,14 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Stage E asked again, with the proposer told to overlap.** October 7, 2026,
+  `PLAN_OVERLAP.md`, cents. Told that overlap is normal and asked to declare
+  only where the queues differ, the proposer still partitioned in two runs of
+  three. Where it overlapped, its declarations filled most of the order's room
+  over the function, and nearly all of that is the rule of thumb about the
+  security keyword. Asking only where the queues differ removed the idle edges
+  and the contradictions. What it leaves is in its own section below.
+  `results_overlap/`.
 - **Stage E: declaration imposed at write time.** October 6, 2026,
   `PLAN_AUTHORSHIP.md`, cents. Required to declare against every rule it
   overlapped, the proposer overlapped less, and no CONFLICT arose in three runs.
@@ -151,6 +162,37 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_OVERLAP.md` opens and does not resolve
+
+Closed October 7, 2026. It asked Stage E's question again, under v2e: rung 2's
+v2, which tells the proposer that overlap is normal, with v1e's discipline
+asked only where the queues differ. The proposer still partitioned in two runs
+of three, and where it did not, its declarations ordered the function through
+one rule. What that leaves:
+
+- **Whether forced declarations carry direction beyond the keyword.** 43 of
+  `O-c`'s 47 strict pairs are one declaration about the security keyword; the
+  other four went one right. It is the item `PLAN_EDGES.md` left, reached now by
+  imposed declaration too. A base whose conflicts fall elsewhere would answer
+  it, which means another corpus or other draws, and calls.
+- **What separates a run that overlaps from one that partitions.** Run 1
+  overlapped more than any v1 run, and runs 2 and 3 partitioned, under the same
+  protocol. Three draws do not say why. The records are there to read, and that
+  reading is free.
+- **The framing apart from the discipline.** v2 alone has never run at n=2000,
+  so nothing says whether its framing keeps the proposer overlapping when
+  nothing is enforced. Three runs would; calls.
+- **A CONFLICT is still answered with a copy.** In six runs of imposed
+  declaration the order answer was never used, and the one CONFLICT under v2e
+  was answered with a copy of the rule the proposer wanted to win. Whether a
+  proposer ever takes up an order answer on this loop is open.
+- **A rate over declared edges can rest on one declaration.** `O-c` counts each
+  installed edge once, and one rule installed against dozens of rules is
+  counted dozens of times. A next plan that reads direction over declared edges
+  should say in §0 how it weighs edges that share a winner.
+
+---
+
 ## What `PLAN_AUTHORSHIP.md` opens and does not resolve
 
 Closed October 6, 2026. It ran Stage E, the third form of the second way:
@@ -163,6 +205,10 @@ the requirement by overlapping less. What that leaves:
   the proposer overlapping would test it: v2's instruction to overlap joined to
   this discipline, for instance. It costs calls, and it needs its own plan and
   signature.
+  **[NOTE 2026-10-07] Asked again as `PLAN_OVERLAP.md`.** With v2's framing and
+  the exemption, the proposer still partitioned in two runs of three (`O-a`).
+  Where it overlapped, its declarations filled most of the room over the space,
+  through the keyword rule of thumb (`O-b`, `O-c`, read POST-RUN).
 - **The requirement, or the paragraph that states it.** The order answer was
   never used, so the bundle reduced to the requirement and the copy refusal.
   Whether the partition comes from being made to declare or from being told to,
@@ -179,16 +225,20 @@ the requirement by overlapping less. What that leaves:
   widened and declared the winner over the rule it widens, where nothing is at
   stake. On the one pair with different queues, level 1 was right on every
   point of the region. What it leaves, both free:
-  - **How many of the declarations level 1 accepted are idle the same way.**
-    An edge between two rules with one queue changes no decision either.
-  - **A discipline that asks only where something is at stake.** v1e asks for
-    a declaration against every overlapped rule, whatever its queue. A next
-    protocol could exempt pairs whose queues agree; it would cost calls to run.
+  - ~~**How many of the declarations level 1 accepted are idle the same way.**~~
+    **Counted on 2026-10-06, while `PLAN_OVERLAP.md` was drafted**: under v1e,
+    15 of the installed edges joined rules of one queue
+    (`FINDINGS_OVERLAP.md`, `O-d`).
+  - ~~**A discipline that asks only where something is at stake.**~~ **Run as
+    `PLAN_OVERLAP.md`'s exemption on 2026-10-06 and 07.** It removed the idle
+    edges and the contradictions, and it did not stop the partition.
 - **A median of shares needs §0 to say what a run without room does to it.**
   `E-c`'s §0 said such a run has no share and left the median to the scorer,
   whose reading, merged before the signature, made the row unadjudicable where
   any other reading of the median holds it. The next plan that adjudicates a
   median of shares should settle it in §0 itself.
+  **[NOTE 2026-10-07]** `PLAN_OVERLAP.md` did, and its run 3 had no room: the
+  rule decided, and `O-b`'s verdict needed no reading.
 
 ---
 
@@ -289,6 +339,9 @@ function. What that answer leaves:
   by surface belongs to the channel or to the attribute. That means another
   corpus, or other draws of the proposer, and it costs calls: new runs of the
   loop.
+  **[NOTE 2026-10-07] Imposed declaration reached the same attribute.** 43 of
+  `PLAN_OVERLAP.md`'s 47 strict pairs are the keyword rule, and the other four
+  went one right (`FINDINGS_OVERLAP.md`, POST-RUN).
 - **A coin control that does not reward resolving.** `W-c` counted right
   decisions, and a flipped edge leaves its conflict open. So the count measured
   resolution, and the record says so beside the verdict. Accuracy among the
@@ -572,8 +625,9 @@ says how.
 *Added 2026-09-29.* That report's §7 makes five proposals, written on 2026-08-17
 as directional drafts — no band and no signature, as the section says of itself.
 Two became work under other names: P1 is the pairwise thread above and P3 is its
-Stage E, run on 2026-10-06 as `PLAN_AUTHORSHIP.md`. Half of a third was built: P5's benchmark is that thread's Stage B. The
-rest never reached this file. The report is indexed as a document to read before
+Stage E, run on 2026-10-06 as `PLAN_AUTHORSHIP.md` and asked again on 2026-10-07
+as `PLAN_OVERLAP.md`. Half of a third was built: P5's benchmark is that thread's
+Stage B. The rest never reached this file. The report is indexed as a document to read before
 writing another, not as a list of what is open, so for six weeks three open items
 lived only in its §7. They are carried here as the report left them, each with
 what the records have measured since that bears on it. **None is measured, none
@@ -1371,6 +1425,9 @@ draft a band for one of them and may not sign it.
   **[NOTE 2026-10-06]** Made to declare against every rule it overlapped, it
   partitioned more (`PLAN_AUTHORSHIP.md`, `E-e`). That does not tell the three
   candidates apart. It does show a protocol pushing the partition further.
+  **[NOTE 2026-10-07]** Told that overlap is normal, and asked only where the
+  queues differ, it still partitioned in two runs of three (`PLAN_OVERLAP.md`,
+  `O-a`).
 - Whether any prompt or schema gets a proposer that sees the base to write
   overlapping rules. Versions v1 and v2 bound a range; they do not exhaust it.
   **Untouched by the pairwise thread**, which sidesteps rule-writing entirely and
@@ -1379,6 +1436,9 @@ draft a band for one of them and may not sign it.
   **[NOTE 2026-10-06] Run as `PLAN_AUTHORSHIP.md`, and it went the other way.**
   Required to declare against every rule it overlapped, the proposer overlapped
   less than under v1 on the same loop.
+  **[NOTE 2026-10-07]** v2e, v2's framing with that discipline asked only where
+  the queues differ, overlapped more than v1 in one run of three and partitioned
+  in the other two (`PLAN_OVERLAP.md`).
 - How to get a base that produces conflicts, which is the condition for
   `EDGE_CONTRADICTS` to measure anything. Eight runs produced almost none.
   **Further away as of 2026-08-24, not closer.** The pairwise protocol filters

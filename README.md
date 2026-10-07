@@ -43,6 +43,7 @@ up in four places at once.
 | **L** · the slot listed first | where the presentation slot decides the pairwise answers already paid for, and whether it does anything else to them — closed 2026-10-05 | [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md) |
 | **Y** · the why texts | what the proposer says it is doing beside each pairwise answer, against what it does, with a codebook frozen on a development set — closed 2026-10-05 | [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md) |
 | **E** · declaration imposed | whether a proposer made to declare, against every rule a new one overlaps, whether it is an exception to it or a default under it, writes a stratified base — Stage E, the second way's third form — closed 2026-10-06 | [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md) |
+| **O** · imposed, with overlap asked for | Stage E's question asked again, with the proposer told that overlap is normal and asked to declare only where the queues differ: does it keep overlapping, and do its declarations order what subsumption leaves — closed 2026-10-07 | [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -327,6 +328,30 @@ PYTHONHASHSEED=0 python3 -m authorship.refused # POST-RUN · the refused declara
 .venv/bin/python -m authorship.run --rep 1     # then --rep 2 and --rep 3, never in parallel
 ```
 
+**[`PLAN_OVERLAP.md`](PLAN_OVERLAP.md) closed on 2026-10-07**: Stage E's question
+asked again, with the proposer kept overlapping if it would be. Sergi signed §0
+on 2026-10-06, before any of its figures existed. Under its protocol, v2e, the
+proposer is told that overlap is normal, as rung 2's v2 tells it, and is
+required to declare only against the rules of another queue it overlaps. Its
+record is
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md). Its
+gate reads that plan and no other, and guards both of its writers. Its Stage A
+writes nothing: the baselines are `PLAN_REUSE.md`'s and `PLAN_AUTHORSHIP.md`'s
+records, read by the instrument Stage C uses, and `O-g2` reproduces every figure
+§0 takes from them.
+
+Stage C is free, and it reproduces from the committed records. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same rules back. A paid run does not start without Sergi asking for it, and
+one that is interrupted resumes where it stopped.
+
+```bash
+python3 -m overlap.run --dry-run              # O-g1..O-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m overlap.score     # Stage C · O-a to O-c, and O-d
+.venv/bin/python -m overlap.run --smoke       # Stage B · spends · only on Sergi's say
+.venv/bin/python -m overlap.run --rep 1       # then --rep 2 and --rep 3, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -473,7 +498,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `edges/score.py --dry-run`, which runs `PLAN_EDGES.md`'s, and
 > `primacy/score.py --dry-run`, which runs `PLAN_PRIMACY.md`'s, and
 > `why/score.py --dry-run`, which runs `PLAN_WHY.md`'s, and
-> `authorship/run.py --dry-run`, which runs `PLAN_AUTHORSHIP.md`'s.
+> `authorship/run.py --dry-run`, which runs `PLAN_AUTHORSHIP.md`'s, and
+> `overlap/run.py --dry-run`, which runs `PLAN_OVERLAP.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -578,6 +604,7 @@ What it covers, and why those things:
 | `test_primacy.py` | the `PLAN_PRIMACY.md` instrument: §8's constants and §0's two lines, each verdict at its edge, the gate counting every signature line, §0's definitions by hand — the slot effect, its symmetry on one queue pair, the favoured queue and a tie —, the whole stage end to end on a synthetic record whose verdicts are worked by hand, `L-g1` to `L-g3` on the real records with a tampered deal and a tampered row caught, the dry run's checks never reaching §0's statistics, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
 | `test_edges.py` | the `PLAN_EDGES.md` instrument: §8's constants and §0's three lines, each verdict at its edge, the gate counting every signature line, the counterfactual rebuild on a scripted run — the record given the declared directions, the replay without edges given none, every departure an ACTION that becomes a CONFLICT, every birth in every arm —, `W-g2` and `W-g3`'s identities on the three Stage B records, the stage's arithmetic and the post-run readings by hand, and both writers refusing unsigned before they measure, read or write. **No figure of the plan** |
 | `test_authorship.py` | the `PLAN_AUTHORSHIP.md` instrument: §11's constants and §0's lines, the gate reading that plan and counting, v1e as v1 with one paragraph replaced and its texts hashing to the declared fingerprint, the order paragraph shown only on a conflict, the validator — copies, overlaps, what counts as placed, the seeded listing —, the loop on small worlds through an order answer, a copy, a repair round that places and one that does not, and a failed call, v1's line replayed on a recorded baseline run, the resume — a changed request refused, an outage stopping without keeping its failures —, the smoke check, every writer refusing unsigned, and Stage C's arithmetic by hand, each row at its line and an undefined share unadjudicable. **No figure of the plan** |
+| `test_overlap.py` | the `PLAN_OVERLAP.md` instrument: §11's constants and §0's lines, the plan's text for them and the gate counting every signature line, v2e as v2 with one sentence replaced and its texts hashing to the declared fingerprint, v1e's order paragraph only on a conflict, the exempted split into `O` and `S`, the loop on small worlds — an overlap within a queue owing nothing, one across queues placed or refused, a copy, an order answer, rung 2's path with the discipline off —, rung 2's four v2 runs replayed through the loop, §0's statistics at their edges, O-b's rule for runs without room included, every writer refusing unsigned, and the smoke check. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the seven that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1207,6 +1234,15 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · E-a to E-d, E-e, gated on PLAN_AUTHORSHIP.md
 │   └── refused.py           POST-RUN · the declarations level 1 refused, against the truth
 │
+├── overlap/              O · Stage E asked again, with the proposer told to overlap
+│   ├── plan.py              the gate, §11's constants, §0's lines, the baselines §0 declares
+│   ├── protocol.py          v2e's texts, the exempted split, the proposer
+│   ├── loop.py              rung 2's loop with v2e's proposal path
+│   ├── rows.py              §0's statistics, one instrument for baselines and runs
+│   ├── gates.py             O-g1..O-g3 · blocking, run before any write
+│   ├── run.py               Stage B · the three runs · spends
+│   └── score.py             Stage C · O-a to O-c, O-d, gated on PLAN_OVERLAP.md
+│
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
 │   ├── analysis.py          births, the split by birth, F and the gap
@@ -1234,7 +1270,7 @@ adaptive-policy-compilation/
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
-    results_authorship/
+    results_authorship/  results_overlap/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
