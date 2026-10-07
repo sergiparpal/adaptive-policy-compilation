@@ -1,5 +1,19 @@
 # PLAN_OVERLAP — imposed declaration, with the proposer kept overlapping
 
+> **[CLOSED 2026-10-07] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-06, before any figure of the plan existed. All three rows were
+> adjudicated on 2026-10-07: **`O-a` refuted; `O-b` and `O-c` hold**, and `O-d`
+> is reported. Run 3 left the order no room, and §0's rule left it out of `O-b`
+> with no reading needed. **The figures are owned by
+> [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-06. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its notes, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-06, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
