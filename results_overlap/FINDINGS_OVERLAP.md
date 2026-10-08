@@ -19,7 +19,9 @@ two hold.**
 - **The proposer still partitioned** (`O-a` is refuted). In two runs of three,
   80% and all of the rules it wrote overlap no earlier rule of another queue. In
   the other run, 25%. **[NOTE 2026-10-08]** That run's overlap is one rule,
-  read POST-RUN: without it, the run reads 0.8545 (*What separates the run that overlapped*, below).
+  read POST-RUN: without it, the run reads 0.8545 (*What separates the run that
+  overlapped*, below). **[NOTE 2026-10-08, later]** Read the same way, v1
+  partitioned too, and v2e more (*What v1's overlap is made of*, below).
 - **Where it left room, its declarations filled most of it** (`O-b` holds). They
   filled 73% and all of the order's room over the space in runs 1 and 2. Run 3
   left none, and §0's rule left it out.
@@ -90,8 +92,11 @@ three runs, asked on 2026-09-30, and v1e, `PLAN_AUTHORSHIP.md`'s, asked on
   and 11 of 11 overlapped no earlier rule of another queue. Run 1 overlapped
   more than any v1 run, whose shares were 0.3226 to 0.4839. **[NOTE 2026-10-08]**
   Through one rule: 38 of its 41 births with a rule of another queue in their
-  `O` met `R0017`, which covers half the space (*What separates the run that overlapped*). Run 3 wrote eleven
-  rules, and none of them met a rule of another queue. **The median is v1e's to
+  `O` met `R0017`, which covers half the space (*What separates the run that
+  overlapped*). **[NOTE 2026-10-08, later]** And v1's shares are not like for
+  like with v2e's: read the same way, v1 partitioned too (*What v1's overlap is
+  made of*). Run 3 wrote eleven rules, and none of them met a rule of another
+  queue. **The median is v1e's to
   the fourth decimal, by coincidence**: two bases of 41 rules, 33 born alone,
   that share no rule.
 - **`O-b`: where there was room, the declarations filled it.**
@@ -322,6 +327,92 @@ rules on the product and on the severity. The second is the reading's result.
 
 ---
 
+## What v1's overlap is made of — POST-RUN
+
+*Added 2026-10-08. `overlap/readings_v1.py` → [`readings_v1.json`](readings_v1.json),
+`PYTHONHASHSEED=0`, from a clean tree, **zero API calls**. **POST-RUN with an
+expectation written before the reading**, in the commit *overlap/readings_v1.py:
+what v1's overlap is made of, the expectation first*, made before the module
+read any v1 rule's conditions. A diagnostic was added after the first run, in
+its own commit and labelled so, *overlap/readings_v1.py: v1's births on an
+impasse, apart — added after the run*; the record comes from a second run at
+that commit, which reproduced every figure of the first. Its three gates passed
+in every run: the replay gives the v1 shares §0 of the plan declares, the bases
+have `structure.json`'s rule counts, and the births on a CONFLICT number each
+record's CONFLICTs. Not a signed row, and it adjudicates nothing.*
+
+`O-a`'s baseline is v1, `PLAN_REUSE.md`'s three runs, at 0.3226, 0.4839 and
+0.3333. Read the way *What separates the run that overlapped* read v2e's runs,
+**it is made of the security keyword too**, in two forms.
+
+- **One broad keyword rule, in runs 2 and 3.**
+  - run 3: `R0013`, *a ticket with the security keyword goes to
+    `SECURITY_INCIDENT`*, born on case 19, half the space, is in 18 of the 28
+    `O`s; without it, 0.5714;
+  - run 2: `R0018`, the same with *severity 1*, born on case 44, an eighth of
+    the space, is in 9 of the 16; without it, 0.7742.
+- **Keyword rules written on CONFLICTs, in run 1.** v1 answered every CONFLICT
+  with a rule, and every rule born on one meets a rule of another queue: 30, 5
+  and 12 births. In run 1, 28 of the 30 are `SECURITY_INCIDENT` rules on the
+  keyword, each meeting the `T2_TECHNICAL` rules it conflicted with. So run 1's
+  overlap is spread over those rules: its top rule, `R0020`, a `T2_TECHNICAL`
+  rule, is in 29 of its 42 `O`s, and without it run 1 barely moves, 0.3387.
+- **v2e bore no rule on a CONFLICT in any run**, off its records.
+
+**The same first tickets wrote the same broad rules under both protocols.** Case
+19 is the corpus's first ticket with the security keyword, and case 44 its
+third. The rule born on case 19 is *keyword alone, to `SECURITY_INCIDENT`* in
+v1's run 3 and v2e's run 1, the runs it carries; on case 44, *keyword with low
+severity* in both runs 2. The later rules that do not mention the keyword
+overlap it under both protocols: 18 of the 29 born after `R0013` in v1's run 3,
+2 excluding the keyword and 9 on it with the same queue, and all 38 born after
+`R0017` in v2e's run 1.
+
+### Like for like
+
+v2e's births all came on an impasse. Read on v1's births on an impasse alone,
+with the diagnostic added after the first run:
+
+| births on an impasse that overlap no earlier rule of another queue | run 1 | run 2 | run 3 | median |
+|---|---|---|---|---|
+| v1 | 0.6250 | 0.5769 | 0.4667 | 0.5769 |
+| v1, without its top rule | 0.6250 | 0.9231 | 0.8000 | 0.8000 |
+| v2e, `O-a` | 0.2545 | 0.8049 | 1.0000 | 0.8049 |
+| v2e, without its top rule | 0.8545 | 0.9756 | 1.0000 | 0.9756 |
+
+**Read like for like, v1 partitioned too, and v2e more.** On births on an impasse
+and without each run's top rule, v1 sits at 0.80 and v2e at 0.98, both above
+`O-a`'s line. The gap `O-a` read between them, 0.3333 against 0.8049, is
+mostly births on a CONFLICT and one broad keyword rule.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| by construction | every birth on a CONFLICT has a non-empty `O` | 30 of 30, 5 of 5, 12 of 12 | held |
+| 2 | without each top rule, v1's median `O-a` at most 0.50 | 0.5714 | **failed** |
+| 3 | every v1 top rule is `SECURITY_INCIDENT` on the keyword | runs 2 and 3; run 1's is `T2_TECHNICAL` | **failed** |
+
+The drafter gave the second clause about even odds, reasoning from run 1, whose
+births on a CONFLICT do keep its overlap spread. Runs 2 and 3 had few CONFLICTs
+and one broad rule each, as v2e's runs did. The third failed on the same run:
+its keyword rules are the 28 born on CONFLICTs, not its top rule.
+
+### What it changes
+
+- **`O-a` stands as signed**: 0.8049 is above its line, and so is v2e under every
+  reading here.
+- **Its baseline was not like for like.** §0 set the line between v1's 0.3333 and
+  v1e's 0.8049, nearer the protocol that did not partition. Read on births on an
+  impasse and without each top rule, v1 partitioned too, at 0.80, so the line
+  sat below both protocols. What v2e changed against v1 is smaller than `O-a`'s
+  baseline makes it look: 0.98 against 0.80.
+- **Under both protocols, nearly everything `O-a` counted as overlap is the
+  security keyword**: the breadth of the rule written for the first keyword
+  tickets, and in v1 the keyword rules written on CONFLICTs.
+
+---
+
 ## Files
 
 ```
@@ -329,6 +420,7 @@ results_overlap/run_n20_smoke.json    Stage B: the smoke run
 results_overlap/run_n2000_r1.json … run_n2000_r3.json   Stage B: the three runs
 results_overlap/score.json            Stage C: O-a to O-c, O-d, both baselines
 results_overlap/readings.json         POST-RUN: what separates the run that overlapped
+results_overlap/readings_v1.json      POST-RUN: what v1's overlap is made of
 overlap/plan.py                       the gate, §11's constants, §0's lines, the baselines §0 declares
 overlap/protocol.py                   v2e's texts, the exempted split, the proposer
 overlap/loop.py                       rung 2's loop with v2e's proposal path
@@ -337,8 +429,10 @@ overlap/gates.py                      O-g1 to O-g4
 overlap/run.py                        Stage B: spends; guarded
 overlap/score.py                      Stage C
 overlap/readings.py                   POST-RUN: what separates the run that overlapped
+overlap/readings_v1.py                POST-RUN: what v1's overlap is made of
 tests/test_overlap.py                 the instrument, no figure
 tests/test_overlap_readings.py        the POST-RUN reading, no figure
+tests/test_overlap_readings_v1.py     its v1 reading, no figure
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m overlap.score`, a few minutes, zero

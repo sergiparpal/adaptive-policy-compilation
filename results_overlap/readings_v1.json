@@ -1,0 +1,6074 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-08T21:52:19Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "f1313f34b49c619dab13f09b8c2e6df29794d66d",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "7edb9acdddb247e4"
+  },
+  "plan": "PLAN_OVERLAP.md",
+  "provenance": "POST-RUN: asked for after overlap/readings.py's reading existed. The expectation in the module's docstring was written before this reading and committed before it ran. Not a signed row; no verdict moves.",
+  "source": {
+    "records": [
+      "results_reuse/run_n2000_r1.json",
+      "results_reuse/run_n2000_r2.json",
+      "results_reuse/run_n2000_r3.json"
+    ]
+  },
+  "surface": "births, overlap and shares read over the exhaustive space",
+  "gates": [
+    {
+      "gate": 1,
+      "rep": 1,
+      "what": "the replay is O-g2's",
+      "measured": 0.3226,
+      "declared": 0.3226,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 1,
+      "what": "the bases are structure.json's",
+      "measured": 62,
+      "published": 62,
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 1,
+      "what": "the births on a CONFLICT are the loop's",
+      "measured": 30,
+      "published": 30,
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 2,
+      "what": "the replay is O-g2's",
+      "measured": 0.4839,
+      "declared": 0.4839,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 2,
+      "what": "the bases are structure.json's",
+      "measured": 31,
+      "published": 31,
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 2,
+      "what": "the births on a CONFLICT are the loop's",
+      "measured": 5,
+      "published": 5,
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 3,
+      "what": "the replay is O-g2's",
+      "measured": 0.3333,
+      "declared": 0.3333,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 3,
+      "what": "the bases are structure.json's",
+      "measured": 42,
+      "published": 42,
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 3,
+      "what": "the births on a CONFLICT are the loop's",
+      "measured": 12,
+      "published": 12,
+      "passes": true
+    }
+  ],
+  "runs": {
+    "1": {
+      "births": [
+        {
+          "rule_id": "R0001",
+          "born_at": 0,
+          "action": "T1_GENERAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "enterprise"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "severity"
+          ],
+          "share": 0.25,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0002",
+          "born_at": 1,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "off_hours",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "off_hours",
+            "product",
+            "severity"
+          ],
+          "share": 0.01875,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0003",
+          "born_at": 2,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              0
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0004",
+          "born_at": 3,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0005",
+          "born_at": 4,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "prior_tickets_30d",
+              "gte",
+              10
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.03273809523809524,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0006",
+          "born_at": 5,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              9
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.02976190476190476,
+          "O": [],
+          "S": [
+            "R0003"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0007",
+          "born_at": 6,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0008",
+          "born_at": 7,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0009",
+          "born_at": 8,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0010",
+          "born_at": 9,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "in",
+              [
+                "api",
+                "mobile",
+                "integrations"
+              ]
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.1125,
+          "O": [],
+          "S": [
+            "R0008",
+            "R0009"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0011",
+          "born_at": 11,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0012",
+          "born_at": 14,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "off_hours",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "off_hours",
+            "product",
+            "severity"
+          ],
+          "share": 0.01875,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0013",
+          "born_at": 15,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0014",
+          "born_at": 16,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0015",
+          "born_at": 17,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [
+            "R0012"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0016",
+          "born_at": 18,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0017",
+          "born_at": 32,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0018",
+          "born_at": 33,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0019",
+          "born_at": 35,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0020",
+          "born_at": 42,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0021",
+          "born_at": 44,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0022",
+          "born_at": 49,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0023",
+          "born_at": 50,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0024",
+          "born_at": 55,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0025",
+          "born_at": 71,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0026",
+          "born_at": 74,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0021"
+          ],
+          "S": [
+            "R0002"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0027",
+          "born_at": 77,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0028",
+          "born_at": 96,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0029",
+          "born_at": 105,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0030",
+          "born_at": 107,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0031",
+          "born_at": 154,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030"
+          ],
+          "S": [
+            "R0021"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0032",
+          "born_at": 155,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030"
+          ],
+          "S": [
+            "R0021",
+            "R0031"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0033",
+          "born_at": 158,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021",
+            "R0031",
+            "R0032"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0034",
+          "born_at": 162,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0021",
+            "R0031",
+            "R0032"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0035",
+          "born_at": 164,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "product",
+            "severity"
+          ],
+          "share": 0.01875,
+          "O": [
+            "R0020"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0036",
+          "born_at": 167,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0037",
+          "born_at": 238,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0038",
+          "born_at": 270,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0039",
+          "born_at": 342,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0040",
+          "born_at": 346,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0041",
+          "born_at": 394,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0042",
+          "born_at": 529,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0043",
+          "born_at": 547,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0044",
+          "born_at": 577,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0045",
+          "born_at": 580,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0046",
+          "born_at": 598,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "product",
+            "severity"
+          ],
+          "share": 0.00625,
+          "O": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045"
+          ],
+          "S": [
+            "R0022"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0047",
+          "born_at": 676,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0048",
+          "born_at": 739,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0049",
+          "born_at": 751,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0050",
+          "born_at": 754,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0051",
+          "born_at": 770,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0052",
+          "born_at": 956,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0053",
+          "born_at": 1063,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0054",
+          "born_at": 1078,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0055",
+          "born_at": 1082,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0056",
+          "born_at": 1235,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0057",
+          "born_at": 1264,
+          "action": "T1_GENERAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "enterprise"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "severity"
+          ],
+          "share": 0.25,
+          "O": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056"
+          ],
+          "S": [
+            "R0001"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0058",
+          "born_at": 1504,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046",
+            "R0057"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0059",
+          "born_at": 1514,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046",
+            "R0057"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056",
+            "R0058"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0060",
+          "born_at": 1704,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046",
+            "R0057"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056",
+            "R0058",
+            "R0059"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0061",
+          "born_at": 1802,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046",
+            "R0057"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056",
+            "R0058",
+            "R0059",
+            "R0060"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0062",
+          "born_at": 1871,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0013",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0018",
+            "R0019",
+            "R0020",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0028",
+            "R0029",
+            "R0030",
+            "R0033",
+            "R0034",
+            "R0046",
+            "R0057"
+          ],
+          "S": [
+            "R0021",
+            "R0031",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041",
+            "R0042",
+            "R0043",
+            "R0044",
+            "R0045",
+            "R0047",
+            "R0048",
+            "R0049",
+            "R0050",
+            "R0051",
+            "R0052",
+            "R0053",
+            "R0054",
+            "R0055",
+            "R0056",
+            "R0058",
+            "R0059",
+            "R0060",
+            "R0061"
+          ],
+          "born_on": "CONFLICT"
+        }
+      ],
+      "o_a": 0.3225806451612903,
+      "top": {
+        "rule_id": "R0020",
+        "born_at": 42,
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          [
+            "customer_tier",
+            "eq",
+            "pro"
+          ],
+          [
+            "product",
+            "eq",
+            "integrations"
+          ],
+          [
+            "severity",
+            "lte",
+            3
+          ]
+        ],
+        "share": 0.0375,
+        "in_o_of": 29,
+        "births_with_o": 42
+      },
+      "o_a_without_top": 0.3387096774193548,
+      "breadth": {
+        "median_share": 0.075,
+        "mean_conditions": 2.129032258064516
+      },
+      "attributes": {
+        "customer_tier": 34,
+        "severity": 34,
+        "has_security_keyword": 30,
+        "product": 29,
+        "prior_tickets_30d": 3,
+        "off_hours": 2
+      },
+      "timing": {
+        "births": {
+          "0": 41,
+          "1": 11,
+          "2": 5,
+          "3": 5
+        },
+        "births_with_o": {
+          "0": 21,
+          "1": 11,
+          "2": 5,
+          "3": 5
+        }
+      },
+      "on_conflict": {
+        "births": 30,
+        "with_o": 30
+      }
+    },
+    "2": {
+      "births": [
+        {
+          "rule_id": "R0001",
+          "born_at": 0,
+          "action": "T1_GENERAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "enterprise"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "severity"
+          ],
+          "share": 0.25,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0002",
+          "born_at": 1,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "off_hours",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "off_hours",
+            "product",
+            "severity"
+          ],
+          "share": 0.01875,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0003",
+          "born_at": 2,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              0
+            ],
+            [
+              "has_security_keyword",
+              "eq",
+              false
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.001488095238095238,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0004",
+          "born_at": 3,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "in",
+              [
+                "mobile",
+                "dashboard"
+              ]
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.075,
+          "O": [],
+          "S": [
+            "R0002"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0005",
+          "born_at": 4,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              20
+            ],
+            [
+              "has_security_keyword",
+              "eq",
+              false
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.03125,
+          "O": [],
+          "S": [
+            "R0003"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0006",
+          "born_at": 6,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0007",
+          "born_at": 7,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "in",
+              [
+                "api",
+                "integrations"
+              ]
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.075,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0008",
+          "born_at": 8,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "in",
+              [
+                "mobile",
+                "dashboard"
+              ]
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.075,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0009",
+          "born_at": 11,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0010",
+          "born_at": 16,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0011",
+          "born_at": 18,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0012",
+          "born_at": 19,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0007",
+            "R0008",
+            "R0011"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0013",
+          "born_at": 23,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0007",
+            "R0008",
+            "R0011"
+          ],
+          "S": [
+            "R0012"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0014",
+          "born_at": 32,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0015",
+          "born_at": 33,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [],
+          "S": [
+            "R0009"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0016",
+          "born_at": 35,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0017",
+          "born_at": 42,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0018",
+          "born_at": 44,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "severity",
+              "lte",
+              1
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword",
+            "severity"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017"
+          ],
+          "S": [
+            "R0012",
+            "R0013"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0019",
+          "born_at": 49,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0020",
+          "born_at": 50,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0002",
+            "R0004"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0021",
+          "born_at": 55,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0018"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0022",
+          "born_at": 71,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0016"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0023",
+          "born_at": 96,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0010"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0024",
+          "born_at": 105,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0014"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0025",
+          "born_at": 107,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0017"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0026",
+          "born_at": 158,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0021"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0027",
+          "born_at": 162,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ],
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.05,
+          "O": [
+            "R0018"
+          ],
+          "S": [
+            "R0004"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0028",
+          "born_at": 167,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0007",
+            "R0008",
+            "R0011"
+          ],
+          "S": [
+            "R0012",
+            "R0013",
+            "R0018"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0029",
+          "born_at": 270,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0007",
+            "R0008",
+            "R0011"
+          ],
+          "S": [
+            "R0012",
+            "R0013",
+            "R0018",
+            "R0028"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0030",
+          "born_at": 342,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "severity",
+              "lte",
+              1
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword",
+            "severity"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027"
+          ],
+          "S": [
+            "R0012",
+            "R0013",
+            "R0018",
+            "R0028",
+            "R0029"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0031",
+          "born_at": 676,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "severity",
+              "lte",
+              1
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword",
+            "severity"
+          ],
+          "share": 0.125,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0014",
+            "R0015",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027"
+          ],
+          "S": [
+            "R0012",
+            "R0013",
+            "R0018",
+            "R0028",
+            "R0029",
+            "R0030"
+          ],
+          "born_on": "CONFLICT"
+        }
+      ],
+      "o_a": 0.4838709677419355,
+      "top": {
+        "rule_id": "R0018",
+        "born_at": 44,
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          [
+            "has_security_keyword",
+            "eq",
+            true
+          ],
+          [
+            "severity",
+            "lte",
+            1
+          ]
+        ],
+        "share": 0.125,
+        "in_o_of": 9,
+        "births_with_o": 16
+      },
+      "o_a_without_top": 0.7741935483870968,
+      "breadth": {
+        "median_share": 0.05,
+        "mean_conditions": 2.838709677419355
+      },
+      "attributes": {
+        "customer_tier": 28,
+        "severity": 27,
+        "product": 21,
+        "has_security_keyword": 9,
+        "prior_tickets_30d": 2,
+        "off_hours": 1
+      },
+      "timing": {
+        "births": {
+          "0": 30,
+          "1": 1
+        },
+        "births_with_o": {
+          "0": 15,
+          "1": 1
+        }
+      },
+      "on_conflict": {
+        "births": 5,
+        "with_o": 5
+      }
+    },
+    "3": {
+      "births": [
+        {
+          "rule_id": "R0001",
+          "born_at": 0,
+          "action": "T1_GENERAL",
+          "conditions": [
+            [
+              "customer_tier",
+              "eq",
+              "enterprise"
+            ],
+            [
+              "severity",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "severity"
+          ],
+          "share": 0.25,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0002",
+          "born_at": 1,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "neq",
+              "enterprise"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.1125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0003",
+          "born_at": 2,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              0
+            ],
+            [
+              "has_security_keyword",
+              "eq",
+              false
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "prior_tickets_30d",
+            "severity"
+          ],
+          "share": 0.001488095238095238,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0004",
+          "born_at": 3,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "neq",
+              "enterprise"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.1125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0005",
+          "born_at": 4,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "gte",
+              5
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.009523809523809525,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0006",
+          "born_at": 5,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "gte",
+              5
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.009523809523809525,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0007",
+          "born_at": 6,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0008",
+          "born_at": 7,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "neq",
+              "enterprise"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.1125,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0009",
+          "born_at": 9,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0010",
+          "born_at": 11,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0011",
+          "born_at": 14,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0012",
+          "born_at": 18,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0013",
+          "born_at": 19,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0014",
+          "born_at": 28,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0003",
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0015",
+          "born_at": 29,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "has_security_keyword",
+              "eq",
+              false
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "product",
+            "severity"
+          ],
+          "share": 0.00625,
+          "O": [],
+          "S": [
+            "R0003"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0016",
+          "born_at": 33,
+          "action": "BILLING_SPECIALIST",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0017",
+          "born_at": 35,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0018",
+          "born_at": 41,
+          "action": "SELF_SERVICE_DEFLECT",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "has_security_keyword",
+              "eq",
+              false
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "product",
+            "severity"
+          ],
+          "share": 0.00625,
+          "O": [],
+          "S": [
+            "R0003"
+          ],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0019",
+          "born_at": 42,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0375,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0020",
+          "born_at": 49,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0021",
+          "born_at": 50,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0022",
+          "born_at": 71,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0023",
+          "born_at": 96,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0024",
+          "born_at": 105,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0025",
+          "born_at": 107,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0026",
+          "born_at": 131,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ],
+            [
+              "prior_tickets_30d",
+              "gte",
+              5
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.009523809523809525,
+          "O": [
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0027",
+          "born_at": 152,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [
+            "R0003",
+            "R0013"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0028",
+          "born_at": 154,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027"
+          ],
+          "S": [
+            "R0013"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0029",
+          "born_at": 158,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "dashboard"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "business"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013",
+            "R0028"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0030",
+          "born_at": 162,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "pro"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0013",
+            "R0028"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0031",
+          "born_at": 169,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "api"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "product",
+            "severity"
+          ],
+          "share": 0.0125,
+          "O": [
+            "R0003",
+            "R0013",
+            "R0028"
+          ],
+          "S": [
+            "R0014"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0032",
+          "born_at": 270,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ],
+            [
+              "product",
+              "eq",
+              "billing"
+            ],
+            [
+              "severity",
+              "lte",
+              3
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "has_security_keyword",
+            "product",
+            "severity"
+          ],
+          "share": 0.01875,
+          "O": [
+            "R0012"
+          ],
+          "S": [
+            "R0013",
+            "R0028"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0033",
+          "born_at": 278,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [
+            "R0003",
+            "R0013",
+            "R0028"
+          ],
+          "S": [],
+          "born_on": "IMPASSE"
+        },
+        {
+          "rule_id": "R0034",
+          "born_at": 284,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "mobile"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [
+            "R0003",
+            "R0013",
+            "R0028"
+          ],
+          "S": [
+            "R0027"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0035",
+          "born_at": 598,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0036",
+          "born_at": 739,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0037",
+          "born_at": 770,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035",
+            "R0036"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0038",
+          "born_at": 906,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0039",
+          "born_at": 1082,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0040",
+          "born_at": 1349,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0041",
+          "born_at": 1654,
+          "action": "SECURITY_INCIDENT",
+          "conditions": [
+            [
+              "has_security_keyword",
+              "eq",
+              true
+            ]
+          ],
+          "attributes": [
+            "has_security_keyword"
+          ],
+          "share": 0.5,
+          "O": [
+            "R0001",
+            "R0002",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0007",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012",
+            "R0014",
+            "R0016",
+            "R0017",
+            "R0019",
+            "R0020",
+            "R0021",
+            "R0022",
+            "R0023",
+            "R0024",
+            "R0025",
+            "R0026",
+            "R0027",
+            "R0029",
+            "R0030",
+            "R0031",
+            "R0033",
+            "R0034"
+          ],
+          "S": [
+            "R0013",
+            "R0028",
+            "R0032",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040"
+          ],
+          "born_on": "CONFLICT"
+        },
+        {
+          "rule_id": "R0042",
+          "born_at": 1899,
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            [
+              "product",
+              "eq",
+              "integrations"
+            ],
+            [
+              "severity",
+              "gte",
+              4
+            ],
+            [
+              "customer_tier",
+              "eq",
+              "free"
+            ],
+            [
+              "prior_tickets_30d",
+              "lte",
+              4
+            ]
+          ],
+          "attributes": [
+            "customer_tier",
+            "prior_tickets_30d",
+            "product",
+            "severity"
+          ],
+          "share": 0.002976190476190476,
+          "O": [
+            "R0003",
+            "R0013",
+            "R0028",
+            "R0035",
+            "R0036",
+            "R0037",
+            "R0038",
+            "R0039",
+            "R0040",
+            "R0041"
+          ],
+          "S": [
+            "R0033"
+          ],
+          "born_on": "CONFLICT"
+        }
+      ],
+      "o_a": 0.3333333333333333,
+      "top": {
+        "rule_id": "R0013",
+        "born_at": 19,
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          [
+            "has_security_keyword",
+            "eq",
+            true
+          ]
+        ],
+        "share": 0.5,
+        "in_o_of": 18,
+        "births_with_o": 28
+      },
+      "o_a_without_top": 0.5714285714285714,
+      "breadth": {
+        "median_share": 0.0125,
+        "mean_conditions": 2.8333333333333335
+      },
+      "attributes": {
+        "customer_tier": 33,
+        "severity": 33,
+        "product": 31,
+        "has_security_keyword": 13,
+        "prior_tickets_30d": 9
+      },
+      "timing": {
+        "births": {
+          "0": 34,
+          "1": 4,
+          "2": 2,
+          "3": 2
+        },
+        "births_with_o": {
+          "0": 20,
+          "1": 4,
+          "2": 2,
+          "3": 2
+        }
+      },
+      "on_conflict": {
+        "births": 12,
+        "with_o": 12
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "by construction",
+      "what": "every birth on a CONFLICT has a non-empty O",
+      "reading": {
+        "1": [
+          30,
+          30
+        ],
+        "2": [
+          5,
+          5
+        ],
+        "3": [
+          12,
+          12
+        ]
+      },
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "without each top rule, v1's median O-a is at most 0.50",
+      "reading": {
+        "per_run": [
+          0.3387096774193548,
+          0.7741935483870968,
+          0.5714285714285714
+        ],
+        "median": 0.5714285714285714
+      },
+      "holds": false
+    },
+    {
+      "clause": 3,
+      "what": "every v1 top rule is SECURITY_INCIDENT on the keyword",
+      "reading": {
+        "1": [
+          "R0020",
+          "T2_TECHNICAL"
+        ],
+        "2": [
+          "R0018",
+          "SECURITY_INCIDENT"
+        ],
+        "3": [
+          "R0013",
+          "SECURITY_INCIDENT"
+        ]
+      },
+      "holds": false
+    }
+  ],
+  "added_after_the_first_run": {
+    "what": "v1's births on an impasse alone, with and without each run's top rule; and v2e's births on a CONFLICT, off its records",
+    "provenance": "Written after this module's first run, by someone who had read it. The record comes from a second run, which reproduced every figure of the first. Not a bet.",
+    "v1_on_impasse": {
+      "1": {
+        "births": 32,
+        "alone": 20,
+        "alone_without_top": 20,
+        "share": 0.625,
+        "share_without_top": 0.625
+      },
+      "2": {
+        "births": 26,
+        "alone": 15,
+        "alone_without_top": 24,
+        "share": 0.5769230769230769,
+        "share_without_top": 0.9230769230769231
+      },
+      "3": {
+        "births": 30,
+        "alone": 14,
+        "alone_without_top": 24,
+        "share": 0.4666666666666667,
+        "share_without_top": 0.8
+      }
+    },
+    "v2e_births_on_conflict": {
+      "1": {
+        "births": 55,
+        "on_conflict": 0
+      },
+      "2": {
+        "births": 41,
+        "on_conflict": 0
+      },
+      "3": {
+        "births": 11,
+        "on_conflict": 0
+      }
+    }
+  }
+}
