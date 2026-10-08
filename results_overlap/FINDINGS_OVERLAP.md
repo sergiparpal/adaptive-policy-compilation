@@ -18,7 +18,8 @@ two hold.**
 
 - **The proposer still partitioned** (`O-a` is refuted). In two runs of three,
   80% and all of the rules it wrote overlap no earlier rule of another queue. In
-  the other run, 25%.
+  the other run, 25%. **[NOTE 2026-10-08]** That run's overlap is one rule,
+  read POST-RUN: without it, the run reads 0.8545 (*What separates the run that overlapped*, below).
 - **Where it left room, its declarations filled most of it** (`O-b` holds). They
   filled 73% and all of the order's room over the space in runs 1 and 2. Run 3
   left none, and §0's rule left it out.
@@ -87,7 +88,9 @@ three runs, asked on 2026-09-30, and v1e, `PLAN_AUTHORSHIP.md`'s, asked on
 
 - **`O-a`: the partition held in two runs of three.** 14 of 55 births, 33 of 41
   and 11 of 11 overlapped no earlier rule of another queue. Run 1 overlapped
-  more than any v1 run, whose shares were 0.3226 to 0.4839. Run 3 wrote eleven
+  more than any v1 run, whose shares were 0.3226 to 0.4839. **[NOTE 2026-10-08]**
+  Through one rule: 38 of its 41 births with a rule of another queue in their
+  `O` met `R0017`, which covers half the space (*What separates the run that overlapped*). Run 3 wrote eleven
   rules, and none of them met a rule of another queue. **The median is v1e's to
   the fourth decimal, by coincidence**: two bases of 41 rules, 33 born alone,
   that share no rule.
@@ -229,7 +232,10 @@ few to weigh.
   differ.** The plan said before the runs that this outcome would close P3 of
   `ARBITRATION_REPORT.md` §7 on this model, and it does, with one qualification:
   run 1 overlapped more than any v1 run did, so the partition is the usual
-  outcome and not the only one.
+  outcome and not the only one. **[NOTE 2026-10-08] The qualification does not
+  survive a POST-RUN reading.** Run 1's overlap is its births meeting `R0017`.
+  Without that one rule, run 1 reads 0.8545, as partitioned as the other two
+  (*What separates the run that overlapped*).
 - **Where the proposer did overlap, the declarations ordered what subsumption
   left over the function** (`O-b`), in two runs. Read POST-RUN, the ordering is
   one rule of thumb about the security keyword, the one `PLAN_EDGES.md` found
@@ -248,12 +254,81 @@ few to weigh.
 
 ---
 
+## What separates the run that overlapped — POST-RUN
+
+*Added 2026-10-08. `overlap/readings.py` → [`readings.json`](readings.json),
+`PYTHONHASHSEED=0`, from a clean tree, **zero API calls**. **POST-RUN with an
+expectation written before the reading**: it is in the module's docstring, in
+the commit *overlap/readings.py: what separates the run that overlapped, the
+expectation first*, made before the module read any rule's conditions beyond
+`R0017` and `R0024`. Its two gates passed in every run: the replay of the births
+gives `O-a`'s count, and every born rule's recorded `O`, rule for rule. Not a
+signed row, and it adjudicates nothing.*
+
+`O-a` read 0.2545 in run 1, against 0.8049 and 1.0000. A low share can mean a
+proposer writing across the other queues' regions, or one broad rule that every
+later birth meets. Each birth's `O` names the rules it met, so the records tell
+the two apart.
+
+**It is one broad rule.**
+
+- **Run 1's overlap is `R0017`.** *A ticket with the security keyword goes to
+  `SECURITY_INCIDENT`*, born at case 19, covers half the space. It is in the `O`
+  of 38 of the 41 births that met a rule of another queue, and every one of the
+  38 rules born after it met it. None of them excludes keyword tickets, the only
+  way to avoid it.
+- **Without it, run 1 partitions like the others.** As if `R0017` met nothing,
+  47 of run 1's 55 births overlap no earlier rule of another queue, 0.8545, more
+  than run 2's 0.8049.
+- **Run 2 is the same, smaller.** `R0024`, the keyword rule with *severity at
+  most 2*, born at case 44, covers a quarter of the space and is in 7 of the 8
+  `O`s of run 2. Without it, 40 of 41.
+- **Run 3 tiled the space with broad rules.** Its eleven rules each cover a
+  tenth of the space at the median, against an eightieth in run 1 and a fortieth
+  in run 2, and all eleven condition on the customer's tier and the product.
+  None of them met a rule of another queue.
+- **The runs are front-loaded.** 50 of run 1's 55 rules, 37 of run 2's 41 and
+  all of run 3's were born in the first 500 cases.
+
+So **the proposer partitioned in all three runs, measured against every rule
+but one**, and run 1's low `O-a` is that one rule's breadth: a rule on the
+keyword alone covers half the space, so any later rule that does not mention the
+keyword meets it. The partition held in every other respect. Whether run 1's
+later rules left the keyword alone because v2 tells the proposer not to narrow a
+rule to dodge another, or because they never considered it, these runs cannot
+say.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | run 1's top rule is in at least half of its births' `O`s | 38 of 41 | held |
+| 2 | without it, run 1's `O-a` is above 0.50 | 0.8545 | held |
+| 3 | run 3's median share of the space is the largest | 0.0125 · 0.025 · 0.1 | held |
+| 4 | in runs 2 and 3, one attribute is in three rules in four | all of them, in both | held |
+
+The drafter declared the first and third close to known before the reading. The
+fourth held and **does not separate the runs**: run 1 conditions 54 of its 55
+rules on the product and on the severity. The second is the reading's result.
+
+### What it changes
+
+- **`O-a` stands as signed, and its refutation is stronger than it read.** The
+  one run under the line was under it through one rule.
+- **The qualification this record gave in *What this settles* does not
+  survive**: dated notes say so where it was written.
+- **Whether v1's overlap is one rule's breadth too is not read here.** The same
+  reading over `PLAN_REUSE.md`'s runs would say, and it is free.
+
+---
+
 ## Files
 
 ```
 results_overlap/run_n20_smoke.json    Stage B: the smoke run
 results_overlap/run_n2000_r1.json … run_n2000_r3.json   Stage B: the three runs
 results_overlap/score.json            Stage C: O-a to O-c, O-d, both baselines
+results_overlap/readings.json         POST-RUN: what separates the run that overlapped
 overlap/plan.py                       the gate, §11's constants, §0's lines, the baselines §0 declares
 overlap/protocol.py                   v2e's texts, the exempted split, the proposer
 overlap/loop.py                       rung 2's loop with v2e's proposal path
@@ -261,7 +336,9 @@ overlap/rows.py                       §0's statistics, one instrument for basel
 overlap/gates.py                      O-g1 to O-g4
 overlap/run.py                        Stage B: spends; guarded
 overlap/score.py                      Stage C
+overlap/readings.py                   POST-RUN: what separates the run that overlapped
 tests/test_overlap.py                 the instrument, no figure
+tests/test_overlap_readings.py        the POST-RUN reading, no figure
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m overlap.score`, a few minutes, zero
