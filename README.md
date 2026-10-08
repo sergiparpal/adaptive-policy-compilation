@@ -349,6 +349,7 @@ one that is interrupted resumes where it stopped.
 python3 -m overlap.run --dry-run              # O-g1..O-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m overlap.score     # Stage C · O-a to O-c, and O-d
 PYTHONHASHSEED=0 python3 -m overlap.readings  # POST-RUN · the run that overlapped
+PYTHONHASHSEED=0 python3 -m overlap.readings_v1  # POST-RUN · the same, over v1
 .venv/bin/python -m overlap.run --smoke       # Stage B · spends · only on Sergi's say
 .venv/bin/python -m overlap.run --rep 1       # then --rep 2 and --rep 3, never in parallel
 ```
@@ -434,6 +435,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `overlap/run.py` | `results_overlap/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `overlap/score.py` | `results_overlap/score.json` | **refuses while the plan is unsigned** |
 > | `overlap/readings.py` | `results_overlap/readings.json` | **refuses while the plan is unsigned** |
+> | `overlap/readings_v1.py` | `results_overlap/readings_v1.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
@@ -1244,7 +1246,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             O-g1..O-g3 · blocking, run before any write
 │   ├── run.py               Stage B · the three runs · spends
 │   ├── score.py             Stage C · O-a to O-c, O-d, gated on PLAN_OVERLAP.md
-│   └── readings.py          POST-RUN · what separates the run that overlapped
+│   ├── readings.py          POST-RUN · what separates the run that overlapped
+│   └── readings_v1.py       POST-RUN · the same reading of v1's three bases
 │
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
