@@ -323,6 +323,7 @@ blocking and writes nothing:
     python3 -m overlap.run --dry-run            # O-g1..O-g4; must pass first
     PYTHONHASHSEED=0 python3 -m overlap.score   # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m overlap.readings  # POST-RUN: the run that overlapped
+    PYTHONHASHSEED=0 python3 -m overlap.readings_v1  # POST-RUN: the same, over v1
     .venv/bin/python -m overlap.run --smoke     # Stage B: spends — only if asked
     .venv/bin/python -m overlap.run --rep 1     # then 2, then 3 — never side by side
 

@@ -180,11 +180,17 @@ one rule. What that leaves:
   broad rule: run 1's overlap is its births meeting `R0017`, the keyword rule,
   which covers half the space, and without it run 1 partitions like the others.
   What it leaves:
-  - **Whether v1's overlap is one rule's breadth too.** The same reading over
-    `PLAN_REUSE.md`'s runs would say. Free.
+  - ~~**Whether v1's overlap is one rule's breadth too.**~~ **Read POST-RUN on
+    2026-10-08** (`FINDINGS_OVERLAP.md`, *What v1's overlap is made of*). In two runs of
+    three, and in the third it is the keyword rules v1 wrote on CONFLICTs. Read
+    like for like, on births on an impasse and without each top rule, v1
+    partitioned too, and v2e more.
   - **Why run 1's later rules never excluded the keyword.** v2 tells the
     proposer not to narrow a rule to dodge another; whether that, or indifference
     to the keyword, left them overlapping `R0017`, these runs cannot say. Calls.
+    **[NOTE 2026-10-08, later]** Under v1, which says nothing of the kind, the
+    later rules mostly did not exclude it either: 2 of the 29 born after `R0013`
+    in v1's run 3. So it is not v2's instruction, or not only.
 - **The framing apart from the discipline.** v2 alone has never run at n=2000,
   so nothing says whether its framing keeps the proposer overlapping when
   nothing is enforced. Three runs would; calls.
