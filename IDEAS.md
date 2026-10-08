@@ -175,10 +175,16 @@ one rule. What that leaves:
   other four went one right. It is the item `PLAN_EDGES.md` left, reached now by
   imposed declaration too. A base whose conflicts fall elsewhere would answer
   it, which means another corpus or other draws, and calls.
-- **What separates a run that overlaps from one that partitions.** Run 1
-  overlapped more than any v1 run, and runs 2 and 3 partitioned, under the same
-  protocol. Three draws do not say why. The records are there to read, and that
-  reading is free.
+- ~~**What separates a run that overlaps from one that partitions.**~~ **Read
+  POST-RUN on 2026-10-08** (`FINDINGS_OVERLAP.md`, *What separates the run that overlapped*). One
+  broad rule: run 1's overlap is its births meeting `R0017`, the keyword rule,
+  which covers half the space, and without it run 1 partitions like the others.
+  What it leaves:
+  - **Whether v1's overlap is one rule's breadth too.** The same reading over
+    `PLAN_REUSE.md`'s runs would say. Free.
+  - **Why run 1's later rules never excluded the keyword.** v2 tells the
+    proposer not to narrow a rule to dodge another; whether that, or indifference
+    to the keyword, left them overlapping `R0017`, these runs cannot say. Calls.
 - **The framing apart from the discipline.** v2 alone has never run at n=2000,
   so nothing says whether its framing keeps the proposer overlapping when
   nothing is enforced. Three runs would; calls.
@@ -1438,7 +1444,9 @@ draft a band for one of them and may not sign it.
   less than under v1 on the same loop.
   **[NOTE 2026-10-07]** v2e, v2's framing with that discipline asked only where
   the queues differ, overlapped more than v1 in one run of three and partitioned
-  in the other two (`PLAN_OVERLAP.md`).
+  in the other two (`PLAN_OVERLAP.md`). **[NOTE 2026-10-08]** That run
+  overlapped through one broad rule, and without it partitions too, read
+  POST-RUN.
 - How to get a base that produces conflicts, which is the condition for
   `EDGE_CONTRADICTS` to measure anything. Eight runs produced almost none.
   **Further away as of 2026-08-24, not closer.** The pairwise protocol filters
