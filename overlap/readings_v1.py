@@ -52,6 +52,18 @@ the drafter gives it about even odds: run 2, with five CONFLICTs, needs only one
 more birth alone to cross the line.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN, AND LABELLED SO
+--------------------------------------------------------------------------
+**The births on an impasse, apart.** The first run showed v1's run 1 overlapping
+through its 30 births on a CONFLICT, which meet rules of another queue by
+construction, while v2e's three runs bore no rule on a CONFLICT at all. So `O-a`
+compares a protocol that wrote rules on CONFLICTs with one that did not. This
+block reads v1's births on an impasse alone, with and without the top rule, and
+checks against the records that every v2e birth came on an impasse. It was
+written after the first run, by someone who had read it; the record comes from
+a second run, which reproduced every figure of the first. Nothing in it is a bet.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN**: asked for after `overlap/readings.py`'s reading existed, with the
@@ -95,6 +107,27 @@ def read_run(record: dict, space: Space) -> dict[str, Any]:
     got["on_conflict"] = {"births": len(on_conflict),
                           "with_o": sum(1 for b in on_conflict if b["O"])}
     return got
+
+
+def on_impasse(got: dict) -> dict[str, Any]:
+    """The births on an impasse alone: how many met no earlier rule of another
+    queue, with and without the run's top rule."""
+    births = [b for b in got["births"] if b["born_on"] != "CONFLICT"]
+    top = got["top"]["rule_id"] if got["top"] else None
+    n = len(births)
+    alone = sum(1 for b in births if not b["O"])
+    alone_without = sum(1 for b in births if not [x for x in b["O"] if x != top])
+    return {"births": n, "alone": alone, "alone_without_top": alone_without,
+            "share": alone / n if n else None,
+            "share_without_top": alone_without / n if n else None}
+
+
+def v2e_births_on_conflict(rep: int) -> dict[str, int]:
+    """How many of a v2e run's rules were born on a CONFLICT, off its record."""
+    record = gates.load(plan.run_path(rep))
+    outcome = {row["idx"]: row["outcome"] for row in record["records"]}
+    on = [r for r in record["rules"] if outcome[r["born_at"]] == "CONFLICT"]
+    return {"births": len(record["rules"]), "on_conflict": len(on)}
 
 
 def check(structure: dict, records: dict[int, dict], runs: dict[int, dict]) -> list[dict]:
@@ -163,6 +196,16 @@ def main(argv: list[str] | None = None) -> int:
         "gates": checked,
         "runs": {str(rep): r for rep, r in runs.items()},
         "expectation": read_expectation(runs),
+        "added_after_the_first_run": {
+            "what": "v1's births on an impasse alone, with and without each run's "
+                    "top rule; and v2e's births on a CONFLICT, off its records",
+            "provenance": "Written after this module's first run, by someone who had "
+                          "read it. The record comes from a second run, which "
+                          "reproduced every figure of the first. Not a bet.",
+            "v1_on_impasse": {str(rep): on_impasse(r) for rep, r in runs.items()},
+            "v2e_births_on_conflict": {str(rep): v2e_births_on_conflict(rep)
+                                       for rep in range(1, plan.REPS + 1)},
+        },
     }, indent=2, default=str) + "\n")
     print(f"\n-> {READ_PATH}\n  {describe()}")
     return 0
