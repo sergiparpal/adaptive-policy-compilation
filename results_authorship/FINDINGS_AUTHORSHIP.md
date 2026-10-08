@@ -223,6 +223,13 @@ band does.
   protocol that kept the proposer overlapping, v2's instruction to overlap
   joined to this discipline for instance, would be the test, and it is another
   plan.
+  **[NOTE 2026-10-08] That plan has run**: [`PLAN_OVERLAP.md`](../PLAN_OVERLAP.md),
+  v2's framing joined to this discipline, asked only where the queues differ.
+  The proposer still partitioned in two runs of three (`O-a` refuted). Where it
+  overlapped, its declarations filled 73% and all of the order's room over the
+  space (`O-b` holds), and read POST-RUN, nearly all of that is one rule of thumb
+  about the security keyword
+  ([`FINDINGS_OVERLAP.md`](../results_overlap/FINDINGS_OVERLAP.md)).
 - **The discipline alone.** The order answer was never used, so the bundle §6.1
   warned about reduced to the discipline and the copy refusal. Whether the
   partition comes from the requirement or from the instruction that states it
@@ -301,6 +308,9 @@ declared winner on both surfaces.
 - **The discipline asked for declarations where nothing was at stake, and got
   them.** How many of the declarations level 1 accepted are between rules with
   one queue is not read here. It is free.
+  **[NOTE 2026-10-08] Read since**, by `PLAN_OVERLAP.md`'s blocking check
+  `O-g2`: 15 of the edges these runs installed join rules of one queue
+  ([`FINDINGS_OVERLAP.md`](../results_overlap/FINDINGS_OVERLAP.md), `O-d`).
 
 ---
 
