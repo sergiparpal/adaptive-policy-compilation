@@ -1219,7 +1219,13 @@ from
   0.2545, overlapped more than any v1 run. **[NOTE 2026-10-08] Through one
   rule.** `R0017`, the keyword rule, covers half the space and is in 38 of the 41
   `O`s of run 1; without it, run 1 reads 0.8545. Read POST-RUN, so the proposer
-  partitioned in all three runs, against every rule but one (*What separates the run that overlapped*).
+  partitioned in all three runs, against every rule but one (*What separates
+  the run that overlapped*).
+  **[NOTE 2026-10-08, later] And `O-a`'s baseline was not like for like.** v1's
+  overlap is the keyword too: one broad keyword rule in two runs, and in the
+  third the keyword rules it wrote on CONFLICTs, which v2e never did. On births
+  on an impasse and without each run's top rule, v1 sits at 0.80 and v2e at 0.98
+  on the median: both partitioned, v2e more (*What v1's overlap is made of*).
 - **Where it left room, its edges filled most of it over the space**: 73% and
   all of it in runs 1 and 2, 0.8660 under §0's rule (`O-b` holds). Run 3 left
   none.
