@@ -107,6 +107,8 @@ third recovers 61% of what full supervision buys, on corpus test.
 > queues differ.
 >
 > - **It still partitioned in two runs of three** (`O-a` refuted).
+>   **[NOTE 2026-10-08]** The third run's overlap is one broad rule, read
+>   POST-RUN: without it, that run partitions too.
 > - **Where it left room, its declarations filled most of it over the
 >   function** (`O-b` holds), and they pointed at the better rule 44 times in 47
 >   (`O-c` holds).
@@ -1214,7 +1216,10 @@ from
 
 - **It partitioned in two runs of three.** On the median, 0.8049 of the rules it
   wrote overlap no earlier rule of another queue (`O-a` refuted). Run 1, at
-  0.2545, overlapped more than any v1 run.
+  0.2545, overlapped more than any v1 run. **[NOTE 2026-10-08] Through one
+  rule.** `R0017`, the keyword rule, covers half the space and is in 38 of the 41
+  `O`s of run 1; without it, run 1 reads 0.8545. Read POST-RUN, so the proposer
+  partitioned in all three runs, against every rule but one (*What separates the run that overlapped*).
 - **Where it left room, its edges filled most of it over the space**: 73% and
   all of it in runs 1 and 2, 0.8660 under §0's rule (`O-b` holds). Run 3 left
   none.
