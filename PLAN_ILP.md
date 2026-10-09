@@ -1,5 +1,22 @@
 # PLAN_ILP — what does the proposer buy that a symbolic inducer would not
 
+> **[CLOSED 2026-08-30] Executed in full, with §0 and §1's amendment signed.**
+> Sergi signed §0 on 2026-08-30, before any figure of the plan existed. He signed
+> the amendment to §1 the same day, after the blocking checks killed the declared
+> search method and before any row was read. Three rows were adjudicated:
+> **`I-a` and `I-c` refuted, `I-d` holds**. `I-a` is banded on the 316
+> escalations of the train half, as the amendment fixed, and the record reports
+> all 632 beside it. **`I-b` is signed and has no verdict**: it holds at one
+> declared beam width and is refuted at the other, so `I-g4` refuses it one.
+> **The figures are owned by
+> [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md)**, and no result
+> is to be read off this file; the scoreboard is in [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-08-30. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> the amendment, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-08-29, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign one. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
