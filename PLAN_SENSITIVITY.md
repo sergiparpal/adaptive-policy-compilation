@@ -1,5 +1,21 @@
 # PLAN_SENSITIVITY — how much of rung 1's failure is the correlation, and how much is this policy
 
+> **[CLOSED 2026-08-29] Executed in full, with §0 and §1's amendment signed.**
+> Sergi signed §0 on 2026-08-29, before any figure of the plan existed, and
+> tightened `A-b` and `A-d` as he signed. He signed the amendment to §1 the same
+> day, after `A-g4` killed the first construction, and still before any row had
+> a figure. All five rows were adjudicated: **`A-a` and `A-b` refuted; `A-c`,
+> `A-d` and `A-e` hold.** `A-a` is refuted upward, and that is the sweep's
+> finding. **The figures are owned by
+> [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-08-29. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> the amendment, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-08-29, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
