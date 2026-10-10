@@ -137,7 +137,7 @@ python3 -m sensitivity.sweep --dry-run   # draws everything, writes nothing
 python3 -m ilp.induce_check              # I-g1..I-g4, blocking, first and alone
 python3 -m ilp.compare                   # the four rows; gated on §0 and §1
 python3 -m ilp.labels                    # POST-HOC · who had the labels, §5's erratum
-python3 -m ilp.margin                    # POST-RUN · where the +0.0342 comes from, ~35 s
+python3 -m ilp.margin                    # POST-RUN · where the inducer's margin comes from, ~35 s
 python3 -m ilp.chosen                    # POST-RUN · the inducer on the queues the proposer chose
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
@@ -1219,7 +1219,7 @@ adaptive-policy-compilation/
 │   ├── induce_check.py      I-g1..I-g4 · blocking
 │   ├── compare.py           the four rows, gated on PLAN_ILP.md
 │   ├── labels.py            POST-HOC · who had the labels: the proposer chose, the inducer was handed
-│   ├── margin.py            POST-RUN · the +0.0342, split between the 371 cases seen labelled and the rest
+│   ├── margin.py            POST-RUN · the inducer's margin, split between the test cases it saw labelled and the rest
 │   └── chosen.py            POST-RUN · the control: the inducer on the queues the proposer chose
 │
 ├── fidelity/             F · the model re-asked on the cases its rules decided
