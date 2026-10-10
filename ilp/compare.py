@@ -16,11 +16,13 @@ an unsigned amendment. `--dry-run` runs everything and writes nothing.
 WHAT IS READ WHERE, AFTER §1'S AMENDMENT
 --------------------------------------------------------------------------
 `I-a`  trained on **train_316**, scored on corpus test split 0. The conservative
-       set: the proposer's rules saw all 632, so 316 hands the inducer less
-       material while matching the order's handicap. The 632 figure is reported
+       set: the proposer's rules saw all 632, so 316 hands the inducer fewer
+       tickets while matching the order's handicap. The 632 figure is reported
        beside it and is not what the band reads.
-`I-b`  trained on **train_632**, the matched set — the inducer gets the 6
-       `T3_ENGINEERING` and 29 `ACCOUNT_MANAGER` examples the proposer got.
+`I-b`  trained on **train_632**, the set matched on tickets — the inducer gets
+       the 6 `T3_ENGINEERING` and 29 `ACCOUNT_MANAGER` tickets the proposer got,
+       and their true queues, which the proposer never had (§5's erratum of
+       `results_ilp/FINDINGS_ILP.md`).
 `I-c`  `I-a`'s list, scored over the 134,400.
 `I-d`  `I-a`'s list, counted.
 
@@ -214,7 +216,7 @@ def main(argv=None) -> int:
     print(f"  {'I-d':<6}{i_d['band']:<22}"
           f"{d_vals[40]:>12}{d_vals[120]:>12}{i_d['verdict']:>14}")
 
-    print("\n  REPORTED BESIDE, NOT BANDED — the matched training set for I-a")
+    print("\n  REPORTED BESIDE, NOT BANDED — I-a trained on all 632, matched on tickets")
     print(f"    train_632, test e2e: {i_a['reported_beside']['train_632']}")
 
     payload = {

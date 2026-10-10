@@ -115,7 +115,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         test pins the list so that growing it is a decision, not an oversight."""
         allowed_names = {
             "harness/shadow.py",            # labels the record, does not decide
-            "harness/cache_baseline.py",    # baseline: the LLM would be right
+            "harness/cache_baseline.py",    # baseline: caches the truth as if the LLM gave it
             "harness/ceiling_check.py",     # offline measurement
             "harness/subsumption_check.py",
             "harness/learned_subsumption.py",
@@ -157,11 +157,13 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             "rung3/order_search_ls.py",   # offline: labels the two instances
             "rung4/feedback.py",
             # offline: the ILP instances, added 2026-08-30. It LABELS the
-            # examples — which is what the proposer also received per case — and
-            # it is deliberately the only module in `ilp/` that may. `induce.py`
-            # takes bitmasks and nothing else, `I-g3` checks that on its
-            # signature and on its imports, and `tests/test_ilp.py` pins it: a
-            # competitor that could see the oracle would not be a competitor.
+            # examples — the supervision the plan declares, and which the
+            # proposer never received: it decided each queue itself (§5's
+            # erratum of FINDINGS_ILP.md, 2026-10-10) — and it is deliberately
+            # the only module in `ilp/` that may. `induce.py` takes bitmasks and
+            # nothing else, `I-g3` checks that on its signature and on its
+            # imports, and `tests/test_ilp.py` pins it: a competitor that could
+            # see the hidden rules would not be a competitor.
             "ilp/instances.py",
         }
         found = set()
