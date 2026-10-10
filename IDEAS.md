@@ -115,7 +115,10 @@ against, a threshold a next run would have to clear.
   one held, two refuted, one refused a verdict by its own gate. On the material
   the proposer had, a sequential-covering inducer beats an oracle-using search
   over the LLM's 577 rules on the arrivals and loses to it as a function.
-  `results_ilp/`.
+  `results_ilp/`. **[NOTE 2026-10-10]** On the proposer's tickets, not its
+  labels: the inducer was handed every true queue and the proposer chose its own,
+  so the comparison is matched on tickets only. §5's erratum of
+  `results_ilp/FINDINGS_ILP.md`.
 - **The sensitivity sweep: how much of rung 1's failure is this policy's shape.**
   August 29, 2026, `PLAN_SENSITIVITY.md`, five signed rows. It answers the
   objection `ARBITRATION_REPORT.md` §9.1 raised and three readers reached
@@ -755,6 +758,12 @@ draft a band for one of them and may not sign it.
   (`results3/FINDINGS_ORDERS.md`): where no rule is correct there is nothing to
   compete over, so every order fails those cases alike. Scarcity of material
   produces uniform failure, not variety.
+  **[NOTE 2026-10-10] For `ACCOUNT_MANAGER` it has one, on the acting axis.** The
+  proposer named that queue on 1 of the 29 tickets of the class it was asked
+  about; 2 of the 577 rules route there, and they supply the whole ceiling, one
+  of them born on a `T1_GENERAL` ticket sent there by mistake. It chose the wrong
+  queue before it wrote any rule. `T3_ENGINEERING`'s six escalations, two named
+  right, are too few to say. §3's erratum of `results_ilp/FINDINGS_ILP.md`.
 - Whether a proposer that is shown the gaps in the ceiling would fill them.
 - The objective function as an explicit design surface: which classes are
   protected, at what cost in aggregate, and who decides.

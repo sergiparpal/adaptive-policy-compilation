@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 7, 2026. **Not a history** — that is the four
+What is known, as of October 10, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -1337,7 +1337,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    specified. **[NOTE 2026-10-04]** The queue is in the model: asked without a
    screen of compiled rules, it names `ONCALL_ESCALATION` on all seven tickets
    (`F-f`). And disagreement with a fresh answer is not that trigger, since it
-   finds the rules' errors in one run of three.
+   finds the rules' errors in one run of three. **[NOTE 2026-10-10]** On the
+   proposer's tickets, not its labels: the inducer was handed the true queue of
+   every example, and the proposer chose its own, right on 245 of 632. The
+   inducer that wins by 0.0342 was trained on all 632, which reach 371 of the
+   test split's 995 cases with their true label. No figure and no verdict moves;
+   the reading of that win does. §5's erratum of
+   [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

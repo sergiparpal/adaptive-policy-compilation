@@ -34,7 +34,7 @@ up in four places at once.
 | **audit** · the optimizer | whether the search that produced rungs 3 and 4 was strong enough to believe | [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md) |
 | **control** · the default rule | how much of rung 1's conflict rate is the DSL's one-condition minimum rather than the thesis it is cited for | [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md) |
 | **A** · the sensitivity sweep | how much of rung 1's failure is this policy's shape, over a family of 1,300 synthetic manuals | [`results_sensitivity/FINDINGS_SENSITIVITY.md`](results_sensitivity/FINDINGS_SENSITIVITY.md) |
-| **I** · ILP as a competitor | what the LLM proposer buys that a symbolic inducer on the same 632 examples would not | [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) |
+| **I** · ILP as a competitor | what the LLM proposer buys that a symbolic inducer would not, on the same 632 tickets — though only the inducer was handed their queues | [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md) |
 | **P** · pairwise judgement | whether changing the question — *which of these two rules wins?* — gets the proposer to supply the priority it would not write | [`results2/FINDINGS2.md`](results2/FINDINGS2.md) Stages C–D, [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§6–10 |
 | **B** · the proposer at 1,600 | whether it was the budget — asked at the budget where a perfect chooser, a 70% chooser and a coin stop being the same number | [`results3/FINDINGS3.md`](results3/FINDINGS3.md) §§11–15 |
 | **U** · the founding question | whether the rules an LLM writes get reused or memorize cases, asked on rung 2's engine, which can execute the policy — closed 2026-09-30 | [`results_reuse/FINDINGS_REUSE.md`](results_reuse/FINDINGS_REUSE.md) |
@@ -133,7 +133,7 @@ python3 -m sensitivity.generator_check   # A-g1..A-g4, blocking, first and alone
 python3 -m sensitivity.sweep             # 13 ρ bins × 100 draws; gated on §0
 python3 -m sensitivity.sweep --dry-run   # draws everything, writes nothing
 
-# --- I · ILP as a competitor, on the material the proposer saw ------------
+# --- I · ILP as a competitor, on the tickets the proposer saw -------------
 python3 -m ilp.induce_check              # I-g1..I-g4, blocking, first and alone
 python3 -m ilp.compare                   # the four rows; gated on §0 and §1
 python3 -m ilp.labels                    # POST-HOC · who had the labels, §5's erratum
@@ -1052,6 +1052,16 @@ included.
 
 The LLM has an advantage the mocks do not have: it can use `lte`, `gte`, `in`
 and choose thresholds.
+
+> **[NOTE 2026-10-10] And the mocks have one the LLM does not: they are handed
+> the right queue.** `run_shadow` passes every proposer the truth; the mocks
+> return it, and the LLM drops it and decides the queue itself, which
+> `tests/test_llm_path.py` pins. So the frontier fixes the action and measures
+> scope alone — deliberately, as `harness/proposers.py` declares — and the
+> semantic cache of `harness/cache_baseline.py` is handed the truth the same way.
+> No baseline here competes for the decision with the information the LLM had.
+> What that did to the ILP comparison is §5's erratum of
+> [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md).
 
 **The frontier is NOT a region to beat.** It was in the original specification;
 the ceiling verification (Step 0) invalidated it as a reference, and the
