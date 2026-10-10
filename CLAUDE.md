@@ -113,13 +113,29 @@ carries a signed amendment.
     python3 -m ilp.induce_check   # I-g1..I-g4; must pass first
     python3 -m ilp.compare        # refuses to write while unsigned
     python3 -m ilp.labels         # POST-HOC: who had the labels (FINDINGS_ILP §5)
-    python3 -m ilp.margin         # POST-RUN: where the +0.0342 comes from (§1)
-    python3 -m ilp.chosen         # POST-RUN: the inducer on the proposer's queues
+    python3 -m ilp.margin         # POST-RUN: where the inducer's margin comes from (§7)
+    python3 -m ilp.chosen         # POST-RUN: the inducer on the proposer's queues (§8)
 
 **`requirements-ilp.txt` is not `requirements.txt` and must not be merged into
 it.** That file is the environment the paid records were produced with. The
 inducer runs on the standard library; `clingo` is pinned separately and is needed
 only to reproduce the encoding `I-g1` rejected.
+
+**Its fourth asymmetry was declared even, and it was not.** §6 of `PLAN_ILP.md`
+said the proposer received the true queue of each case, as the inducer did, and
+called that checked. It never does: `OpenRouterProposer.propose` drops
+`true_action_hint`, which only the mocks use, and `tests/test_llm_path.py` already
+pinned that. `FINDINGS_ILP.md` carries the erratum in §5 and measures what it
+changes in §§7-8. The inducer's whole win on the arrivals came from test cases it
+had been handed with their label, and trained on the proposer's own queues it
+lost to the proposer's rules even in arrival order. **A competitor handed the
+label is not matched to a proposer that had to choose it.** A plan that sets a
+baseline against the proposer should do four things:
+
+- say in §0 which side had the label;
+- check that against the code rather than recall it;
+- say how far the baseline's training examples reach into the test split;
+- run the control on the proposer's own answers.
 
 **Three follow-ups closed that thread's remaining routes**, §§12-14 of the same
 record, all free and all POST-RUN — they carry expectations but no signed row, so
