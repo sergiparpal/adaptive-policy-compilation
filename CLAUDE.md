@@ -114,6 +114,7 @@ carries a signed amendment.
     python3 -m ilp.compare        # refuses to write while unsigned
     python3 -m ilp.labels         # POST-HOC: who had the labels (FINDINGS_ILP §5)
     python3 -m ilp.margin         # POST-RUN: where the +0.0342 comes from (§1)
+    python3 -m ilp.chosen         # POST-RUN: the inducer on the proposer's queues
 
 **`requirements-ilp.txt` is not `requirements.txt` and must not be merged into
 it.** That file is the environment the paid records were produced with. The
