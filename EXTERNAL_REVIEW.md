@@ -525,6 +525,9 @@ the drafter had expected all four to hold, which is the worst calibration event 
   [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md), §5's erratum.
   **[NOTE 2026-10-10, later]** And all of the 0.8814 − 0.8472 is on those 371
   test cases: on the other 624 the two tie, 506 to 506. §7 of the same record.
+  **[NOTE 2026-10-10, later still]** Handed the proposer's own queues instead,
+  the inducer scores 424 and 437 of 995, below the proposer's rules even in
+  arrival order, 519. §8 of the same record.
 - **And the plan's declared search method was killed by its own gate**, exactly as
   item 5's family design was. §1 carries a signed amendment; `ilp/asp_encoding.py`
   is kept so the failure reproduces.

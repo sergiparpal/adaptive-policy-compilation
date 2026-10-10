@@ -120,7 +120,10 @@ against, a threshold a next run would have to clear.
   so the comparison is matched on tickets only. §5's erratum of
   `results_ilp/FINDINGS_ILP.md`. **[NOTE 2026-10-10, later]** And the win on the
   arrivals is all on the 371 test cases the inducer saw labelled: on the other
-  624 it ties the order. §7 of the record.
+  624 it ties the order. §7 of the record. **[NOTE 2026-10-10, later still]**
+  On the proposer's own queues it falls below the proposer's rules in arrival
+  order, 424 and 437 of 995 against 519, and to 0 of 55 on `ACCOUNT_MANAGER`.
+  §8 of the record.
 - **The sensitivity sweep: how much of rung 1's failure is this policy's shape.**
   August 29, 2026, `PLAN_SENSITIVITY.md`, five signed rows. It answers the
   objection `ARBITRATION_REPORT.md` §9.1 raised and three readers reached
