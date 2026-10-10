@@ -12,6 +12,24 @@
 > [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md)**, and no result
 > is to be read off this file; the scoreboard is in [`STATUS.md`](STATUS.md).
 >
+> **[ERRATUM 2026-10-10] The proposer was never given the label, and four
+> passages below say or assume it was.** §1's *Input* paragraph — *"with their
+> correct action. That is what the proposer saw, case by case"* — and §6's fourth
+> asymmetry — *"The proposer got the true action too, per case — so this one is
+> even"* — are false. `OpenRouterProposer.propose` drops the truth the loop passes
+> it, the prompt asks the model to decide the queue, and `tests/test_llm_path.py`
+> has pinned that since August 7, 2026; rung 1's record measures how often it
+> chose right. The amendment's *"on 632 the rules are matched"* in (2) and *"the
+> matched one"* in (3) rest on the same premise and are signed, so they are named
+> here and not edited: on 632 the inducer is matched to the proposer's tickets,
+> not to its labels. **§6's own count was the right one**: *"Three of the four
+> favour the inducer"* already counted the fourth, against that item's *"even"*.
+> No band, no verdict and no signed line moves. The figures, and what they change
+> in the reading, are in §5's erratum of
+> [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md). Like the
+> paragraph below, this one touches neither §0 nor the amendment, adds no
+> signature line, and travels alone.
+>
 > **The line immediately below says `unsigned`.** That was this file's status
 > while it was drafted, and it has been false since 2026-08-30. The line is kept
 > unedited and this banner is its correction. The banner touches neither §0 nor
