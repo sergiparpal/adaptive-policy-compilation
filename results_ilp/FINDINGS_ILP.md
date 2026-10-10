@@ -70,6 +70,10 @@ no model and no API call.
 > on those 371 cases is not measured. The train half reaches none of them — the
 > split groups by case identity — which is one more reason the band reads the 316.
 > Figures from `python3 -m ilp.labels`, into [`labels.json`](labels.json).
+>
+> **[NOTE 2026-10-10, later] Measured since, POST-RUN: all of it.** The searched
+> order is right on 337 of the 371 and the inducer on all of them; on the other 624
+> they tie, 506 to 506, at both beams. §7.
 
 **And on half the material it loses by 0.0713**, which is `I-a`'s banded reading
 and is refuted as signed. The two sentences are both true and the second is the
@@ -239,6 +243,12 @@ blind proposer wrote — and loses to it as a function.* Every clause is load-be
 > `python3 -m ilp.labels` reproduces them into [`labels.json`](labels.json),
 > POST-HOC: they were computed while verifying this erratum, before that module
 > was written.
+>
+> **[NOTE 2026-10-10, later] The honest form narrows once more.** §7 measured
+> where the win on the arrivals comes from: all of it from the test cases the
+> inducer was handed. On the cases neither side had labelled it ties the searched
+> order, so *beats, on the arrival distribution* holds only through the answers it
+> was given.
 
 ---
 
@@ -264,6 +274,76 @@ handed half the material; on the matched half it wins.
 
 ---
 
+## 7. Where the +0.0342 comes from — POST-RUN
+
+> **PROVENANCE: POST-RUN.** Asked for on 2026-10-10, after §1's erratum left it
+> open. The expectation was written in `ilp/margin.py`'s docstring and committed
+> before the first run. Two readings were added after reading it, and are
+> labelled so in the module and in [`margin.json`](margin.json). Not a signed
+> row, not on `STATUS.md`'s scoreboard, not a calibration event.
+
+**All of it comes from the 371.** On the test cases the 632-trained inducer was
+handed the answer to, it is right on all 371 and the searched order on 337. On
+the other 624, which neither side had labelled, they tie at 506, at both beams.
+
+```
+corpus test split 0, puro                    the 371   the 624    total
+  the searched order over the 577 rules          337       506      843   0.8472
+  the inducer, train_632, beams 40 and 120       371       506      877   0.8814
+  margin                                         +34         0      +34  +0.0342
+
+  the pool's ceiling: some matching rule right   359       536      895
+  the inducer, train_316, beam 40                324       448      772   0.7759
+  the inducer, train_316, beam 120               315       444      759   0.7628
+```
+
+The order is split 0's, rebuilt by rung 3's own search: it reproduces the
+published row, and a replay case by case gives the same cases right as its masks.
+The 371 are the 316 test-half escalations, of which the order gets 288, and 55
+duplicates, of which it gets 49. **On the 316 the proposer had named the right
+queue 124 times**, and the base the order searched over gets 288 of them right.
+
+**The tie on the 624 is a tie of counts, not of cases.** At beam 40 each side is
+right on 51 cases the other gets wrong, and 67 defeat both; at beam 120 it is 65
+each, and 53. On the 371 the order's 337 are all among the inducer's.
+
+**The expectation, clause by clause:**
+
+- *By construction, the 632-trained lists decide all 371 right.* **Holds.**
+- *2. The 371 carry the whole margin or more.* **Holds, on its edge.** The order
+  is right on exactly 337, the number at which the 624 carry nothing.
+- *3. The order is right on a smaller share of the 371 than of the 624.*
+  **Fails: 0.9084 against 0.8109.** The drafter's reason was that the 371 are
+  where the base was weakest when they arrived. They are where it is strongest
+  now:
+  - 594 of the 632 escalations were CONFLICTs, cases that rules of two queues
+    already matched.
+  - The base ends with a right rule for 359 of the 371, whatever queue the
+    proposer named. The pool's ceiling is 0.9677 there, against 0.8590 on the
+    624.
+  - The inducer that saw none of the 371 labelled is better on them too: 0.8733
+    against 0.7179 at beam 40, and 0.8491 against 0.7115 at beam 120.
+
+  The 624 were decided by a rule when they arrived and were never asked about,
+  and no rule is right for one case in seven of them.
+
+**What it does to §1 and §5.** §1's +0.0342 is the answer key: the 34 cases
+among the 371 that the order gets wrong and the inducer was handed. On the cases
+neither side saw labelled, the inducer does exactly as well as an oracle-searched
+order over the proposer's rules, and no better. §5's honest form narrows once
+more:
+
+*a batch learner handed the true queue of every example, which gets the order
+for free and optimises the metric directly, ties, on the arrivals neither side
+had labelled, an oracle-using search over the rules a sequential blind proposer
+wrote; it beats it only by the cases it was handed, and loses to it as a
+function.*
+
+No figure of §1 and no verdict moves. Figures from `python3 -m ilp.margin`, into
+[`margin.json`](margin.json).
+
+---
+
 ## Files
 
 ```
@@ -274,11 +354,14 @@ ilp/asp_encoding.py     the superseded clingo encoding, kept so it reproduces
 ilp/induce_check.py     I-g1 to I-g4, blocking, run first and alone
 ilp/compare.py          the four rows, gated on the plan's two signatures
 ilp/labels.py           POST-HOC, 2026-10-10: who had the labels, §5's erratum
+ilp/margin.py           POST-RUN, 2026-10-10: where the +0.0342 comes from, §7
 results_ilp/induce_check.json   the gate's own record
 results_ilp/compare.json        the rows, both training sets, both beams
 results_ilp/labels.json         the erratum's figures, behind four gates
+results_ilp/margin.json         §7's figures, behind five gates, and the expectation
 tests/test_ilp.py       the bands, the language, the gate — and no row's figure
 tests/test_ilp_labels.py   how labels.py counts — and no figure
+tests/test_ilp_margin.py   how margin.py counts — and no figure
 requirements-ilp.txt    clingo, pinned, and only for the superseded encoding
 ```
 
@@ -288,6 +371,7 @@ Reproducible, in this order:
 python3 -m ilp.induce_check      # 24 s, must pass
 python3 -m ilp.compare           # 13 s
 python3 -m ilp.labels            # under a second; POST-HOC, §5's erratum
+python3 -m ilp.margin            # about 40 s; POST-RUN, §7
 ```
 
 `--dry-run` on the comparison runs everything and writes nothing. There is no flag

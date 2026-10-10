@@ -1,0 +1,266 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-10T18:00:24Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "90c9172079c60fd9d4f1f4ae09c5f8e9281da74c",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "2136fe83f4282ab4",
+    "split_seed": 17,
+    "beams": [
+      40,
+      120
+    ]
+  },
+  "what": "the +0.0342 of FINDINGS_ILP.md \u00a71, split between the 371 test cases the 632-trained inducer saw labelled and the other 624",
+  "plan": "PLAN_ILP.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_ILP.md, of which there must be at least 2: \u00a70's table and \u00a71's amendment of 2026-08-30",
+    "source": "PLAN_ILP.md",
+    "found": 2,
+    "lines": [
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**",
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**"
+    ],
+    "unsigned": [],
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for on 2026-10-10, after FINDINGS_ILP.md's erratum. The expectation in the module's docstring was written and committed before the first run. Not a signed row; no verdict moves.",
+  "source": {
+    "order": "results3/order_search_ls.json, split 0, puro, rebuilt by rung3/order_search_ls.py's search",
+    "lists": "results_ilp/compare.json, induced again",
+    "partition": "results_ilp/labels.json"
+  },
+  "surface": "corpus test split 0, 995 cases, puro, first match wins",
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the order is the published one",
+      "measured": {
+        "best_from": "aleatorio 13",
+        "ls_train": 0.8786,
+        "ls_test": 0.8472
+      },
+      "published": {
+        "best_from": "aleatorio 13",
+        "ls_train": 0.8786,
+        "ls_test": 0.8472
+      },
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "the split is the instances'",
+      "measured": {
+        "rung3_test_equals_instances_test": true
+      },
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the lists are the published ones",
+      "measured": {
+        "train_632|40": [
+          632,
+          877
+        ],
+        "train_632|120": [
+          632,
+          877
+        ],
+        "train_316|40": [
+          316,
+          772
+        ],
+        "train_316|120": [
+          316,
+          759
+        ]
+      },
+      "published": {
+        "train_632|40": [
+          632,
+          877
+        ],
+        "train_632|120": [
+          632,
+          877
+        ],
+        "train_316|40": [
+          316,
+          772
+        ],
+        "train_316|120": [
+          316,
+          759
+        ]
+      },
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "the partition is labels.json's",
+      "measured": [
+        371,
+        316
+      ],
+      "published": [
+        371,
+        316
+      ],
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "what": "the masks are the cases (added after the first run)",
+      "measured": {
+        "replay_equals_masks": true
+      },
+      "passes": true
+    }
+  ],
+  "parts": {
+    "test": 995,
+    "reached": 371,
+    "of_which_examples": 316,
+    "not_reached": 624
+  },
+  "order": {
+    "reached": 337,
+    "not_reached": 506,
+    "total": 843,
+    "reached_split": {
+      "examples": 288,
+      "duplicates": 49
+    }
+  },
+  "ceiling": {
+    "reached": 359,
+    "not_reached": 536,
+    "total": 895
+  },
+  "lists": {
+    "train_632|40": {
+      "reached": 371,
+      "not_reached": 506,
+      "total": 877,
+      "n_rules": 46
+    },
+    "train_632|120": {
+      "reached": 371,
+      "not_reached": 506,
+      "total": 877,
+      "n_rules": 54
+    },
+    "train_316|40": {
+      "reached": 324,
+      "not_reached": 448,
+      "total": 772,
+      "n_rules": 37
+    },
+    "train_316|120": {
+      "reached": 315,
+      "not_reached": 444,
+      "total": 759,
+      "n_rules": 30
+    }
+  },
+  "margins": {
+    "40": {
+      "reached": {
+        "cases": 34,
+        "points": 0.034170854271356785
+      },
+      "not_reached": {
+        "cases": 0,
+        "points": 0.0
+      },
+      "total": {
+        "cases": 34,
+        "points": 0.034170854271356785
+      },
+      "share_from_reached": 1.0
+    },
+    "120": {
+      "reached": {
+        "cases": 34,
+        "points": 0.034170854271356785
+      },
+      "not_reached": {
+        "cases": 0,
+        "points": 0.0
+      },
+      "total": {
+        "cases": 34,
+        "points": 0.034170854271356785
+      },
+      "share_from_reached": 1.0
+    }
+  },
+  "expectation": [
+    {
+      "clause": "by construction",
+      "what": "the train_632 lists decide all 371 right, at both beams",
+      "reading": {
+        "40": 371,
+        "120": 371
+      },
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "the 371 carry the whole margin or more: on the 624 the inducer is at or below the order, at both beams",
+      "reading": {
+        "40": 0,
+        "120": 0
+      },
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "the order is right on a smaller share of the 371 than of the 624",
+      "reading": {
+        "on_the_371": 0.9083557951482479,
+        "on_the_624": 0.8108974358974359
+      },
+      "holds": false
+    }
+  ],
+  "added_after_the_first_run": {
+    "what": "gate 5, the order replayed case by case against its masks; and per beam and part, the cases the train_632 list and the order both get right, only one, and neither",
+    "provenance": "Written after the first run, by someone who had read it. The record comes from a second run, which reproduced every figure of the first. Not a bet.",
+    "agreement": {
+      "40": {
+        "reached": {
+          "both": 337,
+          "only_the_list": 34,
+          "only_the_order": 0,
+          "neither": 0
+        },
+        "not_reached": {
+          "both": 455,
+          "only_the_list": 51,
+          "only_the_order": 51,
+          "neither": 67
+        }
+      },
+      "120": {
+        "reached": {
+          "both": 337,
+          "only_the_list": 34,
+          "only_the_order": 0,
+          "neither": 0
+        },
+        "not_reached": {
+          "both": 441,
+          "only_the_list": 65,
+          "only_the_order": 65,
+          "neither": 53
+        }
+      }
+    }
+  }
+}
