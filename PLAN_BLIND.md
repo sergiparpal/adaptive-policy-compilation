@@ -445,6 +445,21 @@ cases under this protocol shows at least one proposal parsed and one rule born,
 and its record carries every field of §5.4. A full run refuses without that
 smoke record.
 
+> **[NOTE 2026-10-10] Run before signature, and all three pass.**
+> `python3 -m blind.run --dry-run`, zero API calls, nothing written. `K-g1`: the
+> hidden policy written through the blind path, 29 rules born, 253 declarations
+> all accepted, its 199 edges installed, 41 overlaps within a queue exempted,
+> 1.0000 on corpus and space, with the suite green. `K-g2`: with the restriction
+> lifted the instrument gives `O-a`, `O-b` and `O-c` of all three baselines as
+> published, and with it every figure §0 declares. `K-g3`: `PLAN_OVERLAP.md`'s
+> smoke run and its three runs replay through the loop with the blind draft off,
+> record by record and call by call; the labels agree, the smoke corpus is the
+> head of the full one, and the texts hash to `311d774209da570a`. `K-g4` refuses,
+> as it must.
+>
+> **Nothing in this draft moved on the way**: the checks ran against it as
+> committed. Written by the drafter before §0 was signed.
+
 ---
 
 ## 8. Stage A — the baselines (free)
