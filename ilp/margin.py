@@ -69,6 +69,23 @@ any test case decided by the order or by any list, and any figure restricted to
 the 371 or to the 624.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN, AND LABELLED SO
+--------------------------------------------------------------------------
+The first run put the order on 337 of the 371, exactly the number at which the
+624 carry nothing, and both `train_632` lists on 506 of the 624, the order's
+own count. Two things were added for that, after reading it:
+
+  5. **A fifth gate, the masks are the cases**: the order replayed case by case,
+     each case decided by the first of its matching rules in the order, gives
+     the same cases right as the masks, bit for bit.
+  -  **Whether a tie is of cases or of counts**: per beam and per part, the
+     cases the `train_632` list and the order both get right, only one of
+     them, and neither.
+
+Both were written by someone who had read the first run, and the record comes
+from a second run, which reproduced every figure of the first. Neither is a bet.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN**: asked for on 2026-10-10, after the erratum, with the expectation
@@ -136,6 +153,27 @@ def won_by_list(induced, ext, truth, n) -> int:
     return ok
 
 
+def replay_order(order, pool, action, truth, idxs) -> int:
+    """The same cases as `won_by_order`, reached another way: each case decided
+    by the first of its matching rules in the order, one case at a time."""
+    pos = {rid: p for p, rid in enumerate(order)}
+    won = 0
+    for k, i in enumerate(idxs):
+        if pool[i]:
+            first = min(pool[i], key=pos.__getitem__)
+            if action[first] == truth[i]:
+                won |= 1 << k
+    return won
+
+
+def agreement(a: int, b: int, part: int) -> dict[str, int]:
+    """Within `part`: the cases both masks get right, only one, and neither."""
+    return {"both": (a & b & part).bit_count(),
+            "only_the_list": (a & ~b & part).bit_count(),
+            "only_the_order": (b & ~a & part).bit_count(),
+            "neither": (part & ~a & ~b).bit_count()}
+
+
 def partition(corpus, examples, test) -> tuple[int, int]:
     """Over the test cases, as masks by position: those identical to an
     example, and among them those that are one."""
@@ -197,6 +235,8 @@ def compute() -> dict[str, Any]:
     reached, own = partition(inst.corpus(), inst._indices("train_632"), test)
     return {"rung3_test": list(te), "test": list(test), "full": tfull,
             "n_train": len(tr), "order": {"won": won_by_order(best, tM, tW, tfull),
+                                          "replayed": replay_order(best, matched,
+                                                                   action, truth, te),
                                           "train_score": st["best_score"],
                                           "best_from": st["best_from"]},
             "ceiling": ceiling, "lists": lists, "reached": reached, "own": own}
@@ -229,7 +269,21 @@ def check(c: dict, order_row: dict, runs: dict, reach: dict) -> list[dict]:
         {"gate": 4, "what": "the partition is labels.json's",
          "measured": part_measured, "published": part_published,
          "passes": part_measured == part_published},
+        {"gate": 5, "what": "the masks are the cases (added after the first run)",
+         "measured": {"replay_equals_masks": o["replayed"] == o["won"]},
+         "passes": o["replayed"] == o["won"]},
     ]
+
+
+def agreements(c: dict) -> dict[str, Any]:
+    """Added after the first run: per beam and per part, whose cases right the
+    `train_632` list's and the order's are."""
+    full, reached = c["full"], c["reached"]
+    sides = {"reached": reached, "not_reached": full & ~reached}
+    return {str(b): {part: agreement(c["lists"][("train_632", b)]["won"],
+                                     c["order"]["won"], mask)
+                     for part, mask in sides.items()}
+            for b in ind.BEAM_WIDTHS}
 
 
 def readings(c: dict) -> dict[str, Any]:
@@ -320,6 +374,13 @@ def main(argv: list[str] | None = None) -> int:
     for e in expectation:
         print(f"  expectation {e['clause']}: {'holds' if e['holds'] else 'FAILS'}  "
               f"{e['what']}")
+    agree = agreements(c)
+    print("\n  ADDED AFTER THE FIRST RUN — whose cases right, train_632 against the order")
+    for b, by_part in agree.items():
+        for part, a in by_part.items():
+            print(f"    beam {b:>3} · {part:<12} both {a['both']:>4} · only the list "
+                  f"{a['only_the_list']:>3} · only the order {a['only_the_order']:>3} · "
+                  f"neither {a['neither']:>3}")
 
     RECORD.write_text(json.dumps({
         "_env": environment(split_seed=inst.SPLIT_SEED, beams=list(ind.BEAM_WIDTHS)),
@@ -336,6 +397,15 @@ def main(argv: list[str] | None = None) -> int:
         "gates": checked,
         **r,
         "expectation": expectation,
+        "added_after_the_first_run": {
+            "what": "gate 5, the order replayed case by case against its masks; "
+                    "and per beam and part, the cases the train_632 list and the "
+                    "order both get right, only one, and neither",
+            "provenance": "Written after the first run, by someone who had read "
+                          "it. The record comes from a second run, which "
+                          "reproduced every figure of the first. Not a bet.",
+            "agreement": agree,
+        },
     }, indent=2) + "\n")
     print(f"\n-> {RECORD}\n  {describe()}")
     return 0

@@ -7,9 +7,13 @@ cases small enough to check by hand:
 
   * an order's cases right are `score_order`'s, kept as a mask, and a decision
     list's are `induce.score`'s;
+  * the order replayed case by case is the masks, bit for bit — gate 5, added
+    after the first run;
   * the partition counts a test case identical to an example, and marks apart
     the ones that are examples;
-  * the margin is split part by part and adds up to the total;
+  * the margin is split part by part and adds up to the total, and the
+    agreement tells a tie of cases from a tie of counts — added after the first
+    run;
   * the expectation is read clause by clause;
   * the module refuses while `PLAN_ILP.md` is unsigned, before it reads a record
     or writes anything, and writes nothing when a gate fails.
@@ -25,7 +29,7 @@ from harness.domain import generate_corpus
 from ilp import compare as cmp
 from ilp import induce as ind
 from ilp import margin as mg
-from rung3.local_search import score_order
+from rung3.local_search import build_masks, score_order
 
 UNSIGNED = {"passes": False, "found": 1, "unsigned": ["**Signed by Sergi: ___"]}
 
@@ -42,6 +46,18 @@ class TestTheMasks(unittest.TestCase):
                 won = mg.won_by_order(order, M, W, 0b1111)
                 self.assertEqual(won.bit_count(), score_order(order, M, W, 0b1111))
         self.assertEqual(mg.won_by_order(["A", "B", "C"], M, W, 0b1111), 0b1001)
+
+    def test_the_replay_case_by_case_is_the_masks(self):
+        """Gate 5, added after the first run: the same pool read two ways."""
+        pool = {0: ["A"], 1: ["A", "B"], 2: ["B", "C"], 3: ["B"], 4: []}
+        action = {"A": "x", "B": "y", "C": "z"}
+        truth = {0: "x", 1: "y", 2: "z", 3: "y", 4: "x"}
+        idxs = [0, 1, 2, 3, 4]
+        M, W, full = build_masks(["A", "B", "C"], pool, truth, action, idxs)
+        for order in (["A", "B", "C"], ["C", "B", "A"], ["B", "A", "C"]):
+            with self.subTest(order=order):
+                self.assertEqual(mg.replay_order(order, pool, action, truth, idxs),
+                                 mg.won_by_order(order, M, W, full))
 
     def test_a_lists_cases_right_are_the_ones_score_counts(self):
         ext = [0b011, 0b110]                      # two conditions, three cases
@@ -80,6 +96,15 @@ class TestTheMargin(unittest.TestCase):
     def test_parts_count_inside_the_test_split_only(self):
         self.assertEqual(mg.parts(0b1_0110, reached=0b0011, full=0b1111),
                          {"reached": 1, "not_reached": 1, "total": 2})
+
+    def test_agreement_tells_a_tie_of_cases_from_a_tie_of_counts(self):
+        """Added after the first run. Two masks right on two cases each, on
+        different cases: the counts tie, the cases do not."""
+        got = mg.agreement(0b0110, 0b0011, part=0b1111)
+        self.assertEqual(got, {"both": 1, "only_the_list": 1, "only_the_order": 1,
+                               "neither": 1})
+        self.assertEqual(mg.agreement(0b0110, 0b0011, part=0b0001)["only_the_order"], 1)
+        self.assertEqual(mg.agreement(0b0110, 0b0011, part=0b0001)["both"], 0)
 
 
 class TestTheExpectation(unittest.TestCase):
