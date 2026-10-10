@@ -88,7 +88,7 @@ older rule, and its hits over its strict pairs.
 | **K-e** | **And on the arrivals too** | K-b's edges, read for the better rule over the **1,929 corpus cases without the keyword**, counted as they arrive, each older rule counted once, pooled over the runs, with its own count of units; with fewer than 20 units the row is unadjudicable. v1 no unit; v1e 2 units, 0.5000, 2 of 3; v2e 2 units, 0.0000, 0 of 3 | **≥ 0.60** | **< 0.60** |
 | **K-f** | *Reported, not adjudicated.* What the rows rest on, and what they could hide | per run, beside the three baselines: K-b's and K-e's readings pooled over the pairs and by declared winner, the largest unit, ties and pairs where neither rule is ever right; "the new rule always wins" read on the same pairs; `B-d`'s split of the pairs into queue pairs a ranking can and cannot answer, with K-b on each side; the keyword edges, read over the whole space beside `O-c`; K-d on the corpus, and K-d with each channel's edges alone; `O-a`, `O-b` and `O-c` with the restriction lifted; the births by escalation; the loop's online figures, `PLAN_REUSE.md`'s set; calls, placement rounds, the sizes of their lists and refusals by verdict, with `finish_reason`; CONFLICTs and order answers; `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations and compiled decisions | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-11)**
 
 **Why each older rule counts once, and why that is said here.** `O-c` counted
 each installed edge once, and 43 of its 47 strict pairs were one declaration:
