@@ -65,6 +65,25 @@ row of `order_search_ls.json`; and `floor_by_pool.json`. **Not seen**: any list
 induced on the proposer's queues, or any figure of one.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN, AND LABELLED SO
+--------------------------------------------------------------------------
+The first run found the lists on the proposer's queues above the lists handed
+the truth over the space, 0.44 to 0.46 against 0.35 to 0.43, which no clause
+foresaw. Two things were added for that, after reading it:
+
+  4. **A fourth gate, the space is `compare.py`'s too**: the same code, given
+     the truth, reproduces the four published lists' space figures.
+  -  **The space by the security keyword**: every list's accuracy on the half of
+     the space where `has_security_keyword` is True and on the half where it is
+     False, beside each half's most common true queue and its share. The
+     drafter's guess, written down before this reading and not a bet: the
+     proposer sends keyword tickets to `SECURITY_INCIDENT`, and half the space is
+     keyword tickets, against a handful of the arrivals.
+
+Both were written by someone who had read the first run, and the record comes
+from a second run, which reproduced every figure of the first. Neither is a bet.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN**: asked for on 2026-10-10, after §7, with the expectation above
@@ -87,6 +106,7 @@ from harness.provenance import describe, environment
 from . import compare as cmp
 from . import induce as ind
 from . import instances as inst
+from .language import language
 from .margin import partition, parts, won_by_list
 
 RECORD = Path("results_ilp/chosen.json")
@@ -97,6 +117,7 @@ ORDER_RECORD = Path("results3/order_search_ls.json")
 FLOOR_RECORD = Path("results3/floor_by_pool.json")
 STARVED = ("ACCOUNT_MANAGER", "T3_ENGINEERING")
 SETS = ("chosen_316", "chosen_632")
+KEYWORD = ("has_security_keyword", "eq", True)
 PROVENANCE = (
     "POST-RUN: asked for on 2026-10-10, after FINDINGS_ILP.md §7. The "
     "expectation in the module's docstring was written and committed before the "
@@ -118,8 +139,9 @@ def instance_of(idx, labels):
     return inst.masks([corpus[i] for i in idx], [labels[i] for i in idx])
 
 
-def read_list(train_idx, labels, beam, test, space, reached) -> dict[str, Any]:
-    """One list, induced on `labels` and scored against the truth."""
+def read_list(train_idx, labels, beam, test, space, reached) -> tuple[dict, int]:
+    """One list, induced on `labels` and scored against the truth; and the
+    space cases it gets right, as a mask, which stays out of the record."""
     ext, lab, n = instance_of(train_idx, labels)
     got = ind.induce(ext, lab, n, beam=beam)
     s_ext, s_truth, s_n = test
@@ -131,7 +153,29 @@ def read_list(train_idx, labels, beam, test, space, reached) -> dict[str, Any]:
             "test": {"correct": t["correct"], "accuracy": t["accuracy_end_to_end"],
                      "per_class": {c: t["per_class"][c] for c in STARVED}},
             "space": ind.score(got, *space)["accuracy_end_to_end"],
-            "partition": parts(won, reached, (1 << s_n) - 1)}
+            "partition": parts(won, reached, (1 << s_n) - 1)}, won_by_list(got, *space)
+
+
+def keyword_halves(space) -> dict[str, int]:
+    """Added after the first run: the space split by the security keyword."""
+    ext, _truth, n = space
+    on = ext[language().index(KEYWORD)]
+    return {"keyword": on, "no_keyword": ((1 << n) - 1) & ~on}
+
+
+def by_half(won: int, halves: dict[str, int]) -> dict[str, float]:
+    return {h: (won & m).bit_count() / m.bit_count() for h, m in halves.items()}
+
+
+def majority(truth: dict[str, int], halves: dict[str, int]) -> dict[str, Any]:
+    """Each half's size and its most common true queue, with that queue's share."""
+    out = {}
+    for h, m in halves.items():
+        queue, count = max(((a, (t & m).bit_count()) for a, t in truth.items()),
+                           key=lambda x: x[1])
+        out[h] = {"points": m.bit_count(), "most_common_queue": queue,
+                  "share": count / m.bit_count()}
+    return out
 
 
 def compute(run: dict) -> dict[str, Any]:
@@ -142,16 +186,25 @@ def compute(run: dict) -> dict[str, Any]:
            "chosen_316": tuple(sorted(set(named) & set(train["train_316"])))}
     test, space = inst.instance("test"), inst.instance("space")
     reached, _own = partition(inst.corpus(), train["train_632"], inst._indices("test"))
-    replicated = {}
+    replicated, replicated_space, space_won = {}, {}, {}
     for t, t_idx in train.items():
         for beam in ind.BEAM_WIDTHS:
             ext, lab, n = instance_of(t_idx, inst.truths())
             got = ind.induce(ext, lab, n, beam=beam)
             replicated[f"{t}|{beam}"] = ind.score(got, *test)["correct"]
-    lists = {f"{s}|{beam}": read_list(idx[s], named, beam, test, space, reached)
-             for s in SETS for beam in ind.BEAM_WIDTHS}
+            replicated_space[f"{t}|{beam}"] = ind.score(got, *space)["accuracy_end_to_end"]
+            space_won[f"{t}|{beam}"] = won_by_list(got, *space)
+    lists = {}
+    for s in SETS:
+        for beam in ind.BEAM_WIDTHS:
+            lists[f"{s}|{beam}"], space_won[f"{s}|{beam}"] = read_list(
+                idx[s], named, beam, test, space, reached)
+    halves = keyword_halves(space)
+    by_keyword = {"halves": majority(space[1], halves),
+                  "lists": {k: by_half(m, halves) for k, m in space_won.items()}}
     return {"named": named, "truth": truth, "train": train, "idx": idx,
-            "replicated": replicated, "lists": lists}
+            "replicated": replicated, "replicated_space": replicated_space,
+            "lists": lists, "by_keyword": by_keyword}
 
 
 def check(c: dict, labels_rec: dict, runs: dict) -> list[dict]:
@@ -161,6 +214,7 @@ def check(c: dict, labels_rec: dict, runs: dict) -> list[dict]:
     published = [p["named_a_queue"], p["right"]]
     replicated = c["replicated"]
     counts = {k: runs[k]["test"]["correct"] for k in replicated}
+    space = {k: runs[k]["space"]["accuracy_end_to_end"] for k in replicated}
     nest = (set(idx["chosen_316"]) <= set(idx["chosen_632"])
             and set(idx["chosen_316"]) <= set(train["train_316"])
             and set(idx["chosen_632"]) <= set(train["train_632"]))
@@ -171,6 +225,9 @@ def check(c: dict, labels_rec: dict, runs: dict) -> list[dict]:
          "measured": replicated, "published": counts, "passes": replicated == counts},
         {"gate": 3, "what": "the sets nest",
          "measured": {s: len(idx[s]) for s in SETS}, "passes": nest},
+        {"gate": 4, "what": "the space is compare.py's too (added after the first run)",
+         "measured": c["replicated_space"], "published": space,
+         "passes": c["replicated_space"] == space},
     ]
 
 
@@ -284,6 +341,15 @@ def main(argv: list[str] | None = None) -> int:
     for e in expectation:
         print(f"  expectation {e['clause']}: {'holds' if e['holds'] else 'FAILS'}  "
               f"{e['what']}")
+    kw = c["by_keyword"]
+    print("\n  ADDED AFTER THE FIRST RUN — the space by the security keyword")
+    for h, v in kw["halves"].items():
+        print(f"    {h:<11}{v['points']:>8,} points · most common true queue "
+              f"{v['most_common_queue']} at {v['share']:.4f}")
+    print(f"    {'':<28}{'keyword':>10}{'no keyword':>12}")
+    for k, v in kw["lists"].items():
+        name = ("proposer queues, " if k.startswith("chosen") else "the truth, ") + k
+        print(f"    {name:<28}{v['keyword']:>10.4f}{v['no_keyword']:>12.4f}")
 
     RECORD.write_text(json.dumps({
         "_env": environment(split_seed=inst.SPLIT_SEED, beams=list(ind.BEAM_WIDTHS)),
@@ -302,6 +368,15 @@ def main(argv: list[str] | None = None) -> int:
         "lists": c["lists"],
         "references": refs,
         "expectation": expectation,
+        "added_after_the_first_run": {
+            "what": "gate 4, the truth lists' space figures reproduced; and every "
+                    "list's space accuracy on each half of the security keyword, "
+                    "beside each half's most common true queue",
+            "provenance": "Written after the first run, by someone who had read "
+                          "it. The record comes from a second run, which "
+                          "reproduced every figure of the first. Not a bet.",
+            "by_keyword": c["by_keyword"],
+        },
     }, indent=2) + "\n")
     print(f"\n-> {RECORD}\n  {describe()}")
     return 0

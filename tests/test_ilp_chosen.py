@@ -12,6 +12,9 @@ reads, on cases small enough to check by hand:
   * the masks it trains on are `instances.masks`', labelled by whatever it is
     handed;
   * the expectation is read clause by clause;
+  * the space splits by the security keyword's condition and its complement,
+    and accuracy and each half's majority queue are read within the half —
+    added after the first run;
   * the module refuses while `PLAN_ILP.md` is unsigned, before it reads a record
     or writes anything, and writes nothing when a gate fails.
 """
@@ -49,6 +52,27 @@ class TestTheTrainingSet(unittest.TestCase):
         self.assertEqual(n, 3)
         self.assertEqual(lab, {"A": 0b101, "B": 0b010})
         self.assertEqual(len(ext), len(ch.inst.masks([], [])[0]))
+
+
+class TestTheSpaceByTheKeyword(unittest.TestCase):
+    """Added after the first run."""
+
+    def test_the_halves_are_the_keywords_condition_and_its_complement(self):
+        k = ch.language().index(ch.KEYWORD)
+        ext = [0] * len(ch.language())
+        ext[k] = 0b0101
+        halves = ch.keyword_halves((ext, {}, 4))
+        self.assertEqual(halves, {"keyword": 0b0101, "no_keyword": 0b1010})
+
+    def test_accuracy_and_majority_are_read_within_each_half(self):
+        halves = {"keyword": 0b0011, "no_keyword": 0b1100}
+        self.assertEqual(ch.by_half(0b0111, halves), {"keyword": 1.0, "no_keyword": 0.5})
+        truth = {"S": 0b0111, "T": 0b1000}
+        got = ch.majority(truth, halves)
+        self.assertEqual(got["keyword"], {"points": 2, "most_common_queue": "S",
+                                          "share": 1.0})
+        self.assertEqual(got["no_keyword"]["points"], 2)
+        self.assertEqual(got["no_keyword"]["share"], 0.5)
 
 
 class TestTheExpectation(unittest.TestCase):
