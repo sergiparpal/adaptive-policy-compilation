@@ -249,6 +249,13 @@ blind proposer wrote — and loses to it as a function.* Every clause is load-be
 > inducer was handed. On the cases neither side had labelled it ties the searched
 > order, so *beats, on the arrival distribution* holds only through the answers it
 > was given.
+>
+> **[NOTE 2026-10-10, later still] And handed the proposer's answers instead, it
+> loses to the proposer's own rules.** No baseline here competes for the decision
+> with the proposer's information, and that still holds. §8 holds a control on
+> the compilation: the same inducer, trained on the queues the proposer chose,
+> scores 424 and 437 of 995. The proposer's rules, run in arrival order with no
+> truth anywhere, score 519.
 
 ---
 
@@ -344,6 +351,85 @@ No figure of §1 and no verdict moves. Figures from `python3 -m ilp.margin`, int
 
 ---
 
+## 8. The control: the inducer on the queues the proposer chose — POST-RUN
+
+> **PROVENANCE: POST-RUN.** Asked for on 2026-10-10, after §7. The expectation
+> was written in `ilp/chosen.py`'s docstring and committed before the first run.
+> Two readings were added after reading it, and are labelled so in the module
+> and in [`chosen.json`](chosen.json). Not a signed row, not on `STATUS.md`'s
+> scoreboard, not a calibration event.
+
+**Handed the proposer's answers instead of the truth, the inducer falls below the
+proposer's own rules, even in arrival order.** This is the same inducer, on the
+same tickets, with each labelled by the queue the proposer named for it. The
+training sets are the 579 escalations on which it named one, and the 286 of them
+in the train half. Every list is scored against the truth:
+
+```
+corpus test split 0, puro, 995 cases        right   accuracy    space   AM of 55   rules
+  the proposer's queues, 579, beam 40         424     0.4261   0.4425       0       200, at the cap
+  the proposer's queues, 579, beam 120        437     0.4392   0.4436       0       197
+  the proposer's queues, 286, beam 40         451     0.4533   0.4628       0       105
+  the proposer's queues, 286, beam 120        413     0.4151   0.4556       0        95
+  the proposer's rules, arrival order         519     0.5216   0.3148
+  the proposer's rules, searched order        843     0.8472   0.6033
+  the truth, 316 tickets, beams 40 / 120  772 / 759            0.3532 / 0.3715   21 / 24    37 / 30
+  the truth, 632 tickets, beams 40 / 120  877 / 877   0.8814   0.4304 / 0.3939   42 / 41    46 / 54
+```
+
+On §7's partition, the four lists get 146 to 170 of the 371 and 257 to 293 of
+the 624. The searched order gets 337 and 506.
+
+**The expectation, clause by clause:**
+
+- *1. Every list on the proposer's queues scores below the searched order.*
+  **Holds**, by 392 to 430 cases.
+- *2. The labels are worth more than the tickets: the 579 tickets the proposer
+  labelled score below the 316 labelled with the truth.* **Holds**: 424 against
+  772 at beam 40, 437 against 759 at beam 120.
+- *3. The bet: the inducer compiles the proposer's answers better than the
+  proposer did, scoring above `born_at`'s 519.* **Fails**, at 424 and 437. At
+  beam 40 the list hit the 200-rule cap with 26 examples undecided. At beam 120
+  it did not, and still falls short by 82.
+- *4. `ACCOUNT_MANAGER` goes with the labels: at or below the base's ceiling,
+  0.3578.* **Holds, at 0 of 55** in all four lists. The lists handed the truth
+  reach 41 and 42. The proposer named that queue twice.
+
+**What the control says.** The inducer's advantage in §1 was its labels. Given
+the proposer's answers, it compresses them badly: 95 to 200 rules, against 30 to
+54 on the truth, and it fits only 549 to 566 of its own 579 labels. On the
+arrivals it decides worse than the rules the proposer wrote from the same
+answers, run in the order they were born, with no truth anywhere. That is the
+first comparison in this record made on the same information, and the
+proposer's rules win it. Two limits apply:
+- It is one inducer, precision-first and unregularised, which fits noisy labels
+  case by case; §6's first limit applies to it in full.
+- The proposer's rules here are the 577 it installed, so the 2 queues named on a
+  rule that validation rejected train the inducer and no rule.
+
+**And over the space, the proposer's queues beat the truth, through one
+attribute.** This reading was not bet on, and was made after the first run:
+
+```
+space, 134,400 points                    keyword half          no keyword
+  most common true queue, its share      SECURITY_INCIDENT 0.75   T2_TECHNICAL 0.2964
+  the truth, the four lists              0.1500 to 0.2292       0.5064 to 0.6377
+  the proposer's queues, the four lists  0.5702 to 0.6119       0.2993 to 0.3169
+```
+
+Half the space carries the security keyword, and three quarters of that half
+goes to `SECURITY_INCIDENT`. The proposer sends keyword tickets there. The
+escalations hold only three true `SECURITY_INCIDENT` cases, so the lists handed
+the truth barely learn the mapping. On the half without the keyword, those
+lists are about twice as good, and the lists on the proposer's queues sit near
+that half's majority share. The keyword is a handful of the arrivals, which is
+why it moves the space and not the test split.
+
+No figure of §1 to §7 and no verdict moves. Figures from `python3 -m ilp.chosen`,
+into [`chosen.json`](chosen.json).
+
+---
+
 ## Files
 
 ```
@@ -355,13 +441,16 @@ ilp/induce_check.py     I-g1 to I-g4, blocking, run first and alone
 ilp/compare.py          the four rows, gated on the plan's two signatures
 ilp/labels.py           POST-HOC, 2026-10-10: who had the labels, §5's erratum
 ilp/margin.py           POST-RUN, 2026-10-10: where the +0.0342 comes from, §7
+ilp/chosen.py           POST-RUN, 2026-10-10: the inducer on the proposer's queues, §8
 results_ilp/induce_check.json   the gate's own record
 results_ilp/compare.json        the rows, both training sets, both beams
 results_ilp/labels.json         the erratum's figures, behind four gates
 results_ilp/margin.json         §7's figures, behind five gates, and the expectation
+results_ilp/chosen.json         §8's figures, behind four gates, and the expectation
 tests/test_ilp.py       the bands, the language, the gate — and no row's figure
 tests/test_ilp_labels.py   how labels.py counts — and no figure
 tests/test_ilp_margin.py   how margin.py counts — and no figure
+tests/test_ilp_chosen.py   how chosen.py builds and reads — and no figure
 requirements-ilp.txt    clingo, pinned, and only for the superseded encoding
 ```
 
@@ -372,6 +461,7 @@ python3 -m ilp.induce_check      # 24 s, must pass
 python3 -m ilp.compare           # 13 s
 python3 -m ilp.labels            # under a second; POST-HOC, §5's erratum
 python3 -m ilp.margin            # about 40 s; POST-RUN, §7
+python3 -m ilp.chosen            # about 30 s; POST-RUN, §8
 ```
 
 `--dry-run` on the comparison runs everything and writes nothing. There is no flag
