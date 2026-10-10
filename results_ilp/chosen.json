@@ -1,0 +1,410 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-10T18:26:07Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "37082bb0398d45359490f9e1773f713e40385359",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "80d33cfb6343f9c0",
+    "split_seed": 17,
+    "beams": [
+      40,
+      120
+    ]
+  },
+  "what": "the inducer trained on the queues the proposer chose, on the same tickets, scored against the truth: a control on the compiler",
+  "plan": "PLAN_ILP.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_ILP.md, of which there must be at least 2: \u00a70's table and \u00a71's amendment of 2026-08-30",
+    "source": "PLAN_ILP.md",
+    "found": 2,
+    "lines": [
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**",
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**"
+    ],
+    "unsigned": [],
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for on 2026-10-10, after FINDINGS_ILP.md \u00a77. The expectation in the module's docstring was written and committed before the first run. Not a signed row; no verdict moves.",
+  "source": {
+    "labels": "results/llm_run.json, the queue each escalation's proposal named",
+    "references": [
+      "results3/order_search_ls.json",
+      "results_ilp/margin.json",
+      "results3/floor_by_pool.json",
+      "results_ilp/compare.json"
+    ]
+  },
+  "surface": "corpus test split 0, 995 cases, and the exhaustive space, 134,400; scored against the truth, first match wins",
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the labels are the record's",
+      "measured": [
+        579,
+        245
+      ],
+      "published": [
+        579,
+        245
+      ],
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "the instrument is compare.py's",
+      "measured": {
+        "train_316|40": 772,
+        "train_316|120": 759,
+        "train_632|40": 877,
+        "train_632|120": 877
+      },
+      "published": {
+        "train_316|40": 772,
+        "train_316|120": 759,
+        "train_632|40": 877,
+        "train_632|120": 877
+      },
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the sets nest",
+      "measured": {
+        "chosen_316": 286,
+        "chosen_632": 579
+      },
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "the space is compare.py's too (added after the first run)",
+      "measured": {
+        "train_316|40": 0.3531919642857143,
+        "train_316|120": 0.37153273809523807,
+        "train_632|40": 0.4303869047619048,
+        "train_632|120": 0.39385416666666667
+      },
+      "published": {
+        "train_316|40": 0.3531919642857143,
+        "train_316|120": 0.37153273809523807,
+        "train_632|40": 0.4303869047619048,
+        "train_632|120": 0.39385416666666667
+      },
+      "passes": true
+    }
+  ],
+  "training_sets": {
+    "chosen_316": 286,
+    "chosen_632": 579
+  },
+  "lists": {
+    "chosen_316|40": {
+      "examples": 286,
+      "n_rules": 105,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "fit_to_its_labels": 280,
+      "test": {
+        "correct": 451,
+        "accuracy": 0.45326633165829144,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 3,
+            "accuracy": 0.05263157894736842
+          }
+        }
+      },
+      "space": 0.46284970238095235,
+      "partition": {
+        "reached": 158,
+        "not_reached": 293,
+        "total": 451
+      }
+    },
+    "chosen_316|120": {
+      "examples": 286,
+      "n_rules": 95,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "fit_to_its_labels": 280,
+      "test": {
+        "correct": 413,
+        "accuracy": 0.4150753768844221,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 2,
+            "accuracy": 0.03508771929824561
+          }
+        }
+      },
+      "space": 0.4556175595238095,
+      "partition": {
+        "reached": 146,
+        "not_reached": 267,
+        "total": 413
+      }
+    },
+    "chosen_632|40": {
+      "examples": 579,
+      "n_rules": 200,
+      "hit_the_cap": true,
+      "left_undecided_on_train": 26,
+      "fit_to_its_labels": 549,
+      "test": {
+        "correct": 424,
+        "accuracy": 0.42613065326633165,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 1,
+            "accuracy": 0.017543859649122806
+          }
+        }
+      },
+      "space": 0.44251488095238095,
+      "partition": {
+        "reached": 167,
+        "not_reached": 257,
+        "total": 424
+      }
+    },
+    "chosen_632|120": {
+      "examples": 579,
+      "n_rules": 197,
+      "hit_the_cap": false,
+      "left_undecided_on_train": 0,
+      "fit_to_its_labels": 566,
+      "test": {
+        "correct": 437,
+        "accuracy": 0.4391959798994975,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 2,
+            "accuracy": 0.03508771929824561
+          }
+        }
+      },
+      "space": 0.44359375,
+      "partition": {
+        "reached": 170,
+        "not_reached": 267,
+        "total": 437
+      }
+    }
+  },
+  "references": {
+    "test_cases": 995,
+    "order": {
+      "test_correct": 843,
+      "test": 0.8472,
+      "space": 0.6033,
+      "on_the_371": 337,
+      "on_the_624": 506
+    },
+    "born_at": {
+      "test": 0.521608,
+      "space": 0.314807
+    },
+    "handed_the_truth": {
+      "train_316|40": {
+        "test_correct": 772,
+        "test": 0.7758793969849246,
+        "space": 0.3531919642857143,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 21,
+            "accuracy": 0.38181818181818183
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 1,
+            "accuracy": 0.017543859649122806
+          }
+        }
+      },
+      "train_316|120": {
+        "test_correct": 759,
+        "test": 0.7628140703517587,
+        "space": 0.37153273809523807,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 24,
+            "accuracy": 0.43636363636363634
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 11,
+            "accuracy": 0.19298245614035087
+          }
+        }
+      },
+      "train_632|40": {
+        "test_correct": 877,
+        "test": 0.8814070351758794,
+        "space": 0.4303869047619048,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 42,
+            "accuracy": 0.7636363636363637
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 11,
+            "accuracy": 0.19298245614035087
+          }
+        }
+      },
+      "train_632|120": {
+        "test_correct": 877,
+        "test": 0.8814070351758794,
+        "space": 0.39385416666666667,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "n": 55,
+            "correct": 41,
+            "accuracy": 0.7454545454545455
+          },
+          "T3_ENGINEERING": {
+            "n": 57,
+            "correct": 21,
+            "accuracy": 0.3684210526315789
+          }
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": 1,
+      "what": "every list on the proposer's queues scores below the searched order, both sets, both beams",
+      "reading": {
+        "chosen_316|40": 451,
+        "chosen_316|120": 413,
+        "chosen_632|40": 424,
+        "chosen_632|120": 437
+      },
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "the chosen_632 lists score below the train_316 lists, beam for beam",
+      "reading": {
+        "40": [
+          424,
+          772
+        ],
+        "120": [
+          437,
+          759
+        ]
+      },
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "the chosen_632 lists score above born_at, the proposer's rules in arrival order, at both beams",
+      "reading": {
+        "40": [
+          424,
+          519
+        ],
+        "120": [
+          437,
+          519
+        ]
+      },
+      "holds": false
+    },
+    {
+      "clause": 4,
+      "what": "on ACCOUNT_MANAGER the chosen_632 lists score at or below the base's ceiling, at both beams",
+      "reading": {
+        "40": 0.0,
+        "120": 0.0
+      },
+      "holds": true
+    }
+  ],
+  "added_after_the_first_run": {
+    "what": "gate 4, the truth lists' space figures reproduced; and every list's space accuracy on each half of the security keyword, beside each half's most common true queue",
+    "provenance": "Written after the first run, by someone who had read it. The record comes from a second run, which reproduced every figure of the first. Not a bet.",
+    "by_keyword": {
+      "halves": {
+        "keyword": {
+          "points": 67200,
+          "most_common_queue": "SECURITY_INCIDENT",
+          "share": 0.75
+        },
+        "no_keyword": {
+          "points": 67200,
+          "most_common_queue": "T2_TECHNICAL",
+          "share": 0.29642857142857143
+        }
+      },
+      "lists": {
+        "train_316|40": {
+          "keyword": 0.2,
+          "no_keyword": 0.5063839285714286
+        },
+        "train_316|120": {
+          "keyword": 0.2,
+          "no_keyword": 0.5430654761904762
+        },
+        "train_632|40": {
+          "keyword": 0.22922619047619047,
+          "no_keyword": 0.631547619047619
+        },
+        "train_632|120": {
+          "keyword": 0.14998511904761905,
+          "no_keyword": 0.6377232142857143
+        },
+        "chosen_316|40": {
+          "keyword": 0.611904761904762,
+          "no_keyword": 0.31379464285714287
+        },
+        "chosen_316|120": {
+          "keyword": 0.611904761904762,
+          "no_keyword": 0.29933035714285716
+        },
+        "chosen_632|40": {
+          "keyword": 0.5702380952380952,
+          "no_keyword": 0.3147916666666667
+        },
+        "chosen_632|120": {
+          "keyword": 0.5702380952380952,
+          "no_keyword": 0.31694940476190475
+        }
+      }
+    }
+  }
+}
