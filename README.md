@@ -136,6 +136,7 @@ python3 -m sensitivity.sweep --dry-run   # draws everything, writes nothing
 # --- I · ILP as a competitor, on the material the proposer saw ------------
 python3 -m ilp.induce_check              # I-g1..I-g4, blocking, first and alone
 python3 -m ilp.compare                   # the four rows; gated on §0 and §1
+python3 -m ilp.labels                    # POST-HOC · who had the labels, §5's erratum
 
 # --- AUDIT of the optimizer that produced rungs 3 and 4 ------------------
 python3 -m rung3.optimizer_check   # optimizer ceiling: must give 1.0000
@@ -424,6 +425,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `sensitivity/sweep.py` | `results_sensitivity/sweep.json` | **refuses while the plan is unsigned** |
 > | `ilp/induce_check.py` | `results_ilp/induce_check.json` | no, on purpose |
 > | `ilp/compare.py` | `results_ilp/compare.json` | **refuses while the plan is unsigned** |
+> | `ilp/labels.py` | `results_ilp/labels.json` | **refuses while the plan is unsigned** |
 > | `reuse/frontier.py` | `results_reuse/frontier.json` | **refuses while the plan is unsigned** |
 > | `reuse/readout.py` | `results_reuse/readout_n100.json` | **refuses while the plan is unsigned** |
 > | `reuse/run.py` | `results_reuse/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
@@ -1201,7 +1203,8 @@ adaptive-policy-compilation/
 │   ├── induce.py            sequential covering · standard library only
 │   ├── asp_encoding.py      the clingo encoding I-g1 killed, kept reproducible
 │   ├── induce_check.py      I-g1..I-g4 · blocking
-│   └── compare.py           the four rows, gated on PLAN_ILP.md
+│   ├── compare.py           the four rows, gated on PLAN_ILP.md
+│   └── labels.py            POST-HOC · who had the labels: the proposer chose, the inducer was handed
 │
 ├── fidelity/             F · the model re-asked on the cases its rules decided
 │   ├── plan.py              the gate and §10's constants; §0's five lines
