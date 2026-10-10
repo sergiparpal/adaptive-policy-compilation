@@ -58,6 +58,19 @@ sequential-covering learner, given the same tickets and the same labels, beats a
 oracle-using search over the LLM's rules by **0.0342**, in **half a second**, with
 no model and no API call.
 
+> **[ERRATUM 2026-10-10] Matched on the tickets, not on the labels.** The inducer
+> trained on all 632 was handed the true queue of every one; the proposer saw the
+> same tickets and chose their queues itself, right on 245 of the 632 (§5's
+> erratum). And the contamination is not of the same degree: **316** of those
+> escalations fall in test split 0, and **371 of its 995 cases, 0.373,** are
+> identical to an example this inducer was trained on with its true label. On
+> those same 316 tickets the proposer chose right **124** times, and its rules
+> carry what it chose. So *"given the same tickets and the same labels"* is false,
+> 0.8814 against 0.8472 is not like for like, and how much of the **+0.0342** rests
+> on those 371 cases is not measured. The train half reaches none of them — the
+> split groups by case identity — which is one more reason the band reads the 316.
+> Figures from `python3 -m ilp.labels`, into [`labels.json`](labels.json).
+
 **And on half the material it loses by 0.0713**, which is `I-a`'s banded reading
 and is refuted as signed. The two sentences are both true and the second is the
 one the plan chose to be judged on.
@@ -113,6 +126,20 @@ learned base cannot exceed 39 of 109 there and the inducer reaches 42 of 55 on t
 test split. **For that class the material problem is the proposer's**, and it is
 now measured rather than inferred: the information was in the 29 examples the
 proposer also saw, and it did not write rules that used it.
+
+> **[ERRATUM 2026-10-10] The information was in the labels, and the proposer
+> never had them.** It saw the 29 tickets and named `ACCOUNT_MANAGER` on **one**:
+> 14 went to `T2_TECHNICAL`, 7 to `BILLING_SPECIALIST`, 4 to `T3_ENGINEERING`, 2
+> to `T1_GENERAL` and 1 to `SELF_SERVICE_DEFLECT`. **Only 2 of the 577 rules route
+> to that queue**, and those two supply the base's whole ceiling there, 39 of 109:
+> one was born on that one ticket, the other on a `T1_GENERAL` ticket the proposer
+> sent there by mistake. So the problem is still the proposer's, but on the acting
+> axis — choosing the queue — and not on the writing of rules, which are the two
+> axes `CLAUDE.md` asks to keep apart. This half of `I-b` sets an inducer handed
+> the label 29 times against a proposer that named it once, and it cannot show
+> that the information was in what the proposer saw. `T3_ENGINEERING`'s six
+> escalations, two named right, are too few to read either way. Figures from
+> `python3 -m ilp.labels`.
 
 `T3_ENGINEERING` straddles the ceiling — under it at beam 40, over it at beam 120 —
 so the row has no verdict. §1's amendment predicted this shape before the run:
@@ -175,6 +202,44 @@ favour the inducer:
 beats, on the arrival distribution, an oracle-using search over rules a sequential
 blind proposer wrote — and loses to it as a function.* Every clause is load-bearing.
 
+> **[ERRATUM 2026-10-10] The fourth asymmetry is not even: the proposer was never
+> given the label, and the honest form is missing a clause.** `run_shadow` passes
+> every proposer the truth as `true_action_hint`. The mocks return it;
+> `OpenRouterProposer.propose` drops it and sends the ticket alone, under a prompt
+> whose first instruction is to *decide* the queue. `tests/test_llm_path.py` has
+> pinned that since August 7, 2026, three weeks before the plan said otherwise,
+> and rung 1's record agrees:
+>
+> ```
+>                                             right    of     rate
+>   the proposer, over the escalations          245   632   0.3877   the run's proposal_action_accuracy
+>   the same, where it named a queue            245   579   0.4231   34 failed, 19 named none
+>   its 577 rules, against the birth ticket     244   577   0.4229
+>   the inducer's labels, train_632             632   632   1
+>   the inducer's labels, train_316             316   316   1
+> ```
+>
+> **So three of the four favour the inducer outright, and this one most** — which
+> is what the plan's §6 counted in its own header, against the item's *even*. The
+> honest form, with the clause it was missing:
+>
+> *a batch learner **handed the true queue of every example, which the proposer
+> had to choose**, that gets the order for free and optimises the metric directly
+> beats, on the arrival distribution, an oracle-using search over rules a
+> sequential blind proposer wrote — and loses to it as a function.*
+>
+> **No figure and no verdict moves**, and three passages of this record carry
+> their own erratum: §1's *same labels*, §3's *information in the 29 examples* and
+> §6's *matched half*. Both refutations stand with one more advantage on the
+> inducer's side than the plan counted. **And no baseline in this repository
+> competes for the decision with the information the proposer had**: `keep_k` and
+> `random_k` are handed the true action by design, declared in
+> `harness/proposers.py`, and the semantic cache of `harness/cache_baseline.py`
+> caches the truth as if the LLM had given it. The figures are owned here;
+> `python3 -m ilp.labels` reproduces them into [`labels.json`](labels.json),
+> POST-HOC: they were computed while verifying this erratum, before that module
+> was written.
+
 ---
 
 ## 6. What this does not settle
@@ -193,6 +258,10 @@ compiling rules *while running* is worth having is untouched by every row here.
 vindicate the proposer.** The banded verdict is refuted because the inducer was
 handed half the material; on the matched half it wins.
 
+> **[ERRATUM 2026-10-10] Matched on the tickets only.** On all 632 the inducer had
+> every true queue, the proposer chose them, and 371 of the test split's 995 cases
+> were identical to its labelled examples. §1's and §5's errata.
+
 ---
 
 ## Files
@@ -204,9 +273,12 @@ ilp/induce.py           sequential covering, precision-first, two beams
 ilp/asp_encoding.py     the superseded clingo encoding, kept so it reproduces
 ilp/induce_check.py     I-g1 to I-g4, blocking, run first and alone
 ilp/compare.py          the four rows, gated on the plan's two signatures
+ilp/labels.py           POST-HOC, 2026-10-10: who had the labels, §5's erratum
 results_ilp/induce_check.json   the gate's own record
 results_ilp/compare.json        the rows, both training sets, both beams
+results_ilp/labels.json         the erratum's figures, behind four gates
 tests/test_ilp.py       the bands, the language, the gate — and no row's figure
+tests/test_ilp_labels.py   how labels.py counts — and no figure
 requirements-ilp.txt    clingo, pinned, and only for the superseded encoding
 ```
 
@@ -215,6 +287,7 @@ Reproducible, in this order:
 ```
 python3 -m ilp.induce_check      # 24 s, must pass
 python3 -m ilp.compare           # 13 s
+python3 -m ilp.labels            # under a second; POST-HOC, §5's erratum
 ```
 
 `--dry-run` on the comparison runs everything and writes nothing. There is no flag

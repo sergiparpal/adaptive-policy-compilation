@@ -1,0 +1,281 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-10T14:56:33Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": null,
+    "git_commit": "8bcfb2e4c086bae2e279d05ea7e0117b64421e4e",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a979af899f8a21e5",
+    "split_seed": 17
+  },
+  "what": "who had the labels: the proposer chose each queue, the inducer was handed it",
+  "plan": "PLAN_ILP.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_ILP.md, of which there must be at least 2: \u00a70's table and \u00a71's amendment of 2026-08-30",
+    "source": "PLAN_ILP.md",
+    "found": 2,
+    "lines": [
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**",
+      "**Signed by Sergi: Sergi Parpal (date: 2026-08-30)**"
+    ],
+    "unsigned": [],
+    "passes": true
+  },
+  "provenance": "POST-HOC: every figure here was computed on 2026-10-10, while verifying FINDINGS_ILP.md \u00a75's erratum, before this module was written. No expectation, because none written now could have failed. Not a signed row; no verdict moves.",
+  "source": {
+    "run": "results/llm_run.json",
+    "instances": "ilp/instances.py"
+  },
+  "surface": "the corpus, n=2000, seed 17; test split 0 is rung 3's, seed 17",
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the tally is the record's",
+      "measured": {
+        "proposal_action_accuracy": 0.3877,
+        "escalations": 632,
+        "failed_proposals": 34,
+        "n_rules": 577
+      },
+      "published": {
+        "proposal_action_accuracy": 0.3877,
+        "escalations": 632,
+        "failed_proposals": 34,
+        "n_rules": 577
+      },
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "the labels are the record's truth",
+      "measured": {
+        "corpus_cases_labelled_otherwise": 0
+      },
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the ceilings are the ones I-b was banded against",
+      "measured": {
+        "ACCOUNT_MANAGER": [
+          39,
+          109
+        ],
+        "T3_ENGINEERING": [
+          39,
+          117
+        ]
+      },
+      "published": {
+        "T3_ENGINEERING": 0.3333333333333333,
+        "ACCOUNT_MANAGER": 0.3577981651376147
+      },
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "the train half reaches no test case",
+      "measured": {
+        "test_cases_identical_to_a_train_316_example": 0
+      },
+      "passes": true
+    }
+  ],
+  "proposer": {
+    "escalations": 632,
+    "failed": 34,
+    "no_queue": 19,
+    "named_a_queue": 579,
+    "right": 245,
+    "over_escalations": 0.3876582278481013,
+    "over_named": 0.4231433506044905,
+    "rules": 577,
+    "rules_right_on_birth": 244,
+    "over_rules": 0.42287694974003465,
+    "per_class": {
+      "ACCOUNT_MANAGER": {
+        "escalations": 29,
+        "right": 1,
+        "named": {
+          "T2_TECHNICAL": 14,
+          "BILLING_SPECIALIST": 7,
+          "T3_ENGINEERING": 4,
+          "T1_GENERAL": 2,
+          "SELF_SERVICE_DEFLECT": 1,
+          "ACCOUNT_MANAGER": 1
+        }
+      },
+      "BILLING_SPECIALIST": {
+        "escalations": 73,
+        "right": 57,
+        "named": {
+          "BILLING_SPECIALIST": 57,
+          "SELF_SERVICE_DEFLECT": 6,
+          "(the proposal failed)": 3,
+          "T2_TECHNICAL": 3,
+          "(a payload with no queue)": 2,
+          "T1_GENERAL": 2
+        }
+      },
+      "SECURITY_INCIDENT": {
+        "escalations": 3,
+        "right": 3,
+        "named": {
+          "SECURITY_INCIDENT": 3
+        }
+      },
+      "SELF_SERVICE_DEFLECT": {
+        "escalations": 222,
+        "right": 37,
+        "named": {
+          "T1_GENERAL": 69,
+          "T2_TECHNICAL": 52,
+          "BILLING_SPECIALIST": 42,
+          "SELF_SERVICE_DEFLECT": 37,
+          "(the proposal failed)": 16,
+          "(a payload with no queue)": 6
+        }
+      },
+      "T1_GENERAL": {
+        "escalations": 99,
+        "right": 32,
+        "named": {
+          "T2_TECHNICAL": 59,
+          "T1_GENERAL": 32,
+          "(the proposal failed)": 4,
+          "SELF_SERVICE_DEFLECT": 1,
+          "(a payload with no queue)": 1,
+          "T3_ENGINEERING": 1,
+          "ACCOUNT_MANAGER": 1
+        }
+      },
+      "T2_TECHNICAL": {
+        "escalations": 200,
+        "right": 113,
+        "named": {
+          "T2_TECHNICAL": 113,
+          "T1_GENERAL": 24,
+          "SELF_SERVICE_DEFLECT": 18,
+          "(the proposal failed)": 11,
+          "(a payload with no queue)": 10,
+          "SECURITY_INCIDENT": 10,
+          "ONCALL_ESCALATION": 7,
+          "T3_ENGINEERING": 6,
+          "BILLING_SPECIALIST": 1
+        }
+      },
+      "T3_ENGINEERING": {
+        "escalations": 6,
+        "right": 2,
+        "named": {
+          "T2_TECHNICAL": 4,
+          "T3_ENGINEERING": 2
+        }
+      }
+    }
+  },
+  "inducer": {
+    "train_316": {
+      "examples": 316,
+      "labelled_with_the_truth": 316
+    },
+    "train_632": {
+      "examples": 632,
+      "labelled_with_the_truth": 632
+    }
+  },
+  "ceilings": {
+    "ACCOUNT_MANAGER": {
+      "corpus_cases": 109,
+      "ceiling": 39,
+      "rules_routing_here": 2,
+      "rules_supplying_it": [
+        {
+          "rule_id": "R0466",
+          "born_at": 1816,
+          "born_on": "T1_GENERAL",
+          "cases": 27
+        },
+        {
+          "rule_id": "R0497",
+          "born_at": 1869,
+          "born_on": "ACCOUNT_MANAGER",
+          "cases": 26
+        }
+      ]
+    },
+    "T3_ENGINEERING": {
+      "corpus_cases": 117,
+      "ceiling": 39,
+      "rules_routing_here": 13,
+      "rules_supplying_it": [
+        {
+          "rule_id": "R0030",
+          "born_at": 85,
+          "born_on": "T2_TECHNICAL",
+          "cases": 4
+        },
+        {
+          "rule_id": "R0054",
+          "born_at": 248,
+          "born_on": "T2_TECHNICAL",
+          "cases": 1
+        },
+        {
+          "rule_id": "R0116",
+          "born_at": 773,
+          "born_on": "T2_TECHNICAL",
+          "cases": 6
+        },
+        {
+          "rule_id": "R0323",
+          "born_at": 1544,
+          "born_on": "T2_TECHNICAL",
+          "cases": 6
+        },
+        {
+          "rule_id": "R0411",
+          "born_at": 1706,
+          "born_on": "T3_ENGINEERING",
+          "cases": 3
+        },
+        {
+          "rule_id": "R0489",
+          "born_at": 1859,
+          "born_on": "T2_TECHNICAL",
+          "cases": 14
+        },
+        {
+          "rule_id": "R0512",
+          "born_at": 1892,
+          "born_on": "ACCOUNT_MANAGER",
+          "cases": 1
+        },
+        {
+          "rule_id": "R0545",
+          "born_at": 1939,
+          "born_on": "T3_ENGINEERING",
+          "cases": 19
+        }
+      ]
+    }
+  },
+  "reach": {
+    "test_cases": 995,
+    "train_316": {
+      "test_cases_among_its_examples": 0,
+      "test_cases_identical_to_an_example": 0
+    },
+    "train_632": {
+      "test_cases_among_its_examples": 316,
+      "test_cases_identical_to_an_example": 371
+    },
+    "escalations_in_the_test_split": {
+      "n": 316,
+      "proposer_right": 124
+    }
+  }
+}
