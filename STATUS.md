@@ -1347,7 +1347,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    **[NOTE 2026-10-10, later]** Measured, POST-RUN: all of the 0.0342 is on
    those 371, where the inducer is right on all and the order on 337. On the
    other 624, which neither had labelled, they tie at 506, right on different
-   cases. §7 of the same record.
+   cases. §7 of the same record. **[NOTE 2026-10-10, later still]** The control,
+   POST-RUN: the same inducer trained on the queues the proposer chose scores
+   424 and 437 of 995. That is below the proposer's own rules in arrival order,
+   519, which use no truth either; its bet that the inducer would compile the
+   proposer's answers better failed. On `ACCOUNT_MANAGER` it scores 0 of 55.
+   §8 of the same record.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
