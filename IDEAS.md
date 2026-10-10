@@ -118,7 +118,9 @@ against, a threshold a next run would have to clear.
   `results_ilp/`. **[NOTE 2026-10-10]** On the proposer's tickets, not its
   labels: the inducer was handed every true queue and the proposer chose its own,
   so the comparison is matched on tickets only. §5's erratum of
-  `results_ilp/FINDINGS_ILP.md`.
+  `results_ilp/FINDINGS_ILP.md`. **[NOTE 2026-10-10, later]** And the win on the
+  arrivals is all on the 371 test cases the inducer saw labelled: on the other
+  624 it ties the order. §7 of the record.
 - **The sensitivity sweep: how much of rung 1's failure is this policy's shape.**
   August 29, 2026, `PLAN_SENSITIVITY.md`, five signed rows. It answers the
   objection `ARBITRATION_REPORT.md` §9.1 raised and three readers reached
