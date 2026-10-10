@@ -144,6 +144,12 @@ Stage C · hidden policy · 170 labelled pairs
   proposal_action_accuracy, rung 1's mocks   0.3877
 ```
 
+> **[ERRATUM 2026-10-10] 0.3877 is the LLM's, not the mocks'.** It is rung 1's
+> `proposal_action_accuracy`: the share of the 632 escalations on which the
+> proposer, given the ticket and no label, chose the right queue — as
+> [`FINDINGS2.md`](results2/FINDINGS2.md) Stage C labels it. The mocks are handed
+> the right queue and would score 1 by construction.
+
 **`P-c` holds**, signed at `> 0.60` before the run. Position bias is exactly zero:
 the winner was shown first in 85 pairs and second in 85, and the rate is 0.8824
 both ways. Four parse failures in 170, no answer outside the eight queues.
