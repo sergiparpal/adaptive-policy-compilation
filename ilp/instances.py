@@ -15,20 +15,25 @@ WHAT EACH ONE IS, AND WHY THERE ARE TWO TRAINING SETS
 `train_316`      the escalations of `results/llm_run.json` whose case falls in
                  rung 3's corpus train half, seed 17. **`I-a`'s banded set.**
 `train_632`      every escalation. **`I-b`'s banded set**, and the one that
-                 matches what the proposer saw.
+                 matches the tickets the proposer saw — not their labels,
+                 which it never had.
 `test`           rung 3's corpus test split 0, 995 cases. Where `I-a` and `I-b`
                  are read.
 
 **Two training sets because neither is clean**, and §1's amendment of 2026-08-30
 says which is which: `rung3/order_search.py` declares in its own docstring that
 the 577 rules were learned over all 2,000 cases, so training on the 316 hands the
-inducer *less* material than the proposer had while matching the order's
-handicap; training on the 632 matches the material and advantages the order. `I-a`
+inducer *fewer tickets* than the proposer had while matching the order's
+handicap; training on the 632 matches the tickets and advantages the order. `I-a`
 is banded on the conservative one and both are reported.
 
-**Nothing here is an oracle leak.** `true_action` labels the examples, which is
-what the proposer also received per case, and `I-g3` checks that the inducer's own
-input is masks and nothing else.
+**Nothing here is an oracle leak, and nothing here is even.** `true_action`
+labels the examples: that is the supervision the plan declares, and `I-g3` checks
+that the inducer's own input is masks and nothing else. The proposer never
+received it — `OpenRouterProposer.propose` drops the truth it is passed and
+decides the queue itself — so the labels are an advantage of the inducer's, not
+an input the two share. This paragraph said otherwise until 2026-10-10; §5's
+erratum of `results_ilp/FINDINGS_ILP.md` has the figures.
 """
 
 from __future__ import annotations
