@@ -67,3 +67,5 @@ results_fidelity/*.partial.jsonl
 results_authorship/*.partial.jsonl
 # And of PLAN_OVERLAP.md (overlap/run.py).
 results_overlap/*.partial.jsonl
+# And of PLAN_BLIND.md (blind/run.py).
+results_blind/*.partial.jsonl
