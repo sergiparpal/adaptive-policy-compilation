@@ -1344,6 +1344,10 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    test split's 995 cases with their true label. No figure and no verdict moves;
    the reading of that win does. §5's erratum of
    [`results_ilp/FINDINGS_ILP.md`](results_ilp/FINDINGS_ILP.md).
+   **[NOTE 2026-10-10, later]** Measured, POST-RUN: all of the 0.0342 is on
+   those 371, where the inducer is right on all and the order on 337. On the
+   other 624, which neither had labelled, they tie at 506, right on different
+   cases. §7 of the same record.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
