@@ -1,5 +1,21 @@
 # PLAN_BLIND — declaration beyond the security keyword, with the rule drafted blind
 
+> **[CLOSED 2026-10-12] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-11, before any figure of the plan existed. All five rows were
+> adjudicated on 2026-10-12, `K-a` and `K-d` on the median of three runs and
+> `K-b`, `K-c` and `K-e` pooled over them: **`K-b`, `K-c` and `K-e` refuted;
+> `K-a` and `K-d` hold**, and `K-f` is reported. `K-d`'s statistic rewards
+> resolving, which a POST-RUN reading measures; the verdict stands as signed.
+> **The figures are owned by
+> [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md)**, and no
+> result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-11. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its note, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-10, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0**, and the signature has to land
