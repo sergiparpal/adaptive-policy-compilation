@@ -444,6 +444,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `overlap/readings_v1.py` | `results_overlap/readings_v1.json` | **refuses while the plan is unsigned** |
 > | `blind/run.py` | `results_blind/run_n*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `blind/score.py` | `results_blind/score.json` | **refuses while the plan is unsigned** |
+> | `blind/readings.py` | `results_blind/readings.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
