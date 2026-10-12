@@ -1,0 +1,6376 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-12T19:14:09Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "b4eba6835a2248c8c5ca956ee0b86e5b9ce26ed8",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "80d33cfb6343f9c0"
+  },
+  "plan": "PLAN_BLIND.md",
+  "stage": "C",
+  "surfaces": {
+    "K-a": "births, overlap read over the half of the space without the keyword",
+    "K-b": "the half of the space without the keyword, 67,200 points, over each edge's shared region",
+    "K-c": "as K-b",
+    "K-d": "the half of the space without the keyword",
+    "K-e": "the 1,929 corpus cases without the keyword, as they arrive"
+  },
+  "read_whole": "every final base read from case 0",
+  "gates": {
+    "K-g1": {
+      "passes": true,
+      "born": 29,
+      "declarations": 253,
+      "installed": 199,
+      "exempted": 41,
+      "surfaces": {
+        "corpus": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        },
+        "space": {
+          "e2e": 1.0,
+          "silent_errors": 0,
+          "conflict": 0,
+          "impasse": 0,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1456,
+        "result": "OK (skipped=2)",
+        "seconds": 82.3,
+        "passes": true
+      }
+    },
+    "K-g2": {
+      "passes": true,
+      "checks": {
+        "O-A v1, as published": true,
+        "O-B v1, as published": true,
+        "O-C v1, as published": true,
+        "O-A v1e, as published": true,
+        "O-B v1e, as published": true,
+        "O-C v1e, as published": true,
+        "O-A v2e, as published": true,
+        "O-B v2e, as published": true,
+        "O-C v2e, as published": true,
+        "the halves without the keyword": true,
+        "\u00a70's figures, v1": true,
+        "\u00a70's figures, v1e": true,
+        "\u00a70's figures, v2e": true,
+        "rung 1's blind births": true,
+        "the pairwise answers": true
+      }
+    },
+    "K-g3": {
+      "what": "the labels, the head of the corpus, PLAN_OVERLAP.md's runs replayed through the loop with the blind draft off, and the v2b texts' hash",
+      "labels_agree": true,
+      "smoke_is_the_head": true,
+      "v2e_replays": true,
+      "fingerprint": true,
+      "replay_rows": [
+        {
+          "run": "smoke",
+          "records": true,
+          "rules": true,
+          "edge_log": true,
+          "edge_channels": true,
+          "metrics": true,
+          "calls": true,
+          "passes": true
+        },
+        {
+          "run": 1,
+          "records": true,
+          "rules": true,
+          "edge_log": true,
+          "edge_channels": true,
+          "metrics": true,
+          "calls": true,
+          "passes": true
+        },
+        {
+          "run": 2,
+          "records": true,
+          "rules": true,
+          "edge_log": true,
+          "edge_channels": true,
+          "metrics": true,
+          "calls": true,
+          "passes": true
+        },
+        {
+          "run": 3,
+          "records": true,
+          "rules": true,
+          "edge_log": true,
+          "edge_channels": true,
+          "metrics": true,
+          "calls": true,
+          "passes": true
+        }
+      ],
+      "fingerprint_measured": "311d774209da570a",
+      "fingerprint_declared": "311d774209da570a",
+      "passes": true
+    },
+    "K-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_BLIND.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_BLIND.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "verdicts": {
+    "K-a": {
+      "row": "K-a",
+      "reading": 0.296296,
+      "line": "<= 0.5",
+      "per_run": [
+        0.25,
+        0.296296,
+        0.378378
+      ],
+      "holds": true,
+      "unadjudicable": false
+    },
+    "K-b": {
+      "row": "K-b",
+      "reading": 0.546026,
+      "line": ">= 0.6, on at least 20 units",
+      "units": 65,
+      "hits": 111,
+      "strict": 198,
+      "holds": false,
+      "unadjudicable": false
+    },
+    "K-c": {
+      "row": "K-c",
+      "reading": -0.175885,
+      "line": ">= 0.0, on K-b's units",
+      "declared": 0.546026,
+      "ranking": 0.721911,
+      "holds": false,
+      "unadjudicable": false
+    },
+    "K-d": {
+      "row": "K-d",
+      "reading": 0.606128,
+      "line": ">= 0.5, on at least 2 runs with room",
+      "per_run": [
+        0.606128,
+        0.645494,
+        0.449608
+      ],
+      "runs_with_room": [
+        1,
+        2,
+        3
+      ],
+      "left_out": [],
+      "holds": true,
+      "unadjudicable": false
+    },
+    "K-e": {
+      "row": "K-e",
+      "reading": 0.586147,
+      "line": ">= 0.6, on at least 20 units",
+      "units": 66,
+      "hits": 114,
+      "strict": 191,
+      "holds": false,
+      "unadjudicable": false
+    }
+  },
+  "directions": {
+    "space": {
+      "declared": {
+        "units": 65,
+        "reading": 0.546026,
+        "hits": 111,
+        "strict": 198,
+        "pooled": 0.560606,
+        "by_winner": 0.502182,
+        "winners": 67,
+        "largest_unit": 10,
+        "ties": 10,
+        "neither_ever_right": 6
+      },
+      "stage_c_ranking": {
+        "units": 65,
+        "reading": 0.721911,
+        "hits": 121,
+        "strict": 198,
+        "pooled": 0.611111,
+        "by_winner": 0.602793,
+        "winners": 67,
+        "largest_unit": 10,
+        "ties": 10,
+        "neither_ever_right": 6
+      },
+      "newborn_wins": {
+        "units": 65,
+        "reading": 0.580372,
+        "hits": 116,
+        "strict": 198,
+        "pooled": 0.585859,
+        "by_winner": 0.576685,
+        "winners": 67,
+        "largest_unit": 10,
+        "ties": 10,
+        "neither_ever_right": 6
+      }
+    },
+    "corpus": {
+      "declared": {
+        "units": 66,
+        "reading": 0.586147,
+        "hits": 114,
+        "strict": 191,
+        "pooled": 0.596859,
+        "by_winner": 0.547977,
+        "winners": 66,
+        "largest_unit": 10,
+        "ties": 1,
+        "neither_ever_right": 22
+      },
+      "stage_c_ranking": {
+        "units": 66,
+        "reading": 0.684818,
+        "hits": 110,
+        "strict": 191,
+        "pooled": 0.575916,
+        "by_winner": 0.564818,
+        "winners": 66,
+        "largest_unit": 10,
+        "ties": 1,
+        "neither_ever_right": 22
+      },
+      "newborn_wins": {
+        "units": 66,
+        "reading": 0.560792,
+        "hits": 113,
+        "strict": 191,
+        "pooled": 0.591623,
+        "by_winner": 0.593792,
+        "winners": 66,
+        "largest_unit": 10,
+        "ties": 1,
+        "neither_ever_right": 22
+      }
+    },
+    "split": {
+      "queue_pairs": 7,
+      "unreachable_queue_pairs": 3,
+      "reachable": {
+        "units": 14,
+        "reading": 0.845238,
+        "hits": 18,
+        "strict": 26,
+        "pooled": 0.692308,
+        "by_winner": 0.409091,
+        "winners": 11,
+        "largest_unit": 10,
+        "ties": 5,
+        "neither_ever_right": 2
+      },
+      "unreachable": {
+        "units": 55,
+        "reading": 0.474697,
+        "hits": 93,
+        "strict": 172,
+        "pooled": 0.540698,
+        "by_winner": 0.532693,
+        "winners": 58,
+        "largest_unit": 10,
+        "ties": 5,
+        "neither_ever_right": 4
+      }
+    },
+    "keyword_edges_full_space": {
+      "units": 34,
+      "reading": 0.865508,
+      "hits": 55,
+      "strict": 65,
+      "pooled": 0.846154,
+      "by_winner": 0.880147,
+      "winners": 5,
+      "largest_unit": 11,
+      "ties": 4,
+      "neither_ever_right": 19
+    },
+    "o_c_full_space": {
+      "units": 72,
+      "reading": 0.636031,
+      "hits": 149,
+      "strict": 240,
+      "pooled": 0.620833,
+      "by_winner": 0.440556,
+      "winners": 66,
+      "largest_unit": 12,
+      "ties": 49,
+      "neither_ever_right": 25
+    }
+  },
+  "runs": [
+    {
+      "rep": 1,
+      "K-a": 0.25,
+      "K-d": 0.606128,
+      "edge_rows": [
+        {
+          "winner": "R0001",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0002",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0005",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0005",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0006",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0006",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0006",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0006",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0009",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0009",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0010",
+          "channel": "write",
+          "older": "R0010",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0009",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0013",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0013",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0013",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0014",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0015",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0015",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0018",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0019",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0019",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0019",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0021",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0021",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0018",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0015",
+          "channel": "write",
+          "older": "R0015",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0009",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0026",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0026",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "tie",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0026",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0018",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0028",
+          "channel": "write",
+          "older": "R0028",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0030",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0030",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0031",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0031",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0031",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0018",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0015",
+          "channel": "write",
+          "older": "R0015",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0032",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0032",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0032",
+          "channel": "write",
+          "older": "R0028",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0033",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0035",
+          "loser": "R0028",
+          "channel": "write",
+          "older": "R0028",
+          "younger": "R0035",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0030",
+          "channel": "order",
+          "older": "R0017",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0026",
+          "loser": "R0030",
+          "channel": "order",
+          "older": "R0026",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0036",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0036",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0036",
+          "channel": "write",
+          "older": "R0028",
+          "younger": "R0036",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0037",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0037",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0037",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0029",
+          "channel": "write",
+          "older": "R0029",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0030",
+          "channel": "write",
+          "older": "R0030",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0032",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0038",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0030",
+          "channel": "order",
+          "older": "R0025",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0040",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0038",
+          "channel": "write",
+          "older": "R0038",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0026",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0041",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0041",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "tie"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0030",
+          "channel": "write",
+          "older": "R0030",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0041",
+          "channel": "write",
+          "older": "R0041",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0042",
+          "loser": "R0032",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0042",
+          "younger_born_on": "CONFLICT",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0043",
+          "loser": "R0030",
+          "channel": "write",
+          "older": "R0030",
+          "younger": "R0043",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0043",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0043",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0043",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0043",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0043",
+          "loser": "R0040",
+          "channel": "write",
+          "older": "R0040",
+          "younger": "R0043",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0043",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0043",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "tie",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0044",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0044",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0044",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0044",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0038",
+          "loser": "R0040",
+          "channel": "order",
+          "older": "R0038",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0006",
+          "loser": "R0040",
+          "channel": "order",
+          "older": "R0006",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0034",
+          "channel": "order",
+          "older": "R0012",
+          "younger": "R0034",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0045",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0045",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0045",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0045",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0045",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0026",
+          "younger": "R0045",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        }
+      ],
+      "K-f": {
+        "reinstall_problems": [],
+        "births_outside": {
+          "born": 45,
+          "keyword": 1,
+          "outside": 44,
+          "alone_outside": 11
+        },
+        "births_full": {
+          "born": 45,
+          "keyword": 0,
+          "outside": 45,
+          "alone_outside": 7
+        },
+        "o_a": 0.155556,
+        "born_without_o_recorded": 7,
+        "the_two_readings_agree": true,
+        "births_by_escalation": {
+          "IMPASSE": 44,
+          "CONFLICT": 1
+        },
+        "fills": {
+          "all": {
+            "space_outside": {
+              "e2e": 0.375521,
+              "alone": 0.273958,
+              "bound": 0.441518,
+              "room": 0.16756,
+              "share": 0.606128,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.56276,
+              "alone": 0.260937,
+              "bound": 0.684598,
+              "room": 0.423661,
+              "share": 0.712417,
+              "reinstall_problems": []
+            }
+          },
+          "write": {
+            "space_outside": {
+              "e2e": 0.370759,
+              "alone": 0.273958,
+              "bound": 0.441518,
+              "room": 0.16756,
+              "share": 0.577709,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.547879,
+              "alone": 0.260937,
+              "bound": 0.684598,
+              "room": 0.423661,
+              "share": 0.677292,
+              "reinstall_problems": []
+            }
+          },
+          "order": {
+            "space_outside": {
+              "e2e": 0.278125,
+              "alone": 0.273958,
+              "bound": 0.441518,
+              "room": 0.16756,
+              "share": 0.024867,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.268899,
+              "alone": 0.260937,
+              "bound": 0.684598,
+              "room": 0.423661,
+              "share": 0.018792,
+              "reinstall_problems": []
+            }
+          }
+        },
+        "fill_on_the_corpus_outside": {
+          "e2e": 0.539139,
+          "alone": 0.365993,
+          "bound": 0.654743,
+          "room": 0.288751,
+          "share": 0.599641
+        },
+        "online": {
+          "reuse_rate": 0.9556,
+          "silent_error_rate": 0.4669,
+          "proposal_action_accuracy": 0.5521,
+          "e2e_accuracy": 0.5075,
+          "escalations": 96,
+          "conflicts": 43,
+          "n_rules": 45
+        },
+        "calls": 135,
+        "rounds_per_escalation": {
+          "1": 57,
+          "2": 39
+        },
+        "verdicts": {
+          "rechazada": 8,
+          "nacida": 45,
+          "copia": 30,
+          "sin_situar": 1,
+          "orden": 12
+        },
+        "verdicts_after_a_placement": {
+          "nacida": 38,
+          "sin_situar": 1
+        },
+        "listed_sizes": {
+          "1": 9,
+          "2": 8,
+          "4": 4,
+          "7": 3,
+          "3": 5,
+          "12": 3,
+          "5": 3,
+          "11": 2,
+          "9": 1,
+          "6": 1
+        },
+        "finish_reasons": {
+          "stop": 135
+        },
+        "declarations": {
+          "ok": 136,
+          "cierra_ciclo": 32,
+          "contradice_subsuncion": 4
+        },
+        "order_answers": 12,
+        "conflicts": 43,
+        "changed": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 1,
+          "decided": 19,
+          "decided_right": 19
+        }
+      }
+    },
+    {
+      "rep": 2,
+      "K-a": 0.296296,
+      "K-d": 0.645494,
+      "edge_rows": [
+        {
+          "winner": "R0001",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0002",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0002",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0003",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0004",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0006",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0006",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0006",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0008",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0008",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0008",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0008",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0010",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0010",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "tie",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0010",
+          "channel": "write",
+          "older": "R0010",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0013",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0013",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0013",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0013",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0013",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0014",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0014",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0014",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0014",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0014",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0015",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0015",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0016",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0013",
+          "loser": "R0017",
+          "channel": "write",
+          "older": "R0013",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0018",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0019",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0019",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0019",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0016",
+          "channel": "write",
+          "older": "R0016",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0021",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0022",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0022",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0022",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0022",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0022",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0025",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0025",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0006",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0003",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0026",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "ACCOUNT_MANAGER"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0022",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0013",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0016",
+          "channel": "write",
+          "older": "R0016",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0010",
+          "channel": "write",
+          "older": "R0010",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        }
+      ],
+      "K-f": {
+        "reinstall_problems": [],
+        "births_outside": {
+          "born": 28,
+          "keyword": 1,
+          "outside": 27,
+          "alone_outside": 8
+        },
+        "births_full": {
+          "born": 28,
+          "keyword": 0,
+          "outside": 28,
+          "alone_outside": 5
+        },
+        "o_a": 0.178571,
+        "born_without_o_recorded": 5,
+        "the_two_readings_agree": true,
+        "births_by_escalation": {
+          "IMPASSE": 28
+        },
+        "fills": {
+          "all": {
+            "space_outside": {
+              "e2e": 0.480952,
+              "alone": 0.313095,
+              "bound": 0.57314,
+              "room": 0.260045,
+              "share": 0.645494,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.615476,
+              "alone": 0.191369,
+              "bound": 0.759338,
+              "room": 0.567969,
+              "share": 0.746709,
+              "reinstall_problems": []
+            }
+          },
+          "write": {
+            "space_outside": {
+              "e2e": 0.480952,
+              "alone": 0.313095,
+              "bound": 0.57314,
+              "room": 0.260045,
+              "share": 0.645494,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.615476,
+              "alone": 0.191369,
+              "bound": 0.759338,
+              "room": 0.567969,
+              "share": 0.746709,
+              "reinstall_problems": []
+            }
+          },
+          "order": {
+            "space_outside": {
+              "e2e": 0.313095,
+              "alone": 0.313095,
+              "bound": 0.57314,
+              "room": 0.260045,
+              "share": 0.0,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.191369,
+              "alone": 0.191369,
+              "bound": 0.759338,
+              "room": 0.567969,
+              "share": 0.0,
+              "reinstall_problems": []
+            }
+          }
+        },
+        "fill_on_the_corpus_outside": {
+          "e2e": 0.548471,
+          "alone": 0.378434,
+          "bound": 0.685848,
+          "room": 0.307413,
+          "share": 0.55312
+        },
+        "online": {
+          "reuse_rate": 0.9286,
+          "silent_error_rate": 0.4611,
+          "proposal_action_accuracy": 0.5152,
+          "e2e_accuracy": 0.53,
+          "escalations": 33,
+          "conflicts": 0,
+          "n_rules": 28
+        },
+        "calls": 57,
+        "rounds_per_escalation": {
+          "1": 9,
+          "2": 24
+        },
+        "verdicts": {
+          "nacida": 28,
+          "rechazada": 4,
+          "sin_situar": 1
+        },
+        "verdicts_after_a_placement": {
+          "nacida": 23,
+          "sin_situar": 1
+        },
+        "listed_sizes": {
+          "1": 7,
+          "2": 7,
+          "3": 5,
+          "8": 1,
+          "4": 1,
+          "7": 2,
+          "10": 1
+        },
+        "finish_reasons": {
+          "stop": 57
+        },
+        "declarations": {
+          "ok": 69,
+          "contradice_subsuncion": 1
+        },
+        "order_answers": 0,
+        "conflicts": 0,
+        "changed": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 0,
+          "decided": 20,
+          "decided_right": 20
+        }
+      }
+    },
+    {
+      "rep": 3,
+      "K-a": 0.378378,
+      "K-d": 0.449608,
+      "edge_rows": [
+        {
+          "winner": "R0001",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0002",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0005",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0005",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0007",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "tie"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0010",
+          "channel": "write",
+          "older": "R0010",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0009",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0011",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0012",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0012",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0015",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0015",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0016",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0009",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0013",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0017",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0020",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0021",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0021",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0021",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0021",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0022",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0022",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0023",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0002",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0005",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0024",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0022",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0027",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0018",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "tie",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0026",
+          "channel": "write",
+          "older": "R0026",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0013",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0016",
+          "channel": "write",
+          "older": "R0016",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0009",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0028",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0029",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0029",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0029",
+          "channel": "write",
+          "older": "R0029",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0030",
+          "loser": "R0012",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0030",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0031",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0031",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0031",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0031",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0014",
+          "channel": "write",
+          "older": "R0014",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0008",
+          "channel": "write",
+          "older": "R0008",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0019",
+          "channel": "write",
+          "older": "R0019",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0006",
+          "channel": "write",
+          "older": "R0006",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0022",
+          "channel": "write",
+          "older": "R0022",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0004",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0018",
+          "channel": "write",
+          "older": "R0018",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0012",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0025",
+          "channel": "write",
+          "older": "R0025",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0013",
+          "channel": "write",
+          "older": "R0013",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0021",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0020",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "b",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0029",
+          "channel": "write",
+          "older": "R0029",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0024",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0011",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0003",
+          "channel": "write",
+          "older": "R0003",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0009",
+          "channel": "write",
+          "older": "R0009",
+          "younger": "R0032",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0033",
+          "loser": "R0015",
+          "channel": "write",
+          "older": "R0015",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0033",
+          "loser": "R0029",
+          "channel": "write",
+          "older": "R0029",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0033",
+          "loser": "R0005",
+          "channel": "write",
+          "older": "R0005",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0033",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "tie",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0033",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0033",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0034",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0034",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0034",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0034",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0034",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0034",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0034",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0034",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0035",
+          "loser": "R0027",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0035",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0035",
+          "loser": "R0001",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0035",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0035",
+          "loser": "R0023",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0035",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "tie",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0035",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0035",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "neither_ever_right",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0036",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0036",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0033",
+          "loser": "R0036",
+          "channel": "write",
+          "older": "R0033",
+          "younger": "R0036",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0011",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0011",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0027",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0027",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0004",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0004",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0016",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0016",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0021",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0021",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0001",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0001",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0023",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0023",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0024",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0024",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0020",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0020",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0033",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0033",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0007",
+          "loser": "R0037",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0037",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0038",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0038",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0038",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0012",
+          "channel": "write",
+          "older": "R0012",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0002",
+          "channel": "write",
+          "older": "R0002",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0039",
+          "loser": "R0029",
+          "channel": "write",
+          "older": "R0029",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "a",
+          "space_out": "a",
+          "corpus_out": "a"
+        },
+        {
+          "winner": "R0032",
+          "loser": "R0039",
+          "channel": "write",
+          "older": "R0032",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0028",
+          "loser": "R0039",
+          "channel": "write",
+          "older": "R0028",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "T1_GENERAL",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0017",
+          "loser": "R0039",
+          "channel": "write",
+          "older": "R0017",
+          "younger": "R0039",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": true,
+          "space_full": "a",
+          "space_out": "neither_ever_right",
+          "corpus_out": "neither_ever_right"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0039",
+          "channel": "write",
+          "older": "R0039",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0033",
+          "channel": "write",
+          "older": "R0033",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        },
+        {
+          "winner": "R0040",
+          "loser": "R0007",
+          "channel": "write",
+          "older": "R0007",
+          "younger": "R0040",
+          "younger_born_on": "IMPASSE",
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "same_queue": false,
+          "keyword": false,
+          "space_full": "b",
+          "space_out": "b",
+          "corpus_out": "b"
+        }
+      ],
+      "K-f": {
+        "reinstall_problems": [],
+        "births_outside": {
+          "born": 40,
+          "keyword": 3,
+          "outside": 37,
+          "alone_outside": 14
+        },
+        "births_full": {
+          "born": 40,
+          "keyword": 0,
+          "outside": 40,
+          "alone_outside": 13
+        },
+        "o_a": 0.325,
+        "born_without_o_recorded": 13,
+        "the_two_readings_agree": true,
+        "births_by_escalation": {
+          "IMPASSE": 40
+        },
+        "fills": {
+          "all": {
+            "space_outside": {
+              "e2e": 0.361979,
+              "alone": 0.302232,
+              "bound": 0.435119,
+              "room": 0.132887,
+              "share": 0.449608,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.56849,
+              "alone": 0.24349,
+              "bound": 0.673214,
+              "room": 0.429725,
+              "share": 0.756298,
+              "reinstall_problems": []
+            }
+          },
+          "write": {
+            "space_outside": {
+              "e2e": 0.361979,
+              "alone": 0.302232,
+              "bound": 0.435119,
+              "room": 0.132887,
+              "share": 0.449608,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.56849,
+              "alone": 0.24349,
+              "bound": 0.673214,
+              "room": 0.429725,
+              "share": 0.756298,
+              "reinstall_problems": []
+            }
+          },
+          "order": {
+            "space_outside": {
+              "e2e": 0.302232,
+              "alone": 0.302232,
+              "bound": 0.435119,
+              "room": 0.132887,
+              "share": 0.0,
+              "reinstall_problems": []
+            },
+            "space_full": {
+              "e2e": 0.24349,
+              "alone": 0.24349,
+              "bound": 0.673214,
+              "room": 0.429725,
+              "share": 0.0,
+              "reinstall_problems": []
+            }
+          }
+        },
+        "fill_on_the_corpus_outside": {
+          "e2e": 0.493002,
+          "alone": 0.403836,
+          "bound": 0.62675,
+          "room": 0.222913,
+          "share": 0.4
+        },
+        "online": {
+          "reuse_rate": 1.0,
+          "silent_error_rate": 0.5049,
+          "proposal_action_accuracy": 0.5778,
+          "e2e_accuracy": 0.484,
+          "escalations": 45,
+          "conflicts": 2,
+          "n_rules": 40
+        },
+        "calls": 73,
+        "rounds_per_escalation": {
+          "1": 17,
+          "2": 28
+        },
+        "verdicts": {
+          "rechazada": 2,
+          "nacida": 40,
+          "sin_situar": 1,
+          "orden": 2
+        },
+        "verdicts_after_a_placement": {
+          "nacida": 27,
+          "sin_situar": 1
+        },
+        "listed_sizes": {
+          "1": 4,
+          "2": 6,
+          "4": 4,
+          "6": 2,
+          "3": 7,
+          "11": 2,
+          "5": 2,
+          "22": 1
+        },
+        "finish_reasons": {
+          "stop": 73
+        },
+        "declarations": {
+          "ok": 113,
+          "cierra_ciclo": 3,
+          "contradice_subsuncion": 2
+        },
+        "order_answers": 2,
+        "conflicts": 2,
+        "changed": 0,
+        "ONCALL_ESCALATION": {
+          "cases": 7,
+          "escalated": 0,
+          "decided": 7,
+          "decided_right": 0
+        },
+        "SECURITY_INCIDENT": {
+          "cases": 20,
+          "escalated": 1,
+          "decided": 19,
+          "decided_right": 19
+        }
+      }
+    }
+  ],
+  "baselines": {
+    "outside": {
+      "space": 67200,
+      "corpus": 1929
+    },
+    "baselines": {
+      "v1": {
+        "o_a": [
+          0.3226,
+          0.4839,
+          0.3333
+        ],
+        "k_a": [
+          1.0,
+          1.0,
+          0.8125
+        ],
+        "k_a_median": 1.0,
+        "o_b": [
+          0.3,
+          0.3833,
+          0.7806
+        ],
+        "k_d": [
+          null,
+          null,
+          0.6667
+        ],
+        "o_c": [
+          34,
+          45
+        ],
+        "k_b": [
+          0,
+          null,
+          0,
+          0
+        ],
+        "k_b_stage_c": [
+          0,
+          null,
+          0,
+          0
+        ],
+        "k_e": [
+          0,
+          null,
+          0,
+          0
+        ],
+        "across_queues_and_keyword": [
+          [
+            17,
+            17
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            27,
+            24
+          ]
+        ]
+      },
+      "v1e": {
+        "o_a": [
+          0.8049,
+          0.7917,
+          0.9667
+        ],
+        "k_a": [
+          1.0,
+          0.9655,
+          0.9667
+        ],
+        "k_a_median": 0.9667,
+        "o_b": [
+          1.0,
+          0.5798,
+          null
+        ],
+        "k_d": [
+          null,
+          0.5714,
+          null
+        ],
+        "o_c": [
+          58,
+          84
+        ],
+        "k_b": [
+          2,
+          0.5,
+          2,
+          3
+        ],
+        "k_b_stage_c": [
+          2,
+          0.5,
+          2,
+          3
+        ],
+        "k_e": [
+          2,
+          0.5,
+          2,
+          3
+        ],
+        "across_queues_and_keyword": [
+          [
+            22,
+            22
+          ],
+          [
+            62,
+            59
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "v2e": {
+        "o_a": [
+          0.2545,
+          0.8049,
+          1.0
+        ],
+        "k_a": [
+          0.8704,
+          1.0,
+          1.0
+        ],
+        "k_a_median": 1.0,
+        "o_b": [
+          0.732,
+          1.0,
+          null
+        ],
+        "k_d": [
+          0.0345,
+          null,
+          null
+        ],
+        "o_c": [
+          44,
+          47
+        ],
+        "k_b": [
+          2,
+          0.25,
+          1,
+          3
+        ],
+        "k_b_stage_c": [
+          2,
+          0.75,
+          2,
+          3
+        ],
+        "k_e": [
+          2,
+          0.0,
+          0,
+          3
+        ],
+        "across_queues_and_keyword": [
+          [
+            58,
+            51
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "rung1_blind_births": {
+      "20": {
+        "k_a": 0.7368,
+        "on_an_impasse": 20
+      },
+      "50": {
+        "k_a": 0.3061,
+        "on_an_impasse": 34
+      },
+      "100": {
+        "k_a": 0.1649,
+        "on_an_impasse": 37
+      },
+      "impasse_born": {
+        "rules": 37,
+        "k_a": 0.4444,
+        "crossing_pairs": 72,
+        "strict": 60,
+        "units": 25
+      }
+    },
+    "pairwise": {
+      "answers_with_a_pair": 1479,
+      "keyword_pairs": 290,
+      "space": {
+        "declared": [
+          325,
+          0.6618,
+          610,
+          891
+        ],
+        "stage_c_ranking": [
+          325,
+          0.7194,
+          686,
+          891
+        ],
+        "newborn_wins": [
+          325,
+          0.5525,
+          504,
+          891
+        ]
+      },
+      "corpus": {
+        "declared": [
+          320,
+          0.6455,
+          603,
+          898
+        ],
+        "stage_c_ranking": [
+          320,
+          0.6966,
+          667,
+          898
+        ],
+        "newborn_wins": [
+          320,
+          0.5342,
+          495,
+          898
+        ]
+      },
+      "split": {
+        "unreachable_queue_pairs": 6,
+        "queue_pairs": 18,
+        "reachable": [
+          171,
+          0.8277,
+          308,
+          366
+        ],
+        "unreachable": [
+          253,
+          0.5801,
+          302,
+          525
+        ]
+      }
+    }
+  }
+}
