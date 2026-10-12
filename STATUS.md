@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 10, 2026. **Not a history** — that is the four
+What is known, as of October 12, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -11,8 +11,9 @@ What is known, as of October 10, 2026. **Not a history** — that is the four
 [`results_edges/FINDINGS_EDGES.md`](results_edges/FINDINGS_EDGES.md),
 [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
 [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md),
-[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md) and
-[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
+[`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md) and
+[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -34,7 +35,9 @@ proposer says it is doing, against what it does, in `PLAN_WHY.md`**: five more,
 closed the same day too — plus **the second way's third form, declaration
 imposed at write time, in `PLAN_AUTHORSHIP.md`**: five more, closed on
 2026-10-06 — plus **that form asked again, with the proposer told to overlap,
-in `PLAN_OVERLAP.md`**: four more, closed on 2026-10-07.
+in `PLAN_OVERLAP.md`**: four more, closed on 2026-10-07 — plus **declaration
+beyond the security keyword, with the rule drafted blind, in `PLAN_BLIND.md`**:
+six more, closed on 2026-10-12.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -120,6 +123,25 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So the clause stands on the corpus for all three forms. Over the space, the
 > first form and the third both supply order, and both through that one rule.
 > [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md).
+>
+> **[NOTE 2026-10-12] Beyond that rule, the third form's direction is a coin's.**
+> [`PLAN_BLIND.md`](PLAN_BLIND.md) took the base out of the proposer's first call,
+> which is what `FINDINGS2.md` traced the partition to, and kept the declaration:
+> a placement round asked for the same rule, placed against every rule of another
+> queue it overlaps. Every row is read where the security keyword is absent.
+>
+> - **Drafted blind, the proposer crossed** (`K-a` holds).
+> - **There, its declarations point at the better rule about one time in two**
+>   (`K-b` refuted), **and a fixed ranking of the queues points the same pairs
+>   better** (`K-c` refuted). On the arrivals it is the same (`K-e` refuted).
+> - **The edges fill most of the order's room over the function** (`K-d` holds),
+>   **and read POST-RUN that is mostly resolution**: the same edges pointed by
+>   the ranking fill more in every run.
+>
+> So over the space the order the second way supplies goes through the keyword's
+> one rule. Beyond it the declarations resolve conflicts, and point them the way
+> a coin would wherever a ranking would not already answer.
+> [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md).
 
 ---
 
@@ -168,7 +190,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Seventy-three rows have been signed before the figures they name existed. This
+**Seventy-nine rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -211,16 +233,17 @@ a count behind it.
 | **Y** · the why texts (§0 of `PLAN_WHY.md`) — *bands set on a development set* | 5 | 4 | **0** | 0 | 4 | 1 |
 | **E** · declaration imposed (§0 of `PLAN_AUTHORSHIP.md`) | 5 | 3 | **2** | 0 | 1 | 1 |
 | **O** · imposed, with overlap asked for (§0 of `PLAN_OVERLAP.md`) | 4 | 3 | **1** | 0 | 2 | 1 |
-| **total** | **73** | **61** | **25** | **2** | **34** | **10** |
+| **K** · beyond the keyword, drafted blind (§0 of `PLAN_BLIND.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
+| **total** | **79** | **66** | **28** | **2** | **36** | **11** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`, `R-c`, `C-b`, `C-c`,
-`D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`, `U-a`, `U-b`, `U-c`,
-`U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`, `Y-b`, `Y-c`, `Y-d`,
-`E-d`, `O-b`, `O-c`. Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`,
-`Y-e`, `E-e`, `O-d`.
+`O-a`, `K-b`, `K-c`, `K-e`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
+`R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
+`U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
+`Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`. Reported: `R-d`, `C-d`,
+`D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`, `K-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -243,14 +266,14 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 25 of 61 = **41.0%**
-refuted; without them, 23 of 55 = **41.8%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 28 of 66 = **42.4%**
+refuted; without them, 26 of 60 = **43.3%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.8 points the flattering way, which is exactly why saying so is not optional.
+0.9 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows flatter it more, and for a reason of design.** Their bands were
 set on a development set from the same model a day earlier, so they bet that a
 reading generalises rather than test the drafter's foresight. Without them the
-two ratios are 25 of 57 = **43.9%** and 23 of 51 = **45.1%**, which is the reading
+two ratios are 28 of 62 = **45.2%** and 26 of 56 = **46.4%**, which is the reading
 the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
@@ -301,6 +324,12 @@ the calibration note should take.
 > One was reported. The table, the named lists, the count in the heading, the two
 > ratios and the two without the `Y` rows moved together; the gap between the
 > first two is now 0.8 points.
+>
+> **[NOTE 2026-10-12] Recomputed with the `K` thread, in the same commit as its
+> row.** Six rows were signed and five adjudicated: three refuted and two held.
+> One was reported. The table, the named lists, the count in the heading, the two
+> ratios and the two without the `Y` rows moved together; the gap between the
+> first two is now 0.9 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -326,7 +355,9 @@ five; and `E` from
 [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
 which owns all five; and `O` from
 [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
-which owns all four.
+which owns all four; and `K` from
+[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md), which owns
+all six.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -469,6 +500,25 @@ and trusted `O-a` least.
   about the security keyword, and the record says so beside the verdict.
 
 `O-d` is reported.
+
+**The `K` rows ask whether declaration carries direction beyond the security
+keyword, and the drafter got two of five.** Sergi signed §0 of `PLAN_BLIND.md`
+on 2026-10-11, before any of its figures existed, and a gate refuses its writers
+otherwise. The drafter expected `K-a`, `K-b` and `K-e` to hold and `K-c` and
+`K-d` to be refuted, and trusted `K-a` least.
+
+- **`K-a` held and `K-c` was refuted, as expected.** `K-a` read 0.2963 against a
+  proxy of 0.4444, and `K-c` −0.1759: the Stage C ranking reads the same pairs
+  better.
+- **`K-b` and `K-e` were refuted**, at 0.5460 and 0.5861 against lines of 0.60.
+  §0 had called them the comfortable rows, with lines under the pairwise
+  answers' 0.6618 and 0.6455.
+- **`K-d` held, against the drafter's expectation**, at 0.6061 against a line of
+  0.50. Its statistic rewards resolving, and read POST-RUN most of the fill is
+  resolution: a coin pointing the same edges fills 0.40 to 0.45. The record says
+  so beside the verdict.
+
+`K-f` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -1240,6 +1290,34 @@ from
 On the corpus the order's room was 81 and 15 arrivals of 2,000. On the median,
 the loop's end to end is 0.4400 under v1, 0.3505 under v1e and 0.3495 under v2e.
 
+**Beyond the security keyword, with the rule drafted blind: the proposer crossed,
+and its declarations pointed the way a coin would.** `PLAN_BLIND.md` ran
+`PLAN_REUSE.md`'s loop three more times at n=2000, under v2b: v2e with the base
+taken out of the first call on an impasse, and one placement round asking for
+the same rule, placed against every rule of another queue it overlaps. Every row
+is read where `has_security_keyword` is False: the half of the space without
+it, and the 1,929 corpus cases without it. The figures are from
+[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md):
+
+- **Drafted blind, it crossed.** On the median 0.2963 of its births met no
+  earlier rule of another queue there, against 0.9667 to 1.0000 under v1, v1e
+  and v2e (`K-a` holds).
+- **There, its declarations point at the better rule 0.5460 of the time**, each
+  of 65 older rules counted once (`K-b` refuted). **The Stage C ranking reads
+  the same pairs at 0.7219** (`K-c` refuted), and "the new rule always wins" at
+  0.5804. On the arrivals the declarations read 0.5861 (`K-e` refuted).
+- **Right where a ranking can answer, a coin where it cannot**: 0.8452 against
+  0.4747, `B-d`'s split again.
+- **The edges fill 0.6061 of the order's room over the function** (`K-d` holds).
+  Read POST-RUN, it is mostly resolution: a coin pointing the same edges fills
+  0.40 to 0.45, and among what each resolves the declared directions beat a
+  coin's clearly in one run of three. The ranking pointing them fills more in
+  every run.
+
+On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
+the right queue 0.5521 of the time, the highest of the four protocols, with the
+bundle and the date between them as caveats.
+
 ---
 
 ## What was withdrawn, and why
@@ -1323,6 +1401,16 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    left: whether declaration carries direction beyond that one attribute. Under
    v2e, four strict pairs went one right.
    [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md).
+   **[NOTE 2026-10-12] Answered by `PLAN_BLIND.md`, and the partition's cause
+   with it.** Drafted with the base out of view, the proposer crossed (`K-a`),
+   the cause `FINDINGS2.md` named; the framing of one ticket and one rule does
+   not stop it. Beyond the keyword its declarations point at the better rule
+   about one time in two, below a fixed ranking of the queues (`K-b`, `K-c`,
+   `K-e`), and their fill is mostly resolution (`K-d`, read POST-RUN). So it
+   partitions when it sees the base, and it does not stratify when it does not:
+   its declarations carry no direction a ranking lacks. The two missing classes
+   are untouched: no declaration changes which queue the model writes.
+   [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

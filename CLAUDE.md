@@ -170,8 +170,8 @@ the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
 2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
-2026-10-05 `authorship/run.py`, and since 2026-10-06 `overlap/run.py`, all four
-below. It refuses to run while §0 of **the
+2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, and since
+2026-10-10 `blind/run.py`, all five below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -353,6 +353,38 @@ can rest on one declaration: a plan that reads one should say in §0 how it
 weighs edges that share a winner. **And §0's rule for a run without room did its
 work**: a run had none, and the verdict needed no reading.
 
+**`PLAN_BLIND.md` closed on 2026-10-12: declaration beyond the security
+keyword, with the rule drafted blind.** Six signed rows: five adjudicated, one
+reported. Sergi signed §0 on 2026-10-11, before any figure it governs existed.
+It ran `PLAN_REUSE.md`'s loop under v2b: v2e with the base taken out of the
+first call on an impasse, and a placement round that asks for the same rule,
+placed against every rule of another queue it overlaps. Every row is read where
+`has_security_keyword` is False. The record is `results_blind/FINDINGS_BLIND.md`,
+and `STATUS.md` indexes its figures. **Stage C and the POST-RUN reading are free
+and reproduce from the committed records. Stage B spent**: its records are
+guarded, and a re-run neither overwrites them nor gives the same rules back, so
+a paid run does not start without Sergi asking for it. Every writer in `blind/`
+refuses while the plan carries a blank signature line, and the gate reads
+`PLAN_BLIND.md` and no other plan. `overlap/` and `authorship/` are called by it
+and not edited. The first command is blocking and writes nothing:
+
+    python3 -m blind.run --dry-run              # K-g1..K-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m blind.score     # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m blind.readings  # POST-RUN: K-d under other directions
+    .venv/bin/python -m blind.run --smoke       # Stage B: spends — only if asked
+    .venv/bin/python -m blind.run --rep 1       # then 2, then 3 — never side by side
+
+**Its `K-d` reused `O-b`'s fill, and a fill over declared edges rewards
+resolving.** Under a forced placement the declared graph resolves nearly the
+whole room, and a coin pointing the same edges resolves less of it, because its
+directions close cycles. A plan that reads a fill should set it beside the same
+edges pointed by a coin and by a ranking, as `blind/readings.py` does after the
+fact, and say so in its §0. **And read the free ranking on the same pairs**:
+beyond the keyword it pointed them better than the declarations did, as it did
+in the pairwise thread. **A signature lives on the plan's branch until it
+merges**: a paid command launched from `main` meets an unsigned §0 and refuses,
+which is the gate working.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
@@ -426,7 +458,8 @@ call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
 and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
-2026-10-05, `authorship/run.py`, and since 2026-10-06, `overlap/run.py`.
+2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, and since
+2026-10-10, `blind/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

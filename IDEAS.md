@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 7, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 12, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -37,7 +37,10 @@ set on a development set, four held and one reported, written up in
 without a verdict and one reported, written up in `results_authorship/`. **Asked
 again with the proposer told to overlap, it closed on October 7, 2026**:
 `PLAN_OVERLAP.md`, four signed rows, one refuted, two held and one reported,
-written up in `results_overlap/`. This is a list of things not done, none of
+written up in `results_overlap/`. **Beyond the keyword, with the rule drafted
+blind, it closed on October 12, 2026**: `PLAN_BLIND.md`, six signed rows, two
+held, three refuted and one reported, written up in `results_blind/`. This is a
+list of things not done, none of
 them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -48,6 +51,14 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Declaration beyond the security keyword, with the rule drafted blind.**
+  October 12, 2026, `PLAN_BLIND.md`, cents. With the base out of its first call
+  the proposer crossed, and a placement round made it declare against every rule
+  of another queue it overlapped. Beyond the keyword its declarations pointed at
+  the better rule about one time in two, and a fixed ranking of the queues
+  pointed the same pairs better. Their fill of the order's room is mostly
+  resolution, read POST-RUN. What it leaves is in its own section below.
+  `results_blind/`.
 - **Stage E asked again, with the proposer told to overlap.** October 7, 2026,
   `PLAN_OVERLAP.md`, cents. Told that overlap is normal and asked to declare
   only where the queues differ, the proposer still partitioned in two runs of
@@ -170,6 +181,39 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_BLIND.md` opens and does not resolve
+
+Closed October 12, 2026. It asked whether declaration carries direction beyond
+the security keyword, with the base taken out of the proposer's first call and a
+placement round forcing the declaration. The proposer crossed, and beyond the
+keyword its direction was a coin's wherever a ranking would not already answer.
+What that leaves:
+
+- **The rules apart from the channel.** Blind rules are not v2e's rules, and the
+  pairwise answers were about rung 1's. Whether write time is the weaker
+  channel, or these rules make the harder pairs, these runs cannot separate.
+  Pairwise questions about v2b's bases would; calls.
+- **Why the loop's figures rose.** Under v2b the end to end and the proposer's
+  action accuracy were the highest of the four protocols. The bundle and the
+  date are not separated, and `PLAN_FIDELITY.md`'s sign that a screen of
+  compiled rules costs the model accuracy is the obvious candidate. A blind
+  first call with no placement, rung 1's question on rung 2's engine, would
+  separate the screen from the discipline; calls.
+- **Why run 1 closed cycles.** Its placements closed 20 cycles, and its 43
+  CONFLICTs came from them; runs 2 and 3 closed 0 and 1. The records keep every
+  placement and its listing order, so whether the cycles follow the listing
+  slot is free to read.
+- **A fill that does not reward resolving.** `K-d` reused `O-b`'s statistic, and
+  a fill over declared edges rewards resolving as `W-c`'s count did. A next plan
+  that reads a fill should set it beside the same edges pointed by a coin and by
+  a ranking, as `blind/readings.py` did after the fact, and say so in its §0.
+- **Where a ranking cannot answer.** There the declarations are a coin's, at
+  write time as in the pairwise answers. Asking on those pairs with more
+  information is P5 of `ARBITRATION_REPORT.md` §7. It costs calls, and `B-d`'s
+  population is where it would have power.
+
+---
+
 ## What `PLAN_OVERLAP.md` opens and does not resolve
 
 Closed October 7, 2026. It asked Stage E's question again, under v2e: rung 2's
@@ -178,11 +222,16 @@ asked only where the queues differ. The proposer still partitioned in two runs
 of three, and where it did not, its declarations ordered the function through
 one rule. What that leaves:
 
-- **Whether forced declarations carry direction beyond the keyword.** 43 of
+- ~~**Whether forced declarations carry direction beyond the keyword.**~~ 43 of
   `O-c`'s 47 strict pairs are one declaration about the security keyword; the
   other four went one right. It is the item `PLAN_EDGES.md` left, reached now by
   imposed declaration too. A base whose conflicts fall elsewhere would answer
   it, which means another corpus or other draws, and calls.
+  **[NOTE 2026-10-12] Answered by `PLAN_BLIND.md`**, and not by another corpus or
+  other draws: the same corpus, with the base out of the proposer's first call.
+  Beyond the keyword the forced declarations point at the better rule about one
+  time in two, below a fixed ranking of the queues (`K-b`, `K-c`). What it
+  leaves is in its own section, above.
 - ~~**What separates a run that overlaps from one that partitions.**~~ **Read
   POST-RUN on 2026-10-08** (`FINDINGS_OVERLAP.md`, *What separates the run that overlapped*). One
   broad rule: run 1's overlap is its births meeting `R0017`, the keyword rule,
@@ -362,6 +411,12 @@ function. What that answer leaves:
   **[NOTE 2026-10-07] Imposed declaration reached the same attribute.** 43 of
   `PLAN_OVERLAP.md`'s 47 strict pairs are the keyword rule, and the other four
   went one right (`FINDINGS_OVERLAP.md`, POST-RUN).
+  **[NOTE 2026-10-12] Answered by `PLAN_BLIND.md`: barely.** With the base out
+  of the first call, a population beyond the keyword exists, and there the
+  declared direction is a coin's wherever a ranking would not already answer
+  (`K-b`, `K-c`). On the arrivals it reads about as it does over the function
+  (`K-e`), so the split by surface belonged to the attribute, not to the
+  channel. `results_blind/FINDINGS_BLIND.md`.
 - **A coin control that does not reward resolving.** `W-c` counted right
   decisions, and a flipped edge leaves its conflict open. So the count measured
   resolution, and the record says so beside the verdict. Accuracy among the
@@ -1454,6 +1509,11 @@ draft a band for one of them and may not sign it.
   **[NOTE 2026-10-07]** Told that overlap is normal, and asked only where the
   queues differ, it still partitioned in two runs of three (`PLAN_OVERLAP.md`,
   `O-a`).
+  **[NOTE 2026-10-12]** Drafting with the base out of view, it crossed
+  (`PLAN_BLIND.md`, `K-a`), as `FINDINGS2.md`'s reading of the base in view
+  predicts: the framing of one ticket and one rule does not stop it. Beyond the
+  keyword its declarations still pointed the way a coin would, so it crosses
+  without stratifying.
 - Whether any prompt or schema gets a proposer that sees the base to write
   overlapping rules. Versions v1 and v2 bound a range; they do not exhaust it.
   **Untouched by the pairwise thread**, which sidesteps rule-writing entirely and
@@ -1467,6 +1527,9 @@ draft a band for one of them and may not sign it.
   in the other two (`PLAN_OVERLAP.md`). **[NOTE 2026-10-08]** That run
   overlapped through one broad rule, and without it partitions too, read
   POST-RUN.
+  **[NOTE 2026-10-12]** A proposer that does not see the base writes them
+  (`PLAN_BLIND.md`, `K-a`); in every protocol that showed it the base, it has
+  not.
 - How to get a base that produces conflicts, which is the condition for
   `EDGE_CONTRADICTS` to measure anything. Eight runs produced almost none.
   **Further away as of 2026-08-24, not closer.** The pairwise protocol filters
