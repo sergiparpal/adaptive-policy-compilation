@@ -1,0 +1,416 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-12T19:24:05Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "46b5c4cada701bf7144ea90c05b2377092df14ae",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "ccff0856d12d3e26"
+  },
+  "plan": "PLAN_BLIND.md",
+  "provenance": "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
+  "source": {
+    "record": "results_blind/score.json",
+    "its_commit": "b4eba6835a2248c8c5ca956ee0b86e5b9ce26ed8"
+  },
+  "surface": "the half of the space without the keyword, 67,200 points; the corpus cases without it reported for the deterministic arms",
+  "constants": {
+    "N_COIN": 200,
+    "COIN_SEED": 17
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "rep": 1,
+      "what": "the declared arm is K-d",
+      "measured": 0.606128,
+      "published": 0.606128,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 1,
+      "what": "it is the run's graph",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 1,
+      "what": "the coin is a function of its seed",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 2,
+      "what": "the declared arm is K-d",
+      "measured": 0.645494,
+      "published": 0.645494,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 2,
+      "what": "it is the run's graph",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 2,
+      "what": "the coin is a function of its seed",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 3,
+      "what": "the declared arm is K-d",
+      "measured": 0.449608,
+      "published": 0.449608,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 3,
+      "what": "it is the run's graph",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 3,
+      "what": "the coin is a function of its seed",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "1": {
+      "room_points": 11260,
+      "alone": 0.273958,
+      "bound": 0.441518,
+      "edges": 136,
+      "declared": {
+        "share": 0.606128,
+        "resolved_of_room": 0.951599,
+        "right_of_resolved": 0.636958,
+        "right_of_room": 0.606128,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.539139
+      },
+      "ranking": {
+        "share": 0.62389,
+        "resolved_of_room": 0.941385,
+        "right_of_resolved": 0.662736,
+        "right_of_room": 0.62389,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.514256
+      },
+      "newborn": {
+        "share": 0.552398,
+        "resolved_of_room": 0.866341,
+        "right_of_resolved": 0.637622,
+        "right_of_room": 0.552398,
+        "lost": 0,
+        "refused": {
+          "cierra_ciclo": 12
+        },
+        "corpus_e2e": 0.523069
+      },
+      "oracle": {
+        "share": 0.841474,
+        "resolved_of_room": 0.963144,
+        "right_of_resolved": 0.873675,
+        "right_of_room": 0.841474,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.622084
+      },
+      "coin": {
+        "draws": 200,
+        "share": {
+          "mean": 0.402973,
+          "sd": 0.066833,
+          "central": [
+            0.29929,
+            0.510213
+          ],
+          "at_least_declared": 0.0
+        },
+        "resolved_of_room": {
+          "mean": 0.768483,
+          "sd": 0.055173,
+          "central": [
+            0.678064,
+            0.850888
+          ],
+          "at_least_declared": 0.0
+        },
+        "right_of_resolved": {
+          "mean": 0.523875,
+          "sd": 0.074998,
+          "central": [
+            0.402292,
+            0.645437
+          ],
+          "at_least_declared": 0.06
+        },
+        "right_of_room": {
+          "mean": 0.402973,
+          "sd": 0.066833,
+          "central": [
+            0.29929,
+            0.510213
+          ],
+          "at_least_declared": 0.0
+        },
+        "refused_mean": 30.535,
+        "draws_with_a_refusal": 200
+      }
+    },
+    "2": {
+      "room_points": 17475,
+      "alone": 0.313095,
+      "bound": 0.57314,
+      "edges": 69,
+      "declared": {
+        "share": 0.645494,
+        "resolved_of_room": 1.0,
+        "right_of_resolved": 0.645494,
+        "right_of_room": 0.645494,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.548471
+      },
+      "ranking": {
+        "share": 0.775393,
+        "resolved_of_room": 1.0,
+        "right_of_resolved": 0.775393,
+        "right_of_room": 0.775393,
+        "lost": 0,
+        "refused": {
+          "contradice_subsuncion": 3
+        },
+        "corpus_e2e": 0.55832
+      },
+      "newborn": {
+        "share": 0.517883,
+        "resolved_of_room": 0.818026,
+        "right_of_resolved": 0.633088,
+        "right_of_room": 0.517883,
+        "lost": 0,
+        "refused": {
+          "cierra_ciclo": 2,
+          "contradice_subsuncion": 3
+        },
+        "corpus_e2e": 0.470192
+      },
+      "oracle": {
+        "share": 0.870386,
+        "resolved_of_room": 1.0,
+        "right_of_resolved": 0.870386,
+        "right_of_room": 0.870386,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.654225
+      },
+      "coin": {
+        "draws": 200,
+        "share": {
+          "mean": 0.452202,
+          "sd": 0.113228,
+          "central": [
+            0.273247,
+            0.651788
+          ],
+          "at_least_declared": 0.06
+        },
+        "resolved_of_room": {
+          "mean": 0.79766,
+          "sd": 0.101827,
+          "central": [
+            0.627182,
+            0.955365
+          ],
+          "at_least_declared": 0.0
+        },
+        "right_of_resolved": {
+          "mean": 0.56495,
+          "sd": 0.112958,
+          "central": [
+            0.390006,
+            0.746102
+          ],
+          "at_least_declared": 0.255
+        },
+        "right_of_room": {
+          "mean": 0.452202,
+          "sd": 0.113228,
+          "central": [
+            0.273247,
+            0.651788
+          ],
+          "at_least_declared": 0.06
+        },
+        "refused_mean": 13.795,
+        "draws_with_a_refusal": 200
+      }
+    },
+    "3": {
+      "room_points": 8930,
+      "alone": 0.302232,
+      "bound": 0.435119,
+      "edges": 113,
+      "declared": {
+        "share": 0.449608,
+        "resolved_of_room": 0.993281,
+        "right_of_resolved": 0.452649,
+        "right_of_room": 0.449608,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.493002
+      },
+      "ranking": {
+        "share": 0.6271,
+        "resolved_of_room": 0.993281,
+        "right_of_resolved": 0.631342,
+        "right_of_room": 0.6271,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.514774
+      },
+      "newborn": {
+        "share": 0.450168,
+        "resolved_of_room": 0.993281,
+        "right_of_resolved": 0.453213,
+        "right_of_room": 0.450168,
+        "lost": 0,
+        "refused": {
+          "cierra_ciclo": 3
+        },
+        "corpus_e2e": 0.50337
+      },
+      "oracle": {
+        "share": 0.848824,
+        "resolved_of_room": 0.993281,
+        "right_of_resolved": 0.854566,
+        "right_of_room": 0.848824,
+        "lost": 0,
+        "refused": {},
+        "corpus_e2e": 0.615863
+      },
+      "coin": {
+        "draws": 200,
+        "share": {
+          "mean": 0.443259,
+          "sd": 0.060584,
+          "central": [
+            0.344905,
+            0.547032
+          ],
+          "at_least_declared": 0.435
+        },
+        "resolved_of_room": {
+          "mean": 0.901629,
+          "sd": 0.035914,
+          "central": [
+            0.840426,
+            0.954087
+          ],
+          "at_least_declared": 0.0
+        },
+        "right_of_resolved": {
+          "mean": 0.491353,
+          "sd": 0.061842,
+          "central": [
+            0.388242,
+            0.588469
+          ],
+          "at_least_declared": 0.725
+        },
+        "right_of_room": {
+          "mean": 0.443259,
+          "sd": 0.060584,
+          "central": [
+            0.344905,
+            0.547032
+          ],
+          "at_least_declared": 0.435
+        },
+        "refused_mean": 23.68,
+        "draws_with_a_refusal": 200
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": 1,
+      "what": "the coin's mean fill is between 0.40 and 0.60 in every run",
+      "reading": {
+        "1": 0.402973,
+        "2": 0.452202,
+        "3": 0.443259
+      },
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "the declared fill is inside the coin's central 90% in at least two runs of three",
+      "reading": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "the declared arm resolves more of the room than the coin's mean in every run",
+      "reading": {
+        "1": [
+          0.951599,
+          0.768483
+        ],
+        "2": [
+          1.0,
+          0.79766
+        ],
+        "3": [
+          0.993281,
+          0.901629
+        ]
+      },
+      "holds": true
+    },
+    {
+      "clause": 4,
+      "what": "the ranking fills more than the declared arm in every run",
+      "reading": {
+        "1": [
+          0.62389,
+          0.606128
+        ],
+        "2": [
+          0.775393,
+          0.645494
+        ],
+        "3": [
+          0.6271,
+          0.449608
+        ]
+      },
+      "holds": true
+    },
+    {
+      "clause": 5,
+      "what": "the oracle fills at least 0.85 of the room in every run",
+      "reading": {
+        "1": 0.841474,
+        "2": 0.870386,
+        "3": 0.848824
+      },
+      "holds": false
+    }
+  ]
+}
