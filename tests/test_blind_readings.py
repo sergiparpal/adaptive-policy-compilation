@@ -125,6 +125,28 @@ class TestTheExpectation(unittest.TestCase):
         self.assertEqual([c["holds"] for c in x], [False, False, False, False, False])
 
 
+class TestRunByRun(unittest.TestCase):
+
+    def test_each_run_alone_and_pooled_back(self):
+        def row(older, hit):
+            return {"winner": "N", "loser": older, "older": older, "younger": "N",
+                    "channel": e.WRITE, "younger_born_on": rows.IMPASSE,
+                    "queues": [T1, SI], "same_queue": False, "keyword": False,
+                    "space_out": rows.HIT if hit else rows.MISS,
+                    "corpus_out": rows.HIT if hit else rows.MISS}
+        score = {"runs": [{"rep": 1, "edge_rows": [row("A", True), row("B", False)]},
+                          {"rep": 2, "edge_rows": [row("A", True)]}]}
+        got = readings.per_run_directions(score)
+        self.assertEqual(got["1"]["K-b"], {"units": 2, "reading": 0.5, "hits": 1, "strict": 2})
+        # SI ranks above T1, so the ranking names the loser: right exactly where
+        # the declared winner is wrong.
+        self.assertEqual((got["1"]["ranking"], got["1"]["K-c"]), (0.5, 0.0))
+        self.assertEqual(got["2"]["K-b"]["reading"], 1.0)
+        self.assertEqual(got["pooled"]["K-b"], {"units": 3, "reading": 2 / 3, "hits": 2,
+                                                "strict": 3})
+        self.assertEqual(got["pooled"]["K-e"]["hits"], 2)
+
+
 class TestUnsigned(unittest.TestCase):
 
     def test_it_refuses_before_reading_or_writing(self):

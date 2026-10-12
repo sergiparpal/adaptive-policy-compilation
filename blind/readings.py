@@ -88,6 +88,17 @@ expectation above written before the reading and committed before it ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. `K-d`
 stands as signed. Zero API calls.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: K-b, K-c AND K-e RUN BY RUN
+--------------------------------------------------------------------------
+§0 says each run's own value is published beside every row's reading, and
+`score.json` pools the edges of K-b, K-c and K-e over the runs without giving
+each run's. `per_run_directions` reads them off `score.json`'s own edge rows, run
+by run, with the instrument that pooled them: a decomposition of three published
+rows, not a measurement, and no expectation goes with it. Added in its own
+commit, after the first run of this module; the record comes from a second run,
+which must give back every figure of the first.
+
 Usage:  PYTHONHASHSEED=0 python3 -m blind.readings
 """
 
@@ -283,6 +294,28 @@ def summary_of_draws(draws: list[dict], declared: dict) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: K-b, K-c and K-e run by run
+# ---------------------------------------------------------------------------
+
+def per_run_directions(score: dict) -> dict[str, Any]:
+    """K-b's, K-c's and K-e's readings for each run alone, off `score.json`'s
+    edge rows, with `rows.comparators`, the function that pooled them. The pooled
+    readings are given back beside them, and must equal `score.json`'s."""
+    def one(edge_rows_by_run):
+        space_ = rows.comparators(edge_rows_by_run, "space_out")
+        corpus_ = rows.comparators(edge_rows_by_run, "corpus_out")
+        kb, rank, ke = space_["declared"], space_["stage_c_ranking"], corpus_["declared"]
+        return {"K-b": {k: kb[k] for k in ("units", "reading", "hits", "strict")},
+                "K-c": (None if kb["reading"] is None or rank["reading"] is None
+                        else kb["reading"] - rank["reading"]),
+                "ranking": rank["reading"],
+                "K-e": {k: ke[k] for k in ("units", "reading", "hits", "strict")}}
+    out = {str(r["rep"]): one([r["edge_rows"]]) for r in score["runs"]}
+    out["pooled"] = one([r["edge_rows"] for r in score["runs"]])
+    return out
+
+
+# ---------------------------------------------------------------------------
 # The gates and the expectation
 # ---------------------------------------------------------------------------
 
@@ -361,6 +394,14 @@ def main(argv: list[str] | None = None) -> int:
     runs = {rep: read_run(records[rep], rep, space, tmask, outside, corpus, cases_out)
             for rep in records}
     checked = check(score, records, runs, space, tmask, outside)
+    by_run = per_run_directions(score)
+    v = score["verdicts"]
+    checked.append({"gate": 4, "rep": "pooled",
+                    "what": "the run-by-run decomposition pools back to K-b, K-c and K-e",
+                    "passes": (round(by_run["pooled"]["K-b"]["reading"], 6) == v["K-b"]["reading"]
+                               and round(by_run["pooled"]["K-c"], 6) == v["K-c"]["reading"]
+                               and round(by_run["pooled"]["K-e"]["reading"], 6)
+                               == v["K-e"]["reading"])})
     for g in checked:
         print(f"  gate {g['gate']} run {g['rep']}: {'PASS' if g['passes'] else 'FAIL'}"
               f"  {g['what']}")
@@ -378,6 +419,10 @@ def main(argv: list[str] | None = None) -> int:
         "gates": checked,
         "runs": {str(rep): r for rep, r in runs.items()},
         "expectation": read_expectation(runs),
+        "added_after_the_first_run": {
+            "what": "K-b, K-c and K-e run by run, off score.json's edge rows; a "
+                    "decomposition of published rows, with no expectation",
+            "per_run_directions": by_run},
     }), indent=2, default=str) + "\n")
     print(f"\n-> {READ_PATH}\n  {describe()}")
     return 0
