@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-10-12T19:24:05Z",
+    "recorded_at": "2026-10-12T19:28:40Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": "0",
-    "git_commit": "46b5c4cada701bf7144ea90c05b2377092df14ae",
+    "git_commit": "369cecde069fc45672b424227bb40e5967b94b5e",
     "git_dirty": false,
     "code_dirty": false,
-    "code_digest": "ccff0856d12d3e26"
+    "code_digest": "f58e59c2b46a4b4b"
   },
   "plan": "PLAN_BLIND.md",
   "provenance": "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
@@ -80,6 +80,12 @@
       "gate": 3,
       "rep": 3,
       "what": "the coin is a function of its seed",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "rep": "pooled",
+      "what": "the run-by-run decomposition pools back to K-b, K-c and K-e",
       "passes": true
     }
   ],
@@ -412,5 +418,74 @@
       },
       "holds": false
     }
-  ]
+  ],
+  "added_after_the_first_run": {
+    "what": "K-b, K-c and K-e run by run, off score.json's edge rows; a decomposition of published rows, with no expectation",
+    "per_run_directions": {
+      "1": {
+        "K-b": {
+          "units": 25,
+          "reading": 0.545524,
+          "hits": 52,
+          "strict": 90
+        },
+        "K-c": -0.118444,
+        "ranking": 0.663968,
+        "K-e": {
+          "units": 25,
+          "reading": 0.59819,
+          "hits": 53,
+          "strict": 86
+        }
+      },
+      "2": {
+        "K-b": {
+          "units": 16,
+          "reading": 0.70625,
+          "hits": 27,
+          "strict": 41
+        },
+        "K-c": -0.165625,
+        "ranking": 0.871875,
+        "K-e": {
+          "units": 17,
+          "reading": 0.680252,
+          "hits": 29,
+          "strict": 41
+        }
+      },
+      "3": {
+        "K-b": {
+          "units": 24,
+          "reading": 0.439732,
+          "hits": 32,
+          "strict": 67
+        },
+        "K-c": -0.24256,
+        "ranking": 0.682292,
+        "K-e": {
+          "units": 24,
+          "reading": 0.506944,
+          "hits": 32,
+          "strict": 64
+        }
+      },
+      "pooled": {
+        "K-b": {
+          "units": 65,
+          "reading": 0.546026,
+          "hits": 111,
+          "strict": 198
+        },
+        "K-c": -0.175885,
+        "ranking": 0.721911,
+        "K-e": {
+          "units": 66,
+          "reading": 0.586147,
+          "hits": 114,
+          "strict": 191
+        }
+      }
+    }
+  }
 }
