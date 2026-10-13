@@ -371,6 +371,7 @@ and not edited. The first command is blocking and writes nothing:
     python3 -m blind.run --dry-run              # K-g1..K-g4; must pass first
     PYTHONHASHSEED=0 python3 -m blind.score     # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m blind.readings  # POST-RUN: K-d under other directions
+    PYTHONHASHSEED=0 python3 -m blind.cycles    # POST-RUN: why run 1 closed cycles
     .venv/bin/python -m blind.run --smoke       # Stage B: spends — only if asked
     .venv/bin/python -m blind.run --rep 1       # then 2, then 3 — never side by side
 
@@ -383,7 +384,11 @@ fact, and say so in its §0. **And read the free ranking on the same pairs**:
 beyond the keyword it pointed them better than the declarations did, as it did
 in the pairwise thread. **A signature lives on the plan's branch until it
 merges**: a paid command launched from `main` meets an unsigned §0 and refuses,
-which is the gate working.
+which is the gate working. **And its cycles were not the list's.**
+`blind/cycles.py` bet on pairs inverted inside a placement list. Read POST-RUN,
+every cycle contradicted an order the base already held, through a rule the list
+never showed. A reading of why something fails should classify every failure by
+what closed it before it bets on any one cause.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
