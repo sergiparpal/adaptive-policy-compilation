@@ -192,6 +192,18 @@ and no expectation goes with it. Added in its own commit, after the first run of
 this module; the record comes from a second run, which must give back every
 figure of the first.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE SECOND RUN: THE COIN'S DRAWS BY WHAT THEY REFUSED
+--------------------------------------------------------------------------
+The second run found the whole of the coin's deficit on the keyword half.
+`by_what_the_coin_refused` splits each base's draws by whether they refused a
+declaration whose winner is of `SECURITY_INCIDENT`, the keyword's queue, and
+gives the closure's right points on each half among the draws of each side.
+Beside them, how many such declarations each deterministic arm refused. A
+decomposition of what the first two runs read, with no expectation, added in
+its own commit; the record comes from a third run, which must give back every
+figure of the first two.
+
 Usage:  PYTHONHASHSEED=0 python3 -m blind.yielding
 """
 
@@ -235,6 +247,7 @@ COUNTS = ("right", "wrong", "conflict", "gained", "lost", "resolved_right",
           "flipped_arm_right", "flipped_arrival_right", "flipped_neither")
 DRAWN = ("right", "wrong", "conflict", "gained", "lost")
 HALVES = ("outside", "keyword")    # added after the first run
+KEYWORD_QUEUE = "SECURITY_INCIDENT"  # added after the second run
 PROVENANCE = (
     "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed and after "
     "blind/closure.py read the order the refusals kept. The expectation in the "
@@ -466,7 +479,7 @@ def read_base(key: tuple[str, int], record: dict, space: Space, tmask: dict[str,
         out["_halves"] = {a: by_half(m[a], m["arrival"], mult, outside, space.full)
                           for a in ARMS}
     if cycle:
-        draws, refusals, draws_halves = [], [], []
+        draws, refusals, draws_halves, keyword_refused = [], [], [], []
         for k in range(N_COIN):
             eng, refused = install(bare, coin_order(decls, key, k))
             full = full and acyclic_and_full(eng, refused)
@@ -475,10 +488,14 @@ def read_base(key: tuple[str, int], record: dict, space: Space, tmask: dict[str,
             if halved:
                 draws_halves.append(by_half(mk, m["arrival"], mult, outside, space.full))
             refusals.append(len(refused))
+            keyword_refused.append(keyword_winners(refused, action))
         out["coin"] = summary(draws, arms) | {"refused_mean": statistics.mean(refusals)}
         out["_draws"] = draws
         if halved:
             out["_draws_halves"] = draws_halves
+            out["_keyword_refused"] = {
+                "draws": keyword_refused,
+                "arms": {a: keyword_winners(g[1], action) for a, g in graphs.items()}}
     out["gates"] = {
         "attributed": attributed,
         "arrival_is_the_engine": ([d["k"] for d in arrival_refused] == refused_logged
@@ -547,6 +564,39 @@ def halves_of(bases: dict) -> dict[str, Any]:
               for e in ENGINES} for i in range(N_COIN)]
     return {"bases": out,
             "pooled": {"arms": arms, "coin": {h: coin_on(draws, arms, h) for h in HALVES}}}
+
+
+# ---------------------------------------------------------------------------
+# Added after the second run: the coin's draws by what they refused
+# ---------------------------------------------------------------------------
+
+def keyword_winners(refused: list[dict], action: dict[str, str]) -> int:
+    """How many of the refused declarations the keyword's queue wins."""
+    return sum(action[d["winner"]] == KEYWORD_QUEUE for d in refused)
+
+
+def split_by_keyword(draws_halves: list[dict], keyword_refused: dict) -> dict[str, Any]:
+    """The closure's right points on each half of the space, among the draws
+    that refused a declaration the keyword's queue wins and among the rest, and
+    how many such declarations each deterministic arm refused."""
+    flags = [n > 0 for n in keyword_refused["draws"]]
+
+    def side(keep: bool) -> dict[str, Any]:
+        out: dict[str, Any] = {"draws": sum(f == keep for f in flags)}
+        for h in HALVES:
+            xs = [d["closure"][h]["space"]["right"] for d, f in zip(draws_halves, flags)
+                  if f == keep]
+            out[h] = ({"mean": statistics.mean(xs), "sd": statistics.pstdev(xs),
+                       "central": central(xs)} if xs else None)
+        return out
+
+    return {"arms_refused": keyword_refused["arms"],
+            "refusing_one": side(True), "refusing_none": side(False)}
+
+
+def keyword_split_of(bases: dict) -> dict[str, Any]:
+    return {f"{p} {r}": split_by_keyword(b["_draws_halves"], b["_keyword_refused"])
+            for (p, r), b in bases.items() if b["cycle"]}
 
 
 # ---------------------------------------------------------------------------
@@ -666,6 +716,7 @@ def main(argv: list[str] | None = None) -> int:
              for key, rec in records.items()}
     pool = pooled(bases)
     halves = halves_of(bases)
+    keyword_split = keyword_split_of(bases)
     checked = check(bases, records, published, stop_zero(space, tmask), tmask, bits)
     for g in checked:
         print(f"  gate {g['gate']} {g['base']}: {'PASS' if g['passes'] else 'FAIL'}"
@@ -673,7 +724,7 @@ def main(argv: list[str] | None = None) -> int:
     if not all(g["passes"] for g in checked):
         sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
     for b in bases.values():
-        for k in ("_draws", "_halves", "_draws_halves"):
+        for k in ("_draws", "_halves", "_draws_halves", "_keyword_refused"):
             b.pop(k, None)
     READ_PATH.write_text(json.dumps(st._rounded({
         "_env": environment(),
@@ -699,6 +750,13 @@ def main(argv: list[str] | None = None) -> int:
                          "keyword": "has_security_keyword True: 67,200 points, and the "
                                     "71 corpus cases with it"},
             "halves": halves},
+        "added_after_the_second_run": {
+            "what": "each base's coin draws split by whether they refused a declaration "
+                    "whose winner is of SECURITY_INCIDENT, with the closure's right "
+                    "points on each half of the space among each side, and how many such "
+                    "declarations each deterministic arm refused; a decomposition of what "
+                    "the first two runs read, with no expectation",
+            "by_what_the_coin_refused": keyword_split},
     }), indent=2, default=str) + "\n")
     print(f"\n-> {READ_PATH}\n  {describe()}")
     return 0

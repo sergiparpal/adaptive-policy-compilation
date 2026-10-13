@@ -11,7 +11,8 @@ closure, the corpus counted as it arrives, the coin's summaries and the pool,
 the hidden policy kept whole under every order, the expectation's clauses at
 their edges, and that the writer refuses unsigned before it reads or writes.
 Added after the first run: the two halves of the space adding up to the whole,
-and pooled as the whole is.
+and pooled as the whole is. Added after the second run: the coin's draws split by
+whether they refused a declaration the keyword's queue wins.
 """
 
 from __future__ import annotations
@@ -238,6 +239,26 @@ class TestTheTwoHalves(TheCycle):
         self.assertEqual(got["pooled"]["arms"]["recency"]["closure"]["keyword"]["space"]["lost"], 2)
         coin = got["pooled"]["coin"]["outside"]["closure"]["space"]
         self.assertEqual((coin["right"]["mean"], coin["at_least"]["oracle"]), (4, 1.0))
+
+
+class TestTheCoinsDrawsByWhatTheyRefused(unittest.TestCase):
+    """Added after the second run: the draws that refused a declaration the
+    keyword's queue wins, apart from the rest."""
+
+    def test_counting_and_splitting(self):
+        action = {"K": SEC, "A": T1, "B": T2}
+        refused = [decl(0, 1, "K", "A", EDGE_CYCLE), decl(1, 2, "A", "K", EDGE_CYCLE),
+                   decl(2, 3, "B", "A", EDGE_CYCLE)]
+        self.assertEqual(yielding.keyword_winners(refused, action), 1)
+        draws = [{"closure": {h: {"space": {"right": x + (h == "keyword")}}
+                              for h in yielding.HALVES}} for x in (10, 20, 30, 40)]
+        got = yielding.split_by_keyword(draws, {"draws": [0, 2, 0, 1], "arms": {"arrival": 1}})
+        self.assertEqual(got["arms_refused"], {"arrival": 1})
+        self.assertEqual((got["refusing_one"]["draws"], got["refusing_none"]["draws"]), (2, 2))
+        self.assertEqual(got["refusing_one"]["outside"]["mean"], 30)
+        self.assertEqual(got["refusing_none"]["keyword"]["mean"], 21)
+        none = yielding.split_by_keyword(draws, {"draws": [0, 0, 0, 0], "arms": {}})
+        self.assertIsNone(none["refusing_one"]["outside"])
 
 
 class TestTheLog(unittest.TestCase):
