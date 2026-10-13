@@ -373,6 +373,7 @@ and not edited. The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m blind.readings  # POST-RUN: K-d under other directions
     PYTHONHASHSEED=0 python3 -m blind.cycles    # POST-RUN: why run 1 closed cycles
     PYTHONHASHSEED=0 python3 -m blind.closure   # POST-RUN: what the transitive order decides
+    PYTHONHASHSEED=0 python3 -m blind.yielding  # POST-RUN: which edge of a cycle yields
     .venv/bin/python -m blind.run --smoke       # Stage B: spends — only if asked
     .venv/bin/python -m blind.run --rep 1       # then 2, then 3 — never side by side
 

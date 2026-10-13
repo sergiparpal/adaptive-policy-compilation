@@ -1325,6 +1325,13 @@ it, and the 1,929 corpus cases without it. The figures are from
   the declarations the engine refused are right on 535; on the other 1,280
   neither side is. Run 3's 60 points go the other way. Without a forced
   placement, under v1, the closure resolves under 4% of the CONFLICTs.
+- **Which edge of a cycle yields is, by age, a draw beyond the keyword, read
+  POST-RUN.** The engine lets the newest edge yield. Letting the oldest yield
+  instead, read through the closure over the space, gains 655 points of 403,200
+  on the three bases with a cycle, v2b's runs 1 and 3 and v2e's run 1. It loses
+  115 in run 3, where the older order was right. Beyond the keyword both ages sit inside a coin's draws, the Stage C
+  ranking beats 96% of them, and the oracle every one. Under rung 2's engine the
+  same trade in run 1 is right on 570 more points and wrong on 1,255 more.
 
 On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
 the right queue 0.5521 of the time, the highest of the four protocols, with the

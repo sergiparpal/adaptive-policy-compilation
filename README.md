@@ -381,6 +381,7 @@ PYTHONHASHSEED=0 python3 -m blind.score       # Stage C · K-a to K-e, and K-f
 PYTHONHASHSEED=0 python3 -m blind.readings    # POST-RUN · K-d under other directions
 PYTHONHASHSEED=0 python3 -m blind.cycles      # POST-RUN · why run 1 closed cycles
 PYTHONHASHSEED=0 python3 -m blind.closure     # POST-RUN · what the transitive order would decide
+PYTHONHASHSEED=0 python3 -m blind.yielding    # POST-RUN · which edge of a cycle should yield
 .venv/bin/python -m blind.run --smoke         # Stage B · spends · only on Sergi's say
 .venv/bin/python -m blind.run --rep 1         # then --rep 2 and --rep 3, never in parallel
 ```
@@ -654,6 +655,7 @@ What it covers, and why those things:
 | `test_blind_readings.py` | `blind/readings.py`, the POST-RUN reading of `K-d`: how each arm points an edge, an edge within a queue left as declared, what an arm resolves and gets right in the room on small worlds, the coin seeded and summarised, the run-by-run decomposition, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_blind_cycles.py` | `blind/cycles.py`, the POST-RUN reading of why run 1 closed cycles: the fork leaving the engine untouched, the side each listed rule is placed on, the ordered and inverted pairs, why an edge closes a cycle in each of the ways a birth can close one, what the base had already decided on small worlds, the slot statistic and its seeded permutation null, the slices of the log each escalation wrote, the smoke run replayed with its forks, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_blind_closure.py` | `blind/closure.py`, the POST-RUN reading of what the base's transitive order would decide: the ancestors a chain gives, the undefeated masks with and without the closure, a CONFLICT the closure resolves and one no chain orders, who is right on what it resolves, the coin's and the ranking's counts, the same on corpus cases, the case-by-case closure against the masks, the hidden policy still executed through the closure, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
+| `test_blind_yielding.py` | `blind/yielding.py`, the POST-RUN reading of which edge of a cycle should yield: the log given back to the escalations that wrote it, the order each arm installs the declarations in, which edge yields under arrival and under recency, the ranking's and the oracle's groups, the coin seeded, every arm acyclic and full, what changes against arrival under rung 2's engine and through the closure, the corpus counted as it arrives, the coin's summaries and the pool, the hidden policy kept whole under every order, the expectation's clauses at their edges, the two halves of the space and the coin's draws by what they refused, added after the first and second runs, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1317,7 +1319,8 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · K-a to K-e, K-f, gated on PLAN_BLIND.md
 │   ├── readings.py          POST-RUN · K-d under other directions
 │   ├── cycles.py            POST-RUN · why run 1 closed cycles
-│   └── closure.py           POST-RUN · what the transitive order would decide
+│   ├── closure.py           POST-RUN · what the transitive order would decide
+│   └── yielding.py          POST-RUN · which edge of a cycle should yield
 │
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
