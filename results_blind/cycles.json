@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-10-13T07:01:10Z",
+    "recorded_at": "2026-10-13T07:10:15Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": "0",
-    "git_commit": "aeda25ae2e6a08b9cea330f816c5ea9cea89fcbb",
+    "git_commit": "a53fc0e94fea5897c697032a89926c141511ec38",
     "git_dirty": false,
     "code_dirty": false,
-    "code_digest": "025e7451905db6cd"
+    "code_digest": "6dbd4b330e53e6a7"
   },
   "plan": "PLAN_BLIND.md",
   "provenance": "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed and after FINDINGS_BLIND.md named the question. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
@@ -6294,5 +6294,998 @@
       "reading": 12,
       "holds": true
     }
-  ]
+  ],
+  "added_after_the_first_run": {
+    "what": "what the base had already decided: the listed rules the base already ranked above or below the new rule before any of its declarations, the side the answer put each on, and the rules the base's order runs through; a decomposition, with no expectation",
+    "runs": {
+      "1": {
+        "already_decided": {
+          "births_with_one": 6,
+          "above": {
+            "rules": 31,
+            "agree": 7,
+            "contradict": 24,
+            "sides": {
+              "beats": 24,
+              "loses_to": 7
+            },
+            "contradictions_by_verdict": {
+              "cierra_ciclo": 20,
+              "contradice_subsuncion": 4
+            },
+            "contradictions_only_through_unlisted": 15,
+            "contradictions_only_through_own_queue": 15
+          },
+          "below": {
+            "rules": 0,
+            "agree": 0,
+            "contradict": 0,
+            "sides": {},
+            "contradictions_by_verdict": {},
+            "contradictions_only_through_unlisted": 0,
+            "contradictions_only_through_own_queue": 0
+          },
+          "unranked_sides": {
+            "beats": 98,
+            "loses_to": 18
+          }
+        },
+        "already": {
+          "56": [
+            {
+              "rule": "R0005",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0007",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0004",
+                "R0007"
+              ],
+              "through_listed": [
+                false,
+                true
+              ],
+              "through_own_queue": [
+                true,
+                false
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ],
+          "193": [
+            {
+              "rule": "R0023",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0017",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0026",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0004",
+              "slot": 4,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0025",
+              "slot": 5,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0006",
+              "slot": 7,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0011",
+              "slot": 8,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ],
+          "246": [
+            {
+              "rule": "R0028",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0015"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0024",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0015"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0032",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0015"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0015"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ],
+          "263": [
+            {
+              "rule": "R0029",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0032",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0028",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0024",
+              "slot": 4,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ],
+          "387": [
+            {
+              "rule": "R0012",
+              "slot": 5,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0013"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0013",
+              "slot": 6,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0013"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0016",
+              "slot": 8,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0016"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ],
+          "987": [
+            {
+              "rule": "R0023",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0038",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0011",
+              "slot": 4,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 5,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0026",
+              "slot": 6,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0017",
+              "slot": 7,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0006",
+              "slot": 9,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0025",
+              "slot": 10,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0005"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ]
+        }
+      },
+      "2": {
+        "already_decided": {
+          "births_with_one": 2,
+          "above": {
+            "rules": 7,
+            "agree": 6,
+            "contradict": 1,
+            "sides": {
+              "beats": 1,
+              "loses_to": 6
+            },
+            "contradictions_by_verdict": {
+              "contradice_subsuncion": 1
+            },
+            "contradictions_only_through_unlisted": 0,
+            "contradictions_only_through_own_queue": 0
+          },
+          "below": {
+            "rules": 0,
+            "agree": 0,
+            "contradict": 0,
+            "sides": {},
+            "contradictions_by_verdict": {},
+            "contradictions_only_through_unlisted": 0,
+            "contradictions_only_through_own_queue": 0
+          },
+          "unranked_sides": {
+            "beats": 42,
+            "loses_to": 21
+          }
+        },
+        "already": {
+          "25": [
+            {
+              "rule": "R0010",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0010"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0010"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ],
+          "97": [
+            {
+              "rule": "R0019",
+              "slot": 0,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0019"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0020",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0012",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0014",
+                "R0018",
+                "R0019",
+                "R0021"
+              ],
+              "through_listed": [
+                false,
+                true,
+                true,
+                false
+              ],
+              "through_own_queue": [
+                true,
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "rule": "R0009",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0009"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            },
+            {
+              "rule": "R0018",
+              "slot": 4,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0018"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ]
+        }
+      },
+      "3": {
+        "already_decided": {
+          "births_with_one": 4,
+          "above": {
+            "rules": 5,
+            "agree": 2,
+            "contradict": 3,
+            "sides": {
+              "beats": 3,
+              "loses_to": 2
+            },
+            "contradictions_by_verdict": {
+              "cierra_ciclo": 1,
+              "contradice_subsuncion": 2
+            },
+            "contradictions_only_through_unlisted": 1,
+            "contradictions_only_through_own_queue": 1
+          },
+          "below": {
+            "rules": 0,
+            "agree": 0,
+            "contradict": 0,
+            "sides": {},
+            "contradictions_by_verdict": {},
+            "contradictions_only_through_unlisted": 0,
+            "contradictions_only_through_own_queue": 0
+          },
+          "unranked_sides": {
+            "beats": 80,
+            "loses_to": 31
+          }
+        },
+        "already": {
+          "56": [
+            {
+              "rule": "R0005",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "cierra_ciclo"
+              ],
+              "through": [
+                "R0004"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            },
+            {
+              "rule": "R0008",
+              "slot": 2,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0008"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ],
+          "71": [
+            {
+              "rule": "R0017",
+              "slot": 1,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0014"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ],
+          "238": [
+            {
+              "rule": "R0030",
+              "slot": 6,
+              "base": "loses_to",
+              "side": "beats",
+              "agrees": false,
+              "verdicts": [
+                "contradice_subsuncion"
+              ],
+              "through": [
+                "R0030"
+              ],
+              "through_listed": [
+                true
+              ],
+              "through_own_queue": [
+                false
+              ]
+            }
+          ],
+          "378": [
+            {
+              "rule": "R0032",
+              "slot": 3,
+              "base": "loses_to",
+              "side": "loses_to",
+              "agrees": true,
+              "verdicts": [
+                "ok"
+              ],
+              "through": [
+                "R0034"
+              ],
+              "through_listed": [
+                false
+              ],
+              "through_own_queue": [
+                true
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "pooled": {
+      "births_with_one": 12,
+      "above": {
+        "rules": 43,
+        "agree": 15,
+        "contradict": 28,
+        "sides": {
+          "beats": 28,
+          "loses_to": 15
+        },
+        "contradictions_by_verdict": {
+          "cierra_ciclo": 21,
+          "contradice_subsuncion": 7
+        },
+        "contradictions_only_through_unlisted": 16,
+        "contradictions_only_through_own_queue": 16
+      },
+      "below": {
+        "rules": 0,
+        "agree": 0,
+        "contradict": 0,
+        "sides": {},
+        "contradictions_by_verdict": {},
+        "contradictions_only_through_unlisted": 0,
+        "contradictions_only_through_own_queue": 0
+      },
+      "unranked_sides": {
+        "beats": 219,
+        "loses_to": 68
+      }
+    }
+  }
 }
