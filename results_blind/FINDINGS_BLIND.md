@@ -8,9 +8,10 @@ its own: *PLAN_BLIND.md singed by Sergi*. Stage B's four records,
 name in their `_env` the commits they ran from, by their hashes on the branch
 they were made on. A rebase merge gives those commits new hashes on `main` with
 the same trees, so they are named here by their subjects. Stage C's record is
-[`score.json`](score.json), and the three POST-RUN readings' are
-[`readings.json`](readings.json), [`cycles.json`](cycles.json) and
-[`closure.json`](closure.json). **This record owns every figure in it**, the
+[`score.json`](score.json), and the four POST-RUN readings' are
+[`readings.json`](readings.json), [`cycles.json`](cycles.json),
+[`closure.json`](closure.json) and [`yielding.json`](yielding.json). **This
+record owns every figure in it**, the
 figures the plan computed while it was drafted included: §0 declared them, and
 `K-g2` recomputed each before the signature and again before every run and the
 scoring.
@@ -83,6 +84,16 @@ from the second run, which gives back every figure of the first.
 
 **The third POST-RUN reading**, `blind/closure.py`, added the same day, ran
 once, from a clean tree at the commit that wrote its expectation.
+
+**The fourth POST-RUN reading**, `blind/yielding.py`, added the same day, ran
+three times, each from a clean tree. The first, at the commit that wrote its
+expectation, read which edge of a cycle should yield. **It found the coin's mean
+far below every other arm's, and three clauses failed**, so a decomposition by
+the two halves of the space was added after it. The second run found the whole
+of the coin's deficit on the half with the keyword, so a split of the coin's
+draws by what they refused was added after it. Each went in its own commit,
+labelled so. The record comes from the third run, which gives back every figure
+of the first two.
 
 ---
 
@@ -441,6 +452,212 @@ CONFLICT point in only three of their nine runs.
 
 ---
 
+## Which edge of a cycle should yield — POST-RUN
+
+*Read after the verdicts existed, by `blind/yielding.py` → `yielding.json`, with
+its expectation written and committed before it ran. It moves no verdict. It is
+read over the exhaustive space, uniform over its 134,400 points, and over the
+2,000 corpus cases as they arrive. The split by the two halves of the space, and
+the split of the coin's draws, were added after the first and second runs.*
+
+Rung 2's engine refuses a declaration that would close a cycle, so the edges it
+already holds stand and the newest edge of the cycle yields. Subsumption does not
+yield. The reading treats which edge yields as a priority over the declarations.
+It installs every declaration each run made, accepted or refused for a cycle, in
+five orders, on the run's final rules:
+
+- **arrival**, the engine as it is: the newest edge yields;
+- **recency**, the newest escalation first: the oldest edge yields;
+- **a coin**, 200 seeded shuffles: a random edge yields;
+- **the Stage C ranking**: an edge against it yields first;
+- **an oracle**: an edge pointing at the worse rule of its pair, over their
+  shared region, yields first. It reads the truth, and it is not the best
+  selection, which `FINDINGS3.md` §17 found to be another object.
+
+The rules and the declarations are the runs'. Under another order the loop would
+have been asked other questions, and that is not free to read. Each graph is read
+by two engines.
+
+- **Rung 2's engine** defeats a rule only with a matching rule that beats it
+  directly. An order that lets a refused declaration stand also resolves the
+  CONFLICT the refusal left, and a count of right decisions rewards that.
+- **Through the closure** every declared pair is ordered whichever edge
+  yields, so the orders differ in direction.
+
+Every gate passes:
+- the log is the escalations', and the arrival order is the engine and
+  `closure.json`'s, on both engines and both surfaces;
+- without a cycle every order keeps the same edges;
+- every order's graph is acyclic and full;
+- the coin is a function of its seed;
+- the hidden policy keeps every edge under every order and decides the whole
+  space.
+
+**Three bases have a cycle to break**: v2e's run 1, with 2 refusals, and v2b's
+runs 1 and 3, with 32 and 3. In the other nine, every order keeps the same edges.
+
+### Through the closure: by age, a draw
+
+| right points, through the closure, over the space | v2e 1 | v2b 1 | v2b 3 | pooled | pooled, without the keyword | pooled, with it |
+|---|---|---|---|---|---|---|
+| arrival, the engine | 70,380 | 75,645 | 76,465 | 222,490 | 69,820 | 152,670 |
+| recency | 70,590 | 76,205 | 76,350 | 223,145 | 70,265 | 152,880 |
+| the Stage C ranking | 70,440 | 76,345 | 76,350 | 223,135 | 70,675 | 152,460 |
+| oracle | 70,440 | 76,645 | 76,465 | 223,550 | 71,090 | 152,460 |
+| a coin, mean of 200 draws | 69,316.7 | 75,160.6 | 76,374.1 | 220,851.5 | 69,872.5 | 150,979.0 |
+| the coin's central 90% | 66,680 to 70,590 | 73,840 to 76,340 | 76,350 to 76,465 | 217,400 to 223,075 | 68,840 to 70,650 | 147,440 to 152,880 |
+
+- **Letting the newer edge stand gains a little on the pool, and not
+  everywhere.** Recency is right on 655 more points than arrival, of 403,200. It
+  gains 560 in v2b's run 1 and 210 in v2e's run 1. It loses 115 in v2b's run 3,
+  where the older order was right.
+- **The coin's whole deficit is on the half with the keyword**: pooled, its mean
+  is 1,691 points below arrival there, and 52.5 above it beyond the keyword.
+  There it loses in the draws that refuse a declaration the keyword's queue
+  wins.
+  - In v2e's run 1, 117 of 200 draws refuse one. On that half they average
+    48,348.1, against 50,012.8 for the rest.
+  - In v2b's run 1, 55 draws refuse one, and they average 48,436.5. The other
+    145 read 50,400, every one, as every other order does.
+  - Of the deterministic orders, only arrival refuses such a declaration: once,
+    in v2e's run 1.
+- **Beyond the keyword, age chooses as a draw does.** Of the coin's draws, 60%
+  are right on at least as many points there as arrival, and 22.5% as recency.
+  4% do as well as the ranking, and none as well as the oracle.
+- **On the arrivals it reads the same.** Pooled through the closure, over the
+  6,000 corpus cases of the three bases:
+  - arrival is right on 2,770 and recency on 2,781;
+  - the ranking on 2,784 and the oracle on 2,799;
+  - the coin on 2,763.9 on average.
+
+### As the engine is: right decisions bought with silent errors
+
+| v2b's run 1, rung 2's engine, over the space | right | wrong | CONFLICT |
+|---|---|---|---|
+| arrival, the engine | 75,635 | 56,930 | 1,825 |
+| recency | 76,205 | 58,185 | 0 |
+| the Stage C ranking | 75,955 | 54,970 | 3,465 |
+| oracle | 76,255 | 54,760 | 3,375 |
+| a coin, mean of 200 draws | 74,830.6 | 57,442.6 | 2,116.8 |
+
+- **Recency resolves every CONFLICT run 1's refusals left.** That is 1,825
+  points: right on 535 and wrong on 1,290, the split `closure.json` read on the
+  same points. It also changes the queue on 345 points: right on 170, wrong where
+  arrival was right on 135, wrong with arrival on 40. In all, it is right on 570
+  more points than arrival and wrong on 1,255 more.
+- **The ranking and the oracle leave more CONFLICT, and fewer silent errors.**
+  Their yielding edges leave pairs ordered only through a rule that does not
+  match. They leave 3,465 and 3,375 points in CONFLICT. Of the points arrival
+  decides that they leave in CONFLICT, arrival was wrong on 3,340, and right on
+  90 and 0. They are right on 320 and 620 more points than arrival, and wrong on
+  1,960 and 2,170 fewer. **Under rung 2's engine, which edge yields also decides
+  what is resolved.**
+- **On the arrivals**, recency resolves run 1's 23 CONFLICT cases: right on 17,
+  wrong on 6.
+
+### Which edges yield
+
+- **v2e's run 1.** Every deterministic order refuses `R0001`'s declaration over
+  `R0017`, the keyword rule, at the keyword rule's birth. The rest is one
+  triangle of declared edges with no subsumption in it.
+  - At case 19 the billing rule `R0007` was declared above `R0017`.
+  - At `R0024`'s birth, case 37, the technical rule `R0024` was declared above
+    `R0007`, and `R0017` above `R0024`.
+  - **Arrival** refuses the last of the three. Its order puts the technical
+    rule above the billing one and that above the keyword rule.
+  - **Recency** refuses the first. Its order puts the keyword rule above both,
+    and that gains 210 points, all on the keyword half.
+  - **The ranking and the oracle** refuse the middle one. Their order puts the
+    billing rule above the keyword rule and that above the technical one. It
+    gains 270 points beyond the keyword and loses 210 on it.
+- **v2b's run 1.** Arrival refuses the 32 declarations the engine logged.
+  Recency refuses 27. Among them:
+  - `R0040`'s declarations over `R0006` and `R0038`, which its last order
+    answers reversed;
+  - older edges: the technical and billing rules placed above `R0005` at their
+    births, and the self-service rules `R0024`, `R0029` and `R0032` placed above
+    technical ones.
+
+  The ranking refuses 31, every one of them against it: self-service or general
+  rules over technical ones, `R0005` over `R0004` among them, and `R0034` over
+  the keyword rule `R0012`.
+- **v2b's run 3.** One cycle: `R0020` over `R0005`, declared at `R0020`'s birth
+  and twice more on the order channel. It closes through `R0005` over `R0004`
+  and `R0004` nested in `R0020`.
+  - Arrival and the oracle refuse `R0020`'s three declarations.
+  - Recency and the ranking refuse `R0005` over `R0004`, and lose 115 points
+    beyond the keyword.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | in v2b's run 1, under rung 2's engine, recency right on more points than arrival, and wrong on more | +570 and +1,255 | held |
+| 2 | pooled through the closure, recency right on more points than arrival; in v2e's run 1 and v2b's run 3, on fewer | +655 pooled; +210 and −115 | **failed** |
+| 3 | pooled through the closure, arrival and recency inside the coin's central 90% | 222,490 and 223,145, against 217,400 to 223,075 | **failed** |
+| 4 | pooled through the closure, the ranking right on more points than recency and than arrival | 223,135, against 223,145 and 222,490 | **failed** |
+| 5 | pooled through the closure, the oracle right on more points than every other order and than the coin's mean | 223,550, against 223,145 at most | held |
+
+**The three failures were decided on the half with the keyword, which the
+drafter read with the rest.** `PLAN_BLIND.md` reads every row beyond the
+keyword. This reading followed `blind/closure.py` and read the whole space. On
+the keyword half, whether the keyword rule's edges survive outweighs everything
+else the orders do there.
+
+- **v2e's run 1 gained 210 for recency**, all of it there: the keyword rule kept
+  above a billing rule.
+- **The ranking lost the fourth clause by 10 points** after losing 210 there.
+- **The coin's band sits wide and low** because of its draws that refuse an edge
+  the keyword's queue wins.
+
+**Read beyond the keyword, POST-RUN, the third and fourth clauses would hold,
+and the second would still fail**: there v2e's run 1 reads the same for recency
+and for arrival. The verdicts above stand as the expectation was written.
+
+**The split the drafter read off `closure.json` held in v2b's run 1, and not in
+v2e's.** In v2b's run 1 recency resolves the CONFLICT points for the refused
+side, right on the 535 `closure.json` gave it, and the gain follows. In v2e's run
+1 the drafter counted all of arrival's 950 right points there as recency's loss,
+against its 630. Two things were missed.
+
+- **Recency resolves only 1,260 of the 1,580 points**, right on 630 and wrong on
+  630. It leaves the rest in CONFLICT, as arrival does.
+- **The edge recency lets yield decided points of its own.** That edge is the
+  billing rule's over the keyword rule. Under rung 2's engine recency changes
+  the queue on 420 points that both orders decide, which no CONFLICT covered.
+
+The triangle has no subsumption in it. So the order it gives up is one a split
+of the CONFLICT points cannot see.
+
+### What it settles, and what it does not
+
+**What it settles.**
+
+- **Which edge of a cycle yields is worth little over the function.** Beyond the
+  keyword, the best truth-free order gains 855 points of 201,600 over the
+  engine's, pooled, and the oracle 1,270.
+- **By age it is a draw.** Beyond the keyword, neither the engine's rule, where
+  the newest yields, nor its mirror chooses better than a shuffle. Letting the
+  new declaration stand gains in run 1, where `closure.json` found the refusals'
+  order wrong, and loses in run 3, where it was right.
+- **The free ranking chooses better than 96% of the draws**, as it pointed the
+  same pairs better than the declarations did (`K-c`).
+- **On the keyword half, what matters is that the keyword rule's edges
+  survive.** Every deterministic order keeps them, but for arrival's one refusal
+  in v2e's run 1.
+- **As the engine is, letting the new declaration stand resolves the CONFLICTs
+  its refusals left.** In run 1 it sends two of every three of those points to a
+  wrong queue.
+
+**What it does not settle.**
+
+- **The trajectory.** Under another rule the loop would have escalated other
+  cases and been asked other questions.
+- **The material.** Three bases, with 37 refusals for a cycle between them, all
+  but two in two runs of one protocol.
+
+---
+
 ## The expectation, against the verdicts
 
 **The drafter expected `K-a`, `K-b` and `K-e` to hold and `K-c` and `K-d` to be
@@ -500,6 +717,8 @@ results_blind/cycles.json              POST-RUN: why run 1 closed cycles, and wh
                                        the base had already decided
 results_blind/closure.json             POST-RUN: what the base's transitive order
                                        would decide, on the twelve bases
+results_blind/yielding.json            POST-RUN: which edge of a cycle should yield,
+                                       on the twelve bases, by halves of the space
 blind/plan.py                          the gate, §11's constants, §0's lines, the
                                        figures §0 declares
 blind/protocol.py                      v2b's texts, the blind screen, the placement,
@@ -513,14 +732,18 @@ blind/score.py                         Stage C
 blind/readings.py                      POST-RUN: K-d under other directions
 blind/cycles.py                        POST-RUN: why run 1 closed cycles
 blind/closure.py                       POST-RUN: the closure engine, beside rung 2's
+blind/yielding.py                      POST-RUN: five orders for which edge yields
 tests/test_blind.py                    the instrument, no figure
 tests/test_blind_readings.py           the POST-RUN reading of K-d, no figure
 tests/test_blind_cycles.py             the POST-RUN reading of the cycles, no figure
 tests/test_blind_closure.py            the POST-RUN reading of the closure, no figure
+tests/test_blind_yielding.py           the POST-RUN reading of which edge yields, no
+                                       figure
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m blind.score`,
 `PYTHONHASHSEED=0 python3 -m blind.readings`,
-`PYTHONHASHSEED=0 python3 -m blind.cycles` and
-`PYTHONHASHSEED=0 python3 -m blind.closure`, minutes, zero API calls.
+`PYTHONHASHSEED=0 python3 -m blind.cycles`,
+`PYTHONHASHSEED=0 python3 -m blind.closure` and
+`PYTHONHASHSEED=0 python3 -m blind.yielding`, minutes, zero API calls.
 `python3 -m blind.run --dry-run` runs the blocking checks and writes nothing.
