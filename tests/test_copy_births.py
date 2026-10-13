@@ -10,7 +10,9 @@ worked by hand:
   * a later copy born in its group's own tie, with a finalist outside the group
     or with every finalist inside it, and one born in someone else's tie;
   * whether a tie recurs, what each group's CONFLICTs bore, what it decided;
-  * the summary's counts, and the expectation's clauses at their edges.
+  * the summary's counts, and the expectation's clauses at their edges;
+  * added after the first run: each rule born on a CONFLICT placed above, at
+    or below the tie that bore it.
 """
 
 from __future__ import annotations
@@ -179,6 +181,28 @@ class TestWhatBoreEachRule(TheRun):
         none = s | {"later_copies": 0, "own_tie": 0}
         self.assertEqual([c["holds"] for c in cb.read_expectation(none)][1:4],
                          [None, None, None])
+
+
+class TestAgainstTheTie(TheRun):
+    """Added after the first run: each rule born on a CONFLICT placed against
+    the finalists that bore it."""
+
+    def test_above_at_and_below(self):
+        rows = cb.births(self.record, self.cases, self.gs, self.spec)
+        places = {r["rule"]: cb.place(r) for r in rows}
+        self.assertEqual(places, {"R0001": None, "R0002": None, "R0003": "at",
+                                  "R0004": "at", "R0005": "at", "R0006": "above",
+                                  "R0007": None, "R0008": "below"})
+        a = cb.against_the_tie(rows)
+        self.assertEqual((a["born_on_a_conflict"], a["by_place"]),
+                         (5, {"above": 1, "at": 3, "below": 1}))
+        self.assertEqual(a["by_status_and_place"]["later"], {"above": 0, "at": 3, "below": 1})
+        self.assertEqual(a["by_status_and_place"]["alone"], {"above": 1, "at": 0, "below": 0})
+        self.assertEqual(a["later_copies_below"],
+                         {"rules": 1, "conditions_short": {"1": 1},
+                          "their_queue_is_a_tied_queue": 0})
+        self.assertEqual(a["queue_true_at_birth"],
+                         {"alone": [3, 3], "first": [1, 1], "later": [2, 4]})
 
 
 if __name__ == "__main__":
