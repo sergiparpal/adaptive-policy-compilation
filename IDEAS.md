@@ -394,9 +394,17 @@ leaves:
   holds 353 distinct rules. The copy written later is the better rule more
   often, so arrival order picks the worse one. What it leaves, both free in
   calls:
-  - **Why rung 1's loop wrote the same rule again.** Its record keeps each case's
-    outcome and not which rules tied, so whether a copy was born on a case its
-    earlier copies had sent to escalation would take replaying rung 1's engine.
+  - ~~**Why rung 1's loop wrote the same rule again.**~~ **Read POST-RUN on
+    2026-10-13** (`FINDINGS3.md` §19), replaying rung 1's engine on its record.
+    Every later copy was born on a CONFLICT, and 201 of 224 below it: more
+    specific rules disagreed, and the model, shown the ticket alone, wrote the
+    generic rule for it, already in the base. No later copy can ever decide a
+    case. Of the 540 rules born on a CONFLICT, 36 had the conditions to settle
+    the case that bore them. What it leaves:
+    - **What a model shown the tie would write.** Rung 1's prompt names every
+      escalation an impasse and shows the ticket alone. Whether naming the tied
+      rules would get a rule above them takes a new run on rung 1's engine:
+      calls.
   - ~~**Whether the bases `PLAN_REUSE.md`'s loop wrote hold copies too.**~~
     **Counted on 2026-10-05**, `FINDINGS_REUSE.md`, *The three bases, read for
     Stage E*: none with another queue, and many with the same one, each born on

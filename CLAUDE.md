@@ -148,6 +148,7 @@ none of them is on `STATUS.md`'s scoreboard:
     python3 -m rung3.filter_headroom    # what §14's instrument could show (§16)
     python3 -m rung3.filter_space       # §16's cuts over the space (§17)
     python3 -m rung3.identical_rules    # rules written twice (§18)
+    python3 -m rung3.copy_births        # why rung 1 wrote them again (§19)
 
 **§16 qualifies §14.** It measures what a perfect, oracle-chosen selection of the
 same edges scores against chance on §14's cell, and it barely moves the order. So
