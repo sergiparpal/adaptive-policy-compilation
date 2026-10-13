@@ -8,9 +8,9 @@ its own: *PLAN_BLIND.md singed by Sergi*. Stage B's four records,
 name in their `_env` the commits they ran from, by their hashes on the branch
 they were made on. A rebase merge gives those commits new hashes on `main` with
 the same trees, so they are named here by their subjects. Stage C's record is
-[`score.json`](score.json), and the two POST-RUN readings' are
-[`readings.json`](readings.json) and [`cycles.json`](cycles.json). **This record
-owns every figure in it**, the
+[`score.json`](score.json), and the three POST-RUN readings' are
+[`readings.json`](readings.json), [`cycles.json`](cycles.json) and
+[`closure.json`](closure.json). **This record owns every figure in it**, the
 figures the plan computed while it was drafted included: §0 declared them, and
 `K-g2` recomputed each before the signature and again before every run and the
 scoring.
@@ -80,6 +80,9 @@ its expectation, read why run 1 closed cycles. **It found every one closed by a
 mechanism the expectation had not framed**, so a decomposition of what it had
 read was added after it, in its own commit and labelled so. The record comes
 from the second run, which gives back every figure of the first.
+
+**The third POST-RUN reading**, `blind/closure.py`, added the same day, ran
+once, from a clean tree at the commit that wrote its expectation.
 
 ---
 
@@ -362,6 +365,82 @@ decomposition above was added only after that.
 
 ---
 
+## What the base's transitive order would decide — POST-RUN
+
+*Read after the verdicts existed, by `blind/closure.py` → `closure.json`, with
+its expectation written and committed before it ran. It moves no verdict. It is
+read over the exhaustive space, uniform over its 134,400 points, and over the
+2,000 corpus cases as they arrive.*
+
+Rung 2's engine defeats a rule only with a rule that beats it directly and
+matches the case. The *closure engine* defeats it with any rule that matches and
+reaches it, through subsumption and declared edges together. The order is
+acyclic, so the closure can only resolve a CONFLICT, to a queue in contention,
+and it changes no decision. The reading rebuilds the final base of each of the
+twelve paid runs of the loop at n=2000, three per protocol, and reads both
+engines.
+
+Every gate passes:
+- each base gives back its published share of the order's room;
+- the masks give `PriorityEngine.decide` on every corpus case;
+- the closure changes no decision;
+- the hidden policy is still 1.0000 through the closure.
+
+**Under v2b, the closure resolves every CONFLICT, and decides them wrongly.**
+
+| v2b, over the space | run 1 | run 2 | run 3 | pooled |
+|---|---|---|---|---|
+| CONFLICT points | 1,825 | 0 | 60 | 1,885 |
+| resolved by the closure | 1,825 | — | 60 | 1,885 |
+| the closure's queue is the true one | 10 | — | 60 | 70, 0.037 |
+| a queue it overrules is | 535 | — | 0 | 535, 0.284 |
+| no queue in contention is | 1,280 | — | 0 | 1,280, 0.679 |
+| a coin over the queues in contention, expected | 272.5 | — | 30 | 302.5, 0.160 |
+| the Stage C ranking | 520 | — | 0 | 520, 0.276 |
+| end to end added | 0.0001 | 0 | 0.0004 | |
+
+- **Every resolved point lies where a declaration refused for a cycle met the
+  rule it was declared against.** The closure reads exactly the order the
+  refusals kept.
+- **In run 1 that order is the wrong one.** On 545 points a queue in contention
+  is the true one. On 535 of them it is the queue the closure overrules: the
+  side of the declaration the engine refused. On the other 1,280 points, neither
+  side is right.
+- **Run 3's one pair goes the other way**: the closure is right on all 60 points.
+- **On the arrivals it reads the same.** Of v2b's 25 CONFLICT cases, the closure
+  is right on 5, the side it overrules on 17, and neither on 3.
+
+**Without a forced placement, the closure resolves little.**
+- **Under v1** it resolves 0.037, 0.037 and none of the CONFLICT points over the
+  space, of 34,440, 11,340 and 2,520. There the CONFLICTs are pairs that no chain
+  orders.
+- **Under v1e** no final base has a CONFLICT point.
+- **Under v2e** only run 1 has any: 1,580, all resolved. The closure is right on
+  950 of them and the overruled side on 630.
+- **Over the function** the closure adds at most 0.0071 to any base's end to end
+  over the space, in v2e's run 1, and under 0.0005 to any of v2b's.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | under v1e, v2e and v2b the closure resolves every CONFLICT, in every run with one | all, in the three runs that have one | held |
+| 2 | under v1 it resolves less than half | 0.037, 0.037, none | held |
+| 3 | pooled over v2b, the closure is right within 0.10 of a coin | 0.037 against 0.160 | **failed** |
+| 4 | pooled over v2b, the ranking is right more often than the closure | 0.276 against 0.037 | held |
+| 5 | in every v2b run the closure adds less than 0.01 | 0.0001, 0, 0.0004 | held |
+
+**The third clause failed in the opposite direction from a coin.** The drafter
+expected the base's order beyond the keyword to point the way its declarations
+point, near a coin's. On v2b's contested points it points away from the truth:
+of the 605 points where one side is right, 535 belong to the declaration the
+engine refused.
+
+The first clause was close to known, and it held. The forced protocols left a
+CONFLICT point in only three of their nine runs.
+
+---
+
 ## The expectation, against the verdicts
 
 **The drafter expected `K-a`, `K-b` and `K-e` to hold and `K-c` and `K-d` to be
@@ -419,6 +498,8 @@ results_blind/readings.json            POST-RUN: K-d under other directions, and
                                        K-b to K-e run by run
 results_blind/cycles.json              POST-RUN: why run 1 closed cycles, and what
                                        the base had already decided
+results_blind/closure.json             POST-RUN: what the base's transitive order
+                                       would decide, on the twelve bases
 blind/plan.py                          the gate, §11's constants, §0's lines, the
                                        figures §0 declares
 blind/protocol.py                      v2b's texts, the blind screen, the placement,
@@ -431,12 +512,15 @@ blind/run.py                           Stage B: spends; guarded
 blind/score.py                         Stage C
 blind/readings.py                      POST-RUN: K-d under other directions
 blind/cycles.py                        POST-RUN: why run 1 closed cycles
+blind/closure.py                       POST-RUN: the closure engine, beside rung 2's
 tests/test_blind.py                    the instrument, no figure
 tests/test_blind_readings.py           the POST-RUN reading of K-d, no figure
 tests/test_blind_cycles.py             the POST-RUN reading of the cycles, no figure
+tests/test_blind_closure.py            the POST-RUN reading of the closure, no figure
 ```
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m blind.score`,
-`PYTHONHASHSEED=0 python3 -m blind.readings` and
-`PYTHONHASHSEED=0 python3 -m blind.cycles`, minutes, zero API calls.
+`PYTHONHASHSEED=0 python3 -m blind.readings`,
+`PYTHONHASHSEED=0 python3 -m blind.cycles` and
+`PYTHONHASHSEED=0 python3 -m blind.closure`, minutes, zero API calls.
 `python3 -m blind.run --dry-run` runs the blocking checks and writes nothing.
