@@ -1,0 +1,6298 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-13T07:01:10Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "aeda25ae2e6a08b9cea330f816c5ea9cea89fcbb",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "025e7451905db6cd"
+  },
+  "plan": "PLAN_BLIND.md",
+  "provenance": "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed and after FINDINGS_BLIND.md named the question. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
+  "source": {
+    "records": {
+      "1": "results_blind/run_n2000_r1.json",
+      "2": "results_blind/run_n2000_r2.json",
+      "3": "results_blind/run_n2000_r3.json"
+    },
+    "their_commits": {
+      "1": "d13299371ad8e798e7cc227ea932225c8f4ea02d",
+      "2": "d645a6bfd4b4a3dca74d8e35a03f91fac9fd10c8",
+      "3": "244fee149f592241d69b09abb33ac3b5ffe34841"
+    },
+    "score": "results_blind/score.json",
+    "its_commit": "b4eba6835a2248c8c5ca956ee0b86e5b9ce26ed8"
+  },
+  "surface": "none: the placements the runs recorded and the order the engine held when each was made; no truth is read",
+  "constants": {
+    "N_PERM": 10000,
+    "N_CHECK": 500,
+    "PERM_SEED": 17,
+    "LISTING_SEED": 17
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "rep": 1,
+      "what": "the replay is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 1,
+      "what": "the slot is the seeded deal",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 1,
+      "what": "the forks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "rep": 1,
+      "what": "every cycle is accounted for",
+      "measured": 32,
+      "published": 32,
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 2,
+      "what": "the replay is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 2,
+      "what": "the slot is the seeded deal",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 2,
+      "what": "the forks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "rep": 2,
+      "what": "every cycle is accounted for",
+      "measured": 0,
+      "published": 0,
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "rep": 3,
+      "what": "the replay is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "rep": 3,
+      "what": "the slot is the seeded deal",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "rep": 3,
+      "what": "the forks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "rep": 3,
+      "what": "every cycle is accounted for",
+      "measured": 3,
+      "published": 3,
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "rep": "pooled",
+      "what": "the null is a function of its seed",
+      "passes": true
+    }
+  ],
+  "tests": {
+    "mixed": {
+      "1": {
+        "pairs": 76,
+        "statistic": -8,
+        "per_pair": -0.105263,
+        "as_extreme": 6378,
+        "p": 0.637836
+      },
+      "2": {
+        "pairs": 23,
+        "statistic": -9,
+        "per_pair": -0.391304,
+        "as_extreme": 1992,
+        "p": 0.19928
+      },
+      "3": {
+        "pairs": 29,
+        "statistic": -5,
+        "per_pair": -0.172414,
+        "as_extreme": 6046,
+        "p": 0.60464
+      },
+      "pooled": {
+        "pairs": 128,
+        "statistic": -22,
+        "per_pair": -0.171875,
+        "as_extreme": 2423,
+        "p": 0.242376
+      }
+    },
+    "inverted": {
+      "1": {
+        "pairs": 3,
+        "statistic": -3,
+        "per_pair": -1.0,
+        "as_extreme": 3345,
+        "p": 0.334567
+      },
+      "2": {
+        "pairs": 0,
+        "statistic": 0,
+        "per_pair": null,
+        "as_extreme": 10000,
+        "p": 1.0
+      },
+      "3": {
+        "pairs": 0,
+        "statistic": 0,
+        "per_pair": null,
+        "as_extreme": 10000,
+        "p": 1.0
+      },
+      "pooled": {
+        "pairs": 3,
+        "statistic": -3,
+        "per_pair": -1.0,
+        "as_extreme": 3345,
+        "p": 0.334567
+      }
+    },
+    "n_perm": 10000,
+    "seed": 17
+  },
+  "by_slot_pooled": {
+    "first": {
+      "beats": 54,
+      "loses_to": 13
+    },
+    "between": {
+      "beats": 141,
+      "loses_to": 38
+    },
+    "last": {
+      "beats": 46,
+      "loses_to": 21
+    }
+  },
+  "runs": {
+    "1": {
+      "placement_births": 37,
+      "listing_two_or_more": 28,
+      "placed": {
+        "beats": 122,
+        "loses_to": 25
+      },
+      "mixed_pairs": 76,
+      "ordered_pairs": 276,
+      "inverted_pairs": 3,
+      "inverted_share": 0.01087,
+      "mixed_ordered_by_listing": {
+        "higher_first": {
+          "consistent": 32,
+          "inverted": 3
+        },
+        "lower_first": {
+          "consistent": 30,
+          "inverted": 0
+        }
+      },
+      "write_refusals": {
+        "total": 20,
+        "in_placement_rounds": 20,
+        "by_kind": {
+          "contains": 20
+        },
+        "by_side": {
+          "beats": 20
+        },
+        "births_with_a_cycle": 5,
+        "per_birth": [
+          [
+            987,
+            "R0040",
+            7
+          ],
+          [
+            193,
+            "R0030",
+            5
+          ],
+          [
+            246,
+            "R0034",
+            4
+          ],
+          [
+            263,
+            "R0036",
+            3
+          ],
+          [
+            56,
+            "R0019",
+            1
+          ]
+        ]
+      },
+      "order_refusals": {
+        "total": 12,
+        "distinct": 6,
+        "repeating_a_write_refusal": 12,
+        "accepted_order_edges": 6,
+        "accepted_reversing_a_write_refusal": 6
+      },
+      "by_slot": {
+        "first": {
+          "beats": 26,
+          "loses_to": 2
+        },
+        "between": {
+          "beats": 70,
+          "loses_to": 12
+        },
+        "last": {
+          "beats": 22,
+          "loses_to": 6
+        }
+      },
+      "rounds": [
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 2,
+          "rule": "R0002",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 5,
+          "rule": "R0005",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 7,
+          "rule": "R0006",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0004",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 8,
+          "rule": "R0007",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0008",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 14,
+          "rule": "R0009",
+          "queue": "BILLING_SPECIALIST",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0010",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 17,
+          "rule": "R0011",
+          "queue": "BILLING_SPECIALIST",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0009",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0009",
+              "R0008"
+            ],
+            [
+              "R0005",
+              "R0004"
+            ],
+            [
+              "R0005",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0004"
+            ],
+            [
+              "R0006",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 19,
+          "rule": "R0012",
+          "queue": "SECURITY_INCIDENT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0006",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0006"
+            ]
+          ],
+          "inverted": [],
+          "idx": 28,
+          "rule": "R0013",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 31,
+          "rule": "R0014",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 35,
+          "rule": "R0015",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0006",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 36,
+          "rule": "R0016",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 42,
+          "rule": "R0017",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 50,
+          "rule": "R0018",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 56,
+          "rule": "R0019",
+          "queue": "T2_TECHNICAL",
+          "refused": 1
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 57,
+          "rule": "R0020",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0005",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 63,
+          "rule": "R0021",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0020",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0020"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 69,
+          "rule": "R0023",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0018",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0015",
+              "beats"
+            ],
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0009",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0023",
+              "R0019"
+            ],
+            [
+              "R0023",
+              "R0021"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0019"
+            ],
+            [
+              "R0011",
+              "R0021"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0017",
+              "R0019"
+            ],
+            [
+              "R0017",
+              "R0021"
+            ],
+            [
+              "R0017",
+              "R0001"
+            ],
+            [
+              "R0017",
+              "R0004"
+            ],
+            [
+              "R0006",
+              "R0019"
+            ],
+            [
+              "R0006",
+              "R0021"
+            ],
+            [
+              "R0006",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0004"
+            ],
+            [
+              "R0004",
+              "R0019"
+            ]
+          ],
+          "inverted": [],
+          "idx": 78,
+          "rule": "R0024",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0020",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0024",
+              "R0020"
+            ],
+            [
+              "R0024",
+              "R0005"
+            ],
+            [
+              "R0024",
+              "R0002"
+            ],
+            [
+              "R0020",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0020"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 97,
+          "rule": "R0025",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0024",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0024"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 107,
+          "rule": "R0026",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0026",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0018",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0014",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0026",
+              "R0001"
+            ],
+            [
+              "R0026",
+              "R0018"
+            ],
+            [
+              "R0026",
+              "R0017"
+            ],
+            [
+              "R0026",
+              "R0024"
+            ],
+            [
+              "R0026",
+              "R0023"
+            ],
+            [
+              "R0026",
+              "R0014"
+            ],
+            [
+              "R0017",
+              "R0001"
+            ],
+            [
+              "R0024",
+              "R0001"
+            ],
+            [
+              "R0024",
+              "R0018"
+            ],
+            [
+              "R0024",
+              "R0017"
+            ],
+            [
+              "R0024",
+              "R0023"
+            ],
+            [
+              "R0024",
+              "R0014"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 138,
+          "rule": "R0028",
+          "queue": "T1_GENERAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0028",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "ordered": [
+            [
+              "R0028",
+              "R0014"
+            ]
+          ],
+          "inverted": [],
+          "idx": 148,
+          "rule": "R0029",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0026",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0011",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0021",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0023",
+              "R0019"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0021"
+            ],
+            [
+              "R0017",
+              "R0004"
+            ],
+            [
+              "R0017",
+              "R0019"
+            ],
+            [
+              "R0017",
+              "R0001"
+            ],
+            [
+              "R0017",
+              "R0021"
+            ],
+            [
+              "R0012",
+              "R0023"
+            ],
+            [
+              "R0012",
+              "R0017"
+            ],
+            [
+              "R0012",
+              "R0026"
+            ],
+            [
+              "R0012",
+              "R0004"
+            ],
+            [
+              "R0012",
+              "R0025"
+            ],
+            [
+              "R0012",
+              "R0019"
+            ],
+            [
+              "R0012",
+              "R0006"
+            ],
+            [
+              "R0012",
+              "R0011"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ],
+            [
+              "R0012",
+              "R0021"
+            ],
+            [
+              "R0026",
+              "R0023"
+            ],
+            [
+              "R0026",
+              "R0017"
+            ],
+            [
+              "R0026",
+              "R0004"
+            ],
+            [
+              "R0026",
+              "R0019"
+            ],
+            [
+              "R0026",
+              "R0006"
+            ],
+            [
+              "R0026",
+              "R0011"
+            ],
+            [
+              "R0026",
+              "R0001"
+            ],
+            [
+              "R0026",
+              "R0021"
+            ],
+            [
+              "R0004",
+              "R0019"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0025",
+              "R0017"
+            ],
+            [
+              "R0025",
+              "R0004"
+            ],
+            [
+              "R0025",
+              "R0019"
+            ],
+            [
+              "R0025",
+              "R0006"
+            ],
+            [
+              "R0025",
+              "R0011"
+            ],
+            [
+              "R0025",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0021"
+            ],
+            [
+              "R0006",
+              "R0004"
+            ],
+            [
+              "R0006",
+              "R0019"
+            ],
+            [
+              "R0006",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0021"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0019"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0011",
+              "R0021"
+            ]
+          ],
+          "inverted": [
+            [
+              "R0026",
+              "R0011"
+            ],
+            [
+              "R0025",
+              "R0011"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 5
+        },
+        {
+          "listed": [
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0025",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 197,
+          "rule": "R0031",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0018",
+              "beats"
+            ],
+            [
+              "R0015",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0011",
+              "loses_to"
+            ],
+            [
+              "R0028",
+              "loses_to"
+            ],
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0019",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0018"
+            ],
+            [
+              "R0012",
+              "R0015"
+            ],
+            [
+              "R0012",
+              "R0011"
+            ],
+            [
+              "R0012",
+              "R0014"
+            ],
+            [
+              "R0012",
+              "R0019"
+            ],
+            [
+              "R0011",
+              "R0019"
+            ],
+            [
+              "R0028",
+              "R0018"
+            ],
+            [
+              "R0028",
+              "R0015"
+            ],
+            [
+              "R0028",
+              "R0011"
+            ],
+            [
+              "R0028",
+              "R0014"
+            ],
+            [
+              "R0028",
+              "R0019"
+            ]
+          ],
+          "inverted": [],
+          "idx": 214,
+          "rule": "R0032",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 225,
+          "rule": "R0033",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0028",
+              "beats"
+            ],
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0032",
+              "beats"
+            ],
+            [
+              "R0012",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T1_GENERAL",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0028",
+              "R0024"
+            ],
+            [
+              "R0028",
+              "R0032"
+            ],
+            [
+              "R0024",
+              "R0032"
+            ],
+            [
+              "R0012",
+              "R0024"
+            ],
+            [
+              "R0012",
+              "R0032"
+            ]
+          ],
+          "inverted": [],
+          "idx": 246,
+          "rule": "R0034",
+          "queue": "T2_TECHNICAL",
+          "refused": 4
+        },
+        {
+          "listed": [
+            [
+              "R0028",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T1_GENERAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 247,
+          "rule": "R0035",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0032",
+              "beats"
+            ],
+            [
+              "R0028",
+              "loses_to"
+            ],
+            [
+              "R0024",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0029",
+              "R0032"
+            ],
+            [
+              "R0029",
+              "R0028"
+            ],
+            [
+              "R0029",
+              "R0024"
+            ],
+            [
+              "R0012",
+              "R0032"
+            ],
+            [
+              "R0012",
+              "R0024"
+            ],
+            [
+              "R0028",
+              "R0032"
+            ],
+            [
+              "R0028",
+              "R0024"
+            ],
+            [
+              "R0024",
+              "R0032"
+            ]
+          ],
+          "inverted": [
+            [
+              "R0029",
+              "R0028"
+            ]
+          ],
+          "idx": 263,
+          "rule": "R0036",
+          "queue": "T2_TECHNICAL",
+          "refused": 3
+        },
+        {
+          "listed": [
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0012",
+              "R0023"
+            ],
+            [
+              "R0012",
+              "R0025"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0025",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 374,
+          "rule": "R0037",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0030",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0013",
+              "beats"
+            ],
+            [
+              "R0032",
+              "beats"
+            ],
+            [
+              "R0016",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0024",
+              "R0002"
+            ],
+            [
+              "R0024",
+              "R0005"
+            ],
+            [
+              "R0024",
+              "R0030"
+            ],
+            [
+              "R0024",
+              "R0032"
+            ],
+            [
+              "R0029",
+              "R0024"
+            ],
+            [
+              "R0029",
+              "R0002"
+            ],
+            [
+              "R0029",
+              "R0005"
+            ],
+            [
+              "R0029",
+              "R0030"
+            ],
+            [
+              "R0029",
+              "R0032"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0030"
+            ],
+            [
+              "R0030",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0024"
+            ],
+            [
+              "R0012",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0030"
+            ],
+            [
+              "R0012",
+              "R0013"
+            ],
+            [
+              "R0012",
+              "R0032"
+            ],
+            [
+              "R0013",
+              "R0002"
+            ],
+            [
+              "R0013",
+              "R0005"
+            ],
+            [
+              "R0013",
+              "R0030"
+            ],
+            [
+              "R0032",
+              "R0002"
+            ],
+            [
+              "R0016",
+              "R0002"
+            ],
+            [
+              "R0016",
+              "R0005"
+            ],
+            [
+              "R0016",
+              "R0030"
+            ]
+          ],
+          "inverted": [],
+          "idx": 387,
+          "rule": "R0038",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0025",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 421,
+          "rule": "R0039",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0038",
+              "beats"
+            ],
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0026",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0023",
+              "R0019"
+            ],
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0023",
+              "R0021"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0038",
+              "R0023"
+            ],
+            [
+              "R0038",
+              "R0019"
+            ],
+            [
+              "R0038",
+              "R0004"
+            ],
+            [
+              "R0038",
+              "R0011"
+            ],
+            [
+              "R0038",
+              "R0026"
+            ],
+            [
+              "R0038",
+              "R0017"
+            ],
+            [
+              "R0038",
+              "R0021"
+            ],
+            [
+              "R0038",
+              "R0006"
+            ],
+            [
+              "R0038",
+              "R0001"
+            ],
+            [
+              "R0004",
+              "R0019"
+            ],
+            [
+              "R0004",
+              "R0021"
+            ],
+            [
+              "R0004",
+              "R0001"
+            ],
+            [
+              "R0011",
+              "R0019"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0021"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0012",
+              "R0023"
+            ],
+            [
+              "R0012",
+              "R0038"
+            ],
+            [
+              "R0012",
+              "R0019"
+            ],
+            [
+              "R0012",
+              "R0004"
+            ],
+            [
+              "R0012",
+              "R0011"
+            ],
+            [
+              "R0012",
+              "R0026"
+            ],
+            [
+              "R0012",
+              "R0017"
+            ],
+            [
+              "R0012",
+              "R0021"
+            ],
+            [
+              "R0012",
+              "R0006"
+            ],
+            [
+              "R0012",
+              "R0025"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ],
+            [
+              "R0026",
+              "R0023"
+            ],
+            [
+              "R0026",
+              "R0019"
+            ],
+            [
+              "R0026",
+              "R0004"
+            ],
+            [
+              "R0026",
+              "R0011"
+            ],
+            [
+              "R0026",
+              "R0017"
+            ],
+            [
+              "R0026",
+              "R0021"
+            ],
+            [
+              "R0026",
+              "R0006"
+            ],
+            [
+              "R0026",
+              "R0001"
+            ],
+            [
+              "R0017",
+              "R0019"
+            ],
+            [
+              "R0017",
+              "R0004"
+            ],
+            [
+              "R0017",
+              "R0021"
+            ],
+            [
+              "R0017",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0019"
+            ],
+            [
+              "R0006",
+              "R0004"
+            ],
+            [
+              "R0006",
+              "R0021"
+            ],
+            [
+              "R0006",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0025",
+              "R0019"
+            ],
+            [
+              "R0025",
+              "R0004"
+            ],
+            [
+              "R0025",
+              "R0011"
+            ],
+            [
+              "R0025",
+              "R0017"
+            ],
+            [
+              "R0025",
+              "R0021"
+            ],
+            [
+              "R0025",
+              "R0006"
+            ],
+            [
+              "R0025",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 987,
+          "rule": "R0040",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 7
+        },
+        {
+          "listed": [
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0038",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0026",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0025",
+              "R0019"
+            ],
+            [
+              "R0025",
+              "R0021"
+            ],
+            [
+              "R0025",
+              "R0011"
+            ],
+            [
+              "R0025",
+              "R0004"
+            ],
+            [
+              "R0025",
+              "R0006"
+            ],
+            [
+              "R0025",
+              "R0001"
+            ],
+            [
+              "R0025",
+              "R0017"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0011",
+              "R0019"
+            ],
+            [
+              "R0011",
+              "R0021"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0038",
+              "R0019"
+            ],
+            [
+              "R0038",
+              "R0021"
+            ],
+            [
+              "R0038",
+              "R0011"
+            ],
+            [
+              "R0038",
+              "R0004"
+            ],
+            [
+              "R0038",
+              "R0006"
+            ],
+            [
+              "R0038",
+              "R0001"
+            ],
+            [
+              "R0038",
+              "R0017"
+            ],
+            [
+              "R0038",
+              "R0026"
+            ],
+            [
+              "R0038",
+              "R0023"
+            ],
+            [
+              "R0004",
+              "R0019"
+            ],
+            [
+              "R0004",
+              "R0021"
+            ],
+            [
+              "R0004",
+              "R0001"
+            ],
+            [
+              "R0006",
+              "R0019"
+            ],
+            [
+              "R0006",
+              "R0021"
+            ],
+            [
+              "R0006",
+              "R0004"
+            ],
+            [
+              "R0006",
+              "R0001"
+            ],
+            [
+              "R0017",
+              "R0019"
+            ],
+            [
+              "R0017",
+              "R0021"
+            ],
+            [
+              "R0017",
+              "R0004"
+            ],
+            [
+              "R0017",
+              "R0001"
+            ],
+            [
+              "R0026",
+              "R0019"
+            ],
+            [
+              "R0026",
+              "R0021"
+            ],
+            [
+              "R0026",
+              "R0011"
+            ],
+            [
+              "R0026",
+              "R0004"
+            ],
+            [
+              "R0026",
+              "R0006"
+            ],
+            [
+              "R0026",
+              "R0001"
+            ],
+            [
+              "R0026",
+              "R0017"
+            ],
+            [
+              "R0026",
+              "R0023"
+            ],
+            [
+              "R0023",
+              "R0019"
+            ],
+            [
+              "R0023",
+              "R0021"
+            ],
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 1052,
+          "rule": "R0041",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0030",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0040",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0030",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0030"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0040"
+            ],
+            [
+              "R0012",
+              "R0030"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0040"
+            ],
+            [
+              "R0040",
+              "R0030"
+            ],
+            [
+              "R0040",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 1090,
+          "rule": "R0043",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0017"
+            ]
+          ],
+          "inverted": [],
+          "idx": 1515,
+          "rule": "R0044",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0017",
+              "beats"
+            ],
+            [
+              "R0026",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0017",
+              "R0021"
+            ],
+            [
+              "R0026",
+              "R0021"
+            ],
+            [
+              "R0026",
+              "R0017"
+            ]
+          ],
+          "inverted": [],
+          "idx": 1920,
+          "rule": "R0045",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        }
+      ],
+      "refusals": [
+        {
+          "edge": [
+            "R0019",
+            "R0005"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0019",
+              "sub"
+            ]
+          ],
+          "idx": 56,
+          "rule": "R0019"
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0025"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030"
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0023"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0023",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030"
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0026"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0026",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030"
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0006"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0006",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030"
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0017"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0017",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 193,
+          "rule": "R0030"
+        },
+        {
+          "edge": [
+            "R0034",
+            "R0028"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0015"
+          ],
+          "path": [
+            [
+              "R0028",
+              "R0024",
+              "decl"
+            ],
+            [
+              "R0024",
+              "R0015",
+              "decl"
+            ],
+            [
+              "R0015",
+              "R0034",
+              "sub"
+            ]
+          ],
+          "idx": 246,
+          "rule": "R0034"
+        },
+        {
+          "edge": [
+            "R0034",
+            "R0024"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0015"
+          ],
+          "path": [
+            [
+              "R0024",
+              "R0015",
+              "decl"
+            ],
+            [
+              "R0015",
+              "R0034",
+              "sub"
+            ]
+          ],
+          "idx": 246,
+          "rule": "R0034"
+        },
+        {
+          "edge": [
+            "R0034",
+            "R0032"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0015"
+          ],
+          "path": [
+            [
+              "R0032",
+              "R0015",
+              "decl"
+            ],
+            [
+              "R0015",
+              "R0034",
+              "sub"
+            ]
+          ],
+          "idx": 246,
+          "rule": "R0034"
+        },
+        {
+          "edge": [
+            "R0034",
+            "R0012"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0015"
+          ],
+          "path": [
+            [
+              "R0012",
+              "R0015",
+              "decl"
+            ],
+            [
+              "R0015",
+              "R0034",
+              "sub"
+            ]
+          ],
+          "idx": 246,
+          "rule": "R0034"
+        },
+        {
+          "edge": [
+            "R0036",
+            "R0029"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0014"
+          ],
+          "path": [
+            [
+              "R0029",
+              "R0014",
+              "decl"
+            ],
+            [
+              "R0014",
+              "R0036",
+              "sub"
+            ]
+          ],
+          "idx": 263,
+          "rule": "R0036"
+        },
+        {
+          "edge": [
+            "R0036",
+            "R0032"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0014"
+          ],
+          "path": [
+            [
+              "R0032",
+              "R0014",
+              "decl"
+            ],
+            [
+              "R0014",
+              "R0036",
+              "sub"
+            ]
+          ],
+          "idx": 263,
+          "rule": "R0036"
+        },
+        {
+          "edge": [
+            "R0036",
+            "R0024"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0014"
+          ],
+          "path": [
+            [
+              "R0024",
+              "R0014",
+              "decl"
+            ],
+            [
+              "R0014",
+              "R0036",
+              "sub"
+            ]
+          ],
+          "idx": 263,
+          "rule": "R0036"
+        },
+        {
+          "edge": [
+            "R0036",
+            "R0024"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0024",
+              "R0014",
+              "decl"
+            ],
+            [
+              "R0014",
+              "R0036",
+              "sub"
+            ]
+          ],
+          "idx": 330,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0023"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0023",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 373,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0030",
+            "R0025"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0030",
+              "sub"
+            ]
+          ],
+          "idx": 373,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0023"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0023",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0038"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0038",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0011"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0011",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0026"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0026",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0017"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0017",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0006"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0006",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0025"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0005"
+          ],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 987,
+          "rule": "R0040"
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0025"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 988,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0006"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0006",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1048,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0038"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0038",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1048,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0006"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0006",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1087,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0038"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0038",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1087,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0025"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1257,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0006"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0006",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1460,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0038"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0038",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1460,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0040",
+            "R0025"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0025",
+              "R0005",
+              "decl"
+            ],
+            [
+              "R0005",
+              "R0040",
+              "sub"
+            ]
+          ],
+          "idx": 1898,
+          "rule": null
+        }
+      ]
+    },
+    "2": {
+      "placement_births": 23,
+      "listing_two_or_more": 16,
+      "placed": {
+        "beats": 43,
+        "loses_to": 27
+      },
+      "mixed_pairs": 23,
+      "ordered_pairs": 86,
+      "inverted_pairs": 0,
+      "inverted_share": 0.0,
+      "mixed_ordered_by_listing": {
+        "higher_first": {
+          "consistent": 7,
+          "inverted": 0
+        },
+        "lower_first": {
+          "consistent": 13,
+          "inverted": 0
+        }
+      },
+      "write_refusals": {
+        "total": 0,
+        "in_placement_rounds": 0,
+        "by_kind": {},
+        "by_side": {},
+        "births_with_a_cycle": 0,
+        "per_birth": []
+      },
+      "order_refusals": {
+        "total": 0,
+        "distinct": 0,
+        "repeating_a_write_refusal": 0,
+        "accepted_order_edges": 0,
+        "accepted_reversing_a_write_refusal": 0
+      },
+      "by_slot": {
+        "first": {
+          "beats": 12,
+          "loses_to": 4
+        },
+        "between": {
+          "beats": 21,
+          "loses_to": 10
+        },
+        "last": {
+          "beats": 9,
+          "loses_to": 7
+        }
+      },
+      "rounds": [
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 1,
+          "rule": "R0002",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 2,
+          "rule": "R0003",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 3,
+          "rule": "R0004",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 5,
+          "rule": "R0006",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [
+            [
+              "R0006",
+              "R0003"
+            ],
+            [
+              "R0001",
+              "R0003"
+            ]
+          ],
+          "inverted": [],
+          "idx": 6,
+          "rule": "R0007",
+          "queue": "BILLING_SPECIALIST",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0006",
+              "R0003"
+            ]
+          ],
+          "inverted": [],
+          "idx": 7,
+          "rule": "R0008",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 11,
+          "rule": "R0010",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0010",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0007",
+              "R0006"
+            ],
+            [
+              "R0007",
+              "R0002"
+            ],
+            [
+              "R0006",
+              "R0002"
+            ],
+            [
+              "R0001",
+              "R0007"
+            ],
+            [
+              "R0001",
+              "R0006"
+            ],
+            [
+              "R0001",
+              "R0004"
+            ],
+            [
+              "R0001",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0006"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ],
+            [
+              "R0010",
+              "R0007"
+            ],
+            [
+              "R0010",
+              "R0006"
+            ],
+            [
+              "R0010",
+              "R0001"
+            ],
+            [
+              "R0010",
+              "R0004"
+            ],
+            [
+              "R0010",
+              "R0002"
+            ],
+            [
+              "R0008",
+              "R0006"
+            ],
+            [
+              "R0008",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 19,
+          "rule": "R0012",
+          "queue": "SECURITY_INCIDENT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0010",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [
+            [
+              "R0010",
+              "R0001"
+            ],
+            [
+              "R0012",
+              "R0010"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 25,
+          "rule": "R0013",
+          "queue": "BILLING_SPECIALIST",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0003",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0006",
+              "R0003"
+            ],
+            [
+              "R0012",
+              "R0006"
+            ],
+            [
+              "R0012",
+              "R0003"
+            ]
+          ],
+          "inverted": [],
+          "idx": 28,
+          "rule": "R0014",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 35,
+          "rule": "R0015",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [
+            [
+              "R0006",
+              "R0003"
+            ],
+            [
+              "R0001",
+              "R0003"
+            ],
+            [
+              "R0001",
+              "R0006"
+            ]
+          ],
+          "inverted": [],
+          "idx": 42,
+          "rule": "R0016",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0013",
+              "loses_to"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0007",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST"
+          ],
+          "ordered": [
+            [
+              "R0013",
+              "R0007"
+            ],
+            [
+              "R0012",
+              "R0013"
+            ],
+            [
+              "R0012",
+              "R0007"
+            ]
+          ],
+          "inverted": [],
+          "idx": 55,
+          "rule": "R0017",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 56,
+          "rule": "R0018",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 57,
+          "rule": "R0019",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0016",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ],
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0005",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0016",
+              "R0002"
+            ],
+            [
+              "R0008",
+              "R0002"
+            ],
+            [
+              "R0007",
+              "R0002"
+            ],
+            [
+              "R0014",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0002"
+            ],
+            [
+              "R0012",
+              "R0016"
+            ],
+            [
+              "R0012",
+              "R0008"
+            ],
+            [
+              "R0012",
+              "R0007"
+            ],
+            [
+              "R0012",
+              "R0014"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 63,
+          "rule": "R0020",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 64,
+          "rule": "R0021",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0007"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ],
+            [
+              "R0001",
+              "R0007"
+            ]
+          ],
+          "inverted": [],
+          "idx": 68,
+          "rule": "R0022",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 71,
+          "rule": "R0023",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "ACCOUNT_MANAGER",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 86,
+          "rule": "R0025",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0019",
+              "loses_to"
+            ],
+            [
+              "R0020",
+              "loses_to"
+            ],
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0009",
+              "loses_to"
+            ],
+            [
+              "R0018",
+              "loses_to"
+            ],
+            [
+              "R0006",
+              "loses_to"
+            ],
+            [
+              "R0003",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0019",
+              "R0003"
+            ],
+            [
+              "R0020",
+              "R0006"
+            ],
+            [
+              "R0020",
+              "R0003"
+            ],
+            [
+              "R0012",
+              "R0019"
+            ],
+            [
+              "R0012",
+              "R0020"
+            ],
+            [
+              "R0012",
+              "R0018"
+            ],
+            [
+              "R0012",
+              "R0006"
+            ],
+            [
+              "R0012",
+              "R0003"
+            ],
+            [
+              "R0006",
+              "R0003"
+            ]
+          ],
+          "inverted": [],
+          "idx": 97,
+          "rule": "R0026",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 192,
+          "rule": "R0027",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0022",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0013",
+              "beats"
+            ],
+            [
+              "R0016",
+              "beats"
+            ],
+            [
+              "R0027",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0010",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0022",
+              "R0004"
+            ],
+            [
+              "R0022",
+              "R0002"
+            ],
+            [
+              "R0022",
+              "R0016"
+            ],
+            [
+              "R0022",
+              "R0023"
+            ],
+            [
+              "R0022",
+              "R0007"
+            ],
+            [
+              "R0025",
+              "R0004"
+            ],
+            [
+              "R0025",
+              "R0002"
+            ],
+            [
+              "R0025",
+              "R0016"
+            ],
+            [
+              "R0025",
+              "R0023"
+            ],
+            [
+              "R0025",
+              "R0007"
+            ],
+            [
+              "R0013",
+              "R0004"
+            ],
+            [
+              "R0013",
+              "R0002"
+            ],
+            [
+              "R0013",
+              "R0016"
+            ],
+            [
+              "R0013",
+              "R0023"
+            ],
+            [
+              "R0013",
+              "R0007"
+            ],
+            [
+              "R0016",
+              "R0002"
+            ],
+            [
+              "R0027",
+              "R0004"
+            ],
+            [
+              "R0027",
+              "R0002"
+            ],
+            [
+              "R0027",
+              "R0016"
+            ],
+            [
+              "R0027",
+              "R0023"
+            ],
+            [
+              "R0027",
+              "R0007"
+            ],
+            [
+              "R0007",
+              "R0002"
+            ],
+            [
+              "R0010",
+              "R0004"
+            ],
+            [
+              "R0010",
+              "R0002"
+            ],
+            [
+              "R0010",
+              "R0013"
+            ],
+            [
+              "R0010",
+              "R0016"
+            ],
+            [
+              "R0010",
+              "R0023"
+            ],
+            [
+              "R0010",
+              "R0007"
+            ]
+          ],
+          "inverted": [],
+          "idx": 470,
+          "rule": "R0028",
+          "queue": "ACCOUNT_MANAGER",
+          "refused": 0
+        }
+      ],
+      "refusals": []
+    },
+    "3": {
+      "placement_births": 27,
+      "listing_two_or_more": 23,
+      "placed": {
+        "beats": 83,
+        "loses_to": 33
+      },
+      "mixed_pairs": 29,
+      "ordered_pairs": 175,
+      "inverted_pairs": 0,
+      "inverted_share": 0.0,
+      "mixed_ordered_by_listing": {
+        "higher_first": {
+          "consistent": 10,
+          "inverted": 0
+        },
+        "lower_first": {
+          "consistent": 12,
+          "inverted": 0
+        }
+      },
+      "write_refusals": {
+        "total": 1,
+        "in_placement_rounds": 1,
+        "by_kind": {
+          "contains": 1
+        },
+        "by_side": {
+          "beats": 1
+        },
+        "births_with_a_cycle": 1,
+        "per_birth": [
+          [
+            56,
+            "R0020",
+            1
+          ]
+        ]
+      },
+      "order_refusals": {
+        "total": 2,
+        "distinct": 1,
+        "repeating_a_write_refusal": 2,
+        "accepted_order_edges": 0,
+        "accepted_reversing_a_write_refusal": 0
+      },
+      "by_slot": {
+        "first": {
+          "beats": 16,
+          "loses_to": 7
+        },
+        "between": {
+          "beats": 50,
+          "loses_to": 16
+        },
+        "last": {
+          "beats": 15,
+          "loses_to": 8
+        }
+      },
+      "rounds": [
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 2,
+          "rule": "R0002",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 5,
+          "rule": "R0005",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 7,
+          "rule": "R0007",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0009",
+              "loses_to"
+            ],
+            [
+              "R0010",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 18,
+          "rule": "R0011",
+          "queue": "BILLING_SPECIALIST",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 28,
+          "rule": "R0012",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 36,
+          "rule": "R0015",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 42,
+          "rule": "R0016",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0009",
+              "beats"
+            ],
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0013",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST"
+          ],
+          "ordered": [
+            [
+              "R0009",
+              "R0001"
+            ],
+            [
+              "R0009",
+              "R0011"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 44,
+          "rule": "R0017",
+          "queue": "SECURITY_INCIDENT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 56,
+          "rule": "R0020",
+          "queue": "T2_TECHNICAL",
+          "refused": 1
+        },
+        {
+          "listed": [
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 63,
+          "rule": "R0021",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0001",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL"
+          ],
+          "ordered": [],
+          "inverted": [],
+          "idx": 66,
+          "rule": "R0022",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0022",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0017",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0005",
+              "R0022"
+            ],
+            [
+              "R0017",
+              "R0022"
+            ],
+            [
+              "R0017",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 69,
+          "rule": "R0023",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0002",
+              "loses_to"
+            ],
+            [
+              "R0017",
+              "loses_to"
+            ],
+            [
+              "R0005",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0017",
+              "R0002"
+            ],
+            [
+              "R0017",
+              "R0005"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 71,
+          "rule": "R0024",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0017",
+              "loses_to"
+            ],
+            [
+              "R0022",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0002",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0017",
+              "R0022"
+            ],
+            [
+              "R0017",
+              "R0005"
+            ],
+            [
+              "R0017",
+              "R0002"
+            ],
+            [
+              "R0005",
+              "R0022"
+            ],
+            [
+              "R0005",
+              "R0002"
+            ]
+          ],
+          "inverted": [],
+          "idx": 130,
+          "rule": "R0027",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "beats"
+            ],
+            [
+              "R0018",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0026",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0013",
+              "beats"
+            ],
+            [
+              "R0016",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0009",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0007",
+              "R0001"
+            ],
+            [
+              "R0007",
+              "R0024"
+            ],
+            [
+              "R0001",
+              "R0024"
+            ],
+            [
+              "R0016",
+              "R0001"
+            ],
+            [
+              "R0016",
+              "R0024"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0024"
+            ],
+            [
+              "R0009",
+              "R0001"
+            ],
+            [
+              "R0009",
+              "R0024"
+            ]
+          ],
+          "inverted": [],
+          "idx": 138,
+          "rule": "R0028",
+          "queue": "T1_GENERAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0020",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0021",
+              "R0024"
+            ],
+            [
+              "R0021",
+              "R0004"
+            ],
+            [
+              "R0021",
+              "R0020"
+            ],
+            [
+              "R0011",
+              "R0024"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0020"
+            ],
+            [
+              "R0004",
+              "R0024"
+            ],
+            [
+              "R0004",
+              "R0020"
+            ],
+            [
+              "R0020",
+              "R0024"
+            ]
+          ],
+          "inverted": [],
+          "idx": 142,
+          "rule": "R0029",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0012",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0029",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 167,
+          "rule": "R0030",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0027",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "loses_to"
+            ],
+            [
+              "R0023",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0027",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 197,
+          "rule": "R0031",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0014",
+              "beats"
+            ],
+            [
+              "R0008",
+              "beats"
+            ],
+            [
+              "R0019",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ],
+            [
+              "R0006",
+              "beats"
+            ],
+            [
+              "R0022",
+              "beats"
+            ],
+            [
+              "R0030",
+              "beats"
+            ],
+            [
+              "R0027",
+              "beats"
+            ],
+            [
+              "R0004",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0018",
+              "beats"
+            ],
+            [
+              "R0012",
+              "beats"
+            ],
+            [
+              "R0025",
+              "beats"
+            ],
+            [
+              "R0013",
+              "beats"
+            ],
+            [
+              "R0021",
+              "beats"
+            ],
+            [
+              "R0020",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0024",
+              "beats"
+            ],
+            [
+              "R0011",
+              "beats"
+            ],
+            [
+              "R0003",
+              "beats"
+            ],
+            [
+              "R0009",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0014",
+              "R0024"
+            ],
+            [
+              "R0008",
+              "R0020"
+            ],
+            [
+              "R0008",
+              "R0024"
+            ],
+            [
+              "R0005",
+              "R0022"
+            ],
+            [
+              "R0005",
+              "R0004"
+            ],
+            [
+              "R0005",
+              "R0001"
+            ],
+            [
+              "R0005",
+              "R0020"
+            ],
+            [
+              "R0005",
+              "R0024"
+            ],
+            [
+              "R0030",
+              "R0005"
+            ],
+            [
+              "R0030",
+              "R0022"
+            ],
+            [
+              "R0030",
+              "R0004"
+            ],
+            [
+              "R0030",
+              "R0001"
+            ],
+            [
+              "R0030",
+              "R0012"
+            ],
+            [
+              "R0030",
+              "R0021"
+            ],
+            [
+              "R0030",
+              "R0020"
+            ],
+            [
+              "R0030",
+              "R0029"
+            ],
+            [
+              "R0030",
+              "R0024"
+            ],
+            [
+              "R0030",
+              "R0011"
+            ],
+            [
+              "R0027",
+              "R0005"
+            ],
+            [
+              "R0027",
+              "R0022"
+            ],
+            [
+              "R0027",
+              "R0004"
+            ],
+            [
+              "R0027",
+              "R0001"
+            ],
+            [
+              "R0027",
+              "R0020"
+            ],
+            [
+              "R0027",
+              "R0024"
+            ],
+            [
+              "R0004",
+              "R0020"
+            ],
+            [
+              "R0004",
+              "R0024"
+            ],
+            [
+              "R0001",
+              "R0022"
+            ],
+            [
+              "R0001",
+              "R0024"
+            ],
+            [
+              "R0012",
+              "R0005"
+            ],
+            [
+              "R0012",
+              "R0022"
+            ],
+            [
+              "R0012",
+              "R0004"
+            ],
+            [
+              "R0012",
+              "R0001"
+            ],
+            [
+              "R0012",
+              "R0020"
+            ],
+            [
+              "R0012",
+              "R0024"
+            ],
+            [
+              "R0021",
+              "R0005"
+            ],
+            [
+              "R0021",
+              "R0022"
+            ],
+            [
+              "R0021",
+              "R0004"
+            ],
+            [
+              "R0021",
+              "R0001"
+            ],
+            [
+              "R0021",
+              "R0020"
+            ],
+            [
+              "R0021",
+              "R0024"
+            ],
+            [
+              "R0020",
+              "R0024"
+            ],
+            [
+              "R0023",
+              "R0005"
+            ],
+            [
+              "R0023",
+              "R0022"
+            ],
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0020"
+            ],
+            [
+              "R0023",
+              "R0024"
+            ],
+            [
+              "R0029",
+              "R0005"
+            ],
+            [
+              "R0029",
+              "R0022"
+            ],
+            [
+              "R0029",
+              "R0004"
+            ],
+            [
+              "R0029",
+              "R0001"
+            ],
+            [
+              "R0029",
+              "R0021"
+            ],
+            [
+              "R0029",
+              "R0020"
+            ],
+            [
+              "R0029",
+              "R0024"
+            ],
+            [
+              "R0029",
+              "R0011"
+            ],
+            [
+              "R0011",
+              "R0005"
+            ],
+            [
+              "R0011",
+              "R0022"
+            ],
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0011",
+              "R0020"
+            ],
+            [
+              "R0011",
+              "R0024"
+            ],
+            [
+              "R0009",
+              "R0005"
+            ],
+            [
+              "R0009",
+              "R0022"
+            ],
+            [
+              "R0009",
+              "R0004"
+            ],
+            [
+              "R0009",
+              "R0001"
+            ],
+            [
+              "R0009",
+              "R0020"
+            ],
+            [
+              "R0009",
+              "R0024"
+            ],
+            [
+              "R0009",
+              "R0011"
+            ]
+          ],
+          "inverted": [],
+          "idx": 238,
+          "rule": "R0032",
+          "queue": "SECURITY_INCIDENT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0032",
+              "loses_to"
+            ],
+            [
+              "R0015",
+              "beats"
+            ],
+            [
+              "R0017",
+              "loses_to"
+            ],
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0005",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "ordered": [
+            [
+              "R0032",
+              "R0029"
+            ],
+            [
+              "R0032",
+              "R0005"
+            ],
+            [
+              "R0015",
+              "R0005"
+            ],
+            [
+              "R0017",
+              "R0032"
+            ],
+            [
+              "R0017",
+              "R0029"
+            ],
+            [
+              "R0017",
+              "R0005"
+            ],
+            [
+              "R0029",
+              "R0005"
+            ]
+          ],
+          "inverted": [],
+          "idx": 249,
+          "rule": "R0033",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0027",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0032",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0027",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0032",
+              "R0027"
+            ],
+            [
+              "R0032",
+              "R0023"
+            ],
+            [
+              "R0032",
+              "R0001"
+            ]
+          ],
+          "inverted": [],
+          "idx": 374,
+          "rule": "R0034",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0027",
+              "beats"
+            ],
+            [
+              "R0001",
+              "beats"
+            ],
+            [
+              "R0023",
+              "beats"
+            ],
+            [
+              "R0032",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0027",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0032",
+              "R0027"
+            ],
+            [
+              "R0032",
+              "R0001"
+            ],
+            [
+              "R0032",
+              "R0023"
+            ]
+          ],
+          "inverted": [],
+          "idx": 378,
+          "rule": "R0035",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0007",
+              "loses_to"
+            ],
+            [
+              "R0033",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0033",
+              "R0007"
+            ]
+          ],
+          "inverted": [],
+          "idx": 387,
+          "rule": "R0036",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0011",
+              "loses_to"
+            ],
+            [
+              "R0027",
+              "loses_to"
+            ],
+            [
+              "R0004",
+              "loses_to"
+            ],
+            [
+              "R0016",
+              "loses_to"
+            ],
+            [
+              "R0021",
+              "loses_to"
+            ],
+            [
+              "R0001",
+              "loses_to"
+            ],
+            [
+              "R0023",
+              "loses_to"
+            ],
+            [
+              "R0024",
+              "loses_to"
+            ],
+            [
+              "R0020",
+              "loses_to"
+            ],
+            [
+              "R0033",
+              "loses_to"
+            ],
+            [
+              "R0007",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0011",
+              "R0004"
+            ],
+            [
+              "R0011",
+              "R0001"
+            ],
+            [
+              "R0011",
+              "R0024"
+            ],
+            [
+              "R0011",
+              "R0020"
+            ],
+            [
+              "R0027",
+              "R0004"
+            ],
+            [
+              "R0027",
+              "R0001"
+            ],
+            [
+              "R0027",
+              "R0024"
+            ],
+            [
+              "R0027",
+              "R0020"
+            ],
+            [
+              "R0004",
+              "R0024"
+            ],
+            [
+              "R0004",
+              "R0020"
+            ],
+            [
+              "R0016",
+              "R0004"
+            ],
+            [
+              "R0016",
+              "R0001"
+            ],
+            [
+              "R0016",
+              "R0024"
+            ],
+            [
+              "R0016",
+              "R0020"
+            ],
+            [
+              "R0021",
+              "R0004"
+            ],
+            [
+              "R0021",
+              "R0001"
+            ],
+            [
+              "R0021",
+              "R0024"
+            ],
+            [
+              "R0021",
+              "R0020"
+            ],
+            [
+              "R0001",
+              "R0024"
+            ],
+            [
+              "R0023",
+              "R0004"
+            ],
+            [
+              "R0023",
+              "R0001"
+            ],
+            [
+              "R0023",
+              "R0024"
+            ],
+            [
+              "R0023",
+              "R0020"
+            ],
+            [
+              "R0020",
+              "R0024"
+            ],
+            [
+              "R0033",
+              "R0011"
+            ],
+            [
+              "R0033",
+              "R0004"
+            ],
+            [
+              "R0033",
+              "R0021"
+            ],
+            [
+              "R0033",
+              "R0001"
+            ],
+            [
+              "R0033",
+              "R0024"
+            ],
+            [
+              "R0033",
+              "R0020"
+            ],
+            [
+              "R0033",
+              "R0007"
+            ],
+            [
+              "R0007",
+              "R0004"
+            ],
+            [
+              "R0007",
+              "R0001"
+            ],
+            [
+              "R0007",
+              "R0024"
+            ],
+            [
+              "R0007",
+              "R0020"
+            ]
+          ],
+          "inverted": [],
+          "idx": 421,
+          "rule": "R0037",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0032",
+              "loses_to"
+            ],
+            [
+              "R0017",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SECURITY_INCIDENT",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0017",
+              "R0032"
+            ]
+          ],
+          "inverted": [],
+          "idx": 481,
+          "rule": "R0038",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0012",
+              "beats"
+            ],
+            [
+              "R0032",
+              "loses_to"
+            ],
+            [
+              "R0002",
+              "beats"
+            ],
+            [
+              "R0029",
+              "beats"
+            ],
+            [
+              "R0028",
+              "loses_to"
+            ],
+            [
+              "R0017",
+              "loses_to"
+            ]
+          ],
+          "queues": [
+            "SELF_SERVICE_DEFLECT",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL",
+            "SECURITY_INCIDENT"
+          ],
+          "ordered": [
+            [
+              "R0012",
+              "R0002"
+            ],
+            [
+              "R0032",
+              "R0012"
+            ],
+            [
+              "R0032",
+              "R0002"
+            ],
+            [
+              "R0032",
+              "R0029"
+            ],
+            [
+              "R0029",
+              "R0002"
+            ],
+            [
+              "R0028",
+              "R0002"
+            ],
+            [
+              "R0017",
+              "R0012"
+            ],
+            [
+              "R0017",
+              "R0032"
+            ],
+            [
+              "R0017",
+              "R0002"
+            ],
+            [
+              "R0017",
+              "R0029"
+            ]
+          ],
+          "inverted": [],
+          "idx": 930,
+          "rule": "R0039",
+          "queue": "T2_TECHNICAL",
+          "refused": 0
+        },
+        {
+          "listed": [
+            [
+              "R0039",
+              "beats"
+            ],
+            [
+              "R0033",
+              "beats"
+            ],
+            [
+              "R0007",
+              "beats"
+            ]
+          ],
+          "queues": [
+            "T2_TECHNICAL",
+            "T2_TECHNICAL",
+            "T2_TECHNICAL"
+          ],
+          "ordered": [
+            [
+              "R0039",
+              "R0007"
+            ],
+            [
+              "R0033",
+              "R0007"
+            ]
+          ],
+          "inverted": [],
+          "idx": 1440,
+          "rule": "R0040",
+          "queue": "SELF_SERVICE_DEFLECT",
+          "refused": 0
+        }
+      ],
+      "refusals": [
+        {
+          "edge": [
+            "R0020",
+            "R0005"
+          ],
+          "channel": "write",
+          "side": "beats",
+          "kind": "contains",
+          "through": [
+            "R0004"
+          ],
+          "path": [
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0020",
+              "sub"
+            ]
+          ],
+          "idx": 56,
+          "rule": "R0020"
+        },
+        {
+          "edge": [
+            "R0020",
+            "R0005"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0020",
+              "sub"
+            ]
+          ],
+          "idx": 516,
+          "rule": null
+        },
+        {
+          "edge": [
+            "R0020",
+            "R0005"
+          ],
+          "channel": "order",
+          "side": null,
+          "kind": "order",
+          "through": [],
+          "path": [
+            [
+              "R0005",
+              "R0004",
+              "decl"
+            ],
+            [
+              "R0004",
+              "R0020",
+              "sub"
+            ]
+          ],
+          "idx": 626,
+          "rule": null
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": 1,
+      "what": "pooled, the slot statistic over mixed pairs has p >= 0.05",
+      "reading": 0.242376,
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "pooled, the inversion statistic has p >= 0.05",
+      "reading": 0.334567,
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "run 1's write-channel refusals for a cycle come from at most 6 births",
+      "reading": 5,
+      "holds": true
+    },
+    {
+      "clause": 4,
+      "what": "run 1's share of ordered pairs inverted is at least twice that of runs 2 and 3 pooled",
+      "reading": [
+        0.01087,
+        0.0
+      ],
+      "holds": true
+    },
+    {
+      "clause": 5,
+      "what": "at least 9 of run 1's 12 order-channel refusals for a cycle repeat a write-channel refusal",
+      "reading": 12,
+      "holds": true
+    }
+  ]
+}
