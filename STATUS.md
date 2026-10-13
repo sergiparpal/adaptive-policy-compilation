@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 12, 2026. **Not a history** — that is the four
+What is known, as of October 13, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -1313,6 +1313,12 @@ it, and the 1,929 corpus cases without it. The figures are from
   0.40 to 0.45, and among what each resolves the declared directions beat a
   coin's clearly in one run of three. The ranking pointing them fills more in
   every run.
+- **Run 1's cycles, read POST-RUN, are the base's own order contradicted, and
+  not the slot.** Every refusal at a placement in the three runs, 21 for a cycle
+  and 7 against subsumption, put below the new rule a listed rule the base
+  already ranked above it. In 16 of the 21 that order runs through a rule of the
+  new rule's own queue nested in it, which a placement never lists. The slot
+  moves nothing a test can see: p 0.24 over 128 pairs placed on opposite sides.
 
 On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
 the right queue 0.5521 of the time, the highest of the four protocols, with the

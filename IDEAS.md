@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 12, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 13, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -199,10 +199,33 @@ What that leaves:
   compiled rules costs the model accuracy is the obvious candidate. A blind
   first call with no placement, rung 1's question on rung 2's engine, would
   separate the screen from the discipline; calls.
-- **Why run 1 closed cycles.** Its placements closed 20 cycles, and its 43
-  CONFLICTs came from them; runs 2 and 3 closed 0 and 1. The records keep every
-  placement and its listing order, so whether the cycles follow the listing
-  slot is free to read.
+- ~~**Why run 1 closed cycles.**~~ **Read POST-RUN on 2026-10-13**
+  (`FINDINGS_BLIND.md`, *Why run 1 closed cycles*), and it is not the slot.
+  Every cycle at a placement is the base's own order, contradicted. The new rule
+  contains an earlier rule that subsumption ranks above it, and the answer
+  placed below the new rule a listed rule the base had already ranked above that
+  earlier one. In most of them the earlier rule is of the new rule's own queue,
+  which a placement never lists. Run 1 met more of that order than runs 2 and 3,
+  and contradicted most of it. What it leaves:
+  - **A placement that shows the order it would contradict.** The list gives
+    the rules of other queues the new rule overlaps. It shows neither the order
+    the base already holds between them and the new rule nor the rules of the
+    new rule's own queue that it contains. The answers placed most of the rules
+    already above the new one below it, as they placed most of the others.
+    Whether the proposer would agree with that order if it were shown, these
+    runs cannot say. Calls.
+  - **What the base's transitive order would decide.** A refused contradiction
+    leaves the two rules without a direct edge. Rung 2's engine reads only
+    direct defeats among the rules that match a case. So where the rule the order
+    runs through does not match, the two conflict, and that is how run 1's
+    refused cycles became CONFLICTs. An engine that read the closure would
+    decide those points. Whether it would decide them rightly is free to read
+    over the space.
+- **Classify every failure before betting on one mechanism.**
+  `blind/cycles.py`'s expectation bet two clauses on pairs inverted inside the
+  list, and none of the cycles was one. Both held, on pairs that closed nothing.
+  A reading of why something fails should name what closed each failure before
+  it bets on the rate of any one cause.
 - **A fill that does not reward resolving.** `K-d` reused `O-b`'s statistic, and
   a fill over declared edges rewards resolving as `W-c`'s count did. A next plan
   that reads a fill should set it beside the same edges pointed by a coin and by

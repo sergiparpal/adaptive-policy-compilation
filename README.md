@@ -379,6 +379,7 @@ one that is interrupted resumes where it stopped.
 python3 -m blind.run --dry-run                # K-g1..K-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m blind.score       # Stage C · K-a to K-e, and K-f
 PYTHONHASHSEED=0 python3 -m blind.readings    # POST-RUN · K-d under other directions
+PYTHONHASHSEED=0 python3 -m blind.cycles      # POST-RUN · why run 1 closed cycles
 .venv/bin/python -m blind.run --smoke         # Stage B · spends · only on Sergi's say
 .venv/bin/python -m blind.run --rep 1         # then --rep 2 and --rep 3, never in parallel
 ```
@@ -648,6 +649,7 @@ What it covers, and why those things:
 | `test_overlap.py` | the `PLAN_OVERLAP.md` instrument: §11's constants and §0's lines, the plan's text for them and the gate counting every signature line, v2e as v2 with one sentence replaced and its texts hashing to the declared fingerprint, v1e's order paragraph only on a conflict, the exempted split into `O` and `S`, the loop on small worlds — an overlap within a queue owing nothing, one across queues placed or refused, a copy, an order answer, rung 2's path with the discipline off —, rung 2's four v2 runs replayed through the loop, §0's statistics at their edges, O-b's rule for runs without room included, every writer refusing unsigned, and the smoke check. **No figure of the plan** |
 | `test_blind.py` | the `PLAN_BLIND.md` instrument: §11's constants and §0's lines, the plan's text for them and the gate counting every signature line, v2b as v2e with one paragraph added and its texts hashing to the declared fingerprint, the blind screen on an impasse and v2e's on a conflict, the same-rule check, the blind path on small worlds — a draft that meets no other queue born on one call, one that does placed in a round listing exactly those rules, and a placement that changes the rule, leaves one unplaced or never comes back refused, as are a copy, a rule off its ticket and an order on an impasse —, `PLAN_OVERLAP.md`'s runs replayed through the loop with the blind draft off, §0's statistics at their edges — keyword rules apart, each older rule once, the comparators, the split, and the rules for too few units and for runs without room —, every writer refusing unsigned, and the smoke check. **No figure of the plan** |
 | `test_blind_readings.py` | `blind/readings.py`, the POST-RUN reading of `K-d`: how each arm points an edge, an edge within a queue left as declared, what an arm resolves and gets right in the room on small worlds, the coin seeded and summarised, the run-by-run decomposition, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
+| `test_blind_cycles.py` | `blind/cycles.py`, the POST-RUN reading of why run 1 closed cycles: the fork leaving the engine untouched, the side each listed rule is placed on, the ordered and inverted pairs, why an edge closes a cycle in each of the ways a birth can close one, what the base had already decided on small worlds, the slot statistic and its seeded permutation null, the slices of the log each escalation wrote, the smoke run replayed with its forks, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1309,7 +1311,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             K-g1..K-g3 · blocking, run before any write
 │   ├── run.py               Stage B · the three runs · spends
 │   ├── score.py             Stage C · K-a to K-e, K-f, gated on PLAN_BLIND.md
-│   └── readings.py          POST-RUN · K-d under other directions
+│   ├── readings.py          POST-RUN · K-d under other directions
+│   └── cycles.py            POST-RUN · why run 1 closed cycles
 │
 ├── reuse/                U · the founding question, on rung 2's engine
 │   ├── plan.py              the gate and §10's constants; §0's five lines
