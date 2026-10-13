@@ -475,6 +475,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `blind/readings.py` | `results_blind/readings.json` | **refuses while the plan is unsigned** |
 > | `blind/cycles.py` | `results_blind/cycles.json` | **refuses while the plan is unsigned** |
 > | `blind/closure.py` | `results_blind/closure.json` | **refuses while the plan is unsigned** |
+> | `blind/yielding.py` | `results_blind/yielding.json` | **refuses while the plan is unsigned** |
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
