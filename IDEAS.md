@@ -222,12 +222,29 @@ What that leaves:
     wherever a side in contention is right, it is almost always the declaration
     the engine refused. On most of those points neither side is right. What it
     leaves:
-    - **Which edge of a cycle should yield.** When a new declaration closes a
-      cycle, the engine keeps the older order, and on run 1's contested points
-      that order was the wrong one. Subsumption does not yield. So letting the
-      new declaration stand means dropping an older declared edge of the cycle,
-      which changes the order where that edge's two rules meet. Whether the
-      trade gains is free to read over the space.
+    - ~~**Which edge of a cycle should yield.**~~ **Read POST-RUN on
+      2026-10-13** (`FINDINGS_BLIND.md`, *Which edge of a cycle should yield*),
+      on the three bases with a refusal for a cycle. Read through the closure,
+      where only direction differs, it is by age a draw beyond the keyword.
+      Letting the newer edge stand gains in run 1 and loses in run 3,
+      and both ages sit inside a coin's draws. The Stage C ranking beats 96% of
+      them, and the truth's direction every one. On the keyword half what
+      matters is that the keyword rule's edges survive. Under rung 2's engine,
+      letting the newer edge stand also resolves the CONFLICTs, and in run 1
+      sends two in three of those points to a wrong queue. What it leaves:
+      - **The ranking as the rule for which edge yields.** It is the one
+        truth-free order that beat the coin beyond the keyword, on three bases
+        with 37 refusals between them. Whether it holds on other bases needs
+        bases with cycles, which means new runs of the loop: calls.
+      - **Which edge yields also decides what rung 2's engine resolves.** The
+        ranking and the oracle leave more CONFLICT than arrival, and fewer
+        silent errors. An engine that read the closure would separate the two.
+        That is a change to the engine, not a reading.
+- **Read a reading on the plan's own surface first.** `blind/yielding.py`
+  followed `blind/closure.py` and read the whole space, where `PLAN_BLIND.md`
+  reads its rows beyond the keyword. Its three failed clauses were decided on
+  the keyword half. A POST-RUN reading of a plan should read on that plan's
+  surface first and set the rest beside it.
 - **Classify every failure before betting on one mechanism.**
   `blind/cycles.py`'s expectation bet two clauses on pairs inverted inside the
   list, and none of the cycles was one. Both held, on pairs that closed nothing.
