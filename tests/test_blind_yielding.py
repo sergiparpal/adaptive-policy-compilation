@@ -10,6 +10,8 @@ full, what changes against the arrival arm under rung 2's engine and through the
 closure, the corpus counted as it arrives, the coin's summaries and the pool,
 the hidden policy kept whole under every order, the expectation's clauses at
 their edges, and that the writer refuses unsigned before it reads or writes.
+Added after the first run: the two halves of the space adding up to the whole,
+and pooled as the whole is.
 """
 
 from __future__ import annotations
@@ -20,7 +22,7 @@ from unittest import mock
 
 from harness.domain import Case
 
-from blind import closure, plan, yielding
+from blind import closure, plan, rows, yielding
 from rung2.engine2 import (EDGE_CYCLE, EDGE_DISJOINT, EDGE_OK, PriorityEngine, Space,
                            validate_conditions)
 
@@ -194,6 +196,48 @@ class TestWhatChanges(TheCycle):
         got, _ = self.readings(self.tmask(T3, T1), mult)
         d = got["direct"]
         self.assertEqual((d["resolved_right"], d["flipped_arrival_right"]), (3, 1))
+
+
+class TestTheTwoHalves(TheCycle):
+    """Added after the first run: every count on the half of the space without
+    the keyword and on the half with it."""
+
+    def test_the_halves_add_up_to_the_whole(self):
+        tmask = self.tmask(T3, T1)
+        m = {a: yielding.masks(self.graph(a, tmask)[0], tmask) for a in ("arrival", "recency")}
+        bits = [closure.point_of(SPACE, c) for c in (
+            case(severity=2), case(severity=2, has_security_keyword=True), case(severity=1))]
+        mult = yielding.multiplicity(bits)
+        outside = rows.outside_mask(SPACE)
+        whole = yielding.reading(m["recency"], m["arrival"], mult)
+        halves = yielding.by_half(m["recency"], m["arrival"], mult, outside, SPACE.full)
+        for e in yielding.ENGINES:
+            for s in yielding.SURFACES:
+                for c in yielding.COUNTS:
+                    with self.subTest(engine=e, surface=s, count=c):
+                        self.assertEqual(whole[e][s][c], halves[e]["outside"][s][c]
+                                         + halves[e]["keyword"][s][c])
+        d = halves["direct"]
+        self.assertEqual((d["outside"]["corpus"]["resolved_right"],
+                          d["keyword"]["corpus"]["resolved_right"]), (1, 1))
+        self.assertEqual(d["outside"]["space"]["resolved_right"],
+                         (self.contested & outside).bit_count())
+
+    def test_the_halves_pool_the_bases_with_a_cycle(self):
+        counts = {c: 1 for c in yielding.COUNTS}
+        arms = {a: {e: {h: {s: dict(counts) for s in yielding.SURFACES}
+                        for h in yielding.HALVES} for e in yielding.ENGINES}
+                for a in yielding.ARMS}
+        draw = {e: {h: {s: {c: 2 for c in yielding.DRAWN} for s in yielding.SURFACES}
+                    for h in yielding.HALVES} for e in yielding.ENGINES}
+        cyc = {"cycle": True, "_halves": arms, "_draws_halves": [draw] * yielding.N_COIN}
+        got = yielding.halves_of({("v2e", 1): cyc, ("v2b", 1): cyc,
+                                  ("v1", 1): {"cycle": False, "_halves": arms}})
+        self.assertEqual(sorted(got["bases"]), ["v1 1", "v2b 1", "v2e 1"])
+        self.assertNotIn("coin", got["bases"]["v1 1"])
+        self.assertEqual(got["pooled"]["arms"]["recency"]["closure"]["keyword"]["space"]["lost"], 2)
+        coin = got["pooled"]["coin"]["outside"]["closure"]["space"]
+        self.assertEqual((coin["right"]["mean"], coin["at_least"]["oracle"]), (4, 1.0))
 
 
 class TestTheLog(unittest.TestCase):
