@@ -142,6 +142,79 @@ class TestWhyAnEdgeClosesACycle(unittest.TestCase):
                          ("contains", cycles.BELOW, ["R0001"]))
 
 
+class TestWhatTheBaseHadAlreadyDecided(unittest.TestCase):
+    """Added after the first run: the listed rules the base already ranked
+    against the new one, the side the answer put each on, and what the base's
+    order runs through."""
+
+    ACTION = {"R0001": T2, "R0002": T1, "R0003": T3}
+
+    def around(self) -> PriorityEngine:
+        # W (T2, email and api) nested in N (T3, email); X (T1, api, free)
+        # declared above W, so the base ranks X above N before N declares.
+        eng = engine_with(rule(T2, channel="email", product="api"),
+                          rule(T1, product="api", customer_tier="free"))
+        self.assertEqual(eng.try_edge("R0002", "R0001"), EDGE_OK)
+        f = cycles.fork(eng)
+        f.add(rule(T3, channel="email"), born_at=2)
+        return f
+
+    def test_a_rule_already_above_placed_below(self):
+        got = cycles.already(self.around(), "R0003", ["R0002"], {"R0002": cycles.BELOW},
+                             [("R0003", "R0002", EDGE_CYCLE)], self.ACTION)
+        self.assertEqual(got, [{"rule": "R0002", "slot": 0, "base": cycles.ABOVE,
+                                "side": cycles.BELOW, "agrees": False,
+                                "verdicts": [EDGE_CYCLE], "through": ["R0001"],
+                                "through_listed": [False], "through_own_queue": [False]}])
+
+    def test_a_rule_already_above_placed_above(self):
+        got = cycles.already(self.around(), "R0003", ["R0001", "R0002"],
+                             {"R0001": cycles.ABOVE, "R0002": cycles.ABOVE},
+                             [("R0002", "R0003", EDGE_OK), ("R0001", "R0003", EDGE_OK)],
+                             self.ACTION)
+        self.assertEqual([(a["rule"], a["agrees"], a["verdicts"], a["through"],
+                           a["through_listed"]) for a in got],
+                         [("R0001", True, [EDGE_OK], ["R0001"], [True]),
+                          ("R0002", True, [EDGE_OK], ["R0001"], [True])])
+
+    def test_a_rule_already_below_placed_above(self):
+        # N (T3, email, no keyword) nested in Z (T2, no keyword), which is
+        # declared above Y (T1, billing): the base ranks Y below N.
+        eng = engine_with(rule(T2, has_security_keyword=False), rule(T1, product="billing"))
+        self.assertEqual(eng.try_edge("R0001", "R0002"), EDGE_OK)
+        f = cycles.fork(eng)
+        f.add(rule(T3, channel="email", has_security_keyword=False), born_at=2)
+        got = cycles.already(f, "R0003", ["R0002"], {"R0002": cycles.ABOVE},
+                             [("R0002", "R0003", EDGE_CYCLE)], self.ACTION)
+        self.assertEqual([(a["base"], a["agrees"], a["verdicts"], a["through"]) for a in got],
+                         [(cycles.BELOW, False, [EDGE_CYCLE], ["R0001"])])
+
+    def test_a_rule_the_base_had_not_ranked_is_left_out(self):
+        eng = engine_with(rule(T1, product="billing"), rule(T2, customer_tier="free"))
+        f = cycles.fork(eng)
+        f.add(rule(T3, channel="email"), born_at=2)
+        self.assertEqual(cycles.already(f, "R0003", ["R0001", "R0002"],
+                                        {"R0001": cycles.BELOW, "R0002": cycles.ABOVE},
+                                        [], self.ACTION), [])
+
+    def test_the_summary(self):
+        row = {"rule": "X", "slot": 0, "base": cycles.ABOVE, "side": cycles.BELOW,
+               "agrees": False, "verdicts": [EDGE_CYCLE], "through": ["W"],
+               "through_listed": [False], "through_own_queue": [True]}
+        rounds = [{"idx": 5, "listed": [["X", cycles.BELOW], ["Y", cycles.ABOVE]],
+                   "already": [row]},
+                  {"idx": 9, "listed": [["Z", cycles.BELOW]], "already": []}]
+        got = cycles.already_summary(rounds)
+        self.assertEqual(got["births_with_one"], 1)
+        self.assertEqual(got["above"], {"rules": 1, "agree": 0, "contradict": 1,
+                                        "sides": {cycles.BELOW: 1},
+                                        "contradictions_by_verdict": {EDGE_CYCLE: 1},
+                                        "contradictions_only_through_unlisted": 1,
+                                        "contradictions_only_through_own_queue": 1})
+        self.assertEqual(got["below"]["rules"], 0)
+        self.assertEqual(got["unranked_sides"], {cycles.ABOVE: 1, cycles.BELOW: 1})
+
+
 class TestTheSlot(unittest.TestCase):
 
     def placement(self, listed, inverted=()):
