@@ -8,8 +8,9 @@ its own: *PLAN_BLIND.md singed by Sergi*. Stage B's four records,
 name in their `_env` the commits they ran from, by their hashes on the branch
 they were made on. A rebase merge gives those commits new hashes on `main` with
 the same trees, so they are named here by their subjects. Stage C's record is
-[`score.json`](score.json), and the POST-RUN reading's is
-[`readings.json`](readings.json). **This record owns every figure in it**, the
+[`score.json`](score.json), and the two POST-RUN readings' are
+[`readings.json`](readings.json) and [`cycles.json`](cycles.json). **This record
+owns every figure in it**, the
 figures the plan computed while it was drafted included: §0 declared them, and
 `K-g2` recomputed each before the signature and again before every run and the
 scoring.
@@ -71,6 +72,13 @@ commit that wrote its expectation, read `K-d` under other directions. **§0 says
 each run's own value is published beside every row's reading, and `score.json`
 pools `K-b`, `K-c` and `K-e` without giving each run's.** A decomposition was
 added after the first run, in its own commit and labelled so; the record comes
+from the second run, which gives back every figure of the first.
+
+**The second POST-RUN reading**, `blind/cycles.py`, added on 2026-10-13, ran
+twice too, each time from a clean tree. The first run, at the commit that wrote
+its expectation, read why run 1 closed cycles. **It found every one closed by a
+mechanism the expectation had not framed**, so a decomposition of what it had
+read was added after it, in its own commit and labelled so. The record comes
 from the second run, which gives back every figure of the first.
 
 ---
@@ -253,6 +261,107 @@ is where that sign would show. Reported, never adjudicated.
 
 ---
 
+## Why run 1 closed cycles — POST-RUN
+
+*Read after the verdicts existed, by `blind/cycles.py` → `cycles.json`, with its
+expectation written and committed before it ran. It moves no verdict. It reads no
+truth, so it names no surface: only the placements the runs recorded and the
+order the engine held when each was made.*
+
+Each run is replayed through `blind/loop.py` with its own answers, record for
+record, and the engine is forked at every call. Every refusal for a cycle, 32, 0
+and 3, comes back on the fork of its call, with the path that closes it.
+
+**The cycles are the base's own order, contradicted by a placement that never
+saw it.**
+
+- **Every refusal for a cycle at a placement closes the same way**: run 1's 20
+  and run 3's one. The new rule contains an earlier rule. Subsumption ranks the
+  narrower rule above the broader one, so a listed rule already ranked above that
+  earlier rule was above the new rule before the new rule declared anything. The
+  answer placed it below, and that declaration closed the cycle.
+- **They sit on five births in run 1, with 7, 5, 4, 3 and 1 refusals, and on one
+  in run 3.** Run 3's is the rule run 1 bore on the same case, 56.
+- **In 16 of the 21, the earlier rule is of the new rule's own queue**, and a
+  placement never lists those. The other five are one birth's. There the earlier
+  rule was listed, and the answer placed it below the new rule too, against
+  subsumption.
+
+The largest is `R0040`, born in run 1 on case 987: a self-service rule for the
+free tier, at severity 3 or 4, off hours. It contains `R0005`, the same rule with
+at least five prior tickets, born on case 5. Eight rules born between them had
+each been placed above `R0005` at their births: six technical, one billing, and
+the keyword rule. `R0040`'s placement put it below the keyword rule and above the
+other seven. Each of those seven declarations closed a cycle. `R0005` was never on
+the list: it is of `R0040`'s queue.
+
+**What the base had already decided.** This part was added after the first run.
+It is a decomposition of what that run read, with no expectation. On each
+placement it takes the listed rules the base had already ranked against the new
+one, before any of its declarations.
+
+| per run | 1 | 2 | 3 | pooled |
+|---|---|---|---|---|
+| births that met one | 6 | 2 | 4 | 12 |
+| listed rules already ranked above the new one | 31 | 7 | 5 | 43 |
+| of those, placed below it, against the base | 24 | 1 | 3 | 28 |
+| refused for a cycle · against subsumption | 20 · 4 | 0 · 1 | 1 · 2 | 21 · 7 |
+| listed rules not yet ranked, placed below the new one | 98 of 116 | 42 of 63 | 80 of 111 | 219 of 287 |
+
+- **No listed rule was already ranked below a new one.**
+- **Every refusal at a placement in the three runs is one of these 28, and all
+  28 were refused.** A placement was refused exactly where it contradicted an
+  order the base already held.
+- **The answers show no sign of reading that order.** They placed 0.65 of the
+  rules already above the new one below it, and 0.76 of the rules not yet
+  ranked. Of the 15 that agreed with the base, 9 are keyword rules: a listed
+  rule of `SECURITY_INCIDENT` was put above the new one 43 of the 44 times one
+  was listed.
+
+**So run 1 had more to contradict, and contradicted most of it.** Its births met
+31 listed rules already above them, against 7 and 5 in runs 2 and 3. Its cycles
+run through four early narrow rules, `R0004`, `R0005`, `R0014` and `R0015`. Many
+later rules had been placed above them, and five later, broader rules contained
+them. The proposer placed below its new rule most of what it was shown, as it
+does everywhere.
+
+**The slot moves nothing a test can see.**
+
+- **Over the 128 pairs of listed rules a placement put on opposite sides**, the
+  rule placed above the new one was listed second more often than first. That is
+  −0.17 per pair pooled, with p 0.24 against 10,000 within-round permutations,
+  and 0.64, 0.20 and 0.60 run by run.
+- **The tilt is the last slot's.** 21 of the 67 rules listed last were placed
+  above the new one, against 13 of the 67 listed first.
+- **The slot could not have decided the cycles**, because none of them is a pair
+  inside the list. Run 1 has the only three inverted pairs, and each sat on a
+  `beats` already refused for containment.
+
+**Asked again, the proposer answered the same.** All 12 of run 1's order-channel
+refusals repeat, winner and loser, a declaration refused at a placement. They fall
+on 6 distinct pairs, and three of `R0040`'s pairs account for 9. Each of run 1's 6
+accepted order edges reverses one. Run 3's two order-channel refusals both repeat
+its one.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | the slot statistic over mixed pairs, pooled, p ≥ 0.05 | 0.2424 | held |
+| 2 | the inversion statistic, pooled, p ≥ 0.05 | 0.3346, on 3 pairs | held, on pairs that closed nothing |
+| 3 | run 1's refusals from at most 6 births | 5 | held |
+| 4 | run 1's inverted share at least twice runs 2 and 3's | 0.0109 against 0 | held, on pairs that closed nothing |
+| 5 | at least 9 of run 1's 12 order refusals repeat a placement's | 12 | held |
+
+**Five of five, on a wrong frame.** The drafter assumed a cycle at a placement
+is a pair inverted inside the list, and bet clauses 2 and 4 on it. None of the 21
+is. Those two clauses held on pairs that closed no cycle, and clause 4's 0.0109
+against 0 says nothing about room. What answered the question was classifying
+every refusal by what closed it, which the reading did beside its bets. The
+decomposition above was added only after that.
+
+---
+
 ## The expectation, against the verdicts
 
 **The drafter expected `K-a`, `K-b` and `K-e` to hold and `K-c` and `K-d` to be
@@ -293,6 +402,9 @@ refuted. Two of five came out as expected**, `K-a` and `K-c`.
 - **Why the loop's figures rose.** The bundle and the date are not separated.
 - **Why run 1 closed cycles and runs 2 and 3 hardly did.** The records keep every
   placement and its listing order, so it can be read.
+  **[NOTE 2026-10-13] Read POST-RUN**, in *Why run 1 closed cycles* above, and it
+  is not the slot. Each cycle is the base's own order, contradicted by a placement
+  that never saw it, and run 1 had more of that order to contradict.
 - **One model, one corpus, three draws**, asked on three days.
 
 ---
@@ -305,6 +417,8 @@ results_blind/run_n2000_r1.json … run_n2000_r3.json   Stage B: the three runs
 results_blind/score.json               Stage C: K-a to K-e, K-f, the baselines
 results_blind/readings.json            POST-RUN: K-d under other directions, and
                                        K-b to K-e run by run
+results_blind/cycles.json              POST-RUN: why run 1 closed cycles, and what
+                                       the base had already decided
 blind/plan.py                          the gate, §11's constants, §0's lines, the
                                        figures §0 declares
 blind/protocol.py                      v2b's texts, the blind screen, the placement,
@@ -316,10 +430,13 @@ blind/gates.py                         K-g1 to K-g4
 blind/run.py                           Stage B: spends; guarded
 blind/score.py                         Stage C
 blind/readings.py                      POST-RUN: K-d under other directions
+blind/cycles.py                        POST-RUN: why run 1 closed cycles
 tests/test_blind.py                    the instrument, no figure
-tests/test_blind_readings.py           the POST-RUN reading, no figure
+tests/test_blind_readings.py           the POST-RUN reading of K-d, no figure
+tests/test_blind_cycles.py             the POST-RUN reading of the cycles, no figure
 ```
 
-Reproducible with `PYTHONHASHSEED=0 python3 -m blind.score` and
-`PYTHONHASHSEED=0 python3 -m blind.readings`, minutes, zero API calls.
+Reproducible with `PYTHONHASHSEED=0 python3 -m blind.score`,
+`PYTHONHASHSEED=0 python3 -m blind.readings` and
+`PYTHONHASHSEED=0 python3 -m blind.cycles`, minutes, zero API calls.
 `python3 -m blind.run --dry-run` runs the blocking checks and writes nothing.
