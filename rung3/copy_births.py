@@ -117,6 +117,25 @@ expectation above written before the reading and committed before it ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. No verdict
 moves. Zero API calls.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHERE EACH RULE STANDS AGAINST THE TIE THAT BORE IT
+--------------------------------------------------------------------------
+The first run found most later copies born in someone else's tie, below it, and
+the second clause failed. `against_the_tie` places every rule born on a
+CONFLICT against the finalists of the case that bore it:
+  - `above`, more conditions than they have: it alone can decide that case;
+  - `at`, as many: it joins the tie;
+  - `below`, fewer: it is out-specified on its own case.
+Each is split by alone, first and later copy. For the later copies born below
+the tie, it gives how many conditions they fall short and whether their queue is
+one of those tied. And for each status, how many rules carried the true queue of
+the case that bore them.
+
+A decomposition of what the first run read, not a measurement, and no
+expectation goes with it. Added in its own commit, after the first run of this
+module; the record comes from a second run, which must give back every figure
+of the first.
+
 Usage:  PYTHONHASHSEED=0 python3 -m rung3.copy_births
 """
 
@@ -298,6 +317,43 @@ def summary(rows: list[dict], engine: RuleEngine) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: where each rule stands against the tie
+# ---------------------------------------------------------------------------
+
+def place(row: dict) -> str | None:
+    """A rule born on a CONFLICT against the finalists that bore it: above,
+    at or below their specificity."""
+    if row["trigger"] != "CONFLICT":
+        return None
+    top = max(f[2] for f in row["finalists"])
+    return ("above" if row["specificity"] > top else
+            "at" if row["specificity"] == top else "below")
+
+
+def against_the_tie(rows: list[dict]) -> dict:
+    conflict = [r for r in rows if r["trigger"] == "CONFLICT"]
+    below_copies = [r for r in conflict if r["status"] == "later" and place(r) == "below"]
+    gaps = Counter(max(f[2] for f in r["finalists"]) - r["specificity"] for r in below_copies)
+    return {
+        "born_on_a_conflict": len(conflict),
+        "by_place": {p: sum(place(r) == p for r in conflict) for p in ("above", "at", "below")},
+        "by_status_and_place": {
+            s: {p: sum(r["status"] == s and place(r) == p for r in conflict)
+                for p in ("above", "at", "below")}
+            for s in ("alone", "first", "later")},
+        "later_copies_below": {
+            "rules": len(below_copies),
+            "conditions_short": {str(k): gaps[k] for k in sorted(gaps)},
+            "their_queue_is_a_tied_queue": sum(
+                r["queue"] in {f[1] for f in r["finalists"]} for r in below_copies)},
+        "queue_true_at_birth": {
+            s: [sum(r["queue_was_true"] for r in rows if r["status"] == s),
+                sum(r["status"] == s for r in rows)]
+            for s in ("alone", "first", "later")},
+    }
+
+
+# ---------------------------------------------------------------------------
 # The gates and the expectation
 # ---------------------------------------------------------------------------
 
@@ -371,6 +427,14 @@ def measure() -> tuple[dict, list[dict]]:
         "groups": per_group(gs, cases, record, spec),
         "expectation": read_expectation(s),
         "seconds": round(time.time() - t, 1),
+        "added_after_the_first_run": {
+            "what": "every rule born on a CONFLICT placed against the finalists that bore "
+                    "it, above, at or below their specificity, by status; the later "
+                    "copies born below, by how many conditions short and whether their "
+                    "queue is a tied one; and each status's rules that carried the true "
+                    "queue of their case. A decomposition of what the first run read, "
+                    "with no expectation",
+            "against_the_tie": against_the_tie(rows)},
     }
     return payload, gates
 
@@ -397,6 +461,11 @@ def main(argv: list[str] | None = None) -> int:
     print(f"    own tie that recurs: {s['own_tie_recurs']}")
     print(f"    later copies that ever decided a case: {s['later_copies_that_fired']}")
     print(f"  dead rules {s['dead_rules']}, of them later copies {s['dead_later_copies']}")
+    a = payload["added_after_the_first_run"]["against_the_tie"]
+    print(f"  born on a CONFLICT {a['born_on_a_conflict']}, against the tie {a['by_place']}")
+    print(f"    by status {a['by_status_and_place']}")
+    print(f"    later copies below {a['later_copies_below']}")
+    print(f"    queue true at birth {a['queue_true_at_birth']}")
     for c in payload["expectation"]:
         print(f"  clause {c['clause']}: {c['reading']}  "
               f"{'held' if c['holds'] else 'FAILED' if c['holds'] is False else 'no reading'}")
