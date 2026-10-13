@@ -518,6 +518,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `rung3/filter_headroom.py` | `results3/filter_headroom.json` | no, on purpose |
 > | `rung3/filter_space.py` | `results3/filter_space.json` | no, on purpose |
 > | `rung3/identical_rules.py` | `results3/identical_rules.json` | no, on purpose |
+> | `rung3/copy_births.py` | `results3/copy_births.json` | no, on purpose |
 >
 > **[NOTE 2026-08-30] Thirteen rows were added on this date and the table had
 > been incomplete since 2026-08-24.** `results3/FINDINGS_AUDIT.md` records the
