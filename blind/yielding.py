@@ -179,6 +179,19 @@ written before the reading and committed before it ran. Not a signed row, not on
 `STATUS.md`'s scoreboard, not a calibration event. No verdict moves. Zero API
 calls.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE TWO HALVES OF THE SPACE
+--------------------------------------------------------------------------
+The first run found the coin's mean far below every other arm's, and three
+clauses failed. `PLAN_BLIND.md` reads every row where `has_security_keyword` is
+False, and this reading had read the whole space, as `blind/closure.py` does.
+`halves` gives every count of every arm, and of every draw of the coin, on the
+half of the space without the keyword and on the half with it, and the corpus
+cases on each. A decomposition of what the first run read, not a measurement,
+and no expectation goes with it. Added in its own commit, after the first run of
+this module; the record comes from a second run, which must give back every
+figure of the first.
+
 Usage:  PYTHONHASHSEED=0 python3 -m blind.yielding
 """
 
@@ -221,6 +234,7 @@ COUNTS = ("right", "wrong", "conflict", "gained", "lost", "resolved_right",
           "resolved_wrong", "unresolved_was_right", "unresolved_was_wrong",
           "flipped_arm_right", "flipped_arrival_right", "flipped_neither")
 DRAWN = ("right", "wrong", "conflict", "gained", "lost")
+HALVES = ("outside", "keyword")    # added after the first run
 PROVENANCE = (
     "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed and after "
     "blind/closure.py read the order the refusals kept. The expectation in the "
@@ -419,7 +433,7 @@ def summary(draws: list[dict], arms: dict[str, dict]) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 def read_base(key: tuple[str, int], record: dict, space: Space, tmask: dict[str, int],
-              mult: dict[int, int]) -> dict[str, Any]:
+              mult: dict[int, int], outside: int | None = None) -> dict[str, Any]:
     decls, attributed = attribute(record)
     bare, _ = egates.rebuild_final(record, space, set())
     action = {r.rule_id: r.action for r in bare.rules}
@@ -447,15 +461,24 @@ def read_base(key: tuple[str, int], record: dict, space: Space, tmask: dict[str,
                      "refused": [brief(d) for d in g[1]],
                      **arms[a]} for a, g in graphs.items()},
     }
+    halved = outside is not None
+    if halved:
+        out["_halves"] = {a: by_half(m[a], m["arrival"], mult, outside, space.full)
+                          for a in ARMS}
     if cycle:
-        draws, refusals = [], []
+        draws, refusals, draws_halves = [], [], []
         for k in range(N_COIN):
             eng, refused = install(bare, coin_order(decls, key, k))
             full = full and acyclic_and_full(eng, refused)
-            draws.append(reading(masks(eng, tmask), m["arrival"], mult))
+            mk = masks(eng, tmask)
+            draws.append(reading(mk, m["arrival"], mult))
+            if halved:
+                draws_halves.append(by_half(mk, m["arrival"], mult, outside, space.full))
             refusals.append(len(refused))
         out["coin"] = summary(draws, arms) | {"refused_mean": statistics.mean(refusals)}
         out["_draws"] = draws
+        if halved:
+            out["_draws_halves"] = draws_halves
     out["gates"] = {
         "attributed": attributed,
         "arrival_is_the_engine": ([d["k"] for d in arrival_refused] == refused_logged
@@ -479,6 +502,51 @@ def pooled(bases: dict) -> dict[str, Any]:
             "coin": summary(draws, arms),
             "coin_right_by_draw": {e: [d[e]["space"]["right"] for d in draws]
                                    for e in ENGINES}}
+
+
+# ---------------------------------------------------------------------------
+# Added after the first run: the two halves of the space
+# ---------------------------------------------------------------------------
+
+def within(x: dict[str, Any], region: int) -> dict[str, Any]:
+    """An engine's masks, restricted to the points of `region`."""
+    return {"right": x["right"] & region, "wrong": x["wrong"] & region,
+            "conflict": x["conflict"] & region,
+            "queues": {q: m & region for q, m in x["queues"].items()}}
+
+
+def by_half(m: dict, arrival: dict, mult: dict[int, int], outside: int, full: int
+            ) -> dict[str, dict]:
+    """`reading`, on the half of the space without the keyword and on the half
+    with it, and on the corpus cases of each."""
+    regions = {"outside": outside, "keyword": full & ~outside}
+    return {e: {h: {"space": against(within(m[e], r), within(arrival[e], r), None),
+                    "corpus": against(within(m[e], r), within(arrival[e], r), mult)}
+                for h, r in regions.items()} for e in ENGINES}
+
+
+def halves_of(bases: dict) -> dict[str, Any]:
+    """Each base's arms on the two halves, the coin's summary on each, and the
+    same pooled over the bases with a cycle, draw by draw for the coin."""
+    def coin_on(draws_halves, arms_halves, h):
+        return summary([{e: d[e][h] for e in ENGINES} for d in draws_halves],
+                       {a: {e: arms_halves[a][e][h] for e in ENGINES} for a in ARMS})
+
+    out: dict[str, Any] = {}
+    for (p, r), b in bases.items():
+        one: dict[str, Any] = {"arms": b["_halves"]}
+        if b["cycle"]:
+            one["coin"] = {h: coin_on(b["_draws_halves"], b["_halves"], h) for h in HALVES}
+        out[f"{p} {r}"] = one
+    keys = [k for k, b in bases.items() if b["cycle"]]
+    arms = {a: {e: {h: {s: {c: sum(bases[k]["_halves"][a][e][h][s][c] for k in keys)
+                            for c in COUNTS} for s in SURFACES} for h in HALVES}
+                for e in ENGINES} for a in ARMS}
+    draws = [{e: {h: {s: {c: sum(bases[k]["_draws_halves"][i][e][h][s][c] for k in keys)
+                          for c in DRAWN} for s in SURFACES} for h in HALVES}
+              for e in ENGINES} for i in range(N_COIN)]
+    return {"bases": out,
+            "pooled": {"arms": arms, "coin": {h: coin_on(draws, arms, h) for h in HALVES}}}
 
 
 # ---------------------------------------------------------------------------
@@ -593,8 +661,11 @@ def main(argv: list[str] | None = None) -> int:
     mult = multiplicity(bits)
     records = {(p, r): json.loads(closure.record_path(p, r).read_text())
                for p in closure.PROTOCOLS for r in plan.BASELINE_REPS}
-    bases = {key: read_base(key, rec, space, tmask, mult) for key, rec in records.items()}
+    outside = rows.outside_mask(space)
+    bases = {key: read_base(key, rec, space, tmask, mult, outside)
+             for key, rec in records.items()}
     pool = pooled(bases)
+    halves = halves_of(bases)
     checked = check(bases, records, published, stop_zero(space, tmask), tmask, bits)
     for g in checked:
         print(f"  gate {g['gate']} {g['base']}: {'PASS' if g['passes'] else 'FAIL'}"
@@ -602,7 +673,8 @@ def main(argv: list[str] | None = None) -> int:
     if not all(g["passes"] for g in checked):
         sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
     for b in bases.values():
-        b.pop("_draws", None)
+        for k in ("_draws", "_halves", "_draws_halves"):
+            b.pop(k, None)
     READ_PATH.write_text(json.dumps(st._rounded({
         "_env": environment(),
         "plan": str(plan.PLAN),
@@ -617,6 +689,16 @@ def main(argv: list[str] | None = None) -> int:
         "bases": {f"{p} {r}": b for (p, r), b in bases.items()},
         "pooled": pool,
         "expectation": read_expectation(bases, pool),
+        "added_after_the_first_run": {
+            "what": "every count of every arm, and of every draw of the coin, on the half "
+                    "of the space without the keyword and on the half with it, and the "
+                    "corpus cases on each; a decomposition of what the first run read, "
+                    "with no expectation",
+            "surfaces": {"outside": "has_security_keyword False: 67,200 points, and the "
+                                    "1,929 corpus cases without it",
+                         "keyword": "has_security_keyword True: 67,200 points, and the "
+                                    "71 corpus cases with it"},
+            "halves": halves},
     }), indent=2, default=str) + "\n")
     print(f"\n-> {READ_PATH}\n  {describe()}")
     return 0
