@@ -2310,6 +2310,9 @@ measure how much of that it is.
 - **Why rung 1's loop wrote the same rule again.** Rung 1's record keeps each
   case's outcome and not which rules tied, so whether a copy was written on a
   case its earlier copies had sent to escalation is not read here.
+  **[NOTE 2026-10-13] Read in §19, and mostly not.** 201 of the 224 later
+  copies were born in a tie among more specific rules, below it, where their
+  earlier copies matched and were out-specified.
 - **Other bases.** The three bases `PLAN_REUSE.md`'s loop wrote at n=2000 were
   not counted.
 - **What the copies cost.** The 655 that agree change no decision. The 93 that
@@ -2327,6 +2330,134 @@ tests/test_identical_rules.py    the definitions, the census on a small world,
 
 Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.identical_rules`. Seconds,
 zero API calls.
+
+---
+
+## 19. Why rung 1's loop wrote the same rule again — below a tie it could not join
+
+*Added 2026-10-13. `rung3/copy_births.py` → `results3/copy_births.json`,
+`PYTHONHASHSEED=0`, from a clean tree, seconds, **zero API calls**.
+**POST-RUN**: asked for by §18, with an expectation written into the module and
+committed before it ran. It ran twice. The first run, at the commit that wrote
+the expectation, found most copies born below a tie. So a decomposition of every
+rule born on a CONFLICT against the tie that bore it was added after it, in its
+own commit and labelled so. The record comes from the second run, which gives
+back every figure of the first. Not a signed row, and it adjudicates nothing.*
+
+§18 found 307 of the 577 rules with a copy written the same, in 83 groups, and
+could not say why the loop wrote them: rung 1's record keeps each case's outcome
+and not which rules tied. The module replays rung 1's engine,
+`harness.dsl.RuleEngine`, used and not edited, over the 2,000 cases in the order
+the loop met them. It adds each recorded rule after its case is decided, as
+`run_shadow` does, and reads the finalists of every CONFLICT.
+
+**Four gates passed before anything was read.**
+- **The replay is the run**: every case's outcome, winner and count of matched
+  rules, and every rule's id, birth case, fire count and correct count.
+- **Every rule matches its own case**, and no case bore two.
+- **The groups are §18's**, rule for rule.
+- **A group's rules carry as many conditions as each other.**
+
+Rung 1's engine settles a case by specificity. The finalists are the matching
+rules with the most conditions. If they carry one queue the oldest wins; if they
+carry two or more, the case escalates as a CONFLICT. A later copy matches its own
+case, as every rule must, so its earlier copies matched it too. **So every later
+copy was born on a CONFLICT, and none can ever decide a case**: wherever it is a
+finalist, an older copy as specific as it is one too.
+
+### Whose tie bore the copies
+
+| the 224 later copies, at the case that bore them | |
+|---|---|
+| born on a CONFLICT | 224 |
+| in the group's own tie: an earlier copy among the finalists | 23 |
+| of those, with a finalist outside the group | 23 |
+| of those, followed by another CONFLICT with a rule of the group among the finalists | 19 |
+| in someone else's tie: the earlier copies matched and were out-specified | 201 |
+| ever decided a case | 0 |
+
+- **Nearly every copy was born below the tie that called it.** In 201 of 224
+  the finalists were more specific rules, tied among themselves. The copy fell
+  one condition short of them in 125, two in 58 and three in 18. It carried one
+  of the tied queues in 176.
+- **The group's own ties rarely bore a copy.** After each group's first rule,
+  its rules were among the finalists of 480 CONFLICTs. Those bore a copy of the
+  group 23 times, another rule 428 times, and nothing 29 times. The groups'
+  rules decided 447 cases, all by their first rule.
+- **The copies are 224 of the 486 rules that never fired.**
+- **They are not worse answers.** A copy carried the true queue of the ticket
+  that bore it in 90 of 224. Rules that are no copy did so in 115 of 270, and
+  the first rules of groups in 39 of 83.
+
+### The loop asked for a rule that could settle the case, and almost never got one
+
+*Added after the first run, from what it read.*
+
+| rules born on a CONFLICT, against the finalists of the case that bore them | above | at | below | all |
+|---|---|---|---|---|
+| alone, no copy | 35 | 98 | 113 | 246 |
+| the first of a group | 1 | 17 | 52 | 70 |
+| a later copy | 0 | 23 | 201 | 224 |
+| all | 36 | 138 | 366 | 540 |
+
+- **Only a rule with more conditions than the tie can settle the case that bore
+  it**, and 36 of the 540 had them.
+- **138 joined the tie, and 366 were out-specified on their own case.**
+- **The model never saw what that would take.** Rung 1's proposer is handed the
+  ticket alone, under the heading *TICKET EN IMPASSE*, whatever escalated it
+  (`harness/proposers.py`). It is shown neither the rules that tied nor how many
+  conditions they carry.
+
+So the loop wrote the same rule again because specific rules disagreed on a
+ticket and the engine sent it back. The model, seeing the ticket alone, wrote the
+generic rule for that kind of ticket. It was often there already, and as generic
+as it was, it could not enter the tie.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | every later copy born on a CONFLICT | 224 of 224 | held |
+| 2 | in at least three quarters, in the group's own tie | 23 of 224, 0.1027 | **failed** |
+| 3 | of those, at least half with a finalist outside the group | 23 of 23 | held |
+| 4 | of those, at least three quarters followed by another such CONFLICT | 19 of 23, 0.8261 | held |
+| 5 | no later copy ever decided a case | none did | held |
+
+**The bet on the question failed, by a long way.** The drafter took a copy for
+the engine's own unresolvable tie, answered again by a model that never saw it.
+Mostly it is the other way round. A copy is the model's generic answer to a tie
+among more specific rules, which a rule that generic cannot enter. The first and
+fifth clauses were close to known from the engine. The third and fourth rest on
+the 23 copies born in their own tie.
+
+### What it settles, and what it does not
+
+**What it settles.**
+- **Why the loop wrote the same rule again.** Specific rules disagreed, the
+  case escalated, and the model, shown the ticket alone, answered with a rule
+  already in the base, too generic to settle the case.
+- **Why the copies are dead**: by the engine's rules a later copy cannot decide
+  a case, and 201 of them were born unable to decide even their own.
+- **A fact about rung 1's loop beyond the copies.** Of the 540 rules born on a
+  CONFLICT, 36 could settle the case that bore them. Under specificity a CONFLICT
+  is settled only by a more specific rule, and the loop never told the model so.
+
+**What it does not settle.**
+- **What a model shown the tie would write.** Rung 2 showed the base, under
+  another engine, and its proposer partitioned. On rung 1's engine it would take
+  a new run: calls.
+
+**Files added by this section**
+
+```
+rung3/copy_births.py             the replay, what bore each rule, the gates
+results3/copy_births.json        the record, every birth listed with its finalists
+tests/test_copy_births.py        the replay and the classification on a run
+                                 worked by hand, the gates, the expectation
+```
+
+Reproducible with `PYTHONHASHSEED=0 python3 -m rung3.copy_births`. Seconds, zero
+API calls.
 
 ---
 
