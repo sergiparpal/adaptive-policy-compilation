@@ -214,13 +214,20 @@ What that leaves:
     already above the new one below it, as they placed most of the others.
     Whether the proposer would agree with that order if it were shown, these
     runs cannot say. Calls.
-  - **What the base's transitive order would decide.** A refused contradiction
-    leaves the two rules without a direct edge. Rung 2's engine reads only
-    direct defeats among the rules that match a case. So where the rule the order
-    runs through does not match, the two conflict, and that is how run 1's
-    refused cycles became CONFLICTs. An engine that read the closure would
-    decide those points. Whether it would decide them rightly is free to read
-    over the space.
+  - ~~**What the base's transitive order would decide.**~~ **Read POST-RUN on
+    2026-10-13** (`FINDINGS_BLIND.md`, *What the base's transitive order would
+    decide*), on the twelve paid bases of the loop. Under a forced placement an
+    engine that read the closure resolves every CONFLICT, and under v1 it
+    resolves almost none. In v2b's run 1 it would decide them against the truth:
+    wherever a side in contention is right, it is almost always the declaration
+    the engine refused. On most of those points neither side is right. What it
+    leaves:
+    - **Which edge of a cycle should yield.** When a new declaration closes a
+      cycle, the engine keeps the older order, and on run 1's contested points
+      that order was the wrong one. Subsumption does not yield. So letting the
+      new declaration stand means dropping an older declared edge of the cycle,
+      which changes the order where that edge's two rules meet. Whether the
+      trade gains is free to read over the space.
 - **Classify every failure before betting on one mechanism.**
   `blind/cycles.py`'s expectation bet two clauses on pairs inverted inside the
   list, and none of the cycles was one. Both held, on pairs that closed nothing.

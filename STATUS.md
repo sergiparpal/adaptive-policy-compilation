@@ -1319,6 +1319,12 @@ it, and the 1,929 corpus cases without it. The figures are from
   already ranked above it. In 16 of the 21 that order runs through a rule of the
   new rule's own queue nested in it, which a placement never lists. The slot
   moves nothing a test can see: p 0.24 over 128 pairs placed on opposite sides.
+- **And the order those refusals kept is the wrong one, read POST-RUN.** An
+  engine that read the base's transitive closure would resolve every one of
+  run 1's 1,825 CONFLICT points over the space. It would be right on 10, where
+  the declarations the engine refused are right on 535; on the other 1,280
+  neither side is. Run 3's 60 points go the other way. Without a forced
+  placement, under v1, the closure resolves under 4% of the CONFLICTs.
 
 On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
 the right queue 0.5521 of the time, the highest of the four protocols, with the
