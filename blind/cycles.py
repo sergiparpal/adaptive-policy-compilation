@@ -119,6 +119,28 @@ before the reading and committed before it ran. Not a signed row, not on
 `STATUS.md`'s scoreboard, not a calibration event. No verdict moves. Zero API
 calls.
 
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHAT THE BASE HAD ALREADY DECIDED
+--------------------------------------------------------------------------
+The first run found every refusal for a cycle to be `contains`: a `beats` from
+a new rule to a listed rule that already reached it, through an earlier rule
+nested in the new one. None was an inverted pair, so the pairs the first
+statistics read are not what closed the cycles. `already` reads what did, on
+each placement that bore a rule, on the fork with the new rule born and none of
+its declarations installed: the listed rules the base already ranked **above**
+the new rule, through a rule nested in it or by being nested in it, and those it
+already ranked **below**, through a rule it is nested in or by containing it.
+For each, the side the answer put it on, whether that side agrees with the
+base, the verdict the engine gave the declaration, and the rules the base's
+order runs through, whether the list showed them and whether they are of the
+new rule's own queue, which the placement never lists. Beside them, the sides
+of the listed rules the base had not ranked against the new one.
+
+A decomposition of the records the first run read, not a measurement, and no
+expectation goes with it. Added in its own commit, after the first run of this
+module; the record comes from a second run, which must give back every figure
+of the first.
+
 Usage:  PYTHONHASHSEED=0 python3 -m blind.cycles
 """
 
@@ -320,6 +342,66 @@ def reinstall(engine: PriorityEngine, entries: list, channels: list[str],
     return refusals, same
 
 
+def already(engine: PriorityEngine, new: str, listed: list[str], side: dict[str, str],
+            entries: list, action: dict[str, str]) -> list[dict[str, Any]]:
+    """The listed rules the base had already ranked against the new one, read on
+    its fork before any of its declarations: above it, through a rule nested in
+    it, or below it, through a rule it is nested in. With the side the answer
+    put each on, the verdict the engine gave that declaration, and the rules the
+    base's order runs through. Added after the first run."""
+    logged: dict[tuple[str, str], str] = {}
+    for w, l, why in entries:
+        logged.setdefault((w, l), why)
+    out = []
+    for slot, rid in enumerate(listed):
+        s = side.get(rid)
+        if s is None:
+            continue
+        if engine._reaches(rid, new):
+            base = ABOVE
+            through = sorted(w for w in engine.sub_below[new]
+                             if w == rid or engine._reaches(rid, w))
+        elif engine._reaches(new, rid):
+            base = BELOW
+            through = sorted(z for z in engine.sub_above[new]
+                             if z == rid or engine._reaches(z, rid))
+        else:
+            continue
+        edges = (([(new, rid)] if s in (BELOW, BOTH) else [])
+                 + ([(rid, new)] if s in (ABOVE, BOTH) else []))
+        out.append({"rule": rid, "slot": slot, "base": base, "side": s,
+                    "agrees": s == base,
+                    "verdicts": [logged.get(edge) for edge in edges],
+                    "through": through,
+                    "through_listed": [t in listed for t in through],
+                    "through_own_queue": [action.get(t) == action.get(new) for t in through]})
+    return out
+
+
+def already_summary(rounds: list[dict]) -> dict[str, Any]:
+    """`already` over a run's placements, beside the sides of the listed rules
+    the base had not ranked against the new one. Added after the first run."""
+    rows = [a for r in rounds for a in r["already"]]
+
+    def tally(base: str) -> dict[str, Any]:
+        sel = [a for a in rows if a["base"] == base]
+        bad = [a for a in sel if not a["agrees"]]
+        return {"rules": len(sel), "agree": len(sel) - len(bad), "contradict": len(bad),
+                "sides": dict(sorted(collections.Counter(str(a["side"]) for a in sel).items())),
+                "contradictions_by_verdict": dict(sorted(collections.Counter(
+                    str(v) for a in bad for v in a["verdicts"]).items())),
+                "contradictions_only_through_unlisted": sum(
+                    1 for a in bad if a["through"] and not any(a["through_listed"])),
+                "contradictions_only_through_own_queue": sum(
+                    1 for a in bad if a["through"] and all(a["through_own_queue"]))}
+
+    ranked = {(r["idx"], a["rule"]) for r in rounds for a in r["already"]}
+    free = [s for r in rounds for rid, s in r["listed"] if (r["idx"], rid) not in ranked]
+    return {"births_with_one": sum(bool(r["already"]) for r in rounds),
+            "above": tally(ABOVE), "below": tally(BELOW),
+            "unranked_sides": dict(sorted(collections.Counter(str(s) for s in free).items()))}
+
+
 def read_segment(seg: dict, record: dict, corpus, action: dict[str, str]) -> dict[str, Any]:
     """One escalation on its fork: the rule it bore, if any, the placement it
     made, and the refusals for a cycle it logged."""
@@ -343,6 +425,7 @@ def read_segment(seg: dict, record: dict, corpus, action: dict[str, str]) -> dic
                 "queues": [action[rid] for rid in x["listed"]],
                 "ordered": [list(q) for q in pairs],
                 "inverted": [list(q) for q in inverted(pairs, side)]}
+            out["already"] = already(f, new, x["listed"], side, entries, action)
     refusals, same = reinstall(f, entries, channels, new)
     out.update(refusals=refusals, verdicts_ok=same,
                quiet_ok=x["verdict"] in (e.BORN, e.ORDER) or not entries)
@@ -442,9 +525,10 @@ def read_run(record: dict, space: Space, corpus) -> dict[str, Any]:
             for s in segments(record, proposer.forks)]
     listing_ok = all(x["listed"] == p.listing(x["calls"][0]["overlapped"], x["idx"], 0)
                      for x in record["escalations"] if x["kind"] == "IMPASSE" and x["listed"])
+    placed_segs = [s for s in segs if s["placement"] is not None]
     rounds = [dict(s["placement"], idx=s["idx"], rule=s["rule"], queue=s["queue"],
                    refused=sum(r["channel"] == e.WRITE for r in s["refusals"]))
-              for s in segs if s["placement"] is not None]
+              for s in placed_segs]
     refusals = [dict(r, idx=s["idx"], rule=s.get("rule"))
                 for s in segs for r in s["refusals"]]
     write = [r for r in refusals if r["channel"] == e.WRITE]
@@ -510,6 +594,10 @@ def read_run(record: dict, space: Space, corpus) -> dict[str, Any]:
         "by_slot": by_slot(rounds),
         "rounds": rounds,
         "refusals": refusals,
+        "added": {"already_decided": already_summary(
+                      [dict(r, already=s["already"]) for r, s in zip(rounds, placed_segs)]),
+                  "already": {str(s["idx"]): s["already"] for s in placed_segs
+                              if s["already"]}},
     }
 
 
@@ -590,8 +678,10 @@ def main(argv: list[str] | None = None) -> int:
     if not all(g["passes"] for g in checked):
         sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
     tests = slot_test(rounds, N_PERM, PERM_SEED)
-    by_run = {str(rep): {k: v for k, v in r.items() if k != "gates"}
+    by_run = {str(rep): {k: v for k, v in r.items() if k not in ("gates", "added")}
               for rep, r in runs.items()}
+    with_already = [dict(r, already=runs[rep]["added"]["already"].get(str(r["idx"]), []))
+                    for rep in runs for r in runs[rep]["rounds"]]
     READ_PATH.write_text(json.dumps(st._rounded({
         "_env": environment(),
         "plan": str(plan.PLAN),
@@ -610,6 +700,13 @@ def main(argv: list[str] | None = None) -> int:
         "by_slot_pooled": by_slot([r for rep in rounds for r in rounds[rep]]),
         "runs": by_run,
         "expectation": read_expectation(tests, by_run),
+        "added_after_the_first_run": {
+            "what": "what the base had already decided: the listed rules the base "
+                    "already ranked above or below the new rule before any of its "
+                    "declarations, the side the answer put each on, and the rules the "
+                    "base's order runs through; a decomposition, with no expectation",
+            "runs": {str(rep): r["added"] for rep, r in runs.items()},
+            "pooled": already_summary(with_already)},
     }), indent=2, default=str) + "\n")
     print(f"\n-> {READ_PATH}\n  {describe()}")
     return 0
