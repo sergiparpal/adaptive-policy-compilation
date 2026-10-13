@@ -1,0 +1,1415 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-13T12:46:24Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ff79bc0f085656f55534a536004f9f14e54d9da6",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "3f046bae5970aa13"
+  },
+  "plan": "PLAN_BLIND.md",
+  "provenance": "POST-RUN: asked for after PLAN_BLIND.md's verdicts existed and after blind/cycles.py named the mechanism. The expectation in the module's docstring was written before the reading and committed before it ran. Not a signed row; no verdict moves.",
+  "source": {
+    "records": {
+      "v1 1": "results_reuse/run_n2000_r1.json",
+      "v1 2": "results_reuse/run_n2000_r2.json",
+      "v1 3": "results_reuse/run_n2000_r3.json",
+      "v1e 1": "results_authorship/run_n2000_r1.json",
+      "v1e 2": "results_authorship/run_n2000_r2.json",
+      "v1e 3": "results_authorship/run_n2000_r3.json",
+      "v2e 1": "results_overlap/run_n2000_r1.json",
+      "v2e 2": "results_overlap/run_n2000_r2.json",
+      "v2e 3": "results_overlap/run_n2000_r3.json",
+      "v2b 1": "results_blind/run_n2000_r1.json",
+      "v2b 2": "results_blind/run_n2000_r2.json",
+      "v2b 3": "results_blind/run_n2000_r3.json"
+    },
+    "score": "results_blind/score.json",
+    "overlap_score": "results_overlap/score.json"
+  },
+  "surfaces": {
+    "space": "the exhaustive space, 134,400 points, uniform",
+    "corpus": "the 2,000 cases of seed 17, as they arrive"
+  },
+  "constants": {
+    "COIN_BAND": 0.1,
+    "MAX_GAIN": 0.01,
+    "ranking": [
+      "SECURITY_INCIDENT",
+      "ONCALL_ESCALATION",
+      "ACCOUNT_MANAGER",
+      "T3_ENGINEERING",
+      "BILLING_SPECIALIST",
+      "T2_TECHNICAL",
+      "SELF_SERVICE_DEFLECT",
+      "T1_GENERAL"
+    ]
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "base": "v1 1",
+      "what": "the engine is the published one",
+      "measured": 0.3,
+      "published": 0.3,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1 1",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1 1",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1 1",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v1 2",
+      "what": "the engine is the published one",
+      "measured": 0.383333,
+      "published": 0.3833,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1 2",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1 2",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1 2",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v1 3",
+      "what": "the engine is the published one",
+      "measured": 0.780599,
+      "published": 0.7806,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1 3",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1 3",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1 3",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v1e 1",
+      "what": "the engine is the published one",
+      "measured": 1.0,
+      "published": 1.0,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1e 1",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1e 1",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1e 1",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v1e 2",
+      "what": "the engine is the published one",
+      "measured": 0.579826,
+      "published": 0.5798,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1e 2",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1e 2",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1e 2",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v1e 3",
+      "what": "the engine is the published one",
+      "measured": null,
+      "published": null,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v1e 3",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v1e 3",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v1e 3",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2e 1",
+      "what": "the engine is the published one",
+      "measured": 0.732015,
+      "published": 0.732015,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2e 1",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2e 1",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2e 1",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2e 2",
+      "what": "the engine is the published one",
+      "measured": 1.0,
+      "published": 1.0,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2e 2",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2e 2",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2e 2",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2e 3",
+      "what": "the engine is the published one",
+      "measured": null,
+      "published": null,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2e 3",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2e 3",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2e 3",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2b 1",
+      "what": "the engine is the published one",
+      "measured": 0.712417,
+      "published": 0.712417,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2b 1",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2b 1",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2b 1",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2b 2",
+      "what": "the engine is the published one",
+      "measured": 0.746709,
+      "published": 0.746709,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2b 2",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2b 2",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2b 2",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "base": "v2b 3",
+      "what": "the engine is the published one",
+      "measured": 0.756298,
+      "published": 0.756298,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "base": "v2b 3",
+      "what": "the masks are the engine",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "base": "v2b 3",
+      "what": "the closure changes no decision",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "base": "v2b 3",
+      "what": "the truth is the records'",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "base": "the hidden policy",
+      "what": "STOP 0 through the closure",
+      "measured": {
+        "space": 1.0,
+        "corpus": 1.0
+      },
+      "passes": true
+    }
+  ],
+  "bases": {
+    "v1 1": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 34440,
+          "resolved": 1260,
+          "closure": 840,
+          "overruled": 420,
+          "neither": 0,
+          "coin": 630.0,
+          "ranking": 840,
+          "in_refused_regions": 0,
+          "direct_correct": 41160,
+          "closure_correct": 42000
+        },
+        "shares": {
+          "closure": 0.666667,
+          "overruled": 0.333333,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.666667,
+          "in_refused_regions": 0.0,
+          "resolved_of_conflicts": 0.036585,
+          "e2e": 0.30625,
+          "e2e_closure": 0.3125,
+          "gain": 0.00625
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 12,
+          "resolved": 1,
+          "closure": 1,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 1,
+          "in_refused_regions": 0,
+          "direct_correct": 807,
+          "closure_correct": 808,
+          "n": 2000,
+          "coin": 0.5
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 1.0,
+          "in_refused_regions": 0.0,
+          "resolved_of_conflicts": 0.083333,
+          "e2e": 0.4035,
+          "e2e_closure": 0.404,
+          "gain": 0.0005
+        }
+      },
+      "rules": 62,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v1 2": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 11340,
+          "resolved": 420,
+          "closure": 420,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 210.0,
+          "ranking": 420,
+          "in_refused_regions": 0,
+          "direct_correct": 39660,
+          "closure_correct": 40080
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 1.0,
+          "in_refused_regions": 0.0,
+          "resolved_of_conflicts": 0.037037,
+          "e2e": 0.295089,
+          "e2e_closure": 0.298214,
+          "gain": 0.003125
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 1,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 894,
+          "closure_correct": 894,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": 0.0,
+          "e2e": 0.447,
+          "e2e_closure": 0.447,
+          "gain": 0.0
+        }
+      },
+      "rules": 31,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v1 3": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 2520,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 74400,
+          "closure_correct": 74400
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": 0.0,
+          "e2e": 0.553571,
+          "e2e_closure": 0.553571,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 1,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 1049,
+          "closure_correct": 1049,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": 0.0,
+          "e2e": 0.5245,
+          "e2e_closure": 0.5245,
+          "gain": 0.0
+        }
+      },
+      "rules": 42,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v1e 1": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 58100,
+          "closure_correct": 58100
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.432292,
+          "e2e_closure": 0.432292,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 720,
+          "closure_correct": 720,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.36,
+          "e2e_closure": 0.36,
+          "gain": 0.0
+        }
+      },
+      "rules": 41,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v1e 2": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 40720,
+          "closure_correct": 40720
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.302976,
+          "e2e_closure": 0.302976,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 793,
+          "closure_correct": 793,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.3965,
+          "e2e_closure": 0.3965,
+          "gain": 0.0
+        }
+      },
+      "rules": 120,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v1e 3": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 19480,
+          "closure_correct": 19480
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.14494,
+          "e2e_closure": 0.14494,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 622,
+          "closure_correct": 622,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.311,
+          "e2e_closure": 0.311,
+          "gain": 0.0
+        }
+      },
+      "rules": 30,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2e 1": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 1580,
+          "resolved": 1580,
+          "closure": 950,
+          "overruled": 630,
+          "neither": 0,
+          "coin": 790.0,
+          "ranking": 950,
+          "in_refused_regions": 1580,
+          "direct_correct": 69430,
+          "closure_correct": 70380
+        },
+        "shares": {
+          "closure": 0.601266,
+          "overruled": 0.398734,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.601266,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.516592,
+          "e2e_closure": 0.523661,
+          "gain": 0.007068
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 1,
+          "resolved": 1,
+          "closure": 1,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 1,
+          "direct_correct": 724,
+          "closure_correct": 725,
+          "n": 2000,
+          "coin": 0.5
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.0,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.362,
+          "e2e_closure": 0.3625,
+          "gain": 0.0005
+        }
+      },
+      "rules": 55,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2e 2": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 66920,
+          "closure_correct": 66920
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.497917,
+          "e2e_closure": 0.497917,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 697,
+          "closure_correct": 697,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.3485,
+          "e2e_closure": 0.3485,
+          "gain": 0.0
+        }
+      },
+      "rules": 41,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2e 3": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 38680,
+          "closure_correct": 38680
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.287798,
+          "e2e_closure": 0.287798,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 980,
+          "closure_correct": 980,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.49,
+          "e2e_closure": 0.49,
+          "gain": 0.0
+        }
+      },
+      "rules": 11,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2b 1": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 1825,
+          "resolved": 1825,
+          "closure": 10,
+          "overruled": 535,
+          "neither": 1280,
+          "coin": 272.5,
+          "ranking": 520,
+          "in_refused_regions": 1825,
+          "direct_correct": 75635,
+          "closure_correct": 75645
+        },
+        "shares": {
+          "closure": 0.005479,
+          "overruled": 0.293151,
+          "neither": 0.70137,
+          "coin": 0.149315,
+          "ranking": 0.284932,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.56276,
+          "e2e_closure": 0.562835,
+          "gain": 7.4e-05
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 23,
+          "resolved": 23,
+          "closure": 3,
+          "overruled": 17,
+          "neither": 3,
+          "ranking": 16,
+          "in_refused_regions": 23,
+          "direct_correct": 1060,
+          "closure_correct": 1063,
+          "n": 2000,
+          "coin": 10.0
+        },
+        "shares": {
+          "closure": 0.130435,
+          "overruled": 0.73913,
+          "neither": 0.130435,
+          "coin": 0.434783,
+          "ranking": 0.695652,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.53,
+          "e2e_closure": 0.5315,
+          "gain": 0.0015
+        }
+      },
+      "rules": 45,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2b 2": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 0.0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 82720,
+          "closure_correct": 82720
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.615476,
+          "e2e_closure": 0.615476,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 1078,
+          "closure_correct": 1078,
+          "n": 2000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.539,
+          "e2e_closure": 0.539,
+          "gain": 0.0
+        }
+      },
+      "rules": 28,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    },
+    "v2b 3": {
+      "space": {
+        "counts": {
+          "n": 134400,
+          "conflicts": 60,
+          "resolved": 60,
+          "closure": 60,
+          "overruled": 0,
+          "neither": 0,
+          "coin": 30.0,
+          "ranking": 0,
+          "in_refused_regions": 60,
+          "direct_correct": 76405,
+          "closure_correct": 76465
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.0,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.56849,
+          "e2e_closure": 0.568936,
+          "gain": 0.000446
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 2,
+          "resolved": 2,
+          "closure": 2,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 2,
+          "direct_correct": 980,
+          "closure_correct": 982,
+          "n": 2000,
+          "coin": 1.0
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.0,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.49,
+          "e2e_closure": 0.491,
+          "gain": 0.001
+        }
+      },
+      "rules": 40,
+      "acyclic": true,
+      "gates": {
+        "reinstall_problems": [],
+        "masks_are_the_engine": true,
+        "no_decision_changes": true
+      }
+    }
+  },
+  "pooled": {
+    "v1": {
+      "space": {
+        "counts": {
+          "conflicts": 48300,
+          "resolved": 1680,
+          "closure": 1260,
+          "overruled": 420,
+          "neither": 0,
+          "ranking": 1260,
+          "in_refused_regions": 0,
+          "direct_correct": 155220,
+          "closure_correct": 156480,
+          "n": 403200,
+          "coin": 840.0
+        },
+        "shares": {
+          "closure": 0.75,
+          "overruled": 0.25,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.75,
+          "in_refused_regions": 0.0,
+          "resolved_of_conflicts": 0.034783,
+          "e2e": 0.38497,
+          "e2e_closure": 0.388095,
+          "gain": 0.003125
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 14,
+          "resolved": 1,
+          "closure": 1,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 1,
+          "in_refused_regions": 0,
+          "direct_correct": 2750,
+          "closure_correct": 2751,
+          "n": 6000,
+          "coin": 0.5
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 1.0,
+          "in_refused_regions": 0.0,
+          "resolved_of_conflicts": 0.071429,
+          "e2e": 0.458333,
+          "e2e_closure": 0.4585,
+          "gain": 0.000167
+        }
+      }
+    },
+    "v1e": {
+      "space": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 118300,
+          "closure_correct": 118300,
+          "n": 403200,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.293403,
+          "e2e_closure": 0.293403,
+          "gain": 0.0
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 0,
+          "resolved": 0,
+          "closure": 0,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 0,
+          "direct_correct": 2135,
+          "closure_correct": 2135,
+          "n": 6000,
+          "coin": 0.0
+        },
+        "shares": {
+          "closure": null,
+          "overruled": null,
+          "neither": null,
+          "coin": null,
+          "ranking": null,
+          "in_refused_regions": null,
+          "resolved_of_conflicts": null,
+          "e2e": 0.355833,
+          "e2e_closure": 0.355833,
+          "gain": 0.0
+        }
+      }
+    },
+    "v2e": {
+      "space": {
+        "counts": {
+          "conflicts": 1580,
+          "resolved": 1580,
+          "closure": 950,
+          "overruled": 630,
+          "neither": 0,
+          "ranking": 950,
+          "in_refused_regions": 1580,
+          "direct_correct": 175030,
+          "closure_correct": 175980,
+          "n": 403200,
+          "coin": 790.0
+        },
+        "shares": {
+          "closure": 0.601266,
+          "overruled": 0.398734,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.601266,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.434102,
+          "e2e_closure": 0.436458,
+          "gain": 0.002356
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 1,
+          "resolved": 1,
+          "closure": 1,
+          "overruled": 0,
+          "neither": 0,
+          "ranking": 0,
+          "in_refused_regions": 1,
+          "direct_correct": 2401,
+          "closure_correct": 2402,
+          "n": 6000,
+          "coin": 0.5
+        },
+        "shares": {
+          "closure": 1.0,
+          "overruled": 0.0,
+          "neither": 0.0,
+          "coin": 0.5,
+          "ranking": 0.0,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.400167,
+          "e2e_closure": 0.400333,
+          "gain": 0.000167
+        }
+      }
+    },
+    "v2b": {
+      "space": {
+        "counts": {
+          "conflicts": 1885,
+          "resolved": 1885,
+          "closure": 70,
+          "overruled": 535,
+          "neither": 1280,
+          "ranking": 520,
+          "in_refused_regions": 1885,
+          "direct_correct": 234760,
+          "closure_correct": 234830,
+          "n": 403200,
+          "coin": 302.5
+        },
+        "shares": {
+          "closure": 0.037135,
+          "overruled": 0.28382,
+          "neither": 0.679045,
+          "coin": 0.160477,
+          "ranking": 0.275862,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.582242,
+          "e2e_closure": 0.582416,
+          "gain": 0.000174
+        }
+      },
+      "corpus": {
+        "counts": {
+          "conflicts": 25,
+          "resolved": 25,
+          "closure": 5,
+          "overruled": 17,
+          "neither": 3,
+          "ranking": 16,
+          "in_refused_regions": 25,
+          "direct_correct": 3118,
+          "closure_correct": 3123,
+          "n": 6000,
+          "coin": 11.0
+        },
+        "shares": {
+          "closure": 0.2,
+          "overruled": 0.68,
+          "neither": 0.12,
+          "coin": 0.44,
+          "ranking": 0.64,
+          "in_refused_regions": 1.0,
+          "resolved_of_conflicts": 1.0,
+          "e2e": 0.519667,
+          "e2e_closure": 0.5205,
+          "gain": 0.000833
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": 1,
+      "what": "under v1e, v2e and v2b the closure resolves every CONFLICT point over the space, in every run with one",
+      "reading": {
+        "v1e 1": null,
+        "v1e 2": null,
+        "v1e 3": null,
+        "v2e 1": 1.0,
+        "v2e 2": null,
+        "v2e 3": null,
+        "v2b 1": 1.0,
+        "v2b 2": null,
+        "v2b 3": 1.0
+      },
+      "holds": true
+    },
+    {
+      "clause": 2,
+      "what": "under v1 it resolves less than half of them, in every run with one",
+      "reading": {
+        "v1 1": 0.036585,
+        "v1 2": 0.037037,
+        "v1 3": 0.0
+      },
+      "holds": true
+    },
+    {
+      "clause": 3,
+      "what": "pooled over v2b, the closure's share right on the resolved points is within 0.10 of a coin's",
+      "reading": [
+        0.037135,
+        0.160477
+      ],
+      "holds": false
+    },
+    {
+      "clause": 4,
+      "what": "pooled over v2b, the Stage C ranking is right on more of the resolved points than the closure",
+      "reading": [
+        0.275862,
+        0.037135
+      ],
+      "holds": true
+    },
+    {
+      "clause": 5,
+      "what": "in every v2b run the closure adds less than 0.01 to the end to end over the space",
+      "reading": {
+        "v2b 1": 7.4e-05,
+        "v2b 2": 0.0,
+        "v2b 3": 0.000446
+      },
+      "holds": true
+    }
+  ]
+}
