@@ -177,6 +177,7 @@ python3 -m rung3.answer_asymmetry  # why it names rule_b more often
 python3 -m rung3.filter_headroom   # how much any selection could have shown
 python3 -m rung3.filter_space      # the same cuts, scored on the space
 python3 -m rung3.identical_rules   # rules written twice, with two queues
+python3 -m rung3.copy_births       # why rung 1 wrote them again
 ```
 
 The two scorings of that thread take the records it produced, so they carry
@@ -1243,7 +1244,8 @@ adaptive-policy-compilation/
 │   ├── answer_asymmetry.py  the a/b asymmetry, and the position effect
 │   ├── filter_headroom.py   how much any selection of the edges could have shown
 │   ├── filter_space.py      the same selections, scored over the space
-│   └── identical_rules.py   rules written twice, with two queues
+│   ├── identical_rules.py   rules written twice, with two queues
+│   └── copy_births.py       why rung 1's loop wrote them again
 │
 ├── sensitivity/          A · a family of synthetic manuals, swept by ρ
 │   ├── generator.py         counts permuted, bodies drawn from the manual's own

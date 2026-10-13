@@ -971,6 +971,13 @@ POST-RUN, a census
 ([`FINDINGS3.md`](results3/FINDINGS3.md) §18,
 [`identical_rules.json`](results3/identical_rules.json)).
 
+**And the copies were written below ties they could not join.** Replayed, rung
+1's engine bore every later copy on a CONFLICT, 201 of 224 of them in a tie among
+more specific rules, and none of them ever decided a case. Of the 540 rules born
+on a CONFLICT, 36 had more conditions than the tie that bore them, the only ones
+that could settle that case. POST-RUN ([`FINDINGS3.md`](results3/FINDINGS3.md)
+§19, [`copy_births.json`](results3/copy_births.json)).
+
 **Nothing chooses better than chance, and B-b's line was never reachable at that
 budget.** Truth-free rules for dropping declared edges — keep the proposer's
 self-consistent core, keep only where it contradicts its own majority — all sit
