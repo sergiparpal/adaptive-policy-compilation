@@ -6,8 +6,9 @@ its own: *PLAN_SCREEN.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
-**Stage A ran on 2026-10-14, and nothing is adjudicated yet.** The four rows
-wait for Stage B's answers without a screen.
+**Stage A ran on 2026-10-14, and nothing is adjudicated yet.** Stage B's smoke
+session passed the same day. The four rows wait for the anchor and the
+ticket-only session.
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Row `V-e` carries no band.
 > Its pilot half reproduces figures the drafter computed with a scratch probe
@@ -109,9 +110,45 @@ session, each on Sergi's word, each record committed before the next.
 
 ---
 
+## Stage B
+
+Sergi gave the go-ahead for the smoke session on 2026-10-14, and for nothing
+beyond it. Each later session waits for its own go-ahead (§8).
+
+**The smoke session passed and opens the others.** `screen.ask --session smoke`,
+2026-10-14, with `PYTHONHASHSEED=0`, from Stage A's commit and a clean tree. The
+checks of §8 ran in order before any call.
+
+- **The key** was an API key OpenRouter accepts, not a management key.
+- **`V-g1` to `V-g4` passed**, with the suite green at 1,599 tests.
+- **Stage A's record held** the same sessions, prompts and decisions the checks
+  rebuilt.
+
+What came back:
+
+- **All 10 answers were valid**: five ticket-only prompts and five anchor
+  prompts, each in one attempt.
+- **Every call carried `reasoning: {"effort": "none"}`**, and so does the record.
+- **Every attempt's `finish_reason` was recorded, and all ten were `stop`.** This
+  is the first record of the thread to keep one; `PLAN_FIDELITY.md`'s never did.
+- **The partial file was gone once the record was written.**
+
+The record is [`ask_smoke.json`](ask_smoke.json). Its answers enter no row, and
+none is read here.
+
+**The pace.** The calls took 2.49 s at the median, from 1.96 to 17.51 s, and
+39.7 s in all. At that median the anchor's 300 calls would take about 13 minutes
+and the ticket-only session's 2,368 about 1.6 hours. Ten calls are few, so the
+planning figures stay §1's: about half an hour and 2.5 hours.
+
+---
+
 ## Files
 
 ```
-results_screen/sample.json   Stage A: the checks, the populations, the sessions
-                             with every prompt's digest, and V-e's free half
+results_screen/sample.json       Stage A: the checks, the populations, the
+                                 sessions with every prompt's digest, and V-e's
+                                 free half
+results_screen/ask_smoke.json    Stage B, the smoke session: 10 of 10 valid;
+                                 it opens the other sessions and enters no row
 ```

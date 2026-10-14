@@ -1,0 +1,723 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-14T19:36:26Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ac5425aea5819e2e2749014b52d62564e8ef5a5c",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a098bff761543c70"
+  },
+  "plan": "PLAN_SCREEN.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "temperature": 0,
+  "max_tokens": 1200,
+  "max_retries": 2,
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "sample_record": "results_screen/sample.json",
+  "sample_sha256": "094c4ee2592c7a581d6506d4dc108e7fc92252a3a8e57f40d2d58a299324fd1a",
+  "gates": {
+    "V-g1": {
+      "what": "the suite is green; PLAN_FIDELITY.md's F-g1 to F-g3 pass and its Stage A record is the design they rebuild; its Stage C, re-run in memory, gives back its score.json; and every session record is under its protocol, behind its Stage A record",
+      "fidelity_checks": {
+        "F-g1": true,
+        "F-g2": true,
+        "F-g3": true
+      },
+      "first_problems": [],
+      "suite": {
+        "ran": true,
+        "tests": 1599,
+        "result": "OK (skipped=1)",
+        "seconds": 88.6,
+        "passes": true
+      },
+      "passes": true
+    },
+    "V-g2": {
+      "what": "every ticket-only prompt is v1's empty-base rendering, and the one F-f asked where it asked one; every anchor prompt is F-f's B prompt, rebuilt; the plurality is defined for every decision",
+      "prompts": {
+        "hidden": 300,
+        "ticket_only": 1184
+      },
+      "tickets_asked_by_F_f": 301,
+      "first_problems": [],
+      "passes": true
+    },
+    "V-g3": {
+      "what": "the pilot is the first 100 of each draw; the held-out decisions are \u00a70's, on tickets F-f never asked, each with a screen and at most 5% without two valid answers with it; the tickets are \u00a70's; and each session asks what \u00a71 says",
+      "per_run": {
+        "run1": {
+          "pilot": 100,
+          "held_out": 429,
+          "held_out_lacking_two_answers_with_the_screen": 3
+        },
+        "run2": {
+          "pilot": 100,
+          "held_out": 405,
+          "held_out_lacking_two_answers_with_the_screen": 0
+        },
+        "run3": {
+          "pilot": 100,
+          "held_out": 425,
+          "held_out_lacking_two_answers_with_the_screen": 2
+        }
+      },
+      "tickets": 1184,
+      "tickets_asked_by_F_f": 301,
+      "first_problems": [],
+      "passes": true
+    },
+    "V-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_SCREEN.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_SCREEN.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-14T19:35:45Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-14T19:36:26Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 0,
+      "id": "t:757",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 757,
+      "digest": "a66aa3765b3b97bb",
+      "shown_ids": [],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Cliente business con severidad media-alta en producto mobile requiere soporte t\u00e9cnico especializado, independientemente del canal o idioma."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "ACCOUNT_MANAGER",
+        "rare": null,
+        "serves": [
+          {
+            "run": 2,
+            "idx": 757,
+            "population": "held_out"
+          }
+        ]
+      },
+      "seconds": 2.12,
+      "asked_at": "2026-10-14T19:35:47Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 1,
+      "id": "t:567",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 567,
+      "digest": "cfda8e705760c665",
+      "shown_ids": [],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Cliente enterprise con severidad alta (2) en dashboard merece atenci\u00f3n t\u00e9cnica directa, ya que es un producto core y el tier es prioritario."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "rare": null,
+        "serves": [
+          {
+            "run": 2,
+            "idx": 567,
+            "population": "held_out"
+          },
+          {
+            "run": 3,
+            "idx": 567,
+            "population": "held_out"
+          }
+        ]
+      },
+      "seconds": 3.32,
+      "asked_at": "2026-10-14T19:35:51Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 2,
+      "id": "t:454",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 454,
+      "digest": "ba1c424362603d74",
+      "shown_ids": [],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Billing issues with high severity (1-2) require a billing specialist; this rule is specific to billing product and high severity, and since the rule base is empty, no priority conflicts exist."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "BILLING_SPECIALIST",
+        "rare": null,
+        "serves": [
+          {
+            "run": 2,
+            "idx": 454,
+            "population": "held_out"
+          }
+        ]
+      },
+      "seconds": 2.17,
+      "asked_at": "2026-10-14T19:35:53Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 3,
+      "id": "t:1575",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 1575,
+      "digest": "6cb695a615646cb8",
+      "shown_ids": [],
+      "action": "T1_GENERAL",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 3
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "channel",
+            "op": "eq",
+            "value": "portal"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Ticket de baja severidad, cliente business, producto dashboard, canal portal, fuera de horario laboral. Se asigna a cola general (T1) por no requerir especializaci\u00f3n t\u00e9cnica ni de seguridad. La regla es generalizable a cualquier ticket con severidad >=3 (baja), cliente business, producto dashboard, canal portal y fuera de horario, ya que en ese contexto no hay indicios de urgencia ni necesidad de escalado."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T1_GENERAL",
+        "rare": null,
+        "serves": [
+          {
+            "run": 2,
+            "idx": 1575,
+            "population": "held_out"
+          },
+          {
+            "run": 3,
+            "idx": 1575,
+            "population": "held_out"
+          }
+        ]
+      },
+      "seconds": 2.51,
+      "asked_at": "2026-10-14T19:35:55Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 4,
+      "id": "t:773",
+      "kind": "ticket_only",
+      "run": null,
+      "idx": 773,
+      "digest": "a34655737e780716",
+      "shown_ids": [],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "in",
+            "value": [
+              "api"
+            ]
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          },
+          {
+            "attr": "customer_tier",
+            "op": "neq",
+            "value": "enterprise"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Cubre tickets de API con severidad media o baja para clientes no enterprise, que requieren soporte t\u00e9cnico. Se abstrae a nivel de producto y severidad, dejando fuera casos cr\u00edticos (severity 1-2) que podr\u00edan necesitar ingenier\u00eda, y enterprise que tienen su propia cola."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "rare": null,
+        "serves": [
+          {
+            "run": 3,
+            "idx": 773,
+            "population": "pilot"
+          }
+        ]
+      },
+      "seconds": 1.96,
+      "asked_at": "2026-10-14T19:35:57Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 5,
+      "id": "d1:1662",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 1662,
+      "digest": "de5cd152a6077538",
+      "shown_ids": [
+        "R0006",
+        "R0001",
+        "R0033",
+        "R0021",
+        "R0018",
+        "R0030",
+        "R0028",
+        "R0029",
+        "R0019",
+        "R0031",
+        "R0032",
+        "R0036"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es business, integrations, severity 4. La regla R0030 cubre pro+integrations+severity>=4, y R0019 cubre business+integrations+severity<=3. Ninguna regla existente cubre business+integrations+severity>=4, por lo que se crea esta nueva regla que es un caso particular de business+integrations (no hay regla general que la contenga) y no se solapa con R0030 (difieren en customer_tier) ni con R0019 (severity opuesta). No necesita declarar prioridad."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "rule_id": "R0025",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": true
+      },
+      "seconds": 2.47,
+      "asked_at": "2026-10-14T19:36:00Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 6,
+      "id": "d2:519",
+      "kind": "hidden",
+      "run": 2,
+      "idx": 519,
+      "digest": "cb93cae4cbe5b253",
+      "shown_ids": [
+        "R0005",
+        "R0006",
+        "R0001",
+        "R0020",
+        "R0025",
+        "R0027",
+        "R0023",
+        "R0007",
+        "R0004",
+        "R0003",
+        "R0015",
+        "R0010"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un cliente pro con producto api y severidad 4. No existe una regla que cubra exactamente esta combinaci\u00f3n. La regla m\u00e1s cercana es R0023 (business + api) y R0010 (business + api + severity <=3). Dado que pro es un tier inferior a business, pero el producto api es t\u00e9cnico, se asigna a T2_TECHNICAL. Esta regla es un caso particular de R0006 (pro + billing) y R0020 (pro + dashboard), pero no est\u00e1 contenida en ninguna regla existente, por lo que no necesita declarar prioridad."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "rule_id": "R0019",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": true
+      },
+      "seconds": 2.35,
+      "asked_at": "2026-10-14T19:36:02Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 7,
+      "id": "d3:288",
+      "kind": "hidden",
+      "run": 3,
+      "idx": 288,
+      "digest": "d001cb3b011ff22f",
+      "shown_ids": [
+        "R0002",
+        "R0001",
+        "R0015",
+        "R0021",
+        "R0013",
+        "R0016",
+        "R0024",
+        "R0023",
+        "R0026",
+        "R0028",
+        "R0008",
+        "R0004"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de un cliente business con producto dashboard y severidad 4. No casa ninguna regla existente: las reglas para dashboard con severidad 4 cubren free (R0015) y pro (R0021), pero no business. La regla general R0001 (enterprise) no aplica. Se crea una regla espec\u00edfica para business + dashboard + severidad 4 que deriva a T2_TECHNICAL, ya que business tiene soporte t\u00e9cnico y dashboard es un producto t\u00e9cnico. No hay solapamiento con reglas existentes porque business no est\u00e1 cubierto por ninguna regla de dashboard con severidad 4, y la regla no es un subconjunto de ninguna otra (business no es enterprise ni free ni pro)."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "ACCOUNT_MANAGER",
+        "rule_id": "R0029",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": false
+      },
+      "seconds": 17.51,
+      "asked_at": "2026-10-14T19:36:20Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 8,
+      "id": "d1:1794",
+      "kind": "hidden",
+      "run": 1,
+      "idx": 1794,
+      "digest": "280d2e51c25e7e02",
+      "shown_ids": [
+        "R0001",
+        "R0010",
+        "R0024",
+        "R0011",
+        "R0021",
+        "R0014",
+        "R0020",
+        "R0017",
+        "R0025",
+        "R0031",
+        "R0032",
+        "R0036"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es business, integrations, severity 2. La regla R0025 cubre business+integrations con severity >=4, pero no aplica aqu\u00ed. No hay regla exacta para business+integrations+severity<=3, por lo que se crea una nueva regla que cubre este caso y futuros an\u00e1logos. No hay solapamiento conflictivo con otras reglas porque las reglas existentes para business con otros productos (dashboard, billing, api, mobile) no contienen ni se solapan con integrations, y la regla R0025 es para severity>=4, que es disjunta."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T3_ENGINEERING",
+        "rule_id": "R0019",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": false
+      },
+      "seconds": 2.57,
+      "asked_at": "2026-10-14T19:36:23Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 9,
+      "id": "d3:1864",
+      "kind": "hidden",
+      "run": 3,
+      "idx": 1864,
+      "digest": "e0af6f67b738a45c",
+      "shown_ids": [
+        "R0008",
+        "R0001",
+        "R0014",
+        "R0013",
+        "R0020",
+        "R0029",
+        "R0016",
+        "R0024",
+        "R0022",
+        "R0028",
+        "R0031",
+        "R0035"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          }
+        ],
+        "beats": [],
+        "loses_to": [
+          "R0013"
+        ],
+        "note": "El ticket es de producto api, severidad 4 y tier business. No existe una regla exacta para este caso. Las reglas existentes para api con severidad >=4 cubren free y pro, pero no business. La regla general R0001 (enterprise) no aplica. La regla R0013 (seguridad) no aplica. Se crea una regla que cubre api, severidad >=4, business, derivando a T2_TECHNICAL, similar a las reglas existentes para otros tiers. Esta regla es un caso particular de R0013 (seguridad) si existiera, pero como no hay conflicto con otras reglas, solo se declara que pierde frente a R0013 para evitar ambig\u00fcedad futura."
+      },
+      "failure": null,
+      "attempts": 1,
+      "finish_reasons": [
+        "stop"
+      ],
+      "attempt_errors": [
+        null
+      ],
+      "labels": {
+        "truth": "T2_TECHNICAL",
+        "rule_id": "R0023",
+        "rule_action": "T2_TECHNICAL",
+        "rule_right": true
+      },
+      "seconds": 2.73,
+      "asked_at": "2026-10-14T19:36:26Z"
+    }
+  ]
+}
