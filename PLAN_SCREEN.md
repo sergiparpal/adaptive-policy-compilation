@@ -84,8 +84,11 @@ count of tickets in this plan is by key.
 
 **`V-b` to `V-d` are read on the median over the three bases.** Each run's value
 is published beside it, with its finite-population standard error over that
-run's decided cases. **`V-a` is read pooled**: it is about one instrument, not
-three bases. **A verdict within one standard error of its line is labelled
+run's decided cases: the correction is the held-out set's sampling fraction in
+its run. A row over part of the held-out set, `V-c` or a cell of `V-d`, takes
+the same fraction, since that part of the run is sampled at the same rate.
+**`V-a` is read pooled**: it is about one instrument, not three bases, and its
+standard errors are its items' alone, as `F-a`'s were. **A verdict within one standard error of its line is labelled
 *thin*** beside the verdict, and the label does not change the verdict. For a
 median, the standard error used is the median run's. The pooled value of every
 median row is published beside it and adjudicates nothing.
@@ -93,10 +96,10 @@ median row is published beside it and adjudicates nothing.
 **When a run has no value, and what the median then is.** `PLAN_AUTHORSHIP.md`'s
 `E-c` left this to its scorer and lost its verdict to it, so it is settled here.
 
-- **A run has no value** for `V-b` if more than 5% of its held-out decisions lack
-  the four valid answers below. For `V-c`, if fewer than 100 of its decisions
-  have `t₁ ≠ p`. For a clause of `V-d`, if that clause's cell holds fewer than 50
-  decisions.
+- **A run has no value** for any of `V-b` to `V-d` if more than 5% of its
+  held-out decisions lack the four valid answers below. Beyond that, it has none
+  for `V-c` if fewer than 100 of its decisions have `t₁ ≠ p`, and none for a
+  clause of `V-d` if that clause's cell holds fewer than 50 decisions.
 - **The median is over the runs that have a value**: the middle one of three, the
   mean of two. Over two, the standard error that decides *thin* is the larger of
   the two runs'. With fewer than two, the row is unadjudicable, and the record
