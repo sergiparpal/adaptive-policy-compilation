@@ -129,7 +129,7 @@ median row is published beside it and adjudicates nothing.
 | **V-d** | **What the screen does to accuracy follows its plurality.** Where the plurality is the true queue the screen helps the model, and where it is not the screen costs it | Per run, over the held-out decisions. *Clause 1*, on those with `p = y`: `½(1[b₁=y] + 1[b₂=y]) − ½(1[t₁=y] + 1[t₂=y])`. *Clause 2*, on those with `p ≠ y`: the same with the sign reversed. Each clause on its own median, and both must hold | **> 0**, both | **≤ 0**, either |
 | **V-e** | *Reported, not adjudicated.* **What the drafter could not band** | The rare classes in counts. The table by true queue. The pilot asked on one day under both arms. Each base's net beside its share `p = y`. Every changed answer classified by what the screen changed it to. `finish_reason` on every call | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-14)**
 
 **Why `V-e` cannot carry a band.**
 
