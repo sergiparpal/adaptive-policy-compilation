@@ -12,7 +12,9 @@ call.
         * Its Stage C, re-run here in memory with `fidelity.score`'s own
           functions on its session records, gives back
           `results_fidelity/score.json`: the verdicts, the births, every run's
-          rows and standard errors, and F-f's ticket-only arm.
+          rows and standard errors, and F-f's ticket-only arm. Floats agree to
+          FLOAT_REL_TOL, because another interpreter may round a standard
+          deviation one unit in the last place away.
         * Every one of those session records carries its plan's protocol and
           the digest of its Stage A record.
   V-g2  The prompts are `PLAN_FIDELITY.md`'s.
@@ -241,6 +243,31 @@ def _norm(x: Any) -> Any:
     return json.loads(json.dumps(x))
 
 
+# How close two floats must be to count as the same figure. The interpreter that
+# wrote PLAN_FIDELITY.md's record and the one re-running its Stage C may round a
+# standard deviation differently: Python 3.11 changed how `statistics.stdev`
+# takes its square root, and on 3.10 three of the record's standard errors come
+# back one or two units in the last place away (CI, 2026-10-14). Any real change
+# to an input moves a figure by far more than this.
+FLOAT_REL_TOL = 1e-12
+FLOAT_ABS_TOL = 1e-15
+
+
+def same(a: Any, b: Any) -> bool:
+    """Equal, structure for structure, with floats compared to FLOAT_REL_TOL.
+    A bool is never a number here, and an int is compared exactly."""
+    if isinstance(a, bool) or isinstance(b, bool):
+        return type(a) is type(b) and a == b
+    if isinstance(a, float) or isinstance(b, float):
+        return (isinstance(a, (int, float)) and isinstance(b, (int, float))
+                and math.isclose(a, b, rel_tol=FLOAT_REL_TOL, abs_tol=FLOAT_ABS_TOL))
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(same(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(same(x, y) for x, y in zip(a, b))
+    return a == b
+
+
 def fidelity_stage_c(fid: fidelity_sample.Design, found: dict[str, dict]) -> list[str]:
     """`PLAN_FIDELITY.md`'s Stage C, re-run in memory with its own functions,
     against the record it wrote. Every difference is a problem."""
@@ -254,16 +281,16 @@ def fidelity_stage_c(fid: fidelity_sample.Design, found: dict[str, dict]) -> lis
                                          fidelity_bases(found))
     stored = json.loads(plan.FIDELITY_SCORE.read_text())
     differs = []
-    if _norm(verdicts) != stored.get("verdicts"):
+    if not same(_norm(verdicts), stored.get("verdicts")):
         differs.append("its verdicts")
-    if _norm(births) != stored.get("births"):
+    if not same(_norm(births), stored.get("births")):
         differs.append("its births")
     stored_runs = {r.get("run"): r for r in stored.get("runs", [])}
     for r in per_run:
         for part in ("rows", "standard_errors"):
-            if _norm(r[part]) != stored_runs.get(r["run"], {}).get(part):
+            if not same(_norm(r[part]), stored_runs.get(r["run"], {}).get(part)):
                 differs.append(f"run {r['run']}'s {part}")
-    if _norm(arm) != (stored.get("F-f") or {}).get("ticket_only"):
+    if not same(_norm(arm), (stored.get("F-f") or {}).get("ticket_only")):
         differs.append("F-f's ticket-only arm")
     return [f"re-run in memory, PLAN_FIDELITY.md's Stage C does not give back {d}"
             for d in differs]
