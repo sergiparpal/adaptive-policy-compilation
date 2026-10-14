@@ -481,6 +481,9 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `fidelity/sample.py` | `results_fidelity/sample.json` | **refuses while the plan is unsigned** |
 > | `fidelity/ask.py` | `results_fidelity/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `fidelity/score.py` | `results_fidelity/score.json` | **refuses while the plan is unsigned** |
+> | `screen/sample.py` | `results_screen/sample.json` | **refuses while the plan is unsigned** |
+> | `screen/ask.py` | `results_screen/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
+> | `screen/score.py` | `results_screen/score.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
@@ -547,7 +550,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `why/score.py --dry-run`, which runs `PLAN_WHY.md`'s, and
 > `authorship/run.py --dry-run`, which runs `PLAN_AUTHORSHIP.md`'s, and
 > `overlap/run.py --dry-run`, which runs `PLAN_OVERLAP.md`'s, and
-> `blind/run.py --dry-run`, which runs `PLAN_BLIND.md`'s.
+> `blind/run.py --dry-run`, which runs `PLAN_BLIND.md`'s, and the three of
+> `screen/`, which run `PLAN_SCREEN.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes

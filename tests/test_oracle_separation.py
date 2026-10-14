@@ -75,6 +75,11 @@ ONLINE_LOOP = [
     "blind/protocol.py",
     "blind/loop.py",
     "blind/run.py",
+    # Added 2026-10-14 with PLAN_SCREEN.md. `ask.py` sends rung 2's proposer
+    # requests, built by `fidelity/prompts.py`, which is watched above. The
+    # labels it carries into a record are copied from PLAN_REUSE.md's records,
+    # never computed.
+    "screen/ask.py",
 ]
 
 
@@ -169,7 +174,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
                      "ilp", "reuse", "fidelity", "edges", "primacy", "why",
-                     "authorship", "overlap", "blind"):
+                     "authorship", "overlap", "blind", "screen"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
