@@ -47,7 +47,7 @@ deference. Its sign would then belong to the base rather than to the model.
 `PLAN_FIDELITY.md`'s Stage B records hold its 1,841 screen prompts, each asked
 twice, with every label. Two things are bought:
 
-- **Two answers without a screen** on each of the 1,319 tickets its draw and
+- **Two answers without a screen** on each of the 1,184 tickets its draw and
   census hold.
 - **One re-ask of 300 screen prompts**, to check that the old answers are still
   the model's.
@@ -74,8 +74,13 @@ asked is the model, about cases that arrived.
   no other row.
 - **The held-out decisions** are positions 100 to 599 of each run's uniform draw,
   less every decision whose ticket `PLAN_FIDELITY.md`'s ticket-only session
-  asked. That leaves 448, 434 and 447. Nobody has an answer without a screen on
+  asked. That leaves 429, 405 and 425. Nobody has an answer without a screen on
   any of their tickets. `V-b` to `V-d` are read on them and on nothing else.
+
+**A ticket is its attributes**, `Case.key()`, as `PLAN_FIDELITY.md` keyed its
+ticket-only arm. The corpus repeats tickets, and two cases with the same
+attributes get the same prompt without a screen, so they are one ticket. Every
+count of tickets in this plan is by key.
 
 **`V-b` to `V-d` are read on the median over the three bases.** Each run's value
 is published beside it, with its finite-population standard error over that
@@ -93,9 +98,10 @@ median row is published beside it and adjudicates nothing.
   have `t₁ ≠ p`. For a clause of `V-d`, if that clause's cell holds fewer than 50
   decisions.
 - **The median is over the runs that have a value**: the middle one of three, the
-  mean of two. With fewer than two, the row is unadjudicable, and the record says
-  so. For `V-d`, each clause is taken on its own; if either is unadjudicable, so
-  is the row.
+  mean of two. Over two, the standard error that decides *thin* is the larger of
+  the two runs'. With fewer than two, the row is unadjudicable, and the record
+  says so. For `V-d`, each clause is taken on its own; if either is
+  unadjudicable, so is the row.
 
 **Notation**, per held-out decision.
 
@@ -105,8 +111,8 @@ median row is published beside it and adjudicates nothing.
 - **`b₁` and `b₂`** are its two answers to the decision's B prompt, given on
   2026-10-02 or 03.
 - **`t₁` and `t₂`** are the two answers without a screen that this plan buys, on
-  the decision's ticket, in pass 1 and pass 2. A ticket decided in more than one
-  run lends both to each.
+  the decision's ticket, in pass 1 and pass 2. A ticket that serves more than one
+  decision lends both to each.
 - **`p`** is the screen's plurality action: `fidelity.prompts.plurality` on the B
   prompt, the commonest action shown, a tie going to the action shown first.
 - **An answer is *valid*** as in `PLAN_FIDELITY.md` §5.5. **A decision enters a
@@ -185,11 +191,15 @@ auditable.**
     | `T3_ENGINEERING` | 21 | 0, both right on 2 |
     | `ACCOUNT_MANAGER` | 17 | −0.176, `t` right on none and `b₁` on 3 |
 - **The counts that size this plan**, which read no label.
-  - The draw and census hold 1,319 distinct tickets, among them all 301 that
-    `F-f` asked.
-  - The held-out decisions number 448, 434 and 447. Of them, 443, 434 and 445
-    have two valid answers with the screen.
+  - The draw and census hold 1,184 distinct tickets, among them all 301 that
+    `F-f` asked. The pilot's 300 decisions are on 276 of them.
+  - The held-out decisions number 429, 405 and 425. Of them, 426, 405 and 423
+    have two valid answers with the screen. They are on 883 tickets, of which
+    303 serve more than one decision.
   - No held-out screen is empty. They show 4 to 12 rules, 12 at the median.
+  - The probe's per-decision spreads, which §2.2 plans on: 0.484 for `V-b`'s
+    difference, 0.429 and 0.476 in `V-d`'s two cells, and 0.498 for the raw
+    pull.
 
 **Not seen, because nobody has computed them**:
 
@@ -305,19 +315,19 @@ Three sessions, sequential, in this order:
 |---|---|---|---|---|
 | smoke | five ticket-only prompts and five anchor prompts | 10 | 1 | 10 |
 | anchor | the 300 pilot B prompts, rebuilt verbatim — `V-a`'s screen clause | 300 | 1 | 300 |
-| ticket only | every ticket of `PLAN_FIDELITY.md`'s draw and census, under v1 with an empty base — `V-a`'s first clause, `V-b` to `V-e` | 1,319 | 2 | 2,638 |
+| ticket only | every ticket of `PLAN_FIDELITY.md`'s draw and census, under v1 with an empty base — `V-a`'s first clause, `V-b` to `V-e` | 1,184 | 2 | 2,368 |
 
-**Cost: 2,948 calls, plus any parse retries.** That is about two thirds of
+**Cost: 2,678 calls, plus any parse retries.** That is about three fifths of
 `PLAN_FIDELITY.md`'s Stage B. All of its 328 ticket-only calls returned a valid
 answer, so retries should be few.
 
 **Time.** At `PLAN_FIDELITY.md`'s own pace by the wall clock:
 
-- **Ticket only**: 3.8 s an answer, so about 2.8 hours.
+- **Ticket only**: 3.8 s an answer, so about 2.5 hours.
 - **Anchor**: 4.5 to 5.9 s an answer, so about half an hour.
 
-About 3.3 hours in all. At the slowest pace on record, 12.6 s a call, it is about
-10 hours. **Both long sessions outlive a background command of the agent's
+About 3 hours in all. At the slowest pace on record, 12.6 s a call, it is about
+9.4 hours. **Both long sessions outlive a background command of the agent's
 harness**, which ends at about half an hour. So they run in Sergi's terminal, as
 `CLAUDE.md` says.
 
@@ -332,13 +342,13 @@ It is the constraint the others work inside.
 ### 2.1 The held-out decisions — the drafter recommends the strict set
 
 **Strict, as §0 defines it.** Positions 100 to 599 of each draw, less every
-decision whose ticket `F-f` asked: 448, 434 and 447 decisions.
+decision whose ticket `F-f` asked: 429, 405 and 425 decisions.
 
 **Positional, the alternative.** Positions 100 to 599, all 1,500. It adds about
-170 decisions and shrinks each run's standard error by about 6%. But 150 of its
-tickets were asked without a screen on 2026-10-03, and their answers are in the
-aggregates the drafter has read. The pilot is a development set. A held-out set
-that shares about one ticket in eight with it would be one only in part.
+240 decisions and shrinks each run's standard error by about 8%. But 176 of its
+1,059 tickets were asked without a screen on 2026-10-03, and their answers are in
+the aggregates the drafter has read. The pilot is a development set. A held-out
+set that shares about one ticket in six with it would be one only in part.
 
 **What the strict set gives up**: the 27 rare-class tickets, all of which `F-f`
 asked. They are a census, counted and never rated, in `V-e`.
@@ -352,15 +362,16 @@ shares and spreads:
 
 | row | per run, about | planning s.e. a run | the pilot, by run | the pilot's median run, in planning s.e. |
 |---|---|---|---|---|
-| `V-b` | 434 to 448 decisions | 0.020 | +0.130 · +0.030 · +0.025 | 1.5 from 0 |
-| `V-c` | 215 to 315 with `t₁ ≠ p` | 0.03 | 0.534 · 0.660 · 0.243, raw | about 14 above 0.10, before the baseline |
-| `V-d`, clause 1 | 105 to 175 with `p = y` | 0.035 | +0.077 · +0.250 · +0.167 | 4.8 from 0 |
-| `V-d`, clause 2 | 260 to 340 with `p ≠ y` | 0.026 | +0.203 · +0.217 · +0.092 | 7.8 from 0 |
+| `V-b` | 405 to 429 decisions | 0.021 | +0.130 · +0.030 · +0.025 | 1.4 from 0 |
+| `V-c` | 200 to 300 with `t₁ ≠ p` | 0.03 | 0.534 · 0.660 · 0.243, raw | about 14 above 0.10, before the baseline |
+| `V-d`, clause 1 | 100 to 160 with `p = y` | 0.035 | +0.077 · +0.250 · +0.167 | 4.8 from 0 |
+| `V-d`, clause 2 | 240 to 320 with `p ≠ y` | 0.025 | +0.203 · +0.217 · +0.092 | 8.1 from 0 |
 
 This is planning arithmetic, not figures. Three assumptions lie behind it:
 
-- **`V-b`'s spread is the pilot's**, 0.484 a decision, with one answer without a
-  screen. Two answers should lower it a little.
+- **The spreads are the pilot's**, with one answer without a screen: 0.484 a
+  decision for `V-b`, 0.429 and 0.476 in `V-d`'s cells, 0.498 for the raw pull.
+  Two answers should lower them a little.
 - **The pilot's shares stand in for the held-out set's**: of `t ≠ p`, and of
   `p = y`. Stage A measures them after the signature.
 - **The pilot's per-run values are not truths.** Each carries a standard error
@@ -389,8 +400,8 @@ second clause and the pilot read on one day in `V-e`, and leaves the old answers
 assumed current.
 
 **Why not re-ask every held-out decision with its screen instead**, which would
-put both arms on one day? It adds about 2,600 calls and four hours, to settle
-what the anchor tests for a tenth of that. If `V-a` fails, that is the next plan.
+put both arms on one day? It adds about 2,500 calls and four hours, to settle
+what the anchor tests for an eighth of that. If `V-a` fails, that is the next plan.
 
 ### 2.5 No placebo arm — the drafter recommends against one
 
@@ -473,11 +484,11 @@ E. **What the model writes beyond its `action` is recorded and never executed.**
 
 ## 5. Known traps
 
-**5.1 — One ticket, several decisions.** A ticket decided in two runs lends its
-two answers without a screen to both. So the three runs' values share answers
-and are not independent draws, as `F-e`'s seven tickets were not. The median
-adjudicates anyway. Stage C publishes how many held-out tickets serve more than
-one run.
+**5.1 — One ticket, several decisions.** A ticket that serves two decisions lends
+its two answers without a screen to both: 303 of the 883 tickets behind the
+held-out decisions do. So the three runs' values share answers and are not
+independent draws, as `F-e`'s seven tickets were not. The median adjudicates
+anyway. Stage C publishes how many tickets serve decisions in more than one run.
 
 **5.2 — Two dates in one comparison.** `V-b` to `V-d` set answers of 2026-10-02
 and 03 against answers of the day this plan runs. `V-a` is what licenses that,
@@ -539,7 +550,7 @@ figure exists.**
     verdict, every per-run value and the `F-f` block.
   - Every session record carries `sample.json`'s digest.
 - **V-g2 — The prompts are `PLAN_FIDELITY.md`'s.**
-  - **Ticket only.** For every one of the 1,319 tickets,
+  - **Ticket only.** For every one of the 1,184 tickets,
     `fidelity.prompts.ticket_only` builds a prompt that passes
     `check_ticket_only`. For the 301 `F-f` asked, its digest is the one
     `sample.json` recorded.
@@ -552,7 +563,7 @@ figure exists.**
   - **Labels.** No prompt builder takes one.
 - **V-g3 — The populations are §0's.**
   - The pilot is the first 100 of each draw.
-  - The held-out set is 448, 434 and 447 decisions, and none of their tickets is
+  - The held-out set is 429, 405 and 425 decisions, and none of their tickets is
     among the 301.
   - Each held-out screen shows at least one rule.
   - At most 5% of each run's held-out decisions lack two valid answers with the
