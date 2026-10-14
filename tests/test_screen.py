@@ -259,6 +259,18 @@ class TestTheInputsReproduceThemselves(unittest.TestCase):
         self.assertEqual(len(problems), 1)
         self.assertIn("verdicts", problems[0])
 
+    def test_floats_agree_to_a_few_units_in_the_last_place(self):
+        """Python 3.10 gives back three of F-f's standard errors one or two
+        units in the last place away from the record 3.12 wrote."""
+        self.assertTrue(sample.same(0.017225570184936694, 0.0172255701849367))
+        self.assertTrue(sample.same({"a": [1, 0.1 + 0.2]}, {"a": [1, 0.3]}))
+        self.assertTrue(sample.same(0.0, 1e-17))
+        self.assertFalse(sample.same(0.0172255, 0.0172256))
+        self.assertFalse(sample.same(1, 2))
+        self.assertFalse(sample.same(True, 1.0))
+        self.assertFalse(sample.same({"a": 1}, {"a": 1, "b": 2}))
+        self.assertFalse(sample.same([0.1], [0.1, 0.2]))
+
     def test_the_records_are_under_f_fs_protocol(self):
         self.assertEqual(sample.fidelity_records(self.checks.found), [])
         found = {"base1": {**self.checks.found["base1"], "model": "another/model"}}
@@ -716,8 +728,14 @@ class TestStageCOverRecordsTheDoubleProduced(unittest.TestCase):
         with mock.patch.object(plan, "gate_signature", return_value=SIGNED), \
              mock.patch.object(sample, "run_checks", return_value=cls.checks), \
              mock.patch("builtins.print"):
-            cls.code = score.main([])
-        cls.record = json.loads(plan.SCORE_PATH.read_text())
+            # A refusal must fail a test here, not end the whole suite: on
+            # 2026-10-14 CI's 3.10 job stopped mid-run on an exit from this line.
+            try:
+                cls.code = score.main([])
+            except SystemExit as exc:
+                cls.code = exc.code
+        cls.record = (json.loads(plan.SCORE_PATH.read_text())
+                      if plan.SCORE_PATH.exists() else {})
 
     @classmethod
     def tearDownClass(cls):
