@@ -230,6 +230,17 @@ class TestThePopulationsAndTheTickets(unittest.TestCase):
         self.assertEqual(kinds.count(prompts.TICKET_ONLY), 5)
         self.assertEqual(kinds.count(prompts.HIDDEN), 5)
 
+    def test_the_counts_that_size_the_plan(self):
+        """§0's counts, which read no label, as Stage A's sizing measures them."""
+        s = sample.sizing(self.d, sample.fidelity_bases(self.checks.found))
+        self.assertEqual((s["tickets"], s["tickets_asked_by_F_f"], s["pilot_tickets"]),
+                         (1184, 301, 276))
+        self.assertEqual(s["held_out_with_two_valid_answers_with_the_screen"],
+                         {"run1": 426, "run2": 405, "run3": 423})
+        self.assertEqual((s["held_out_tickets"],
+                          s["held_out_tickets_serving_more_than_one_decision"]), (883, 303))
+        self.assertEqual(s["held_out_screen_sizes"], {"min": 4, "median": 12, "max": 12})
+
     def test_the_design_is_deterministic(self):
         again = sample.build_design(self.d.fidelity)
         self.assertEqual(again.sessions, self.d.sessions)

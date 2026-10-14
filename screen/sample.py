@@ -53,8 +53,13 @@ its own seeded order. The anchor asks the pilot's B prompts once. The smoke run
 asks the first SMOKE_PER_ARM of each.
 
 THE READOUT, `V-e`'s free half (§7), written only after the signature.
+  * The counts that size the plan, which read no label: tickets, the pilot's
+    tickets, the held-out decisions and their tickets, and the screens' sizes.
   * The pilot, as the drafter's scratch probe read it: every figure §0 lists as
-    already seen, measured by this module so that this record owns it.
+    already seen, its spreads included, measured by this module so that this
+    record owns it. The spreads were added after the first Stage A run of
+    2026-10-14, which wrote no record anyone kept: §0 lists them as seen, and
+    that run's readout did not carry them.
   * The held-out decisions, without a single new answer: the share whose
     screen's plurality is the true queue (which is also the accuracy of a
     copier that answers it), the size of each cell of `V-d`, and the class mix
@@ -506,6 +511,10 @@ def _mean(xs: list[float]) -> float | None:
     return sum(xs) / len(xs) if xs else None
 
 
+def _sd(xs: list[float]) -> float | None:
+    return statistics.stdev(xs) if len(xs) > 1 else None
+
+
 def _se(xs: list[float]) -> float | None:
     return statistics.stdev(xs) / math.sqrt(len(xs)) if len(xs) > 1 else None
 
@@ -580,6 +589,18 @@ def read_pilot(pairs: list[dict]) -> dict[str, Any]:
             "t_is_a_shown_action": _mean([1.0 if p["t"] in p["shown"] else 0.0
                                           for p in ps]),
             "true_queue_shown": sum(1 for p in ps if p["y"] in p["shown"]),
+            # §2.2 planned on these, as the probe computed them: sample
+            # deviations for the net and the two cells, the population one for
+            # the pull, an indicator.
+            "spreads": {
+                "net": _sd(net),
+                "plurality_right_b_minus_t": _sd([b_mean(p) - (p["t"] == p["y"])
+                                                  for p in right]),
+                "plurality_wrong_t_minus_b": _sd([(p["t"] == p["y"]) - b_mean(p)
+                                                  for p in wrong]),
+                "pull_population_sd": (statistics.pstdev(
+                    [1.0 if p["b1"] == p["p"] else 0.0 for p in off]) if off else None),
+            },
         }
 
     by_queue = collections.defaultdict(list)
@@ -620,8 +641,35 @@ def read_held_out(design: Design, found: dict[str, dict]) -> dict[str, Any]:
     return out
 
 
+def sizing(design: Design, bases: dict[int, dict[str, dict]]) -> dict[str, Any]:
+    """§0's counts that size the plan. They read no label."""
+    held = [design.decisions[f"d{k}:{i}"] for k in plan.RUNS for i in design.held_out[k]]
+    serves = collections.Counter(d["ticket"] for d in held)
+    sizes = sorted(len(d["shown_ids"]) for d in held)
+    return {
+        "tickets": len(design.tickets),
+        "tickets_asked_by_F_f": sum(1 for t in design.tickets.values()
+                                    if t["asked_by_F_f"] is not None),
+        "pilot_tickets": len({design.ticket_of(k, i) for k in plan.RUNS
+                              for i in design.pilot[k]}),
+        "held_out": {f"run{k}": len(design.held_out[k]) for k in plan.RUNS},
+        "held_out_with_two_valid_answers_with_the_screen": {
+            f"run{k}": sum(1 for i in design.held_out[k]
+                           if fidelity_score.valid_pair(
+                               bases.get(k, {}).get(f"d{k}:{i}", {"answers": {}}))
+                           is not None)
+            for k in plan.RUNS},
+        "held_out_tickets": len(serves),
+        "held_out_tickets_serving_more_than_one_decision": sum(
+            1 for v in serves.values() if v > 1),
+        "held_out_screen_sizes": {"min": sizes[0], "median": statistics.median(sizes),
+                                  "max": sizes[-1]} if sizes else None,
+    }
+
+
 def readout(design: Design, found: dict[str, dict]) -> dict[str, Any]:
-    return {"pilot": read_pilot(pilot_pairs(design, found)),
+    return {"sizing": sizing(design, fidelity_bases(found)),
+            "pilot": read_pilot(pilot_pairs(design, found)),
             "held_out": read_held_out(design, found)}
 
 
