@@ -7,8 +7,8 @@ commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
 **Stage A ran on 2026-10-14, and nothing is adjudicated yet.** Stage B's smoke
-session passed the same day. The four rows wait for the anchor and the
-ticket-only session.
+and anchor sessions ran the same day. The four rows wait for the ticket-only
+session.
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Row `V-e` carries no band.
 > Its pilot half reproduces figures the drafter computed with a scratch probe
@@ -141,6 +141,43 @@ none is read here.
 and the ticket-only session's 2,368 about 1.6 hours. Ten calls are few, so the
 planning figures stay §1's: about half an hour and 2.5 hours.
 
+**The anchor session: 300 answers of 300 valid.** On Sergi's go-ahead,
+`screen.ask --session anchor`, 2026-10-14, `PYTHONHASHSEED=0`, from the smoke
+run's commit and a clean tree. It ran as a background command of the agent's
+harness. The checks of §8 passed before any call. The record is
+[`ask_anchor.json`](ask_anchor.json).
+
+- **No call failed.** Every prompt was answered in one attempt, and every
+  `finish_reason` was `stop`.
+- **The pace by the wall clock: 16.1 minutes of calling**, 3.21 s per answer,
+  inside the half hour a background command lasts. The per-call timer's median
+  was 2.79 s, from 1.18 to 15.56 s.
+- **The partial file was gone once the record was written.**
+
+**`V-a`'s screen clause, read once the anchor was in, as §8 intends:
+provisional.** §8 runs the anchor before the ticket-only session so that the
+instrument is measured before most of the spend. So the clause was computed with
+Stage C's own function, `screen.score.screen_clause`, on this record:
+
+- **The value.** `S − A = +0.0284`, with a standard error of 0.0174, over 299
+  prompts. The two answers of 2026-10-02 or 03 agree with each other 0.9164 of
+  the time; the answer of 2026-10-14 agrees with them 0.8880 of the time.
+- **Per run**: +0.0101, +0.0400 and +0.0350.
+- **Against the line.** At the signed line, ≤ 0.05, it would hold, and not
+  thin. `F-a`'s gap was −0.0075 across two days; this one spans eleven or
+  twelve.
+- **Accuracy.** On the same prompts, the new answers are right 0.4567 of the
+  time, and the old ones 0.4632, the mean of two.
+
+**This is not the verdict.** `V-a` has a second clause, about the prompts
+without a screen, which the ticket-only session measures, and Stage C
+adjudicates both. It is written here because it was known before most of the
+spend.
+
+**What the anchor's pace says about the next session.** At 3.21 s per answer,
+the ticket-only session's 2,368 calls would take about 2.1 hours by the wall
+clock. That outlives a background command, so it runs in Sergi's terminal.
+
 ---
 
 ## Files
@@ -151,4 +188,6 @@ results_screen/sample.json       Stage A: the checks, the populations, the
                                  free half
 results_screen/ask_smoke.json    Stage B, the smoke session: 10 of 10 valid;
                                  it opens the other sessions and enters no row
+results_screen/ask_anchor.json   Stage B, the anchor: the 300 pilot B prompts
+                                 once, 300 of 300 valid; V-a's screen clause
 ```
