@@ -45,6 +45,7 @@ up in four places at once.
 | **E** · declaration imposed | whether a proposer made to declare, against every rule a new one overlaps, whether it is an exception to it or a default under it, writes a stratified base — Stage E, the second way's third form — closed 2026-10-06 | [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md) |
 | **O** · imposed, with overlap asked for | Stage E's question asked again, with the proposer told that overlap is normal and asked to declare only where the queues differ: does it keep overlapping, and do its declarations order what subsumption leaves — closed 2026-10-07 | [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md) |
 | **K** · beyond the keyword, drafted blind | whether declaration carries direction beyond the security keyword, with the base taken out of the proposer's first call and a placement round forcing the declaration — closed 2026-10-12 | [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md) |
+| **V** · the screen | what the screen of compiled rules does to the model: asked with the ticket alone on decisions its rules made, is it right more often, and does it defer to the screen — closed 2026-10-15 | [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -387,6 +388,29 @@ PYTHONHASHSEED=0 python3 -m blind.yielding    # POST-RUN · which edge of a cycl
 .venv/bin/python -m blind.run --rep 1         # then --rep 2 and --rep 3, never in parallel
 ```
 
+**[`PLAN_SCREEN.md`](PLAN_SCREEN.md) closed on 2026-10-15**: what the screen of
+compiled rules does to the model. Sergi signed §0 on 2026-10-14, before any of
+its figures existed. It asked the model, under prompt v1 and with reasoning
+off, every ticket of `PLAN_FIDELITY.md`'s draw with the ticket alone, twice, and
+set the answers beside that plan's answers with the screen, on decisions whose
+tickets nobody had asked without one. Its record is
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md). Its
+gate reads that plan and no other, and guards its three writers. `fidelity/` is
+called by it and not edited.
+
+Stages A and C are free, and they reproduce from the committed records.
+**Stage B spent**: its records are guarded, and a re-run neither overwrites them
+nor gives the same answers back. A paid session does not start without Sergi
+asking for it, and one that is interrupted resumes where it stopped.
+
+```bash
+python3 -m screen.ask --dry-run                   # V-g1..V-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m screen.sample         # Stage A · the populations, the free readout
+PYTHONHASHSEED=0 python3 -m screen.score          # Stage C · V-a to V-d, and V-e
+.venv/bin/python -m screen.ask --session smoke    # Stage B · spends · only on Sergi's say
+.venv/bin/python -m screen.ask --session anchor   # then --session ticket_only, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -662,6 +686,7 @@ What it covers, and why those things:
 | `test_blind_cycles.py` | `blind/cycles.py`, the POST-RUN reading of why run 1 closed cycles: the fork leaving the engine untouched, the side each listed rule is placed on, the ordered and inverted pairs, why an edge closes a cycle in each of the ways a birth can close one, what the base had already decided on small worlds, the slot statistic and its seeded permutation null, the slices of the log each escalation wrote, the smoke run replayed with its forks, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_blind_closure.py` | `blind/closure.py`, the POST-RUN reading of what the base's transitive order would decide: the ancestors a chain gives, the undefeated masks with and without the closure, a CONFLICT the closure resolves and one no chain orders, who is right on what it resolves, the coin's and the ranking's counts, the same on corpus cases, the case-by-case closure against the masks, the hidden policy still executed through the closure, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_blind_yielding.py` | `blind/yielding.py`, the POST-RUN reading of which edge of a cycle should yield: the log given back to the escalations that wrote it, the order each arm installs the declarations in, which edge yields under arrival and under recency, the ranking's and the oracle's groups, the coin seeded, every arm acyclic and full, what changes against arrival under rung 2's engine and through the closure, the corpus counted as it arrives, the coin's summaries and the pool, the hidden policy kept whole under every order, the expectation's clauses at their edges, the two halves of the space and the coin's draws by what they refused, added after the first and second runs, and the writer refusing unsigned. **No figure of the plan** |
+| `test_screen.py` | the `PLAN_SCREEN.md` instrument: §10's constants and §0's lines, each verdict at its edge, the gate counting every signature line, the populations and the tickets counted by their attributes on the real records, every prompt against the digests `PLAN_FIDELITY.md` recorded and a changed screen moving one, `V-g1` giving back `PLAN_FIDELITY.md`'s Stage C to 1e-12 and catching a tampered record, the wrapped client sending every request unchanged and keeping each attempt's `finish_reason`, §0's rule for a run without a value and for the median by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over the double's records with the held-out labels masked. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1276,6 +1301,12 @@ adaptive-policy-compilation/
 │   ├── ask.py               Stage B · the calls · spends
 │   └── score.py             Stage C · the five rows, gated on PLAN_FIDELITY.md
 │
+├── screen/               V · the model asked with the ticket alone on decisions its rules made
+│   ├── plan.py              the gate and §10's constants; §0's lines
+│   ├── sample.py            Stage A · V-g1..V-g3, the populations, the free readout
+│   ├── ask.py               Stage B · the calls, each attempt's finish_reason · spends
+│   └── score.py             Stage C · V-a to V-d and V-e, gated on PLAN_SCREEN.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1356,7 +1387,7 @@ adaptive-policy-compilation/
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
-    results_authorship/  results_overlap/  results_blind/
+    results_authorship/  results_overlap/  results_blind/  results_screen/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
