@@ -178,6 +178,23 @@ spend.
 the ticket-only session's 2,368 calls would take about 2.1 hours by the wall
 clock. That outlives a background command, so it runs in Sergi's terminal.
 
+**The ticket-only session: 2,368 answers of 2,368 valid.** On Sergi's go-ahead,
+`screen.ask --session ticket_only`, 2026-10-14, `PYTHONHASHSEED=0`, run in
+Sergi's terminal from the anchor's commit and a clean tree, in one segment. The
+checks of §8 passed before any call. The record is
+[`ask_ticket_only.json`](ask_ticket_only.json).
+
+- **What was asked.** The 1,184 tickets, in two passes, each in its own seeded
+  order.
+- **No call failed.** Every answer was valid in one attempt, and every
+  `finish_reason` was `stop`.
+- **The pace by the wall clock: 1.45 hours of calling**, 2.2 s per answer. The
+  per-call timer's median was 2.05 s, from 0.97 to 33.55 s.
+- **The partial file was gone once the record was written.**
+
+**Stage B is complete: 2,678 calls, 2,678 answers valid**, every one in one
+attempt and with `finish_reason` `stop`.
+
 ---
 
 ## Files
@@ -190,4 +207,6 @@ results_screen/ask_smoke.json    Stage B, the smoke session: 10 of 10 valid;
                                  it opens the other sessions and enters no row
 results_screen/ask_anchor.json   Stage B, the anchor: the 300 pilot B prompts
                                  once, 300 of 300 valid; V-a's screen clause
+results_screen/ask_ticket_only.json   Stage B, the ticket-only session: 1,184
+                                 tickets twice, 2,368 of 2,368 valid
 ```
