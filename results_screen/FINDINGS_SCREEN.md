@@ -1,10 +1,23 @@
 # What the screen of compiled rules does to the model — findings
 
 Record opened on October 14, 2026, under [`PLAN_SCREEN.md`](../PLAN_SCREEN.md).
-Sergi signed §0 on 2026-10-14, before any figure below existed, in a commit of
-its own: *PLAN_SCREEN.md signed by Sergi*. Every record names in its `_env` the
-commit of the branch it was written on. A rebase merge gives those commits new
-hashes on `main` with the same trees. **This record owns every figure in it.**
+The plan and its package reached `main` in pull request #119. Sergi signed §0 on
+2026-10-14, before any figure below existed, in a commit of its own: `d371359`
+on `main`, merged from `04bffb2` in pull request #120, with every record below.
+
+Every record names in its `_env` the commit of the branch it was written on. A
+rebase merge gives those commits new hashes on `main` with the same trees. Each
+pair below has the same tree and the same `git patch-id --stable`:
+
+| record | written from, on the branch | the same commit on `main` |
+|---|---|---|
+| `sample.json` | `66b2028` | `dabd62d` |
+| `ask_smoke.json` | `ac5425a` | `c945cb0` |
+| `ask_anchor.json` | `b52d3aa` | `ee57edb` |
+| `ask_ticket_only.json` | `a0ff1ec` | `bd6873d` |
+| `score.json` | `02ab6c6` | `b4c47dc` |
+
+**This record owns every figure in it.**
 
 **Stage C adjudicated all four signed rows on 2026-10-15: three hold and one is
 refuted.** `V-a` is the refutation, and it is thin.
