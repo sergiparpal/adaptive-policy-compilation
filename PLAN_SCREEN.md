@@ -1,5 +1,19 @@
 # PLAN_SCREEN — what the screen of compiled rules does to the model
 
+> **[CLOSED 2026-10-15] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-14, before any figure of the plan existed. All four rows were
+> adjudicated on 2026-10-15: `V-a` pooled, the rest on the median of three
+> bases. **`V-a` is refuted, thinly; `V-b`, `V-c` and `V-d` hold**, and `V-e` is
+> reported. **The figures are owned by
+> [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-14. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-14, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
