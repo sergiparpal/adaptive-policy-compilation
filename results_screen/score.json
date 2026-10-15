@@ -1,0 +1,482 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-15T14:32:41Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "02ab6c6abb961efb6a7beb9f5e357f236dbb82e1",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a098bff761543c70"
+  },
+  "plan": "PLAN_SCREEN.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 2000,
+  "stage": "C",
+  "surface": "corpus \u2014 seed 17, n=2000, in arrival order: the held-out decisions of PLAN_FIDELITY.md's draw over PLAN_REUSE.md's three Stage B runs",
+  "provenance": "PRE-REGISTERED: \u00a70 signed before any of these figures existed; three of its four bands set on a development set, the pilot",
+  "gates": {
+    "V-g1": {
+      "what": "the suite is green; PLAN_FIDELITY.md's F-g1 to F-g3 pass and its Stage A record is the design they rebuild; its Stage C, re-run in memory, gives back its score.json; and every session record is under its protocol, behind its Stage A record",
+      "fidelity_checks": {
+        "F-g1": true,
+        "F-g2": true,
+        "F-g3": true
+      },
+      "first_problems": [],
+      "suite": {
+        "ran": true,
+        "tests": 1599,
+        "result": "OK (skipped=2)",
+        "seconds": 129.5,
+        "passes": true
+      },
+      "passes": true
+    },
+    "V-g2": {
+      "what": "every ticket-only prompt is v1's empty-base rendering, and the one F-f asked where it asked one; every anchor prompt is F-f's B prompt, rebuilt; the plurality is defined for every decision",
+      "prompts": {
+        "hidden": 300,
+        "ticket_only": 1184
+      },
+      "tickets_asked_by_F_f": 301,
+      "first_problems": [],
+      "passes": true
+    },
+    "V-g3": {
+      "what": "the pilot is the first 100 of each draw; the held-out decisions are \u00a70's, on tickets F-f never asked, each with a screen and at most 5% without two valid answers with it; the tickets are \u00a70's; and each session asks what \u00a71 says",
+      "per_run": {
+        "run1": {
+          "pilot": 100,
+          "held_out": 429,
+          "held_out_lacking_two_answers_with_the_screen": 3
+        },
+        "run2": {
+          "pilot": 100,
+          "held_out": 405,
+          "held_out_lacking_two_answers_with_the_screen": 0
+        },
+        "run3": {
+          "pilot": 100,
+          "held_out": 425,
+          "held_out_lacking_two_answers_with_the_screen": 2
+        }
+      },
+      "tickets": 1184,
+      "tickets_asked_by_F_f": 301,
+      "first_problems": [],
+      "passes": true
+    },
+    "V-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_SCREEN.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_SCREEN.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "sample_sha256": "094c4ee2592c7a581d6506d4dc108e7fc92252a3a8e57f40d2d58a299324fd1a",
+  "verdicts": {
+    "V-a": {
+      "ticket_only": {
+        "n": 301,
+        "S": 0.9235880398671097,
+        "A": 0.8621262458471761,
+        "gap": 0.061461794019933555,
+        "standard_error": 0.01914939714378616
+      },
+      "screen": {
+        "n": 299,
+        "S": 0.9163879598662207,
+        "A": 0.8879598662207357,
+        "gap": 0.028428093645484948,
+        "standard_error": 0.01741026535476023
+      },
+      "line": 0.05,
+      "verdict": "refuted",
+      "thin": true
+    },
+    "V-b": {
+      "per_run": [
+        0.12793427230046947,
+        0.06666666666666667,
+        0.03664302600472813
+      ],
+      "median": 0.06666666666666667,
+      "standard_error": 0.019106724538313975,
+      "runs_with_a_value": 3,
+      "line": 0.0,
+      "verdict": "holds",
+      "thin": false
+    },
+    "V-c": {
+      "per_run": [
+        0.3177570093457944,
+        0.5398936170212766,
+        0.25
+      ],
+      "median": 0.3177570093457944,
+      "standard_error": 0.026590836301909677,
+      "runs_with_a_value": 3,
+      "line": 0.1,
+      "verdict": "holds",
+      "thin": false
+    },
+    "V-d": {
+      "clause_1_plurality_right": {
+        "per_run": [
+          0.05725190839694656,
+          0.17687074829931973,
+          0.15833333333333333
+        ],
+        "median": 0.15833333333333333,
+        "standard_error": 0.03096821876398848,
+        "runs_with_a_value": 3
+      },
+      "clause_2_plurality_wrong": {
+        "per_run": [
+          0.21016949152542372,
+          0.2054263565891473,
+          0.11386138613861387
+        ],
+        "median": 0.2054263565891473,
+        "standard_error": 0.02178385294441005,
+        "runs_with_a_value": 3
+      },
+      "line": 0.0,
+      "verdict": "holds",
+      "thin": false
+    }
+  },
+  "runs": [
+    {
+      "run": 1,
+      "population": {
+        "decided": 1938,
+        "held_out": 429,
+        "sampling_fraction": 0.22136222910216719
+      },
+      "validity": {
+        "lacking_the_four_answers": 3,
+        "defined": true
+      },
+      "n": {
+        "V-b": 426,
+        "V-c": 214,
+        "V-d.1": 131,
+        "V-d.2": 295
+      },
+      "rows": {
+        "V-b": 0.12793427230046947,
+        "V-c": 0.3177570093457944,
+        "V-d.1": 0.05725190839694656,
+        "V-d.2": 0.21016949152542372
+      },
+      "standard_errors": {
+        "V-b": 0.017992905529293272,
+        "V-c": 0.026590836301909677,
+        "V-d.1": 0.021722665141198333,
+        "V-d.2": 0.022911193796619926
+      },
+      "parts": {
+        "without_screen": 0.545774647887324,
+        "with_screen": 0.41784037558685444,
+        "plurality_is_the_true_queue": 0.3075117370892019
+      }
+    },
+    {
+      "run": 2,
+      "population": {
+        "decided": 1969,
+        "held_out": 405,
+        "sampling_fraction": 0.20568816658202133
+      },
+      "validity": {
+        "lacking_the_four_answers": 0,
+        "defined": true
+      },
+      "n": {
+        "V-b": 405,
+        "V-c": 188,
+        "V-d.1": 147,
+        "V-d.2": 258
+      },
+      "rows": {
+        "V-b": 0.06666666666666667,
+        "V-c": 0.5398936170212766,
+        "V-d.1": 0.17687074829931973,
+        "V-d.2": 0.2054263565891473
+      },
+      "standard_errors": {
+        "V-b": 0.019106724538313975,
+        "V-c": 0.030044052830684148,
+        "V-d.1": 0.028470557299482967,
+        "V-d.2": 0.02178385294441005
+      },
+      "parts": {
+        "without_screen": 0.5074074074074074,
+        "with_screen": 0.44074074074074077,
+        "plurality_is_the_true_queue": 0.362962962962963
+      }
+    },
+    {
+      "run": 3,
+      "population": {
+        "decided": 1958,
+        "held_out": 425,
+        "sampling_fraction": 0.2170582226762002
+      },
+      "validity": {
+        "lacking_the_four_answers": 2,
+        "defined": true
+      },
+      "n": {
+        "V-b": 423,
+        "V-c": 254,
+        "V-d.1": 120,
+        "V-d.2": 303
+      },
+      "rows": {
+        "V-b": 0.03664302600472813,
+        "V-c": 0.25,
+        "V-d.1": 0.15833333333333333,
+        "V-d.2": 0.11386138613861387
+      },
+      "standard_errors": {
+        "V-b": 0.016580967258538182,
+        "V-c": 0.023641534041079604,
+        "V-d.1": 0.03096821876398848,
+        "V-d.2": 0.018225425745738783
+      },
+      "parts": {
+        "without_screen": 0.5260047281323877,
+        "with_screen": 0.48936170212765956,
+        "plurality_is_the_true_queue": 0.28368794326241137
+      }
+    }
+  ],
+  "pooled": {
+    "V-b": {
+      "n": 1254,
+      "value": 0.0773524720893142,
+      "standard_error": 0.010366201897469559
+    },
+    "V-c": {
+      "n": 656,
+      "value": 0.3551829268292683,
+      "standard_error": 0.015809092955687266
+    },
+    "V-d.1": {
+      "n": 398,
+      "value": 0.13190954773869346,
+      "standard_error": 0.01589383826502839
+    },
+    "V-d.2": {
+      "n": 856,
+      "value": 0.1746495327102804,
+      "standard_error": 0.012196974871128249
+    }
+  },
+  "V-e": {
+    "rare_classes": {
+      "ONCALL_ESCALATION": {
+        "tickets": 7,
+        "named_by_both_answers": 7,
+        "answers_by_queue": {
+          "ONCALL_ESCALATION": 14
+        }
+      },
+      "SECURITY_INCIDENT": {
+        "tickets": 20,
+        "named_by_both_answers": 20,
+        "answers_by_queue": {
+          "SECURITY_INCIDENT": 40
+        }
+      }
+    },
+    "by_true_queue": {
+      "T2_TECHNICAL": {
+        "decisions": 464,
+        "without_screen": 0.7887931034482759,
+        "with_screen": 0.915948275862069
+      },
+      "SELF_SERVICE_DEFLECT": {
+        "decisions": 311,
+        "without_screen": 0.2909967845659164,
+        "with_screen": 0.07556270096463022
+      },
+      "T1_GENERAL": {
+        "decisions": 186,
+        "without_screen": 0.15053763440860216,
+        "with_screen": 0.002688172043010753
+      },
+      "BILLING_SPECIALIST": {
+        "decisions": 171,
+        "without_screen": 0.9970760233918129,
+        "with_screen": 0.6403508771929824
+      },
+      "ACCOUNT_MANAGER": {
+        "decisions": 65,
+        "without_screen": 0.0,
+        "with_screen": 0.06153846153846154
+      },
+      "T3_ENGINEERING": {
+        "decisions": 57,
+        "without_screen": 0.09649122807017543,
+        "with_screen": 0.017543859649122806
+      }
+    },
+    "pilot_on_one_day": {
+      "decisions": 300,
+      "with_screen_one_answer": 0.45666666666666667,
+      "without_screen_mean_of_two": 0.52,
+      "difference": 0.06333333333333335
+    },
+    "decomposition": {
+      "run1": {
+        "V-b_over_complete": 0.12793427230046947,
+        "share_plurality_right": 0.3075117370892019,
+        "cell_1": 0.05725190839694656,
+        "cell_2": 0.21016949152542372,
+        "composed": 0.12793427230046947,
+        "composes_exactly": true
+      },
+      "run2": {
+        "V-b_over_complete": 0.06666666666666667,
+        "share_plurality_right": 0.362962962962963,
+        "cell_1": 0.17687074829931973,
+        "cell_2": 0.2054263565891473,
+        "composed": 0.06666666666666667,
+        "composes_exactly": true
+      },
+      "run3": {
+        "V-b_over_complete": 0.03664302600472813,
+        "share_plurality_right": 0.28368794326241137,
+        "cell_1": 0.15833333333333333,
+        "cell_2": 0.11386138613861387,
+        "composed": 0.03664302600472814,
+        "composes_exactly": true
+      }
+    },
+    "changed_answers": {
+      "run1": {
+        "all": {
+          "first_shown": 52,
+          "plurality": 151,
+          "not_shown": 10,
+          "other_shown": 51
+        },
+        "cost": {
+          "first_shown": 37,
+          "plurality": 82,
+          "not_shown": 6,
+          "other_shown": 26
+        },
+        "paid": {
+          "other_shown": 20,
+          "plurality": 20,
+          "first_shown": 1,
+          "not_shown": 1
+        }
+      },
+      "run2": {
+        "all": {
+          "plurality": 222,
+          "not_shown": 3,
+          "other_shown": 20,
+          "first_shown": 5
+        },
+        "cost": {
+          "plurality": 99,
+          "other_shown": 14,
+          "first_shown": 2,
+          "not_shown": 1
+        },
+        "paid": {
+          "not_shown": 1,
+          "plurality": 56,
+          "first_shown": 2,
+          "other_shown": 3
+        }
+      },
+      "run3": {
+        "all": {
+          "plurality": 143,
+          "first_shown": 16,
+          "not_shown": 11,
+          "other_shown": 16
+        },
+        "cost": {
+          "plurality": 76,
+          "first_shown": 5,
+          "other_shown": 5,
+          "not_shown": 2
+        },
+        "paid": {
+          "plurality": 42,
+          "not_shown": 7,
+          "first_shown": 6,
+          "other_shown": 2
+        }
+      },
+      "all": {
+        "all": {
+          "first_shown": 73,
+          "plurality": 516,
+          "not_shown": 24,
+          "other_shown": 87
+        },
+        "cost": {
+          "first_shown": 44,
+          "plurality": 257,
+          "not_shown": 9,
+          "other_shown": 45
+        },
+        "paid": {
+          "other_shown": 25,
+          "plurality": 118,
+          "first_shown": 9,
+          "not_shown": 9
+        }
+      }
+    },
+    "finish_reasons": {
+      "anchor": {
+        "attempts: 1": 300,
+        "valid: stop": 300
+      },
+      "ticket_only": {
+        "attempts: 1": 2368,
+        "valid: stop": 2368
+      }
+    }
+  },
+  "run_itself": {
+    "held_out_tickets_by_runs_served": {
+      "0": 301,
+      "1": 594,
+      "2": 252,
+      "3": 37
+    },
+    "anchor": {
+      "answers": 300,
+      "valid": 300,
+      "failed": 0,
+      "invalid_action": 0,
+      "median_seconds_per_call": 2.785
+    },
+    "ticket_only": {
+      "answers": 2368,
+      "valid": 2368,
+      "failed": 0,
+      "invalid_action": 0,
+      "median_seconds_per_call": 2.05
+    }
+  }
+}

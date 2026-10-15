@@ -6,14 +6,28 @@ its own: *PLAN_SCREEN.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
-**Stage A ran on 2026-10-14, and nothing is adjudicated yet.** Stage B's smoke
-and anchor sessions ran the same day. The four rows wait for the ticket-only
-session.
+**Stage C adjudicated all four signed rows on 2026-10-15: three hold and one is
+refuted.** `V-a` is the refutation, and it is thin.
+
+- **Without its screen the model is right more often** (`V-b`).
+- **The screen pulls the model to its commonest action** (`V-c`). That helps
+  where the action is the true queue and costs where it is not (`V-d`), and on
+  these bases it is not, about seven times in ten.
+- **The model without a screen moved a little in twelve days** (`V-a`), in which
+  answer it gives and not in how often it is right. Asked under both arms on
+  one day, the pilot shows the same gap.
+- **The rarest queues are in the model, on a second day.** With the ticket
+  alone, both answers name them on every ticket (`V-e`).
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Row `V-e` carries no band.
 > Its pilot half reproduces figures the drafter computed with a scratch probe
 > before drafting, which §0 of the plan declares as already seen. Its held-out
 > half was computed here for the first time, after the signature. Zero API calls.
+>
+> **PROVENANCE, STAGES B AND C: PRE-REGISTERED.** `V-a` to `V-d` were signed
+> before any of their figures existed, and three of the four bands were set on
+> the pilot, a development set. `V-a`'s screen clause was read once,
+> provisionally, after the anchor, as Stage B records. Stage C adjudicated it.
 
 ---
 
@@ -197,6 +211,163 @@ attempt and with `finish_reason` `stop`.
 
 ---
 
+## Stage C — the four adjudications
+
+**What was run.** `python3 -m screen.score`, on 2026-10-15, with
+`PYTHONHASHSEED=0`, from the ticket-only session's commit and a clean tree.
+
+- **Every blocking check passed first**, with the suite green at 1,599 tests.
+- **Both paid records** carried this plan's protocol and Stage A's digest.
+- **The labels** the ticket-only rows carry agree with `PLAN_FIDELITY.md`'s for
+  every decision they serve.
+
+The record is [`score.json`](score.json).
+
+**Surface: the corpus.** That is the held-out decisions of `PLAN_FIDELITY.md`'s
+draw over `PLAN_REUSE.md`'s three Stage B runs, seed 17, in arrival order.
+`V-b` to `V-d` are read on the median of the three runs, and `V-a` pooled.
+
+Notation as §0's: `t₁`, `t₂` the two answers without a screen, of 2026-10-14;
+`b₁`, `b₂` the two with it, of 2026-10-02 or 03; `p` the screen's plurality
+action; `y` the true queue.
+
+| row | statistic | run 1 | run 2 | run 3 | value | band | verdict |
+|---|---|---|---|---|---|---|---|
+| `V-a` | `S − A`, pooled: without a screen, over 301 tickets; with it, over 299 prompts | — | — | — | **+0.0615** (se 0.0191) and **+0.0284** (se 0.0174) | ≤ 0.05, both | **refuted, thin** |
+| `V-b` | the accuracy without the screen less the accuracy with it | +0.1279 | +0.0667 | +0.0366 | **+0.0667** (se 0.0191) | > 0 | **holds** |
+| `V-c` | where `t₁ ≠ p`: the answers with the screen on `p`, less `t₂` on `p` | 0.3178 | 0.5399 | 0.2500 | **0.3178** (se 0.0266) | ≥ 0.10 | **holds** |
+| `V-d` | where `p = y`, the screen ahead; where `p ≠ y`, the screen behind | +0.0573 and +0.2102 | +0.1769 and +0.2054 | +0.1583 and +0.1139 | **+0.1583** (se 0.0310) and **+0.2054** (se 0.0218) | > 0, both | **holds** |
+
+Pooled over the three runs, beside the medians and adjudicating nothing:
+`V-b` +0.0774 (se 0.0104), `V-c` 0.3552 (se 0.0158), and `V-d` +0.1319 and
++0.1746 (se 0.0159 and 0.0122).
+
+**The drafter expected all four to hold, and got three.** It trusted `V-b`
+least, then `V-a`.
+
+- **`V-a` is the refutation, and it is thin**, as the label §0 fixed in advance
+  says.
+- **`V-b` held 3.5 standard errors clear of its line**, where the drafter
+  expected it to sit within one. The pilot's median run was +0.030; the held-out
+  decisions put the median at more than twice that.
+- **The three bands set on the pilot all held.** They say the pilot's reading
+  generalises to decisions nobody had asked about, not that the drafter foresaw
+  it.
+
+### What the verdicts say
+
+**1. The model without a screen moved a little in twelve days, in which answer
+it gives, and not in how often it is right.** `V-a`'s first clause is refuted at
++0.0615. On the 301 tickets `F-f` asked on 2026-10-03, the two answers of
+2026-10-14 agree with each other 0.9236 of the time, and with the answer of
+2026-10-03 only 0.8621 of the time. Its screen clause holds at +0.0284: with a
+screen, the model of 2026-10-14 still answers as the one of 2026-10-02 did.
+
+**What moved is which wrong queue it picks.** On the pilot's 300 decisions, the
+model without a screen was right 0.5233 of the time on 2026-10-03, with one
+answer, and 0.5200 on 2026-10-14, the mean of two. With the screen it was right
+0.4617 then, the mean of two, and 0.4567 now, with one. Neither arm's accuracy
+moved.
+
+**2. Asked under both arms on one day, the gap is the same.** On 2026-10-14 the
+pilot's 300 decisions were asked with the screen, by the anchor, and without it,
+by the ticket-only session. Without the screen the model is right 0.5200 of the
+time, and with it 0.4567: a gap of +0.0633. Across the two dates the same
+decisions gave +0.0617. So the drift `V-a` caught does not carry the screen's
+effect, on the one set where both arms share a day. That set is the development
+set. On the held-out decisions the arms are twelve days apart, and §0 has `V-b`
+to `V-d` carry the anchor's gap beside them, which this paragraph does.
+
+**3. Without its screen the model is right more often.** `V-b` holds at
++0.0667 on the median, and in every run: +0.1279, +0.0667 and +0.0366. Without
+the screen the model is right 0.5458, 0.5074 and 0.5260 of the time; with it,
+0.4178, 0.4407 and 0.4894. Pooled, +0.0774.
+
+**4. The screen pulls the model to its commonest action.** `V-c` holds at
+0.3178. Where the model's own answer is not the screen's plurality action, the
+answers with the screen land on that action 0.3178 more often than a second
+answer without the screen does: 0.3178, 0.5399 and 0.2500 by run. Of the 700
+answers the screen changed on the held-out decisions, pass for pass:
+
+| what the answer with the screen became | all changes | changes that cost | changes that paid |
+|---|---|---|---|
+| the plurality action | 516 | 257 | 118 |
+| the first rule's action, not the plurality's | 73 | 44 | 9 |
+| another action on the screen | 87 | 45 | 25 |
+| an action the screen does not show | 24 | 9 | 9 |
+| **all** | **700** | **355** | **161** |
+
+A change costs where the answer without the screen was right, and pays where the
+answer with it is. **Nearly every change goes to an action the screen shows, and
+three in four to its commonest.** The plurality, the mechanism `V-c` bet on, is
+most of it, and not all: §5.4 of the plan asked for this classification so that
+no single mechanism was taken for the whole.
+
+**5. What the screen does follows its plurality.** `V-d` holds in both clauses
+and in every run. Where the plurality is the true queue, the screen puts the
+model ahead by +0.1583 on the median. Where it is not, the screen puts it behind
+by +0.2054. In each base the net is exactly those two, weighted by how often the
+plurality is right:
+
+| | run 1 | run 2 | run 3 |
+|---|---|---|---|
+| the plurality is the true queue | 0.3075 | 0.3630 | 0.2837 |
+| the screen ahead where it is | +0.0573 | +0.1769 | +0.1583 |
+| the screen behind where it is not | +0.2102 | +0.2054 | +0.1139 |
+| the net, `V-b` | +0.1279 | +0.0667 | +0.0366 |
+
+**So the screen's cost is the base's error, carried by deference.** On these
+bases the plurality is wrong about seven times in ten, so the screen costs. The
+same deference to a base whose plurality is right more often than not would
+pay. No base here is one.
+
+**6. The rarest queues are in the model, on a second day.** With the ticket
+alone, both answers name `ONCALL_ESCALATION` on all 7 of its tickets, 14
+answers of 14, and `SECURITY_INCIDENT` on all 20, 40 of 40. `F-f` read the same
+on 2026-10-03.
+
+### Recorded beside the rows, and never in a denominator
+
+- **The held-out decisions by true queue**, the mean of two answers in each arm:
+
+  | true queue | decisions | without the screen | with it |
+  |---|---|---|---|
+  | `T2_TECHNICAL` | 464 | 0.789 | 0.916 |
+  | `SELF_SERVICE_DEFLECT` | 311 | 0.291 | 0.076 |
+  | `T1_GENERAL` | 186 | 0.151 | 0.003 |
+  | `BILLING_SPECIALIST` | 171 | 0.997 | 0.640 |
+  | `ACCOUNT_MANAGER` | 65 | 0.000 | 0.062 |
+  | `T3_ENGINEERING` | 57 | 0.096 | 0.018 |
+
+  The screen helps where the bases mostly decide right, `T2_TECHNICAL`, and
+  costs most where the model alone already knows the queue,
+  `BILLING_SPECIALIST`. **`ACCOUNT_MANAGER` is the model's**: with the ticket
+  alone it names the queue on none of the class's 65 held-out decisions. The
+  screen is not what loses that class.
+- **`finish_reason`.** Every one of the 2,678 calls ended `stop`, in one attempt.
+  No answer came back empty or cut off, where `PLAN_FIDELITY.md`'s sessions lost
+  13 of 4,295.
+- **Tickets serving decisions in more than one run.** Of the 883 tickets behind
+  the held-out decisions, 594 serve one run, 252 two and 37 three, as §5.1
+  warned.
+
+### What Stage C does not settle
+
+- **Why the model defers.** Whether it trusts what reads as compiled policy, or
+  follows whatever list it is given, these answers cannot say. A screen of rules
+  drawn at random, or of the hidden policy's nearest rules, would separate them.
+- **Whether a better base would turn the cost into a gain.** `V-d`'s first clause
+  reads the screen where its plurality happens to be right. No base here is
+  right more often than not.
+- **The loops.** `PLAN_AUTHORSHIP.md`'s and `PLAN_BLIND.md`'s figures came from
+  loops. This record says the screen costs the model on re-asked decisions, not
+  how much of those loops' differences it explains.
+- **What moved in twelve days.** OpenRouter routes the model's name to
+  providers, and no record of the thread keeps which one answered.
+- **One model, one corpus, three bases.**
+
+---
+
 ## Files
 
 ```
@@ -209,4 +380,5 @@ results_screen/ask_anchor.json   Stage B, the anchor: the 300 pilot B prompts
                                  once, 300 of 300 valid; V-a's screen clause
 results_screen/ask_ticket_only.json   Stage B, the ticket-only session: 1,184
                                  tickets twice, 2,368 of 2,368 valid
+results_screen/score.json        Stage C: V-a to V-d, the pooled values, V-e
 ```
