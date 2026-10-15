@@ -171,8 +171,8 @@ the FINDINGS.
 
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
 2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
-2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, and since
-2026-10-10 `blind/run.py`, all five below. It refuses to run while §0 of **the
+2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
+2026-10-10 `blind/run.py`, and since 2026-10-14 `screen/ask.py`, all six below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -393,6 +393,39 @@ every cycle contradicted an order the base already held, through a rule the list
 never showed. A reading of why something fails should classify every failure by
 what closed it before it bets on any one cause.
 
+**`PLAN_SCREEN.md` closed on 2026-10-15: what the screen of compiled rules does
+to the model.** Five signed rows: four adjudicated, one reported. Sergi signed §0
+on 2026-10-14, before any figure it governs existed. It asked the model, under
+prompt v1 and with reasoning off, every ticket of `PLAN_FIDELITY.md`'s draw with
+the ticket alone, twice, and set the answers beside that plan's answers with the
+screen. Its rows are read on decisions whose tickets nobody had asked without
+one. The record is `results_screen/FINDINGS_SCREEN.md`, and `STATUS.md` indexes
+its figures. **Stages A and C are free and reproduce from the committed records.
+Stage B spent**: its records are guarded, and a re-run neither overwrites them
+nor gives the same answers back, so a paid session does not start without Sergi
+asking for it. Every writer in `screen/` refuses while the plan carries a blank
+signature line, and the gate reads `PLAN_SCREEN.md` and no other plan.
+`fidelity/` is called by it and not edited. The first command is blocking and
+writes nothing:
+
+    python3 -m screen.ask --dry-run                     # V-g1..V-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m screen.sample           # Stage A, free
+    PYTHONHASHSEED=0 python3 -m screen.score            # Stage C, free, from the sessions
+    .venv/bin/python -m screen.ask --session smoke      # Stage B: spends — only if asked
+    .venv/bin/python -m screen.ask --session anchor     # then ticket_only, never side by side
+
+**A gate that compares a recomputed figure with a record must allow for the
+interpreter.** CI runs 3.10 beside 3.12, and on 3.10 `V-g1` refused a record
+3.12 had written: its standard errors came back a unit in the last place away.
+Compare floats with a tolerance, and run the suite on 3.10 before pushing such a
+gate. **And its one row argued from continuity across dates was the one
+refuted**: without a screen the model moved between two dates, in which answer
+it gives and not in how often it is right. Only a pilot asked under both arms on
+one day showed that the drift did not carry the result. A plan that compares
+answers across dates should ask both arms on one day where it can. **And size a
+pilot for the effect it bands**: this plan's pilot undershot the effect its
+held-out decisions then showed.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 
@@ -466,8 +499,8 @@ call, saying what would be lost. The escape hatches are `--out` and
 `--overwrite-record`. The same guard covers `rung2/run2.py` and, since August 24,
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
 and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
-2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, and since
-2026-10-10, `blind/run.py`.
+2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
+2026-10-10, `blind/run.py`, and since 2026-10-14, `screen/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

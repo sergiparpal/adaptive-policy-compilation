@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 13, 2026. **Not a history** — that is the four
+What is known, as of October 15, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -12,8 +12,9 @@ What is known, as of October 13, 2026. **Not a history** — that is the four
 [`results_primacy/FINDINGS_PRIMACY.md`](results_primacy/FINDINGS_PRIMACY.md),
 [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md),
 [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
-[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md) and
-[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
+[`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
+[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md) and
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -37,7 +38,8 @@ imposed at write time, in `PLAN_AUTHORSHIP.md`**: five more, closed on
 2026-10-06 — plus **that form asked again, with the proposer told to overlap,
 in `PLAN_OVERLAP.md`**: four more, closed on 2026-10-07 — plus **declaration
 beyond the security keyword, with the rule drafted blind, in `PLAN_BLIND.md`**:
-six more, closed on 2026-10-12.
+six more, closed on 2026-10-12 — plus **what the screen of compiled rules does to
+the model, in `PLAN_SCREEN.md`**: five more, closed on 2026-10-15.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -190,7 +192,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Seventy-nine rows have been signed before the figures they name existed. This
+**Eighty-four rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -234,16 +236,18 @@ a count behind it.
 | **E** · declaration imposed (§0 of `PLAN_AUTHORSHIP.md`) | 5 | 3 | **2** | 0 | 1 | 1 |
 | **O** · imposed, with overlap asked for (§0 of `PLAN_OVERLAP.md`) | 4 | 3 | **1** | 0 | 2 | 1 |
 | **K** · beyond the keyword, drafted blind (§0 of `PLAN_BLIND.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
-| **total** | **79** | **66** | **28** | **2** | **36** | **11** |
+| **V** · the screen (§0 of `PLAN_SCREEN.md`) — *three bands set on a development set* | 5 | 4 | **1** | 0 | 3 | 1 |
+| **total** | **84** | **70** | **29** | **2** | **39** | **12** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
-`Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`. Reported: `R-d`, `C-d`,
-`D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`, `K-f`.
+`Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`.
+Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
+`K-f`, `V-e`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -266,15 +270,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 28 of 66 = **42.4%**
-refuted; without them, 26 of 60 = **43.3%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 29 of 70 = **41.4%**
+refuted; without them, 27 of 64 = **42.2%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.9 points the flattering way, which is exactly why saying so is not optional.
-**The `Y` rows flatter it more, and for a reason of design.** Their bands were
-set on a development set from the same model a day earlier, so they bet that a
-reading generalises rather than test the drafter's foresight. Without them the
-two ratios are 28 of 62 = **45.2%** and 26 of 56 = **46.4%**, which is the reading
-the calibration note should take.
+0.8 points the flattering way, which is exactly why saying so is not optional.
+**The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
+design.** Their bands were set on a development set: the `Y` rows' on the same
+model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
+drafter had read. So they bet that a reading generalises rather than test the
+drafter's foresight. Without them the two ratios are 29 of 63 = **46.0%** and 27
+of 57 = **47.4%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -330,6 +335,13 @@ the calibration note should take.
 > One was reported. The table, the named lists, the count in the heading, the two
 > ratios and the two without the `Y` rows moved together; the gap between the
 > first two is now 0.9 points.
+>
+> **[NOTE 2026-10-15] Recomputed with the `V` thread, in the same commit as its
+> row.** Five rows were signed and four adjudicated: one refuted and three held.
+> One was reported. Three of the four bands were set on a development set, so
+> the two ratios without such rows now leave out `V-b`, `V-c` and `V-d` beside
+> the `Y` rows. The table, the named lists, the count in the heading and the four
+> ratios moved together; the gap between the first two is now 0.8 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -357,7 +369,9 @@ which owns all five; and `O` from
 [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
 which owns all four; and `K` from
 [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md), which owns
-all six.
+all six; and `V` from the Stage C section of
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md), with
+`V-e` from its Stages A and C.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
@@ -519,6 +533,25 @@ otherwise. The drafter expected `K-a`, `K-b` and `K-e` to hold and `K-c` and
   so beside the verdict.
 
 `K-f` is reported.
+
+**The `V` rows ask what the screen of compiled rules does to the model, and the
+drafter got three of four.** Sergi signed §0 of `PLAN_SCREEN.md` on 2026-10-14,
+before any of its figures existed, and a gate refuses its writers otherwise.
+Three of its four bands were set on a development set, the 300 decisions `F-f`
+had paired, and read on decisions whose tickets nobody had asked without a
+screen. The drafter expected all four to hold, and trusted `V-b` least, then
+`V-a`.
+
+- **`V-a` was refuted, thinly**: without a screen the model's answers of
+  2026-10-14 agreed with those of 2026-10-03 less than with each other, +0.0615
+  against a line of 0.05, inside one standard error. With a screen it held, at
+  +0.0284. Its accuracy did not move, and asked under both arms on one day the
+  pilot shows the same gap as across the dates.
+- **`V-b`, the row it trusted least, held clear of its line**, at +0.0667 on the
+  median, 3.5 standard errors above it. The pilot's median run had been +0.030.
+- **`V-c` and `V-d` held**, as rows set on a development set were expected to.
+
+`V-e` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -1199,7 +1232,9 @@ the corpus, from
   without a screen it is right 0.5233 of the time, with it 0.4600, and the
   rules 0.4267. It is a sign in the same direction in every run, not a measured
   effect. Disagreement with a fresh answer does not find the rules' errors in
-  two runs of three.
+  two runs of three. **[NOTE 2026-10-15] Measured by `PLAN_SCREEN.md`, on
+  decisions nobody had asked without a screen: it does cost it, through
+  deference to the screen's commonest action.** See the entry below.
 
 The last two are reported, not adjudicated.
 
@@ -1344,6 +1379,39 @@ On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
 the right queue 0.5521 of the time, the highest of the four protocols, with the
 bundle and the date between them as caveats.
 
+**The screen of compiled rules, measured: the model defers to it, and on these
+bases that costs it.** `PLAN_SCREEN.md` asked the model, twice, every ticket of
+`PLAN_FIDELITY.md`'s draw with the ticket alone, under prompt v1 and with
+reasoning off. It set those answers beside `F-f`'s two answers with the screen,
+on the decisions whose tickets nobody had asked without one: 429, 405 and 425.
+Medians of the three runs, on the corpus, from
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md):
+
+- **Without its screen the model is right more often**, by 0.0667, in every run;
+  0.0774 pooled (`V-b` holds).
+- **The screen pulls the model to its commonest action.** Where the model's own
+  answer is not that action, the answers with the screen land on it 0.3178 more
+  often than a second answer without the screen does (`V-c` holds). Of the 700
+  answers the screen changed, 516 went to that action and 24 to a queue it did
+  not show.
+- **What the screen does follows that action.** Where it is the true queue the
+  screen puts the model ahead by 0.1583; where it is not, behind by 0.2054
+  (`V-d` holds). On these bases it is the true queue on 0.31, 0.36 and 0.28 of
+  the decisions, so the net is a cost.
+- **The model without a screen moved a little in twelve days** (`V-a` refuted,
+  thinly): its answers agreed with those of 2026-10-03 less than with each
+  other, +0.0615 against 0.05, while with a screen it held at +0.0284. Its
+  accuracy did not move, and asked under both arms on one day the pilot shows
+  the same gap, 0.0633, as across the two dates, 0.0617.
+- **The rarest queues are in the model, on a second day.** With the ticket
+  alone, both answers name `ONCALL_ESCALATION` on all 7 of its tickets and
+  `SECURITY_INCIDENT` on all 20. `ACCOUNT_MANAGER` it names on none of its 65
+  held-out decisions. Reported (`V-e`).
+
+So the cost of compiling that `F-c` found nowhere in the rules' own decisions is
+in what showing them does to the model's next answer. Its sign belongs to the
+base: the same deference to a base right more often than not would pay.
+
 ---
 
 ## What was withdrawn, and why
@@ -1477,6 +1545,15 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    which it names on every ticket without that screen. That was measured on 100
    cases a run with one answer each, so it is a sign rather than an effect, and
    measuring it would cost calls.
+   **[NOTE 2026-10-15] Measured by `PLAN_SCREEN.md`, and it is deference.**
+   Without its screen the model is right more often on decisions nobody had
+   asked without one (`V-b`). The screen pulls its answer to the screen's
+   commonest action (`V-c`), which helps where that action is right and costs
+   where it is wrong (`V-d`). On these bases it is wrong about seven times in
+   ten. With the ticket alone, both answers named the rare queues on every
+   ticket again. What is open now is why the model defers, and whether a base
+   right more often would turn the cost into a gain.
+   [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md).
 
 ---
 

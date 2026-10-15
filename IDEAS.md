@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 13, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 15, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -39,8 +39,10 @@ again with the proposer told to overlap, it closed on October 7, 2026**:
 `PLAN_OVERLAP.md`, four signed rows, one refuted, two held and one reported,
 written up in `results_overlap/`. **Beyond the keyword, with the rule drafted
 blind, it closed on October 12, 2026**: `PLAN_BLIND.md`, six signed rows, two
-held, three refuted and one reported, written up in `results_blind/`. This is a
-list of things not done, none of
+held, three refuted and one reported, written up in `results_blind/`. **What
+the screen of compiled rules does to the model closed on October 15, 2026**:
+`PLAN_SCREEN.md`, five signed rows, three held, one refuted and one reported,
+written up in `results_screen/`. This is a list of things not done, none of
 them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -51,6 +53,14 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **What the screen of compiled rules does to the model.** October 15, 2026,
+  `PLAN_SCREEN.md`. Asked with the ticket alone, the model is right more often
+  than with its screen, on decisions nobody had asked without one. The screen
+  pulls its answer to the screen's commonest action, which helps where that
+  action is right and costs where it is wrong, and on these bases it is mostly
+  wrong. Without a screen the model drifted a little in twelve days, in which
+  answer and not in accuracy. What it leaves is in its own section below.
+  `results_screen/`.
 - **Declaration beyond the security keyword, with the rule drafted blind.**
   October 12, 2026, `PLAN_BLIND.md`, cents. With the base out of its first call
   the proposer crossed, and a placement round made it declare against every rule
@@ -169,6 +179,10 @@ against, a threshold a next run would have to clear.
   the third. Escalating where a fresh answer disagrees with the rule would not
   do either: in two runs of three the rules are wrong as often where the model
   agrees as where it disagrees.
+  **[NOTE 2026-10-15] And a trigger should ask without the screen.** On a second
+  day, with the ticket alone, both answers named `ONCALL_ESCALATION` on all seven
+  tickets again. `PLAN_SCREEN.md` measured that the screen pulls the model to the
+  queue its compiled rules name most, and no rule names this one.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -178,6 +192,47 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_SCREEN.md` opens and does not resolve
+
+Closed October 15, 2026. It asked what the screen of compiled rules does to the
+model, on decisions whose tickets nobody had asked without one. On these bases
+the screen costs the model accuracy, through deference to its commonest action:
+that helps where the action is right and costs where it is wrong. What that
+leaves:
+
+- **Why the model defers.** Whether it trusts what reads as compiled policy, or
+  follows whatever list it is given, these answers cannot say. A screen of rules
+  drawn at random from the base, or of the hidden policy's nearest rules, would
+  separate the two. Calls, and its own plan.
+- **Whether a better base turns the cost into a gain.** `V-d`'s first clause says
+  the screen helps where its commonest action is right. No screen here has a
+  commonest action right more often than not, so no run has shown the net turn.
+  A screen built from the hidden policy's rules, right by construction, would
+  show what deference is worth at its best. Calls.
+- **How much of the loops' differences the screen explains.** `PLAN_AUTHORSHIP.md`'s
+  lower action accuracy and `PLAN_BLIND.md`'s higher one now sit beside a
+  measured cost of the screen. A blind first call with no placement, on rung 2's
+  engine, is still the run that would separate the screen from the discipline.
+  Calls.
+- **What moved in twelve days.** Without a screen the model's answers drifted
+  between 2026-10-03 and 2026-10-14, in which wrong queue it picks and not in
+  how often it is right (`V-a`). OpenRouter routes the model's name to
+  providers, and no record keeps which one answered. Recording the provider of
+  each call, as `screen/ask.py` now records `finish_reason`, would let a next
+  plan apportion a drift. Free in code; it lands with the next paid run.
+- **Size a pilot for the effect it bands.** `V-b`'s pilot median sat near its
+  line and the held-out median more than twice as far from it, where the
+  drafter had expected a thin hold. A pilot of a hundred decisions a run could
+  not size the effect. A next plan that bands on a pilot should size the pilot
+  first.
+- **Conflict screens.** Every screen here was a coverage impasse's. What the rules
+  a CONFLICT shows do to the model is unmeasured.
+- **`ACCOUNT_MANAGER` is the model's, not the screen's.** With the ticket alone
+  the model names it on none of the class's held-out decisions. The material
+  problem is a question about the model or the prompt, not about compilation.
 
 ---
 
@@ -199,6 +254,10 @@ What that leaves:
   compiled rules costs the model accuracy is the obvious candidate. A blind
   first call with no placement, rung 1's question on rung 2's engine, would
   separate the screen from the discipline; calls.
+  **[NOTE 2026-10-15]** That sign is now a measured effect: on re-asked decisions
+  the screen costs the model, through deference to its commonest action
+  (`PLAN_SCREEN.md`). The candidate is stronger. How much of v2b's rise it
+  explains still takes the blind first call with no placement.
 - ~~**Why run 1 closed cycles.**~~ **Read POST-RUN on 2026-10-13**
   (`FINDINGS_BLIND.md`, *Why run 1 closed cycles*), and it is not the slot.
   Every cycle at a placement is the base's own order, contradicted. The new rule
@@ -335,6 +394,10 @@ the requirement by overlapping less. What that leaves:
   more rules in front of the model, which `PLAN_FIDELITY.md` found a sign may
   cost it, and the two sets of runs are five days apart. Neither is separated
   (§6.2 and §6.4 of the plan).
+  **[NOTE 2026-10-15]** `PLAN_SCREEN.md` measured that a screen of compiled rules
+  costs the model on these bases, by pulling it to the screen's commonest
+  action. It re-asked decided cases and ran no loop, so how much of v1e's lower
+  accuracy that explains is still not separated.
 - ~~**Whether the declarations level 1 refused were right.**~~ **Measured
   POST-RUN on 2026-10-06** (`FINDINGS_AUTHORSHIP.md`, *The eight refused
   declarations*). Seven of the eight were between rules with one queue: a rule
@@ -498,8 +561,9 @@ Closed October 4, 2026. It asked whether a compiled rule decides a later case th
 way the model would have, and answered it. The rules do not, and on the cases
 they decide, compiling loses the model nothing. What that answer leaves:
 
-- **What a screen of compiled rules does to the model.** Beside its rows, the
-  plan asked the model without a screen on a subsample.
+- ~~**What a screen of compiled rules does to the model.**~~ **Measured on
+  2026-10-15 by `PLAN_SCREEN.md`**, and moved to *No longer here*. Beside its
+  rows, the plan asked the model without a screen on a subsample.
   - **Accuracy.** On the same cases the model was right more often without the
     screen than with it, in every base.
   - **The rare queues.** Without a screen it named both rare queues every time.
@@ -511,6 +575,8 @@ they decide, compiling loses the model nothing. What that answer leaves:
     the rules make, but in what showing them to the model does to its next
     answers. Measuring that takes calls: the ticket-only arm on the whole draw,
     twice.
+  **[NOTE 2026-10-15] It holds, and it is deference** (`V-b`, `V-c` and `V-d`
+  hold). What it leaves is in its own section, above.
 - **Why the gains and losses cancel.** The model does better than rules born
   wrong and worse than rules born right, and here the two balance. Whether they
   balance for another model, prompt or corpus is unmeasured.
@@ -521,6 +587,10 @@ they decide, compiling loses the model nothing. What that answer leaves:
   failed every time: the birth with by far the most declared edges. The records
   keep no `finish_reason`, so the cause is a guess, and recording it would
   settle it.
+  **[NOTE 2026-10-15]** `PLAN_SCREEN.md` recorded `finish_reason` on every call of
+  the same model, prompt and setting: each ended `stop` in one attempt, and none
+  came back empty. The empty answers did not recur, so their cause stays
+  unrecorded; `screen/ask.py` would record it if they did.
 
 ---
 
