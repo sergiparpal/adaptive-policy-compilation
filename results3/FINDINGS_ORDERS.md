@@ -1742,6 +1742,14 @@ corrects. 343 s, zero API calls, clean tree, `code_digest ccd2ad259f5d8198`.
 C entry granted one successor and said that successor would carry none. This
 record adds none either, and takes no decision from the outcome.
 
+> **[NOTE 2026-10-16] The decision was taken: the thread is closed, with no
+> successor.** Sergi closed it after reading what this record leaves open, which
+> is the *does not settle* section of each part, the last one below. None of it
+> moves a figure or a verdict of parts one to five. Reopening it would take a
+> pre-registered entry on data this record never read, such as splits 1 to 4 or
+> the 257-order set. §0 of `PLAN_ORDER_METRICS.md` still forbids scoring another
+> predictor against the matrices this record holds.
+
 ---
 
 ## Provenance of the rule-level part
@@ -1766,6 +1774,9 @@ gate computes it from the four-decimal summary it compares against. The five
 numbers themselves are exact.
 
 ## What the rule-level part does not settle
+
+*Closed with all of this unanswered on 2026-10-16: see the note under the
+register, fifth part.*
 
 - **What distinguishes the part of a rule's extension where two orders fight.**
   It is **one of the two places the spread can live**, and nothing here describes
