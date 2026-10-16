@@ -234,6 +234,13 @@ leaves:
   providers, and no record keeps which one answered. Recording the provider of
   each call, as `screen/ask.py` now records `finish_reason`, would let a next
   plan apportion a drift. Free in code; it lands with the next paid run.
+  **[NOTE 2026-10-16] Done in code.** `harness/call_record.py` wraps the clients
+  of `rung2/proposers2.py`, `authorship/protocol.py` and
+  `rung2/pair_judgement.py`. Every paid writer but rung 1's keeps each
+  question's attempts: generation id, provider, model, both finish reasons and
+  the tokens. OpenRouter does not document `provider` in its response, so the
+  next smoke run is where to see that it arrives. The generation id is the
+  documented route to the same fact.
 - **Size a pilot for the effect it bands.** `V-b`'s pilot median sat near its
   line and the held-out median more than twice as far from it, where the
   drafter had expected a thin hold. A pilot of a hundred decisions a run could
@@ -527,6 +534,9 @@ allows. What that answer leaves:
   favoured rule (`results_primacy/FINDINGS_PRIMACY.md`, under `L-b`). The first
   call asks for a JSON object and the retry does not, and the records keep no
   reason for the failure. It bears on the parse-failure item reopened below.
+  **[NOTE 2026-10-16]** The next pairwise run keeps one: each row's
+  `call_attempts` hold every attempt's finish reasons, the failed ones included
+  (`harness/call_record.py`).
 
 ---
 
@@ -610,6 +620,8 @@ they decide, compiling loses the model nothing. What that answer leaves:
   the same model, prompt and setting: each ended `stop` in one attempt, and none
   came back empty. The empty answers did not recur, so their cause stays
   unrecorded; `screen/ask.py` would record it if they did.
+  **[NOTE 2026-10-16]** So would every paid writer now, with the native finish
+  reason and the reasoning tokens beside it (`harness/call_record.py`).
 
 ---
 
@@ -691,6 +703,11 @@ tried at. What is left:
   why is open again. The records keep no `finish_reason`, as the empty answers
   of `PLAN_FIDELITY.md` also found, so the cause stays a guess until one is
   recorded. `FINDINGS3.md` §11, erratum of the same date.
+  **[NOTE 2026-10-16] The next pairwise run records it.** `rung2/pair_judgement.py`
+  now keeps, in each row's `call_attempts`, every attempt's finish reason, the
+  provider's raw one, the provider and the tokens. The records already paid for
+  stay without them, so the cause waits for a run, and that run needs its own
+  plan.
 - ~~**Why the proposer prefers the rule shown second.**~~ **CLOSED August 27,
   2026 by `FINDINGS3.md` §15 — it was never an effect.** Two things were being
   called one: `rule_b` is the LATER-BORN rule in 100% of pairs by construction and
