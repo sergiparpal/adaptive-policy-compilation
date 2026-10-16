@@ -68,10 +68,11 @@ REPO = Path(__file__).resolve().parent.parent
 # added 2026-09-29 with PLAN_REUSE.md's package, for the same reason,
 # `fidelity` 2026-10-02 with PLAN_FIDELITY.md's, `edges` 2026-10-05 with
 # PLAN_EDGES.md's, `overlap` 2026-10-06 with PLAN_OVERLAP.md's, `blind`
-# 2026-10-10 with PLAN_BLIND.md's, and `screen` 2026-10-14 with PLAN_SCREEN.md's.
+# 2026-10-10 with PLAN_BLIND.md's, `screen` 2026-10-14 with PLAN_SCREEN.md's,
+# and `bound` 2026-10-16 with PLAN_BOUND.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
               "reuse", "fidelity", "edges", "primacy", "why", "authorship",
-              "overlap", "blind", "screen", "run_experiment.py")
+              "overlap", "blind", "screen", "bound", "run_experiment.py")
 
 DIGEST_CHARS = 16
 

@@ -511,6 +511,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
+> | `bound/score.py` | `results_bound/score.json` | **refuses while the plan is unsigned** |
 > | `why/score.py` | `results_why/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
@@ -575,7 +576,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `authorship/run.py --dry-run`, which runs `PLAN_AUTHORSHIP.md`'s, and
 > `overlap/run.py --dry-run`, which runs `PLAN_OVERLAP.md`'s, and
 > `blind/run.py --dry-run`, which runs `PLAN_BLIND.md`'s, and the three of
-> `screen/`, which run `PLAN_SCREEN.md`'s.
+> `screen/`, which run `PLAN_SCREEN.md`'s, and `bound/score.py --dry-run`,
+> which runs `PLAN_BOUND.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
