@@ -426,6 +426,17 @@ answers across dates should ask both arms on one day where it can. **And size a
 pilot for the effect it bands**: this plan's pilot undershot the effect its
 held-out decisions then showed.
 
+**Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
+`harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
+`authorship/protocol.py` and `rung2/pair_judgement.py` without changing a
+request. Every paid writer but rung 1's stores each question's attempts as
+`call_attempts`: generation id, provider, model, both finish reasons and the
+tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
+on a call site nobody classified. **OpenRouter does not document `provider` in
+its response**, so read the smoke run for it before the sessions. If it comes
+back empty, the generation id is the documented route to the same fact, for as
+long as OpenRouter keeps it.
+
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
 

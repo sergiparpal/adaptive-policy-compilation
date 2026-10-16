@@ -699,6 +699,7 @@ What it covers, and why those things:
 | `test_llm_path.py` | the **whole** LLM path, replaying the recorded runs without spending (see below) |
 | `test_provenance.py` | the `_env` block, that it does not leak the key, and that no JSON writer is left without one |
 | `test_record_guard.py` | the guard on the records that cost money: what it refuses, that it aborts **before** spending a call, that the output name no longer collides across `--n`, and that the free records stay unguarded |
+| `test_call_record.py` | what a paid call keeps per attempt (generation id, provider, model, both finish reasons, tokens) from a response shaped like OpenRouter's and from the bare double; that the recorder changes no request and no response; that every paid client carries it and every record path keeps it; and that no call site in the tree goes unrecorded without a stated exemption |
 | `test_automation.py` | that the hook and the CI workflow are still there and still run what they say they run |
 
 If a *snapshot* test fails, the expected number **is not updated**: you find out
@@ -1225,6 +1226,7 @@ adaptive-policy-compilation/
 │   ├── proposers.py         keep_k/random_k mocks and LLM proposers
 │   ├── provenance.py        the `_env` block attached to every JSON
 │   ├── record_guard.py      refusal to overwrite the records that cost money
+│   ├── call_record.py       what each paid call says about itself, per attempt
 │   ├── ceiling_check.py     STEP 0 · ceiling of the specificity engine
 │   ├── default_rule_control.py  the same ceiling with the catch-all at its rank
 │   ├── subsumption_check.py partial order by semantic subsumption
