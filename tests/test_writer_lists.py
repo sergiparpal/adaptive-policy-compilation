@@ -219,6 +219,7 @@ class TestTheDerivationItself(unittest.TestCase):
         self.assertIn("primacy", CODE_ROOTS)
         self.assertIn("why", CODE_ROOTS)
         self.assertIn("screen", CODE_ROOTS)
+        self.assertIn("bound", CODE_ROOTS)
         for module in writers():
             with self.subTest(module):
                 self.assertTrue(any(module == r or module.startswith(r + "/")
