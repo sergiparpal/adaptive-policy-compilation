@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 15, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 16, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -42,8 +42,10 @@ blind, it closed on October 12, 2026**: `PLAN_BLIND.md`, six signed rows, two
 held, three refuted and one reported, written up in `results_blind/`. **What
 the screen of compiled rules does to the model closed on October 15, 2026**:
 `PLAN_SCREEN.md`, five signed rows, three held, one refuted and one reported,
-written up in `results_screen/`. This is a list of things not done, none of
-them developed and in no order of precedence.
+written up in `results_screen/`. **An outside reading was adjudicated on October
+16, 2026**, and what it proposes that nothing has run has its own section,
+below. This is a list of things not done, none of them developed and in no
+order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -183,6 +185,10 @@ against, a threshold a next run would have to clear.
   day, with the ticket alone, both answers named `ONCALL_ESCALATION` on all seven
   tickets again. `PLAN_SCREEN.md` measured that the screen pulls the model to the
   queue its compiled rules name most, and no rule names this one.
+  **[NOTE 2026-10-16] Two candidates are proposed now, neither planned nor
+  run**: random escalation asked without a screen, and deferral by a student's
+  uncertainty. Both are in *What the outside reading of October 2026 proposes*,
+  below.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -212,6 +218,11 @@ leaves:
   commonest action right more often than not, so no run has shown the net turn.
   A screen built from the hidden policy's rules, right by construction, would
   show what deference is worth at its best. Calls.
+  **[NOTE 2026-10-16] The literature reports the other sign.** RimRule (arXiv
+  2601.00086, ACL 2026) injects rules into the prompt and reports that they
+  help. Its rules are distilled from failures judged against the truth, and
+  these are not. That is this item's question asked from outside, and a screen
+  of the hidden policy's rules would answer it here.
 - **How much of the loops' differences the screen explains.** `PLAN_AUTHORSHIP.md`'s
   lower action accuracy and `PLAN_BLIND.md`'s higher one now sit beside a
   measured cost of the screen. A blind first call with no placement, on rung 2's
@@ -828,6 +839,271 @@ says how.
 
 ---
 
+## What the outside reading of October 2026 proposes and nothing has run
+
+*Added 2026-10-16.* Two documents in Spanish came out of one conversation about
+the project, held outside it in early October 2026. Both were adjudicated
+against the code and the records on 2026-10-16, and neither is kept in the
+tree:
+
+- **A transcript.** Ideas checked against this file, `STATUS.md` and the plans,
+  with a correction to make first.
+- **A literature survey.** What already exists, what looks new and which
+  baselines are missing. Its figures about this repository came from
+  pull-request descriptions, and some are already stale. Its citations were not
+  checked here one by one. The three it names as nearest to the project were
+  checked: `EXTERNAL_REVIEW.md` §5, point 3.
+
+This section carries what is left of them, in English, as entries and not as a
+translation.
+
+**What the transcript asked for first had already been done.** It found that
+the ILP thread called the labels even when the proposer never had them, and it
+asked for a comparison on the proposer's own answers. Both landed on
+2026-10-10: §5's erratum of `results_ilp/FINDINGS_ILP.md` and its two POST-RUN
+readings, §7 and §8. Every figure it cited for that reproduces.
+
+**What it proposed that this file already carried:**
+
+- another model;
+- showing the proposer the gaps in the ceiling;
+- exact optimization;
+- drift and new attributes;
+- promotion by generated tests;
+- cost accounting;
+- P2, P4 and P5, in the next section;
+- the paid re-ask in reversed order;
+- v2 alone at n=2000;
+- the ticket-only re-ask over the whole draw, which `PLAN_SCREEN.md` has since
+  run.
+
+**What it considered and discarded, and the records agree.** The idea was to
+compile a rule only when the model gives the same answer on two re-asks. In
+`PLAN_FIDELITY.md`'s births session the model gives the same answer three times
+on most births, and is wrong on about half of those. So its own inconsistency
+would stop few of the wrong births: it is wrong with confidence. That was read
+POST-HOC from `results_fidelity/ask_births.json` on 2026-10-16. The
+transcript's counts reproduce, and no module records them. It is
+*disagreement with a fresh answer is not the trigger*, seen from the other side.
+
+What is left. None of it is measured and none has a band. Each measurement in
+it is pre-registrable, because none of its figures exists:
+
+- **Give the proposer the manual: the authority channel.** `CHAT_SUMMARY.md` §1
+  and `PLAN_PAIRWISE.md` §1 name three external channels for priority:
+  declaration, feedback and authority. Declaration has been tried in three
+  forms and feedback in rung 4. Authority exists only at its perfect limit,
+  rung 2's ceiling, whose 199 edges come from the known layer order. No prompt
+  in the tree describes a queue or gives the model any policy: each lists the
+  bare names of the eight queues and says nothing about them. Two failures may
+  be failures of knowledge, and nothing here can tell:
+  - The one priority the proposer declares right over the function is the
+    security keyword's, which common sense supplies (`PLAN_EDGES.md`). Beyond
+    it, its declarations point the way a coin would (`PLAN_BLIND.md`).
+  - With the ticket alone, the model names `ACCOUNT_MANAGER` on none of that
+    class's held-out decisions (`PLAN_SCREEN.md`).
+
+  Three levels of manual would separate knowledge from elicitation, on rung 2's
+  engine:
+  1. one line per queue saying what it is for, which any deployment has;
+  2. a prose manual with a real manual's ambiguity;
+  3. the 29 rules as text, which measures transcription and bounds the other
+     two.
+
+  It can run in two shapes. The proposer compiles the manual once into rules
+  and edges, which can be checked exactly over the space, or the usual loop
+  runs with the manual in the prompt. If the proposer still partitions with the
+  manual in front of it, the partition belongs to the elicitation and not to
+  what the model knows, which is the stronger result. It breaks the oracle's
+  separation on purpose, so it needs its own package and its own plan, and the
+  tests that keep the loop away from the oracle must say why that package is
+  exempt. Cents.
+- **Ask the model for its ranking of the queues.** The ranking the pairwise
+  thread measured itself against, which 1,600 answers tied (`B-b`), is Stage
+  C's hierarchy. It was chosen by brute force over the 40,320 hierarchies with
+  the hidden policy's answer key in hand, over that policy's pairs
+  (`rung2/pair_judgement_baselines.py`). It reads no rule and it is not
+  ignorant, as `PLAN_BLIND.md` §6.6 says. Nobody has asked the model which
+  ranking it would give. Ask once, or a few times with the queues listed in
+  permuted orders, since the slot decides some answers (`PLAN_PRIMACY.md`).
+  Score each answer with `rung3/queue_hierarchy_floor.py`, where the tie-break
+  provably cannot move the score.
+  - Near Stage C's score, one question buys what the 1,600 answers bought.
+  - Near a blind hierarchy's mean, the model shows pair by pair what it cannot
+    state. That is `PLAN_WHY.md`'s gap between what the proposer says and what
+    it does, reached from another side.
+
+  It is also the one ranking that reads no truth, so it could stand in for
+  Stage C's wherever a ranking is used as a rule (the erratum in the BLIND
+  section, above). Cents, and a signed plan, as for every paid run.
+- **Students on the proposer's own answers, with deferral by uncertainty.** This
+  is the baseline the survey ranks first, after Cache & Distil (Findings of ACL
+  2024) and Online Cascade Learning (ICML 2024). A cheap learner is trained on
+  the LLM's answers, and a policy sends the LLM what the learner is unsure of.
+  §8 of `results_ilp/FINDINGS_ILP.md` ran one student on the proposer's
+  answers, and the proposer's rules beat it. That was one unregularised
+  inducer, which fits noisy labels case by case, on rung 1's record alone. What
+  it leaves:
+  - **Stronger students.** A pruned decision tree, a multinomial logistic
+    regression, and nearest neighbour on the proposer's answers. The last is
+    `harness/cache_baseline.py` with the proposer's queue where it caches the
+    truth; that file is frozen, so the variant lives outside `harness/`. Train
+    them on the queues the proposer named at the escalations of rung 1's record
+    and of `PLAN_REUSE.md`'s three runs, where each record keeps it as
+    `predicted`. Score them against the truth on corpus test and over the
+    space, beside the proposer's rules in arrival order and under each run's
+    engine.
+  - **The order on the same information.** Rung 3's search, with the
+    proposer's answers at the escalations as its labels instead of the truth,
+    and with its declared constants. It reads no oracle, so it says how much of
+    the gap between `born_at` and the searched order the oracle paid for.
+  - **Deferral, the free half.** At the engine's own call budget, where would a
+    margin rule send its escalations, and are the seven `ONCALL_ESCALATION`
+    arrivals among them? Where those tickets were asked with the ticket alone,
+    `PLAN_FIDELITY.md` and `PLAN_SCREEN.md` recorded the answer.
+  - **Deferral, the paid half.** The online cascade, at equal calls to the
+    loop. Its escalations are not the engine's, so their answers do not exist.
+
+  `CLAUDE.md`'s four conditions for a baseline set against the proposer apply as
+  written, and here the control on the proposer's answers is the design itself.
+  The repository runs on the standard library, so a student needs a small
+  learner written for it or a dependency pinned apart, as `clingo` is. A
+  decision tree is symbolic too. If one matches the rules, the case for rules
+  written one ticket at a time has to rest on something other than being
+  symbolic.
+- **A tighter bound than the coverage bound, before any solver.** This is a
+  method for `STATUS.md`'s first open item. A case with exactly one right rule
+  among those that match it is decided right only if that rule precedes every
+  wrong rule that matches it. Those are hard edges. If they close cycles, some
+  of those cases are lost under every order. A packing of cycles that share no
+  case counts them validly, which gives a tighter bound certified without a
+  solver. In the hybrid pool, subsumption's edges join the graph and cannot
+  yield. `rung3/mfas_compilation.py` covers the other side: it is a heuristic
+  for the order that breaks the fewest edges, so it yields an attainable order
+  and no bound. If the two sides meet, the residue is settled. If not, a MIP or
+  MaxSAT over pairwise order variables, restricted to the pairs that overlap,
+  reporting the solver's gap if it does not converge. CORELS does not answer it
+  as it stands: it learns the antecedents and the labels too, and `pycorels` is
+  binary. Its prefix bounds may still help a branch and bound. Free, on both
+  surfaces and both pools.
+- **A label model over the learned base.** This is a method for *Whether the
+  order is attainable without labels*, in rung 3's list below, which has none.
+  Dawid–Skene, or the label model of Snorkel (Ratner et al., VLDB 2017),
+  estimates each rule's accuracy from where the rules agree and disagree on
+  unlabelled cases, and reads no truth. Order the rules by it, or vote with it.
+  - **It has signal only where rules overlap.** Rung 1's 577 overlap heavily,
+    and the bases `PLAN_AUTHORSHIP.md` wrote hardly at all. A failure there is
+    a result too: partition starves an unsupervised resolver as it removes the
+    error detector.
+  - **It has to clear the floors that read no truth.** These are `born_at` and
+    its reverse, which differ sharply between pools
+    (`results3/floor_by_pool.json`), and a blind hierarchy's mean
+    (`results3/queue_hierarchy_floor.json`).
+  - **Copies break its independence assumption.** `FINDINGS3.md` §18 counts
+    rules written twice, some with two queues, so merge or model them first.
+
+  Free.
+- **Random escalation, asked without a screen.** This is a candidate for the
+  trigger that *Pending and already specified* says nobody has specified.
+  Escalate a fixed share of the arrivals a rule decides, at random, whatever
+  coverage and conflict say, and ask the model with the ticket alone. The
+  records already settle two things about it:
+  - The queue is in the model (`F-f`), and the screen pulls the model to its
+    commonest action (`PLAN_SCREEN.md`).
+  - Where the rules are wrong, the model is mostly wrong too (`F-d`). So a
+    random re-ask buys little beyond what the model knows and the screen
+    hides, which is the rare queues.
+
+  The free half comes from `PLAN_REUSE.md`'s records: the calls it costs, and
+  its chance of asking about at least one `ONCALL_ESCALATION` arrival, as
+  functions of the share. The paid half is what the loop compiles from the
+  answer. A rule born on a covered case overlaps the rule that decided it.
+  Under rung 2's engine it wins only where it is narrower or a declared edge
+  puts it above, and elsewhere the two conflict. That choice belongs to a plan.
+  The survey's version puts the oracle where the model is, to estimate silent
+  error without bias. Every record here already measures silent error with the
+  oracle on every decision, so that version is advice for a deployment, not a
+  baseline.
+- **An inducer that writes exceptions.** FOLD-R++ (Wang and Gupta, FLOPS 2022)
+  learns default rules with exceptions, and exceptions to those. FOLD-RM is its
+  multi-category version, the one that fits eight queues. It writes the
+  structure the proposer does not, which makes it the stratifying competitor
+  that `PLAN_ILP.md`'s inducer is not. That inducer's sequential covering
+  yields an ordered list, and §5 of its record already counts that asymmetry.
+  Run it under `PLAN_ILP.md`'s conditions: an `I-g1`-style gate that recovers
+  the hidden policy before any row is read, both sources of labels, and
+  `CLAUDE.md`'s four conditions. Check that it installs before planning on it:
+  `PLAN_ILP.md` found Popper and ILASP not installable, and an unrelated
+  package on PyPI under Popper's name. If it installs, pin it apart, as
+  `requirements-ilp.txt` pins `clingo`. Free in calls.
+- **A second domain.** The first objection a reader raises is one synthetic
+  policy and one model. Another model is listed under *Prior to the four
+  rungs*; another domain is not. It splits in two:
+  - **The engine's half needs no LLM.** Step 0 under specificity, how often
+    broad overrides sit above narrow rules, and ordering from labels all run on
+    any first-match rule set. That would answer the clause §9.1 of
+    `ARBITRATION_REPORT.md` and its erratum leave unmeasured: how often real
+    manuals have a given shape. Packet-classification rule sets are a
+    candidate, since ClassBench generates synthetic filter sets from the
+    statistics of real ones. Check first whether its filters carry an action at
+    all, and how prefix and range matches map onto the DSL.
+  - **The loop's half needs a domain where the model has a prior** about the
+    right decision. A firewall's decisions are the company's own, which is
+    what the manual item above tests.
+
+  It is the most expensive item here, and it needs its own plan.
+- **A write-up of the founding-question threads, with the work beside them.**
+  `PAIRWISE_WRITEUP.md` reads the two pairwise threads as one result. Nothing
+  does the same for `PLAN_REUSE.md`, `PLAN_FIDELITY.md`, `PLAN_EDGES.md`,
+  `PLAN_AUTHORSHIP.md`, `PLAN_OVERLAP.md`, `PLAN_BLIND.md` and
+  `PLAN_SCREEN.md`. The repository knows Soar (`results/FINDINGS.md`,
+  *Lineage*) and the production-system and defeasible-logic tradition
+  (`ARBITRATION_REPORT.md` §4). It cites none of what the survey found:
+  - CogRec (arXiv 2512.24113): a Soar agent that asks an LLM at an impasse and
+    chunks the answer into a rule, the nearest antecedent;
+  - Cache & Distil and Online Cascade Learning: students with learned
+    deferral;
+  - LLM-written labelling functions combined by a label model, which settle
+    conflicts by weighted vote and not by precedence;
+  - Qiu et al. (ICLR 2024) and Hypotheses-to-Theories (Zhu et al., 2023): LLMs
+    propose rules well and apply them badly, behind a symbolic filter that
+    reads the truth;
+  - Johnston and Governatori (ICAIL 2003) and Governatori et al. (RuleML
+    2010): inducing defeasible theories, and revising one through its
+    superiority relation alone, which the second shows NP-complete;
+  - PRP (Qin et al., 2023), which asks each pair in both orders;
+  - the selective-labels problem (Lakkaraju et al., KDD 2017), the frame for
+    feedback that arrives only on errors;
+  - RimRule and ANNEAL, related and not precursors (`EXTERNAL_REVIEW.md` §5,
+    point 3).
+
+  Two warnings for whoever writes it. *Specificity cannot recover a stratified
+  policy, which is why defeasible logic declares superiority* is already in
+  `ARBITRATION_REPORT.md` §4, which calls it an empirical replication. Do not
+  derive it a fourth time. And the survey read this repository's figures
+  second-hand, so cite the records. One framing from it is worth keeping. In
+  Soar a chunk's conditions come from the trace of the subgoal that resolved
+  the impasse, so it cannot be born wrong when that subgoal was right. Here a
+  rule is a black box's conjecture about which attributes mattered, which fits
+  most errors being born with the rules (`results_reuse/FINDINGS_REUSE.md`).
+  The survey calls it chunking without a trace. Zero calls.
+- **Lower value, recorded with the reason so they are not proposed again
+  without it.**
+  - **Bradley–Terry over the pairwise answers.** `FINDINGS3.md` §13 already
+    changed the compilation, and found it was not the bottleneck.
+  - **Per-input cache thresholds, after vCache.** With eight categorical
+    attributes, the fixed threshold of `harness/cache_baseline.py` and
+    `keep_k` are reasonable. Both are handed the truth, which the student entry
+    above addresses.
+  - **MDL consolidation, after RimRule.** It would act on the base's copies
+    (`FINDINGS3.md` §§18-19). Copies with one queue change no decision. Copies
+    with two queues are a choice between them, and an objective that reads no
+    truth has no reason to make it well.
+  - **CORELS as a competing list.** It is binary as implemented, and it asks
+    what `PLAN_ILP.md` already asked.
+
+---
+
 ## What `ARBITRATION_REPORT.md` §7 proposes and nothing has run
 
 *Added 2026-09-29.* That report's §7 makes five proposals, written on 2026-08-17
@@ -920,6 +1196,13 @@ draft a band for one of them and may not sign it.
 - Whether the absence of feedback can be used in some way. Here it was decided
   not to interpret it as a correct decision; a probabilistic interpretation has
   not been tried.
+  **[NOTE 2026-10-16] The frame has a name: selective labels** (Lakkaraju et
+  al., KDD 2017), where an outcome is seen only where a prior decision lets it
+  through. In rung 4's simulator the channel's coverage and asymmetry are
+  known, so silence after a decision can be read as evidence that it was
+  right, weighted by the chance an error would have been reported. That is
+  free there. In deployment those parameters are unknown, and the reading
+  inherits that limit. From the outside reading of October 2026, above.
 
 ---
 
@@ -933,6 +1216,10 @@ draft a band for one of them and may not sign it.
   search seeing every case in the exhaustive space still stops short of the bound
   — evidence it is somewhat loose, not proof. Exact optimization is still what
   would settle it.
+  **[NOTE 2026-10-16] A cheaper first step is proposed**: the hard edges of the
+  cases with one right rule, and a packing of their cycles, which tightens the
+  bound without a solver. It is in *What the outside reading of October 2026
+  proposes*, above.
 - **Which surface a figure is measured on, as a standing question.** Opened
   2026-08-08. The corpus is the modelled arrival distribution and the exhaustive
   space is a uniform measure over attribute combinations; they are not
@@ -943,6 +1230,10 @@ draft a band for one of them and may not sign it.
 - Whether the order is attainable without labels. The shadow loop has no
   supervision channel by design. Rung 4 partially bounded this question and the
   answer was bad.
+  **[NOTE 2026-10-16]** A label model over the rules' agreements is a method
+  for it that reads no truth, proposed above. It has to clear the reversed
+  `born_at` order, which `ARBITRATION_REPORT.md` §2 found reads no truth
+  either.
 - Why the proposer did not write correct rules for `T3_ENGINEERING` or
   `ACCOUNT_MANAGER` — for roughly two thirds of each, no rule covering the case
   carries the right action (`FINDINGS3.md` §2). It is a material problem, not an
@@ -957,6 +1248,9 @@ draft a band for one of them and may not sign it.
   of them born on a `T1_GENERAL` ticket sent there by mistake. It chose the wrong
   queue before it wrote any rule. `T3_ENGINEERING`'s six escalations, two named
   right, are too few to say. §3's erratum of `results_ilp/FINDINGS_ILP.md`.
+  **[NOTE 2026-10-16]** No prompt has ever told the model what the queues are
+  for: it sees their names. Giving it the manual, at three levels, is proposed
+  above as the test of whether this is a matter of knowledge.
 - Whether a proposer that is shown the gaps in the ceiling would fill them.
 - The objective function as an explicit design surface: which classes are
   protected, at what cost in aggregate, and who decides.
