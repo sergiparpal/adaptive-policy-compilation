@@ -548,6 +548,28 @@ the drafter had expected all four to hold, which is the worst calibration event 
    recorded here is that this document had no way to reach that answer alone.
 3. **The reviewer's two literature citations** (RimRule, ANNEAL) were not
    verified. They are external to the repository and nothing here rests on them.
+
+   > **[NOTE 2026-10-16] Both exist, and both are related rather than
+   > precursors.** An outside literature survey located them. It is one of two
+   > documents from a conversation about the project, adjudicated on 2026-10-16
+   > and not kept in the tree. The arXiv records were checked the same day:
+   >
+   > - **RimRule** (Gao et al., arXiv 2601.00086, a long paper at ACL 2026)
+   >   distils rules from failed tool-use traces and consolidates them under an
+   >   MDL objective. It injects them into the prompt, so the model still
+   >   decides every case.
+   > - **ANNEAL** (Hakim et al., arXiv 2605.16309, a preprint whose v2 is of
+   >   2026-06-08) turns recurrent failures into typed patches to a process
+   >   knowledge graph. Each patch is canary-tested before it is committed, and
+   >   can be rolled back.
+   >
+   > Neither compiles decisions out of the model at an impasse. The nearest
+   > antecedent the survey found is **CogRec** (Hu et al., arXiv 2512.24113, a
+   > preprint of 2025-12-30): a Soar agent that asks an LLM at an impasse and
+   > chunks the answer into a production rule, for recommendation. Nothing here
+   > rests on any of the three. What the survey proposes for the repository is
+   > in [`IDEAS.md`](IDEAS.md), *What the outside reading of October 2026
+   > proposes*.
 4. **This document is the third re-derivation of §9.1**, by the reviewer's route,
    and says so in §1.4 rather than presenting the sweep as new. The next document
    reads these three before it is written.
