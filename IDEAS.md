@@ -295,6 +295,14 @@ What that leaves:
         truth-free order that beat the coin beyond the keyword, on three bases
         with 37 refusals between them. Whether it holds on other bases needs
         bases with cycles, which means new runs of the loop: calls.
+        **[ERRATUM 2026-10-16] It is not truth-free.** Stage C's hierarchy
+        was chosen with the hidden policy's answer key in hand, over that
+        policy's pairs (`rung2/pair_judgement_baselines.py`; `PLAN_BLIND.md`
+        §6.6). It reads no truth on these bases, and that is all. A deployed
+        system would need its ranking from a source that reads none, and the
+        model's own stated ranking is one: *What the outside reading of
+        October 2026 proposes*, below. `FINDINGS_BLIND.md` carries the same
+        erratum, and no figure moves.
       - **Which edge yields also decides what rung 2's engine resolves.** The
         ranking and the oracle leave more CONFLICT than arrival, and fewer
         silent errors. An engine that read the closure would separate the two.
