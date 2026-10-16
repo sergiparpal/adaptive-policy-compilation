@@ -146,6 +146,29 @@ class FakeOpenAIClient:
         return _Completion(choices=[_Choice(_Message(self._script(kwargs)))])
 
 
+class OpenRouterShapedClient(FakeOpenAIClient):
+    """The double, with what OpenRouter adds around an answer: a generation id,
+    the provider it routed the request to, the model that served it, both
+    finish reasons and the token counts (`harness/call_record.py` lists them).
+    Every value is invented, and the provider's name says so. The answer itself
+    is the script's, as in the plain double."""
+
+    PROVIDER = "provider-of-the-double"
+
+    def _create(self, **kwargs: Any) -> Any:
+        self.peticiones.append(kwargs)
+        n = len(self.peticiones)
+        message = _Message(self._script(kwargs))
+        return types.SimpleNamespace(
+            id=f"gen-double-{n}", provider=self.PROVIDER,
+            model=kwargs.get("model"), system_fingerprint=None,
+            choices=[types.SimpleNamespace(message=message, finish_reason="stop",
+                                           native_finish_reason="STOP")],
+            usage=types.SimpleNamespace(
+                prompt_tokens=100 + n, completion_tokens=20, total_tokens=120 + n,
+                completion_tokens_details=types.SimpleNamespace(reasoning_tokens=0)))
+
+
 class FakeAnthropicClient:
     """Compatible with what the proposer uses: `.messages.create`."""
 

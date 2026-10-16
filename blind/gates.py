@@ -324,10 +324,14 @@ class ReplayV2E:
 
     def _serve(self, idx: int, round_: int) -> e.Answer:
         c = self.calls[(idx, round_)]
+        # A row written since 2026-10-16 carries `call_attempts`; serving them
+        # back keeps the replay's rows equal to the record's.
         if c["failure"] is not None:
-            raise e.ProposalFailed(c["failure"], c["finish_reason"], c["attempts"])
+            raise e.ProposalFailed(c["failure"], c["finish_reason"], c["attempts"],
+                                   c.get("call_attempts"))
         return e.Answer(c["payload"].get("action"), c["payload"], c["raw"],
-                        c["finish_reason"], c["attempts"])
+                        c["finish_reason"], c["attempts"],
+                        list(c.get("call_attempts") or []))
 
     def first(self, case, base_text, idx):
         return self._serve(idx, 0)

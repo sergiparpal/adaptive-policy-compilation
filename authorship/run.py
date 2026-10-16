@@ -155,11 +155,13 @@ class Resumable:
                 raise Desync(f"case {idx}, round {round_}: the stored answer was paid "
                              "for under another request")
             self.served += 1
+            # Rows paid for before 2026-10-16 carry no `call_attempts`.
             if row["failure"] is not None:
                 raise p.ProposalFailed(row["failure"], row["finish_reason"],
-                                       row["attempts"])
+                                       row["attempts"], row.get("call_attempts"))
             return p.Answer(row["payload"].get("action"), row["payload"], row["raw"],
-                            row["finish_reason"], row["attempts"])
+                            row["finish_reason"], row["attempts"],
+                            list(row.get("call_attempts") or []))
         t0 = self.clock()
         self.asked += 1
         try:
@@ -169,6 +171,7 @@ class Resumable:
                 "idx": idx, "round": round_, "digest": d, "raw": None, "payload": None,
                 "finish_reason": getattr(exc, "finish_reason", None),
                 "attempts": getattr(exc, "attempts", None),
+                "call_attempts": list(getattr(exc, "call_attempts", None) or []),
                 "failure": str(exc)[:300], "seconds": round(self.clock() - t0, 2)})
             if len(self.pending) >= STOP_AFTER_FAILURES_IN_A_ROW:
                 raise Outage(f"{len(self.pending)} calls in a row failed, the last "
@@ -179,8 +182,9 @@ class Resumable:
         self.pending = []
         self.keep({"idx": idx, "round": round_, "digest": d, "raw": ans.raw,
                    "payload": ans.payload, "finish_reason": ans.finish_reason,
-                   "attempts": ans.attempts, "failure": None,
-                   "seconds": round(self.clock() - t0, 2)})
+                   "attempts": ans.attempts,
+                   "call_attempts": list(getattr(ans, "call_attempts", None) or []),
+                   "failure": None, "seconds": round(self.clock() - t0, 2)})
         return ans
 
     def flush(self) -> None:

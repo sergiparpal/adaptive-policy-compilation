@@ -61,7 +61,9 @@ def propose_v2e(engine: PriorityEngine, case: Case, idx: int, outcome: str,
             esc.calls.append(eloop.call_row(round_, None, failure=str(exc)[:300],
                                             finish=getattr(exc, "finish_reason", None),
                                             attempts=getattr(exc, "attempts", None),
-                                            seconds=round(clock() - t0, 2)))
+                                            seconds=round(clock() - t0, 2),
+                                            call_attempts=getattr(exc, "call_attempts",
+                                                                  None)))
             if round_ == 0:
                 out.update(failed=True, reason=f"proposal_failed: {exc}")
                 return out

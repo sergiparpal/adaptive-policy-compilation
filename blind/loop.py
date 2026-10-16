@@ -52,7 +52,8 @@ def _failed_call(esc, round_: int, exc: Exception, t0: float, clock) -> None:
     esc.calls.append(eloop.call_row(round_, None, failure=str(exc)[:300],
                                     finish=getattr(exc, "finish_reason", None),
                                     attempts=getattr(exc, "attempts", None),
-                                    seconds=round(clock() - t0, 2)))
+                                    seconds=round(clock() - t0, 2),
+                                    call_attempts=getattr(exc, "call_attempts", None)))
 
 
 def _refused(esc, out: dict, verdict: str, reason: str | None = None) -> dict[str, Any]:

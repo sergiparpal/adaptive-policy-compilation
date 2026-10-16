@@ -131,16 +131,26 @@ def install_order(engine: PriorityEngine, payload: dict, shown: set[str],
 
 def call_row(round_: int, answer: p.Answer | None, failure: str | None = None,
              finish: str | None = None, attempts: int | None = None,
-             seconds: float | None = None) -> dict[str, Any]:
-    return {"round": round_,
-            "form": (None if answer is None else
-                     "order" if p.is_order(answer.payload) else "rule"),
-            "finish_reason": answer.finish_reason if answer else finish,
-            "attempts": answer.attempts if answer else attempts,
-            "raw": answer.raw if answer else None,
-            "payload": answer.payload if answer else None,
-            "failure": failure,
-            "seconds": seconds}
+             seconds: float | None = None,
+             call_attempts: list | None = None) -> dict[str, Any]:
+    """`call_attempts`, since 2026-10-16: what each attempt said about itself
+    (`harness.call_record`). An answer carries its own; a failure passes the
+    ones its exception carried. The key is there exactly when attempts were
+    recorded, so a replay of a record paid for before that date rebuilds its
+    rows as they were written."""
+    row = {"round": round_,
+           "form": (None if answer is None else
+                    "order" if p.is_order(answer.payload) else "rule"),
+           "finish_reason": answer.finish_reason if answer else finish,
+           "attempts": answer.attempts if answer else attempts,
+           "raw": answer.raw if answer else None,
+           "payload": answer.payload if answer else None,
+           "failure": failure,
+           "seconds": seconds}
+    said = (getattr(answer, "call_attempts", None) if answer else call_attempts) or []
+    if said:
+        row["call_attempts"] = list(said)
+    return row
 
 
 def propose_v1e(engine: PriorityEngine, case: Case, idx: int, outcome: str,
@@ -163,7 +173,8 @@ def propose_v1e(engine: PriorityEngine, case: Case, idx: int, outcome: str,
             esc.calls.append(call_row(round_, None, failure=str(exc)[:300],
                                       finish=getattr(exc, "finish_reason", None),
                                       attempts=getattr(exc, "attempts", None),
-                                      seconds=round(clock() - t0, 2)))
+                                      seconds=round(clock() - t0, 2),
+                                      call_attempts=getattr(exc, "call_attempts", None)))
             if round_ == 0:
                 out.update(failed=True, reason=f"proposal_failed: {exc}")
                 return out

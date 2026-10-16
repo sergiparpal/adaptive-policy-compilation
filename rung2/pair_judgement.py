@@ -146,6 +146,7 @@ import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from harness import call_record
 from harness.ceiling_check import HIDDEN_DSL, all_cases
 from harness.domain import ACTIONS, Case
 from harness.dsl import Condition
@@ -615,7 +616,13 @@ def add_breadth(rows, engine):
 # ---------------------------------------------------------------------------
 
 class Judge:
-    """Thin client, rung 2's settings. `proposers2.py` is not touched."""
+    """Thin client, rung 2's settings. `proposers2.py` is not touched.
+
+    Since 2026-10-16 its client is wrapped by `harness.call_record`, which
+    changes no request and no response. Each row keeps its question's
+    attempts as `call_attempts`, with their finish reasons and provider: the
+    parse failures reopened on 2026-10-05 had no cause on record for lack of
+    them."""
 
     def __init__(self, model: str = MODEL, max_retries: int = MAX_RETRIES):
         from openai import OpenAI
@@ -628,6 +635,7 @@ class Judge:
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
         )
+        self.calls = call_record.install(self)
 
     def ask(self, text: str):
         """Returns (payload, attempts). Raises ProposalError if nothing parses."""
@@ -1143,6 +1151,7 @@ def main_learned(argv) -> int:
             # that produced the record.
             continue
         asked += 1
+        judge.calls.take()
         try:
             payload, attempts = judge.ask(r["question"])
             answer = payload.get("action")
@@ -1157,6 +1166,7 @@ def main_learned(argv) -> int:
             r.update({"answer": None, "off_menu": False, "raw_answer": None,
                       "why": "", "attempts": MAX_RETRIES + 1,
                       "parse_failed": True, "error": str(exc)[:200]})
+        r["call_attempts"] = judge.calls.take()
         r["declared"] = classify_learned(r["answer"], r)
         if asked % 50 == 0 or asked == len(fresh):
             print(f"    {asked}/{len(fresh)}")
@@ -1362,6 +1372,7 @@ def main(argv=None) -> int:
     print(f"  {len(rows)} calls, one per pair, sequential")
     failures = 0
     for k, r in enumerate(rows):
+        judge.calls.take()
         try:
             payload, attempts = judge.ask(r["question"])
             answer = payload.get("action")
@@ -1376,6 +1387,7 @@ def main(argv=None) -> int:
             r.update({"answer": None, "off_menu": False, "raw_answer": None,
                       "why": "", "attempts": MAX_RETRIES + 1,
                       "parse_failed": True, "error": str(exc)[:200]})
+        r["call_attempts"] = judge.calls.take()
         r["outcome"] = classify(r["answer"], r["winner_action"],
                                 r["loser_action"])
         if (k + 1) % 20 == 0 or k + 1 == len(rows):

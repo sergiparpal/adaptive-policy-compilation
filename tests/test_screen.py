@@ -44,7 +44,7 @@ from fidelity import prompts
 from rung2.proposers2 import ProposalError, render_base_v1
 
 from screen import ask, plan, sample, score
-from tests.doubles import FakeOpenAIClient, FixedResponses, fake_sdk
+from tests.doubles import FakeOpenAIClient, FixedResponses, OpenRouterShapedClient, fake_sdk
 
 UNSIGNED = {"passes": False, "found": 1, "unsigned": 1, "what": "", "source": ""}
 SIGNED = {**UNSIGNED, "passes": True, "unsigned": 0}
@@ -639,6 +639,29 @@ class TestASessionThroughTheSDKDouble(unittest.TestCase):
         for r in rows:
             self.assertTrue(r["valid"])
             self.assertEqual((r["attempts"], r["finish_reasons"]), (1, [None]))
+
+    def test_each_row_keeps_what_its_attempts_said_beside_its_finish_reasons(self):
+        """Since 2026-10-16 the proposer's client is `harness.call_record`'s
+        recorder, inside `FinishRecorder`. Both see every attempt; the row
+        keeps both."""
+        from rung2.proposers2 import OpenRouterProposer2
+        client = OpenRouterShapedClient(FixedResponses("no es JSON", GOOD))
+        with fake_sdk(openai=client):
+            p = OpenRouterProposer2(model=plan.MODEL, prompt_version=plan.PROMPT,
+                                    reasoning=plan.REASONING)
+        rec = ask.wrap(p)
+        with tempfile.TemporaryDirectory() as d, mock.patch("builtins.print"):
+            rows, _ = ask.ask("smoke", self.design, p, rec, Path(d) / "s.jsonl",
+                              {"protocol": ask.protocol()})
+        self.assertEqual(sum(len(r["call_attempts"]) for r in rows),
+                         len(client.peticiones))
+        self.assertEqual(len(rows[0]["call_attempts"]), 2)
+        for r in rows:
+            self.assertEqual(len(r["call_attempts"]), r["attempts"])
+            self.assertEqual([a["finish_reason"] for a in r["call_attempts"]],
+                             r["finish_reasons"])
+            self.assertEqual({a["provider"] for a in r["call_attempts"]},
+                             {OpenRouterShapedClient.PROVIDER})
 
     def test_the_labels_are_copied_from_the_records(self):
         with tempfile.TemporaryDirectory() as d:

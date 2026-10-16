@@ -40,7 +40,8 @@ from rung2.shadow2 import run_shadow2
 
 from fidelity import ask, plan, prompts, replay, sample, score
 from reuse import plan as reuse_plan
-from tests.doubles import FakeOpenAIClient, FixedResponses, fake_sdk, record, script_rung2
+from tests.doubles import (FakeOpenAIClient, FixedResponses, OpenRouterShapedClient,
+                           fake_sdk, record, script_rung2)
 from tests.fixtures import space
 
 UNSIGNED = {"passes": False, "found": 1, "unsigned": 1, "what": "", "source": ""}
@@ -680,6 +681,24 @@ class TestASessionThroughTheSDKDouble(unittest.TestCase):
             self.assertEqual(kwargs["max_tokens"], ask.MAX_TOKENS)
             self.assertEqual(kwargs["model"], plan.MODEL)
         self.assertTrue(all(r["valid"] and r["action"] == "T2_TECHNICAL" for r in rows))
+
+    def test_each_row_keeps_what_its_attempts_said(self):
+        """Since 2026-10-16 the proposer's client is `harness.call_record`'s
+        recorder, and a row keeps its question's attempts. The records this
+        session wrote on 2026-10-02 and 03 have none."""
+        client = OpenRouterShapedClient(FixedResponses(GOOD))
+        from rung2.proposers2 import OpenRouterProposer2
+        with fake_sdk(openai=client):
+            p = OpenRouterProposer2(model=plan.MODEL, prompt_version=plan.PROMPT,
+                                    reasoning=plan.REASONING)
+        with tempfile.TemporaryDirectory() as d, mock.patch("builtins.print"):
+            rows, _ = ask.ask("smoke", self.design, p, Path(d) / "s.jsonl",
+                              {"protocol": ask.protocol()})
+        ids = [a["generation_id"] for r in rows for a in r["call_attempts"]]
+        self.assertEqual(len(ids), len(client.peticiones))
+        self.assertEqual(len(set(ids)), len(ids))
+        self.assertEqual({a["provider"] for r in rows for a in r["call_attempts"]},
+                         {OpenRouterShapedClient.PROVIDER})
 
     def test_the_labels_are_copied_from_the_records(self):
         with tempfile.TemporaryDirectory() as d:

@@ -21,6 +21,11 @@ THE PROPOSER is rung 2's `OpenRouterProposer2` with v1e's system prompt, v1e's
 rendering of a CONFLICT, and two things v1 never kept: each answer's raw text,
 which a repair round sends back as the assistant's turn, and its
 `finish_reason`, which §5.4 records on every call. Its retries are v1's.
+
+Since 2026-10-16 every answer, and every answer that never parsed, also carries
+`call_attempts`: what each attempt said about itself, from the
+`harness.call_record` recorder `OpenRouterProposer2` installs on its client.
+The request does not change. The loops of `overlap/` and `blind/` inherit it.
 """
 
 from __future__ import annotations
@@ -28,9 +33,10 @@ from __future__ import annotations
 import hashlib
 import json
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
+from harness.call_record import CallRecorder
 from harness.domain import Case
 
 from rung2.proposers2 import (MAX_SHOWN, SYSTEM_PROMPT_V1, OpenRouterProposer2,
@@ -198,15 +204,19 @@ class Answer:
     raw: str
     finish_reason: str | None
     attempts: int
+    call_attempts: list = field(default_factory=list)
 
 
 class ProposalFailed(ProposalError):
-    """An answer that never parsed, with the `finish_reason` of its last try."""
+    """An answer that never parsed, with the `finish_reason` of its last try
+    and what each of its attempts said about itself."""
 
-    def __init__(self, message: str, finish_reason: str | None, attempts: int):
+    def __init__(self, message: str, finish_reason: str | None, attempts: int,
+                 call_attempts: list | None = None):
         super().__init__(message)
         self.finish_reason = finish_reason
         self.attempts = attempts
+        self.call_attempts = list(call_attempts or [])
 
 
 class ProposerE(OpenRouterProposer2):
@@ -235,6 +245,15 @@ class ProposerE(OpenRouterProposer2):
     def ask(self, messages: list[dict[str, str]]) -> Answer:
         """v1's retries: JSON mode on the first try, and after a failure one
         nudge to answer with the object alone."""
+        recorder = getattr(self, "calls", None)
+        if not isinstance(recorder, CallRecorder):
+            recorder = None
+        if recorder is not None:
+            recorder.take()                 # only this question's attempts count
+
+        def taken() -> list:
+            return recorder.take() if recorder is not None else []
+
         last: Exception | None = None
         finish: str | None = None
         for attempt in range(self.max_retries + 1):
@@ -252,7 +271,8 @@ class ProposerE(OpenRouterProposer2):
                 finish = getattr(choice, "finish_reason", None)
                 raw = choice.message.content or ""
                 payload = parse_payload(raw)
-                return Answer(payload.get("action"), payload, raw, finish, attempt + 1)
+                return Answer(payload.get("action"), payload, raw, finish, attempt + 1,
+                              taken())
             except Exception as exc:  # noqa: BLE001
                 last = exc
                 if attempt == 0:
@@ -262,7 +282,7 @@ class ProposerE(OpenRouterProposer2):
                          "Tu respuesta anterior no era JSON valido. Responde "
                          "UNICAMENTE con el objeto JSON, sin texto alrededor."},
                     ]
-        raise ProposalFailed(str(last), finish, self.max_retries + 1)
+        raise ProposalFailed(str(last), finish, self.max_retries + 1, taken())
 
 
 assert MAX_SHOWN == plan.MAX_SHOWN, "v1's neighbourhood is not the plan's"

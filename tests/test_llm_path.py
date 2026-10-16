@@ -473,6 +473,22 @@ class TestReplayRung2(unittest.TestCase):
         self.assertEqual(self.res.metrics["edges_proposed"], 7)
         self.assertEqual(self.res.metrics["edges_accepted"], 0)
 
+    def test_keeps_each_escalations_attempts_beside_the_records(self):
+        """Since 2026-10-16 the proposer's client carries
+        `harness.call_record`'s recorder. What each escalation's attempts said
+        sits in `calls`, one entry per escalation, and the records above stay
+        exactly the published ones. The double says nothing about a provider,
+        so neither do these attempts."""
+        from harness.call_record import FIELDS
+
+        recorded = [r["idx"] for r in self.reg["records"] if r["escalated"]]
+        self.assertEqual([c["idx"] for c in self.res.calls], recorded)
+        self.assertEqual(sum(len(c["call_attempts"]) for c in self.res.calls),
+                         len(self.client.peticiones))
+        attempts = [a for c in self.res.calls for a in c["call_attempts"]]
+        self.assertTrue(all(tuple(a) == FIELDS for a in attempts))
+        self.assertEqual({a["provider"] for a in attempts}, {None})
+
     def test_42_escalations_cost_46_calls(self):
         self.assertTrue(self.script.agotado)
         self.assertEqual(len(self.client.peticiones), 46)
