@@ -649,6 +649,16 @@ of the CONFLICT points cannot see.
   its refusals left.** In run 1 it sends two of every three of those points to a
   wrong queue.
 
+> **[ERRATUM 2026-10-16] *The best truth-free order* is the Stage C ranking, and
+> it is not truth-free.** It is the arm that gains the 855. It reads no rule and
+> no truth on these bases. But it was chosen by brute force over the 40,320
+> hierarchies with the hidden policy's answer key in hand, over that policy's
+> pairs (`rung2/pair_judgement_baselines.py`), which is why §6.6 of the plan
+> calls it *not ignorant*. The arms that read no truth at all are arrival,
+> recency and the coin. No figure and no verdict moves. What moves is the
+> reading of the ranking as a rule a deployed system could apply: it would need
+> a ranking from a source that reads no truth. `IDEAS.md` carries that.
+
 **What it does not settle.**
 
 - **The trajectory.** Under another rule the loop would have escalated other
