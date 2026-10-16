@@ -1320,6 +1320,9 @@ draft a band for one of them and may not sign it.
   nothing, because nearly every rule moves between any two end orders. Rank
   correlation decayed as a diagnostic too: it does not track behaviour here even
   restricted to the pairs that can change a decision.
+  **[NOTE 2026-10-16]** The direction stays unanswered: the thread this entry
+  opened was closed by decision. See the note at the end of *Where the 30×
+  spread comes from*, below.
 - **The peak of the multi-start is a singleton that spreads, not an optimum that
   concentrates.** Opened 2026-08-13. Across all fifteen measured rows — three
   budgets × five splits — **exactly one start reaches the best train score**, and
@@ -1354,6 +1357,9 @@ draft a band for one of them and may not sign it.
   make them different machines. All-distinct is therefore what that arithmetic
   predicts on its own; the informative quantity is how far apart they are, and
   that is what the record measures.
+  **[NOTE 2026-10-16]** Whether the spread is load-bearing in deployment stays
+  unanswered: the thread was closed by decision. See the note at the end of
+  *Where the 30× spread comes from*, below.
 - **The surface question has its first measurable instance, and it is cheap.**
   Opened 2026-08-15. This is not a second copy of *which surface a figure is
   measured on* above — it is that standing question narrowed, for once, from a
@@ -1788,6 +1794,9 @@ draft a band for one of them and may not sign it.
   nobody.** C-b and C-c hold; C-a landed between its band and its refutation
   line. What follows is Sergi's to decide, and no successor entry is written
   here.
+  **[NOTE 2026-10-16] Decided.** The entry below was the one successor this
+  condition allows. After it Sergi closed the thread, with no successor; the
+  note at the end of that entry says what stays unanswered.
 
 - **Where the 30× spread comes from, at the level the order actually operates
   on.** Opened 2026-08-16, as the one successor the stopping condition above
@@ -1939,6 +1948,18 @@ draft a band for one of them and may not sign it.
   with p75/p25 1.7543 and `κ`'s five-number summary all reproduce exactly; the
   range quoted beside that summary, **1,344×**, is max over min unrounded, where
   the same ratio on the four-decimal summary is 1,346.9.
+
+  **[NOTE 2026-10-16] Closed by Sergi's decision, with no successor.** The
+  stopping condition of the entry above left what follows to him, and the record
+  took no decision from this outcome. This closes the audit thread these entries
+  form, from *Search budget above the declared 64* to this one. What it leaves
+  unanswered stays in the *does not settle* sections of
+  `results3/FINDINGS_ORDERS.md`, the last of them for this entry. None of it
+  moves a conclusion: that the space can neither rate nor rank orders for
+  deployment is measured. Reopening it would take a pre-registered entry on data
+  the thread never read, such as splits 1 to 4 or the 257-order set. §0 of
+  `PLAN_ORDER_METRICS.md` still forbids scoring another predictor against the
+  matrices already seen.
 
 ---
 
