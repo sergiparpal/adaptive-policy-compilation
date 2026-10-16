@@ -115,6 +115,7 @@ def main() -> int:
         "rules": [r.as_dict() for r in res.rules],
         "edge_log": engine.edge_log,
         "records": [vars(r) for r in res.records],
+        "calls": res.calls,
     }, indent=2, default=str))
     print(f"\n-> {destination}")
     return 0

@@ -10,6 +10,13 @@ Invariants inherited from rung 1, unchanged:
   * strictly sequential
 
 What is newly recorded: the fate of every proposed priority edge.
+
+Since 2026-10-16, what each escalation's attempts said about themselves, from
+the proposer's `harness.call_record` recorder: provider, generation id, finish
+reasons and tokens. They sit in `RunResult2.calls`, beside the records and not
+inside them, because the records of the published runs are pinned by their
+replay field for field. A proposer without a recorder, as the mocks are,
+leaves `calls` empty.
 """
 
 from __future__ import annotations
@@ -19,6 +26,7 @@ import statistics
 from dataclasses import dataclass, field
 from typing import Any
 
+from harness.call_record import CallRecorder
 from harness.domain import Case
 from harness.dsl import RuleValidationError
 from harness.hidden_policy import HIDDEN_POLICY_SIZE, true_action, true_rule_id
@@ -57,11 +65,17 @@ class RunResult2:
     failed: int = 0
     edge_stats: dict = field(default_factory=dict)
     metrics: dict = field(default_factory=dict)
+    # One entry per escalation: {"idx": ..., "call_attempts": [...]}.
+    calls: list = field(default_factory=list)
 
 
 def run_shadow2(corpus: list[Case], engine: PriorityEngine, proposer,
                 on_progress=None) -> RunResult2:
     records: list[Record2] = []
+    calls: list[dict[str, Any]] = []
+    recorder = getattr(proposer, "calls", None)
+    if not isinstance(recorder, CallRecorder):
+        recorder = None
     rejected = failed = 0
     edge_reasons = collections.Counter()
 
@@ -96,12 +110,16 @@ def run_shadow2(corpus: list[Case], engine: PriorityEngine, proposer,
             shown_ids = [r.rule_id for r in shown]
             allowed = set(shown_ids)
 
+            if recorder is not None:
+                recorder.take()
             try:
                 action, payload = proposer.propose(case, base_text)
             except ProposalError as exc:
                 failed += 1
                 reason = f"proposal_failed: {exc}"
                 action, payload = None, None
+            if recorder is not None:
+                calls.append({"idx": idx, "call_attempts": recorder.take()})
 
             if payload is not None:
                 predicted = action
@@ -162,6 +180,7 @@ def run_shadow2(corpus: list[Case], engine: PriorityEngine, proposer,
         proposer_name=getattr(proposer, "name", "?"),
         n_cases=len(corpus), records=records, rules=engine.rules,
         rejected=rejected, failed=failed, edge_stats=dict(edge_reasons),
+        calls=calls,
     )
     res.metrics = compute_metrics2(res, engine)
     return res

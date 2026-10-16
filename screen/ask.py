@@ -14,7 +14,9 @@ wrapped by `FinishRecorder`, which passes every keyword argument through to the
 same client and keeps each attempt's `finish_reason`. `PLAN_FIDELITY.md`'s
 records never kept one, so its empty answers have no cause on record; these
 records do. `tests/test_screen.py` checks against `tests/doubles.py` that the
-requests are the ones the proposer builds without the wrapper.
+requests are the ones the proposer builds without the wrapper. Since
+2026-10-16 the client it wraps is already `harness.call_record`'s recorder, and
+each row also keeps that recorder's `call_attempts`: the provider among them.
 
 THE ORDER OF EVENTS IS THE POINT, and nothing that costs is built before the
 thing that could forbid it has spoken (§8 of the plan):
@@ -58,6 +60,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
+from harness.call_record import CallRecorder
 from harness.domain import ACTIONS
 from harness.provenance import describe, environment
 from harness.record_guard import FLAG, or_exit, refuse_overwrite
@@ -205,6 +208,12 @@ def ask(session: str, design: sample.Design, proposer, recorder: FinishRecorder,
     pending: list[dict] = []           # failures not yet known to be isolated
     plan_ = design.sessions[session]
     total = sum(len(p) for p in plan_["passes"])
+    # Since 2026-10-16 the proposer's own client carries `harness.call_record`'s
+    # recorder, inside `FinishRecorder`: the provider and the rest of what each
+    # attempt said, beside the finish reasons this module has always kept.
+    calls = getattr(proposer, "calls", None)
+    if not isinstance(calls, CallRecorder):
+        calls = None
 
     def keep(f, row: dict) -> None:
         f.write(json.dumps(row) + "\n")
@@ -218,6 +227,8 @@ def ask(session: str, design: sample.Design, proposer, recorder: FinishRecorder,
                     continue
                 item, p = design.items[iid], design.prompts[iid]
                 recorder.take()
+                if calls is not None:
+                    calls.take()
                 t0 = clock()
                 try:
                     action, payload = proposer.propose(p.case, p.base_text)
@@ -235,6 +246,8 @@ def ask(session: str, design: sample.Design, proposer, recorder: FinishRecorder,
                        "attempt_errors": [a["error"] for a in attempts],
                        "labels": labels(design, item),
                        "seconds": round(clock() - t0, 2), "asked_at": now()}
+                if calls is not None:
+                    row["call_attempts"] = calls.take()
                 if failure is not None:
                     pending.append(row)
                     if len(pending) >= STOP_AFTER_FAILURES_IN_A_ROW:

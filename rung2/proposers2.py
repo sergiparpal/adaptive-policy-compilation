@@ -30,6 +30,7 @@ import json
 import os
 from typing import Any
 
+from harness import call_record
 from harness.domain import ACTIONS, DOMAINS, Case
 
 from .engine2 import Rule2
@@ -260,7 +261,13 @@ def user_msg(case: Case, base_text: str) -> str:
 
 class OpenRouterProposer2:
     """Identical to rung 1's except that the user message carries the
-    neighbourhood of the base. It never receives the true action."""
+    neighbourhood of the base. It never receives the true action.
+
+    Since 2026-10-16 its client is wrapped by `harness.call_record`, which
+    changes no request and no response: `self.calls.take()` returns what each
+    attempt since the last take said about itself, the provider and the finish
+    reasons among it. A writer that spends stores that list beside each
+    question it asks."""
 
     def __init__(self, model: str = "deepseek/deepseek-v4-flash", max_retries: int = 2,
                  prompt_version: str = "v1", reasoning: dict[str, Any] | None = None):
@@ -283,6 +290,7 @@ class OpenRouterProposer2:
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
         )
+        self.calls = call_record.install(self)
 
     def build_base(self, engine, case: Case, undefeated: list[Rule2]):
         shown, kind = neighbourhood(engine, case, undefeated)

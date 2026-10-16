@@ -59,6 +59,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from harness.call_record import CallRecorder
 from harness.domain import ACTIONS
 from harness.provenance import describe, environment
 from harness.record_guard import FLAG, or_exit, refuse_overwrite
@@ -217,6 +218,11 @@ def ask(session: str, design: sample.Design, proposer, partial: Path,
     pending: list[dict] = []           # failures not yet known to be isolated
     plan_ = design.sessions[session]
     total = sum(len(p) for p in plan_["passes"])
+    # Since 2026-10-16: what each attempt said about itself, if the proposer's
+    # client carries `harness.call_record`'s recorder. The request is the same.
+    recorder = getattr(proposer, "calls", None)
+    if not isinstance(recorder, CallRecorder):
+        recorder = None
 
     def keep(f, row: dict) -> None:
         f.write(json.dumps(row) + "\n")
@@ -229,6 +235,8 @@ def ask(session: str, design: sample.Design, proposer, partial: Path,
                 if (pass_no, iid) in asked:
                     continue
                 item, p = design.items[iid], design.prompts[iid]
+                if recorder is not None:
+                    recorder.take()
                 t0 = clock()
                 try:
                     action, payload = proposer.propose(p.case, p.base_text)
@@ -242,6 +250,8 @@ def ask(session: str, design: sample.Design, proposer, partial: Path,
                        "valid": action in ACTIONS, "payload": payload,
                        "failure": failure, "labels": labels(design, item),
                        "seconds": round(clock() - t0, 2), "asked_at": now()}
+                if recorder is not None:
+                    row["call_attempts"] = recorder.take()
                 if failure is not None:
                     pending.append(row)
                     if len(pending) >= STOP_AFTER_FAILURES_IN_A_ROW:
