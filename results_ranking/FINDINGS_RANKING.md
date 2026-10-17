@@ -6,9 +6,12 @@ its own: *PLAN_RANKING.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
-**Stage A and both sessions of Stage B ran on 2026-10-17, and nothing is
-adjudicated yet.** The five rows wait for Stage C. The smoke session's answers
-enter no row.
+**All three stages ran on 2026-10-17, and the five rows are adjudicated: `M-a`
+holds, `M-b`, `M-c` and `M-d` are refuted, and `M-e` holds, thin.** Asked for
+its ranking, the model states a priority order. As an arbitration order it
+scores below arrival order and below a blind draw, and it predicts the model's
+own pairwise answers far worse than the ranking that read the hidden policy's
+key. The smoke session's answers enter no row.
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Every figure below was
 > computed after the signature, by the free stage §10 kept behind the gate,
@@ -210,6 +213,165 @@ ranking, and each attempt's generation id, provider, finish reasons and tokens.
 
 ---
 
+## Stage C — the five adjudications
+
+**What was run.** `python3 -m ranking.score`, on 2026-10-17, with
+`PYTHONHASHSEED=0`, from the session record's commit on a clean tree. `M-g1` to
+`M-g4` passed again, with the suite green at 1,738 tests. It refused nothing:
+the session record is under this protocol and behind Stage A's record. The
+record is [`score.json`](score.json).
+
+**The unit is one valid ask, and all 24 are valid**, so every row is read on
+the median of 24: the mean of the twelfth and thirteenth values. Every value is
+in the record.
+
+| row | statistic | line | reading | the 24 asks | verdict |
+|---|---|---|---|---|---|
+| M-a | validity; `W − A` over the 28 queue pairs | ≥ 0.90; ≤ 0.05 | 1.0000; 0.0271, `W` 0.9702 and `A` 0.9432 | — | **holds** |
+| M-b | the median score on `hibrido` · corpus test split 0 | > 0.4632 | **0.3367** | 0.2131 to 0.3698 | **refuted** |
+| M-c | the same | ≥ 0.4824 | **0.3367** | the same | **refuted** |
+| M-d | the median `predicts(r) − predicts(stage_c)`, over 1,479 answers | ≥ 0.00 | **−0.1724** | −0.3185 to −0.0663 | **refuted** |
+| M-e | the median reading on `K-b`'s 65 units | > 0.5460 | **0.5496** | 0.4709 to 0.5642 | **holds, thin** |
+
+**The drafter expected three holds and two refutations, and got two holds and
+three refutations.** Four of the five verdicts went as expected. The miss is
+`M-b`, the row §0 itself said was weakened by what the drafter had seen. The
+drafter expected `M-c` to be refuted thinly, and it was refuted by 0.1457.
+
+### What the model states
+
+**Six distinct rankings in 24 asks, and one of them 14 times**:
+`SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `T3_ENGINEERING`, `T2_TECHNICAL`,
+`T1_GENERAL`, `BILLING_SPECIALIST`, `ACCOUNT_MANAGER`, `SELF_SERVICE_DEFLECT`.
+The Borda aggregate of the 24 is that ranking.
+
+- **`SECURITY_INCIDENT` is first in all 24, and `SELF_SERVICE_DEFLECT` is last in
+  all 24.** The variation is in the middle: where `ONCALL_ESCALATION` falls,
+  and the order of the specialist queues among themselves.
+- **Every one of the 24 `why` sentences names a priority**: "prioridad por
+  criticidad", "por severidad y urgencia", "by severity and escalation path".
+  The technical tiers come in escalation order, above the specialist queues,
+  and deflection comes last.
+
+**It is a priority order, and the question asked for an arbitration order.**
+§2.1 put the pairwise judge's question to the model in general: two rules match
+a ticket and send it to different queues, so which queue wins. The answer is the
+other object, which §5.1 named as the trap. A priority order is not wrong as a
+priority order. As the order that decides a contested ticket, it is what the
+rows read.
+
+### What it is worth as a lookup
+
+| cell | born_at | blind mean | Stage C | revealed | **stated, median ask** | its percentile in the 40,320 |
+|---|---|---|---|---|---|---|
+| `hibrido` · corpus test split 0 | 0.4332 | 0.3670 | 0.4824 | 0.4693 | **0.3367** | 0.36 |
+| `hibrido` · five-split mean | — | — | 0.4806 | 0.4675 | 0.3312 | — |
+| `hibrido` · full corpus | 0.4285 | 0.3676 | 0.4805 | 0.4685 | 0.3345 | — |
+| `hibrido` · space | 0.4257 | 0.3180 | 0.5838 | 0.5037 | 0.5157 | 0.89 |
+| `puro` · corpus test split 0 | 0.5216 | 0.3215 | 0.4291 | 0.4131 | 0.2794 | 0.26 |
+| `puro` · full corpus | 0.5115 | 0.3234 | 0.4285 | 0.4170 | 0.2825 | — |
+| `puro` · space | 0.3148 | 0.2898 | 0.5756 | 0.4196 | 0.4993 | 0.88 |
+
+The revealed ranking's figures are Stage A's. Stage C's ranking sits at the 0.93
+percentile of the signed cell.
+
+- **On the signed cell the stated ranking wins 335 cases of 995.** That is 96
+  fewer than arrival order and 145 fewer than Stage C's ranking. **A ranking
+  picked blind does better on average**: the stated one sits at the 0.36
+  percentile of the 40,320.
+- **Over the space it is good: the 0.89 percentile on the hybrid pool**, above
+  the model's revealed ranking and below Stage C's. The surfaces differ in how
+  often the top of the order decides. Half the space carries the security
+  keyword and 71 of the corpus's 2,000 cases do. The stated ranking agrees with
+  Stage C's at the top and disagrees in the middle, where the corpus is
+  decided.
+
+### What it states against what it does
+
+**`M-d` is refuted by 17 points.** The median stated ranking predicts 935 of
+the model's 1,479 declared answers, 0.6322. Stage C's ranking predicts 1,190 of
+them and the model's own revealed ranking 1,194 (Stage A). On the hidden policy's
+166 two-way answers the gap is −0.1446: 125 against Stage C's 149.
+
+The stated rankings agree with the revealed one on 21 of the 28 queue pairs at
+the median, and with Stage C's on the same 21. The disagreement is concentrated
+where the pairwise answers are most one-sided:
+
+- **`BILLING_SPECIALIST` against `T1_GENERAL`.** Pairwise, the model named
+  `BILLING_SPECIALIST` 167 times and `T1_GENERAL` 13
+  (`pair_judgement_1600.json`'s `revealed_hierarchy`). Asked for its ranking,
+  it put `T1_GENERAL` above `BILLING_SPECIALIST` in 22 of 24 asks.
+- **`SELF_SERVICE_DEFLECT` against `T1_GENERAL`.** Pairwise, the model named
+  `SELF_SERVICE_DEFLECT` 113 times and `T1_GENERAL` 42. Asked for its ranking,
+  it put `SELF_SERVICE_DEFLECT` last every time.
+
+So what the model says the order is and the order its answers follow are
+different orders. That is `PLAN_WHY.md`'s gap between what the proposer says and
+what it does, reached at the level of the queues. Here the stated object is
+worse than the done one: 0.3367 as a lookup against the revealed ranking's
+0.4693.
+
+### `M-e`, and the corpus beside it
+
+On `K-b`'s 65 units, beyond the keyword over the space, the median stated
+ranking reads 0.5496 against the declarations' 0.5460. **It holds by 0.0036,
+and it is thin**: one ask, presentation 9 in pass 2, reads 0.4709. So on the
+surface `K-c` was adjudicated on, its refutation survives a ranking the model
+states, by a hair. A ranking that read no key still points those pairs no worse
+than the declarations did.
+
+**On the corpus the reading goes the other way.** On `K-e`'s 66 units the
+stated ranking reads 0.5202, below the declarations' 0.5861 and Stage C's
+0.6848. That is reported and adjudicates nothing. A reader who takes `M-e` for
+*a truth-free ranking beats the declarations* should read both.
+
+### `M-a`, and the providers
+
+**The model states a total order every time, and the slot does not decide
+it.** All 24 answers are valid. Two passes of one presentation agree on
+0.9702 of the queue pairs, and asks of different presentations on 0.9432, a gap
+of 0.0271 against a line of 0.05.
+
+Two facts sit beside the row:
+
+- **Every presentation was served by one provider in both passes**: three of
+  them by GMICloud (2, 5 and 9) and nine by Baidu. So `W` is read within a
+  provider, and part of `A` across two. This record cannot apportion the gap
+  between the slot and the provider.
+- **One provider, one presentation and temperature 0 still give two answers.**
+  The two passes differ on five of the twelve presentations, including
+  presentation 9 under GMICloud.
+
+### What the verdicts say
+
+- **Asking the model for its ranking does not buy the baseline.** On the cell
+  `P-d` and `B-b` were read on, the ranking it states is worth less than
+  arrival order and less than a blind draw. The model's competence at
+  arbitrating queues is in its pairwise answers, not in what it states about
+  them.
+- **The erratum of 2026-10-16 stands without a remedy from this route.**
+  Neither ranking the model gives, stated or revealed, reaches the 0.4824 of
+  the ranking fitted with the key. Wherever that ranking stands as a rule, it
+  still stands with a key behind it.
+- **`K-c`'s refutation survives on its own surface, thinly**, and the corpus
+  reading does not carry it.
+
+### What Stage C does not settle
+
+1. **Whether another question elicits the arbitration order.** The answer read
+   the question as a priority question. A question with an example of two
+   contending rules, or §2.1's pairwise question asked about a list of queue
+   pairs, could elicit the other object. Calls, and a plan of their own.
+2. **Whether the priority reading is the model's or the prompt's.** The system
+   prompt says "gana la que va antes en el orden", and the answers explain
+   themselves by criticality. These answers cannot separate the two.
+3. **The provider.** Whether the slot gap, the five presentations whose passes
+   differ, or the one ask that made `M-e` thin belong to a provider, 24 calls
+   cannot say.
+4. **One model, one prompt, one date, twenty-four asks**, as §12 declared.
+
+---
+
 ## Files
 
 ```
@@ -221,4 +383,6 @@ results_ranking/ask_smoke.json   Stage B's smoke session: two asks, every attemp
                                  with its provider, finish reasons and tokens
 results_ranking/ask_session.json Stage B's session: twenty-four asks, twelve
                                  presentations in two passes, as the smoke's
+results_ranking/score.json       Stage C: the five verdicts with every ask's
+                                 value, and M-f
 ```
