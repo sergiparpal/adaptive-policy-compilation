@@ -222,6 +222,14 @@ optimizer recovers **+0.0817, 63% of it**. The greedy was the main problem and
 the bound was not loose. Overfitting of the order stays small — the gap grows
 from 0.006 to 0.017, an eighth of the recovered accuracy.
 
+> **[NOTE 2026-10-17] *The bound was not loose* is not measured, and where a
+> certificate was run it is loose.** The sentence reads the corpus bound over all
+> 2,000 cases against the test halves' scores. `PLAN_BOUND.md` did not run on the
+> test halves, where no order was searched. On the train halves it shows the
+> bound loose by 15 to 41 cases of about a thousand, 44% to 78% of each half's
+> residue. Over the space, see the note below the direct search.
+> [`results_bound/FINDINGS_BOUND.md`](../results_bound/FINDINGS_BOUND.md).
+
 **Answer to question 3: the regime change does not survive.**
 
 ```
@@ -313,6 +321,14 @@ bound searching over its own test set; this optimizer leaves 0.0879 searching
 over the entire space. The residue shrank by a quarter and did not close, which
 is evidence that the coverage bound is somewhat loose — evidence, not proof,
 because a heuristic that fails to reach a bound never distinguishes the two.
+
+> **[NOTE 2026-10-17] Now proved, and by most of the residue.** `PLAN_BOUND.md`
+> certified, without a solver, cases every order loses. Over the space no order
+> scores above 0.8028 on the pure pool or 0.7767 on the hybrid one. So at least
+> 86% and 78% of the two residues are slack, and this search is within 0.0123
+> and 0.0210 of the best order.
+> [`results_bound/FINDINGS_BOUND.md`](../results_bound/FINDINGS_BOUND.md) owns
+> the figures.
 
 Cost of that diagnostic: 1375 s for the pure pool and **8471 s for the hybrid**,
 which is where the 8x hybrid penalty really shows.
