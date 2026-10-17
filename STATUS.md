@@ -719,6 +719,14 @@ falls. **The gap from 0.8530 up to the 0.9010 bound does not close by searching
 harder** — more budget stops buying generalization before it stops finding train
 improvements.
 
+> **[ERRATUM 2026-10-17] Split 4 moved by three cases, not one.** Quadrupling the
+> budget moved the best train score by one case in split 0, 883 to 884 of 1,005,
+> and by three in split 4, 868 to 871 of 998, already at 129 starts.
+> [`results3/start_budget_check.json`](results3/start_budget_check.json) and
+> `FINDINGS_AUDIT.md`'s table carry both; this sentence carried only the first.
+> Found on 2026-10-17, reading the searched counts for `PLAN_BOUND.md`. The
+> paragraph's point stands at that size, and no other figure moves.
+
 *The order.* In all fifteen rows measured — three budgets × five splits —
 **exactly one start reaches the best train score**. In splits 1 to 3 the best did
 not change between 65 and 257 starts, and yet the 192 extra draws never found it
