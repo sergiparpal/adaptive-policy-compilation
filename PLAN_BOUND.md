@@ -1,5 +1,20 @@
 # PLAN_BOUND — how much of the residue is slack
 
+> **[CLOSED 2026-10-17] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-17, before any figure of the plan existed. The four rows were
+> adjudicated the same day: **`H-a`, `H-b` and `H-c` hold; `H-d` is refuted**, and
+> `H-e` is reported. Over the space most of the residue is slack, certified; on
+> the corpus's train halves the certificate closed less than the bet. **The
+> figures are owned by
+> [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md)**, and no
+> result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-17. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its note, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-16, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing is scored and
 no record is written until Sergi has signed §0.** The signature has to land
