@@ -80,6 +80,15 @@ ONLINE_LOOP = [
     # labels it carries into a record are copied from PLAN_REUSE.md's records,
     # never computed.
     "screen/ask.py",
+    # Added 2026-10-17 with PLAN_RANKING.md. `ask.py` puts one question in
+    # front of the model, the eight queue names and nothing else, so it is a
+    # proposer path. `question.py` builds that question from
+    # `harness.domain.ACTIONS` alone, and its M-g2 checks the built string. The
+    # scores are computed by `instrument.py` with rung 3's instance builders,
+    # which label the cells as every rung 3 figure has been labelled; no module
+    # of the package imports the oracle itself.
+    "ranking/question.py",
+    "ranking/ask.py",
 ]
 
 
@@ -174,7 +183,8 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
         found = set()
         for root in ("harness", "rung2", "rung3", "rung4", "sensitivity",
                      "ilp", "reuse", "fidelity", "edges", "primacy", "why",
-                     "authorship", "overlap", "blind", "screen", "bound"):
+                     "authorship", "overlap", "blind", "screen", "bound",
+                     "ranking"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue

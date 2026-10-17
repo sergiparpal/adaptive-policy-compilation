@@ -71,3 +71,5 @@ results_overlap/*.partial.jsonl
 results_blind/*.partial.jsonl
 # And a Stage B session of PLAN_SCREEN.md (screen/ask.py).
 results_screen/*.partial.jsonl
+# And of PLAN_RANKING.md (ranking/ask.py).
+results_ranking/*.partial.jsonl
