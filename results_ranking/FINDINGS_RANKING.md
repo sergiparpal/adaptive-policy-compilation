@@ -6,8 +6,8 @@ its own: *PLAN_RANKING.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
-**Stage A and the smoke session ran on 2026-10-17, and nothing is adjudicated
-yet.** The five rows wait for the session's answers. The smoke session's answers
+**Stage A and both sessions of Stage B ran on 2026-10-17, and nothing is
+adjudicated yet.** The five rows wait for Stage C. The smoke session's answers
 enter no row.
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Every figure below was
@@ -148,8 +148,8 @@ which Stage B buys, and each step runs on Sergi's word:
 
 ## Stage B
 
-Sergi gave the go-ahead for the smoke session on 2026-10-17, and for nothing
-beyond it. The session waits for its own go-ahead (§8).
+Sergi gave the go-ahead for each session on 2026-10-17, the smoke session's
+first, and the session's after the smoke record was committed (§8).
 
 **The smoke session passed and opens the session.** `ranking.ask --session
 smoke`, 2026-10-17, with `PYTHONHASHSEED=0`, from the commit of *An erratum to
@@ -184,6 +184,30 @@ none is read here.
 session's 24 calls take a few minutes, after the eight minutes of checks that
 come first.
 
+**The session ran in full, and every answer is a valid ranking.** `ranking.ask
+--session session`, 2026-10-17, with `PYTHONHASHSEED=0`, from the smoke
+record's commit on a clean tree. The same checks ran first: the smoke record
+under this protocol, the key, `M-g1` to `M-g4` with the suite green at 1,738
+tests, and Stage A's record.
+
+- **24 asks, 24 valid rankings, each in one attempt.** That covers twelve
+  presentations, each in both passes, in the passes' seeded orders. No call
+  failed and none was retried.
+- **No reasoning token was spent.** The answers took 97 to 112 completion tokens,
+  104.5 at the median.
+- **Every finish reason was `stop`**, normalised and native.
+- **Two providers served one model name**: Baidu answered 18 calls and GMICloud
+  6, three in each pass. `model` came back `deepseek/deepseek-v4-flash` on every
+  call. So the session's answers come from two providers, and `M-a`'s two
+  passes of one presentation need not come from the same one. Stage C reports
+  that beside `M-a`.
+- **The calls took 2.24 s at the median**, from 1.56 to 14.08 s, 89 s in all.
+  The partial file was gone once the record was written.
+
+The record is [`ask_session.json`](ask_session.json). Every row keeps its
+presentation, its pass and position, the answer's text and its parsed
+ranking, and each attempt's generation id, provider, finish reasons and tokens.
+
 ---
 
 ## Files
@@ -195,4 +219,6 @@ results_ranking/sample.json      Stage A: the checks, the twelve presentations
                                  C's baseline
 results_ranking/ask_smoke.json   Stage B's smoke session: two asks, every attempt
                                  with its provider, finish reasons and tokens
+results_ranking/ask_session.json Stage B's session: twenty-four asks, twelve
+                                 presentations in two passes, as the smoke's
 ```
