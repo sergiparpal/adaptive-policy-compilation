@@ -76,7 +76,7 @@ strictly subsumes, which is `rung3/order_search.build_tables`' `undef` (§2.1).
 | **H-d** | **On the corpus, where each order was fitted, at least three quarters of the residue is slack.** | corpus, the train half of each of the five splits, both pools: the median of the ten shares, with `A` the best train count any record publishes (§2.3). The median of ten is the mean of the fifth and sixth | **median ≥ 0.75** | **median < 0.75** |
 | **H-e** | *Reported, not adjudicated.* **What reading the rows needs.** | §7's readings: per instance, the structure the certificate rests on, `ν` by cycle length and by start, the certified bound and the residue it leaves; the certificate itself | — | — |
 
-**Signed by Sergi: ________________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-17)**
 
 **No standard errors.** Every figure is a count over a fixed instance, and none
 is an estimate. **One label replaces them.** On the space, `A` is published to
