@@ -123,7 +123,7 @@ met.** Settled here and not in the scorer, which is where `PLAN_AUTHORSHIP.md`'s
 | **M-e** | **`K-c`'s refutation does not rest on a ranking that read a key.** A ranking the model stated, reading no truth, still points `PLAN_BLIND.md`'s pairs better than the proposer's declarations did | the median over valid asks of that ask's reading of `blind.rows.direction` on `K-b`'s units — beyond the keyword, over the space, each older rule counted once, 65 units — against the declarations' published reading, read from [`results_blind/score.json`](results_blind/score.json) | **> 0.5460** | **≤ 0.5460** |
 | **M-f** | *Reported, not adjudicated.* **What the drafter could not band** | every ask's answer and `why` sentence; the per-presentation table; the stated rankings' percentile in the 40,320 of each cell; every cell of `M-b` to `M-e` on the `puro` pool, the five splits, the full corpus and the space; the Borda aggregate of the asks and its own scores; the revealed ranking of the paid records beside the stated one, queue pair by queue pair, and what it scores as a lookup on every cell; `predicts` on the hidden policy's 170 pairs; `M-e` on the corpus cell; `call_attempts` per ask, with provider and both finish reasons | — | — |
 
-**Signed by Sergi: ______________________ (date: ______________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-17)**
 
 **Why `M-f` cannot carry a band.**
 
