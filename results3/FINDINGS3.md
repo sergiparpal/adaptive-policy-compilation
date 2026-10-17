@@ -1714,6 +1714,33 @@ Under MFAS the distinction dissolves and everything collapses toward the floor:
 model 0.4332, follower 0.4302, floor 0.4332. Which is §13 again — the variation
 under the topological sort is its lossiness, not the answers.
 
+> **[ERRATUM 2026-10-17] *The same ranking applied as a lookup* scores 0.4693,
+> not 0.4824: the 0.4824 is Stage C's ranking.** This section's
+> `QUEUE_RANKING_REFERENCE` is `queue_hierarchy_floor.json`'s `stage_c` row, as
+> `rung3/edge_dropping.py` itself says. The ranking the perfect follower follows
+> is the proposer's revealed one, and nobody had scored it as a lookup until
+> `PLAN_RANKING.md`'s Stage A. On this cell it scores **0.4693**, 467 cases of
+> 995 against Stage C's 480
+> ([`FINDINGS_RANKING.md`](../results_ranking/FINDINGS_RANKING.md), which owns
+> the figure). What moves and what does not:
+>
+> - ***They are not the same object and they do not score alike*** stands, read
+>   on one ranking: 0.4402 as sparse edges against 0.4693 as a lookup, a gap of
+>   0.0291 rather than 0.0422.
+> - ***`B-b`'s 0.4824 was not reachable*** stands, and for a stronger reason than
+>   the paragraph gives. The proposer's own ranking does not reach it even as a
+>   lookup, where no channel limits it. The 0.4824 is a ranking fitted with the
+>   hidden policy's key, which the proposer does not hold.
+> - **The proposer's 0.4804 is above its own ranking applied as a lookup**, and
+>   not only above the perfect follower's 0.4402.
+> - ***A queue ranking is worth 0.4824 as a lookup and about 0.44 as sparse
+>   edges***, in *What it closes*, compares two rankings the same way: Stage C's
+>   as a lookup, the proposer's as edges.
+>
+> `B-b` does not move: it was signed against Stage C's 0.4824 and adjudicated on
+> it. No figure of this section moves. Found on 2026-10-17 by `PLAN_RANKING.md`'s
+> Stage A, whose §0 had declared that it would settle the sentence.
+
 ### The expectation, and the half of it that was wrong
 
 Written before the run: *`consistent` lands near the queue ranking's level;

@@ -163,9 +163,11 @@ direction*, not the best selection: over the space truth-free cuts land on both
 sides of the band it draws. Read §17 before citing §16's lead or its ceiling.
 
 **§14 narrows a signed row without moving it.** `B-b` was signed against a free
-queue ranking's 0.4824, and §14 measures that a *perfect* follower of that ranking
-scores about 0.44 at this budget, because 1,600 pairs is 4.6% of the 31,850 that
-could carry an edge. The row stays refuted exactly as signed; what it means is
+queue ranking's 0.4824, and §14 measures that a *perfect* follower of the
+proposer's own revealed ranking scores about 0.44 at this budget, because 1,479
+declared pairs are 4.6% of the 31,850 that could carry an edge. The two are not
+one ranking: §14's erratum of 2026-10-17 says so, and gives the second ranking's
+own figure. The row stays refuted exactly as signed; what it means is
 narrower than it reads, and `STATUS.md` says so beside the row rather than only in
 the FINDINGS.
 

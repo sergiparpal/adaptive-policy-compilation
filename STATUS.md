@@ -1092,6 +1092,15 @@ not a signed row ([`FINDINGS3.md`](results3/FINDINGS3.md) §14,
 > truth-free cut sits above the oracle of its size and another ten deviations
 > below the anti. POST-RUN, with an expectation written before the run whose
 > third clause failed ([`filter_space.json`](results3/filter_space.json)).
+>
+> **[NOTE 2026-10-17] *That ranking applied as a lookup* scores 0.4693, not
+> 0.4824.** The 0.4824 is Stage C's ranking. The proposer's own revealed ranking,
+> the one the perfect follower follows, was first scored as a lookup by
+> `PLAN_RANKING.md`'s Stage A: 467 cases of 995 against Stage C's 480. So the
+> proposer's 0.4804 is above its own ranking as a lookup, and `B-b`'s line is a
+> ranking the proposer does not hold even without a channel. `B-b` does not move
+> (`FINDINGS3.md` §14's erratum,
+> [`FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md)).
 
 **It is the answers, not the compilation — and the sort was hiding it.** The same
 1,479 declared edges compiled by minimum feedback arc set instead of the
