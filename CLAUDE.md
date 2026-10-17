@@ -426,6 +426,35 @@ answers across dates should ask both arms on one day where it can. **And size a
 pilot for the effect it bands**: this plan's pilot undershot the effect its
 held-out decisions then showed.
 
+**`PLAN_BOUND.md` closed on 2026-10-17: how much of the residue under rung 3's
+coverage bound is slack.** Four signed rows adjudicated, three held and one
+refuted, and one reported. Sergi signed §0 on 2026-10-17, before any figure it
+governs existed. It packed cycles of cases each of whose right rules are all
+wrong for the next, which no order can all get right, into a certificate of
+cases every order loses. The certificate was found without a solver, on the
+instances the audited search ran on. The record is
+`results_bound/FINDINGS_BOUND.md`, and `STATUS.md` indexes its figures.
+**Everything in it is free** and reproduces from the committed records. Its one
+writer refuses while the plan carries a blank signature line, and the gate reads
+`PLAN_BOUND.md` and no other plan. The first command is blocking and writes
+nothing:
+
+    python3 -m bound.score --dry-run          # H-g1..H-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m bound.score   # H-a to H-d, the readings of H-e
+
+**A certificate is checked before it is believed.** `verify` rebuilds every
+case's pattern and capacity from the masks and reaches nothing of the finder's.
+The stage stops before writing if a certified bound falls below a score some
+order reached. A bound that undercuts an attained score is an instrument
+failure, not a row. **Rung 3's hybrid pool is not rung 2's engine**: its
+`hibrido` figures cut each case's pool to the undefeated rules and order those
+freely. Subsumption edges forced on it close cycles that cost nothing. A plan
+that bounds or searches that pool takes its masks from
+`rung3/order_search.build_tables` or `rung3/order_search_ls.space_pools`.
+**And its `H-d` bet which way a change of surface would go, and it went the
+other.** The standing note says arguments that a quantity carries across
+surfaces lose. This one argued it breaks, and lost on the direction.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py` without changing a
