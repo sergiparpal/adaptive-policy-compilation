@@ -80,6 +80,23 @@ aggregate of all asks are reported beside them (`M-f`). An aggregate chosen
 after the answers are in would be a fit; a median of single answers is what a
 deployment would get from asking once.
 
+**When a row has no value, what *thin* is, and at what precision a read line is
+met.** Settled here and not in the scorer, which is where `PLAN_AUTHORSHIP.md`'s
+`E-c` lost its verdict.
+
+- **With fewer than four valid asks, `M-b` to `M-e` are unadjudicable**, and the
+  record says so. `M-a` is adjudicated whatever the count.
+- **A verdict is labelled *thin*** when at least one valid ask falls on the other
+  side of its line from the median. The label does not change the verdict.
+- **A reading compared with a line read from a record is compared at the six
+  places that record publishes.** On the signed cell one case is 1/995, about a
+  thousand units of the sixth place; on `K-b`'s units a reading is a mean of 65
+  shares.
+  So the rounding decides nothing, except that a reading equal to its line stays
+  equal: an ask that states Stage C's own order meets `M-c` exactly, and an ask
+  whose reading on `K-b`'s units equals the declarations' does not meet `M-e`.
+  Neither turns on a margin the rounding invents.
+
 **Notation.**
 
 - **An ask** is one question: the eight queue names in one presentation order,
@@ -87,7 +104,9 @@ deployment would get from asking once.
 - **A stated ranking** `r` is an ask's answer: a list of the eight queue names.
 - **An ask is *valid*** iff its answer is a permutation of exactly the eight
   queues of `harness.domain.ACTIONS` — no omission, no repetition, no invented
-  name, no tie. Invalid asks are counted, published and excluded.
+  name, no tie. Whitespace around a name is stripped and nothing else is
+  forgiven: a lower-cased name is invalid. Invalid asks are counted, published
+  with their raw text and excluded, never repaired.
 - **`score(r, cell)`** is the accuracy of the order `r` induces over the 577
   rules on that cell, by `rung3.queue_hierarchy_floor.hierarchy_order` and
   `rung3.floor_by_pool.floor`. The intra-class tie-break provably cannot move
@@ -102,7 +121,7 @@ deployment would get from asking once.
 | **M-c** | **And it reaches the ranking that read the answer key.** One question against brute force over 40,320 with the labels in hand | the same median, against that cell's published `stage_c`, read from the same record | **≥ 0.4824** | **< 0.4824** |
 | **M-d** | **What it states is what it does.** Its stated ranking predicts its own pairwise answers at least as well as a ranking fitted on the hidden policy's key does | `predicts(r, ·) − predicts(stage_c, ·)` over the answers of [`results2/pair_judgement_1600.json`](results2/pair_judgement_1600.json) that are valid and name one of the two queues on offer; `r` the median ask by that statistic | **≥ 0.00** | **< 0.00** |
 | **M-e** | **`K-c`'s refutation does not rest on a ranking that read a key.** A ranking the model stated, reading no truth, still points `PLAN_BLIND.md`'s pairs better than the proposer's declarations did | the median over valid asks of that ask's reading of `blind.rows.direction` on `K-b`'s units — beyond the keyword, over the space, each older rule counted once, 65 units — against the declarations' published reading, read from [`results_blind/score.json`](results_blind/score.json) | **> 0.5460** | **≤ 0.5460** |
-| **M-f** | *Reported, not adjudicated.* **What the drafter could not band** | every ask's answer and `why` sentence; the per-presentation table; the stated rankings' percentile in the 40,320 of each cell; every cell of `M-b` to `M-e` on the `puro` pool, the five splits, the full corpus and the space; the Borda aggregate of the asks and its own scores; the revealed ranking of the paid records beside the stated one, queue pair by queue pair; `predicts` on the hidden policy's 170 pairs; `M-e` on the corpus cell; `call_attempts` per ask, with provider and both finish reasons | — | — |
+| **M-f** | *Reported, not adjudicated.* **What the drafter could not band** | every ask's answer and `why` sentence; the per-presentation table; the stated rankings' percentile in the 40,320 of each cell; every cell of `M-b` to `M-e` on the `puro` pool, the five splits, the full corpus and the space; the Borda aggregate of the asks and its own scores; the revealed ranking of the paid records beside the stated one, queue pair by queue pair, and what it scores as a lookup on every cell; `predicts` on the hidden policy's 170 pairs; `M-e` on the corpus cell; `call_attempts` per ask, with provider and both finish reasons | — | — |
 
 **Signed by Sergi: ______________________ (date: ______________)**
 
@@ -166,6 +185,35 @@ than last.
   included, on the 1,600 or on the 170;
 - `blind.rows.direction` under any `predict` other than the three
   `results_blind/score.json` publishes.
+
+**[NOTE 2026-10-17, writing the package, before any signature] One *not seen*
+item was published, and the drafter had not read where.** The bands were
+drafted from `STATUS.md`, `IDEAS.md` and the records listed above, without
+reading `FINDINGS3.md` §§14-15 themselves; the first bullet of *already seen*
+claimed more than had been read. Writing `ranking/`, the drafter read them.
+They publish two things this plan's rows touch:
+
+- **The model's revealed ranking**: Copeland over the 1,479 declared answers of
+  the learned base, by `rung3/edge_dropping.py`, stored in
+  `results3/edge_dropping.json`: `ONCALL_ESCALATION`, `SECURITY_INCIDENT`,
+  `T3_ENGINEERING`, `BILLING_SPECIALIST`, `ACCOUNT_MANAGER`,
+  `SELF_SERVICE_DEFLECT`, `T2_TECHNICAL`, `T1_GENERAL`.
+- **What it predicts of those answers**: 1,194 of 1,479, the record's
+  `consistent` filter.
+
+So the third *not seen* item is false for that one ranking, and `M-g3` now
+reproduces the 1,194 as its check on `predicts`. Nothing else in the list
+moves. **What §14 does not publish is what that ranking scores as a lookup.**
+It publishes what a perfect follower of it scores when 1,479 answers are
+compiled as edges, 0.4402 and 0.4302 on the signed cell, which is the channel's
+object and not this family's. And its sentence *the same ranking applied as a
+lookup over all 577 rules scores 0.4824* gives Stage C's figure: the record
+and the code both call it `stage_c` (`edge_dropping.py`'s
+`QUEUE_RANKING_REFERENCE`, "stage_c row"). Stage A computes the revealed
+ranking's lookup score after the signature, and `FINDINGS_RANKING.md` owns the
+erratum §14 then needs, if it needs one. Stage C's agreement with the 1,479
+answers is computed nowhere. The bands and the expectation below were written
+before this note and are left as they were.
 
 **What the drafter expects, written down so the scoreboard can score it.**
 **Three hold and two are refuted.** The drafter trusts `M-e` most, then `M-b`,
@@ -391,9 +439,15 @@ A. **`rung3/`, `rung2/` and `blind/` are called by this plan and not edited**, a
    the pools come from `rung3.order_search.build_tables` and
    `rung3.order_search_ls.space_pools`, never rebuilt here (`CLAUDE.md`'s note on
    rung 3's hybrid pool); the prediction instrument is `blind.rows.direction` with
-   this plan's `predict`; the client is `rung2.pair_judgement.Judge`'s settings,
-   imported. A reimplementation of any of them would make these figures
-   incomparable with the records they are read against.
+   this plan's `predict`; the revealed ranking is `rung3.edge_dropping`'s
+   `revealed_ranking`; the client is `rung2.pair_judgement.Judge`'s settings —
+   model, temperature, maximum tokens and retries — imported, **with reasoning
+   off**, `PLAN_REUSE.md`'s `REASONING`, imported from where its amendment of
+   2026-09-30 put it. The judge never sent that setting, because in August it
+   did not need to: the hosted model has reasoned by default since, and
+   reasoning tokens count against the judge's 400. A reimplementation of any of
+   them would make these figures incomparable with the records they are read
+   against.
 B. **No module of this plan imports the oracle**, and the question is built from
    `harness.domain.ACTIONS` alone. Every label `M-d` and `M-e` need is read from a
    committed record.
@@ -497,14 +551,28 @@ figure exists.**
   - The twelve presentations are presentation 1 = `ACTIONS` and eleven draws at
     `PRESENTATION_SEED`, reproducible from the seed alone.
 - **M-g3 — The prediction and substitution paths reproduce.**
-  - `predicts(stage_c, ·)` is computed on the 1,600 and on the 170, and the
-    counts of answers it is read over match the records' published counts of
-    valid answers.
-  - `blind.rows.direction` with `blind.rows.stage_c_names` gives back 0.721911
-    on 65 units over the space and 0.684818 on 66 over the corpus, and with the
-    declarations' own key 0.546026 and 0.586147.
-  - `results2/pair_judgement_1600.json`'s `revealed_hierarchy` recomputes from
-    its own answers: 25 queue pairs, 15 varying.
+  - **The populations are the records' own.** The learned base's declared
+    answers, by `rung2.pair_judgement.classify_learned`, are 1,479: the record's
+    own `declared` count, 1,600 rows less the 121 without an edge
+    (`FINDINGS3.md` §11's erratum: 117 parse failures and 4 that parsed without
+    an action). The hidden policy's two-way answers are 166: its 170 less its 4
+    parse failures. No pair offers one queue twice, and no answer names a
+    queue not on offer.
+  - `rung2.pair_judgement.revealed_hierarchy` over those rows gives back the
+    record's `revealed_hierarchy` block, 25 queue pairs and 15 varying, and
+    `rung3.edge_dropping.revealed_ranking` gives back `edge_dropping.json`'s
+    revealed ranking and its Copeland scores.
+  - **`predicts`, applied to that revealed ranking, gives back the 1,194 of
+    1,479** `edge_dropping.json` keeps as `consistent`. It is the only rate of a
+    ranking over these answers that any record publishes, and **the only one
+    the dry run computes**: what Stage C's ranking predicts of them is Stage A's.
+  - Over the edge rows `results_blind/score.json` stores, `blind.rows` gives
+    back that record's `directions` on both keys, for the declarations, for
+    Stage C's ranking and for the newborn rule: 0.546026 on 65 units and
+    0.586147 on 66 for the declarations, `K-b`'s and `K-e`'s verdicts, and
+    0.721911 and 0.684818 for Stage C's ranking. And the `predict` this plan
+    builds from a ranking names the rule `blind.rows.stage_c_names` names on
+    every row, when the ranking is Stage C's.
 - **M-g4 — The signature**, §10.
 
 ---
@@ -517,12 +585,19 @@ figure exists.**
 - **The twelve presentations**, with their digests, at `PRESENTATION_SEED`.
 - **The references**, read from the records that own them: the five lines of §0,
   of which three are read and two are the claims' own edges.
-- **The revealed ranking of the paid records**, queue pair by queue pair, on the
-  1,600 and on the 170, with the Borda order each induces and what that order
-  scores on every cell. **This is computed after the signature and not before**,
-  which is the whole reason the free stage is gated: a revealed ranking's score
+- **The revealed ranking of the paid records.** On the learned base it is
+  `rung3/edge_dropping.py`'s, Copeland over the 1,479 declared answers,
+  recomputed under `M-g3` rather than redefined. On the hidden policy's pairs
+  it is the same Copeland over the 166 two-way answers. Each comes with its
+  queue pairs, what it predicts of both sets of answers, its reading on `K-b`'s
+  pairs, and **what it scores as a lookup on every cell**, which no record
+  computes. **This is computed after the signature and not before**, which is
+  the whole reason the free stage is gated: the revealed ranking's lookup score
   is the closest thing to `M-b`'s answer that exists without paying, and knowing
-  it would inform `M-b`'s and `M-c`'s lines.
+  it would inform `M-b`'s and `M-c`'s lines. It is also what settles §14's
+  sentence (§0, the note of 2026-10-17).
+- **What Stage C's ranking predicts of both sets of answers**, `M-d`'s baseline,
+  beside its published scores and readings.
 - **`M-f`'s free half.**
 
 ## 8. Stage B — the calls (gated on §0)
@@ -556,8 +631,8 @@ figure exists.**
 - **`M-e`**: `blind.rows.direction` with each valid ask's ranking as `predict`,
   and the median of the readings.
 - **`M-f`** in full.
-- **The verdicts**, each against its line, with *thin* where a reading is inside
-  the spread of the asks.
+- **The verdicts**, each against its line, with *thin* and *unadjudicable* as
+  §0 defines them.
 
 ---
 
@@ -579,7 +654,8 @@ report `ok` over an unsigned amendment, which is why `CLAUDE.md` says not to cop
 and pinned by tests:**
 
 - **The client**, imported from `rung2.pair_judgement` and not retyped: `MODEL`,
-  `TEMPERATURE`, `MAX_RETRIES`, `MAX_TOKENS`.
+  `TEMPERATURE`, `MAX_RETRIES`, `MAX_TOKENS`. And `REASONING`, imported from
+  `reuse.plan` (§4, rule A).
 - **The queues**, `harness.domain.ACTIONS`, imported.
 - **The session.** `PRESENTATIONS = 12`; `PASSES = 2`; `SMOKE_ASKS = 2`;
   `PRESENTATION_SEED = 59`, distinct from every seed a closed thread uses (17 to
@@ -595,17 +671,20 @@ and pinned by tests:**
   floor plus `rung3.queue_hierarchy_floor.P_D_MARGIN`, the same record's
   `stage_c`, and `results_blind/score.json`'s `K-b` reading — and the record of
   this plan publishes the three values it read, so a reader can check them
-  without running anything.
+  without running anything. `LINE_PLACES = 6`, the precision they are met at
+  (§0).
 
 Drafter's proposal for the layout; the naming is Sergi's to overrule:
 
 ```
 ranking/__init__.py
-ranking/plan.py      the gate and the constants of §10
-ranking/question.py  the question, the presentations, M-g2
-ranking/sample.py    Stage A: the presentations, M-g1 to M-g3, M-f's free half
-ranking/ask.py       Stage B: it spends
-ranking/score.py     Stage C: M-a to M-e, and M-f
+ranking/plan.py        the gate and the constants of §10
+ranking/question.py    the question, the presentations, validity, M-g2
+ranking/instrument.py  the cells, a score, predicts, the revealed ranking, K-b's pairs
+ranking/gates.py       M-g1 to M-g4
+ranking/sample.py      Stage A: the presentations, the lines, the free readout
+ranking/ask.py         Stage B: it spends
+ranking/score.py       Stage C: M-a to M-e, and M-f
 results_ranking/FINDINGS_RANKING.md
 results_ranking/sample.json  ask_smoke.json  ask_session.json  score.json
 tests/test_ranking.py
@@ -615,7 +694,8 @@ tests/test_ranking.py
 
 - **`CODE_ROOTS`.** `ranking` joins it in `harness/provenance.py`, and joins the
   oracle scan's roots in `tests/test_oracle_separation.py`.
-- **`ONLINE_LOOP`.** `ranking/ask.py` joins it.
+- **`ONLINE_LOOP`.** `ranking/question.py` and `ranking/ask.py` join it.
+- **The partial file**, `results_ranking/*.partial.jsonl`, joins `.gitignore`.
 - **The guarded writers** in `tests/test_writer_lists.py` grow by one.
 - **The call sites** of `tests/test_call_record.py` grow by one, or that test
   fails on a call site nobody classified.
