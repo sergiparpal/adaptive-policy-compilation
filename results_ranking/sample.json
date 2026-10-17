@@ -1,0 +1,877 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-17T20:29:29Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "c3ae48cffb7925fb37605bdf04f2ef25be9a3c50",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "e51c6d23f41a4902"
+  },
+  "plan": "PLAN_RANKING.md",
+  "stage": "A",
+  "gates": {
+    "M-g1": {
+      "what": "rung 3's enumeration, hierarchy order and floor give back results3/queue_hierarchy_floor.json on every cell under both tie-breaks, and results3/floor_by_pool.json's born_at floors; the tie-breaks agree; the suite is green",
+      "cells": 14,
+      "rows_compared": 28,
+      "n_rules": 577,
+      "n_cases": 2000,
+      "n_space": 134400,
+      "tolerance": 2e-06,
+      "tiebreak_gate": {
+        "n_cells": 14,
+        "cells_that_differ": [],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1738,
+        "result": "OK (skipped=4)",
+        "seconds": 117.2,
+        "passes": true
+      },
+      "problems": [],
+      "seconds": 339.5,
+      "passes": true
+    },
+    "M-g2": {
+      "what": "every request carries the eight queue names, each exactly once, and nothing else of the policy: no ticket, no rule, no attribute name, no label and no description; the presentations are the seed's, distinct, and a changed order moves the digest",
+      "presentations": 12,
+      "system_prompt_sha256": "66cb12512eb4bdcdc6399f54406fde79855afc95fb86cefef131a1a45ba43ba0",
+      "teeth": true,
+      "problems": [],
+      "passes": true
+    },
+    "M-g3": {
+      "what": "the populations the rows read are the records' own, the revealed ranking and its 1,194 of 1,479 come back, and blind.rows gives back K-b's, K-e's and the ranking's readings with this plan's predict",
+      "learned_declared_answers": 1479,
+      "hidden_two_way_answers": 166,
+      "revealed_ranking": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T2_TECHNICAL",
+        "T1_GENERAL"
+      ],
+      "revealed_predicts_its_own_answers": [
+        1194,
+        1479
+      ],
+      "k_b_units": 65,
+      "rows_where_the_predicts_differ": 0,
+      "problems": [],
+      "passes": true
+    },
+    "M-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_RANKING.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_RANKING.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "presentations": [
+    {
+      "pid": "p01",
+      "order": [
+        "T1_GENERAL",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "f1a78b5c1d32a9b42721d7bae21fb9afaa6a60368c4844d87246dec8899ae8cf"
+    },
+    {
+      "pid": "p02",
+      "order": [
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "5164cf2baea60dbac20341ca8a74f08026d9c86810546fafd6ea11abce860df1"
+    },
+    {
+      "pid": "p03",
+      "order": [
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING"
+      ],
+      "digest": "24fe1acadf20e22da90043cb135636164ac766ccdc40802bc5ed8e35526a7294"
+    },
+    {
+      "pid": "p04",
+      "order": [
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "fe7833fb30ffb8d1681b67b49c53961dc637372662133797d6211adf2d6f3e83"
+    },
+    {
+      "pid": "p05",
+      "order": [
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "6976162c9d5ec91c838a2552b03ed34c8d86bb5c91efe9a3b1e0db13ee17c151"
+    },
+    {
+      "pid": "p06",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "ACCOUNT_MANAGER",
+        "T2_TECHNICAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING"
+      ],
+      "digest": "dcc9ad32aaa76a18ba57a04edc9da50d1ece623da3fa8a6bef79d3e8280380f1"
+    },
+    {
+      "pid": "p07",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "ce76031d9039dd366a1685ab7d79877ac240e2c57dca390dd9e632edd99fa873"
+    },
+    {
+      "pid": "p08",
+      "order": [
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER"
+      ],
+      "digest": "9bf9368a644bd57042304890049bcd8ab518e0c7cb2461f7c3f8ae6043ac858a"
+    },
+    {
+      "pid": "p09",
+      "order": [
+        "SECURITY_INCIDENT",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "05cb21451cc7f22b43857c30b03e6877b7f5e66824533ed88405fe5e4cbfb4ea"
+    },
+    {
+      "pid": "p10",
+      "order": [
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "c4695df45c767c5be29dbf3de4f062f5e18cc3b4365d575e5d66d7f7faf4fb5d"
+    },
+    {
+      "pid": "p11",
+      "order": [
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING"
+      ],
+      "digest": "a3c796337622aa47a3fee159c49d1d1fba0265423b0b670f925170ab86fe5334"
+    },
+    {
+      "pid": "p12",
+      "order": [
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "08fd231ce4ccaae559fbe784a4dcb951f54a3a136ec9723f01b5d5b9b3f9a943"
+    }
+  ],
+  "passes": [
+    [
+      "p09",
+      "p02",
+      "p01",
+      "p12",
+      "p04",
+      "p08",
+      "p11",
+      "p07",
+      "p03",
+      "p06",
+      "p10",
+      "p05"
+    ],
+    [
+      "p08",
+      "p12",
+      "p06",
+      "p03",
+      "p01",
+      "p07",
+      "p09",
+      "p10",
+      "p02",
+      "p11",
+      "p05",
+      "p04"
+    ]
+  ],
+  "smoke": [
+    "p01",
+    "p02"
+  ],
+  "system_prompt": "Eres el arbitro de un sistema de triaje de tickets.\n\nA veces dos reglas del manual casan el mismo ticket y lo mandan a colas\nDISTINTAS, y ninguna de las dos esta contenida en la otra, asi que la estructura\nno decide: hace falta un criterio.\n\nEl criterio que se te pide es un orden fijo entre las colas, el mismo para\ncualquier ticket y cualquier par de reglas: de dos colas, gana la que va antes\nen el orden.\n\nTu unica tarea es dar ese orden, desde la cola que gana a todas las demas hasta\nla que pierde con todas.\n\nNO escribas reglas. NO propongas cambios en el manual. NO expliques como deberia\narbitrar el motor. Solo el orden.\n\nResponde UNICAMENTE con un objeto JSON, sin texto alrededor:\n\n  {\"ranking\": [\"<COLA>\", \"<COLA>\", ...], \"why\": \"<una frase, como maximo 30 palabras>\"}\n\n`ranking` tiene que contener exactamente las colas de la lista, cada una una\nsola vez y sin empates.\n",
+  "system_prompt_sha256": "66cb12512eb4bdcdc6399f54406fde79855afc95fb86cefef131a1a45ba43ba0",
+  "lines": {
+    "M-b": {
+      "line": 0.463166,
+      "floor": 0.433166,
+      "margin": 0.03,
+      "source": "results3/queue_hierarchy_floor.json::rows[born_at, hibrido, corpus_test_split0].born_at_floor + rung3.queue_hierarchy_floor.P_D_MARGIN",
+      "holds_when": "median > line"
+    },
+    "M-c": {
+      "line": 0.482412,
+      "source": "results3/queue_hierarchy_floor.json::rows[born_at, hibrido, corpus_test_split0].stage_c",
+      "holds_when": "median >= line"
+    },
+    "M-e": {
+      "line": 0.546026,
+      "units": 65,
+      "source": "results_blind/score.json::verdicts.K-b.reading",
+      "holds_when": "median > line"
+    },
+    "M-a": {
+      "validity": 0.9,
+      "slot_gap": 0.05,
+      "source": "the claim's own edges, \u00a70",
+      "holds_when": "validity >= 0.90 and W - A <= 0.05"
+    },
+    "M-d": {
+      "line": 0.0,
+      "source": "the claim's own edge, \u00a70",
+      "holds_when": "median >= line"
+    }
+  },
+  "revealed": {
+    "learned": {
+      "order": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T2_TECHNICAL",
+        "T1_GENERAL"
+      ],
+      "predicts": {
+        "learned": [
+          1194,
+          1479
+        ],
+        "hidden": [
+          124,
+          166
+        ]
+      },
+      "k_b_pairs": {
+        "space_out": {
+          "units": 65,
+          "reading": 0.5563186813186813,
+          "hits": 112,
+          "strict": 198,
+          "pooled": 0.5656565656565656,
+          "by_winner": 0.5644843962008141,
+          "winners": 67,
+          "largest_unit": 10,
+          "ties": 10,
+          "neither_ever_right": 6
+        },
+        "corpus_out": {
+          "units": 66,
+          "reading": 0.5577561327561328,
+          "hits": 110,
+          "strict": 191,
+          "pooled": 0.5759162303664922,
+          "by_winner": 0.5927636757182212,
+          "winners": 66,
+          "largest_unit": 10,
+          "ties": 1,
+          "neither_ever_right": 22
+        }
+      },
+      "scores": {
+        "puro/corpus_full": 0.417,
+        "puro/corpus_test_split0": 0.4130653266331658,
+        "puro/corpus_test_split1": 0.4271356783919598,
+        "puro/corpus_test_split2": 0.40978593272171254,
+        "puro/corpus_test_split3": 0.414,
+        "puro/corpus_test_split4": 0.4221556886227545,
+        "puro/space": 0.41964285714285715,
+        "hibrido/corpus_full": 0.4685,
+        "hibrido/corpus_test_split0": 0.46934673366834173,
+        "hibrido/corpus_test_split1": 0.46030150753768845,
+        "hibrido/corpus_test_split2": 0.46788990825688076,
+        "hibrido/corpus_test_split3": 0.461,
+        "hibrido/corpus_test_split4": 0.47904191616766467,
+        "hibrido/space": 0.5036755952380952,
+        "puro/corpus_test_5splits": 0.4172285252739185,
+        "hibrido/corpus_test_5splits": 0.4675160131261151
+      },
+      "copeland": {
+        "ACCOUNT_MANAGER": 3,
+        "BILLING_SPECIALIST": 3,
+        "ONCALL_ESCALATION": 6,
+        "SECURITY_INCIDENT": 5,
+        "SELF_SERVICE_DEFLECT": 2,
+        "T1_GENERAL": 0,
+        "T2_TECHNICAL": 1,
+        "T3_ENGINEERING": 5
+      },
+      "derived_from": "results2/pair_judgement_1600.json: the 1479 declared answers, by rung3.edge_dropping.revealed_ranking",
+      "by_queue_pair": {
+        "ACCOUNT_MANAGER vs BILLING_SPECIALIST": {
+          "ACCOUNT_MANAGER": 5,
+          "BILLING_SPECIALIST": 2
+        },
+        "ACCOUNT_MANAGER vs ONCALL_ESCALATION": {
+          "ONCALL_ESCALATION": 1
+        },
+        "ACCOUNT_MANAGER vs T1_GENERAL": {
+          "ACCOUNT_MANAGER": 3
+        },
+        "ACCOUNT_MANAGER vs T2_TECHNICAL": {
+          "ACCOUNT_MANAGER": 5,
+          "T2_TECHNICAL": 3
+        },
+        "ACCOUNT_MANAGER vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 2
+        },
+        "BILLING_SPECIALIST vs ONCALL_ESCALATION": {
+          "ONCALL_ESCALATION": 25
+        },
+        "BILLING_SPECIALIST vs SECURITY_INCIDENT": {
+          "SECURITY_INCIDENT": 73,
+          "BILLING_SPECIALIST": 2
+        },
+        "BILLING_SPECIALIST vs SELF_SERVICE_DEFLECT": {
+          "BILLING_SPECIALIST": 86,
+          "SELF_SERVICE_DEFLECT": 32
+        },
+        "BILLING_SPECIALIST vs T1_GENERAL": {
+          "BILLING_SPECIALIST": 167,
+          "T1_GENERAL": 13
+        },
+        "BILLING_SPECIALIST vs T2_TECHNICAL": {
+          "BILLING_SPECIALIST": 32,
+          "T2_TECHNICAL": 8
+        },
+        "BILLING_SPECIALIST vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 7,
+          "BILLING_SPECIALIST": 2
+        },
+        "ONCALL_ESCALATION vs SECURITY_INCIDENT": {
+          "ONCALL_ESCALATION": 1
+        },
+        "ONCALL_ESCALATION vs T1_GENERAL": {
+          "ONCALL_ESCALATION": 3
+        },
+        "ONCALL_ESCALATION vs T2_TECHNICAL": {
+          "ONCALL_ESCALATION": 58,
+          "T2_TECHNICAL": 2
+        },
+        "ONCALL_ESCALATION vs T3_ENGINEERING": {
+          "ONCALL_ESCALATION": 3,
+          "T3_ENGINEERING": 1
+        },
+        "SECURITY_INCIDENT vs SELF_SERVICE_DEFLECT": {
+          "SECURITY_INCIDENT": 31
+        },
+        "SECURITY_INCIDENT vs T1_GENERAL": {
+          "SECURITY_INCIDENT": 55
+        },
+        "SECURITY_INCIDENT vs T2_TECHNICAL": {
+          "SECURITY_INCIDENT": 123
+        },
+        "SECURITY_INCIDENT vs T3_ENGINEERING": {
+          "SECURITY_INCIDENT": 5
+        },
+        "SELF_SERVICE_DEFLECT vs T1_GENERAL": {
+          "T1_GENERAL": 42,
+          "SELF_SERVICE_DEFLECT": 113
+        },
+        "SELF_SERVICE_DEFLECT vs T2_TECHNICAL": {
+          "SELF_SERVICE_DEFLECT": 86,
+          "T2_TECHNICAL": 82
+        },
+        "SELF_SERVICE_DEFLECT vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 5,
+          "SELF_SERVICE_DEFLECT": 1
+        },
+        "T1_GENERAL vs T2_TECHNICAL": {
+          "T2_TECHNICAL": 273,
+          "T1_GENERAL": 88
+        },
+        "T1_GENERAL vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 11,
+          "T1_GENERAL": 1
+        },
+        "T2_TECHNICAL vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 24,
+          "T2_TECHNICAL": 3
+        }
+      }
+    },
+    "hidden": {
+      "order": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL"
+      ],
+      "predicts": {
+        "learned": [
+          1192,
+          1479
+        ],
+        "hidden": [
+          149,
+          166
+        ]
+      },
+      "k_b_pairs": {
+        "space_out": {
+          "units": 65,
+          "reading": 0.7219108669108669,
+          "hits": 121,
+          "strict": 198,
+          "pooled": 0.6111111111111112,
+          "by_winner": 0.6027928539122569,
+          "winners": 67,
+          "largest_unit": 10,
+          "ties": 10,
+          "neither_ever_right": 6
+        },
+        "corpus_out": {
+          "units": 66,
+          "reading": 0.6848184223184223,
+          "hits": 110,
+          "strict": 191,
+          "pooled": 0.5759162303664922,
+          "by_winner": 0.5648175477720933,
+          "winners": 66,
+          "largest_unit": 10,
+          "ties": 1,
+          "neither_ever_right": 22
+        }
+      },
+      "scores": {
+        "puro/corpus_full": 0.4275,
+        "puro/corpus_test_split0": 0.42814070351758793,
+        "puro/corpus_test_split1": 0.43618090452261304,
+        "puro/corpus_test_split2": 0.41896024464831805,
+        "puro/corpus_test_split3": 0.437,
+        "puro/corpus_test_split4": 0.43313373253493015,
+        "puro/space": 0.5621279761904762,
+        "hibrido/corpus_full": 0.4805,
+        "hibrido/corpus_test_split0": 0.4824120603015075,
+        "hibrido/corpus_test_split1": 0.46934673366834173,
+        "hibrido/corpus_test_split2": 0.47706422018348627,
+        "hibrido/corpus_test_split3": 0.484,
+        "hibrido/corpus_test_split4": 0.49001996007984033,
+        "hibrido/space": 0.5768973214285714,
+        "puro/corpus_test_5splits": 0.4306831170446898,
+        "hibrido/corpus_test_5splits": 0.48056859484663517
+      },
+      "copeland": {
+        "ACCOUNT_MANAGER": 3,
+        "BILLING_SPECIALIST": 3,
+        "ONCALL_ESCALATION": 6,
+        "SECURITY_INCIDENT": 7,
+        "SELF_SERVICE_DEFLECT": 1,
+        "T1_GENERAL": 0,
+        "T2_TECHNICAL": 2,
+        "T3_ENGINEERING": 4
+      },
+      "derived_from": "results2/pair_judgement_hidden.json: the 166 two-way answers, by the same Copeland",
+      "by_queue_pair": {
+        "ACCOUNT_MANAGER vs BILLING_SPECIALIST": {
+          "ACCOUNT_MANAGER": 4
+        },
+        "ACCOUNT_MANAGER vs ONCALL_ESCALATION": {
+          "ONCALL_ESCALATION": 3
+        },
+        "ACCOUNT_MANAGER vs SECURITY_INCIDENT": {
+          "SECURITY_INCIDENT": 6
+        },
+        "ACCOUNT_MANAGER vs SELF_SERVICE_DEFLECT": {
+          "ACCOUNT_MANAGER": 1
+        },
+        "ACCOUNT_MANAGER vs T2_TECHNICAL": {
+          "ACCOUNT_MANAGER": 11,
+          "T2_TECHNICAL": 2
+        },
+        "ACCOUNT_MANAGER vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 3,
+          "ACCOUNT_MANAGER": 3
+        },
+        "BILLING_SPECIALIST vs ONCALL_ESCALATION": {
+          "ONCALL_ESCALATION": 4
+        },
+        "BILLING_SPECIALIST vs SECURITY_INCIDENT": {
+          "SECURITY_INCIDENT": 4
+        },
+        "BILLING_SPECIALIST vs SELF_SERVICE_DEFLECT": {
+          "BILLING_SPECIALIST": 4
+        },
+        "BILLING_SPECIALIST vs T1_GENERAL": {
+          "BILLING_SPECIALIST": 4
+        },
+        "BILLING_SPECIALIST vs T2_TECHNICAL": {
+          "T2_TECHNICAL": 2,
+          "BILLING_SPECIALIST": 4
+        },
+        "BILLING_SPECIALIST vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 1
+        },
+        "ONCALL_ESCALATION vs SECURITY_INCIDENT": {
+          "SECURITY_INCIDENT": 3,
+          "ONCALL_ESCALATION": 1
+        },
+        "ONCALL_ESCALATION vs SELF_SERVICE_DEFLECT": {
+          "ONCALL_ESCALATION": 2
+        },
+        "ONCALL_ESCALATION vs T1_GENERAL": {
+          "ONCALL_ESCALATION": 1
+        },
+        "ONCALL_ESCALATION vs T2_TECHNICAL": {
+          "ONCALL_ESCALATION": 8
+        },
+        "ONCALL_ESCALATION vs T3_ENGINEERING": {
+          "ONCALL_ESCALATION": 6
+        },
+        "SECURITY_INCIDENT vs SELF_SERVICE_DEFLECT": {
+          "SECURITY_INCIDENT": 5
+        },
+        "SECURITY_INCIDENT vs T1_GENERAL": {
+          "SECURITY_INCIDENT": 3
+        },
+        "SECURITY_INCIDENT vs T2_TECHNICAL": {
+          "SECURITY_INCIDENT": 13
+        },
+        "SECURITY_INCIDENT vs T3_ENGINEERING": {
+          "SECURITY_INCIDENT": 7,
+          "T3_ENGINEERING": 1
+        },
+        "SELF_SERVICE_DEFLECT vs T1_GENERAL": {
+          "SELF_SERVICE_DEFLECT": 5
+        },
+        "SELF_SERVICE_DEFLECT vs T2_TECHNICAL": {
+          "T2_TECHNICAL": 20,
+          "SELF_SERVICE_DEFLECT": 1
+        },
+        "SELF_SERVICE_DEFLECT vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 5,
+          "SELF_SERVICE_DEFLECT": 2
+        },
+        "T1_GENERAL vs T2_TECHNICAL": {
+          "T2_TECHNICAL": 10,
+          "T1_GENERAL": 3
+        },
+        "T1_GENERAL vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 6
+        },
+        "T2_TECHNICAL vs T3_ENGINEERING": {
+          "T3_ENGINEERING": 6,
+          "T2_TECHNICAL": 2
+        }
+      }
+    }
+  },
+  "stage_c": {
+    "order": [
+      "SECURITY_INCIDENT",
+      "ONCALL_ESCALATION",
+      "ACCOUNT_MANAGER",
+      "T3_ENGINEERING",
+      "BILLING_SPECIALIST",
+      "T2_TECHNICAL",
+      "SELF_SERVICE_DEFLECT",
+      "T1_GENERAL"
+    ],
+    "predicts": {
+      "learned": [
+        1190,
+        1479
+      ],
+      "hidden": [
+        149,
+        166
+      ]
+    },
+    "k_b_pairs": {
+      "space_out": {
+        "units": 65,
+        "reading": 0.7219108669108669,
+        "hits": 121,
+        "strict": 198,
+        "pooled": 0.6111111111111112,
+        "by_winner": 0.6027928539122569,
+        "winners": 67,
+        "largest_unit": 10,
+        "ties": 10,
+        "neither_ever_right": 6
+      },
+      "corpus_out": {
+        "units": 66,
+        "reading": 0.6848184223184223,
+        "hits": 110,
+        "strict": 191,
+        "pooled": 0.5759162303664922,
+        "by_winner": 0.5648175477720933,
+        "winners": 66,
+        "largest_unit": 10,
+        "ties": 1,
+        "neither_ever_right": 22
+      }
+    },
+    "scores": {
+      "puro/corpus_full": 0.4285,
+      "puro/corpus_test_split0": 0.4291457286432161,
+      "puro/corpus_test_split1": 0.4381909547738693,
+      "puro/corpus_test_split2": 0.42099898063200814,
+      "puro/corpus_test_split3": 0.439,
+      "puro/corpus_test_split4": 0.4341317365269461,
+      "puro/space": 0.575595238095238,
+      "hibrido/corpus_full": 0.4805,
+      "hibrido/corpus_test_split0": 0.4824120603015075,
+      "hibrido/corpus_test_split1": 0.46934673366834173,
+      "hibrido/corpus_test_split2": 0.47706422018348627,
+      "hibrido/corpus_test_split3": 0.484,
+      "hibrido/corpus_test_split4": 0.49001996007984033,
+      "hibrido/space": 0.5838169642857143,
+      "puro/corpus_test_5splits": 0.4322934801152079,
+      "hibrido/corpus_test_5splits": 0.48056859484663517
+    },
+    "fitted_on": "the hidden policy's 170 pairs, with their answer key"
+  },
+  "declarations": {
+    "space_out": {
+      "units": 65,
+      "reading": 0.546025641025641,
+      "hits": 111,
+      "strict": 198,
+      "pooled": 0.5606060606060606,
+      "by_winner": 0.5021822704658525,
+      "winners": 67,
+      "largest_unit": 10,
+      "ties": 10,
+      "neither_ever_right": 6
+    },
+    "corpus_out": {
+      "units": 66,
+      "reading": 0.5861471861471862,
+      "hits": 114,
+      "strict": 191,
+      "pooled": 0.5968586387434555,
+      "by_winner": 0.5479770650225195,
+      "winners": 66,
+      "largest_unit": 10,
+      "ties": 1,
+      "neither_ever_right": 22
+    }
+  },
+  "references": {
+    "puro/corpus_full": {
+      "born_at": 0.5115,
+      "best": 0.4995,
+      "mean": 0.323375,
+      "median": 0.357,
+      "sd": 0.103563,
+      "worst": 0.141,
+      "stage_c": 0.4285
+    },
+    "puro/corpus_test_split0": {
+      "born_at": 0.521608,
+      "best": 0.501508,
+      "mean": 0.321508,
+      "median": 0.351759,
+      "sd": 0.101584,
+      "worst": 0.134673,
+      "stage_c": 0.429146
+    },
+    "puro/corpus_test_split1": {
+      "born_at": 0.514573,
+      "best": 0.501508,
+      "mean": 0.323049,
+      "median": 0.352764,
+      "sd": 0.104633,
+      "worst": 0.136683,
+      "stage_c": 0.438191
+    },
+    "puro/corpus_test_split2": {
+      "born_at": 0.513761,
+      "best": 0.50051,
+      "mean": 0.322324,
+      "median": 0.351682,
+      "sd": 0.100588,
+      "worst": 0.142712,
+      "stage_c": 0.420999
+    },
+    "puro/corpus_test_split3": {
+      "born_at": 0.519,
+      "best": 0.512,
+      "mean": 0.32535,
+      "median": 0.359,
+      "sd": 0.106335,
+      "worst": 0.133,
+      "stage_c": 0.439
+    },
+    "puro/corpus_test_split4": {
+      "born_at": 0.505988,
+      "best": 0.505988,
+      "mean": 0.324584,
+      "median": 0.355289,
+      "sd": 0.102685,
+      "worst": 0.146707,
+      "stage_c": 0.434132
+    },
+    "puro/space": {
+      "born_at": 0.314807,
+      "best": 0.605804,
+      "mean": 0.289818,
+      "median": 0.266146,
+      "sd": 0.130031,
+      "worst": 0.087351,
+      "stage_c": 0.575595
+    },
+    "hibrido/corpus_full": {
+      "born_at": 0.4285,
+      "best": 0.524,
+      "mean": 0.36765,
+      "median": 0.3865,
+      "sd": 0.09002,
+      "worst": 0.197,
+      "stage_c": 0.4805
+    },
+    "hibrido/corpus_test_split0": {
+      "born_at": 0.433166,
+      "best": 0.526633,
+      "mean": 0.367035,
+      "median": 0.386935,
+      "sd": 0.089926,
+      "worst": 0.19598,
+      "stage_c": 0.482412
+    },
+    "hibrido/corpus_test_split1": {
+      "born_at": 0.435176,
+      "best": 0.511558,
+      "mean": 0.359296,
+      "median": 0.378894,
+      "sd": 0.089028,
+      "worst": 0.182915,
+      "stage_c": 0.469347
+    },
+    "hibrido/corpus_test_split2": {
+      "born_at": 0.424057,
+      "best": 0.521916,
+      "mean": 0.365715,
+      "median": 0.379205,
+      "sd": 0.08632,
+      "worst": 0.198777,
+      "stage_c": 0.477064
+    },
+    "hibrido/corpus_test_split3": {
+      "born_at": 0.418,
+      "best": 0.529,
+      "mean": 0.365383,
+      "median": 0.389,
+      "sd": 0.092157,
+      "worst": 0.195,
+      "stage_c": 0.484
+    },
+    "hibrido/corpus_test_split4": {
+      "born_at": 0.447106,
+      "best": 0.535928,
+      "mean": 0.371507,
+      "median": 0.384232,
+      "sd": 0.090042,
+      "worst": 0.204591,
+      "stage_c": 0.49002
+    },
+    "hibrido/space": {
+      "born_at": 0.425744,
+      "best": 0.599702,
+      "mean": 0.317953,
+      "median": 0.277753,
+      "sd": 0.125442,
+      "worst": 0.115402,
+      "stage_c": 0.583817
+    }
+  }
+}
