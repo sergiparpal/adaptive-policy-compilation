@@ -864,6 +864,10 @@ tried at. What is left:
   against** — and the proposer's 0.4804 is above that perfect follower's 0.4402.
   `B-b` stands refuted as signed; what it measures is at least as much the budget
   as the proposer.
+  **[NOTE 2026-10-17] *That ranking applied as a lookup* scores 0.4693, not
+  0.4824**, which is Stage C's ranking (`FINDINGS3.md` §14's erratum). Read on one
+  ranking it is 0.4402 as edges against 0.4693 as a lookup, and the proposer's
+  0.4804 is above both. `B-b` does not move.
 - **The pairs where neither rule can be right.** Between a sixth and a quarter of
   the sampled population, depending on surface: the true action across the whole
   shared region is a third queue. It is the material problem appearing inside the

@@ -412,6 +412,14 @@ and leaves the rest at arrival order. They are not the same object.
 > *the proposer failed to beat a free baseline*; it is at least as much *the channel
 > cannot express that baseline at this budget*.
 
+> **[NOTE 2026-10-17] *The same ranking applied as a lookup* scores 0.4693, not
+> 0.4824.** The 0.4824 is Stage C's ranking, which read the hidden policy's key;
+> the perfect follower follows the proposer's own revealed ranking
+> (`results3/FINDINGS3.md` §14's erratum). Read on one ranking it is 0.4402 as
+> edges against 0.4693 as a lookup. The proposer's 0.4804 is above its own
+> ranking even as a lookup, so `B-b`'s line is a ranking it does not hold without
+> any channel at all. `B-b` does not move.
+
 ([`FINDINGS3.md`](results3/FINDINGS3.md) §14, POST-RUN with a written expectation.)
 
 ---
