@@ -1,0 +1,1563 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-17T21:04:48Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "71ec723db2afbe06310c414bd2cc4ba558b0b1a2",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "e51c6d23f41a4902"
+  },
+  "plan": "PLAN_RANKING.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "temperature": 0,
+  "max_tokens": 400,
+  "max_retries": 2,
+  "reasoning": {
+    "effort": "none"
+  },
+  "presentation_seed": 59,
+  "presentations": 12,
+  "passes": 2,
+  "system_prompt_sha256": "66cb12512eb4bdcdc6399f54406fde79855afc95fb86cefef131a1a45ba43ba0",
+  "stage": "B",
+  "session": "session",
+  "system_prompt": "Eres el arbitro de un sistema de triaje de tickets.\n\nA veces dos reglas del manual casan el mismo ticket y lo mandan a colas\nDISTINTAS, y ninguna de las dos esta contenida en la otra, asi que la estructura\nno decide: hace falta un criterio.\n\nEl criterio que se te pide es un orden fijo entre las colas, el mismo para\ncualquier ticket y cualquier par de reglas: de dos colas, gana la que va antes\nen el orden.\n\nTu unica tarea es dar ese orden, desde la cola que gana a todas las demas hasta\nla que pierde con todas.\n\nNO escribas reglas. NO propongas cambios en el manual. NO expliques como deberia\narbitrar el motor. Solo el orden.\n\nResponde UNICAMENTE con un objeto JSON, sin texto alrededor:\n\n  {\"ranking\": [\"<COLA>\", \"<COLA>\", ...], \"why\": \"<una frase, como maximo 30 palabras>\"}\n\n`ranking` tiene que contener exactamente las colas de la lista, cada una una\nsola vez y sin empates.\n",
+  "sample_record": "results_ranking/sample.json",
+  "sample_sha256": "a510db819ab70dd5939491e23cf661e28035202751768ff842d84bcfbe4da5e9",
+  "gates": {
+    "M-g1": {
+      "what": "rung 3's enumeration, hierarchy order and floor give back results3/queue_hierarchy_floor.json on every cell under both tie-breaks, and results3/floor_by_pool.json's born_at floors; the tie-breaks agree; the suite is green",
+      "cells": 14,
+      "rows_compared": 28,
+      "n_rules": 577,
+      "n_cases": 2000,
+      "n_space": 134400,
+      "tolerance": 2e-06,
+      "tiebreak_gate": {
+        "n_cells": 14,
+        "cells_that_differ": [],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1738,
+        "result": "OK (skipped=2)",
+        "seconds": 112.5,
+        "passes": true
+      },
+      "problems": [],
+      "seconds": 327.5,
+      "passes": true
+    },
+    "M-g2": {
+      "what": "every request carries the eight queue names, each exactly once, and nothing else of the policy: no ticket, no rule, no attribute name, no label and no description; the presentations are the seed's, distinct, and a changed order moves the digest",
+      "presentations": 12,
+      "system_prompt_sha256": "66cb12512eb4bdcdc6399f54406fde79855afc95fb86cefef131a1a45ba43ba0",
+      "teeth": true,
+      "problems": [],
+      "passes": true
+    },
+    "M-g3": {
+      "what": "the populations the rows read are the records' own, the revealed ranking and its 1,194 of 1,479 come back, and blind.rows gives back K-b's, K-e's and the ranking's readings with this plan's predict",
+      "learned_declared_answers": 1479,
+      "hidden_two_way_answers": 166,
+      "revealed_ranking": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T2_TECHNICAL",
+        "T1_GENERAL"
+      ],
+      "revealed_predicts_its_own_answers": [
+        1194,
+        1479
+      ],
+      "k_b_units": 65,
+      "rows_where_the_predicts_differ": 0,
+      "problems": [],
+      "passes": true
+    },
+    "M-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_RANKING.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_RANKING.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-17T21:03:26Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-17T21:04:48Z",
+  "rows": [
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 0,
+      "pid": "p09",
+      "order": [
+        "SECURITY_INCIDENT",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "05cb21451cc7f22b43857c30b03e6877b7f5e66824533ed88405fe5e4cbfb4ea",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por severidad y urgencia: incidentes de seguridad, escalaciones, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por severidad y urgencia: incidentes de seguridad, escalaciones, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 14.08,
+      "asked_at": "2026-10-17T21:03:38Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271005-PtrTr5ju3dJLk4kmGMby",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 110,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 1,
+      "pid": "p02",
+      "order": [
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "5164cf2baea60dbac20341ca8a74f08026d9c86810546fafd6ea11abce860df1",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioritize security and technical escalations, then general support, billing, account management, and self-service deflection."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioritize security and technical escalations, then general support, billing, account management, and self-service deflection.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.24,
+      "asked_at": "2026-10-17T21:03:40Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271018-la8QRwM0Y0GT98t1sDLz",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 97,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 2,
+      "pid": "p01",
+      "order": [
+        "T1_GENERAL",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "f1a78b5c1d32a9b42721d7bae21fb9afaa6a60368c4844d87246dec8899ae8cf",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado t\u00e9cnico, ingenier\u00eda, soporte, general, facturaci\u00f3n, cuentas, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado t\u00e9cnico, ingenier\u00eda, soporte, general, facturaci\u00f3n, cuentas, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.56,
+      "asked_at": "2026-10-17T21:03:42Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271020-VOlABGATh9fReXp4cPNV",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 109,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 3,
+      "pid": "p12",
+      "order": [
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "08fd231ce4ccaae559fbe784a4dcb951f54a3a136ec9723f01b5d5b9b3f9a943",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad primero, luego escalaciones, soporte t\u00e9cnico descendente, y autoservicio al final."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ACCOUNT_MANAGER\", \"BILLING_SPECIALIST\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad primero, luego escalaciones, soporte t\u00e9cnico descendente, y autoservicio al final.\"}"
+      ],
+      "failure": null,
+      "seconds": 9.84,
+      "asked_at": "2026-10-17T21:03:51Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271021-TgxgfHOavYmHGLEhAZeD",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 105,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 4,
+      "pid": "p04",
+      "order": [
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "fe7833fb30ffb8d1681b67b49c53961dc637372662133797d6211adf2d6f3e83",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Ordenado por criticidad y escalamiento: seguridad, soporte t\u00e9cnico, general, facturaci\u00f3n, cuenta y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Ordenado por criticidad y escalamiento: seguridad, soporte t\u00e9cnico, general, facturaci\u00f3n, cuenta y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.18,
+      "asked_at": "2026-10-17T21:03:54Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271030-ag6oq6W67q70x9959CIi",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 103,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 5,
+      "pid": "p08",
+      "order": [
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER"
+      ],
+      "digest": "9bf9368a644bd57042304890049bcd8ab518e0c7cb2461f7c3f8ae6043ac858a",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado t\u00e9cnico, soporte general, facturaci\u00f3n, cuentas y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado t\u00e9cnico, soporte general, facturaci\u00f3n, cuentas y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.83,
+      "asked_at": "2026-10-17T21:03:55Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271032-jbKtTEsHByZ1QsAujAOW",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 104,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 6,
+      "pid": "p11",
+      "order": [
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING"
+      ],
+      "digest": "a3c796337622aa47a3fee159c49d1d1fba0265423b0b670f925170ab86fe5334",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "T1_GENERAL",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado, soporte t\u00e9cnico, facturaci\u00f3n, gesti\u00f3n, general, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"T1_GENERAL\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado, soporte t\u00e9cnico, facturaci\u00f3n, gesti\u00f3n, general, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.85,
+      "asked_at": "2026-10-17T21:03:57Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271034-pYgUDAbPQx9aDQVSnzFI",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 103,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 7,
+      "pid": "p07",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "ce76031d9039dd366a1685ab7d79877ac240e2c57dca390dd9e632edd99fa873",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "ONCALL_ESCALATION",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, ingenier\u00eda, soporte t\u00e9cnico, general, facturaci\u00f3n, cuentas, escalado, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"ONCALL_ESCALATION\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, ingenier\u00eda, soporte t\u00e9cnico, general, facturaci\u00f3n, cuentas, escalado, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.63,
+      "asked_at": "2026-10-17T21:03:59Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271036-WWQKPh1lyAbszTyGknCK",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 109,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 8,
+      "pid": "p03",
+      "order": [
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING"
+      ],
+      "digest": "24fe1acadf20e22da90043cb135636164ac766ccdc40802bc5ed8e35526a7294",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad, escalas t\u00e9cnicas, soporte general, facturaci\u00f3n, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad, escalas t\u00e9cnicas, soporte general, facturaci\u00f3n, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.01,
+      "asked_at": "2026-10-17T21:04:01Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271037-ZFAZREbOf6tj11jwPYXK",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 102,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 9,
+      "pid": "p06",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "ACCOUNT_MANAGER",
+        "T2_TECHNICAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING"
+      ],
+      "digest": "dcc9ad32aaa76a18ba57a04edc9da50d1ece623da3fa8a6bef79d3e8280380f1",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad, escalaciones, soporte t\u00e9cnico, facturaci\u00f3n, cuentas y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad, escalaciones, soporte t\u00e9cnico, facturaci\u00f3n, cuentas y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.71,
+      "asked_at": "2026-10-17T21:04:03Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271039-jx2K2nbm506WbLw6uzZX",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 106,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 10,
+      "pid": "p10",
+      "order": [
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "c4695df45c767c5be29dbf3de4f062f5e18cc3b4365d575e5d66d7f7faf4fb5d",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado, ingenier\u00eda, t\u00e9cnico, general, cuentas, facturaci\u00f3n, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ACCOUNT_MANAGER\", \"BILLING_SPECIALIST\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado, ingenier\u00eda, t\u00e9cnico, general, cuentas, facturaci\u00f3n, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 3.34,
+      "asked_at": "2026-10-17T21:04:06Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271041-WdvytMJCLCI5RAIDLUqd",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 107,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 1,
+      "position": 11,
+      "pid": "p05",
+      "order": [
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "6976162c9d5ec91c838a2552b03ed34c8d86bb5c91efe9a3b1e0db13ee17c151",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por severidad y urgencia: incidentes de seguridad, escalamiento, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n de cuenta y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por severidad y urgencia: incidentes de seguridad, escalamiento, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n de cuenta y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 13.26,
+      "asked_at": "2026-10-17T21:04:17Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271044-a4eCGMErhu0ZnwCJMkoS",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 112,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 12,
+      "pid": "p08",
+      "order": [
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER"
+      ],
+      "digest": "9bf9368a644bd57042304890049bcd8ab518e0c7cb2461f7c3f8ae6043ac858a",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado t\u00e9cnico, soporte, facturaci\u00f3n, cuentas y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado t\u00e9cnico, soporte, facturaci\u00f3n, cuentas y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 4.69,
+      "asked_at": "2026-10-17T21:04:22Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271056-RovesRe8jjZVj4GGXmAF",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 103,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 13,
+      "pid": "p12",
+      "order": [
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "08fd231ce4ccaae559fbe784a4dcb951f54a3a136ec9723f01b5d5b9b3f9a943",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad primero, luego escalaciones, soporte t\u00e9cnico descendente, y autoservicio al final."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ACCOUNT_MANAGER\", \"BILLING_SPECIALIST\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad primero, luego escalaciones, soporte t\u00e9cnico descendente, y autoservicio al final.\"}"
+      ],
+      "failure": null,
+      "seconds": 3.75,
+      "asked_at": "2026-10-17T21:04:25Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271060-rmyXWWiMIcCvZEOrGMCZ",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 105,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 14,
+      "pid": "p06",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "SELF_SERVICE_DEFLECT",
+        "ACCOUNT_MANAGER",
+        "T2_TECHNICAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING"
+      ],
+      "digest": "dcc9ad32aaa76a18ba57a04edc9da50d1ece623da3fa8a6bef79d3e8280380f1",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Orden de prioridad: incidentes cr\u00edticos primero, luego escalas t\u00e9cnicas, despu\u00e9s general, facturaci\u00f3n, cuentas y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Orden de prioridad: incidentes cr\u00edticos primero, luego escalas t\u00e9cnicas, despu\u00e9s general, facturaci\u00f3n, cuentas y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 4.84,
+      "asked_at": "2026-10-17T21:04:30Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271064-uraI6Z3bYwv6eR1Zeaaj",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 106,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 15,
+      "pid": "p03",
+      "order": [
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING"
+      ],
+      "digest": "24fe1acadf20e22da90043cb135636164ac766ccdc40802bc5ed8e35526a7294",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad, escalas t\u00e9cnicas, soporte general, facturaci\u00f3n y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad, escalas t\u00e9cnicas, soporte general, facturaci\u00f3n y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.26,
+      "asked_at": "2026-10-17T21:04:32Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271068-W1USrmQfUdvfqQrdJZh6",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 102,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 16,
+      "pid": "p01",
+      "order": [
+        "T1_GENERAL",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "f1a78b5c1d32a9b42721d7bae21fb9afaa6a60368c4844d87246dec8899ae8cf",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "T1_GENERAL",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "T1_GENERAL",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado t\u00e9cnico, especialistas, y autoservicio al final."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"T1_GENERAL\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado t\u00e9cnico, especialistas, y autoservicio al final.\"}"
+      ],
+      "failure": null,
+      "seconds": 3.16,
+      "asked_at": "2026-10-17T21:04:36Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271070-AjWnAifAVT77aZYLpEit",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 98,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 17,
+      "pid": "p07",
+      "order": [
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "ce76031d9039dd366a1685ab7d79877ac240e2c57dca390dd9e632edd99fa873",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ONCALL_ESCALATION",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ONCALL_ESCALATION",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Ordenado por criticidad t\u00e9cnica y escalamiento, priorizando seguridad y soporte avanzado sobre autogesti\u00f3n."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ONCALL_ESCALATION\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Ordenado por criticidad t\u00e9cnica y escalamiento, priorizando seguridad y soporte avanzado sobre autogesti\u00f3n.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.44,
+      "asked_at": "2026-10-17T21:04:38Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271074-BfajEiYYv8gkoREHAWsg",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 98,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 18,
+      "pid": "p09",
+      "order": [
+        "SECURITY_INCIDENT",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "T3_ENGINEERING",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST"
+      ],
+      "digest": "05cb21451cc7f22b43857c30b03e6877b7f5e66824533ed88405fe5e4cbfb4ea",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T1_GENERAL",
+        "T2_TECHNICAL",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T1_GENERAL",
+          "T2_TECHNICAL",
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: incidentes de seguridad y escalaciones primero, luego soporte t\u00e9cnico, facturaci\u00f3n, gesti\u00f3n y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T1_GENERAL\", \"T2_TECHNICAL\", \"T3_ENGINEERING\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: incidentes de seguridad y escalaciones primero, luego soporte t\u00e9cnico, facturaci\u00f3n, gesti\u00f3n y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.49,
+      "asked_at": "2026-10-17T21:04:38Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271076-RndrZRcsD2AAgSroREnp",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 106,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 19,
+      "pid": "p10",
+      "order": [
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "digest": "c4695df45c767c5be29dbf3de4f062f5e18cc3b4365d575e5d66d7f7faf4fb5d",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado, ingenier\u00eda, soporte t\u00e9cnico, general, cuentas, facturaci\u00f3n, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ACCOUNT_MANAGER\", \"BILLING_SPECIALIST\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado, ingenier\u00eda, soporte t\u00e9cnico, general, cuentas, facturaci\u00f3n, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.82,
+      "asked_at": "2026-10-17T21:04:40Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271078-SFezHSkvmK88mOqD7coS",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 109,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 20,
+      "pid": "p02",
+      "order": [
+        "BILLING_SPECIALIST",
+        "T2_TECHNICAL",
+        "ACCOUNT_MANAGER",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "T3_ENGINEERING",
+        "T1_GENERAL",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "5164cf2baea60dbac20341ca8a74f08026d9c86810546fafd6ea11abce860df1",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioritize by severity and escalation path: security, on-call, higher tiers, then general, billing, account, and self-service."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioritize by severity and escalation path: security, on-call, higher tiers, then general, billing, account, and self-service.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.24,
+      "asked_at": "2026-10-17T21:04:42Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271080-CNclBHVoFqnRUOTFJbmm",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 103,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 21,
+      "pid": "p11",
+      "order": [
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT",
+        "ONCALL_ESCALATION",
+        "T2_TECHNICAL",
+        "SECURITY_INCIDENT",
+        "T3_ENGINEERING"
+      ],
+      "digest": "a3c796337622aa47a3fee159c49d1d1fba0265423b0b670f925170ab86fe5334",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por criticidad: seguridad, escalado, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por criticidad: seguridad, escalado, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.95,
+      "asked_at": "2026-10-17T21:04:44Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271082-dVb9xwMzp6rEOo6CTy3d",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 103,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 22,
+      "pid": "p05",
+      "order": [
+        "SELF_SERVICE_DEFLECT",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "ONCALL_ESCALATION",
+        "ACCOUNT_MANAGER",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "6976162c9d5ec91c838a2552b03ed34c8d86bb5c91efe9a3b1e0db13ee17c151",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "BILLING_SPECIALIST",
+        "ACCOUNT_MANAGER",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "BILLING_SPECIALIST",
+          "ACCOUNT_MANAGER",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Prioridad por severidad y urgencia: incidentes de seguridad, escalamiento, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n, autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"BILLING_SPECIALIST\", \"ACCOUNT_MANAGER\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Prioridad por severidad y urgencia: incidentes de seguridad, escalamiento, soporte t\u00e9cnico, general, facturaci\u00f3n, gesti\u00f3n, autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 2.18,
+      "asked_at": "2026-10-17T21:04:46Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271083-s1QQ18Xtqj2ajRcHyt7T",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 110,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "session",
+      "pass": 2,
+      "position": 23,
+      "pid": "p04",
+      "order": [
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "T3_ENGINEERING",
+        "ONCALL_ESCALATION",
+        "SELF_SERVICE_DEFLECT",
+        "SECURITY_INCIDENT"
+      ],
+      "digest": "fe7833fb30ffb8d1681b67b49c53961dc637372662133797d6211adf2d6f3e83",
+      "ranking": [
+        "SECURITY_INCIDENT",
+        "ONCALL_ESCALATION",
+        "T3_ENGINEERING",
+        "T2_TECHNICAL",
+        "T1_GENERAL",
+        "ACCOUNT_MANAGER",
+        "BILLING_SPECIALIST",
+        "SELF_SERVICE_DEFLECT"
+      ],
+      "valid": true,
+      "payload": {
+        "ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "T1_GENERAL",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT"
+        ],
+        "why": "Orden descendente por criticidad y escalamiento, priorizando seguridad y soporte t\u00e9cnico sobre administrativo y autoservicio."
+      },
+      "raw_answers": [
+        "{\"ranking\": [\"SECURITY_INCIDENT\", \"ONCALL_ESCALATION\", \"T3_ENGINEERING\", \"T2_TECHNICAL\", \"T1_GENERAL\", \"ACCOUNT_MANAGER\", \"BILLING_SPECIALIST\", \"SELF_SERVICE_DEFLECT\"], \"why\": \"Orden descendente por criticidad y escalamiento, priorizando seguridad y soporte t\u00e9cnico sobre administrativo y autoservicio.\"}"
+      ],
+      "failure": null,
+      "seconds": 1.93,
+      "asked_at": "2026-10-17T21:04:48Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792271086-J9VhaHnTzTGqwyMhGbLB",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 347,
+          "completion_tokens": 101,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
