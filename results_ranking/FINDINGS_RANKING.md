@@ -6,8 +6,9 @@ its own: *PLAN_RANKING.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
 hashes on `main` with the same trees. **This record owns every figure in it.**
 
-**Stage A ran on 2026-10-17, and nothing is adjudicated yet.** The five rows
-wait for Stage B's answers: no ranking the model states exists yet.
+**Stage A and the smoke session ran on 2026-10-17, and nothing is adjudicated
+yet.** The five rows wait for the session's answers. The smoke session's answers
+enter no row.
 
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Every figure below was
 > computed after the signature, by the free stage §10 kept behind the gate,
@@ -145,10 +146,53 @@ which Stage B buys, and each step runs on Sergi's word:
 
 ---
 
+## Stage B
+
+Sergi gave the go-ahead for the smoke session on 2026-10-17, and for nothing
+beyond it. The session waits for its own go-ahead (§8).
+
+**The smoke session passed and opens the session.** `ranking.ask --session
+smoke`, 2026-10-17, with `PYTHONHASHSEED=0`, from the commit of *An erratum to
+FINDINGS3.md §14* on a clean tree. The checks of §8 ran in order before any
+call:
+
+- **The key** was an API key OpenRouter accepts, not a management key.
+- **`M-g1` to `M-g4` passed**, with the suite green at 1,738 tests.
+- **Stage A's record held** the same presentations, digests and pass orders the
+  checks rebuilt.
+
+What came back, from presentations 1 and 2:
+
+- **Both answers were valid rankings**, each in one attempt.
+- **Every call carried `reasoning: {"effort": "none"}`, and no attempt spent a
+  reasoning token.** The answers took 106 and 96 completion tokens of the 400
+  allowed. The judge's budget, which the amendment to §1 of `PLAN_REUSE.md`
+  found reasoning could spend, holds with the setting off.
+- **Both finish reasons were `stop`**, normalised and native.
+- **`provider` arrives, and it was not one provider.** The first call was served
+  by Baidu and the second by GMICloud, under one model name. OpenRouter does not
+  document the field. Each attempt also keeps its generation id, the documented
+  route to the same fact. This is the first record of the project to carry a
+  provider. The session's 24 calls will say how many providers one model name
+  meets in one session, which is §5.8's trap counted rather than assumed.
+- **The partial file was gone once the record was written.**
+
+The record is [`ask_smoke.json`](ask_smoke.json). Its answers enter no row, and
+none is read here.
+
+**The pace.** The calls took 4.75 s and 13.43 s, 15 s in all. At that pace the
+session's 24 calls take a few minutes, after the eight minutes of checks that
+come first.
+
+---
+
 ## Files
 
 ```
-results_ranking/sample.json   Stage A: the checks, the twelve presentations with
-                              their digests and the order of each pass, the five
-                              lines, the revealed rankings, Stage C's baseline
+results_ranking/sample.json      Stage A: the checks, the twelve presentations
+                                 with their digests and the order of each pass,
+                                 the five lines, the revealed rankings, Stage
+                                 C's baseline
+results_ranking/ask_smoke.json   Stage B's smoke session: two asks, every attempt
+                                 with its provider, finish reasons and tokens
 ```
