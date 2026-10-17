@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 15, 2026. **Not a history** — that is the four
+What is known, as of October 17, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -13,8 +13,9 @@ What is known, as of October 15, 2026. **Not a history** — that is the four
 [`results_why/FINDINGS_WHY.md`](results_why/FINDINGS_WHY.md),
 [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
 [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
-[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md) and
-[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
+[`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md) and
+[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -39,7 +40,9 @@ imposed at write time, in `PLAN_AUTHORSHIP.md`**: five more, closed on
 in `PLAN_OVERLAP.md`**: four more, closed on 2026-10-07 — plus **declaration
 beyond the security keyword, with the rule drafted blind, in `PLAN_BLIND.md`**:
 six more, closed on 2026-10-12 — plus **what the screen of compiled rules does to
-the model, in `PLAN_SCREEN.md`**: five more, closed on 2026-10-15.
+the model, in `PLAN_SCREEN.md`**: five more, closed on 2026-10-15 — plus **how
+much of the residue under rung 3's coverage bound is slack, in
+`PLAN_BOUND.md`**: five more, closed on 2026-10-17.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -192,7 +195,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Eighty-four rows have been signed before the figures they name existed. This
+**Eighty-nine rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -237,17 +240,19 @@ a count behind it.
 | **O** · imposed, with overlap asked for (§0 of `PLAN_OVERLAP.md`) | 4 | 3 | **1** | 0 | 2 | 1 |
 | **K** · beyond the keyword, drafted blind (§0 of `PLAN_BLIND.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **V** · the screen (§0 of `PLAN_SCREEN.md`) — *three bands set on a development set* | 5 | 4 | **1** | 0 | 3 | 1 |
-| **total** | **84** | **70** | **29** | **2** | **39** | **12** |
+| **H** · the bound (§0 of `PLAN_BOUND.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
+| **total** | **89** | **74** | **30** | **2** | **42** | **13** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`, `V-a`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
-`Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`.
+`Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
+`H-a`, `H-b`, `H-c`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`.
+`K-f`, `V-e`, `H-e`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -270,16 +275,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 29 of 70 = **41.4%**
-refuted; without them, 27 of 64 = **42.2%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 30 of 74 = **40.5%**
+refuted; without them, 28 of 68 = **41.2%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.8 points the flattering way, which is exactly why saying so is not optional.
+0.7 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 29 of 63 = **46.0%** and 27
-of 57 = **47.4%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 30 of 67 = **44.8%** and 28
+of 61 = **45.9%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -342,6 +347,12 @@ of 57 = **47.4%**, which is the reading the calibration note should take.
 > the two ratios without such rows now leave out `V-b`, `V-c` and `V-d` beside
 > the `Y` rows. The table, the named lists, the count in the heading and the four
 > ratios moved together; the gap between the first two is now 0.8 points.
+>
+> **[NOTE 2026-10-17] Recomputed with the `H` thread, in the same commit as its
+> row.** Five rows were signed and four adjudicated: one refuted and three held.
+> One was reported. None of its bands was set on a development set. The table,
+> the named lists, the count in the heading and the four ratios moved together;
+> the gap between the first two is now 0.7 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -553,6 +564,22 @@ screen. The drafter expected all four to hold, and trusted `V-b` least, then
 
 `V-e` is reported.
 
+**The `H` rows ask how much of the residue under rung 3's coverage bound is
+slack, and the drafter got three of four.** Sergi signed §0 of `PLAN_BOUND.md`
+on 2026-10-17, before any of its figures existed, and a gate refuses its writer
+otherwise. The drafter expected all four to hold, and trusted `H-a` and `H-b`
+least.
+
+- **`H-a` and `H-b`, the rows trusted least, held clear of their lines.** A
+  certificate shows 0.8602 of the space's pure residue slack and 0.7847 of its
+  hybrid one, against lines of 0.50.
+- **`H-c` held**: the certificate settles neither pool.
+- **`H-d` was refuted**, at a median of 0.6665 over the corpus's ten train
+  halves against a line of 0.75. The row bet the halves where each order was
+  fitted would close more than the space, and they closed less.
+
+`H-e` is reported.
+
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
 dead zone. The numerator is right and the denominator matches nothing: 20 rows
@@ -674,6 +701,14 @@ order scores 0.6105 on the space, and a search seeing all 134,400 cases reaches
 0.7905 ([`order_search_ls_fullspace.json`](results3/order_search_ls_fullspace.json)).
 The search uses the oracle: the material contains the signal, which is not the
 same as it being reachable without labels.
+
+> **[NOTE 2026-10-17] Over the space the bound is now shown out of reach, by
+> most of the gap.** `PLAN_BOUND.md` certified, without a solver, cases every
+> order loses. No order over the space scores above **0.8028** on the pure pool,
+> so the search's 0.7905 is within **0.0123** of the best order there is; on the
+> hybrid pool the figures are **0.7767** and **0.0210**. The certificate ran on
+> the corpus's train halves too, not on its test halves.
+> [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md).
 
 **The level is robust to the search budget; the order is not.** These are two
 different claims and the figure invites fusing them.
@@ -1466,6 +1501,15 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    greedy's 0.1187 — evidence the bound is loose, not proof, since a heuristic
    that misses a bound never distinguishes the two. Exact optimization would
    settle it. FINDINGS3 §4 erratum.
+   **[NOTE 2026-10-17] Mostly answered by `PLAN_BOUND.md`, without a solver.**
+   A certificate of cases every order loses shows at least 86% of the space's
+   pure residue slack, and 78% of its hybrid one (`H-a`, `H-b`). So the search
+   is within 0.0123 of the best order on the pure pool and 0.0210 on the hybrid
+   one. That remainder is what is open now, and exact optimization is still what
+   would split it. On the corpus's train halves the certificate closed less, a
+   median of 0.67 of each residue (`H-d` refuted), and 7 to 23 cases a half are
+   unresolved.
+   [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md).
 2. **Why the proposer partitions instead of stratifying, and why it wrote nothing
    correct for two classes.** Rung 2's mechanism stays unmeasured until a base
    produces conflicts, and the 66.7%/64.2% material gap has no explanation.

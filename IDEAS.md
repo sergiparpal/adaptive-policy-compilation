@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 16, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 17, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -44,7 +44,9 @@ the screen of compiled rules does to the model closed on October 15, 2026**:
 `PLAN_SCREEN.md`, five signed rows, three held, one refuted and one reported,
 written up in `results_screen/`. **An outside reading was adjudicated on October
 16, 2026**, and what it proposes that nothing has run has its own section,
-below. This is a list of things not done, none of them developed and in no
+below. **How much of the residue under rung 3's coverage bound is slack closed
+on October 17, 2026**: `PLAN_BOUND.md`, four signed rows, three held and one
+refuted, and one reported, written up in `results_bound/`. This is a list of things not done, none of them developed and in no
 order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -55,6 +57,13 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **How much of the residue under the coverage bound is slack.** October 17,
+  2026, `PLAN_BOUND.md`, zero calls. A certificate found without a solver packs
+  cycles of cases each of whose right rules are all wrong for the next, which
+  no order can all get right. Over the space it shows most of the residue out
+  of reach of every order, so the audited search is close to the best order
+  there is. On the corpus's train halves it closed less. What it leaves is in its
+  own section below. `results_bound/`.
 - **What the screen of compiled rules does to the model.** October 15, 2026,
   `PLAN_SCREEN.md`. Asked with the ticket alone, the model is right more often
   than with its screen, on decisions nobody had asked without one. The screen
@@ -200,6 +209,41 @@ against, a threshold a next run would have to clear.
   further" now rests on a smaller margin than when it was written.
 
 ---
+
+## What `PLAN_BOUND.md` opens and does not resolve
+
+Closed October 17, 2026. It asked how much of the residue between rung 3's best
+searched order and its coverage bound is slack, with a certificate of cases
+every order loses. Over the space most of it is. What that leaves:
+
+- **The remainder.** Over the space the search is within 0.0123 of the best
+  order on the pure pool and 0.0210 on the hybrid one; on the corpus's train
+  halves, within 7 to 23 cases a half. Each remainder is slack the certificate
+  cannot see, search weakness, or both. Three steps would split it, in
+  increasing cost:
+  - **A stronger certificate**, free and still certified. One is the exact loss
+    of cases that share a pool, which cycles undercount once three truths share
+    one. Another is the exact least loss over small blocks of rules, by dynamic
+    programming over subsets.
+  - **A longer search.** That is a new instrument, because `MULTISTART_STARTS` is
+    declared and not tunable.
+  - **Exact optimisation**, a MIP or MaxSAT over the pairs that overlap, with a
+    solver pinned apart.
+- **Why the corpus closed less.** The certificate closed less on the train
+  halves than over the space, the other way from `H-d`'s bet, and least on the
+  pure halves. Those have the fewest contested cases with a single right class.
+  Whether the certificate is weaker there or the search is, the record cannot
+  say. At about a thousand cases a half, an exact solver may be cheapest there.
+- **What the certified slack is made of.** Free from the record's certificates,
+  POST-RUN:
+  - which queue pairs the cycles join;
+  - whether their cases differ only in attributes the rules do not test.
+
+  The plan expected pools shared across truths through `language`. The
+  certificate's cycles were not read for it.
+- **The test halves, other bases and rung 4.** No order was searched on the test
+  halves, so a bound there says nothing about the search. Other bases and rung
+  4's objective were not in the rows.
 
 ## What `PLAN_SCREEN.md` opens and does not resolve
 
@@ -988,7 +1032,8 @@ it is pre-registrable, because none of its figures exists:
   decision tree is symbolic too. If one matches the rules, the case for rules
   written one ticket at a time has to rest on something other than being
   symbolic.
-- **A tighter bound than the coverage bound, before any solver.** This is a
+- ~~**A tighter bound than the coverage bound, before any solver.**~~ **Run on
+  2026-10-17 as `PLAN_BOUND.md`**, and moved to *No longer here*. This is a
   method for `STATUS.md`'s first open item. A case with exactly one right rule
   among those that match it is decided right only if that rule precedes every
   wrong rule that matches it. Those are hard edges. If they close cycles, some
@@ -1003,6 +1048,14 @@ it is pre-registrable, because none of its figures exists:
   as it stands: it learns the antecedents and the labels too, and `pycorels` is
   binary. Its prefix bounds may still help a branch and bound. Free, on both
   surfaces and both pools.
+  **[NOTE 2026-10-17] One sentence above describes rung 2's engine, not rung 3's
+  hybrid pool**: *subsumption's edges join the graph and cannot yield*. Rung 3's
+  `hibrido` figures cut each case's pool to the rules no matching rule strictly
+  subsumes, and order those freely. A rule and one it subsumes are never in the
+  same pool, so such an edge would close cycles that cost nothing.
+  `PLAN_BOUND.md` §2.1 took the pool's masks as the search did, and
+  `tests/test_bound.py` pins the counterexample. Containment also let cases with
+  several right rules join a cycle, which hard edges alone would not.
 - **A label model over the learned base.** This is a method for *Whether the
   order is attainable without labels*, in rung 3's list below, which has none.
   Dawid–Skene, or the label model of Snorkel (Ratner et al., VLDB 2017),
@@ -1237,6 +1290,9 @@ draft a band for one of them and may not sign it.
   cases with one right rule, and a packing of their cycles, which tightens the
   bound without a solver. It is in *What the outside reading of October 2026
   proposes*, above.
+  **[NOTE 2026-10-17] Run as `PLAN_BOUND.md`, and over the space most of the gap
+  is slack**, out of reach of every order and certified, on both pools. What is
+  open is the remainder, in its own section above.
 - **Which surface a figure is measured on, as a standing question.** Opened
   2026-08-08. The corpus is the modelled arrival distribution and the exhaustive
   space is a uniform measure over attribute combinations; they are not
