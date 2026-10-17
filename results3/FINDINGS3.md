@@ -420,6 +420,19 @@ leaves it **0.1187** below the ceiling on average. Almost all the gap between
 > bound is somewhat loose. A heuristic that fails to reach a bound never
 > distinguishes "unreachable" from "still too weak".
 >
+> **[NOTE 2026-10-17] Now proved, and by most of the residue.**
+> [`PLAN_BOUND.md`](../PLAN_BOUND.md) certified, without a solver, cases every
+> order loses: cycles of cases each of whose right rules are all wrong for the
+> next. Over the space no order scores above 0.8028 on the pure pool, so the
+> bound is loose by at least 0.0756, 86% of the 0.0879, and the search is within
+> 0.0123 of the best order. On the hybrid pool it is 78% of 0.0974. **The
+> heading's *not loose* was said of the corpus**, the bound over all 2,000 cases
+> against the test halves' scores, which the certificate did not run on. On the
+> train halves it did run on, the bound is loose by 15 to 41 cases of about a
+> thousand, 44% to 78% of each half's residue.
+> [`results_bound/FINDINGS_BOUND.md`](../results_bound/FINDINGS_BOUND.md) owns
+> these figures.
+>
 > The hybrid pool remains worse than pure ordering under the new optimizer too:
 > 0.7734 against 0.8530 on corpus test. Rung 2's arbitration does not become
 > competitive over a learned base by optimizing harder.
