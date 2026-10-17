@@ -1,12 +1,16 @@
 # How much of the residue is slack — findings
 
 Record opened on October 17, 2026, under [`PLAN_BOUND.md`](../PLAN_BOUND.md).
-Sergi signed §0 on 2026-10-17, before any figure below existed, in a commit of
-its own: *PLAN_BOUND §0 singed by Sergi*. The stage's record,
-[`score.json`](score.json), names that commit in its `_env` as `93444ac`, its
-hash on the branch it was made on. A rebase merge gives it a new hash on `main`
-with the same tree, so it is named here by its subject. **This record owns every
-figure in it.**
+The plan and its package reached `main` in pull request #125. Sergi signed §0 on
+2026-10-17, before any figure below existed, in a commit of its own: `980334f` on
+`main`, merged from `93444ac` in pull request #126, with the record below.
+
+The stage's record, [`score.json`](score.json), names in its `_env` the commit it
+was written from: `93444ac`, the signing commit on the branch. A rebase merge
+gave it a new hash on `main`, `980334f`. The two have the same subject, the same
+tree and the same `git patch-id --stable`.
+
+**This record owns every figure in it.**
 
 **The stage adjudicated the four signed rows on 2026-10-17: three hold and one
 is refuted.**
