@@ -1603,7 +1603,9 @@ They were set beside the 577 rules written from the same answers, from
   right**, through leaves that send severity-1 tickets there, learned from the
   7 answers that named the queue on `T2_TECHNICAL` tickets. No execution of the
   rules decides more than two. Reported, and what those leaves cost elsewhere
-  is not counted.
+  is not counted. **[NOTE 2026-10-18, later] Counted, POST-RUN**: they decide
+  45 test cases, 40 of them `T2_TECHNICAL` or `T3_ENGINEERING` in truth, and
+  cost the tree 17 cases against arrival, a third of its gap.
 
 So the scope the proposer wrote into each rule is worth something where tickets
 arrive, and a learner fitted to its queues does not recover it. What the queues
@@ -1759,7 +1761,9 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    other tickets. They decide its three test cases right, where no execution
    of the rules decides more than two. So the queue the loop never asked about
    was in its answers to tickets it did ask about. What those leaves cost on
-   other severity-1 tickets is not counted.
+   other severity-1 tickets is not counted. **[NOTE 2026-10-18, later] Counted,
+   POST-RUN**: 17 test cases against arrival order, so on both surfaces the
+   trade is a loss.
    [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
