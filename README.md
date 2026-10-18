@@ -48,6 +48,7 @@ up in four places at once.
 | **V** · the screen | what the screen of compiled rules does to the model: asked with the ticket alone on decisions its rules made, is it right more often, and does it defer to the screen — closed 2026-10-15 | [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md) |
 | **H** · the bound | how much of the residue under rung 3's coverage bound is slack: a certificate, found without a solver and checked from the masks alone, of cases every order loses — closed 2026-10-17 | [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md) |
 | **M** · the ranking, asked of the model | what the model states when asked for the one order between the eight queues that decides a contested ticket, scored as a lookup over rung 1's rules against the ranking that read the key — closed 2026-10-17 | [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md) |
+| **T** · the students | what the proposer's rules buy over a learner fitted to its answers: a pruned tree, a logistic regression and the cache's retrieval, trained on the queues it named at the escalations and set beside the rules written from them — closed 2026-10-18 | [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -457,6 +458,25 @@ PYTHONHASHSEED=0 python3 -m ranking.yielding      # POST-RUN · which edge of a 
 .venv/bin/python -m ranking.ask --session session # then the session, never in parallel
 ```
 
+**[`PLAN_STUDENTS.md`](PLAN_STUDENTS.md) closed on 2026-10-18**: what the
+proposer's rules buy over a learner fitted to its answers. Sergi signed §0 on
+2026-10-18, before any of its figures existed. It trained three students on the
+queues the proposer named at the escalations, and on nothing else: a pruned
+decision tree whose leaves are rules of the frozen DSL, a logistic regression,
+and the cache's retrieval. It set them beside the rules written from the same
+answers, on rung 1's record and on `PLAN_REUSE.md`'s three runs. Its record is
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
+Its gate reads that plan and no other, and guards its one writer. `ilp/`,
+`rung3/` and `edges/` are called by it and not edited.
+
+**It spends nothing.** It reproduces from the committed records in about five
+and a half minutes, about half of it the suite inside its first check.
+
+```bash
+python3 -m students.score --dry-run           # T-g1..T-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m students.score    # T-a to T-e, and the readings of T-f
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -744,6 +764,7 @@ What it covers, and why those things:
 | `test_screen.py` | the `PLAN_SCREEN.md` instrument: §10's constants and §0's lines, each verdict at its edge, the gate counting every signature line, the populations and the tickets counted by their attributes on the real records, every prompt against the digests `PLAN_FIDELITY.md` recorded and a changed screen moving one, `V-g1` giving back `PLAN_FIDELITY.md`'s Stage C to 1e-12 and catching a tampered record, the wrapped client sending every request unchanged and keeping each attempt's `finish_reason`, §0's rule for a run without a value and for the median by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over the double's records with the held-out labels masked. **No figure of the plan** |
 | `test_bound.py` | the `PLAN_BOUND.md` instrument: §8's constants, the finder's two and §0's lines, each verdict at its edge, the gate counting every signature line, the argument by hand — a two-case cycle, a ring of three, a cycle by containment and the same shape without it, copies merged, and the hybrid pool's counterexample to a subsumption edge —, `verify` refusing each way a certificate can be wrong and reaching nothing of the finder's, validity against the exact optimum, the packing stopping only when no cycle is left, the same certificate under three values of `PYTHONHASHSEED`, `H-g1` to `H-g3` on the real records with a tampered bound caught, the dry run never packing a cycle on rung 1's rules, the stage on synthetic instances worked by hand with its two refusals, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
 | `test_ranking.py` | the `PLAN_RANKING.md` instrument: §10's constants with the client imported from rung 2's judge and reasoning off, the three lines read from their records and moving with them, the gate counting every signature line, the twelve presentations and a changed order moving a digest, an injected ticket, rule, queue or omission caught, validity at every edge §0 names, the instrument's arithmetic by hand, one cell of `M-g1` and all of `M-g3` on the real records with a tampered row caught, the dry run computing no rate but the published one and scoring no ranking, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over asks that state Stage C's own ranking. **No figure of the plan** |
+| `test_students.py` | the `PLAN_STUDENTS.md` instrument: §3's and §10's constants and §0's lines, the gate counting every signature line, the thin label at its edge, the tree by hand — its splits and their order, growth, the plurality's tie-break, folds grouped by ticket, the pruning sequence and the choice of `k` — and its leaves as valid, disjoint, covering rules the frozen engine executes, the regression's features, gradient, optimum and choice of `λ`, the cache's distance, tie-break and protocol against the frozen file, every mask route against point-by-point prediction, the material and the rules' side on the real records with a tampered figure caught, the stage's second routes on decisions alone and its glue on a synthetic set, the dry run training nothing on the answers by its syntax tree, each verdict at its edge, the writer refusing unsigned, and the students under three values of `PYTHONHASHSEED`. **No figure of the plan** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
@@ -1384,6 +1405,16 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · M-a to M-e and M-f, gated on PLAN_RANKING.md
 │   └── yielding.py          POST-RUN · which edge of a cycle yields, under its rankings
 │
+├── students/             T · what the proposer's rules buy over a learner fitted to its answers
+│   ├── plan.py              the gate and §10's constants; §0's lines
+│   ├── material.py          the answers by set, their reach, the truth's route
+│   ├── tree.py              the pruned tree, and its leaves as DSL rules
+│   ├── logistic.py          the logistic regression, L-BFGS
+│   ├── cache.py             the cache's retrieval over the answers, and its masks
+│   ├── rules.py             the rules' side: arrival, rung 1's engine, the search, the bases
+│   ├── gates.py             T-g1..T-g4 · blocking, run before any write
+│   └── score.py             the stage · T-a to T-e, the readings of T-f
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1465,7 +1496,7 @@ adaptive-policy-compilation/
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
     results_authorship/  results_overlap/  results_blind/  results_screen/
-    results_bound/  results_ranking/
+    results_bound/  results_ranking/  results_students/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
