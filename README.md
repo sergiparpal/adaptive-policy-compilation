@@ -583,6 +583,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
 > | `bound/score.py` | `results_bound/score.json` | **refuses while the plan is unsigned** |
 > | `students/score.py` | `results_students/score.json` | **refuses while the plan is unsigned** |
+> | `students/readings.py` | `results_students/readings.json` | **refuses while the plan is unsigned** |
 > | `why/score.py` | `results_why/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
