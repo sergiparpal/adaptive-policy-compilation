@@ -673,6 +673,22 @@ of the CONFLICT points cannot see.
 > of the model's rankings was not measured.
 > [`results_ranking/FINDINGS_RANKING.md`](../results_ranking/FINDINGS_RANKING.md)
 > owns the figures.
+>
+> **[NOTE 2026-10-18, later] Measured POST-RUN, and either ranking chooses as a
+> draw does.** `ranking/yielding.py` put each of the model's rankings in this
+> section's ranking arm, in the Stage C ranking's place.
+>
+> - Beyond the keyword, pooled through the closure, the stated ranking is right
+>   on 70,005 points and the revealed one on 69,435, against the Stage C
+>   ranking's 70,675.
+> - 45.5% and 80% of the coin's draws do at least as well.
+> - In v2b's run 1 the revealed ranking puts self-service above `T2_TECHNICAL`.
+>   It lets the technical edges yield where the Stage C ranking let the
+>   self-service ones yield.
+>
+> So *the best truth-free order* above has no stand-in from the model on these
+> bases. [`results_ranking/FINDINGS_RANKING.md`](../results_ranking/FINDINGS_RANKING.md),
+> *Which edge of a cycle yields, under the model's rankings*, owns the figures.
 
 **What it does not settle.**
 
