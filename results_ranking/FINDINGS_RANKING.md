@@ -23,6 +23,10 @@ All four records carry one code digest, `e51c6d23f41a4902`, with `code_dirty`
 false, and that digest identifies the code that wrote them. **This record owns
 every figure in it.**
 
+**A POST-RUN reading was added on 2026-10-18**: [`yielding.json`](yielding.json),
+by `ranking/yielding.py`, under its own code digest, named in its section below.
+It moves no verdict.
+
 **All three stages ran on 2026-10-17, and the five rows are adjudicated: `M-a`
 holds, `M-b`, `M-c` and `M-d` are refuted, and `M-e` holds, thin.** Asked for
 its ranking, the model states a priority order. As an arbitration order it
@@ -389,6 +393,217 @@ Two facts sit beside the row:
 
 ---
 
+## Which edge of a cycle yields, under the model's rankings — POST-RUN
+
+*Read after the verdicts existed, by `ranking/yielding.py` →
+[`yielding.json`](yielding.json), with its expectation written and committed
+before it ran. It moves no verdict and is not on `STATUS.md`'s scoreboard. Zero
+API calls.*
+
+`blind/yielding.py` read which edge of a cycle should yield on the twelve paid
+bases of rung 2's loop, in
+[`FINDINGS_BLIND.md`](../results_blind/FINDINGS_BLIND.md), *Which edge of a
+cycle should yield*. Its ranking arm installs first the declarations whose
+winner's queue a ranking puts above the loser's, so an edge against the ranking
+yields first. With Stage C's ranking in that arm it chose better than 96% of a
+coin's draws beyond the keyword. That ranking read the hidden policy's key, as
+that record's erratum of 2026-10-16 says. This reading puts the model's two
+rankings in its place:
+
+- **the revealed ranking**, Stage A's: Copeland over the 1,479 declared answers
+  about the learned base;
+- **the stated rankings**, Stage B's: the 24 asks, six distinct rankings, read on
+  the median ask as `M-e` was.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranking.yielding`, once, on
+2026-10-18, from a clean tree at the commit *ranking/yielding.py: which edge of a
+cycle yields under the model's own rankings, the expectation first*. Its code
+digest is `29fa93ac2e5c8153`. The module calls `blind/yielding.py`'s functions
+and edits none of them. It took a few seconds.
+
+Every gate passed:
+- `blind/yielding.py`'s own eight, the hidden policy kept whole under every
+  order among them;
+- everything [`yielding.json`](../results_blind/yielding.json) publishes came
+  back, to its precision, and Stage C's ranking in this module's arm refused and
+  read as that record's ranking arm in every base;
+- the rankings are this plan's records': the revealed one rebuilt from the
+  answers, and the 24 asks and their Borda aggregate as `score.json` has them;
+- every arm under a model ranking is acyclic and full, and without a cycle keeps
+  the arrival arm's edges.
+
+The gates ran on 3.12 and on 3.10 before the expectation was committed, and
+printed pass or fail.
+
+**Surfaces.** The reading is through the closure, where every declared pair is
+ordered and the arms differ only in direction. It is over the exhaustive space,
+by halves of it, and over the 2,000 corpus cases as they arrive, pooled over the
+three bases with a refusal for a cycle: v2e's run 1 and v2b's runs 1 and 3. The
+half without the keyword, `PLAN_BLIND.md`'s surface, is read first.
+
+**All 24 asks read alike.** The six stated rankings refuse the same declarations
+in every base, so the median ask is every ask.
+
+### Beyond the keyword, a draw
+
+| right points through the closure, beyond the keyword, over the space | v2e 1 | v2b 1 | v2b 3 | pooled | coin draws at least as good |
+|---|---|---|---|---|---|
+| arrival, the engine | 20,190 | 25,245 | 24,385 | 69,820 | 0.60 |
+| **the stated ranking** | 20,190 | 25,545 | 24,270 | **70,005** | **0.455** |
+| **the revealed ranking** | 20,460 | 24,590 | 24,385 | **69,435** | **0.80** |
+| Stage C's ranking | 20,460 | 25,945 | 24,270 | 70,675 | 0.04 |
+| oracle | 20,460 | 26,245 | 24,385 | 71,090 | 0.00 |
+| the coin's central 90% | 20,190 to 20,460 | 24,360 to 26,050 | 24,270 to 24,385 | 68,840 to 70,650 | |
+
+The rows other than the model's two are `blind/yielding.py`'s, recomputed here
+and gated equal to its record, which owns them.
+
+- **Neither ranking the model gives chooses which edge yields as the key's
+  does.** The stated ranking chooses about as a median draw does. Four draws in
+  five do at least as well as the revealed ranking, which falls below the engine
+  as it is.
+- **The two small bases go as the queues said they would.** In v2e's run 1 the
+  revealed ranking refuses what Stage C's refuses, and the stated ranking what
+  recency refuses. In v2b's run 3 the revealed ranking refuses what arrival
+  refuses, and the stated ranking what Stage C's refuses.
+- **So the reading is v2b's run 1.** Against the arrival arm there, beyond the
+  keyword:
+  - the revealed ranking gains 520 points and loses 1,175, net −655;
+  - the stated ranking gains 600 and loses 300, net +300;
+  - Stage C's gains 1,000 and loses the same 300, net +700.
+
+### What each ranking lets yield
+
+The refusals in v2b's run 1, where nearly all of the reading is:
+
+| refused declarations, v2b's run 1 | Stage C's ranking | the revealed ranking | the stated ranking |
+|---|---|---|---|
+| a self-service rule over a T2_TECHNICAL one | 27 | — | 27 |
+| a T2_TECHNICAL rule over a self-service one | — | 21 | — |
+| a T1_GENERAL rule over a T2_TECHNICAL one | 2 | — | — |
+| a T1_GENERAL rule over a self-service one | — | 2 | — |
+| a self-service rule over a T1_GENERAL one | — | — | 1 |
+| a T2_TECHNICAL rule over the keyword rule `R0012` | 1 | 1 | 1 |
+| a self-service rule over a billing one | 1 | 1 | 1 |
+| in all | 31 | 25 | 30 |
+
+- **The revealed ranking is Stage C's mirror on one queue pair.** It puts
+  SELF_SERVICE_DEFLECT above T2_TECHNICAL, and nearly every cycle of that run is
+  on that pair. Where Stage C's ranking lets the self-service edges yield, the
+  revealed one lets the technical edges yield.
+- **That departure rests on four answers.** In the model's pairwise answers about
+  the learned base, the pair split 86 to 82 for self-service (`sample.json`'s
+  `revealed.learned.by_queue_pair`), and Copeland follows the majority.
+- **The stated ranking is Stage C's but for one cycle.** That cycle runs through
+  a self-service rule declared over a general one, and the general one over two
+  technical ones:
+  - Stage C's ranking puts self-service above general, so the two general edges
+    yield.
+  - The stated ranking puts general above self-service, so the self-service edge
+    yields.
+
+  That one cycle costs the stated ranking 400 points against Stage C's beyond the
+  keyword.
+
+**Under rung 2's engine the two rankings trade right decisions for silent
+errors differently.** Over the space in v2b's run 1, where a count of right
+decisions rewards resolving, as `FINDINGS_BLIND.md` found:
+
+| v2b's run 1, rung 2's engine, over the space | right | wrong | CONFLICT |
+|---|---|---|---|
+| arrival, the engine | 75,635 | 56,930 | 1,825 |
+| Stage C's ranking | 75,955 | 54,970 | 3,465 |
+| the revealed ranking | 74,970 | 57,800 | 1,620 |
+| the stated ranking | 75,935 | 58,330 | 125 |
+
+- **The stated ranking resolves nearly every CONFLICT, and mostly wrongly.** It
+  keeps the two general edges Stage C's ranking lets yield, so it is right on 20
+  fewer points than that arm and wrong on 3,360 more.
+- **The revealed ranking is right on fewer points than the engine as it is**, by
+  665, and wrong on 870 more.
+
+### On the other half, the whole space and the corpus
+
+- **On the keyword half the reading is v2e's run 1.** There the revealed ranking
+  loses the 210 points Stage C's ranking loses, and the stated ranking gains
+  them, as recency does. Pooled: the revealed ranking 152,460, the stated one
+  152,880, arrival 152,670. Neither refuses a declaration the keyword's queue
+  wins, in any of the twelve bases.
+- **Over the whole space**, pooled:
+  - the revealed ranking is right on 221,895 points, and 39% of the coin's draws
+    do as well;
+  - the stated ranking on 222,885, and 7.5% of the draws do as well;
+  - arrival on 222,490, and Stage C's ranking on 223,135.
+
+  The coin's band there is wide and low for the reason `FINDINGS_BLIND.md` gives:
+  its draws that refuse a declaration the keyword's queue wins.
+- **On the arrivals it reads the same, by tens of cases.** Pooled through the
+  closure over the 6,000 corpus cases of the three bases:
+  - arrival is right on 2,770 and Stage C's ranking on 2,784;
+  - the revealed ranking on 2,744, with 82.5% of the coin's draws as good;
+  - the stated ranking on 2,768;
+  - the coin on 2,763.9 on average.
+
+  Beyond the keyword it is 2,675 for the revealed ranking and 2,699 for the
+  stated one, against arrival's 2,700.
+
+### The expectation, against the reading
+
+| clause | expected | read | |
+|---|---|---|---|
+| 1 | in v2e's run 1 the revealed ranking refuses as Stage C's and every stated ranking as recency; in v2b's run 3 the revealed ranking as arrival and every stated ranking as Stage C's | all four | held |
+| 2 | beyond the keyword, the revealed and the stated ranking each right on fewer points than Stage C's | 69,435 and 70,005, against 70,675 | held |
+| 3 | both inside the coin's central 90% | 69,435 and 70,005, against 68,840 to 70,650 | held |
+| 4 | the stated ranking right on more points than the revealed one | 70,005 against 69,435 | held |
+| 5 | no model ranking refuses a declaration the keyword's queue wins, in any base | none, in the twelve | held |
+
+**All five held.** Clause 1 was close to known. **Clause 4 held for the reason
+the expectation gave**: the cycles of v2b's run 1 are on the self-service pair,
+and their technical rules are T2_TECHNICAL's, as the drafter assumed without
+checking. **Clause 3 held for the revealed ranking below the coin's mean**, at
+69,435 against 69,872.5.
+
+**The argument missed one cycle.** It read the seven queue pairs on which the
+stated ranking departs from Stage C's against the refusals `FINDINGS_BLIND.md`
+names for that run, and found none of the seven among them. One of them, general
+against self-service, closes the cycle above with two general-over-technical
+refusals, which that record names only by their kind. It cost the stated ranking
+400 points and no clause.
+
+### What it settles, and what it does not
+
+**What it settles.**
+
+- **The ranking that chose which edge yields better than a coin read a key.**
+  With either ranking the model gives in its place, the choice is a draw's. The
+  erratum of 2026-10-16 asked for a ranking from a source that reads no truth.
+  On these bases the model supplies none that serves as this rule.
+- **On these bases it comes down to one queue pair.** Nearly every refusal of
+  the run that carries the reading is between a self-service rule and a
+  T2_TECHNICAL one. Stage C's ranking and the stated one put T2_TECHNICAL first.
+  The revealed one does not, on a split of 86 answers to 82.
+- **The two rankings trade places from the lookup.** As a lookup over rung 1's
+  rules on the signed cell, the revealed ranking was the better: 0.4693 against
+  0.3367. As the rule for which edge yields on these bases, the stated one is
+  the better on both surfaces. The cycles are on a pair where the revealed
+  ranking departs from the key's and the stated one does not.
+
+**What it does not settle.**
+
+- **The trajectory**, as in `blind/yielding.py`. Under another rule the loop
+  would have escalated other cases and been asked other questions.
+- **The material.** Three bases have 37 refusals between them under the engine
+  as it is, all but five in one run, and nearly all of those on one queue pair.
+  So a ranking's worth as this rule is read here mostly as where it puts one
+  queue against another.
+- **Whether that departure is the model's.** A split of 86 answers to 82 is near
+  a tie, and the revealed ranking's loss here rides on it. Another sample of
+  pairs might rank the two queues the other way.
+- **The hidden policy's revealed ranking** was not read. It is one adjacent swap
+  from Stage C's, and it was asked about rules a deployed system would not hold.
+
+---
+
 ## Files
 
 ```
@@ -402,4 +617,7 @@ results_ranking/ask_session.json Stage B's session: twenty-four asks, twelve
                                  presentations in two passes, as the smoke's
 results_ranking/score.json       Stage C: the five verdicts with every ask's
                                  value, and M-f
+results_ranking/yielding.json    POST-RUN: which edge of a cycle yields, with the
+                                 model's rankings in Stage C's place, on the
+                                 twelve bases of blind/yielding.py
 ```
