@@ -256,7 +256,17 @@ leaves:
     - **Bases whose cycles fall on other pairs.** That is the BLIND section's
       item on the ranking as the rule for which edge yields, below: new runs of
       the loop, and calls.
-  - `rung3/queue_hierarchy_floor.py`'s control, with it beside `stage_c`.
+  - ~~`rung3/queue_hierarchy_floor.py`'s control, with it beside `stage_c`.~~
+    **[NOTE 2026-10-18] Done already, by Stage A itself.** That control scores
+    a ranking of the queues as a lookup over rung 1's rules, on every pool and
+    surface, beside Stage C's ranking, the blind mean and the best of the
+    40,320. Stage A scored the revealed ranking on all sixteen of its cells
+    (`results_ranking/sample.json`). `FINDINGS_RANKING.md` sets it beside those
+    references in its table *The revealed ranking as a lookup*. A `revealed`
+    column in `results3/queue_hierarchy_floor.json` would give those figures a
+    second home. What was never computed is its percentile among the 40,320,
+    which Stage C gave for the stated asks and for Stage C's ranking. No
+    conclusion rests on it.
 
   The first was the open end of the erratum of 2026-10-16, in the BLIND section
   below, and it closes it: on these bases no ranking the model gives stands in
