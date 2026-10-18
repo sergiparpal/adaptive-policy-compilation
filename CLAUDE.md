@@ -496,6 +496,35 @@ off**: a paid run of `rung2/pair_judgement.py` today would spend its answer's
 budget reasoning. That is why this plan's client sends `PLAN_REUSE.md`'s
 setting.
 
+**`PLAN_STUDENTS.md` closed on 2026-10-18: what the proposer's rules buy over a
+learner fitted to its answers.** Five signed rows adjudicated, three held and
+two refuted, and one reported. Sergi signed §0 on 2026-10-18, before any figure
+it governs existed. It trained three students on the queues the proposer named
+at the escalations, and on nothing else: a pruned decision tree whose leaves are
+rules of the frozen DSL, a logistic regression, and the cache's retrieval. It
+set them beside the rules written from the same answers, on rung 1's record and
+on `PLAN_REUSE.md`'s three runs. The record is
+`results_students/FINDINGS_STUDENTS.md`, and `STATUS.md` indexes its figures.
+**Everything in it is free** and reproduces from the committed records. Its one
+writer refuses while the plan carries a blank signature line, and the gate reads
+`PLAN_STUDENTS.md` and no other plan. `ilp/`, `rung3/` and `edges/` are called
+by it and not edited. The first command is blocking and writes nothing:
+
+    python3 -m students.score --dry-run          # T-g1..T-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m students.score   # T-a to T-e, the readings of T-f
+
+**A student of the proposer's answers holds them wherever its tickets reach the
+test split.** Trained on every answer, it repeats the proposer there, wrong
+where the proposer was; trained on the train half, it reaches nothing. A
+baseline fitted to the answers should split the cases its tickets reach from the
+rest, and split every set it reports by the same cases: this plan split only its
+banded sets, and so could not say how much of the gap between its two sets the
+reach is. **The frozen validator caps a rule at eight conditions**, so a learner
+written out in the DSL has to merge each path to one condition per attribute.
+**And its `T-e` was decided by a median run inside its own noise.** §0's label
+said so. A plan that reads a median of three runs should say in §0 what such a
+run does to the verdict.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17

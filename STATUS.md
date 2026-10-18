@@ -15,8 +15,9 @@ What is known, as of October 18, 2026. **Not a history** — that is the four
 [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
 [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
 [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
-[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md) and
-[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
+[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md) and
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -45,7 +46,8 @@ the model, in `PLAN_SCREEN.md`**: five more, closed on 2026-10-15 — plus **how
 much of the residue under rung 3's coverage bound is slack, in
 `PLAN_BOUND.md`**: five more, closed on 2026-10-17 — plus **the ranking of the
 queues, asked of the model, in `PLAN_RANKING.md`**: six more, closed the same
-day.
+day — plus **what the proposer's rules buy over a learner fitted to its
+answers, in `PLAN_STUDENTS.md`**: six more, closed on 2026-10-18.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -159,6 +161,16 @@ third recovers 61% of what full supervision buys, on corpus test.
 > which is reported. So *a ranking would already answer* holds for a ranking
 > fitted with a key, and only just for one the model states.
 > [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md).
+>
+> **[NOTE 2026-10-18, later] Nor do the proposer's own answers supply it.**
+> [`PLAN_STUDENTS.md`](PLAN_STUDENTS.md) handed rung 3's search the queues the
+> proposer named at 286 escalations, where the search had had the truth.
+> Ordered by them, rung 1's rules are right on 483 cases of corpus test split 0,
+> below the 519 of the order they were born in (`T-d` refuted). Handed the truth
+> of the same 286 tickets, the search reaches 814. So the order rung 3 finds is
+> in the truth of its labels, not in their number, and the proposer's answers
+> carry none of it.
+> [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
 
 ---
 
@@ -207,7 +219,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Ninety-five rows have been signed before the figures they name existed. This
+**One hundred and one rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -254,19 +266,20 @@ a count behind it.
 | **V** · the screen (§0 of `PLAN_SCREEN.md`) — *three bands set on a development set* | 5 | 4 | **1** | 0 | 3 | 1 |
 | **H** · the bound (§0 of `PLAN_BOUND.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
 | **M** · the ranking, asked of the model (§0 of `PLAN_RANKING.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
-| **total** | **95** | **79** | **33** | **2** | **44** | **14** |
+| **T** · the students (§0 of `PLAN_STUDENTS.md`) | 6 | 5 | **2** | 0 | 3 | 1 |
+| **total** | **101** | **84** | **35** | **2** | **47** | **15** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`. Hold: `Q-a`, `Q-b`,
-`Q-c`, `Q-e`, `S-e`, `S-f`,
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`.
+Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
-`H-a`, `H-b`, `H-c`, `M-a`, `M-e`.
+`H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -289,16 +302,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 33 of 79 = **41.8%**
-refuted; without them, 31 of 73 = **42.5%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 35 of 84 = **41.7%**
+refuted; without them, 33 of 78 = **42.3%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.7 points the flattering way, which is exactly why saying so is not optional.
+0.6 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 33 of 72 = **45.8%** and 31
-of 66 = **47.0%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 35 of 77 = **45.5%** and 33
+of 71 = **46.5%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -373,6 +386,12 @@ of 66 = **47.0%**, which is the reading the calibration note should take.
 > One was reported. None of its bands was set on a development set. The table,
 > the named lists, the count in the heading and the four ratios moved together;
 > the gap between the first two is still 0.7 points.
+>
+> **[NOTE 2026-10-18, later] Recomputed with the `T` thread, in the same commit
+> as its row.** Six rows were signed and five adjudicated: two refuted and three
+> held. One was reported. None of its bands was set on a development set. The
+> table, the named lists, the count in the heading and the four ratios moved
+> together; the gap between the first two is now 0.6 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -1555,6 +1574,43 @@ So a free question does not buy the free baseline. The model's competence at
 arbitrating queues is in its pairwise answers, and the ranking it states about
 them is a different object.
 
+**What the proposer's rules buy over a learner fitted to its answers: on the
+arrivals they beat it, and over the function their order costs them.**
+`PLAN_STUDENTS.md` trained three students on the queues the proposer named at
+rung 1's 579 escalations, and on nothing else. The first is a pruned decision
+tree, whose leaves are rules of the frozen DSL. The second is a logistic
+regression. The third is the cache's retrieval, `harness/cache_baseline.py`'s
+null hypothesis, holding the proposer's answers where it had cached the truth.
+They were set beside the 577 rules written from the same answers, from
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md):
+
+- **On corpus test split 0 the rules in arrival order beat every student**:
+  519 of 995, against the tree's 470, the regression's 466 and the cache's 434
+  (`T-a` and `T-b` hold).
+- **Over the space the tree beats arrival order**, 59,466 points of 134,400
+  against 42,310 (`T-c` holds). **Read newest first, the same rules beat the
+  tree on both surfaces**: 544 and 76,180.
+- **Ordered with the proposer's own answers, the rules do worse than in arrival
+  order**: rung 3's search on the 286 train-half answers reaches 483 (`T-d`
+  refuted). On the truth of the same 286 tickets it reaches 814, 91% of the
+  searched order's gain over arrival.
+- **On `PLAN_REUSE.md`'s loop the tree ties the base**: +1, +28 and −50 test
+  cases by run, a median of one case (`T-e` refuted, thin).
+- **Handed the truth of the 286 train-half tickets, the tree is right on 894**,
+  above the searched order's 843. Handed the answers on the same tickets, it
+  is right on 500. Reported.
+- **The tree on the answers decides all three `ONCALL_ESCALATION` test cases
+  right**, through leaves that send severity-1 tickets there, learned from the
+  7 answers that named the queue on `T2_TECHNICAL` tickets. No execution of the
+  rules decides more than two. Reported, and what those leaves cost elsewhere
+  is not counted.
+
+So the scope the proposer wrote into each rule is worth something where tickets
+arrive, and a learner fitted to its queues does not recover it. What the queues
+lack is truth: on the train half the labels cost a tree on the same tickets 394
+cases, and the same search, handed the answers, orders the rules worse than
+their arrival.
+
 ---
 
 ## What was withdrawn, and why
@@ -1694,6 +1750,17 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    519, which use no truth either; its bet that the inducer would compile the
    proposer's answers better failed. On `ACCOUNT_MANAGER` it scores 0 of 55.
    §8 of the same record.
+   **[NOTE 2026-10-18] A regularised student of the same answers loses to the
+   rules too, and reaches the rare queue they miss.** `PLAN_STUDENTS.md`'s
+   pruned tree on the 579 answers is right on 470 of 995, below the rules in
+   arrival order, 519; over the space it is right on 59,466 points against
+   their 42,310 (`T-a`, `T-c`). Its leaves send severity-1 tickets to
+   `ONCALL_ESCALATION`, learned from the 7 answers that named that queue on
+   other tickets. They decide its three test cases right, where no execution
+   of the rules decides more than two. So the queue the loop never asked about
+   was in its answers to tickets it did ask about. What those leaves cost on
+   other severity-1 tickets is not counted.
+   [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

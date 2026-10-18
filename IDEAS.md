@@ -49,7 +49,10 @@ on October 17, 2026**: `PLAN_BOUND.md`, four signed rows, three held and one
 refuted, and one reported, written up in `results_bound/`. **The ranking of the
 queues, asked of the model, closed the same day**: `PLAN_RANKING.md`, five signed
 rows, two held and three refuted, and one reported, written up in
-`results_ranking/`. This is a list of things not done, none of them developed
+`results_ranking/`. **What the proposer's rules buy over a learner fitted to its
+answers closed on October 18, 2026**: `PLAN_STUDENTS.md`, five signed rows,
+three held and two refuted, and one reported, written up in
+`results_students/`. This is a list of things not done, none of them developed
 and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -60,6 +63,16 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Students on the proposer's own answers.** October 18, 2026,
+  `PLAN_STUDENTS.md`, zero calls. A pruned tree, a logistic regression and the
+  cache's retrieval were trained on the queues the proposer named at rung 1's
+  escalations. Where tickets arrive, the rules written from the same answers
+  beat all three. Over the function the tree beats them in arrival order and
+  loses to them read newest first. Ordered with the proposer's answers, the
+  rules do worse than in arrival order; with the truth at the same tickets,
+  nearly as well as the full search. On `PLAN_REUSE.md`'s loop the tree ties
+  the base. Deferral was left out. What it leaves is in its own section below.
+  `results_students/`.
 - **Ask the model for its ranking of the queues.** October 17, 2026,
   `PLAN_RANKING.md`, cents. Asked 24 times for the order that decides which
   queue wins a contested ticket, the model stated a priority order. Its reasons
@@ -222,6 +235,51 @@ against, a threshold a next run would have to clear.
   further" now rests on a smaller margin than when it was written.
 
 ---
+
+## What `PLAN_STUDENTS.md` opens and does not resolve
+
+Closed October 18, 2026. It trained three students on the queues the proposer
+named at the escalations, a pruned tree, a logistic regression and the cache's
+retrieval, and set them beside the rules written from the same answers. Where
+tickets arrive the rules beat all three. Over the function the tree beats them
+in arrival order and loses to them read newest first. What that leaves:
+
+- **What the `ONCALL_ESCALATION` leaves cost.** The tree on rung 1's answers
+  decides that queue's three test cases right, through two leaves that send
+  severity-1 tickets there. They take every other severity-1 ticket they cover
+  too, and the record counts only four classes. Free, POST-RUN: refit the tree,
+  which is deterministic, and count where its two leaves send each true class,
+  on the test split and over the space.
+- **Why the train-half tree beats the all-answers tree.** On the test split it
+  does, by 30 cases. The reach explains the direction: on the 347 test cases its
+  tickets reach, the all-answers tree holds the proposer's own answer. The
+  record splits only the all-answers students that way. Free, POST-RUN: the
+  train-half students on the same 347 and 648.
+- **What the `PLAN_REUSE.md` trees are.** The record holds their sizes and
+  scores, not their rules, and three of them score alike on both surfaces.
+  Free, POST-RUN.
+- **The truth at the escalations, as a deployment would buy it.** Rung 3's
+  search on the truth of the 286 train-half escalations recovers 91% of the
+  gain the search on all 1,005 train cases makes over arrival. On the
+  proposer's answers at the same tickets it recovers none. A deployment could
+  buy that truth from someone other than the proposer, a reviewer labelling
+  each escalation. How few such labels buy how much, and which escalations to
+  label first, is unmeasured. Rung 4's channel asks something else: it labels
+  the system's decisions, not its escalations.
+- **A stronger student.** Boosted trees or a larger model would need a
+  dependency pinned apart. These three lose to the rules on the arrivals, and
+  that is these three losing (§12.1 of the plan).
+- **Deferral, both halves.** Carried here from *What the outside reading of
+  October 2026 proposes*, below. The free half is not readable statically: a
+  cascade defers on what its own student is unsure of, and that student would
+  be trained on the answers to its own deferrals, which do not exist (§2.5 of
+  the plan). The paid half is an online cascade at equal calls to the loop, and
+  it needs a plan of its own.
+- **A median of three paired differences can rest on one case.** `T-e` was
+  refuted by a median run whose tree and base differ by one case of 995, with
+  19 cases decided differently. §0's label marked it thin. A plan that reads a
+  median of three runs should say in §0 what a median run inside its own noise
+  does to the verdict.
 
 ## What `PLAN_RANKING.md` opens and does not resolve
 
@@ -1099,15 +1157,16 @@ it is pre-registrable, because none of its figures exists:
   It is also the one ranking that reads no truth, so it could stand in for
   Stage C's wherever a ranking is used as a rule (the erratum in the BLIND
   section, above). Cents, and a signed plan, as for every paid run.
-- **Students on the proposer's own answers, with deferral by uncertainty.** This
-  is the baseline the survey ranks first, after Cache & Distil (Findings of ACL
+- ~~**Students on the proposer's own answers, with deferral by uncertainty.**~~
+  **Run on 2026-10-18 as `PLAN_STUDENTS.md`, without deferral**, and moved to
+  *No longer here*. This is the baseline the survey ranks first, after Cache & Distil (Findings of ACL
   2024) and Online Cascade Learning (ICML 2024). A cheap learner is trained on
   the LLM's answers, and a policy sends the LLM what the learner is unsure of.
   §8 of `results_ilp/FINDINGS_ILP.md` ran one student on the proposer's
   answers, and the proposer's rules beat it. That was one unregularised
   inducer, which fits noisy labels case by case, on rung 1's record alone. What
   it leaves:
-  - **Stronger students.** A pruned decision tree, a multinomial logistic
+  - ~~**Stronger students.**~~ A pruned decision tree, a multinomial logistic
     regression, and nearest neighbour on the proposer's answers. The last is
     `harness/cache_baseline.py` with the proposer's queue where it caches the
     truth; that file is frozen, so the variant lives outside `harness/`. Train
@@ -1115,17 +1174,25 @@ it is pre-registrable, because none of its figures exists:
     and of `PLAN_REUSE.md`'s three runs, where each record keeps it as
     `predicted`. Score them against the truth on corpus test and over the
     space, beside the proposer's rules in arrival order and under each run's
-    engine.
-  - **The order on the same information.** Rung 3's search, with the
+    engine. **[NOTE 2026-10-18] Run.** Where tickets arrive the rules beat all
+    three (`T-a`, `T-b`); over the function the tree beats them in arrival
+    order (`T-c`); on `PLAN_REUSE.md`'s loop it ties the base (`T-e`).
+  - ~~**The order on the same information.**~~ Rung 3's search, with the
     proposer's answers at the escalations as its labels instead of the truth,
     and with its declared constants. It reads no oracle, so it says how much of
     the gap between `born_at` and the searched order the oracle paid for.
+    **[NOTE 2026-10-18] Run: all of it.** On the answers the search orders the
+    rules below arrival (`T-d` refuted). On the truth of the same tickets it
+    recovers 91% of the full search's gain.
   - **Deferral, the free half.** At the engine's own call budget, where would a
     margin rule send its escalations, and are the seven `ONCALL_ESCALATION`
     arrivals among them? Where those tickets were asked with the ticket alone,
     `PLAN_FIDELITY.md` and `PLAN_SCREEN.md` recorded the answer.
   - **Deferral, the paid half.** The online cascade, at equal calls to the
     loop. Its escalations are not the engine's, so their answers do not exist.
+    **[NOTE 2026-10-18]** Both halves were left out of `PLAN_STUDENTS.md`: a
+    static reading cannot say where a cascade would defer (§2.5 of the plan).
+    They are carried in *What `PLAN_STUDENTS.md` opens*, above.
 
   `CLAUDE.md`'s four conditions for a baseline set against the proposer apply as
   written, and here the control on the proposer's answers is the design itself.
@@ -1133,7 +1200,8 @@ it is pre-registrable, because none of its figures exists:
   learner written for it or a dependency pinned apart, as `clingo` is. A
   decision tree is symbolic too. If one matches the rules, the case for rules
   written one ticket at a time has to rest on something other than being
-  symbolic.
+  symbolic. **[NOTE 2026-10-18] One did not, where tickets arrive** (`T-a`):
+  `results_students/FINDINGS_STUDENTS.md`.
 - ~~**A tighter bound than the coverage bound, before any solver.**~~ **Run on
   2026-10-17 as `PLAN_BOUND.md`**, and moved to *No longer here*. This is a
   method for `STATUS.md`'s first open item. A case with exactly one right rule
