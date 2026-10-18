@@ -1,12 +1,17 @@
 # What the proposer's rules buy over a learner fitted to its answers — findings
 
 Record opened on October 18, 2026, under [`PLAN_STUDENTS.md`](../PLAN_STUDENTS.md).
-Sergi signed §0 on 2026-10-18, before any figure below existed, in a commit of
-its own: *PLAN_STUDENTS.md signed by Sergi*. The stage's record,
-[`score.json`](score.json), names that commit in its `_env` as `e151c6e`, its
-hash on the branch it was made on. A rebase merge gives it a new hash on `main`
-with the same tree, so it is named here by its subject. **This record owns every
-figure in it.**
+The plan, its package, the signature and the record below reached `main`
+together, in pull request #136. Sergi signed §0 on 2026-10-18, before any figure
+below existed, in a commit of its own: `424c4ab` on `main`, merged from
+`e151c6e`.
+
+The stage's record, [`score.json`](score.json), names in its `_env` the commit it
+was written from: `e151c6e`, the signing commit on the branch. A rebase merge
+gave it a new hash on `main`, `424c4ab`. The two have the same subject, the same
+tree and the same `git patch-id --stable`.
+
+**This record owns every figure in it.**
 
 **The stage adjudicated the five signed rows on 2026-10-18: three hold and two
 are refuted.**
