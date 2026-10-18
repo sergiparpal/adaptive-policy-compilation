@@ -556,6 +556,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `ranking/sample.py` | `results_ranking/sample.json` | **refuses while the plan is unsigned** |
 > | `ranking/ask.py` | `results_ranking/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `ranking/score.py` | `results_ranking/score.json` | **refuses while the plan is unsigned** |
+> | `ranking/yielding.py` | `results_ranking/yielding.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
