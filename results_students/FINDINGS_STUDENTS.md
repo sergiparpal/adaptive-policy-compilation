@@ -345,19 +345,136 @@ its train half the cache falls below it over the space, 30,962.
 - **What the `ONCALL_ESCALATION` leaves cost.** The record counts four rare
   classes and the totals. How many severity-1 tickets the two leaves send there
   that are `T2_TECHNICAL` or `T3_ENGINEERING` in truth is not split out.
+  **[NOTE 2026-10-18] Read POST-RUN**: 40 of their 45 test cases, and they cost
+  the tree 17 cases against arrival. *Three readings after the verdicts*,
+  below.
 - **Why the train-half tree beats the all-answers tree.** The reach explains
   the direction: on the 347 cases the all-answers tree holds the proposer's own
   answer, and the proposer was right on fewer than half of them. The record
   does not split the train-half tree's cases the same way, so it does not
-  measure how much of the 30 cases that is.
+  measure how much of the 30 cases that is. **[NOTE 2026-10-18] Read
+  POST-RUN**: 18 of the 30, below.
 - **What the `PLAN_REUSE.md` trees are.** The record holds their sizes and
   scores, not their rules. Runs 2 and 3 give trees that score alike on both
-  surfaces; whether they are the same partition is not recorded.
+  surfaces; whether they are the same partition is not recorded. **[NOTE
+  2026-10-18] Read POST-RUN**: three of them are one rule of thumb of three
+  lines, and all six split on the keyword first, below.
 - **Deferral, cost and the loop.** The students are offline and trained on the
   loop's escalations. A cascade would have escalated other tickets, and their
   answers do not exist (§2.5 and §12 of the plan).
 - **One corpus, one policy, one proposer.** The answers come from one model, in
   two loops under prompts that differ.
+
+---
+
+## Three readings after the verdicts — POST-RUN
+
+> **PROVENANCE: POST-RUN.** Asked for on 2026-10-18, after the stage. The
+> expectation was written in `students/readings.py`'s docstring and committed
+> before the first run. Not a signed row, not on `STATUS.md`'s scoreboard, not a
+> calibration event.
+
+`PYTHONHASHSEED=0 python3 -m students.readings`, from the commit that holds the
+expectation, with a clean tree: 28 s, zero API calls. The record is
+[`readings.json`](readings.json). It refits the stage's students with the
+stage's own `read_students`, and three gates passed before anything was read:
+
+- every refitted student scores on both surfaces what `score.json` says, and
+  the tree on rung 1's answers writes its 25 rules again, rule for rule;
+- arrival order and its reverse are the record's, on both surfaces;
+- the two `ONCALL_ESCALATION` leaves cover, over the space, exactly the points
+  by true queue that the docstring derived from the hidden policy before the
+  run. `tests/test_students_readings.py` recomputes that derivation by brute
+  force.
+
+**All ten clauses of the expectation held.**
+
+### What the `ONCALL_ESCALATION` leaves cost
+
+The two leaves are `L015`, *severity 1 outside billing*, and `L024`, *severity
+1 in billing, off hours, without the keyword*.
+
+| | cases or points | true queues | tree | arrival | reversed |
+|---|---|---|---|---|---|
+| test split 0, `L015` | 41 | `T2_TECHNICAL` 22, `T3_ENGINEERING` 14, `ONCALL_ESCALATION` 3, `SECURITY_INCIDENT` 2 | 3 | 20 | 21 |
+| test split 0, `L024` | 4 | `T2_TECHNICAL` 4 | 0 | 0 | 0 |
+| space, `L015` | 26,880 | `SECURITY_INCIDENT` 13,440, `T2_TECHNICAL` 5,040, `ONCALL_ESCALATION` 5,040, `T3_ENGINEERING` 3,360 | 5,040 | 11,340 | 18,060 |
+| space, `L024` | 1,680 | `T2_TECHNICAL` 840, `ONCALL_ESCALATION` 840 | 840 | 0 | 0 |
+
+- **On the test split the leaves cost the tree 17 cases against arrival
+  order**: arrival is right on 20 of their 45 cases and the tree on 3. That is
+  a third of the tree's 49-case gap. 40 of the 45 are `T2_TECHNICAL` or
+  `T3_ENGINEERING` in truth.
+- **Over the space they cost it 5,460 points against arrival and 12,180
+  against its reverse.** The tree is right on 5,880 of their 28,560 points:
+  every `ONCALL_ESCALATION` point among them, which is 5,880 of the space's
+  6,300. The other 420 fall in `L025`.
+- **On `L024`'s points no execution of the rules is right at all**, on the test
+  split or over the space: severity 1 in billing, off hours, half of it
+  `ONCALL_ESCALATION` and half `T2_TECHNICAL`.
+
+So the tree buys the queue the rules never reach with the severity-1 tickets of
+the other queues. **On both surfaces the trade is a loss**, and where tickets
+arrive it is a third of the tree's gap.
+
+### The train half on the reach's partition
+
+| on the test split | the 347 | the 648 | all 995 |
+|---|---|---|---|
+| tree, train half | 164 | 336 | 500 |
+| tree, all answers | 146 | 324 | 470 |
+| logistic, train half | 145 | 313 | 458 |
+| logistic, all answers | 146 | 320 | 466 |
+| cache, train half | 137 | 258 | 395 |
+| cache, all answers | 154 | 280 | 434 |
+| arrival | 173 | 346 | 519 |
+
+- **Of the train-half tree's 30-case lead over the all-answers tree, 18 cases
+  are on the 347 and 12 on the 648.** The reach is most of it. The rest goes
+  with the train-half tree's being coarser: 8 leaves against 25.
+- **For the cache, the answers it holds are worth 17 cases on the 347.** There
+  the proposer's own answer for the ticket beats the nearest train-half
+  ticket's. The logistic regression hardly moves on the 347.
+- **Arrival order is ahead of every student on both parts**, the train-half
+  tree included: by 9 cases on the 347 and by 10 on the 648.
+
+### What the `PLAN_REUSE.md` trees are
+
+| set | leaves | its rules, every condition after the first read without the keyword |
+|---|---|---|
+| run 1, all | 6 | the keyword → `SECURITY_INCIDENT`; severities 1 to 3 → `T2_TECHNICAL`; severity 4: free → `SELF_SERVICE_DEFLECT`, otherwise billing → `BILLING_SPECIALIST`, otherwise enterprise → `T1_GENERAL` and pro and business → `T2_TECHNICAL` |
+| run 1, train half | 2 | the keyword → `SECURITY_INCIDENT`; the rest → `T2_TECHNICAL` |
+| run 2, all | 3 | the keyword → `SECURITY_INCIDENT`; billing → `BILLING_SPECIALIST`; the rest → `T2_TECHNICAL` |
+| run 2, train half | 4 | the keyword → `SECURITY_INCIDENT`; enterprise → `T1_GENERAL`; billing → `BILLING_SPECIALIST`; the rest → `T2_TECHNICAL` |
+| run 3, all | 3 | as run 2, all |
+| run 3, train half | 3 | as run 2, all |
+
+- **The trees on all of run 2's answers, all of run 3's and the train half of
+  run 3's decide every point of the space alike.** They are one rule of thumb
+  of three lines.
+- **All six split on the security keyword first and send it to
+  `SECURITY_INCIDENT`.** That is the rule of thumb `FINDINGS_EDGES.md` found
+  behind nearly every edge the proposer declared on that loop.
+- **On the test split the three-line rule beats run 2's base and loses to run
+  3's; over the space it beats both** (the run-by-run table of `T-e` and the
+  bases' table above).
+
+### The expectation, clause by clause
+
+| clause | reading | |
+|---|---|---|
+| A1 · the leaves decide 30 to 50 test cases | 45 | holds |
+| A2 · two thirds of them `T2_TECHNICAL` or `T3_ENGINEERING` | 40 of 45 | holds |
+| A3 · arrival at least 10 ahead on them | 20 against 3 | holds |
+| A4 · arrival ahead on their points over the space | 11,340 against 5,880 | holds |
+| B1 · the train-half tree ahead on the 347 | 164 against 146 | holds |
+| B2 · more than half of its lead on the 347 | 164, above 161 | holds |
+| B3 · the train-half cache behind on the 347 | 137 against 154 | holds |
+| C1 · three trees decide alike | yes | holds |
+| C2 · the keyword, billing, the rest | yes | holds |
+| C3 · run 1 sends the keyword to `SECURITY_INCIDENT` | every point | holds |
+
+The drafter trusted A4 least, and it held.
 
 ---
 
@@ -372,8 +489,11 @@ students/cache.py        the retrieval, its online protocol, its masks
 students/rules.py        arrival order, rung 1's engine, the order on new labels, the bases
 students/gates.py        T-g1 to T-g4, blocking, run first
 students/score.py        the stage: T-a to T-e, the readings of T-f
-results_students/score.json   every figure above, the tree in the DSL, the gates
-tests/test_students.py   how the package counts — and no figure
+students/readings.py     POST-RUN: the three readings the stage left open
+results_students/score.json      the stage's figures, the tree in the DSL, the gates
+results_students/readings.json   the readings' figures, behind three gates, and the expectation
+tests/test_students.py           how the package counts — and no figure
+tests/test_students_readings.py  how readings.py counts, and the derivation by brute force
 ```
 
 Reproducible, in this order:
@@ -381,4 +501,5 @@ Reproducible, in this order:
 ```
 python3 -m students.score --dry-run           # T-g1..T-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m students.score    # about five and a half minutes
+PYTHONHASHSEED=0 python3 -m students.readings # POST-RUN; under half a minute
 ```
