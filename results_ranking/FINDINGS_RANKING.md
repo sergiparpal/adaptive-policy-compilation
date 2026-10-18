@@ -24,8 +24,11 @@ false, and that digest identifies the code that wrote them. **This record owns
 every figure in it.**
 
 **A POST-RUN reading was added on 2026-10-18**: [`yielding.json`](yielding.json),
-by `ranking/yielding.py`, under its own code digest, named in its section below.
-It moves no verdict.
+by `ranking/yielding.py`. It reached `main` in pull request #133. Its `_env`
+names `4f0aa36`, the branch commit that wrote its expectation, and that commit
+is `df952df` on `main`: the same tree, the same subject and the same
+`git patch-id --stable`. Its code digest, `29fa93ac2e5c8153`, is its own, named
+in its section below. It moves no verdict.
 
 **All three stages ran on 2026-10-17, and the five rows are adjudicated: `M-a`
 holds, `M-b`, `M-c` and `M-d` are refuted, and `M-e` holds, thin.** Asked for
@@ -416,10 +419,10 @@ rankings in its place:
   the median ask as `M-e` was.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranking.yielding`, once, on
-2026-10-18, from a clean tree at the commit *ranking/yielding.py: which edge of a
-cycle yields under the model's own rankings, the expectation first*. Its code
-digest is `29fa93ac2e5c8153`. The module calls `blind/yielding.py`'s functions
-and edits none of them. It took a few seconds.
+2026-10-18, from a clean tree at the commit that wrote its expectation: `df952df`
+on `main`, merged from `4f0aa36` in pull request #133. Its code digest is
+`29fa93ac2e5c8153`. The module calls `blind/yielding.py`'s functions and edits
+none of them. It took a few seconds.
 
 Every gate passed:
 - `blind/yielding.py`'s own eight, the hidden policy kept whole under every
