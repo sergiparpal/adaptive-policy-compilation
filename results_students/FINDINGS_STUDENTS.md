@@ -13,6 +13,13 @@ tree and the same `git patch-id --stable`.
 
 **This record owns every figure in it.**
 
+**A POST-RUN reading was added on 2026-10-18**: [`readings.json`](readings.json),
+by `students/readings.py`, in its own section below. It reached `main` in pull
+request #138. Its `_env` names `7575986`, the branch commit that wrote its
+expectation, and that commit is `42ba325` on `main`: the same tree, the same
+subject and the same `git patch-id --stable`. Its code digest,
+`329454f4fbfef552`, is its own. It moves no verdict.
+
 **The stage adjudicated the five signed rows on 2026-10-18: three hold and two
 are refuted.**
 
@@ -374,8 +381,10 @@ its train half the cache falls below it over the space, 30,962.
 > before the first run. Not a signed row, not on `STATUS.md`'s scoreboard, not a
 > calibration event.
 
-`PYTHONHASHSEED=0 python3 -m students.readings`, from the commit that holds the
-expectation, with a clean tree: 28 s, zero API calls. The record is
+`PYTHONHASHSEED=0 python3 -m students.readings`, once, on 2026-10-18, from a clean
+tree at the commit that wrote its expectation: `42ba325` on `main`, merged from
+`7575986` in pull request #138. Its code digest is `329454f4fbfef552`. 28 s,
+zero API calls. The record is
 [`readings.json`](readings.json). It refits the stage's students with the
 stage's own `read_students`, and three gates passed before anything was read:
 
