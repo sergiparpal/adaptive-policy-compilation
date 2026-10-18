@@ -1,14 +1,27 @@
 # The ranking of the queues, asked of the model — findings
 
 Record opened on October 17, 2026, under [`PLAN_RANKING.md`](../PLAN_RANKING.md).
-Sergi signed §0 on 2026-10-17, before any figure below existed, in a commit of
-its own: *PLAN_RANKING.md signed by Sergi*. Every record names in its `_env` the
-commit of the branch it was written on. A rebase merge gives those commits new
-hashes on `main` with the same trees. Three of them, those behind the smoke
-session, the session and Stage C, were also rebased onto `main` before their
-pull request, so their hashes were never published. All four records carry
-one code digest, `e51c6d23f41a4902`, with `code_dirty` false, and that digest
-identifies the code that wrote them. **This record owns every figure in it.**
+The plan reached `main` in pull request #128, and its amendment and package in
+#129. Sergi signed §0 on 2026-10-17, before any figure below existed, in a commit
+of its own: `af01e41` on `main`, merged from `c3ae48c` in pull request #130. The
+records and this record reached `main` in #131.
+
+Every record names in its `_env` the commit of the branch it was written on. A
+rebase merge gives those commits new hashes on `main` with the same trees. Three
+of them were rebased onto `main` once more before #131 was opened, so those
+three hashes were never published. Each pair below has the same tree, the same
+subject and the same `git patch-id --stable`:
+
+| record | written from, on the branch | the same commit on `main` |
+|---|---|---|
+| `sample.json` | `c3ae48c`, the signature | `af01e41` |
+| `ask_smoke.json` | `5f28c94`, never published | `759adcf` |
+| `ask_session.json` | `71ec723`, never published | `140cee6` |
+| `score.json` | `e0c1765`, never published | `cc4a40c` |
+
+All four records carry one code digest, `e51c6d23f41a4902`, with `code_dirty`
+false, and that digest identifies the code that wrote them. **This record owns
+every figure in it.**
 
 **All three stages ran on 2026-10-17, and the five rows are adjudicated: `M-a`
 holds, `M-b`, `M-c` and `M-d` are refuted, and `M-e` holds, thin.** Asked for
