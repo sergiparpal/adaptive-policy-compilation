@@ -84,7 +84,7 @@ any figure.**
 | **T-e** | **On `PLAN_REUSE.md`'s loop the tree does not match the base either.** | corpus test split 0: per run, the tree trained on that run's answers (62, 31 and 42) less the run's final base under rung 2's engine with its installed edges, in right decisions; the median of the three runs | **median < 0** | **median ≥ 0** |
 | **T-f** | *Reported, not adjudicated.* **What reading the rows needs.** | §9's readings: every student on every set and surface; the same students handed the truth; the rules' other executions; the rare classes; the reach; the tree written in the DSL; the discordance behind each label | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-18)**
 
 **One label, and it does not change a verdict.** `T-a`, `T-b`, `T-d` and `T-e`
 compare two artefacts on the same 995 cases. For each, the record gives the
