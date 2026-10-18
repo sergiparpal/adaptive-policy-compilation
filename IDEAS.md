@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 17, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 18, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -46,8 +46,11 @@ written up in `results_screen/`. **An outside reading was adjudicated on October
 16, 2026**, and what it proposes that nothing has run has its own section,
 below. **How much of the residue under rung 3's coverage bound is slack closed
 on October 17, 2026**: `PLAN_BOUND.md`, four signed rows, three held and one
-refuted, and one reported, written up in `results_bound/`. This is a list of things not done, none of them developed and in no
-order of precedence.
+refuted, and one reported, written up in `results_bound/`. **The ranking of the
+queues, asked of the model, closed the same day**: `PLAN_RANKING.md`, five signed
+rows, two held and three refuted, and one reported, written up in
+`results_ranking/`. This is a list of things not done, none of them developed
+and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -57,6 +60,16 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Ask the model for its ranking of the queues.** October 17, 2026,
+  `PLAN_RANKING.md`, cents. Asked 24 times for the order that decides which
+  queue wins a contested ticket, the model stated a priority order. Its reasons
+  say so, every one. As an arbitration order that order scores below arrival
+  order and below a ranking picked blind on the corpus. It predicts the model's
+  own pairwise answers far worse than Stage C's ranking does. Of the item's two
+  readings, the second came out: the model shows pair by pair what it cannot
+  state. Its revealed ranking, scored as a lookup for the first time, lies
+  between the stated one and Stage C's. What it leaves is in its own section
+  below. `results_ranking/`.
 - **How much of the residue under the coverage bound is slack.** October 17,
   2026, `PLAN_BOUND.md`, zero calls. A certificate found without a solver packs
   cycles of cases each of whose right rules are all wrong for the next, which
@@ -209,6 +222,50 @@ against, a threshold a next run would have to clear.
   further" now rests on a smaller margin than when it was written.
 
 ---
+
+## What `PLAN_RANKING.md` opens and does not resolve
+
+Closed October 17, 2026. It asked the model for the order between the eight
+queues that decides which wins a contested ticket, and scored every answer as a
+lookup over rung 1's rules. The model stated a priority order, and as an
+arbitration order that is worth less than a blind draw on the corpus. What that
+leaves:
+
+- **Whether another question elicits the arbitration order.** The question said
+  *the earlier queue wins*, and every answer explained itself by criticality.
+  These answers cannot say whether the model holds no arbitration order or the
+  question did not reach it. Two questions would separate the two. One shows
+  the order being applied: two rules, one ticket, the queue that wins. The other
+  asks §2.1's pairwise question over the 28 queue pairs, with no rule shown, and
+  compiles the answers. Calls, and a plan of their own. A plan that asks a model
+  for an order should show it the order at work.
+- **The revealed ranking as the rule that reads no truth.** Copeland over the
+  model's own pairwise answers about the learned base clears `P-d`'s threshold
+  on the signed cell, which the ranking it states does not. Stage A scored it as
+  a lookup, and nothing else has used it. Two uses are free on the records:
+  - `blind/yielding.py`'s rule for which edge of a cycle yields, with it in
+    Stage C's place;
+  - `rung3/queue_hierarchy_floor.py`'s control, with it beside `stage_c`.
+
+  The first is the open end of the erratum of 2026-10-16, above.
+- **The stated order against the done one, pair by pair.** On the queue pairs
+  its pairwise answers decide most one-sidedly, the stated order says the
+  opposite: `BILLING_SPECIALIST` over `T1_GENERAL` is the clearest. Whether
+  rung 1's rules follow either order, which of their queues win where they
+  overlap, is a reading of the base that needs no call. It would say which
+  order the proposer compiles.
+- **What the providers did.** Two providers answered under one model name, and
+  each presentation was served by one provider in both passes. So `M-a`'s
+  within-presentation agreement is within a provider, and five of twelve
+  presentations still gave two answers. With three presentations on one
+  provider and nine on the other, 24 calls cannot apportion the slot gap. A next
+  plan that wants the split should ask each presentation under both providers,
+  which OpenRouter's provider routing allows.
+- **Read the record a baseline comes from.** §0 declared a published rate unseen
+  because its drafter had read the index that cited the section, not the
+  section itself. And that section had given one ranking's figure to another
+  (`FINDINGS3.md` §14's erratum). A plan should read the records its references
+  come from before it declares what is unseen.
 
 ## What `PLAN_BOUND.md` opens and does not resolve
 
@@ -365,6 +422,16 @@ What that leaves:
         model's own stated ranking is one: *What the outside reading of
         October 2026 proposes*, below. `FINDINGS_BLIND.md` carries the same
         erratum, and no figure moves.
+        **[NOTE 2026-10-18] Asked, the model states a weaker one.**
+        `PLAN_RANKING.md` put its stated ranking in Stage C's place on
+        `K-b`'s pairs. There it points no worse than the declarations, by a
+        hair (`M-e` holds, thin), and on the arrivals worse. The model's
+        revealed ranking, Copeland over its pairwise answers, also reads no
+        truth, and it points those pairs a little better. So a stand-in that
+        reads no truth exists, and it is far weaker than the key's ranking.
+        Whether either serves as the rule for which edge yields was not
+        measured: that is `blind/yielding.py` with another ranking, free on
+        the records (*What `PLAN_RANKING.md` opens*, below).
       - **Which edge yields also decides what rung 2's engine resolves.** The
         ranking and the oracle leave more CONFLICT than arrival, and fewer
         silent errors. An engine that read the closure would separate the two.
@@ -983,7 +1050,8 @@ it is pre-registrable, because none of its figures exists:
   separation on purpose, so it needs its own package and its own plan, and the
   tests that keep the loop away from the oracle must say why that package is
   exempt. Cents.
-- **Ask the model for its ranking of the queues.** The ranking the pairwise
+- ~~**Ask the model for its ranking of the queues.**~~ **Run on 2026-10-17 as
+  `PLAN_RANKING.md`**, and moved to *No longer here*. The ranking the pairwise
   thread measured itself against, which 1,600 answers tied (`B-b`), is Stage
   C's hierarchy. It was chosen by brute force over the 40,320 hierarchies with
   the hidden policy's answer key in hand, over that policy's pairs

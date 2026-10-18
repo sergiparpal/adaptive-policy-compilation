@@ -47,6 +47,7 @@ up in four places at once.
 | **K** · beyond the keyword, drafted blind | whether declaration carries direction beyond the security keyword, with the base taken out of the proposer's first call and a placement round forcing the declaration — closed 2026-10-12 | [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md) |
 | **V** · the screen | what the screen of compiled rules does to the model: asked with the ticket alone on decisions its rules made, is it right more often, and does it defer to the screen — closed 2026-10-15 | [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md) |
 | **H** · the bound | how much of the residue under rung 3's coverage bound is slack: a certificate, found without a solver and checked from the masks alone, of cases every order loses — closed 2026-10-17 | [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md) |
+| **M** · the ranking, asked of the model | what the model states when asked for the one order between the eight queues that decides a contested ticket, scored as a lookup over rung 1's rules against the ranking that read the key — closed 2026-10-17 | [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -430,6 +431,31 @@ python3 -m bound.score --dry-run           # H-g1..H-g4, blocking; writes nothin
 PYTHONHASHSEED=0 python3 -m bound.score    # H-a to H-d, and the readings of H-e
 ```
 
+**[`PLAN_RANKING.md`](PLAN_RANKING.md) closed on 2026-10-17**: what the model
+states when asked to rank the queues. Sergi signed §0 on 2026-10-17, before any
+of its figures existed. It asked the model, with reasoning off, for the one
+order between the eight queues that decides which wins a contested ticket. The
+question named the queues and nothing else, in twelve presentation orders, each
+asked twice, and every answer was scored as a lookup over rung 1's 577 rules.
+Its record is
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md).
+Its gate reads that plan and no other, and guards its three writers. `rung3/`,
+`rung2/` and `blind/` are called by it and not edited.
+
+Stages A and C are free, and they reproduce from the committed records in about
+ten minutes each. Nearly all of that is the first check's enumeration of the
+40,320 hierarchies and the suite inside it. **Stage B spent**: its records are
+guarded, and a re-run neither overwrites them nor gives the same answers back. A
+paid session does not start without Sergi asking for it.
+
+```bash
+python3 -m ranking.ask --dry-run                  # M-g1..M-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m ranking.sample        # Stage A · the presentations, the revealed rankings
+PYTHONHASHSEED=0 python3 -m ranking.score         # Stage C · M-a to M-e, and M-f
+.venv/bin/python -m ranking.ask --session smoke   # Stage B · spends · only on Sergi's say
+.venv/bin/python -m ranking.ask --session session # then the session, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -599,7 +625,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `overlap/run.py --dry-run`, which runs `PLAN_OVERLAP.md`'s, and
 > `blind/run.py --dry-run`, which runs `PLAN_BLIND.md`'s, and the three of
 > `screen/`, which run `PLAN_SCREEN.md`'s, and `bound/score.py --dry-run`,
-> which runs `PLAN_BOUND.md`'s.
+> which runs `PLAN_BOUND.md`'s, and the three of `ranking/`, which run
+> `PLAN_RANKING.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -712,6 +739,7 @@ What it covers, and why those things:
 | `test_blind_yielding.py` | `blind/yielding.py`, the POST-RUN reading of which edge of a cycle should yield: the log given back to the escalations that wrote it, the order each arm installs the declarations in, which edge yields under arrival and under recency, the ranking's and the oracle's groups, the coin seeded, every arm acyclic and full, what changes against arrival under rung 2's engine and through the closure, the corpus counted as it arrives, the coin's summaries and the pool, the hidden policy kept whole under every order, the expectation's clauses at their edges, the two halves of the space and the coin's draws by what they refused, added after the first and second runs, and the writer refusing unsigned. **No figure of the plan** |
 | `test_screen.py` | the `PLAN_SCREEN.md` instrument: §10's constants and §0's lines, each verdict at its edge, the gate counting every signature line, the populations and the tickets counted by their attributes on the real records, every prompt against the digests `PLAN_FIDELITY.md` recorded and a changed screen moving one, `V-g1` giving back `PLAN_FIDELITY.md`'s Stage C to 1e-12 and catching a tampered record, the wrapped client sending every request unchanged and keeping each attempt's `finish_reason`, §0's rule for a run without a value and for the median by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over the double's records with the held-out labels masked. **No figure of the plan** |
 | `test_bound.py` | the `PLAN_BOUND.md` instrument: §8's constants, the finder's two and §0's lines, each verdict at its edge, the gate counting every signature line, the argument by hand — a two-case cycle, a ring of three, a cycle by containment and the same shape without it, copies merged, and the hybrid pool's counterexample to a subsumption edge —, `verify` refusing each way a certificate can be wrong and reaching nothing of the finder's, validity against the exact optimum, the packing stopping only when no cycle is left, the same certificate under three values of `PYTHONHASHSEED`, `H-g1` to `H-g3` on the real records with a tampered bound caught, the dry run never packing a cycle on rung 1's rules, the stage on synthetic instances worked by hand with its two refusals, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
+| `test_ranking.py` | the `PLAN_RANKING.md` instrument: §10's constants with the client imported from rung 2's judge and reasoning off, the three lines read from their records and moving with them, the gate counting every signature line, the twelve presentations and a changed order moving a digest, an injected ticket, rule, queue or omission caught, validity at every edge §0 names, the instrument's arithmetic by hand, one cell of `M-g1` and all of `M-g3` on the real records with a tampered row caught, the dry run computing no rate but the published one and scoring no ranking, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over asks that state Stage C's own ranking. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1341,6 +1369,15 @@ adaptive-policy-compilation/
 │   ├── gates.py             H-g1..H-g4 · blocking, run before any write
 │   └── score.py             the stage · H-a to H-d, the readings of H-e
 │
+├── ranking/              M · the ranking of the queues, asked of the model
+│   ├── plan.py              the gate and §10's constants; three of §0's lines read
+│   ├── question.py          the question, the twelve presentations, validity · M-g2
+│   ├── instrument.py        the cells, a score, predicts, the revealed ranking
+│   ├── gates.py             M-g1..M-g4 · blocking, run before any write
+│   ├── sample.py            Stage A · the presentations, the free readout
+│   ├── ask.py               Stage B · the calls, each attempt kept · spends
+│   └── score.py             Stage C · M-a to M-e and M-f, gated on PLAN_RANKING.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1422,7 +1459,7 @@ adaptive-policy-compilation/
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
     results_authorship/  results_overlap/  results_blind/  results_screen/
-    results_bound/
+    results_bound/  results_ranking/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

@@ -658,6 +658,21 @@ of the CONFLICT points cannot see.
 > recency and the coin. No figure and no verdict moves. What moves is the
 > reading of the ranking as a rule a deployed system could apply: it would need
 > a ranking from a source that reads no truth. `IDEAS.md` carries that.
+>
+> **[NOTE 2026-10-18] A ranking that reads no truth was asked for, and it is
+> weaker.** [`PLAN_RANKING.md`](../PLAN_RANKING.md) asked the model for its
+> ranking of the queues and put it in the Stage C ranking's place on `K-b`'s
+> pairs (`M-e`). The ranking it states reads 0.5496 there, against the
+> declarations' 0.5460 and the Stage C ranking's 0.7219. It holds, thinly. On
+> the arrivals it reads 0.5202, below the declarations' 0.5861. Its revealed
+> ranking, Copeland over its pairwise answers, reads 0.5563. **`K-c` keeps its
+> verdict**: it was signed against the Stage C ranking and adjudicated on it.
+> What that verdict rests on is now measured. Beyond the keyword, a ranking the
+> model holds points these pairs about as the declarations do, and only the
+> key's ranking points them better. Which edge of a cycle yields under either
+> of the model's rankings was not measured.
+> [`results_ranking/FINDINGS_RANKING.md`](../results_ranking/FINDINGS_RANKING.md)
+> owns the figures.
 
 **What it does not settle.**
 

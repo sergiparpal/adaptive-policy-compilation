@@ -174,7 +174,8 @@ the FINDINGS.
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
 2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
 2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
-2026-10-10 `blind/run.py`, and since 2026-10-14 `screen/ask.py`, all six below. It refuses to run while §0 of **the
+2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, and since
+2026-10-17 `ranking/ask.py`, all seven below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -457,16 +458,56 @@ that bounds or searches that pool takes its masks from
 other.** The standing note says arguments that a quantity carries across
 surfaces lose. This one argued it breaks, and lost on the direction.
 
+**`PLAN_RANKING.md` closed on 2026-10-17: the ranking of the queues, asked of
+the model.** Five signed rows adjudicated, two held and three refuted, and one
+reported. Sergi signed §0 on 2026-10-17, before any figure it governs existed.
+It asked the model, with reasoning off, for the one order between the eight
+queues that decides which wins a contested ticket. The question named the
+queues and nothing else, in permuted presentations, and every answer was scored
+as a lookup over rung 1's rules. The record is
+`results_ranking/FINDINGS_RANKING.md`, and `STATUS.md` indexes its figures.
+**Stages A and C are free and reproduce from the committed records. Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same answers back, so a paid session does not start without Sergi asking for
+it. Every writer in `ranking/` refuses while the plan carries a blank signature
+line, and the gate reads `PLAN_RANKING.md` and no other plan. `rung3/`, `rung2/`
+and `blind/` are called by it and not edited. The first command is blocking and
+writes nothing:
+
+    python3 -m ranking.ask --dry-run                    # M-g1..M-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m ranking.sample          # Stage A, free
+    PYTHONHASHSEED=0 python3 -m ranking.score           # Stage C, free, from the sessions
+    .venv/bin/python -m ranking.ask --session smoke     # Stage B: spends — only if asked
+    .venv/bin/python -m ranking.ask --session session   # then the session, never side by side
+
+**Asked for an order, the model gave a priority.** The question said the
+earlier queue wins a contested ticket. Every answer explained itself by
+criticality, and as an arbitration order that order lost to a ranking picked
+blind, on the corpus. A plan that asks a model for an order should show it the
+order being applied. **And what it states is not what it does.** Its own
+pairwise answers follow another order, and its statement contradicts that order
+on the pairs those answers decide most one-sidedly. **Its §0 declared a
+published rate unseen, because the drafter had read the index that cited a
+section and not the section.** That section had given one ranking's figure to
+another, and Stage A found it. Read the record a reference comes from before
+declaring what is unseen. **And rung 2's pairwise judge does not turn reasoning
+off**: a paid run of `rung2/pair_judgement.py` today would spend its answer's
+budget reasoning. That is why this plan's client sends `PLAN_REUSE.md`'s
+setting.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
-`authorship/protocol.py` and `rung2/pair_judgement.py` without changing a
-request. Every paid writer but rung 1's stores each question's attempts as
+`authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17
+the one `ranking/ask.py` builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
 its response**, so read the smoke run for it before the sessions. If it comes
 back empty, the generation id is the documented route to the same fact, for as
-long as OpenRouter keeps it.
+long as OpenRouter keeps it. **It came back in `PLAN_RANKING.md`'s runs, the
+first to keep it, and not as one provider**: one model name was served by more
+than one provider inside a session. A plan that reads drift across calls should
+read it per provider.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
@@ -542,7 +583,8 @@ call, saying what would be lost. The escape hatches are `--out` and
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
 and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
 2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
-2026-10-10, `blind/run.py`, and since 2026-10-14, `screen/ask.py`.
+2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, and since
+2026-10-17, `ranking/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

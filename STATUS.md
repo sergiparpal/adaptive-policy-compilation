@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 17, 2026. **Not a history** — that is the four
+What is known, as of October 18, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -14,8 +14,9 @@ What is known, as of October 17, 2026. **Not a history** — that is the four
 [`results_authorship/FINDINGS_AUTHORSHIP.md`](results_authorship/FINDINGS_AUTHORSHIP.md),
 [`results_overlap/FINDINGS_OVERLAP.md`](results_overlap/FINDINGS_OVERLAP.md),
 [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
-[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md) and
-[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
+[`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
+[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md) and
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -42,7 +43,9 @@ beyond the security keyword, with the rule drafted blind, in `PLAN_BLIND.md`**:
 six more, closed on 2026-10-12 — plus **what the screen of compiled rules does to
 the model, in `PLAN_SCREEN.md`**: five more, closed on 2026-10-15 — plus **how
 much of the residue under rung 3's coverage bound is slack, in
-`PLAN_BOUND.md`**: five more, closed on 2026-10-17.
+`PLAN_BOUND.md`**: five more, closed on 2026-10-17 — plus **the ranking of the
+queues, asked of the model, in `PLAN_RANKING.md`**: six more, closed the same
+day.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -147,6 +150,15 @@ third recovers 61% of what full supervision buys, on corpus test.
 > one rule. Beyond it the declarations resolve conflicts, and point them the way
 > a coin would wherever a ranking would not already answer.
 > [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md).
+>
+> **[NOTE 2026-10-18] The ranking that pointed those pairs better read a key.**
+> [`PLAN_RANKING.md`](PLAN_RANKING.md) asked the model for its own ranking of the
+> queues and put that ranking in the key's place. On `K-b`'s pairs the median
+> stated ranking reads 0.5496 against the declarations' 0.5460: no worse than
+> them, by a hair (`M-e` holds, thin). On the arrivals it reads below them,
+> which is reported. So *a ranking would already answer* holds for a ranking
+> fitted with a key, and only just for one the model states.
+> [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md).
 
 ---
 
@@ -195,7 +207,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**Eighty-nine rows have been signed before the figures they name existed. This
+**Ninety-five rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -241,18 +253,20 @@ a count behind it.
 | **K** · beyond the keyword, drafted blind (§0 of `PLAN_BLIND.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **V** · the screen (§0 of `PLAN_SCREEN.md`) — *three bands set on a development set* | 5 | 4 | **1** | 0 | 3 | 1 |
 | **H** · the bound (§0 of `PLAN_BOUND.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
-| **total** | **89** | **74** | **30** | **2** | **42** | **13** |
+| **M** · the ranking, asked of the model (§0 of `PLAN_RANKING.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
+| **total** | **95** | **79** | **33** | **2** | **44** | **14** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`. Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`. Hold: `Q-a`, `Q-b`,
+`Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
-`H-a`, `H-b`, `H-c`.
+`H-a`, `H-b`, `H-c`, `M-a`, `M-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`.
+`K-f`, `V-e`, `H-e`, `M-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -275,16 +289,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 30 of 74 = **40.5%**
-refuted; without them, 28 of 68 = **41.2%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 33 of 79 = **41.8%**
+refuted; without them, 31 of 73 = **42.5%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.7 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 30 of 67 = **44.8%** and 28
-of 61 = **45.9%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 33 of 72 = **45.8%** and 31
+of 66 = **47.0%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -353,6 +367,12 @@ of 61 = **45.9%**, which is the reading the calibration note should take.
 > One was reported. None of its bands was set on a development set. The table,
 > the named lists, the count in the heading and the four ratios moved together;
 > the gap between the first two is now 0.7 points.
+>
+> **[NOTE 2026-10-18] Recomputed with the `M` thread, in the same commit as its
+> row.** Six rows were signed and five adjudicated: three refuted and two held.
+> One was reported. None of its bands was set on a development set. The table,
+> the named lists, the count in the heading and the four ratios moved together;
+> the gap between the first two is still 0.7 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -579,6 +599,24 @@ least.
   fitted would close more than the space, and they closed less.
 
 `H-e` is reported.
+
+**The `M` rows ask what the model states when asked to rank the queues, and the
+drafter got four of five verdicts.** Sergi signed §0 of `PLAN_RANKING.md` on
+2026-10-17, before any of its figures existed, and a gate refuses every writer
+otherwise. The drafter expected three holds and two refutations, and trusted
+`M-e` most and `M-d` least. Every row is read on the median of 24 valid asks.
+
+- **`M-a` held**: every answer was a valid total order, and the presentation
+  slot moved it by 0.0271 against a line of 0.05.
+- **`M-b` was refuted, the one verdict the drafter missed.** The stated ranking
+  scores 0.3367 on the hybrid pool at corpus test split 0, against a line of
+  0.4632. §0 had warned that what the drafter had seen weakened this row.
+- **`M-c` was refuted**, by 0.1457 rather than the thin margin expected.
+- **`M-d` was refuted**, at −0.1724. The stated ranking predicts 935 of the
+  model's 1,479 pairwise answers, and Stage C's ranking 1,190.
+- **`M-e` held, thinly**, at 0.5496 against 0.5460.
+
+`M-f` is reported.
 
 **The only earlier mention of a count does not reconcile with any of this.** The
 note inside the D entry says *two of the ten rows signed before today* landed in a
@@ -901,6 +939,14 @@ produced over the *hidden* policy's pairs, transferred unchanged, scores
 [`queue_hierarchy_floor.json`](results3/queue_hierarchy_floor.json)). A hierarchy
 picked *blind* is worth 0.3670, below the floor — knowing which ranking to use is
 the whole content of the baseline, and Stage C is where that knowledge came from.
+
+> **[NOTE 2026-10-18] Neither ranking the model gives reaches it.** On the same
+> cell the model's revealed ranking, Copeland over its 1,479 pairwise answers,
+> scores 0.4693, and the ranking it states when asked scores 0.3367, below the
+> blind level. Stage C's knowledge came from the key, and nothing the model
+> states or does supplies it
+> ([`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md);
+> `FINDINGS3.md` §14's erratum).
 
 **It is strong exactly where P-d measures and nowhere else.** On the `puro` pool
 over the corpus the same family is *worse* than arrival order, 0.4291 against
@@ -1464,6 +1510,38 @@ So the cost of compiling that `F-c` found nowhere in the rules' own decisions is
 in what showing them does to the model's next answer. Its sign belongs to the
 base: the same deference to a base right more often than not would pay.
 
+**The ranking of the queues, asked of the model: it states a priority order, and
+as an arbitration order that is worth less than a blind draw.**
+`PLAN_RANKING.md` asked the model, 24 times, for the one order between the
+eight queues that decides which wins when two rules match a ticket and send it to
+different queues. Each ask named the queues and nothing else, in twelve
+presentation orders. Every answer was scored as a lookup over rung 1's 577 rules,
+on the hybrid pool at corpus test split 0, from
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md):
+
+- **It states a priority order**, the same one 14 times in 24:
+  `SECURITY_INCIDENT` first and `SELF_SERVICE_DEFLECT` last in all 24, and the
+  technical tiers in escalation order above the specialist queues. Every one of
+  its 24 reasons names a priority. The slot barely moves it (`M-a` holds).
+- **As an arbitration order it wins 335 cases of 995**, 0.3367: below arrival
+  order's 431 and below a ranking picked blind, at the 0.36 percentile of the
+  40,320 (`M-b` and `M-c` refuted). Over the space it sits at the 0.89
+  percentile.
+- **What it states is not what it does** (`M-d` refuted). It predicts 935 of
+  the model's own 1,479 pairwise answers, where Stage C's ranking predicts 1,190
+  and the model's revealed ranking 1,194. Pairwise the model named
+  `BILLING_SPECIALIST` over `T1_GENERAL` 167 times to 13; stated, it ranks
+  `T1_GENERAL` above it in 22 of 24 asks.
+- **On `K-b`'s pairs it points no worse than the declarations**, 0.5496 against
+  0.5460 (`M-e` holds, thin), and on the arrivals worse.
+- **The revealed ranking had never been scored as a lookup**: 0.4693. That is
+  between the stated ranking and Stage C's, and below the 1,600-call compiled
+  order's 0.4804. `FINDINGS3.md` §14 had given it Stage C's 0.4824.
+
+So a free question does not buy the free baseline. The model's competence at
+arbitrating queues is in its pairwise answers, and the ranking it states about
+them is a different object.
+
 ---
 
 ## What was withdrawn, and why
@@ -1566,6 +1644,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    its declarations carry no direction a ranking lacks. The two missing classes
    are untouched: no declaration changes which queue the model writes.
    [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md).
+   **[NOTE 2026-10-18] The ranking those declarations lose to read a key.** Asked
+   for its own ranking, the model states a priority order that points `K-b`'s
+   pairs no worse than its declarations, by a hair (`M-e` holds, thin). As an
+   arbitration order it loses to a blind draw on the corpus (`M-b`, `M-c`
+   refuted). *A direction a ranking lacks* is measured against the key's ranking,
+   and the model holds no ranking that good.
+   [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
