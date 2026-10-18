@@ -1,5 +1,19 @@
 # PLAN_RANKING — the ranking of the queues, asked of the model
 
+> **[CLOSED 2026-10-17] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-17, before any figure of the plan existed. All five rows were
+> adjudicated the same day, on the median of 24 valid asks. **`M-a` holds;
+> `M-b`, `M-c` and `M-d` are refuted; `M-e` holds, thinly.** `M-f` is reported.
+> **The figures are owned by
+> [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-17. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-17, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
