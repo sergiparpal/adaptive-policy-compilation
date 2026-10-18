@@ -1,0 +1,913 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-18T17:26:46Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "757598636bfef23e76237e710c70226d016f3081",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "329454f4fbfef552",
+    "split_seed": 17,
+    "folds": 5,
+    "fold_seed": 17
+  },
+  "what": "the three readings PLAN_STUDENTS.md left open: what the ONCALL_ESCALATION leaves cost, the train half on the reach's partition, and what the PLAN_REUSE.md trees are",
+  "plan": "PLAN_STUDENTS.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_STUDENTS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_STUDENTS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for on 2026-10-18, after PLAN_STUDENTS.md's stage. The expectation in the module's docstring was written and committed before the first run. Not a signed row; no verdict moves.",
+  "source": {
+    "record": "results_students/score.json",
+    "students": "refitted by students/score.py's read_students"
+  },
+  "surface": "corpus test split 0, 995 cases, and the exhaustive space, 134,400 points; every count against the truth",
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the refitted students score what score.json says, and rung1/all's tree writes its rules",
+      "mismatches": [],
+      "rules_equal": true,
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "arrival and its reverse are the record's",
+      "space": [
+        42310,
+        76180
+      ],
+      "test": [
+        519,
+        173,
+        346
+      ],
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the two leaves' points are what the policy forces, derived before the run",
+      "measured": {
+        "L015": {
+          "T2_TECHNICAL": 5040,
+          "T3_ENGINEERING": 3360,
+          "SECURITY_INCIDENT": 13440,
+          "ONCALL_ESCALATION": 5040
+        },
+        "L024": {
+          "T2_TECHNICAL": 840,
+          "ONCALL_ESCALATION": 840
+        }
+      },
+      "derived": {
+        "L015": {
+          "SECURITY_INCIDENT": 13440,
+          "ONCALL_ESCALATION": 5040,
+          "T3_ENGINEERING": 3360,
+          "T2_TECHNICAL": 5040
+        },
+        "L024": {
+          "ONCALL_ESCALATION": 840,
+          "T2_TECHNICAL": 840
+        }
+      },
+      "passes": true
+    }
+  ],
+  "oncall_leaves": {
+    "leaves": [
+      {
+        "rule_id": "L015",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "product",
+            "op": "neq",
+            "value": "billing"
+          }
+        ],
+        "action": "ONCALL_ESCALATION",
+        "node": 181,
+        "training_labels": 8,
+        "training_right": 5
+      },
+      {
+        "rule_id": "L024",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": false
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "action": "ONCALL_ESCALATION",
+        "node": 387,
+        "training_labels": 2,
+        "training_right": 2
+      }
+    ],
+    "test": {
+      "both": {
+        "cases": 45,
+        "by_queue": {
+          "SECURITY_INCIDENT": 2,
+          "T2_TECHNICAL": 26,
+          "T3_ENGINEERING": 14,
+          "ONCALL_ESCALATION": 3
+        },
+        "tree_right": 3,
+        "arrival_right": 20,
+        "reversed_right": 21
+      },
+      "L015": {
+        "cases": 41,
+        "by_queue": {
+          "SECURITY_INCIDENT": 2,
+          "T2_TECHNICAL": 22,
+          "T3_ENGINEERING": 14,
+          "ONCALL_ESCALATION": 3
+        },
+        "tree_right": 3,
+        "arrival_right": 20,
+        "reversed_right": 21
+      },
+      "L024": {
+        "cases": 4,
+        "by_queue": {
+          "T2_TECHNICAL": 4
+        },
+        "tree_right": 0,
+        "arrival_right": 0,
+        "reversed_right": 0
+      }
+    },
+    "space": {
+      "both": {
+        "points": 28560,
+        "by_queue": {
+          "T2_TECHNICAL": 5880,
+          "T3_ENGINEERING": 3360,
+          "SECURITY_INCIDENT": 13440,
+          "ONCALL_ESCALATION": 5880
+        },
+        "tree_right": 5880,
+        "arrival_right": 11340,
+        "reversed_right": 18060
+      },
+      "L015": {
+        "points": 26880,
+        "by_queue": {
+          "T2_TECHNICAL": 5040,
+          "T3_ENGINEERING": 3360,
+          "SECURITY_INCIDENT": 13440,
+          "ONCALL_ESCALATION": 5040
+        },
+        "tree_right": 5040,
+        "arrival_right": 11340,
+        "reversed_right": 18060
+      },
+      "L024": {
+        "points": 1680,
+        "by_queue": {
+          "T2_TECHNICAL": 840,
+          "ONCALL_ESCALATION": 840
+        },
+        "tree_right": 840,
+        "arrival_right": 0,
+        "reversed_right": 0
+      }
+    },
+    "space_oncall_points": 6300
+  },
+  "reach_of_the_train_half": {
+    "train_half": {
+      "tree": {
+        "reached": {
+          "right": 164,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 336,
+          "of": 648
+        },
+        "right": 500
+      },
+      "logistic": {
+        "reached": {
+          "right": 145,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 313,
+          "of": 648
+        },
+        "right": 458
+      },
+      "cache": {
+        "reached": {
+          "right": 137,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 258,
+          "of": 648
+        },
+        "right": 395
+      }
+    },
+    "all_answers": {
+      "tree": {
+        "reached": {
+          "right": 146,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 324,
+          "of": 648
+        },
+        "right": 470
+      },
+      "logistic": {
+        "reached": {
+          "right": 146,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 320,
+          "of": 648
+        },
+        "right": 466
+      },
+      "cache": {
+        "reached": {
+          "right": 154,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 280,
+          "of": 648
+        },
+        "right": 434
+      }
+    },
+    "arrival": {
+      "reached": {
+        "right": 173,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 346,
+        "of": 648
+      },
+      "right": 519
+    }
+  },
+  "reuse_trees": {
+    "trees": {
+      "reuse1/all": {
+        "leaves": 6,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 31,
+            "training_right": 29
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 3,
+            "training_labels": 17,
+            "training_right": 17
+          },
+          {
+            "rule_id": "L003",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "node": 5,
+            "training_labels": 3,
+            "training_right": 3
+          },
+          {
+            "rule_id": "L004",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "free"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "node": 7,
+            "training_labels": 2,
+            "training_right": 2
+          },
+          {
+            "rule_id": "L005",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "node": 9,
+            "training_labels": 1,
+            "training_right": 1
+          },
+          {
+            "rule_id": "L006",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "pro",
+                  "business"
+                ]
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 10,
+            "training_labels": 8,
+            "training_right": 8
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "T2_TECHNICAL": 57120,
+          "SELF_SERVICE_DEFLECT": 4200,
+          "BILLING_SPECIALIST": 2520,
+          "T1_GENERAL": 3360
+        }
+      },
+      "reuse1/train": {
+        "leaves": 2,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 18,
+            "training_right": 16
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 2,
+            "training_labels": 15,
+            "training_right": 12
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "T2_TECHNICAL": 67200
+        }
+      },
+      "reuse2/all": {
+        "leaves": 3,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 7,
+            "training_right": 7
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "node": 3,
+            "training_labels": 4,
+            "training_right": 3
+          },
+          {
+            "rule_id": "L003",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 4,
+            "training_labels": 20,
+            "training_right": 17
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "BILLING_SPECIALIST": 13440,
+          "T2_TECHNICAL": 53760
+        }
+      },
+      "reuse2/train": {
+        "leaves": 4,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 3,
+            "training_right": 3
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "node": 3,
+            "training_labels": 1,
+            "training_right": 1
+          },
+          {
+            "rule_id": "L003",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "node": 5,
+            "training_labels": 1,
+            "training_right": 1
+          },
+          {
+            "rule_id": "L004",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 6,
+            "training_labels": 7,
+            "training_right": 7
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "T1_GENERAL": 16800,
+          "BILLING_SPECIALIST": 10080,
+          "T2_TECHNICAL": 40320
+        }
+      },
+      "reuse3/all": {
+        "leaves": 3,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 10,
+            "training_right": 10
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "node": 3,
+            "training_labels": 6,
+            "training_right": 5
+          },
+          {
+            "rule_id": "L003",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 4,
+            "training_labels": 26,
+            "training_right": 23
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "BILLING_SPECIALIST": 13440,
+          "T2_TECHNICAL": 53760
+        }
+      },
+      "reuse3/train": {
+        "leaves": 3,
+        "rules": [
+          {
+            "rule_id": "L001",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "node": 1,
+            "training_labels": 4,
+            "training_right": 4
+          },
+          {
+            "rule_id": "L002",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "node": 3,
+            "training_labels": 3,
+            "training_right": 2
+          },
+          {
+            "rule_id": "L003",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "neq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "node": 4,
+            "training_labels": 14,
+            "training_right": 12
+          }
+        ],
+        "predicts_over_the_space": {
+          "SECURITY_INCIDENT": 67200,
+          "BILLING_SPECIALIST": 13440,
+          "T2_TECHNICAL": 53760
+        }
+      }
+    },
+    "pairs": [
+      {
+        "a": "reuse1/all",
+        "b": "reuse1/train",
+        "alike": false
+      },
+      {
+        "a": "reuse1/all",
+        "b": "reuse2/all",
+        "alike": false
+      },
+      {
+        "a": "reuse1/all",
+        "b": "reuse2/train",
+        "alike": false
+      },
+      {
+        "a": "reuse1/all",
+        "b": "reuse3/all",
+        "alike": false
+      },
+      {
+        "a": "reuse1/all",
+        "b": "reuse3/train",
+        "alike": false
+      },
+      {
+        "a": "reuse1/train",
+        "b": "reuse2/all",
+        "alike": false
+      },
+      {
+        "a": "reuse1/train",
+        "b": "reuse2/train",
+        "alike": false
+      },
+      {
+        "a": "reuse1/train",
+        "b": "reuse3/all",
+        "alike": false
+      },
+      {
+        "a": "reuse1/train",
+        "b": "reuse3/train",
+        "alike": false
+      },
+      {
+        "a": "reuse2/all",
+        "b": "reuse2/train",
+        "alike": false
+      },
+      {
+        "a": "reuse2/all",
+        "b": "reuse3/all",
+        "alike": true
+      },
+      {
+        "a": "reuse2/all",
+        "b": "reuse3/train",
+        "alike": true
+      },
+      {
+        "a": "reuse2/train",
+        "b": "reuse3/all",
+        "alike": false
+      },
+      {
+        "a": "reuse2/train",
+        "b": "reuse3/train",
+        "alike": false
+      },
+      {
+        "a": "reuse3/all",
+        "b": "reuse3/train",
+        "alike": true
+      }
+    ]
+  },
+  "expectation": [
+    {
+      "clause": "A1",
+      "reading": 45,
+      "holds": true
+    },
+    {
+      "clause": "A2",
+      "reading": [
+        40,
+        45
+      ],
+      "holds": true
+    },
+    {
+      "clause": "A3",
+      "reading": [
+        20,
+        3
+      ],
+      "holds": true
+    },
+    {
+      "clause": "A4",
+      "reading": [
+        11340,
+        5880
+      ],
+      "holds": true
+    },
+    {
+      "clause": "B1",
+      "reading": [
+        164,
+        146
+      ],
+      "holds": true
+    },
+    {
+      "clause": "B2",
+      "reading": 164,
+      "holds": true
+    },
+    {
+      "clause": "B3",
+      "reading": [
+        137,
+        154
+      ],
+      "holds": true
+    },
+    {
+      "clause": "C1",
+      "reading": true,
+      "holds": true
+    },
+    {
+      "clause": "C2",
+      "reading": true,
+      "holds": true
+    },
+    {
+      "clause": "C3",
+      "reading": 0,
+      "holds": true
+    }
+  ],
+  "seconds": 28.1
+}
