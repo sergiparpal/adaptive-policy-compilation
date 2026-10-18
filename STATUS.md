@@ -1472,6 +1472,8 @@ it, and the 1,929 corpus cases without it. The figures are from
   115 in run 3, where the older order was right. Beyond the keyword both ages sit inside a coin's draws, the Stage C
   ranking beats 96% of them, and the oracle every one. Under rung 2's engine the
   same trade in run 1 is right on 570 more points and wrong on 1,255 more.
+  **[NOTE 2026-10-18]** That ranking read the key. The model's own rankings, put
+  in its place, choose as a draw does: the M section below, POST-RUN.
 
 On the median the loop's end to end is 0.5075 under v2b, and the proposer chose
 the right queue 0.5521 of the time, the highest of the four protocols, with the
@@ -1537,6 +1539,17 @@ on the hybrid pool at corpus test split 0, from
 - **The revealed ranking had never been scored as a lookup**: 0.4693. That is
   between the stated ranking and Stage C's, and below the 1,600-call compiled
   order's 0.4804. `FINDINGS3.md` §14 had given it Stage C's 0.4824.
+- **Neither ranking the model gives chooses which edge of a cycle yields as the
+  key's does, read POST-RUN.** Each was put in the Stage C ranking's place in
+  `blind/yielding.py`'s ranking arm, on the three bases with a cycle. Read
+  through the closure over the space beyond the keyword:
+  - the stated ranking is right on 70,005 points and the revealed one on
+    69,435, against the Stage C ranking's 70,675 and arrival's 69,820;
+  - 45.5% and 80% of a coin's draws do at least as well, against 4% for the
+    Stage C ranking.
+
+  Nearly every cycle is on one queue pair. The revealed ranking puts
+  self-service above `T2_TECHNICAL` there, on 86 pairwise answers to 82.
 
 So a free question does not buy the free baseline. The model's competence at
 arbitrating queues is in its pairwise answers, and the ranking it states about

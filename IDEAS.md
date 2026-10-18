@@ -243,11 +243,24 @@ leaves:
   model's own pairwise answers about the learned base clears `P-d`'s threshold
   on the signed cell, which the ranking it states does not. Stage A scored it as
   a lookup, and nothing else has used it. Two uses are free on the records:
-  - `blind/yielding.py`'s rule for which edge of a cycle yields, with it in
-    Stage C's place;
+  - ~~`blind/yielding.py`'s rule for which edge of a cycle yields, with it in
+    Stage C's place.~~ **Read POST-RUN on 2026-10-18** (`FINDINGS_RANKING.md`,
+    *Which edge of a cycle yields, under the model's rankings*), with the
+    stated ranking beside it. Beyond the keyword both choose as a coin's draws
+    do, and the revealed one worse than the stated one. Nearly every cycle is on
+    one queue pair, self-service against `T2_TECHNICAL`, and the revealed
+    ranking puts self-service first on a near-even split of its pairwise
+    answers. What it leaves:
+    - **Whether that split is the model's.** Asking that pair again, in both
+      orders, would say whether the departure survives another sample. Calls.
+    - **Bases whose cycles fall on other pairs.** That is the BLIND section's
+      item on the ranking as the rule for which edge yields, below: new runs of
+      the loop, and calls.
   - `rung3/queue_hierarchy_floor.py`'s control, with it beside `stage_c`.
 
-  The first is the open end of the erratum of 2026-10-16, above.
+  The first was the open end of the erratum of 2026-10-16, in the BLIND section
+  below, and it closes it: on these bases no ranking the model gives stands in
+  for the key's as that rule.
 - **The stated order against the done one, pair by pair.** On the queue pairs
   its pairwise answers decide most one-sidedly, the stated order says the
   opposite: `BILLING_SPECIALIST` over `T1_GENERAL` is the clearest. Whether
@@ -432,6 +445,13 @@ What that leaves:
         Whether either serves as the rule for which edge yields was not
         measured: that is `blind/yielding.py` with another ranking, free on
         the records (*What `PLAN_RANKING.md` opens*, below).
+        **[NOTE 2026-10-18, later] Measured POST-RUN: neither serves.** Put in
+        the Stage C ranking's place, both choose which edge yields as a coin's
+        draws do, beyond the keyword. The stated ranking chooses about as a
+        median draw does. Most draws do at least as well as the revealed one,
+        and that is one queue pair: it puts self-service above `T2_TECHNICAL`,
+        on a near-even split of its pairwise answers. `FINDINGS_RANKING.md`,
+        *Which edge of a cycle yields, under the model's rankings*.
       - **Which edge yields also decides what rung 2's engine resolves.** The
         ranking and the oracle leave more CONFLICT than arrival, and fewer
         silent errors. An engine that read the closure would separate the two.

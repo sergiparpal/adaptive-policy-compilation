@@ -452,6 +452,7 @@ paid session does not start without Sergi asking for it.
 python3 -m ranking.ask --dry-run                  # M-g1..M-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m ranking.sample        # Stage A · the presentations, the revealed rankings
 PYTHONHASHSEED=0 python3 -m ranking.score         # Stage C · M-a to M-e, and M-f
+PYTHONHASHSEED=0 python3 -m ranking.yielding      # POST-RUN · which edge of a cycle yields, under its rankings
 .venv/bin/python -m ranking.ask --session smoke   # Stage B · spends · only on Sergi's say
 .venv/bin/python -m ranking.ask --session session # then the session, never in parallel
 ```
@@ -741,6 +742,7 @@ What it covers, and why those things:
 | `test_screen.py` | the `PLAN_SCREEN.md` instrument: §10's constants and §0's lines, each verdict at its edge, the gate counting every signature line, the populations and the tickets counted by their attributes on the real records, every prompt against the digests `PLAN_FIDELITY.md` recorded and a changed screen moving one, `V-g1` giving back `PLAN_FIDELITY.md`'s Stage C to 1e-12 and catching a tampered record, the wrapped client sending every request unchanged and keeping each attempt's `finish_reason`, §0's rule for a run without a value and for the median by hand, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over the double's records with the held-out labels masked. **No figure of the plan** |
 | `test_bound.py` | the `PLAN_BOUND.md` instrument: §8's constants, the finder's two and §0's lines, each verdict at its edge, the gate counting every signature line, the argument by hand — a two-case cycle, a ring of three, a cycle by containment and the same shape without it, copies merged, and the hybrid pool's counterexample to a subsumption edge —, `verify` refusing each way a certificate can be wrong and reaching nothing of the finder's, validity against the exact optimum, the packing stopping only when no cycle is left, the same certificate under three values of `PYTHONHASHSEED`, `H-g1` to `H-g3` on the real records with a tampered bound caught, the dry run never packing a cycle on rung 1's rules, the stage on synthetic instances worked by hand with its two refusals, and the writer refusing unsigned before it measures or writes. **No figure of the plan** |
 | `test_ranking.py` | the `PLAN_RANKING.md` instrument: §10's constants with the client imported from rung 2's judge and reasoning off, the three lines read from their records and moving with them, the gate counting every signature line, the twelve presentations and a changed order moving a digest, an injected ticket, rule, queue or omission caught, validity at every edge §0 names, the instrument's arithmetic by hand, one cell of `M-g1` and all of `M-g3` on the real records with a tampered row caught, the dry run computing no rate but the published one and scoring no ranking, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over asks that state Stage C's own ranking. **No figure of the plan** |
+| `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
@@ -1377,7 +1379,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             M-g1..M-g4 · blocking, run before any write
 │   ├── sample.py            Stage A · the presentations, the free readout
 │   ├── ask.py               Stage B · the calls, each attempt kept · spends
-│   └── score.py             Stage C · M-a to M-e and M-f, gated on PLAN_RANKING.md
+│   ├── score.py             Stage C · M-a to M-e and M-f, gated on PLAN_RANKING.md
+│   └── yielding.py          POST-RUN · which edge of a cycle yields, under its rankings
 │
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines

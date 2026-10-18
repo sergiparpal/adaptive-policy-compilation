@@ -477,6 +477,7 @@ writes nothing:
     python3 -m ranking.ask --dry-run                    # M-g1..M-g4; must pass first
     PYTHONHASHSEED=0 python3 -m ranking.sample          # Stage A, free
     PYTHONHASHSEED=0 python3 -m ranking.score           # Stage C, free, from the sessions
+    PYTHONHASHSEED=0 python3 -m ranking.yielding        # POST-RUN: which edge yields, under its rankings
     .venv/bin/python -m ranking.ask --session smoke     # Stage B: spends — only if asked
     .venv/bin/python -m ranking.ask --session session   # then the session, never side by side
 
