@@ -1,0 +1,4137 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-18T16:11:06Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "e151c6e75085aedc8b0378f8c50e2bf387a2f28f",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "3df3bbef24faaddc",
+    "split_seed": 17,
+    "folds": 5,
+    "fold_seed": 17
+  },
+  "what": "three students trained on the proposer's answers, against the rules it wrote from the same answers",
+  "plan": "PLAN_STUDENTS.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_STUDENTS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_STUDENTS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "PRE-REGISTERED: \u00a70 signed before any figure here existed",
+  "surface": "corpus test split 0, 995 cases, and the exhaustive space, 134,400 points; every count against the truth; an engine's CONFLICT or IMPASSE is not right; a student always answers",
+  "gates": {
+    "T-g1": {
+      "what": "the material and the comparators are the records'; the suite green",
+      "material": {
+        "rung1": {
+          "answers": 579,
+          "right": 245,
+          "train": 286,
+          "test": 293,
+          "reach": 347
+        },
+        "reuse1": {
+          "answers": 62,
+          "right": 30,
+          "train": 33,
+          "test": 29,
+          "reach": 32
+        },
+        "reuse2": {
+          "answers": 31,
+          "right": 15,
+          "train": 12,
+          "test": 19,
+          "reach": 22
+        },
+        "reuse3": {
+          "answers": 42,
+          "right": 23,
+          "train": 21,
+          "test": 21,
+          "reach": 25
+        }
+      },
+      "published": {
+        "arrival_test": 0.521608,
+        "arrival_space": 0.314807,
+        "reversed_test": 0.546734,
+        "reversed_space": 0.566815,
+        "specificity_test": 0.1829,
+        "searched": {
+          "ls_train": 0.8786,
+          "ls_test": 0.8472,
+          "ls_space": 0.6033
+        }
+      },
+      "reproduced": {
+        "arrival_test": 519,
+        "arrival_space": 42310,
+        "reversed_test": 544,
+        "reversed_space": 76180,
+        "specificity_test": 0.1829145728643216,
+        "searched": {
+          "ls_train": 0.8786,
+          "ls_test": 0.8472,
+          "ls_space": 0.6033
+        }
+      },
+      "reuse_bases": {
+        "reuse1": {
+          "rules": 62,
+          "rebuild_mismatches": 0,
+          "region_mismatches": 0
+        },
+        "reuse2": {
+          "rules": 31,
+          "rebuild_mismatches": 0,
+          "region_mismatches": 0
+        },
+        "reuse3": {
+          "rules": 42,
+          "rebuild_mismatches": 0,
+          "region_mismatches": 0
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 1821,
+        "result": "OK (skipped=4)",
+        "seconds": 145.2,
+        "passes": true
+      },
+      "problems": [],
+      "passes": true
+    },
+    "T-g2": {
+      "what": "each student gives the answer where it is known",
+      "tree_on_the_space": {
+        "leaves": 59,
+        "full_leaves": 59,
+        "subtrees": 24,
+        "chosen_k": 0,
+        "alpha": "0",
+        "cv_errors": [
+          0,
+          20,
+          90,
+          220,
+          1615,
+          2620,
+          3949,
+          4180,
+          6755,
+          7230,
+          7230,
+          8910,
+          10990,
+          12005,
+          24600,
+          24600,
+          24600,
+          24600,
+          38280,
+          55080,
+          55080,
+          55080,
+          64080,
+          84000
+        ],
+        "right": 134400,
+        "of": 134400,
+        "engine_disagreements": 0
+      },
+      "tree_rules": 59,
+      "cache_rows_reproduced": {
+        "0": true,
+        "1": true,
+        "2": true
+      },
+      "regression": {
+        "finite_difference_worst": 4.598746493600336e-08,
+        "synthetic_fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "ONCALL_ESCALATION",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.1,
+          "iterations": 16,
+          "grad_max": 6.82368425089161e-08,
+          "converged": true,
+          "cv_loss": [
+            3.5236303477526514,
+            2.992818655193119,
+            2.6139173779951776,
+            2.3308894572578462,
+            2.125373207821078,
+            2.001617763997067,
+            1.9517573766141376,
+            1.9633628562828964,
+            2.0087871585004167,
+            2.0486959945017453,
+            2.068445542559793
+          ],
+          "fold_grad_max": 9.972554990485852e-08,
+          "fold_fits_converged": true
+        },
+        "deterministic": true
+      },
+      "mask_route_disagreements": {
+        "tree": 0,
+        "cache": 0,
+        "logistic": 0
+      },
+      "problems": [],
+      "passes": true
+    },
+    "T-g3": {
+      "what": "nothing a student reads holds the truth",
+      "sets": {
+        "rung1/all": {
+          "examples": 579,
+          "differ_from_truth": 334,
+          "marked_wrong": 334
+        },
+        "rung1/train": {
+          "examples": 286,
+          "differ_from_truth": 165,
+          "marked_wrong": 165
+        },
+        "reuse1/all": {
+          "examples": 62,
+          "differ_from_truth": 32,
+          "marked_wrong": 32
+        },
+        "reuse1/train": {
+          "examples": 33,
+          "differ_from_truth": 20,
+          "marked_wrong": 20
+        },
+        "reuse2/all": {
+          "examples": 31,
+          "differ_from_truth": 16,
+          "marked_wrong": 16
+        },
+        "reuse2/train": {
+          "examples": 12,
+          "differ_from_truth": 8,
+          "marked_wrong": 8
+        },
+        "reuse3/all": {
+          "examples": 42,
+          "differ_from_truth": 19,
+          "marked_wrong": 19
+        },
+        "reuse3/train": {
+          "examples": 21,
+          "differ_from_truth": 9,
+          "marked_wrong": 9
+        }
+      },
+      "oracle_imports": [],
+      "problems": [],
+      "passes": true
+    },
+    "T-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_STUDENTS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_STUDENTS.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "rows": {
+    "T-a": {
+      "row": "T-a",
+      "statistic": "the tree's right decisions, rung1/all, test split 0",
+      "value": 470,
+      "line": 519,
+      "holds": true,
+      "b": 84,
+      "c": 133,
+      "thin": false
+    },
+    "T-b": {
+      "row": "T-b",
+      "statistic": "the best student's right decisions, rung1/all, test split 0",
+      "best": "tree",
+      "value": 470,
+      "line": 519,
+      "holds": true,
+      "b": 84,
+      "c": 133,
+      "thin": false
+    },
+    "T-c": {
+      "row": "T-c",
+      "statistic": "the tree's right decisions, rung1/all, over the space",
+      "value": 59466,
+      "line": 42310,
+      "holds": true
+    },
+    "T-d": {
+      "row": "T-d",
+      "statistic": "the order searched on the 286 train-half answers, test split 0",
+      "value": 483,
+      "line": 519,
+      "holds": false,
+      "b": 101,
+      "c": 137,
+      "thin": false
+    },
+    "T-e": {
+      "row": "T-e",
+      "statistic": "the median over PLAN_REUSE.md's runs of the tree less the base, test split 0",
+      "value": 1,
+      "line": 0,
+      "holds": false,
+      "per_run": {
+        "reuse1": {
+          "tree": 404,
+          "base": 403,
+          "difference": 1,
+          "b": 10,
+          "c": 9,
+          "thin": true
+        },
+        "reuse2": {
+          "tree": 476,
+          "base": 448,
+          "difference": 28,
+          "b": 141,
+          "c": 113,
+          "thin": true
+        },
+        "reuse3": {
+          "tree": 476,
+          "base": 526,
+          "difference": -50,
+          "b": 28,
+          "c": 78,
+          "thin": false
+        }
+      },
+      "median_run": "reuse1",
+      "thin": true
+    }
+  },
+  "students": {
+    "rung1/all": {
+      "tree": {
+        "right": 470,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 7,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 3,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 146,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 324,
+          "of": 648
+        },
+        "space": {
+          "right": 59466,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 25,
+          "full_leaves": 196,
+          "subtrees": 25,
+          "chosen_k": 13,
+          "alpha": "4/3",
+          "cv_errors": [
+            199,
+            196,
+            194,
+            190,
+            179,
+            179,
+            173,
+            172,
+            171,
+            171,
+            170,
+            170,
+            165,
+            159,
+            161,
+            164,
+            174,
+            176,
+            176,
+            179,
+            181,
+            201,
+            214,
+            231,
+            334
+          ]
+        },
+        "agrees_with_arrival": 673,
+        "against_arrival": {
+          "b": 84,
+          "c": 133,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 466,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 2,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 8,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 146,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 320,
+          "of": 648
+        },
+        "space": {
+          "right": 57987,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "ONCALL_ESCALATION",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.001,
+          "iterations": 130,
+          "grad_max": 8.952696237439018e-08,
+          "converged": true,
+          "cv_loss": [
+            0.8765375226131588,
+            0.7825171942754078,
+            0.7368699480343491,
+            0.7449896965341466,
+            0.8189180978908095,
+            0.9619802362347226,
+            1.1701020954679802,
+            1.4253868026480303,
+            1.6817583747664153,
+            1.8943703134294594,
+            2.01120146407056
+          ],
+          "fold_grad_max": 9.930100573090662e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 708,
+        "against_arrival": {
+          "b": 75,
+          "c": 128,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 434,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 2,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 5,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 154,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 280,
+          "of": 648
+        },
+        "space": {
+          "right": 37101,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 579
+        },
+        "agrees_with_arrival": 610,
+        "against_arrival": {
+          "b": 86,
+          "c": 171,
+          "thin": false
+        }
+      }
+    },
+    "rung1/train": {
+      "tree": {
+        "right": 500,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 44450,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 8,
+          "full_leaves": 100,
+          "subtrees": 17,
+          "chosen_k": 10,
+          "alpha": "7/3",
+          "cv_errors": [
+            100,
+            98,
+            96,
+            91,
+            91,
+            91,
+            90,
+            90,
+            90,
+            86,
+            85,
+            88,
+            101,
+            111,
+            114,
+            116,
+            167
+          ]
+        },
+        "agrees_with_arrival": 725,
+        "against_arrival": {
+          "b": 79,
+          "c": 98,
+          "thin": true
+        }
+      },
+      "logistic": {
+        "right": 458,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 3,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 43787,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "ONCALL_ESCALATION",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.0031622776601683794,
+          "iterations": 81,
+          "grad_max": 7.652201272287384e-08,
+          "converged": true,
+          "cv_loss": [
+            1.2551937798294683,
+            0.984908285714315,
+            0.8291800486031562,
+            0.7765911506442561,
+            0.8171236671725111,
+            0.9502372882887264,
+            1.1639315278239792,
+            1.426721756216477,
+            1.6880544781195772,
+            1.8988604443088328,
+            2.012992833760279
+          ],
+          "fold_grad_max": 9.996126852348033e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 707,
+        "against_arrival": {
+          "b": 67,
+          "c": 128,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 395,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 5,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 30962,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 286
+        },
+        "agrees_with_arrival": 539,
+        "against_arrival": {
+          "b": 97,
+          "c": 221,
+          "thin": false
+        }
+      }
+    },
+    "reuse1/all": {
+      "tree": {
+        "right": 404,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 19,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 385,
+          "of": 963
+        },
+        "space": {
+          "right": 71800,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 6,
+          "full_leaves": 9,
+          "subtrees": 5,
+          "chosen_k": 1,
+          "alpha": "2/3",
+          "cv_errors": [
+            5,
+            4,
+            8,
+            8,
+            37
+          ]
+        },
+        "agrees_with_arrival": 535,
+        "against_arrival": {
+          "b": 92,
+          "c": 207,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 365,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 19,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 346,
+          "of": 963
+        },
+        "space": {
+          "right": 70080,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.0031622776601683794,
+          "iterations": 41,
+          "grad_max": 9.915359623288711e-08,
+          "converged": true,
+          "cv_loss": [
+            0.5325749529842623,
+            0.48808088195575655,
+            0.4550767774234988,
+            0.4406974748362928,
+            0.45788870182819574,
+            0.5261997440390048,
+            0.6611287970320923,
+            0.8734506880872377,
+            1.151044053870632,
+            1.3939221297053814,
+            1.5285356586060155
+          ],
+          "fold_grad_max": 9.980158400743622e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 523,
+        "against_arrival": {
+          "b": 52,
+          "c": 206,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 355,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 9,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 19,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 336,
+          "of": 963
+        },
+        "space": {
+          "right": 57597,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 62
+        },
+        "agrees_with_arrival": 449,
+        "against_arrival": {
+          "b": 79,
+          "c": 243,
+          "thin": false
+        }
+      }
+    },
+    "reuse1/train": {
+      "tree": {
+        "right": 350,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 70320,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 2,
+          "full_leaves": 9,
+          "subtrees": 5,
+          "chosen_k": 3,
+          "alpha": "1",
+          "cv_errors": [
+            8,
+            7,
+            5,
+            5,
+            21
+          ]
+        },
+        "agrees_with_arrival": 515,
+        "against_arrival": {
+          "b": 45,
+          "c": 214,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 344,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 9,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 69123,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.03162277660168379,
+          "iterations": 22,
+          "grad_max": 8.789904939326965e-08,
+          "converged": true,
+          "cv_loss": [
+            1.2658631361331711,
+            1.1378390431952763,
+            1.0192744408768648,
+            0.915529120022184,
+            0.8362496491141701,
+            0.7984486933258097,
+            0.8285037147845744,
+            0.959070966120884,
+            1.1853076728126277,
+            1.4047897029291778,
+            1.5317258689385402
+          ],
+          "fold_grad_max": 9.948987636014292e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 501,
+        "against_arrival": {
+          "b": 44,
+          "c": 219,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 313,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 8,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 55025,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 33
+        },
+        "agrees_with_arrival": 425,
+        "against_arrival": {
+          "b": 69,
+          "c": 275,
+          "thin": false
+        }
+      }
+    },
+    "reuse2/all": {
+      "tree": {
+        "right": 476,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 12,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 464,
+          "of": 973
+        },
+        "space": {
+          "right": 75480,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 3,
+          "full_leaves": 7,
+          "subtrees": 4,
+          "chosen_k": 1,
+          "alpha": "1",
+          "cv_errors": [
+            11,
+            9,
+            10,
+            13
+          ]
+        },
+        "agrees_with_arrival": 712,
+        "against_arrival": {
+          "b": 55,
+          "c": 98,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 378,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 13,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 365,
+          "of": 973
+        },
+        "space": {
+          "right": 69111,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.03162277660168379,
+          "iterations": 26,
+          "grad_max": 5.043111044218673e-08,
+          "converged": true,
+          "cv_loss": [
+            1.364779041297815,
+            1.2504952463472305,
+            1.1485989786305617,
+            1.0643518614890013,
+            1.0065425148990836,
+            0.9895484688664595,
+            1.0297035818190154,
+            1.1262019423083698,
+            1.2649848487841968,
+            1.4243175870353242,
+            1.5359159049274655
+          ],
+          "fold_grad_max": 9.828261272903406e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 554,
+        "against_arrival": {
+          "b": 45,
+          "c": 186,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 346,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 6,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 13,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 333,
+          "of": 973
+        },
+        "space": {
+          "right": 51486,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 31
+        },
+        "agrees_with_arrival": 478,
+        "against_arrival": {
+          "b": 69,
+          "c": 242,
+          "thin": false
+        }
+      }
+    },
+    "reuse2/train": {
+      "tree": {
+        "right": 480,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 75000,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 4,
+          "full_leaves": 4,
+          "subtrees": 3,
+          "chosen_k": 0,
+          "alpha": "0",
+          "cv_errors": [
+            2,
+            4,
+            5
+          ]
+        },
+        "agrees_with_arrival": 666,
+        "against_arrival": {
+          "b": 64,
+          "c": 103,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 348,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 6,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 58985,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT"
+          ],
+          "lambda": 0.31622776601683794,
+          "iterations": 12,
+          "grad_max": 5.373539116448889e-08,
+          "converged": true,
+          "cv_loss": [
+            1.9076192208633007,
+            1.7453592725659044,
+            1.5910725534351393,
+            1.4483038935163102,
+            1.3226256223101405,
+            1.2225583806698357,
+            1.160439445369566,
+            1.1494721418321088,
+            1.1929924164670047,
+            1.272127940240679,
+            1.337949648133584
+          ],
+          "fold_grad_max": 9.943021275599063e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 519,
+        "against_arrival": {
+          "b": 42,
+          "c": 213,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 331,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 6,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 48947,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 12
+        },
+        "agrees_with_arrival": 474,
+        "against_arrival": {
+          "b": 63,
+          "c": 251,
+          "thin": false
+        }
+      }
+    },
+    "reuse3/all": {
+      "tree": {
+        "right": 476,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 13,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 463,
+          "of": 970
+        },
+        "space": {
+          "right": 75480,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 3,
+          "full_leaves": 10,
+          "subtrees": 5,
+          "chosen_k": 2,
+          "alpha": "1",
+          "cv_errors": [
+            9,
+            7,
+            4,
+            12,
+            19
+          ]
+        },
+        "agrees_with_arrival": 712,
+        "against_arrival": {
+          "b": 55,
+          "c": 98,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 468,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 15,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 453,
+          "of": 970
+        },
+        "space": {
+          "right": 74776,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.0031622776601683794,
+          "iterations": 45,
+          "grad_max": 6.461167799951591e-08,
+          "converged": true,
+          "cv_loss": [
+            0.837202336161135,
+            0.757421409235804,
+            0.6945963774334276,
+            0.6573157889848923,
+            0.6611672003933057,
+            0.7301172404180836,
+            0.8736330598733966,
+            1.0575179730715385,
+            1.245696668504422,
+            1.4198839945193724,
+            1.534406963225456
+          ],
+          "fold_grad_max": 9.9080464571028e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 684,
+        "against_arrival": {
+          "b": 65,
+          "c": 116,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 391,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 7,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 15,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 376,
+          "of": 970
+        },
+        "space": {
+          "right": 51175,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 42
+        },
+        "agrees_with_arrival": 482,
+        "against_arrival": {
+          "b": 95,
+          "c": 223,
+          "thin": false
+        }
+      }
+    },
+    "reuse3/train": {
+      "tree": {
+        "right": 476,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 75480,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 3,
+          "full_leaves": 7,
+          "subtrees": 5,
+          "chosen_k": 2,
+          "alpha": "1",
+          "cv_errors": [
+            6,
+            6,
+            6,
+            7,
+            9
+          ]
+        },
+        "agrees_with_arrival": 712,
+        "against_arrival": {
+          "b": 55,
+          "c": 98,
+          "thin": false
+        }
+      },
+      "logistic": {
+        "right": 400,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 5,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 59825,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.03162277660168379,
+          "iterations": 24,
+          "grad_max": 7.512993576135746e-08,
+          "converged": true,
+          "cv_loss": [
+            1.4205900886698584,
+            1.293493235317934,
+            1.1782514950555578,
+            1.0813483959949362,
+            1.013609165544745,
+            0.9926427565114325,
+            1.0394136467623738,
+            1.148730892294773,
+            1.2874511200319265,
+            1.4352031145050708,
+            1.5395730885223065
+          ],
+          "fold_grad_max": 9.958279330307815e-08,
+          "fold_fits_converged": true
+        },
+        "agrees_with_arrival": 593,
+        "against_arrival": {
+          "b": 53,
+          "c": 172,
+          "thin": false
+        }
+      },
+      "cache": {
+        "right": 395,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 5,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 45569,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 21
+        },
+        "agrees_with_arrival": 459,
+        "against_arrival": {
+          "b": 120,
+          "c": 244,
+          "thin": false
+        }
+      }
+    }
+  },
+  "handed_the_truth": {
+    "rung1/all": {
+      "tree": {
+        "right": 954,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 44,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 52,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 3,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 347,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 607,
+          "of": 648
+        },
+        "space": {
+          "right": 72400,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 40,
+          "full_leaves": 40,
+          "subtrees": 18,
+          "chosen_k": 0,
+          "alpha": "0",
+          "cv_errors": [
+            24,
+            26,
+            40,
+            40,
+            40,
+            48,
+            55,
+            67,
+            69,
+            78,
+            88,
+            159,
+            167,
+            178,
+            219,
+            223,
+            379,
+            379
+          ]
+        }
+      },
+      "logistic": {
+        "right": 918,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 43,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 23,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 3,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 347,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 571,
+          "of": 648
+        },
+        "space": {
+          "right": 66150,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.0001,
+          "iterations": 147,
+          "grad_max": 8.819575713857038e-08,
+          "converged": true,
+          "cv_loss": [
+            0.24543279274159555,
+            0.2590802465777482,
+            0.31147762703728094,
+            0.4077196931506064,
+            0.5613329090125544,
+            0.7891249625610387,
+            1.085119579234618,
+            1.3802887737094747,
+            1.6183626989990587,
+            1.7947995218472892,
+            1.8898096599352332
+          ],
+          "fold_grad_max": 9.978680110163396e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 706,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 30,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 8,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 3,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 347,
+          "of": 347
+        },
+        "not_reached": {
+          "right": 359,
+          "of": 648
+        },
+        "space": {
+          "right": 41900,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 579
+        }
+      }
+    },
+    "rung1/train": {
+      "tree": {
+        "right": 894,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 28,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 52,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 55640,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 29,
+          "full_leaves": 29,
+          "subtrees": 12,
+          "chosen_k": 0,
+          "alpha": "0",
+          "cv_errors": [
+            17,
+            18,
+            19,
+            28,
+            37,
+            37,
+            50,
+            58,
+            74,
+            100,
+            120,
+            185
+          ]
+        }
+      },
+      "logistic": {
+        "right": 850,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 23,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 1,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 54242,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.00031622776601683794,
+          "iterations": 103,
+          "grad_max": 9.699851195827747e-08,
+          "converged": true,
+          "cv_loss": [
+            0.3327983102728137,
+            0.31079955420759453,
+            0.32562246370409104,
+            0.3973325360381923,
+            0.5444988980673984,
+            0.7746676935514452,
+            1.0571722031135977,
+            1.3234153402314603,
+            1.5243633371560519,
+            1.6667931550781085,
+            1.744643667540417
+          ],
+          "fold_grad_max": 9.978937018970368e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 573,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 14,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 2,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 31751,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 286
+        }
+      }
+    },
+    "reuse1/all": {
+      "tree": {
+        "right": 625,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 21,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 32,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 593,
+          "of": 963
+        },
+        "space": {
+          "right": 101675,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 16,
+          "full_leaves": 16,
+          "subtrees": 6,
+          "chosen_k": 0,
+          "alpha": "0",
+          "cv_errors": [
+            20,
+            25,
+            25,
+            24,
+            31,
+            33
+          ]
+        }
+      },
+      "logistic": {
+        "right": 512,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 24,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 9,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 32,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 480,
+          "of": 963
+        },
+        "space": {
+          "right": 71613,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.01,
+          "iterations": 40,
+          "grad_max": 8.705837233839026e-08,
+          "converged": true,
+          "cv_loss": [
+            1.6913614525044998,
+            1.4682953502708105,
+            1.2749133992900088,
+            1.1248336285659317,
+            1.0422816664943115,
+            1.062185243594458,
+            1.1871053748317735,
+            1.3548211338317075,
+            1.5212773739577237,
+            1.6629972997169895,
+            1.7436280696119766
+          ],
+          "fold_grad_max": 9.746863627053265e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 454,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 24,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 8,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 32,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 422,
+          "of": 963
+        },
+        "space": {
+          "right": 62168,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 62
+        }
+      }
+    },
+    "reuse1/train": {
+      "tree": {
+        "right": 364,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36720,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 1,
+          "full_leaves": 13,
+          "subtrees": 5,
+          "chosen_k": 4,
+          "alpha": "3",
+          "cv_errors": [
+            17,
+            17,
+            17,
+            15,
+            15
+          ]
+        }
+      },
+      "logistic": {
+        "right": 369,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 6,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 8,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 65874,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.03162277660168379,
+          "iterations": 28,
+          "grad_max": 4.036118023825752e-08,
+          "converged": true,
+          "cv_loss": [
+            1.6271490954914727,
+            1.4761641346783934,
+            1.3431251482108837,
+            1.2353148360128756,
+            1.1637480711745667,
+            1.1442697952835923,
+            1.187509349780595,
+            1.2845965112645708,
+            1.4328341886435725,
+            1.607071747268491,
+            1.7209635241473975
+          ],
+          "fold_grad_max": 9.760146104476975e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 403,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 18,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 5,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 54429,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 33
+        }
+      }
+    },
+    "reuse2/all": {
+      "tree": {
+        "right": 364,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 7,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 357,
+          "of": 973
+        },
+        "space": {
+          "right": 36720,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 1,
+          "full_leaves": 14,
+          "subtrees": 6,
+          "chosen_k": 5,
+          "alpha": "3",
+          "cv_errors": [
+            20,
+            21,
+            23,
+            23,
+            22,
+            19
+          ]
+        }
+      },
+      "logistic": {
+        "right": 370,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 13,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 9,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 361,
+          "of": 973
+        },
+        "space": {
+          "right": 40422,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.31622776601683794,
+          "iterations": 12,
+          "grad_max": 8.431013995453818e-08,
+          "converged": true,
+          "cv_loss": [
+            3.5492764697145827,
+            3.12290008794109,
+            2.7239927939546256,
+            2.3611243014551473,
+            2.0502469020553304,
+            1.8262229810894912,
+            1.73441044268638,
+            1.7335765005394363,
+            1.7448504385437222,
+            1.7648408948881253,
+            1.7809231225083495
+          ],
+          "fold_grad_max": 9.901462767115845e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 411,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 28,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 4,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 22,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 389,
+          "of": 973
+        },
+        "space": {
+          "right": 45683,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 31
+        }
+      }
+    },
+    "reuse2/train": {
+      "tree": {
+        "right": 364,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36720,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 1,
+          "full_leaves": 8,
+          "subtrees": 2,
+          "chosen_k": 1,
+          "alpha": "1",
+          "cv_errors": [
+            11,
+            9
+          ]
+        }
+      },
+      "logistic": {
+        "right": 367,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36932,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 10.0,
+          "iterations": 5,
+          "grad_max": 8.377230714673445e-10,
+          "converged": true,
+          "cv_loss": [
+            4.390748611728246,
+            3.9749890725104073,
+            3.573773536982318,
+            3.190004780856428,
+            2.826619918286268,
+            2.486176698461129,
+            2.1735644566004386,
+            1.906406104073293,
+            1.7235819687776643,
+            1.6425295902340278,
+            1.6184946312360793
+          ],
+          "fold_grad_max": 9.791968334157692e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 318,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 30,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 39866,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 12
+        }
+      }
+    },
+    "reuse3/all": {
+      "tree": {
+        "right": 716,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 22,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 7,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 25,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 691,
+          "of": 970
+        },
+        "space": {
+          "right": 75580,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 12,
+          "full_leaves": 12,
+          "subtrees": 4,
+          "chosen_k": 0,
+          "alpha": "0",
+          "cv_errors": [
+            14,
+            21,
+            23,
+            20
+          ]
+        }
+      },
+      "logistic": {
+        "right": 558,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 12,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 1,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 25,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 533,
+          "of": 970
+        },
+        "space": {
+          "right": 43023,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.03162277660168379,
+          "iterations": 29,
+          "grad_max": 6.05735449438205e-08,
+          "converged": true,
+          "cv_loss": [
+            1.8403062685377416,
+            1.6187131647112942,
+            1.4214415934126368,
+            1.2597911973246745,
+            1.154541252029758,
+            1.1418632337492174,
+            1.2413409182404425,
+            1.3783562704844667,
+            1.5055974700333294,
+            1.6401253526120083,
+            1.732394164979472
+          ],
+          "fold_grad_max": 9.845618986997588e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 424,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 21,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 25,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 399,
+          "of": 970
+        },
+        "space": {
+          "right": 41670,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 42
+        }
+      }
+    },
+    "reuse3/train": {
+      "tree": {
+        "right": 364,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36720,
+          "of": 134400
+        },
+        "fit": {
+          "leaves": 1,
+          "full_leaves": 11,
+          "subtrees": 2,
+          "chosen_k": 1,
+          "alpha": "1",
+          "cv_errors": [
+            14,
+            10
+          ]
+        }
+      },
+      "logistic": {
+        "right": 366,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36782,
+          "of": 134400
+        },
+        "fit": {
+          "classes": [
+            "T1_GENERAL",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SECURITY_INCIDENT",
+            "ACCOUNT_MANAGER",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          "lambda": 0.31622776601683794,
+          "iterations": 12,
+          "grad_max": 4.3977979612142004e-08,
+          "converged": true,
+          "cv_loss": [
+            3.110029943971908,
+            2.7424806623554625,
+            2.4011833329710504,
+            2.0938218178312047,
+            1.8315787212265666,
+            1.6325534158663564,
+            1.5209164075719495,
+            1.5006028519648844,
+            1.5567111508538207,
+            1.6602330027382155,
+            1.739133938761652
+          ],
+          "fold_grad_max": 9.997026771766532e-08,
+          "fold_fits_converged": true
+        }
+      },
+      "cache": {
+        "right": 410,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 16,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 39080,
+          "of": 134400
+        },
+        "fit": {
+          "stored": 21
+        }
+      }
+    }
+  },
+  "rules_side": {
+    "arrival": {
+      "right": 519,
+      "of": 995,
+      "abstained": 0,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 0,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 0,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 3,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 0,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 173,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 346,
+        "of": 648
+      },
+      "space": {
+        "right": 42310,
+        "of": 134400
+      }
+    },
+    "reversed": {
+      "right": 544,
+      "of": 995,
+      "abstained": 0,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 0,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 0,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 10,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 1,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 171,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 373,
+        "of": 648
+      },
+      "space": {
+        "right": 76180,
+        "of": 134400
+      }
+    },
+    "specificity": {
+      "right": 182,
+      "of": 995,
+      "abstained": 564,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 0,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 0,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 0,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 0,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 63,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 119,
+        "of": 648
+      },
+      "space": {
+        "right": 16429,
+        "of": 134400,
+        "abstained": 54693
+      }
+    },
+    "answers_order_286": {
+      "right": 483,
+      "of": 995,
+      "abstained": 0,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 0,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 0,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 9,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 0,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 150,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 333,
+        "of": 648
+      },
+      "space": {
+        "right": 61305,
+        "of": 134400
+      },
+      "search": {
+        "best_score": 255,
+        "best_from": "aleatorio 34",
+        "best_from_index": 35,
+        "n_starts": 65,
+        "neighbourhood": "move+swap",
+        "labelled_cases": 286
+      }
+    },
+    "answers_order_579": {
+      "right": 510,
+      "of": 995,
+      "abstained": 0,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 0,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 15,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 9,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 2,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 170,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 340,
+        "of": 648
+      },
+      "space": {
+        "right": 59540,
+        "of": 134400
+      },
+      "search": {
+        "best_score": 486,
+        "best_from": "aleatorio 4",
+        "best_from_index": 5,
+        "n_starts": 65,
+        "neighbourhood": "move+swap",
+        "labelled_cases": 579
+      }
+    },
+    "truth_order_286": {
+      "right": 814,
+      "of": 995,
+      "abstained": 0,
+      "per_class": {
+        "ACCOUNT_MANAGER": {
+          "right": 20,
+          "of": 55
+        },
+        "T3_ENGINEERING": {
+          "right": 0,
+          "of": 57
+        },
+        "SECURITY_INCIDENT": {
+          "right": 4,
+          "of": 10
+        },
+        "ONCALL_ESCALATION": {
+          "right": 0,
+          "of": 3
+        }
+      },
+      "reached": {
+        "right": 310,
+        "of": 347
+      },
+      "not_reached": {
+        "right": 504,
+        "of": 648
+      },
+      "space": {
+        "right": 73420,
+        "of": 134400
+      },
+      "search": {
+        "best_score": 274,
+        "best_from": "aleatorio 57",
+        "best_from_index": 58,
+        "n_starts": 65,
+        "neighbourhood": "move+swap",
+        "labelled_cases": 286
+      }
+    }
+  },
+  "reuse_bases": {
+    "reuse1": {
+      "base": {
+        "right": 403,
+        "of": 995,
+        "abstained": 6,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 4,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 13,
+          "of": 32
+        },
+        "not_reached": {
+          "right": 390,
+          "of": 963
+        },
+        "space": {
+          "right": 41160,
+          "of": 134400,
+          "abstained": 34440
+        },
+        "rules": 62
+      },
+      "arrival": {
+        "right": 411,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 2,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 36540,
+          "of": 134400
+        }
+      }
+    },
+    "reuse2": {
+      "base": {
+        "right": 448,
+        "of": 995,
+        "abstained": 1,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 3,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 12,
+          "of": 22
+        },
+        "not_reached": {
+          "right": 436,
+          "of": 973
+        },
+        "space": {
+          "right": 39660,
+          "of": 134400,
+          "abstained": 11340
+        },
+        "rules": 31
+      },
+      "arrival": {
+        "right": 453,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 1,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 35880,
+          "of": 134400
+        }
+      }
+    },
+    "reuse3": {
+      "base": {
+        "right": 526,
+        "of": 995,
+        "abstained": 1,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 10,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "reached": {
+          "right": 13,
+          "of": 25
+        },
+        "not_reached": {
+          "right": 513,
+          "of": 970
+        },
+        "space": {
+          "right": 74400,
+          "of": 134400,
+          "abstained": 2520
+        },
+        "rules": 42
+      },
+      "arrival": {
+        "right": 523,
+        "of": 995,
+        "abstained": 0,
+        "per_class": {
+          "ACCOUNT_MANAGER": {
+            "right": 0,
+            "of": 55
+          },
+          "T3_ENGINEERING": {
+            "right": 0,
+            "of": 57
+          },
+          "SECURITY_INCIDENT": {
+            "right": 0,
+            "of": 10
+          },
+          "ONCALL_ESCALATION": {
+            "right": 0,
+            "of": 3
+          }
+        },
+        "space": {
+          "right": 40360,
+          "of": 134400
+        }
+      }
+    }
+  },
+  "majority_answer": {
+    "rung1/all": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    },
+    "rung1/train": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    },
+    "reuse1/all": {
+      "queue": "SECURITY_INCIDENT",
+      "test": 10,
+      "space": 50400
+    },
+    "reuse1/train": {
+      "queue": "SECURITY_INCIDENT",
+      "test": 10,
+      "space": 50400
+    },
+    "reuse2/all": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    },
+    "reuse2/train": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    },
+    "reuse3/all": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    },
+    "reuse3/train": {
+      "queue": "T2_TECHNICAL",
+      "test": 364,
+      "space": 36720
+    }
+  },
+  "the_tree_in_the_dsl": [
+    {
+      "rule_id": "L001",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "api",
+            "mobile",
+            "integrations"
+          ]
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 8,
+      "training_labels": 53,
+      "training_right": 37
+    },
+    {
+      "rule_id": "L002",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 49,
+      "training_labels": 23,
+      "training_right": 18
+    },
+    {
+      "rule_id": "L003",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 5
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 51,
+      "training_labels": 3,
+      "training_right": 3
+    },
+    {
+      "rule_id": "L004",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 5
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 52,
+      "training_labels": 17,
+      "training_right": 10
+    },
+    {
+      "rule_id": "L005",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        }
+      ],
+      "action": "SECURITY_INCIDENT",
+      "node": 89,
+      "training_labels": 4,
+      "training_right": 4
+    },
+    {
+      "rule_id": "L006",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "in",
+          "value": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 93,
+      "training_labels": 25,
+      "training_right": 20
+    },
+    {
+      "rule_id": "L007",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 15
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "node": 94,
+      "training_labels": 7,
+      "training_right": 5
+    },
+    {
+      "rule_id": "L008",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 6
+        },
+        {
+          "attr": "language",
+          "op": "eq",
+          "value": "fr"
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "node": 119,
+      "training_labels": 7,
+      "training_right": 7
+    },
+    {
+      "rule_id": "L009",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 6
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 121,
+      "training_labels": 5,
+      "training_right": 4
+    },
+    {
+      "rule_id": "L010",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "node": 123,
+      "training_labels": 20,
+      "training_right": 14
+    },
+    {
+      "rule_id": "L011",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "api",
+            "mobile",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "in",
+          "value": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 127,
+      "training_labels": 19,
+      "training_right": 12
+    },
+    {
+      "rule_id": "L012",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "api",
+            "mobile",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "in",
+          "value": [
+            5,
+            6
+          ]
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 128,
+      "training_labels": 3,
+      "training_right": 2
+    },
+    {
+      "rule_id": "L013",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 147,
+      "training_labels": 4,
+      "training_right": 3
+    },
+    {
+      "rule_id": "L014",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "channel",
+          "op": "neq",
+          "value": "phone"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "in",
+          "value": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "attr": "language",
+          "op": "neq",
+          "value": "fr"
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "node": 148,
+      "training_labels": 15,
+      "training_right": 11
+    },
+    {
+      "rule_id": "L015",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        }
+      ],
+      "action": "ONCALL_ESCALATION",
+      "node": 181,
+      "training_labels": 8,
+      "training_right": 5
+    },
+    {
+      "rule_id": "L016",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        }
+      ],
+      "action": "SECURITY_INCIDENT",
+      "node": 183,
+      "training_labels": 4,
+      "training_right": 4
+    },
+    {
+      "rule_id": "L017",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 5
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 186,
+      "training_labels": 89,
+      "training_right": 79
+    },
+    {
+      "rule_id": "L018",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "neq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 230,
+      "training_labels": 47,
+      "training_right": 45
+    },
+    {
+      "rule_id": "L019",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "in",
+          "value": [
+            "api",
+            "mobile",
+            "integrations"
+          ]
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 240,
+      "training_labels": 53,
+      "training_right": 43
+    },
+    {
+      "rule_id": "L020",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "node": 279,
+      "training_labels": 8,
+      "training_right": 8
+    },
+    {
+      "rule_id": "L021",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T1_GENERAL",
+      "node": 280,
+      "training_labels": 25,
+      "training_right": 19
+    },
+    {
+      "rule_id": "L022",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        }
+      ],
+      "action": "SECURITY_INCIDENT",
+      "node": 307,
+      "training_labels": 4,
+      "training_right": 4
+    },
+    {
+      "rule_id": "L023",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 2
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "node": 310,
+      "training_labels": 131,
+      "training_right": 106
+    },
+    {
+      "rule_id": "L024",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "ONCALL_ESCALATION",
+      "node": 387,
+      "training_labels": 2,
+      "training_right": 2
+    },
+    {
+      "rule_id": "L025",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T3_ENGINEERING",
+      "node": 388,
+      "training_labels": 3,
+      "training_right": 2
+    }
+  ],
+  "seconds": 328.3
+}
