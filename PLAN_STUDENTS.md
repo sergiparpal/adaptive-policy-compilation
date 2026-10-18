@@ -1,5 +1,20 @@
 # PLAN_STUDENTS — what the proposer's rules buy over a learner fitted to its answers
 
+> **[CLOSED 2026-10-18] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-18, before any figure of the plan existed. The five rows were
+> adjudicated the same day: **`T-a`, `T-b` and `T-c` hold; `T-d` and `T-e` are
+> refuted**, `T-e` thinly, and `T-f` is reported. Where tickets arrive the rules
+> beat every student of their answers. Over the function the tree beats them in
+> arrival order and loses to them read newest first. **The figures are owned by
+> [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-18. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its note, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-18, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing is scored and
 no record is written until Sergi has signed §0.** The signature has to land
