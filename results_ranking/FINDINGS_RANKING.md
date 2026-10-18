@@ -4,7 +4,11 @@ Record opened on October 17, 2026, under [`PLAN_RANKING.md`](../PLAN_RANKING.md)
 Sergi signed §0 on 2026-10-17, before any figure below existed, in a commit of
 its own: *PLAN_RANKING.md signed by Sergi*. Every record names in its `_env` the
 commit of the branch it was written on. A rebase merge gives those commits new
-hashes on `main` with the same trees. **This record owns every figure in it.**
+hashes on `main` with the same trees. Three of them, those behind the smoke
+session, the session and Stage C, were also rebased onto `main` before their
+pull request, so their hashes were never published. All four records carry
+one code digest, `e51c6d23f41a4902`, with `code_dirty` false, and that digest
+identifies the code that wrote them. **This record owns every figure in it.**
 
 **All three stages ran on 2026-10-17, and the five rows are adjudicated: `M-a`
 holds, `M-b`, `M-c` and `M-d` are refuted, and `M-e` holds, thin.** Asked for
