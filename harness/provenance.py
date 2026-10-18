@@ -72,7 +72,7 @@ REPO = Path(__file__).resolve().parent.parent
 # and `bound` 2026-10-16 with PLAN_BOUND.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
               "reuse", "fidelity", "edges", "primacy", "why", "authorship",
-              "overlap", "blind", "screen", "bound", "ranking",
+              "overlap", "blind", "screen", "bound", "ranking", "students",
               "run_experiment.py")
 
 DIGEST_CHARS = 16
