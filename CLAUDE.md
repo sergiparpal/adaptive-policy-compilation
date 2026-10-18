@@ -512,6 +512,7 @@ by it and not edited. The first command is blocking and writes nothing:
 
     python3 -m students.score --dry-run          # T-g1..T-g4; must pass first
     PYTHONHASHSEED=0 python3 -m students.score   # T-a to T-e, the readings of T-f
+    PYTHONHASHSEED=0 python3 -m students.readings  # POST-RUN: the three it left open
 
 **A student of the proposer's answers holds them wherever its tickets reach the
 test split.** Trained on every answer, it repeats the proposer there, wrong

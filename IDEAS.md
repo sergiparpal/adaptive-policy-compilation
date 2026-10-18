@@ -244,20 +244,22 @@ retrieval, and set them beside the rules written from the same answers. Where
 tickets arrive the rules beat all three. Over the function the tree beats them
 in arrival order and loses to them read newest first. What that leaves:
 
-- **What the `ONCALL_ESCALATION` leaves cost.** The tree on rung 1's answers
-  decides that queue's three test cases right, through two leaves that send
-  severity-1 tickets there. They take every other severity-1 ticket they cover
-  too, and the record counts only four classes. Free, POST-RUN: refit the tree,
-  which is deterministic, and count where its two leaves send each true class,
-  on the test split and over the space.
-- **Why the train-half tree beats the all-answers tree.** On the test split it
-  does, by 30 cases. The reach explains the direction: on the 347 test cases its
-  tickets reach, the all-answers tree holds the proposer's own answer. The
-  record splits only the all-answers students that way. Free, POST-RUN: the
-  train-half students on the same 347 and 648.
-- **What the `PLAN_REUSE.md` trees are.** The record holds their sizes and
-  scores, not their rules, and three of them score alike on both surfaces.
-  Free, POST-RUN.
+- ~~**What the `ONCALL_ESCALATION` leaves cost.**~~ **Read POST-RUN on
+  2026-10-18** (`FINDINGS_STUDENTS.md`, *Three readings after the verdicts*).
+  The two leaves decide 45 test cases, 40 of them `T2_TECHNICAL` or
+  `T3_ENGINEERING` in truth, and cost the tree 17 cases against arrival order,
+  a third of its gap. Over the space they cost it 5,460 points against arrival.
+  On the severity-1 billing tickets off hours, no execution of the rules is
+  right at all.
+- ~~**Why the train-half tree beats the all-answers tree.**~~ **Read POST-RUN
+  on 2026-10-18**, in the same section: 18 of its 30-case lead is on the 347
+  test cases the answers reach, and 12 on the other 648. Arrival order is ahead
+  of every student on both parts.
+- ~~**What the `PLAN_REUSE.md` trees are.**~~ **Read POST-RUN on
+  2026-10-18**, in the same section. The three that score alike decide every
+  point alike: the keyword to `SECURITY_INCIDENT`, billing to
+  `BILLING_SPECIALIST`, the rest to `T2_TECHNICAL`. All six split on the
+  keyword first.
 - **The truth at the escalations, as a deployment would buy it.** Rung 3's
   search on the truth of the 286 train-half escalations recovers 91% of the
   gain the search on all 1,005 train cases makes over arrival. On the
