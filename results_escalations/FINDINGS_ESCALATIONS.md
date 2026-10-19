@@ -1,12 +1,17 @@
 # What a reviewer's labels at the escalations buy the order — findings
 
 Record opened on October 19, 2026, under [`PLAN_ESCALATIONS.md`](../PLAN_ESCALATIONS.md).
-Sergi signed §0 on 2026-10-19, before any figure below existed, in a commit of
-its own: *PLAN_ESCALATIONS.md signed by Sergi*. The stage's record,
-[`score.json`](score.json), names that commit in its `_env` as `5dd9072`, its
-hash on the branch it was made on. A rebase merge gives it a new hash on `main`
-with the same tree, so it is named here by its subject. **This record owns every
-figure in it.**
+The plan, its package, the signature and the record below reached `main`
+together, in pull request #140. Sergi signed §0 on 2026-10-19, before any figure
+below existed, in a commit of its own: `9cce622` on `main`, merged from
+`5dd9072`.
+
+The stage's record, [`score.json`](score.json), names in its `_env` the commit it
+was written from: `5dd9072`, the signing commit on the branch. A rebase merge
+gave it a new hash on `main`, `9cce622`. The two have the same subject, the same
+tree and the same `git patch-id --stable`.
+
+**This record owns every figure in it.**
 
 **The stage adjudicated the five signed rows on 2026-10-19: four hold and one is
 refuted.**
