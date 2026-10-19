@@ -213,6 +213,12 @@ on new sets of labels.
 - **How contested they are**, in the final base: rules of one queue match 1 of
   them, of two 58, of three 157, of four 99 and of five 1. Over the whole train
   half the shares are close: 28, 266, 482, 223 and 6 of 1,005.
+  **[ERRATUM 2026-10-19]** The last of those shares lumps two counts: rules of
+  five queues match 3 train-half cases, and rules of six queues 3 more. The
+  escalations' own counts are right, one of five and none of six. It was found
+  while `PLAN_SPOTCHECK.md` counted its material, and its §1 notes it. No row of
+  this plan read either count, and no figure of `FINDINGS_ESCALATIONS.md`
+  moves.
 - **How crowded**: between 14 and 150 rules match each, 57 at the median.
 - **The keyword**: 8 of the 316 carry it, and 37 of the train half's 1,005.
 - **The reach**: none. Every escalation is in the train half, and the split
