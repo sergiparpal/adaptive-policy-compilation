@@ -96,7 +96,7 @@ any figure.**
 | **N-e** | **251 audited decisions close half the gap.** | corpus test split 0: the audited sets at 251, the median of five orders | **≥ 829** | **< 829** |
 | **N-f** | *Reported, not adjudicated.* **What reading the rows needs.** | §8's readings: every audited set and every audit alone at every budget on both surfaces, with each draw; the audit alone beside random escalations and random arrivals; the rare classes; the sets' make-up; the curve as a share of the gap | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-19)**
 
 **One label, and it does not change a verdict.** A median of five draws is noisy,
 and the baseline the first rows are read against is one order, not five. **A
