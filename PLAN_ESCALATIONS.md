@@ -1,5 +1,21 @@
 # PLAN_ESCALATIONS — what a reviewer's labels at the escalations buy the order
 
+> **[CLOSED 2026-10-19] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-19, before any figure of the plan existed. The five rows were
+> adjudicated the same day: **`J-a`, `J-b`, `J-c` and `J-e` hold, `J-b` thinly;
+> `J-d` is refuted**, and `J-f` is reported. Fifty labels at the escalations buy
+> two thirds of the order's gain where tickets arrive, about what fifty random
+> train cases buy, and less over the function. Labelling the most crowded first
+> buys almost nothing on the arrivals. **The figures are owned by
+> [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-19. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its note, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-18, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing is scored and
 no record is written until Sergi has signed §0.** The signature has to land
