@@ -82,7 +82,7 @@ any figure.**
 | **J-e** | **Over the function, the escalations buy less than random arrivals.** | exhaustive space: random escalations at 50, the median share at four decimals, against random arrivals' 0.3993 | **< 0.3993** | **≥ 0.3993** |
 | **J-f** | *Reported, not adjudicated.* **What reading the rows needs.** | §8's readings: every selection at every budget on both surfaces, with each draw; all 316; the labelled sets' make-up; the rare classes; the published curve beside | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-19)**
 
 **One label, and it does not change a verdict.** A median of five draws is
 noisy, and the published curve's draws spread widely: at 50 labels they run from
