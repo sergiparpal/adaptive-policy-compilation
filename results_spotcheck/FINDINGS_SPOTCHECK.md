@@ -1,12 +1,20 @@
 # What a random audit of the system's decisions buys beside the escalations — findings
 
 Record opened on October 19, 2026, under [`PLAN_SPOTCHECK.md`](../PLAN_SPOTCHECK.md).
-Sergi signed §0 on 2026-10-19, before any figure below existed, in a commit of
-its own: *PLAN_SPOTCHECK.md signed by Sergi*. The stage's record,
-[`score.json`](score.json), names that commit in its `_env` as `2c8afbe`, its
-hash on the branch it was made on. A rebase merge gives it a new hash on `main`
-with the same tree, so it is named here by its subject. **This record owns every
-figure in it.**
+The plan and its package reached `main` in pull request #142, and the signature
+and the record below in #143. Sergi signed §0 on 2026-10-19, before any figure
+below existed, in a commit of its own: `63beac7` on `main`.
+
+The stage's record, [`score.json`](score.json), names in its `_env` the commit
+it was written from: `2c8afbe`, the signing commit as it was made. **That commit
+was never pushed.** #142 was merged while the stage ran, so the four commits
+made after it were rebased onto `main` and pushed as #143, where the signing
+commit is `7497aac`. The rebase merge of #143 gave it `63beac7` on `main`. The
+three have the same subject, the same tree and the same `git patch-id
+--stable`. The code digest the `_env` records, `8559939020da9b13`, is the one
+#143's tip computes.
+
+**This record owns every figure in it.**
 
 **The stage adjudicated the five signed rows on 2026-10-19: two hold and three
 are refuted, and four of the five are thin.**
