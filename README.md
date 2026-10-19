@@ -627,6 +627,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `students/readings.py` | `results_students/readings.json` | **refuses while the plan is unsigned** |
 > | `escalations/score.py` | `results_escalations/score.json` | **refuses while the plan is unsigned** |
 > | `spotcheck/score.py` | `results_spotcheck/score.json` | **refuses while the plan is unsigned** |
+> | `spotcheck/readings.py` | `results_spotcheck/readings.json` | **refuses while the plan is unsigned** |
 > | `why/score.py` | `results_why/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
