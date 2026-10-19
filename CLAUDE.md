@@ -572,6 +572,7 @@ writes nothing:
 
     python3 -m spotcheck.score --dry-run          # N-g1..N-g4; must pass first
     PYTHONHASHSEED=0 python3 -m spotcheck.score   # N-a to N-e, the readings of N-f
+    PYTHONHASHSEED=0 python3 -m spotcheck.readings  # POST-RUN: which tickets teach T3_ENGINEERING
 
 **Its `N-c` banded the median of a quantity an order gets all at once or not at
 all.** Such a quantity puts the draws in two clusters, and a line between them
@@ -579,7 +580,10 @@ only says which cluster the middle draw fell in. A plan that bands one should
 band how many draws get it, and say so in §0. **And a check on names misses a
 subscript.** `PLAN_ESCALATIONS.md`'s `J-g2` walked names, so `r["truth"]` would
 have passed it. A check that a module reads no truth should read its string
-literals too, as `N-g2` does.
+literals too, as `N-g2` does. **And a search over labels leaves a rule no label
+reaches where its start put it.** The class `N-c` read turned on one such rule,
+read POST-RUN. A reading of what an order learns should ask which labels reach
+which rules before it asks how many labels there are.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

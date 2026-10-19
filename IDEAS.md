@@ -268,11 +268,18 @@ nested draws at the optimizer audit's budgets. A small audit adds little to the
 escalations, and what a large one adds is mostly `T3_ENGINEERING`. What that
 leaves:
 
-- **Which tickets teach `T3_ENGINEERING`.** An order learns the class all at
-  once or not at all, and the number of its tickets in a draw does not decide
-  which: one ticket among ten decisions taught it, and three among fifty did
-  not. A free reading of those two draws would say which tickets, and whether
-  the class turns on one rule's place in the order.
+- ~~**Which tickets teach `T3_ENGINEERING`.**~~ **Read POST-RUN on
+  2026-10-19** (`FINDINGS_SPOTCHECK.md`, *Which tickets teach
+  `T3_ENGINEERING`*). The class turns on one rule, *severity 1 on the api
+  product*. On the test split it matches only its own queue's tickets, and in
+  the train half six of them, all decisions. The search lifts it only when one
+  of the six is labelled.
+- **Rules no label reaches.** A search over labels leaves every rule no
+  labelled case matches where its start put it. The rule `T3_ENGINEERING` turns
+  on is one of them. Moved to the front, it costs nothing on the arrivals and
+  buys most of what the whole train half's labels buy of that queue. How many
+  others there are in rung 1's base, and what moving each would buy on either
+  surface, is unmeasured and free.
 - **An audit aimed at the rare queues.** The engine decided only four common
   queues, so the system's own decision cannot aim an audit at a rare one.
   Another signal might: the margin between the matching rules, or a student's
