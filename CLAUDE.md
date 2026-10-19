@@ -526,6 +526,35 @@ written out in the DSL has to merge each path to one condition per attribute.
 said so. A plan that reads a median of three runs should say in §0 what such a
 run does to the verdict.
 
+**`PLAN_ESCALATIONS.md` closed on 2026-10-19: what a reviewer's labels at the
+escalations buy the order.** Five signed rows adjudicated, four held and one
+refuted, and one reported. Sergi signed §0 on 2026-10-19, before any figure it
+governs existed. It handed rung 3's search the truth of sets of rung 1's
+train-half escalations, at the audit's label budgets and with the audit's own
+instrument, and set each beside that record's own random draws at the same
+budget. Three rules chose which escalations to label first. The record is
+`results_escalations/FINDINGS_ESCALATIONS.md`, and `STATUS.md` indexes its
+figures. **Everything in it is free** and reproduces from the committed
+records. Its one writer refuses while the plan carries a blank signature line,
+and the gate reads `PLAN_ESCALATIONS.md` and no other plan. `rung3/`,
+`students/` and `reuse/` are called by it and not edited. The first command is
+blocking and writes nothing:
+
+    python3 -m escalations.score --dry-run          # J-g1..J-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m escalations.score   # J-a to J-e, the readings of J-f
+
+**Its `J-d` reasoned about which tickets a rule selects without counting
+them.** The tickets the most rules match were taken to crowd the common regions
+of the test split, and they were two queues' tickets. A selection's make-up is
+material: a plan that bands a rule for which cases to label first should count
+what the rule selects in its §1, before the signature. **And a thin label read
+on draws from populations of different sizes is lopsided.** At the largest
+budget the escalations' draws share most of their cases and barely spread. The
+label asks each median to lie inside the other side's draws, so it could not
+mark thin a difference that lay inside the comparator's spread. A plan that sets
+draws from a small population beside draws from a large one should say in §0
+how it reads their spread.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17

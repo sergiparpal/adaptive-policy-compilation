@@ -52,8 +52,11 @@ rows, two held and three refuted, and one reported, written up in
 `results_ranking/`. **What the proposer's rules buy over a learner fitted to its
 answers closed on October 18, 2026**: `PLAN_STUDENTS.md`, five signed rows,
 three held and two refuted, and one reported, written up in
-`results_students/`. This is a list of things not done, none of them developed
-and in no order of precedence.
+`results_students/`. **What a reviewer's labels at the escalations buy the
+order closed on October 19, 2026**: `PLAN_ESCALATIONS.md`, five signed rows,
+four held and one refuted, and one reported, written up in
+`results_escalations/`. This is a list of things not done, none of them
+developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -63,6 +66,15 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Labels at the escalations, as a reviewer would give them.** October 19,
+  2026, `PLAN_ESCALATIONS.md`, zero calls. Rung 3's search was handed the truth
+  of rung 1's train-half escalations at the audit's label budgets, beside that
+  record's random draws of train cases. Where tickets arrive, fifty escalations
+  drawn at random buy two thirds of the gain, about what fifty random train
+  cases buy. Over the function they buy less at every budget. Labelling the
+  most crowded first buys almost nothing on the arrivals, and labelling them as
+  they came buys less than a random draw. What it leaves is in its own section
+  below. `results_escalations/`.
 - **Students on the proposer's own answers.** October 18, 2026,
   `PLAN_STUDENTS.md`, zero calls. A pruned tree, a logistic regression and the
   cache's retrieval were trained on the queues the proposer named at rung 1's
@@ -236,6 +248,48 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_ESCALATIONS.md` opens and does not resolve
+
+Closed October 19, 2026. It handed rung 3's search the truth of rung 1's
+train-half escalations, as a reviewer would supply it, at the audit's label
+budgets, and set each set beside that record's own random draws of train cases.
+Where tickets arrive the escalations buy about what random train cases buy.
+Over the function they buy less, and the two rules tried for which to label
+first lose to a random draw. What that leaves:
+
+- **What the escalations never teach.** The order on all 316 falls short of the
+  full search mostly in `T3_ENGINEERING`, a queue that almost never escalated.
+  A reviewer who labels only what the loop escalates never sees it. Whether a
+  small random audit of decisions beside the escalations would buy it is
+  unmeasured: the plan named that audit as the alternative and did not run it.
+- **Which escalations to label first.** The most crowded escalations are two
+  queues' tickets. Labelled first, they buy almost nothing on the arrivals and
+  the most over the function. A rule that spreads the labels across queues is
+  untried, and so is one that reads a student's uncertainty or the proposer's
+  disagreement with the rules (§11.5 of the plan).
+- **Whether an escalation is worth more than a random arrival at a small
+  budget.** The medians say so at 10 and 50 labels, and the draws cannot tell.
+  The audit's curve has five splits, and this plan read one.
+- **Why the space follows `SECURITY_INCIDENT`.** Read after the verdicts: at
+  three of the four budgets, the set whose order is right on the most of the
+  test split's `SECURITY_INCIDENT` cases has the highest share of the space.
+  The record does not split the space by the keyword, which would say whether
+  the keyword's rule is what those shares measure.
+- **The online loop, and a reviewer who errs.** The order was searched once, on
+  the final base, and the reviewer was the truth (§11.1 and §11.2 of the plan).
+- **A thin label read on draws from populations of different sizes is
+  lopsided.** At 251 of 316, any two draws of escalations share most of their
+  cases, so their five orders barely spread. §0's label asks each median to lie
+  inside the other side's draws, so it could not mark `J-c` thin while the
+  arrivals' draws spread widely around it. A plan that sets draws from a small
+  population beside draws from a large one should say in §0 how it reads their
+  spread.
+- **A rule for which cases to label first should be counted before it is
+  banded.** `J-d` bet that the tickets the most rules match crowd the common
+  regions of the test split, and the drafter never counted their queues; they
+  were two. A selection's make-up is material, readable before the signature,
+  as §1 read the escalations'.
+
 ## What `PLAN_STUDENTS.md` opens and does not resolve
 
 Closed October 18, 2026. It trained three students on the queues the proposer
@@ -260,14 +314,14 @@ in arrival order and loses to them read newest first. What that leaves:
   point alike: the keyword to `SECURITY_INCIDENT`, billing to
   `BILLING_SPECIALIST`, the rest to `T2_TECHNICAL`. All six split on the
   keyword first.
-- **The truth at the escalations, as a deployment would buy it.** Rung 3's
-  search on the truth of the 286 train-half escalations recovers 91% of the
-  gain the search on all 1,005 train cases makes over arrival. On the
-  proposer's answers at the same tickets it recovers none. A deployment could
-  buy that truth from someone other than the proposer, a reviewer labelling
-  each escalation. How few such labels buy how much, and which escalations to
-  label first, is unmeasured. Rung 4's channel asks something else: it labels
-  the system's decisions, not its escalations.
+- ~~**The truth at the escalations, as a deployment would buy it.**~~
+  **Measured on 2026-10-19 as `PLAN_ESCALATIONS.md`**
+  (`FINDINGS_ESCALATIONS.md`). Fifty escalations drawn at random buy two thirds
+  of the gain on the arrivals, about what fifty random train cases buy, and
+  all 316 buy what the 286 did. Over the function they buy less at every
+  budget. Of the two rules tried for which to label first, neither beats a
+  random draw. What that leaves is in *What `PLAN_ESCALATIONS.md` opens*,
+  above.
 - **A stronger student.** Boosted trees or a larger model would need a
   dependency pinned apart. These three lose to the rules on the arrivals, and
   that is these three losing (§12.1 of the plan).
