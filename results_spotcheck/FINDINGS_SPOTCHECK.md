@@ -17,8 +17,11 @@ three have the same subject, the same tree and the same `git patch-id
 **This record owns every figure in it.**
 
 **A POST-RUN reading was added on 2026-10-19**: [`readings.json`](readings.json),
-by `spotcheck/readings.py`, in its own section below. Its `_env` names
-`6379e0f`, the branch commit that wrote its expectation. It moves no verdict.
+by `spotcheck/readings.py`, in its own section below. It reached `main` in pull
+request #146. Its `_env` names `6379e0f`, the branch commit that wrote its
+expectation, and that commit is `cde21d9` on `main`. The two have the same
+tree, the same subject and the same `git patch-id --stable`. The reading's code
+digest, `88d69d06a4cf09d1`, is its own. It moves no verdict.
 
 **The stage adjudicated the five signed rows on 2026-10-19: two hold and three
 are refuted, and four of the five are thin.**
@@ -341,7 +344,8 @@ order.
 
 > **POST-RUN.** Asked for on 2026-10-19, after the stage.
 > `spotcheck/readings.py` wrote its eight-clause expectation in its docstring
-> and was committed before the first run. It searched the stage's 40 orders and
+> and was committed before the first run, as `6379e0f` on its branch and
+> `cde21d9` on `main`. It searched the stage's 40 orders and
 > the two endpoints again, behind two gates:
 > - every order is the record's, on both surfaces and on the four rare queues;
 > - two routes agree on the class, by first match and by masks.
