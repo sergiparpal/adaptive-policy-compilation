@@ -1731,7 +1731,12 @@ escalations alone and the whole train half, from
   the five orders are right on 19, 0, 2, 1 and 13 of the test split's 57 cases
   of that queue (`N-c` refuted, thin). At 251 every draw is right on 13 to 19.
   Read after the verdicts, it is most of what the audit buys: 13 to 19 of the
-  14 to 21 cases gained at 251.
+  14 to 21 cases gained at 251. **[NOTE 2026-10-19, later] Read POST-RUN, the
+  class turns on one rule**: *severity 1 on the api product*. On the test split
+  it matches 13 cases, all of that queue. In the train half it matches six
+  tickets of that queue, all decisions rung 1 got wrong. No order whose labels
+  hold none of the six learns the class, and 22 of the 25 with one do. Moved to
+  the front, the rule makes every order learn it, at no cost on the test split.
 - **Over the space the audited sets fall below the escalations alone**: 57,890
   of 134,400 points at fifty decisions against 73,020 (`N-d` refuted, thin),
   and 62,905 at 251. The whole train half is at 81,089.
