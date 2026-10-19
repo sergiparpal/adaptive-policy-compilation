@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 18, 2026. **Not a history** — that is the four
+What is known, as of October 19, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -16,8 +16,9 @@ What is known, as of October 18, 2026. **Not a history** — that is the four
 [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md),
 [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
 [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
-[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md) and
-[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md) and
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -47,7 +48,9 @@ much of the residue under rung 3's coverage bound is slack, in
 `PLAN_BOUND.md`**: five more, closed on 2026-10-17 — plus **the ranking of the
 queues, asked of the model, in `PLAN_RANKING.md`**: six more, closed the same
 day — plus **what the proposer's rules buy over a learner fitted to its
-answers, in `PLAN_STUDENTS.md`**: six more, closed on 2026-10-18.
+answers, in `PLAN_STUDENTS.md`**: six more, closed on 2026-10-18 — plus **what
+a reviewer's labels at the escalations buy the order, in
+`PLAN_ESCALATIONS.md`**: six more, closed on 2026-10-19.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -171,6 +174,23 @@ third recovers 61% of what full supervision buys, on corpus test.
 > in the truth of its labels, not in their number, and the proposer's answers
 > carry none of it.
 > [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
+>
+> **[NOTE 2026-10-19] The third way can be bought where the loop asks, on the
+> corpus.** [`PLAN_ESCALATIONS.md`](PLAN_ESCALATIONS.md) handed rung 3's search
+> the truth of rung 1's train-half escalations, as a reviewer would supply it,
+> at the audit's label budgets.
+>
+> - **Fifty escalations drawn at random order the rules to 737 of 995 cases of
+>   corpus test split 0**, at the median: two thirds of what full supervision
+>   gains over arrival order (`J-a` holds).
+> - **Fifty random train cases give 717** (`J-b` holds, thin).
+> - **Over the space the escalations buy less at every budget** (`J-e` holds).
+> - **Labelling the most crowded first buys almost nothing on the arrivals**
+>   (`J-d` refuted).
+>
+> So a reviewer at the escalations buys the order about as well as one of random
+> tickets where tickets arrive, and less of it over the function.
+> [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md).
 
 ---
 
@@ -219,7 +239,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and one rows have been signed before the figures they name existed. This
+**One hundred and seven rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -267,19 +287,21 @@ a count behind it.
 | **H** · the bound (§0 of `PLAN_BOUND.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
 | **M** · the ranking, asked of the model (§0 of `PLAN_RANKING.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **T** · the students (§0 of `PLAN_STUDENTS.md`) | 6 | 5 | **2** | 0 | 3 | 1 |
-| **total** | **101** | **84** | **35** | **2** | **47** | **15** |
+| **J** · the escalations (§0 of `PLAN_ESCALATIONS.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
+| **total** | **107** | **89** | **36** | **2** | **51** | **16** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`.
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
-`H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`.
+`H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
+`J-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -302,16 +324,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 35 of 84 = **41.7%**
-refuted; without them, 33 of 78 = **42.3%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 36 of 89 = **40.4%**
+refuted; without them, 34 of 83 = **41.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.6 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 35 of 77 = **45.5%** and 33
-of 71 = **46.5%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 36 of 82 = **43.9%** and 34
+of 76 = **44.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -392,6 +414,12 @@ of 71 = **46.5%**, which is the reading the calibration note should take.
 > held. One was reported. None of its bands was set on a development set. The
 > table, the named lists, the count in the heading and the four ratios moved
 > together; the gap between the first two is now 0.6 points.
+>
+> **[NOTE 2026-10-19] Recomputed with the `J` thread, in the same commit as its
+> row.** Six rows were signed and five adjudicated: one refuted and four held.
+> One was reported. None of its bands was set on a development set. The table,
+> the named lists, the count in the heading and the four ratios moved together;
+> the gap between the first two is still 0.6 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -1249,6 +1277,13 @@ The headline ratio 5%/100% falls from 0.9147 to **0.8687**: 50 labels still buy
 **exhaustive space** the same orders give 0.6105 down to 0.3310, and low budgets
 transfer proportionally worse.
 
+> **[NOTE 2026-10-19] Drawn from the escalations instead of the train half, on
+> split 0, the same budgets buy about as much on corpus test and less over the
+> exhaustive space.** At fifty labels the median of five orders is 737 of 995
+> against the record's draws' 717 (`J-a` and `J-b` hold, `J-b` thinly). Over the
+> space it is 0.3426 against 0.3993 (`J-e` holds). All 316 escalations give 814.
+> [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md).
+
 **Caveat on the low-budget rows, added August 15, 2026.** Step 3 reads them as
 *the tie-break regularises*: the objective saturates, most starts tie, ties go to
 index 0, so the search returns a sane default. Measured as orders, that reading
@@ -1612,6 +1647,37 @@ arrive, and a learner fitted to its queues does not recover it. What the queues
 lack is truth: on the train half the labels cost a tree on the same tickets 394
 cases, and the same search, handed the answers, orders the rules worse than
 their arrival.
+
+**What a reviewer's labels at the escalations buy the order: on the arrivals,
+what labels drawn at random buy; over the function, less.**
+`PLAN_ESCALATIONS.md` labelled rung 1's 316 train-half escalations with the
+truth, as a reviewer would, and handed sets of them to rung 3's search at the
+audit's label budgets. Each set was read beside that record's own random draws
+of train cases at the same budget, on split 0, from
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md):
+
+- **Fifty escalations drawn at random order the rules to 737 of 995 on corpus
+  test split 0**, at the median of five draws: two thirds of the 324 cases the
+  full search gains over arrival order (`J-a` holds).
+- **That is about what fifty random train cases buy**: 717 (`J-b` holds,
+  thin). At 251 labels the escalations give 816 and the arrivals 820 (`J-c`
+  holds), inside the arrivals' own draws, 768 to 829.
+- **Labelling the most crowded escalations first buys almost nothing there**:
+  523, four cases above arrival order (`J-d` refuted). 49 of the 50 are
+  `SELF_SERVICE_DEFLECT` or `BILLING_SPECIALIST` tickets. Labelling the first
+  fifty as they came gives 708. Over the space the most crowded give the
+  highest share of any set of escalations at 50 and at 251 labels. Reported.
+- **Over the space the escalations buy less than random arrivals at every
+  budget**: 0.3426 of the 134,400 points at fifty labels, against 0.3993 (`J-e`
+  holds).
+- **All 316 give 814 on the test split, 91% of the gain**, the figure of the
+  286 whose proposal named a queue. They are 18 cases short of the full search
+  in `T3_ENGINEERING` alone, a queue that escalated 3 times in 316. Reported.
+
+So a deployment can buy the order from a reviewer at the escalations, where
+tickets arrive, about as well as from a reviewer of random tickets. It cannot
+buy it there for the function, and of the two rules tried for which to label
+first, neither beats a random draw.
 
 ---
 

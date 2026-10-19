@@ -49,6 +49,7 @@ up in four places at once.
 | **H** · the bound | how much of the residue under rung 3's coverage bound is slack: a certificate, found without a solver and checked from the masks alone, of cases every order loses — closed 2026-10-17 | [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md) |
 | **M** · the ranking, asked of the model | what the model states when asked for the one order between the eight queues that decides a contested ticket, scored as a lookup over rung 1's rules against the ranking that read the key — closed 2026-10-17 | [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md) |
 | **T** · the students | what the proposer's rules buy over a learner fitted to its answers: a pruned tree, a logistic regression and the cache's retrieval, trained on the queues it named at the escalations and set beside the rules written from them — closed 2026-10-18 | [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md) |
+| **J** · the escalations | what a reviewer's labels at the escalations buy the order: rung 3's search handed the truth of rung 1's train-half escalations at the audit's label budgets, set beside that record's own random draws, with three rules for which to label first — closed 2026-10-19 | [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -478,6 +479,25 @@ PYTHONHASHSEED=0 python3 -m students.score    # T-a to T-e, and the readings of 
 PYTHONHASHSEED=0 python3 -m students.readings # POST-RUN · the three readings it left open
 ```
 
+**[`PLAN_ESCALATIONS.md`](PLAN_ESCALATIONS.md) closed on 2026-10-19**: what a
+reviewer's labels at the escalations buy the order. Sergi signed §0 on
+2026-10-19, before any of its figures existed. It handed rung 3's search the
+truth of sets of rung 1's train-half escalations, at the audit's label budgets
+and with the audit's own instrument, and set each beside that record's own
+random draws of train cases at the same budget. Three rules chose which
+escalations to label first. Its record is
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md).
+Its gate reads that plan and no other, and guards its one writer. `rung3/`,
+`students/` and `reuse/` are called by it and not edited.
+
+**It spends nothing.** It reproduces from the committed records in about twelve
+minutes, about a third of it the suite inside its first check.
+
+```bash
+python3 -m escalations.score --dry-run          # J-g1..J-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m escalations.score   # J-a to J-e, and the readings of J-f
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -770,6 +790,7 @@ What it covers, and why those things:
 | `test_ranking.py` | the `PLAN_RANKING.md` instrument: §10's constants with the client imported from rung 2's judge and reasoning off, the three lines read from their records and moving with them, the gate counting every signature line, the twelve presentations and a changed order moving a digest, an injected ticket, rule, queue or omission caught, validity at every edge §0 names, the instrument's arithmetic by hand, one cell of `M-g1` and all of `M-g3` on the real records with a tampered row caught, the dry run computing no rate but the published one and scoring no ranking, every writer refusing unsigned before it builds the client or writes, the smoke and key checks with OpenRouter's endpoint always replaced, Stage B end to end through the double, and Stage C over asks that state Stage C's own ranking. **No figure of the plan** |
 | `test_students.py` | the `PLAN_STUDENTS.md` instrument: §3's and §10's constants and §0's lines, the gate counting every signature line, the thin label at its edge, the tree by hand — its splits and their order, growth, the plurality's tie-break, folds grouped by ticket, the pruning sequence and the choice of `k` — and its leaves as valid, disjoint, covering rules the frozen engine executes, the regression's features, gradient, optimum and choice of `λ`, the cache's distance, tie-break and protocol against the frozen file, every mask route against point-by-point prediction, the material and the rules' side on the real records with a tampered figure caught, the stage's second routes on decisions alone and its glue on a synthetic set, the dry run training nothing on the answers by its syntax tree, each verdict at its edge, the writer refusing unsigned, and the students under three values of `PYTHONHASHSEED`. **No figure of the plan** |
 | `test_students_readings.py` | `students/readings.py`, the POST-RUN readings `PLAN_STUDENTS.md` left open: the derivation of the two `ONCALL_ESCALATION` leaves' points recomputed by brute force from the hidden policy, the mask of the points an order gets right against `score_order`, a mask by true queue and two predictions deciding alike, each clause of the expectation at its edge, and the writer refusing unsigned before it reads or fits. **No figure of the reading** |
+| `test_escalations.py` | the `PLAN_ESCALATIONS.md` instrument: §9's constants, §1's material and §0's lines, the gate counting every signature line, the three selection rules by hand and `selections.py` naming no truth by its syntax tree, the material recomputed and the comparators read off the audit's record, the record's own draw rebuilt, the dry run handing the search no set of escalations but the 286 named by `gates.py`'s syntax tree, each verdict and thin label at its edge, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
@@ -1421,6 +1442,13 @@ adaptive-policy-compilation/
 │   ├── score.py             the stage · T-a to T-e, the readings of T-f
 │   └── readings.py          POST-RUN · the three readings the stage left open
 │
+├── escalations/          J · what a reviewer's labels at the escalations buy the order
+│   ├── plan.py              the gate and §9's constants; §1's material and §0's lines
+│   ├── selections.py        the 316 escalations and the three rules that choose; no truth
+│   ├── instrument.py        the audit's label-budget search, on a given labelled set
+│   ├── gates.py             J-g1..J-g4 · blocking, run before any write
+│   └── score.py             the stage · J-a to J-e, the readings of J-f
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1502,7 +1530,7 @@ adaptive-policy-compilation/
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
     results_authorship/  results_overlap/  results_blind/  results_screen/
-    results_bound/  results_ranking/  results_students/
+    results_bound/  results_ranking/  results_students/  results_escalations/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
