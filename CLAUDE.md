@@ -555,6 +555,32 @@ mark thin a difference that lay inside the comparator's spread. A plan that sets
 draws from a small population beside draws from a large one should say in §0
 how it reads their spread.
 
+**`PLAN_SPOTCHECK.md` closed on 2026-10-19: what a random audit of the
+system's decisions buys beside the escalations.** Five signed rows adjudicated,
+two held and three refuted, and one reported. Sergi signed §0 on 2026-10-19,
+before any figure it governs existed. It handed rung 3's search the truth of
+every train-half escalation of rung 1 and of a random draw of the cases rung 1's
+engine decided itself, at the optimizer audit's label budgets and in nested
+draws. It read each order between the escalations alone and the whole train
+half, and the decisions alone beside. The record is
+`results_spotcheck/FINDINGS_SPOTCHECK.md`, and `STATUS.md` indexes its figures.
+**Everything in it is free** and reproduces from the committed records. Its one
+writer refuses while the plan carries a blank signature line, and the gate
+reads `PLAN_SPOTCHECK.md` and no other plan. `escalations/`, `rung3/` and
+`reuse/` are called by it and not edited. The first command is blocking and
+writes nothing:
+
+    python3 -m spotcheck.score --dry-run          # N-g1..N-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m spotcheck.score   # N-a to N-e, the readings of N-f
+
+**Its `N-c` banded the median of a quantity an order gets all at once or not at
+all.** Such a quantity puts the draws in two clusters, and a line between them
+only says which cluster the middle draw fell in. A plan that bands one should
+band how many draws get it, and say so in §0. **And a check on names misses a
+subscript.** `PLAN_ESCALATIONS.md`'s `J-g2` walked names, so `r["truth"]` would
+have passed it. A check that a module reads no truth should read its string
+literals too, as `N-g2` does.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17

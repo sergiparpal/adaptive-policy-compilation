@@ -55,7 +55,10 @@ three held and two refuted, and one reported, written up in
 `results_students/`. **What a reviewer's labels at the escalations buy the
 order closed on October 19, 2026**: `PLAN_ESCALATIONS.md`, five signed rows,
 four held and one refuted, and one reported, written up in
-`results_escalations/`. This is a list of things not done, none of them
+`results_escalations/`. **What a random audit of the system's decisions buys
+beside the escalations closed the same day**: `PLAN_SPOTCHECK.md`, five signed
+rows, two held and three refuted, and one reported, written up in
+`results_spotcheck/`. This is a list of things not done, none of them
 developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -66,6 +69,15 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **A random audit of the decisions beside the escalations.** October 19, 2026,
+  `PLAN_SPOTCHECK.md`, zero calls. Rung 3's search was handed the truth of every
+  train-half escalation and of a random draw of the cases rung 1's engine
+  decided itself. Fifty audited decisions add little to the escalations where
+  tickets arrive, and 251 close two thirds of the gap to the whole train half,
+  mostly in `T3_ENGINEERING`, which an order learns all at once or not at all.
+  Over the function the audited sets fall below the escalations alone. Alone,
+  the decisions are worse labels than escalations or random arrivals. What it
+  leaves is in its own section below. `results_spotcheck/`.
 - **Labels at the escalations, as a reviewer would give them.** October 19,
   2026, `PLAN_ESCALATIONS.md`, zero calls. Rung 3's search was handed the truth
   of rung 1's train-half escalations at the audit's label budgets, beside that
@@ -248,6 +260,36 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_SPOTCHECK.md` opens and does not resolve
+
+Closed October 19, 2026. It handed rung 3's search the truth of every train-half
+escalation and of a random draw of the cases rung 1's engine decided itself, in
+nested draws at the optimizer audit's budgets. A small audit adds little to the
+escalations, and what a large one adds is mostly `T3_ENGINEERING`. What that
+leaves:
+
+- **Which tickets teach `T3_ENGINEERING`.** An order learns the class all at
+  once or not at all, and the number of its tickets in a draw does not decide
+  which: one ticket among ten decisions taught it, and three among fifty did
+  not. A free reading of those two draws would say which tickets, and whether
+  the class turns on one rule's place in the order.
+- **An audit aimed at the rare queues.** The engine decided only four common
+  queues, so the system's own decision cannot aim an audit at a rare one.
+  Another signal might: the margin between the matching rules, or a student's
+  uncertainty (§11.4 of the plan).
+- **Why a decision is a worse label than an escalation.** Alone, at equal
+  budget, the decisions buy less than random escalations and random arrivals at
+  every budget where tickets arrive. The escalations are CONFLICTs, and more
+  rules match them. Whether that is why is unmeasured.
+- **The online loop, and a reviewer who errs.** As for the escalations: the
+  order was searched once, on the final base, and the reviewer was the truth
+  (§11.1 and §11.2 of the plan).
+- **A median of five draws can fall between two clusters.** `N-c`'s line, 9,
+  lay between orders right on 0 to 2 cases and orders right on 13 to 19, so the
+  verdict says which cluster the middle draw fell in. A plan that bands a
+  quantity an order gets all at once or not at all should band how many draws
+  get it, and say so in §0.
+
 ## What `PLAN_ESCALATIONS.md` opens and does not resolve
 
 Closed October 19, 2026. It handed rung 3's search the truth of rung 1's
@@ -257,11 +299,12 @@ Where tickets arrive the escalations buy about what random train cases buy.
 Over the function they buy less, and the two rules tried for which to label
 first lose to a random draw. What that leaves:
 
-- **What the escalations never teach.** The order on all 316 falls short of the
-  full search mostly in `T3_ENGINEERING`, a queue that almost never escalated.
-  A reviewer who labels only what the loop escalates never sees it. Whether a
-  small random audit of decisions beside the escalations would buy it is
-  unmeasured: the plan named that audit as the alternative and did not run it.
+- ~~**What the escalations never teach.**~~ **Measured on 2026-10-19 as
+  `PLAN_SPOTCHECK.md`** (`FINDINGS_SPOTCHECK.md`). A small random audit of the
+  decisions buys little of it: fifty audited decisions beside the escalations
+  teach `T3_ENGINEERING` in two draws of five. 251 teach it in all five and
+  close two thirds of the gap. What that leaves is in *What
+  `PLAN_SPOTCHECK.md` opens*, above.
 - **Which escalations to label first.** The most crowded escalations are two
   queues' tickets. Labelled first, they buy almost nothing on the arrivals and
   the most over the function. A rule that spreads the labels across queues is
@@ -274,7 +317,9 @@ first lose to a random draw. What that leaves:
   three of the four budgets, the set whose order is right on the most of the
   test split's `SECURITY_INCIDENT` cases has the highest share of the space.
   The record does not split the space by the keyword, which would say whether
-  the keyword's rule is what those shares measure.
+  the keyword's rule is what those shares measure. **[NOTE 2026-10-19, later]**
+  It recurs in `FINDINGS_SPOTCHECK.md`, read after its verdicts, in seven of
+  eight cells of arm and budget.
 - **The online loop, and a reviewer who errs.** The order was searched once, on
   the final base, and the reviewer was the truth (§11.1 and §11.2 of the plan).
 - **A thin label read on draws from populations of different sizes is

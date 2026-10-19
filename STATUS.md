@@ -17,8 +17,9 @@ What is known, as of October 19, 2026. **Not a history** — that is the four
 [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md),
 [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
 [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
-[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md) and
-[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md) and
+[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -50,7 +51,9 @@ queues, asked of the model, in `PLAN_RANKING.md`**: six more, closed the same
 day — plus **what the proposer's rules buy over a learner fitted to its
 answers, in `PLAN_STUDENTS.md`**: six more, closed on 2026-10-18 — plus **what
 a reviewer's labels at the escalations buy the order, in
-`PLAN_ESCALATIONS.md`**: six more, closed on 2026-10-19.
+`PLAN_ESCALATIONS.md`**: six more, closed on 2026-10-19 — plus **what a random
+audit of the system's decisions buys beside the escalations, in
+`PLAN_SPOTCHECK.md`**: six more, closed the same day.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -191,6 +194,23 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So a reviewer at the escalations buys the order about as well as one of random
 > tickets where tickets arrive, and less of it over the function.
 > [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md).
+>
+> **[NOTE 2026-10-19, later] A small random audit of the decisions adds little to
+> it.** [`PLAN_SPOTCHECK.md`](PLAN_SPOTCHECK.md) labelled every escalation and a
+> random draw of the cases rung 1's engine decided itself.
+>
+> - **Fifty audited decisions add four cases** of corpus test split 0 to the
+>   escalations' 814 (`N-a` holds, thin), not half of the 29 that separate them
+>   from full supervision (`N-b` refuted).
+> - **251 add 19** (`N-e` holds, thin), nearly all of them in the one queue the
+>   escalations never teach, `T3_ENGINEERING`, which an order learns all at
+>   once or not at all (`N-c` refuted, thin).
+> - **Over the space the audited sets fall below the escalations alone**
+>   (`N-d` refuted, thin).
+>
+> So what the escalations leave takes a large audit to buy: half of it lies
+> between 100 and 251 audited decisions, at the medians.
+> [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md).
 
 ---
 
@@ -239,7 +259,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and seven rows have been signed before the figures they name existed. This
+**One hundred and thirteen rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -288,20 +308,22 @@ a count behind it.
 | **M** · the ranking, asked of the model (§0 of `PLAN_RANKING.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **T** · the students (§0 of `PLAN_STUDENTS.md`) | 6 | 5 | **2** | 0 | 3 | 1 |
 | **J** · the escalations (§0 of `PLAN_ESCALATIONS.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
-| **total** | **107** | **89** | **36** | **2** | **51** | **16** |
+| **N** · the audit of decisions (§0 of `PLAN_SPOTCHECK.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
+| **total** | **113** | **94** | **39** | **2** | **53** | **17** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
-`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`.
+`O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
+`N-c`, `N-d`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
-`J-e`.
+`J-e`, `N-a`, `N-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -324,16 +346,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 36 of 89 = **40.4%**
-refuted; without them, 34 of 83 = **41.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 39 of 94 = **41.5%**
+refuted; without them, 37 of 88 = **42.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.6 points the flattering way, which is exactly why saying so is not optional.
+0.5 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 36 of 82 = **43.9%** and 34
-of 76 = **44.7%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 39 of 87 = **44.8%** and 37
+of 81 = **45.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -420,6 +442,12 @@ of 76 = **44.7%**, which is the reading the calibration note should take.
 > One was reported. None of its bands was set on a development set. The table,
 > the named lists, the count in the heading and the four ratios moved together;
 > the gap between the first two is still 0.6 points.
+>
+> **[NOTE 2026-10-19, later] Recomputed with the `N` thread, in the same commit as
+> its row.** Six rows were signed and five adjudicated: three refuted and two
+> held. One was reported. None of its bands was set on a development set. The
+> table, the named lists, the count in the heading and the four ratios moved
+> together; the gap between the first two is now 0.5 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -1283,6 +1311,14 @@ transfer proportionally worse.
 > against the record's draws' 717 (`J-a` and `J-b` hold, `J-b` thinly). Over the
 > space it is 0.3426 against 0.3993 (`J-e` holds). All 316 escalations give 814.
 > [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md).
+>
+> **[NOTE 2026-10-19, later] With every escalation labelled, a random audit of
+> the decisions climbs the rest of the curve slowly.** Beside the 316 escalations,
+> 10, 50, 100 and 251 audited decisions give medians of 814, 818, 826 and 833 on
+> corpus test split 0, against the whole train half's 843 (`N-a` to `N-e`).
+> Alone, at equal budget, the decisions buy less than random escalations and
+> random arrivals at every budget.
+> [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md).
 
 **Caveat on the low-budget rows, added August 15, 2026.** Step 3 reads them as
 *the tie-break regularises*: the objective saturates, most starts tie, ties go to
@@ -1678,6 +1714,35 @@ So a deployment can buy the order from a reviewer at the escalations, where
 tickets arrive, about as well as from a reviewer of random tickets. It cannot
 buy it there for the function, and of the two rules tried for which to label
 first, neither beats a random draw.
+
+**What a random audit of the system's decisions buys beside the escalations:
+little at a small budget, and mostly one queue.** `PLAN_SPOTCHECK.md` labelled
+all 316 escalations and a random draw of the 689 train-half cases rung 1's
+engine decided itself, in five nested draws, and read the order between the
+escalations alone and the whole train half, from
+[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md):
+
+- **Fifty audited decisions add four cases to the escalations' 814** on corpus
+  test split 0, at the median of five orders (`N-a` holds, thin). Half of the
+  29-case gap to the whole train half's 843 would be 829 (`N-b` refuted).
+- **251 audited decisions reach 833** (`N-e` holds, thin), two thirds of the
+  gap; 100 reach 826.
+- **`T3_ENGINEERING` is learnt all at once or not at all.** At fifty decisions
+  the five orders are right on 19, 0, 2, 1 and 13 of the test split's 57 cases
+  of that queue (`N-c` refuted, thin). At 251 every draw is right on 13 to 19.
+  Read after the verdicts, it is most of what the audit buys: 13 to 19 of the
+  14 to 21 cases gained at 251.
+- **Over the space the audited sets fall below the escalations alone**: 57,890
+  of 134,400 points at fifty decisions against 73,020 (`N-d` refuted, thin),
+  and 62,905 at 251. The whole train half is at 81,089.
+- **Alone, the decisions are worse labels than random escalations and random
+  arrivals** on the test split at every budget: 694 at fifty, against 737 and
+  717. Reported.
+
+So a reviewer who answers the escalations and audits a few decisions at random
+buys little more than the escalations buy. What the audit buys is mostly the
+queue the loop never asked about, and per label a decision is worth less than
+an escalation where tickets arrive.
 
 ---
 
