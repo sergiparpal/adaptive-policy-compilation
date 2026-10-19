@@ -16,6 +16,10 @@ three have the same subject, the same tree and the same `git patch-id
 
 **This record owns every figure in it.**
 
+**A POST-RUN reading was added on 2026-10-19**: [`readings.json`](readings.json),
+by `spotcheck/readings.py`, in its own section below. Its `_env` names
+`6379e0f`, the branch commit that wrote its expectation. It moves no verdict.
+
 **The stage adjudicated the five signed rows on 2026-10-19: two hold and three
 are refuted, and four of the five are thin.**
 
@@ -317,6 +321,9 @@ order.
 - **Which tickets teach `T3_ENGINEERING`.** The record shows that the tickets
   matter and their number does not, and it does not say which. A reading of
   draw 4's one ticket at ten decisions, and of draw 1's three at fifty, would.
+  **[NOTE 2026-10-19, later] Read POST-RUN**: six of the train half's 60 carry
+  the class, the ones a single rule matches. *Which tickets teach
+  `T3_ENGINEERING`*, below.
 - **An audit aimed at the rare queues.** The engine decided only four queues,
   so a reviewer cannot aim at a rare queue by the system's decision. Another
   signal might, such as the margin between matching rules or a student's
@@ -330,6 +337,91 @@ order.
 
 ---
 
+## Which tickets teach `T3_ENGINEERING` — POST-RUN
+
+> **POST-RUN.** Asked for on 2026-10-19, after the stage.
+> `spotcheck/readings.py` wrote its eight-clause expectation in its docstring
+> and was committed before the first run. It searched the stage's 40 orders and
+> the two endpoints again, behind two gates:
+> - every order is the record's, on both surfaces and on the four rare queues;
+> - two routes agree on the class, by first match and by masks.
+>
+> Not a signed row; no verdict moves. The record is
+> [`readings.json`](readings.json), which keeps every order.
+
+**The class turns on one rule: `R0545`, *severity 1 on the api product*.** It
+is a `T3_ENGINEERING` rule written at arrival 1,939 of 2,000, from a ticket of
+the test split.
+- **On the test split** it matches 13 cases, every one of them
+  `T3_ENGINEERING`: 13 of the 20 that any order can reach.
+- **In the train half** it matches seven tickets, all of them decisions rung 1
+  got wrong, as `T2_TECHNICAL`. Six are `T3_ENGINEERING`: cases 58, 153, 181,
+  1,053, 1,485 and 1,664. One is `ONCALL_ESCALATION`: case 1,432.
+
+**An order learns the class when those 13 cases go to a `T3_ENGINEERING`
+rule.** In 18 of the 22 orders that learn it, `R0545` decides all 13. In the
+other four, among them the whole train half's, `R0489` sits above it and takes
+three of the 13. That is a broader rule of the same queue, *severity 2 or less,
+off hours, five or more recent tickets*. In two of the four `R0116`, another
+rule of that queue, takes one more. Both get them right, so `R0545` decides 9
+or 10. In 21 of the 22, all 13 cases are right.
+
+**Where the class is not learnt, `R0545` sits below rules of other queues.**
+In all 15 such orders it decides none of the 13. Its 13 cases come up 195 times
+across those orders:
+- 134 go to `T2_TECHNICAL` rules;
+- 58 go to `ONCALL_ESCALATION` ones, 49 of them to `R0029`, *severity 1 without
+  the keyword*, written at arrival 74;
+- 3 go to another `T3_ENGINEERING` rule.
+
+In the escalations alone's order, 560 of the 577 rules sit above it.
+
+**Moved to the front, it makes every one of the 42 orders learn the class**,
+right on 13 to 19 of the 57. It costs nothing on the test split, where it
+matches no ticket of another queue. Each of the 15 orders that did not learn
+the class gains 12 or 13 test cases.
+
+**So the search leaves `R0545` where its start put it unless a label reaches
+it.**
+- **No order whose labels hold none of its six `T3_ENGINEERING` tickets learns
+  the class**: 17 orders.
+- **22 of the 25 orders that hold one do.** The other three hold the
+  `ONCALL_ESCALATION` ticket 1,432 too: draw 3's audited set at 100, and its
+  audit alone at 100 and at 251. In each, an `ONCALL_ESCALATION` rule placed
+  above `R0545` takes four of its 13 cases.
+
+**Which tickets teach it.**
+- **The escalations hold none of the six.** So nothing in their labels lifts
+  it, and the escalations alone are right on none of the 57.
+- **Draw 4's one `T3_ENGINEERING` ticket** among its first ten decisions is case
+  153, one of the six. Draw 1's three among its first fifty are not.
+- **A draw holds one of the six** from ten decisions on in one draw of five,
+  from fifty in two, from 100 in four and from 251 in all five.
+
+So *the number of the class's tickets does not decide it*, in the third reading
+above, comes to this: six of the train half's 60 `T3_ENGINEERING` tickets carry
+the class, and the other 54 do not.
+
+### The expectation, clause by clause
+
+| clause | expected | read | verdict |
+|---|---|---|---|
+| E1 | the key rule decides at least 13 of the whole train half's 18 | 9 | **fails** |
+| E2 | at least 13 in every order that learns the class | 13 in 18 of the 22; 9, 9, 9 and 10 in four | **fails** |
+| E3 | none in every order that does not; two thirds or more of the cases it loses to `T2_TECHNICAL` | none in 15; 134 of the 192 it loses | holds |
+| E4 | moved to the front, every order learns the class | 13 to 19 of 57 | holds |
+| E5 | and every order that did not gains on the whole test split | +12 or +13 | holds |
+| E6 | none of the escalations' three is matched by the key rule, and draw 4's one at ten is | none; it is | holds |
+| E7 | none of draw 1's three at fifty is | none | holds |
+| E8 | no order without one learns; four in five with one do | 0 of 17; 22 of 25 | holds |
+
+**Six of eight held.** The two that failed bet that one rule decides the class's
+cases alone. A second rule of the same queue shares them in four orders, and the
+cases are right either way. The drafter trusted E5 least, and it held, because
+`R0545` matches nothing on the test split but its own queue's tickets.
+
+---
+
 ## Files
 
 ```
@@ -337,8 +429,11 @@ spotcheck/plan.py         the gate and the constants of §9; §1's material and 
 spotcheck/selections.py   the 689 decisions, the nested draws, the two arms; no truth
 spotcheck/gates.py        N-g1 to N-g4, blocking, run first
 spotcheck/score.py        the stage: N-a to N-e, the readings of N-f
-results_spotcheck/score.json   the stage's figures, every set, its make-up, the endpoints, the gates
-tests/test_spotcheck.py        how the package counts — and no figure
+spotcheck/readings.py     POST-RUN: which tickets teach T3_ENGINEERING
+results_spotcheck/score.json      the stage's figures, every set, its make-up, the endpoints, the gates
+results_spotcheck/readings.json   the reading's figures and orders, behind two gates, and the expectation
+tests/test_spotcheck.py           how the package counts — and no figure
+tests/test_spotcheck_readings.py  how readings.py counts, and each clause at its edge
 ```
 
 The instrument is `escalations/instrument.py`'s, called and not copied.
@@ -347,4 +442,5 @@ Reproducible, in this order:
 ```
 python3 -m spotcheck.score --dry-run          # N-g1..N-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m spotcheck.score   # about fifteen minutes
+PYTHONHASHSEED=0 python3 -m spotcheck.readings  # POST-RUN; about eleven minutes
 ```
