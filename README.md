@@ -828,7 +828,7 @@ What it covers, and why those things:
 | `test_order_determinism.py` | that the greedy search of rungs 3 and 4 gives the same order under three `PYTHONHASHSEED` values, with a witness confirming that hashing really is randomized |
 | `test_proposal_parsing.py` | the parsing of what the proposer returns, in both versions |
 | `test_llm_path.py` | the **whole** LLM path, replaying the recorded runs without spending (see below) |
-| `test_provenance.py` | the `_env` block, that it does not leak the key, and that no JSON writer is left without one |
+| `test_provenance.py` | the `_env` block, that it does not leak the key, that no JSON writer is left without one, and that the records without one are exactly the thirteen closed by decision, read off the records themselves |
 | `test_record_guard.py` | the guard on the records that cost money: what it refuses, that it aborts **before** spending a call, that the output name no longer collides across `--n`, and that the free records stay unguarded |
 | `test_call_record.py` | what a paid call keeps per attempt (generation id, provider, model, both finish reasons, tokens) from a response shaped like OpenRouter's and from the bare double; that the recorder changes no request and no response; that every paid client carries it and every record path keeps it; and that no call site in the tree goes unrecorded without a stated exemption |
 | `test_automation.py` | that the hook and the CI workflow are still there and still run what they say they run |
@@ -838,6 +838,12 @@ what changed and, if the change is legitimate, you date the erratum in the
 corresponding `FINDINGS`. Rungs 3 and 4 are covered by determinism rather than
 by snapshot, on purpose: their published figures are those of the code prior to
 the tie-break fix and are pending a re-run.
+
+> **[NOTE 2026-10-20] They are no longer pending.** The optimizer audit re-ran
+> both rungs, with the tie-break fixed, into new records that carry `_env`
+> (August 8 and 13, 2026), and the FINDINGS carry the corrected figures as dated
+> errata. The three pre-fix records stay as published, without `_env`, by
+> Sergi's decision: *The `_env` block*, below.
 
 ### The LLM path, without spending
 
@@ -1014,6 +1020,14 @@ splits the records today into two groups:
 
 Put another way: what is still missing `_env` is exactly what cannot be
 reproduced for free or what must not be reproduced yet.
+
+> **[NOTE 2026-10-20] The right-hand column is closed, by Sergi's decision:
+> those thirteen records will never carry `_env`, and every other record
+> does.** A paid record run again would be another record, not this one with a
+> block, and the three free ones run again would move their digits; they are
+> kept as published beside the audit's `_ls` records. `tests/test_provenance.py`
+> pins the list in both directions. The reasons are in [`IDEAS.md`](IDEAS.md),
+> *Technical debt*.
 
 ---
 

@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 19, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 20, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -58,8 +58,10 @@ four held and one refuted, and one reported, written up in
 `results_escalations/`. **What a random audit of the system's decisions buys
 beside the escalations closed the same day**: `PLAN_SPOTCHECK.md`, five signed
 rows, two held and three refuted, and one reported, written up in
-`results_spotcheck/`. This is a list of things not done, none of them
-developed and in no order of precedence.
+`results_spotcheck/`. **The technical debt of the thirteen records without
+`_env` was closed on October 20, 2026, by Sergi's decision**; *Technical debt*
+says why. This is a list of things not done, none of them developed and in no
+order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -2441,8 +2443,15 @@ What remains shares a root: **it is not closed by writing code but by re-running
 records**, and what is left to re-run either costs money or is deliberately
 deferred.
 
-- **The records still without `_env` are exactly the ones that cannot be
-  reproduced for free.** The deterministic, free ones were re-run on August
+**[NOTE 2026-10-20] The first two items are closed by Sergi's decision, and
+re-running was never going to close them.** A paid record run again is another
+record, and the three free ones run again move their digits. So the thirteen
+records without `_env` will never carry one, for the reasons under each item,
+and `tests/test_provenance.py` pins the list in both directions. The third item
+stays as it was: a test considered and deliberately not written.
+
+- ~~**The records still without `_env` are exactly the ones that cannot be
+  reproduced for free.**~~ The deterministic, free ones were re-run on August
   7, 2026 and earned it without a single datum changing — in that same pass
   `comparison.json` and `note_audit.json` adopted their new shape,
   `{"_env": ..., "rows": [...]}`, with the same rows; see
@@ -2451,11 +2460,23 @@ deferred.
   costs money and they would not come out the same, because the proposer is not
   deterministic at `temperature 0`. It will appear in each one when there is a
   reason to pay for it, not before.
-- **Rungs 3 and 4 are covered by determinism, not by snapshot, and their three
-  records still have no `_env` for the same reason.** Their published figures are
-  those of the code prior to the tie-break fix: re-running them is free, but it
-  moves digits, and pinning the new values here would create a second official
-  figure that no FINDINGS backs.
+  **[NOTE 2026-10-20] Closed by Sergi's decision: these ten will never carry
+  `_env`.** Paying would not give it to them. A new run is another record with
+  other rules, and the originals are what everything downstream reads:
+  `llm_run.json` is the base rungs 3 and 4 and most later threads start from.
+  Overwriting them is hard rule 4, and a new rung 1 run is voided in advance by
+  STOP 0. Nor can the block be written in after the fact: all ten entered git in
+  the first commit, `4fd40ce`, after they were produced, so no commit identifies
+  the code that wrote them. What stands in for it is the replay of
+  `tests/test_llm_path.py`, in which today's code reproduces `llm_run.json` and
+  `llm_run2_n100.json` rule by rule and record by record, and
+  `requirements.lock.txt`, which pins the environment the paid records were
+  produced in. Every paid record since has carried `_env` from its first write.
+- ~~**Rungs 3 and 4 are covered by determinism, not by snapshot, and their three
+  records still have no `_env` for the same reason.**~~ Their published figures
+  are those of the code prior to the tie-break fix: re-running them is free, but
+  it moves digits, and pinning the new values here would create a second
+  official figure that no FINDINGS backs.
 
   **Half-resolved 2026-08-08.** The audit produced four new records that all
   carry `_env` — `optimizer_check.json`, `order_search_ls.json`,
@@ -2474,6 +2495,13 @@ deferred.
   local-search-today — separate the 2026-08-06 tie-break fix from the optimizer
   for the first time. The figures and the dated erratum are in
   `results3/FINDINGS_AUDIT.md` and `results3/FINDINGS3.md` §4.
+
+  **[NOTE 2026-10-20] Closed by Sergi's decision too: these three will never
+  carry `_env`.** Run again today they move their digits, and they are kept
+  precisely as the published column beside the audit's records, which carry it:
+  `order_search_ls.json`, `budget_and_balance_ls.json` and `sweep_ls.json`. The
+  code that wrote them predates the repository, as for the ten above, so no
+  commit identifies it either.
 
 - **A test that reads the figures out of `results*/` and fails when a prose table
   disagrees. Considered on August 9, 2026 and deliberately not written.** It would
