@@ -124,7 +124,7 @@ any figure.**
 | **Z-e** | **Deferring them buys something over the function.** | exhaustive space, 134,400 points: the same order, its count right | **> 73,020** | **≤ 73,020** |
 | **Z-f** | *Reported, not adjudicated.* **What reading the rows needs.** | §8's readings: every unreached rule of both endpoints, its place, what it decides and its front move on both surfaces, split at its birth ticket; `R0545` over the space; the back move and the coin for both endpoints on both surfaces; the curve of the optimizer audit's random arrivals; the rare classes | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-20)**
 
 **One label, and it does not change a verdict.** `Z-d` and `Z-e` read one order
 after one move, and the order's own placement of the unreached rules is one draw.
