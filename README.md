@@ -539,6 +539,7 @@ minutes, about a third of it the suite inside its first check.
 ```bash
 python3 -m unreached.score --dry-run          # Z-g1..Z-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m unreached.score   # Z-a to Z-e, and the readings of Z-f
+PYTHONHASHSEED=0 python3 -m unreached.keyword_half  # POST-RUN · what the keyword holds over the space
 ```
 
 What each of them should produce is in the record it belongs to; the corrected
@@ -843,6 +844,7 @@ What it covers, and why those things:
 | `test_spotcheck.py` | the `PLAN_SPOTCHECK.md` instrument: §9's constants, §1's material and each draw's make-up and §0's lines, the gate counting every signature line, the nested draws and the two arms by hand, `selections.py` naming no truth in a name or a string, and the literal check catching the subscript a name check misses, the material recomputed and the endpoints as their records hold them, the dry run handing the search no set holding decisions but the whole train half by `gates.py`'s syntax tree, each verdict and thin label at its edge, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
 | `test_spotcheck_readings.py` | `spotcheck/readings.py`, the POST-RUN reading of which tickets teach `T3_ENGINEERING`: first match, the rules' right counts and the key rule by hand with its tie, the move to the front, the two routes of its second gate agreeing on arrival order, each clause of the expectation at its edge, and the writer refusing unsigned before it searches. **No figure of the reading** |
 | `test_unreached.py` | the `PLAN_UNREACHED.md` instrument: §9's constants, §1's material, its table of the 25 rules and §0's lines, the gate counting every signature line, the front move, the back move and the coin by hand, reach read off matching, copies as rules written the same, `moves.py` naming no truth in a name or a string, the material, the table, the copies and the curve's reach recomputed, a rule's front move on a toy instance by first match and by masks, the dry run applying no move to a searched order but the published one by `gates.py`'s syntax tree, each verdict and thin label at its edge, a copy counted once, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
+| `test_unreached_keyword_half.py` | `unreached/keyword_half.py`, the POST-RUN reading of what the keyword holds over the space: the rules it names, the material it derives and the expectation's lines, an order's split by the keyword and its copy place and who decides a region on masks by hand, the back move rule by rule summing to the move with no point a reached rule decided moving, a rule's path read as rises, the record's greedy rebuilt as a start and a toy search replayed pass by pass to where the whole search ends, the cells' top and squared deviations exactly, each clause of the expectation at its edge, and the writer refusing unsigned before it searches. **No figure of the reading** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
@@ -1526,7 +1528,8 @@ adaptive-policy-compilation/
 │   ├── plan.py              the gate and §9's constants; §1's material, the table of the 25, §0's lines
 │   ├── moves.py             reach, the front move, the back move, the coin, copies; no truth
 │   ├── gates.py             Z-g1..Z-g4 · blocking, run before any write
-│   └── score.py             the stage · Z-a to Z-e, the readings of Z-f
+│   ├── score.py             the stage · Z-a to Z-e, the readings of Z-f
+│   └── keyword_half.py      POST-RUN · what the keyword holds over the space
 │
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines

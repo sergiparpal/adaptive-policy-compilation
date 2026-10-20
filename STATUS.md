@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 20, 2026. **Not a history** — that is the four
+What is known, as of October 21, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -1740,7 +1740,9 @@ of train cases at the same budget, on split 0, from
   highest share of any set of escalations at 50 and at 251 labels. Reported.
 - **Over the space the escalations buy less than random arrivals at every
   budget**: 0.3426 of the 134,400 points at fifty labels, against 0.3993 (`J-e`
-  holds).
+  holds). **[NOTE 2026-10-21] Read POST-RUN, the gap lies in the keyword
+  half**: at every budget the other half's medians differ by 1,240 points at
+  most (`FINDINGS_UNREACHED.md`, *What the keyword holds over the space*).
 - **All 316 give 814 on the test split, 91% of the gain**, the figure of the
   286 whose proposal named a queue. They are 18 cases short of the full search
   in `T3_ENGINEERING` alone, a queue that escalated 3 times in 316. Reported.
@@ -1805,8 +1807,13 @@ placements of the same rules. From
 - **Over the space one rule holds the stake.** `R0019`, *keyword and severity 1*
   to `SECURITY_INCIDENT`, gains 5,900 of the 134,400 points at the front, and
   every other distinct rule loses or changes nothing (`Z-c` holds, on it).
+  **[NOTE 2026-10-21] Read POST-RUN**: ten rules above the keyword rule's
+  highest copy, at place 52, take those points with another queue,
+  `T2_TECHNICAL` the most. Three of them decide no escalation.
 - **Deferring the 25 gains 1,560 points over the space**, inside the random
-  placements' 65,900 to 77,300 (`Z-e` holds, thin).
+  placements' 65,900 to 77,300 (`Z-e` holds, thin). **[NOTE 2026-10-21] Read
+  POST-RUN, it is one rule**: `R0459`, the only one of the 25 that decides a
+  point of the space there, hands its keyword points to the keyword rule.
 - **Every one of the 25 was written at a test-split ticket.** On their own
   tickets, 11 of the 22 distinct rules' moves lose and one gains. Under full
   supervision the five rules left unreached decide nothing. Reported.
@@ -1814,6 +1821,20 @@ placements of the same rules. From
 So the rules a set of labels never reaches hold, where tickets arrive, only the
 rule the reading after `PLAN_SPOTCHECK.md` found, and over the function one
 keyword rule. Deferring them buys nothing a reshuffle of them does not.
+
+**[NOTE 2026-10-21] Over the function, orders labelled differently differ in
+the keyword half.** Read POST-RUN by `unreached/keyword_half.py`, over the
+escalations stage's sets and the audit stage's draws, twelve cells of budget
+and arm. In all twelve the order with the most points over the space has the
+most on the keyword half. Pooled, that half carries 1.035 of the cells' spread
+over the space, and in eleven cells between 0.89 and 1.42 of it. The reading
+also found that the curve's reading had the greedy start wrong. The greedy
+takes the rules that score zero in birth order while a labelled case is left,
+so it does not put the rules no label reaches at the tail. At ten labels the
+`SECURITY_INCIDENT` rules the back move defers sat where their ids put them,
+and no swap carried them; two sentences carry dated errata. No verdict moves.
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
+*What the keyword holds over the space*.
 
 ---
 

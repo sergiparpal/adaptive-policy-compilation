@@ -602,6 +602,7 @@ edited. The first command is blocking and writes nothing:
 
     python3 -m unreached.score --dry-run          # Z-g1..Z-g4; must pass first
     PYTHONHASHSEED=0 python3 -m unreached.score   # Z-a to Z-e, the readings of Z-f
+    PYTHONHASHSEED=0 python3 -m unreached.keyword_half  # POST-RUN: what the keyword holds over the space
 
 **Every rule no escalation reaches was written at a test-split ticket.** Rung 1
 wrote its rules over all the arrivals, so the base reaches the test split by
@@ -612,7 +613,15 @@ one.** A plan that bands a sum over rules should say in §0 what it reads when
 one rule carries it. **And a move cannot change what its rules do not decide.**
 `Z-d` was settled by a count that reads no truth, how many test cases the moved
 rules decide, and it was none. A plan that bands a move should make that count
-before signature, and say in §0 why it does not inform the band.
+before signature, and say in §0 why it does not inform the band. **And the
+record's greedy does not put a rule no label reaches at the tail.** While a
+labelled case is left undecided it takes the rules that score zero in birth
+order, so at a small budget its start is mostly birth order. The plan assumed
+the tail, and the curve's reading said a swap had carried a rule up from it.
+Read POST-RUN, the start had put the rule where it stood, and nothing had
+moved it. Rebuild a start before saying where it put a rule. **And over the
+space, orders labelled differently differ in the keyword half.** A reading of
+a space figure across label sets should split it by the keyword.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

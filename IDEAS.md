@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 20, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 21, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -62,7 +62,9 @@ rows, two held and three refuted, and one reported, written up in
 `_env` was closed on October 20, 2026, by Sergi's decision**; *Technical debt*
 says why. **What the rules no label reaches hold closed the same day**:
 `PLAN_UNREACHED.md`, five signed rows, two held and three refuted, and one
-reported, written up in `results_unreached/`. This is a list of things not done,
+reported, written up in `results_unreached/`. **What the keyword holds over
+the space was read POST-RUN on October 21, 2026**, and the four items it
+answers are struck in place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -280,19 +282,36 @@ rest without it, beside random placements of them, and read the same along the
 optimizer audit's label curve. Where tickets arrive only `R0545` pays, and over
 the function one keyword rule holds the stake. What that leaves:
 
-- **Why the keyword rule pays over the function.** `R0019`, *keyword and
-  severity 1* to `SECURITY_INCIDENT`, sits high in the escalations' order and
-  decides none of its test cases, yet its move to the front is the whole of
-  `Z-c`. Which rules above it decide the keyword's severity-1 points, and with
-  which queue, is unread and free.
-- **The parts of the back move over the space.** Deferring the 25 gains points
-  there, inside a reshuffle's range, and the record does not say which rules
-  they come from. Free.
-- **What a swap carries up.** Along the curve the back move costs most at ten
-  labels, where the order loses its `SECURITY_INCIDENT` cases: an unreached rule
-  of that queue had been carried up from the greedy's tail and was deciding
-  them right. Which rule, and from where, is unread; the declared seed rebuilds
-  every start. Free.
+- ~~**Why the keyword rule pays over the function.**~~ **Read POST-RUN on
+  2026-10-21** (`FINDINGS_UNREACHED.md`, *What the keyword holds over the
+  space*). The keyword rule's highest copy sits just above `R0019`. Ten rules
+  above it take `R0019`'s points with another queue, `T2_TECHNICAL` the most,
+  and seven of them name the free tier. Three decide no escalation.
+- ~~**The parts of the back move over the space.**~~ **Read POST-RUN on
+  2026-10-21**, in the same section: one rule. `R0459` is the only rule no
+  escalation reaches that decides a point of the space, and the move's gain is
+  its keyword points, handed to the keyword rule.
+- ~~**What a swap carries up.**~~ **Read POST-RUN on 2026-10-21**, in the same
+  section: nothing. The rules are `R0019` and `R0067`, and the greedy start put
+  them where their ids do; no pass lifted either. The record's greedy takes the
+  rules that score zero in birth order while a labelled case is left, so it
+  does not put the unreached at the tail. Two sentences of the record carry
+  dated errata. What it leaves:
+  - **How much of a small budget's greedy start is birth order.** No record
+    counts the picks the greedy makes at zero along the optimizer audit's
+    curve. At ten labels that would say how far the curve's orders are arrival
+    order. Free.
+  - **The rules above the copy that no label places.** `R0483` and `R0485`
+    decide no escalation, and `R0459` none reaches, yet the three take a third
+    of what `R0019` leaves. Rebuilding the escalations' start, `aleatorio 57`,
+    would say whether they sit where it put them. Free.
+- **What lifts the keyword rule over the function.** Over the space, orders
+  labelled differently differ in the keyword half, and it carries the cells'
+  whole spread. Read after the reading, the five orders with the most keyword
+  points each hold a labelled ticket with the keyword whose truth is
+  `SECURITY_INCIDENT`. Many orders that hold one do not rise as far, and no
+  escalation is one. Whether that ticket is what lifts the copy, these orders
+  cannot say. Free on the records for a reading, a plan for a test.
 - **A selection that reaches rules.** On the arrivals there is nothing in the
   rules the escalations leave unreached to buy beyond `R0545`'s six train
   tickets. Over the function there is the keyword rule's. Labelling to reach
@@ -367,13 +386,18 @@ first lose to a random draw. What that leaves:
 - **Whether an escalation is worth more than a random arrival at a small
   budget.** The medians say so at 10 and 50 labels, and the draws cannot tell.
   The audit's curve has five splits, and this plan read one.
-- **Why the space follows `SECURITY_INCIDENT`.** Read after the verdicts: at
+- ~~**Why the space follows `SECURITY_INCIDENT`.**~~ Read after the verdicts: at
   three of the four budgets, the set whose order is right on the most of the
   test split's `SECURITY_INCIDENT` cases has the highest share of the space.
   The record does not split the space by the keyword, which would say whether
   the keyword's rule is what those shares measure. **[NOTE 2026-10-19, later]**
   It recurs in `FINDINGS_SPOTCHECK.md`, read after its verdicts, in seven of
-  eight cells of arm and budget.
+  eight cells of arm and budget. **[NOTE 2026-10-21] Read POST-RUN**
+  (`FINDINGS_UNREACHED.md`, *What the keyword holds over the space*). In all
+  twelve cells of the two stages, the order with the most points over the space
+  has the most on the keyword half, and that half carries the cells' spread.
+  `J-e`'s gap lies in it too. What it leaves is under *What
+  `PLAN_UNREACHED.md` opens*, above.
 - **The online loop, and a reviewer who errs.** The order was searched once, on
   the final base, and the reviewer was the truth (§11.1 and §11.2 of the plan).
 - **A thin label read on draws from populations of different sizes is
