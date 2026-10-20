@@ -629,6 +629,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `escalations/score.py` | `results_escalations/score.json` | **refuses while the plan is unsigned** |
 > | `spotcheck/score.py` | `results_spotcheck/score.json` | **refuses while the plan is unsigned** |
 > | `spotcheck/readings.py` | `results_spotcheck/readings.json` | **refuses while the plan is unsigned** |
+> | `unreached/score.py` | `results_unreached/score.json` | **refuses while the plan is unsigned** |
 > | `why/score.py` | `results_why/score.json` | **refuses while the plan is unsigned** |
 > | `rung2/compare_runs.py` | `results2/comparison.json` | only against shrinking |
 > | `rung2/note_audit.py` | `results2/note_audit.json` | only against shrinking |
@@ -698,7 +699,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_RANKING.md`'s, and `students/score.py --dry-run`, which runs
 > `PLAN_STUDENTS.md`'s, and `escalations/score.py --dry-run`, which runs
 > `PLAN_ESCALATIONS.md`'s, and `spotcheck/score.py --dry-run`, which runs
-> `PLAN_SPOTCHECK.md`'s.
+> `PLAN_SPOTCHECK.md`'s, and `unreached/score.py --dry-run`, which runs
+> `PLAN_UNREACHED.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
