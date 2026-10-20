@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 18, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 19, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
