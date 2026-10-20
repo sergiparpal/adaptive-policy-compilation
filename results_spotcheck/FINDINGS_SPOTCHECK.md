@@ -215,6 +215,12 @@ tie three orders at 3. The exception is the audit alone at 251, where the second
 highest order holds the most, five. At fifty, a draw holds at most one
 `SECURITY_INCIDENT` ticket.
 
+> **[NOTE 2026-10-21] Measured over the space, POST-RUN**, in
+> `results_unreached/FINDINGS_UNREACHED.md`, *What the keyword holds over the
+> space*. In all eight cells the order with the most points over the space has
+> the most on the keyword half. In each cell that half carries 0.89 to 1.07 of
+> the spread over the space. No figure here and no verdict moves.
+
 **5. Alone, the decisions are the worst labels of the three on the test split.**
 
 | labels | the audit alone | random escalations | random arrivals |
@@ -313,6 +319,12 @@ so whether they are one order is not recorded. As in `FINDINGS_ESCALATIONS.md`,
 the same declared start lands different label sets on what looks like the same
 order.
 
+> **[NOTE 2026-10-21] Draws 0 and 3 are the escalations alone's order, list for
+> list.** [`readings.json`](readings.json), written the same day, kept both,
+> and `results_unreached/score.json` keeps the third. The comparison with
+> `FINDINGS_ESCALATIONS.md` does not hold: the two orders there, read POST-RUN,
+> are two (`FINDINGS_UNREACHED.md`, *What the keyword holds over the space*).
+
 ---
 
 ## What this does not settle
@@ -335,7 +347,9 @@ order.
   here (§11.3).
 - **Why the space follows `SECURITY_INCIDENT`.** Read after the verdicts, on ten
   test cases, here and in `FINDINGS_ESCALATIONS.md`. Neither record splits the
-  space by the keyword.
+  space by the keyword. **[NOTE 2026-10-21] Read POST-RUN**: the keyword half
+  carries nearly all of each cell's spread over the space
+  (`FINDINGS_UNREACHED.md`, *What the keyword holds over the space*).
 - **One split.** Every row is read on split 0 (§11.5).
 
 ---
