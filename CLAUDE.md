@@ -585,6 +585,35 @@ reaches where its start put it.** The class `N-c` read turned on one such rule,
 read POST-RUN. A reading of what an order learns should ask which labels reach
 which rules before it asks how many labels there are.
 
+**`PLAN_UNREACHED.md` closed on 2026-10-20: what the rules no label reaches
+hold, and what deferring them buys.** Five signed rows adjudicated, two held and
+three refuted, and one reported. Sergi signed §0 on 2026-10-20, before any
+figure it governs existed. It took the rules no labelled case matches, which
+rung 3's search leaves where its start put them, and moved them in the
+escalations' order and the whole train half's: each alone to the front, read
+with the truth, and all below every reached rule, without it, beside seeded
+random placements of the same rules. The optimizer audit's label curve was read
+the same way. The record is `results_unreached/FINDINGS_UNREACHED.md`, and
+`STATUS.md` indexes its figures. **Everything in it is free** and reproduces
+from the committed records. Its one writer refuses while the plan carries a
+blank signature line, and the gate reads `PLAN_UNREACHED.md` and no other plan.
+`escalations/`, `spotcheck/`, `rung3/` and `reuse/` are called by it and not
+edited. The first command is blocking and writes nothing:
+
+    python3 -m unreached.score --dry-run          # Z-g1..Z-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m unreached.score   # Z-a to Z-e, the readings of Z-f
+
+**Every rule no escalation reaches was written at a test-split ticket.** Rung 1
+wrote its rules over all the arrivals, so the base reaches the test split by
+birth, which no check on labels sees. Moved on the test split, such a rule
+decides its birth ticket with the proposer's own answer: read the move away
+from that ticket, as this plan did. **Its `Z-c` summed over rules and held on
+one.** A plan that bands a sum over rules should say in §0 what it reads when
+one rule carries it. **And a move cannot change what its rules do not decide.**
+`Z-d` was settled by a count that reads no truth, how many test cases the moved
+rules decide, and it was none. A plan that bands a move should make that count
+before signature, and say in §0 why it does not inform the band.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17

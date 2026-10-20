@@ -51,6 +51,7 @@ up in four places at once.
 | **T** · the students | what the proposer's rules buy over a learner fitted to its answers: a pruned tree, a logistic regression and the cache's retrieval, trained on the queues it named at the escalations and set beside the rules written from them — closed 2026-10-18 | [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md) |
 | **J** · the escalations | what a reviewer's labels at the escalations buy the order: rung 3's search handed the truth of rung 1's train-half escalations at the audit's label budgets, set beside that record's own random draws, with three rules for which to label first — closed 2026-10-19 | [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md) |
 | **N** · the audit of decisions | what a random audit of the system's decisions buys beside the escalations: rung 3's search handed the truth of every train-half escalation and of a random draw of the cases rung 1's engine decided itself, in nested draws, read between the escalations alone and the whole train half — closed 2026-10-19 | [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md) |
+| **Z** · the rules no label reaches | what the rules no labelled case matches hold in rung 3's labelled orders: each moved alone to the front with the truth reading the result, and all moved below the rest without it, beside random placements of them, in the escalations' order and along the label curve — closed 2026-10-20 | [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -519,6 +520,27 @@ PYTHONHASHSEED=0 python3 -m spotcheck.score   # N-a to N-e, and the readings of 
 PYTHONHASHSEED=0 python3 -m spotcheck.readings  # POST-RUN · which tickets teach T3_ENGINEERING
 ```
 
+**[`PLAN_UNREACHED.md`](PLAN_UNREACHED.md) closed on 2026-10-20**: what the rules
+no label reaches hold, and what deferring them buys. Sergi signed §0 on
+2026-10-20, before any of its figures existed. It took the rules no labelled
+case matches, which rung 3's search leaves where its start put them, and moved
+them in the escalations' order and the whole train half's: each alone to the
+front, read with the truth, and all below every reached rule, without it,
+beside random placements of the same rules. The optimizer audit's label curve
+was read the same way. Its record is
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md).
+Its gate reads that plan and no other, and guards its one writer.
+`escalations/`, `spotcheck/`, `rung3/` and `reuse/` are called by it and not
+edited.
+
+**It spends nothing.** It reproduces from the committed records in about eleven
+minutes, about a third of it the suite inside its first check.
+
+```bash
+python3 -m unreached.score --dry-run          # Z-g1..Z-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m unreached.score   # Z-a to Z-e, and the readings of Z-f
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -819,6 +841,7 @@ What it covers, and why those things:
 | `test_escalations.py` | the `PLAN_ESCALATIONS.md` instrument: §9's constants, §1's material and §0's lines, the gate counting every signature line, the three selection rules by hand and `selections.py` naming no truth by its syntax tree, the material recomputed and the comparators read off the audit's record, the record's own draw rebuilt, the dry run handing the search no set of escalations but the 286 named by `gates.py`'s syntax tree, each verdict and thin label at its edge, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
 | `test_spotcheck.py` | the `PLAN_SPOTCHECK.md` instrument: §9's constants, §1's material and each draw's make-up and §0's lines, the gate counting every signature line, the nested draws and the two arms by hand, `selections.py` naming no truth in a name or a string, and the literal check catching the subscript a name check misses, the material recomputed and the endpoints as their records hold them, the dry run handing the search no set holding decisions but the whole train half by `gates.py`'s syntax tree, each verdict and thin label at its edge, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
 | `test_spotcheck_readings.py` | `spotcheck/readings.py`, the POST-RUN reading of which tickets teach `T3_ENGINEERING`: first match, the rules' right counts and the key rule by hand with its tie, the move to the front, the two routes of its second gate agreeing on arrival order, each clause of the expectation at its edge, and the writer refusing unsigned before it searches. **No figure of the reading** |
+| `test_unreached.py` | the `PLAN_UNREACHED.md` instrument: §9's constants, §1's material, its table of the 25 rules and §0's lines, the gate counting every signature line, the front move, the back move and the coin by hand, reach read off matching, copies as rules written the same, `moves.py` naming no truth in a name or a string, the material, the table, the copies and the curve's reach recomputed, a rule's front move on a toy instance by first match and by masks, the dry run applying no move to a searched order but the published one by `gates.py`'s syntax tree, each verdict and thin label at its edge, a copy counted once, and the writer refusing unsigned before it checks or writes. **No figure of the plan** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
@@ -1498,6 +1521,12 @@ adaptive-policy-compilation/
 │   ├── score.py             the stage · N-a to N-e, the readings of N-f
 │   └── readings.py          POST-RUN · which tickets teach T3_ENGINEERING
 │
+├── unreached/            Z · what the rules no label reaches hold, and what deferring them buys
+│   ├── plan.py              the gate and §9's constants; §1's material, the table of the 25, §0's lines
+│   ├── moves.py             reach, the front move, the back move, the coin, copies; no truth
+│   ├── gates.py             Z-g1..Z-g4 · blocking, run before any write
+│   └── score.py             the stage · Z-a to Z-e, the readings of Z-f
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1580,7 +1609,7 @@ adaptive-policy-compilation/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
     results_authorship/  results_overlap/  results_blind/  results_screen/
     results_bound/  results_ranking/  results_students/  results_escalations/
-    results_spotcheck/
+    results_spotcheck/  results_unreached/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
