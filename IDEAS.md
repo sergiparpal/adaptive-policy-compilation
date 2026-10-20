@@ -60,8 +60,10 @@ beside the escalations closed the same day**: `PLAN_SPOTCHECK.md`, five signed
 rows, two held and three refuted, and one reported, written up in
 `results_spotcheck/`. **The technical debt of the thirteen records without
 `_env` was closed on October 20, 2026, by Sergi's decision**; *Technical debt*
-says why. This is a list of things not done, none of them developed and in no
-order of precedence.
+says why. **What the rules no label reaches hold closed the same day**:
+`PLAN_UNREACHED.md`, five signed rows, two held and three refuted, and one
+reported, written up in `results_unreached/`. This is a list of things not done,
+none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
 here is a number only where the number IS the open question — a budget to plan
@@ -71,6 +73,14 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **The rules no label reaches.** October 20, 2026, `PLAN_UNREACHED.md`, zero
+  calls. The 25 rules no escalation matches were moved in the escalations'
+  order: each alone to the front, read with the truth, and all below the rest
+  without it. Where tickets arrive, `R0545` was the only one that paid, and none
+  of the 25 decides a test case there, so deferring them changes nothing. Over
+  the function one rule holds the stake, *keyword and severity 1* to
+  `SECURITY_INCIDENT`, and deferring all of them gains no more than a reshuffle
+  of them. What it leaves is in its own section below. `results_unreached/`.
 - **A random audit of the decisions beside the escalations.** October 19, 2026,
   `PLAN_SPOTCHECK.md`, zero calls. Rung 3's search was handed the truth of every
   train-half escalation and of a random draw of the cases rung 1's engine
@@ -262,6 +272,41 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_UNREACHED.md` opens and does not resolve
+
+Closed October 20, 2026. It moved the rules no escalation matches in the
+escalations' order, each alone to the front with the truth and all below the
+rest without it, beside random placements of them, and read the same along the
+optimizer audit's label curve. Where tickets arrive only `R0545` pays, and over
+the function one keyword rule holds the stake. What that leaves:
+
+- **Why the keyword rule pays over the function.** `R0019`, *keyword and
+  severity 1* to `SECURITY_INCIDENT`, sits high in the escalations' order and
+  decides none of its test cases, yet its move to the front is the whole of
+  `Z-c`. Which rules above it decide the keyword's severity-1 points, and with
+  which queue, is unread and free.
+- **The parts of the back move over the space.** Deferring the 25 gains points
+  there, inside a reshuffle's range, and the record does not say which rules
+  they come from. Free.
+- **What a swap carries up.** Along the curve the back move costs most at ten
+  labels, where the order loses its `SECURITY_INCIDENT` cases: an unreached rule
+  of that queue had been carried up from the greedy's tail and was deciding
+  them right. Which rule, and from where, is unread; the declared seed rebuilds
+  every start. Free.
+- **A selection that reaches rules.** On the arrivals there is nothing in the
+  rules the escalations leave unreached to buy beyond `R0545`'s six train
+  tickets. Over the function there is the keyword rule's. Labelling to reach
+  rules would need its own plan, and on the arrivals it has little to aim at.
+- **The hybrid pool, other splits and other bases** (§11 of the plan).
+- **A sum over rules can rest on one rule.** `Z-c` summed 22 rules' gains and
+  held on one, as `O-c`'s rate over declared edges rested on one declaration. A
+  plan that bands a sum over rules should say in §0 what it reads when one rule
+  carries it.
+- **A move cannot change what its rules do not decide.** `Z-d` was settled by a
+  count of zero that reads no truth: how many test cases the moved rules
+  decide. A plan that bands a move should count that before signature, and say
+  in §0 why the count does not inform the band.
+
 ## What `PLAN_SPOTCHECK.md` opens and does not resolve
 
 Closed October 19, 2026. It handed rung 3's search the truth of every train-half
@@ -276,12 +321,12 @@ leaves:
   product*. On the test split it matches only its own queue's tickets, and in
   the train half six of them, all decisions. The search lifts it only when one
   of the six is labelled.
-- **Rules no label reaches.** A search over labels leaves every rule no
-  labelled case matches where its start put it. The rule `T3_ENGINEERING` turns
-  on is one of them. Moved to the front, it costs nothing on the arrivals and
-  buys most of what the whole train half's labels buy of that queue. How many
-  others there are in rung 1's base, and what moving each would buy on either
-  surface, is unmeasured and free.
+- ~~**Rules no label reaches.**~~ **Measured on 2026-10-20 as
+  `PLAN_UNREACHED.md`** (`FINDINGS_UNREACHED.md`). The escalations leave 25
+  unreached, 22 distinct, every one written at a test-split ticket. Where
+  tickets arrive `R0545` was the only one whose move pays; over the function
+  one keyword rule holds the stake. What that leaves is in *What
+  `PLAN_UNREACHED.md` opens*, above.
 - **An audit aimed at the rare queues.** The engine decided only four common
   queues, so the system's own decision cannot aim an audit at a rare one.
   Another signal might: the margin between the matching rules, or a student's

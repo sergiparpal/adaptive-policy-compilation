@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 19, 2026. **Not a history** — that is the four
+What is known, as of October 20, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -18,8 +18,9 @@ What is known, as of October 19, 2026. **Not a history** — that is the four
 [`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md),
 [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
 [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
-[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md) and
-[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
+[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md) and
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -53,7 +54,8 @@ answers, in `PLAN_STUDENTS.md`**: six more, closed on 2026-10-18 — plus **what
 a reviewer's labels at the escalations buy the order, in
 `PLAN_ESCALATIONS.md`**: six more, closed on 2026-10-19 — plus **what a random
 audit of the system's decisions buys beside the escalations, in
-`PLAN_SPOTCHECK.md`**: six more, closed the same day.
+`PLAN_SPOTCHECK.md`**: six more, closed the same day — plus **what the rules no
+label reaches hold, in `PLAN_UNREACHED.md`**: six more, closed on 2026-10-20.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -211,6 +213,24 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So what the escalations leave takes a large audit to buy: half of it lies
 > between 100 and 251 audited decisions, at the medians.
 > [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md).
+>
+> **[NOTE 2026-10-20] And it is not in the rules the escalations never reach,
+> beyond one.** [`PLAN_UNREACHED.md`](PLAN_UNREACHED.md) moved the 25 rules no
+> escalation matches, which the search leaves where its start put them.
+>
+> - **On corpus test split 0 only `R0545`, the rule `T3_ENGINEERING` turns on,
+>   pays at the front.** None of the other 21 distinct rules gains away from
+>   the ticket it was written at (`Z-a`, `Z-b` refuted).
+> - **None of the 25 decides a test case in the escalations' order**, so
+>   deferring them all, which reads no truth, leaves it at 814 (`Z-d` refuted,
+>   thin).
+> - **Over the space the stake is one rule**, *keyword and severity 1* to
+>   `SECURITY_INCIDENT` (`Z-c` holds). Deferring the 25 gains no more than a
+>   reshuffle of them does (`Z-e` holds, thin).
+>
+> So beyond `R0545`, what the escalations leave on the arrivals is not in the
+> rules they never reach, and over the function those rules hold one rule's
+> worth. [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md).
 
 ---
 
@@ -259,7 +279,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and thirteen rows have been signed before the figures they name existed. This
+**One hundred and nineteen rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -309,21 +329,22 @@ a count behind it.
 | **T** · the students (§0 of `PLAN_STUDENTS.md`) | 6 | 5 | **2** | 0 | 3 | 1 |
 | **J** · the escalations (§0 of `PLAN_ESCALATIONS.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
 | **N** · the audit of decisions (§0 of `PLAN_SPOTCHECK.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
-| **total** | **113** | **94** | **39** | **2** | **53** | **17** |
+| **Z** · the rules no label reaches (§0 of `PLAN_UNREACHED.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
+| **total** | **119** | **99** | **42** | **2** | **55** | **18** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
-`N-c`, `N-d`.
+`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
-`J-e`, `N-a`, `N-e`.
+`J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -346,16 +367,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 39 of 94 = **41.5%**
-refuted; without them, 37 of 88 = **42.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 42 of 99 = **42.4%**
+refuted; without them, 40 of 93 = **43.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.5 points the flattering way, which is exactly why saying so is not optional.
+0.6 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 39 of 87 = **44.8%** and 37
-of 81 = **45.7%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 42 of 92 = **45.7%** and 40
+of 86 = **46.5%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -448,6 +469,12 @@ of 81 = **45.7%**, which is the reading the calibration note should take.
 > held. One was reported. None of its bands was set on a development set. The
 > table, the named lists, the count in the heading and the four ratios moved
 > together; the gap between the first two is now 0.5 points.
+>
+> **[NOTE 2026-10-20] Recomputed with the `Z` thread, in the same commit as its
+> row.** Six rows were signed and five adjudicated: three refuted and two held.
+> One was reported. None of its bands was set on a development set. The table,
+> the named lists, the count in the heading and the four ratios moved together;
+> the gap between the first two is now 0.6 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -1319,6 +1346,14 @@ transfer proportionally worse.
 > Alone, at equal budget, the decisions buy less than random escalations and
 > random arrivals at every budget.
 > [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md).
+>
+> **[NOTE 2026-10-20] Along the same curve, the rules no label reaches.** The
+> optimizer audit's twenty orders on split 0 leave 247 to 357 rules unreached
+> at ten labels and 17 to 28 at 251. Moving all of them below every reached
+> rule, which reads no truth, changes the test count by −32 to +9 and the space
+> count by −11,500 to +5,185, and changes nothing in nine orders. Reported
+> (`Z-f`).
+> [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md).
 
 **Caveat on the low-budget rows, added August 15, 2026.** Step 3 reads them as
 *the tie-break regularises*: the objective saturates, most starts tie, ties go to
@@ -1737,6 +1772,9 @@ escalations alone and the whole train half, from
   tickets of that queue, all decisions rung 1 got wrong. No order whose labels
   hold none of the six learns the class, and 22 of the 25 with one do. Moved to
   the front, the rule makes every order learn it, at no cost on the test split.
+  **[NOTE 2026-10-20] It was alone.** Of the 25 rules no escalation reaches, it
+  is the only one whose move to the front pays on the test split, and over the
+  space its move loses 820 points (`PLAN_UNREACHED.md`, below).
 - **Over the space the audited sets fall below the escalations alone**: 57,890
   of 134,400 points at fifty decisions against 73,020 (`N-d` refuted, thin),
   and 62,905 at 251. The whole train half is at 81,089.
@@ -1748,6 +1786,34 @@ So a reviewer who answers the escalations and audits a few decisions at random
 buys little more than the escalations buy. What the audit buys is mostly the
 queue the loop never asked about, and per label a decision is worth less than
 an escalation where tickets arrive.
+
+**What the rules no label reaches hold: where tickets arrive, the one already
+found; over the function, one more.** `PLAN_UNREACHED.md` took the 25 rules no
+escalation matches, which rung 3's search leaves where its start put them, and
+moved them in the escalations' order: each alone to the front, read with the
+truth, and all below every reached rule, without it, beside 100 random
+placements of the same rules. From
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md):
+
+- **On corpus test split 0, `R0545` was alone.** Its move gains 13 cases, 12 of
+  them away from the ticket it was written at. None of the other 21 distinct
+  rules gains away from its own (`Z-a` refuted), so they hold nothing of the
+  29-case gap to the whole train half (`Z-b` refuted).
+- **None of the 25 decides a test case in that order**, so deferring them leaves
+  it at 814 (`Z-d` refuted, thin). Random placements of the same rules run from
+  798 to 827.
+- **Over the space one rule holds the stake.** `R0019`, *keyword and severity 1*
+  to `SECURITY_INCIDENT`, gains 5,900 of the 134,400 points at the front, and
+  every other distinct rule loses or changes nothing (`Z-c` holds, on it).
+- **Deferring the 25 gains 1,560 points over the space**, inside the random
+  placements' 65,900 to 77,300 (`Z-e` holds, thin).
+- **Every one of the 25 was written at a test-split ticket.** On their own
+  tickets, 11 of the 22 distinct rules' moves lose and one gains. Under full
+  supervision the five rules left unreached decide nothing. Reported.
+
+So the rules a set of labels never reaches hold, where tickets arrive, only the
+rule the reading after `PLAN_SPOTCHECK.md` found, and over the function one
+keyword rule. Deferring them buys nothing a reshuffle of them does not.
 
 ---
 
