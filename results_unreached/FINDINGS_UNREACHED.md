@@ -14,6 +14,12 @@ the GitHub API names #150 behind `e5e844c`. The code digest the `_env` records,
 
 **This record owns every figure in it.**
 
+**A POST-RUN reading was added on 2026-10-21**:
+[`keyword_half.json`](keyword_half.json), by `unreached/keyword_half.py`, in its
+own section below. Its `_env` names `9da087f`, the branch commit that wrote its
+expectation. It moves no verdict. It corrects two sentences of the curve's
+reading, with dated errata in place.
+
 **The stage adjudicated the five signed rows on 2026-10-20: two hold and three
 are refuted, and two are thin.**
 
@@ -303,6 +309,19 @@ started from the greedy.** That start puts the unreached at the tail, so what
 the back move undoes there is what the local search's swaps carried up. Where it
 changes the test count, it lowers it in seven orders and raises it in two.
 
+> **[ERRATUM 2026-10-21] The greedy start does not put the unreached at the
+> tail, and the back move does not undo swaps there.** The record's greedy goes
+> on choosing while a labelled case is left undecided. A rule that matches none
+> of the cases left scores zero, and the greedy breaks ties by rule id, which is
+> birth order. So once nothing scores above zero it takes the rules that score
+> zero, earliest-born first, and a labelled case every matching rule gets wrong
+> keeps it doing so through most of the base. Rules no label reaches then sit
+> near their birth order's places. In all eight orders `R0019` starts between
+> places 19 and 29, and no pass lifts it. §1 and §6.8 of the plan assumed the
+> same tail. Read POST-RUN, from the greedy's code and the replayed starts, in
+> *What the keyword holds over the space*, below. No figure and no verdict
+> moves.
+
 ### The rare classes
 
 Right decisions on the test split's rare queues, before and after the back move:
@@ -323,6 +342,13 @@ is an unreached `SECURITY_INCIDENT` rule that had been deciding those cases
 right.** Both orders started from the greedy, which put it at the tail, so a
 swap had carried it up. The record does not name it.
 
+> **[ERRATUM 2026-10-21] Nothing carried it up.** There are two such rules:
+> `R0019`, which decides two of the three cases, and `R0067`, the earliest-born
+> copy of the keyword rule, which decides the third. The greedy start put them
+> at places 19 and 22 and at 65 and 67, and no move or swap lifted either. The
+> sentence in bold stands. Read POST-RUN in *What the keyword holds over the
+> space*, below.
+
 ---
 
 ## What this does not settle
@@ -333,13 +359,23 @@ swap had carried it up. The record does not name it.
   reached rules too.
 - **The parts of the back move over the space.** The record holds the move's
   1,560 points and not which rules they come from, or where the 25 decide points
-  in the order.
+  in the order. **[NOTE 2026-10-21] Read POST-RUN**: one rule, `R0459`, the only
+  one of the 25 that decides a point of the space there. The 1,560 are its
+  keyword points, handed to the keyword rule. *What the keyword holds over the
+  space*, below.
 - **Why `R0019` leaves 5,900 points.** It sits 55 rules down. Which rules above
   it decide the keyword's severity-1 points, and with which queue, is not read.
+  **[NOTE 2026-10-21] Read POST-RUN**: ten rules above the keyword rule's
+  highest copy, at place 52, `T2_TECHNICAL` the queue that takes the most. Three
+  of them decide no escalation. The same section.
 - **Which rules the swaps carried up along the curve.** The record keeps each
   order but not the start it came from, which the declared seed would rebuild,
   so how far each unreached rule moved is not read. The rare-class reading above
-  says what the costliest moves deferred, and not which rule it was.
+  says what the costliest moves deferred, and not which rule it was. **[NOTE
+  2026-10-21] Read POST-RUN: none.** The starts were rebuilt and replayed pass
+  by pass. The `SECURITY_INCIDENT` rules the back move defers never rose: the
+  greedy start put them there, in birth order. The same section, and the two
+  errata above.
 - **A selection that reaches rules** (§11.3 of the plan). On the arrivals there
   is nothing in the rules the escalations leave unreached to buy, beyond
   `R0545`'s six train tickets. Over the space there is `R0019`'s.
@@ -358,6 +394,265 @@ swap had carried it up. The record does not name it.
 
 ---
 
+## What the keyword holds over the space — POST-RUN
+
+> **POST-RUN.** Asked for on 2026-10-20, after the stage, and run on
+> 2026-10-21. `unreached/keyword_half.py` wrote its eight-clause expectation in
+> its docstring and was committed before the first run, as `9da087f` on its
+> branch. It read this stage's 22 orders and the audit stage's 40 from their
+> records. It searched the escalations stage's 29 again, since that record kept
+> none. Four gates stood before any write:
+> - every order is its record's, on both surfaces and on the four rare queues;
+> - the masks are one convention: the keyword half is the keyword rule's
+>   extension, and the truth by queue partitions the space;
+> - two routes agree: every count walked rule by rule is `score_order`'s, and
+>   every move summed rule by rule is this stage's figure;
+> - every start, rebuilt from the declared seed and replayed pass by pass, ends
+>   at the record's order.
+>
+> Not a signed row; no verdict moves. The record is
+> [`keyword_half.json`](keyword_half.json), which keeps the escalations stage's
+> 29 orders.
+
+Four questions the records leave open turn on one attribute. Three are in *What
+this does not settle*, above:
+- why `R0019` leaves 5,900 points;
+- which rules the back move's 1,560 come from;
+- which rule a swap carried up along the curve.
+
+The fourth is in `FINDINGS_ESCALATIONS.md` and `FINDINGS_SPOTCHECK.md`: why the
+space follows `SECURITY_INCIDENT` at the top.
+
+**The keyword half** is the 67,200 points of the space with the security
+keyword. The hidden policy's first layer decides all of it: `SECURITY_INCIDENT`
+on 50,400 points, and `T2_TECHNICAL` on the 16,800 of the two lower tiers at
+severity 3 or 4. Rung 1's base routes to `SECURITY_INCIDENT` with thirteen
+rules:
+- `R0019`, *the keyword and severity 1*;
+- **the keyword rule**, *the keyword* alone, written twelve times.
+
+Only the highest of the twelve copies decides anything. It matches the whole
+half, so no rule below it decides a point of the half. Its place is an order's
+**copy place**.
+
+### 1. Why `R0019` leaves 5,900 points
+
+In the escalations' order the highest copy is `R0208`, at place 52, three above
+`R0019`. It decides 10,900 of `R0019`'s 16,800 points, every one right. Ten rules
+above it take the other 5,900 with another queue:
+
+| place | rule | what it says | queue | of `R0019`'s points | escalations it decides: right of |
+|---|---|---|---|---|---|
+| 0 | `R0155` | billing, free tier, three or more recent tickets | `BILLING_SPECIALIST` | 720 | 25 of 27 |
+| 2 | `R0497` | enterprise, billing, severity 4 or less | `ACCOUNT_MANAGER` | 840 | 6 of 6 |
+| 6 | `R0411` | severity 1, billing, five or more recent tickets | `T3_ENGINEERING` | 1,280 | 1 of 1 |
+| 7 | `R0054` | free tier, integrations, fifteen or more recent tickets | `T3_ENGINEERING` | 240 | 1 of 1 |
+| 19 | `R0510` | free tier, dashboard, ten or more recent tickets | `T2_TECHNICAL` | 440 | 1 of 1 |
+| 24 | `R0247` | free tier, dashboard, severity 3 or less, five or more | `T2_TECHNICAL` | 200 | 2 of 2 |
+| 27 | `R0401` | free tier, billing | `BILLING_SPECIALIST` | 120 | 1 of 1 |
+| 34 | `R0483` | api, severity 3 or less, free tier, ten or more | `T2_TECHNICAL` | 440 | none |
+| 35 | `R0459` | integrations, by phone | `T2_TECHNICAL` | 780 | none, and no escalation reaches it |
+| 51 | `R0485` | mobile, severity 3 or less, free tier | `T2_TECHNICAL` | 840 | none |
+
+- **By queue**: `T2_TECHNICAL` takes 2,700, `T3_ENGINEERING` 1,520, and
+  `ACCOUNT_MANAGER` and `BILLING_SPECIALIST` 840 each.
+- **Seven of the ten name the free tier.** On the keyword's severity-1 points
+  every tier is `SECURITY_INCIDENT` in truth.
+- **Seven decide escalations**, and are right on 37 of the 39 they decide. They
+  take 3,840 of the 5,900.
+- **Three decide no escalation**: `R0483`, `R0485`, and `R0459`, which none
+  reaches. They take the other 2,060, and the labels give the search no reason
+  for their places.
+
+**In the whole train half's order `R0019` is first**, right on all 16,800
+points and on the three train tickets it decides.
+
+So `R0019` leaves its points where nothing in the labels concerns the keyword
+at severity 1: no escalation has both. The rules above the copy place take them,
+some for tickets they are right on without the keyword, some for nothing the
+labels say.
+
+**Over the whole half the escalations' order is right on 34,690 of 67,200
+points**: 26,440 `SECURITY_INCIDENT` ones, all the copy's, and 8,250
+`T2_TECHNICAL` ones, all taken above it. The whole train half's is right on
+39,440: 26,960 and 12,480.
+
+### 2. The back move over the space is one rule
+
+Of the 25 rules no escalation reaches, **only `R0459` decides a point of the
+space** in the escalations' order. Every other one sits below rules that take
+every point it matches, `R0506` among them, so deferring it changes nothing.
+
+`R0459`, *integrations by phone* to `T2_TECHNICAL`, sits at place 35, above the
+copy place. It decides 3,120 points:
+- 1,560 with the keyword, all `SECURITY_INCIDENT` in truth, so all wrong;
+- 1,560 without it, 360 of them right.
+
+Deferred, it hands the first to the keyword rule, which is right on every one.
+The second go to other `T2_TECHNICAL` rules, right on the same 360. **So the
+back move's 1,560 is the keyword rule's**: `R0459`'s keyword points, handed to
+it. On the other half the move is worth nothing.
+
+### 3. The swaps carried nothing up
+
+At ten labels, draws 0 and 2, the order's three `SECURITY_INCIDENT` test cases
+are decided by `R0019`, two of them, and by `R0067`, the earliest-born copy, the
+third. **Neither rose in any pass.** The greedy start put `R0019` at places 19
+and 22, and `R0067` at 65 and 67. No move or swap lifted either; across the
+replay each fell by one place at most.
+
+**[Read from the greedy's code, after the reading]** The record's greedy goes on
+choosing while a labelled case is left undecided. A rule that matches none of
+the cases left scores zero, and the greedy breaks ties by rule id, which is
+birth order. So once nothing scores above zero it takes the rules that score
+zero, earliest-born first. A labelled case every matching rule gets wrong keeps
+it doing so through most of the base. Rules no label reaches then sit near
+their birth order's places, not at the tail. That is the erratum above.
+
+| labels, draw | start | back move: test · space | keyword half · other half | `R0019` starts at |
+|---|---|---|---|---|
+| 10, 0 | greedy | −5 · −11,090 | −9,425 · −1,665 | 19 |
+| 10, 2 | greedy | −32 · −11,500 | −8,830 · −2,670 | 22 |
+| 50, 0 | random 4 | +3 · +475 | +220 · +255 | 134 |
+| 50, 1 | greedy | −2 · −2,510 | −2,535 · +25 | 24 |
+| 50, 2 | greedy | −1 · +5,185 | +4,350 · +835 | 25 |
+| 50, 4 | greedy | −1 · +3,245 | +3,405 · −160 | 26 |
+| 100, 0 | random 1 | 0 · +1,250 | +1,250 · 0 | 526 |
+| 100, 1 | greedy | −2 · −3,355 | −3,355 · 0 | 25 |
+| 100, 2 | greedy | 0 · +25 | 0 · +25 | 29 |
+| 100, 4 | greedy | −2 · −8,820 | −8,820 · 0 | 26 |
+| 251, 3 | random 14 | +9 · +120 | +60 · +60 | 516 |
+
+These are the eleven orders the back move changes; every start was rebuilt and
+replayed to the record's order.
+- **In the eight that move 1,000 points or more, the keyword half carries most
+  of the move.** In five of them the other half moves 160 points or fewer.
+- **At 10, 0 the keyword half carries 9,425 of the 11,090; at 10, 2, 8,830 of
+  11,500.** `R0019` decides 6,300 points of the space in both orders, every one
+  right, and `R0067` 4,685 and 5,310. Deferring the rules no label reaches loses
+  11,910 points at 10, 0 and gains 820; at 10, 2 it loses 12,170 and gains 670.
+- **On the test split the 32 cases lost at 10, 2 are mostly `T2_TECHNICAL`
+  rules** the greedy left in birth order. `R0010` and `R0038`, at places 13 and
+  41 from the start on, lose 19 cases each. Others gain back some.
+
+So at ten labels the order the search returns is mostly the greedy's own run in
+birth order. The back move undoes that run, and not swaps.
+
+### 4. The space follows the keyword half
+
+| cell | orders | over the space | on the keyword half | on the other half |
+|---|---|---|---|---|
+| escalations, 10 | 7 | 28,515 to 36,040 | 4,700 to 10,600 | 22,570 to 28,660 |
+| escalations, 50 | 7 | 43,455 to 61,810 | 10,010 to 39,275 | 22,535 to 36,040 |
+| escalations, 100 | 7 | 49,810 to 71,280 | 16,245 to 38,840 | 32,440 to 38,180 |
+| escalations, 251 | 7 | 53,985 to 74,660 | 13,635 to 36,370 | 38,290 to 40,350 |
+| audited sets, 10 | 5 | 53,220 to 74,694 | 14,410 to 36,370 | 38,324 to 40,790 |
+| audited sets, 50 | 5 | 55,204 to 79,420 | 14,420 to 38,890 | 36,450 to 41,030 |
+| audited sets, 100 | 5 | 54,930 to 71,320 | 14,620 to 31,160 | 39,690 to 41,630 |
+| audited sets, 251 | 5 | 59,385 to 75,535 | 17,835 to 34,090 | 40,305 to 42,310 |
+| the audit alone, 10 | 5 | 37,485 to 78,100 | 7,560 to 50,400 | 24,305 to 31,560 |
+| the audit alone, 50 | 5 | 42,750 to 72,590 | 8,370 to 42,200 | 25,730 to 34,380 |
+| the audit alone, 100 | 5 | 52,930 to 80,055 | 16,200 to 43,470 | 33,290 to 36,730 |
+| the audit alone, 251 | 5 | 57,320 to 75,910 | 19,820 to 38,480 | 35,440 to 39,645 |
+
+Each figure is right decisions. The escalations' cells are the seven sets of
+`FINDINGS_ESCALATIONS.md` at each budget, the five random draws, arrival and
+crowded. The audit's are `FINDINGS_SPOTCHECK.md`'s five draws at each arm and
+budget.
+
+- **In all twelve cells the order with the most points over the space has the
+  most on the keyword half**, and so do the random arrivals' four cells beside
+  them.
+- **Within the cells the keyword half's counts spread nearly 18 times as much as
+  the other half's**, in squared deviations from the cell means. Pooled, the
+  keyword half carries 1.035 of the cells' spread over the space: all of it,
+  with the other half moving slightly against it. Cell by cell it carries 0.89
+  to 1.42 of the spread in eleven cells. The twelfth is the escalations at ten
+  labels, where it carries 0.55. In the random arrivals' four cells it carries
+  0.78 to 0.99.
+- **Over the 91 orders read, the keyword half runs from 4,700 right to 50,400**,
+  every one of its `SECURITY_INCIDENT` points. The other half runs from 22,535
+  to 42,310.
+
+**So the space follows `SECURITY_INCIDENT` at the top because the keyword half
+is where orders labelled differently differ over the function.** The test
+split's ten `SECURITY_INCIDENT` cases read the same rule on ten tickets. Among
+the full search's end orders, which share their labels,
+`results3/FINDINGS_ORDERS.md` found that class carrying 57.5% of their
+disagreement over the space. Between orders whose labels differ, the keyword
+half carries the whole spread of the count.
+
+**[Read after the reading] The five orders with the most keyword points each
+hold, among their labels, a ticket with the keyword whose truth is
+`SECURITY_INCIDENT`.** Their highest copy is `R0067`, at places 4 to 19. Holding
+one is not enough: 29 of the 91 orders do. No escalation is one.
+
+**[Read after the reading] The escalations' shortfall over the function lies in
+the keyword half.** `FINDINGS_ESCALATIONS.md`'s `J-e` found that the escalations
+buy less over the space than random arrivals, at every budget. Split by the
+keyword, the medians of the five random draws on each side:
+
+| labels | over the space: escalations · arrivals | keyword half | other half |
+|---|---|---|---|
+| 10 | 34,885 · 45,700 | 8,625 · 18,105 | 24,980 · 25,360 |
+| 50 | 46,050 · 53,660 | 10,720 · 19,495 | 33,420 · 33,995 |
+| 100 | 56,760 · 58,610 | 18,580 · 21,125 | 36,930 · 36,975 |
+| 251 | 57,490 · 71,255 | 19,160 · 31,105 | 38,330 · 39,570 |
+
+At every budget the other half's two medians lie within 1,240 points of each
+other.
+
+### Two orders that were one, and two that were not
+
+- **The audited sets of draws 0 and 3 at ten decisions are the escalations
+  alone's order**, list for list. `FINDINGS_SPOTCHECK.md` left open whether they
+  were one order. `results_spotcheck/readings.json` kept both, and this stage's
+  record keeps the third.
+- **Draw 3 of 251 escalations and the order on all 316 are two orders.**
+  `FINDINGS_ESCALATIONS.md` left this open too. Both give 814 and 73,020, from
+  start 57, and 303 of their 577 places differ. They agree on both halves too,
+  34,690 and 38,330. They split the keyword half differently by truth: 26,860
+  `SECURITY_INCIDENT` points and 7,830 `T2_TECHNICAL` ones, against 26,440 and
+  8,250. This reading's record keeps both.
+
+### The expectation, clause by clause
+
+| clause | expected | read | verdict |
+|---|---|---|---|
+| E1 | `T2_TECHNICAL` takes the most of `R0019`'s 5,900 | 2,700; then `T3_ENGINEERING`, 1,520 | holds |
+| E2 | every rule taking 500 or more decides an escalation, and is right on three quarters of those | five take 500 or more; `R0459` and `R0485` decide none | **fails** |
+| E3 | deferring `R0506` loses points over the space | it decides none; nothing changes | **fails** |
+| E4 | the copy place is above every unreached rule, so the keyword half's part of the back move is zero | 52, below `R0459` at 35; the part is all 1,560 | **fails** |
+| E5 | at ten labels, the rules deciding the `SECURITY_INCIDENT` test cases made their largest rise in a swap | `R0019` and `R0067`; neither rose in any pass | **fails** |
+| E6 | there the keyword half carries the whole of the back move's loss over the space | 9,425 of 11,090, and 8,830 of 11,500 | **fails** |
+| E7 | in 9 or more of the 12 cells the top over the space is the top on the keyword half | 12 of 12 | holds |
+| E8 | the keyword half spreads more within the cells than the other half | nearly 18 times, in squared deviations | holds |
+
+**Three of eight held.** E7 and E8 held with room; they ask whether the space
+follows the keyword half. E1 held. The five that failed bet on how the orders
+came to put the keyword's rules where they are:
+- that the labels placed every rule above the copy (E2);
+- that the on-call rule decided anything there (E3);
+- that the copy sat above every rule no escalation reaches (E4);
+- that a swap carried the `SECURITY_INCIDENT` rules up (E5), and that the keyword
+  half carries all of that loss (E6).
+
+The drafter trusted E4 least and E1 next: E4 failed and E1 held.
+
+### What this reading does not settle
+
+- **How much of a small budget's greedy start is birth order.** It is read here
+  from the greedy's code and from where `R0019` and `R0067` start. No record
+  counts the picks the greedy makes at zero along the curve. Free.
+- **Why `R0483` and `R0485` sit above the copy.** Both decide no escalation, so
+  the labels give their places no reason. This reading did not rebuild the
+  escalations' start. Free.
+- **Whether a labelled `SECURITY_INCIDENT` ticket with the keyword is what lifts
+  the copy.** It was read on five orders after the reading, and 29 hold one.
+- **The hybrid pool, other splits and other bases**, as for the stage.
+
+---
+
 ## Files
 
 ```
@@ -365,8 +660,11 @@ unreached/plan.py         the gate and §9's constants; §1's material, the tabl
 unreached/moves.py        reach, the front move, the back move, the coin, copies; no truth
 unreached/gates.py        Z-g1 to Z-g4, blocking, run first
 unreached/score.py        the stage: Z-a to Z-e, the readings of Z-f
+unreached/keyword_half.py POST-RUN: what the keyword holds over the space
 results_unreached/score.json   every figure: both endpoints rule by rule, the coin, the curve, the gates, the orders
+results_unreached/keyword_half.json   the reading's figures, the escalations stage's 29 orders, the gates, the expectation
 tests/test_unreached.py   how the package counts — and no figure
+tests/test_unreached_keyword_half.py  how keyword_half.py counts, and each clause at its edge
 ```
 
 The instrument is `escalations/instrument.py`'s, called and not copied.
@@ -375,4 +673,5 @@ Reproducible, in this order:
 ```
 python3 -m unreached.score --dry-run          # Z-g1..Z-g4, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m unreached.score   # about eleven minutes
+PYTHONHASHSEED=0 python3 -m unreached.keyword_half  # POST-RUN; about four minutes
 ```
