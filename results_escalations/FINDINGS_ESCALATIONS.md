@@ -211,6 +211,15 @@ reason for `J-e` named: no escalation is `SECURITY_INCIDENT` in truth. The
 record does not split the space by the keyword, so this is a pattern on ten test
 cases, not a measurement over the space.
 
+> **[NOTE 2026-10-21] Measured over the space, POST-RUN**, in
+> `results_unreached/FINDINGS_UNREACHED.md`, *What the keyword holds over the
+> space*. At every budget the set with the highest share of the space has the
+> most points on the keyword half. At 50, 100 and 251 labels that half carries
+> all of the sets' spread over the space, and at 10 about half of it. And
+> `J-e`'s gap between the escalations and the random arrivals lies in that half
+> at every budget: the other half's medians differ by 1,240 points at most. No
+> figure here and no verdict moves.
+
 **5. Labelling every escalation buys 91% of the gain on the test split, and most
 of the shortfall is one class the loop almost never asked about.** The order on
 all 316 is right on 814 test cases, the figure the 286 escalations whose
@@ -263,6 +272,12 @@ Each cell is a share of the 134,400 points. Arrival order is 0.3148.
 on all 316 are both right on 814 test cases and 73,020 points. Both came from
 the multi-start's random start 57. The record keeps each order's scores and not
 the order, so whether they are one order is not recorded.
+
+> **[NOTE 2026-10-21] They are two orders.** Searched again POST-RUN for
+> `results_unreached/keyword_half.json`, which keeps both, they differ in 303
+> of 577 places. They agree on the keyword half and on the other half too. They
+> split the keyword half differently by truth (`FINDINGS_UNREACHED.md`, *What
+> the keyword holds over the space*).
 
 **Every order fits nearly all of its labels.** At fifty, 49 or 50 of 50; on all
 316, 304. So what separates the sets is what their labels say about the rest,
@@ -339,7 +354,10 @@ cases. That order is the worst of all 29 on both surfaces, 435 and 0.2122.
   thin. Five draws on one split cannot say. The audit's curve has five splits,
   and this plan read one.
 - **Why the space follows `SECURITY_INCIDENT`.** Read after the verdicts on ten
-  test cases. The record does not split the space by the keyword.
+  test cases. The record does not split the space by the keyword. **[NOTE
+  2026-10-21] Read POST-RUN**: from 50 labels on, the keyword half carries the
+  sets' whole spread over the space, and at 10 about half of it
+  (`FINDINGS_UNREACHED.md`, *What the keyword holds over the space*).
 - **Other rules for which first.** A student's uncertainty, or the proposer's
   answer disagreeing with the rules' decision, would read more than the rules,
   and neither is tried (§11.5). Nor is a rule that spreads the labels across
