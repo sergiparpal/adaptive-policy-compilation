@@ -1,14 +1,16 @@
 # What the rules no label reaches hold, and what deferring them buys — findings
 
 Record opened on October 20, 2026, under [`PLAN_UNREACHED.md`](../PLAN_UNREACHED.md).
-The plan, its package, the signature and the record below are in pull request
-#150. Sergi signed §0 on 2026-10-20, before any figure below existed, in a commit
-of its own: `eeee4bc` on its branch.
+The plan, its package, the signature, the record and these findings reached
+`main` in pull request #150. Sergi signed §0 on 2026-10-20, before any figure
+below existed, in a commit of its own: `e5e844c` on `main`.
 
 The stage's record, [`score.json`](score.json), names in its `_env` the commit
-it was written from: `eeee4bc`, the signing commit, with a clean tree. Its code
-digest is `f2942939dd6c99a6`. A rebase merge gives every commit of the pull
-request a new hash on `main`.
+it was written from: `eeee4bc`, the signing commit as it was made and pushed,
+with a clean tree. The rebase merge of #150 gave it `e5e844c` on `main`. The two
+have the same subject, the same tree and the same `git patch-id --stable`, and
+the GitHub API names #150 behind `e5e844c`. The code digest the `_env` records,
+`f2942939dd6c99a6`, is the one `main` computes after the merge.
 
 **This record owns every figure in it.**
 
