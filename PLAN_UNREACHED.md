@@ -1,5 +1,23 @@
 # PLAN_UNREACHED — what the rules no label reaches hold, and what deferring them buys
 
+> **[CLOSED 2026-10-20] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-20, before any figure of the plan existed. The five rows were
+> adjudicated the same day: **`Z-c` and `Z-e` hold; `Z-a`, `Z-b` and `Z-d` are
+> refuted**, `Z-d` and `Z-e` thinly, and `Z-f` is reported. Where tickets
+> arrive, `R0545` was the only rule no escalation reaches whose move pays, and
+> none of the 25 decides a test case in the escalations' order. Over the
+> function one rule holds the stake, *keyword and severity 1* to
+> `SECURITY_INCIDENT`, and deferring the 25 gains no more than a reshuffle of
+> them. **The figures are owned by
+> [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-20. The line is kept
+> unedited and this banner is its correction. The banner touches neither §0 nor
+> its note, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-20, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing is scored and
 no record is written until Sergi has signed §0.** The signature has to land
