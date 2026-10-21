@@ -64,7 +64,9 @@ says why. **What the rules no label reaches hold closed the same day**:
 `PLAN_UNREACHED.md`, five signed rows, two held and three refuted, and one
 reported, written up in `results_unreached/`. **What the keyword holds over
 the space was read POST-RUN on October 21, 2026**, and the four items it
-answers are struck in place. This is a list of things not done,
+answers are struck in place. **The last item of technical debt, a test that
+reads prose tables against their records, was written the same day.** This is
+a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -2505,6 +2507,29 @@ all have the same root and are not closed by writing code.
   the escalation count because parse failures are retried. It lives where it is
   derived, in the header of `doubles.py`, with the turn-by-turn account of what is
   not recoverable: the raw text was never stored.
+- **Prose tables read against their records** (October 21, 2026).
+  `tests/test_prose_tables.py` reads every table that states a signed row's
+  verdict, and every verdict cited in parentheses, against the JSON record
+  that owns the row:
+  - `STATUS.md`'s scoreboard: its totals, the count in its heading, its named
+    lists and its four ratios, and each named row's verdict;
+  - every FINDINGS' verdict table: each row's verdict and thin label, and every
+    figure in bold before a verdict that closes the row;
+  - the verdicts the documents that copy them cite as `(`K-b` refuted)`.
+
+  It reads no free prose. A table or a citation already carries its anchor, the
+  row's name, so a rewording that keeps the table keeps the test, and every
+  check also requires that it read what it expects to read. Each one is shown
+  catching a tampered copy. It pins no figure: it reads both sides.
+  - **What it leaves out, and why.** A figure in free prose: looked up anywhere
+    in the records it proves nothing, since their numeric leaves print nearly
+    every value of two or three places. Bound to its own record, it needs an
+    anchor beside every figure or a list kept by hand, the parser over prose
+    this file turned down.
+  - **Two threads without a verdict table.** `P` and `B` are adjudicated in
+    prose, so they are read on the scoreboard and in citations only.
+  - **The signed plans and `PREDICTION.md`.** A check that failed on one of
+    them would ask for an edit to a signed file.
 
 ### What that leaves open
 
@@ -2518,6 +2543,11 @@ record, and the three free ones run again move their digits. So the thirteen
 records without `_env` will never carry one, for the reasons under each item,
 and `tests/test_provenance.py` pins the list in both directions. The third item
 stays as it was: a test considered and deliberately not written.
+
+**[NOTE 2026-10-21] The third is written too, by Sergi's decision, so nothing
+is left open here.** It was closed by writing code after all, which the first
+paragraph said none of the three would be. *Done*, above, says what the test
+reads and what it leaves out.
 
 - ~~**The records still without `_env` are exactly the ones that cannot be
   reproduced for free.**~~ The deterministic, free ones were re-run on August
@@ -2572,8 +2602,8 @@ stays as it was: a test considered and deliberately not written.
   code that wrote them predates the repository, as for the ten above, so no
   commit identifies it either.
 
-- **A test that reads the figures out of `results*/` and fails when a prose table
-  disagrees. Considered on August 9, 2026 and deliberately not written.** It would
+- ~~**A test that reads the figures out of `results*/` and fails when a prose table
+  disagrees. Considered on August 9, 2026 and deliberately not written.**~~ It would
   work in the idiom of `test_automation.py`, which pins the half of a decision
   that lives in the repository against the half that lives in a file: parse the
   numbers out of the Markdown, look them up in the JSON that owns them, fail on a
@@ -2591,6 +2621,15 @@ stays as it was: a test considered and deliberately not written.
   **What would make it worth doing:** prose figures creeping back into the
   navigational documents, or a third document that genuinely needs to carry
   numbers. Either restores the drift surface the test was meant to watch.
+
+  **[NOTE 2026-10-21] Written, because both had come about.** Figures had crept
+  back into `IDEAS.md`, and a few into `CLAUDE.md`, which says none belongs
+  there. And four documents carry them by design: `PAIRWISE_WRITEUP.md` and the
+  three that read the records instead of adding to them. Both objections above
+  are met by what the test reads. It parses no prose: it reads tables and
+  citations, whose anchor is the row's name. And what it guards is the
+  transcription from a record to the table that owns the verdict, which no
+  removal of copies could take away. *Done*, above.
 
 What is **not** here, on purpose: that reproducing a figure overwrites its own
 record. For the deterministic, free ones that is behaviour you have to know

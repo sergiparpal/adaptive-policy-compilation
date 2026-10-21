@@ -475,6 +475,15 @@ of 86 = **46.5%**, which is the reading the calibration note should take.
 > One was reported. None of its bands was set on a development set. The table,
 > the named lists, the count in the heading and the four ratios moved together;
 > the gap between the first two is now 0.6 points.
+>
+> **[NOTE 2026-10-21] A test reaches this paragraph now.** The erratum above
+> called it *a number copied where no test can reach it*.
+> [`tests/test_prose_tables.py`](tests/test_prose_tables.py) recomputes the
+> table's total row, the count in the heading, the named lists and the four
+> ratios. It also reads every named row's verdict in the JSON record that owns
+> it, dead-zone and unadjudicated rows included. The next thread still moves
+> them all by hand, in the same commit as its row, and the test fails until they
+> agree with each other and with the records.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
