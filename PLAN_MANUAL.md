@@ -151,7 +151,7 @@ recalled:
 | **G-f** | **Knowing what the queues are for, the proposer picks the right queue more often** | `prop(L_1) − prop(L_0)`, each pooled over its three runs | **≥ 0.10** | **< 0.10** |
 | **G-g** | *Reported, not adjudicated.* **What the drafter could not band** | every arm and level on every cell: `space` whole and on each keyword half, `corpus`, the recall of all eight queues on both surfaces, `K-a`, and `O-a` over the whole space. For `C`, each ask's rules installed and rejected, its derived edges by verdict, its inversions (§6.3), its first-match reading, which hidden rules it reproduces to the extension, and the accuracy over each hidden rule's region. For `L`, `PLAN_REUSE.md`'s online set per run: reuse, silent error, online e2e, CONFLICTs, escalations, `prop` by true queue, and the `ONCALL_ESCALATION` and `SECURITY_INCIDENT` escalations and compiled decisions; copies written the same; each hidden rule's region in the final base; `K-b`'s direction beyond the keyword where it has 20 units. `L_0` against `PLAN_REUSE.md`'s 2026-09-30 runs, figure by figure. The span of dates of Stage B. Every call's `call_attempts`, provider and finish reasons included. Every `note`, recorded and not coded | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-21)**
 
 **Why each row, and why these lines.**
 
