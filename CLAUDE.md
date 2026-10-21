@@ -776,6 +776,15 @@ second official figure. The multi-start is also signed across three
 `PYTHONHASHSEED` values in `tests/hashseed_child.py`, because the same-process
 determinism test is the one that returned a false zero in rung 4.
 
+**Since 2026-10-21 it also reads the verdicts of the signed rows where the prose
+states them** — `STATUS.md`'s scoreboard, each FINDINGS' verdict table and the
+verdicts cited in parentheses — against the JSON record that owns each row
+(`tests/test_prose_tables.py`). **A thread that closes adds its record to that
+file's `THREADS`, and its FINDINGS to `TABLES` if the FINDINGS has a verdict
+table**: the suite fails while the scoreboard names a thread `THREADS` does not.
+Where a table or a citation disagrees with its record, the prose is what is
+wrong, and the record is never edited to match.
+
 If something fails here, stop: Steps 0 and 1 would be measuring over a harness
 that no longer reproduces. **A failing snapshot is not updated**; you find out
 what changed and, if the change is legitimate, you date the erratum in the
