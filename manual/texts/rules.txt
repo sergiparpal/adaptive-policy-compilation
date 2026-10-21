@@ -1,0 +1,33 @@
+LAS REGLAS DE LA EMPRESA, EN ORDEN
+
+Se aplica la primera regla de la lista cuyas condiciones casa el ticket.
+
+H01: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT
+H02: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT
+H03: SI has_security_keyword eq True ENTONCES T2_TECHNICAL
+H04: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION
+H05: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION
+H06: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING
+H07: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING
+H08: SI severity eq 1 ENTONCES T2_TECHNICAL
+H09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER
+H10: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST
+H11: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST
+H12: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT
+H13: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER
+H14: SI customer_tier eq business AND prior_tickets_30d gte 8 ENTONCES ACCOUNT_MANAGER
+H15: SI product eq api AND severity lte 2 ENTONCES T3_ENGINEERING
+H16: SI product eq api ENTONCES T2_TECHNICAL
+H17: SI product eq integrations AND severity lte 2 ENTONCES T3_ENGINEERING
+H18: SI product eq integrations ENTONCES T2_TECHNICAL
+H19: SI product eq mobile AND severity eq 2 ENTONCES T2_TECHNICAL
+H20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL
+H21: SI language eq pt AND severity lte 2 ENTONCES T2_TECHNICAL
+H22: SI channel eq phone AND customer_tier eq free ENTONCES SELF_SERVICE_DEFLECT
+H23: SI channel eq phone AND off_hours eq True AND customer_tier neq enterprise ENTONCES T1_GENERAL
+H24: SI customer_tier eq free AND severity gte 3 ENTONCES SELF_SERVICE_DEFLECT
+H25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT
+H26: SI severity eq 4 AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT
+H27: SI severity lte 2 ENTONCES T2_TECHNICAL
+H28: SI customer_tier in ['business', 'enterprise'] ENTONCES T1_GENERAL
+H29: SI severity gte 1 ENTONCES T1_GENERAL

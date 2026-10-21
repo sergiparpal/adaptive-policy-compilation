@@ -1,0 +1,10 @@
+QUE HACE CADA COLA
+
+T1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.
+T2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.
+T3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.
+BILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.
+SECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.
+ACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.
+ONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.
+SELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.

@@ -1,0 +1,17 @@
+COMO ENRUTAMOS LOS TICKETS
+
+1. Seguridad, antes que nada. Si el ticket menciona un problema de seguridad y viene de una cuenta business o enterprise, o tiene severidad alta, es un incidente de seguridad. El resto de menciones de seguridad, de cuentas free o pro con severidad baja, las revisa soporte tecnico.
+
+2. Despues, lo critico. Una incidencia critica (severidad 1) de un cliente enterprise activa la guardia. Si el cliente es business, la guardia solo se activa fuera de horario; en horario la coge ingenieria. Las criticas de la API tambien van a ingenieria, y el resto de criticas a soporte tecnico.
+
+3. Facturacion. Los tickets de facturacion de clientes enterprise los lleva su gestor de cuenta. Si el problema es urgente, o el cliente ya nos ha escrito varias veces este mes, va a un especialista de facturacion. Lo demas de facturacion se resuelve con autoservicio.
+
+4. Cuentas en riesgo. Un cliente enterprise que ha abierto bastantes tickets en el ultimo mes, o un cliente business que ha abierto muchisimos, pasa a su gestor de cuenta.
+
+5. Por producto. Los problemas de la API y de las integraciones van a ingenieria si son de severidad alta, y a soporte tecnico si no. Los de mobile y los de dashboard de severidad alta tambien son de soporte tecnico.
+
+6. Telefono. Las llamadas de clientes free se derivan a autoservicio. Fuera de horario, el telefono lo atiende el primer nivel, salvo a los clientes enterprise.
+
+7. Desvio a autoservicio. Los problemas no urgentes de clientes free se resuelven con autoservicio, y tambien los de severidad minima de clientes que no han abierto ningun ticket en el ultimo mes.
+
+8. Por defecto. Lo que no encaje en nada de lo anterior va al primer nivel.
