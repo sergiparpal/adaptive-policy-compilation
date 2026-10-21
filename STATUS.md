@@ -504,7 +504,26 @@ which owns all four; and `K` from
 [`results_blind/FINDINGS_BLIND.md`](results_blind/FINDINGS_BLIND.md), which owns
 all six; and `V` from the Stage C section of
 [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md), with
-`V-e` from its Stages A and C.
+`V-e` from its Stages A and C; and `H` from
+[`results_bound/FINDINGS_BOUND.md`](results_bound/FINDINGS_BOUND.md), which owns
+all five; and `M` from
+[`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
+which owns all six; and `T` from
+[`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
+which owns all six; and `J` from
+[`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
+which owns all six; and `N` from
+[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
+which owns all six; and `Z` from
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
+which owns all six.
+
+> **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
+> closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
+> table and the named lists, and none extended this list. It was found while
+> writing [`tests/test_prose_tables.py`](tests/test_prose_tables.py), whose
+> `THREADS` names the record behind each thread's verdicts and fails when a
+> thread on the table has none. No verdict moves.
 
 **Excluded, and this is what makes
 the arithmetic reproducible:** `G1`–`G6`, which are the plan's checks and carry no
