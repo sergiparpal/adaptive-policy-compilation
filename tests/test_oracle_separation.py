@@ -89,7 +89,29 @@ ONLINE_LOOP = [
     # of the package imports the oracle itself.
     "ranking/question.py",
     "ranking/ask.py",
+    # Added 2026-10-21 with PLAN_MANUAL.md, and the one package that breaks the
+    # separation ON PURPOSE (§4, rule B of the plan). It hands the model the
+    # policy, at three levels, as text: three files under `manual/texts/`,
+    # frozen before the signature and pinned by digest. That text is the ONLY
+    # route by which the policy reaches the proposer. These five modules build
+    # and send its requests, so they import neither the oracle nor any name that
+    # carries the policy in code — `TestTheAuthorityChannel` below adds those
+    # names to their forbidden imports. The checks they run before spending
+    # (`manual/gates.py`) rebuild level 3 from `HIDDEN_DSL` offline, and send
+    # nothing; the scores are `manual/instrument.py`'s, which labels as rung 3
+    # does. No module of the package imports the oracle itself.
+    "manual/levels.py",
+    "manual/prompts.py",
+    "manual/compile.py",
+    "manual/ask.py",
+    "manual/run.py",
 ]
+
+# The names that carry the hidden policy in code without being the oracle's
+# own: its DSL transcription, the module that holds it, and the edges derived
+# from its layer order. The authority channel's proposer path may import none.
+POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
+AUTHORITY_CHANNEL = ONLINE_LOOP[-5:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -185,7 +207,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "ilp", "reuse", "fidelity", "edges", "primacy", "why",
                      "authorship", "overlap", "blind", "screen", "bound",
                      "ranking", "students", "escalations",
-                     "spotcheck", "unreached"):
+                     "spotcheck", "unreached", "manual"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -195,6 +217,37 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
             found.add("run_experiment.py")
         found.discard("harness/hidden_policy.py")
         self.assertEqual(found, allowed_names)
+
+
+class TestTheAuthorityChannel(unittest.TestCase):
+    """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
+    These tests hold it to that route: the frozen text, and nothing in code."""
+
+    def test_the_five_modules_are_the_ones_watched(self):
+        self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
+                                             "manual/compile.py", "manual/ask.py",
+                                             "manual/run.py"])
+
+    def test_no_proposer_path_module_imports_the_policy_in_code(self):
+        for rel in AUTHORITY_CHANNEL:
+            with self.subTest(rel):
+                found = imports_of(REPO / rel) & (ORACLE | POLICY_IN_CODE)
+                self.assertEqual(found, set(), f"{rel} importa la politica: {found}")
+
+    def test_the_policy_reaches_the_prompts_only_through_the_frozen_files(self):
+        """Every prompt the package sends is a function of v1, the domain and
+        the three files: replacing the files' contents changes the manual
+        block, and nothing else in the prompt."""
+        from unittest import mock
+
+        from manual import levels, prompts
+
+        texts = {"catalogue": "A", "prose": "B", "rules": "C"}
+        with mock.patch.object(levels, "part", side_effect=lambda name: texts[name]):
+            self.assertEqual(prompts.block(3), prompts.MANUAL_HEADER + "\n\nC")
+            self.assertEqual(prompts.block(2), prompts.MANUAL_HEADER + "\n\nA\n\nB")
+            self.assertNotIn("H01", prompts.loop_system_prompt(3))
+            self.assertNotIn("H01", prompts.compile_system_prompt(3))
 
 
 class TestTheRung4Channel(unittest.TestCase):
