@@ -52,6 +52,7 @@ up in four places at once.
 | **J** · the escalations | what a reviewer's labels at the escalations buy the order: rung 3's search handed the truth of rung 1's train-half escalations at the audit's label budgets, set beside that record's own random draws, with three rules for which to label first — closed 2026-10-19 | [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md) |
 | **N** · the audit of decisions | what a random audit of the system's decisions buys beside the escalations: rung 3's search handed the truth of every train-half escalation and of a random draw of the cases rung 1's engine decided itself, in nested draws, read between the escalations alone and the whole train half — closed 2026-10-19 | [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md) |
 | **Z** · the rules no label reaches | what the rules no labelled case matches hold in rung 3's labelled orders: each moved alone to the front with the truth reading the result, and all moved below the rest without it, beside random placements of them, in the escalations' order and along the label curve — closed 2026-10-20 | [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md) |
+| **G** · the policy, given to the proposer | the authority channel: the policy handed to the model as a catalogue of the queues, a prose manual and the 29 rules as text, compiled once in one answer and inside `PLAN_REUSE.md`'s loop, to separate what the model knows from what the loop elicits — closed 2026-10-21 | [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -542,6 +543,37 @@ PYTHONHASHSEED=0 python3 -m unreached.score   # Z-a to Z-e, and the readings of 
 PYTHONHASHSEED=0 python3 -m unreached.keyword_half  # POST-RUN · what the keyword holds over the space
 ```
 
+**[`PLAN_MANUAL.md`](PLAN_MANUAL.md) closed on 2026-10-21**: the authority
+channel, the policy given to the proposer at three levels. Sergi signed §0 on
+2026-10-21, before any of its figures existed.
+- **The levels.** It handed the model the policy, with reasoning off, as a
+  catalogue of what each queue is for, as that catalogue with a prose manual,
+  and as the 29 rules as text.
+- **The shapes.** It ran each level, and the bare names beside them, compiled
+  once in one answer and inside `PLAN_REUSE.md`'s loop.
+
+Its record is
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md). Its
+gate reads that plan and no other, and guards its four writers. `rung2/`,
+`reuse/`, `edges/`, `blind/` and `rung3/` are called by it and not edited.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stages B1 and B2
+spent**: their records are guarded, and a re-run neither overwrites them nor
+gives the same answers back. A paid run does not start without Sergi asking for
+it. B2's twelve runs take over an hour between them, so they ran in Sergi's
+terminal.
+
+```bash
+python3 -m manual.run --dry-run                  # G-g1..G-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m manual.sample        # Stage A · the texts, the prompts, the references
+PYTHONHASHSEED=0 python3 -m manual.score         # Stage C · G-a to G-f, and G-g
+.venv/bin/python -m manual.ask --session smoke   # Stage B1 · spends · only on Sergi's say
+.venv/bin/python -m manual.ask --session session # then the session, never in parallel
+.venv/bin/python -m manual.run --smoke           # Stage B2 · spends · twenty cases at level 3
+.venv/bin/python -m manual.run --level 0 --rep 1 # then the twelve runs, in §2.5's order
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -728,7 +760,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_STUDENTS.md`'s, and `escalations/score.py --dry-run`, which runs
 > `PLAN_ESCALATIONS.md`'s, and `spotcheck/score.py --dry-run`, which runs
 > `PLAN_SPOTCHECK.md`'s, and `unreached/score.py --dry-run`, which runs
-> `PLAN_UNREACHED.md`'s.
+> `PLAN_UNREACHED.md`'s, and the four of `manual/`, which run
+> `PLAN_MANUAL.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -851,7 +884,7 @@ What it covers, and why those things:
 | `test_unreached_keyword_half.py` | `unreached/keyword_half.py`, the POST-RUN reading of what the keyword holds over the space: the rules it names, the material it derives and the expectation's lines, an order's split by the keyword and its copy place and who decides a region on masks by hand, the back move rule by rule summing to the move with no point a reached rule decided moving, a rule's path read as rises, the record's greedy rebuilt as a start and a toy search replayed pass by pass to where the whole search ends, the cells' top and squared deviations exactly, each clause of the expectation at its edge, and the writer refusing unsigned before it searches. **No figure of the reading** |
 | `test_manual.py` | the `PLAN_MANUAL.md` instrument: §11's constants with the model and reasoning off imported from `PLAN_REUSE.md` and §0's lines as exact fractions, the gate counting every signature line, the three texts against §5's digests and the rules rebuilt from `HIDDEN_DSL` and parsed back, the catalogue and the prose with an injected leak caught, every prompt its level-0 prompt plus the manual's block and level 0 v1's to the byte, the installer deriving the hidden policy's 199 edges with a reversed list and a refused rule caught, the instrument against `PLAN_REUSE.md`'s published figures, the order of Stage B pinned and rotated, the requests through the SDK double differing from v1's only in the system message, every writer refusing unsigned before it builds a client or writes, a run out of its turn refused, Stage B end to end through the double, and Stage C's verdicts, thin labels and exact comparisons by hand. **No figure of the plan** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
-| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the eight that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
+| `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the writers that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
 | `test_domain.py` | the corpus: its unique-case count, its duplicate rate and the 8 classes with theirs |
 | `test_dsl.py` | the frozen DSL, including the **recorded defect** (CONFLICT is returned before the age tie-break), pinned on purpose |
@@ -1537,6 +1570,19 @@ adaptive-policy-compilation/
 │   ├── score.py             the stage · Z-a to Z-e, the readings of Z-f
 │   └── keyword_half.py      POST-RUN · what the keyword holds over the space
 │
+├── manual/               G · the policy, given to the proposer at three levels
+│   ├── plan.py              the gate and §11's constants; §0's lines as fractions
+│   ├── texts/               catalogue.txt, prose.txt, rules.txt · §5, frozen
+│   ├── levels.py            the texts and their digests · the proposer's path
+│   ├── prompts.py           the loop's prompt and the compile question · the proposer's path
+│   ├── compile.py           a compile answer, installed into rung 2 · the proposer's path
+│   ├── instrument.py        the scorers of §0, called from rung 2, 3 and the closed threads
+│   ├── gates.py             G-g1..G-g4 · blocking; level 3 rebuilt from HIDDEN_DSL
+│   ├── sample.py            Stage A · the design and the references
+│   ├── ask.py               Stage B1 · the manual compiled once · spends
+│   ├── run.py               Stage B2 · the loop with the manual · spends
+│   └── score.py             Stage C · G-a to G-f and G-g, gated on PLAN_MANUAL.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1619,7 +1665,7 @@ adaptive-policy-compilation/
     results_reuse/  results_fidelity/  results_edges/  results_primacy/  results_why/
     results_authorship/  results_overlap/  results_blind/  results_screen/
     results_bound/  results_ranking/  results_students/  results_escalations/
-    results_spotcheck/  results_unreached/
+    results_spotcheck/  results_unreached/  results_manual/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

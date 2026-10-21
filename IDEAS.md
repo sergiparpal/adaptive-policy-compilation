@@ -65,8 +65,10 @@ says why. **What the rules no label reaches hold closed the same day**:
 reported, written up in `results_unreached/`. **What the keyword holds over
 the space was read POST-RUN on October 21, 2026**, and the four items it
 answers are struck in place. **The last item of technical debt, a test that
-reads prose tables against their records, was written the same day.** This is
-a list of things not done,
+reads prose tables against their records, was written the same day.** **The
+policy, given to the proposer at three levels, closed the same day too**:
+`PLAN_MANUAL.md`, seven signed rows, three held, three refuted and one
+reported, written up in `results_manual/`. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -77,6 +79,18 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Give the proposer the manual: the authority channel.** October 21, 2026,
+  `PLAN_MANUAL.md`, cents. The policy was handed to the model at three levels:
+  a catalogue of what each queue is for, that catalogue with a prose manual, and
+  the 29 rules as text. Each level ran in two shapes.
+  - **Compiled in one answer, the model writes the policy**: exactly from the
+    rules, and nearly whole from the prose.
+  - **Through the impasse loop, the same texts give bases that decide about a
+    third of the function.** With the rules in front of it, the proposer still
+    partitions.
+  - **The catalogue buys nothing.**
+
+  What it leaves is in its own section below. `results_manual/`.
 - **The rules no label reaches.** October 20, 2026, `PLAN_UNREACHED.md`, zero
   calls. The 25 rules no escalation matches were moved in the escalations'
   order: each alone to the front, read with the truth, and all below the rest
@@ -264,6 +278,13 @@ against, a threshold a next run would have to clear.
   run**: random escalation asked without a screen, and deferral by a student's
   uncertainty. Both are in *What the outside reading of October 2026 proposes*,
   below.
+  **[NOTE 2026-10-21] Asking is not the whole gap.** Given the policy,
+  `PLAN_MANUAL.md`'s loop did ask about `ONCALL_ESCALATION` tickets, and the
+  proposer named the queue right on nearly all of them. Afterwards, its rules
+  decided a later ticket of the class right once in six runs. A trigger that
+  asks would still need the loop to compile what it is told. Compiled in one
+  answer, the model put the class right on every point of its region. See *What
+  `PLAN_MANUAL.md` opens*.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -275,6 +296,56 @@ against, a threshold a next run would have to clear.
   further" now rests on a smaller margin than when it was written.
 
 ---
+
+## What `PLAN_MANUAL.md` opens and does not resolve
+
+Closed October 21, 2026. It gave the model the policy at three levels, in two
+shapes:
+- **the levels**: a catalogue of the queues, that catalogue with a prose
+  manual, and the 29 rules as text;
+- **the shapes**: compiled once in one answer, and inside `PLAN_REUSE.md`'s
+  loop.
+
+Compiled once, the model writes the policy. Through the loop the same texts
+decide about a third of the function, and with the rules the proposer still
+partitions. What that leaves:
+
+- **Why the loop partitions with the policy in front of it.** The three
+  candidates of `ARBITRATION_REPORT.md` §5 remain: the framing of one ticket
+  and one rule, the model, and elicitation by rule-writing in general. Two
+  routes would narrow them:
+  - **A reading, free on the records.** The prose made the loop cross more
+    than the rules did, and the rules each level wrote could say why.
+  - **A run, with calls and a plan of its own.** The loop under v2, which tells
+    the proposer that overlap is normal, with the manual in its prompt, would
+    test the framing.
+- **Why the proposer applies the rules it was given four times in ten wrongly.**
+  In one answer it transcribes them without error. At an escalation it decides
+  the ticket in front of it with a screen of neighbouring rules beside it, and
+  `PLAN_SCREEN.md` measured that a screen pulls the model to its commonest
+  action. Asking the escalated tickets again with the manual and no screen
+  would separate the two. Calls.
+- **What level 3's dropped declarations cost.** Every one of them cited a rule
+  of the manual's, and none reached the base. A reading of what they would have
+  decided is free.
+- **`SECURITY_INCIDENT` under the prose.** In every run at level 2, the rules
+  decided the class's arriving tickets wrong. Which rule did it, and when it was
+  born, is free on the records.
+- **A loop that starts from the compiled manual.** A deployment would install
+  the base compiled once and send the loop only what that base does not cover,
+  or where it conflicts. That is a new system, not a reading. It changes the
+  founding question into what the loop adds to a policy it was handed. A plan.
+- **Another manual, another model.** One prose manual, written by the hand that
+  wrote the policy, and one model, with eight providers behind its name. This
+  is `ARBITRATION_REPORT.md` §9.1's limit, for prose.
+- **A text that numbers its rules invites the proposer to cite them.** Level
+  3's rules carried their identifiers, and the proposer declared priority
+  against them as if they were the base's. A plan that hands a model a numbered
+  policy should say in §0 what citing the numbers does to its rows.
+- **A difference of medians of three runs can rest on one run.** `L₀` spread
+  wider on the corpus than any gap between the levels, and one of its runs made
+  `G-e` thin. A plan that sets loops side by side at three runs a level should
+  say in §0 what a spread that wide does to its lines.
 
 ## What `PLAN_UNREACHED.md` opens and does not resolve
 
@@ -1290,7 +1361,9 @@ transcript's counts reproduce, and no module records them. It is
 What is left. None of it is measured and none has a band. Each measurement in
 it is pre-registrable, because none of its figures exists:
 
-- **Give the proposer the manual: the authority channel.** `CHAT_SUMMARY.md` §1
+- ~~**Give the proposer the manual: the authority channel.**~~ **Run on
+  2026-10-21 as `PLAN_MANUAL.md`, in both shapes**, and moved to *No longer
+  here*. `CHAT_SUMMARY.md` §1
   and `PLAN_PAIRWISE.md` §1 name three external channels for priority:
   declaration, feedback and authority. Declaration has been tried in three
   forms and feedback in rung 4. Authority exists only at its perfect limit,
@@ -1319,6 +1392,18 @@ it is pre-registrable, because none of its figures exists:
   separation on purpose, so it needs its own package and its own plan, and the
   tests that keep the loop away from the oracle must say why that package is
   exempt. Cents.
+  **[NOTE 2026-10-21] Run, and the stronger result came out.**
+  - With the 29 rules in front of it, the loop's proposer still partitions
+    (`G-c` holds).
+  - Asked for the whole base in one answer, the same model writes the policy
+    exactly (`G-a` holds).
+  - Through the loop, the same text decides about a third of the function
+    (`G-d` holds).
+  - The level-1 lines buy nothing (`G-b` refuted, thin).
+  - Of the two failures above, `ACCOUNT_MANAGER` was knowledge: with the prose,
+    the proposer names it.
+
+  What it leaves is in *What `PLAN_MANUAL.md` opens*, above.
 - ~~**Ask the model for its ranking of the queues.**~~ **Run on 2026-10-17 as
   `PLAN_RANKING.md`**, and moved to *No longer here*. The ranking the pairwise
   thread measured itself against, which 1,600 answers tied (`B-b`), is Stage
@@ -1675,6 +1760,17 @@ draft a band for one of them and may not sign it.
   **[NOTE 2026-10-16]** No prompt has ever told the model what the queues are
   for: it sees their names. Giving it the manual, at three levels, is proposed
   above as the test of whether this is a matter of knowledge.
+  **[NOTE 2026-10-21] Run as `PLAN_MANUAL.md`.**
+  - **For `ACCOUNT_MANAGER` it is knowledge of the policy, not of the queue.**
+    With the prose manual the proposer named the queue right at nearly every
+    escalation of the class. With a line saying what the queue is for, it
+    rarely did, and compiled once that line bought nothing over the names
+    (`G-b` refuted, thin).
+  - **`T3_ENGINEERING` stays low in the loop even with the 29 rules in its
+    prompt.** Compiled once, from the prose or the rules, both classes come out
+    whole.
+  - So what is left of the material problem is in the loop and not in the
+    model.
 - Whether a proposer that is shown the gaps in the ceiling would fill them.
 - The objective function as an explicit design surface: which classes are
   protected, at what cost in aggregate, and who decides.
@@ -2386,6 +2482,11 @@ draft a band for one of them and may not sign it.
   predicts: the framing of one ticket and one rule does not stop it. Beyond the
   keyword its declarations still pointed the way a coin would, so it crosses
   without stratifying.
+  **[NOTE 2026-10-21] Knowledge is not among the causes.** With the policy
+  itself in its prompt, as 29 rules, the loop's proposer still partitions (`G-c`
+  holds). Asked for the whole base in one answer, it crosses at every level,
+  near the hidden policy's own `K-a`. The three candidates above remain.
+  `PLAN_MANUAL.md`.
 - Whether any prompt or schema gets a proposer that sees the base to write
   overlapping rules. Versions v1 and v2 bound a range; they do not exhaust it.
   **Untouched by the pairwise thread**, which sidesteps rule-writing entirely and

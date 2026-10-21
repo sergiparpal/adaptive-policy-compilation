@@ -174,8 +174,9 @@ the FINDINGS.
 **The exception is `rung2/pair_judgement.py`, which spends** — and since
 2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
 2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
-2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, and since
-2026-10-17 `ranking/ask.py`, all seven below. It refuses to run while §0 of **the
+2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
+2026-10-17 `ranking/ask.py`, and since 2026-10-21 `manual/ask.py` and
+`manual/run.py`, all nine below. It refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -623,10 +624,63 @@ moved it. Rebuild a start before saying where it put a rule. **And over the
 space, orders labelled differently differ in the keyword half.** A reading of
 a space figure across label sets should split it by the keyword.
 
+**`PLAN_MANUAL.md` closed on 2026-10-21: the authority channel, the policy
+given to the proposer at three levels.** Six signed rows adjudicated, three held
+and three refuted, and one reported. Sergi signed §0 on 2026-10-21, before any
+figure it governs existed.
+- **What it asked.** It handed the model the policy, with reasoning off, at
+  three levels: a catalogue of what each queue is for, that catalogue with a
+  prose manual, and the hidden rules as text. It ran each level, and the bare
+  names beside them, in two shapes: compiled once in one answer, and inside
+  `PLAN_REUSE.md`'s loop.
+- **Where it is written up.** The record is
+  `results_manual/FINDINGS_MANUAL.md`, and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stages B1 and B2 spent: their records are guarded, and a re-run
+  neither overwrites them nor gives the same answers back, so a paid run does
+  not start without Sergi asking for it.
+- **The gate.** Every writer in `manual/` refuses while the plan carries a
+  blank signature line, and the gate reads `PLAN_MANUAL.md` and no other plan.
+  `rung2/`, `reuse/`, `edges/`, `blind/` and `rung3/` are called by it and not
+  edited.
+- **It breaks the oracle's separation on purpose**, through three frozen texts.
+  `tests/test_oracle_separation.py` says why, and it forbids the proposer's path
+  to import the policy by any name.
+
+The first command is blocking and writes nothing:
+
+    python3 -m manual.run --dry-run                   # G-g1..G-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m manual.sample         # Stage A, free
+    PYTHONHASHSEED=0 python3 -m manual.score          # Stage C, free, from the runs
+    .venv/bin/python -m manual.ask --session smoke    # Stage B1: spends — only if asked
+    .venv/bin/python -m manual.ask --session session  # then the session, never side by side
+    .venv/bin/python -m manual.run --smoke            # Stage B2: spends — only if asked
+    .venv/bin/python -m manual.run --level 0 --rep 1  # then the runs, in §2.5's order
+
+**Compiled once, the model wrote the policy; through the loop it did not.** What
+the loop lacked was not knowledge, and with the rules in front of it the
+proposer still partitioned. A plan that tests what a model knows should ask it
+in more than one shape, because the shape decided the result.
+
+**A text that numbers its rules invites the proposer to cite them.** The loop's
+proposer declared priority against the manual's own identifiers, which are not
+rules of the base, and the engine dropped every such declaration. A plan that
+hands a model a numbered policy should say in §0 what citing the numbers does.
+
+**Loop runs made back to back from one commit leave every record after the
+first with `git_dirty` true**, because each finds the earlier ones not yet
+committed. `code_dirty` is what identifies the code, and the FINDINGS should say
+so.
+
+**And one run of the control made a row thin.** A plan that sets loops side by
+side at three runs a level should say in §0 what a spread between runs as wide
+as its gaps does to its lines.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
-`authorship/protocol.py` and `rung2/pair_judgement.py`, and since 2026-10-17
-the one `ranking/ask.py` builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+`authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
+the one `ranking/ask.py` builds, and since 2026-10-21 the one `manual/ask.py`
+builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -635,7 +689,8 @@ back empty, the generation id is the documented route to the same fact, for as
 long as OpenRouter keeps it. **It came back in `PLAN_RANKING.md`'s runs, the
 first to keep it, and not as one provider**: one model name was served by more
 than one provider inside a session. A plan that reads drift across calls should
-read it per provider.
+read it per provider. `PLAN_MANUAL.md`'s loop runs were served by more
+providers under one name than any earlier record's.
 
 The scripts still print their output in Spanish; when a block below shows an
 expected result, compare the **numbers**.
@@ -711,8 +766,9 @@ call, saying what would be lost. The escape hatches are `--out` and
 2026, `rung2/pair_judgement.py`, whose two records cost 570 calls between them —
 and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
 2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
-2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, and since
-2026-10-17, `ranking/ask.py`.
+2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
+2026-10-17, `ranking/ask.py`, and since 2026-10-21, `manual/ask.py` and
+`manual/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

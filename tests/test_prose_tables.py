@@ -93,6 +93,7 @@ THREADS = {
     "J": ("results_escalations/score.json", ("rows",)),
     "N": ("results_spotcheck/score.json", ("rows",)),
     "Z": ("results_unreached/score.json", ("rows",)),
+    "G": ("results_manual/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -128,6 +129,7 @@ TABLES = {
     "results_escalations/FINDINGS_ESCALATIONS.md": "J",
     "results_spotcheck/FINDINGS_SPOTCHECK.md": "N",
     "results_unreached/FINDINGS_UNREACHED.md": "Z",
+    "results_manual/FINDINGS_MANUAL.md": "G",
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {
