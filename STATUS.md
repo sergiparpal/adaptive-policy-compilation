@@ -19,8 +19,9 @@ What is known, as of October 21, 2026. **Not a history** — that is the four
 [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md),
 [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
 [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
-[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md) and
-[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
+[`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md) and
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -55,7 +56,9 @@ a reviewer's labels at the escalations buy the order, in
 `PLAN_ESCALATIONS.md`**: six more, closed on 2026-10-19 — plus **what a random
 audit of the system's decisions buys beside the escalations, in
 `PLAN_SPOTCHECK.md`**: six more, closed the same day — plus **what the rules no
-label reaches hold, in `PLAN_UNREACHED.md`**: six more, closed on 2026-10-20.
+label reaches hold, in `PLAN_UNREACHED.md`**: six more, closed on 2026-10-20 —
+plus **the policy, given to the proposer at three levels, in `PLAN_MANUAL.md`**:
+seven more, closed on 2026-10-21.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -231,6 +234,24 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So beyond `R0545`, what the escalations leave on the arrivals is not in the
 > rules they never reach, and over the function those rules hold one rule's
 > worth. [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md).
+>
+> **[NOTE 2026-10-21] Authority, the channel none of the three ways tried,
+> supplies the priority in one shape and not in the other.**
+> [`PLAN_MANUAL.md`](PLAN_MANUAL.md) gave the model the policy itself: a
+> catalogue of the queues, a prose manual with a real manual's vague words, and
+> the 29 rules as text.
+>
+> - **Compiled in one answer, the model writes the policy**: the rules exactly,
+>   every time (`G-a` holds), and the prose to 0.9929 of the space.
+> - **Through the impasse loop, the same texts give bases that decide about a
+>   third of the space**: with the rules, 0.3778 against the 1.0000 of
+>   compiling them once (`G-d` holds).
+> - **With the rules in front of it, the proposer still partitions** (`G-c`
+>   holds).
+>
+> So the priority can be supplied whole by authority, compiled once, and the
+> loop does not turn the same manual into it.
+> [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md).
 
 ---
 
@@ -279,7 +300,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and nineteen rows have been signed before the figures they name existed. This
+**One hundred and twenty-six rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -330,21 +351,22 @@ a count behind it.
 | **J** · the escalations (§0 of `PLAN_ESCALATIONS.md`) | 6 | 5 | **1** | 0 | 4 | 1 |
 | **N** · the audit of decisions (§0 of `PLAN_SPOTCHECK.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **Z** · the rules no label reaches (§0 of `PLAN_UNREACHED.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
-| **total** | **119** | **99** | **42** | **2** | **55** | **18** |
+| **G** · the policy, given to the proposer (§0 of `PLAN_MANUAL.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
+| **total** | **126** | **105** | **45** | **2** | **58** | **19** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
-`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`.
+`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
-`J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`.
+`J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -367,16 +389,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 42 of 99 = **42.4%**
-refuted; without them, 40 of 93 = **43.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 45 of 105 = **42.9%**
+refuted; without them, 43 of 99 = **43.4%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.6 points the flattering way, which is exactly why saying so is not optional.
+0.5 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 42 of 92 = **45.7%** and 40
-of 86 = **46.5%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 45 of 98 = **45.9%** and 43
+of 92 = **46.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -484,6 +506,13 @@ of 86 = **46.5%**, which is the reading the calibration note should take.
 > it, dead-zone and unadjudicated rows included. The next thread still moves
 > them all by hand, in the same commit as its row, and the test fails until they
 > agree with each other and with the records.
+>
+> **[NOTE 2026-10-21, later] Recomputed with the `G` thread, in the same commit
+> as its row.** Seven rows were signed and six adjudicated: three refuted and
+> three held. One was reported. None of its bands was set on a development set.
+> The table, the named lists, the count in the heading and the four ratios moved
+> together, and the test above read them; the gap between the first two is now
+> 0.5 points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -525,7 +554,9 @@ which owns all six; and `N` from
 [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
 which owns all six; and `Z` from
 [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
-which owns all six.
+which owns all six; and `G` from
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md), which
+owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -1864,6 +1895,42 @@ and no swap carried them; two sentences carry dated errata. No verdict moves.
 [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
 *What the keyword holds over the space*.
 
+**The policy, given to the proposer: compiled once it is written whole, and
+through the loop it is not.** `PLAN_MANUAL.md` handed the model the policy at
+three levels. The levels were a catalogue of what each queue is for, that
+catalogue with a prose manual drafted with a real manual's vague words, and the
+29 rules as text. Each level, and the bare names beside them, ran in two shapes.
+In one, a single answer writes the whole base. In the other, `PLAN_REUSE.md`'s
+loop runs with the manual in its prompt. Everything is from
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md):
+
+- **Compiled once, the model writes the policy.**
+  - From the rules it writes it exactly, in all five asks (`G-a` holds).
+  - From the prose it reaches 0.9929 of the space at the median. Every ask
+    loses the same 960 points of one rule, the one whose threshold the prose
+    calls *muchisimos*.
+  - From the names alone, 0.5793.
+  - Every compiled base crosses, near the hidden policy's own `K-a`.
+- **The catalogue buys nothing over the names.**
+  - Compiled, the recall of `ACCOUNT_MANAGER` and `T3_ENGINEERING` is no higher
+    (`G-b` refuted, thin).
+  - In the loop the proposer picks the right queue at 0.3301 against 0.5210
+    (`G-f` refuted).
+- **Through the loop the same texts decide about a third of the function.**
+  - With the rules, 0.3778 over the space against 1.0000 compiled once (`G-d`
+    holds), and with the prose 0.3301 against 0.9929.
+  - On the arrivals the rules' bases reach 0.6475. The prose's barely move from
+    the names', 0.4810 against 0.4545 (`G-e` refuted, thin).
+- **With the rules in front of it, the proposer still partitions**, `K-a`
+  0.7349 (`G-c` holds). The prose made it cross more.
+- **Handed the rules, it applies them at 0.5666 of its escalations.** With the
+  prose it names `ACCOUNT_MANAGER` right on 57 of 63, and
+  `ONCALL_ESCALATION`, named right when asked, is hardly ever compiled.
+
+So what the loop lacked was not knowledge. Knowledge is ruled out among the
+partition's candidates, on this model and these texts, and the elicitation's
+remain.
+
 ---
 
 ## What was withdrawn, and why
@@ -1973,6 +2040,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    refuted). *A direction a ranking lacks* is measured against the key's ranking,
    and the model holds no ranking that good.
    [`results_ranking/FINDINGS_RANKING.md`](results_ranking/FINDINGS_RANKING.md).
+   **[NOTE 2026-10-21] Knowledge is ruled out as the partition's cause, and one
+   of the two classes is a matter of it.** `PLAN_MANUAL.md` gave the model the
+   policy as text.
+   - With the 29 rules in front of it, the loop's proposer still partitions
+     (`G-c` holds).
+   - Asked for the whole base in one answer, the same model writes the policy
+     exactly (`G-a` holds), and every base it compiles crosses.
+   - So the partition belongs to the loop's elicitation: the three candidates of
+     `ARBITRATION_REPORT.md` §5 remain, and knowledge does not join them.
+   - With the prose, the proposer names `ACCOUNT_MANAGER` right at nearly
+     every escalation of the class, so that class was knowledge.
+   - `T3_ENGINEERING` stays low in the loop at every level, and compiled once
+     it is whole.
+   - What is open now is why the elicitation partitions, and why the loop loses
+     what it knows.
+   [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2016,6 +2099,17 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    POST-RUN**: 17 test cases against arrival order, so on both surfaces the
    trade is a loss.
    [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md).
+   **[NOTE 2026-10-21] Given the policy, the loop asks about the queue and still
+   does not compile it.**
+   - Under `PLAN_MANUAL.md`'s rules and prose, `ONCALL_ESCALATION` tickets did
+     escalate, and the proposer named the queue right on 15 of 18.
+   - In those six runs the rules then decided a later ticket of the class right
+     once.
+   - Compiled in one answer, from the names alone or from any manual, the model
+     put the whole region right every time.
+   - So the queue is in the model and the trigger is not the whole gap: what
+     the loop writes after asking loses it too.
+   [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
