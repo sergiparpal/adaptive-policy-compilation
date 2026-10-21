@@ -16,13 +16,15 @@ the GitHub API names #150 behind `e5e844c`. The code digest the `_env` records,
 
 **A POST-RUN reading was added on 2026-10-21**:
 [`keyword_half.json`](keyword_half.json), by `unreached/keyword_half.py`, in its
-own section below. Its `_env` names `9da087f`, the commit that wrote its
-expectation, as it was made. **That commit was never pushed**: the branch was
-rebased onto `main` after pull request #151 merged, and the commit is `e0c8131`
-there. The two have the same tree, the same subject and the same `git patch-id
---stable`. The code digest the `_env` records, `d96905fc8bba0313`, is the one
-the branch's tip computes. It moves no verdict. It corrects two sentences of
-the curve's reading, with dated errata in place.
+own section below. It reached `main` in pull request #152. Its `_env` names
+`9da087f`, the commit that wrote its expectation, as it was made. **That commit
+was never pushed**: the branch was rebased onto `main` after pull request #151
+merged and pushed as `e0c8131`, and the rebase merge of #152 gave it `bea90cc`
+on `main`. The three have the same tree, the same subject and the same `git
+patch-id --stable`, and the GitHub API names #152 behind `bea90cc`. The code
+digest the `_env` records, `d96905fc8bba0313`, is the one `main` computes after
+the merge. It moves no verdict. It corrects two sentences of the curve's
+reading, with dated errata in place.
 
 **The stage adjudicated the five signed rows on 2026-10-20: two hold and three
 are refuted, and two are thin.**
@@ -402,10 +404,10 @@ swap had carried it up. The record does not name it.
 
 > **POST-RUN.** Asked for on 2026-10-20, after the stage, and run on
 > 2026-10-21. `unreached/keyword_half.py` wrote its eight-clause expectation in
-> its docstring and was committed before the first run, as `9da087f`, rebased
-> unchanged to `e0c8131` on its branch. It read this stage's 22 orders and the
-> audit stage's 40 from their records. It searched the escalations stage's 29
-> again, since that record kept none. Four gates stood before any write:
+> its docstring and was committed before the first run, as `9da087f`, which is
+> `bea90cc` on `main`. It read this stage's 22 orders and the audit stage's 40
+> from their records. It searched the escalations stage's 29 again, since that
+> record kept none. Four gates stood before any write:
 > - every order is its record's, on both surfaces and on the four rare queues;
 > - the masks are one convention: the keyword half is the keyword rule's
 >   extension, and the truth by queue partitions the space;
