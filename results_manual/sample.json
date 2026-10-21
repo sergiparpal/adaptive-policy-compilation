@@ -1,0 +1,2951 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-21T15:54:07Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "02bbcd93eb103368f629230e30f41fce45600169",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "430fa47dbaf069b8"
+  },
+  "plan": "PLAN_MANUAL.md",
+  "stage": "A",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_MANUAL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_MANUAL.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "G-g1": {
+      "what": "the instrument reproduces the hidden policy and PLAN_REUSE.md's records; the suite green",
+      "installer": {
+        "edges": 199,
+        "same_edges_as_hidden_priority": true,
+        "refused": [],
+        "inversions": 0,
+        "space": 1.0,
+        "corpus": 1.0,
+        "first_match_space": 1.0,
+        "measure_corpus": 1.0,
+        "reversed": {
+          "space": 0.42319940476190476,
+          "corpus": 0.689,
+          "refused": 99,
+          "inversions": 54
+        },
+        "passes": true
+      },
+      "reuse": {
+        "labels_agree": true,
+        "runs": [
+          {
+            "run": 1,
+            "space": 0.30625,
+            "space_published": 0.30625,
+            "corpus": 0.4035,
+            "corpus_published": 0.4035,
+            "corpus_by_case": 0.4035,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 2,
+            "space": 0.2950892857142857,
+            "space_published": 0.2950892857142857,
+            "corpus": 0.447,
+            "corpus_published": 0.447,
+            "corpus_by_case": 0.447,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 3,
+            "space": 0.5535714285714286,
+            "space_published": 0.5535714285714286,
+            "corpus": 0.5245,
+            "corpus_published": 0.5245,
+            "corpus_by_case": 0.5245,
+            "k_a": 0.8125,
+            "k_a_published": 0.8125,
+            "prop": 0.5476190476190477,
+            "prop_published": 0.5476,
+            "passes": true
+          }
+        ],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2047,
+        "result": "OK (skipped=5)",
+        "seconds": 253.8,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g2": {
+      "what": "the texts are \u00a75's, and every prompt is its level-0 prompt plus \u00a75.5's block",
+      "digests": {
+        "catalogue": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+        "prose": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+        "rules": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd"
+      },
+      "digests_are_section_5s": true,
+      "rules_rebuilt": true,
+      "rules_parse_back": true,
+      "omissions_cost_nothing": {
+        "dropped": [
+          "H21",
+          "H25",
+          "H27",
+          "H28"
+        ],
+        "rules_left": 25,
+        "space": 1.0,
+        "corpus": 1.0
+      },
+      "catalogue": {
+        "queues_in_order": true,
+        "leaks": [],
+        "digits": false,
+        "passes": true
+      },
+      "prose": {
+        "leaks": [],
+        "rule_ids": [],
+        "passes": true
+      },
+      "prompts": {
+        "loop0_is_v1": true,
+        "loop0_is_plan_reuse_s": true,
+        "block_only": {
+          "1": {
+            "loop": true,
+            "compile": true
+          },
+          "2": {
+            "loop": true,
+            "compile": true
+          },
+          "3": {
+            "loop": true,
+            "compile": true
+          }
+        },
+        "distinct_digests": true,
+        "passes": true
+      },
+      "teeth": true,
+      "passes": true
+    },
+    "G-g3": {
+      "what": "the compile path from parse to score; the invalid asks; the schedules. The requests are tests/test_manual.py's, through the SDK double",
+      "compile_path": {
+        "valid": true,
+        "score": 1.0,
+        "a_bad_rule_is_rejected_and_counted": [
+          3,
+          1
+        ],
+        "invalid_asks_are_invalid": {
+          "not_an_object": true,
+          "no_list": true,
+          "empty_list": true
+        },
+        "passes": true
+      },
+      "schedules": {
+        "compile_session": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "compile_smoke": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "loop": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "compile_passes_hold_every_level": true,
+        "smoke_holds_every_level": true,
+        "loop_reps_hold_every_level": true,
+        "each_level_at_a_different_place_each_rep": true,
+        "rebuilt_from_the_seed": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_MANUAL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_MANUAL.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "design": {
+    "texts": {
+      "catalogue": {
+        "sha256": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+        "text": "QUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n"
+      },
+      "prose": {
+        "sha256": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+        "text": "COMO ENRUTAMOS LOS TICKETS\n\n1. Seguridad, antes que nada. Si el ticket menciona un problema de seguridad y viene de una cuenta business o enterprise, o tiene severidad alta, es un incidente de seguridad. El resto de menciones de seguridad, de cuentas free o pro con severidad baja, las revisa soporte tecnico.\n\n2. Despues, lo critico. Una incidencia critica (severidad 1) de un cliente enterprise activa la guardia. Si el cliente es business, la guardia solo se activa fuera de horario; en horario la coge ingenieria. Las criticas de la API tambien van a ingenieria, y el resto de criticas a soporte tecnico.\n\n3. Facturacion. Los tickets de facturacion de clientes enterprise los lleva su gestor de cuenta. Si el problema es urgente, o el cliente ya nos ha escrito varias veces este mes, va a un especialista de facturacion. Lo demas de facturacion se resuelve con autoservicio.\n\n4. Cuentas en riesgo. Un cliente enterprise que ha abierto bastantes tickets en el ultimo mes, o un cliente business que ha abierto muchisimos, pasa a su gestor de cuenta.\n\n5. Por producto. Los problemas de la API y de las integraciones van a ingenieria si son de severidad alta, y a soporte tecnico si no. Los de mobile y los de dashboard de severidad alta tambien son de soporte tecnico.\n\n6. Telefono. Las llamadas de clientes free se derivan a autoservicio. Fuera de horario, el telefono lo atiende el primer nivel, salvo a los clientes enterprise.\n\n7. Desvio a autoservicio. Los problemas no urgentes de clientes free se resuelven con autoservicio, y tambien los de severidad minima de clientes que no han abierto ningun ticket en el ultimo mes.\n\n8. Por defecto. Lo que no encaje en nada de lo anterior va al primer nivel.\n"
+      },
+      "rules": {
+        "sha256": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd",
+        "text": "LAS REGLAS DE LA EMPRESA, EN ORDEN\n\nSe aplica la primera regla de la lista cuyas condiciones casa el ticket.\n\nH01: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\nH02: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT\nH03: SI has_security_keyword eq True ENTONCES T2_TECHNICAL\nH04: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION\nH05: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION\nH06: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING\nH07: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING\nH08: SI severity eq 1 ENTONCES T2_TECHNICAL\nH09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\nH10: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST\nH11: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST\nH12: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT\nH13: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER\nH14: SI customer_tier eq business AND prior_tickets_30d gte 8 ENTONCES ACCOUNT_MANAGER\nH15: SI product eq api AND severity lte 2 ENTONCES T3_ENGINEERING\nH16: SI product eq api ENTONCES T2_TECHNICAL\nH17: SI product eq integrations AND severity lte 2 ENTONCES T3_ENGINEERING\nH18: SI product eq integrations ENTONCES T2_TECHNICAL\nH19: SI product eq mobile AND severity eq 2 ENTONCES T2_TECHNICAL\nH20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL\nH21: SI language eq pt AND severity lte 2 ENTONCES T2_TECHNICAL\nH22: SI channel eq phone AND customer_tier eq free ENTONCES SELF_SERVICE_DEFLECT\nH23: SI channel eq phone AND off_hours eq True AND customer_tier neq enterprise ENTONCES T1_GENERAL\nH24: SI customer_tier eq free AND severity gte 3 ENTONCES SELF_SERVICE_DEFLECT\nH25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH26: SI severity eq 4 AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH27: SI severity lte 2 ENTONCES T2_TECHNICAL\nH28: SI customer_tier in ['business', 'enterprise'] ENTONCES T1_GENERAL\nH29: SI severity gte 1 ENTONCES T1_GENERAL\n"
+      }
+    },
+    "levels": {
+      "0": [],
+      "1": [
+        "catalogue"
+      ],
+      "2": [
+        "catalogue",
+        "prose"
+      ],
+      "3": [
+        "rules"
+      ]
+    },
+    "prompts": {
+      "loop": {
+        "0": {
+          "sha256": "71fa68073837d5380158ddaa25554d9dfaa7a6317f7f26eb13e41be2cbe72f84",
+          "text": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado."
+        },
+        "1": {
+          "sha256": "fb72980e84c9aa16d62b4aa8f2a9921908ced394f8d883b40c3e92f3a9527c08",
+          "text": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado."
+        },
+        "2": {
+          "sha256": "76b6371c3130964350f6700faae200178d5c47a6a208389a0f9c97a8d6090b6b",
+          "text": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nCOMO ENRUTAMOS LOS TICKETS\n\n1. Seguridad, antes que nada. Si el ticket menciona un problema de seguridad y viene de una cuenta business o enterprise, o tiene severidad alta, es un incidente de seguridad. El resto de menciones de seguridad, de cuentas free o pro con severidad baja, las revisa soporte tecnico.\n\n2. Despues, lo critico. Una incidencia critica (severidad 1) de un cliente enterprise activa la guardia. Si el cliente es business, la guardia solo se activa fuera de horario; en horario la coge ingenieria. Las criticas de la API tambien van a ingenieria, y el resto de criticas a soporte tecnico.\n\n3. Facturacion. Los tickets de facturacion de clientes enterprise los lleva su gestor de cuenta. Si el problema es urgente, o el cliente ya nos ha escrito varias veces este mes, va a un especialista de facturacion. Lo demas de facturacion se resuelve con autoservicio.\n\n4. Cuentas en riesgo. Un cliente enterprise que ha abierto bastantes tickets en el ultimo mes, o un cliente business que ha abierto muchisimos, pasa a su gestor de cuenta.\n\n5. Por producto. Los problemas de la API y de las integraciones van a ingenieria si son de severidad alta, y a soporte tecnico si no. Los de mobile y los de dashboard de severidad alta tambien son de soporte tecnico.\n\n6. Telefono. Las llamadas de clientes free se derivan a autoservicio. Fuera de horario, el telefono lo atiende el primer nivel, salvo a los clientes enterprise.\n\n7. Desvio a autoservicio. Los problemas no urgentes de clientes free se resuelven con autoservicio, y tambien los de severidad minima de clientes que no han abierto ningun ticket en el ultimo mes.\n\n8. Por defecto. Lo que no encaje en nada de lo anterior va al primer nivel.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado."
+        },
+        "3": {
+          "sha256": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd",
+          "text": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nLAS REGLAS DE LA EMPRESA, EN ORDEN\n\nSe aplica la primera regla de la lista cuyas condiciones casa el ticket.\n\nH01: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\nH02: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT\nH03: SI has_security_keyword eq True ENTONCES T2_TECHNICAL\nH04: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION\nH05: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION\nH06: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING\nH07: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING\nH08: SI severity eq 1 ENTONCES T2_TECHNICAL\nH09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\nH10: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST\nH11: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST\nH12: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT\nH13: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER\nH14: SI customer_tier eq business AND prior_tickets_30d gte 8 ENTONCES ACCOUNT_MANAGER\nH15: SI product eq api AND severity lte 2 ENTONCES T3_ENGINEERING\nH16: SI product eq api ENTONCES T2_TECHNICAL\nH17: SI product eq integrations AND severity lte 2 ENTONCES T3_ENGINEERING\nH18: SI product eq integrations ENTONCES T2_TECHNICAL\nH19: SI product eq mobile AND severity eq 2 ENTONCES T2_TECHNICAL\nH20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL\nH21: SI language eq pt AND severity lte 2 ENTONCES T2_TECHNICAL\nH22: SI channel eq phone AND customer_tier eq free ENTONCES SELF_SERVICE_DEFLECT\nH23: SI channel eq phone AND off_hours eq True AND customer_tier neq enterprise ENTONCES T1_GENERAL\nH24: SI customer_tier eq free AND severity gte 3 ENTONCES SELF_SERVICE_DEFLECT\nH25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH26: SI severity eq 4 AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH27: SI severity lte 2 ENTONCES T2_TECHNICAL\nH28: SI customer_tier in ['business', 'enterprise'] ENTONCES T1_GENERAL\nH29: SI severity gte 1 ENTONCES T1_GENERAL\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado."
+        }
+      },
+      "compile": {
+        "0": {
+          "sha256": "6b7281eb11c229c1b6e3c311e0e66b5de422db86834d508da5a62884517c0784",
+          "text": "Eres el autor de la base de reglas de un sistema de triaje de tickets.\n\nTu tarea: escribir, de una vez, la base de reglas COMPLETA con la que el motor\nsimbolico decidira a que cola va cada ticket.\n\nCOMO APLICA EL MOTOR TU BASE\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana. Las excepciones anidadas\n  dentro de un caso general se ordenan solas.\n\n  NIVEL 2, por tu orden: cuando dos reglas se solapan sin que una contenga a la\n  otra, gana la que aparece antes en tu lista.\n\nUn ticket que no casa ninguna regla queda sin decidir. Toda regla necesita al\nmenos una condicion: si quieres una regla por defecto, dale una condicion que\ncasen todos los tickets.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"rules\": [\n    {\"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n     \"action\": \"<accion>\",\n     \"note\": \"<una frase>\"}\n  ],\n  \"note\": \"<una frase sobre la base en su conjunto>\"\n}\n\nLas reglas van en el orden en que el motor debe aplicar el nivel 2."
+        },
+        "1": {
+          "sha256": "fb6af1748467d1eb0eed66ef1e304da7e2dd70e62f02d32f3fea2fd729c3cdaa",
+          "text": "Eres el autor de la base de reglas de un sistema de triaje de tickets.\n\nTu tarea: escribir, de una vez, la base de reglas COMPLETA con la que el motor\nsimbolico decidira a que cola va cada ticket.\n\nCOMO APLICA EL MOTOR TU BASE\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana. Las excepciones anidadas\n  dentro de un caso general se ordenan solas.\n\n  NIVEL 2, por tu orden: cuando dos reglas se solapan sin que una contenga a la\n  otra, gana la que aparece antes en tu lista.\n\nUn ticket que no casa ninguna regla queda sin decidir. Toda regla necesita al\nmenos una condicion: si quieres una regla por defecto, dale una condicion que\ncasen todos los tickets.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"rules\": [\n    {\"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n     \"action\": \"<accion>\",\n     \"note\": \"<una frase>\"}\n  ],\n  \"note\": \"<una frase sobre la base en su conjunto>\"\n}\n\nLas reglas van en el orden en que el motor debe aplicar el nivel 2."
+        },
+        "2": {
+          "sha256": "239493973ef5ae02e5c92cf638881e58b7f479ab9d2907ea715b7805ddbc71c0",
+          "text": "Eres el autor de la base de reglas de un sistema de triaje de tickets.\n\nTu tarea: escribir, de una vez, la base de reglas COMPLETA con la que el motor\nsimbolico decidira a que cola va cada ticket.\n\nCOMO APLICA EL MOTOR TU BASE\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana. Las excepciones anidadas\n  dentro de un caso general se ordenan solas.\n\n  NIVEL 2, por tu orden: cuando dos reglas se solapan sin que una contenga a la\n  otra, gana la que aparece antes en tu lista.\n\nUn ticket que no casa ninguna regla queda sin decidir. Toda regla necesita al\nmenos una condicion: si quieres una regla por defecto, dale una condicion que\ncasen todos los tickets.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nCOMO ENRUTAMOS LOS TICKETS\n\n1. Seguridad, antes que nada. Si el ticket menciona un problema de seguridad y viene de una cuenta business o enterprise, o tiene severidad alta, es un incidente de seguridad. El resto de menciones de seguridad, de cuentas free o pro con severidad baja, las revisa soporte tecnico.\n\n2. Despues, lo critico. Una incidencia critica (severidad 1) de un cliente enterprise activa la guardia. Si el cliente es business, la guardia solo se activa fuera de horario; en horario la coge ingenieria. Las criticas de la API tambien van a ingenieria, y el resto de criticas a soporte tecnico.\n\n3. Facturacion. Los tickets de facturacion de clientes enterprise los lleva su gestor de cuenta. Si el problema es urgente, o el cliente ya nos ha escrito varias veces este mes, va a un especialista de facturacion. Lo demas de facturacion se resuelve con autoservicio.\n\n4. Cuentas en riesgo. Un cliente enterprise que ha abierto bastantes tickets en el ultimo mes, o un cliente business que ha abierto muchisimos, pasa a su gestor de cuenta.\n\n5. Por producto. Los problemas de la API y de las integraciones van a ingenieria si son de severidad alta, y a soporte tecnico si no. Los de mobile y los de dashboard de severidad alta tambien son de soporte tecnico.\n\n6. Telefono. Las llamadas de clientes free se derivan a autoservicio. Fuera de horario, el telefono lo atiende el primer nivel, salvo a los clientes enterprise.\n\n7. Desvio a autoservicio. Los problemas no urgentes de clientes free se resuelven con autoservicio, y tambien los de severidad minima de clientes que no han abierto ningun ticket en el ultimo mes.\n\n8. Por defecto. Lo que no encaje en nada de lo anterior va al primer nivel.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"rules\": [\n    {\"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n     \"action\": \"<accion>\",\n     \"note\": \"<una frase>\"}\n  ],\n  \"note\": \"<una frase sobre la base en su conjunto>\"\n}\n\nLas reglas van en el orden en que el motor debe aplicar el nivel 2."
+        },
+        "3": {
+          "sha256": "cfa58d8e03a028e249658ef17ab0f1ef8ecf2679540f95e7c830e15aadaface6",
+          "text": "Eres el autor de la base de reglas de un sistema de triaje de tickets.\n\nTu tarea: escribir, de una vez, la base de reglas COMPLETA con la que el motor\nsimbolico decidira a que cola va cada ticket.\n\nCOMO APLICA EL MOTOR TU BASE\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana. Las excepciones anidadas\n  dentro de un caso general se ordenan solas.\n\n  NIVEL 2, por tu orden: cuando dos reglas se solapan sin que una contenga a la\n  otra, gana la que aparece antes en tu lista.\n\nUn ticket que no casa ninguna regla queda sin decidir. Toda regla necesita al\nmenos una condicion: si quieres una regla por defecto, dale una condicion que\ncasen todos los tickets.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nLAS REGLAS DE LA EMPRESA, EN ORDEN\n\nSe aplica la primera regla de la lista cuyas condiciones casa el ticket.\n\nH01: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\nH02: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT\nH03: SI has_security_keyword eq True ENTONCES T2_TECHNICAL\nH04: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION\nH05: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION\nH06: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING\nH07: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING\nH08: SI severity eq 1 ENTONCES T2_TECHNICAL\nH09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\nH10: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST\nH11: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST\nH12: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT\nH13: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER\nH14: SI customer_tier eq business AND prior_tickets_30d gte 8 ENTONCES ACCOUNT_MANAGER\nH15: SI product eq api AND severity lte 2 ENTONCES T3_ENGINEERING\nH16: SI product eq api ENTONCES T2_TECHNICAL\nH17: SI product eq integrations AND severity lte 2 ENTONCES T3_ENGINEERING\nH18: SI product eq integrations ENTONCES T2_TECHNICAL\nH19: SI product eq mobile AND severity eq 2 ENTONCES T2_TECHNICAL\nH20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL\nH21: SI language eq pt AND severity lte 2 ENTONCES T2_TECHNICAL\nH22: SI channel eq phone AND customer_tier eq free ENTONCES SELF_SERVICE_DEFLECT\nH23: SI channel eq phone AND off_hours eq True AND customer_tier neq enterprise ENTONCES T1_GENERAL\nH24: SI customer_tier eq free AND severity gte 3 ENTONCES SELF_SERVICE_DEFLECT\nH25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH26: SI severity eq 4 AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH27: SI severity lte 2 ENTONCES T2_TECHNICAL\nH28: SI customer_tier in ['business', 'enterprise'] ENTONCES T1_GENERAL\nH29: SI severity gte 1 ENTONCES T1_GENERAL\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"rules\": [\n    {\"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n     \"action\": \"<accion>\",\n     \"note\": \"<una frase>\"}\n  ],\n  \"note\": \"<una frase sobre la base en su conjunto>\"\n}\n\nLas reglas van en el orden en que el motor debe aplicar el nivel 2."
+        }
+      }
+    },
+    "compile_user": "Escribe ahora la base de reglas completa.",
+    "order": {
+      "seed": 61,
+      "compile_smoke": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "compile_session": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "loop": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    }
+  },
+  "references": {
+    "plan_reuse": [
+      {
+        "cells": {
+          "space": {
+            "n": 134400,
+            "action": 99960,
+            "conflict": 34440,
+            "impasse": 0,
+            "correct": 41160,
+            "coverage": 0.74375,
+            "silent_error": 0.5882352941176471,
+            "e2e": 0.30625,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 17880,
+                "of": 36720,
+                "share": 0.4869281045751634
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 1440,
+                "of": 6840,
+                "share": 0.21052631578947367
+              },
+              "SECURITY_INCIDENT": {
+                "right": 19320,
+                "of": 50400,
+                "share": 0.38333333333333336
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 1800,
+                "of": 4300,
+                "share": 0.4186046511627907
+              }
+            }
+          },
+          "space_outside": {
+            "n": 67200,
+            "action": 67200,
+            "conflict": 0,
+            "impasse": 0,
+            "correct": 21000,
+            "coverage": 1.0,
+            "silent_error": 0.6875,
+            "e2e": 0.3125,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 17040,
+                "of": 19920,
+                "share": 0.8554216867469879
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 1440,
+                "of": 6840,
+                "share": 0.21052631578947367
+              },
+              "SECURITY_INCIDENT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 1800,
+                "of": 4300,
+                "share": 0.4186046511627907
+              }
+            }
+          },
+          "space_keyword": {
+            "n": 67200,
+            "action": 32760,
+            "conflict": 34440,
+            "impasse": 0,
+            "correct": 20160,
+            "coverage": 0.4875,
+            "silent_error": 0.38461538461538464,
+            "e2e": 0.3,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "T2_TECHNICAL": {
+                "right": 840,
+                "of": 16800,
+                "share": 0.05
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "BILLING_SPECIALIST": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SECURITY_INCIDENT": {
+                "right": 19320,
+                "of": 50400,
+                "share": 0.38333333333333336
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              }
+            }
+          },
+          "corpus": {
+            "n": 2000,
+            "action": 1988,
+            "conflict": 12,
+            "impasse": 0,
+            "correct": 807,
+            "e2e": 0.4035,
+            "silent_error": 0.5940643863179075,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 20,
+                "of": 255,
+                "share": 0.0784313725490196
+              },
+              "T2_TECHNICAL": {
+                "right": 531,
+                "of": 726,
+                "share": 0.731404958677686
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 117,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 48,
+                "of": 271,
+                "share": 0.17712177121771217
+              },
+              "SECURITY_INCIDENT": {
+                "right": 10,
+                "of": 20,
+                "share": 0.5
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 109,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 7,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 198,
+                "of": 495,
+                "share": 0.4
+              }
+            }
+          }
+        },
+        "k_a": "1",
+        "o_a": 0.3225806451612903,
+        "rules": 62,
+        "reproduces": [],
+        "by_region": {
+          "H01": {
+            "space": [
+              5880,
+              33600
+            ],
+            "corpus": [
+              4,
+              9
+            ]
+          },
+          "H02": {
+            "space": [
+              13440,
+              16800
+            ],
+            "corpus": [
+              6,
+              11
+            ]
+          },
+          "H03": {
+            "space": [
+              840,
+              16800
+            ],
+            "corpus": [
+              2,
+              51
+            ]
+          },
+          "H04": {
+            "space": [
+              0,
+              4200
+            ],
+            "corpus": [
+              0,
+              4
+            ]
+          },
+          "H05": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H06": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              8
+            ]
+          },
+          "H07": {
+            "space": [
+              0,
+              1680
+            ],
+            "corpus": [
+              0,
+              17
+            ]
+          },
+          "H08": {
+            "space": [
+              6720,
+              6720
+            ],
+            "corpus": [
+              60,
+              60
+            ]
+          },
+          "H09": {
+            "space": [
+              0,
+              2520
+            ],
+            "corpus": [
+              0,
+              26
+            ]
+          },
+          "H10": {
+            "space": [
+              0,
+              2520
+            ],
+            "corpus": [
+              0,
+              85
+            ]
+          },
+          "H11": {
+            "space": [
+              1440,
+              4320
+            ],
+            "corpus": [
+              48,
+              186
+            ]
+          },
+          "H12": {
+            "space": [
+              120,
+              720
+            ],
+            "corpus": [
+              43,
+              154
+            ]
+          },
+          "H13": {
+            "space": [
+              0,
+              7680
+            ],
+            "corpus": [
+              0,
+              34
+            ]
+          },
+          "H14": {
+            "space": [
+              0,
+              6240
+            ],
+            "corpus": [
+              0,
+              49
+            ]
+          },
+          "H15": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              60
+            ]
+          },
+          "H16": {
+            "space": [
+              3160,
+              4400
+            ],
+            "corpus": [
+              207,
+              307
+            ]
+          },
+          "H17": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              32
+            ]
+          },
+          "H18": {
+            "space": [
+              3160,
+              4400
+            ],
+            "corpus": [
+              99,
+              140
+            ]
+          },
+          "H19": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              43,
+              45
+            ]
+          },
+          "H20": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              120,
+              123
+            ]
+          },
+          "H21": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H22": {
+            "space": [
+              420,
+              840
+            ],
+            "corpus": [
+              11,
+              16
+            ]
+          },
+          "H23": {
+            "space": [
+              0,
+              580
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H24": {
+            "space": [
+              1260,
+              2520
+            ],
+            "corpus": [
+              144,
+              303
+            ]
+          },
+          "H25": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H26": {
+            "space": [
+              0,
+              220
+            ],
+            "corpus": [
+              0,
+              22
+            ]
+          },
+          "H27": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H28": {
+            "space": [
+              720,
+              1770
+            ],
+            "corpus": [
+              20,
+              89
+            ]
+          },
+          "H29": {
+            "space": [
+              0,
+              2870
+            ],
+            "corpus": [
+              0,
+              163
+            ]
+          }
+        },
+        "run": 1,
+        "prop": {
+          "escalations": 62,
+          "right": 30,
+          "rate": 0.4838709677419355,
+          "failed": 0,
+          "by_queue": {
+            "ACCOUNT_MANAGER": {
+              "right": 0,
+              "of": 5
+            },
+            "BILLING_SPECIALIST": {
+              "right": 1,
+              "of": 4
+            },
+            "SECURITY_INCIDENT": {
+              "right": 14,
+              "of": 15
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 2,
+              "of": 5
+            },
+            "T1_GENERAL": {
+              "right": 0,
+              "of": 4
+            },
+            "T2_TECHNICAL": {
+              "right": 13,
+              "of": 29
+            }
+          }
+        }
+      },
+      {
+        "cells": {
+          "space": {
+            "n": 134400,
+            "action": 123060,
+            "conflict": 11340,
+            "impasse": 0,
+            "correct": 39660,
+            "coverage": 0.915625,
+            "silent_error": 0.6777181862506094,
+            "e2e": 0.2950892857142857,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 22920,
+                "of": 36720,
+                "share": 0.6241830065359477
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 4560,
+                "of": 6840,
+                "share": 0.6666666666666666
+              },
+              "SECURITY_INCIDENT": {
+                "right": 9660,
+                "of": 50400,
+                "share": 0.19166666666666668
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 1800,
+                "of": 4300,
+                "share": 0.4186046511627907
+              }
+            }
+          },
+          "space_outside": {
+            "n": 67200,
+            "action": 67200,
+            "conflict": 0,
+            "impasse": 0,
+            "correct": 23280,
+            "coverage": 1.0,
+            "silent_error": 0.6535714285714286,
+            "e2e": 0.3464285714285714,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 16200,
+                "of": 19920,
+                "share": 0.8132530120481928
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 4560,
+                "of": 6840,
+                "share": 0.6666666666666666
+              },
+              "SECURITY_INCIDENT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 1800,
+                "of": 4300,
+                "share": 0.4186046511627907
+              }
+            }
+          },
+          "space_keyword": {
+            "n": 67200,
+            "action": 55860,
+            "conflict": 11340,
+            "impasse": 0,
+            "correct": 16380,
+            "coverage": 0.83125,
+            "silent_error": 0.706766917293233,
+            "e2e": 0.24375,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "T2_TECHNICAL": {
+                "right": 6720,
+                "of": 16800,
+                "share": 0.4
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "BILLING_SPECIALIST": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SECURITY_INCIDENT": {
+                "right": 9660,
+                "of": 50400,
+                "share": 0.19166666666666668
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              }
+            }
+          },
+          "corpus": {
+            "n": 2000,
+            "action": 1999,
+            "conflict": 1,
+            "impasse": 0,
+            "correct": 894,
+            "e2e": 0.447,
+            "silent_error": 0.552776388194097,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 20,
+                "of": 255,
+                "share": 0.0784313725490196
+              },
+              "T2_TECHNICAL": {
+                "right": 537,
+                "of": 726,
+                "share": 0.7396694214876033
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 117,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 131,
+                "of": 271,
+                "share": 0.4833948339483395
+              },
+              "SECURITY_INCIDENT": {
+                "right": 8,
+                "of": 20,
+                "share": 0.4
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 109,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 7,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 198,
+                "of": 495,
+                "share": 0.4
+              }
+            }
+          }
+        },
+        "k_a": "1",
+        "o_a": 0.4838709677419355,
+        "rules": 31,
+        "reproduces": [],
+        "by_region": {
+          "H01": {
+            "space": [
+              0,
+              33600
+            ],
+            "corpus": [
+              0,
+              9
+            ]
+          },
+          "H02": {
+            "space": [
+              9660,
+              16800
+            ],
+            "corpus": [
+              8,
+              11
+            ]
+          },
+          "H03": {
+            "space": [
+              6720,
+              16800
+            ],
+            "corpus": [
+              12,
+              51
+            ]
+          },
+          "H04": {
+            "space": [
+              0,
+              4200
+            ],
+            "corpus": [
+              0,
+              4
+            ]
+          },
+          "H05": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H06": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              8
+            ]
+          },
+          "H07": {
+            "space": [
+              0,
+              1680
+            ],
+            "corpus": [
+              0,
+              17
+            ]
+          },
+          "H08": {
+            "space": [
+              5880,
+              6720
+            ],
+            "corpus": [
+              56,
+              60
+            ]
+          },
+          "H09": {
+            "space": [
+              0,
+              2520
+            ],
+            "corpus": [
+              0,
+              26
+            ]
+          },
+          "H10": {
+            "space": [
+              1680,
+              2520
+            ],
+            "corpus": [
+              40,
+              85
+            ]
+          },
+          "H11": {
+            "space": [
+              2880,
+              4320
+            ],
+            "corpus": [
+              91,
+              186
+            ]
+          },
+          "H12": {
+            "space": [
+              120,
+              720
+            ],
+            "corpus": [
+              43,
+              154
+            ]
+          },
+          "H13": {
+            "space": [
+              0,
+              7680
+            ],
+            "corpus": [
+              0,
+              34
+            ]
+          },
+          "H14": {
+            "space": [
+              0,
+              6240
+            ],
+            "corpus": [
+              0,
+              49
+            ]
+          },
+          "H15": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              60
+            ]
+          },
+          "H16": {
+            "space": [
+              3160,
+              4400
+            ],
+            "corpus": [
+              207,
+              307
+            ]
+          },
+          "H17": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              32
+            ]
+          },
+          "H18": {
+            "space": [
+              3160,
+              4400
+            ],
+            "corpus": [
+              99,
+              140
+            ]
+          },
+          "H19": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              43,
+              45
+            ]
+          },
+          "H20": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              120,
+              123
+            ]
+          },
+          "H21": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H22": {
+            "space": [
+              420,
+              840
+            ],
+            "corpus": [
+              11,
+              16
+            ]
+          },
+          "H23": {
+            "space": [
+              0,
+              580
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H24": {
+            "space": [
+              1260,
+              2520
+            ],
+            "corpus": [
+              144,
+              303
+            ]
+          },
+          "H25": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H26": {
+            "space": [
+              0,
+              220
+            ],
+            "corpus": [
+              0,
+              22
+            ]
+          },
+          "H27": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H28": {
+            "space": [
+              720,
+              1770
+            ],
+            "corpus": [
+              20,
+              89
+            ]
+          },
+          "H29": {
+            "space": [
+              0,
+              2870
+            ],
+            "corpus": [
+              0,
+              163
+            ]
+          }
+        },
+        "run": 2,
+        "prop": {
+          "escalations": 31,
+          "right": 15,
+          "rate": 0.4838709677419355,
+          "failed": 0,
+          "by_queue": {
+            "ACCOUNT_MANAGER": {
+              "right": 0,
+              "of": 5
+            },
+            "BILLING_SPECIALIST": {
+              "right": 2,
+              "of": 3
+            },
+            "SECURITY_INCIDENT": {
+              "right": 3,
+              "of": 3
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 2,
+              "of": 4
+            },
+            "T1_GENERAL": {
+              "right": 0,
+              "of": 4
+            },
+            "T2_TECHNICAL": {
+              "right": 8,
+              "of": 12
+            }
+          }
+        }
+      },
+      {
+        "cells": {
+          "space": {
+            "n": 134400,
+            "action": 131880,
+            "conflict": 2520,
+            "impasse": 0,
+            "correct": 74400,
+            "coverage": 0.98125,
+            "silent_error": 0.43585077343039125,
+            "e2e": 0.5535714285714286,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 17040,
+                "of": 36720,
+                "share": 0.46405228758169936
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 6120,
+                "of": 6840,
+                "share": 0.8947368421052632
+              },
+              "SECURITY_INCIDENT": {
+                "right": 49560,
+                "of": 50400,
+                "share": 0.9833333333333333
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 960,
+                "of": 4300,
+                "share": 0.22325581395348837
+              }
+            }
+          },
+          "space_outside": {
+            "n": 67200,
+            "action": 67200,
+            "conflict": 0,
+            "impasse": 0,
+            "correct": 24840,
+            "coverage": 1.0,
+            "silent_error": 0.6303571428571428,
+            "e2e": 0.36964285714285716,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 720,
+                "of": 5220,
+                "share": 0.13793103448275862
+              },
+              "T2_TECHNICAL": {
+                "right": 17040,
+                "of": 19920,
+                "share": 0.8554216867469879
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 8180,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 6120,
+                "of": 6840,
+                "share": 0.8947368421052632
+              },
+              "SECURITY_INCIDENT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 16440,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 6300,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 960,
+                "of": 4300,
+                "share": 0.22325581395348837
+              }
+            }
+          },
+          "space_keyword": {
+            "n": 67200,
+            "action": 64680,
+            "conflict": 2520,
+            "impasse": 0,
+            "correct": 49560,
+            "coverage": 0.9625,
+            "silent_error": 0.23376623376623376,
+            "e2e": 0.7375,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "T2_TECHNICAL": {
+                "right": 0,
+                "of": 16800,
+                "share": 0.0
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "BILLING_SPECIALIST": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SECURITY_INCIDENT": {
+                "right": 49560,
+                "of": 50400,
+                "share": 0.9833333333333333
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 0,
+                "of": 0,
+                "share": null
+              }
+            }
+          },
+          "corpus": {
+            "n": 2000,
+            "action": 1999,
+            "conflict": 1,
+            "impasse": 0,
+            "correct": 1049,
+            "e2e": 0.5245,
+            "silent_error": 0.4752376188094047,
+            "recall": {
+              "T1_GENERAL": {
+                "right": 20,
+                "of": 255,
+                "share": 0.0784313725490196
+              },
+              "T2_TECHNICAL": {
+                "right": 639,
+                "of": 726,
+                "share": 0.8801652892561983
+              },
+              "T3_ENGINEERING": {
+                "right": 0,
+                "of": 117,
+                "share": 0.0
+              },
+              "BILLING_SPECIALIST": {
+                "right": 223,
+                "of": 271,
+                "share": 0.8228782287822878
+              },
+              "SECURITY_INCIDENT": {
+                "right": 20,
+                "of": 20,
+                "share": 1.0
+              },
+              "ACCOUNT_MANAGER": {
+                "right": 0,
+                "of": 109,
+                "share": 0.0
+              },
+              "ONCALL_ESCALATION": {
+                "right": 0,
+                "of": 7,
+                "share": 0.0
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "right": 147,
+                "of": 495,
+                "share": 0.296969696969697
+              }
+            }
+          }
+        },
+        "k_a": "13/16",
+        "o_a": 0.3333333333333333,
+        "rules": 42,
+        "reproduces": [],
+        "by_region": {
+          "H01": {
+            "space": [
+              32760,
+              33600
+            ],
+            "corpus": [
+              9,
+              9
+            ]
+          },
+          "H02": {
+            "space": [
+              16800,
+              16800
+            ],
+            "corpus": [
+              11,
+              11
+            ]
+          },
+          "H03": {
+            "space": [
+              0,
+              16800
+            ],
+            "corpus": [
+              0,
+              51
+            ]
+          },
+          "H04": {
+            "space": [
+              0,
+              4200
+            ],
+            "corpus": [
+              0,
+              4
+            ]
+          },
+          "H05": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H06": {
+            "space": [
+              0,
+              2100
+            ],
+            "corpus": [
+              0,
+              8
+            ]
+          },
+          "H07": {
+            "space": [
+              0,
+              1680
+            ],
+            "corpus": [
+              0,
+              17
+            ]
+          },
+          "H08": {
+            "space": [
+              5040,
+              6720
+            ],
+            "corpus": [
+              44,
+              60
+            ]
+          },
+          "H09": {
+            "space": [
+              0,
+              2520
+            ],
+            "corpus": [
+              0,
+              26
+            ]
+          },
+          "H10": {
+            "space": [
+              2520,
+              2520
+            ],
+            "corpus": [
+              85,
+              85
+            ]
+          },
+          "H11": {
+            "space": [
+              3600,
+              4320
+            ],
+            "corpus": [
+              138,
+              186
+            ]
+          },
+          "H12": {
+            "space": [
+              120,
+              720
+            ],
+            "corpus": [
+              43,
+              154
+            ]
+          },
+          "H13": {
+            "space": [
+              0,
+              7680
+            ],
+            "corpus": [
+              0,
+              34
+            ]
+          },
+          "H14": {
+            "space": [
+              0,
+              6240
+            ],
+            "corpus": [
+              0,
+              49
+            ]
+          },
+          "H15": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              60
+            ]
+          },
+          "H16": {
+            "space": [
+              4000,
+              4400
+            ],
+            "corpus": [
+              298,
+              307
+            ]
+          },
+          "H17": {
+            "space": [
+              0,
+              2200
+            ],
+            "corpus": [
+              0,
+              32
+            ]
+          },
+          "H18": {
+            "space": [
+              4000,
+              4400
+            ],
+            "corpus": [
+              134,
+              140
+            ]
+          },
+          "H19": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              43,
+              45
+            ]
+          },
+          "H20": {
+            "space": [
+              2000,
+              2200
+            ],
+            "corpus": [
+              120,
+              123
+            ]
+          },
+          "H21": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H22": {
+            "space": [
+              210,
+              840
+            ],
+            "corpus": [
+              7,
+              16
+            ]
+          },
+          "H23": {
+            "space": [
+              0,
+              580
+            ],
+            "corpus": [
+              0,
+              3
+            ]
+          },
+          "H24": {
+            "space": [
+              630,
+              2520
+            ],
+            "corpus": [
+              97,
+              303
+            ]
+          },
+          "H25": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H26": {
+            "space": [
+              0,
+              220
+            ],
+            "corpus": [
+              0,
+              22
+            ]
+          },
+          "H27": {
+            "space": [
+              0,
+              0
+            ],
+            "corpus": [
+              0,
+              0
+            ]
+          },
+          "H28": {
+            "space": [
+              720,
+              1770
+            ],
+            "corpus": [
+              20,
+              89
+            ]
+          },
+          "H29": {
+            "space": [
+              0,
+              2870
+            ],
+            "corpus": [
+              0,
+              163
+            ]
+          }
+        },
+        "run": 3,
+        "prop": {
+          "escalations": 42,
+          "right": 23,
+          "rate": 0.5476190476190477,
+          "failed": 0,
+          "by_queue": {
+            "ACCOUNT_MANAGER": {
+              "right": 0,
+              "of": 3
+            },
+            "BILLING_SPECIALIST": {
+              "right": 4,
+              "of": 4
+            },
+            "SECURITY_INCIDENT": {
+              "right": 2,
+              "of": 2
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 3,
+              "of": 7
+            },
+            "T1_GENERAL": {
+              "right": 0,
+              "of": 4
+            },
+            "T2_TECHNICAL": {
+              "right": 14,
+              "of": 22
+            }
+          }
+        }
+      }
+    ],
+    "hidden_policy": {
+      "cells": {
+        "space": {
+          "n": 134400,
+          "action": 134400,
+          "conflict": 0,
+          "impasse": 0,
+          "correct": 134400,
+          "coverage": 1.0,
+          "silent_error": 0.0,
+          "e2e": 1.0,
+          "recall": {
+            "T1_GENERAL": {
+              "right": 5220,
+              "of": 5220,
+              "share": 1.0
+            },
+            "T2_TECHNICAL": {
+              "right": 36720,
+              "of": 36720,
+              "share": 1.0
+            },
+            "T3_ENGINEERING": {
+              "right": 8180,
+              "of": 8180,
+              "share": 1.0
+            },
+            "BILLING_SPECIALIST": {
+              "right": 6840,
+              "of": 6840,
+              "share": 1.0
+            },
+            "SECURITY_INCIDENT": {
+              "right": 50400,
+              "of": 50400,
+              "share": 1.0
+            },
+            "ACCOUNT_MANAGER": {
+              "right": 16440,
+              "of": 16440,
+              "share": 1.0
+            },
+            "ONCALL_ESCALATION": {
+              "right": 6300,
+              "of": 6300,
+              "share": 1.0
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 4300,
+              "of": 4300,
+              "share": 1.0
+            }
+          }
+        },
+        "space_outside": {
+          "n": 67200,
+          "action": 67200,
+          "conflict": 0,
+          "impasse": 0,
+          "correct": 67200,
+          "coverage": 1.0,
+          "silent_error": 0.0,
+          "e2e": 1.0,
+          "recall": {
+            "T1_GENERAL": {
+              "right": 5220,
+              "of": 5220,
+              "share": 1.0
+            },
+            "T2_TECHNICAL": {
+              "right": 19920,
+              "of": 19920,
+              "share": 1.0
+            },
+            "T3_ENGINEERING": {
+              "right": 8180,
+              "of": 8180,
+              "share": 1.0
+            },
+            "BILLING_SPECIALIST": {
+              "right": 6840,
+              "of": 6840,
+              "share": 1.0
+            },
+            "SECURITY_INCIDENT": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "ACCOUNT_MANAGER": {
+              "right": 16440,
+              "of": 16440,
+              "share": 1.0
+            },
+            "ONCALL_ESCALATION": {
+              "right": 6300,
+              "of": 6300,
+              "share": 1.0
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 4300,
+              "of": 4300,
+              "share": 1.0
+            }
+          }
+        },
+        "space_keyword": {
+          "n": 67200,
+          "action": 67200,
+          "conflict": 0,
+          "impasse": 0,
+          "correct": 67200,
+          "coverage": 1.0,
+          "silent_error": 0.0,
+          "e2e": 1.0,
+          "recall": {
+            "T1_GENERAL": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "T2_TECHNICAL": {
+              "right": 16800,
+              "of": 16800,
+              "share": 1.0
+            },
+            "T3_ENGINEERING": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "BILLING_SPECIALIST": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "SECURITY_INCIDENT": {
+              "right": 50400,
+              "of": 50400,
+              "share": 1.0
+            },
+            "ACCOUNT_MANAGER": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "ONCALL_ESCALATION": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 0,
+              "of": 0,
+              "share": null
+            }
+          }
+        },
+        "corpus": {
+          "n": 2000,
+          "action": 2000,
+          "conflict": 0,
+          "impasse": 0,
+          "correct": 2000,
+          "e2e": 1.0,
+          "silent_error": 0.0,
+          "recall": {
+            "T1_GENERAL": {
+              "right": 255,
+              "of": 255,
+              "share": 1.0
+            },
+            "T2_TECHNICAL": {
+              "right": 726,
+              "of": 726,
+              "share": 1.0
+            },
+            "T3_ENGINEERING": {
+              "right": 117,
+              "of": 117,
+              "share": 1.0
+            },
+            "BILLING_SPECIALIST": {
+              "right": 271,
+              "of": 271,
+              "share": 1.0
+            },
+            "SECURITY_INCIDENT": {
+              "right": 20,
+              "of": 20,
+              "share": 1.0
+            },
+            "ACCOUNT_MANAGER": {
+              "right": 109,
+              "of": 109,
+              "share": 1.0
+            },
+            "ONCALL_ESCALATION": {
+              "right": 7,
+              "of": 7,
+              "share": 1.0
+            },
+            "SELF_SERVICE_DEFLECT": {
+              "right": 495,
+              "of": 495,
+              "share": 1.0
+            }
+          }
+        }
+      },
+      "k_a": "1/13",
+      "o_a": 0.06896551724137931,
+      "rules": 29,
+      "reproduces": [
+        "H01",
+        "H02",
+        "H03",
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H14",
+        "H15",
+        "H16",
+        "H17",
+        "H18",
+        "H19",
+        "H20",
+        "H21",
+        "H22",
+        "H23",
+        "H24",
+        "H25",
+        "H26",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "by_region": {
+        "H01": {
+          "space": [
+            33600,
+            33600
+          ],
+          "corpus": [
+            9,
+            9
+          ]
+        },
+        "H02": {
+          "space": [
+            16800,
+            16800
+          ],
+          "corpus": [
+            11,
+            11
+          ]
+        },
+        "H03": {
+          "space": [
+            16800,
+            16800
+          ],
+          "corpus": [
+            51,
+            51
+          ]
+        },
+        "H04": {
+          "space": [
+            4200,
+            4200
+          ],
+          "corpus": [
+            4,
+            4
+          ]
+        },
+        "H05": {
+          "space": [
+            2100,
+            2100
+          ],
+          "corpus": [
+            3,
+            3
+          ]
+        },
+        "H06": {
+          "space": [
+            2100,
+            2100
+          ],
+          "corpus": [
+            8,
+            8
+          ]
+        },
+        "H07": {
+          "space": [
+            1680,
+            1680
+          ],
+          "corpus": [
+            17,
+            17
+          ]
+        },
+        "H08": {
+          "space": [
+            6720,
+            6720
+          ],
+          "corpus": [
+            60,
+            60
+          ]
+        },
+        "H09": {
+          "space": [
+            2520,
+            2520
+          ],
+          "corpus": [
+            26,
+            26
+          ]
+        },
+        "H10": {
+          "space": [
+            2520,
+            2520
+          ],
+          "corpus": [
+            85,
+            85
+          ]
+        },
+        "H11": {
+          "space": [
+            4320,
+            4320
+          ],
+          "corpus": [
+            186,
+            186
+          ]
+        },
+        "H12": {
+          "space": [
+            720,
+            720
+          ],
+          "corpus": [
+            154,
+            154
+          ]
+        },
+        "H13": {
+          "space": [
+            7680,
+            7680
+          ],
+          "corpus": [
+            34,
+            34
+          ]
+        },
+        "H14": {
+          "space": [
+            6240,
+            6240
+          ],
+          "corpus": [
+            49,
+            49
+          ]
+        },
+        "H15": {
+          "space": [
+            2200,
+            2200
+          ],
+          "corpus": [
+            60,
+            60
+          ]
+        },
+        "H16": {
+          "space": [
+            4400,
+            4400
+          ],
+          "corpus": [
+            307,
+            307
+          ]
+        },
+        "H17": {
+          "space": [
+            2200,
+            2200
+          ],
+          "corpus": [
+            32,
+            32
+          ]
+        },
+        "H18": {
+          "space": [
+            4400,
+            4400
+          ],
+          "corpus": [
+            140,
+            140
+          ]
+        },
+        "H19": {
+          "space": [
+            2200,
+            2200
+          ],
+          "corpus": [
+            45,
+            45
+          ]
+        },
+        "H20": {
+          "space": [
+            2200,
+            2200
+          ],
+          "corpus": [
+            123,
+            123
+          ]
+        },
+        "H21": {
+          "space": [
+            0,
+            0
+          ],
+          "corpus": [
+            0,
+            0
+          ]
+        },
+        "H22": {
+          "space": [
+            840,
+            840
+          ],
+          "corpus": [
+            16,
+            16
+          ]
+        },
+        "H23": {
+          "space": [
+            580,
+            580
+          ],
+          "corpus": [
+            3,
+            3
+          ]
+        },
+        "H24": {
+          "space": [
+            2520,
+            2520
+          ],
+          "corpus": [
+            303,
+            303
+          ]
+        },
+        "H25": {
+          "space": [
+            0,
+            0
+          ],
+          "corpus": [
+            0,
+            0
+          ]
+        },
+        "H26": {
+          "space": [
+            220,
+            220
+          ],
+          "corpus": [
+            22,
+            22
+          ]
+        },
+        "H27": {
+          "space": [
+            0,
+            0
+          ],
+          "corpus": [
+            0,
+            0
+          ]
+        },
+        "H28": {
+          "space": [
+            1770,
+            1770
+          ],
+          "corpus": [
+            89,
+            89
+          ]
+        },
+        "H29": {
+          "space": [
+            2870,
+            2870
+          ],
+          "corpus": [
+            163,
+            163
+          ]
+        }
+      }
+    }
+  },
+  "masses": {
+    "rules": [
+      {
+        "rule": "H01",
+        "queue": "SECURITY_INCIDENT",
+        "prose": "exact",
+        "space": 33600,
+        "corpus": 9
+      },
+      {
+        "rule": "H02",
+        "queue": "SECURITY_INCIDENT",
+        "prose": "vague",
+        "space": 16800,
+        "corpus": 11
+      },
+      {
+        "rule": "H03",
+        "queue": "T2_TECHNICAL",
+        "prose": "vague",
+        "space": 16800,
+        "corpus": 51
+      },
+      {
+        "rule": "H04",
+        "queue": "ONCALL_ESCALATION",
+        "prose": "exact",
+        "space": 4200,
+        "corpus": 4
+      },
+      {
+        "rule": "H05",
+        "queue": "ONCALL_ESCALATION",
+        "prose": "exact",
+        "space": 2100,
+        "corpus": 3
+      },
+      {
+        "rule": "H06",
+        "queue": "T3_ENGINEERING",
+        "prose": "exact",
+        "space": 2100,
+        "corpus": 8
+      },
+      {
+        "rule": "H07",
+        "queue": "T3_ENGINEERING",
+        "prose": "exact",
+        "space": 1680,
+        "corpus": 17
+      },
+      {
+        "rule": "H08",
+        "queue": "T2_TECHNICAL",
+        "prose": "exact",
+        "space": 6720,
+        "corpus": 60
+      },
+      {
+        "rule": "H09",
+        "queue": "ACCOUNT_MANAGER",
+        "prose": "exact",
+        "space": 2520,
+        "corpus": 26
+      },
+      {
+        "rule": "H10",
+        "queue": "BILLING_SPECIALIST",
+        "prose": "vague",
+        "space": 2520,
+        "corpus": 85
+      },
+      {
+        "rule": "H11",
+        "queue": "BILLING_SPECIALIST",
+        "prose": "vague",
+        "space": 4320,
+        "corpus": 186
+      },
+      {
+        "rule": "H12",
+        "queue": "SELF_SERVICE_DEFLECT",
+        "prose": "exact",
+        "space": 720,
+        "corpus": 154
+      },
+      {
+        "rule": "H13",
+        "queue": "ACCOUNT_MANAGER",
+        "prose": "vague",
+        "space": 7680,
+        "corpus": 34
+      },
+      {
+        "rule": "H14",
+        "queue": "ACCOUNT_MANAGER",
+        "prose": "vague",
+        "space": 6240,
+        "corpus": 49
+      },
+      {
+        "rule": "H15",
+        "queue": "T3_ENGINEERING",
+        "prose": "vague",
+        "space": 2200,
+        "corpus": 60
+      },
+      {
+        "rule": "H16",
+        "queue": "T2_TECHNICAL",
+        "prose": "exact",
+        "space": 4400,
+        "corpus": 307
+      },
+      {
+        "rule": "H17",
+        "queue": "T3_ENGINEERING",
+        "prose": "vague",
+        "space": 2200,
+        "corpus": 32
+      },
+      {
+        "rule": "H18",
+        "queue": "T2_TECHNICAL",
+        "prose": "exact",
+        "space": 4400,
+        "corpus": 140
+      },
+      {
+        "rule": "H19",
+        "queue": "T2_TECHNICAL",
+        "prose": "ambiguous",
+        "space": 2200,
+        "corpus": 45
+      },
+      {
+        "rule": "H20",
+        "queue": "T2_TECHNICAL",
+        "prose": "vague",
+        "space": 2200,
+        "corpus": 123
+      },
+      {
+        "rule": "H21",
+        "queue": "T2_TECHNICAL",
+        "prose": "omitted",
+        "space": 0,
+        "corpus": 0
+      },
+      {
+        "rule": "H22",
+        "queue": "SELF_SERVICE_DEFLECT",
+        "prose": "exact",
+        "space": 840,
+        "corpus": 16
+      },
+      {
+        "rule": "H23",
+        "queue": "T1_GENERAL",
+        "prose": "exact",
+        "space": 580,
+        "corpus": 3
+      },
+      {
+        "rule": "H24",
+        "queue": "SELF_SERVICE_DEFLECT",
+        "prose": "vague",
+        "space": 2520,
+        "corpus": 303
+      },
+      {
+        "rule": "H25",
+        "queue": "SELF_SERVICE_DEFLECT",
+        "prose": "omitted",
+        "space": 0,
+        "corpus": 0
+      },
+      {
+        "rule": "H26",
+        "queue": "SELF_SERVICE_DEFLECT",
+        "prose": "exact",
+        "space": 220,
+        "corpus": 22
+      },
+      {
+        "rule": "H27",
+        "queue": "T2_TECHNICAL",
+        "prose": "omitted",
+        "space": 0,
+        "corpus": 0
+      },
+      {
+        "rule": "H28",
+        "queue": "T1_GENERAL",
+        "prose": "merged",
+        "space": 1770,
+        "corpus": 89
+      },
+      {
+        "rule": "H29",
+        "queue": "T1_GENERAL",
+        "prose": "merged",
+        "space": 2870,
+        "corpus": 163
+      }
+    ],
+    "by_how_the_prose_states_it": {
+      "exact": {
+        "rules": 13,
+        "space": 64080,
+        "corpus": 769
+      },
+      "vague": {
+        "rules": 10,
+        "space": 63480,
+        "corpus": 934
+      },
+      "ambiguous": {
+        "rules": 1,
+        "space": 2200,
+        "corpus": 45
+      },
+      "omitted": {
+        "rules": 3,
+        "space": 0,
+        "corpus": 0
+      },
+      "merged": {
+        "rules": 2,
+        "space": 4640,
+        "corpus": 252
+      }
+    }
+  }
+}
