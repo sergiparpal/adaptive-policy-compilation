@@ -1,23 +1,28 @@
 # The policy, given to the proposer at three levels — findings
 
 Record opened on October 21, 2026, under [`PLAN_MANUAL.md`](../PLAN_MANUAL.md).
-The plan, its package, Sergi's signature of §0 and every record below are in
-pull request #155. Sergi signed §0 on 2026-10-21, before any figure below
-existed, in a commit of its own: `02bbcd9` on the branch.
+The plan, its package, Sergi's signature of §0, every record below and these
+findings reached `main` in pull request #155. Sergi signed §0 on 2026-10-21,
+before any figure below existed, in a commit of its own: `d65bdf8` on `main`.
 
-Every record names in its `_env` the commit of the branch it was written on:
+Every record names in its `_env` the commit of the branch it was written on, as
+that commit was made and pushed. The rebase merge of #155 gave each of those
+commits a new hash on `main`. Each pair below has the same subject, the same
+tree and the same `git patch-id --stable`, and the GitHub API names #155 behind
+every `main` commit:
 
-| record | written from, on the branch |
-|---|---|
-| `sample.json` | `02bbcd9`, the signature |
-| `compile_smoke.json` | `ac9f5f9` |
-| `compile_session.json` | `347244b` |
-| `loop_smoke.json` | `bffe539` |
-| `loop_L{0..3}_r{1..3}.json` | `61e4b5c`, all twelve |
-| `score.json` | `a654db7` |
+| record | written from, on the branch | the same commit on `main` |
+|---|---|---|
+| `sample.json` | `02bbcd9`, the signature | `d65bdf8` |
+| `compile_smoke.json` | `ac9f5f9`, the commit of Stage A's record | `2d914c8` |
+| `compile_session.json` | `347244b`, the commit of the compile smoke | `c06d524` |
+| `loop_smoke.json` | `bffe539`, the commit of the compile session | `a1573ad` |
+| `loop_L{0..3}_r{1..3}.json` | `61e4b5c`, the commit of the loop smoke, all twelve | `54034dc` |
+| `score.json` | `a654db7`, the commit of the twelve runs | `80c60ad` |
 
 All of them carry one code digest, `430fa47dbaf069b8`, with `code_dirty`
-false, and that digest identifies the code that wrote them. Eleven of the
+false. That digest identifies the code that wrote them, and it is the one
+`main` computes after the merge. Eleven of the
 twelve loop records say `git_dirty: true`: each found the earlier runs' records
 written and not yet committed, the case `harness/provenance.py` describes for
 records written back to back. **This record owns every figure in it.**
