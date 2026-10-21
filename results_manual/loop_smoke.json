@@ -1,0 +1,1425 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-21T16:29:10Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "bffe5393c36dd84462c7aec55e80849185899338",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "430fa47dbaf069b8"
+  },
+  "plan": "PLAN_MANUAL.md",
+  "shape": "L",
+  "level": 3,
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 20,
+  "texts_sha256": {
+    "catalogue": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+    "prose": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+    "rules": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd"
+  },
+  "prompt_sha256": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd",
+  "stage": "B2",
+  "rep": "smoke",
+  "rung": 2,
+  "started_at": "2026-10-21T16:28:30Z",
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nLAS REGLAS DE LA EMPRESA, EN ORDEN\n\nSe aplica la primera regla de la lista cuyas condiciones casa el ticket.\n\nH01: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT\nH02: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT\nH03: SI has_security_keyword eq True ENTONCES T2_TECHNICAL\nH04: SI severity eq 1 AND customer_tier eq enterprise ENTONCES ONCALL_ESCALATION\nH05: SI severity eq 1 AND customer_tier eq business AND off_hours eq True ENTONCES ONCALL_ESCALATION\nH06: SI severity eq 1 AND customer_tier eq business ENTONCES T3_ENGINEERING\nH07: SI severity eq 1 AND product eq api ENTONCES T3_ENGINEERING\nH08: SI severity eq 1 ENTONCES T2_TECHNICAL\nH09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\nH10: SI product eq billing AND severity lte 2 ENTONCES BILLING_SPECIALIST\nH11: SI product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST\nH12: SI product eq billing ENTONCES SELF_SERVICE_DEFLECT\nH13: SI customer_tier eq enterprise AND prior_tickets_30d gte 5 ENTONCES ACCOUNT_MANAGER\nH14: SI customer_tier eq business AND prior_tickets_30d gte 8 ENTONCES ACCOUNT_MANAGER\nH15: SI product eq api AND severity lte 2 ENTONCES T3_ENGINEERING\nH16: SI product eq api ENTONCES T2_TECHNICAL\nH17: SI product eq integrations AND severity lte 2 ENTONCES T3_ENGINEERING\nH18: SI product eq integrations ENTONCES T2_TECHNICAL\nH19: SI product eq mobile AND severity eq 2 ENTONCES T2_TECHNICAL\nH20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL\nH21: SI language eq pt AND severity lte 2 ENTONCES T2_TECHNICAL\nH22: SI channel eq phone AND customer_tier eq free ENTONCES SELF_SERVICE_DEFLECT\nH23: SI channel eq phone AND off_hours eq True AND customer_tier neq enterprise ENTONCES T1_GENERAL\nH24: SI customer_tier eq free AND severity gte 3 ENTONCES SELF_SERVICE_DEFLECT\nH25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH26: SI severity eq 4 AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT\nH27: SI severity lte 2 ENTONCES T2_TECHNICAL\nH28: SI customer_tier in ['business', 'enterprise'] ENTONCES T1_GENERAL\nH29: SI severity gte 1 ENTONCES T1_GENERAL\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "gates": {
+    "G-g1": {
+      "what": "the instrument reproduces the hidden policy and PLAN_REUSE.md's records; the suite green",
+      "installer": {
+        "edges": 199,
+        "same_edges_as_hidden_priority": true,
+        "refused": [],
+        "inversions": 0,
+        "space": 1.0,
+        "corpus": 1.0,
+        "first_match_space": 1.0,
+        "measure_corpus": 1.0,
+        "reversed": {
+          "space": 0.42319940476190476,
+          "corpus": 0.689,
+          "refused": 99,
+          "inversions": 54
+        },
+        "passes": true
+      },
+      "reuse": {
+        "labels_agree": true,
+        "runs": [
+          {
+            "run": 1,
+            "space": 0.30625,
+            "space_published": 0.30625,
+            "corpus": 0.4035,
+            "corpus_published": 0.4035,
+            "corpus_by_case": 0.4035,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 2,
+            "space": 0.2950892857142857,
+            "space_published": 0.2950892857142857,
+            "corpus": 0.447,
+            "corpus_published": 0.447,
+            "corpus_by_case": 0.447,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 3,
+            "space": 0.5535714285714286,
+            "space_published": 0.5535714285714286,
+            "corpus": 0.5245,
+            "corpus_published": 0.5245,
+            "corpus_by_case": 0.5245,
+            "k_a": 0.8125,
+            "k_a_published": 0.8125,
+            "prop": 0.5476190476190477,
+            "prop_published": 0.5476,
+            "passes": true
+          }
+        ],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2047,
+        "result": "OK (skipped=3)",
+        "seconds": 164.9,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g2": {
+      "what": "the texts are \u00a75's, and every prompt is its level-0 prompt plus \u00a75.5's block",
+      "digests": {
+        "catalogue": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+        "prose": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+        "rules": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd"
+      },
+      "digests_are_section_5s": true,
+      "rules_rebuilt": true,
+      "rules_parse_back": true,
+      "omissions_cost_nothing": {
+        "dropped": [
+          "H21",
+          "H25",
+          "H27",
+          "H28"
+        ],
+        "rules_left": 25,
+        "space": 1.0,
+        "corpus": 1.0
+      },
+      "catalogue": {
+        "queues_in_order": true,
+        "leaks": [],
+        "digits": false,
+        "passes": true
+      },
+      "prose": {
+        "leaks": [],
+        "rule_ids": [],
+        "passes": true
+      },
+      "prompts": {
+        "loop0_is_v1": true,
+        "loop0_is_plan_reuse_s": true,
+        "block_only": {
+          "1": {
+            "loop": true,
+            "compile": true
+          },
+          "2": {
+            "loop": true,
+            "compile": true
+          },
+          "3": {
+            "loop": true,
+            "compile": true
+          }
+        },
+        "distinct_digests": true,
+        "passes": true
+      },
+      "teeth": true,
+      "passes": true
+    },
+    "G-g3": {
+      "what": "the compile path from parse to score; the invalid asks; the schedules. The requests are tests/test_manual.py's, through the SDK double",
+      "compile_path": {
+        "valid": true,
+        "score": 1.0,
+        "a_bad_rule_is_rejected_and_counted": [
+          3,
+          1
+        ],
+        "invalid_asks_are_invalid": {
+          "not_an_object": true,
+          "no_list": true,
+          "empty_list": true
+        },
+        "passes": true
+      },
+      "schedules": {
+        "compile_session": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "compile_smoke": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "loop": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "compile_passes_hold_every_level": true,
+        "smoke_holds_every_level": true,
+        "loop_reps_hold_every_level": true,
+        "each_level_at_a_different_place_each_rep": true,
+        "rebuilt_from_the_seed": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_MANUAL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_MANUAL.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "metrics": {
+    "n_cases": 20,
+    "n_rules": 12,
+    "hidden_policy_size": 29,
+    "rejected_rules": 0,
+    "failed_proposals": 0,
+    "escalations": 12,
+    "escalation_rate": 0.6,
+    "escalation_curve_by_decile": [
+      1.0,
+      1.0,
+      0.5,
+      0.5,
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      0.5
+    ],
+    "final_decile_escalation_rate": 0.5,
+    "impasses": 11,
+    "conflicts": 1,
+    "coverage": 0.4,
+    "shadow_accuracy": 0.5,
+    "silent_error_rate": 0.5,
+    "silent_errors_abs": 4,
+    "e2e_accuracy": 0.2,
+    "reuse_rate": 0.3333,
+    "median_fires_per_rule": 0.0,
+    "dead_rules": 8,
+    "proposal_action_accuracy": 0.9167,
+    "llm_calls": 12,
+    "edges_proposed": 9,
+    "edges_accepted": 1,
+    "edge_reasons": {
+      "fuera_del_vecindario": 8,
+      "ok": 1
+    },
+    "subsumption_pairs": 0,
+    "rules_with_edges": 1,
+    "escalations_with_base_shown": 11,
+    "escalations_on_conflict": 1
+  },
+  "rules": [
+    {
+      "rule_id": "R0001",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 5
+        }
+      ],
+      "action": "ACCOUNT_MANAGER",
+      "born_at": 0,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de un cliente enterprise con 7 tickets en 30 d\u00edas, lo que indica necesidad de atenci\u00f3n personalizada. La regla captura este patr\u00f3n general: clientes enterprise con alta recurrencia de tickets deben ir a ACCOUNT_MANAGER."
+    },
+    {
+      "rule_id": "R0002",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "email"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "language",
+          "op": "eq",
+          "value": "de"
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 1,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket no casa ninguna regla existente. Es un usuario pro con severidad 3, producto dashboard, canal email, sin keywords de seguridad, con 2 tickets previos y en horario no laboral. Ninguna regla cubre esta combinaci\u00f3n exacta. La regla m\u00e1s general que aplica es H29 (severity g"
+    },
+    {
+      "rule_id": "R0003",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "born_at": 2,
+      "fire_count": 1,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es free, severity 4, prior_tickets_30d 0. Las reglas H24 (free + severity >=3) y H25 (free + prior_tickets_30d=0) ya cubren por separado, pero ninguna contiene a la otra. Se crea una regla que combina ambas condiciones para cubrir este caso y futuros tickets free con se"
+    },
+    {
+      "rule_id": "R0004",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 2
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 3,
+      "fire_count": 1,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es mobile con severity 2. La regla H19 cubre exactamente este caso (product eq mobile AND severity eq 2 -> T2_TECHNICAL). No hay solapamiento conflictivo con otras reglas porque H19 es un caso espec\u00edfico dentro de H27 (severity lte 2 -> T2_TECHNICAL) y el motor ya resue"
+    },
+    {
+      "rule_id": "R0005",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "born_at": 4,
+      "fire_count": 4,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es free, severity 4, con 13 tickets previos. Las reglas H24 (free + severity>=3) y H25 (free + prior_tickets=0) no casan porque prior_tickets_30d=13. H26 (severity=4 + prior_tickets=0) tampoco. La regla generaliza: free + severity>=3 + prior_tickets>=1 -> SELF_SERVICE_D"
+    },
+    {
+      "rule_id": "R0006",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 3
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 6,
+      "fire_count": 2,
+      "correct_count": 2,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:H12",
+        "loses_to:H10"
+      ],
+      "note": "El ticket es de billing con prior_tickets_30d=8, lo que casa con H11 (billing + prior_tickets_30d >= 3 -> BILLING_SPECIALIST). Sin embargo, H11 est\u00e1 contenida en H12 (billing -> SELF_SERVICE_DEFLECT) y H10 (billing + severity <= 2 -> BILLING_SPECIALIST) no aplica porque severity="
+    },
+    {
+      "rule_id": "R0007",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 4
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 10,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "loses_to:H13"
+      ],
+      "note": "El ticket es enterprise, severity 4, producto api, con 1 ticket previo. Ninguna regla existente casa exactamente. La regla H13 (enterprise con >=5 tickets) ganar\u00eda si se cumpliera, pero no es el caso. La regla propuesta captura tickets enterprise de baja severidad (4) en api con "
+    },
+    {
+      "rule_id": "R0008",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 2
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 13,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket cumple H20 (dashboard + severity lte 2 -> T2_TECHNICAL) y no es cubierto por ninguna regla m\u00e1s espec\u00edfica. La regla propuesta es un caso particular de H20 (a\u00f1ade customer_tier=pro y off_hours=true), por lo que no necesita declarar prioridad; el motor la aplicar\u00e1 autom\u00e1t"
+    },
+    {
+      "rule_id": "R0009",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 2
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 15,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:H20",
+        "beats:H27"
+      ],
+      "note": "El ticket es dashboard, severity 2, free, con 4 tickets previos. H20 (dashboard + severity lte 2 -> T2) no especifica tier, y H27 (severity lte 2 -> T2) es general. Pero para free con prior_tickets_30d >= 1, ninguna regla existente cubre exactamente este caso; las reglas de free "
+    },
+    {
+      "rule_id": "R0010",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 16,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [
+        "beats:H28",
+        "loses_to:H15",
+        "loses_to:H16"
+      ],
+      "note": "El ticket es un caso de API con severidad 3 en horario no laboral para un cliente business. Las reglas H15 y H16 cubren API con severidad <=2 y API en general, pero no severidad 3. H28 enviar\u00eda a T1_GENERAL, pero por ser API y severidad 3, es m\u00e1s t\u00e9cnico que general. La regla pro"
+    },
+    {
+      "rule_id": "R0011",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "lte",
+          "value": 2
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "born_at": 17,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es billing con severidad 3 y tier pro, sin prioridad alta ni historial. Las reglas existentes para billing (H10-H12) no cubren severidad 3 con tier pro y pocos tickets previos. Se crea una regla que desv\u00eda a autoservicio para casos de billing de baja urgencia y sin recu"
+    },
+    {
+      "rule_id": "R0012",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "prior_tickets_30d",
+          "op": "gte",
+          "value": 3
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 18,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [
+        "R0005"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "El ticket es de billing con 3 tickets previos, lo que activa la regla de BILLING_SPECIALIST. Aunque tambi\u00e9n cumple la regla de SELF_SERVICE_DEFLECT para free con severidad >=3 y tickets >=1, la especializaci\u00f3n por producto billing debe prevalecer sobre la regla gen\u00e9rica de custom"
+    }
+  ],
+  "edge_log": [
+    [
+      "R0012",
+      "R0005",
+      "ok"
+    ]
+  ],
+  "records": [
+    {
+      "idx": 0,
+      "outcome": "IMPASSE",
+      "predicted": "ACCOUNT_MANAGER",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H13",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 1,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 2,
+      "outcome": "IMPASSE",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 3,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0002",
+        "R0003"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 4,
+      "outcome": "IMPASSE",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0001",
+        "R0003",
+        "R0004",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 5,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 6,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0001",
+        "R0003",
+        "R0004",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 2,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "fuera_del_vecindario",
+        "fuera_del_vecindario"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 7,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 8,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 9,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 10,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0001",
+        "R0003",
+        "R0004",
+        "R0006",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": false,
+      "edges_proposed": 1,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "fuera_del_vecindario"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 11,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 12,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 13,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0001",
+        "R0003",
+        "R0002",
+        "R0007"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 14,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 15,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0006",
+        "R0004",
+        "R0003",
+        "R0001",
+        "R0008",
+        "R0007",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 2,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "fuera_del_vecindario",
+        "fuera_del_vecindario"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 16,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0006",
+        "R0003",
+        "R0004",
+        "R0001",
+        "R0007",
+        "R0002",
+        "R0008",
+        "R0009"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 3,
+      "edges_accepted": 0,
+      "edge_reasons": [
+        "fuera_del_vecindario",
+        "fuera_del_vecindario",
+        "fuera_del_vecindario"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 17,
+      "outcome": "IMPASSE",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0006",
+        "R0003",
+        "R0004",
+        "R0001",
+        "R0007",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0002"
+      ],
+      "shown_kind": "vecindario",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    },
+    {
+      "idx": 18,
+      "outcome": "CONFLICT",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 2,
+      "escalated": true,
+      "shown_ids": [
+        "R0005",
+        "R0006"
+      ],
+      "shown_kind": "conflicto",
+      "proposal_action_correct": true,
+      "edges_proposed": 1,
+      "edges_accepted": 1,
+      "edge_reasons": [
+        "ok"
+      ],
+      "rejected_reason": null
+    },
+    {
+      "idx": 19,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": false,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null
+    }
+  ],
+  "calls": [
+    {
+      "idx": 0,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600109-33AmFfgyihJmSCHOZYph",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1755,
+          "completion_tokens": 141,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600112-OKpFrfZWL9x2WOZhiTWJ",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1800,
+          "completion_tokens": 286,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 2,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600115-8RMK9qWIDLg5sM50XY0I",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1853,
+          "completion_tokens": 242,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 3,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600118-ywV13OV200Nrc5jxhQiU",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1891,
+          "completion_tokens": 176,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 4,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600121-8aUEwZiwoqB7POdkmJbh",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1915,
+          "completion_tokens": 243,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 6,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600125-UfMDnVv5uofFHmg6ulRt",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1955,
+          "completion_tokens": 277,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 10,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600129-BQIXI6P3lHRXCZYmy5Kx",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1986,
+          "completion_tokens": 252,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 13,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600133-509k0XMjFEwDbpL7YbUu",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 2025,
+          "completion_tokens": 207,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 15,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600136-85OFESY6bhQnGiYIGh7E",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 2062,
+          "completion_tokens": 296,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 16,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600139-E0kQkjwbjM9pXWlvdt19",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 2104,
+          "completion_tokens": 257,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 17,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600143-YBkESP0s8JgLFHebIw3S",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 2141,
+          "completion_tokens": 219,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "idx": 18,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792600145-gvhuwgDxJXA2eYzqX8gj",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1849,
+          "completion_tokens": 190,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
