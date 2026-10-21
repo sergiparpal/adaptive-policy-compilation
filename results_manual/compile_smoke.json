@@ -1,0 +1,1921 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-21T16:06:00Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ac9f5f9cc625035819a6f839f7536b572fe1baf3",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "430fa47dbaf069b8"
+  },
+  "plan": "PLAN_MANUAL.md",
+  "shape": "C",
+  "model": "deepseek/deepseek-v4-flash",
+  "temperature": 0,
+  "max_tokens": 16000,
+  "max_retries": 2,
+  "reasoning": {
+    "effort": "none"
+  },
+  "order_seed": 61,
+  "asks": 5,
+  "texts_sha256": {
+    "catalogue": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+    "prose": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+    "rules": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd"
+  },
+  "prompts_sha256": {
+    "0": "6b7281eb11c229c1b6e3c311e0e66b5de422db86834d508da5a62884517c0784",
+    "1": "fb6af1748467d1eb0eed66ef1e304da7e2dd70e62f02d32f3fea2fd729c3cdaa",
+    "2": "239493973ef5ae02e5c92cf638881e58b7f479ab9d2907ea715b7805ddbc71c0",
+    "3": "cfa58d8e03a028e249658ef17ab0f1ef8ecf2679540f95e7c830e15aadaface6"
+  },
+  "stage": "B1",
+  "session": "smoke",
+  "compile_user": "Escribe ahora la base de reglas completa.",
+  "sample_record": "results_manual/sample.json",
+  "sample_sha256": "207eea2c7cc76692c59e35bb4cdb5ca07d303165fa6d3f99457cd227ec6babb5",
+  "gates": {
+    "G-g1": {
+      "what": "the instrument reproduces the hidden policy and PLAN_REUSE.md's records; the suite green",
+      "installer": {
+        "edges": 199,
+        "same_edges_as_hidden_priority": true,
+        "refused": [],
+        "inversions": 0,
+        "space": 1.0,
+        "corpus": 1.0,
+        "first_match_space": 1.0,
+        "measure_corpus": 1.0,
+        "reversed": {
+          "space": 0.42319940476190476,
+          "corpus": 0.689,
+          "refused": 99,
+          "inversions": 54
+        },
+        "passes": true
+      },
+      "reuse": {
+        "labels_agree": true,
+        "runs": [
+          {
+            "run": 1,
+            "space": 0.30625,
+            "space_published": 0.30625,
+            "corpus": 0.4035,
+            "corpus_published": 0.4035,
+            "corpus_by_case": 0.4035,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 2,
+            "space": 0.2950892857142857,
+            "space_published": 0.2950892857142857,
+            "corpus": 0.447,
+            "corpus_published": 0.447,
+            "corpus_by_case": 0.447,
+            "k_a": 1.0,
+            "k_a_published": 1.0,
+            "prop": 0.4838709677419355,
+            "prop_published": 0.4839,
+            "passes": true
+          },
+          {
+            "run": 3,
+            "space": 0.5535714285714286,
+            "space_published": 0.5535714285714286,
+            "corpus": 0.5245,
+            "corpus_published": 0.5245,
+            "corpus_by_case": 0.5245,
+            "k_a": 0.8125,
+            "k_a_published": 0.8125,
+            "prop": 0.5476190476190477,
+            "prop_published": 0.5476,
+            "passes": true
+          }
+        ],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2047,
+        "result": "OK (skipped=3)",
+        "seconds": 245.9,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g2": {
+      "what": "the texts are \u00a75's, and every prompt is its level-0 prompt plus \u00a75.5's block",
+      "digests": {
+        "catalogue": "95cec2fe42aeacebc77c642a634e5fc8d3024da9d6f133aff22cb09b406edff1",
+        "prose": "dc63a2a144271372ec70af6a9102e3f0996960cdcc75751c1549643ca7438330",
+        "rules": "bcc9f9818caa18039346e610ad73f30c57b49957dab51f04dfd3b02717c47dcd"
+      },
+      "digests_are_section_5s": true,
+      "rules_rebuilt": true,
+      "rules_parse_back": true,
+      "omissions_cost_nothing": {
+        "dropped": [
+          "H21",
+          "H25",
+          "H27",
+          "H28"
+        ],
+        "rules_left": 25,
+        "space": 1.0,
+        "corpus": 1.0
+      },
+      "catalogue": {
+        "queues_in_order": true,
+        "leaks": [],
+        "digits": false,
+        "passes": true
+      },
+      "prose": {
+        "leaks": [],
+        "rule_ids": [],
+        "passes": true
+      },
+      "prompts": {
+        "loop0_is_v1": true,
+        "loop0_is_plan_reuse_s": true,
+        "block_only": {
+          "1": {
+            "loop": true,
+            "compile": true
+          },
+          "2": {
+            "loop": true,
+            "compile": true
+          },
+          "3": {
+            "loop": true,
+            "compile": true
+          }
+        },
+        "distinct_digests": true,
+        "passes": true
+      },
+      "teeth": true,
+      "passes": true
+    },
+    "G-g3": {
+      "what": "the compile path from parse to score; the invalid asks; the schedules. The requests are tests/test_manual.py's, through the SDK double",
+      "compile_path": {
+        "valid": true,
+        "score": 1.0,
+        "a_bad_rule_is_rejected_and_counted": [
+          3,
+          1
+        ],
+        "invalid_asks_are_invalid": {
+          "not_an_object": true,
+          "no_list": true,
+          "empty_list": true
+        },
+        "passes": true
+      },
+      "schedules": {
+        "compile_session": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "compile_smoke": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "loop": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "compile_passes_hold_every_level": true,
+        "smoke_holds_every_level": true,
+        "loop_reps_hold_every_level": true,
+        "each_level_at_a_different_place_each_rep": true,
+        "rebuilt_from_the_seed": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "G-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_MANUAL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_MANUAL.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-21T16:04:25Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-21T16:06:00Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 0,
+      "level": 1,
+      "prompt_sha256": "fb6af1748467d1eb0eed66ef1e304da7e2dd70e62f02d32f3fea2fd729c3cdaa",
+      "valid": true,
+      "why_invalid": null,
+      "rules_in_answer": 22,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Cualquier ticket con palabras clave de seguridad se desv\u00eda al equipo de incidentes de seguridad."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Incidentes cr\u00edticos (severidad 1) se escalan a guardia, independientemente del horario."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Clientes enterprise con incidencias de severidad alta o cr\u00edtica van al gestor de cuenta."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Clientes business con incidencias de severidad alta o cr\u00edtica van al gestor de cuenta."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Tickets de facturaci\u00f3n con severidad no trivial (1-3) van al especialista de facturaci\u00f3n."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Tickets de facturaci\u00f3n de baja severidad se responden con autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "integrations",
+                  "mobile"
+                ]
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Incidencias de severidad alta en productos t\u00e9cnicos (api, integraciones, mobile) van a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Incidencias de severidad alta en otros productos van a soporte t\u00e9cnico de segundo nivel."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 3
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "integrations",
+                  "mobile"
+                ]
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Incidencias de severidad media en productos t\u00e9cnicos van a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 3
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Incidencias de severidad media en productos no t\u00e9cnicos van a primer nivel."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets de baja severidad de usuarios con muchos tickets recientes van a primer nivel para evitar abandono."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Tickets de baja severidad sin historial reciente se desv\u00edan a autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Usuarios gratuitos que llaman por tel\u00e9fono se redirigen a autoservicio para optimizar recursos."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Usuarios gratuitos van a primer nivel de soporte."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "pro"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Usuarios pro van a soporte t\u00e9cnico de segundo nivel."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Usuarios business van a soporte t\u00e9cnico de segundo nivel (salvo que ya est\u00e9n cubiertos por reglas anteriores)."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Usuarios enterprise van al gestor de cuenta (salvo que ya est\u00e9n cubiertos por reglas anteriores)."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "es"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets en espa\u00f1ol van a primer nivel como regla por defecto."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "pt"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets en portugu\u00e9s van a primer nivel como regla por defecto."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "de"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets en alem\u00e1n van a primer nivel como regla por defecto."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "fr"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets en franc\u00e9s van a primer nivel como regla por defecto."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "en"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets en ingl\u00e9s van a primer nivel como regla por defecto."
+          }
+        ],
+        "note": "La base de reglas prioriza seguridad y criticidad, luego segmenta por producto y severidad, y finalmente por tier y canal. Los tickets que no casen con ninguna regla previa caen en la regla de idioma correspondiente, asegurando que todo ticket tenga una cola asignada."
+      },
+      "raw_answers": [
+        "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Cualquier ticket con palabras clave de seguridad se desv\u00eda al equipo de incidentes de seguridad.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Incidentes cr\u00edticos (severidad 1) se escalan a guardia, independientemente del horario.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Clientes enterprise con incidencias de severidad alta o cr\u00edtica van al gestor de cuenta.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Clientes business con incidencias de severidad alta o cr\u00edtica van al gestor de cuenta.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 3}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Tickets de facturaci\u00f3n con severidad no trivial (1-3) van al especialista de facturaci\u00f3n.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Tickets de facturaci\u00f3n de baja severidad se responden con autoservicio.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2},\n        {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\", \"integrations\", \"mobile\"]}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Incidencias de severidad alta en productos t\u00e9cnicos (api, integraciones, mobile) van a ingenier\u00eda.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Incidencias de severidad alta en otros productos van a soporte t\u00e9cnico de segundo nivel.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3},\n        {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\", \"integrations\", \"mobile\"]}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Incidencias de severidad media en productos t\u00e9cnicos van a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Incidencias de severidad media en productos no t\u00e9cnicos van a primer nivel.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 5}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets de baja severidad de usuarios con muchos tickets recientes van a primer nivel para evitar abandono.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Tickets de baja severidad sin historial reciente se desv\u00edan a autoservicio.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Usuarios gratuitos que llaman por tel\u00e9fono se redirigen a autoservicio para optimizar recursos.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Usuarios gratuitos van a primer nivel de soporte.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"pro\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Usuarios pro van a soporte t\u00e9cnico de segundo nivel.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Usuarios business van a soporte t\u00e9cnico de segundo nivel (salvo que ya est\u00e9n cubiertos por reglas anteriores).\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Usuarios enterprise van al gestor de cuenta (salvo que ya est\u00e9n cubiertos por reglas anteriores).\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"es\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets en espa\u00f1ol van a primer nivel como regla por defecto.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"pt\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets en portugu\u00e9s van a primer nivel como regla por defecto.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"de\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets en alem\u00e1n van a primer nivel como regla por defecto.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"fr\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets en franc\u00e9s van a primer nivel como regla por defecto.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"en\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets en ingl\u00e9s van a primer nivel como regla por defecto.\"\n    }\n  ],\n  \"note\": \"La base de reglas prioriza seguridad y criticidad, luego segmenta por producto y severidad, y finalmente por tier y canal. Los tickets que no casen con ninguna regla previa caen en la regla de idioma correspondiente, asegurando que todo ticket tenga una cola asignada.\"\n}"
+      ],
+      "failure": null,
+      "seconds": 30.14,
+      "asked_at": "2026-10-21T16:04:53Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792598664-0ZAXCwGAUijlRB5Ohh2N",
+          "provider": "Relace",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1018,
+          "completion_tokens": 1760,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 1,
+      "level": 0,
+      "prompt_sha256": "6b7281eb11c229c1b6e3c311e0e66b5de422db86834d508da5a62884517c0784",
+      "valid": true,
+      "why_invalid": null,
+      "rules_in_answer": 23,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Cualquier ticket con palabra clave de seguridad se deriva a seguridad."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Severidad 1 (cr\u00edtica) escala al equipo de guardia."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Problemas de facturaci\u00f3n con severidad alta o cr\u00edtica van a especialista."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Cualquier otro ticket de billing va a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Clientes enterprise con severidad alta o cr\u00edtica se asignan a account manager."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Clientes enterprise con severidad baja van a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Problemas de API con severidad alta o cr\u00edtica van a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Cualquier otro ticket de API va a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Problemas de integraciones con severidad alta o cr\u00edtica van a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Cualquier otro ticket de integraciones va a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Problemas de mobile con severidad alta o cr\u00edtica van a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Cualquier otro ticket de mobile va a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Problemas de dashboard con severidad alta o cr\u00edtica van a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Cualquier otro ticket de dashboard va a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Usuarios recurrentes por portal con muchos tickets previos se desv\u00edan a autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets por portal van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "email"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets por email van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "chat"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets por chat van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Tickets por tel\u00e9fono van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Usuarios free con severidad baja se desv\u00edan a autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Usuarios free con severidad media o alta van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "pro"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Usuarios pro van a cola general."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Usuarios business van a cola general."
+          }
+        ],
+        "note": "Base de reglas prioriza seguridad y criticidad, luego producto y tier, con desv\u00edo a autoservicio para casos de bajo valor."
+      },
+      "raw_answers": [
+        "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Cualquier ticket con palabra clave de seguridad se deriva a seguridad.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Severidad 1 (cr\u00edtica) escala al equipo de guardia.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Problemas de facturaci\u00f3n con severidad alta o cr\u00edtica van a especialista.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Cualquier otro ticket de billing va a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Clientes enterprise con severidad alta o cr\u00edtica se asignan a account manager.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Clientes enterprise con severidad baja van a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Problemas de API con severidad alta o cr\u00edtica van a ingenier\u00eda.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Cualquier otro ticket de API va a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Problemas de integraciones con severidad alta o cr\u00edtica van a ingenier\u00eda.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Cualquier otro ticket de integraciones va a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Problemas de mobile con severidad alta o cr\u00edtica van a ingenier\u00eda.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Cualquier otro ticket de mobile va a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Problemas de dashboard con severidad alta o cr\u00edtica van a ingenier\u00eda.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Cualquier otro ticket de dashboard va a soporte t\u00e9cnico.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"portal\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 5}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Usuarios recurrentes por portal con muchos tickets previos se desv\u00edan a autoservicio.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"portal\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets por portal van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"email\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets por email van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"chat\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets por chat van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Tickets por tel\u00e9fono van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n        {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Usuarios free con severidad baja se desv\u00edan a autoservicio.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Usuarios free con severidad media o alta van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"pro\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Usuarios pro van a cola general.\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Usuarios business van a cola general.\"\n    }\n  ],\n  \"note\": \"Base de reglas prioriza seguridad y criticidad, luego producto y tier, con desv\u00edo a autoservicio para casos de bajo valor.\"\n}"
+      ],
+      "failure": null,
+      "seconds": 22.95,
+      "asked_at": "2026-10-21T16:05:15Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792598691-OuBLv2yUHaCXafhw1eug",
+          "provider": "Relace",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 727,
+          "completion_tokens": 1651,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 2,
+      "level": 2,
+      "prompt_sha256": "239493973ef5ae02e5c92cf638881e58b7f479ab9d2907ea715b7805ddbc71c0",
+      "valid": true,
+      "why_invalid": null,
+      "rules_in_answer": 25,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Seguridad en cuentas business/enterprise -> incidente de seguridad"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Seguridad con severidad alta (1 o 2) -> incidente de seguridad"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "free",
+                  "pro"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Seguridad en free/pro con severidad baja -> soporte tecnico"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Critico enterprise -> guardia"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Critico business fuera de horario -> guardia"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Critico business en horario -> ingenieria"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Critico de API -> ingenieria"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Resto de criticos -> soporte tecnico"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Facturacion enterprise -> gestor de cuenta"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Facturacion urgente (severidad 1 o 2) -> especialista facturacion"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Facturacion con muchos tickets previos -> especialista facturacion"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Resto de facturacion -> autoservicio"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 10
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Enterprise con muchos tickets (>=10) -> gestor de cuenta"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 15
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Business con muchisimos tickets (>=15) -> gestor de cuenta"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "API/integraciones severidad alta -> ingenieria"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "integrations"
+                ]
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "API/integraciones severidad baja -> soporte tecnico"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "mobile",
+                  "dashboard"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Mobile/dashboard severidad alta -> soporte tecnico"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Llamada de free -> autoservicio"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Llamada fuera de horario (no enterprise) -> primer nivel"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free no urgente -> autoservicio"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "eq",
+                "value": 0
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Severidad minima sin tickets previos -> autoservicio"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free por defecto -> autoservicio"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "pro"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Pro por defecto -> primer nivel"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Business por defecto -> primer nivel"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Enterprise por defecto -> primer nivel"
+          }
+        ],
+        "note": "Base de reglas completa para triaje de tickets, priorizando seguridad, criticos, facturacion, cuentas en riesgo, producto, canal y desvio a autoservicio, con regla por defecto al primer nivel."
+      },
+      "raw_answers": [
+        "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Seguridad en cuentas business/enterprise -> incidente de seguridad\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Seguridad con severidad alta (1 o 2) -> incidente de seguridad\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"free\", \"pro\"]},\n        {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Seguridad en free/pro con severidad baja -> soporte tecnico\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Critico enterprise -> guardia\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Critico business fuera de horario -> guardia\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Critico business en horario -> ingenieria\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Critico de API -> ingenieria\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Resto de criticos -> soporte tecnico\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Facturacion enterprise -> gestor de cuenta\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Facturacion urgente (severidad 1 o 2) -> especialista facturacion\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 5}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Facturacion con muchos tickets previos -> especialista facturacion\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Resto de facturacion -> autoservicio\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 10}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Enterprise con muchos tickets (>=10) -> gestor de cuenta\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 15}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Business con muchisimos tickets (>=15) -> gestor de cuenta\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\", \"integrations\"]},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"API/integraciones severidad alta -> ingenieria\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\", \"integrations\"]}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"API/integraciones severidad baja -> soporte tecnico\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"in\", \"value\": [\"mobile\", \"dashboard\"]},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Mobile/dashboard severidad alta -> soporte tecnico\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Llamada de free -> autoservicio\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"},\n        {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"customer_tier\", \"op\": \"neq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Llamada fuera de horario (no enterprise) -> primer nivel\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n        {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Free no urgente -> autoservicio\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"eq\", \"value\": 0}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Severidad minima sin tickets previos -> autoservicio\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Free por defecto -> autoservicio\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"pro\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Pro por defecto -> primer nivel\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Business por defecto -> primer nivel\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Enterprise por defecto -> primer nivel\"\n    }\n  ],\n  \"note\": \"Base de reglas completa para triaje de tickets, priorizando seguridad, criticos, facturacion, cuentas en riesgo, producto, canal y desvio a autoservicio, con regla por defecto al primer nivel.\"\n}"
+      ],
+      "failure": null,
+      "seconds": 25.14,
+      "asked_at": "2026-10-21T16:05:37Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792598713-wt8UbQdfsMsOyKAv6KYo",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1501,
+          "completion_tokens": 2084,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session": "smoke",
+      "pass": 1,
+      "position": 3,
+      "level": 3,
+      "prompt_sha256": "cfa58d8e03a028e249658ef17ab0f1ef8ecf2679540f95e7c830e15aadaface6",
+      "valid": true,
+      "why_invalid": null,
+      "rules_in_answer": 29,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Security keyword for business/enterprise"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Security keyword with severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Security keyword fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Severity 1 enterprise"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Severity 1 business off-hours"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Severity 1 business"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Severity 1 api"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Severity 1 fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Billing enterprise"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Billing severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Billing frequent tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Billing fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Enterprise frequent tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 8
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Business frequent tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Api severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Api fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Integrations severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Integrations fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Mobile severity 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Dashboard severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "pt"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Portuguese severity <= 2"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Phone free"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Phone off-hours non-enterprise"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free severity >= 3"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "eq",
+                "value": 0
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free no prior tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "eq",
+                "value": 0
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Severity 4 no prior tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Severity <= 2 fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Business/enterprise fallback"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 1
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Catch-all default"
+          }
+        ],
+        "note": "Base de reglas completa para triaje de tickets, ordenada seg\u00fan la pol\u00edtica de la empresa. Las reglas m\u00e1s espec\u00edficas (con m\u00e1s condiciones o valores m\u00e1s restrictivos) se colocan antes que las generales para que el motor de nivel 2 las eval\u00fae primero en caso de solapamiento no contenido."
+      },
+      "raw_answers": [
+        "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Security keyword for business/enterprise\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"SECURITY_INCIDENT\",\n      \"note\": \"Security keyword with severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Security keyword fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Severity 1 enterprise\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n      ],\n      \"action\": \"ONCALL_ESCALATION\",\n      \"note\": \"Severity 1 business off-hours\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Severity 1 business\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Severity 1 api\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Severity 1 fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Billing enterprise\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Billing severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 3}\n      ],\n      \"action\": \"BILLING_SPECIALIST\",\n      \"note\": \"Billing frequent tickets\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Billing fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 5}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Enterprise frequent tickets\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 8}\n      ],\n      \"action\": \"ACCOUNT_MANAGER\",\n      \"note\": \"Business frequent tickets\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Api severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Api fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T3_ENGINEERING\",\n      \"note\": \"Integrations severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Integrations fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"},\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Mobile severity 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Dashboard severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"pt\"},\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Portuguese severity <= 2\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"},\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Phone free\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"phone\"},\n        {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true},\n        {\"attr\": \"customer_tier\", \"op\": \"neq\", \"value\": \"enterprise\"}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Phone off-hours non-enterprise\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n        {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Free severity >= 3\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"eq\", \"value\": 0}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Free no prior tickets\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4},\n        {\"attr\": \"prior_tickets_30d\", \"op\": \"eq\", \"value\": 0}\n      ],\n      \"action\": \"SELF_SERVICE_DEFLECT\",\n      \"note\": \"Severity 4 no prior tickets\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}\n      ],\n      \"action\": \"T2_TECHNICAL\",\n      \"note\": \"Severity <= 2 fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Business/enterprise fallback\"\n    },\n    {\n      \"conditions\": [\n        {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 1}\n      ],\n      \"action\": \"T1_GENERAL\",\n      \"note\": \"Catch-all default\"\n    }\n  ],\n  \"note\": \"Base de reglas completa para triaje de tickets, ordenada seg\u00fan la pol\u00edtica de la empresa. Las reglas m\u00e1s espec\u00edficas (con m\u00e1s condiciones o valores m\u00e1s restrictivos) se colocan antes que las generales para que el motor de nivel 2 las eval\u00fae primero en caso de solapamiento no contenido.\"\n}"
+      ],
+      "failure": null,
+      "seconds": 25.57,
+      "asked_at": "2026-10-21T16:06:00Z",
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792598736-mqBcairAcoqE4pWYD4gM",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1503,
+          "completion_tokens": 2160,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
