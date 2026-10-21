@@ -1,5 +1,21 @@
 # PLAN_MANUAL — the authority channel: the policy, given to the proposer at three levels
 
+> **[CLOSED 2026-10-21] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-21, before any figure of the plan existed. All six rows were
+> adjudicated the same day: `G-a`, `G-c` and `G-d` on the median of five asks or
+> three runs, `G-b` and `G-e` on the difference of two such medians, and `G-f`
+> on two pooled rates. **`G-a`, `G-c` and `G-d` hold; `G-b` and `G-e` are
+> refuted, thinly, and `G-f` is refuted.** `G-g` is reported. **The figures are
+> owned by
+> [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-21. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-21, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
