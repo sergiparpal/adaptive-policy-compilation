@@ -652,6 +652,8 @@ The first command is blocking and writes nothing:
     python3 -m manual.run --dry-run                   # G-g1..G-g4; must pass first
     PYTHONHASHSEED=0 python3 -m manual.sample         # Stage A, free
     PYTHONHASHSEED=0 python3 -m manual.score          # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m manual.readings       # POST-RUN: three readings Stage C left free
+    PYTHONHASHSEED=0 python3 -m manual.after_readings # POST-RUN: the first, on K-a's own surface
     .venv/bin/python -m manual.ask --session smoke    # Stage B1: spends — only if asked
     .venv/bin/python -m manual.ask --session session  # then the session, never side by side
     .venv/bin/python -m manual.run --smoke            # Stage B2: spends — only if asked
@@ -675,6 +677,13 @@ so.
 **And one run of the control made a row thin.** A plan that sets loops side by
 side at three runs a level should say in §0 what a spread between runs as wide
 as its gaps does to its lines.
+
+**And read a class on the surface its statistic reads.** `manual/readings.py`
+set each birth against its ticket's rule over the whole space, while `K-a`
+reads beyond the keyword. There a rule that does not exclude the keyword never
+lies inside a lower rule's region, so three of its clauses failed by
+construction. `IDEAS.md` carried the lesson from `blind/yielding.py`, and it was
+not applied: cut every mask to the statistic's surface before classing on it.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

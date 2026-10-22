@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 21, 2026. **Not a history** — that is the four
+What is known, as of October 22, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -1931,6 +1931,21 @@ So what the loop lacked was not knowledge. Knowledge is ruled out among the
 partition's candidates, on this model and these texts, and the elicitation's
 remain.
 
+**[NOTE 2026-10-22] Three readings its Stage C left free, POST-RUN.** None is a
+signed row, and no verdict moves.
+- **The crossing.** About half of the gap between the prose's loops and the
+  rules' is breadth, read where `K-a` reads.
+- **Level 3's dropped declarations.** Translated into the rules the proposer
+  was shown, they change no decision of any final base.
+- **`SECURITY_INCIDENT` under the prose.** Ordinary rules written for other
+  tickets decided the class, and none of the prose's 222 rules excludes the
+  keyword, against 81 of the catalogue's 102.
+- **Three of the first reading's twelve clauses failed on its own
+  convention**: it read its classes over the whole space, where `K-a` reads
+  beyond the keyword.
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+*Three readings Stage C left free*.
+
 ---
 
 ## What was withdrawn, and why
@@ -2056,6 +2071,16 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - What is open now is why the elicitation partitions, and why the loop loses
      what it knows.
    [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md).
+   **[NOTE 2026-10-22] Read POST-RUN: the partition moves with breadth.**
+   - Where `K-a` reads, about half of the gap between the prose's loops and the
+     rules' is how broad the proposer writes. With the rules it writes narrow
+     rules, and narrow rules seldom meet another queue's.
+   - Whether a birth stays inside its ticket's own rule carries about a tenth
+     of the gap. So a proposer writing each rule's effective region is not what
+     moves the partition.
+   - Why the list narrows the rules is open.
+   [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+   *Three readings Stage C left free*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
