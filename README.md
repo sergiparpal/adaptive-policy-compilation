@@ -679,6 +679,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `manual/ask.py` | `results_manual/compile_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `manual/run.py` | `results_manual/loop_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `manual/score.py` | `results_manual/score.json` | **refuses while the plan is unsigned** |
+> | `manual/readings.py` | `results_manual/readings.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
