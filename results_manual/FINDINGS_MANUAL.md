@@ -410,7 +410,8 @@ could be.
 
 > **POST-RUN.** Asked for on 2026-10-22, after Stage C, and run the same day.
 > `manual/readings.py` wrote its twelve-clause expectation in its docstring
-> and was committed before the first run. It read the twelve loop records and
+> and was committed before the first run, as `faa5e4b`, which is `f4a3792` on
+> `main`. It read the twelve loop records and
 > `score.json`, and rebuilt every run with `edges/rebuild.py`. Four gates
 > stood before any write:
 > - every run rebuilds to its record, arrival by arrival and on both surfaces;
@@ -422,14 +423,19 @@ could be.
 >   copy of its record.
 >
 > **Three of its clauses failed on its own convention**, below.
-> `manual/after_readings.py` read the same births again where `K-a` reads,
-> and two things the first record showed beside its clauses. It was written
+> `manual/after_readings.py`, committed as `3f67b71`, which is `b149669` on
+> `main`, read the same births again where `K-a` reads, and two things the
+> first record showed beside its clauses. It was written
 > after that record, with most of its figures first computed in a scratch
 > exploration, so **none of its figures is a bet**.
 >
 > Not signed rows; no verdict moves. Zero API calls. The records are
 > [`readings.json`](readings.json) and
-> [`after_readings.json`](after_readings.json).
+> [`after_readings.json`](after_readings.json). Both reached `main` in pull
+> request #157. Each record's `_env` names the branch commit it was written
+> from, with a clean tree. Each pair of hashes above has the same subject, the
+> same tree and the same `git patch-id --stable`, and the GitHub API names
+> #157 behind both `main` commits.
 
 ### 1. Why the prose made the loop cross more than the rules did
 
