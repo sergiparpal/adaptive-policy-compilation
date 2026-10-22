@@ -1,0 +1,1852 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-22T13:53:20Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "3f67b71c224757828a8a08dc08a52c12ba1b15a8",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "b9cef6f8abcf8048"
+  },
+  "what": "manual/readings.py's A read on K-a's own surface, and what its B and C showed beside their clauses",
+  "plan": "PLAN_MANUAL.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_MANUAL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_MANUAL.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN, after results_manual/readings.json: written on 2026-10-22 when three of that record's clauses were found to fail on its own convention. The drafter computed most of these figures in a scratch exploration before writing the module, so none is a bet. No expectation; no verdict moves.",
+  "follows": "results_manual/readings.json",
+  "surface": "the half of the space without the keyword for A, as K-a reads it; the space for B's declarations; the corpus's arrivals for C",
+  "gates": [
+    {
+      "gate": "1",
+      "what": "the births and the class are the reading's",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "2",
+      "what": "the halves are the policy's",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "3",
+      "what": "two routes give the exclusion",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "4",
+      "what": "the bands partition the births",
+      "off": [],
+      "passes": true
+    }
+  ],
+  "A": {
+    "classes_off_keyword": {
+      "0": {
+        "births": 103,
+        "alone": 103,
+        "k_a": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "parts": {
+          "region": {
+            "births": 9,
+            "cross": 0
+          },
+          "rule": {
+            "births": 56,
+            "cross": 0
+          },
+          "beyond": {
+            "births": 38,
+            "cross": 0
+          }
+        },
+        "part_share": {
+          "region": {
+            "fraction": "9/103",
+            "value": 0.08737864077669903
+          },
+          "rule": {
+            "fraction": "56/103",
+            "value": 0.5436893203883495
+          },
+          "beyond": {
+            "fraction": "38/103",
+            "value": 0.36893203883495146
+          }
+        },
+        "cross_rate": {
+          "region": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "rule": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "beyond": {
+            "fraction": "0/1",
+            "value": 0.0
+          }
+        }
+      },
+      "1": {
+        "births": 94,
+        "alone": 43,
+        "k_a": {
+          "fraction": "43/94",
+          "value": 0.4574468085106383
+        },
+        "parts": {
+          "region": {
+            "births": 16,
+            "cross": 1
+          },
+          "rule": {
+            "births": 42,
+            "cross": 21
+          },
+          "beyond": {
+            "births": 36,
+            "cross": 29
+          }
+        },
+        "part_share": {
+          "region": {
+            "fraction": "8/47",
+            "value": 0.1702127659574468
+          },
+          "rule": {
+            "fraction": "21/47",
+            "value": 0.44680851063829785
+          },
+          "beyond": {
+            "fraction": "18/47",
+            "value": 0.3829787234042553
+          }
+        },
+        "cross_rate": {
+          "region": {
+            "fraction": "1/16",
+            "value": 0.0625
+          },
+          "rule": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "beyond": {
+            "fraction": "29/36",
+            "value": 0.8055555555555556
+          }
+        }
+      },
+      "2": {
+        "births": 205,
+        "alone": 81,
+        "k_a": {
+          "fraction": "81/205",
+          "value": 0.3951219512195122
+        },
+        "parts": {
+          "region": {
+            "births": 44,
+            "cross": 22
+          },
+          "rule": {
+            "births": 110,
+            "cross": 65
+          },
+          "beyond": {
+            "births": 51,
+            "cross": 37
+          }
+        },
+        "part_share": {
+          "region": {
+            "fraction": "44/205",
+            "value": 0.2146341463414634
+          },
+          "rule": {
+            "fraction": "22/41",
+            "value": 0.5365853658536586
+          },
+          "beyond": {
+            "fraction": "51/205",
+            "value": 0.24878048780487805
+          }
+        },
+        "cross_rate": {
+          "region": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "rule": {
+            "fraction": "13/22",
+            "value": 0.5909090909090909
+          },
+          "beyond": {
+            "fraction": "37/51",
+            "value": 0.7254901960784313
+          }
+        }
+      },
+      "3": {
+        "births": 279,
+        "alone": 198,
+        "k_a": {
+          "fraction": "22/31",
+          "value": 0.7096774193548387
+        },
+        "parts": {
+          "region": {
+            "births": 107,
+            "cross": 24
+          },
+          "rule": {
+            "births": 148,
+            "cross": 48
+          },
+          "beyond": {
+            "births": 24,
+            "cross": 9
+          }
+        },
+        "part_share": {
+          "region": {
+            "fraction": "107/279",
+            "value": 0.3835125448028674
+          },
+          "rule": {
+            "fraction": "148/279",
+            "value": 0.5304659498207885
+          },
+          "beyond": {
+            "fraction": "8/93",
+            "value": 0.08602150537634409
+          }
+        },
+        "cross_rate": {
+          "region": {
+            "fraction": "24/107",
+            "value": 0.22429906542056074
+          },
+          "rule": {
+            "fraction": "12/37",
+            "value": 0.32432432432432434
+          },
+          "beyond": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        }
+      }
+    },
+    "bands": {
+      "cuts": [
+        240.0,
+        840.0,
+        1680.0
+      ],
+      "levels": {
+        "0": {
+          "births": 103,
+          "alone": 103,
+          "k_a": {
+            "fraction": "1/1",
+            "value": 1.0
+          },
+          "parts": {
+            "b1": {
+              "births": 7,
+              "cross": 0
+            },
+            "b2": {
+              "births": 31,
+              "cross": 0
+            },
+            "b3": {
+              "births": 20,
+              "cross": 0
+            },
+            "b4": {
+              "births": 45,
+              "cross": 0
+            }
+          },
+          "part_share": {
+            "b1": {
+              "fraction": "7/103",
+              "value": 0.06796116504854369
+            },
+            "b2": {
+              "fraction": "31/103",
+              "value": 0.30097087378640774
+            },
+            "b3": {
+              "fraction": "20/103",
+              "value": 0.1941747572815534
+            },
+            "b4": {
+              "fraction": "45/103",
+              "value": 0.4368932038834951
+            }
+          },
+          "cross_rate": {
+            "b1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "b2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "b3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "b4": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          }
+        },
+        "1": {
+          "births": 94,
+          "alone": 43,
+          "k_a": {
+            "fraction": "43/94",
+            "value": 0.4574468085106383
+          },
+          "parts": {
+            "b1": {
+              "births": 0,
+              "cross": 0
+            },
+            "b2": {
+              "births": 32,
+              "cross": 4
+            },
+            "b3": {
+              "births": 12,
+              "cross": 12
+            },
+            "b4": {
+              "births": 50,
+              "cross": 35
+            }
+          },
+          "part_share": {
+            "b1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "b2": {
+              "fraction": "16/47",
+              "value": 0.3404255319148936
+            },
+            "b3": {
+              "fraction": "6/47",
+              "value": 0.1276595744680851
+            },
+            "b4": {
+              "fraction": "25/47",
+              "value": 0.5319148936170213
+            }
+          },
+          "cross_rate": {
+            "b1": null,
+            "b2": {
+              "fraction": "1/8",
+              "value": 0.125
+            },
+            "b3": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "b4": {
+              "fraction": "7/10",
+              "value": 0.7
+            }
+          }
+        },
+        "2": {
+          "births": 205,
+          "alone": 81,
+          "k_a": {
+            "fraction": "81/205",
+            "value": 0.3951219512195122
+          },
+          "parts": {
+            "b1": {
+              "births": 19,
+              "cross": 5
+            },
+            "b2": {
+              "births": 45,
+              "cross": 22
+            },
+            "b3": {
+              "births": 71,
+              "cross": 48
+            },
+            "b4": {
+              "births": 70,
+              "cross": 49
+            }
+          },
+          "part_share": {
+            "b1": {
+              "fraction": "19/205",
+              "value": 0.09268292682926829
+            },
+            "b2": {
+              "fraction": "9/41",
+              "value": 0.21951219512195122
+            },
+            "b3": {
+              "fraction": "71/205",
+              "value": 0.3463414634146341
+            },
+            "b4": {
+              "fraction": "14/41",
+              "value": 0.34146341463414637
+            }
+          },
+          "cross_rate": {
+            "b1": {
+              "fraction": "5/19",
+              "value": 0.2631578947368421
+            },
+            "b2": {
+              "fraction": "22/45",
+              "value": 0.4888888888888889
+            },
+            "b3": {
+              "fraction": "48/71",
+              "value": 0.676056338028169
+            },
+            "b4": {
+              "fraction": "7/10",
+              "value": 0.7
+            }
+          }
+        },
+        "3": {
+          "births": 279,
+          "alone": 198,
+          "k_a": {
+            "fraction": "22/31",
+            "value": 0.7096774193548387
+          },
+          "parts": {
+            "b1": {
+              "births": 108,
+              "cross": 15
+            },
+            "b2": {
+              "births": 95,
+              "cross": 26
+            },
+            "b3": {
+              "births": 39,
+              "cross": 13
+            },
+            "b4": {
+              "births": 37,
+              "cross": 27
+            }
+          },
+          "part_share": {
+            "b1": {
+              "fraction": "12/31",
+              "value": 0.3870967741935484
+            },
+            "b2": {
+              "fraction": "95/279",
+              "value": 0.34050179211469533
+            },
+            "b3": {
+              "fraction": "13/93",
+              "value": 0.13978494623655913
+            },
+            "b4": {
+              "fraction": "37/279",
+              "value": 0.13261648745519714
+            }
+          },
+          "cross_rate": {
+            "b1": {
+              "fraction": "5/36",
+              "value": 0.1388888888888889
+            },
+            "b2": {
+              "fraction": "26/95",
+              "value": 0.2736842105263158
+            },
+            "b3": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            },
+            "b4": {
+              "fraction": "27/37",
+              "value": 0.7297297297297297
+            }
+          }
+        }
+      }
+    },
+    "births_points_outside_median": {
+      "0": 1680,
+      "1": 2520.0,
+      "2": 1680,
+      "3": 640
+    },
+    "mix_classes_off_keyword": {
+      "gap": {
+        "fraction": "1999/6355",
+        "value": 0.31455546813532653
+      },
+      "low_rates_on_high_mix": {
+        "fraction": "5013/11594",
+        "value": 0.432378816629291
+      },
+      "high_rates_on_low_mix": {
+        "fraction": "4444537/6492760",
+        "value": 0.6845373924186324
+      },
+      "mix_share_low_rates": {
+        "fraction": "88551/747626",
+        "value": 0.1184429112952198
+      },
+      "mix_share_high_rates": {
+        "fraction": "5060073/63312328",
+        "value": 0.07992239678818949
+      }
+    },
+    "mix_bands": {
+      "gap": {
+        "fraction": "1999/6355",
+        "value": 0.31455546813532653
+      },
+      "low_rates_on_high_mix": {
+        "fraction": "18438331/33873390",
+        "value": 0.5443308449493836
+      },
+      "high_rates_on_low_mix": {
+        "fraction": "2917951/5188140",
+        "value": 0.562427189705752
+      },
+      "mix_share_low_rates": {
+        "fraction": "207222653/436857462",
+        "value": 0.47434843404368815
+      },
+      "mix_share_high_rates": {
+        "fraction": "23682599/50590692",
+        "value": 0.4681216655427445
+      }
+    }
+  },
+  "B": {
+    "rows": [
+      {
+        "run": "L3 r1",
+        "rule": "R0010",
+        "queue": "T3_ENGINEERING",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H16",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0010",
+        "queue": "T3_ENGINEERING",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H28",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0016",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H02",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0016",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H03",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0016",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H06",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0016",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "loses_to",
+        "cites": "H01",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H06",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H07",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H08",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H27",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H28",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0053",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "ONCALL_ESCALATION",
+        "names_its_queue": true,
+        "direction": "beats",
+        "cites": "H29",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0060",
+        "queue": "T2_TECHNICAL",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "loses_to",
+        "cites": "H02",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r1",
+        "rule": "R0071",
+        "queue": "T2_TECHNICAL",
+        "ticket_truth": "SECURITY_INCIDENT",
+        "names_its_queue": false,
+        "direction": "loses_to",
+        "cites": "H02",
+        "point": "hit"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0005",
+        "queue": "T1_GENERAL",
+        "ticket_truth": "SELF_SERVICE_DEFLECT",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H24",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0011",
+        "queue": "T3_ENGINEERING",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H28",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H07",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H08",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H15",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H16",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H17",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H18",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H20",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H21",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H27",
+        "point": "miss"
+      },
+      {
+        "run": "L3 r2",
+        "rule": "R0112",
+        "queue": "ONCALL_ESCALATION",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H29",
+        "point": "neither_ever_right"
+      },
+      {
+        "run": "L3 r3",
+        "rule": "R0011",
+        "queue": "T3_ENGINEERING",
+        "ticket_truth": "T2_TECHNICAL",
+        "names_its_queue": false,
+        "direction": "beats",
+        "cites": "H16",
+        "point": "miss"
+      }
+    ],
+    "by_queue_named": {
+      "right_queue": {
+        "hit": 6
+      },
+      "wrong_queue": {
+        "miss": 11,
+        "neither_ever_right": 7,
+        "hit": 3
+      }
+    },
+    "rules": {
+      "right_queue": 1,
+      "wrong_queue": 8
+    }
+  },
+  "C": {
+    "levels": {
+      "0": {
+        "rules": 119,
+        "exclude_keyword": 6,
+        "keyword_rules": 16
+      },
+      "1": {
+        "rules": 102,
+        "exclude_keyword": 81,
+        "keyword_rules": 8
+      },
+      "2": {
+        "rules": 222,
+        "exclude_keyword": 0,
+        "keyword_rules": 17
+      },
+      "3": {
+        "rules": 321,
+        "exclude_keyword": 0,
+        "keyword_rules": 42
+      }
+    },
+    "runs": {
+      "L0 r1": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "T1_GENERAL",
+          "winner": "R0003",
+          "winner_rule": "R0003: SI customer_tier eq free AND product eq mobile AND severity gte 4 ENTONCES T1_GENERAL",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 9,
+          "H02|ACTION|wrong": 11
+        }
+      },
+      "L1 r1": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "IMPASSE",
+          "named": "SECURITY_INCIDENT",
+          "winner": null,
+          "born": "R0006: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT"
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0006",
+            "rule": "R0006: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 19,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 67200
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|right": 9,
+          "H02|ACTION|right": 11
+        }
+      },
+      "L3 r1": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "SELF_SERVICE_DEFLECT",
+          "winner": "R0005",
+          "winner_rule": "R0005: SI customer_tier eq free AND severity gte 3 AND prior_tickets_30d gte 1 ENTONCES SELF_SERVICE_DEFLECT",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0016",
+            "rule": "R0016: SI has_security_keyword eq True AND severity eq 1 AND customer_tier eq business ENTONCES ONCALL_ESCALATION",
+            "queue": "ONCALL_ESCALATION",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 4200
+          },
+          {
+            "rule_id": "R0060",
+            "rule": "R0060: SI has_security_keyword eq True AND severity eq 1 AND customer_tier eq pro AND product eq mobile ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 342,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 840
+          },
+          {
+            "rule_id": "R0071",
+            "rule": "R0071: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 580,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0072",
+            "rule": "R0072: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES T2_TECHNICAL  [gana a R0014]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 8,
+          "H01|IMPASSE|wrong": 1,
+          "H02|ACTION|wrong": 8,
+          "H02|CONFLICT|wrong": 1,
+          "H02|IMPASSE|wrong": 2
+        }
+      },
+      "L2 r1": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "T1_GENERAL",
+          "winner": "R0005",
+          "winner_rule": "R0005: SI customer_tier eq free AND severity gte 3 AND prior_tickets_30d gte 1 ENTONCES T1_GENERAL",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0018",
+            "rule": "R0018: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0035",
+            "rule": "R0035: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0008, R0014]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 155,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0068",
+            "rule": "R0068: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0010, R0019, R0061]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 580,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0070",
+            "rule": "R0070: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0057, R0058, R0066]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0078",
+            "rule": "R0078: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0054, R0056, R0062]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 739,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0079",
+            "rule": "R0079: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0072]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 751,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0086",
+            "rule": "R0086: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0041]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1063,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0088",
+            "rule": "R0088: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0007]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1264,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0091",
+            "rule": "R0091: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0036, R0055]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1704,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0094",
+            "rule": "R0094: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1802,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0096",
+            "rule": "R0096: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0047]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1871,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0100",
+            "rule": "R0100: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0027]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1998,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          }
+        ],
+        "class_arrivals": {
+          "H01|CONFLICT|right": 8,
+          "H01|IMPASSE|right": 1,
+          "H02|ACTION|wrong": 8,
+          "H02|CONFLICT|right": 2,
+          "H02|IMPASSE|right": 1
+        }
+      },
+      "L1 r2": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "IMPASSE",
+          "named": "SECURITY_INCIDENT",
+          "winner": null,
+          "born": "R0009: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT"
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0009",
+            "rule": "R0009: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 19,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 67200
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|right": 9,
+          "H02|ACTION|right": 11
+        }
+      },
+      "L3 r2": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "IMPASSE",
+          "named": "T2_TECHNICAL",
+          "winner": null,
+          "born": "R0013: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL"
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0013",
+            "rule": "R0013: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 19,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0016",
+            "rule": "R0016: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0008]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 23,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0066",
+            "rule": "R0066: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0021]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 167,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0075",
+            "rule": "R0075: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0019]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 238,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0079",
+            "rule": "R0079: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0006]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 270,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0089",
+            "rule": "R0089: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 342,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0090",
+            "rule": "R0090: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0005, R0029]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 346,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0093",
+            "rule": "R0093: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0006]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 402,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0104",
+            "rule": "R0104: SI has_security_keyword eq True AND customer_tier eq free AND severity gte 3 ENTONCES T2_TECHNICAL  [gana a R0003, R0015, R0025, R0082, R0086, R0091]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 577,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0106",
+            "rule": "R0106: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0017]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0111",
+            "rule": "R0111: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0010]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 676,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0113",
+            "rule": "R0113: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 751,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0115",
+            "rule": "R0115: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0012]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 770,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0121",
+            "rule": "R0121: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0102]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 906,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0122",
+            "rule": "R0122: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0062]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1003,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0123",
+            "rule": "R0123: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0034]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1077,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0124",
+            "rule": "R0124: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0039]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1078,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0125",
+            "rule": "R0125: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free AND product eq billing AND prior_tickets_30d gte 3 ENTONCES BILLING_SPECIALIST  [gana a R0013, R0016, R0066, R0075, R0079, R0090, R0104, R0121, R0122, R0123, R0124]",
+            "queue": "BILLING_SPECIALIST",
+            "born_at": 1105,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 1440
+          },
+          {
+            "rule_id": "R0128",
+            "rule": "R0128: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0018]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1215,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0130",
+            "rule": "R0130: SI has_security_keyword eq True AND severity gte 3 AND customer_tier eq free ENTONCES T2_TECHNICAL  [gana a R0081]",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1349,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0132",
+            "rule": "R0132: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0112, R0118, R0119, R0131]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1514,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|right": 2,
+          "H01|ACTION|wrong": 7,
+          "H02|ACTION|right": 4,
+          "H02|CONFLICT|right": 6,
+          "H02|IMPASSE|right": 1
+        }
+      },
+      "L2 r2": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "T1_GENERAL",
+          "winner": "R0005",
+          "winner_rule": "R0005: SI customer_tier eq free AND severity gte 3 AND prior_tickets_30d gte 1 ENTONCES T1_GENERAL",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0019",
+            "rule": "R0019: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 16800
+          },
+          {
+            "rule_id": "R0038",
+            "rule": "R0038: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0015, R0023]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 155,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 16800
+          },
+          {
+            "rule_id": "R0068",
+            "rule": "R0068: SI has_security_keyword eq True AND customer_tier eq free AND severity lte 2 ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0073",
+            "rule": "R0073: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0042]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 739,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 16800
+          },
+          {
+            "rule_id": "R0087",
+            "rule": "R0087: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0053]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1871,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 16800
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 5,
+          "H01|CONFLICT|right": 3,
+          "H01|IMPASSE|right": 1,
+          "H02|ACTION|wrong": 10,
+          "H02|IMPASSE|wrong": 1
+        }
+      },
+      "L0 r2": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "IMPASSE",
+          "named": "T2_TECHNICAL",
+          "winner": null,
+          "born": "R0010: SI customer_tier eq free AND severity gte 3 AND has_security_keyword eq True ENTONCES T2_TECHNICAL"
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0010",
+            "rule": "R0010: SI customer_tier eq free AND severity gte 3 AND has_security_keyword eq True ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 19,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 8400
+          },
+          {
+            "rule_id": "R0015",
+            "rule": "R0015: SI customer_tier eq business AND severity lte 2 AND product eq dashboard AND has_security_keyword eq True ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 1680
+          },
+          {
+            "rule_id": "R0028",
+            "rule": "R0028: SI customer_tier eq free AND product eq api AND severity lte 2 AND has_security_keyword eq True ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 580,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 1680
+          },
+          {
+            "rule_id": "R0029",
+            "rule": "R0029: SI customer_tier eq free AND product eq mobile AND severity lte 2 AND has_security_keyword eq True ENTONCES T2_TECHNICAL",
+            "queue": "T2_TECHNICAL",
+            "born_at": 751,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 1680
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 8,
+          "H01|IMPASSE|wrong": 1,
+          "H02|ACTION|wrong": 9,
+          "H02|IMPASSE|wrong": 2
+        }
+      },
+      "L3 r3": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "SELF_SERVICE_DEFLECT",
+          "winner": "R0005",
+          "winner_rule": "R0005: SI customer_tier eq free AND severity gte 3 AND prior_tickets_30d gte 1 ENTONCES SELF_SERVICE_DEFLECT",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0020",
+            "rule": "R0020: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0044",
+            "rule": "R0044: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0004]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 155,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0060",
+            "rule": "R0060: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 342,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0065",
+            "rule": "R0065: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 402,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0067",
+            "rule": "R0067: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 448,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0076",
+            "rule": "R0076: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0016]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0080",
+            "rule": "R0080: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 676,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0083",
+            "rule": "R0083: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 739,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0084",
+            "rule": "R0084: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0004]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 751,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0086",
+            "rule": "R0086: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0015]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 770,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0089",
+            "rule": "R0089: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0057]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1063,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0092",
+            "rule": "R0092: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0009]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1235,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0093",
+            "rule": "R0093: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0008]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1264,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0095",
+            "rule": "R0095: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0024]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1704,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0097",
+            "rule": "R0097: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0064]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1802,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0098",
+            "rule": "R0098: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0051]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1871,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0100",
+            "rule": "R0100: SI has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] ENTONCES SECURITY_INCIDENT  [gana a R0059]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1998,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          }
+        ],
+        "class_arrivals": {
+          "H01|CONFLICT|right": 8,
+          "H01|IMPASSE|right": 1,
+          "H02|ACTION|right": 3,
+          "H02|CONFLICT|right": 7,
+          "H02|IMPASSE|right": 1
+        }
+      },
+      "L2 r3": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "T2_TECHNICAL",
+          "winner": "R0002",
+          "winner_rule": "R0002: SI product in ['dashboard', 'mobile'] AND severity gte 3 AND customer_tier neq enterprise ENTONCES T2_TECHNICAL",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 9,
+          "H02|ACTION|wrong": 11
+        }
+      },
+      "L0 r3": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "ACTION",
+          "named": "SELF_SERVICE_DEFLECT",
+          "winner": "R0005",
+          "winner_rule": "R0005: SI customer_tier eq free AND severity gte 4 AND prior_tickets_30d gte 1 ENTONCES SELF_SERVICE_DEFLECT",
+          "winner_reaches_keyword": true
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0021",
+            "rule": "R0021: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 44,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0038",
+            "rule": "R0038: SI has_security_keyword eq True AND severity lte 2 AND customer_tier eq business AND product eq mobile ENTONCES SECURITY_INCIDENT  [gana a R0016]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 155,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 1680
+          },
+          {
+            "rule_id": "R0047",
+            "rule": "R0047: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0004]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 342,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0049",
+            "rule": "R0049: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0015]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 402,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0050",
+            "rule": "R0050: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0048]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 580,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0051",
+            "rule": "R0051: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0036]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 599,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0052",
+            "rule": "R0052: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0002]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 676,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0053",
+            "rule": "R0053: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0010]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 739,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0054",
+            "rule": "R0054: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0008]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 751,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0055",
+            "rule": "R0055: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0014]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 770,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0056",
+            "rule": "R0056: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0025]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1871,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 33600
+          },
+          {
+            "rule_id": "R0057",
+            "rule": "R0057: SI has_security_keyword eq True AND severity lte 2 ENTONCES SECURITY_INCIDENT  [gana a R0032]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1961,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 33600
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|wrong": 5,
+          "H01|CONFLICT|right": 3,
+          "H01|IMPASSE|right": 1,
+          "H02|ACTION|right": 3,
+          "H02|CONFLICT|right": 8
+        }
+      },
+      "L1 r3": {
+        "first_keyword_arrival": {
+          "case": 19,
+          "truth": "T2_TECHNICAL",
+          "ticket_rule": "H03",
+          "outcome": "IMPASSE",
+          "named": "SECURITY_INCIDENT",
+          "winner": null,
+          "born": "R0010: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT"
+        },
+        "keyword_rules": [
+          {
+            "rule_id": "R0010",
+            "rule": "R0010: SI has_security_keyword eq True ENTONCES SECURITY_INCIDENT",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 19,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 67200
+          },
+          {
+            "rule_id": "R0011",
+            "rule": "R0011: SI has_security_keyword eq True AND off_hours eq True AND severity lte 3 ENTONCES SECURITY_INCIDENT  [gana a R0002]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 23,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 25200
+          },
+          {
+            "rule_id": "R0048",
+            "rule": "R0048: SI has_security_keyword eq True AND severity eq 1 ENTONCES SECURITY_INCIDENT  [gana a R0025]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 342,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 16800
+          },
+          {
+            "rule_id": "R0049",
+            "rule": "R0049: SI has_security_keyword eq True AND off_hours eq True AND severity lte 3 ENTONCES SECURITY_INCIDENT  [gana a R0007, R0014, R0021, R0036]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 402,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H02",
+            "points": 25200
+          },
+          {
+            "rule_id": "R0059",
+            "rule": "R0059: SI has_security_keyword eq True AND off_hours eq True AND severity lte 3 ENTONCES SECURITY_INCIDENT  [gana a R0057]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 956,
+            "birth_truth": "T2_TECHNICAL",
+            "birth_ticket_rule": "H03",
+            "points": 25200
+          },
+          {
+            "rule_id": "R0064",
+            "rule": "R0064: SI has_security_keyword eq True AND customer_tier eq enterprise ENTONCES SECURITY_INCIDENT  [gana a R0001]",
+            "queue": "SECURITY_INCIDENT",
+            "born_at": 1264,
+            "birth_truth": "SECURITY_INCIDENT",
+            "birth_ticket_rule": "H01",
+            "points": 16800
+          }
+        ],
+        "class_arrivals": {
+          "H01|ACTION|right": 8,
+          "H01|CONFLICT|right": 1,
+          "H02|ACTION|right": 9,
+          "H02|CONFLICT|right": 2
+        }
+      }
+    }
+  },
+  "seconds": 1.9
+}
