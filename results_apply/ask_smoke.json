@@ -1,0 +1,792 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-23T19:15:24Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "263b6d2dee0c26f773ac085031c440092af3140b",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "3b3acdc8f7ce1943"
+  },
+  "plan": "PLAN_APPLY.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "pass": 0,
+  "temperature": 0,
+  "max_tokens": 1200,
+  "max_retries": {
+    "0": 2,
+    "1": 2,
+    "2": 2,
+    "3": 2
+  },
+  "system_prompts_sha256": {
+    "0": "71fa68073837d5380158ddaa25554d9dfaa7a6317f7f26eb13e41be2cbe72f84",
+    "1": "fb72980e84c9aa16d62b4aa8f2a9921908ced394f8d883b40c3e92f3a9527c08",
+    "2": "76b6371c3130964350f6700faae200178d5c47a6a208389a0f9c97a8d6090b6b",
+    "3": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd"
+  },
+  "sample_record": "results_apply/sample.json",
+  "sample_sha256": "e75bb8e4ee2042bbe493b81462bf5ac59c717dd60f6881195674dcd69caa436c",
+  "gates": {
+    "X-g1": {
+      "what": "the twelve loop records replay with no departure, under their level's system prompt, and the loop's choice of queue is PLAN_MANUAL.md's; the suite green",
+      "replays": {
+        "runs": [
+          {
+            "level": 0,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 0,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 0,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          }
+        ],
+        "passes": true
+      },
+      "loop_choice": {
+        "levels": {
+          "0": {
+            "fraction": "62/119",
+            "published": "62/119",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "1": {
+            "fraction": "34/103",
+            "published": "34/103",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "2": {
+            "fraction": "164/245",
+            "published": "164/245",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "3": {
+            "fraction": "183/323",
+            "published": "183/323",
+            "by_queue_agrees": true,
+            "passes": true
+          }
+        },
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2172,
+        "result": "OK (skipped=3)",
+        "seconds": 173.6,
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g2": {
+      "what": "the screen arm is each escalation's own prompt, the ticket arm v1's empty base under the level's prompt, PLAN_SCREEN.md's at level 0; no builder takes a row; the digests have teeth. The requests are tests/test_apply.py's, through the SDK double",
+      "screens": {
+        "escalations": 790,
+        "departing": [],
+        "decisions_with_an_empty_screen": [],
+        "empty_screens_not_v1s_empty_base": [],
+        "asks_not_the_escalations_prompt": [],
+        "passes": true
+      },
+      "tickets": {
+        "ticket_asks": 676,
+        "not_the_empty_base": [],
+        "case_0_is_the_empty_screens_prompt": {
+          "L0r1:0": true,
+          "L0r2:0": true,
+          "L0r3:0": true,
+          "L1r1:0": true,
+          "L1r2:0": true,
+          "L1r3:0": true,
+          "L2r1:0": true,
+          "L2r2:0": true,
+          "L2r3:0": true,
+          "L3r1:0": true,
+          "L3r2:0": true,
+          "L3r3:0": true
+        },
+        "shared_with_plan_screen": 183,
+        "same_digest": 183,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "screen_ask": [
+            "ask_id",
+            "level",
+            "prompt"
+          ],
+          "ticket_ask": [
+            "ask_id",
+            "level",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 1454,
+        "distinct_texts": 1447,
+        "collisions": [],
+        "asks_sharing_a_text_with_another": 13,
+        "one_changed_rule_moves_the_digest": true,
+        "decisions_without_a_plurality": [],
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g3": {
+      "what": "the populations are \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "decisions": {
+          "0": 116,
+          "1": 100,
+          "2": 242,
+          "3": 320
+        },
+        "conflict_screens": {
+          "0": 11,
+          "1": 37,
+          "2": 75,
+          "3": 70
+        },
+        "empty_screens": 12,
+        "ticket_prompts": {
+          "0": 275,
+          "1": 81,
+          "2": 149,
+          "3": 171
+        },
+        "screen_prompts": 778,
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_ask_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "t:L0:75",
+          "s:L3r1:180",
+          "t:L1:481",
+          "t:L3:339",
+          "s:L0r3:71",
+          "t:L2:172",
+          "s:L2r1:288",
+          "s:L1r2:71"
+        ],
+        "smoke_one_of_each_arm_at_each_level": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_APPLY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_APPLY.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-23T19:15:01Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-23T19:15:24Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 0,
+      "id": "t:L0:75",
+      "arm": "ticket",
+      "level": 0,
+      "digest": "6415ee83abcaf981",
+      "shown_ids": [],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          },
+          {
+            "attr": "customer_tier",
+            "op": "neq",
+            "value": "enterprise"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Ticket de dashboard con severidad media-baja, usuario free, sin seguridad, en horario no laboral. Se asigna a soporte t\u00e9cnico est\u00e1ndar (T2) porque no es cr\u00edtica (severity 1-2) ni de facturaci\u00f3n ni de seguridad. La regla cubre tickets de dashboard con severidad <=3 para clientes no enterprise, que son los casos m\u00e1s comunes que requieren asistencia t\u00e9cnica sin escalar a ingenier\u00eda."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782899-Xigqa1etk7cWnfQN81q2",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1001,
+          "completion_tokens": 207,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 3.03,
+      "asked_at": "2026-10-23T19:15:04Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 1,
+      "id": "s:L3r1:180",
+      "arm": "screen",
+      "level": 3,
+      "digest": "5401055ff935d79b",
+      "shown_ids": [
+        "R0003",
+        "R0011",
+        "R0019",
+        "R0008",
+        "R0018",
+        "R0023",
+        "R0035",
+        "R0041",
+        "R0005",
+        "R0006",
+        "R0014",
+        "R0004"
+      ],
+      "action": "T1_GENERAL",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          },
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 4
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es un caso particular de R0023 (pro, severity 4, dashboard, phone, off_hours, prior_tickets_30d=0) pero con channel email en vez de phone. Como R0023 no casa por channel, y ninguna otra regla cubre exactamente este caso, se crea una regla generalizable que cubre tickets pro, severity 4, dashboard, prior_tickets_30d=0 y off_hours=true, independientemente del channel. Esta regla es m\u00e1s general que R0023 (que requiere phone) y m\u00e1s espec\u00edfica que H28 (pro no est\u00e1 en business/enterprise) y H29 (severity 4 no es lte 2). No se solapa con otras reglas existentes, por lo que no necesita beats/loses_to."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782901-ZK8St9fwFmYXN5e5WDgK",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 2203,
+          "completion_tokens": 315,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 3.07,
+      "asked_at": "2026-10-23T19:15:07Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 2,
+      "id": "t:L1:481",
+      "arm": "ticket",
+      "level": 1,
+      "digest": "c472318c80fe7538",
+      "shown_ids": [],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "mobile"
+          },
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": false
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla: tickets de severidad alta (1-2) sobre producto mobile, sin indicios de seguridad, van a T2_TECHNICAL porque requieren diagn\u00f3stico t\u00e9cnico pero no son cr\u00edticos ni de ingenier\u00eda. Se abstrae por severidad y producto, dejando fuera tier y canal para que sea generalizable."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782905-OmpsotV7t649RJw7Cy76",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1292,
+          "completion_tokens": 173,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.24,
+      "asked_at": "2026-10-23T19:15:10Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 3,
+      "id": "t:L3:339",
+      "arm": "ticket",
+      "level": 3,
+      "digest": "3529a3190fced29a",
+      "shown_ids": [],
+      "action": "T1_GENERAL",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla de la base. El ticket es de un cliente business con severidad 3 y producto mobile, sin coincidir con ninguna condicion especial. Se asigna a T1_GENERAL como cola por defecto para clientes business, cubriendo todos los casos que no encajen en reglas mas especificas."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782907-d1rzxuQspfEEg1lFSM8R",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1754,
+          "completion_tokens": 131,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.04,
+      "asked_at": "2026-10-23T19:15:12Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 4,
+      "id": "s:L0r3:71",
+      "arm": "screen",
+      "level": 0,
+      "digest": "b0095aa06eef18bb",
+      "shown_ids": [
+        "R0005",
+        "R0001",
+        "R0017",
+        "R0018",
+        "R0003",
+        "R0010",
+        "R0013",
+        "R0006",
+        "R0016",
+        "R0020",
+        "R0021",
+        "R0023"
+      ],
+      "action": "T2_TECHNICAL",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es business, integrations, severity 4. La regla R0018 cubre business+integrations+severity<=3, pero no severity 4. Se crea una regla complementaria para severity>=4, que es un caso particular de business+integrations, y no se solapa con R0018 porque una usa lte 3 y otra gte 4, son mutuamente excluyentes. No hay conflicto con otras reglas."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782909-3wY9tiDTYJ4DcHVPBRlM",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1412,
+          "completion_tokens": 200,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.29,
+      "asked_at": "2026-10-23T19:15:14Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 5,
+      "id": "t:L2:172",
+      "arm": "ticket",
+      "level": 2,
+      "digest": "d63b3fe043a0ff6a",
+      "shown_ids": [],
+      "action": "BILLING_SPECIALIST",
+      "valid": true,
+      "payload": {
+        "action": "BILLING_SPECIALIST",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 3
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Ticket de facturacion de cliente business con severidad no critica y pocos tickets previos: no aplica gestor de cuenta ni autoservicio, y al ser business no es enterprise, por lo que va a especialista de facturacion."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782911-fYCqGHS5t2P2jAb09ewg",
+          "provider": "GMICloud",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1753,
+          "completion_tokens": 159,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 3.63,
+      "asked_at": "2026-10-23T19:15:18Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 6,
+      "id": "s:L2r1:288",
+      "arm": "screen",
+      "level": 2,
+      "digest": "c6cfa48841643231",
+      "shown_ids": [
+        "R0038",
+        "R0039",
+        "R0044"
+      ],
+      "action": "ACCOUNT_MANAGER",
+      "valid": true,
+      "payload": {
+        "action": "ACCOUNT_MANAGER",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "prior_tickets_30d",
+            "op": "gte",
+            "value": 7
+          }
+        ],
+        "beats": [
+          "R0039"
+        ],
+        "loses_to": [],
+        "note": "El ticket cumple la condicion de cuenta en riesgo (business con 9 tickets en 30d), que debe priorizarse sobre el desvio a T1_GENERAL por horario y producto, ya que la gestion de retencion es mas urgente que el soporte general fuera de horario."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782915-btORI5hujGYkRKd7RIor",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1888,
+          "completion_tokens": 154,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.2,
+      "asked_at": "2026-10-23T19:15:20Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 7,
+      "id": "s:L1r2:71",
+      "arm": "screen",
+      "level": 1,
+      "digest": "547c6a0adf2efb29",
+      "shown_ids": [
+        "R0006",
+        "R0005",
+        "R0008",
+        "R0009",
+        "R0001",
+        "R0002",
+        "R0004",
+        "R0007",
+        "R0003",
+        "R0011",
+        "R0010",
+        "R0014"
+      ],
+      "action": "T1_GENERAL",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "gte",
+            "value": 4
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": false
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de producto integrations, severidad 4 (baja), cliente business, sin seguridad. Las reglas existentes para integrations solo cubren free (R0005 -> T1) o severidad <=3 (R0008 -> T2). Este caso es an\u00e1logo a R0005 pero con tier business, que merece el mismo trato de T1_GENERAL por ser severidad baja y no requerir diagn\u00f3stico t\u00e9cnico. No hay solapamiento con otras reglas, por lo que no se declaran prioridades."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792782918-3fzEOIGYXsy0BhFihgPf",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1714,
+          "completion_tokens": 236,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 3.91,
+      "asked_at": "2026-10-23T19:15:24Z"
+    }
+  ]
+}
