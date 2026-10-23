@@ -683,6 +683,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `manual/score.py` | `results_manual/score.json` | **refuses while the plan is unsigned** |
 > | `manual/readings.py` | `results_manual/readings.json` | **refuses while the plan is unsigned** |
 > | `manual/after_readings.py` | `results_manual/after_readings.json` | **refuses while the plan is unsigned** |
+> | `manual/notes.py` | `results_manual/notes.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
