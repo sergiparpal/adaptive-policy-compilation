@@ -75,3 +75,5 @@ results_screen/*.partial.jsonl
 results_ranking/*.partial.jsonl
 # And the compile sessions of PLAN_MANUAL.md (manual/ask.py).
 results_manual/*.partial.jsonl
+# And the passes of PLAN_APPLY.md (apply/ask.py).
+results_apply/*.partial.jsonl

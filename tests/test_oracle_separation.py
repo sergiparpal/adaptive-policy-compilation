@@ -105,13 +105,22 @@ ONLINE_LOOP = [
     "manual/compile.py",
     "manual/ask.py",
     "manual/run.py",
+    # Added 2026-10-23 with PLAN_APPLY.md, which asks `PLAN_MANUAL.md`'s
+    # escalations again with the same frozen texts in the system prompt (§4,
+    # rule B of the plan). These two modules build and send its requests: the
+    # system prompt is `manual.prompts.loop_system_prompt`, called, and the
+    # user message is rung 2's around a screen `fidelity` rebuilds. They are on
+    # the same channel, so `TestTheAuthorityChannel` watches them too. The
+    # labels enter only at scoring, from the loop records (`apply/score.py`).
+    "apply/prompts.py",
+    "apply/ask.py",
 ]
 
 # The names that carry the hidden policy in code without being the oracle's
 # own: its DSL transcription, the module that holds it, and the edges derived
 # from its layer order. The authority channel's proposer path may import none.
 POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
-AUTHORITY_CHANNEL = ONLINE_LOOP[-5:]
+AUTHORITY_CHANNEL = ONLINE_LOOP[-7:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -207,7 +216,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "ilp", "reuse", "fidelity", "edges", "primacy", "why",
                      "authorship", "overlap", "blind", "screen", "bound",
                      "ranking", "students", "escalations",
-                     "spotcheck", "unreached", "manual"):
+                     "spotcheck", "unreached", "manual", "apply"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -223,10 +232,13 @@ class TestTheAuthorityChannel(unittest.TestCase):
     """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
     These tests hold it to that route: the frozen text, and nothing in code."""
 
-    def test_the_five_modules_are_the_ones_watched(self):
+    def test_the_seven_modules_are_the_ones_watched(self):
+        """`PLAN_MANUAL.md`'s five, and since 2026-10-23 `PLAN_APPLY.md`'s two,
+        which send the same texts again."""
         self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
                                              "manual/compile.py", "manual/ask.py",
-                                             "manual/run.py"])
+                                             "manual/run.py", "apply/prompts.py",
+                                             "apply/ask.py"])
 
     def test_no_proposer_path_module_imports_the_policy_in_code(self):
         for rel in AUTHORITY_CHANNEL:
@@ -248,6 +260,25 @@ class TestTheAuthorityChannel(unittest.TestCase):
             self.assertEqual(prompts.block(2), prompts.MANUAL_HEADER + "\n\nA\n\nB")
             self.assertNotIn("H01", prompts.loop_system_prompt(3))
             self.assertNotIn("H01", prompts.compile_system_prompt(3))
+
+    def test_plan_apply_sends_the_manual_only_through_the_frozen_files(self):
+        """`PLAN_APPLY.md`'s prompts carry the level's text as the loop's did,
+        and nothing of the policy besides: replacing the files changes the
+        system prompt's block, in both arms, and the user message not at all."""
+        from unittest import mock
+
+        from apply import prompts as aprompts
+        from harness.domain import generate_corpus
+        from manual import levels, prompts
+
+        case = generate_corpus(1, seed=17)[0]
+        before = aprompts.ticket_ask("t", 3, case)
+        texts = {"catalogue": "A", "prose": "B", "rules": "C"}
+        with mock.patch.object(levels, "part", side_effect=lambda name: texts[name]):
+            after = aprompts.ticket_ask("t", 3, case)
+            self.assertIn(prompts.MANUAL_HEADER + "\n\nC", after.system)
+            self.assertNotIn("H01", after.system)
+            self.assertEqual(after.user, before.user)
 
 
 class TestTheRung4Channel(unittest.TestCase):
