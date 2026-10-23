@@ -49,6 +49,14 @@ rules is how broad the proposer writes. The dropped declarations decide
 nothing. `SECURITY_INCIDENT` was lost under the prose to ordinary rules, none of
 which excludes the keyword.
 
+**The notes the proposer wrote beside its rules were coded POST-RUN on
+2026-10-23**, in their own section below. Under the list, most births were
+written for a ticket the note says no rule matches, and they were written as
+that ticket's own combination of values. The subcase the drafter bet on is not
+where the narrow rules are. Under the catalogue, the keyword's exclusion was
+copied from the rules shown. Under the prose and the rules, the keyword was out
+of view whenever an ordinary rule was written.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Every figure of Stage A
 > was computed while drafting, and §0 declared it so. The free stage gave it a
 > record. Zero API calls.
@@ -661,6 +669,9 @@ The drafter trusted C4 least, then A3 and B1. C4 and B1 held, and A3 failed.
 - **Why the list makes the proposer write narrower rules.** The notes it wrote
   beside each rule might say. Reading them is a codebook's work, and
   `PLAN_WHY.md` says to anchor its patterns.
+  **[NOTE 2026-10-23] Read POST-RUN** (*The notes beside the rules*, below).
+  The notes place the list's narrow rules in one frame, a ticket no rule
+  matches, written as that ticket's own combination. They do not say why.
 - **The half of the gap inside the bands**: L₃'s births or the narrower rules
   they could meet. A reading of what each birth's earlier rules span would
   split them. Free.
@@ -670,8 +681,229 @@ The drafter trusted C4 least, then A3 and B1. C4 and B1 held, and A3 failed.
   states its order. Rung 2's engine applies neither: only declared edges and
   containment order its rules. Whether the proposer leaves the keyword to a
   precedence it was told about, the notes might say.
+  **[NOTE 2026-10-23] Read POST-RUN**, in the same section. It does not: its
+  notes almost never mention the keyword when it writes an ordinary rule.
+  Under the catalogue the exclusion was copied from the rules shown.
 - **Whether a loop that kept the keyword out of its ordinary rules would keep
   the class under the prose.** That is a run, with calls and a plan of its own.
+
+---
+
+## The notes beside the rules — POST-RUN
+
+> **POST-RUN.** Asked for on 2026-10-23 and run the same day. Zero API calls.
+> `manual/notes.py` coded the note the proposer wrote beside each of the 764
+> rules in the twelve loop runs, using a codebook of ten codes.
+> - **The codebook was written on a development set**, the first run of each
+>   level, 231 notes. It was then frozen, with an eleven-clause expectation in
+>   the module's docstring, and committed before any note of the second or
+>   third runs was read. Those 533 notes are the held-out set, and every clause
+>   reads them.
+> - **Four gates stood before any write.** The births and the bands are the
+>   readings'. The notes are the records'. Two routes give the keyword and the
+>   nesting. The codebook is the one committed, and no note outside level 3
+>   cites an identifier of the manual.
+> - **A note is its first 280 characters.** `rung2/engine2.py` cuts it there,
+>   and 674 of the 764 notes reach the cut. So every count of a code is a
+>   floor.
+> - **`PLAN_MANUAL.md`'s rule E kept the plan's stages from coding the notes.**
+>   This reading codes them after the plan closed.
+>
+> Not a signed row; no verdict moves. The record is [`notes.json`](notes.json).
+> Every note quoted below is quoted there too.
+
+### 1. Why the list makes the proposer write narrower rules
+
+The births read are the held-out births that `K-a` reads. A birth is *narrow*
+when it spans at most 840 points off the keyword, the two narrowest of
+`manual/after_readings.py`'s bands.
+- **Under the rules**, 149 of 197 births are narrow, 0.7563.
+- **Under the prose**, 41 of 117 are, 0.3504.
+- The gap between them is 0.4059.
+
+**It is not the subcase the drafter bet on (A1 and A2 fail).**
+- Under the rules, 15 of 197 notes call the rule a particular case of another,
+  0.0761. Under the prose, 12 of 117 do, 0.1026.
+- Under the rules those 15 births are narrow less often than the rest, 0.5333
+  against 0.7747.
+- When such a note cites a hidden rule, the claim is true of the extensions:
+  12 of 13 lie inside a rule they cite (A3 holds).
+
+**It is not paraphrase (A5 fails).** Under the prose, 87 of 117 notes appeal to
+the manual. Their births are narrow more often than the others, 0.3793 against
+0.2667.
+
+**It is not the tickets (A4 holds).** The births were grouped by the true queue
+of the ticket each was born on, over the seven queues both levels share. The
+tickets' mix carries 0.1886 of the gap on L₂'s rates and 0.3201 on L₃'s. Given
+the same tickets, the two levels write different rules.
+
+**The list's narrow rules sit on tickets the note calls uncovered.** Held out:
+
+| code | L₂ births | narrow | median points | L₃ births | narrow | median points |
+|---|---|---|---|---|---|---|
+| every birth | 117 | 0.3504 | 1,680 | 197 | 0.7563 | 640 |
+| `gap`: no rule matches the ticket | 27 | 0.3333 | 1,680 | 110 | 0.8727 | 200 |
+| `hidden`: cites a rule of the list | — | — | — | 90 | 0.6444 | 800 |
+| `policy`: appeals to the manual | 87 | 0.3793 | 1,680 | 8 | 0.625 | 400 |
+| `inside`: a particular case of a rule | 12 | 0.75 | 840 | 15 | 0.5333 | 240 |
+| `narrow`: a rule written for the case | 2 | 0 | 1,680 | 16 | 1 | 120 |
+| `widen`: a rule that generalises | 7 | 0.7143 | 840 | 33 | 0.7879 | 200 |
+| `precedence`: one thing outranks another | 27 | 0.1481 | 2,240 | 14 | 0.7143 | 530 |
+
+- **Under the list, more than half the births are written for a ticket that
+  the note says no rule matches**: 110 of 197. They are the narrowest of any
+  code: 96 narrow, at a median of 200 points off the keyword.
+- **Under the prose, a quarter are, 27 of 117, and they are as broad as the
+  rest.** There the frame comes with a sentence of the manual: *"Según la
+  política, los problemas de mobile de severidad alta van a soporte técnico
+  (T2_TECHNICAL). No hay reglas existentes que cubran este caso exacto"* (L₂
+  r2, `R0004`).
+- **So the frame's mix carries 0.2127 of the gap on L₃'s rates, and none on
+  L₂'s**, −0.0179.
+- **The births that cite a rule of the list are the broader ones:** 0.6444
+  narrow, against 0.8505 for the births that cite none. 85 of the 90 lie inside
+  a rule they cite. 91 of the 149 narrow births cite no rule of the list.
+- **A note that claims to generalise does not come with a broad rule.** Under
+  the list, the 33 births coded `widen` are narrow 0.7879 of the time, at a
+  median of 200 points. Those notes include *"captura este caso y otros
+  análogos"*.
+
+Under the list, the notes quoted in the record read a listed rule that matches
+the ticket as not covering it, because it does not name the ticket's values:
+- *"La regla H28 (business/enterprise -> T1_GENERAL) es la más cercana, pero no
+  cubre severity 4 específicamente. Se crea una regla específica para enterprise
+  con severit…"* (L₃ r2, `R0009`). `H28` names no severity, so it matches every
+  severity.
+- *"Las reglas existentes cubren business+severity1 (H06), api+severity1 (H07),
+  api+severity<=2 (H15), pero no business+api+severity3. Se crea una regla
+  específica para este caso"* (L₃ r2, `R0011`).
+No code of the codebook reads this, so it is not counted.
+
+So the notes place the list's narrow rules in one frame, and they do not
+explain it.
+- **Under the list, most births are written for a ticket the note calls
+  uncovered, as that ticket's own combination of values.**
+- Under the prose, the same frame comes with a sentence of the manual and a
+  broad rule.
+- The subcase the drafter bet on is rarer under the list than under the prose,
+  and the list's narrow rules are not there.
+
+**Beside it, reported: reading the list.** Under the list, 90 births have notes
+that cite a hidden rule. 67 of them cite the rule that governs their ticket, the
+first rule of the list the ticket matches.
+- Those 67 name that rule's queue 50 times.
+- The 23 notes that cite only other rules name it once.
+This bears on Stage C's item 2, why the proposer applies the rules at 0.5666.
+When its note finds the first rule the ticket matches, it applies that rule
+three times in four. The births whose note cites no rule are not read here.
+
+### 2. Why the catalogue makes the proposer exclude the keyword
+
+Every rule, held out. An *ordinary* rule is neither a keyword rule nor born on
+a ticket with the keyword.
+
+| level | rules | exclude the keyword | ordinary rules | whose note mentions it | keyword rules | whose note states a precedence | that declared an edge |
+|---|---|---|---|---|---|---|---|
+| L₀, the names | 86 | 6 | 70 | 9 | 16 | 7 | 11 |
+| L₁, the catalogue | 90 | 70 | 83 | 46 | 7 | 2 | 5 |
+| L₂, and the prose | 122 | 0 | 117 | 2 | 5 | 3 | 3 |
+| L₃, the rules | 235 | 0 | 197 | 3 | 38 | 29 | 30 |
+
+**Under the catalogue, the exclusion is copied from the rules shown (B6
+holds).** Every rule, by whether a rule shown at its escalation excluded the
+keyword:
+
+| level | shown an excluding rule | of them, exclude it | shown none | of them, exclude it |
+|---|---|---|---|---|
+| L₀ | 26 | 5 | 60 | 1 |
+| L₁ | 79 | 68 | 11 | 2 |
+| L₂ | 0 | — | 122 | 0 |
+| L₃ | 0 | — | 235 | 0 |
+
+- **Under the catalogue the rates are 0.8608 and 0.1818.** In every run the
+  exclusion starts at an early rule written when no rule shown excluded the
+  keyword. Each such note carves security out of a rule about something else:
+  - *"tickets de severidad baja (3 o 4), sin palabra clave de seguridad y que
+    no sean de facturación van a T1_GENERAL"* (L₁ r1, `R0001`, the first rule
+    of the run, read in the development set);
+  - *"Enterprise customers with non-security, low-severity issues are routed to
+    the account manager"* (L₁ r2, `R0001`, the first rule of the run);
+  - *"sin indicios de seguridad"* (L₁ r3, `R0003`).
+- **The exclusion is copied more often than it is said (B1 fails).** 44 of the
+  70 rules that exclude the keyword mention it in their note.
+- **Under the prose and the rules, no rule excluded the keyword**, so none was
+  ever shown one.
+- **There, the keyword was out of view when an ordinary rule was written (B2
+  and B4 hold).** Its notes mention the keyword 2 times in 117 under the prose,
+  and 3 in 197 under the rules.
+- **The precedence the proposer was told is stated where the class's own rules
+  are born (B3 holds).**
+  - 3 of the 5 keyword rules under the prose state one in their note, and 29
+    of the 38 under the rules.
+  - 3 and 30 of those keyword rules declared an edge at birth.
+  - One reads *"La regla de seguridad debe prevalecer sobre las de producto y
+    cuenta en riesgo porque la política prioriza seguridad antes que cualquier
+    otra consideración"* (L₂ r2, `R0038`).
+- **Under the rules, two of the three ordinary notes that mention the keyword
+  state that precedence from the other side.** One rule *"debe ganar a reglas
+  generales de T1_GENERAL pero perder ante reglas de seguridad"* (L₃ r2,
+  `R0114`). Both rules were declared below `SECURITY_INCIDENT` rules, `R0114`
+  below four and `R0127` below two.
+
+So the answer to `IDEAS.md`'s question is **no**:
+- When it writes an ordinary rule, the proposer does not leave the keyword to
+  the precedence it was told: it does not mention the keyword at all.
+- It states that precedence where a ticket of the class escalates, as an edge
+  against the rules shown there.
+- §3 above found the class lost under the prose to ordinary rules, most of them
+  written for other tickets.
+
+**Under the catalogue, the keyword was excluded because one early rule carved
+it out and later rules copied that rule.**
+
+### The expectation, clause by clause
+
+| clause | expected | read | verdict |
+|---|---|---|---|
+| A1 | L₃'s notes frame a rule as a particular case at least twice as often as L₂'s | 0.0761 against 0.1026 | **fails** |
+| A2 | at L₃, those births are narrow more often than the others | 0.5333 against 0.7747 | **fails** |
+| A3 | at L₃, at least two thirds of those that cite a hidden rule lie inside one | 12 of 13 | holds |
+| A4 | the tickets' mix carries less than half of the gap in the narrow share, on both readings | 0.1886 and 0.3201 of 0.4059 | holds |
+| A5 | at L₂, the births whose note appeals to the manual are narrow less often | 0.3793 against 0.2667 | **fails** |
+| B1 | at L₁, at least three quarters of the rules that exclude the keyword mention it | 44 of 70 | **fails** |
+| B2 | at L₂, fewer than one ordinary note in ten mentions it | 2 of 117 | holds |
+| B3 | at L₂, at least half of the keyword rules' notes state a precedence | 3 of 5 | holds |
+| B4 | at L₃, fewer than one ordinary note in ten mentions it | 3 of 197 | holds |
+| B5 | at L₁, at least half of the ordinary notes mention it | 46 of 83 | holds |
+| B6 | at L₁, a birth excludes it more often when a rule shown does | 0.8608 against 0.1818 | holds |
+
+**Seven of eleven held.**
+- The three clauses the drafter trusted least, A4, A3 and B6, held.
+- The three that named a mechanism for the list's narrow rules, A1, A2 and A5,
+  failed.
+- **Two clauses were set from the development runs' counts, and neither
+  carried.**
+  - On the first runs, L₃'s notes framed a particular case in 13 of 82
+    births, against L₂'s 3 in 88.
+  - 10 of L₁'s 11 excluding rules mentioned the keyword there.
+  - Held out, A1 and B1 failed. A band set on a development set says a reading
+    generalises when it holds (`PLAN_WHY.md`'s rows), and these two did not.
+- B3 rests on 5 rules.
+
+### What the notes do not settle
+
+- **Why the list's proposer calls a ticket uncovered and writes its own
+  combination.** The quotations suggest it reads a listed rule as covering only
+  the values the rule names. No code reads that. A codebook for it would now
+  be written after the held-out notes were read. Free.
+- **Most of the gap is inside the codes.** Neither a frame nor the tickets' mix
+  carries most of it, and this reading does not split the rest.
+- **The births whose note cites no rule of the list.** How often they name the
+  governing rule's queue is not read. Free on the records.
+- **Why the catalogue's early rules carve security out.** Three notes, not a
+  rate.
+- **Every count is a floor**: 674 of the 764 notes stop at 280 characters.
 
 ---
 
@@ -696,4 +928,7 @@ results_manual/readings.json         POST-RUN: every birth against its ticket's 
 results_manual/after_readings.json   POST-RUN, after it: the births on K-a's own surface
                                      and by breadth, the declarations by their rule's
                                      queue, the keyword rule by rule
+results_manual/notes.json            POST-RUN: the 764 notes coded on a codebook frozen on
+                                     the first runs, breadth and the keyword by code,
+                                     the quotations, the expectation
 ```
