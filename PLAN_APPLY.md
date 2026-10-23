@@ -200,7 +200,7 @@ that sets a comparison on the proposer:
 | **X-f** | **Without a screen, the rules reach the ticket's answer.** On the same tickets, the model with the 29 rules is right at least a tenth more often than with the names alone | over `L₃`'s decisions: `acc_t − acc_u` | **≥ 0.10** | **< 0.10** |
 | **X-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each level on its decisions: `acc_s`, `acc_t`, `acc_u`, the loop's own accuracy on the same decisions, and every row's statistic with its parts and per run. Every row's statistic at the levels it is not read at. Coverage and conflict screens apart. The table by true queue, with `ONCALL_ESCALATION`, `SECURITY_INCIDENT`, `ACCOUNT_MANAGER` and `T3_ENGINEERING` in counts. Every decision where the two arms' answers differ, classified by what the screen changed the answer to (§5.6). `X-a` by level. The rule written beside each answer: whether it validates, and its breadth off the keyword, by arm and level. `u` against `PLAN_SCREEN.md`'s ticket-only answers where a ticket is shared. Each arm's providers, finish reasons and tokens. Every `note`, recorded in full and not coded | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-23)**
 
 **Why each row, and why these lines.**
 
