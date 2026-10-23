@@ -184,8 +184,13 @@ class TestTheGateCountsEverySignature(unittest.TestCase):
                 with self.subTest(text=text):
                     self.assertEqual(plan.gate_signature(p)["passes"], ok)
 
-    def test_the_drafted_plan_is_unsigned(self):
-        self.assertFalse(plan.gate_signature(REPO / "PLAN_APPLY.md")["passes"])
+    def test_the_plan_carries_one_signature_line(self):
+        """§0's, and no other. Whether it is filled in is not pinned here: a
+        test that pinned the draft's blank line would fail at the signature,
+        as one did on 2026-10-23. The verdicts on a blank and a filled line are
+        the fakes' above."""
+        self.assertEqual(plan.gate_signature(REPO / "PLAN_APPLY.md")["found"],
+                         plan.MIN_SIGNATURES)
 
 
 class TestNothingIsBuiltOrWrittenUnsigned(unittest.TestCase):
@@ -335,7 +340,9 @@ class TestThePromptsAreTheLoops(unittest.TestCase):
         self.assertTrue(checks.blocking_pass)
         for g in (checks.xg1, checks.xg2, checks.xg3):
             self.assertTrue(g["passes"])
-        self.assertFalse(checks.xg4["passes"])
+        # X-g4 reads the plan as it stands, signed or not; it never blocks a
+        # check, so only what it found is pinned.
+        self.assertEqual(checks.xg4["found"], plan.MIN_SIGNATURES)
 
     def test_the_screen_arm_is_the_escalations_prompt_under_the_levels_system(self):
         for i, e in list(self.design.decisions.items())[::37]:
