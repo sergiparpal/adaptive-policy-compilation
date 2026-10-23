@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 22, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 23, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -70,7 +70,9 @@ policy, given to the proposer at three levels, closed the same day too**:
 `PLAN_MANUAL.md`, seven signed rows, three held, three refuted and one
 reported, written up in `results_manual/`. **Three readings its Stage C left
 free were read POST-RUN on October 22, 2026**, and the three items they answer
-are struck in place. This is a list of things not done,
+are struck in place. **The notes the proposer wrote beside its rules were coded
+POST-RUN on October 23, 2026**, and the two items they answer are struck in
+place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -322,9 +324,24 @@ partitions. What that leaves:
     with the rules the proposer writes narrow rules, and narrow rules seldom
     meet another queue's. Whether a birth stays inside its ticket's own rule
     carries about a tenth. What it leaves:
-    - **Why the list makes the proposer write narrower rules.** The notes it
-      wrote beside each rule might say. Free, and a codebook's work: anchor its
-      patterns.
+    - ~~**Why the list makes the proposer write narrower rules.**~~ **Coded
+      POST-RUN on 2026-10-23** (`FINDINGS_MANUAL.md`, *The notes beside the
+      rules*). The codebook was frozen on each level's first run, and its
+      clauses were read on the other two.
+      - Under the list, more than half the births are written for a ticket the
+        note says no rule matches, as that ticket's own combination, and those
+        are the narrowest.
+      - Under the prose a quarter are, and they are as broad as the rest.
+      - The tickets' mix carries a fifth to a third of the gap.
+      - The subcase the drafter bet on, a rule framed as a case of a listed
+        rule, is not where the narrow rules are.
+      What it leaves:
+      - **Why the list's proposer reads a rule that matches the ticket as not
+        covering it.** Its notes say so: a listed rule *"no cubre severity 4
+        específicamente"*. No code reads that. A codebook for it would be
+        written after the held-out notes were read, so it would say so. Free.
+      - **Most of the gap is inside the codes.** Neither a frame nor the
+        tickets' mix carries most of it.
     - **The half of the gap inside the bands.** Within a band, L₃'s births
       still cross less than L₂'s. Whether that is the births or the narrower
       rules they could meet, a reading of what each birth's earlier rules span
@@ -338,6 +355,12 @@ partitions. What that leaves:
   `PLAN_SCREEN.md` measured that a screen pulls the model to its commonest
   action. Asking the escalated tickets again with the manual and no screen
   would separate the two. Calls.
+  **[NOTE 2026-10-23] The notes give a free part of it**, reported beside the
+  clauses of *The notes beside the rules*. Some notes under the list cite the
+  rule that governs their ticket, the first rule of the list it matches. Those
+  name that rule's queue three times in four. Notes that cite only other rules
+  almost never do. How often the births whose note cites no rule name it is not
+  read: free on the records. The screen's pull is still not separated.
 - ~~**What level 3's dropped declarations cost.**~~ **Read POST-RUN on
   2026-10-22**, in the same section: nothing. Most of the 61 were idle or
   inert. Translated into the rules the proposer was shown, as the hidden rule
@@ -350,12 +373,26 @@ partitions. What that leaves:
   against 81 of the catalogue's 102. Under the catalogue the first ticket with
   the keyword met no rule, and bore one sending the whole half to the class.
   What it leaves:
-  - **Why the catalogue makes the proposer exclude the keyword and the prose
-    does not.** The prose and the list state a precedence that rung 2's engine
-    does not apply, and the catalogue states none. The notes might say whether
-    the proposer leaves the keyword to the precedence it was told. Free.
+  - ~~**Why the catalogue makes the proposer exclude the keyword and the prose
+    does not.**~~ **Coded POST-RUN on 2026-10-23**, in the same section. The
+    proposer does not leave the keyword to the precedence it was told: under
+    the prose and the rules its ordinary notes almost never mention it. It
+    states the precedence where the class's own rules are born, as edges
+    against the rules shown there. Under the catalogue the exclusion is copied
+    from the rules shown, from one early rule a run that carved security out.
+    What it leaves:
+    - **Why the catalogue's early rules carve security out.** Three notes, not
+      a rate.
   - **A loop that keeps the keyword out of its ordinary rules.** Whether the
     prose would then keep the class is a run, with calls and a plan of its own.
+- **A note is its first 280 characters.** `rung2/engine2.py` cuts it there,
+  and no loop record keeps a call's text, so a code missing from a note may lie
+  past the cut. Most of `PLAN_MANUAL.md`'s loop notes reach it. A reading of
+  notes counts floors, and should say so in its own text.
+- **A clause set from a development set's counts may not carry.** The notes'
+  codebook was frozen on each level's first run, and two of its clauses read
+  shares that run had shown. Both failed on the other two runs. A split by run
+  is what tests a share the proposer's phrasing sets inside a run.
 - **A class must be read on the surface its statistic reads.**
   `manual/readings.py` set each birth against its ticket's rule over the whole
   space, while `K-a` reads the half without the keyword. A rule that does not

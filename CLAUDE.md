@@ -654,6 +654,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m manual.score          # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m manual.readings       # POST-RUN: three readings Stage C left free
     PYTHONHASHSEED=0 python3 -m manual.after_readings # POST-RUN: the first, on K-a's own surface
+    PYTHONHASHSEED=0 python3 -m manual.notes          # POST-RUN: the notes, on a codebook frozen first
     .venv/bin/python -m manual.ask --session smoke    # Stage B1: spends — only if asked
     .venv/bin/python -m manual.ask --session session  # then the session, never side by side
     .venv/bin/python -m manual.run --smoke            # Stage B2: spends — only if asked
@@ -684,6 +685,13 @@ reads beyond the keyword. There a rule that does not exclude the keyword never
 lies inside a lower rule's region, so three of its clauses failed by
 construction. `IDEAS.md` carried the lesson from `blind/yielding.py`, and it was
 not applied: cut every mask to the statistic's surface before classing on it.
+
+**And a note is its first 280 characters.** `rung2/engine2.py` cuts every note
+there, and no loop record keeps a call's text, so a code missing from a note may
+lie past the cut. `manual/notes.py` froze its codebook on each level's first
+run and read its clauses on the other two. The split was by run because the
+proposer repeats its phrasing inside a run. Two clauses set from the first
+run's shares failed on the others.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

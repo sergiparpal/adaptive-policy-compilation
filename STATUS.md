@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 22, 2026. **Not a history** — that is the four
+What is known, as of October 23, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -1946,6 +1946,19 @@ signed row, and no verdict moves.
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
 *Three readings Stage C left free*.
 
+**[NOTE 2026-10-23] The notes beside the rules, coded POST-RUN.** Not a signed
+row, and no verdict moves. The codebook was frozen on each level's first run,
+and seven of its eleven clauses held on the other two.
+- **The list's narrow rules sit on tickets the note calls uncovered.** Under
+  the rules, more than half the births are written for a ticket the note says
+  no rule matches, as that ticket's own combination. They are the narrowest of
+  any code. The subcase the drafter bet on is not where those rules are.
+- **Under the catalogue, the keyword's exclusion is copied from the rules
+  shown.** Under the prose and the rules no rule excludes it, and ordinary
+  notes almost never mention it.
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+*The notes beside the rules*.
+
 ---
 
 ## What was withdrawn, and why
@@ -2081,6 +2094,20 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - Why the list narrows the rules is open.
    [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
    *Three readings Stage C left free*.
+   **[NOTE 2026-10-23] The notes place it in one frame, and do not explain
+   it.**
+   - Under the list, more than half the births are written for a ticket the
+     note says no rule matches, as that ticket's own combination. Those are
+     the narrowest births. Under the prose a quarter are, and they are as broad
+     as the rest.
+   - The tickets' mix carries a fifth to a third of the gap, so on the same
+     tickets the levels write differently.
+   - The notes that frame a rule as a case of a listed rule are not the narrow
+     ones.
+   - What is open now is why the list's proposer reads a rule that matches the
+     ticket as not covering it, as its notes suggest.
+   [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+   *The notes beside the rules*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
