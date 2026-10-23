@@ -697,8 +697,8 @@ The drafter trusted C4 least, then A3 and B1. C4 and B1 held, and A3 failed.
 > - **The codebook was written on a development set**, the first run of each
 >   level, 231 notes. It was then frozen, with an eleven-clause expectation in
 >   the module's docstring, and committed before any note of the second or
->   third runs was read. Those 533 notes are the held-out set, and every clause
->   reads them.
+>   third runs was read, as `18e7e90`, which is `781b89b` on `main`. Those 533
+>   notes are the held-out set, and every clause reads them.
 > - **Four gates stood before any write.** The births and the bands are the
 >   readings'. The notes are the records'. Two routes give the keyword and the
 >   nesting. The codebook is the one committed, and no note outside level 3
@@ -710,7 +710,11 @@ The drafter trusted C4 least, then A3 and B1. C4 and B1 held, and A3 failed.
 >   This reading codes them after the plan closed.
 >
 > Not a signed row; no verdict moves. The record is [`notes.json`](notes.json).
-> Every note quoted below is quoted there too.
+> Every note quoted below is quoted there too. It reached `main` in pull request
+> #159. Its `_env` names the branch commit it was written from, `18e7e90`, with
+> a clean tree. That commit and `781b89b` have the same subject, the same tree
+> and the same `git patch-id --stable`, and the GitHub API names #159 behind
+> the `main` commit.
 
 ### 1. Why the list makes the proposer write narrower rules
 
