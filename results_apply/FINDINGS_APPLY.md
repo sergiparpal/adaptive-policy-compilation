@@ -40,6 +40,11 @@ refuted.**
 - **With the prose, the screen costs almost nothing**, +0.0165, within one
   standard error of nothing.
 
+**[NOTE 2026-10-24] Read POST-RUN within one provider's answers, every row
+keeps the side of its line where Stage C found it**, and the mix of providers
+moves none of them by more than 0.0160. See *Each row within one provider's
+answers*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its counts were computed
 > while drafting, and §0 declared them. Its reference columns were computed
 > after the signature, for the first time. Zero API calls.
@@ -148,6 +153,8 @@ expected it to. Baidu served 0.562 of the screen arm's attempts and 0.719 of
 the ticket arm's, and GMICloud 0.259 and 0.146. In pass 2 the mix was closer:
 Baidu 0.807 and 0.771. No row is read by provider, so each row compares arms
 whose providers partly differ (*What Stage C does not settle*, below).
+**[NOTE 2026-10-24]** Read POST-RUN on Baidu's answers alone, every row keeps
+its side of its line: *Each row within one provider's answers*, below.
 
 ---
 
@@ -348,6 +355,10 @@ So the model moved little in ten days, as `X-a` found over three.
 3. **The providers.** In pass 1 the arms got different providers, against
    §5.9's expectation. A reading of each row within the answers one provider
    gave is free on the records, and it was not made.
+   **[NOTE 2026-10-24] Read POST-RUN**, in *Each row within one provider's
+   answers*, below. On Baidu's answers every row keeps its side of its line,
+   and against the same decisions the cut moves none by more than 0.0160. On
+   one prompt, Baidu is right as often as the providers it shares asks with.
 4. **`SECURITY_INCIDENT` under the rules without a screen.** The notes are
    recorded whole, past the loop records' cut, and a reading of which rule
    they cite is free.
@@ -356,6 +367,157 @@ So the model moved little in ten days, as `X-a` found over three.
    tickets.
 6. **One model, one manual, three runs a level, two days**, and providers this
    plan did not pin.
+
+---
+
+## Each row within one provider's answers — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-10-24 and run the same day. Zero
+> API calls. `apply/providers.py` read every row of Stage C on the answers one
+> provider gave, and every ask two answers at a time.
+> - **The provider of an answer is its last attempt's**, the one whose text
+>   was parsed. One answer took two attempts, both served by Relace.
+> - **The expectation was committed before any figure by provider existed.**
+>   It is ten clauses in the module's docstring, committed as `4753cf6`. The
+>   drafter had read this record whole. From the routing alone, which reads no
+>   answer, it had counted which provider gave every answer.
+> - **Four gates stood before any write.**
+>   - Stage C comes back, through `adjudicate` and through the cut with every
+>     provider admitted.
+>   - Every answer has one provider.
+>   - A ticket has one truth.
+>   - The loop's answer has one call.
+>
+> Not a signed row; no verdict moves. The record is
+> [`providers.json`](providers.json). Its `_env` names the branch commit it was
+> written from, `4753cf6`, with a clean tree.
+
+**Ten providers answered the two passes under one name, and only Baidu answered
+enough of every row's decisions to read a row on its answers.** GMICloud served
+a quarter of pass 1's screen arm, and it holds at most 37 decisions of any row;
+Relace holds at most 27. Their cells are in the record, below the floor of 100
+decisions, and are not read. The clauses of sections 1 and 2 read Baidu.
+
+### 1. Each row on Baidu's answers
+
+On the decisions Stage C read for a row, each arm is cut to the answers Baidu
+gave.
+- Where Baidu gave both answers of an arm, both are read. Where it gave one,
+  that one is read alone.
+- A decision drops out where Baidu gave no answer to an arm the row compares.
+- `X-d` keeps Stage C's selector, `t₁ ≠ p`, whoever gave `t₁`.
+- `X-a` needs both screen answers and the loop's own answer to be Baidu's.
+
+Beside each cut, the same decisions are read with every answer, as Stage C
+reads them.
+
+| row | line | Stage C | on Baidu's answers | the same decisions, every answer | decisions |
+|---|---|---|---|---|---|
+| `X-a`, `S − A` at every level | ≤ 0.05 | −0.0064 | +0.0106 | +0.0106 | 379 of 778 |
+| `X-b`, `acc_t − acc_s` at `L₃` | > 0 | +0.1125 | +0.0996 | +0.1037 | 246 of 320 |
+| `X-c`, its share at `L₃` | ≥ 1/2 | 0.2748 | 0.2634 | 0.2713 | 246 of 320 |
+| `X-d`, the pull at `L₃` | ≥ 0.10 | +0.1862 | +0.1565 | +0.1565 | 115 of 188 |
+| `X-e`, `acc_t − acc_s` at `L₂` | > 0 | +0.0165 | +0.0642 | +0.0481 | 187 of 242 |
+| `X-f`, `acc_t − acc_u` at `L₃` | ≥ 0.10 | +0.2260 | +0.2491 | +0.2365 | 277 of 312 |
+
+- **Every row stays on the side of its line where Stage C found it.** On
+  Baidu's answers the screen still costs the proposer a tenth of level 3's
+  decisions, and that is still about a quarter of what it gets wrong.
+- **The cut barely moves a row.** Against the same decisions read with every
+  answer, Baidu's answers move `X-b` by −0.0041, `X-d` by nothing, `X-e` by
+  +0.0160 and `X-f` by +0.0126. The mix of providers moved no row by more than
+  that.
+- **What moves the values is which decisions are read.** `X-e` reads +0.0642
+  on Baidu's answers, against Stage C's +0.0165. Two thirds of that gap is
+  already there on the same 187 decisions read with every answer, +0.0481.
+- **`X-d` is thin here**: without run L3r2 it falls below its line. Its runs
+  read 0, +0.2755 and +0.1184. In Stage C it was not thin.
+- **`S − A` rises inside one provider, and stays under its line.** On the 379
+  decisions whose three answers Baidu gave, the two screen answers agree 0.9261
+  of the time, against Stage C's 0.9049 over every decision. They agree with
+  the loop's answer 0.9156 of the time, against 0.9113.
+
+### 2. Each row on the decisions Baidu answered whole
+
+This is Stage C's own estimator, on the decisions where every answer a row
+reads is Baidu's, `X-d`'s `t₁` included. These are fewer decisions.
+
+| row | Stage C | Baidu gave every answer | decisions |
+|---|---|---|---|
+| `X-a` | −0.0064 | +0.0106 | 379 |
+| `X-b` | +0.1125 | +0.0054 | 92 |
+| `X-c`, its share | 0.2748 | 0.0133 | 92 |
+| `X-d` | +0.1862 | +0.1078 | 51, under the plan's floor of 100 |
+| `X-e` | +0.0165 | +0.0878 | 74 |
+| `X-f` | +0.2260 | +0.1810 | 174 |
+
+- **`X-b`, `X-c` and `X-f` stay on their sides, and `X-b` by a hair.** On the
+  92 decisions Baidu answered whole, the screen costs +0.0054. Its standard
+  error is 0.0551, and its runs read −0.0385, +0.1316 and −0.1250. That lies
+  1.94 standard errors under Stage C's value.
+- **It is the decisions, not Baidu.** On those 92 decisions the ticket arm is
+  right 0.5978 of the time, against 0.7215 on the 246 of reading A. The screen
+  arm is right 0.5924 of the time, against 0.6220. And on reading A's
+  decisions, cutting them to Baidu's answers moves `X-b` by −0.0041.
+
+### 3. Whether the providers answer one prompt alike
+
+Every ask has one answer from each pass. These are the asks where Baidu gave
+one answer and another provider gave the other, both read against the ticket's
+truth:
+
+| Baidu in one pass, in the other | asks | Baidu right | the other right | difference | se |
+|---|---|---|---|---|---|
+| GMICloud | 218 | 0.5642 | 0.5780 | −0.0138 | 0.0220 |
+| Relace | 109 | 0.6606 | 0.6514 | +0.0092 | 0.0378 |
+| any other provider | 483 | 0.5694 | 0.5776 | −0.0083 | 0.0144 |
+
+How often the two answers to one ask agree:
+
+| arm | one provider gave both | two providers did |
+|---|---|---|
+| screen | 0.9256, on 457 asks | 0.8754, on 321 |
+| ticket | 0.9069, on 451 | 0.8423, on 222 |
+
+- **On one prompt, Baidu is right as often as the others.** Pooled over the
+  other providers, the difference is 0 on the screen arm and −0.0203 on the
+  ticket arm.
+- **But two providers part more often than one provider parts from itself**,
+  on both arms. A second provider changes the answer more often than a second
+  call to the same one, and not how often it is right.
+- **So the mix of providers could not tilt an arm's accuracy by much.** The
+  cut measured the same thing on the rows.
+
+### The expectation, clause by clause
+
+A1 to A7 read section 1, B1 reads section 2, and C1 and C2 read section 3.
+
+| clause | expected | read | verdict |
+|---|---|---|---|
+| A1 | `X-b` above its line, within 0.05 of Stage C's value | +0.0996 against +0.1125 | holds |
+| A2 | `X-c`'s share below 1/2 | 0.2634 | holds |
+| A3 | `X-d` at or above its line, on 100 decisions or more | +0.1565 on 115 | holds |
+| A4 | `X-e` within 0.05 of Stage C's value | +0.0642 against +0.0165 | holds |
+| A5 | `X-f` at or above its line | +0.2491 | holds |
+| A6 | `X-a` at or below its line | +0.0106 | holds |
+| A7 | the cut moves `X-b`, `X-d`, `X-e` and `X-f` by at most 0.03 each | at most +0.0160, `X-e`'s | holds |
+| B1 | on the decisions Baidu answered whole, `X-b`, `X-c` and `X-f` on Stage C's sides | +0.0054, 0.0133 and +0.1810 | holds |
+| C1 | Baidu right as often as GMICloud, Relace and the rest pooled, within 0.05 each | −0.0138, +0.0092 and −0.0083 | holds |
+| C2 | in each arm, two answers agree more often from one provider than from two | 0.9256 against 0.8754, 0.9069 against 0.8423 | holds |
+
+**Ten of ten held.**
+- The drafter trusted C1 least, and it held.
+- A4 held at 0.0476 from Stage C's value, against its 0.05.
+- B1 held on `X-b` by +0.0054.
+
+### What this reading does not settle
+
+- **Why the decisions Baidu answered whole show almost no screen cost.** Which
+  decisions those are is set by where four asks were routed. Whether that
+  follows anything about the tickets, or the 92 are a draw that fell low, this
+  record does not say. Free on the records.
+- **Any provider but Baidu, row by row.** No row can be read on GMICloud's
+  answers or on any other provider's. Only the asks set them beside Baidu.
 
 ---
 
@@ -371,4 +533,7 @@ results_apply/ask_pass1.json    Stage B's pass 1: 1,454 asks, every attempt with
 results_apply/ask_pass2.json    Stage B's pass 2: the same asks in another order
 results_apply/score.json        Stage C: the six verdicts with their parts, errors and
                                 runs, and X-g
+results_apply/providers.json    POST-RUN: each row on one provider's answers and on the
+                                decisions it answered whole, the asks two answers at a
+                                time, and the expectation clause by clause
 ```
