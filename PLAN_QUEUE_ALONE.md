@@ -210,7 +210,7 @@ sets a comparison on the proposer:
 | **QA-f** | **What the plain question buys is the list's.** On the same tickets, it gains more over the rule arm with the 29 rules than with the names alone | over `L₃`'s decisions: `(acc_q − acc_t) − (acc_q⁰ − acc_t⁰)` | **> 0** | **≤ 0** |
 | **QA-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each level on its decisions: `acc_t`, `acc_i`, `acc_q` and their level-0 counterparts, and every row's statistic at the levels it is not read at, with its parts and per run. The same by ticket instead of by decision. The table by true queue, with `ONCALL_ESCALATION`, `SECURITY_INCIDENT`, `ACCOUNT_MANAGER` and `T3_ENGINEERING` in counts. Every answer at `L₃` classified against the 29 rules (§5.6). `S` for each arm, and how often the arms agree with each other. `PLAN_APPLY.md`'s ticket arm, screen arm and loop beside today's arms on the same decisions. Each arm's providers, finish reasons and tokens. The rule arm's `note`, recorded in full and not coded | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-24)**
 
 **Why each row, and why these lines.**
 
