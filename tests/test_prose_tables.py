@@ -152,7 +152,10 @@ DEVELOPMENT_SET = frozenset({"Y-a", "Y-b", "Y-c", "Y-d", "V-b", "V-c", "V-d"})
 HOLDS, REFUTED, DEAD, NONE, REPORTED = (
     "holds", "refuted", "dead zone", "not adjudicated", "reported")
 
-ROW = re.compile(r"[A-Z]-[a-z]")
+# A row is named by its thread, one capital or two, a hyphen and a letter.
+# Every single capital already names a thread, so `PLAN_QUEUE_ALONE.md`'s rows
+# carry two: `QA-a` is read whole, never as `A-a` (§10 of that plan).
+ROW = re.compile(r"(?<![A-Z])[A-Z]{1,2}-[a-z]")
 WORD = re.compile(r"^[*_`\s]*(holds|hold|held|refuted|neither|no verdict|"
                   r"unadjudicable|reported|not refuted)\b", re.I)
 SAID = {"holds": HOLDS, "hold": HOLDS, "held": HOLDS, "refuted": REFUTED,
@@ -162,7 +165,7 @@ BOLD = re.compile(r"\*\*(.+?)\*\*")
 FIGURE = re.compile(r"(?<![\w.`])[+\-−]?\d[\d,]*(?:\.\d+)?")
 THIN = re.compile(r"\bthin(?:ly)?\b", re.I)
 CITATION = re.compile(
-    r"\((?P<rows>`[A-Z]-[a-z]`(?:(?:,| and|, and) `[A-Z]-[a-z]`)*) "
+    r"\((?P<rows>`[A-Z]{1,2}-[a-z]`(?:(?:,| and|, and) `[A-Z]{1,2}-[a-z]`)*) "
     r"(?P<word>holds|hold|held|refuted)\b(?P<rest>[^)]*)\)")
 
 UNITS = ("zero one two three four five six seven eight nine ten eleven twelve "
@@ -173,6 +176,19 @@ TENS = "- - twenty thirty forty fifty sixty seventy eighty ninety".split()
 # ---------------------------------------------------------------- the records
 
 _JSON: dict[str, object] = {}
+
+
+def thread_of(name: str) -> str:
+    """The thread a row's name belongs to: what comes before its hyphen, one
+    capital or two."""
+    return name.rsplit("-", 1)[0]
+
+
+def thread_names(spec: object) -> tuple[str, ...]:
+    """The threads a `TABLES` entry names: a string is a run of one-capital
+    threads, as every entry wrote it before two-capital threads; a tuple names
+    each thread whole."""
+    return tuple(spec) if isinstance(spec, (str, tuple, list)) else ()
 
 
 def record(path: str) -> object:
@@ -213,7 +229,7 @@ def verdict(row: object) -> str | None:
         return REPORTED
     band = row.get("band")
     if isinstance(band, str):
-        named = re.match(r"[A-Z]-[a-z] (HOLDS|REFUTED)\b", band)
+        named = re.match(r"[A-Z]{1,2}-[a-z] (HOLDS|REFUTED)\b", band)
         if named:
             return HOLDS if named.group(1) == "HOLDS" else REFUTED
     return None
@@ -226,15 +242,15 @@ def rows_of(thread: str) -> dict[str, object]:
     rows = {key.replace("_", "-"): value for key, value in place.items()
             if re.fullmatch(rf"{thread}[-_][a-z]", key)}
     for name, (path, keys) in ELSEWHERE.items():
-        if name[0] == thread:
+        if thread_of(name) == thread:
             rows[name] = descend(record(path), keys)
     return rows
 
 
 def row_of(name: str) -> object:
-    if name[0] not in THREADS:
+    if thread_of(name) not in THREADS:
         return None
-    return rows_of(name[0]).get(name)
+    return rows_of(thread_of(name)).get(name)
 
 
 def thin_of(row: object) -> bool | None:
@@ -317,14 +333,14 @@ def scoreboard(text: str) -> dict:
         if row[0] == "**total**":
             total = counts
             continue
-        letter = re.match(r"\*\*([A-Z])\*\* ·", row[0]).group(1)
+        letter = re.match(r"\*\*([A-Z]{1,2})\*\* ·", row[0]).group(1)
         threads[letter] = counts
         mark = re.search(r"\*(?:(\w+) )?bands? set on a development set\*", row[0])
         if mark:
             marks[letter] = mark.group(1)
     named = {}
     for label in ("Refuted", "Hold", "Reported"):
-        found = re.findall(rf"\b{label}:((?:\s*`[A-Z]-[a-z]`,?)+)\.", body)
+        found = re.findall(rf"\b{label}:((?:\s*`[A-Z]{{1,2}}-[a-z]`,?)+)\.", body)
         if len(found) != 1:
             raise ValueError(f"the named list {label!r} is not there once")
         named[label] = ROW.findall(found[0])
@@ -343,8 +359,8 @@ def verdict_rows(text: str, threads: str):
         if not line.startswith("|"):
             continue
         row = cells(line)
-        named = row and re.match(r"^[*`\s]*([A-Z]-[a-z])[*`]*(?:\s|·|$)", row[0])
-        if not named or named.group(1)[0] not in threads:
+        named = row and re.match(r"^[*`\s]*([A-Z]{1,2}-[a-z])[*`]*(?:\s|·|$)", row[0])
+        if not named or thread_of(named.group(1)) not in thread_names(threads):
             continue
         for at, cell in enumerate(row[1:], 1):
             word = WORD.match(cell)
@@ -360,7 +376,7 @@ def citations(text: str):
         for cited in CITATION.finditer(line):
             rows = ROW.findall(cited.group("rows"))
             rest = cited.group("rest")
-            thin = set(re.findall(r"`([A-Z]-[a-z])` thin(?:ly)?\b", rest))
+            thin = set(re.findall(r"`([A-Z]{1,2}-[a-z])` thin(?:ly)?\b", rest))
             if not thin and re.match(r",\s*thin(?:ly)?\b", rest):
                 thin = set(rows)
             yield number_, rows, SAID[cited.group("word")], thin
@@ -407,8 +423,8 @@ def scoreboard_problems(text: str) -> list[str]:
             seen[name] = label
     columns = {"Refuted": "refuted", "Hold": "hold", "Reported": "reported"}
     for label, column in columns.items():
-        for letter in sorted({r[0] for r in named[label]} | set(threads)):
-            listed = sum(1 for r in named[label] if r[0] == letter)
+        for letter in sorted({thread_of(r) for r in named[label]} | set(threads)):
+            listed = sum(1 for r in named[label] if thread_of(r) == letter)
             if letter not in threads:
                 out.append(f"{label} names {letter} rows, the table has no {letter}")
             elif listed != threads[letter][column]:
@@ -422,7 +438,7 @@ def scoreboard_problems(text: str) -> list[str]:
     for letter in sorted(set(threads) & set(THREADS)):
         kept = {name: verdict(row) for name, row in rows_of(letter).items()}
         for label, word in (("Refuted", REFUTED), ("Hold", HOLDS)):
-            listed = {r for r in named[label] if r[0] == letter}
+            listed = {r for r in named[label] if thread_of(r) == letter}
             gives = {name for name, said in kept.items() if said == word}
             for name in sorted(listed - gives):
                 out.append(f"{name} is named {label}; its record gives "
@@ -430,7 +446,7 @@ def scoreboard_problems(text: str) -> list[str]:
             for name in sorted(gives - listed):
                 out.append(f"{name}: its record gives {word}, and it is not "
                            f"named {label}")
-        for name in (r for r in named["Reported"] if r[0] == letter):
+        for name in (r for r in named["Reported"] if thread_of(r) == letter):
             if kept.get(name) in (HOLDS, REFUTED, DEAD, NONE):
                 out.append(f"{name} is named Reported; its record gives {kept[name]}")
         n = threads[letter]
@@ -449,11 +465,11 @@ def scoreboard_problems(text: str) -> list[str]:
     adjudicated = set(named["Refuted"]) | set(named["Hold"]) | dead
     for letter in threads:
         mark = board["marks"].get(letter, False)
-        dev = {r for r in DEVELOPMENT_SET if r[0] == letter}
+        dev = {r for r in DEVELOPMENT_SET if thread_of(r) == letter}
         if mark is False:
             expected = 0
         elif mark is None:
-            expected = len({r for r in adjudicated if r[0] == letter})
+            expected = len({r for r in adjudicated if thread_of(r) == letter})
         else:
             try:
                 expected = number(mark)
@@ -470,7 +486,7 @@ def scoreboard_problems(text: str) -> list[str]:
     for drop_q in (False, True):
         for drop_dev in (False, True):
             kept_rows = {r for r in adjudicated
-                         if not (drop_q and r[0] == "Q")
+                         if not (drop_q and thread_of(r) == "Q")
                          and not (drop_dev and r in DEVELOPMENT_SET)}
             expected_ratios.add((len(kept_rows & refuted), len(kept_rows)))
     written = board["ratios"]
@@ -511,7 +527,7 @@ def table_problems(name: str, text: str, threads: str) -> list[str]:
                         if not printed(figure, kept):
                             out.append(f"{where}: {figure} in bold is not "
                                        f"printed by its record's row")
-    for letter in threads:
+    for letter in thread_names(threads):
         wanted = {r for r, row in rows_of(letter).items()
                   if verdict(row) in (HOLDS, REFUTED, DEAD, NONE)}
         for missing in sorted(wanted - tabled):
@@ -565,7 +581,7 @@ class TestTheVerdictTables(unittest.TestCase):
         self.assertEqual(problems, [])
 
     def test_every_thread_has_a_table_or_a_reason(self):
-        tabled = set("".join(TABLES.values()))
+        tabled = {t for spec in TABLES.values() for t in thread_names(spec)}
         self.assertEqual(set(THREADS) - tabled, set(PROSE_ONLY))
         self.assertFalse(tabled & set(PROSE_ONLY))
 
@@ -576,7 +592,7 @@ class TestTheVerdictTables(unittest.TestCase):
             name = str(path.relative_to(REPO))
             if name in TABLES or name in NOT_TABLES:
                 continue
-            found = [r for _, r, *_ in verdict_rows(path.read_text(), "".join(THREADS))]
+            found = [r for _, r, *_ in verdict_rows(path.read_text(), tuple(THREADS))]
             self.assertEqual(found, [], f"{name} has verdict rows and is not in TABLES")
 
 
@@ -741,6 +757,47 @@ class TestTheReaders(unittest.TestCase):
         found = [(r, at, said) for _, r, _, at, said in verdict_rows(text, "QRI")]
         self.assertEqual(found, [("Q-a", 1, HOLDS), ("R-b", 2, DEAD),
                                  ("I-b", 2, NONE)])
+
+
+class TestTwoCapitalThreads(unittest.TestCase):
+    """Every single capital already names a thread, so `PLAN_QUEUE_ALONE.md`'s
+    rows carry two: `QA-a` to `QA-g` (§10 of that plan). A two-capital name is
+    read whole, and never as the row of its last capital's thread: `QA-a` is
+    not `A-a`, a row of `PLAN_SENSITIVITY.md`."""
+
+    def test_a_name_is_read_whole(self):
+        self.assertEqual(ROW.findall("`QA-a`, `X-b` and `QA-g`"), ["QA-a", "X-b", "QA-g"])
+        self.assertEqual((thread_of("QA-a"), thread_of("X-b")), ("QA", "X"))
+        self.assertEqual(thread_names("QSRCD"), ("Q", "S", "R", "C", "D"))
+        self.assertEqual(thread_names(("QA",)), ("QA",))
+
+    def test_it_is_never_its_last_capitals_row(self):
+        self.assertIsNotNone(row_of("A-a"))
+        self.assertNotIn("QA", THREADS)
+        self.assertIsNone(row_of("QA-a"))
+
+    def test_a_citation_names_the_two_capital_row(self):
+        text = "a (`QA-b` holds, thinly) b (`QA-c` and `X-c` refuted)\n"
+        self.assertEqual(list(citations(text)), [
+            (1, ["QA-b"], HOLDS, {"QA-b"}),
+            (1, ["QA-c", "X-c"], REFUTED, set()),
+        ])
+
+    def test_a_table_reads_its_two_capital_rows_and_only_for_their_thread(self):
+        text = "| **QA-b** | a claim | **holds** |\n| **A-b** | a claim | **refuted** |\n"
+        self.assertEqual([r for _, r, *_ in verdict_rows(text, ("QA",))], ["QA-b"])
+        self.assertEqual([r for _, r, *_ in verdict_rows(text, "A")], ["A-b"])
+
+    def test_the_scoreboard_reads_a_two_capital_thread(self):
+        text = (f"\n## {SCOREBOARD}\n\n**Two rows have been signed**\n\n"
+                "| thread | signed | adjudicated | refuted | dead zone | hold | reported |\n"
+                "|---|---|---|---|---|---|---|\n"
+                "| **QA** · the queue asked alone | 2 | 2 | **1** | 0 | 1 | 0 |\n"
+                "| **total** | **2** | **2** | **1** | **0** | **1** | **0** |\n\n"
+                "Refuted: `QA-c`. Hold: `QA-b`. Reported: `QA-g`.\n")
+        board = scoreboard(text)
+        self.assertEqual(set(board["threads"]), {"QA"})
+        self.assertEqual(board["named"]["Refuted"], ["QA-c"])
 
 
 if __name__ == "__main__":
