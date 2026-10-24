@@ -1,0 +1,1523 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-24T08:57:19Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "814821d1d2d590d7328dc0fdb46dbc6f31dde7ca",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "3b3acdc8f7ce1943"
+  },
+  "plan": "PLAN_APPLY.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_APPLY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_APPLY.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "X-g1": {
+      "what": "the twelve loop records replay with no departure, under their level's system prompt, and the loop's choice of queue is PLAN_MANUAL.md's; the suite green",
+      "replays": {
+        "runs": [
+          {
+            "level": 0,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 0,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 0,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 1,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 2,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 1,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 2,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          },
+          {
+            "level": 3,
+            "rep": 3,
+            "departures": 0,
+            "first_problems": [],
+            "system_prompt_is_the_levels": true,
+            "digest_is_plan_manuals": true,
+            "record_says_the_same": true,
+            "passes": true
+          }
+        ],
+        "passes": true
+      },
+      "loop_choice": {
+        "levels": {
+          "0": {
+            "fraction": "62/119",
+            "published": "62/119",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "1": {
+            "fraction": "34/103",
+            "published": "34/103",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "2": {
+            "fraction": "164/245",
+            "published": "164/245",
+            "by_queue_agrees": true,
+            "passes": true
+          },
+          "3": {
+            "fraction": "183/323",
+            "published": "183/323",
+            "by_queue_agrees": true,
+            "passes": true
+          }
+        },
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2172,
+        "result": "OK (skipped=5)",
+        "seconds": 170.9,
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g2": {
+      "what": "the screen arm is each escalation's own prompt, the ticket arm v1's empty base under the level's prompt, PLAN_SCREEN.md's at level 0; no builder takes a row; the digests have teeth. The requests are tests/test_apply.py's, through the SDK double",
+      "screens": {
+        "escalations": 790,
+        "departing": [],
+        "decisions_with_an_empty_screen": [],
+        "empty_screens_not_v1s_empty_base": [],
+        "asks_not_the_escalations_prompt": [],
+        "passes": true
+      },
+      "tickets": {
+        "ticket_asks": 676,
+        "not_the_empty_base": [],
+        "case_0_is_the_empty_screens_prompt": {
+          "L0r1:0": true,
+          "L0r2:0": true,
+          "L0r3:0": true,
+          "L1r1:0": true,
+          "L1r2:0": true,
+          "L1r3:0": true,
+          "L2r1:0": true,
+          "L2r2:0": true,
+          "L2r3:0": true,
+          "L3r1:0": true,
+          "L3r2:0": true,
+          "L3r3:0": true
+        },
+        "shared_with_plan_screen": 183,
+        "same_digest": 183,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "screen_ask": [
+            "ask_id",
+            "level",
+            "prompt"
+          ],
+          "ticket_ask": [
+            "ask_id",
+            "level",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 1454,
+        "distinct_texts": 1447,
+        "collisions": [],
+        "asks_sharing_a_text_with_another": 13,
+        "one_changed_rule_moves_the_digest": true,
+        "decisions_without_a_plurality": [],
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g3": {
+      "what": "the populations are \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "decisions": {
+          "0": 116,
+          "1": 100,
+          "2": 242,
+          "3": 320
+        },
+        "conflict_screens": {
+          "0": 11,
+          "1": 37,
+          "2": 75,
+          "3": 70
+        },
+        "empty_screens": 12,
+        "ticket_prompts": {
+          "0": 275,
+          "1": 81,
+          "2": 149,
+          "3": 171
+        },
+        "screen_prompts": 778,
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_ask_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "t:L0:75",
+          "s:L3r1:180",
+          "t:L1:481",
+          "t:L3:339",
+          "s:L0r3:71",
+          "t:L2:172",
+          "s:L2r1:288",
+          "s:L1r2:71"
+        ],
+        "smoke_one_of_each_arm_at_each_level": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "X-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_APPLY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_APPLY.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "lines": {
+    "X-a": {
+      "fraction": "1/20",
+      "value": 0.05
+    },
+    "X-b": {
+      "fraction": "0/1",
+      "value": 0.0
+    },
+    "X-c": {
+      "fraction": "1/2",
+      "value": 0.5
+    },
+    "X-d": {
+      "fraction": "1/10",
+      "value": 0.1
+    },
+    "X-e": {
+      "fraction": "0/1",
+      "value": 0.0
+    },
+    "X-f": {
+      "fraction": "1/10",
+      "value": 0.1
+    }
+  },
+  "verdicts": {
+    "X-a": {
+      "id": "X-a",
+      "levels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "decisions": 778,
+      "missing": 0,
+      "read": 778,
+      "line": {
+        "fraction": "1/20",
+        "value": 0.05
+      },
+      "holds": "le",
+      "value": {
+        "fraction": "-5/778",
+        "value": -0.006426735218508998
+      },
+      "se": 0.00850973770143089,
+      "per_run": {
+        "L0r1": {
+          "fraction": "-1/16",
+          "value": -0.0625
+        },
+        "L0r2": {
+          "fraction": "1/56",
+          "value": 0.017857142857142856
+        },
+        "L0r3": {
+          "fraction": "3/112",
+          "value": 0.026785714285714284
+        },
+        "L1r1": {
+          "fraction": "1/22",
+          "value": 0.045454545454545456
+        },
+        "L1r2": {
+          "fraction": "-1/23",
+          "value": -0.043478260869565216
+        },
+        "L1r3": {
+          "fraction": "-1/66",
+          "value": -0.015151515151515152
+        },
+        "L2r1": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "L2r2": {
+          "fraction": "-15/196",
+          "value": -0.07653061224489796
+        },
+        "L2r3": {
+          "fraction": "-1/88",
+          "value": -0.011363636363636364
+        },
+        "L3r1": {
+          "fraction": "2/85",
+          "value": 0.023529411764705882
+        },
+        "L3r2": {
+          "fraction": "1/45",
+          "value": 0.022222222222222223
+        },
+        "L3r3": {
+          "fraction": "-1/200",
+          "value": -0.005
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "S": {
+          "fraction": "352/389",
+          "value": 0.9048843187660668
+        },
+        "A": {
+          "fraction": "709/778",
+          "value": 0.9113110539845758
+        }
+      }
+    },
+    "X-b": {
+      "id": "X-b",
+      "levels": [
+        3
+      ],
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "9/80",
+        "value": 0.1125
+      },
+      "se": 0.03752760132829237,
+      "per_run": {
+        "L3r1": {
+          "fraction": "12/85",
+          "value": 0.1411764705882353
+        },
+        "L3r2": {
+          "fraction": "41/270",
+          "value": 0.15185185185185185
+        },
+        "L3r3": {
+          "fraction": "7/200",
+          "value": 0.035
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "acc_s": {
+          "fraction": "189/320",
+          "value": 0.590625
+        },
+        "acc_t": {
+          "fraction": "45/64",
+          "value": 0.703125
+        }
+      }
+    },
+    "X-c": {
+      "id": "X-c",
+      "levels": [
+        3
+      ],
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "1/2",
+        "value": 0.5
+      },
+      "holds": "ge",
+      "value": {
+        "fraction": "-59/320",
+        "value": -0.184375
+      },
+      "share": {
+        "fraction": "36/131",
+        "value": 0.2748091603053435
+      },
+      "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+      "se": 0.06329171709390181,
+      "per_run": {
+        "L3r1": {
+          "fraction": "-13/85",
+          "value": -0.15294117647058825
+        },
+        "L3r2": {
+          "fraction": "-23/135",
+          "value": -0.17037037037037037
+        },
+        "L3r3": {
+          "fraction": "-23/100",
+          "value": -0.23
+        }
+      },
+      "verdict": "refuted",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "acc_s": {
+          "fraction": "189/320",
+          "value": 0.590625
+        },
+        "acc_t": {
+          "fraction": "45/64",
+          "value": 0.703125
+        }
+      }
+    },
+    "X-d": {
+      "id": "X-d",
+      "levels": [
+        3
+      ],
+      "decisions": 320,
+      "missing": 0,
+      "read": 188,
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds": "ge",
+      "value": {
+        "fraction": "35/188",
+        "value": 0.18617021276595744
+      },
+      "se": 0.03827255108236806,
+      "per_run": {
+        "L3r1": {
+          "fraction": "1/13",
+          "value": 0.07692307692307693
+        },
+        "L3r2": {
+          "fraction": "43/150",
+          "value": 0.2866666666666667
+        },
+        "L3r3": {
+          "fraction": "19/122",
+          "value": 0.1557377049180328
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "screen_on_p": {
+          "fraction": "13/47",
+          "value": 0.2765957446808511
+        },
+        "second_ticket_answer_on_p": {
+          "fraction": "17/188",
+          "value": 0.09042553191489362
+        }
+      }
+    },
+    "X-e": {
+      "id": "X-e",
+      "levels": [
+        2
+      ],
+      "decisions": 242,
+      "missing": 0,
+      "read": 242,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "2/121",
+        "value": 0.01652892561983471
+      },
+      "se": 0.03673057973596718,
+      "per_run": {
+        "L2r1": {
+          "fraction": "1/100",
+          "value": 0.01
+        },
+        "L2r2": {
+          "fraction": "1/98",
+          "value": 0.01020408163265306
+        },
+        "L2r3": {
+          "fraction": "1/22",
+          "value": 0.045454545454545456
+        }
+      },
+      "verdict": "holds",
+      "thin": true,
+      "thin_because": {
+        "within_one_se": true,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "acc_s": {
+          "fraction": "155/242",
+          "value": 0.640495867768595
+        },
+        "acc_t": {
+          "fraction": "159/242",
+          "value": 0.6570247933884298
+        }
+      }
+    },
+    "X-f": {
+      "id": "X-f",
+      "levels": [
+        3
+      ],
+      "decisions": 320,
+      "missing": 8,
+      "read": 312,
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds": "ge",
+      "value": {
+        "fraction": "47/208",
+        "value": 0.22596153846153846
+      },
+      "se": 0.04979641007504786,
+      "per_run": {
+        "L3r1": {
+          "fraction": "35/164",
+          "value": 0.21341463414634146
+        },
+        "L3r2": {
+          "fraction": "2/7",
+          "value": 0.2857142857142857
+        },
+        "L3r3": {
+          "fraction": "15/97",
+          "value": 0.15463917525773196
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      },
+      "parts": {
+        "acc_t": {
+          "fraction": "437/624",
+          "value": 0.7003205128205128
+        },
+        "acc_u": {
+          "fraction": "37/78",
+          "value": 0.47435897435897434
+        }
+      }
+    }
+  },
+  "X-g": {
+    "by_level": {
+      "0": {
+        "decisions": 116,
+        "acc_s": {
+          "fraction": "59/114",
+          "value": 0.5175438596491229
+        },
+        "acc_t": {
+          "fraction": "47/76",
+          "value": 0.618421052631579
+        },
+        "acc_u": {
+          "fraction": "47/76",
+          "value": 0.618421052631579
+        },
+        "loop": {
+          "fraction": "15/29",
+          "value": 0.5172413793103449
+        },
+        "t_minus_s": {
+          "fraction": "23/228",
+          "value": 0.10087719298245613
+        },
+        "share": {
+          "fraction": "23/110",
+          "value": 0.20909090909090908
+        },
+        "pull": {
+          "fraction": "20/51",
+          "value": 0.39215686274509803
+        },
+        "pull_read": 51,
+        "t_minus_u": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "S_minus_A": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "by_kind": {
+          "vecindario": {
+            "decisions": 103,
+            "acc_s": {
+              "fraction": "48/103",
+              "value": 0.46601941747572817
+            },
+            "acc_t": {
+              "fraction": "119/206",
+              "value": 0.5776699029126213
+            },
+            "t_minus_s": {
+              "fraction": "23/206",
+              "value": 0.11165048543689321
+            }
+          },
+          "conflicto": {
+            "decisions": 11,
+            "acc_s": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_t": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "t_minus_s": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          }
+        },
+        "changed": {
+          "plurality": 50,
+          "first_shown": 8,
+          "other_shown": 6,
+          "not_shown": 2
+        }
+      },
+      "1": {
+        "decisions": 100,
+        "acc_s": {
+          "fraction": "59/200",
+          "value": 0.295
+        },
+        "acc_t": {
+          "fraction": "23/50",
+          "value": 0.46
+        },
+        "acc_u": {
+          "fraction": "91/194",
+          "value": 0.4690721649484536
+        },
+        "loop": {
+          "fraction": "8/25",
+          "value": 0.32
+        },
+        "t_minus_s": {
+          "fraction": "33/200",
+          "value": 0.165
+        },
+        "share": {
+          "fraction": "11/47",
+          "value": 0.23404255319148937
+        },
+        "pull": {
+          "fraction": "14/67",
+          "value": 0.208955223880597
+        },
+        "pull_read": 67,
+        "t_minus_u": {
+          "fraction": "1/194",
+          "value": 0.005154639175257732
+        },
+        "S_minus_A": {
+          "fraction": "-3/200",
+          "value": -0.015
+        },
+        "by_kind": {
+          "vecindario": {
+            "decisions": 63,
+            "acc_s": {
+              "fraction": "23/63",
+              "value": 0.36507936507936506
+            },
+            "acc_t": {
+              "fraction": "31/63",
+              "value": 0.49206349206349204
+            },
+            "t_minus_s": {
+              "fraction": "8/63",
+              "value": 0.12698412698412698
+            }
+          },
+          "conflicto": {
+            "decisions": 37,
+            "acc_s": {
+              "fraction": "13/74",
+              "value": 0.17567567567567569
+            },
+            "acc_t": {
+              "fraction": "15/37",
+              "value": 0.40540540540540543
+            },
+            "t_minus_s": {
+              "fraction": "17/74",
+              "value": 0.22972972972972974
+            }
+          }
+        },
+        "changed": {
+          "first_shown": 6,
+          "other_shown": 21,
+          "not_shown": 7,
+          "plurality": 38
+        }
+      },
+      "2": {
+        "decisions": 242,
+        "acc_s": {
+          "fraction": "155/242",
+          "value": 0.640495867768595
+        },
+        "acc_t": {
+          "fraction": "159/242",
+          "value": 0.6570247933884298
+        },
+        "acc_u": {
+          "fraction": "115/239",
+          "value": 0.4811715481171548
+        },
+        "loop": {
+          "fraction": "161/242",
+          "value": 0.6652892561983471
+        },
+        "t_minus_s": {
+          "fraction": "2/121",
+          "value": 0.01652892561983471
+        },
+        "share": {
+          "fraction": "4/87",
+          "value": 0.04597701149425287
+        },
+        "pull": {
+          "fraction": "1/6",
+          "value": 0.16666666666666666
+        },
+        "pull_read": 162,
+        "t_minus_u": {
+          "fraction": "43/239",
+          "value": 0.1799163179916318
+        },
+        "S_minus_A": {
+          "fraction": "-4/121",
+          "value": -0.03305785123966942
+        },
+        "by_kind": {
+          "vecindario": {
+            "decisions": 167,
+            "acc_s": {
+              "fraction": "191/334",
+              "value": 0.5718562874251497
+            },
+            "acc_t": {
+              "fraction": "107/167",
+              "value": 0.6407185628742516
+            },
+            "t_minus_s": {
+              "fraction": "23/334",
+              "value": 0.0688622754491018
+            }
+          },
+          "conflicto": {
+            "decisions": 75,
+            "acc_s": {
+              "fraction": "119/150",
+              "value": 0.7933333333333333
+            },
+            "acc_t": {
+              "fraction": "52/75",
+              "value": 0.6933333333333334
+            },
+            "t_minus_s": {
+              "fraction": "-1/10",
+              "value": -0.1
+            }
+          }
+        },
+        "changed": {
+          "not_shown": 11,
+          "plurality": 66,
+          "other_shown": 83,
+          "first_shown": 6
+        }
+      },
+      "3": {
+        "decisions": 320,
+        "acc_s": {
+          "fraction": "189/320",
+          "value": 0.590625
+        },
+        "acc_t": {
+          "fraction": "45/64",
+          "value": 0.703125
+        },
+        "acc_u": {
+          "fraction": "37/78",
+          "value": 0.47435897435897434
+        },
+        "loop": {
+          "fraction": "9/16",
+          "value": 0.5625
+        },
+        "t_minus_s": {
+          "fraction": "9/80",
+          "value": 0.1125
+        },
+        "share": {
+          "fraction": "36/131",
+          "value": 0.2748091603053435
+        },
+        "pull": {
+          "fraction": "35/188",
+          "value": 0.18617021276595744
+        },
+        "pull_read": 188,
+        "t_minus_u": {
+          "fraction": "47/208",
+          "value": 0.22596153846153846
+        },
+        "S_minus_A": {
+          "fraction": "9/640",
+          "value": 0.0140625
+        },
+        "by_kind": {
+          "vecindario": {
+            "decisions": 250,
+            "acc_s": {
+              "fraction": "137/250",
+              "value": 0.548
+            },
+            "acc_t": {
+              "fraction": "353/500",
+              "value": 0.706
+            },
+            "t_minus_s": {
+              "fraction": "79/500",
+              "value": 0.158
+            }
+          },
+          "conflicto": {
+            "decisions": 70,
+            "acc_s": {
+              "fraction": "26/35",
+              "value": 0.7428571428571429
+            },
+            "acc_t": {
+              "fraction": "97/140",
+              "value": 0.6928571428571428
+            },
+            "t_minus_s": {
+              "fraction": "-1/20",
+              "value": -0.05
+            }
+          }
+        },
+        "changed": {
+          "not_shown": 11,
+          "other_shown": 94,
+          "plurality": 101,
+          "first_shown": 2
+        }
+      }
+    },
+    "by_true_queue": {
+      "0": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 11,
+          "loop_right": 0,
+          "s_answers": 22,
+          "s_right": 0,
+          "t_answers": 20,
+          "t_right": 0,
+          "u_answers": 20,
+          "u_right": 0
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 11,
+          "loop_right": 6,
+          "s_answers": 22,
+          "s_right": 11,
+          "t_answers": 22,
+          "t_right": 22,
+          "u_answers": 22,
+          "u_right": 22
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 15,
+          "loop_right": 12,
+          "s_answers": 30,
+          "s_right": 24,
+          "t_answers": 30,
+          "t_right": 30,
+          "u_answers": 30,
+          "u_right": 30
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 15,
+          "loop_right": 4,
+          "s_answers": 30,
+          "s_right": 8,
+          "t_answers": 30,
+          "t_right": 9,
+          "u_answers": 30,
+          "u_right": 9
+        },
+        "T1_GENERAL": {
+          "decisions": 18,
+          "loop_right": 1,
+          "s_answers": 36,
+          "s_right": 2,
+          "t_answers": 36,
+          "t_right": 3,
+          "u_answers": 36,
+          "u_right": 3
+        },
+        "T2_TECHNICAL": {
+          "decisions": 42,
+          "loop_right": 37,
+          "s_answers": 84,
+          "s_right": 73,
+          "t_answers": 84,
+          "t_right": 73,
+          "u_answers": 84,
+          "u_right": 73
+        },
+        "T3_ENGINEERING": {
+          "decisions": 4,
+          "loop_right": 0,
+          "s_answers": 8,
+          "s_right": 0,
+          "t_answers": 8,
+          "t_right": 4,
+          "u_answers": 8,
+          "u_right": 4
+        }
+      },
+      "1": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 13,
+          "loop_right": 1,
+          "s_answers": 26,
+          "s_right": 2,
+          "t_answers": 26,
+          "t_right": 0,
+          "u_answers": 25,
+          "u_right": 0
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 10,
+          "loop_right": 6,
+          "s_answers": 20,
+          "s_right": 11,
+          "t_answers": 20,
+          "t_right": 19,
+          "u_answers": 20,
+          "u_right": 20
+        },
+        "ONCALL_ESCALATION": {
+          "decisions": 1,
+          "loop_right": 1,
+          "s_answers": 2,
+          "s_right": 2,
+          "t_answers": 2,
+          "t_right": 2,
+          "u_answers": 2,
+          "u_right": 2
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 3,
+          "loop_right": 3,
+          "s_answers": 6,
+          "s_right": 6,
+          "t_answers": 6,
+          "t_right": 6,
+          "u_answers": 6,
+          "u_right": 6
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 8,
+          "loop_right": 1,
+          "s_answers": 16,
+          "s_right": 1,
+          "t_answers": 16,
+          "t_right": 7,
+          "u_answers": 16,
+          "u_right": 6
+        },
+        "T1_GENERAL": {
+          "decisions": 15,
+          "loop_right": 5,
+          "s_answers": 30,
+          "s_right": 9,
+          "t_answers": 30,
+          "t_right": 12,
+          "u_answers": 29,
+          "u_right": 2
+        },
+        "T2_TECHNICAL": {
+          "decisions": 36,
+          "loop_right": 14,
+          "s_answers": 72,
+          "s_right": 26,
+          "t_answers": 72,
+          "t_right": 45,
+          "u_answers": 71,
+          "u_right": 52
+        },
+        "T3_ENGINEERING": {
+          "decisions": 14,
+          "loop_right": 1,
+          "s_answers": 28,
+          "s_right": 2,
+          "t_answers": 28,
+          "t_right": 1,
+          "u_answers": 28,
+          "u_right": 3
+        }
+      },
+      "2": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 60,
+          "loop_right": 54,
+          "s_answers": 120,
+          "s_right": 105,
+          "t_answers": 120,
+          "t_right": 79,
+          "u_answers": 119,
+          "u_right": 0
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 35,
+          "loop_right": 16,
+          "s_answers": 70,
+          "s_right": 26,
+          "t_answers": 70,
+          "t_right": 48,
+          "u_answers": 70,
+          "u_right": 70
+        },
+        "ONCALL_ESCALATION": {
+          "decisions": 9,
+          "loop_right": 6,
+          "s_answers": 18,
+          "s_right": 14,
+          "t_answers": 18,
+          "t_right": 18,
+          "u_answers": 18,
+          "u_right": 18
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 17,
+          "loop_right": 16,
+          "s_answers": 34,
+          "s_right": 30,
+          "t_answers": 34,
+          "t_right": 24,
+          "u_answers": 34,
+          "u_right": 34
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 21,
+          "loop_right": 10,
+          "s_answers": 42,
+          "s_right": 24,
+          "t_answers": 42,
+          "t_right": 23,
+          "u_answers": 42,
+          "u_right": 4
+        },
+        "T1_GENERAL": {
+          "decisions": 21,
+          "loop_right": 13,
+          "s_answers": 42,
+          "s_right": 23,
+          "t_answers": 42,
+          "t_right": 12,
+          "u_answers": 40,
+          "u_right": 6
+        },
+        "T2_TECHNICAL": {
+          "decisions": 55,
+          "loop_right": 37,
+          "s_answers": 110,
+          "s_right": 73,
+          "t_answers": 110,
+          "t_right": 96,
+          "u_answers": 110,
+          "u_right": 94
+        },
+        "T3_ENGINEERING": {
+          "decisions": 24,
+          "loop_right": 9,
+          "s_answers": 48,
+          "s_right": 15,
+          "t_answers": 48,
+          "t_right": 18,
+          "u_answers": 48,
+          "u_right": 4
+        }
+      },
+      "3": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 28,
+          "loop_right": 13,
+          "s_answers": 56,
+          "s_right": 25,
+          "t_answers": 56,
+          "t_right": 47,
+          "u_answers": 53,
+          "u_right": 0
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 13,
+          "loop_right": 12,
+          "s_answers": 26,
+          "s_right": 26,
+          "t_answers": 26,
+          "t_right": 26,
+          "u_answers": 26,
+          "u_right": 26
+        },
+        "ONCALL_ESCALATION": {
+          "decisions": 9,
+          "loop_right": 9,
+          "s_answers": 18,
+          "s_right": 17,
+          "t_answers": 18,
+          "t_right": 18,
+          "u_answers": 18,
+          "u_right": 18
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 28,
+          "loop_right": 24,
+          "s_answers": 56,
+          "s_right": 48,
+          "t_answers": 56,
+          "t_right": 37,
+          "u_answers": 56,
+          "u_right": 56
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 39,
+          "loop_right": 15,
+          "s_answers": 78,
+          "s_right": 29,
+          "t_answers": 78,
+          "t_right": 47,
+          "u_answers": 78,
+          "u_right": 18
+        },
+        "T1_GENERAL": {
+          "decisions": 53,
+          "loop_right": 32,
+          "s_answers": 106,
+          "s_right": 69,
+          "t_answers": 106,
+          "t_right": 68,
+          "u_answers": 103,
+          "u_right": 16
+        },
+        "T2_TECHNICAL": {
+          "decisions": 114,
+          "loop_right": 67,
+          "s_answers": 228,
+          "s_right": 146,
+          "t_answers": 228,
+          "t_right": 170,
+          "u_answers": 226,
+          "u_right": 156
+        },
+        "T3_ENGINEERING": {
+          "decisions": 36,
+          "loop_right": 8,
+          "s_answers": 72,
+          "s_right": 18,
+          "t_answers": 72,
+          "t_right": 37,
+          "u_answers": 72,
+          "u_right": 6
+        }
+      },
+      "rare": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "T3_ENGINEERING"
+      ]
+    },
+    "rules_written": {
+      "screen L0": {
+        "answers": 232,
+        "validate": 232,
+        "rejected": {},
+        "median_points_off_the_keyword": 1260.0,
+        "narrow": 108
+      },
+      "screen L1": {
+        "answers": 200,
+        "validate": 198,
+        "rejected": {
+          "la regla no casa el caso que la origino": 2
+        },
+        "median_points_off_the_keyword": 1680.0,
+        "narrow": 77
+      },
+      "screen L2": {
+        "answers": 484,
+        "validate": 435,
+        "rejected": {
+          "la regla no casa el caso que la origino": 49
+        },
+        "median_points_off_the_keyword": 1680,
+        "narrow": 171
+      },
+      "screen L3": {
+        "answers": 640,
+        "validate": 632,
+        "rejected": {
+          "la regla no casa el caso que la origino": 8
+        },
+        "median_points_off_the_keyword": 400.0,
+        "narrow": 483
+      },
+      "ticket L0": {
+        "answers": 550,
+        "validate": 544,
+        "rejected": {
+          "la regla no casa el caso que la origino": 3,
+          "accion invalida": 3
+        },
+        "median_points_off_the_keyword": 6720.0,
+        "narrow": 103
+      },
+      "ticket L1": {
+        "answers": 162,
+        "validate": 155,
+        "rejected": {
+          "la regla no casa el caso que la origino": 7
+        },
+        "median_points_off_the_keyword": 6720,
+        "narrow": 16
+      },
+      "ticket L2": {
+        "answers": 298,
+        "validate": 270,
+        "rejected": {
+          "la regla no casa el caso que la origino": 25,
+          "condicion duplicada": 3
+        },
+        "median_points_off_the_keyword": 4200.0,
+        "narrow": 51
+      },
+      "ticket L3": {
+        "answers": 342,
+        "validate": 314,
+        "rejected": {
+          "la regla no casa el caso que la origino": 28
+        },
+        "median_points_off_the_keyword": 6720.0,
+        "narrow": 94
+      }
+    },
+    "against_plan_screen": {
+      "tickets": 181,
+      "S_today": {
+        "fraction": "169/181",
+        "value": 0.9337016574585635
+      },
+      "S_then": {
+        "fraction": "169/181",
+        "value": 0.9337016574585635
+      },
+      "A_across": {
+        "fraction": "661/724",
+        "value": 0.9129834254143646
+      },
+      "right_today": {
+        "fraction": "187/362",
+        "value": 0.5165745856353591
+      },
+      "right_then": {
+        "fraction": "90/181",
+        "value": 0.4972375690607735
+      }
+    },
+    "the_calls": {
+      "pass1": {
+        "answers": 1454,
+        "valid": 1454,
+        "invalid": 0,
+        "failed": 0,
+        "retried": 1,
+        "median_seconds": 2.71,
+        "started_at": "2026-10-23T19:35:10Z",
+        "finished_at": "2026-10-23T20:54:13Z",
+        "by_arm": {
+          "screen": {
+            "providers": {
+              "Baidu": 438,
+              "GMICloud": 202,
+              "Relace": 63,
+              "DigitalOcean": 16,
+              "Parasail": 26,
+              "Alibaba": 2,
+              "SiliconFlow": 30,
+              "StreamLake": 2
+            },
+            "finish_reasons": {
+              "stop": 778,
+              "length": 1
+            },
+            "tokens": {
+              "prompt": 1491669,
+              "completion": 178054,
+              "reasoning": 0
+            }
+          },
+          "ticket": {
+            "providers": {
+              "Baidu": 486,
+              "GMICloud": 99,
+              "Relace": 40,
+              "Parasail": 12,
+              "StreamLake": 15,
+              "SiliconFlow": 13,
+              "DigitalOcean": 8,
+              "Alibaba": 2,
+              "Wafer": 1
+            },
+            "finish_reasons": {
+              "stop": 676
+            },
+            "tokens": {
+              "prompt": 939202,
+              "completion": 99802,
+              "reasoning": 0
+            }
+          }
+        },
+        "notes": {
+          "recorded": 1454,
+          "median_characters": 284.0,
+          "coded": false
+        }
+      },
+      "pass2": {
+        "answers": 1454,
+        "valid": 1451,
+        "invalid": 3,
+        "failed": 0,
+        "retried": 0,
+        "median_seconds": 2.65,
+        "started_at": "2026-10-24T06:57:32Z",
+        "finished_at": "2026-10-24T08:08:20Z",
+        "by_arm": {
+          "screen": {
+            "providers": {
+              "StreamLake": 12,
+              "Baidu": 628,
+              "Relace": 89,
+              "DeepInfra": 7,
+              "GMICloud": 28,
+              "DigitalOcean": 8,
+              "Parasail": 3,
+              "Alibaba": 3
+            },
+            "finish_reasons": {
+              "stop": 778
+            },
+            "tokens": {
+              "prompt": 1489836,
+              "completion": 194321,
+              "reasoning": 0
+            }
+          },
+          "ticket": {
+            "providers": {
+              "Baidu": 521,
+              "Relace": 85,
+              "DeepInfra": 30,
+              "GMICloud": 12,
+              "Parasail": 5,
+              "Alibaba": 2,
+              "DigitalOcean": 10,
+              "StreamLake": 11
+            },
+            "finish_reasons": {
+              "stop": 676
+            },
+            "tokens": {
+              "prompt": 938006,
+              "completion": 104109,
+              "reasoning": 0
+            }
+          }
+        },
+        "notes": {
+          "recorded": 1454,
+          "median_characters": 345.5,
+          "coded": false
+        }
+      }
+    }
+  }
+}
