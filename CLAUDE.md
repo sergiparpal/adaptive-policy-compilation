@@ -176,7 +176,8 @@ the FINDINGS.
 2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
 2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
-`manual/run.py`, and since 2026-10-23 `apply/ask.py`, all ten below. It
+`manual/run.py`, since 2026-10-23 `apply/ask.py`, and since 2026-10-24
+`queue_alone/ask.py`, all eleven below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -742,11 +743,60 @@ row read within one provider is read on fewer decisions**: set the same
 decisions, read with every answer, beside it, or the change of decisions reads
 as the provider's.
 
+**`PLAN_QUEUE_ALONE.md` closed on 2026-10-24: the queue asked alone, without
+a rule to write.** Six signed rows adjudicated, three held and three refuted,
+and one reported. Sergi signed §0 on 2026-10-24, before any figure it governs
+existed.
+- **What it asked.** It asked `PLAN_APPLY.md`'s ticket prompts again on one day,
+  each twice, in three arms: the rule-writing prompt, the same impasse framing
+  asking for the queue alone, and a plain question for the queue. Each arm ran at
+  every level, with level 0 on every escalated ticket.
+- **Where it is written up.** The record is
+  `results_queue_alone/FINDINGS_QUEUE_ALONE.md`, and `STATUS.md` indexes its
+  figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `queue_alone/` refuses while the plan carries a
+  blank signature line, and the gate reads `PLAN_QUEUE_ALONE.md` and no other
+  plan. `apply/`, `manual/`, `fidelity/` and `rung2/` are called by it and not
+  edited.
+- **It pins one provider**, through OpenRouter's provider routing with
+  fallbacks off. An answer from another provider is recorded and invalid. The
+  rule arm is pinned by wrapping the proposer's recorded client.
+- **It sends the manual's texts again**, so its two proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m queue_alone.ask --dry-run                                  # QA-g1..QA-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m queue_alone.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m queue_alone.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session pass1  # then pass2, never side by side
+
+**Asked for the queue alone, the model still misapplies the list, and by its
+order.** It almost always names the queue of a rule the ticket matches, and
+often not the first one. A plan that asks why should ask for the rule that
+applies, before its queue.
+
+**A retry after a rate limit tells the model its answer was malformed.** v1's
+loop retries any failed attempt with its JSON retry message, and this plan's
+asker copied it, so answers given after an upstream 429 carry that message. A
+plan that pins a provider meets 429s: it should retry a failed call without the
+message, and say so in §0.
+
+**Every single capital already names a thread.** This plan's rows carry two,
+`QA-a` to `QA-g`, and `tests/test_prose_tables.py` reads one or two capitals
+since its package. A thread after it takes two capitals as well.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
-the one `ranking/ask.py` builds, and since 2026-10-21 the one `manual/ask.py`
-builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
+builds, and since 2026-10-24 the asker `queue_alone/ask.py` builds, without
+changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -834,7 +884,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
 2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
-`manual/run.py`, and since 2026-10-23, `apply/ask.py`.
+`manual/run.py`, since 2026-10-23, `apply/ask.py`, and since 2026-10-24,
+`queue_alone/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

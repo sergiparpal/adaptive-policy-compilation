@@ -21,8 +21,9 @@ What is known, as of October 24, 2026. **Not a history** — that is the four
 [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
 [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
 [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
-[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md) and
-[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md) and
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -61,7 +62,8 @@ label reaches hold, in `PLAN_UNREACHED.md`**: six more, closed on 2026-10-20 —
 plus **the policy, given to the proposer at three levels, in `PLAN_MANUAL.md`**:
 seven more, closed on 2026-10-21 — plus **the rules applied ticket by ticket,
 with and without the screen, in `PLAN_APPLY.md`**: seven more, closed on
-2026-10-24.
+2026-10-24 — plus **the queue asked alone, without a rule to write, in
+`PLAN_QUEUE_ALONE.md`**: seven more, closed the same day.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -303,7 +305,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and thirty-three rows have been signed before the figures they name existed. This
+**One hundred and forty rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -356,22 +358,24 @@ a count behind it.
 | **Z** · the rules no label reaches (§0 of `PLAN_UNREACHED.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **G** · the policy, given to the proposer (§0 of `PLAN_MANUAL.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
 | **X** · the rules applied ticket by ticket (§0 of `PLAN_APPLY.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
-| **total** | **133** | **111** | **46** | **2** | **63** | **20** |
+| **QA** · the queue asked alone (§0 of `PLAN_QUEUE_ALONE.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
+| **total** | **140** | **117** | **49** | **2** | **66** | **21** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
-`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`.
+`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
+`QA-d`, `QA-e`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
 `J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
-`X-d`, `X-e`, `X-f`.
+`X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -394,16 +398,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 46 of 111 = **41.4%**
-refuted; without them, 44 of 105 = **41.9%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 49 of 117 = **41.9%**
+refuted; without them, 47 of 111 = **42.3%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.5 points the flattering way, which is exactly why saying so is not optional.
+0.4 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 46 of 104 = **44.2%** and 44
-of 98 = **44.9%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 49 of 110 = **44.5%** and 47
+of 104 = **45.2%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -525,6 +529,14 @@ of 98 = **44.9%**, which is the reading the calibration note should take.
 > the named lists, the count in the heading and the four ratios moved together,
 > and the test above read them; the gap between the first two is still 0.5
 > points.
+>
+> **[NOTE 2026-10-24, later] Recomputed with the `QA` thread, in the same
+> commit as its row.** Seven rows were signed and six adjudicated: three
+> refuted and three held. One was reported. None of its bands was set on a
+> development set. The table, the named lists, the count in the heading and the
+> four ratios moved together, and the test above read them. The gap between the
+> first two is now 0.4 points as printed, and the paragraph above says so. It is
+> the first thread whose name has two capitals: every single one was taken.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -570,7 +582,9 @@ which owns all six; and `G` from
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md), which
 owns all seven; and `X` from
 [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md), which owns
-all seven.
+all seven; and `QA` from
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
+which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -2016,6 +2030,31 @@ expectation held.
 [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
 *Each row within one provider's answers*.
 
+**The queue asked alone: with the rules in front of it the model applies them on
+three escalated tickets in four, and what it misses is the list's order.**
+`PLAN_QUEUE_ALONE.md` asked `PLAN_APPLY.md`'s ticket prompts again on one day,
+each twice, every call pinned to one provider. It asked them in three arms: the
+rule-writing prompt, the same impasse framing asking for the queue alone, and a
+plain question for the queue. Everything is from
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md):
+
+- **With the 29 rules in its prompt and no screen, the plain question lifts the
+  model from 0.6840 to 0.7689** at level 3 (`QA-b` holds).
+- **That is 0.2687 of what the rule-writing prompt gets wrong** (`QA-c`
+  refuted), and it stays short of applying the list (`QA-e` refuted).
+- **The impasse framing and the rule-writing apparatus carry about half of
+  that gain each** (`QA-d` refuted, thin).
+- **With the names alone the plain question loses**, so what it buys is the
+  list's (`QA-f` holds). Today's rule arm stands for `PLAN_APPLY.md`'s (`QA-a`
+  holds).
+- **Read after the verdicts**, asked for the queue alone the model almost never
+  names a queue no matching rule gives: 6 answers of 638. On 141 it names the
+  queue of a rule the ticket matches lower in the list.
+
+So most of what the loop loses applying the rules it was given is neither the
+screen nor the rule-writing prompt. It is choosing the first of the rules that
+cover the ticket.
+
 ---
 
 ## What was withdrawn, and why
@@ -2177,6 +2216,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      tickets in ten. A question for the queue alone would separate the
      rule-writing task from it.
    [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md).
+   **[NOTE 2026-10-24, later] Asked for the queue alone, the model still misses
+   one escalated ticket in four, and what it misses is the order.**
+   `PLAN_QUEUE_ALONE.md` asked the same tickets with the rules and no screen.
+   - The plain question lifts the model from 0.6840 to 0.7689 at level 3
+     (`QA-b` holds), about a quarter of its errors (`QA-c` refuted).
+   - The impasse framing and the rule-writing apparatus share that gain
+     (`QA-d` refuted, thin).
+   - Read after the verdicts, the plain arm's errors are nearly all the queue
+     of a rule the ticket matches lower in the list.
+   - What is open now is why the model, asked plainly and without reasoning,
+     follows a lower rule. A question for the rule that applies, before its
+     queue, would separate finding the first match from naming it.
+   [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

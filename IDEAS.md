@@ -76,7 +76,9 @@ place. **The rules applied ticket by ticket, with and without the screen,
 closed on October 24, 2026**: `PLAN_APPLY.md`, seven signed rows, five held
 and one refuted, and one reported, written up in `results_apply/`. **Its rows
 were read within one provider's answers POST-RUN the same day**, and the item
-that reading answers is struck in place. This is a
+that reading answers is struck in place. **The queue asked alone closed the
+same day too**: `PLAN_QUEUE_ALONE.md`, six signed rows, three held and three
+refuted, and one reported, written up in `results_queue_alone/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -88,6 +90,20 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Ask the escalated tickets for the queue alone.** October 24, 2026,
+  `PLAN_QUEUE_ALONE.md`, cents. `PLAN_APPLY.md`'s ticket prompts were asked
+  again on one day, each twice and pinned to one provider, in three arms: the
+  rule-writing prompt, the same impasse framing asking for the queue alone, and
+  a plain question for the queue.
+  - **Asked for the queue alone, with the 29 rules, the model is right on three
+    escalated tickets in four**, against two in three asked for a rule. That is
+    about a quarter of the rule arm's errors.
+  - **The framing and the rule-writing apparatus share the gain** about evenly.
+  - **What remains is the list's order.** Asked plainly, the model almost
+    never names a queue no matching rule gives, and on more than a fifth of its
+    answers names a lower rule's.
+
+  What it leaves is in its own section below. `results_queue_alone/`.
 - **Ask the escalated tickets again with the manual and no screen.** October 24,
   2026, `PLAN_APPLY.md`, cents. `PLAN_MANUAL.md`'s escalations with a screen
   were asked again on one day, each prompt twice: with their screen, and with
@@ -319,6 +335,50 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_QUEUE_ALONE.md` opens and does not resolve
+
+Closed October 24, 2026. It asked `PLAN_APPLY.md`'s ticket prompts again on one
+day, pinned to one provider, in three arms: the rule-writing prompt, the same
+impasse framing asking for the queue alone, and a plain question for the queue.
+With the 29 rules and no screen, the plain question gains over the rule-writing
+prompt, recovers about a quarter of its errors, and leaves a quarter of the
+escalated tickets wrong. Read after the verdicts, what remains is the list's
+order. What that leaves:
+
+- **Why the model, asked plainly, follows a lower rule.** It almost always names
+  the queue of a rule the ticket matches, and often not the first one. Two
+  questions would narrow why. Both are calls, and a plan of their own.
+  - **A question for the rule that applies.** Asking for the rule's identifier
+    before its queue would separate finding the first match from naming its
+    queue.
+  - **Reasoning on.** The proposer's calls have had reasoning off since
+    `PLAN_REUSE.md`'s amendment. A plain question with reasoning on would say
+    whether first match over 29 rules is a matter of thinking it through.
+- **A mechanical reading of the list beats every arm.** A copier answering the
+  queue of the matching rule with the most conditions is right more often than
+  any arm, at level 3. Whether the model's lower-rule answers lean to the more
+  specific rule is free on the records.
+- **The fourth cell.** The rule-writing prompt without the impasse framing was
+  not asked (§12 of the plan). So the rule-writing apparatus was read as one
+  bundle: its fields, its arbitration section and its empty base.
+- **The plain question with a screen.** Whether the screen pulls a plain answer
+  as it pulls a rule-writer's is a new prompt, and a plan.
+- **The prose.** With the prose the plain question does not help, and it costs
+  `T3_ENGINEERING`. Which rules of the prose its answers follow is not read.
+- **`SECURITY_INCIDENT` under the rules.** With the names alone the model names
+  it on every answer; with the rules, in every arm, on far fewer. The rule
+  arm's notes are recorded whole, and which rule they cite on those tickets is
+  free.
+- **A retry after a rate limit tells the model its answer was malformed.** v1's
+  loop retries any failed attempt with its JSON retry message, and this plan's
+  asker copied it. After an upstream 429 there was no answer, and eight
+  answers were still given with that message in the conversation. A plan that
+  pins a provider meets 429s. It should retry a failed call without the
+  message, keep the message for a failed parse, and say so in §0.
+- **Every single capital names a thread.** This plan's rows carry two, and
+  `tests/test_prose_tables.py` reads one or two since its package. A plan after
+  it takes two capitals as well.
+
 ## What `PLAN_APPLY.md` opens and does not resolve
 
 Closed October 24, 2026. It asked `PLAN_MANUAL.md`'s escalations again on one
@@ -327,12 +387,17 @@ and the ticket alone under the names. With the rules in the prompt, the screen
 costs the proposer about a ninth of the escalated tickets, which is about a
 quarter of what it gets wrong; the rest is the application. What that leaves:
 
-- **Why deciding one ticket against the list loses three in ten.** Both arms
+- ~~**Why deciding one ticket against the list loses three in ten.**~~ Both arms
   ask for a rule, in a prompt that calls the ticket an impasse:
   `ARBITRATION_REPORT.md` §5's *find a gap and fill it* is in both. A question
   for the queue alone, with the rules and no screen, would separate the
   rule-writing task from the application. It is a new prompt: calls, and a
   plan of its own.
+  **[NOTE 2026-10-24] Measured by `PLAN_QUEUE_ALONE.md`.** Asked for the queue
+  alone, the model is right more often (`QA-b` holds), and recovers about a
+  quarter of the rule arm's errors (`QA-c` refuted). The framing and the rule
+  share that gain (`QA-d` refuted, thin). What remains is the list's order.
+  What it leaves is in *What `PLAN_QUEUE_ALONE.md` opens*, above.
 - **Which part of the screen does the work.** The two arms differ in the rules
   shown and in the header above them, which tells the proposer that no rule
   matches. A prompt with the coverage header over an empty list would split
