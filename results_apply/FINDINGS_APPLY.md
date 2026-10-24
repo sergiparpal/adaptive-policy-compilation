@@ -378,9 +378,10 @@ So the model moved little in ten days, as `X-a` found over three.
 > - **The provider of an answer is its last attempt's**, the one whose text
 >   was parsed. One answer took two attempts, both served by Relace.
 > - **The expectation was committed before any figure by provider existed.**
->   It is ten clauses in the module's docstring, committed as `4753cf6`. The
->   drafter had read this record whole. From the routing alone, which reads no
->   answer, it had counted which provider gave every answer.
+>   It is ten clauses in the module's docstring, committed as `4753cf6`, which
+>   is `a82155e` on `main`. The drafter had read this record whole. From the
+>   routing alone, which reads no answer, it had counted which provider gave
+>   every answer.
 > - **Four gates stood before any write.**
 >   - Stage C comes back, through `adjudicate` and through the cut with every
 >     provider admitted.
@@ -389,8 +390,12 @@ So the model moved little in ten days, as `X-a` found over three.
 >   - The loop's answer has one call.
 >
 > Not a signed row; no verdict moves. The record is
-> [`providers.json`](providers.json). Its `_env` names the branch commit it was
-> written from, `4753cf6`, with a clean tree.
+> [`providers.json`](providers.json). It reached `main` in pull request #167.
+> Its `_env` names the branch commit it was written from, `4753cf6`, with a
+> clean tree. That commit and `a82155e` have the same subject, the same tree
+> and the same `git patch-id --stable`, and the GitHub API names #167 behind
+> the `main` commit. Its code digest, `cc54cf3a69802993`, is the one `main`
+> computes after the merge.
 
 **Ten providers answered the two passes under one name, and only Baidu answered
 enough of every row's decisions to read a row on its answers.** GMICloud served
