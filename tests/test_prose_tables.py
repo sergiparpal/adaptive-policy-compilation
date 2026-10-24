@@ -95,6 +95,7 @@ THREADS = {
     "Z": ("results_unreached/score.json", ("rows",)),
     "G": ("results_manual/score.json", ("verdicts",)),
     "X": ("results_apply/score.json", ("verdicts",)),
+    "QA": ("results_queue_alone/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -132,6 +133,8 @@ TABLES = {
     "results_unreached/FINDINGS_UNREACHED.md": "Z",
     "results_manual/FINDINGS_MANUAL.md": "G",
     "results_apply/FINDINGS_APPLY.md": "X",
+    # A string is a run of one-capital threads; a thread of two goes in a tuple.
+    "results_queue_alone/FINDINGS_QUEUE_ALONE.md": ("QA",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {
@@ -772,9 +775,11 @@ class TestTwoCapitalThreads(unittest.TestCase):
         self.assertEqual(thread_names(("QA",)), ("QA",))
 
     def test_it_is_never_its_last_capitals_row(self):
-        self.assertIsNotNone(row_of("A-a"))
-        self.assertNotIn("QA", THREADS)
-        self.assertIsNone(row_of("QA-a"))
+        self.assertIn("QA", THREADS)
+        mine = record("results_queue_alone/score.json")["verdicts"]["QA-a"]
+        self.assertIs(row_of("QA-a"), mine)
+        self.assertIsNot(row_of("QA-a"), row_of("A-a"))
+        self.assertIsNone(row_of("QB-a"))
 
     def test_a_citation_names_the_two_capital_row(self):
         text = "a (`QA-b` holds, thinly) b (`QA-c` and `X-c` refuted)\n"

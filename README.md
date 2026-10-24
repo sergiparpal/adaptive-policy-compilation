@@ -54,6 +54,7 @@ up in four places at once.
 | **Z** · the rules no label reaches | what the rules no labelled case matches hold in rung 3's labelled orders: each moved alone to the front with the truth reading the result, and all moved below the rest without it, beside random placements of them, in the escalations' order and along the label curve — closed 2026-10-20 | [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md) |
 | **G** · the policy, given to the proposer | the authority channel: the policy handed to the model as a catalogue of the queues, a prose manual and the 29 rules as text, compiled once in one answer and inside `PLAN_REUSE.md`'s loop, to separate what the model knows from what the loop elicits — closed 2026-10-21 | [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md) |
 | **X** · the rules applied ticket by ticket | `PLAN_MANUAL.md`'s escalations asked again on one day, with their screen and with the ticket alone under the same manual, and the ticket alone under the names, to separate what the screen costs from what is lost applying the rules — closed 2026-10-24 | [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md) |
+| **QA** · the queue asked alone | `PLAN_APPLY.md`'s ticket prompts asked again on one day, pinned to one provider, in three arms: the rule-writing prompt, the same impasse framing asking for the queue alone, and a plain question for the queue, to separate the rule-writing task from the application — closed 2026-10-24 | [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -611,6 +612,38 @@ PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session smoke  # Stage B · spe
 PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session pass1  # then pass 1, then pass 2, never in parallel
 ```
 
+**[`PLAN_QUEUE_ALONE.md`](PLAN_QUEUE_ALONE.md) closed on 2026-10-24**: the
+queue asked alone, without a rule to write. Sergi signed §0 on 2026-10-24,
+before any of its figures existed.
+- **What it asked.** It took `PLAN_APPLY.md`'s ticket prompts and asked them
+  again on one day, each twice, every call pinned to one provider, in three
+  arms. One is `PLAN_APPLY.md`'s ticket arm, which asks for a rule. One keeps
+  that arm's impasse framing and asks for the queue alone. One asks plainly for
+  the queue.
+- **Why.** With the rules in its prompt and no screen, the proposer still
+  misapplied them at the escalations, inside a prompt that frames the ticket as
+  an impasse and asks for a rule. Nothing had separated the rule-writing task
+  from the application.
+
+Its record is
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md).
+Its gate reads that plan and no other, and guards its three writers. `apply/`,
+`manual/`, `fidelity/` and `rung2/` are called by it and not edited.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same answers back. A paid run does not start without Sergi asking for it. Each
+pass took under an hour, in Sergi's terminal.
+
+```bash
+python3 -m queue_alone.ask --dry-run                                # QA-g1..QA-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m queue_alone.sample                      # Stage A · the design and the references
+PYTHONHASHSEED=0 python3 -m queue_alone.score                       # Stage C · QA-a to QA-f, and QA-g
+PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session smoke  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session pass1  # then pass 1, then pass 2, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -809,7 +842,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_SPOTCHECK.md`'s, and `unreached/score.py --dry-run`, which runs
 > `PLAN_UNREACHED.md`'s, and the four of `manual/`, which run
 > `PLAN_MANUAL.md`'s, and the three of `apply/`, which run
-> `PLAN_APPLY.md`'s.
+> `PLAN_APPLY.md`'s, and the three of `queue_alone/`, which run
+> `PLAN_QUEUE_ALONE.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1650,6 +1684,16 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · X-a to X-f and X-g, gated on PLAN_APPLY.md
 │   └── providers.py         POST-RUN · each row within one provider's answers, and the asks two at a time
 │
+├── queue_alone/          QA · the queue asked alone, with and without a rule to write
+│   ├── plan.py              the gate and §10's constants; §2.3's pin; §0's lines as fractions
+│   ├── prompts.py           the three arms' prompts, §5.1's texts · the proposer's path
+│   ├── population.py        the prompts and the sessions, on PLAN_APPLY.md's population
+│   ├── rules.py             the 29 rules read from level 3's text, for QA-g1 and §5.6
+│   ├── gates.py             QA-g1..QA-g4 · blocking
+│   ├── sample.py            Stage A · the design and the references
+│   ├── ask.py               Stage B · the smoke run and the two passes · spends · the proposer's path
+│   └── score.py             Stage C · QA-a to QA-f and QA-g, gated on PLAN_QUEUE_ALONE.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1733,6 +1777,7 @@ adaptive-policy-compilation/
     results_authorship/  results_overlap/  results_blind/  results_screen/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
+    results_queue_alone/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
