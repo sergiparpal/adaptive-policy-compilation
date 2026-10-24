@@ -567,8 +567,9 @@ B. **The loop records are inputs, never outputs, and no label reaches a prompt
      neither the oracle, nor `HIDDEN_DSL`, nor `harness.ceiling_check`, nor
      `rung2.hidden_priority`. Both join `ONLINE_LOOP` and the authority
      channel's watch.
-   - **§5.6's classes read the 29 rules from level 3's frozen text**, in Stage C
-     only. The list of modules allowed to see the oracle does not grow.
+   - **The 29 rules are read from level 3's frozen text**, by `QA-g1`, Stage A
+     and Stage C, never on the proposer's path. The list of modules allowed to
+     see the oracle does not grow.
 C. **Every record carries `_env`**, with:
    - the model, the temperature, the reasoning setting and the provider pin;
    - each arm's and level's system-prompt digest;
@@ -737,7 +738,8 @@ figure exists.**
   passes.
 - **The 29 rules.** Read from level 3's frozen text by first match, they give
   every escalated ticket its truth.
-- **Floats** are compared with a tolerance against records written under 3.12.
+- **No float decides a check.** Values are compared as fractions and labels as
+  booleans, so a record written under 3.12 reads the same under 3.10.
 
 **QA-g2 — The prompts are §5.1's, and the request is the loop's.**
 - **The rule arm.** Every prompt is `PLAN_APPLY.md`'s ticket arm, digest for
@@ -749,8 +751,9 @@ figure exists.**
   - The impasse and rule arms' user messages differ by the empty-base line.
   - The attributes and actions block is v1's, byte for byte, and the manual's
     block is `manual.prompts.block`'s.
-- **The request.** For each arm at each level, a call through `tests/doubles.py`'s
-  SDK double sends:
+- **The request.** It is checked through `tests/doubles.py`'s SDK double in the
+  package's tests, which `QA-g1`'s suite runs. For each arm at each level, a
+  call sends:
   - the model, temperature 0 and 1,200 tokens;
   - `response_format` on the first attempt, and reasoning off;
   - the provider pin of §2.3;
@@ -905,6 +908,8 @@ Drafter's proposal for the layout; the naming is Sergi's to overrule:
 queue_alone/__init__.py
 queue_alone/plan.py        the gate and the constants of §10
 queue_alone/prompts.py     the three arms' prompts                    [proposer's path]
+queue_alone/population.py  the prompts and the sessions, on PLAN_APPLY.md's population
+queue_alone/rules.py       the 29 rules from level 3's text, for QA-g1 and §5.6
 queue_alone/gates.py       QA-g1 to QA-g4
 queue_alone/sample.py      Stage A
 queue_alone/ask.py         Stage B: it spends                         [proposer's path]
