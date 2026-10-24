@@ -1,5 +1,23 @@
 # PLAN_APPLY — the rules applied ticket by ticket: what the screen costs, and what is the application's own
 
+> **[CLOSED 2026-10-24] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-23, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-10-24, each pooled over its level's decisions. **`X-a`,
+> `X-b`, `X-d`, `X-e` and `X-f` hold, `X-e` thinly; `X-c` is refuted.** `X-g` is
+> reported. **The figures are owned by
+> [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md)**, and no
+> result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One expectation of this file did not hold.** §5.9 said the interleaving
+> would give both arms the same providers, and in pass 1 it did not. The
+> findings say so beside the rows.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-23. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-23, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
