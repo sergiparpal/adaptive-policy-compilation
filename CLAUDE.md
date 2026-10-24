@@ -175,8 +175,9 @@ the FINDINGS.
 2026-09-29 so does `reuse/run.py`, since 2026-10-02 `fidelity/ask.py`, since
 2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
 2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
-2026-10-17 `ranking/ask.py`, and since 2026-10-21 `manual/ask.py` and
-`manual/run.py`, all nine below. It refuses to run while §0 of **the
+2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
+`manual/run.py`, and since 2026-10-23 `apply/ask.py`, all ten below. It
+refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
 `--sample` run — a gate that stops before the client is even constructed, with no
@@ -693,6 +694,50 @@ run and read its clauses on the other two. The split was by run because the
 proposer repeats its phrasing inside a run. Two clauses set from the first
 run's shares failed on the others.
 
+**`PLAN_APPLY.md` closed on 2026-10-24: the rules applied ticket by ticket,
+with and without the screen.** Six signed rows adjudicated, five held and one
+refuted, and one reported. Sergi signed §0 on 2026-10-23, before any figure it
+governs existed.
+- **What it asked.** It asked `PLAN_MANUAL.md`'s escalations again on one day,
+  with reasoning off, each prompt twice. One arm got the screen the loop showed,
+  rebuilt from the records; the other got the ticket alone, under the same
+  system prompt. The ticket alone was also asked under the bare names.
+- **Where it is written up.** The record is
+  `results_apply/FINDINGS_APPLY.md`, and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `apply/` refuses while the plan carries a blank
+  signature line, and the gate reads `PLAN_APPLY.md` and no other plan.
+  `manual/`, `fidelity/` and `rung2/` are called by it and not edited.
+- **It sends the manual's texts again**, so its two proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m apply.ask --dry-run                                  # X-g1..X-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m apply.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m apply.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session pass1  # then pass2, never side by side
+
+**The screen is the smaller part of what the loop loses applying the rules.**
+With the policy in its prompt and no screen, the model still misapplies it at
+the escalations, inside a prompt that calls the ticket an impasse and asks for
+a rule. A plan that asks why should ask for the queue alone.
+
+**A test must not pin whether its plan is signed.** Two of this package's did,
+and the pre-commit hook stopped the signing commit on them. They were fixed in
+a commit of their own, before the signature. Pin the count of signature lines,
+and the gate's verdicts on fake plans.
+
+**Interleaving two arms does not give them the same providers.** OpenRouter
+routed the arms of one pass to different providers in different shares. A plan
+that wants providers matched across arms should pin one, which OpenRouter's
+provider routing allows, or read its rows within each provider, and say so in
+§0.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -784,8 +829,8 @@ call, saying what would be lost. The escape hatches are `--out` and
 and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, since
 2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
 2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
-2026-10-17, `ranking/ask.py`, and since 2026-10-21, `manual/ask.py` and
-`manual/run.py`.
+2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
+`manual/run.py`, and since 2026-10-23, `apply/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

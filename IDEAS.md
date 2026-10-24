@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 23, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 24, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -72,7 +72,10 @@ reported, written up in `results_manual/`. **Three readings its Stage C left
 free were read POST-RUN on October 22, 2026**, and the three items they answer
 are struck in place. **The notes the proposer wrote beside its rules were coded
 POST-RUN on October 23, 2026**, and the two items they answer are struck in
-place. This is a list of things not done,
+place. **The rules applied ticket by ticket, with and without the screen,
+closed on October 24, 2026**: `PLAN_APPLY.md`, seven signed rows, five held
+and one refuted, and one reported, written up in `results_apply/`. This is a
+list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -83,6 +86,19 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Ask the escalated tickets again with the manual and no screen.** October 24,
+  2026, `PLAN_APPLY.md`, cents. `PLAN_MANUAL.md`'s escalations with a screen
+  were asked again on one day, each prompt twice: with their screen, and with
+  the ticket alone under the same system prompt.
+  - **With the rules in the prompt, the screen costs the proposer about a ninth
+    of the escalated tickets**, and that is about a quarter of what it gets
+    wrong with it.
+  - **The rest is the application.** With the 29 rules in front of it and no
+    screen, it still misroutes three tickets in ten.
+  - **The screen still pulls the answer to its plurality**, and with the prose
+    it costs almost nothing.
+
+  What it leaves is in its own section below. `results_apply/`.
 - **Give the proposer the manual: the authority channel.** October 21, 2026,
   `PLAN_MANUAL.md`, cents. The policy was handed to the model at three levels:
   a catalogue of what each queue is for, that catalogue with a prose manual, and
@@ -301,6 +317,50 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_APPLY.md` opens and does not resolve
+
+Closed October 24, 2026. It asked `PLAN_MANUAL.md`'s escalations again on one
+day, with their screen and with the ticket alone under the same system prompt,
+and the ticket alone under the names. With the rules in the prompt, the screen
+costs the proposer about a ninth of the escalated tickets, which is about a
+quarter of what it gets wrong; the rest is the application. What that leaves:
+
+- **Why deciding one ticket against the list loses three in ten.** Both arms
+  ask for a rule, in a prompt that calls the ticket an impasse:
+  `ARBITRATION_REPORT.md` §5's *find a gap and fill it* is in both. A question
+  for the queue alone, with the rules and no screen, would separate the
+  rule-writing task from the application. It is a new prompt: calls, and a
+  plan of its own.
+- **Which part of the screen does the work.** The two arms differ in the rules
+  shown and in the header above them, which tells the proposer that no rule
+  matches. A prompt with the coverage header over an empty list would split
+  them. It is a new prompt, so a plan.
+- **The providers.** In pass 1 the arms were served by different providers,
+  though interleaved. Each row read within one provider's answers is free on
+  the records, and was not read.
+- **`SECURITY_INCIDENT` under the rules without a screen.** The names alone
+  name it on every answer, and the rules without a screen on fewer. The notes
+  are recorded whole, past the loop records' cut, and which rule they cite is
+  free to read.
+- **The conflict screen's gain.** Read after the verdicts, conflict screens
+  help at levels 2 and 3, where their plurality is mostly right, and coverage
+  screens cost at every level. A plan that bands the conflict screen's gain
+  would test it. Calls.
+- **Whether the screen narrows the list's rules.** Without a screen every
+  level writes broad rules, the names alone too, so the empty base may be what
+  invites breadth. Asking every level's ticket arm on every level's tickets,
+  §2.2's larger cross, would set the list against the prose on the same
+  tickets. Calls.
+- **A test should not pin whether its plan is signed.** Two of this package's
+  tests required the draft's blank signature line, and the pre-commit hook
+  stopped the signing commit on them. They were fixed in a commit of their
+  own, before the signature.
+- **Interleaving the arms does not match their providers.** OpenRouter routed
+  the two arms of one pass to different providers in different shares. A plan
+  that wants providers matched across arms should pin one, which OpenRouter's
+  provider routing allows, or read its rows within each provider, and say so
+  in §0.
+
 ## What `PLAN_MANUAL.md` opens and does not resolve
 
 Closed October 21, 2026. It gave the model the policy at three levels, in two
@@ -349,7 +409,7 @@ partitions. What that leaves:
   - **A run, with calls and a plan of its own.** The loop under v2, which tells
     the proposer that overlap is normal, with the manual in its prompt, would
     test the framing.
-- **Why the proposer applies the rules it was given four times in ten wrongly.**
+- ~~**Why the proposer applies the rules it was given four times in ten wrongly.**~~
   In one answer it transcribes them without error. At an escalation it decides
   the ticket in front of it with a screen of neighbouring rules beside it, and
   `PLAN_SCREEN.md` measured that a screen pulls the model to its commonest
@@ -361,6 +421,11 @@ partitions. What that leaves:
   name that rule's queue three times in four. Notes that cite only other rules
   almost never do. How often the births whose note cites no rule name it is not
   read: free on the records. The screen's pull is still not separated.
+  **[NOTE 2026-10-24] Separated by `PLAN_APPLY.md`, and the screen is the
+  smaller part.** With the rules in the prompt, taking the screen away
+  recovers about a quarter of what the proposer gets wrong at the
+  escalations (`X-b` holds, `X-c` refuted). The rest is the application.
+  What it leaves is in *What `PLAN_APPLY.md` opens*, above.
 - ~~**What level 3's dropped declarations cost.**~~ **Read POST-RUN on
   2026-10-22**, in the same section: nothing. Most of the 61 were idle or
   inert. Translated into the rules the proposer was shown, as the hidden rule
@@ -715,6 +780,10 @@ leaves:
   follows whatever list it is given, these answers cannot say. A screen of rules
   drawn at random from the base, or of the hidden policy's nearest rules, would
   separate the two. Calls, and its own plan.
+  **[NOTE 2026-10-24] Deference survives the policy in the prompt.** With the 29
+  rules in front of it, the model still moves to the screen's plurality
+  (`PLAN_APPLY.md`, `X-d` holds). So it is not a gap in what it knows that
+  the screen fills. Why it defers is still open.
 - **Whether a better base turns the cost into a gain.** `V-d`'s first clause says
   the screen helps where its commonest action is right. No screen here has a
   commonest action right more often than not, so no run has shown the net turn.
@@ -750,6 +819,12 @@ leaves:
   first.
 - **Conflict screens.** Every screen here was a coverage impasse's. What the rules
   a CONFLICT shows do to the model is unmeasured.
+  **[NOTE 2026-10-24] Read, not banded, by `PLAN_APPLY.md`.** Its escalations
+  held 193 conflict screens. Read after the verdicts, they help the model at
+  levels 2 and 3, where their plurality is mostly the true queue, and the
+  coverage screens beside them cost at every level. So `V-d`'s first clause
+  shows where `PLAN_SCREEN.md` never looked. A band on it is the plan that
+  would adjudicate it. `results_apply/FINDINGS_APPLY.md`.
 - **`ACCOUNT_MANAGER` is the model's, not the screen's.** With the ticket alone
   the model names it on none of the class's held-out decisions. The material
   problem is a question about the model or the prompt, not about compilation.

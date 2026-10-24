@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 23, 2026. **Not a history** — that is the four
+What is known, as of October 24, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -20,8 +20,9 @@ What is known, as of October 23, 2026. **Not a history** — that is the four
 [`results_students/FINDINGS_STUDENTS.md`](results_students/FINDINGS_STUDENTS.md),
 [`results_escalations/FINDINGS_ESCALATIONS.md`](results_escalations/FINDINGS_ESCALATIONS.md),
 [`results_spotcheck/FINDINGS_SPOTCHECK.md`](results_spotcheck/FINDINGS_SPOTCHECK.md),
-[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md) and
-[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
+[`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
+[`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md) and
+[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -58,7 +59,9 @@ audit of the system's decisions buys beside the escalations, in
 `PLAN_SPOTCHECK.md`**: six more, closed the same day — plus **what the rules no
 label reaches hold, in `PLAN_UNREACHED.md`**: six more, closed on 2026-10-20 —
 plus **the policy, given to the proposer at three levels, in `PLAN_MANUAL.md`**:
-seven more, closed on 2026-10-21.
+seven more, closed on 2026-10-21 — plus **the rules applied ticket by ticket,
+with and without the screen, in `PLAN_APPLY.md`**: seven more, closed on
+2026-10-24.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -300,7 +303,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and twenty-six rows have been signed before the figures they name existed. This
+**One hundred and thirty-three rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -352,21 +355,23 @@ a count behind it.
 | **N** · the audit of decisions (§0 of `PLAN_SPOTCHECK.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **Z** · the rules no label reaches (§0 of `PLAN_UNREACHED.md`) | 6 | 5 | **3** | 0 | 2 | 1 |
 | **G** · the policy, given to the proposer (§0 of `PLAN_MANUAL.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
-| **total** | **126** | **105** | **45** | **2** | **58** | **19** |
+| **X** · the rules applied ticket by ticket (§0 of `PLAN_APPLY.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
+| **total** | **133** | **111** | **46** | **2** | **63** | **20** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
-`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`.
+`N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
 `Y-b`, `Y-c`, `Y-d`, `E-d`, `O-b`, `O-c`, `K-a`, `K-d`, `V-b`, `V-c`, `V-d`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
-`J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`.
+`J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
+`X-d`, `X-e`, `X-f`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
-`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`.
+`K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -389,16 +394,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 45 of 105 = **42.9%**
-refuted; without them, 43 of 99 = **43.4%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 46 of 111 = **41.4%**
+refuted; without them, 44 of 105 = **41.9%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.5 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 45 of 98 = **45.9%** and 43
-of 92 = **46.7%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 46 of 104 = **44.2%** and 44
+of 98 = **44.9%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -513,6 +518,13 @@ of 92 = **46.7%**, which is the reading the calibration note should take.
 > The table, the named lists, the count in the heading and the four ratios moved
 > together, and the test above read them; the gap between the first two is now
 > 0.5 points.
+>
+> **[NOTE 2026-10-24] Recomputed with the `X` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: one refuted and five held.
+> One was reported. None of its bands was set on a development set. The table,
+> the named lists, the count in the heading and the four ratios moved together,
+> and the test above read them; the gap between the first two is still 0.5
+> points.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -556,7 +568,9 @@ which owns all six; and `Z` from
 [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
 which owns all six; and `G` from
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md), which
-owns all seven.
+owns all seven; and `X` from
+[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md), which owns
+all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -1959,6 +1973,30 @@ and seven of its eleven clauses held on the other two.
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
 *The notes beside the rules*.
 
+**The rules applied ticket by ticket: the screen costs about a ninth, and most
+of what the loop loses is the application.** `PLAN_APPLY.md` asked
+`PLAN_MANUAL.md`'s 778 escalations with a screen again on one day, each prompt
+twice: with its screen, and with the ticket alone under the same system prompt.
+Everything is from
+[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md):
+
+- **With the rules in its prompt, the screen costs the proposer 0.1125** at
+  level 3: right on 0.5906 of the decisions with it and 0.7031 without
+  (`X-b` holds).
+- **That is 0.2748 of what it gets wrong with the screen** (`X-c` refuted).
+  With the 29 rules in front of it and no screen, it still misroutes 0.2969 of
+  the escalated tickets.
+- **The screen still pulls the answer to its plurality** with the policy in
+  the prompt (`X-d` holds).
+- **Without a screen, the rules lift the answer by 0.2260 over the names
+  alone**, on the same tickets (`X-f` holds).
+- **With the prose, the screen costs +0.0165** (`X-e` holds, thin).
+- **Read after the verdicts**, coverage screens cost at every level, and
+  conflict screens, whose plurality is mostly right, help at levels 2 and 3.
+
+So the screen is the smaller part of why the loop misapplies the rules it was
+given. Most of it is lost deciding one ticket against the list.
+
 ---
 
 ## What was withdrawn, and why
@@ -2108,6 +2146,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      ticket as not covering it, as its notes suggest.
    [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
    *The notes beside the rules*.
+   **[NOTE 2026-10-24] Why the loop loses what it knows: the screen is the
+   smaller part.** `PLAN_APPLY.md` asked `PLAN_MANUAL.md`'s escalations again,
+   with the manual and with and without their screen.
+   - With the rules in the prompt, taking the screen away lifts the proposer's
+     choice from 0.5906 to 0.7031 at level 3 (`X-b` holds).
+   - That recovers about a quarter of its errors (`X-c` refuted). The rest is
+     the application, in a prompt that still frames the ticket as an impasse
+     and asks for a rule.
+   - What is open now is why deciding one ticket against the list loses three
+     tickets in ten. A question for the queue alone would separate the
+     rule-writing task from it.
+   [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2181,6 +2231,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    ticket again. What is open now is why the model defers, and whether a base
    right more often would turn the cost into a gain.
    [`results_screen/FINDINGS_SCREEN.md`](results_screen/FINDINGS_SCREEN.md).
+   **[NOTE 2026-10-24] Deference survives authority, and its sign follows the
+   kind of screen.** `PLAN_APPLY.md` asked `PLAN_MANUAL.md`'s escalations again
+   with and without their screen.
+   - With the 29 rules in the prompt, the screen still pulls the answer to its
+     plurality (`X-d` holds).
+   - Read after the verdicts, a coverage screen costs at every level. A
+     conflict screen, whose rules match the ticket and whose plurality is right
+     about two times in three, helps at levels 2 and 3. That is reported, not
+     adjudicated.
+   - What is open now is why the model defers, and whether a plan that bands
+     the conflict screen's gain would see it again.
+   [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md).
 
 ---
 
