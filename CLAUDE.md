@@ -719,6 +719,7 @@ The first command is blocking and writes nothing:
     python3 -m apply.ask --dry-run                                  # X-g1..X-g4; must pass first
     PYTHONHASHSEED=0 python3 -m apply.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m apply.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 python3 -m apply.providers                     # POST-RUN: each row within one provider's answers
     PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session smoke  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m apply.ask --session pass1  # then pass2, never side by side
 
@@ -736,7 +737,10 @@ and the gate's verdicts on fake plans.
 routed the arms of one pass to different providers in different shares. A plan
 that wants providers matched across arms should pin one, which OpenRouter's
 provider routing allows, or read its rows within each provider, and say so in
-§0.
+§0. Read POST-RUN on Baidu's answers, this plan's rows kept their sides. **A
+row read within one provider is read on fewer decisions**: set the same
+decisions, read with every answer, beside it, or the change of decisions reads
+as the provider's.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
