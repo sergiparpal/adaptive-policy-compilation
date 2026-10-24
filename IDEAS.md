@@ -74,7 +74,9 @@ are struck in place. **The notes the proposer wrote beside its rules were coded
 POST-RUN on October 23, 2026**, and the two items they answer are struck in
 place. **The rules applied ticket by ticket, with and without the screen,
 closed on October 24, 2026**: `PLAN_APPLY.md`, seven signed rows, five held
-and one refuted, and one reported, written up in `results_apply/`. This is a
+and one refuted, and one reported, written up in `results_apply/`. **Its rows
+were read within one provider's answers POST-RUN the same day**, and the item
+that reading answers is struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -335,9 +337,29 @@ quarter of what it gets wrong; the rest is the application. What that leaves:
   shown and in the header above them, which tells the proposer that no rule
   matches. A prompt with the coverage header over an empty list would split
   them. It is a new prompt, so a plan.
-- **The providers.** In pass 1 the arms were served by different providers,
-  though interleaved. Each row read within one provider's answers is free on
-  the records, and was not read.
+- ~~**The providers.**~~ In pass 1 the arms were served by different
+  providers, though interleaved. Each row read within one provider's answers is
+  free on the records, and was not read.
+  **[NOTE 2026-10-24] Read POST-RUN** (`FINDINGS_APPLY.md`, *Each row within
+  one provider's answers*).
+  - Only Baidu answered enough of every row's decisions, and on its answers
+    every row keeps the side of its line where Stage C found it.
+  - Against the same decisions read with every answer, the cut moves no row by
+    more than about a sixtieth.
+  - On one prompt, Baidu is right as often as the providers it shares asks
+    with. Two providers part on the answer more often than one provider parts
+    from itself.
+  What it leaves:
+  - **Why the decisions Baidu answered whole show almost no screen cost.** The
+    ticket arm itself is right less often on them. Which decisions those are
+    is set by where four asks were routed. Whether the routing follows
+    anything about the tickets, or those decisions are a draw that fell low,
+    is free on the records.
+- **A reading within one provider changes the decisions as well as the
+  answers.** A provider answers only some decisions, so a row read on its
+  answers is read on fewer decisions. Set the same decisions, read with every
+  answer, beside each cut, as `apply/providers.py` does. Otherwise the change
+  of decisions reads as the provider's.
 - **`SECURITY_INCIDENT` under the rules without a screen.** The names alone
   name it on every answer, and the rules without a screen on fewer. The notes
   are recorded whole, past the loop records' cut, and which rule they cite is

@@ -1997,6 +1997,25 @@ Everything is from
 So the screen is the smaller part of why the loop misapplies the rules it was
 given. Most of it is lost deciding one ticket against the list.
 
+**[NOTE 2026-10-24] Read within one provider's answers, POST-RUN, the rows keep
+their sides.** Not a signed row, and no verdict moves. In pass 1 the two arms
+were served by different providers in different shares, so each row compared
+arms whose providers partly differed. All ten clauses of the reading's
+expectation held.
+- **On Baidu's answers every row stays on the side of its line where Stage C
+  found it.** Baidu is the only provider with material on every row. The
+  screen still costs about a tenth of level 3's decisions, and that is still
+  about a quarter of what the proposer gets wrong.
+- **The mix of providers moves no row by more than 0.0160**, against the same
+  decisions read with every answer. On one prompt Baidu is right as often as
+  the providers it shares asks with. Two providers give different answers
+  more often than one provider gives itself.
+- **On the 92 decisions Baidu answered whole, the screen costs almost
+  nothing.** The ticket arm itself is right less often on those decisions. Why
+  they differ is not read.
+[`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
+*Each row within one provider's answers*.
+
 ---
 
 ## What was withdrawn, and why
