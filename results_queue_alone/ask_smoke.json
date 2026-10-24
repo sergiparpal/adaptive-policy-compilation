@@ -1,0 +1,699 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-24T13:54:01Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "544738f5b02846177adb5d7c1bde8a89fd54ca90",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "6d3a44106cf8b106"
+  },
+  "plan": "PLAN_QUEUE_ALONE.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "reasoning": {
+    "effort": "none"
+  },
+  "provider": {
+    "order": [
+      "baidu"
+    ],
+    "allow_fallbacks": false
+  },
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "pass": 0,
+  "temperature": 0,
+  "max_tokens": 1200,
+  "max_retries": 2,
+  "system_prompts_sha256": {
+    "t L0": "71fa68073837d5380158ddaa25554d9dfaa7a6317f7f26eb13e41be2cbe72f84",
+    "t L1": "fb72980e84c9aa16d62b4aa8f2a9921908ced394f8d883b40c3e92f3a9527c08",
+    "t L2": "76b6371c3130964350f6700faae200178d5c47a6a208389a0f9c97a8d6090b6b",
+    "t L3": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd",
+    "i L0": "a8aa774b82ec16cb71c9285067c4e25094dd009eedcf7bfb72c90986d67ada78",
+    "i L1": "aad5fdc82c2f45ace8dc0da90a352ac4e173ac38013ae131d6acd47334a6ec76",
+    "i L2": "c9a3cb9f93ca56b21350e303bf2d4133f4bb05227e1c887c78f22db3f51f651a",
+    "i L3": "cf32627106fe58cf142479c1284e6bba083c414b8471b0d13b7a3e171672bb6a",
+    "q L0": "2a8832e66972542c904a531519f4ac50488444a198bc1b8d95d0560769b87dcf",
+    "q L1": "ce1c518c9a34eb7a83f87798f1ff1a6621017ea037aba9250f0233df995099bb",
+    "q L2": "6b17ce46a2c4c1c5ec1306708f86080b233a2e810b0e3a31ef29f835d7ceb5d8",
+    "q L3": "32747d4fe8b3c42910698fae84b91043070a84a5d8bd7081f73460b9442877ae"
+  },
+  "rule_proposers_system_prompts_sha256": {
+    "0": "71fa68073837d5380158ddaa25554d9dfaa7a6317f7f26eb13e41be2cbe72f84",
+    "1": "fb72980e84c9aa16d62b4aa8f2a9921908ced394f8d883b40c3e92f3a9527c08",
+    "2": "76b6371c3130964350f6700faae200178d5c47a6a208389a0f9c97a8d6090b6b",
+    "3": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd"
+  },
+  "sample_record": "results_queue_alone/sample.json",
+  "sample_sha256": "d28e07aea96bc452b6314ab6e7c9e03eeddac0dd71ae9bf3baad25ab03befeca",
+  "gates": {
+    "QA-g1": {
+      "what": "PLAN_APPLY.md's checks pass, its design is its Stage A's and its verdicts come back; the 29 rules read from level 3's text give every escalated ticket its truth; the suite green",
+      "apply_checks": true,
+      "apply_design": {
+        "passes": true,
+        "why": "results_apply/sample.json: the same sessions, prompts and decisions"
+      },
+      "apply_rows": {
+        "rows": 6,
+        "departing": [],
+        "passes": true
+      },
+      "rules": {
+        "rules": 29,
+        "in_order": true,
+        "escalations": 790,
+        "first_match_not_truth": [],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2266,
+        "result": "OK (skipped=3)",
+        "seconds": 174.0,
+        "passes": true
+      },
+      "passes": true
+    },
+    "QA-g2": {
+      "what": "the rule arm is PLAN_APPLY.md's ticket arm, digest for digest; the new arms are \u00a75.1's and differ as it says; no builder takes a row; the digests have teeth. The requests are tests/test_queue_alone.py's, through the SDK double",
+      "rule_arm": {
+        "prompts": 676,
+        "not_plan_applys": [],
+        "passes": true
+      },
+      "texts": {
+        "v1_block_once_in_v1": true,
+        "levels": {
+          "0": {
+            "plain_and_impasse_differ_in_two_lines": true,
+            "the_rest_is_the_same": true,
+            "v1_block_once": true,
+            "manual_block": true,
+            "answer_is_action_alone": true
+          },
+          "1": {
+            "plain_and_impasse_differ_in_two_lines": true,
+            "the_rest_is_the_same": true,
+            "v1_block_once": true,
+            "manual_block": true,
+            "answer_is_action_alone": true
+          },
+          "2": {
+            "plain_and_impasse_differ_in_two_lines": true,
+            "the_rest_is_the_same": true,
+            "v1_block_once": true,
+            "manual_block": true,
+            "answer_is_action_alone": true
+          },
+          "3": {
+            "plain_and_impasse_differ_in_two_lines": true,
+            "the_rest_is_the_same": true,
+            "v1_block_once": true,
+            "manual_block": true,
+            "answer_is_action_alone": true
+          }
+        },
+        "users": {
+          "plain_and_impasse_differ_in_the_first_line": true,
+          "rule_is_the_empty_base_line_then_impasse": true
+        },
+        "answer_names_action_alone": true,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "level",
+            "ticket",
+            "case"
+          ],
+          "system_prompt": [
+            "arm",
+            "level"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 2028,
+        "distinct": 2028,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "QA-g3": {
+      "what": "the populations are \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "prompts": {
+          "t": {
+            "0": 275,
+            "1": 81,
+            "2": 149,
+            "3": 171
+          },
+          "i": {
+            "0": 275,
+            "1": 81,
+            "2": 149,
+            "3": 171
+          },
+          "q": {
+            "0": 275,
+            "1": 81,
+            "2": 149,
+            "3": 171
+          }
+        },
+        "decisions": {
+          "0": 116,
+          "1": 100,
+          "2": 242,
+          "3": 320
+        },
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "i:L0:905",
+          "i:L2:51",
+          "t:L1:141",
+          "q:L0:89",
+          "t:L2:13",
+          "q:L3:77",
+          "i:L3:1105",
+          "q:L1:133",
+          "i:L1:342",
+          "t:L3:162",
+          "t:L0:1706",
+          "q:L2:194"
+        ],
+        "smoke_one_of_each_arm_at_each_level": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "QA-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_QUEUE_ALONE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_QUEUE_ALONE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-24T13:53:46Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-24T13:54:01Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 0,
+      "id": "i:L0:905",
+      "arm": "i",
+      "level": 0,
+      "ticket": 905,
+      "digest": "96c3334e80486a80",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850026-9xVeAtcCWaOB9pmvXAF8",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 532,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.65,
+      "asked_at": "2026-10-24T13:53:48Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 1,
+      "id": "i:L2:51",
+      "arm": "i",
+      "level": 2,
+      "ticket": 51,
+      "digest": "6c56aebcb93e715c",
+      "action": "SELF_SERVICE_DEFLECT",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "SELF_SERVICE_DEFLECT"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850027-xzc5eZWf6rRkwkwhd3K5",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1284,
+          "completion_tokens": 16,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.74,
+      "asked_at": "2026-10-24T13:53:49Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 2,
+      "id": "t:L1:141",
+      "arm": "t",
+      "level": 1,
+      "ticket": 141,
+      "digest": "61bd328ca3e5da05",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla: tickets de integraciones con severidad 2 o menor (alta/cr\u00edtica) requieren diagn\u00f3stico t\u00e9cnico de segundo nivel, ya que integraciones suele implicar problemas de conexi\u00f3n o configuraci\u00f3n que no resuelve T1."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850028-QqNO4ow7BnI9k7xNFPuu",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1293,
+          "completion_tokens": 135,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.81,
+      "asked_at": "2026-10-24T13:53:50Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 3,
+      "id": "q:L0:89",
+      "arm": "q",
+      "level": 0,
+      "ticket": 89,
+      "digest": "7650acb0542af11e",
+      "action": "T1_GENERAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850030-QZDmwpEjDiLlwAkujtR5",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 516,
+          "completion_tokens": 14,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.74,
+      "asked_at": "2026-10-24T13:53:51Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 4,
+      "id": "t:L2:13",
+      "arm": "t",
+      "level": 2,
+      "ticket": 13,
+      "digest": "bc3b4e9dea84f057",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "in",
+            "value": [
+              "dashboard",
+              "mobile"
+            ]
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla: problemas de dashboard o mobile con severidad alta (1 o 2) van a soporte t\u00e9cnico, seg\u00fan la pol\u00edtica de producto (punto 5). Este ticket cumple ambas condiciones."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850031-AAUL8TIq0P4MF1oNsiIG",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1752,
+          "completion_tokens": 129,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.77,
+      "asked_at": "2026-10-24T13:53:53Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 5,
+      "id": "q:L3:77",
+      "arm": "q",
+      "level": 3,
+      "ticket": 77,
+      "digest": "a8fb6bd05f4b6bf8",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850033-F2XGNvmmXEibQuONbVlX",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.06,
+      "asked_at": "2026-10-24T13:53:54Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 6,
+      "id": "i:L3:1105",
+      "arm": "i",
+      "level": 3,
+      "ticket": 1105,
+      "digest": "da820ce3a645984d",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850034-rIlojZ4lU3SJyozMULDB",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1286,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.42,
+      "asked_at": "2026-10-24T13:53:55Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 7,
+      "id": "q:L1:133",
+      "arm": "q",
+      "level": 1,
+      "ticket": 133,
+      "digest": "bc449a2d2fe2be9a",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850035-O8ZgCXyQFjDCZF6KbPPS",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 807,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.78,
+      "asked_at": "2026-10-24T13:53:56Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 8,
+      "id": "i:L1:342",
+      "arm": "i",
+      "level": 1,
+      "ticket": 342,
+      "digest": "66fe6aea2dbe384d",
+      "action": "SECURITY_INCIDENT",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850036-I07eUdYMubzJ7GvuQOw2",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 823,
+          "completion_tokens": 14,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.81,
+      "asked_at": "2026-10-24T13:53:57Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 9,
+      "id": "t:L3:162",
+      "arm": "t",
+      "level": 3,
+      "ticket": 162,
+      "digest": "92c64799fbdeeb61",
+      "action": "T1_GENERAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL",
+        "conditions": [
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "pro"
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla de la base. El ticket es de tier pro, severidad 4, producto mobile, sin coincidencia con reglas existentes. Se asigna a T1_GENERAL como cola por defecto para tier pro."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850037-kNYR7dhUbYJqrBVjqstN",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1754,
+          "completion_tokens": 109,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.6,
+      "asked_at": "2026-10-24T13:53:59Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 10,
+      "id": "t:L0:1706",
+      "arm": "t",
+      "level": 0,
+      "ticket": 1706,
+      "digest": "da44e72513a654c4",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          },
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": false
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Severidad alta (1) en billing sin componente de seguridad debe ir a t\u00e9cnicos, no a billing specialist (que maneja consultas administrativas) ni a engineering (reservado para bugs complejos)."
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850038-DROdLXFz24uuA8tYoijS",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1002,
+          "completion_tokens": 154,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.79,
+      "asked_at": "2026-10-24T13:54:00Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 11,
+      "id": "q:L2:194",
+      "arm": "q",
+      "level": 2,
+      "ticket": 194,
+      "digest": "0bcd1f64a82ff62f",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "failure": null,
+      "attempts": 1,
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792850040-Tplv4wzH0RfBJ9kB6Jph",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1266,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.9,
+      "asked_at": "2026-10-24T13:54:01Z"
+    }
+  ]
+}
