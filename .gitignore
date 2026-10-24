@@ -77,3 +77,5 @@ results_ranking/*.partial.jsonl
 results_manual/*.partial.jsonl
 # And the passes of PLAN_APPLY.md (apply/ask.py).
 results_apply/*.partial.jsonl
+# And the passes of PLAN_QUEUE_ALONE.md (queue_alone/ask.py).
+results_queue_alone/*.partial.jsonl
