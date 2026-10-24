@@ -1,0 +1,3497 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-24T10:21:44Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "4753cf6e7272601e2cabd03e3b7518d26573e5b8",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "cc54cf3a69802993"
+  },
+  "what": "each row of PLAN_APPLY.md read within one provider's answers, and whether the providers answer one prompt alike",
+  "plan": "PLAN_APPLY.md",
+  "gate": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_APPLY.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_APPLY.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-10-24, after Stage C closed PLAN_APPLY.md. The expectation in the module's docstring was written and committed before any figure by provider was computed. Not a signed row; no verdict moves.",
+  "follows": "results_apply/score.json",
+  "surface": "the corpus: the escalations of PLAN_MANUAL.md's twelve loop runs with a screen, as Stage C reads them, and every ask of both passes",
+  "gates": [
+    {
+      "gate": "1",
+      "what": "Stage C comes back, and so does the reading with every provider",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "2",
+      "what": "every answer has one provider",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "3",
+      "what": "a ticket has one truth",
+      "off": [],
+      "passes": true
+    },
+    {
+      "gate": "4",
+      "what": "the loop's answer has one call",
+      "off": [],
+      "passes": true
+    }
+  ],
+  "retried": [
+    {
+      "session": "pass1",
+      "id": "s:L2r2:245",
+      "providers": [
+        "Relace",
+        "Relace"
+      ]
+    }
+  ],
+  "routing": {
+    "pass1": {
+      "screen": {
+        "Baidu": 438,
+        "GMICloud": 202,
+        "Relace": 62,
+        "SiliconFlow": 30,
+        "Parasail": 26,
+        "DigitalOcean": 16,
+        "StreamLake": 2,
+        "Alibaba": 2
+      },
+      "ticket": {
+        "Baidu": 486,
+        "GMICloud": 99,
+        "Relace": 40,
+        "StreamLake": 15,
+        "SiliconFlow": 13,
+        "Parasail": 12,
+        "DigitalOcean": 8,
+        "Alibaba": 2,
+        "Wafer": 1
+      }
+    },
+    "pass2": {
+      "screen": {
+        "Baidu": 628,
+        "Relace": 89,
+        "GMICloud": 28,
+        "StreamLake": 12,
+        "DigitalOcean": 8,
+        "DeepInfra": 7,
+        "Alibaba": 3,
+        "Parasail": 3
+      },
+      "ticket": {
+        "Baidu": 521,
+        "Relace": 85,
+        "DeepInfra": 30,
+        "GMICloud": 12,
+        "StreamLake": 11,
+        "DigitalOcean": 10,
+        "Parasail": 5,
+        "Alibaba": 2
+      }
+    },
+    "loop_at_the_decisions": {
+      "Baidu": 664,
+      "GMICloud": 89,
+      "StreamLake": 19,
+      "Relace": 2,
+      "Parasail": 1,
+      "DeepInfra": 1,
+      "SiliconFlow": 1,
+      "Azure": 1
+    }
+  },
+  "floor": 100,
+  "reference": "Baidu",
+  "stage_c": {
+    "X-a": {
+      "fraction": "-5/778",
+      "value": -0.006426735218508998
+    },
+    "X-b": {
+      "fraction": "9/80",
+      "value": 0.1125
+    },
+    "X-c": {
+      "fraction": "-59/320",
+      "value": -0.184375
+    },
+    "X-d": {
+      "fraction": "35/188",
+      "value": 0.18617021276595744
+    },
+    "X-e": {
+      "fraction": "2/121",
+      "value": 0.01652892561983471
+    },
+    "X-f": {
+      "fraction": "47/208",
+      "value": 0.22596153846153846
+    }
+  },
+  "A": {
+    "X-a": {
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 379,
+          "missing": 0,
+          "read": 379,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "4/379",
+            "value": 0.010554089709762533
+          },
+          "se": 0.012187093485658005,
+          "per_run": {
+            "L0r1": {
+              "fraction": "-1/19",
+              "value": -0.05263157894736842
+            },
+            "L0r2": {
+              "fraction": "-1/22",
+              "value": -0.045454545454545456
+            },
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r1": {
+              "fraction": "1/6",
+              "value": 0.16666666666666666
+            },
+            "L1r2": {
+              "fraction": "-1/20",
+              "value": -0.05
+            },
+            "L1r3": {
+              "fraction": "1/74",
+              "value": 0.013513513513513514
+            },
+            "L2r1": {
+              "fraction": "3/37",
+              "value": 0.08108108108108109
+            },
+            "L2r2": {
+              "fraction": "-5/102",
+              "value": -0.049019607843137254
+            },
+            "L2r3": {
+              "fraction": "-1/42",
+              "value": -0.023809523809523808
+            },
+            "L3r1": {
+              "fraction": "1/43",
+              "value": 0.023255813953488372
+            },
+            "L3r2": {
+              "fraction": "1/20",
+              "value": 0.05
+            },
+            "L3r3": {
+              "fraction": "1/102",
+              "value": 0.00980392156862745
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "351/379",
+              "value": 0.9261213720316622
+            },
+            "A": {
+              "fraction": "347/379",
+              "value": 0.9155672823218998
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 379,
+          "missing": 0,
+          "read": 379,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "4/379",
+            "value": 0.010554089709762533
+          },
+          "se": 0.012187093485658005,
+          "per_run": {
+            "L0r1": {
+              "fraction": "-1/19",
+              "value": -0.05263157894736842
+            },
+            "L0r2": {
+              "fraction": "-1/22",
+              "value": -0.045454545454545456
+            },
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r1": {
+              "fraction": "1/6",
+              "value": 0.16666666666666666
+            },
+            "L1r2": {
+              "fraction": "-1/20",
+              "value": -0.05
+            },
+            "L1r3": {
+              "fraction": "1/74",
+              "value": 0.013513513513513514
+            },
+            "L2r1": {
+              "fraction": "3/37",
+              "value": 0.08108108108108109
+            },
+            "L2r2": {
+              "fraction": "-5/102",
+              "value": -0.049019607843137254
+            },
+            "L2r3": {
+              "fraction": "-1/42",
+              "value": -0.023809523809523808
+            },
+            "L3r1": {
+              "fraction": "1/43",
+              "value": 0.023255813953488372
+            },
+            "L3r2": {
+              "fraction": "1/20",
+              "value": 0.05
+            },
+            "L3r3": {
+              "fraction": "1/102",
+              "value": 0.00980392156862745
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "351/379",
+              "value": 0.9261213720316622
+            },
+            "A": {
+              "fraction": "347/379",
+              "value": 0.9155672823218998
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 24,
+          "missing": 0,
+          "read": 24,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L0r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 24,
+          "missing": 0,
+          "read": 24,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L0r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L1r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Parasail": {
+        "above_floor": false,
+        "own": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L0r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 2,
+          "missing": 0,
+          "read": 2,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 2,
+          "missing": 0,
+          "read": 2,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "StreamLake": {
+        "above_floor": false,
+        "own": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L0r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-a",
+          "levels": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "holds": "le",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L0r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "S": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "A": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": true
+        }
+      }
+    },
+    "X-b": {
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 246,
+          "missing": 0,
+          "read": 246,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "49/492",
+            "value": 0.09959349593495935
+          },
+          "se": 0.04033636200344711,
+          "per_run": {
+            "L3r1": {
+              "fraction": "13/122",
+              "value": 0.10655737704918032
+            },
+            "L3r2": {
+              "fraction": "31/208",
+              "value": 0.14903846153846154
+            },
+            "L3r3": {
+              "fraction": "5/162",
+              "value": 0.030864197530864196
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "51/82",
+              "value": 0.6219512195121951
+            },
+            "acc_t": {
+              "fraction": "355/492",
+              "value": 0.7215447154471545
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 246,
+          "missing": 0,
+          "read": 246,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "17/164",
+            "value": 0.10365853658536585
+          },
+          "se": 0.03923243252149878,
+          "per_run": {
+            "L3r1": {
+              "fraction": "7/61",
+              "value": 0.11475409836065574
+            },
+            "L3r2": {
+              "fraction": "33/208",
+              "value": 0.15865384615384615
+            },
+            "L3r3": {
+              "fraction": "2/81",
+              "value": 0.024691358024691357
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "76/123",
+              "value": 0.6178861788617886
+            },
+            "acc_t": {
+              "fraction": "355/492",
+              "value": 0.7215447154471545
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 12,
+          "missing": 0,
+          "read": 12,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "1/12",
+            "value": 0.08333333333333333
+          },
+          "se": 0.14962014661002354,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "-1/5",
+              "value": -0.2
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L3r1"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_t": {
+              "fraction": "7/12",
+              "value": 0.5833333333333334
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 12,
+          "missing": 0,
+          "read": 12,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "1/8",
+            "value": 0.125
+          },
+          "se": 0.11033802230721133,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "-1/10",
+              "value": -0.1
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": [
+              "L3r1"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "5/12",
+              "value": 0.4166666666666667
+            },
+            "acc_t": {
+              "fraction": "13/24",
+              "value": 0.5416666666666666
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "2/9",
+            "value": 0.2222222222222222
+          },
+          "se": 0.21830102403086166,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            },
+            "L3r2": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r3": {
+              "fraction": "-1/2",
+              "value": -0.5
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "5/9",
+              "value": 0.5555555555555556
+            },
+            "acc_t": {
+              "fraction": "7/9",
+              "value": 0.7777777777777778
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-b",
+          "levels": [
+            3
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "1/6",
+            "value": 0.16666666666666666
+          },
+          "se": 0.1876380759700082,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            },
+            "L3r2": {
+              "fraction": "3/8",
+              "value": 0.375
+            },
+            "L3r3": {
+              "fraction": "-1/2",
+              "value": -0.5
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "acc_t": {
+              "fraction": "5/6",
+              "value": 0.8333333333333334
+            }
+          },
+          "meets_the_line": true
+        }
+      }
+    },
+    "X-c": {
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 246,
+          "missing": 0,
+          "read": 246,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-22/123",
+            "value": -0.17886178861788618
+          },
+          "share": {
+            "fraction": "49/186",
+            "value": 0.26344086021505375
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.06887774423289017,
+          "per_run": {
+            "L3r1": {
+              "fraction": "-10/61",
+              "value": -0.16393442622950818
+            },
+            "L3r2": {
+              "fraction": "-33/208",
+              "value": -0.15865384615384615
+            },
+            "L3r3": {
+              "fraction": "-35/162",
+              "value": -0.21604938271604937
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "51/82",
+              "value": 0.6219512195121951
+            },
+            "acc_t": {
+              "fraction": "355/492",
+              "value": 0.7215447154471545
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 246,
+          "missing": 0,
+          "read": 246,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-43/246",
+            "value": -0.17479674796747968
+          },
+          "share": {
+            "fraction": "51/188",
+            "value": 0.2712765957446808
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.06731453080731264,
+          "per_run": {
+            "L3r1": {
+              "fraction": "-19/122",
+              "value": -0.1557377049180328
+            },
+            "L3r2": {
+              "fraction": "-15/104",
+              "value": -0.14423076923076922
+            },
+            "L3r3": {
+              "fraction": "-37/162",
+              "value": -0.22839506172839505
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "76/123",
+              "value": 0.6178861788617886
+            },
+            "acc_t": {
+              "fraction": "355/492",
+              "value": 0.7215447154471545
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 12,
+          "missing": 0,
+          "read": 12,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-1/3",
+            "value": -0.3333333333333333
+          },
+          "share": {
+            "fraction": "1/6",
+            "value": 0.16666666666666666
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.26057865332352387,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/4",
+              "value": 0.25
+            },
+            "L3r2": {
+              "fraction": "-2/3",
+              "value": -0.6666666666666666
+            },
+            "L3r3": {
+              "fraction": "-3/5",
+              "value": -0.6
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_t": {
+              "fraction": "7/12",
+              "value": 0.5833333333333334
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 12,
+          "missing": 0,
+          "read": 12,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-1/3",
+            "value": -0.3333333333333333
+          },
+          "share": {
+            "fraction": "3/14",
+            "value": 0.21428571428571427
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.20289190091472387,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/4",
+              "value": 0.25
+            },
+            "L3r2": {
+              "fraction": "-5/6",
+              "value": -0.8333333333333334
+            },
+            "L3r3": {
+              "fraction": "-1/2",
+              "value": -0.5
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "5/12",
+              "value": 0.4166666666666667
+            },
+            "acc_t": {
+              "fraction": "13/24",
+              "value": 0.5416666666666666
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.3394500514782104,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r3": {
+              "fraction": "-1/1",
+              "value": -1.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "5/9",
+              "value": 0.5555555555555556
+            },
+            "acc_t": {
+              "fraction": "7/9",
+              "value": 0.7777777777777778
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-c",
+          "levels": [
+            3
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+          "se": 0.2814571139550123,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/6",
+              "value": 0.16666666666666666
+            },
+            "L3r2": {
+              "fraction": "3/8",
+              "value": 0.375
+            },
+            "L3r3": {
+              "fraction": "-1/1",
+              "value": -1.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L3r1",
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "acc_t": {
+              "fraction": "5/6",
+              "value": 0.8333333333333334
+            }
+          },
+          "meets_the_line": true
+        }
+      }
+    },
+    "X-d": {
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 209,
+          "missing": 0,
+          "read": 115,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "18/115",
+            "value": 0.1565217391304348
+          },
+          "se": 0.0486438708187081,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "27/98",
+              "value": 0.2755102040816326
+            },
+            "L3r3": {
+              "fraction": "9/76",
+              "value": 0.11842105263157894
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "screen_on_p": {
+              "fraction": "29/115",
+              "value": 0.25217391304347825
+            },
+            "second_ticket_answer_on_p": {
+              "fraction": "11/115",
+              "value": 0.09565217391304348
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 209,
+          "missing": 0,
+          "read": 115,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "18/115",
+            "value": 0.1565217391304348
+          },
+          "se": 0.04849626395729496,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "27/98",
+              "value": 0.2755102040816326
+            },
+            "L3r3": {
+              "fraction": "9/76",
+              "value": 0.11842105263157894
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "screen_on_p": {
+              "fraction": "29/115",
+              "value": 0.25217391304347825
+            },
+            "second_ticket_answer_on_p": {
+              "fraction": "11/115",
+              "value": 0.09565217391304348
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 0,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": null,
+          "se": null,
+          "per_run": {},
+          "why": [
+            "fewer than 100 decisions have t1 != p",
+            "no decision to read"
+          ],
+          "thin": null,
+          "meets_the_line": null
+        },
+        "every_answer": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 0,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": null,
+          "se": null,
+          "per_run": {},
+          "why": [
+            "fewer than 100 decisions have t1 != p",
+            "no decision to read"
+          ],
+          "thin": null,
+          "meets_the_line": null
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 8,
+          "missing": 0,
+          "read": 5,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "1/5",
+            "value": 0.2
+          },
+          "se": 0.2166410241236256,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "1/2",
+              "value": 0.5
+            }
+          },
+          "why": [
+            "fewer than 100 decisions have t1 != p"
+          ],
+          "thin": null,
+          "meets_the_line": null
+        },
+        "every_answer": {
+          "id": "X-d",
+          "levels": [
+            3
+          ],
+          "decisions": 8,
+          "missing": 0,
+          "read": 5,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "1/5",
+            "value": 0.2
+          },
+          "se": 0.2166410241236256,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "1/2",
+              "value": 0.5
+            }
+          },
+          "why": [
+            "fewer than 100 decisions have t1 != p"
+          ],
+          "thin": null,
+          "meets_the_line": null
+        }
+      }
+    },
+    "X-e": {
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 187,
+          "missing": 0,
+          "read": 187,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "12/187",
+            "value": 0.06417112299465241
+          },
+          "se": 0.041438226894323034,
+          "per_run": {
+            "L2r1": {
+              "fraction": "1/22",
+              "value": 0.045454545454545456
+            },
+            "L2r2": {
+              "fraction": "2/39",
+              "value": 0.05128205128205128
+            },
+            "L2r3": {
+              "fraction": "9/64",
+              "value": 0.140625
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "118/187",
+              "value": 0.6310160427807486
+            },
+            "acc_t": {
+              "fraction": "130/187",
+              "value": 0.6951871657754011
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 187,
+          "missing": 0,
+          "read": 187,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "9/187",
+            "value": 0.0481283422459893
+          },
+          "se": 0.03912304217224041,
+          "per_run": {
+            "L2r1": {
+              "fraction": "2/77",
+              "value": 0.025974025974025976
+            },
+            "L2r2": {
+              "fraction": "1/26",
+              "value": 0.038461538461538464
+            },
+            "L2r3": {
+              "fraction": "1/8",
+              "value": 0.125
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "237/374",
+              "value": 0.6336898395721925
+            },
+            "acc_t": {
+              "fraction": "15/22",
+              "value": 0.6818181818181818
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "DigitalOcean": {
+        "above_floor": false,
+        "own": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "-1/1",
+            "value": -1.0
+          },
+          "se": null,
+          "per_run": {
+            "L2r3": {
+              "fraction": "-1/1",
+              "value": -1.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_t": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 1,
+          "missing": 0,
+          "read": 1,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "-1/2",
+            "value": -0.5
+          },
+          "se": null,
+          "per_run": {
+            "L2r3": {
+              "fraction": "-1/2",
+              "value": -0.5
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_t": {
+              "fraction": "1/2",
+              "value": 0.5
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.23756554836659943,
+          "per_run": {
+            "L2r1": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "L2r2": {
+              "fraction": "-2/5",
+              "value": -0.4
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L2r2"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "acc_t": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 9,
+          "missing": 0,
+          "read": 9,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "1/9",
+            "value": 0.1111111111111111
+          },
+          "se": 0.2194615905510022,
+          "per_run": {
+            "L2r1": {
+              "fraction": "5/6",
+              "value": 0.8333333333333334
+            },
+            "L2r2": {
+              "fraction": "-3/10",
+              "value": -0.3
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L2r1"
+            ]
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "11/18",
+              "value": 0.6111111111111112
+            },
+            "acc_t": {
+              "fraction": "13/18",
+              "value": 0.7222222222222222
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 8,
+          "missing": 0,
+          "read": 8,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L2r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_t": {
+              "fraction": "1/2",
+              "value": 0.5
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-e",
+          "levels": [
+            2
+          ],
+          "decisions": 8,
+          "missing": 0,
+          "read": 8,
+          "line": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "holds": "gt",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": 0.0,
+          "per_run": {
+            "L2r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L2r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_s": {
+              "fraction": "9/16",
+              "value": 0.5625
+            },
+            "acc_t": {
+              "fraction": "9/16",
+              "value": 0.5625
+            }
+          },
+          "meets_the_line": false
+        }
+      }
+    },
+    "X-f": {
+      "Alibaba": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 3,
+          "missing": 0,
+          "read": 3,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_u": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 3,
+          "missing": 0,
+          "read": 3,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r2": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_u": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "Baidu": {
+        "above_floor": true,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 277,
+          "missing": 0,
+          "read": 277,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "69/277",
+            "value": 0.2490974729241877
+          },
+          "se": 0.054046634218163477,
+          "per_run": {
+            "L3r1": {
+              "fraction": "35/148",
+              "value": 0.23648648648648649
+            },
+            "L3r2": {
+              "fraction": "23/78",
+              "value": 0.2948717948717949
+            },
+            "L3r3": {
+              "fraction": "17/86",
+              "value": 0.19767441860465115
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "399/554",
+              "value": 0.720216606498195
+            },
+            "acc_u": {
+              "fraction": "261/554",
+              "value": 0.4711191335740072
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 277,
+          "missing": 0,
+          "read": 277,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "131/554",
+            "value": 0.2364620938628159
+          },
+          "se": 0.05407423534355497,
+          "per_run": {
+            "L3r1": {
+              "fraction": "33/148",
+              "value": 0.22297297297297297
+            },
+            "L3r2": {
+              "fraction": "34/117",
+              "value": 0.2905982905982906
+            },
+            "L3r3": {
+              "fraction": "15/86",
+              "value": 0.1744186046511628
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "397/554",
+              "value": 0.7166064981949458
+            },
+            "acc_u": {
+              "fraction": "133/277",
+              "value": 0.48014440433212996
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "DeepInfra": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 10,
+          "missing": 0,
+          "read": 10,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-3/10",
+            "value": -0.3
+          },
+          "se": 0.28142494558940573,
+          "per_run": {
+            "L3r1": {
+              "fraction": "-1/3",
+              "value": -0.3333333333333333
+            },
+            "L3r2": {
+              "fraction": "-1/3",
+              "value": -0.3333333333333333
+            },
+            "L3r3": {
+              "fraction": "-1/4",
+              "value": -0.25
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_u": {
+              "fraction": "4/5",
+              "value": 0.8
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 10,
+          "missing": 0,
+          "read": 10,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "-3/20",
+            "value": -0.15
+          },
+          "se": 0.14071247279470286,
+          "per_run": {
+            "L3r1": {
+              "fraction": "-1/6",
+              "value": -0.16666666666666666
+            },
+            "L3r2": {
+              "fraction": "-1/6",
+              "value": -0.16666666666666666
+            },
+            "L3r3": {
+              "fraction": "-1/8",
+              "value": -0.125
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_u": {
+              "fraction": "13/20",
+              "value": 0.65
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "DigitalOcean": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 11,
+          "missing": 0,
+          "read": 11,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "2/11",
+            "value": 0.18181818181818182
+          },
+          "se": 0.35714529646829585,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/8",
+              "value": 0.125
+            },
+            "L3r2": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            },
+            "L3r3": {
+              "fraction": "1/8",
+              "value": 0.125
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "8/11",
+              "value": 0.7272727272727273
+            },
+            "acc_u": {
+              "fraction": "6/11",
+              "value": 0.5454545454545454
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 11,
+          "missing": 0,
+          "read": 11,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "5/11",
+            "value": 0.45454545454545453
+          },
+          "se": 0.2120160914440546,
+          "per_run": {
+            "L3r1": {
+              "fraction": "3/8",
+              "value": 0.375
+            },
+            "L3r2": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "L3r3": {
+              "fraction": "3/8",
+              "value": 0.375
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "17/22",
+              "value": 0.7727272727272727
+            },
+            "acc_u": {
+              "fraction": "7/22",
+              "value": 0.3181818181818182
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "GMICloud": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 37,
+          "missing": 0,
+          "read": 37,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "14/37",
+            "value": 0.3783783783783784
+          },
+          "se": 0.17192010878544495,
+          "per_run": {
+            "L3r1": {
+              "fraction": "3/10",
+              "value": 0.3
+            },
+            "L3r2": {
+              "fraction": "7/15",
+              "value": 0.4666666666666667
+            },
+            "L3r3": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "26/37",
+              "value": 0.7027027027027027
+            },
+            "acc_u": {
+              "fraction": "12/37",
+              "value": 0.32432432432432434
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 37,
+          "missing": 0,
+          "read": 37,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "14/37",
+            "value": 0.3783783783783784
+          },
+          "se": 0.13985976113538204,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/4",
+              "value": 0.25
+            },
+            "L3r2": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r3": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "51/74",
+              "value": 0.6891891891891891
+            },
+            "acc_u": {
+              "fraction": "23/74",
+              "value": 0.3108108108108108
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Parasail": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 3,
+          "missing": 0,
+          "read": 3,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          },
+          "se": 0.3333333333333333,
+          "per_run": {
+            "L3r2": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "2/3",
+              "value": 0.6666666666666666
+            },
+            "acc_u": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 3,
+          "missing": 0,
+          "read": 3,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "1/2",
+            "value": 0.5
+          },
+          "se": 0.28867513459481287,
+          "per_run": {
+            "L3r2": {
+              "fraction": "1/2",
+              "value": 0.5
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "acc_u": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "Relace": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 27,
+          "missing": 0,
+          "read": 27,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "1/6",
+            "value": 0.16666666666666666
+          },
+          "se": 0.1287743684978301,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/6",
+              "value": 0.16666666666666666
+            },
+            "L3r2": {
+              "fraction": "7/24",
+              "value": 0.2916666666666667
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": [
+              "L3r2"
+            ]
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "19/27",
+              "value": 0.7037037037037037
+            },
+            "acc_u": {
+              "fraction": "29/54",
+              "value": 0.5370370370370371
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 27,
+          "missing": 0,
+          "read": 27,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "2/9",
+            "value": 0.2222222222222222
+          },
+          "se": 0.1305506505935694,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/4",
+              "value": 0.25
+            },
+            "L3r2": {
+              "fraction": "1/3",
+              "value": 0.3333333333333333
+            },
+            "L3r3": {
+              "fraction": "1/18",
+              "value": 0.05555555555555555
+            }
+          },
+          "thin": true,
+          "thin_because": {
+            "within_one_se": true,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "41/54",
+              "value": 0.7592592592592593
+            },
+            "acc_u": {
+              "fraction": "29/54",
+              "value": 0.5370370370370371
+            }
+          },
+          "meets_the_line": true
+        }
+      },
+      "SiliconFlow": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 2,
+          "missing": 0,
+          "read": 2,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_u": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": false
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 2,
+          "missing": 0,
+          "read": 2,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "se": null,
+          "per_run": {
+            "L3r1": {
+              "fraction": "0/1",
+              "value": 0.0
+            },
+            "L3r3": {
+              "fraction": "0/1",
+              "value": 0.0
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "1/1",
+              "value": 1.0
+            },
+            "acc_u": {
+              "fraction": "1/1",
+              "value": 1.0
+            }
+          },
+          "meets_the_line": false
+        }
+      },
+      "StreamLake": {
+        "above_floor": false,
+        "own": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 11,
+          "missing": 0,
+          "read": 11,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "7/11",
+            "value": 0.6363636363636364
+          },
+          "se": 0.25506279937208204,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r2": {
+              "fraction": "3/5",
+              "value": 0.6
+            },
+            "L3r3": {
+              "fraction": "3/4",
+              "value": 0.75
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "8/11",
+              "value": 0.7272727272727273
+            },
+            "acc_u": {
+              "fraction": "1/11",
+              "value": 0.09090909090909091
+            }
+          },
+          "meets_the_line": true
+        },
+        "every_answer": {
+          "id": "X-f",
+          "levels": [
+            3
+          ],
+          "decisions": 11,
+          "missing": 0,
+          "read": 11,
+          "line": {
+            "fraction": "1/10",
+            "value": 0.1
+          },
+          "holds": "ge",
+          "value": {
+            "fraction": "7/11",
+            "value": 0.6363636363636364
+          },
+          "se": 0.25506279937208204,
+          "per_run": {
+            "L3r1": {
+              "fraction": "1/2",
+              "value": 0.5
+            },
+            "L3r2": {
+              "fraction": "3/5",
+              "value": 0.6
+            },
+            "L3r3": {
+              "fraction": "3/4",
+              "value": 0.75
+            }
+          },
+          "thin": false,
+          "thin_because": {
+            "within_one_se": false,
+            "dropping_one_run_flips": []
+          },
+          "parts": {
+            "acc_t": {
+              "fraction": "8/11",
+              "value": 0.7272727272727273
+            },
+            "acc_u": {
+              "fraction": "1/11",
+              "value": 0.09090909090909091
+            }
+          },
+          "meets_the_line": true
+        }
+      }
+    }
+  },
+  "B": {
+    "X-a": {
+      "Baidu": {
+        "id": "X-a",
+        "levels": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "decisions": 379,
+        "missing": 0,
+        "read": 379,
+        "line": {
+          "fraction": "1/20",
+          "value": 0.05
+        },
+        "holds": "le",
+        "value": {
+          "fraction": "4/379",
+          "value": 0.010554089709762533
+        },
+        "se": 0.012187093485658005,
+        "per_run": {
+          "L0r1": {
+            "fraction": "-1/19",
+            "value": -0.05263157894736842
+          },
+          "L0r2": {
+            "fraction": "-1/22",
+            "value": -0.045454545454545456
+          },
+          "L0r3": {
+            "fraction": "0/1",
+            "value": 0.0
+          },
+          "L1r1": {
+            "fraction": "1/6",
+            "value": 0.16666666666666666
+          },
+          "L1r2": {
+            "fraction": "-1/20",
+            "value": -0.05
+          },
+          "L1r3": {
+            "fraction": "1/74",
+            "value": 0.013513513513513514
+          },
+          "L2r1": {
+            "fraction": "3/37",
+            "value": 0.08108108108108109
+          },
+          "L2r2": {
+            "fraction": "-5/102",
+            "value": -0.049019607843137254
+          },
+          "L2r3": {
+            "fraction": "-1/42",
+            "value": -0.023809523809523808
+          },
+          "L3r1": {
+            "fraction": "1/43",
+            "value": 0.023255813953488372
+          },
+          "L3r2": {
+            "fraction": "1/20",
+            "value": 0.05
+          },
+          "L3r3": {
+            "fraction": "1/102",
+            "value": 0.00980392156862745
+          }
+        },
+        "thin": false,
+        "thin_because": {
+          "within_one_se": false,
+          "dropping_one_run_flips": []
+        },
+        "parts": {
+          "S": {
+            "fraction": "351/379",
+            "value": 0.9261213720316622
+          },
+          "A": {
+            "fraction": "347/379",
+            "value": 0.9155672823218998
+          }
+        },
+        "meets_the_line": true
+      }
+    },
+    "X-b": {
+      "Baidu": {
+        "id": "X-b",
+        "levels": [
+          3
+        ],
+        "decisions": 92,
+        "missing": 0,
+        "read": 92,
+        "line": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "holds": "gt",
+        "value": {
+          "fraction": "1/184",
+          "value": 0.005434782608695652
+        },
+        "se": 0.05508888357937927,
+        "per_run": {
+          "L3r1": {
+            "fraction": "-1/26",
+            "value": -0.038461538461538464
+          },
+          "L3r2": {
+            "fraction": "5/38",
+            "value": 0.13157894736842105
+          },
+          "L3r3": {
+            "fraction": "-1/8",
+            "value": -0.125
+          }
+        },
+        "thin": true,
+        "thin_because": {
+          "within_one_se": true,
+          "dropping_one_run_flips": [
+            "L3r2"
+          ]
+        },
+        "parts": {
+          "acc_s": {
+            "fraction": "109/184",
+            "value": 0.592391304347826
+          },
+          "acc_t": {
+            "fraction": "55/92",
+            "value": 0.5978260869565217
+          }
+        },
+        "meets_the_line": true
+      }
+    },
+    "X-c": {
+      "Baidu": {
+        "id": "X-c",
+        "levels": [
+          3
+        ],
+        "decisions": 92,
+        "missing": 0,
+        "read": 92,
+        "line": {
+          "fraction": "1/2",
+          "value": 0.5
+        },
+        "holds": "ge",
+        "value": {
+          "fraction": "-73/184",
+          "value": -0.3967391304347826
+        },
+        "share": {
+          "fraction": "1/75",
+          "value": 0.013333333333333334
+        },
+        "compared_as": "2\u00b7acc_t \u2212 acc_s \u2212 1 against 0",
+        "se": 0.10279300376514881,
+        "per_run": {
+          "L3r1": {
+            "fraction": "-11/26",
+            "value": -0.4230769230769231
+          },
+          "L3r2": {
+            "fraction": "-6/19",
+            "value": -0.3157894736842105
+          },
+          "L3r3": {
+            "fraction": "-27/56",
+            "value": -0.48214285714285715
+          }
+        },
+        "thin": false,
+        "thin_because": {
+          "within_one_se": false,
+          "dropping_one_run_flips": []
+        },
+        "parts": {
+          "acc_s": {
+            "fraction": "109/184",
+            "value": 0.592391304347826
+          },
+          "acc_t": {
+            "fraction": "55/92",
+            "value": 0.5978260869565217
+          }
+        },
+        "meets_the_line": false
+      }
+    },
+    "X-d": {
+      "Baidu": {
+        "id": "X-d",
+        "levels": [
+          3
+        ],
+        "decisions": 92,
+        "missing": 0,
+        "read": 51,
+        "line": {
+          "fraction": "1/10",
+          "value": 0.1
+        },
+        "holds": "ge",
+        "value": {
+          "fraction": "11/102",
+          "value": 0.10784313725490197
+        },
+        "se": 0.07156648056555655,
+        "per_run": {
+          "L3r1": {
+            "fraction": "-1/16",
+            "value": -0.0625
+          },
+          "L3r2": {
+            "fraction": "1/8",
+            "value": 0.125
+          },
+          "L3r3": {
+            "fraction": "4/15",
+            "value": 0.26666666666666666
+          }
+        },
+        "why": [
+          "fewer than 100 decisions have t1 != p"
+        ],
+        "thin": null,
+        "meets_the_line": null
+      }
+    },
+    "X-e": {
+      "Baidu": {
+        "id": "X-e",
+        "levels": [
+          2
+        ],
+        "decisions": 74,
+        "missing": 0,
+        "read": 74,
+        "line": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "holds": "gt",
+        "value": {
+          "fraction": "13/148",
+          "value": 0.08783783783783784
+        },
+        "se": 0.05983920225258919,
+        "per_run": {
+          "L2r1": {
+            "fraction": "-1/60",
+            "value": -0.016666666666666666
+          },
+          "L2r2": {
+            "fraction": "2/15",
+            "value": 0.13333333333333333
+          },
+          "L2r3": {
+            "fraction": "3/14",
+            "value": 0.21428571428571427
+          }
+        },
+        "thin": false,
+        "thin_because": {
+          "within_one_se": false,
+          "dropping_one_run_flips": []
+        },
+        "parts": {
+          "acc_s": {
+            "fraction": "83/148",
+            "value": 0.5608108108108109
+          },
+          "acc_t": {
+            "fraction": "24/37",
+            "value": 0.6486486486486487
+          }
+        },
+        "meets_the_line": true
+      }
+    },
+    "X-f": {
+      "Baidu": {
+        "id": "X-f",
+        "levels": [
+          3
+        ],
+        "decisions": 174,
+        "missing": 0,
+        "read": 174,
+        "line": {
+          "fraction": "1/10",
+          "value": 0.1
+        },
+        "holds": "ge",
+        "value": {
+          "fraction": "21/116",
+          "value": 0.1810344827586207
+        },
+        "se": 0.06912287335733462,
+        "per_run": {
+          "L3r1": {
+            "fraction": "19/90",
+            "value": 0.2111111111111111
+          },
+          "L3r2": {
+            "fraction": "17/76",
+            "value": 0.2236842105263158
+          },
+          "L3r3": {
+            "fraction": "5/53",
+            "value": 0.09433962264150944
+          }
+        },
+        "thin": false,
+        "thin_because": {
+          "within_one_se": false,
+          "dropping_one_run_flips": []
+        },
+        "parts": {
+          "acc_t": {
+            "fraction": "233/348",
+            "value": 0.6695402298850575
+          },
+          "acc_u": {
+            "fraction": "85/174",
+            "value": 0.4885057471264368
+          }
+        },
+        "meets_the_line": true
+      }
+    }
+  },
+  "C": {
+    "asks": 1451,
+    "accuracy": {
+      "GMICloud": {
+        "asks": 218,
+        "right": {
+          "one": {
+            "fraction": "123/218",
+            "value": 0.5642201834862385
+          },
+          "other": {
+            "fraction": "63/109",
+            "value": 0.5779816513761468
+          }
+        },
+        "difference": {
+          "fraction": "-3/218",
+          "value": -0.013761467889908258
+        },
+        "se": 0.02202243602170356
+      },
+      "Relace": {
+        "asks": 109,
+        "right": {
+          "one": {
+            "fraction": "72/109",
+            "value": 0.6605504587155964
+          },
+          "other": {
+            "fraction": "71/109",
+            "value": 0.6513761467889908
+          }
+        },
+        "difference": {
+          "fraction": "1/109",
+          "value": 0.009174311926605505
+        },
+        "se": 0.037837137042419026
+      },
+      "every_other": {
+        "asks": 483,
+        "right": {
+          "one": {
+            "fraction": "275/483",
+            "value": 0.5693581780538303
+          },
+          "other": {
+            "fraction": "93/161",
+            "value": 0.577639751552795
+          }
+        },
+        "difference": {
+          "fraction": "-4/483",
+          "value": -0.008281573498964804
+        },
+        "se": 0.014418877513161928
+      },
+      "every_other_screen": {
+        "asks": 286,
+        "right": {
+          "one": {
+            "fraction": "83/143",
+            "value": 0.5804195804195804
+          },
+          "other": {
+            "fraction": "83/143",
+            "value": 0.5804195804195804
+          }
+        },
+        "difference": {
+          "fraction": "0/1",
+          "value": 0.0
+        },
+        "se": 0.01718342004302393
+      },
+      "every_other_ticket": {
+        "asks": 197,
+        "right": {
+          "one": {
+            "fraction": "109/197",
+            "value": 0.5532994923857868
+          },
+          "other": {
+            "fraction": "113/197",
+            "value": 0.5736040609137056
+          }
+        },
+        "difference": {
+          "fraction": "-4/197",
+          "value": -0.02030456852791878
+        },
+        "se": 0.022730817044511357
+      }
+    },
+    "agreement": {
+      "screen": {
+        "one_provider": {
+          "asks": 457,
+          "agree": {
+            "fraction": "423/457",
+            "value": 0.925601750547046
+          }
+        },
+        "two_providers": {
+          "asks": 321,
+          "agree": {
+            "fraction": "281/321",
+            "value": 0.8753894080996885
+          }
+        },
+        "both_reference": {
+          "asks": 390,
+          "agree": {
+            "fraction": "12/13",
+            "value": 0.9230769230769231
+          }
+        },
+        "reference_and_another": {
+          "asks": 286,
+          "agree": {
+            "fraction": "126/143",
+            "value": 0.8811188811188811
+          }
+        }
+      },
+      "ticket": {
+        "one_provider": {
+          "asks": 451,
+          "agree": {
+            "fraction": "409/451",
+            "value": 0.9068736141906873
+          }
+        },
+        "two_providers": {
+          "asks": 222,
+          "agree": {
+            "fraction": "187/222",
+            "value": 0.8423423423423423
+          }
+        },
+        "both_reference": {
+          "asks": 404,
+          "agree": {
+            "fraction": "365/404",
+            "value": 0.9034653465346535
+          }
+        },
+        "reference_and_another": {
+          "asks": 197,
+          "agree": {
+            "fraction": "167/197",
+            "value": 0.8477157360406091
+          }
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "A1",
+      "holds": true,
+      "reading": "X-b +0.0996 against Stage C's +0.1125"
+    },
+    {
+      "clause": "A2",
+      "holds": true,
+      "reading": "X-c's share 0.26344086021505375, compared as -0.1789 against 0"
+    },
+    {
+      "clause": "A3",
+      "holds": true,
+      "reading": "X-d +0.1565 on 115 decisions"
+    },
+    {
+      "clause": "A4",
+      "holds": true,
+      "reading": "X-e +0.0642 against Stage C's +0.0165"
+    },
+    {
+      "clause": "A5",
+      "holds": true,
+      "reading": "X-f +0.2491"
+    },
+    {
+      "clause": "A6",
+      "holds": true,
+      "reading": "X-a +0.0106"
+    },
+    {
+      "clause": "A7",
+      "holds": true,
+      "reading": "X-b +0.0996 on its own answers, +0.1037 on every answer; X-d +0.1565 on its own answers, +0.1565 on every answer; X-e +0.0642 on its own answers, +0.0481 on every answer; X-f +0.2491 on its own answers, +0.2365 on every answer"
+    },
+    {
+      "clause": "B1",
+      "holds": true,
+      "reading": "X-b +0.0054 on 92 decisions; X-c -0.3967 on 92 decisions; X-f +0.1810 on 174 decisions"
+    },
+    {
+      "clause": "C1",
+      "holds": true,
+      "reading": "against GMICloud: -0.0138 on 218 asks; against Relace: +0.0092 on 109 asks; against every_other: -0.0083 on 483 asks"
+    },
+    {
+      "clause": "C2",
+      "holds": true,
+      "reading": "screen: +0.9256 with one provider, +0.8754 with two; ticket: +0.9069 with one provider, +0.8423 with two"
+    }
+  ],
+  "seconds": 1.3
+}
