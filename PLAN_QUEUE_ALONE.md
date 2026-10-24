@@ -1,5 +1,25 @@
 # PLAN_QUEUE_ALONE — the queue asked alone: whether the application loses without a rule to write
 
+> **[CLOSED 2026-10-24] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-24, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-10-24. **`QA-a`, `QA-b` and `QA-f` hold; `QA-c`, `QA-d`
+> and `QA-e` are refuted, `QA-d` thinly.** `QA-g` is reported. **The figures
+> are owned by
+> [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One statement of this file was narrower than the protocol it describes.**
+> §1 says the new arms retry a failed parse with v1's retry message. v1's
+> loop, and the asker with it, retry any failed attempt that way, an upstream
+> 429 included. Eight answers were given so, and the findings say so in Stage
+> B. §1 also priced a pass at about 1.7 hours; each took under an hour.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-24. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-24, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
