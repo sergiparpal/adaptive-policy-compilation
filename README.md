@@ -721,6 +721,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `apply/sample.py` | `results_apply/sample.json` | **refuses while the plan is unsigned** |
 > | `apply/ask.py` | `results_apply/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `apply/score.py` | `results_apply/score.json` | **refuses while the plan is unsigned** |
+> | `apply/providers.py` | `results_apply/providers.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
