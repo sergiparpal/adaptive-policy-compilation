@@ -81,3 +81,5 @@ results_apply/*.partial.jsonl
 results_queue_alone/*.partial.jsonl
 # And the passes of PLAN_FIRST_MATCH.md (first_match/ask.py).
 results_first_match/*.partial.jsonl
+# And the passes of PLAN_REASONED_RULE.md (reasoned_rule/ask.py).
+results_reasoned_rule/*.partial.jsonl

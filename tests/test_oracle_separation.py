@@ -136,13 +136,26 @@ ONLINE_LOOP = [
     # never the oracle.
     "first_match/prompts.py",
     "first_match/ask.py",
+    # Added 2026-10-25 with PLAN_REASONED_RULE.md, which asks PLAN_QUEUE_ALONE.md's
+    # level-3 rule and plain prompts again, with and without reasoning, and the
+    # same frozen texts in every system prompt (§4, rule B of the plan). These
+    # two modules build and send its requests: every arm's prompts are
+    # `queue_alone.prompts`', called, which carry the manual's block through
+    # `apply.prompts` and `manual.prompts.block`, and the asker is
+    # `first_match/ask.py`'s. They are on the same channel, so
+    # `TestTheAuthorityChannel` watches them too. The labels enter only at
+    # scoring (`reasoned_rule/score.py`), and the rules a ticket matches, and the
+    # list's first match over the space, are read from level 3's frozen text
+    # (`queue_alone/rules.py`), never the oracle.
+    "reasoned_rule/prompts.py",
+    "reasoned_rule/ask.py",
 ]
 
 # The names that carry the hidden policy in code without being the oracle's
 # own: its DSL transcription, the module that holds it, and the edges derived
 # from its layer order. The authority channel's proposer path may import none.
 POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
-AUTHORITY_CHANNEL = ONLINE_LOOP[-11:]
+AUTHORITY_CHANNEL = ONLINE_LOOP[-13:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -239,7 +252,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "authorship", "overlap", "blind", "screen", "bound",
                      "ranking", "students", "escalations",
                      "spotcheck", "unreached", "manual", "apply",
-                     "queue_alone", "first_match"):
+                     "queue_alone", "first_match", "reasoned_rule"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -255,16 +268,18 @@ class TestTheAuthorityChannel(unittest.TestCase):
     """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
     These tests hold it to that route: the frozen text, and nothing in code."""
 
-    def test_the_eleven_modules_are_the_ones_watched(self):
+    def test_the_thirteen_modules_are_the_ones_watched(self):
         """`PLAN_MANUAL.md`'s five, since 2026-10-23 `PLAN_APPLY.md`'s two, since
         2026-10-24 `PLAN_QUEUE_ALONE.md`'s two, and since 2026-10-25
-        `PLAN_FIRST_MATCH.md`'s two, which send the same texts again."""
+        `PLAN_FIRST_MATCH.md`'s two and `PLAN_REASONED_RULE.md`'s two, which
+        send the same texts again."""
         self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
                                              "manual/compile.py", "manual/ask.py",
                                              "manual/run.py", "apply/prompts.py",
                                              "apply/ask.py", "queue_alone/prompts.py",
                                              "queue_alone/ask.py", "first_match/prompts.py",
-                                             "first_match/ask.py"])
+                                             "first_match/ask.py", "reasoned_rule/prompts.py",
+                                             "reasoned_rule/ask.py"])
 
     def test_no_proposer_path_module_imports_the_policy_in_code(self):
         for rel in AUTHORITY_CHANNEL:
