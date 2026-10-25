@@ -197,10 +197,10 @@ was 0.97, and it landed on 0.9672.
   arm is right on all 640 of its answers, so the 21 answers the reasoning rule
   arm gets wrong are the rule-writing prompt's, 0.0328.
 - **With reasoning off it cost less than it did on 2026-10-24.** Today's plain
-  arm stands 0.0203 above today's rule arm. `PLAN_QUEUE_ALONE.md` measured
-  +0.0849 (`QA-b`). The plain arm is where it was, and the rule arm is higher
-  (below). So `RR-d` compares two costs of a few points each, and finds the
-  one with reasoning no smaller (`RR-d` refuted, thin).
+  arm stands 0.0203 above today's rule arm, where `PLAN_QUEUE_ALONE.md`
+  measured +0.0849 (`QA-b`). Between the two days the rule arm rose and the
+  plain arm fell (below). So `RR-d` compares two costs of a few points each,
+  and finds the one with reasoning no smaller (`RR-d` refuted, thin).
 - **Read by ticket**, with each of the 170 tickets counted once however often
   the loop escalated it, the arms are right on 0.7029, 0.9559, 0.7529 and
   1.0000.
@@ -216,8 +216,12 @@ was 0.97, and it landed on 0.9672.
 - **The rule arm agrees with its answers of 2026-10-24 about as often as it
   agrees with itself** (`RR-a` holds), and it is right more often today: 0.7219
   against 0.6859. `RR-a` reads agreement, not accuracy, and says the instrument
-  is the same one. The rise is reported, and it is why today's cost without
-  reasoning is a quarter of `QA-b`'s.
+  is the same one. The rise is reported.
+- **The plain arm fell between the same two days.** On the 318 decisions
+  `PLAN_QUEUE_ALONE.md`'s rows read, it was right on 0.7689 on 2026-10-24, and
+  `PLAN_FIRST_MATCH.md` found it at 0.7406 on 2026-10-25. Today it stands where
+  that plan found it on all 320. The rule arm's rise and the plain arm's fall
+  together are why today's cost without reasoning is a quarter of `QA-b`'s.
 - **The reasoning arm is right on every decision again**, a few hours after
   `PLAN_FIRST_MATCH.md`'s `FM-e`.
 
