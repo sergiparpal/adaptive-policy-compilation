@@ -773,6 +773,7 @@ The first command is blocking and writes nothing:
     python3 -m queue_alone.ask --dry-run                                  # QA-g1..QA-g4; must pass first
     PYTHONHASHSEED=0 python3 -m queue_alone.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m queue_alone.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 python3 -m queue_alone.orders                        # POST-RUN: where the order errors go
     PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session smoke  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session pass1  # then pass2, never side by side
 

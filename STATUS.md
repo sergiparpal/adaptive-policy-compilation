@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 24, 2026. **Not a history** — that is the four
+What is known, as of October 25, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -2055,6 +2055,20 @@ So most of what the loop loses applying the rules it was given is neither the
 screen nor the rule-writing prompt. It is choosing the first of the rules that
 cover the ticket.
 
+**[NOTE 2026-10-25] Read POST-RUN, the model takes the next rule.** Not a
+signed row, and no verdict moves. Four of the reading's five clauses held.
+- **In all three arms, nearly every order error names the queue of the second
+  rule the ticket matches**: 134 of the plain arm's 141.
+- **It is neither the default nor specificity.** Five of 141 follow the
+  catch-all. Where the rule with the most conditions gives another queue, the
+  plain arm names it on 33 of 82 answers.
+- **A few rules carry it.** At three pairs the list puts an exception directly
+  above its general rule, and there the next rule is the general one. One of
+  them, the security keyword at low severity, is where `SECURITY_INCIDENT` is
+  lost.
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
+*Where the order errors go*.
+
 ---
 
 ## What was withdrawn, and why
@@ -2229,6 +2243,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      follows a lower rule. A question for the rule that applies, before its
      queue, would separate finding the first match from naming it.
    [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md).
+   **[NOTE 2026-10-25] Which lower rule, read POST-RUN: the next one.** Nearly
+   every order error names the second matching rule's queue, in every arm, and
+   not the more specific rule's. Why the model passes over the first rule is
+   what is open now.
+   [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
+   *Where the order errors go*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
