@@ -177,8 +177,8 @@ the FINDINGS.
 2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
-`queue_alone/ask.py`, and since 2026-10-25 `first_match/ask.py`, all twelve
-below. It
+`queue_alone/ask.py`, and since 2026-10-25 `first_match/ask.py` and
+`reasoned_rule/ask.py`, all thirteen below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -845,12 +845,63 @@ priced its reasoning arm with no recorded call that had reasoned, and was far
 off. A plan that buys such a setting should say in §1 that the smoke run
 measures it.
 
+**`PLAN_REASONED_RULE.md` closed on 2026-10-25: the rule written with reasoning
+on.** Four signed rows adjudicated, three held and one refuted, and one
+reported. Sergi signed §0 on 2026-10-25, before any figure it governs existed.
+- **What it asked.** It asked `PLAN_QUEUE_ALONE.md`'s rule and plain prompts at
+  level 3 again on one day, each twice, in four arms: the rule-writing prompt
+  and the plain question, each with reasoning off and on. No prompt is new.
+- **Where it is written up.** The record is
+  `results_reasoned_rule/FINDINGS_REASONED_RULE.md`, and `STATUS.md` indexes
+  its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `reasoned_rule/` refuses while the plan carries
+  a blank signature line, and the gate reads `PLAN_REASONED_RULE.md` and no
+  other plan. `first_match/`, `queue_alone/`, `apply/`, `manual/`, `fidelity/`,
+  `reuse/` and `rung2/` are called by it and not edited.
+- **Its asker is `PLAN_FIRST_MATCH.md`'s**, subclassed with this plan's
+  settings in its request, so the reasoning setting and the retry by cause are
+  that plan's.
+- **It reads the rules written over the space**, each alone and reported,
+  against the list's first match, which its first check holds to the policy
+  at every point.
+- **It sends the manual's texts again**, so its two proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m reasoned_rule.ask --dry-run                                  # RR-g1..RR-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m reasoned_rule.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m reasoned_rule.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session pass1  # then pass2, never side by side
+
+**With reasoning on, the loop's own question applies the list, and writes
+it.** Asked for a rule, the model that reasons chooses the queue nearly as
+often as asked for the queue alone, and the rule it writes is mostly the one
+that governs the ticket. A plan for a loop that reasons should say in §0 how
+rules transcribed one at a time get their order, since the edges this
+proposer declares cite the manual's numbers.
+
+**Two small costs set against each other make a thin row.** `RR-d` asked
+whether reasoning shrinks what asking for a rule costs, and both costs were a
+few points. A plan that crosses two factors should size the interaction it
+bands against the noise of four arms, and say so in §0.
+
+**Two asks an arm price a long arm loosely.** This plan's smoke run put the
+reasoning rule arm's pace faster than the passes found it. A plan that prices
+a pass from its smoke run should say how few asks the estimate rests on.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
 the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
 builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
-2026-10-25 the asker `first_match/ask.py` builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
+asks through too, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -939,7 +990,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
-`queue_alone/ask.py`, and since 2026-10-25, `first_match/ask.py`.
+`queue_alone/ask.py`, and since 2026-10-25, `first_match/ask.py` and
+`reasoned_rule/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
