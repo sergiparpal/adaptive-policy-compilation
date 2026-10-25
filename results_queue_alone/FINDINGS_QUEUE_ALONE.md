@@ -43,6 +43,11 @@ thinly.**
   always names the queue of a rule the ticket matches. What it misses is the
   order of the list.
 
+**[NOTE 2026-10-25] Read POST-RUN, the order errors are the next rule.** On
+134 of the plain arm's 141 they name the queue of the second rule the ticket
+matches. They are neither the default nor the more specific rule. See *Where
+the order errors go*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its counts were computed
 > while drafting, and §0 declared them. Its reference columns were computed
 > after the signature, for the first time. Zero API calls.
@@ -306,6 +311,8 @@ answer alike 0.7862 of the time.
    the list is 29 rules long. A question that asks which rule applies, before
    its queue, would separate finding the first match from naming it. Reasoning
    on is §12's third item.
+   **[NOTE 2026-10-25] Which lower rule, read POST-RUN**: the next one, in
+   *Where the order errors go*, below. Why is still open.
 2. **The rule-writing prompt without the impasse framing**, the fourth cell
    (§12, first item).
 3. **The plain question with a screen** (§12, second item).
@@ -321,6 +328,115 @@ answer alike 0.7862 of the time.
 
 ---
 
+## Where the order errors go — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-10-25, after the plan closed, and
+> run the same day. Zero API calls. `queue_alone/orders.py` read every valid
+> answer of the three arms at level 3 against the 29 rules of level 3's frozen
+> text, as §5.6 did. No oracle is read.
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is five clauses in the module's docstring, committed as
+>   `2ac1b2d`, with what the drafter had seen.
+> - **Four gates stood before any write.**
+>   - The classes come back from `score.json`, and the copiers from
+>     `sample.json`.
+>   - `H29` matches every level-3 ticket, and the first match gives every
+>     decision its truth.
+>   - The order errors partition.
+>
+> Not a signed row; no verdict moves. The record is [`orders.json`](orders.json).
+> Its `_env` names the branch commit it was written from, `2ac1b2d`, with a
+> clean tree.
+
+**The terms.** A ticket's matching rules, in the list's order, are `r₁, r₂, …`,
+and `r₁` gives its truth. An order error names the queue of some lower matching
+rule, and the rule it follows is the highest such rule. **The runner-up** is the
+first matching rule that gives another queue than `r₁`'s. **The catch-all** is
+`H29`, *severity gte 1*, which matches every ticket. **The most specific** rule is
+the matching rule with the most conditions.
+
+### The next rule
+
+| arm | order errors | the second matching rule's queue | the runner-up's | the catch-all's | the most specific rule's |
+|---|---|---|---|---|---|
+| the rule arm | 139 | 131 | 133 | 16 | 35 |
+| the impasse arm | 164 | 153 | 153 | 10 | 30 |
+| the plain arm | 141 | 134 | 135 | 5 | 33 |
+
+- **The model names the next rule.** 134 of the plain arm's 141 order errors
+  name the queue of the second rule the ticket matches, and 135 the
+  runner-up's. Every other order error names the third rule's.
+- **All three arms do it.** The rule arm sends 133 of its 139 to the
+  runner-up, and the plain arm 135 of 141, 0.9568 against 0.9574. Asking for
+  the queue alone removed the matching errors and did not move where the order
+  errors go.
+- **They are not a fall to the default.** Five of the plain arm's 141 follow
+  the catch-all.
+- **Nor are they specificity.** Where the most-conditions rule gives another
+  queue than the first's, the plain arm names it on 33 of 82 answers, and the
+  first rule's on 43.
+
+### The rules passed over
+
+The plain arm's order errors by the rule that governs the ticket, beside its
+answers on the tickets that rule governs:
+
+| governing rule | what it says | order errors | answers |
+|---|---|---|---|
+| `H18` | integrations → `T2_TECHNICAL` | 30 | 68 |
+| `H02` | the keyword and severity ≤ 2 → `SECURITY_INCIDENT` | 29 | 36 |
+| `H16` | api → `T2_TECHNICAL` | 15 | 68 |
+| `H17` | integrations and severity ≤ 2 → `T3_ENGINEERING` | 13 | 28 |
+| `H15` | api and severity ≤ 2 → `T3_ENGINEERING` | 12 | 36 |
+| `H13` | enterprise and 5 or more prior tickets → `ACCOUNT_MANAGER` | 12 | 18 |
+| `H14` | business and 8 or more prior tickets → `ACCOUNT_MANAGER` | 9 | 22 |
+
+The other governing rules carry 21 order errors between them.
+
+- **A few rules carry the errors.** `H18`, `H02` and `H16` carry 74 of the 141.
+- **Three of them sit just above the broader rule that follows them.** `H02`
+  is the keyword with severity at most 2, and `H03`, the next rule, the keyword
+  alone. `H15` and `H17` are api and integrations at severity at most 2, and
+  `H16` and `H18` the same products at any severity. On the tickets each of the
+  three governs, the runner-up is that broader rule. So an order error there
+  that names the runner-up takes the general rule over the exception the list
+  puts above it. The plain arm makes 29 order errors on 36 answers under
+  `H02`, 12 on 36 under `H15` and 13 on 28 under `H17`.
+- **`H02` is where `SECURITY_INCIDENT` is lost.** Its tickets carry the
+  keyword, and the rule after it sends them to `T2_TECHNICAL`. The plain arm is
+  wrong on 29 of its 56 answers on that class at level 3, and makes 29 order
+  errors under `H02`.
+- **The rules the plain arm's order errors follow most** are `H03` (29), `H24`
+  (23), `H28` (20) and `H26` (16): the keyword alone, the free tier at severity
+  3 or more, the business and enterprise tiers, and severity 4 with no prior
+  ticket.
+
+### The expectation, clause by clause
+
+| clause | expected | read | verdict |
+|---|---|---|---|
+| O1 | at least half of the plain arm's order errors name the runner-up's queue | 135 of 141 | holds |
+| O2 | fewer than one in five follow the catch-all | 5 of 141 | holds |
+| O3 | where the most-conditions rule gives another queue, the plain arm names it on at least half | 33 of 82 | **fails** |
+| O4 | three governing rules carry at least half of the plain arm's order errors | 74 of 141 | holds |
+| O5 | the rule and plain arms send theirs to the runner-up within 0.15 of each other | 0.9568 and 0.9574 | holds |
+
+**Four of five held.** O3, which the drafter trusted least, failed: the model
+does not read the list by specificity, and at the three pairs above it reads
+against it.
+
+### What this reading does not settle
+
+- **Why the model takes the next rule.** Whether it misreads the first rule's
+  conditions, or reads the exception as covered by the general rule below it,
+  these answers cannot say. A question for the rule that applies would show
+  which rule the model believes it is applying.
+- **Which rule follows which, beyond the runner-up.** The record counts the
+  rules passed over and the rules followed apart. Where the runner-up is fixed
+  by construction, as at the three pairs above, the two meet.
+
+---
+
 ## Files
 
 ```
@@ -333,4 +449,6 @@ results_queue_alone/ask_pass1.json  Stage B's pass 1: 2,028 asks, every attempt 
 results_queue_alone/ask_pass2.json  Stage B's pass 2: the same asks in another order
 results_queue_alone/score.json      Stage C: the six verdicts with their parts, errors and
                                     runs, and QA-g
+results_queue_alone/orders.json     POST-RUN: where the order errors go at level 3, by arm,
+                                    and the expectation clause by clause
 ```
