@@ -175,7 +175,7 @@ class TestOnlyWhatCostsMoneyIsGuarded(unittest.TestCase):
         self.assertEqual(guarded(), marked)
 
     def test_the_guarded_writers_are_the_ones_that_spend(self):
-        """Fifteen modules, and each of them costs API calls: the rung 1 run,
+        """Sixteen modules, and each of them costs API calls: the rung 1 run,
         the rung 2 runs, the pairwise judgement, `PLAN_REUSE.md`'s Stage B since
         2026-09-29, `PLAN_FIDELITY.md`'s since 2026-10-02,
         `PLAN_AUTHORSHIP.md`'s since 2026-10-05, `PLAN_OVERLAP.md`'s since
@@ -183,8 +183,8 @@ class TestOnlyWhatCostsMoneyIsGuarded(unittest.TestCase):
         since 2026-10-14, `PLAN_RANKING.md`'s since 2026-10-17,
         `PLAN_MANUAL.md`'s two since 2026-10-21, `PLAN_APPLY.md`'s since
         2026-10-23, `PLAN_QUEUE_ALONE.md`'s since 2026-10-24, and
-        `PLAN_FIRST_MATCH.md`'s since 2026-10-25. The last twelve refuse while
-        their plan is unsigned."""
+        `PLAN_FIRST_MATCH.md`'s and `PLAN_REASONED_RULE.md`'s since 2026-10-25.
+        The last thirteen refuse while their plan is unsigned."""
         self.assertEqual(guarded(), {"run_experiment.py", "rung2/run2.py",
                                      "rung2/pair_judgement.py", "reuse/run.py",
                                      "fidelity/ask.py", "authorship/run.py",
@@ -192,7 +192,7 @@ class TestOnlyWhatCostsMoneyIsGuarded(unittest.TestCase):
                                      "screen/ask.py", "ranking/ask.py",
                                      "manual/ask.py", "manual/run.py",
                                      "apply/ask.py", "queue_alone/ask.py",
-                                     "first_match/ask.py"})
+                                     "first_match/ask.py", "reasoned_rule/ask.py"})
 
     def test_no_free_writer_imports_the_guard(self):
         for module in sorted(writers() - guarded()):
