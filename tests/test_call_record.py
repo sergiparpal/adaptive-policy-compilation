@@ -375,7 +375,8 @@ class TestNoCallSiteGoesUnrecorded(unittest.TestCase):
                                         "screen/ask.py",
                                         "ranking/ask.py",
                                         "manual/ask.py",
-                                        "queue_alone/ask.py"})
+                                        "queue_alone/ask.py",
+                                        "first_match/ask.py"})
 
     def test_every_exemption_says_why(self):
         for module, why in EXEMPT.items():
