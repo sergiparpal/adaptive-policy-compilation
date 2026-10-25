@@ -283,7 +283,11 @@ auditable.**
   - *Where the order errors go*, POST-RUN: where each arm's order errors go,
     the rules passed over and followed, and its five clauses.
 
-  The JSON records of that thread were not opened while drafting.
+  **The JSON records of that thread were not read for figures.** The package's
+  checks read `sample.json`, both passes, `score.json` and `orders.json`, to
+  recompute what they hold and compare it, and print only whether each
+  comparison passes. Writing the order check, the drafter listed `orders.json`'s
+  keys.
 - **`PLAN_REUSE.md` §1's amendment**, which turned reasoning off: the default
   reasoned 20 tokens on a six-token reply, and `{"effort": "none"}` none.
 - **The three analytical documents `CLAUDE.md` asks a new one to read first.**
@@ -293,10 +297,12 @@ auditable.**
   - `CHAT_SUMMARY.md`'s header list of errata, and §2.2's erratum of
     2026-08-12, as `PLAN_PAIRWISE.md` §4's rule C asks;
   - `EXTERNAL_REVIEW.md` §5.
-- **The code the package will call.** `queue_alone/`'s `plan.py`, `prompts.py`,
-  `population.py`, `rules.py`, `gates.py`, `ask.py` and the first half of
-  `score.py`; `harness/call_record.py`; `rung2.proposers2.parse_payload`; the
-  constants of `manual/plan.py` and `reuse/plan.py`; `tests/doubles.py`.
+- **The code the package calls.** `queue_alone/`'s `plan.py`, `prompts.py`,
+  `population.py`, `rules.py`, `gates.py`, `ask.py`, `sample.py`, `score.py`
+  and the functions of `orders.py`, and `tests/test_queue_alone.py`;
+  `apply/score.py`'s helpers; `harness/call_record.py`;
+  `rung2.proposers2.parse_payload`; the constants of `manual/plan.py` and
+  `reuse/plan.py`; `tests/doubles.py`.
 - **The manual's level-3 text**, `manual/texts/rules.txt`, whole: the 29 rules
   and the first-match sentence.
 - **OpenRouter.** Its listing of this model's endpoints and its documentation
@@ -312,6 +318,9 @@ auditable.**
   - **No recorded attempt reasoned.** Of the 7,854 attempt entries under
     `results*/` that carry a `reasoning_tokens` field, all of them recorded
     since 2026-10-16, none is above 0.
+  - **The design, as the package builds it.** 171 prompts an arm, every one of
+    level 3's 320 decisions served once in each arm, and 342 distinct texts
+    behind the 513 prompts, since the plain and reasoning arms share theirs.
 
 **Not seen, because nothing has produced it:**
 
@@ -799,7 +808,7 @@ figure exists.**
 - **Its rows.** `queue_alone.score` gives back `score.json`'s six verdicts from
   its passes.
 - **Its order reading.** `queue_alone.orders` gives back `orders.json`'s counts
-  from the same passes.
+  and fractions from the same passes.
 - **No float decides a check.** Values are compared as fractions and counts as
   integers, so a record written under 3.12 reads the same under 3.10.
 
@@ -813,6 +822,8 @@ figure exists.**
     else changed.
   - Its user message is the plain arm's.
   - Its answer asks for `rule` and then `action`, and nothing else.
+  - The identifiers an answer is read against, `H01` to `H29`, are the ones
+    level 3's text lists, in its order.
 - **The requests.** They are checked through `tests/doubles.py`'s SDK double in
   the package's tests, which `FM-g1`'s suite runs. For each arm, a call sends:
   - the model, temperature 0, `response_format` on the first attempt, and the
@@ -935,6 +946,8 @@ pinned by tests:**
   - `REASONING_ON = {"effort": "high"}` and `MAX_TOKENS_REASONING = 16000`.
   - `MAX_RETRIES = 2`, and `CALL_RETRY_WAIT = (10, 30)` seconds before a failed
     call's two retries.
+  - `settings(arm)` gives each arm's reasoning setting and token budget, the
+    two things its request carries that another arm's may not.
 - **The inputs.** `queue_alone.population.build` and `queue_alone.plan`'s
   paths, imported and not retyped.
 - **The arms.** `ARMS = ("q", "n", "r")`, the plain, naming and reasoning arms.
