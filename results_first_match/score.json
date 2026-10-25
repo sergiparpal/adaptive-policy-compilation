@@ -1,0 +1,1393 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-25T13:01:45Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ea24ef2a784d87f8c9305fa190494268abce68cb",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "d9ea475aeac77bf4"
+  },
+  "plan": "PLAN_FIRST_MATCH.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_FIRST_MATCH.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_FIRST_MATCH.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "FM-g1": {
+      "what": "PLAN_QUEUE_ALONE.md's checks pass, its design is its Stage A's, its verdicts and its order reading come back from its passes; the suite green",
+      "queue_alone_checks": true,
+      "queue_alone_design": {
+        "passes": true,
+        "why": "results_queue_alone/sample.json: the same sessions, prompts and decisions"
+      },
+      "queue_alone_rows": {
+        "rows": 6,
+        "departing": [],
+        "passes": true
+      },
+      "queue_alone_orders": {
+        "arms": [
+          "t",
+          "i",
+          "q"
+        ],
+        "departing": [],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2344,
+        "result": "OK (skipped=5)",
+        "seconds": 173.1,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g2": {
+      "what": "the plain arm is PLAN_QUEUE_ALONE.md's at level 3, digest for digest; the reasoning arm's texts are the plain arm's; the naming arm adds \u00a75.1's line and nothing else; no builder takes a row; the digests have teeth. The requests are tests/test_first_match.py's, through the SDK double",
+      "plain_arm": {
+        "prompts": 171,
+        "not_queue_alones": [],
+        "every_one_of_theirs": true,
+        "passes": true
+      },
+      "reasoning_arm": {
+        "prompts": 171,
+        "not_the_plain_arms": [],
+        "passes": true
+      },
+      "texts": {
+        "plain_is_queue_alones": true,
+        "plain_ends_with_its_answer": true,
+        "naming_adds_one_line": true,
+        "naming_answer_is_plain_answer_with_the_line": true,
+        "the_rest_is_the_same": true,
+        "users_are_the_plain_arms": true,
+        "naming_asks_rule_then_action": true,
+        "the_identifiers": true,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 513,
+        "texts": 342,
+        "distinct": 342,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g3": {
+      "what": "the population is \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "prompts": {
+          "q": 171,
+          "n": 171,
+          "r": 171
+        },
+        "decisions": 320,
+        "every_decision_served_once": {
+          "q": true,
+          "n": true,
+          "r": true
+        },
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "n:L3:1807",
+          "q:L3:135",
+          "q:L3:511",
+          "n:L3:346",
+          "r:L3:135",
+          "r:L3:107"
+        ],
+        "smoke_two_distinct_of_each_arm": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_FIRST_MATCH.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_FIRST_MATCH.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "lines": {
+    "FM-a": {
+      "fraction": "1/20",
+      "value": 0.05
+    },
+    "FM-b": {
+      "fraction": "0/1",
+      "value": 0.0
+    },
+    "FM-c": {
+      "fraction": "1/2",
+      "value": 0.5
+    },
+    "FM-d": {
+      "fraction": "0/1",
+      "value": 0.0
+    },
+    "FM-e": {
+      "fraction": "9/10",
+      "value": 0.9
+    },
+    "FM-f": {
+      "fraction": "0/1",
+      "value": 0.0
+    }
+  },
+  "verdicts": {
+    "FM-a": {
+      "id": "FM-a",
+      "prompts": 171,
+      "read": 171,
+      "line": {
+        "fraction": "1/20",
+        "value": 0.05
+      },
+      "holds": "le",
+      "value": {
+        "fraction": "-2/171",
+        "value": -0.011695906432748537
+      },
+      "se": 0.016037246150487128,
+      "parts": {
+        "S": {
+          "fraction": "157/171",
+          "value": 0.9181286549707602
+        },
+        "A": {
+          "fraction": "53/57",
+          "value": 0.9298245614035088
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false
+      }
+    },
+    "FM-b": {
+      "id": "FM-b",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "-43/320",
+        "value": -0.134375
+      },
+      "se": 0.041284091071001894,
+      "per_run": {
+        "L3r1": {
+          "fraction": "-2/17",
+          "value": -0.11764705882352941
+        },
+        "L3r2": {
+          "fraction": "-47/270",
+          "value": -0.17407407407407408
+        },
+        "L3r3": {
+          "fraction": "-19/200",
+          "value": -0.095
+        }
+      },
+      "parts": {
+        "acc_n": {
+          "fraction": "389/640",
+          "value": 0.6078125
+        },
+        "acc_q": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        }
+      },
+      "verdict": "refuted",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "FM-c": {
+      "id": "FM-c",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "answers": 640,
+      "unnamed": 0,
+      "named_order_errors": 113,
+      "lower": 107,
+      "line": {
+        "fraction": "1/2",
+        "value": 0.5
+      },
+      "holds": "ge",
+      "compared_as": "2\u00b7lower \u2212 named against 0",
+      "value": {
+        "fraction": "107/113",
+        "value": 0.9469026548672567
+      },
+      "se": 0.028270613005043285,
+      "per_run": {
+        "L3r1": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "L3r2": {
+          "fraction": "8/9",
+          "value": 0.8888888888888888
+        },
+        "L3r3": {
+          "fraction": "1/1",
+          "value": 1.0
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "FM-d": {
+      "id": "FM-d",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "33/128",
+        "value": 0.2578125
+      },
+      "se": 0.03579012854299837,
+      "per_run": {
+        "L3r1": {
+          "fraction": "43/170",
+          "value": 0.2529411764705882
+        },
+        "L3r2": {
+          "fraction": "23/90",
+          "value": 0.25555555555555554
+        },
+        "L3r3": {
+          "fraction": "53/200",
+          "value": 0.265
+        }
+      },
+      "parts": {
+        "acc_r": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "acc_q": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "FM-e": {
+      "id": "FM-e",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds": "ge",
+      "value": {
+        "fraction": "1/1",
+        "value": 1.0
+      },
+      "se": 0.0,
+      "per_run": {
+        "L3r1": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "L3r2": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "L3r3": {
+          "fraction": "1/1",
+          "value": 1.0
+        }
+      },
+      "parts": {
+        "acc_r": {
+          "fraction": "1/1",
+          "value": 1.0
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "FM-f": {
+      "id": "FM-f",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "251/640",
+        "value": 0.3921875
+      },
+      "se": 0.039866979926126714,
+      "per_run": {
+        "L3r1": {
+          "fraction": "63/170",
+          "value": 0.37058823529411766
+        },
+        "L3r2": {
+          "fraction": "58/135",
+          "value": 0.42962962962962964
+        },
+        "L3r3": {
+          "fraction": "9/25",
+          "value": 0.36
+        }
+      },
+      "parts": {
+        "acc_r": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "acc_n": {
+          "fraction": "389/640",
+          "value": 0.6078125
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    }
+  },
+  "FM-g": {
+    "accuracy": {
+      "q": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "127/170",
+            "value": 0.7470588235294118
+          },
+          "L3r2": {
+            "fraction": "67/90",
+            "value": 0.7444444444444445
+          },
+          "L3r3": {
+            "fraction": "147/200",
+            "value": 0.735
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "127/170",
+            "value": 0.7470588235294118
+          }
+        }
+      },
+      "n": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "389/640",
+          "value": 0.6078125
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "107/170",
+            "value": 0.6294117647058823
+          },
+          "L3r2": {
+            "fraction": "77/135",
+            "value": 0.5703703703703704
+          },
+          "L3r3": {
+            "fraction": "16/25",
+            "value": 0.64
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "209/340",
+            "value": 0.6147058823529412
+          }
+        }
+      },
+      "r": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "1/1",
+            "value": 1.0
+          },
+          "L3r2": {
+            "fraction": "1/1",
+            "value": 1.0
+          },
+          "L3r3": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        }
+      }
+    },
+    "where_errors_go": {
+      "q": {
+        "answers": 640,
+        "classes": {
+          "first": 475,
+          "order": 157,
+          "matching": 8
+        },
+        "order_errors": 157,
+        "rank": {
+          "2": 152,
+          "3": 5
+        },
+        "runner_up": {
+          "count": 152,
+          "share": {
+            "fraction": "152/157",
+            "value": 0.9681528662420382
+          }
+        },
+        "catch_all": {
+          "count": 6,
+          "share": {
+            "fraction": "6/157",
+            "value": 0.03821656050955414
+          }
+        },
+        "most_specific": {
+          "count": 31,
+          "share": {
+            "fraction": "31/157",
+            "value": 0.19745222929936307
+          }
+        },
+        "follows": {
+          "H03": 32,
+          "H28": 27,
+          "H24": 23,
+          "H18": 16,
+          "H16": 15,
+          "H26": 14,
+          "H15": 6,
+          "H08": 6,
+          "H29": 6,
+          "H20": 6,
+          "H12": 4,
+          "H10": 2
+        },
+        "governing": [
+          {
+            "rule": "H18",
+            "order_errors": 37,
+            "answers": 68
+          },
+          {
+            "rule": "H02",
+            "order_errors": 32,
+            "answers": 36
+          },
+          {
+            "rule": "H16",
+            "order_errors": 19,
+            "answers": 68
+          },
+          {
+            "rule": "H17",
+            "order_errors": 16,
+            "answers": 28
+          },
+          {
+            "rule": "H15",
+            "order_errors": 12,
+            "answers": 36
+          },
+          {
+            "rule": "H13",
+            "order_errors": 12,
+            "answers": 18
+          },
+          {
+            "rule": "H14",
+            "order_errors": 9,
+            "answers": 22
+          },
+          {
+            "rule": "H07",
+            "order_errors": 6,
+            "answers": 8
+          },
+          {
+            "rule": "H23",
+            "order_errors": 6,
+            "answers": 6
+          },
+          {
+            "rule": "H11",
+            "order_errors": 4,
+            "answers": 12
+          },
+          {
+            "rule": "H24",
+            "order_errors": 2,
+            "answers": 30
+          },
+          {
+            "rule": "H09",
+            "order_errors": 2,
+            "answers": 16
+          }
+        ],
+        "top_three": {
+          "rules": [
+            "H18",
+            "H02",
+            "H16"
+          ],
+          "share": {
+            "fraction": "88/157",
+            "value": 0.5605095541401274
+          }
+        },
+        "second_matching_rule": 152,
+        "specificity": {
+          "answers": 82,
+          "most_specific": 31,
+          "first": 46,
+          "other": 5,
+          "most_specific_share": {
+            "fraction": "31/82",
+            "value": 0.3780487804878049
+          }
+        }
+      },
+      "n": {
+        "answers": 640,
+        "classes": {
+          "matching": 138,
+          "first": 389,
+          "order": 113
+        },
+        "order_errors": 113,
+        "rank": {
+          "2": 113
+        },
+        "runner_up": {
+          "count": 113,
+          "share": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        },
+        "catch_all": {
+          "count": 0,
+          "share": {
+            "fraction": "0/1",
+            "value": 0.0
+          }
+        },
+        "most_specific": {
+          "count": 44,
+          "share": {
+            "fraction": "44/113",
+            "value": 0.3893805309734513
+          }
+        },
+        "follows": {
+          "H24": 32,
+          "H03": 26,
+          "H26": 18,
+          "H28": 11,
+          "H15": 6,
+          "H08": 6,
+          "H18": 5,
+          "H12": 4,
+          "H20": 3,
+          "H10": 2
+        },
+        "governing": [
+          {
+            "rule": "H18",
+            "order_errors": 31,
+            "answers": 68
+          },
+          {
+            "rule": "H02",
+            "order_errors": 26,
+            "answers": 36
+          },
+          {
+            "rule": "H16",
+            "order_errors": 18,
+            "answers": 68
+          },
+          {
+            "rule": "H13",
+            "order_errors": 9,
+            "answers": 18
+          },
+          {
+            "rule": "H14",
+            "order_errors": 6,
+            "answers": 22
+          },
+          {
+            "rule": "H07",
+            "order_errors": 6,
+            "answers": 8
+          },
+          {
+            "rule": "H23",
+            "order_errors": 6,
+            "answers": 6
+          },
+          {
+            "rule": "H17",
+            "order_errors": 5,
+            "answers": 28
+          },
+          {
+            "rule": "H09",
+            "order_errors": 4,
+            "answers": 16
+          },
+          {
+            "rule": "H11",
+            "order_errors": 2,
+            "answers": 12
+          }
+        ],
+        "top_three": {
+          "rules": [
+            "H18",
+            "H02",
+            "H16"
+          ],
+          "share": {
+            "fraction": "75/113",
+            "value": 0.6637168141592921
+          }
+        },
+        "second_matching_rule": 113,
+        "specificity": {
+          "answers": 82,
+          "most_specific": 44,
+          "first": 33,
+          "other": 5,
+          "most_specific_share": {
+            "fraction": "22/41",
+            "value": 0.5365853658536586
+          }
+        }
+      },
+      "r": {
+        "answers": 640,
+        "classes": {
+          "first": 640
+        },
+        "order_errors": 0,
+        "rank": {},
+        "runner_up": {
+          "count": 0,
+          "share": null
+        },
+        "catch_all": {
+          "count": 0,
+          "share": null
+        },
+        "most_specific": {
+          "count": 0,
+          "share": null
+        },
+        "follows": {},
+        "governing": [],
+        "top_three": {
+          "rules": [],
+          "share": null
+        },
+        "second_matching_rule": 0,
+        "specificity": {
+          "answers": 82,
+          "first": 82,
+          "most_specific_share": {
+            "fraction": "0/1",
+            "value": 0.0
+          }
+        }
+      }
+    },
+    "naming": {
+      "answers": 640,
+      "classes": {
+        "unmatched": 168,
+        "first": 343,
+        "lower": 129
+      },
+      "order_errors": 113,
+      "classes_over_order_errors": {
+        "lower": 107,
+        "unmatched": 6
+      },
+      "by_answer_class": {
+        "first": {
+          "first": 343,
+          "unmatched": 24,
+          "lower": 22
+        },
+        "matching": {
+          "unmatched": 138
+        },
+        "order": {
+          "lower": 107,
+          "unmatched": 6
+        }
+      },
+      "named": 640,
+      "queue_is_the_named_rules": 640,
+      "lower_names": 129,
+      "lower_name_is_the_next_matching_rule": 103,
+      "rules_named_on_order_errors": {
+        "H26": 30,
+        "H03": 26,
+        "H24": 17,
+        "H28": 11,
+        "H25": 6,
+        "H15": 6,
+        "H08": 6,
+        "H27": 5,
+        "H20": 3,
+        "H10": 2,
+        "H12": 1
+      },
+      "valid_rows": 342,
+      "rule_written_first": 342
+    },
+    "paired": {
+      "plain_order_errors": 157,
+      "names_an_unmatched_rule": 24,
+      "names_the_rule_the_plain_arm_followed": 85,
+      "names_the_first": 43,
+      "names_another_lower_match": 5
+    },
+    "by_governing_rule": {
+      "H01": {
+        "decisions": 10,
+        "q_answers": 20,
+        "q_right": 20,
+        "n_answers": 20,
+        "n_right": 20,
+        "r_answers": 20,
+        "r_right": 20
+      },
+      "H02": {
+        "decisions": 18,
+        "q_answers": 36,
+        "q_right": 4,
+        "n_answers": 36,
+        "n_right": 10,
+        "r_answers": 36,
+        "r_right": 36
+      },
+      "H03": {
+        "decisions": 14,
+        "q_answers": 28,
+        "q_right": 28,
+        "n_answers": 28,
+        "n_right": 23,
+        "r_answers": 28,
+        "r_right": 28
+      },
+      "H04": {
+        "decisions": 3,
+        "q_answers": 6,
+        "q_right": 6,
+        "n_answers": 6,
+        "n_right": 6,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H05": {
+        "decisions": 6,
+        "q_answers": 12,
+        "q_right": 12,
+        "n_answers": 12,
+        "n_right": 12,
+        "r_answers": 12,
+        "r_right": 12
+      },
+      "H07": {
+        "decisions": 4,
+        "q_answers": 8,
+        "q_right": 2,
+        "n_answers": 8,
+        "n_right": 2,
+        "r_answers": 8,
+        "r_right": 8
+      },
+      "H08": {
+        "decisions": 16,
+        "q_answers": 32,
+        "q_right": 32,
+        "n_answers": 32,
+        "n_right": 32,
+        "r_answers": 32,
+        "r_right": 32
+      },
+      "H09": {
+        "decisions": 8,
+        "q_answers": 16,
+        "q_right": 14,
+        "n_answers": 16,
+        "n_right": 12,
+        "r_answers": 16,
+        "r_right": 16
+      },
+      "H10": {
+        "decisions": 7,
+        "q_answers": 14,
+        "q_right": 14,
+        "n_answers": 14,
+        "n_right": 14,
+        "r_answers": 14,
+        "r_right": 14
+      },
+      "H11": {
+        "decisions": 6,
+        "q_answers": 12,
+        "q_right": 8,
+        "n_answers": 12,
+        "n_right": 10,
+        "r_answers": 12,
+        "r_right": 12
+      },
+      "H12": {
+        "decisions": 15,
+        "q_answers": 30,
+        "q_right": 30,
+        "n_answers": 30,
+        "n_right": 28,
+        "r_answers": 30,
+        "r_right": 30
+      },
+      "H13": {
+        "decisions": 9,
+        "q_answers": 18,
+        "q_right": 6,
+        "n_answers": 18,
+        "n_right": 9,
+        "r_answers": 18,
+        "r_right": 18
+      },
+      "H14": {
+        "decisions": 11,
+        "q_answers": 22,
+        "q_right": 13,
+        "n_answers": 22,
+        "n_right": 13,
+        "r_answers": 22,
+        "r_right": 22
+      },
+      "H15": {
+        "decisions": 18,
+        "q_answers": 36,
+        "q_right": 24,
+        "n_answers": 36,
+        "n_right": 36,
+        "r_answers": 36,
+        "r_right": 36
+      },
+      "H16": {
+        "decisions": 34,
+        "q_answers": 68,
+        "q_right": 49,
+        "n_answers": 68,
+        "n_right": 29,
+        "r_answers": 68,
+        "r_right": 68
+      },
+      "H17": {
+        "decisions": 14,
+        "q_answers": 28,
+        "q_right": 12,
+        "n_answers": 28,
+        "n_right": 23,
+        "r_answers": 28,
+        "r_right": 28
+      },
+      "H18": {
+        "decisions": 34,
+        "q_answers": 68,
+        "q_right": 31,
+        "n_answers": 68,
+        "n_right": 6,
+        "r_answers": 68,
+        "r_right": 68
+      },
+      "H19": {
+        "decisions": 3,
+        "q_answers": 6,
+        "q_right": 6,
+        "n_answers": 6,
+        "n_right": 6,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H20": {
+        "decisions": 13,
+        "q_answers": 26,
+        "q_right": 26,
+        "n_answers": 26,
+        "n_right": 26,
+        "r_answers": 26,
+        "r_right": 26
+      },
+      "H22": {
+        "decisions": 1,
+        "q_answers": 2,
+        "q_right": 2,
+        "n_answers": 2,
+        "n_right": 2,
+        "r_answers": 2,
+        "r_right": 2
+      },
+      "H23": {
+        "decisions": 3,
+        "q_answers": 6,
+        "q_right": 0,
+        "n_answers": 6,
+        "n_right": 0,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H24": {
+        "decisions": 15,
+        "q_answers": 30,
+        "q_right": 28,
+        "n_answers": 30,
+        "n_right": 30,
+        "r_answers": 30,
+        "r_right": 30
+      },
+      "H26": {
+        "decisions": 8,
+        "q_answers": 16,
+        "q_right": 16,
+        "n_answers": 16,
+        "n_right": 16,
+        "r_answers": 16,
+        "r_right": 16
+      },
+      "H28": {
+        "decisions": 23,
+        "q_answers": 46,
+        "q_right": 46,
+        "n_answers": 46,
+        "n_right": 24,
+        "r_answers": 46,
+        "r_right": 46
+      },
+      "H29": {
+        "decisions": 27,
+        "q_answers": 54,
+        "q_right": 46,
+        "n_answers": 54,
+        "n_right": 0,
+        "r_answers": 54,
+        "r_right": 54
+      }
+    },
+    "by_true_queue": {
+      "by_true_queue": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 28,
+          "q_answers": 56,
+          "q_right": 33,
+          "n_answers": 56,
+          "n_right": 34,
+          "r_answers": 56,
+          "r_right": 56
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 13,
+          "q_answers": 26,
+          "q_right": 22,
+          "n_answers": 26,
+          "n_right": 24,
+          "r_answers": 26,
+          "r_right": 26
+        },
+        "ONCALL_ESCALATION": {
+          "decisions": 9,
+          "q_answers": 18,
+          "q_right": 18,
+          "n_answers": 18,
+          "n_right": 18,
+          "r_answers": 18,
+          "r_right": 18
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 28,
+          "q_answers": 56,
+          "q_right": 24,
+          "n_answers": 56,
+          "n_right": 30,
+          "r_answers": 56,
+          "r_right": 56
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 39,
+          "q_answers": 78,
+          "q_right": 76,
+          "n_answers": 78,
+          "n_right": 76,
+          "r_answers": 78,
+          "r_right": 78
+        },
+        "T1_GENERAL": {
+          "decisions": 53,
+          "q_answers": 106,
+          "q_right": 92,
+          "n_answers": 106,
+          "n_right": 24,
+          "r_answers": 106,
+          "r_right": 106
+        },
+        "T2_TECHNICAL": {
+          "decisions": 114,
+          "q_answers": 228,
+          "q_right": 172,
+          "n_answers": 228,
+          "n_right": 122,
+          "r_answers": 228,
+          "r_right": 228
+        },
+        "T3_ENGINEERING": {
+          "decisions": 36,
+          "q_answers": 72,
+          "q_right": 38,
+          "n_answers": 72,
+          "n_right": 61,
+          "r_answers": 72,
+          "r_right": 72
+        }
+      },
+      "rare": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "T3_ENGINEERING"
+      ]
+    },
+    "agreement": {
+      "S_q": {
+        "fraction": "149/160",
+        "value": 0.93125
+      },
+      "S_n": {
+        "fraction": "143/160",
+        "value": 0.89375
+      },
+      "S_r": {
+        "fraction": "1/1",
+        "value": 1.0
+      },
+      "q_n": {
+        "fraction": "179/256",
+        "value": 0.69921875
+      },
+      "q_r": {
+        "fraction": "95/128",
+        "value": 0.7421875
+      },
+      "n_r": {
+        "fraction": "389/640",
+        "value": 0.6078125
+      }
+    },
+    "queue_alone_beside": {
+      "decisions": 318,
+      "acc_queue_alone": {
+        "fraction": "163/212",
+        "value": 0.7688679245283019
+      },
+      "acc_today_on_the_same": {
+        "fraction": "157/212",
+        "value": 0.7405660377358491
+      }
+    },
+    "the_calls": {
+      "pass1": {
+        "answers": 513,
+        "valid": 513,
+        "invalid_action": 0,
+        "served_elsewhere": 0,
+        "failed": 0,
+        "retried": 0,
+        "started_at": "2026-10-25T12:00:51Z",
+        "finished_at": "2026-10-25T12:18:21Z",
+        "by_arm": {
+          "q": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 2567,
+              "reasoning": 0
+            }
+          },
+          "r": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 59322,
+              "reasoning": 56719
+            }
+          },
+          "n": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 220333,
+              "completion": 3981,
+              "reasoning": 0
+            }
+          }
+        },
+        "seconds": {
+          "n": {
+            "asks": 171,
+            "total": 196.5,
+            "median": 1.03
+          },
+          "q": {
+            "asks": 171,
+            "total": 170.6,
+            "median": 0.87
+          },
+          "r": {
+            "asks": 171,
+            "total": 682.1,
+            "median": 3.97
+          }
+        },
+        "reasoning_tokens": {
+          "n": {
+            "attempts": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "q": {
+            "attempts": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "r": {
+            "attempts": 171,
+            "min": 45,
+            "median": 349,
+            "max": 1061
+          }
+        },
+        "reasoning": {
+          "recorded": 171,
+          "coded": false
+        }
+      },
+      "pass2": {
+        "answers": 513,
+        "valid": 513,
+        "invalid_action": 0,
+        "served_elsewhere": 0,
+        "failed": 0,
+        "retried": 0,
+        "started_at": "2026-10-25T12:31:35Z",
+        "finished_at": "2026-10-25T12:47:45Z",
+        "by_arm": {
+          "n": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 220333,
+              "completion": 3983,
+              "reasoning": 0
+            }
+          },
+          "q": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 2574,
+              "reasoning": 0
+            }
+          },
+          "r": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 59357,
+              "reasoning": 56744
+            }
+          }
+        },
+        "seconds": {
+          "n": {
+            "asks": 171,
+            "total": 172.0,
+            "median": 0.95
+          },
+          "q": {
+            "asks": 171,
+            "total": 154.4,
+            "median": 0.85
+          },
+          "r": {
+            "asks": 171,
+            "total": 643.7,
+            "median": 3.7
+          }
+        },
+        "reasoning_tokens": {
+          "n": {
+            "attempts": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "q": {
+            "attempts": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "r": {
+            "attempts": 171,
+            "min": 49,
+            "median": 322,
+            "max": 855
+          }
+        },
+        "reasoning": {
+          "recorded": 171,
+          "coded": false
+        }
+      }
+    }
+  }
+}
