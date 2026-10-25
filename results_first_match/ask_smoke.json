@@ -1,0 +1,423 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-25T11:37:07Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "80e45f96a3565c4da8dac9e40a5081b8ff56282f",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "d9ea475aeac77bf4"
+  },
+  "plan": "PLAN_FIRST_MATCH.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "settings": {
+    "q": {
+      "reasoning": {
+        "effort": "none"
+      },
+      "max_tokens": 1200
+    },
+    "n": {
+      "reasoning": {
+        "effort": "none"
+      },
+      "max_tokens": 1200
+    },
+    "r": {
+      "reasoning": {
+        "effort": "high"
+      },
+      "max_tokens": 16000
+    }
+  },
+  "provider": {
+    "order": [
+      "baidu"
+    ],
+    "allow_fallbacks": false
+  },
+  "call_retry_wait": [
+    10,
+    30
+  ],
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "pass": 0,
+  "temperature": 0,
+  "max_retries": 2,
+  "system_prompts_sha256": {
+    "q": "32747d4fe8b3c42910698fae84b91043070a84a5d8bd7081f73460b9442877ae",
+    "n": "1131601422f8c70abb75400b3149908d4b4fbea0fb25e7bf5eb9aa9d7fd0887a",
+    "r": "32747d4fe8b3c42910698fae84b91043070a84a5d8bd7081f73460b9442877ae"
+  },
+  "sample_record": "results_first_match/sample.json",
+  "sample_sha256": "04aad67a228fe47aa95f01f1628460950c016cbc289b1eaeef19590ab8df660c",
+  "gates": {
+    "FM-g1": {
+      "what": "PLAN_QUEUE_ALONE.md's checks pass, its design is its Stage A's, its verdicts and its order reading come back from its passes; the suite green",
+      "queue_alone_checks": true,
+      "queue_alone_design": {
+        "passes": true,
+        "why": "results_queue_alone/sample.json: the same sessions, prompts and decisions"
+      },
+      "queue_alone_rows": {
+        "rows": 6,
+        "departing": [],
+        "passes": true
+      },
+      "queue_alone_orders": {
+        "arms": [
+          "t",
+          "i",
+          "q"
+        ],
+        "departing": [],
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2344,
+        "result": "OK (skipped=3)",
+        "seconds": 175.0,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g2": {
+      "what": "the plain arm is PLAN_QUEUE_ALONE.md's at level 3, digest for digest; the reasoning arm's texts are the plain arm's; the naming arm adds \u00a75.1's line and nothing else; no builder takes a row; the digests have teeth. The requests are tests/test_first_match.py's, through the SDK double",
+      "plain_arm": {
+        "prompts": 171,
+        "not_queue_alones": [],
+        "every_one_of_theirs": true,
+        "passes": true
+      },
+      "reasoning_arm": {
+        "prompts": 171,
+        "not_the_plain_arms": [],
+        "passes": true
+      },
+      "texts": {
+        "plain_is_queue_alones": true,
+        "plain_ends_with_its_answer": true,
+        "naming_adds_one_line": true,
+        "naming_answer_is_plain_answer_with_the_line": true,
+        "the_rest_is_the_same": true,
+        "users_are_the_plain_arms": true,
+        "naming_asks_rule_then_action": true,
+        "the_identifiers": true,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 513,
+        "texts": 342,
+        "distinct": 342,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g3": {
+      "what": "the population is \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "prompts": {
+          "q": 171,
+          "n": 171,
+          "r": 171
+        },
+        "decisions": 320,
+        "every_decision_served_once": {
+          "q": true,
+          "n": true,
+          "r": true
+        },
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "n:L3:1807",
+          "q:L3:135",
+          "q:L3:511",
+          "n:L3:346",
+          "r:L3:135",
+          "r:L3:107"
+        ],
+        "smoke_two_distinct_of_each_arm": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "FM-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_FIRST_MATCH.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_FIRST_MATCH.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-25T11:36:50Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-25T11:37:07Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 0,
+      "id": "n:L3:1807",
+      "arm": "n",
+      "ticket": 1807,
+      "digest": "868d94b625c5497c",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "rule": "H08",
+        "action": "T2_TECHNICAL"
+      },
+      "keys": [
+        "rule",
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928210-jUCG1yj7kJ2YYIqrJ8zf",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1289,
+          "completion_tokens": 23,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.6,
+      "asked_at": "2026-10-25T11:36:52Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 1,
+      "id": "q:L3:135",
+      "arm": "q",
+      "ticket": 135,
+      "digest": "a73cdf7cbcb29088",
+      "action": "ACCOUNT_MANAGER",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "ACCOUNT_MANAGER"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928211-a9D7L3gF5pzkQKiqxdb6",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1270,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.72,
+      "asked_at": "2026-10-25T11:36:52Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 2,
+      "id": "q:L3:511",
+      "arm": "q",
+      "ticket": 511,
+      "digest": "c256ca5360fc96fb",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928212-f2ViMDJ8YPJgxy8KuTjR",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.9,
+      "asked_at": "2026-10-25T11:36:53Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 3,
+      "id": "n:L3:346",
+      "arm": "n",
+      "ticket": 346,
+      "digest": "484064610451e12f",
+      "action": "SECURITY_INCIDENT",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "rule": "H01",
+        "action": "SECURITY_INCIDENT"
+      },
+      "keys": [
+        "rule",
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928213-otqtAIoD9h3R9UF0GdwA",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1288,
+          "completion_tokens": 22,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.74,
+      "asked_at": "2026-10-25T11:36:54Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 4,
+      "id": "r:L3:135",
+      "arm": "r",
+      "ticket": 135,
+      "digest": "a73cdf7cbcb29088",
+      "action": "ACCOUNT_MANAGER",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "ACCOUNT_MANAGER"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": "\u6211\u4eec\u9010\u6761\u68c0\u67e5\u89c4\u5219\uff0c\u627e\u5230\u7b2c\u4e00\u4e2a\u5339\u914d\u7684\u3002\n\nH01: has_security_keyword eq True? false -> \u4e0d\u5339\u914d\u3002\nH02: has_security_keyword eq True? false -> \u4e0d\u5339\u914d\u3002\nH03: has_security_keyword eq True? false -> \u4e0d\u5339\u914d\u3002\nH04: severity eq 1? severity=4, no -> \u4e0d\u5339\u914d\u3002\nH05: severity eq 1? no -> \u4e0d\u5339\u914d\u3002\nH06: severity eq 1? no -> \u4e0d\u5339\u914d\u3002\nH07: severity eq 1? no -> \u4e0d\u5339\u914d\u3002\nH08: severity eq 1? no -> \u4e0d\u5339\u914d\u3002\nH09: product eq billing? yes, and customer_tier eq enterprise? yes -> \u5339\u914d\uff01\u89c4\u5219H09: SI product eq billing AND customer_tier eq enterprise ENTONCES ACCOUNT_MANAGER\n\n\u6240\u4ee5action\u662fACCOUNT_MANAGER\u3002\n\n\u6ce8\u610f\uff1a\u5c3d\u7ba1severity=4\uff0c\u4f46H09\u662f\u66f4\u65e9\u7684\u89c4\u5219\uff08\u6bd4H10\u65e9\uff09\uff0c\u6240\u4ee5\u5148\u5339\u914d\u3002",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928214-zoWQ5rGzWySnDcF6x2UP",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1270,
+          "completion_tokens": 233,
+          "reasoning_tokens": 217,
+          "error": null
+        }
+      ],
+      "seconds": 2.64,
+      "asked_at": "2026-10-25T11:36:57Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 5,
+      "id": "r:L3:107",
+      "arm": "r",
+      "ticket": 107,
+      "digest": "3256be6b36bda960",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": "\u6211\u4eec\u6839\u636e\u7ed9\u5b9a\u7684\u89c4\u5219\u548cticket\u5c5e\u6027\uff0c\u9010\u4e00\u68c0\u67e5\u89c4\u5219\uff0c\u627e\u5230\u7b2c\u4e00\u4e2a\u5339\u914d\u7684\u89c4\u5219\u3002\n\n\u89c4\u5219\u5217\u8868\uff1a\nH01: has_security_keyword eq True AND customer_tier in ['business', 'enterprise'] => SECURITY_INCIDENT\nH02: has_security_keyword eq True AND severity lte 2 => SECURITY_INCIDENT\nH03: has_security_keyword eq True => T2_TECHNICAL\nH04: severity eq 1 AND customer_tier eq enterprise => ONCALL_ESCALATION\nH05: severity eq 1 AND customer_tier eq business AND off_hours eq True => ONCALL_ESCALATION\nH06: severity eq 1 AND customer_tier eq business => T3_ENGINEERING\nH07: severity eq 1 AND product eq api => T3_ENGINEERING\nH08: severity eq 1 => T2_TECHNICAL\nH09: product eq billing AND customer_tier eq enterprise => ACCOUNT_MANAGER\nH10: product eq billing AND severity lte 2 => BILLING_SPECIALIST\nH11: product eq billing AND prior_tickets_30d gte 3 => BILLING_SPECIALIST\nH12: product eq billing => SELF_SERVICE_DEFLECT\nH13: customer_tier eq enterprise AND prior_tickets_30d gte 5 => ACCOUNT_MANAGER\nH14: customer_tier eq business AND prior_tickets_30d gte 8 => ACCOUNT_MANAGER\nH15: product eq api AND severity lte 2 => T3_ENGINEERING\nH16: product eq api => T2_TECHNICAL\nH17: product eq integrations AND severity lte 2 => T3_ENGINEERING\nH18: product eq integrations => T2_TECHNICAL\nH19: product eq mobile AND severity eq 2 => T2_TECHNICAL\nH20: product eq dashboard AND severity lte 2 => T2_TECHNICAL\nH21: language eq pt AND severity lte 2 => T2_TECHNICAL\nH22: channel eq phone AND customer_tier eq free => SELF_SERVICE_DEFLECT\nH23: channel eq phone AND off_hours eq True AND customer_tier neq enterprise => T1_GENERAL\nH24: customer_tier eq free AND severity gte 3 => SELF_SERVICE_DEFLECT\nH25: customer_tier eq free AND prior_tickets_30d eq 0 => SELF_SERVICE_DEFLECT\nH26: severity eq 4 AND prior_tickets_30d eq 0 => SELF_SERVICE_DEFLECT\nH27: severity lte 2 => T2_TECHNICAL\nH28: customer_tier in ['business', 'enterprise'] => T1_GENERAL\nH29: severity gte 1 => T1_GENERAL\n\n\u73b0\u5728\uff0cticket\u5c5e\u6027\uff1a\nhas_security_keyword: false\nseverity: 4\ncustomer_tier: \"pro\"\nproduct: \"integrations\"\nchannel: \"chat\"\nprior_tickets_30d: 12\noff_hours: true\nlanguage: \"es\"\n\n\u9010\u6761\u68c0\u67e5\uff1a\n\nH01: has_security_keyword false -> \u4e0d\u6ee1\u8db3\u3002\nH02: has_security_keyword false -> \u4e0d\u6ee1\u8db3\u3002\nH03: has_security_keyword false -> \u4e0d\u6ee1\u8db3\u3002\nH04: severity eq 1? 4 !=1 -> \u4e0d\u6ee1\u8db3\u3002\nH05: severity eq 1? \u5426\u3002\nH06: severity eq 1? \u5426\u3002\nH07: severity eq 1? \u5426\u3002\nH08: severity eq 1? \u5426\u3002\nH09: product eq billing? \u5426 (integrations)\u3002\nH10: product eq billing? \u5426\u3002\nH11: product eq billing? \u5426\u3002\nH12: product eq billing? \u5426\u3002\nH13: customer_tier eq enterprise? \u5426 (pro)\u3002\nH14: customer_tier eq business? \u5426 (pro)\u3002\nH15: product eq api? \u5426\u3002\nH16: product eq api? \u5426\u3002\nH17: product eq integrations AND severity lte 2? severity=4, lte2? \u5426 (4>2)\u3002\nH18: product eq integrations? \u662f\uff01\u5e76\u4e14\u89c4\u5219H18\u662f\uff1aproduct eq integrations => T2_TECHNICAL\u3002\u6ce8\u610f\uff1aH18\u6ca1\u6709\u5176\u4ed6\u6761\u4ef6\uff0c\u76f4\u63a5\u5339\u914d\u3002\u6b64\u65f6\uff0c\u6211\u4eec\u627e\u5230\u7b2c\u4e00\u4e2a\u5339\u914d\u89c4\u5219H18\uff0c\u56e0\u6b64\u52a8\u4f5c\u662fT2_TECHNICAL\u3002\n\n\u6ce8\u610f\uff1a\u89c4\u5219\u662f\u6309\u987a\u5e8f\u7684\uff0cH17\u867d\u7136\u6761\u4ef6\u4e5f\u6d89\u53caintegrations\u4f46severity\u6761\u4ef6\u4e0d\u6ee1\u8db3\uff0c\u6240\u4ee5H17\u8df3\u8fc7\uff0c\u7136\u540eH18\u76f4\u63a5\u5339\u914d\u3002\u56e0\u6b64action\u4e3aT2_TECHNICAL\u3002\n\n\u6240\u4ee5\u8f93\u51fa\uff1a{ \"action\": \"T2_TECHNICAL\" }",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792928216-t8QTkYJiZIPb87Lx4krH",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1269,
+          "completion_tokens": 1053,
+          "reasoning_tokens": 1037,
+          "error": null
+        }
+      ],
+      "seconds": 10.23,
+      "asked_at": "2026-10-25T11:37:07Z"
+    }
+  ]
+}
