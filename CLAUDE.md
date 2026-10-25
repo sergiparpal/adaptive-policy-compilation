@@ -176,8 +176,9 @@ the FINDINGS.
 2026-10-05 `authorship/run.py`, since 2026-10-06 `overlap/run.py`, since
 2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
-`manual/run.py`, since 2026-10-23 `apply/ask.py`, and since 2026-10-24
-`queue_alone/ask.py`, all eleven below. It
+`manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
+`queue_alone/ask.py`, and since 2026-10-25 `first_match/ask.py`, all twelve
+below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -792,12 +793,64 @@ message, and say so in §0.
 `QA-a` to `QA-g`, and `tests/test_prose_tables.py` reads one or two capitals
 since its package. A thread after it takes two capitals as well.
 
+**`PLAN_FIRST_MATCH.md` closed on 2026-10-25: the first match, asked by name
+and with reasoning on.** Six signed rows adjudicated, five held and one refuted,
+and one reported. Sergi signed §0 on 2026-10-25, before any figure it governs
+existed.
+- **What it asked.** It asked `PLAN_QUEUE_ALONE.md`'s plain prompts at level 3
+  again on one day, each twice, in three arms: that plan's plain question for
+  the queue, the same question asking for the identifier of the rule that
+  applies before its queue, and the plain question with reasoning on.
+- **Where it is written up.** The record is
+  `results_first_match/FINDINGS_FIRST_MATCH.md`, and `STATUS.md` indexes its
+  figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `first_match/` refuses while the plan carries a
+  blank signature line, and the gate reads `PLAN_FIRST_MATCH.md` and no other
+  plan. `queue_alone/`, `apply/`, `manual/`, `fidelity/` and `rung2/` are
+  called by it and not edited.
+- **It turns reasoning on for one arm**, at high effort and with a budget that
+  leaves the answer room, and keeps the reasoning each response carries, whole
+  and uncoded. Every other paid call in the tree keeps reasoning off, under
+  `PLAN_REUSE.md` §1's amendment.
+- **It pins one provider, and retries by cause.** A failed call is retried with
+  the same messages after a wait, and only a failed parse with v1's retry
+  message.
+- **It sends the manual's texts again**, so its two proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m first_match.ask --dry-run                                  # FM-g1..FM-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m first_match.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m first_match.score                         # Stage C, free, from the passes
+    PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session pass1  # then pass2, never side by side
+
+**With reasoning on, the model applies the list it was given.** Without it,
+asked to name the rule that applies, it names a lower one, and the queue
+follows the name. Every loop and ask since `PLAN_REUSE.md` §1's amendment ran
+with reasoning off. A plan that reads what the model does with a policy should
+say in §0 whether the model reasons, and why.
+
+**Naming the rule is not deliberation.** An identifier asked before the answer
+is chosen as loosely as the answer was, and the answer follows it. A plan that
+wants the model to work a step through should give it reasoning, not a field.
+
+**Price a setting nothing has recorded from the smoke run.** This plan's §1
+priced its reasoning arm with no recorded call that had reasoned, and was far
+off. A plan that buys such a setting should say in §1 that the smoke run
+measures it.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
 the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
-builds, and since 2026-10-24 the asker `queue_alone/ask.py` builds, without
-changing a request. Every paid writer but rung 1's stores each question's attempts as
+builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
+2026-10-25 the asker `first_match/ask.py` builds, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -885,8 +938,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-05, `authorship/run.py`, since 2026-10-06, `overlap/run.py`, since
 2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
-`manual/run.py`, since 2026-10-23, `apply/ask.py`, and since 2026-10-24,
-`queue_alone/ask.py`.
+`manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
+`queue_alone/ask.py`, and since 2026-10-25, `first_match/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
