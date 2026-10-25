@@ -1,0 +1,1762 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-25T19:38:51Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "931927fd74e4fa69a0b9b09c39434c45b0bb81eb",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "7f577a9c4b826525"
+  },
+  "plan": "PLAN_REASONED_RULE.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_RULE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_REASONED_RULE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "RR-g1": {
+      "what": "PLAN_FIRST_MATCH.md's checks pass, its design is its Stage A's, its verdicts come back from its passes; the list's first match is the policy over the space; the suite green",
+      "first_match_checks": true,
+      "first_match_design": {
+        "passes": true,
+        "why": "results_first_match/sample.json: the same sessions, prompts and decisions"
+      },
+      "first_match_rows": {
+        "rows": 6,
+        "departing": [],
+        "passes": true
+      },
+      "the_list_over_the_space": {
+        "points": 134400,
+        "queues": [
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "SECURITY_INCIDENT",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL",
+          "T2_TECHNICAL",
+          "T3_ENGINEERING"
+        ],
+        "departing": [],
+        "every_point_decided": true,
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2410,
+        "result": "OK (skipped=5)",
+        "seconds": 172.7,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g2": {
+      "what": "the rule and plain arms are PLAN_QUEUE_ALONE.md's at level 3, digest for digest, and the plain and reasoning arms PLAN_FIRST_MATCH.md's; each reasoning arm's texts are its quiet arm's; no builder takes a row; the digests have teeth. The requests are tests/test_reasoned_rule.py's, through the SDK double",
+      "closed_plans": {
+        "rule_arm_is_queue_alones": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "plain_arm_is_queue_alones": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "plain_arm_is_first_matchs": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "reasoning_arm_is_first_matchs": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "passes": true
+      },
+      "reasoned_arms": {
+        "prompts": 342,
+        "not_their_quiet_arms": [],
+        "passes": true
+      },
+      "texts": {
+        "rule_arms_send_the_rule_prompt": true,
+        "plain_arms_send_the_plain_prompt": true,
+        "the_rule_prompt_writes_a_rule": true,
+        "the_rule_user_message_is_the_empty_base": true,
+        "every_arm_holds_the_list": true,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 684,
+        "texts": 342,
+        "distinct": 342,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g3": {
+      "what": "the population is \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "prompts": {
+          "t": 171,
+          "w": 171,
+          "q": 171,
+          "r": 171
+        },
+        "decisions": 320,
+        "every_decision_served_once": {
+          "t": true,
+          "w": true,
+          "q": true,
+          "r": true
+        },
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "q:L3:162",
+          "r:L3:55",
+          "t:L3:49",
+          "q:L3:1235",
+          "w:L3:601",
+          "r:L3:96",
+          "w:L3:1264",
+          "t:L3:155"
+        ],
+        "smoke_two_distinct_of_each_arm": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_RULE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REASONED_RULE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "lines": {
+    "RR-a": {
+      "fraction": "1/20",
+      "value": 0.05
+    },
+    "RR-b": {
+      "fraction": "0/1",
+      "value": 0.0
+    },
+    "RR-c": {
+      "fraction": "9/10",
+      "value": 0.9
+    },
+    "RR-d": {
+      "fraction": "0/1",
+      "value": 0.0
+    }
+  },
+  "verdicts": {
+    "RR-a": {
+      "id": "RR-a",
+      "prompts": 171,
+      "read": 171,
+      "line": {
+        "fraction": "1/20",
+        "value": 0.05
+      },
+      "holds": "le",
+      "value": {
+        "fraction": "1/57",
+        "value": 0.017543859649122806
+      },
+      "se": 0.02027279422760277,
+      "parts": {
+        "S": {
+          "fraction": "154/171",
+          "value": 0.9005847953216374
+        },
+        "A": {
+          "fraction": "151/171",
+          "value": 0.8830409356725146
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false
+      }
+    },
+    "RR-b": {
+      "id": "RR-b",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "gt",
+      "value": {
+        "fraction": "157/640",
+        "value": 0.2453125
+      },
+      "se": 0.035316053807842494,
+      "per_run": {
+        "L3r1": {
+          "fraction": "41/170",
+          "value": 0.2411764705882353
+        },
+        "L3r2": {
+          "fraction": "37/135",
+          "value": 0.2740740740740741
+        },
+        "L3r3": {
+          "fraction": "21/100",
+          "value": 0.21
+        }
+      },
+      "parts": {
+        "acc_w": {
+          "fraction": "619/640",
+          "value": 0.9671875
+        },
+        "acc_t": {
+          "fraction": "231/320",
+          "value": 0.721875
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "RR-c": {
+      "id": "RR-c",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds": "ge",
+      "value": {
+        "fraction": "619/640",
+        "value": 0.9671875
+      },
+      "se": 0.00956826445960539,
+      "per_run": {
+        "L3r1": {
+          "fraction": "33/34",
+          "value": 0.9705882352941176
+        },
+        "L3r2": {
+          "fraction": "259/270",
+          "value": 0.9592592592592593
+        },
+        "L3r3": {
+          "fraction": "39/40",
+          "value": 0.975
+        }
+      },
+      "parts": {
+        "acc_w": {
+          "fraction": "619/640",
+          "value": 0.9671875
+        }
+      },
+      "verdict": "holds",
+      "thin": false,
+      "thin_because": {
+        "within_one_se": false,
+        "dropping_one_run_flips": []
+      }
+    },
+    "RR-d": {
+      "id": "RR-d",
+      "level": 3,
+      "decisions": 320,
+      "missing": 0,
+      "read": 320,
+      "line": {
+        "fraction": "0/1",
+        "value": 0.0
+      },
+      "holds": "lt",
+      "value": {
+        "fraction": "1/80",
+        "value": 0.0125
+      },
+      "se": 0.041300418787702034,
+      "per_run": {
+        "L3r1": {
+          "fraction": "1/85",
+          "value": 0.011764705882352941
+        },
+        "L3r2": {
+          "fraction": "-1/45",
+          "value": -0.022222222222222223
+        },
+        "L3r3": {
+          "fraction": "3/50",
+          "value": 0.06
+        }
+      },
+      "parts": {
+        "acc_r": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "acc_w": {
+          "fraction": "619/640",
+          "value": 0.9671875
+        },
+        "acc_q": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        },
+        "acc_t": {
+          "fraction": "231/320",
+          "value": 0.721875
+        },
+        "cost_without_reasoning": {
+          "fraction": "13/640",
+          "value": 0.0203125
+        },
+        "cost_with_reasoning": {
+          "fraction": "21/640",
+          "value": 0.0328125
+        }
+      },
+      "verdict": "refuted",
+      "thin": true,
+      "thin_because": {
+        "within_one_se": true,
+        "dropping_one_run_flips": [
+          "L3r3"
+        ]
+      }
+    }
+  },
+  "RR-e": {
+    "accuracy": {
+      "t": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "231/320",
+          "value": 0.721875
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "62/85",
+            "value": 0.7294117647058823
+          },
+          "L3r2": {
+            "fraction": "37/54",
+            "value": 0.6851851851851852
+          },
+          "L3r3": {
+            "fraction": "153/200",
+            "value": 0.765
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "239/340",
+            "value": 0.7029411764705882
+          }
+        }
+      },
+      "w": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "619/640",
+          "value": 0.9671875
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "33/34",
+            "value": 0.9705882352941176
+          },
+          "L3r2": {
+            "fraction": "259/270",
+            "value": 0.9592592592592593
+          },
+          "L3r3": {
+            "fraction": "39/40",
+            "value": 0.975
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "65/68",
+            "value": 0.9558823529411765
+          }
+        }
+      },
+      "q": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "127/170",
+            "value": 0.7470588235294118
+          },
+          "L3r2": {
+            "fraction": "101/135",
+            "value": 0.7481481481481481
+          },
+          "L3r3": {
+            "fraction": "73/100",
+            "value": 0.73
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "64/85",
+            "value": 0.7529411764705882
+          }
+        }
+      },
+      "r": {
+        "decisions": 320,
+        "acc": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "per_run": {
+          "L3r1": {
+            "fraction": "1/1",
+            "value": 1.0
+          },
+          "L3r2": {
+            "fraction": "1/1",
+            "value": 1.0
+          },
+          "L3r3": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        },
+        "by_ticket": {
+          "tickets": 170,
+          "acc": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        }
+      }
+    },
+    "where_errors_go": {
+      "t": {
+        "answers": 640,
+        "classes": {
+          "matching": 59,
+          "first": 462,
+          "order": 119
+        },
+        "order_errors": 119,
+        "rank": {
+          "2": 111,
+          "3": 8
+        },
+        "runner_up": {
+          "count": 113,
+          "share": {
+            "fraction": "113/119",
+            "value": 0.9495798319327731
+          }
+        },
+        "catch_all": {
+          "count": 18,
+          "share": {
+            "fraction": "18/119",
+            "value": 0.15126050420168066
+          }
+        },
+        "most_specific": {
+          "count": 27,
+          "share": {
+            "fraction": "27/119",
+            "value": 0.226890756302521
+          }
+        },
+        "follows": {
+          "H18": 21,
+          "H24": 19,
+          "H29": 18,
+          "H03": 17,
+          "H28": 13,
+          "H16": 12,
+          "H15": 6,
+          "H26": 4,
+          "H08": 3,
+          "H25": 2,
+          "H17": 2,
+          "H10": 2
+        },
+        "governing": [
+          {
+            "rule": "H18",
+            "order_errors": 23,
+            "answers": 68
+          },
+          {
+            "rule": "H17",
+            "order_errors": 21,
+            "answers": 28
+          },
+          {
+            "rule": "H02",
+            "order_errors": 17,
+            "answers": 36
+          },
+          {
+            "rule": "H15",
+            "order_errors": 12,
+            "answers": 36
+          },
+          {
+            "rule": "H24",
+            "order_errors": 12,
+            "answers": 30
+          },
+          {
+            "rule": "H16",
+            "order_errors": 8,
+            "answers": 68
+          },
+          {
+            "rule": "H26",
+            "order_errors": 6,
+            "answers": 16
+          },
+          {
+            "rule": "H13",
+            "order_errors": 6,
+            "answers": 18
+          },
+          {
+            "rule": "H08",
+            "order_errors": 4,
+            "answers": 32
+          },
+          {
+            "rule": "H14",
+            "order_errors": 3,
+            "answers": 22
+          },
+          {
+            "rule": "H07",
+            "order_errors": 3,
+            "answers": 8
+          },
+          {
+            "rule": "H20",
+            "order_errors": 2,
+            "answers": 26
+          },
+          {
+            "rule": "H22",
+            "order_errors": 2,
+            "answers": 2
+          }
+        ],
+        "top_three": {
+          "rules": [
+            "H18",
+            "H17",
+            "H02"
+          ],
+          "share": {
+            "fraction": "61/119",
+            "value": 0.5126050420168067
+          }
+        },
+        "second_matching_rule": 111,
+        "specificity": {
+          "answers": 82,
+          "most_specific": 27,
+          "first": 49,
+          "other": 6,
+          "most_specific_share": {
+            "fraction": "27/82",
+            "value": 0.32926829268292684
+          }
+        }
+      },
+      "w": {
+        "answers": 640,
+        "classes": {
+          "first": 619,
+          "order": 20,
+          "matching": 1
+        },
+        "order_errors": 20,
+        "rank": {
+          "2": 18,
+          "3": 2
+        },
+        "runner_up": {
+          "count": 20,
+          "share": {
+            "fraction": "1/1",
+            "value": 1.0
+          }
+        },
+        "catch_all": {
+          "count": 1,
+          "share": {
+            "fraction": "1/20",
+            "value": 0.05
+          }
+        },
+        "most_specific": {
+          "count": 10,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "follows": {
+          "H24": 9,
+          "H28": 5,
+          "H26": 3,
+          "H29": 1,
+          "H03": 1,
+          "H17": 1
+        },
+        "governing": [
+          {
+            "rule": "H18",
+            "order_errors": 8,
+            "answers": 68
+          },
+          {
+            "rule": "H26",
+            "order_errors": 3,
+            "answers": 16
+          },
+          {
+            "rule": "H23",
+            "order_errors": 3,
+            "answers": 6
+          },
+          {
+            "rule": "H16",
+            "order_errors": 2,
+            "answers": 68
+          },
+          {
+            "rule": "H12",
+            "order_errors": 2,
+            "answers": 30
+          },
+          {
+            "rule": "H01",
+            "order_errors": 1,
+            "answers": 20
+          },
+          {
+            "rule": "H08",
+            "order_errors": 1,
+            "answers": 32
+          }
+        ],
+        "top_three": {
+          "rules": [
+            "H18",
+            "H26",
+            "H23"
+          ],
+          "share": {
+            "fraction": "7/10",
+            "value": 0.7
+          }
+        },
+        "second_matching_rule": 18,
+        "specificity": {
+          "answers": 82,
+          "first": 72,
+          "most_specific": 10,
+          "most_specific_share": {
+            "fraction": "5/41",
+            "value": 0.12195121951219512
+          }
+        }
+      },
+      "q": {
+        "answers": 640,
+        "classes": {
+          "first": 475,
+          "order": 159,
+          "matching": 6
+        },
+        "order_errors": 159,
+        "rank": {
+          "2": 153,
+          "3": 6
+        },
+        "runner_up": {
+          "count": 153,
+          "share": {
+            "fraction": "51/53",
+            "value": 0.9622641509433962
+          }
+        },
+        "catch_all": {
+          "count": 5,
+          "share": {
+            "fraction": "5/159",
+            "value": 0.031446540880503145
+          }
+        },
+        "most_specific": {
+          "count": 32,
+          "share": {
+            "fraction": "32/159",
+            "value": 0.20125786163522014
+          }
+        },
+        "follows": {
+          "H03": 36,
+          "H28": 27,
+          "H24": 22,
+          "H16": 18,
+          "H26": 16,
+          "H18": 13,
+          "H15": 6,
+          "H08": 6,
+          "H20": 6,
+          "H29": 5,
+          "H10": 2,
+          "H12": 2
+        },
+        "governing": [
+          {
+            "rule": "H18",
+            "order_errors": 37,
+            "answers": 68
+          },
+          {
+            "rule": "H02",
+            "order_errors": 36,
+            "answers": 36
+          },
+          {
+            "rule": "H16",
+            "order_errors": 20,
+            "answers": 68
+          },
+          {
+            "rule": "H17",
+            "order_errors": 13,
+            "answers": 28
+          },
+          {
+            "rule": "H15",
+            "order_errors": 12,
+            "answers": 36
+          },
+          {
+            "rule": "H13",
+            "order_errors": 12,
+            "answers": 18
+          },
+          {
+            "rule": "H14",
+            "order_errors": 9,
+            "answers": 22
+          },
+          {
+            "rule": "H07",
+            "order_errors": 6,
+            "answers": 8
+          },
+          {
+            "rule": "H23",
+            "order_errors": 6,
+            "answers": 6
+          },
+          {
+            "rule": "H26",
+            "order_errors": 3,
+            "answers": 16
+          },
+          {
+            "rule": "H09",
+            "order_errors": 2,
+            "answers": 16
+          },
+          {
+            "rule": "H11",
+            "order_errors": 2,
+            "answers": 12
+          },
+          {
+            "rule": "H24",
+            "order_errors": 1,
+            "answers": 30
+          }
+        ],
+        "top_three": {
+          "rules": [
+            "H18",
+            "H02",
+            "H16"
+          ],
+          "share": {
+            "fraction": "31/53",
+            "value": 0.5849056603773585
+          }
+        },
+        "second_matching_rule": 153,
+        "specificity": {
+          "answers": 82,
+          "most_specific": 32,
+          "first": 44,
+          "other": 6,
+          "most_specific_share": {
+            "fraction": "16/41",
+            "value": 0.3902439024390244
+          }
+        }
+      },
+      "r": {
+        "answers": 640,
+        "classes": {
+          "first": 640
+        },
+        "order_errors": 0,
+        "rank": {},
+        "runner_up": {
+          "count": 0,
+          "share": null
+        },
+        "catch_all": {
+          "count": 0,
+          "share": null
+        },
+        "most_specific": {
+          "count": 0,
+          "share": null
+        },
+        "follows": {},
+        "governing": [],
+        "top_three": {
+          "rules": [],
+          "share": null
+        },
+        "second_matching_rule": 0,
+        "specificity": {
+          "answers": 82,
+          "first": 82,
+          "most_specific_share": {
+            "fraction": "0/1",
+            "value": 0.0
+          }
+        }
+      }
+    },
+    "by_governing_rule": {
+      "H01": {
+        "decisions": 10,
+        "t_answers": 20,
+        "t_right": 20,
+        "w_answers": 20,
+        "w_right": 19,
+        "q_answers": 20,
+        "q_right": 20,
+        "r_answers": 20,
+        "r_right": 20
+      },
+      "H02": {
+        "decisions": 18,
+        "t_answers": 36,
+        "t_right": 19,
+        "w_answers": 36,
+        "w_right": 36,
+        "q_answers": 36,
+        "q_right": 0,
+        "r_answers": 36,
+        "r_right": 36
+      },
+      "H03": {
+        "decisions": 14,
+        "t_answers": 28,
+        "t_right": 28,
+        "w_answers": 28,
+        "w_right": 28,
+        "q_answers": 28,
+        "q_right": 28,
+        "r_answers": 28,
+        "r_right": 28
+      },
+      "H04": {
+        "decisions": 3,
+        "t_answers": 6,
+        "t_right": 6,
+        "w_answers": 6,
+        "w_right": 6,
+        "q_answers": 6,
+        "q_right": 6,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H05": {
+        "decisions": 6,
+        "t_answers": 12,
+        "t_right": 12,
+        "w_answers": 12,
+        "w_right": 12,
+        "q_answers": 12,
+        "q_right": 12,
+        "r_answers": 12,
+        "r_right": 12
+      },
+      "H07": {
+        "decisions": 4,
+        "t_answers": 8,
+        "t_right": 5,
+        "w_answers": 8,
+        "w_right": 8,
+        "q_answers": 8,
+        "q_right": 2,
+        "r_answers": 8,
+        "r_right": 8
+      },
+      "H08": {
+        "decisions": 16,
+        "t_answers": 32,
+        "t_right": 28,
+        "w_answers": 32,
+        "w_right": 31,
+        "q_answers": 32,
+        "q_right": 32,
+        "r_answers": 32,
+        "r_right": 32
+      },
+      "H09": {
+        "decisions": 8,
+        "t_answers": 16,
+        "t_right": 16,
+        "w_answers": 16,
+        "w_right": 16,
+        "q_answers": 16,
+        "q_right": 14,
+        "r_answers": 16,
+        "r_right": 16
+      },
+      "H10": {
+        "decisions": 7,
+        "t_answers": 14,
+        "t_right": 14,
+        "w_answers": 14,
+        "w_right": 14,
+        "q_answers": 14,
+        "q_right": 14,
+        "r_answers": 14,
+        "r_right": 14
+      },
+      "H11": {
+        "decisions": 6,
+        "t_answers": 12,
+        "t_right": 12,
+        "w_answers": 12,
+        "w_right": 12,
+        "q_answers": 12,
+        "q_right": 10,
+        "r_answers": 12,
+        "r_right": 12
+      },
+      "H12": {
+        "decisions": 15,
+        "t_answers": 30,
+        "t_right": 13,
+        "w_answers": 30,
+        "w_right": 28,
+        "q_answers": 30,
+        "q_right": 30,
+        "r_answers": 30,
+        "r_right": 30
+      },
+      "H13": {
+        "decisions": 9,
+        "t_answers": 18,
+        "t_right": 12,
+        "w_answers": 18,
+        "w_right": 18,
+        "q_answers": 18,
+        "q_right": 6,
+        "r_answers": 18,
+        "r_right": 18
+      },
+      "H14": {
+        "decisions": 11,
+        "t_answers": 22,
+        "t_right": 19,
+        "w_answers": 22,
+        "w_right": 22,
+        "q_answers": 22,
+        "q_right": 13,
+        "r_answers": 22,
+        "r_right": 22
+      },
+      "H15": {
+        "decisions": 18,
+        "t_answers": 36,
+        "t_right": 24,
+        "w_answers": 36,
+        "w_right": 36,
+        "q_answers": 36,
+        "q_right": 24,
+        "r_answers": 36,
+        "r_right": 36
+      },
+      "H16": {
+        "decisions": 34,
+        "t_answers": 68,
+        "t_right": 57,
+        "w_answers": 68,
+        "w_right": 66,
+        "q_answers": 68,
+        "q_right": 48,
+        "r_answers": 68,
+        "r_right": 68
+      },
+      "H17": {
+        "decisions": 14,
+        "t_answers": 28,
+        "t_right": 7,
+        "w_answers": 28,
+        "w_right": 28,
+        "q_answers": 28,
+        "q_right": 15,
+        "r_answers": 28,
+        "r_right": 28
+      },
+      "H18": {
+        "decisions": 34,
+        "t_answers": 68,
+        "t_right": 45,
+        "w_answers": 68,
+        "w_right": 60,
+        "q_answers": 68,
+        "q_right": 31,
+        "r_answers": 68,
+        "r_right": 68
+      },
+      "H19": {
+        "decisions": 3,
+        "t_answers": 6,
+        "t_right": 6,
+        "w_answers": 6,
+        "w_right": 6,
+        "q_answers": 6,
+        "q_right": 6,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H20": {
+        "decisions": 13,
+        "t_answers": 26,
+        "t_right": 24,
+        "w_answers": 26,
+        "w_right": 26,
+        "q_answers": 26,
+        "q_right": 26,
+        "r_answers": 26,
+        "r_right": 26
+      },
+      "H22": {
+        "decisions": 1,
+        "t_answers": 2,
+        "t_right": 0,
+        "w_answers": 2,
+        "w_right": 2,
+        "q_answers": 2,
+        "q_right": 2,
+        "r_answers": 2,
+        "r_right": 2
+      },
+      "H23": {
+        "decisions": 3,
+        "t_answers": 6,
+        "t_right": 6,
+        "w_answers": 6,
+        "w_right": 3,
+        "q_answers": 6,
+        "q_right": 0,
+        "r_answers": 6,
+        "r_right": 6
+      },
+      "H24": {
+        "decisions": 15,
+        "t_answers": 30,
+        "t_right": 18,
+        "w_answers": 30,
+        "w_right": 30,
+        "q_answers": 30,
+        "q_right": 29,
+        "r_answers": 30,
+        "r_right": 30
+      },
+      "H26": {
+        "decisions": 8,
+        "t_answers": 16,
+        "t_right": 10,
+        "w_answers": 16,
+        "w_right": 13,
+        "q_answers": 16,
+        "q_right": 13,
+        "r_answers": 16,
+        "r_right": 16
+      },
+      "H28": {
+        "decisions": 23,
+        "t_answers": 46,
+        "t_right": 46,
+        "w_answers": 46,
+        "w_right": 46,
+        "q_answers": 46,
+        "q_right": 46,
+        "r_answers": 46,
+        "r_right": 46
+      },
+      "H29": {
+        "decisions": 27,
+        "t_answers": 54,
+        "t_right": 15,
+        "w_answers": 54,
+        "w_right": 53,
+        "q_answers": 54,
+        "q_right": 48,
+        "r_answers": 54,
+        "r_right": 54
+      }
+    },
+    "by_true_queue": {
+      "by_true_queue": {
+        "ACCOUNT_MANAGER": {
+          "decisions": 28,
+          "t_answers": 56,
+          "t_right": 47,
+          "w_answers": 56,
+          "w_right": 56,
+          "q_answers": 56,
+          "q_right": 33,
+          "r_answers": 56,
+          "r_right": 56
+        },
+        "BILLING_SPECIALIST": {
+          "decisions": 13,
+          "t_answers": 26,
+          "t_right": 26,
+          "w_answers": 26,
+          "w_right": 26,
+          "q_answers": 26,
+          "q_right": 24,
+          "r_answers": 26,
+          "r_right": 26
+        },
+        "ONCALL_ESCALATION": {
+          "decisions": 9,
+          "t_answers": 18,
+          "t_right": 18,
+          "w_answers": 18,
+          "w_right": 18,
+          "q_answers": 18,
+          "q_right": 18,
+          "r_answers": 18,
+          "r_right": 18
+        },
+        "SECURITY_INCIDENT": {
+          "decisions": 28,
+          "t_answers": 56,
+          "t_right": 39,
+          "w_answers": 56,
+          "w_right": 55,
+          "q_answers": 56,
+          "q_right": 20,
+          "r_answers": 56,
+          "r_right": 56
+        },
+        "SELF_SERVICE_DEFLECT": {
+          "decisions": 39,
+          "t_answers": 78,
+          "t_right": 41,
+          "w_answers": 78,
+          "w_right": 73,
+          "q_answers": 78,
+          "q_right": 74,
+          "r_answers": 78,
+          "r_right": 78
+        },
+        "T1_GENERAL": {
+          "decisions": 53,
+          "t_answers": 106,
+          "t_right": 67,
+          "w_answers": 106,
+          "w_right": 102,
+          "q_answers": 106,
+          "q_right": 94,
+          "r_answers": 106,
+          "r_right": 106
+        },
+        "T2_TECHNICAL": {
+          "decisions": 114,
+          "t_answers": 228,
+          "t_right": 188,
+          "w_answers": 228,
+          "w_right": 217,
+          "q_answers": 228,
+          "q_right": 171,
+          "r_answers": 228,
+          "r_right": 228
+        },
+        "T3_ENGINEERING": {
+          "decisions": 36,
+          "t_answers": 72,
+          "t_right": 36,
+          "w_answers": 72,
+          "w_right": 72,
+          "q_answers": 72,
+          "q_right": 41,
+          "r_answers": 72,
+          "r_right": 72
+        }
+      },
+      "rare": [
+        "ONCALL_ESCALATION",
+        "SECURITY_INCIDENT",
+        "ACCOUNT_MANAGER",
+        "T3_ENGINEERING"
+      ]
+    },
+    "agreement": {
+      "S_t": {
+        "fraction": "29/32",
+        "value": 0.90625
+      },
+      "S_w": {
+        "fraction": "301/320",
+        "value": 0.940625
+      },
+      "S_q": {
+        "fraction": "301/320",
+        "value": 0.940625
+      },
+      "S_r": {
+        "fraction": "1/1",
+        "value": 1.0
+      },
+      "t_w": {
+        "fraction": "231/320",
+        "value": 0.721875
+      },
+      "q_r": {
+        "fraction": "95/128",
+        "value": 0.7421875
+      },
+      "t_q": {
+        "fraction": "239/320",
+        "value": 0.746875
+      },
+      "w_r": {
+        "fraction": "619/640",
+        "value": 0.9671875
+      },
+      "t_r": {
+        "fraction": "231/320",
+        "value": 0.721875
+      },
+      "w_q": {
+        "fraction": "479/640",
+        "value": 0.7484375
+      }
+    },
+    "beside": {
+      "queue_alone_rule_arm": {
+        "decisions": 320,
+        "acc_then": {
+          "fraction": "439/640",
+          "value": 0.6859375
+        },
+        "acc_today_on_the_same": {
+          "fraction": "231/320",
+          "value": 0.721875
+        }
+      },
+      "first_match_plain_arm": {
+        "decisions": 320,
+        "acc_then": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        },
+        "acc_today_on_the_same": {
+          "fraction": "95/128",
+          "value": 0.7421875
+        }
+      },
+      "first_match_reasoning_arm": {
+        "decisions": 320,
+        "acc_then": {
+          "fraction": "1/1",
+          "value": 1.0
+        },
+        "acc_today_on_the_same": {
+          "fraction": "1/1",
+          "value": 1.0
+        }
+      }
+    },
+    "rules_written": {
+      "t": {
+        "answers": 342,
+        "validates": 342,
+        "why_not": {},
+        "matches_ticket": 303,
+        "conditions": {
+          "1": 83,
+          "2": 230,
+          "3": 27,
+          "4": 1,
+          "7": 1
+        },
+        "points": {
+          "min": 2,
+          "median": 16800.0,
+          "max": 134400
+        },
+        "right_share_pooled": {
+          "fraction": "1199030/4242041",
+          "value": 0.2826540337540349
+        },
+        "right_share_median": {
+          "fraction": "1/4",
+          "value": 0.25
+        },
+        "all_right": 30,
+        "same_region_as_a_listed_rule": 244,
+        "as_the_governing_rule": 165,
+        "listed_rules_written": {
+          "H03": 32,
+          "H24": 30,
+          "H17": 28,
+          "H15": 27,
+          "H10": 18,
+          "H08": 16,
+          "H20": 14,
+          "H01": 13,
+          "H02": 10,
+          "H13": 8,
+          "H14": 7,
+          "H09": 6,
+          "H29": 6,
+          "H05": 6,
+          "H11": 6,
+          "H26": 5,
+          "H16": 4,
+          "H07": 3,
+          "H04": 2,
+          "H19": 2,
+          "H25": 1
+        },
+        "declares": 0,
+        "cites_identifiers": 0,
+        "action_written_first": 342
+      },
+      "w": {
+        "answers": 342,
+        "validates": 342,
+        "why_not": {},
+        "matches_ticket": 342,
+        "conditions": {
+          "1": 113,
+          "2": 181,
+          "3": 42,
+          "4": 6
+        },
+        "points": {
+          "min": 160,
+          "median": 16800.0,
+          "max": 134400
+        },
+        "right_share_pooled": {
+          "fraction": "281693/924128",
+          "value": 0.30482032791994185
+        },
+        "right_share_median": {
+          "fraction": "97/336",
+          "value": 0.28869047619047616
+        },
+        "all_right": 42,
+        "same_region_as_a_listed_rule": 257,
+        "as_the_governing_rule": 250,
+        "listed_rules_written": {
+          "H03": 26,
+          "H24": 25,
+          "H16": 23,
+          "H18": 19,
+          "H02": 18,
+          "H01": 16,
+          "H15": 13,
+          "H29": 12,
+          "H08": 12,
+          "H28": 10,
+          "H17": 10,
+          "H12": 9,
+          "H20": 9,
+          "H14": 8,
+          "H09": 7,
+          "H10": 7,
+          "H13": 6,
+          "H26": 6,
+          "H05": 6,
+          "H11": 5,
+          "H07": 4,
+          "H04": 2,
+          "H19": 2,
+          "H23": 1,
+          "H22": 1
+        },
+        "declares": 43,
+        "cites_identifiers": 43,
+        "action_written_first": 342
+      }
+    },
+    "the_calls": {
+      "pass1": {
+        "answers": 684,
+        "valid": 684,
+        "invalid_action": 0,
+        "served_elsewhere": 0,
+        "failed": 0,
+        "retried": 0,
+        "started_at": "2026-10-25T15:41:29Z",
+        "finished_at": "2026-10-25T17:27:59Z",
+        "by_arm": {
+          "w": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 300019,
+              "completion": 507556,
+              "reasoning": 483308
+            }
+          },
+          "t": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 300019,
+              "completion": 23727,
+              "reasoning": 0
+            }
+          },
+          "q": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 2572,
+              "reasoning": 0
+            }
+          },
+          "r": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 61587,
+              "reasoning": 59038
+            }
+          }
+        },
+        "seconds": {
+          "q": {
+            "asks": 171,
+            "total": 166.8,
+            "median": 0.9
+          },
+          "r": {
+            "asks": 171,
+            "total": 712.2,
+            "median": 4.04
+          },
+          "t": {
+            "asks": 171,
+            "total": 378.9,
+            "median": 2.13
+          },
+          "w": {
+            "asks": 171,
+            "total": 5131.9,
+            "median": 22.74
+          }
+        },
+        "completion_tokens": {
+          "q": {
+            "n": 171,
+            "min": 13,
+            "median": 15,
+            "max": 16
+          },
+          "r": {
+            "n": 171,
+            "min": 70,
+            "median": 329,
+            "max": 1080
+          },
+          "t": {
+            "n": 171,
+            "min": 84,
+            "median": 133,
+            "max": 458
+          },
+          "w": {
+            "n": 171,
+            "min": 522,
+            "median": 2262,
+            "max": 10019
+          }
+        },
+        "reasoning_tokens": {
+          "q": {
+            "n": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "r": {
+            "n": 171,
+            "min": 57,
+            "median": 314,
+            "max": 1064
+          },
+          "t": {
+            "n": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "w": {
+            "n": 171,
+            "min": 400,
+            "median": 2126,
+            "max": 9883
+          }
+        },
+        "reasoning": {
+          "recorded": 342,
+          "coded": false
+        }
+      },
+      "pass2": {
+        "answers": 684,
+        "valid": 684,
+        "invalid_action": 0,
+        "served_elsewhere": 0,
+        "failed": 0,
+        "retried": 0,
+        "started_at": "2026-10-25T17:45:10Z",
+        "finished_at": "2026-10-25T19:30:37Z",
+        "by_arm": {
+          "w": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 300019,
+              "completion": 510006,
+              "reasoning": 486430
+            }
+          },
+          "r": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 59036,
+              "reasoning": 56432
+            }
+          },
+          "q": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 216913,
+              "completion": 2575,
+              "reasoning": 0
+            }
+          },
+          "t": {
+            "providers": {
+              "Baidu": 171
+            },
+            "finish_reasons": {
+              "stop": 171
+            },
+            "tokens": {
+              "prompt": 300019,
+              "completion": 23303,
+              "reasoning": 0
+            }
+          }
+        },
+        "seconds": {
+          "q": {
+            "asks": 171,
+            "total": 195.9,
+            "median": 0.89
+          },
+          "r": {
+            "asks": 171,
+            "total": 697.0,
+            "median": 3.9
+          },
+          "t": {
+            "asks": 171,
+            "total": 377.7,
+            "median": 2.05
+          },
+          "w": {
+            "asks": 171,
+            "total": 5055.7,
+            "median": 24.72
+          }
+        },
+        "completion_tokens": {
+          "q": {
+            "n": 171,
+            "min": 14,
+            "median": 15,
+            "max": 16
+          },
+          "r": {
+            "n": 171,
+            "min": 70,
+            "median": 318,
+            "max": 937
+          },
+          "t": {
+            "n": 171,
+            "min": 75,
+            "median": 133,
+            "max": 241
+          },
+          "w": {
+            "n": 171,
+            "min": 557,
+            "median": 2412,
+            "max": 11585
+          }
+        },
+        "reasoning_tokens": {
+          "q": {
+            "n": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "r": {
+            "n": 171,
+            "min": 55,
+            "median": 304,
+            "max": 922
+          },
+          "t": {
+            "n": 171,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          },
+          "w": {
+            "n": 171,
+            "min": 390,
+            "median": 2288,
+            "max": 11430
+          }
+        },
+        "reasoning": {
+          "recorded": 342,
+          "coded": false
+        }
+      }
+    }
+  }
+}
