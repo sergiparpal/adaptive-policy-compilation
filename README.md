@@ -759,6 +759,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `queue_alone/sample.py` | `results_queue_alone/sample.json` | **refuses while the plan is unsigned** |
 > | `queue_alone/ask.py` | `results_queue_alone/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `queue_alone/score.py` | `results_queue_alone/score.json` | **refuses while the plan is unsigned** |
+> | `queue_alone/orders.py` | `results_queue_alone/orders.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
