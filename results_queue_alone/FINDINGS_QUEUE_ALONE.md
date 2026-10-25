@@ -336,7 +336,7 @@ answer alike 0.7862 of the time.
 > text, as §5.6 did. No oracle is read.
 > - **The expectation was committed before any figure of the reading
 >   existed.** It is five clauses in the module's docstring, committed as
->   `2ac1b2d`, with what the drafter had seen.
+>   `2ac1b2d`, which is `c08db88` on `main`, with what the drafter had seen.
 > - **Four gates stood before any write.**
 >   - The classes come back from `score.json`, and the copiers from
 >     `sample.json`.
@@ -345,8 +345,11 @@ answer alike 0.7862 of the time.
 >   - The order errors partition.
 >
 > Not a signed row; no verdict moves. The record is [`orders.json`](orders.json).
-> Its `_env` names the branch commit it was written from, `2ac1b2d`, with a
-> clean tree.
+> It reached `main` in pull request #174. Its `_env` names the branch commit it
+> was written from, `2ac1b2d`, with a clean tree. That commit and `c08db88` have
+> the same subject, the same tree and the same `git patch-id --stable`, and the
+> GitHub API names #174 behind the `main` commit. Its code digest,
+> `ec9245821cd8466d`, is the one `main` computes after the merge.
 
 **The terms.** A ticket's matching rules, in the list's order, are `r₁, r₂, …`,
 and `r₁` gives its truth. An order error names the queue of some lower matching
