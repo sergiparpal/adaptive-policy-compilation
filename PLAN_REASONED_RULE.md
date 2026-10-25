@@ -1,5 +1,24 @@
 # PLAN_REASONED_RULE — the rule written with reasoning on: whether reasoning carries into the queue a rule-writer chooses
 
+> **[CLOSED 2026-10-25] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-25, before any figure of the plan existed. All four rows were
+> adjudicated on 2026-10-25. **`RR-a`, `RR-b` and `RR-c` hold; `RR-d` is
+> refuted, thinly.** `RR-e` is reported. **The figures are owned by
+> [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One estimate of this file was far from what happened.** §1 priced a pass
+> at about an hour, at fifteen seconds a reasoning rule ask, for want of any
+> recorded call that had reasoned before a rule. A reasoning rule ask took
+> 22.74 and 24.72 seconds at the median, and each pass 106.5 and 105.5 minutes.
+> §0's retry was never exercised: no call and no parse failed in 1,376 calls.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-25. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-25, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
