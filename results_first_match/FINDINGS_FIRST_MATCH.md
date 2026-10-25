@@ -2,24 +2,27 @@
 
 Record opened on October 25, 2026, under
 [`PLAN_FIRST_MATCH.md`](../PLAN_FIRST_MATCH.md). The plan, its package,
-Sergi's signature and every record below are on the branch of pull request
-#176, which is open as this is written. Sergi signed §0 on 2026-10-25, before
-any figure below existed, in a commit of its own: `e405c35` on that branch.
+Sergi's signature and every record below reached `main` together in pull
+request #176, merged on 2026-10-25. Sergi signed §0 on 2026-10-25, before any
+figure below existed, in a commit of its own: `ba64894` on `main`.
 
 Every record names in its `_env` the commit it was written from. All five were
-written on the branch of #176. The rebase merge will give each of those commits
-a new hash on `main`, and a commit after the merge names them.
+written on the branch of #176, and the rebase merge gave each of those commits
+a new hash on `main`. Each pair has the same subject, the same tree and the
+same `git patch-id --stable`, and the GitHub API names #176 behind every `main`
+commit.
 
-| record | written from, on the branch of #176 |
-|---|---|
-| `sample.json` | `e405c35`, the signature |
-| `ask_smoke.json` | `80e45f9`, Stage A's commit |
-| `ask_pass1.json` | `36aefe5`, the smoke run's commit |
-| `ask_pass2.json` | `698a99a`, pass 1's commit |
-| `score.json` | `ea24ef2`, pass 2's commit |
+| record | written from, on the branch of #176 | the same commit on `main` |
+|---|---|---|
+| `sample.json` | `e405c35`, the signature | `ba64894` |
+| `ask_smoke.json` | `80e45f9`, Stage A's commit | `8ee89c4` |
+| `ask_pass1.json` | `36aefe5`, the smoke run's commit | `e9d249c` |
+| `ask_pass2.json` | `698a99a`, pass 1's commit | `5b86558` |
+| `score.json` | `ea24ef2`, pass 2's commit | `371084b` |
 
 All five carry one code digest, `d9ea475aeac77bf4`, with `code_dirty` and
-`git_dirty` false. **This record owns every figure in it.**
+`git_dirty` false, and it is the one `main` computes after the merge. **This
+record owns every figure in it.**
 
 **All three stages ran on 2026-10-25, and the six rows are adjudicated:
 `FM-a`, `FM-c`, `FM-d`, `FM-e` and `FM-f` hold; `FM-b` is refuted. No row is
