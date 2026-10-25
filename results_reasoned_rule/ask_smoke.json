@@ -1,0 +1,613 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-25T15:30:18Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "0a8eb2e571872bf1d240c86024a72e0fbab2fd38",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "7f577a9c4b826525"
+  },
+  "plan": "PLAN_REASONED_RULE.md",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "v1",
+  "settings": {
+    "t": {
+      "reasoning": {
+        "effort": "none"
+      },
+      "max_tokens": 1200
+    },
+    "w": {
+      "reasoning": {
+        "effort": "high"
+      },
+      "max_tokens": 16000
+    },
+    "q": {
+      "reasoning": {
+        "effort": "none"
+      },
+      "max_tokens": 1200
+    },
+    "r": {
+      "reasoning": {
+        "effort": "high"
+      },
+      "max_tokens": 16000
+    }
+  },
+  "provider": {
+    "order": [
+      "baidu"
+    ],
+    "allow_fallbacks": false
+  },
+  "call_retry_wait": [
+    10,
+    30
+  ],
+  "seed": 17,
+  "n": 2000,
+  "stage": "B",
+  "session": "smoke",
+  "pass": 0,
+  "temperature": 0,
+  "max_retries": 2,
+  "system_prompts_sha256": {
+    "t": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd",
+    "w": "7b883f03a863d647e310d8975065451654584b4371961ab1a4b3562b81421dcd",
+    "q": "32747d4fe8b3c42910698fae84b91043070a84a5d8bd7081f73460b9442877ae",
+    "r": "32747d4fe8b3c42910698fae84b91043070a84a5d8bd7081f73460b9442877ae"
+  },
+  "sample_record": "results_reasoned_rule/sample.json",
+  "sample_sha256": "8f47ede91055c55a5ca907cb2a81ad1be5a354497df01fdd1bb8d14371e5622d",
+  "gates": {
+    "RR-g1": {
+      "what": "PLAN_FIRST_MATCH.md's checks pass, its design is its Stage A's, its verdicts come back from its passes; the list's first match is the policy over the space; the suite green",
+      "first_match_checks": true,
+      "first_match_design": {
+        "passes": true,
+        "why": "results_first_match/sample.json: the same sessions, prompts and decisions"
+      },
+      "first_match_rows": {
+        "rows": 6,
+        "departing": [],
+        "passes": true
+      },
+      "the_list_over_the_space": {
+        "points": 134400,
+        "queues": [
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "SECURITY_INCIDENT",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL",
+          "T2_TECHNICAL",
+          "T3_ENGINEERING"
+        ],
+        "departing": [],
+        "every_point_decided": true,
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2410,
+        "result": "OK (skipped=3)",
+        "seconds": 178.0,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g2": {
+      "what": "the rule and plain arms are PLAN_QUEUE_ALONE.md's at level 3, digest for digest, and the plain and reasoning arms PLAN_FIRST_MATCH.md's; each reasoning arm's texts are its quiet arm's; no builder takes a row; the digests have teeth. The requests are tests/test_reasoned_rule.py's, through the SDK double",
+      "closed_plans": {
+        "rule_arm_is_queue_alones": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "plain_arm_is_queue_alones": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "plain_arm_is_first_matchs": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "reasoning_arm_is_first_matchs": {
+          "prompts": 171,
+          "departing": [],
+          "every_one_of_theirs": true,
+          "passes": true
+        },
+        "passes": true
+      },
+      "reasoned_arms": {
+        "prompts": 342,
+        "not_their_quiet_arms": [],
+        "passes": true
+      },
+      "texts": {
+        "rule_arms_send_the_rule_prompt": true,
+        "plain_arms_send_the_plain_prompt": true,
+        "the_rule_prompt_writes_a_rule": true,
+        "the_rule_user_message_is_the_empty_base": true,
+        "every_arm_holds_the_list": true,
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "asks": 684,
+        "texts": 342,
+        "distinct": 342,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g3": {
+      "what": "the population is \u00a70's and the sessions \u00a71's",
+      "populations": {
+        "prompts": {
+          "t": 171,
+          "w": 171,
+          "q": 171,
+          "r": 171
+        },
+        "decisions": 320,
+        "every_decision_served_once": {
+          "t": true,
+          "w": true,
+          "q": true,
+          "r": true
+        },
+        "passes": true
+      },
+      "schedule": {
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "smoke": [
+          "q:L3:162",
+          "r:L3:55",
+          "t:L3:49",
+          "q:L3:1235",
+          "w:L3:601",
+          "r:L3:96",
+          "w:L3:1264",
+          "t:L3:155"
+        ],
+        "smoke_two_distinct_of_each_arm": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RR-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_RULE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REASONED_RULE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-10-25T15:29:22Z",
+  "resumed_at": [],
+  "finished_at": "2026-10-25T15:30:18Z",
+  "rows": [
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 0,
+      "id": "q:L3:162",
+      "arm": "q",
+      "ticket": 162,
+      "digest": "74b937d20eea1bc9",
+      "action": "T1_GENERAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T1_GENERAL"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942162-BOawB0a09PmHTtmHlOP2",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 14,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 1.72,
+      "asked_at": "2026-10-25T15:29:24Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 1,
+      "id": "r:L3:55",
+      "arm": "r",
+      "ticket": 55,
+      "digest": "3e019a2422cebc84",
+      "action": "ACCOUNT_MANAGER",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "ACCOUNT_MANAGER"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": "\u6211\u4eec\u6839\u636e\u89c4\u5219\u987a\u5e8f\u5224\u65ad\uff1a\n\nH01: false (has_security_keyword false)\nH02: false\nH03: false\nH04: severity==1? no\nH05: severity==1? no\nH06: severity==1? no\nH07: no\nH08: severity==1? no\nH09: product billing? no\nH10: no\nH11: no\nH12: no\nH13: customer_tier enterprise? no (business)\nH14: customer_tier business? yes, prior_tickets_30d >=8? 20>=8 yes -> ACCOUNT_MANAGER\n\n\u6240\u4ee5\u547d\u4e2dH14\uff0caction=ACCOUNT_MANAGER\u3002",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942164-0HkXlQwUKL7vuRbLCOTP",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 166,
+          "reasoning_tokens": 150,
+          "error": null
+        }
+      ],
+      "seconds": 2.66,
+      "asked_at": "2026-10-25T15:29:27Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 2,
+      "id": "t:L3:49",
+      "arm": "t",
+      "ticket": 49,
+      "digest": "bf246372a567f274",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "El ticket es de producto api con severidad 4, pero no hay reglas previas. Se crea una regla general para api con severidad baja que derive a T2_TECHNICAL, cubriendo este caso y otros similares."
+      },
+      "keys": [
+        "action",
+        "conditions",
+        "beats",
+        "loses_to",
+        "note"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942166-aBhTviSonRjU9StnbOF3",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1754,
+          "completion_tokens": 130,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.26,
+      "asked_at": "2026-10-25T15:29:29Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 3,
+      "id": "q:L3:1235",
+      "arm": "q",
+      "ticket": 1235,
+      "digest": "5b3317d733b3ee82",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942169-vvjFtx95eHpPWdZONdJo",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 15,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 0.97,
+      "asked_at": "2026-10-25T15:29:30Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 4,
+      "id": "w:L3:601",
+      "arm": "w",
+      "ticket": 601,
+      "digest": "d156663fcc1aa0d9",
+      "action": "T2_TECHNICAL",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "T2_TECHNICAL",
+        "conditions": [
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "dashboard"
+          },
+          {
+            "attr": "severity",
+            "op": "lte",
+            "value": 2
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla. Basada en el manual H20: dashboard con severidad <=2 se asigna a T2_TECHNICAL. No hay reglas existentes."
+      },
+      "keys": [
+        "action",
+        "conditions",
+        "beats",
+        "loses_to",
+        "note"
+      ],
+      "reasoning": "We need to write a rule for this ticket. The base is empty, so this is the first rule. The ticket has: severity=2, customer_tier=free, product=dashboard, channel=portal, prior_tickets_30d=0, off_hours=true, language=es, no security keyword.\n\nWe need to decide the action. Let's look at the manual rules provided? Actually the user gave a list of rules (H01-H29) as the existing rules? The instruction says \"BASE DE REGLAS: vacia. Esta es la primera regla.\" So there are no existing rules? But then the manual enrutamiento is given. Wait, the system says \"BASE DE REGLAS: vacia.\" meaning the rule base is empty, so this is the first rule. However, the user also provided a list of rules (H01-H29) as the \"MANUAL DE ENRUTAMIENTO DE LA EMPRESA\". That is confusing. Probably those are the existing rules? But the instruction says \"BASE DE REGLAS: vacia.\" Possibly it's a scenario where the rule base is empty and we need to create the first rule? But then the manual of the company is given as a reference? Actually reading carefully: \"LAS REGLAS DE LA EMPRESA, EN ORDEN\" and then H01-H29. That seems like the existing rules that the system should be using. But then the exception component is to handle tickets that the symbolic engine couldn't decide. The symbolic engine applies those rules. So if the base is empty, that means no rules? That doesn't make sense.\n\nLet me re-read the prompt: \"Eres el componente de excepcion de un sistema de triaje de tickets. El motor simbolico no ha podido decidir este ticket.\" So the symbolic engine failed to decide. The base of rules is the set of rules that the engine uses. But here it says \"BASE DE REGLAS: vacia.\" That might mean that the rule base is empty? But then the manual is given. Possibly the manual is the intended rules, but the engine hasn't been configured with them? Or maybe the user is simulating a scenario where the rule base is empty and we have to create the first rule based on the manual? The instruction says: \"Tu tarea: 1. Decidir la cola de destino correcta para ESTE ticket. 2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros. 3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\"\n\nAnd then it says \"RESPONDE UNICAMENTE con un objeto JSON... conditions, beats, loses_to\". So we need to output a rule. The rule should be based on the manual? But if the base is empty, then there are no existing rules to beat or lose to. The user explicitly says \"BASE DE REGLAS: vacia.\" So beats and loses_to should be empty arrays.\n\nBut then what action? We need to apply the manual to this ticket. The manual rules are given. But if the base is empty, the engine has no rules. So we need to create a rule that would decide this ticket according to the manual? Actually the manual is the company policy. The symbolic engine should have those rules. But if the base is empty, maybe the engine doesn't have them and we are to create a rule that mimics the manual? That seems odd.\n\nAnother interpretation: The \"BASE DE REGLAS\" refers to the set of rules that the exception component has already written? The instruction says \"Situar esa regla respecto a las reglas que ya existen\". So the existing rules are the ones from the manual (H01-H29). And the ticket is in impasse because it doesn't match any rule? But then we need to create a new rule that would cover this ticket and also define its priority relative to existing rules.\n\nLet's check the ticket against the manual rules:\n\nH01: security keyword false -> no\nH02: security false -> no\nH03: no\nH04: severity=2 not 1 -> no\nH05: no\nH06: no\nH07: no\nH08: severity=2 not 1 -> no\nH09: product dashboard not billing -> no\nH10: product not billing -> no\nH11: no\nH12: no\nH13: customer_tier free not enterprise -> no\nH14: no\nH15: product dashboard not api -> no\nH16: no\nH17: product not integrations -> no\nH18: no\nH19: product mobile? dashboard no -> no\nH20: product dashboard AND severity lte 2? severity=2, lte 2 is true, so H20: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL. This matches! So the ticket should be routed to T2_TECHNICAL according to H20. But then why is it in impasse? Unless the engine didn't have that rule? But the user says \"BASE DE REGLAS: vacia.\" So maybe the engine doesn't have any rules and we are to create rules from scratch? But then we have the manual as a guide. The manual is the policy, so our rule should be consistent with it.\n\nPerhaps the context is that the symbolic engine already has the rules from the manual, but it couldn't decide because the ticket matched multiple rules with overlapping conditions and no priority? But H20 clearly matches and is earlier than later rules that might also match? Let's see if any other rule matches: H21 language pt? no. H22 channel phone? no. H23 phone? no. H24 free and severity gte 3? severity=2, no. H25 free and prior_tickets_30d=0? That's true! H25: SI customer_tier eq free AND prior_tickets_30d eq 0 ENTONCES SELF_SERVICE_DEFLECT. So both H20 and H25 match. H20 is earlier in the list (H20 before H25). According to the manual, \"Se aplica la primera regla de la lista cuyas condiciones casa el ticket.\" So H20 applies first, giving T2_TECHNICAL. So the ticket should be decided. But it's in impasse, meaning the engine couldn't decide. Maybe because the rules are not in order? Or because the engine uses a different mechanism? The exception component is for when the symbolic engine fails. So perhaps the engine has these rules but due to overlaps without clear containment, it couldn't prioritize. But H20 and H25: Do they overlap? Let's check: H20: product=dashboard AND severity<=2. H25: customer_tier=free AND prior_tickets_30d=0. This ticket satisfies both because it has product=dashboard, severity=2, customer_tier=free, prior_tickets_30d=0. So both conditions are true. But in the manual, the order is given. The symbolic engine might not consider order? The manual says \"en orden\", so the engine should apply the first match. But the exception component is for when the engine cannot decide, perhaps because the engine is rule-based with no order? The instructions mention that the engine uses two levels: level 1 automatic containment, level 2 declared priority. So the engine does not use order, it uses set containment. So if two rules overlap without containment, the engine escalates unless priority is declared. In this case, H20 and H25 overlap but neither contains the other. H20 requires product=dashboard and severity<=2. H25 requires customer_tier=free and prior_tickets_30d=0. Neither set of conditions is a subset of the other. So the engine cannot decide, hence the impasse. Therefore, we need to declare which rule should win. According to the manual policy, H20 comes before H25, so H20 should win. So we need to create a new rule that covers this ticket? But wait, the instruction says \"Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\" So we need to write a rule that would cause this ticket to be routed correctly. But if we just add a rule that says \"if product=dashboard and severity<=2 then T2_TECHNICAL\", that already exists as H20. The problem is the conflict with H25. So we need to declare priority between H20 and H25. But the task asks to write a new rule? Or to modify? The user says \"BASE DE REGLAS: vacia.\" That suggests we are starting from scratch. But then the manual rules are given as reference? I'm confused.\n\nLet me re-read the first line: \"BASE DE REGLAS: vacia. Esta es la primera regla.\" So the rule base (the set of rules the engine uses) is empty. This is the first rule we are adding. So we are building the rule base from scratch, but we have the company manual as guidance. So we need to write a rule that covers this ticket. And since it's the first rule, there are no existing rules to beat or lose to. So beats and loses_to should be empty.\n\nBut then the action: according to the manual, H20 says T2_TECHNICAL. So we should write a rule that matches this ticket and gives T2_TECHNICAL. However, the ticket also matches H25, but that rule doesn't exist yet because base is empty. So we could write either rule. But we need to write a generalizable rule that covers this and similar future cases. The ticket: severity=2, customer_tier=free, product=dashboard, channel=portal, prior_tickets_30d=0, off_hours=true, language=es. A general rule could be: if product=dashboard and severity<=2 then T2_TECHNICAL (like H20). Or if customer_tier=free and prior_tickets_30d=0 then SELF_SERVICE_DEFLECT (like H25). Which one is more appropriate? The manual priority says H20 first, so we should follow the manual. Also, the manual's order likely reflects business priority. So we'll go with H20.\n\nBut we need to generalize. The ticket has severity=2 and product=dashboard. So the rule: SI product eq dashboard AND severity lte 2 ENTONCES T2_TECHNICAL. That's exactly H20. That seems reasonable.\n\nNow, beats and loses_to: since base is empty, empty arrays. But note: the instruction says \"Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\" Since no existing rules, nothing to declare.\n\nThus output:\n\n{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"}, {\"attr\": \"severity\", \"op\": \"lte\", \"value\": 2}],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Primera regla. Seg\u00fan el manual H20, para dashboard con severidad <=2 se asigna a T2_TECHNICAL. No hay reglas previas con las que conflictuar.\"\n}\n\nBut wait: the ticket also has off_hours=true and language=es, but we ignore them because they are not in the condition. That's fine.\n\nHowever, let's double-check: if we only have this rule, then future tickets with product=dashboard and severity=2 but also customer_tier=free and prior_tickets_30d=0 will be matched by this rule and go to T2_TECHNICAL, which is consistent with manual H20 beating H25. So it's good.\n\nSo final answer.",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942169-Z2Vekbb2KBPKDXJW8ZXc",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1754,
+          "completion_tokens": 2619,
+          "reasoning_tokens": 2501,
+          "error": null
+        }
+      ],
+      "seconds": 25.59,
+      "asked_at": "2026-10-25T15:29:56Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 5,
+      "id": "r:L3:96",
+      "arm": "r",
+      "ticket": 96,
+      "digest": "f9d15e7087058284",
+      "action": "ACCOUNT_MANAGER",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "ACCOUNT_MANAGER"
+      },
+      "keys": [
+        "action"
+      ],
+      "reasoning": "\u6211\u4eec\u6839\u636e\u89c4\u5219\u987a\u5e8f\u68c0\u67e5\u6bcf\u4e2a\u6761\u4ef6\u3002\u89c4\u5219H01: has_security_keyword\u4e3afalse\uff0c\u4e0d\u6ee1\u8db3\u3002H02:\u540c\u6837false\u3002H03: false\u3002H04: severity eq 1? \u4e0d\uff0cseverity=4\uff0c\u6240\u4ee5\u4e0d\u6ee1\u8db3\u3002H05: severity eq 1? \u4e0d\u3002H06: severity eq 1? \u4e0d\u3002H07: severity eq 1? \u4e0d\u3002H08: severity eq 1? \u4e0d\u3002H09: product eq billing? \u4e0d\uff0cproduct\u662fapi\u3002H10: product eq billing? \u4e0d\u3002H11: product eq billing? \u4e0d\u3002H12: product eq billing? \u4e0d\u3002H13: customer_tier eq enterprise? \u4e0d\uff0c\u662fbusiness\uff0c\u6240\u4ee5\u4e0d\u6ee1\u8db3\u3002H14: customer_tier eq business AND prior_tickets_30d gte 8? business\u4e3a\u771f\uff0cprior_tickets_30d=9 >=8\uff0c\u771f\u3002\u6240\u4ee5\u89c4\u5219H14\u5339\u914d\u3002\u52a8\u4f5c\u662fACCOUNT_MANAGER\u3002\n\n\u56e0\u6b64\u8f93\u51fa\u3002",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942195-uVHri1e1WYdVJkvAumew",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1268,
+          "completion_tokens": 232,
+          "reasoning_tokens": 216,
+          "error": null
+        }
+      ],
+      "seconds": 2.95,
+      "asked_at": "2026-10-25T15:29:59Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 6,
+      "id": "w:L3:1264",
+      "arm": "w",
+      "ticket": 1264,
+      "digest": "f3d8b05ba16859eb",
+      "action": "SECURITY_INCIDENT",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "attr": "customer_tier",
+            "op": "in",
+            "value": [
+              "business",
+              "enterprise"
+            ]
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla del sistema. Seg\u00fan el manual, los tickets con palabra clave de seguridad y tier business/enterprise deben priorizarse como incidente de seguridad, independientemente de otras condiciones."
+      },
+      "keys": [
+        "action",
+        "conditions",
+        "beats",
+        "loses_to",
+        "note"
+      ],
+      "reasoning": "\u6211\u4eec\u5206\u6790\u8fd9\u4e2aticket: has_security_keyword=true, severity=4, customer_tier=enterprise, product=api, channel=portal, prior_tickets_30d=0, off_hours=false, language=en.\n\n\u6839\u636e\u516c\u53f8\u89c4\u5219\uff08\u6309\u987a\u5e8f\u68c0\u67e5\uff09\uff0c\u6211\u4eec\u9700\u8981\u786e\u5b9a\u5e94\u5339\u914d\u54ea\u6761\u89c4\u5219\u3002\u4f46\u9898\u76ee\u8bf4\"BASE DE REGLAS: vacia. Esta es la primera regla.\" \u8fd9\u610f\u5473\u7740\u76ee\u524d\u8fd8\u6ca1\u6709\u4efb\u4f55\u89c4\u5219\uff1f\u5b9e\u9645\u4e0a\uff0c\u7528\u6237\u63d0\u4f9b\u4e86\u4e00\u4e2a\"MANUAL DE ENRUTAMIENTO DE LA EMPRESA\"\u7684\u89c4\u5219\u5217\u8868\uff0c\u4f46\u8fd9\u91cc\u8bf4\"BASE DE REGLAS: vacia\"\uff0c\u53ef\u80fd\u610f\u5473\u7740\u8fd9\u4e2a\u89c4\u5219\u5217\u8868\u662f\u5f85\u6dfb\u52a0\u7684\uff1f\u6216\u8005\u8fd9\u662f\u7b2c\u4e00\u6b21\u6dfb\u52a0\u89c4\u5219\uff1f\u4f46\u9898\u76ee\u8bf4\"Eres el componente de excepcion de un sistema de triaje de tickets.\" \u5e76\u4e14\"El motor simbolico no ha podido decidir este ticket.\" \u5b9e\u9645\u4e0a\uff0c\u7cfb\u7edf\u5df2\u7ecf\u6709\u4e00\u5957\u89c4\u5219\uff08H01-H29\uff09\uff0c\u4f46ticket\u65e0\u6cd5\u88ab\u51b3\u7b56\uff1f\u7b49\u7b49\uff0c\u91cd\u65b0\u9605\u8bfb\uff1a\u7528\u6237\u6700\u5f00\u59cb\u8bf4\"BASE DE REGLAS: vacia. Esta es la primera regla.\" \u53ef\u80fd\u662f\u5728\u8fd9\u4e2a\u7279\u5b9a\u7684\u573a\u666f\u4e0b\uff0c\u89c4\u5219\u5e93\u662f\u7a7a\u7684\uff1f\u4f46\u540e\u9762\u53c8\u7ed9\u51fa\u4e86\u4e00\u4e2a\u5f88\u957f\u7684\u89c4\u5219\u5217\u8868\u3002\u6709\u70b9\u6df7\u6dc6\u3002\n\n\u5b9e\u9645\u4e0a\uff0c\u9898\u76ee\u63cf\u8ff0\u7684\u7ed3\u6784\u662f\uff1a\u7cfb\u7edf\u6709\u73b0\u6709\u7684\u89c4\u5219\u5217\u8868\uff08H01-H29\uff09\uff0c\u5e76\u4e14\u8fd9\u4e2aticket\u65e0\u6cd5\u88ab\u51b3\u7b56\uff08impasse\uff09\uff0c\u6211\u4eec\u9700\u8981\u5199\u4e00\u6761\u65b0\u89c4\u5219\u6765\u8986\u76d6\u8fd9\u4e2aticket\uff0c\u5e76\u6307\u5b9a\u5b83\u76f8\u5bf9\u4e8e\u73b0\u6709\u89c4\u5219\u7684\u4f18\u5148\u7ea7\uff08beats\u548closes_to\uff09\u3002\u4f46\u5f00\u5934\u53c8\u8bf4\"BASE DE REGLAS: vacia. Esta es la primera regla.\" \u8fd9\u53ef\u80fd\u662f\u4e00\u4e2a\u6307\u793a\uff1a\u5728\u8fd9\u4e2a\u4f8b\u5b50\u4e2d\uff0c\u89c4\u5219\u5e93\u662f\u7a7a\u7684\uff0c\u6240\u4ee5\u6211\u4eec\u5199\u7684\u662f\u7b2c\u4e00\u6761\u89c4\u5219\u3002\u4f46\u662f\uff0c\u540e\u9762\u786e\u5b9e\u6709\u89c4\u5219\u5217\u8868\u3002\u6216\u8bb8\u7528\u6237\u7684\u610f\u601d\u662f\uff1a\u5728\u6211\u4eec\u5f00\u59cb\u4e4b\u524d\uff0c\u89c4\u5219\u5e93\u662f\u7a7a\u7684\uff1f\u4f46\u5b9e\u9645\u4e0a\uff0c\u89c4\u5219\u5217\u8868\u5df2\u7ecf\u5b58\u5728\u4f5c\u4e3a\u516c\u53f8\u7684\u7b56\u7565\uff1f\u4e0d\uff0c\u53ef\u80fd\u7528\u6237\u53ea\u662f\u8bf4\u8fd9\u4e2aticket\u662f\u7b2c\u4e00\u4e2a\u9047\u5230\u7684\uff0c\u4f46\u89c4\u5219\u5e93\u5df2\u7ecf\u5b58\u5728\uff1f\u6211\u4eec\u9700\u8981\u4ed4\u7ec6\u3002\n\n\u770b\u7528\u6237\u6d88\u606f\u7684\u7b2c\u4e00\u53e5\uff1a\"BASE DE REGLAS: vacia. Esta es la primera regla.\" \u8fd9\u53ef\u80fd\u610f\u5473\u7740\u5728\u8fd9\u4e2a\u7ec3\u4e60\u4e2d\uff0c\u89c4\u5219\u5e93\u662f\u4ece\u96f6\u5f00\u59cb\u7684\uff0c\u6211\u4eec\u6b63\u5728\u6dfb\u52a0\u7b2c\u4e00\u6761\u89c4\u5219\u3002\u4f46\u662f\u968f\u540e\u7528\u6237\u63d0\u4f9b\u4e86\"MANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\" \u5e76\u4e14\u5217\u51fa\u4e86H01\u5230H29\u3002\u6240\u4ee5\u5b9e\u9645\u4e0a\uff0c\u8fd9\u4e9b\u89c4\u5219\u5df2\u7ecf\u5b58\u5728\uff1f\u8fd9\u5f88\u77db\u76fe\u3002\n\n\u6216\u8bb8\u7528\u6237\u7684\u610f\u601d\u662f\uff1a\u8fd9\u4e9b\u89c4\u5219\u662f\u516c\u53f8\u7684\u624b\u518c\uff0c\u4f46\u7cfb\u7edf\u91cc\u8fd8\u6ca1\u6709\u5b9e\u73b0\uff1f\u6216\u8005\u6211\u4eec\u4f5c\u4e3a\u5f02\u5e38\u7ec4\u4ef6\uff0c\u9700\u8981\u6839\u636e\u8fd9\u4e2a\u624b\u518c\u6765\u5199\u51fa\u89c4\u5219\uff1f\u4f46\u624b\u518c\u672c\u8eab\u5c31\u662f\u89c4\u5219\u3002\u5b9e\u9645\u4e0a\uff0c\u7528\u6237\u53ef\u80fd\u662f\u5728\u6a21\u62df\u4e00\u4e2a\u573a\u666f\uff1a\u73b0\u6709\u89c4\u5219\u5e93\u4e3a\u7a7a\uff0c\u7136\u540e\u6211\u4eec\u6839\u636e\u516c\u53f8\u7b56\u7565\u5199\u51fa\u7b2c\u4e00\u6761\u89c4\u5219\u3002\u4f46\u516c\u53f8\u7b56\u7565\u672c\u8eab\u4e5f\u662f\u4e00\u7cfb\u5217\u89c4\u5219\uff1f\u8fd9\u8bf4\u4e0d\u901a\u3002\n\n\u53e6\u4e00\u79cd\u7406\u89e3\uff1a\u8fd9\u4e2aticket\u662fimpasse\uff0c\u73b0\u6709\u7684\u89c4\u5219\uff08\u5373\u516c\u53f8\u624b\u518c\u91cc\u7684\u89c4\u5219\uff09\u90fd\u65e0\u6cd5\u5339\u914d\u5b83\uff0c\u6240\u4ee5\u6211\u4eec\u9700\u8981\u6dfb\u52a0\u4e00\u6761\u65b0\u89c4\u5219\u3002\u4f46\u662f\u516c\u53f8\u624b\u518c\u7684\u89c4\u5219\u5df2\u7ecf\u8986\u76d6\u4e86\u5f88\u591a\u60c5\u51b5\uff0c\u6211\u4eec\u9700\u8981\u68c0\u67e5\u8fd9\u4e2aticket\u662f\u5426\u771f\u7684\u6ca1\u6709\u88ab\u4efb\u4f55\u89c4\u5219\u5339\u914d\u3002\n\n\u8ba9\u6211\u4eec\u68c0\u67e5\u8fd9\u4e2aticket\u662f\u5426\u5339\u914d\u4efb\u4f55\u73b0\u6709\u89c4\u5219\uff08H01-H29\uff09\uff1a\n\n- H01: has_security_keyword true AND customer_tier in ['business', 'enterprise'] => condition true (customer_tier=enterprise) => \u5e94\u8be5\u5339\u914dH01\uff0c\u8f93\u51faSECURITY_INCIDENT\u3002\u4f46\u662f\u6ce8\u610f\uff1aH01\u662f\u7b2c\u4e00\u6761\u89c4\u5219\uff0c\u5982\u679c\u5339\u914d\u5219\u4e0d\u4f1a\u7ee7\u7eed\u3002\u6240\u4ee5\u8fd9\u4e2aticket\u5e94\u8be5\u88abH01\u6355\u83b7\u3002\u4f46\u662f\u9898\u76ee\u8bf4ticket\u5728impasse\uff0c\u6240\u4ee5\u53ef\u80fd\u73b0\u6709\u89c4\u5219\u5e76\u4e0d\u5b58\u5728\uff1f\u6216\u8005\u7528\u6237\u6545\u610f\u8bf4\u89c4\u5219\u5e93\u4e3a\u7a7a\uff1f\u5b9e\u9645\u4e0a\uff0c\u7528\u6237\u660e\u786e\u8bf4\"BASE DE REGLAS: vacia\"\uff0c\u6240\u4ee5\u6211\u4eec\u5e94\u8be5\u5047\u8bbe\u6ca1\u6709\u73b0\u6709\u89c4\u5219\u3002\n\n\u56e0\u6b64\uff0c\u6211\u4eec\u9700\u8981\u6839\u636e\u516c\u53f8\u7b56\u7565\uff08\u5373\u624b\u518c\uff09\u6765\u521b\u5efa\u4e00\u6761\u89c4\u5219\u6765\u8986\u76d6\u8fd9\u4e2aticket\u3002\u5e76\u4e14\u8fd9\u662f\u7b2c\u4e00\u6761\u89c4\u5219\uff0c\u6240\u4ee5\u6ca1\u6709\u5176\u4ed6\u89c4\u5219\u4e0e\u4e4b\u51b2\u7a81\uff0cbeats\u548closes_to\u90fd\u4e3a\u7a7a\u3002\n\n\u4f46\u662f\uff0c\u516c\u53f8\u624b\u518c\u4e2d\u6709\u660e\u786e\u7684\u987a\u5e8f\uff1a\u5982\u679chas_security_keyword\u4e3atrue\u4e14customer_tier\u662fbusiness\u6216enterprise\uff0c\u5219\u5e94\u8be5\u8d70SECURITY_INCIDENT\u3002\u5bf9\u4e8e\u8fd9\u4e2aticket\uff0c\u5b83\u786e\u5b9e\u6ee1\u8db3H01\u3002\u6240\u4ee5\u6211\u4eec\u7684\u89c4\u5219\u5e94\u8be5\u7c7b\u4f3c\u4e8eH01\u3002\u4f46\u6ce8\u610f\uff1aH01\u7684\u6761\u4ef6\u662f\u53cc\u6761\u4ef6\uff0c\u800c\u6211\u4eec\u7684\u89c4\u5219\u5e94\u8be5\u66f4\u901a\u7528\u8fd8\u662f\u66f4\u5177\u4f53\uff1f\u4f5c\u4e3a\u7b2c\u4e00\u6761\u89c4\u5219\uff0c\u6211\u4eec\u53ef\u80fd\u4f1a\u76f4\u63a5\u5199\u548cH01\u4e00\u6837\uff1f\u4f46\"generalizable\"\u610f\u5473\u7740\u8981\u5199\u4e00\u6761\u80fd\u8986\u76d6\u8fd9\u4e2aticket\u548c\u5176\u4ed6\u7c7b\u4f3c\u60c5\u51b5\u7684\u89c4\u5219\u3002\u8fd9\u91cc\u7684\u5173\u952e\u5c5e\u6027\u662fhas_security_keyword\u548ccustomer_tier\u3002\u6211\u4eec\u8fd8\u53ef\u4ee5\u8003\u8651severity\uff1f\u4f46\u6839\u636e\u624b\u518c\uff0c\u5b89\u5168\u5173\u952e\u5b57\u4f18\u5148\u3002\n\n\u6240\u4ee5\u6211\u4eec\u5199\u4e00\u6761\u89c4\u5219\uff1a\u5982\u679chas_security_keyword\u4e3atrue\u4e14customer_tier\u662fbusiness\u6216enterprise\uff0c\u5219SECURITY_INCIDENT\u3002\u8fd9\u6b63\u597d\u662fH01\u3002\n\n\u4f46\u662f\uff0c\u6211\u4eec\u9700\u8981\u8003\u8651\u8fd9\u662f\u4e00\u4e2aimpasse\uff0c\u6240\u4ee5\u53ef\u80fd\u73b0\u6709\u89c4\u5219\u4e0d\u5b58\u5728\uff0c\u6211\u4eec\u53ef\u4ee5\u76f4\u63a5\u6dfb\u52a0\u8fd9\u6761\u89c4\u5219\u3002\u5e76\u4e14\u7531\u4e8e\u662f\u7b2c\u4e00\u6761\uff0c\u6ca1\u6709\u51b2\u7a81\u3002\n\n\u7136\u800c\uff0c\u7528\u6237\u8981\u6c42\u6211\u4eec\u8f93\u51faJSON\uff0c\u5176\u4e2d\u5305\u542bconditions\u6570\u7ec4\u3002\u6211\u4eec\u9700\u8981\u7528attr, op, value\u6765\u8868\u793a\u6761\u4ef6\u3002\u6ce8\u610f\uff1aop\u53ef\u4ee5\u662fin\uff0c\u9700\u8981\u5217\u8868\u3002\n\n\u56e0\u6b64\uff0cconditions\u53ef\u4ee5\u662f\uff1a[{\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}, {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}]\n\naction: \"SECURITY_INCIDENT\"\n\nbeats\u548closes_to\u90fd\u4e3a\u7a7a\u6570\u7ec4\uff0c\u56e0\u4e3a\u6ca1\u6709\u5176\u4ed6\u89c4\u5219\u3002\n\nnote: \u89e3\u91ca\u4e3a\u4ec0\u4e48\u9009\u62e9\u8fd9\u4e2a\u62bd\u8c61\u5c42\u6b21\uff1a\u56e0\u4e3a\u5b89\u5168\u5173\u952e\u5b57\u662f\u6700\u9ad8\u4f18\u5148\u7ea7\uff0c\u4e14\u4f01\u4e1a\u5ba2\u6237\u9700\u8981\u5b89\u5168\u54cd\u5e94\u3002\n\n\u4f46\u662f\uff0c\u6ce8\u610f\uff1a\u7528\u6237\u8bf4\"Eres el componente de excepcion de un sistema de triaje de tickets.\" \u5e76\u4e14\u4e4b\u524d\u63d0\u5230\"El motor simbolico no ha podido decidir este ticket.\" \u53ef\u80fd\u7cfb\u7edf\u5df2\u7ecf\u6709\u89c4\u5219\u4f46\u51b3\u7b56\u5931\u8d25\uff1f\u4f46\u7528\u6237\u660e\u786e\u8bf4\u89c4\u5219\u4e3a\u7a7a\uff0c\u6240\u4ee5\u6211\u4eec\u4ece\u96f6\u5f00\u59cb\u3002\n\n\u53e6\u4e00\u79cd\u53ef\u80fd\u6027\uff1a\u7528\u6237\u63d0\u4f9b\u7684\u89c4\u5219\u5217\u8868\uff08H01-H29\uff09\u662f\u7cfb\u7edf\u5df2\u6709\u7684\uff1f\u4f46\u5f00\u5934\u8bf4\u89c4\u5219\u4e3a\u7a7a\uff0c\u8fd9\u77db\u76fe\u3002\u6216\u8bb8\u7528\u6237\u662f\u6a21\u62df\u4e00\u4e2a\u589e\u91cf\u6dfb\u52a0\u89c4\u5219\u7684\u8fc7\u7a0b\uff0c\u5176\u4e2d\u8fd9\u4e2aticket\u662f\u7b2c\u4e00\u4e2a\uff0c\u6240\u4ee5\u7cfb\u7edf\u89c4\u5219\u4e3a\u7a7a\u3002\u90a3\u4e48\u6211\u4eec\u5c31\u57fa\u4e8e\u624b\u518c\u6765\u5199\u7b2c\u4e00\u6761\u3002\n\n\u6211\u8ba4\u4e3a\u6700\u5408\u7406\u7684\u89e3\u91ca\u662f\uff1a\u7cfb\u7edf\u76ee\u524d\u6ca1\u6709\u4efb\u4f55\u89c4\u5219\uff0c\u6211\u4eec\u9700\u8981\u57fa\u4e8e\u516c\u53f8\u7b56\u7565\u6dfb\u52a0\u7b2c\u4e00\u6761\u89c4\u5219\u6765\u8986\u76d6\u8fd9\u4e2aticket\u3002\n\n\u6ce8\u610f\uff1a\u516c\u53f8\u7b56\u7565\u4e2dH01\u7684\u4f18\u5148\u7ea7\u6700\u9ad8\uff0c\u6240\u4ee5\u6211\u4eec\u7684\u89c4\u5219\u5e94\u8be5\u548cH01\u4e00\u81f4\u3002\n\n\u56e0\u6b64\uff0c\u8f93\u51fa\u5982\u4e0b\uff1a\n\n{\n  \"action\": \"SECURITY_INCIDENT\",\n  \"conditions\": [\n    {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true},\n    {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Primera regla del sistema. Seg\u00fan el manual, los tickets con palabra clave de seguridad y tier business/enterprise deben priorizarse como incidente de seguridad, independientemente de otras condiciones.\"\n}\n\n\u4f46\u662f\uff0c\u68c0\u67e5ticket\u7684\u5177\u4f53\u503c\uff1ahas_security_keyword true, customer_tier enterprise, \u6240\u4ee5\u5339\u914d\u3002\n\n\u6ce8\u610f\uff1a\u6211\u4eec\u662f\u5426\u9700\u8981\u8003\u8651severity? \u624b\u518c\u4e2dH01\u6ca1\u6709severity\u6761\u4ef6\uff0c\u6240\u4ee5\u6211\u4eec\u7684\u89c4\u5219\u4e5f\u4e0d\u52a0\u3002\u8fd9\u6837\u6b63\u786e\u3002\n\n\u53e6\u5916\uff0c\u6ce8\u610foperators: \"in\"\u7528\u4e8e\u5217\u8868\u3002\n\n\u6240\u4ee5\u8fd9\u6837\u5c31\u53ef\u4ee5\u4e86\u3002\n\n\u4f46\u7528\u6237\u8981\u6c42\"UNICAMENTE con un objeto JSON\"\uff0c\u6240\u4ee5\u76f4\u63a5\u8f93\u51fajson\u3002\n\n\u6ce8\u610f\uff1a\u5728conditions\u4e2d\uff0c\u6211\u4eec\u4f7f\u7528\u4e86\u4e24\u4e2a\u6761\u4ef6\uff0c\u5b83\u4eec\u4e4b\u95f4\u662fAND\u5173\u7cfb\uff08\u9ed8\u8ba4\uff09\u3002\u4e0d\u9700\u8981\u663e\u5f0f\u5199AND\u3002\n\n\u6700\u540e\uff0c\u7531\u4e8e\u662f\u7b2c\u4e00\u6761\u89c4\u5219\uff0cbeats\u548closes_to\u90fd\u4e3a\u7a7a\u3002\n\n\u786e\u4fdd\u8f93\u51fa\u683c\u5f0f\u6b63\u786e\u3002",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942198-JpnwRyKFVBiiIdtfHfU8",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1755,
+          "completion_tokens": 1670,
+          "reasoning_tokens": 1540,
+          "error": null
+        }
+      ],
+      "seconds": 17.28,
+      "asked_at": "2026-10-25T15:30:16Z"
+    },
+    {
+      "session": "smoke",
+      "pass": 0,
+      "position": 7,
+      "id": "t:L3:155",
+      "arm": "t",
+      "ticket": 155,
+      "digest": "adf466bea57e1635",
+      "action": "SECURITY_INCIDENT",
+      "served_by": "Baidu",
+      "valid": true,
+      "payload": {
+        "action": "SECURITY_INCIDENT",
+        "conditions": [
+          {
+            "attr": "has_security_keyword",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "attr": "customer_tier",
+            "op": "in",
+            "value": [
+              "business",
+              "enterprise"
+            ]
+          }
+        ],
+        "beats": [],
+        "loses_to": [],
+        "note": "Primera regla de la base. El ticket tiene keyword de seguridad y tier business, por lo que debe ir a SECURITY_INCIDENT seg\u00fan la pol\u00edtica de la empresa (H01)."
+      },
+      "keys": [
+        "action",
+        "conditions",
+        "beats",
+        "loses_to",
+        "note"
+      ],
+      "reasoning": null,
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1792942215-BhoRoxgOO6oIwr1JFd9s",
+          "provider": "Baidu",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1754,
+          "completion_tokens": 127,
+          "reasoning_tokens": 0,
+          "error": null
+        }
+      ],
+      "seconds": 2.22,
+      "asked_at": "2026-10-25T15:30:18Z"
+    }
+  ]
+}
