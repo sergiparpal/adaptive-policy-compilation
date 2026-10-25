@@ -307,6 +307,22 @@ auditable.**
   - the registries the plumbing joins: `harness/provenance.py`'s `CODE_ROOTS`,
     `tests/test_oracle_separation.py`, `tests/test_writer_lists.py`,
     `tests/test_call_record.py` and `tests/test_prose_tables.py`.
+  - **Writing the package, after the draft above was committed**:
+    `queue_alone/score.py`'s `answer`, `Prompt`, `anchor_term` and
+    `adjudicate_anchor`; `apply/score.py`'s helpers and its `rules_written`;
+    `queue_alone/gates.py`'s `same_verdict`; `reuse/gates.py`'s `run_suite`;
+    `harness/dsl.py`'s `Condition`; `tests/doubles.py`'s SDK double; and
+    `tests/test_first_match.py`, whole.
+- **The package's checks, run before the signature.** They recompute
+  `PLAN_FIRST_MATCH.md`'s six verdicts from its passes and compare them with
+  its record, and, through that plan's checks, `PLAN_QUEUE_ALONE.md`'s. They
+  print only whether each comparison passes.
+- **One rule read against one ticket, while writing `reasoned_rule/shape.py`.**
+  To try the reading, the drafter read a rule written by hand, *product eq api*
+  to `T2_TECHNICAL`, against ticket 0's case. That printed the rule that governs
+  ticket 0, which serves no decision, and how much of that rule's region over
+  the space the list sends to `T2_TECHNICAL`. Neither is an answer of the model,
+  and neither bears on a band. Every test reads rules and tickets built by hand.
 - **The manual's level-3 text**, `manual/texts/rules.txt`, whole: the 29 rules
   and the first-match sentence.
 - **OpenRouter.** Not read for this plan. Its listing of this model's
@@ -324,6 +340,9 @@ auditable.**
   - **`PLAN_REUSE.md`'s third smoke run keeps no attempt and no reasoning.** Its
     record, `results_reuse/run_n20_smoke_reasoning_on.json`, carries neither
     `call_attempts` nor a `reasoning` or `reasoning_tokens` field anywhere.
+  - **The design, as the package builds it.** 684 prompts, 171 an arm, every one
+    of level 3's 320 decisions served once in each arm, and 342 distinct texts
+    behind them, since each reasoning arm shares its texts with its quiet arm.
 
 **Not seen, because nothing has produced it:**
 
@@ -864,6 +883,9 @@ figure exists.**
 - **The reasoning arms.** Every reasoning rule arm prompt is the rule arm's on
   the same ticket, text for text, and every reasoning arm prompt the plain
   arm's.
+- **The texts.** The two rule arms send the rule prompt, which asks for a rule's
+  conditions and edges, under v1's empty base; the other two send the plain
+  prompt. Every arm's system prompt holds the 29 identifiers of level 3's list.
 - **The requests.** They are checked through `tests/doubles.py`'s SDK double in
   the package's tests, which `RR-g1`'s suite runs:
   - the rule arm's request is `PLAN_QUEUE_ALONE.md`'s rule arm's, the
@@ -994,7 +1016,8 @@ pinned by tests:**
 - **The inputs.** `queue_alone.population.build` and the closed plans' paths,
   imported and not retyped.
 - **The arms.** `ARMS = ("t", "w", "q", "r")`: the rule, reasoning rule, plain
-  and reasoning arms.
+  and reasoning arms. `REASONING_ARMS = ("w", "r")` and `QUIET_ARMS = ("t", "q")`
+  say which of them reason.
 - **The population.**
   - `LEVEL = 3`.
   - `TICKET_PROMPTS = 171` and `DECISIONS = 320`.
