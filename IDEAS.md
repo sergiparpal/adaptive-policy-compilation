@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 24, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of October 25, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -78,7 +78,9 @@ and one refuted, and one reported, written up in `results_apply/`. **Its rows
 were read within one provider's answers POST-RUN the same day**, and the item
 that reading answers is struck in place. **The queue asked alone closed the
 same day too**: `PLAN_QUEUE_ALONE.md`, six signed rows, three held and three
-refuted, and one reported, written up in `results_queue_alone/`. This is a
+refuted, and one reported, written up in `results_queue_alone/`. **Where its
+order errors go was read POST-RUN on October 25, 2026**, and the item that
+reading answers is struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -354,10 +356,20 @@ order. What that leaves:
   - **Reasoning on.** The proposer's calls have had reasoning off since
     `PLAN_REUSE.md`'s amendment. A plain question with reasoning on would say
     whether first match over 29 rules is a matter of thinking it through.
-- **A mechanical reading of the list beats every arm.** A copier answering the
+  **[NOTE 2026-10-25] Which lower rule, read POST-RUN: the next one**
+  (`FINDINGS_QUEUE_ALONE.md`, *Where the order errors go*). In every arm,
+  nearly every order error names the queue of the second rule the ticket
+  matches. At three pairs the list puts an exception directly above its general
+  rule, and there the next rule is the general one. Why the model passes over
+  the first rule is still these two questions'.
+- ~~**A mechanical reading of the list beats every arm.**~~ A copier answering the
   queue of the matching rule with the most conditions is right more often than
   any arm, at level 3. Whether the model's lower-rule answers lean to the more
   specific rule is free on the records.
+  **[NOTE 2026-10-25] Read POST-RUN: they do not.** Where the most-conditions
+  rule gives another queue than the first, the plain arm names it on fewer
+  than half of its answers, and at the three pairs above it takes the broader
+  rule. The model is not reading the list by specificity.
 - **The fourth cell.** The rule-writing prompt without the impasse framing was
   not asked (§12 of the plan). So the rule-writing apparatus was read as one
   bundle: its fields, its arbitration section and its empty base.
