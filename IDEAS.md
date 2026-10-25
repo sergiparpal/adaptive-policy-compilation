@@ -83,7 +83,10 @@ order errors go was read POST-RUN on October 25, 2026**, and the item that
 reading answers is struck in place. **The first match, asked by name and with
 reasoning on, closed the same day**: `PLAN_FIRST_MATCH.md`, six signed rows,
 five held and one refuted, and one reported, written up in
-`results_first_match/`. This is a
+`results_first_match/`. **The rule written with reasoning on, asked before any
+loop, closed the same day too**: `PLAN_REASONED_RULE.md`, four signed rows,
+three held and one refuted, and one reported, written up in
+`results_reasoned_rule/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -95,6 +98,19 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Ask level 3's escalated tickets for a rule, with reasoning on.** October
+  25, 2026, `PLAN_REASONED_RULE.md`, cents. `PLAN_QUEUE_ALONE.md`'s level-3
+  rule and plain prompts were asked again on one day, each twice and pinned to
+  one provider, in four arms: the rule-writing prompt and the plain question,
+  each with reasoning off and on.
+  - **With reasoning on, the model asked for a rule chooses the right queue on
+    nearly every escalated decision**, and on about seven in ten with it off.
+  - **Asking for a rule still costs a few points with reasoning on**, no fewer
+    than with it off.
+  - **What it writes is the list.** On nearly three answers in four its rule
+    covers exactly the region of the rule that governs the ticket.
+
+  What it leaves is in its own section below. `results_reasoned_rule/`.
 - **Ask level 3's escalated tickets for the rule that applies, and with
   reasoning on.** October 25, 2026, `PLAN_FIRST_MATCH.md`, cents.
   `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts were asked again on one day,
@@ -354,6 +370,55 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_REASONED_RULE.md` opens and does not resolve
+
+Closed October 25, 2026. It asked `PLAN_QUEUE_ALONE.md`'s level-3 rule and
+plain prompts again on one day, pinned to one provider, in four arms: the
+rule-writing prompt and the plain question, each with reasoning off and on.
+Asked for a rule with reasoning on, the model chooses the right queue on
+nearly every escalated decision, and what it writes is the rule that governs
+the ticket. Asking for a rule still costs a few points, with reasoning on as
+without. What that leaves:
+
+- **The loop with reasoning on.** Its proposer would choose its queues nearly
+  as the list says, and write the list's rules one ticket at a time. What the
+  loop then compiles depends on their order. Rung 2's engine orders nested
+  rules by containment, and crossing ones only by declared edges. The edges
+  this proposer declares cite the manual's identifiers, which no base holds,
+  and `PLAN_MANUAL.md`'s engine dropped every such declaration. A loop is a
+  run under the budget this plan measured, about two thousand reasoning
+  tokens a rule at the median and up to about eleven thousand, and a plan of
+  its own. Calls.
+  - **The edges are its question.** A proposer that transcribes the list
+    would have to declare against rules of its own base, not against the
+    manual's numbers. Which way it would point them there is unmeasured.
+- **Where the reasoning rule arm's few errors come from.** They lie mostly
+  under `H18`, `H23` and `H26`. Its reasoning is recorded whole on every ask
+  and coded by no stage. A reading would need a codebook frozen on part of it
+  before the rest is read. Free.
+- **Which part of the rule-writing prompt still costs under reasoning**: the
+  impasse framing or the apparatus. The impasse arm was not asked with
+  reasoning (§12 of the plan). Calls.
+- **Why the rule arm without reasoning was right more often than the day
+  before**, on the same prompts and the same provider, while the plain arm was
+  right less often. The instrument row held. Free on the records, for a
+  reading.
+- **What the rule arm without reasoning writes.** It writes rules its own
+  ticket does not match, which v1 forbids, and loses most under the catch-all
+  and billing. Its rules and notes are recorded whole. Free.
+- **The screen with reasoning, the naming question with reasoning, the other
+  levels.** Carried from *What `PLAN_FIRST_MATCH.md` opens*, below.
+- **Two asks an arm price a long arm loosely.** The smoke run's pace said
+  about 80 minutes a pass, and each took about 106. A plan that prices a long
+  arm from its smoke run should say in §1 how few asks the estimate rests on.
+- **The retry by cause has not fired on the pinned provider**, in this plan's
+  passes or `PLAN_FIRST_MATCH.md`'s. It is still tested only by the packages'
+  tests.
+- **A difference of two small costs is noisy.** `RR-d` set two costs of a few
+  points each against each other, and was thin. A plan that crosses two
+  factors should size the interaction it bands against four arms' noise, and
+  say so in §0.
+
 ## What `PLAN_FIRST_MATCH.md` opens and does not resolve
 
 Closed October 25, 2026. It asked `PLAN_QUEUE_ALONE.md`'s level-3 tickets again
@@ -369,9 +434,15 @@ that leaves:
   tokens. With reasoning on, the plain question applies the list exactly.
   Whether the rule-writing prompt does, and what the loop then compiles, is a
   run under a larger budget, and a plan of its own. Calls.
-  - **The cheap half comes first.** `PLAN_QUEUE_ALONE.md`'s rule arm asked
+  - ~~**The cheap half comes first.**~~ `PLAN_QUEUE_ALONE.md`'s rule arm asked
     with reasoning on, on the same tickets, would say whether reasoning
     carries into the queue a rule-writer chooses, before any loop runs.
+    **[NOTE 2026-10-25, later] Measured by `PLAN_REASONED_RULE.md`.** Asked for
+    a rule with reasoning on, the model chooses the right queue on nearly
+    every escalated decision (`RR-b` and `RR-c` hold), and what it writes is
+    the rule that governs the ticket. Asking for a rule still costs a few
+    points (`RR-d` refuted, thin). The loop itself is still open: see *What
+    `PLAN_REASONED_RULE.md` opens*, above.
 - **Why the model, without reasoning, names rules the ticket does not match.**
   `H26` and `H27`, two severity rules near the bottom of the list, carry most
   of it. `H27` is named on tickets the catch-all governs, which cannot

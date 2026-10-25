@@ -56,6 +56,7 @@ up in four places at once.
 | **X** · the rules applied ticket by ticket | `PLAN_MANUAL.md`'s escalations asked again on one day, with their screen and with the ticket alone under the same manual, and the ticket alone under the names, to separate what the screen costs from what is lost applying the rules — closed 2026-10-24 | [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md) |
 | **QA** · the queue asked alone | `PLAN_APPLY.md`'s ticket prompts asked again on one day, pinned to one provider, in three arms: the rule-writing prompt, the same impasse framing asking for the queue alone, and a plain question for the queue, to separate the rule-writing task from the application — closed 2026-10-24 | [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md) |
 | **FM** · the first match | `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts asked again on one day, pinned to one provider, in three arms: the plain question, the same question asking for the rule that applies before its queue, and the plain question with reasoning on, to separate finding the first match from naming its queue, and both from thinking it through — closed 2026-10-25 | [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) |
+| **RR** · the rule written with reasoning on | `PLAN_QUEUE_ALONE.md`'s level-3 rule and plain prompts asked again on one day, pinned to one provider, in four arms: the rule-writing prompt and the plain question, each with reasoning off and on, to see whether reasoning carries into the queue a rule-writer chooses before any loop runs, and to read the rules it writes — closed 2026-10-25 | [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -679,6 +680,40 @@ PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session smoke  # Stage B 
 PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session pass1  # then pass 1, then pass 2, never in parallel
 ```
 
+**[`PLAN_REASONED_RULE.md`](PLAN_REASONED_RULE.md) closed on 2026-10-25**: the
+rule written with reasoning on. Sergi signed §0 on 2026-10-25, before any of
+its figures existed.
+- **What it asked.** It took `PLAN_QUEUE_ALONE.md`'s rule and plain prompts at
+  level 3 and asked them again on one day, each twice, every call pinned to
+  one provider, in four arms: the rule-writing prompt and the plain question,
+  each with reasoning off and on. No prompt is new.
+- **Why.** With reasoning on, the plain question had applied the 29 rules on
+  every escalated decision. The loop's proposer is asked for a rule, and has
+  asked with reasoning off since `PLAN_REUSE.md` §1's amendment. Nothing had
+  asked whether reasoning carries into the rule-writing prompt, before any
+  loop pays for it.
+
+Its record is
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md).
+Its gate reads that plan and no other, and guards its three writers.
+`first_match/`, `queue_alone/`, `apply/`, `manual/`, `fidelity/`, `reuse/` and
+`rung2/` are called by it and not edited; its asker is `first_match/`'s.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same answers back. A paid run does not start without Sergi asking for it. Each
+pass took about an hour and three quarters, in Sergi's terminal, most of it the
+rule written with reasoning on.
+
+```bash
+python3 -m reasoned_rule.ask --dry-run                                # RR-g1..RR-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m reasoned_rule.sample                      # Stage A · the design and the references
+PYTHONHASHSEED=0 python3 -m reasoned_rule.score                       # Stage C · RR-a to RR-d, and RR-e
+PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session smoke  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session pass1  # then pass 1, then pass 2, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -886,7 +921,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_MANUAL.md`'s, and the three of `apply/`, which run
 > `PLAN_APPLY.md`'s, and the three of `queue_alone/`, which run
 > `PLAN_QUEUE_ALONE.md`'s, and the three of `first_match/`, which run
-> `PLAN_FIRST_MATCH.md`'s.
+> `PLAN_FIRST_MATCH.md`'s, and the three of `reasoned_rule/`, which run
+> `PLAN_REASONED_RULE.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1750,6 +1786,16 @@ adaptive-policy-compilation/
 │   ├── ask.py               Stage B · the smoke run and the two passes · spends · the proposer's path
 │   └── score.py             Stage C · FM-a to FM-f and FM-g, gated on PLAN_FIRST_MATCH.md
 │
+├── reasoned_rule/        RR · the rule written with reasoning on
+│   ├── plan.py              the gate and §10's constants, imported from first_match/; each arm's settings
+│   ├── prompts.py           the four arms' prompts, every one a closed plan's · the proposer's path
+│   ├── population.py        the prompts and the sessions, on PLAN_QUEUE_ALONE.md's level-3 prompts
+│   ├── gates.py             RR-g1..RR-g4 · blocking
+│   ├── sample.py            Stage A · the design and the references
+│   ├── ask.py               Stage B · the smoke run and the two passes · spends · the proposer's path
+│   ├── shape.py             the rules written, read alone over the space against the list's first match
+│   └── score.py             Stage C · RR-a to RR-d and RR-e, gated on PLAN_REASONED_RULE.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1833,7 +1879,7 @@ adaptive-policy-compilation/
     results_authorship/  results_overlap/  results_blind/  results_screen/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
-    results_queue_alone/  results_first_match/
+    results_queue_alone/  results_first_match/  results_reasoned_rule/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

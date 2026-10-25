@@ -23,8 +23,9 @@ What is known, as of October 25, 2026. **Not a history** — that is the four
 [`results_unreached/FINDINGS_UNREACHED.md`](results_unreached/FINDINGS_UNREACHED.md),
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
 [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
-[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md) and
-[`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
+[`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
+[`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) and
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -66,7 +67,8 @@ with and without the screen, in `PLAN_APPLY.md`**: seven more, closed on
 2026-10-24 — plus **the queue asked alone, without a rule to write, in
 `PLAN_QUEUE_ALONE.md`**: seven more, closed the same day — plus **the first
 match, asked by name and with reasoning on, in `PLAN_FIRST_MATCH.md`**: seven
-more, closed on 2026-10-25.
+more, closed on 2026-10-25 — plus **the rule written with reasoning on, in
+`PLAN_REASONED_RULE.md`**: five more, closed the same day.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -280,6 +282,25 @@ third recovers 61% of what full supervision buys, on corpus test.
 > compiling the policy once and applying it ticket by ticket. Whether a loop
 > that reasons compiles what it is told is not measured.
 > [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md).
+>
+> **[NOTE 2026-10-25, later] Reasoning carries into the loop's own question.**
+> [`PLAN_REASONED_RULE.md`](PLAN_REASONED_RULE.md) asked the same tickets for a
+> rule, as the loop's proposer is asked, with reasoning off and on, beside the
+> plain question both ways.
+>
+> - **With reasoning on, the model asked for a rule is right on 0.9672 of the
+>   320 decisions** (`RR-c` holds), against 0.7219 with it off (`RR-b` holds).
+> - **Asking for a rule still costs a few points with reasoning on**: 0.0328
+>   against the plain question. Reasoning did not make that cost smaller than
+>   it was without, 0.0203 that day (`RR-d` refuted, thin).
+> - **What it writes is the list.** With reasoning on, its rule covers exactly
+>   the region of the rule that governs the ticket on 250 of 342 answers,
+>   against 165 with it off.
+>
+> So a loop that reasons would choose its queues at the escalations nearly as
+> the list says, and write the list's rules one ticket at a time. What it would
+> compile from them, and in what order, is not measured.
+> [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md).
 
 ---
 
@@ -328,7 +349,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and forty-seven rows have been signed before the figures they name existed. This
+**One hundred and fifty-two rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -383,14 +404,15 @@ a count behind it.
 | **X** · the rules applied ticket by ticket (§0 of `PLAN_APPLY.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
 | **QA** · the queue asked alone (§0 of `PLAN_QUEUE_ALONE.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
 | **FM** · the first match (§0 of `PLAN_FIRST_MATCH.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
-| **total** | **147** | **123** | **50** | **2** | **71** | **22** |
+| **RR** · the rule written with reasoning on (§0 of `PLAN_REASONED_RULE.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
+| **total** | **152** | **127** | **51** | **2** | **74** | **23** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
-`QA-d`, `QA-e`, `FM-b`.
+`QA-d`, `QA-e`, `FM-b`, `RR-d`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -398,10 +420,10 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
 `J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
-`FM-f`.
+`FM-f`, `RR-a`, `RR-b`, `RR-c`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`.
+`FM-g`, `RR-e`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -424,16 +446,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 50 of 123 = **40.7%**
-refuted; without them, 48 of 117 = **41.0%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 51 of 127 = **40.2%**
+refuted; without them, 49 of 121 = **40.5%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.3 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 50 of 116 = **43.1%** and 48
-of 110 = **43.6%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 51 of 120 = **42.5%** and 49
+of 114 = **43.0%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -570,6 +592,13 @@ of 110 = **43.6%**, which is the reading the calibration note should take.
 > table, the named lists, the count in the heading and the four ratios moved
 > together, and the test above read them. The gap between the first two is now
 > 0.3 points as printed, and the paragraph above says so.
+>
+> **[NOTE 2026-10-25, later] Recomputed with the `RR` thread, in the same commit
+> as its row.** Five rows were signed and four adjudicated: one refuted and
+> three held. One was reported. None of its bands was set on a development set.
+> The table, the named lists, the count in the heading and the four ratios moved
+> together, and the test above read them. The gap between the first two is
+> still 0.3 points as printed.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -619,7 +648,9 @@ all seven; and `QA` from
 [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
 which owns all seven; and `FM` from
 [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
-which owns all seven.
+which owns all seven; and `RR` from
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
+which owns all five.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -2129,6 +2160,32 @@ So where the question is the queue, what the loop lost applying the rules it
 was given is what this model does without reasoning. With about 330
 reasoning tokens an ask, it applies the list exactly.
 
+**The rule written with reasoning on: asked for a rule, the model applies the
+29 rules on 0.9672 of the escalated decisions, and what it writes is the
+list.** `PLAN_REASONED_RULE.md` asked `PLAN_QUEUE_ALONE.md`'s level-3 rule and
+plain prompts again on one day, each twice, every call pinned to one provider.
+It asked them in four arms: the rule-writing prompt and the plain question,
+each with reasoning off and on. Everything is from
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md):
+
+- **With reasoning on, the model asked for a rule is right on 619 of its 640
+  answers** (`RR-c` holds). That is 0.2453 above the same prompt with
+  reasoning off (`RR-b` holds).
+- **Today's rule arm stands for `PLAN_QUEUE_ALONE.md`'s** (`RR-a` holds). It
+  is right on 0.7219 of the decisions, against 0.6859 on 2026-10-24.
+- **Asking for a rule costs the queue 0.0328 with reasoning on and 0.0203
+  with it off**, each against the plain question asked the same way.
+  Reasoning did not shrink that cost (`RR-d` refuted, thin).
+- **With reasoning on, every rule it writes matches its ticket, and on 250 of
+  342 answers it covers exactly the governing rule's region**, against 165
+  with reasoning off. Read alone over the space, its rules give their queue to
+  0.3048 of the points they cover. Its 43 declared edges cite the manual's
+  identifiers.
+
+So reasoning carries into the loop's own question: asked for a rule, the
+model chooses its queue nearly as the list says, and writes the list's rules.
+A reasoning rule took about 2,200 reasoning tokens at the median.
+
 ---
 
 ## What was withdrawn, and why
@@ -2321,6 +2378,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      §1's amendment. A loop with reasoning on is a new run under a larger
      budget, and a plan.
    [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md).
+   **[NOTE 2026-10-25, later still] Reasoning carries into the rule-writing
+   prompt.** `PLAN_REASONED_RULE.md` asked the same tickets for a rule, with
+   reasoning off and on.
+   - Asked for a rule with reasoning on, the model is right on 0.9672 of the
+     decisions (`RR-c` holds), against 0.7219 with it off (`RR-b` holds).
+   - Asking for a rule still costs a few points with reasoning on, and no
+     fewer than without (`RR-d` refuted, thin).
+   - What it writes, with reasoning, is the rule that governs the ticket, on
+     nearly three answers in four.
+   - What is open now is what a loop that reasons compiles. It would write the
+     list's rules one ticket at a time and need their order. Rung 2's engine
+     orders nested rules by containment and crossing ones only by declared
+     edges, and the edges this proposer declares cite the manual's
+     identifiers, which no base holds. That is a run, under the budget this
+     plan measured, and a plan.
+   [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
