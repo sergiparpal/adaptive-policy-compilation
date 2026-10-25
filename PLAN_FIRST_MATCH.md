@@ -1,5 +1,24 @@
 # PLAN_FIRST_MATCH — the first match: which rule the model believes applies, and whether reasoning finds it
 
+> **[CLOSED 2026-10-25] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-25, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-10-25. **`FM-a`, `FM-c`, `FM-d`, `FM-e` and `FM-f` hold;
+> `FM-b` is refuted.** `FM-g` is reported. **The figures are owned by
+> [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md)**,
+> and no result is to be read off this file; the scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One estimate of this file was far from what happened.** §1 priced the
+> reasoning arm at 30 seconds an ask and about 85 minutes a pass, for want of
+> any recorded call that reasoned. A reasoning ask took under four seconds at
+> the median, and each pass under twenty minutes. §0's retry was never
+> exercised: no call and no parse failed in 1,032 calls.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-25. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-25, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
