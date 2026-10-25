@@ -96,6 +96,7 @@ THREADS = {
     "G": ("results_manual/score.json", ("verdicts",)),
     "X": ("results_apply/score.json", ("verdicts",)),
     "QA": ("results_queue_alone/score.json", ("verdicts",)),
+    "FM": ("results_first_match/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -135,6 +136,7 @@ TABLES = {
     "results_apply/FINDINGS_APPLY.md": "X",
     # A string is a run of one-capital threads; a thread of two goes in a tuple.
     "results_queue_alone/FINDINGS_QUEUE_ALONE.md": ("QA",),
+    "results_first_match/FINDINGS_FIRST_MATCH.md": ("FM",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {

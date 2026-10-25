@@ -55,6 +55,7 @@ up in four places at once.
 | **G** · the policy, given to the proposer | the authority channel: the policy handed to the model as a catalogue of the queues, a prose manual and the 29 rules as text, compiled once in one answer and inside `PLAN_REUSE.md`'s loop, to separate what the model knows from what the loop elicits — closed 2026-10-21 | [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md) |
 | **X** · the rules applied ticket by ticket | `PLAN_MANUAL.md`'s escalations asked again on one day, with their screen and with the ticket alone under the same manual, and the ticket alone under the names, to separate what the screen costs from what is lost applying the rules — closed 2026-10-24 | [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md) |
 | **QA** · the queue asked alone | `PLAN_APPLY.md`'s ticket prompts asked again on one day, pinned to one provider, in three arms: the rule-writing prompt, the same impasse framing asking for the queue alone, and a plain question for the queue, to separate the rule-writing task from the application — closed 2026-10-24 | [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md) |
+| **FM** · the first match | `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts asked again on one day, pinned to one provider, in three arms: the plain question, the same question asking for the rule that applies before its queue, and the plain question with reasoning on, to separate finding the first match from naming its queue, and both from thinking it through — closed 2026-10-25 | [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -645,6 +646,39 @@ PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session smoke  # Stage B 
 PYTHONHASHSEED=0 .venv/bin/python -m queue_alone.ask --session pass1  # then pass 1, then pass 2, never in parallel
 ```
 
+**[`PLAN_FIRST_MATCH.md`](PLAN_FIRST_MATCH.md) closed on 2026-10-25**: the
+first match, asked by name and with reasoning on. Sergi signed §0 on
+2026-10-25, before any of its figures existed.
+- **What it asked.** It took `PLAN_QUEUE_ALONE.md`'s plain prompts at level 3
+  and asked them again on one day, each twice, every call pinned to one
+  provider, in three arms. One is that plan's plain question for the queue. One
+  asks for the identifier of the rule that applies before its queue. One asks
+  the plain question with reasoning on.
+- **Why.** Asked plainly with the 29 rules in its prompt, the model still
+  passed over the first rule that matches, on a quarter of the escalated
+  decisions, and nearly always to the next one. Nothing had separated finding
+  the first match from naming its queue, or either from thinking it through.
+
+Its record is
+[`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md).
+Its gate reads that plan and no other, and guards its three writers.
+`queue_alone/`, `apply/`, `manual/`, `fidelity/` and `rung2/` are called by it
+and not edited.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same answers back. A paid run does not start without Sergi asking for it. Each
+pass took under twenty minutes, in Sergi's terminal.
+
+```bash
+python3 -m first_match.ask --dry-run                                # FM-g1..FM-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m first_match.sample                      # Stage A · the design and the references
+PYTHONHASHSEED=0 python3 -m first_match.score                       # Stage C · FM-a to FM-f, and FM-g
+PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session smoke  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m first_match.ask --session pass1  # then pass 1, then pass 2, never in parallel
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -848,7 +882,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_UNREACHED.md`'s, and the four of `manual/`, which run
 > `PLAN_MANUAL.md`'s, and the three of `apply/`, which run
 > `PLAN_APPLY.md`'s, and the three of `queue_alone/`, which run
-> `PLAN_QUEUE_ALONE.md`'s.
+> `PLAN_QUEUE_ALONE.md`'s, and the three of `first_match/`, which run
+> `PLAN_FIRST_MATCH.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1702,6 +1737,15 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · QA-a to QA-f and QA-g, gated on PLAN_QUEUE_ALONE.md
 │   └── orders.py            POST-RUN · where the order errors go: the next matching rule
 │
+├── first_match/          FM · the first match, asked by name and with reasoning on
+│   ├── plan.py              the gate and §10's constants; each arm's settings; §0's lines as fractions
+│   ├── prompts.py           the three arms' prompts, §5.1's line, the rule an answer names · the proposer's path
+│   ├── population.py        the prompts and the sessions, on PLAN_QUEUE_ALONE.md's level-3 plain prompts
+│   ├── gates.py             FM-g1..FM-g4 · blocking
+│   ├── sample.py            Stage A · the design and the references
+│   ├── ask.py               Stage B · the smoke run and the two passes · spends · the proposer's path
+│   └── score.py             Stage C · FM-a to FM-f and FM-g, gated on PLAN_FIRST_MATCH.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1785,7 +1829,7 @@ adaptive-policy-compilation/
     results_authorship/  results_overlap/  results_blind/  results_screen/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
-    results_queue_alone/
+    results_queue_alone/  results_first_match/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

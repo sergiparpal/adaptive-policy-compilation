@@ -80,7 +80,10 @@ that reading answers is struck in place. **The queue asked alone closed the
 same day too**: `PLAN_QUEUE_ALONE.md`, six signed rows, three held and three
 refuted, and one reported, written up in `results_queue_alone/`. **Where its
 order errors go was read POST-RUN on October 25, 2026**, and the item that
-reading answers is struck in place. This is a
+reading answers is struck in place. **The first match, asked by name and with
+reasoning on, closed the same day**: `PLAN_FIRST_MATCH.md`, six signed rows,
+five held and one refuted, and one reported, written up in
+`results_first_match/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -92,6 +95,20 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Ask level 3's escalated tickets for the rule that applies, and with
+  reasoning on.** October 25, 2026, `PLAN_FIRST_MATCH.md`, cents.
+  `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts were asked again on one day,
+  each twice and pinned to one provider, in three arms: the plain question,
+  the same question asking for the rule's identifier before its queue, and the
+  plain question with reasoning on.
+  - **With reasoning on, the model is right on every escalated decision**, on
+    both answers.
+  - **Without it, made to name the rule, it names a lower one where it errs on
+    the order**, and never the first rule with another queue.
+  - **Naming the rule costs.** It names a rule the ticket does not match on a
+    quarter of its answers, and writes that rule's queue.
+
+  What it leaves is in its own section below. `results_first_match/`.
 - **Ask the escalated tickets for the queue alone.** October 24, 2026,
   `PLAN_QUEUE_ALONE.md`, cents. `PLAN_APPLY.md`'s ticket prompts were asked
   again on one day, each twice and pinned to one provider, in three arms: the
@@ -337,6 +354,49 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_FIRST_MATCH.md` opens and does not resolve
+
+Closed October 25, 2026. It asked `PLAN_QUEUE_ALONE.md`'s level-3 tickets again
+on one day, pinned to one provider, in three arms: the plain question for the
+queue, the same question asking for the rule that applies before its queue,
+and the plain question with reasoning on. With reasoning on the model applies
+the 29 rules on every escalated decision. Without it, made to name the rule,
+it names a lower one where it errs on the order, and naming costs it. What
+that leaves:
+
+- **The loop with reasoning on.** Every loop since `PLAN_REUSE.md` §1's
+  amendment ran with reasoning off, because reasoning spent the answer's 1,200
+  tokens. With reasoning on, the plain question applies the list exactly.
+  Whether the rule-writing prompt does, and what the loop then compiles, is a
+  run under a larger budget, and a plan of its own. Calls.
+  - **The cheap half comes first.** `PLAN_QUEUE_ALONE.md`'s rule arm asked
+    with reasoning on, on the same tickets, would say whether reasoning
+    carries into the queue a rule-writer chooses, before any loop runs.
+- **Why the model, without reasoning, names rules the ticket does not match.**
+  `H26` and `H27`, two severity rules near the bottom of the list, carry most
+  of it. `H27` is named on tickets the catch-all governs, which cannot
+  satisfy it. Which condition of `H26` the tickets fail is free on the
+  records.
+- **What the reasoning says.** It is recorded whole on 342 asks and coded by
+  no stage. A reading would need a codebook frozen on part of it before the
+  rest is read, as `manual/notes.py` froze its codes on each level's first
+  run.
+- **The fourth cell.** The naming question with reasoning on was not bought
+  (§2.1 of the plan).
+- **The other levels with reasoning.** With the prose the plain question did
+  not help, and nothing here asks the prose with reasoning. Nor the names
+  alone, so `QA-f`'s control was not run for reasoning.
+- **The screen with reasoning.** `PLAN_SCREEN.md` and `PLAN_APPLY.md` measured
+  deference with reasoning off. Whether a model that reasons still follows the
+  screen's commonest queue is a new setting, and a plan.
+- **An estimate made without a record is far off.** §1 priced the reasoning
+  arm at about 85 minutes a pass, having no recorded call that reasoned, and
+  each pass took under twenty. A plan that buys a setting nothing has recorded
+  should price it from its smoke run, and say so in §1.
+- **A retry protocol that never fires is tested only by the package's
+  tests.** No call and no parse failed in 1,032 calls, so neither of rule H's
+  two causes was exercised on the provider.
+
 ## What `PLAN_QUEUE_ALONE.md` opens and does not resolve
 
 Closed October 24, 2026. It asked `PLAN_APPLY.md`'s ticket prompts again on one
@@ -347,7 +407,7 @@ prompt, recovers about a quarter of its errors, and leaves a quarter of the
 escalated tickets wrong. Read after the verdicts, what remains is the list's
 order. What that leaves:
 
-- **Why the model, asked plainly, follows a lower rule.** It almost always names
+- ~~**Why the model, asked plainly, follows a lower rule.**~~ It almost always names
   the queue of a rule the ticket matches, and often not the first one. Two
   questions would narrow why. Both are calls, and a plan of their own.
   - **A question for the rule that applies.** Asking for the rule's identifier
@@ -362,6 +422,12 @@ order. What that leaves:
   matches. At three pairs the list puts an exception directly above its general
   rule, and there the next rule is the general one. Why the model passes over
   the first rule is still these two questions'.
+  **[NOTE 2026-10-25, later] Measured by `PLAN_FIRST_MATCH.md`, both
+  questions.** With reasoning on, the plain question applies the 29 rules on
+  every decision (`FM-e` holds). Without it, made to name the rule, the model
+  names a lower one where it errs on the order (`FM-c` holds), and naming
+  costs it (`FM-b` refuted). What it leaves is in *What `PLAN_FIRST_MATCH.md`
+  opens*, above.
 - ~~**A mechanical reading of the list beats every arm.**~~ A copier answering the
   queue of the matching rule with the most conditions is right more often than
   any arm, at level 3. Whether the model's lower-rule answers lean to the more
