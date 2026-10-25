@@ -233,7 +233,7 @@ v1's message.** Every row says which retries it took.
 | **FM-f** | **Reasoning buys more than naming the rule.** With reasoning on, the model is right more often than when it names the rule first without it | over `L₃`'s decisions: `acc_r − acc_n` | **> 0** | **≤ 0** |
 | **FM-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each arm's accuracy, with its runs, and by ticket instead of by decision. Every answer of every arm in §5.6's classes, and each arm's order errors by where they go: the next matching rule, the runner-up, the catch-all, the most specific rule. The naming arm's named rules in their classes, over all its answers and over its order errors; how often its queue is the named rule's; how often a lower name is the next matching rule. On the decisions where today's plain arm makes an order error, what the naming arm names on the same ticket. Each arm's accuracy by the rule that governs the ticket. The table by true queue, with `ONCALL_ESCALATION`, `SECURITY_INCIDENT`, `ACCOUNT_MANAGER` and `T3_ENGINEERING` in counts. `S` for each arm, and how often the arms agree with each other. `PLAN_QUEUE_ALONE.md`'s plain arm beside today's on the same decisions. Each arm's providers, finish reasons, tokens, reasoning tokens, seconds and retries by cause. The reasoning arm's reasoning, recorded in full and not coded | — | — |
 
-**Signed by Sergi: ____________________ (date: __________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-25)**
 
 **Why each row, and why these lines.**
 
