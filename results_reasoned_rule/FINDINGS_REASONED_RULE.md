@@ -2,24 +2,27 @@
 
 Record opened on October 25, 2026, under
 [`PLAN_REASONED_RULE.md`](../PLAN_REASONED_RULE.md). The plan, its package,
-Sergi's signature and every record below are on the branch of pull request
-#178, which is open as this is written. Sergi signed §0 on 2026-10-25, before
-any figure below existed, in a commit of its own: `bfd69f5` on that branch.
+Sergi's signature and every record below reached `main` together in pull
+request #178, merged on 2026-10-25. Sergi signed §0 on 2026-10-25, before any
+figure below existed, in a commit of its own: `b0ba2fb` on `main`.
 
 Every record names in its `_env` the commit it was written from. All five were
-written on the branch of #178. The rebase merge will give each of those commits
-a new hash on `main`, and a commit after the merge names them.
+written on the branch of #178, and the rebase merge gave each of those commits
+a new hash on `main`. Each pair has the same subject, the same tree and the
+same `git patch-id --stable`, and the GitHub API names #178 behind every `main`
+commit.
 
-| record | written from, on the branch of #178 |
-|---|---|
-| `sample.json` | `bfd69f5`, the signature |
-| `ask_smoke.json` | `0a8eb2e`, Stage A's commit |
-| `ask_pass1.json` | `e2b812e`, the smoke run's commit |
-| `ask_pass2.json` | `37a89e1`, pass 1's commit |
-| `score.json` | `931927f`, pass 2's commit |
+| record | written from, on the branch of #178 | the same commit on `main` |
+|---|---|---|
+| `sample.json` | `bfd69f5`, the signature | `b0ba2fb` |
+| `ask_smoke.json` | `0a8eb2e`, Stage A's commit | `bc08276` |
+| `ask_pass1.json` | `e2b812e`, the smoke run's commit | `053d000` |
+| `ask_pass2.json` | `37a89e1`, pass 1's commit | `991025c` |
+| `score.json` | `931927f`, pass 2's commit | `0def70a` |
 
 All five carry one code digest, `7f577a9c4b826525`, with `code_dirty` and
-`git_dirty` false. **This record owns every figure in it.**
+`git_dirty` false, and it is the one `main` computes after the merge. **This
+record owns every figure in it.**
 
 **All three stages ran on 2026-10-25, and the four rows are adjudicated:
 `RR-a`, `RR-b` and `RR-c` hold; `RR-d` is refuted, thinly.**
