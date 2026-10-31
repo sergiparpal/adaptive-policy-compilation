@@ -966,7 +966,7 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
 > §0's are both required. Pointers mark the sections this changes: §9's step 3,
 > §10, §11 and §12.
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-10-31)**
 
 *Outside the quotation deliberately, as in `PLAN_REUSE.md`: the gate reads
 signature lines at the start of a line, and one inside a blockquote would be
