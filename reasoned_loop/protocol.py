@@ -30,6 +30,15 @@ failed call is retried with the same messages after a wait, and a failed parse
 with v1's message, which that asker appends to a two-message request only. It
 is the call site, with the recorder; this module makes no call of its own.
 
+A RATE LIMIT IS AN OUTAGE, NOT AN ANSWER (§5.5's amendment, 2026-10-31). Every
+launch of the smoke run met HTTP 429 from the pinned provider, and the text as
+signed kept a call refused on all its attempts as a failed proposal whenever
+the next call was answered: an escalation without a rule because the provider
+was saturated. `Live` asks such a call again after each wait of
+`plan.RATE_LIMIT_WAIT`, and raises `RateLimited` once every wait is spent: an
+`Outage`, which nothing records. A call any of whose attempts reached the model
+keeps §5.5's rule as signed, and is never asked again.
+
 THE PROPOSER THE LOOP TALKS TO is `authorship/run.py`'s `Resumable`, called:
 the answers already paid for first, each checked against the request it would
 send, then the model, every answer appended to the partial file as it arrives.
@@ -160,10 +169,28 @@ class Asker(fm_ask.Asker):
         return kwargs
 
 
+class RateLimited(erun.Outage):
+    """A call refused for the rate on every attempt, through every wait of
+    `plan.RATE_LIMIT_WAIT`: the provider's capacity, not the model's answer
+    (§5.5's amendment). An `Outage`, so `Resumable` keeps nothing of it and the
+    run stops where it was; the same command resumes there."""
+
+
+def rate_limited(attempts: list[dict[str, Any]]) -> bool:
+    """Whether no attempt of an ask reached the model: every one was refused
+    for the rate, and none came back with a response."""
+    return bool(attempts) and all(a.get("error") == plan.RATE_LIMITED for a in attempts)
+
+
 class Live:
     """The model, behind the asker: one call in, one `Answer` out, with what
     each attempt said about itself. `ask(messages)` is all
-    `authorship.run.Resumable` needs of it."""
+    `authorship.run.Resumable` needs of it.
+
+    An ask refused for the rate on every attempt is asked again after each wait
+    of `plan.RATE_LIMIT_WAIT`, through the asker's own sleep, and the asker
+    starts again each time, its retries and `response_format` included. The
+    answer keeps every attempt and every retry of the call."""
 
     def __init__(self, asker: Asker):
         self.asker = asker
@@ -172,20 +199,31 @@ class Live:
     def ask(self, messages: list[dict[str, str]]) -> Answer:
         recorder = self.asker.calls
         recorder.take()                    # only this call's attempts count
-        try:
-            got = self.asker.ask(Request(messages))
-        except fm_ask.AskFailed as exc:
-            said = recorder.take()
-            self.extra = {}
-            raise e.ProposalFailed(f"{exc} (retries: {', '.join(exc.causes)})",
-                                   said[-1].get("finish_reason") if said else None,
-                                   len(exc.causes), said) from exc
-        said = recorder.take()
-        self.extra = {"keys": got["keys"], "reasoning": got["reasoning"],
-                      "retries": list(got["retries"]), "served_by": fm_ask.served_by(said)}
-        return Answer(got["action"], got["payload"], None,
-                      said[-1].get("finish_reason") if said else None,
-                      len(got["retries"]) + 1, said, **self.extra)
+        said: list[dict[str, Any]] = []
+        causes: list[str] = []
+        for wait in (0, *plan.RATE_LIMIT_WAIT):
+            if wait:
+                self.asker.sleep(wait)
+            try:
+                got = self.asker.ask(Request(messages))
+            except fm_ask.AskFailed as exc:
+                now = recorder.take()
+                said, causes = said + now, causes + list(exc.causes)
+                if rate_limited(now):
+                    continue               # nothing reached the model: wait it out
+                self.extra = {}
+                raise e.ProposalFailed(f"{exc} (retries: {', '.join(causes)})",
+                                       said[-1].get("finish_reason") if said else None,
+                                       len(causes), said) from exc
+            said, causes = said + recorder.take(), causes + list(got["retries"])
+            self.extra = {"keys": got["keys"], "reasoning": got["reasoning"],
+                          "retries": causes, "served_by": fm_ask.served_by(said)}
+            return Answer(got["action"], got["payload"], None,
+                          said[-1].get("finish_reason") if said else None,
+                          len(causes) + 1, said, **self.extra)
+        self.extra = {}
+        raise RateLimited(f"a call was refused for the rate on all {len(said)} of its "
+                          f"attempts, through waits of {sum(plan.RATE_LIMIT_WAIT)} s")
 
 
 class Resumable(erun.Resumable):

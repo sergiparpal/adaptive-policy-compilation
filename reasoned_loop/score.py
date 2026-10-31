@@ -289,14 +289,21 @@ def rl_e_f(runs) -> tuple[dict[str, Any], dict[str, Any]]:
 # ---------------------------------------------------------------------------
 
 def calls_of(record: dict) -> dict[str, Any]:
+    """What a run's calls cost and how they came back. A call refused for the
+    rate waited before it was answered, so the pace is also read over the calls
+    no attempt of which was refused (§5.5's amendment)."""
     calls = [c for esc in record["escalations"] for c in esc.get("calls") or []]
     attempts = [a for c in calls for a in c.get("call_attempts") or []]
     by_round = collections.defaultdict(list)
+    unlimited = collections.defaultdict(list)
     for c in calls:
         if c.get("seconds") is not None:
             by_round[c["round"]].append(c["seconds"])
+            if not any(a.get("error") == plan.RATE_LIMITED for a in c.get("call_attempts") or []):
+                unlimited[c["round"]].append(c["seconds"])
     reasoning = [a.get("reasoning_tokens") or 0 for a in attempts]
     return {"calls": len(calls), "attempts": len(attempts),
+            "rate_limited": sum(1 for a in attempts if a.get("error") == plan.RATE_LIMITED),
             "providers": dict(collections.Counter(a.get("provider") or "none"
                                                   for a in attempts)),
             "finish_reasons": dict(collections.Counter(a.get("finish_reason") or "none"
@@ -308,6 +315,9 @@ def calls_of(record: dict) -> dict[str, Any]:
                                  "max": max(reasoning, default=None)},
             "seconds_by_round": {str(k): {"median": statistics.median(v), "sum": sum(v)}
                                  for k, v in sorted(by_round.items())},
+            "seconds_by_round_unlimited": {
+                str(k): {"calls": len(v), "median": statistics.median(v), "sum": sum(v)}
+                for k, v in sorted(unlimited.items())},
             "retries": dict(collections.Counter(x for c in calls for x in c.get("retries") or []))}
 
 
