@@ -1,0 +1,1 @@
+A smoke test of the Distiller's shadow step; this PR is closed without merging.
