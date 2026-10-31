@@ -237,6 +237,21 @@ asks of any plan that sets a comparison on the proposer:
 - **`RL-f` is `K-c`, with `K-c`'s line.** A ranking of the queues reads no rule,
   and it pointed `K-b`'s pairs at 0.7219, so `RL-e` alone could read a direction
   a lookup table matches.
+- **[ADDED BEFORE SIGNATURE, 2026-10-31] What exact list order reads on these
+  two statistics.** It is found by placing every edge of the transcriber's
+  error run by the list's order.
+  - **`RL-e` reads 71/75, 0.9467, not 1.** Its *better rule* is the one whose
+    queue is right more often over the pair's shared region beyond the keyword.
+    A third rule above both can govern most of that region with the later rule's
+    queue, and then the list's earlier rule is not the better one. So `RL-e`'s
+    line leaves less than a twentieth for the proposer's own errors, on a base
+    of the list's rules.
+  - **`RL-f` reads 23/450, 0.0511.** On the same pairs the Stage C ranking
+    reads 403/450. A placer that follows the list exactly beats a fixed ranking
+    by about a twentieth there.
+  - **No line moved.** Both figures are Stage A's, beside the transcriber's
+    other figures. Sergi may move either line at signature, and that is his to
+    decide.
 - **`RL-g` reads `STATUS.md`'s third open item.** No loop has compiled
   `ONCALL_ESCALATION`. Compiled once, every ask at every level put the class
   right on every point of its region (`FINDINGS_MANUAL.md`). The line is a tenth
@@ -352,6 +367,46 @@ auditable.**
        edges right 9 times in 10, and at 956 and 1,742 with every edge right.
      - **Where it stands.** It is kept nowhere, and no row and no reference reads
        it.
+- **Writing the package, after the draft above was committed.**
+  - **The code it calls**, read for its signatures and behaviour:
+    - `authorship/run.py`'s `Resumable`, `open_partial` and `digest`;
+    - `authorship/loop.py`'s `Escalation`, `call_row` and
+      `install_declarations`;
+    - `blind/loop.py`'s helpers, `blind/gates.py`'s `witness`, and
+      `blind/readings.py`'s `read_run`;
+    - `edges/rebuild.py`'s `rebuild`, `manual/score.py`'s `first_full_cover`,
+      `queue_alone/rules.py`, `reasoned_rule/shape.py`, and the entry points of
+      `reasoned_rule/gates.py` and `reasoned_rule/score.py`;
+    - `reuse/gates.py`'s `run_suite`, `reuse/structure.py`'s `arbitration`,
+      `harness/call_record.py` and `tests/doubles.py`.
+  - **The lists the plumbing joins**: `tests/test_call_record.py`'s call sites,
+    `tests/test_oracle_separation.py`'s watched modules, and
+    `tests/test_writer_lists.py`'s guarded writers.
+  - **The package's checks, run before the signature.** `RL-g1` to `RL-g3` pass
+    with the suite green. They recompute `PLAN_REASONED_RULE.md`'s four
+    verdicts and `PLAN_MANUAL.md`'s level-3 figures and compare them with their
+    records. They recompute figures 3, 4 and the hidden policy's, and compare
+    them with this list. Every one came back.
+  - **Stage A's other figures, recomputed while writing it.** Figures 1, 2 and
+    5 came back as listed.
+  - **Stage C, run on copies of the transcriber's runs.** To try the scorer, the
+    drafter scored three copies of each arm's transcriber run, in memory, never
+    written. That printed §0's seven statistics on the transcriber:
+
+    | row | the transcriber's reading |
+    |---|---|
+    | `RL-a` | 1 |
+    | `RL-b` | 1, every run covering the space at case 1 |
+    | `RL-c` | 427/480 |
+    | `RL-d` | 6,719/6,720 |
+    | `RL-e` | 71/75, on 15 units a run, 55 of 59 strict pairs |
+    | `RL-f` | 23/450, the Stage C ranking reading 403/450 |
+    | `RL-g` | 1 |
+
+    None of them is an answer of the model. **`RL-e`'s and `RL-f`'s were not
+    foreseen**, and they bear on how those rows read (*Why each row*, below).
+    Stage A records them, beside the transcriber's other figures.
+  - **Every test builds its rules, tickets, engines and runs by hand.**
 - **OpenRouter.** Not read for this plan. §3 cites the price
   `PLAN_FIRST_MATCH.md`'s drafter read on 2026-10-25.
 
@@ -402,7 +457,10 @@ auditable.**
   - the lists can be long, and the slot decides some answers
     (`PLAN_PRIMACY.md`);
   - an edge that a narrower rule declares is right over a region the list
-    describes only in part.
+    describes only in part;
+  - **[added before signature, 2026-10-31]** a placer that follows the list
+    exactly reads 71/75 on the transcriber's base, so the proposer has less
+    than a twentieth to lose.
 - **`RL-f` holds.** The policy points some queue pairs both ways (`B-d`'s split),
   and a ranking cannot follow them. Against it: on pairs a ranking answers, a
   ranking is right whenever the list is.
@@ -435,21 +493,21 @@ tighten them at signature if he disagrees.
 - **`RL-b`, `RL-c` and `RL-d` hold.** A proposer that applies the list stops
   the standing loop from asking, and a loop asked on its errors compiles the
   policy. What limits the loop is the trigger, not the order.
-- **`RL-c` holds and `RL-b` is refused.** The impasse arm kept asking and still
+- **`RL-c` holds and `RL-b` is refuted.** The impasse arm kept asking and still
   compiled less: it never asks where a rule already decides wrongly. The trigger
   is still the limit, by a different route.
-- **`RL-c` is refused.** The error arm compiles no more than the impasse arm.
+- **`RL-c` is refuted.** The error arm compiles no more than the impasse arm.
   `RL-e` and the refusals reported in `RL-h` then say whether the order failed
   them both.
-- **`RL-d` is refused while `RL-e` holds.** The error arm placed its rules right
+- **`RL-d` is refuted while `RL-e` holds.** The error arm placed its rules right
   and still fell short. The narrower rules, the refusals and the cap, all in
   `RL-h`, say why.
-- **`RL-e` is refused.** With the list in front of it and reasoning on, the
+- **`RL-e` is refuted.** With the list in front of it and reasoning on, the
   proposer still does not place its rules the way the list orders them.
   - `RL-f` then says whether a ranking does better.
   - `RL-h` says whether the identifiers of the manual took the place of the
     base's.
-- **`RL-a` is refused.** The proposer of the loop is not the proposer of the
+- **`RL-a` is refuted.** The proposer of the loop is not the proposer of the
   re-ask. The first call's base line and the error arm's tickets are what
   differ, and `RL-h` splits the drafts by cause.
 - **`RL-g` holds.** For the first time a loop compiles `ONCALL_ESCALATION`.
@@ -725,8 +783,12 @@ D. **The constants of §11 are fixed here and pinned by tests**, so that moving
 
 E. **What the model writes is recorded whole**, because `Rule2` keeps only a
    note's first 280 characters. That covers every call's payload with its keys
-   in the order written, its raw text, and its reasoning when the response
-   carries it. No stage codes a note or the reasoning.
+   in the order written, and its reasoning when the response carries it. No
+   stage codes a note or the reasoning.
+   - **[Corrected before signature, 2026-10-31] The raw text is not kept.**
+     This rule read *its raw text* in the payload's list. The asker of rule A
+     is called and not copied. It keeps the payload it parsed, and not the text
+     it parsed it from. So every call row records `raw` as None.
 
 F. **The order of Stage B is §9's**, and the module refuses a run out of it.
 
@@ -774,8 +836,11 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
 4. **No rule to place.** With `O` empty, the rule is born with no second call.
 5. **The placement.** Otherwise one placement round lists `O`, in
    `blind.protocol.listing`'s seeded order. The second call sends the first two
-   messages, then the draft's raw text as the assistant's turn, then the
-   placement message.
+   messages, then the draft as the assistant's turn, then the placement message.
+   - **[Corrected before signature, 2026-10-31] The turn is the draft's payload,
+     serialized**, its keys in the order the model wrote them. This step read
+     *the draft's raw text*, which is what v2b sent. The asker keeps no raw text
+     (rule E).
 6. **The second answer** decides the case. It is held to §2.2's validator. A
    rule not the draft's is refused as *changed*. A rule leaving a listed rule
    unplaced is refused as *unplaced*. A placement that never came back is
@@ -800,6 +865,10 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
   - The record keeps the cause of every escalation: impasse, conflict or error.
   - On an error it also keeps the queue the engine gave, and the rule that gave
     it.
+  - **[Added before signature, 2026-10-31] An error escalation's rule is not
+    counted as fired.** Its decision did not stand: the proposer's answer
+    replaced it, as at any escalation. So rung 2's reuse figures mean the same
+    under both arms.
 
 ### 5.4 What a run records
 
@@ -897,10 +966,14 @@ record keeps the order, so a slot reading is possible afterwards.
 
 - A placement answer cites every listed rule, and its reasoning weighs each.
 - An answer cut off by its budget comes back empty or cut short, with
-  `finish_reason: "length"`. That is a failed parse, retried with v1's message
-  under rule H.
+  `finish_reason: "length"`. That is a failed parse, retried under rule H.
 - If the retry fails too, the placement never came back, and the rule is
   refused.
+- **[Corrected before signature, 2026-10-31] A placement call is retried with
+  its own four messages.** The first bullet said a failed parse is retried
+  *with v1's message*. `PLAN_FIRST_MATCH.md`'s asker, called and not copied,
+  appends that message only to a request of two messages. That is a first
+  call. A placement call's failed parse is retried with the same messages.
 
 **6.10 — A fill rewards resolving.** No row reads the fill of the order's room.
 `RL-h` sets it beside the same edges pointed by a coin and by the Stage C
@@ -961,6 +1034,10 @@ figure exists.**
 - **The rebuilt base.** A run's rebuild equals the engine the run ended with,
   rule for rule and edge for edge. This holds on the transcriber's runs here, and
   on every run at Stage C.
+  - **[Corrected before signature, 2026-10-31] At Stage C it is held to the
+    record.** A paid run's engine is not kept beside its record. So Stage C
+    holds each rebuild to the rules and accepted edges the record says the run
+    ended with. Stage C refuses to write if one departs.
 - **The list's first match.** Level 3's text, applied in order to the 134,400
   points, gives every point the queue `rung3.order_search_ls.space_truth_masks`
   gives it.
@@ -975,9 +1052,10 @@ figure exists.**
 - **The requests.** These are checked through `tests/doubles.py`'s SDK double.
   - Every request carries the reasoning setting, the budget, the pin,
     temperature 0, and `response_format` on its first attempt.
-  - The placement call sends the draft's raw text as the assistant's turn.
-  - A failed call is retried with the same messages, and a failed parse with
-    v1's message.
+  - The placement call sends the draft as the assistant's turn: its payload,
+    serialized, as §5.2's correction says.
+  - A failed call is retried with the same messages. A first call's failed
+    parse is retried with v1's message, as §6.9's correction says.
 - **The hidden policy through v1b's path** gives back the 199 edges and 1.0000 on
   both surfaces (§5.6).
 - **The transcriber gives back §0's figures.**
@@ -1086,6 +1164,9 @@ pinned by tests:**
   - `PROTOCOL = "v1b"` and `LEVEL = 3`.
   - The texts are imported from `manual.prompts`, `rung2.proposers2` and
     `blind.protocol`, and their digests are pinned.
+  - **[Added before signature, 2026-10-31]** `SYSTEM_PROMPT_SHA16 =
+    "7b883f03a863d647"`, §5.1's digest, and `DECLARED`, the figures §0 lists as
+    computed while drafting, as `blind/plan.py`'s `DECLARED` holds that plan's.
 - **The arms.**
   - `ARMS = ("i", "e")`.
   - `TRIGGERS = {"i": ("IMPASSE", "CONFLICT"), "e": ("IMPASSE", "CONFLICT",
@@ -1183,6 +1264,13 @@ network.
       - the transcriber's and the hidden policy's figures;
       - the exactness of §0's comparisons, *thin*, and each row's conditions for
         having no value.
+
+      **[Corrected before signature, 2026-10-31]** The transcriber's figures are
+      `RL-g2`'s and Stage A's, never a test's, because no test runs the loop over
+      the corpus. A test that pinned them would give them a second home. The
+      tests pin the hidden policy through v1b's path, born whole and deciding
+      both surfaces right, which is the instrument on a policy whose answer is
+      known.
 
       The whole suite is green on 3.10 and 3.12.
 - [ ] Every figure in prose names its surface, its arm, its denominator and its
