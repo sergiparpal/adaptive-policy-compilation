@@ -1,0 +1,3 @@
+# The Distiller's floor for this repository, read by .github/workflows/distiller.yml.
+# It comes from the Distiller's decision D-005 (sergiparpal/distiller).
+results*/**

@@ -1,0 +1,195 @@
+# The Distiller (sergiparpal/distiller), in shadow.
+#
+# Task 19 of the Distiller; its rules are the Deployment section of its SPEC.
+# Two jobs:
+#
+#   coverage-at-m  on every push to main, once a day and on demand: the suite
+#                  under pytest with coverage per test, kept for 90 days as the
+#                  artifact `coverage-at-m-<sha>`.
+#   shadow         on every PR: the whole suite under pytest at H, the PR's
+#                  merge commit; then M, the newest commit at or below the
+#                  merge-base with that artifact; then `distiller evaluate` over
+#                  both, whose record is kept as an artifact.
+#
+# IN SHADOW means it decides nothing. Neither job is part of `ci-complete`,
+# which lives in tests.yml and is the only check the ruleset requires, and a
+# failing test never turns this workflow red: the verdict on the suite is
+# tests.yml's. It goes red only when its own instrument fails — a coverage file
+# that was not written, artifacts that could not be listed or downloaded.
+#
+# pytest is installed here and nowhere else. The suite still runs on the
+# standard library, and tests.yml still checks that by installing nothing.
+#
+# No `concurrency`, on purpose: every PR run has to leave its record, and
+# cancelling a superseded run would throw away the measurement of its head.
+#
+# The actions follow tests.yml: pinned to the full SHA, with the version in a
+# comment alongside, and Dependabot bumps them here too. The Distiller itself is
+# pinned to a commit in `ref:`, which Dependabot does not touch: moving it is a
+# decision, not maintenance.
+
+name: distiller
+
+on:
+  push:
+    branches: [main]
+  # Daily, so that the head of main keeps a coverage file inside its 90 days
+  # even when main does not move.
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  coverage-at-m:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # A cap, not a target, as in tests.yml. The suite takes ~45 s there; with
+    # coverage and one context per test it took 2.5 times as long as without,
+    # measured locally on 2026-10-31.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: the tools, pinned
+        run: python -m pip install pytest==9.1.1 pytest-cov==7.1.0 coverage==7.16.2 defusedxml==0.7.1
+
+      # From the root and with no paths, so that pytest's rootdir is the root
+      # and each context names its test as the full run in `shadow` does. A
+      # failing test does not stop the upload: the verdict is tests.yml's.
+      - name: the suite, with coverage per test
+        continue-on-error: true
+        run: COVERAGE_CORE=ctrace COVERAGE_FILE="$RUNNER_TEMP/coverage-at-m" python -m pytest -p no:cacheprovider --cov=. --cov-context=test --cov-report=
+
+      # Uploaded when tests fail, never after a cancellation or a timeout, when
+      # the file may be half-written or missing. A missing file is red: that is
+      # the instrument failing, not a test. `overwrite` lets a re-run of this
+      # job replace an earlier attempt's file instead of failing on the name.
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: ${{ !cancelled() }}
+        with:
+          name: coverage-at-m-${{ github.sha }}
+          path: ${{ runner.temp }}/coverage-at-m
+          if-no-files-found: error
+          retention-days: 90
+          overwrite: true
+
+  shadow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Job-level permissions replace the workflow's, so contents is restated.
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      # The whole history, because M is found by walking back from the
+      # merge-base. What is checked out is H, `github.sha`: the merge commit.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Hidden inside the workspace, because pytest does not recurse into
+      # directories whose name starts with a dot.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: sergiparpal/distiller
+          ref: 3b9cafe6969aa4df3ed485ff98952ced18f203f4
+          path: .distiller-tool
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: the tools, pinned
+        run: python -m pip install pytest==9.1.1 coverage==7.16.2 defusedxml==0.7.1
+
+      - name: the full suite, at H
+        continue-on-error: true
+        run: python -m pytest -p no:cacheprovider --junitxml="$RUNNER_TEMP/junit.xml"
+
+      # M is the newest commit that is the merge-base or one of its ancestors
+      # and has an artifact `coverage-at-m-<sha>` uploaded by a run of this
+      # repository, on the base branch, at that same commit: a fork's run does
+      # not count, nor that of a PR from another branch whose head is a commit
+      # of main. The rules are in .github/distiller/choose_m.py, run with -I so
+      # that nothing in the workspace can pass for the standard library.
+      #
+      # No M is not a failure: it is what happens on the PR that adds this
+      # workflow, and the Distiller simply does not run. Failing to list or to
+      # download the artifacts is a failure, and turns the job red.
+      - name: choose M
+        id: m
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" \
+            --jq '.artifacts[] | select(.expired | not) | @json' > "$RUNNER_TEMP/artifacts.jsonl"
+          choice="$(python -I .github/distiller/choose_m.py --base-branch "$GITHUB_BASE_REF" \
+                      --artifacts "$RUNNER_TEMP/artifacts.jsonl")"
+          if [ -z "$choice" ]; then
+            echo "No artifact coverage-at-m-<sha> qualifies at the merge-base or any ancestor: the Distiller does not run."
+            exit 0
+          fi
+          read -r m run_id <<<"$choice"
+          gh run download "$run_id" -R "$GITHUB_REPOSITORY" -n "coverage-at-m-$m" -D "$RUNNER_TEMP/m"
+          mapfile -t found < <(find "$RUNNER_TEMP/m" -type f -name coverage-at-m)
+          if [ "${#found[@]}" -ne 1 ]; then
+            echo "Expected one file named coverage-at-m in the artifact, found ${#found[@]}."
+            exit 1
+          fi
+          echo "M is $m, and its coverage is ${found[0]}."
+          {
+            echo "sha=$m"
+            echo "coverage=${found[0]}"
+          } >> "$GITHUB_OUTPUT"
+
+      # Measured by a short Python wrapper, not by /usr/bin/time, which the
+      # runner image does not guarantee: without it this step would die with
+      # 127, leave no record, and continue-on-error would hide it. The wrapper
+      # keeps the Distiller's exit code. PYTHONPATH reaches the Distiller alone,
+      # through `env`, and -P keeps the root of this repository off the path of
+      # both interpreters.
+      - name: the Distiller, in shadow
+        if: always() && steps.m.outputs.sha != ''
+        continue-on-error: true
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          M_SHA: ${{ steps.m.outputs.sha }}
+          M_COVERAGE: ${{ steps.m.outputs.coverage }}
+        run: |
+          python -P -c '
+          import resource, subprocess, sys, time
+          start = time.monotonic()
+          code = subprocess.run(sys.argv[1:]).returncode
+          seconds = time.monotonic() - start
+          peak = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss / 1024
+          print(f"distiller evaluate: exit {code}, {seconds:.1f} s, peak memory {peak:.0f} MB")
+          sys.exit(code)
+          ' env PYTHONPATH="$GITHUB_WORKSPACE/.distiller-tool/src" \
+            python -P -m distiller evaluate --pr "$PR_NUMBER" --head "$GITHUB_SHA" \
+            --base "origin/$GITHUB_BASE_REF" --coverage "$M_COVERAGE" --coverage-commit "$M_SHA" \
+            --junit "$RUNNER_TEMP/junit.xml" --floor-config .github/distiller/floor.txt \
+            --records "$RUNNER_TEMP/record.jsonl"
+
+      # Named by run and attempt, so that each attempt leaves its own record.
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: distiller-record-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/record.jsonl
+          if-no-files-found: ignore
+          retention-days: 90
