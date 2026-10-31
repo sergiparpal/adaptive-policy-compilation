@@ -886,6 +886,92 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
 
 ### 5.5 A run that dies keeps what it paid for
 
+> **[AMENDED 2026-10-31 — drafted by Claude after the smoke run's third launch,
+> before any run of §2.6 and before any figure of §0 existed. One change to how
+> a call refused for the rate is waited for and recorded.]**
+>
+> **What the smoke run met.** It was launched three times on 2026-10-31. Each
+> launch stopped on five failed calls in a row, the last of each refused with
+> HTTP 429, *"temporarily rate-limited upstream"*. When the second stopped,
+> OpenRouter's endpoint listing gave Baidu's endpoint as up, with full uptime
+> over the last half hour.
+>
+> - **The first two**, stopped at 11:01 and 11:19 UTC, failed on their first
+>   five calls and recorded nothing.
+> - **The third**, launched at 15:24 UTC, recorded two calls before it stopped
+>   at 15:44.
+>   - Case 0's call was refused for the rate on all three of its attempts.
+>   - Case 1's was refused twice and answered on its third attempt, by Baidu,
+>     reasoned and ended `stop`.
+>   - The next five calls failed, and the run stopped.
+>
+> Under this section as signed, case 0's call was kept as a failed proposal,
+> because the next call was answered. `authorship/run.py`, which this section
+> calls, keeps one failure as an answer the model did not give. So case 0's
+> escalation has no rule because the provider was saturated, and the model never
+> saw the request. **Nothing here reads an answer of the smoke run**, only which
+> attempts came back.
+>
+> **Two things follow from the text as signed.**
+>
+> 1. **A call refused for the rate is recorded as an answer the model did not
+>    give** whenever fewer than five fail in a row. A run would read the
+>    provider's load as the model's, and every row reads which rules were born.
+> 2. **The smoke check cannot pass a run that met a rate limit.** §9's step 3
+>    requires every attempt to have been served by the pinned provider,
+>    reasoned and ended `stop`. An attempt refused for the rate was served by no
+>    one, and the third launch's partial file already holds five.
+>
+> **The change.**
+>
+> - **A call refused for the rate on every attempt is an outage, never an
+>   answer.** An attempt is refused for the rate when `harness/call_record.py`
+>   keeps it with `RATE_LIMITED = "RateLimitError"`, the class `openai` raises
+>   on HTTP 429.
+> - **It is waited out.** Such a call is asked again, with the same messages,
+>   after each wait of `RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)` seconds in
+>   turn: about half an hour in all. The asker starts again each time, with its
+>   own retries, so the first attempt after a wait carries `response_format`, as
+>   a call's first attempt does.
+> - **If every wait is spent, the run stops**, and the call is not recorded,
+>   whatever the streak. The failures pending before it are not recorded
+>   either, as on five failed calls in a row, and the resume asks them again.
+>   The same command resumes there.
+> - **A call any attempt of which reached the model keeps this section's rule.**
+>   It is recorded if it failed alone, and five in a row stop the run. The waits
+>   never ask it again.
+> - **What an answered call keeps.** Its `call_attempts` and its retries by cause
+>   include every attempt refused for the rate, and its seconds every wait.
+> - **The smoke check reads the attempts that reached the model.** Each must have
+>   been served by the pinned provider, reasoned and ended `stop`, as §9 says,
+>   and there must be at least one. The attempts refused for the rate are counted
+>   and fail nothing. Any other failed attempt still fails it.
+> - **Stage C reports the attempts refused for the rate**, and the pace by round
+>   over the calls none of whose attempts was refused, beside the pace over every
+>   call (§10).
+> - **The header carries `RATE_LIMIT_WAIT`.** So the third launch's partial file,
+>   written under the text as signed, is refused on a resume, as a partial left
+>   under another protocol is. It is kept, renamed
+>   `results_reasoned_loop/loop_smoke.before_amendment.partial.jsonl` and
+>   git-ignored, and the smoke run starts again from case 0. That costs the one
+>   answer it paid for, under a thousandth of a dollar.
+> - **The time.** A call the provider keeps refusing now waits about half an hour
+>   before it stops a run, where it waited forty seconds.
+>
+> **What does not move.** No band, line, row, prompt, schema, setting, seed,
+> trigger, the cap or the pin. No request is new: each attempt after a wait is
+> the call's first attempt again, byte for byte. Only when a refused call is sent
+> again changes, and what is kept of it. Stage A's record stands, since its
+> fingerprint and schedule are unchanged. `MIN_SIGNATURES = 2`, so this line and
+> §0's are both required. Pointers mark the sections this changes: §9's step 3,
+> §10, §11 and §12.
+
+**Signed by Sergi: ________ (date: ________)**
+
+*Outside the quotation deliberately, as in `PLAN_REUSE.md`: the gate reads
+signature lines at the start of a line, and one inside a blockquote would be
+invisible to it.*
+
 Each escalation's answers are appended, as they arrive, to a git-ignored partial
 file. The same command resumes there. It replays the run from case 0 with the
 recorded answers, and checks each against the request it would send. It then
@@ -1106,8 +1192,9 @@ committed before the next run starts.**
    signature line, the module exits here.
 3. **What comes before it.**
    - **The smoke record**, under this protocol. Every attempt must have been
-     served by the pinned provider, reasoned, and ended `stop`. At least one rule
-     must have been born, and at least one placement round must have been
+     served by the pinned provider, reasoned, and ended `stop`. **[Amended
+     2026-10-31, §5.5: every attempt that reached the model.]** At least one
+     rule must have been born, and at least one placement round must have been
      answered.
    - **Stage A's record.**
    - **Every run before this one** in §2.6's order.
@@ -1133,7 +1220,8 @@ and `results_reasoned_loop/FINDINGS_REASONED_LOOP.md`, which owns every figure.
 - **`RL-h` in full.**
 - **The runs themselves.** Failed calls, refusals by verdict, answers from
   another provider, retries by cause, reasoning tokens, and the pace by run and
-  by round.
+  by round. **[Amended 2026-10-31, §5.5: and the attempts refused for the rate,
+  with the pace over the calls that met none.]**
 
 ---
 
@@ -1160,6 +1248,8 @@ pinned by tests:**
   - `REASONING = first_match.plan.REASONING_ON`, `{"effort": "high"}`.
   - `MAX_TOKENS = first_match.plan.MAX_TOKENS_REASONING`, 16,000.
   - `MAX_RETRIES = 2` and `CALL_RETRY_WAIT = (10, 30)`, `first_match.plan`'s.
+  - **[Amended 2026-10-31, §5.5]** `RATE_LIMITED = "RateLimitError"` and
+    `RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)`.
 - **The protocol.**
   - `PROTOCOL = "v1b"` and `LEVEL = 3`.
   - The texts are imported from `manual.prompts`, `rung2.proposers2` and
@@ -1183,7 +1273,7 @@ pinned by tests:**
   - **The placement listing is not this seed's.** It keeps v2b's
     `LISTING_SEED`, through `blind.protocol.listing`.
 - **The limits.**
-  - `MIN_SIGNATURES = 1`.
+  - `MIN_SIGNATURES = 1`. **[Amended 2026-10-31, §5.5: `MIN_SIGNATURES = 2`.]**
   - `MIN_ESCALATIONS = 60` and `MIN_UNITS = 20`.
   - `COVER_BEFORE = 200`.
 - **The lines of §0.** They are fractions, and every comparison with them is
@@ -1252,7 +1342,8 @@ network.
       the smoke run came before the first run, and each run's record was
       committed before the next began.
 - [ ] Before the first run: every attempt of the smoke run was served by the
-      pinned provider, reasoned, and ended `stop`. A rule was born, and a
+      pinned provider, reasoned, and ended `stop`. **[Amended 2026-10-31, §5.5:
+      every attempt that reached the model.]** A rule was born, and a
       placement round was answered.
 - [ ] The plumbing of §11, and tests pinning:
       - the constants and the gate;
