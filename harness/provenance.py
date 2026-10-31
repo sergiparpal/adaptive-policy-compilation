@@ -75,7 +75,8 @@ CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
               "reuse", "fidelity", "edges", "primacy", "why", "authorship",
               "overlap", "blind", "screen", "bound", "ranking", "students",
               "escalations", "spotcheck", "unreached", "manual", "apply",
-              "queue_alone", "first_match", "reasoned_rule", "run_experiment.py")
+              "queue_alone", "first_match", "reasoned_rule", "reasoned_loop",
+              "run_experiment.py")
 
 DIGEST_CHARS = 16
 

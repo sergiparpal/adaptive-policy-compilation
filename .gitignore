@@ -83,3 +83,5 @@ results_queue_alone/*.partial.jsonl
 results_first_match/*.partial.jsonl
 # And the passes of PLAN_REASONED_RULE.md (reasoned_rule/ask.py).
 results_reasoned_rule/*.partial.jsonl
+# And the runs of PLAN_REASONED_LOOP.md (reasoned_loop/run.py).
+results_reasoned_loop/*.partial.jsonl
