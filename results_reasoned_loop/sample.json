@@ -1,0 +1,1697 @@
+{
+  "_env": {
+    "recorded_at": "2026-10-31T10:45:29Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "8418afa1bfb640a59f4b18d1ff971c6a2d4a872d",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "acda5713d4d86014"
+  },
+  "plan": "PLAN_REASONED_LOOP.md",
+  "stage": "A",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_LOOP.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_REASONED_LOOP.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "RL-g1": {
+      "what": "PLAN_REASONED_RULE.md's checks pass and its verdicts come back; PLAN_MANUAL.md's level-3 runs come back through this instrument; the list's first match is the policy over the space; the labels agree with the text; a run's rebuild is its engine; the suite green",
+      "reasoned_rule_checks": true,
+      "reasoned_rule_rows": {
+        "rows": 4,
+        "departing": [],
+        "passes": true
+      },
+      "manual_level_3": {
+        "runs": 3,
+        "departing": [],
+        "passes": true
+      },
+      "the_list_over_the_space": {
+        "points": 134400,
+        "queues": [
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "SECURITY_INCIDENT",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL",
+          "T2_TECHNICAL",
+          "T3_ENGINEERING"
+        ],
+        "departing": [],
+        "every_point_decided": true,
+        "passes": true
+      },
+      "labels": {
+        "cases": 2000,
+        "queue_departs": [],
+        "rule_departs": [],
+        "source": "results_reuse/run_n2000_r1.json",
+        "passes": true
+      },
+      "rebuilds": {
+        "runs": {
+          "i": true,
+          "e": true
+        },
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2460,
+        "result": "OK (skipped=5)",
+        "seconds": 175.9,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RL-g2": {
+      "what": "every text is its source's; the hidden policy through v1b's path is born whole with its 199 edges and decides both surfaces right; the transcriber gives back \u00a70's figures. The requests, the retry and the validator's verdicts are tests/test_reasoned_loop.py's",
+      "texts": {
+        "system_prompt_is_manual_level_3s": true,
+        "system_prompt_is_the_rule_arms": true,
+        "system_prompt_digest": true,
+        "system_prompt_holds_the_list": true,
+        "blind_base_is_v2bs": true,
+        "placement_template_is_v2bs": true,
+        "v2b_as_signed": true,
+        "retry_message_is_v1s": true,
+        "the_first_call": true,
+        "the_placement_call": true,
+        "passes": true
+      },
+      "hidden_policy": {
+        "born": 29,
+        "declarations": 253,
+        "installed": 199,
+        "verdicts": {
+          "ok": 253
+        },
+        "every_declaration_accepted": true,
+        "the_199_edges": true,
+        "space": [
+          134400,
+          134400
+        ],
+        "corpus": [
+          2000,
+          2000
+        ],
+        "as_declared": true,
+        "passes": true
+      },
+      "transcriber": {
+        "as_declared": {
+          "i": {
+            "escalations": true,
+            "rules": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "e": {
+            "escalations": true,
+            "impasses": true,
+            "errors": true,
+            "last": true,
+            "rules": true,
+            "not_written": true,
+            "declarations": true,
+            "accepted": true,
+            "space_right": true,
+            "k_a": true,
+            "crossing": true,
+            "strict": true,
+            "units": true
+          }
+        },
+        "passes": true
+      },
+      "verdicts": {
+        "names": {
+          "born": "nacida",
+          "changed": "cambiada",
+          "unplaced": "sin_situar",
+          "rejected": "rechazada",
+          "order": "orden_sin_conflicto",
+          "failed": "fallida"
+        },
+        "passes": true
+      },
+      "passes": true
+    },
+    "RL-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under the error arm; the cap is 400 escalations",
+      "schedule": [
+        [
+          "e",
+          1
+        ],
+        [
+          "i",
+          1
+        ],
+        [
+          "e",
+          2
+        ],
+        [
+          "i",
+          2
+        ],
+        [
+          "e",
+          3
+        ],
+        [
+          "i",
+          3
+        ]
+      ],
+      "rebuilt_from_the_seed": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "cap": true,
+      "passes": true
+    },
+    "RL-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_LOOP.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REASONED_LOOP.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "references": {
+    "transcriber": {
+      "i": {
+        "figures": {
+          "escalations": [
+            [
+              0,
+              "IMPASSE",
+              "H13"
+            ],
+            [
+              1,
+              "IMPASSE",
+              "H29"
+            ]
+          ],
+          "causes": {
+            "IMPASSE": 2,
+            "CONFLICT": 0,
+            "ERROR": 0
+          },
+          "rules": [
+            "H13",
+            "H29"
+          ],
+          "verdicts": {
+            "nacida": 2
+          },
+          "declarations": 1,
+          "accepted": 1,
+          "edge_verdicts": {
+            "ok": 1
+          },
+          "space_right": 14820,
+          "space_points": 134400,
+          "corpus_right": 298,
+          "corpus_cases": 2000,
+          "k_a": "1/2",
+          "material": {
+            "crossing_pairs": 0,
+            "strict": 0,
+            "units": 0
+          },
+          "cover": 1,
+          "stopped_at": null
+        },
+        "direction": {
+          "units": 0
+        },
+        "as_declared": {
+          "escalations": true,
+          "rules": true,
+          "space_right": true,
+          "corpus_right": true,
+          "direction": true
+        }
+      },
+      "e": {
+        "figures": {
+          "escalations": [
+            [
+              0,
+              "IMPASSE",
+              "H13"
+            ],
+            [
+              1,
+              "IMPASSE",
+              "H29"
+            ],
+            [
+              2,
+              "ERROR",
+              "H24"
+            ],
+            [
+              3,
+              "ERROR",
+              "H19"
+            ],
+            [
+              5,
+              "ERROR",
+              "H18"
+            ],
+            [
+              6,
+              "ERROR",
+              "H11"
+            ],
+            [
+              7,
+              "ERROR",
+              "H16"
+            ],
+            [
+              13,
+              "ERROR",
+              "H20"
+            ],
+            [
+              17,
+              "ERROR",
+              "H12"
+            ],
+            [
+              19,
+              "ERROR",
+              "H03"
+            ],
+            [
+              25,
+              "ERROR",
+              "H10"
+            ],
+            [
+              32,
+              "ERROR",
+              "H14"
+            ],
+            [
+              44,
+              "ERROR",
+              "H01"
+            ],
+            [
+              58,
+              "ERROR",
+              "H07"
+            ],
+            [
+              85,
+              "ERROR",
+              "H08"
+            ],
+            [
+              103,
+              "ERROR",
+              "H09"
+            ],
+            [
+              138,
+              "ERROR",
+              "H26"
+            ],
+            [
+              141,
+              "ERROR",
+              "H17"
+            ],
+            [
+              227,
+              "ERROR",
+              "H15"
+            ],
+            [
+              257,
+              "ERROR",
+              "H05"
+            ],
+            [
+              342,
+              "ERROR",
+              "H02"
+            ],
+            [
+              513,
+              "ERROR",
+              "H06"
+            ],
+            [
+              954,
+              "ERROR",
+              "H04"
+            ]
+          ],
+          "causes": {
+            "IMPASSE": 2,
+            "CONFLICT": 0,
+            "ERROR": 21
+          },
+          "rules": [
+            "H13",
+            "H29",
+            "H24",
+            "H19",
+            "H18",
+            "H11",
+            "H16",
+            "H20",
+            "H12",
+            "H03",
+            "H10",
+            "H14",
+            "H01",
+            "H07",
+            "H08",
+            "H09",
+            "H26",
+            "H17",
+            "H15",
+            "H05",
+            "H02",
+            "H06",
+            "H04"
+          ],
+          "verdicts": {
+            "nacida": 23
+          },
+          "declarations": 148,
+          "accepted": 148,
+          "edge_verdicts": {
+            "ok": 148
+          },
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "corpus_cases": 2000,
+          "k_a": "1/20",
+          "material": {
+            "crossing_pairs": 64,
+            "strict": 59,
+            "units": 15
+          },
+          "cover": 1,
+          "stopped_at": null
+        },
+        "direction": {
+          "units": 15,
+          "hits": 55,
+          "strict": 59,
+          "reading": "71/75",
+          "ranking": "403/450"
+        },
+        "as_declared": {
+          "escalations": true,
+          "impasses": true,
+          "errors": true,
+          "last": true,
+          "rules": true,
+          "not_written": true,
+          "declarations": true,
+          "accepted": true,
+          "space_right": true,
+          "k_a": true,
+          "crossing": true,
+          "strict": true,
+          "units": true,
+          "direction": true
+        }
+      }
+    },
+    "hidden": {
+      "born": 29,
+      "declarations": 253,
+      "verdicts": {
+        "ok": 253
+      },
+      "installed": [
+        [
+          "H01",
+          "H04"
+        ],
+        [
+          "H01",
+          "H05"
+        ],
+        [
+          "H01",
+          "H06"
+        ],
+        [
+          "H01",
+          "H07"
+        ],
+        [
+          "H01",
+          "H08"
+        ],
+        [
+          "H01",
+          "H09"
+        ],
+        [
+          "H01",
+          "H10"
+        ],
+        [
+          "H01",
+          "H11"
+        ],
+        [
+          "H01",
+          "H12"
+        ],
+        [
+          "H01",
+          "H13"
+        ],
+        [
+          "H01",
+          "H14"
+        ],
+        [
+          "H01",
+          "H15"
+        ],
+        [
+          "H01",
+          "H16"
+        ],
+        [
+          "H01",
+          "H17"
+        ],
+        [
+          "H01",
+          "H18"
+        ],
+        [
+          "H01",
+          "H19"
+        ],
+        [
+          "H01",
+          "H20"
+        ],
+        [
+          "H01",
+          "H21"
+        ],
+        [
+          "H01",
+          "H23"
+        ],
+        [
+          "H01",
+          "H26"
+        ],
+        [
+          "H01",
+          "H27"
+        ],
+        [
+          "H02",
+          "H04"
+        ],
+        [
+          "H02",
+          "H05"
+        ],
+        [
+          "H02",
+          "H06"
+        ],
+        [
+          "H02",
+          "H07"
+        ],
+        [
+          "H02",
+          "H08"
+        ],
+        [
+          "H02",
+          "H09"
+        ],
+        [
+          "H02",
+          "H10"
+        ],
+        [
+          "H02",
+          "H11"
+        ],
+        [
+          "H02",
+          "H12"
+        ],
+        [
+          "H02",
+          "H13"
+        ],
+        [
+          "H02",
+          "H14"
+        ],
+        [
+          "H02",
+          "H15"
+        ],
+        [
+          "H02",
+          "H16"
+        ],
+        [
+          "H02",
+          "H17"
+        ],
+        [
+          "H02",
+          "H18"
+        ],
+        [
+          "H02",
+          "H19"
+        ],
+        [
+          "H02",
+          "H20"
+        ],
+        [
+          "H02",
+          "H21"
+        ],
+        [
+          "H02",
+          "H22"
+        ],
+        [
+          "H02",
+          "H23"
+        ],
+        [
+          "H02",
+          "H25"
+        ],
+        [
+          "H02",
+          "H28"
+        ],
+        [
+          "H03",
+          "H04"
+        ],
+        [
+          "H03",
+          "H05"
+        ],
+        [
+          "H03",
+          "H06"
+        ],
+        [
+          "H03",
+          "H07"
+        ],
+        [
+          "H03",
+          "H09"
+        ],
+        [
+          "H03",
+          "H10"
+        ],
+        [
+          "H03",
+          "H11"
+        ],
+        [
+          "H03",
+          "H12"
+        ],
+        [
+          "H03",
+          "H13"
+        ],
+        [
+          "H03",
+          "H14"
+        ],
+        [
+          "H03",
+          "H15"
+        ],
+        [
+          "H03",
+          "H17"
+        ],
+        [
+          "H03",
+          "H22"
+        ],
+        [
+          "H03",
+          "H23"
+        ],
+        [
+          "H03",
+          "H24"
+        ],
+        [
+          "H03",
+          "H25"
+        ],
+        [
+          "H03",
+          "H26"
+        ],
+        [
+          "H03",
+          "H28"
+        ],
+        [
+          "H04",
+          "H07"
+        ],
+        [
+          "H04",
+          "H09"
+        ],
+        [
+          "H04",
+          "H10"
+        ],
+        [
+          "H04",
+          "H11"
+        ],
+        [
+          "H04",
+          "H12"
+        ],
+        [
+          "H04",
+          "H13"
+        ],
+        [
+          "H04",
+          "H15"
+        ],
+        [
+          "H04",
+          "H16"
+        ],
+        [
+          "H04",
+          "H17"
+        ],
+        [
+          "H04",
+          "H18"
+        ],
+        [
+          "H04",
+          "H20"
+        ],
+        [
+          "H04",
+          "H21"
+        ],
+        [
+          "H05",
+          "H07"
+        ],
+        [
+          "H05",
+          "H10"
+        ],
+        [
+          "H05",
+          "H11"
+        ],
+        [
+          "H05",
+          "H12"
+        ],
+        [
+          "H05",
+          "H14"
+        ],
+        [
+          "H05",
+          "H15"
+        ],
+        [
+          "H05",
+          "H16"
+        ],
+        [
+          "H05",
+          "H17"
+        ],
+        [
+          "H05",
+          "H18"
+        ],
+        [
+          "H05",
+          "H20"
+        ],
+        [
+          "H05",
+          "H21"
+        ],
+        [
+          "H05",
+          "H23"
+        ],
+        [
+          "H06",
+          "H10"
+        ],
+        [
+          "H06",
+          "H11"
+        ],
+        [
+          "H06",
+          "H12"
+        ],
+        [
+          "H06",
+          "H14"
+        ],
+        [
+          "H06",
+          "H16"
+        ],
+        [
+          "H06",
+          "H18"
+        ],
+        [
+          "H06",
+          "H20"
+        ],
+        [
+          "H06",
+          "H21"
+        ],
+        [
+          "H06",
+          "H23"
+        ],
+        [
+          "H07",
+          "H13"
+        ],
+        [
+          "H07",
+          "H14"
+        ],
+        [
+          "H07",
+          "H21"
+        ],
+        [
+          "H07",
+          "H22"
+        ],
+        [
+          "H07",
+          "H23"
+        ],
+        [
+          "H07",
+          "H25"
+        ],
+        [
+          "H07",
+          "H28"
+        ],
+        [
+          "H08",
+          "H09"
+        ],
+        [
+          "H08",
+          "H10"
+        ],
+        [
+          "H08",
+          "H11"
+        ],
+        [
+          "H08",
+          "H12"
+        ],
+        [
+          "H08",
+          "H13"
+        ],
+        [
+          "H08",
+          "H14"
+        ],
+        [
+          "H08",
+          "H15"
+        ],
+        [
+          "H08",
+          "H17"
+        ],
+        [
+          "H08",
+          "H22"
+        ],
+        [
+          "H08",
+          "H23"
+        ],
+        [
+          "H08",
+          "H25"
+        ],
+        [
+          "H08",
+          "H28"
+        ],
+        [
+          "H09",
+          "H10"
+        ],
+        [
+          "H09",
+          "H11"
+        ],
+        [
+          "H09",
+          "H21"
+        ],
+        [
+          "H09",
+          "H26"
+        ],
+        [
+          "H09",
+          "H27"
+        ],
+        [
+          "H10",
+          "H13"
+        ],
+        [
+          "H10",
+          "H14"
+        ],
+        [
+          "H10",
+          "H21"
+        ],
+        [
+          "H10",
+          "H22"
+        ],
+        [
+          "H10",
+          "H23"
+        ],
+        [
+          "H10",
+          "H25"
+        ],
+        [
+          "H10",
+          "H28"
+        ],
+        [
+          "H11",
+          "H13"
+        ],
+        [
+          "H11",
+          "H14"
+        ],
+        [
+          "H11",
+          "H21"
+        ],
+        [
+          "H11",
+          "H22"
+        ],
+        [
+          "H11",
+          "H23"
+        ],
+        [
+          "H11",
+          "H24"
+        ],
+        [
+          "H11",
+          "H27"
+        ],
+        [
+          "H11",
+          "H28"
+        ],
+        [
+          "H12",
+          "H13"
+        ],
+        [
+          "H12",
+          "H14"
+        ],
+        [
+          "H12",
+          "H21"
+        ],
+        [
+          "H12",
+          "H23"
+        ],
+        [
+          "H12",
+          "H27"
+        ],
+        [
+          "H12",
+          "H28"
+        ],
+        [
+          "H13",
+          "H15"
+        ],
+        [
+          "H13",
+          "H16"
+        ],
+        [
+          "H13",
+          "H17"
+        ],
+        [
+          "H13",
+          "H18"
+        ],
+        [
+          "H13",
+          "H19"
+        ],
+        [
+          "H13",
+          "H20"
+        ],
+        [
+          "H13",
+          "H21"
+        ],
+        [
+          "H13",
+          "H27"
+        ],
+        [
+          "H14",
+          "H15"
+        ],
+        [
+          "H14",
+          "H16"
+        ],
+        [
+          "H14",
+          "H17"
+        ],
+        [
+          "H14",
+          "H18"
+        ],
+        [
+          "H14",
+          "H19"
+        ],
+        [
+          "H14",
+          "H20"
+        ],
+        [
+          "H14",
+          "H21"
+        ],
+        [
+          "H14",
+          "H23"
+        ],
+        [
+          "H14",
+          "H27"
+        ],
+        [
+          "H15",
+          "H21"
+        ],
+        [
+          "H15",
+          "H22"
+        ],
+        [
+          "H15",
+          "H23"
+        ],
+        [
+          "H15",
+          "H25"
+        ],
+        [
+          "H15",
+          "H28"
+        ],
+        [
+          "H16",
+          "H22"
+        ],
+        [
+          "H16",
+          "H23"
+        ],
+        [
+          "H16",
+          "H24"
+        ],
+        [
+          "H16",
+          "H25"
+        ],
+        [
+          "H16",
+          "H26"
+        ],
+        [
+          "H16",
+          "H28"
+        ],
+        [
+          "H17",
+          "H21"
+        ],
+        [
+          "H17",
+          "H22"
+        ],
+        [
+          "H17",
+          "H23"
+        ],
+        [
+          "H17",
+          "H25"
+        ],
+        [
+          "H17",
+          "H28"
+        ],
+        [
+          "H18",
+          "H22"
+        ],
+        [
+          "H18",
+          "H23"
+        ],
+        [
+          "H18",
+          "H24"
+        ],
+        [
+          "H18",
+          "H25"
+        ],
+        [
+          "H18",
+          "H26"
+        ],
+        [
+          "H18",
+          "H28"
+        ],
+        [
+          "H19",
+          "H22"
+        ],
+        [
+          "H19",
+          "H23"
+        ],
+        [
+          "H19",
+          "H25"
+        ],
+        [
+          "H19",
+          "H28"
+        ],
+        [
+          "H20",
+          "H22"
+        ],
+        [
+          "H20",
+          "H23"
+        ],
+        [
+          "H20",
+          "H25"
+        ],
+        [
+          "H20",
+          "H28"
+        ],
+        [
+          "H21",
+          "H22"
+        ],
+        [
+          "H21",
+          "H23"
+        ],
+        [
+          "H21",
+          "H25"
+        ],
+        [
+          "H21",
+          "H28"
+        ],
+        [
+          "H22",
+          "H23"
+        ],
+        [
+          "H22",
+          "H27"
+        ],
+        [
+          "H23",
+          "H24"
+        ],
+        [
+          "H23",
+          "H25"
+        ],
+        [
+          "H23",
+          "H26"
+        ],
+        [
+          "H23",
+          "H27"
+        ],
+        [
+          "H25",
+          "H27"
+        ],
+        [
+          "H26",
+          "H28"
+        ],
+        [
+          "H27",
+          "H28"
+        ]
+      ],
+      "space": {
+        "n": 134400,
+        "action": 134400,
+        "conflict": 0,
+        "impasse": 0,
+        "correct": 134400,
+        "coverage": 1.0,
+        "silent_error": 0.0,
+        "e2e": 1.0,
+        "recall": {
+          "T1_GENERAL": {
+            "right": 5220,
+            "of": 5220,
+            "share": 1.0
+          },
+          "T2_TECHNICAL": {
+            "right": 36720,
+            "of": 36720,
+            "share": 1.0
+          },
+          "T3_ENGINEERING": {
+            "right": 8180,
+            "of": 8180,
+            "share": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "right": 6840,
+            "of": 6840,
+            "share": 1.0
+          },
+          "SECURITY_INCIDENT": {
+            "right": 50400,
+            "of": 50400,
+            "share": 1.0
+          },
+          "ACCOUNT_MANAGER": {
+            "right": 16440,
+            "of": 16440,
+            "share": 1.0
+          },
+          "ONCALL_ESCALATION": {
+            "right": 6300,
+            "of": 6300,
+            "share": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "right": 4300,
+            "of": 4300,
+            "share": 1.0
+          }
+        }
+      },
+      "corpus": {
+        "n": 2000,
+        "action": 2000,
+        "conflict": 0,
+        "impasse": 0,
+        "correct": 2000,
+        "e2e": 1.0,
+        "silent_error": 0.0,
+        "recall": {
+          "T1_GENERAL": {
+            "right": 255,
+            "of": 255,
+            "share": 1.0
+          },
+          "T2_TECHNICAL": {
+            "right": 726,
+            "of": 726,
+            "share": 1.0
+          },
+          "T3_ENGINEERING": {
+            "right": 117,
+            "of": 117,
+            "share": 1.0
+          },
+          "BILLING_SPECIALIST": {
+            "right": 271,
+            "of": 271,
+            "share": 1.0
+          },
+          "SECURITY_INCIDENT": {
+            "right": 20,
+            "of": 20,
+            "share": 1.0
+          },
+          "ACCOUNT_MANAGER": {
+            "right": 109,
+            "of": 109,
+            "share": 1.0
+          },
+          "ONCALL_ESCALATION": {
+            "right": 7,
+            "of": 7,
+            "share": 1.0
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "right": 495,
+            "of": 495,
+            "share": 1.0
+          }
+        }
+      },
+      "as_declared": true
+    },
+    "h29": {
+      "tickets": 163,
+      "first": [
+        1,
+        21,
+        50,
+        64,
+        86
+      ],
+      "as_declared": true
+    },
+    "rare": {
+      "ONCALL_ESCALATION": {
+        "tickets": 7,
+        "at": [
+          257,
+          710,
+          954,
+          982,
+          1432,
+          1783,
+          1951
+        ],
+        "governed": {
+          "H04": 4,
+          "H05": 3
+        }
+      },
+      "SECURITY_INCIDENT": {
+        "tickets": 20
+      },
+      "ACCOUNT_MANAGER": {
+        "tickets": 109
+      },
+      "T3_ENGINEERING": {
+        "tickets": 117
+      },
+      "as_declared": true
+    },
+    "rules_written": {
+      "rows": {
+        "H29": [
+          28,
+          12,
+          16,
+          1
+        ],
+        "H28": [
+          16,
+          10,
+          6,
+          0
+        ],
+        "H16": [
+          34,
+          23,
+          10,
+          4
+        ],
+        "H18": [
+          40,
+          19,
+          15,
+          0
+        ],
+        "H12": [
+          16,
+          9,
+          7,
+          0
+        ]
+      },
+      "catch_all_without_reasoning": {
+        "answers": 6,
+        "of": 342,
+        "under_other_rules": 5
+      },
+      "by_arm": {
+        "w": {
+          "H01": {
+            "governing": 16,
+            "inside": 1,
+            "other": 1
+          },
+          "H02": {
+            "governing": 18,
+            "inside": 2
+          },
+          "H03": {
+            "governing": 25,
+            "inside": 3
+          },
+          "H04": {
+            "governing": 2
+          },
+          "H05": {
+            "governing": 6
+          },
+          "H07": {
+            "governing": 4
+          },
+          "H08": {
+            "inside": 8,
+            "governing": 12
+          },
+          "H09": {
+            "governing": 7,
+            "inside": 1
+          },
+          "H10": {
+            "governing": 7,
+            "inside": 1
+          },
+          "H11": {
+            "governing": 5,
+            "inside": 1
+          },
+          "H12": {
+            "governing": 9,
+            "inside": 7
+          },
+          "H13": {
+            "governing": 6,
+            "inside": 2
+          },
+          "H14": {
+            "governing": 8
+          },
+          "H15": {
+            "governing": 13,
+            "inside": 1
+          },
+          "H16": {
+            "governing": 23,
+            "inside": 10,
+            "other": 1
+          },
+          "H17": {
+            "governing": 10,
+            "inside": 2
+          },
+          "H18": {
+            "governing": 19,
+            "inside": 15,
+            "other": 6
+          },
+          "H19": {
+            "governing": 2
+          },
+          "H20": {
+            "governing": 9,
+            "inside": 3
+          },
+          "H22": {
+            "inside": 1,
+            "governing": 1
+          },
+          "H23": {
+            "other": 1,
+            "governing": 1
+          },
+          "H24": {
+            "governing": 20,
+            "inside": 2
+          },
+          "H26": {
+            "other": 1,
+            "governing": 5
+          },
+          "H28": {
+            "governing": 10,
+            "inside": 6
+          },
+          "H29": {
+            "inside": 16,
+            "governing": 12
+          }
+        },
+        "t": {
+          "H01": {
+            "inside": 2,
+            "governing": 13,
+            "other": 3
+          },
+          "H02": {
+            "governing": 10,
+            "inside": 4,
+            "other": 6
+          },
+          "H03": {
+            "governing": 23,
+            "inside": 5
+          },
+          "H04": {
+            "governing": 2
+          },
+          "H05": {
+            "governing": 6
+          },
+          "H07": {
+            "governing": 3,
+            "other": 1
+          },
+          "H08": {
+            "governing": 15,
+            "other": 2,
+            "inside": 3
+          },
+          "H09": {
+            "other": 2,
+            "governing": 6
+          },
+          "H10": {
+            "governing": 8
+          },
+          "H11": {
+            "governing": 6
+          },
+          "H12": {
+            "inside": 16
+          },
+          "H13": {
+            "other": 2,
+            "governing": 6
+          },
+          "H14": {
+            "governing": 7,
+            "other": 1
+          },
+          "H15": {
+            "governing": 14
+          },
+          "H16": {
+            "inside": 22,
+            "governing": 4,
+            "other": 8
+          },
+          "H17": {
+            "governing": 12
+          },
+          "H18": {
+            "inside": 21,
+            "other": 19
+          },
+          "H19": {
+            "governing": 2
+          },
+          "H20": {
+            "governing": 11,
+            "other": 1
+          },
+          "H22": {
+            "other": 2
+          },
+          "H23": {
+            "other": 2
+          },
+          "H24": {
+            "governing": 13,
+            "other": 6,
+            "inside": 3
+          },
+          "H26": {
+            "other": 3,
+            "governing": 3
+          },
+          "H28": {
+            "inside": 16
+          },
+          "H29": {
+            "inside": 27,
+            "governing": 1
+          }
+        }
+      },
+      "as_declared": true
+    },
+    "manual_level_3": [
+      {
+        "rep": 1,
+        "space": "187/560",
+        "corpus": "259/400",
+        "k_a": "61/82",
+        "cover": null,
+        "escalations": 86,
+        "prop": 0.5465,
+        "recall_oncall": "82/315"
+      },
+      {
+        "rep": 2,
+        "space": "53119/134400",
+        "corpus": "999/2000",
+        "k_a": "2/3",
+        "cover": null,
+        "escalations": 136,
+        "prop": 0.5147,
+        "recall_oncall": "4/63"
+      },
+      {
+        "rep": 3,
+        "space": "677/1792",
+        "corpus": "131/200",
+        "k_a": "61/83",
+        "cover": null,
+        "escalations": 101,
+        "prop": 0.6535,
+        "recall_oncall": "4/15"
+      }
+    ],
+    "schedule": [
+      [
+        "e",
+        1
+      ],
+      [
+        "i",
+        1
+      ],
+      [
+        "e",
+        2
+      ],
+      [
+        "i",
+        2
+      ],
+      [
+        "e",
+        3
+      ],
+      [
+        "i",
+        3
+      ]
+    ],
+    "texts_sha16": {
+      "system_prompt": "7b883f03a863d647",
+      "blind_base": "8de0ebf50ce9a54b",
+      "placement_template": "ccfd0eceba1468b2",
+      "retry_message": "ca7b3803f1bef2dd"
+    },
+    "fingerprint": "8dc358cab48635e6"
+  }
+}
