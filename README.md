@@ -1203,6 +1203,20 @@ lock's transitive closure are not an outdated dependency, they are the
 provenance of the environment that produced the records, and a weekly PR
 proposing to bump them would train the habit of merging without looking.
 
+[`.github/workflows/distiller.yml`](.github/workflows/distiller.yml) runs the
+[Distiller](https://github.com/sergiparpal/distiller), pinned to one commit,
+**in shadow**. On every push to `main`, once a day and on demand, its
+`coverage-at-m` job runs the suite under pytest with per-test coverage and keeps
+the data file as the artifact `coverage-at-m-<sha>`. On every PR, its `shadow`
+job runs the whole suite under pytest, takes as M the first commit, walking back
+from the merge-base, with such an artifact from a run of this repository on the
+base branch, runs `distiller evaluate` over both and keeps its record as an
+artifact. It blocks nothing: neither job is part of `ci-complete`, and a failing
+test never turns it red, because the verdict on the suite is still `tests.yml`'s;
+only a failure of its own instrument does. pytest is installed there and nowhere
+else, so the suite itself still runs on the standard library. Its floor and the
+script that picks M are in [`.github/distiller/`](.github/distiller/).
+
 ### The `_env` block
 
 Each results JSON opens with the provenance of the figure:
@@ -1875,7 +1889,9 @@ adaptive-policy-compilation/
 │   └── test_*.py            invariants and snapshots (see *The tests*)
 │
 ├── .githooks/pre-commit     the suite before every commit (must be enabled)
-├── .github/workflows/       the suite on every push and PR, on 3.10 and 3.12
+├── .github/workflows/       tests.yml: the suite on every push and PR, on 3.10 and 3.12
+│                            distiller.yml: the Distiller, in shadow, outside ci-complete
+├── .github/distiller/       the Distiller's floor and the script that picks M
 ├── .github/dependabot.yml   bumps the actions; does NOT touch the pip pins
 │
 └── results/  results2/  results3/  results4/  results_sensitivity/  results_ilp/
