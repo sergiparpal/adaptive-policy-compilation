@@ -13,9 +13,9 @@ built before the thing that could forbid it has spoken:
      signature line this module exits here, before the checks, the destination
      or a client. No flag skips it.
   3. What comes before the run: Stage A's record, under this protocol; for a
-     run, the smoke record, with every attempt served by the pinned provider,
-     reasoned and ended `stop`, a rule born and a placement round answered; and
-     every run before this one in §2.6's order.
+     run, the smoke record, with every attempt that reached the model served by
+     the pinned provider, reasoned and ended `stop`, a rule born and a placement
+     round answered; and every run before this one in §2.6's order.
   4. The key, read off OpenRouter's key endpoint by `reuse.run.key_check`,
      called and not copied. A management key answers 200 there and cannot call
      a model.
@@ -29,7 +29,10 @@ A RUN THAT DIES KEEPS WHAT IT PAID FOR (§5.5), with `authorship/run.py`'s
 partial file and resumption, called: every answer is appended as it arrives,
 the same command serves each stored answer after checking that the request is
 the one paid for, and five failed calls in a row stop the run without recording
-them, because an outage is not answers. **A run outlives a background command of
+them, because an outage is not answers. **So does a call refused for the rate on
+every attempt** through every wait of `plan.RATE_LIMIT_WAIT` (§5.5's amendment,
+2026-10-31): `protocol.RateLimited` is an `Outage`, and a call that meets it is
+not recorded, whatever the streak. **A run outlives a background command of
 the agent's harness**, so the runs belong in Sergi's terminal.
 
     python3 -m reasoned_loop.run --dry-run
@@ -67,6 +70,7 @@ def protocol(arm: str, n: int, name: str) -> dict[str, Any]:
         "plan": str(plan.PLAN), "protocol": plan.PROTOCOL, "level": plan.LEVEL,
         "model": plan.MODEL, "temperature": plan.TEMPERATURE, "settings": plan.settings(),
         "provider": plan.PROVIDER, "call_retry_wait": list(plan.CALL_RETRY_WAIT),
+        "rate_limit_wait": list(plan.RATE_LIMIT_WAIT),
         "seed": plan.SEED, "n": n, "arm": arm, "run": name, "cap": plan.MAX_ESCALATIONS,
         "listing_seed": bplan.LISTING_SEED, "fingerprint": p.fingerprint(),
         "texts_sha16": p.digests()}))
@@ -90,8 +94,10 @@ def reasoned(attempt: dict, call: dict) -> bool:
 
 def smoke_check(path: Path | None = None) -> tuple[bool, str]:
     """Step 3, for a run: the smoke run under this protocol was served by the
-    pinned provider, reasoned on every attempt and fitted its budget, bore a
-    rule and answered a placement round."""
+    pinned provider, reasoned on every attempt that reached the model and
+    fitted its budget, bore a rule and answered a placement round. An attempt
+    refused for the rate reached nothing: it is counted, and not read (§5.5's
+    amendment)."""
     path = path or plan.smoke_path()
     if not path.exists():
         return False, f"no smoke record at {path}; run --smoke first"
@@ -102,8 +108,10 @@ def smoke_check(path: Path | None = None) -> tuple[bool, str]:
         return False, f"{path} was not produced under this protocol: {wrong}"
     calls = [c for esc in rec.get("escalations", []) for c in esc.get("calls", [])]
     pairs = [(a, c) for c in calls for a in c.get("call_attempts") or []]
+    limited = sum(1 for a, _ in pairs if a.get("error") == plan.RATE_LIMITED)
+    pairs = [(a, c) for a, c in pairs if a.get("error") != plan.RATE_LIMITED]
     if not pairs:
-        return False, f"{path} recorded no attempt"
+        return False, f"{path} recorded no attempt that reached the model"
     elsewhere = sorted({a.get("provider") or "none" for a, _ in pairs} - {plan.PROVIDER_NAME})
     if elsewhere:
         return False, f"{path} has attempts served by {elsewhere}, not {plan.PROVIDER_NAME}"
@@ -116,8 +124,9 @@ def smoke_check(path: Path | None = None) -> tuple[bool, str]:
     placed = sum(1 for c in calls if c["round"] == 1 and c["failure"] is None)
     if placed < 1:
         return False, f"no placement round was answered in {path}"
-    return True, (f"{path}: {len(calls)} calls, every attempt served by "
-                  f"{plan.PROVIDER_NAME}, reasoned and ended `stop`; "
+    return True, (f"{path}: {len(calls)} calls, every attempt that reached the model "
+                  f"served by {plan.PROVIDER_NAME}, reasoned and ended `stop`, "
+                  f"{limited} refused for the rate and not read; "
                   f"{rec['metrics']['n_rules']} rules born, {placed} placements answered")
 
 

@@ -12,13 +12,15 @@ What is pinned:
      runs build no client, and a run refuses before the key without what must
      come before it.
   3. v1b's texts are their sources', and the two calls' messages.
-  4. The requests through the SDK double, and `PLAN_FIRST_MATCH.md`'s retry by
-     cause.
+  4. The requests through the SDK double, `PLAN_FIRST_MATCH.md`'s retry by
+     cause, and §5.5's amendment: a call refused for the rate is waited out,
+     and stops the run unrecorded.
   5. One escalation, every verdict, on engines built by hand.
   6. Both triggers, `cover`, the cap, and what an error escalation keeps.
   7. The resumable proposer keeps each answer's keys, reasoning, retries and
-     provider through a resume.
-  8. The smoke check.
+     provider through a resume, and nothing of a call refused for the rate.
+  8. The smoke check, which counts the attempts refused for the rate and does
+     not read them.
   9. Stage C's terms: the exact direction beside `blind.rows`', medians, thin
      labels and every reason a row has no value.
  10. The hidden policy through v1b's path is born whole and decides both
@@ -73,16 +75,22 @@ class BaiduReasons(OpenRouterShapedClient):
         return resp
 
 
-class Raises:
-    """A script that raises on the calls it is told to, as an upstream 429 does."""
+class RateLimitError(Exception):
+    """Named as the class `openai` raises on HTTP 429, which is all
+    `harness/call_record.py` keeps of it."""
 
-    def __init__(self, fail: set[int], text: str):
-        self.fail, self.text, self.n = fail, text, 0
+
+class Raises:
+    """A script that raises on the calls it is told to. By default the failure
+    is not a rate limit; with `exc=RateLimitError` it is one."""
+
+    def __init__(self, fail: set[int], text: str, exc: type = RuntimeError):
+        self.fail, self.text, self.exc, self.n = fail, text, exc, 0
 
     def __call__(self, kwargs):
         self.n += 1
         if self.n in self.fail:
-            raise RuntimeError("Error code: 429 - temporarily rate-limited upstream")
+            raise self.exc("Error code: 429 - temporarily rate-limited upstream")
         return self.text
 
 
@@ -179,6 +187,8 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
         self.assertEqual(plan.MAX_TOKENS, 16000)
         self.assertEqual(plan.MAX_TOKENS, fm_plan.MAX_TOKENS_REASONING)
         self.assertEqual((plan.MAX_RETRIES, plan.CALL_RETRY_WAIT), (2, (10, 30)))
+        self.assertEqual(plan.RATE_LIMITED, "RateLimitError")
+        self.assertEqual(plan.RATE_LIMIT_WAIT, (60, 120, 240, 480, 960))
         self.assertEqual(plan.PROVIDER, {"order": ["baidu"], "allow_fallbacks": False})
         self.assertEqual(plan.PROVIDER_NAME, fm_plan.PROVIDER_NAME)
         self.assertEqual(plan.settings(), {"reasoning": {"effort": "high"},
@@ -195,6 +205,7 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
         self.assertEqual(plan.MAX_CONSECUTIVE_FAILURES, erun.STOP_AFTER_FAILURES_IN_A_ROW)
         self.assertEqual((plan.MIN_ESCALATIONS, plan.MIN_UNITS, plan.COVER_BEFORE),
                          (60, 20, 200))
+        self.assertEqual(plan.MIN_SIGNATURES, 2)
 
     def test_the_seed_is_one_no_closed_thread_uses(self):
         self.assertEqual(plan.ORDER_SEED, 83)
@@ -214,7 +225,8 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
                   "`MIN_ESCALATIONS = 60`", "`MIN_UNITS = 20`", "`COVER_BEFORE = 200`",
                   "`RL_A_LINE = Fraction(9, 10)`", "`RL_B_LINE = Fraction(2, 3)`",
                   "`RL_C_LINE = Fraction(1, 10)`", "`RL_F_LINE = 0`",
-                  plan.SYSTEM_PROMPT_SHA16):
+                  plan.SYSTEM_PROMPT_SHA16, '`RATE_LIMITED = "RateLimitError"`',
+                  "`RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)`", "`MIN_SIGNATURES = 2`"):
             with self.subTest(s):
                 self.assertIn(s, text)
 
@@ -241,11 +253,13 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
 
 class TestTheGateCountsEverySignature(unittest.TestCase):
 
-    def test_blank_signed_and_a_blank_second_line(self):
-        cases = (("**Signed by Sergi: ____ (date: ____)**\n", False),
-                 ("**Signed by Sergi: Sergi Parpal (date: 2026-10-31)**\n", True),
-                 ("**Signed by Sergi: Sergi Parpal (date: 2026-10-31)**\n"
-                  "**Signed by Sergi: ____ (date: ____)**\n", False),
+    def test_every_line_is_counted_and_two_are_needed(self):
+        """§0's and §5.5's amendment's: one signed line is short of the minimum,
+        and a blank second line fails however many are signed."""
+        signed = "**Signed by Sergi: Sergi Parpal (date: 2026-10-31)**\n"
+        blank = "**Signed by Sergi: ____ (date: ____)**\n"
+        cases = ((blank, False), (signed, False), (signed + blank, False),
+                 (signed + signed, True), (signed + signed + blank, False),
                  ("no signature line at all\n", False))
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "PLAN.md"
@@ -254,9 +268,10 @@ class TestTheGateCountsEverySignature(unittest.TestCase):
                 with self.subTest(text=text):
                     self.assertEqual(plan.gate_signature(path)["passes"], ok)
 
-    def test_the_plan_carries_one_signature_line(self):
-        """§0's, and no other. Whether it is filled in is not pinned: a test
-        that pinned the draft's blank line would fail at the signature."""
+    def test_the_plan_carries_its_two_signature_lines(self):
+        """§0's and §5.5's amendment's, and no other. Whether they are filled in
+        is not pinned: a test that pinned a draft's blank line would fail at the
+        signature."""
         self.assertEqual(plan.gate_signature(REPO / "PLAN_REASONED_LOOP.md")["found"],
                          plan.MIN_SIGNATURES)
 
@@ -460,6 +475,55 @@ class TestTheRequests(unittest.TestCase):
         self.assertEqual(len(cm.exception.call_attempts), 3)
         self.assertIn("call, call, call", str(cm.exception))
 
+    def test_a_call_refused_for_the_rate_is_waited_out_and_asked_again(self):
+        """§5.5's amendment: nothing reached the model, so the asker starts again
+        after the first wait, `response_format` and all, and the answer keeps
+        every attempt and every retry of the call."""
+        msgs = p.messages_for(case())
+        waits = []
+        good = json.dumps(payload(T1, ("severity", "gte", 1)))
+        got, reqs = self.asked(msgs, BaiduReasons(Raises({1, 2, 3}, good, RateLimitError)),
+                               sleep=waits.append)
+        self.assertEqual(waits, [10, 30, 60])
+        self.assertEqual(len(reqs), 4)
+        self.assertEqual(reqs[3]["messages"], msgs)
+        self.assertEqual(reqs[3]["response_format"], {"type": "json_object"})
+        self.assertEqual(got.action, T1)
+        self.assertEqual(got.retries, [fm_ask.CALL] * 3)
+        self.assertEqual(got.attempts, 4)
+        self.assertEqual([a["error"] for a in got.call_attempts],
+                         [plan.RATE_LIMITED] * 3 + [None])
+        self.assertEqual(got.served_by, plan.PROVIDER_NAME)
+
+    def test_a_call_refused_through_every_wait_is_an_outage(self):
+        rounds = len(plan.RATE_LIMIT_WAIT) + 1
+        waits = []
+        client = BaiduReasons(Raises(set(range(1, 3 * rounds + 1)), "{}", RateLimitError))
+        with fake_sdk(openai=client):
+            live = p.Live(p.Asker(sleep=waits.append))
+            with self.assertRaises(p.RateLimited) as cm:
+                live.ask(p.messages_for(case()))
+        self.assertIsInstance(cm.exception, erun.Outage)
+        self.assertNotIsInstance(cm.exception, ProposalError)
+        self.assertEqual(len(client.peticiones), 3 * rounds)
+        self.assertEqual(waits, [10, 30] + [w for x in plan.RATE_LIMIT_WAIT for w in (x, 10, 30)])
+        self.assertEqual(live.extra, {})
+
+    def test_a_call_that_reached_the_model_is_never_asked_again(self):
+        """Refused for the rate, then answered in a form that does not parse:
+        the model saw the call, so §5.5's rule as signed holds, and no wait of
+        the amendment's is spent."""
+        waits = []
+        client = BaiduReasons(Raises({1}, "no es json", RateLimitError))
+        with fake_sdk(openai=client):
+            live = p.Live(p.Asker(sleep=waits.append))
+            with self.assertRaises(e.ProposalFailed) as cm:
+                live.ask(p.messages_for(case()))
+        self.assertEqual(waits, [10])
+        self.assertEqual(len(client.peticiones), 3)
+        self.assertEqual([a["error"] for a in cm.exception.call_attempts],
+                         [plan.RATE_LIMITED, None, None])
+
     def test_the_asker_is_plan_first_matchs(self):
         self.assertTrue(issubclass(p.Asker, fm_ask.Asker))
         self.assertIs(p.Asker.ask, fm_ask.Asker.ask)
@@ -625,6 +689,16 @@ class LiveDouble:
         return a
 
 
+class LiveRaises:
+    """A live model that raises what it is handed, one per call."""
+
+    def __init__(self, *excs):
+        self.excs, self.extra = list(excs), {}
+
+    def ask(self, messages):
+        raise self.excs.pop(0)
+
+
 class TestTheResumableProposer(unittest.TestCase):
 
     def test_a_resume_serves_the_answers_with_what_they_kept(self):
@@ -648,10 +722,40 @@ class TestTheResumableProposer(unittest.TestCase):
             with self.assertRaises(erun.Desync):
                 p.Resumable(LiveDouble([]), path, rows).first(case(severity=1), idx=0)
 
+    def test_a_call_refused_for_the_rate_is_never_kept(self):
+        """§5.5's amendment: the failure pending before it is not kept either, as
+        on any outage, and the same command asks both again."""
+        header = {"plan": "test"}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "x.partial.jsonl"
+            rows, _ = erun.open_partial(path, header)
+            proposer = p.Resumable(LiveRaises(e.ProposalFailed("no parse", None, 3, []),
+                                              p.RateLimited("refused")), path, rows)
+            with self.assertRaises(e.ProposalFailed):
+                proposer.first(case(), idx=0)
+            with self.assertRaises(erun.Outage):
+                proposer.first(case(product="api"), idx=1)
+            self.assertEqual(path.read_text().splitlines(), [json.dumps(header)])
+
+    def test_the_loop_does_not_swallow_it(self):
+        class Refused:
+            name = "refused"
+
+            def first(self, case, idx):
+                raise p.RateLimited("refused")
+
+        with self.assertRaises(p.RateLimited):
+            loop.run_loop([case()], [(T1, "H29")], PriorityEngine(space=MI.space()),
+                          Refused(), "e")
+
 
 # ---------------------------------------------------------------------------
 # 8. The smoke check
 # ---------------------------------------------------------------------------
+
+REFUSED = {"provider": None, "reasoning_tokens": None, "finish_reason": None,
+           "error": plan.RATE_LIMITED}
+
 
 def smoke_record(**over) -> dict:
     attempt = {"provider": plan.PROVIDER_NAME, "reasoning_tokens": 300, "finish_reason": "stop"}
@@ -674,6 +778,18 @@ class TestTheSmokeCheck(unittest.TestCase):
     def test_a_clean_smoke_run_passes(self):
         self.assertTrue(self.check(smoke_record()))
 
+    def test_attempts_refused_for_the_rate_are_counted_and_not_read(self):
+        """§5.5's amendment: such an attempt reached nothing, so it says nothing
+        about the pin, the reasoning or the budget."""
+        rec = smoke_record()
+        rec["escalations"][0]["calls"][0]["call_attempts"][:0] = [REFUSED, REFUSED]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "smoke.json"
+            path.write_text(json.dumps(rec))
+            ok, why = run.smoke_check(path)
+        self.assertTrue(ok)
+        self.assertIn("2 refused for the rate", why)
+
     def test_each_failure(self):
         bad = smoke_record()
         bad["escalations"][0]["calls"][0]["call_attempts"][0]["provider"] = "Elsewhere"
@@ -683,9 +799,17 @@ class TestTheSmokeCheck(unittest.TestCase):
         cut["escalations"][0]["calls"][0]["call_attempts"][0]["finish_reason"] = "length"
         unplaced = smoke_record()
         unplaced["escalations"][0]["calls"] = unplaced["escalations"][0]["calls"][:1]
+        timed_out = smoke_record()
+        timed_out["escalations"][0]["calls"][0]["call_attempts"][:0] = [
+            {**REFUSED, "error": "APITimeoutError"}]
+        unreached = smoke_record()
+        for c in unreached["escalations"][0]["calls"]:
+            c["call_attempts"] = [dict(REFUSED)]
         for name, rec in (("provider", bad), ("reasoning", quiet), ("budget", cut),
                           ("placement", unplaced), ("no rule", smoke_record(metrics={})),
-                          ("protocol", smoke_record(n=20))):
+                          ("protocol", smoke_record(n=20)),
+                          ("another failure", timed_out), ("nothing reached", unreached),
+                          ("the waits", smoke_record(rate_limit_wait=[60]))):
             with self.subTest(name):
                 self.assertFalse(self.check(rec))
 
@@ -707,6 +831,20 @@ def a_run(space=F(1, 2), oncall=F(1), drafts=(9, 10), cover=None, edges=()):
 
 
 class TestStageC(unittest.TestCase):
+
+    def test_the_pace_is_also_read_without_the_calls_refused_for_the_rate(self):
+        answered = {"provider": plan.PROVIDER_NAME, "reasoning_tokens": 10,
+                    "finish_reason": "stop", "error": None}
+        rec = {"escalations": [{"calls": [
+            {"round": 0, "seconds": 20.0, "call_attempts": [dict(answered)], "retries": []},
+            {"round": 0, "seconds": 400.0, "call_attempts": [dict(REFUSED), dict(answered)],
+             "retries": [fm_ask.CALL]}]}]}
+        got = score.calls_of(rec)
+        self.assertEqual((got["calls"], got["attempts"], got["rate_limited"]), (2, 3, 1))
+        self.assertEqual(got["seconds_by_round"]["0"]["median"], 210.0)
+        self.assertEqual(got["seconds_by_round_unlimited"],
+                         {"0": {"calls": 1, "median": 20.0, "sum": 20.0}})
+        self.assertEqual(got["retries"], {fm_ask.CALL: 1})
 
     def test_the_direction_is_blind_rows_read_exactly_by_older_rule(self):
         rows = [[edge("R2", "R1", brows.HIT), edge("R3", "R1", brows.MISS),

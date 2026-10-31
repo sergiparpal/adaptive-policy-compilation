@@ -3,11 +3,10 @@ The gate and the constants of `PLAN_REASONED_LOOP.md`, in one place.
 
 THE GATE READS THIS PLAN AND NO OTHER, AND IT COUNTS SIGNATURES. Every line of
 `PLAN_REASONED_LOOP.md` that starts `**Signed by Sergi:` must be filled in, and
-there must be at least `MIN_SIGNATURES`: one today, §0's. The counting is
-`reuse/plan.py`'s, called with this plan's path and minimum rather than copied
-(§11 of the plan). If a blocking check ever forces an amendment after the
-signature, the amendment carries its own line and `MIN_SIGNATURES` rises with
-it.
+there must be at least `MIN_SIGNATURES`: two since 2026-10-31, §0's and the
+amendment to §5.5's. The counting is `reuse/plan.py`'s, called with this plan's
+path and minimum rather than copied (§11 of the plan). The amendment carries its
+own line, and `MIN_SIGNATURES` rose with it, so neither can go missing.
 
 Every module of this package that writes a record calls `refuse_unsigned`
 before it measures, builds or writes anything, and `reasoned_loop/run.py` calls
@@ -20,6 +19,13 @@ THE CLIENT IS `PLAN_FIRST_MATCH.md`'S REASONING ARM'S, IMPORTED AND NOT RETYPED
 (rule A of the plan): the model, temperature 0, reasoning `{"effort": "high"}`,
 16,000 tokens, the retries and the pin to Baidu. One setting serves every call,
 the draft's and the placement's (§2.4).
+
+A RATE LIMIT IS AN OUTAGE, NOT AN ANSWER (§5.5's amendment, 2026-10-31). The
+smoke run met HTTP 429 from the pinned provider on every launch. A call whose
+every attempt was refused for the rate is asked again after each wait of
+`RATE_LIMIT_WAIT`, and if it is still refused the run stops without recording
+it. `RATE_LIMITED` is how `harness/call_record.py` keeps such an attempt: the
+class `openai` raises on HTTP 429.
 
 THE LABELS THE ERROR TRIGGER READS are `PLAN_REUSE.md`'s first Stage B
 record's, as v2e's and v2b's loops read theirs (rule B): handed in, never the
@@ -55,7 +61,7 @@ from reuse import plan as reuse_plan
 
 PLAN = Path("PLAN_REASONED_LOOP.md")
 OUT = Path("results_reasoned_loop")
-MIN_SIGNATURES = 1                 # §0's line; an amendment would add one
+MIN_SIGNATURES = 2                 # §0's line and §5.5's amendment's
 
 # --- §11: the client, PLAN_FIRST_MATCH.md's reasoning arm ----------------------------
 MODEL = fm_plan.MODEL
@@ -67,6 +73,10 @@ MAX_RETRIES = fm_plan.MAX_RETRIES
 CALL_RETRY_WAIT = fm_plan.CALL_RETRY_WAIT
 PROVIDER = fm_plan.PROVIDER
 PROVIDER_NAME = fm_plan.PROVIDER_NAME
+
+# --- §5.5's amendment, 2026-10-31: a rate limit is an outage, not an answer ------------
+RATE_LIMITED = "RateLimitError"    # the class `openai` raises on HTTP 429, as call_record keeps it
+RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)   # seconds before a refused call is asked again
 
 # --- §11: the protocol ----------------------------------------------------------------
 PROTOCOL = "v1b"
