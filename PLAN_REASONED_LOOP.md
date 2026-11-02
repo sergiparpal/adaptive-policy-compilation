@@ -1030,7 +1030,7 @@ invisible to it.*
 > three's. `MIN_SIGNATURES = 3`, so this line, the first amendment's and §0's
 > are all required. Pointers mark the sections this changes: §5.4, §10 and §11.
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-11-02)**
 
 Each escalation's answers are appended, as they arrive, to a git-ignored partial
 file. The same command resumes there. It replays the run from case 0 with the
