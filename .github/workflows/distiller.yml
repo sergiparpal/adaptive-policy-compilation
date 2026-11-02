@@ -7,9 +7,10 @@
 #                  under pytest with coverage per test, kept for 90 days as the
 #                  artifact `coverage-at-m-<sha>`.
 #   shadow         on every PR: the whole suite under pytest at H, the PR's
-#                  merge commit; then M, the newest commit at or below the
-#                  merge-base with that artifact; then `distiller evaluate` over
-#                  both, whose record is kept as an artifact.
+#                  merge commit, and the tests that failed there, if any, run
+#                  again for the rerun file; then M, the newest commit at or
+#                  below the merge-base with that artifact; then `distiller
+#                  evaluate` over them, whose record is kept as an artifact.
 #
 # IN SHADOW means it decides nothing. Neither job is part of `ci-complete`,
 # which lives in tests.yml and is the only check the ruleset requires, and a
@@ -115,9 +116,29 @@ jobs:
       - name: the tools, pinned
         run: python -m pip install pytest==9.1.1 coverage==7.16.2 defusedxml==0.7.1
 
+      # pytest's cache, which --last-failed reads below, goes to the runner's
+      # temporary directory, outside the checkout, as all that this job writes.
       - name: the full suite, at H
+        id: full
         continue-on-error: true
-        run: python -m pytest -p no:cacheprovider --junitxml="$RUNNER_TEMP/junit.xml"
+        run: python -m pytest -o cache_dir="$RUNNER_TEMP/pytest-cache" --junitxml="$RUNNER_TEMP/junit.xml"
+
+      # The Distiller's rerun file: only the tests that failed at H, run again
+      # in a pytest of their own, after a full run that did not pass. A test
+      # that passes here has its failure discarded as not reproduced, as a
+      # flaky one's would be, and so does one that fails only after certain
+      # other tests. This step never fails: pytest's exit code goes to the
+      # Distiller's step, which passes the file only when pytest ran the tests
+      # (0 or 1), so that a rerun that broke cannot make the run a rejected one.
+      - name: the failed tests again, for the rerun file
+        id: rerun
+        if: always() && steps.full.outcome == 'failure'
+        run: |
+          code=0
+          python -m pytest -o cache_dir="$RUNNER_TEMP/pytest-cache" --last-failed \
+            --last-failed-no-failures none --junitxml="$RUNNER_TEMP/rerun.xml" || code=$?
+          echo "pytest exited with $code"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
 
       # M is the newest commit that is the merge-base or one of its ancestors
       # and has an artifact `coverage-at-m-<sha>` uploaded by a run of this
@@ -162,7 +183,7 @@ jobs:
       # 127, leave no record, and continue-on-error would hide it. The wrapper
       # keeps the Distiller's exit code. PYTHONPATH reaches the Distiller alone,
       # through `env`, and -P keeps the root of this repository off the path of
-      # both interpreters.
+      # both interpreters. The rerun file goes in only if pytest ran its tests.
       - name: the Distiller, in shadow
         if: always() && steps.m.outputs.sha != ''
         continue-on-error: true
@@ -170,7 +191,12 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           M_SHA: ${{ steps.m.outputs.sha }}
           M_COVERAGE: ${{ steps.m.outputs.coverage }}
+          RERUN_CODE: ${{ steps.rerun.outputs.code }}
         run: |
+          rerun=()
+          case "$RERUN_CODE" in
+            0|1) rerun=(--rerun "$RUNNER_TEMP/rerun.xml") ;;
+          esac
           python -P -c '
           import resource, subprocess, sys, time
           start = time.monotonic()
@@ -183,7 +209,7 @@ jobs:
             python -P -m distiller evaluate --pr "$PR_NUMBER" --head "$GITHUB_SHA" \
             --base "origin/$GITHUB_BASE_REF" --coverage "$M_COVERAGE" --coverage-commit "$M_SHA" \
             --junit "$RUNNER_TEMP/junit.xml" --floor-config .github/distiller/floor.txt \
-            --records "$RUNNER_TEMP/record.jsonl"
+            --records "$RUNNER_TEMP/record.jsonl" "${rerun[@]}"
 
       # Named by run and attempt, so that each attempt leaves its own record.
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
