@@ -880,6 +880,8 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
 - **Every escalation whole.** Its calls, each with:
   - the payload, its keys in order, its raw text and its reasoning;
   - `call_attempts`, `finish_reason`, the seconds and the retries by cause.
+    **[Amended 2026-11-02, §5.5: a call served from the partial file keeps the
+    seconds the file kept for it.]**
 
   Then `O`, `S`, the listing, what was left unplaced, and the verdict.
 - **Two counts.** `cover(r)`. How many calls another provider served.
@@ -971,6 +973,64 @@ I. **The error arm's trigger reads the truth and nothing else does.** The engine
 *Outside the quotation deliberately, as in `PLAN_REUSE.md`: the gate reads
 signature lines at the start of a line, and one inside a blockquote would be
 invisible to it.*
+
+> **[AMENDED 2026-11-02 — drafted by Claude after run e r2, the third of §2.6's
+> six runs, and before run i r2. Stage C has not run, and no row has been read.
+> One change to what a call served from the partial file keeps.]**
+>
+> **What run e r2 met.** It ran from 2026-11-01 14:53 to 2026-11-02 17:51 UTC.
+> It stopped 17 times under the first amendment, each time on a call refused
+> for the rate on all 18 of its attempts, and the same command resumed it each
+> time. Its last launch served the 141 answers already paid for from the partial
+> file, and asked the other 92.
+>
+> **What its record keeps.** It keeps 0.0 seconds for 140 of those 141 calls,
+> and 0.04 for the other. The loop times each call around the proposer, and a
+> resume serves a stored answer at once, so the loop timed the replay. The
+> partial file kept each call's own seconds. `authorship/run.py`, which this
+> section calls, serves a stored answer without them, and the run deletes the
+> partial file once the record is written. So the 141 calls' own seconds are
+> lost, where §5.4 says the record keeps each call's seconds.
+>
+> - **Only the seconds are lost.** Every other field of those calls is the
+>   partial file's, as §5.4 lists it.
+> - **Only `RL-h` reads them**, in §10's pace by round. Read as written, e r2's
+>   pace would count 141 calls as instant.
+> - **No other record of this plan served an answer from its partial file.**
+>   Runs e r1 and i r1 were not resumed. The smoke record was, but its last
+>   launch asked all 25 of its calls, the shortest in 3.9 seconds.
+>
+> **The change.**
+>
+> - **A call served from the partial file keeps the seconds the file kept for
+>   it**: the time from its ask to its answer in the launch that paid for it,
+>   every wait of that launch included. A failure served from it does too.
+> - **A call asked live keeps the loop's own time**, as before. So a run that is
+>   not resumed writes the record it wrote before.
+> - **Stage C reads e r2's pace without its first 141 calls**, the ones its last
+>   launch served. `UNTIMED = {"e_r2": 141}` names them, and `RL-h` counts them.
+> - **The count is named, not derived.** OpenRouter dates each generation by its
+>   own clock, which ran behind this machine's: e r1's first answer is dated 3
+>   seconds before its `started_at`, and the smoke run's 2. So no date in a
+>   record separates the calls a launch served from the ones it asked.
+> - **Stage C checks the count against the record.** It refuses before it writes
+>   unless each of those calls is timed under a second, and the call after them
+>   is not.
+> - **The drafter has seen e r2's `metrics` block**, printed while reading the
+>   record's shape. This amendment moves nothing a row reads.
+>
+> **What does not move.** No band, line, row, prompt, request, setting, seed,
+> trigger, wait, the cap or the pin. Nothing is asked that was not asked before,
+> and a resume checks each stored answer against its request, as before. The
+> header does not change. The records of e r1, i r1 and e r2 stand as written,
+> and so does Stage A's, since its fingerprint and schedule are unchanged.
+>
+> **What moves besides the record.** The code's digest moves with this change,
+> so the last three runs' `_env` will carry a `code_digest` other than the first
+> three's. `MIN_SIGNATURES = 3`, so this line, the first amendment's and §0's
+> are all required. Pointers mark the sections this changes: §5.4, §10 and §11.
+
+**Signed by Sergi: ________ (date: ________)**
 
 Each escalation's answers are appended, as they arrive, to a git-ignored partial
 file. The same command resumes there. It replays the run from case 0 with the
@@ -1221,7 +1281,8 @@ and `results_reasoned_loop/FINDINGS_REASONED_LOOP.md`, which owns every figure.
 - **The runs themselves.** Failed calls, refusals by verdict, answers from
   another provider, retries by cause, reasoning tokens, and the pace by run and
   by round. **[Amended 2026-10-31, §5.5: and the attempts refused for the rate,
-  with the pace over the calls that met none.]**
+  with the pace over the calls that met none.]** **[Amended 2026-11-02, §5.5:
+  e r2's pace without the 141 calls `UNTIMED` names, which `RL-h` counts.]**
 
 ---
 
@@ -1265,6 +1326,8 @@ pinned by tests:**
   - `REPS = 3`, `N = 2000` and `SEED = 17`.
   - `SMOKE_N = 30` and `SMOKE_ARM = "e"`.
   - `MAX_ESCALATIONS = 400` and `MAX_CONSECUTIVE_FAILURES = 5`.
+  - **[Amended 2026-11-02, §5.5]** `UNTIMED = {"e_r2": 141}`: the calls whose
+    record keeps the replay's time and not their own.
 - **The seed.** `ORDER_SEED = 83`.
   - **It is new.** It is distinct from every seed a closed thread uses: 17 to 20,
     25, 41, 43, 47, 53, 59, 61, 67, 71, 73 and 79, and values from 1000 up.
@@ -1274,6 +1337,7 @@ pinned by tests:**
     `LISTING_SEED`, through `blind.protocol.listing`.
 - **The limits.**
   - `MIN_SIGNATURES = 1`. **[Amended 2026-10-31, §5.5: `MIN_SIGNATURES = 2`.]**
+    **[Amended 2026-11-02, §5.5: `MIN_SIGNATURES = 3`.]**
   - `MIN_ESCALATIONS = 60` and `MIN_UNITS = 20`.
   - `COVER_BEFORE = 200`.
 - **The lines of §0.** They are fractions, and every comparison with them is
