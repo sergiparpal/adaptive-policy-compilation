@@ -32,6 +32,10 @@ under 20 units.
 A RUN'S BASE is `manual.instrument.final_engine`'s rebuild of its record, held
 here to the rules and edges the record says the run ended with.
 
+THE PACE (RL-h) is read without the calls `plan.UNTIMED` names, whose record
+keeps the replay's time and not theirs (§5.5's second amendment). The stage
+refuses before it writes if those calls are not where the run's record puts them.
+
     python3 -m reasoned_loop.score --dry-run   # the checks; writes nothing
     PYTHONHASHSEED=0 python3 -m reasoned_loop.score
 """
@@ -288,15 +292,35 @@ def rl_e_f(runs) -> tuple[dict[str, Any], dict[str, Any]]:
 # RL-h, reported
 # ---------------------------------------------------------------------------
 
+def untimed(record: dict) -> int:
+    """How many of a run's first calls carry the replay's time and not their own
+    (§5.5's second amendment): `plan.UNTIMED`'s count, and none for another run."""
+    return plan.UNTIMED.get(record.get("run"), 0)
+
+
+def untimed_misplaced(record: dict) -> str | None:
+    """Why `plan.UNTIMED`'s count is not where a run's record puts it, or None.
+    The replay served those calls at once, each under a second, and the call
+    after them was asked."""
+    n = untimed(record)
+    secs = [c.get("seconds") for esc in record["escalations"] for c in esc.get("calls") or []]
+    if not n or (len(secs) > n and all(s is not None and s < 1 for s in secs[:n])
+                 and (secs[n] or 0) >= 1):
+        return None
+    return f"run {record.get('run')}'s first {n} calls are not the ones its replay timed"
+
+
 def calls_of(record: dict) -> dict[str, Any]:
     """What a run's calls cost and how they came back. A call refused for the
     rate waited before it was answered, so the pace is also read over the calls
-    no attempt of which was refused (§5.5's amendment)."""
+    no attempt of which was refused (§5.5's amendment). The pace is read without
+    the calls whose record keeps the replay's time (§5.5's second amendment)."""
     calls = [c for esc in record["escalations"] for c in esc.get("calls") or []]
     attempts = [a for c in calls for a in c.get("call_attempts") or []]
+    skip = untimed(record)
     by_round = collections.defaultdict(list)
     unlimited = collections.defaultdict(list)
-    for c in calls:
+    for c in calls[skip:]:
         if c.get("seconds") is not None:
             by_round[c["round"]].append(c["seconds"])
             if not any(a.get("error") == plan.RATE_LIMITED for a in c.get("call_attempts") or []):
@@ -313,6 +337,7 @@ def calls_of(record: dict) -> dict[str, Any]:
             "reasoning_tokens": {"sum": sum(reasoning),
                                  "median": statistics.median(reasoning) if reasoning else None,
                                  "max": max(reasoning, default=None)},
+            "untimed": skip,
             "seconds_by_round": {str(k): {"median": statistics.median(v), "sum": sum(v)}
                                  for k, v in sorted(by_round.items())},
             "seconds_by_round_unlimited": {
@@ -445,6 +470,10 @@ def main(argv: list[str] | None = None) -> int:
     if not checks.blocking_pass:
         sys.exit("\nREFUSED: a blocking check failed; nothing was written.\n")
     records, missing = read_records()
+    for rec in (r for a in plan.ARMS for r in records[a]):
+        why = untimed_misplaced(rec)
+        if why:
+            sys.exit(f"\nREFUSED: {why} (§5.5's second amendment); nothing was written.\n")
     out = score(records)
     if not out["rebuilt_is_the_run"]:
         sys.exit("\nREFUSED: a run's rebuilt base is not the base its record says it "

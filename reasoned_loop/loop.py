@@ -33,6 +33,12 @@ AN ERROR ESCALATION'S RULE IS NOT COUNTED AS FIRED. Its decision did not stand:
 the proposer's answer replaced it, as at any escalation. `fire_count` counts the
 decisions that stood, so rung 2's reuse figures mean under the error arm what
 they mean under the impasse arm.
+
+A CALL SERVED FROM THE PARTIAL FILE KEEPS ITS SECONDS (§5.5's second amendment,
+2026-11-02). The loop times each call around the proposer, and a resume serves
+the answers already paid for at once. `call_row` and `call_failed` keep the
+seconds the partial file kept for such a call, not the replay's. A run that is
+not resumed writes the rows it wrote before.
 """
 
 from __future__ import annotations
@@ -65,10 +71,21 @@ def escalates(arm: str, outcome: str, winner, truth: str) -> str | None:
 
 
 def call_row(round_: int, answer, seconds: float) -> dict[str, Any]:
-    """`authorship.loop.call_row`, and what this package keeps beside it."""
-    row = eloop.call_row(round_, answer, seconds=round(seconds, 2))
+    """`authorship.loop.call_row`, and what this package keeps beside it. An
+    answer served from the partial file keeps the seconds the file kept for it."""
+    kept = getattr(answer, "kept_seconds", None)
+    row = eloop.call_row(round_, answer, seconds=round(seconds if kept is None else kept, 2))
     row.update({k: getattr(answer, k, None) for k in p.EXTRA})
     return row
+
+
+def call_failed(esc, round_: int, exc: Exception, t0: float, clock) -> None:
+    """`blind.loop._failed_call`, and a failure served from the partial file
+    keeps the seconds the file kept for it, as `call_row` does an answer's."""
+    _failed_call(esc, round_, exc, t0, clock)
+    kept = getattr(exc, "kept_seconds", None)
+    if kept is not None:
+        esc.calls[-1]["seconds"] = kept
 
 
 def propose_v1b(engine: PriorityEngine, case: Case, idx: int, cause: str, proposer,
@@ -83,7 +100,7 @@ def propose_v1b(engine: PriorityEngine, case: Case, idx: int, cause: str, propos
     try:
         draft = proposer.first(case, idx=idx)
     except ProposalError as exc:
-        _failed_call(esc, 0, exc, t0, clock)
+        call_failed(esc, 0, exc, t0, clock)
         out.update(failed=True, reason=f"proposal_failed: {exc}")
         return out
     esc.calls.append(call_row(0, draft, clock() - t0))
@@ -108,7 +125,7 @@ def propose_v1b(engine: PriorityEngine, case: Case, idx: int, cause: str, propos
         placed = proposer.placement(case, draft, p.placement_message(engine, esc.listed),
                                     idx=idx, listed=list(esc.listed))
     except ProposalError as exc:
-        _failed_call(esc, 1, exc, t0, clock)
+        call_failed(esc, 1, exc, t0, clock)
         return _refused(esc, out, e.UNPLACED)    # the placement never came back
     esc.calls.append(call_row(1, placed, clock() - t0))
     out["action"] = placed.action

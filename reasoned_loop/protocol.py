@@ -44,6 +44,14 @@ the answers already paid for first, each checked against the request it would
 send, then the model, every answer appended to the partial file as it arrives.
 This module adds what that proposer does not keep: each answer's keys in order,
 its reasoning, its retries by cause and the provider that served it.
+
+A CALL SERVED FROM THE PARTIAL FILE KEEPS ITS SECONDS (§5.5's second amendment,
+2026-11-02). The partial file keeps each call's seconds, every wait included,
+and `authorship/run.py` serves a stored answer without them. The loop then timed
+the replay, and run e r2's record kept 0.0 seconds for 140 of the 141 calls its
+last launch served. An answer or a failure served from the partial file now
+carries the seconds the file kept for it, as `kept_seconds`, and the loop's row
+keeps those. A call asked live carries none.
 """
 
 from __future__ import annotations
@@ -132,6 +140,7 @@ class Answer(e.Answer):
     reasoning: str | None = None
     retries: list = field(default_factory=list)
     served_by: str | None = None
+    kept_seconds: float | None = None   # the partial file's, for an answer served from it
 
     def extra(self) -> dict[str, Any]:
         return {k: getattr(self, k) for k in EXTRA}
@@ -229,7 +238,7 @@ class Live:
 class Resumable(erun.Resumable):
     """`authorship/run.py`'s resumable proposer with v1b's two calls, keeping
     each answer's keys, reasoning, retries and provider in the partial file and
-    giving them back on a resume."""
+    giving them back on a resume, with the seconds the file kept for the call."""
 
     name = f"openrouter-v1b({plan.MODEL})"
 
@@ -247,7 +256,13 @@ class Resumable(erun.Resumable):
 
     def answer(self, idx: int, round_: int, messages) -> Answer:
         stored = self.stored.get((idx, round_))
-        got = super().answer(idx, round_, messages)
+        try:
+            got = super().answer(idx, round_, messages)
+        except e.ProposalFailed as exc:
+            if stored is not None:
+                exc.kept_seconds = stored.get("seconds")
+            raise
         source = stored if stored is not None else getattr(self.live, "extra", {})
         return Answer(got.action, got.payload, got.raw, got.finish_reason, got.attempts,
-                      list(got.call_attempts or []), **{k: source.get(k) for k in EXTRA})
+                      list(got.call_attempts or []), **{k: source.get(k) for k in EXTRA},
+                      kept_seconds=None if stored is None else stored.get("seconds"))

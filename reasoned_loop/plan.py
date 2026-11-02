@@ -3,10 +3,11 @@ The gate and the constants of `PLAN_REASONED_LOOP.md`, in one place.
 
 THE GATE READS THIS PLAN AND NO OTHER, AND IT COUNTS SIGNATURES. Every line of
 `PLAN_REASONED_LOOP.md` that starts `**Signed by Sergi:` must be filled in, and
-there must be at least `MIN_SIGNATURES`: two since 2026-10-31, §0's and the
-amendment to §5.5's. The counting is `reuse/plan.py`'s, called with this plan's
-path and minimum rather than copied (§11 of the plan). The amendment carries its
-own line, and `MIN_SIGNATURES` rose with it, so neither can go missing.
+there must be at least `MIN_SIGNATURES`: three since 2026-11-02, §0's and the
+two amendments to §5.5's. The counting is `reuse/plan.py`'s, called with this
+plan's path and minimum rather than copied (§11 of the plan). Each amendment
+carries its own line, and `MIN_SIGNATURES` rose with each, so none can go
+missing.
 
 Every module of this package that writes a record calls `refuse_unsigned`
 before it measures, builds or writes anything, and `reasoned_loop/run.py` calls
@@ -26,6 +27,12 @@ every attempt was refused for the rate is asked again after each wait of
 `RATE_LIMIT_WAIT`, and if it is still refused the run stops without recording
 it. `RATE_LIMITED` is how `harness/call_record.py` keeps such an attempt: the
 class `openai` raises on HTTP 429.
+
+A CALL SERVED FROM THE PARTIAL FILE KEEPS ITS SECONDS (§5.5's second amendment,
+2026-11-02). Before it, the record kept the replay's time for such a call.
+Run e r2's last launch served its first 141 calls from the partial file, so its
+record keeps the replay's time for them, not theirs. `UNTIMED` names them, and
+Stage C reads the pace without them.
 
 THE LABELS THE ERROR TRIGGER READS are `PLAN_REUSE.md`'s first Stage B
 record's, as v2e's and v2b's loops read theirs (rule B): handed in, never the
@@ -61,7 +68,7 @@ from reuse import plan as reuse_plan
 
 PLAN = Path("PLAN_REASONED_LOOP.md")
 OUT = Path("results_reasoned_loop")
-MIN_SIGNATURES = 2                 # §0's line and §5.5's amendment's
+MIN_SIGNATURES = 3                 # §0's line and §5.5's two amendments'
 
 # --- §11: the client, PLAN_FIRST_MATCH.md's reasoning arm ----------------------------
 MODEL = fm_plan.MODEL
@@ -77,6 +84,9 @@ PROVIDER_NAME = fm_plan.PROVIDER_NAME
 # --- §5.5's amendment, 2026-10-31: a rate limit is an outage, not an answer ------------
 RATE_LIMITED = "RateLimitError"    # the class `openai` raises on HTTP 429, as call_record keeps it
 RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)   # seconds before a refused call is asked again
+
+# --- §5.5's second amendment, 2026-11-02: a call served from the partial keeps its seconds --
+UNTIMED = {"e_r2": 141}            # a run's first calls, whose record keeps the replay's time
 
 # --- §11: the protocol ----------------------------------------------------------------
 PROTOCOL = "v1b"

@@ -18,17 +18,21 @@ What is pinned:
   5. One escalation, every verdict, on engines built by hand.
   6. Both triggers, `cover`, the cap, and what an error escalation keeps.
   7. The resumable proposer keeps each answer's keys, reasoning, retries and
-     provider through a resume, and nothing of a call refused for the rate.
+     provider through a resume, and nothing of a call refused for the rate. A
+     call served from the partial file keeps the seconds the file kept for it,
+     and not the replay's (§5.5's second amendment).
   8. The smoke check, which counts the attempts refused for the rate and does
      not read them.
   9. Stage C's terms: the exact direction beside `blind.rows`', medians, thin
-     labels and every reason a row has no value.
+     labels and every reason a row has no value, and the pace without the calls
+     whose record keeps the replay's time.
  10. The hidden policy through v1b's path is born whole and decides both
      surfaces right: the instrument on a policy whose answer is known.
 """
 
 from __future__ import annotations
 
+import itertools
 import json
 import os
 import tempfile
@@ -205,7 +209,8 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
         self.assertEqual(plan.MAX_CONSECUTIVE_FAILURES, erun.STOP_AFTER_FAILURES_IN_A_ROW)
         self.assertEqual((plan.MIN_ESCALATIONS, plan.MIN_UNITS, plan.COVER_BEFORE),
                          (60, 20, 200))
-        self.assertEqual(plan.MIN_SIGNATURES, 2)
+        self.assertEqual(plan.MIN_SIGNATURES, 3)
+        self.assertEqual(plan.UNTIMED, {"e_r2": 141})
 
     def test_the_seed_is_one_no_closed_thread_uses(self):
         self.assertEqual(plan.ORDER_SEED, 83)
@@ -226,7 +231,8 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
                   "`RL_A_LINE = Fraction(9, 10)`", "`RL_B_LINE = Fraction(2, 3)`",
                   "`RL_C_LINE = Fraction(1, 10)`", "`RL_F_LINE = 0`",
                   plan.SYSTEM_PROMPT_SHA16, '`RATE_LIMITED = "RateLimitError"`',
-                  "`RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)`", "`MIN_SIGNATURES = 2`"):
+                  "`RATE_LIMIT_WAIT = (60, 120, 240, 480, 960)`", "`MIN_SIGNATURES = 3`",
+                  '`UNTIMED = {"e_r2": 141}`'):
             with self.subTest(s):
                 self.assertIn(s, text)
 
@@ -253,13 +259,14 @@ class TestTheConstantsAreTheDraftedOnes(unittest.TestCase):
 
 class TestTheGateCountsEverySignature(unittest.TestCase):
 
-    def test_every_line_is_counted_and_two_are_needed(self):
-        """§0's and §5.5's amendment's: one signed line is short of the minimum,
-        and a blank second line fails however many are signed."""
+    def test_every_line_is_counted_and_three_are_needed(self):
+        """§0's and §5.5's two amendments': two signed lines are short of the
+        minimum, and a blank line fails however many are signed."""
         signed = "**Signed by Sergi: Sergi Parpal (date: 2026-10-31)**\n"
         blank = "**Signed by Sergi: ____ (date: ____)**\n"
         cases = ((blank, False), (signed, False), (signed + blank, False),
-                 (signed + signed, True), (signed + signed + blank, False),
+                 (signed * 2, False), (signed * 2 + blank, False),
+                 (signed * 3, True), (signed * 3 + blank, False),
                  ("no signature line at all\n", False))
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "PLAN.md"
@@ -268,10 +275,10 @@ class TestTheGateCountsEverySignature(unittest.TestCase):
                 with self.subTest(text=text):
                     self.assertEqual(plan.gate_signature(path)["passes"], ok)
 
-    def test_the_plan_carries_its_two_signature_lines(self):
-        """§0's and §5.5's amendment's, and no other. Whether they are filled in
-        is not pinned: a test that pinned a draft's blank line would fail at the
-        signature."""
+    def test_the_plan_carries_its_three_signature_lines(self):
+        """§0's and §5.5's two amendments', and no other. Whether they are filled
+        in is not pinned: a test that pinned a draft's blank line would fail at
+        the signature."""
         self.assertEqual(plan.gate_signature(REPO / "PLAN_REASONED_LOOP.md")["found"],
                          plan.MIN_SIGNATURES)
 
@@ -699,6 +706,20 @@ class LiveRaises:
         raise self.excs.pop(0)
 
 
+class LiveScript:
+    """A live model that answers or raises what it is handed, one per call."""
+
+    def __init__(self, *items):
+        self.items, self.extra = list(items), {}
+
+    def ask(self, messages):
+        got = self.items.pop(0)
+        if isinstance(got, Exception):
+            raise got
+        self.extra = got.extra()
+        return got
+
+
 class TestTheResumableProposer(unittest.TestCase):
 
     def test_a_resume_serves_the_answers_with_what_they_kept(self):
@@ -747,6 +768,53 @@ class TestTheResumableProposer(unittest.TestCase):
         with self.assertRaises(p.RateLimited):
             loop.run_loop([case()], [(T1, "H29")], PriorityEngine(space=MI.space()),
                           Refused(), "e")
+
+    def test_a_call_served_from_the_partial_carries_the_seconds_it_kept(self):
+        """§5.5's second amendment: an answer and a failure served from the
+        partial file carry the seconds the file kept for them. A call asked live
+        carries none."""
+        header = {"plan": "test"}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "x.partial.jsonl"
+            rows, _ = erun.open_partial(path, header)
+            live = p.Resumable(LiveScript(answer(payload(*CATCH_ALL)),
+                                          e.ProposalFailed("no parse", "stop", 3, [])),
+                               path, rows, clock=iter([0.0, 42.0, 50.0, 57.5]).__next__)
+            self.assertIsNone(live.first(case(), idx=0).kept_seconds)
+            with self.assertRaises(e.ProposalFailed) as failed:
+                live.first(case(product="api"), idx=1)
+            self.assertIsNone(getattr(failed.exception, "kept_seconds", None))
+            live.flush()
+            rows, _ = erun.open_partial(path, header)
+            served = p.Resumable(LiveScript(), path, rows)
+            self.assertEqual(served.first(case(), idx=0).kept_seconds, 42.0)
+            with self.assertRaises(e.ProposalFailed) as failed:
+                served.first(case(product="api"), idx=1)
+            self.assertEqual(failed.exception.kept_seconds, 7.5)
+
+    def test_the_loop_keeps_them_and_not_the_replays_time(self):
+        """Run e r2's record kept 0.0 seconds for 140 of the calls its last launch
+        served. A run that is not resumed keeps the loop's own time, as before."""
+        header = {"plan": "test"}
+        corpus, labels = [case(product="api"), case()], [(T2, "H01"), (T1, "H29")]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "x.partial.jsonl"
+            rows, _ = erun.open_partial(path, header)
+            live = p.Resumable(LiveScript(e.ProposalFailed("no parse", "stop", 3, []),
+                                          answer(payload(*CATCH_ALL))),
+                               path, rows, clock=iter([0.0, 7.5, 10.0, 52.0]).__next__)
+            asked = loop.run_loop(corpus, labels, PriorityEngine(space=MI.space()), live, "i",
+                                  clock=itertools.count(0.0, 5.0).__next__)
+            live.flush()
+            rows, _ = erun.open_partial(path, header)
+            served = loop.run_loop(corpus, labels, PriorityEngine(space=MI.space()),
+                                   p.Resumable(LiveScript(), path, rows), "i",
+                                   clock=itertools.count(0.0, 0.01).__next__)
+        for res, seconds in ((asked, [5.0, 5.0]), (served, [7.5, 42.0])):
+            with self.subTest(seconds=seconds):
+                calls = [esc.calls[0] for esc in res.loop.escalations]
+                self.assertEqual([c["seconds"] for c in calls], seconds)
+                self.assertEqual([c["failure"] is None for c in calls], [False, True])
 
 
 # ---------------------------------------------------------------------------
@@ -845,6 +913,30 @@ class TestStageC(unittest.TestCase):
         self.assertEqual(got["seconds_by_round_unlimited"],
                          {"0": {"calls": 1, "median": 20.0, "sum": 20.0}})
         self.assertEqual(got["retries"], {fm_ask.CALL: 1})
+
+    def test_the_pace_is_read_without_the_calls_the_replay_timed(self):
+        """§5.5's second amendment: the calls `plan.UNTIMED` names are counted and
+        their seconds not read, and the stage refuses if they are not the calls
+        the replay timed: each under a second, and the next one asked."""
+        answered = {"provider": plan.PROVIDER_NAME, "reasoning_tokens": 10,
+                    "finish_reason": "stop", "error": None}
+
+        def rec(*secs):
+            return {"run": "e_r9", "escalations": [{"calls": [
+                {"round": 0, "seconds": s, "call_attempts": [dict(answered)], "retries": []}
+                for s in secs]}]}
+
+        self.assertEqual(score.calls_of(rec(0.0, 0.04, 30.0, 50.0))["untimed"], 0)
+        with mock.patch.object(plan, "UNTIMED", {"e_r9": 2}):
+            got = score.calls_of(rec(0.0, 0.04, 30.0, 50.0))
+            self.assertEqual((got["calls"], got["untimed"]), (4, 2))
+            self.assertEqual(got["seconds_by_round"], {"0": {"median": 40.0, "sum": 80.0}})
+            self.assertEqual(got["seconds_by_round_unlimited"],
+                             {"0": {"calls": 2, "median": 40.0, "sum": 80.0}})
+            self.assertIsNone(score.untimed_misplaced(rec(0.0, 0.04, 30.0, 50.0)))
+            for wrong in (rec(0.0, 30.0, 50.0), rec(0.0, 0.0, 0.0, 50.0), rec(0.0, 0.0)):
+                with self.subTest(wrong=wrong):
+                    self.assertIsNotNone(score.untimed_misplaced(wrong))
 
     def test_the_direction_is_blind_rows_read_exactly_by_older_rule(self):
         rows = [[edge("R2", "R1", brows.HIT), edge("R3", "R1", brows.MISS),
