@@ -10,6 +10,8 @@ before any figure it governs existed: `c09f464` and `c6d7278` on `main`.
 - **The smoke run** reached it in #185.
 - **Runs e r1 and i r1** reached it in #186.
 - **The other four runs, with the second amendment,** reached it in #189.
+- **Stage C, this record, the banner that closes the plan and the indexes**
+  reached it in #190.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on a pull request's branch, and the rebase merge gave each of those
