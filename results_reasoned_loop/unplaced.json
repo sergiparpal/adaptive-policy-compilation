@@ -1,14 +1,14 @@
 {
   "_env": {
-    "recorded_at": "2026-11-03T21:25:42Z",
+    "recorded_at": "2026-11-03T21:37:36Z",
     "python": "3.12.3",
     "openai": null,
     "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pythonhashseed": "0",
-    "git_commit": "186e96d5193acf8b10c6b64223e9adbf335c4e0a",
+    "git_commit": "8c924f6502050bc330fb51a56cd4365b72dec64e",
     "git_dirty": false,
     "code_dirty": false,
-    "code_digest": "e34f14baf18cce55"
+    "code_digest": "a7947cd502a024e6"
   },
   "plan": "PLAN_REASONED_LOOP.md",
   "signature": {
@@ -191,6 +191,14 @@
       "gate": 3,
       "run": "pooled",
       "what": "the codebook is the one committed, and the sets split the runs by repetition",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "run": "pooled",
+      "what": "the record on disk comes back",
+      "earlier": "186e96d5193acf8b10c6b64223e9adbf335c4e0a",
+      "differ": [],
       "passes": true
     }
   ],
@@ -59181,5 +59189,181 @@
       "codes": [],
       "cause": "crossing_no_claim"
     }
-  ]
+  ],
+  "added_after_the_first_run": {
+    "what": "ADDED AFTER THE FIRST RUN: each unplaced escalation by the relations of the rules it left out and of the rules it placed, reading no text. Written after the clauses were read, with no expectation.",
+    "constants": {
+      "LARGEST": 3,
+      "the_codebook_s_NEAR": 25
+    },
+    "by_set": {
+      "development": {
+        "left_out_only_nested": 14,
+        "placed_only_nested_left_out_crossing": 2,
+        "left_out_every_rule_all_crossing": 1,
+        "left_out_only_crossing_placed_crossing": 2,
+        "mixed": 5
+      },
+      "held_out": {
+        "left_out_only_nested": 42,
+        "placed_only_nested_left_out_crossing": 4,
+        "left_out_every_rule_all_crossing": 5,
+        "left_out_only_crossing_placed_crossing": 11,
+        "mixed": 9
+      },
+      "all": {
+        "left_out_only_nested": 56,
+        "placed_only_nested_left_out_crossing": 6,
+        "left_out_every_rule_all_crossing": 6,
+        "left_out_only_crossing_placed_crossing": 13,
+        "mixed": 14
+      }
+    },
+    "by_run": {
+      "e_r1": {
+        "left_out_only_nested": 13,
+        "placed_only_nested_left_out_crossing": 2,
+        "left_out_every_rule_all_crossing": 0,
+        "left_out_only_crossing_placed_crossing": 2,
+        "mixed": 4
+      },
+      "e_r2": {
+        "left_out_only_nested": 14,
+        "placed_only_nested_left_out_crossing": 3,
+        "left_out_every_rule_all_crossing": 1,
+        "left_out_only_crossing_placed_crossing": 7,
+        "mixed": 3
+      },
+      "e_r3": {
+        "left_out_only_nested": 28,
+        "placed_only_nested_left_out_crossing": 1,
+        "left_out_every_rule_all_crossing": 0,
+        "left_out_only_crossing_placed_crossing": 3,
+        "mixed": 6
+      },
+      "i_r1": {
+        "left_out_only_nested": 1,
+        "placed_only_nested_left_out_crossing": 0,
+        "left_out_every_rule_all_crossing": 1,
+        "left_out_only_crossing_placed_crossing": 0,
+        "mixed": 1
+      },
+      "i_r2": {
+        "left_out_only_nested": 0,
+        "placed_only_nested_left_out_crossing": 0,
+        "left_out_every_rule_all_crossing": 2,
+        "left_out_only_crossing_placed_crossing": 1,
+        "mixed": 0
+      },
+      "i_r3": {
+        "left_out_only_nested": 0,
+        "placed_only_nested_left_out_crossing": 0,
+        "left_out_every_rule_all_crossing": 2,
+        "left_out_only_crossing_placed_crossing": 0,
+        "mixed": 0
+      }
+    },
+    "largest": {
+      "development": [
+        {
+          "run": "e_r1",
+          "idx": 342,
+          "listed": 10,
+          "left_out": 9,
+          "signature": "left_out_only_crossing_placed_crossing",
+          "causes": {
+            "crossing_no_claim": 2,
+            "crossing_said_apart": 7
+          }
+        },
+        {
+          "run": "e_r1",
+          "idx": 1123,
+          "listed": 13,
+          "left_out": 9,
+          "signature": "mixed",
+          "causes": {
+            "crossing_said_nested": 6,
+            "nested_said_nested": 3
+          }
+        },
+        {
+          "run": "e_r1",
+          "idx": 286,
+          "listed": 9,
+          "left_out": 8,
+          "signature": "left_out_only_crossing_placed_crossing",
+          "causes": {
+            "crossing_said_apart": 8
+          }
+        }
+      ],
+      "held_out": [
+        {
+          "run": "e_r2",
+          "idx": 1033,
+          "listed": 52,
+          "left_out": 52,
+          "signature": "left_out_only_nested",
+          "causes": {
+            "nested_said_nested": 1,
+            "nested_not_said": 51
+          }
+        },
+        {
+          "run": "e_r2",
+          "idx": 954,
+          "listed": 19,
+          "left_out": 17,
+          "signature": "placed_only_nested_left_out_crossing",
+          "causes": {
+            "crossing_no_claim": 17
+          }
+        },
+        {
+          "run": "e_r2",
+          "idx": 1850,
+          "listed": 14,
+          "left_out": 13,
+          "signature": "placed_only_nested_left_out_crossing",
+          "causes": {
+            "crossing_no_claim": 13
+          }
+        }
+      ],
+      "all": [
+        {
+          "run": "e_r2",
+          "idx": 1033,
+          "listed": 52,
+          "left_out": 52,
+          "signature": "left_out_only_nested",
+          "causes": {
+            "nested_said_nested": 1,
+            "nested_not_said": 51
+          }
+        },
+        {
+          "run": "e_r2",
+          "idx": 954,
+          "listed": 19,
+          "left_out": 17,
+          "signature": "placed_only_nested_left_out_crossing",
+          "causes": {
+            "crossing_no_claim": 17
+          }
+        },
+        {
+          "run": "e_r2",
+          "idx": 1850,
+          "listed": 14,
+          "left_out": 13,
+          "signature": "placed_only_nested_left_out_crossing",
+          "causes": {
+            "crossing_no_claim": 13
+          }
+        }
+      ]
+    }
+  }
 }
