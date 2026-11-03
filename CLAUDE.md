@@ -935,6 +935,8 @@ The first command is blocking and writes nothing:
     python3 -m reasoned_loop.run --dry-run                                  # RL-g1..RL-g3; must pass first
     PYTHONHASHSEED=0 python3 -m reasoned_loop.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m reasoned_loop.score                         # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m reasoned_loop.decided                       # POST-RUN: what each placed edge decides
+    PYTHONHASHSEED=0 python3 -m reasoned_loop.unplaced                      # POST-RUN: where the unplaced answers come from
     PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --smoke          # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --arm e --rep 1  # then §2.6's order, never side by side
 
@@ -951,6 +953,22 @@ their pair's better rule less often than a fixed ranking of the queues
 order's room better than that ranking, and in one run better than every edge
 pointed at its better rule. A plan that bands a direction should report what
 the edges decide together, and say in §0 which of the two it adjudicates.
+**Read POST-RUN, most of the pairs `RL-e` counted against the proposer decide
+nothing**: third rules govern their shared region. **And a reading of what one
+edge decides should take the engine's own alternative.** Reversed by masks, an
+edge whose reversal closes a cycle leaves points to no rule, and
+`reasoned_loop/decided.py`'s first run counted them for the declared direction.
+
+**A placement round must not ask for what the system prompt forbids.** v1b's
+round lists every rule of another queue the draft meets, nested ones included,
+and refuses an answer that leaves one without a side. Level 3's system prompt
+says a rule nested in another needs no declaration. With reasoning on, the
+proposer obeyed the system prompt, and most of its unplaced answers were that.
+A protocol that asks for a side should list only what the engine can order, or
+say what a side against a nested rule means. **And a codebook read rule by rule
+weighs an answer by the rules it lists**: `reasoned_loop/unplaced.py`'s claims
+about single rules held on its development runs and failed on the held-out
+ones, where the largest answers spoke of the list as a whole.
 
 **A pinned provider can refuse for a day.** One run met a day of refusals for
 the rate under the pin. §5.5's first amendment made such a refusal an outage to
