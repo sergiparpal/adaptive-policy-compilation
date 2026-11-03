@@ -117,6 +117,9 @@ THE GATES
      repetition: the first is development, the second and third held-out.
   4. **The reasoning is the record's.** Every placement call read carries its
      reasoning, and every attempt of it that reached the model ended `stop`.
+  5. **The record on disk comes back** (added after the first run). Every
+     figure of the record already written, but its `_env` and its gates, is the
+     one this run reads.
 
 It refuses to write if any gate fails, and while the plan is unsigned, like
 every writer of the package. `--dry-run` runs the gates, prints pass or fail,
@@ -172,7 +175,29 @@ each arm, and the expectation above was written and committed before any
 held-out reasoning was read. Not a signed row, not on `STATUS.md`'s scoreboard,
 not a calibration event. Zero API calls.
 
-Usage:  python3 -m reasoned_loop.unplaced --dry-run   # gates 1 to 4; writes nothing
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: EACH UNPLACED ESCALATION BY WHAT IT LEFT OUT
+--------------------------------------------------------------------------
+Read after the first run: U1 and U5 held, and U2, U3 and U4 failed. Three of
+e r2's escalations left out 82 rules between them. The clauses count rules, so
+an escalation weighs as many rules as it left out. This reads each unplaced
+escalation once, by the relations of the rules it left out and of the rules it
+placed, and reads no text:
+  left_out_only_nested                   every rule it left out is nested;
+  placed_only_nested_left_out_crossing   it left out only crossing rules and
+                                         placed only nested ones;
+  left_out_every_rule_all_crossing       it placed nothing, and every listed
+                                         rule crosses the draft;
+  left_out_only_crossing_placed_crossing it left out only crossing rules, and
+                                         placed some crossing ones;
+  mixed                                  it left out rules of both relations.
+It counts them by set and by run, and lists each set's `LARGEST` unplaced
+escalations by the rules they left out. **No expectation goes with it**: it was
+written after the clauses were read. Added in its own commit, and the record
+comes from a second run, which must give back every figure of the first
+(gate 5).
+
+Usage:  python3 -m reasoned_loop.unplaced --dry-run   # gates 1 to 5; writes nothing
         PYTHONHASHSEED=0 python3 -m reasoned_loop.unplaced
 """
 
@@ -247,6 +272,14 @@ PROVENANCE = (
     "codebook was frozen on the first run of each arm, and the expectation in the "
     "module's docstring was written and committed before any held-out reasoning "
     "was read. Not a signed row; no verdict moves.")
+ADDED = (
+    "ADDED AFTER THE FIRST RUN: each unplaced escalation by the relations of the rules "
+    "it left out and of the rules it placed, reading no text. Written after the "
+    "clauses were read, with no expectation.")
+SIGNATURES = ("left_out_only_nested", "placed_only_nested_left_out_crossing",
+              "left_out_every_rule_all_crossing", "left_out_only_crossing_placed_crossing",
+              "mixed")
+LARGEST = 3                        # unplaced escalations listed per set, by rules left out
 
 
 def record_path():
@@ -522,6 +555,63 @@ def read_expectation(held_out: dict[str, Any], by_run: dict[str, Any]) -> list[d
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: each unplaced escalation by what it left out
+# ---------------------------------------------------------------------------
+
+def signature(rows: list[dict]) -> str:
+    """One unplaced escalation's rows, by the relations of what it left out and
+    of what it placed."""
+    missing = [r for r in rows if r["missing"]]
+    placed = [r for r in rows if not r["missing"]]
+    if all(nested(r["relation"]) for r in missing):
+        return "left_out_only_nested"
+    if all(r["relation"] == "crossing" for r in missing):
+        if not placed:
+            return "left_out_every_rule_all_crossing"
+        if all(nested(r["relation"]) for r in placed):
+            return "placed_only_nested_left_out_crossing"
+        return "left_out_only_crossing_placed_crossing"
+    return "mixed"
+
+
+def signatures(rows: list[dict]) -> dict[str, Any]:
+    by: dict[tuple[str, int, int], list[dict]] = {}
+    for r in rows:
+        if r["verdict"] == e.UNPLACED:
+            by.setdefault((r["run"], r["rep"], r["idx"]), []).append(r)
+    out: dict[str, Any] = {"by_set": {}, "by_run": {}, "largest": {}}
+    for name, reps in SETS.items():
+        keys = [k for k in by if k[1] in reps]
+        c = Counter(signature(by[k]) for k in keys)
+        out["by_set"][name] = {s: c.get(s, 0) for s in SIGNATURES}
+        top = sorted(keys, key=lambda k: (-sum(r["missing"] for r in by[k]), k))[:LARGEST]
+        out["largest"][name] = [
+            {"run": k[0], "idx": k[2], "listed": len(by[k]),
+             "left_out": sum(r["missing"] for r in by[k]), "signature": signature(by[k]),
+             "causes": dict(Counter(r["cause"] for r in by[k] if r["missing"]))}
+            for k in top]
+    for run in sorted({k[0] for k in by}):
+        c = Counter(signature(by[k]) for k in by if k[0] == run)
+        out["by_run"][run] = {s: c.get(s, 0) for s in SIGNATURES}
+    return out
+
+
+def comes_back(body: dict[str, Any], path) -> dict[str, Any]:
+    """Gate 5: every figure of the record already on disk, but its `_env` and its
+    gates, is the one this run reads. With no record on disk there is nothing to
+    give back."""
+    what = "the record on disk comes back"
+    if not path.exists():
+        return {"gate": 5, "run": "pooled", "what": what, "earlier": None, "passes": True}
+    old = json.loads(path.read_text())
+    new = json.loads(json.dumps(st._rounded(plain(body)), ensure_ascii=False, default=str))
+    differ = [k for k in sorted(old) if k not in ("_env", "gates") and new.get(k) != old[k]]
+    return {"gate": 5, "run": "pooled", "what": what,
+            "earlier": old.get("_env", {}).get("git_commit"), "differ": differ,
+            "passes": not differ}
+
+
+# ---------------------------------------------------------------------------
 # The gates
 # ---------------------------------------------------------------------------
 
@@ -603,7 +693,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Where the unplaced answers come from "
                                              "(POST-RUN, free).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="run gates 1 to 4 and stop; writes nothing")
+                    help="run gates 1 to 5 and stop; writes nothing")
     args = ap.parse_args(argv)
     gate = plan.refuse_unsigned(f"reasoned_loop/unplaced.py writes {record_path()}")
     published = json.loads(plan.score_path().read_text())
@@ -613,14 +703,6 @@ def main(argv: list[str] | None = None) -> int:
     records = {plan.tag(a, rec["rep"]): rec for a in plan.ARMS for rec in by_arm[a]}
     space = MI.space()
     checked = check(records, published, space)
-    for g in sorted(checked, key=lambda g: (g["gate"], str(g["run"]))):
-        print(f"  gate {g['gate']} run {g['run']}: {'PASS' if g['passes'] else 'FAIL'}"
-              f"  {g['what']}")
-    if not all(g["passes"] for g in checked):
-        sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
-    if args.dry_run:
-        print("\ndry run: nothing written")
-        return 0
     rows, escalations = [], []
     for t in sorted(records, key=lambda t: (records[t]["rep"], t)):
         rs, es = rows_of(records[t], space)
@@ -629,7 +711,7 @@ def main(argv: list[str] | None = None) -> int:
     by_set = readings(rows)
     by_run = whole_space(rows)
     expectation = read_expectation(by_set["held_out"]["pooled"], by_run)
-    record_path().write_text(json.dumps(st._rounded(plain({
+    body = {
         "_env": environment(),
         "plan": str(plan.PLAN),
         "signature": gate,
@@ -648,7 +730,22 @@ def main(argv: list[str] | None = None) -> int:
         "quotes": quotes(rows),
         "escalations": escalations,
         "rows": [{k: v for k, v in r.items() if k != "coded_sentences"} for r in rows],
-    })), indent=2, ensure_ascii=False, default=str) + "\n")
+        "added_after_the_first_run": {"what": ADDED,
+                                      "constants": {"LARGEST": LARGEST,
+                                                    "the_codebook_s_NEAR": NEAR},
+                                      **signatures(rows)},
+    }
+    checked.append(comes_back(body, record_path()))
+    for g in sorted(checked, key=lambda g: (g["gate"], str(g["run"]))):
+        print(f"  gate {g['gate']} run {g['run']}: {'PASS' if g['passes'] else 'FAIL'}"
+              f"  {g['what']}")
+    if not all(g["passes"] for g in checked):
+        sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
+    if args.dry_run:
+        print("\ndry run: nothing written")
+        return 0
+    record_path().write_text(json.dumps(st._rounded(plain(body)), indent=2, ensure_ascii=False,
+                                        default=str) + "\n")
     for c in expectation:
         print(f"  {c['clause']}: {'holds' if c['holds'] else 'fails'}")
     print(f"\n-> {record_path()}\n  {describe()}")

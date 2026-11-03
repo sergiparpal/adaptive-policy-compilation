@@ -217,6 +217,53 @@ class TestTheReadings(unittest.TestCase):
         self.assertEqual(q["nested_not_said"], [])
 
 
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_each_signature(self):
+        def esc(*pairs):
+            return [row(2, m, rel) for m, rel in pairs]
+        cases = {
+            "left_out_only_nested": esc((True, "contains_draft"), (False, "crossing")),
+            "placed_only_nested_left_out_crossing": esc((True, "crossing"),
+                                                        (False, "inside_draft")),
+            "left_out_every_rule_all_crossing": esc((True, "crossing"), (True, "crossing")),
+            "left_out_only_crossing_placed_crossing": esc((True, "crossing"),
+                                                          (False, "crossing")),
+            "mixed": esc((True, "crossing"), (True, "equal")),
+        }
+        for want, rows in cases.items():
+            with self.subTest(want=want):
+                self.assertEqual(U.signature(rows), want)
+
+    def test_signatures_by_set_and_run_and_the_largest(self):
+        rows = ([row(2, True, "crossing", idx=1) for _ in range(3)]
+                + [row(3, True, "equal", idx=2), row(3, False, "crossing", idx=2)]
+                + [row(1, True, "crossing", idx=5), row(2, False, "crossing", idx=9,
+                                                        verdict=e.BORN)])
+        got = U.signatures(rows)
+        self.assertEqual(got["by_set"]["held_out"]["left_out_every_rule_all_crossing"], 1)
+        self.assertEqual(got["by_set"]["held_out"]["left_out_only_nested"], 1)
+        self.assertEqual(got["by_set"]["development"]["left_out_every_rule_all_crossing"], 1)
+        self.assertEqual(got["by_run"]["e_r3"]["left_out_only_nested"], 1)
+        self.assertEqual([(x["run"], x["left_out"]) for x in got["largest"]["held_out"]],
+                         [("e_r2", 3), ("e_r3", 1)])
+
+    def test_gate_5(self):
+        import json
+        import tempfile
+        body = {"_env": {"git_commit": "new"}, "gates": [1, 2], "readings": {"x": 0.1234567},
+                "added_after_the_first_run": {"what": "x"}}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "unplaced.json"
+            self.assertTrue(U.comes_back(body, path)["passes"])
+            path.write_text(json.dumps({"_env": {"git_commit": "old"}, "gates": [1],
+                                        "readings": {"x": 0.123457}}))
+            got = U.comes_back(body, path)
+            self.assertEqual((got["passes"], got["earlier"], got["differ"]), (True, "old", []))
+            path.write_text(json.dumps({"_env": {}, "readings": {"x": 0.2}}))
+            self.assertEqual(U.comes_back(body, path)["differ"], ["readings"])
+
+
 class TestTheExpectation(unittest.TestCase):
 
     def held_out(self, rn, rc, said, of_n, stated, of_c, apart_m, apart_p):
