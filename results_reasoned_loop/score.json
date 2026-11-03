@@ -1,0 +1,2319 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-03T07:16:33Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "8d37a7cf06b7a4173a5e00d69c4aa9497502513d",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "c4f449559edea52f"
+  },
+  "plan": "PLAN_REASONED_LOOP.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_LOOP.md, of which there must be at least 3. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_REASONED_LOOP.md",
+    "found": 3,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "RL-g1": {
+      "what": "PLAN_REASONED_RULE.md's checks pass and its verdicts come back; PLAN_MANUAL.md's level-3 runs come back through this instrument; the list's first match is the policy over the space; the labels agree with the text; a run's rebuild is its engine; the suite green",
+      "reasoned_rule_checks": true,
+      "reasoned_rule_rows": {
+        "rows": 4,
+        "departing": [],
+        "passes": true
+      },
+      "manual_level_3": {
+        "runs": 3,
+        "departing": [],
+        "passes": true
+      },
+      "the_list_over_the_space": {
+        "points": 134400,
+        "queues": [
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "SECURITY_INCIDENT",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL",
+          "T2_TECHNICAL",
+          "T3_ENGINEERING"
+        ],
+        "departing": [],
+        "every_point_decided": true,
+        "passes": true
+      },
+      "labels": {
+        "cases": 2000,
+        "queue_departs": [],
+        "rule_departs": [],
+        "source": "results_reuse/run_n2000_r1.json",
+        "passes": true
+      },
+      "rebuilds": {
+        "runs": {
+          "i": true,
+          "e": true
+        },
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2470,
+        "result": "OK (skipped=5)",
+        "seconds": 175.6,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RL-g2": {
+      "what": "every text is its source's; the hidden policy through v1b's path is born whole with its 199 edges and decides both surfaces right; the transcriber gives back \u00a70's figures. The requests, the retry and the validator's verdicts are tests/test_reasoned_loop.py's",
+      "texts": {
+        "system_prompt_is_manual_level_3s": true,
+        "system_prompt_is_the_rule_arms": true,
+        "system_prompt_digest": true,
+        "system_prompt_holds_the_list": true,
+        "blind_base_is_v2bs": true,
+        "placement_template_is_v2bs": true,
+        "v2b_as_signed": true,
+        "retry_message_is_v1s": true,
+        "the_first_call": true,
+        "the_placement_call": true,
+        "passes": true
+      },
+      "hidden_policy": {
+        "born": 29,
+        "declarations": 253,
+        "installed": 199,
+        "verdicts": {
+          "ok": 253
+        },
+        "every_declaration_accepted": true,
+        "the_199_edges": true,
+        "space": [
+          134400,
+          134400
+        ],
+        "corpus": [
+          2000,
+          2000
+        ],
+        "as_declared": true,
+        "passes": true
+      },
+      "transcriber": {
+        "as_declared": {
+          "i": {
+            "escalations": true,
+            "rules": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "e": {
+            "escalations": true,
+            "impasses": true,
+            "errors": true,
+            "last": true,
+            "rules": true,
+            "not_written": true,
+            "declarations": true,
+            "accepted": true,
+            "space_right": true,
+            "k_a": true,
+            "crossing": true,
+            "strict": true,
+            "units": true
+          }
+        },
+        "passes": true
+      },
+      "verdicts": {
+        "names": {
+          "born": "nacida",
+          "changed": "cambiada",
+          "unplaced": "sin_situar",
+          "rejected": "rechazada",
+          "order": "orden_sin_conflicto",
+          "failed": "fallida"
+        },
+        "passes": true
+      },
+      "passes": true
+    },
+    "RL-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under the error arm; the cap is 400 escalations",
+      "schedule": [
+        [
+          "e",
+          1
+        ],
+        [
+          "i",
+          1
+        ],
+        [
+          "e",
+          2
+        ],
+        [
+          "i",
+          2
+        ],
+        [
+          "e",
+          3
+        ],
+        [
+          "i",
+          3
+        ]
+      ],
+      "rebuilt_from_the_seed": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "cap": true,
+      "passes": true
+    },
+    "RL-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_REASONED_LOOP.md, of which there must be at least 3. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_REASONED_LOOP.md",
+      "found": 3,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "missing": [],
+  "lines": {
+    "RL-a": {
+      "fraction": "9/10",
+      "value": 0.9
+    },
+    "RL-b": {
+      "fraction": "2/3",
+      "value": 0.6666666666666666
+    },
+    "RL-c": {
+      "fraction": "1/10",
+      "value": 0.1
+    },
+    "RL-d": {
+      "fraction": "9/10",
+      "value": 0.9
+    },
+    "RL-e": {
+      "fraction": "9/10",
+      "value": 0.9
+    },
+    "RL-f": {
+      "fraction": "0",
+      "value": 0.0
+    },
+    "RL-g": {
+      "fraction": "9/10",
+      "value": 0.9
+    }
+  },
+  "verdicts": {
+    "RL-a": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "371/408",
+        "value": 0.9093137254901961
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "thin": true,
+      "why": null,
+      "per_run": [
+        [
+          39,
+          41
+        ],
+        [
+          25,
+          28
+        ],
+        [
+          18,
+          18
+        ],
+        [
+          93,
+          99
+        ],
+        [
+          103,
+          120
+        ],
+        [
+          93,
+          102
+        ]
+      ]
+    },
+    "RL-b": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "1/3",
+        "value": 0.3333333333333333
+      },
+      "line": {
+        "fraction": "2/3",
+        "value": 0.6666666666666666
+      },
+      "thin": true,
+      "why": null,
+      "covers": [
+        722,
+        null,
+        162
+      ]
+    },
+    "RL-c": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "16757/33600",
+        "value": 0.4987202380952381
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "thin": false,
+      "why": null,
+      "per_run": {
+        "i": [
+          "15503/33600",
+          "3881/6720",
+          "461/1344"
+        ],
+        "e": [
+          "1613/1680",
+          "185/192",
+          "4271/4800"
+        ]
+      }
+    },
+    "RL-d": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "1613/1680",
+        "value": 0.9601190476190476
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "thin": true,
+      "why": null,
+      "per_run": [
+        "1613/1680",
+        "185/192",
+        "4271/4800"
+      ]
+    },
+    "RL-e": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "46618679/60881184",
+        "value": 0.7657321349072318
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "thin": false,
+      "why": null,
+      "units": 202,
+      "hits": 815,
+      "strict": 1019,
+      "float_reading": 0.7657321349072318
+    },
+    "RL-f": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "-313916683/3348465120",
+        "value": -0.09374942600566794
+      },
+      "line": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "thin": false,
+      "why": null,
+      "ranking": {
+        "fraction": "239828669/279038760",
+        "value": 0.8594815609128997
+      },
+      "ranking_float": 0.8594815609128997
+    },
+    "RL-g": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "14/15",
+        "value": 0.9333333333333333
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "thin": true,
+      "why": null,
+      "per_run": [
+        "14/15",
+        "1",
+        "11/15"
+      ]
+    }
+  },
+  "RL-h": {
+    "runs": {
+      "i_r1": {
+        "space": {
+          "fraction": "15503/33600",
+          "value": 0.4613988095238095
+        },
+        "space_without_the_keyword": 0.6043452380952381,
+        "space_with_the_keyword": 0.31845238095238093,
+        "recall_space": {
+          "T1_GENERAL": 0.7758620689655172,
+          "T2_TECHNICAL": 0.5370370370370371,
+          "T3_ENGINEERING": 0.5256723716381418,
+          "BILLING_SPECIALIST": 0.695906432748538,
+          "SECURITY_INCIDENT": 0.3333333333333333,
+          "ACCOUNT_MANAGER": 0.4958637469586375,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9837209302325581
+        },
+        "corpus": 0.7565,
+        "recall_corpus": {
+          "T1_GENERAL": 0.7137254901960784,
+          "T2_TECHNICAL": 0.7658402203856749,
+          "T3_ENGINEERING": 0.6752136752136753,
+          "BILLING_SPECIALIST": 0.5756457564575646,
+          "SECURITY_INCIDENT": 0.25,
+          "ACCOUNT_MANAGER": 0.5045871559633027,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9696969696969697
+        },
+        "k_a": "11/36",
+        "cover": 722,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 37,
+          "escalations": 41,
+          "impasses": 41,
+          "conflicts": 0,
+          "reuse_rate": 1.0,
+          "e2e_accuracy": 0.737,
+          "silent_error_rate": 0.2476,
+          "proposal_action_accuracy": 0.9512,
+          "failed_proposals": 0,
+          "rejected_rules": 4,
+          "dead_rules": 0
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 41,
+            "CONFLICT": 0,
+            "ERROR": 0
+          },
+          "cover": 722,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1959,
+          "silent_errors_among_them": 485
+        },
+        "drafts": [
+          39,
+          41
+        ],
+        "placements": {
+          "rounds": 29,
+          "listed": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            3,
+            3,
+            1,
+            3,
+            1,
+            1,
+            2,
+            2,
+            6,
+            4,
+            9,
+            2,
+            9,
+            3,
+            2,
+            2,
+            9,
+            13,
+            8,
+            2,
+            10,
+            11
+          ],
+          "citations": {
+            "other": 101,
+            "manual": 47
+          },
+          "verdicts": {
+            "nacida": 37,
+            "rechazada": 1,
+            "sin_situar": 3
+          },
+          "edge_reasons": {
+            "ok": 91,
+            "fuera_del_vecindario": 9,
+            "cierra_ciclo": 2
+          },
+          "copies_born": 0
+        },
+        "births": {
+          "rules": 37,
+          "a_listed_rules_region": 10,
+          "the_governing_rules_region": 10
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 7,
+            "decided_right": 0
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 1,
+            "drafts_right": 1,
+            "decided_by_rules": 19,
+            "decided_right": 3
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 3,
+            "drafts_right": 3,
+            "decided_by_rules": 106,
+            "decided_right": 52
+          },
+          "T3_ENGINEERING": {
+            "escalations": 4,
+            "drafts_right": 4,
+            "decided_by_rules": 113,
+            "decided_right": 74
+          }
+        },
+        "calls": {
+          "calls": 70,
+          "attempts": 73,
+          "rate_limited": 1,
+          "providers": {
+            "Baidu": 72,
+            "none": 1
+          },
+          "finish_reasons": {
+            "stop": 72,
+            "none": 1
+          },
+          "prompt_tokens": 142560,
+          "completion_tokens": 288519,
+          "reasoning_tokens": {
+            "sum": 276126,
+            "median": 3625,
+            "max": 9643
+          },
+          "untimed": 0,
+          "seconds_by_round": {
+            "0": {
+              "median": 54.21,
+              "sum": 2286.29
+            },
+            "1": {
+              "median": 21.14,
+              "sum": 715.17
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 41,
+              "median": 54.21,
+              "sum": 2286.29
+            },
+            "1": {
+              "calls": 28,
+              "median": 19.605,
+              "sum": 664.28
+            }
+          },
+          "retries": {
+            "call": 1,
+            "parse": 2
+          }
+        },
+        "fill": {
+          "room_points": 22020,
+          "alone": 0.4019345238095238,
+          "bound": 0.7296130952380953,
+          "edges": 91,
+          "declared": {
+            "share": 0.6177111716621253,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.6177111716621253,
+            "right_of_room": 0.6177111716621253,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.7755313634007258
+          },
+          "ranking": {
+            "share": 0.8233424159854675,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.8233424159854678,
+            "right_of_room": 0.8233424159854678,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 1
+            },
+            "corpus_e2e": 0.7952306894764126
+          },
+          "newborn": {
+            "share": 0.251589464123524,
+            "resolved_of_room": 0.9963669391462306,
+            "right_of_resolved": 0.25250683682771197,
+            "right_of_room": 0.25158946412352406,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 8,
+              "cierra_ciclo": 3
+            },
+            "corpus_e2e": 0.7387247278382582
+          },
+          "oracle": {
+            "share": 0.9232515894641237,
+            "resolved_of_room": 0.9237057220708447,
+            "right_of_resolved": 0.9995083579154376,
+            "right_of_room": 0.9232515894641236,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 1,
+              "cierra_ciclo": 1
+            },
+            "corpus_e2e": 0.8968377397615345
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.4069239327883742,
+              "sd": 0.10850965675597128,
+              "central": [
+                0.22842870118074482,
+                0.5752951861943688
+              ],
+              "at_least_declared": 0.02
+            },
+            "resolved_of_room": {
+              "mean": 0.8446548592188919,
+              "sd": 0.08589527738829444,
+              "central": [
+                0.6762942779291553,
+                0.9567665758401454
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_resolved": {
+              "mean": 0.48459915928331926,
+              "sd": 0.12828741285970213,
+              "central": [
+                0.28242103197959584,
+                0.6836246550137994
+              ],
+              "at_least_declared": 0.135
+            },
+            "right_of_room": {
+              "mean": 0.4069239327883742,
+              "sd": 0.10850965675597128,
+              "central": [
+                0.22842870118074476,
+                0.5752951861943687
+              ],
+              "at_least_declared": 0.02
+            },
+            "refused_mean": 22.81,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-01T13:58:27Z",
+          "2026-11-01T14:48:29Z"
+        ]
+      },
+      "i_r2": {
+        "space": {
+          "fraction": "3881/6720",
+          "value": 0.5775297619047619
+        },
+        "space_without_the_keyword": 0.5675595238095238,
+        "space_with_the_keyword": 0.5875,
+        "recall_space": {
+          "T1_GENERAL": 0.8390804597701149,
+          "T2_TECHNICAL": 0.6339869281045751,
+          "T3_ENGINEERING": 0.0,
+          "BILLING_SPECIALIST": 0.5029239766081871,
+          "SECURITY_INCIDENT": 0.6666666666666666,
+          "ACCOUNT_MANAGER": 0.537712895377129,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9488372093023256
+        },
+        "corpus": 0.7045,
+        "recall_corpus": {
+          "T1_GENERAL": 0.8941176470588236,
+          "T2_TECHNICAL": 0.7079889807162535,
+          "T3_ENGINEERING": 0.0,
+          "BILLING_SPECIALIST": 0.4870848708487085,
+          "SECURITY_INCIDENT": 0.75,
+          "ACCOUNT_MANAGER": 0.43119266055045874,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9555555555555556
+        },
+        "k_a": "1/2",
+        "cover": null,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 25,
+          "escalations": 28,
+          "impasses": 28,
+          "conflicts": 0,
+          "reuse_rate": 1.0,
+          "e2e_accuracy": 0.691,
+          "silent_error_rate": 0.2992,
+          "proposal_action_accuracy": 0.8929,
+          "failed_proposals": 0,
+          "rejected_rules": 3,
+          "dead_rules": 0
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 28,
+            "CONFLICT": 0,
+            "ERROR": 0
+          },
+          "cover": null,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1972,
+          "silent_errors_among_them": 590
+        },
+        "drafts": [
+          25,
+          28
+        ],
+        "placements": {
+          "rounds": 17,
+          "listed": [
+            1,
+            2,
+            1,
+            5,
+            1,
+            1,
+            2,
+            1,
+            4,
+            4,
+            5,
+            2,
+            1,
+            11,
+            3,
+            3,
+            1
+          ],
+          "citations": {
+            "manual": 20,
+            "other": 45
+          },
+          "verdicts": {
+            "nacida": 25,
+            "sin_situar": 3
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 7,
+            "ok": 43
+          },
+          "copies_born": 0
+        },
+        "births": {
+          "rules": 25,
+          "a_listed_rules_region": 8,
+          "the_governing_rules_region": 8
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 7,
+            "decided_right": 0
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 1,
+            "drafts_right": 1,
+            "decided_by_rules": 19,
+            "decided_right": 12
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 2,
+            "drafts_right": 2,
+            "decided_by_rules": 107,
+            "decided_right": 45
+          },
+          "T3_ENGINEERING": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 117,
+            "decided_right": 0
+          }
+        },
+        "calls": {
+          "calls": 45,
+          "attempts": 46,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 46
+          },
+          "finish_reasons": {
+            "stop": 46
+          },
+          "prompt_tokens": 88909,
+          "completion_tokens": 177594,
+          "reasoning_tokens": {
+            "sum": 169818,
+            "median": 3344.0,
+            "max": 7377
+          },
+          "untimed": 0,
+          "seconds_by_round": {
+            "0": {
+              "median": 43.955,
+              "sum": 1234.01
+            },
+            "1": {
+              "median": 14.13,
+              "sum": 251.99
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 28,
+              "median": 43.955,
+              "sum": 1234.01
+            },
+            "1": {
+              "calls": 17,
+              "median": 14.13,
+              "sum": 251.99
+            }
+          },
+          "retries": {
+            "parse": 1
+          }
+        },
+        "fill": {
+          "room_points": 15920,
+          "alone": 0.3574404761904762,
+          "bound": 0.5943452380952381,
+          "edges": 43,
+          "declared": {
+            "share": 0.8869346733668341,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.8869346733668342,
+            "right_of_room": 0.8869346733668342,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.7174701918092276
+          },
+          "ranking": {
+            "share": 0.9145728643216079,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.914572864321608,
+            "right_of_room": 0.914572864321608,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 1
+            },
+            "corpus_e2e": 0.7153965785381027
+          },
+          "newborn": {
+            "share": 0.1130653266331659,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.11306532663316583,
+            "right_of_room": 0.11306532663316583,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 4
+            },
+            "corpus_e2e": 0.5391394504924831
+          },
+          "oracle": {
+            "share": 1.0,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 1.0,
+            "right_of_room": 1.0,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 2
+            },
+            "corpus_e2e": 0.7210990150336962
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.4180778894472362,
+              "sd": 0.21039092878334928,
+              "central": [
+                0.12814070351758797,
+                0.7864321608040199
+              ],
+              "at_least_declared": 0.0
+            },
+            "resolved_of_room": {
+              "mean": 0.8995979899497487,
+              "sd": 0.10945083538525939,
+              "central": [
+                0.678391959798995,
+                1.0
+              ],
+              "at_least_declared": 0.32
+            },
+            "right_of_resolved": {
+              "mean": 0.46963797551206043,
+              "sd": 0.23556783531377304,
+              "central": [
+                0.12814070351758794,
+                0.8440860215053764
+              ],
+              "at_least_declared": 0.015
+            },
+            "right_of_room": {
+              "mean": 0.4180778894472362,
+              "sd": 0.21039092878334928,
+              "central": [
+                0.12814070351758794,
+                0.7864321608040201
+              ],
+              "at_least_declared": 0.0
+            },
+            "refused_mean": 7.845,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-02T19:03:45Z",
+          "2026-11-02T19:28:32Z"
+        ]
+      },
+      "i_r3": {
+        "space": {
+          "fraction": "461/1344",
+          "value": 0.3430059523809524
+        },
+        "space_without_the_keyword": 0.6110119047619048,
+        "space_with_the_keyword": 0.075,
+        "recall_space": {
+          "T1_GENERAL": 1.0,
+          "T2_TECHNICAL": 0.5697167755991286,
+          "T3_ENGINEERING": 0.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 0.0,
+          "ACCOUNT_MANAGER": 0.5450121654501217,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9674418604651163
+        },
+        "corpus": 0.811,
+        "recall_corpus": {
+          "T1_GENERAL": 1.0,
+          "T2_TECHNICAL": 0.7933884297520661,
+          "T3_ENGINEERING": 0.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 0.0,
+          "ACCOUNT_MANAGER": 0.3944954128440367,
+          "ONCALL_ESCALATION": 0.0,
+          "SELF_SERVICE_DEFLECT": 0.9636363636363636
+        },
+        "k_a": "1/16",
+        "cover": 162,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 16,
+          "escalations": 18,
+          "impasses": 18,
+          "conflicts": 0,
+          "reuse_rate": 1.0,
+          "e2e_accuracy": 0.8015,
+          "silent_error_rate": 0.1912,
+          "proposal_action_accuracy": 1.0,
+          "failed_proposals": 0,
+          "rejected_rules": 2,
+          "dead_rules": 0
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 18,
+            "CONFLICT": 0,
+            "ERROR": 0
+          },
+          "cover": 162,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1982,
+          "silent_errors_among_them": 379
+        },
+        "drafts": [
+          18,
+          18
+        ],
+        "placements": {
+          "rounds": 17,
+          "listed": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            3,
+            3,
+            2,
+            5,
+            4,
+            4
+          ],
+          "citations": {
+            "manual": 14,
+            "other": 32
+          },
+          "verdicts": {
+            "nacida": 16,
+            "sin_situar": 2
+          },
+          "edge_reasons": {
+            "ok": 32
+          },
+          "copies_born": 0
+        },
+        "births": {
+          "rules": 16,
+          "a_listed_rules_region": 7,
+          "the_governing_rules_region": 7
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 7,
+            "decided_right": 0
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 20,
+            "decided_right": 0
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 1,
+            "drafts_right": 1,
+            "decided_by_rules": 108,
+            "decided_right": 42
+          },
+          "T3_ENGINEERING": {
+            "escalations": 0,
+            "drafts_right": 0,
+            "decided_by_rules": 117,
+            "decided_right": 0
+          }
+        },
+        "calls": {
+          "calls": 35,
+          "attempts": 35,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 35
+          },
+          "finish_reasons": {
+            "stop": 35
+          },
+          "prompt_tokens": 68819,
+          "completion_tokens": 110429,
+          "reasoning_tokens": {
+            "sum": 104515,
+            "median": 2838,
+            "max": 7858
+          },
+          "untimed": 0,
+          "seconds_by_round": {
+            "0": {
+              "median": 31.995,
+              "sum": 665.1800000000001
+            },
+            "1": {
+              "median": 11.63,
+              "sum": 205.45
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 18,
+              "median": 31.995,
+              "sum": 665.1800000000001
+            },
+            "1": {
+              "calls": 17,
+              "median": 11.63,
+              "sum": 205.45
+            }
+          },
+          "retries": {}
+        },
+        "fill": {
+          "room_points": 22320,
+          "alone": 0.3235119047619048,
+          "bound": 0.6556547619047619,
+          "edges": 32,
+          "declared": {
+            "share": 0.8655913978494625,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.8655913978494624,
+            "right_of_room": 0.8655913978494624,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.8356661482633488
+          },
+          "ranking": {
+            "share": 1.0,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 1.0,
+            "right_of_room": 1.0,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.8838776568170036
+          },
+          "newborn": {
+            "share": 0.22759856630824377,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.22759856630824374,
+            "right_of_room": 0.22759856630824374,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.6754795230689477
+          },
+          "oracle": {
+            "share": 1.0,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 1.0,
+            "right_of_room": 1.0,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.8838776568170036
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.3593189964157706,
+              "sd": 0.11993371948567115,
+              "central": [
+                0.18279569892473121,
+                0.5681003584229389
+              ],
+              "at_least_declared": 0.0
+            },
+            "resolved_of_room": {
+              "mean": 0.8245519713261649,
+              "sd": 0.09798263155730755,
+              "central": [
+                0.6344086021505376,
+                0.9623655913978495
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_resolved": {
+              "mean": 0.43621941951579996,
+              "sd": 0.13631233247079114,
+              "central": [
+                0.253125,
+                0.6651480637813212
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_room": {
+              "mean": 0.3593189964157706,
+              "sd": 0.11993371948567115,
+              "central": [
+                0.1827956989247312,
+                0.568100358422939
+              ],
+              "at_least_declared": 0.0
+            },
+            "refused_mean": 4.79,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-02T22:27:14Z",
+          "2026-11-02T22:41:44Z"
+        ]
+      },
+      "e_r1": {
+        "space": {
+          "fraction": "1613/1680",
+          "value": 0.9601190476190476
+        },
+        "space_without_the_keyword": 0.9702380952380952,
+        "space_with_the_keyword": 0.95,
+        "recall_space": {
+          "T1_GENERAL": 0.9961685823754789,
+          "T2_TECHNICAL": 0.9989106753812637,
+          "T3_ENGINEERING": 0.8141809290953546,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 0.9333333333333333,
+          "ACCOUNT_MANAGER": 1.0,
+          "ONCALL_ESCALATION": 0.9333333333333333,
+          "SELF_SERVICE_DEFLECT": 1.0
+        },
+        "corpus": 0.995,
+        "recall_corpus": {
+          "T1_GENERAL": 0.996078431372549,
+          "T2_TECHNICAL": 0.9944903581267218,
+          "T3_ENGINEERING": 0.9658119658119658,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 1.0,
+          "ACCOUNT_MANAGER": 1.0,
+          "ONCALL_ESCALATION": 0.8571428571428571,
+          "SELF_SERVICE_DEFLECT": 1.0
+        },
+        "k_a": "8/65",
+        "cover": 658,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 76,
+          "escalations": 99,
+          "impasses": 31,
+          "conflicts": 6,
+          "reuse_rate": 0.8026,
+          "e2e_accuracy": 0.9795,
+          "silent_error_rate": 0.002,
+          "proposal_action_accuracy": 0.9394,
+          "failed_proposals": 0,
+          "rejected_rules": 23,
+          "dead_rules": 15
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 31,
+            "CONFLICT": 6,
+            "ERROR": 62
+          },
+          "cover": 658,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1901,
+          "silent_errors_among_them": 0
+        },
+        "drafts": [
+          93,
+          99
+        ],
+        "placements": {
+          "rounds": 90,
+          "listed": [
+            1,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            3,
+            1,
+            2,
+            1,
+            2,
+            3,
+            6,
+            4,
+            2,
+            10,
+            4,
+            5,
+            6,
+            1,
+            9,
+            4,
+            4,
+            5,
+            10,
+            4,
+            14,
+            18,
+            7,
+            3,
+            16,
+            14,
+            12,
+            5,
+            5,
+            16,
+            5,
+            6,
+            9,
+            4,
+            14,
+            14,
+            14,
+            7,
+            12,
+            10,
+            5,
+            10,
+            7,
+            6,
+            6,
+            7,
+            14,
+            21,
+            6,
+            14,
+            5,
+            3,
+            4,
+            5,
+            6,
+            7,
+            6,
+            23,
+            5,
+            5,
+            46,
+            38,
+            7,
+            15,
+            23,
+            13,
+            8,
+            10,
+            55,
+            8,
+            8,
+            13,
+            42,
+            17,
+            18,
+            11,
+            11,
+            16,
+            40,
+            17,
+            58,
+            27,
+            59
+          ],
+          "citations": {
+            "other": 943,
+            "manual": 126
+          },
+          "verdicts": {
+            "nacida": 76,
+            "sin_situar": 21,
+            "cambiada": 1,
+            "rechazada": 1
+          },
+          "edge_reasons": {
+            "ok": 616,
+            "fuera_del_vecindario": 5,
+            "cierra_ciclo": 65
+          },
+          "copies_born": 6
+        },
+        "births": {
+          "rules": 76,
+          "a_listed_rules_region": 21,
+          "the_governing_rules_region": 21
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 3,
+            "drafts_right": 3,
+            "decided_by_rules": 4,
+            "decided_right": 4
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 13,
+            "drafts_right": 13,
+            "decided_by_rules": 7,
+            "decided_right": 7
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 12,
+            "drafts_right": 12,
+            "decided_by_rules": 97,
+            "decided_right": 97
+          },
+          "T3_ENGINEERING": {
+            "escalations": 15,
+            "drafts_right": 15,
+            "decided_by_rules": 102,
+            "decided_right": 102
+          }
+        },
+        "calls": {
+          "calls": 189,
+          "attempts": 189,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 189
+          },
+          "finish_reasons": {
+            "stop": 189
+          },
+          "prompt_tokens": 434029,
+          "completion_tokens": 839247,
+          "reasoning_tokens": {
+            "sum": 800597,
+            "median": 4162,
+            "max": 10443
+          },
+          "untimed": 0,
+          "seconds_by_round": {
+            "0": {
+              "median": 49.89,
+              "sum": 5788.4800000000005
+            },
+            "1": {
+              "median": 33.39,
+              "sum": 3471.49
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 99,
+              "median": 49.89,
+              "sum": 5788.4800000000005
+            },
+            "1": {
+              "calls": 90,
+              "median": 33.39,
+              "sum": 3471.49
+            }
+          },
+          "retries": {}
+        },
+        "fill": {
+          "room_points": 31972,
+          "alone": 0.5117261904761905,
+          "bound": 0.9875,
+          "edges": 616,
+          "declared": {
+            "share": 0.9637182534717877,
+            "resolved_of_room": 0.993744526460653,
+            "right_of_resolved": 0.9697847161022284,
+            "right_of_room": 0.9637182534717879,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.9948159668221876
+          },
+          "ranking": {
+            "share": 0.8642562241961717,
+            "resolved_of_room": 1.0,
+            "right_of_resolved": 0.8642562241961717,
+            "right_of_room": 0.8642562241961717,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 7,
+              "cierra_ciclo": 2
+            },
+            "corpus_e2e": 0.9787454639709694
+          },
+          "newborn": {
+            "share": 0.44779807331414984,
+            "resolved_of_room": 0.712873764543976,
+            "right_of_resolved": 0.6281590031590032,
+            "right_of_room": 0.4477980733141499,
+            "lost": 0,
+            "refused": {
+              "cierra_ciclo": 167,
+              "contradice_subsuncion": 20
+            },
+            "corpus_e2e": 0.8838776568170036
+          },
+          "oracle": {
+            "share": 0.9524584011009632,
+            "resolved_of_room": 0.9724759164268735,
+            "right_of_resolved": 0.9794159269265406,
+            "right_of_room": 0.9524584011009634,
+            "lost": 0,
+            "refused": {
+              "cierra_ciclo": 2,
+              "contradice_subsuncion": 2
+            },
+            "corpus_e2e": 0.9849663037843442
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.4229660327786813,
+              "sd": 0.08976541017754469,
+              "central": [
+                0.2816214187413986,
+                0.5632115601151005
+              ],
+              "at_least_declared": 0.0
+            },
+            "resolved_of_room": {
+              "mean": 0.8178969097960715,
+              "sd": 0.06153641016772992,
+              "central": [
+                0.6973601901663956,
+                0.9111722757412736
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_resolved": {
+              "mean": 0.518594802891753,
+              "sd": 0.11038627340779428,
+              "central": [
+                0.3461457750419698,
+                0.6976212614287928
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_room": {
+              "mean": 0.42296603277868133,
+              "sd": 0.08976541017754469,
+              "central": [
+                0.28162141874139873,
+                0.5632115601151008
+              ],
+              "at_least_declared": 0.0
+            },
+            "refused_mean": 233.98,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-01T10:44:21Z",
+          "2026-11-01T13:18:41Z"
+        ]
+      },
+      "e_r2": {
+        "space": {
+          "fraction": "185/192",
+          "value": 0.9635416666666666
+        },
+        "space_without_the_keyword": 0.9297619047619048,
+        "space_with_the_keyword": 0.9973214285714286,
+        "recall_space": {
+          "T1_GENERAL": 0.789272030651341,
+          "T2_TECHNICAL": 0.9335511982570807,
+          "T3_ENGINEERING": 1.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 1.0,
+          "ACCOUNT_MANAGER": 0.9209245742092458,
+          "ONCALL_ESCALATION": 1.0,
+          "SELF_SERVICE_DEFLECT": 0.986046511627907
+        },
+        "corpus": 0.972,
+        "recall_corpus": {
+          "T1_GENERAL": 0.9019607843137255,
+          "T2_TECHNICAL": 0.9724517906336089,
+          "T3_ENGINEERING": 1.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 1.0,
+          "ACCOUNT_MANAGER": 0.9724770642201835,
+          "ONCALL_ESCALATION": 1.0,
+          "SELF_SERVICE_DEFLECT": 0.9838383838383838
+        },
+        "k_a": "3/41",
+        "cover": 228,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 90,
+          "escalations": 120,
+          "impasses": 27,
+          "conflicts": 13,
+          "reuse_rate": 0.6222,
+          "e2e_accuracy": 0.973,
+          "silent_error_rate": 0.0071,
+          "proposal_action_accuracy": 0.8583,
+          "failed_proposals": 0,
+          "rejected_rules": 30,
+          "dead_rules": 34
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 27,
+            "CONFLICT": 13,
+            "ERROR": 80
+          },
+          "cover": 228,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1880,
+          "silent_errors_among_them": 0
+        },
+        "drafts": [
+          103,
+          120
+        ],
+        "placements": {
+          "rounds": 113,
+          "listed": [
+            1,
+            1,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1,
+            2,
+            4,
+            2,
+            4,
+            4,
+            2,
+            1,
+            4,
+            4,
+            3,
+            5,
+            2,
+            4,
+            1,
+            2,
+            1,
+            3,
+            1,
+            2,
+            8,
+            2,
+            10,
+            7,
+            7,
+            6,
+            14,
+            21,
+            6,
+            6,
+            11,
+            12,
+            11,
+            19,
+            6,
+            12,
+            17,
+            2,
+            6,
+            3,
+            24,
+            12,
+            29,
+            20,
+            5,
+            8,
+            9,
+            13,
+            9,
+            5,
+            16,
+            18,
+            15,
+            13,
+            16,
+            22,
+            5,
+            15,
+            8,
+            7,
+            4,
+            7,
+            34,
+            29,
+            19,
+            19,
+            8,
+            9,
+            18,
+            14,
+            52,
+            12,
+            37,
+            15,
+            8,
+            10,
+            15,
+            11,
+            32,
+            32,
+            25,
+            5,
+            8,
+            15,
+            7,
+            42,
+            11,
+            4,
+            10,
+            6,
+            6,
+            8,
+            6,
+            35,
+            60,
+            19,
+            58,
+            17,
+            12,
+            18,
+            17,
+            8,
+            14,
+            20,
+            26,
+            32
+          ],
+          "citations": {
+            "manual": 213,
+            "other": 1201
+          },
+          "verdicts": {
+            "nacida": 90,
+            "sin_situar": 28,
+            "rechazada": 1,
+            "cambiada": 1
+          },
+          "edge_reasons": {
+            "ok": 857,
+            "cierra_ciclo": 43,
+            "fuera_del_vecindario": 9
+          },
+          "copies_born": 23
+        },
+        "births": {
+          "rules": 90,
+          "a_listed_rules_region": 21,
+          "the_governing_rules_region": 20
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 1,
+            "decided_right": 1
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 14,
+            "decided_right": 14
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 7,
+            "drafts_right": 7,
+            "decided_by_rules": 102,
+            "decided_right": 102
+          },
+          "T3_ENGINEERING": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 111,
+            "decided_right": 111
+          }
+        },
+        "calls": {
+          "calls": 233,
+          "attempts": 796,
+          "rate_limited": 563,
+          "providers": {
+            "Baidu": 233,
+            "none": 563
+          },
+          "finish_reasons": {
+            "stop": 233,
+            "none": 563
+          },
+          "prompt_tokens": 547224,
+          "completion_tokens": 1099413,
+          "reasoning_tokens": {
+            "sum": 1054193,
+            "median": 0.0,
+            "max": 11980
+          },
+          "untimed": 141,
+          "seconds_by_round": {
+            "0": {
+              "median": 54.620000000000005,
+              "sum": 2669.35
+            },
+            "1": {
+              "median": 46.045,
+              "sum": 2416.74
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 44,
+              "median": 54.355000000000004,
+              "sum": 2505.94
+            },
+            "1": {
+              "calls": 44,
+              "median": 46.045,
+              "sum": 2320.56
+            }
+          },
+          "retries": {
+            "call": 563
+          }
+        },
+        "fill": {
+          "room_points": 46080,
+          "alone": 0.2845238095238095,
+          "bound": 0.9702380952380952,
+          "edges": 857,
+          "declared": {
+            "share": 0.9409722222222223,
+            "resolved_of_room": 0.9895833333333334,
+            "right_of_resolved": 0.9508771929824561,
+            "right_of_room": 0.9409722222222222,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.9714878175220322
+          },
+          "ranking": {
+            "share": 0.7370876736111112,
+            "resolved_of_room": 0.9474826388888888,
+            "right_of_resolved": 0.7779431974347228,
+            "right_of_room": 0.7370876736111112,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 20,
+              "cierra_ciclo": 9
+            },
+            "corpus_e2e": 0.7547952306894764
+          },
+          "newborn": {
+            "share": 0.33463541666666663,
+            "resolved_of_room": 0.7877604166666666,
+            "right_of_resolved": 0.42479338842975206,
+            "right_of_room": 0.3346354166666667,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 44,
+              "cierra_ciclo": 206
+            },
+            "corpus_e2e": 0.5536547433903577
+          },
+          "oracle": {
+            "share": 0.998263888888889,
+            "resolved_of_room": 0.9986979166666666,
+            "right_of_resolved": 0.9995654063450674,
+            "right_of_room": 0.9982638888888888,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 33,
+              "cierra_ciclo": 12
+            },
+            "corpus_e2e": 0.9839294971487818
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.3212228732638889,
+              "sd": 0.06750991290631318,
+              "central": [
+                0.2245008680555556,
+                0.4373914930555556
+              ],
+              "at_least_declared": 0.0
+            },
+            "resolved_of_room": {
+              "mean": 0.7586306423611111,
+              "sd": 0.06165393499354098,
+              "central": [
+                0.6627604166666666,
+                0.85546875
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_resolved": {
+              "mean": 0.4239398943587619,
+              "sd": 0.08483567426420417,
+              "central": [
+                0.30253090052972337,
+                0.5717619603267211
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_room": {
+              "mean": 0.3212228732638889,
+              "sd": 0.06750991290631318,
+              "central": [
+                0.22450086805555555,
+                0.4373914930555556
+              ],
+              "at_least_declared": 0.0
+            },
+            "refused_mean": 342.62,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-02T16:26:47Z",
+          "2026-11-02T17:51:33Z"
+        ]
+      },
+      "e_r3": {
+        "space": {
+          "fraction": "4271/4800",
+          "value": 0.8897916666666666
+        },
+        "space_without_the_keyword": 0.9560714285714286,
+        "space_with_the_keyword": 0.8235119047619047,
+        "recall_space": {
+          "T1_GENERAL": 0.9961685823754789,
+          "T2_TECHNICAL": 0.9694989106753813,
+          "T3_ENGINEERING": 1.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 0.7666666666666667,
+          "ACCOUNT_MANAGER": 0.9858880778588808,
+          "ONCALL_ESCALATION": 0.7333333333333333,
+          "SELF_SERVICE_DEFLECT": 1.0
+        },
+        "corpus": 0.99,
+        "recall_corpus": {
+          "T1_GENERAL": 0.996078431372549,
+          "T2_TECHNICAL": 0.9793388429752066,
+          "T3_ENGINEERING": 1.0,
+          "BILLING_SPECIALIST": 1.0,
+          "SECURITY_INCIDENT": 0.85,
+          "ACCOUNT_MANAGER": 1.0,
+          "ONCALL_ESCALATION": 0.8571428571428571,
+          "SELF_SERVICE_DEFLECT": 1.0
+        },
+        "k_a": "1/55",
+        "cover": 1,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 63,
+          "escalations": 102,
+          "impasses": 2,
+          "conflicts": 0,
+          "reuse_rate": 0.8095,
+          "e2e_accuracy": 0.9945,
+          "silent_error_rate": 0.0045,
+          "proposal_action_accuracy": 0.9118,
+          "failed_proposals": 0,
+          "rejected_rules": 39,
+          "dead_rules": 12
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 2,
+            "CONFLICT": 0,
+            "ERROR": 100
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1898,
+          "silent_errors_among_them": 0
+        },
+        "drafts": [
+          93,
+          102
+        ],
+        "placements": {
+          "rounds": 100,
+          "listed": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            7,
+            2,
+            5,
+            3,
+            2,
+            6,
+            3,
+            6,
+            4,
+            9,
+            2,
+            3,
+            1,
+            3,
+            5,
+            3,
+            3,
+            4,
+            5,
+            7,
+            17,
+            12,
+            6,
+            9,
+            10,
+            11,
+            7,
+            8,
+            4,
+            10,
+            6,
+            10,
+            18,
+            7,
+            7,
+            9,
+            9,
+            11,
+            9,
+            9,
+            12,
+            11,
+            6,
+            3,
+            9,
+            13,
+            3,
+            12,
+            25,
+            6,
+            10,
+            12,
+            1,
+            5,
+            5,
+            13,
+            9,
+            18,
+            9,
+            13,
+            13,
+            6,
+            10,
+            17,
+            9,
+            12,
+            8,
+            38,
+            7,
+            6,
+            9,
+            10,
+            39,
+            11,
+            9,
+            9,
+            8,
+            8,
+            11,
+            7,
+            7,
+            7,
+            22,
+            12,
+            23,
+            14,
+            23,
+            11
+          ],
+          "citations": {
+            "manual": 147,
+            "other": 744
+          },
+          "verdicts": {
+            "nacida": 63,
+            "sin_situar": 38,
+            "rechazada": 1
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 8,
+            "ok": 447,
+            "contradice_subsuncion": 1,
+            "cierra_ciclo": 16
+          },
+          "copies_born": 6
+        },
+        "births": {
+          "rules": 63,
+          "a_listed_rules_region": 18,
+          "the_governing_rules_region": 18
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 1,
+            "decided_right": 1
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 10,
+            "drafts_right": 10,
+            "decided_by_rules": 10,
+            "decided_right": 10
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 12,
+            "drafts_right": 12,
+            "decided_by_rules": 97,
+            "decided_right": 97
+          },
+          "T3_ENGINEERING": {
+            "escalations": 8,
+            "drafts_right": 8,
+            "decided_by_rules": 109,
+            "decided_right": 109
+          }
+        },
+        "calls": {
+          "calls": 202,
+          "attempts": 203,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 203
+          },
+          "finish_reasons": {
+            "stop": 203
+          },
+          "prompt_tokens": 446424,
+          "completion_tokens": 896894,
+          "reasoning_tokens": {
+            "sum": 855889,
+            "median": 3932,
+            "max": 13766
+          },
+          "untimed": 0,
+          "seconds_by_round": {
+            "0": {
+              "median": 44.485,
+              "sum": 4922.57
+            },
+            "1": {
+              "median": 24.82,
+              "sum": 2760.41
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 102,
+              "median": 44.485,
+              "sum": 4922.57
+            },
+            "1": {
+              "calls": 100,
+              "median": 24.82,
+              "sum": 2760.41
+            }
+          },
+          "retries": {
+            "parse": 1
+          }
+        },
+        "fill": {
+          "room_points": 23740,
+          "alone": 0.6083333333333333,
+          "bound": 0.9616071428571429,
+          "edges": 447,
+          "declared": {
+            "share": 0.984330244313395,
+            "resolved_of_room": 0.9983150800336984,
+            "right_of_resolved": 0.9859915611814346,
+            "right_of_room": 0.9843302443133951,
+            "lost": 0,
+            "refused": {},
+            "corpus_e2e": 0.991187143597719
+          },
+          "ranking": {
+            "share": 0.7767481044650378,
+            "resolved_of_room": 0.9983150800336984,
+            "right_of_resolved": 0.7780590717299578,
+            "right_of_room": 0.776748104465038,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 11
+            },
+            "corpus_e2e": 0.973561430793157
+          },
+          "newborn": {
+            "share": 0.6790227464195451,
+            "resolved_of_room": 0.9098567818028643,
+            "right_of_resolved": 0.7462962962962963,
+            "right_of_room": 0.6790227464195451,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 17,
+              "cierra_ciclo": 62
+            },
+            "corpus_e2e": 0.9725246241575947
+          },
+          "oracle": {
+            "share": 0.9983150800336984,
+            "resolved_of_room": 0.9983150800336984,
+            "right_of_resolved": 1.0,
+            "right_of_room": 0.9983150800336984,
+            "lost": 0,
+            "refused": {
+              "contradice_subsuncion": 11,
+              "cierra_ciclo": 10
+            },
+            "corpus_e2e": 0.993260756868844
+          },
+          "coin": {
+            "draws": 200,
+            "share": {
+              "mean": 0.4695627632687448,
+              "sd": 0.10523754697465869,
+              "central": [
+                0.31171019376579623,
+                0.6411120471777592
+              ],
+              "at_least_declared": 0.0
+            },
+            "resolved_of_room": {
+              "mean": 0.8441086773378265,
+              "sd": 0.06822615426922124,
+              "central": [
+                0.7236731255265375,
+                0.9427127211457456
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_resolved": {
+              "mean": 0.556248245955749,
+              "sd": 0.11533724877741677,
+              "central": [
+                0.38737419945105217,
+                0.749896480331263
+              ],
+              "at_least_declared": 0.0
+            },
+            "right_of_room": {
+              "mean": 0.46956276326874474,
+              "sd": 0.1052375469746587,
+              "central": [
+                0.3117101937657961,
+                0.641112047177759
+              ],
+              "at_least_declared": 0.0
+            },
+            "refused_mean": 171.87,
+            "draws_with_a_refusal": 200
+          }
+        },
+        "dates": [
+          "2026-11-02T19:46:40Z",
+          "2026-11-02T21:54:44Z"
+        ]
+      }
+    },
+    "direction": {
+      "space_whole": {
+        "units": 199,
+        "reading": {
+          "fraction": "320071481/412341930",
+          "value": 0.7762283137201206
+        },
+        "hits": 812,
+        "strict": 1009,
+        "float_reading": 0.7762283137201206
+      },
+      "corpus_without_the_keyword": {
+        "units": 185,
+        "reading": {
+          "fraction": "286856021/377777400",
+          "value": 0.759325520796109
+        },
+        "hits": 679,
+        "strict": 859,
+        "float_reading": 0.759325520796109
+      },
+      "pooled_over_pairs": {
+        "units": 202,
+        "reading": 0.7657321349072318,
+        "hits": 815,
+        "strict": 1019,
+        "pooled": 0.7998037291462218,
+        "by_winner": 0.7176143419489007,
+        "winners": 200,
+        "largest_unit": 28,
+        "ties": 0,
+        "neither_ever_right": 65
+      },
+      "newborn_wins": {
+        "units": 202,
+        "reading": {
+          "fraction": "47137/85008",
+          "value": 0.5545007528703181
+        },
+        "hits": 537,
+        "strict": 1019,
+        "float_reading": 0.5545007528703181
+      },
+      "by_queue_pair": {
+        "queue_pairs": 20,
+        "unreachable_queue_pairs": 8,
+        "reachable": {
+          "units": 127,
+          "reading": 0.9364016997875265,
+          "hits": 300,
+          "strict": 320,
+          "pooled": 0.9375,
+          "by_winner": 0.8061884669479606,
+          "winners": 79,
+          "largest_unit": 14,
+          "ties": 0,
+          "neither_ever_right": 24
+        },
+        "unreachable": {
+          "units": 164,
+          "reading": 0.6916161582320118,
+          "hits": 515,
+          "strict": 699,
+          "pooled": 0.7367668097281831,
+          "by_winner": 0.6657530454042082,
+          "winners": 172,
+          "largest_unit": 25,
+          "ties": 0,
+          "neither_ever_right": 41
+        }
+      }
+    }
+  },
+  "rebuilt_is_the_run": true
+}
