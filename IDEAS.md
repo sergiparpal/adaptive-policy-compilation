@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of October 25, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 3, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -86,7 +86,10 @@ five held and one refuted, and one reported, written up in
 `results_first_match/`. **The rule written with reasoning on, asked before any
 loop, closed the same day too**: `PLAN_REASONED_RULE.md`, four signed rows,
 three held and one refuted, and one reported, written up in
-`results_reasoned_rule/`. This is a
+`results_reasoned_rule/`. **The loop with reasoning on, under the standing
+trigger and asked also on its errors, closed on November 3, 2026**:
+`PLAN_REASONED_LOOP.md`, seven signed rows, four held and three refuted, and
+one reported, written up in `results_reasoned_loop/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -98,6 +101,23 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Run the loop with reasoning on.** November 3, 2026,
+  `PLAN_REASONED_LOOP.md`, twenty cents. `PLAN_REUSE.md`'s loop ran at n=2000
+  with level 3's manual and reasoning on, every call pinned to one provider,
+  three runs an arm. The first call was blind to the base, and a placement round
+  set each rule against the base's rules of other queues. One arm had the
+  standing trigger. The other also asked where the base decided wrongly,
+  reading the truth of every arrival.
+  - **Asked also on its errors, the loop compiles the policy**, nearly all of
+    the space, and the rarest queue with it, for the first time.
+  - **Under the standing trigger it compiles less than three fifths of the
+    space.** It did not stop asking early, and it never asks where a rule
+    decides wrongly.
+  - **Its placements point at the better rule less often than a fixed ranking
+    of the queues does.** Read together over the order's room, the error arm's
+    edges still decide more of it right than the ranking's.
+
+  What it leaves is in its own section below. `results_reasoned_loop/`.
 - **Ask level 3's escalated tickets for a rule, with reasoning on.** October
   25, 2026, `PLAN_REASONED_RULE.md`, cents. `PLAN_QUEUE_ALONE.md`'s level-3
   rule and plain prompts were asked again on one day, each twice and pinned to
@@ -370,6 +390,66 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_REASONED_LOOP.md` opens and does not resolve
+
+Closed November 3, 2026. It ran `PLAN_REUSE.md`'s loop with level 3's manual
+and reasoning on, three runs an arm, pinned to one provider, under v1b: a blind
+first call, then a placement round against the base's rules of other queues.
+Under the standing trigger the loop compiled less than three fifths of the
+space. Asked also where its base decided wrongly, it compiled nearly all of it,
+the rarest queue included. Its placements pointed at the better rule less often
+than a fixed ranking of the queues, and still decided the order's room better in
+the error arm. What that leaves:
+
+- **A trigger a deployment could have.** The error arm reads the label of
+  every arrival, and a deployment would hear of some errors, late or noisily.
+  Rung 4's feedback channel, with its coverage, delay and noise, or random
+  escalation, which reads no truth, would each be a run with reasoning on and a
+  plan. Calls.
+- **Why the loop's proposer writes narrow rules.** In the loop it wrote the
+  governing rule's region on about a quarter of its births. The re-ask had
+  written it on nearly three answers in four. At the first `H29` ticket no
+  impasse run wrote the default. What differs from the re-ask:
+  - the first call's line for the base, *no se te muestra en este paso*
+    against *vacia. Esta es la primera regla*;
+  - the population;
+  - the loop itself.
+
+  A re-ask of the loop's first calls under the re-ask's line would separate the
+  first. Calls.
+- **Why direction and fill part.** `RL-e` reads each placed edge alone, over
+  its pair's shared region. The fill reads the base's points with every edge in
+  place, and there the error arm's declared edges beat the Stage C ranking in
+  every run, and the oracle by direction in one. A reading would set each
+  edge's verdict beside the points it decides. Free on the records.
+- **Where the unplaced answers come from.** Nearly a quarter of the
+  escalations ended unplaced, more than a third in one error run, and every
+  attempt ended `stop`. The
+  reasoning is recorded whole on every attempt and coded by no stage. A codebook
+  frozen on part of it would say why a listed rule was left out. Free.
+- **Reasoning in the loop apart from v1b.** No reasoning-off arm ran under v1b,
+  so the impasse arm is set beside `PLAN_MANUAL.md`'s level-3 loop across dates
+  and protocols only. Calls.
+- **A median over a call's attempts should read the attempts that reached the
+  model.** `reasoned_loop/score.py`'s median of reasoning tokens counts the
+  attempts refused for the rate, which carry none, and reads 0 for the run that
+  met a day of rate limits. The FINDINGS gives the corrected medians beside the
+  record's. Free.
+- **A pinned provider can refuse for a day.** One run met a day of refusals for
+  the rate, and was resumed from its partial file about once an hour until it
+  finished. §5.5's amendment made such a refusal an outage to wait out rather
+  than a failed proposal. A plan that
+  pins one provider should say in §0 how a run that meets a long refusal
+  resumes, before its smoke run meets one.
+- **A run resumed from its partial file timed the replay.** The record kept the
+  replay's time, under a second, for every call the partial served, and §5.5's
+  second amendment fixed it for later runs. A plan whose runs resume should test, before the first run,
+  that a resumed record keeps each call's own seconds.
+- **The loop reasons longer than the re-ask.** Its first calls reasoned about
+  twice the reasoning rule arm's tokens, and §1's estimate, taken from asks
+  outside a loop, was far off. The smoke run measured it before the first run,
+  as §1 asked. A plan that prices a loop should price it from a loop's calls.
+
 ## What `PLAN_REASONED_RULE.md` opens and does not resolve
 
 Closed October 25, 2026. It asked `PLAN_QUEUE_ALONE.md`'s level-3 rule and
@@ -380,7 +460,9 @@ nearly every escalated decision, and what it writes is the rule that governs
 the ticket. Asking for a rule still costs a few points, with reasoning on as
 without. What that leaves:
 
-- **The loop with reasoning on.** Its proposer would choose its queues nearly
+- **~~The loop with reasoning on.~~ Run on 2026-11-03 as
+  `PLAN_REASONED_LOOP.md`**; see *No longer here* and its own section above.
+  Its proposer would choose its queues nearly
   as the list says, and write the list's rules one ticket at a time. What the
   loop then compiles depends on their order. Rung 2's engine orders nested
   rules by containment, and crossing ones only by declared edges. The edges
@@ -413,7 +495,10 @@ without. What that leaves:
   arm from its smoke run should say in §1 how few asks the estimate rests on.
 - **The retry by cause has not fired on the pinned provider**, in this plan's
   passes or `PLAN_FIRST_MATCH.md`'s. It is still tested only by the packages'
-  tests.
+  tests. **[NOTE 2026-11-03] It fired in `PLAN_REASONED_LOOP.md`'s runs**: a
+  call refused for the rate was asked again after its wait, and four parse
+  failures were asked again with v1's message. A day of rate limits on the same
+  pin is in that plan's section.
 - **A difference of two small costs is noisy.** `RR-d` set two costs of a few
   points each against each other, and was thin. A plan that crosses two
   factors should size the interaction it bands against four arms' noise, and
