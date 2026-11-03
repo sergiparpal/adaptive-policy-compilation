@@ -67,6 +67,15 @@ are adjudicated. `RL-a`, `RL-c`, `RL-d` and `RL-g` hold, `RL-a`, `RL-d` and
   they do better than pointing every edge at its better rule. That reading is reported, and it qualifies
   what `RL-e` and `RL-f` measure (Stage C, *The fill*).
 
+**[NOTE 2026-11-03] Read POST-RUN, direction and fill part in the error arm over
+what `RL-e` counts.** 147 of the 169 pairs it counts against the proposer there
+decide no point of the base. Third rules govern the whole shared region of 98 of
+the 169. Where an edge does decide points, the proposer pointed it the way
+the points ask on 0.87 to 0.94 of the units, depending on how a reversal the
+engine would refuse is counted. That is above the ranking under every reading.
+In the impasse arm the two do not part. See *What each placed edge decides*,
+below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
 > computed after the signature. Zero API calls.
 >
@@ -724,6 +733,10 @@ Over the corpus:
 2. **Why direction and fill part.** `RL-e` reads each pair alone, over its
    shared region. The fill reads the base's points with every edge in place. A
    reading would set each edge's verdict beside the points it decides.
+   **[NOTE 2026-11-03] Read POST-RUN**, in *What each placed edge decides*,
+   below. In the error arm the pairs `RL-e` counts against the proposer mostly
+   decide nothing, because third rules govern their shared region. The edges
+   that decide points mostly point right. In the impasse arm they do not part.
 3. **Where the unplaced answers come from.** 95 of 408 escalations ended
    unplaced, 38 in e r3. The reasoning is recorded whole on every attempt, and
    coded by no stage.
@@ -734,6 +747,197 @@ Over the corpus:
    (§13).
 6. **The arrivals' order.** One corpus, in which the default arrives second.
 7. **One model, one provider, one manual, one effort, three runs an arm.**
+
+---
+
+## What each placed edge decides — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-03, after the plan closed, and run
+> the same day. Zero API calls. `reasoned_loop/decided.py` set each edge of
+> Stage C's rows beside the points it decides, over the half of the space
+> without the keyword, where `RL-e` and the fill read.
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is five clauses in the module's docstring, in the commit that
+>   adds the module. The drafter had read this record whole, and `score.json`'s
+>   fill by run and arm.
+> - **Five gates stood before any write.**
+>   - `RL-e` and `RL-f`'s ranking come back exactly.
+>   - Every run's room and declared fill come back.
+>   - The fill's engine is Stage C's graph.
+>   - A reversal read by masks is the engine's reinstall through `try_edge`, on
+>     the first edges of every run whose reversal the engine accepts.
+>   - Added after the first run: the record already on disk comes back.
+> - **The module was extended after its first run, with no expectation.** Most
+>   of the reversals it counts would close a cycle (section 5, below). The
+>   record comes from the second run, which gave back every figure of the
+>   first.
+>
+> Not a signed row; no verdict moves. The record is [`decided.json`](decided.json).
+> Its `_env` names the branch commit it was written from, with a clean tree.
+
+**How an edge is read.**
+- **The reversal** points one edge the other way and leaves every other edge in
+  place. It is read by masks, with the engine's own rule: a rule is undefeated
+  exactly where no rule that beats it matches.
+- **What an edge decides** is the points whose rightness its reversal changes.
+  Its **point verdict** is `a` when the declared direction decides more of them
+  right, `b` when the reversal does, and *none* when the reversal changes no
+  point.
+- **The pair verdict** is `RL-e`'s: the better rule over the pair's whole shared
+  region.
+- **The free verdict** reads the same region, less the points where third rules
+  defeat both rules of the pair. The edge cannot decide anything there.
+- **A missing pair** is one whose pair verdict is `b`: `RL-e` counts it against
+  the proposer.
+
+### 1. The pair verdict against the point verdict
+
+`RL-e`'s strict pairs, by arm:
+
+| arm | pair verdict | pairs | point `a` | point `b` | tie | decides no point |
+|---|---|---|---|---|---|---|
+| error | `a` | 729 | 356 | 0 | 1 | 372 |
+| error | `b`, missing | 169 | 3 | 19 | 0 | 147 |
+| impasse | `a` | 86 | 68 | 0 | 0 | 18 |
+| impasse | `b`, missing | 35 | 0 | 20 | 0 | 15 |
+
+- **In the error arm, 147 of the 169 missing pairs decide no point.** Reversed,
+  they change nothing the base decides. 19 cost points, and 3 decide their
+  points right.
+- **Where both verdicts are strict, they almost always agree.** Of the 466 edges
+  of both arms that decide points, 3 have pair verdict `b` and point verdict
+  `a`, and none the other way. So the better rule over a pair's region is nearly
+  always the better winner where the edge decides. Edges acting together do not
+  carry the parting.
+- **In the impasse arm the missing pairs do decide points.** 20 of 35 cost
+  points, and 15 decide none.
+
+### 2. `RL-e`'s statistic, read three ways
+
+By older rule, on `RL-e`'s population, with the Stage C ranking on the same
+pairs:
+
+| arm | verdict | units | strict pairs | declared | ranking |
+|---|---|---|---|---|---|
+| error | pair, `RL-e`'s | 164 | 898 | 0.7811 | 0.8533 |
+| error | free | 157 | 636 | 0.8510 | 0.8593 |
+| error | point | 135 | 378 | 0.9422 | 0.8680 |
+| error | pair, where the point is strict | 135 | 378 | 0.9378 | 0.8725 |
+| impasse | pair, `RL-e`'s | 38 | 121 | 0.6992 | 0.8860 |
+| impasse | free | 36 | 103 | 0.7405 | 0.8796 |
+| impasse | point | 33 | 88 | 0.7435 | 0.8687 |
+| both | pair: `RL-e` and `RL-f`'s ranking | 202 | 1,019 | 0.7657 | 0.8595 |
+| both | point | 168 | 466 | 0.9032 | 0.8682 |
+
+- **In the error arm, the direction rises as the reading narrows to what the
+  edge decides.** It reads 0.7811 over the whole shared region, 0.8510 off the
+  points third rules govern, and 0.9422 on the points it decides. The ranking
+  stays near 0.86 throughout.
+- **On the edges that decide points, the pair verdict itself reads 0.9378.** So
+  what moves the statistic is which pairs are read, not how each is judged.
+- **In the impasse arm the ranking stays above the proposer on every reading**,
+  as it fills more of the room.
+
+### 3. What the missing pairs weigh, and who governs them
+
+The error arm's strict pairs. The points are summed edge by edge, so a point two
+reversals change counts twice.
+
+| pair verdict | pairs | changing a point | points gained | points lost | mean points changed | median share third rules govern | wholly governed |
+|---|---|---|---|---|---|---|---|
+| `a` | 729 | 357 | 212,577 | 725 | 292.6 | 1/2 | 164 |
+| `b`, missing | 169 | 22 | 360 | 3,396 | 22.2 | 1 | 98 |
+
+- **Third rules govern the missing pairs.** More than half of them have their
+  whole shared region under third rules, against fewer than a quarter of the
+  pairs pointed right.
+- **A missing pair weighs about a thirteenth of a pair pointed right**, in the
+  points its reversal changes.
+- **In the impasse arm third rules govern little.** The median share is 0 for
+  both kinds of pair.
+
+### 4. The points no single edge decides
+
+| run | the room's right points | changed by some single reversal | by none |
+|---|---|---|---|
+| `i r1` | 13,602 | 10,958 | 2,644 |
+| `i r2` | 14,120 | 14,120 | 0 |
+| `i r3` | 19,320 | 19,320 | 0 |
+| `e r1` | 30,812 | 24,112 | 6,700 |
+| `e r2` | 43,360 | 36,280 | 7,080 |
+| `e r3` | 23,368 | 21,500 | 1,868 |
+
+In the error arm, between a twelfth and a fifth of the room's right points are
+decided by several edges at once, or by none of them alone.
+
+### 5. The reversals the engine would refuse — added after the first run
+
+- **813 of the 1,084 rows of `RL-e`'s population carry a reversal that would
+  close a cycle**: 752 of the error arm's 956, and 61 of the impasse arm's 128.
+  The engine would refuse each of them.
+- **Where every rule of such a cycle matches, the reversed relation leaves no
+  rule undefeated.** The first run counted what the base gets right there as a
+  gain of the declared direction. That is 129,046 of the 212,937 points the
+  error arm's reversals gained, and 12,710 of the impasse arm's 60,463.
+- **So the point verdict leaned toward the declared direction by
+  construction.** The engine has no such alternative. The module was extended
+  to read each edge again two ways, with no expectation:
+  - **discounted**: without the gains at those points;
+  - **against the engine's alternative**: the reversal where the engine would
+    accept it, and the edge taken out where it would refuse it.
+
+| arm | reading | units | strict | declared | ranking | missing pairs costing points | mean points changed, `a` / missing |
+|---|---|---|---|---|---|---|---|
+| error | as written | 135 | 378 | 0.9422 | 0.8680 | 19 of 169 | 292.6 / 22.2 |
+| error | discounted | 98 | 177 | 0.8683 | 0.8121 | 19 of 169 | 115.6 / 22.2 |
+| error | the engine's alternative | 94 | 166 | 0.9293 | 0.8067 | 8 of 169 | 115.2 / 10.3 |
+| impasse | as written | 33 | 88 | 0.7435 | 0.8687 | 20 of 35 | 703.2 / 378.5 |
+| impasse | discounted | 33 | 76 | 0.7297 | 0.8687 | 20 of 35 | 555.4 / 378.5 |
+| impasse | the engine's alternative | 30 | 70 | 0.8305 | 0.8667 | 14 of 35 | 555.3 / 290.5 |
+
+- **On the error arm's points the proposer points better than the ranking under
+  every reading**, by 0.06 to 0.12.
+- **In the impasse arm the ranking points better under every reading.**
+- **Sections 1 to 3 read as written.** Their story holds on the other two
+  readings. The missing pairs that decide no point go from 147 to 158 against
+  the engine's alternative.
+
+### The expectation
+
+| clause | what it says | as written | discounted | the engine's alternative |
+|---|---|---|---|---|
+| D1 | fewer than half of the error arm's missing pairs have point verdict `b` | holds, 19/169 | holds, 19/169 | holds, 8/169 |
+| D2 | the point verdict reads at least 0.90 by older rule, error arm | holds, 0.9422 | **fails**, 0.8683 | holds, 0.9293 |
+| D3 | on the point verdicts the ranking reads below in the error arm and above in the impasse arm | holds | holds | holds |
+| D4 | third rules govern a higher median share of the missing pairs, error arm | holds, 1 against 1/2 | the same | the same |
+| D5 | a reversal changes fewer points on average among the missing pairs, error arm | holds, 22.2 against 292.6 | holds | holds |
+
+**The drafter expected all five to hold, and trusted D2 least, then D3.** As
+written, all five held. The cycle's points had not been foreseen. With them, D2
+falls on either side of its line depending on how a reversal the engine would
+refuse is counted. The other four hold on every reading.
+
+### What it says
+
+- **In the error arm, direction and fill part over what `RL-e` counts.**
+  - Most pairs it counts against the proposer decide nothing. Third rules
+    govern their shared region, and reversing them changes no point the base
+    decides.
+  - Where an edge does decide points, its pair verdict and its point verdict
+    nearly always agree. There the proposer pointed it right on 0.87 to 0.94 of
+    the units, above the ranking on every reading.
+  - The fill weighs points, so it reads the edges that decide them.
+- **In the impasse arm they do not part.** Third rules govern little, the
+  missing pairs cost points, and the ranking points the deciding edges better
+  than the proposer on every reading. That matches the fill, where the ranking
+  fills more.
+- **`RL-e` and `RL-f` stand as signed.** They read every placed edge, as §0
+  asked. What this adds is that, in the error arm, the edges they count against
+  the proposer mostly decide nothing.
+- **What it leaves.** Why so many of the error arm's edges sit on regions third
+  rules govern is not read here. The placement round lists every rule of
+  another queue the draft overlaps over the whole space, and asks for a side
+  against each.
 
 ---
 
@@ -751,6 +955,9 @@ results_reasoned_loop/loop_{e,i}_r{1,2,3}.json
                                          every escalation whole with its calls, attempts,
                                          seconds and reasoning, and rung 2's metrics
 results_reasoned_loop/score.json         Stage C: the seven verdicts with their runs, and RL-h
+results_reasoned_loop/decided.json       POST-RUN: each placed edge beside the points it decides,
+                                         by run and arm, the expectation's five clauses, and the
+                                         reading added after the first run
 ```
 
 The smoke run's partial from before the first amendment,
