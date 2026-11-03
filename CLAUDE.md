@@ -177,8 +177,9 @@ the FINDINGS.
 2026-10-10 `blind/run.py`, since 2026-10-14 `screen/ask.py`, since
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
-`queue_alone/ask.py`, and since 2026-10-25 `first_match/ask.py` and
-`reasoned_rule/ask.py`, all thirteen below. It
+`queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
+`reasoned_rule/ask.py`, and since 2026-10-31 `reasoned_loop/run.py`, all
+fourteen below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -895,13 +896,90 @@ bands against the noise of four arms, and say so in §0.
 reasoning rule arm's pace faster than the passes found it. A plan that prices
 a pass from its smoke run should say how few asks the estimate rests on.
 
+**`PLAN_REASONED_LOOP.md` closed on 2026-11-03: the loop with reasoning on.**
+Seven signed rows adjudicated, four held and three refuted, and one reported.
+Sergi signed §0 on 2026-10-31, before any figure it governs existed, and §5.5's
+two amendments on 2026-10-31 and 2026-11-02, each before any figure it governs.
+- **What it asked.** It ran `PLAN_REUSE.md`'s loop with level 3's manual and
+  reasoning on, three runs an arm, under v1b: a blind first call, then a
+  placement round against the base's rules of other queues that the draft
+  overlaps.
+  - **The impasse arm** had the standing trigger.
+  - **The error arm** also escalated a ticket the base decided wrongly. It read
+    the ticket's label, and never handed it to the proposer.
+- **Where it is written up.** The record is
+  `results_reasoned_loop/FINDINGS_REASONED_LOOP.md`, and `STATUS.md` indexes
+  its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `reasoned_loop/` refuses while the plan carries
+  a blank signature line. The gate reads `PLAN_REASONED_LOOP.md` and no other
+  plan, and requires all three signature lines.
+- **What it calls.** `first_match/`, `queue_alone/`, `reasoned_rule/`,
+  `manual/`, `blind/`, `authorship/`, `reuse/` and `rung2/` are called by it and
+  not edited. Its asker is `PLAN_FIRST_MATCH.md`'s, with reasoning on at high
+  effort on both calls of an escalation.
+- **A run that dies keeps what it paid for.**
+  - **An outage.** A call refused for the rate on every attempt is waited out.
+    Once every wait is spent it is an outage: the run stops unrecorded, and the
+    same command resumes from the git-ignored partial file.
+  - **The seconds.** A call served from that file keeps the seconds the file
+    kept.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m reasoned_loop.run --dry-run                                  # RL-g1..RL-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m reasoned_loop.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m reasoned_loop.score                         # Stage C, free, from the runs
+    PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --smoke          # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --arm e --rep 1  # then §2.6's order, never side by side
+
+**With reasoning on, what limits the loop is its trigger.** Asked also where
+its base decided wrongly, the loop compiled the policy and the rarest queue.
+Under the standing trigger it compiled far less, because it never asks where a
+rule decides wrongly. The trigger that compiled it reads the truth of every
+arrival, as no deployment could. A plan that bands a trigger should say in §0
+what of the truth it reads.
+
+**Pointing each edge right is not deciding right.** Its placements pointed at
+their pair's better rule less often than a fixed ranking of the queues
+(`RL-e` and `RL-f` refuted). In the error arm the same edges still decided the
+order's room better than that ranking, and in one run better than every edge
+pointed at its better rule. A plan that bands a direction should report what
+the edges decide together, and say in §0 which of the two it adjudicates.
+
+**A pinned provider can refuse for a day.** One run met a day of refusals for
+the rate under the pin. §5.5's first amendment made such a refusal an outage to
+wait out and resume, rather than a failed proposal. A plan that pins one
+provider should say in §0 how a run that meets a long refusal stops and
+resumes, before its smoke run meets one.
+
+**A resumed run timed the replay, not the call.** Its record kept the replay's
+time for every call its partial served, and §5.5's second amendment fixed that
+for later runs. A plan whose runs resume should test, before the first run,
+that a resumed record keeps each call's own seconds.
+
+**A median over a call's attempts should leave out the attempts refused for
+the rate**, which carry no tokens. Stage C's median of reasoning tokens counted
+them, and read zero for the run that met the rate limits. The FINDINGS gives
+the medians over the attempts that reached the model.
+
+**Its runs were launched by the agent, at Sergi's request, detached from the
+agent's harness.** A supervisor ran them one at a time, resumed a run an outage
+had stopped about once an hour, and never passed the overwrite flag. §1 had
+placed every run in Sergi's terminal.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
 the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
 builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
-asks through too, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+and `reasoned_loop/protocol.py` ask through too, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -990,8 +1068,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-10, `blind/run.py`, since 2026-10-14, `screen/ask.py`, since
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
-`queue_alone/ask.py`, and since 2026-10-25, `first_match/ask.py` and
-`reasoned_rule/ask.py`.
+`queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
+`reasoned_rule/ask.py`, and since 2026-10-31, `reasoned_loop/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

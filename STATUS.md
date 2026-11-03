@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of October 25, 2026. **Not a history** — that is the four
+What is known, as of November 3, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -24,8 +24,9 @@ What is known, as of October 25, 2026. **Not a history** — that is the four
 [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md),
 [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
 [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
-[`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) and
-[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
+[`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) and
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -68,7 +69,9 @@ with and without the screen, in `PLAN_APPLY.md`**: seven more, closed on
 `PLAN_QUEUE_ALONE.md`**: seven more, closed the same day — plus **the first
 match, asked by name and with reasoning on, in `PLAN_FIRST_MATCH.md`**: seven
 more, closed on 2026-10-25 — plus **the rule written with reasoning on, in
-`PLAN_REASONED_RULE.md`**: five more, closed the same day.
+`PLAN_REASONED_RULE.md`**: five more, closed the same day — plus **the loop
+with reasoning on, under the standing trigger and asked also on its errors, in
+`PLAN_REASONED_LOOP.md`**: eight more, closed on 2026-11-03.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -301,6 +304,34 @@ third recovers 61% of what full supervision buys, on corpus test.
 > the list says, and write the list's rules one ticket at a time. What it would
 > compile from them, and in what order, is not measured.
 > [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md).
+>
+> **[NOTE 2026-11-03] A loop that reasons compiles the policy when it is also
+> asked where its base decides wrongly.**
+> [`PLAN_REASONED_LOOP.md`](PLAN_REASONED_LOOP.md) ran the loop with level 3's
+> manual and reasoning on, three runs an arm. Each rule was placed against the
+> base's rules of other queues it overlaps. One arm had the standing trigger,
+> and the other also asked where the base decided wrongly, reading the truth of
+> every arrival.
+>
+> - **Asked also on its errors, the loop's median base decides 0.9601 of the
+>   space right** (`RL-d` holds, thin), against 0.4614 under the standing
+>   trigger (`RL-c` holds).
+> - **The standing trigger did not stop asking early** (`RL-b` refuted, thin).
+>   Its bases covered the space through narrow rules, or not at all. They kept
+>   deciding a fifth to three tenths of the arrivals wrongly, which that trigger
+>   never asks about.
+> - **For the first time a loop compiles `ONCALL_ESCALATION`** (`RL-g` holds,
+>   thin), under the trigger that reads the truth.
+> - **The proposer drafts the right queue at 0.9093 of its escalations**
+>   (`RL-a` holds, thin), and least often where the base had erred.
+> - **Its placements point at the better rule less often than a fixed ranking
+>   of the queues does** (`RL-e` and `RL-f` refuted). Read together over the
+>   order's room, the error arm's edges decide more of it right than the
+>   ranking's.
+>
+> So with reasoning on, what limits the loop is the trigger. A trigger a
+> deployment could have is not measured.
+> [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
 
 ---
 
@@ -349,7 +380,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and fifty-two rows have been signed before the figures they name existed. This
+**One hundred and sixty rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -405,14 +436,15 @@ a count behind it.
 | **QA** · the queue asked alone (§0 of `PLAN_QUEUE_ALONE.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
 | **FM** · the first match (§0 of `PLAN_FIRST_MATCH.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
 | **RR** · the rule written with reasoning on (§0 of `PLAN_REASONED_RULE.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
-| **total** | **152** | **127** | **51** | **2** | **74** | **23** |
+| **RL** · the loop with reasoning on (§0 of `PLAN_REASONED_LOOP.md`) | 8 | 7 | **3** | 0 | 4 | 1 |
+| **total** | **160** | **134** | **54** | **2** | **78** | **24** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
-`QA-d`, `QA-e`, `FM-b`, `RR-d`.
+`QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -420,10 +452,10 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
 `J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
-`FM-f`, `RR-a`, `RR-b`, `RR-c`.
+`FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`.
+`FM-g`, `RR-e`, `RL-h`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -446,16 +478,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 51 of 127 = **40.2%**
-refuted; without them, 49 of 121 = **40.5%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 54 of 134 = **40.3%**
+refuted; without them, 52 of 128 = **40.6%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.3 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 51 of 120 = **42.5%** and 49
-of 114 = **43.0%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 54 of 127 = **42.5%** and 52
+of 121 = **43.0%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -599,6 +631,13 @@ of 114 = **43.0%**, which is the reading the calibration note should take.
 > The table, the named lists, the count in the heading and the four ratios moved
 > together, and the test above read them. The gap between the first two is
 > still 0.3 points as printed.
+>
+> **[NOTE 2026-11-03] Recomputed with the `RL` thread, in the same commit as its
+> row.** Eight rows were signed and seven adjudicated: three refuted and four
+> held. One was reported. None of its bands was set on a development set. The
+> table, the named lists, the count in the heading and the four ratios moved
+> together, and the test above read them. The gap between the first two is
+> still 0.3 points as printed.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -650,7 +689,9 @@ which owns all seven; and `FM` from
 [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
 which owns all seven; and `RR` from
 [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
-which owns all five.
+which owns all five; and `RL` from
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
+which owns all eight.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -2186,6 +2227,47 @@ So reasoning carries into the loop's own question: asked for a rule, the
 model chooses its queue nearly as the list says, and writes the list's rules.
 A reasoning rule took about 2,200 reasoning tokens at the median.
 
+**The loop with reasoning on: asked also where its base decides wrongly, it
+compiles the policy; under the standing trigger it compiles less than half of
+it.** `PLAN_REASONED_LOOP.md` ran `PLAN_REUSE.md`'s loop at n=2000 on rung 2's
+engine, with level 3's manual in the prompt and reasoning on, every call pinned
+to one provider. Three runs went in each of two arms. The first call was blind
+to the base, and a placement round set each rule against the base's rules of
+other queues that it overlaps. The impasse arm had the standing trigger. The
+error arm also escalated a ticket the base decided with the wrong queue,
+reading the label of every arrival and never handing it to the proposer.
+Everything is from
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md):
+
+- **The error arm's median base decides 0.9601 of the space right** (`RL-d`
+  holds, thin), and the impasse arm's 0.4614 (`RL-c` holds). The third error
+  run reached 0.8898.
+- **The standing trigger did not stop asking early** (`RL-b` refuted, thin).
+  One impasse run of three covered the space before case 200.
+  - No impasse run wrote the list's default at the first `H29` ticket, case 1.
+  - Their bases covered the space by tiling it with narrow rules, or never
+    covered it.
+  - They then decided a fifth to three tenths of the arrivals wrongly, and
+    never asked about them.
+- **The error arm compiles `ONCALL_ESCALATION`**, a median recall of 0.9333
+  over the space (`RL-g` holds, thin). It is the first loop to do so. The
+  impasse arm never escalated a ticket of the queue, and recalls none of it.
+- **The proposer drafts the right queue at 371 of 408 escalations** (`RL-a`
+  holds, thin): 0.9398 at the impasses and conflicts, and 0.8884 at the
+  errors.
+- **Beyond the keyword its placements point at the better rule on 0.7657 by
+  older rule**, and the Stage C ranking on 0.8595 on the same pairs (`RL-e`
+  and `RL-f` refuted). The manual's identifiers took the place of the base's
+  in about one citation in six.
+  - Read after the verdicts, over the order's room in the error arm, its
+    declared edges decide more right than the ranking's, in every run.
+- **95 of the 408 escalations ended unplaced**, and their rules were not born.
+
+So with reasoning on, what limits the loop is its trigger, not the queue it
+chooses. The trigger that compiled the policy reads the truth of every
+arrival. The runs cost $0.19 at Baidu's listing; e r2 met a day of rate limits
+and resumed from its partial file 18 times.
+
 ---
 
 ## What was withdrawn, and why
@@ -2394,6 +2476,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      identifiers, which no base holds. That is a run, under the budget this
      plan measured, and a plan.
    [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md).
+   **[NOTE 2026-11-03] Measured by `PLAN_REASONED_LOOP.md`: the loop that
+   reasons compiles the policy when it is also asked where its base errs.**
+   - Under the standing trigger its bases decide less than three fifths of the
+     space (`RL-c` holds). One run of three covered the space before case 200
+     (`RL-b` refuted, thin).
+   - Asked also on its errors, its median base decides 0.9601 of the space
+     (`RL-d` holds, thin).
+   - Its placements point at the better rule less often than a fixed ranking
+     (`RL-e` and `RL-f` refuted). The manual's identifiers took the place of
+     the base's in about one citation in six.
+   - In the loop it wrote the governing rule's region on about a quarter of its
+     births, where the re-ask wrote it on nearly three answers in four.
+   - What is open now is why it wrote narrow rules, why its placements decide
+     the room better than they point edge by edge, and where its 95 unplaced
+     answers come from. Its reasoning is recorded whole and coded by no stage.
+   [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2448,6 +2546,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - So the queue is in the model and the trigger is not the whole gap: what
      the loop writes after asking loses it too.
    [`results_manual/FINDINGS_MANUAL.md`](results_manual/FINDINGS_MANUAL.md).
+   **[NOTE 2026-11-03] With reasoning on, a loop asked on its errors compiles
+   the queue.**
+   - Under `PLAN_REASONED_LOOP.md`'s error trigger, the proposer named
+     `ONCALL_ESCALATION` at all 15 of its escalations of the class. Its bases
+     decided right every ticket of it they decided.
+   - The arm's median recall of the queue over the space is 0.9333 (`RL-g`
+     holds, thin), and one run of three reached 0.7333.
+   - Under the standing trigger, with reasoning on, no ticket of the queue
+     escalated, and no base recalls any of it.
+   - That trigger reads the truth of every arrival, as no deployment could. A
+     trigger a deployment could have, reading some errors late or noisily, is
+     what is open now.
+   [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

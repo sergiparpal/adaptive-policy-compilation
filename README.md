@@ -57,6 +57,7 @@ up in four places at once.
 | **QA** · the queue asked alone | `PLAN_APPLY.md`'s ticket prompts asked again on one day, pinned to one provider, in three arms: the rule-writing prompt, the same impasse framing asking for the queue alone, and a plain question for the queue, to separate the rule-writing task from the application — closed 2026-10-24 | [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md) |
 | **FM** · the first match | `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts asked again on one day, pinned to one provider, in three arms: the plain question, the same question asking for the rule that applies before its queue, and the plain question with reasoning on, to separate finding the first match from naming its queue, and both from thinking it through — closed 2026-10-25 | [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) |
 | **RR** · the rule written with reasoning on | `PLAN_QUEUE_ALONE.md`'s level-3 rule and plain prompts asked again on one day, pinned to one provider, in four arms: the rule-writing prompt and the plain question, each with reasoning off and on, to see whether reasoning carries into the queue a rule-writer chooses before any loop runs, and to read the rules it writes — closed 2026-10-25 | [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) |
+| **RL** · the loop with reasoning on | `PLAN_REUSE.md`'s loop run with level 3's manual and reasoning on, pinned to one provider, a blind first call and a placement round against the base, three runs an arm: under the standing trigger, and asked also where the base decides wrongly, to see whether what limits a reasoning loop is its trigger or the order its rules get — closed 2026-11-03 | [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -714,6 +715,46 @@ PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session smoke  # Stage 
 PYTHONHASHSEED=0 .venv/bin/python -m reasoned_rule.ask --session pass1  # then pass 1, then pass 2, never in parallel
 ```
 
+**[`PLAN_REASONED_LOOP.md`](PLAN_REASONED_LOOP.md) closed on 2026-11-03**: the
+loop with reasoning on. Sergi signed §0 on 2026-10-31, before any of its
+figures existed, and §5.5's two amendments on 2026-10-31 and 2026-11-02.
+- **What it asked.** It ran `PLAN_REUSE.md`'s loop at n=2000 on rung 2's
+  engine, three runs an arm, with level 3's manual and reasoning on, every call
+  pinned to one provider.
+  - **The protocol.** The first call is blind to the base, and a placement
+    round sets each rule against the base's rules of other queues that it
+    overlaps. That is v1b.
+  - **The arms.** One has the standing trigger. The other also escalates a
+    ticket the base decided wrongly, reading its label and never handing it to
+    the proposer.
+- **Why.** With reasoning on, the model asked for a rule had chosen the queue
+  the list gives and written the list's rules. What a loop compiles from such a
+  proposer depends on the order its rules get, and on which tickets it is asked
+  about.
+
+Its record is
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
+Its gate reads that plan and no other, counts its three signature lines, and
+guards its three writers. `first_match/`, `queue_alone/`, `reasoned_rule/`,
+`manual/`, `blind/`, `authorship/`, `reuse/` and `rung2/` are called by it and
+not edited; its asker is `first_match/`'s.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same rules back. A paid run does not start without Sergi asking for it. An
+impasse run asked for up to an hour and an error run for about two and a half,
+when no outage stopped it. A run stopped by an outage resumes from its partial
+file with the same command.
+
+```bash
+python3 -m reasoned_loop.run --dry-run                                  # RL-g1..RL-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m reasoned_loop.sample                        # Stage A · the transcriber and the references
+PYTHONHASHSEED=0 python3 -m reasoned_loop.score                         # Stage C · RL-a to RL-g, and RL-h
+PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --smoke          # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --arm e --rep 1  # then §2.6's order, one run at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -925,7 +966,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_APPLY.md`'s, and the three of `queue_alone/`, which run
 > `PLAN_QUEUE_ALONE.md`'s, and the three of `first_match/`, which run
 > `PLAN_FIRST_MATCH.md`'s, and the three of `reasoned_rule/`, which run
-> `PLAN_REASONED_RULE.md`'s.
+> `PLAN_REASONED_RULE.md`'s, and the three of `reasoned_loop/`, which run
+> `PLAN_REASONED_LOOP.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1814,6 +1856,16 @@ adaptive-policy-compilation/
 │   ├── shape.py             the rules written, read alone over the space against the list's first match
 │   └── score.py             Stage C · RR-a to RR-d and RR-e, gated on PLAN_REASONED_RULE.md
 │
+├── reasoned_loop/        RL · the loop with reasoning on
+│   ├── plan.py              the gate and §11's constants, imported from first_match/; §0's lines
+│   ├── protocol.py          v1b's texts and messages, the proposer over first_match/'s asker · the proposer's path
+│   ├── loop.py              the loop under both triggers: the blind draft and the placement round · the proposer's path
+│   ├── references.py        the transcriber, the hidden policy through v1b's path, the tickets
+│   ├── gates.py             RL-g1..RL-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   ├── run.py               Stage B · the smoke run and the six runs · spends · resumes · the proposer's path
+│   └── score.py             Stage C · RL-a to RL-g and RL-h, gated on PLAN_REASONED_LOOP.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1900,6 +1952,7 @@ adaptive-policy-compilation/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
+    results_reasoned_loop/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
