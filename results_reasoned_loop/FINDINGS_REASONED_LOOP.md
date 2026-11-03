@@ -76,6 +76,13 @@ engine would refuse is counted. That is above the ranking under every reading.
 In the impasse arm the two do not part. See *What each placed edge decides*,
 below.
 
+**[NOTE 2026-11-03] Read POST-RUN, most unplaced answers come from the
+protocol's two texts.** The system prompt tells the proposer not to declare
+against a rule nested with its own, and the placement round lists such rules
+and asks for a side against each. 56 of the 95 unplaced escalations left out
+only rules nested with their draft. A nested rule was left out seven times as
+often as a crossing one. See *Where the unplaced answers come from*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
 > computed after the signature. Zero API calls.
 >
@@ -740,6 +747,10 @@ Over the corpus:
 3. **Where the unplaced answers come from.** 95 of 408 escalations ended
    unplaced, 38 in e r3. The reasoning is recorded whole on every attempt, and
    coded by no stage.
+   **[NOTE 2026-11-03] Read POST-RUN**, in *Where the unplaced answers come
+   from*, below. Most left out rules nested with their draft, as the system
+   prompt says to, in a round that lists them. e r3's count is its default,
+   which contains every later draft.
 4. **A trigger that reads no truth.** The error arm reads the label of every
    arrival, as no deployment could (§13).
 5. **Reasoning in the loop apart from v1b.** No reasoning-off arm ran under
@@ -941,6 +952,208 @@ refuse is counted. The other four hold on every reading.
 
 ---
 
+## Where the unplaced answers come from — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-03, after the plan closed, and run
+> the same day. Zero API calls. `reasoned_loop/unplaced.py` read every rule a
+> placement round listed in two ways. By masks, it read the rule's relation to
+> the draft over the space. By a codebook, it read what the placement call's
+> reasoning says of it.
+> - **The codebook was frozen on the first run of each arm**, i r1 and e r1,
+>   and committed with the expectation before any reasoning of a second or
+>   third run was read. The expectation is five clauses in the module's
+>   docstring. The drafter had read the development runs' reasoning around
+>   every rule left out at their 24 unplaced escalations, and this record
+>   whole.
+> - **Five gates stood before any write.**
+>   - The census is `score.json`'s and the loop's own.
+>   - Every answer read kept the draft's rule.
+>   - The codebook is the one committed, with the sets split by run.
+>   - Every placement call read carries its reasoning, and its attempts ended
+>     `stop`.
+>   - Added after the first run: the record already on disk comes back.
+> - **The module was extended after its first run, with no expectation**
+>   (section 4, below). The record comes from the second run, which gave back
+>   every figure of the first.
+>
+> Not a signed row; no verdict moves. The record is
+> [`unplaced.json`](unplaced.json). Its `_env` names the branch commit it was
+> written from, with a clean tree.
+
+**Two texts the proposer reads disagree.**
+- **The system prompt**, level 3's: *"Si tu regla es un caso particular de
+  otra, no declares nada: el nivel 1 ya lo resuelve."*
+- **The placement message**, v2b's: *"Situala frente a cada una de la
+  lista."*
+- **The list** is `O`, every rule of another queue that meets the draft over the
+  space. So it holds rules nested with the draft, which subsumption already
+  orders.
+
+The validator requires a side against every rule of `O`. A rule left without one
+leaves the answer unplaced, and the rule is not born. **What a side against a
+rule inside the draft or containing it would add**, by `rung2/engine2.py`'s
+`try_edge`:
+- With the narrower rule on top, the edge is accepted as redundant and enters
+  nothing.
+- With the narrower rule below, it is refused as contradicting subsumption.
+
+**What the codes are.**
+- `nested`: the reasoning says the rule is nested.
+- `apart`: it says the two do not overlap, or the rule does not apply.
+- *Never named*: its identifier appears nowhere in the reasoning.
+
+They are read on the sentences that name a rule and on the one after. Every
+count of a code is approximate, so what is read is the rules left out against
+the rules placed.
+
+### 1. What is left out, by masks
+
+Each listed rule's relation to the draft over the space, with the rules left
+out among those listed:
+
+| relation | development | held-out | all runs |
+|---|---|---|---|
+| nested: inside the draft | 6 of 35 | 99 of 171 | 105 of 206, 0.5097 |
+| nested: containing the draft | 30 of 69 | 80 of 245 | 110 of 314, 0.3503 |
+| nested: equal to the draft | 0 of 8 | 0 of 28 | 0 of 36 |
+| crossing | 56 of 1,023 | 98 of 1,846 | 154 of 2,869, 0.0537 |
+
+- **A nested rule is left out about seven times as often as a crossing one**,
+  0.3867 against 0.0537 over every run. On the held-out runs it is 0.4032
+  against 0.0531.
+- **A rule equal to the draft is never left out.**
+- **The impasse arm left out few rules of either relation**: 3 of 15 nested and
+  14 of 180 crossing, at 8 unplaced escalations.
+
+### 2. What the reasoning says of the rules it left out
+
+| cause | development | held-out |
+|---|---|---|
+| nested, and said nested | 34 | 124 |
+| nested, not said | 2 | 55 |
+| crossing, said apart | 27 | 27 |
+| crossing, said nested | 11 | 6 |
+| crossing, never named | 6 | 2 |
+| crossing, named with neither claim | 12 | 63 |
+| rules left out | 92 | 277 |
+
+**Saying apart, among crossing rules:**
+
+| set | left out | placed |
+|---|---|---|
+| development | 27 of 56 | 53 of 967 |
+| held-out | 27 of 98 | 127 of 1,748 |
+
+- **In the development runs the reasoning names nearly every rule it leaves
+  out, and says why.** Nested ones it calls nested, in the system prompt's
+  words. On i r1's case 42: *"R0006 es un subconjunto de nuestra regla ... la
+  regla más contenida (R0006) debería ganar. No necesitamos declarar nada."*
+  Crossing ones it mostly calls apart, or takes for nested.
+- **On the held-out runs the claims about single rules thin out.** 55 nested
+  rules left out go unsaid, 51 of them never named, and 63 crossing ones are
+  named with neither claim. Section 4 says where they are.
+- **The codebook errs both ways.** *"Tampoco nuestra regla está contenida en
+  R0001"* reads as nested, because its negation begins 27 characters before
+  the term, past the 25 the codebook reads. The comparison with the rules placed
+  is what carries the reading.
+
+### 3. The expectation
+
+| clause | what it says | held-out | verdict |
+|---|---|---|---|
+| U1 | a nested rule is left out at least four times as often as a crossing one | 0.4032 against 0.0531 | **holds** |
+| U2 | at least three quarters of the missing nested rules are said nested | 124 of 179, 0.6927 | **fails** |
+| U3 | at least half of the missing crossing rules are said apart or nested | 33 of 98, 0.3367 | **fails** |
+| U4 | among crossing rules, saying apart is at least four times as frequent among the missing as among the placed | 0.2755 against 0.0727, 3.79 times | **fails** |
+| U5 | at least half of e r3's unplaced escalations left out a rule whose region is the whole space | 32 of 38, 0.8421 | **holds** |
+
+**The drafter expected all five to hold, and trusted U2 most and U5 least.**
+The two that read structure held, and the three that read what the reasoning
+says of single rules failed. U2, the clause trusted most, was among them.
+
+### 4. Each unplaced escalation by what it left out — added after the first run
+
+**Three of e r2's escalations left out 82 of the held-out runs' 277 missing
+rules.** The clauses count rules, so these three weigh what 82 small ones would.
+- **Case 1033 drafted the catch-all**, `severity gte 1` → `T1_GENERAL`.
+  - Every one of the 52 rules listed lies inside it, and the answer placed none
+    of them.
+  - Its note: *"Catch-all rule covering all tickets. All overlapping rules are
+    more specific subsets and automatically win via level 1 containment, so no
+    explicit priority declarations are needed."*
+  - The reasoning speaks of the list as a whole, and names 50 of the 52 rules
+    nowhere.
+- **Cases 954 and 1850 placed only the rules nested with their draft.** They
+  left out 17 and 13 crossing rules.
+  - 1850's reasoning: *"The instruction says 'Situala frente a cada una de la
+    lista' but in practice we only put in beats/loses_to those that have the
+    relationship."*
+  - 954's: *"we must only list those where our rule is an exception (i.e., our
+    condition is a subset of the other's)"*.
+  - The placement message defines `beats` as an exception and `loses_to` as a
+    general case. These answers read both as containment, so a crossing rule
+    has no side.
+
+Read once per escalation, by the relations of what each left out and of what it
+placed, reading no text:
+
+| what the escalation left out | development | held-out | all runs |
+|---|---|---|---|
+| only rules nested with the draft | 14 | 42 | 56 |
+| only crossing rules, placing only nested ones | 2 | 4 | 6 |
+| every listed rule, all of them crossing | 1 | 5 | 6 |
+| only crossing rules, beside crossing ones placed | 2 | 11 | 13 |
+| rules of both relations | 5 | 9 | 14 |
+| unplaced escalations | 24 | 71 | 95 |
+
+- **Counted once per escalation, the two sets agree.** 14 of 24 and 42 of 71
+  left out only nested rules. Every rule left out has a stated cause at 17 of
+  24 and 50 of 71 (the first run's readings).
+- **The error arm carries the nested ones**: 55 of its 87 unplaced
+  escalations.
+- **The impasse arm's 8 are different.** 5 of them left out every listed rule,
+  all of them crossing, and 1 left out only nested ones.
+
+### 5. e r3's count is its default
+
+- **e r3 wrote `severity gte 1` → `T1_GENERAL` at case 1.** Every later draft
+  of another queue lies inside it, so it was listed at every one of e r3's 38
+  unplaced escalations. It was left out at 32 of them (U5).
+- **So the default accounts for most of e r3's unplaced escalations**, 38 of
+  its 102, the most of any run (Stage C).
+- **e r2 drafted the same catch-all at case 1033** (section 4). By then 52 rules
+  of other queues stood in its base, it left out all of them, and the catch-all
+  was not born.
+
+### What it says
+
+- **Most unplaced answers come from the protocol's two texts.**
+  - The system prompt tells the proposer not to declare against a rule nested
+    with its own, because subsumption orders it.
+  - The placement round lists such rules and asks for a side against each.
+  - With reasoning on, the proposer follows the system prompt. 56 of the 95
+    unplaced escalations left out only nested rules, and a nested rule was left
+    out seven times as often as a crossing one.
+- **A second reading of the same texts places only the nested rules**, taking
+  `beats` and `loses_to` for containment. By structure, 12 escalations left out
+  only crossing rules while placing only nested ones or nothing.
+- **A side against a rule inside the draft or containing it changes nothing
+  the engine orders.** Leaving it out costs the birth. The rule is refused
+  whole, its placements against crossing rules with it. Under the error
+  trigger, a later ticket the base still decides wrongly escalates again
+  (Stage C).
+- **The codebook's claims about single rules did not carry to the held-out
+  runs.** There the largest escalations spoke of the list as a whole, or
+  applied a rule to it. The structure carried the reading.
+- **What it leaves.**
+  - Would a placement round that listed only crossing rules, or that asked for
+    nested ones too, leave fewer answers unplaced, and change what the loop
+    compiles? That is a change of protocol, calls, and a plan.
+  - Why the proposer never leaves out a rule equal to its draft is not read
+    here.
+
+---
+
 ## Files
 
 ```
@@ -958,6 +1171,10 @@ results_reasoned_loop/score.json         Stage C: the seven verdicts with their 
 results_reasoned_loop/decided.json       POST-RUN: each placed edge beside the points it decides,
                                          by run and arm, the expectation's five clauses, and the
                                          reading added after the first run
+results_reasoned_loop/unplaced.json      POST-RUN: every rule a placement round listed, by its
+                                         relation to the draft and by what the reasoning says of
+                                         it, the codebook, the expectation's five clauses, and each
+                                         unplaced escalation by what it left out
 ```
 
 The smoke run's partial from before the first amendment,
