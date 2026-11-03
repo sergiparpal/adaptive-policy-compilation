@@ -85,6 +85,9 @@ THE GATES
      whose reversal, installed in place through `try_edge`, is accepted with
      every other edge, the masks give the reinstall's right points: up to
      `GATE_EDGES` of them, from at most `GATE_TRIES` tried, and at least one.
+  5. **The record on disk comes back** (added after the first run). Every
+     figure of the record already written, but its `_env` and its gates, is the
+     one this run reads.
 
 It refuses to write if any gate fails, and while the plan is unsigned, like every
 writer of the package. `--dry-run` runs the gates, prints pass or fail, and
@@ -139,7 +142,28 @@ expectation above was written and committed before the reading ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. `RL-e` and
 `RL-f` stand as signed. Zero API calls.
 
-Usage:  python3 -m reasoned_loop.decided --dry-run   # gates 1 to 4; writes nothing
+--------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE POINTS A REVERSAL LEAVES WITHOUT A RULE
+--------------------------------------------------------------------------
+Read after the first run, 813 of the 1,084 rows of `RL-e`'s population carry a
+reversal that would close a cycle, and the engine would refuse every one of
+them. Where every rule of such a cycle matches, the reversed relation leaves no
+rule undefeated, so no rule decides the point. The first run counted what the
+base gets right there as a gain of the declared direction. The engine has no
+such alternative. So each edge is read again two ways:
+- **discounted**: the reversal's gains, less those at the points it leaves with
+  no undefeated rule, `gains_cycle`;
+- **the engine's alternative**: the reversal where the engine would accept it,
+  and the edge taken out where it would refuse it, with `gains_alt` and
+  `losses_alt`.
+For each arm it reads `RL-e`'s statistic and the ranking on both verdicts, the
+pair verdicts against the alternative's, and the points the alternative
+changes. It reads the five clauses again on both, the governed shares as they
+were. **No expectation goes with it**: it was written after the first run's
+figures were read. Added in its own commit, and the record comes from a second
+run, which must give back every figure of the first (gate 5).
+
+Usage:  python3 -m reasoned_loop.decided --dry-run   # gates 1 to 5; writes nothing
         PYTHONHASHSEED=0 python3 -m reasoned_loop.decided
 """
 
@@ -177,6 +201,11 @@ PROVENANCE = (
     "POST-RUN: asked for on 2026-11-03, after PLAN_REASONED_LOOP.md closed. The "
     "expectation in the module's docstring was written and committed before the "
     "reading ran. Not a signed row; RL-e and RL-f stand as signed.")
+ADDED = (
+    "ADDED AFTER THE FIRST RUN: each edge read again, discounting the gains at the "
+    "points its reversal leaves with no undefeated rule, and against the engine's "
+    "alternative, the edge taken out where its reversal closes a cycle. Written "
+    "after the first run's figures were read, with no expectation.")
 
 
 def record_path():
@@ -441,6 +470,117 @@ def read_expectation(arms: dict[str, dict]) -> list[dict[str, Any]]:
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: the points a reversal leaves without a rule
+# ---------------------------------------------------------------------------
+
+def without_a_rule(engine: PriorityEngine, undefeated: dict[str, int], mask: int) -> int:
+    """The points of `mask` some rule matches and where no rule is undefeated:
+    the points a cycle of the relation leaves to none."""
+    matched = live = 0
+    for r in engine.rules:
+        matched |= engine.ext[r.rule_id]
+    for m in undefeated.values():
+        live |= m
+    return matched & ~live & mask
+
+
+def removed_undefeated(engine: PriorityEngine, undefeated: dict[str, int],
+                       w: str, l: str) -> dict[str, int]:
+    """The undefeated masks with the edge `w` over `l` taken out."""
+    out = dict(undefeated)
+    out[l] = engine.ext[l] & ~defeaters(engine, l, without=w)
+    return out
+
+
+def cycle_reading(engine: PriorityEngine, undefeated: dict[str, int], right: int,
+                  action: dict[str, str], tmask: dict[str, int], mask: int,
+                  w: str, l: str, closes: bool) -> dict[str, Any]:
+    """One edge read again: its reversal's gains at the points the reversal
+    leaves with no undefeated rule, its verdict without them, and its verdict
+    against the engine's alternative, the edge taken out where the reversal
+    closes a cycle."""
+    flipped_u = reversed_undefeated(engine, undefeated, w, l)
+    flipped = right_within(flipped_u, action, tmask, mask)
+    gains, losses = right & ~flipped, flipped & ~right
+    cycle = gains & without_a_rule(engine, flipped_u, mask)
+    alt = (right_within(removed_undefeated(engine, undefeated, w, l), action, tmask, mask)
+           if closes else flipped)
+    g_alt, l_alt = right & ~alt, alt & ~right
+    return {"winner": w, "loser": l, "gains_cycle": cycle.bit_count(),
+            "point_discounted": verdict((gains & ~cycle).bit_count(), losses.bit_count()),
+            "gains_alt": g_alt.bit_count(), "losses_alt": l_alt.bit_count(),
+            "point_alt": verdict(g_alt.bit_count(), l_alt.bit_count())}
+
+
+def merged(run: dict[str, Any], again: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """A run's rows, each with its reading again beside it."""
+    return [{**row, **a, "gains_discounted": row["gains"] - a["gains_cycle"]}
+            for row, a in zip(run["rows"], again)]
+
+
+def read_again(run: dict[str, Any], on: tuple | None = None) -> list[dict[str, Any]]:
+    """Every row of a run read again, in the rows' order; a row that repeats an
+    edge carries the edge's reading again."""
+    _, tmask, mask = on or world()
+    eng, und, action, right = run["engine"], run["undefeated"], run["action"], run["right"]
+    read: dict[tuple[str, str], dict[str, Any]] = {}
+    out = []
+    for row in run["rows"]:
+        key = (row["winner"], row["loser"])
+        if key not in read:
+            read[key] = cycle_reading(eng, und, right, action, tmask, mask, *key,
+                                      closes=row["closes_cycle"])
+        out.append(read[key])
+    return out
+
+
+def crosstab_on(rows: list[dict], key: str) -> dict[str, dict[str, int]]:
+    return crosstab([{**r, "point": r[key]} for r in rows])
+
+
+def mean_changed_by_pair(rows: list[dict], gains: str, losses: str) -> dict[str, Any]:
+    out = {}
+    for p in (HIT, MISS):
+        changed = [r[gains] + r[losses] for r in rows if r["pair"] == p]
+        m = F(sum(changed), len(changed)) if changed else None
+        out[p] = {"edges": len(changed), "changing": sum(1 for c in changed if c),
+                  "mean_changed": frac(m), "mean_changed_exact": m}
+    return out
+
+
+def added_readings(rows_by_run: list[list[dict]]) -> dict[str, Any]:
+    """An arm's rows, each merged with its reading again, read on both verdicts;
+    and the arm as `read_expectation` takes it under each."""
+    pop = [rl_e(rows) for rows in rows_by_run]
+    flat = [r for rows in pop for r in rows]
+    pairs = [r for r in flat if strict(r, "pair")]
+    variants = {
+        "discounted": ("point_discounted", mean_changed_by_pair(pairs, "gains_discounted",
+                                                                "losses")),
+        "alternative": ("point_alt", mean_changed_by_pair(pairs, "gains_alt", "losses_alt"))}
+    out: dict[str, Any] = {"gains": sum(r["gains"] for r in flat),
+                           "gains_cycle": sum(r["gains_cycle"] for r in flat),
+                           "closes_cycle": sum(1 for r in flat if r["closes_cycle"])}
+    for name, (key, points) in variants.items():
+        out[name] = {"crosstab": crosstab_on(flat, key), "direction": by_older(pop, key),
+                     "points_by_pair": points}
+    return out
+
+
+def clauses_again(arms: dict[str, dict], added: dict[str, dict]) -> dict[str, Any]:
+    """The five clauses read on each verdict added after the first run, the
+    governed shares as the first run read them. Reported, never adjudicated."""
+    out = {}
+    for name in ("discounted", "alternative"):
+        variant = {a: {**arms[a], "crosstab": added[a][name]["crosstab"],
+                       "direction": {"point": added[a][name]["direction"]},
+                       "points_by_pair": added[a][name]["points_by_pair"]}
+                   for a in plan.ARMS}
+        out[name] = read_expectation(variant)
+    return out
+
+
+# ---------------------------------------------------------------------------
 # The gates
 # ---------------------------------------------------------------------------
 
@@ -542,32 +682,43 @@ def plain(x: Any) -> Any:
     return x
 
 
+def comes_back(body: dict[str, Any], path) -> dict[str, Any]:
+    """Gate 5: every figure of the record already on disk, but its `_env` and its
+    gates, is the one this run reads. With no record on disk there is nothing to
+    give back."""
+    what = "the record on disk comes back"
+    if not path.exists():
+        return {"gate": 5, "run": "pooled", "what": what, "earlier": None, "passes": True}
+    old = json.loads(path.read_text())
+    new = json.loads(json.dumps(st._rounded(plain(body)), default=str))
+    differ = [k for k in sorted(old) if k not in ("_env", "gates") and new.get(k) != old[k]]
+    return {"gate": 5, "run": "pooled", "what": what,
+            "earlier": old.get("_env", {}).get("git_commit"), "differ": differ,
+            "passes": not differ}
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="What each placed edge decides (POST-RUN, free).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="run gates 1 to 4 and stop; writes nothing")
+                    help="run gates 1 to 5 and stop; writes nothing")
     args = ap.parse_args(argv)
     gate = plan.refuse_unsigned(f"reasoned_loop/decided.py writes {record_path()}")
     published = json.loads(plan.score_path().read_text())
     records, stage_c, runs = read_all()
     checked = check(records, stage_c, runs, published)
-    for g in checked:
-        print(f"  gate {g['gate']} run {g['run']}: {'PASS' if g['passes'] else 'FAIL'}"
-              f"  {g['what']}")
-    if not all(g["passes"] for g in checked):
-        sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
-    if args.dry_run:
-        print("\ndry run: nothing written")
-        return 0
     tags = {a: [t for t in runs if t.startswith(f"{a}_")] for a in plan.ARMS}
     arms = {a: arm_readings([runs[t]["rows"] for t in tags[a]]) for a in plan.ARMS}
     arms["pooled"] = arm_readings([runs[t]["rows"] for t in runs])
     expectation = read_expectation(arms)
+    again = {t: read_again(r) for t, r in runs.items()}
+    rows_again = {t: merged(runs[t], again[t]) for t in runs}
+    added = {a: added_readings([rows_again[t] for t in tags[a]]) for a in plan.ARMS}
+    added["pooled"] = added_readings([rows_again[t] for t in runs])
     per_run = {t: {"room_points": r["room_points"], "graph_edges": r["graph_edges"],
                    "distinct_edges_read": r["distinct_edges"], "rows": len(r["rows"]),
                    "pivotal": r["pivotal"], "readings": arm_readings([r["rows"]]),
                    "edges": r["rows"]} for t, r in runs.items()}
-    record_path().write_text(json.dumps(st._rounded(plain({
+    body = {
         "_env": environment(),
         "plan": str(plan.PLAN),
         "signature": gate,
@@ -581,7 +732,20 @@ def main(argv: list[str] | None = None) -> int:
         "arms": arms,
         "runs": per_run,
         "expectation": expectation,
-    })), indent=2, default=str) + "\n")
+        "added_after_the_first_run": {"what": ADDED, "arms": added,
+                                      "clauses_read_again": clauses_again(arms, added),
+                                      "runs": again},
+    }
+    checked.append(comes_back(body, record_path()))
+    for g in checked:
+        print(f"  gate {g['gate']} run {g['run']}: {'PASS' if g['passes'] else 'FAIL'}"
+              f"  {g['what']}")
+    if not all(g["passes"] for g in checked):
+        sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
+    if args.dry_run:
+        print("\ndry run: nothing written")
+        return 0
+    record_path().write_text(json.dumps(st._rounded(plain(body)), indent=2, default=str) + "\n")
     for c in expectation:
         print(f"  {c['clause']}: {'holds' if c['holds'] else 'fails'}")
     print(f"\n-> {record_path()}\n  {describe()}")

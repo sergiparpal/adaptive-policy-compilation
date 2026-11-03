@@ -247,6 +247,89 @@ class TestTheExpectation(unittest.TestCase):
         self.assertEqual([c["holds"] for c in x], [False] * 5)
 
 
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+    """A over B, A over C and C over B. B over A closes the cycle A -> C -> B,
+    and where all three match the reversed relation leaves no rule undefeated."""
+
+    def setUp(self):
+        self.C = r_("C", 2, T3, channel="email")
+        a, b, c = ext(A), ext(B), ext(self.C)
+        self.tmask = truth(**{T1: a, T2: b & ~a, T3: c & ~a & ~b})
+        self.on = (SPACE, self.tmask, SPACE.full)
+        self.rec, self.engine, self.run = world([A, B, self.C],
+                                                [("A", "B"), ("A", "C"), ("C", "B")],
+                                                self.tmask)
+        self.all3 = a & b & c
+        self.ab_only = a & b & ~c
+
+    def test_the_points_a_reversal_leaves_without_a_rule(self):
+        und = brows.undefeated_masks(self.engine)
+        self.assertEqual(decided.without_a_rule(self.engine, und, SPACE.full), 0)
+        flipped = decided.reversed_undefeated(self.engine, und, "A", "B")
+        self.assertEqual(decided.without_a_rule(self.engine, flipped, SPACE.full), self.all3)
+
+    def test_taking_an_edge_out(self):
+        und = brows.undefeated_masks(self.engine)
+        out = decided.removed_undefeated(self.engine, und, "A", "B")
+        self.assertEqual(out["A"], und["A"])
+        self.assertEqual(out["B"], ext(B) & ~ext(self.C))
+
+    def test_an_edge_read_again(self):
+        again = {(x["winner"], x["loser"]): x for x in decided.read_again(self.run, on=self.on)}
+        ab = again[("A", "B")]
+        self.assertEqual((ab["gains_cycle"], ab["point_discounted"]),
+                         (self.all3.bit_count(), HIT))
+        # Taken out, A and B are left in conflict where C does not match.
+        self.assertEqual((ab["gains_alt"], ab["losses_alt"], ab["point_alt"]),
+                         (self.ab_only.bit_count(), 0, HIT))
+        rows = {(r["winner"], r["loser"]): r for r in self.run["rows"]}
+        self.assertTrue(rows[("A", "B")]["closes_cycle"])
+        self.assertEqual(rows[("A", "B")]["gains"], (ext(A) & ext(B)).bit_count())
+        # A reversal the engine would accept is its own alternative.
+        ac = again[("A", "C")]
+        self.assertFalse(rows[("A", "C")]["closes_cycle"])
+        self.assertEqual((ac["gains_alt"], ac["losses_alt"], ac["gains_cycle"]),
+                         (rows[("A", "C")]["gains"], rows[("A", "C")]["losses"], 0))
+        m = decided.merged(self.run, decided.read_again(self.run, on=self.on))
+        by = {(r["winner"], r["loser"]): r for r in m}
+        self.assertEqual(by[("A", "B")]["gains_discounted"], self.ab_only.bit_count())
+
+    def test_the_arm_and_the_clauses_read_again(self):
+        rows = [{**row("A", HIT, HIT, gains=6), "gains_cycle": 6, "gains_discounted": 0,
+                 "point_discounted": NEITHER, "gains_alt": 2, "losses_alt": 0, "point_alt": HIT},
+                {**row("B", MISS, MISS, losses=3), "gains_cycle": 0, "gains_discounted": 0,
+                 "point_discounted": MISS, "gains_alt": 0, "losses_alt": 3, "point_alt": MISS}]
+        got = decided.added_readings([rows])
+        self.assertEqual((got["gains"], got["gains_cycle"]), (6, 6))
+        self.assertEqual(got["discounted"]["crosstab"][HIT][NEITHER], 1)
+        self.assertEqual(got["alternative"]["crosstab"][MISS][MISS], 1)
+        self.assertEqual(got["alternative"]["points_by_pair"][HIT]["mean_changed_exact"], 2)
+        self.assertEqual(got["discounted"]["direction"]["declared_exact"], 0)
+        arms = {a: decided.arm_readings([rows]) for a in plan.ARMS}
+        again = decided.clauses_again(arms, {a: got for a in plan.ARMS})
+        self.assertEqual(sorted(again), ["alternative", "discounted"])
+        self.assertEqual([c["clause"] for c in again["alternative"]],
+                         ["D1", "D2", "D3", "D4", "D5"])
+
+
+class TestTheRecordComesBack(unittest.TestCase):
+
+    def test_gate_5(self):
+        import json
+        import tempfile
+        body = {"_env": {"git_commit": "new"}, "gates": [1, 2], "arms": {"x": 0.1234567},
+                "added": [1]}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "decided.json"
+            self.assertTrue(decided.comes_back(body, path)["passes"])
+            path.write_text(json.dumps({"_env": {"git_commit": "old"}, "gates": [1],
+                                        "arms": {"x": 0.123457}}))
+            got = decided.comes_back(body, path)
+            self.assertEqual((got["passes"], got["earlier"], got["differ"]), (True, "old", []))
+            path.write_text(json.dumps({"_env": {}, "arms": {"x": 0.2}}))
+            self.assertEqual(decided.comes_back(body, path)["differ"], ["arms"])
+
+
 class TestTheRecord(unittest.TestCase):
 
     def test_exact_fractions_stay_out_of_the_record(self):
