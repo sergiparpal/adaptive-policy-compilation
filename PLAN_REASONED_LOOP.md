@@ -1,5 +1,34 @@
 # PLAN_REASONED_LOOP — the loop with reasoning on: what a proposer that applies the list compiles, under the standing trigger and under feedback on its errors
 
+> **[CLOSED 2026-11-03] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-10-31, before any figure of the plan existed. He signed §5.5's two
+> amendments on 2026-10-31 and 2026-11-02, each before any figure it governs
+> existed. All seven rows were adjudicated on 2026-11-03.
+> - **`RL-a`, `RL-c`, `RL-d` and `RL-g` hold**, `RL-a`, `RL-d` and `RL-g`
+>   thinly.
+> - **`RL-b` is refuted, thinly**, and **`RL-e` and `RL-f` are refuted**.
+> - `RL-h` is reported.
+>
+> **The figures are owned by
+> [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md)**,
+> and no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One estimate of this file was far from what happened.** §1 priced a call
+> at 25 seconds, from asks that had not run in a loop. A first call took a
+> median of 32.0 to 54.6 seconds by run, and reasoned about twice as long as
+> those asks had. The smoke run measured that before the first run, as §1
+> asked.
+>
+> **One instruction was not followed as written.** §1 places every run in
+> Sergi's terminal. The agent launched them instead, at his request, detached
+> from its own harness.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-10-31. The line is
+> kept unedited and this banner is its correction. The banner touches no line
+> of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-10-27, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
