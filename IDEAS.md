@@ -89,7 +89,9 @@ three held and one refuted, and one reported, written up in
 `results_reasoned_rule/`. **The loop with reasoning on, under the standing
 trigger and asked also on its errors, closed on November 3, 2026**:
 `PLAN_REASONED_LOOP.md`, seven signed rows, four held and three refuted, and
-one reported, written up in `results_reasoned_loop/`. This is a
+one reported, written up in `results_reasoned_loop/`. **What its placed edges
+decide, and where its unplaced answers come from, were read POST-RUN the same
+day**, and the two items they answer are struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -417,16 +419,50 @@ the error arm. What that leaves:
 
   A re-ask of the loop's first calls under the re-ask's line would separate the
   first. Calls.
-- **Why direction and fill part.** `RL-e` reads each placed edge alone, over
-  its pair's shared region. The fill reads the base's points with every edge in
-  place, and there the error arm's declared edges beat the Stage C ranking in
-  every run, and the oracle by direction in one. A reading would set each
-  edge's verdict beside the points it decides. Free on the records.
-- **Where the unplaced answers come from.** Nearly a quarter of the
-  escalations ended unplaced, more than a third in one error run, and every
-  attempt ended `stop`. The
-  reasoning is recorded whole on every attempt and coded by no stage. A codebook
-  frozen on part of it would say why a listed rule was left out. Free.
+- ~~**Why direction and fill part.**~~ **Read POST-RUN on 2026-11-03**
+  (`FINDINGS_REASONED_LOOP.md`, *What each placed edge decides*). Each edge was
+  reversed by masks, every other edge in place, and its verdict set beside the
+  points the reversal changes.
+  - In the error arm, most pairs `RL-e` counts against the proposer decide no
+    point of the base, because third rules govern their shared region.
+  - Where an edge decides points, its pair verdict and its point verdict nearly
+    always agree, and the proposer pointed it right more often than the
+    ranking, under every reading.
+  - In the impasse arm the two do not part.
+  - Most reversals counted would close a cycle, which the engine refuses. So
+    the reading was extended, after its first run, to the engine's own
+    alternative. One clause of five falls on either side of its line with it.
+
+  What it leaves:
+  - **Why so many of the error arm's edges sit on regions third rules
+    govern.** The placement round lists every rule of another queue the draft
+    meets over the whole space, and asks for a side against each, whether or
+    not a third rule already decides between them. Free on the records.
+- ~~**Where the unplaced answers come from.**~~ **Read POST-RUN on
+  2026-11-03** (`FINDINGS_REASONED_LOOP.md`, *Where the unplaced answers come
+  from*). A codebook over the placement reasoning was frozen on the first run
+  of each arm and read on the other two, beside each listed rule's relation to
+  the draft by masks.
+  - Most unplaced answers left out only rules nested with their draft. The
+    level-3 system prompt says a rule that is a particular case of another
+    needs no declaration, and v2b's placement round lists such rules and asks
+    for a side against each.
+  - e r3's count is its default, which contains every later draft.
+  - Some answers read `beats` and `loses_to` as containment, and placed only
+    the nested rules.
+  - The clauses that read structure held. The three that read what the
+    reasoning says of single rules failed: the largest held-out escalations
+    spoke of the list as a whole.
+
+  What it leaves:
+  - **A placement round that asks only for what the engine can order.** v1b's
+    list holds rules nested with the draft, which subsumption orders whichever
+    side the answer gives. A round that listed only crossing rules, or that told
+    the proposer to place nested ones too, would separate the protocol's
+    contradiction from the proposer. That is a run under v1b's budget, and a
+    plan. Calls.
+  - **Why the proposer never leaves out a rule equal to its draft.** Free on
+    the records.
 - **Reasoning in the loop apart from v1b.** No reasoning-off arm ran under v1b,
   so the impasse arm is set beside `PLAN_MANUAL.md`'s level-3 loop across dates
   and protocols only. Calls.
@@ -449,6 +485,17 @@ the error arm. What that leaves:
   twice the reasoning rule arm's tokens, and §1's estimate, taken from asks
   outside a loop, was far off. The smoke run measured it before the first run,
   as §1 asked. A plan that prices a loop should price it from a loop's calls.
+- **A counterfactual over one edge should be one the engine has.** Reversed by
+  masks, an edge whose reversal closes a cycle leaves points to no rule. The
+  first run of `reasoned_loop/decided.py` counted what the base got right there
+  for the declared direction. A reading of what an edge decides should read the
+  engine's own alternative, the edge taken out where its reversal would be
+  refused, and say so before it runs.
+- **A codebook read rule by rule weighs an answer by the rules it lists.** A few
+  large placement answers carried the held-out set of `reasoned_loop/unplaced.py`,
+  and they spoke of the list as a whole. A codebook over answers that cover many
+  items should also be read once per answer, and say in its expectation how the
+  largest answers weigh.
 
 ## What `PLAN_REASONED_RULE.md` opens and does not resolve
 

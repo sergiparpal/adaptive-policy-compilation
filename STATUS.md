@@ -2268,6 +2268,25 @@ chooses. The trigger that compiled the policy reads the truth of every
 arrival. The runs cost $0.19 at Baidu's listing; e r2 met a day of rate limits
 and resumed from its partial file 18 times.
 
+**[NOTE 2026-11-03] Two readings POST-RUN, neither a signed row.**
+- **What each placed edge decides.** In the error arm, 147 of the 169 pairs
+  `RL-e` counts against the proposer decide no point of the base, because third
+  rules govern their shared region. Where an edge does decide points, the
+  proposer pointed it right on 0.87 to 0.94 of the units, depending on how a
+  reversal the engine would refuse is counted. That is above the ranking under
+  every reading. In the impasse arm the two do not part.
+- **Where the unplaced answers come from.**
+  - The system prompt says a rule nested in another needs no declaration. The
+    placement round lists such rules and asks for a side against each.
+  - 56 of the 95 unplaced escalations left out only rules nested with their
+    draft. A nested rule was left out about seven times as often as a crossing
+    one.
+  - e r3's count is its default, left out at 32 of its 38.
+  - The codebook's claims about single rules failed on the held-out runs.
+
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
+the two sections after Stage C.
+
 ---
 
 ## What was withdrawn, and why
@@ -2492,6 +2511,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      the room better than they point edge by edge, and where its 95 unplaced
      answers come from. Its reasoning is recorded whole and coded by no stage.
    [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
+   **[NOTE 2026-11-03, later] Two of the three read POST-RUN.**
+   - **Direction and fill.** In the error arm the pairs `RL-e` counts against
+     the proposer mostly decide nothing, because third rules govern their
+     shared region. The edges that decide points mostly point right.
+   - **The unplaced answers.** Most left out rules nested with their draft. The
+     system prompt says such a rule needs no declaration, and the placement
+     round lists it and asks for a side.
+   - **What is open now** is why the loop wrote narrow rules, and what a
+     placement round that asks only for what the engine can order would
+     compile.
+   [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
+   the two sections after Stage C.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
