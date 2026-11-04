@@ -91,7 +91,9 @@ trigger and asked also on its errors, closed on November 3, 2026**:
 `PLAN_REASONED_LOOP.md`, seven signed rows, four held and three refuted, and
 one reported, written up in `results_reasoned_loop/`. **What its placed edges
 decide, and where its unplaced answers come from, were read POST-RUN the same
-day**, and the two items they answer are struck in place. This is a
+day**, and the two items they answer are struck in place. **Why its edges sit
+on regions third rules govern was read POST-RUN on November 4, 2026**, and the
+item it answers is struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -434,10 +436,20 @@ the error arm. What that leaves:
     alternative. One clause of five falls on either side of its line with it.
 
   What it leaves:
-  - **Why so many of the error arm's edges sit on regions third rules
-    govern.** The placement round lists every rule of another queue the draft
-    meets over the whole space, and asks for a side against each, whether or
-    not a third rule already decides between them. Free on the records.
+  - ~~**Why so many of the error arm's edges sit on regions third rules
+    govern.**~~ **Read POST-RUN on 2026-11-04** (`FINDINGS_REASONED_LOOP.md`,
+    *Why the error arm's edges sit on regions third rules govern*). Each base
+    was replayed in birth order, and each pair's shared region split by when
+    third rules came to govern it.
+    - Most of it was governed when the pair was listed, or came with the
+      draft's own answer. The placement round asks for sides on conflicts the
+      base has already decided.
+    - What sets the missing pairs apart is mostly what came later: the error
+      trigger repaired them. Tickets their winner decided wrongly escalated,
+      and the rules born there covered the regions.
+    - The drafter had bet on the second as the main route, and it was the
+      smaller one. The clauses of that story failed, and the bet on repair
+      held.
 - ~~**Where the unplaced answers come from.**~~ **Read POST-RUN on
   2026-11-03** (`FINDINGS_REASONED_LOOP.md`, *Where the unplaced answers come
   from*). A codebook over the placement reasoning was frozen on the first run
@@ -461,6 +473,10 @@ the error arm. What that leaves:
     the proposer to place nested ones too, would separate the protocol's
     contradiction from the proposer. That is a run under v1b's budget, and a
     plan. Calls.
+    **[NOTE 2026-11-04]** The third rules reach the same change from the other
+    end: most of what they govern on the error arm's placed pairs was governed
+    when the pair was listed. So a round could also leave out a rule whose
+    conflict with the draft the base already decides.
   - **Why the proposer never leaves out a rule equal to its draft.** Free on
     the records.
 - **Reasoning in the loop apart from v1b.** No reasoning-off arm ran under v1b,
