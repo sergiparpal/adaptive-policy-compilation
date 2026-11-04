@@ -1184,9 +1184,9 @@ placed, reading no text:
 > each placed pair's shared region, over the half without the keyword, by when
 > third rules came to govern it.
 > - **The expectation was committed before any figure of the reading
->   existed.** It is five clauses in the module's docstring, in the commit that
->   adds the module. The drafter had read this record whole, with `decided.json`
->   and `unplaced.json`.
+>   existed.** It is five clauses in the module's docstring, committed as
+>   `bf1c3a6`, which is `2b1be8d` on `main`. The drafter had read this record
+>   whole, with `decided.json` and `unplaced.json`.
 > - **Four gates stood before any write.**
 >   - The replay is the base.
 >   - Every pair's shared and governed points at the end are `decided.json`'s.
@@ -1195,8 +1195,12 @@ placed, reading no text:
 >     deciding rule stood in the base before it.
 >
 > Not a signed row; no verdict moves. The record is
-> [`governed.json`](governed.json). Its `_env` names the branch commit it was
-> written from, with a clean tree.
+> [`governed.json`](governed.json), committed in `2ff98d3` on `main`. It
+> reached `main` in pull request #194. Its `_env` names the branch commit it was
+> written from, `bf1c3a6`, with a clean tree. That commit and `2b1be8d` have the
+> same subject, the same tree and the same `git patch-id --stable`, and the
+> GitHub API names #194 behind the `main` commit. Its code digest,
+> `ef16b126234355a3`, is the one `main` computes at `2b1be8d`.
 
 **How a pair's region is split.** A point of a pair's shared region is governed
 when a rule other than the two beats each of them there, as in *What each placed
