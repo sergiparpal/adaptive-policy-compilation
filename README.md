@@ -884,6 +884,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `reasoned_loop/score.py` | `results_reasoned_loop/score.json` | **refuses while the plan is unsigned** |
 > | `reasoned_loop/decided.py` | `results_reasoned_loop/decided.json` | **refuses while the plan is unsigned** |
 > | `reasoned_loop/unplaced.py` | `results_reasoned_loop/unplaced.json` | **refuses while the plan is unsigned** |
+> | `reasoned_loop/governed.py` | `results_reasoned_loop/governed.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
