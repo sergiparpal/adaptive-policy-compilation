@@ -83,6 +83,15 @@ and asks for a side against each. 56 of the 95 unplaced escalations left out
 only rules nested with their draft. A nested rule was left out seven times as
 often as a crossing one. See *Where the unplaced answers come from*, below.
 
+**[NOTE 2026-11-04] Read POST-RUN, the placement round asks for sides on
+conflicts the base has already decided.** In the error arm, most of what third
+rules govern on the placed pairs' regions was governed when the pair was
+listed, or came with the draft's own answer. What sets the pairs `RL-e` counts
+against the proposer apart is mostly what came later: the error trigger
+repaired them, covering their regions with rules born at the tickets their
+winner decided wrongly. See *Why the error arm's edges sit on regions third
+rules govern*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
 > computed after the signature. Zero API calls.
 >
@@ -954,6 +963,10 @@ refuse is counted. The other four hold on every reading.
   rules govern is not read here. The placement round lists every rule of
   another queue the draft overlaps over the whole space, and asks for a side
   against each.
+  **[NOTE 2026-11-04] Read POST-RUN**, in *Why the error arm's edges sit on
+  regions third rules govern*, below. Most of it was governed when the pair was
+  listed. What came later was mostly the error trigger repairing the missing
+  pairs.
 
 ---
 
@@ -1164,6 +1177,129 @@ placed, reading no text:
 
 ---
 
+## Why the error arm's edges sit on regions third rules govern — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-04, and run the same day. Zero API
+> calls. `reasoned_loop/governed.py` replayed each base in birth order. It split
+> each placed pair's shared region, over the half without the keyword, by when
+> third rules came to govern it.
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is five clauses in the module's docstring, in the commit that
+>   adds the module. The drafter had read this record whole, with `decided.json`
+>   and `unplaced.json`.
+> - **Four gates stood before any write.**
+>   - The replay is the base.
+>   - Every pair's shared and governed points at the end are `decided.json`'s.
+>   - Governance never goes back, and the parts add up.
+>   - Every birth's ticket is one point of the space, and every error birth's
+>     deciding rule stood in the base before it.
+>
+> Not a signed row; no verdict moves. The record is
+> [`governed.json`](governed.json). Its `_env` names the branch commit it was
+> written from, with a clean tree.
+
+**How a pair's region is split.** A point of a pair's shared region is governed
+when a rule other than the two beats each of them there, as in *What each placed
+edge decides*.
+- **At listing**: governed when the draft was added and none of its edges yet,
+  by subsumption and the base's edges. The conflict the placement round asked
+  about was already decided.
+- **By the answer**: governed once the draft's own edges were in. The draft
+  placed itself below a rule that already beats the older rule.
+- **Later**: governed by a later birth. Each point goes to the birth that
+  completed its governance.
+- **Never.**
+
+A later point's birth is a **repair** when it was an error escalation on a
+ticket of the pair's region that the pair's winner had decided.
+
+### 1. When the error arm's pairs became governed
+
+The shares of the shared region, pooled over the error arm's strict pairs:
+
+| pair verdict | pairs | at listing | by the answer | later | never |
+|---|---|---|---|---|---|
+| `a` | 729 | 0.2737 | 0.1243 | 0.1148 | 0.4871 |
+| `b`, missing | 169 | 0.3790 | 0.1496 | 0.2782 | 0.1932 |
+| all strict | 898 | 0.2879 | 0.1277 | 0.1368 | 0.4476 |
+
+- **Most of what third rules govern was governed at listing, or came with the
+  draft's own answer.** That is 360,900 of the 479,680 points governed at the
+  end.
+- **The missing pairs are more governed at every stage.** Between them and the
+  pairs pointed right, the governed share differs by about 0.29:
+  - later accounts for 0.1634;
+  - at listing for 0.1053;
+  - the answer for 0.0253.
+- **Some pairs were wholly governed when listed**: 34 of the 169 missing pairs,
+  and 99 of the 729 others.
+
+### 2. What came later
+
+The later points by the cause of the birth that completed them, error arm:
+
+| pair verdict | later points | impasse | conflict | error | repair |
+|---|---|---|---|---|---|
+| `a` | 86,312 | 3,120 | 14,580 | 59,092 | 9,520 |
+| `b`, missing | 32,468 | 20 | 1,400 | 10,008 | 21,040 |
+
+- **What came later came from the error trigger**: 31,048 of the missing pairs'
+  32,468 later points were completed by error births.
+- **On the missing pairs, most of it was repair**: 21,040 of 32,468, 0.6480.
+  - A ticket of the pair's region, decided by the pair's winner, escalated as an
+    error.
+  - The rule born there came to govern the region.
+  - 36 of the 169 missing pairs were repaired that way, and 16 of the 729
+    others.
+- **On the pairs pointed right, it was mostly other errors**: 59,092 of their
+  86,312 later points came from error births that were not repairs of the pair.
+
+### 3. The impasse arm
+
+**The impasse arm's pairs were governed only at listing or by the answer.**
+- At listing and by the answer: 0.1535 and 0.0942 of their shared region.
+- Later: 0.0008.
+- Never: 0.7514.
+
+Under the standing trigger, no ticket a rule decides is asked about, so nothing
+repairs an edge.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| G1 | at least half of the missing pairs' governed points became governed later | 32,468 of 94,168, 0.3448 | **fails** |
+| G2 | at least half of their later points came from error births | 31,048 of 32,468, 0.9563 | holds |
+| G3 | at least a third of their later points came from repairs | 21,040 of 32,468, 0.6480 | holds |
+| G4 | the missing pairs' share governed later is higher than the others' | 0.2782 against 0.1148 | holds |
+| G5 | over all strict pairs, more points governed later than at listing and by the answer | 118,780 against 360,900 | **fails** |
+
+**The drafter expected all five to hold, and trusted G3 least.** G3, the bet,
+held. G1 and G5, the clauses of the main story, failed. The drafter had
+expected the error trigger to put the pairs under third rules after the fact.
+Most of it was there when they were listed.
+
+### What it says
+
+- **The placement round asks for sides on conflicts the base has already
+  decided.**
+  - It lists every rule of another queue that meets the draft over the space.
+  - In the error arm, more than a quarter of the listed pairs' shared region was
+    governed by third rules before the draft placed itself.
+  - The draft's own answer settled another eighth.
+- **What sets the missing pairs apart is mostly repair.** The error trigger
+  escalated tickets their winner decided wrongly, and the rules born there
+  covered the regions. The loop corrected a wrong edge by covering it, not by
+  turning it.
+- **So `RL-e` reads many pairs whose direction never mattered**, from their
+  listing on. The missing pairs among them are, in part, edges the loop had
+  already repaired.
+- **What it leaves.** A placement round could list only the rules whose
+  conflict with the draft the base leaves open. That is the change *Where the
+  unplaced answers come from* asks for, reached from the other end.
+
+---
+
 ## Files
 
 ```
@@ -1185,6 +1321,9 @@ results_reasoned_loop/unplaced.json      POST-RUN: every rule a placement round 
                                          relation to the draft and by what the reasoning says of
                                          it, the codebook, the expectation's five clauses, and each
                                          unplaced escalation by what it left out
+results_reasoned_loop/governed.json      POST-RUN: each placed pair's shared region by when third
+                                         rules came to govern it, by arm, pair verdict and run,
+                                         and the expectation's five clauses
 ```
 
 The smoke run's partial from before the first amendment,
