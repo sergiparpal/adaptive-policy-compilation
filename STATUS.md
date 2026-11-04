@@ -2284,8 +2284,19 @@ and resumed from its partial file 18 times.
   - e r3's count is its default, left out at 32 of its 38.
   - The codebook's claims about single rules failed on the held-out runs.
 
+**[NOTE 2026-11-04] A third reading POST-RUN: why the error arm's edges sit on
+regions third rules govern.**
+- **Most of it was there when the pair was listed.** Over the error arm's
+  strict pairs, 360,900 of the 479,680 points third rules govern at the end
+  were governed at listing, or came with the draft's own answer. The placement
+  round asks for sides on conflicts the base has already decided.
+- **What sets the missing pairs apart is mostly repair.** 21,040 of their
+  32,468 later points came from error escalations on a ticket of the pair's
+  region that the pair's winner had decided. The loop covered wrong edges with
+  new rules instead of turning them.
+
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
-the two sections after Stage C.
+the three sections after Stage C.
 
 ---
 
@@ -2523,6 +2534,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      compile.
    [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
    the two sections after Stage C.
+   **[NOTE 2026-11-04] Why the edges sit on regions third rules govern, read
+   POST-RUN.** Most of it was governed when the pair was listed, so the
+   placement round asks for sides on conflicts the base has already decided. The
+   missing pairs were, in part, repaired later by the error trigger. Both point
+   at the same open item: a round that lists only what the engine can still
+   order. The FINDINGS' third section after Stage C.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

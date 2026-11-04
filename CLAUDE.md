@@ -937,6 +937,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m reasoned_loop.score                         # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m reasoned_loop.decided                       # POST-RUN: what each placed edge decides
     PYTHONHASHSEED=0 python3 -m reasoned_loop.unplaced                      # POST-RUN: where the unplaced answers come from
+    PYTHONHASHSEED=0 python3 -m reasoned_loop.governed                      # POST-RUN: why its edges sit on regions third rules govern
     PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --smoke          # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --arm e --rep 1  # then §2.6's order, never side by side
 
@@ -965,7 +966,11 @@ and refuses an answer that leaves one without a side. Level 3's system prompt
 says a rule nested in another needs no declaration. With reasoning on, the
 proposer obeyed the system prompt, and most of its unplaced answers were that.
 A protocol that asks for a side should list only what the engine can order, or
-say what a side against a nested rule means. **And a codebook read rule by rule
+say what a side against a nested rule means. **It also asks about conflicts the
+base has already decided**: read POST-RUN, most of what third rules govern on
+the error arm's placed pairs was governed when the pair was listed. What the
+error trigger added later was mostly repair, a wrong edge covered by a new rule
+instead of turned. **And a codebook read rule by rule
 weighs an answer by the rules it lists**: `reasoned_loop/unplaced.py`'s claims
 about single rules held on its development runs and failed on the held-out
 ones, where the largest answers spoke of the list as a whole.
