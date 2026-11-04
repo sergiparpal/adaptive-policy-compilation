@@ -768,9 +768,9 @@ Over the corpus:
 > Stage C's rows beside the points it decides, over the half of the space
 > without the keyword, where `RL-e` and the fill read.
 > - **The expectation was committed before any figure of the reading
->   existed.** It is five clauses in the module's docstring, in the commit that
->   adds the module. The drafter had read this record whole, and `score.json`'s
->   fill by run and arm.
+>   existed.** It is five clauses in the module's docstring, committed as
+>   `35669cd`, which is `0d9a648` on `main`. The drafter had read this record
+>   whole, and `score.json`'s fill by run and arm.
 > - **Five gates stood before any write.**
 >   - `RL-e` and `RL-f`'s ranking come back exactly.
 >   - Every run's room and declared fill come back.
@@ -778,13 +778,18 @@ Over the corpus:
 >   - A reversal read by masks is the engine's reinstall through `try_edge`, on
 >     the first edges of every run whose reversal the engine accepts.
 >   - Added after the first run: the record already on disk comes back.
-> - **The module was extended after its first run, with no expectation.** Most
->   of the reversals it counts would close a cycle (section 5, below). The
->   record comes from the second run, which gave back every figure of the
->   first.
+> - **The module was extended after its first run, with no expectation**, in
+>   `444ece2`, which is `2943170` on `main`. Most of the reversals it counts
+>   would close a cycle (section 5, below). The record comes from the second
+>   run, which gave back every figure of the first. The first run's record is
+>   in `d0c2a8b` on `main`.
 >
 > Not a signed row; no verdict moves. The record is [`decided.json`](decided.json).
-> Its `_env` names the branch commit it was written from, with a clean tree.
+> It reached `main` in pull request #192. Its `_env` names the branch commit it
+> was written from, `444ece2`, with a clean tree. That commit and `2943170` have
+> the same subject, the same tree and the same `git patch-id --stable`, and the
+> GitHub API names #192 behind the `main` commit. Its code digest,
+> `40f5b242c7e09b6f`, is the one `main` computes at `2943170`.
 
 **How an edge is read.**
 - **The reversal** points one edge the other way and leaves every other edge in
@@ -961,8 +966,8 @@ refuse is counted. The other four hold on every reading.
 > reasoning says of it.
 > - **The codebook was frozen on the first run of each arm**, i r1 and e r1,
 >   and committed with the expectation before any reasoning of a second or
->   third run was read. The expectation is five clauses in the module's
->   docstring. The drafter had read the development runs' reasoning around
+>   third run was read, as `186e96d`, which is `ad01f3a` on `main`. The
+>   expectation is five clauses in the module's docstring. The drafter had read the development runs' reasoning around
 >   every rule left out at their 24 unplaced escalations, and this record
 >   whole.
 > - **Five gates stood before any write.**
@@ -973,12 +978,17 @@ refuse is counted. The other four hold on every reading.
 >     `stop`.
 >   - Added after the first run: the record already on disk comes back.
 > - **The module was extended after its first run, with no expectation**
->   (section 4, below). The record comes from the second run, which gave back
->   every figure of the first.
+>   (section 4, below), in `8c924f6`, which is `046f934` on `main`. The record
+>   comes from the second run, which gave back every figure of the first. The
+>   first run's record is in `6e5157e` on `main`.
 >
 > Not a signed row; no verdict moves. The record is
-> [`unplaced.json`](unplaced.json). Its `_env` names the branch commit it was
-> written from, with a clean tree.
+> [`unplaced.json`](unplaced.json). It reached `main` in pull request #192. Its
+> `_env` names the branch commit it was written from, `8c924f6`, with a clean
+> tree. That commit and `046f934` have the same subject, the same tree and the
+> same `git patch-id --stable`, and the GitHub API names #192 behind the `main`
+> commit. Its code digest, `a7947cd502a024e6`, is the one `main` computes at
+> `046f934`.
 
 **Two texts the proposer reads disagree.**
 - **The system prompt**, level 3's: *"Si tu regla es un caso particular de
