@@ -85,3 +85,5 @@ results_first_match/*.partial.jsonl
 results_reasoned_rule/*.partial.jsonl
 # And the runs of PLAN_REASONED_LOOP.md (reasoned_loop/run.py).
 results_reasoned_loop/*.partial.jsonl
+# And the runs of PLAN_CHANNEL.md (channel/run.py).
+results_channel/*.partial.jsonl
