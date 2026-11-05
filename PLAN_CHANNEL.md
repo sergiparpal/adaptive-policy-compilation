@@ -255,7 +255,7 @@ asks of any plan that sets a comparison on the proposer:
 | **CH-f** | **Hearing of half the errors does not halve the calls** | the median over `c`'s runs of `calls(r)`, over the median over `e`'s runs | **≥ 3/4** | **< 3/4** |
 | **CH-g** | *Reported, not adjudicated.* **What the drafter could not band** | Every run of both arms on every surface: `space` whole and on each keyword half, `corpus(B)` read whole, the recall of all eight queues on both surfaces, `K-a`, and `cover(r)`. `PLAN_REUSE.md`'s online set per run, with escalations by cause (impasse, conflict, error). For the channel arm, the wrong decisions by whether their draw reported them, and the reported ones by whether they escalated: by queue, by governing rule and over time. Each channel run beside the transcriber under its own draws, and each error run beside the transcriber under the error trigger. The error escalations by governing rule in each run, beside the corpus tickets of that rule and the reportable ones. Every escalation's verdict, with its finish reasons. The placement rounds: the sizes of their lists, citations of `H01` to `H29`, and edges by the engine's verdict. `RL-e`'s direction and the Stage C ranking's on this plan's runs, by arm. This plan's error runs beside `PLAN_REASONED_LOOP.md`'s, figure by figure, across dates. The calls: providers, finish reasons, tokens, reasoning tokens over the attempts that reached the model, seconds by round, and retries by cause. The reasoning, recorded whole and not coded | — | — |
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-11-05)**
 
 **Why each row, and why these lines.**
 
