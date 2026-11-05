@@ -1,7 +1,9 @@
 # PLAN_CHANNEL — the loop with reasoning on, under a trigger a deployment could have: half its errors reported, beside the error arm again
 
-**Status: drafted by Claude on 2026-11-04, unsigned.** Under hard rule 2 of
-`CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
+**Status: drafted by Claude on 2026-11-04, unsigned.** Corrected before
+signature on 2026-11-05, where the package written to it showed the draft
+inexact; each correction is dated in place, and no row and no line moved. Under
+hard rule 2 of `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
 any figure named here exists, in its own commit, staged by name. That includes
 Stage A, which spends nothing: §11 says why.
@@ -392,6 +394,20 @@ auditable.**
      `PLAN_REASONED_LOOP.md`'s records, and the wrong decisions its impasse runs
      let stand, by rule. The table above is a part of it, and Stage A records
      it whole.
+- **[Added before signature, 2026-11-05] What writing the package showed.** The
+  package was written, and its checks run, before the signature, as §7 asks.
+  - **The code read** adds `reasoned_loop/protocol.py`, `gates.py`, `sample.py`,
+    `run.py` and `score.py`, and `tests/test_reasoned_loop.py`, whole.
+  - **`CH-g1` to `CH-g3` pass.** They print pass or fail, and two of their
+    booleans go beyond §0's figures: this plan's loop at coverage 1, fed run
+    `e r1`'s answers, gives back that run's rules and causes case for case; and
+    every figure of items 1 to 6 and 8 above comes back as declared.
+  - **Stage C's scorer was run in memory on the transcriber's four runs**, to
+    test the code, and nothing was written. Its verdicts there are the ones
+    items 4 and 5 already imply: on a proposer that never errs every row holds.
+    It also showed one figure the list above did not: under `c r2`'s draws the
+    transcriber's base made 32 wrong decisions, of which the channel reported
+    20, each of which escalated, and 12 stood.
 
 **Not seen, because nothing has produced it:**
 
@@ -717,9 +733,15 @@ G. **The provider is pinned on every call.** A call that another provider served
 H. **A failed call is never answered with v1's retry message.** Only a failed
    parse is (`PLAN_FIRST_MATCH.md`'s rule).
 
-I. **The triggers read the truth and nothing else does.** The engine never sees
-   a label. The proposer never sees one, and is never told that the base erred,
-   in either arm.
+I. **The triggers read the truth, and nothing else decides by it.** The engine
+   never decides by a label. The proposer never sees one, and is never told
+   that the base erred, in either arm.
+   - **[Corrected before signature, 2026-11-05]** The draft said nothing else
+     reads the truth. The loop also reads the label to score what was decided,
+     into the record, as rung 2's loop always has: whether the decision that
+     stood, or the proposer's answer, was right; and a rule's `correct_count`,
+     which the engine keeps for the record and neither reads nor shows the
+     proposer.
 
 ---
 
@@ -746,8 +768,17 @@ Both arms escalate a case when the engine returns IMPASSE or CONFLICT.
   Rung 4 counted such a case as a wrong decision, reported with probability `c`.
   Here no draw reaches it.
 - **The trigger is one function, in `channel/loop.py`.** It is the only code of
-  the package that compares a decision with a label, and a test pins that,
-  rather than intent (`FINDINGS4.md` §2's erratum).
+  the loop that reads a label to decide anything the loop does, and a test pins
+  that, rather than intent (`FINDINGS4.md` §2's erratum).
+  - **[Corrected before signature, 2026-11-05]** The draft said it is the only
+    code of the package that compares a decision with a label. That is false:
+    the loop compares the decision that stood, and the proposer's answer, with
+    the label once each, to score them into the record (rule I), and the
+    offline modules read labels to score and to check. The tests pin what holds
+    instead. Labels and draws that leave every cause unchanged leave the
+    proposer's calls, its messages and the base unchanged. Every comparison with
+    the label on the proposer's path is listed in a test, so that a new one is a
+    decision.
 - **Both keep the cause of every escalation**: impasse, conflict or error, and
   on an error the queue and the rule the engine gave. The cause is named
   `ERROR` in both arms, so that `PLAN_REASONED_LOOP.md`'s scorer reads them
@@ -862,9 +893,17 @@ figure exists.**
   transcriber, and with the answers of that plan's run `e r1` served back in
   order by a replay double, this plan's loop and `reasoned_loop.loop.run_loop`
   under arm `e` give the same record, case for case.
+  - **[Corrected before signature, 2026-11-05]** The replay serves each answer
+    at the case and round that run asked for it, and refuses any other call.
+    The check also holds the replay to the run: its rules and causes are
+    `e r1`'s, case for case.
 - **At coverage 0 it is that plan's impasse arm**, on the transcriber.
 - **The rebuilt base.** A run's rebuild equals the engine the run ended with,
   on the transcriber's runs here; at Stage C it is held to the record.
+  - **[Added before signature, 2026-11-05] The trigger's record.** On the same
+    runs, every case's row is held to its draw and to the rule of §2.1: a row
+    says a wrong decision was reported exactly when its draw falls below the
+    coverage, and it escalated exactly then. The smoke check reads the same.
 - **The labels.** The corpus labels the triggers read agree with
   `manual.instrument.corpus_truth` on every case.
 - **No float decides a check.** Values are compared as fractions, and counts as
@@ -1061,8 +1100,9 @@ network.
       - the draws, rebuilt from their seed strings;
       - both triggers, on runs built by hand, and that coverage 1 is the error
         arm and coverage 0 the impasse arm;
-      - that the trigger is the only code of the package that reads a label,
-        and that nothing it reads reaches a prompt;
+      - that the trigger is the only code of the loop that reads a label to
+        decide anything, and that nothing it reads reaches a prompt
+        (**[corrected before signature, 2026-11-05]**, §5.2);
       - the resume, and that a resumed record keeps each call's own seconds;
       - the exactness of §0's comparisons, *thin*, and each row's conditions for
         having no value;
