@@ -161,13 +161,25 @@ ONLINE_LOOP = [
     "reasoned_loop/protocol.py",
     "reasoned_loop/loop.py",
     "reasoned_loop/run.py",
+    # Added 2026-11-04 with PLAN_CHANNEL.md, which runs PLAN_REASONED_LOOP.md's
+    # loop under rung 4's feedback channel at coverage 1/2 (§4, rule B of the
+    # plan). These two modules run its loop and send its requests through
+    # `reasoned_loop/protocol.py`, called, so the system prompt is level 3's
+    # manual and `TestTheAuthorityChannel` watches them too. Both triggers read
+    # the corpus labels, handed to the loop off `PLAN_REUSE.md`'s record as the
+    # error arm's were, and the channel's draws, drawn from a seed string before
+    # the run; the proposer is handed neither, nor told that the base erred. The
+    # references read level 3's frozen text and the draws, never the oracle, and
+    # `rung4/feedback.py` is cited for the channel's parameters, never imported.
+    "channel/loop.py",
+    "channel/run.py",
 ]
 
 # The names that carry the hidden policy in code without being the oracle's
 # own: its DSL transcription, the module that holds it, and the edges derived
 # from its layer order. The authority channel's proposer path may import none.
 POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
-AUTHORITY_CHANNEL = ONLINE_LOOP[-16:]
+AUTHORITY_CHANNEL = ONLINE_LOOP[-18:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -265,7 +277,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "ranking", "students", "escalations",
                      "spotcheck", "unreached", "manual", "apply",
                      "queue_alone", "first_match", "reasoned_rule",
-                     "reasoned_loop"):
+                     "reasoned_loop", "channel"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -281,12 +293,12 @@ class TestTheAuthorityChannel(unittest.TestCase):
     """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
     These tests hold it to that route: the frozen text, and nothing in code."""
 
-    def test_the_sixteen_modules_are_the_ones_watched(self):
+    def test_the_eighteen_modules_are_the_ones_watched(self):
         """`PLAN_MANUAL.md`'s five, since 2026-10-23 `PLAN_APPLY.md`'s two, since
         2026-10-24 `PLAN_QUEUE_ALONE.md`'s two, since 2026-10-25
-        `PLAN_FIRST_MATCH.md`'s two and `PLAN_REASONED_RULE.md`'s two, and since
-        2026-10-31 `PLAN_REASONED_LOOP.md`'s three, which send the same texts
-        again."""
+        `PLAN_FIRST_MATCH.md`'s two and `PLAN_REASONED_RULE.md`'s two, since
+        2026-10-31 `PLAN_REASONED_LOOP.md`'s three, and since 2026-11-04
+        `PLAN_CHANNEL.md`'s two, which send the same texts again."""
         self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
                                              "manual/compile.py", "manual/ask.py",
                                              "manual/run.py", "apply/prompts.py",
@@ -294,7 +306,8 @@ class TestTheAuthorityChannel(unittest.TestCase):
                                              "queue_alone/ask.py", "first_match/prompts.py",
                                              "first_match/ask.py", "reasoned_rule/prompts.py",
                                              "reasoned_rule/ask.py", "reasoned_loop/protocol.py",
-                                             "reasoned_loop/loop.py", "reasoned_loop/run.py"])
+                                             "reasoned_loop/loop.py", "reasoned_loop/run.py",
+                                             "channel/loop.py", "channel/run.py"])
 
     def test_no_proposer_path_module_imports_the_policy_in_code(self):
         for rel in AUTHORITY_CHANNEL:
