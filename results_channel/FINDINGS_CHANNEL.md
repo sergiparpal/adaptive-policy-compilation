@@ -81,6 +81,17 @@ broad drafts were refused.**
 
 See *Why c r1 lost `SECURITY_INCIDENT`*, below.
 
+**[NOTE 2026-11-07, later] Read POST-RUN, c r2 lost 1,640 of the 4,200 points of
+`ONCALL_ESCALATION` its draws let it reach.**
+- **1,000 were never written.** Its one rule of the queue carries a condition
+  `H04` does not have. Its draft of `H04`'s region whole was refused by the
+  placement round.
+- **640 are contested.** Two later rules of other queues each declared
+  themselves below that rule. The engine refused both edges for closing a
+  cycle.
+
+See *Why c r2 recalled less `ONCALL_ESCALATION` than its draws allow*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
 > computed after the signature. Zero API calls.
 >
@@ -735,6 +746,13 @@ The channel arm's silent errors are its unreported wrong decisions.
    no rule of the queue reaches.
 2. **Why c r2 recalled less of `ONCALL_ESCALATION` than the transcriber under
    its draws**, 128/315 against 2/3.
+   **[NOTE 2026-11-07, later] Read POST-RUN**, in *Why c r2 recalled less
+   `ONCALL_ESCALATION` than its draws allow*, below.
+   - **A narrow rule.** Its one rule of the queue is narrower than `H04`, and
+     the placement round refused the draft that would have widened it.
+   - **Two refused edges.** Two later rules of other queues cross that rule.
+     Each declared the right side, and the engine refused both edges for
+     closing a cycle.
 3. **Whether a hold of `CH-b` rules out a cost of a twentieth.** As §0 said,
    with three runs an arm and runs as far apart as c r1 and c r3, the
    instrument could not see one.
@@ -951,6 +969,161 @@ failed, and that is where the account was wrong.
 
 ---
 
+## Why c r2 recalled less `ONCALL_ESCALATION` than its draws allow — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-07, after the reading of c r1, and
+> run the same day. Zero API calls. `channel/oncall.py` calls `channel/lost.py`'s
+> reading for this queue in every run, and does not copy it. It splits each way
+> a point was lost by the listed region that holds the point:
+> - **`H04`'s part**, 4,200 points, which c r2's draws let the channel reach;
+> - **`H05`'s part**, 2,100 points, which they do not.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is five clauses in the module's docstring, committed as
+>   `b1f9e43` on the reading's branch. The drafter had read this record whole,
+>   with `lost.json`, and no rule, edge or escalation of this queue in any run.
+> - **Five gates stood before any write**: `channel/lost.py`'s four, and one
+>   that the two parts are disjoint and hold the queue.
+> - **One part was added after the first run**, in `cac4ee9`: the contested
+>   pairs, and the engine's verdict on every edge between their rules. It
+>   carries no expectation and moves no clause.
+>
+> Not a signed row; no verdict moves. The record is [`oncall.json`](oncall.json).
+> Its `_env` names `cac4ee9`, the branch commit it was written from, with
+> `git_dirty` and `code_dirty` false.
+
+### 1. What c r2 lost, by part
+
+| | the queue's points | decided right | lost | unwritten | conflict | of it contested | outranked or impasse |
+|---|---|---|---|---|---|---|---|
+| `H04`'s part | 4,200 | 2,560 | 1,640 | 1,000 | 640 | 640 | 0 |
+| `H05`'s part | 2,100 | 0 | 2,100 | 1,840 | 260 | 0 | 0 |
+| the queue | 6,300 | 2,560 | 3,740 | 2,840 | 900 | 640 | 0 |
+
+- **Its draws allow `H04`'s part whole.** Under them the transcriber decides
+  all 4,200 of its points right and none of `H05`'s. c r2 falls short of that
+  by 1,640 points: 1,000 unwritten and 640 contested.
+- **`H05`'s part is lost whole**, as the draws would have it. No ticket of
+  `H05` escalated in c r2.
+- **The unwritten points go to rules of other queues written for severity-1
+  tickets**: 1,540 to `T2_TECHNICAL`, 1,040 to `T3_ENGINEERING` and 260 to
+  `ACCOUNT_MANAGER`.
+
+### 2. Its one rule of the queue, and the draft that was refused
+
+**c r2's only rule of the queue is `R0075`**, born at case 954, on an error at a
+ticket `H04` governs.
+- **Its region** is *severity 1, enterprise, at least 5 prior tickets*. That is
+  `H04`'s region with a condition `H04` does not have: the prior tickets are
+  `H13`'s, the rule that sends enterprise tickets with 5 or more prior tickets
+  to `ACCOUNT_MANAGER`.
+- **What the condition costs.** It holds 3,200 of `H04`'s 4,200 points. The
+  1,000 with fewer than 5 prior tickets are the unwritten points of `H04`'s
+  part.
+
+| case | cause | the draft's points of the queue | rules listed | verdict |
+|---|---|---|---|---|
+| 954 | error | 3,200 | 18 | born, as `R0075` |
+| 1951 | error | 4,200, `H04`'s region whole | 24 | unplaced |
+
+- **The draft that would have widened it was refused.** At case 1951 the
+  proposer drafted `H04`'s region whole. Its answer gave a side to 23 of the 24
+  listed rules, and left out `R0022`, a rule of `SECURITY_INCIDENT` that
+  crosses the draft. The round refused it, so the draft was not born.
+  - The rule left out was not nested with the draft.
+  - So this refusal is not the defect of c r1's: the proposer left out a rule
+    the round had every reason to list.
+
+### 3. The contested points, and the edges the engine refused
+
+| case | rule born | its queue | its region | its answer | the engine |
+|---|---|---|---|---|---|
+| 1309 | `R0082` | `T2_TECHNICAL` | integrations, business or enterprise | below `R0075` | refused, closing a cycle |
+| 1402 | `R0085` | `ACCOUNT_MANAGER` | integrations, enterprise, at least 5 prior tickets | below `R0075` | refused, closing a cycle |
+
+- **The curve rose once and fell once.** It reached 3,200 after case 954 and
+  fell to 2,560 after case 1309, when `R0082` was born.
+- **Both rules declared the right side, and both edges were refused.** The run's
+  `edge_log` holds each edge, `R0075` over the new rule, with the verdict
+  *closing a cycle*.
+- **What a refused edge leaves.**
+  - The engine refuses an edge when the base already reaches the other way,
+    following every edge and every containment through other rules.
+  - It decides a point by the direct relations among the rules that match it.
+  - Where the rules of that path do not match, the pair stays unordered.
+- **At the end the contested pair is `R0075` and `R0085`**, on 640 points:
+  integrations tickets of severity 1, without the keyword, from enterprise
+  customers with 5 or more prior tickets. `R0085` lies inside `R0082`, so it
+  beats it there by containment.
+- **c r3 lost 420 points of `H05`'s part the same way.** Its rule of `H05`'s
+  region and a rule of `T3_ENGINEERING` are both undefeated there, and the
+  engine refused the edge between them for closing a cycle.
+
+### 4. Beside the other five runs
+
+| run | `H04`'s part right | `H05`'s part right | the queue's escalations: case, draft's points, verdict |
+|---|---|---|---|
+| `e r1` | 4,200 | 2,100 | 257: 420, born · 710: 2,100, born · 954: 4,200, born |
+| `c r1` | 4,200 | 0 | 257: 420, unplaced · 1432: 4,200, born |
+| `e r2` | 3,200 | 2,100 | 257: 2,100, born · 954: 3,200, born · 982: 840, unplaced · 1432: 4,200, unplaced · 1951: 840, unplaced |
+| `c r2` | 2,560 | 0 | 954: 3,200, born · 1951: 4,200, unplaced |
+| `e r3` | 4,200 | 2,100 | 257: 2,100, born · 954: 4,200, born · 1951: 4,200, born |
+| `c r3` | 4,200 | 1,680 | 710: 2,100, born · 954: 2,100, unplaced · 1432: 840, unplaced · 1951: 4,200, born |
+
+- **The narrow draft at case 954 is the model's, not c r2's.**
+  - e r2 drew the same draft at the same ticket, with the same extra
+    condition.
+  - e r2's draft of `H04`'s region whole, at case 1432, was refused too.
+  - e r1 and e r3 drew `H04`'s region whole at case 954.
+  - The first call is the same request in every run, so this is the draft's
+    draw.
+- **Four of the six runs recall `H04`'s part whole at the end**: e r1 and e r3,
+  and two channel runs. c r1 wrote it at case 1432 and c r3 at case 1951, each
+  at its first draft of `H04`'s region whole.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| O1 | at least half of `H04`'s lost points are contested | 640 of 1,640, 0.3902 | **fails** |
+| O2 | some rule of the queue holds `H04`'s part whole | none does | **fails** |
+| O3 | every escalation on the queue's tickets ended born | 1 of 2 | **fails** |
+| O4 | after some birth the base decided more of the queue right than at the end | 3,200 after case 954, against 2,560 | holds |
+| O5 | the final base decides no point of `H05`'s part right | none | holds |
+
+**The drafter expected all five to hold, bet on O1, trusted O5 most and O3
+least.** O4 and O5 held, and O1, O2 and O3 failed.
+- **What the account got wrong.** It had c r2 write `H04`'s region whole and
+  lose part of it to contest. c r2 wrote it narrow, and most of what it lost
+  was never written.
+- **What it got right.** The contest was there, on the points the account
+  named, through edges refused for closing a cycle.
+
+### What it says
+
+- **What c r2 lost beyond its draws is the loop's, as c r1's was.** Of the 4,200
+  points the channel let it reach, it lost 1,640:
+  - **1,000 to a narrow draft.** The model wrote `H04` with an extra condition
+    at case 954, in two runs of six. The broad redraft that would have
+    repaired it was refused by the placement round.
+  - **640 to two refused edges.** Each later rule of another queue declared
+    itself below `R0075`, as the policy orders them. The engine refused each
+    edge, because the base already ordered the pair the other way through
+    other rules.
+- **The channel's own share is `H05`'s part.** No ticket of `H05` was
+  reportable under c r2's draws, and none escalated.
+- **What it leaves.**
+  - **An edge refused for closing a cycle is a place where a right
+    declaration buys nothing.** Where the cycle runs through rules that do not
+    match the contested points, the pair stays in conflict. Which edge of a
+    cycle should yield was read POST-RUN on `PLAN_BLIND.md`'s bases
+    (`blind/yielding.py`). It has not been read on this plan's.
+  - **The narrow draft points at the first call.** At the same ticket the model
+    drew the policy's region in some runs and a narrower one in others. Under
+    v1b a later, broader draft has no easier way in.
+
+---
+
 ## Files
 
 ```
@@ -971,6 +1144,11 @@ results_channel/lost.json          POST-RUN: every run's lost points of SECURITY
                                    escalations, the expectation's six clauses, and the part
                                    added after the first run: what the unplaced answers left
                                    out, and the rules containing the whole queue
+results_channel/oncall.json        POST-RUN: lost.json's reading for ONCALL_ESCALATION in every
+                                   run, each way split by H04's part and H05's, the rules
+                                   holding H04's part whole, the expectation's five clauses,
+                                   and the part added after the first run: the contested
+                                   pairs with the engine's verdict on every edge between them
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
