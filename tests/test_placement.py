@@ -900,6 +900,53 @@ class TestStageC(unittest.TestCase):
         zero = runs_of(v1b=[("1", "0", "1")] * 3, v1c=[("1", "1/5", "1")] * 3)
         self.assertEqual(score.row("PL-a", zero)["verdict"], score.NO_VALUE)
 
+    def test_an_edge_refused_for_a_cycle_is_read_against_the_better_rule(self):
+        """A over B and B over C are installed; C over A would close a cycle and
+        is refused. The reading finds that edge alone, reads its pair with
+        `rung3.edge_direction`'s verdict on both surfaces, and counts the shared
+        points the final base leaves both rules undefeated on."""
+        from rung3.edge_direction import better_over_space, verdict as pair_verdict
+        from rung2.engine2 import EDGE_CYCLE
+        from blind import rows as brows
+        eng = base_of([API, (T3, ("severity", "lte", 2)), (S, ("channel", "eq", "email"))])
+        log = [("R0001", "R0002", eng.try_edge("R0001", "R0002")),
+               ("R0002", "R0003", eng.try_edge("R0002", "R0003")),
+               ("R0003", "R0001", eng.try_edge("R0003", "R0001"))]
+        self.assertEqual([why for *_, why in log], ["ok", "ok", EDGE_CYCLE])
+        rec = {"rules": [{"rule_id": r.rule_id, "action": r.action, "born_at": r.born_at}
+                         for r in eng.rules],
+               "edge_log": [list(x) for x in log], "edge_channels": [e.WRITE] * 3}
+        got = score.cycle_refused(rec, eng)
+        self.assertEqual(got["refused"], 1)
+        (row,) = got["edges"]
+        self.assertEqual((row["winner"], row["loser"], row["queues"]), ("R0003", "R0001", [S, T2]))
+        action = {r.rule_id: r.action for r in eng.rules}
+        tmask = MI.space_truth()
+        self.assertEqual(row["space_full"], pair_verdict(*better_over_space(
+            "R0003", "R0001", eng.ext, action, tmask)))
+        self.assertEqual(row["space_out"], pair_verdict(*better_over_space(
+            "R0003", "R0001", eng.ext, action, brows.restrict(tmask, MI.outside()))))
+        both = (ext(("channel", "eq", "email")) & ext(("product", "eq", "api"))
+                & ~ext(("severity", "lte", 2)))  # C is beaten by B where both match
+        self.assertEqual(row["contested"], both.bit_count())
+        self.assertEqual(row["contested_winner_right"], (both & tmask[S]).bit_count())
+        self.assertEqual(got["same_queue"], 0)
+
+    def test_the_cycle_summary_counts_right_edges_pairs_and_points(self):
+        rows = [{"winner": "A", "loser": "B", "same_queue": False, "space_full": "a",
+                 "space_out": "a", "contested": 5, "contested_winner_right": 4},
+                {"winner": "A", "loser": "B", "same_queue": False, "space_full": "a",
+                 "space_out": "tie", "contested": 5, "contested_winner_right": 4},
+                {"winner": "C", "loser": "D", "same_queue": False, "space_full": "b",
+                 "space_out": "b", "contested": 7, "contested_winner_right": 0},
+                {"winner": "E", "loser": "F", "same_queue": True, "contested": 9}]
+        got = score.cycle_summary(rows)
+        self.assertEqual(got["same_queue"], 1)
+        self.assertEqual(got["by_verdict"]["space_full"], {"a": 2, "b": 1})
+        self.assertEqual(got["right"]["space_full"],
+                         {"edges": 2, "pairs": 1, "contested": 10, "contested_winner_right": 8})
+        self.assertEqual(got["right"]["space_out"]["edges"], 1)
+
     def test_refused_counts_unplaced_answers_only(self):
         answered = {"verdict": e.UNPLACED, "calls": [{"round": 0, "failure": None},
                                                      {"round": 1, "failure": None}]}
