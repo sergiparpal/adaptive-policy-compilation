@@ -1,0 +1,2502 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-07T12:00:31Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "cac4ee9b6285f98bccf82370b6e6732fcdaa108b",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "9195d9e6aa2860cb"
+  },
+  "plan": "PLAN_CHANNEL.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CHANNEL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CHANNEL.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-07, after channel/lost.py's reading. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its five clauses were read: the contested pairs, and every edge between their two rules with the engine's verdict. No expectation; no clause moves.",
+  "source": {
+    "score": "results_channel/score.json",
+    "score_from": "913c97f2e202525cfc61bb605da76f7da10d2c40"
+  },
+  "surface": "the exhaustive space, 134,400 points",
+  "queue": "ONCALL_ESCALATION",
+  "run": "c_r2",
+  "parts": {
+    "H04": "the queue's points in H04's region, which the run's draws let the channel reach",
+    "H05": "the queue's points in H05's region, which they do not"
+  },
+  "constants": {
+    "O_HALF": "1/2"
+  },
+  "gates": [
+    {
+      "run": "e_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "e_r1": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 6300,
+          "lost": 0,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 0,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {},
+          "of_lost": {
+            "impasse": null,
+            "conflict": null,
+            "unwritten": null,
+            "outranked": null
+          }
+        },
+        "winners": [],
+        "queue_rules": [
+          {
+            "rule_id": "R0040",
+            "born_at": 257,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              }
+            ],
+            "points": 840,
+            "queue_points": 420,
+            "undefeated_on_queue": 420,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0057",
+            "born_at": 710,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 1680,
+            "lost_inside": 0,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0061",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 8400,
+            "queue_points": 4200,
+            "undefeated_on_queue": 4200,
+            "lost_inside": 0,
+            "is_listed_region": "H04",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 6300,
+          "at_birth": 954,
+          "moves": [
+            {
+              "born_at": 257,
+              "rule_id": "R0040",
+              "action": "ONCALL_ESCALATION",
+              "right": 420,
+              "delta": 420,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 710,
+              "rule_id": "R0057",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 1680,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 954,
+              "rule_id": "R0061",
+              "action": "ONCALL_ESCALATION",
+              "right": 6300,
+              "delta": 4200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 420,
+            "verdict": "nacida",
+            "rule_id": "R0040",
+            "in_base": true,
+            "listed": 3
+          },
+          {
+            "idx": 710,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0057",
+            "in_base": true,
+            "listed": 21
+          },
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "nacida",
+            "rule_id": "R0061",
+            "in_base": true,
+            "listed": 17
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 3
+        },
+        "added_after_the_first_run": {
+          "left_out": [],
+          "times_each_rule_was_left_out": {},
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 4200,
+          "H05": 2100
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 0,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [
+        "R0061"
+      ],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      }
+    },
+    "c_r1": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 4200,
+          "lost": 2100,
+          "impasse": 0,
+          "conflict": 420,
+          "unwritten": 1680,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "T3_ENGINEERING": 1680
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "1/5",
+              "value": 0.2
+            },
+            "unwritten": {
+              "fraction": "4/5",
+              "value": 0.8
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0053",
+            "action": "T3_ENGINEERING",
+            "born_at": 941,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "points": 8400,
+            "lost_points": 1680,
+            "unwritten": 1680,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0038",
+            "action": "T3_ENGINEERING",
+            "born_at": 227,
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "points": 3360,
+            "lost_points": 160,
+            "unwritten": 160,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0060",
+            "born_at": 1432,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 8400,
+            "queue_points": 4200,
+            "undefeated_on_queue": 4200,
+            "lost_inside": 0,
+            "is_listed_region": "H04",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 4200,
+          "at_birth": 1432,
+          "moves": [
+            {
+              "born_at": 1432,
+              "rule_id": "R0060",
+              "action": "ONCALL_ESCALATION",
+              "right": 4200,
+              "delta": 4200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 420,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 6
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "nacida",
+            "rule_id": "R0060",
+            "in_base": true,
+            "listed": 19
+          }
+        ],
+        "escalation_verdicts": {
+          "sin_situar": 1,
+          "nacida": 1
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 257,
+              "answered": true,
+              "draft_queue_points": 420,
+              "listed": 6,
+              "listed_nested": 2,
+              "left_out": 2,
+              "left_out_rules": [
+                "R0009",
+                "R0029"
+              ],
+              "left_out_nested": 2,
+              "left_out_by_relation": {
+                "contains_draft": 2
+              },
+              "left_out_by_queue": {
+                "T2_TECHNICAL": 2
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0009": 1,
+            "R0029": 1
+          },
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 4200,
+          "H05": 0
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 420
+        },
+        "unwritten": {
+          "H04": 0,
+          "H05": 1680
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [
+        "R0060"
+      ],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      }
+    },
+    "e_r2": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 5300,
+          "lost": 1000,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 1000,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 200,
+            "T2_TECHNICAL": 600,
+            "T3_ENGINEERING": 200
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "unwritten": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0009",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 13440,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          },
+          {
+            "rule_id": "R0021",
+            "action": "T3_ENGINEERING",
+            "born_at": 58,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0036",
+            "action": "T3_ENGINEERING",
+            "born_at": 227,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15"
+          },
+          {
+            "rule_id": "R0041",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 272,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 3360,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "CONFLICT",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09"
+          },
+          {
+            "rule_id": "R0044",
+            "action": "T2_TECHNICAL",
+            "born_at": 388,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0056",
+            "action": "T2_TECHNICAL",
+            "born_at": 725,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0071",
+            "action": "T2_TECHNICAL",
+            "born_at": 1461,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0064",
+            "action": "T2_TECHNICAL",
+            "born_at": 1160,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "pt"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 80,
+            "unwritten": 80,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0076",
+            "action": "T3_ENGINEERING",
+            "born_at": 1824,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "phone"
+              }
+            ],
+            "points": 3360,
+            "lost_points": 50,
+            "unwritten": 50,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15"
+          },
+          {
+            "rule_id": "R0038",
+            "action": "T3_ENGINEERING",
+            "born_at": 245,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "pt"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 2688,
+            "lost_points": 40,
+            "unwritten": 40,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0039",
+            "born_at": 257,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 2100,
+            "lost_inside": 0,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0059",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 6400,
+            "queue_points": 3200,
+            "undefeated_on_queue": 3200,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 5300,
+          "at_birth": 954,
+          "moves": [
+            {
+              "born_at": 257,
+              "rule_id": "R0039",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 2100,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 954,
+              "rule_id": "R0059",
+              "action": "ONCALL_ESCALATION",
+              "right": 5300,
+              "delta": 3200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0039",
+            "in_base": true,
+            "listed": 14
+          },
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 3200,
+            "verdict": "nacida",
+            "rule_id": "R0059",
+            "in_base": true,
+            "listed": 24
+          },
+          {
+            "idx": 982,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 11
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 31
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 9
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 2,
+          "sin_situar": 3
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 982,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 11,
+              "listed_nested": 3,
+              "left_out": 3,
+              "left_out_rules": [
+                "R0013",
+                "R0028",
+                "R0041"
+              ],
+              "left_out_nested": 3,
+              "left_out_by_relation": {
+                "contains_draft": 3
+              },
+              "left_out_by_queue": {
+                "ACCOUNT_MANAGER": 2,
+                "BILLING_SPECIALIST": 1
+              }
+            },
+            {
+              "idx": 1432,
+              "answered": true,
+              "draft_queue_points": 4200,
+              "listed": 31,
+              "listed_nested": 0,
+              "left_out": 21,
+              "left_out_rules": [
+                "R0001",
+                "R0006",
+                "R0009",
+                "R0013",
+                "R0014",
+                "R0018",
+                "R0025",
+                "R0028",
+                "R0030",
+                "R0031",
+                "R0032",
+                "R0038",
+                "R0041",
+                "R0042",
+                "R0044",
+                "R0048",
+                "R0049",
+                "R0056",
+                "R0058",
+                "R0060",
+                "R0064"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 21
+              },
+              "left_out_by_queue": {
+                "ACCOUNT_MANAGER": 7,
+                "BILLING_SPECIALIST": 2,
+                "SECURITY_INCIDENT": 5,
+                "T2_TECHNICAL": 5,
+                "T3_ENGINEERING": 2
+              }
+            },
+            {
+              "idx": 1951,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 9,
+              "listed_nested": 2,
+              "left_out": 8,
+              "left_out_rules": [
+                "R0018",
+                "R0030",
+                "R0032",
+                "R0042",
+                "R0044",
+                "R0049",
+                "R0060",
+                "R0064"
+              ],
+              "left_out_nested": 2,
+              "left_out_by_relation": {
+                "contains_draft": 2,
+                "crossing": 6
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 5,
+                "T2_TECHNICAL": 2,
+                "T3_ENGINEERING": 1
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0013": 2,
+            "R0028": 2,
+            "R0041": 2,
+            "R0018": 2,
+            "R0030": 2,
+            "R0032": 2,
+            "R0042": 2,
+            "R0044": 2,
+            "R0049": 2,
+            "R0060": 2,
+            "R0064": 2,
+            "R0001": 1,
+            "R0006": 1,
+            "R0009": 1,
+            "R0014": 1,
+            "R0025": 1,
+            "R0031": 1,
+            "R0038": 1,
+            "R0048": 1,
+            "R0056": 1,
+            "R0058": 1
+          },
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 3200,
+          "H05": 2100
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 1000,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      }
+    },
+    "c_r2": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 2560,
+          "lost": 3740,
+          "impasse": 0,
+          "conflict": 900,
+          "unwritten": 2840,
+          "outranked": 0,
+          "contested": 640,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 260,
+            "T2_TECHNICAL": 1540,
+            "T3_ENGINEERING": 1040
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "45/187",
+              "value": 0.240642
+            },
+            "unwritten": {
+              "fraction": "142/187",
+              "value": 0.759358
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0025",
+            "action": "T3_ENGINEERING",
+            "born_at": 58,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 620,
+            "unwritten": 620,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0066",
+            "action": "T2_TECHNICAL",
+            "born_at": 658,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 620,
+            "unwritten": 620,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0074",
+            "action": "T3_ENGINEERING",
+            "born_at": 941,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 1680,
+            "lost_points": 420,
+            "unwritten": 420,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0010",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 13440,
+            "lost_points": 360,
+            "unwritten": 360,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          },
+          {
+            "rule_id": "R0082",
+            "action": "T2_TECHNICAL",
+            "born_at": 1309,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "points": 13440,
+            "lost_points": 360,
+            "unwritten": 360,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H18"
+          },
+          {
+            "rule_id": "R0083",
+            "action": "T2_TECHNICAL",
+            "born_at": 1318,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 360,
+            "unwritten": 360,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0018",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 32,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 8
+              }
+            ],
+            "points": 20800,
+            "lost_points": 260,
+            "unwritten": 260,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H14"
+          },
+          {
+            "rule_id": "R0031",
+            "action": "T2_TECHNICAL",
+            "born_at": 85,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0075",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 6400,
+            "queue_points": 3200,
+            "undefeated_on_queue": 3200,
+            "lost_inside": 640,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 3200,
+          "at_birth": 954,
+          "moves": [
+            {
+              "born_at": 954,
+              "rule_id": "R0075",
+              "action": "ONCALL_ESCALATION",
+              "right": 3200,
+              "delta": 3200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1309,
+              "rule_id": "R0082",
+              "action": "T2_TECHNICAL",
+              "right": 2560,
+              "delta": -640,
+              "cause": "ERROR",
+              "truth": "T2_TECHNICAL",
+              "governing": "H18"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 3200,
+            "verdict": "nacida",
+            "rule_id": "R0075",
+            "in_base": true,
+            "listed": 18
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 24
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 1,
+          "sin_situar": 1
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 1951,
+              "answered": true,
+              "draft_queue_points": 4200,
+              "listed": 24,
+              "listed_nested": 0,
+              "left_out": 1,
+              "left_out_rules": [
+                "R0022"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 1
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 1
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0022": 1
+          },
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 2560,
+          "H05": 0
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 640,
+          "H05": 260
+        },
+        "unwritten": {
+          "H04": 1000,
+          "H05": 1840
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 640,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": [
+          {
+            "queue_rule": "R0075",
+            "other_rule": "R0085",
+            "other_action": "ACCOUNT_MANAGER",
+            "other_born_at": 1402,
+            "points": 640,
+            "edges": [
+              {
+                "winner": "R0075",
+                "loser": "R0085",
+                "verdict": "cierra_ciclo"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "e_r3": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 6300,
+          "lost": 0,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 0,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {},
+          "of_lost": {
+            "impasse": null,
+            "conflict": null,
+            "unwritten": null,
+            "outranked": null
+          }
+        },
+        "winners": [],
+        "queue_rules": [
+          {
+            "rule_id": "R0056",
+            "born_at": 257,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 2100,
+            "lost_inside": 0,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0076",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 8400,
+            "queue_points": 4200,
+            "undefeated_on_queue": 3360,
+            "lost_inside": 0,
+            "is_listed_region": "H04",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          },
+          {
+            "rule_id": "R0088",
+            "born_at": 1951,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 8400,
+            "queue_points": 4200,
+            "undefeated_on_queue": 4200,
+            "lost_inside": 0,
+            "is_listed_region": "H04",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 6300,
+          "at_birth": 954,
+          "moves": [
+            {
+              "born_at": 257,
+              "rule_id": "R0056",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 2100,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 954,
+              "rule_id": "R0076",
+              "action": "ONCALL_ESCALATION",
+              "right": 6300,
+              "delta": 4200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1114,
+              "rule_id": "R0080",
+              "action": "T3_ENGINEERING",
+              "right": 5460,
+              "delta": -840,
+              "cause": "ERROR",
+              "truth": "T2_TECHNICAL",
+              "governing": "H08"
+            },
+            {
+              "born_at": 1951,
+              "rule_id": "R0088",
+              "action": "ONCALL_ESCALATION",
+              "right": 6300,
+              "delta": 840,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0056",
+            "in_base": true,
+            "listed": 14
+          },
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "nacida",
+            "rule_id": "R0076",
+            "in_base": true,
+            "listed": 23
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "nacida",
+            "rule_id": "R0088",
+            "in_base": true,
+            "listed": 28
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 3
+        },
+        "added_after_the_first_run": {
+          "left_out": [],
+          "times_each_rule_was_left_out": {},
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 4200,
+          "H05": 2100
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 0,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [
+        "R0076",
+        "R0088"
+      ],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      }
+    },
+    "c_r3": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 5880,
+          "lost": 420,
+          "impasse": 0,
+          "conflict": 420,
+          "unwritten": 0,
+          "outranked": 0,
+          "contested": 420,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {},
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "unwritten": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [],
+        "queue_rules": [
+          {
+            "rule_id": "R0043",
+            "born_at": 710,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 2100,
+            "lost_inside": 420,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0052",
+            "born_at": 1951,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 8400,
+            "queue_points": 4200,
+            "undefeated_on_queue": 4200,
+            "lost_inside": 0,
+            "is_listed_region": "H04",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 5880,
+          "at_birth": 1951,
+          "moves": [
+            {
+              "born_at": 710,
+              "rule_id": "R0043",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 2100,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 1099,
+              "rule_id": "R0048",
+              "action": "T2_TECHNICAL",
+              "right": 1680,
+              "delta": -420,
+              "cause": "CONFLICT",
+              "truth": "T2_TECHNICAL",
+              "governing": "H08"
+            },
+            {
+              "born_at": 1951,
+              "rule_id": "R0052",
+              "action": "ONCALL_ESCALATION",
+              "right": 5880,
+              "delta": 4200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 710,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0043",
+            "in_base": true,
+            "listed": 17
+          },
+          {
+            "idx": 954,
+            "cause": "CONFLICT",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 20
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 10
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 4200,
+            "verdict": "nacida",
+            "rule_id": "R0052",
+            "in_base": true,
+            "listed": 23
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 2,
+          "sin_situar": 2
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 954,
+              "answered": true,
+              "draft_queue_points": 2100,
+              "listed": 20,
+              "listed_nested": 1,
+              "left_out": 17,
+              "left_out_rules": [
+                "R0004",
+                "R0007",
+                "R0012",
+                "R0013",
+                "R0018",
+                "R0026",
+                "R0028",
+                "R0029",
+                "R0030",
+                "R0031",
+                "R0033",
+                "R0035",
+                "R0036",
+                "R0037",
+                "R0038",
+                "R0042",
+                "R0044"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 17
+              },
+              "left_out_by_queue": {
+                "ACCOUNT_MANAGER": 3,
+                "BILLING_SPECIALIST": 3,
+                "SECURITY_INCIDENT": 3,
+                "SELF_SERVICE_DEFLECT": 1,
+                "T2_TECHNICAL": 4,
+                "T3_ENGINEERING": 3
+              }
+            },
+            {
+              "idx": 1432,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 10,
+              "listed_nested": 4,
+              "left_out": 4,
+              "left_out_rules": [
+                "R0018",
+                "R0036",
+                "R0037",
+                "R0042"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 4
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 3,
+                "T2_TECHNICAL": 1
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0018": 2,
+            "R0036": 2,
+            "R0037": 2,
+            "R0042": 2,
+            "R0004": 1,
+            "R0007": 1,
+            "R0012": 1,
+            "R0013": 1,
+            "R0026": 1,
+            "R0028": 1,
+            "R0029": 1,
+            "R0030": 1,
+            "R0031": 1,
+            "R0033": 1,
+            "R0035": 1,
+            "R0038": 1,
+            "R0044": 1
+          },
+          "containers_of_the_queue": [
+            {
+              "rule_id": "R0046",
+              "action": "T2_TECHNICAL",
+              "born_at": 851,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "eq",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 4200,
+          "H05": 1680
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 420
+        },
+        "unwritten": {
+          "H04": 0,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 420
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [
+        "R0052"
+      ],
+      "added_after_the_first_run": {
+        "contested_pairs": [
+          {
+            "queue_rule": "R0043",
+            "other_rule": "R0050",
+            "other_action": "T3_ENGINEERING",
+            "other_born_at": 1397,
+            "points": 420,
+            "edges": [
+              {
+                "winner": "R0043",
+                "loser": "R0050",
+                "verdict": "cierra_ciclo"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "O1",
+      "what": "at least half of H04's lost points are contested",
+      "reading": {
+        "contested": 640,
+        "of": 1640,
+        "share": {
+          "fraction": "16/41",
+          "value": 0.390244
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "O2",
+      "what": "some rule of the queue holds H04's part whole",
+      "reading": {
+        "rules": []
+      },
+      "holds": false
+    },
+    {
+      "clause": "O3",
+      "what": "every escalation on the queue's tickets ended born",
+      "reading": {
+        "born": 1,
+        "of": 2,
+        "verdicts": {
+          "nacida": 1,
+          "sin_situar": 1
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "O4",
+      "what": "after some birth the base decided more of the queue right than the final base does",
+      "reading": {
+        "most_right": 3200,
+        "at_birth": 954,
+        "final": 2560
+      },
+      "holds": true
+    },
+    {
+      "clause": "O5",
+      "what": "the final base decides no point of H05's part right",
+      "reading": {
+        "right_in_h05": 0
+      },
+      "holds": true
+    }
+  ]
+}
