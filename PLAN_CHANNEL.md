@@ -1,5 +1,27 @@
 # PLAN_CHANNEL — the loop with reasoning on, under a trigger a deployment could have: half its errors reported, beside the error arm again
 
+> **[CLOSED 2026-11-07] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-05, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-07.
+> - **`CH-a`, `CH-b`, `CH-d`, `CH-e` and `CH-f` hold**, all but `CH-d` thinly.
+> - **`CH-c` is refuted, thinly.**
+> - `CH-g` is reported.
+>
+> **The figures are owned by
+> [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md)**,
+> and no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **One estimate of this file was far from what happened.** §1 priced the six
+> runs at Baidu's listing of 2026-10-25. Baidu billed another price per token,
+> highest in the hours it refused for the rate, and the runs cost more than §1
+> said. The findings give both.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-11-05. The line is
+> kept unedited and this banner is its correction. The banner touches no line
+> of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-04, unsigned.** Corrected before
 signature on 2026-11-05, where the package written to it showed the draft
 inexact; each correction is dated in place, and no row and no line moved. Under
