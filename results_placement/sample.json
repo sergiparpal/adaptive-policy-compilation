@@ -1,0 +1,3447 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-07T18:00:52Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "c3ac216c4fb370acf1958d8b99348c0638bd6fa3",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "f89d036fc2068249"
+  },
+  "plan": "PLAN_PLACEMENT.md",
+  "stage": "A",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_PLACEMENT.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_PLACEMENT.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "PL-g1": {
+      "what": "PLAN_CHANNEL.md's verdicts come back from its runs; under v1b this plan's loop is that plan's channel arm on run c r1's answers, and v1c with both exclusions off is v1b; every stream of draws is that plan's; the labels agree with the truth; the suite green",
+      "closed_verdicts": {
+        "rows": 6,
+        "missing_runs": [],
+        "departing": [],
+        "passes": true
+      },
+      "loop": {
+        "parts": {
+          "metrics": true,
+          "v1b": true,
+          "calls": true,
+          "rules": true,
+          "edge_log": true,
+          "edge_channels": true,
+          "records": true,
+          "escalations": true
+        },
+        "replay_is_the_run": true,
+        "v1c_off_is_v1b": true,
+        "escalations": 79,
+        "passes": true
+      },
+      "draws": {
+        "streams": {
+          "r1": true,
+          "r2": true,
+          "r3": true,
+          "smoke": true
+        },
+        "passes": true
+      },
+      "labels": {
+        "cases": 2000,
+        "departing": [],
+        "source": "results_reuse/run_n2000_r1.json",
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2665,
+        "result": "OK (skipped=5)",
+        "seconds": 188.7,
+        "passes": true
+      },
+      "passes": true
+    },
+    "PL-g2": {
+      "what": "every text is PLAN_REASONED_LOOP.md's and PLAN_CHANNEL.md's runs sent it; the requests are that plan's but for the pin; v1c's list on v1b's recorded rounds is \u00a70's figures 1 to 3; the hidden policy through both paths and the transcriber are \u00a70's; what v1c leaves out decides nothing",
+      "texts": {
+        "reasoned_loop_check": true,
+        "sent_by_channels_runs": {
+          "e_r1": true,
+          "c_r1": true,
+          "e_r2": true,
+          "c_r2": true,
+          "e_r3": true,
+          "c_r3": true
+        },
+        "system_prompt_digest": true,
+        "passes": true
+      },
+      "requests": {
+        "runs_0": true,
+        "runs_1": true,
+        "baidu_0": true,
+        "baidu_1": true,
+        "deepinfra_0": true,
+        "deepinfra_1": true,
+        "pins": true,
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "replay": true,
+          "rounds": true,
+          "rounds_all": true,
+          "answered": true,
+          "nested_alone": true,
+          "pl_a_reading": true,
+          "by_queue": true,
+          "rare_in_channel": true,
+          "c_r2_1951_left_out": true
+        },
+        "passes": true
+      },
+      "hidden_policy": {
+        "v1c": {
+          "born": 29,
+          "rounds": 27,
+          "listed_v1b": 253,
+          "listed_v1c": 192,
+          "inside_or_containing": 54,
+          "governed": 7,
+          "not_sent": 2,
+          "installed": 192,
+          "space": [
+            134400,
+            134400
+          ],
+          "corpus": [
+            2000,
+            2000
+          ]
+        },
+        "v1c_as_declared": true,
+        "v1b": {
+          "born": 29,
+          "installed": 199,
+          "the_199_edges": true,
+          "space": [
+            134400,
+            134400
+          ],
+          "corpus": [
+            2000,
+            2000
+          ],
+          "passes": true
+        },
+        "v1b_copy": {
+          "born": true,
+          "declarations": true,
+          "verdicts": true,
+          "installed": true,
+          "space": true,
+          "corpus": true
+        },
+        "passes": true
+      },
+      "transcriber": {
+        "as_declared": {
+          "v1b_r1": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1b_r2": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1b_r3": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1b_smoke": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true
+          },
+          "v1c_r1": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1c_r2": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1c_r3": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "v1c_smoke": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true,
+            "rounds": true,
+            "listed_v1b": true,
+            "listed_v1c": true,
+            "not_sent": true
+          }
+        },
+        "passes": true
+      },
+      "left_out": {
+        "pairs": 182,
+        "by_source_and_reason": {
+          "hidden governed": 7,
+          "hidden inside": 54,
+          "v1c_r1 containing": 29,
+          "v1c_r1 governed": 5,
+          "v1c_r1 inside": 6,
+          "v1c_r2 containing": 29,
+          "v1c_r2 governed": 2,
+          "v1c_r2 inside": 3,
+          "v1c_r3 containing": 32,
+          "v1c_r3 governed": 2,
+          "v1c_r3 inside": 3,
+          "v1c_smoke containing": 8,
+          "v1c_smoke inside": 2
+        },
+        "changing": [],
+        "misclassed": [],
+        "passes": true
+      },
+      "passes": true
+    },
+    "PL-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under v1c with PLAN_CHANNEL.md's smoke draws; the bridge's tickets and order are rebuilt from their seed; the cap is 400 escalations",
+      "schedule": [
+        [
+          "v1c",
+          1
+        ],
+        [
+          "v1b",
+          1
+        ],
+        [
+          "v1c",
+          2
+        ],
+        [
+          "v1b",
+          2
+        ],
+        [
+          "v1c",
+          3
+        ],
+        [
+          "v1b",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "bridge": {
+        "SECURITY_INCIDENT": true,
+        "ONCALL_ESCALATION": true,
+        "rare_escalated": true,
+        "candidates": true,
+        "drawn": true,
+        "first": true,
+        "distinct": true,
+        "tickets": true,
+        "forty": true
+      },
+      "bridge_asks": true,
+      "cap": true,
+      "passes": true
+    },
+    "PL-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_PLACEMENT.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_PLACEMENT.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "references": {
+    "drafting": {
+      "rounds": {
+        "reasoned_loop/i_r1": [
+          41,
+          29,
+          113,
+          11,
+          0,
+          0,
+          102,
+          13,
+          89,
+          2,
+          3,
+          1
+        ],
+        "reasoned_loop/i_r2": [
+          28,
+          17,
+          48,
+          4,
+          0,
+          0,
+          44,
+          4,
+          40,
+          2,
+          3,
+          0
+        ],
+        "reasoned_loop/i_r3": [
+          18,
+          17,
+          34,
+          0,
+          0,
+          0,
+          34,
+          0,
+          34,
+          0,
+          2,
+          0
+        ],
+        "reasoned_loop/e_r1": [
+          99,
+          90,
+          1026,
+          24,
+          69,
+          8,
+          925,
+          169,
+          764,
+          2,
+          21,
+          14
+        ],
+        "reasoned_loop/e_r2": [
+          120,
+          113,
+          1392,
+          127,
+          87,
+          21,
+          1157,
+          243,
+          935,
+          6,
+          28,
+          15
+        ],
+        "reasoned_loop/e_r3": [
+          102,
+          100,
+          848,
+          40,
+          160,
+          7,
+          641,
+          96,
+          552,
+          13,
+          38,
+          28
+        ],
+        "channel/e_r1": [
+          90,
+          81,
+          735,
+          55,
+          41,
+          0,
+          639,
+          92,
+          547,
+          5,
+          22,
+          15
+        ],
+        "channel/e_r2": [
+          95,
+          87,
+          799,
+          61,
+          48,
+          10,
+          680,
+          162,
+          528,
+          4,
+          14,
+          8
+        ],
+        "channel/e_r3": [
+          106,
+          102,
+          940,
+          40,
+          84,
+          15,
+          801,
+          78,
+          738,
+          3,
+          18,
+          8
+        ],
+        "channel/c_r1": [
+          79,
+          68,
+          502,
+          9,
+          53,
+          3,
+          437,
+          29,
+          411,
+          4,
+          16,
+          12
+        ],
+        "channel/c_r2": [
+          131,
+          119,
+          1271,
+          82,
+          106,
+          83,
+          1000,
+          207,
+          876,
+          1,
+          34,
+          20
+        ],
+        "channel/c_r3": [
+          62,
+          55,
+          478,
+          27,
+          46,
+          1,
+          404,
+          60,
+          345,
+          3,
+          9,
+          3
+        ]
+      },
+      "rounds_all": [
+        971,
+        878,
+        8186,
+        480,
+        694,
+        148,
+        6864,
+        1153,
+        5859,
+        45,
+        208,
+        124
+      ],
+      "answered": 208,
+      "unanswered": 0,
+      "nested_alone": {
+        "complete": 122,
+        "not_sent": 42
+      },
+      "pl_a_reading": {
+        "refused": [
+          "16/79",
+          "34/131",
+          "9/62"
+        ],
+        "median": "16/79",
+        "left": [
+          "4/79",
+          "14/131",
+          "3/31"
+        ],
+        "median_left": "3/31",
+        "ratio": "237/496"
+      },
+      "by_queue": {
+        "ACCOUNT_MANAGER": [
+          18,
+          14
+        ],
+        "BILLING_SPECIALIST": [
+          8,
+          5
+        ],
+        "ONCALL_ESCALATION": [
+          14,
+          3
+        ],
+        "SECURITY_INCIDENT": [
+          26,
+          17
+        ],
+        "SELF_SERVICE_DEFLECT": [
+          32,
+          18
+        ],
+        "T1_GENERAL": [
+          19,
+          12
+        ],
+        "T2_TECHNICAL": [
+          63,
+          36
+        ],
+        "T3_ENGINEERING": [
+          28,
+          19
+        ]
+      },
+      "rare_in_channel": {
+        "c_r1": {
+          "SECURITY_INCIDENT": {
+            "taken": [
+              599,
+              770,
+              1063,
+              1264,
+              1871,
+              1961
+            ],
+            "left": [
+              448,
+              580,
+              751
+            ]
+          },
+          "ONCALL_ESCALATION": {
+            "taken": [
+              257
+            ],
+            "left": []
+          }
+        },
+        "c_r2": {
+          "SECURITY_INCIDENT": {
+            "taken": [
+              580
+            ],
+            "left": [
+              155
+            ]
+          },
+          "ONCALL_ESCALATION": {
+            "taken": [],
+            "left": [
+              1951
+            ]
+          }
+        },
+        "c_r3": {
+          "SECURITY_INCIDENT": {
+            "taken": [],
+            "left": [
+              402
+            ]
+          },
+          "ONCALL_ESCALATION": {
+            "taken": [],
+            "left": [
+              954,
+              1432
+            ]
+          }
+        }
+      },
+      "c_r2_1951_left_out": [
+        "R0022"
+      ],
+      "breadth": {
+        "rounds_broad": 247,
+        "broad_unplaced": 54,
+        "rounds_other": 631,
+        "other_unplaced": 154,
+        "born_after_round": 664,
+        "born_broad": 193,
+        "broad_refusals_taken": 37
+      },
+      "replay_ok": true,
+      "as_declared": {
+        "replay": true,
+        "rounds": true,
+        "rounds_all": true,
+        "answered": true,
+        "nested_alone": true,
+        "pl_a_reading": true,
+        "by_queue": true,
+        "rare_in_channel": true,
+        "c_r2_1951_left_out": true,
+        "breadth": true
+      }
+    },
+    "hidden": {
+      "v1c": {
+        "born": 29,
+        "rounds": 27,
+        "listed_v1b": 253,
+        "listed_v1c": 192,
+        "inside_or_containing": 54,
+        "governed": 7,
+        "not_sent": 2,
+        "installed": [
+          [
+            "H01",
+            "H04"
+          ],
+          [
+            "H01",
+            "H05"
+          ],
+          [
+            "H01",
+            "H06"
+          ],
+          [
+            "H01",
+            "H07"
+          ],
+          [
+            "H01",
+            "H08"
+          ],
+          [
+            "H01",
+            "H09"
+          ],
+          [
+            "H01",
+            "H10"
+          ],
+          [
+            "H01",
+            "H11"
+          ],
+          [
+            "H01",
+            "H12"
+          ],
+          [
+            "H01",
+            "H13"
+          ],
+          [
+            "H01",
+            "H14"
+          ],
+          [
+            "H01",
+            "H15"
+          ],
+          [
+            "H01",
+            "H16"
+          ],
+          [
+            "H01",
+            "H17"
+          ],
+          [
+            "H01",
+            "H18"
+          ],
+          [
+            "H01",
+            "H19"
+          ],
+          [
+            "H01",
+            "H20"
+          ],
+          [
+            "H01",
+            "H21"
+          ],
+          [
+            "H01",
+            "H23"
+          ],
+          [
+            "H01",
+            "H26"
+          ],
+          [
+            "H01",
+            "H27"
+          ],
+          [
+            "H02",
+            "H04"
+          ],
+          [
+            "H02",
+            "H05"
+          ],
+          [
+            "H02",
+            "H06"
+          ],
+          [
+            "H02",
+            "H07"
+          ],
+          [
+            "H02",
+            "H08"
+          ],
+          [
+            "H02",
+            "H09"
+          ],
+          [
+            "H02",
+            "H10"
+          ],
+          [
+            "H02",
+            "H11"
+          ],
+          [
+            "H02",
+            "H12"
+          ],
+          [
+            "H02",
+            "H13"
+          ],
+          [
+            "H02",
+            "H14"
+          ],
+          [
+            "H02",
+            "H15"
+          ],
+          [
+            "H02",
+            "H16"
+          ],
+          [
+            "H02",
+            "H17"
+          ],
+          [
+            "H02",
+            "H18"
+          ],
+          [
+            "H02",
+            "H19"
+          ],
+          [
+            "H02",
+            "H20"
+          ],
+          [
+            "H02",
+            "H21"
+          ],
+          [
+            "H02",
+            "H22"
+          ],
+          [
+            "H02",
+            "H23"
+          ],
+          [
+            "H02",
+            "H25"
+          ],
+          [
+            "H02",
+            "H28"
+          ],
+          [
+            "H03",
+            "H04"
+          ],
+          [
+            "H03",
+            "H05"
+          ],
+          [
+            "H03",
+            "H06"
+          ],
+          [
+            "H03",
+            "H07"
+          ],
+          [
+            "H03",
+            "H09"
+          ],
+          [
+            "H03",
+            "H10"
+          ],
+          [
+            "H03",
+            "H11"
+          ],
+          [
+            "H03",
+            "H12"
+          ],
+          [
+            "H03",
+            "H13"
+          ],
+          [
+            "H03",
+            "H14"
+          ],
+          [
+            "H03",
+            "H15"
+          ],
+          [
+            "H03",
+            "H17"
+          ],
+          [
+            "H03",
+            "H22"
+          ],
+          [
+            "H03",
+            "H23"
+          ],
+          [
+            "H03",
+            "H24"
+          ],
+          [
+            "H03",
+            "H25"
+          ],
+          [
+            "H03",
+            "H26"
+          ],
+          [
+            "H04",
+            "H07"
+          ],
+          [
+            "H04",
+            "H09"
+          ],
+          [
+            "H04",
+            "H10"
+          ],
+          [
+            "H04",
+            "H11"
+          ],
+          [
+            "H04",
+            "H12"
+          ],
+          [
+            "H04",
+            "H13"
+          ],
+          [
+            "H04",
+            "H15"
+          ],
+          [
+            "H04",
+            "H16"
+          ],
+          [
+            "H04",
+            "H17"
+          ],
+          [
+            "H04",
+            "H18"
+          ],
+          [
+            "H04",
+            "H20"
+          ],
+          [
+            "H04",
+            "H21"
+          ],
+          [
+            "H05",
+            "H07"
+          ],
+          [
+            "H05",
+            "H10"
+          ],
+          [
+            "H05",
+            "H11"
+          ],
+          [
+            "H05",
+            "H12"
+          ],
+          [
+            "H05",
+            "H14"
+          ],
+          [
+            "H05",
+            "H15"
+          ],
+          [
+            "H05",
+            "H16"
+          ],
+          [
+            "H05",
+            "H17"
+          ],
+          [
+            "H05",
+            "H18"
+          ],
+          [
+            "H05",
+            "H20"
+          ],
+          [
+            "H05",
+            "H21"
+          ],
+          [
+            "H05",
+            "H23"
+          ],
+          [
+            "H06",
+            "H10"
+          ],
+          [
+            "H06",
+            "H11"
+          ],
+          [
+            "H06",
+            "H12"
+          ],
+          [
+            "H06",
+            "H14"
+          ],
+          [
+            "H06",
+            "H16"
+          ],
+          [
+            "H06",
+            "H18"
+          ],
+          [
+            "H06",
+            "H20"
+          ],
+          [
+            "H06",
+            "H21"
+          ],
+          [
+            "H06",
+            "H23"
+          ],
+          [
+            "H07",
+            "H13"
+          ],
+          [
+            "H07",
+            "H14"
+          ],
+          [
+            "H07",
+            "H21"
+          ],
+          [
+            "H07",
+            "H22"
+          ],
+          [
+            "H07",
+            "H23"
+          ],
+          [
+            "H07",
+            "H25"
+          ],
+          [
+            "H07",
+            "H28"
+          ],
+          [
+            "H08",
+            "H09"
+          ],
+          [
+            "H08",
+            "H10"
+          ],
+          [
+            "H08",
+            "H11"
+          ],
+          [
+            "H08",
+            "H12"
+          ],
+          [
+            "H08",
+            "H13"
+          ],
+          [
+            "H08",
+            "H14"
+          ],
+          [
+            "H08",
+            "H17"
+          ],
+          [
+            "H08",
+            "H22"
+          ],
+          [
+            "H08",
+            "H23"
+          ],
+          [
+            "H08",
+            "H25"
+          ],
+          [
+            "H09",
+            "H10"
+          ],
+          [
+            "H09",
+            "H11"
+          ],
+          [
+            "H09",
+            "H21"
+          ],
+          [
+            "H09",
+            "H26"
+          ],
+          [
+            "H09",
+            "H27"
+          ],
+          [
+            "H10",
+            "H13"
+          ],
+          [
+            "H10",
+            "H14"
+          ],
+          [
+            "H10",
+            "H21"
+          ],
+          [
+            "H10",
+            "H22"
+          ],
+          [
+            "H10",
+            "H23"
+          ],
+          [
+            "H10",
+            "H25"
+          ],
+          [
+            "H10",
+            "H28"
+          ],
+          [
+            "H11",
+            "H13"
+          ],
+          [
+            "H11",
+            "H14"
+          ],
+          [
+            "H11",
+            "H21"
+          ],
+          [
+            "H11",
+            "H22"
+          ],
+          [
+            "H11",
+            "H23"
+          ],
+          [
+            "H11",
+            "H24"
+          ],
+          [
+            "H11",
+            "H27"
+          ],
+          [
+            "H11",
+            "H28"
+          ],
+          [
+            "H12",
+            "H13"
+          ],
+          [
+            "H12",
+            "H14"
+          ],
+          [
+            "H12",
+            "H21"
+          ],
+          [
+            "H12",
+            "H23"
+          ],
+          [
+            "H12",
+            "H28"
+          ],
+          [
+            "H13",
+            "H15"
+          ],
+          [
+            "H13",
+            "H16"
+          ],
+          [
+            "H13",
+            "H17"
+          ],
+          [
+            "H13",
+            "H18"
+          ],
+          [
+            "H13",
+            "H19"
+          ],
+          [
+            "H13",
+            "H20"
+          ],
+          [
+            "H13",
+            "H21"
+          ],
+          [
+            "H13",
+            "H27"
+          ],
+          [
+            "H14",
+            "H15"
+          ],
+          [
+            "H14",
+            "H16"
+          ],
+          [
+            "H14",
+            "H17"
+          ],
+          [
+            "H14",
+            "H18"
+          ],
+          [
+            "H14",
+            "H19"
+          ],
+          [
+            "H14",
+            "H20"
+          ],
+          [
+            "H14",
+            "H21"
+          ],
+          [
+            "H14",
+            "H23"
+          ],
+          [
+            "H14",
+            "H27"
+          ],
+          [
+            "H15",
+            "H21"
+          ],
+          [
+            "H15",
+            "H22"
+          ],
+          [
+            "H15",
+            "H23"
+          ],
+          [
+            "H15",
+            "H25"
+          ],
+          [
+            "H15",
+            "H28"
+          ],
+          [
+            "H16",
+            "H22"
+          ],
+          [
+            "H16",
+            "H23"
+          ],
+          [
+            "H16",
+            "H24"
+          ],
+          [
+            "H16",
+            "H25"
+          ],
+          [
+            "H16",
+            "H26"
+          ],
+          [
+            "H16",
+            "H28"
+          ],
+          [
+            "H17",
+            "H21"
+          ],
+          [
+            "H17",
+            "H22"
+          ],
+          [
+            "H17",
+            "H23"
+          ],
+          [
+            "H17",
+            "H25"
+          ],
+          [
+            "H17",
+            "H28"
+          ],
+          [
+            "H18",
+            "H22"
+          ],
+          [
+            "H18",
+            "H23"
+          ],
+          [
+            "H18",
+            "H24"
+          ],
+          [
+            "H18",
+            "H25"
+          ],
+          [
+            "H18",
+            "H26"
+          ],
+          [
+            "H18",
+            "H28"
+          ],
+          [
+            "H19",
+            "H22"
+          ],
+          [
+            "H19",
+            "H23"
+          ],
+          [
+            "H19",
+            "H25"
+          ],
+          [
+            "H19",
+            "H28"
+          ],
+          [
+            "H20",
+            "H22"
+          ],
+          [
+            "H20",
+            "H23"
+          ],
+          [
+            "H20",
+            "H25"
+          ],
+          [
+            "H20",
+            "H28"
+          ],
+          [
+            "H21",
+            "H22"
+          ],
+          [
+            "H21",
+            "H23"
+          ],
+          [
+            "H21",
+            "H25"
+          ],
+          [
+            "H21",
+            "H28"
+          ],
+          [
+            "H22",
+            "H23"
+          ],
+          [
+            "H23",
+            "H24"
+          ],
+          [
+            "H23",
+            "H25"
+          ],
+          [
+            "H23",
+            "H26"
+          ],
+          [
+            "H26",
+            "H28"
+          ],
+          [
+            "H27",
+            "H28"
+          ]
+        ],
+        "space": [
+          134400,
+          134400
+        ],
+        "corpus": [
+          2000,
+          2000
+        ],
+        "as_declared": true
+      },
+      "v1b": {
+        "born": 29,
+        "declarations": 253,
+        "installed": [
+          [
+            "H01",
+            "H04"
+          ],
+          [
+            "H01",
+            "H05"
+          ],
+          [
+            "H01",
+            "H06"
+          ],
+          [
+            "H01",
+            "H07"
+          ],
+          [
+            "H01",
+            "H08"
+          ],
+          [
+            "H01",
+            "H09"
+          ],
+          [
+            "H01",
+            "H10"
+          ],
+          [
+            "H01",
+            "H11"
+          ],
+          [
+            "H01",
+            "H12"
+          ],
+          [
+            "H01",
+            "H13"
+          ],
+          [
+            "H01",
+            "H14"
+          ],
+          [
+            "H01",
+            "H15"
+          ],
+          [
+            "H01",
+            "H16"
+          ],
+          [
+            "H01",
+            "H17"
+          ],
+          [
+            "H01",
+            "H18"
+          ],
+          [
+            "H01",
+            "H19"
+          ],
+          [
+            "H01",
+            "H20"
+          ],
+          [
+            "H01",
+            "H21"
+          ],
+          [
+            "H01",
+            "H23"
+          ],
+          [
+            "H01",
+            "H26"
+          ],
+          [
+            "H01",
+            "H27"
+          ],
+          [
+            "H02",
+            "H04"
+          ],
+          [
+            "H02",
+            "H05"
+          ],
+          [
+            "H02",
+            "H06"
+          ],
+          [
+            "H02",
+            "H07"
+          ],
+          [
+            "H02",
+            "H08"
+          ],
+          [
+            "H02",
+            "H09"
+          ],
+          [
+            "H02",
+            "H10"
+          ],
+          [
+            "H02",
+            "H11"
+          ],
+          [
+            "H02",
+            "H12"
+          ],
+          [
+            "H02",
+            "H13"
+          ],
+          [
+            "H02",
+            "H14"
+          ],
+          [
+            "H02",
+            "H15"
+          ],
+          [
+            "H02",
+            "H16"
+          ],
+          [
+            "H02",
+            "H17"
+          ],
+          [
+            "H02",
+            "H18"
+          ],
+          [
+            "H02",
+            "H19"
+          ],
+          [
+            "H02",
+            "H20"
+          ],
+          [
+            "H02",
+            "H21"
+          ],
+          [
+            "H02",
+            "H22"
+          ],
+          [
+            "H02",
+            "H23"
+          ],
+          [
+            "H02",
+            "H25"
+          ],
+          [
+            "H02",
+            "H28"
+          ],
+          [
+            "H03",
+            "H04"
+          ],
+          [
+            "H03",
+            "H05"
+          ],
+          [
+            "H03",
+            "H06"
+          ],
+          [
+            "H03",
+            "H07"
+          ],
+          [
+            "H03",
+            "H09"
+          ],
+          [
+            "H03",
+            "H10"
+          ],
+          [
+            "H03",
+            "H11"
+          ],
+          [
+            "H03",
+            "H12"
+          ],
+          [
+            "H03",
+            "H13"
+          ],
+          [
+            "H03",
+            "H14"
+          ],
+          [
+            "H03",
+            "H15"
+          ],
+          [
+            "H03",
+            "H17"
+          ],
+          [
+            "H03",
+            "H22"
+          ],
+          [
+            "H03",
+            "H23"
+          ],
+          [
+            "H03",
+            "H24"
+          ],
+          [
+            "H03",
+            "H25"
+          ],
+          [
+            "H03",
+            "H26"
+          ],
+          [
+            "H03",
+            "H28"
+          ],
+          [
+            "H04",
+            "H07"
+          ],
+          [
+            "H04",
+            "H09"
+          ],
+          [
+            "H04",
+            "H10"
+          ],
+          [
+            "H04",
+            "H11"
+          ],
+          [
+            "H04",
+            "H12"
+          ],
+          [
+            "H04",
+            "H13"
+          ],
+          [
+            "H04",
+            "H15"
+          ],
+          [
+            "H04",
+            "H16"
+          ],
+          [
+            "H04",
+            "H17"
+          ],
+          [
+            "H04",
+            "H18"
+          ],
+          [
+            "H04",
+            "H20"
+          ],
+          [
+            "H04",
+            "H21"
+          ],
+          [
+            "H05",
+            "H07"
+          ],
+          [
+            "H05",
+            "H10"
+          ],
+          [
+            "H05",
+            "H11"
+          ],
+          [
+            "H05",
+            "H12"
+          ],
+          [
+            "H05",
+            "H14"
+          ],
+          [
+            "H05",
+            "H15"
+          ],
+          [
+            "H05",
+            "H16"
+          ],
+          [
+            "H05",
+            "H17"
+          ],
+          [
+            "H05",
+            "H18"
+          ],
+          [
+            "H05",
+            "H20"
+          ],
+          [
+            "H05",
+            "H21"
+          ],
+          [
+            "H05",
+            "H23"
+          ],
+          [
+            "H06",
+            "H10"
+          ],
+          [
+            "H06",
+            "H11"
+          ],
+          [
+            "H06",
+            "H12"
+          ],
+          [
+            "H06",
+            "H14"
+          ],
+          [
+            "H06",
+            "H16"
+          ],
+          [
+            "H06",
+            "H18"
+          ],
+          [
+            "H06",
+            "H20"
+          ],
+          [
+            "H06",
+            "H21"
+          ],
+          [
+            "H06",
+            "H23"
+          ],
+          [
+            "H07",
+            "H13"
+          ],
+          [
+            "H07",
+            "H14"
+          ],
+          [
+            "H07",
+            "H21"
+          ],
+          [
+            "H07",
+            "H22"
+          ],
+          [
+            "H07",
+            "H23"
+          ],
+          [
+            "H07",
+            "H25"
+          ],
+          [
+            "H07",
+            "H28"
+          ],
+          [
+            "H08",
+            "H09"
+          ],
+          [
+            "H08",
+            "H10"
+          ],
+          [
+            "H08",
+            "H11"
+          ],
+          [
+            "H08",
+            "H12"
+          ],
+          [
+            "H08",
+            "H13"
+          ],
+          [
+            "H08",
+            "H14"
+          ],
+          [
+            "H08",
+            "H15"
+          ],
+          [
+            "H08",
+            "H17"
+          ],
+          [
+            "H08",
+            "H22"
+          ],
+          [
+            "H08",
+            "H23"
+          ],
+          [
+            "H08",
+            "H25"
+          ],
+          [
+            "H08",
+            "H28"
+          ],
+          [
+            "H09",
+            "H10"
+          ],
+          [
+            "H09",
+            "H11"
+          ],
+          [
+            "H09",
+            "H21"
+          ],
+          [
+            "H09",
+            "H26"
+          ],
+          [
+            "H09",
+            "H27"
+          ],
+          [
+            "H10",
+            "H13"
+          ],
+          [
+            "H10",
+            "H14"
+          ],
+          [
+            "H10",
+            "H21"
+          ],
+          [
+            "H10",
+            "H22"
+          ],
+          [
+            "H10",
+            "H23"
+          ],
+          [
+            "H10",
+            "H25"
+          ],
+          [
+            "H10",
+            "H28"
+          ],
+          [
+            "H11",
+            "H13"
+          ],
+          [
+            "H11",
+            "H14"
+          ],
+          [
+            "H11",
+            "H21"
+          ],
+          [
+            "H11",
+            "H22"
+          ],
+          [
+            "H11",
+            "H23"
+          ],
+          [
+            "H11",
+            "H24"
+          ],
+          [
+            "H11",
+            "H27"
+          ],
+          [
+            "H11",
+            "H28"
+          ],
+          [
+            "H12",
+            "H13"
+          ],
+          [
+            "H12",
+            "H14"
+          ],
+          [
+            "H12",
+            "H21"
+          ],
+          [
+            "H12",
+            "H23"
+          ],
+          [
+            "H12",
+            "H27"
+          ],
+          [
+            "H12",
+            "H28"
+          ],
+          [
+            "H13",
+            "H15"
+          ],
+          [
+            "H13",
+            "H16"
+          ],
+          [
+            "H13",
+            "H17"
+          ],
+          [
+            "H13",
+            "H18"
+          ],
+          [
+            "H13",
+            "H19"
+          ],
+          [
+            "H13",
+            "H20"
+          ],
+          [
+            "H13",
+            "H21"
+          ],
+          [
+            "H13",
+            "H27"
+          ],
+          [
+            "H14",
+            "H15"
+          ],
+          [
+            "H14",
+            "H16"
+          ],
+          [
+            "H14",
+            "H17"
+          ],
+          [
+            "H14",
+            "H18"
+          ],
+          [
+            "H14",
+            "H19"
+          ],
+          [
+            "H14",
+            "H20"
+          ],
+          [
+            "H14",
+            "H21"
+          ],
+          [
+            "H14",
+            "H23"
+          ],
+          [
+            "H14",
+            "H27"
+          ],
+          [
+            "H15",
+            "H21"
+          ],
+          [
+            "H15",
+            "H22"
+          ],
+          [
+            "H15",
+            "H23"
+          ],
+          [
+            "H15",
+            "H25"
+          ],
+          [
+            "H15",
+            "H28"
+          ],
+          [
+            "H16",
+            "H22"
+          ],
+          [
+            "H16",
+            "H23"
+          ],
+          [
+            "H16",
+            "H24"
+          ],
+          [
+            "H16",
+            "H25"
+          ],
+          [
+            "H16",
+            "H26"
+          ],
+          [
+            "H16",
+            "H28"
+          ],
+          [
+            "H17",
+            "H21"
+          ],
+          [
+            "H17",
+            "H22"
+          ],
+          [
+            "H17",
+            "H23"
+          ],
+          [
+            "H17",
+            "H25"
+          ],
+          [
+            "H17",
+            "H28"
+          ],
+          [
+            "H18",
+            "H22"
+          ],
+          [
+            "H18",
+            "H23"
+          ],
+          [
+            "H18",
+            "H24"
+          ],
+          [
+            "H18",
+            "H25"
+          ],
+          [
+            "H18",
+            "H26"
+          ],
+          [
+            "H18",
+            "H28"
+          ],
+          [
+            "H19",
+            "H22"
+          ],
+          [
+            "H19",
+            "H23"
+          ],
+          [
+            "H19",
+            "H25"
+          ],
+          [
+            "H19",
+            "H28"
+          ],
+          [
+            "H20",
+            "H22"
+          ],
+          [
+            "H20",
+            "H23"
+          ],
+          [
+            "H20",
+            "H25"
+          ],
+          [
+            "H20",
+            "H28"
+          ],
+          [
+            "H21",
+            "H22"
+          ],
+          [
+            "H21",
+            "H23"
+          ],
+          [
+            "H21",
+            "H25"
+          ],
+          [
+            "H21",
+            "H28"
+          ],
+          [
+            "H22",
+            "H23"
+          ],
+          [
+            "H22",
+            "H27"
+          ],
+          [
+            "H23",
+            "H24"
+          ],
+          [
+            "H23",
+            "H25"
+          ],
+          [
+            "H23",
+            "H26"
+          ],
+          [
+            "H23",
+            "H27"
+          ],
+          [
+            "H25",
+            "H27"
+          ],
+          [
+            "H26",
+            "H28"
+          ],
+          [
+            "H27",
+            "H28"
+          ]
+        ],
+        "space": [
+          134400,
+          134400
+        ],
+        "corpus": [
+          2000,
+          2000
+        ]
+      }
+    },
+    "transcriber": {
+      "v1b_r1": {
+        "stream": "r1",
+        "n": 2000,
+        "figures": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H24",
+            "H16",
+            "H20",
+            "H11",
+            "H10",
+            "H18",
+            "H07",
+            "H12",
+            "H08",
+            "H14",
+            "H09",
+            "H26",
+            "H17",
+            "H01",
+            "H15",
+            "H03",
+            "H05",
+            "H02",
+            "H06",
+            "H04"
+          ],
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "corpus_cases": 2000,
+          "recall_oncall": "1",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 22,
+          "listed_v1b": 148,
+          "listed_v1c": 148,
+          "not_sent": 0,
+          "left_out": {}
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1b_r2": {
+        "stream": "r2",
+        "n": 2000,
+        "figures": {
+          "escalations": 22,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 20,
+          "calls": 43,
+          "rules": [
+            "H13",
+            "H29",
+            "H24",
+            "H18",
+            "H11",
+            "H20",
+            "H16",
+            "H12",
+            "H03",
+            "H10",
+            "H01",
+            "H19",
+            "H14",
+            "H07",
+            "H08",
+            "H09",
+            "H26",
+            "H17",
+            "H15",
+            "H02",
+            "H06",
+            "H04"
+          ],
+          "space_right": 132280,
+          "space_points": 134400,
+          "corpus_right": 1996,
+          "corpus_cases": 2000,
+          "recall_oncall": "2/3",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              4200,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 21,
+          "listed_v1b": 132,
+          "listed_v1c": 132,
+          "not_sent": 0,
+          "left_out": {}
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1b_r3": {
+        "stream": "r3",
+        "n": 2000,
+        "figures": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H24",
+            "H18",
+            "H11",
+            "H20",
+            "H12",
+            "H03",
+            "H16",
+            "H14",
+            "H01",
+            "H10",
+            "H08",
+            "H09",
+            "H26",
+            "H07",
+            "H17",
+            "H15",
+            "H02",
+            "H05",
+            "H06",
+            "H04"
+          ],
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "corpus_cases": 2000,
+          "recall_oncall": "1",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 22,
+          "listed_v1b": 148,
+          "listed_v1c": 148,
+          "not_sent": 0,
+          "left_out": {}
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1b_smoke": {
+        "stream": "smoke",
+        "n": 30,
+        "figures": {
+          "escalations": 9,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 7,
+          "calls": 17,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H18",
+            "H10",
+            "H20",
+            "H12",
+            "H03",
+            "H11"
+          ],
+          "space_right": 49420,
+          "space_points": 134400,
+          "corpus_right": 1107,
+          "corpus_cases": 2000,
+          "recall_oncall": "0",
+          "recall_space": {
+            "T1_GENERAL": [
+              5220,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              28960,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              0,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              0,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              7680,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              0,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              720,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 8,
+          "listed_v1b": 20,
+          "listed_v1c": 20,
+          "not_sent": 0,
+          "left_out": {}
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true
+        }
+      },
+      "v1c_r1": {
+        "stream": "r1",
+        "n": 2000,
+        "figures": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 42,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H24",
+            "H16",
+            "H20",
+            "H11",
+            "H10",
+            "H18",
+            "H07",
+            "H12",
+            "H08",
+            "H14",
+            "H09",
+            "H26",
+            "H17",
+            "H01",
+            "H15",
+            "H03",
+            "H05",
+            "H02",
+            "H06",
+            "H04"
+          ],
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "corpus_cases": 2000,
+          "recall_oncall": "1",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 22,
+          "listed_v1b": 148,
+          "listed_v1c": 108,
+          "not_sent": 3,
+          "left_out": {
+            "inside": 6,
+            "containing": 29,
+            "governed": 5
+          }
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1c_r2": {
+        "stream": "r2",
+        "n": 2000,
+        "figures": {
+          "escalations": 22,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 20,
+          "calls": 40,
+          "rules": [
+            "H13",
+            "H29",
+            "H24",
+            "H18",
+            "H11",
+            "H20",
+            "H16",
+            "H12",
+            "H03",
+            "H10",
+            "H01",
+            "H19",
+            "H14",
+            "H07",
+            "H08",
+            "H09",
+            "H26",
+            "H17",
+            "H15",
+            "H02",
+            "H06",
+            "H04"
+          ],
+          "space_right": 132280,
+          "space_points": 134400,
+          "corpus_right": 1996,
+          "corpus_cases": 2000,
+          "recall_oncall": "2/3",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              4200,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 21,
+          "listed_v1b": 132,
+          "listed_v1c": 98,
+          "not_sent": 3,
+          "left_out": {
+            "inside": 3,
+            "containing": 29,
+            "governed": 2
+          }
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1c_r3": {
+        "stream": "r3",
+        "n": 2000,
+        "figures": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 42,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H24",
+            "H18",
+            "H11",
+            "H20",
+            "H12",
+            "H03",
+            "H16",
+            "H14",
+            "H01",
+            "H10",
+            "H08",
+            "H09",
+            "H26",
+            "H07",
+            "H17",
+            "H15",
+            "H02",
+            "H05",
+            "H06",
+            "H04"
+          ],
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "corpus_cases": 2000,
+          "recall_oncall": "1",
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              36720,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              8180,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 22,
+          "listed_v1b": 148,
+          "listed_v1c": 111,
+          "not_sent": 3,
+          "left_out": {
+            "inside": 3,
+            "containing": 32,
+            "governed": 2
+          }
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "corpus_right": true
+        }
+      },
+      "v1c_smoke": {
+        "stream": "smoke",
+        "n": 30,
+        "figures": {
+          "escalations": 9,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 7,
+          "calls": 16,
+          "rules": [
+            "H13",
+            "H29",
+            "H19",
+            "H18",
+            "H10",
+            "H20",
+            "H12",
+            "H03",
+            "H11"
+          ],
+          "space_right": 49420,
+          "space_points": 134400,
+          "corpus_right": 1107,
+          "corpus_cases": 2000,
+          "recall_oncall": "0",
+          "recall_space": {
+            "T1_GENERAL": [
+              5220,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              28960,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              0,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              0,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              7680,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              0,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              720,
+              4300
+            ]
+          },
+          "cover": 1,
+          "stopped_at": null,
+          "rounds": 8,
+          "listed_v1b": 20,
+          "listed_v1c": 10,
+          "not_sent": 1,
+          "left_out": {
+            "inside": 2,
+            "containing": 8
+          }
+        },
+        "as_declared": {
+          "escalations": true,
+          "calls": true,
+          "space_right": true,
+          "rounds": true,
+          "listed_v1b": true,
+          "listed_v1c": true,
+          "not_sent": true
+        }
+      }
+    },
+    "left_out": {
+      "pairs": 182,
+      "by_source_and_reason": {
+        "hidden governed": 7,
+        "hidden inside": 54,
+        "v1c_r1 containing": 29,
+        "v1c_r1 governed": 5,
+        "v1c_r1 inside": 6,
+        "v1c_r2 containing": 29,
+        "v1c_r2 governed": 2,
+        "v1c_r2 inside": 3,
+        "v1c_r3 containing": 32,
+        "v1c_r3 governed": 2,
+        "v1c_r3 inside": 3,
+        "v1c_smoke containing": 8,
+        "v1c_smoke inside": 2
+      },
+      "changing": [],
+      "misclassed": [],
+      "passes": true
+    },
+    "schedule": [
+      [
+        "v1c",
+        1
+      ],
+      [
+        "v1b",
+        1
+      ],
+      [
+        "v1c",
+        2
+      ],
+      [
+        "v1b",
+        2
+      ],
+      [
+        "v1c",
+        3
+      ],
+      [
+        "v1b",
+        3
+      ]
+    ],
+    "schedule_as_declared": true,
+    "bridge": {
+      "SECURITY_INCIDENT": [
+        44,
+        155,
+        342,
+        402,
+        448,
+        580,
+        599,
+        676,
+        739,
+        751,
+        770,
+        1063,
+        1235,
+        1264,
+        1514,
+        1704,
+        1802,
+        1871,
+        1961,
+        1998
+      ],
+      "ONCALL_ESCALATION": [
+        257,
+        710,
+        954,
+        982,
+        1432,
+        1783,
+        1951
+      ],
+      "rare_escalated": 20,
+      "candidates": 175,
+      "drawn": [
+        18,
+        19,
+        29,
+        42,
+        55,
+        65,
+        265,
+        449,
+        513,
+        529,
+        658,
+        794,
+        881
+      ],
+      "first": {
+        "baidu": 18,
+        "deepinfra": 22
+      },
+      "distinct": true,
+      "as_declared": {
+        "SECURITY_INCIDENT": true,
+        "ONCALL_ESCALATION": true,
+        "rare_escalated": true,
+        "candidates": true,
+        "drawn": true,
+        "first": true,
+        "distinct": true,
+        "tickets": true,
+        "forty": true
+      },
+      "tickets": [
+        18,
+        19,
+        29,
+        42,
+        44,
+        55,
+        65,
+        155,
+        257,
+        265,
+        342,
+        402,
+        448,
+        449,
+        513,
+        529,
+        580,
+        599,
+        658,
+        676,
+        710,
+        739,
+        751,
+        770,
+        794,
+        881,
+        954,
+        982,
+        1063,
+        1235,
+        1264,
+        1432,
+        1514,
+        1704,
+        1783,
+        1802,
+        1871,
+        1951,
+        1961,
+        1998
+      ],
+      "asks": [
+        [
+          18,
+          "baidu"
+        ],
+        [
+          18,
+          "deepinfra"
+        ],
+        [
+          19,
+          "baidu"
+        ],
+        [
+          19,
+          "deepinfra"
+        ],
+        [
+          29,
+          "deepinfra"
+        ],
+        [
+          29,
+          "baidu"
+        ],
+        [
+          42,
+          "deepinfra"
+        ],
+        [
+          42,
+          "baidu"
+        ],
+        [
+          44,
+          "baidu"
+        ],
+        [
+          44,
+          "deepinfra"
+        ],
+        [
+          55,
+          "baidu"
+        ],
+        [
+          55,
+          "deepinfra"
+        ],
+        [
+          65,
+          "deepinfra"
+        ],
+        [
+          65,
+          "baidu"
+        ],
+        [
+          155,
+          "deepinfra"
+        ],
+        [
+          155,
+          "baidu"
+        ],
+        [
+          257,
+          "baidu"
+        ],
+        [
+          257,
+          "deepinfra"
+        ],
+        [
+          265,
+          "deepinfra"
+        ],
+        [
+          265,
+          "baidu"
+        ],
+        [
+          342,
+          "baidu"
+        ],
+        [
+          342,
+          "deepinfra"
+        ],
+        [
+          402,
+          "baidu"
+        ],
+        [
+          402,
+          "deepinfra"
+        ],
+        [
+          448,
+          "baidu"
+        ],
+        [
+          448,
+          "deepinfra"
+        ],
+        [
+          449,
+          "baidu"
+        ],
+        [
+          449,
+          "deepinfra"
+        ],
+        [
+          513,
+          "deepinfra"
+        ],
+        [
+          513,
+          "baidu"
+        ],
+        [
+          529,
+          "deepinfra"
+        ],
+        [
+          529,
+          "baidu"
+        ],
+        [
+          580,
+          "baidu"
+        ],
+        [
+          580,
+          "deepinfra"
+        ],
+        [
+          599,
+          "deepinfra"
+        ],
+        [
+          599,
+          "baidu"
+        ],
+        [
+          658,
+          "baidu"
+        ],
+        [
+          658,
+          "deepinfra"
+        ],
+        [
+          676,
+          "deepinfra"
+        ],
+        [
+          676,
+          "baidu"
+        ],
+        [
+          710,
+          "deepinfra"
+        ],
+        [
+          710,
+          "baidu"
+        ],
+        [
+          739,
+          "deepinfra"
+        ],
+        [
+          739,
+          "baidu"
+        ],
+        [
+          751,
+          "deepinfra"
+        ],
+        [
+          751,
+          "baidu"
+        ],
+        [
+          770,
+          "baidu"
+        ],
+        [
+          770,
+          "deepinfra"
+        ],
+        [
+          794,
+          "deepinfra"
+        ],
+        [
+          794,
+          "baidu"
+        ],
+        [
+          881,
+          "deepinfra"
+        ],
+        [
+          881,
+          "baidu"
+        ],
+        [
+          954,
+          "baidu"
+        ],
+        [
+          954,
+          "deepinfra"
+        ],
+        [
+          982,
+          "baidu"
+        ],
+        [
+          982,
+          "deepinfra"
+        ],
+        [
+          1063,
+          "deepinfra"
+        ],
+        [
+          1063,
+          "baidu"
+        ],
+        [
+          1235,
+          "deepinfra"
+        ],
+        [
+          1235,
+          "baidu"
+        ],
+        [
+          1264,
+          "deepinfra"
+        ],
+        [
+          1264,
+          "baidu"
+        ],
+        [
+          1432,
+          "baidu"
+        ],
+        [
+          1432,
+          "deepinfra"
+        ],
+        [
+          1514,
+          "baidu"
+        ],
+        [
+          1514,
+          "deepinfra"
+        ],
+        [
+          1704,
+          "baidu"
+        ],
+        [
+          1704,
+          "deepinfra"
+        ],
+        [
+          1783,
+          "deepinfra"
+        ],
+        [
+          1783,
+          "baidu"
+        ],
+        [
+          1802,
+          "deepinfra"
+        ],
+        [
+          1802,
+          "baidu"
+        ],
+        [
+          1871,
+          "deepinfra"
+        ],
+        [
+          1871,
+          "baidu"
+        ],
+        [
+          1951,
+          "baidu"
+        ],
+        [
+          1951,
+          "deepinfra"
+        ],
+        [
+          1961,
+          "deepinfra"
+        ],
+        [
+          1961,
+          "baidu"
+        ],
+        [
+          1998,
+          "deepinfra"
+        ],
+        [
+          1998,
+          "baidu"
+        ]
+      ]
+    },
+    "channels": {
+      "v1c_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1b_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1c_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1b_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1c_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      },
+      "v1b_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      }
+    },
+    "streams": {
+      "r1": {
+        "seed": "PLAN_CHANNEL/channel/97/r1",
+        "sha16": "1347b9525a1e06a3"
+      },
+      "r2": {
+        "seed": "PLAN_CHANNEL/channel/97/r2",
+        "sha16": "e81548d721b99577"
+      },
+      "r3": {
+        "seed": "PLAN_CHANNEL/channel/97/r3",
+        "sha16": "1f60e3d5e68553d4"
+      },
+      "smoke": {
+        "seed": "PLAN_CHANNEL/channel/97/smoke",
+        "sha16": "029047351ae2d471"
+      }
+    },
+    "texts_sha16": {
+      "system_prompt": "7b883f03a863d647",
+      "blind_base": "8de0ebf50ce9a54b",
+      "placement_template": "ccfd0eceba1468b2",
+      "retry_message": "ca7b3803f1bef2dd"
+    },
+    "fingerprint": "8dc358cab48635e6"
+  }
+}
