@@ -1028,6 +1028,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m channel.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m channel.score                         # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m channel.lost                          # POST-RUN: why c r1 lost SECURITY_INCIDENT
+    PYTHONHASHSEED=0 python3 -m channel.oncall                        # POST-RUN: why c r2 recalled less ONCALL_ESCALATION
     PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, never side by side
 
@@ -1044,6 +1045,12 @@ prompt says, and v1b's placement round refused the answer, so no broad rule of
 the queue was ever born. A protocol that asks for a side against a rule nested
 with the draft can lose a whole queue to the order in which its rules were
 born. A plan that keeps it should say in §0 what a default born early does.
+**And a right edge can be refused.** Read POST-RUN, another channel run lost part
+of a rare queue's region to two rules that each declared themselves below the
+queue's rule, as the policy orders them. The engine refused both edges for
+closing a cycle: the base already reached the other way through rules that do
+not match the contested points, so the pair stays unordered there. A reading of
+what declarations buy should count the right ones the engine refused.
 
 **A supervisor that stops on a failed push stops the runs.** Git authenticates
 here through the Windows credential helper, called through WSL, and one push met
