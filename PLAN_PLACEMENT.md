@@ -4,10 +4,9 @@
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
 any figure named here exists, in its own commit, staged by name. That includes
-Stage A, which spends nothing: §11 says why. **No package has been written to
-this draft yet.** Where writing it shows the draft inexact, each correction is
-dated in place before the signature, as `PLAN_CHANNEL.md`'s were, and no row or
-line moves without Sergi.
+Stage A, which spends nothing: §11 says why. Corrected before signature on
+2026-11-07, where the package written to it showed the draft inexact. Each
+correction is dated in place, and no row and no line moved.
 
 **Asked for by Sergi on 2026-11-07**, on the item [`STATUS.md`](STATUS.md)'s
 *What is open* ends its second item on: *a round that lists only what the engine
@@ -573,6 +572,40 @@ record will own them. None of them reads an answer this plan buys. Figures 1 to
        of `T3_ENGINEERING` and `BILLING_SPECIALIST`, and 1 of `ACCOUNT_MANAGER`.
    - **The order.** DeepInfra is asked first at 22 tickets, and Baidu at 18.
 
+**[Added before signature, 2026-11-07] What writing the package showed.** The
+package was written, and its checks run, before the signature, as §7 asks.
+
+- **The code read** adds:
+  - `channel/run.py`, `gates.py`, `sample.py`, `references.py` and `score.py`,
+    whole;
+  - `reasoned_loop/score.py`'s `read_run`, `placements_of`,
+    `births_against_the_list` and `rare_of`, and `reasoned_loop/gates.py`'s
+    `same_engine` and `hidden_policy`;
+  - `authorship/run.py`'s `open_partial` and `Resumable`, and
+    `first_match/ask.py`'s `Asker`;
+  - `tests/test_channel.py`'s helpers and its tests of the gate, the trigger, the
+    resume, the order of events and the smoke check, and the lists of
+    `tests/test_writer_lists.py` and `tests/test_oracle_separation.py`.
+- **`PL-g1` to `PL-g3` pass**, with the suite green, in `python3 -m
+  placement.run --dry-run`. They print pass or fail, and every figure §0 declares
+  that they read comes back as declared.
+- **What `PL-g2`'s last check found.** 182 rules were left out on the hidden
+  policy's path and the transcriber's v1c runs:
+  - 61 on the path: 54 inside their draft and 7 governed;
+  - 121 on the runs, the smoke draws' included.
+
+  None of them changes which rules are undefeated at any point.
+- **Stage A's reading was run in memory, and nothing was written.** Every one of
+  figures 1 to 8 came back as declared, figure 4 included.
+- **Stage C's scorer was run in memory on the transcriber's six runs**, to test
+  the code, and nothing was written.
+  - **`PL-a` has no value there**, as §0 provides: a proposer that never errs
+    leaves no listed rule out, so v1b's median `refused(r)` is 0.
+  - **`PL-b` to `PL-f` hold**, `PL-c` and `PL-f` thinly. `PL-c` is thin by
+    construction. `PL-f` is thin because the transcriber recalls 2/3 of
+    `ONCALL_ESCALATION` under run 2's draws.
+- **OpenRouter's endpoint listing was read** (§2.8).
+
 **Not seen, because nothing has produced it:**
 
 - any loop run under v1c, with any proposer but the transcriber;
@@ -878,8 +911,17 @@ falls back across providers.
 
 **Before the signature, the package reads OpenRouter's endpoint listing for the
 model**, which spends nothing. The listing must name a DeepInfra endpoint at fp8,
-under that tag, that takes the 16,000-token budget and reasoning. If it does not,
-the alternatives are:
+under that tag, that takes the 16,000-token budget and reasoning.
+
+- **[Done before signature, 2026-11-07]** The listing names DeepInfra's endpoint
+  under `deepinfra/fp8`, at fp8. It takes `reasoning` and `response_format`, and
+  up to 393,216 completion tokens, at $0.09 and $0.18 per million prompt and
+  completion tokens.
+- **The same listing gave Baidu's endpoint**, `baidu/fp8`, at $0.04424 and
+  $0.08848 that day: its price had fallen back since 2026-11-06.
+- **Both were read that day**, and neither is a record of this repository.
+
+If the listing had not named that endpoint, the alternatives were:
 
 - **Another fp8 endpoint listed on 2026-11-06**, GMICloud's or StreamLake's, with
   the same bridge.
@@ -1286,8 +1328,17 @@ figure exists.**
   double serves run `c r1`'s answers, each at the case and round that run asked
   for it, and refuses any other call. Under it, this plan's loop under v1b gives
   back that run's record case for case: its rules, causes, verdicts and edges.
+  - **[Corrected before signature, 2026-11-07] How the check reads that.** A paid
+    record's seconds cannot be replayed. So the check runs both loops on the
+    replay, this plan's under v1b and `channel.loop.run_loop`, each with a clock
+    that reads 0. It holds their records to each other, part by part.
+  - **It also holds the replay to the run**: its rules and causes are `c r1`'s,
+    case for case. That is how `PLAN_CHANNEL.md`'s `CH-g1` reads its own replay.
 - **v1c with both exclusions turned off is v1b.** On the same replay,
   `propose_v1c` gives back the same record.
+  - **[Corrected before signature, 2026-11-07]** The same record but for the one
+    key v1c adds to a first call's row, `left_out`. The check takes that key out
+    before it compares.
 - **The draws are `PLAN_CHANNEL.md`'s.** Each run's draws and the smoke run's,
   rebuilt through `channel.plan`, have the digests that `PLAN_CHANNEL.md`'s
   records carry.
@@ -1306,6 +1357,13 @@ figure exists.**
   - the pin: DeepInfra's for the runs, and each provider's for the bridge.
 
   Every key but the pin is `reasoned_loop.protocol.Asker`'s.
+  - **[Corrected before signature, 2026-11-07] Where each half is read.** The
+    gate reads the request off `placement.protocol.request_with`. That calls
+    `reasoned_loop.protocol.Asker`'s request without building a client, and
+    the gate compares every key but the pin.
+  - **The SDK double** sends the request in `tests/test_placement.py`, which
+    `PL-g1`'s suite runs. `PLAN_CHANNEL.md`'s requests were checked the same way,
+    in that plan's tests.
 - **v1c's list on v1b's recorded rounds** gives back §0's figures 1 to 3.
 - **The hidden policy through v1c's path** gives back §0's figure 5. Through
   v1b's path it gives back its 199 edges and 1.0000 on both surfaces.
@@ -1317,6 +1375,11 @@ figure exists.**
   - **The edges.** Adding each omitted edge to the final base, either way where
     `try_edge` would take it, leaves `decide` unchanged at every point of the
     space.
+  - **[Corrected before signature, 2026-11-07] It is read through the
+    undefeated sets, which is stronger.** An omitted edge `try_edge` would take
+    changes which rules are undefeated only where both rules match and the loser
+    is not already beaten. The check finds no such point. Undefeated sets that do
+    not move are decisions that do not move.
 
 **PL-g3 — The schedule is §2.4's and §9's.**
 
