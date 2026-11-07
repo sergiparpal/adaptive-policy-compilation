@@ -65,6 +65,22 @@ thinly. `CH-c` is refuted, thinly. `CH-g` is reported.**
 - **The drafter expected five rows to hold and `CH-c` to be refuted, and that
   is how they came out.**
 
+**[NOTE 2026-11-07] Read POST-RUN, c r1 lost `SECURITY_INCIDENT` because its
+broad drafts were refused.**
+- **What it never wrote.** No rule of the queue reaches 0.9014 of the points c
+  r1 lost. The keyword's default, a rule of `T2_TECHNICAL`, decides most of
+  them.
+- **Why it never wrote them.** Its proposer drafted the queue's broad regions,
+  and v1b's placement round refused each answer. The answer left out the
+  default, which contains every draft of the queue, and level 3's system
+  prompt says such a rule needs no declaration.
+- **Why c r1 and not the others.** In c r1 the default was born before any
+  broad rule of the queue, and every broad draft after it was refused. Of the
+  two other runs with a default, c r3 had written `H01`'s region before it, and
+  e r1's answers placed it twice in three tries.
+
+See *Why c r1 lost `SECURITY_INCIDENT`*, below.
+
 > **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
 > computed after the signature. Zero API calls.
 >
@@ -712,6 +728,11 @@ The channel arm's silent errors are its unreported wrong decisions.
 1. **Why c r1 did not compile `SECURITY_INCIDENT`.** Its reports came and its
    drafts were right. Which of its rules decide the queue's points, and when
    they came to, would take a reading of its base.
+   **[NOTE 2026-11-07] Read POST-RUN**, in *Why c r1 lost
+   `SECURITY_INCIDENT`*, below. The queue's broad drafts were refused. Each
+   answer left out the keyword's default, which contains them all, and the
+   placement round asks for a side against it. The default decides the points
+   no rule of the queue reaches.
 2. **Why c r2 recalled less of `ONCALL_ESCALATION` than the transcriber under
    its draws**, 128/315 against 2/3.
 3. **Whether a hold of `CH-b` rules out a cost of a twentieth.** As §0 said,
@@ -722,6 +743,202 @@ The channel arm's silent errors are its unreported wrong decisions.
 5. **Lower coverage, delay, noise and asymmetry, a trigger that reads no truth,
    and another provider** (§13).
 6. **One model, one provider, one manual, one arrival order, three runs an arm.**
+
+---
+
+## Why c r1 lost `SECURITY_INCIDENT` — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-07, after Stage C, and run the
+> same day. Zero API calls. `channel/lost.py` did three things in every run:
+> - it classed every point of the queue the final base does not decide right
+>   by what lost it;
+> - it replayed the base in birth order;
+> - it read the queue's escalations by verdict.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is six clauses in the module's docstring, committed as
+>   `6a974c0` on the reading's branch. The drafter had read this record whole
+>   and `score.json`'s `CH-g`, and no rule, edge or escalation of any run.
+> - **Four gates stood before any write.**
+>   - The replay is the base, and the queue's points decided right are Stage
+>     C's.
+>   - The ways partition the loss.
+>   - The curve ends at the base.
+>   - The escalations are the record's.
+> - **One part was added after the first run**, in `715505c`: what the queue's
+>   unplaced answers left out, and the rules of another queue that contain the
+>   whole queue. It carries no expectation and moves no clause.
+>
+> Not a signed row; no verdict moves. The record is [`lost.json`](lost.json).
+> Its `_env` names `715505c`, the branch commit it was written from. It carries
+> `git_dirty` true for the untracked `AGENTS.md` and `code_dirty` false.
+
+**How a lost point is classed.** A point of the queue the final base does not
+decide right is exactly one of:
+- **an impasse**: no rule matches it;
+- **a conflict**: undefeated rules of different queues match it. It is
+  *contested* when a rule of the queue is among them;
+- **unwritten**: one other queue decides it, and no rule of the queue matches
+  it;
+- **outranked**: one other queue decides it, though a rule of the queue matches
+  it. It is outranked by an edge when a rule of another queue beats one of the
+  queue's there by a declared edge, and by containment otherwise.
+
+### 1. What c r1 lost, and to what
+
+| the queue's points | decided right | lost | unwritten | conflict | outranked | impasse |
+|---|---|---|---|---|---|---|
+| 50,400 | 16,320 | 34,080 | 30,720, 0.9014 of the lost | 3,360, 0.0986 | 0 | 0 |
+
+- **No rule of the queue reaches nine tenths of what c r1 lost.**
+  - The conflicts are between other queues; none is contested.
+  - No point is outranked.
+- **The unwritten points go to other queues**: 29,240 to `T2_TECHNICAL`, 840 to
+  `ONCALL_ESCALATION` and 640 to `ACCOUNT_MANAGER`.
+- **One rule decides most of them.** `R0039`, *has_security_keyword eq True* →
+  `T2_TECHNICAL`, decides 23,280.
+  - It is the keyword's default, `H03`'s queue.
+  - It was born at case 238, at an error escalation on a ticket `H03` governs.
+- **Next is `R0057`, with 4,200 points**: *keyword, severity 2, pro* →
+  `T2_TECHNICAL`.
+  - It was born at case 1235, on a ticket `H02` governs.
+  - It is the one draft at the queue's tickets that named another queue.
+- **The rest go to rules written at tickets without the keyword**, which do not
+  exclude it: mostly of `T2_TECHNICAL`, and one each of `ONCALL_ESCALATION` and
+  `ACCOUNT_MANAGER`.
+
+### 2. c r1's rules of the queue, and its curve
+
+| rule | born at | cause | the ticket's rule | its region | the queue's points |
+|---|---|---|---|---|---|
+| `R0019` | 44 | impasse | `H01` | keyword, severity 1, business | 4,200 |
+| `R0032` | 155 | error | `H01` | keyword, business, at least 8 prior tickets | 10,400 |
+| `R0049` | 739 | error | `H01` | keyword, business or enterprise, billing | 6,720 |
+
+- **All three are narrow.** The widest covers 10,400 of the queue's points,
+  13/63, and none is a listed rule's region.
+- **The curve only rose.** The base decided 4,200 of the queue's points right
+  after case 44, 12,000 after 155 and 16,320 after 739. No birth lost any.
+
+### 3. The queue's escalations in c r1
+
+| case | cause | the ticket's rule | the draft's queue | the draft's points of the queue | rules listed | verdict | rules the answer left out |
+|---|---|---|---|---|---|---|---|
+| 44 | impasse | `H01` | `SECURITY_INCIDENT` | 4,200 | 8 | born | |
+| 155 | error | `H01` | `SECURITY_INCIDENT` | 10,400 | 15 | born | |
+| 448 | error | `H02` | `SECURITY_INCIDENT` | 6,720 | 12 | unplaced | 6: `R0039`, which contains the draft, and 5 crossing it |
+| 580 | conflict | `H02` | `SECURITY_INCIDENT` | 6,720 | 11 | unplaced | 3: `R0039` and another containing the draft, and 1 crossing it |
+| 599 | error | `H02` | `SECURITY_INCIDENT` | 6,720 | 12 | unplaced | `R0039` alone |
+| 739 | error | `H01` | `SECURITY_INCIDENT` | 6,720 | 12 | born | |
+| 751 | error | `H02` | `SECURITY_INCIDENT` | 3,360 | 5 | unplaced | 3, each crossing the draft |
+| 770 | error | `H02` | `SECURITY_INCIDENT` | 6,720 | 14 | unplaced | 3, each containing the draft: `R0039` and two billing rules |
+| 1063 | error | `H01` | `SECURITY_INCIDENT` | 33,600 | 30 | unplaced | `R0039` alone |
+| 1235 | error | `H02` | `T2_TECHNICAL` | 4,200 | 6 | born | |
+| 1264 | error | `H01` | `SECURITY_INCIDENT` | 16,800 | 23 | unplaced | `R0039` alone |
+| 1871 | error | `H01` | `SECURITY_INCIDENT` | 33,600 | 38 | unplaced | `R0039` alone |
+| 1961 | error | `H02` | `SECURITY_INCIDENT` | 6,720 | 13 | unplaced | 2, each containing the draft: `R0039` and `R0029` |
+
+- **4 of the 13 ended born**: the three rules above, and `R0057`, drafted as
+  `T2_TECHNICAL`. **9 ended unplaced**, and every one of them was answered.
+- **8 of the 9 unplaced answers left `R0039` out.**
+  - It contains every draft of the queue.
+  - Level 3's system prompt says a rule nested in another needs no
+    declaration.
+  - v1b's placement round lists it all the same, and refuses an answer that
+    leaves it without a side.
+- **6 of the 9 left out only rules nested with their draft.**
+- **The broad drafts were all refused.**
+  - c r1's proposer drafted `H01`'s region whole twice, at cases 1063 and 1871,
+    and drafted 16,800 points at 1264.
+  - Each placement round listed 23 to 38 rules.
+  - Each answer gave a side to every listed rule but `R0039`.
+- **c r1 never drafted `H02`'s region whole.** Its drafts at `H02`'s tickets
+  covered 6,720 points or fewer.
+
+### 4. Beside the other five runs
+
+| run | the queue's rules | `H01`'s region born at | `H02`'s region born at | the queue's escalations born / unplaced | a rule containing the whole queue, born at |
+|---|---|---|---|---|---|
+| `e r1` | 6 | 1704 | 580 | 6 / 1 | `R0047`, case 394 |
+| `c r1` | 3 | never | never | 4 / 9 | `R0039`, case 238 |
+| `e r2` | 5 | 1063 | 580 | 5 / 1 | none |
+| `c r2` | 4 | 1063 | 599 | 4 / 2 | none |
+| `e r3` | 5 | 44 | 751 | 5 / 1 | none |
+| `c r3` | 3 | 44 | 580 | 3 / 1 | `R0037`, case 394 |
+
+Each rule containing the whole queue is the keyword's default,
+*has_security_keyword eq True* → `T2_TECHNICAL`.
+
+- **Every other run wrote both regions whole**, each at one escalation.
+- **In c r1 the default came first.** `R0039` was born at case 238, before any
+  broad rule of the queue, and from then on every placement round of the queue
+  listed it.
+- **The other two defaults came later.**
+  - **c r3**'s came at case 394. It had already written `H01`'s region at case
+    44.
+  - **e r1**'s also came at case 394. Its answers placed the default at case
+    580, which bore `H02`'s region, and at 1704, which bore `H01`'s. At 1063 its
+    answer left the default out, as c r1's did, and the draft was refused.
+  - **e r2, c r2 and e r3** never wrote a default.
+- **The same ticket drew different drafts.** The first call is blind to the
+  base: it sends the system prompt and the ticket, so a ticket's first call is
+  the same request in every run.
+  - At case 44, e r3 and c r3 drafted `H01`'s region whole, and c r1 drafted
+    4,200 points of it.
+  - At case 580, three runs drafted `H02`'s region whole, and c r1 drafted
+    6,720 points.
+- **c r1 did not ask less.** It escalated on 13 of the queue's tickets, where
+  the other runs escalated on 4 to 7. What it asked was refused.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| L1 | at least half of the lost points are unwritten | 30,720 of 34,080, 0.9014 | holds |
+| L2 | at least half of the lost points go to `T2_TECHNICAL` | 29,240 of 34,080, 0.8580 | holds |
+| L3 | no rule of the queue covers half of the queue's points or more | the widest covers 10,400 of 50,400, 0.2063 | holds |
+| L4 | at least 10 of the queue's escalations ended with their rule born | 4 of 13 | **fails** |
+| L5 | after no birth did the base decide half of the queue's points right | at most 16,320, 0.3238 | holds |
+| L6 | in each other run some rule of the queue covers half of the queue's points or more | 33,600 in each, 2/3 | holds |
+
+**The drafter expected all six to hold, bet on L1 and trusted L4 least.** L4
+failed, and that is where the account was wrong.
+- **What it got right.** The points were unwritten, went to the keyword's
+  default, and c r1's rules of the queue were narrow.
+- **What it got wrong.** It took the narrowness for the proposer's. The
+  proposer did draft the queue's regions broad, and the placement round refused
+  every broad draft.
+
+### What it says
+
+- **c r1 lost the queue to the keyword's default, by never writing its broad
+  regions.** Nine tenths of what it lost lies outside every rule of the queue,
+  and the default decides most of it.
+- **The proposer drafted those regions, and v1b refused them.**
+  - The placement round lists every rule of another queue that meets the
+    draft, nested ones included.
+  - The default contains every draft of the queue.
+  - The proposer left it out, as the system prompt says, and the round refused
+    the answer, so the draft was not born.
+  - This is the defect `PLAN_REASONED_LOOP.md`'s POST-RUN reading found
+    (*Where the unplaced answers come from*). §0 kept it in both arms on
+    purpose.
+- **c r1 met it because its default came first.** Three runs never wrote a
+  default. c r3 wrote `H01`'s region before its default, and e r1's answers
+  placed its default twice in three tries. c r1's default was born at case 238,
+  before any broad draft.
+- **So what c r1 lost is not the channel's.**
+  - It asked about the queue more often than any other run.
+  - Under its draws the transcriber, which places by the text's order,
+    compiles the whole queue.
+  - What it lost is v1b's placement round meeting a default born early. The
+    same ticket's draft varies between runs, so which comes first is partly
+    the draft's draw.
+- **What it leaves.** Each of the three broad answers gave a side to every
+  listed rule but the one nested with its draft. A round that did not ask for a
+  side against a rule nested with the draft would have taken each of them as
+  complete. That is the change *Where the unplaced answers come from* asked
+  for, and no plan has run it.
 
 ---
 
@@ -740,6 +957,11 @@ results_channel/loop_{e,c}_r{1,2,3}.json
                                    decision was reported, every escalation whole with its
                                    calls, attempts, seconds and reasoning, and rung 2's metrics
 results_channel/score.json         Stage C: the six verdicts with their runs, and CH-g
+results_channel/lost.json          POST-RUN: every run's lost points of SECURITY_INCIDENT by
+                                   way and winner, the queue's rules, the curve, the queue's
+                                   escalations, the expectation's six clauses, and the part
+                                   added after the first run: what the unplaced answers left
+                                   out, and the rules containing the whole queue
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
