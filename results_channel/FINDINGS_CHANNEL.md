@@ -1,0 +1,745 @@
+# The loop under a channel that hears of half its errors — findings
+
+Record opened on November 7, 2026, under [`PLAN_CHANNEL.md`](../PLAN_CHANNEL.md).
+The plan and its package reached `main` in pull request #196, merged on
+2026-11-05. Sergi signed §0 on 2026-11-05, before any figure below existed, in a
+commit of its own: `4aa0b8f` on `main`.
+- **The signature and Stage A** reached `main` in #197.
+- **The smoke run** reached it in #198.
+- **The six runs** reached it in #199, merged on 2026-11-06.
+- **Stage C, this record, the banner that closes the plan and the indexes**
+  reach it in the pull request this record was opened in.
+
+Every record names in its `_env` the commit it was written from. Seven were
+written on a pull request's branch, and the rebase merge gave each of those
+commits a new hash on `main`. Each pair has the same subject, the same tree and
+the same `git patch-id --stable`, and the GitHub API names the pull request
+behind every `main` commit.
+
+| record | written from | the same commit on `main` | code digest |
+|---|---|---|---|
+| `sample.json` | `8a4d794`, the signature, on the branch of #197 | `4aa0b8f` | `a9a819726536a4db` |
+| `loop_smoke.json` | `70e759c`, Stage A's commit, on the branch of #197 | `e4685b8` | `a9a819726536a4db` |
+| `loop_e_r1.json` | `0e49d17`, the smoke run's commit, on `main` (#198) | itself | `a9a819726536a4db` |
+| `loop_c_r1.json` | `1dd4307`, e r1's commit, on the branch of #199 | `5b7019f` | `a9a819726536a4db` |
+| `loop_e_r2.json` | `3cbfc4e`, c r1's commit, on the branch of #199 | `bb8b0eb` | `a9a819726536a4db` |
+| `loop_c_r2.json` | `4c95a28`, e r2's commit, on the branch of #199 | `038753f` | `a9a819726536a4db` |
+| `loop_e_r3.json` | `4097e2d`, c r2's commit, on the branch of #199 | `5dfc2d2` | `a9a819726536a4db` |
+| `loop_c_r3.json` | `41f5ba0`, e r3's commit, on the branch of #199 | `aa3cc4b` | `a9a819726536a4db` |
+| `score.json` | `913c97f`, c r3's commit, on `main` | itself | `a9a819726536a4db` |
+
+- **`git_dirty` is false in `sample.json` alone.** An untracked `AGENTS.md`,
+  not this plan's and never committed, appeared at the repository's root at
+  12:45 UTC on 2026-11-05, during the smoke run. Every later record carries
+  `git_dirty` true for it.
+- **`code_dirty` is false in every record, and every record carries one code
+  digest.** `main` computes it at `913c97f`, with
+  `harness.provenance.code_digest`. The package's code did not change after the
+  signature.
+
+**This record owns every figure in it.**
+
+**All three stages ran between 2026-11-05 and 2026-11-07, and the six rows are
+adjudicated. `CH-a`, `CH-b`, `CH-d`, `CH-e` and `CH-f` hold, all but `CH-d`
+thinly. `CH-c` is refuted, thinly. `CH-g` is reported.**
+
+- **Half the reports compile the policy in the median run.** The channel arm's
+  median base decides 0.9499 of the space right. One run of three, c r1, decides
+  0.7201. It sends most of `SECURITY_INCIDENT`'s points, 3/8 of the space, to
+  other queues.
+- **Within one period, halving the reports costs 1/32 of the space between the
+  medians.** The error arm's median base decides 0.9811. With c r1 in the channel
+  arm's place, the cost would be 0.2610.
+- **The error arm compiles the policy again on a new period, and not thinly.**
+  Its three bases decide 0.9798, 0.9811 and 0.9868 of the space. Each is above
+  every error run of `PLAN_REASONED_LOOP.md`, which decided 0.8898 to 0.9635. It
+  recalls all of `ONCALL_ESCALATION` in two runs, and 53/63 of it in the third.
+- **Half the reports do not compile the rarest queue.** The channel arm's
+  median recall of `ONCALL_ESCALATION` over the space is 2/3. Only c r3 reaches
+  the line, at 14/15. c r2's draws make no `H05` ticket reportable, and its base
+  recalls 128/315 of the queue, less than the transcriber's 2/3 under the same
+  draws.
+- **Hearing of half the errors cuts the calls by about a fifth, at the
+  medians.** The channel arm's median run made 147 calls and the error arm's
+  182: 21/26, 0.8077. c r2 made 250, more than any error run.
+- **The drafter expected five rows to hold and `CH-c` to be refuted, and that
+  is how they came out.**
+
+> **PROVENANCE, STAGE A: REPORTED, NOT ADJUDICATED.** Its references were
+> computed after the signature. Zero API calls.
+>
+> **PROVENANCE, STAGES B AND C: PRE-REGISTERED.** `CH-a` to `CH-f` were signed
+> before any of their figures existed, and none of their bands was set on a
+> development set. **`CH-d` and `CH-e` are replications.** Their bands were
+> drafted after `PLAN_REASONED_LOOP.md`'s figures had been seen, as §0 says, and
+> the scoreboard should read them as replications.
+>
+> **WHAT WAS SEEN BEFORE STAGE C.** The agent that launched the runs saw, before
+> the scorer ran:
+> - **Each run's commit message**, which its supervisor wrote from the record.
+>   It gives what the run printed, its calls, attempts, refusals and retries,
+>   its launches, its `_env` and its pace by round.
+> - **Those `calls` are `calls(r)`, the counts `CH-f` reads**, as the scorer's
+>   `calls_as_recorded` confirms: 171, 147, 182, 250, 208 and 117. They were
+>   pushed to #199 and given to Sergi before Stage C. Their ratio was not
+>   computed.
+> - **The runs' progress lines**, every 25 cases: rules, escalations and calls
+>   asked.
+> - **c r2's calls**: their seconds and refused attempts, by hour, to place when
+>   Baidu began refusing. Also the texts in its header.
+> - **e r3's partial file during the run**: each call's case, round, seconds,
+>   attempts and refusals.
+> - **One call's row, printed whole**: e r3's first draft, with its
+>   declarations and its note. That draft is one of the 563 the record counts.
+> - **What OpenRouter billed** for every attempt, read by generation id.
+>
+> No base, no `space`, no recall and no row was read before Stage C.
+
+**Each figure names its surface.**
+- **`CH-a`, `CH-b` and `CH-d`** read the exhaustive space of 134,400 points.
+- **`CH-c` and `CH-e`** read its 6,300 points whose true queue is
+  `ONCALL_ESCALATION`.
+- **`CH-f`** reads the runs' calls.
+- **`CH-g`** reads both surfaces and says which.
+
+The corpus is `generate_corpus(2000, seed=17)` in every run. **The arms** are:
+- **the channel arm, `c`.** It escalates an IMPASSE or a CONFLICT, and a case
+  the engine decides with a queue other than its label, when that case's draw
+  falls below 1/2;
+- **the error arm, `e`.** It escalates every such case (§0).
+
+---
+
+## Stage A — the checks and the references
+
+**What was run.** `python3 -m channel.sample`, on 2026-11-05, with
+`PYTHONHASHSEED=0`, from the signing commit on a clean tree. The record is
+[`sample.json`](sample.json).
+
+**The blocking checks passed before anything was written.**
+- **`CH-g1`.** `PLAN_REASONED_LOOP.md`'s verdicts came back from its runs.
+  - This plan's loop at coverage 1 is that plan's error arm, with the
+    transcriber and with run e r1's answers replayed. Replayed, it gives back
+    e r1's rules and causes case for case.
+  - At coverage 0 the loop is that plan's impasse arm.
+  - A run's rebuild is its engine, and the labels agree with the truth.
+  - The suite was green.
+- **`CH-g2`.** Every text is `PLAN_REASONED_LOOP.md`'s.
+  - Every run's draws are rebuilt from their seed strings, and they are §0's.
+  - The transcriber gives back §0's figures.
+  - The hidden policy goes through v1b's path whole: 29 rules and 253
+    declarations, which install rung 2's 199 edges. It decides both surfaces
+    right.
+- **`CH-g3`.** `ORDER_SEED` drew the error arm first, so the schedule is e r1,
+  c r1, e r2, c r2, e r3, c r3. The smoke run is 30 cases under the channel arm,
+  with its own draws, and the cap is 400 escalations.
+- **`CH-g4`.** One signature line, signed.
+
+**Every figure §0 lists as computed while drafting came back**, items 1 to 6
+and 8, so §0 needs no erratum.
+
+**The draws.** One stream of 2,000 floats per channel run, and one for the smoke
+run, each from a string seed through SHA-512.
+
+| stream | seed string | digest |
+|---|---|---|
+| c r1 | `PLAN_CHANNEL/channel/97/r1` | `1347b9525a1e06a3` |
+| c r2 | `PLAN_CHANNEL/channel/97/r2` | `e81548d721b99577` |
+| c r3 | `PLAN_CHANNEL/channel/97/r3` | `1f60e3d5e68553d4` |
+| the smoke run | `PLAN_CHANNEL/channel/97/smoke` | `029047351ae2d471` |
+
+**The transcriber**, under each channel run's draws and under the error trigger.
+It is a double that writes, at every escalation, the rule of level 3's text that
+governs the ticket, and places it by the text's order.
+
+| under | escalations | calls | wrong decisions reported / not | `space` | `corpus` | `ONCALL_ESCALATION` recall |
+|---|---|---|---|---|---|---|
+| c r1's draws | 23: 2 impasses and 21 errors | 45 | 21 / 22 | 134,380 of 134,400 | 1,999 of 2,000 | 1 |
+| c r2's draws | 22: 2 impasses and 20 errors | 43 | 20 / 12 | 132,280 | 1,996 | 2/3 |
+| c r3's draws | 23: 2 impasses and 21 errors | 45 | 21 / 18 | 134,380 | 1,999 | 1 |
+| the error trigger | 23: 2 impasses and 21 errors | 45 | 21 / 0 | 134,380 | 1,999 | 1 |
+| the smoke run's draws, 30 cases | 9: 2 impasses and 7 errors | 17 | 7 / 13 | 49,420 | 1,107 | 0 |
+
+The last row is the only one §0 does not declare.
+
+---
+
+## Stage B — the runs
+
+**Every call ran at `deepseek/deepseek-v4-flash`, at temperature 0, with
+reasoning `{"effort": "high"}` and 16,000 tokens, pinned to Baidu with
+fallbacks off.**
+- **The path.** Every call went through `PLAN_FIRST_MATCH.md`'s asker with
+  `PLAN_REASONED_LOOP.md`'s request, under v1b: level 3's system prompt, a blind
+  first call, and v2b's placement round.
+- **The checks.** Every launch checked the signature, the key, `CH-g1` to
+  `CH-g3` and the records before it, before any call.
+
+**How the runs were launched.** Under §2.5 Sergi chose that the agent launch
+them, detached from its harness.
+- **The supervisor** ran them one at a time, in §2.3's order.
+  - It resumed a run that an outage had stopped, about once an hour from its
+    launch.
+  - It committed each record alone, through the pre-commit hook, before the
+    next run started.
+  - It never passed the overwrite flag and never skipped the hook.
+- **The pull request.** The supervisor pushed each record to #199. Once both
+  `ci-complete` runs on its last head were green, it merged #199 by rebase,
+  matching that head.
+
+### The smoke run
+
+[`loop_smoke.json`](loop_smoke.json) ran 30 cases under the channel arm, with
+its own draws, on 2026-11-05 from 12:11 to 12:58 UTC.
+- **What it did.**
+  - It met 13 escalations: 9 impasses and 4 reported errors.
+  - It made 21 calls: 13 first calls and 8 placement rounds.
+  - 11 rules were born and 2 were refused. No proposal failed.
+- **The trigger's record.** Of 10 wrong decisions, the channel reported 4, and
+  each escalated. 6 stood.
+- **The provider.** Baidu served every attempt that reached the model, and every
+  one reasoned and ended `stop`. 36 attempts, across 6 calls, were refused for
+  the rate. Each was waited out under `PLAN_REASONED_LOOP.md` §5.5's amendment,
+  and none stopped the run.
+- **The pace.** Without the calls that met a refusal, the first calls took a
+  median of 44.6 seconds and the placement rounds 11.2.
+- **The check passed**, so the runs could start. No row reads its answers.
+- **A first launch refused before any call.** It started at 11:47 UTC and
+  refused at 11:52, because one test of the suite inside `CH-g1` failed.
+  - Nothing was spent, and no record was written.
+  - Three later runs of the suite passed, one under that launch's own
+    environment, and so did the gate of the launch recorded here.
+  - The failure was not reproduced.
+
+### The six runs
+
+| run | from its first launch to its record, UTC | launches | escalations | calls | attempts | refused for the rate | billed |
+|---|---|---|---|---|---|---|---|
+| `e r1` | 11-05 14:36–16:25 | 1 | 90 | 171 | 174 | 1 | $0.081 |
+| `c r1` | 11-05 16:28–18:01 | 1 | 79 | 147 | 154 | 5 | $0.067 |
+| `e r2` | 11-05 18:04–20:13 | 1 | 95 | 182 | 184 | 0 | $0.095 |
+| `c r2` | 11-05 21:04 – 11-06 05:48 | 4 | 131 | 250 | 459 | 204 | $0.170 |
+| `e r3` | 11-06 05:51–14:49 | 3 | 106 | 208 | 574 | 366 | $0.276 |
+| `c r3` | 11-06 14:53–16:13 | 1 | 62 | 117 | 117 | 0 | $0.104 |
+
+- **Every run reached case 2,000.** None stopped at the cap, and none recorded a
+  failed proposal.
+- **What was billed** was read from OpenRouter on 2026-11-07, by the generation
+  id that each attempt's `call_attempts` keeps. It is not a record of this
+  repository.
+  - Every attempt that reached the model was found.
+  - The six runs came to $0.79, and the smoke run to $0.027.
+
+**Baidu refused for the rate through most of a day.**
+- **On 2026-11-05, from 14:36 UTC, it barely refused.** e r1, c r1 and e r2
+  met 1, 5 and 0 refusals.
+- **From about midnight UTC it refused most attempts.**
+  - c r2 met its first refusal at case 1,665.
+  - Three outages stopped c r2, at 01:27, 02:16 and 05:34 UTC on 2026-11-06, and
+    two stopped e r3, at 07:56 and 12:40. Each was one call refused on all 18
+    of its attempts, through every wait.
+  - None of those calls is recorded, and each was asked again on the next
+    launch.
+- **It had stopped refusing by mid-afternoon, UTC.** c r3, from 14:53 to 16:13,
+  met no refusal.
+- **The smoke run** met its 36 refusals between 12:11 and 12:58 UTC on
+  2026-11-05.
+
+**The price per token followed the refusals.** The bills give each attempt's
+cost. In the hours in which Baidu refused, an attempt was billed about three
+times as much per token as on the afternoon of 2026-11-05.
+
+The price per million prompt tokens was, by hour:
+- at most $0.047 in every hour of 2026-11-05 from 14:00 UTC;
+- up to $0.14 from 00:00 to 13:00 UTC on 2026-11-06;
+- at most $0.086 from 15:00 UTC on 2026-11-06.
+
+Two notes on that reading:
+- **It assumes completion tokens at twice the prompt price**, as every listing
+  of the model gives them.
+- **$0.14 is Baidu's listing** as read at about 11:00 UTC on 2026-11-06: $0.14
+  for prompt and $0.28 for completion tokens.
+
+**The supervisor stood still for 47 minutes on 2026-11-05.**
+- **What stopped it.** At 20:17 UTC the push of e r2's record met a timeout of
+  the Windows credential helper, called through WSL. The supervisor was written
+  to stop on a failed push. No run was under way, and no call was spent.
+- **How it resumed.** The push went through by hand at 21:03 UTC. c r2 was
+  launched at 21:04 from the commit it would have started from, `4c95a28`.
+- **What changed.** From then on the supervisor retried a failed push and went
+  on.
+
+**[ERRATUM 2026-11-06] c r2's commit message gives the span of its last launch
+only**, 05:37 to 05:48 UTC.
+- **The run's real span.** It was first launched at 21:04 UTC on 2026-11-05, and
+  went through four launches, as the table above gives.
+- **Why the commit stands.** It is not amended, because e r3's `_env` names it.
+- **What changed.** From e r3 on, the messages give the whole span.
+
+#199's description carries the same erratum.
+
+**The pin held.** Every attempt that reached the model, 1,086 in the six runs,
+was served by Baidu and ended `stop`. The 576 refused for the rate carry no
+provider.
+
+**The retries.**
+- **For the rate**: 1 in e r1, 5 in c r1, 204 in c r2 and 366 in e r3. Each was
+  asked again with the same messages after a wait.
+- **After a failed parse**: 2 answers each in e r1, c r1 and e r2, and 5 in
+  c r2. Each was asked again with v1's retry message.
+- **No answer reached the budget.** The longest completion took 14,752 of the
+  16,000 tokens, in c r2.
+
+**Every attempt that reached the model reasoned.**
+- **The medians.** By run, over those attempts, the median reasoning ran from
+  3,520 to 4,168 tokens, and the most was 14,382.
+- **The refused attempts are left out of the medians.** The scorer reads e r3's
+  at 3,821.5, though 366 of its 574 attempts were refused.
+- **The records keep the reasoning whole**, and no stage codes it.
+
+| run | calls | attempts | reached Baidu | refused for the rate | asked again after a failed parse | prompt tokens | completion tokens | reasoning tokens, median | max |
+|---|---|---|---|---|---|---|---|---|---|
+| `e r1` | 171 | 174 | 173 | 1 | 2 | 380,055 | 731,176 | 3741 | 13,287 |
+| `c r1` | 147 | 154 | 149 | 5 | 2 | 317,907 | 594,623 | 3520 | 12,289 |
+| `e r2` | 182 | 184 | 184 | 0 | 2 | 416,321 | 833,100 | 4168 | 9,773 |
+| `c r2` | 250 | 459 | 255 | 204 | 5 | 578,399 | 1,173,850 | 4036 | 14,382 |
+| `e r3` | 208 | 574 | 208 | 366 | 0 | 462,801 | 911,230 | 3821.5 | 11,263 |
+| `c r3` | 117 | 117 | 117 | 0 | 0 | 253,961 | 499,120 | 3814 | 9,562 |
+
+**The pace, by run and by round**, in seconds, from `score.json`.
+- **Every call counts.** Each call served from a partial file kept its own
+  seconds, under `PLAN_REASONED_LOOP.md` §5.5's second amendment, so the rows
+  read every call.
+- **The calls that met no refusal** are counted beside the rest.
+
+| run | round | calls | median, s | minutes in all | calls that met no refusal | their median, s |
+|---|---|---|---|---|---|---|
+| `e r1` | first call | 90 | 42.3 | 71.2 | 89 | 41.8 |
+| `e r1` | placement | 81 | 19.6 | 34.8 | 81 | 19.6 |
+| `c r1` | first call | 79 | 43.0 | 62.2 | 76 | 41.9 |
+| `c r1` | placement | 68 | 22.5 | 27.3 | 66 | 21.8 |
+| `e r2` | first call | 95 | 49.1 | 79.5 | 95 | 49.1 |
+| `e r2` | placement | 87 | 29.2 | 47.2 | 87 | 29.2 |
+| `c r2` | first call | 131 | 44.2 | 212.6 | 116 | 42.7 |
+| `c r2` | placement | 119 | 29.8 | 180.6 | 103 | 26.5 |
+| `e r3` | first call | 106 | 68.0 | 258.7 | 69 | 54.0 |
+| `e r3` | placement | 102 | 40.5 | 190.1 | 70 | 33.9 |
+| `c r3` | first call | 62 | 44.9 | 48.9 | 62 | 44.9 |
+| `c r3` | placement | 55 | 24.7 | 28.3 | 55 | 24.7 |
+
+**How far §1 was.**
+- **The calls.** §1 put a channel run between an error run and an impasse run.
+  The channel runs made 117, 147 and 250 calls, and the error runs 171, 182 and
+  208. c r2 made more than any error run.
+- **The money.** §1 expected the six runs to cost under half a dollar, at
+  Baidu's listing of 2026-10-25.
+  - At that listing their tokens would have cost $0.27.
+  - They were billed $0.79, because the price per token was not that listing's
+    (above).
+- **The time.** §1 expected six to eight hours for the error runs and three to
+  six for the channel's, if no provider refused for a day.
+  - A run that met no outage took from 1 hour 21 minutes to 2 hours 10 minutes,
+    from launch to record.
+  - c r2 and e r3, through their outages, took 8 hours 44 minutes and 8 hours
+    58 minutes.
+- **The smoke run's pace.** It measured the first calls at a median of 44.6
+  seconds without refusals, on 8 calls. The runs' first calls that met no
+  refusal took medians of 41.8 to 54.0 seconds, by run.
+
+---
+
+## Stage C — the six adjudications
+
+**What was run.** `python3 -m channel.score --dry-run`, then
+`PYTHONHASHSEED=0 python3 -m channel.score`, on 2026-11-07, from `913c97f` on
+`main`. The tree was clean but for the untracked `AGENTS.md`, so the record's
+`_env` carries `git_dirty` true and `code_dirty` false.
+- **The checks.** `CH-g1` to `CH-g4` passed in both commands, with the suite
+  green.
+- **The runs.** All six were read, and none is missing. Every run's rebuilt base
+  is the base its record says it ended with, and every run's calls are the calls
+  its record counts.
+- **The record** is [`score.json`](score.json). Zero API calls.
+
+**Every statistic is a fraction of counts, compared with its line exactly.**
+The record keeps each as a fraction beside its float.
+
+| row | statistic | line | reading | read | verdict |
+|---|---|---|---|---|---|
+| CH-a | the channel arm's median `space(B)` | ≥ 0.90 | **0.9499**, 6383/6720 | 3 runs | **holds, thin** |
+| CH-b | the error arm's median `space(B)`, less the channel arm's | ≤ 0.05 | **0.0312**, 1/32, from 0.9811 and 0.9499 | 3 runs an arm | **holds, thin** |
+| CH-c | the channel arm's median `recall_ONCALL_ESCALATION(B)` over the space | ≥ 0.90 | **0.6667**, 2/3 | 3 runs | **refuted, thin** |
+| CH-d | the error arm's median `space(B)` | ≥ 0.90 | **0.9811**, 6593/6720 | 3 runs | **holds** |
+| CH-e | the error arm's median `recall_ONCALL_ESCALATION(B)` over the space | ≥ 0.90 | **1.0000**, 1 | 3 runs | **holds, thin** |
+| CH-f | the channel arm's median `calls(r)`, over the error arm's | ≥ 3/4 | **0.8077**, 21/26, from 147 and 182 | 3 runs an arm | **holds, thin** |
+
+`CH-g` is reported, and everything below that is not in the table is its.
+
+**Five verdicts are thin, and each turns on one run or two.**
+- **`CH-a`.** c r1's 0.7201, put in place of the median, falls under the line.
+- **`CH-b`.** So does c r1, put in place of the channel arm's median: 0.9811 less
+  0.7201 is 0.2610. No error run moves it across in place of the error arm's
+  median: they leave 0.0299 and 0.0369.
+- **`CH-c`.** c r3's 14/15, 0.9333, put in place of the median, would hold it.
+- **`CH-e`.** e r2's 53/63, 0.8413, falls under the line.
+- **`CH-f`.** Two runs each move it across:
+  - c r3's 117 calls, in place of the channel arm's median, read 0.6429;
+  - e r3's 208, in place of the error arm's, read 0.7067.
+
+  Both fall under 3/4.
+
+**`CH-d` is not thin.** Its lowest run, e r1, decides 0.9798 of the space.
+
+**Every row had a value.** Each arm has three complete runs.
+
+**Each row's runs:**
+
+| run | `space(B)` | `ONCALL_ESCALATION` recall, space | `calls(r)` |
+|---|---|---|---|
+| `e r1` | 823/840, 0.9798 | 6,300 of 6,300, 1 | 171 |
+| `c r1` | 1613/2240, 0.7201 | 4,200 of 6,300, 2/3 | 147 |
+| `e r2` | 6593/6720, 0.9811 | 5,300 of 6,300, 53/63 | 182 |
+| `c r2` | 6383/6720, 0.9499 | 2,560 of 6,300, 128/315 | 250 |
+| `e r3` | 6631/6720, 0.9868 | 6,300 of 6,300, 1 | 208 |
+| `c r3` | 3317/3360, 0.9872 | 5,880 of 6,300, 14/15 | 117 |
+
+**The drafter expected five rows to hold and `CH-c` to be refuted, and that is
+how they came out.**
+- **The order of trust.** It trusted `CH-f` most, then `CH-d`, `CH-e`, `CH-a`
+  and `CH-b`.
+- **Where the thin labels departed.** It expected `CH-d`, `CH-e`, `CH-a` and
+  `CH-b` to hold thinly. `CH-d` held without being thin, and `CH-f`, expected to
+  hold, held thinly.
+
+That is a fact about this plan, and the scoreboard counts it.
+
+### The two arms, on both surfaces
+
+| run | `space` | without the keyword | with it | `corpus` | `K-a` | `cover(r)` |
+|---|---|---|---|---|---|---|
+| `e r1` | 0.9798 | 0.9595 | 1.0000 | 1,986 of 2,000 | 9/59 | case 658 |
+| `c r1` | 0.7201 | 0.9473 | 0.4929 | 1,975 of 2,000 | 11/57 | never |
+| `e r2` | 0.9811 | 0.9622 | 1.0000 | 1,962 of 2,000 | 8/71 | case 725 |
+| `c r2` | 0.9499 | 0.8997 | 1.0000 | 1,922 of 2,000 | 5/43 | case 658 |
+| `e r3` | 0.9868 | 0.9735 | 1.0000 | 1,996 of 2,000 | 5/79 | case 456 |
+| `c r3` | 0.9872 | 0.9935 | 0.9810 | 1,999 of 2,000 | 7/47 | case 228 |
+
+- **c r1 loses the keyword half.** It decides 0.9473 of the half without the
+  keyword, and 0.4929 of the half with it. Every other run decides the keyword
+  half at 0.98 or more.
+- **c r2 is the weakest run without the keyword**, at 0.8997.
+- **c r3 decides more of the space than any run of either arm**, 0.9872, from
+  the fewest calls, 117.
+- **On the arrivals the arms barely part.** Every base decides 1,922 to 1,999 of
+  the 2,000 cases right.
+
+### The recall of the eight queues
+
+Over the space:
+
+| run | `T1_GENERAL` | `T2_TECHNICAL` | `T3_ENGINEERING` | `BILLING_SPECIALIST` | `SECURITY_INCIDENT` | `ACCOUNT_MANAGER` | `ONCALL_ESCALATION` | `SELF_SERVICE_DEFLECT` |
+|---|---|---|---|---|---|---|---|---|
+| `e r1` | 0.9655 | 0.9608 | 0.8655 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| `c r1` | 0.9808 | 1.0000 | 0.9487 | 1.0000 | 0.3238 | 0.9440 | 0.6667 | 1.0000 |
+| `e r2` | 0.9962 | 0.9749 | 0.9267 | 1.0000 | 1.0000 | 1.0000 | 0.8413 | 1.0000 |
+| `c r2` | 0.9598 | 0.9918 | 0.7824 | 1.0000 | 1.0000 | 0.9635 | 0.4063 | 0.9744 |
+| `e r3` | 0.9962 | 0.9760 | 0.8924 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| `c r3` | 0.9962 | 1.0000 | 1.0000 | 1.0000 | 0.9746 | 1.0000 | 0.9333 | 1.0000 |
+
+Over the corpus, for the four rarest queues:
+
+| run | `ONCALL_ESCALATION` | `SECURITY_INCIDENT` | `T3_ENGINEERING` | `ACCOUNT_MANAGER` |
+|---|---|---|---|---|
+| `e r1` | 7 of 7 | 20 of 20 | 117 of 117 | 109 of 109 |
+| `c r1` | 4 of 7 | 4 of 20 | 117 of 117 | 104 of 109 |
+| `e r2` | 4 of 7 | 20 of 20 | 89 of 117 | 109 of 109 |
+| `c r2` | 1 of 7 | 20 of 20 | 111 of 117 | 105 of 109 |
+| `e r3` | 7 of 7 | 20 of 20 | 117 of 117 | 109 of 109 |
+| `c r3` | 7 of 7 | 20 of 20 | 117 of 117 | 109 of 109 |
+
+- **Every error run recalls `SECURITY_INCIDENT` whole**, on both surfaces. Of
+  the channel runs, c r2 does, c r3 recalls 0.9746 of its points, and c r1
+  0.3238.
+- **`ONCALL_ESCALATION`.** Each error run recalls 1, 53/63 or 1 of its points.
+  The channel runs recall 2/3, 128/315 and 14/15.
+- **`T3_ENGINEERING`.** No run recalls it whole but c r3. c r2 is lowest, at
+  0.7824.
+
+### The channel's reports
+
+| run | coverage | impasses | conflicts | errors escalated | wrong decisions | reported | not reported | decisions that stood | wrong among them |
+|---|---|---|---|---|---|---|---|---|---|
+| `e r1` | 1 | 29 | 2 | 59 | 59 | 59 | 0 | 1910 | 0 |
+| `c r1` | 1/2 | 29 | 1 | 49 | 97 | 49 | 48 | 1921 | 48 |
+| `e r2` | 1 | 26 | 1 | 68 | 68 | 68 | 0 | 1905 | 0 |
+| `c r2` | 1/2 | 35 | 33 | 63 | 126 | 63 | 63 | 1869 | 63 |
+| `e r3` | 1 | 16 | 20 | 70 | 70 | 70 | 0 | 1894 | 0 |
+| `c r3` | 1/2 | 22 | 10 | 30 | 53 | 30 | 23 | 1938 | 23 |
+
+- **Every reported wrong decision escalated**, in every run, as §2.2 sets.
+- **The channel reported 49 of 97, 63 of 126 and 30 of 53 wrong decisions**:
+  0.5052, 0.5000 and 0.5660. The ones it did not report stood: 48, 63 and 23 of
+  them.
+- **The channel arm's bases erred more often than the error arm's in two runs
+  of three.** c r1 and c r2 decided 97 and 126 cases wrongly, where the error
+  runs decided 59 to 70. So half of their wrong decisions still came to 49 and
+  63 reports.
+- **c r2 met 33 conflicts**, where the other runs met 1 to 20.
+
+By true queue, reported of wrong. Every reported one escalated, and no channel
+run decided a `T1_GENERAL` ticket wrongly during the run:
+
+| run | `T2_TECHNICAL` | `T3_ENGINEERING` | `ACCOUNT_MANAGER` | `ONCALL_ESCALATION` | `SECURITY_INCIDENT` | `BILLING_SPECIALIST` | `SELF_SERVICE_DEFLECT` |
+|---|---|---|---|---|---|---|---|
+| `c r1` | 14 of 27 | 7 of 13 | 8 of 26 | 2 of 6 | 11 of 17 | 5 of 6 | 2 of 2 |
+| `c r2` | 18 of 36 | 8 of 13 | 3 of 8 | 2 of 7 | 5 of 6 | 10 of 18 | 17 of 38 |
+| `c r3` | 4 of 6 | 1 of 3 | 7 of 10 | 3 of 5 | 4 of 4 | 4 of 9 | 7 of 16 |
+
+Over time, reported of wrong, by block of 200 cases:
+
+| run | 0–199 | 200–399 | 400–599 | 600–799 | 800–999 | 1000–1199 | 1200–1399 | 1400–1599 | 1600–1799 | 1800–1999 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `c r1` | 14 of 32 | 8 of 19 | 7 of 10 | 5 of 9 | 2 of 7 | 2 of 2 | 6 of 6 | 1 of 2 | 1 of 4 | 3 of 6 |
+| `c r2` | 22 of 41 | 9 of 19 | 8 of 18 | 6 of 13 | 5 of 12 | 5 of 9 | 3 of 4 | 0 of 1 | 0 of 3 | 5 of 6 |
+| `c r3` | 12 of 24 | 4 of 10 | 5 of 8 | 3 of 4 | 2 of 3 | 0 of 0 | 1 of 1 | 2 of 2 | 0 of 0 | 1 of 1 |
+
+**c r1's `SECURITY_INCIDENT`.** What c r1 lost there was lost after the reports
+had come and the drafts had been right.
+- **The reports came.** The channel reported 11 of c r1's 17 wrong decisions on
+  the queue's tickets, and each escalated.
+- **The drafts were right.** The proposer drafted the queue at 12 of the 13
+  escalations whose ticket was the queue's.
+- **The base still sent most of the queue elsewhere.** Of the 7 security
+  tickets c r1's rules decided rather than escalate, they decided 1 right, and
+  its final base recalls 0.3238 of the queue's points.
+- **A proposer that never errs would have lost nothing.** Under c r1's draws
+  the transcriber compiles the whole queue.
+
+So what c r1 lost is the loop's and not the channel's, which is what §0 chose
+coverage 1/2 to make it.
+
+### The error escalations by governing rule, beside the supply
+
+Escalated of reportable, for the rules that govern the rarest tickets:
+
+| governing rule | `e r1` | `c r1` | `e r2` | `c r2` | `e r3` | `c r3` |
+|---|---|---|---|---|---|---|
+| `H04` | 1 of 4 | 1 of 2 | 4 of 4 | 2 of 2 | 2 of 4 | 2 of 2 |
+| `H05` | 2 of 3 | 1 of 1 | 1 of 3 | 0 of 0 | 1 of 3 | 1 of 1 |
+| `H01` | 4 of 9 | 5 of 5 | 3 of 9 | 3 of 6 | 1 of 9 | 1 of 5 |
+| `H02` | 2 of 11 | 6 of 6 | 2 of 11 | 2 of 6 | 5 of 11 | 3 of 7 |
+| `H06` | 3 of 8 | 1 of 5 | 2 of 8 | 3 of 6 | 3 of 8 | 1 of 3 |
+
+`H04` governs 4 of the corpus's tickets, `H05` 3, `H01` 9, `H02` 11 and `H06` 8.
+In the error arm every one of them is reportable. c r1 escalated on every
+reportable `H01` and `H02` ticket, and it is the run that lost the queue they
+govern.
+
+### Each run beside the transcriber
+
+| run | escalations, the run / the transcriber | calls | `space` | `ONCALL_ESCALATION` recall |
+|---|---|---|---|---|
+| `e r1` | 90 / 23 | 171 / 45 | 0.9798 / 0.9999 | 1 / 1 |
+| `c r1` | 79 / 23 | 147 / 45 | 0.7201 / 0.9999 | 2/3 / 1 |
+| `e r2` | 95 / 23 | 182 / 45 | 0.9811 / 0.9999 | 53/63 / 1 |
+| `c r2` | 131 / 22 | 250 / 43 | 0.9499 / 0.9842 | 128/315 / 2/3 |
+| `e r3` | 106 / 23 | 208 / 45 | 0.9868 / 0.9999 | 1 / 1 |
+| `c r3` | 62 / 23 | 117 / 45 | 0.9872 / 0.9999 | 14/15 / 1 |
+
+- **The loop asked about three to six times as often as the transcriber**, under
+  the same draws or trigger.
+- **Each run, by how far its base comes from the transcriber's:**
+  - c r3 comes within 0.0126 of it, and the error runs within 0.0201;
+  - c r2 comes within 0.0344;
+  - c r1 comes 0.2798 short.
+
+### The drafts, the verdicts and the placement rounds
+
+| run | drafts right | born | unplaced | refused | changed | placement rounds | rules listed, median [range] |
+|---|---|---|---|---|---|---|---|
+| `e r1` | 88 of 90, 0.9778 | 68 | 22 | 0 | 0 | 81 | 5 [1–43] |
+| `c r1` | 73 of 79, 0.9241 | 62 | 16 | 1 | 0 | 68 | 5 [1–38] |
+| `e r2` | 88 of 95, 0.9263 | 79 | 14 | 1 | 1 | 87 | 7 [1–42] |
+| `c r2` | 115 of 131, 0.8779 | 94 | 34 | 3 | 0 | 119 | 9 [1–40] |
+| `e r3` | 93 of 106, 0.8774 | 88 | 18 | 0 | 0 | 102 | 7 [1–40] |
+| `c r3` | 61 of 62, 0.9839 | 52 | 9 | 1 | 0 | 55 | 8 [1–25] |
+
+| run | citations of `H01` to `H29` | other citations | edges by the engine's verdict | copies born | births that are their governing rule's region |
+|---|---|---|---|---|---|
+| `e r1` | 104 | 664 | 498 ok, 15 closing a cycle, 13 outside the neighbourhood | 1 | 18 of 68 |
+| `c r1` | 117 | 471 | 304 ok, 5 closing a cycle, 17 outside the neighbourhood, 1 against containment | 4 | 14 of 62 |
+| `e r2` | 91 | 728 | 601 ok, 21 closing a cycle, 10 outside the neighbourhood | 18 | 26 of 79 |
+| `c r2` | 169 | 1,170 | 739 ok, 84 closing a cycle, 12 outside the neighbourhood, 5 against containment | 28 | 20 of 94 |
+| `e r3` | 210 | 873 | 718 ok, 36 closing a cycle, 3 outside the neighbourhood | 24 | 23 of 88 |
+| `c r3` | 69 | 427 | 359 ok, 26 closing a cycle, 9 outside the neighbourhood, 1 against containment | 6 | 23 of 52 |
+
+- **A draft is the first call's queue.** The proposer drafted the right queue at
+  518 of the 563 escalations, 0.9201.
+- **What ended unplaced.** 113 escalations ended unplaced: a listed rule was left
+  out of the second answer. 6 rules were refused and 1 placement changed its
+  draft's rule. None of these is born.
+- **The citations** count every identifier in `beats` and `loses_to`, over both
+  calls of every escalation.
+  - The manual's identifiers took the place of the base's in about one citation
+    in seven: 760 of 5,093.
+  - None of them names a rule of a base, and each is dropped and recorded.
+- **c r2's lists ran longest**, a median of 9 rules. The engine refused 84 of
+  its edges for closing a cycle.
+
+### The rare queues
+
+| queue | run | escalations | drafted right | tickets decided by rules | decided right |
+|---|---|---|---|---|---|
+| `ONCALL_ESCALATION` | `e r1` | 3 | 3 | 4 | 4 |
+| `ONCALL_ESCALATION` | `c r1` | 2 | 2 | 5 | 1 |
+| `ONCALL_ESCALATION` | `e r2` | 5 | 5 | 2 | 2 |
+| `ONCALL_ESCALATION` | `c r2` | 2 | 2 | 5 | 0 |
+| `ONCALL_ESCALATION` | `e r3` | 3 | 3 | 4 | 4 |
+| `ONCALL_ESCALATION` | `c r3` | 4 | 4 | 3 | 1 |
+| `SECURITY_INCIDENT` | `e r1` | 7 | 7 | 13 | 13 |
+| `SECURITY_INCIDENT` | `c r1` | 13 | 12 | 7 | 1 |
+| `SECURITY_INCIDENT` | `e r2` | 6 | 6 | 14 | 14 |
+| `SECURITY_INCIDENT` | `c r2` | 6 | 6 | 14 | 13 |
+| `SECURITY_INCIDENT` | `e r3` | 6 | 6 | 14 | 14 |
+| `SECURITY_INCIDENT` | `c r3` | 4 | 4 | 16 | 16 |
+| `T3_ENGINEERING` | `e r1` | 9 | 9 | 108 | 108 |
+| `T3_ENGINEERING` | `c r1` | 7 | 7 | 110 | 104 |
+| `T3_ENGINEERING` | `e r2` | 36 | 32 | 81 | 81 |
+| `T3_ENGINEERING` | `c r2` | 13 | 13 | 104 | 99 |
+| `T3_ENGINEERING` | `e r3` | 12 | 11 | 105 | 105 |
+| `T3_ENGINEERING` | `c r3` | 6 | 6 | 111 | 109 |
+| `ACCOUNT_MANAGER` | `e r1` | 14 | 14 | 95 | 95 |
+| `ACCOUNT_MANAGER` | `c r1` | 10 | 10 | 99 | 81 |
+| `ACCOUNT_MANAGER` | `e r2` | 12 | 12 | 97 | 97 |
+| `ACCOUNT_MANAGER` | `c r2` | 10 | 10 | 99 | 94 |
+| `ACCOUNT_MANAGER` | `e r3` | 7 | 7 | 102 | 102 |
+| `ACCOUNT_MANAGER` | `c r3` | 11 | 11 | 98 | 95 |
+
+- **In the error arm a decision stands only where it is right**, by
+  construction, so its rules decide right every rare ticket they decide.
+- **Every channel run's rules decided some rare tickets wrongly, and the
+  channel did not report them, so they stood.** That is where the channel arm's
+  unreported wrong decisions fall on the rare queues. In c r1, for instance, 4
+  `ONCALL_ESCALATION`, 6 `SECURITY_INCIDENT` and 18 `ACCOUNT_MANAGER` tickets
+  stood decided wrongly.
+- **The proposer drafted the right queue at every rare escalation but six**:
+  one in c r1, four in e r2 and one in e r3.
+
+### The direction
+
+`RL-e`'s statistic on this plan's runs, by arm: the share of strict pairs whose
+placed edge points at the better rule, by older rule, beyond the keyword. Beside
+it is the Stage C ranking's reading on the same pairs and units.
+
+| arm | units | declared: strict pairs right | declared, by older rule | ranking: strict pairs right | ranking, by older rule | difference |
+|---|---|---|---|---|---|---|
+| channel | 148 | 622 of 712 | 0.8901 | 664 of 712 | 0.9133 | −0.0232 |
+| error | 161 | 696 of 796 | 0.8766 | 709 of 796 | 0.9112 | −0.0345 |
+
+In both arms the declared edges point at the better rule less often than a fixed
+ranking of the queues does, as in `PLAN_REASONED_LOOP.md` (`RL-e` and `RL-f`
+refuted). Reported, and it adjudicates nothing.
+
+### The error arm, across dates
+
+This plan's error runs beside `PLAN_REASONED_LOOP.md`'s, run by run: this plan's
+figure first, that plan's after the slash.
+
+| run | `space` | without the keyword | with it | `ONCALL_ESCALATION` recall | `SECURITY_INCIDENT` recall | escalations | rules | `cover(r)` | date |
+|---|---|---|---|---|---|---|---|---|---|
+| `e r1` | 0.9798 / 0.9601 | 0.9595 / 0.9702 | 1.0000 / 0.9500 | 1.0000 / 0.9333 | 1.0000 / 0.9333 | 90 / 99 | 68 / 76 | case 658 / case 658 | 2026-11-05 / 2026-11-01 |
+| `e r2` | 0.9811 / 0.9635 | 0.9622 / 0.9298 | 1.0000 / 0.9973 | 0.8413 / 1.0000 | 1.0000 / 1.0000 | 95 / 120 | 79 / 90 | case 725 / case 228 | 2026-11-05 / 2026-11-02 |
+| `e r3` | 0.9868 / 0.8898 | 0.9735 / 0.9561 | 1.0000 / 0.8235 | 1.0000 / 0.7333 | 1.0000 / 0.7667 | 106 / 102 | 88 / 63 | case 456 / case 1 | 2026-11-06 / 2026-11-02 |
+
+- **Over the space, each new error run decided more than its namesake**: 0.9798,
+  0.9811 and 0.9868, against 0.9601, 0.9635 and 0.8898.
+- **On the new period every error run decides the keyword half whole.** On the
+  first, the error runs decided 0.8235 to 0.9973 of it.
+- **`ONCALL_ESCALATION` went the other way once.** e r2 recalled 0.8413 of it,
+  against its namesake's 1.
+- **This is reported, never adjudicated.** It rests on three runs a period, and
+  the periods differ in more than the date (§0).
+
+### The online figures
+
+| run | rules | escalations | coverage | reuse | end to end | silent errors | `prop` | rejected | dead |
+|---|---|---|---|---|---|---|---|---|---|
+| `e r1` | 68 | 90 | 0.9845 | 0.8824 | 0.9840 | 0.0005 | 0.9778 | 22 | 8 |
+| `c r1` | 62 | 79 | 0.9850 | 0.8871 | 0.9580 | 0.0274 | 0.9241 | 17 | 7 |
+| `e r2` | 79 | 95 | 0.9865 | 0.6582 | 0.9845 | 0.0020 | 0.9368 | 16 | 27 |
+| `c r2` | 94 | 131 | 0.9660 | 0.7234 | 0.9320 | 0.0352 | 0.8779 | 37 | 26 |
+| `e r3` | 88 | 106 | 0.9820 | 0.6705 | 0.9765 | 0.0056 | 0.8774 | 18 | 29 |
+| `c r3` | 52 | 62 | 0.9840 | 0.8654 | 0.9725 | 0.0117 | 0.9839 | 10 | 7 |
+
+These are rung 2's online metrics over the arrivals, as each record keeps them.
+The channel arm's silent errors are its unreported wrong decisions.
+
+### What the verdicts say
+
+- **Half the reports compile the policy in the median run, within one period**
+  (`CH-a`, `CH-b` and `CH-d` hold).
+  - In §0's words, half the reports compile what all of them compile, and a
+    deployment that hears of half its errors is enough for this loop, at the
+    cost `CH-f` reads.
+  - **But two of the three holds are thin, and they turn on one run.** c r1 lost
+    more than a quarter of the space, in the queue that is 3/8 of it. Its
+    channel had reported most of that queue's wrong decisions, and its proposer
+    had drafted them right.
+- **The rarest queue needs more reports than half coverage supplies from seven
+  tickets** (`CH-c` refuted, and `CH-e` holds).
+  - In §0's reading, `STATUS.md`'s third item narrows from the trigger's design
+    to the supply of rare tickets.
+  - Only c r3 reached the line, and its draws make three of the seven
+    reportable.
+  - c r2's draws make no `H05` ticket reportable, and its base recalls less of
+    the queue than the transcriber does under the same draws.
+- **The calls did not follow the reports one for one** (`CH-f` holds, thin).
+  - The channel arm's median run made 21/26 of the error arm's median calls,
+    while hearing of half its errors.
+  - In two runs of three its bases erred more often, and half of more came to
+    nearly as many reports. That is the mechanism §0 gave for a ratio near 1: a
+    base that repairs more slowly keeps erring, and so keeps being reported.
+  - The third channel run, c r3, compiled quickest and asked least. In the
+    median's place it would put the ratio under the line, so the verdict is
+    thin.
+- **The error arm compiled the policy again on a new period** (`CH-d` holds),
+  **and the rarest queue again** (`CH-e` holds, thin). Both replicate
+  `PLAN_REASONED_LOOP.md`'s thin holds: `CH-d` without being thin, and `CH-e`
+  thinly.
+
+### What Stage C does not settle
+
+1. **Why c r1 did not compile `SECURITY_INCIDENT`.** Its reports came and its
+   drafts were right. Which of its rules decide the queue's points, and when
+   they came to, would take a reading of its base.
+2. **Why c r2 recalled less of `ONCALL_ESCALATION` than the transcriber under
+   its draws**, 128/315 against 2/3.
+3. **Whether a hold of `CH-b` rules out a cost of a twentieth.** As §0 said,
+   with three runs an arm and runs as far apart as c r1 and c r3, the
+   instrument could not see one.
+4. **Whether the new period's error arm is better than the first because of the
+   period.** Three runs a period, reported only.
+5. **Lower coverage, delay, noise and asymmetry, a trigger that reads no truth,
+   and another provider** (§13).
+6. **One model, one provider, one manual, one arrival order, three runs an arm.**
+
+---
+
+## Files
+
+```
+results_channel/sample.json        Stage A: the checks, the rare tickets, the space by queue,
+                                   H05's points, every channel run's draws, the transcriber
+                                   under every draw and trigger, the supply, the hidden
+                                   policy through v1b's path, the schedule
+results_channel/loop_smoke.json    Stage B's smoke run: 30 cases under the channel arm
+results_channel/loop_{e,c}_r{1,2,3}.json
+                                   Stage B's six runs: the header with the channel's coverage
+                                   and draws, every rule in birth order, the edge log, every
+                                   case's row with its cause, its draw and whether its wrong
+                                   decision was reported, every escalation whole with its
+                                   calls, attempts, seconds and reasoning, and rung 2's metrics
+results_channel/score.json         Stage C: the six verdicts with their runs, and CH-g
+```
+
+What OpenRouter billed was read by generation id, and is kept outside git.
