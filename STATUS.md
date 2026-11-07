@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 3, 2026. **Not a history** — that is the four
+What is known, as of November 7, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -25,8 +25,9 @@ What is known, as of November 3, 2026. **Not a history** — that is the four
 [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md),
 [`results_queue_alone/FINDINGS_QUEUE_ALONE.md`](results_queue_alone/FINDINGS_QUEUE_ALONE.md),
 [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
-[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) and
-[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
+[`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
+[`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md) and
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -71,7 +72,9 @@ match, asked by name and with reasoning on, in `PLAN_FIRST_MATCH.md`**: seven
 more, closed on 2026-10-25 — plus **the rule written with reasoning on, in
 `PLAN_REASONED_RULE.md`**: five more, closed the same day — plus **the loop
 with reasoning on, under the standing trigger and asked also on its errors, in
-`PLAN_REASONED_LOOP.md`**: eight more, closed on 2026-11-03.
+`PLAN_REASONED_LOOP.md`**: eight more, closed on 2026-11-03 — plus **the loop
+under a channel that hears of half its errors, beside the error arm again, in
+`PLAN_CHANNEL.md`**: seven more, closed on 2026-11-07.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -332,6 +335,30 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So with reasoning on, what limits the loop is the trigger. A trigger a
 > deployment could have is not measured.
 > [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
+>
+> **[NOTE 2026-11-07] A loop that hears of half its errors compiles the policy in
+> the median run, and not the rarest queue.**
+> [`PLAN_CHANNEL.md`](PLAN_CHANNEL.md) ran the same loop under rung 4's feedback
+> channel at coverage 1/2, beside the error arm again, three runs an arm in one
+> period. A wrong decision of the base was reported with probability 1/2, at
+> once, and only a reported one escalated. The proposer was never told that the
+> base had erred.
+>
+> - **The channel arm's median base decides 0.9499 of the space right** (`CH-a`
+>   holds, thin), within 1/32 of the error arm's (`CH-b` holds, thin). The
+>   error arm's median decides 0.9811 (`CH-d` holds).
+> - **One channel run of three decided 0.7201.** It lost `SECURITY_INCIDENT`
+>   after its reports had come and its drafts had been right.
+> - **It does not compile `ONCALL_ESCALATION`**, a median recall of 2/3 over
+>   the space (`CH-c` refuted, thin). The error arm recalls it again (`CH-e`
+>   holds, thin).
+> - **Hearing of half the errors cuts the calls by about a fifth** (`CH-f`
+>   holds, thin). In two runs of three the bases that heard less erred more,
+>   and kept being reported.
+>
+> So a trigger a deployment could have compiles the policy in the median run.
+> The rarest queue needs more reports than half of its seven tickets supply.
+> [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
 
 ---
 
@@ -380,7 +407,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and sixty rows have been signed before the figures they name existed. This
+**One hundred and sixty-seven rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -437,14 +464,15 @@ a count behind it.
 | **FM** · the first match (§0 of `PLAN_FIRST_MATCH.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
 | **RR** · the rule written with reasoning on (§0 of `PLAN_REASONED_RULE.md`) | 5 | 4 | **1** | 0 | 3 | 1 |
 | **RL** · the loop with reasoning on (§0 of `PLAN_REASONED_LOOP.md`) | 8 | 7 | **3** | 0 | 4 | 1 |
-| **total** | **160** | **134** | **54** | **2** | **78** | **24** |
+| **CH** · half the errors reported (§0 of `PLAN_CHANNEL.md`) — *two rows replicate closed ones* | 7 | 6 | **1** | 0 | 5 | 1 |
+| **total** | **167** | **140** | **55** | **2** | **83** | **25** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
 `A-a`, `A-b`, `I-a`, `I-c`, `U-d`, `F-c`, `W-b`, `W-c`, `L-a`, `E-a`, `E-b`,
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
-`QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`.
+`QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`, `CH-c`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -452,10 +480,11 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `H-a`, `H-b`, `H-c`, `M-a`, `M-e`, `T-a`, `T-b`, `T-c`, `J-a`, `J-b`, `J-c`,
 `J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
-`FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`.
+`FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`, `CH-a`, `CH-b`,
+`CH-d`, `CH-e`, `CH-f`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`, `RL-h`.
+`FM-g`, `RR-e`, `RL-h`, `CH-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -478,16 +507,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 54 of 134 = **40.3%**
-refuted; without them, 52 of 128 = **40.6%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 55 of 140 = **39.3%**
+refuted; without them, 53 of 134 = **39.6%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.3 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 54 of 127 = **42.5%** and 52
-of 121 = **43.0%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 55 of 133 = **41.4%** and 53
+of 127 = **41.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -638,6 +667,19 @@ of 121 = **43.0%**, which is the reading the calibration note should take.
 > table, the named lists, the count in the heading and the four ratios moved
 > together, and the test above read them. The gap between the first two is
 > still 0.3 points as printed.
+>
+> **[NOTE 2026-11-07] Recomputed with the `CH` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: one refuted and five held.
+> One was reported. None of its bands was set on a development set.
+> - **Two of its rows are replications.** `CH-d` and `CH-e` replicate `RL-d`
+>   and `RL-g` on a new period. Their bands were drafted after those rows'
+>   figures had been seen, as §0 of `PLAN_CHANNEL.md` says, and the row's mark
+>   says so.
+> - **They stay in every ratio.** They were signed before their own figures
+>   existed.
+> - **The four ratios moved with the rest.** The table, the named lists, the
+>   count in the heading and the ratios moved together, and the test above read
+>   them. The gap between the first two is still 0.3 points as printed.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -691,7 +733,9 @@ which owns all seven; and `RR` from
 [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
 which owns all five; and `RL` from
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
-which owns all eight.
+which owns all eight; and `CH` from
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
+which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
 > closed after it, from `H` on 2026-10-17 to `Z` on 2026-10-20, each moved the
@@ -2298,6 +2342,58 @@ regions third rules govern.**
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
 the three sections after Stage C.
 
+**The loop under a channel that hears of half its errors: in the median run it
+compiles the policy, within one period of the error arm, and not the rarest
+queue.**
+
+**What `PLAN_CHANNEL.md` ran.** `PLAN_REASONED_LOOP.md`'s loop, again, at
+n=2000 on rung 2's engine, with level 3's manual and reasoning on, every call
+pinned to one provider.
+- **The channel arm** escalated a wrong decision of the base only when that
+  case's draw, fixed before the run, fell below 1/2. That is rung 4's feedback
+  channel at coverage 1/2, with no delay and no noise.
+- **The error arm** escalates every wrong decision.
+- **The schedule.** Three runs of each arm alternated, on 2026-11-05 and
+  2026-11-06.
+- **What the proposer saw.** Neither arm handed it a label, or told it the base
+  had erred.
+
+Everything is from
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md):
+
+- **The channel arm's median base decides 0.9499 of the space right** (`CH-a`
+  holds, thin), and the error arm's 0.9811 (`CH-d` holds). Their difference is
+  1/32 (`CH-b` holds, thin).
+  - **c r1 decided 0.7201**, and recalls 0.3238 of `SECURITY_INCIDENT`'s points.
+    - **Its reports came.** The channel reported 11 of its 17 wrong decisions
+      on the queue's tickets.
+    - **Its drafts were right.** The proposer drafted the queue at 12 of its 13
+      escalations there.
+    - **A proposer that never errs** compiles the whole queue under its draws.
+  - **c r3 decided 0.9872**, more than any error run, from the fewest calls.
+- **The channel arm's median recall of `ONCALL_ESCALATION` over the space is
+  2/3** (`CH-c` refuted, thin). Only c r3 reached the line, at 14/15. c r2's
+  draws make no `H05` ticket reportable, and its base recalls 128/315.
+- **The error arm compiled the policy again on the new period**, every run above
+  0.97 (`CH-d` holds), **and the rarest queue**, a median recall of 1 (`CH-e`
+  holds, thin). Each of its runs decided more of the space than its namesake in
+  `PLAN_REASONED_LOOP.md`.
+- **The channel arm's median run made 21/26 of the error arm's median calls**
+  (`CH-f` holds, thin). In two runs of three its bases decided more cases
+  wrongly than any error run did, so half of them came to nearly as many
+  reports.
+
+**So a trigger a deployment could have, hearing of half its errors at once,
+compiles the policy in the median run**, within one period of the trigger that
+reads every error.
+- **One run in three did not**, and what it lost was the loop's, not the
+  channel's.
+- **The rarest queue needs more reports** than half coverage supplies from
+  seven tickets.
+- **The money and the provider.** The six runs were billed $0.79. Baidu refused
+  for the rate through most of 2026-11-06, UTC, and billed about three times as
+  much per token in those hours.
+
 ---
 
 ## What was withdrawn, and why
@@ -2540,6 +2636,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    missing pairs were, in part, repaired later by the error trigger. Both point
    at the same open item: a round that lists only what the engine can still
    order. The FINDINGS' third section after Stage C.
+   **[NOTE 2026-11-07] Under the channel, the same.** In `PLAN_CHANNEL.md`'s six
+   runs the loop again wrote the governing rule's region on a fifth to over two
+   fifths of its births, and left 113 of its 563 escalations unplaced. In both
+   arms its placed edges point at the better rule less often than a fixed
+   ranking of the queues. Reported in `CH-g`; nothing in it moves this item.
+   [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2607,6 +2709,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      trigger a deployment could have, reading some errors late or noisily, is
      what is open now.
    [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md).
+   **[NOTE 2026-11-07] A trigger a deployment could have, at half coverage,
+   asks about the queue and compiles it in one run of three.**
+   - Under `PLAN_CHANNEL.md`'s channel at coverage 1/2, `ONCALL_ESCALATION`
+     tickets escalated two to four times a run, and the proposer named the
+     queue at every one.
+   - The channel arm's median recall of the queue over the space is 2/3
+     (`CH-c` refuted, thin). The error arm, run again in the same period,
+     recalls it at a median of 1 (`CH-e` holds, thin).
+   - So, as §0 read that pair in advance, this item narrows from the trigger's
+     design to the supply of rare tickets. Each run's draws make two or three of
+     the queue's seven tickets reportable. What would supply more is what is
+     open now.
+   [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

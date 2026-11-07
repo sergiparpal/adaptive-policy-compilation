@@ -58,6 +58,7 @@ up in four places at once.
 | **FM** · the first match | `PLAN_QUEUE_ALONE.md`'s level-3 plain prompts asked again on one day, pinned to one provider, in three arms: the plain question, the same question asking for the rule that applies before its queue, and the plain question with reasoning on, to separate finding the first match from naming its queue, and both from thinking it through — closed 2026-10-25 | [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md) |
 | **RR** · the rule written with reasoning on | `PLAN_QUEUE_ALONE.md`'s level-3 rule and plain prompts asked again on one day, pinned to one provider, in four arms: the rule-writing prompt and the plain question, each with reasoning off and on, to see whether reasoning carries into the queue a rule-writer chooses before any loop runs, and to read the rules it writes — closed 2026-10-25 | [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) |
 | **RL** · the loop with reasoning on | `PLAN_REUSE.md`'s loop run with level 3's manual and reasoning on, pinned to one provider, a blind first call and a placement round against the base, three runs an arm: under the standing trigger, and asked also where the base decides wrongly, to see whether what limits a reasoning loop is its trigger or the order its rules get — closed 2026-11-03 | [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md) |
+| **CH** · half the errors reported | `PLAN_REASONED_LOOP.md`'s loop run again with level 3's manual and reasoning on, pinned to one provider, under rung 4's feedback channel at coverage 1/2 beside the error arm again, three runs an arm alternating in one period, to see what a loop compiles from a trigger a deployment could have — closed 2026-11-07 | [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -758,6 +759,46 @@ PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --smoke          # Stage 
 PYTHONHASHSEED=0 .venv/bin/python -m reasoned_loop.run --arm e --rep 1  # then §2.6's order, one run at a time
 ```
 
+**[`PLAN_CHANNEL.md`](PLAN_CHANNEL.md) closed on 2026-11-07**: the loop under a
+trigger a deployment could have. Sergi signed §0 on 2026-11-05, before any of
+its figures existed.
+- **What it asked.** It ran `PLAN_REASONED_LOOP.md`'s loop again at n=2000 on
+  rung 2's engine, with level 3's manual and reasoning on, every call pinned to
+  one provider, under v1b. Three runs an arm alternated in one period.
+  - **The channel arm** escalates an impasse or a conflict, and a wrong decision
+    of the base when that case's draw, fixed before the run, falls below 1/2.
+    That is rung 4's feedback channel at coverage 1/2, with no delay and no
+    noise.
+  - **The error arm** is `PLAN_REASONED_LOOP.md`'s, run again: it escalates
+    every wrong decision.
+  - **Neither arm** hands the proposer the label, or tells it that the base
+    erred.
+- **Why.** Asked on every error, the loop had compiled the policy, but that
+  trigger reads the truth of every arrival, as no deployment could. A deployment
+  hears of some of its errors.
+
+Its record is
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
+Its gate reads that plan and no other, counts its signature line, and guards its
+three writers. `reasoned_loop/`, `manual/`, `blind/`, `authorship/`, `reuse/` and
+`rung2/` are called by it and not edited; its proposer and its asker are
+`reasoned_loop/`'s.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same rules back. A paid run does not start without Sergi asking for it. A run
+asked for about an hour and a half to two hours when no outage stopped it. A
+run stopped by an outage resumes from its partial file with the same command.
+
+```bash
+python3 -m channel.run --dry-run                                  # CH-g1..CH-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m channel.sample                        # Stage A · the draws, the transcriber and the references
+PYTHONHASHSEED=0 python3 -m channel.score                         # Stage C · CH-a to CH-f, and CH-g
+PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, one run at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -976,7 +1017,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_QUEUE_ALONE.md`'s, and the three of `first_match/`, which run
 > `PLAN_FIRST_MATCH.md`'s, and the three of `reasoned_rule/`, which run
 > `PLAN_REASONED_RULE.md`'s, and the three of `reasoned_loop/`, which run
-> `PLAN_REASONED_LOOP.md`'s.
+> `PLAN_REASONED_LOOP.md`'s, and the three of `channel/`, which run
+> `PLAN_CHANNEL.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1882,6 +1924,15 @@ adaptive-policy-compilation/
 │   ├── unplaced.py          POST-RUN · where the unplaced answers come from, on a frozen codebook
 │   └── governed.py          POST-RUN · each placed pair's region by when third rules came to govern it
 │
+├── channel/              CH · half the errors reported
+│   ├── plan.py              the gate, §11's constants imported from reasoned_loop/, the draws; §0's lines
+│   ├── loop.py              the loop with a coverage, calling reasoned_loop/'s escalation · the proposer's path
+│   ├── references.py        the transcriber under every draw and trigger, and the supply table
+│   ├── gates.py             CH-g1..CH-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   ├── run.py               Stage B · the smoke run and the six runs · spends · resumes · the proposer's path
+│   └── score.py             Stage C · CH-a to CH-f and CH-g, gated on PLAN_CHANNEL.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -1968,7 +2019,7 @@ adaptive-policy-compilation/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
-    results_reasoned_loop/
+    results_reasoned_loop/  results_channel/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

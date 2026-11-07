@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 3, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 7, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -93,7 +93,10 @@ one reported, written up in `results_reasoned_loop/`. **What its placed edges
 decide, and where its unplaced answers come from, were read POST-RUN the same
 day**, and the two items they answer are struck in place. **Why its edges sit
 on regions third rules govern was read POST-RUN on November 4, 2026**, and the
-item it answers is struck in place. This is a
+item it answers is struck in place. **The loop under a channel that hears of
+half its errors, beside the error arm again, closed on November 7, 2026**:
+`PLAN_CHANNEL.md`, six signed rows, five held and one refuted, and one
+reported, written up in `results_channel/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -105,6 +108,20 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Run the loop under a trigger a deployment could have.** November 7, 2026,
+  `PLAN_CHANNEL.md`, seventy-nine cents. `PLAN_REASONED_LOOP.md`'s loop ran
+  again with level 3's manual and reasoning on, under rung 4's feedback channel
+  at coverage 1/2. A wrong decision was reported with probability 1/2, at once,
+  and only a reported one escalated. Three runs alternated with three of the
+  error arm, in one period.
+  - **In the median run, half the reports compile the policy**, within 1/32 of
+    the error arm's median, and with fewer calls. One run of three lost most of
+    `SECURITY_INCIDENT` after its reports had come.
+  - **They do not compile the rarest queue.** One run of three did.
+  - **The error arm compiled the policy and the queue again** on the new
+    period.
+
+  What it leaves is in its own section below. `results_channel/`.
 - **Run the loop with reasoning on.** November 3, 2026,
   `PLAN_REASONED_LOOP.md`, twenty cents. `PLAN_REUSE.md`'s loop ran at n=2000
   with level 3's manual and reasoning on, every call pinned to one provider,
@@ -382,6 +399,14 @@ against, a threshold a next run would have to clear.
   asks would still need the loop to compile what it is told. Compiled in one
   answer, the model put the class right on every point of its region. See *What
   `PLAN_MANUAL.md` opens*.
+  **[NOTE 2026-11-07] A channel that hears of half the errors asks about the
+  queue, and compiles it in one run of three.** Under `PLAN_CHANNEL.md`'s
+  channel at coverage 1/2, `ONCALL_ESCALATION` tickets escalated two to four
+  times a run, and the proposer named the queue at every one. The channel arm's
+  median base recalls 2/3 of the queue over the space. The error arm, run again
+  in the same period, recalls it at a median of 1. So with reasoning on, a
+  trigger a deployment could have asks about the class; what it lacks is enough
+  of its tickets. See *What `PLAN_CHANNEL.md` opens*.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -391,6 +416,69 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_CHANNEL.md` opens and does not resolve
+
+Closed November 7, 2026. It ran `PLAN_REASONED_LOOP.md`'s loop with level 3's
+manual and reasoning on, pinned to one provider, under v1b. The channel arm ran
+under rung 4's feedback channel at coverage 1/2, beside the error arm again:
+three runs an arm, alternating, in one period. In the median run half the
+reports compiled the policy, within 1/32 of the error arm, and the rarest queue
+in one run of three. What that leaves:
+
+- **Why c r1 lost `SECURITY_INCIDENT`.**
+  - Its channel reported 11 of its 17 wrong decisions on the queue's tickets.
+  - The proposer drafted the queue at 12 of its 13 escalations there.
+  - Its final base still sends most of the queue's points elsewhere, where the
+    transcriber under the same draws compiles all of them.
+
+  Which of its rules decide those points, and when they came to, is a reading of
+  its record. Free.
+- **Why c r2 recalled less of `ONCALL_ESCALATION` than its draws allow.** Its
+  draws make no `H05` ticket reportable, which holds the transcriber to 2/3 of
+  the queue. c r2's base recalls 128/315. Free.
+- **The supply of rare tickets.** Each run's draws make two or three of the
+  queue's seven tickets reportable. A higher coverage, a longer stream, or a
+  trigger that asks about the rare queues apart would each be a run and a plan.
+  Calls.
+- **Delay, noise, asymmetry and lower coverage.** Only coverage 1/2 with no delay
+  was bought.
+  - The drafting reading had delay barely moving the transcriber's base.
+  - At 1/4, the channel's luck alone moved that base across most of the space.
+
+  Calls.
+- **A trigger that reads no truth.** Random escalation is still not run. Calls.
+- **The new period's error arm.** It decided more of the space than
+  `PLAN_REASONED_LOOP.md`'s in every run. Three runs a period, reported only;
+  whether that is the period is open.
+- **The provider, for the next paid plan.** Baidu refused for the rate through
+  most of 2026-11-06, UTC, and billed about three times as much per token in
+  those hours. Agreed with Sergi on 2026-11-06, for the next draft's §0, and
+  his to sign:
+  - **If its rows are set against Baidu's records**, keep Baidu, and launch in
+    its quiet hours or accept slow days.
+  - **If every arm runs inside the plan**, pin another fp8 endpoint,
+    DeepInfra's, with a small same-day bridge of prompts asked of both.
+  - **Either way**, the smoke run measures the pin's rate limits, its
+    `provider` field and its reasoning. Nothing falls back across providers.
+
+Lessons it leaves:
+
+- **A supervisor that stops on a failed push stops the runs.** One push met a
+  timeout of the Windows credential helper, called through WSL, and nothing ran
+  for 47 minutes. Retry the push and go on: the next push carries the commit.
+- **A resumed record's `started_at` is its last launch's.** A commit message
+  built from it gave c r2 a span of eleven minutes. Take a resumed run's span
+  from its first launch.
+- **The price of a pinned provider can follow its load.** §1 priced the runs at
+  the listing of 2026-10-25. Baidu billed about three times as much per token
+  while it refused for the rate as it did the afternoon before. Price from the smoke run's bills, read by
+  generation id, and say which listing a figure assumes.
+- **A commit message written from a record can print a row's inputs.** Each
+  run's message gave its calls, which are `CH-f`'s, before Stage C. A plan whose
+  rows read what the runs print should say so in §0.
 
 ---
 
@@ -405,11 +493,15 @@ the rarest queue included. Its placements pointed at the better rule less often
 than a fixed ranking of the queues, and still decided the order's room better in
 the error arm. What that leaves:
 
-- **A trigger a deployment could have.** The error arm reads the label of
-  every arrival, and a deployment would hear of some errors, late or noisily.
-  Rung 4's feedback channel, with its coverage, delay and noise, or random
-  escalation, which reads no truth, would each be a run with reasoning on and a
-  plan. Calls.
+- ~~**A trigger a deployment could have.**~~ **Run at one coverage on
+  2026-11-07**, as `PLAN_CHANNEL.md`. The error arm reads the label of every
+  arrival, and a deployment would hear of some errors, late or noisily.
+  - **What ran.** Rung 4's channel at coverage 1/2, with no delay and no noise.
+    It compiled the policy in the median run, and the rarest queue in one run of
+    three.
+  - **What remains.** Its delay, its noise, a lower coverage and random
+    escalation, which reads no truth, are each still a run and a plan. See
+    *What `PLAN_CHANNEL.md` opens*.
 - **Why the loop's proposer writes narrow rules.** In the loop it wrote the
   governing rule's region on about a quarter of its births. The re-ask had
   written it on nearly three answers in four. At the first `H29` ticket no
