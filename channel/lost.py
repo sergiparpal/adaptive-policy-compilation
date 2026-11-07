@@ -107,6 +107,26 @@ default, `H03`'s queue, which decides them by default.
 other run of this plan, any point's winner, or the curve.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHAT THE UNPLACED ANSWERS LEFT OUT
+--------------------------------------------------------------------------
+The first run found c r1's escalations on the queue's tickets mostly unplaced:
+the placement round's answer left a listed rule without a side, and the draft
+was not born. So, for each of the queue's unplaced escalations in every run,
+this part reads:
+- the rules the round listed, and the ones the answer left out;
+- each one's relation to the draft, by `reasoned_loop/unplaced.py`'s
+  `relation`: inside the draft, containing it, equal to it, or crossing it.
+  A rule nested with the draft is one the system prompt says needs no
+  declaration;
+- how many of the queue's unplaced escalations left each rule out;
+- every rule of another queue whose region holds every point of the queue.
+  Such a rule contains every draft of the queue, so every placement round of
+  the queue lists it once it is born.
+
+It was written after the six clauses above had been read. It carries no
+expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-07, after Stage C. The expectation
@@ -122,6 +142,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections import Counter
 from fractions import Fraction
 from typing import Any
 
@@ -133,6 +154,7 @@ from edges import rebuild as erb
 from fidelity.replay import rule_from
 from manual import instrument as MI
 from reasoned_loop import references as rl_refs
+from reasoned_loop import unplaced as un
 from reuse import structure as st
 from rung2.engine2 import PriorityEngine, Space
 
@@ -155,6 +177,10 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-07, after Stage C. The expectation in "
     "the module's docstring was written and committed before the reading ran. Not a "
     "signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: what the queue's "
+    "unplaced answers left out, by relation to the draft. No expectation; no clause "
+    "moves.")
 
 
 def record_path():
@@ -380,6 +406,35 @@ def escalations_are_the_record(escs: list[dict[str, Any]], queue: str = QUEUE) -
                and (e["verdict"] != BORN or e["in_base"]) for e in escs)
 
 
+def left_out(record: dict, space: Space, truth: int,
+             queue: str = QUEUE) -> list[dict[str, Any]]:
+    """ADDED AFTER THE FIRST RUN. Each of the queue's unplaced escalations: the
+    rules its placement round listed and the ones its answer left out, by their
+    relation to the draft."""
+    rows = {r["idx"]: r for r in record["records"]}
+    ext = {r["rule_id"]: brows.ext_of(r, space) for r in record["rules"]}
+    action = {r["rule_id"]: r["action"] for r in record["rules"]}
+    out = []
+    for esc in record["escalations"]:
+        if rows.get(esc["idx"], {}).get("truth") != queue or esc.get("verdict") != UNPLACED:
+            continue
+        c1 = un.placement(esc)
+        payload = (esc.get("calls") or [{}])[0].get("payload") or {}
+        draft = brows.ext_of({"conditions": payload.get("conditions") or []}, space)
+        listed = list(esc.get("listed") or [])
+        missing = list((c1 or {}).get("unplaced") or [])
+        rel = {rid: un.relation(ext[rid], draft) for rid in listed}
+        out.append({"idx": esc["idx"], "answered": c1 is not None,
+                    "draft_queue_points": (draft & truth).bit_count(),
+                    "listed": len(listed),
+                    "listed_nested": sum(1 for r in listed if un.nested(rel[r])),
+                    "left_out": len(missing), "left_out_rules": missing,
+                    "left_out_nested": sum(1 for r in missing if un.nested(rel[r])),
+                    "left_out_by_relation": dict(sorted(Counter(rel[r] for r in missing).items())),
+                    "left_out_by_queue": dict(sorted(Counter(action[r] for r in missing).items()))})
+    return out
+
+
 # ---------------------------------------------------------------------------
 # A run, read whole
 # ---------------------------------------------------------------------------
@@ -422,7 +477,31 @@ def read_run(record: dict, space: Space, truth: int, regions: dict[str, int],
             "curve": {"most_right": top["right"] if top else 0,
                       "at_birth": top["born_at"] if top else None,
                       "moves": [c for c in curve if c["delta"]]},
-            "escalations": escs, "escalation_verdicts": verdicts, "gates": gates}
+            "escalations": escs, "escalation_verdicts": verdicts,
+            "added_after_the_first_run": added(record, space, truth, queue),
+            "gates": gates}
+
+
+def containers(record: dict, space: Space, truth: int,
+               queue: str = QUEUE) -> list[dict[str, Any]]:
+    """ADDED AFTER THE FIRST RUN. Every rule of another queue whose region holds
+    every point of the queue, so that it contains every draft of the queue and a
+    placement round lists it beside each one."""
+    return [{"rule_id": r["rule_id"], "action": r["action"], "born_at": r["born_at"],
+             "conditions": r["conditions"]}
+            for r in sorted(record["rules"], key=lambda r: r["born_at"])
+            if r["action"] != queue and brows.ext_of(r, space) & truth == truth]
+
+
+def added(record: dict, space: Space, truth: int, queue: str = QUEUE) -> dict[str, Any]:
+    """ADDED AFTER THE FIRST RUN: the queue's unplaced escalations, how many of
+    them left each rule out, and the rules of another queue that contain the whole
+    queue."""
+    out = left_out(record, space, truth, queue)
+    return {"left_out": out,
+            "times_each_rule_was_left_out": dict(Counter(
+                r for e in out for r in e["left_out_rules"]).most_common()),
+            "containers_of_the_queue": containers(record, space, truth, queue)}
 
 
 # ---------------------------------------------------------------------------
@@ -510,6 +589,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": stage_c["_env"].get("git_commit")},
         "surface": "the exhaustive space, 134,400 points",
