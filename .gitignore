@@ -41,6 +41,14 @@ dist/
 secrets.*
 
 # ---------------------------------------------------------------------------
+# A local context file at the root, kept out of the repository at Sergi's
+# request (2026-11-07). Untracked, it made every record's `_env` read
+# `git_dirty` true from 2026-11-05 on (results_channel/FINDINGS_CHANNEL.md).
+# Only the root's: the leading slash anchors it.
+# ---------------------------------------------------------------------------
+/AGENTS.md
+
+# ---------------------------------------------------------------------------
 # Editors and operating system
 # ---------------------------------------------------------------------------
 .vscode/
