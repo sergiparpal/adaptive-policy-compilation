@@ -87,6 +87,23 @@ that held, so the region is contested.
 `ONCALL_ESCALATION` in any run, any winner on its points, or its curve.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE CONTESTED PAIRS, AND THEIR EDGES
+--------------------------------------------------------------------------
+The first run found part of c r2's loss contested: a rule of the queue and a rule
+of another queue are both undefeated on the same points. So, for every run, this
+part reads:
+- each such pair, and the points of the queue it leaves contested;
+- every edge between the two rules the run's `edge_log` holds, with the verdict
+  the engine gave it.
+
+A pair with an edge refused for closing a cycle is one the engine could not
+order directly. The order the base already held, through other rules, ran the
+other way, and those rules do not match the contested points.
+
+It was written after the five clauses above had been read. It carries no
+expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-07, after `channel/lost.py`'s
@@ -128,6 +145,10 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-07, after channel/lost.py's reading. "
     "The expectation in the module's docstring was written and committed before "
     "the reading ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its five clauses were read: the contested "
+    "pairs, and every edge between their two rules with the engine's verdict. No "
+    "expectation; no clause moves.")
 
 
 def record_path():
@@ -153,6 +174,32 @@ def holds_whole(engine, queue: str, part: int) -> list[str]:
     """The rules of the queue whose region holds the whole part."""
     return [r.rule_id for r in engine.rules
             if r.action == queue and engine.ext[r.rule_id] & part == part]
+
+
+def contested_pairs(engine, record: dict, w: dict[str, Any],
+                    queue: str = QUEUE) -> list[dict[str, Any]]:
+    """ADDED AFTER THE FIRST RUN. Every pair of a rule of the queue and a rule of
+    another queue undefeated together on contested points, with every edge
+    between them in the run's `edge_log` and the engine's verdict on it."""
+    und = w["undefeated"]
+    log = [tuple(e) for e in record.get("edge_log") or []]
+    rules = {r.rule_id: r for r in engine.rules}
+    out = []
+    for q in engine.rules:
+        if q.action != queue:
+            continue
+        for x in engine.rules:
+            if x.action == queue:
+                continue
+            pts = w["contested"] & und[q.rule_id] & und[x.rule_id]
+            if not pts:
+                continue
+            out.append({"queue_rule": q.rule_id, "other_rule": x.rule_id,
+                        "other_action": x.action, "other_born_at": rules[x.rule_id].born_at,
+                        "points": pts.bit_count(),
+                        "edges": [{"winner": a, "loser": b, "verdict": v} for a, b, v in log
+                                  if {a, b} == {q.rule_id, x.rule_id}]})
+    return sorted(out, key=lambda p: (-p["points"], p["other_born_at"]))
 
 
 def read_expectation(runs: dict[str, dict[str, Any]], tag: str) -> list[dict[str, Any]]:
@@ -203,7 +250,9 @@ def read_all_runs(records: dict[str, dict], stage_c: dict[str, Any]) -> dict[str
                                                         "every point of the queue",
                                      "passes": parts_partition(p, truth)}]
         runs[t] = {"reading": {**reading, "gates": gates}, "by_part": split(w, p),
-                   "holding_h04_whole": holds_whole(final, QUEUE, p[REACHED])}
+                   "holding_h04_whole": holds_whole(final, QUEUE, p[REACHED]),
+                   "added_after_the_first_run": {
+                       "contested_pairs": contested_pairs(final, rec, w, QUEUE)}}
     return runs
 
 
@@ -231,6 +280,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": stage_c["_env"].get("git_commit")},
         "surface": "the exhaustive space, 134,400 points",
