@@ -980,17 +980,26 @@ failed, and that is where the account was wrong.
 >
 > - **The expectation was committed before any figure of the reading
 >   existed.** It is five clauses in the module's docstring, committed as
->   `b1f9e43` on the reading's branch. The drafter had read this record whole,
->   with `lost.json`, and no rule, edge or escalation of this queue in any run.
+>   `b1f9e43`, which is `a4d7a6a` on `main`. The drafter had read this record
+>   whole, with `lost.json`, and no rule, edge or escalation of this queue in
+>   any run.
 > - **Five gates stood before any write**: `channel/lost.py`'s four, and one
 >   that the two parts are disjoint and hold the queue.
-> - **One part was added after the first run**, in `cac4ee9`: the contested
->   pairs, and the engine's verdict on every edge between their rules. It
->   carries no expectation and moves no clause.
+> - **One part was added after the first run**, in `cac4ee9`, which is
+>   `dba4376` on `main`. It reads the contested pairs, and the engine's verdict
+>   on every edge between their rules. It carries no expectation and moves no
+>   clause.
 >
-> Not a signed row; no verdict moves. The record is [`oncall.json`](oncall.json).
-> Its `_env` names `cac4ee9`, the branch commit it was written from, with
-> `git_dirty` and `code_dirty` false.
+> Not a signed row; no verdict moves.
+> - **The record** is [`oncall.json`](oncall.json), committed in `0fce727` on
+>   `main`. It reached `main` in pull request #205.
+> - **Its `_env`** names the branch commit it was written from, `cac4ee9`. It
+>   carries `git_dirty` and `code_dirty` false.
+> - **The branch commit is `main`'s.** `cac4ee9` and `dba4376` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #205 behind the `main` commit.
+> - **Its code digest**, `9195d9e6aa2860cb`, is the one `main` computes at
+>   `dba4376`.
 
 ### 1. What c r2 lost, by part
 
