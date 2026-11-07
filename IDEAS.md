@@ -97,7 +97,8 @@ item it answers is struck in place. **The loop under a channel that hears of
 half its errors, beside the error arm again, closed on November 7, 2026**:
 `PLAN_CHANNEL.md`, six signed rows, five held and one refuted, and one
 reported, written up in `results_channel/`. **Why its c r1 lost
-`SECURITY_INCIDENT` was read POST-RUN the same day**, and the item it answers is
+`SECURITY_INCIDENT`, and why its c r2 recalled less `ONCALL_ESCALATION` than its
+draws allow, were read POST-RUN the same day**, and the items they answer are
 struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
@@ -443,9 +444,26 @@ in one run of three. What that leaves:
     other runs it came later or never.
 
   So the loss was v1b's round meeting a default born early, not the channel's.
-- **Why c r2 recalled less of `ONCALL_ESCALATION` than its draws allow.** Its
-  draws make no `H05` ticket reportable, which holds the transcriber to 2/3 of
-  the queue. c r2's base recalls 128/315. Free.
+- ~~**Why c r2 recalled less of `ONCALL_ESCALATION` than its draws allow.**~~
+  **Read POST-RUN on 2026-11-07** (`FINDINGS_CHANNEL.md`, *Why c r2 recalled
+  less `ONCALL_ESCALATION` than its draws allow*). Of the 4,200 points of
+  `H04`'s part its draws let it reach, it lost 1,640.
+  - **1,000 were never written.** Its one rule of the queue is `H04`'s region
+    with an extra condition, at least 5 prior tickets. e r2 drew the same draft
+    at the same ticket. The redraft of `H04`'s region whole was refused by the
+    placement round, for leaving out one crossing rule.
+  - **640 are contested.** Two later rules of other queues each declared
+    themselves below c r2's rule, and the engine refused both edges for closing
+    a cycle. c r3 lost 420 points of `H05`'s part the same way.
+
+  What it leaves:
+  - **A right edge refused for closing a cycle.** The cycle runs through rules
+    that do not match the contested points, so the pair stays unordered there.
+    Which edge of a cycle should yield was read POST-RUN on `PLAN_BLIND.md`'s
+    bases, and not on this plan's. Free on the records.
+  - **The first draft's breadth is a draw.** At the same ticket the model
+    wrote `H04`'s region in some runs and a narrower one in others. Under v1b a
+    later, broader draft has no easier way in.
 - **The supply of rare tickets.** Each run's draws make two or three of the
   queue's seven tickets reportable. A higher coverage, a longer stream, or a
   trigger that asks about the rare queues apart would each be a run and a plan.

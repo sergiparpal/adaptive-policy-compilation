@@ -2417,6 +2417,25 @@ signed row; five of the reading's six clauses hold.
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
 *Why c r1 lost `SECURITY_INCIDENT`*.
 
+**[NOTE 2026-11-07, later] Read POST-RUN: why c r2 recalled less
+`ONCALL_ESCALATION` than its draws allow.** Not a signed row; two of the
+reading's five clauses hold.
+- **What its draws allowed.** They let the channel reach `H04`'s part of the
+  queue, 4,200 points, and not `H05`'s. c r2 decides 2,560 of the 4,200 right.
+- **1,000 were never written.**
+  - Its one rule of the queue, born at case 954, is `H04`'s region with an
+    extra condition, at least 5 prior tickets. e r2 drew the same draft at the
+    same ticket.
+  - Its draft of `H04`'s region whole, at case 1951, was refused by the
+    placement round, for leaving out one crossing rule.
+- **640 are contested.** Two later rules of other queues each declared
+  themselves below c r2's rule, as the policy orders them. The engine refused
+  both edges for closing a cycle, so the pair stays unordered on those points.
+  c r3 lost 420 points of `H05`'s part the same way.
+
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
+*Why c r2 recalled less `ONCALL_ESCALATION` than its draws allow*.
+
 ---
 
 ## What was withdrawn, and why
@@ -2756,6 +2775,16 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      the queue's seven tickets reportable. What would supply more is what is
      open now.
    [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
+   **[NOTE 2026-11-07, later] Within what the channel supplied, the loop lost
+   more, read POST-RUN.** c r2's draws let it reach `H04`'s part of the queue,
+   and it lost 1,640 of those 4,200 points.
+   - **A narrow first draft.** The draft carried an extra condition, and its
+     broad redraft was refused by the placement round.
+   - **Two right edges refused.** The engine refused both for closing a cycle.
+
+   So the supply is not the whole gap: what the loop does with the tickets it
+   gets loses part of the queue too. The FINDINGS' section *Why c r2 recalled
+   less `ONCALL_ESCALATION` than its draws allow*.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
