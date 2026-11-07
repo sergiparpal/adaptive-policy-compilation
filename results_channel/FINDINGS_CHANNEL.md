@@ -8,7 +8,7 @@ commit of its own: `4aa0b8f` on `main`.
 - **The smoke run** reached it in #198.
 - **The six runs** reached it in #199, merged on 2026-11-06.
 - **Stage C, this record, the banner that closes the plan and the indexes**
-  reach it in the pull request this record was opened in.
+  reached it in #200, merged on 2026-11-07.
 
 Every record names in its `_env` the commit it was written from. Seven were
 written on a pull request's branch, and the rebase merge gave each of those
