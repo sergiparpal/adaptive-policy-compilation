@@ -96,7 +96,9 @@ on regions third rules govern was read POST-RUN on November 4, 2026**, and the
 item it answers is struck in place. **The loop under a channel that hears of
 half its errors, beside the error arm again, closed on November 7, 2026**:
 `PLAN_CHANNEL.md`, six signed rows, five held and one refuted, and one
-reported, written up in `results_channel/`. This is a
+reported, written up in `results_channel/`. **Why its c r1 lost
+`SECURITY_INCIDENT` was read POST-RUN the same day**, and the item it answers is
+struck in place. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -428,14 +430,19 @@ three runs an arm, alternating, in one period. In the median run half the
 reports compiled the policy, within 1/32 of the error arm, and the rarest queue
 in one run of three. What that leaves:
 
-- **Why c r1 lost `SECURITY_INCIDENT`.**
-  - Its channel reported 11 of its 17 wrong decisions on the queue's tickets.
-  - The proposer drafted the queue at 12 of its 13 escalations there.
-  - Its final base still sends most of the queue's points elsewhere, where the
-    transcriber under the same draws compiles all of them.
+- ~~**Why c r1 lost `SECURITY_INCIDENT`.**~~ **Read POST-RUN on 2026-11-07**
+  (`FINDINGS_CHANNEL.md`, *Why c r1 lost `SECURITY_INCIDENT`*).
+  - **What decides the points.** No rule of the queue reaches nine tenths of
+    what it lost. The keyword's default, a rule of `T2_TECHNICAL` born at case
+    238, decides most of it.
+  - **What happened to the drafts.** The proposer drafted the queue's broad
+    regions. v1b's placement round refused each answer, because it left out the
+    default, which contains every draft of the queue. 8 of its 9 unplaced
+    answers on the queue left the default out.
+  - **Why c r1.** Its default came before any broad rule of the queue. In the
+    other runs it came later or never.
 
-  Which of its rules decide those points, and when they came to, is a reading of
-  its record. Free.
+  So the loss was v1b's round meeting a default born early, not the channel's.
 - **Why c r2 recalled less of `ONCALL_ESCALATION` than its draws allow.** Its
   draws make no `H05` ticket reportable, which holds the transcriber to 2/3 of
   the queue. c r2's base recalls 128/315. Free.
@@ -569,6 +576,11 @@ the error arm. What that leaves:
     end: most of what they govern on the error arm's placed pairs was governed
     when the pair was listed. So a round could also leave out a rule whose
     conflict with the draft the base already decides.
+    **[NOTE 2026-11-07] It has now cost a queue.** In `PLAN_CHANNEL.md`'s c r1
+    the keyword's default contained every draft of `SECURITY_INCIDENT`. Every
+    answer that left it out, as the system prompt says, was refused. Both of
+    c r1's drafts of `H01`'s region whole were refused that way, and the run
+    lost most of the queue. Read POST-RUN in `FINDINGS_CHANNEL.md`.
   - **Why the proposer never leaves out a rule equal to its draft.** Free on
     the records.
 - **Reasoning in the loop apart from v1b.** No reasoning-off arm ran under v1b,

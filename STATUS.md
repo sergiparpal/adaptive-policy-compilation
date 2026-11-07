@@ -2394,6 +2394,29 @@ reads every error.
   for the rate through most of 2026-11-06, UTC, and billed about three times as
   much per token in those hours.
 
+**[NOTE 2026-11-07] Read POST-RUN: why c r1 lost `SECURITY_INCIDENT`.** Not a
+signed row; five of the reading's six clauses hold.
+- **What decides the points.** No rule of the queue reaches 30,720 of the
+  34,080 points c r1 lost, 0.9014.
+- **Who decides them.** The keyword's default, *has_security_keyword eq True*
+  → `T2_TECHNICAL`, born at case 238, decides 23,280 of them.
+- **Its rules of the queue.** The three born are narrow: the widest covers
+  10,400 of the queue's 50,400 points.
+- **What became of the broad drafts.** The proposer drafted `H01`'s region
+  whole twice, at cases 1063 and 1871. v1b's placement round refused both,
+  and one draft of 16,800 points. Each answer gave a side to every listed rule
+  but the default.
+  - The default contains every draft of the queue.
+  - Level 3's system prompt says such a rule needs no declaration.
+  - 8 of the 9 unplaced answers on the queue left it out.
+- **Why c r1.** Its default came before any broad rule of the queue. Three
+  runs never wrote one. c r3 wrote `H01`'s region first, and e r1's answers
+  placed its default twice in three tries. c r1 asked about the queue more
+  often than any other run.
+
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
+*Why c r1 lost `SECURITY_INCIDENT`*.
+
 ---
 
 ## What was withdrawn, and why
@@ -2642,6 +2665,17 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    arms its placed edges point at the better rule less often than a fixed
    ranking of the queues. Reported in `CH-g`; nothing in it moves this item.
    [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
+   **[NOTE 2026-11-07, later] The placement round's defect has now cost a
+   queue, read POST-RUN.**
+   - **The rule left out.** In c r1, the keyword's default contained every
+     draft of `SECURITY_INCIDENT`, and every answer that left it out was
+     refused.
+   - **The drafts it took.** Both of c r1's drafts of `H01`'s region whole
+     were refused that way, and the run lost most of the queue.
+   - **What is open.** A round that lists only what the engine can still
+     order, which is the open item above.
+
+   The FINDINGS' section *Why c r1 lost `SECURITY_INCIDENT`*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
