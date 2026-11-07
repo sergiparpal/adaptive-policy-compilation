@@ -1,0 +1,3102 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-07T10:35:03Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "715505c506042583c90bee1b880b228a69aa7c7e",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "fbbf138c1fe5e1cb"
+  },
+  "plan": "PLAN_CHANNEL.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CHANNEL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CHANNEL.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-07, after Stage C. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: what the queue's unplaced answers left out, by relation to the draft. No expectation; no clause moves.",
+  "source": {
+    "score": "results_channel/score.json",
+    "score_from": "913c97f2e202525cfc61bb605da76f7da10d2c40"
+  },
+  "surface": "the exhaustive space, 134,400 points",
+  "queue": "SECURITY_INCIDENT",
+  "run": "c_r1",
+  "constants": {
+    "L_HALF": "1/2",
+    "L4_BORN": 10
+  },
+  "gates": [
+    {
+      "run": "e_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "e_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "c_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "e_r1": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 50400,
+        "lost": 0,
+        "impasse": 0,
+        "conflict": 0,
+        "unwritten": 0,
+        "outranked": 0,
+        "contested": 0,
+        "by_edge": 0,
+        "by_containment": 0,
+        "lost_by_queue": {},
+        "of_lost": {
+          "impasse": null,
+          "conflict": null,
+          "unwritten": null,
+          "outranked": null
+        }
+      },
+      "winners": [],
+      "queue_rules": [
+        {
+          "rule_id": "R0018",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 8400,
+          "queue_points": 8400,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0044",
+          "born_at": 342,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "IMPASSE",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0048",
+          "born_at": 402,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 6720,
+          "queue_points": 6720,
+          "undefeated_on_queue": 6720,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0053",
+          "born_at": 580,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 10080,
+          "lost_inside": 0,
+          "is_listed_region": "H02",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0062",
+          "born_at": 1264,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            }
+          ],
+          "points": 6720,
+          "queue_points": 6720,
+          "undefeated_on_queue": 6720,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0065",
+          "born_at": 1704,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 20160,
+          "lost_inside": 0,
+          "is_listed_region": "H01",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        }
+      ],
+      "curve": {
+        "most_right": 50400,
+        "at_birth": 1704,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0018",
+            "action": "SECURITY_INCIDENT",
+            "right": 8400,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 342,
+            "rule_id": "R0044",
+            "action": "SECURITY_INCIDENT",
+            "right": 21000,
+            "delta": 12600,
+            "cause": "IMPASSE",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 402,
+            "rule_id": "R0048",
+            "action": "SECURITY_INCIDENT",
+            "right": 23520,
+            "delta": 2520,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 580,
+            "rule_id": "R0053",
+            "action": "SECURITY_INCIDENT",
+            "right": 33600,
+            "delta": 10080,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 1264,
+            "rule_id": "R0062",
+            "action": "SECURITY_INCIDENT",
+            "right": 36960,
+            "delta": 3360,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 1704,
+            "rule_id": "R0065",
+            "action": "SECURITY_INCIDENT",
+            "right": 50400,
+            "delta": 13440,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 8400,
+          "verdict": "nacida",
+          "rule_id": "R0018",
+          "in_base": true,
+          "listed": 8
+        },
+        {
+          "idx": 342,
+          "cause": "IMPASSE",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0044",
+          "in_base": true,
+          "listed": 18
+        },
+        {
+          "idx": 402,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "nacida",
+          "rule_id": "R0048",
+          "in_base": true,
+          "listed": 9
+        },
+        {
+          "idx": 580,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0053",
+          "in_base": true,
+          "listed": 24
+        },
+        {
+          "idx": 1063,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 42
+        },
+        {
+          "idx": 1264,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "nacida",
+          "rule_id": "R0062",
+          "in_base": true,
+          "listed": 17
+        },
+        {
+          "idx": 1704,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0065",
+          "in_base": true,
+          "listed": 43
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 6,
+        "sin_situar": 1
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 1063,
+            "answered": true,
+            "draft_queue_points": 33600,
+            "listed": 42,
+            "listed_nested": 1,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0047"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 1
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0047": 1
+        },
+        "containers_of_the_queue": [
+          {
+            "rule_id": "R0047",
+            "action": "T2_TECHNICAL",
+            "born_at": 394,
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    },
+    "c_r1": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 16320,
+        "lost": 34080,
+        "impasse": 0,
+        "conflict": 3360,
+        "unwritten": 30720,
+        "outranked": 0,
+        "contested": 0,
+        "by_edge": 0,
+        "by_containment": 0,
+        "lost_by_queue": {
+          "ACCOUNT_MANAGER": 640,
+          "ONCALL_ESCALATION": 840,
+          "T2_TECHNICAL": 29240
+        },
+        "of_lost": {
+          "impasse": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "conflict": {
+            "fraction": "7/71",
+            "value": 0.098592
+          },
+          "unwritten": {
+            "fraction": "64/71",
+            "value": 0.901408
+          },
+          "outranked": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        }
+      },
+      "winners": [
+        {
+          "rule_id": "R0039",
+          "action": "T2_TECHNICAL",
+          "born_at": 238,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "points": 67200,
+          "lost_points": 23280,
+          "unwritten": 23280,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H03"
+        },
+        {
+          "rule_id": "R0057",
+          "action": "T2_TECHNICAL",
+          "born_at": 1235,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            }
+          ],
+          "points": 4200,
+          "lost_points": 4200,
+          "unwritten": 4200,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0004",
+          "action": "T2_TECHNICAL",
+          "born_at": 3,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 13440,
+          "lost_points": 3880,
+          "unwritten": 3880,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H19"
+        },
+        {
+          "rule_id": "R0020",
+          "action": "T2_TECHNICAL",
+          "born_at": 45,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "points": 8400,
+          "lost_points": 2520,
+          "unwritten": 2520,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H08"
+        },
+        {
+          "rule_id": "R0026",
+          "action": "T2_TECHNICAL",
+          "born_at": 74,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            }
+          ],
+          "points": 8400,
+          "lost_points": 2520,
+          "unwritten": 2520,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H08"
+        },
+        {
+          "rule_id": "R0009",
+          "action": "T2_TECHNICAL",
+          "born_at": 13,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "points": 6720,
+          "lost_points": 1940,
+          "unwritten": 1940,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H20"
+        },
+        {
+          "rule_id": "R0029",
+          "action": "T2_TECHNICAL",
+          "born_at": 124,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "points": 13440,
+          "lost_points": 1520,
+          "unwritten": 1520,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H20"
+        },
+        {
+          "rule_id": "R0007",
+          "action": "T2_TECHNICAL",
+          "born_at": 10,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "points": 6720,
+          "lost_points": 960,
+          "unwritten": 960,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H16"
+        },
+        {
+          "rule_id": "R0011",
+          "action": "T2_TECHNICAL",
+          "born_at": 15,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ],
+          "points": 1680,
+          "lost_points": 840,
+          "unwritten": 840,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H20"
+        },
+        {
+          "rule_id": "R0052",
+          "action": "T2_TECHNICAL",
+          "born_at": 851,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "points": 1680,
+          "lost_points": 840,
+          "unwritten": 840,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H08"
+        },
+        {
+          "rule_id": "R0060",
+          "action": "ONCALL_ESCALATION",
+          "born_at": 1432,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            }
+          ],
+          "points": 8400,
+          "lost_points": 840,
+          "unwritten": 840,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "ONCALL_ESCALATION",
+          "governing": "H04"
+        },
+        {
+          "rule_id": "R0062",
+          "action": "T2_TECHNICAL",
+          "born_at": 1807,
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "points": 6720,
+          "lost_points": 840,
+          "unwritten": 840,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H08"
+        },
+        {
+          "rule_id": "R0061",
+          "action": "ACCOUNT_MANAGER",
+          "born_at": 1716,
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            }
+          ],
+          "points": 1280,
+          "lost_points": 640,
+          "unwritten": 640,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "ACCOUNT_MANAGER",
+          "governing": "H13"
+        },
+        {
+          "rule_id": "R0016",
+          "action": "T2_TECHNICAL",
+          "born_at": 35,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "points": 3360,
+          "lost_points": 600,
+          "unwritten": 600,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H18"
+        },
+        {
+          "rule_id": "R0017",
+          "action": "T2_TECHNICAL",
+          "born_at": 36,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            }
+          ],
+          "points": 26880,
+          "lost_points": 520,
+          "unwritten": 520,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H16"
+        },
+        {
+          "rule_id": "R0018",
+          "action": "T2_TECHNICAL",
+          "born_at": 42,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "points": 26880,
+          "lost_points": 360,
+          "unwritten": 360,
+          "outranked": 0,
+          "cause": "IMPASSE",
+          "truth": "T2_TECHNICAL",
+          "governing": "H18"
+        },
+        {
+          "rule_id": "R0047",
+          "action": "T2_TECHNICAL",
+          "born_at": 491,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "free"
+            }
+          ],
+          "points": 240,
+          "lost_points": 80,
+          "unwritten": 80,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H16"
+        },
+        {
+          "rule_id": "R0059",
+          "action": "T2_TECHNICAL",
+          "born_at": 1371,
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "points": 320,
+          "lost_points": 80,
+          "unwritten": 80,
+          "outranked": 0,
+          "cause": "ERROR",
+          "truth": "T2_TECHNICAL",
+          "governing": "H18"
+        }
+      ],
+      "queue_rules": [
+        {
+          "rule_id": "R0019",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            }
+          ],
+          "points": 4200,
+          "queue_points": 4200,
+          "undefeated_on_queue": 4200,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "IMPASSE",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0032",
+          "born_at": 155,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 8
+            }
+          ],
+          "points": 10400,
+          "queue_points": 10400,
+          "undefeated_on_queue": 10400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0049",
+          "born_at": 739,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "points": 6720,
+          "queue_points": 6720,
+          "undefeated_on_queue": 6720,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        }
+      ],
+      "curve": {
+        "most_right": 16320,
+        "at_birth": 739,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0019",
+            "action": "SECURITY_INCIDENT",
+            "right": 4200,
+            "delta": 4200,
+            "cause": "IMPASSE",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 155,
+            "rule_id": "R0032",
+            "action": "SECURITY_INCIDENT",
+            "right": 12000,
+            "delta": 7800,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 739,
+            "rule_id": "R0049",
+            "action": "SECURITY_INCIDENT",
+            "right": 16320,
+            "delta": 4320,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "IMPASSE",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 4200,
+          "verdict": "nacida",
+          "rule_id": "R0019",
+          "in_base": true,
+          "listed": 8
+        },
+        {
+          "idx": 155,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 10400,
+          "verdict": "nacida",
+          "rule_id": "R0032",
+          "in_base": true,
+          "listed": 15
+        },
+        {
+          "idx": 448,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 12
+        },
+        {
+          "idx": 580,
+          "cause": "CONFLICT",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 11
+        },
+        {
+          "idx": 599,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 12
+        },
+        {
+          "idx": 739,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "nacida",
+          "rule_id": "R0049",
+          "in_base": true,
+          "listed": 12
+        },
+        {
+          "idx": 751,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 3360,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 5
+        },
+        {
+          "idx": 770,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 14
+        },
+        {
+          "idx": 1063,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 30
+        },
+        {
+          "idx": 1235,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "T2_TECHNICAL",
+          "draft_queue_points": 4200,
+          "verdict": "nacida",
+          "rule_id": "R0057",
+          "in_base": true,
+          "listed": 6
+        },
+        {
+          "idx": 1264,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 23
+        },
+        {
+          "idx": 1871,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 38
+        },
+        {
+          "idx": 1961,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 13
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 4,
+        "sin_situar": 9
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 448,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 12,
+            "listed_nested": 3,
+            "left_out": 6,
+            "left_out_rules": [
+              "R0001",
+              "R0008",
+              "R0022",
+              "R0026",
+              "R0039",
+              "R0041"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1,
+              "crossing": 5
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 3,
+              "BILLING_SPECIALIST": 1,
+              "T2_TECHNICAL": 2
+            }
+          },
+          {
+            "idx": 580,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 11,
+            "listed_nested": 2,
+            "left_out": 3,
+            "left_out_rules": [
+              "R0017",
+              "R0039",
+              "R0044"
+            ],
+            "left_out_nested": 2,
+            "left_out_by_relation": {
+              "contains_draft": 2,
+              "crossing": 1
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 1,
+              "T2_TECHNICAL": 2
+            }
+          },
+          {
+            "idx": 599,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 12,
+            "listed_nested": 3,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0039"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 1
+            }
+          },
+          {
+            "idx": 751,
+            "answered": true,
+            "draft_queue_points": 3360,
+            "listed": 5,
+            "listed_nested": 2,
+            "left_out": 3,
+            "left_out_rules": [
+              "R0001",
+              "R0022",
+              "R0048"
+            ],
+            "left_out_nested": 0,
+            "left_out_by_relation": {
+              "crossing": 3
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 2,
+              "T1_GENERAL": 1
+            }
+          },
+          {
+            "idx": 770,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 14,
+            "listed_nested": 3,
+            "left_out": 3,
+            "left_out_rules": [
+              "R0012",
+              "R0021",
+              "R0039"
+            ],
+            "left_out_nested": 3,
+            "left_out_by_relation": {
+              "contains_draft": 3
+            },
+            "left_out_by_queue": {
+              "BILLING_SPECIALIST": 1,
+              "SELF_SERVICE_DEFLECT": 1,
+              "T2_TECHNICAL": 1
+            }
+          },
+          {
+            "idx": 1063,
+            "answered": true,
+            "draft_queue_points": 33600,
+            "listed": 30,
+            "listed_nested": 1,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0039"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 1
+            }
+          },
+          {
+            "idx": 1264,
+            "answered": true,
+            "draft_queue_points": 16800,
+            "listed": 23,
+            "listed_nested": 1,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0039"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 1
+            }
+          },
+          {
+            "idx": 1871,
+            "answered": true,
+            "draft_queue_points": 33600,
+            "listed": 38,
+            "listed_nested": 1,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0039"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 1
+            }
+          },
+          {
+            "idx": 1961,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 13,
+            "listed_nested": 2,
+            "left_out": 2,
+            "left_out_rules": [
+              "R0029",
+              "R0039"
+            ],
+            "left_out_nested": 2,
+            "left_out_by_relation": {
+              "contains_draft": 2
+            },
+            "left_out_by_queue": {
+              "T2_TECHNICAL": 2
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0039": 8,
+          "R0001": 2,
+          "R0022": 2,
+          "R0008": 1,
+          "R0026": 1,
+          "R0041": 1,
+          "R0017": 1,
+          "R0044": 1,
+          "R0048": 1,
+          "R0012": 1,
+          "R0021": 1,
+          "R0029": 1
+        },
+        "containers_of_the_queue": [
+          {
+            "rule_id": "R0039",
+            "action": "T2_TECHNICAL",
+            "born_at": 238,
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    },
+    "e_r2": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 50400,
+        "lost": 0,
+        "impasse": 0,
+        "conflict": 0,
+        "unwritten": 0,
+        "outranked": 0,
+        "contested": 0,
+        "by_edge": 0,
+        "by_containment": 0,
+        "lost_by_queue": {},
+        "of_lost": {
+          "impasse": null,
+          "conflict": null,
+          "unwritten": null,
+          "outranked": null
+        }
+      },
+      "winners": [],
+      "queue_rules": [
+        {
+          "rule_id": "R0018",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 8400,
+          "queue_points": 8400,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0032",
+          "born_at": 155,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0042",
+          "born_at": 342,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "IMPASSE",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0049",
+          "born_at": 580,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": "H02",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0060",
+          "born_at": 1063,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": "H01",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        }
+      ],
+      "curve": {
+        "most_right": 50400,
+        "at_birth": 1063,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0018",
+            "action": "SECURITY_INCIDENT",
+            "right": 8400,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 155,
+            "rule_id": "R0032",
+            "action": "SECURITY_INCIDENT",
+            "right": 16800,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 342,
+            "rule_id": "R0042",
+            "action": "SECURITY_INCIDENT",
+            "right": 25200,
+            "delta": 8400,
+            "cause": "IMPASSE",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 580,
+            "rule_id": "R0049",
+            "action": "SECURITY_INCIDENT",
+            "right": 33600,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 1063,
+            "rule_id": "R0060",
+            "action": "SECURITY_INCIDENT",
+            "right": 50400,
+            "delta": 16800,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 8400,
+          "verdict": "nacida",
+          "rule_id": "R0018",
+          "in_base": true,
+          "listed": 7
+        },
+        {
+          "idx": 155,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0032",
+          "in_base": true,
+          "listed": 14
+        },
+        {
+          "idx": 342,
+          "cause": "IMPASSE",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0042",
+          "in_base": true,
+          "listed": 21
+        },
+        {
+          "idx": 402,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 12
+        },
+        {
+          "idx": 580,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0049",
+          "in_base": true,
+          "listed": 27
+        },
+        {
+          "idx": 1063,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0060",
+          "in_base": true,
+          "listed": 42
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 5,
+        "sin_situar": 1
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 402,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 12,
+            "listed_nested": 2,
+            "left_out": 2,
+            "left_out_rules": [
+              "R0013",
+              "R0031"
+            ],
+            "left_out_nested": 2,
+            "left_out_by_relation": {
+              "contains_draft": 2
+            },
+            "left_out_by_queue": {
+              "BILLING_SPECIALIST": 1,
+              "T2_TECHNICAL": 1
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0013": 1,
+          "R0031": 1
+        },
+        "containers_of_the_queue": []
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    },
+    "c_r2": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 50400,
+        "lost": 0,
+        "impasse": 0,
+        "conflict": 0,
+        "unwritten": 0,
+        "outranked": 0,
+        "contested": 0,
+        "by_edge": 0,
+        "by_containment": 0,
+        "lost_by_queue": {},
+        "of_lost": {
+          "impasse": null,
+          "conflict": null,
+          "unwritten": null,
+          "outranked": null
+        }
+      },
+      "winners": [],
+      "queue_rules": [
+        {
+          "rule_id": "R0022",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 8400,
+          "queue_points": 8400,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0055",
+          "born_at": 342,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 8400,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "IMPASSE",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0064",
+          "born_at": 599,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": "H02",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0077",
+          "born_at": 1063,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 25200,
+          "lost_inside": 0,
+          "is_listed_region": "H01",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        }
+      ],
+      "curve": {
+        "most_right": 50400,
+        "at_birth": 1063,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0022",
+            "action": "SECURITY_INCIDENT",
+            "right": 8400,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 342,
+            "rule_id": "R0055",
+            "action": "SECURITY_INCIDENT",
+            "right": 16800,
+            "delta": 8400,
+            "cause": "IMPASSE",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 599,
+            "rule_id": "R0064",
+            "action": "SECURITY_INCIDENT",
+            "right": 33600,
+            "delta": 16800,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 1063,
+            "rule_id": "R0077",
+            "action": "SECURITY_INCIDENT",
+            "right": 50400,
+            "delta": 16800,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 8400,
+          "verdict": "nacida",
+          "rule_id": "R0022",
+          "in_base": true,
+          "listed": 6
+        },
+        {
+          "idx": 155,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 25600,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 19
+        },
+        {
+          "idx": 342,
+          "cause": "IMPASSE",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0055",
+          "in_base": true,
+          "listed": 22
+        },
+        {
+          "idx": 580,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 8
+        },
+        {
+          "idx": 599,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0064",
+          "in_base": true,
+          "listed": 25
+        },
+        {
+          "idx": 1063,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0077",
+          "in_base": true,
+          "listed": 39
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 4,
+        "sin_situar": 2
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 155,
+            "answered": true,
+            "draft_queue_points": 25600,
+            "listed": 19,
+            "listed_nested": 0,
+            "left_out": 6,
+            "left_out_rules": [
+              "R0001",
+              "R0010",
+              "R0018",
+              "R0032",
+              "R0037",
+              "R0041"
+            ],
+            "left_out_nested": 0,
+            "left_out_by_relation": {
+              "crossing": 6
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 3,
+              "T1_GENERAL": 1,
+              "T2_TECHNICAL": 2
+            }
+          },
+          {
+            "idx": 580,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 8,
+            "listed_nested": 1,
+            "left_out": 1,
+            "left_out_rules": [
+              "R0050"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1
+            },
+            "left_out_by_queue": {
+              "T3_ENGINEERING": 1
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0001": 1,
+          "R0010": 1,
+          "R0018": 1,
+          "R0032": 1,
+          "R0037": 1,
+          "R0041": 1,
+          "R0050": 1
+        },
+        "containers_of_the_queue": []
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    },
+    "e_r3": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 50400,
+        "lost": 0,
+        "impasse": 0,
+        "conflict": 0,
+        "unwritten": 0,
+        "outranked": 0,
+        "contested": 0,
+        "by_edge": 0,
+        "by_containment": 0,
+        "lost_by_queue": {},
+        "of_lost": {
+          "impasse": null,
+          "conflict": null,
+          "unwritten": null,
+          "outranked": null
+        }
+      },
+      "winners": [],
+      "queue_rules": [
+        {
+          "rule_id": "R0018",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 33600,
+          "lost_inside": 0,
+          "is_listed_region": "H01",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0063",
+          "born_at": 342,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0070",
+          "born_at": 580,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 6720,
+          "queue_points": 6720,
+          "undefeated_on_queue": 6720,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0071",
+          "born_at": 599,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 6720,
+          "queue_points": 6720,
+          "undefeated_on_queue": 6720,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0073",
+          "born_at": 751,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 10080,
+          "lost_inside": 0,
+          "is_listed_region": "H02",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        }
+      ],
+      "curve": {
+        "most_right": 50400,
+        "at_birth": 751,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0018",
+            "action": "SECURITY_INCIDENT",
+            "right": 33600,
+            "delta": 33600,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 342,
+            "rule_id": "R0063",
+            "action": "SECURITY_INCIDENT",
+            "right": 42000,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 580,
+            "rule_id": "R0070",
+            "action": "SECURITY_INCIDENT",
+            "right": 43680,
+            "delta": 1680,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 599,
+            "rule_id": "R0071",
+            "action": "SECURITY_INCIDENT",
+            "right": 45360,
+            "delta": 1680,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 751,
+            "rule_id": "R0073",
+            "action": "SECURITY_INCIDENT",
+            "right": 50400,
+            "delta": 5040,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0018",
+          "in_base": true,
+          "listed": 10
+        },
+        {
+          "idx": 342,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0063",
+          "in_base": true,
+          "listed": 23
+        },
+        {
+          "idx": 402,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 14
+        },
+        {
+          "idx": 580,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "nacida",
+          "rule_id": "R0070",
+          "in_base": true,
+          "listed": 12
+        },
+        {
+          "idx": 599,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 6720,
+          "verdict": "nacida",
+          "rule_id": "R0071",
+          "in_base": true,
+          "listed": 15
+        },
+        {
+          "idx": 751,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0073",
+          "in_base": true,
+          "listed": 27
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 5,
+        "sin_situar": 1
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 402,
+            "answered": true,
+            "draft_queue_points": 6720,
+            "listed": 14,
+            "listed_nested": 1,
+            "left_out": 4,
+            "left_out_rules": [
+              "R0007",
+              "R0015",
+              "R0031",
+              "R0040"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1,
+              "crossing": 3
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 1,
+              "BILLING_SPECIALIST": 2,
+              "T2_TECHNICAL": 1
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0007": 1,
+          "R0015": 1,
+          "R0031": 1,
+          "R0040": 1
+        },
+        "containers_of_the_queue": []
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    },
+    "c_r3": {
+      "queue_points": 50400,
+      "ways": {
+        "right": 49120,
+        "lost": 1280,
+        "impasse": 0,
+        "conflict": 0,
+        "unwritten": 0,
+        "outranked": 1280,
+        "contested": 0,
+        "by_edge": 1280,
+        "by_containment": 0,
+        "lost_by_queue": {
+          "ACCOUNT_MANAGER": 1280
+        },
+        "of_lost": {
+          "impasse": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "conflict": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "unwritten": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "outranked": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "winners": [
+        {
+          "rule_id": "R0038",
+          "action": "ACCOUNT_MANAGER",
+          "born_at": 431,
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "points": 5120,
+          "lost_points": 1280,
+          "unwritten": 0,
+          "outranked": 1280,
+          "cause": "CONFLICT",
+          "truth": "ACCOUNT_MANAGER",
+          "governing": "H09"
+        }
+      ],
+      "queue_rules": [
+        {
+          "rule_id": "R0018",
+          "born_at": 44,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 31040,
+          "lost_inside": 1280,
+          "is_listed_region": "H01",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H01"
+        },
+        {
+          "rule_id": "R0036",
+          "born_at": 342,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "points": 16800,
+          "queue_points": 16800,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": null,
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        },
+        {
+          "rule_id": "R0042",
+          "born_at": 580,
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            }
+          ],
+          "points": 33600,
+          "queue_points": 33600,
+          "undefeated_on_queue": 16800,
+          "lost_inside": 0,
+          "is_listed_region": "H02",
+          "cause": "ERROR",
+          "truth": "SECURITY_INCIDENT",
+          "governing": "H02"
+        }
+      ],
+      "curve": {
+        "most_right": 49120,
+        "at_birth": 580,
+        "moves": [
+          {
+            "born_at": 44,
+            "rule_id": "R0018",
+            "action": "SECURITY_INCIDENT",
+            "right": 33600,
+            "delta": 33600,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H01"
+          },
+          {
+            "born_at": 342,
+            "rule_id": "R0036",
+            "action": "SECURITY_INCIDENT",
+            "right": 42000,
+            "delta": 8400,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          },
+          {
+            "born_at": 431,
+            "rule_id": "R0038",
+            "action": "ACCOUNT_MANAGER",
+            "right": 40080,
+            "delta": -1920,
+            "cause": "CONFLICT",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09"
+          },
+          {
+            "born_at": 580,
+            "rule_id": "R0042",
+            "action": "SECURITY_INCIDENT",
+            "right": 49120,
+            "delta": 9040,
+            "cause": "ERROR",
+            "truth": "SECURITY_INCIDENT",
+            "governing": "H02"
+          }
+        ]
+      },
+      "escalations": [
+        {
+          "idx": 44,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H01",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0018",
+          "in_base": true,
+          "listed": 10
+        },
+        {
+          "idx": 342,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 16800,
+          "verdict": "nacida",
+          "rule_id": "R0036",
+          "in_base": true,
+          "listed": 16
+        },
+        {
+          "idx": 402,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "in_base": false,
+          "listed": 18
+        },
+        {
+          "idx": 580,
+          "cause": "ERROR",
+          "escalated": true,
+          "governing": "H02",
+          "draft_action": "SECURITY_INCIDENT",
+          "draft_queue_points": 33600,
+          "verdict": "nacida",
+          "rule_id": "R0042",
+          "in_base": true,
+          "listed": 20
+        }
+      ],
+      "escalation_verdicts": {
+        "nacida": 3,
+        "sin_situar": 1
+      },
+      "added_after_the_first_run": {
+        "left_out": [
+          {
+            "idx": 402,
+            "answered": true,
+            "draft_queue_points": 33600,
+            "listed": 18,
+            "listed_nested": 1,
+            "left_out": 14,
+            "left_out_rules": [
+              "R0004",
+              "R0011",
+              "R0012",
+              "R0015",
+              "R0016",
+              "R0021",
+              "R0024",
+              "R0026",
+              "R0027",
+              "R0030",
+              "R0031",
+              "R0033",
+              "R0035",
+              "R0037"
+            ],
+            "left_out_nested": 1,
+            "left_out_by_relation": {
+              "contains_draft": 1,
+              "crossing": 13
+            },
+            "left_out_by_queue": {
+              "ACCOUNT_MANAGER": 3,
+              "BILLING_SPECIALIST": 2,
+              "T2_TECHNICAL": 6,
+              "T3_ENGINEERING": 3
+            }
+          }
+        ],
+        "times_each_rule_was_left_out": {
+          "R0004": 1,
+          "R0011": 1,
+          "R0012": 1,
+          "R0015": 1,
+          "R0016": 1,
+          "R0021": 1,
+          "R0024": 1,
+          "R0026": 1,
+          "R0027": 1,
+          "R0030": 1,
+          "R0031": 1,
+          "R0033": 1,
+          "R0035": 1,
+          "R0037": 1
+        },
+        "containers_of_the_queue": [
+          {
+            "rule_id": "R0037",
+            "action": "T2_TECHNICAL",
+            "born_at": 394,
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base, and the queue's right points are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the ways partition the loss",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the curve ends at the base",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the escalations are the record's",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "L1",
+      "what": "at least half of the lost points are unwritten",
+      "reading": {
+        "unwritten": 30720,
+        "of": 34080,
+        "share": {
+          "fraction": "64/71",
+          "value": 0.901408
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "L2",
+      "what": "at least half of the lost points go to T2_TECHNICAL",
+      "reading": {
+        "to_T2_TECHNICAL": 29240,
+        "of": 34080,
+        "share": {
+          "fraction": "731/852",
+          "value": 0.857981
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "L3",
+      "what": "no rule of the queue covers half of the queue's points or more",
+      "reading": {
+        "widest": 10400,
+        "of": 50400,
+        "share": {
+          "fraction": "13/63",
+          "value": 0.206349
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "L4",
+      "what": "at least 10 of the queue's escalations ended with their rule born",
+      "reading": {
+        "born": 4,
+        "of": 13,
+        "verdicts": {
+          "nacida": 4,
+          "sin_situar": 9
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "L5",
+      "what": "after no birth did the base decide half of the queue's points right or more",
+      "reading": {
+        "most_right": 16320,
+        "at_birth": 739,
+        "of": 50400,
+        "share": {
+          "fraction": "34/105",
+          "value": 0.32381
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "L6",
+      "what": "in each other run some rule of the queue covers half of the queue's points or more",
+      "reading": {
+        "e_r1": {
+          "widest": 33600,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.666667
+          }
+        },
+        "e_r2": {
+          "widest": 33600,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.666667
+          }
+        },
+        "c_r2": {
+          "widest": 33600,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.666667
+          }
+        },
+        "e_r3": {
+          "widest": 33600,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.666667
+          }
+        },
+        "c_r3": {
+          "widest": 33600,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.666667
+          }
+        }
+      },
+      "holds": true
+    }
+  ]
+}
