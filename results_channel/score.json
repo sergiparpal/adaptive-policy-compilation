@@ -1,0 +1,4851 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-07T09:11:42Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "913c97f2e202525cfc61bb605da76f7da10d2c40",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "a9a819726536a4db"
+  },
+  "plan": "PLAN_CHANNEL.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CHANNEL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CHANNEL.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "CH-g1": {
+      "what": "PLAN_REASONED_LOOP.md's verdicts come back from its runs; this plan's loop at coverage 1 is that plan's error arm, with the transcriber and with run e r1's answers replayed, and at coverage 0 its impasse arm; a run's rebuild is its engine; the labels agree with the truth; the suite green",
+      "closed_verdicts": {
+        "rows": 7,
+        "missing_runs": [],
+        "departing": [],
+        "passes": true
+      },
+      "coverage": {
+        "one_transcriber": {
+          "parts": {
+            "records": true,
+            "v1b": true,
+            "metrics": true,
+            "calls": true,
+            "rules": true,
+            "edge_log": true,
+            "edge_channels": true,
+            "escalations": true
+          },
+          "trigger_kept": true,
+          "escalations": 23,
+          "passes": true
+        },
+        "one_replay": {
+          "parts": {
+            "records": true,
+            "v1b": true,
+            "metrics": true,
+            "calls": true,
+            "rules": true,
+            "edge_log": true,
+            "edge_channels": true,
+            "escalations": true
+          },
+          "trigger_kept": true,
+          "escalations": 99,
+          "passes": true,
+          "replay_is_the_run": true
+        },
+        "zero_transcriber": {
+          "parts": {
+            "records": true,
+            "v1b": true,
+            "metrics": true,
+            "calls": true,
+            "rules": true,
+            "edge_log": true,
+            "edge_channels": true,
+            "escalations": true
+          },
+          "trigger_kept": true,
+          "escalations": 2,
+          "passes": true
+        },
+        "passes": true
+      },
+      "rebuilds": {
+        "runs": {
+          "c_r1": true,
+          "c_r2": true,
+          "c_r3": true,
+          "e": true
+        },
+        "trigger_kept": {
+          "c_r1": true,
+          "c_r2": true,
+          "c_r3": true,
+          "e": true
+        },
+        "passes": true
+      },
+      "labels": {
+        "cases": 2000,
+        "departing": [],
+        "source": "results_reuse/run_n2000_r1.json",
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2582,
+        "result": "OK (skipped=5)",
+        "seconds": 181.3,
+        "passes": true
+      },
+      "passes": true
+    },
+    "CH-g2": {
+      "what": "every text is PLAN_REASONED_LOOP.md's and its runs sent it; every run's draws are rebuilt from their seed and are \u00a70's; the transcriber gives back \u00a70's figures; the hidden policy through v1b's path is born whole with its 199 edges and decides both surfaces right. The requests are tests/test_reasoned_loop.py's",
+      "texts": {
+        "reasoned_loop_check": true,
+        "sent_by_its_runs": {
+          "e_r1": true,
+          "i_r1": true,
+          "e_r2": true,
+          "i_r2": true,
+          "e_r3": true,
+          "i_r3": true
+        },
+        "system_prompt_digest": true,
+        "passes": true
+      },
+      "draws": {
+        "rebuilt": {
+          "r1": true,
+          "r2": true,
+          "r3": true,
+          "smoke": true
+        },
+        "distinct": true,
+        "as_declared": {
+          "r1": true,
+          "r2": true,
+          "r3": true
+        },
+        "digests": {
+          "r1": "1347b9525a1e06a3",
+          "r2": "e81548d721b99577",
+          "r3": "1f60e3d5e68553d4",
+          "smoke": "029047351ae2d471"
+        },
+        "passes": true
+      },
+      "transcriber": {
+        "as_declared": {
+          "c_r1": {
+            "escalations": true,
+            "impasses": true,
+            "errors": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "c_r2": {
+            "escalations": true,
+            "impasses": true,
+            "errors": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true,
+            "recall_oncall": true
+          },
+          "c_r3": {
+            "escalations": true,
+            "impasses": true,
+            "errors": true,
+            "calls": true,
+            "space_right": true,
+            "corpus_right": true
+          },
+          "e": {
+            "escalations": true,
+            "calls": true,
+            "space_right": true
+          }
+        },
+        "passes": true
+      },
+      "hidden_policy": {
+        "born": 29,
+        "declarations": 253,
+        "installed": 199,
+        "verdicts": {
+          "ok": 253
+        },
+        "every_declaration_accepted": true,
+        "the_199_edges": true,
+        "space": [
+          134400,
+          134400
+        ],
+        "corpus": [
+          2000,
+          2000
+        ],
+        "as_declared": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "CH-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under the channel arm with its own draws; the cap is 400 escalations",
+      "schedule": [
+        [
+          "e",
+          1
+        ],
+        [
+          "c",
+          1
+        ],
+        [
+          "e",
+          2
+        ],
+        [
+          "c",
+          2
+        ],
+        [
+          "e",
+          3
+        ],
+        [
+          "c",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverages": true,
+      "cap": true,
+      "passes": true
+    },
+    "CH-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_CHANNEL.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_CHANNEL.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "missing": [],
+  "lines": {
+    "CH-a": {
+      "fraction": "9/10",
+      "value": 0.9,
+      "holds_at": ">="
+    },
+    "CH-b": {
+      "fraction": "1/20",
+      "value": 0.05,
+      "holds_at": "<="
+    },
+    "CH-c": {
+      "fraction": "9/10",
+      "value": 0.9,
+      "holds_at": ">="
+    },
+    "CH-d": {
+      "fraction": "9/10",
+      "value": 0.9,
+      "holds_at": ">="
+    },
+    "CH-e": {
+      "fraction": "9/10",
+      "value": 0.9,
+      "holds_at": ">="
+    },
+    "CH-f": {
+      "fraction": "3/4",
+      "value": 0.75,
+      "holds_at": ">="
+    }
+  },
+  "verdicts": {
+    "CH-a": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "6383/6720",
+        "value": 0.9498511904761905
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "c": [
+          "1613/2240",
+          "6383/6720",
+          "3317/3360"
+        ]
+      }
+    },
+    "CH-b": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "1/32",
+        "value": 0.03125
+      },
+      "line": {
+        "fraction": "1/20",
+        "value": 0.05
+      },
+      "holds_at": "<=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "c": [
+          "1613/2240",
+          "6383/6720",
+          "3317/3360"
+        ],
+        "e": [
+          "823/840",
+          "6593/6720",
+          "6631/6720"
+        ]
+      }
+    },
+    "CH-c": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "2/3",
+        "value": 0.6666666666666666
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "c": [
+          "2/3",
+          "128/315",
+          "14/15"
+        ]
+      }
+    },
+    "CH-d": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "6593/6720",
+        "value": 0.9811011904761905
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds_at": ">=",
+      "thin": false,
+      "why": null,
+      "per_run": {
+        "e": [
+          "823/840",
+          "6593/6720",
+          "6631/6720"
+        ]
+      }
+    },
+    "CH-e": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "1",
+        "value": 1.0
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "e": [
+          "1",
+          "53/63",
+          "1"
+        ]
+      }
+    },
+    "CH-f": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "21/26",
+        "value": 0.8076923076923077
+      },
+      "line": {
+        "fraction": "3/4",
+        "value": 0.75
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "c": [
+          "147",
+          "250",
+          "117"
+        ],
+        "e": [
+          "171",
+          "182",
+          "208"
+        ]
+      }
+    }
+  },
+  "CH-g": {
+    "runs": {
+      "c_r1": {
+        "space": {
+          "fraction": "1613/2240",
+          "value": 0.7200892857142858
+        },
+        "space_without_the_keyword": {
+          "fraction": "1061/1120",
+          "value": 0.9473214285714285
+        },
+        "space_with_the_keyword": {
+          "fraction": "69/140",
+          "value": 0.4928571428571429
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5120,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            7760,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            16320,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            15520,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            4200,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "corpus": [
+          1975,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            254,
+            255
+          ],
+          "T2_TECHNICAL": [
+            726,
+            726
+          ],
+          "T3_ENGINEERING": [
+            117,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            4,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            104,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            4,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            495,
+            495
+          ]
+        },
+        "k_a": "11/57",
+        "cover": null,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 62,
+          "escalations": 79,
+          "impasses": 29,
+          "conflicts": 1,
+          "coverage": 0.985,
+          "reuse_rate": 0.8871,
+          "e2e_accuracy": 0.958,
+          "silent_error_rate": 0.0274,
+          "proposal_action_accuracy": 0.9241,
+          "failed_proposals": 0,
+          "rejected_rules": 17,
+          "dead_rules": 7
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 29,
+            "CONFLICT": 1,
+            "ERROR": 49
+          },
+          "cover": null,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1921,
+          "silent_errors_among_them": 48,
+          "channel": {
+            "coverage": "1/2",
+            "wrong_decisions": 97,
+            "reported": 49,
+            "unreported": 48
+          }
+        },
+        "drafts": [
+          73,
+          79
+        ],
+        "calls": {
+          "calls": 147,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 154,
+          "rate_limited": 5,
+          "providers": {
+            "Baidu": 149
+          },
+          "finish_reasons": {
+            "stop": 149
+          },
+          "prompt_tokens": 317907,
+          "completion_tokens": 594623,
+          "reasoning_tokens": {
+            "sum": 565733,
+            "median": 3520,
+            "max": 12289
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 79,
+              "median": 42.98,
+              "sum": 3731.46
+            },
+            "1": {
+              "calls": 68,
+              "median": 22.53,
+              "sum": 1639.48
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 76,
+              "median": 41.945,
+              "sum": 3526.07
+            },
+            "1": {
+              "calls": 66,
+              "median": 21.805,
+              "sum": 1530.39
+            }
+          },
+          "retries": {
+            "call": 5,
+            "parse": 2
+          }
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            97,
+            49,
+            49
+          ],
+          "by_queue": {
+            "T2_TECHNICAL": [
+              27,
+              14,
+              14
+            ],
+            "T3_ENGINEERING": [
+              13,
+              7,
+              7
+            ],
+            "ACCOUNT_MANAGER": [
+              26,
+              8,
+              8
+            ],
+            "ONCALL_ESCALATION": [
+              6,
+              2,
+              2
+            ],
+            "SECURITY_INCIDENT": [
+              17,
+              11,
+              11
+            ],
+            "BILLING_SPECIALIST": [
+              6,
+              5,
+              5
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              2,
+              2,
+              2
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              7,
+              5,
+              5
+            ],
+            "H02": [
+              10,
+              6,
+              6
+            ],
+            "H03": [
+              5,
+              1,
+              1
+            ],
+            "H04": [
+              3,
+              1,
+              1
+            ],
+            "H05": [
+              3,
+              1,
+              1
+            ],
+            "H06": [
+              2,
+              1,
+              1
+            ],
+            "H07": [
+              2,
+              2,
+              2
+            ],
+            "H08": [
+              4,
+              3,
+              3
+            ],
+            "H09": [
+              10,
+              3,
+              3
+            ],
+            "H10": [
+              3,
+              2,
+              2
+            ],
+            "H11": [
+              3,
+              3,
+              3
+            ],
+            "H13": [
+              4,
+              2,
+              2
+            ],
+            "H14": [
+              12,
+              3,
+              3
+            ],
+            "H15": [
+              8,
+              3,
+              3
+            ],
+            "H16": [
+              10,
+              5,
+              5
+            ],
+            "H17": [
+              1,
+              1,
+              1
+            ],
+            "H18": [
+              8,
+              5,
+              5
+            ],
+            "H26": [
+              2,
+              2,
+              2
+            ]
+          },
+          "over_time": {
+            "0": [
+              32,
+              14,
+              14
+            ],
+            "200": [
+              19,
+              8,
+              8
+            ],
+            "400": [
+              10,
+              7,
+              7
+            ],
+            "600": [
+              9,
+              5,
+              5
+            ],
+            "800": [
+              7,
+              2,
+              2
+            ],
+            "1000": [
+              2,
+              2,
+              2
+            ],
+            "1200": [
+              6,
+              6,
+              6
+            ],
+            "1400": [
+              2,
+              1,
+              1
+            ],
+            "1600": [
+              4,
+              1,
+              1
+            ],
+            "1800": [
+              6,
+              3,
+              3
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              5,
+              9,
+              5
+            ],
+            "H02": [
+              6,
+              11,
+              6
+            ],
+            "H03": [
+              1,
+              51,
+              26
+            ],
+            "H04": [
+              1,
+              4,
+              2
+            ],
+            "H05": [
+              1,
+              3,
+              1
+            ],
+            "H06": [
+              1,
+              8,
+              5
+            ],
+            "H07": [
+              2,
+              17,
+              9
+            ],
+            "H08": [
+              3,
+              60,
+              33
+            ],
+            "H09": [
+              3,
+              26,
+              9
+            ],
+            "H10": [
+              2,
+              85,
+              47
+            ],
+            "H11": [
+              3,
+              186,
+              95
+            ],
+            "H12": [
+              0,
+              154,
+              69
+            ],
+            "H13": [
+              2,
+              34,
+              15
+            ],
+            "H14": [
+              3,
+              49,
+              21
+            ],
+            "H15": [
+              3,
+              60,
+              25
+            ],
+            "H16": [
+              5,
+              307,
+              152
+            ],
+            "H17": [
+              1,
+              32,
+              16
+            ],
+            "H18": [
+              5,
+              140,
+              67
+            ],
+            "H19": [
+              0,
+              45,
+              21
+            ],
+            "H20": [
+              0,
+              123,
+              58
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              6
+            ],
+            "H23": [
+              0,
+              3,
+              2
+            ],
+            "H24": [
+              0,
+              303,
+              162
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              2,
+              22,
+              13
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              0,
+              89,
+              49
+            ],
+            "H29": [
+              0,
+              163,
+              86
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "recall_oncall": "1"
+        },
+        "verdicts": {
+          "nacida: stop": 11,
+          "nacida: stop/stop": 51,
+          "sin_situar: stop/stop": 16,
+          "rechazada: stop/stop": 1
+        },
+        "placements": {
+          "rounds": 68,
+          "listed": [
+            1,
+            1,
+            1,
+            2,
+            4,
+            3,
+            1,
+            4,
+            3,
+            8,
+            4,
+            4,
+            12,
+            2,
+            2,
+            4,
+            1,
+            1,
+            2,
+            3,
+            1,
+            4,
+            6,
+            6,
+            15,
+            3,
+            10,
+            3,
+            4,
+            3,
+            25,
+            6,
+            8,
+            8,
+            4,
+            5,
+            3,
+            6,
+            3,
+            12,
+            4,
+            5,
+            7,
+            4,
+            11,
+            12,
+            3,
+            19,
+            12,
+            5,
+            7,
+            14,
+            2,
+            1,
+            17,
+            30,
+            8,
+            6,
+            7,
+            6,
+            23,
+            10,
+            8,
+            19,
+            4,
+            9,
+            38,
+            13
+          ],
+          "citations": {
+            "manual": 117,
+            "other": 471
+          },
+          "verdicts": {
+            "nacida": 62,
+            "sin_situar": 16,
+            "rechazada": 1
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 17,
+            "ok": 304,
+            "contradice_subsuncion": 1,
+            "cierra_ciclo": 5
+          },
+          "copies_born": 4
+        },
+        "births": {
+          "rules": 62,
+          "a_listed_rules_region": 14,
+          "the_governing_rules_region": 14
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 2,
+            "drafts_right": 2,
+            "decided_by_rules": 5,
+            "decided_right": 1
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 13,
+            "drafts_right": 12,
+            "decided_by_rules": 7,
+            "decided_right": 1
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 10,
+            "drafts_right": 10,
+            "decided_by_rules": 99,
+            "decided_right": 81
+          },
+          "T3_ENGINEERING": {
+            "escalations": 7,
+            "drafts_right": 7,
+            "decided_by_rules": 110,
+            "decided_right": 104
+          }
+        },
+        "dates": [
+          "2026-11-05T16:31:31Z",
+          "2026-11-05T18:01:02Z"
+        ]
+      },
+      "c_r2": {
+        "space": {
+          "fraction": "6383/6720",
+          "value": 0.9498511904761905
+        },
+        "space_without_the_keyword": {
+          "fraction": "3023/3360",
+          "value": 0.899702380952381
+        },
+        "space_with_the_keyword": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5010,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36420,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            6400,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            15840,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            2560,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4190,
+            4300
+          ]
+        },
+        "corpus": [
+          1922,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            234,
+            255
+          ],
+          "T2_TECHNICAL": [
+            692,
+            726
+          ],
+          "T3_ENGINEERING": [
+            111,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            20,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            105,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            1,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            488,
+            495
+          ]
+        },
+        "k_a": "5/43",
+        "cover": 658,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 94,
+          "escalations": 131,
+          "impasses": 35,
+          "conflicts": 33,
+          "coverage": 0.966,
+          "reuse_rate": 0.7234,
+          "e2e_accuracy": 0.932,
+          "silent_error_rate": 0.0352,
+          "proposal_action_accuracy": 0.8779,
+          "failed_proposals": 0,
+          "rejected_rules": 37,
+          "dead_rules": 26
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 35,
+            "CONFLICT": 33,
+            "ERROR": 63
+          },
+          "cover": 658,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1869,
+          "silent_errors_among_them": 63,
+          "channel": {
+            "coverage": "1/2",
+            "wrong_decisions": 126,
+            "reported": 63,
+            "unreported": 63
+          }
+        },
+        "drafts": [
+          115,
+          131
+        ],
+        "calls": {
+          "calls": 250,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 459,
+          "rate_limited": 204,
+          "providers": {
+            "Baidu": 255
+          },
+          "finish_reasons": {
+            "stop": 255
+          },
+          "prompt_tokens": 578399,
+          "completion_tokens": 1173850,
+          "reasoning_tokens": {
+            "sum": 1123175,
+            "median": 4036,
+            "max": 14382
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 131,
+              "median": 44.16,
+              "sum": 12753.85
+            },
+            "1": {
+              "calls": 119,
+              "median": 29.77,
+              "sum": 10833.88
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 116,
+              "median": 42.69499999999999,
+              "sum": 5162.36
+            },
+            "1": {
+              "calls": 103,
+              "median": 26.52,
+              "sum": 3137.28
+            }
+          },
+          "retries": {
+            "parse": 5,
+            "call": 204
+          }
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            126,
+            63,
+            63
+          ],
+          "by_queue": {
+            "T2_TECHNICAL": [
+              36,
+              18,
+              18
+            ],
+            "T3_ENGINEERING": [
+              13,
+              8,
+              8
+            ],
+            "ACCOUNT_MANAGER": [
+              8,
+              3,
+              3
+            ],
+            "ONCALL_ESCALATION": [
+              7,
+              2,
+              2
+            ],
+            "SECURITY_INCIDENT": [
+              6,
+              5,
+              5
+            ],
+            "BILLING_SPECIALIST": [
+              18,
+              10,
+              10
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              38,
+              17,
+              17
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              3,
+              3,
+              3
+            ],
+            "H02": [
+              3,
+              2,
+              2
+            ],
+            "H03": [
+              5,
+              4,
+              4
+            ],
+            "H04": [
+              4,
+              2,
+              2
+            ],
+            "H05": [
+              3,
+              0,
+              0
+            ],
+            "H06": [
+              4,
+              3,
+              3
+            ],
+            "H08": [
+              7,
+              2,
+              2
+            ],
+            "H09": [
+              3,
+              2,
+              2
+            ],
+            "H10": [
+              1,
+              1,
+              1
+            ],
+            "H11": [
+              17,
+              9,
+              9
+            ],
+            "H12": [
+              1,
+              1,
+              1
+            ],
+            "H13": [
+              1,
+              1,
+              1
+            ],
+            "H14": [
+              4,
+              0,
+              0
+            ],
+            "H16": [
+              20,
+              10,
+              10
+            ],
+            "H17": [
+              9,
+              5,
+              5
+            ],
+            "H18": [
+              4,
+              2,
+              2
+            ],
+            "H22": [
+              3,
+              0,
+              0
+            ],
+            "H24": [
+              19,
+              8,
+              8
+            ],
+            "H26": [
+              15,
+              8,
+              8
+            ]
+          },
+          "over_time": {
+            "0": [
+              41,
+              22,
+              22
+            ],
+            "200": [
+              19,
+              9,
+              9
+            ],
+            "400": [
+              18,
+              8,
+              8
+            ],
+            "600": [
+              13,
+              6,
+              6
+            ],
+            "800": [
+              12,
+              5,
+              5
+            ],
+            "1000": [
+              9,
+              5,
+              5
+            ],
+            "1200": [
+              4,
+              3,
+              3
+            ],
+            "1400": [
+              1,
+              0,
+              0
+            ],
+            "1600": [
+              3,
+              0,
+              0
+            ],
+            "1800": [
+              6,
+              5,
+              5
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              3,
+              9,
+              6
+            ],
+            "H02": [
+              2,
+              11,
+              6
+            ],
+            "H03": [
+              4,
+              51,
+              24
+            ],
+            "H04": [
+              2,
+              4,
+              2
+            ],
+            "H05": [
+              0,
+              3,
+              0
+            ],
+            "H06": [
+              3,
+              8,
+              6
+            ],
+            "H07": [
+              0,
+              17,
+              12
+            ],
+            "H08": [
+              2,
+              60,
+              30
+            ],
+            "H09": [
+              2,
+              26,
+              12
+            ],
+            "H10": [
+              1,
+              85,
+              49
+            ],
+            "H11": [
+              9,
+              186,
+              99
+            ],
+            "H12": [
+              1,
+              154,
+              69
+            ],
+            "H13": [
+              1,
+              34,
+              12
+            ],
+            "H14": [
+              0,
+              49,
+              25
+            ],
+            "H15": [
+              0,
+              60,
+              26
+            ],
+            "H16": [
+              10,
+              307,
+              160
+            ],
+            "H17": [
+              5,
+              32,
+              17
+            ],
+            "H18": [
+              2,
+              140,
+              80
+            ],
+            "H19": [
+              0,
+              45,
+              23
+            ],
+            "H20": [
+              0,
+              123,
+              62
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              6
+            ],
+            "H23": [
+              0,
+              3,
+              2
+            ],
+            "H24": [
+              8,
+              303,
+              157
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              8,
+              22,
+              11
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              0,
+              89,
+              43
+            ],
+            "H29": [
+              0,
+              163,
+              86
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 22,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 20,
+          "calls": 43,
+          "space_right": 132280,
+          "space_points": 134400,
+          "corpus_right": 1996,
+          "recall_oncall": "2/3"
+        },
+        "verdicts": {
+          "nacida: stop": 10,
+          "nacida: stop/stop": 84,
+          "rechazada: stop": 2,
+          "sin_situar: stop/stop": 34,
+          "rechazada: stop/stop": 1
+        },
+        "placements": {
+          "rounds": 119,
+          "listed": [
+            2,
+            2,
+            3,
+            1,
+            2,
+            3,
+            2,
+            3,
+            4,
+            3,
+            5,
+            3,
+            2,
+            6,
+            6,
+            2,
+            7,
+            4,
+            5,
+            2,
+            8,
+            8,
+            7,
+            7,
+            2,
+            6,
+            10,
+            6,
+            4,
+            7,
+            12,
+            7,
+            6,
+            6,
+            2,
+            21,
+            19,
+            6,
+            4,
+            11,
+            9,
+            1,
+            6,
+            13,
+            2,
+            17,
+            6,
+            6,
+            14,
+            8,
+            8,
+            7,
+            6,
+            6,
+            15,
+            6,
+            6,
+            22,
+            6,
+            11,
+            2,
+            2,
+            4,
+            12,
+            8,
+            7,
+            13,
+            11,
+            5,
+            13,
+            18,
+            8,
+            25,
+            11,
+            8,
+            7,
+            28,
+            17,
+            10,
+            10,
+            8,
+            10,
+            6,
+            12,
+            18,
+            18,
+            18,
+            39,
+            9,
+            19,
+            12,
+            19,
+            17,
+            9,
+            34,
+            17,
+            12,
+            10,
+            10,
+            21,
+            12,
+            10,
+            11,
+            26,
+            20,
+            14,
+            40,
+            11,
+            13,
+            17,
+            13,
+            16,
+            27,
+            11,
+            11,
+            24,
+            13,
+            22,
+            22
+          ],
+          "citations": {
+            "manual": 169,
+            "other": 1170
+          },
+          "verdicts": {
+            "nacida": 94,
+            "rechazada": 3,
+            "sin_situar": 34
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 12,
+            "ok": 739,
+            "cierra_ciclo": 84,
+            "contradice_subsuncion": 5
+          },
+          "copies_born": 28
+        },
+        "births": {
+          "rules": 94,
+          "a_listed_rules_region": 20,
+          "the_governing_rules_region": 20
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 2,
+            "drafts_right": 2,
+            "decided_by_rules": 5,
+            "decided_right": 0
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 14,
+            "decided_right": 13
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 10,
+            "drafts_right": 10,
+            "decided_by_rules": 99,
+            "decided_right": 94
+          },
+          "T3_ENGINEERING": {
+            "escalations": 13,
+            "drafts_right": 13,
+            "decided_by_rules": 104,
+            "decided_right": 99
+          }
+        },
+        "dates": [
+          "2026-11-06T05:37:25Z",
+          "2026-11-06T05:48:54Z"
+        ]
+      },
+      "c_r3": {
+        "space": {
+          "fraction": "3317/3360",
+          "value": 0.987202380952381
+        },
+        "space_without_the_keyword": {
+          "fraction": "1669/1680",
+          "value": 0.993452380952381
+        },
+        "space_with_the_keyword": {
+          "fraction": "103/105",
+          "value": 0.9809523809523809
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            49120,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            5880,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "corpus": [
+          1999,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            254,
+            255
+          ],
+          "T2_TECHNICAL": [
+            726,
+            726
+          ],
+          "T3_ENGINEERING": [
+            117,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            20,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            109,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            7,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            495,
+            495
+          ]
+        },
+        "k_a": "7/47",
+        "cover": 228,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 52,
+          "escalations": 62,
+          "impasses": 22,
+          "conflicts": 10,
+          "coverage": 0.984,
+          "reuse_rate": 0.8654,
+          "e2e_accuracy": 0.9725,
+          "silent_error_rate": 0.0117,
+          "proposal_action_accuracy": 0.9839,
+          "failed_proposals": 0,
+          "rejected_rules": 10,
+          "dead_rules": 7
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 22,
+            "CONFLICT": 10,
+            "ERROR": 30
+          },
+          "cover": 228,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1938,
+          "silent_errors_among_them": 23,
+          "channel": {
+            "coverage": "1/2",
+            "wrong_decisions": 53,
+            "reported": 30,
+            "unreported": 23
+          }
+        },
+        "drafts": [
+          61,
+          62
+        ],
+        "calls": {
+          "calls": 117,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 117,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 117
+          },
+          "finish_reasons": {
+            "stop": 117
+          },
+          "prompt_tokens": 253961,
+          "completion_tokens": 499120,
+          "reasoning_tokens": {
+            "sum": 477066,
+            "median": 3814,
+            "max": 9562
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 62,
+              "median": 44.895,
+              "sum": 2934.05
+            },
+            "1": {
+              "calls": 55,
+              "median": 24.71,
+              "sum": 1700.2
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 62,
+              "median": 44.895,
+              "sum": 2934.05
+            },
+            "1": {
+              "calls": 55,
+              "median": 24.71,
+              "sum": 1700.2
+            }
+          },
+          "retries": {}
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            53,
+            30,
+            30
+          ],
+          "by_queue": {
+            "T2_TECHNICAL": [
+              6,
+              4,
+              4
+            ],
+            "T3_ENGINEERING": [
+              3,
+              1,
+              1
+            ],
+            "ACCOUNT_MANAGER": [
+              10,
+              7,
+              7
+            ],
+            "ONCALL_ESCALATION": [
+              5,
+              3,
+              3
+            ],
+            "SECURITY_INCIDENT": [
+              4,
+              4,
+              4
+            ],
+            "BILLING_SPECIALIST": [
+              9,
+              4,
+              4
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              16,
+              7,
+              7
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              1,
+              1,
+              1
+            ],
+            "H02": [
+              3,
+              3,
+              3
+            ],
+            "H03": [
+              3,
+              2,
+              2
+            ],
+            "H04": [
+              3,
+              2,
+              2
+            ],
+            "H05": [
+              2,
+              1,
+              1
+            ],
+            "H06": [
+              2,
+              1,
+              1
+            ],
+            "H08": [
+              3,
+              2,
+              2
+            ],
+            "H09": [
+              4,
+              2,
+              2
+            ],
+            "H10": [
+              6,
+              3,
+              3
+            ],
+            "H11": [
+              3,
+              1,
+              1
+            ],
+            "H13": [
+              3,
+              3,
+              3
+            ],
+            "H14": [
+              3,
+              2,
+              2
+            ],
+            "H15": [
+              1,
+              0,
+              0
+            ],
+            "H22": [
+              1,
+              0,
+              0
+            ],
+            "H24": [
+              13,
+              6,
+              6
+            ],
+            "H26": [
+              2,
+              1,
+              1
+            ]
+          },
+          "over_time": {
+            "0": [
+              24,
+              12,
+              12
+            ],
+            "200": [
+              10,
+              4,
+              4
+            ],
+            "400": [
+              8,
+              5,
+              5
+            ],
+            "600": [
+              4,
+              3,
+              3
+            ],
+            "800": [
+              3,
+              2,
+              2
+            ],
+            "1200": [
+              1,
+              1,
+              1
+            ],
+            "1400": [
+              2,
+              2,
+              2
+            ],
+            "1800": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              1,
+              9,
+              5
+            ],
+            "H02": [
+              3,
+              11,
+              7
+            ],
+            "H03": [
+              2,
+              51,
+              25
+            ],
+            "H04": [
+              2,
+              4,
+              2
+            ],
+            "H05": [
+              1,
+              3,
+              1
+            ],
+            "H06": [
+              1,
+              8,
+              3
+            ],
+            "H07": [
+              0,
+              17,
+              10
+            ],
+            "H08": [
+              2,
+              60,
+              28
+            ],
+            "H09": [
+              2,
+              26,
+              14
+            ],
+            "H10": [
+              3,
+              85,
+              41
+            ],
+            "H11": [
+              1,
+              186,
+              94
+            ],
+            "H12": [
+              0,
+              154,
+              77
+            ],
+            "H13": [
+              3,
+              34,
+              18
+            ],
+            "H14": [
+              2,
+              49,
+              28
+            ],
+            "H15": [
+              0,
+              60,
+              30
+            ],
+            "H16": [
+              0,
+              307,
+              152
+            ],
+            "H17": [
+              0,
+              32,
+              17
+            ],
+            "H18": [
+              0,
+              140,
+              69
+            ],
+            "H19": [
+              0,
+              45,
+              21
+            ],
+            "H20": [
+              0,
+              123,
+              64
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              8
+            ],
+            "H23": [
+              0,
+              3,
+              1
+            ],
+            "H24": [
+              6,
+              303,
+              154
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              1,
+              22,
+              9
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              0,
+              89,
+              59
+            ],
+            "H29": [
+              0,
+              163,
+              78
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "recall_oncall": "1"
+        },
+        "verdicts": {
+          "nacida: stop": 7,
+          "nacida: stop/stop": 45,
+          "sin_situar: stop/stop": 9,
+          "rechazada: stop/stop": 1
+        },
+        "placements": {
+          "rounds": 55,
+          "listed": [
+            2,
+            2,
+            2,
+            4,
+            1,
+            1,
+            3,
+            5,
+            1,
+            4,
+            10,
+            5,
+            5,
+            2,
+            2,
+            1,
+            5,
+            3,
+            1,
+            9,
+            5,
+            12,
+            9,
+            4,
+            9,
+            3,
+            3,
+            11,
+            3,
+            10,
+            6,
+            6,
+            16,
+            25,
+            8,
+            18,
+            10,
+            8,
+            11,
+            11,
+            14,
+            20,
+            17,
+            10,
+            9,
+            7,
+            18,
+            16,
+            20,
+            16,
+            22,
+            13,
+            7,
+            10,
+            23
+          ],
+          "citations": {
+            "manual": 69,
+            "other": 427
+          },
+          "verdicts": {
+            "nacida": 52,
+            "sin_situar": 9,
+            "rechazada": 1
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 9,
+            "ok": 359,
+            "contradice_subsuncion": 1,
+            "cierra_ciclo": 26
+          },
+          "copies_born": 6
+        },
+        "births": {
+          "rules": 52,
+          "a_listed_rules_region": 23,
+          "the_governing_rules_region": 23
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 4,
+            "drafts_right": 4,
+            "decided_by_rules": 3,
+            "decided_right": 1
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 4,
+            "drafts_right": 4,
+            "decided_by_rules": 16,
+            "decided_right": 16
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 11,
+            "drafts_right": 11,
+            "decided_by_rules": 98,
+            "decided_right": 95
+          },
+          "T3_ENGINEERING": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 111,
+            "decided_right": 109
+          }
+        },
+        "dates": [
+          "2026-11-06T14:56:18Z",
+          "2026-11-06T16:13:33Z"
+        ]
+      },
+      "e_r1": {
+        "space": {
+          "fraction": "823/840",
+          "value": 0.9797619047619047
+        },
+        "space_without_the_keyword": {
+          "fraction": "403/420",
+          "value": 0.9595238095238096
+        },
+        "space_with_the_keyword": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5040,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            35280,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            7080,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "corpus": [
+          1986,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            249,
+            255
+          ],
+          "T2_TECHNICAL": [
+            718,
+            726
+          ],
+          "T3_ENGINEERING": [
+            117,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            20,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            109,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            7,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            495,
+            495
+          ]
+        },
+        "k_a": "9/59",
+        "cover": 658,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 68,
+          "escalations": 90,
+          "impasses": 29,
+          "conflicts": 2,
+          "coverage": 0.9845,
+          "reuse_rate": 0.8824,
+          "e2e_accuracy": 0.984,
+          "silent_error_rate": 0.0005,
+          "proposal_action_accuracy": 0.9778,
+          "failed_proposals": 0,
+          "rejected_rules": 22,
+          "dead_rules": 8
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 29,
+            "CONFLICT": 2,
+            "ERROR": 59
+          },
+          "cover": 658,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1910,
+          "silent_errors_among_them": 0,
+          "channel": {
+            "coverage": "1",
+            "wrong_decisions": 59,
+            "reported": 59,
+            "unreported": 0
+          }
+        },
+        "drafts": [
+          88,
+          90
+        ],
+        "calls": {
+          "calls": 171,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 174,
+          "rate_limited": 1,
+          "providers": {
+            "Baidu": 173
+          },
+          "finish_reasons": {
+            "stop": 173
+          },
+          "prompt_tokens": 380055,
+          "completion_tokens": 731176,
+          "reasoning_tokens": {
+            "sum": 697489,
+            "median": 3741,
+            "max": 13287
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 90,
+              "median": 42.345,
+              "sum": 4272.29
+            },
+            "1": {
+              "calls": 81,
+              "median": 19.61,
+              "sum": 2087.5099999999998
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 89,
+              "median": 41.77,
+              "sum": 4191.81
+            },
+            "1": {
+              "calls": 81,
+              "median": 19.61,
+              "sum": 2087.5099999999998
+            }
+          },
+          "retries": {
+            "call": 1,
+            "parse": 2
+          }
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            59,
+            59,
+            59
+          ],
+          "by_queue": {
+            "T1_GENERAL": [
+              3,
+              3,
+              3
+            ],
+            "T2_TECHNICAL": [
+              22,
+              22,
+              22
+            ],
+            "T3_ENGINEERING": [
+              9,
+              9,
+              9
+            ],
+            "ACCOUNT_MANAGER": [
+              10,
+              10,
+              10
+            ],
+            "ONCALL_ESCALATION": [
+              3,
+              3,
+              3
+            ],
+            "SECURITY_INCIDENT": [
+              6,
+              6,
+              6
+            ],
+            "BILLING_SPECIALIST": [
+              3,
+              3,
+              3
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              3,
+              3,
+              3
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              4,
+              4,
+              4
+            ],
+            "H02": [
+              2,
+              2,
+              2
+            ],
+            "H03": [
+              3,
+              3,
+              3
+            ],
+            "H04": [
+              1,
+              1,
+              1
+            ],
+            "H05": [
+              2,
+              2,
+              2
+            ],
+            "H06": [
+              3,
+              3,
+              3
+            ],
+            "H07": [
+              2,
+              2,
+              2
+            ],
+            "H08": [
+              9,
+              9,
+              9
+            ],
+            "H11": [
+              3,
+              3,
+              3
+            ],
+            "H13": [
+              2,
+              2,
+              2
+            ],
+            "H14": [
+              8,
+              8,
+              8
+            ],
+            "H15": [
+              3,
+              3,
+              3
+            ],
+            "H16": [
+              8,
+              8,
+              8
+            ],
+            "H17": [
+              1,
+              1,
+              1
+            ],
+            "H18": [
+              2,
+              2,
+              2
+            ],
+            "H26": [
+              3,
+              3,
+              3
+            ],
+            "H28": [
+              3,
+              3,
+              3
+            ]
+          },
+          "over_time": {
+            "0": [
+              17,
+              17,
+              17
+            ],
+            "200": [
+              13,
+              13,
+              13
+            ],
+            "400": [
+              9,
+              9,
+              9
+            ],
+            "600": [
+              3,
+              3,
+              3
+            ],
+            "800": [
+              5,
+              5,
+              5
+            ],
+            "1000": [
+              3,
+              3,
+              3
+            ],
+            "1200": [
+              3,
+              3,
+              3
+            ],
+            "1400": [
+              1,
+              1,
+              1
+            ],
+            "1600": [
+              4,
+              4,
+              4
+            ],
+            "1800": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              4,
+              9,
+              9
+            ],
+            "H02": [
+              2,
+              11,
+              11
+            ],
+            "H03": [
+              3,
+              51,
+              51
+            ],
+            "H04": [
+              1,
+              4,
+              4
+            ],
+            "H05": [
+              2,
+              3,
+              3
+            ],
+            "H06": [
+              3,
+              8,
+              8
+            ],
+            "H07": [
+              2,
+              17,
+              17
+            ],
+            "H08": [
+              9,
+              60,
+              60
+            ],
+            "H09": [
+              0,
+              26,
+              26
+            ],
+            "H10": [
+              0,
+              85,
+              85
+            ],
+            "H11": [
+              3,
+              186,
+              186
+            ],
+            "H12": [
+              0,
+              154,
+              154
+            ],
+            "H13": [
+              2,
+              34,
+              34
+            ],
+            "H14": [
+              8,
+              49,
+              49
+            ],
+            "H15": [
+              3,
+              60,
+              60
+            ],
+            "H16": [
+              8,
+              307,
+              307
+            ],
+            "H17": [
+              1,
+              32,
+              32
+            ],
+            "H18": [
+              2,
+              140,
+              140
+            ],
+            "H19": [
+              0,
+              45,
+              45
+            ],
+            "H20": [
+              0,
+              123,
+              123
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              16
+            ],
+            "H23": [
+              0,
+              3,
+              3
+            ],
+            "H24": [
+              0,
+              303,
+              303
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              3,
+              22,
+              22
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              3,
+              89,
+              89
+            ],
+            "H29": [
+              0,
+              163,
+              163
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "recall_oncall": "1"
+        },
+        "verdicts": {
+          "nacida: stop": 9,
+          "nacida: stop/stop": 59,
+          "sin_situar: stop/stop": 22
+        },
+        "placements": {
+          "rounds": 81,
+          "listed": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            1,
+            1,
+            1,
+            5,
+            1,
+            2,
+            1,
+            4,
+            8,
+            3,
+            3,
+            4,
+            2,
+            2,
+            1,
+            3,
+            2,
+            4,
+            4,
+            1,
+            14,
+            4,
+            26,
+            3,
+            3,
+            8,
+            4,
+            1,
+            2,
+            4,
+            10,
+            2,
+            1,
+            4,
+            3,
+            3,
+            5,
+            3,
+            16,
+            18,
+            20,
+            11,
+            2,
+            34,
+            9,
+            4,
+            10,
+            20,
+            8,
+            9,
+            20,
+            9,
+            24,
+            13,
+            5,
+            6,
+            21,
+            15,
+            8,
+            13,
+            13,
+            6,
+            17,
+            6,
+            42,
+            21,
+            17,
+            15,
+            15,
+            6,
+            17,
+            43,
+            6,
+            27,
+            10,
+            15
+          ],
+          "citations": {
+            "manual": 104,
+            "other": 664
+          },
+          "verdicts": {
+            "nacida": 68,
+            "sin_situar": 22
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 13,
+            "ok": 498,
+            "cierra_ciclo": 15
+          },
+          "copies_born": 1
+        },
+        "births": {
+          "rules": 68,
+          "a_listed_rules_region": 18,
+          "the_governing_rules_region": 18
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 3,
+            "drafts_right": 3,
+            "decided_by_rules": 4,
+            "decided_right": 4
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 7,
+            "drafts_right": 7,
+            "decided_by_rules": 13,
+            "decided_right": 13
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 14,
+            "drafts_right": 14,
+            "decided_by_rules": 95,
+            "decided_right": 95
+          },
+          "T3_ENGINEERING": {
+            "escalations": 9,
+            "drafts_right": 9,
+            "decided_by_rules": 108,
+            "decided_right": 108
+          }
+        },
+        "dates": [
+          "2026-11-05T14:39:18Z",
+          "2026-11-05T16:25:18Z"
+        ]
+      },
+      "e_r2": {
+        "space": {
+          "fraction": "6593/6720",
+          "value": 0.9811011904761905
+        },
+        "space_without_the_keyword": {
+          "fraction": "3233/3360",
+          "value": 0.962202380952381
+        },
+        "space_with_the_keyword": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            35800,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            7580,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            5300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "corpus": [
+          1962,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            254,
+            255
+          ],
+          "T2_TECHNICAL": [
+            720,
+            726
+          ],
+          "T3_ENGINEERING": [
+            89,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            20,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            109,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            4,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            495,
+            495
+          ]
+        },
+        "k_a": "8/71",
+        "cover": 725,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 79,
+          "escalations": 95,
+          "impasses": 26,
+          "conflicts": 1,
+          "coverage": 0.9865,
+          "reuse_rate": 0.6582,
+          "e2e_accuracy": 0.9845,
+          "silent_error_rate": 0.002,
+          "proposal_action_accuracy": 0.9368,
+          "failed_proposals": 0,
+          "rejected_rules": 16,
+          "dead_rules": 27
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 26,
+            "CONFLICT": 1,
+            "ERROR": 68
+          },
+          "cover": 725,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1905,
+          "silent_errors_among_them": 0,
+          "channel": {
+            "coverage": "1",
+            "wrong_decisions": 68,
+            "reported": 68,
+            "unreported": 0
+          }
+        },
+        "drafts": [
+          88,
+          95
+        ],
+        "calls": {
+          "calls": 182,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 184,
+          "rate_limited": 0,
+          "providers": {
+            "Baidu": 184
+          },
+          "finish_reasons": {
+            "stop": 184
+          },
+          "prompt_tokens": 416321,
+          "completion_tokens": 833100,
+          "reasoning_tokens": {
+            "sum": 796326,
+            "median": 4168.0,
+            "max": 9773
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 95,
+              "median": 49.14,
+              "sum": 4771.29
+            },
+            "1": {
+              "calls": 87,
+              "median": 29.17,
+              "sum": 2832.97
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 95,
+              "median": 49.14,
+              "sum": 4771.29
+            },
+            "1": {
+              "calls": 87,
+              "median": 29.17,
+              "sum": 2832.97
+            }
+          },
+          "retries": {
+            "parse": 2
+          }
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            68,
+            68,
+            68
+          ],
+          "by_queue": {
+            "T2_TECHNICAL": [
+              14,
+              14,
+              14
+            ],
+            "T3_ENGINEERING": [
+              31,
+              31,
+              31
+            ],
+            "ACCOUNT_MANAGER": [
+              8,
+              8,
+              8
+            ],
+            "ONCALL_ESCALATION": [
+              5,
+              5,
+              5
+            ],
+            "SECURITY_INCIDENT": [
+              5,
+              5,
+              5
+            ],
+            "BILLING_SPECIALIST": [
+              3,
+              3,
+              3
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              2,
+              2,
+              2
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              3,
+              3,
+              3
+            ],
+            "H02": [
+              2,
+              2,
+              2
+            ],
+            "H03": [
+              4,
+              4,
+              4
+            ],
+            "H04": [
+              4,
+              4,
+              4
+            ],
+            "H05": [
+              1,
+              1,
+              1
+            ],
+            "H06": [
+              2,
+              2,
+              2
+            ],
+            "H08": [
+              6,
+              6,
+              6
+            ],
+            "H09": [
+              1,
+              1,
+              1
+            ],
+            "H10": [
+              3,
+              3,
+              3
+            ],
+            "H13": [
+              3,
+              3,
+              3
+            ],
+            "H14": [
+              4,
+              4,
+              4
+            ],
+            "H15": [
+              29,
+              29,
+              29
+            ],
+            "H16": [
+              1,
+              1,
+              1
+            ],
+            "H18": [
+              3,
+              3,
+              3
+            ],
+            "H26": [
+              2,
+              2,
+              2
+            ]
+          },
+          "over_time": {
+            "0": [
+              16,
+              16,
+              16
+            ],
+            "200": [
+              6,
+              6,
+              6
+            ],
+            "400": [
+              7,
+              7,
+              7
+            ],
+            "600": [
+              8,
+              8,
+              8
+            ],
+            "800": [
+              4,
+              4,
+              4
+            ],
+            "1000": [
+              8,
+              8,
+              8
+            ],
+            "1200": [
+              7,
+              7,
+              7
+            ],
+            "1400": [
+              2,
+              2,
+              2
+            ],
+            "1600": [
+              4,
+              4,
+              4
+            ],
+            "1800": [
+              6,
+              6,
+              6
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              3,
+              9,
+              9
+            ],
+            "H02": [
+              2,
+              11,
+              11
+            ],
+            "H03": [
+              4,
+              51,
+              51
+            ],
+            "H04": [
+              4,
+              4,
+              4
+            ],
+            "H05": [
+              1,
+              3,
+              3
+            ],
+            "H06": [
+              2,
+              8,
+              8
+            ],
+            "H07": [
+              0,
+              17,
+              17
+            ],
+            "H08": [
+              6,
+              60,
+              60
+            ],
+            "H09": [
+              1,
+              26,
+              26
+            ],
+            "H10": [
+              3,
+              85,
+              85
+            ],
+            "H11": [
+              0,
+              186,
+              186
+            ],
+            "H12": [
+              0,
+              154,
+              154
+            ],
+            "H13": [
+              3,
+              34,
+              34
+            ],
+            "H14": [
+              4,
+              49,
+              49
+            ],
+            "H15": [
+              29,
+              60,
+              60
+            ],
+            "H16": [
+              1,
+              307,
+              307
+            ],
+            "H17": [
+              0,
+              32,
+              32
+            ],
+            "H18": [
+              3,
+              140,
+              140
+            ],
+            "H19": [
+              0,
+              45,
+              45
+            ],
+            "H20": [
+              0,
+              123,
+              123
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              16
+            ],
+            "H23": [
+              0,
+              3,
+              3
+            ],
+            "H24": [
+              0,
+              303,
+              303
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              2,
+              22,
+              22
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              0,
+              89,
+              89
+            ],
+            "H29": [
+              0,
+              163,
+              163
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "recall_oncall": "1"
+        },
+        "verdicts": {
+          "nacida: stop": 7,
+          "nacida: stop/stop": 72,
+          "sin_situar: stop/stop": 14,
+          "cambiada: stop/stop": 1,
+          "rechazada: stop": 1
+        },
+        "placements": {
+          "rounds": 87,
+          "listed": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            4,
+            4,
+            1,
+            1,
+            5,
+            2,
+            7,
+            1,
+            9,
+            6,
+            4,
+            4,
+            3,
+            3,
+            2,
+            3,
+            3,
+            8,
+            4,
+            13,
+            14,
+            5,
+            12,
+            7,
+            8,
+            14,
+            9,
+            5,
+            21,
+            3,
+            7,
+            9,
+            6,
+            12,
+            10,
+            7,
+            10,
+            8,
+            27,
+            12,
+            4,
+            3,
+            2,
+            6,
+            3,
+            2,
+            9,
+            8,
+            13,
+            5,
+            13,
+            24,
+            11,
+            14,
+            42,
+            15,
+            15,
+            17,
+            34,
+            4,
+            12,
+            12,
+            16,
+            16,
+            2,
+            4,
+            16,
+            31,
+            12,
+            4,
+            16,
+            19,
+            16,
+            16,
+            16,
+            4,
+            16,
+            9,
+            16
+          ],
+          "citations": {
+            "manual": 91,
+            "other": 728
+          },
+          "verdicts": {
+            "nacida": 79,
+            "sin_situar": 14,
+            "cambiada": 1,
+            "rechazada": 1
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 10,
+            "ok": 601,
+            "cierra_ciclo": 21
+          },
+          "copies_born": 18
+        },
+        "births": {
+          "rules": 79,
+          "a_listed_rules_region": 26,
+          "the_governing_rules_region": 26
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 5,
+            "drafts_right": 5,
+            "decided_by_rules": 2,
+            "decided_right": 2
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 14,
+            "decided_right": 14
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 12,
+            "drafts_right": 12,
+            "decided_by_rules": 97,
+            "decided_right": 97
+          },
+          "T3_ENGINEERING": {
+            "escalations": 36,
+            "drafts_right": 32,
+            "decided_by_rules": 81,
+            "decided_right": 81
+          }
+        },
+        "dates": [
+          "2026-11-05T18:07:13Z",
+          "2026-11-05T20:13:58Z"
+        ]
+      },
+      "e_r3": {
+        "space": {
+          "fraction": "6631/6720",
+          "value": 0.9867559523809524
+        },
+        "space_without_the_keyword": {
+          "fraction": "3271/3360",
+          "value": 0.9735119047619047
+        },
+        "space_with_the_keyword": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            35840,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            7300,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "corpus": [
+          1996,
+          2000
+        ],
+        "recall_corpus": {
+          "T1_GENERAL": [
+            254,
+            255
+          ],
+          "T2_TECHNICAL": [
+            723,
+            726
+          ],
+          "T3_ENGINEERING": [
+            117,
+            117
+          ],
+          "BILLING_SPECIALIST": [
+            271,
+            271
+          ],
+          "SECURITY_INCIDENT": [
+            20,
+            20
+          ],
+          "ACCOUNT_MANAGER": [
+            109,
+            109
+          ],
+          "ONCALL_ESCALATION": [
+            7,
+            7
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            495,
+            495
+          ]
+        },
+        "k_a": "5/79",
+        "cover": 456,
+        "rebuilt_is_the_run": true,
+        "online": {
+          "n_rules": 88,
+          "escalations": 106,
+          "impasses": 16,
+          "conflicts": 20,
+          "coverage": 0.982,
+          "reuse_rate": 0.6705,
+          "e2e_accuracy": 0.9765,
+          "silent_error_rate": 0.0056,
+          "proposal_action_accuracy": 0.8774,
+          "failed_proposals": 0,
+          "rejected_rules": 18,
+          "dead_rules": 29
+        },
+        "v1b": {
+          "arm_escalations": {
+            "IMPASSE": 16,
+            "CONFLICT": 20,
+            "ERROR": 70
+          },
+          "cover": 456,
+          "stopped_at": null,
+          "cases_read": 2000,
+          "decisions_that_stood": 1894,
+          "silent_errors_among_them": 0,
+          "channel": {
+            "coverage": "1",
+            "wrong_decisions": 70,
+            "reported": 70,
+            "unreported": 0
+          }
+        },
+        "drafts": [
+          93,
+          106
+        ],
+        "calls": {
+          "calls": 208,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 574,
+          "rate_limited": 366,
+          "providers": {
+            "Baidu": 208
+          },
+          "finish_reasons": {
+            "stop": 208
+          },
+          "prompt_tokens": 462801,
+          "completion_tokens": 911230,
+          "reasoning_tokens": {
+            "sum": 871489,
+            "median": 3821.5,
+            "max": 11263
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 106,
+              "median": 68.02000000000001,
+              "sum": 15520.98
+            },
+            "1": {
+              "calls": 102,
+              "median": 40.53,
+              "sum": 11403.6
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 69,
+              "median": 53.96,
+              "sum": 4002.7599999999998
+            },
+            "1": {
+              "calls": 70,
+              "median": 33.875,
+              "sum": 2546.78
+            }
+          },
+          "retries": {
+            "call": 366
+          }
+        },
+        "calls_as_recorded": true,
+        "reports": {
+          "columns": [
+            "wrong",
+            "reported",
+            "reported and escalated"
+          ],
+          "all": [
+            70,
+            70,
+            70
+          ],
+          "by_queue": {
+            "T1_GENERAL": [
+              18,
+              18,
+              18
+            ],
+            "T2_TECHNICAL": [
+              21,
+              21,
+              21
+            ],
+            "T3_ENGINEERING": [
+              11,
+              11,
+              11
+            ],
+            "ACCOUNT_MANAGER": [
+              4,
+              4,
+              4
+            ],
+            "ONCALL_ESCALATION": [
+              3,
+              3,
+              3
+            ],
+            "SECURITY_INCIDENT": [
+              6,
+              6,
+              6
+            ],
+            "BILLING_SPECIALIST": [
+              4,
+              4,
+              4
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              3,
+              3,
+              3
+            ]
+          },
+          "by_rule": {
+            "H01": [
+              1,
+              1,
+              1
+            ],
+            "H02": [
+              5,
+              5,
+              5
+            ],
+            "H03": [
+              6,
+              6,
+              6
+            ],
+            "H04": [
+              2,
+              2,
+              2
+            ],
+            "H05": [
+              1,
+              1,
+              1
+            ],
+            "H06": [
+              3,
+              3,
+              3
+            ],
+            "H07": [
+              3,
+              3,
+              3
+            ],
+            "H08": [
+              11,
+              11,
+              11
+            ],
+            "H09": [
+              3,
+              3,
+              3
+            ],
+            "H10": [
+              1,
+              1,
+              1
+            ],
+            "H11": [
+              3,
+              3,
+              3
+            ],
+            "H14": [
+              1,
+              1,
+              1
+            ],
+            "H15": [
+              5,
+              5,
+              5
+            ],
+            "H16": [
+              2,
+              2,
+              2
+            ],
+            "H18": [
+              2,
+              2,
+              2
+            ],
+            "H24": [
+              1,
+              1,
+              1
+            ],
+            "H26": [
+              2,
+              2,
+              2
+            ],
+            "H28": [
+              6,
+              6,
+              6
+            ],
+            "H29": [
+              12,
+              12,
+              12
+            ]
+          },
+          "over_time": {
+            "0": [
+              29,
+              29,
+              29
+            ],
+            "200": [
+              19,
+              19,
+              19
+            ],
+            "400": [
+              5,
+              5,
+              5
+            ],
+            "600": [
+              2,
+              2,
+              2
+            ],
+            "800": [
+              3,
+              3,
+              3
+            ],
+            "1000": [
+              4,
+              4,
+              4
+            ],
+            "1200": [
+              3,
+              3,
+              3
+            ],
+            "1600": [
+              3,
+              3,
+              3
+            ],
+            "1800": [
+              2,
+              2,
+              2
+            ]
+          }
+        },
+        "errors_by_rule": {
+          "columns": [
+            "error escalations",
+            "corpus tickets",
+            "reportable"
+          ],
+          "rules": {
+            "H01": [
+              1,
+              9,
+              9
+            ],
+            "H02": [
+              5,
+              11,
+              11
+            ],
+            "H03": [
+              6,
+              51,
+              51
+            ],
+            "H04": [
+              2,
+              4,
+              4
+            ],
+            "H05": [
+              1,
+              3,
+              3
+            ],
+            "H06": [
+              3,
+              8,
+              8
+            ],
+            "H07": [
+              3,
+              17,
+              17
+            ],
+            "H08": [
+              11,
+              60,
+              60
+            ],
+            "H09": [
+              3,
+              26,
+              26
+            ],
+            "H10": [
+              1,
+              85,
+              85
+            ],
+            "H11": [
+              3,
+              186,
+              186
+            ],
+            "H12": [
+              0,
+              154,
+              154
+            ],
+            "H13": [
+              0,
+              34,
+              34
+            ],
+            "H14": [
+              1,
+              49,
+              49
+            ],
+            "H15": [
+              5,
+              60,
+              60
+            ],
+            "H16": [
+              2,
+              307,
+              307
+            ],
+            "H17": [
+              0,
+              32,
+              32
+            ],
+            "H18": [
+              2,
+              140,
+              140
+            ],
+            "H19": [
+              0,
+              45,
+              45
+            ],
+            "H20": [
+              0,
+              123,
+              123
+            ],
+            "H21": [
+              0,
+              0,
+              0
+            ],
+            "H22": [
+              0,
+              16,
+              16
+            ],
+            "H23": [
+              0,
+              3,
+              3
+            ],
+            "H24": [
+              1,
+              303,
+              303
+            ],
+            "H25": [
+              0,
+              0,
+              0
+            ],
+            "H26": [
+              2,
+              22,
+              22
+            ],
+            "H27": [
+              0,
+              0,
+              0
+            ],
+            "H28": [
+              6,
+              89,
+              89
+            ],
+            "H29": [
+              12,
+              163,
+              163
+            ]
+          }
+        },
+        "transcriber": {
+          "escalations": 23,
+          "impasses": 2,
+          "conflicts": 0,
+          "errors": 21,
+          "calls": 45,
+          "space_right": 134380,
+          "space_points": 134400,
+          "corpus_right": 1999,
+          "recall_oncall": "1"
+        },
+        "verdicts": {
+          "nacida: stop": 4,
+          "nacida: stop/stop": 84,
+          "sin_situar: stop/stop": 18
+        },
+        "placements": {
+          "rounds": 102,
+          "listed": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            3,
+            1,
+            4,
+            1,
+            6,
+            4,
+            6,
+            10,
+            4,
+            7,
+            7,
+            5,
+            7,
+            6,
+            8,
+            8,
+            8,
+            8,
+            13,
+            3,
+            10,
+            4,
+            3,
+            3,
+            3,
+            2,
+            9,
+            15,
+            13,
+            7,
+            4,
+            10,
+            2,
+            7,
+            1,
+            23,
+            10,
+            9,
+            16,
+            14,
+            14,
+            14,
+            1,
+            21,
+            11,
+            14,
+            5,
+            5,
+            5,
+            1,
+            3,
+            6,
+            12,
+            14,
+            7,
+            5,
+            2,
+            4,
+            19,
+            6,
+            4,
+            18,
+            23,
+            4,
+            21,
+            1,
+            27,
+            14,
+            3,
+            19,
+            15,
+            11,
+            12,
+            15,
+            8,
+            27,
+            40,
+            9,
+            5,
+            23,
+            10,
+            22,
+            13,
+            7,
+            11,
+            15,
+            11,
+            8,
+            11,
+            5,
+            3,
+            10,
+            7,
+            17,
+            28
+          ],
+          "citations": {
+            "manual": 210,
+            "other": 873
+          },
+          "verdicts": {
+            "nacida": 88,
+            "sin_situar": 18
+          },
+          "edge_reasons": {
+            "fuera_del_vecindario": 3,
+            "ok": 718,
+            "cierra_ciclo": 36
+          },
+          "copies_born": 24
+        },
+        "births": {
+          "rules": 88,
+          "a_listed_rules_region": 23,
+          "the_governing_rules_region": 23
+        },
+        "rare": {
+          "ONCALL_ESCALATION": {
+            "escalations": 3,
+            "drafts_right": 3,
+            "decided_by_rules": 4,
+            "decided_right": 4
+          },
+          "SECURITY_INCIDENT": {
+            "escalations": 6,
+            "drafts_right": 6,
+            "decided_by_rules": 14,
+            "decided_right": 14
+          },
+          "ACCOUNT_MANAGER": {
+            "escalations": 7,
+            "drafts_right": 7,
+            "decided_by_rules": 102,
+            "decided_right": 102
+          },
+          "T3_ENGINEERING": {
+            "escalations": 12,
+            "drafts_right": 11,
+            "decided_by_rules": 105,
+            "decided_right": 105
+          }
+        },
+        "dates": [
+          "2026-11-06T12:43:19Z",
+          "2026-11-06T14:49:45Z"
+        ]
+      }
+    },
+    "direction": {
+      "c": {
+        "declared": {
+          "units": 148,
+          "reading": {
+            "fraction": "14407247597/16186836960",
+            "value": 0.8900594744113615
+          },
+          "hits": 622,
+          "strict": 712,
+          "float_reading": 0.8900594744113615
+        },
+        "ranking": {
+          "units": 148,
+          "reading": {
+            "fraction": "75693/82880",
+            "value": 0.9132842664092664
+          },
+          "hits": 664,
+          "strict": 712,
+          "float_reading": 0.9132842664092664
+        }
+      },
+      "e": {
+        "declared": {
+          "units": 161,
+          "reading": {
+            "fraction": "1729245677/1972610640",
+            "value": 0.8766279781396698
+          },
+          "hits": 696,
+          "strict": 796,
+          "float_reading": 0.8766279781396698
+        },
+        "ranking": {
+          "units": 161,
+          "reading": {
+            "fraction": "41757239/45828328",
+            "value": 0.9111665387399689
+          },
+          "hits": 709,
+          "strict": 796,
+          "float_reading": 0.9111665387399689
+        }
+      }
+    },
+    "across_dates": {
+      "r1": {
+        "this_plan": {
+          "space": {
+            "fraction": "823/840",
+            "value": 0.9797619047619047
+          },
+          "space_without_the_keyword": {
+            "fraction": "403/420",
+            "value": 0.9595238095238096
+          },
+          "space_with_the_keyword": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "recall_space": {
+            "T1_GENERAL": [
+              5040,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              35280,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              7080,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "corpus": [
+            1986,
+            2000
+          ],
+          "k_a": "9/59",
+          "cover": 658,
+          "online": {
+            "n_rules": 68,
+            "escalations": 90,
+            "impasses": 29,
+            "conflicts": 2,
+            "coverage": 0.9845,
+            "reuse_rate": 0.8824,
+            "e2e_accuracy": 0.984,
+            "silent_error_rate": 0.0005,
+            "proposal_action_accuracy": 0.9778,
+            "failed_proposals": 0,
+            "rejected_rules": 22,
+            "dead_rules": 8
+          },
+          "dates": [
+            "2026-11-05T14:39:18Z",
+            "2026-11-05T16:25:18Z"
+          ]
+        },
+        "reasoned_loop": {
+          "space": {
+            "fraction": "1613/1680",
+            "value": 0.9601190476190476
+          },
+          "space_without_the_keyword": 0.9702380952380952,
+          "space_with_the_keyword": 0.95,
+          "recall_space": {
+            "T1_GENERAL": 0.9961685823754789,
+            "T2_TECHNICAL": 0.9989106753812637,
+            "T3_ENGINEERING": 0.8141809290953546,
+            "BILLING_SPECIALIST": 1.0,
+            "SECURITY_INCIDENT": 0.9333333333333333,
+            "ACCOUNT_MANAGER": 1.0,
+            "ONCALL_ESCALATION": 0.9333333333333333,
+            "SELF_SERVICE_DEFLECT": 1.0
+          },
+          "corpus": 0.995,
+          "k_a": "8/65",
+          "cover": 658,
+          "online": {
+            "n_rules": 76,
+            "escalations": 99,
+            "impasses": 31,
+            "conflicts": 6,
+            "reuse_rate": 0.8026,
+            "e2e_accuracy": 0.9795,
+            "silent_error_rate": 0.002,
+            "proposal_action_accuracy": 0.9394,
+            "failed_proposals": 0,
+            "rejected_rules": 23,
+            "dead_rules": 15
+          },
+          "dates": [
+            "2026-11-01T10:44:21Z",
+            "2026-11-01T13:18:41Z"
+          ]
+        }
+      },
+      "r2": {
+        "this_plan": {
+          "space": {
+            "fraction": "6593/6720",
+            "value": 0.9811011904761905
+          },
+          "space_without_the_keyword": {
+            "fraction": "3233/3360",
+            "value": 0.962202380952381
+          },
+          "space_with_the_keyword": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              35800,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              7580,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              5300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "corpus": [
+            1962,
+            2000
+          ],
+          "k_a": "8/71",
+          "cover": 725,
+          "online": {
+            "n_rules": 79,
+            "escalations": 95,
+            "impasses": 26,
+            "conflicts": 1,
+            "coverage": 0.9865,
+            "reuse_rate": 0.6582,
+            "e2e_accuracy": 0.9845,
+            "silent_error_rate": 0.002,
+            "proposal_action_accuracy": 0.9368,
+            "failed_proposals": 0,
+            "rejected_rules": 16,
+            "dead_rules": 27
+          },
+          "dates": [
+            "2026-11-05T18:07:13Z",
+            "2026-11-05T20:13:58Z"
+          ]
+        },
+        "reasoned_loop": {
+          "space": {
+            "fraction": "185/192",
+            "value": 0.9635416666666666
+          },
+          "space_without_the_keyword": 0.9297619047619048,
+          "space_with_the_keyword": 0.9973214285714286,
+          "recall_space": {
+            "T1_GENERAL": 0.789272030651341,
+            "T2_TECHNICAL": 0.9335511982570807,
+            "T3_ENGINEERING": 1.0,
+            "BILLING_SPECIALIST": 1.0,
+            "SECURITY_INCIDENT": 1.0,
+            "ACCOUNT_MANAGER": 0.9209245742092458,
+            "ONCALL_ESCALATION": 1.0,
+            "SELF_SERVICE_DEFLECT": 0.986046511627907
+          },
+          "corpus": 0.972,
+          "k_a": "3/41",
+          "cover": 228,
+          "online": {
+            "n_rules": 90,
+            "escalations": 120,
+            "impasses": 27,
+            "conflicts": 13,
+            "reuse_rate": 0.6222,
+            "e2e_accuracy": 0.973,
+            "silent_error_rate": 0.0071,
+            "proposal_action_accuracy": 0.8583,
+            "failed_proposals": 0,
+            "rejected_rules": 30,
+            "dead_rules": 34
+          },
+          "dates": [
+            "2026-11-02T16:26:47Z",
+            "2026-11-02T17:51:33Z"
+          ]
+        }
+      },
+      "r3": {
+        "this_plan": {
+          "space": {
+            "fraction": "6631/6720",
+            "value": 0.9867559523809524
+          },
+          "space_without_the_keyword": {
+            "fraction": "3271/3360",
+            "value": 0.9735119047619047
+          },
+          "space_with_the_keyword": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "recall_space": {
+            "T1_GENERAL": [
+              5200,
+              5220
+            ],
+            "T2_TECHNICAL": [
+              35840,
+              36720
+            ],
+            "T3_ENGINEERING": [
+              7300,
+              8180
+            ],
+            "BILLING_SPECIALIST": [
+              6840,
+              6840
+            ],
+            "SECURITY_INCIDENT": [
+              50400,
+              50400
+            ],
+            "ACCOUNT_MANAGER": [
+              16440,
+              16440
+            ],
+            "ONCALL_ESCALATION": [
+              6300,
+              6300
+            ],
+            "SELF_SERVICE_DEFLECT": [
+              4300,
+              4300
+            ]
+          },
+          "corpus": [
+            1996,
+            2000
+          ],
+          "k_a": "5/79",
+          "cover": 456,
+          "online": {
+            "n_rules": 88,
+            "escalations": 106,
+            "impasses": 16,
+            "conflicts": 20,
+            "coverage": 0.982,
+            "reuse_rate": 0.6705,
+            "e2e_accuracy": 0.9765,
+            "silent_error_rate": 0.0056,
+            "proposal_action_accuracy": 0.8774,
+            "failed_proposals": 0,
+            "rejected_rules": 18,
+            "dead_rules": 29
+          },
+          "dates": [
+            "2026-11-06T12:43:19Z",
+            "2026-11-06T14:49:45Z"
+          ]
+        },
+        "reasoned_loop": {
+          "space": {
+            "fraction": "4271/4800",
+            "value": 0.8897916666666666
+          },
+          "space_without_the_keyword": 0.9560714285714286,
+          "space_with_the_keyword": 0.8235119047619047,
+          "recall_space": {
+            "T1_GENERAL": 0.9961685823754789,
+            "T2_TECHNICAL": 0.9694989106753813,
+            "T3_ENGINEERING": 1.0,
+            "BILLING_SPECIALIST": 1.0,
+            "SECURITY_INCIDENT": 0.7666666666666667,
+            "ACCOUNT_MANAGER": 0.9858880778588808,
+            "ONCALL_ESCALATION": 0.7333333333333333,
+            "SELF_SERVICE_DEFLECT": 1.0
+          },
+          "corpus": 0.99,
+          "k_a": "1/55",
+          "cover": 1,
+          "online": {
+            "n_rules": 63,
+            "escalations": 102,
+            "impasses": 2,
+            "conflicts": 0,
+            "reuse_rate": 0.8095,
+            "e2e_accuracy": 0.9945,
+            "silent_error_rate": 0.0045,
+            "proposal_action_accuracy": 0.9118,
+            "failed_proposals": 0,
+            "rejected_rules": 39,
+            "dead_rules": 12
+          },
+          "dates": [
+            "2026-11-02T19:46:40Z",
+            "2026-11-02T21:54:44Z"
+          ]
+        }
+      }
+    }
+  },
+  "rebuilt_is_the_run": true,
+  "calls_as_recorded": true
+}
