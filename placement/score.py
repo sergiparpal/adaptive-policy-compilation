@@ -50,7 +50,8 @@ from fidelity.replay import rule_from
 from manual import instrument as MI
 from reasoned_loop import references as rl_refs
 from reasoned_loop import score as rl_score
-from rung2.engine2 import PriorityEngine
+from rung2.engine2 import EDGE_CYCLE, PriorityEngine
+from rung3.edge_direction import better_over_space, verdict as pair_verdict
 
 from . import gates, plan, protocol, references
 
@@ -251,6 +252,63 @@ def births_left_out(record: dict) -> dict[str, list[int]]:
     return dict(sorted(out.items()))
 
 
+RIGHT, WRONG = "a", "b"            # `rung3.edge_direction.verdict` on (winner, loser)
+
+
+def cycle_refused(record: dict, eng: PriorityEngine) -> dict[str, Any]:
+    """Every edge the engine refused for closing a cycle (§6.11, `PL-g`).
+
+    An edge is *right* when its declared winner is the better rule over the
+    pair's shared region, by `rung3/edge_direction.py`'s `verdict`, as `RL-e`
+    reads a placed edge: `a` right, `b` wrong, and a tie or a region neither rule
+    is ever right on counted apart. It is read on the whole space and on the
+    half without the keyword. A pair of one queue has no direction to get
+    wrong, and is counted apart too.
+
+    Beside each, the points of the shared region on which the final base
+    leaves both rules undefeated: where the refused edge would decide now, and
+    of those, where its winner's queue is the truth. The cycle was closed at the
+    edge's birth; the final base is read at the run's end."""
+    action = {r["rule_id"]: r["action"] for r in record["rules"]}
+    born = {r["rule_id"]: r["born_at"] for r in record["rules"]}
+    tmask = MI.space_truth()
+    t_out = brows.restrict(tmask, MI.outside())
+    und = brows.undefeated_masks(eng)
+    edges = []
+    for (w, l, why), ch in zip(record.get("edge_log") or [], brows.channels_of(record)):
+        if why != EDGE_CYCLE or w not in eng.ext or l not in eng.ext:
+            continue
+        shared = eng.ext[w] & eng.ext[l]
+        both = shared & und[w] & und[l]
+        row: dict[str, Any] = {"winner": w, "loser": l, "channel": ch,
+                               "queues": [action[w], action[l]], "born_at": [born[w], born[l]],
+                               "same_queue": action[w] == action[l],
+                               "shared": shared.bit_count(), "contested": both.bit_count()}
+        if not row["same_queue"]:
+            row["space_full"] = pair_verdict(*better_over_space(w, l, eng.ext, action, tmask))
+            row["space_out"] = pair_verdict(*better_over_space(w, l, eng.ext, action, t_out))
+            row["contested_winner_right"] = (both & tmask[action[w]]).bit_count()
+            row["contested_loser_right"] = (both & tmask[action[l]]).bit_count()
+        edges.append(row)
+    return {"refused": len(edges), "edges": edges, **cycle_summary(edges)}
+
+
+def cycle_summary(edges: list[dict[str, Any]]) -> dict[str, Any]:
+    """`cycle_refused`'s counts, over one run's edges or an arm's."""
+    across = [r for r in edges if not r["same_queue"]]
+    out: dict[str, Any] = {"same_queue": len(edges) - len(across),
+                           "by_verdict": {}, "right": {}}
+    for key in ("space_full", "space_out"):
+        out["by_verdict"][key] = dict(sorted(collections.Counter(r[key] for r in across).items()))
+        right = [r for r in across if r[key] == RIGHT]
+        out["right"][key] = {
+            "edges": len(right),
+            "pairs": len({frozenset((r["winner"], r["loser"])) for r in right}),
+            "contested": sum(r["contested"] for r in right),
+            "contested_winner_right": sum(r["contested_winner_right"] for r in right)}
+    return out
+
+
 def edges_of(record: dict) -> dict[str, int]:
     return dict(collections.Counter(why for r in record["records"]
                                     for why in r.get("edge_reasons") or []))
@@ -317,8 +375,10 @@ def reported(runs: dict[str, list[dict]], records: dict[str, list[dict]],
     for rep in range(1, plan.REPS + 1):
         ch = references.closed_record("channel", "c", rep)
         got = ch_score.read_run(ch)
+        refused_cycle = cycle_refused(ch, got["engine"])
         channels[rep] = {"space": frac(got["space"]), "oncall": frac(got["oncall"]),
                          "refused": frac(refused_of(ch)), "calls": got["calls"],
+                         "cycle_refused": {k: v for k, v in refused_cycle.items() if k != "edges"},
                          "dates": [ch.get("started_at"), ch.get("_env", {}).get("recorded_at")]}
     out["channels_runs"] = {f"c_r{rep}": v for rep, v in channels.items()}
     for a in plan.ARMS:
@@ -340,7 +400,8 @@ def reported(runs: dict[str, list[dict]], records: dict[str, list[dict]],
                 "v1b": rec["v1b"], "refused": frac(r["refused"]), "drafts": list(r["drafts"]),
                 "calls": calls_of(rec), "calls_as_recorded": r["calls_as_recorded"],
                 "rounds": rounds_reported(rec), "births_left_out": births_left_out(rec),
-                "edges": edges_of(rec), "reports": ch_score.reports_of(rec),
+                "edges": edges_of(rec), "cycle_refused": cycle_refused(rec, eng),
+                "reports": ch_score.reports_of(rec),
                 "transcriber": {k: tx[k] for k in ("escalations", "impasses", "conflicts",
                                                    "errors", "calls", "space_right",
                                                    "space_points", "corpus_right",
@@ -352,6 +413,11 @@ def reported(runs: dict[str, list[dict]], records: dict[str, list[dict]],
                 "channels_run_under_the_same_draws": f"c_r{rep}",
                 "dates": [rec.get("first_kept"), rec.get("started_at"),
                           rec.get("_env", {}).get("recorded_at")]}
+    out["cycle_refused"] = {}
+    for a in plan.ARMS:
+        edges = [x for k, run in out["runs"].items() if k.startswith(f"{a}_")
+                 for x in run["cycle_refused"]["edges"]]
+        out["cycle_refused"][a] = {"refused": len(edges), **cycle_summary(edges)}
     out["direction"] = {}
     for a in plan.ARMS:
         rows_by_run = [r["edges"] for r in runs[a]]
