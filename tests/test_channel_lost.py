@@ -221,6 +221,52 @@ class TestTheEscalations(unittest.TestCase):
         self.assertEqual(L.escalations(rec, engine_of(rec), SPACE, TRUTH), [])
 
 
+class TestWhatTheUnplacedAnswersLeftOut(unittest.TestCase):
+    """Added after the first run."""
+
+    def esc(self, idx, verdict, unplaced, listed=("T", "A", "X")):
+        draft = {"action": SI, "conditions": S1["conditions"]}
+        return {"idx": idx, "verdict": verdict, "rule_id": None, "listed": list(listed),
+                "calls": [{"round": 0, "payload": draft},
+                          {"round": 1, "payload": draft, "unplaced": list(unplaced)}]}
+
+    def test_each_rule_left_out_by_its_relation_to_the_draft(self):
+        rec = record(escalations=[self.esc(4, L.UNPLACED, ["T", "A"]),
+                                  self.esc(2, L.BORN, [])])
+        got = L.left_out(rec, SPACE, TRUTH)
+        self.assertEqual(len(got), 1)
+        g = got[0]
+        self.assertEqual((g["idx"], g["listed"], g["left_out"]), (4, 3, 2))
+        # T contains the draft and X lies inside it: both nested. A crosses it.
+        self.assertEqual((g["listed_nested"], g["left_out_nested"]), (2, 1))
+        self.assertEqual(g["left_out_by_relation"], {"contains_draft": 1, "crossing": 1})
+        self.assertEqual(g["left_out_by_queue"], {AM: 1, T2: 1})
+        self.assertEqual(g["draft_queue_points"], (ext(S1) & TRUTH).bit_count())
+        self.assertTrue(g["answered"])
+        self.assertEqual(g["left_out_rules"], ["T", "A"])
+
+    def test_how_often_each_rule_was_left_out(self):
+        rec = record(escalations=[self.esc(4, L.UNPLACED, ["T", "A"]),
+                                  self.esc(3, L.UNPLACED, ["T"])])
+        got = L.added(rec, SPACE, TRUTH)
+        self.assertEqual(got["times_each_rule_was_left_out"], {"T": 2, "A": 1})
+        self.assertEqual(len(got["left_out"]), 2)
+
+    def test_the_rules_that_contain_the_whole_queue(self):
+        # T holds the keyword's half, not the non-keyword pro mobile points.
+        self.assertEqual(L.containers(record(), SPACE, TRUTH), [])
+        keyword = ext(r_("", 0, SI, has_security_keyword=True)) & TRUTH
+        got = L.containers(record(), SPACE, keyword)
+        self.assertEqual([c["rule_id"] for c in got], ["T"])
+        self.assertEqual(got[0]["born_at"], 1)
+
+    def test_an_unplaced_draft_that_never_came_back(self):
+        e = self.esc(4, L.UNPLACED, [])
+        e["calls"] = e["calls"][:1]
+        got = L.left_out(record(escalations=[e]), SPACE, TRUTH)
+        self.assertEqual((got[0]["answered"], got[0]["left_out"]), (False, 0))
+
+
 def run_(lost=100, unwritten=50, t2=50, widest=49, born=10, most=49, n=100):
     return {"queue_points": n,
             "ways": {"lost": lost, "unwritten": unwritten,
