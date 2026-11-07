@@ -757,21 +757,30 @@ The channel arm's silent errors are its unreported wrong decisions.
 >
 > - **The expectation was committed before any figure of the reading
 >   existed.** It is six clauses in the module's docstring, committed as
->   `6a974c0` on the reading's branch. The drafter had read this record whole
->   and `score.json`'s `CH-g`, and no rule, edge or escalation of any run.
+>   `6a974c0`, which is `f75398e` on `main`. The drafter had read this record
+>   whole and `score.json`'s `CH-g`, and no rule, edge or escalation of any run.
 > - **Four gates stood before any write.**
 >   - The replay is the base, and the queue's points decided right are Stage
 >     C's.
 >   - The ways partition the loss.
 >   - The curve ends at the base.
 >   - The escalations are the record's.
-> - **One part was added after the first run**, in `715505c`: what the queue's
->   unplaced answers left out, and the rules of another queue that contain the
->   whole queue. It carries no expectation and moves no clause.
+> - **One part was added after the first run**, in `715505c`, which is `3fc5d11`
+>   on `main`. It reads what the queue's unplaced answers left out, and the
+>   rules of another queue that contain the whole queue. It carries no
+>   expectation and moves no clause.
 >
-> Not a signed row; no verdict moves. The record is [`lost.json`](lost.json).
-> Its `_env` names `715505c`, the branch commit it was written from. It carries
-> `git_dirty` true for the untracked `AGENTS.md` and `code_dirty` false.
+> Not a signed row; no verdict moves.
+> - **The record** is [`lost.json`](lost.json), committed in `c8e1ca7` on
+>   `main`. It reached `main` in pull request #202.
+> - **Its `_env`** names the branch commit it was written from, `715505c`. It
+>   carries `git_dirty` true for the untracked `AGENTS.md` and `code_dirty`
+>   false.
+> - **The branch commit is `main`'s.** `715505c` and `3fc5d11` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #202 behind the `main` commit.
+> - **Its code digest**, `fbbf138c1fe5e1cb`, is the one `main` computes at
+>   `3fc5d11`.
 
 **How a lost point is classed.** A point of the queue the final base does not
 decide right is exactly one of:
