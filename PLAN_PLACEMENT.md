@@ -605,6 +605,24 @@ package was written, and its checks run, before the signature, as §7 asks.
     construction. `PL-f` is thin because the transcriber recalls 2/3 of
     `ONCALL_ESCALATION` under run 2's draws.
 - **OpenRouter's endpoint listing was read** (§2.8).
+- **[Added before signature, 2026-11-07, later] What `PL-g` reads as a right
+  edge refused for a cycle.** §0 named it and did not define it.
+  - **The definition.** An edge the engine refused for closing a cycle is
+    right when its declared winner is the better rule over the pair's shared
+    region. That is `rung3/edge_direction.py`'s `verdict`, as `RL-e` reads a
+    placed edge. Ties, regions neither rule is ever right on, and pairs of one
+    queue are counted apart. It is read on the whole space and on the half
+    without the keyword.
+  - **Beside each**, the points of the shared region the final base leaves both
+    rules undefeated on. Of those, it counts the ones where the winner's queue
+    is the truth.
+  - **Tested on `PLAN_CHANNEL.md`'s three channel runs.** It gives back that
+    record's 5, 84 and 26 edges refused for closing a cycle. In c r2 it gives
+    back the two edges over `R0075`, both right, and the 640 contested points
+    `FINDINGS_CHANNEL.md` names.
+  - **What it also showed**, which no record had published: 1, 44 and 14 of
+    those edges are right on the whole space. `PL-g` reports them beside this
+    plan's runs, and they inform no band.
 
 **Not seen, because nothing has produced it:**
 
