@@ -77,6 +77,27 @@ class TestHoldingWhole(unittest.TestCase):
         self.assertEqual(O.holds_whole(eng, T2, H04), ["C"])
 
 
+class TestTheContestedPairs(unittest.TestCase):
+    """Added after the first run."""
+
+    def test_a_pair_left_contested_with_its_refused_edge(self):
+        q = r_("Q", 0, OC, severity=1, customer_tier="enterprise")
+        x = r_("X", 1, T2, severity=1, product="integrations")
+        y = r_("Y", 2, T2, severity=1, product="api", customer_tier="enterprise")
+        eng = PriorityEngine(space=SPACE)
+        for r in (q, x, y):
+            eng.add(rule_from(r), born_at=r["born_at"], keep_id=True)
+        eng.try_edge("Q", "Y")
+        log = [["Q", "Y", "ok"], ["Q", "X", "cierra_ciclo"]]
+        w = L.ways(eng, ext(q), OC)
+        got = O.contested_pairs(eng, {"edge_log": log}, w, OC)
+        self.assertEqual([(p["queue_rule"], p["other_rule"]) for p in got], [("Q", "X")])
+        self.assertEqual(got[0]["points"], (ext(q) & ext(x)).bit_count())
+        self.assertEqual(got[0]["edges"], [{"winner": "Q", "loser": "X",
+                                            "verdict": "cierra_ciclo"}])
+        self.assertEqual(got[0]["other_born_at"], 1)
+
+
 def run_(lost=10, contested=5, holding=("R1",), verdicts=(L.BORN, L.BORN), most=11,
          final=10, right_h05=0):
     by = {k: {O.REACHED: 0, O.UNREACHED: 0} for k in O.SPLIT}
