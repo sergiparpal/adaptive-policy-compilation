@@ -178,8 +178,8 @@ the FINDINGS.
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
 `queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
-`reasoned_rule/ask.py`, and since 2026-10-31 `reasoned_loop/run.py`, all
-fourteen below. It
+`reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, and since
+2026-11-05 `channel/run.py`, all fifteen below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -996,13 +996,79 @@ agent's harness.** A supervisor ran them one at a time, resumed a run an outage
 had stopped about once an hour, and never passed the overwrite flag. §1 had
 placed every run in Sergi's terminal.
 
+**`PLAN_CHANNEL.md` closed on 2026-11-07: the loop under a trigger a deployment
+could have.** Six signed rows adjudicated, five held and one refuted, and one
+reported. Sergi signed §0 on 2026-11-05, before any figure it governs existed.
+- **What it asked.** It ran `PLAN_REASONED_LOOP.md`'s loop again with level 3's
+  manual and reasoning on, under v1b, three runs an arm, the arms alternating
+  in one period.
+  - **The channel arm** escalated a wrong decision of the base only when that
+    case's draw, fixed before the run from a string seed, fell below one half.
+    That is rung 4's feedback channel, with no delay and no noise.
+  - **The error arm** was `PLAN_REASONED_LOOP.md`'s, run again.
+  - **Neither** handed the proposer a label, or told it that the base had erred.
+- **Where it is written up.** The record is
+  `results_channel/FINDINGS_CHANNEL.md`, and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `channel/` refuses while the plan carries a
+  blank signature line. The gate reads `PLAN_CHANNEL.md` and no other plan, and
+  counts every such line.
+- **What it calls.** `reasoned_loop/`, `manual/`, `blind/`, `authorship/`,
+  `reuse/` and `rung2/` are called by it and not edited. Its proposer and its
+  asker are `reasoned_loop/`'s, with that plan's request and its resume.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m channel.run --dry-run                                  # CH-g1..CH-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m channel.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m channel.score                         # Stage C, free, from the runs
+    PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, never side by side
+
+**Half the reports compiled the policy in the median run, and not the rarest
+queue.** One channel run lost a queue after its reports had come and its drafts
+had been right. Under the same draws, a proposer that never errs lost nothing,
+so what that run lost was the loop's, not the channel's. A plan that reads a
+channel should set every run beside the transcriber under its own draws, as
+this one did, or the two cannot be told apart.
+
+**A supervisor that stops on a failed push stops the runs.** Git authenticates
+here through the Windows credential helper, called through WSL, and one push met
+its timeout. Nothing ran until the agent next looked. A supervisor should retry
+a push and go on, since the next push carries the commit.
+
+**A resumed record's `started_at` is its last launch's.** A commit message built
+from it gave one run the span of its last launch alone. Take a resumed run's
+span from its first launch.
+
+**A pinned provider's price can follow its load.** §1 priced the runs at a
+listing read days before. Baidu billed more per token in the hours it refused
+for the rate. Price a plan from its smoke run's bills, read by generation id,
+and say which listing a figure assumes.
+
+**A commit message written from a record can print a row's inputs.** Each run's
+message gave its calls, which `CH-f` reads, before Stage C, and the FINDINGS
+declares it. A plan whose rows read what the runs print should say in §0 what
+the runs' commits may show.
+
+**Its runs were launched by the agent, as §2.5 let Sergi choose.** A supervisor
+ran them one at a time and resumed a run an outage had stopped. It committed
+each record alone, pushed it to one pull request, and merged that pull request
+once CI was green on its last head.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
 the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
 builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
-and `reasoned_loop/protocol.py` ask through too, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
+`reasoned_loop/protocol.py`, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1092,7 +1158,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
 `queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
-`reasoned_rule/ask.py`, and since 2026-10-31, `reasoned_loop/run.py`.
+`reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, and since
+2026-11-05, `channel/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
