@@ -780,7 +780,7 @@ its figures existed.
 Its record is
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md).
 Its gate reads that plan and no other, counts its signature line, and guards its
-three writers. `reasoned_loop/`, `manual/`, `blind/`, `authorship/`, `reuse/` and
+four writers. `reasoned_loop/`, `manual/`, `blind/`, `authorship/`, `reuse/` and
 `rung2/` are called by it and not edited; its proposer and its asker are
 `reasoned_loop/`'s.
 
@@ -795,6 +795,7 @@ run stopped by an outage resumes from its partial file with the same command.
 python3 -m channel.run --dry-run                                  # CH-g1..CH-g3, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m channel.sample                        # Stage A · the draws, the transcriber and the references
 PYTHONHASHSEED=0 python3 -m channel.score                         # Stage C · CH-a to CH-f, and CH-g
+PYTHONHASHSEED=0 python3 -m channel.lost                          # POST-RUN · why c r1 lost SECURITY_INCIDENT
 PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B · spends · only on Sergi's say
 PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, one run at a time
 ```
@@ -1933,7 +1934,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             CH-g1..CH-g4 · blocking
 │   ├── sample.py            Stage A · the references
 │   ├── run.py               Stage B · the smoke run and the six runs · spends · resumes · the proposer's path
-│   └── score.py             Stage C · CH-a to CH-f and CH-g, gated on PLAN_CHANNEL.md
+│   ├── score.py             Stage C · CH-a to CH-f and CH-g, gated on PLAN_CHANNEL.md
+│   └── lost.py              POST-RUN · why c r1 lost SECURITY_INCIDENT: every lost point by what lost it
 │
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines

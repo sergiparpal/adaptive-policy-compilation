@@ -1027,6 +1027,7 @@ The first command is blocking and writes nothing:
     python3 -m channel.run --dry-run                                  # CH-g1..CH-g3; must pass first
     PYTHONHASHSEED=0 python3 -m channel.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m channel.score                         # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m channel.lost                          # POST-RUN: why c r1 lost SECURITY_INCIDENT
     PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, never side by side
 
@@ -1036,6 +1037,13 @@ had been right. Under the same draws, a proposer that never errs lost nothing,
 so what that run lost was the loop's, not the channel's. A plan that reads a
 channel should set every run beside the transcriber under its own draws, as
 this one did, or the two cannot be told apart.
+**Read POST-RUN, that run's broad drafts were refused.** The keyword's default,
+a rule of another queue, had been born before any broad rule of the queue, and
+it contains every draft of the queue. Each answer left it out, as the system
+prompt says, and v1b's placement round refused the answer, so no broad rule of
+the queue was ever born. A protocol that asks for a side against a rule nested
+with the draft can lose a whole queue to the order in which its rules were
+born. A plan that keeps it should say in §0 what a default born early does.
 
 **A supervisor that stops on a failed push stops the runs.** Git authenticates
 here through the Windows credential helper, called through WSL, and one push met
