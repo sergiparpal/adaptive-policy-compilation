@@ -2776,6 +2776,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    rarest queue's notes say why: a cut wins by containment, with no side
    declared. What the cuts cost each queue is free on the records. The
    FINDINGS' section *Whether the cut is why the loop's births are narrow*.
+   **[NOTE 2026-11-08, last] What the cuts cost, read POST-RUN.**
+   - **A cut costs where it is all the run drafted for its rule.** Of this
+     plan's 80 rule-runs with a cut, 58 also had a whole draft born, and lost
+     4,445 points of the space. The 10 where every draft was a cut lost 15,720,
+     at rules with one to three drafts a run.
+   - **Under v1c that is mostly the rarest queue.** `H04`'s and `H05`'s points
+     are 12,560 of the 15,215 v1c's three bases lose. Outside them a base loses
+     under one point in a hundred of the space.
+   - **Under v1b the unborn whole drafts cost more**: 17,700 points, against
+     none under v1c.
+
+   The FINDINGS' section *What the cuts cost*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

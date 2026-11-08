@@ -507,8 +507,18 @@ that leaves:
     (`FINDINGS_PLACEMENT.md`, *Whether the cut is why the loop's births are
     narrow*). Where a cut is possible, about seven narrow births in ten are one,
     in this plan's runs and in two earlier plans' on Baidu. What it leaves:
-    - **What the cuts cost each queue.** For each cut, how much of its governing
+    - ~~**What the cuts cost each queue.**~~ For each cut, how much of its governing
       rule's part no rule of the queue decides at the end. Free on the records.
+      **[NOTE 2026-11-08] Read POST-RUN** by `placement/cost.py`
+      (`FINDINGS_PLACEMENT.md`, *What the cuts cost*).
+      - **A cut costs where every draft for its rule was a cut**, at rules
+        whose tickets escalate one to three times a run.
+      - **Elsewhere a later draft wrote the region whole.**
+      - **Under v1c the cost is mostly the rarest queue**: 12,560 of the 15,215
+        points v1c's bases lose.
+
+      What it leaves is in *Why the loop writes narrow rules*, below: a first
+      call asking for the region whole.
     - **The narrow births that are no cut where one was possible.** 46 in this
       plan's runs. Free on the records.
 - **The two refusals v1c keeps.**
@@ -531,6 +541,11 @@ that leaves:
   rarest queue's notes say why: a cut wins by containment, with no side
   declared. A text that asks for the governing rule's region whole would test
   it. Another plan. See the item on `ONCALL_ESCALATION` above.
+  **[NOTE 2026-11-08, later] What it would buy, read POST-RUN.** Under v1c the
+  cuts cost mostly the rarest queue, whose rules escalate too rarely for a
+  later draft to write their region whole. Outside that queue v1c's bases lose
+  under one point in a hundred of the space. So such a plan's rows would read
+  the rarest queue first. `FINDINGS_PLACEMENT.md`, *What the cuts cost*.
 - **The direction of the placed edges.** In both arms they pointed at the better
   rule less often than a fixed ranking of the queues, by a wider gap than in
   `PLAN_CHANNEL.md`'s runs. Whether the round, the provider or the period
