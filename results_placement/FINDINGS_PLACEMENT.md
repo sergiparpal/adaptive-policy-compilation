@@ -44,6 +44,11 @@ signature.
 > - **Its code digest is `74dd22f0826b3731`**, not the package's, because
 >   `placement/oncall.py` was added after Stage C. The modules Stage C ran did
 >   not change.
+>
+> **[NOTE 2026-11-08, later] And a second.** [`provider.json`](provider.json)
+> reads the bridge at the queue's tickets. It carries code digest
+> `a515c2a31d3ccfbe`, because `placement/provider.py` was added after both.
+> Its section below says what it was written from.
 
 **This record owns every figure in it.**
 
@@ -1009,12 +1014,134 @@ least.** Five held, and P4 failed.
     period. The bridge asked the first calls at the queue's seven tickets of
     both providers on one day. Whether DeepInfra cut them there too is free on
     `bridge.json`.
+    **[NOTE 2026-11-08] Read POST-RUN**, in *Whether the cut is the provider's*,
+    below. At the two tickets that compiled the queue for c r3, DeepInfra cut
+    the part at every ask, the bridge's included. At two others both providers
+    cut it the same way.
   - **Whether the cut is why the loop writes narrow rules.** `PL-g` counts 70 of
     v1c's 213 births and 68 of v1b's 178 as their governing rule's region.
     Whether the others are cuts by a lower listed rule the ticket matches is free
     on the records.
   - **The two refusals v1c keeps, seen here.** One placement answer named no
     action. Another claimed containment over rules that cross its draft.
+
+---
+
+## Whether the cut is the provider's — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-08, after the reading above, and
+> run the same day. Zero API calls. `placement/provider.py` reads the bridge at
+> the queue's seven tickets.
+> - **What the bridge asked.** On 2026-11-07, before the first run, it asked
+>   the first call both arms send, level 3's system prompt and the ticket under
+>   v2b's blind base, once of Baidu and once of DeepInfra.
+> - **How it is read.** Each answer is read as `placement/oncall.py` reads a
+>   run's draft.
+> - **What it is set beside.** The runs' first-call drafts at the same tickets:
+>   this plan's six on DeepInfra, from `oncall.json`, and `PLAN_CHANNEL.md`'s six
+>   on Baidu, read from their records the same way.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is four clauses in the module's docstring, in the commit that
+>   added the module. The drafter had seen no answer of either provider in
+>   `bridge.json`.
+> - **Three gates stood before any write.**
+>   - Each ticket was asked once of each provider, in its first call.
+>   - Each is governed by `H04` or `H05`, and lies first in its region.
+>   - `PLAN_CHANNEL.md`'s drafts, read here, give back
+>     `results_channel/oncall.json`'s points.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`provider.json`](provider.json). Its `_env` names the
+>   commit that added the module, with `git_dirty` and `code_dirty` false. Its
+>   code digest is `a515c2a31d3ccfbe`.
+
+### 1. The bridge's answers at the queue's tickets
+
+| ticket | governing rule | Baidu | DeepInfra |
+|---|---|---|---|
+| 257 | `H05` | whole | whole |
+| 710 | `H05` | whole | cut by four products, 1,680 of 2,100 |
+| 954 | `H04` | whole | whole |
+| 982 | `H04` | cut by `H09`, product billing, 840 of 4,200 | the same |
+| 1432 | `H04` | cut by `H07`, product api, 840 of 4,200 | the same |
+| 1783 | `H05` | whole | whole |
+| 1951 | `H04` | whole | cut by `H17`, product integrations, 840 of 4,200 |
+
+*Whole* is a draft that holds its ticket's part whole.
+
+- **Both providers named `ONCALL_ESCALATION` at every ticket.** Every answer
+  ended `stop`, served by its pinned provider.
+- **At five tickets the two answers name the same conditions.** At three of
+  them both hold the part whole, and at two both make the same cut.
+- **Where they differ, Baidu holds the part and DeepInfra cuts it**, at 710 and
+  1951. The reverse never happened.
+- **Both providers cut at 982 and 1432**, each time by the first lower listed
+  rule the ticket matches that a cut changes, as the runs' drafts did.
+
+### 2. Beside the runs
+
+| ticket | governing rule | DeepInfra, run drafts holding the part | DeepInfra, the bridge | Baidu, run drafts holding the part | Baidu, the bridge |
+|---|---|---|---|---|---|
+| 257 | `H05` | 2 of 2 | whole | 2 of 4 | whole |
+| 710 | `H05` | 0 of 2 | cut | 2 of 2 | whole |
+| 954 | `H04` | 0 of 2 | whole | 2 of 5 | whole |
+| 982 | `H04` | no draft | cut | 0 of 1 | cut |
+| 1432 | `H04` | 0 of 4 | cut | 2 of 3 | cut |
+| 1783 | `H05` | no draft | whole | no draft | whole |
+| 1951 | `H04` | 0 of 5 | cut | 3 of 4 | whole |
+
+- **At the tickets of `H04`, DeepInfra held the part at none of its eleven run
+  drafts and at one of its four bridge answers.** Baidu held it at seven of
+  thirteen and at two of four.
+- **At 710 and 1951 the difference holds at every ask recorded.** DeepInfra
+  cut the part at all nine: three at 710 and six at 1951. Baidu held it at
+  seven of eight, and its one cut was e r2's at 1951.
+- **Elsewhere one ask a ticket reads a provider loosely.** At 954 DeepInfra held
+  `H04`'s part on the bridge, where both of its runs that escalated there cut it
+  by `H13`. At 1432 Baidu cut it on the bridge, where two of its three run
+  drafts held it.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| Q1 | none of DeepInfra's four answers at tickets of `H04` holds `H04`'s part whole | 1 of 4, at 954 | **fails** |
+| Q2 | at least two of Baidu's four answers at tickets of `H04` hold `H04`'s part whole | 2 of 4, at 954 and 1951 | holds |
+| Q3 | at more tickets Baidu's answer holds its part whole and DeepInfra's does not than the reverse | 2, at 710 and 1951, against none | holds |
+| Q4 | every DeepInfra answer that one listed rule cuts is cut by the first matched rule a cut changes, and there is one | 3 of 3, at 982, 1432 and 1951 | holds |
+
+**The drafter expected all four to hold, bet on Q3, trusted Q1 most and Q2
+least.** Three held. Q1, the clause trusted most, failed: DeepInfra held
+`H04`'s part once, at 954.
+
+### What it says
+
+- **On one day and one request, DeepInfra cut where Baidu did not, and never
+  the reverse.** Of the queue's seven tickets, Baidu's answer held the part at
+  five and DeepInfra's at three.
+- **The cut is not DeepInfra's alone.** Both providers cut at 982 and 1432, the
+  same way. The request makes the cut, and DeepInfra makes it more often.
+- **Under run 3's draws the difference fell on the two tickets that mattered.**
+  - The queue's escalations there were at 710, 1432 and 1951.
+  - At 710 and 1951 DeepInfra cut at every ask, and Baidu wrote the part
+    whole at seven asks of eight.
+  - c r3, on Baidu, recalled 14/15 of the queue from its drafts at 710 and 1951,
+    each holding its part whole.
+  - At 1432 both providers cut.
+  - So this plan's two runs under those draws lost the queue's region at the
+    first call, at the two tickets where Baidu's asks wrote it whole at seven of
+    eight.
+- **One ask a ticket is a sign, not an effect.** Away from 710 and 1951 each
+  provider's answers at a ticket differ from ask to ask. The bridge's two
+  tickets of difference are consistent with the runs, and they are two.
+- **What it leaves.**
+  - **A provider's spread beside the difference.** Each first call asked
+    several times of each provider on one day would measure it. Calls.
+  - **Why the request cuts.** Both providers cut where the first lower listed
+    rule a cut changes adds the ticket's product: api at 1432, by `H07`, and
+    billing at 982, by `H09`. A text that asks for the governing rule's region
+    whole is another plan. Calls.
 
 ---
 
@@ -1043,6 +1170,10 @@ results_placement/oncall.json        POST-RUN: channel/oncall.py's reading of ON
                                      ticket's part, the expectation's six clauses, and the part
                                      added after the first run: what each draft cut its part
                                      by, and each call's note
+results_placement/provider.json      POST-RUN: the bridge's two answers at each of the queue's
+                                     seven tickets read as drafts, the runs' first-call drafts
+                                     at the same tickets on DeepInfra and on Baidu, and the
+                                     expectation's four clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
