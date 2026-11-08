@@ -432,6 +432,10 @@ against, a threshold a next run would have to clear.
   Both runs under those draws drafted the queue right at every escalation of
   it, and their bases recall almost none of it, under either placement round.
   See *What `PLAN_PLACEMENT.md` opens*.
+  **[NOTE 2026-11-08, later] Read POST-RUN: the first call cut the region.** At
+  each of those escalations the draft was its governing rule's region cut by a
+  lower listed rule, or by several products, and the rounds refused most of the
+  cuts. See the same section.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -460,12 +464,30 @@ that leaves:
   nested rules 28 times. Whether the keyword's default came before the queue's
   broad drafts, as in c r1, is `channel/lost.py`'s reading on these runs. Free
   on the records.
-- **Why the runs under run 3's draws lost `ONCALL_ESCALATION`.** The draws
-  supply the queue: under them the transcriber compiles all of it, and c r3
-  recalled most of it on Baidu. Both of this plan's runs drafted it right at
-  every escalation of it, and their bases recall almost none of it.
-  `channel/oncall.py`'s reading on these bases would say what took its points.
-  Free on the records.
+- ~~**Why the runs under run 3's draws lost `ONCALL_ESCALATION`.**~~ **Read
+  POST-RUN on 2026-11-08** (`FINDINGS_PLACEMENT.md`, *Why the runs under run 3's
+  draws lost `ONCALL_ESCALATION`*), by `placement/oncall.py`, which calls
+  `channel/oncall.py`'s reading.
+  - **What decides the points.** Every point either run lost is unwritten. Rules
+    of `T2_TECHNICAL` and `T3_ENGINEERING` decide it, most of the form *severity
+    1 and one product*, and in v1b r3 the severity-1 default too.
+  - **What the first call wrote.** No draft held its part. Each was its
+    governing rule's region cut by a lower listed rule the ticket matches, `H07`
+    or `H17`, or by several products. In the six runs no draft at a ticket of
+    `H04` was its region whole, in eleven.
+  - **What the rounds did.** v1b refused all three cuts. v1c bore one. It refused
+    one whose placement answer named no action, and left one unplaced whose
+    answer claimed containment over 29 crossing rules.
+
+  So under draws that supply the queue, the loop lost it at the first call. What
+  it leaves:
+  - **Provider or period.** In `PLAN_CHANNEL.md`'s runs on Baidu, 7 of 13 drafts
+    at tickets of `H04` held its part's size. The bridge asked the queue's seven
+    tickets of both providers on one day. Free on `bridge.json`.
+  - **Whether the cut is why births are narrow.** 11 of the queue's 15 drafts in
+    the six runs are their governing rule's region cut by exactly the first lower
+    listed rule a cut changes. Whether the loop's other narrow births are such
+    cuts is free on the records.
 - **The two refusals v1c keeps.**
   - **A crossing rule left out.** Every answer v1c refused left out a crossing
     rule. A round that accepts a partial placement, and leaves the unplaced pair

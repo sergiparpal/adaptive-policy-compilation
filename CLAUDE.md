@@ -1113,6 +1113,7 @@ The first command is blocking and writes nothing:
     python3 -m placement.run --dry-run                                    # PL-g1..PL-g3; must pass first
     PYTHONHASHSEED=0 python3 -m placement.sample                          # Stage A, free
     PYTHONHASHSEED=0 python3 -m placement.score                           # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m placement.oncall                          # POST-RUN: why the runs under run 3's draws lost ONCALL_ESCALATION
     PYTHONHASHSEED=0 .venv/bin/python -m placement.run --smoke            # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m placement.run --bridge           # then the bridge, before the first run
     PYTHONHASHSEED=0 .venv/bin/python -m placement.run --arm v1c --rep 1  # then §2.4's order, never side by side
