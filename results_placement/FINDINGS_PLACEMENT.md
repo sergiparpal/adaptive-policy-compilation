@@ -15,6 +15,8 @@ commit of its own: `0b39ae8` on `main`.
   #213, merged on 2026-11-08.
 - **The POST-RUN reading of the loop's narrow births** reached it in #215,
   merged on 2026-11-08.
+- **The POST-RUN reading of what the cuts cost** reached it in #217, merged on
+  2026-11-08.
 
 Every record names in its `_env` the commit it was written from. Eight were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -64,7 +66,8 @@ signature.
 > **[NOTE 2026-11-08, last] And a fourth.** [`cost.json`](cost.json) sets every
 > base's lost points against what was drafted for the rule governing them. It
 > carries code digest `8e1812d6a034f5a4`, because `placement/cost.py` was added
-> after the other three. Its section below says what it was written from.
+> after the other three. It was written from `13f31dd`, on the branch of #217,
+> which is `0cf44f9` on `main`. Its section below names the pair's checks.
 
 **This record owns every figure in it.**
 
@@ -1301,9 +1304,9 @@ least.** All four held.
 >   `PLAN_CHANNEL.md`'s six and `PLAN_REASONED_LOOP.md`'s six, on Baidu.
 >
 > - **The expectation was committed before any figure of the reading
->   existed.** It is four clauses in the module's docstring, in the commit that
->   added the module. The drafter had seen no run's lost points by governing
->   rule.
+>   existed.** It is four clauses in the module's docstring, committed as
+>   `13f31dd`, which is `0cf44f9` on `main`. The drafter had seen no run's lost
+>   points by governing rule.
 >   - The first clause leaves out the points `H04` and `H05` govern.
 >   - From this record's tables the drafter could derive that the rarest
 >     queue's points are most of what v1c's bases lose.
@@ -1315,9 +1318,15 @@ least.** All four held.
 >   - Each escalation's ticket is governed as the record's row says.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`cost.json`](cost.json). Its `_env` names the commit that
->   added the module, with `git_dirty` and `code_dirty` false. Its code digest
->   is `8e1812d6a034f5a4`.
+> - **The record** is [`cost.json`](cost.json), committed in `e351910` on
+>   `main`. It reached `main` in pull request #217.
+> - **Its `_env`** names the branch commit it was written from, `13f31dd`, the
+>   expectation's. It carries `git_dirty` and `code_dirty` false.
+> - **The branch commit is `main`'s.** `13f31dd` and `0cf44f9` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #217 behind the `main` commit.
+> - **Its code digest**, `8e1812d6a034f5a4`, is the one `main` computes at
+>   `0cf44f9`.
 
 ### 1. Where the bases' lost points lie, by what was drafted for their rule
 
