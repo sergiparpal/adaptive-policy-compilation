@@ -1,5 +1,28 @@
 # PLAN_PLACEMENT — the placement round that lists only what the engine can still order, beside v1b, under half the errors reported
 
+> **[CLOSED 2026-11-08] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-07, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-08.
+> - **`PL-a`, `PL-b`, `PL-c` and `PL-d` hold**, `PL-c` thinly, as every hold of
+>   it is.
+> - **`PL-e` is refuted, thinly, and `PL-f` is refuted.**
+> - `PL-g` is reported.
+>
+> **The figures are owned by
+> [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md)**,
+> and no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Two estimates of this file were far from what happened.** §1 expected a v1c
+> run to make fewer calls than a v1b run, and at the medians v1c's runs made
+> more. §1 gave the runs' time at Baidu's pace, and DeepInfra's was slower. The
+> findings give both.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-11-07. The line is
+> kept unedited and this banner is its correction. The banner touches no line
+> of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-07, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
