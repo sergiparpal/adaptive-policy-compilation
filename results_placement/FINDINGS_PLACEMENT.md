@@ -785,6 +785,10 @@ whose rule was not born, unplaced or refused.
 2. **Why the runs under run 3's draws lost `ONCALL_ESCALATION`**, in both arms,
    with the queue drafted right at every escalation of it. Which rules decide its
    points, and when they came, would take a reading of those bases.
+   **[NOTE 2026-11-08] Read POST-RUN**, in *Why the runs under run 3's draws lost
+   `ONCALL_ESCALATION`*, below. No draft was its part whole. Each first call cut
+   the governing rule's region by a lower listed rule the ticket matches, or by
+   several products. Under v1b none of the cuts was born, and under v1c one was.
 3. **Which exclusion does what** (§13, item 1). The rounds are classed by what
    each exclusion left out. What each does to the graph, and so to the edges
    refused for a cycle, is not separated.
@@ -797,6 +801,201 @@ whose rule was not born, unplaced or refused.
    manual's identifiers** (§13).
 7. **One model, one provider, one manual, one arrival order, one coverage, and
    three runs an arm.**
+
+---
+
+## Why the runs under run 3's draws lost `ONCALL_ESCALATION` — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-08, after Stage C, and run the same
+> day. Zero API calls. `placement/oncall.py` calls `channel/oncall.py`'s reading
+> for this queue in every run of this plan, and does not copy it. That reading
+> splits each way a point was lost by the listed region that holds the point:
+> **`H04`'s part**, 4,200 points, and **`H05`'s part**, 2,100. Under run 3's
+> draws the channel reached both. In each arm it reported two of `H04`'s four
+> tickets and one of `H05`'s three.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is six clauses in the module's docstring, in the commit that
+>   added the module. The drafter had read this record whole. It had seen no
+>   rule, edge, escalation or draft of this queue in any of this plan's runs, nor
+>   `bridge.json`'s answers at its tickets, nor `results_channel/oncall.json`.
+> - **Seven gates stood before any write.**
+>   - Gates 1 to 5 are `channel/oncall.py`'s.
+>   - Gate 6: every escalation on a ticket of the queue is governed by `H04` or
+>     `H05`.
+>   - Gate 7, added after the first run: each such ticket lies first in its
+>     governing rule's region.
+> - **One part was added after the first run.** It reads what each draft cut
+>   its part by, and each call's note. Its flag was changed once, after a run of
+>   it and before any of its figures was cited. It first read the very next rule
+>   the ticket matches, which for most tickets was `H06` or `H08`. Those regions
+>   contain the governing rule's, so a cut by them changes nothing. The part
+>   carries no expectation and moves no clause.
+> - **The six clauses came back the same from each of the three commits the
+>   reading ran from.**
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`oncall.json`](oncall.json). Its `_env` names the commit
+>   of the flag's change, with `git_dirty` and `code_dirty` false. Its code
+>   digest is `74dd22f0826b3731`.
+
+### 1. What the two runs lost, by part
+
+| run | part | the queue's points | decided right | lost | unwritten | conflict or outranked |
+|---|---|---|---|---|---|---|
+| `v1c r3` | `H04`'s | 4,200 | 0 | 4,200 | 4,200 | 0 |
+| `v1c r3` | `H05`'s | 2,100 | 420 | 1,680 | 1,680 | 0 |
+| `v1b r3` | `H04`'s | 4,200 | 0 | 4,200 | 4,200 | 0 |
+| `v1b r3` | `H05`'s | 2,100 | 0 | 2,100 | 2,100 | 0 |
+
+- **Every point either run lost is unwritten.** Another queue decides it, and
+  no rule of the queue matches it. Neither run has an impasse, a conflict or an
+  outranked point on the queue.
+- **To whom.**
+  - In v1c r3, 3,360 points go to `T2_TECHNICAL` and 2,520 to
+    `T3_ENGINEERING`.
+  - In v1b r3, 4,140 go to `T2_TECHNICAL`, 1,260 to `T3_ENGINEERING`, 640 to
+    `ACCOUNT_MANAGER` and 260 to `BILLING_SPECIALIST`.
+- **Through which rules.** The record lists every rule of another queue that is
+  undefeated on the lost points.
+  - In v1c r3 they are ten rules of `T2_TECHNICAL` and `T3_ENGINEERING`, seven of
+    them of the form *severity 1 and one product*.
+  - In v1b r3, `R0053`, *severity 1* to `T2_TECHNICAL`, born at case 851,
+    contains the whole queue and is undefeated on 2,520 of its points.
+  - In v1c r3 the rule that contains the whole queue is `R0029`, *severity 1 or
+    more* to `T1_GENERAL`, born at case 116. It is undefeated on none of the
+    lost points.
+
+### 2. The queue's drafts, and what became of them
+
+The same three tickets escalated in both runs. The draft is the first call's
+rule, and its points are those of the ticket's part.
+
+| case | governing rule | the draft | its points of the part | under v1c r3 | under v1b r3 |
+|---|---|---|---|---|---|
+| 710 | `H05` | `H05`'s region cut by `H17`, product integrations | 420 of 2,100 | born, as `R0058` | unplaced: its answer left out `R0028`, a rule of `T3_ENGINEERING` containing the draft |
+| 1432 | `H04` | `H04`'s region cut by `H07`, product api | 840 of 4,200 | refused: the placement answer named no action | unplaced: it left out 4 rules containing the draft and 6 crossing it |
+| 1951 | `H04` | v1c r3: `H04`'s region with four products of five. v1b r3: cut by `H17`, product integrations | 3,360 and 840 of 4,200 | unplaced: its answer gave no side to any of the 29 crossing rules listed | unplaced: it left out 2 containing rules and 7 crossing |
+
+- **No draft held its part whole.** At cases 710 and 1432 both runs drew the
+  same extension. At case 1951 they drew different ones.
+- **The first call cut the governing rule's region, and its note says why.**
+  Five of the six drafts are that region cut by exactly the first listed rule
+  below it that the ticket matches and that a cut changes: `H07` or `H17`. Each
+  first call's note names that rule. In translation from the record's Spanish,
+  at case 1432 under v1c:
+
+  > This rule combines the conditions of H04 (severity=1, enterprise) and H07
+  > (severity=1, product=api) to resolve the conflict, being a more specific
+  > case of both. Automatic containment prioritises it over H04 and H07, without
+  > any need to declare priority.
+
+  - **Three of the five notes say the cut wins by containment**, with no side
+    declared.
+  - **The other two declare a side against `H17`.** That is the manual's
+    identifier, which names no rule of a base and is dropped.
+- **v1b refused every cut**, as it refused c r1's drafts of `SECURITY_INCIDENT`.
+  - At case 710 the only rule the answer left out contains the draft. The
+    answer says why, in translation: *R0028 (integrations + severity<=2 -> T3)
+    is contained automatically, so it is not declared.*
+  - At cases 1432 and 1951 the answers also left out rules that cross the draft.
+- **v1c bore one of its three** (`P4` fails).
+  - At case 1432 the placement round's answer named no action, and the
+    validator refused it.
+  - At case 1951 the draft covers four products. Its answer gave no side to any
+    of the 29 rules listed, all crossing it. Its note said the draft is a
+    particular case of `H04` and of the product rules, and so wins by automatic
+    containment. A rule with four products lies inside no rule with one, and the
+    round left it unplaced.
+- **The curve.** v1c r3 decided 420 of the queue's points after case 710, when
+  `R0058` was born, and never more. v1b r3 never decided any.
+
+### 3. Beside the other four runs, and beside `PLAN_CHANNEL.md`'s
+
+| run | `H04`'s part right | `H05`'s part right | the queue's drafts: case, part, points of it, verdict |
+|---|---|---|---|
+| `v1c r1` | 1,680 | 1,680 | 257: `H05`, whole, born · 1432: `H04`, 840, born · 1951: `H04`, 840, born |
+| `v1b r1` | 2,520 | 1,840 | 257: `H05`, whole, born · 1432: `H04`, 2,520, born |
+| `v1c r2` | 2,560 | 0 | 954: `H04`, 3,200, born · 1951: `H04`, 840, unplaced |
+| `v1b r2` | 3,400 | 0 | 954: `H04`, 3,200, born · 1951: `H04`, 840, born |
+| `v1c r3` | 0 | 420 | 710: `H05`, 420, born · 1432: `H04`, 840, refused · 1951: `H04`, 3,360, unplaced |
+| `v1b r3` | 0 | 0 | 710: `H05`, 420, unplaced · 1432: `H04`, 840, unplaced · 1951: `H04`, 840, unplaced |
+
+- **No draft at a ticket of `H04` was `H04`'s region whole, in eleven.** Of the
+  queue's 15 drafts in the six runs, 11 are their governing rule's region cut by
+  exactly the first lower listed rule the ticket matches that a cut changes:
+  `H07`, `H13` or `H17`.
+  - Two are `H05`'s region whole, both at case 257, under run 1's draws.
+  - Two cut `H04`'s region by several products at once: v1b r1's at case 1432
+    and v1c r3's at case 1951.
+- **What a run recalls of `H04`'s part is what its born cuts hold**, less 640
+  points v1c r2 lost to an edge. v1c r1 and v1b r2 bore two cuts each, and v1b
+  r1 one wider cut.
+- **On Baidu the queue's tickets drew the region whole more often.**
+  `results_channel/oncall.json` gives each escalation's governing rule and its
+  draft's points of the queue, the points `FINDINGS_CHANNEL.md` tables in *Why
+  c r2 recalled less `ONCALL_ESCALATION` than its draws allow*. In
+  `PLAN_CHANNEL.md`'s six runs, 7 of the 13 drafts at tickets of `H04` held
+  4,200 of the queue's points, the part's size. Under run 3's draws c r3 drew
+  `H05`'s region whole at case 710 and `H04`'s at case 1951, and recalled 14/15
+  of the queue.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| P1 | in both runs no draft at an escalation of the queue holds its ticket's part whole | none of 3, in each | holds |
+| P2 | in both runs no rule of the queue holds `H04`'s part whole, and none holds `H05`'s | none does | holds |
+| P3 | in both runs at least half of the lost points are unwritten | 5,880 of 5,880, and 6,300 of 6,300 | holds |
+| P4 | in v1c r3 every escalation of the queue ended with its rule born | 1 of 3 | **fails** |
+| P5 | in v1b r3 no escalation of the queue ended with its rule born | 0 of 3 | holds |
+| P6 | in both runs after no birth did the base decide half of the queue's points right or more | 420 and 0, of 6,300 | holds |
+
+**The drafter expected all six to hold, bet on P1, trusted P6 most and P5
+least.** Five held, and P4 failed.
+- **What the account got right.** The drafts were narrower than their parts, and
+  what they did not reach stayed with the rules that had decided it before any
+  draft. v1b refused all three, and at case 710 for the reason the account gave:
+  the one rule left out contains the draft.
+- **What it got wrong.** v1c did not bear its drafts. Of three it bore one,
+  refused one whose placement answer named no action, and left one unplaced
+  whose answer claimed containment over crossing rules. Under v1b two of the
+  three refusals also left out crossing rules, which the account did not name.
+
+### What it says
+
+- **What lost the queue under run 3's draws is the first call's cut.** It was
+  not the supply, and not the round alone.
+  - The channel reported three of the queue's seven tickets in each run, and at
+    each the proposer drafted the right queue.
+  - In this plan's six runs it drafted `H04`'s region whole at none of eleven
+    escalations. It drafted `H05`'s whole only at case 257, which run 3's draws
+    do not report.
+  - Born, the cuts of either run would still have left part of each part
+    unwritten, since none holds a part whole (P1). The rounds' refusals took
+    the rest.
+  - The transcriber writes the governing rule's region whole and places it by
+    the list's order. That is why it compiles the queue under the same draws.
+- **The cut is how the proposer ordered its rule without declaring a side.**
+  - The ticket matches its governing rule and lower listed rules.
+  - At 11 of the queue's 15 escalations in the six runs, the proposer wrote the
+    governing rule's region cut by the first of those a cut changes.
+  - Under run 3's draws, three of the five cuts carry a note saying the cut beats
+    both rules by containment, with no side declared.
+  - Born, a cut decides only its own points. The rest of the part stays with the
+    rules that decided it before any draft.
+- **What it leaves.**
+  - **Provider or period.** No draft at a ticket of `H04` was its region whole
+    on DeepInfra, against seven of thirteen on Baidu in the other plan's
+    period. The bridge asked the first calls at the queue's seven tickets of
+    both providers on one day. Whether DeepInfra cut them there too is free on
+    `bridge.json`.
+  - **Whether the cut is why the loop writes narrow rules.** `PL-g` counts 70 of
+    v1c's 213 births and 68 of v1b's 178 as their governing rule's region.
+    Whether the others are cuts by a lower listed rule the ticket matches is free
+    on the records.
+  - **The two refusals v1c keeps, seen here.** One placement answer named no
+    action. Another claimed containment over rules that cross its draft.
 
 ---
 
@@ -819,6 +1018,12 @@ results_placement/loop_{v1b,v1c}_r{1,2,3}.json
                                      left out and why, its calls, attempts, seconds and
                                      reasoning, and rung 2's metrics
 results_placement/score.json         Stage C: the six verdicts with their runs, and PL-g
+results_placement/oncall.json        POST-RUN: channel/oncall.py's reading of ONCALL_ESCALATION
+                                     in every run, each way split by H04's part and H05's, the
+                                     rules holding either part whole, each draft against its
+                                     ticket's part, the expectation's six clauses, and the part
+                                     added after the first run: what each draft cut its part
+                                     by, and each call's note
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
