@@ -110,13 +110,32 @@ queue in any of this plan's six runs, any winner on its points, its curve,
 `bridge.json`'s answers at the queue's tickets, and `results_channel/oncall.json`.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHAT EACH DRAFT CUT ITS PART BY, AND ITS NOTES
+--------------------------------------------------------------------------
+The first run found the queue's drafts narrower than their parts: all six under
+run 3's draws, and every draft of `H04`'s part in every run. Each note read in the
+records said the draft was the overlap of its governing rule with another listed
+rule, and would win by containment. So, for every escalation on a ticket of the
+queue, in every run, this part reads:
+- the listed rules the ticket's point lies in, in the list's order;
+- the listed rules whose region, cut by the governing rule's region, is the
+  draft exactly, and whether the next rule the ticket matches is one of them;
+- each call's note whole, the listed identifiers it cites, and its sides.
+
+And a seventh gate: each of the queue's tickets lies first in its governing
+rule's region, so the list's order the part reads is the record's.
+
+It was written after the six clauses above had been read. It carries no
+expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-08, after Stage C. The expectation
 above was written and committed before the reading ran. Not a signed row, not on
 `STATUS.md`'s scoreboard, not a calibration event. Zero API calls.
 
-Usage:  python3 -m placement.oncall --dry-run   # gates 1 to 6; writes nothing
+Usage:  python3 -m placement.oncall --dry-run   # gates 1 to 7; writes nothing
         PYTHONHASHSEED=0 python3 -m placement.oncall
 """
 
@@ -124,6 +143,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from fractions import Fraction
 from typing import Any
@@ -134,6 +154,7 @@ from harness.provenance import describe, environment
 from channel import lost as L
 from channel import oncall as O
 from manual import instrument as MI
+from reasoned_loop import governed as gv
 from reasoned_loop import references as rl_refs
 from reasoned_loop import unplaced as un
 from reuse import structure as st
@@ -149,10 +170,17 @@ RUNS = (("v1c", 3), ("v1b", 3))    # the two runs under run 3's draws, which the
 # The expectation's line.
 P_HALF = F(1, 2)
 
+# A listed rule's identifier inside a note, anchored so it matches no longer word.
+CITED = re.compile(r"\bH(?:0[1-9]|1[0-9]|2[0-9])\b")
+
 PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-08, after Stage C. The expectation in "
     "the module's docstring was written and committed before the reading ran. Not a "
     "signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: each run's `cuts`, "
+    "what each of the queue's drafts cut its part by and what its notes say, and "
+    "gate 7. No expectation; no clause moves.")
 
 
 def record_path():
@@ -227,26 +255,95 @@ def governed_by_a_part(ds: list[dict[str, Any]], parts: dict[str, int]) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: what each draft cut its part by, and its notes
+# ---------------------------------------------------------------------------
+
+def matched(point: int, regions: dict[str, int]) -> list[str]:
+    """The listed rules a ticket's point lies in, in the list's order."""
+    return [x for x in sorted(regions) if regions[x] & point]
+
+
+def cut_by(draft: int | None, gov: str | None,
+           regions: dict[str, int]) -> list[str] | None:
+    """The listed rules whose region, cut by the governing rule's region, is the
+    draft exactly. None when the draft names no condition or the governing rule
+    is not listed, and none when the draft is the governing rule's region, which
+    no rule cut."""
+    if draft is None or gov not in regions:
+        return None
+    g = regions[gov]
+    if draft == g:
+        return []
+    return [x for x in sorted(regions) if x != gov and g & regions[x] == draft]
+
+
+def notes(esc: dict) -> list[dict[str, Any]]:
+    """Each call of an escalation: its note whole, the listed identifiers it
+    cites, and its sides."""
+    out = []
+    for c in esc.get("calls") or []:
+        p = c.get("payload") or {}
+        note = p.get("note")
+        out.append({"round": c.get("round"), "note": note,
+                    "cites": sorted(set(CITED.findall(note or ""))),
+                    "beats": p.get("beats"), "loses_to": p.get("loses_to")})
+    return out
+
+
+def cuts(record: dict, space: Space, regions: dict[str, int],
+         cases: tuple) -> list[dict[str, Any]]:
+    """Every escalation on a ticket of the queue: the listed rules its ticket
+    matches, what its draft cut the governing rule's region by, and its notes."""
+    rows = {r["idx"]: r for r in record["records"]}
+    out = []
+    for esc in record["escalations"]:
+        row = rows.get(esc["idx"], {})
+        if row.get("truth") != QUEUE:
+            continue
+        gov = row.get("truth_rule")
+        d = draft_ext(((esc.get("calls") or [{}])[0]).get("payload"), space)
+        m = matched(gv.point_of(cases[esc["idx"]], space), regions)
+        cut = cut_by(d, gov, regions)
+        out.append({"idx": esc["idx"], "governing": gov, "matched": m,
+                    "first_match_is_governing": bool(m) and m[0] == gov,
+                    "cut_by": cut,
+                    "cut_by_the_next_match": bool(cut) and len(m) > 1 and m[1] in cut,
+                    "notes": notes(esc)})
+    return out
+
+
+def first_match_governs(cs: list[dict[str, Any]]) -> bool:
+    """Gate 7."""
+    return all(c["first_match_is_governing"] for c in cs)
+
+
+# ---------------------------------------------------------------------------
 # Every run, read whole
 # ---------------------------------------------------------------------------
 
 def read_all_runs(records: dict[str, dict], stage_c: dict[str, Any]) -> dict[str, Any]:
     """`channel/oncall.py`'s reading of every run, with this reading's part and
-    gate 6 beside it."""
+    gate 6 beside it, and what was added after the first run with gate 7."""
     space = MI.space()
     truth = MI.space_truth()[QUEUE]
     regions = rl_refs.regions()
+    cases = MI.corpus()
     p = O.parts(truth, regions)
     runs = O.read_all_runs(records, stage_c_as_channel(stage_c))
     for t, rec in records.items():
         final = MI.final_engine(rec)
         ds = drafts(rec, final, space, p, regions, truth)
+        cs = cuts(rec, space, regions, cases)
         runs[t]["holding_h05_whole"] = O.holds_whole(final, QUEUE, p[H05])
         runs[t]["drafts"] = ds
-        runs[t]["reading"]["gates"].append(
+        runs[t]["cuts"] = cs
+        runs[t]["reading"]["gates"] += [
             {"gate": 6, "what": "every escalation on a ticket of the queue is governed "
                                 "by H04 or H05",
-             "passes": governed_by_a_part(ds, p)})
+             "passes": governed_by_a_part(ds, p)},
+            {"gate": 7, "what": "each of the queue's tickets lies first in its governing "
+                                "rule's region",
+             "passes": first_match_governs(cs)}]
     return runs
 
 
@@ -325,7 +422,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Why the runs under run 3's draws lost "
                                              "ONCALL_ESCALATION (POST-RUN, free).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="run gates 1 to 6 and stop; writes nothing")
+                    help="run gates 1 to 7 and stop; writes nothing")
     args = ap.parse_args(argv)
     gate = plan.refuse_unsigned(f"placement/oncall.py writes {record_path()}")
     records, stage_c = read_all()
@@ -345,6 +442,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": stage_c["_env"].get("git_commit")},
         "surface": "the exhaustive space, 134,400 points",
