@@ -178,8 +178,9 @@ the FINDINGS.
 2026-10-17 `ranking/ask.py`, since 2026-10-21 `manual/ask.py` and
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
 `queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
-`reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, and since
-2026-11-05 `channel/run.py`, all fifteen below. It
+`reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, since
+2026-11-05 `channel/run.py`, and since 2026-11-07 `placement/run.py`, all
+sixteen below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1076,6 +1077,79 @@ ran them one at a time and resumed a run an outage had stopped. It committed
 each record alone, pushed it to one pull request, and merged that pull request
 once CI was green on its last head.
 
+**`PLAN_PLACEMENT.md` closed on 2026-11-08: the placement round that lists only
+what the engine can still order, beside v1b.** Six signed rows adjudicated, four
+held and two refuted, and one reported. Sergi signed §0 on 2026-11-07, before
+any figure it governs existed.
+- **What it asked.** It ran `PLAN_CHANNEL.md`'s channel arm again with level 3's
+  manual and reasoning on, three runs a round, the rounds alternating, run `k`
+  of each under the draws of that plan's c r`k`.
+  - **v1b** is that plan's placement round, called and not changed.
+  - **v1c** lists a rule of another queue that the draft meets only when
+    neither strictly contains the other, and their shared region is not wholly
+    governed when the round is listed. A round whose list comes out empty is
+    not sent.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with a same-day bridge of first calls asked of Baidu and of DeepInfra.
+- **Where it is written up.** The record is
+  `results_placement/FINDINGS_PLACEMENT.md`, and `STATUS.md` indexes its
+  figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `placement/` refuses while the plan carries a
+  blank signature line. The gate reads `PLAN_PLACEMENT.md` and no other plan,
+  and counts every such line.
+- **What it calls.** `channel/`, `reasoned_loop/`, `queue_alone/`, `manual/`,
+  `blind/`, `authorship/`, `edges/`, `fidelity/`, `reuse/`, `rung2/` and
+  `rung3/` are called by it and not edited. Its proposer and its asker are
+  `reasoned_loop/`'s, with this plan's pin.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m placement.run --dry-run                                    # PL-g1..PL-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m placement.sample                          # Stage A, free
+    PYTHONHASHSEED=0 python3 -m placement.score                           # Stage C, free, from the runs
+    PYTHONHASHSEED=0 .venv/bin/python -m placement.run --smoke            # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m placement.run --bridge           # then the bridge, before the first run
+    PYTHONHASHSEED=0 .venv/bin/python -m placement.run --arm v1c --rep 1  # then §2.4's order, never side by side
+
+**Listing only what the engine can still order compiled the policy in every
+run** (`PL-c` holds, thin), **and v1b, beside it, did not compile it again**
+(`PL-e` refuted, thin). What the new round still refuses is a crossing rule left
+out. A plan that changes what a round lists should say in §0 what the round
+keeps refusing.
+
+**An acceptance rate a list can move is partly mechanical.** `PL-a` held in
+part because v1c stopped listing what the proposer leaves out: an answer cannot
+leave out a rule it is not shown. §0 said so, and the rows that read the truth
+carried the result. A plan that bands an acceptance rate should band what the
+accepted rules decide beside it.
+
+**The supply is not the whole of the rarest queue.** Under draws that let the
+transcriber compile it, both rounds' bases lost it, with the queue drafted right
+at every escalation of it (`PL-f` refuted). A plan that reads a rare queue
+should set each run beside the transcriber under its own draws, as this one
+did, before it blames the trigger.
+
+**A supervisor's test for an open pull request must read an empty list as
+none.** This one read a field of the first pull request, printed `null null`
+while none existed, took it for a closed one, and skipped its first push. The
+agent pushed and opened the pull request by hand.
+
+**The pin to DeepInfra met no refusal for the rate**, in the smoke run, the
+bridge or the runs, and billed one price throughout, below its listing. It
+answered more slowly than Baidu. A plan that pins it should price its time from
+the smoke run's calls, and say how few they are.
+
+**Its runs were launched by the agent, as §2.7 let Sergi choose.** A supervisor
+ran the bridge and the six runs one at a time, committed each record alone,
+pushed it to one pull request, and merged that pull request once CI was green
+on its last head.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1083,7 +1157,8 @@ the one `ranking/ask.py` builds, since 2026-10-21 the one `manual/ask.py`
 builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
 and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
-`reasoned_loop/protocol.py`, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+`reasoned_loop/protocol.py`, and `placement/run.py` through the asker
+`placement/protocol.py` pins, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1173,8 +1248,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-10-17, `ranking/ask.py`, since 2026-10-21, `manual/ask.py` and
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
 `queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
-`reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, and since
-2026-11-05, `channel/run.py`.
+`reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, since
+2026-11-05, `channel/run.py`, and since 2026-11-07, `placement/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

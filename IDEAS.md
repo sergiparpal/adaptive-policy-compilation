@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 7, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 8, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -99,7 +99,10 @@ half its errors, beside the error arm again, closed on November 7, 2026**:
 reported, written up in `results_channel/`. **Why its c r1 lost
 `SECURITY_INCIDENT`, and why its c r2 recalled less `ONCALL_ESCALATION` than its
 draws allow, were read POST-RUN the same day**, and the items they answer are
-struck in place. This is a
+struck in place. **The placement round that lists only what the engine can
+still order, beside v1b, closed on November 8, 2026**: `PLAN_PLACEMENT.md`, six
+signed rows, four held and two refuted, and one reported, written up in
+`results_placement/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -111,6 +114,20 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **A placement round that asks only for what the engine can order.** November
+  8, 2026, `PLAN_PLACEMENT.md`, eighty-four cents. `PLAN_CHANNEL.md`'s channel
+  arm ran again on DeepInfra, three runs under v1b and three under v1c,
+  alternating, each pair under one set of draws. v1c's round left out the rules
+  nested with the draft and those whose shared region third rules already
+  govern.
+  - **It took most of the refusals away**, and what it still refuses is a
+    crossing rule left out.
+  - **Its bases compiled the policy in every run**, and none lost
+    `SECURITY_INCIDENT`. v1b, beside it, did not compile the policy again in
+    the median run.
+  - **Neither compiled the rarest queue**, even under draws that supply it.
+
+  What it leaves is in its own section below. `results_placement/`.
 - **Run the loop under a trigger a deployment could have.** November 7, 2026,
   `PLAN_CHANNEL.md`, seventy-nine cents. `PLAN_REASONED_LOOP.md`'s loop ran
   again with level 3's manual and reasoning on, under rung 4's feedback channel
@@ -410,6 +427,11 @@ against, a threshold a next run would have to clear.
   in the same period, recalls it at a median of 1. So with reasoning on, a
   trigger a deployment could have asks about the class; what it lacks is enough
   of its tickets. See *What `PLAN_CHANNEL.md` opens*.
+  **[NOTE 2026-11-08] Not only its tickets.** Under `PLAN_PLACEMENT.md`, run
+  3's draws supply the queue: the transcriber compiles all of it under them.
+  Both runs under those draws drafted the queue right at every escalation of
+  it, and their bases recall almost none of it, under either placement round.
+  See *What `PLAN_PLACEMENT.md` opens*.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -419,6 +441,73 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_PLACEMENT.md` opens and does not resolve
+
+Closed November 8, 2026. It ran `PLAN_CHANNEL.md`'s channel arm again, with level
+3's manual and reasoning on, pinned to DeepInfra: three runs under v1b and three
+under v1c, alternating, run `k` of each under the draws of `PLAN_CHANNEL.md`'s c
+r`k`. v1c's placement round left out the rules nested with the draft and those
+whose shared region third rules already govern. It took most of the refusals
+away and compiled the policy in every run, and it did not compile the rarest
+queue. v1b, beside it, did not compile the policy again in the median run. What
+that leaves:
+
+- **Why v1b r1 and v1b r3 lost part of `SECURITY_INCIDENT`.** Every v1c run
+  recalls more of the queue than either. v1b's unplaced answers left out only
+  nested rules 28 times. Whether the keyword's default came before the queue's
+  broad drafts, as in c r1, is `channel/lost.py`'s reading on these runs. Free
+  on the records.
+- **Why the runs under run 3's draws lost `ONCALL_ESCALATION`.** The draws
+  supply the queue: under them the transcriber compiles all of it, and c r3
+  recalled most of it on Baidu. Both of this plan's runs drafted it right at
+  every escalation of it, and their bases recall almost none of it.
+  `channel/oncall.py`'s reading on these bases would say what took its points.
+  Free on the records.
+- **The two refusals v1c keeps.**
+  - **A crossing rule left out.** Every answer v1c refused left out a crossing
+    rule. A round that accepts a partial placement, and leaves the unplaced pair
+    to conflict, is another plan (§2.3 of `PLAN_PLACEMENT.md`). Calls.
+  - **A right edge refused for closing a cycle.** v1c's right refused edges
+    leave far fewer points open at the end than v1b's. Which edge of a cycle
+    should yield is free on the records, and has not been read on these bases.
+- **Which exclusion does what.** One arm carries both. The rounds are classed by
+  what each exclusion left out, and what each does to the graph is not
+  separated. A run per exclusion would separate them. Calls.
+- **Why the loop writes narrow rules.** v1c left the first call as it was, and
+  its births were their governing rule's region no more often than v1b's. The
+  re-ask of the loop's first calls, under *What `PLAN_REASONED_LOOP.md` opens*,
+  is another plan.
+- **The direction of the placed edges.** In both arms they pointed at the better
+  rule less often than a fixed ranking of the queues, by a wider gap than in
+  `PLAN_CHANNEL.md`'s runs. Whether the round, the provider or the period
+  widened it is open. Free on the records for the round; calls for the rest.
+- **Why v1c's runs asked more.** §1 expected fewer calls under v1c, and at the
+  medians there were more. One v1c run never covered the space and met more
+  impasses and conflicts than any other. Free on the records.
+- **The provider.** The bridge asked first calls only. On one day the two
+  providers named the same queue at every ticket, and wrote the same rule on
+  about half, about as often as Baidu across days. Placement prompts in the
+  bridge, or each prompt twice of each provider, would set a provider's spread
+  beside the difference between providers. Calls.
+- **Telling the proposer to place nested rules too.** The other half of the item
+  this plan ran: a round that lists them, with a text that says what a side
+  against one means. Not run. Calls.
+
+Lessons it leaves:
+
+- **A test for an open pull request should test for an empty list.** The
+  supervisor read a field of the first pull request, printed `null null` while
+  none existed, took it for a closed one, and skipped its first push. The agent
+  pushed and opened it by hand.
+- **The smoke run measured the pin, as §1 asked.** DeepInfra met no refusal for
+  the rate in the smoke run or in the six runs, and the smoke run's bill gave
+  the price the runs were billed at.
+- **A pinned provider's pace can drift within a day.** DeepInfra's first calls
+  slowed and quickened from run to run, and the smoke run's median rests on
+  sixteen calls. A plan that prices time from its smoke run should say so.
 
 ---
 
@@ -468,6 +557,9 @@ in one run of three. What that leaves:
   queue's seven tickets reportable. A higher coverage, a longer stream, or a
   trigger that asks about the rare queues apart would each be a run and a plan.
   Calls.
+  **[NOTE 2026-11-08] Supply is not all of it.** Under `PLAN_PLACEMENT.md`, both
+  runs under run 3's draws, which make three of the seven reportable, lost the
+  queue under either placement round. See *What `PLAN_PLACEMENT.md` opens*.
 - **Delay, noise, asymmetry and lower coverage.** Only coverage 1/2 with no delay
   was bought.
   - The drafting reading had delay barely moving the transcriber's base.
@@ -488,6 +580,11 @@ in one run of three. What that leaves:
     DeepInfra's, with a small same-day bridge of prompts asked of both.
   - **Either way**, the smoke run measures the pin's rate limits, its
     `provider` field and its reasoning. Nothing falls back across providers.
+
+  **[NOTE 2026-11-08] Applied by `PLAN_PLACEMENT.md`**, whose arms all ran inside
+  the plan: DeepInfra's fp8 endpoint, with a same-day bridge of first calls
+  asked of both. DeepInfra met no refusal for the rate, billed below its
+  listing at a steady price, and answered more slowly than Baidu.
 
 Lessons it leaves:
 
@@ -584,7 +681,11 @@ the error arm. What that leaves:
     spoke of the list as a whole.
 
   What it leaves:
-  - **A placement round that asks only for what the engine can order.** v1b's
+  - ~~**A placement round that asks only for what the engine can order.**~~
+    **Run on 2026-11-08 as `PLAN_PLACEMENT.md`**, in its first form: a round
+    that lists only crossing rules, and leaves out the governed ones too. The
+    second form, telling the proposer to place nested rules, was not run. See
+    *What `PLAN_PLACEMENT.md` opens*. v1b's
     list holds rules nested with the draft, which subsumption orders whichever
     side the answer gives. A round that listed only crossing rules, or that told
     the proposer to place nested ones too, would separate the protocol's

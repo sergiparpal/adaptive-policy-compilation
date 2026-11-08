@@ -59,6 +59,7 @@ up in four places at once.
 | **RR** · the rule written with reasoning on | `PLAN_QUEUE_ALONE.md`'s level-3 rule and plain prompts asked again on one day, pinned to one provider, in four arms: the rule-writing prompt and the plain question, each with reasoning off and on, to see whether reasoning carries into the queue a rule-writer chooses before any loop runs, and to read the rules it writes — closed 2026-10-25 | [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md) |
 | **RL** · the loop with reasoning on | `PLAN_REUSE.md`'s loop run with level 3's manual and reasoning on, pinned to one provider, a blind first call and a placement round against the base, three runs an arm: under the standing trigger, and asked also where the base decides wrongly, to see whether what limits a reasoning loop is its trigger or the order its rules get — closed 2026-11-03 | [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md) |
 | **CH** · half the errors reported | `PLAN_REASONED_LOOP.md`'s loop run again with level 3's manual and reasoning on, pinned to one provider, under rung 4's feedback channel at coverage 1/2 beside the error arm again, three runs an arm alternating in one period, to see what a loop compiles from a trigger a deployment could have — closed 2026-11-07 | [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md) |
+| **PL** · the placement round | `PLAN_CHANNEL.md`'s channel arm run again with level 3's manual and reasoning on, pinned to another provider, three runs under v1b's placement round and three under one that lists only what the engine can still order, alternating, each pair under one set of draws, beside a same-day bridge of first calls asked of both providers, to see whether v1b's refusals were the protocol's and what the loop compiles without them — closed 2026-11-08 | [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -801,6 +802,49 @@ PYTHONHASHSEED=0 .venv/bin/python -m channel.run --smoke          # Stage B · s
 PYTHONHASHSEED=0 .venv/bin/python -m channel.run --arm e --rep 1  # then §2.3's order, one run at a time
 ```
 
+**[`PLAN_PLACEMENT.md`](PLAN_PLACEMENT.md) closed on 2026-11-08**: the placement
+round that lists only what the engine can still order, beside v1b. Sergi signed
+§0 on 2026-11-07, before any of its figures existed.
+- **What it asked.** It ran `PLAN_CHANNEL.md`'s channel arm again at n=2000 on
+  rung 2's engine, with level 3's manual and reasoning on, every call pinned to
+  DeepInfra's fp8 endpoint. Three runs of each round alternated, run `k` of each
+  under the draws of `PLAN_CHANNEL.md`'s c r`k`.
+  - **v1b** is that plan's round, unchanged. It lists every rule of another
+    queue the draft meets, and refuses an answer that leaves one without a side.
+  - **v1c** leaves out of that list the rules nested with the draft, which
+    containment already orders, and those whose shared region with it third
+    rules already govern. A round whose list comes out empty is not sent.
+  - **A bridge** asked 40 first calls of Baidu and of DeepInfra on one day,
+    before the first run.
+- **Why.** Read POST-RUN, most of the loop's unplaced answers had left out a
+  nested rule, as level 3's system prompt says to, and in `PLAN_CHANNEL.md`'s
+  c r1 that refusal cost a queue.
+
+Its record is
+[`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md).
+Its gate reads that plan and no other, counts its signature line, and guards its
+three writers. `channel/`, `reasoned_loop/`, `queue_alone/`, `manual/`, `blind/`,
+`authorship/`, `edges/`, `fidelity/`, `reuse/`, `rung2/` and `rung3/` are called
+by it and not edited; its proposer and its asker are `reasoned_loop/`'s, with this
+plan's pin.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same rules back. A paid run does not start without Sergi asking for it. A run
+took two to four and a half hours on DeepInfra, which refused no call for the
+rate. A run stopped by an outage resumes from its partial file with the same
+command.
+
+```bash
+python3 -m placement.run --dry-run                                    # PL-g1..PL-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m placement.sample                          # Stage A · the drafting reading, the transcriber and the references
+PYTHONHASHSEED=0 python3 -m placement.score                           # Stage C · PL-a to PL-f, and PL-g
+PYTHONHASHSEED=0 .venv/bin/python -m placement.run --smoke            # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m placement.run --bridge           # then the bridge, before the first run
+PYTHONHASHSEED=0 .venv/bin/python -m placement.run --arm v1c --rep 1  # then §2.4's order, one run at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1025,7 +1069,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_FIRST_MATCH.md`'s, and the three of `reasoned_rule/`, which run
 > `PLAN_REASONED_RULE.md`'s, and the three of `reasoned_loop/`, which run
 > `PLAN_REASONED_LOOP.md`'s, and the three of `channel/`, which run
-> `PLAN_CHANNEL.md`'s.
+> `PLAN_CHANNEL.md`'s, and the three of `placement/`, which run
+> `PLAN_PLACEMENT.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1945,6 +1990,16 @@ adaptive-policy-compilation/
 │   ├── lost.py              POST-RUN · why c r1 lost SECURITY_INCIDENT: every lost point by what lost it
 │   └── oncall.py            POST-RUN · why c r2 recalled less ONCALL_ESCALATION than its draws allow
 │
+├── placement/            PL · the placement round that lists only what the engine can still order
+│   ├── plan.py              the gate, §11's constants, the pins and the draws imported from channel/; §0's lines
+│   ├── protocol.py          v1c's list, its round and the pinned asker · the proposer's path
+│   ├── loop.py              the loop under either round, at channel/'s coverage · the proposer's path
+│   ├── references.py        the drafting reading, the transcriber under every round and draw, the bridge's tickets
+│   ├── gates.py             PL-g1..PL-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   ├── run.py               Stage B · the smoke run, the bridge and the six runs · spends · resumes · the proposer's path
+│   └── score.py             Stage C · PL-a to PL-f and PL-g, gated on PLAN_PLACEMENT.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2031,7 +2086,7 @@ adaptive-policy-compilation/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
-    results_reasoned_loop/  results_channel/
+    results_reasoned_loop/  results_channel/  results_placement/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
