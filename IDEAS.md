@@ -481,9 +481,24 @@ that leaves:
 
   So under draws that supply the queue, the loop lost it at the first call. What
   it leaves:
-  - **Provider or period.** In `PLAN_CHANNEL.md`'s runs on Baidu, 7 of 13 drafts
+  - ~~**Provider or period.**~~ In `PLAN_CHANNEL.md`'s runs on Baidu, 7 of 13 drafts
     at tickets of `H04` held its part's size. The bridge asked the queue's seven
     tickets of both providers on one day. Free on `bridge.json`.
+    **[NOTE 2026-11-08] Read POST-RUN** by `placement/provider.py`
+    (`FINDINGS_PLACEMENT.md`, *Whether the cut is the provider's*).
+    - **On the bridge's day**, Baidu's answer held the part at five tickets and
+      DeepInfra's at three, and never the reverse. At 982 and 1432 both made the
+      same cut.
+    - **At 710 and 1951**, the tickets c r3 recalled the queue from, DeepInfra
+      cut at all nine asks recorded. Baidu held the part at seven of eight.
+
+    What it leaves:
+    - **A provider's spread beside the difference.** It rests on one ask a
+      provider a ticket. Each first call asked several times of each provider on
+      one day would measure the spread. Calls.
+    - **Why the request cuts.** Both providers cut where the first lower listed
+      rule a cut changes adds the ticket's product. A text asking for the
+      governing rule's region whole is another plan. Calls.
   - **Whether the cut is why births are narrow.** 11 of the queue's 15 drafts in
     the six runs are their governing rule's region cut by exactly the first lower
     listed rule a cut changes. Whether the loop's other narrow births are such
@@ -514,6 +529,9 @@ that leaves:
   about half, about as often as Baidu across days. Placement prompts in the
   bridge, or each prompt twice of each provider, would set a provider's spread
   beside the difference between providers. Calls.
+  **[NOTE 2026-11-08] At the rarest queue's tickets, read POST-RUN.**
+  DeepInfra cut its drafts where Baidu wrote the part whole, at two tickets of
+  seven, and never the reverse. See the item on `ONCALL_ESCALATION` above.
 - **Telling the proposer to place nested rules too.** The other half of the item
   this plan ran: a round that lists them, with a text that says what a side
   against one means. Not run. Calls.
