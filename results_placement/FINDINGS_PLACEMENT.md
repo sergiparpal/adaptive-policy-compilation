@@ -9,6 +9,8 @@ commit of its own: `0b39ae8` on `main`.
 - **The bridge and the six runs** reached it in #209, merged on 2026-11-08.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reach it in #210, the pull request this record was opened in.
+- **The POST-RUN reading of `ONCALL_ESCALATION`** reached it in #211, merged on
+  2026-11-08.
 
 Every record names in its `_env` the commit it was written from. Eight were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -33,6 +35,15 @@ behind every `main` commit.
 one code digest.** `main` computes it at `da0cb01`, with
 `harness.provenance.code_digest`. The package's code did not change after the
 signature.
+
+> **[NOTE 2026-11-08] One more record, written after Stage C by code added
+> after it.** [`oncall.json`](oncall.json) is the POST-RUN reading of
+> `ONCALL_ESCALATION`.
+> - **It was written from `9cb6dd0`**, on the branch of #211, which is `e798813`
+>   on `main`. Its section below names the pair's checks.
+> - **Its code digest is `74dd22f0826b3731`**, not the package's, because
+>   `placement/oncall.py` was added after Stage C. The modules Stage C ran did
+>   not change.
 
 **This record owns every figure in it.**
 
@@ -815,29 +826,37 @@ whose rule was not born, unplaced or refused.
 > tickets and one of `H05`'s three.
 >
 > - **The expectation was committed before any figure of the reading
->   existed.** It is six clauses in the module's docstring, in the commit that
->   added the module. The drafter had read this record whole. It had seen no
->   rule, edge, escalation or draft of this queue in any of this plan's runs, nor
->   `bridge.json`'s answers at its tickets, nor `results_channel/oncall.json`.
+>   existed.** It is six clauses in the module's docstring, committed as
+>   `7796708`, which is `cd4a60c` on `main`. The drafter had read this record
+>   whole. It had seen no rule, edge, escalation or draft of this queue in any of
+>   this plan's runs, nor `bridge.json`'s answers at its tickets, nor
+>   `results_channel/oncall.json`.
 > - **Seven gates stood before any write.**
 >   - Gates 1 to 5 are `channel/oncall.py`'s.
 >   - Gate 6: every escalation on a ticket of the queue is governed by `H04` or
 >     `H05`.
 >   - Gate 7, added after the first run: each such ticket lies first in its
 >     governing rule's region.
-> - **One part was added after the first run.** It reads what each draft cut
->   its part by, and each call's note. Its flag was changed once, after a run of
->   it and before any of its figures was cited. It first read the very next rule
->   the ticket matches, which for most tickets was `H06` or `H08`. Those regions
->   contain the governing rule's, so a cut by them changes nothing. The part
->   carries no expectation and moves no clause.
+> - **One part was added after the first run**, in `2dc1325`, which is
+>   `8a8c67d` on `main`. It reads what each draft cut its part by, and each
+>   call's note. Its flag was changed once, in `9cb6dd0`, which is `e798813` on
+>   `main`, after a run of it and before any of its figures was cited. It first
+>   read the very next rule the ticket matches, which for most tickets was `H06`
+>   or `H08`. Those regions contain the governing rule's, so a cut by them
+>   changes nothing. The part carries no expectation and moves no clause.
 > - **The six clauses came back the same from each of the three commits the
->   reading ran from.**
+>   reading ran from**, `cd4a60c`, `8a8c67d` and `e798813` on `main`.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`oncall.json`](oncall.json). Its `_env` names the commit
->   of the flag's change, with `git_dirty` and `code_dirty` false. Its code
->   digest is `74dd22f0826b3731`.
+> - **The record** is [`oncall.json`](oncall.json), committed in `afbab53` on
+>   `main`. It reached `main` in pull request #211.
+> - **Its `_env`** names the branch commit it was written from, `9cb6dd0`, the
+>   flag's change. It carries `git_dirty` and `code_dirty` false.
+> - **The branch commit is `main`'s.** `9cb6dd0` and `e798813` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #211 behind the `main` commit.
+> - **Its code digest**, `74dd22f0826b3731`, is the one `main` computes at
+>   `e798813`.
 
 ### 1. What the two runs lost, by part
 
