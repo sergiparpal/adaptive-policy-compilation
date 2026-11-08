@@ -13,6 +13,8 @@ commit of its own: `0b39ae8` on `main`.
   2026-11-08.
 - **The POST-RUN reading of the bridge at that queue's tickets** reached it in
   #213, merged on 2026-11-08.
+- **The POST-RUN reading of the loop's narrow births** reached it in #215,
+  merged on 2026-11-08.
 
 Every record names in its `_env` the commit it was written from. Eight were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -56,7 +58,8 @@ signature.
 > **[NOTE 2026-11-08, later still] And a third.** [`births.json`](births.json)
 > classes the births of this plan's runs and of two earlier plans'. It carries
 > code digest `c1ab167c8462169b`, because `placement/births.py` was added after
-> the other two. Its section below says what it was written from.
+> the other two. It was written from `d402393`, on the branch of #215, which is
+> `0543d2a` on `main`. Its section below names the pair's checks.
 
 **This record owns every figure in it.**
 
@@ -1178,10 +1181,10 @@ least.** Three held. Q1, the clause trusted most, failed: DeepInfra held
 >   Baidu, under v1b.
 >
 > - **The expectation was committed before any figure of the reading
->   existed.** It is four clauses in the module's docstring, in the commit that
->   added the module. The drafter had seen no birth's class. The only births'
->   extensions it had seen were the rarest queue's drafts, and seventeen rules
->   `oncall.json` lists.
+>   existed.** It is four clauses in the module's docstring, committed as
+>   `d402393`, which is `0543d2a` on `main`. The drafter had seen no birth's
+>   class. The only births' extensions it had seen were the rarest queue's
+>   drafts, and seventeen rules `oncall.json` lists.
 > - **Three gates stood before any write, in all eighteen runs.**
 >   - Each birth's ticket is governed as the record's row says.
 >   - The births, and those that are their governing rule's region, come back
@@ -1189,9 +1192,15 @@ least.** Three held. Q1, the clause trusted most, failed: DeepInfra held
 >   - The classes partition the births.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`births.json`](births.json). Its `_env` names the commit
->   that added the module, with `git_dirty` and `code_dirty` false. Its code
->   digest is `c1ab167c8462169b`.
+> - **The record** is [`births.json`](births.json), committed in `f3b32cc` on
+>   `main`. It reached `main` in pull request #215.
+> - **Its `_env`** names the branch commit it was written from, `d402393`, the
+>   expectation's. It carries `git_dirty` and `code_dirty` false.
+> - **The branch commit is `main`'s.** `d402393` and `0543d2a` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #215 behind the `main` commit.
+> - **Its code digest**, `c1ab167c8462169b`, is the one `main` computes at
+>   `0543d2a`.
 
 ### 1. The births, by class
 
