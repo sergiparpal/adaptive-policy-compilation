@@ -2133,6 +2133,89 @@ says how.
 
 ---
 
+## What the outside reading of November 2026 proposes and nothing has run
+
+*Added 2026-11-08.* Sergi brought a conversation about the project, held with an
+AI chatbot outside it, which had read the tree as of 2026-11-07. It was
+adjudicated against the records on 2026-11-08, and is not kept in the tree. This
+section carries what is left of it, in English, as entries and not as a
+translation.
+
+**Its summary reproduces.** Every figure it cited comes back from the record that
+owns it:
+- `U-a`'s 0.7381 against the 0.1176 floor, and `F-d`'s 0.7955;
+- rung 2's 1.0000 over the 134,400 points, and `B-b`'s tie;
+- rung 3's 0.8530 and 0.6105;
+- `G-a`, the prose's 0.9929 and `G-d`'s 0.3778;
+- `RL-c`, `RL-d`, `CH-a`, `CH-d`, c r1's 0.7201 and `CH-c`.
+
+Two of its readings do not:
+- **It read c r1's 0.7201 as the cost of hearing half the errors.**
+  `FINDINGS_CHANNEL.md` traces it to v1b's placement round meeting a default
+  born early, and under v1c no run lost the policy (`PL-c`).
+- **It cited `PLAN_FIDELITY.md`'s *disagreement is no alarm* for a re-ask without
+  the screen.** That was measured with the screen, without the manual and with
+  reasoning off. With the 29 rules in the prompt and reasoning on, a re-ask is
+  right on every escalated decision (`FM-e`).
+
+**What it proposed.** A blind audit of the decisions the engine makes, in three
+arms on one stream:
+- the standing trigger;
+- a random audit of decided tickets, at a fixed budget;
+- a directed audit at the same budget, weighting tickets whose combination of
+  attributes is rare among the earlier tickets their deciding rule decided.
+
+The re-ask would see the ticket and the queues' descriptions, not the engine's
+decision, the screen or the list. It would read detection and durable correction
+for `ONCALL_ESCALATION` and `SECURITY_INCIDENT`, starting with a free replay of
+the records.
+
+**What this file already carried.** The random arm is *Random escalation, asked
+without a screen*, below, and *A trigger that reads no truth*, under *What
+`PLAN_CHANNEL.md` opens*. The free replay is that entry's free half.
+
+**What is new, and is left here: a directed audit, by novelty within the
+deciding rule.** It reads no truth: the ticket, the rule and the rule's history.
+A plan for it should do two things:
+- **Fix the selector before counting anything**, blind to the hidden policy,
+  treating every attribute alike. Whoever drafts knows which region
+  `ONCALL_ESCALATION` holds.
+- **Count what the selector selects in its §1**, before the signature, as
+  `J-d`'s lesson says.
+
+**Why it waits.** Its premise was that the rarest queue lacks detection. Read the
+same day, the records say the queue is lost after detection, at the first call:
+- **Every draft at the queue's tickets is a cut.** Under run 3's draws each of
+  the queue's escalations was drafted the right queue. Each draft was its
+  governing rule's region cut by a lower listed rule, or by several products.
+- **The cut is the loop's general way.** Across the births, about seven narrow
+  births in ten are such cuts where one is possible, on either provider.
+- **The loss is the rarest queue's.** Under v1c the bases' residual is mostly
+  that queue, whose rules escalate too rarely for a later draft to write their
+  region whole.
+
+So a better detector would feed drafts the loop cuts. A first call that writes the
+governing rule's region whole comes first: *Why the loop writes narrow rules*,
+under *What `PLAN_PLACEMENT.md` opens*. `FINDINGS_PLACEMENT.md`'s POST-RUN
+sections carry the figures.
+
+**What a plan for it would have to settle**, from the adjudication:
+- **What the auditor knows.** The conversation gave it the queues' descriptions,
+  while the proposer has the 29 rules and reasons. The auditor's level and
+  reasoning should be the proposer's, or §0 should say why not. At level 3 with
+  reasoning on a re-ask is nearly the truth (`FM-e`). So a random audit at share
+  *s* is the channel at coverage *s* but for the auditor's errors, at a call per
+  audited ticket.
+- **What a run with too few evaluable errors does.** How many there will be
+  cannot be fixed in advance. §0 should say what such a run does to the verdict,
+  as `E-c`'s lesson says.
+- **Where the replay belongs.** Counting the errors a selector would have caught
+  reads the truth. So it goes in the plan, as §1's make-up, or it is POST-RUN.
+  On the rarest queue it cannot tell two selectors apart: a run's rules decide
+  four or five of its seven tickets.
+
+---
+
 ## What the outside reading of October 2026 proposes and nothing has run
 
 *Added 2026-10-16.* Two documents in Spanish came out of one conversation about
@@ -2352,6 +2435,10 @@ it is pre-registrable, because none of its figures exists:
   error without bias. Every record here already measures silent error with the
   oracle on every decision, so that version is advice for a deployment, not a
   baseline.
+  **[NOTE 2026-11-08]** A directed variant, by novelty within the deciding rule,
+  came with the outside reading of November 2026. See that section, above. It
+  waits on the first call: at the rarest queue's tickets the loop cuts what it
+  is told.
 - **An inducer that writes exceptions.** FOLD-R++ (Wang and Gupta, FLOPS 2022)
   learns default rules with exceptions, and exceptions to those. FOLD-RM is its
   multi-category version, the one that fits eight queues. It writes the
