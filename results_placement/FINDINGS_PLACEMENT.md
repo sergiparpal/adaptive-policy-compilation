@@ -11,6 +11,8 @@ commit of its own: `0b39ae8` on `main`.
   reach it in #210, the pull request this record was opened in.
 - **The POST-RUN reading of `ONCALL_ESCALATION`** reached it in #211, merged on
   2026-11-08.
+- **The POST-RUN reading of the bridge at that queue's tickets** reached it in
+  #213, merged on 2026-11-08.
 
 Every record names in its `_env` the commit it was written from. Eight were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -48,7 +50,8 @@ signature.
 > **[NOTE 2026-11-08, later] And a second.** [`provider.json`](provider.json)
 > reads the bridge at the queue's tickets. It carries code digest
 > `a515c2a31d3ccfbe`, because `placement/provider.py` was added after both.
-> Its section below says what it was written from.
+> It was written from `8a55d2d`, on the branch of #213, which is `1311431` on
+> `main`. Its section below names the pair's checks.
 
 **This record owns every figure in it.**
 
@@ -1042,9 +1045,9 @@ least.** Five held, and P4 failed.
 >   on Baidu, read from their records the same way.
 >
 > - **The expectation was committed before any figure of the reading
->   existed.** It is four clauses in the module's docstring, in the commit that
->   added the module. The drafter had seen no answer of either provider in
->   `bridge.json`.
+>   existed.** It is four clauses in the module's docstring, committed as
+>   `8a55d2d`, which is `1311431` on `main`. The drafter had seen no answer of
+>   either provider in `bridge.json`.
 > - **Three gates stood before any write.**
 >   - Each ticket was asked once of each provider, in its first call.
 >   - Each is governed by `H04` or `H05`, and lies first in its region.
@@ -1052,9 +1055,15 @@ least.** Five held, and P4 failed.
 >     `results_channel/oncall.json`'s points.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`provider.json`](provider.json). Its `_env` names the
->   commit that added the module, with `git_dirty` and `code_dirty` false. Its
->   code digest is `a515c2a31d3ccfbe`.
+> - **The record** is [`provider.json`](provider.json), committed in `3b4474a` on
+>   `main`. It reached `main` in pull request #213.
+> - **Its `_env`** names the branch commit it was written from, `8a55d2d`, the
+>   expectation's. It carries `git_dirty` and `code_dirty` false.
+> - **The branch commit is `main`'s.** `8a55d2d` and `1311431` have the same
+>   subject, the same tree and the same `git patch-id --stable`, and the GitHub
+>   API names #213 behind the `main` commit.
+> - **Its code digest**, `a515c2a31d3ccfbe`, is the one `main` computes at
+>   `1311431`.
 
 ### 1. The bridge's answers at the queue's tickets
 
