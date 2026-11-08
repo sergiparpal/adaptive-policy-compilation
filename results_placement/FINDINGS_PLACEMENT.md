@@ -60,6 +60,11 @@ signature.
 > code digest `c1ab167c8462169b`, because `placement/births.py` was added after
 > the other two. It was written from `d402393`, on the branch of #215, which is
 > `0543d2a` on `main`. Its section below names the pair's checks.
+>
+> **[NOTE 2026-11-08, last] And a fourth.** [`cost.json`](cost.json) sets every
+> base's lost points against what was drafted for the rule governing them. It
+> carries code digest `8e1812d6a034f5a4`, because `placement/cost.py` was added
+> after the other three. Its section below says what it was written from.
 
 **This record owns every figure in it.**
 
@@ -1272,9 +1277,140 @@ least.** All four held.
   - **What the cuts cost each queue.** A cut decides only its own points. For
     each cut, how much of its governing rule's part no rule of the queue
     decides at the end is free on the records.
+    **[NOTE 2026-11-08] Read POST-RUN**, in *What the cuts cost*, below. A cut
+    costs where every draft for its rule was a cut, and under v1c that is
+    mostly the rarest queue.
   - **The narrow births that are no cut where one was possible.** Not read.
   - **A text that asks for the governing rule's region whole.** Another plan.
     Calls.
+
+---
+
+## What the cuts cost — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-08, after the reading above, and
+> run the same day. Zero API calls. `placement/cost.py` sets every point a run's
+> final base does not decide right against the listed rule that governs it.
+> - **How each rule is classed.** By the first-call drafts at the run's
+>   escalations on its tickets, each classed as `placement/births.py` classes a
+>   birth, born or not.
+> - **The classes**: no escalation; whole born, when some right-queue draft that
+>   holds the part was born; whole not born; cuts only; narrow other; no right
+>   draft.
+> - **The runs read.** This plan's six, and beside them, reported,
+>   `PLAN_CHANNEL.md`'s six and `PLAN_REASONED_LOOP.md`'s six, on Baidu.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is four clauses in the module's docstring, in the commit that
+>   added the module. The drafter had seen no run's lost points by governing
+>   rule.
+>   - The first clause leaves out the points `H04` and `H05` govern.
+>   - From this record's tables the drafter could derive that the rarest
+>     queue's points are most of what v1c's bases lose.
+> - **Three gates stood before any write.**
+>   - Each final base decides right the points its Stage C counts, in all
+>     eighteen runs.
+>   - The listed rules' regions, each less the earlier ones', partition the
+>     space.
+>   - Each escalation's ticket is governed as the record's row says.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`cost.json`](cost.json). Its `_env` names the commit that
+>   added the module, with `git_dirty` and `code_dirty` false. Its code digest
+>   is `8e1812d6a034f5a4`.
+
+### 1. Where the bases' lost points lie, by what was drafted for their rule
+
+Over the space, pooled over each arm's three runs. Each cell is the lost points
+of the class, of the points its rules govern.
+
+| arm | lost | no escalation | whole born | whole not born | cuts only | narrow other |
+|---|---|---|---|---|---|---|
+| v1c | 15,215 | 2,120 of 6,130 | 1,625 of 309,330 | 0 of 2,200 | 6,940 of 13,440 | 4,530 of 72,100 |
+| v1c, outside `H04` and `H05` | 2,655 | 20 | 1,205 | 0 | 1,100 | 330 |
+| v1b | 35,650 | 2,160 of 7,290 | 5,170 of 305,370 | 17,700 of 52,500 | 8,780 of 13,440 | 1,840 of 24,600 |
+| v1b, outside `H04` and `H05` | 24,510 | 60 | 4,910 | 17,700 | 1,680 | 160 |
+
+No rule of either arm had only drafts of another queue.
+
+- **Under v1c the residual is the rarest queue.** `H04`'s and `H05`'s points
+  are 12,560 of the 15,215 v1c's bases lose.
+  - 5,840 of them lie under rules whose drafts were cuts only.
+  - 4,200 lie at v1c r3's `H04`, whose drafts were a cut and the four-product
+    draft.
+  - 2,100 lie at v1c r2's `H05`, whose tickets never escalated.
+- **Outside the rarest queue, v1c's bases lose 2,655 points in three runs.**
+  That is under one point in a hundred of the space a base. 1,100 of them lie
+  under rules whose drafts were cuts only, all of `T3_ENGINEERING`.
+- **A whole birth holds.** Under the rules with a whole draft born, v1c's bases
+  lose 1,625 of 309,330 points.
+- **Under v1b the refusals cost more than the cuts.** v1b's bases lose 17,700
+  points under rules with a whole draft and none born, 15,760 of them
+  `SECURITY_INCIDENT`'s. v1c's lose none there.
+
+### 2. A cut costs where it is all the run drafted
+
+Of this plan's rule-runs, a governing rule in one run, 80 had at least one cut
+among their drafts.
+
+| the rule's class | rule-runs | lost points |
+|---|---|---|
+| whole born | 58 | 4,445 |
+| cuts only | 10 | 15,720 |
+| narrow other | 9 | 4,360 |
+| whole not born | 3 | 17,700 |
+
+- **Where a whole draft was born too, the cut cost little.** A later ticket of
+  the same rule drew its region whole.
+- **The ten where every draft was a cut** are `H04` four times, with two drafts
+  each, `H05` twice, `H22` twice and `H06` twice. Each has one to three drafts.
+- **So a cut costs at a rule whose tickets escalate rarely.** There the first
+  drafts are the only drafts, and the rarest queue's rules are such rules.
+
+### 3. Beside them, on Baidu
+
+| plan | lost | under whole born | under whole not born | under cuts only | under no escalation |
+|---|---|---|---|---|---|
+| `PLAN_CHANNEL.md`, six runs | 53,120 | 5,250 | 21,020 | 20,840 | 2,225 |
+| `PLAN_REASONED_LOOP.md`, six runs | 242,540 | 19,660 | 11,025 | 15,640 | 183,735 |
+
+- **In `PLAN_CHANNEL.md`'s runs the cuts and the refusals cost about as much.**
+  Each holds about two fifths of the loss.
+- **In `PLAN_REASONED_LOOP.md`'s, most of the loss lies where no ticket
+  escalated**, 183,735 of 242,540 points. Nearly all of it is in the impasse
+  arm's three runs, 183,540 points. That trigger never asks where a rule decides
+  wrongly (`RL-c`).
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| K1 | outside `H04`'s and `H05`'s points, at least half of what v1c's bases lose lies under rules whose drafts were cuts only | 1,100 of 2,655, 0.4143 | **fails** |
+| K2 | under rules with a whole draft born, v1c's bases lose at most a tenth of the points | 1,625 of 309,330, 0.0053 | holds |
+| K3 | under rules whose drafts were cuts only, v1c's bases lose at least a fifth of the points | 6,940 of 13,440, 0.5164 | holds |
+| K4 | under rules with a whole draft and none born, v1b's bases lose more points than v1c's | 17,700 against none | holds |
+
+**The drafter expected all four to hold, bet on K1, trusted K2 most and K1
+least.** Three held, and the bet failed: outside the rarest queue the cuts hold
+0.41 of a loss that is small.
+
+### What it says
+
+- **Under v1c, what the cuts cost is mostly the rarest queue.** Outside it,
+  v1c's bases lose under one point in a hundred of the space a base, and the
+  cuts hold two fifths of that.
+- **A cut costs where it is all the run drafted for its rule.** At a rule with
+  many tickets a later draft writes the region whole and holds it. At a rule
+  whose tickets escalate once or twice a run, the cut is the region's only
+  draft.
+- **Under v1b the round's refusals cost more than the cuts.** v1c removed that
+  cost, as `PL-a` and `PL-b` measured, and left the cuts.
+- **What it leaves.**
+  - **A first call that writes the governing rule's region whole.** It would
+    reach the rules whose tickets escalate rarely, the rarest queue's first.
+    Another plan. Calls.
+  - **The rules whose tickets never escalate.** Under v1c they lose little:
+    2,120 points in three runs, nearly all `H05`'s under run 2's draws.
 
 ---
 
@@ -1312,6 +1448,11 @@ results_placement/births.json        POST-RUN: every birth of this plan's six ru
                                      listed rule governing its ticket, with its class and what
                                      it is cut by, the counts by run, by arm and by plan, and
                                      the expectation's four clauses
+results_placement/cost.json          POST-RUN: in every run of the three plans, each listed
+                                     rule's governed points and the final base's lost points
+                                     among them, the rule's class by the drafts at its tickets,
+                                     the totals by class, arm, plan and queue, and the
+                                     expectation's four clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
