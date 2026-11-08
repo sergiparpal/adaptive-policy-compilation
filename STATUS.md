@@ -2883,6 +2883,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    period is free on the bridge.
    [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
    *Why the runs under run 3's draws lost `ONCALL_ESCALATION`*.
+   **[NOTE 2026-11-08, later still] Read on the bridge: in part the provider.**
+   - **On one day.** The bridge asked both providers the same first call at
+     the queue's seven tickets. Baidu's answer held the part at five and
+     DeepInfra's at three, and never the reverse.
+   - **Both providers cut at two tickets**, the same way.
+   - **The two tickets where they differ are the ones that mattered.** Under
+     run 3's draws the queue escalated at 710 and 1951, among others. There
+     DeepInfra cut the part at every ask recorded, nine of nine. Baidu wrote it
+     whole at seven of eight, and c r3 recalled 14/15 of the queue from those
+     drafts.
+   - **It rests on one ask a provider a ticket on that day.** Elsewhere each
+     provider's answers at one ticket change from ask to ask.
+
+   [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
+   *Whether the cut is the provider's*.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
