@@ -842,6 +842,7 @@ PYTHONHASHSEED=0 python3 -m placement.sample                          # Stage A 
 PYTHONHASHSEED=0 python3 -m placement.score                           # Stage C · PL-a to PL-f, and PL-g
 PYTHONHASHSEED=0 python3 -m placement.oncall                          # POST-RUN · why the runs under run 3's draws lost ONCALL_ESCALATION
 PYTHONHASHSEED=0 python3 -m placement.provider                        # POST-RUN · whether the cut is the provider's, on the bridge
+PYTHONHASHSEED=0 python3 -m placement.births                          # POST-RUN · whether the cut is why the loop's births are narrow
 PYTHONHASHSEED=0 .venv/bin/python -m placement.run --smoke            # Stage B · spends · only on Sergi's say
 PYTHONHASHSEED=0 .venv/bin/python -m placement.run --bridge           # then the bridge, before the first run
 PYTHONHASHSEED=0 .venv/bin/python -m placement.run --arm v1c --rep 1  # then §2.4's order, one run at a time

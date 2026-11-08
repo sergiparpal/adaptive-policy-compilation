@@ -2761,6 +2761,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    listed rule the ticket matches that a cut changes. Whether the loop's other
    narrow births are such cuts is free on the records. The FINDINGS' section
    *Why the runs under run 3's draws lost `ONCALL_ESCALATION`*.
+   **[NOTE 2026-11-08, later still] And across the births, read POST-RUN.**
+   - **Where a cut is possible, about seven narrow births in ten are one.** A
+     cut is possible at a ticket that matches a lower listed rule whose region
+     does not contain the governing rule's. The share is 0.7066 in this plan's
+     six runs, 0.7515 in `PLAN_CHANNEL.md`'s and 0.6765 in
+     `PLAN_REASONED_LOOP.md`'s.
+   - **The cut is by the first such rule, and of another queue**, in 0.84 to
+     0.92 of the cuts in each plan.
+   - **It is the loop's on either provider.** Over every birth, DeepInfra holds
+     its part no less often than Baidu.
+
+   So where a cut is possible, the loop's narrow rules are mostly cuts. The
+   rarest queue's notes say why: a cut wins by containment, with no side
+   declared. What the cuts cost each queue is free on the records. The
+   FINDINGS' section *Whether the cut is why the loop's births are narrow*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
