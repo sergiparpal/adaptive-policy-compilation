@@ -52,6 +52,11 @@ signature.
 > `a515c2a31d3ccfbe`, because `placement/provider.py` was added after both.
 > It was written from `8a55d2d`, on the branch of #213, which is `1311431` on
 > `main`. Its section below names the pair's checks.
+>
+> **[NOTE 2026-11-08, later still] And a third.** [`births.json`](births.json)
+> classes the births of this plan's runs and of two earlier plans'. It carries
+> code digest `c1ab167c8462169b`, because `placement/births.py` was added after
+> the other two. Its section below says what it was written from.
 
 **This record owns every figure in it.**
 
@@ -1025,6 +1030,9 @@ least.** Five held, and P4 failed.
     v1c's 213 births and 68 of v1b's 178 as their governing rule's region.
     Whether the others are cuts by a lower listed rule the ticket matches is free
     on the records.
+    **[NOTE 2026-11-08] Read POST-RUN**, in *Whether the cut is why the loop's
+    births are narrow*, below. Where a cut is possible, about seven narrow births
+    in ten are one, on either provider.
   - **The two refusals v1c keeps, seen here.** One placement answer named no
     action. Another claimed containment over rules that cross its draft.
 
@@ -1154,6 +1162,113 @@ least.** Three held. Q1, the clause trusted most, failed: DeepInfra held
 
 ---
 
+## Whether the cut is why the loop's births are narrow — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-08, after the reading above, and
+> run the same day. Zero API calls. `placement/births.py` sets every birth
+> against the listed rule that governs the ticket it was born at, as `PL-g`
+> does.
+> - **Its part** is the points of that rule's region whose true queue is the
+>   rule's.
+> - **Its class is one of five**: of the wrong queue; whole, holding its part;
+>   cut by one listed rule, `placement/oncall.py`'s cut; cut by two listed rules
+>   the ticket matches; or other.
+> - **The runs read.** It reads this plan's six runs. Beside them, reported, it
+>   reads `PLAN_CHANNEL.md`'s six and `PLAN_REASONED_LOOP.md`'s six, all on
+>   Baidu, under v1b.
+>
+> - **The expectation was committed before any figure of the reading
+>   existed.** It is four clauses in the module's docstring, in the commit that
+>   added the module. The drafter had seen no birth's class. The only births'
+>   extensions it had seen were the rarest queue's drafts, and seventeen rules
+>   `oncall.json` lists.
+> - **Three gates stood before any write, in all eighteen runs.**
+>   - Each birth's ticket is governed as the record's row says.
+>   - The births, and those that are their governing rule's region, come back
+>     as each plan's Stage C counts them.
+>   - The classes partition the births.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`births.json`](births.json). Its `_env` names the commit
+>   that added the module, with `git_dirty` and `code_dirty` false. Its code
+>   digest is `c1ab167c8462169b`.
+
+### 1. The births, by class
+
+| plan | provider | births | wrong queue | whole | cut by one | cut by two | other |
+|---|---|---|---|---|---|---|---|
+| this plan, six runs | DeepInfra | 391 | 8 | 153 | 118 | 3 | 109 |
+| `PLAN_CHANNEL.md`, six runs | Baidu | 443 | 28 | 148 | 124 | 1 | 142 |
+| `PLAN_REASONED_LOOP.md`, six runs | Baidu | 307 | 28 | 103 | 69 | 1 | 106 |
+
+- **Whole holds every birth that is its governing rule's region**, `PL-g`'s 138
+  here, and the births that hold their part in another way.
+- **A birth of the right queue that does not hold its part is narrow.** This
+  plan has 230.
+
+### 2. The narrow births
+
+| plan | narrow | where a cut is possible | of them, cut by one listed rule | by the first match a cut changes | by another queue's rule |
+|---|---|---|---|---|---|
+| this plan | 230 | 167 | 118, 0.7066 | 105 of 118 | 108 of 118 |
+| `PLAN_CHANNEL.md` | 267 | 165 | 124, 0.7515 | 111 of 124 | 112 of 124 |
+| `PLAN_REASONED_LOOP.md` | 176 | 102 | 69, 0.6765 | 58 of 69 | 60 of 69 |
+
+*Where a cut is possible* is at a ticket that matches, after its governing
+rule, a listed rule whose region does not contain the governing rule's.
+
+- **Where a cut is possible, about seven narrow births in ten are one.** That
+  holds in all three plans, under either provider. In this plan it is 49 of 71
+  under v1b and 69 of 96 under v1c.
+- **The cut is nearly always by the first such rule, and of another queue.** In
+  each plan, 0.84 to 0.92 of the cuts are, by either count.
+- **Where no cut is possible, the narrow births are mostly at the defaults'
+  tickets.** `H28` and `H29` govern 29 of this plan's 63, 46 of
+  `PLAN_CHANNEL.md`'s 102, and 47 of `PLAN_REASONED_LOOP.md`'s 74.
+  - A default's region is broad, and its part is every point of its queue
+    that the region holds.
+  - So at the defaults' tickets nearly every birth counts as narrow: 29 of this
+    plan's 31 births there, and 2 hold their part.
+  - Narrow says little there.
+- **Where a cut is possible and the birth is neither cut**, 46 in this plan,
+  `H16` governs 15. They are not read further.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| N1 | of the narrow births where a cut is possible, at least half are cut by one listed rule | 118 of 167, 0.7066 | holds |
+| N2 | N1's share is at least half in each arm | v1b 49 of 71, 0.6901; v1c 69 of 96, 0.7188 | holds |
+| N3 | of the births cut by one listed rule, at least three in four are cut by the first matched rule a cut changes | 105 of 118, 0.8898 | holds |
+| N4 | of the births cut by one listed rule, at least three in four are cut by a rule of another queue | 108 of 118, 0.9153 | holds |
+
+**The drafter expected all four to hold, bet on N1, trusted N4 most and N2
+least.** All four held.
+
+### What it says
+
+- **The cut is how the loop writes a narrow rule, on either provider.** Where
+  the ticket matches a lower listed rule a cut would change, about seven narrow
+  births in ten are the governing rule's region cut by one listed rule. Nearly
+  nine cuts in ten are by the first such rule, of another queue.
+- **So the narrowness is a way of ordering.** A cut lies inside the lower rule
+  it would conflict with, and containment puts it above that rule with no side
+  declared. The notes at the rarest queue's tickets said so.
+- **The cut is not DeepInfra's.** Over every birth, DeepInfra holds the part no
+  less often than Baidu: 153 of 391 here, against 148 of 443 and 103 of 307 in
+  the other two plans. Where a cut is possible it cuts at about the same rate.
+  The difference the bridge found at the rarest queue's tickets is not the
+  loop's general rate.
+- **What it leaves.**
+  - **What the cuts cost each queue.** A cut decides only its own points. For
+    each cut, how much of its governing rule's part no rule of the queue
+    decides at the end is free on the records.
+  - **The narrow births that are no cut where one was possible.** Not read.
+  - **A text that asks for the governing rule's region whole.** Another plan.
+    Calls.
+
+---
+
 ## Files
 
 ```
@@ -1183,6 +1298,11 @@ results_placement/provider.json      POST-RUN: the bridge's two answers at each 
                                      seven tickets read as drafts, the runs' first-call drafts
                                      at the same tickets on DeepInfra and on Baidu, and the
                                      expectation's four clauses
+results_placement/births.json        POST-RUN: every birth of this plan's six runs, and of
+                                     PLAN_CHANNEL.md's and PLAN_REASONED_LOOP.md's, against the
+                                     listed rule governing its ticket, with its class and what
+                                     it is cut by, the counts by run, by arm and by plan, and
+                                     the expectation's four clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
