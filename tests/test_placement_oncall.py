@@ -144,6 +144,7 @@ class TestTheCuts(unittest.TestCase):
         self.regions = {
             "H04": H04,
             "H07": ext(r_("", 0, "T3_ENGINEERING", severity=1, product="api")),
+            "H08": ext(r_("", 0, T2, severity=1)),
             "H17": brows.ext_of({"conditions": [cond_("product", "eq", "integrations"),
                                                 cond_("severity", "lte", 2)]}, SPACE),
             "H29": brows.ext_of({"conditions": [cond_("severity", "gte", 1)]}, SPACE)}
@@ -151,8 +152,16 @@ class TestTheCuts(unittest.TestCase):
     def test_the_listed_rules_a_ticket_matches_in_order(self):
         api = gv.point_of(case_(), SPACE)
         integ = gv.point_of(case_(product="integrations"), SPACE)
-        self.assertEqual(P.matched(api, self.regions), ["H04", "H07", "H29"])
-        self.assertEqual(P.matched(integ, self.regions), ["H04", "H17", "H29"])
+        self.assertEqual(P.matched(api, self.regions), ["H04", "H07", "H08", "H29"])
+        self.assertEqual(P.matched(integ, self.regions), ["H04", "H08", "H17", "H29"])
+
+    def test_the_first_match_a_cut_by_would_change(self):
+        m = ["H04", "H08", "H17", "H29"]
+        self.assertEqual(P.containing(m, "H04", self.regions), ["H08", "H29"])
+        self.assertEqual(P.first_cutting(m, "H04", self.regions), "H17")
+        self.assertIsNone(P.first_cutting(["H04", "H08", "H29"], "H04", self.regions))
+        self.assertIsNone(P.first_cutting(m, "H01", self.regions))
+        self.assertEqual(P.containing(m, "H01", self.regions), [])
 
     def test_a_draft_cut_by_the_next_match_and_a_draft_not_cut(self):
         g = self.regions["H04"]
@@ -180,12 +189,24 @@ class TestTheCuts(unittest.TestCase):
         got = P.cuts(record, SPACE, self.regions, cases)
         self.assertEqual([c["idx"] for c in got], [0])
         self.assertEqual((got[0]["matched"], got[0]["cut_by"]),
-                         (["H04", "H07", "H29"], ["H07"]))
+                         (["H04", "H07", "H08", "H29"], ["H07"]))
+        self.assertEqual(got[0]["matched_containing_the_governing"], ["H08", "H29"])
+        self.assertEqual(got[0]["first_cutting_match"], "H07")
         self.assertTrue(got[0]["first_match_is_governing"])
-        self.assertTrue(got[0]["cut_by_the_next_match"])
+        self.assertTrue(got[0]["cut_by_the_first_cutting_match"])
         self.assertTrue(P.first_match_governs(got))
         record["records"][0]["truth_rule"] = "H07"
         self.assertFalse(P.first_match_governs(P.cuts(record, SPACE, self.regions, cases)))
+
+    def test_a_draft_cut_past_a_containing_match(self):
+        """The rule a draft is cut by need not be the very next one matched."""
+        record = {"records": [{"idx": 0, "truth": OC, "truth_rule": "H04"}],
+                  "escalations": [esc_(0, L.BORN, "R1", None, severity=1,
+                                       customer_tier="enterprise", product="integrations")]}
+        got = P.cuts(record, SPACE, self.regions, (case_(product="integrations"),))[0]
+        self.assertEqual(got["matched"][:3], ["H04", "H08", "H17"])
+        self.assertEqual((got["first_cutting_match"], got["cut_by"]), ("H17", ["H17"]))
+        self.assertTrue(got["cut_by_the_first_cutting_match"])
 
 
 def run_(whole=0, h04=(), h05=(), lost=10, unwritten=5, verdicts=(L.BORN,), most=4, n=10):
