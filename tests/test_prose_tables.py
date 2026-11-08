@@ -100,6 +100,7 @@ THREADS = {
     "RR": ("results_reasoned_rule/score.json", ("verdicts",)),
     "RL": ("results_reasoned_loop/score.json", ("verdicts",)),
     "CH": ("results_channel/score.json", ("verdicts",)),
+    "PL": ("results_placement/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -143,6 +144,7 @@ TABLES = {
     "results_reasoned_rule/FINDINGS_REASONED_RULE.md": ("RR",),
     "results_reasoned_loop/FINDINGS_REASONED_LOOP.md": ("RL",),
     "results_channel/FINDINGS_CHANNEL.md": ("CH",),
+    "results_placement/FINDINGS_PLACEMENT.md": ("PL",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {
