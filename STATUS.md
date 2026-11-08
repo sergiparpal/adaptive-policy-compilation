@@ -2755,6 +2755,12 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      call decides, and the two refusals v1c keeps: a crossing rule left out,
      and a right edge refused for closing a cycle.
    [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md).
+   **[NOTE 2026-11-08, later] At the rarest queue's tickets the narrow rule is
+   a cut, read POST-RUN.** In the plan's six runs, 11 of `ONCALL_ESCALATION`'s
+   15 drafts were the governing rule's region cut by exactly the first lower
+   listed rule the ticket matches that a cut changes. Whether the loop's other
+   narrow births are such cuts is free on the records. The FINDINGS' section
+   *Why the runs under run 3's draws lost `ONCALL_ESCALATION`*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2859,6 +2865,24 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    So where the channel supplied the tickets, the loop lost the queue under
    both rounds. Why is not read.
    [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md).
+   **[NOTE 2026-11-08, later] Why, read POST-RUN: the first call cut the
+   region.**
+   - **No draft held its part.** Under run 3's draws, each of the queue's three
+     drafts in each run was its governing rule's region cut by a lower listed
+     rule the ticket matches, or by several products. In the plan's six runs no
+     draft at a ticket of `H04` was its region whole, in eleven.
+   - **The rounds refused most of the cuts.** v1b refused all three. v1c bore
+     one, and the queue's points v1c r3 recalls are that cut's.
+   - **The notes say why.** Three of the five single cuts under those draws
+     carry a note saying the cut beats both rules by containment, with no side
+     declared.
+
+   So under those draws the supply was there, and the loop lost the queue at the
+   first call. In `PLAN_CHANNEL.md`'s runs on Baidu, more than half the drafts at
+   tickets of `H04` held its part's size. Whether that is the provider or the
+   period is free on the bridge.
+   [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
+   *Why the runs under run 3's draws lost `ONCALL_ESCALATION`*.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
