@@ -1,0 +1,4505 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-08T17:24:00Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "9cb6dd07e9423ede35ba02eab527b8eb675ba808",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "74dd22f0826b3731"
+  },
+  "plan": "PLAN_PLACEMENT.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_PLACEMENT.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_PLACEMENT.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-08, after Stage C. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: each run's `cuts`, what each of the queue's drafts cut its part by and what its notes say, and gate 7. No expectation; no clause moves.",
+  "source": {
+    "score": "results_placement/score.json",
+    "score_from": "da0cb01be2fe5bc9b10a1f255de5b3eb9cf7309c"
+  },
+  "surface": "the exhaustive space, 134,400 points",
+  "queue": "ONCALL_ESCALATION",
+  "runs_the_expectation_reads": [
+    "v1c_r3",
+    "v1b_r3"
+  ],
+  "parts": {
+    "H04": "the queue's points in H04's region",
+    "H05": "the queue's points in H05's region"
+  },
+  "constants": {
+    "P_HALF": "1/2"
+  },
+  "gates": [
+    {
+      "run": "v1c_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1c_r1",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1b_r1",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1c_r2",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1b_r2",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1c_r3",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 1,
+      "what": "the replay is the base, and the queue's right points are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 2,
+      "what": "the ways partition the loss",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 3,
+      "what": "the curve ends at the base",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 4,
+      "what": "the escalations are the record's",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 5,
+      "what": "the two parts are disjoint and hold every point of the queue",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 6,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "run": "v1b_r3",
+      "gate": 7,
+      "what": "each of the queue's tickets lies first in its governing rule's region",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "v1c_r1": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 3360,
+          "lost": 2940,
+          "impasse": 0,
+          "conflict": 420,
+          "unwritten": 2520,
+          "outranked": 0,
+          "contested": 420,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 2120,
+            "T2_TECHNICAL": 400
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "1/7",
+              "value": 0.142857
+            },
+            "unwritten": {
+              "fraction": "6/7",
+              "value": 0.857143
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0032",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 135,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09"
+          },
+          {
+            "rule_id": "R0001",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 0,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 25600,
+            "lost_points": 640,
+            "unwritten": 640,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H13"
+          },
+          {
+            "rule_id": "R0069",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 816,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 2560,
+            "lost_points": 640,
+            "unwritten": 640,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H13"
+          },
+          {
+            "rule_id": "R0071",
+            "action": "T2_TECHNICAL",
+            "born_at": 851,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "points": 33600,
+            "lost_points": 400,
+            "unwritten": 400,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0062",
+            "action": "T2_TECHNICAL",
+            "born_at": 705,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 3360,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0043",
+            "born_at": 257,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 2100,
+            "lost_inside": 420,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0076",
+            "born_at": 1432,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 1680,
+            "queue_points": 840,
+            "undefeated_on_queue": 840,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          },
+          {
+            "rule_id": "R0080",
+            "born_at": 1951,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 1680,
+            "queue_points": 840,
+            "undefeated_on_queue": 840,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 3360,
+          "at_birth": 1951,
+          "moves": [
+            {
+              "born_at": 257,
+              "rule_id": "R0043",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 2100,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 723,
+              "rule_id": "R0063",
+              "action": "T2_TECHNICAL",
+              "right": 1680,
+              "delta": -420,
+              "cause": "ERROR",
+              "truth": "T2_TECHNICAL",
+              "governing": "H16"
+            },
+            {
+              "born_at": 1432,
+              "rule_id": "R0076",
+              "action": "ONCALL_ESCALATION",
+              "right": 2520,
+              "delta": 840,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1951,
+              "rule_id": "R0080",
+              "action": "ONCALL_ESCALATION",
+              "right": 3360,
+              "delta": 840,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0043",
+            "in_base": true,
+            "listed": 14
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "nacida",
+            "rule_id": "R0076",
+            "in_base": true,
+            "listed": 7
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "nacida",
+            "rule_id": "R0080",
+            "in_base": true,
+            "listed": 6
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 3
+        },
+        "added_after_the_first_run": {
+          "left_out": [],
+          "times_each_rule_was_left_out": {},
+          "containers_of_the_queue": [
+            {
+              "rule_id": "R0071",
+              "action": "T2_TECHNICAL",
+              "born_at": 851,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "eq",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 1680,
+          "H05": 1680
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 420
+        },
+        "unwritten": {
+          "H04": 2520,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 420
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": [
+          {
+            "queue_rule": "R0043",
+            "other_rule": "R0068",
+            "other_action": "ACCOUNT_MANAGER",
+            "other_born_at": 797,
+            "points": 260,
+            "edges": [
+              {
+                "winner": "R0043",
+                "loser": "R0068",
+                "verdict": "cierra_ciclo"
+              }
+            ]
+          },
+          {
+            "queue_rule": "R0043",
+            "other_rule": "R0077",
+            "other_action": "T3_ENGINEERING",
+            "other_born_at": 1444,
+            "points": 160,
+            "edges": [
+              {
+                "winner": "R0043",
+                "loser": "R0077",
+                "verdict": "cierra_ciclo"
+              }
+            ]
+          }
+        ]
+      },
+      "holding_h05_whole": [
+        "R0043"
+      ],
+      "drafts": [
+        {
+          "idx": 257,
+          "cause": "ERROR",
+          "governing": "H05",
+          "part_points": 2100,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "draft_points": 4200,
+          "draft_queue_points": 2100,
+          "draft_part_points": 2100,
+          "holds_part": true,
+          "region_relation": "equal",
+          "verdict": "nacida",
+          "rule_id": "R0043",
+          "copy_of": null,
+          "born_part_points": 2100,
+          "listed": 14,
+          "left_out": {
+            "R0023": "containing"
+          }
+        },
+        {
+          "idx": 1432,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0076",
+          "copy_of": null,
+          "born_part_points": 840,
+          "listed": 7,
+          "left_out": {
+            "R0009": "containing",
+            "R0020": "containing",
+            "R0024": "containing",
+            "R0044": "containing",
+            "R0046": "containing",
+            "R0048": "containing",
+            "R0051": "containing",
+            "R0058": "containing",
+            "R0064": "containing",
+            "R0066": "containing",
+            "R0071": "containing",
+            "R0074": "containing"
+          }
+        },
+        {
+          "idx": 1951,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0080",
+          "copy_of": null,
+          "born_part_points": 840,
+          "listed": 6,
+          "left_out": {
+            "R0014": "containing",
+            "R0033": "containing",
+            "R0071": "containing",
+            "R0075": "containing"
+          }
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 257,
+          "governing": "H05",
+          "matched": [
+            "H05",
+            "H06",
+            "H08",
+            "H20",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H06",
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H20",
+          "cut_by": [],
+          "cut_by_the_first_cutting_match": false,
+          "notes": [
+            {
+              "round": 0,
+              "note": "This rule implements the manual's explicit routing for severity-1 business customers during off-hours, which should take priority over product-specific or severity-based rules that are not supersets (e.g., H20, H21, H23). It is a general rule covering all products and languages, as intended by the policy.",
+              "cites": [
+                "H20",
+                "H21",
+                "H23"
+              ],
+              "beats": [
+                "H07",
+                "H15",
+                "H16",
+                "H17",
+                "H18",
+                "H20",
+                "H21",
+                "H23"
+              ],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "This rule (H05) is a specific exception for severity-1 business customers during off-hours, intended to take priority over product-specific and general severity-1 rules, but must yield to security incident rules (H01, H02, H03) which are higher in the manual's order.",
+              "cites": [
+                "H01",
+                "H02",
+                "H03",
+                "H05"
+              ],
+              "beats": [
+                "R0026",
+                "R0027",
+                "R0020",
+                "R0006",
+                "R0018",
+                "R0014",
+                "R0012",
+                "R0039",
+                "R0033",
+                "R0024",
+                "R0034"
+              ],
+              "loses_to": [
+                "R0035",
+                "R0016",
+                "R0041"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1432,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H07",
+            "H08",
+            "H15",
+            "H16",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H07",
+          "cut_by": [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "This rule covers the specific case of an enterprise severity 1 ticket with product api, which lies at the intersection of H04 and H07, and is more specific than both, thus resolving the ambiguity.",
+              "cites": [
+                "H04",
+                "H07"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "This rule covers the intersection of H04 (severity=1, enterprise) and H07 (severity=1, api), which is not a subset of either, resolving the impasse. Since the manual places H04 before H07, the action is ONCALL_ESCALATION. The rule beats the ACCOUNT_MANAGER rules (R0001, R0054) because H04 appears earlier in the manual. It loses to all security-keyword rules because H01-H03 precede H04.",
+              "cites": [
+                "H01",
+                "H03",
+                "H04",
+                "H07"
+              ],
+              "beats": [
+                "R0001",
+                "R0054"
+              ],
+              "loses_to": [
+                "R0065",
+                "R0041",
+                "R0052",
+                "R0035",
+                "R0016"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1951,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Regla espec\u00edfica para severity=1, enterprise, integrations. Es un subcaso de H04 (severity=1 & enterprise) y debe prevalecer sobre H17 (integrations & severity<=2) seg\u00fan la prioridad del manual (H04 antes que H17).",
+              "cites": [
+                "H04",
+                "H17"
+              ],
+              "beats": [
+                "H17"
+              ],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "Mi regla es un subcaso de H04 (severity=1 & enterprise) y m\u00e1s espec\u00edfica que R0001 (enterprise & prior>=5) por la prioridad del manual, por lo que le gana. En cambio, las reglas de seguridad (R0065, etc.) a\u00f1aden has_security_keyword=true, condici\u00f3n m\u00e1s restrictiva, por lo que deben prevalecer en los casos donde ambas coincidan.",
+              "cites": [
+                "H04"
+              ],
+              "beats": [
+                "R0001"
+              ],
+              "loses_to": [
+                "R0065",
+                "R0052",
+                "R0041",
+                "R0035",
+                "R0016"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "v1b_r1": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 4360,
+          "lost": 1940,
+          "impasse": 0,
+          "conflict": 260,
+          "unwritten": 1680,
+          "outranked": 0,
+          "contested": 260,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 1480,
+            "T2_TECHNICAL": 200
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "13/97",
+              "value": 0.134021
+            },
+            "unwritten": {
+              "fraction": "84/97",
+              "value": 0.865979
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0048",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 816,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 25600,
+            "lost_points": 1280,
+            "unwritten": 1280,
+            "outranked": 0,
+            "cause": "CONFLICT",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H13"
+          },
+          {
+            "rule_id": "R0027",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 135,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09"
+          },
+          {
+            "rule_id": "R0001",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 0,
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 25600,
+            "lost_points": 640,
+            "unwritten": 640,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H13"
+          },
+          {
+            "rule_id": "R0043",
+            "action": "T2_TECHNICAL",
+            "born_at": 658,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "points": 33600,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0035",
+            "born_at": 257,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 4200,
+            "queue_points": 2100,
+            "undefeated_on_queue": 2100,
+            "lost_inside": 260,
+            "is_listed_region": "H05",
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          },
+          {
+            "rule_id": "R0053",
+            "born_at": 1432,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "integrations",
+                  "dashboard"
+                ]
+              }
+            ],
+            "points": 5040,
+            "queue_points": 2520,
+            "undefeated_on_queue": 2520,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 4620,
+          "at_birth": 1432,
+          "moves": [
+            {
+              "born_at": 257,
+              "rule_id": "R0035",
+              "action": "ONCALL_ESCALATION",
+              "right": 2100,
+              "delta": 2100,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            },
+            {
+              "born_at": 1432,
+              "rule_id": "R0053",
+              "action": "ONCALL_ESCALATION",
+              "right": 4620,
+              "delta": 2520,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1658,
+              "rule_id": "R0055",
+              "action": "ACCOUNT_MANAGER",
+              "right": 4360,
+              "delta": -260,
+              "cause": "CONFLICT",
+              "truth": "ACCOUNT_MANAGER",
+              "governing": "H14"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 257,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2100,
+            "verdict": "nacida",
+            "rule_id": "R0035",
+            "in_base": true,
+            "listed": 17
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 2520,
+            "verdict": "nacida",
+            "rule_id": "R0053",
+            "in_base": true,
+            "listed": 22
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 2
+        },
+        "added_after_the_first_run": {
+          "left_out": [],
+          "times_each_rule_was_left_out": {},
+          "containers_of_the_queue": [
+            {
+              "rule_id": "R0022",
+              "action": "T1_GENERAL",
+              "born_at": 50,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "gte",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "rule_id": "R0043",
+              "action": "T2_TECHNICAL",
+              "born_at": 658,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "eq",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 2520,
+          "H05": 1840
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 260
+        },
+        "unwritten": {
+          "H04": 1680,
+          "H05": 0
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 260
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": [
+          {
+            "queue_rule": "R0035",
+            "other_rule": "R0055",
+            "other_action": "ACCOUNT_MANAGER",
+            "other_born_at": 1658,
+            "points": 260,
+            "edges": [
+              {
+                "winner": "R0035",
+                "loser": "R0055",
+                "verdict": "cierra_ciclo"
+              }
+            ]
+          }
+        ]
+      },
+      "holding_h05_whole": [
+        "R0035"
+      ],
+      "drafts": [
+        {
+          "idx": 257,
+          "cause": "ERROR",
+          "governing": "H05",
+          "part_points": 2100,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "draft_points": 4200,
+          "draft_queue_points": 2100,
+          "draft_part_points": 2100,
+          "holds_part": true,
+          "region_relation": "equal",
+          "verdict": "nacida",
+          "rule_id": "R0035",
+          "copy_of": null,
+          "born_part_points": 2100,
+          "listed": 17,
+          "left_out": null
+        },
+        {
+          "idx": 1432,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations",
+                "dashboard"
+              ]
+            }
+          ],
+          "draft_points": 5040,
+          "draft_queue_points": 2520,
+          "draft_part_points": 2520,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0053",
+          "copy_of": null,
+          "born_part_points": 2520,
+          "listed": 22,
+          "left_out": null
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 257,
+          "governing": "H05",
+          "matched": [
+            "H05",
+            "H06",
+            "H08",
+            "H20",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H06",
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H20",
+          "cut_by": [],
+          "cut_by_the_first_cutting_match": false,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Regla equivalente a H05 del manual. Se declara beats sobre reglas que se solapan sin contenerla (producto, idioma, canal, etc.) para mantener la prioridad del manual.",
+              "cites": [
+                "H05"
+              ],
+              "beats": [
+                "H07",
+                "H10",
+                "H11",
+                "H12",
+                "H14",
+                "H15",
+                "H16",
+                "H17",
+                "H18",
+                "H20",
+                "H21",
+                "H23"
+              ],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "Regla equivalente a H05 del manual. Se declara beats sobre reglas que se solapan sin contenerla, y loses_to sobre reglas de seguridad que tienen prioridad seg\u00fan el manual.",
+              "cites": [
+                "H05"
+              ],
+              "beats": [
+                "R0029",
+                "R0024",
+                "R0014",
+                "R0023",
+                "R0015",
+                "R0025",
+                "R0033",
+                "R0018",
+                "R0007",
+                "R0011",
+                "R0022",
+                "R0019",
+                "R0030",
+                "R0013",
+                "R0026"
+              ],
+              "loses_to": [
+                "R0020",
+                "R0031"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1432,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H07",
+            "H08",
+            "H15",
+            "H16",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H07",
+          "cut_by": [],
+          "cut_by_the_first_cutting_match": false,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Regla que cubre el conflicto entre H04 (enterprise+severity1) y las reglas de producto (H07, H17, H20). Al ser subconjunto de todas ellas, el motor la aplica automaticamente sobre las demas, resolviendo el impasse.",
+              "cites": [
+                "H04",
+                "H07",
+                "H17",
+                "H20"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "La regla captura el caso cr\u00edtico de enterprise con severity 1 en productos clave (api, integrations, dashboard), siendo una excepci\u00f3n a reglas generales de producto y prioridad (como R0039, R0049, etc.), pero subordinada a las reglas de seguridad (R0020, etc.) por prioridad de pol\u00edtica. Se sit\u00faa como especializaci\u00f3n de H04 (severity=1, enterprise) y debe ganar a reglas de menor prioridad (como H13 y derivadas) por orden del manual.",
+              "cites": [
+                "H04",
+                "H13"
+              ],
+              "beats": [
+                "R0039",
+                "R0040",
+                "R0029",
+                "R0001",
+                "R0026",
+                "R0019",
+                "R0011",
+                "R0048",
+                "R0050",
+                "R0014",
+                "R0049",
+                "R0033",
+                "R0023",
+                "R0043",
+                "R0018",
+                "R0030",
+                "R0022"
+              ],
+              "loses_to": [
+                "R0020",
+                "R0031",
+                "R0038",
+                "R0046",
+                "R0052"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "v1c_r2": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 2560,
+          "lost": 3740,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 3100,
+          "outranked": 640,
+          "contested": 0,
+          "by_edge": 640,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "T2_TECHNICAL": 1860,
+            "T3_ENGINEERING": 1880
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "unwritten": {
+              "fraction": "155/187",
+              "value": 0.828877
+            },
+            "outranked": {
+              "fraction": "32/187",
+              "value": 0.171123
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0041",
+            "action": "T3_ENGINEERING",
+            "born_at": 513,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "points": 8400,
+            "lost_points": 1680,
+            "unwritten": 1680,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0057",
+            "action": "T2_TECHNICAL",
+            "born_at": 1318,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 1260,
+            "unwritten": 620,
+            "outranked": 640,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0032",
+            "action": "T3_ENGINEERING",
+            "born_at": 153,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 620,
+            "unwritten": 620,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0011",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 13440,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          },
+          {
+            "rule_id": "R0046",
+            "action": "T2_TECHNICAL",
+            "born_at": 658,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0054",
+            "action": "T2_TECHNICAL",
+            "born_at": 1099,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "CONFLICT",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0053",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 6400,
+            "queue_points": 3200,
+            "undefeated_on_queue": 2560,
+            "lost_inside": 640,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 3200,
+          "at_birth": 954,
+          "moves": [
+            {
+              "born_at": 954,
+              "rule_id": "R0053",
+              "action": "ONCALL_ESCALATION",
+              "right": 3200,
+              "delta": 3200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1318,
+              "rule_id": "R0057",
+              "action": "T2_TECHNICAL",
+              "right": 2560,
+              "delta": -640,
+              "cause": "ERROR",
+              "truth": "T2_TECHNICAL",
+              "governing": "H08"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 3200,
+            "verdict": "nacida",
+            "rule_id": "R0053",
+            "in_base": true,
+            "listed": 19
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 4
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 1,
+          "sin_situar": 1
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 1951,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 4,
+              "listed_nested": 0,
+              "left_out": 3,
+              "left_out_rules": [
+                "R0033",
+                "R0034",
+                "R0040"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 3
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 2,
+                "T2_TECHNICAL": 1
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0033": 1,
+            "R0034": 1,
+            "R0040": 1
+          },
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 2560,
+          "H05": 0
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 1000,
+          "H05": 2100
+        },
+        "outranked": {
+          "H04": 640,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 640,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      },
+      "holding_h05_whole": [],
+      "drafts": [
+        {
+          "idx": 954,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "draft_points": 6400,
+          "draft_queue_points": 3200,
+          "draft_part_points": 3200,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0053",
+          "copy_of": null,
+          "born_part_points": 3200,
+          "listed": 19,
+          "left_out": {
+            "R0001": "containing"
+          }
+        },
+        {
+          "idx": 1951,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 4,
+          "left_out": {
+            "R0031": "containing",
+            "R0057": "containing"
+          }
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 954,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H13",
+            "H20",
+            "H21",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H13",
+          "cut_by": [
+            "H13"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Esta regla cubre tickets cr\u00edticos de clientes enterprise con historial de tickets recientes alto. Al ser un subconjunto de H04 y H13, se resuelve autom\u00e1ticamente por contenci\u00f3n, pero supera a reglas de producto o idioma que dar\u00edan T2_TECHNICAL en estos casos.",
+              "cites": [
+                "H04",
+                "H13"
+              ],
+              "beats": [
+                "H20",
+                "H21"
+              ],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "Esta regla es una excepci\u00f3n para clientes enterprise con severidad cr\u00edtica y alta recurrencia, derivada de H04. Al no contener ni estar contenida en reglas de seguridad ni de billing/api/integrations, se declara prioridad expl\u00edcita: gana a las reglas de colas no cr\u00edticas (T2, T3, billing, account manager, deflect) y pierde frente a las de seguridad (SECURITY_INCIDENT) por la pol\u00edtica corporativa.",
+              "cites": [
+                "H04"
+              ],
+              "beats": [
+                "R0027",
+                "R0029",
+                "R0007",
+                "R0011",
+                "R0024",
+                "R0052",
+                "R0037",
+                "R0042",
+                "R0021",
+                "R0032",
+                "R0031",
+                "R0050",
+                "R0046",
+                "R0010"
+              ],
+              "loses_to": [
+                "R0040",
+                "R0043",
+                "R0044",
+                "R0033",
+                "R0034"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1951,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Regla espec\u00edfica para severity=1, enterprise, integrations, que resuelve el conflicto entre H04 (severity=1&enterprise -> ONCALL) y H17 (integrations&severity<=2 -> T3). Por ser subconjunto de ambas, gana autom\u00e1ticamente.",
+              "cites": [
+                "H04",
+                "H17"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "La regla es m\u00e1s espec\u00edfica que R0001 (a\u00f1ade severity=1 y product=integrations), por lo que debe ganar en la superposici\u00f3n. No hay solapamiento con las otras reglas listadas porque requieren has_security_keyword=true, mientras que el ticket tiene false.",
+              "cites": [],
+              "beats": [
+                "R0001"
+              ],
+              "loses_to": []
+            }
+          ]
+        }
+      ]
+    },
+    "v1b_r2": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 3400,
+          "lost": 2900,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 2900,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "T2_TECHNICAL": 600,
+            "T3_ENGINEERING": 2300
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "unwritten": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0044",
+            "action": "T3_ENGINEERING",
+            "born_at": 513,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "points": 8400,
+            "lost_points": 2100,
+            "unwritten": 2100,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0021",
+            "action": "T3_ENGINEERING",
+            "born_at": 58,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 620,
+            "unwritten": 620,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0008",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 13440,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          },
+          {
+            "rule_id": "R0047",
+            "action": "T2_TECHNICAL",
+            "born_at": 658,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0049",
+            "action": "T2_TECHNICAL",
+            "born_at": 813,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 200,
+            "unwritten": 200,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0052",
+            "born_at": 954,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 6400,
+            "queue_points": 3200,
+            "undefeated_on_queue": 3200,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          },
+          {
+            "rule_id": "R0062",
+            "born_at": 1951,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 1680,
+            "queue_points": 840,
+            "undefeated_on_queue": 840,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H04"
+          }
+        ],
+        "curve": {
+          "most_right": 3400,
+          "at_birth": 1951,
+          "moves": [
+            {
+              "born_at": 954,
+              "rule_id": "R0052",
+              "action": "ONCALL_ESCALATION",
+              "right": 3200,
+              "delta": 3200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            },
+            {
+              "born_at": 1951,
+              "rule_id": "R0062",
+              "action": "ONCALL_ESCALATION",
+              "right": 3400,
+              "delta": 200,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H04"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 954,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 3200,
+            "verdict": "nacida",
+            "rule_id": "R0052",
+            "in_base": true,
+            "listed": 21
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "nacida",
+            "rule_id": "R0062",
+            "in_base": true,
+            "listed": 11
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 2
+        },
+        "added_after_the_first_run": {
+          "left_out": [],
+          "times_each_rule_was_left_out": {},
+          "containers_of_the_queue": []
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 3400,
+          "H05": 0
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 800,
+          "H05": 2100
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      },
+      "holding_h05_whole": [],
+      "drafts": [
+        {
+          "idx": 954,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ],
+          "draft_points": 6400,
+          "draft_queue_points": 3200,
+          "draft_part_points": 3200,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0052",
+          "copy_of": null,
+          "born_part_points": 3200,
+          "listed": 21,
+          "left_out": null
+        },
+        {
+          "idx": 1951,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0062",
+          "copy_of": null,
+          "born_part_points": 840,
+          "listed": 11,
+          "left_out": null
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 954,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H13",
+            "H20",
+            "H21",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H13",
+          "cut_by": [
+            "H13"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Regla m\u00e1s espec\u00edfica que H04 y H13, cubre tickets cr\u00edticos de enterprise con historial alto de tickets. Al ser subconjunto de ambas, gana autom\u00e1ticamente.",
+              "cites": [
+                "H04",
+                "H13"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "Mi regla es m\u00e1s espec\u00edfica que las de ACCOUNT_MANAGER, T2, T3 y BILLING por a\u00f1adir severity=1, pero menos espec\u00edfica que las de seguridad (requieren has_security_keyword), por lo que las reglas de seguridad la vencen.",
+              "cites": [],
+              "beats": [
+                "R0008",
+                "R0041",
+                "R0007",
+                "R0001",
+                "R0036",
+                "R0039",
+                "R0009",
+                "R0051",
+                "R0038",
+                "R0035",
+                "R0040",
+                "R0031",
+                "R0021",
+                "R0047",
+                "R0025",
+                "R0049",
+                "R0043",
+                "R0006"
+              ],
+              "loses_to": [
+                "R0018",
+                "R0045",
+                "R0037"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1951,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "This rule covers the specific case where a critical severity 1 enterprise ticket involves the integrations product, which triggers both H04 (ONCALL_ESCALATION) and H17 (T3_ENGINEERING). Since H04 is more urgent per policy, we create a more specific rule that is a subset of both, ensuring containment automatically gives it priority.",
+              "cites": [
+                "H04",
+                "H17"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "This rule is an exception to general integrations and enterprise rules, sending critical severity 1 enterprise integrations tickets to ONCALL. It must lose to security keyword rules (R0018, R0045, R0037) because security incidents take priority over severity-based escalations per policy.",
+              "cites": [],
+              "beats": [
+                "R0001",
+                "R0025",
+                "R0058",
+                "R0059",
+                "R0056",
+                "R0043",
+                "R0031",
+                "R0060"
+              ],
+              "loses_to": [
+                "R0018",
+                "R0045",
+                "R0037"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "v1c_r3": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 420,
+          "lost": 5880,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 5880,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "T2_TECHNICAL": 3360,
+            "T3_ENGINEERING": 2520
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "unwritten": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0064",
+            "action": "T3_ENGINEERING",
+            "born_at": 1113,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              }
+            ],
+            "points": 8400,
+            "lost_points": 1260,
+            "unwritten": 1260,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0074",
+            "action": "T3_ENGINEERING",
+            "born_at": 1939,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 1260,
+            "unwritten": 1260,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0025",
+            "action": "T2_TECHNICAL",
+            "born_at": 74,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0044",
+            "action": "T2_TECHNICAL",
+            "born_at": 423,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "CONFLICT",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0059",
+            "action": "T2_TECHNICAL",
+            "born_at": 725,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0065",
+            "action": "T2_TECHNICAL",
+            "born_at": 1114,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0071",
+            "action": "T2_TECHNICAL",
+            "born_at": 1601,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 840,
+            "unwritten": 840,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0032",
+            "action": "T3_ENGINEERING",
+            "born_at": 181,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 620,
+            "unwritten": 620,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0063",
+            "action": "T3_ENGINEERING",
+            "born_at": 941,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 1680,
+            "lost_points": 420,
+            "unwritten": 420,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T3_ENGINEERING",
+            "governing": "H06"
+          },
+          {
+            "rule_id": "R0011",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "points": 6720,
+            "lost_points": 100,
+            "unwritten": 100,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          }
+        ],
+        "queue_rules": [
+          {
+            "rule_id": "R0058",
+            "born_at": 710,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              }
+            ],
+            "points": 840,
+            "queue_points": 420,
+            "undefeated_on_queue": 420,
+            "lost_inside": 0,
+            "is_listed_region": null,
+            "cause": "ERROR",
+            "truth": "ONCALL_ESCALATION",
+            "governing": "H05"
+          }
+        ],
+        "curve": {
+          "most_right": 420,
+          "at_birth": 710,
+          "moves": [
+            {
+              "born_at": 710,
+              "rule_id": "R0058",
+              "action": "ONCALL_ESCALATION",
+              "right": 420,
+              "delta": 420,
+              "cause": "ERROR",
+              "truth": "ONCALL_ESCALATION",
+              "governing": "H05"
+            }
+          ]
+        },
+        "escalations": [
+          {
+            "idx": 710,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 420,
+            "verdict": "nacida",
+            "rule_id": "R0058",
+            "in_base": true,
+            "listed": 3
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "rechazada",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 4
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 3360,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 29
+          }
+        ],
+        "escalation_verdicts": {
+          "nacida": 1,
+          "rechazada": 1,
+          "sin_situar": 1
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 1951,
+              "answered": true,
+              "draft_queue_points": 3360,
+              "listed": 29,
+              "listed_nested": 0,
+              "left_out": 29,
+              "left_out_rules": [
+                "R0001",
+                "R0006",
+                "R0009",
+                "R0011",
+                "R0015",
+                "R0018",
+                "R0025",
+                "R0028",
+                "R0030",
+                "R0032",
+                "R0033",
+                "R0037",
+                "R0038",
+                "R0040",
+                "R0041",
+                "R0043",
+                "R0044",
+                "R0049",
+                "R0050",
+                "R0051",
+                "R0053",
+                "R0054",
+                "R0062",
+                "R0065",
+                "R0069",
+                "R0071",
+                "R0072",
+                "R0073",
+                "R0074"
+              ],
+              "left_out_nested": 0,
+              "left_out_by_relation": {
+                "crossing": 29
+              },
+              "left_out_by_queue": {
+                "ACCOUNT_MANAGER": 6,
+                "BILLING_SPECIALIST": 3,
+                "SECURITY_INCIDENT": 4,
+                "T2_TECHNICAL": 12,
+                "T3_ENGINEERING": 4
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0001": 1,
+            "R0006": 1,
+            "R0009": 1,
+            "R0011": 1,
+            "R0015": 1,
+            "R0018": 1,
+            "R0025": 1,
+            "R0028": 1,
+            "R0030": 1,
+            "R0032": 1,
+            "R0033": 1,
+            "R0037": 1,
+            "R0038": 1,
+            "R0040": 1,
+            "R0041": 1,
+            "R0043": 1,
+            "R0044": 1,
+            "R0049": 1,
+            "R0050": 1,
+            "R0051": 1,
+            "R0053": 1,
+            "R0054": 1,
+            "R0062": 1,
+            "R0065": 1,
+            "R0069": 1,
+            "R0071": 1,
+            "R0072": 1,
+            "R0073": 1,
+            "R0074": 1
+          },
+          "containers_of_the_queue": [
+            {
+              "rule_id": "R0029",
+              "action": "T1_GENERAL",
+              "born_at": 116,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "gte",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 0,
+          "H05": 420
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 4200,
+          "H05": 1680
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      },
+      "holding_h05_whole": [],
+      "drafts": [
+        {
+          "idx": 710,
+          "cause": "ERROR",
+          "governing": "H05",
+          "part_points": 2100,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 840,
+          "draft_queue_points": 420,
+          "draft_part_points": 420,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "nacida",
+          "rule_id": "R0058",
+          "copy_of": null,
+          "born_part_points": 420,
+          "listed": 3,
+          "left_out": {
+            "R0017": "containing",
+            "R0018": "containing",
+            "R0029": "containing",
+            "R0041": "containing",
+            "R0049": "containing"
+          }
+        },
+        {
+          "idx": 1432,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "rechazada",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 4,
+          "left_out": {
+            "R0009": "containing",
+            "R0029": "containing",
+            "R0032": "containing",
+            "R0038": "containing"
+          }
+        },
+        {
+          "idx": 1951,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "in",
+              "value": [
+                "api",
+                "integrations",
+                "dashboard",
+                "billing"
+              ]
+            }
+          ],
+          "draft_points": 6720,
+          "draft_queue_points": 3360,
+          "draft_part_points": 3360,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 29,
+          "left_out": {
+            "R0029": "containing"
+          }
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 710,
+          "governing": "H05",
+          "matched": [
+            "H05",
+            "H06",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H06",
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Cubre el solapamiento entre H05 (severity=1, business, off_hours) y H17 (product=integrations, severity<=2). Al ser subconjunto de ambas, gana automaticamente. Asigna ONCALL_ESCALATION por ser la prioridad mas alta (H05 antes que H17 en el manual).",
+              "cites": [
+                "H05",
+                "H17"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "La regla es una excepci\u00f3n m\u00e1s espec\u00edfica que R0024 (a\u00f1ade severity, customer_tier, product), R0019 (a\u00f1ade off_hours, product y no requiere security) y R0016 (a\u00f1ade severity, off_hours, product). Por tanto, debe ganar a todas en el solapamiento.",
+              "cites": [],
+              "beats": [
+                "R0024",
+                "R0019",
+                "R0016"
+              ],
+              "loses_to": []
+            }
+          ]
+        },
+        {
+          "idx": 1432,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H07",
+            "H08",
+            "H15",
+            "H16",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H07",
+          "cut_by": [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Esta regla combina las condiciones de H04 (severity=1, enterprise) y H07 (severity=1, product=api) para resolver el conflicto, siendo un caso m\u00e1s espec\u00edfico de ambas. La contenci\u00f3n autom\u00e1tica la prioriza sobre H04 y H07, sin necesidad de declarar prioridad.",
+              "cites": [
+                "H04",
+                "H07"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": null,
+              "cites": [],
+              "beats": null,
+              "loses_to": null
+            }
+          ]
+        },
+        {
+          "idx": 1951,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [],
+          "cut_by_the_first_cutting_match": false,
+          "notes": [
+            {
+              "round": 0,
+              "note": "La regla captura el solapamiento entre H04 (severity=1, enterprise) y las reglas espec\u00edficas de producto (H07, H09, H10, H15, H17, H20). Al a\u00f1adir la condici\u00f3n de producto con los valores que generan conflicto, la nueva regla es m\u00e1s espec\u00edfica que todas las involucradas, por lo que gana por contenci\u00f3n sin necesidad de declarar prioridad. Cubre el ticket actual (integrations) y casos an\u00e1logos futuros con otros productos conflictivos.",
+              "cites": [
+                "H04",
+                "H07",
+                "H09",
+                "H10",
+                "H15",
+                "H17",
+                "H20"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "La regla es un caso particular de H04 (severity=1, enterprise) y de las reglas de producto (H07, H17, H20, H09, H10, etc.), por lo que gana por contenci\u00f3n autom\u00e1tica. Cubre el ticket actual y futuros casos an\u00e1logos con otros productos conflictivos.",
+              "cites": [
+                "H04",
+                "H07",
+                "H09",
+                "H10",
+                "H17",
+                "H20"
+              ],
+              "beats": [],
+              "loses_to": []
+            }
+          ]
+        }
+      ]
+    },
+    "v1b_r3": {
+      "reading": {
+        "queue_points": 6300,
+        "ways": {
+          "right": 0,
+          "lost": 6300,
+          "impasse": 0,
+          "conflict": 0,
+          "unwritten": 6300,
+          "outranked": 0,
+          "contested": 0,
+          "by_edge": 0,
+          "by_containment": 0,
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 640,
+            "BILLING_SPECIALIST": 260,
+            "T2_TECHNICAL": 4140,
+            "T3_ENGINEERING": 1260
+          },
+          "of_lost": {
+            "impasse": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "conflict": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "unwritten": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "outranked": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          }
+        },
+        "winners": [
+          {
+            "rule_id": "R0053",
+            "action": "T2_TECHNICAL",
+            "born_at": 851,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "points": 33600,
+            "lost_points": 2520,
+            "unwritten": 2520,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0019",
+            "action": "T3_ENGINEERING",
+            "born_at": 58,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 1260,
+            "unwritten": 1260,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T3_ENGINEERING",
+            "governing": "H07"
+          },
+          {
+            "rule_id": "R0046",
+            "action": "T2_TECHNICAL",
+            "born_at": 658,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 1260,
+            "unwritten": 1260,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0024",
+            "action": "ACCOUNT_MANAGER",
+            "born_at": 103,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "points": 5120,
+            "lost_points": 640,
+            "unwritten": 640,
+            "outranked": 0,
+            "cause": "ERROR",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09"
+          },
+          {
+            "rule_id": "R0009",
+            "action": "T2_TECHNICAL",
+            "born_at": 13,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              }
+            ],
+            "points": 13440,
+            "lost_points": 360,
+            "unwritten": 360,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H20"
+          },
+          {
+            "rule_id": "R0022",
+            "action": "T2_TECHNICAL",
+            "born_at": 85,
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "points": 6720,
+            "lost_points": 360,
+            "unwritten": 360,
+            "outranked": 0,
+            "cause": "IMPASSE",
+            "truth": "T2_TECHNICAL",
+            "governing": "H08"
+          },
+          {
+            "rule_id": "R0038",
+            "action": "BILLING_SPECIALIST",
+            "born_at": 383,
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 8
+              }
+            ],
+            "points": 2080,
+            "lost_points": 260,
+            "unwritten": 260,
+            "outranked": 0,
+            "cause": "CONFLICT",
+            "truth": "BILLING_SPECIALIST",
+            "governing": "H10"
+          }
+        ],
+        "queue_rules": [],
+        "curve": {
+          "most_right": 0,
+          "at_birth": 0,
+          "moves": []
+        },
+        "escalations": [
+          {
+            "idx": 710,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H05",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 420,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 6
+          },
+          {
+            "idx": 1432,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 12
+          },
+          {
+            "idx": 1951,
+            "cause": "ERROR",
+            "escalated": true,
+            "governing": "H04",
+            "draft_action": "ONCALL_ESCALATION",
+            "draft_queue_points": 840,
+            "verdict": "sin_situar",
+            "rule_id": null,
+            "in_base": false,
+            "listed": 11
+          }
+        ],
+        "escalation_verdicts": {
+          "sin_situar": 3
+        },
+        "added_after_the_first_run": {
+          "left_out": [
+            {
+              "idx": 710,
+              "answered": true,
+              "draft_queue_points": 420,
+              "listed": 6,
+              "listed_nested": 1,
+              "left_out": 1,
+              "left_out_rules": [
+                "R0028"
+              ],
+              "left_out_nested": 1,
+              "left_out_by_relation": {
+                "contains_draft": 1
+              },
+              "left_out_by_queue": {
+                "T3_ENGINEERING": 1
+              }
+            },
+            {
+              "idx": 1432,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 12,
+              "listed_nested": 4,
+              "left_out": 10,
+              "left_out_rules": [
+                "R0007",
+                "R0018",
+                "R0019",
+                "R0031",
+                "R0035",
+                "R0045",
+                "R0050",
+                "R0053",
+                "R0054",
+                "R0057"
+              ],
+              "left_out_nested": 4,
+              "left_out_by_relation": {
+                "contains_draft": 4,
+                "crossing": 6
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 3,
+                "T2_TECHNICAL": 5,
+                "T3_ENGINEERING": 2
+              }
+            },
+            {
+              "idx": 1951,
+              "answered": true,
+              "draft_queue_points": 840,
+              "listed": 11,
+              "listed_nested": 2,
+              "left_out": 9,
+              "left_out_rules": [
+                "R0018",
+                "R0028",
+                "R0035",
+                "R0045",
+                "R0050",
+                "R0053",
+                "R0054",
+                "R0057",
+                "R0060"
+              ],
+              "left_out_nested": 2,
+              "left_out_by_relation": {
+                "contains_draft": 2,
+                "crossing": 7
+              },
+              "left_out_by_queue": {
+                "SECURITY_INCIDENT": 4,
+                "T2_TECHNICAL": 4,
+                "T3_ENGINEERING": 1
+              }
+            }
+          ],
+          "times_each_rule_was_left_out": {
+            "R0028": 2,
+            "R0018": 2,
+            "R0035": 2,
+            "R0045": 2,
+            "R0050": 2,
+            "R0053": 2,
+            "R0054": 2,
+            "R0057": 2,
+            "R0007": 1,
+            "R0019": 1,
+            "R0031": 1,
+            "R0060": 1
+          },
+          "containers_of_the_queue": [
+            {
+              "rule_id": "R0053",
+              "action": "T2_TECHNICAL",
+              "born_at": 851,
+              "conditions": [
+                {
+                  "attr": "severity",
+                  "op": "eq",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gates": [
+          {
+            "gate": 1,
+            "what": "the replay is the base, and the queue's right points are Stage C's",
+            "passes": true
+          },
+          {
+            "gate": 2,
+            "what": "the ways partition the loss",
+            "passes": true
+          },
+          {
+            "gate": 3,
+            "what": "the curve ends at the base",
+            "passes": true
+          },
+          {
+            "gate": 4,
+            "what": "the escalations are the record's",
+            "passes": true
+          },
+          {
+            "gate": 5,
+            "what": "the two parts are disjoint and hold every point of the queue",
+            "passes": true
+          },
+          {
+            "gate": 6,
+            "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+            "passes": true
+          },
+          {
+            "gate": 7,
+            "what": "each of the queue's tickets lies first in its governing rule's region",
+            "passes": true
+          }
+        ]
+      },
+      "by_part": {
+        "right": {
+          "H04": 0,
+          "H05": 0
+        },
+        "impasse": {
+          "H04": 0,
+          "H05": 0
+        },
+        "conflict": {
+          "H04": 0,
+          "H05": 0
+        },
+        "unwritten": {
+          "H04": 4200,
+          "H05": 2100
+        },
+        "outranked": {
+          "H04": 0,
+          "H05": 0
+        },
+        "contested": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_edge": {
+          "H04": 0,
+          "H05": 0
+        },
+        "by_containment": {
+          "H04": 0,
+          "H05": 0
+        }
+      },
+      "holding_h04_whole": [],
+      "added_after_the_first_run": {
+        "contested_pairs": []
+      },
+      "holding_h05_whole": [],
+      "drafts": [
+        {
+          "idx": 710,
+          "cause": "ERROR",
+          "governing": "H05",
+          "part_points": 2100,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 840,
+          "draft_queue_points": 420,
+          "draft_part_points": 420,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 6,
+          "left_out": null
+        },
+        {
+          "idx": 1432,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 12,
+          "left_out": null
+        },
+        {
+          "idx": 1951,
+          "cause": "ERROR",
+          "governing": "H04",
+          "part_points": 4200,
+          "draft_action": "ONCALL_ESCALATION",
+          "draft_conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ],
+          "draft_points": 1680,
+          "draft_queue_points": 840,
+          "draft_part_points": 840,
+          "holds_part": false,
+          "region_relation": "contains_draft",
+          "verdict": "sin_situar",
+          "rule_id": null,
+          "copy_of": null,
+          "born_part_points": null,
+          "listed": 11,
+          "left_out": null
+        }
+      ],
+      "cuts": [
+        {
+          "idx": 710,
+          "governing": "H05",
+          "matched": [
+            "H05",
+            "H06",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H06",
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Casos de severity 1, business, off-hours y producto integrations deben ir a ONCALL, prevaleciendo sobre la regla H17 que los enviar\u00eda a T3, ya que la urgencia y el horario no laboral son prioritarios.",
+              "cites": [
+                "H17"
+              ],
+              "beats": [
+                "H17"
+              ],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "Esta regla es una especializaci\u00f3n de H05 (severity 1, business, off_hours -> ONCALL) a\u00f1adiendo producto integrations. Frente a reglas de seguridad (R0045, R0018, R0035) debe perder porque si el ticket tiene palabra clave de seguridad, debe ir a SECURITY_INCIDENT. Frente a reglas de account manager (R0036, R0023) debe ganar porque la urgencia y horario no laboral tienen prioridad. R0028 (integrations + severity<=2 -> T3) est\u00e1 contenida autom\u00e1ticamente, por lo que no se declara.",
+              "cites": [
+                "H05"
+              ],
+              "beats": [
+                "R0036",
+                "R0023"
+              ],
+              "loses_to": [
+                "R0045",
+                "R0018",
+                "R0035"
+              ]
+            }
+          ]
+        },
+        {
+          "idx": 1432,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H07",
+            "H08",
+            "H15",
+            "H16",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H07",
+          "cut_by": [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "La regla captura la interseccion de H04 (severity=1 & enterprise) y H07 (severity=1 & api) que produce el impasse. Al ser un subconjunto de ambas, el motor automaticamente le da prioridad sobre ellas y sobre cualquier regla mas general, asignando ONCALL_ESCALATION segun la prioridad del manual (H04 antes que H07).",
+              "cites": [
+                "H04",
+                "H07"
+              ],
+              "beats": [],
+              "loses_to": []
+            },
+            {
+              "round": 1,
+              "note": "La regla es un subconjunto de H04 y H07, y por tanto automaticamente vence a las reglas generales que contiene (R0053, R0031, R0007, R0019). Sin embargo, se solapa con R0001 y R0044 (enterprise y prior>=5) sin que una contenga a la otra; como H04 (severity=1 & enterprise) aparece antes que H13 en el manual, nuestra regla debe prevalecer, por lo que se declara beats.",
+              "cites": [
+                "H04",
+                "H07",
+                "H13"
+              ],
+              "beats": [
+                "R0001",
+                "R0044"
+              ],
+              "loses_to": []
+            }
+          ]
+        },
+        {
+          "idx": 1951,
+          "governing": "H04",
+          "matched": [
+            "H04",
+            "H08",
+            "H17",
+            "H18",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_match_is_governing": true,
+          "matched_containing_the_governing": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "first_cutting_match": "H17",
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "cut_by_the_first_cutting_match": true,
+          "notes": [
+            {
+              "round": 0,
+              "note": "Esta regla cubre el caso donde un ticket enterprise de severidad 1 con producto integrations cumple tanto H04 (ONCALL_ESCALATION) como H17 (T3_ENGINEERING). Seg\u00fan el orden del manual, H04 debe prevalecer. La regla act\u00faa como un puente de contenci\u00f3n: es m\u00e1s espec\u00edfica que H17 (por incluir enterprise) y menos espec\u00edfica que H04 (por incluir producto), permitiendo que H04 gane autom\u00e1ticamente mediante la relaci\u00f3n declarada loses_to.",
+              "cites": [
+                "H04",
+                "H17"
+              ],
+              "beats": [
+                "H17"
+              ],
+              "loses_to": [
+                "H04"
+              ]
+            },
+            {
+              "round": 1,
+              "note": "La regla cubre tickets enterprise con severity 1 y producto integrations. Es una excepci\u00f3n a H17 (T3_ENGINEERING) por a\u00f1adir customer_tier, y a las reglas R0001 y R0044 (ACCOUNT_MANAGER) que requieren prior_tickets_30d>=5, ya que la severidad 1 y producto integrations la hacen m\u00e1s urgente. Pierde frente a H04 (ONCALL_ESCALATION) porque H04 es m\u00e1s general y ya est\u00e1 en el manual.",
+              "cites": [
+                "H04",
+                "H17"
+              ],
+              "beats": [
+                "H17",
+                "R0001",
+                "R0044"
+              ],
+              "loses_to": [
+                "H04"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "P1",
+      "what": "in both runs no draft at an escalation of the queue holds its ticket's part whole",
+      "reading": {
+        "v1c_r3": {
+          "drafts_holding_their_part": 0,
+          "of": 3
+        },
+        "v1b_r3": {
+          "drafts_holding_their_part": 0,
+          "of": 3
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P2",
+      "what": "in both runs no rule of the queue holds H04's part whole, and none holds H05's",
+      "reading": {
+        "v1c_r3": {
+          "H04": [],
+          "H05": []
+        },
+        "v1b_r3": {
+          "H04": [],
+          "H05": []
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P3",
+      "what": "in both runs at least half of the lost points are unwritten",
+      "reading": {
+        "v1c_r3": {
+          "unwritten": 5880,
+          "of": 5880,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v1b_r3": {
+          "unwritten": 6300,
+          "of": 6300,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P4",
+      "what": "in v1c_r3 every escalation of the queue ended with its rule born",
+      "reading": {
+        "born": 1,
+        "of": 3,
+        "verdicts": {
+          "nacida": 1,
+          "rechazada": 1,
+          "sin_situar": 1
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "P5",
+      "what": "in v1b_r3 no escalation of the queue ended with its rule born",
+      "reading": {
+        "born": 0,
+        "of": 3,
+        "verdicts": {
+          "sin_situar": 3
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P6",
+      "what": "in both runs after no birth did the base decide half of the queue's points right or more",
+      "reading": {
+        "v1c_r3": {
+          "most_right": 420,
+          "at_birth": 710,
+          "of": 6300
+        },
+        "v1b_r3": {
+          "most_right": 0,
+          "at_birth": 0,
+          "of": 6300
+        }
+      },
+      "holds": true
+    }
+  ]
+}
