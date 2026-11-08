@@ -8,7 +8,7 @@ commit of its own: `0b39ae8` on `main`.
   2026-11-07.
 - **The bridge and the six runs** reached it in #209, merged on 2026-11-08.
 - **Stage C, this record, the banner that closes the plan and the indexes**
-  reach it in the pull request this record was opened in.
+  reach it in #210, the pull request this record was opened in.
 
 Every record names in its `_env` the commit it was written from. Eight were
 written on a pull request's branch, and the rebase merge gave each of those
