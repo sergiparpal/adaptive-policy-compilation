@@ -499,10 +499,18 @@ that leaves:
     - **Why the request cuts.** Both providers cut where the first lower listed
       rule a cut changes adds the ticket's product. A text asking for the
       governing rule's region whole is another plan. Calls.
-  - **Whether the cut is why births are narrow.** 11 of the queue's 15 drafts in
+  - ~~**Whether the cut is why births are narrow.**~~ 11 of the queue's 15 drafts in
     the six runs are their governing rule's region cut by exactly the first lower
     listed rule a cut changes. Whether the loop's other narrow births are such
     cuts is free on the records.
+    **[NOTE 2026-11-08] Read POST-RUN** by `placement/births.py`
+    (`FINDINGS_PLACEMENT.md`, *Whether the cut is why the loop's births are
+    narrow*). Where a cut is possible, about seven narrow births in ten are one,
+    in this plan's runs and in two earlier plans' on Baidu. What it leaves:
+    - **What the cuts cost each queue.** For each cut, how much of its governing
+      rule's part no rule of the queue decides at the end. Free on the records.
+    - **The narrow births that are no cut where one was possible.** 46 in this
+      plan's runs. Free on the records.
 - **The two refusals v1c keeps.**
   - **A crossing rule left out.** Every answer v1c refused left out a crossing
     rule. A round that accepts a partial placement, and leaves the unplaced pair
@@ -517,6 +525,12 @@ that leaves:
   its births were their governing rule's region no more often than v1b's. The
   re-ask of the loop's first calls, under *What `PLAN_REASONED_LOOP.md` opens*,
   is another plan.
+  **[NOTE 2026-11-08] Mostly a cut, read POST-RUN.** Where the ticket matches a
+  lower listed rule whose region does not contain the governing rule's, about
+  seven narrow births in ten are the governing rule's region cut by it. The
+  rarest queue's notes say why: a cut wins by containment, with no side
+  declared. A text that asks for the governing rule's region whole would test
+  it. Another plan. See the item on `ONCALL_ESCALATION` above.
 - **The direction of the placed edges.** In both arms they pointed at the better
   rule less often than a fixed ranking of the queues, by a wider gap than in
   `PLAN_CHANNEL.md`'s runs. Whether the round, the provider or the period
