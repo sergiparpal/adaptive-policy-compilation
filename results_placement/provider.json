@@ -1,0 +1,1206 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-08T18:14:09Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "8a55d2d51d5f2aa6708b5f7e95eebf3939cc6c8a",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "a515c2a31d3ccfbe"
+  },
+  "plan": "PLAN_PLACEMENT.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_PLACEMENT.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_PLACEMENT.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-08, after placement/oncall.py's reading. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "bridge": "results_placement/bridge.json",
+    "bridge_from": "2273b6b480e0ba5055a987f694d2315066c04aad",
+    "oncall": "results_placement/oncall.json",
+    "oncall_from": "9cb6dd07e9423ede35ba02eab527b8eb675ba808",
+    "channel_oncall": "results_channel/oncall.json"
+  },
+  "surface": "the exhaustive space, 134,400 points, for each answer's draft",
+  "queue": "ONCALL_ESCALATION",
+  "tickets": [
+    257,
+    710,
+    954,
+    982,
+    1432,
+    1783,
+    1951
+  ],
+  "constants": {
+    "Q2_WHOLE": 2
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the bridge asked each of the queue's tickets once of each provider, in its first call",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "each ticket is governed by H04 or H05, and lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the drafts read from PLAN_CHANNEL.md's records give back results_channel/oncall.json's points",
+      "passes": true
+    }
+  ],
+  "bridge": {
+    "257": {
+      "idx": 257,
+      "governing": "H05",
+      "part_points": 2100,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "draft_points": 4200,
+        "draft_queue_points": 2100,
+        "draft_part_points": 2100,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H20",
+        "cut_by_the_first_cutting_match": false,
+        "note": "Esta regla captura tickets de severidad 1 con cliente business en horario no laboral, que requieren escalado on-call. Se solapa con H20 (dashboard+severity lte 2) pero no la contiene ni es contenida, por lo que se declara prioridad para que este caso vaya a ONCALL_ESCALATION.",
+        "cites": [
+          "H20"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "draft_points": 4200,
+        "draft_queue_points": 2100,
+        "draft_part_points": 2100,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H20",
+        "cut_by_the_first_cutting_match": false,
+        "note": "Regla generaliza el ticket: severidad cr\u00edtica, cliente business, fuera de horario. H05 ya existe pero el motor no la aplic\u00f3 por conflicto con H20 (dashboard severity<=2). Se declara prioridad sobre H20 para asegurar que estos casos vayan a on-call, ya que la urgencia y el horario lo requieren.",
+        "cites": [
+          "H05",
+          "H20"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "710": {
+      "idx": 710,
+      "governing": "H05",
+      "part_points": 2100,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "draft_points": 4200,
+        "draft_queue_points": 2100,
+        "draft_part_points": 2100,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H17",
+        "cut_by_the_first_cutting_match": false,
+        "note": "La regla sigue la pol\u00edtica H05: severity cr\u00edtica, cliente business y fuera de horario laboral. Se antepone a H17/H18 (product=integrations) porque la condici\u00f3n off_hours es menos general y debe prevalecer, evitando que el ticket sea desviado a T3_ENGINEERING o T2_TECHNICAL.",
+        "cites": [
+          "H05",
+          "H17",
+          "H18"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "attr": "product",
+            "op": "in",
+            "value": [
+              "api",
+              "integrations",
+              "dashboard",
+              "billing"
+            ]
+          }
+        ],
+        "draft_points": 3360,
+        "draft_queue_points": 1680,
+        "draft_part_points": 1680,
+        "holds_part": false,
+        "cut_by": [],
+        "first_cutting_match": "H17",
+        "cut_by_the_first_cutting_match": false,
+        "note": "This rule is a subset of both H05 (business, off-hours, severity=1) and the product-specific rules (e.g., H17 for integrations, H07 for api, H20 for dashboard, H10 for billing) that would route to a different queue. Since it is more specific than both, the engine automatically applies it via level 1 containment, resolving the impasse. Analogous future cases (other products with severity<=2 rules conflicting with H05) should be added to the product list.",
+        "cites": [
+          "H05",
+          "H07",
+          "H10",
+          "H17",
+          "H20"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "954": {
+      "idx": 954,
+      "governing": "H04",
+      "part_points": 4200,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          }
+        ],
+        "draft_points": 8400,
+        "draft_queue_points": 4200,
+        "draft_part_points": 4200,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H13",
+        "cut_by_the_first_cutting_match": false,
+        "note": "This rule corresponds to manual H04. It should win over H13 (enterprise with prior_tickets_30d >= 5) because critical severity takes precedence over high ticket volume for enterprise. H04 is automatically preferred over more general rules (H08, H27, H28, H29) due to containment.",
+        "cites": [
+          "H04",
+          "H08",
+          "H13",
+          "H27",
+          "H28",
+          "H29"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          }
+        ],
+        "draft_points": 8400,
+        "draft_queue_points": 4200,
+        "draft_part_points": 4200,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H13",
+        "cut_by_the_first_cutting_match": false,
+        "note": "Regla H04 del manual: severidad cr\u00edtica para enterprise debe ir a ONCALL_ESCALATION, prioridad sobre reglas posteriores que tambi\u00e9n podr\u00edan aplicar (producto, idioma, etc.)",
+        "cites": [
+          "H04"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "982": {
+      "idx": 982,
+      "governing": "H04",
+      "part_points": 4200,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          }
+        ],
+        "draft_points": 1680,
+        "draft_queue_points": 840,
+        "draft_part_points": 840,
+        "holds_part": false,
+        "cut_by": [
+          "H09",
+          "H10",
+          "H12"
+        ],
+        "first_cutting_match": "H09",
+        "cut_by_the_first_cutting_match": true,
+        "note": "Regla espec\u00edfica para el caso de severidad 1, enterprise y producto billing. Esta regla es un subconjunto de H04 y H09, por lo que el motor la aplicar\u00e1 autom\u00e1ticamente sin necesidad de declarar prioridades. Cubre este ticket y todos los futuros con esas condiciones.",
+        "cites": [
+          "H04",
+          "H09"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "billing"
+          }
+        ],
+        "draft_points": 1680,
+        "draft_queue_points": 840,
+        "draft_part_points": 840,
+        "holds_part": false,
+        "cut_by": [
+          "H09",
+          "H10",
+          "H12"
+        ],
+        "first_cutting_match": "H09",
+        "cut_by_the_first_cutting_match": true,
+        "note": "Regla m\u00e1s espec\u00edfica que H04 y H09, cubre casos de severity 1 en billing para enterprise, debe priorizarse autom\u00e1ticamente por contenci\u00f3n.",
+        "cites": [
+          "H04",
+          "H09"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "1432": {
+      "idx": 1432,
+      "governing": "H04",
+      "part_points": 4200,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          }
+        ],
+        "draft_points": 1680,
+        "draft_queue_points": 840,
+        "draft_part_points": 840,
+        "holds_part": false,
+        "cut_by": [
+          "H07",
+          "H15",
+          "H16"
+        ],
+        "first_cutting_match": "H07",
+        "cut_by_the_first_cutting_match": true,
+        "note": "Nueva regla para el caso severity=1, customer_tier=enterprise y product=api, subconjunto de H04 y H07. Por inclusi\u00f3n, autom\u00e1ticamente tiene prioridad. Se elige ONCALL_ESCALATION siguiendo la pol\u00edtica de H04 (enterprise severity=1) sobre H07.",
+        "cites": [
+          "H04",
+          "H07"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "api"
+          }
+        ],
+        "draft_points": 1680,
+        "draft_queue_points": 840,
+        "draft_part_points": 840,
+        "holds_part": false,
+        "cut_by": [
+          "H07",
+          "H15",
+          "H16"
+        ],
+        "first_cutting_match": "H07",
+        "cut_by_the_first_cutting_match": true,
+        "note": "Esta regla cubre el solapamiento entre H04 y H07: cuando severity=1 y customer_tier=enterprise y product=api, debe ganar la accion de H04 (ONCALL_ESCALATION) sobre H07 (T3_ENGINEERING). Como la regla es un subconjunto de ambas, el nivel 1 del motor ya la prioriza, por lo que no se necesita declarar prioridades explicitas.",
+        "cites": [
+          "H04",
+          "H07"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "1783": {
+      "idx": 1783,
+      "governing": "H05",
+      "part_points": 2100,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "draft_points": 4200,
+        "draft_queue_points": 2100,
+        "draft_part_points": 2100,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H20",
+        "cut_by_the_first_cutting_match": false,
+        "note": "Regla general para tickets de severidad 1, cliente business y fuera de horario. Debe priorizarse sobre H20 (dashboard severity\u22642) porque la condici\u00f3n de off_hours y business es m\u00e1s cr\u00edtica y espec\u00edfica. No necesita beats contra H06/H08 por ser subconjuntos.",
+        "cites": [
+          "H06",
+          "H08",
+          "H20"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "business"
+          },
+          {
+            "attr": "off_hours",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "draft_points": 4200,
+        "draft_queue_points": 2100,
+        "draft_part_points": 2100,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H20",
+        "cut_by_the_first_cutting_match": false,
+        "note": "This rule captures critical severity business tier off-hours tickets, which should go to on-call escalation. It overlaps with H20 (dashboard severity<=2) but is more specific regarding tier and off-hours; according to company policy (H05 before H20), this rule should take precedence.",
+        "cites": [
+          "H05",
+          "H20"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    },
+    "1951": {
+      "idx": 1951,
+      "governing": "H04",
+      "part_points": 4200,
+      "baidu": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          }
+        ],
+        "draft_points": 8400,
+        "draft_queue_points": 4200,
+        "draft_part_points": 4200,
+        "holds_part": true,
+        "cut_by": [],
+        "first_cutting_match": "H17",
+        "cut_by_the_first_cutting_match": false,
+        "note": "Esta regla generaliza H04 para tickets con severity=1 y customer_tier=enterprise, declarando su prioridad sobre reglas de producto que compiten (H07, H15, H17, H20). Cubre el ticket actual (integrations) y casos an\u00e1logos futuros (cualquier producto), asegurando que vayan a ONCALL_ESCALATION.",
+        "cites": [
+          "H04",
+          "H07",
+          "H15",
+          "H17",
+          "H20"
+        ],
+        "served_by": "Baidu",
+        "finish_reason": "stop"
+      },
+      "deepinfra": {
+        "queue": "ONCALL_ESCALATION",
+        "conditions": [
+          {
+            "attr": "severity",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "attr": "customer_tier",
+            "op": "eq",
+            "value": "enterprise"
+          },
+          {
+            "attr": "product",
+            "op": "eq",
+            "value": "integrations"
+          }
+        ],
+        "draft_points": 1680,
+        "draft_queue_points": 840,
+        "draft_part_points": 840,
+        "holds_part": false,
+        "cut_by": [
+          "H17",
+          "H18"
+        ],
+        "first_cutting_match": "H17",
+        "cut_by_the_first_cutting_match": true,
+        "note": "Regla que captura la intersecci\u00f3n exacta de H04 (severity=1 + enterprise) y H17 (integrations + severity<=2), resolviendo el solapamiento. Como es subconjunto de ambas, gana autom\u00e1ticamente por contenci\u00f3n sin necesidad de declarar prioridad.",
+        "cites": [
+          "H04",
+          "H17"
+        ],
+        "served_by": "DeepInfra",
+        "finish_reason": "stop"
+      }
+    }
+  },
+  "runs": {
+    "deepinfra": {
+      "drafts": {
+        "v1c_r1": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H07",
+              "H15",
+              "H16"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          }
+        ],
+        "v1b_r1": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 2520,
+            "draft_part_points": 2520,
+            "holds_part": false,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          }
+        ],
+        "v1c_r2": [
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 3200,
+            "draft_part_points": 3200,
+            "holds_part": false,
+            "cut_by": [
+              "H13"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          }
+        ],
+        "v1b_r2": [
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 3200,
+            "draft_part_points": 3200,
+            "holds_part": false,
+            "cut_by": [
+              "H13"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          }
+        ],
+        "v1c_r3": [
+          {
+            "idx": 710,
+            "governing": "H05",
+            "draft_queue_points": 420,
+            "draft_part_points": 420,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H07",
+              "H15",
+              "H16"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "rechazada"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 3360,
+            "draft_part_points": 3360,
+            "holds_part": false,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "sin_situar"
+          }
+        ],
+        "v1b_r3": [
+          {
+            "idx": 710,
+            "governing": "H05",
+            "draft_queue_points": 420,
+            "draft_part_points": 420,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H07",
+              "H15",
+              "H16"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          }
+        ]
+      },
+      "by_ticket": {
+        "257": {
+          "drafts": 2,
+          "holding_the_part": 2,
+          "runs": [
+            "v1c_r1",
+            "v1b_r1"
+          ]
+        },
+        "710": {
+          "drafts": 2,
+          "holding_the_part": 0,
+          "runs": [
+            "v1c_r3",
+            "v1b_r3"
+          ]
+        },
+        "954": {
+          "drafts": 2,
+          "holding_the_part": 0,
+          "runs": [
+            "v1c_r2",
+            "v1b_r2"
+          ]
+        },
+        "982": {
+          "drafts": 0,
+          "holding_the_part": 0,
+          "runs": []
+        },
+        "1432": {
+          "drafts": 4,
+          "holding_the_part": 0,
+          "runs": [
+            "v1c_r1",
+            "v1b_r1",
+            "v1c_r3",
+            "v1b_r3"
+          ]
+        },
+        "1783": {
+          "drafts": 0,
+          "holding_the_part": 0,
+          "runs": []
+        },
+        "1951": {
+          "drafts": 5,
+          "holding_the_part": 0,
+          "runs": [
+            "v1c_r1",
+            "v1c_r2",
+            "v1b_r2",
+            "v1c_r3",
+            "v1b_r3"
+          ]
+        }
+      }
+    },
+    "baidu": {
+      "drafts": {
+        "e_r1": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 420,
+            "draft_part_points": 420,
+            "holds_part": false,
+            "cut_by": [
+              "H20"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 710,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          }
+        ],
+        "e_r2": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 3200,
+            "draft_part_points": 3200,
+            "holds_part": false,
+            "cut_by": [
+              "H13"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 982,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H09",
+              "H10",
+              "H12"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H17",
+              "H18"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          }
+        ],
+        "e_r3": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          }
+        ],
+        "c_r1": [
+          {
+            "idx": 257,
+            "governing": "H05",
+            "draft_queue_points": 420,
+            "draft_part_points": 420,
+            "holds_part": false,
+            "cut_by": [
+              "H20"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          }
+        ],
+        "c_r2": [
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 3200,
+            "draft_part_points": 3200,
+            "holds_part": false,
+            "cut_by": [
+              "H13"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "sin_situar"
+          }
+        ],
+        "c_r3": [
+          {
+            "idx": 710,
+            "governing": "H05",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          },
+          {
+            "idx": 954,
+            "governing": "H04",
+            "draft_queue_points": 2100,
+            "draft_part_points": 2100,
+            "holds_part": false,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1432,
+            "governing": "H04",
+            "draft_queue_points": 840,
+            "draft_part_points": 840,
+            "holds_part": false,
+            "cut_by": [
+              "H07",
+              "H15",
+              "H16"
+            ],
+            "cut_by_the_first_cutting_match": true,
+            "verdict": "sin_situar"
+          },
+          {
+            "idx": 1951,
+            "governing": "H04",
+            "draft_queue_points": 4200,
+            "draft_part_points": 4200,
+            "holds_part": true,
+            "cut_by": [],
+            "cut_by_the_first_cutting_match": false,
+            "verdict": "nacida"
+          }
+        ]
+      },
+      "by_ticket": {
+        "257": {
+          "drafts": 4,
+          "holding_the_part": 2,
+          "runs": [
+            "e_r1",
+            "e_r2",
+            "e_r3",
+            "c_r1"
+          ]
+        },
+        "710": {
+          "drafts": 2,
+          "holding_the_part": 2,
+          "runs": [
+            "e_r1",
+            "c_r3"
+          ]
+        },
+        "954": {
+          "drafts": 5,
+          "holding_the_part": 2,
+          "runs": [
+            "e_r1",
+            "e_r2",
+            "e_r3",
+            "c_r2",
+            "c_r3"
+          ]
+        },
+        "982": {
+          "drafts": 1,
+          "holding_the_part": 0,
+          "runs": [
+            "e_r2"
+          ]
+        },
+        "1432": {
+          "drafts": 3,
+          "holding_the_part": 2,
+          "runs": [
+            "e_r2",
+            "c_r1",
+            "c_r3"
+          ]
+        },
+        "1783": {
+          "drafts": 0,
+          "holding_the_part": 0,
+          "runs": []
+        },
+        "1951": {
+          "drafts": 4,
+          "holding_the_part": 3,
+          "runs": [
+            "e_r2",
+            "e_r3",
+            "c_r2",
+            "c_r3"
+          ]
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "Q1",
+      "what": "none of DeepInfra's answers at tickets of H04 holds H04's part whole",
+      "reading": {
+        "whole": 1,
+        "of": 4
+      },
+      "holds": false
+    },
+    {
+      "clause": "Q2",
+      "what": "at least 2 of Baidu's answers at tickets of H04 hold H04's part whole",
+      "reading": {
+        "whole": 2,
+        "of": 4
+      },
+      "holds": true
+    },
+    {
+      "clause": "Q3",
+      "what": "at more tickets Baidu's answer holds its part whole and DeepInfra's does not than the reverse",
+      "reading": {
+        "baidu_only": [
+          710,
+          1951
+        ],
+        "deepinfra_only": [],
+        "of": 7
+      },
+      "holds": true
+    },
+    {
+      "clause": "Q4",
+      "what": "every DeepInfra answer one listed rule cuts is cut by the first matched rule a cut changes, and there is one",
+      "reading": {
+        "982": {
+          "cut_by": [
+            "H09",
+            "H10",
+            "H12"
+          ],
+          "first_cutting_match": "H09"
+        },
+        "1432": {
+          "cut_by": [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "first_cutting_match": "H07"
+        },
+        "1951": {
+          "cut_by": [
+            "H17",
+            "H18"
+          ],
+          "first_cutting_match": "H17"
+        }
+      },
+      "holds": true
+    }
+  ]
+}
