@@ -117,16 +117,24 @@ run 3's draws, and every draft of `H04`'s part in every run. Each note read in t
 records said the draft was the overlap of its governing rule with another listed
 rule, and would win by containment. So, for every escalation on a ticket of the
 queue, in every run, this part reads:
-- the listed rules the ticket's point lies in, in the list's order;
+- the listed rules the ticket's point lies in, in the list's order, and which
+  of them contain the governing rule's region, so that a cut by them changes
+  nothing;
+- the first of them after the governing rule that does not contain its region:
+  the first a cut by would change;
 - the listed rules whose region, cut by the governing rule's region, is the
-  draft exactly, and whether the next rule the ticket matches is one of them;
+  draft exactly, and whether that first rule is one of them;
 - each call's note whole, the listed identifiers it cites, and its sides.
 
 And a seventh gate: each of the queue's tickets lies first in its governing
 rule's region, so the list's order the part reads is the record's.
 
 It was written after the six clauses above had been read. It carries no
-expectation and moves no clause.
+expectation and moves no clause. **Its flag was changed once, after a run of
+it, before any of its figures was cited.** It first read the very next rule the
+ticket matches. For most tickets that rule was `H06` or `H08`, whose regions
+contain the governing rule's, so a cut by it changes nothing. It now reads the
+first rule a cut by would change.
 
 --------------------------------------------------------------------------
 PROVENANCE
@@ -263,6 +271,24 @@ def matched(point: int, regions: dict[str, int]) -> list[str]:
     return [x for x in sorted(regions) if regions[x] & point]
 
 
+def containing(m: list[str], gov: str | None, regions: dict[str, int]) -> list[str]:
+    """The matched rules, other than the governing one, whose region contains the
+    governing rule's region: a cut by any of them leaves it whole."""
+    if gov not in regions:
+        return []
+    g = regions[gov]
+    return [x for x in m if x != gov and g & regions[x] == g]
+
+
+def first_cutting(m: list[str], gov: str | None, regions: dict[str, int]) -> str | None:
+    """The first matched rule after the governing one whose region does not
+    contain the governing rule's region: the first a cut by would change."""
+    if gov not in regions or gov not in m:
+        return None
+    g = regions[gov]
+    return next((x for x in m[m.index(gov) + 1:] if g & regions[x] != g), None)
+
+
 def cut_by(draft: int | None, gov: str | None,
            regions: dict[str, int]) -> list[str] | None:
     """The listed rules whose region, cut by the governing rule's region, is the
@@ -304,10 +330,13 @@ def cuts(record: dict, space: Space, regions: dict[str, int],
         d = draft_ext(((esc.get("calls") or [{}])[0]).get("payload"), space)
         m = matched(gv.point_of(cases[esc["idx"]], space), regions)
         cut = cut_by(d, gov, regions)
+        first = first_cutting(m, gov, regions)
         out.append({"idx": esc["idx"], "governing": gov, "matched": m,
                     "first_match_is_governing": bool(m) and m[0] == gov,
+                    "matched_containing_the_governing": containing(m, gov, regions),
+                    "first_cutting_match": first,
                     "cut_by": cut,
-                    "cut_by_the_next_match": bool(cut) and len(m) > 1 and m[1] in cut,
+                    "cut_by_the_first_cutting_match": bool(cut) and first in cut,
                     "notes": notes(esc)})
     return out
 
