@@ -10,7 +10,10 @@ What is pinned is what this module adds to `channel/oncall.py`'s reading, which
   another queue left out;
 - gate 6 on an escalation governed by a rule whose region holds no part;
 - the expectation's clauses at their edges, and a reading without value;
-- that the writer refuses unsigned before it reads or writes.
+- that the writer refuses unsigned before it reads or writes;
+- and, added after the first run, the listed rules a ticket matches in order, a
+  draft cut by the next of them and one not cut, the notes with their anchored
+  identifiers, a record read whole, and gate 7.
 """
 
 from __future__ import annotations
@@ -23,8 +26,10 @@ from unittest import mock
 from blind import rows as brows
 from channel import lost as L
 from fidelity.replay import rule_from
+from harness.domain import Case
 from placement import oncall as P
 from placement import plan
+from reasoned_loop import governed as gv
 from rung2.engine2 import PriorityEngine, Space
 
 SPACE = Space()
@@ -118,6 +123,69 @@ class TestTheDrafts(unittest.TestCase):
         ds = P.drafts(self.record, self.engine, SPACE, PARTS, REGIONS, TRUTH)
         self.assertFalse(P.governed_by_a_part(ds, PARTS))
         self.assertIsNone(ds[1]["part_points"])
+
+
+def case_(**kw):
+    values = dict(has_security_keyword=False, severity=1, customer_tier="enterprise",
+                  product="api", channel="email", prior_tickets_30d=0, off_hours=False,
+                  language="en")
+    values.update(kw)
+    return Case(**values)
+
+
+def cond_(attr, op, value):
+    return {"attr": attr, "op": op, "value": value}
+
+
+class TestTheCuts(unittest.TestCase):
+    """Added after the first run."""
+
+    def setUp(self):
+        self.regions = {
+            "H04": H04,
+            "H07": ext(r_("", 0, "T3_ENGINEERING", severity=1, product="api")),
+            "H17": brows.ext_of({"conditions": [cond_("product", "eq", "integrations"),
+                                                cond_("severity", "lte", 2)]}, SPACE),
+            "H29": brows.ext_of({"conditions": [cond_("severity", "gte", 1)]}, SPACE)}
+
+    def test_the_listed_rules_a_ticket_matches_in_order(self):
+        api = gv.point_of(case_(), SPACE)
+        integ = gv.point_of(case_(product="integrations"), SPACE)
+        self.assertEqual(P.matched(api, self.regions), ["H04", "H07", "H29"])
+        self.assertEqual(P.matched(integ, self.regions), ["H04", "H17", "H29"])
+
+    def test_a_draft_cut_by_the_next_match_and_a_draft_not_cut(self):
+        g = self.regions["H04"]
+        self.assertEqual(P.cut_by(g & self.regions["H07"], "H04", self.regions), ["H07"])
+        self.assertEqual(P.cut_by(g, "H04", self.regions), [])
+        self.assertIsNone(P.cut_by(None, "H04", self.regions))
+        self.assertIsNone(P.cut_by(g, "H01", self.regions))
+
+    def test_the_notes_and_the_anchored_identifiers(self):
+        esc = {"calls": [{"round": 0, "payload": {"note": "Cubre H05 y H17. No H040, XH04 ni H30.",
+                                                   "beats": ["H17"], "loses_to": []}},
+                         {"round": 1, "payload": None}]}
+        got = P.notes(esc)
+        self.assertEqual(got[0]["cites"], ["H05", "H17"])
+        self.assertEqual((got[0]["beats"], got[0]["loses_to"]), (["H17"], []))
+        self.assertEqual((got[1]["round"], got[1]["note"], got[1]["cites"]), (1, None, []))
+
+    def test_a_record_read_and_gate_7(self):
+        record = {"records": [{"idx": 0, "truth": OC, "truth_rule": "H04"},
+                              {"idx": 1, "truth": T2, "truth_rule": "H07"}],
+                  "escalations": [esc_(0, L.BORN, "R1", None, severity=1,
+                                       customer_tier="enterprise", product="api"),
+                                  esc_(1, L.BORN, "R2", None, severity=1)]}
+        cases = (case_(), case_(customer_tier="pro"))
+        got = P.cuts(record, SPACE, self.regions, cases)
+        self.assertEqual([c["idx"] for c in got], [0])
+        self.assertEqual((got[0]["matched"], got[0]["cut_by"]),
+                         (["H04", "H07", "H29"], ["H07"]))
+        self.assertTrue(got[0]["first_match_is_governing"])
+        self.assertTrue(got[0]["cut_by_the_next_match"])
+        self.assertTrue(P.first_match_governs(got))
+        record["records"][0]["truth_rule"] = "H07"
+        self.assertFalse(P.first_match_governs(P.cuts(record, SPACE, self.regions, cases)))
 
 
 def run_(whole=0, h04=(), h05=(), lost=10, unwritten=5, verdicts=(L.BORN,), most=4, n=10):
