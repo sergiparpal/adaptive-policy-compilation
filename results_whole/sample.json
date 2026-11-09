@@ -1,0 +1,1496 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-09T09:01:54Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "5e87ecdf5cafaa028dd5b779573499b6ff0d3e8d",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "fe2b9de93993b6e0"
+  },
+  "plan": "PLAN_WHOLE.md",
+  "stage": "A",
+  "provenance": "Figures 1 to 4 were computed while drafting, on 2026-11-08, from PLAN_PLACEMENT.md's records, and seen before \u00a70's lines were drawn. Figure 5 was computed from level 3's text while completing the plan, on 2026-11-09, after the lines and before the signature. This record recomputes all five and owns them. None of them is a figure of the runs this plan buys.",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_WHOLE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_WHOLE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "WR-g1": {
+      "what": "PLAN_PLACEMENT.md's verdicts come back from its runs and its own blocking checks pass; this plan's v1c is that plan's v1c on its three runs' answers, and v1d with v2b's text is v1c, and with T1 is v1c but for one paragraph, at every call; the suite green",
+      "closed_verdicts": {
+        "rows": 6,
+        "missing_runs": [],
+        "departing": [],
+        "passes": true
+      },
+      "placement_checks": {
+        "PL-g1": true,
+        "PL-g2": true,
+        "PL-g3": true,
+        "draws": true,
+        "labels": true,
+        "passes": true
+      },
+      "replays": {
+        "v1c_r1": {
+          "calls": 186,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "v2b_text_is_v1c": true,
+          "one_paragraph_apart": true,
+          "first_calls": 98,
+          "placement_calls": 88,
+          "passes": true
+        },
+        "v1c_r2": {
+          "calls": 126,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "v2b_text_is_v1c": true,
+          "one_paragraph_apart": true,
+          "first_calls": 68,
+          "placement_calls": 58,
+          "passes": true
+        },
+        "v1c_r3": {
+          "calls": 167,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "v2b_text_is_v1c": true,
+          "one_paragraph_apart": true,
+          "first_calls": 87,
+          "placement_calls": 80,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2773,
+        "result": "OK (skipped=5)",
+        "seconds": 263.2,
+        "passes": true
+      },
+      "passes": true
+    },
+    "WR-g2": {
+      "what": "v1c's texts are the ones PLAN_PLACEMENT.md's v1c runs sent, and v1d's are v1c's but for \u00a72.1's T1, quoted in the plan; both arms send that plan's request with its pin; \u00a70's figures 1 to 3 and 5 come back",
+      "texts": {
+        "v1c_is_reasoned_loops": true,
+        "sent_by_placements_v1c_runs": {
+          "v1c_r1": true,
+          "v1c_r2": true,
+          "v1c_r3": true,
+          "smoke": true
+        },
+        "system_prompt_digest": true,
+        "v1d_shares_three": true,
+        "v1d_keys": true,
+        "whole_base_digest": true,
+        "blind_base_digest": true,
+        "first_sentence": true,
+        "names_nothing": true,
+        "ascii": true,
+        "quoted_in_the_plan": true,
+        "fingerprints_differ": true,
+        "passes": true
+      },
+      "requests": {
+        "same_for_both_arms_0": true,
+        "placements_but_for_the_pin_0": true,
+        "same_for_both_arms_1": true,
+        "placements_but_for_the_pin_1": true,
+        "pin": true,
+        "asker": true,
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "whole": true,
+          "whole_median_v1c": true,
+          "lists": true,
+          "lists_rare": true,
+          "transcriber_oncall": true,
+          "replay": true,
+          "text_relations": true
+        },
+        "passes": true
+      },
+      "passes": true
+    },
+    "WR-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under v1d with PLAN_CHANNEL.md's smoke draws; the coverage is 1/2; the cap is 400 escalations; run k of both arms reads PLAN_PLACEMENT.md's draws of run k",
+      "schedule": [
+        [
+          "v1c",
+          1
+        ],
+        [
+          "v1d",
+          1
+        ],
+        [
+          "v1c",
+          2
+        ],
+        [
+          "v1d",
+          2
+        ],
+        [
+          "v1c",
+          3
+        ],
+        [
+          "v1d",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "cap": true,
+      "draws_are_placements": true,
+      "passes": true
+    },
+    "WR-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_WHOLE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_WHOLE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "references": {
+    "drafting": {
+      "whole": {
+        "v1b_r1": [
+          38,
+          79
+        ],
+        "v1b_r2": [
+          39,
+          82
+        ],
+        "v1b_r3": [
+          27,
+          73
+        ],
+        "v1c_r1": [
+          35,
+          92
+        ],
+        "v1c_r2": [
+          19,
+          64
+        ],
+        "v1c_r3": [
+          35,
+          85
+        ]
+      },
+      "whole_median_v1c": "35/92",
+      "lists": {
+        "v1c_r1": {
+          "escalations": 98,
+          "whole_median": "9",
+          "sent_median": "5",
+          "whole_max": 35,
+          "replay": {
+            "rounds_checked": 88,
+            "departing": [],
+            "replay_ok": true
+          }
+        },
+        "v1c_r2": {
+          "escalations": 68,
+          "whole_median": "11/2",
+          "sent_median": "4",
+          "whole_max": 23,
+          "replay": {
+            "rounds_checked": 58,
+            "departing": [],
+            "replay_ok": true
+          }
+        },
+        "v1c_r3": {
+          "escalations": 87,
+          "whole_median": "6",
+          "sent_median": "5",
+          "whole_max": 43,
+          "replay": {
+            "rounds_checked": 81,
+            "departing": [],
+            "replay_ok": true
+          }
+        }
+      },
+      "lists_rare": {
+        "v1c_r1": [
+          [
+            257,
+            "H05",
+            14,
+            14
+          ],
+          [
+            1432,
+            "H04",
+            29,
+            7
+          ],
+          [
+            1951,
+            "H04",
+            17,
+            6
+          ]
+        ],
+        "v1c_r2": [
+          [
+            954,
+            "H04",
+            20,
+            19
+          ],
+          [
+            1951,
+            "H04",
+            19,
+            4
+          ]
+        ],
+        "v1c_r3": [
+          [
+            710,
+            "H05",
+            20,
+            3
+          ],
+          [
+            1432,
+            "H04",
+            26,
+            4
+          ],
+          [
+            1951,
+            "H04",
+            30,
+            29
+          ]
+        ]
+      },
+      "transcriber_oncall": {
+        "r1": "1",
+        "r2": "2/3",
+        "r3": "1"
+      },
+      "text_relations": {
+        "lower_containing_pairs": 61,
+        "lower_crossing_pairs": 233,
+        "rules_inside_a_lower_rule": 28,
+        "rules_holding_a_lower_rule": 0,
+        "rules_crossing_another_queue": 26,
+        "rare": {
+          "H04": [
+            4,
+            12,
+            12
+          ],
+          "H05": [
+            5,
+            12,
+            12
+          ]
+        }
+      },
+      "text_relations_rows": {
+        "H01": {
+          "contained_by": [
+            "H03",
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H02",
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H08",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H23",
+            "H26",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H08",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H23",
+            "H26",
+            "H27"
+          ]
+        },
+        "H02": {
+          "contained_by": [
+            "H03",
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H08",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H08",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H03": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H08",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H04",
+            "H05",
+            "H06",
+            "H07",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H17",
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H28"
+          ]
+        },
+        "H04": {
+          "contained_by": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H07",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21"
+          ],
+          "crosses_another_queue": [
+            "H07",
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21"
+          ]
+        },
+        "H05": {
+          "contained_by": [
+            "H06",
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H07",
+            "H10",
+            "H11",
+            "H12",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21",
+            "H23"
+          ],
+          "crosses_another_queue": [
+            "H07",
+            "H10",
+            "H11",
+            "H12",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21",
+            "H23"
+          ]
+        },
+        "H06": {
+          "contained_by": [
+            "H08",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H07",
+            "H10",
+            "H11",
+            "H12",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21",
+            "H23"
+          ],
+          "crosses_another_queue": [
+            "H10",
+            "H11",
+            "H12",
+            "H14",
+            "H16",
+            "H18",
+            "H20",
+            "H21",
+            "H23"
+          ]
+        },
+        "H07": {
+          "contained_by": [
+            "H08",
+            "H15",
+            "H16",
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H08": {
+          "contained_by": [
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H20",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H09",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H17",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H09": {
+          "contained_by": [
+            "H12",
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H10",
+            "H11",
+            "H13",
+            "H21",
+            "H26",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H10",
+            "H11",
+            "H21",
+            "H26",
+            "H27"
+          ]
+        },
+        "H10": {
+          "contained_by": [
+            "H12",
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H11",
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H11": {
+          "contained_by": [
+            "H12",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H27",
+            "H28"
+          ]
+        },
+        "H12": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H13",
+            "H14",
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H13",
+            "H14",
+            "H21",
+            "H23",
+            "H27",
+            "H28"
+          ]
+        },
+        "H13": {
+          "contained_by": [
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H27"
+          ]
+        },
+        "H14": {
+          "contained_by": [
+            "H28",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H23",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H15",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H21",
+            "H23",
+            "H27"
+          ]
+        },
+        "H15": {
+          "contained_by": [
+            "H16",
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H16": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H28"
+          ]
+        },
+        "H17": {
+          "contained_by": [
+            "H18",
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H18": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H22",
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H28"
+          ]
+        },
+        "H19": {
+          "contained_by": [
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H20": {
+          "contained_by": [
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H21",
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H21": {
+          "contained_by": [
+            "H27",
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H22",
+            "H23",
+            "H25",
+            "H28"
+          ]
+        },
+        "H22": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H23",
+            "H24",
+            "H25",
+            "H26",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H23",
+            "H27"
+          ]
+        },
+        "H23": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H24",
+            "H25",
+            "H26",
+            "H27"
+          ]
+        },
+        "H24": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H25",
+            "H26"
+          ],
+          "crosses_another_queue": []
+        },
+        "H25": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H26",
+            "H27"
+          ],
+          "crosses_another_queue": [
+            "H27"
+          ]
+        },
+        "H26": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H28"
+          ]
+        },
+        "H27": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [
+            "H28"
+          ],
+          "crosses_another_queue": [
+            "H28"
+          ]
+        },
+        "H28": {
+          "contained_by": [
+            "H29"
+          ],
+          "holds_inside": [],
+          "crosses": [],
+          "crosses_another_queue": []
+        },
+        "H29": {
+          "contained_by": [],
+          "holds_inside": [],
+          "crosses": [],
+          "crosses_another_queue": []
+        }
+      },
+      "as_declared": {
+        "whole": true,
+        "whole_median_v1c": true,
+        "lists": true,
+        "lists_rare": true,
+        "transcriber_oncall": true,
+        "replay": true,
+        "text_relations": true
+      }
+    },
+    "transcriber": {
+      "v1c_r1": {
+        "escalations": 23,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 21,
+        "calls": 42,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H24",
+          "H16",
+          "H20",
+          "H11",
+          "H10",
+          "H18",
+          "H07",
+          "H12",
+          "H08",
+          "H14",
+          "H09",
+          "H26",
+          "H17",
+          "H01",
+          "H15",
+          "H03",
+          "H05",
+          "H02",
+          "H06",
+          "H04"
+        ],
+        "space_right": 134380,
+        "space_points": 134400,
+        "corpus_right": 1999,
+        "corpus_cases": 2000,
+        "recall_oncall": "1",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 22,
+        "listed_v1b": 148,
+        "listed_v1c": 108,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 6,
+          "containing": 29,
+          "governed": 5
+        }
+      },
+      "v1c_r2": {
+        "escalations": 22,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 20,
+        "calls": 40,
+        "rules": [
+          "H13",
+          "H29",
+          "H24",
+          "H18",
+          "H11",
+          "H20",
+          "H16",
+          "H12",
+          "H03",
+          "H10",
+          "H01",
+          "H19",
+          "H14",
+          "H07",
+          "H08",
+          "H09",
+          "H26",
+          "H17",
+          "H15",
+          "H02",
+          "H06",
+          "H04"
+        ],
+        "space_right": 132280,
+        "space_points": 134400,
+        "corpus_right": 1996,
+        "corpus_cases": 2000,
+        "recall_oncall": "2/3",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            4200,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 21,
+        "listed_v1b": 132,
+        "listed_v1c": 98,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 3,
+          "containing": 29,
+          "governed": 2
+        }
+      },
+      "v1c_r3": {
+        "escalations": 23,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 21,
+        "calls": 42,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H24",
+          "H18",
+          "H11",
+          "H20",
+          "H12",
+          "H03",
+          "H16",
+          "H14",
+          "H01",
+          "H10",
+          "H08",
+          "H09",
+          "H26",
+          "H07",
+          "H17",
+          "H15",
+          "H02",
+          "H05",
+          "H06",
+          "H04"
+        ],
+        "space_right": 134380,
+        "space_points": 134400,
+        "corpus_right": 1999,
+        "corpus_cases": 2000,
+        "recall_oncall": "1",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 22,
+        "listed_v1b": 148,
+        "listed_v1c": 111,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 3,
+          "containing": 32,
+          "governed": 2
+        }
+      },
+      "v1c_smoke": {
+        "escalations": 9,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 7,
+        "calls": 16,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H18",
+          "H10",
+          "H20",
+          "H12",
+          "H03",
+          "H11"
+        ],
+        "space_right": 49420,
+        "space_points": 134400,
+        "corpus_right": 1107,
+        "corpus_cases": 2000,
+        "recall_oncall": "0",
+        "recall_space": {
+          "T1_GENERAL": [
+            5220,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            28960,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            0,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            0,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            7680,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            0,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            720,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 8,
+        "listed_v1b": 20,
+        "listed_v1c": 10,
+        "not_sent": 1,
+        "left_out": {
+          "inside": 2,
+          "containing": 8
+        }
+      }
+    },
+    "schedule": [
+      [
+        "v1c",
+        1
+      ],
+      [
+        "v1d",
+        1
+      ],
+      [
+        "v1c",
+        2
+      ],
+      [
+        "v1d",
+        2
+      ],
+      [
+        "v1c",
+        3
+      ],
+      [
+        "v1d",
+        3
+      ]
+    ],
+    "schedule_as_declared": true,
+    "channels": {
+      "v1c_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1d_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1c_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1d_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1c_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      },
+      "v1d_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      }
+    },
+    "streams": {
+      "r1": {
+        "seed": "PLAN_CHANNEL/channel/97/r1",
+        "sha16": "1347b9525a1e06a3"
+      },
+      "r2": {
+        "seed": "PLAN_CHANNEL/channel/97/r2",
+        "sha16": "e81548d721b99577"
+      },
+      "r3": {
+        "seed": "PLAN_CHANNEL/channel/97/r3",
+        "sha16": "1f60e3d5e68553d4"
+      },
+      "smoke": {
+        "seed": "PLAN_CHANNEL/channel/97/smoke",
+        "sha16": "029047351ae2d471"
+      }
+    },
+    "texts_sha16": {
+      "v1c": {
+        "system_prompt": "7b883f03a863d647",
+        "blind_base": "8de0ebf50ce9a54b",
+        "placement_template": "ccfd0eceba1468b2",
+        "retry_message": "ca7b3803f1bef2dd"
+      },
+      "v1d": {
+        "system_prompt": "7b883f03a863d647",
+        "whole_base": "1e054d7554c5c4f4",
+        "placement_template": "ccfd0eceba1468b2",
+        "retry_message": "ca7b3803f1bef2dd"
+      }
+    },
+    "fingerprints": {
+      "v1c": "8dc358cab48635e6",
+      "v1d": "b957b6fa64f55478"
+    },
+    "base_texts": {
+      "v1c": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\n",
+      "v1d": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket con la region entera de la regla de la lista que lo gobierna: la\nprimera de la lista cuyas condiciones casa el ticket. No le anadas\ncondiciones para que quede dentro de una regla de mas abajo de la lista:\nuna regla dentro de otra solo le gana a esa otra, y el resto de su region se\nqueda con reglas de otras colas. Si tu regla se solapa con reglas existentes\nde OTRA cola, se te listaran despues para que la situes.\n"
+    }
+  }
+}
