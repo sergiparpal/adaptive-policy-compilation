@@ -186,13 +186,25 @@ ONLINE_LOOP = [
     "placement/protocol.py",
     "placement/loop.py",
     "placement/run.py",
+    # Added 2026-11-09 with PLAN_WHOLE.md, which runs PLAN_PLACEMENT.md's v1c
+    # arm again beside v1d, v1c with one paragraph of the first call replaced by
+    # a text that asks for the governing rule's region whole (§4, rule B of the
+    # plan). These two modules build v1d's messages and send both arms'
+    # requests through `placement/run.py` and `reasoned_loop/protocol.py`,
+    # called, so the system prompt is level 3's manual and
+    # `TestTheAuthorityChannel` watches them too. The text names neither a queue
+    # nor a rule. The loop and its trigger are `placement/loop.py`'s, called,
+    # and read the corpus labels, handed in, and PLAN_CHANNEL.md's draws; the
+    # proposer is handed neither, nor told that the base erred.
+    "whole/protocol.py",
+    "whole/run.py",
 ]
 
 # The names that carry the hidden policy in code without being the oracle's
 # own: its DSL transcription, the module that holds it, and the edges derived
 # from its layer order. The authority channel's proposer path may import none.
 POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
-AUTHORITY_CHANNEL = ONLINE_LOOP[-21:]
+AUTHORITY_CHANNEL = ONLINE_LOOP[-23:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -290,7 +302,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "ranking", "students", "escalations",
                      "spotcheck", "unreached", "manual", "apply",
                      "queue_alone", "first_match", "reasoned_rule",
-                     "reasoned_loop", "channel", "placement"):
+                     "reasoned_loop", "channel", "placement", "whole"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -306,13 +318,14 @@ class TestTheAuthorityChannel(unittest.TestCase):
     """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
     These tests hold it to that route: the frozen text, and nothing in code."""
 
-    def test_the_twenty_one_modules_are_the_ones_watched(self):
+    def test_the_twenty_three_modules_are_the_ones_watched(self):
         """`PLAN_MANUAL.md`'s five, since 2026-10-23 `PLAN_APPLY.md`'s two, since
         2026-10-24 `PLAN_QUEUE_ALONE.md`'s two, since 2026-10-25
         `PLAN_FIRST_MATCH.md`'s two and `PLAN_REASONED_RULE.md`'s two, since
         2026-10-31 `PLAN_REASONED_LOOP.md`'s three, since 2026-11-04
-        `PLAN_CHANNEL.md`'s two, and since 2026-11-07 `PLAN_PLACEMENT.md`'s
-        three, which send the same texts again."""
+        `PLAN_CHANNEL.md`'s two, since 2026-11-07 `PLAN_PLACEMENT.md`'s three,
+        and since 2026-11-09 `PLAN_WHOLE.md`'s two, which send the same texts
+        again."""
         self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
                                              "manual/compile.py", "manual/ask.py",
                                              "manual/run.py", "apply/prompts.py",
@@ -323,7 +336,8 @@ class TestTheAuthorityChannel(unittest.TestCase):
                                              "reasoned_loop/loop.py", "reasoned_loop/run.py",
                                              "channel/loop.py", "channel/run.py",
                                              "placement/protocol.py", "placement/loop.py",
-                                             "placement/run.py"])
+                                             "placement/run.py", "whole/protocol.py",
+                                             "whole/run.py"])
 
     def test_no_proposer_path_module_imports_the_policy_in_code(self):
         for rel in AUTHORITY_CHANNEL:
