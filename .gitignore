@@ -97,3 +97,5 @@ results_reasoned_loop/*.partial.jsonl
 results_channel/*.partial.jsonl
 # And the smoke run, the bridge and the runs of PLAN_PLACEMENT.md (placement/run.py).
 results_placement/*.partial.jsonl
+# And the smoke run and the runs of PLAN_WHOLE.md (whole/run.py).
+results_whole/*.partial.jsonl
