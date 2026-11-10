@@ -41,6 +41,9 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
+
+from tests.git_env import isolated_git_env
 
 SHA = re.compile(r"^[0-9a-f]{40}$")
 
@@ -112,9 +115,11 @@ class TestThePlanGuard(unittest.TestCase):
 
         # Neither the user's global config nor the system's: this repository
         # sets `core.hooksPath`, and inheriting it would run the hook again on
-        # the fixture's own commit.
-        self.env = dict(
-            os.environ,
+        # the fixture's own commit. And no `GIT_*` variable of this process's:
+        # run from the hook of a linked worktree, `GIT_DIR` is an absolute
+        # path into this repository, and the fixture would write into it
+        # (`tests/git_env.py`).
+        self.env = isolated_git_env(
             PATH=f"{binario}{os.pathsep}{os.environ['PATH']}",
             GIT_CONFIG_GLOBAL=os.devnull,
             GIT_CONFIG_SYSTEM=os.devnull,
@@ -212,6 +217,51 @@ class TestThePlanGuard(unittest.TestCase):
                                     with_history=False))
         self._rejected(self._commit("PLAN_BUDGET_LS.md", "run_experiment.py",
                                     with_history=False))
+
+
+class TestAThrowawayRepositoryStaysThrowaway(unittest.TestCase):
+    """That the plan guard's fixtures never reach the repository whose hook runs
+    the suite.
+
+    Git hands a hook `GIT_DIR` and `GIT_INDEX_FILE`, and from a linked worktree
+    both are absolute paths into this repository (`tests/git_env.py`). On
+    2026-11-02 and 2026-11-10 a commit in a linked worktree ran this suite from
+    its hook, and the fixtures below wrote `core.bare = true` and a "prueba"
+    identity into the shared `.git/config`. Here a victim repository stands in
+    for this one, and its paths are put where the hook would put them."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="victima-"))
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
+        self.victim = self.tmp / "victima"
+        self.victim.mkdir()
+        subprocess.run(("git", "init", "-q"), cwd=self.victim, check=True,
+                       env=isolated_git_env(GIT_CONFIG_GLOBAL=os.devnull,
+                                            GIT_CONFIG_SYSTEM=os.devnull))
+        git_dir = self.victim / ".git"
+        self.config = (git_dir / "config").read_text()
+        self.leaked = {"GIT_DIR": str(git_dir), "GIT_INDEX_FILE": str(git_dir / "index")}
+
+    def test_no_git_variable_survives(self):
+        with mock.patch.dict(os.environ, self.leaked):
+            env = isolated_git_env(GIT_CONFIG_GLOBAL=os.devnull)
+        self.assertEqual({k for k in env if k.startswith("GIT_")}, {"GIT_CONFIG_GLOBAL"})
+
+    def test_the_guards_fixtures_leave_the_victim_alone(self):
+        """One accepted and one rejected commit of the guard's, run with the
+        victim's paths in this process's environment, as from the hook of a
+        linked worktree. They pass, and the victim's config and history are as
+        they were."""
+        result = unittest.TestResult()
+        with mock.patch.dict(os.environ, self.leaked):
+            for name in ("test_lets_a_commit_without_plans_through",
+                         "test_refuses_a_plan_accompanied_by_code"):
+                TestThePlanGuard(name).run(result)
+        self.assertTrue(result.wasSuccessful(), result.errors + result.failures)
+        self.assertEqual((self.victim / ".git" / "config").read_text(), self.config)
+        self.assertFalse((self.victim / ".git" / "index").exists())
+        self.assertEqual(sorted(p.name for p in (self.victim / ".git" / "refs" / "heads")
+                                .iterdir()), [])
 
 
 class TestTheCIWorkflow(unittest.TestCase):
