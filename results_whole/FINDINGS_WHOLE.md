@@ -12,6 +12,8 @@ its own: `eb1fa29` on `main`.
   it in #223, merged on 2026-11-10.
 - **The POST-RUN reading of why every v1c base lost a sixth of
   `SECURITY_INCIDENT`** reached it in #225, merged on 2026-11-10.
+- **The POST-RUN reading of whether the blind paragraph is why the loop's first
+  call cuts** reached it in #227, merged on 2026-11-10.
 
 Every record names in its `_env` the commit it was written from. Seven were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -54,10 +56,10 @@ signature.
 >
 > **[NOTE 2026-11-10, last] And a third.** [`paragraph.json`](paragraph.json)
 > reads whether the blind paragraph is why the loop's first call cuts.
-> - **It was written from `1852d9c`**, on the branch of the pull request it was
->   opened in. Its section below names its checks.
+> - **It was written from `1852d9c`**, on the branch of #227, which is `53e08e5`
+>   on `main`. Its section below names the pair's checks.
 > - **Its code digest is `3df2d131741e691e`**, because `whole/paragraph.py` was
->   added after the other three.
+>   added after the other three. `main` computes it at `53e08e5`.
 
 **This record owns every figure in it.**
 
@@ -1438,8 +1440,8 @@ least.** Four held, and S3 failed.
 >   - **Every other text is the same**: the system prompt with its impasse frame,
 >     the ticket, the model, reasoning at high effort and 16,000 tokens.
 > - **The expectation was committed before any figure of the reading existed**,
->   in `68f4176`, on the branch of this reading's pull request. The drafter had
->   seen no class of any answer at a ticket the two share.
+>   in `68f4176`, which is `79d2cf1` on `main`. The drafter had seen no class of
+>   any answer at a ticket the two share.
 > - **Five gates stood before any write.**
 >   - The rule arm's system prompt is the loops', by text and by each record's
 >     digest. Its model and settings are each record's.
@@ -1449,12 +1451,18 @@ least.** Four held, and S3 failed.
 >   - This plan's first calls are classed as Stage C classed them.
 > - **The first run's record lacked its `_env`.** The writer's filter for
 >   private keys had left it out, and that record was not kept. The fix, in
->   `1852d9c`, moves no clause. The four clauses held in both runs.
+>   `1852d9c`, which is `53e08e5` on `main`, moves no clause. The four clauses
+>   held in both runs.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`paragraph.json`](paragraph.json).
-> - **Its `_env`** names `1852d9c`, with `git_dirty` and `code_dirty` false. Its
->   code digest is `3df2d131741e691e`.
+> - **The record** is [`paragraph.json`](paragraph.json), committed in `358aa5d`
+>   on `main`. It reached `main` in #227.
+> - **Its `_env`** names `1852d9c`, with `git_dirty` and `code_dirty` false.
+>   `1852d9c` and `53e08e5` have the same subject, the same tree and the same
+>   `git patch-id --stable`, and the GitHub API names #227 behind the `main`
+>   commit.
+> - **Its code digest**, `3df2d131741e691e`, is the one `main` computes at
+>   `53e08e5`.
 
 ### 1. The same tickets under two paragraphs
 
