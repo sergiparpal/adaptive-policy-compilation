@@ -126,6 +126,22 @@ placement answer of a first call on a ticket of the queue in this plan's six
 runs, and which rule any of them cut by.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHAT EACH ESCALATION WAS
+--------------------------------------------------------------------------
+The first run's notes framed every cut as the end of a conflict. Each named the
+governing rule and a crossing rule of another queue, said the draft lies inside
+both, and said it wins by containment.
+- **What every first call is told.** The ticket is an impasse. The system prompt
+  says the engine could not decide it, and the user message heads it "TICKET EN
+  IMPASSE". The channel tells the proposer nothing else (`PLAN_CHANNEL.md` §2.2).
+- **What this part reads.** For every first call on a ticket of the queue: its
+  escalation's cause, as the case's row keeps it, and the queue the base had
+  decided, if it decided one.
+
+It was written after the five clauses above had been read: Q1, Q2, Q3 and Q5
+hold, and Q4 fails. It carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-10, after Stage C. The codebook and
@@ -182,6 +198,9 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-10, after Stage C. The codebook and the "
     "expectation in the module's docstring were written and committed before the reading "
     "ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its five clauses were read: each first call's "
+    "escalation cause and the queue the base had decided. No expectation; no clause moves.")
 
 
 def record_path():
@@ -289,6 +308,7 @@ def first_calls(run: str, record: dict, stage_c_drafts: list[dict], space, regio
             "class": sc.get("class"), "breadth": sc.get("breadth"),
             "stage_c_governing": sc.get("governing"), "stage_c_verdict": sc.get("verdict"),
             "verdict": esc.get("verdict"), "rule_id": esc.get("rule_id"),
+            "cause": row.get("cause"), "base_decided": row.get("engine_action"),
             "action": payload.get("action"), "conditions": payload.get("conditions"),
             "governing_conditions": governing_conditions.get(gov),
             "extra_conditions": extra_conditions(payload.get("conditions"),
@@ -390,7 +410,9 @@ def summary(rows: list[dict]) -> dict[str, Any]:
                     "whole_reading_t1": sum(1 for r in whole if r["reads_t1"]),
                     "cuts_by_the_first_cutting_match":
                         sum(1 for r in cuts if r["cut_by_the_first_cutting_match"]),
-                    "cuts_saying_inside": sum(1 for r in cuts if r["codes"]["INSIDE"])}
+                    "cuts_saying_inside": sum(1 for r in cuts if r["codes"]["INSIDE"]),
+                    "causes": {c: sum(1 for r in rs if r["cause"] == c)
+                               for c in sorted({str(r["cause"]) for r in rs})}}
     return out
 
 
@@ -436,6 +458,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": stage_c["_env"].get("git_commit"),
                    "development": str(plan.smoke_path())},

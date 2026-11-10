@@ -128,7 +128,8 @@ class TestTheFirstCalls(unittest.TestCase):
         h04_api = [cond_("severity", "eq", 1), cond_("customer_tier", "eq", "enterprise"),
                    cond_("product", "eq", "api")]
         self.record = {
-            "records": [{"idx": 0, "truth": OC, "truth_rule": "H04"},
+            "records": [{"idx": 0, "truth": OC, "truth_rule": "H04", "cause": "ERROR",
+                         "engine_action": T3},
                         {"idx": 1, "truth": T2, "truth_rule": "H08"}],
             "escalations": [
                 {"idx": 0, "verdict": "sin_situar", "rule_id": None,
@@ -173,6 +174,12 @@ class TestTheFirstCalls(unittest.TestCase):
         self.assertEqual((r["reasoning_tokens"], r["has_reasoning"], r["has_payload"]),
                          (1234, True, True))
 
+    def test_what_the_escalation_was_added_after_the_first_run(self):
+        r = self.rows[0]
+        self.assertEqual((r["cause"], r["base_decided"]), ("ERROR", T3))
+        self.assertIn("after the first run", W.ADDED)
+        self.assertEqual(W.summary(self.rows)["v1d"]["causes"], {"ERROR": 1})
+
     def test_its_placement_round(self):
         p = self.rows[0]["placement"]
         self.assertEqual(p["listed"], [["R0002", T2]])
@@ -199,7 +206,7 @@ class TestTheFirstCalls(unittest.TestCase):
 
 
 def row_(arm, idx, cls, cut=("H07",), first=True, reads=False, inside=False):
-    return {"run": f"{arm}_r1", "arm": arm, "idx": idx, "class": cls,
+    return {"run": f"{arm}_r1", "arm": arm, "idx": idx, "class": cls, "cause": "ERROR",
             "cut_by": list(cut) if cls.startswith("cut_by") else [],
             "first_cutting_match": "H07", "cut_by_the_first_cutting_match": first,
             "reads_t1": reads, "codes": {"T1": int(reads), "T1e": 0, "INSIDE": int(inside)}}
