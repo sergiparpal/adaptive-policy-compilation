@@ -51,6 +51,13 @@ signature.
 >   on `main`. Its section below names the pair's checks.
 > - **Its code digest is `2ce5cad15d518325`**, because `whole/security.py` was
 >   added after the other two. `main` computes it at `f633c85`.
+>
+> **[NOTE 2026-11-10, last] And a third.** [`paragraph.json`](paragraph.json)
+> reads whether the blind paragraph is why the loop's first call cuts.
+> - **It was written from `1852d9c`**, on the branch of the pull request it was
+>   opened in. Its section below names its checks.
+> - **Its code digest is `3df2d131741e691e`**, because `whole/paragraph.py` was
+>   added after the other three.
 
 **This record owns every figure in it.**
 
@@ -1173,6 +1180,11 @@ least.** Four held, and Q4 failed.
   - **The frame.** Set an escalation that tells the proposer the base decided
     wrongly, and what it decided, beside one that calls the ticket an impasse.
     Calls.
+    **[NOTE 2026-11-10, later] The frame alone does not cut**, read POST-RUN in
+    *Whether the blind paragraph is why the loop's first call cuts*, below.
+    Under the same frame, `PLAN_REASONED_RULE.md`'s rule arm wrote the governing
+    region at the same tickets about twice as often as the loops' first calls.
+    What differs is the base paragraph.
   - **T1's second sentence**, rewritten so that it cannot be read as a cut's
     licence. Calls.
   - **The four cuts that never quoted T1.** Whether their reasoning reached the
@@ -1408,6 +1420,123 @@ least.** Four held, and S3 failed.
 
 ---
 
+## Whether the blind paragraph is why the loop's first call cuts — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-10, after the two readings above,
+> and run the same day. Zero API calls. It replaces a reading by the escalation's
+> cause, which was proposed first and dropped before any code was written: the
+> blind first call is the same message at an impasse and at a reported error.
+>
+> - **What it compares.** `whole/paragraph.py` sets `PLAN_REASONED_RULE.md`'s
+>   reasoning rule arm `w` beside the loops' first calls, at the tickets both
+>   answered.
+>   - **The rule arm's user message** opens *"BASE DE REGLAS: vacia. Esta es la
+>     primera regla."*
+>   - **The loops' first message** opens with v2b's paragraph: the base is not
+>     shown, and a rule overlapping rules of another queue will be listed
+>     afterwards. v1d's opens with T1.
+>   - **Every other text is the same**: the system prompt with its impasse frame,
+>     the ticket, the model, reasoning at high effort and 16,000 tokens.
+> - **The expectation was committed before any figure of the reading existed**,
+>   in `68f4176`, on the branch of this reading's pull request. The drafter had
+>   seen no class of any answer at a ticket the two share.
+> - **Five gates stood before any write.**
+>   - The rule arm's system prompt is the loops', by text and by each record's
+>     digest. Its model and settings are each record's.
+>   - At every shared ticket the two messages differ in the base paragraph
+>     alone, and each loop record sent its group's paragraph.
+>   - Every rule-arm row read is of arm `w`.
+>   - This plan's first calls are classed as Stage C classed them.
+> - **The first run's record lacked its `_env`.** The writer's filter for
+>   private keys had left it out, and that record was not kept. The fix, in
+>   `1852d9c`, moves no clause. The four clauses held in both runs.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`paragraph.json`](paragraph.json).
+> - **Its `_env`** names `1852d9c`, with `git_dirty` and `code_dirty` false. Its
+>   code digest is `3df2d131741e691e`.
+
+### 1. The same tickets under two paragraphs
+
+Every answer is classed as Stage C classes a first-call draft, against the
+ticket's governing rule. The rule arm is read at each group's shared tickets,
+two answers a ticket. Every answer was served by its run's pinned provider: the
+rule arm's and the first two loops' by Baidu, the others' by DeepInfra.
+
+| first calls of | provider | paragraph | shared tickets | whole, of their right-queue answers | the rule arm's there | gap | ticket-weighted: the loop / the rule arm |
+|---|---|---|---|---|---|---|---|
+| `PLAN_REASONED_LOOP.md`'s six runs | Baidu | v2b | 91 | 90 of 229, 0.3930 | 144 of 175, 0.8229 | 0.4298 | 0.3733 / 0.8278 |
+| `PLAN_CHANNEL.md`'s six runs | Baidu | v2b | 96 | 98 of 247, 0.3968 | 160 of 188, 0.8511 | 0.4543 | 0.3672 / 0.8542 |
+| `PLAN_PLACEMENT.md`'s six runs | DeepInfra | v2b | 88 | 97 of 247, 0.3927 | 144 of 170, 0.8471 | 0.4543 | 0.3612 / 0.8523 |
+| this plan's v1c runs | DeepInfra | v2b | 78 | 48 of 130, 0.3692 | 128 of 150, 0.8533 | 0.4841 | 0.3640 / 0.8590 |
+| this plan's v1d runs | DeepInfra | T1 | 60 | 58 of 98, 0.5918 | 98 of 115, 0.8522 | 0.2603 | 0.6017 / 0.8583 |
+
+- **At the same tickets, the empty base writes the governing rule's region in
+  0.82 to 0.85 of the rule arm's right-queue answers. v2b's paragraph writes it
+  in 0.37 to 0.40 of the loops' first calls.** The gap is 0.43 to 0.48 in each
+  of the four groups (P1 and P2 hold).
+- **The provider barely moves it.** Baidu's two loops and DeepInfra's two lie
+  within 0.0543 of one another in their gaps (P3 holds). Read per ticket, the
+  shares come out the same.
+- **T1 closes about half the gap** (P4 holds). v1d's first calls hold their part
+  in 0.5918 of their right-queue answers at their 60 shared tickets, against the
+  rule arm's 0.8522 there.
+
+What each group's answers were, at its shared tickets. The rule arm's row is
+over all 171 of its tickets:
+
+| answers of | paragraph | answers | whole | cut by one rule | cut by two | other | wrong queue | no rule |
+|---|---|---|---|---|---|---|---|---|
+| `PLAN_REASONED_RULE.md`'s arm `w`, every ticket | empty base | 342 | 262 | 17 | 0 | 48 | 15 | 0 |
+| `PLAN_REASONED_LOOP.md`'s six runs | v2b | 242 | 90 | 51 | 0 | 88 | 12 | 1 |
+| `PLAN_CHANNEL.md`'s six runs | v2b | 266 | 98 | 71 | 1 | 77 | 19 | 0 |
+| `PLAN_PLACEMENT.md`'s six runs | v2b | 258 | 97 | 69 | 1 | 80 | 5 | 6 |
+| this plan's v1c runs | v2b | 138 | 48 | 35 | 1 | 46 | 3 | 5 |
+| this plan's v1d runs | T1 | 102 | 58 | 21 | 1 | 18 | 0 | 4 |
+
+- **The rule arm cuts by one listed rule in 17 of its 342 answers.** The v2b
+  loops' first calls do so in 35 to 71 of theirs, with as many again of other
+  narrow drafts.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| P1 | the gap of reasoned_loop and of channel is at least a tenth each | `reasoned_loop` 0.4298; `channel` 0.4543 | holds |
+| P2 | the gap of placement and of whole_v1c is at least a tenth each | `placement` 0.4543; `whole_v1c` 0.4841 | holds |
+| P3 | the four v2b groups' gaps lie within a tenth of one another | spread 0.0543 | holds |
+| P4 | whole_v1d's gap is above zero and below whole_v1c's | `whole_v1d` 0.2603; `whole_v1c` 0.4841 | holds |
+
+**The drafter expected all four to hold, bet on P1, trusted P1 most and P3
+least.** All four held.
+
+### What it says
+
+- **The loop's first call cuts because of its base paragraph, not its impasse
+  frame.**
+  - Both prompts carry the frame: the engine could not decide, and the ticket is
+    at an impasse.
+  - Told that the base is empty and its rule is the first, the model writes the
+    governing rule's region in about four answers of five.
+  - Told that the base is hidden and that overlapping rules of another queue will
+    be listed, it does so in about two of five, on either provider.
+- **This corrects the first reading's lead.** *Why v1d cut at the rarest queue's
+  tickets* left the frame as what to change. The frame alone does not cut.
+- **T1 recovers about half of what the paragraph costs.** T1 asks for the
+  region whole, and still says that overlapping rules of another queue will be
+  listed.
+- **What it does not separate.**
+  - **The period.** The rule arm was asked on 2026-10-25, and the loops ran
+    between 2026-10-31 and 2026-11-10.
+  - **Which half of v2b's paragraph does it**: that the base is not shown, or
+    that overlapping rules of another queue will be listed.
+
+  The empty base cannot be sent inside a loop, where the base is not empty. A
+  first call with the first half alone, set beside v2b on one day, would
+  separate the halves. That is another plan, and it needs calls.
+
+---
+
 ## Files
 
 ```
@@ -1438,6 +1567,12 @@ results_whole/security.json      POST-RUN: whole/security.py's reading of SECURI
                                  first call on a ticket of the queue, the lost points by tier,
                                  severity and product, the seven gates and the expectation's
                                  five clauses
+results_whole/paragraph.json     POST-RUN: whole/paragraph.py's reading of the blind paragraph:
+                                 PLAN_REASONED_RULE.md's rule arm w beside the first calls of
+                                 PLAN_REASONED_LOOP.md's, PLAN_CHANNEL.md's, PLAN_PLACEMENT.md's
+                                 and this plan's runs at the tickets they share, each group's
+                                 classes, shares pooled and by ticket, its gap, its providers,
+                                 the five gates and the expectation's four clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
