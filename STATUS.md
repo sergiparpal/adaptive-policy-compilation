@@ -2864,6 +2864,24 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    So the keyword half too was lost at the first call's breadth.
    [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md), *Why
    every v1c base lost a sixth of `SECURITY_INCIDENT`*.
+   **[NOTE 2026-11-10, last] Why the first call cuts, read POST-RUN: its base
+   paragraph.**
+   - **The comparison.** At the tickets both answered, under the same system
+     prompt, model and reasoning, `PLAN_REASONED_RULE.md`'s rule arm wrote the
+     governing rule's region in 0.82 to 0.85 of its right-queue answers. The
+     loops' first calls wrote it in 0.37 to 0.40, on Baidu and on DeepInfra
+     alike.
+   - **The one difference.** The two differ in the base paragraph alone. One
+     says the base is empty. The other is v2b's: the base is hidden, and
+     overlapping rules of another queue will be listed.
+   - **T1 closed about half the gap.** v1d's first calls wrote the region in
+     0.59 at their shared tickets.
+   - **So the impasse frame**, which both carry, **does not cut alone.**
+   - **What is open now** is which half of v2b's paragraph does it: the hidden
+     base, or the overlap sentence. That takes calls.
+
+   [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
+   *Whether the blind paragraph is why the loop's first call cuts*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
