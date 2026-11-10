@@ -1,0 +1,2486 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-10T07:35:00Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "1be27c8d08435fbe6aa06f1e4d0a9a2f47b439b4",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "baf839d592e56583"
+  },
+  "plan": "PLAN_WHOLE.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_WHOLE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_WHOLE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-10, after Stage C. The codebook and the expectation in the module's docstring were written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its five clauses were read: each first call's escalation cause and the queue the base had decided. No expectation; no clause moves.",
+  "source": {
+    "score": "results_whole/score.json",
+    "score_from": "0ed0a20b2390c71a9c035bc71581154a9d2f53be",
+    "development": "results_whole/loop_smoke.json"
+  },
+  "queue": "ONCALL_ESCALATION",
+  "codebook": {
+    "T1": {
+      "patterns": [
+        "\\bregi[oó]n\\s+entera\\b",
+        "\\ba[nñ]adas\\s+condiciones\\b"
+      ],
+      "read_in": "reasoning"
+    },
+    "T1e": {
+      "patterns": [
+        "\\b(?:whole|entire|full)\\s+region\\b",
+        "\\b(?:should|must)\\s+not\\s+add\\b[^.\\n]{0,40}?\\bconditions?\\b"
+      ],
+      "read_in": "reasoning"
+    },
+    "INSIDE": {
+      "patterns": [
+        "\\bcaso\\s+particular\\b",
+        "\\bcontenid[ao]s?\\b",
+        "\\bdentro\\s+de\\b",
+        "\\bsubconjunto\\b",
+        "\\bintersecci[oó]n\\b"
+      ],
+      "read_in": "note"
+    }
+  },
+  "development": {
+    "calls": 14,
+    "T1": 6,
+    "T1e": 1,
+    "T1_or_T1e": 6,
+    "INSIDE": 7
+  },
+  "constants": {
+    "WINDOW": 700,
+    "QUOTES": 3,
+    "TAIL": 1500,
+    "Q3_SKIPPED": 4,
+    "Q5_HALF": [
+      1,
+      2
+    ]
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "what": "every escalation on a ticket of the queue is governed by H04 or H05",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "each such ticket lies first in its governing rule's region",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "each such first call's governing rule, class and verdict are Stage C's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "every such first call keeps its reasoning and its payload",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "what": "the codebook gives DEVELOPMENT's counts on the smoke run's first calls",
+      "reading": {
+        "calls": 14,
+        "T1": 6,
+        "T1e": 1,
+        "T1_or_T1e": 6,
+        "INSIDE": 7
+      },
+      "passes": true
+    }
+  ],
+  "summary": {
+    "v1c": {
+      "first_calls": 7,
+      "cuts": 3,
+      "whole": 4,
+      "cuts_reading_t1": 0,
+      "whole_reading_t1": 0,
+      "cuts_by_the_first_cutting_match": 3,
+      "cuts_saying_inside": 3,
+      "causes": {
+        "ERROR": 7
+      }
+    },
+    "v1d": {
+      "first_calls": 8,
+      "cuts": 6,
+      "whole": 2,
+      "cuts_reading_t1": 2,
+      "whole_reading_t1": 1,
+      "cuts_by_the_first_cutting_match": 6,
+      "cuts_saying_inside": 5,
+      "causes": {
+        "CONFLICT": 1,
+        "ERROR": 7
+      }
+    }
+  },
+  "first_calls": [
+    {
+      "run": "v1c_r1",
+      "arm": "v1c",
+      "idx": 257,
+      "governing": "H05",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H05",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0042",
+      "cause": "ERROR",
+      "base_decided": "T2_TECHNICAL",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        }
+      ],
+      "matched": [
+        "H05",
+        "H06",
+        "H08",
+        "H20",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H20",
+      "cut_by": [
+        "H20"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "El ticket casa con H05 (ONCALL) y H20 (T2_TECHNICAL) que se solapan sin contención. La nueva regla es un subconjunto de H05 pero más específica que H20, por lo que gana automáticamente a H05 (por contención) y se declara prioridad sobre H20 para resolver el impasse.",
+      "note_cites": [
+        "H05",
+        "H20"
+      ],
+      "beats": [
+        "H20"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "la, que también es ONCALL_ESCALATION, así que da igual. Pero la nueva regla tiene condiciones adicionales (product=dashboard), por lo que solo cubre un subconjunto de los casos de H05. Para los casos que no son dashboard, H05 seguiría aplicando. Entonces está bien.\n\nPero entonces, ¿es necesario declarar beats contra H20? Sí, porque H20 también es una regla que casa, y la nueva regla no está contenida en H20 ni viceversa, así que hay que declarar que la nueva regla gana a H20.\n\nTambién debemos considerar que H05 ya está en la lista, y si añadimos esta regla, podría haber duplicación. Pero como la nueva regla es más específica, se aplicará antes que H05 para los casos con dashboard. Eso es aceptable.\n\nOtra opción: simplemente declarar que H05 beats H20. Pero no podemos modificar la base de reglas existente. Solo podemos añadir nuevas reglas.\n\nPor lo tanto, la solución es añadir una regla que capture el caso específico y declare prioridad sobre H20.\n\nAhora, justificación de la abstracción: elegimos condiciones exactas para este ticket para cubrir el conflicto. Podríamos generalizar a cualquier producto, pero entonces sería equivalente a H05, y no resolvería el conflicto con H20 porque H20 solo aplica a dashboard. Mejor mantener product=dashboard para atacar específicamente ese conflicto.\n\nNota: \"El ticket casa con H05 y H20. H05 (ONCALL) y H20 (T2) se solapan sin contención. Se añade regla más específica que H20 para que H05 prevalezca en este subconjunto.\"\n\nAhora, formato JSON.",
+      "reasoning_chars": 10298,
+      "reasoning_tokens": 2637,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0025",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0035",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0025"
+        ],
+        "loses_to": [
+          "R0035"
+        ],
+        "note": "La regla propuesta es una excepción más específica que R0025 (cuenta con prioridad sobre ACCOUNT_MANAGER) porque una severidad 1 en horario no laboral requiere escalado inmediato por encima de la recurrencia. Por el contrario, R0035 (SECURITY_INCIDENT) debe prevalecer sobre cualquier regla no relacionada con seguridad, ya que la política de la empresa prioriza los incidentes de seguridad sobre cualquier otro flujo.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r1",
+      "arm": "v1c",
+      "idx": 1432,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0072",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H07",
+        "H08",
+        "H15",
+        "H16",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H07",
+      "cut_by": [
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Regla especifica que combina severity=1, enterprise y api. Es subconjunto de H04 y H07, por lo que gana automaticamente por contencion sin necesidad de declarar prioridad.",
+      "note_cites": [
+        "H04",
+        "H07"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "lso ONCALL. So that's fine. Similarly, it wins over H07. So the result is ONCALL.\n\nThus, we can write a rule with conditions: severity eq 1, customer_tier eq enterprise, product eq api. Action: ONCALL_ESCALATION.\n\nBut is that generalizable? It covers this ticket. Analogous future cases would be any combination where severity=1, enterprise, and api. That seems fine.\n\nAlternatively, we might want to cover all cases where H04 and H07 conflict, i.e., severity=1, enterprise, api. So that is the intersection.\n\nTherefore, I'll propose that rule.\n\nNow, for the output: we need to provide conditions as an array of objects. Use eq operator.\n\nAlso, beats and loses_to: Since the rule is a subset of existing rules, no need to declare anything. But we should check if any other rule might also overlap without containment? For example, H04 and H07 are the main ones. Also H08 and H15 are supersets. So no conflict requiring explicit priority.\n\nThus, beats and loses_to can be empty arrays.\n\nNote: Justify the level of abstraction and priority.\n\nSo final JSON:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Regla especifica que combina severity=1, enterprise y api. Es subconjunto de H04 y H07, por lo que gana automaticamente por contencion sin necesidad de declarar prioridad.\"\n}",
+      "reasoning_chars": 12539,
+      "reasoning_tokens": 3154,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0047",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0052",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0035",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0025",
+            "ACCOUNT_MANAGER"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0047",
+          "R0001",
+          "R0052",
+          "R0025"
+        ],
+        "loses_to": [
+          "R0035"
+        ],
+        "note": "Regla combina severity=1, enterprise y api, siendo más específica que las reglas de account manager y T2_TECHNICAL con prior_tickets o has_security_keyword, pero debe ceder ante la regla de seguridad (R0035) que lleva a SECURITY_INCIDENT, según la prioridad del manual H01.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r1",
+      "arm": "v1c",
+      "idx": 1951,
+      "governing": "H04",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0076",
+      "cause": "ERROR",
+      "base_decided": "T2_TECHNICAL",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H04",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "Esta regla cubre tickets críticos (severity 1) de clientes enterprise, que según la política deben ir a ONCALL_ESCALATION (H04). Se solapa con H17 y H18 (product integrations) sin contención, por lo que se declara prioridad sobre ellas.",
+      "note_cites": [
+        "H04",
+        "H17",
+        "H18"
+      ],
+      "beats": [
+        "H17",
+        "H18"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": ". Action: ONCALL_ESCALATION. beats: [\"H17\", \"H18\"]. loses_to: [] (no hay ninguna que deba ganarle). Note: justificar que es un caso particular de H04, pero H04 ya existe; sin embargo, al escribir esta regla, se está replicando H04 pero con prioridad declarada sobre H17 y H18 que se solapan sin contención.\n\nAlternativamente, podríamos incluir product en la condición para hacerla más específica? Pero entonces no sería generalizable a otros productos. El ticket es de integrations, pero la regla debería cubrir cualquier producto con severity=1 y enterprise. Así que mejor mantener la condición general.\n\nOtra posibilidad: la regla H04 ya existe, pero el motor no la aplica porque no tiene prioridad declarada sobre H17 y H18. Entonces, quizás lo que debemos hacer es declarar que H04 debe ganar a H17 y H18. Pero el ejercicio pide escribir una regla nueva. Así que la escribimos igual.\n\n¿Hay alguna otra regla que se solape? H28 y H29 ya están contenidas. H27 también. H08 también. Entonces solo H17 y H18.\n\nPor lo tanto, la respuesta JSON:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}],\n  \"beats\": [\"H17\", \"H18\"],\n  \"loses_to\": [],\n  \"note\": \"Esta regla cubre tickets críticos (severity 1) de clientes enterprise, que según la política deben ir a ONCALL_ESCALATION (H04). Se solapa con H17 y H18 (product integrations) sin contención, por lo que se declara prioridad sobre ellas.\"\n}",
+      "reasoning_chars": 11557,
+      "reasoning_tokens": 2938,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0009",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0007",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0069",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0016",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0033",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0025",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0047",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0048",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0035",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0031",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0023",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          [
+            "R0013",
+            "BILLING_SPECIALIST"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0001",
+          "R0009",
+          "R0007",
+          "R0069",
+          "R0016",
+          "R0033",
+          "R0025",
+          "R0031",
+          "R0023",
+          "R0013"
+        ],
+        "loses_to": [
+          "R0047",
+          "R0048",
+          "R0035"
+        ],
+        "note": "Esta regla implementa H04 del manual: tickets críticos de enterprise deben ir a ONCALL_ESCALATION. Se solapa con reglas de otras colas; debe ganar a las que no consideran seguridad ni prioridad de billing, y perder frente a las reglas de seguridad (R0035, R0047, R0048) que son prioritarias según el manual.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r1",
+      "arm": "v1d",
+      "idx": 257,
+      "governing": "H05",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H05",
+      "stage_c_verdict": "sin_situar",
+      "verdict": "sin_situar",
+      "rule_id": null,
+      "cause": "ERROR",
+      "base_decided": "T2_TECHNICAL",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H05",
+        "H06",
+        "H08",
+        "H20",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H20",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "This rule implements H05, which is the first rule in the manual that matches this ticket. It conflicts with H20 (product=dashboard and severity<=2) because they overlap. H05 should take priority as it appears earlier in the manual and is more specific to business customers in off-hours.",
+      "note_cites": [
+        "H05",
+        "H20"
+      ],
+      "beats": [
+        "H20"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 1,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": true,
+      "quotes_of_t1": [
+        {
+          "at": 2006,
+          "text": "region entera de la regla de la lista que lo gobierna: la primera de la lista cuyas condiciones casa el ticket.\" That suggests we need to write a new rule that covers this ticket, and that rule should be the first rule that matches. But the ticket already matches H05, so the rule we write should be exactly H05? But then the problem says \"El motor simbolico no ha podido decidir este ticket.\" So perhaps the engine is not using that list? Or maybe the list is the company's manual, but the engine has its own representation? Actually, the instruction says: \"Tu tarea: 1. Decidir la cola de destino correcta para ESTE ticket. 2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos f"
+        }
+      ],
+      "answer_composed": "earlier in the manual and is more specific to business customers in off-hours.\"\n}\n\nBut note: H05 is already in the manual, so we are essentially re-stating it. However, the instruction says to write a new rule. It might be that the engine does not have H05? Or the manual is not the engine's rule set? The problem statement: \"MANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\" So it's the policy. The engine is supposed to follow it, but it couldn't decide. So we are adding a rule to resolve the conflict. Since the conflict is between H05 and H20, and H05 is already there, we need to add a priority declaration. But the only way to declare priority is through the beats/loses_to of our new rule. So we must write a rule that matches the ticket. So writing H05 again is fine.\n\nAlternatively, we could write a rule that is the intersection of H05 and H20 to make it more specific, but that would change the policy because it would only apply to dashboard, not all products. The manual's H05 applies to all products. So it's better to keep the general rule.\n\nThus I'll go with that.\n\nNow, check if there are any other conflicts? For example, H06 also matches? H06: severity=1 and customer_tier=business. That is a superset of our rule, so automatically our rule wins over H06. No need to declare. H08: severity=1, superset. So no.\n\nAlso, note that H05 itself is a subset of H08, so automatic level already handles that. So our rule is fine.\n\nTherefore, the output is as above.",
+      "reasoning_chars": 21199,
+      "reasoning_tokens": 5329,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0019",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0022",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0015",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0026",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0004",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0010",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0008",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0007",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0006",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0027",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0023",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0018",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0028",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0024",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [
+          "R0004",
+          "R0006",
+          "R0007",
+          "R0010",
+          "R0015",
+          "R0018",
+          "R0022",
+          "R0023",
+          "R0024",
+          "R0026",
+          "R0027",
+          "R0028"
+        ],
+        "beats": [
+          "R0008",
+          "R0019"
+        ],
+        "loses_to": [],
+        "note": "This rule implements H05, which is earlier in the manual than H14 (R0019) and is a specialization of R0008. It should beat both when they overlap.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r1",
+      "arm": "v1d",
+      "idx": 1432,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0040",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H07",
+        "H08",
+        "H15",
+        "H16",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H07",
+      "cut_by": [
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Regla que resuelve el solapamiento entre H04 (severity=1, enterprise -> ONCALL) y H07 (severity=1, api -> T3). Al ser un caso particular de ambas, gana automáticamente por contención.",
+      "note_cites": [
+        "H04",
+        "H07"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 1,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": true,
+      "quotes_of_t1": [
+        {
+          "at": 6682,
+          "text": "añadas condiciones para que quede dentro de una regla de más abajo de la lista: una regla dentro de otra solo le gana a esa otra, y el resto de su región se queda con reglas de otras colas.\" Esto quiere decir que si nuestra regla es un subconjunto de H04, entonces solo le ganará a H04, pero también podría solaparse con otras reglas. En este caso, también es subconjunto de H07, así que también le ganará a H07. Pero ¿qué pasa con otras reglas como H06? H06 es severity=1, business -> T3_ENGINEERING, no afecta. H08 severity=1 -> T2_TECHNICAL, pero nuestra regla es más específica que H08? H08 no tiene customer_tier, por lo que nuestra regla (con enterprise) es un subconjunto de H08? No, porque H0"
+        }
+      ],
+      "answer_composed": "to no contenidos.\n\nPero entonces, ¿por qué el motor no pudo decidir? Porque H04 y H07 se solapan sin contención. Al añadir esta nueva regla, que es la intersección, se resuelve porque es más específica. Por lo tanto, la solución es añadir esa regla.\n\nAhora, debemos justificar el nivel de abstracción. La regla captura exactamente el caso donde un cliente enterprise con severidad crítica en el producto api llama. Es un caso específico que combina dos dimensiones. Podría ser generalizable a otros productos? Quizás, pero el ticket solo es api. Podríamos hacer una regla más general: severity=1 y enterprise y product en [api, ...]? Pero no tenemos otros productos en conflicto similar. Mejor mantenerlo específico.\n\nEntonces, la respuesta JSON:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Regla que resuelve el solapamiento entre H04 (severity=1, enterprise -> ONCALL) y H07 (severity=1, api -> T3). Al ser un caso particular de ambas, gana automáticamente por contención.\"\n}\n\nPero el enunciado dice: \"Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\" En este caso, como es un subconjunto, no necesita declarar beats ni loses_to. Así que los dejamos vacíos.\n\nVerificar que la regla casa el ticket: severity=1, enterprise, api. Sí.\n\nEntonces, esa es mi respuesta.",
+      "reasoning_chars": 9554,
+      "reasoning_tokens": 2440,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0031",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0039",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0028",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0024",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0001"
+        ],
+        "loses_to": [
+          "R0031",
+          "R0039",
+          "R0028",
+          "R0024"
+        ],
+        "note": "La regla propuesta es una excepción a R0001 (account manager) porque añade severity=1 y product=api, condiciones que la hacen más específica y prioritaria según el manual (H04 precede a H13). Por el contrario, las reglas con has_security_keyword=true son excepciones a esta regla, ya que la política de seguridad tiene prioridad sobre el enrutamiento normal, por lo que la regla debe perder frente a R0031, R0039, R0028 y R0024.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r1",
+      "arm": "v1d",
+      "idx": 1951,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "sin_situar",
+      "verdict": "sin_situar",
+      "rule_id": null,
+      "cause": "ERROR",
+      "base_decided": "T2_TECHNICAL",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [
+        "H17",
+        "H18"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Esta regla es la intersección de H04 (severity=1, enterprise) y H17 (product=integrations, severity<=2). Al ser un subconjunto de ambas, el motor la seleccionará automáticamente por contención, resolviendo el impasse entre ONCALL y T3_ENGINEERING. Cubre este ticket y cualquier otro con severity=1, enterprise y producto integrations.",
+      "note_cites": [
+        "H04",
+        "H17"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 2
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "r rules that solapan and one does not contain the other. Here, my rule is contained in H17, so it's not a solapamiento sin contención. So I should not list it in beats; the automatic mechanism handles it. Similarly for H04. So beats and loses_to can be empty.\n\nBut wait: The motor couldn't decide because of the solapamiento between H04 and H17. My rule is a subset of both, so it will be chosen over both. So no need to declare beats.\n\nThus, I'll output with empty beats and loses_to.\n\nNote: I need to justify the level of abstraction and priority. The rule is at the level of the intersection, which is the specific combination that caused the conflict. It is generalizable to any ticket with severity=1, enterprise, and product=integrations. For analogous future cases with other products, similar rules would be needed.\n\nGiven the complexity, I'll proceed with this.\n\nFinal JSON:\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Esta regla es la intersección de H04 (severity=1, enterprise) y H17 (product=integrations, severity<=2). Al ser un subconjunto de ambas, el motor la seleccionará automáticamente por contención, resolviendo el impasse entre ONCALL y T3_ENGINEERING. Cubre este ticket y cualquier otro con severity=1, enterprise y producto integrations.\"\n}",
+      "reasoning_chars": 22826,
+      "reasoning_tokens": 5728,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0039",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0038",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0031",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0028",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0024",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [
+          "R0024",
+          "R0028",
+          "R0031",
+          "R0039"
+        ],
+        "beats": [
+          "R0001",
+          "R0038"
+        ],
+        "loses_to": [],
+        "note": "Mi regla es más específica que R0001 y R0038 al añadir severity=1 y product=integrations. En caso de solapamiento (tickets enterprise con prior>=5, severity=1 e integrations), la criticidad de severity=1 debe priorizar la atención inmediata (ONCALL_ESCALATION) sobre la gestión de cuenta (ACCOUNT_MANAGER). No hay conflicto con reglas de seguridad porque mi regla no aplica a tickets con security_keyword.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r2",
+      "arm": "v1c",
+      "idx": 954,
+      "governing": "H04",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0055",
+      "cause": "ERROR",
+      "base_decided": "ACCOUNT_MANAGER",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H04",
+        "H08",
+        "H13",
+        "H20",
+        "H21",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H13",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "Regla basada en H04 del manual: severity 1 y enterprise. Cubre este ticket y casos análogos. Se declara prioridad sobre reglas posteriores que solapan sin contención (H07, H09-H13, H15-H18, H20, H21) según el orden del manual.",
+      "note_cites": [
+        "H04",
+        "H07",
+        "H09",
+        "H13",
+        "H15",
+        "H18",
+        "H20",
+        "H21"
+      ],
+      "beats": [
+        "H07",
+        "H09",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H15",
+        "H16",
+        "H17",
+        "H18",
+        "H20",
+        "H21"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "ecific than H04.\n\nBetter to keep it as H04.\n\nGiven the complexity, I'll list beats as the set of overlapping non-contained rules after H04. But note that some of these might also be contained in H04? Let's double-check: H07 condition: severity=1 AND product=api. Is H07 contained in H04? No, because H04 requires enterprise, H07 does not. So not contained. H09: billing AND enterprise. Is H09 contained in H04? No, because H04 requires severity=1, H09 does not. So not. So all are non-contained.\n\nThus, I'll set beats: [\"H07\",\"H09\",\"H10\",\"H11\",\"H12\",\"H13\",\"H15\",\"H16\",\"H17\",\"H18\",\"H20\",\"H21\"].\n\nAnd loses_to: empty.\n\nNow, note: The manual also has H08 which is severity=1. Our rule is contained in H08, so no need to declare.\n\nSo final answer.\n\nBut we must also write a note justifying the level of abstraction and priority.\n\nThus, the JSON:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}],\n  \"beats\": [\"H07\",\"H09\",\"H10\",\"H11\",\"H12\",\"H13\",\"H15\",\"H16\",\"H17\",\"H18\",\"H20\",\"H21\"],\n  \"loses_to\": [],\n  \"note\": \"Regla basada en H04 del manual: severity 1 y enterprise. Cubre este ticket y casos análogos. Se declara prioridad sobre reglas posteriores que solapan sin contención (H07, H09-H13, H15-H18, H20, H21) según el orden del manual.\"\n}\n\nBut we need to ensure the conditions are correct. Also, we should consider that the ticket has language pt, but that is not needed.\n\nI'll output that.",
+      "reasoning_chars": 28116,
+      "reasoning_tokens": 7073,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0019",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0009",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0040",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0008",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0032",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0044",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0038",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0016",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0054",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0037",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0029",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0033",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0039",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0024",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0020",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0045",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0022",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0050",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0042",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0007",
+            "BILLING_SPECIALIST"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0019",
+          "R0009",
+          "R0040",
+          "R0008",
+          "R0001",
+          "R0032",
+          "R0038",
+          "R0016",
+          "R0054",
+          "R0037",
+          "R0029",
+          "R0024",
+          "R0020",
+          "R0022",
+          "R0050",
+          "R0042",
+          "R0007"
+        ],
+        "loses_to": [
+          "R0044",
+          "R0033",
+          "R0039",
+          "R0045"
+        ],
+        "note": "Regla basada en H04 del manual (severity=1, enterprise). Se declara prioridad sobre reglas que corresponden a manuales posteriores, y se subordina a reglas de seguridad (has_security_keyword) que tienen prioridad máxima.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r2",
+      "arm": "v1d",
+      "idx": 710,
+      "governing": "H05",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H05",
+      "stage_c_verdict": "sin_situar",
+      "verdict": "sin_situar",
+      "rule_id": null,
+      "cause": "CONFLICT",
+      "base_decided": null,
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "matched": [
+        "H05",
+        "H06",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [
+        "H17",
+        "H18"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Esta regla es un subconjunto de H05 (severity=1, business, off_hours) y de H17 (integrations, severity<=2), por lo que el motor la aplica automáticamente sobre ellas sin necesidad de declarar prioridad. Resuelve el conflicto entre H05 y H17 para tickets con estas características.",
+      "note_cites": [
+        "H05",
+        "H17"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "así que es subconjunto. Entonces gana. H08: severity=1 -> T2_TECHNICAL, también contenido. H28: customer_tier in [business, enterprise] -> T1_GENERAL, contenido. H27: severity lte 2 -> T2_TECHNICAL, contenido (severity=1). H29: severity gte 1 -> T1_GENERAL, contenido. H23 no aplica. H13, H14 no. H15 no. H19, H20 no. H21 no. H22 no. H24, H25, H26 no. Entonces no hay conflictos.\n\nPor lo tanto, esta regla es segura y resuelve el impasse.\n\nAhora, la respuesta debe ser en JSON con los campos especificados. action: \"ONCALL_ESCALATION\". conditions: lista de objetos con attr, op, value. Notar que off_hours es booleano, así que value: true. beats y loses_to vacíos. note: justificar.\n\nEntonces:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Esta regla es un subconjunto de H05 (severity=1, business, off_hours) y de H17 (integrations, severity<=2), por lo que el motor la aplica automáticamente sobre ellas sin necesidad de declarar prioridad. Resuelve el conflicto entre H05 y H17 para tickets con estas características.\"\n}\n\nPero asegurémonos de que la regla sea generalizable: cubre este ticket y otros con las mismas cuatro condiciones. Es un caso particular de H05 y H17, así que es una excepción bien definida.",
+      "reasoning_chars": 21640,
+      "reasoning_tokens": 5498,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0024",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0014",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0012",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [
+          "R0012",
+          "R0024"
+        ],
+        "beats": [
+          "R0014"
+        ],
+        "loses_to": [],
+        "note": "La regla propuesta es más específica que R0014 (ACCOUNT_MANAGER) porque añade severity=1, off_hours=true y product=integrations, por lo que debe ganar en la intersección. Con R0024 y R0012 no hay solapamiento real porque la condición has_security_keyword es false en nuestra regla y true en ellas.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r2",
+      "arm": "v1d",
+      "idx": 954,
+      "governing": "H04",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0038",
+      "cause": "ERROR",
+      "base_decided": "ACCOUNT_MANAGER",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H04",
+        "H08",
+        "H13",
+        "H20",
+        "H21",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H13",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "Esta regla captura el caso de severidad 1 con cliente enterprise, que según la política de la empresa debe ir a ONCALL_ESCALATION (H04). Se declara prioridad frente a H13 (enterprise con prior_tickets_30d>=5), H20 (dashboard con severidad<=2) y H21 (pt con severidad<=2) porque estas reglas se solapan sin contención, y la regla H04 debe prevalecer por estar antes en el orden manual.",
+      "note_cites": [
+        "H04",
+        "H13",
+        "H20",
+        "H21"
+      ],
+      "beats": [
+        "H13",
+        "H20",
+        "H21"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "icable. H05 is business and off_hours, not overlapping. H06 business, etc. H07 api, etc. H09 billing enterprise, not overlapping. H10, H11 billing. H12 billing. H14 business. H15 api. H16 api. H17 integrations. H18 integrations. H19 mobile. H20 dashboard - we already include. H21 language pt. H22, H23 phone. H24, H25 free. H26 severity 4. H27, H28, H29 are more general and contain our rule, so they should lose to our rule automatically. But we might need to declare loses_to? No, containment handles automatically. So we only need to declare beats for those overlapping that are not contained.\n\nOne more: H08? Overlap? H08 is severity=1. Our rule is contained in H08, so automatic win for our rule. So no need.\n\nThus the rule: conditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}]. Action: ONCALL_ESCALATION. Beats: [\"H13\", \"H20\", \"H21\"]. Loses_to: []. Note: We should justify.\n\nBut wait: The ticket also has off_hours=true. Does that affect anything? H05 is for business with off_hours, not enterprise. H23 is for phone. Not relevant. So fine.\n\nNow, we need to output JSON.\n\nLet's double-check if any other rule matches and conflicts: H? Also H? H? H13 we have. H20 we have. H21 we have. Also H? H? H? Possibly H? H? H? H? No.\n\nThus answer.\n\nNote: The instruction says \"La regla DEBE casar el ticket presentado.\" So our conditions must match this ticket. With severity=1 and customer_tier=enterprise, it matches.\n\nSo final JSON.",
+      "reasoning_chars": 14402,
+      "reasoning_tokens": 3615,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0011",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0008",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0030",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0006",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0020",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0032",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0025",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0009",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0034",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0024",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0019",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0022",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0026",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0017",
+            "SELF_SERVICE_DEFLECT"
+          ],
+          [
+            "R0012",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0015",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0033",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0031",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0005",
+            "T2_TECHNICAL"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0011",
+          "R0008",
+          "R0030",
+          "R0006",
+          "R0001",
+          "R0032",
+          "R0025",
+          "R0009",
+          "R0019",
+          "R0022",
+          "R0026",
+          "R0017",
+          "R0015",
+          "R0005"
+        ],
+        "loses_to": [
+          "R0020",
+          "R0034",
+          "R0024",
+          "R0012",
+          "R0033",
+          "R0031"
+        ],
+        "note": "La regla implementa la política H04 (severidad 1 con cliente enterprise → ONCALL_ESCALATION), que en el manual está por encima de la mayoría de reglas generales de producto, prioridad, etc., por lo que debe vencer a todas las reglas de otra cola que no involucren seguridad. Sin embargo, las reglas con has_security_keyword=True son más específicas y deben prevalecer según la política de seguridad, por lo que se pierde frente a ellas.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r3",
+      "arm": "v1c",
+      "idx": 710,
+      "governing": "H05",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H05",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0051",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H05",
+        "H06",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "Regla que asigna ONCALL_ESCALATION a tickets de severidad 1 de clientes business en horario no laboral, priorizando la urgencia sobre reglas de producto. Supera a H17 (integrations con severidad <=2) porque el contexto de off_hours y severidad crítica requiere escalación inmediata.",
+      "note_cites": [
+        "H17"
+      ],
+      "beats": [
+        "H17"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": " product in integrations? That would be more specific, but then it would be a subset of H05? Actually, H05 does not specify product. So a rule with product=integrations would be a subset of H05. That might cause H05 to win automatically, but then our new rule would be less general. Alternatively, we could write a rule that captures the conflict directly: e.g., if severity=1 and customer_tier=business and off_hours and product=integrations, then ONCALL, and it beats H17. But that is too specific.\n\nGiven the instruction to write a generalizable rule, I think the best is to write the rule that matches this ticket as per H05, and assume it is not in the engine. The note should justify the level of abstraction.\n\nLet's finalize.\n\nAction: ONCALL_ESCALATION\n\nConditions: severity eq 1, customer_tier eq business, off_hours eq true\n\nBeats: [\"H17\"] because H17 also matches this ticket (product integrations and severity<=2) and gives T3_ENGINEERING, and our rule is more urgent.\n\nLoses_to: [] (no rule should beat this one, as per manual H05 is before others)\n\nNote: \"Regla que asigna ONCALL_ESCALATION a tickets de severidad 1 de clientes business en horario no laboral, priorizando la urgencia sobre reglas de producto. Supera a H17 (integrations con severidad <=2) porque el contexto de off_hours y severidad crítica requiere escalación inmediata.\"\n\nBut wait, is there any rule that should beat this? H04? H04 is for enterprise, so no overlap. H01-H03 are security, no. So no.\n\nThus, output JSON.",
+      "reasoning_chars": 17274,
+      "reasoning_tokens": 4341,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0045",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0042",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0050",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0029",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0010",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0015",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0014",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0026",
+            "T1_GENERAL"
+          ],
+          [
+            "R0040",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0020",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0036",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0027",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0030",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0035",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0043",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0048",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0023",
+            "ACCOUNT_MANAGER"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0042",
+          "R0050",
+          "R0029",
+          "R0010",
+          "R0015",
+          "R0014",
+          "R0026",
+          "R0040",
+          "R0036",
+          "R0027",
+          "R0030",
+          "R0035",
+          "R0043",
+          "R0023"
+        ],
+        "loses_to": [
+          "R0045",
+          "R0020",
+          "R0048"
+        ],
+        "note": "La regla captura tickets críticos de clientes business en horario no laboral, priorizando la escalación inmediata sobre reglas de producto o canal. Cede ante reglas de seguridad (has_security_keyword true) porque esas son de mayor prioridad en la política de la empresa.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r3",
+      "arm": "v1c",
+      "idx": 1432,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0064",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H07",
+        "H08",
+        "H15",
+        "H16",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H07",
+      "cut_by": [
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Caso específico donde severity=1, enterprise y api. Esta regla está contenida en H04, H07, H08, H15, etc., por lo que el nivel 1 la prioriza automáticamente.",
+      "note_cites": [
+        "H04",
+        "H07",
+        "H08",
+        "H15"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "lso contains our rule because severity=1 is a superset. But H08 is later in order? Actually manual order: H08 comes after H07. But our rule being contained in H08 as well? H08 condition: severity eq 1. Our rule has severity=1, so it is contained in H08. So H08 is a superset. Level 1 will make our rule beat H08 as well. That is fine because we want ONCALL_ESCALATION to beat T2_TECHNICAL in this case. So no beats needed.\n\nBut we also need to consider H15: product eq api AND severity lte 2 -> T3_ENGINEERING. Our rule has severity=1 (lte 2) and product=api, so it is contained in H15 as well. Our rule should win over H15? According to manual order, H04 comes before H07, but H15 comes after H07. Since our rule is more specific than H15, it will automatically win. So good.\n\nThus our rule will automatically beat all broader rules. So beats and loses_to can be empty.\n\nBut wait: The motor might have other rules that are also at the same level? No.\n\nTherefore, we can propose:\n\naction: \"ONCALL_ESCALATION\"\nconditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}]\nbeats: []\nloses_to: []\nnote: \"Caso específico donde severity=1, enterprise y api. Esta regla está contenida en H04, H07, H08, H15, etc., por lo que el nivel 1 la prioriza automáticamente.\"\n\nWe need to ensure the rule covers the ticket exactly. The ticket also has off_hours=true, but that is not needed.\n\nThus final JSON.",
+      "reasoning_chars": 8402,
+      "reasoning_tokens": 2111,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0062",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0045",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0061",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0016",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0014",
+            "T2_TECHNICAL"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0001",
+          "R0016",
+          "R0014"
+        ],
+        "loses_to": [
+          "R0062",
+          "R0045",
+          "R0061"
+        ],
+        "note": "Esta regla captura el caso de severidad crítica en producto API para cliente enterprise, que debe ir a ONCALL_ESCALATION. Es una subregla de H04 y H07, por lo que se resuelve automáticamente por contención frente a ellas. Frente a reglas de seguridad (R0062, R0045, R0061) debe perder porque la seguridad tiene prioridad; frente a reglas de account manager (R0001, R0016) y técnica (R0014) debe ganar porque la criticidad y el tier enterprise prevalecen.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1c_r3",
+      "arm": "v1c",
+      "idx": 1951,
+      "governing": "H04",
+      "class": "whole",
+      "breadth": "the_region",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0068",
+      "cause": "ERROR",
+      "base_decided": "T2_TECHNICAL",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [],
+      "matched": [
+        "H04",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [],
+      "cut_by_the_first_cutting_match": false,
+      "note": "Regla general que refuerza la prioridad de H04 (severidad 1 y enterprise) sobre reglas de producto que envían a otras colas, resolviendo el solapamiento no contenido que causó el impasse.",
+      "note_cites": [
+        "H04"
+      ],
+      "beats": [
+        "H07",
+        "H09",
+        "H15",
+        "H17",
+        "H20"
+      ],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": " the general rule: severity eq 1 AND customer_tier eq enterprise -> ONCALL_ESCALATION. And beats: H07, H09, H15, H17, H20. Loses_to: none, because it should win over those. It also might lose to something? Possibly to H01, H02, H03 if security keyword true, but those are not relevant. Also to H? Actually H04 is already after H01-03. Our new rule is essentially H04, so it should lose to H01-03 if they match. But H01-03 have security keyword true, which is false here. So no need. Also it might lose to something else? Not.\n\nWe also need to consider if there are any rules that should beat this one. For example, H? If there is a more specific rule for security? Already handled. So loses_to empty.\n\nNow, note: H09 is product=billing and enterprise -> ACCOUNT_MANAGER. But H09 is actually H09? Yes, H09: product eq billing AND customer_tier eq enterprise -> ACCOUNT_MANAGER. That overlaps with our rule when product=billing and severity=1. Our rule should beat it. So include H09.\n\nThus, the rule conditions: [\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1], [\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"].\n\nAction: ONCALL_ESCALATION.\n\nNote: We should justify the level of abstraction and priority. The abstraction is general: all severity 1 enterprise tickets should go to on-call regardless of product. This is already in H04 but the motor cannot resolve the conflict with product-specific rules. So we add this rule with explicit beats to enforce the intended order.\n\nNow, output JSON.",
+      "reasoning_chars": 19744,
+      "reasoning_tokens": 4949,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0057",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0062",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0047",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0027",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0030",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0054",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0015",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0016",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0010",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0035",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0042",
+            "T3_ENGINEERING"
+          ],
+          [
+            "R0061",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0036",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0067",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0044",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0048",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0052",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0066",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0058",
+            "BILLING_SPECIALIST"
+          ],
+          [
+            "R0050",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0045",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0031",
+            "T2_TECHNICAL"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0057",
+          "R0001",
+          "R0047",
+          "R0027",
+          "R0030",
+          "R0054",
+          "R0015",
+          "R0016",
+          "R0010",
+          "R0035",
+          "R0042",
+          "R0036",
+          "R0067",
+          "R0044",
+          "R0052",
+          "R0066",
+          "R0058",
+          "R0050",
+          "R0031"
+        ],
+        "loses_to": [
+          "R0062",
+          "R0061",
+          "R0048",
+          "R0045"
+        ],
+        "note": "Regla que implementa la política H04: severidad 1 y cliente enterprise debe ir a ONCALL_ESCALATION. Es una excepción a las reglas de producto y de prior_tickets_30d, pero debe subordinarse a las reglas de seguridad (has_security_keyword) que son más específicas y tienen prioridad según el orden de la política.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r3",
+      "arm": "v1d",
+      "idx": 710,
+      "governing": "H05",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H05",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0032",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "business"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "matched": [
+        "H05",
+        "H06",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [
+        "H17",
+        "H18"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Regla más específica que H05 y H17, contenida en ambas, por lo que gana automáticamente. Cubre el caso de severidad crítica con business en off_hours y producto integrations, donde hay conflicto entre la regla de oncall (H05) y la de engineering (H17).",
+      "note_cites": [
+        "H05",
+        "H17"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 3,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": true,
+      "quotes_of_t1": [
+        {
+          "at": 11726,
+          "text": "region entera de la regla de la lista que lo gobierna: la primera de la lista cuyas condiciones casa el ticket.\" Esto es confuso. Quizás quiere decir que debemos basar nuestra regla en la primera regla que casaría el ticket según el orden del manual. Eso sería H05. Pero H05 no casa el ticket? Sí casa. Pero el motor no pudo decidir porque hay conflicto. Entonces podríamos escribir una regla que sea H05 pero añadiendo condiciones para hacerla más específica que las otras reglas que también casan. En este caso, H05 es la primera, pero el conflicto es con H17. Nuestra regla con product=integrations es más específica que H05? No, porque H05 es más general. Nuestra regla es subconjunto de H05, así"
+        },
+        {
+          "at": 12487,
+          "text": "region entera de la regla de la lista que lo gobierna: la primera de la lista cuyas condiciones casa el ticket.\" Podría interpretarse que debemos tomar esa regla (H05) y luego si es necesario añadir condiciones para que sea más específica que las que se solapan. Eso es lo que hemos hecho.\n\nPor lo tanto, nuestra regla es válida.\n\nAhora, note: \"No le anadas condiciones para que quede dentro de una regla de mas abajo de la lista: una regla dentro de otra solo le gana a esa otra, y el resto de su region se queda con reglas de otras colas.\" Esto sugiere que si hacemos una regla que es subconjunto de H05, solo le ganará a H05, pero no a H17? No, también es subconjunto de H17, así que le ganará a a"
+        }
+      ],
+      "answer_composed": " Necesitamos prioridad. Pero la instrucción dice que podemos declarar beats y loses_to. Así que también podríamos hacer una regla que sea exactamente H05 (sin condiciones extra) y luego declarar que beats H17. Pero H05 ya existe; no podemos crear una nueva regla idéntica. Así que mejor crear una regla más específica.\n\nConsideremos también que hay otras reglas que podrían solaparse, como H08 (severity=1) y H27 (severity<=2), pero esas son más generales y ya están contenidas. Nuestra regla es más específica que todas.\n\nEntonces, la respuesta:\n\n{\n  \"action\": \"ONCALL_ESCALATION\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Regla más específica que H05 y H17, contenida en ambas, por lo que gana automáticamente. Cubre el caso de severidad crítica con business en off_hours y producto integrations, donde hay conflicto entre la regla de oncall (H05) y la de engineering (H17).\"\n}\n\nPero asegurémonos de que la nota justifica el nivel de abstracción y prioridad.\n\nTambién podríamos considerar que el ticket tiene channel=chat y language=en, pero no son relevantes.\n\nPor último, revisemos si hay alguna otra regla que pueda solaparse, como H15 (api), H19 (mobile), H20 (dashboard), H21 (language pt). No aplican.\n\nEntonces, la respuesta está lista.",
+      "reasoning_chars": 15388,
+      "reasoning_tokens": 3930,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0031",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0025",
+            "ACCOUNT_MANAGER"
+          ],
+          [
+            "R0012",
+            "SECURITY_INCIDENT"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0031",
+          "R0025",
+          "R0012"
+        ],
+        "loses_to": [],
+        "note": "Regla más específica que R0031, R0025 y R0012 al añadir severidad 1, off_hours y producto integrations, siendo una excepción prioritaria para casos críticos de business en horario no laboral con integraciones.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r3",
+      "arm": "v1d",
+      "idx": 1432,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0038",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H07",
+        "H08",
+        "H15",
+        "H16",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H07",
+      "cut_by": [
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Regla especifica para tickets con severity=1, customer_tier=enterprise y product=api, que resuelve el conflicto entre H04 (severity=1, enterprise -> ONCALL_ESCALATION) y H07/H15/H16 (api -> T3_ENGINEERING o T2_TECHNICAL). Al ser mas concreta que todas ellas, gana automaticamente por contencion, sin necesidad de declarar prioridades.",
+      "note_cites": [
+        "H04",
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 0
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "s_to. Since this new rule will be contained in H04, H07, H15, H16, etc., automatic containment will handle it. So we don't need to declare any beats or loses_to. However, we must ensure that the new rule is not overlapping with other rules that are not containing it. It might also overlap with H? For example, H? H? Let's check H? H? Also H? H? Actually H08 (severity=1) also contains it, so fine. H27 contains it. H28 contains it (since enterprise). H29 contains it. So all containing rules will automatically lose to this new rule because it is more specific. So no beats needed.\n\nBut we must also consider that the new rule might be contained in some rules that are not in the list? No.\n\nThus the new rule's conditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}]. Action: ONCALL_ESCALATION.\n\nNow, we need to provide a note justifying the level of abstraction and priority. The note should explain that we are creating a more specific rule to resolve the conflict between H04 and H07/H15/H16 for the case where severity=1, enterprise, and api product.\n\nWe also need to output the JSON as specified: action, conditions, beats, loses_to, note.\n\nSince the new rule is contained in others, we leave beats and loses_to empty.\n\nLet's double-check if there are any other rules that also match this ticket and are not containing this new rule? For example, H? H? H? H? No.\n\nThus the answer.",
+      "reasoning_chars": 18521,
+      "reasoning_tokens": 4655,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0031",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0012",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0031",
+          "R0012",
+          "R0001"
+        ],
+        "loses_to": [],
+        "note": "La regla es mas especifica que R0031, R0012 y R0001 porque anade condiciones de severity, customer_tier y product. Al ser una excepcion a esas reglas, debe ganar cuando ambas casen. Resuelve el conflicto entre H04 y H07/H15 para este ticket.",
+        "failure": null
+      }
+    },
+    {
+      "run": "v1d_r3",
+      "arm": "v1d",
+      "idx": 1951,
+      "governing": "H04",
+      "class": "cut_by_one",
+      "breadth": "within_or_across",
+      "stage_c_governing": "H04",
+      "stage_c_verdict": "nacida",
+      "verdict": "nacida",
+      "rule_id": "R0040",
+      "cause": "ERROR",
+      "base_decided": "T3_ENGINEERING",
+      "action": "ONCALL_ESCALATION",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "governing_conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        }
+      ],
+      "extra_conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        }
+      ],
+      "matched": [
+        "H04",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "first_match_is_governing": true,
+      "first_cutting_match": "H17",
+      "cut_by": [
+        "H17",
+        "H18"
+      ],
+      "cut_by_the_first_cutting_match": true,
+      "note": "Regla específica que cubre el ticket. Es subconjunto de H04, H08, H17, H18, H27, H28, H29, por lo que gana por contención automática. No necesita prioridad declarada.",
+      "note_cites": [
+        "H04",
+        "H08",
+        "H17",
+        "H18",
+        "H27",
+        "H28",
+        "H29"
+      ],
+      "beats": [],
+      "loses_to": [],
+      "codes": {
+        "T1": 0,
+        "T1e": 0,
+        "INSIDE": 1
+      },
+      "reads_t1": false,
+      "quotes_of_t1": [],
+      "answer_composed": "ridad. Pero el motor simbólico no pudo decidir porque las reglas existentes H04 y H17 se solapan sin contención. Al añadir nuestra regla, el motor podrá elegir nuestra regla porque es más específica que ambas, y el nivel 1 la seleccionará. Así que la respuesta es simplemente crear la regla con las condiciones del ticket y acción ONCALL_ESCALATION, y dejar beats y loses_to vacíos.\n\nSin embargo, hay que considerar que la acción debe ser la que dicta el manual: H04 dice ONCALL_ESCALATION. Nuestra regla debe producir la misma acción. Pero también H17 produce T3_ENGINEERING. Si nuestra regla es más específica que H17, entonces al añadirla, el motor elegirá nuestra regla (ONCALL) sobre H17 (T3). Esto es correcto según el orden del manual, porque H04 está antes que H17.\n\nEntonces, la regla propuesta:\n\nconditions: \n  - attr: severity, op: eq, value: 1\n  - attr: customer_tier, op: eq, value: enterprise\n  - attr: product, op: eq, value: integrations\n\naction: ONCALL_ESCALATION\n\nbeats: []\nloses_to: []\n\nnote: \"Regla específica para tickets con severity=1, customer_tier=enterprise y product=integrations. Es subconjunto de H04, H08, H17, H18, H27, H28, H29, por lo que gana por contención automática. No necesita prioridad declarada.\"\n\nPero revisemos si H04 también tiene severity=1 y customer_tier=enterprise, pero no product. Nuestra regla es subconjunto de H04, sí. H17 tiene product=integrations y severity<=2, nuestra regla es subconjunto. Entonces correcto.\n\nPor lo tanto, la respuesta JSON.",
+      "reasoning_chars": 12973,
+      "reasoning_tokens": 3308,
+      "has_reasoning": true,
+      "has_payload": true,
+      "placement": {
+        "listed": [
+          [
+            "R0031",
+            "T2_TECHNICAL"
+          ],
+          [
+            "R0012",
+            "SECURITY_INCIDENT"
+          ],
+          [
+            "R0001",
+            "ACCOUNT_MANAGER"
+          ]
+        ],
+        "left_without_a_side": [],
+        "beats": [
+          "R0031",
+          "R0001"
+        ],
+        "loses_to": [
+          "R0012"
+        ],
+        "note": "Mi regla es más específica que R0031 (requiere severity=1, enterprise, integrations) y que R0001 (misma especificidad adicional), por lo que debe ganarles en su intersección. Sin embargo, R0012 (seguridad con keyword) tiene prioridad política sobre cualquier otra, así que mi regla pierde frente a ella cuando ambas casan.",
+        "failure": null
+      }
+    }
+  ],
+  "expectation": [
+    {
+      "clause": "Q1",
+      "what": "every v1d cut is its governing rule's region cut by the first lower listed rule the ticket matches that a cut by would change",
+      "reading": [
+        [
+          "v1d_r1",
+          1432,
+          [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "H07"
+        ],
+        [
+          "v1d_r1",
+          1951,
+          [
+            "H17",
+            "H18"
+          ],
+          "H17"
+        ],
+        [
+          "v1d_r2",
+          710,
+          [
+            "H17",
+            "H18"
+          ],
+          "H17"
+        ],
+        [
+          "v1d_r3",
+          710,
+          [
+            "H17",
+            "H18"
+          ],
+          "H17"
+        ],
+        [
+          "v1d_r3",
+          1432,
+          [
+            "H07",
+            "H15",
+            "H16"
+          ],
+          "H07"
+        ],
+        [
+          "v1d_r3",
+          1951,
+          [
+            "H17",
+            "H18"
+          ],
+          "H17"
+        ]
+      ],
+      "holds": true
+    },
+    {
+      "clause": "Q2",
+      "what": "at every ticket where both arms' first calls cut, every cut there is by the same rules",
+      "reading": {
+        "1432": [
+          [
+            "v1c_r1",
+            [
+              "H07",
+              "H15",
+              "H16"
+            ]
+          ],
+          [
+            "v1d_r1",
+            [
+              "H07",
+              "H15",
+              "H16"
+            ]
+          ],
+          [
+            "v1c_r3",
+            [
+              "H07",
+              "H15",
+              "H16"
+            ]
+          ],
+          [
+            "v1d_r3",
+            [
+              "H07",
+              "H15",
+              "H16"
+            ]
+          ]
+        ]
+      },
+      "holds": true
+    },
+    {
+      "clause": "Q3",
+      "what": "in at least 4 of v1d's cuts the reasoning neither quotes T1 nor says it in English",
+      "reading": {
+        "skipped": 4,
+        "of": 6
+      },
+      "holds": true
+    },
+    {
+      "clause": "Q4",
+      "what": "in both of v1d's whole drafts on tickets of the queue the reasoning quotes T1 or says it in English",
+      "reading": {
+        "reading_it": 1,
+        "of": 2
+      },
+      "holds": false
+    },
+    {
+      "clause": "Q5",
+      "what": "at least half of the cuts, over both arms, carry a note that says the draft lies inside another rule",
+      "reading": {
+        "saying_it": 8,
+        "of": 9
+      },
+      "holds": true
+    }
+  ]
+}
