@@ -619,6 +619,36 @@ class TestStageC(unittest.TestCase):
         self.assertEqual(set(got["HV-g"]["calls"]), set(score.WITH_ONCALL))
         json.dumps(got, default=str)
 
+    def test_validity_is_section_zeros(self):
+        """An empty object from the pinned provider is valid, and its class is no
+        rule; a failed call and another provider's answer are not valid. The
+        asker's flag is kept beside §0's."""
+        t = plan.TICKETS[0]
+        base = {"ticket": t, "arm": "e", "prompt": f"e:{t}", "rep": 0,
+                "served_by": plan.PROVIDER_NAME, "failure": None}
+        rows = [{**base, "id": "empty", "payload": {}, "action": None, "valid": False},
+                {**base, "id": "rule", "payload": dict(RULE), "action": RULE["action"],
+                 "valid": True},
+                {**base, "id": "failed", "payload": None, "action": None, "valid": False,
+                 "failure": "RuntimeError: 429"},
+                {**base, "id": "elsewhere", "payload": dict(RULE), "action": RULE["action"],
+                 "valid": False, "served_by": "Baidu"}]
+        got = {r["id"]: r for r in score.classed_rows({"pass1": {"rows": rows}})}
+        self.assertTrue(got["empty"]["valid"])
+        self.assertEqual(got["empty"]["class"], "no_rule")
+        self.assertFalse(got["empty"]["valid_as_recorded"])
+        self.assertTrue(got["rule"]["valid"])
+        self.assertIsNotNone(got["rule"]["class"])
+        for rid in ("failed", "elsewhere"):
+            with self.subTest(rid):
+                self.assertFalse(got[rid]["valid"])
+                self.assertIsNone(got[rid]["class"])
+        flag = score.askers_flag(list(got.values()))
+        self.assertEqual(flag["e"], {"answers": 1, "classes": {"no_rule": 1}})
+        # an empty object is not invalid, so it does not count toward no value
+        self.assertEqual(score.invalid_share(list(got.values()), ("e",), [t], ("pass1",)),
+                         F(2, 4))
+
     def test_wrong_queue_and_no_rule_leave_the_share(self):
         rows = [row("e", 1, "whole"), row("e", 2, "wrong_queue"), row("e", 3, "no_rule"),
                 row("e", 4, "other")]
