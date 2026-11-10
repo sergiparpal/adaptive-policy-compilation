@@ -179,8 +179,8 @@ the FINDINGS.
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
 `queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, since
-2026-11-05 `channel/run.py`, and since 2026-11-07 `placement/run.py`, all
-sixteen below. It
+2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, and since
+2026-11-09 `whole/run.py`, all seventeen below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1154,6 +1154,72 @@ ran the bridge and the six runs one at a time, committed each record alone,
 pushed it to one pull request, and merged that pull request once CI was green
 on its last head.
 
+**`PLAN_WHOLE.md` closed on 2026-11-10: a first call that asks for the
+governing rule's region whole, beside v1c.** Six signed rows adjudicated, three
+held and three refuted, and one reported. Sergi signed §0 on 2026-11-09, before
+any figure it governs existed.
+- **What it asked.** It ran `PLAN_PLACEMENT.md`'s v1c arm again with level 3's
+  manual and reasoning on, three runs an arm, the arms alternating, run `k` of
+  each under the draws of `PLAN_CHANNEL.md`'s c r`k`.
+  - **v1c** is that plan's arm, called and not changed.
+  - **v1d** is v1c with one paragraph of the first call replaced. T1 asks for
+    the region of the list's rule that governs the ticket, whole, and names no
+    queue and no rule. The placement call repeats the conversation, so it
+    carries the paragraph too.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with no bridge.
+- **Where it is written up.** The record is `results_whole/FINDINGS_WHOLE.md`,
+  and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `whole/` refuses while the plan carries a blank
+  signature line. The gate reads `PLAN_WHOLE.md` and no other plan, and counts
+  every such line.
+- **What it calls.** `placement/`, `channel/`, `reasoned_loop/`, `manual/`,
+  `blind/`, `authorship/`, `edges/`, `fidelity/`, `reuse/` and `rung2/` are
+  called by it and not edited. Its proposer and its asker are `placement/`'s,
+  with that plan's pin.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m whole.run --dry-run                                    # WR-g1..WR-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m whole.sample                          # Stage A, free
+    PYTHONHASHSEED=0 python3 -m whole.score                           # Stage C, free, from the runs
+    PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, never side by side
+
+**Asked for the governing rule's region whole, the first call wrote it more
+often and still cut** (`WR-a` refuted), **and not where the rarest queue needed
+it** (`WR-f` refuted). A text that moves the share of whole drafts can miss the
+tickets that carry a row. A plan that bands a share of drafts should band it at
+those tickets too, beside the share over all.
+
+**The whole drafts paid where they were born** (`WR-d` holds), and the round did
+not refuse them much more (`WR-c` holds, thin). A born whole draft takes later
+escalations away, so a ratio of refusals under it reads a smaller denominator.
+§0 said so.
+
+**An expectation changed by a scorer's test on closed records was still wrong.**
+The drafter expected every row to hold after such a test moved one expectation,
+and three held. The test says how the code reads closed records, not how
+the next runs come out.
+
+**A supervisor that reads an empty list of pull requests as none** opened its
+pull request on its first push, which `PLAN_PLACEMENT.md`'s had not.
+
+**A check that matches a process by its command line can match the command
+that launches it.** The agent's first launch of the supervisor ran `pgrep` in
+the same shell line that named the script, matched itself, and launched
+nothing. Check and launch in separate commands.
+
+**Its runs were launched by the agent, as §2.5 let Sergi choose.** A supervisor
+ran the six runs one at a time, committed each record alone, pushed it to one
+pull request, and merged that pull request once CI was green on its last head.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1162,7 +1228,8 @@ builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
 and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
 `reasoned_loop/protocol.py`, and `placement/run.py` through the asker
-`placement/protocol.py` pins, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+`placement/protocol.py` pins, and `whole/run.py` through the same asker,
+without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1253,7 +1320,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
 `queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, since
-2026-11-05, `channel/run.py`, and since 2026-11-07, `placement/run.py`.
+2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, and since
+2026-11-09, `whole/run.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
