@@ -1,12 +1,20 @@
 # PLAN_HALVES — which half of v2b's base paragraph makes the loop's first call cut
 
-**Status: drafted by Claude on 2026-11-10, unsigned.** Under hard rule 2 of
-`CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
-record is written until Sergi has signed §0.** The signature has to land before
-any figure named here exists, in its own commit, staged by name. That includes
-Stage A, which spends nothing: §10 says why. **This is a first draft.** §2 holds
-the choices that are Sergi's, and §§5 to 11 will be completed against the
-package once he has made them. Each later correction is dated in place.
+**Status: drafted by Claude on 2026-11-10, completed against its package the
+same day, unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
+and may not sign it. **Nothing runs and no record is written until Sergi has
+signed §0.** The signature has to land before any figure named here exists, in
+its own commit, staged by name. That includes Stage A, which spends nothing: §10
+says why.
+
+- **Sergi made §2's choices on 2026-11-10**: the four texts as written, the 136
+  tickets, two passes and then the rarest queue's session, and the sessions
+  launched by the agent through a supervisor.
+- **§§5 to 11 are written against `halves/`**, which follows in its own commit.
+- **What the three analytical documents changed** is set out in §0, under *What
+  the three documents say*.
+
+Each later correction is dated in place.
 
 **Asked for by Sergi on 2026-11-10**, the day the drafter proposed it, after the
 third POST-RUN reading of `PLAN_WHOLE.md`'s records. [`IDEAS.md`](IDEAS.md)
@@ -69,8 +77,9 @@ BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este
 ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.
 ```
 
-- **The hidden half** is everything before the semicolon: the base is not shown
-  in this step, and the model is to write its rule for this ticket.
+- **The hidden half**, v2b's first half, is everything before the semicolon: the
+  base is not shown in this step, and the model is to write its rule for this
+  ticket.
 - **The overlap half** is the clause after it: if the rule overlaps existing
   rules of ANOTHER queue, they will be listed afterwards.
 
@@ -95,7 +104,7 @@ provider and in one period:
   interleaved?
 - which half of v2b's paragraph costs more of the region: that the base is not
   shown, or that overlapping rules of another queue will be listed?
-- does the hidden half cost it on its own?
+- does the hidden half cost it on its own, set where the empty base stood?
 - does the overlap half cost it even when the base is said to be empty?
 - at the rarest queue's seven tickets, does dropping the overlap half give the
   region back?
@@ -120,18 +129,45 @@ provider and in one period:
   the first, yet existing rules of another queue will be listed if the rule
   overlaps them. How the model reads the two is part of what is measured, and
   the reasoning is recorded whole.
+- **Each half is two sentences, and so is the empty base.** `h` says that the
+  base is not shown in this step, and asks for a rule for this ticket. `e` says
+  that the base is empty, and that the rule is the first. So `e` against `h`
+  sets v2b's first half against the empty base's paragraph, not the hiding
+  alone, and every row that reads that difference reads both sentences of each.
+- **The level-1 sentence stays in every arm.** Level 3's system prompt says
+  *"Por eso solo necesitas declarar prioridad frente a reglas que se solapan con
+  la tuya sin que una contenga a la otra. Si tu regla es un caso particular de
+  otra, no declares nada: el nivel 1 ya lo resuelve."* It also asks the model to
+  place its rule among the rules that exist.
+  - **Rung 2 read that sentence as an incentive to avoid overlap**: *"which reads
+    as an incentive to AVOID overlap"* (`rung2/proposers2.py`, v2's comment).
+  - **Every arm's paragraph is read beside it.** This plan measures the
+    paragraph with the sentence present, and does not separate the two (§12).
 - **The gap is split along one path.** `HV-c` reads it along `e` → `h` → `v`,
   the path that ends at a text a loop can send. The other path, `e` → `o` → `v`,
   splits it the same way only if the halves do not interact. `HV-e` reads its
   first step, and `HV-g` reports the interaction.
-- **A count can move without the operation.** Rung 2's instruction to overlap
-  *"moved the numbers (1.6% → 7.25%) but not the operation"* (`CHAT_SUMMARY.md`
-  §1). `HV-g` reports every answer's class, a cut by a listed rule or another
-  narrowing, so that a moved share can be read as a moved operation or not.
+- **A count can move without the operation.** Rung 2's v2 replaced the level-1
+  sentence with one that told the proposer not to cut: *"No estreches una regla
+  ni le añadas condiciones para esquivar a otra: eso no resuelve el conflicto, lo
+  esconde."* That instruction *"moved the numbers (1.6% → 7.25%) but not the
+  operation"* (`CHAT_SUMMARY.md` §1). `HV-g` reports every answer's class, a cut
+  by a listed rule or another narrowing, so that a moved share can be read as a
+  moved operation or not.
 - **Whole is breadth, not correctness.** The share reads an answer's extension
-  against its ticket's governing region; *"Narrow ≠ correct"* (`CHAT_SUMMARY.md`
-  §1), and whole is not right either. No row reads whether a base decides right:
-  that is the loop plan's.
+  against its ticket's governing region. *"Narrow ≠ correct"*
+  (`ARBITRATION_REPORT.md` §2, which `CHAT_SUMMARY.md` §1 repeats), and whole is
+  not right either. No row reads whether a base decides right: that is the loop
+  plan's.
+- **A share can rise by construction.**
+  - **What it counts.** `W` counts a draft wider than its part as whole. It
+    leaves answers of the wrong queue, and answers naming no valid rule, out of
+    its denominator.
+  - **How an arm can game it.** It can raise its share by drafting wider than the
+    governing region, or by losing the right queue where it would have cut.
+  - **What `HV-g` does.** It reports both, by arm, and a hold carried by either is
+    read as such. A rate a construction moves *"rises from 0/14 whatever the model
+    does"* (`ARBITRATION_REPORT.md` §7, P1's third objection).
 - **Reasoning is on**, as in every loop since `PLAN_REASONED_LOOP.md`, against
   `PLAN_REUSE.md` §1's amendment, for this plan's calls only.
 - **Hard rule 5 allows two new texts.** `h` and `o` are v2b's and the empty
@@ -151,12 +187,13 @@ Drafted, unsigned. One row is one event. **A band's edge is its own refutation
 line**, so band and refutation partition the axis and nothing can fall between
 them.
 
-**The surface is the corpus, and the population is the reasoning loops'
-escalations.**
+**The tickets are the corpus's, and each answer is read over the space.**
 
 - **Every figure is about tickets of `generate_corpus(2000, seed=17)`** that a
-  reasoning loop escalated. Each answer's region is read over the 134,400 points
-  of the space, as `whole/paragraph.py` reads it. No row has another surface.
+  reasoning loop escalated.
+- **Each answer's class reads its region over the 134,400 points of the space**,
+  as `whole/paragraph.py` reads it. A draft that leaves out only points no corpus
+  ticket carries is not whole. No row reads the arrivals instead.
 - **The tickets, `T`, are 136** (§2.2):
   - **133** of `PLAN_REASONED_RULE.md`'s 171 tickets: those a first call of one
     of the five loop groups `whole/paragraph.py` reads met;
@@ -217,8 +254,10 @@ scorer, which is where `PLAN_AUTHORSHIP.md`'s `E-c` lost its verdict.
 
 **When a row has no value.**
 
-- **A row has none** if more than 5% of the prompts it reads lack a valid answer
-  in a pass it reads.
+- **A row has none** if more than a twentieth of the answers it reads are
+  invalid. *[Changed before signature, 2026-11-10.]* The draft counted the
+  prompts that lacked a valid answer in a pass. At `HV-f`'s fourteen prompts a
+  pass, one invalid answer would have taken the row's value.
 - **`HV-a` has none** if fewer than 50 tickets carry a right-queue answer both
   today, under `v`, and among the DeepInfra loops' first calls.
 - **`HV-c` has none** if `W_e − W_v ≤ 1/10`. There is then too little gap to
@@ -227,14 +266,28 @@ scorer, which is where `PLAN_AUTHORSHIP.md`'s `E-c` lost its verdict.
   answer under both `h` and `v`.
 - **A row with no value is unadjudicable**, and the record says so.
 
+**Two rows read one difference.** `HV-c` and `HV-d` both read `W_e − W_h`.
+- **`HV-c`** holds when it is under half the gap `W_e − W_v`.
+- **`HV-d`** holds when it is at least a tenth.
+
+They are not independent, and both can hold only if the gap is over a fifth.
+
+**The interaction is reported, not banded.** `(W_h − W_v) − (W_e − W_o)` reads
+four arms, so its error is about the sum of four arms' errors. By §1's estimate
+that is some six to eight hundredths, against effects of that order.
+`PLAN_REASONED_RULE.md`'s `RR-d` crossed two factors and came out thin for that
+reason. Its lesson asks a plan to size such a row against the noise of four
+arms, and these sessions are not sized for it.
+
 **What the sessions' commits may show.** If the agent launches the sessions
 (§2.5), a supervisor commits each record with a message written from it. It may
 give each session's asks, failures, retries and seconds, which no row reads. No
 message gives a class, a share or a row, and none is computed before Stage C.
 
-**Which side had the label**, for every arm and reference. It is to be checked
-against the prompts and the code before signature, and not recalled, as
-`CLAUDE.md` asks of any plan that sets a comparison on the proposer:
+**Which side had the label**, for every arm and reference. This was checked
+against the prompts and the code while the package was written, and not
+recalled, as `CLAUDE.md` asks of any plan that sets a comparison on the
+proposer. `HV-g1` and `HV-g2` hold the texts and the asker's path to it:
 
 | who | what it is handed | reads a label? |
 |---|---|---|
@@ -262,7 +315,7 @@ as `PLAN_REASONED_LOOP.md` calls it.
 | **HV-a** | **Asked alone, v2b's paragraph writes the region as often as the loops' first calls did, on the same provider** | over the tickets of `T` where `v` named the right queue today and a first call of `PLAN_PLACEMENT.md`'s six runs or `PLAN_WHOLE.md`'s three v1c runs did too: the mean of `v`'s share at the ticket, both passes, less those first calls' share there | **from −1/10 to 1/10** | **below −1/10, or above 1/10** |
 | **HV-b** | **The paragraph's gap is not the period's**: in one period, of one provider, the empty base writes the region at least a fifth more often than v2b's paragraph | `W_e − W_v` | **≥ 1/5** | **< 1/5** |
 | **HV-c** | **The overlap half costs more of the region than the hidden half** | `W_h − (W_e + W_v)/2`: how far the hidden half alone lies above the midpoint of the empty base and v2b's paragraph | **> 0** | **≤ 0** |
-| **HV-d** | **The hidden half costs the region too**, without the overlap half | `W_e − W_h` | **≥ 1/10** | **< 1/10** |
+| **HV-d** | **v2b's first half costs the region too**, set in place of the empty base, without the overlap half | `W_e − W_h` | **≥ 1/10** | **< 1/10** |
 | **HV-e** | **The overlap half costs the region even when the base is said to be empty** | `W_e − W_o` | **≥ 1/10** | **< 1/10** |
 | **HV-f** | **At the rarest queue's tickets, the first call without the overlap half writes the region at least a fifth more often than with it** | `W_h⁷ − W_v⁷` | **≥ 1/5** | **< 1/5** |
 | **HV-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each arm's `W` by pass and by session, pooled and by ticket, by governing rule and by true queue. Every valid answer by class, and by breadth against its governing region: the region itself, wider, or neither. The interaction, `(W_h − W_v) − (W_e − W_o)`. Each arm's share of answers of the wrong queue and of answers naming no valid rule. How often a prompt's two answers in the passes share a class, by arm, and at `T₇` the spread of its six. Each arm's answers at each ticket of `T₇`, by class and by the rule a cut is by. How many answers declare `beats` or `loses_to`, and how many of those cite the manual's identifiers. `e` beside `PLAN_REASONED_RULE.md`'s arm `w` at the 133 tickets it asked, and `v` beside each loop group at its tickets, across dates and providers. The calls: providers, finish reasons, tokens, reasoning tokens over the attempts that reached the model, seconds, and retries by cause. The notes and the reasoning, recorded whole and not coded | — | — |
@@ -290,22 +343,30 @@ as `PLAN_REASONED_LOOP.md` calls it.
   in one period, interleaved, of one provider. **Its line is a fifth**, under
   half the smallest gap the reading found, 0.4298. A hold says the paragraph
   carries at least that much of the gap with the period held fixed.
+- **`HV-a` and `HV-b` replicate figures the drafter had seen.**
+  - **What they pre-register** is this period's figure, which does not exist.
+  - **But a replication surprises its author less.** *"A measurement that could
+    not have surprised its author is worth less than one that could"*
+    (`EXTERNAL_REVIEW.md` §3).
+  - **So the scoreboard should read both verdicts as replications**, as it reads
+    `PL-e`'s and `WR-e`'s.
 - **`HV-c` is the plan's question.** Along `e` → `h` → `v`, the gap `W_e − W_v`
   is the sum of two parts: the hidden half's, `W_e − W_h`, and the overlap
   half's, `W_h − W_v`. The overlap half's part is the larger exactly when `W_h`
   lies above the midpoint of `W_e` and `W_v`.
   - **Its line is the literal *more***, so a tie goes against the claim.
   - **With too little gap to divide it has no value**, settled above.
-- **`HV-d` asks whether the hidden half costs anything on its own.** If it does,
-  a loop that drops the overlap half still loses part of the region to the
-  hiding, and the next text has to answer that too. **A tenth** is about the
-  smallest difference two passes over 136 tickets are sized to see: some two
-  standard errors, as the drafter estimates them from binomial counts and not
-  from any record (§1).
+- **`HV-d` asks whether v2b's first half costs anything on its own**, set where
+  the empty base stood. If it does, a loop that drops the overlap half still
+  loses part of the region to the first half, and the next text has to answer
+  that too. It reads both of each paragraph's sentences, not the hiding alone
+  (said first, above). **A tenth** is about the smallest difference two passes
+  over 136 tickets are sized to see: some two standard errors, as the drafter
+  estimates them from binomial counts and not from any record (§1).
 - **`HV-e` asks whether the overlap half acts on its own.** Told the base is
   empty and its rule is the first, the model has no listed rule to fear. If the
   clause still costs a tenth, it acts whatever the base paragraph says. If not,
-  it acts through the hiding, and the halves interact.
+  it acts only beside the hidden half, and the halves interact.
 - **`HV-f` reads the comparison the loop plan would act on, where the loop
   loses.** `PLAN_WHOLE.md`'s lesson: *"A text can move the drafts and miss the
   tickets a row reads"*. There T1 raised the share of whole drafts overall, and
@@ -350,12 +411,18 @@ its end. In the session that drafted this file it read:
 - **`PLAN_BLIND.md`**: a passage of its non-negotiable rules, on what hard rule 5
   allows.
 - **The three analytical documents `CLAUDE.md` asks a new one to read first.**
-  None has changed since 2026-11-01. The passages this plan rests on were read
-  directly: `ARBITRATION_REPORT.md` §5; `CHAT_SUMMARY.md`'s header, with its
-  list of errata, and §1; `EXTERNAL_REVIEW.md` §3 and §5. `PLAN_WHOLE.md`'s §0
-  gives an account of all three, read whole by a subagent on 2026-11-09, and the
-  drafter read that account. **They are to be read whole again before
-  signature**, and what bears on the plan set out here, as `PLAN_WHOLE.md` did.
+  None has changed since 2026-11-01.
+  - **For the draft**, the drafter read the passages it rests on directly:
+    `ARBITRATION_REPORT.md` §5; `CHAT_SUMMARY.md`'s header, with its list of
+    errata, and §1; `EXTERNAL_REVIEW.md` §3 and §5. It also read
+    `PLAN_WHOLE.md`'s account of all three, which a subagent read whole on
+    2026-11-09.
+  - **Before signature**, a subagent of the drafter read all three whole for
+    this plan on 2026-11-10, with every dated erratum and note. The drafter read
+    its report, checked against the files each quote this plan uses, and read
+    `rung2/proposers2.py`'s v2 text and comment, which the report pointed to.
+    What bears on the plan is set out below, under *What the three documents
+    say*.
 - **The code read.**
   - **Whole:** `whole/paragraph.py`.
   - **In part:** `blind/protocol.py`'s texts; `whole/protocol.py`'s texts and the
@@ -369,6 +436,22 @@ its end. In the session that drafted this file it read:
   - **Level 3's system prompt**, `manual.prompts.loop_system_prompt(3)`, printed
     whole, and one first-call user message under v2b's paragraph, at case 710.
   - **`tests/test_prose_tables.py`'s `THREADS`**, for a prefix no thread uses.
+  - **Writing the package, after the draft was committed.**
+    - **Whole:** `reasoned_rule/`'s `plan.py`, `prompts.py`, `ask.py` and
+      `gates.py`.
+    - **In part:** `reasoned_rule/population.py`; `first_match/ask.py`'s
+      helpers; `reasoned_loop/protocol.py`'s `Asker`, `Live` and
+      `RateLimited`; `placement/protocol.py`'s `request_with` and `Asker`;
+      `placement/run.py`'s opening and its bridge; `authorship/protocol.py`'s
+      `Answer` and `ProposalFailed`; `fidelity/ask.py`'s `open_partial`;
+      `spotcheck/gates.py`'s `N-g2` and `escalations/gates.py`'s names;
+      `reuse/gates.py`'s `run_suite`; `whole/score.py`'s verdicts and `main`,
+      and `whole/sample.py`'s `main`; `harness/domain.py`'s `Case`.
+    - **The tests and the plumbing:** `tests/test_reasoned_rule.py`'s helpers,
+      gate tests and Stage B tests; `tests/doubles.py`'s
+      `OpenRouterShapedClient`; `tests/test_oracle_separation.py`,
+      `tests/test_writer_lists.py`, `harness/provenance.py`'s `CODE_ROOTS`, the
+      README's table of writers and `.gitignore`.
 
 **Figures computed while drafting**, on 2026-11-10, from the records as `main`
 holds them at `41b3ce4`, by scripts kept outside the tree. Stage A recomputes
@@ -405,6 +488,104 @@ were drawn.
    One attempt of a first call in `PLAN_PLACEMENT.md`'s runs reached the budget
    of 16,000 completion tokens.
 
+**[Added before signature, 2026-11-10] What writing the package showed.** The
+package was written, and its checks run, before the signature, as §6 asks.
+
+- **`HV-g1` to `HV-g3` pass**, with the suite green, in `python3 -m halves.ask
+  --dry-run`. They print whether each check passes, and no figure.
+- **§0's four figures came back as declared.** Stage A's `figures` recomputed
+  them in memory, printed only which did not come back, none, and wrote
+  nothing.
+- **The instrument came back.** `whole/paragraph.py`'s classes gave back its
+  record's counts, group by group, from the closed answers. Only whether each
+  group agreed was printed.
+- **Stage C's scorer ran only on what nobody answered.** It read rows written by
+  hand, and one rule written by hand at every ask of every session. No answer of
+  the model was classed for this plan, and no reference class was printed.
+- **It changed one rule of §0.** A row's invalid answers are counted over the
+  answers it reads, not over the prompts a pass (above).
+- **It found one trap.** The gates may not name the record guard (§5).
+
+**What the three documents say.** A subagent of the drafter read
+`ARBITRATION_REPORT.md`, `CHAT_SUMMARY.md` and `EXTERNAL_REVIEW.md` whole for this
+plan on 2026-11-10.
+- **Their newest entries** are of 2026-10-06, 2026-08-17 and 2026-10-16. So none
+  names v2b, the blind loops, the first call, level 3, reasoning, providers or
+  periods, and what bears here bears by analogy.
+- **Each quote below was checked against its file.** What bears on the plan, and
+  what the plan did with it:
+
+- **An instruction against a cut has moved counts and not the operation.**
+  `CHAT_SUMMARY.md` §1, with v2's own text in `rung2/proposers2.py`. Cited in *A
+  count can move without the operation*, said first.
+- **The level-1 sentence was read as an incentive to avoid overlap.** That is
+  `rung2/proposers2.py`'s comment on v1.
+  - **Rung 2's v1 changed two things from rung 1's prompt.** It showed the base,
+    which `ARBITRATION_REPORT.md` §5 credits with the fall in overlap *"from
+    17.5% of the pairs to **1.60%**"*. And it added that sentence, which rung 1's
+    prompt, `harness/proposers.py`, does not carry.
+  - **The sentence is in every arm here.** So it is now said first, and kept in
+    §12.
+- **The operation has survived a change of text before.** *"the operation it
+  performs —find a gap and fill it— does not require computing it, and it is
+  the operation it performs even when it is asked for another"*
+  (`ARBITRATION_REPORT.md` §5).
+  - **It warns against `HV-c` and `HV-f`.**
+  - **A cut is not that partition.** It nests inside a crossing rule, which
+    orders by containment, a layer rather than a tile of a mosaic.
+- **The model has reasoned its way to containment before.** It *"even correctly
+  identifies that subsumption resolves a nesting with no need for a
+  declaration"* (`ARBITRATION_REPORT.md` §5), and the system prompt tells it so in
+  every arm. Cited against `HV-c` in the drafter's expectations.
+- **A cost announced for overlapping made this proposer overlap less.** *"the
+  proposer met the discipline by overlapping less"* (`ARBITRATION_REPORT.md` §7,
+  P3's note of 2026-10-06). That was with the base in view. It bears for `HV-c`
+  and `HV-e`.
+- **Narrow is not correct.** `ARBITRATION_REPORT.md` §2 is the phrase's origin.
+  Cited in *Whole is breadth, not correctness*, said first.
+- **A rate a construction moves.** `ARBITRATION_REPORT.md` §7, P1's third
+  objection, and P3's condition, *"at comparable or greater coverage"*. Cited in
+  *A share can rise by construction*, said first.
+- **A replication surprises its author less.** `EXTERNAL_REVIEW.md` §3. `HV-a`
+  and `HV-b` are to be read as replications.
+- **Classify an item by whether its figure exists.** `EXTERNAL_REVIEW.md` §5,
+  point 6.
+  - **Every row here meets it.** None of their figures exists.
+  - **The interaction has no figure either.** It is reported rather than banded,
+    for its noise, as §0 now says.
+- **A figure names its surface.** `ARBITRATION_REPORT.md`'s header and §6, and
+  `CHAT_SUMMARY.md` §2.1's erratum. §0 now names both: the tickets are the
+  corpus's, and every class reads the space.
+- **Figures do not travel between machines.** `CHAT_SUMMARY.md` §4's erratum.
+  - **The four gaps share one side.** All four set the rule arm's answers, asked
+    of Baidu on 2026-10-25, beside their loops.
+  - **So their spread shows the loops' side held, not `e`'s.** `HV-b`'s
+    expectation now says so.
+- **A drafter's bet on which part moves has failed before.**
+  - *"the drafter had the sign of ρ backwards"* (`EXTERNAL_REVIEW.md` §4, item
+    5).
+  - *"right about the surface and wrong about which row would move"*
+    (`ARBITRATION_REPORT.md` §9, point 2's erratum).
+
+  Cited in the drafter's record.
+- **A refutation near the noise can be a non-detection.** *"untestable, not ruled
+  out"* (`EXTERNAL_REVIEW.md` §4, item 4's note of 2026-10-05). *How the rows read
+  together* now reads `HV-d` and `HV-f` that way.
+- **The model's explanations are not its reasons.** It names the broader rule
+  *"against what its own explanations say"* (`EXTERNAL_REVIEW.md` §2). Cited
+  against `HV-c`, whose case rests on the cuts' notes.
+- **A count of rules is noise between seeds.** *"the number of rules varies so
+  much between seeds with an identical prompt that that quantity is noise"*
+  (`ARBITRATION_REPORT.md` §9, point 4). It bears for the two passes and each
+  prompt's agreement with itself.
+- **One argument against the design in principle.** `CHAT_SUMMARY.md` §4 bet that
+  success *"will not come from a smarter model nor a better prompt, but from
+  **changing the question**"*. Its erratum lowered that to *"Bet with a low
+  prior, not conclusion."* `h` is a better prompt for the same question, and the
+  plan does not answer the bet beyond running the test.
+- **Nothing bears on providers or periods**, nor on an arm whose sentences
+  contradict each other.
+
 **Not seen, because nothing has produced it:**
 
 - any answer under `h` or `o`;
@@ -423,11 +604,14 @@ second publishes them on `PLAN_PLACEMENT.md`'s bridge, which the drafter read as
 drafter trusts `HV-b` most, then `HV-a`, `HV-c`, `HV-e` and `HV-d`. **The bet is
 `HV-c`.**
 
-- **`HV-b` holds.** The four groups' gaps lay within 0.0543 of one another, on
-  two providers over a fortnight, so the period is unlikely to carry much of
-  them.
+- **`HV-b` holds.** The paragraph is the one difference between the two prompts,
+  and the gap was 0.43 to 0.48 wherever it was read.
   - *Against it:* the rule arm and the loops were never asked in one period, and
     that is the confound the row exists to remove.
+  - *And:* the four gaps share one side. Each sets the rule arm's answers, asked
+    of Baidu on 2026-10-25, beside its loops. So their spread of 0.0543 shows
+    that the loops' shares held, not that `e`'s would on DeepInfra in another
+    period, and that is what the row risks.
 - **`HV-a` holds.** Same text, same request, same provider. `PLAN_PLACEMENT.md`'s
   first calls and `PLAN_WHOLE.md`'s v1c first calls, two periods apart, lay
   0.0235 apart at their shared tickets.
@@ -436,12 +620,18 @@ drafter trusts `HV-b` most, then `HV-a`, `HV-c`, `HV-e` and `HV-d`. **The bet is
     (`FINDINGS_PLACEMENT.md`, *Whether the cut is the provider's*).
 - **`HV-c` holds.** At the rarest queue's tickets every cut's note frames the
   draft as the end of a conflict with a crossing rule of another queue, won by
-  containment with no side declared. Only the overlap half speaks of rules of
-  another queue.
+  containment with no side declared. Of the four paragraphs, only those that
+  carry the overlap half speak of rules of another queue.
   - *Against it:* under v2b's paragraph the narrow drafts that are no cut rose
     about as much as the cuts did. About a third of the loops' right-queue first
     calls are *other*, against about a seventh of the rule arm's answers
-    (`FINDINGS_WHOLE.md`'s table of classes). The hidden half may carry those.
+    (`FINDINGS_WHOLE.md`'s table of classes). The first half may carry those.
+  - *And:* the system prompt speaks of the rules that exist in every arm, and
+    tells the model that a nested rule needs no declaration. The model has
+    reasoned its way to containment before (`ARBITRATION_REPORT.md` §5).
+  - *And:* the case rests on the cuts' notes, and the model's explanations are
+    not its reasons. It has named the broader rule *"against what its own
+    explanations say"* (`EXTERNAL_REVIEW.md` §2).
   - *And:* the account that gives the cut to the overlap half is the drafter's
     own, written in `whole/paragraph.py`, and never tested. That reading's four
     clauses read the paragraph whole.
@@ -452,8 +642,10 @@ drafter trusts `HV-b` most, then `HV-a`, `HV-c`, `HV-e` and `HV-d`. **The bet is
 - **`HV-d` holds, and the drafter trusts it least.** Told the base exists and is
   hidden, under a system prompt that says the engine could not decide the
   ticket, the model may take the manual's rules for the base's and cut against
-  them.
+  them. And `e` tells it its rule is the first, which `h` does not.
   - *Against it:* the same untested account gives the cut to the overlap half.
+  - *And:* its line is about two standard errors, so a cost of a tenth may go
+    unseen.
 - **`HV-f` is refuted.** On DeepInfra no first call recorded at 1432 held its
   part, under v2b's paragraph or under T1, and every one `PLAN_WHOLE.md`
   recorded there cut by `H07`'s product. On `PLAN_PLACEMENT.md`'s bridge both
@@ -468,6 +660,10 @@ drafter trusts `HV-b` most, then `HV-a`, `HV-c`, `HV-e` and `HV-d`. **The bet is
 - **The scoreboard.** On `STATUS.md`'s, 60 of 152 adjudicated rows were refuted.
 - **The last plan.** `PLAN_WHOLE.md`'s drafter expected all six of its rows to
   hold, and three did.
+- **Bets on which part moves.** *"the drafter had the sign of ρ backwards"*
+  (`EXTERNAL_REVIEW.md` §4, item 5). A point was *"right about the surface and
+  wrong about which row would move"* (`ARBITRATION_REPORT.md` §9, point 2's
+  erratum). `HV-c` is a bet of that kind.
 - **What was done about it, rather than said.**
   - **No development set.** No band here was set on one.
   - **The lines.** `HV-a`'s, `HV-d`'s and `HV-e`'s tenth is about the smallest
@@ -482,12 +678,17 @@ tighten them at signature if he disagrees.
 
 **How the rows read together.**
 
-- **`HV-b` and `HV-c` hold, and `HV-d` is refuted.** The overlap half is what
-  cuts. The loop plan that follows sends `h` beside v1c.
+- **A refutation near its line can be a non-detection.** `HV-d`'s and `HV-e`'s
+  lines lie about two standard errors from zero, and `HV-f`'s about two of its
+  own. A row refuted there may be *"untestable, not ruled out"*
+  (`EXTERNAL_REVIEW.md` §4, item 4's note), and the readings below say so.
+- **`HV-b` and `HV-c` hold, and `HV-d` is refuted.** The overlap half carries the
+  gap. v2b's first half costs less than a tenth, or less than these sessions can
+  see. The loop plan that follows sends `h` beside v1c.
 - **`HV-b`, `HV-c` and `HV-d` hold.** Both halves cost, the overlap half more.
-  Dropping it gives back most of the gap and not all, and the hiding needs a
+  Dropping it gives back most of the gap and not all, and the first half needs a
   text of its own.
-- **`HV-c` is refuted and `HV-d` holds.** The hidden half carries at least half
+- **`HV-c` is refuted and `HV-d` holds.** v2b's first half carries at least half
   the gap. A blind loop cannot send an empty base, so the next text must say
   something else about the base it hides. Dropping the overlap half alone would
   not be enough.
@@ -495,13 +696,14 @@ tighten them at signature if he disagrees.
   a gap of a tenth or less, `HV-c` has no value, and the reading is corrected in
   place.
 - **`HV-e` holds.** The overlap half cuts on its own, whatever the base paragraph
-  says. **Refuted while `HV-c` holds**, it cuts through the hiding: the halves
+  says. **Refuted while `HV-c` holds**, it cuts only beside the hidden half: the halves
   interact, and `HV-g` gives by how much.
 - **`HV-f` holds.** At the rarest queue's tickets too, dropping the overlap half
   gives the region back, and the loop plan has reason to expect the queue.
   **Refuted while `HV-c` holds**, the text moves the drafts and misses the
-  tickets that carry the queue, as T1 did. The loop plan would then read the
-  queue first, and the cut there is not the paragraph's alone.
+  tickets that carry the queue, as T1 did, or the gain there was too small for
+  seven tickets to show. The loop plan would then read the queue first, and the
+  cut there is not the paragraph's alone.
 - **`HV-a` is refuted.** Today's model under v2b's paragraph does not write the
   region as the loops' first calls did. The other rows are still adjudicated as
   signed. They then describe this period's model on this provider, and `HV-a`'s
@@ -549,7 +751,7 @@ reasoning on at high effort and 16,000 tokens.
 
 ## 2. The choices that have to be made at signature time
 
-### 2.1 The four texts — Sergi's to approve; the drafter recommends them as written
+### 2.1 The four texts — Sergi chose them as written on 2026-11-10
 
 Each stands where the base would be, at the head of the first call's user
 message. `rung2.proposers2.user_msg` appends the ticket after it, as in every
@@ -599,7 +801,7 @@ and would share less with `v`.
 **The alternative** is three arms, `e`, `v` and `h`. `HV-b`, `HV-c`, `HV-d` and
 `HV-f` keep their meaning, `HV-e` goes, and the plan costs a quarter less.
 
-### 2.2 The tickets — the drafter recommends the 136
+### 2.2 The tickets — Sergi chose the 136 on 2026-11-10
 
 `T` is the rule arm's 133 tickets that a reasoning loop's first call met, with
 the three of the rarest queue's tickets the rule arm did not ask.
@@ -612,7 +814,7 @@ the three of the rarest queue's tickets the rule arm did not ask.
   three. That adds 38 tickets that only `PLAN_MANUAL.md`'s loop, with reasoning
   off, escalated, and a quarter more time.
 
-### 2.3 Two passes, then the rarest queue's session — the drafter recommends it
+### 2.3 Two passes, then the rarest queue's session — Sergi chose it on 2026-11-10
 
 Pass 1, then pass 2, each asking the 544 prompts once, in its own seeded order,
 the arms interleaved. Then the rarest queue's session asks the 28 prompts at
@@ -635,12 +837,12 @@ Eight asks: for each arm two tickets, drawn at a fixed seed from `T` outside
 `T₇`. It checks the pin, the texts, the records and the resume, and measures the
 price and the pace. No row reads its answers.
 
-### 2.5 Where the sessions are launched — Sergi's choice; the drafter has no recommendation
+### 2.5 Where the sessions are launched — Sergi chose the agent, through a supervisor, on 2026-11-10
 
-In Sergi's terminal, or by the agent through a supervisor detached from the
-agent's harness, one session at a time, as `PLAN_WHOLE.md` §2.5 allowed. A pass
-lasts many hours, longer than a background command of the agent's harness
-survives.
+By the agent, through a supervisor detached from the agent's harness, one
+session at a time, as `PLAN_WHOLE.md` §2.5 allowed. A pass lasts many hours,
+longer than a background command of the agent's harness survives. §8 says what
+the supervisor does.
 
 ### 2.6 The pin is DeepInfra's fp8 endpoint, with no bridge — by the rule agreed on 2026-11-06
 
@@ -708,18 +910,24 @@ and its record will own them.
   reasons may resolve it either way, and `HV-e` reads whichever it does. The
   reasoning is kept whole, and is not coded by any stage.
 - **The texts could leak the policy in code.** They name neither a queue nor a
-  rule, and reach the proposer through the frozen route only.
-  `tests/test_oracle_separation.py` is to watch the package's proposer-path
-  modules, as the authority channel.
+  rule (`HV-g1`), and reach the proposer through the frozen route only.
+  `tests/test_oracle_separation.py` watches `halves/prompts.py` and
+  `halves/ask.py` as the authority channel.
 - **The first call does not know why its ticket escalated.** It is the same
-  message at an impasse, a conflict or a reported error, in the loop and here.
-  Every first call is told the ticket is an impasse, and at the rarest queue's
-  tickets most escalations were reported errors (`FINDINGS_WHOLE.md`).
+  message at an impasse, a conflict or a reported error, in the loop and here
+  (`reasoned_loop/protocol.py`, `Resumable.first`). Every first call is told the
+  ticket is an impasse, and at the rarest queue's tickets most escalations were
+  reported errors (`FINDINGS_WHOLE.md`).
+- **The corpus repeats tickets.** About an eighth of its tickets are literal
+  duplicates, so two tickets of `T` may carry the same attributes, and an arm the
+  same prompt at both. A digest may then repeat across tickets; what it may not
+  do is stand for two texts (`HV-g1`). Each ticket is still its own cluster in
+  the error.
 - **A wider draft holds its part too.** `HV-g` reports breadth, so a hold carried
   by drafts wider than the region can be seen.
 - **The classes read the policy.** Stage C reads each ticket's governing rule and
-  the true queue of every point. The asker reads no label, no class and no
-  policy.
+  the true queue of every point, through `whole/paragraph.py`. The asker reads
+  no label, no class and no policy (`HV-g2`).
 - **An answer cut off at 16,000 tokens is invalid** unless its retry parses. One
   attempt of a first call in `PLAN_PLACEMENT.md`'s runs reached the budget.
 - **DeepInfra's answers at one ticket change from ask to ask**
@@ -729,69 +937,194 @@ and its record will own them.
   identifiers.** The system prompt lets `beats` and `loses_to` cite rules of
   *"la lista de arriba"*, and the manual's list is above. In a loop the engine
   drops such a declaration (`PLAN_MANUAL.md`). `HV-g` counts them.
+- **The rarest queue's session asks prompts the passes ask too.** Its
+  repetitions are separate asks of the same prompt, with ids of their own, and
+  only `HV-f` and `HV-g` read them. The rows over `T` read the passes alone, so
+  a ticket of `T₇` weighs there as much as any other.
+- **A call refused for the rate is waited out, not failed.**
+  `reasoned_loop.protocol.Live` asks it again after each wait of
+  `plan.RATE_LIMIT_WAIT`, and once every wait is spent the session stops
+  unrecorded. `PLAN_PLACEMENT.md`'s and `PLAN_WHOLE.md`'s runs met no such
+  refusal on DeepInfra.
+- **A resumed session keeps each answer's own seconds.** The partial file keeps
+  every row whole, its seconds included, and a resume serves the rows it holds
+  without asking them again.
+- **The gates may not name the record guard.** `tests/test_writer_lists.py` counts
+  every module that names it as a guarded writer. So `HV-g3` reads only that the
+  partial files are ignored, and that test pins the guard on `halves/ask.py`.
 - **A test must not pin whether the plan is signed** (`PLAN_APPLY.md`'s lesson).
-  Pin the count of signature lines, and the gate's verdicts on fake plans.
+  `tests/test_halves.py` pins the count of signature lines, and the gate's
+  verdicts on fake plans.
 - **A float recomputed on 3.10 can differ from 3.12's in the last place.**
-  Verdicts are fractions. A check that compares a recomputed float with a record
-  uses a tolerance.
-
-*To be completed against the package.*
+  Verdicts are fractions. The standard errors are floats, and only mark *thin*.
 
 ---
 
 ## 6. Blocking checks, before any record is written
 
-*To be completed against the package*, as `PLAN_WHOLE.md`'s `WR-g1` to `WR-g3`:
+`halves/gates.py`. Every writer runs them before it writes, and so does `python3
+-m halves.ask --dry-run`, which builds no client and needs no key. They print
+whether each check passes, and no figure.
 
-- **`HV-g1`, the texts.** Every arm's message at every ticket is `user_msg` over
-  its paragraph. `e`'s is the rule arm's recorded prompt wherever that arm asked
-  the ticket. `v`'s is the loops' first message, by each record's digests. `h`
-  and `o` differ from `v` and `e` exactly as §2.1 says. The system prompt is
-  level 3's, by digest.
-- **`HV-g2`, the request and the instrument.** The request is the loops' first
-  call's, with DeepInfra's pin. No module on the asker's path reads a label, by
-  its names and its string literals, as `N-g2` reads them. The classes give back
-  `whole/paragraph.py`'s figures from the closed records, before they read
-  anything new.
-- **`HV-g3`, the design.** The 136 tickets, the 544 prompts, the passes' seeded
-  orders, the rarest queue's session and the smoke run's draw; the record guard;
-  and a resumed record keeping each call's own seconds.
-- **`HV-g4`, the signature.** The gate reads `PLAN_HALVES.md` and no other plan,
-  and counts every signature line.
+- **`HV-g1`, the texts.**
+  - **`e` is the rule arm's.** At every one of the 133 tickets the rule arm
+    asked, `e`'s prompt carries the digest `PLAN_REASONED_RULE.md` recorded for
+    its arm `w` there, in both passes. The rule arm's system prompt is the
+    loop's.
+  - **`v` is the loop's.** `v`'s messages are `reasoned_loop.protocol.messages_for`
+    at every ticket of `T`. Every record of the five loop groups carries, by
+    digest, the loop's system prompt and its group's paragraph.
+  - **The halves.** `h` and `o` are cut and joined from `v` and `e` as §2.1 says,
+    `v` comes back from them, the four differ, and none names a queue or a rule.
+  - **One paragraph apart.** Every arm's message is `v`'s with the paragraph
+    replaced, and every repetition asks its prompt's messages.
+  - **No builder takes a row**, no digest stands for two texts, and one changed
+    character moves a digest.
+  - **The suite is green.**
+- **`HV-g2`, the request and the instrument.**
+  - **The request.** Built without a client by `placement.protocol.request_with`,
+    it is the model, the messages, 16,000 tokens, temperature 0, reasoning at
+    high effort and DeepInfra's pin, with `response_format` on the first
+    attempt only. `PLAN_PLACEMENT.md`'s six records and `PLAN_WHOLE.md`'s three
+    v1c records carry the same model, temperature, settings and pin.
+  - **No label on the asker's path.** No module on it names a label, in a name
+    or a string literal, by `N-g2`'s names: `halves/plan.py`, `prompts.py`,
+    `population.py` and `ask.py`.
+  - **The instrument.** `whole/paragraph.py`'s classes give back its record's
+    counts from the closed answers, group by group. `PLAN_WHOLE.md`'s first calls
+    are classed as its Stage C classed them.
+- **`HV-g3`, the design.**
+  - **The tickets.** `T` comes back from the closed records: 133 shared
+    tickets, and 954, 982 and 1432 added. `T₇` is the corpus's seven tickets of
+    `ONCALL_ESCALATION` by level 3's list, and a loop's first call met each.
+  - **The asks.** 136 prompts an arm. Each pass holds every prompt once, in its
+    order rebuilt from `ORDER_SEED`, and the two orders differ. The rarest
+    queue's session holds its 28 prompts four times each. The smoke run holds
+    two distinct prompts of each arm, outside `T₇`.
+  - **The partial files** are ignored by git.
+- **`HV-g4`, the signature.** It does not block a dry run, which writes nothing;
+  it blocks every write.
 
 ---
 
 ## 7. Stage A — the design and the references (free, gated)
 
-`T` and its governing rules; the texts, their digests and the fingerprint; the
-seeded orders. The references at `T`: the rule arm's answers, classed, and the
-loops' first calls, classed, by ticket; `HV-a`'s comparator, ticket by ticket;
-and the error the references carry. §0's four figures, recomputed.
+`PYTHONHASHSEED=0 python3 -m halves.sample` writes `results_halves/sample.json`:
+
+- **the design**: `T`, every ask with its digest, and the four sessions in their
+  orders; the texts, their digests and the fingerprint;
+- **each ticket's governing rule** and its queue;
+- **the references, ticket by ticket, classed**:
+  - the rule arm's answers at the 133 tickets it asked;
+  - each loop group's first calls at the tickets of `T` it escalated;
+  - `HV-a`'s comparator, the DeepInfra loops' first calls under v2b's paragraph,
+    pooled;
+- **§0's four figures**, recomputed, and which of them did not come back as §0
+  declares them.
+
+Every session of Stage B checks that the record holds the design it rebuilds.
+
+---
 
 ## 8. Stage B — the asks (gated on §0)
 
-The smoke run, then pass 1, pass 2 and the rarest queue's session, in that order,
-one at a time.
+```
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass2
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session oncall
+```
+
+- **The order.** The smoke run, then pass 1, pass 2 and the rarest queue's
+  session, one at a time. Each session out of its turn refuses before the key.
+  - **A pass** needs a smoke record in which every arm holds a valid answer, and
+    every attempt that reached the model was served by DeepInfra, reasoned and
+    ended `stop`.
+  - **Pass 2** needs pass 1's record, and **the rarest queue's session** needs
+    pass 2's.
+- **Before any call**, each launch checks the signature, the turn, the key,
+  `HV-g1` to `HV-g3` and Stage A's record. It refuses to write over a paid
+  record.
+- **The smoke run's bills** are read by generation id before pass 1, and its
+  pace is set beside §1's.
+- **Who launches them.** The agent, as Sergi chose (§2.5), through a supervisor
+  detached from the agent's harness.
+  - **What it does.** It runs the sessions one at a time, and commits each
+    record alone, through the pre-commit hook.
+  - **Pushing.** It pushes each record to one pull request, and retries a push
+    that times out.
+  - **Resuming.** It resumes a session an outage stopped.
+  - **What it never does.** It never passes the overwrite flag and never skips
+    the hook.
+  - **Checking it is up.** A check that matches its process by command line runs
+    apart from the command that launches it.
+- **What the commits may show** (§0): each session's asks, failures, retries
+  and seconds, and no class, share or row.
+
+---
 
 ## 9. Stage C — scoring, and the six adjudications (free)
 
-`HV-a` to `HV-f`, and `HV-g`.
+`PYTHONHASHSEED=0 python3 -m halves.score` reads the three records and Stage A's,
+holds each to its session's asks and to this protocol, and classes every valid
+answer. It writes `results_halves/score.json`.
+- **`HV-a` to `HV-f`**, each with its statistic as a fraction, its line, its
+  standard error, its *thin* and the readings *thin* reads, or its reason for
+  having no value.
+- **`HV-g`.**
+
+The findings go to `results_halves/FINDINGS_HALVES.md`, which will own every
+figure.
 
 ---
 
 ## 10. The gate, and where the code lives
 
-*To be completed against the package.* A package of its own, `halves/`, which
-calls `whole/`, `placement/`, `reasoned_loop/`, `first_match/`, `reasoned_rule/`
-and the packages under them, and edits none of them. Its gate reads
-`PLAN_HALVES.md` and no other plan, and counts every signature line. **The free
-stages get the gate too**: what it protects is the order of events, not money.
+`halves/` calls the packages below and edits none of them: `whole/`,
+`placement/`, `reasoned_loop/`, `first_match/`, `fidelity/`, `authorship/`,
+`reasoned_rule/`, `queue_alone/`, `escalations/`, `reuse/` and `rung2/`.
+
+| module | what it does |
+|---|---|
+| `halves/plan.py` | the gate and the constants: the request, the pin, the tickets, the sessions, the limits and §0's lines |
+| `halves/prompts.py` | the four arms' texts and messages; on the proposer's path |
+| `halves/population.py` | the asks and the sessions; on the proposer's path, and it opens no record |
+| `halves/gates.py` | `HV-g1` to `HV-g4`; offline |
+| `halves/sample.py` | Stage A |
+| `halves/ask.py` | Stage B, the only module that spends; guarded |
+| `halves/score.py` | Stage C |
+| `tests/test_halves.py` | the constants, the texts, the gate, the design, the request through the SDK double, Stage B on the double, and Stage C on rows written by hand |
+
+- **The gate** reads `PLAN_HALVES.md` and no other plan, and counts every
+  signature line, by `reuse/plan.py`'s count, called. **The free stages get the
+  gate too**: what it protects is the order of events, not money.
+- **The registries.**
+  - **Code roots.** `harness/provenance.py`'s `CODE_ROOTS` carries `halves`.
+  - **The authority channel.** `tests/test_oracle_separation.py` watches
+    `halves/prompts.py` and `halves/ask.py`.
+  - **Guarded writers.** `tests/test_writer_lists.py` counts `halves/ask.py`
+    among them, and the README's table lists the three writers.
+  - **Partial files.** `.gitignore` ignores them.
 
 ---
 
 ## 11. Definition of done
 
-*To be completed against the package.*
+- **The records**, each in its own commit: `results_halves/sample.json`, the
+  smoke record, the two passes' records, the rarest queue's session's, and
+  `score.json`.
+- **`results_halves/FINDINGS_HALVES.md`**, which owns every figure: the six
+  verdicts and `HV-g`, the calls and the bills, and what the drafter's
+  expectation got right and wrong.
+- **The indexes.**
+  - **`STATUS.md`.** The scoreboard gains `HV`'s row, *What is open* the notes on
+    its second and third items, and its named lists.
+  - **`IDEAS.md`.** A section on what this plan opens.
+  - **`README.md` and `CLAUDE.md`.** The thread's entry and its commands.
+  - **`tests/test_prose_tables.py`.** It adds `HV` to `THREADS`, and the
+    FINDINGS to `TABLES`.
+- **This file** gains a closing banner, which touches no line of §0 and travels
+  alone.
 
 ---
 
@@ -806,7 +1139,9 @@ stages get the gate too**: what it protects is the order of events, not money.
    what the listing is for, and a paragraph that says the base exists and orders
    nested rules by containment are other plans.
 4. **The system prompt's level-1 sentence**, which stays byte for byte in every
-   arm.
+   arm, and which rung 2 read as an incentive to avoid overlap (said first).
 5. **Tickets the reasoning loops never escalated**, and the 38 of the rule arm's
    that only the loop without reasoning escalated.
-6. **One model, one provider, one manual and one period.**
+6. **The arrivals.** Every class reads the space. Whether a draft holds its
+   part's corpus tickets, a weaker reading, is not read.
+7. **One model, one provider, one manual and one period.**
