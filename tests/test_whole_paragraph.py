@@ -141,6 +141,13 @@ class TestTheRecord(unittest.TestCase):
         self.assertEqual(got, {"a": {"fraction": "1/3", "value": 1 / 3},
                                "b": [{"fraction": "1/2", "value": 0.5}, None]})
 
+    def test_the_record_keeps_its_env(self):
+        got = G.record_of({"passes": True}, [], {"rule_arm": {}, "groups": {}, "providers": {},
+                                                "_shared": {}, "_stage_c_ok": True}, [])
+        self.assertEqual(next(iter(got)), "_env")
+        self.assertIn("git_commit", got["_env"])
+        self.assertNotIn("_shared", got)
+
     def test_the_lines(self):
         self.assertEqual((G.RULE_ARM, G.GAP, G.BAIDU, G.DEEPINFRA),
                          ("w", Fraction(1, 10), ("reasoned_loop", "channel"),
