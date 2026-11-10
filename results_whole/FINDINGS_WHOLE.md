@@ -42,6 +42,13 @@ signature.
 > - **Its code digest is `baf839d592e56583`**, not the package's, because
 >   `whole/oncall.py` was added after Stage C. `main` computes it at `5e4200f`.
 >   The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-10, later] And a second.** [`security.json`](security.json)
+> reads why every v1c base lost a sixth of `SECURITY_INCIDENT`.
+> - **It was written from `68a0029`**, on the branch of the pull request it was
+>   opened in. Its section below names its checks.
+> - **Its code digest is `2ce5cad15d518325`**, because `whole/security.py` was
+>   added after the other two.
 
 **This record owns every figure in it.**
 
@@ -937,6 +944,16 @@ whose rule was not born, unplaced or refused.
 2. **Why every v1c base lost a sixth of `SECURITY_INCIDENT` here**, when
    `PLAN_PLACEMENT.md`'s v1c bases lost almost none of it. Which drafts of `H01`
    and `H02` were born, and when, would take a reading of those bases.
+   **[NOTE 2026-11-10] Read POST-RUN**, in *Why every v1c base lost a sixth of
+   `SECURITY_INCIDENT`*, below.
+   - **What the loss is.** Every lost point is unwritten, and most go to a rule
+     of `T2_TECHNICAL` drafted at a ticket of `H03`. That rule drops the tier and
+     reaches into `H01`'s points of severities 3 and 4.
+   - **Why the queue left them.** In two runs of three, v1c's first calls at
+     `H01`'s tickets drew one tier, never the region. The tier left out is the
+     one lost.
+   - **The others.** v1d wrote `H01`'s region whole at the first ticket of it in
+     every run, and `PLAN_PLACEMENT.md`'s v1c at a later one.
 3. **Whether T1's ambiguity moved any draft** (§6.10): *el resto de su región*
    can be read as the draft's region or as the governing rule's.
 4. **Whether a round that accepts a partial placement** would have kept v1d's
@@ -1162,6 +1179,227 @@ least.** Four held, and Q4 failed.
 
 ---
 
+## Why every v1c base lost a sixth of `SECURITY_INCIDENT` — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-10, after Stage C, and run the same
+> day. Zero API calls. `whole/security.py` calls `channel/lost.py`'s reading of
+> the queue for this plan's six runs, and for `PLAN_PLACEMENT.md`'s three v1c
+> runs beside them, and does not copy it. It splits that reading by part:
+> **`H01`'s part**, the 33,600 points of the queue `H01` governs, and **`H02`'s
+> part**, the 16,800 it governs below `H01`. It also reads every first call on a
+> ticket of the queue.
+>
+> - **The expectation was committed before any figure of the reading existed**,
+>   in `361ef81`, on the branch of this reading's pull request. The drafter had
+>   seen no rule, draft, note or placement answer of this queue in any run of
+>   either plan, no point's winner and no curve.
+> - **Seven gates stood before any write**, 52 checks in all:
+>   - `channel/lost.py`'s four, in every run read;
+>   - the two parts partitioning the queue's points;
+>   - each part's ways partitioning the part;
+>   - each first call's class and verdict being Stage C's, in this plan's runs.
+> - **One part was added after the first run**, in `68a0029`: the lost points by
+>   customer tier, by severity and by product. It carries no expectation and
+>   moves no clause. The five clauses came back the same from both commits.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`security.json`](security.json).
+> - **Its `_env`** names `68a0029`, with `git_dirty` and `code_dirty` false. Its
+>   code digest is `2ce5cad15d518325`.
+
+### 1. What each base lost, and to whom
+
+| run | points lost | unwritten | outranked | to | of `H01`'s part | of `H02`'s part | rules holding `H01`'s part whole | holding `H02`'s |
+|---|---|---|---|---|---|---|---|---|
+| `v1c r1` | 8,400 | 8,400 | 0 | `T2_TECHNICAL` 8,400 | 0 | 8,400 | `R0035` | none |
+| `v1c r2` | 8,400 | 8,400 | 0 | `T2_TECHNICAL` 5,840, `ACCOUNT_MANAGER` 2,560 | 8,400 | 0 | none | none |
+| `v1c r3` | 8,400 | 8,400 | 0 | `T2_TECHNICAL` 8,400 | 8,400 | 0 | none | `R0061` |
+| `v1d r1` | 0 | 0 | 0 | — | 0 | 0 | `R0024`, `R0039` | `R0031` |
+| `v1d r2` | 0 | 0 | 0 | — | 0 | 0 | `R0012` | `R0033` |
+| `v1d r3` | 1,260 | 0 | 1,260 | `ONCALL_ESCALATION` 1,260 | 1,260 | 0 | `R0012` | `R0030` |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 0 | 0 | 0 | — | 0 | 0 | `R0035` | `R0065` |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 0 | 0 | 0 | — | 0 | 0 | `R0034` | none |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 100 | 0 | 100 | `ONCALL_ESCALATION` 100 | 100 | 0 | `R0073` | `R0057` |
+
+- **Every v1c base lost 8,400 points of the queue, and every one is
+  unwritten** (S1 holds). Another queue decides each, and no rule of the queue
+  matches it.
+- **Most go to `T2_TECHNICAL`** (S2 holds): all 8,400 in v1c r1 and v1c r3, and
+  5,840 in v1c r2, whose other 2,560 go to `ACCOUNT_MANAGER`.
+- **The other bases lose little or nothing.** v1d r3 lost 1,260 points and
+  `PLAN_PLACEMENT.md`'s v1c r3 lost 100. Every one of them is outranked by an
+  edge.
+  - The rules that take them are of `ONCALL_ESCALATION`: cuts at that queue's
+    tickets, which carry no keyword condition.
+  - They beat the queue's rule by a declared edge on the keyword points of
+    severity 1 the two share.
+
+  The other four bases lost none.
+- **Every base but this plan's v1c r2 and v1c r3 holds `H01`'s part whole**, each
+  with a rule whose region is `H01`'s. That includes all three of
+  `PLAN_PLACEMENT.md`'s v1c bases (S5 holds).
+
+### 2. Where the lost points lie, and what decides them
+
+| run | the losing part | by tier | by severity | by product |
+|---|---|---|---|---|
+| `v1c r1` | `H02`'s | free 4,200, pro 4,200 | 1 5,040, 2 3,360 | api 3,360, mobile 1,680, integrations 3,360 |
+| `v1c r2` | `H01`'s | enterprise 8,400 | 3 4,200, 4 4,200 | dashboard 1,680, billing 1,680, api 1,680, mobile 1,680, integrations 1,680 |
+| `v1c r3` | `H01`'s | business 8,400 | 3 4,200, 4 4,200 | dashboard 1,680, billing 1,680, api 1,680, mobile 1,680, integrations 1,680 |
+
+The rules of another queue undefeated on the lost points, those on 1,000 points
+or more. A point several such rules share is counted for each.
+
+| run | rule | queue | its conditions | born at case | the ticket's governing rule | lost points it is undefeated on |
+|---|---|---|---|---|---|---|
+| `v1c r1` | `R0047` | `T2_TECHNICAL` | has_security_keyword True, severity ≥ 1 | 394 | `H03` | 8,400 |
+| `v1c r1` | `R0024` | `T2_TECHNICAL` | severity 1, product billing/integrations/dashboard, customer_tier free/pro | 85 | `H08` | 1,680 |
+| `v1c r1` | `R0053` | `T2_TECHNICAL` | severity 1, customer_tier pro | 658 | `H08` | 1,680 |
+| `v1c r2` | `R0052` | `T2_TECHNICAL` | has_security_keyword True, severity ≥ 3 | 754 | `H03` | 5,840 |
+| `v1c r2` | `R0054` | `ACCOUNT_MANAGER` | customer_tier enterprise, prior_tickets_30d ≥ 5, product api/integrations | 922 | `H13` | 2,560 |
+| `v1c r2` | `R0033` | `T2_TECHNICAL` | has_security_keyword True, product billing | 154 | `H03` | 1,680 |
+| `v1c r3` | `R0046` | `T2_TECHNICAL` | has_security_keyword True, severity ≥ 3 | 394 | `H03` | 8,400 |
+
+- **In v1c r2 and v1c r3 the loss is one tier of `H01`'s two, at severities 3
+  and 4.** It is enterprise in r2 and business in r3: 8,400 points over all five
+  products.
+- **What decides it is a rule of `T2_TECHNICAL` drafted at a ticket of `H03`**:
+  *keyword, severity 3 or more*, born at case 754 in r2 and at case 394 in r3.
+  - `H03` sends the keyword to `T2_TECHNICAL`. The points it governs are those
+    `H01` and `H02` leave: the tiers free and pro at severities 3 and 4.
+  - The drafted rule keeps the severities and drops the tier. So it also covers
+    `H01`'s points of severities 3 and 4, and decides each of them that no rule
+    of the queue reaches.
+- **In v1c r1 the loss is half of `H02`'s part**: the tiers free and pro in the
+  products api and integrations, and mobile at severity 1. It goes to *keyword,
+  severity 1 or more*, `H03`'s region whole, born at case 394. The queue's rules
+  inside it, which win there by containment, covered `H02`'s part only for the
+  products billing and dashboard, and for mobile at severity 2.
+
+### 3. What was drafted at the queue's tickets
+
+| run | case | governing rule | the draft | the conditions it adds | verdict |
+|---|---|---|---|---|---|
+| `v1c r1` | 155 | `H01` | whole | — | born |
+| `v1c r1` | 448 | `H02` | cut by one rule | product billing | born |
+| `v1c r1` | 751 | `H02` | cut by one rule | severity 2, product mobile | born |
+| `v1c r1` | 1235 | `H02` | cut by one rule | product dashboard | unplaced |
+| `v1c r1` | 1961 | `H02` | cut by one rule | product dashboard | born |
+| `v1c r2` | 44 | `H01` | cut by one rule | severity 1, customer_tier business | refused |
+| `v1c r2` | 155 | `H01` | cut by one rule | severity ≤ 2 | refused |
+| `v1c r2` | 342 | `H02` | cut by one rule | severity 1 | born |
+| `v1c r2` | 580 | `H02` | cut by one rule | product api | born |
+| `v1c r2` | 599 | `H02` | cut by one rule | product billing | born |
+| `v1c r2` | 751 | `H02` | cut by one rule | product mobile, severity 2 | born |
+| `v1c r2` | 1063 | `H01` | other | customer_tier business | born |
+| `v1c r2` | 1961 | `H02` | other | product dashboard/api/integrations/mobile | born |
+| `v1c r3` | 44 | `H01` | cut by one rule | severity 1, customer_tier business | born |
+| `v1c r3` | 342 | `H02` | cut by one rule | severity 1 | born |
+| `v1c r3` | 402 | `H02` | cut by one rule | product billing | born |
+| `v1c r3` | 580 | `H02` | whole | — | refused |
+| `v1c r3` | 751 | `H02` | cut by one rule | product mobile, severity 2 | born |
+| `v1c r3` | 1235 | `H02` | whole | — | born |
+| `v1c r3` | 1264 | `H01` | other | customer_tier enterprise | born |
+| `v1c r3` | 1704 | `H01` | other | prior_tickets_30d ≥ 5 | unplaced |
+| `v1d r1` | 155 | `H01` | whole | — | born |
+| `v1d r1` | 448 | `H02` | whole | — | born |
+| `v1d r1` | 1264 | `H01` | whole | — | born |
+| `v1d r2` | 44 | `H01` | whole | — | born |
+| `v1d r2` | 342 | `H02` | cut by one rule | severity 1 | born |
+| `v1d r2` | 580 | `H02` | whole | — | refused |
+| `v1d r2` | 599 | `H02` | cut by one rule | product billing | born |
+| `v1d r2` | 751 | `H02` | whole | — | born |
+| `v1d r3` | 44 | `H01` | whole | — | born |
+| `v1d r3` | 342 | `H02` | other | customer_tier free/pro | born |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 44 | `H01` | cut by one rule | severity 1 | born |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 155 | `H01` | whole | — | born |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 448 | `H02` | cut by one rule | severity 1 | born |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 599 | `H02` | no rule | — | refused |
+| `PLAN_PLACEMENT.md`'s `v1c r1` | 751 | `H02` | whole | — | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 44 | `H01` | cut by one rule | severity 1, customer_tier business | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 155 | `H01` | whole | — | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 342 | `H02` | cut by one rule | severity 1 | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 580 | `H02` | cut by one rule | product api | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 599 | `H02` | cut by one rule | product billing | born |
+| `PLAN_PLACEMENT.md`'s `v1c r2` | 751 | `H02` | other | severity 2 | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 44 | `H01` | cut by one rule | severity 1, customer_tier business | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 342 | `H02` | cut by one rule | severity 1 | unplaced |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 402 | `H02` | cut by one rule | product billing | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 580 | `H02` | cut by one rule | product api | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 676 | `H02` | other | customer_tier free/pro | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 1264 | `H01` | cut by one rule | product api | unplaced |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 1704 | `H01` | other | prior_tickets_30d ≥ 5 | born |
+| `PLAN_PLACEMENT.md`'s `v1c r3` | 1802 | `H01` | whole | — | born |
+
+- **This plan's v1c drafted `H01`'s region whole once**, in r1 at case 155.
+  - **In r2 and r3 the first calls on its tickets drew a tier, a cut, or a
+    narrower rule.** In r2, the cuts at cases 44 and 155 were refused, and case
+    1063 drew the tier business. In r3, case 44 drew a cut, born, case 1264 the
+    tier enterprise, and case 1704 a narrower rule, left unplaced. Case 155 did
+    not escalate in r3.
+  - **The tier each run drew is the one it kept.** The tier it did not draw is
+    the one it lost at severities 3 and 4.
+- **v1d drafted `H01`'s region whole at the first ticket of it, in every run**:
+  case 155 in r1, and case 44 in r2 and r3.
+- **`PLAN_PLACEMENT.md`'s v1c also cut `H01`'s region at case 44, in each run.**
+  A later first call wrote the region whole: at case 155 in r1 and r2, and at
+  case 1802 in r3.
+- **`H02`'s tickets drew cuts by a product or a severity in every v1c run.** Its
+  region whole was drawn twice, both in v1c r3: refused at case 580 and born at
+  case 1235.
+- **S3 fails.** Not every first call at the losing part's tickets was born. In
+  v1c r2 two of three were refused, and in v1c r1 and v1c r3 one each was left
+  unplaced. None of them held the part either: each was a cut or a narrower
+  draft.
+
+### The expectation
+
+| clause | what it says | reading, by run | verdict |
+|---|---|---|---|
+| S1 | in each v1c run every lost point of the queue is unwritten | 8,400 of 8,400; 8,400 of 8,400; 8,400 of 8,400 | holds |
+| S2 | in each v1c run at least half of the lost points go to T2_TECHNICAL | 8,400 of 8,400; 5,840 of 8,400; 8,400 of 8,400 | holds |
+| S3 | in each v1c run every first call of the queue's own on a ticket the losing part's rule governs ended born | `H02`: born, born, unplaced, born; `H01`: refused, refused, born; `H01`: born, born, unplaced | **fails** |
+| S4 | in each v1c run after no birth did the base decide the whole of the losing part right | 8,400 of 16,800; 25,200 of 33,600; 25,200 of 33,600 | holds |
+| S5 | in each of PLAN_PLACEMENT.md's v1c runs some rule of the queue in the final base holds H01's part whole | `R0035`; `R0034`; `R0073` | holds |
+
+**The drafter expected all five to hold, bet on S1, trusted S2 most and S5
+least.** Four held, and S3 failed.
+- **What the account got right.**
+  - The loss is unwritten, and the keyword's default decides most of it.
+  - The queue's rules there are narrow.
+  - v1d and `PLAN_PLACEMENT.md`'s v1c wrote `H01`'s region whole.
+- **What it got wrong.** Not every draft at the losing part's tickets was born:
+  two cuts were refused, and two narrow drafts were left unplaced. Each was
+  narrow, so born or not it would not have held the part.
+- **What it did not foresee.** In r2 and r3 the default is not `H03`'s region
+  whole. It is a narrower draft, which keeps the severities `H03` governs, drops
+  the tier, and so reaches into `H01`'s part.
+
+### What it says
+
+- **The keyword half is lost where the queue's rules are narrow and the
+  default's is broad.**
+  - Each v1c base keeps a rule of `T2_TECHNICAL`, drafted at a ticket of `H03`,
+    that covers `H01`'s points of severities 3 and 4, or the whole keyword half.
+  - Every point of the queue that no rule of the queue reaches goes to that rule.
+    It is an error the channel reports only at a ticket, and only under its draw.
+- **In this period, v1c's first calls at `H01`'s tickets drew a tier, never the
+  region, in two runs of three.** The tier left out kept its points of
+  severities 3 and 4 with the default.
+- **Under T1 the region was written whole at the first ticket of it, in every
+  run.** `PLAN_PLACEMENT.md`'s v1c reached it later, by another escalation. So
+  the keyword half too was lost at the first call's breadth, and what repaired it
+  in the other period was a later ticket. Under the same draws, no first call of
+  this period's v1c r2 or r3 drew it.
+- **What it leaves**, free on the records:
+  - **Why v1c drew a tier at `H01`'s tickets.** The tier drawn is the ticket's
+    own. Whether the notes say why is not read.
+  - **The default's breadth.** At `H03`'s tickets the loop drafted the default by
+    severity and dropped the tier. Whether the loop's broad drafts at default
+    rules overreach in this way elsewhere is not read.
+
+---
+
 ## Files
 
 ```
@@ -1185,6 +1423,13 @@ results_whole/oncall.json        POST-RUN: whole/oncall.py's reading of every fi
                                  the passage where its answer is composed, its placement
                                  round, the codebook with its development counts, the five
                                  gates and the expectation's five clauses
+results_whole/security.json      POST-RUN: whole/security.py's reading of SECURITY_INCIDENT in
+                                 this plan's six runs and PLAN_PLACEMENT.md's three v1c runs:
+                                 channel/lost.py's ways, winners, rules of the queue, curve and
+                                 escalations, the same ways by part, H01's and H02's, every
+                                 first call on a ticket of the queue, the lost points by tier,
+                                 severity and product, the seven gates and the expectation's
+                                 five clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
