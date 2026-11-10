@@ -468,10 +468,33 @@ leaves:
   queue's tickets six in eight. Level 3's system prompt still says a rule inside
   another needs no declaration. Which text the cuts follow is read in the calls'
   notes and reasoning, which the records keep whole. Free on the records.
+  **[NOTE 2026-11-10] Read POST-RUN at the rarest queue's tickets**, by
+  `whole/oncall.py` (`FINDINGS_WHOLE.md`, *Why v1d cut at the rarest queue's
+  tickets*).
+  - **Every cut there is an intersection.** It is the governing rule's region cut
+    by the first crossing rule a cut changes. Its note frames it as the end of a
+    conflict that containment settles.
+  - **The escalations were reported errors, framed as impasses.** Every first
+    call is told the engine could not decide.
+  - **T1 was quoted in 3 of v1d's 8 first calls there.** Where a cut quoted it,
+    its second sentence was read as the cut's licence.
+
+  What it leaves:
+  - **The frame.** An escalation that tells the proposer the base decided
+    wrongly, and what it decided, set beside one that calls the ticket an
+    impasse. Calls.
+  - **T1's second sentence**, rewritten so that it cannot be read as a cut's
+    licence. Calls.
+  - **The other narrow drafts**, at tickets of other queues, read the same way.
+    Free on the records.
 - **Why v1d cut more than v1c at the rarest queue's tickets.** Eight drafts stand
   against seven, in one period. Each first call asked several times at the
   queue's seven tickets, under both texts, would set the spread beside the
   difference. Calls.
+  **[NOTE 2026-11-10] Not settled POST-RUN.** v1d's reasoning left T1 unquoted in
+  four of its six cuts there, and v1c, without T1, wrote the region whole at four
+  of its seven tickets. The spread across asks is still the way to tell the draw
+  from the text.
 - **Why every v1c base lost a sixth of `SECURITY_INCIDENT` here.**
   `PLAN_PLACEMENT.md`'s v1c bases lost almost none of it. The loss lies under
   `H01` or `H02`, where no first-call draft of the run held its part. Which
@@ -491,6 +514,10 @@ leaves:
 
 Lessons it leaves:
 
+- **Test a codebook's codes for discrimination on its development set.** Of the
+  five codes tried on the smoke run's reasoning, three matched nearly every call,
+  because the reasoning names every rule and argues containment about all of
+  them. A code that matches every call says nothing about any one of them.
 - **A text can move the drafts and miss the tickets a row reads.** T1 raised the
   share of whole drafts within the period, and the rarest queue's recall fell run
   for run. A plan that bands a share of drafts should band it at the tickets that
