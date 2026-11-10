@@ -1189,6 +1189,7 @@ The first command is blocking and writes nothing:
     python3 -m whole.run --dry-run                                    # WR-g1..WR-g3; must pass first
     PYTHONHASHSEED=0 python3 -m whole.sample                          # Stage A, free
     PYTHONHASHSEED=0 python3 -m whole.score                           # Stage C, free, from the runs
+    PYTHONHASHSEED=0 python3 -m whole.oncall                          # POST-RUN: why v1d cut at the rarest queue's tickets
     PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, never side by side
 
@@ -1202,6 +1203,15 @@ those tickets too, beside the share over all.
 not refuse them much more (`WR-c` holds, thin). A born whole draft takes later
 escalations away, so a ratio of refusals under it reads a smaller denominator.
 §0 said so.
+
+**Read POST-RUN, the first call answers the impasse it is told of.** At the
+rarest queue's tickets the escalations were reported errors. Every first call is
+told the engine could not decide, and its cuts are written as the end of a
+conflict that containment settles. Where a cut's reasoning quoted T1, its second
+sentence was read as the cut's licence. A text that explains what a nested rule
+wins can be read as permission to nest. **And test a codebook's codes for
+discrimination on their development set**: a code that matches every call tells
+none of them apart.
 
 **An expectation changed by a scorer's test on closed records was still wrong.**
 The drafter expected every row to hold after such a test moved one expectation,

@@ -3000,6 +3000,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    So the cut at the rarest queue's tickets is not the text's alone. Why v1d cut
    there more often than v1c is not read.
    [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
+   **[NOTE 2026-11-10, later] What the first call was answering, read POST-RUN.**
+   - **Every cut there was an intersection.** It is the governing rule's region
+     cut by the first crossing rule a cut changes, `H07` or `H17`, as in
+     `PLAN_PLACEMENT.md`'s runs. Its note frames it as the end of a conflict that
+     containment settles with no side declared.
+   - **The first call was answering an impasse it was told of.** 14 of the 15
+     escalations there were reported errors, and every first call is told the
+     engine could not decide.
+   - **T1 reached few of those first calls.** v1d's reasoning quoted it in 3 of
+     8. Where a cut quoted it, its second sentence was read as the cut's
+     licence: inside both rules, the draft beats both.
+
+   Why v1d cut there more often than v1c is still not read. Without T1, v1c
+   wrote the region whole at 4 of its 7 tickets.
+   [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md), *Why v1d
+   cut at the rarest queue's tickets*.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
