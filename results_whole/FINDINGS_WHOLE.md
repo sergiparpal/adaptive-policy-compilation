@@ -10,6 +10,8 @@ its own: `eb1fa29` on `main`.
   reach it in #222, the pull request this record was opened in.
 - **The POST-RUN reading of why v1d cut at the rarest queue's tickets** reached
   it in #223, merged on 2026-11-10.
+- **The POST-RUN reading of why every v1c base lost a sixth of
+  `SECURITY_INCIDENT`** reached it in #225, merged on 2026-11-10.
 
 Every record names in its `_env` the commit it was written from. Seven were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -45,10 +47,10 @@ signature.
 >
 > **[NOTE 2026-11-10, later] And a second.** [`security.json`](security.json)
 > reads why every v1c base lost a sixth of `SECURITY_INCIDENT`.
-> - **It was written from `68a0029`**, on the branch of the pull request it was
->   opened in. Its section below names its checks.
+> - **It was written from `68a0029`**, on the branch of #225, which is `f633c85`
+>   on `main`. Its section below names the pair's checks.
 > - **Its code digest is `2ce5cad15d518325`**, because `whole/security.py` was
->   added after the other two.
+>   added after the other two. `main` computes it at `f633c85`.
 
 **This record owns every figure in it.**
 
@@ -1190,22 +1192,28 @@ least.** Four held, and Q4 failed.
 > ticket of the queue.
 >
 > - **The expectation was committed before any figure of the reading existed**,
->   in `361ef81`, on the branch of this reading's pull request. The drafter had
->   seen no rule, draft, note or placement answer of this queue in any run of
->   either plan, no point's winner and no curve.
+>   in `361ef81`, which is `53190e8` on `main`. The drafter had seen no rule,
+>   draft, note or placement answer of this queue in any run of either plan, no
+>   point's winner and no curve.
 > - **Seven gates stood before any write**, 52 checks in all:
 >   - `channel/lost.py`'s four, in every run read;
 >   - the two parts partitioning the queue's points;
 >   - each part's ways partitioning the part;
 >   - each first call's class and verdict being Stage C's, in this plan's runs.
-> - **One part was added after the first run**, in `68a0029`: the lost points by
->   customer tier, by severity and by product. It carries no expectation and
->   moves no clause. The five clauses came back the same from both commits.
+> - **One part was added after the first run**, in `68a0029`, which is `f633c85`
+>   on `main`: the lost points by customer tier, by severity and by product. It
+>   carries no expectation and moves no clause. The five clauses came back the
+>   same from both commits.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`security.json`](security.json).
-> - **Its `_env`** names `68a0029`, with `git_dirty` and `code_dirty` false. Its
->   code digest is `2ce5cad15d518325`.
+> - **The record** is [`security.json`](security.json), committed in `6e1c7a3` on
+>   `main`. It reached `main` in #225.
+> - **Its `_env`** names `68a0029`, with `git_dirty` and `code_dirty` false.
+>   `68a0029` and `f633c85` have the same subject, the same tree and the same
+>   `git patch-id --stable`, and the GitHub API names #225 behind the `main`
+>   commit.
+> - **Its code digest**, `2ce5cad15d518325`, is the one `main` computes at
+>   `f633c85`.
 
 ### 1. What each base lost, and to whom
 
