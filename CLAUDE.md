@@ -1191,6 +1191,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m whole.score                           # Stage C, free, from the runs
     PYTHONHASHSEED=0 python3 -m whole.oncall                          # POST-RUN: why v1d cut at the rarest queue's tickets
     PYTHONHASHSEED=0 python3 -m whole.security                        # POST-RUN: why every v1c base lost a sixth of SECURITY_INCIDENT
+    PYTHONHASHSEED=0 python3 -m whole.paragraph                       # POST-RUN: whether the blind paragraph is why the first call cuts
     PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, never side by side
 
@@ -1219,6 +1220,13 @@ A rule of `T2_TECHNICAL` drafted at a ticket of `H03` dropped the tier, and
 reached into `SECURITY_INCIDENT`'s region. Where the queue's first calls drew
 one tier, the other tier's points went to that rule. A reading of a lost queue
 should read the rules that take its points, not only the queue's own drafts.
+
+**Read POST-RUN, the loop's first call cuts because of its base paragraph.**
+Under the same system prompt, model and reasoning, the empty base wrote the
+governing region far more often than v2b's blind paragraph at the same tickets,
+on either provider, and T1 closed part of the gap. The impasse frame, which both
+carry, does not cut alone. Before blaming a prompt's frame, find an arm that
+shares it and differs elsewhere.
 
 **An expectation changed by a scorer's test on closed records was still wrong.**
 The drafter expected every row to hold after such a test moved one expectation,

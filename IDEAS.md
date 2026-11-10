@@ -487,6 +487,22 @@ leaves:
     licence. Calls.
   - **The other narrow drafts**, at tickets of other queues, read the same way.
     Free on the records.
+
+  **[NOTE 2026-11-10, later] The frame alone does not cut**, read POST-RUN by
+  `whole/paragraph.py` (`FINDINGS_WHOLE.md`, *Whether the blind paragraph is
+  why the loop's first call cuts*).
+  - **The comparison.** At the tickets both answered, under the same system
+    prompt, impasse frame included, the empty base wrote the governing region
+    in 0.82 to 0.85 of the answers. v2b's paragraph wrote it in 0.37 to 0.40, on
+    either provider.
+  - **T1 closed about half the gap.**
+
+  What it leaves:
+  - **Which half of v2b's paragraph does it**: that the base is not shown, or
+    that overlapping rules of another queue will be listed. A first call with
+    the first half alone, set beside v2b on one day, would separate the halves.
+    Calls.
+  - **The frame**, above, is no longer the first lever to try.
 - **Why v1d cut more than v1c at the rarest queue's tickets.** Eight drafts stand
   against seven, in one period. Each first call asked several times at the
   queue's seven tickets, under both texts, would set the spread beside the
@@ -528,6 +544,11 @@ leaves:
 
 Lessons it leaves:
 
+- **Before blaming a prompt's frame, find an arm that shares it.** The impasse
+  frame was blamed for the cuts until `PLAN_REASONED_RULE.md`'s rule arm,
+  under the same frame, turned out to write the region whole. A reading by the
+  escalation's cause had been proposed first. The blind first call cannot see
+  the cause, and the reading was dropped before any code was written.
 - **Test a codebook's codes for discrimination on its development set.** Of the
   five codes tried on the smoke run's reasoning, three matched nearly every call,
   because the reasoning names every rule and argues containment about all of
