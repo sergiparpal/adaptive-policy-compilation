@@ -495,10 +495,24 @@ leaves:
   four of its six cuts there, and v1c, without T1, wrote the region whole at four
   of its seven tickets. The spread across asks is still the way to tell the draw
   from the text.
-- **Why every v1c base lost a sixth of `SECURITY_INCIDENT` here.**
-  `PLAN_PLACEMENT.md`'s v1c bases lost almost none of it. The loss lies under
-  `H01` or `H02`, where no first-call draft of the run held its part. Which
-  drafts were born there, and when, is free on the records.
+- ~~**Why every v1c base lost a sixth of `SECURITY_INCIDENT` here.**~~ **Read
+  POST-RUN on 2026-11-10** by `whole/security.py` (`FINDINGS_WHOLE.md`, *Why every
+  v1c base lost a sixth of `SECURITY_INCIDENT`*).
+  - **What the loss is.** Every lost point is unwritten. Most go to a rule of
+    `T2_TECHNICAL` drafted at a ticket of `H03`, which keeps the severities `H03`
+    governs and drops the tier.
+  - **Why the queue left them.** In two runs of three, v1c's first calls at
+    `H01`'s tickets drew one tier, never the region, and the other tier's points
+    of severities 3 and 4 went to that rule.
+  - **The others.** v1d wrote `H01`'s region whole at the first ticket of it,
+    and `PLAN_PLACEMENT.md`'s v1c at a later one.
+
+  What it leaves, free on the records:
+  - **Why v1c drew a tier.** The tier drawn is the ticket's own. Whether the
+    notes say why is not read.
+  - **The default's breadth.** At `H03`'s tickets the loop drafted the default by
+    severity, and dropped the tier. Whether broad drafts at default rules
+    overreach this way elsewhere is not read.
 - **The whole draft the round refused.** v1d's one whole draft of `H05` ended
   unplaced. A round that accepts a partial placement and leaves the unplaced
   pair to conflict (§2.2 of `PLAN_WHOLE.md`, `ARBITRATION_REPORT.md` §7's P2)

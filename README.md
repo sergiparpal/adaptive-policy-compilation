@@ -885,6 +885,7 @@ python3 -m whole.run --dry-run                                    # WR-g1..WR-g3
 PYTHONHASHSEED=0 python3 -m whole.sample                          # Stage A · the drafting reading, the transcriber and the references
 PYTHONHASHSEED=0 python3 -m whole.score                           # Stage C · WR-a to WR-f, and WR-g
 PYTHONHASHSEED=0 python3 -m whole.oncall                          # POST-RUN · why v1d cut at the rarest queue's tickets
+PYTHONHASHSEED=0 python3 -m whole.security                        # POST-RUN · why every v1c base lost a sixth of SECURITY_INCIDENT
 PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B · spends · only on Sergi's say
 PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, one run at a time
 ```
