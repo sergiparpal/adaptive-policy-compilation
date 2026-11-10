@@ -2848,6 +2848,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      prompt's level-1 sentence still invites a cut. T2, and a round that accepts
      a partial placement, are not run.
    [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
+   **[NOTE 2026-11-10, later] What v1c lost of `SECURITY_INCIDENT`, read
+   POST-RUN.**
+   - **The loss is unwritten.** Every lost point goes to another queue, mostly
+     to a rule of `T2_TECHNICAL` drafted at a ticket of `H03`. That rule keeps
+     the severities `H03` governs, drops the tier, and so reaches into `H01`'s
+     part.
+   - **The queue's first calls drew one tier.** In two runs of three, v1c's first
+     calls at `H01`'s tickets drew one tier and never the region. The other tier
+     lost its points of severities 3 and 4.
+   - **The other arm and the other period.** v1d wrote `H01`'s region whole at
+     the first ticket of it in every run. `PLAN_PLACEMENT.md`'s v1c wrote it at a
+     later one.
+
+   So the keyword half too was lost at the first call's breadth.
+   [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md), *Why
+   every v1c base lost a sixth of `SECURITY_INCIDENT`*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
