@@ -1,0 +1,464 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-10T09:37:32Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "1852d9c574996f3e4c3b6147a80f0aa9848fc7d6",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "3df2d131741e691e"
+  },
+  "plan": "PLAN_WHOLE.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_WHOLE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_WHOLE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-10, after Stage C. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "rule_arm": [
+      "results_reasoned_rule/ask_pass1.json",
+      "results_reasoned_rule/ask_pass2.json"
+    ],
+    "loops": {
+      "reasoned_loop": [
+        "results_reasoned_loop/loop_e_r1.json",
+        "results_reasoned_loop/loop_i_r1.json",
+        "results_reasoned_loop/loop_e_r2.json",
+        "results_reasoned_loop/loop_i_r2.json",
+        "results_reasoned_loop/loop_e_r3.json",
+        "results_reasoned_loop/loop_i_r3.json"
+      ],
+      "channel": [
+        "results_channel/loop_e_r1.json",
+        "results_channel/loop_c_r1.json",
+        "results_channel/loop_e_r2.json",
+        "results_channel/loop_c_r2.json",
+        "results_channel/loop_e_r3.json",
+        "results_channel/loop_c_r3.json"
+      ],
+      "placement": [
+        "results_placement/loop_v1c_r1.json",
+        "results_placement/loop_v1b_r1.json",
+        "results_placement/loop_v1c_r2.json",
+        "results_placement/loop_v1b_r2.json",
+        "results_placement/loop_v1c_r3.json",
+        "results_placement/loop_v1b_r3.json"
+      ],
+      "whole_v1c": [
+        "results_whole/loop_v1c_r1.json",
+        "results_whole/loop_v1c_r2.json",
+        "results_whole/loop_v1c_r3.json"
+      ],
+      "whole_v1d": [
+        "results_whole/loop_v1d_r1.json",
+        "results_whole/loop_v1d_r2.json",
+        "results_whole/loop_v1d_r3.json"
+      ]
+    },
+    "score": "results_whole/score.json"
+  },
+  "surface": "the corpus's escalated tickets, each answer's region over the space",
+  "paragraphs": {
+    "rule_arm": "BASE DE REGLAS: vacia. Esta es la primera regla.\n",
+    "v2b": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\n",
+    "T1": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket con la region entera de la regla de la lista que lo gobierna: la\nprimera de la lista cuyas condiciones casa el ticket. No le anadas\ncondiciones para que quede dentro de una regla de mas abajo de la lista:\nuna regla dentro de otra solo le gana a esa otra, y el resto de su region se\nqueda con reglas de otras colas. Si tu regla se solapa con reglas existentes\nde OTRA cola, se te listaran despues para que la situes.\n"
+  },
+  "constants": {
+    "GAP": "1/10",
+    "RULE_ARM": "w"
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the rule arm's system prompt is the loops'",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "what": "the rule arm's model and request settings are each loop record's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "the messages differ in the base paragraph alone, and each loop record sent its group's paragraph",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "what": "every rule-arm row read is of arm w",
+      "passes": true
+    },
+    {
+      "gate": 5,
+      "what": "this plan's first calls are classed as Stage C classed them",
+      "passes": true
+    }
+  ],
+  "rule_arm": {
+    "tickets": 171,
+    "answers": 342,
+    "right_queue": 327,
+    "whole": 262,
+    "share": {
+      "fraction": "262/327",
+      "value": 0.801223
+    },
+    "by_class": {
+      "cut_by_one": 17,
+      "other": 48,
+      "whole": 262,
+      "wrong_queue": 15
+    }
+  },
+  "groups": {
+    "reasoned_loop": {
+      "runs": [
+        "e_r1",
+        "i_r1",
+        "e_r2",
+        "i_r2",
+        "e_r3",
+        "i_r3"
+      ],
+      "shared_tickets": 91,
+      "loop": {
+        "answers": 242,
+        "right_queue": 229,
+        "whole": 90,
+        "share": {
+          "fraction": "90/229",
+          "value": 0.393013
+        },
+        "by_class": {
+          "cut_by_one": 51,
+          "no_rule": 1,
+          "other": 88,
+          "whole": 90,
+          "wrong_queue": 12
+        }
+      },
+      "rule_arm_there": {
+        "answers": 182,
+        "right_queue": 175,
+        "whole": 144,
+        "share": {
+          "fraction": "144/175",
+          "value": 0.822857
+        },
+        "by_class": {
+          "cut_by_one": 6,
+          "other": 25,
+          "whole": 144,
+          "wrong_queue": 7
+        }
+      },
+      "gap": {
+        "fraction": "17226/40075",
+        "value": 0.429844
+      },
+      "loop_ticket_weighted": {
+        "fraction": "321/860",
+        "value": 0.373256
+      },
+      "rule_arm_ticket_weighted": {
+        "fraction": "149/180",
+        "value": 0.827778
+      }
+    },
+    "channel": {
+      "runs": [
+        "e_r1",
+        "c_r1",
+        "e_r2",
+        "c_r2",
+        "e_r3",
+        "c_r3"
+      ],
+      "shared_tickets": 96,
+      "loop": {
+        "answers": 266,
+        "right_queue": 247,
+        "whole": 98,
+        "share": {
+          "fraction": "98/247",
+          "value": 0.396761
+        },
+        "by_class": {
+          "cut_by_one": 71,
+          "cut_by_two": 1,
+          "other": 77,
+          "whole": 98,
+          "wrong_queue": 19
+        }
+      },
+      "rule_arm_there": {
+        "answers": 192,
+        "right_queue": 188,
+        "whole": 160,
+        "share": {
+          "fraction": "40/47",
+          "value": 0.851064
+        },
+        "by_class": {
+          "cut_by_one": 8,
+          "other": 20,
+          "whole": 160,
+          "wrong_queue": 4
+        }
+      },
+      "gap": {
+        "fraction": "5274/11609",
+        "value": 0.454303
+      },
+      "loop_ticket_weighted": {
+        "fraction": "401/1092",
+        "value": 0.367216
+      },
+      "rule_arm_ticket_weighted": {
+        "fraction": "41/48",
+        "value": 0.854167
+      }
+    },
+    "placement": {
+      "runs": [
+        "v1c_r1",
+        "v1b_r1",
+        "v1c_r2",
+        "v1b_r2",
+        "v1c_r3",
+        "v1b_r3"
+      ],
+      "shared_tickets": 88,
+      "loop": {
+        "answers": 258,
+        "right_queue": 247,
+        "whole": 97,
+        "share": {
+          "fraction": "97/247",
+          "value": 0.392713
+        },
+        "by_class": {
+          "cut_by_one": 69,
+          "cut_by_two": 1,
+          "no_rule": 6,
+          "other": 80,
+          "whole": 97,
+          "wrong_queue": 5
+        }
+      },
+      "rule_arm_there": {
+        "answers": 176,
+        "right_queue": 170,
+        "whole": 144,
+        "share": {
+          "fraction": "72/85",
+          "value": 0.847059
+        },
+        "by_class": {
+          "cut_by_one": 8,
+          "other": 18,
+          "whole": 144,
+          "wrong_queue": 6
+        }
+      },
+      "gap": {
+        "fraction": "9539/20995",
+        "value": 0.454346
+      },
+      "loop_ticket_weighted": {
+        "fraction": "307/850",
+        "value": 0.361176
+      },
+      "rule_arm_ticket_weighted": {
+        "fraction": "75/88",
+        "value": 0.852273
+      }
+    },
+    "whole_v1c": {
+      "runs": [
+        "v1c_r1",
+        "v1c_r2",
+        "v1c_r3"
+      ],
+      "shared_tickets": 78,
+      "loop": {
+        "answers": 138,
+        "right_queue": 130,
+        "whole": 48,
+        "share": {
+          "fraction": "24/65",
+          "value": 0.369231
+        },
+        "by_class": {
+          "cut_by_one": 35,
+          "cut_by_two": 1,
+          "no_rule": 5,
+          "other": 46,
+          "whole": 48,
+          "wrong_queue": 3
+        }
+      },
+      "rule_arm_there": {
+        "answers": 156,
+        "right_queue": 150,
+        "whole": 128,
+        "share": {
+          "fraction": "64/75",
+          "value": 0.853333
+        },
+        "by_class": {
+          "cut_by_one": 5,
+          "other": 17,
+          "whole": 128,
+          "wrong_queue": 6
+        }
+      },
+      "gap": {
+        "fraction": "472/975",
+        "value": 0.484103
+      },
+      "loop_ticket_weighted": {
+        "fraction": "83/228",
+        "value": 0.364035
+      },
+      "rule_arm_ticket_weighted": {
+        "fraction": "67/78",
+        "value": 0.858974
+      }
+    },
+    "whole_v1d": {
+      "runs": [
+        "v1d_r1",
+        "v1d_r2",
+        "v1d_r3"
+      ],
+      "shared_tickets": 60,
+      "loop": {
+        "answers": 102,
+        "right_queue": 98,
+        "whole": 58,
+        "share": {
+          "fraction": "29/49",
+          "value": 0.591837
+        },
+        "by_class": {
+          "cut_by_one": 21,
+          "cut_by_two": 1,
+          "no_rule": 4,
+          "other": 18,
+          "whole": 58
+        }
+      },
+      "rule_arm_there": {
+        "answers": 120,
+        "right_queue": 115,
+        "whole": 98,
+        "share": {
+          "fraction": "98/115",
+          "value": 0.852174
+        },
+        "by_class": {
+          "cut_by_one": 7,
+          "other": 10,
+          "whole": 98,
+          "wrong_queue": 5
+        }
+      },
+      "gap": {
+        "fraction": "1467/5635",
+        "value": 0.260337
+      },
+      "loop_ticket_weighted": {
+        "fraction": "71/118",
+        "value": 0.601695
+      },
+      "rule_arm_ticket_weighted": {
+        "fraction": "103/120",
+        "value": 0.858333
+      }
+    }
+  },
+  "providers": {
+    "rule_arm": {
+      "Baidu": 342
+    },
+    "reasoned_loop": {
+      "Baidu": 243
+    },
+    "channel": {
+      "Baidu": 270
+    },
+    "placement": {
+      "DeepInfra": 258
+    },
+    "whole_v1c": {
+      "DeepInfra": 138
+    },
+    "whole_v1d": {
+      "DeepInfra": 102
+    }
+  },
+  "expectation": [
+    {
+      "clause": "P1",
+      "what": "the gap of reasoned_loop and of channel is at least a tenth each",
+      "reading": {
+        "reasoned_loop": {
+          "fraction": "17226/40075",
+          "value": 0.429844
+        },
+        "channel": {
+          "fraction": "5274/11609",
+          "value": 0.454303
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P2",
+      "what": "the gap of placement and of whole_v1c is at least a tenth each",
+      "reading": {
+        "placement": {
+          "fraction": "9539/20995",
+          "value": 0.454346
+        },
+        "whole_v1c": {
+          "fraction": "472/975",
+          "value": 0.484103
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P3",
+      "what": "the four v2b groups' gaps lie within a tenth of one another",
+      "reading": {
+        "spread": {
+          "fraction": "84802/1562925",
+          "value": 0.054259
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "P4",
+      "what": "whole_v1d's gap is above zero and below whole_v1c's",
+      "reading": {
+        "whole_v1d": {
+          "fraction": "1467/5635",
+          "value": 0.260337
+        },
+        "whole_v1c": {
+          "fraction": "472/975",
+          "value": 0.484103
+        }
+      },
+      "holds": true
+    }
+  ]
+}
