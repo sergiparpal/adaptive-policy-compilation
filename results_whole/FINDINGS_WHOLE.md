@@ -32,6 +32,15 @@ one code digest.** `main` computes it at `0ed0a20`, with
 `harness.provenance.code_digest`. The package's code did not change after the
 signature.
 
+> **[NOTE 2026-11-10] One more record, written after Stage C by code added
+> after it.** [`oncall.json`](oncall.json) is the POST-RUN reading of why v1d
+> cut at the rarest queue's tickets.
+> - **It was written from `1be27c8`**, on the branch of the pull request it was
+>   opened in. Its section below names its checks.
+> - **Its code digest is `baf839d592e56583`**, not the package's, because
+>   `whole/oncall.py` was added after Stage C. The modules Stage C ran did not
+>   change.
+
 **This record owns every figure in it.**
 
 **All three stages ran on 2026-11-09 and 2026-11-10, and the six rows are
@@ -914,6 +923,15 @@ whose rule was not born, unplaced or refused.
    drafts stand against seven. Whether T1's wording, the system prompt's
    level-1 sentence or the draw is why would take a reading of those calls'
    notes and reasoning, which the records keep whole and no stage codes.
+   **[NOTE 2026-11-10] Read POST-RUN**, in *Why v1d cut at the rarest queue's
+   tickets*, below.
+   - **Every cut was an intersection.** It is the governing rule's region cut by
+     the first crossing rule a cut changes. Its note frames it as the end of a
+     conflict, and says it wins by containment.
+   - **The escalations were reported errors, framed as impasses.**
+   - **T1 went mostly unquoted.** v1d's reasoning quoted it in 3 of its 8 first
+     calls there. Where a cut quoted it, its second sentence was read as the
+     cut's licence.
 2. **Why every v1c base lost a sixth of `SECURITY_INCIDENT` here**, when
    `PLAN_PLACEMENT.md`'s v1c bases lost almost none of it. Which drafts of `H01`
    and `H02` were born, and when, would take a reading of those bases.
@@ -924,6 +942,215 @@ whose rule was not born, unplaced or refused.
 5. **T2**, the text that names the cut and asks for nothing (§2.1).
 6. **One model, one provider, one manual, one arrival order, one coverage, and
    three runs an arm.**
+
+---
+
+## Why v1d cut at the rarest queue's tickets — POST-RUN
+
+> **POST-RUN.** Asked for by Sergi on 2026-11-10, after Stage C, and run the same
+> day. Zero API calls. `whole/oncall.py` reads every first call on a ticket of
+> `ONCALL_ESCALATION` in the six runs: 8 under v1d and 7 under v1c. For each it
+> reads:
+> - what the draft cut its part by, through `placement/oncall.py`'s reading,
+>   called and not copied;
+> - the call's note and sides;
+> - its reasoning, by a codebook;
+> - the placement round that followed.
+>
+> - **The codebook and the expectation were committed before any figure of the
+>   reading existed**, in `a00187e`, on the branch of this reading's pull
+>   request. The codebook was frozen on the smoke run's 14 first calls. The
+>   drafter had seen no condition, note, side, reasoning or placement answer of
+>   a first call on a ticket of the queue in the six runs.
+> - **Three codes tried on the smoke run were dropped, because nothing told them
+>   apart.**
+>   - Level 1 or a particular case is in 13 of its 14 reasonings, and the
+>     governing rule's identifier in all 14.
+>   - At each of the 6 tickets that have a rule a cut by would change, that rule
+>     stands within 300 characters of a containment word.
+>
+>   The reasoning walks every rule and argues containment about all of them. What
+>   sets one call apart is whether it engages T1.
+> - **Five gates stood before any write.**
+>   - Every such escalation is governed by `H04` or `H05`, and its ticket lies
+>     first in that rule's region.
+>   - Each call's governing rule, class and verdict are Stage C's.
+>   - Each call keeps its reasoning and its payload.
+>   - The codebook gives its development counts on the smoke run.
+> - **One part was added after the first run**, in `1be27c8`: each escalation's
+>   cause, and the queue the base had decided. It carries no expectation and moves
+>   no clause. The five clauses came back the same from both commits.
+>
+> Not a signed row; no verdict moves.
+> - **The record** is [`oncall.json`](oncall.json). It keeps every such call's
+>   quotes of T1, the passage where its answer is composed, and its note, in the
+>   record's Spanish.
+> - **Its `_env`** names `1be27c8`, with `git_dirty` and `code_dirty` false. Its
+>   code digest is `baf839d592e56583`.
+
+### 1. What each first call cut, and what it was answering
+
+| run | case | governing rule | the draft | cut by | the condition it adds | escalated as | the base had decided | verdict |
+|---|---|---|---|---|---|---|---|---|
+| `v1c r1` | 257 | `H05` | cut by one rule | `H20` | product dashboard | error | `T2_TECHNICAL` | born |
+| `v1c r1` | 1432 | `H04` | cut by one rule | `H07`, `H15`, `H16` | product api | error | `T3_ENGINEERING` | born |
+| `v1c r1` | 1951 | `H04` | whole | — | — | error | `T2_TECHNICAL` | born |
+| `v1d r1` | 257 | `H05` | whole | — | — | error | `T2_TECHNICAL` | unplaced |
+| `v1d r1` | 1432 | `H04` | cut by one rule | `H07`, `H15`, `H16` | product api | error | `T3_ENGINEERING` | born |
+| `v1d r1` | 1951 | `H04` | cut by one rule | `H17`, `H18` | product integrations | error | `T2_TECHNICAL` | unplaced |
+| `v1c r2` | 954 | `H04` | whole | — | — | error | `ACCOUNT_MANAGER` | born |
+| `v1d r2` | 710 | `H05` | cut by one rule | `H17`, `H18` | product integrations | conflict | none | unplaced |
+| `v1d r2` | 954 | `H04` | whole | — | — | error | `ACCOUNT_MANAGER` | born |
+| `v1c r3` | 710 | `H05` | whole | — | — | error | `T3_ENGINEERING` | born |
+| `v1c r3` | 1432 | `H04` | cut by one rule | `H07`, `H15`, `H16` | product api | error | `T3_ENGINEERING` | born |
+| `v1c r3` | 1951 | `H04` | whole | — | — | error | `T2_TECHNICAL` | born |
+| `v1d r3` | 710 | `H05` | cut by one rule | `H17`, `H18` | product integrations | error | `T3_ENGINEERING` | born |
+| `v1d r3` | 1432 | `H04` | cut by one rule | `H07`, `H15`, `H16` | product api | error | `T3_ENGINEERING` | born |
+| `v1d r3` | 1951 | `H04` | cut by one rule | `H17`, `H18` | product integrations | error | `T3_ENGINEERING` | born |
+
+- **Every cut is its governing rule's region cut by the first lower listed rule
+  the ticket matches that a cut changes** (Q1 holds).
+  - That is `H07` at case 1432, `H17` at cases 1951 and 710, and `H20` at case
+    257 under v1c.
+  - Each cut adds one condition, the product of that rule. Other listed rules
+    give the same intersection: `H15` and `H16` at case 1432, and `H18` at cases
+    1951 and 710.
+- **At case 1432 both arms cut alike**, in all four first calls (Q2 holds).
+- **14 of the 15 escalations were reported errors.** The base had decided each of
+  those tickets, wrongly, to `T2_TECHNICAL`, `T3_ENGINEERING` or
+  `ACCOUNT_MANAGER`. The fifteenth, v1d r2's at case 710, was a conflict.
+- **Every first call was told the ticket is an impasse.** The system prompt
+  opens, in translation, *"The symbolic engine could not decide this ticket"*.
+  The user message heads the ticket *"TICKET AT AN IMPASSE"*. The channel tells
+  the proposer nothing else.
+
+### 2. What the notes say
+
+- **Every cut's note frames the draft as the end of a conflict.**
+  - It names the governing rule and the crossing rule of another queue, and says
+    the draft lies inside both.
+  - It says the draft wins by containment, with no side declared.
+  - The codebook counts 8 of the 9 cuts (Q5 holds). The ninth, v1d r3's at case
+    1432, says it wins *"por contencion"*, a word the codebook did not carry.
+
+  v1d r1's note at case 1432, in translation:
+
+  > A rule that resolves the overlap between H04 (severity=1, enterprise ->
+  > ONCALL) and H07 (severity=1, api -> T3). Being a particular case of both, it
+  > wins automatically by containment.
+
+- **Every whole draft's note frames the draft as the governing rule**, the
+  policy's or the manual's, and declares priority over the crossing rules. v1d
+  r2's at case 954, in translation:
+
+  > This rule captures the case of severity 1 with an enterprise customer, which
+  > under the company's policy must go to ONCALL_ESCALATION (H04). Priority is
+  > declared against H13 (enterprise with prior_tickets_30d>=5), H20 (dashboard
+  > with severity<=2) and H21 (pt with severity<=2), because those rules overlap
+  > without containment, and rule H04 must prevail for coming earlier in the
+  > manual's order.
+
+So the first call answers the impasse it is told of in one of two ways. It writes
+the intersection, which wins by containment, or the governing rule whole, with
+sides declared. T1 asks for the second.
+
+### 3. Whether the reasoning engaged T1
+
+| run | case | the draft | `T1` | `T1e` | reads T1 | `INSIDE` in the note | reasoning, characters | reasoning tokens |
+|---|---|---|---|---|---|---|---|---|
+| `v1d r1` | 257 | whole | 1 | 0 | yes | 0 | 21,199 | 5,329 |
+| `v1d r1` | 1432 | cut by one rule | 1 | 0 | yes | 1 | 9,554 | 2,440 |
+| `v1d r1` | 1951 | cut by one rule | 0 | 0 | no | 2 | 22,826 | 5,728 |
+| `v1d r2` | 710 | cut by one rule | 0 | 0 | no | 1 | 21,640 | 5,498 |
+| `v1d r2` | 954 | whole | 0 | 0 | no | 0 | 14,402 | 3,615 |
+| `v1d r3` | 710 | cut by one rule | 3 | 0 | yes | 1 | 15,388 | 3,930 |
+| `v1d r3` | 1432 | cut by one rule | 0 | 0 | no | 0 | 18,521 | 4,655 |
+| `v1d r3` | 1951 | cut by one rule | 0 | 0 | no | 1 | 12,973 | 3,308 |
+
+- **v1d's reasoning quoted T1 in 3 of its 8 first calls**: 2 of its 6 cuts and 1
+  of its 2 whole drafts. In the smoke run's first calls it did in 6 of 14. No
+  reasoning said T1 in English.
+- **Four of v1d's six cuts never quoted it** (Q3 holds).
+- **v1d r2's whole draft at case 954 did not quote it either** (Q4 fails). Its
+  note reads the governing rule as the policy's, as v1c's whole drafts do,
+  without T1.
+- **Where a cut quoted T1, the reasoning read its second sentence as licence.**
+  T1 says not to add conditions to lie inside a lower rule. Its reason, in
+  translation: *"a rule inside another only beats that other, and the rest of
+  its region stays with rules of other queues"*.
+  - **v1d r1 at case 1432**, in translation: *"This means that if our rule is a
+    subset of H04, it will only beat H04, but it could also overlap other rules.
+    In this case it is also a subset of H07, so it will also beat H07."*
+  - **v1d r3 at case 710** read T1's first sentence as *"take that rule (H05)
+    and then, if needed, add conditions so that it is more specific than the
+    ones that overlap. That is what we have done."* Of the second, it asked
+    whether a subset of H05 would fail to beat H17, and answered: *"No, it is
+    also a subset of H17"*.
+- **Where the whole draft quoted T1**, v1d r1 at case 257, the reasoning asked,
+  in its own English: *"so the rule we write should be exactly H05?"*. The round
+  then left that draft unplaced.
+
+### 4. The rounds that refused v1d's drafts
+
+| run | case | the draft | rules listed | left without a side | of which queue | placed above | placed below |
+|---|---|---|---|---|---|---|---|
+| `v1d r1` | 257 | whole | 14 | 12 | `T2_TECHNICAL` 6, `T3_ENGINEERING` 3, `BILLING_SPECIALIST` 2, `SECURITY_INCIDENT` 1 | 2 | 0 |
+| `v1d r1` | 1951 | cut by one rule | 6 | 4 | `SECURITY_INCIDENT` 3, `T2_TECHNICAL` 1 | 2 | 0 |
+| `v1d r2` | 710 | cut by one rule | 3 | 2 | `SECURITY_INCIDENT` 2 | 1 | 0 |
+
+- **The whole draft of `H05` met 14 rules and placed 2.** It left 12 without a
+  side, rules of four queues.
+- **The two refused cuts by `H17` left out rules of `SECURITY_INCIDENT`**: three of
+  four, and two of two.
+
+### The expectation
+
+| clause | what it says | reading | verdict |
+|---|---|---|---|
+| Q1 | every v1d cut is its governing rule's region cut by the first lower listed rule the ticket matches that a cut by would change | 6 of 6 | holds |
+| Q2 | at every ticket where both arms' first calls cut, every cut there is by the same rules | case 1432: H07/H15/H16 | holds |
+| Q3 | in at least 4 of v1d's cuts the reasoning neither quotes T1 nor says it in English | 4 of 6 | holds |
+| Q4 | in both of v1d's whole drafts on tickets of the queue the reasoning quotes T1 or says it in English | 1 of 2 | **fails** |
+| Q5 | at least half of the cuts, over both arms, carry a note that says the draft lies inside another rule | 8 of 9 | holds |
+
+**The drafter expected all five to hold, bet on Q3, trusted Q1 most and Q4
+least.** Four held, and Q4 failed.
+- **What the account got right.**
+  - The cuts are the ones `PLAN_PLACEMENT.md`'s runs made, by the first lower
+    listed rule a cut changes.
+  - The notes say they win by containment.
+  - Most cuts never quoted T1.
+- **What it got wrong.** A whole draft also came from a reasoning that never
+  quoted T1, as the caution on Q4 said it might. And T1 did not only go unread.
+  Where a cut quoted it, its second sentence was read as the cut's reason.
+- **What it did not foresee.** The escalations were reported errors, framed to the
+  proposer as impasses. The notes answer an impasse.
+
+### What it says
+
+- **The first call answers the impasse it is told of.**
+  - At the queue's tickets the base had decided a wrong queue, and the first call
+    is told the engine could not decide.
+  - Its notes look for the conflict, and find it where the governing rule
+    overlaps a crossing rule of another queue.
+  - The cut is the intersection of the two, which level 1 orders with no side
+    declared.
+- **T1 reached few of these first calls, and where it reached a cut, it was read
+  as permission.** Its second sentence says what a nested rule wins. The
+  reasoning took that for the cut's justification: inside both rules, the draft
+  beats both. Whether T2's wording, which names the cut and asks for nothing,
+  would be read otherwise is not tested.
+- **The one whole draft of `H05` that T1 produced was refused**, for leaving rules
+  of other queues without a side.
+- **What it leaves.**
+  - **The frame.** Set an escalation that tells the proposer the base decided
+    wrongly, and what it decided, beside one that calls the ticket an impasse.
+    Calls.
+  - **T1's second sentence**, rewritten so that it cannot be read as a cut's
+    licence. Calls.
+  - **The four cuts that never quoted T1.** Whether their reasoning reached the
+    paragraph at all is not read beyond the codebook. The record keeps the
+    passage where each composed its answer.
 
 ---
 
@@ -943,6 +1170,13 @@ results_whole/loop_{v1c,v1d}_r{1,2,3}.json
                                  what v1c's round left out and why, its calls, attempts,
                                  seconds and reasoning, and rung 2's metrics
 results_whole/score.json         Stage C: the six verdicts with their runs, and WR-g
+results_whole/oncall.json        POST-RUN: whole/oncall.py's reading of every first call on a
+                                 ticket of ONCALL_ESCALATION in the six runs: its cut, the
+                                 condition it adds, its escalation's cause and the base's
+                                 decision, its note and sides, its codes, its quotes of T1,
+                                 the passage where its answer is composed, its placement
+                                 round, the codebook with its development counts, the five
+                                 gates and the expectation's five clauses
 ```
 
 What OpenRouter billed was read by generation id, and is kept outside git.
