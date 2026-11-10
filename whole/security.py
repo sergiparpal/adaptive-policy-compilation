@@ -98,6 +98,18 @@ this queue in any run of either plan, any point's winner, any curve, and which
 rule of another queue decides the lost points.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHERE THE LOST POINTS LIE
+--------------------------------------------------------------------------
+The first run found the queue's rules narrow by a tier, a severity or a product.
+The rest of the losing part went to a broad rule of `T2_TECHNICAL`, drafted at a
+ticket of `H03`. So, for every run, this part reads the queue's lost points by
+customer tier, by severity and by product. Then where they lie can be read off
+the record, not worked out from the rules' conditions.
+
+It was written after the five clauses above had been read: S1, S2, S4 and S5
+hold, and S3 fails. It carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-10, after Stage C. The expectation
@@ -142,6 +154,10 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-10, after Stage C. The expectation in the "
     "module's docstring was written and committed before the reading ran. Not a signed row; "
     "no verdict moves.")
+ADDED = (
+    "Added after the first run, after its five clauses were read: each run's lost points of "
+    "the queue by customer tier, by severity and by product. No expectation; no clause moves.")
+BY = ("customer_tier", "severity", "product")
 
 
 def record_path():
@@ -238,7 +254,15 @@ def read_one(record: dict, right: int, stage_c_drafts: list[dict] | None, space,
                              "passes": stage_c_agrees(calls)})
     run["parts"] = split
     run["first_calls"] = calls
+    run["lost_by_value"] = by_value(L.ways(final, truth, QUEUE)["lost"], space)
     return run
+
+
+def by_value(mask: int, space) -> dict[str, dict[str, int]]:
+    """ADDED AFTER THE FIRST RUN. A mask's points by each value of `BY`'s
+    attributes, the values it holds none of left out."""
+    return {a: {str(v): (mask & m).bit_count() for v, m in space.mask[a].items() if mask & m}
+            for a in BY}
 
 
 def losing_part(run: dict[str, Any]) -> str:
@@ -346,6 +370,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": stage_c["_env"].get("git_commit"),
                    "beside": str(pl_plan.score_path())},

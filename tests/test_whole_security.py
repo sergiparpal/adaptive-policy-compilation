@@ -90,6 +90,17 @@ class TestTheParts(unittest.TestCase):
         self.assertEqual(S.holding(engine, self.ps["H01"]), ["S1"])
         self.assertEqual(S.holding(MI.final_engine(record([S2, T])), self.ps["H01"]), [])
 
+    def test_where_the_lost_points_lie_added_after_the_first_run(self):
+        rec = record([S2, T])
+        lost = L.ways(MI.final_engine(rec), self.ps["H01"], SI)["lost"]
+        got = S.by_value(lost, SPACE)
+        self.assertEqual(set(got), set(S.BY))
+        self.assertEqual(set(got["customer_tier"]), {"business"})
+        self.assertEqual(sum(got["severity"].values()), lost.bit_count())
+        self.assertEqual(sum(got["product"].values()), lost.bit_count())
+        self.assertEqual(S.by_value(0, SPACE), {a: {} for a in S.BY})
+        self.assertIn("after the first run", S.ADDED)
+
     def test_one_part_read(self):
         rec = record([S2, T])
         got = S.by_part(rec, MI.final_engine(rec), SPACE, self.ps["H01"])
