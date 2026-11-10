@@ -60,6 +60,7 @@ up in four places at once.
 | **RL** · the loop with reasoning on | `PLAN_REUSE.md`'s loop run with level 3's manual and reasoning on, pinned to one provider, a blind first call and a placement round against the base, three runs an arm: under the standing trigger, and asked also where the base decides wrongly, to see whether what limits a reasoning loop is its trigger or the order its rules get — closed 2026-11-03 | [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md) |
 | **CH** · half the errors reported | `PLAN_REASONED_LOOP.md`'s loop run again with level 3's manual and reasoning on, pinned to one provider, under rung 4's feedback channel at coverage 1/2 beside the error arm again, three runs an arm alternating in one period, to see what a loop compiles from a trigger a deployment could have — closed 2026-11-07 | [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md) |
 | **PL** · the placement round | `PLAN_CHANNEL.md`'s channel arm run again with level 3's manual and reasoning on, pinned to another provider, three runs under v1b's placement round and three under one that lists only what the engine can still order, alternating, each pair under one set of draws, beside a same-day bridge of first calls asked of both providers, to see whether v1b's refusals were the protocol's and what the loop compiles without them — closed 2026-11-08 | [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) |
+| **WR** · the region asked for whole | `PLAN_PLACEMENT.md`'s v1c arm run again with level 3's manual and reasoning on, pinned to DeepInfra, beside v1d, whose first call asks for the governing rule's region whole, three runs an arm alternating, each pair under one set of draws, to see whether the loop's narrow rules were the first call's text and what whole first drafts compile — closed 2026-11-10 | [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -849,6 +850,44 @@ PYTHONHASHSEED=0 .venv/bin/python -m placement.run --bridge           # then the
 PYTHONHASHSEED=0 .venv/bin/python -m placement.run --arm v1c --rep 1  # then §2.4's order, one run at a time
 ```
 
+**[`PLAN_WHOLE.md`](PLAN_WHOLE.md) closed on 2026-11-10**: a first call that asks
+for the governing rule's region whole, beside v1c. Sergi signed §0 on 2026-11-09,
+before any of its figures existed.
+- **What it asked.** It ran `PLAN_PLACEMENT.md`'s v1c arm again at n=2000 on
+  rung 2's engine, with level 3's manual and reasoning on, every call pinned to
+  DeepInfra's fp8 endpoint. Three runs of each arm alternated, run `k` of each
+  under the draws of `PLAN_CHANNEL.md`'s c r`k`.
+  - **v1c** is that plan's arm, unchanged.
+  - **v1d** replaces one paragraph of v1c's first call by T1, which asks for the
+    region of the list's rule that governs the ticket, whole. It names no queue
+    and no rule.
+- **Why.** Read POST-RUN, `PLAN_PLACEMENT.md`'s narrow births were mostly the
+  governing rule's region cut by one listed rule, and the cuts cost the rarest
+  queue.
+
+Its record is
+[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md). Its gate
+reads that plan and no other, counts its signature line, and guards its three
+writers. `placement/`, `channel/`, `reasoned_loop/`, `manual/`, `blind/`,
+`authorship/`, `edges/`, `fidelity/`, `reuse/` and `rung2/` are called by it and
+not edited; its proposer and its asker are `placement/`'s, with that plan's pin.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same rules back. A paid run does not start without Sergi asking for it. A run
+took one and a half to six hours on DeepInfra, which refused no call for the
+rate. A run stopped by an outage resumes from its partial file with the same
+command.
+
+```bash
+python3 -m whole.run --dry-run                                    # WR-g1..WR-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m whole.sample                          # Stage A · the drafting reading, the transcriber and the references
+PYTHONHASHSEED=0 python3 -m whole.score                           # Stage C · WR-a to WR-f, and WR-g
+PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, one run at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1081,7 +1120,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_REASONED_RULE.md`'s, and the three of `reasoned_loop/`, which run
 > `PLAN_REASONED_LOOP.md`'s, and the three of `channel/`, which run
 > `PLAN_CHANNEL.md`'s, and the three of `placement/`, which run
-> `PLAN_PLACEMENT.md`'s.
+> `PLAN_PLACEMENT.md`'s, and the three of `whole/`, which run
+> `PLAN_WHOLE.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -2020,6 +2060,15 @@ adaptive-policy-compilation/
 │   ├── births.py            POST-RUN · whether the cut is why the loop's births are narrow
 │   └── cost.py              POST-RUN · what the cuts cost: each base's lost points by what was drafted for their rule
 │
+├── whole/                WR · a first call that asks for the governing rule's region whole, beside v1c
+│   ├── plan.py              the gate, §11's constants, the client and the pin imported from placement/; §0's lines
+│   ├── protocol.py          T1, v1d's messages and its proposer · the proposer's path
+│   ├── references.py        the drafting reading, whole(r) and the drafts' breadth, the text's relations, the transcriber
+│   ├── gates.py             WR-g1..WR-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   ├── run.py               Stage B · the smoke run and the six runs · spends · resumes · the proposer's path
+│   └── score.py             Stage C · WR-a to WR-f and WR-g, gated on PLAN_WHOLE.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2106,7 +2155,7 @@ adaptive-policy-compilation/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
-    results_reasoned_loop/  results_channel/  results_placement/
+    results_reasoned_loop/  results_channel/  results_placement/  results_whole/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

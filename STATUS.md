@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 8, 2026. **Not a history** — that is the four
+What is known, as of November 10, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -27,8 +27,9 @@ What is known, as of November 8, 2026. **Not a history** — that is the four
 [`results_first_match/FINDINGS_FIRST_MATCH.md`](results_first_match/FINDINGS_FIRST_MATCH.md),
 [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
-[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md) and
-[`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
+[`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
+[`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) and
+[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -77,7 +78,9 @@ with reasoning on, under the standing trigger and asked also on its errors, in
 under a channel that hears of half its errors, beside the error arm again, in
 `PLAN_CHANNEL.md`**: seven more, closed on 2026-11-07 — plus **the placement
 round that lists only what the engine can still order, beside v1b, in
-`PLAN_PLACEMENT.md`**: seven more, closed on 2026-11-08.
+`PLAN_PLACEMENT.md`**: seven more, closed on 2026-11-08 — plus **a first call
+asked for the governing rule's region whole, beside v1c, in `PLAN_WHOLE.md`**:
+seven more, closed on 2026-11-10.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -387,6 +390,32 @@ third recovers 61% of what full supervision buys, on corpus test.
 > So a round that asks no side against what the engine already orders loses no
 > run's policy to that question. What still loses the rarest queue is not the
 > round. [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md).
+>
+> **[NOTE 2026-11-10] Asked for the governing rule's region whole, the first
+> call writes it more often, and the rarest queue is still not compiled.**
+> [`PLAN_WHOLE.md`](PLAN_WHOLE.md) ran `PLAN_PLACEMENT.md`'s v1c again beside
+> v1d, three runs an arm, on DeepInfra. v1d is v1c with one paragraph of the
+> first call replaced: it asks for the region of the list's rule that governs
+> the ticket, whole.
+>
+> - **The first call wrote the region whole more often, and not three times in
+>   four** (`WR-a` refuted). v1d's median run held its part in 28 of 51 drafts,
+>   against v1c's 35 of 80 in the same period. About one draft in four was
+>   still the governing rule's region cut by one rule.
+> - **The rarest queue was not compiled** (`WR-b` refuted), **and v1d recalled
+>   less of it than v1c, run for run** (`WR-f` refuted). At the queue's tickets
+>   v1d cut 6 times in 8, and three of its drafts there ended unplaced.
+> - **v1c lost the queue again on the new period, thinly**
+>   (`WR-e` holds, thin). Its median recall is 11/15, and one of its runs
+>   recalled all of it.
+> - **Elsewhere the whole drafts paid** (`WR-d` holds). v1d's median base
+>   decides 0.9574 of the space, and v1c's 0.9192. Every v1c base lost a sixth
+>   of `SECURITY_INCIDENT`.
+> - **The round refused v1d's drafts about as often as v1c's**
+>   (`WR-c` holds, thin).
+>
+> So a text that asks for the region whole moves the first call, and not where
+> the rarest queue needed it. [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
 
 ---
 
@@ -435,7 +464,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and seventy-four rows have been signed before the figures they name existed. This
+**One hundred and eighty-one rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -494,7 +523,8 @@ a count behind it.
 | **RL** · the loop with reasoning on (§0 of `PLAN_REASONED_LOOP.md`) | 8 | 7 | **3** | 0 | 4 | 1 |
 | **CH** · half the errors reported (§0 of `PLAN_CHANNEL.md`) — *two rows replicate closed ones* | 7 | 6 | **1** | 0 | 5 | 1 |
 | **PL** · the placement round (§0 of `PLAN_PLACEMENT.md`) — *one row replicates a closed one* | 7 | 6 | **2** | 0 | 4 | 1 |
-| **total** | **174** | **146** | **57** | **2** | **87** | **26** |
+| **WR** · the region asked for whole (§0 of `PLAN_WHOLE.md`) — *one row replicates a closed one* | 7 | 6 | **3** | 0 | 3 | 1 |
+| **total** | **181** | **152** | **60** | **2** | **90** | **27** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
@@ -502,7 +532,7 @@ a count behind it.
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
 `QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`, `CH-c`, `PL-e`,
-`PL-f`.
+`PL-f`, `WR-a`, `WR-b`, `WR-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -511,10 +541,11 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `J-e`, `N-a`, `N-e`, `Z-c`, `Z-e`, `G-a`, `G-c`, `G-d`, `X-a`, `X-b`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
 `FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`, `CH-a`, `CH-b`,
-`CH-d`, `CH-e`, `CH-f`, `PL-a`, `PL-b`, `PL-c`, `PL-d`.
+`CH-d`, `CH-e`, `CH-f`, `PL-a`, `PL-b`, `PL-c`, `PL-d`, `WR-c`, `WR-d`,
+`WR-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`.
+`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -537,16 +568,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 57 of 146 = **39.0%**
-refuted; without them, 55 of 140 = **39.3%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 60 of 152 = **39.5%**
+refuted; without them, 58 of 146 = **39.7%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.3 points the flattering way, which is exactly why saying so is not optional.
+0.2 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 57 of 139 = **41.0%** and 55
-of 133 = **41.4%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 60 of 145 = **41.4%** and 58
+of 139 = **41.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -722,6 +753,18 @@ of 133 = **41.4%**, which is the reading the calibration note should take.
 > - **The four ratios moved with the rest.** The table, the named lists, the
 >   count in the heading and the ratios moved together, and the test above read
 >   them. The gap between the first two is still 0.3 points as printed.
+>
+> **[NOTE 2026-11-10] Recomputed with the `WR` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: three refuted and three
+> held. One was reported. None of its bands was set on a development set.
+> - **One of its rows is a replication.** `WR-e` replicates `PL-f` on a new
+>   period. Its line is `PL-f`'s, drafted after that row's figures had been
+>   seen, as §0 of `PLAN_WHOLE.md` says, and the row's mark says so.
+> - **It stays in every ratio.** It was signed before its own figures existed.
+> - **The four ratios moved with the rest.** The table, the named lists, the
+>   count in the heading and the ratios moved together, and the test above read
+>   them. The gap between the first two is now 0.2 points as printed, and the
+>   paragraph that gives it says so.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -779,6 +822,8 @@ which owns all eight; and `CH` from
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
 which owns all seven; and `PL` from
 [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
+which owns all seven; and `WR` from
+[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
 which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
@@ -2788,6 +2833,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      none under v1c.
 
    The FINDINGS' section *What the cuts cost*.
+   **[NOTE 2026-11-10] Measured by `PLAN_WHOLE.md`: a first call asked for the
+   governing rule's region whole.** v1d is v1c with the first call's paragraph
+   on the base replaced by one that asks for that region whole.
+   - **It wrote the region whole more often, and still cut** (`WR-a` refuted).
+     Its median run held its part in 28 of 51 drafts, against v1c's 35 of 80 in
+     the same period. About one draft in four was still a cut by one rule.
+   - **Where the whole drafts were born, they paid** (`WR-d` holds). Its median
+     base decides 0.9574 of the space, and v1c's 0.9192, which lost a sixth of
+     `SECURITY_INCIDENT` in every run.
+   - **The round did not refuse them much more** (`WR-c` holds, thin).
+   - **What is open now** is why the first call still cuts when told not to,
+     and most at the rarest queue's tickets, as the next item says. The system
+     prompt's level-1 sentence still invites a cut. T2, and a round that accepts
+     a partial placement, are not run.
+   [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -2925,6 +2985,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
    [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
    *Whether the cut is the provider's*.
+   **[NOTE 2026-11-10] Asked for the region whole, the loop did not compile it
+   either.** `PLAN_WHOLE.md` ran v1c again beside v1d, whose first call asks for
+   the governing rule's region whole, on DeepInfra.
+   - **v1d's median recall of the queue over the space is 1/3**
+     (`WR-b` refuted), **and run for run it is below v1c's or level with it**
+     (`WR-f` refuted): −3/5, 0 and −2/3.
+   - **At the queue's tickets the paragraph did not take.** v1d cut 6 times in
+     8, and three of its drafts there ended unplaced, its one whole draft of
+     `H05` among them.
+   - **v1c recalled more of the queue here than in `PLAN_PLACEMENT.md`**: 11/15
+     at the median (`WR-e` holds, thin), and all of it under run 3's draws.
+
+   So the cut at the rarest queue's tickets is not the text's alone. Why v1d cut
+   there more often than v1c is not read.
+   [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

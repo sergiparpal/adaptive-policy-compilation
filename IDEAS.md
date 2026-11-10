@@ -436,6 +436,10 @@ against, a threshold a next run would have to clear.
   each of those escalations the draft was its governing rule's region cut by a
   lower listed rule, or by several products, and the rounds refused most of the
   cuts. See the same section.
+  **[NOTE 2026-11-10] Nor the text alone.** Under `PLAN_WHOLE.md`, a first call
+  asked for the governing rule's region whole cut at the queue's tickets six
+  times in eight, and its bases recall less of the queue than v1c's, run for run
+  (`WR-f` refuted). See *What `PLAN_WHOLE.md` opens*.
 - **Online ordering.** It was Step B of rung 4 and it was decided not to run it:
   the asymmetry already answers the question and online ordering would only
   degrade things further. It is noted that it is a different problem from Step A
@@ -445,6 +449,62 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_WHOLE.md` opens and does not resolve
+
+Closed November 10, 2026. It ran `PLAN_PLACEMENT.md`'s v1c arm again beside v1d,
+with level 3's manual and reasoning on, pinned to DeepInfra: three runs an arm,
+alternating, run `k` of each under the draws of `PLAN_CHANNEL.md`'s c r`k`. v1d's
+first call replaced v2b's paragraph on the base by T1, which asks for the region
+of the list's rule that governs the ticket, whole. The first call wrote the
+region whole more often and still cut about one draft in four. The whole drafts
+paid outside the rarest queue, and the rarest queue was not compiled. What that
+leaves:
+
+- **Why the first call still cuts when told not to.** About one v1d draft in four
+  was the governing rule's region cut by one listed rule, and at the rarest
+  queue's tickets six in eight. Level 3's system prompt still says a rule inside
+  another needs no declaration. Which text the cuts follow is read in the calls'
+  notes and reasoning, which the records keep whole. Free on the records.
+- **Why v1d cut more than v1c at the rarest queue's tickets.** Eight drafts stand
+  against seven, in one period. Each first call asked several times at the
+  queue's seven tickets, under both texts, would set the spread beside the
+  difference. Calls.
+- **Why every v1c base lost a sixth of `SECURITY_INCIDENT` here.**
+  `PLAN_PLACEMENT.md`'s v1c bases lost almost none of it. The loss lies under
+  `H01` or `H02`, where no first-call draft of the run held its part. Which
+  drafts were born there, and when, is free on the records.
+- **The whole draft the round refused.** v1d's one whole draft of `H05` ended
+  unplaced. A round that accepts a partial placement and leaves the unplaced
+  pair to conflict (§2.2 of `PLAN_WHOLE.md`, `ARBITRATION_REPORT.md` §7's P2)
+  is another plan. Calls.
+- **T2**, the text that names the cut and asks for nothing (§2.1 of
+  `PLAN_WHOLE.md`). Calls.
+- **The level-1 sentence itself.** The system prompt's sentence that a rule
+  nested in another needs no declaration, rewritten to say that such a rule
+  wins only inside the other, beside T1. Another plan. Calls.
+- **T1's ambiguity** (§6.10 of `PLAN_WHOLE.md`). *El resto de su región* can be
+  read as the draft's region or as the governing rule's. The notes may say how
+  it was read. Free on the records, in part.
+
+Lessons it leaves:
+
+- **A text can move the drafts and miss the tickets a row reads.** T1 raised the
+  share of whole drafts within the period, and the rarest queue's recall fell run
+  for run. A plan that bands a share of drafts should band it at the tickets that
+  carry its target too, beside the share over all.
+- **An expectation changed by a scorer's test on closed records can still be
+  wrong.** The drafter expected all six rows to hold after such a test moved one
+  expectation, and three held. The test says how the code reads closed records,
+  not how the next runs come out.
+- **A supervisor that reads an empty list of pull requests as none** opened its
+  pull request on its first push, which `PLAN_PLACEMENT.md`'s had not.
+- **A check that matches a process by its command line can match the command
+  that launches it.** The agent's first launch of the supervisor ran `pgrep` in
+  the same shell line that named the script, matched itself, and launched
+  nothing. Check and launch in separate commands.
 
 ---
 
@@ -499,6 +559,8 @@ that leaves:
     - **Why the request cuts.** Both providers cut where the first lower listed
       rule a cut changes adds the ticket's product. A text asking for the
       governing rule's region whole is another plan. Calls.
+      **[NOTE 2026-11-10] Asked by `PLAN_WHOLE.md`**, on DeepInfra: it cut at
+      the queue's tickets six times in eight. See *What `PLAN_WHOLE.md` opens*.
   - ~~**Whether the cut is why births are narrow.**~~ 11 of the queue's 15 drafts in
     the six runs are their governing rule's region cut by exactly the first lower
     listed rule a cut changes. Whether the loop's other narrow births are such
@@ -519,6 +581,7 @@ that leaves:
 
       What it leaves is in *Why the loop writes narrow rules*, below: a first
       call asking for the region whole.
+      **[NOTE 2026-11-10] Asked by `PLAN_WHOLE.md`.** See that item.
     - **The narrow births that are no cut where one was possible.** 46 in this
       plan's runs. Free on the records.
 - **The two refusals v1c keeps.**
@@ -546,6 +609,13 @@ that leaves:
   later draft to write their region whole. Outside that queue v1c's bases lose
   under one point in a hundred of the space. So such a plan's rows would read
   the rarest queue first. `FINDINGS_PLACEMENT.md`, *What the cuts cost*.
+  **[NOTE 2026-11-10] Narrowed by `PLAN_WHOLE.md`.** Asked for the governing
+  rule's region whole, the first call wrote it more often and still cut about
+  one draft in four (`WR-a` refuted). At the rarest queue's tickets it cut six
+  times in eight, and the queue was not compiled (`WR-b` and `WR-f` refuted).
+  Where the whole drafts were born they paid (`WR-d` holds). What is left is
+  why the first call still cuts when told not to: see *What `PLAN_WHOLE.md`
+  opens*. `results_whole/FINDINGS_WHOLE.md`.
 - **The direction of the placed edges.** In both arms they pointed at the better
   rule less often than a fixed ranking of the queues, by a wider gap than in
   `PLAN_CHANNEL.md`'s runs. Whether the round, the provider or the period
@@ -2198,6 +2268,9 @@ So a better detector would feed drafts the loop cuts. A first call that writes t
 governing rule's region whole comes first: *Why the loop writes narrow rules*,
 under *What `PLAN_PLACEMENT.md` opens*. `FINDINGS_PLACEMENT.md`'s POST-RUN
 sections carry the figures.
+**[NOTE 2026-11-10] Asked by `PLAN_WHOLE.md`.** Told to, the first call wrote
+the region whole more often and still cut, most at the rarest queue's tickets
+(`WR-a` refuted). See *What `PLAN_WHOLE.md` opens*.
 
 **What a plan for it would have to settle**, from the adjudication:
 - **What the auditor knows.** The conversation gave it the queues' descriptions,
