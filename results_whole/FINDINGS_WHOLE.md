@@ -8,6 +8,8 @@ its own: `eb1fa29` on `main`.
 - **The six runs** reached it in #221, merged on 2026-11-10.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reach it in #222, the pull request this record was opened in.
+- **The POST-RUN reading of why v1d cut at the rarest queue's tickets** reached
+  it in #223, merged on 2026-11-10.
 
 Every record names in its `_env` the commit it was written from. Seven were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -35,11 +37,11 @@ signature.
 > **[NOTE 2026-11-10] One more record, written after Stage C by code added
 > after it.** [`oncall.json`](oncall.json) is the POST-RUN reading of why v1d
 > cut at the rarest queue's tickets.
-> - **It was written from `1be27c8`**, on the branch of the pull request it was
->   opened in. Its section below names its checks.
+> - **It was written from `1be27c8`**, on the branch of #223, which is `5e4200f`
+>   on `main`. Its section below names the pair's checks.
 > - **Its code digest is `baf839d592e56583`**, not the package's, because
->   `whole/oncall.py` was added after Stage C. The modules Stage C ran did not
->   change.
+>   `whole/oncall.py` was added after Stage C. `main` computes it at `5e4200f`.
+>   The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -958,10 +960,10 @@ whose rule was not born, unplaced or refused.
 > - the placement round that followed.
 >
 > - **The codebook and the expectation were committed before any figure of the
->   reading existed**, in `a00187e`, on the branch of this reading's pull
->   request. The codebook was frozen on the smoke run's 14 first calls. The
->   drafter had seen no condition, note, side, reasoning or placement answer of
->   a first call on a ticket of the queue in the six runs.
+>   reading existed**, in `a00187e`, which is `43323fe` on `main`. The codebook
+>   was frozen on the smoke run's 14 first calls. The drafter had seen no
+>   condition, note, side, reasoning or placement answer of a first call on a
+>   ticket of the queue in the six runs.
 > - **Three codes tried on the smoke run were dropped, because nothing told them
 >   apart.**
 >   - Level 1 or a particular case is in 13 of its 14 reasonings, and the
@@ -977,16 +979,22 @@ whose rule was not born, unplaced or refused.
 >   - Each call's governing rule, class and verdict are Stage C's.
 >   - Each call keeps its reasoning and its payload.
 >   - The codebook gives its development counts on the smoke run.
-> - **One part was added after the first run**, in `1be27c8`: each escalation's
+> - **One part was added after the first run**, in `1be27c8`, which is `5e4200f`
+>   on `main`: each escalation's
 >   cause, and the queue the base had decided. It carries no expectation and moves
 >   no clause. The five clauses came back the same from both commits.
 >
 > Not a signed row; no verdict moves.
-> - **The record** is [`oncall.json`](oncall.json). It keeps every such call's
->   quotes of T1, the passage where its answer is composed, and its note, in the
->   record's Spanish.
-> - **Its `_env`** names `1be27c8`, with `git_dirty` and `code_dirty` false. Its
->   code digest is `baf839d592e56583`.
+> - **The record** is [`oncall.json`](oncall.json), committed in `1658269` on
+>   `main`. It reached `main` in #223. It keeps every such call's quotes of T1,
+>   the passage where its answer is composed, and its note, in the record's
+>   Spanish.
+> - **Its `_env`** names `1be27c8`, with `git_dirty` and `code_dirty` false.
+>   `1be27c8` and `5e4200f` have the same subject, the same tree and the same
+>   `git patch-id --stable`, and the GitHub API names #223 behind the `main`
+>   commit.
+> - **Its code digest**, `baf839d592e56583`, is the one `main` computes at
+>   `5e4200f`.
 
 ### 1. What each first call cut, and what it was answering
 
@@ -1100,8 +1108,8 @@ sides declared. T1 asks for the second.
 
 - **The whole draft of `H05` met 14 rules and placed 2.** It left 12 without a
   side, rules of four queues.
-- **The two refused cuts by `H17` left out rules of `SECURITY_INCIDENT`**: three of
-  four, and two of two.
+- **The two refused cuts by `H17` left out rules of `SECURITY_INCIDENT`**:
+  three of four, and two of two.
 
 ### The expectation
 
