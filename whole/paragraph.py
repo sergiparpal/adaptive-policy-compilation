@@ -368,8 +368,19 @@ def main(argv: list[str] | None = None) -> int:
         print("\ndry run: nothing written")
         return 0
     clauses = expectation(got["groups"])
-    record_path().write_text(json.dumps(st._rounded(jsonable({
-        "_env": environment(),
+    record_path().write_text(json.dumps(st._rounded(record_of(gate, checked, got, clauses)),
+                                        indent=2, default=str, ensure_ascii=False) + "\n")
+    for c in clauses:
+        print(f"  {c['clause']}: {'holds' if c['holds'] else 'fails'}")
+    print(f"\n-> {record_path()}\n  {describe()}")
+    return 0
+
+
+def record_of(gate: dict, checked: list[dict], got: dict[str, Any],
+              clauses: list[dict]) -> dict[str, Any]:
+    """The record: `_env` first, kept out of `jsonable`, which leaves out the
+    reading's private keys."""
+    return {"_env": environment(), **jsonable({
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
@@ -384,11 +395,7 @@ def main(argv: list[str] | None = None) -> int:
         "groups": got["groups"],
         "providers": got["providers"],
         "expectation": clauses,
-    })), indent=2, default=str, ensure_ascii=False) + "\n")
-    for c in clauses:
-        print(f"  {c['clause']}: {'holds' if c['holds'] else 'fails'}")
-    print(f"\n-> {record_path()}\n  {describe()}")
-    return 0
+    })}
 
 
 if __name__ == "__main__":
