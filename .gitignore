@@ -99,3 +99,6 @@ results_channel/*.partial.jsonl
 results_placement/*.partial.jsonl
 # And the smoke run and the runs of PLAN_WHOLE.md (whole/run.py).
 results_whole/*.partial.jsonl
+# And the smoke run, the passes and the rarest queue's session of PLAN_HALVES.md
+# (halves/ask.py).
+results_halves/*.partial.jsonl

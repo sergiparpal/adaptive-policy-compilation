@@ -70,13 +70,14 @@ REPO = Path(__file__).resolve().parent.parent
 # PLAN_EDGES.md's, `overlap` 2026-10-06 with PLAN_OVERLAP.md's, `blind`
 # 2026-10-10 with PLAN_BLIND.md's, `screen` 2026-10-14 with PLAN_SCREEN.md's,
 # `bound` 2026-10-16 with PLAN_BOUND.md's, `manual` 2026-10-21 with
-# PLAN_MANUAL.md's, and `apply` 2026-10-23 with PLAN_APPLY.md's.
+# PLAN_MANUAL.md's, `apply` 2026-10-23 with PLAN_APPLY.md's, and `halves`
+# 2026-11-10 with PLAN_HALVES.md's.
 CODE_ROOTS = ("harness", "rung2", "rung3", "rung4", "sensitivity", "ilp",
               "reuse", "fidelity", "edges", "primacy", "why", "authorship",
               "overlap", "blind", "screen", "bound", "ranking", "students",
               "escalations", "spotcheck", "unreached", "manual", "apply",
               "queue_alone", "first_match", "reasoned_rule", "reasoned_loop",
-              "channel", "placement", "whole", "run_experiment.py")
+              "channel", "placement", "whole", "halves", "run_experiment.py")
 
 DIGEST_CHARS = 16
 
