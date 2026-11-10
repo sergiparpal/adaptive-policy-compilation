@@ -8,6 +8,15 @@ comparator it reads. Every valid answer is classed by `whole/paragraph.py`'s
 `classed`, which is `placement/cost.py`'s `draft_class`, as `PLAN_WHOLE.md`'s
 Stage C classed a first-call draft (§0).
 
+**[Corrected before Stage C, 2026-11-10.] Validity is §0's.** An answer is valid
+when the call came back, after its retries, with a payload that parses, from the
+pinned provider. The asker's own flag, `valid` in each row, also asks for an
+action among the eight queues, which §0 does not, so an empty object came back
+flagged invalid: four of pass 1's first 126 answers were one. The scorer reads
+§0's definition, classes an empty object *no rule*, and keeps the asker's flag
+as `valid_as_recorded`; `HV-g` counts where the two differ. No figure of Stage C
+existed when this was corrected, and no answer was classed to find it.
+
 THE STATISTICS ARE §0's, and every one is a ratio of integer counts, compared
 with its line exactly.
 
@@ -100,13 +109,25 @@ def distance(rid: str, x: Fraction) -> Fraction:
 # The answers
 # ---------------------------------------------------------------------------
 
+def valid(r: dict[str, Any]) -> bool:
+    """§0's validity: the call came back, after its retries, with a payload that
+    parses, from the pinned provider. An empty object is such a payload, and its
+    class is *no rule*. The asker's flag also asks for an action among the eight
+    queues, which §0 does not (the correction above)."""
+    return (r.get("failure") is None and isinstance(r.get("payload"), dict)
+            and r.get("served_by") == plan.PROVIDER_NAME)
+
+
 def classed_rows(records: dict[str, dict]) -> list[dict[str, Any]]:
-    """Every answer of the sessions, with its class when it is valid."""
+    """Every answer of the sessions, valid as §0 reads it, with its class when it
+    is valid. The asker's flag is kept as `valid_as_recorded`."""
     out = []
     for session, rec in records.items():
         for r in rec["rows"]:
-            c = W.classed(r["ticket"], r.get("payload")) if r.get("valid") else None
-            out.append({**r, "session": session, "class": c})
+            ok = valid(r)
+            c = W.classed(r["ticket"], r.get("payload")) if ok else None
+            out.append({**r, "session": session, "valid_as_recorded": r.get("valid"),
+                        "valid": ok, "class": c})
     return out
 
 
@@ -298,6 +319,17 @@ def declarations(rows: list[dict]) -> dict[str, Any]:
     return out
 
 
+def askers_flag(rows: list[dict]) -> dict[str, Any]:
+    """By arm, the answers the asker flagged invalid that §0 reads as valid, and
+    their classes."""
+    out = {}
+    for arm in prompts.ARMS:
+        differ = [r for r in rows if r["arm"] == arm and r["valid"]
+                  and not r.get("valid_as_recorded")]
+        out[arm] = {"answers": len(differ), "classes": dict(Counter(r["class"] for r in differ))}
+    return out
+
+
 def breadths(rows: list[dict]) -> dict[str, Any]:
     _, cases, _, _, _ = references._world()
     out: dict[str, Counter] = {}
@@ -389,6 +421,7 @@ def reported(rows: list[dict], records: dict[str, dict], sample: dict) -> dict[s
                       for t, v in sorted(at_t7.items(), key=lambda x: int(x[0]))},
         "breadth": breadths(rows),
         "declarations": declarations(rows),
+        "the_askers_flag": askers_flag(rows),
         "beside_the_references": beside_the_references(rows, sample),
         "calls": calls(records),
     }
