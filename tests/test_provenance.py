@@ -20,6 +20,7 @@ for six days without anyone noticing (F1 and F7 of the optimizer audit), and
 from __future__ import annotations
 
 import json
+import os
 import re
 import unittest
 from pathlib import Path
@@ -27,6 +28,7 @@ from unittest import mock
 
 from harness import provenance
 from harness.provenance import code_digest, describe, environment
+from tests.git_env import isolated_git_env
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -137,8 +139,12 @@ class TestGit(unittest.TestCase):
     def test_outside_a_repo_it_does_not_blow_up(self):
         import tempfile
 
+        # Without this process's `GIT_*` variables: run from the hook of a
+        # linked worktree, `GIT_DIR` would find this repository from anywhere
+        # (`tests/git_env.py`).
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch.object(provenance, "REPO", Path(tmp)):
+            with mock.patch.object(provenance, "REPO", Path(tmp)), \
+                 mock.patch.dict(os.environ, isolated_git_env(), clear=True):
                 e = environment()
         self.assertIsNone(e["git_commit"])
         self.assertIsNone(e["git_dirty"])
@@ -168,6 +174,14 @@ class TestTheTwoDirtyFlags(unittest.TestCase):
     def setUp(self):
         import subprocess
         import tempfile
+
+        # No `GIT_*` variable of this process's, for the fake repo's git and for
+        # `environment()` and `describe()` over it: run from the hook of a
+        # linked worktree, `GIT_DIR` points into this repository
+        # (`tests/git_env.py`).
+        environ = mock.patch.dict(os.environ, isolated_git_env(), clear=True)
+        environ.start()
+        self.addCleanup(environ.stop)
 
         self._tmp = tempfile.TemporaryDirectory()
         self.repo = Path(self._tmp.name)
