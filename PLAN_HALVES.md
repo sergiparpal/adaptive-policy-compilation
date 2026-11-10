@@ -320,7 +320,7 @@ as `PLAN_REASONED_LOOP.md` calls it.
 | **HV-f** | **At the rarest queue's tickets, the first call without the overlap half writes the region at least a fifth more often than with it** | `W_h⁷ − W_v⁷` | **≥ 1/5** | **< 1/5** |
 | **HV-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each arm's `W` by pass and by session, pooled and by ticket, by governing rule and by true queue. Every valid answer by class, and by breadth against its governing region: the region itself, wider, or neither. The interaction, `(W_h − W_v) − (W_e − W_o)`. Each arm's share of answers of the wrong queue and of answers naming no valid rule. How often a prompt's two answers in the passes share a class, by arm, and at `T₇` the spread of its six. Each arm's answers at each ticket of `T₇`, by class and by the rule a cut is by. How many answers declare `beats` or `loses_to`, and how many of those cite the manual's identifiers. `e` beside `PLAN_REASONED_RULE.md`'s arm `w` at the 133 tickets it asked, and `v` beside each loop group at its tickets, across dates and providers. The calls: providers, finish reasons, tokens, reasoning tokens over the attempts that reached the model, seconds, and retries by cause. The notes and the reasoning, recorded whole and not coded | — | — |
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-11-10)**
 
 **Why each row, and why these lines.**
 
