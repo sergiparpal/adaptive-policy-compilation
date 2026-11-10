@@ -1,5 +1,27 @@
 # PLAN_WHOLE — a first call that asks for the governing rule's region whole, beside v1c, under half the errors reported
 
+> **[CLOSED 2026-11-10] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-09, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-10.
+> - **`WR-c` holds, thinly, `WR-d` holds, and `WR-e` holds, thinly.**
+> - **`WR-a`, `WR-b` and `WR-f` are refuted.**
+> - `WR-g` is reported.
+>
+> **The figures are owned by
+> [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md)**, and no
+> result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Two estimates of this file were far from what happened.** §1 expected v1d to
+> send more placement rounds, and longer ones, and it sent fewer, no longer. §1
+> expected one to two dollars for the six runs, and they were billed less. The
+> findings give both, in a dated erratum.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted and completed, and it has been false since 2026-11-09.
+> The line is kept unedited and this banner is its correction. The banner
+> touches no line of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-08, completed against its package on
 2026-11-09, unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
 and may not sign it. **Nothing runs and no record is written until Sergi has
