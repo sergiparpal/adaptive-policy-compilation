@@ -2265,6 +2265,201 @@ says how.
 
 ---
 
+## What the technical review of November 11, 2026 proposes and nothing has run
+
+*Added 2026-11-11.* Sergi brought a technical review, in Spanish, of a
+five-page report on the project. It had checked the report's figures against
+`main` at `2c287f8` and pull request #232 at `c219609`. It was adjudicated
+against the records the same day, and is not kept in the tree. This section
+carries what is new in it and in its adjudication, in English, as entries and
+not as a translation. The counts behind it were made by readings no script
+owns, so a POST-RUN script should own any of them before anything cites it.
+
+**Its figures reproduce.** The adjudication rebuilt the final bases of the 24
+reasoning loops and re-derived the review's figures from the records. All came
+back but three roundings, and five were cited from the wrong record. **Most of
+its critique was already this file's:**
+- compiling the 29 rules once writes the whole function (`G-a`);
+- the error trigger reads every arrival's label, as no deployment could;
+- the rarest queue is lost after detection (`PL-f` refuted), as the section
+  below says.
+
+**Five of its readings do not hold.**
+- **It read the half channel's lowest run as lost through the incorporation
+  of security rules.** `results_channel/lost.json` says the opposite: v1b's
+  placement round refused that queue's broad drafts while a `T2_TECHNICAL`
+  rule already held every keyword ticket.
+- **It took the moves of unchanged arms between periods as the resolution of
+  three runs**, and proposed reading no difference under five points. Only one
+  of its three moves is a clean replicate: `PLAN_PLACEMENT.md`'s v1c, run
+  again by `PLAN_WHOLE.md`, lower under all three draws. Another changed
+  provider and changes sign by draw, and the third has no draws to pair. A
+  shift of the whole period cancels in `PL-d` and `WR-d`, whose arms
+  alternated in one period and agree in sign under all three draws. What
+  limits those two is three pairs, not the period.
+- **It counted every arrival already asked with reasoning as evidence for a
+  reviewer.** Only the tickets of `PLAN_FIRST_MATCH.md` and
+  `PLAN_REASONED_RULE.md` got the direct question (`FM-e` holds). The rest met
+  the loop's rule-writing first call, picked by an impasse or by a trigger
+  that read the label.
+- **It set the declared priorities against a fixed ranking by direction
+  alone** (`RL-e` and `RL-f` refuted). `FINDINGS_REASONED_LOOP.md`'s headline
+  adds that in the error arm the same edges decide the order's room better
+  than the ranking in every run.
+- **It set `U-a`'s reuse against the exact-ticket floor alone.** `keep_k` with
+  three to five conditions reaches most of that range (`results/frontier.json`).
+  The frontier, which `U-b` reads, is the comparison.
+
+**What the adjudication adds to how the results read.**
+- **The proposer has been told where, never what.** Before 2026-10-21 it had
+  neither the policy nor a label, and named the wrong queue about half the
+  time (`PLAN_REUSE.md`'s Stage B). Since then the first match over level 3's
+  text is the policy at every point (`PLAN_MANUAL.md` §6.2), and nothing is
+  left to learn. Every report has carried which ticket, never which queue.
+  Rung 4 defined its channel as carrying the correct action
+  (`results4/FINDINGS4.md`), and `PLAN_CHANNEL.md` kept it out on purpose. So
+  *the system learns* has been untestable in every protocol run, not merely
+  unmeasured.
+- **The regime is degenerate, rather than the trigger unrealistic.** The
+  section below says an auditor at level 3 with reasoning on is nearly the
+  truth. A deployment holding the manual could run the error trigger itself,
+  at a call per audited decision, and the same deployment could compile once.
+  A write-up should name the regime, not only the trigger.
+- **Arrivals are in-sample under a trigger that reads labels.** A final base
+  is rescored on the arrivals it was written at, whose labels the error and
+  channel triggers read. The space is the only surface out of sample: channel
+  c r1 decides nearly every arrival right and under three quarters of the
+  space. The accuracy the loop had online, decision by decision, is the
+  arrivals figure to set beside the space.
+- **Under level 3 and reasoning, the impasse arm's silent errors come mostly
+  from rules born with the right queue**, in one run all of them. The review
+  counted it and the adjudication re-derived it. `FINDINGS_REUSE.md`'s erratum
+  of 2026-10-04 warns that a rule's birth does not say whose error it is. At
+  level 3 with reasoning on a re-ask is nearly the truth, so here it points at
+  scope, but no reading has asked those tickets again.
+- **DeepInfra's empty answers are a variable of the protocol.** The runs
+  pinned to DeepInfra got an empty object on dozens of calls, and the twelve
+  Baidu runs on none. An empty object parses, so the retry by cause does not
+  ask again, and the loop records a rule refused as invalid. They are most of
+  the invalid rules of `PLAN_PLACEMENT.md`'s and `PLAN_WHOLE.md`'s runs,
+  ticket 1432's among them. Counted beside the unplaced answers `PL-a` reads,
+  they leave v1c's escalations without a rule at about half of v1b's, rather
+  than the two fifths `PL-a` reads. `PLAN_HALVES.md` met them in its first
+  pass, which is why `halves/score.py` was corrected. `FINDINGS_PLACEMENT.md`
+  notes the bridge's one case, not the pattern.
+- **One ticket's story can mislead.** Ticket 1432's refused draft is the
+  report's example of the rarest queue lost. In the same run another reported
+  ticket of `H04` drafted most of the region and ended unplaced, and carries
+  more of the loss.
+- **A run's spread depends on its arm.** Within a period, an arm's three runs
+  lie within a point of each other in some arms and over twenty points apart in
+  others. An arm with a draw and a rare queue has a long tail: losing most of
+  one queue cost channel c r1 about a quarter of the space. No single rule of
+  points sizes every arm.
+
+**What it proposed, and what the adjudication asks of it.**
+- **A reviewer with the prose manual, asked once per arrival.** The proposer
+  keeps the 29 rules. The reviewer sees the ticket alone, with level 2's text
+  and reasoning on, and its answers are replayed over the stored runs for
+  free. That departs from the section below's default, an auditor at the
+  proposer's level, and §0 should say why: at level 3 the reviewer is nearly
+  the truth, and the channel is `PLAN_CHANNEL.md`'s again. A plan for it must
+  settle three things.
+  - **Its price.** The review priced it from `PLAN_FIRST_MATCH.md`'s
+    reasoning arm, which Baidu served. On `PLAN_PLACEMENT.md`'s same-day
+    bridge DeepInfra answered the same first calls more slowly, and two
+    answers a ticket double the count. Price it from a smoke run.
+  - **Its thresholds.** The review would decide on a count of the reviewer's
+    errors over the arrivals. What acts on a loop is what the replay counts:
+    errors detected and false alarms, on the stored decisions. With the prose
+    and reasoning off, most of the plain question's wrong decisions lay off
+    the three thresholds. The review's forecast, a few arrivals of `H14` and
+    nothing else, matched only some of the five compile asks.
+  - **What the replay cannot say.** A run's later decisions depend on what
+    its own trigger escalated, so the replay counts detection, not what
+    follows it. About half of the stored wrong decisions are the impasse
+    arm's, and about a third were already caught by a trigger that read the
+    label.
+- **Drift under a manual that lags.** Concept drift is listed under *Prior to
+  the four rungs* and has never run. The review's version keeps the manual in
+  the prompt and lets the policy move under it. It says the reassignment
+  would have to reach the proposer's prompt, and then the loop learns from
+  corrections: the first entry below asks that without drift.
+- **The rarest queue under the two first-call texts.** `WR-b` cannot tell the
+  text from the period: the control arm went from a fifteenth of the queue to
+  all of it between periods, under the same draws. The review proposed asking
+  each text ten times at each of the queue's seven tickets, in one period.
+  `PLAN_HALVES.md`'s session of the queue does not carry `PLAN_WHOLE.md`'s
+  text.
+- **Compile-once from the prose with reasoning on**, in a loop's period.
+  *What `PLAN_FIRST_MATCH.md` opens* already says nothing asks the prose with
+  reasoning. The review adds a rule: below 0.95 of the space, the loop regains
+  interest under a fixed manual.
+
+**What is new, and is left here.**
+1. **The learning regime: a report that carries the correct queue.** No LLM
+   proposer in this tree has been handed a label, and `FINDINGS_ILP.md` says
+   no baseline competes with the information the proposer had. Rung 4's
+   channel carried the correct action.
+   - **The design.** A weak manual, level 1's catalogue, with reasoning on. A
+     reported error carries its true queue into the first call.
+   - **Against what.** The same loop without the label. The model inducing
+     the rules from the same labelled tickets at once, and again every *k* of
+     them. The ILP inducer and the students on the same labels, matched on
+     information for the first time. The table of tickets, a low floor,
+     since few arrivals repeat an earlier one.
+   - **The question.** Does compiling ticket by ticket from corrections beat
+     inducing from the same corrections at once?
+   - **Why first.** It is the first protocol in which the system could learn
+     what its prompt does not hold, and drift under a lagging manual reduces
+     to it.
+   - **What it breaks.** The oracle's separation, on purpose and through the
+     trigger, as `PLAN_MANUAL.md` broke it through its texts.
+     `tests/test_oracle_separation.py` would have to watch the new path.
+   - **Its price.** About a channel run's: hours and cents on DeepInfra.
+2. **The transcriber under a reviewer's recorded answers.** Once a reviewer's
+   answers exist, the transcriber can run under a trigger that escalates
+   where the reviewer disagrees with the base. That gives a noisy trigger's
+   downstream effect for a proposer that writes the governing rule, with no
+   paid loop, and sizes a loop's band before the loop is bought. The
+   transcriber has run under coverages, delays and random escalation
+   (`PLAN_CHANNEL.md` §0, `PLAN_REASONED_LOOP.md`), never under noise or
+   recorded answers.
+3. **The same draws twice in one period.** Same-draw runs have been set side
+   by side only across periods, reported and not adjudicated
+   (`FINDINGS_WHOLE.md`). One channel arm run twice under each draw,
+   alternated in one period, would measure what nondeterminism alone does to
+   a final base: the yardstick a paired difference needs. Three runs more.
+4. **Whether a correction moves a misread threshold.** Every prose compile
+   ask read `H14`'s *muchisimos* as a higher count than the policy's
+   (`FINDINGS_MANUAL.md`). Asked with the prose and a few labelled tickets at
+   that boundary, does the model move it? Ask-only, cents. It is the smallest
+   case of the first entry, and a re-ask without the label may repeat the
+   misreading.
+5. **Two free readings.**
+   - **The final base's size against the policy's 29 rules**, beside the
+     space. The FINDINGS print each run's rules and no reading sets them
+     against each other; `FINDINGS_WHOLE.md` reports that v1d bore fewer
+     rules than v1c.
+   - **The cost frontier at three points:** compiling once, in one call; the
+     loop, in a couple of hundred; and the direct question at every arrival,
+     which level 3 has asked only at escalated tickets.
+
+**What it leaves for the next §0.**
+- **Compare across periods only against a control arm run in the same
+  period.**
+- **Read a paired effect on six alternated pairs or more**, or call it a band
+  reading in §0. With three pairs a sign test cannot reach 1/20, whatever the
+  effect's size.
+- **Call arrivals in-sample** when the trigger reads labels, and give the
+  online figure beside them.
+- **Say how an empty object from the pinned provider is retried, or
+  counted.**
+- **Check a one-ticket example against the run's other tickets of its
+  region.**
+
+---
+
 ## What the outside reading of November 2026 proposes and nothing has run
 
 *Added 2026-11-08.* Sergi brought a conversation about the project, held with an
