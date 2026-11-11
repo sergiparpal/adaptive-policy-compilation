@@ -1292,6 +1292,7 @@ What it covers, and why those things:
 | `test_prose_tables.py` | that a prose table says what the record that owns it says: `STATUS.md`'s scoreboard adds up — totals, the count in its heading, the named lists, the four ratios — and names each row with the verdict its JSON record gives; every FINDINGS' verdict table carries its record's verdicts, thin labels and figures in bold; and every verdict cited in parentheses by the documents that copy them is its record's. It reads tables and row names, never free prose, and each check is shown catching a tampered copy. **No figure is pinned**: it reads both sides |
 | `test_record_guard.py` | the guard on the records that cost money: what it refuses, that it aborts **before** spending a call, that the output name no longer collides across `--n`, and that the free records stay unguarded |
 | `test_call_record.py` | what a paid call keeps per attempt (generation id, provider, model, both finish reasons, tokens) from a response shaped like OpenRouter's and from the bare double; that the recorder changes no request and no response; that every paid client carries it and every record path keeps it; and that no call site in the tree goes unrecorded without a stated exemption |
+| `test_ask_pool.py` | `harness/ask_pool.py`, which asks a session's prompts several at a time. With one worker it writes what `halves/ask.py`'s loop writes, line for line, through the real asker under an SDK double: answers, isolated failures, the breaker, an interrupt and the resume. With several workers it gives the same rows by position, each with its own call's attempts, and never more asks in flight than workers. It also covers the breaker read in the order the asks come back, the drain after a stop, the hold while a worker waits, and that no loop imports it (hard rule 3). **No plan uses it yet** |
 | `test_automation.py` | that the hook and the CI workflow are still there and still run what they say they run |
 
 If a *snapshot* test fails, the expected number **is not updated**: you find out
@@ -1847,6 +1848,7 @@ adaptive-policy-compilation/
 │   ├── provenance.py        the `_env` block attached to every JSON
 │   ├── record_guard.py      refusal to overwrite the records that cost money
 │   ├── call_record.py       what each paid call says about itself, per attempt
+│   ├── ask_pool.py          a session's asks, several at a time; no plan uses it yet
 │   ├── ceiling_check.py     STEP 0 · ceiling of the specificity engine
 │   ├── default_rule_control.py  the same ceiling with the catch-all at its rank
 │   ├── subsumption_check.py partial order by semantic subsumption
