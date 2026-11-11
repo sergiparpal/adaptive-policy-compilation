@@ -3870,6 +3870,31 @@ all have the same root and are not closed by writing code.
     prose, so they are read on the scoreboard and in citations only.
   - **The signed plans and `PREDICTION.md`.** A check that failed on one of
     them would ask for an edit to a signed file.
+- **Asks several at a time** (November 11, 2026). `harness/ask_pool.py` asks a
+  session's prompts `workers` at a time.
+  - **What it is for.** Asks only: prompts fixed before the session, whose
+    answers no later prompt sees. Never a loop (hard rule 3).
+  - **No plan uses it yet.** Every ask plan so far ran one call at a time, as
+    signed, `PLAN_HALVES.md` included.
+  - **What it keeps.**
+    - the seeded order of dispatch;
+    - one worker per ask in flight, so that no row carries another call's
+      attempts;
+    - one writer;
+    - the resume by id;
+    - the breaker, read in the order the asks come back.
+
+    With one worker it writes what `halves/ask.py`'s loop writes, line for line,
+    and `tests/test_ask_pool.py` holds it there.
+  - **What a plan that uses it declares in §0**, before signature:
+    - the concurrency, and why;
+    - that its sessions are asks;
+    - that its seconds are read at that concurrency;
+    - that its smoke run measures pace and refusals for the rate at that
+      concurrency, with one call at a time as the fallback;
+    - how the breaker reads failures in a row.
+
+    The module's docstring says why each.
 
 ### What that leaves open
 
