@@ -1,5 +1,29 @@
 # PLAN_HALVES — which half of v2b's base paragraph makes the loop's first call cut
 
+> **[CLOSED 2026-11-12] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-10, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-12.
+> - **`HV-a`, `HV-b`, `HV-d` and `HV-e` hold.**
+> - **`HV-c` and `HV-f` are refuted.**
+> - `HV-g` is reported.
+>
+> **The figures are owned by
+> [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md)**, and
+> no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Two things went otherwise than this file says.** The findings give both.
+> - **The scorer was corrected once, before Stage C.** The asker's flag also
+>   asked that an answer name one of the eight queues, which §0's validity does
+>   not, and the scorer now reads §0's.
+> - **The asks took less time than §1 priced**: about a day, summed, against a
+>   day and a half to two. §1's money, one to two dollars, held.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted and completed, and it has been false since 2026-11-10.
+> The line is kept unedited and this banner is its correction. The banner
+> touches no line of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-10, completed against its package the
 same day, unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
 and may not sign it. **Nothing runs and no record is written until Sergi has
