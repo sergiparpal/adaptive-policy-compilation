@@ -1282,6 +1282,7 @@ The first command is blocking and writes nothing:
     python3 -m halves.ask --dry-run                                  # HV-g1..HV-g3; must pass first
     PYTHONHASHSEED=0 python3 -m halves.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m halves.score                         # Stage C, free, from the sessions
+    PYTHONHASHSEED=0 python3 -m halves.hidden                        # POST-RUN: why the hidden half cuts
     PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1  # then pass2 and oncall, never side by side
 
@@ -1294,6 +1295,16 @@ The next text has to say something else about the base it hides.
 **At the rarest queue's tickets, dropping the overlap clause gave nothing
 back** (`HV-f` refuted), as the drafter expected. The first half alone cut
 there as v2b's paragraph did.
+
+**Read POST-RUN, the hidden half cuts because it leaves the impasse
+unexplained.** Every first call is told the engine could not decide its ticket.
+Told that the base is empty, the model says the engine has no rule yet, and
+writes the governing rule's region. Told only that it is hidden, it supposes the
+engine holds the manual's rules. It reads the impasse as a conflict between two
+of them, and settles it by a cut that lies inside both, or by a side declared. A
+first-call text should say why the engine stopped. The codebook was frozen on
+one pass and its clauses read the others. Codes of the model's own account show
+which account goes with the cut, and not that it caused the cut.
 
 **A bet on which half moves lost again.** The drafter bet the cut on the overlap
 clause, on the strength of the cuts' notes, and §0 cited two failed bets of that

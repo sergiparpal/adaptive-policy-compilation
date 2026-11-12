@@ -474,6 +474,12 @@ base and nothing beside the first half. What that leaves:
   Under the empty base about a tenth did. Whether the model takes the manual's
   rules for the hidden base's is a reading of the notes and the reasoning, which
   the records keep whole. Free on the records.
+  **[NOTE 2026-11-12] Read POST-RUN.** Told that the base is hidden, the first
+  call reads the engine's impasse as a conflict between two of the manual's
+  rules, and the cut settles it by containment. Told that it is empty, it
+  mostly says the engine has no rule yet. So the next lever is a first-call text
+  that says why the engine stopped. `FINDINGS_HALVES.md`, *Why the hidden half
+  cuts*.
 - **Which of the first half's two sentences cuts**: that the base is not shown,
   or that the rule is for this ticket. Each alone, beside the empty base. Calls.
 - **The rarest queue.** At its seven tickets the first half cut as v2b's
