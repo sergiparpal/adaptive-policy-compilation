@@ -8,6 +8,8 @@ its own: `a2fda84` on `main`.
 - **The three sessions** reached it in #232, merged on 2026-11-11.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reach it in #235, the pull request this record was opened in.
+- **The POST-RUN reading of why the hidden half cuts** reached it in #236,
+  merged on 2026-11-12.
 
 Every record names in its `_env` the commit it was written from. Four were
 written on a pull request's branch, and the rebase merge gave each of those
@@ -53,11 +55,11 @@ code before Stage C ran.**
 > **[NOTE 2026-11-12] One more record, written after Stage C by code added
 > after it.** [`hidden.json`](hidden.json) is the POST-RUN reading of why the
 > hidden half cuts.
-> - **It was written from `e8b70aa`**, on that reading's branch. Its section
->   below names the commit that carries its codebook and its expectation.
+> - **It was written from `e8b70aa`**, on the branch of #236, which is `d2b2e34`
+>   on `main`. Its section below names the pair's checks.
 > - **Its code digest is `fa32ca570f2a482b`**, not Stage C's, because
->   `halves/hidden.py` was added after Stage C. The modules Stage C ran did not
->   change.
+>   `halves/hidden.py` was added after Stage C. `main` computes it at `d2b2e34`.
+>   The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -592,13 +594,16 @@ the whole paragraph (`HV-c` refuted, `HV-d` holds). *What Stage C does not
 settle* left why. This reading asks the records, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m halves.hidden`, on 2026-11-12,
-from `e8b70aa` on a clean tree. That commit carries the reading's codebook and
-its expectation, written before it ran on the held-out answers. The record is
-[`hidden.json`](hidden.json). Gates 1 to 4 passed:
-- every answer is valid as §0 reads it;
-- the passes' classes are Stage C's;
-- every answer keeps its reasoning and its payload;
-- the codebook's counts on pass 1 come back.
+from `e8b70aa` on a clean tree, which is `d2b2e34` on `main`. That commit
+carries the reading's codebook and its expectation, written before it ran on the
+held-out answers. The record was committed alone, as `9e41ac7` on `main`.
+- **Each pair has the same subject, the same tree and the same `git patch-id
+  --stable`.** The GitHub API names #236 behind both `main` commits.
+- **The record is [`hidden.json`](hidden.json).** Gates 1 to 4 passed:
+  - every answer is valid as §0 reads it;
+  - the passes' classes are Stage C's;
+  - every answer keeps its reasoning and its payload;
+  - the codebook's counts on pass 1 come back.
 
 **What it reads.** Every valid answer of the right queue, under the four arms:
 - its class, as Stage C classes it, and for a cut the listed rules it is cut by;
