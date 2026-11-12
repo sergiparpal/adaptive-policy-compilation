@@ -452,6 +452,60 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_HALVES.md` opens and does not resolve
+
+Closed November 12, 2026. It asked the loop's first call alone, with level 3's
+manual and reasoning on, pinned to DeepInfra, at 136 tickets the reasoning loops
+had escalated, in two passes and a session of the rarest queue's tickets. Four
+paragraphs stood where the base would be: the empty base, v2b's paragraph, v2b's
+first half alone, and v2b's overlap clause on the empty base. The cut is the
+first half's. Told that the base is not shown, the first call wrote the governing
+region about as rarely as under v2b's whole paragraph; told that it is empty,
+about three times in four. The overlap clause cost a little beside the empty
+base and nothing beside the first half. What that leaves:
+
+- **A blind first-call text that does not cut.** A blind loop cannot send an
+  empty base, and v2b's first half cuts as the whole paragraph does. A text that
+  says the base exists and is hidden, and that a nested rule is ordered by
+  containment, set beside v1c in a loop, is the plan §12 of `PLAN_HALVES.md`
+  names. Calls.
+- **Why the first half cuts.** Under it, and under v2b's paragraph, nearly half
+  the answers declared `beats` or `loses_to` against the manual's identifiers.
+  Under the empty base about a tenth did. Whether the model takes the manual's
+  rules for the hidden base's is a reading of the notes and the reasoning, which
+  the records keep whole. Free on the records.
+- **Which of the first half's two sentences cuts**: that the base is not shown,
+  or that the rule is for this ticket. Each alone, beside the empty base. Calls.
+- **The rarest queue.** At its seven tickets the first half cut as v2b's
+  paragraph did (`HV-f` refuted), and at 1432 every text cut at least half the
+  time. So a text that fixes the cut over all the tickets may still lose the
+  queue, as T1 did. Calls.
+- **A ticket's class from one ask.** A prompt's two answers shared a class in
+  about half the prompts. A plan that reads a class ticket by ticket needs
+  several asks a ticket, as the rarest queue's session had.
+
+Lessons it leaves:
+
+- **Check an asker's validity flag against §0's before the first pass.** The
+  asker's flag asked that an answer name one of the eight queues, which §0's
+  validity does not, so an empty object came back flagged invalid. The scorer
+  was corrected before Stage C, and no answer was lost. A test that ran the flag
+  over an empty object before signature would have caught it.
+- **A detached supervisor dies with WSL.** A kernel update shut WSL down under
+  pass 2's first launch, overnight. The session resumed from its partial file
+  the next morning, every kept answer with its own seconds.
+- **A supervisor's wait for CI cannot tell a slow run from one that never
+  starts.** GitHub's incidents left the sessions' pull request's last runs
+  queued with no job, and the supervisor stopped after two hours without
+  merging. Such runs can be neither cancelled nor re-run. A dispatch of the
+  workflow on the branch, and the pull request closed and reopened, ran them
+  again.
+- **A bet on which half moves lost again.** The drafter bet the cut on the
+  overlap clause, on the cuts' notes, and §0 cited two failed bets of that kind
+  beside it.
+
+---
+
 ## What `PLAN_WHOLE.md` opens and does not resolve
 
 Closed November 10, 2026. It ran `PLAN_PLACEMENT.md`'s v1c arm again beside v1d,
@@ -502,6 +556,10 @@ leaves:
     that overlapping rules of another queue will be listed. A first call with
     the first half alone, set beside v2b on one day, would separate the halves.
     Calls.
+    **[NOTE 2026-11-12] Asked by `PLAN_HALVES.md`: the first half.** Told that
+    the base is not shown, the first call cut as under v2b's whole paragraph
+    (`HV-c` refuted, `HV-d` holds). The overlap clause cost a little only
+    beside the empty base (`HV-e` holds). See *What `PLAN_HALVES.md` opens*.
   - **The frame**, above, is no longer the first lever to try.
 - **Why v1d cut more than v1c at the rarest queue's tickets.** Eight drafts stand
   against seven, in one period. Each first call asked several times at the
@@ -2391,6 +2449,9 @@ its critique was already this file's:**
   each text ten times at each of the queue's seven tickets, in one period.
   `PLAN_HALVES.md`'s session of the queue does not carry `PLAN_WHOLE.md`'s
   text.
+  **[NOTE 2026-11-12] Run.** At the queue's seven tickets, six answers an arm,
+  v2b's first half cut as its whole paragraph did (`HV-f` refuted). T1 was not
+  asked. See *What `PLAN_HALVES.md` opens*.
 - **Compile-once from the prose with reasoning on**, in a loop's period.
   *What `PLAN_FIRST_MATCH.md` opens* already says nothing asks the prose with
   reasoning. The review adds a rule: below 0.95 of the space, the loop regains

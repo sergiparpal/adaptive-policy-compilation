@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 10, 2026. **Not a history** — that is the four
+What is known, as of November 12, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -28,8 +28,9 @@ What is known, as of November 10, 2026. **Not a history** — that is the four
 [`results_reasoned_rule/FINDINGS_REASONED_RULE.md`](results_reasoned_rule/FINDINGS_REASONED_RULE.md),
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
-[`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) and
-[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
+[`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
+[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) and
+[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -80,7 +81,9 @@ under a channel that hears of half its errors, beside the error arm again, in
 round that lists only what the engine can still order, beside v1b, in
 `PLAN_PLACEMENT.md`**: seven more, closed on 2026-11-08 — plus **a first call
 asked for the governing rule's region whole, beside v1c, in `PLAN_WHOLE.md`**:
-seven more, closed on 2026-11-10.
+seven more, closed on 2026-11-10 — plus **which half of v2b's base paragraph
+makes the loop's first call cut, in `PLAN_HALVES.md`**: seven more, closed on
+2026-11-12.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -416,6 +419,27 @@ third recovers 61% of what full supervision buys, on corpus test.
 >
 > So a text that asks for the region whole moves the first call, and not where
 > the rarest queue needed it. [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md).
+>
+> **[NOTE 2026-11-12] The first call cuts because it is told the base is
+> hidden.** [`PLAN_HALVES.md`](PLAN_HALVES.md) asked the loop's first call
+> alone, on DeepInfra, at 136 tickets the reasoning loops escalated. Four
+> paragraphs stood where the base would be: the empty base, v2b's paragraph,
+> v2b's first half alone (the base is not shown), and v2b's overlap clause on
+> the empty base.
+>
+> - **The paragraph's gap is not the period's** (`HV-b` holds). In one period
+>   the empty base wrote the governing region in 0.7731 of its right-queue
+>   answers, and v2b's paragraph in 0.3600.
+> - **The first half carries all of it** (`HV-c` refuted, `HV-d` holds). Alone
+>   it wrote the region in 0.3008, below v2b's whole paragraph.
+> - **The overlap clause costs only beside the empty base** (`HV-e` holds):
+>   0.6332 there, and nothing beside the first half.
+> - **At the rarest queue's tickets, dropping the clause gave nothing back**
+>   (`HV-f` refuted).
+> - **Today's v2b paragraph is the loops' first call** (`HV-a` holds).
+>
+> So a blind loop that dropped the overlap clause would still cut. The text to
+> change is the one that hides the base. [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md).
 
 ---
 
@@ -464,7 +488,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and eighty-one rows have been signed before the figures they name existed. This
+**One hundred and eighty-eight rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -524,7 +548,8 @@ a count behind it.
 | **CH** · half the errors reported (§0 of `PLAN_CHANNEL.md`) — *two rows replicate closed ones* | 7 | 6 | **1** | 0 | 5 | 1 |
 | **PL** · the placement round (§0 of `PLAN_PLACEMENT.md`) — *one row replicates a closed one* | 7 | 6 | **2** | 0 | 4 | 1 |
 | **WR** · the region asked for whole (§0 of `PLAN_WHOLE.md`) — *one row replicates a closed one* | 7 | 6 | **3** | 0 | 3 | 1 |
-| **total** | **181** | **152** | **60** | **2** | **90** | **27** |
+| **HV** · the paragraph's halves (§0 of `PLAN_HALVES.md`) — *two rows replicate a POST-RUN reading* | 7 | 6 | **2** | 0 | 4 | 1 |
+| **total** | **188** | **158** | **62** | **2** | **94** | **28** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
@@ -532,7 +557,7 @@ a count behind it.
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
 `QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`, `CH-c`, `PL-e`,
-`PL-f`, `WR-a`, `WR-b`, `WR-f`.
+`PL-f`, `WR-a`, `WR-b`, `WR-f`, `HV-c`, `HV-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -542,10 +567,10 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
 `FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`, `CH-a`, `CH-b`,
 `CH-d`, `CH-e`, `CH-f`, `PL-a`, `PL-b`, `PL-c`, `PL-d`, `WR-c`, `WR-d`,
-`WR-e`.
+`WR-e`, `HV-a`, `HV-b`, `HV-d`, `HV-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`.
+`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`, `HV-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -568,16 +593,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 60 of 152 = **39.5%**
-refuted; without them, 58 of 146 = **39.7%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 62 of 158 = **39.2%**
+refuted; without them, 60 of 152 = **39.5%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.2 points the flattering way, which is exactly why saying so is not optional.
+0.3 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 60 of 145 = **41.4%** and 58
-of 139 = **41.7%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 62 of 151 = **41.1%** and 60
+of 145 = **41.4%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -765,6 +790,19 @@ of 139 = **41.7%**, which is the reading the calibration note should take.
 >   count in the heading and the ratios moved together, and the test above read
 >   them. The gap between the first two is now 0.2 points as printed, and the
 >   paragraph that gives it says so.
+>
+> **[NOTE 2026-11-12] Recomputed with the `HV` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: two refuted and four held.
+> One was reported. None of its bands was set on a development set.
+> - **Two of its rows are replications.** `HV-a` and `HV-b` replicate figures a
+>   POST-RUN reading had published, `whole/paragraph.py`'s, on a new period, as
+>   §0 of `PLAN_HALVES.md` says, and the row's mark says so.
+> - **They stay in every ratio.** Each was signed before its own figures
+>   existed.
+> - **The four ratios moved with the rest.** The table, the named lists, the
+>   count in the heading and the ratios moved together, and the test above read
+>   them. The gap between the first two is 0.3 points as printed again, and the
+>   paragraph that gives it says so.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -824,6 +862,8 @@ which owns all seven; and `PL` from
 [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
 which owns all seven; and `WR` from
 [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
+which owns all seven; and `HV` from
+[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
 which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
@@ -2882,6 +2922,20 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
    [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
    *Whether the blind paragraph is why the loop's first call cuts*.
+   **[NOTE 2026-11-12] Measured by `PLAN_HALVES.md`: the first half.** It asked
+   the first call alone, in one period on DeepInfra, under the empty base,
+   v2b's paragraph, its first half alone and its overlap clause on the empty
+   base.
+   - **The gap is the paragraph's** (`HV-b` holds): 0.7731 under the empty
+     base, 0.3600 under v2b's paragraph.
+   - **The first half carries it** (`HV-c` refuted, `HV-d` holds). Alone it
+     wrote the region in 0.3008.
+   - **The overlap clause costs only beside the empty base** (`HV-e` holds).
+   - **What is open now** is a text a blind loop can send that does not cut as
+     that half does, and why the half cuts. The notes and the reasoning are
+     kept whole.
+
+   [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md).
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
@@ -3050,6 +3104,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    wrote the region whole at 4 of its 7 tickets.
    [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md), *Why v1d
    cut at the rarest queue's tickets*.
+   **[NOTE 2026-11-12] Nor the overlap clause.** `PLAN_HALVES.md` asked the
+   first call six times an arm at each of the queue's seven tickets. Without
+   the overlap clause it wrote the region no more often than with it
+   (`HV-f` refuted): in 19 of 40 answers, against 20 of 40. The empty base
+   wrote it in 32 of 39. At 1432 every text cut at least half the time, the
+   empty base included.
+   [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md), *The rarest queue's tickets*.
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on

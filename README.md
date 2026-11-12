@@ -61,6 +61,7 @@ up in four places at once.
 | **CH** · half the errors reported | `PLAN_REASONED_LOOP.md`'s loop run again with level 3's manual and reasoning on, pinned to one provider, under rung 4's feedback channel at coverage 1/2 beside the error arm again, three runs an arm alternating in one period, to see what a loop compiles from a trigger a deployment could have — closed 2026-11-07 | [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md) |
 | **PL** · the placement round | `PLAN_CHANNEL.md`'s channel arm run again with level 3's manual and reasoning on, pinned to another provider, three runs under v1b's placement round and three under one that lists only what the engine can still order, alternating, each pair under one set of draws, beside a same-day bridge of first calls asked of both providers, to see whether v1b's refusals were the protocol's and what the loop compiles without them — closed 2026-11-08 | [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) |
 | **WR** · the region asked for whole | `PLAN_PLACEMENT.md`'s v1c arm run again with level 3's manual and reasoning on, pinned to DeepInfra, beside v1d, whose first call asks for the governing rule's region whole, three runs an arm alternating, each pair under one set of draws, to see whether the loop's narrow rules were the first call's text and what whole first drafts compile — closed 2026-11-10 | [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) |
+| **HV** · the paragraph's halves | the loop's first call asked alone at 136 tickets the reasoning loops escalated, with level 3's manual and reasoning on, pinned to DeepInfra, under four paragraphs where the base would be — the empty base, v2b's paragraph, its first half alone and its overlap clause on the empty base — in two passes and a session of the rarest queue's tickets, to see which half of v2b's paragraph makes the first call cut — closed 2026-11-12 | [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -891,6 +892,48 @@ PYTHONHASHSEED=0 .venv/bin/python -m whole.run --smoke            # Stage B · s
 PYTHONHASHSEED=0 .venv/bin/python -m whole.run --arm v1c --rep 1  # then §2.3's order, one run at a time
 ```
 
+**[`PLAN_HALVES.md`](PLAN_HALVES.md) closed on 2026-11-12**: which half of v2b's
+base paragraph makes the loop's first call cut. Sergi signed §0 on 2026-11-10,
+before any of its figures existed.
+- **What it asked.** It asked the loop's first call alone, with level 3's manual
+  and reasoning on, every call pinned to DeepInfra's fp8 endpoint, at 136
+  tickets the reasoning loops escalated. Four arms differ in the paragraph that
+  stands where the base would be:
+  - **`e`**, the empty base;
+  - **`v`**, v2b's paragraph: the base is not shown, and overlapping rules of
+    another queue will be listed;
+  - **`h`**, its first half alone;
+  - **`o`**, its overlap clause on the empty base.
+
+  Two passes asked every prompt once, the arms interleaved, and a third session
+  asked the rarest queue's seven tickets four times more.
+- **Why.** Read POST-RUN, the loops' first calls under v2b's paragraph wrote the
+  governing region about half as often as the same model under an empty base,
+  and the two prompts differ in that paragraph alone.
+
+Its record is [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md). Its
+gate reads that plan and no other, counts its signature line, and guards its
+three writers. `whole/`, `placement/`, `reasoned_loop/`, `first_match/`,
+`fidelity/`, `authorship/`, `reasoned_rule/`, `queue_alone/`, `escalations/`,
+`reuse/` and `rung2/` are called by it and not edited; its asker is the loop's,
+with `placement/`'s pin.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same answers back. A paid session does not start without Sergi asking for it.
+A pass took about ten to twelve hours of calls on DeepInfra, which refused no
+call for the rate. A session stopped by an outage resumes from its partial file
+with the same command.
+
+```bash
+python3 -m halves.ask --dry-run                                  # HV-g1..HV-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m halves.sample                        # Stage A · the design and the references
+PYTHONHASHSEED=0 python3 -m halves.score                         # Stage C · HV-a to HV-f, and HV-g
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1  # then pass2 and oncall, one session at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1130,7 +1173,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_REASONED_LOOP.md`'s, and the three of `channel/`, which run
 > `PLAN_CHANNEL.md`'s, and the three of `placement/`, which run
 > `PLAN_PLACEMENT.md`'s, and the three of `whole/`, which run
-> `PLAN_WHOLE.md`'s.
+> `PLAN_WHOLE.md`'s, and the three of `halves/`, which run
+> `PLAN_HALVES.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -2086,6 +2130,15 @@ adaptive-policy-compilation/
 │   ├── security.py          POST-RUN · why every v1c base lost a sixth of SECURITY_INCIDENT: each way, each part, each first call
 │   └── paragraph.py         POST-RUN · whether the blind paragraph is why the first call cuts: the empty base beside the loops, ticket for ticket
 │
+├── halves/               HV · which half of v2b's base paragraph makes the loop's first call cut
+│   ├── plan.py              the gate and the constants: the request, the pin, the tickets, the sessions, the limits, §0's lines
+│   ├── prompts.py           the four arms' texts and messages · the proposer's path
+│   ├── population.py        the asks and the sessions · the proposer's path
+│   ├── gates.py             HV-g1..HV-g4 · blocking
+│   ├── sample.py            Stage A · the design and the references
+│   ├── ask.py               Stage B · the smoke run, the two passes and the rarest queue's session · spends · resumes · the proposer's path
+│   └── score.py             Stage C · HV-a to HV-f and HV-g, gated on PLAN_HALVES.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2172,7 +2225,7 @@ adaptive-policy-compilation/
     results_bound/  results_ranking/  results_students/  results_escalations/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
-    results_reasoned_loop/  results_channel/  results_placement/  results_whole/
+    results_reasoned_loop/  results_channel/  results_placement/  results_whole/  results_halves/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

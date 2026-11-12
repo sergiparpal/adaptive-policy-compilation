@@ -179,8 +179,9 @@ the FINDINGS.
 `manual/run.py`, since 2026-10-23 `apply/ask.py`, since 2026-10-24
 `queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, since
-2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, and since
-2026-11-09 `whole/run.py`, all seventeen below. It
+2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, since
+2026-11-09 `whole/run.py`, and since 2026-11-10 `halves/ask.py`, all eighteen
+below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1245,6 +1246,85 @@ nothing. Check and launch in separate commands.
 ran the six runs one at a time, committed each record alone, pushed it to one
 pull request, and merged that pull request once CI was green on its last head.
 
+**`PLAN_HALVES.md` closed on 2026-11-12: which half of v2b's base paragraph
+makes the loop's first call cut.** Six signed rows adjudicated, four held and
+two refuted, and one reported. Sergi signed §0 on 2026-11-10, before any figure
+it governs existed.
+- **What it asked.** It asked the loop's first call alone, with level 3's
+  manual and reasoning on, at the tickets the reasoning loops escalated: two
+  passes, then a session of the rarest queue's tickets. Four arms differ in the
+  paragraph that stands where the base would be.
+  - **`e`** is the empty base, and **`v`** v2b's paragraph, as the loops send
+    it.
+  - **`h`** is v2b's first half alone: the base is not shown, write a rule for
+    this ticket.
+  - **`o`** is v2b's overlap clause on the empty base, which no loop could send.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with no bridge.
+- **Where it is written up.** The record is
+  `results_halves/FINDINGS_HALVES.md`, and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `halves/` refuses while the plan carries a blank
+  signature line. The gate reads `PLAN_HALVES.md` and no other plan, and counts
+  every such line.
+- **What it calls.** `whole/`, `placement/`, `reasoned_loop/`, `first_match/`,
+  `fidelity/`, `authorship/`, `reasoned_rule/`, `queue_alone/`,
+  `escalations/`, `reuse/` and `rung2/` are called by it and not edited. Its
+  asker is the loop's, with `placement/`'s pin.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m halves.ask --dry-run                                  # HV-g1..HV-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m halves.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m halves.score                         # Stage C, free, from the sessions
+    PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1  # then pass2 and oncall, never side by side
+
+**Told that the base is hidden, the first call cuts** (`HV-c` refuted, `HV-d`
+holds). v2b's first half alone cut as the whole paragraph did, and the overlap
+clause cost something only beside the empty base (`HV-e` holds). A blind loop
+cannot send an empty base, so dropping the overlap clause would not be enough.
+The next text has to say something else about the base it hides.
+
+**At the rarest queue's tickets, dropping the overlap clause gave nothing
+back** (`HV-f` refuted), as the drafter expected. The first half alone cut
+there as v2b's paragraph did.
+
+**A bet on which half moves lost again.** The drafter bet the cut on the overlap
+clause, on the strength of the cuts' notes, and §0 cited two failed bets of that
+kind beside it. The notes framed each cut as the end of a conflict with a rule
+of another queue, and the cut followed the other half. A note says what a draft
+is for, not which sentence of the prompt made it.
+
+**Check an asker's validity flag against §0's before the first pass.**
+`halves/ask.py`'s flag asked that an answer name one of the eight queues, which
+§0's validity does not, so DeepInfra's empty objects came back flagged invalid.
+The scorer was corrected before Stage C, in a commit of its own, and the
+FINDINGS dates it. A test that ran the flag over an empty object before
+signature would have caught it.
+
+**A detached supervisor dies with WSL.** A kernel update shut WSL down
+overnight, under pass 2's first launch. The session resumed from its partial
+file the next morning, every kept answer with its own seconds. A session that
+runs overnight should expect it.
+
+**A supervisor's wait for CI cannot tell a slow run from one that never
+starts.** GitHub's incidents left the sessions' pull request's last runs queued
+with no job, and the supervisor stopped after two hours without merging. Such
+runs can be neither cancelled nor re-run. At Sergi's word, a dispatch of the
+tests workflow on the branch, and the pull request closed and reopened, ran
+them again.
+
+**Its sessions were launched by the agent, as §2.5 let Sergi choose.** A
+supervisor ran them one at a time, committed each record alone and pushed it to
+one pull request. The agent merged that pull request by hand, once CI was green
+on its last head.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1253,8 +1333,8 @@ builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
 and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
 `reasoned_loop/protocol.py`, and `placement/run.py` through the asker
-`placement/protocol.py` pins, and `whole/run.py` through the same asker,
-without changing a request. Every paid writer but rung 1's stores each question's attempts as
+`placement/protocol.py` pins, and `whole/run.py` and `halves/ask.py` through
+the same asker, without changing a request. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1345,8 +1425,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 `manual/run.py`, since 2026-10-23, `apply/ask.py`, since 2026-10-24,
 `queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, since
-2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, and since
-2026-11-09, `whole/run.py`.
+2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, since
+2026-11-09, `whole/run.py`, and since 2026-11-10, `halves/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
