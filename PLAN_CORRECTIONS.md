@@ -1,12 +1,16 @@
 # PLAN_CORRECTIONS — the learning regime: a report that carries the true queue, under level 1's catalogue, beside the same loop without it
 
-**Status: drafted by Claude on 2026-11-12, unsigned.** Under hard rule 2 of
-`CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
-record is written until Sergi has signed §0.** The signature has to land before
-any figure named here exists, in its own commit, staged by name. That includes
-Stages A and C, which spend nothing: §11 says why. **This is a first draft.** §2
-holds the choices that are Sergi's, and §§5 to 12 will be completed against the
-package once he has made them. Each later correction is dated in place.
+**Status: drafted by Claude on 2026-11-12, completed before signature the same
+day, and unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
+and may not sign it. **Nothing runs and no record is written until Sergi has
+signed §0.** The signature has to land before any figure named here exists, in
+its own commit, staged by name. That includes Stages A and C, which spend
+nothing: §11 says why.
+
+**Sergi made §2's choices on 2026-11-12**: R1, two arms, three runs an arm, the
+drafter's design of the at-once asks, and the runs launched by the agent. §§5 to
+12 are written against the package, `corrections/`, whose blocking checks pass
+before the signature (§7). Each later correction is dated in place.
 
 **Asked for by Sergi on 2026-11-12.** [`IDEAS.md`](IDEAS.md) carries it as the
 first entry of *What is new* under *What the technical review of November 11, 2026
@@ -284,6 +288,31 @@ against the prompts and the code before signature, and not recalled, as
   tickets and their repeats are in-sample for every arm and every learner that
   read them, so no row reads the arrivals.
 
+**What was computed before the signature, and seen.** `corrections/plan.py`
+keeps these figures as `DECLARED`, and `CR-g2` recomputes them and refuses if one
+departs.
+
+1. **The first calls at reported errors, at level 3.** In the six v1c runs of
+   `PLAN_PLACEMENT.md` and `PLAN_WHOLE.md`, the escalations caused by a reported
+   error whose first call named the case's true queue: 39 of 43, 31 of 33, 52 of
+   53, 57 of 58, 26 of 27 and 40 of 41.
+2. **The same runs' escalations, reports and calls**: 98, 43 and 186; 68, 33 and
+   126; 87, 53 and 167; 88, 58 and 168; 72, 27 and 132; 84, 41 and 157.
+3. **The arrivals that repeat an earlier ticket**: 257 of 2,000.
+4. **The schedule.** `ORDER_SEED` draws arm `l` first, so the runs are l r1, n r1,
+   l r2, n r2, l r3 and n r3.
+
+**When they were seen.**
+- Figures 1 to 3 were read while drafting, on 2026-11-12, before the lines were
+  drawn.
+- Figure 4 was computed while completing the plan, after them.
+- None is a figure of the runs this plan buys.
+- The package's checks print pass or fail, and counts that figures 1 and 2
+  already give. The instruments' ceilings are each the whole space by
+  construction (§7).
+- While drafting, the drafter also read how many of those first calls named any
+  queue at all, and the corpus's queues by count. Neither bears on a row.
+
 | id | claim | statistic, with its denominator | band | refuted by |
 |---|---|---|---|---|
 | **CR-a** | **The label is followed** | the median over L's runs of `followed(r)` | **≥ 0.95** | **< 0.95** |
@@ -363,14 +392,20 @@ and `CR-f` to be refuted.
 - v1c's runs at level 3, from `PLAN_PLACEMENT.md`'s and `PLAN_WHOLE.md`'s;
 - the learners' code and gates, from `PLAN_ILP.md`'s and `PLAN_STUDENTS.md`'s.
 
-**Bought:** a smoke run, six runs and about seventy at-once asks, on DeepInfra's
-fp8 endpoint, with reasoning on at high effort.
+**Bought**, on DeepInfra's fp8 endpoint with reasoning on at high effort:
+- two smoke runs of 30 cases, N's and L's;
+- six runs;
+- the at-once asks:
+  - a smoke session of two;
+  - a session of five with no label;
+  - one session an L run, three asks at each checkpoint it reaches: at most 21
+    asks a run, and their re-asks.
 
 **The cap** is 400 escalations a run, as `PLAN_PLACEMENT.md`'s and
 `PLAN_WHOLE.md`'s.
 
 **Level 1 will escalate more than level 3 did.** None of this has a record at
-level 1 with reasoning on, so **the smoke run measures it.**
+level 1 with reasoning on, so **the smoke runs measure it.**
 
 - **At level 3.** The six v1c runs made 68 to 98 escalations, and 27 to 58 of
   them were reported errors. They averaged about 1.9 calls an escalation. All of
@@ -389,103 +424,98 @@ level 1 with reasoning on, so **the smoke run measures it.**
 **The money.**
 - `PLAN_WHOLE.md`'s six runs were billed $0.649 for 755 attempts, about a tenth
   of a cent an attempt, read by generation id on 2026-11-10.
-- At that price the six runs come to two to four dollars, and the at-once asks
-  to under a dollar.
+- At that price the six runs come to two to four dollars.
+- **The at-once asks cost under a cent each.** One carries at most 400 labelled
+  tickets, a few tens of thousands of prompt tokens, and at most 32,000 tokens of
+  answer. DeepInfra's listing, read on OpenRouter on 2026-11-12, is $0.09 per
+  million prompt tokens and $0.18 per million completion tokens.
 - **That corrects the review's estimate**, about a channel run's cost. Level 1
   errs more, so its channel reports more.
 
 **The time.**
 - `PLAN_WHOLE.md`'s attempts took about 90 seconds each, on average, over its
   six runs.
-- At that pace the six runs take three to four days of calls. The at-once asks
-  take an hour or two, a few at a time.
-- The smoke run's pace rests on a few calls, and the record says how few.
+- At that pace the six runs take three to four days of calls.
+- The at-once asks run four at a time, and a run's session takes an hour or
+  two.
+- The smoke runs' pace rests on a few calls, and the record says how few.
 
 ---
 
-## 2. The choices that have to be made at signature time
+## 2. The choices made at signature time
 
-### 2.1 The report's text — Sergi's choice; the drafter recommends R1
+Sergi made them on 2026-11-12.
 
-Both candidates stand after `BLIND_BASE` in L's first call, and only at a reported
-error. They answer the first call's framing, which calls every escalation an
-impasse. Neither names a rule.
+### 2.1 The report's text — Sergi chose R1
 
-- **R1, the queue alone.**
+R1 stands after `BLIND_BASE` in L's first call, at a reported error only. §5.2
+quotes it byte for byte. It answers the first call's framing, which calls every
+escalation an impasse, and it names no rule.
 
-  > AVISO DE REVISION: este ticket no es un impasse. El motor lo decidio, y un
-  > revisor ha marcado esa decision como erronea. La cola correcta de este
-  > ticket es {queue}.
+**R2 was not chosen.** It adds the engine's decision. Any deployment knows that
+decision, but no competitor here is handed it. `IDEAS.md` keeps it apart, under
+*What `PLAN_WHOLE.md` opens*, *The frame*, and §13 declares it.
 
-- **R2, the queue and the engine's decision.**
-
-  > AVISO DE REVISION: este ticket no es un impasse. El motor lo envio a
-  > {engine_action}, y un revisor ha marcado esa decision como erronea. La cola
-  > correcta de este ticket es {queue}.
-
-**Why the drafter recommends R1.** R1 adds the label and the fact of the report,
-and nothing the at-once asks and the learners are not also handed. R2 adds the
-engine's decision. Any deployment knows that decision, but no competitor here is
-handed it. `IDEAS.md` keeps it apart, under *What `PLAN_WHOLE.md` opens*, *The
-frame*.
-
-### 2.2 Two arms, not three — the drafter recommends it
+### 2.2 Two arms — Sergi chose two
 
 A third arm, R1 without its last sentence, would tell the proposer that the base
 erred and not what the right queue is. It would separate the label from the
-report. It is likely to escalate as much as N and so to cost as much again, about
-two more days. The drafter recommends leaving it to the next plan, and §13
-declares what that leaves open.
+report. It is left to the next plan, and §13 declares what that leaves open.
 
-### 2.3 Three runs an arm, the arms alternating, and the cap — the drafter recommends it
+### 2.3 Three runs an arm, the arms alternating, and the cap — Sergi chose three
 
 - **The runs.** Three runs of each arm, alternating, in the order a fixed seed
-  draws for the first arm.
+  draws for the first arm: arm `l` first (§0, figure 4).
 - **The draws.** Run `k` of both arms reads `PLAN_CHANNEL.md`'s draws of
   `c r{k}`.
 - **The cap** is 400 escalations a run.
 
 All three follow `PLAN_PLACEMENT.md`.
 
-**What six pairs would cost.** Each draw run twice an arm gives the six
-alternated pairs `IDEAS.md` asks for, on which a sign test can reach 1/20. It
-also measures what nondeterminism alone does to a base, which `IDEAS.md` keeps
-as *The same draws twice in one period*. It doubles the time.
+**Six pairs were not chosen.** Each draw run twice an arm would have given the six
+alternated pairs `IDEAS.md` asks for, on which a sign test can reach 1/20. So
+every row is a band reading on medians, as §0 says.
 
-**A lower cap** would shorten N's runs. It would also bind L's, if L needs more
-labels than the drafter guesses.
-
-### 2.4 The at-once asks — the drafter recommends this design
+### 2.4 The at-once asks — Sergi chose the drafter's design
 
 - **The prompt.**
   - **The system prompt** is `manual.prompts.compile_system_prompt(1)`.
-  - **The user message** lists the labelled tickets, in arrival order, and ends
-    with `PLAN_MANUAL.md`'s compile request, byte for byte:
-
-    > CORRECCIONES DE REVISORES: el sistema decidio mal cada uno de estos
-    > tickets, y un revisor le dio su cola correcta.
-    > {each ticket, as the loop shows it, with "cola_correcta"}
-    >
-    > Escribe ahora la base de reglas completa.
-
+  - **The user message** is §5.3's header, one line per labelled ticket in
+    arrival order, and `PLAN_MANUAL.md`'s compile request, byte for byte.
 - **The checkpoints** fall at 10, 20, 40, 80, 160 and 320 labels where a run
   reaches them, and at all of its labels. Each checkpoint gets three asks.
-- **With no label**, five asks of `PLAN_MANUAL.md`'s request at level 1 are made
-  right after the smoke run, with reasoning on.
-- **When they are asked.** Right after each L run, before the next run, through
-  `harness/ask_pool.py` at up to four workers. It is asks only, never a loop.
-  - As that module asks of any plan that uses it, the record keeps the workers.
-  - The seconds are measured at that concurrency.
-  - The smoke ask measures the pace and the refusals for the rate. A refusal
-    falls back to one ask at a time.
-  - The breaker counts failures in the order the answers come back.
-- **An ask with no valid base** is asked again, up to twice. The validity flag is
-  §0's and is tested on an empty object before signature, as `PLAN_HALVES.md`'s
-  lesson asks.
-- **The settings.** Reasoning is on at high effort. The budget is measured by the
-  smoke ask.
+- **With no label**, five asks of `PLAN_MANUAL.md`'s level-1 compile messages,
+  exactly, are made right after the smoke session.
+- **When they are asked.** Each L run's session comes right after that run, and
+  before the next run.
+- **An ask with no valid answer** is asked again, up to twice. The validity flag
+  is §0's, and its test reads an empty object first, as `PLAN_HALVES.md`'s lesson
+  asks.
+- **The settings.** Reasoning is on at high effort. The budget is 32,000 tokens,
+  twice the loop's, because an answer is a whole base. DeepInfra's fp8 endpoint
+  takes up to 393,216 completion tokens, by OpenRouter's listing read on
+  2026-11-12. The smoke session measures whether the budget fits.
 
-### 2.5 The learners — the drafter recommends them as signed
+**The ask pool.** The asks go through `harness/ask_pool.py`. That module asks a
+plan that uses it to declare five things before signature, and this plan does:
+- **Four workers.** A run's session holds up to 21 asks and their re-asks, and a
+  reasoning ask takes minutes. One at a time, a session would hold the next run
+  back for hours. Four keep a session short and put a small load on one
+  provider.
+- **The sessions are asks.** Nothing an answer says is installed, executed or
+  shown to a later ask. The pool is imported by `corrections/ask.py` and by no
+  other module of the package (`CR-g3`), and never by a loop
+  (`tests/test_ask_pool.py`).
+- **The seconds are read at that concurrency.** The record keeps the workers. A
+  pace read off them is not comparable with one read a call at a time.
+- **The smoke session measures the pace and the refusals for the rate at four
+  workers.** If it meets a refusal, every later session runs one ask at a time,
+  and its record says so.
+- **The breaker** stops a session after five failed asks in a row, read in the
+  order the asks come back. Those failures are not kept, and a resume asks them
+  again.
+
+### 2.5 The learners — as drafted
 
 - **The inducer** is `PLAN_ILP.md`'s, at its two beams, 40 and 120.
 - **The students** are `PLAN_STUDENTS.md`'s three, as that plan signed them.
@@ -495,31 +525,32 @@ labels than the drafter guesses.
 All of them are trained free in Stage C, at every checkpoint, after their own
 gates pass.
 
-### 2.6 An empty object from the provider is kept as v1c records it — the drafter recommends it
+### 2.6 An empty object from the provider is kept as v1c records it — as drafted
 
 The runs pinned to DeepInfra got an empty object on dozens of calls. An empty
 object parses, so the retry by cause does not ask again. The loop records it as a
 rule refused as invalid (`IDEAS.md`, *What the adjudication adds*).
-- **The recommendation.** Changing that would change v1c. So it is kept, counted
-  by arm and cause, and reported.
+- **Why it is kept.** Changing that would change v1c. So it is counted by arm and
+  cause, and reported.
 - **What it costs L.** Every labelled ticket an empty object lost is named. The
   next report in its region brings the label again.
 
-### 2.7 The smoke run is 30 cases an arm on the smoke draws — the drafter recommends it
+### 2.7 The smoke runs are 30 cases an arm on the smoke draws — as drafted
 
-It reads the first 30 of `PLAN_CHANNEL.md`'s smoke draws: N, then L. Then come
-one at-once ask on L's smoke labels and one with no label.
-- **What it checks:** the pin, the texts, the label's route and the records.
-- **What it measures:** the price and the pace.
-- No row reads its answers.
+They read the first 30 of `PLAN_CHANNEL.md`'s smoke draws: N, then L. The at-once
+smoke session follows, with one ask with no label and one on L's smoke labels.
+- **What they check:** the pin, the texts, the label's route and the records.
+  L's smoke run must hand at least one label, or the route is not exercised, and
+  its check fails.
+- **What they measure:** the price and the pace.
+- No row reads their answers.
 
-### 2.8 Where the runs are launched — Sergi's choice; the drafter has no recommendation
+### 2.8 Where the runs are launched — Sergi chose the agent
 
-The runs can be launched in Sergi's terminal. Or the agent can launch them,
-through a supervisor detached from its harness, one run at a time, as
-`PLAN_WHOLE.md` §2.5 allowed. A period of three to four days should expect WSL to
-stop overnight, as it did under `PLAN_HALVES.md`'s second pass, and a run to
-resume from its partial file.
+The agent launches the runs and the sessions through a supervisor detached from
+its harness, one at a time, as `PLAN_WHOLE.md` §2.5 allowed. A period of three to
+four days should expect WSL to stop overnight, as it did under `PLAN_HALVES.md`'s
+second pass. A run then resumes from its partial file.
 
 ### 2.9 The pin is DeepInfra's fp8 endpoint, with no bridge — by the rule agreed on 2026-11-06
 
@@ -575,17 +606,18 @@ Stage A recomputes them and records them (§8).
 - **No model signs.** The signature line above is Sergi's, and it lands in its own
   commit, staged by name.
 - **The runs are sequential**, one at a time, and never side by side. The at-once
-  asks of a run come after it and before the next.
+  session of an L run comes after it and before the next run. The ask pool runs
+  asks only, never a loop.
 - **The seed is 17, the corpus is not regenerated**, and no record is
   overwritten. Every writer goes through `harness/record_guard.py`.
 - **The key stays in the environment.** It is never printed, and it is checked
   against OpenRouter's key endpoint before any call.
-- **No text moves after a figure exists.** §2.1's and §2.4's choices are made at
-  signature.
-- **A label reaches a prompt only by its one route**: at an L escalation caused by
-  a reported error, and only that ticket's own label. The at-once asks and the
-  learners read only the labels L was handed. Nothing else reads the truth but
-  the trigger and the scorer.
+- **No text moves after a figure exists.** §5.2's report and §5.3's header are
+  quoted below, byte for byte, and `CR-g2` holds the code to them.
+- **A label reaches a prompt by one route only**: at an L escalation caused by a
+  reported error, and only that case's own label. The at-once asks carry the
+  labels that arm was handed, read off its own record, and no others. Nothing
+  else reads the truth but the trigger and the scorers.
 
 ---
 
@@ -593,70 +625,148 @@ Stage A recomputes them and records them (§8).
 
 ### 5.1 N: v1c at level 1
 
-This is `PLAN_PLACEMENT.md` §5.2's v1c, with `manual.prompts.loop_system_prompt(1)`
-as the system prompt. Level 3 is fixed in `reasoned_loop/plan.py`, and
-`reasoned_loop/protocol.py` builds its system prompt from it at import.
-`placement/protocol.py` reaches the prompt only through the proposer it is
-handed. So the package builds its own proposer, as `whole/protocol.py` built
-v1d's.
-
-*To be completed against the package: the proposer, its texts and fingerprint,
-and the check that holds it to v1c but for the level.*
+`corrections/protocol.py`'s `Reporting` is `placement/run.py`'s resumable
+proposer, `Stamped`, with its two calls building this plan's messages.
+- **The system prompt** is `manual.prompts.loop_system_prompt(1)`, the
+  catalogue in v1's loop prompt, as `PLAN_MANUAL.md`'s level-1 loop sent it. Its
+  digest, `fb72980e84c9aa16`, is pinned in `tests/test_manual.py`.
+- **Why the package builds its messages.** Level 3 is fixed in
+  `reasoned_loop/plan.py`, and `reasoned_loop/protocol.py` builds its system
+  prompt from it at import. `placement/protocol.py` reaches the prompt only
+  through the proposer it is handed.
+- **Every other text is v1c's**: v2b's `BLIND_BASE`, the placement message and
+  the retry message. With level 3's system prompt and no report,
+  `corrections.protocol.messages_for` gives back v1c's messages, byte for byte.
+  `CR-g1` holds it to that on every call of `PLAN_PLACEMENT.md`'s three v1c
+  runs.
+- **The loop** is `placement.loop.run_loop` with `placement.protocol.propose_v1c`,
+  called. In arm `n` the proposer is handed the ticket, and for the placement
+  round the draft and the rules listed, as in every channel run.
 
 ### 5.2 L: the report at a reported error
 
-N, with §2.1's paragraph after `BLIND_BASE` in the first call's user message. It
-appears only at an escalation whose cause is a reported error, and it carries
-that ticket's label. Three things have to change, all in the package and none in
-`placement/`:
-- a copy of the loop that passes the label on at such an escalation;
-- a copy of `propose_v1c` that hands the label to the first call;
-- a proposer that builds the first message with the paragraph in it.
+At an escalation caused by a reported error, the first user message carries this
+paragraph, with the case's label for `{queue}`:
 
-`tests/test_placement.py` and `tests/test_channel.py` forbid the truth's names in
-the calls to the proposer that `placement/` and `channel/` make. The label stays
-out of those packages.
+```text
+AVISO DE REVISION: este ticket no es un impasse. El motor lo decidio, y un
+revisor ha marcado esa decision como erronea. La cola correcta de este
+ticket es {queue}.
+```
 
-*To be completed against the package.*
+- **Where it stands.** Right after v2b's `BLIND_BASE` and a blank line, before
+  v1's heading *TICKET EN IMPASSE* and the ticket. The placement call repeats the
+  conversation, so it carries the paragraph too. At an impasse or a conflict, L's
+  messages are N's.
+- **How the label gets there.** `corrections/loop.py` wraps `propose_v1c` for
+  arm `l`. At an escalation whose cause is a reported error, the wrapper writes
+  `labels[idx][0]` into the proposer's `reports` before the first call. That is
+  the corpus label `PLAN_REUSE.md`'s first Stage B record holds for the case,
+  which is also what the trigger compared the engine's decision with.
+  `corrections/protocol.py` puts it in the paragraph through `report`, which
+  refuses anything but one of the eight queues.
+- **What stays untouched.** `placement/`, `channel/` and `reasoned_loop/` are
+  called and not edited. Their tests forbid the truth's names in their calls to
+  the proposer, so the label stays out of those packages.
+- **What the record keeps.** `reports_handed`: every case whose report carried
+  a label, and the label. `corrections/run.py`'s `handed_check` holds every
+  record to the route after it is written. Every escalation caused by a
+  reported error must have its own label, no other case may have one, and arm
+  `n` has none.
+- **On a resume**, the replay passes the same cases with the same causes, and
+  the wrapper writes each label again before the stored answer is served. The
+  stored answer is served only if its request, report included, is the one paid
+  for.
 
 ### 5.3 The at-once asks
 
-§2.4's design, through `placement/protocol.py`'s pinned asker, as `halves/ask.py`
-builds it, and `harness/ask_pool.py`.
+Each ask is `corrections/prompts.py`'s two messages. The system message is level
+1's compile prompt. The user message is this header, one line per labelled
+ticket in arrival order, a blank line, and `PLAN_MANUAL.md`'s request,
+*Escribe ahora la base de reglas completa.*, byte for byte:
+
+```text
+CORRECCIONES DE REVISORES: el sistema decidio mal cada uno de estos
+tickets, y un revisor le dio su cola correcta.
+```
+
+- **A line** is `{"ticket": {...}, "cola_correcta": "<queue>"}`. The ticket's
+  fields are given as the loop shows them, on one line.
+- **With no label**, the messages are `manual.prompts.compile_messages(1)`
+  exactly.
+- **The labels** are read off the L run's record by `corrections/ask.py`'s
+  `labelled`: every escalation caused by a reported error, in arrival order,
+  with the label its proposer was handed. It refuses a record whose reports are
+  not those escalations' own labels.
+- **The request** is `placement.protocol.request_with` with the pin, and with the
+  budget of §2.4. A failed parse is retried with v1's retry message, as that
+  asker retries every two-message request.
+- **An ask's id** is `<session>:<checkpoint>:<k>`, and a re-ask adds
+  `:re<pass>`.
+- **What a session's record keeps.** Every row is kept whole: the payload, the
+  reasoning, the attempts, the provider, the seconds and the validity, with its
+  reason.
 
 ### 5.4 How an at-once answer is read
 
-As `PLAN_MANUAL.md`'s compile asks were read. The answer is parsed and installed
-in list order, and an earlier rule wins a crossing pair of two queues, by
-`manual/compile.py`. The engine's reading is the row's. The first-match reading
-of the list is reported beside it.
+As `PLAN_MANUAL.md`'s compile asks were read.
+- **Installing it.** The answer is parsed and installed in list order by
+  `manual/compile.py`, and an earlier rule wins a crossing pair of two queues.
+- **The two readings.** The engine's reading is the row's. The first-match
+  reading of the list is reported beside it.
+- **Which answer counts.** Each ask counts its first valid answer, among the
+  original and its re-asks.
+- **`space(A(r))`** is the median of the space over the valid asks at all of the
+  run's labels.
 
 ### 5.5 The learners
 
-The inducer is trained on an instance built over the labelled tickets, as
-`ilp/chosen.py` builds one over chosen tickets, and scored by first match. The
-students are trained by `fit(cases, labels)` and scored over the space by
-`PLAN_STUDENTS.md`'s functions. The table decides each labelled point by its
-label, and leaves every other point undecided, which counts as wrong.
+- **The inducer** is trained on an instance built over the labelled tickets, as
+  `ilp/chosen.py` builds one over chosen tickets, and scored by first match over
+  the space.
+- **The students** are trained by `fit(cases, labels)` and scored over the space
+  by `PLAN_STUDENTS.md`'s masks.
+- **The table** decides each labelled ticket's point by its label. Every other
+  point is undecided, which counts as wrong.
+- **A learner that fails to fit** is recorded with its error, and `best(r)` reads
+  the learners that fitted.
+- **The students of L's own answers** are trained on every escalation of the run
+  whose first call named a queue. They take the label where a report carried
+  one, and the proposer's queue elsewhere. They are reported.
+
+### 5.6 What a run records, and how it resumes
+
+A run's record is `PLAN_PLACEMENT.md`'s, written under this plan's header.
+- **The header** carries the plan, level 1, the arm, the texts' digests, the
+  fingerprint and the draws.
+- **Beside it** the record keeps the system prompt, the report's template in
+  arm `l`, and `reports_handed`.
+- **Every answer** is appended to a git-ignored partial file as it arrives, with
+  the hour it was kept.
+- **The same command resumes there.** The partial file's header has to match, so
+  a run cannot resume under the other arm or other draws.
+- **An outage stops a run unrecorded**: five failed calls in a row, or a call
+  refused for the rate through every wait.
 
 ---
 
 ## 6. Known traps
 
-- **The label could reach a prompt by another route.** §4 fixes the one route,
-  and a test pins it. `tests/test_oracle_separation.py` watches the package's
-  proposer-path modules as the authority channel. This plan breaks
-  `PLAN_CHANNEL.md`'s rule B on purpose, and says so here.
+- **The label could reach a prompt by another route.** §4 fixes the one route.
+  `tests/test_corrections.py` pins it on a corpus built by hand, `CR-g1` on three
+  paid runs, and `handed_check` on every record. `tests/test_oracle_separation.py`
+  watches the package's five proposer-path modules as the authority channel.
+  This plan breaks `PLAN_CHANNEL.md`'s rule B on purpose, and says so here.
 - **"Level 1" means three things in this tree.** See the preamble.
 - **The framing still says impasse.** The system prompt's *"El motor simbolico no
-  ha podido decidir este ticket"* and the heading *TICKET EN IMPASSE* stay
-  byte for byte. The report paragraph says the ticket is not an impasse. How the
-  model reads the two together is part of what L measures.
-- **N may spin.** In N, the proposer's draft at a reported ticket may be the same
-  wrong queue its base holds. Then the base does not change, and the next report
-  in that region escalates again. That is how N comes near the cap.
+  ha podido decidir este ticket"* and the heading *TICKET EN IMPASSE* stay byte
+  for byte. The report says the ticket is not an impasse. How the model reads the
+  two together is part of what L measures.
+- **N may spin.** In N, the proposer's draft at a reported ticket may name the
+  same wrong queue its base holds. Then the base does not change, and the next
+  report in that region escalates again. That is how N comes near the cap.
 - **The labelled tickets are a skewed sample.** They are L's errors, and every
-  learner trained on them inherits the skew.
+  learner and every at-once ask trained on them inherits the skew.
 - **Regions no reportable ticket reaches.** No ticket governed by `H21`, `H25` or
   `H27` is reportable under these draws. A base gets those regions from the
   catalogue, or not at all.
@@ -666,105 +776,177 @@ label, and leaves every other point undecided, which counts as wrong.
 - **The at-once answer is a list.** Its order is read by §5.4. A list that puts a
   narrow rule below a broad one of another queue loses the narrow rule's points,
   in both readings.
+- **A long list of labels can outrun the budget.** An answer cut by it ends
+  `length` and is not valid. It is asked again, and the record counts it.
+- **An empty object at a reported ticket loses that label** for the loop. The
+  at-once asks still carry it, because the label was handed.
 - **One ticket's story can mislead.** Check it against the run's other tickets of
   its region before citing it.
 - **A median of three runs moves on one run.** *Thin* says so, as §0 sets.
-
-*To be completed against the package.*
 
 ---
 
 ## 7. Blocking checks, before any record is written
 
-*To be completed against the package*, as `PLAN_WHOLE.md`'s `WR-g1` to `WR-g3`:
-- **`CR-g1`: the arms are what they claim.**
-  - N's proposer with level 3's system prompt is v1c, record for record, on a
-    corpus built by hand.
-  - L with the paragraph left out is N, record for record.
-  - Every stream of draws is `PLAN_CHANNEL.md`'s.
-- **`CR-g2`: the texts and the label's route.**
-  - Every text is v1c's but the system prompt's level and the one paragraph, byte
-    for byte.
-  - The label in a prompt equals the record's truth for that ticket, and appears
-    nowhere else.
-  - Every request is §1's.
-- **`CR-g3`: the instruments.**
-  - The schedule, the smoke run and the cap.
-  - Each competitor's ceiling gate, `EXTERNAL_REVIEW.md` §1.1's *Step 0*: the
-    inducer's `I-g1`, the students' gates, and the 29 hidden rules installed as
-    an at-once answer, which must score 1.
-  - The at-once validity flag on an empty object.
-- **`CR-g4`: the signature**, counted line by line.
+`corrections/gates.py`. They run before every write and every spend, and in every
+dry run. **They pass before the signature.**
 
-**A test must not pin whether this plan is signed.** It pins the count of
-signature lines, and the gate's verdicts on fake plans.
+- **`CR-g1`: the arms are what they claim.**
+  - The suite is green, and `PLAN_PLACEMENT.md`'s own `PL-g1` to `PL-g3` pass.
+  - On each of that plan's three v1c runs, served its answers by
+    `channel.gates.Replay`:
+    - arm `n`'s proposer with level 3's system prompt gives back the run's
+      record, and v1c's messages at every call, byte for byte;
+    - arm `l`'s gives back the same record. Its messages are `n`'s at every call
+      but those of an escalation caused by a reported error. There they carry
+      the report, with that case's label, right after v2b's paragraph, and
+      nothing else changes;
+    - the cases handed a report are exactly those escalations;
+    - rebuilt with level 1's system prompt, every call's messages differ from
+      the ones sent by the system prompt alone.
+  - That holds at every one of the three runs' 479 calls, and at their 129
+    reported errors.
+- **`CR-g2`: the texts and the requests.**
+  - Arm `n` sends level 1's system prompt and v1c's other three texts, by
+    digest.
+  - Arm `l` sends the same and §5.2's report. The report is quoted above byte
+    for byte, names no rule, and names one queue once filled.
+  - The at-once asks send level 1's compile prompt and §5.3's header, quoted
+    above. With no label they send `PLAN_MANUAL.md`'s level-1 compile messages
+    exactly.
+  - Both arms send `PLAN_PLACEMENT.md`'s request with its pin, and the at-once
+    asks the same with their budget, read without building a client.
+  - §0's figures 1 to 3 come back.
+- **`CR-g3`: the schedule and the instruments.**
+  - Six runs, alternating from the arm the seed draws.
+  - The smoke runs: 30 cases an arm, on the smoke draws.
+  - The coverage 1/2, and the cap 400.
+  - §2.4's constants. The ask pool is imported by `corrections/ask.py` alone.
+  - Each competitor's ceiling, `EXTERNAL_REVIEW.md` §1.1's *Step 0*. Each, handed
+    the whole truth, must decide the whole space:
+    - the inducer's `I-g1`;
+    - the tree handed the whole space, `PLAN_STUDENTS.md`'s `T-g2`;
+    - the 29 hidden rules installed as an at-once answer, by `PLAN_MANUAL.md`'s
+      installer.
+- **`CR-g4`: the signature**, counted line by line. It does not block a dry run,
+  which writes nothing. It blocks every write.
+
+**A test must not pin whether this plan is signed.** `tests/test_corrections.py`
+pins the count of signature lines, and the gate's verdicts on fake plans.
 
 ---
 
 ## 8. Stage A — the references (free, gated)
 
-- **The drafting reading, recomputed and recorded:**
-  - the level-3 first calls at reported errors;
-  - the escalations, reports and calls of the six v1c runs.
-- **The references.** Level 1's references, with their owners. The transcriber
-  under each draw: it ignores the level, so its figures are §3's.
-- **The at-once prompt's size** at every checkpoint the transcriber's reports
-  would reach.
+`PYTHONHASHSEED=0 python3 -m corrections.sample` records:
+- §0's figures 1 to 4, each with whether it came back;
+- the channel of every run, the streams, both arms' texts and fingerprints, and
+  the report's template;
+- the at-once asks' texts and constants.
+
+Its `provenance` says which figures were seen and when.
 
 ## 9. Stage B — the runs and the asks (gated on §0)
 
-1. The smoke run: N and L, 30 cases each, and its two asks.
-2. The five asks with no label.
-3. The six runs, in §2.3's order. Each L run is followed by its at-once asks.
+In this order, one at a time. `corrections/run.py` and `corrections/ask.py`
+refuse a step whose predecessor is missing, and say what comes next.
+
+1. `corrections.run --smoke --arm n`, then `corrections.run --smoke --arm l`.
+2. `corrections.ask --session smoke`, then `corrections.ask --session prior`.
+3. The six runs in §2.3's order, each L run followed by its session:
+   `corrections.run --arm l --rep 1`, `corrections.ask --session l_r1`,
+   `corrections.run --arm n --rep 1`, and so on to `n r3`.
+
+Every spending command is run as `PYTHONHASHSEED=0 .venv/bin/python -m ...`.
 
 ## 10. Stage C — scoring, and the six adjudications (free)
 
-The learners and the table are trained at every checkpoint. Then come `CR-a` to
-`CR-f`, and `CR-g`.
+`PYTHONHASHSEED=0 python3 -m corrections.score`.
+- **What it trains.** The learners and the table, at every checkpoint of every L
+  run, and the students of L's own answers.
+- **What it reads.** `CR-a` to `CR-f`, by `corrections/score.py`, and `CR-g`.
+- **What `CR-g` reports.**
+  - **The runs.** Every run's space, recall by queue, calls, causes,
+    `refused(r)`, empty objects, labels and the cap.
+  - **The arrivals and the curve.** The arrivals split into the labelled
+    tickets and the rest, and the online figure. The at-once curve against the
+    loop's base after the same label.
+  - **The controls.** The asks with no label, and the students of L's own
+    answers.
 
 ---
 
 ## 11. The gate, and where the code lives
 
-*To be completed against the package.*
+**The package**, `corrections/`, with its records in `results_corrections/`:
 
-- **The package.** It has its own package, `corrections/`, and records in
-  `results_corrections/`. It calls `placement/`, `channel/`, `reasoned_loop/`,
-  `whole/`, `halves/`, `manual/`, `ilp/`, `students/`, `edges/` and the packages
-  under them, and edits none of them.
-- **The gate.** It reads `PLAN_CORRECTIONS.md` and no other plan, and counts
-  every signature line.
-- **The free stages get the gate too.** What it protects is the order of events,
-  not money.
-- **`tests/test_prose_tables.py`** takes `CR` in `THREADS` and the FINDINGS in
-  `TABLES` when the thread closes. Every single capital already names a thread,
-  so the rows carry two.
+| module | what it is | on the proposer's path |
+|---|---|---|
+| `plan.py` | the gate, the constants, the lines, `DECLARED`, the draws, the labels' source and the paths | no |
+| `protocol.py` | level 1's system prompt, the report, the messages and the proposer | yes |
+| `loop.py` | `placement`'s loop with each arm's escalation; the one route of the label | yes |
+| `prompts.py` | the at-once messages and request | yes |
+| `run.py` | Stage B, the loops: **spends** | yes |
+| `ask.py` | Stage B, the at-once asks, through the ask pool: **spends** | yes |
+| `learners.py` | the inducer, the students and the table on the labels | no |
+| `gates.py` | `CR-g1` to `CR-g4` | no |
+| `sample.py` | Stage A | no |
+| `score.py` | Stage C | no |
+
+- **What it calls.** `placement/`, `channel/`, `reasoned_loop/`, `blind/`,
+  `authorship/`, `manual/`, `ilp/`, `students/`, `edges/`, `whole/`, `reuse/`,
+  `first_match/` and `rung2/`, and edits none of them.
+- **The gate** reads `PLAN_CORRECTIONS.md` and no other plan, and counts every
+  signature line. Every writer calls it before it measures, builds or writes
+  anything. **The free stages get the gate too**: what it protects is the order
+  of events, not money.
+- **The plumbing.** `corrections` joins `harness.provenance.CODE_ROOTS`, the
+  oracle scan, the authority channel's watch, the guarded writers, `.gitignore`
+  and the README's tables.
+- **When the thread closes**, `tests/test_prose_tables.py` takes `CR` in
+  `THREADS` and the FINDINGS in `TABLES`. Every single capital already names a
+  thread, so the rows carry two. The indexes take the thread too: `STATUS.md`,
+  `README.md`, `CLAUDE.md`, and `IDEAS.md`'s opening, its status line and *No
+  longer here*.
 
 ---
 
 ## 12. Definition of done
 
-*To be completed against the package.*
+1. §0 signed by Sergi, in its own commit.
+2. Stage A's record, with every declared figure back.
+3. Both smoke runs and the at-once smoke session passing their checks, with
+   their bills read by generation id before the first run.
+4. The six runs and their four sessions: `prior` and one an L run.
+5. Stage C's record, with `CR-a` to `CR-f` adjudicated or declared unadjudicable
+   by §0's rules, and `CR-g`.
+6. `results_corrections/FINDINGS_CORRECTIONS.md`, with its verdict table read
+   against the record by `tests/test_prose_tables.py`.
+7. The indexes, as §11 lists them.
+8. Every record and the findings on `main` through a merged pull request, with
+   CI green on its last head.
 
 ---
 
 ## 13. What this plan cannot settle, declared before it runs
 
 1. **Whether the label or the report carries a gain.** L's paragraph says both.
-   The third arm of §2.2 would separate them.
-2. **What no arrival exercises.** No label reaches a region without a reportable
+   The third arm of §2.2 would separate them, and was not chosen.
+2. **What the engine's decision adds to the report.** That is R2, not chosen
+   (§2.1).
+3. **What no arrival exercises.** No label reaches a region without a reportable
    ticket (`ARBITRATION_REPORT.md` §9.2's erratum). The space keeps that part of
    the gap by construction.
-3. **Whether the signal dies out as the base improves.** `CHAT_SUMMARY.md` §1
+4. **Whether the signal dies out as the base improves.** `CHAT_SUMMARY.md` §1
    measured that for an order. `CR-g` reports the reports by decile, and bands
    nothing on them.
-4. **A reviewer who errs, reports late, or reports less.** Noise, delay and lower
+5. **A reviewer who errs, reports late, or reports less.** Noise, delay and lower
    coverage are other plans. So is a channel with no truth at all.
-5. **Drift under a manual that lags.** This regime is what it reduces to
+6. **Drift under a manual that lags.** This regime is what it reduces to
    (`IDEAS.md`), but no drift is run.
-6. **`H14`'s threshold under the prose**, with a few labelled tickets at its
+7. **`H14`'s threshold under the prose**, with a few labelled tickets at its
    boundary. It is ask-only, at level 2, and another plan.
-7. **Why the rarest queue goes either way at level 1.** `CR-f` reads it, and the
+8. **Why the rarest queue goes either way at level 1.** `CR-f` reads it, and the
    reason is POST-RUN.
-8. **One model, one provider, one manual level, one coverage, one arrival order,
+9. **One model, one provider, one manual level, one coverage, one arrival order,
    and three runs an arm.**
