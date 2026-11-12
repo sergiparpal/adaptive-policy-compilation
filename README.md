@@ -930,6 +930,7 @@ with the same command.
 python3 -m halves.ask --dry-run                                  # HV-g1..HV-g3, blocking; writes nothing
 PYTHONHASHSEED=0 python3 -m halves.sample                        # Stage A · the design and the references
 PYTHONHASHSEED=0 python3 -m halves.score                         # Stage C · HV-a to HV-f, and HV-g
+PYTHONHASHSEED=0 python3 -m halves.hidden                        # POST-RUN · why the hidden half cuts
 PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke  # Stage B · spends · only on Sergi's say
 PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1  # then pass2 and oncall, one session at a time
 ```
@@ -1083,6 +1084,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `halves/sample.py` | `results_halves/sample.json` | **refuses while the plan is unsigned** |
 > | `halves/ask.py` | `results_halves/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `halves/score.py` | `results_halves/score.json` | **refuses while the plan is unsigned** |
+> | `halves/hidden.py` | `results_halves/hidden.json` | **refuses while the plan is unsigned** |
 > | `edges/score.py` | `results_edges/score.json` | **refuses while the plan is unsigned** |
 > | `edges/readings.py` | `results_edges/readings.json` | **refuses while the plan is unsigned** |
 > | `primacy/score.py` | `results_primacy/score.json` | **refuses while the plan is unsigned** |
@@ -1321,6 +1323,7 @@ What it covers, and why those things:
 | `test_whole_oncall.py` | `whole/oncall.py`, the POST-RUN reading of why v1d cut at the rarest queue's tickets, over `placement/oncall.py`'s reading of each cut: the codebook's anchored patterns, each matched and each refused where a longer word or another phrase would fool it; the quotes of T1 kept with their windows, one inside the last window not kept again, and at most three a call; the development counts recomputed on the smoke run, which gate 5 reads; a first call on a ticket of the queue read on a record built by hand, with its cut, its added condition, its codes, its note and its placement round, and a ticket of another queue left out; the five gates, each failing on its own; the expectation's clauses at their edges and a reading without value; the writer refusing unsigned before it reads or writes; and, added after the first run, each first call's escalation cause and the queue the base had decided. **No figure of the reading** |
 | `test_whole_security.py` | `whole/security.py`, the POST-RUN reading of why every v1c base lost a sixth of `SECURITY_INCIDENT`, over `channel/lost.py`'s reading of the queue: the queue's two parts, `H01`'s and `H02`'s, partitioning its points, and a pair that does not; the rules of the queue holding a part whole on a base built by hand; one part read on that base, its ways partitioning it, the keyword's default deciding what no rule of the queue reaches, and its curve; every first call on a ticket of the queue with its class read off the drafts and the conditions it adds, and a ticket of another queue left out; gate 7 failing on a class or a verdict that is not Stage C's; the losing part and the expectation's clauses at their edges; the writer refusing unsigned before it reads or writes; and, added after the first run, the lost points by tier, severity and product. **No figure of the reading** |
 | `test_whole_paragraph.py` | `whole/paragraph.py`, the POST-RUN reading of whether the blind paragraph is why the loop's first call cuts: an answer classed as Stage C classes a first-call draft on a real ticket, the governing rule's region whole, a wrong queue and no rule; a group's share over its right-queue answers and the ticket-weighted share; the five gates, each failing on its own; the expectation's clauses at their edges and a group without value; the record's fractions, and its private keys left out; and the writer refusing unsigned before it reads or writes. **No figure of the reading** |
+| `test_halves_hidden.py` | `halves/hidden.py`, the POST-RUN reading of why the hidden half cuts: the codebook's anchored patterns, each matched and each refused where a longer word, another phrase or a distant impasse would fool it; an answer on ticket 1432 read whole and read cut by the first crossing rule, with its note and its declarations; a session's reading keeping only valid answers of the right queue; the development counts recomputed on pass 1, which gate 4 reads; the four gates, each failing on its own; the expectation's clauses at their edges and a clause without value; the record's fractions and `_env`; and the writer refusing unsigned before it reads or writes. **No figure of the reading** |
 | `test_ranking_yielding.py` | `ranking/yielding.py`, the POST-RUN reading of which edge of a cycle yields under the model's rankings: the ranking arm with the ranking as an argument, `blind/yielding.py`'s under Stage C's hierarchy and another edge yielding under another, the stated rankings gathered from a session and the median over the asks, the coin's share at or above an arm, the pools, the comparison with a record and its teeth, the expectation's clauses at their edges, and the writer refusing unsigned. **No figure of the plan** |
 | `test_writer_lists.py` | that the record-writer table above still mirrors the tree, in both directions, and that every writer hangs its `_env` and only the writers that spend are guarded. It **derives** all of it: the hand lists it replaced under-listed the tree for six days (F1 of the optimizer audit) |
 | `test_frontier.py` | the dry-run verification of Step 1 and the memorization floor |
@@ -2137,7 +2140,8 @@ adaptive-policy-compilation/
 │   ├── gates.py             HV-g1..HV-g4 · blocking
 │   ├── sample.py            Stage A · the design and the references
 │   ├── ask.py               Stage B · the smoke run, the two passes and the rarest queue's session · spends · resumes · the proposer's path
-│   └── score.py             Stage C · HV-a to HV-f and HV-g, gated on PLAN_HALVES.md
+│   ├── score.py             Stage C · HV-a to HV-f and HV-g, gated on PLAN_HALVES.md
+│   └── hidden.py            POST-RUN · why the hidden half cuts: each answer's cut, note, declarations and reasoning codes
 │
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
