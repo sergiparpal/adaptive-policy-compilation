@@ -2936,6 +2936,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      kept whole.
 
    [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md).
+   **[NOTE 2026-11-12, later] Why the first half cuts, read POST-RUN.** Every
+   first call is told the engine could not decide its ticket.
+   - **Told that the base is hidden**, it reads the impasse as a conflict
+     between two of the manual's rules in nearly every answer. It settles the
+     conflict by a cut that lies inside both, or by a side declared.
+   - **Told that it is empty**, it mostly says the engine has no rule yet, and
+     writes the governing rule's region. Its answers that name a conflict
+     between two rules are the ones that cut.
+   - **What is open now** is a first-call text that tells the model why the
+     engine stopped. That takes calls.
+
+   [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md), *Why the hidden half cuts*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
