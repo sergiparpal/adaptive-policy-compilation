@@ -1,0 +1,2166 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-12T07:11:43Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "180b8740477b33b062848e16e2cd07197402e460",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "82958f7008a0d0f9"
+  },
+  "plan": "PLAN_HALVES.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_HALVES.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_HALVES.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "HV-g1": {
+      "what": "e is the rule arm w's prompts and v the loop's first call; h and o are cut and joined as \u00a72.1 says and name nothing; the arms differ in the paragraph alone; no builder takes a row; the digests have teeth; the suite green",
+      "e_is_the_rule_arms": {
+        "rule_arm_tickets": 171,
+        "shared": 133,
+        "departing": [],
+        "the_rule_arms_system_prompt_is_the_loops": true,
+        "passes": true
+      },
+      "v_is_the_loops": {
+        "tickets": 136,
+        "departing": [],
+        "records": 24,
+        "records_departing": [],
+        "passes": true
+      },
+      "the_halves": {
+        "e_is_v1s_empty_base": true,
+        "v_is_v2bs": true,
+        "h_is_v_up_to_its_semicolon": true,
+        "o_is_e_with_vs_clause": true,
+        "v_comes_back_from_h_and_o": true,
+        "the_four_differ": true,
+        "each_ends_its_line": true,
+        "none_names_a_queue": true,
+        "none_names_a_rule": true,
+        "passes": true
+      },
+      "one_paragraph_apart": {
+        "departing": [],
+        "repetitions": 112,
+        "repetitions_departing": [],
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case",
+            "rep"
+          ],
+          "paragraph": [
+            "arm"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "digests": 544,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 2890,
+        "result": "OK (skipped=5)",
+        "seconds": 185.5,
+        "passes": true
+      },
+      "passes": true
+    },
+    "HV-g2": {
+      "what": "the request is the loop's first call's with DeepInfra's pin, and the DeepInfra loops sent it; the asker's path names no label; the classes give back whole/paragraph.py's record",
+      "the_request": {
+        "first_attempt": true,
+        "a_retry": true,
+        "settings": true,
+        "the_pin": true,
+        "deepinfra_records": 9,
+        "deepinfra_records_sent_it": true,
+        "passes": true
+      },
+      "no_label_on_the_asker_path": {
+        "modules": [
+          "halves/plan.py",
+          "halves/prompts.py",
+          "halves/population.py",
+          "halves/ask.py"
+        ],
+        "forbidden_names": {},
+        "passes": true
+      },
+      "the_instrument": {
+        "groups": {
+          "reasoned_loop": true,
+          "channel": true,
+          "placement": true,
+          "whole_v1c": true,
+          "whole_v1d": true
+        },
+        "rule_arm": true,
+        "classed_as_stage_c": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "HV-g3": {
+      "what": "the tickets come back from the closed records; the prompts, the passes, the rarest queue's session and the smoke run are \u00a72.3's; the partial files are ignored",
+      "the_tickets": {
+        "rule_arm_tickets": 171,
+        "met": 133,
+        "added": [
+          954,
+          982,
+          1432
+        ],
+        "oncall": [
+          257,
+          710,
+          954,
+          982,
+          1432,
+          1783,
+          1951
+        ],
+        "every_oncall_ticket_met": true,
+        "rebuilt_is_the_plans": true,
+        "passes": true
+      },
+      "asks_and_sessions": {
+        "prompts": {
+          "e": 136,
+          "v": 136,
+          "h": 136,
+          "o": 136
+        },
+        "repetitions": 112,
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "the_rarest_queues_session": true,
+        "its_repetitions": true,
+        "smoke": [
+          "o:1264",
+          "e:1998",
+          "v:467",
+          "e:1",
+          "h:34",
+          "v:228",
+          "o:131",
+          "h:751"
+        ],
+        "smoke_two_distinct_of_each_arm_outside_the_seven": true,
+        "passes": true
+      },
+      "the_guard": {
+        "the_partial_files_are_ignored": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "HV-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_HALVES.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_HALVES.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "sources": {
+    "pass1": "results_halves/ask_pass1.json",
+    "pass2": "results_halves/ask_pass2.json",
+    "oncall": "results_halves/ask_oncall.json"
+  },
+  "verdicts": {
+    "HV-a": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "2993/83160",
+        "value": 0.03599086099086099
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": "within",
+      "se": 0.037002605770106875,
+      "thin": false,
+      "why": null,
+      "by_pass": {
+        "pass1": {
+          "fraction": "1103/78960",
+          "value": 0.013969098277608916
+        },
+        "pass2": {
+          "fraction": "5513/77280",
+          "value": 0.0713379917184265
+        }
+      },
+      "tickets": 99,
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      }
+    },
+    "HV-b": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "537/1300",
+        "value": 0.41307692307692306
+      },
+      "line": {
+        "fraction": "1/5",
+        "value": 0.2
+      },
+      "holds_at": ">=",
+      "se": 0.037457376613553896,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "e": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "v": {
+          "fraction": "9/25",
+          "value": 0.36
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "1863/4064",
+          "value": 0.4584153543307087
+        },
+        "pass2": {
+          "fraction": "1985/5412",
+          "value": 0.36677753141167774
+        }
+      }
+    },
+    "HV-c": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "-22111/83200",
+        "value": -0.26575721153846155
+      },
+      "line": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "holds_at": ">",
+      "se": 0.026682762268344304,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "h": {
+          "fraction": "77/256",
+          "value": 0.30078125
+        },
+        "e": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "v": {
+          "fraction": "9/25",
+          "value": 0.36
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "gap": {
+        "fraction": "537/1300",
+        "value": 0.41307692307692306
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "-3767/16256",
+          "value": -0.23172982283464566
+        },
+        "pass2": {
+          "fraction": "-4337/14432",
+          "value": -0.3005127494456763
+        }
+      }
+    },
+    "HV-d": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "7859/16640",
+        "value": 0.47229567307692305
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": ">=",
+      "se": 0.03476946590075196,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "e": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "h": {
+          "fraction": "77/256",
+          "value": 0.30078125
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "59/128",
+          "value": 0.4609375
+        },
+        "pass2": {
+          "fraction": "511/1056",
+          "value": 0.48390151515151514
+        }
+      }
+    },
+    "HV-e": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "9419/67340",
+        "value": 0.13987228987228986
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": ">=",
+      "se": 0.03586615360514969,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "e": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "o": {
+          "fraction": "164/259",
+          "value": 0.6332046332046332
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "7/64",
+          "value": 0.109375
+        },
+        "pass2": {
+          "fraction": "2935/17292",
+          "value": 0.16973166782327087
+        }
+      }
+    },
+    "HV-f": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "-1/40",
+        "value": -0.025
+      },
+      "line": {
+        "fraction": "1/5",
+        "value": 0.2
+      },
+      "holds_at": ">=",
+      "se": 0.10748364701199899,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "h": {
+          "fraction": "19/40",
+          "value": 0.475
+        },
+        "v": {
+          "fraction": "1/2",
+          "value": 0.5
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "tickets_with_both": 7,
+      "leaving_one_ticket_out": {
+        "257": {
+          "fraction": "19/1190",
+          "value": 0.015966386554621848
+        },
+        "710": {
+          "fraction": "-3/34",
+          "value": -0.08823529411764706
+        },
+        "954": {
+          "fraction": "-19/1190",
+          "value": -0.015966386554621848
+        },
+        "982": {
+          "fraction": "-44/595",
+          "value": -0.07394957983193277
+        },
+        "1432": {
+          "fraction": "9/595",
+          "value": 0.015126050420168067
+        },
+        "1783": {
+          "fraction": "-1/17",
+          "value": -0.058823529411764705
+        },
+        "1951": {
+          "fraction": "1/34",
+          "value": 0.029411764705882353
+        }
+      }
+    }
+  },
+  "HV-g": {
+    "W": {
+      "e": {
+        "pooled": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "ticket_weighted": {
+          "fraction": "209/272",
+          "value": 0.7683823529411765
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "25/32",
+            "value": 0.78125
+          },
+          "pass2": {
+            "fraction": "101/132",
+            "value": 0.7651515151515151
+          }
+        },
+        "at_the_seven": {
+          "fraction": "32/39",
+          "value": 0.8205128205128205
+        }
+      },
+      "v": {
+        "pooled": {
+          "fraction": "9/25",
+          "value": 0.36
+        },
+        "ticket_weighted": {
+          "fraction": "31/90",
+          "value": 0.34444444444444444
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "41/127",
+            "value": 0.3228346456692913
+          },
+          "pass2": {
+            "fraction": "49/123",
+            "value": 0.3983739837398374
+          }
+        },
+        "at_the_seven": {
+          "fraction": "1/2",
+          "value": 0.5
+        }
+      },
+      "h": {
+        "pooled": {
+          "fraction": "77/256",
+          "value": 0.30078125
+        },
+        "ticket_weighted": {
+          "fraction": "79/272",
+          "value": 0.29044117647058826
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "41/128",
+            "value": 0.3203125
+          },
+          "pass2": {
+            "fraction": "9/32",
+            "value": 0.28125
+          }
+        },
+        "at_the_seven": {
+          "fraction": "19/40",
+          "value": 0.475
+        }
+      },
+      "o": {
+        "pooled": {
+          "fraction": "164/259",
+          "value": 0.6332046332046332
+        },
+        "ticket_weighted": {
+          "fraction": "43/67",
+          "value": 0.6417910447761194
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "43/64",
+            "value": 0.671875
+          },
+          "pass2": {
+            "fraction": "78/131",
+            "value": 0.5954198473282443
+          }
+        },
+        "at_the_seven": {
+          "fraction": "27/40",
+          "value": 0.675
+        }
+      }
+    },
+    "interaction": {
+      "fraction": "-4290173/21548800",
+      "value": -0.19909103987228988
+    },
+    "classes": {
+      "e": {
+        "whole": 201,
+        "cut_by_one": 30,
+        "other": 29,
+        "no_rule": 8,
+        "wrong_queue": 4
+      },
+      "v": {
+        "whole": 90,
+        "cut_by_one": 79,
+        "other": 81,
+        "wrong_queue": 9,
+        "no_rule": 13
+      },
+      "h": {
+        "other": 94,
+        "cut_by_one": 83,
+        "whole": 77,
+        "wrong_queue": 8,
+        "no_rule": 8,
+        "cut_by_two": 2
+      },
+      "o": {
+        "whole": 164,
+        "other": 43,
+        "cut_by_one": 52,
+        "no_rule": 6,
+        "wrong_queue": 7
+      }
+    },
+    "wrong_queue_and_no_rule": {
+      "e": {
+        "valid": 272,
+        "wrong_queue": 4,
+        "no_rule": 8
+      },
+      "v": {
+        "valid": 272,
+        "wrong_queue": 9,
+        "no_rule": 13
+      },
+      "h": {
+        "valid": 272,
+        "wrong_queue": 8,
+        "no_rule": 8
+      },
+      "o": {
+        "valid": 272,
+        "wrong_queue": 7,
+        "no_rule": 6
+      }
+    },
+    "by_governing_rule": {
+      "H01": {
+        "e": {
+          "whole": 17,
+          "right_queue": 18,
+          "share": {
+            "fraction": "17/18",
+            "value": 0.9444444444444444
+          }
+        },
+        "h": {
+          "whole": 5,
+          "right_queue": 16,
+          "share": {
+            "fraction": "5/16",
+            "value": 0.3125
+          }
+        },
+        "o": {
+          "whole": 10,
+          "right_queue": 18,
+          "share": {
+            "fraction": "5/9",
+            "value": 0.5555555555555556
+          }
+        },
+        "v": {
+          "whole": 11,
+          "right_queue": 17,
+          "share": {
+            "fraction": "11/17",
+            "value": 0.6470588235294118
+          }
+        }
+      },
+      "H02": {
+        "e": {
+          "whole": 14,
+          "right_queue": 20,
+          "share": {
+            "fraction": "7/10",
+            "value": 0.7
+          }
+        },
+        "h": {
+          "whole": 8,
+          "right_queue": 20,
+          "share": {
+            "fraction": "2/5",
+            "value": 0.4
+          }
+        },
+        "o": {
+          "whole": 11,
+          "right_queue": 20,
+          "share": {
+            "fraction": "11/20",
+            "value": 0.55
+          }
+        },
+        "v": {
+          "whole": 6,
+          "right_queue": 20,
+          "share": {
+            "fraction": "3/10",
+            "value": 0.3
+          }
+        }
+      },
+      "H03": {
+        "e": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "h": {
+          "whole": 0,
+          "right_queue": 8,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/4",
+            "value": 0.25
+          }
+        }
+      },
+      "H04": {
+        "e": {
+          "whole": 4,
+          "right_queue": 7,
+          "share": {
+            "fraction": "4/7",
+            "value": 0.5714285714285714
+          }
+        },
+        "h": {
+          "whole": 3,
+          "right_queue": 7,
+          "share": {
+            "fraction": "3/7",
+            "value": 0.42857142857142855
+          }
+        },
+        "o": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "v": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        }
+      },
+      "H05": {
+        "e": {
+          "whole": 5,
+          "right_queue": 6,
+          "share": {
+            "fraction": "5/6",
+            "value": 0.8333333333333334
+          }
+        },
+        "h": {
+          "whole": 2,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          }
+        }
+      },
+      "H07": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "o": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H08": {
+        "e": {
+          "whole": 13,
+          "right_queue": 17,
+          "share": {
+            "fraction": "13/17",
+            "value": 0.7647058823529411
+          }
+        },
+        "h": {
+          "whole": 1,
+          "right_queue": 14,
+          "share": {
+            "fraction": "1/14",
+            "value": 0.07142857142857142
+          }
+        },
+        "o": {
+          "whole": 11,
+          "right_queue": 16,
+          "share": {
+            "fraction": "11/16",
+            "value": 0.6875
+          }
+        },
+        "v": {
+          "whole": 0,
+          "right_queue": 17,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        }
+      },
+      "H09": {
+        "e": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "h": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        },
+        "o": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H10": {
+        "e": {
+          "whole": 5,
+          "right_queue": 6,
+          "share": {
+            "fraction": "5/6",
+            "value": 0.8333333333333334
+          }
+        },
+        "h": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 5,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H11": {
+        "e": {
+          "whole": 3,
+          "right_queue": 4,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        },
+        "h": {
+          "whole": 1,
+          "right_queue": 3,
+          "share": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 4,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 4,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H12": {
+        "e": {
+          "whole": 7,
+          "right_queue": 8,
+          "share": {
+            "fraction": "7/8",
+            "value": 0.875
+          }
+        },
+        "h": {
+          "whole": 2,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/4",
+            "value": 0.25
+          }
+        },
+        "o": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/4",
+            "value": 0.25
+          }
+        }
+      },
+      "H13": {
+        "e": {
+          "whole": 7,
+          "right_queue": 8,
+          "share": {
+            "fraction": "7/8",
+            "value": 0.875
+          }
+        },
+        "h": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        },
+        "o": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        }
+      },
+      "H14": {
+        "e": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        }
+      },
+      "H15": {
+        "e": {
+          "whole": 9,
+          "right_queue": 10,
+          "share": {
+            "fraction": "9/10",
+            "value": 0.9
+          }
+        },
+        "h": {
+          "whole": 4,
+          "right_queue": 10,
+          "share": {
+            "fraction": "2/5",
+            "value": 0.4
+          }
+        },
+        "o": {
+          "whole": 6,
+          "right_queue": 10,
+          "share": {
+            "fraction": "3/5",
+            "value": 0.6
+          }
+        },
+        "v": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        }
+      },
+      "H16": {
+        "e": {
+          "whole": 21,
+          "right_queue": 30,
+          "share": {
+            "fraction": "7/10",
+            "value": 0.7
+          }
+        },
+        "h": {
+          "whole": 9,
+          "right_queue": 30,
+          "share": {
+            "fraction": "3/10",
+            "value": 0.3
+          }
+        },
+        "o": {
+          "whole": 19,
+          "right_queue": 27,
+          "share": {
+            "fraction": "19/27",
+            "value": 0.7037037037037037
+          }
+        },
+        "v": {
+          "whole": 11,
+          "right_queue": 28,
+          "share": {
+            "fraction": "11/28",
+            "value": 0.39285714285714285
+          }
+        }
+      },
+      "H17": {
+        "e": {
+          "whole": 9,
+          "right_queue": 9,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 6,
+          "right_queue": 9,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "o": {
+          "whole": 7,
+          "right_queue": 10,
+          "share": {
+            "fraction": "7/10",
+            "value": 0.7
+          }
+        },
+        "v": {
+          "whole": 6,
+          "right_queue": 10,
+          "share": {
+            "fraction": "3/5",
+            "value": 0.6
+          }
+        }
+      },
+      "H18": {
+        "e": {
+          "whole": 20,
+          "right_queue": 28,
+          "share": {
+            "fraction": "5/7",
+            "value": 0.7142857142857143
+          }
+        },
+        "h": {
+          "whole": 0,
+          "right_queue": 27,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "o": {
+          "whole": 13,
+          "right_queue": 29,
+          "share": {
+            "fraction": "13/29",
+            "value": 0.4482758620689655
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 27,
+          "share": {
+            "fraction": "4/27",
+            "value": 0.14814814814814814
+          }
+        }
+      },
+      "H19": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 1,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "o": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H20": {
+        "e": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 2,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H22": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "o": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H23": {
+        "e": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "h": {
+          "whole": 0,
+          "right_queue": 2,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "o": {
+          "whole": 0,
+          "right_queue": 2,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H24": {
+        "e": {
+          "whole": 12,
+          "right_queue": 14,
+          "share": {
+            "fraction": "6/7",
+            "value": 0.8571428571428571
+          }
+        },
+        "h": {
+          "whole": 8,
+          "right_queue": 14,
+          "share": {
+            "fraction": "4/7",
+            "value": 0.5714285714285714
+          }
+        },
+        "o": {
+          "whole": 10,
+          "right_queue": 13,
+          "share": {
+            "fraction": "10/13",
+            "value": 0.7692307692307693
+          }
+        },
+        "v": {
+          "whole": 7,
+          "right_queue": 11,
+          "share": {
+            "fraction": "7/11",
+            "value": 0.6363636363636364
+          }
+        }
+      },
+      "H26": {
+        "e": {
+          "whole": 5,
+          "right_queue": 6,
+          "share": {
+            "fraction": "5/6",
+            "value": 0.8333333333333334
+          }
+        },
+        "h": {
+          "whole": 3,
+          "right_queue": 5,
+          "share": {
+            "fraction": "3/5",
+            "value": 0.6
+          }
+        },
+        "o": {
+          "whole": 4,
+          "right_queue": 5,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 4,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H28": {
+        "e": {
+          "whole": 9,
+          "right_queue": 13,
+          "share": {
+            "fraction": "9/13",
+            "value": 0.6923076923076923
+          }
+        },
+        "h": {
+          "whole": 4,
+          "right_queue": 14,
+          "share": {
+            "fraction": "2/7",
+            "value": 0.2857142857142857
+          }
+        },
+        "o": {
+          "whole": 11,
+          "right_queue": 13,
+          "share": {
+            "fraction": "11/13",
+            "value": 0.8461538461538461
+          }
+        },
+        "v": {
+          "whole": 1,
+          "right_queue": 12,
+          "share": {
+            "fraction": "1/12",
+            "value": 0.08333333333333333
+          }
+        }
+      },
+      "H29": {
+        "e": {
+          "whole": 12,
+          "right_queue": 21,
+          "share": {
+            "fraction": "4/7",
+            "value": 0.5714285714285714
+          }
+        },
+        "h": {
+          "whole": 0,
+          "right_queue": 23,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "o": {
+          "whole": 14,
+          "right_queue": 23,
+          "share": {
+            "fraction": "14/23",
+            "value": 0.6086956521739131
+          }
+        },
+        "v": {
+          "whole": 0,
+          "right_queue": 21,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        }
+      }
+    },
+    "by_queue": {
+      "ACCOUNT_MANAGER": {
+        "e": {
+          "whole": 18,
+          "right_queue": 22,
+          "share": {
+            "fraction": "9/11",
+            "value": 0.8181818181818182
+          }
+        },
+        "h": {
+          "whole": 10,
+          "right_queue": 22,
+          "share": {
+            "fraction": "5/11",
+            "value": 0.45454545454545453
+          }
+        },
+        "o": {
+          "whole": 12,
+          "right_queue": 22,
+          "share": {
+            "fraction": "6/11",
+            "value": 0.5454545454545454
+          }
+        },
+        "v": {
+          "whole": 11,
+          "right_queue": 22,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "BILLING_SPECIALIST": {
+        "e": {
+          "whole": 8,
+          "right_queue": 10,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        },
+        "h": {
+          "whole": 5,
+          "right_queue": 9,
+          "share": {
+            "fraction": "5/9",
+            "value": 0.5555555555555556
+          }
+        },
+        "o": {
+          "whole": 8,
+          "right_queue": 9,
+          "share": {
+            "fraction": "8/9",
+            "value": 0.8888888888888888
+          }
+        },
+        "v": {
+          "whole": 5,
+          "right_queue": 10,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "ONCALL_ESCALATION": {
+        "e": {
+          "whole": 9,
+          "right_queue": 13,
+          "share": {
+            "fraction": "9/13",
+            "value": 0.6923076923076923
+          }
+        },
+        "h": {
+          "whole": 5,
+          "right_queue": 13,
+          "share": {
+            "fraction": "5/13",
+            "value": 0.38461538461538464
+          }
+        },
+        "o": {
+          "whole": 9,
+          "right_queue": 14,
+          "share": {
+            "fraction": "9/14",
+            "value": 0.6428571428571429
+          }
+        },
+        "v": {
+          "whole": 7,
+          "right_queue": 14,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "SECURITY_INCIDENT": {
+        "e": {
+          "whole": 31,
+          "right_queue": 38,
+          "share": {
+            "fraction": "31/38",
+            "value": 0.8157894736842105
+          }
+        },
+        "h": {
+          "whole": 13,
+          "right_queue": 36,
+          "share": {
+            "fraction": "13/36",
+            "value": 0.3611111111111111
+          }
+        },
+        "o": {
+          "whole": 21,
+          "right_queue": 38,
+          "share": {
+            "fraction": "21/38",
+            "value": 0.5526315789473685
+          }
+        },
+        "v": {
+          "whole": 17,
+          "right_queue": 37,
+          "share": {
+            "fraction": "17/37",
+            "value": 0.4594594594594595
+          }
+        }
+      },
+      "SELF_SERVICE_DEFLECT": {
+        "e": {
+          "whole": 26,
+          "right_queue": 30,
+          "share": {
+            "fraction": "13/15",
+            "value": 0.8666666666666667
+          }
+        },
+        "h": {
+          "whole": 15,
+          "right_queue": 29,
+          "share": {
+            "fraction": "15/29",
+            "value": 0.5172413793103449
+          }
+        },
+        "o": {
+          "whole": 21,
+          "right_queue": 28,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        },
+        "v": {
+          "whole": 13,
+          "right_queue": 25,
+          "share": {
+            "fraction": "13/25",
+            "value": 0.52
+          }
+        }
+      },
+      "T1_GENERAL": {
+        "e": {
+          "whole": 22,
+          "right_queue": 35,
+          "share": {
+            "fraction": "22/35",
+            "value": 0.6285714285714286
+          }
+        },
+        "h": {
+          "whole": 4,
+          "right_queue": 39,
+          "share": {
+            "fraction": "4/39",
+            "value": 0.10256410256410256
+          }
+        },
+        "o": {
+          "whole": 25,
+          "right_queue": 38,
+          "share": {
+            "fraction": "25/38",
+            "value": 0.6578947368421053
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 35,
+          "share": {
+            "fraction": "3/35",
+            "value": 0.08571428571428572
+          }
+        }
+      },
+      "T2_TECHNICAL": {
+        "e": {
+          "whole": 67,
+          "right_queue": 91,
+          "share": {
+            "fraction": "67/91",
+            "value": 0.7362637362637363
+          }
+        },
+        "h": {
+          "whole": 13,
+          "right_queue": 87,
+          "share": {
+            "fraction": "13/87",
+            "value": 0.14942528735632185
+          }
+        },
+        "o": {
+          "whole": 53,
+          "right_queue": 88,
+          "share": {
+            "fraction": "53/88",
+            "value": 0.6022727272727273
+          }
+        },
+        "v": {
+          "whole": 22,
+          "right_queue": 88,
+          "share": {
+            "fraction": "1/4",
+            "value": 0.25
+          }
+        }
+      },
+      "T3_ENGINEERING": {
+        "e": {
+          "whole": 20,
+          "right_queue": 21,
+          "share": {
+            "fraction": "20/21",
+            "value": 0.9523809523809523
+          }
+        },
+        "h": {
+          "whole": 12,
+          "right_queue": 21,
+          "share": {
+            "fraction": "4/7",
+            "value": 0.5714285714285714
+          }
+        },
+        "o": {
+          "whole": 15,
+          "right_queue": 22,
+          "share": {
+            "fraction": "15/22",
+            "value": 0.6818181818181818
+          }
+        },
+        "v": {
+          "whole": 12,
+          "right_queue": 19,
+          "share": {
+            "fraction": "12/19",
+            "value": 0.631578947368421
+          }
+        }
+      }
+    },
+    "agreement_between_the_passes": {
+      "e": {
+        "prompts": 136,
+        "same_class": 79,
+        "share": {
+          "fraction": "79/136",
+          "value": 0.5808823529411765
+        }
+      },
+      "h": {
+        "prompts": 136,
+        "same_class": 70,
+        "share": {
+          "fraction": "35/68",
+          "value": 0.5147058823529411
+        }
+      },
+      "o": {
+        "prompts": 136,
+        "same_class": 70,
+        "share": {
+          "fraction": "35/68",
+          "value": 0.5147058823529411
+        }
+      },
+      "v": {
+        "prompts": 136,
+        "same_class": 78,
+        "share": {
+          "fraction": "39/68",
+          "value": 0.5735294117647058
+        }
+      }
+    },
+    "the_seven": {
+      "257": {
+        "e": {
+          "whole": 6
+        },
+        "h": {
+          "cut_by_one": 2,
+          "whole": 3,
+          "no_rule": 1
+        },
+        "o": {
+          "whole": 5,
+          "cut_by_one": 1
+        },
+        "v": {
+          "whole": 5,
+          "cut_by_one": 1
+        }
+      },
+      "710": {
+        "e": {
+          "whole": 5,
+          "cut_by_one": 1
+        },
+        "h": {
+          "cut_by_one": 3,
+          "other": 1,
+          "whole": 2
+        },
+        "o": {
+          "cut_by_one": 2,
+          "whole": 3,
+          "no_rule": 1
+        },
+        "v": {
+          "other": 4,
+          "cut_by_one": 2
+        }
+      },
+      "954": {
+        "e": {
+          "no_rule": 1,
+          "whole": 4,
+          "cut_by_one": 1
+        },
+        "h": {
+          "cut_by_one": 1,
+          "whole": 4,
+          "other": 1
+        },
+        "o": {
+          "whole": 4,
+          "other": 1,
+          "cut_by_one": 1
+        },
+        "v": {
+          "whole": 4,
+          "no_rule": 1,
+          "cut_by_one": 1
+        }
+      },
+      "982": {
+        "e": {
+          "whole": 6
+        },
+        "h": {
+          "cut_by_one": 4,
+          "no_rule": 1,
+          "whole": 1
+        },
+        "o": {
+          "whole": 3,
+          "cut_by_one": 2,
+          "no_rule": 1
+        },
+        "v": {
+          "cut_by_one": 6
+        }
+      },
+      "1432": {
+        "e": {
+          "cut_by_one": 3,
+          "no_rule": 1,
+          "whole": 2
+        },
+        "h": {
+          "whole": 1,
+          "cut_by_one": 5
+        },
+        "o": {
+          "cut_by_one": 3,
+          "whole": 3
+        },
+        "v": {
+          "cut_by_one": 3,
+          "whole": 2,
+          "no_rule": 1
+        }
+      },
+      "1783": {
+        "e": {
+          "whole": 6
+        },
+        "h": {
+          "whole": 5,
+          "cut_by_one": 1
+        },
+        "o": {
+          "whole": 5,
+          "cut_by_one": 1
+        },
+        "v": {
+          "other": 1,
+          "whole": 4,
+          "cut_by_one": 1
+        }
+      },
+      "1951": {
+        "e": {
+          "other": 1,
+          "whole": 3,
+          "cut_by_one": 1,
+          "no_rule": 1
+        },
+        "h": {
+          "cut_by_one": 3,
+          "whole": 3
+        },
+        "o": {
+          "cut_by_one": 1,
+          "whole": 4,
+          "other": 1
+        },
+        "v": {
+          "whole": 5,
+          "other": 1
+        }
+      }
+    },
+    "breadth": {
+      "e": {
+        "cut_by_one|within_or_across": 33,
+        "other|within_or_across": 29,
+        "whole|the_region": 223,
+        "whole|within_or_across": 1
+      },
+      "h": {
+        "cut_by_one|within_or_across": 95,
+        "cut_by_two|within_or_across": 2,
+        "other|within_or_across": 95,
+        "whole|the_region": 81,
+        "whole|within_or_across": 10
+      },
+      "o": {
+        "cut_by_one|within_or_across": 59,
+        "other|within_or_across": 44,
+        "whole|the_region": 176,
+        "whole|wider": 1,
+        "whole|within_or_across": 5
+      },
+      "v": {
+        "cut_by_one|within_or_across": 89,
+        "other|within_or_across": 84,
+        "whole|the_region": 94,
+        "whole|wider": 1,
+        "whole|within_or_across": 8
+      }
+    },
+    "declarations": {
+      "e": {
+        "valid": 300,
+        "declaring": 35,
+        "citing_the_manual": 35
+      },
+      "v": {
+        "valid": 300,
+        "declaring": 133,
+        "citing_the_manual": 133
+      },
+      "h": {
+        "valid": 300,
+        "declaring": 144,
+        "citing_the_manual": 144
+      },
+      "o": {
+        "valid": 300,
+        "declaring": 78,
+        "citing_the_manual": 78
+      }
+    },
+    "the_askers_flag": {
+      "e": {
+        "answers": 10,
+        "classes": {
+          "no_rule": 10
+        }
+      },
+      "v": {
+        "answers": 15,
+        "classes": {
+          "no_rule": 15
+        }
+      },
+      "h": {
+        "answers": 9,
+        "classes": {
+          "no_rule": 9
+        }
+      },
+      "o": {
+        "answers": 8,
+        "classes": {
+          "no_rule": 8
+        }
+      }
+    },
+    "beside_the_references": {
+      "e_and_the_rule_arm": {
+        "tickets": 133,
+        "today": {
+          "whole": 198,
+          "right_queue": 255,
+          "share": {
+            "fraction": "66/85",
+            "value": 0.7764705882352941
+          }
+        },
+        "the_rule_arm": {
+          "answers": 266,
+          "right_queue": 254,
+          "whole": 206,
+          "share": {
+            "fraction": "103/127",
+            "value": 0.8110236220472441
+          }
+        }
+      },
+      "v_and_reasoned_loop": {
+        "tickets": 94,
+        "today": {
+          "whole": 59,
+          "right_queue": 174,
+          "share": {
+            "fraction": "59/174",
+            "value": 0.3390804597701149
+          }
+        },
+        "the_loop": {
+          "answers": 248,
+          "right_queue": 235,
+          "whole": 91,
+          "share": {
+            "fraction": "91/235",
+            "value": 0.3872340425531915
+          }
+        }
+      },
+      "v_and_channel": {
+        "tickets": 99,
+        "today": {
+          "whole": 64,
+          "right_queue": 183,
+          "share": {
+            "fraction": "64/183",
+            "value": 0.34972677595628415
+          }
+        },
+        "the_loop": {
+          "answers": 275,
+          "right_queue": 256,
+          "whole": 102,
+          "share": {
+            "fraction": "51/128",
+            "value": 0.3984375
+          }
+        }
+      },
+      "v_and_placement": {
+        "tickets": 90,
+        "today": {
+          "whole": 67,
+          "right_queue": 169,
+          "share": {
+            "fraction": "67/169",
+            "value": 0.39644970414201186
+          }
+        },
+        "the_loop": {
+          "answers": 264,
+          "right_queue": 253,
+          "whole": 97,
+          "share": {
+            "fraction": "97/253",
+            "value": 0.383399209486166
+          }
+        }
+      },
+      "v_and_whole_v1c": {
+        "tickets": 80,
+        "today": {
+          "whole": 63,
+          "right_queue": 150,
+          "share": {
+            "fraction": "21/50",
+            "value": 0.42
+          }
+        },
+        "the_loop": {
+          "answers": 141,
+          "right_queue": 133,
+          "whole": 49,
+          "share": {
+            "fraction": "7/19",
+            "value": 0.3684210526315789
+          }
+        }
+      },
+      "v_and_whole_v1d": {
+        "tickets": 62,
+        "today": {
+          "whole": 49,
+          "right_queue": 116,
+          "share": {
+            "fraction": "49/116",
+            "value": 0.4224137931034483
+          }
+        },
+        "the_loop": {
+          "answers": 105,
+          "right_queue": 101,
+          "whole": 59,
+          "share": {
+            "fraction": "59/101",
+            "value": 0.5841584158415841
+          }
+        }
+      }
+    },
+    "calls": {
+      "pass1": {
+        "asks": 544,
+        "valid": 526,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 544
+        },
+        "finish_reasons": {
+          "stop": 544
+        },
+        "prompt_tokens_median": 1747.5,
+        "completion_tokens_median": 4598.5,
+        "reasoning_tokens_median": 4369.0,
+        "seconds_median": 58.93,
+        "seconds_mean": 64.46816176470588,
+        "retries": {}
+      },
+      "pass2": {
+        "asks": 544,
+        "valid": 527,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 545
+        },
+        "finish_reasons": {
+          "stop": 544,
+          "length": 1
+        },
+        "prompt_tokens_median": 1753,
+        "completion_tokens_median": 4456,
+        "reasoning_tokens_median": 4328,
+        "seconds_median": 70.315,
+        "seconds_mean": 76.4410294117647,
+        "retries": {
+          "parse": 1
+        }
+      },
+      "oncall": {
+        "asks": 112,
+        "valid": 105,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 112
+        },
+        "finish_reasons": {
+          "stop": 112
+        },
+        "prompt_tokens_median": 1747.5,
+        "completion_tokens_median": 4296.5,
+        "reasoning_tokens_median": 3958.0,
+        "seconds_median": 67.2,
+        "seconds_mean": 72.91,
+        "retries": {}
+      }
+    }
+  }
+}
