@@ -102,6 +102,7 @@ THREADS = {
     "CH": ("results_channel/score.json", ("verdicts",)),
     "PL": ("results_placement/score.json", ("verdicts",)),
     "WR": ("results_whole/score.json", ("verdicts",)),
+    "HV": ("results_halves/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -147,6 +148,7 @@ TABLES = {
     "results_channel/FINDINGS_CHANNEL.md": ("CH",),
     "results_placement/FINDINGS_PLACEMENT.md": ("PL",),
     "results_whole/FINDINGS_WHOLE.md": ("WR",),
+    "results_halves/FINDINGS_HALVES.md": ("HV",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {
