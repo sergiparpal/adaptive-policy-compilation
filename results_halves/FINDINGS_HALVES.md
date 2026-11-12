@@ -7,7 +7,7 @@ its own: `a2fda84` on `main`.
   `main` in #229, merged on 2026-11-10.
 - **The three sessions** reached it in #232, merged on 2026-11-11.
 - **Stage C, this record, the banner that closes the plan and the indexes**
-  reach it in the pull request this record was opened in.
+  reach it in #235, the pull request this record was opened in.
 
 Every record names in its `_env` the commit it was written from. Four were
 written on a pull request's branch, and the rebase merge gave each of those
