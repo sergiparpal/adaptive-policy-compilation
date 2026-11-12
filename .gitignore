@@ -102,3 +102,6 @@ results_whole/*.partial.jsonl
 # And the smoke run, the passes and the rarest queue's session of PLAN_HALVES.md
 # (halves/ask.py).
 results_halves/*.partial.jsonl
+# And the smoke runs, the runs and the at-once sessions of PLAN_CORRECTIONS.md
+# (corrections/run.py, corrections/ask.py).
+results_corrections/*.partial.jsonl
