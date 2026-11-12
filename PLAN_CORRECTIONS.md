@@ -323,7 +323,7 @@ departs.
 | **CR-f** | **With the label, the loop compiles the rarest queue where the channel supplies it**: `PL-f` at level 1 | the median over L's runs of `recall_ONCALL_ESCALATION(B)` over the space | **≥ 0.90** | **< 0.90** |
 | **CR-g** | *Reported, not adjudicated.* **What the drafter could not band** | Every run of both arms on every surface: `space` whole and on each keyword half; `corpus(B)`, split into the labelled tickets and the rest; the online figure; the recall of all eight queues on both surfaces. `followed(r)` by queue. The reports by run, by decile and by queue. The at-once curve: every checkpoint's asks beside L's base as it stood after the same label, and the asks with no label. Every learner at every checkpoint, and the table. The students of L's own answers. Each run beside the transcriber under its own draws. The placement rounds: the lists' sizes, every rule left out and every verdict, and the edges by the engine's verdict. The births by class, and each base's size beside the policy's 29 rules. Escalations by cause, and the runs that reached the cap. Empty objects by arm and cause, and every labelled ticket an empty object lost. Every run beside `PLAN_MANUAL.md`'s L₁ runs, across dates and reasoning settings. The calls: providers, finish reasons, tokens, reasoning tokens over the attempts that reached the model, seconds by round, and retries by cause. The notes and the reasoning, recorded whole and not coded | — | — |
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-11-12)**
 
 **Why each row, and why these lines.**
 
