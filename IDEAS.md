@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 8, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 12, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -102,7 +102,21 @@ draws allow, were read POST-RUN the same day**, and the items they answer are
 struck in place. **The placement round that lists only what the engine can
 still order, beside v1b, closed on November 8, 2026**: `PLAN_PLACEMENT.md`, six
 signed rows, four held and two refuted, and one reported, written up in
-`results_placement/`. This is a
+`results_placement/`. **Why its runs under run 3's draws lost
+`ONCALL_ESCALATION`, whether the cut is the provider's, whether it is why the
+loop's births are narrow, and what the cuts cost were read POST-RUN the same
+day**, and the four items they answer are struck in place. **A second outside
+reading was adjudicated the same day**, and what it proposes that nothing has
+run has its own section, below. **A first call that asks for the governing
+rule's region whole, beside v1c, closed on November 10, 2026**:
+`PLAN_WHOLE.md`, six signed rows, three held and three refuted, and one
+reported, written up in `results_whole/`. **Why every v1c base lost a sixth of
+`SECURITY_INCIDENT` was read POST-RUN the same day**, and the item it answers
+is struck in place. **A technical review was adjudicated on November 11,
+2026**, and what it proposes that nothing has run has its own section, below.
+**Which half of v2b's base paragraph makes the first call cut closed on
+November 12, 2026**: `PLAN_HALVES.md`, six signed rows, four held and two
+refuted, and one reported, written up in `results_halves/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -114,6 +128,32 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **Which half of v2b's base paragraph makes the first call cut.** November 12,
+  2026, `PLAN_HALVES.md`, a dollar and twelve cents. The loop's first call was
+  asked alone, with level 3's manual and reasoning on, pinned to DeepInfra, at
+  tickets the reasoning loops had escalated: two passes, then a session of the
+  rarest queue's tickets. Four paragraphs stood where the base would be: the
+  empty base, v2b's paragraph, its first half alone, and its overlap clause on
+  the empty base.
+  - **The gap is the paragraph's**, measured in one period on one provider.
+  - **The first half carries it.** Alone, it cut as v2b's whole paragraph did.
+  - **The overlap clause costs only beside the empty base**, and at the rarest
+    queue's tickets dropping it gave nothing back.
+
+  What it leaves is in its own section below. `results_halves/`.
+- **A first call that asks for the governing rule's region whole.** November
+  10, 2026, `PLAN_WHOLE.md`, sixty-five cents. `PLAN_PLACEMENT.md`'s v1c arm ran
+  again on DeepInfra beside v1d, three runs an arm, alternating, each pair under
+  one set of draws. v1d's first call replaced v2b's paragraph on the base by T1,
+  which asks for the region of the list's rule that governs the ticket, whole.
+  - **It wrote the region whole more often, and still cut** about one draft in
+    four.
+  - **Where the whole drafts were born they paid**, and the round did not
+    refuse them much more.
+  - **It did not compile the rarest queue.** At its tickets v1d cut six times
+    in eight, and run for run it recalled no more of the queue than v1c.
+
+  What it leaves is in its own section below. `results_whole/`.
 - **A placement round that asks only for what the engine can order.** November
   8, 2026, `PLAN_PLACEMENT.md`, eighty-four cents. `PLAN_CHANNEL.md`'s channel
   arm ran again on DeepInfra, three runs under v1b and three under v1c,
