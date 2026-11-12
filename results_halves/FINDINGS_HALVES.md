@@ -50,6 +50,15 @@ code before Stage C ran.**
 - **#234 added `harness/ask_pool.py`**, which no module of `halves/` imports.
   `main` computes `82958f7008a0d0f9` at `180b874`.
 
+> **[NOTE 2026-11-12] One more record, written after Stage C by code added
+> after it.** [`hidden.json`](hidden.json) is the POST-RUN reading of why the
+> hidden half cuts.
+> - **It was written from `e8b70aa`**, on that reading's branch. Its section
+>   below names the commit that carries its codebook and its expectation.
+> - **Its code digest is `fa32ca570f2a482b`**, not Stage C's, because
+>   `halves/hidden.py` was added after Stage C. The modules Stage C ran did not
+>   change.
+
 **This record owns every figure in it.**
 
 **All three stages ran between 2026-11-10 and 2026-11-12, and the six rows are
@@ -556,6 +565,11 @@ ticket by ticket.
    and no stage codes them. One open question is whether the model takes the
    manual's rules for the hidden base's. The declarations bear on it, and a
    reading of the notes would test it.
+   **[NOTE 2026-11-12] Read POST-RUN**, in *Why the hidden half cuts*, below.
+   Told that the base is hidden, the first call reads the engine's impasse as a
+   conflict between two of the manual's rules, and the cut settles it by
+   containment. Told that it is empty, it mostly says the engine has no rule
+   yet.
 3. **Which of the hidden half's two sentences cuts**: that the base is not
    shown, or that the rule is for this ticket. `e` against `h` sets both of one
    paragraph's sentences against both of the other's, as the plan said first.
@@ -566,6 +580,180 @@ ticket by ticket.
 6. **Tickets the reasoning loops never escalated, and the arrivals.** Every
    class reads the space.
 7. **One model, one provider, one manual and one period.**
+
+---
+
+## Why the hidden half cuts — POST-RUN
+
+**Asked for by Sergi on 2026-11-12, after Stage C.** Stage C found the cut in
+v2b's first half. Told only that the base is not shown, and asked for a rule for
+its ticket, the first call wrote the governing region about as rarely as under
+the whole paragraph (`HV-c` refuted, `HV-d` holds). *What Stage C does not
+settle* left why. This reading asks the records, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m halves.hidden`, on 2026-11-12,
+from `e8b70aa` on a clean tree. That commit carries the reading's codebook and
+its expectation, written before it ran on the held-out answers. The record is
+[`hidden.json`](hidden.json). Gates 1 to 4 passed:
+- every answer is valid as §0 reads it;
+- the passes' classes are Stage C's;
+- every answer keeps its reasoning and its payload;
+- the codebook's counts on pass 1 come back.
+
+**What it reads.** Every valid answer of the right queue, under the four arms:
+- its class, as Stage C classes it, and for a cut the listed rules it is cut by;
+- its note, and its declarations;
+- its reasoning, by a codebook of anchored patterns.
+
+A *crossing rule* is a listed rule after the governing one that the ticket
+matches, and whose region does not contain the governing rule's.
+
+**The codebook was frozen on pass 1**, and every clause reads the held-out
+answers: those of pass 2 and of the rarest queue's session. The reasoning is
+mostly in English and quotes the prompt in Spanish. It quotes the impasse frame,
+and asks why the engine could not decide the ticket. The codes:
+- **`CONFLICT`**: within 600 characters after a mention of the impasse, a word of
+  conflict or overlap, both rules matching, neither containing the other, or
+  deciding between rules;
+- **`BETWEEN`**: a conflict named between two listed rules, "between H.. and
+  H..";
+- **`EMPTY`**: the base taken as empty: no rules, an empty base, the rule as the
+  first;
+- **`HIDDEN`**: the hidden-base sentence read: "no se te muestra", "not shown",
+  "hidden";
+- **`INSIDE` and `RESOLVES`**, read in the note: the draft lies inside another
+  rule, and it resolves a conflict.
+
+The codes that told nothing apart on pass 1 were dropped there, and the module
+names them.
+
+### 1. The cut is one operation, in every arm
+
+| arm | held-out cuts | cut by the first crossing rule | note citing a crossing rule | whole answers whose note cites one |
+|---|---|---|---|---|
+| `e`, the empty base | 19 | 18 of 19 | 17 of 19 | 4 of 124 |
+| `v`, v2b's paragraph | 51 | 46 of 51 | 50 of 51 | 22 of 62 |
+| `h`, the hidden half alone | 56 | 52 of 56 | 56 of 56 | 17 of 50 |
+| `o`, the overlap half on the empty base | 36 | 33 of 36 | 35 of 36 | 14 of 96 |
+| **all four** | 162 | 149 of 162 | 158 of 162 | 57 of 332 |
+
+- **Every arm cuts the same way.** 149 of the 162 held-out cuts are the
+  governing region cut by the first crossing rule the ticket matches. 158 carry
+  a note that cites a crossing rule. The whole answers' notes cite one in 57 of
+  332.
+- **So the arms differ in how often they cut**, not in what a cut is.
+
+### 2. How each arm reads the impasse
+
+Every held-out answer of the right queue:
+
+| arm | right-queue answers | `CONFLICT` | `BETWEEN` | `EMPTY` | `HIDDEN` |
+|---|---|---|---|---|---|
+| `e`, the empty base | 158 | 91 of 158 | 32 of 158 | 153 of 158 | 0 of 158 |
+| `v`, v2b's paragraph | 149 | 143 of 149 | 111 of 149 | 3 of 149 | 70 of 149 |
+| `h`, the hidden half alone | 155 | 150 of 155 | 115 of 155 | 8 of 155 | 56 of 155 |
+| `o`, the overlap half on the empty base | 157 | 140 of 157 | 71 of 157 | 125 of 157 | 1 of 157 |
+
+- **Told that the base is hidden, the first call reads the impasse as a conflict
+  in nearly every answer**: `h` in 150 of 155, and `v` in 143 of 149.
+- **Told that it is empty, it does so in a little over half**: `e` in 91 of 158.
+  It takes the base at its word in 153 of 158 answers, where `h` does so in 8 of
+  155.
+- **Beside the empty base, the overlap clause brings the conflict back**: `o`
+  reads one in 140 of 157. Most of its answers still take the base as empty,
+  125 of 157.
+
+### 3. What goes with the cut, inside each arm
+
+| arm | cuts where `BETWEEN` | cuts where not |
+|---|---|---|
+| `e`, the empty base | 14 of 32 | 5 of 126 |
+| `v`, v2b's paragraph | 43 of 111 | 8 of 38 |
+| `h`, the hidden half alone | 47 of 115 | 9 of 40 |
+| `o`, the overlap half on the empty base | 32 of 71 | 4 of 86 |
+
+| arm | class | answers | `BETWEEN` | `EMPTY` | `HIDDEN` | declaring `beats` or `loses_to` | declaring against a crossing rule |
+|---|---|---|---|---|---|---|---|
+| `e` | whole | 124 | 15 of 124 | 124 of 124 | 0 of 124 | 8 of 124 | 5 of 124 |
+| `e` | cut | 19 | 14 of 19 | 16 of 19 | 0 of 19 | 8 of 19 | 6 of 19 |
+| `e` | other | 15 | 3 of 15 | 13 of 15 | 0 of 15 | 4 of 15 | 2 of 15 |
+| `v` | whole | 62 | 44 of 62 | 1 of 62 | 45 of 62 | 41 of 62 | 29 of 62 |
+| `v` | cut | 51 | 43 of 51 | 0 of 51 | 10 of 51 | 15 of 51 | 11 of 51 |
+| `v` | other | 36 | 24 of 36 | 2 of 36 | 15 of 36 | 13 of 36 | 5 of 36 |
+| `h` | whole | 50 | 37 of 50 | 3 of 50 | 27 of 50 | 40 of 50 | 23 of 50 |
+| `h` | cut | 56 | 47 of 56 | 0 of 56 | 7 of 56 | 12 of 56 | 10 of 56 |
+| `h` | other | 49 | 31 of 49 | 5 of 49 | 22 of 49 | 25 of 49 | 11 of 49 |
+| `o` | whole | 96 | 30 of 96 | 91 of 96 | 1 of 96 | 21 of 96 | 15 of 96 |
+| `o` | cut | 36 | 32 of 36 | 16 of 36 | 0 of 36 | 10 of 36 | 8 of 36 |
+| `o` | other | 25 | 9 of 25 | 18 of 25 | 0 of 25 | 9 of 25 | 5 of 25 |
+
+- **Under the empty base, a named conflict is where the cuts are.** Where `e`'s
+  reasoning names a conflict between two listed rules, 14 of 32 answers are
+  cuts. Where it does not, 5 of 126 are.
+- **Under the overlap half on the empty base, the cuts doubt the base.** `o`'s
+  whole answers take it as empty in 91 of 96, and its cuts in 16 of 36.
+- **Under the hidden half, a conflict is read almost everywhere, and the answers
+  part by how they settle it.**
+  - **`h`'s whole answers declare a side.** They declare `beats` or `loses_to`
+    in 40 of 50, and against a crossing rule in 23. Its cuts declare in 12 of
+    56.
+  - **`v`'s split the same way**: 41 of 62 against 15 of 51.
+- **And the whole answers read the hidden-base sentence more** (`HIDDEN`): `h`'s
+  in 27 of 50 and its cuts in 7 of 56; `v`'s in 45 of 62 and 10 of 51.
+
+### The expectation
+
+Written in `halves/hidden.py`'s docstring and committed before the reading ran
+on the held-out answers. It is not signed, and it is on no scoreboard.
+
+| clause | on pass 1, the development set | held out |  |
+|---|---|---|---|
+| Q1 | cut by the first crossing 0.9138; note cites a crossing rule 0.9310 | cut by the first crossing 0.9198; note cites a crossing rule 0.9753 | **holds** |
+| Q2 | h 0.9922; e 0.5547; gap 0.4375 | h 0.9677; e 0.5759; gap 0.3918 | **holds** |
+| Q3 | gap 0.3619 | gap 0.3978 | **holds** |
+| Q4 | e 0.9688; h 0.0547 | e 0.9684; h 0.0516 | **holds** |
+| Q5 | gap 0.4520 | gap 0.5035 | **holds** |
+| Q6 | gap 0.4634 | gap 0.4150 | **holds** |
+
+**All six hold, the bet `Q6` among them.** Each clause was drawn from pass 1.
+So each one holding says the pattern generalised to pass 2 and the rarest
+queue's session, not that the drafter foresaw it. That is how `STATUS.md`'s
+scoreboard reads the bands `PLAN_WHY.md` set on a development set.
+
+### What it says
+
+- **The hidden half cuts because it leaves the impasse to be explained by a
+  conflict.** Every first call is told the engine could not decide its ticket.
+  - **Told that the base is empty**, the model mostly says the engine has no
+    rule yet, and writes the governing rule's region.
+  - **Told only that the base is not shown**, it supposes the engine holds rules
+    like the manual's. It finds the ticket in the governing rule and in a
+    crossing rule of another queue, and reads the impasse as their conflict.
+- **The cut is how it settles that conflict by containment.** It writes the
+  governing region cut by the crossing rule, a draft inside both, and its note
+  says so. The other settlement is the governing rule with sides declared. That
+  is how most of the hidden half's whole answers end.
+- **The same link holds where the conflict is rarer.**
+  - **Under the empty base**, the answers that name a conflict between two rules
+    are the ones that cut.
+  - **Beside the empty base**, the overlap clause makes some answers doubt it,
+    and those are the cuts. That is what `HV-e` measured.
+- **What the reading does not say.** These are codes of what the model writes,
+  and *"the model's explanations are not its reasons"* (`EXTERNAL_REVIEW.md`
+  §2). They say which account each answer gives, and that the account goes with
+  the class on a held-out set. They do not say that the account caused the
+  class.
+
+### What it does not settle
+
+1. **Which of the hidden half's two sentences does it**: that the base is not
+   shown, or that the rule is for this ticket. Calls.
+2. **Whether telling the first call why the engine stopped closes the gap.** A
+   text a blind loop can send, which says the engine holds no rule like the
+   manual's or names what it could not decide, set beside v1c in a loop, is a
+   plan with calls.
+3. **The rarest queue.** The clauses pool its seven tickets with the rest of
+   `T`.
 
 ---
 
