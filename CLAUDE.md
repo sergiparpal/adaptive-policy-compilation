@@ -180,8 +180,8 @@ the FINDINGS.
 `queue_alone/ask.py`, since 2026-10-25 `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, since
 2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, since
-2026-11-09 `whole/run.py`, and since 2026-11-10 `halves/ask.py`, all eighteen
-below. It
+2026-11-09 `whole/run.py`, since 2026-11-10 `halves/ask.py`, and since
+2026-11-12 `corrections/run.py` and `corrections/ask.py`, all twenty below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1336,6 +1336,72 @@ supervisor ran them one at a time, committed each record alone and pushed it to
 one pull request. The agent merged that pull request by hand, once CI was green
 on its last head.
 
+**`PLAN_CORRECTIONS.md` closed on 2026-11-14: the learning regime, a report
+that carries the true queue under level 1's catalogue.** Six signed rows
+adjudicated, three held and three refuted, and one reported. Sergi signed §0 on
+2026-11-12, before any figure it governs existed.
+- **What it asked.** It ran `PLAN_PLACEMENT.md`'s v1c at level 1, the catalogue,
+  with reasoning on, three runs an arm, the arms alternating, under
+  `PLAN_CHANNEL.md`'s channel at coverage 1/2.
+  - **Arm L**'s first call, at an escalation caused by a reported error, carried
+    a report naming the ticket's true queue. **Arm N**'s carried nothing.
+  - **Beside L's labels**, the model compiled the same labels at once, at
+    checkpoints, through `harness/ask_pool.py`. `PLAN_ILP.md`'s inducer and
+    `PLAN_STUDENTS.md`'s students learned them, free.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with no bridge.
+- **Where it is written up.** The record is
+  `results_corrections/FINDINGS_CORRECTIONS.md`, and `STATUS.md` indexes its
+  figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `corrections/` refuses while the plan carries a
+  blank signature line. The gate reads `PLAN_CORRECTIONS.md` and no other plan,
+  and counts every such line.
+- **What it calls.** `placement/`, `channel/`, `reasoned_loop/`, `manual/`,
+  `ilp/`, `students/`, `edges/`, `whole/`, `blind/`, `authorship/`, `reuse/`,
+  `first_match/` and `rung2/` are called by it and not edited.
+- **It breaks the oracle's separation on purpose, by one route.** In arm L, at a
+  reported error, `corrections/loop.py` hands the proposer that case's corpus
+  label. Its five proposer-path modules are watched as the authority channel in
+  `tests/test_oracle_separation.py`, and `tests/test_corrections.py` pins the
+  route.
+
+The first command is blocking and writes nothing:
+
+    python3 -m corrections.run --dry-run                                  # CR-g1..CR-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m corrections.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m corrections.score                         # Stage C, free, from the runs and the asks
+    PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
+
+**Told the true queue, the loop learns the label's queues and not the
+function** (`CR-c` holds, `CR-b` refuted). Its rules took regions the catalogue
+already held, and its final base forgot about half of its own labelled tickets.
+A plan that hands the loop corrections should read what the base keeps of them,
+not only what the proposer writes.
+
+**Compiled at once, the same corrections beat the loop** (`CR-d` holds), and a
+learner of the labels alone matched it (`CR-e` refuted, thin). Whether the
+loop loses them by its shape, one ticket and one rule, or by its order, no row
+separates.
+
+**A scorer that reads the arrivals must read the corpus labels when a run can
+stop at the cap.** Stage C's first launch stopped on a run the cap had stopped,
+before it wrote or printed anything. The scorer was corrected in a commit of its
+own, and the FINDINGS says so.
+
+**An at-once ask over hundreds of labels, with reasoning on, needs room.** Some
+attempts reached the budget §2.4 gave them, twice the loop's, and were asked
+again.
+
+**Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
+ran the smoke runs, the sessions and the six runs one at a time. It committed
+each record alone and pushed it to one pull request. WSL restarted under one
+run, which resumed from its partial file. The merge waited for Sergi's word.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1344,8 +1410,9 @@ builds, since 2026-10-24 the asker `queue_alone/ask.py` builds, and since
 2026-10-25 the asker `first_match/ask.py` builds, which `reasoned_rule/ask.py`
 and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
 `reasoned_loop/protocol.py`, and `placement/run.py` through the asker
-`placement/protocol.py` pins, and `whole/run.py` and `halves/ask.py` through
-the same asker, without changing a request. Every paid writer but rung 1's stores each question's attempts as
+`placement/protocol.py` pins, and `whole/run.py`, `halves/ask.py` and
+`corrections/run.py` through the same asker, without changing a request, and
+`corrections/ask.py` through a subclass of it that changes the budget alone. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1437,7 +1504,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 `queue_alone/ask.py`, since 2026-10-25, `first_match/ask.py` and
 `reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, since
 2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, since
-2026-11-09, `whole/run.py`, and since 2026-11-10, `halves/ask.py`.
+2026-11-09, `whole/run.py`, since 2026-11-10, `halves/ask.py`, and since
+2026-11-12, `corrections/run.py` and `corrections/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 
