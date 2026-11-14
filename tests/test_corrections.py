@@ -538,6 +538,19 @@ class TestStageC(unittest.TestCase):
                    {"idx": 2, "kind": "ERROR", "calls": [{"payload": {}}]}]}
         self.assertEqual(score.followed(rec), (1, 1))
 
+    def test_the_arrivals_of_a_run_the_cap_stopped(self):
+        """A run that stops at the cap keeps rows only for the cases it read,
+        and its final base still decides all 2,000 arrivals, read against the
+        corpus labels (2026-11-14: Stage C's first launch stopped on N r1)."""
+        rows = [{"idx": i, "truth": t, "correct": i == 0}
+                for i, (t, _) in enumerate(plan.labels()[:3])]
+        rec = {"records": rows, "reports_handed": {}}
+        got = score.corpus_split(rec, PriorityEngine(space=MI.space()))
+        self.assertEqual(got["labelled"], [0, 0])
+        self.assertEqual(got["rest"], [0, plan.N])
+        self.assertEqual(got["online"], [1, 3])
+        self.assertEqual(got["online_cases_read"], 3)
+
 
 # ---------------------------------------------------------------------------
 # 7. Nothing is built, asked or written unsigned

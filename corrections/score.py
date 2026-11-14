@@ -243,9 +243,17 @@ def row(rid: str, runs: dict[str, list[dict]], extra: dict[int, dict]) -> dict[s
 def corpus_split(record: dict[str, Any], eng) -> dict[str, Any]:
     """The final base on the arrivals, split into the tickets labelled, with
     their repeats, and the rest; and the online figure, each decision as it was
-    taken."""
+    taken.
+
+    **The truth of every arrival is the corpus label**, `plan.labels()`, the one
+    the trigger reads, and not the record's. A run that stops at the cap keeps a
+    row only for the cases it read. Its final base still decides all 2,000
+    arrivals, and the online figure covers the cases it read, which
+    `online_cases_read` gives. Corrected on 2026-11-14, after Stage C's first
+    launch stopped here on N r1, which the cap stopped at case 1,276, before
+    anything was written or printed."""
     cases = list(MI.corpus())
-    truth = {r["idx"]: r["truth"] for r in record["records"]}
+    truth = [t for t, _ in plan.labels()]
     keys = {cases[int(i)].key() for i in record.get("reports_handed") or {}}
     out = {"labelled": [0, 0], "rest": [0, 0]}
     for i, case in enumerate(cases):
@@ -256,6 +264,7 @@ def corpus_split(record: dict[str, Any], eng) -> dict[str, Any]:
         out[part][1] += 1
     rows = record["records"]
     out["online"] = [sum(1 for r in rows if r["correct"] is True), len(rows)]
+    out["online_cases_read"] = len(rows)
     return out
 
 
