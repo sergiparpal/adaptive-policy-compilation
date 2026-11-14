@@ -3218,6 +3218,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's
      keep. Which rules take those points, and from which labels they were
      drafted, is not read.
+     **[NOTE 2026-11-14, latest] Read in part POST-RUN, through why the loop's
+     share of the space peaked and fell: the engine refused the right sides.**
+     - **What fell was the keyword half.** Most of the points each L run lost
+       after its peak were `SECURITY_INCIDENT`'s. Most were left in a conflict,
+       not taken: 45,277 of the three runs' 119,069 were taken alone.
+     - **The engine refused the right side.** Every pair at those conflicts was
+       an edge refused for closing a cycle. In L r1 and L r2 it was mostly the
+       newborn declared below `SECURITY_INCIDENT`'s rule. The refusal came
+       because its own wins, installed first, already reached that rule.
+     - **Installed losses first, the same declarations end L r1 at 0.7374 of the
+       space and L r2 at 0.6539**, against 0.5647 and 0.4221. That is not the
+       loop that would have run.
+     - **The label is not needed for it.** N r3 fell 0.1343 of the space, more
+       than L r3's 0.1277.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the loop's share of the space peaked and fell*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.

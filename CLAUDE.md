@@ -1376,6 +1376,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.score                         # Stage C, free, from the runs and the asks
     PYTHONHASHSEED=0 python3 -m corrections.forgotten                     # POST-RUN: why the final base forgets its corrections
     PYTHONHASHSEED=0 python3 -m corrections.broad                         # POST-RUN: why the first call writes broad corrections
+    PYTHONHASHSEED=0 python3 -m corrections.fall                          # POST-RUN: why the loop's share of the space peaked and fell
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1413,6 +1414,17 @@ line. The report does not make it broader: on the same ticket, the first call
 without it wrote the broader draft more often. A correction that duplicates the
 base adds nothing, and the loop bears it anyway. A protocol that reports errors
 to a blind first call should show it the rule that decided the reported case.
+
+**Read POST-RUN, the loop's share of the space fell where the engine refused its
+right sides.** A born rule's answer declares it above some rules and below
+others, and the loop installs the wins first. When a win already reaches the
+rule the newborn should lose to, that loss closes a cycle and is refused, and
+their shared region is left in conflict. In two of the three L runs most of what
+the base lost after its peak was lost so, in the keyword half. Replayed with
+each birth's losses first, the same declarations kept most of it. A loop that
+installs declarations should try a rule's losses before its wins, or say in §0
+what a refused right side does. And a curve read only at checkpoints hides its
+peak: read the base after every birth before saying where it turned.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

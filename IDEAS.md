@@ -527,6 +527,12 @@ learner of the labels alone matched the loop. What that leaves:
   `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's kept
   from the catalogue. Which rules decide the lost points, and from which labels
   they were drafted. Free on the records.
+  **[NOTE 2026-11-14] Read in part POST-RUN.** The points of
+  `SECURITY_INCIDENT` right at each L run's peak and lost after it were read.
+  They were mostly left in conflicts by right sides the engine refused, and in L
+  r3 mostly taken by one correction of `T2_TECHNICAL` nested in the keyword's
+  region. Those not right at the peak are not read. `FINDINGS_CORRECTIONS.md`,
+  *Why the loop's share of the space peaked and fell*.
 - **Why the final base forgets its own corrections.** At the end, L's bases
   decide about half of their own labelled tickets right. Whether a later rule, a
   declared edge or a refused placement takes each one back. Free on the
@@ -563,9 +569,29 @@ learner of the labels alone matched the loop. What that leaves:
   peaked well before the last label, and in run 2 it fell by about a third of
   the space. `corrections/score.py`'s `base_after` rebuilds the base after any
   label. Free on the records.
+  **[NOTE 2026-11-14] Read POST-RUN: the keyword half, left in conflict by right
+  sides refused.** Most of the points lost after each L run's peak were
+  `SECURITY_INCIDENT`'s, and most were left in a conflict. Each such conflict
+  was an edge refused for closing a cycle. In L r1 and L r2 it was mostly the
+  right one: the newborn declared below `SECURITY_INCIDENT`'s rule, which its own
+  wins, installed first, already reached. Installed losses first, the same
+  declarations keep most of what those two runs lost. N r3, with no label, fell
+  further than L r3. So the next lever is a loop that installs a born rule's losses before
+  its wins. Calls. `FINDINGS_CORRECTIONS.md`, *Why the loop's share of the space
+  peaked and fell*.
+- **Why a rule's wins reach the rule it should lose to.** The cycles that refused
+  the right sides were closed by the same answer's wins, installed first.
+  Whether their paths run through rules wrongly above `SECURITY_INCIDENT`'s, or
+  through rules that do not match the contested points, is not traced. Free on
+  the records.
 - **Shape or order.** The at-once answer is installed in its own list order, and
   the loop's base is ordered by containment and declared edges. Installing each
   in the other's order would separate the two. Free on the records.
+  **[NOTE 2026-11-14] The loop's own order moves its base.** Its declarations,
+  installed losses first, come close to the at-once answers in L r1 and L r2,
+  and not in L r3. That does not separate shape from order: the at-once answer is
+  other rules. `FINDINGS_CORRECTIONS.md`, *Why the loop's share of the
+  space peaked and fell*.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,
