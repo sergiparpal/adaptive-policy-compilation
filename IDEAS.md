@@ -584,6 +584,22 @@ learner of the labels alone matched the loop. What that leaves:
   Whether their paths run through rules wrongly above `SECURITY_INCIDENT`'s, or
   through rules that do not match the contested points, is not traced. Free on
   the records.
+  **[NOTE 2026-11-14] Read POST-RUN: through rules no contested point sees.**
+  Almost every path runs through a rule that misses every point the pair
+  shares, and almost none needs a crossing the policy calls wrong. The paths
+  enter `SECURITY_INCIDENT`'s rule through a rule nested in the keyword's region,
+  born at a reported ticket of `H03`. In L it drops the tier, and is right on
+  half its points. An engine that refuses a cycle only where it is keeps most of
+  what L r1 and L r2 lost, on the same declarations. `FINDINGS_CORRECTIONS.md`,
+  *Why a rule's wins reach the rule it should lose to*.
+- **An engine that refuses a cycle only where it is.** `rung2/engine2.py` refuses
+  any edge that closes a cycle anywhere in the base. A loop whose engine refused
+  only a cycle through rules that all match a point the edge decides would
+  install the right sides the records lost. It needs an engine of its own, since
+  the closed records' is not edited. Calls.
+- **Why so many rules sit above the gateway.** Which declarations put the rules
+  of other queues above the nested rule of `H03`, and why the paths to it run so
+  long. Free on the records.
 - **Shape or order.** The at-once answer is installed in its own list order, and
   the loop's base is ordered by containment and declared edges. Installing each
   in the other's order would separate the two. Free on the records.
