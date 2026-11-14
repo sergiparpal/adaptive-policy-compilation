@@ -313,6 +313,23 @@ class TestTheEvenCrossings(unittest.TestCase):
         a = read(RUN_A)["added_after_the_first_run"]
         self.assertEqual((a["even_cut"], a["stands_on_right"]), (0, 0))
 
+    def test_a_rule_above_two_even_crossings_of_a_pair_counts_its_points_once(self):
+        """X is nested in U2, which is nested in U: both of the pair's crossings
+        into `SECURITY_INCIDENT` are X's."""
+        run = {**RUN_D, "births": RUN_D["births"][:3] + [
+            (IMP, r_("U2", 3, SEC, [KEYWORD, c_("severity", "gte", 2)])),
+            (ERR, r_("N", 4, BI, [BILLING], beats=["X"], loses_to=["T"], refused=["U"]))],
+            "edges": [(4, "N", "X"), (4, "U", "N", EDGE_CYCLE), (4, "T", "N")],
+            "final": 107520 - 3360 - 3360}
+        got = read(run)
+        self.assertEqual([g["passes"] for g in got["gates"]], [True] * 6)
+        self.assertEqual(got["summary"]["points"], 3360)
+        self.assertEqual(sorted((c["upper"], c["lower"]) for c in got["pairs"][0]["crossings"]),
+                         [("X", "U"), ("X", "U2")])
+        self.assertEqual([(r["rule_id"], r["points"])
+                          for r in got["added_after_the_first_run"]["rules_above_even"]],
+                         [("X", 3360)])
+
 
 class TestTheEngineThatRefusesOnlyWhereTheCycleIs(unittest.TestCase):
     """Added after the first run."""

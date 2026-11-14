@@ -558,9 +558,8 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int], cases:
     above_even: dict[str, int] = {}
     for p in pairs:
         if p["even_cut"]:
-            for c in p["crossings"]:
-                if c["verdict"] == EVEN:
-                    above_even[c["upper"]] = above_even.get(c["upper"], 0) + p["points"]
+            for upper in {c["upper"] for c in p["crossings"] if c["verdict"] == EVEN}:
+                above_even[upper] = above_even.get(upper, 0) + p["points"]
     where_run = where_replay(record, space, truth, cases)
     gates.append({"gate": 6, "what": "the engine that refuses only where the cycle is leaves "
                                      "no point without a rule undefeated, and decides as "
