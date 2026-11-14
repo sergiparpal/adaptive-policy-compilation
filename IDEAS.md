@@ -600,6 +600,19 @@ learner of the labels alone matched the loop. What that leaves:
 - **Why so many rules sit above the gateway.** Which declarations put the rules
   of other queues above the nested rule of `H03`, and why the paths to it run so
   long. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: not so many.** A minority of the rules born
+  after the gateway end above it, through few doors. The declared doors put
+  themselves above it in their own answers, where most answers that were listed
+  it put it above their newborn. In L r1 one door, born at the next birth,
+  carries every rule above. The paths are long because the rules above accreted
+  on those doors, mostly by their own declared wins. `FINDINGS_CORRECTIONS.md`,
+  *Why so many rules sit above the gateway*.
+- **Why the doors declared themselves above the gateway.** Most answers that
+  were listed it put it above their newborn, and the doors' did not. Their
+  reasoning is in the records. Free on the records.
+- **How much of the fall the doors carry.** A replay of the same births without
+  the doors' edges would say how much of what L lost rests on them. It is not
+  the loop that would have run. Free on the records.
 - **Shape or order.** The at-once answer is installed in its own list order, and
   the loop's base is ordered by containment and declared edges. Installing each
   in the other's order would separate the two. Free on the records.

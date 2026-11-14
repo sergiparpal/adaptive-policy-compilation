@@ -1378,6 +1378,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.broad                         # POST-RUN: why the first call writes broad corrections
     PYTHONHASHSEED=0 python3 -m corrections.fall                          # POST-RUN: why the loop's share of the space peaked and fell
     PYTHONHASHSEED=0 python3 -m corrections.paths                         # POST-RUN: why a rule's wins reach the rule it should lose to
+    PYTHONHASHSEED=0 python3 -m corrections.gateway                       # POST-RUN: why so many rules sit above the gateway
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1438,6 +1439,16 @@ into it for the whole base. An engine that refuses every global cycle refuses
 edges no point would see: a plan that keeps such an engine should say in §0 what
 a cycle through unrelated rules costs. And a verdict with a tie rule can decide
 a clause on the tie: count the even cases before signing.
+
+**Read POST-RUN, the rules above that nested rule were not many.** A minority
+of the rules born after it ended above it, through few doors. A question that
+says *so many* carries a count, and the reading should band it, as this one
+did: that clause failed. The declared doors put themselves above the nested
+rule in their own answers, where most answers that were listed it put it above
+their newborn. In L r1 a single door, born at the next birth, carried every
+rule above it. The paths are long because the rules above accreted on those
+few doors, mostly by their own declared wins. A reading of what a refusal
+rests on should look for the few edges every path passes through.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
