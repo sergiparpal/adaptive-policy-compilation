@@ -9,7 +9,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   closes the plan and the indexes** reached it in #240, the pull request this
   record was opened in, merged on 2026-11-14.
 - **The POST-RUN reading of why the final base forgets its corrections** reaches
-  it in the pull request it is opened in.
+  it in #242.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
