@@ -160,6 +160,25 @@ which rule is that door, any other door, any rule's entry or depth, or any
 newborn's distance to a gateway.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHAT THE ANSWERS DECLARED
+--------------------------------------------------------------------------
+The first run found few rules above the gateways, through few doors, and every
+declared door's edge was the door's own answer. Read by hand, the gateways'
+answers had declared wins over the rules their rounds listed, and their losses
+had been refused. So this part reads what the answers said, whatever the engine
+did with it, as `corrections/fall.py`'s `declared` reads them:
+- **the gateways' and the doors' answers**: how many rules each round listed,
+  and how many the answer declared its rule above and below, by what the engine
+  did with each;
+- **every round that listed a gateway**, by what its answer declared of the
+  gateway, above or below or nothing, and what the engine did;
+- **every round of the run**, by the same counts, beside them.
+It was tried on the records in a scratch script before it was written here. It
+was written after the six clauses above had been read: D2, D3, D4 and D5 hold,
+and D1 and D6 fail. It carries no expectation and moves no clause, and it adds
+no gate.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-15, after `corrections/paths.py`.
@@ -222,6 +241,11 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-15, after corrections/paths.py. The expectation "
     "in the module's docstring was written and committed before the reading ran. Not a "
     "signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: what the gateways' and the "
+    "doors' answers declared, every round that listed a gateway by what its answer declared "
+    "of it, and every answer of the run by the sides it declared. Tried in a scratch script "
+    "first. No expectation; no clause moves.")
 
 share, frac = fg.share, fg.frac
 
@@ -441,6 +465,66 @@ def read_newborn(engine: PriorityEngine, n: str, gws: list[str], gates: list[str
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: what the answers declared
+# ---------------------------------------------------------------------------
+
+def sides(rule: dict[str, Any]) -> dict[str, Any]:
+    """The rules an answer declared its rule above and below, whatever the
+    engine did with each: `corrections/fall.py`'s `declared`, counted, and by
+    side and what the engine did."""
+    said = list(fl.declared(rule).values())
+    return {"wins": sum(1 for side, _ in said if side == "beats"),
+            "losses": sum(1 for side, _ in said if side == "loses_to"),
+            "by_verdict": dict(sorted(Counter(f"{s}:{w}" for s, w in said).items()))}
+
+
+def answers(record: dict[str, Any], gws: list[dict[str, Any]],
+            doors: list[dict[str, Any]]) -> dict[str, Any]:
+    """What the gateways' and the doors' answers declared; every round that
+    listed a gateway, by what its answer declared of it and what the engine did;
+    and every answer of the run, by the sides it declared."""
+    born = erb.births(record)
+    rules = {r["rule_id"]: r for r in record["rules"]}
+    escs = fg.escalation_at(record)
+
+    def listed(idx: int) -> list[str]:
+        return list((escs.get(idx) or {}).get("listed") or [])
+
+    def answer(rid: str) -> dict[str, Any]:
+        r = rules[rid]
+        return {"rule_id": rid, "action": r["action"], "born_at": r["born_at"],
+                "cause": (escs.get(r["born_at"]) or {}).get("kind"),
+                "listed": len(listed(r["born_at"])), **sides(r)}
+
+    gate_born = {g["rule_id"]: g["born_at"] for g in gws}
+    of_a_gateway: Counter = Counter()
+    every: Counter = Counter()
+    every_verdict: Counter = Counter()
+    for idx in sorted(born):
+        r = born[idx]
+        s = sides(r)
+        said = fl.declared(r)
+        shown = set(listed(idx))
+        if shown:
+            every["rounds"] += 1
+            every["wins"] += s["wins"]
+            every["losses"] += s["losses"]
+            every["without_a_loss"] += s["losses"] == 0
+            every_verdict.update(s["by_verdict"])
+        for g, b in gate_born.items():
+            if idx > b and g in shown:
+                side, why = said.get(g, ("none", "none"))
+                of_a_gateway[f"{side}:{why}"] += 1
+    return {"gateways": [answer(g["rule_id"]) for g in gws],
+            "doors": [answer(d) for d in sorted({x["door"] for x in doors},
+                                                key=lambda d: (rules[d]["born_at"], d))],
+            "rounds_that_listed_a_gateway": dict(sorted(of_a_gateway.items())),
+            "every_round": {**{k: every.get(k, 0)
+                               for k in ("rounds", "wins", "losses", "without_a_loss")},
+                            "by_verdict": dict(sorted(every_verdict.items()))}}
+
+
+# ---------------------------------------------------------------------------
 # One run, read
 # ---------------------------------------------------------------------------
 
@@ -585,6 +669,7 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int], cases:
         "doors": doors,
         "newborns": sorted(newborns.values(), key=lambda nb: (-nb["pair_points"], nb["born_at"])),
         "gates": gates_out,
+        "added_after_the_first_run": {"answers": answers(record, gws, doors)},
     }
 
 
@@ -681,6 +766,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"paths": str(pt.record_path()),
                    "paths_from": paths_record["_env"].get("git_commit")},
         "surface": "the rules above each run's gateways over the whole base, as it is replayed "
