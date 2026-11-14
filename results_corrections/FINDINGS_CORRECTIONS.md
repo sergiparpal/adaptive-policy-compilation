@@ -6,8 +6,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The plan, its package, the signature, Stage A, the smoke runs, the six runs
   and the five at-once sessions** reached `main` in #239, merged on 2026-11-14.
 - **The scorer's correction during Stage C, Stage C, this record, the banner that
-  closes the plan and the indexes** reach it in the pull request this record is
-  opened in.
+  closes the plan and the indexes** reach it in #240, the pull request this
+  record was opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the rebase merge gave each of those
