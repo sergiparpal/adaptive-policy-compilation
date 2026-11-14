@@ -136,6 +136,40 @@ curve. Nor any point lost or gained, nor which rule decides any point of the
 space in any base.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHY THE CONFLICTS, AND THE LOSSES FIRST
+--------------------------------------------------------------------------
+The first run found most of the points lost left in a conflict: the newborn
+undefeated beside a rule of the point's true queue, with no edge between them.
+The loop installs a born rule's declarations as v1 does, its wins before its
+losses (`authorship.loop.install_declarations`), and an edge refused for
+closing a cycle leaves its pair unordered. So this part reads:
+- **the pairs beside.** At the last loss of every point lost by a conflict,
+  each rule undefeated beside the newborn is classed by the newborn's
+  declaration against it:
+  below_refused  declared below it, and refused for closing a cycle;
+  above_refused  declared above it, and refused for closing a cycle;
+  outside        cited, though the round did not show it;
+  no_side        listed in the round, with no declaration;
+  not_listed     not listed, and no declaration;
+  other          anything else.
+  A pair refused for a cycle also says what closed it: the base, if the cycle
+  was there before the birth's own edges were tried, or the birth's own earlier
+  edges. Each pair is weighed by the points it stands on. The points where every
+  pair beside is below_refused are counted too.
+- **the losses first.** The same births and the same declarations, each birth's
+  losses tried before its wins: the peak, the final share, the fall, the recall
+  of `SECURITY_INCIDENT`, the conflicts and the edges refused for a cycle,
+  beside the record's order. It is not the loop that would have run. A base
+  installed in another order decides the arrivals otherwise, and would have
+  escalated other cases.
+
+It adds gate 5: the record's order, replayed again, gives the reading's curve.
+Both parts were tried on the records in a scratch script before they were
+written here. They were written after the six clauses above had been read:
+Q1, Q4 and Q5 hold, and Q2, Q3 and Q6 fail. They carry no expectation and move
+no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-14, after the two readings above.
@@ -143,7 +177,7 @@ The expectation above was written and committed before the reading ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. Zero API
 calls.
 
-Usage:  python3 -m corrections.fall --dry-run   # gates 1 to 4; writes nothing
+Usage:  python3 -m corrections.fall --dry-run   # gates 1 to 5; writes nothing
         PYTHONHASHSEED=0 python3 -m corrections.fall
 """
 
@@ -167,7 +201,7 @@ from edges import rebuild as erb
 from fidelity.replay import rule_from
 from manual import instrument as MI
 from reuse import structure as st
-from rung2.engine2 import PriorityEngine, Space
+from rung2.engine2 import EDGE_CYCLE, EDGE_OK, PriorityEngine, Space
 
 from . import forgotten as fg
 from . import plan
@@ -198,6 +232,19 @@ PROVENANCE = (
     "forgets its corrections and why the first call writes them broad. The expectation in "
     "the module's docstring was written and committed before the reading ran. Not a signed "
     "row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: the pairs beside the "
+    "newborn at the conflicts, each classed by its declaration and what closed a refused "
+    "one's cycle, and the same births with each birth's losses tried before its wins, beside "
+    "the record's order. Both were tried in a scratch script first. No expectation; no "
+    "clause moves.")
+
+# The classes of a pair beside the newborn at a conflict.
+BELOW_REFUSED, ABOVE_REFUSED = "below_refused", "above_refused"
+OUTSIDE, NO_SIDE, NOT_LISTED, OTHER = "outside", "no_side", "not_listed", "other"
+PAIR_CLASSES = (BELOW_REFUSED, ABOVE_REFUSED, OUTSIDE, NO_SIDE, NOT_LISTED, OTHER)
+# What closed a refused pair's cycle.
+BY_THE_BASE, BY_ITS_OWN = "the_base", "its_own_edges"
 
 
 def record_path():
@@ -350,6 +397,166 @@ def right_at(steps: list[dict[str, Any]], case: int) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: the pairs beside, and the losses first
+# ---------------------------------------------------------------------------
+
+def settle(engine: PriorityEngine, und: dict[str, int], action: dict[str, str], rid: str,
+           queue: str) -> None:
+    """The undefeated masks after `rid`'s birth and its edges: every rule it
+    beats loses its region, and it keeps what no rule that beats it covers."""
+    ext = engine.ext[rid]
+    action[rid] = queue
+    for u in engine.wins_over(rid):
+        und[u] &= ~ext
+    dominated = 0
+    for b in engine.beats_me(rid):
+        dominated |= engine.ext[b]
+    und[rid] = ext & ~dominated
+
+
+def declared(rule: dict[str, Any]) -> dict[str, tuple[str, str]]:
+    """Each rule the born rule's answer cited, with the side it declared and the
+    verdict: `ok`, the refusal's reason, or `outside` for a rule the round did
+    not show. Those are the three ways `authorship.loop.install_declarations`
+    records a citation."""
+    out: dict[str, tuple[str, str]] = {}
+    for ref in rule.get("beats") or []:
+        out[ref] = ("beats", EDGE_OK)
+    for ref in rule.get("loses_to") or []:
+        out[ref] = ("loses_to", EDGE_OK)
+    for x in rule.get("dropped_edges") or []:
+        parts = x.split(":")
+        out[parts[1]] = (parts[0], parts[2] if len(parts) > 2 else OUTSIDE)
+    return out
+
+
+def pair_class(said: tuple[str, str] | None, listed: bool) -> str:
+    """A pair beside the newborn at a conflict, by its declaration."""
+    if said is None:
+        return NO_SIDE if listed else NOT_LISTED
+    side, why = said
+    if why == OUTSIDE:
+        return OUTSIDE
+    if why == EDGE_CYCLE:
+        return BELOW_REFUSED if side == "loses_to" else ABOVE_REFUSED
+    return OTHER
+
+
+def reaches(engine: PriorityEngine, src: str, dst: str) -> bool:
+    """Whether `src` reaches `dst` by what beats what, containment and edges."""
+    seen, stack = set(), [src]
+    while stack:
+        cur = stack.pop()
+        if cur == dst:
+            return True
+        if cur in seen:
+            continue
+        seen.add(cur)
+        stack.extend(engine.wins_over(cur))
+    return False
+
+
+def closed_by(engine: PriorityEngine, rid: str, other: str, side: str) -> str:
+    """Read before the birth's own edges are tried: whether the base already
+    closes the cycle that `rid`'s refused declaration against `other` met.
+    Declared below it, `other` beating `rid` closes one if `rid` reaches
+    `other`. Declared above it, `rid` beating `other` closes one if `other`
+    reaches `rid`."""
+    closed = (reaches(engine, rid, other) if side == "loses_to"
+              else reaches(engine, other, rid))
+    return BY_THE_BASE if closed else BY_ITS_OWN
+
+
+def beside(record: dict[str, Any], space: Space,
+           conflict_last: dict[int, int]) -> dict[str, Any]:
+    """At the last loss of every point lost by a conflict, given by birth in
+    `conflict_last`: each rule undefeated beside the newborn, classed by the
+    newborn's declaration against it, and what closed a refused one's cycle.
+    Each pair is weighed by the points it stands on."""
+    born, by_birth = erb.births(record), erb.edges_by_birth(record)
+    escs = fg.escalation_at(record)
+    engine = PriorityEngine(space=space)
+    und: dict[str, int] = {}
+    action: dict[str, str] = {}
+    pairs, queues = Counter(), Counter()
+    closers = {k: Counter() for k in (BELOW_REFUSED, ABOVE_REFUSED)}
+    points = every_below = 0
+    for idx in sorted(born):
+        d = born[idx]
+        rid = d["rule_id"]
+        engine.add(rule_from(d), born_at=idx, keep_id=True)
+        c = conflict_last.get(idx, 0)
+        said = declared(d) if c else {}
+        closer = {u: closed_by(engine, rid, u, said[u][0]) for u, m in und.items()
+                  if c and m & c and u in said and said[u][1] == EDGE_CYCLE}
+        for e in by_birth.get(idx, []):
+            engine.try_edge(e.winner, e.loser)
+        settle(engine, und, action, rid, d["action"])
+        if not c:
+            continue
+        listed = set((escs.get(idx) or {}).get("listed") or [])
+        points += c.bit_count()
+        not_below = 0
+        for u, m in und.items():
+            at = m & c
+            if u == rid or not at:
+                continue
+            k = pair_class(said.get(u), u in listed)
+            pairs[k] += at.bit_count()
+            queues[action[u]] += at.bit_count()
+            if k in closers:
+                closers[k][closer.get(u, OTHER)] += at.bit_count()
+            if k != BELOW_REFUSED:
+                not_below |= at
+        every_below += (c & ~not_below).bit_count()
+    return {"points": points, "pairs": {k: pairs.get(k, 0) for k in PAIR_CLASSES},
+            "closed_by": {k: dict(v) for k, v in closers.items()},
+            "by_queue_beside": dict(queues), "every_pair_below_refused": every_below}
+
+
+def order_replay(record: dict[str, Any], space: Space, truth: dict[str, int],
+                 losses_first: bool) -> dict[str, Any]:
+    """The same births and declarations, each birth's edges tried in the
+    record's order, or with the newborn's losses before its wins."""
+    born, by_birth = erb.births(record), erb.edges_by_birth(record)
+    engine = PriorityEngine(space=space)
+    und: dict[str, int] = {}
+    action: dict[str, str] = {}
+    curve: list[int] = []
+    cycles = 0
+    for idx in sorted(born):
+        d = born[idx]
+        rid = d["rule_id"]
+        engine.add(rule_from(d), born_at=idx, keep_id=True)
+        edges = by_birth.get(idx, [])
+        if losses_first:
+            edges = ([e for e in edges if e.loser == rid]
+                     + [e for e in edges if e.loser != rid])
+        for e in edges:
+            cycles += engine.try_edge(e.winner, e.loser) == EDGE_CYCLE
+        settle(engine, und, action, rid, d["action"])
+        curve.append(right_of(decision(und, action), truth).bit_count())
+    dec = decision(und, action)
+    right = right_of(dec, truth)
+    return {"curve": curve, "cycles": cycles, "right": right.bit_count(),
+            "security": (right & truth.get(SEC, 0)).bit_count(),
+            "conflict": dec["two"].bit_count(),
+            "masks_ok": und == brows.undefeated_masks(engine)}
+
+
+def order_summary(got: dict[str, Any], truth: dict[str, int], n: int) -> dict[str, Any]:
+    curve = got["curve"]
+    p = curve.index(max(curve)) if curve else None
+    return {"peak": None if p is None else {"birth": p + 1, "right": curve[p],
+                                            "share": frac(F(curve[p], n))},
+            "final": {"right": got["right"], "share": frac(F(got["right"], n))},
+            "fall": None if p is None else frac(F(curve[p] - got["right"], n)),
+            "security_recall": frac(share(got["security"], truth.get(SEC, 0).bit_count())),
+            "conflict": {"points": got["conflict"], "share": frac(F(got["conflict"], n))},
+            "refused_for_a_cycle": got["cycles"]}
+
+
+# ---------------------------------------------------------------------------
 # One run, read
 # ---------------------------------------------------------------------------
 
@@ -373,11 +580,14 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int], cases:
 
     assigned = 0
     takers: list[dict[str, Any]] = []
+    conflict_last: dict[int, int] = {}
     for s in reversed(after):
         last = s["lost"] & lost_pts & ~assigned
         if not last:
             continue
         assigned |= last
+        if last & s[CONFLICT]:
+            conflict_last[s["idx"]] = last & s[CONFLICT]
         takers.append({"born_at": s["idx"], "rule_id": s["rule_id"], "action": s["action"],
                        "cause": s["cause"], "conditions": s["conditions"],
                        "points": last.bit_count(),
@@ -461,8 +671,19 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int], cases:
     ]
     curve = [{"born_at": s["idx"], "rule_id": s["rule_id"], "cause": s["cause"],
               "errors": s["errors"], "right": c} for s, c in zip(steps, counts)]
+    declared_order = order_replay(record, space, truth, losses_first=False)
+    losses_first = order_replay(record, space, truth, losses_first=True)
+    refused = sum(1 for _, _, why in record.get("edge_log") or [] if why == EDGE_CYCLE)
+    gates.append({"gate": 5, "what": "the record's order, replayed again, gives the "
+                                     "reading's curve and the record's refusals",
+                  "passes": declared_order["curve"] == counts
+                  and declared_order["cycles"] == refused
+                  and declared_order["masks_ok"] and losses_first["masks_ok"]})
+    added = {"beside": beside(record, space, conflict_last),
+             "orders": {"declared": order_summary(declared_order, truth, n),
+                        "losses_first": order_summary(losses_first, truth, n)}}
     return {"summary": summary, "takers": takers, "curve": curve, "checks": rep["ok"],
-            "gates": gates}
+            "gates": gates, "added_after_the_first_run": added}
 
 
 def read_all_runs(records: dict[str, dict], score: dict[str, Any], space: Space,
@@ -576,7 +797,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Why the loop's share of the space peaked and "
                                              "fell (POST-RUN, free).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="run gates 1 to 4 and stop; writes nothing")
+                    help="run gates 1 to 5 and stop; writes nothing")
     args = ap.parse_args(argv)
     gate = plan.refuse_unsigned(f"corrections/fall.py writes {record_path()}")
     records, score = read_all()
@@ -597,6 +818,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": score["_env"].get("git_commit")},
         "surface": "the whole space, 134,400 points, read after every birth of each run",
@@ -615,6 +837,11 @@ def main(argv: list[str] | None = None) -> int:
               f"of {s['births']}, final {s['final']['share']['value']:.4f}, "
               f"lost {s['lost']['points']}, gained {s['gained']['points']}, "
               f"by kind {s['lost']['by_kind']}")
+        a = r["added_after_the_first_run"]
+        o = a["orders"]
+        print(f"    beside: {a['beside']['pairs']}; final share, the record's order "
+              f"{o['declared']['final']['share']['value']:.4f}, losses first "
+              f"{o['losses_first']['final']['share']['value']:.4f}")
     print(f"\n-> {record_path()}\n  {describe()}")
     return 0
 
