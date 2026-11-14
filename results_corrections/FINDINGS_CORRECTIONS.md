@@ -12,6 +12,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   it in #242, merged on 2026-11-14.
 - **The POST-RUN reading of why the first call writes broad corrections** reached
   it in #244, merged on 2026-11-14.
+- **The POST-RUN reading of why the loop's share of the space peaked and fell**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -75,6 +77,14 @@ corrected during Stage C.**
 > - **Its code digest is `a26162430c936c46`**, because `corrections/broad.py` was
 >   added after the reading above. `main` computes it at `147321b`, and still at
 >   the merge of #244. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-14, later still] And a third.** [`fall.json`](fall.json) is the
+> POST-RUN reading of why the loop's share of the space peaked and fell.
+> - **It was written from `a31b396`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `c7b7a612cafbf0fb`**, because `corrections/fall.py` was
+>   added after the readings above. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -407,6 +417,15 @@ best of the learners trained on the same labels:
 - **Why L's rules take the regions the catalogue held.** `SECURITY_INCIDENT` and
   `ONCALL_ESCALATION` are lost under L and kept under N. Which rules decide their
   lost points, and from which labels they were drafted, is free on the records.
+  **[NOTE 2026-11-14] Read in part POST-RUN, below.** Of the `SECURITY_INCIDENT`
+  points L's final bases decide wrongly, 15,390 of 32,690, 41,475 of 43,155 and
+  18,600 of 35,400 were right at the run's peak, and are read there with the
+  other points lost. In L r1 and L r2 most points lost were left in conflicts. The
+  newborn had been declared below a rule of the point's true queue, mostly
+  `SECURITY_INCIDENT`'s, and the engine refused the edge for closing a cycle. In
+  L r3 most of `SECURITY_INCIDENT`'s went to one correction of `T2_TECHNICAL`,
+  nested in the keyword's region. The rest were not right at the peak, and are not
+  read. *Why the loop's share of the space peaked and fell*.
 - **Why the final base forgets its own labelled tickets.** Whether a later rule,
   a declared edge or a refused placement takes each one back is free on the
   records, ticket by ticket.
@@ -746,6 +765,213 @@ foresaw it.
    general region**, as rules of `SELF_SERVICE_DEFLECT` on billing tickets were
    in run 1. Free on the records.
 
+
+## Why the loop's share of the space peaked and fell — POST-RUN
+
+**Asked for by Sergi on 2026-11-14, after the two readings above.** Stage C read
+L's base after the label at each checkpoint. Its share of the space peaked well
+before the last label in every run, and fell, L r2's by a third of the space.
+`IDEAS.md` carried why. This reading replays every run's base after every birth,
+over the whole space, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.fall`, on 2026-11-14,
+from `a31b396` on a clean tree, on this reading's branch.
+- **The commits.** `67a3f1b` carries the reading and its expectation, written
+  before the reading ran. `a31b396` carries the part added after the first run,
+  which moves no clause. The record was committed alone, as `08f56aa`.
+- **The record is [`fall.json`](fall.json).** Its five gates passed in all six
+  runs:
+  - the replay is the base;
+  - the curve is Stage C's at every checkpoint, and so is every run's final
+    share;
+  - every reading is the engine's, at the ends of what each birth changed and at
+    every 997th point of the final base;
+  - the last losses partition the points lost;
+  - the record's order, replayed again, gives the reading's curve and the
+    record's refusals.
+
+**What it reads.** Each run's base after every birth, over the space's 134,400
+points.
+- **The peak** is the first birth after which the most points are right. The
+  *points lost* are right at the peak and not right in the final base, and the
+  *points gained* the reverse.
+- **Each point lost is read at its last loss**, the last birth after the peak
+  that took it from right to not right. A newborn takes it alone, by containment
+  or by an edge, or leaves it in a *conflict*: undefeated beside a rule of the
+  point's true queue, with no edge between them.
+- **Arm N is read the same way**, as the control. Both arms of run `k` read the
+  same draws.
+
+### 1. The peak, and what fell
+
+| run | births | peak: birth, case, reports before it | share at the peak | final | fall | points lost | points gained |
+|---|---|---|---|---|---|---|---|
+| L r1 | 282 | 87, case 422, 58 | 0.6896 | 0.5647 | 0.1249 | 28,010 | 11,230 |
+| L r2 | 274 | 66, case 309, 34 | 0.7773 | 0.4221 | 0.3553 | 60,845 | 13,095 |
+| L r3 | 273 | 81, case 298, 52 | 0.6895 | 0.5618 | 0.1277 | 30,214 | 13,050 |
+| N r1 | 322 | 115, case 355, 81 | 0.6004 | 0.5519 | 0.0485 | 11,160 | 4,640 |
+| N r2 | 312 | 50, case 138, 32 | 0.6006 | 0.5785 | 0.0221 | 6,340 | 3,375 |
+| N r3 | 331 | 295, case 1,095, 284 | 0.6275 | 0.4932 | 0.1343 | 20,615 | 2,560 |
+
+- **Read after every birth, L's peaks stand above Stage C's checkpoints**:
+  0.6896, 0.7773 and 0.6895, where the checkpoints showed 0.6539, 0.7597 and
+  0.6488. They came after 58, 34 and 52 of the runs' 216, 209 and 235 labels.
+- **What fell was mostly `SECURITY_INCIDENT`'s** (Q1 holds): 15,390 of L r1's
+  28,010 points lost, 41,475 of L r2's 60,845 and 18,600 of L r3's 30,214. The
+  points gained were spread over the other queues.
+- **N fell less than L in two pairs and more in one** (Q6 fails). N r3 fell
+  0.1343 of the space, where L r3 fell 0.1277.
+  - **N r3's peak came late**, at birth 295 of 331, and eight births took all it
+    lost.
+  - **Two of them took most.** An `ONCALL_ESCALATION` rule, `severity = 1 ∧
+    off_hours = true`, was declared above 74 rules and below none. It took 8,400
+    points, all `SECURITY_INCIDENT`'s, by edges. An `ACCOUNT_MANAGER` rule,
+    `customer_tier = business ∧ prior_tickets_30d ≥ 5 ∧ severity ≥ 3`, took
+    8,045, most of them `SECURITY_INCIDENT`'s, and left most in conflicts.
+  - **Neither was drafted from a label**: N's proposer is never handed one.
+
+### 2. How it fell
+
+| run | points lost | `SECURITY_INCIDENT`'s | by containment | by an edge | a conflict |
+|---|---|---|---|---|---|
+| L r1 | 28,010 | 15,390 | 995 | 5,195 | 21,820 |
+| L r2 | 60,845 | 41,475 | 7,370 | 8,655 | 44,820 |
+| L r3 | 30,214 | 18,600 | 16,315 | 6,747 | 7,152 |
+| N r1 | 11,160 | 3,780 | 75 | 5,135 | 5,950 |
+| N r2 | 6,340 | 0 | 370 | 5,525 | 445 |
+| N r3 | 20,615 | 15,480 | 0 | 10,635 | 9,980 |
+
+- **Most of the points lost were left in a conflict, not taken** (Q2 fails).
+  Over the three L runs, 45,277 of 119,069 were taken by a newborn alone. In L r1
+  and L r2 the conflicts held 21,820 of 28,010 and 44,820 of 60,845.
+- **In L r3 one correction took most, by containment.** `has_security_keyword =
+  true ∧ severity ≠ 1 → T2_TECHNICAL` was born at a reported ticket of `H03`, a
+  security mention on a small account at low severity. It dropped the tier, its
+  severity reached past `H03`'s, and it took 15,960 points of
+  `SECURITY_INCIDENT`. In L r2, `has_security_keyword = true ∧ severity ≥ 3 →
+  T2_TECHNICAL`, born at a ticket of `H03` too, took 7,240 the same way.
+- **Rules of `T2_TECHNICAL` took half of the `SECURITY_INCIDENT` points lost**
+  (Q4 holds, the bet): 39,865 of 75,465. It holds on L r3's one rule. By run they
+  took 4,790 of 15,390, 19,115 of 41,475 and 15,960 of 18,600, and without L r3
+  the share is 0.4204, under the line.
+- **The corrections took their share, and no more** (Q3 fails, by 0.0063). They
+  took 0.6441 of the points lost, and were 0.6504 of the births after the peaks.
+  In L r2, rules born at conflicts took more than the corrections: 32,025 of
+  60,845.
+- **A few births took most** (Q5 holds). The ten that took the most took 20,465
+  of L r1's 28,010 points lost, 41,765 of L r2's 60,845 and 23,796 of L r3's
+  30,214.
+
+### 3. Why the conflicts — added after the first run
+
+| run | conflict points | pairs below, refused | pairs above, refused | points where every pair is below, refused |
+|---|---|---|---|---|
+| L r1 | 21,820 | 79,155 | 5,250 | 18,790 |
+| L r2 | 44,820 | 136,505 | 9,455 | 39,250 |
+| L r3 | 7,152 | 4,881 | 3,720 | 4,641 |
+| N r1 | 5,950 | 555 | 5,615 | 555 |
+| N r2 | 445 | 180 | 375 | 80 |
+| N r3 | 9,980 | 99,205 | 2,935 | 8,045 |
+
+A pair is a rule undefeated beside the newborn at a point lost by a conflict,
+weighed by the points it stands on.
+
+- **Every pair was an edge refused for closing a cycle.** No rule beside a
+  newborn went unlisted, was left without a side, or was cited from outside the
+  round.
+- **In L r1 and L r2 the refused side was mostly the right one.**
+  - **The newborn had been declared below the rule of the point's true queue**,
+    and that edge was refused.
+  - **That rule was mostly `SECURITY_INCIDENT`'s**: on 70,270 of L r1's 84,405
+    pair-points, and 131,060 of L r2's 145,960.
+  - **At 18,790 of L r1's 21,820 conflict points**, and 39,250 of L r2's 44,820,
+    every pair was such a right side, refused.
+- **The newborn's own wins closed the cycle.** The loop installs a born rule's
+  declarations as v1 does, its wins before its losses.
+  - **Nearly every right side refused** in L r1 and L r2 met a cycle that the
+    same answer's wins, installed first, had closed. The base had closed it
+    before them on 20 of L r1's 79,155 pair-points, and on none of L r2's.
+  - **Each win refused** met a cycle the base had closed, as a win must, since
+    the wins are tried before the losses.
+- **N r3's conflicts came the same way.** 99,205 of its 102,140 pair-points
+  were right sides refused, and 98,240 stood on `SECURITY_INCIDENT`'s rules.
+
+**The same births, each birth's losses tried before its wins:**
+
+| run | the record's order: final | fall | `SECURITY_INCIDENT` recall | losses first: final | fall | `SECURITY_INCIDENT` recall |
+|---|---|---|---|---|---|---|
+| L r1 | 0.5647 | 0.1249 | 0.3514 | 0.7374 | 0.0411 | 0.8333 |
+| L r2 | 0.4221 | 0.3553 | 0.1437 | 0.6539 | 0.1331 | 0.6667 |
+| L r3 | 0.5618 | 0.1277 | 0.2976 | 0.5678 | 0.1289 | 0.3095 |
+| N r1 | 0.5519 | 0.0485 | 0.9250 | 0.5435 | 0.0482 | 0.9250 |
+| N r2 | 0.5785 | 0.0221 | 1.0000 | 0.5664 | 0.0248 | 1.0000 |
+| N r3 | 0.4932 | 0.1343 | 0.6929 | 0.5459 | 0.0777 | 0.8333 |
+
+- **Losses first, the same declarations keep most of what L r1 and L r2 lost.**
+  - **L r1 ends at 0.7374 of the space, and L r2 at 0.6539**, where the record's
+    order ends them at 0.5647 and 0.4221.
+  - **`SECURITY_INCIDENT`'s recall rises** from 0.3514 to 0.8333, and from
+    0.1437 to 0.6667.
+  - **L r3, whose fall was taken by containment, barely moves**: from 0.5618 to
+    0.5678.
+  - **N r3 rises** from 0.4932 to 0.5459. N r1 and N r2 lose 0.0084 and 0.0121.
+- **It is not the loop that would have run.** A base installed in another order
+  decides the arrivals otherwise, and would have escalated other cases. What it
+  shows is what the same births and the same declarations decide in the other
+  order.
+
+### The expectation
+
+Written in `corrections/fall.py`'s docstring and committed before the reading
+ran. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| Q1, in each L run at least half of the points lost are `SECURITY_INCIDENT`'s | 0.5494, 0.6817 and 0.6156 | **holds** |
+| Q2, at least half of the points lost were taken by a newborn alone | 45,277 of 119,069 | fails |
+| Q3, the corrections' share of the points lost at least their share of the births after the peaks | 0.6441 against 0.6504 | fails |
+| Q4, at least half of the `SECURITY_INCIDENT` points lost went to rules of `T2_TECHNICAL` | 39,865 of 75,465 | **holds** |
+| Q5, in each L run the ten largest takers took at least half of the points lost | 0.7306, 0.6864 and 0.7876 | **holds** |
+| Q6, in each pair of runs N's fall smaller than L's | r3: 0.1343 against 0.1277 | fails |
+
+**Q1, Q4 and Q5 hold, and Q2, Q3 and Q6 fail.** The bet `Q4` held on one rule of
+L r3, and `Q3` failed by 0.0063.
+
+### What it says
+
+- **The share falls in the keyword half.** Rules of other queues reach into
+  `SECURITY_INCIDENT`'s region. Rules written without the keyword cross its
+  rules, and corrections at tickets of `H03` nest inside them.
+- **In L r1 and L r2, mostly the proposer placed them right, and the engine
+  refused the side.** A rule's answer declares it above some rules and below
+  others.
+  - **The loop installs the wins first**, and through them the rule already
+    reaches the one it should lose to. So that loss closes a cycle, and is
+    refused.
+  - **The pair is left unordered, and its region in conflict.**
+- **Installed losses first, the same answers keep most of the region**, in L r1
+  and L r2. Where a correction took the region by containment, as in L r3, no
+  order of the edges changes it.
+- **The label is not needed for it.** N r3 lost a share as large to rules its
+  proposer drafted without one. About half went to conflicts that came the same
+  way, and 8,400 points to one rule of `ONCALL_ESCALATION` declared above 74
+  rules and below none.
+
+### What it does not settle
+
+1. **Whether a loop that installs a rule's losses before its wins keeps its
+   share.** The replay in that order keeps the same births, and a loop would
+   have escalated other cases. A plan with calls.
+2. **Why a rule's wins reach the rule it should lose to.** The reading does not
+   trace the cycles' paths. They may run through rules wrongly above
+   `SECURITY_INCIDENT`'s, or through rules that do not match the contested
+   points. Free on the records.
+3. **Whether this is the order Stage C left open.** In L r1 and L r2 the same
+   declarations, installed losses first, come within 0.03 of the at-once answers
+   at all of their labels, 0.7584 and 0.6252. In L r3 they do not. The at-once
+   answer is other rules, installed in their own list order, so the two are not
+   separated.
+
 ---
 
 ## Files
@@ -761,3 +987,5 @@ foresaw it.
   corrections.
 - [`broad.json`](broad.json): POST-RUN, why the first call writes broad
   corrections.
+- [`fall.json`](fall.json): POST-RUN, why the loop's share of the space peaked
+  and fell.
