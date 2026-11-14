@@ -3234,6 +3234,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        not seen again.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the final base forgets its corrections*.
+     **[NOTE 2026-11-14, later still] Why the corrections were broad, read
+     POST-RUN: the first call writes the queue's general rule, which the base
+     already holds.**
+     - **The report does not widen the draft.** On the same ticket, the first
+       call without the report wrote the broader draft in 108 of the 163
+       held-out pairs that differ. What the report changes is the queue.
+     - **The losing correction duplicates the base.** 112 of the 168 held-out
+       corrections left wrong duplicate a rule of their queue, and
+       `product = billing -> BILLING_SPECIALIST` was the most written correction
+       in every L run.
+     - **The rule that erred is never shown.** It is nested inside the
+       correction, and v1c's round leaves every nested rule out, while the
+       first call expects the round to list the overlaps.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the first call writes broad corrections*.
    - **Shape or order.** The at-once answer is installed in its own list order,
      and the loop's base is ordered by containment and declared edges. No row
      separates the two.
