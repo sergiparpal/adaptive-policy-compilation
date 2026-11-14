@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 12, 2026. **Not a history** — that is the four
+What is known, as of November 14, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -29,8 +29,9 @@ What is known, as of November 12, 2026. **Not a history** — that is the four
 [`results_reasoned_loop/FINDINGS_REASONED_LOOP.md`](results_reasoned_loop/FINDINGS_REASONED_LOOP.md),
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
 [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
-[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) and
-[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
+[`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
+[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) and
+[`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -83,7 +84,9 @@ round that lists only what the engine can still order, beside v1b, in
 asked for the governing rule's region whole, beside v1c, in `PLAN_WHOLE.md`**:
 seven more, closed on 2026-11-10 — plus **which half of v2b's base paragraph
 makes the loop's first call cut, in `PLAN_HALVES.md`**: seven more, closed on
-2026-11-12.
+2026-11-12 — plus **the learning regime, a report that carries the true queue
+under level 1's catalogue, in `PLAN_CORRECTIONS.md`**: seven more, closed on
+2026-11-14.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -440,6 +443,33 @@ third recovers 61% of what full supervision buys, on corpus test.
 >
 > So a blind loop that dropped the overlap clause would still cut. The text to
 > change is the one that hides the base. [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md).
+>
+> **[NOTE 2026-11-14] Told the true queue, the loop learns the label's queues and
+> not the function.** [`PLAN_CORRECTIONS.md`](PLAN_CORRECTIONS.md) ran v1c at
+> level 1, the catalogue, with reasoning on, pinned to DeepInfra, under the
+> channel at coverage 1/2. At a reported error, arm L's first call carried a
+> report naming the ticket's true queue, and arm N's carried nothing.
+>
+> - **The label is followed** (`CR-a` holds). In every L run, every first call
+>   at a reported error that named a queue named the reported one.
+> - **It teaches the two queues the catalogue misses** (`CR-c` holds). On
+>   `ACCOUNT_MANAGER` and `T3_ENGINEERING`, L's median mean recall over the
+>   space is 0.5590, and N's 0.1628.
+> - **It does not teach the function** (`CR-b` refuted). L's median base
+>   decides 0.5618 of the space, and N's 0.5519. L's bases lose most of
+>   `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's
+>   keep from the catalogue, and decide about half of their own labelled
+>   tickets right.
+> - **Compiled at once, the same corrections give a base about a fifth of the
+>   space ahead of the loop's, in every run** (`CR-d` holds). The catalogue
+>   alone, compiled at once, decides 0.6451 of the space, more than any final
+>   base of either loop.
+> - **A learner handed the labels and not the catalogue matches the loop**
+>   (`CR-e` refuted, thin), **and the rarest queue was not compiled with its
+>   label** (`CR-f` refuted): L's median recall of it is 0.4341.
+>
+> So the corrections reach the proposer, and the loop does not keep them.
+> [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md).
 
 ---
 
@@ -488,7 +518,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and eighty-eight rows have been signed before the figures they name existed. This
+**One hundred and ninety-five rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -549,7 +579,8 @@ a count behind it.
 | **PL** · the placement round (§0 of `PLAN_PLACEMENT.md`) — *one row replicates a closed one* | 7 | 6 | **2** | 0 | 4 | 1 |
 | **WR** · the region asked for whole (§0 of `PLAN_WHOLE.md`) — *one row replicates a closed one* | 7 | 6 | **3** | 0 | 3 | 1 |
 | **HV** · the paragraph's halves (§0 of `PLAN_HALVES.md`) — *two rows replicate a POST-RUN reading* | 7 | 6 | **2** | 0 | 4 | 1 |
-| **total** | **188** | **158** | **62** | **2** | **94** | **28** |
+| **CR** · the learning regime (§0 of `PLAN_CORRECTIONS.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
+| **total** | **195** | **164** | **65** | **2** | **97** | **29** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
@@ -557,7 +588,7 @@ a count behind it.
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
 `QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`, `CH-c`, `PL-e`,
-`PL-f`, `WR-a`, `WR-b`, `WR-f`, `HV-c`, `HV-f`.
+`PL-f`, `WR-a`, `WR-b`, `WR-f`, `HV-c`, `HV-f`, `CR-b`, `CR-e`, `CR-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -567,10 +598,10 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
 `FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`, `CH-a`, `CH-b`,
 `CH-d`, `CH-e`, `CH-f`, `PL-a`, `PL-b`, `PL-c`, `PL-d`, `WR-c`, `WR-d`,
-`WR-e`, `HV-a`, `HV-b`, `HV-d`, `HV-e`.
+`WR-e`, `HV-a`, `HV-b`, `HV-d`, `HV-e`, `CR-a`, `CR-c`, `CR-d`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`, `HV-g`.
+`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`, `HV-g`, `CR-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -593,16 +624,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 62 of 158 = **39.2%**
-refuted; without them, 60 of 152 = **39.5%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 65 of 164 = **39.6%**
+refuted; without them, 63 of 158 = **39.9%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
 0.3 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 62 of 151 = **41.1%** and 60
-of 145 = **41.4%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 65 of 157 = **41.4%** and 63
+of 151 = **41.7%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -803,6 +834,15 @@ of 145 = **41.4%**, which is the reading the calibration note should take.
 >   count in the heading and the ratios moved together, and the test above read
 >   them. The gap between the first two is 0.3 points as printed again, and the
 >   paragraph that gives it says so.
+>
+> **[NOTE 2026-11-14] Recomputed with the `CR` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: three refuted and three
+> held. One was reported. None of its bands was set on a development set, and
+> none of its rows replicates a closed one.
+> - **The four ratios moved with the rest.** The table, the named lists, the
+>   count in the heading and the ratios moved together, and the test above read
+>   them. The gap between the first two is still 0.3 points as printed, and
+>   the paragraph that gives it says so.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -864,6 +904,8 @@ which owns all seven; and `WR` from
 [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
 which owns all seven; and `HV` from
 [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
+which owns all seven; and `CR` from
+[`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md),
 which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
@@ -3123,6 +3165,14 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    wrote it in 32 of 39. At 1432 every text cut at least half the time, the
    empty base included.
    [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md), *The rarest queue's tickets*.
+   **[NOTE 2026-11-14] Matched on labels for the first time, by
+   `PLAN_CORRECTIONS.md`.** At level 1, the inducer and the students were handed
+   the labels the loop's proposer was handed, and not the catalogue. The best of
+   them decided 0.4343 to 0.6042 of the space, and matched the loop (`CR-e`
+   refuted, thin). With its label, the loop recalled under half of
+   `ONCALL_ESCALATION` (`CR-f` refuted), which the arm without labels kept whole
+   in two runs of three, from the catalogue.
+   [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md).
 4. **~~Fidelity: whether a compiled rule decides a later case the way the model
    would have.~~ Measured on 2026-10-04**, pre-registered as `PLAN_FIDELITY.md`.
    **The rules decide unlike the model would, and compiling loses it nothing on
@@ -3154,6 +3204,28 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - What is open now is why the model defers, and whether a plan that bands
      the conflict screen's gain would see it again.
    [`results_apply/FINDINGS_APPLY.md`](results_apply/FINDINGS_APPLY.md).
+5. **~~Whether the loop learns what its prompt does not hold.~~ Measured on
+   2026-11-14**, pre-registered as `PLAN_CORRECTIONS.md`. The technical review
+   of November 11, 2026 had found that no LLM proposer in this tree had been
+   handed a label (`IDEAS.md`, *What the technical review of November 11, 2026
+   proposes*). **At level 1, told the true queue at each reported error, the
+   loop learns the label's queues and not the function** (`CR-c` holds, `CR-b`
+   refuted). **The same corrections, compiled at once, give a base far better
+   than the loop's** (`CR-d` holds).
+   [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md).
+   What is left open is why the loop does not keep them.
+   - **Its rules take the regions the catalogue held.** L's bases lose most of
+     `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's
+     keep. Which rules take those points, and from which labels they were
+     drafted, is not read.
+   - **Its final base forgets about half of its own labelled tickets.** Whether
+     a later rule, a declared edge or a refused placement takes each one back
+     is not read.
+   - **Shape or order.** The at-once answer is installed in its own list order,
+     and the loop's base is ordered by containment and declared edges. No row
+     separates the two.
+
+   All three are free on the records.
 
 ---
 

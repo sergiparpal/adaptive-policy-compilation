@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 12, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 14, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -116,7 +116,10 @@ is struck in place. **A technical review was adjudicated on November 11,
 2026**, and what it proposes that nothing has run has its own section, below.
 **Which half of v2b's base paragraph makes the first call cut closed on
 November 12, 2026**: `PLAN_HALVES.md`, six signed rows, four held and two
-refuted, and one reported, written up in `results_halves/`. This is a
+refuted, and one reported, written up in `results_halves/`. **The learning
+regime, a report that carries the true queue under level 1's catalogue, closed
+on November 14, 2026**: `PLAN_CORRECTIONS.md`, six signed rows, three held and
+three refuted, and one reported, written up in `results_corrections/`. This is a
 list of things not done,
 none of them developed and in no order of precedence.
 
@@ -128,6 +131,23 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **A report that carries the true queue: the learning regime.** November 14,
+  2026, `PLAN_CORRECTIONS.md`, three dollars and sixty-seven cents.
+  `PLAN_PLACEMENT.md`'s v1c ran at level 1, the catalogue, with reasoning on,
+  pinned to DeepInfra, under the channel at coverage 1/2: three runs an arm,
+  alternating. At a reported error, arm L's first call carried a report naming
+  the ticket's true queue, and arm N's carried nothing. Beside L's labels, the
+  model compiled the same labels at once, and the inducer and the students
+  learned them.
+  - **The label is followed and teaches its own queues**, and not the function:
+    L's bases decide about as much of the space as N's.
+  - **At once, the same labels give a base about a fifth of the space better**
+    than the loop's, and the catalogue alone, at once, beats every final base
+    of either loop.
+  - **A learner of the labels alone matches the loop**, and the rarest queue was
+    not compiled.
+
+  What it leaves is in its own section below. `results_corrections/`.
 - **Which half of v2b's base paragraph makes the first call cut.** November 12,
   2026, `PLAN_HALVES.md`, a dollar and twelve cents. The loop's first call was
   asked alone, with level 3's manual and reasoning on, pinned to DeepInfra, at
@@ -489,6 +509,57 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_CORRECTIONS.md` opens and does not resolve
+
+Closed November 14, 2026. It ran `PLAN_PLACEMENT.md`'s v1c at level 1, the
+catalogue, with reasoning on, pinned to DeepInfra, under `PLAN_CHANNEL.md`'s
+channel at coverage 1/2: three runs an arm, alternating. At a reported error,
+arm L's first call carried a report naming the ticket's true queue, and arm N's
+carried nothing. The label was followed and taught its own queues, and the
+function did not move.
+Compiled at once, the same labels gave a base far better than the loop's, and a
+learner of the labels alone matched the loop. What that leaves:
+
+- **Why L's rules take the regions the catalogue held.** L's bases lost most of
+  `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's kept
+  from the catalogue. Which rules decide the lost points, and from which labels
+  they were drafted. Free on the records.
+- **Why the final base forgets its own corrections.** At the end, L's bases
+  decide about half of their own labelled tickets right. Whether a later rule, a
+  declared edge or a refused placement takes each one back. Free on the
+  records, ticket by ticket.
+- **Why the loop's share of the space peaked and fell.** In every L run it
+  peaked well before the last label, and in run 2 it fell by about a third of
+  the space. `corrections/score.py`'s `base_after` rebuilds the base after any
+  label. Free on the records.
+- **Shape or order.** The at-once answer is installed in its own list order, and
+  the loop's base is ordered by containment and declared edges. Installing each
+  in the other's order would separate the two. Free on the records.
+- **A loop that compiles at once.** At all of a run's labels, compiling at once
+  won every run, though not at every checkpoint on the way. A loop that
+  re-induces its whole base from the reports so far, every so many reports,
+  instead of writing one rule at a time, is the next design these records
+  suggest. Calls.
+- **The report or the label.** L's paragraph says both that the base erred and
+  what the right queue is, and §2.2's third arm, which would separate them, was
+  not run. Calls.
+
+Lessons it leaves:
+
+- **A scorer that reads the arrivals must read the corpus labels when a run can
+  stop at the cap.** Stage C's first launch stopped on N r1, which the cap had
+  stopped, before it wrote or printed anything. It was corrected in a commit of
+  its own, and the findings say so.
+- **An at-once ask over hundreds of labels, with reasoning on, needs room.**
+  Four attempts reached the 32,000 tokens §2.4 gave them, twice the loop's,
+  and were asked again.
+- **WSL restarted under a run again.** N r1 resumed from its partial file, every
+  answer paid for served back, and lost only the hour and a half between.
+- **A check that matches a process by its command line matched the command
+  that ran it, again.** Check in a command that does not name the process.
 
 ---
 
@@ -2524,6 +2595,13 @@ its critique was already this file's:**
      trigger, as `PLAN_MANUAL.md` broke it through its texts.
      `tests/test_oracle_separation.py` would have to watch the new path.
    - **Its price.** About a channel run's: hours and cents on DeepInfra.
+   **[NOTE 2026-11-14] Run as `PLAN_CORRECTIONS.md`.** The label was followed
+   and taught its own queues, and not the function (`CR-b` refuted). Compiled at
+   once, the same labels gave a base about a fifth of the space better than the
+   loop's (`CR-d` holds). A learner of the labels alone matched the loop (`CR-e`
+   refuted, thin). Its runs cost about four times a channel run at level 3,
+   and escalated about four times as often. See *What `PLAN_CORRECTIONS.md`
+   opens*.
 2. **The transcriber under a reviewer's recorded answers.** Once a reviewer's
    answers exist, the transcriber can run under a trigger that escalates
    where the reviewer disagrees with the base. That gives a noisy trigger's

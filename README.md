@@ -62,6 +62,7 @@ up in four places at once.
 | **PL** · the placement round | `PLAN_CHANNEL.md`'s channel arm run again with level 3's manual and reasoning on, pinned to another provider, three runs under v1b's placement round and three under one that lists only what the engine can still order, alternating, each pair under one set of draws, beside a same-day bridge of first calls asked of both providers, to see whether v1b's refusals were the protocol's and what the loop compiles without them — closed 2026-11-08 | [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md) |
 | **WR** · the region asked for whole | `PLAN_PLACEMENT.md`'s v1c arm run again with level 3's manual and reasoning on, pinned to DeepInfra, beside v1d, whose first call asks for the governing rule's region whole, three runs an arm alternating, each pair under one set of draws, to see whether the loop's narrow rules were the first call's text and what whole first drafts compile — closed 2026-11-10 | [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) |
 | **HV** · the paragraph's halves | the loop's first call asked alone at 136 tickets the reasoning loops escalated, with level 3's manual and reasoning on, pinned to DeepInfra, under four paragraphs where the base would be — the empty base, v2b's paragraph, its first half alone and its overlap clause on the empty base — in two passes and a session of the rarest queue's tickets, to see which half of v2b's paragraph makes the first call cut — closed 2026-11-12 | [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) |
+| **CR** · the learning regime | `PLAN_PLACEMENT.md`'s v1c at level 1, the catalogue, with reasoning on, pinned to DeepInfra, under the channel at coverage 1/2, with and without a report that carries the reported ticket's true queue, beside the same labels compiled at once and handed to the inducer and the students, to see whether the loop learns what its prompt does not hold — closed 2026-11-14 | [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -935,6 +936,45 @@ PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session smoke  # Stage B · sp
 PYTHONHASHSEED=0 .venv/bin/python -m halves.ask --session pass1  # then pass2 and oncall, one session at a time
 ```
 
+**[`PLAN_CORRECTIONS.md`](PLAN_CORRECTIONS.md) closed on 2026-11-14**: the
+learning regime, a report that carries the true queue under level 1's catalogue.
+Sergi signed §0 on 2026-11-12, before any of its figures existed.
+- **What it asked.** It ran `PLAN_PLACEMENT.md`'s v1c at level 1, the catalogue,
+  with reasoning on, every call pinned to DeepInfra's fp8 endpoint, under
+  `PLAN_CHANNEL.md`'s channel at coverage 1/2: three runs an arm, alternating.
+  - **Arm L**'s first call, at an escalation caused by a reported error, carried
+    a report naming the ticket's true queue.
+  - **Arm N**'s carried nothing.
+  - **Beside L's labels**, the model compiled the same labels at once, at
+    checkpoints, through `harness/ask_pool.py`, and `PLAN_ILP.md`'s inducer and
+    `PLAN_STUDENTS.md`'s students learned them.
+- **Why.** No LLM proposer in this tree had been handed a label, so this is the
+  first protocol in which the system could learn what its prompt does not hold.
+  The technical review of November 11, 2026 proposed it.
+
+Its record is [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md). Its
+gate reads that plan and no other, counts its signature line, and guards its
+four writers. `placement/`, `channel/`, `reasoned_loop/`, `manual/`, `ilp/`,
+`students/`, `edges/`, `whole/`, `blind/`, `authorship/`, `reuse/`,
+`first_match/` and `rung2/` are called by it and not edited. It breaks the
+oracle's separation on purpose, by one route, which its tests pin.
+
+Stages A and C are free, and each reproduces from the committed records in under
+ten minutes, most of it the suite inside its first check. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same rules back. A paid run does not start without Sergi asking for it. A
+run took about four to eight and a half hours of calls on DeepInfra, which
+refused no call for the rate. A run stopped by an outage resumes from its partial file with
+the same command.
+
+```bash
+python3 -m corrections.run --dry-run                                  # CR-g1..CR-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m corrections.sample                        # Stage A · the references
+PYTHONHASHSEED=0 python3 -m corrections.score                         # Stage C · CR-a to CR-f, and CR-g
+PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, one step at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1180,7 +1220,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_CHANNEL.md`'s, and the three of `placement/`, which run
 > `PLAN_PLACEMENT.md`'s, and the three of `whole/`, which run
 > `PLAN_WHOLE.md`'s, and the three of `halves/`, which run
-> `PLAN_HALVES.md`'s.
+> `PLAN_HALVES.md`'s, and the four of `corrections/`, which run
+> `PLAN_CORRECTIONS.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -2148,6 +2189,18 @@ adaptive-policy-compilation/
 │   ├── score.py             Stage C · HV-a to HV-f and HV-g, gated on PLAN_HALVES.md
 │   └── hidden.py            POST-RUN · why the hidden half cuts: each answer's cut, note, declarations and reasoning codes
 │
+├── corrections/          CR · the learning regime: a report that carries the true queue, under level 1's catalogue
+│   ├── plan.py              the gate, the constants, the draws and §0's declared figures and lines; the client is PLAN_PLACEMENT.md's, pin included
+│   ├── protocol.py          the two arms' messages: level 1's system prompt and the report · the proposer's path
+│   ├── loop.py              PLAN_PLACEMENT.md's loop with each arm's escalation · the label's one route · the proposer's path
+│   ├── prompts.py           the at-once asks' messages and request · the proposer's path
+│   ├── gates.py             CR-g1..CR-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   ├── run.py               Stage B · the smoke runs and the six runs · spends · resumes · the proposer's path
+│   ├── ask.py               Stage B · the at-once sessions, four asks at a time · spends · resumes · the proposer's path
+│   ├── learners.py          the inducer at two beams, the three students and the table on the labels, and the control on the proposer's own answers
+│   └── score.py             Stage C · CR-a to CR-f and CR-g, gated on PLAN_CORRECTIONS.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2235,6 +2288,7 @@ adaptive-policy-compilation/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
     results_reasoned_loop/  results_channel/  results_placement/  results_whole/  results_halves/
+    results_corrections/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
