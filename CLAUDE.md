@@ -1374,6 +1374,7 @@ The first command is blocking and writes nothing:
     python3 -m corrections.run --dry-run                                  # CR-g1..CR-g3; must pass first
     PYTHONHASHSEED=0 python3 -m corrections.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m corrections.score                         # Stage C, free, from the runs and the asks
+    PYTHONHASHSEED=0 python3 -m corrections.forgotten                     # POST-RUN: why the final base forgets its corrections
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1396,6 +1397,13 @@ own, and the FINDINGS says so.
 **An at-once ask over hundreds of labels, with reasoning on, needs room.** Some
 attempts reached the budget §2.4 gave them, twice the loop's, and were asked
 again.
+
+**Read POST-RUN, the loop mostly never kept its corrections.** Most forgotten
+corrections were born and never decided their own ticket. A rule nested inside
+the correction, mostly the one that had erred there, kept it by containment,
+and v1c's round never lists a nested rule. The corrections that lose are the
+broad ones. A loop that hands the proposer corrections should check that each
+one decides its own ticket after its birth: this one never did.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

@@ -3221,11 +3221,24 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
+     **[NOTE 2026-11-14, later] Read POST-RUN: mostly none of the three. The
+     loop never kept them.**
+     - **Never right.** Of the 510 reports that bore a rule, 262 left their
+       point right just after the birth. 210 of the 248 left wrong were beaten
+       there by a rule nested inside the correction, in 132 the rule that had
+       erred there. v1c's round never lists a nested rule, and the corrections
+       that lose are the broad ones.
+     - **Never born, and taken back.** About a quarter of the forgotten points
+       were never born, mostly unplaced. About a quarter were taken back,
+       mostly by an edge from a rule born at a conflict. 83 of those 86 were
+       not seen again.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the final base forgets its corrections*.
    - **Shape or order.** The at-once answer is installed in its own list order,
      and the loop's base is ordered by containment and declared edges. No row
      separates the two.
 
-   All three are free on the records.
+   The first and the last are free on the records.
 
 ---
 
