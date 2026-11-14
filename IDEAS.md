@@ -543,6 +543,19 @@ learner of the labels alone matched the loop. What that leaves:
 - **Why the first call drafts a correction broader than the rule that erred.**
   It is blind, and told only that the engine decided the ticket and erred. Its
   reasoning is in the records. Free on the records.
+  **[NOTE 2026-11-14] Read POST-RUN: it writes the queue's general rule, which
+  the base already holds.** The system prompt asks every call for a
+  generalizable rule, and the catalogue gives the queue's line: billing tickets
+  to `BILLING_SPECIALIST`. On the same ticket, without the report, the first
+  call wrote the broader draft twice as often. Two thirds of the corrections
+  left wrong duplicate a rule of their queue, and the rule that erred, nested
+  inside, is never listed. So the next levers are showing the first call the
+  rule that decided the reported case, and refusing a duplicate correction.
+  Calls. `FINDINGS_CORRECTIONS.md`, *Why the first call writes broad
+  corrections*.
+- **Why the narrow rules of another queue were drafted inside a queue's general
+  region**, as rules of `SELF_SERVICE_DEFLECT` on billing tickets were in L r1.
+  Free on the records.
 - **Why the rules born at conflicts were placed above the corrections.** They
   were written without a label, and took most of the points taken back. Their
   placement answers are in the records. Free on the records.

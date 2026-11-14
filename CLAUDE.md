@@ -1375,6 +1375,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m corrections.score                         # Stage C, free, from the runs and the asks
     PYTHONHASHSEED=0 python3 -m corrections.forgotten                     # POST-RUN: why the final base forgets its corrections
+    PYTHONHASHSEED=0 python3 -m corrections.broad                         # POST-RUN: why the first call writes broad corrections
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1404,6 +1405,14 @@ the correction, mostly the one that had erred there, kept it by containment,
 and v1c's round never lists a nested rule. The corrections that lose are the
 broad ones. A loop that hands the proposer corrections should check that each
 one decides its own ticket after its birth: this one never did.
+
+**Read POST-RUN, the broad correction is the queue's general rule, and the base
+already holds it.** The system prompt asks every call for a generalizable rule,
+and the catalogue gives the queue's line, so the blind first call writes that
+line. The report does not make it broader: on the same ticket, the first call
+without it wrote the broader draft more often. A correction that duplicates the
+base adds nothing, and the loop bears it anyway. A protocol that reports errors
+to a blind first call should show it the rule that decided the reported case.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
