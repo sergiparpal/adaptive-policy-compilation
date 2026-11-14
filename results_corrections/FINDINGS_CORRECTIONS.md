@@ -8,6 +8,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The scorer's correction during Stage C, Stage C, this record, the banner that
   closes the plan and the indexes** reached it in #240, the pull request this
   record was opened in, merged on 2026-11-14.
+- **The POST-RUN reading of why the final base forgets its corrections** reaches
+  it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -53,6 +55,15 @@ corrected during Stage C.**
   row's statistic reads that function.
 - **`main` computes `score.json`'s digest at `c36164c`**, and still at the merge
   of #240: no later commit of #240 changed code the digest reads.
+
+> **[NOTE 2026-11-14] One more record, written after Stage C by code added
+> after it.** [`forgotten.json`](forgotten.json) is the POST-RUN reading of why
+> the final base forgets its corrections.
+> - **It was written from `f15bcae`**, on that reading's branch. Its section
+>   below names the commit that carries its expectation.
+> - **Its code digest is `3a4358941b384393`**, not Stage C's, because
+>   `corrections/forgotten.py` was added after Stage C. The modules Stage C ran
+>   did not change.
 
 **This record owns every figure in it.**
 
@@ -388,6 +399,11 @@ best of the learners trained on the same labels:
 - **Why the final base forgets its own labelled tickets.** Whether a later rule,
   a declared edge or a refused placement takes each one back is free on the
   records, ticket by ticket.
+  **[NOTE 2026-11-14] Read POST-RUN, below.** Mostly none of the three: about
+  half the forgotten corrections never decided their own ticket, because a rule
+  nested inside them, mostly the one that had erred there, kept it by
+  containment. A quarter were never born, mostly unplaced, and a quarter were
+  taken back, mostly by an edge. *Why the final base forgets its corrections*.
 - **Whether the report or the label does it.** L's paragraph says both, and the
   third arm of §2.2 was not run.
 - **Whether at once wins because of the shape or because of the order.** The
@@ -395,6 +411,177 @@ best of the learners trained on the same labels:
   ordered by containment and declared edges. No row separates the two.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
+
+## Why the final base forgets its corrections — POST-RUN
+
+**Asked for by Sergi on 2026-11-14, after Stage C.** Stage C found that L's
+final bases decide right about half of their own labelled tickets, though the
+proposer named the label at every first call that named a queue (`CR-a`).
+*What Stage C does not settle* left why: whether a later rule, a declared edge
+or a refused placement takes each one back. This reading asks the records, and
+spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.forgotten`, on
+2026-11-14, from `f15bcae` on a clean tree, on this reading's branch.
+- **The commits.** `c2d180d` carries the reading and its expectation, written
+  before the reading ran. `f15bcae` carries the part added after the first run,
+  which moves no clause. The record was committed alone, as `292f8b6`.
+- **The record is [`forgotten.json`](forgotten.json).** Its five gates passed in
+  all three L runs:
+  - the replay is the base;
+  - the labels are the record's, as many as Stage C counts;
+  - the final base on the labelled arrivals is Stage C's: 128 of 252, 128 of 249
+    and 115 of 263;
+  - every reading is the engine's;
+  - the classes partition the labelled points.
+
+**What it reads.** A *labelled point* is the ticket of a reported error that was
+handed its label, counted once however often it arrived. The base is replayed in
+birth order, and each labelled point is read right after its first report's
+birth, then right after every later birth whose rule matches it. Each point is
+in one class:
+- **kept**: the final base decides it right;
+- **never born**: never right after its report, and no report of it bore a rule;
+- **never right**: never right after its report, though a report of it bore a
+  rule;
+- **taken back**: right after some birth, and wrong at the end.
+
+### 1. Half the forgotten corrections never took their ticket
+
+| L run | labelled points | kept | forgotten | never born | never right | taken back |
+|---|---|---|---|---|---|---|
+| r1 | 206 | 104 | 102 | 28 | 46 | 28 |
+| r2 | 205 | 106 | 99 | 28 | 45 | 26 |
+| r3 | 228 | 100 | 128 | 24 | 72 | 32 |
+
+- **The largest class is never right**: 46 of 102, 45 of 99 and 72 of 128
+  forgotten points. Their correction was born, and never decided its own ticket.
+- **About a quarter were never born**, and about a quarter were taken back.
+
+**Half the corrections born at a report left their own ticket wrong.** Of the
+510 reports of the three runs that bore a rule, 262 left their point decided
+right just after the birth: 83 of 163, 95 of 158 and 84 of 189.
+
+| L run | born reports | right just after the birth | beaten there by a rule nested inside | in conflict | beaten by an edge |
+|---|---|---|---|---|---|
+| r1 | 163 | 83 | 63 | 15 | 2 |
+| r2 | 158 | 95 | 56 | 3 | 4 |
+| r3 | 189 | 84 | 91 | 10 | 4 |
+
+- **Nearly always a rule nested inside the correction kept the ticket**: 210 of
+  the 248 born reports left wrong. The correction was broader than a rule
+  already matching its ticket, and the engine lets the nested rule win there by
+  containment.
+- **Usually it was the rule that had erred there.** In 132 of the 210, the rule
+  that decided the reported case is among the nested rules that beat the
+  correction. In 145 of the 210, more than one nested rule beats it.
+- **No side was asked.** v1c's placement round lists only the rules that cross
+  the draft. A rule nested inside it is ordered by containment, and is not
+  listed.
+- **No correction was born outside its own ticket, or for another queue.**
+
+**The corrections that lose are the broad ones.** The born reports, pooled over
+the three runs, by the correction's conditions:
+
+| conditions | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---|---|---|---|---|---|---|
+| right just after the birth | 1 | 37 | 108 | 80 | 28 | 6 | 2 |
+| left wrong | 90 | 83 | 55 | 18 | 2 | 0 | 0 |
+
+- **One correction of one condition in 91 took its ticket**, against 116 of the
+  136 with four conditions or more.
+- **By points of the space**, the lower median of a correction left wrong is
+  13,440, 20,160 and 16,800 points by run. A correction that took its ticket
+  has 2,100, 3,360 and 3,360.
+- **The rule that erred was mostly another correction.** It had been born at a
+  reported error in 37 of 63 nested reports, 41 of 56 and 67 of 91.
+
+### 2. The corrections never born
+
+- **Their reports were mostly unplaced**: 68 of their 82 reports over the three
+  runs. 12 were refused as invalid rules and 2 changed the rule in the
+  placement round.
+- **By run**: 24 unplaced, 4 refused and 2 changed in L r1; 20 unplaced and 8
+  refused in L r2; 24 unplaced in L r3.
+
+### 3. The corrections taken back
+
+| L run | taken back | by an edge | by a conflict | by containment | the newborn born at a conflict | at a reported error |
+|---|---|---|---|---|---|---|
+| r1 | 28 | 15 | 11 | 2 | 18 | 10 |
+| r2 | 26 | 23 | 3 | 0 | 15 | 10 |
+| r3 | 32 | 23 | 8 | 1 | 15 | 17 |
+
+One newborn of L r2 was born at an impasse.
+- **They were taken mostly by an edge**: 61 of 86. A later rule matching the
+  point was declared above the rule that decided it. In 53 of the 86 the point's
+  own correction was undefeated there before the loss.
+- **The takers were born at conflicts more often than births are**: 48 of 86,
+  where 216 of the 829 births of the three runs were. A rule born at a conflict
+  was written without a label.
+- **The points had stood right for hundreds of cases**: lower medians of 355,
+  414 and 266 cases between the last gain, or the first report, and the loss.
+- **Then they were not seen again.** 83 of the 86 did not arrive again after
+  the loss, and of the three that did, one was reported. The channel reports a
+  wrong decision only at an arrival.
+- **Points kept were lost too.** 22, 14 and 26 kept points were lost at least
+  once, and decided right again before the end.
+
+**In the final base**, in `channel/lost.py`'s ways, the 329 forgotten points are
+outranked by an edge at 257, in conflict at 49, outranked by containment at 21
+and unwritten at 2. In those ways a point is outranked by an edge when any rule
+of another queue that matches it beats any rule of its queue there by a declared
+edge. So the final ways do not say which defeat decided it: the history above
+does.
+
+### The expectation
+
+Written in `corrections/forgotten.py`'s docstring and committed before the
+reading ran. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| F1, never born at least a quarter of the forgotten, each run | 28 of 102, 28 of 99, 24 of 128 | **fails** |
+| F2, taken back at least a quarter of the forgotten, each run | 28 of 102, 26 of 99, 32 of 128 | **holds** |
+| F3, right just after the birth, at least three quarters of the born reports | 262 of 510, 0.5137 | **fails** |
+| F4, at least half the last losses to a newborn deciding alone | 64 of 86, 0.7442 | **holds** |
+| F5, the takers born at a reported error at least as often as births are | 0.4302 against 0.6152 | **fails** |
+| F6, at least three quarters of the points taken back not seen again | 83 of 86, 0.9651 | **holds** |
+
+- **F2 holds at its line in L r3**, 32 of 128 being a quarter exactly.
+- **F1 fails in L r3 alone**, the run with no empty object, as the drafter
+  trusted it least.
+- **The drafter's account failed where it mattered.** It expected the born
+  corrections to take their tickets (`F3`), and the corrections to take each
+  other's tickets back (`F5`, the bet). Both fail.
+
+### What it says
+
+- **The loop mostly did not forget its corrections: it never kept them.** About
+  half the corrections born at a report did not decide their own ticket. Each
+  was drafted broader than a rule already deciding it, mostly the rule that had
+  erred there. That rule was mostly an earlier correction. It is nested inside
+  the new one, so it keeps the ticket by containment, and the placement round
+  never lists it.
+- **A quarter of the forgotten points were never compiled**, mostly because the
+  placement round left the draft unplaced.
+- **A quarter were taken back**, mostly by a rule written at a conflict and
+  declared above the rule that decided them. They were not seen again.
+- **And nothing checks a correction after its birth.** Most labelled points
+  were reported once: 216, 209 and 235 reports over 206, 205 and 228 points.
+  The loop takes a born correction as written, whether or not it decides its
+  own ticket.
+
+### What it does not settle
+
+1. **Why the first call drafts a correction broader than the rule that erred.**
+   It is blind, and told only that the engine decided the ticket and that the
+   decision was wrong. Its reasoning is in the records, and is free to read.
+2. **Whether a correction checked at its birth would keep its ticket.** A loop
+   that lists the rule that decided the reported case, or refuses a correction
+   that does not decide its own ticket, is a plan with calls.
+3. **Why the rules written at conflicts were placed above the corrections.**
+   Their placement answers are in the records, and are free to read.
 
 ---
 
@@ -407,3 +594,5 @@ best of the learners trained on the same labels:
 - `atonce_smoke.json`, `atonce_prior.json`, `atonce_l_r1.json` to
   `atonce_l_r3.json`: the at-once sessions.
 - [`score.json`](score.json): Stage C, the six verdicts and `CR-g`.
+- [`forgotten.json`](forgotten.json): POST-RUN, why the final base forgets its
+  corrections.
