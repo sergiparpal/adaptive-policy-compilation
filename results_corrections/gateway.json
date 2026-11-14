@@ -1,0 +1,7797 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-14T23:40:55Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "bcf20d8fab95fa2004e8ff2e35e1d7794ec1540e",
+    "git_dirty": false,
+    "code_dirty": false,
+    "code_digest": "1757cc92488e3bec"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-15, after corrections/paths.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: what the gateways' and the doors' answers declared, every round that listed a gateway by what its answer declared of it, and every answer of the run by the sides it declared. Tried in a scratch script first. No expectation; no clause moves.",
+  "source": {
+    "paths": "results_corrections/paths.json",
+    "paths_from": "19201ed1491c301f754198ba9739988021857f54"
+  },
+  "surface": "the rules above each run's gateways over the whole base, as it is replayed in birth order; the pairs through a gateway as paths.json reads them",
+  "constants": {
+    "D1_SHARE": "1/2",
+    "D2_SHARE": "1/2",
+    "D3_SHARE": "1/2",
+    "D4_SHARE": "1/2",
+    "D5_SHARE": "1/2",
+    "D6_SHARE": "1/2",
+    "D6_RUN": "n_r3"
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 1,
+      "what": "the replay is the base",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 2,
+      "what": "the gateways and the pairs are paths.json's",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 3,
+      "what": "every edge a birth tries has the rule born there on one side",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 4,
+      "what": "the rules above the gateways only grow",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 5,
+      "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 6,
+      "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "summary": {
+        "gateways": [
+          "R0061"
+        ],
+        "first_gateway_born_at": 238,
+        "rules": 282,
+        "born_after": 221,
+        "above": 67,
+        "above_born_after": 66,
+        "above_by_queue": {
+          "ONCALL_ESCALATION": 14,
+          "T2_TECHNICAL": 26,
+          "ACCOUNT_MANAGER": 4,
+          "T3_ENGINEERING": 3,
+          "T1_GENERAL": 12,
+          "SELF_SERVICE_DEFLECT": 5,
+          "BILLING_SPECIALIST": 3
+        },
+        "born_after_by_queue": {
+          "ACCOUNT_MANAGER": 11,
+          "BILLING_SPECIALIST": 58,
+          "SELF_SERVICE_DEFLECT": 36,
+          "ONCALL_ESCALATION": 18,
+          "T2_TECHNICAL": 52,
+          "SECURITY_INCIDENT": 7,
+          "T1_GENERAL": 28,
+          "T3_ENGINEERING": 11
+        },
+        "entries": {
+          "containment": 10,
+          "own_wins": 52,
+          "brought": 5,
+          "at_gateway": 0
+        },
+        "through": {
+          "brought:by_region": 2,
+          "brought:by_losses": 3
+        },
+        "depth": {
+          "1": 1,
+          "2": 34,
+          "3": 27,
+          "4": 5
+        },
+        "doors": {
+          "rules": 1,
+          "edges": {
+            "nested": 0,
+            "gateway_loss": 0,
+            "door_win": 1
+          },
+          "verdicts": {
+            "door_win:even": 1
+          }
+        },
+        "pairs": {
+          "pairs": 69,
+          "points": 70270,
+          "meets": 48270,
+          "misses": 22000,
+          "distance": {
+            "2": 27670,
+            "3": 42600
+          }
+        },
+        "newborns": 14
+      },
+      "gateways": [
+        {
+          "rule_id": "R0061",
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            }
+          ],
+          "born_at": 238,
+          "cause": "ERROR",
+          "ticket_rule": "H03",
+          "points": 70270
+        }
+      ],
+      "curve": [
+        [
+          238,
+          0
+        ],
+        [
+          239,
+          1
+        ],
+        [
+          240,
+          1
+        ],
+        [
+          242,
+          1
+        ],
+        [
+          255,
+          1
+        ],
+        [
+          257,
+          2
+        ],
+        [
+          264,
+          2
+        ],
+        [
+          265,
+          2
+        ],
+        [
+          270,
+          2
+        ],
+        [
+          274,
+          3
+        ],
+        [
+          284,
+          3
+        ],
+        [
+          287,
+          3
+        ],
+        [
+          291,
+          3
+        ],
+        [
+          299,
+          3
+        ],
+        [
+          307,
+          3
+        ],
+        [
+          314,
+          3
+        ],
+        [
+          319,
+          3
+        ],
+        [
+          326,
+          3
+        ],
+        [
+          334,
+          3
+        ],
+        [
+          349,
+          3
+        ],
+        [
+          350,
+          3
+        ],
+        [
+          354,
+          3
+        ],
+        [
+          355,
+          3
+        ],
+        [
+          357,
+          3
+        ],
+        [
+          394,
+          3
+        ],
+        [
+          406,
+          3
+        ],
+        [
+          422,
+          3
+        ],
+        [
+          423,
+          5
+        ],
+        [
+          432,
+          6
+        ],
+        [
+          438,
+          6
+        ],
+        [
+          447,
+          6
+        ],
+        [
+          448,
+          6
+        ],
+        [
+          449,
+          6
+        ],
+        [
+          471,
+          6
+        ],
+        [
+          477,
+          6
+        ],
+        [
+          487,
+          6
+        ],
+        [
+          489,
+          6
+        ],
+        [
+          498,
+          6
+        ],
+        [
+          502,
+          6
+        ],
+        [
+          507,
+          6
+        ],
+        [
+          508,
+          6
+        ],
+        [
+          526,
+          6
+        ],
+        [
+          530,
+          6
+        ],
+        [
+          535,
+          6
+        ],
+        [
+          536,
+          6
+        ],
+        [
+          562,
+          7
+        ],
+        [
+          571,
+          8
+        ],
+        [
+          587,
+          9
+        ],
+        [
+          590,
+          9
+        ],
+        [
+          593,
+          9
+        ],
+        [
+          595,
+          9
+        ],
+        [
+          603,
+          9
+        ],
+        [
+          625,
+          9
+        ],
+        [
+          633,
+          9
+        ],
+        [
+          634,
+          9
+        ],
+        [
+          656,
+          9
+        ],
+        [
+          658,
+          10
+        ],
+        [
+          662,
+          10
+        ],
+        [
+          666,
+          10
+        ],
+        [
+          674,
+          10
+        ],
+        [
+          676,
+          10
+        ],
+        [
+          681,
+          10
+        ],
+        [
+          688,
+          10
+        ],
+        [
+          692,
+          10
+        ],
+        [
+          700,
+          11
+        ],
+        [
+          704,
+          11
+        ],
+        [
+          708,
+          11
+        ],
+        [
+          724,
+          11
+        ],
+        [
+          725,
+          12
+        ],
+        [
+          730,
+          12
+        ],
+        [
+          735,
+          12
+        ],
+        [
+          750,
+          12
+        ],
+        [
+          755,
+          12
+        ],
+        [
+          758,
+          12
+        ],
+        [
+          760,
+          12
+        ],
+        [
+          766,
+          12
+        ],
+        [
+          783,
+          12
+        ],
+        [
+          786,
+          12
+        ],
+        [
+          787,
+          12
+        ],
+        [
+          789,
+          12
+        ],
+        [
+          799,
+          12
+        ],
+        [
+          810,
+          12
+        ],
+        [
+          811,
+          12
+        ],
+        [
+          821,
+          12
+        ],
+        [
+          822,
+          12
+        ],
+        [
+          828,
+          13
+        ],
+        [
+          829,
+          13
+        ],
+        [
+          844,
+          13
+        ],
+        [
+          850,
+          13
+        ],
+        [
+          851,
+          14
+        ],
+        [
+          855,
+          15
+        ],
+        [
+          857,
+          15
+        ],
+        [
+          861,
+          15
+        ],
+        [
+          868,
+          15
+        ],
+        [
+          870,
+          15
+        ],
+        [
+          874,
+          15
+        ],
+        [
+          881,
+          16
+        ],
+        [
+          882,
+          17
+        ],
+        [
+          891,
+          18
+        ],
+        [
+          909,
+          18
+        ],
+        [
+          941,
+          19
+        ],
+        [
+          959,
+          19
+        ],
+        [
+          970,
+          19
+        ],
+        [
+          971,
+          19
+        ],
+        [
+          973,
+          19
+        ],
+        [
+          981,
+          19
+        ],
+        [
+          997,
+          20
+        ],
+        [
+          1002,
+          22
+        ],
+        [
+          1004,
+          22
+        ],
+        [
+          1015,
+          22
+        ],
+        [
+          1019,
+          23
+        ],
+        [
+          1044,
+          23
+        ],
+        [
+          1046,
+          23
+        ],
+        [
+          1053,
+          24
+        ],
+        [
+          1063,
+          24
+        ],
+        [
+          1080,
+          24
+        ],
+        [
+          1089,
+          25
+        ],
+        [
+          1090,
+          26
+        ],
+        [
+          1114,
+          28
+        ],
+        [
+          1135,
+          29
+        ],
+        [
+          1142,
+          29
+        ],
+        [
+          1145,
+          29
+        ],
+        [
+          1146,
+          29
+        ],
+        [
+          1147,
+          29
+        ],
+        [
+          1157,
+          29
+        ],
+        [
+          1167,
+          29
+        ],
+        [
+          1169,
+          29
+        ],
+        [
+          1174,
+          29
+        ],
+        [
+          1178,
+          30
+        ],
+        [
+          1191,
+          30
+        ],
+        [
+          1192,
+          30
+        ],
+        [
+          1211,
+          30
+        ],
+        [
+          1212,
+          30
+        ],
+        [
+          1213,
+          30
+        ],
+        [
+          1220,
+          31
+        ],
+        [
+          1228,
+          32
+        ],
+        [
+          1231,
+          32
+        ],
+        [
+          1232,
+          33
+        ],
+        [
+          1234,
+          34
+        ],
+        [
+          1242,
+          34
+        ],
+        [
+          1248,
+          34
+        ],
+        [
+          1264,
+          34
+        ],
+        [
+          1265,
+          34
+        ],
+        [
+          1271,
+          34
+        ],
+        [
+          1280,
+          34
+        ],
+        [
+          1284,
+          34
+        ],
+        [
+          1287,
+          34
+        ],
+        [
+          1288,
+          35
+        ],
+        [
+          1291,
+          35
+        ],
+        [
+          1299,
+          35
+        ],
+        [
+          1303,
+          35
+        ],
+        [
+          1319,
+          36
+        ],
+        [
+          1328,
+          36
+        ],
+        [
+          1346,
+          37
+        ],
+        [
+          1357,
+          38
+        ],
+        [
+          1367,
+          38
+        ],
+        [
+          1371,
+          38
+        ],
+        [
+          1373,
+          38
+        ],
+        [
+          1375,
+          38
+        ],
+        [
+          1422,
+          38
+        ],
+        [
+          1432,
+          39
+        ],
+        [
+          1434,
+          39
+        ],
+        [
+          1439,
+          40
+        ],
+        [
+          1444,
+          40
+        ],
+        [
+          1486,
+          40
+        ],
+        [
+          1488,
+          41
+        ],
+        [
+          1493,
+          42
+        ],
+        [
+          1497,
+          42
+        ],
+        [
+          1500,
+          43
+        ],
+        [
+          1502,
+          43
+        ],
+        [
+          1506,
+          44
+        ],
+        [
+          1507,
+          45
+        ],
+        [
+          1516,
+          45
+        ],
+        [
+          1530,
+          45
+        ],
+        [
+          1545,
+          45
+        ],
+        [
+          1553,
+          46
+        ],
+        [
+          1568,
+          46
+        ],
+        [
+          1578,
+          46
+        ],
+        [
+          1582,
+          47
+        ],
+        [
+          1592,
+          47
+        ],
+        [
+          1593,
+          47
+        ],
+        [
+          1594,
+          48
+        ],
+        [
+          1598,
+          48
+        ],
+        [
+          1621,
+          49
+        ],
+        [
+          1625,
+          50
+        ],
+        [
+          1628,
+          51
+        ],
+        [
+          1634,
+          51
+        ],
+        [
+          1635,
+          51
+        ],
+        [
+          1638,
+          51
+        ],
+        [
+          1640,
+          51
+        ],
+        [
+          1647,
+          51
+        ],
+        [
+          1657,
+          51
+        ],
+        [
+          1664,
+          52
+        ],
+        [
+          1665,
+          52
+        ],
+        [
+          1667,
+          52
+        ],
+        [
+          1668,
+          52
+        ],
+        [
+          1687,
+          52
+        ],
+        [
+          1694,
+          52
+        ],
+        [
+          1695,
+          53
+        ],
+        [
+          1699,
+          53
+        ],
+        [
+          1704,
+          53
+        ],
+        [
+          1733,
+          54
+        ],
+        [
+          1738,
+          55
+        ],
+        [
+          1747,
+          56
+        ],
+        [
+          1748,
+          56
+        ],
+        [
+          1773,
+          57
+        ],
+        [
+          1778,
+          57
+        ],
+        [
+          1786,
+          58
+        ],
+        [
+          1807,
+          59
+        ],
+        [
+          1854,
+          60
+        ],
+        [
+          1871,
+          60
+        ],
+        [
+          1891,
+          61
+        ],
+        [
+          1899,
+          61
+        ],
+        [
+          1900,
+          62
+        ],
+        [
+          1903,
+          62
+        ],
+        [
+          1910,
+          62
+        ],
+        [
+          1915,
+          65
+        ],
+        [
+          1939,
+          66
+        ],
+        [
+          1964,
+          67
+        ],
+        [
+          1975,
+          67
+        ],
+        [
+          1983,
+          67
+        ],
+        [
+          1994,
+          67
+        ]
+      ],
+      "entries": {
+        "R0035": {
+          "class": "brought",
+          "through": "by_region",
+          "bridge": "R0088",
+          "at": 423
+        },
+        "R0062": {
+          "class": "own_wins",
+          "at": 239
+        },
+        "R0065": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0277",
+          "at": 1915
+        },
+        "R0066": {
+          "class": "own_wins",
+          "at": 257
+        },
+        "R0070": {
+          "class": "containment",
+          "at": 274
+        },
+        "R0085": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0168",
+          "at": 1002
+        },
+        "R0088": {
+          "class": "own_wins",
+          "at": 423
+        },
+        "R0089": {
+          "class": "own_wins",
+          "at": 432
+        },
+        "R0106": {
+          "class": "own_wins",
+          "at": 562
+        },
+        "R0107": {
+          "class": "own_wins",
+          "at": 571
+        },
+        "R0108": {
+          "class": "containment",
+          "at": 587
+        },
+        "R0117": {
+          "class": "own_wins",
+          "at": 658
+        },
+        "R0125": {
+          "class": "own_wins",
+          "at": 700
+        },
+        "R0128": {
+          "class": "brought",
+          "through": "by_region",
+          "bridge": "R0179",
+          "at": 1114
+        },
+        "R0129": {
+          "class": "containment",
+          "at": 725
+        },
+        "R0146": {
+          "class": "own_wins",
+          "at": 828
+        },
+        "R0150": {
+          "class": "containment",
+          "at": 851
+        },
+        "R0151": {
+          "class": "own_wins",
+          "at": 855
+        },
+        "R0157": {
+          "class": "own_wins",
+          "at": 881
+        },
+        "R0158": {
+          "class": "own_wins",
+          "at": 882
+        },
+        "R0159": {
+          "class": "own_wins",
+          "at": 891
+        },
+        "R0161": {
+          "class": "own_wins",
+          "at": 941
+        },
+        "R0167": {
+          "class": "own_wins",
+          "at": 997
+        },
+        "R0168": {
+          "class": "own_wins",
+          "at": 1002
+        },
+        "R0171": {
+          "class": "own_wins",
+          "at": 1019
+        },
+        "R0174": {
+          "class": "own_wins",
+          "at": 1053
+        },
+        "R0177": {
+          "class": "own_wins",
+          "at": 1089
+        },
+        "R0178": {
+          "class": "own_wins",
+          "at": 1090
+        },
+        "R0179": {
+          "class": "own_wins",
+          "at": 1114
+        },
+        "R0180": {
+          "class": "own_wins",
+          "at": 1135
+        },
+        "R0189": {
+          "class": "own_wins",
+          "at": 1178
+        },
+        "R0191": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0277",
+          "at": 1915
+        },
+        "R0195": {
+          "class": "own_wins",
+          "at": 1220
+        },
+        "R0196": {
+          "class": "own_wins",
+          "at": 1228
+        },
+        "R0198": {
+          "class": "own_wins",
+          "at": 1232
+        },
+        "R0199": {
+          "class": "own_wins",
+          "at": 1234
+        },
+        "R0208": {
+          "class": "containment",
+          "at": 1288
+        },
+        "R0212": {
+          "class": "own_wins",
+          "at": 1319
+        },
+        "R0214": {
+          "class": "own_wins",
+          "at": 1346
+        },
+        "R0215": {
+          "class": "own_wins",
+          "at": 1357
+        },
+        "R0221": {
+          "class": "own_wins",
+          "at": 1432
+        },
+        "R0223": {
+          "class": "own_wins",
+          "at": 1439
+        },
+        "R0226": {
+          "class": "own_wins",
+          "at": 1488
+        },
+        "R0227": {
+          "class": "own_wins",
+          "at": 1493
+        },
+        "R0229": {
+          "class": "containment",
+          "at": 1500
+        },
+        "R0231": {
+          "class": "own_wins",
+          "at": 1506
+        },
+        "R0232": {
+          "class": "own_wins",
+          "at": 1507
+        },
+        "R0236": {
+          "class": "containment",
+          "at": 1553
+        },
+        "R0239": {
+          "class": "own_wins",
+          "at": 1582
+        },
+        "R0242": {
+          "class": "own_wins",
+          "at": 1594
+        },
+        "R0244": {
+          "class": "own_wins",
+          "at": 1621
+        },
+        "R0245": {
+          "class": "own_wins",
+          "at": 1625
+        },
+        "R0246": {
+          "class": "own_wins",
+          "at": 1628
+        },
+        "R0253": {
+          "class": "own_wins",
+          "at": 1664
+        },
+        "R0259": {
+          "class": "own_wins",
+          "at": 1695
+        },
+        "R0262": {
+          "class": "own_wins",
+          "at": 1733
+        },
+        "R0263": {
+          "class": "own_wins",
+          "at": 1738
+        },
+        "R0264": {
+          "class": "own_wins",
+          "at": 1747
+        },
+        "R0266": {
+          "class": "containment",
+          "at": 1773
+        },
+        "R0268": {
+          "class": "own_wins",
+          "at": 1786
+        },
+        "R0269": {
+          "class": "containment",
+          "at": 1807
+        },
+        "R0270": {
+          "class": "own_wins",
+          "at": 1854
+        },
+        "R0272": {
+          "class": "own_wins",
+          "at": 1891
+        },
+        "R0274": {
+          "class": "own_wins",
+          "at": 1900
+        },
+        "R0277": {
+          "class": "containment",
+          "at": 1915
+        },
+        "R0278": {
+          "class": "own_wins",
+          "at": 1939
+        },
+        "R0279": {
+          "class": "own_wins",
+          "at": 1964
+        }
+      },
+      "bridges": [
+        {
+          "bridge": "R0277",
+          "action": "T1_GENERAL",
+          "born_at": 1915,
+          "cause": "CONFLICT",
+          "entry": "containment",
+          "brought": 2,
+          "by_losses": 2,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0088",
+          "action": "T2_TECHNICAL",
+          "born_at": 423,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 0,
+          "by_region": 1
+        },
+        {
+          "bridge": "R0168",
+          "action": "SELF_SERVICE_DEFLECT",
+          "born_at": 1002,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 1,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0179",
+          "action": "ONCALL_ESCALATION",
+          "born_at": 1114,
+          "cause": "CONFLICT",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 0,
+          "by_region": 1
+        }
+      ],
+      "doors": [
+        {
+          "door": "R0062",
+          "gateway": "R0061",
+          "action": "ACCOUNT_MANAGER",
+          "kind": "door_win",
+          "installed_at": 239,
+          "born_at": 239,
+          "verdict": "even",
+          "carries": 67,
+          "alone": 67
+        }
+      ],
+      "newborns": [
+        {
+          "born_at": 1346,
+          "newborn": "R0214",
+          "action": "BILLING_SPECIALIST",
+          "pairs": 6,
+          "pair_points": 19920,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 34,
+          "wins_above": 3,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0061": true
+          },
+          "above_then": 37,
+          "doors_then": 1,
+          "points": 3320,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 1234,
+          "newborn": "R0199",
+          "action": "ACCOUNT_MANAGER",
+          "pairs": 5,
+          "pair_points": 12300,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 81,
+          "wins_above": 6,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0061": true
+          },
+          "above_then": 34,
+          "doors_then": 1,
+          "points": 2460,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 15
+            }
+          ]
+        },
+        {
+          "born_at": 1507,
+          "newborn": "R0232",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 7140,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": true,
+          "wins": 18,
+          "wins_above": 4,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 45,
+          "doors_then": 1,
+          "points": 1190,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "born_at": 1053,
+          "newborn": "R0174",
+          "action": "T3_ENGINEERING",
+          "pairs": 4,
+          "pair_points": 5760,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 13,
+          "wins_above": 3,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 24,
+          "doors_then": 1,
+          "points": 1440,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            }
+          ]
+        },
+        {
+          "born_at": 432,
+          "newborn": "R0089",
+          "action": "BILLING_SPECIALIST",
+          "pairs": 2,
+          "pair_points": 4920,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 2,
+          "wins_above": 1,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 6,
+          "doors_then": 1,
+          "points": 2460,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "in",
+              "value": [
+                "business",
+                "enterprise"
+              ]
+            }
+          ]
+        },
+        {
+          "born_at": 1506,
+          "newborn": "R0231",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 3960,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 27,
+          "wins_above": 4,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 44,
+          "doors_then": 1,
+          "points": 660,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "born_at": 700,
+          "newborn": "R0125",
+          "action": "T2_TECHNICAL",
+          "pairs": 4,
+          "pair_points": 3200,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 3,
+          "wins_above": 1,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 11,
+          "doors_then": 1,
+          "points": 800,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            }
+          ]
+        },
+        {
+          "born_at": 882,
+          "newborn": "R0158",
+          "action": "T2_TECHNICAL",
+          "pairs": 4,
+          "pair_points": 3200,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 4,
+          "wins_above": 1,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 17,
+          "doors_then": 1,
+          "points": 800,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 997,
+          "newborn": "R0167",
+          "action": "T2_TECHNICAL",
+          "pairs": 4,
+          "pair_points": 2640,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 15,
+          "wins_above": 1,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 20,
+          "doors_then": 1,
+          "points": 660,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "born_at": 1357,
+          "newborn": "R0215",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 2520,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": false,
+          "wins": 4,
+          "wins_above": 1,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 38,
+          "doors_then": 1,
+          "points": 420,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ]
+        },
+        {
+          "born_at": 562,
+          "newborn": "R0106",
+          "action": "T1_GENERAL",
+          "pairs": 3,
+          "pair_points": 2400,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 4,
+          "wins_above": 1,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 7,
+          "doors_then": 1,
+          "points": 800,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 1178,
+          "newborn": "R0189",
+          "action": "T2_TECHNICAL",
+          "pairs": 5,
+          "pair_points": 1050,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 2,
+          "meets": true,
+          "wins": 25,
+          "wins_above": 2,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 30,
+          "doors_then": 1,
+          "points": 210,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "chat"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 1900,
+          "newborn": "R0274",
+          "action": "ACCOUNT_MANAGER",
+          "pairs": 8,
+          "pair_points": 960,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 36,
+          "wins_above": 2,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0061": true
+          },
+          "above_then": 62,
+          "doors_then": 1,
+          "points": 120,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ]
+        },
+        {
+          "born_at": 1625,
+          "newborn": "R0245",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 300,
+          "gateways": [
+            "R0061"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 30,
+          "wins_above": 3,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0061": null
+          },
+          "listed": {
+            "R0061": false
+          },
+          "above_then": 50,
+          "doors_then": 1,
+          "points": 50,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "phone"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [
+            {
+              "rule_id": "R0061",
+              "action": "T2_TECHNICAL",
+              "born_at": 238,
+              "cause": "ERROR",
+              "listed": 18,
+              "wins": 18,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 18
+              }
+            }
+          ],
+          "doors": [
+            {
+              "rule_id": "R0062",
+              "action": "ACCOUNT_MANAGER",
+              "born_at": 239,
+              "cause": "CONFLICT",
+              "listed": 28,
+              "wins": 19,
+              "losses": 9,
+              "by_verdict": {
+                "beats:ok": 19,
+                "loses_to:cierra_ciclo": 9
+              }
+            }
+          ],
+          "rounds_that_listed_a_gateway": {
+            "beats:cierra_ciclo": 4,
+            "beats:ok": 1,
+            "loses_to:cierra_ciclo": 9,
+            "loses_to:ok": 64
+          },
+          "every_round": {
+            "rounds": 268,
+            "wins": 4553,
+            "losses": 2700,
+            "without_a_loss": 41,
+            "by_verdict": {
+              "beats:cierra_ciclo": 1093,
+              "beats:ok": 3460,
+              "loses_to:cierra_ciclo": 756,
+              "loses_to:ok": 1944
+            }
+          }
+        }
+      }
+    },
+    "l_r2": {
+      "summary": {
+        "gateways": [
+          "R0048",
+          "R0120"
+        ],
+        "first_gateway_born_at": 154,
+        "rules": 274,
+        "born_after": 226,
+        "above": 102,
+        "above_born_after": 100,
+        "above_by_queue": {
+          "T1_GENERAL": 20,
+          "T2_TECHNICAL": 37,
+          "ACCOUNT_MANAGER": 9,
+          "BILLING_SPECIALIST": 7,
+          "SELF_SERVICE_DEFLECT": 19,
+          "T3_ENGINEERING": 9,
+          "ONCALL_ESCALATION": 1
+        },
+        "born_after_by_queue": {
+          "T2_TECHNICAL": 82,
+          "ACCOUNT_MANAGER": 13,
+          "T1_GENERAL": 40,
+          "SELF_SERVICE_DEFLECT": 27,
+          "BILLING_SPECIALIST": 37,
+          "T3_ENGINEERING": 13,
+          "SECURITY_INCIDENT": 13,
+          "ONCALL_ESCALATION": 1
+        },
+        "entries": {
+          "containment": 23,
+          "own_wins": 74,
+          "brought": 5,
+          "at_gateway": 0
+        },
+        "through": {
+          "brought:by_losses": 4,
+          "brought:by_region": 1
+        },
+        "depth": {
+          "1": 5,
+          "2": 13,
+          "3": 36,
+          "4": 40,
+          "5": 8
+        },
+        "doors": {
+          "rules": 5,
+          "edges": {
+            "nested": 2,
+            "gateway_loss": 0,
+            "door_win": 5
+          },
+          "verdicts": {
+            "door_win:wrong": 3,
+            "door_win:even": 2,
+            "nested:even": 1,
+            "nested:wrong": 1
+          }
+        },
+        "pairs": {
+          "pairs": 108,
+          "points": 131060,
+          "meets": 22640,
+          "misses": 108420,
+          "distance": {
+            "2": 6920,
+            "3": 45160,
+            "4": 60200,
+            "5": 15000,
+            "6": 3780
+          }
+        },
+        "newborns": 21
+      },
+      "gateways": [
+        {
+          "rule_id": "R0048",
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 4
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ],
+          "born_at": 154,
+          "cause": "ERROR",
+          "ticket_rule": "H03",
+          "points": 131060
+        },
+        {
+          "rule_id": "R0120",
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "born_at": 754,
+          "cause": "ERROR",
+          "ticket_rule": "H03",
+          "points": 99780
+        }
+      ],
+      "curve": [
+        [
+          154,
+          0
+        ],
+        [
+          157,
+          0
+        ],
+        [
+          158,
+          0
+        ],
+        [
+          162,
+          1
+        ],
+        [
+          184,
+          1
+        ],
+        [
+          192,
+          1
+        ],
+        [
+          205,
+          1
+        ],
+        [
+          213,
+          1
+        ],
+        [
+          219,
+          3
+        ],
+        [
+          220,
+          4
+        ],
+        [
+          227,
+          4
+        ],
+        [
+          241,
+          4
+        ],
+        [
+          245,
+          4
+        ],
+        [
+          259,
+          4
+        ],
+        [
+          263,
+          4
+        ],
+        [
+          272,
+          5
+        ],
+        [
+          288,
+          5
+        ],
+        [
+          305,
+          5
+        ],
+        [
+          309,
+          5
+        ],
+        [
+          316,
+          5
+        ],
+        [
+          320,
+          6
+        ],
+        [
+          332,
+          7
+        ],
+        [
+          339,
+          7
+        ],
+        [
+          349,
+          7
+        ],
+        [
+          351,
+          7
+        ],
+        [
+          361,
+          9
+        ],
+        [
+          367,
+          9
+        ],
+        [
+          369,
+          9
+        ],
+        [
+          373,
+          9
+        ],
+        [
+          385,
+          9
+        ],
+        [
+          426,
+          9
+        ],
+        [
+          437,
+          10
+        ],
+        [
+          465,
+          10
+        ],
+        [
+          466,
+          10
+        ],
+        [
+          479,
+          10
+        ],
+        [
+          481,
+          10
+        ],
+        [
+          483,
+          10
+        ],
+        [
+          485,
+          10
+        ],
+        [
+          487,
+          10
+        ],
+        [
+          503,
+          10
+        ],
+        [
+          508,
+          10
+        ],
+        [
+          513,
+          11
+        ],
+        [
+          515,
+          11
+        ],
+        [
+          530,
+          11
+        ],
+        [
+          533,
+          12
+        ],
+        [
+          540,
+          12
+        ],
+        [
+          546,
+          12
+        ],
+        [
+          551,
+          13
+        ],
+        [
+          552,
+          13
+        ],
+        [
+          557,
+          14
+        ],
+        [
+          562,
+          14
+        ],
+        [
+          566,
+          15
+        ],
+        [
+          568,
+          15
+        ],
+        [
+          579,
+          15
+        ],
+        [
+          587,
+          16
+        ],
+        [
+          589,
+          16
+        ],
+        [
+          612,
+          16
+        ],
+        [
+          631,
+          17
+        ],
+        [
+          637,
+          17
+        ],
+        [
+          642,
+          18
+        ],
+        [
+          643,
+          18
+        ],
+        [
+          645,
+          19
+        ],
+        [
+          651,
+          20
+        ],
+        [
+          656,
+          20
+        ],
+        [
+          677,
+          21
+        ],
+        [
+          678,
+          21
+        ],
+        [
+          722,
+          23
+        ],
+        [
+          723,
+          23
+        ],
+        [
+          732,
+          23
+        ],
+        [
+          735,
+          24
+        ],
+        [
+          739,
+          24
+        ],
+        [
+          745,
+          25
+        ],
+        [
+          754,
+          25
+        ],
+        [
+          757,
+          26
+        ],
+        [
+          761,
+          27
+        ],
+        [
+          766,
+          28
+        ],
+        [
+          769,
+          29
+        ],
+        [
+          770,
+          29
+        ],
+        [
+          773,
+          29
+        ],
+        [
+          789,
+          30
+        ],
+        [
+          792,
+          31
+        ],
+        [
+          806,
+          31
+        ],
+        [
+          813,
+          32
+        ],
+        [
+          817,
+          33
+        ],
+        [
+          819,
+          33
+        ],
+        [
+          828,
+          33
+        ],
+        [
+          838,
+          34
+        ],
+        [
+          851,
+          36
+        ],
+        [
+          855,
+          37
+        ],
+        [
+          857,
+          38
+        ],
+        [
+          860,
+          39
+        ],
+        [
+          869,
+          39
+        ],
+        [
+          878,
+          40
+        ],
+        [
+          884,
+          41
+        ],
+        [
+          889,
+          42
+        ],
+        [
+          897,
+          43
+        ],
+        [
+          902,
+          43
+        ],
+        [
+          917,
+          44
+        ],
+        [
+          930,
+          44
+        ],
+        [
+          933,
+          45
+        ],
+        [
+          936,
+          46
+        ],
+        [
+          938,
+          46
+        ],
+        [
+          942,
+          46
+        ],
+        [
+          956,
+          46
+        ],
+        [
+          960,
+          47
+        ],
+        [
+          961,
+          48
+        ],
+        [
+          969,
+          48
+        ],
+        [
+          973,
+          48
+        ],
+        [
+          978,
+          49
+        ],
+        [
+          981,
+          49
+        ],
+        [
+          985,
+          51
+        ],
+        [
+          992,
+          52
+        ],
+        [
+          1007,
+          52
+        ],
+        [
+          1012,
+          52
+        ],
+        [
+          1014,
+          52
+        ],
+        [
+          1018,
+          52
+        ],
+        [
+          1019,
+          53
+        ],
+        [
+          1020,
+          53
+        ],
+        [
+          1021,
+          54
+        ],
+        [
+          1024,
+          55
+        ],
+        [
+          1039,
+          55
+        ],
+        [
+          1044,
+          56
+        ],
+        [
+          1063,
+          56
+        ],
+        [
+          1080,
+          57
+        ],
+        [
+          1094,
+          57
+        ],
+        [
+          1097,
+          57
+        ],
+        [
+          1105,
+          57
+        ],
+        [
+          1113,
+          58
+        ],
+        [
+          1118,
+          59
+        ],
+        [
+          1130,
+          59
+        ],
+        [
+          1134,
+          59
+        ],
+        [
+          1135,
+          60
+        ],
+        [
+          1143,
+          60
+        ],
+        [
+          1145,
+          60
+        ],
+        [
+          1147,
+          60
+        ],
+        [
+          1153,
+          61
+        ],
+        [
+          1174,
+          62
+        ],
+        [
+          1188,
+          63
+        ],
+        [
+          1198,
+          63
+        ],
+        [
+          1210,
+          64
+        ],
+        [
+          1213,
+          64
+        ],
+        [
+          1240,
+          64
+        ],
+        [
+          1252,
+          64
+        ],
+        [
+          1259,
+          64
+        ],
+        [
+          1263,
+          65
+        ],
+        [
+          1265,
+          65
+        ],
+        [
+          1268,
+          66
+        ],
+        [
+          1271,
+          67
+        ],
+        [
+          1280,
+          67
+        ],
+        [
+          1291,
+          67
+        ],
+        [
+          1303,
+          68
+        ],
+        [
+          1309,
+          69
+        ],
+        [
+          1311,
+          69
+        ],
+        [
+          1312,
+          69
+        ],
+        [
+          1315,
+          69
+        ],
+        [
+          1331,
+          69
+        ],
+        [
+          1343,
+          70
+        ],
+        [
+          1348,
+          71
+        ],
+        [
+          1361,
+          71
+        ],
+        [
+          1365,
+          72
+        ],
+        [
+          1368,
+          72
+        ],
+        [
+          1371,
+          73
+        ],
+        [
+          1397,
+          74
+        ],
+        [
+          1399,
+          74
+        ],
+        [
+          1404,
+          75
+        ],
+        [
+          1406,
+          75
+        ],
+        [
+          1411,
+          76
+        ],
+        [
+          1423,
+          77
+        ],
+        [
+          1437,
+          77
+        ],
+        [
+          1443,
+          78
+        ],
+        [
+          1458,
+          78
+        ],
+        [
+          1463,
+          78
+        ],
+        [
+          1467,
+          79
+        ],
+        [
+          1478,
+          80
+        ],
+        [
+          1488,
+          81
+        ],
+        [
+          1489,
+          81
+        ],
+        [
+          1490,
+          81
+        ],
+        [
+          1514,
+          81
+        ],
+        [
+          1516,
+          81
+        ],
+        [
+          1534,
+          81
+        ],
+        [
+          1535,
+          81
+        ],
+        [
+          1545,
+          82
+        ],
+        [
+          1563,
+          82
+        ],
+        [
+          1568,
+          83
+        ],
+        [
+          1578,
+          83
+        ],
+        [
+          1582,
+          83
+        ],
+        [
+          1624,
+          84
+        ],
+        [
+          1633,
+          84
+        ],
+        [
+          1643,
+          84
+        ],
+        [
+          1674,
+          85
+        ],
+        [
+          1691,
+          86
+        ],
+        [
+          1704,
+          86
+        ],
+        [
+          1706,
+          87
+        ],
+        [
+          1714,
+          87
+        ],
+        [
+          1720,
+          88
+        ],
+        [
+          1721,
+          88
+        ],
+        [
+          1734,
+          88
+        ],
+        [
+          1740,
+          88
+        ],
+        [
+          1747,
+          88
+        ],
+        [
+          1749,
+          89
+        ],
+        [
+          1755,
+          89
+        ],
+        [
+          1767,
+          89
+        ],
+        [
+          1793,
+          90
+        ],
+        [
+          1800,
+          91
+        ],
+        [
+          1809,
+          91
+        ],
+        [
+          1812,
+          92
+        ],
+        [
+          1814,
+          93
+        ],
+        [
+          1815,
+          93
+        ],
+        [
+          1834,
+          93
+        ],
+        [
+          1858,
+          94
+        ],
+        [
+          1859,
+          95
+        ],
+        [
+          1864,
+          96
+        ],
+        [
+          1867,
+          97
+        ],
+        [
+          1877,
+          98
+        ],
+        [
+          1879,
+          98
+        ],
+        [
+          1883,
+          99
+        ],
+        [
+          1891,
+          100
+        ],
+        [
+          1895,
+          101
+        ],
+        [
+          1900,
+          102
+        ],
+        [
+          1916,
+          102
+        ],
+        [
+          1922,
+          102
+        ],
+        [
+          1931,
+          102
+        ],
+        [
+          1962,
+          102
+        ],
+        [
+          1968,
+          102
+        ],
+        [
+          1970,
+          102
+        ],
+        [
+          1986,
+          102
+        ],
+        [
+          1998,
+          102
+        ]
+      ],
+      "entries": {
+        "R0016": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0073",
+          "at": 361
+        },
+        "R0029": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0158",
+          "at": 985
+        },
+        "R0051": {
+          "class": "own_wins",
+          "at": 162
+        },
+        "R0052": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0056",
+          "at": 219
+        },
+        "R0053": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0114",
+          "at": 722
+        },
+        "R0056": {
+          "class": "own_wins",
+          "at": 219
+        },
+        "R0057": {
+          "class": "containment",
+          "at": 220
+        },
+        "R0063": {
+          "class": "own_wins",
+          "at": 272
+        },
+        "R0068": {
+          "class": "own_wins",
+          "at": 320
+        },
+        "R0069": {
+          "class": "own_wins",
+          "at": 332
+        },
+        "R0073": {
+          "class": "own_wins",
+          "at": 361
+        },
+        "R0079": {
+          "class": "own_wins",
+          "at": 437
+        },
+        "R0089": {
+          "class": "own_wins",
+          "at": 513
+        },
+        "R0092": {
+          "class": "own_wins",
+          "at": 533
+        },
+        "R0095": {
+          "class": "own_wins",
+          "at": 551
+        },
+        "R0097": {
+          "class": "own_wins",
+          "at": 557
+        },
+        "R0099": {
+          "class": "own_wins",
+          "at": 566
+        },
+        "R0102": {
+          "class": "own_wins",
+          "at": 587
+        },
+        "R0105": {
+          "class": "own_wins",
+          "at": 631
+        },
+        "R0106": {
+          "class": "brought",
+          "through": "by_region",
+          "bridge": "R0135",
+          "at": 851
+        },
+        "R0107": {
+          "class": "own_wins",
+          "at": 642
+        },
+        "R0109": {
+          "class": "own_wins",
+          "at": 645
+        },
+        "R0110": {
+          "class": "own_wins",
+          "at": 651
+        },
+        "R0112": {
+          "class": "own_wins",
+          "at": 677
+        },
+        "R0114": {
+          "class": "own_wins",
+          "at": 722
+        },
+        "R0117": {
+          "class": "own_wins",
+          "at": 735
+        },
+        "R0119": {
+          "class": "own_wins",
+          "at": 745
+        },
+        "R0121": {
+          "class": "own_wins",
+          "at": 757
+        },
+        "R0122": {
+          "class": "own_wins",
+          "at": 761
+        },
+        "R0123": {
+          "class": "containment",
+          "at": 766
+        },
+        "R0124": {
+          "class": "own_wins",
+          "at": 769
+        },
+        "R0127": {
+          "class": "containment",
+          "at": 789
+        },
+        "R0128": {
+          "class": "own_wins",
+          "at": 792
+        },
+        "R0130": {
+          "class": "containment",
+          "at": 813
+        },
+        "R0131": {
+          "class": "own_wins",
+          "at": 817
+        },
+        "R0134": {
+          "class": "own_wins",
+          "at": 838
+        },
+        "R0135": {
+          "class": "own_wins",
+          "at": 851
+        },
+        "R0136": {
+          "class": "containment",
+          "at": 855
+        },
+        "R0137": {
+          "class": "own_wins",
+          "at": 857
+        },
+        "R0138": {
+          "class": "containment",
+          "at": 860
+        },
+        "R0140": {
+          "class": "containment",
+          "at": 878
+        },
+        "R0141": {
+          "class": "own_wins",
+          "at": 884
+        },
+        "R0142": {
+          "class": "own_wins",
+          "at": 889
+        },
+        "R0143": {
+          "class": "own_wins",
+          "at": 897
+        },
+        "R0145": {
+          "class": "containment",
+          "at": 917
+        },
+        "R0147": {
+          "class": "own_wins",
+          "at": 933
+        },
+        "R0148": {
+          "class": "own_wins",
+          "at": 936
+        },
+        "R0152": {
+          "class": "own_wins",
+          "at": 960
+        },
+        "R0153": {
+          "class": "own_wins",
+          "at": 961
+        },
+        "R0156": {
+          "class": "containment",
+          "at": 978
+        },
+        "R0158": {
+          "class": "own_wins",
+          "at": 985
+        },
+        "R0159": {
+          "class": "own_wins",
+          "at": 992
+        },
+        "R0164": {
+          "class": "own_wins",
+          "at": 1019
+        },
+        "R0166": {
+          "class": "own_wins",
+          "at": 1021
+        },
+        "R0167": {
+          "class": "own_wins",
+          "at": 1024
+        },
+        "R0169": {
+          "class": "own_wins",
+          "at": 1044
+        },
+        "R0171": {
+          "class": "own_wins",
+          "at": 1080
+        },
+        "R0175": {
+          "class": "own_wins",
+          "at": 1113
+        },
+        "R0176": {
+          "class": "containment",
+          "at": 1118
+        },
+        "R0179": {
+          "class": "own_wins",
+          "at": 1135
+        },
+        "R0183": {
+          "class": "own_wins",
+          "at": 1153
+        },
+        "R0184": {
+          "class": "own_wins",
+          "at": 1174
+        },
+        "R0185": {
+          "class": "own_wins",
+          "at": 1188
+        },
+        "R0187": {
+          "class": "own_wins",
+          "at": 1210
+        },
+        "R0192": {
+          "class": "own_wins",
+          "at": 1263
+        },
+        "R0194": {
+          "class": "containment",
+          "at": 1268
+        },
+        "R0195": {
+          "class": "own_wins",
+          "at": 1271
+        },
+        "R0198": {
+          "class": "own_wins",
+          "at": 1303
+        },
+        "R0199": {
+          "class": "own_wins",
+          "at": 1309
+        },
+        "R0204": {
+          "class": "own_wins",
+          "at": 1343
+        },
+        "R0205": {
+          "class": "own_wins",
+          "at": 1348
+        },
+        "R0207": {
+          "class": "own_wins",
+          "at": 1365
+        },
+        "R0209": {
+          "class": "containment",
+          "at": 1371
+        },
+        "R0210": {
+          "class": "own_wins",
+          "at": 1397
+        },
+        "R0212": {
+          "class": "own_wins",
+          "at": 1404
+        },
+        "R0214": {
+          "class": "own_wins",
+          "at": 1411
+        },
+        "R0215": {
+          "class": "own_wins",
+          "at": 1423
+        },
+        "R0217": {
+          "class": "own_wins",
+          "at": 1443
+        },
+        "R0220": {
+          "class": "containment",
+          "at": 1467
+        },
+        "R0221": {
+          "class": "containment",
+          "at": 1478
+        },
+        "R0222": {
+          "class": "own_wins",
+          "at": 1488
+        },
+        "R0229": {
+          "class": "own_wins",
+          "at": 1545
+        },
+        "R0231": {
+          "class": "containment",
+          "at": 1568
+        },
+        "R0234": {
+          "class": "containment",
+          "at": 1624
+        },
+        "R0237": {
+          "class": "own_wins",
+          "at": 1674
+        },
+        "R0238": {
+          "class": "containment",
+          "at": 1691
+        },
+        "R0240": {
+          "class": "containment",
+          "at": 1706
+        },
+        "R0242": {
+          "class": "containment",
+          "at": 1720
+        },
+        "R0247": {
+          "class": "own_wins",
+          "at": 1749
+        },
+        "R0250": {
+          "class": "own_wins",
+          "at": 1793
+        },
+        "R0251": {
+          "class": "own_wins",
+          "at": 1800
+        },
+        "R0253": {
+          "class": "own_wins",
+          "at": 1812
+        },
+        "R0254": {
+          "class": "own_wins",
+          "at": 1814
+        },
+        "R0257": {
+          "class": "own_wins",
+          "at": 1858
+        },
+        "R0258": {
+          "class": "own_wins",
+          "at": 1859
+        },
+        "R0259": {
+          "class": "own_wins",
+          "at": 1864
+        },
+        "R0260": {
+          "class": "containment",
+          "at": 1867
+        },
+        "R0261": {
+          "class": "own_wins",
+          "at": 1877
+        },
+        "R0263": {
+          "class": "own_wins",
+          "at": 1883
+        },
+        "R0264": {
+          "class": "containment",
+          "at": 1891
+        },
+        "R0265": {
+          "class": "containment",
+          "at": 1895
+        },
+        "R0266": {
+          "class": "containment",
+          "at": 1900
+        }
+      },
+      "bridges": [
+        {
+          "bridge": "R0056",
+          "action": "BILLING_SPECIALIST",
+          "born_at": 219,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 1,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0073",
+          "action": "SELF_SERVICE_DEFLECT",
+          "born_at": 361,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 1,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0114",
+          "action": "T1_GENERAL",
+          "born_at": 722,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 1,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0135",
+          "action": "ONCALL_ESCALATION",
+          "born_at": 851,
+          "cause": "CONFLICT",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 0,
+          "by_region": 1
+        },
+        {
+          "bridge": "R0158",
+          "action": "BILLING_SPECIALIST",
+          "born_at": 985,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 1,
+          "by_region": 0
+        }
+      ],
+      "doors": [
+        {
+          "door": "R0051",
+          "gateway": "R0048",
+          "action": "T1_GENERAL",
+          "kind": "door_win",
+          "installed_at": 162,
+          "born_at": 162,
+          "verdict": "wrong",
+          "carries": 101,
+          "alone": 63
+        },
+        {
+          "door": "R0143",
+          "gateway": "R0048",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 897,
+          "born_at": 897,
+          "verdict": "wrong",
+          "carries": 38,
+          "alone": 0
+        },
+        {
+          "door": "R0234",
+          "gateway": "R0048",
+          "action": "T1_GENERAL",
+          "kind": "door_win",
+          "installed_at": 1624,
+          "born_at": 1624,
+          "verdict": "even",
+          "carries": 8,
+          "alone": 0
+        },
+        {
+          "door": "R0016",
+          "gateway": "R0120",
+          "action": "T2_TECHNICAL",
+          "kind": "nested",
+          "installed_at": null,
+          "born_at": 23,
+          "verdict": "even",
+          "carries": 1,
+          "alone": 0
+        },
+        {
+          "door": "R0143",
+          "gateway": "R0120",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 897,
+          "born_at": 897,
+          "verdict": "wrong",
+          "carries": 38,
+          "alone": 0
+        },
+        {
+          "door": "R0234",
+          "gateway": "R0120",
+          "action": "T1_GENERAL",
+          "kind": "door_win",
+          "installed_at": 1624,
+          "born_at": 1624,
+          "verdict": "even",
+          "carries": 8,
+          "alone": 0
+        },
+        {
+          "door": "R0265",
+          "gateway": "R0120",
+          "action": "T1_GENERAL",
+          "kind": "nested",
+          "installed_at": null,
+          "born_at": 1895,
+          "verdict": "wrong",
+          "carries": 102,
+          "alone": 1
+        }
+      ],
+      "newborns": [
+        {
+          "born_at": 1812,
+          "newborn": "R0253",
+          "action": "T3_ENGINEERING",
+          "pairs": 12,
+          "pair_points": 39360,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 9,
+          "wins_above": 4,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 92,
+          "doors_then": 4,
+          "points": 3280,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ]
+        },
+        {
+          "born_at": 851,
+          "newborn": "R0135",
+          "action": "ONCALL_ESCALATION",
+          "pairs": 4,
+          "pair_points": 22080,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 3,
+          "meets": false,
+          "wins": 33,
+          "wins_above": 7,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 36,
+          "doors_then": 2,
+          "points": 5520,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "born_at": 761,
+          "newborn": "R0122",
+          "action": "T3_ENGINEERING",
+          "pairs": 3,
+          "pair_points": 7560,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 5,
+          "meets": false,
+          "wins": 12,
+          "wins_above": 1,
+          "nearest_win": 4,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 27,
+          "doors_then": 2,
+          "points": 2520,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "born_at": 587,
+          "newborn": "R0102",
+          "action": "BILLING_SPECIALIST",
+          "pairs": 2,
+          "pair_points": 7040,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 3,
+          "meets": false,
+          "wins": 20,
+          "wins_above": 5,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 16,
+          "doors_then": 1,
+          "points": 3520,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "severity",
+              "op": "in",
+              "value": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "born_at": 642,
+          "newborn": "R0107",
+          "action": "T2_TECHNICAL",
+          "pairs": 2,
+          "pair_points": 5840,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 21,
+          "wins_above": 6,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 18,
+          "doors_then": 1,
+          "points": 2920,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 513,
+          "newborn": "R0089",
+          "action": "T3_ENGINEERING",
+          "pairs": 2,
+          "pair_points": 5440,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 8,
+          "wins_above": 1,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 11,
+          "doors_then": 1,
+          "points": 2720,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            }
+          ]
+        },
+        {
+          "born_at": 1153,
+          "newborn": "R0183",
+          "action": "T3_ENGINEERING",
+          "pairs": 9,
+          "pair_points": 5400,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 3,
+          "meets": false,
+          "wins": 10,
+          "wins_above": 1,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 61,
+          "doors_then": 3,
+          "points": 600,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            }
+          ]
+        },
+        {
+          "born_at": 1024,
+          "newborn": "R0167",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 5040,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 5,
+          "meets": true,
+          "wins": 4,
+          "wins_above": 1,
+          "nearest_win": 4,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 55,
+          "doors_then": 3,
+          "points": 840,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 2
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 3
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "born_at": 1858,
+          "newborn": "R0257",
+          "action": "T2_TECHNICAL",
+          "pairs": 12,
+          "pair_points": 4500,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 1,
+          "wins_above": 1,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 94,
+          "doors_then": 4,
+          "points": 375,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "born_at": 437,
+          "newborn": "R0079",
+          "action": "T2_TECHNICAL",
+          "pairs": 1,
+          "pair_points": 4400,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 2,
+          "meets": false,
+          "wins": 14,
+          "wins_above": 2,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 10,
+          "doors_then": 1,
+          "points": 4400,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            },
+            {
+              "attr": "customer_tier",
+              "op": "neq",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "born_at": 1188,
+          "newborn": "R0185",
+          "action": "T3_ENGINEERING",
+          "pairs": 9,
+          "pair_points": 3780,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 6,
+          "meets": false,
+          "wins": 9,
+          "wins_above": 1,
+          "nearest_win": 5,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 63,
+          "doors_then": 3,
+          "points": 420,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 2
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "born_at": 566,
+          "newborn": "R0099",
+          "action": "T2_TECHNICAL",
+          "pairs": 2,
+          "pair_points": 3360,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 6,
+          "wins_above": 1,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 15,
+          "doors_then": 1,
+          "points": 1680,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 3
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "born_at": 1113,
+          "newborn": "R0175",
+          "action": "T3_ENGINEERING",
+          "pairs": 9,
+          "pair_points": 2700,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 5,
+          "wins_above": 2,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 58,
+          "doors_then": 3,
+          "points": 300,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 1
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            }
+          ]
+        },
+        {
+          "born_at": 551,
+          "newborn": "R0095",
+          "action": "ACCOUNT_MANAGER",
+          "pairs": 2,
+          "pair_points": 2640,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 30,
+          "wins_above": 4,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0048": true
+          },
+          "above_then": 13,
+          "doors_then": 1,
+          "points": 1320,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 10
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "born_at": 961,
+          "newborn": "R0153",
+          "action": "T2_TECHNICAL",
+          "pairs": 6,
+          "pair_points": 2520,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 2,
+          "meets": true,
+          "wins": 9,
+          "wins_above": 4,
+          "nearest_win": 1,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 48,
+          "doors_then": 3,
+          "points": 420,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "pro"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            }
+          ]
+        },
+        {
+          "born_at": 1080,
+          "newborn": "R0171",
+          "action": "T2_TECHNICAL",
+          "pairs": 7,
+          "pair_points": 2520,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 4,
+          "meets": true,
+          "wins": 19,
+          "wins_above": 1,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 57,
+          "doors_then": 3,
+          "points": 360,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "mobile"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 15
+            }
+          ]
+        },
+        {
+          "born_at": 1814,
+          "newborn": "R0254",
+          "action": "T2_TECHNICAL",
+          "pairs": 12,
+          "pair_points": 2400,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 5,
+          "meets": false,
+          "wins": 1,
+          "wins_above": 1,
+          "nearest_win": 4,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 93,
+          "doors_then": 4,
+          "points": 200,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 2
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "phone"
+            }
+          ]
+        },
+        {
+          "born_at": 320,
+          "newborn": "R0068",
+          "action": "ACCOUNT_MANAGER",
+          "pairs": 1,
+          "pair_points": 1920,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 7,
+          "wins_above": 2,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0048": true
+          },
+          "above_then": 6,
+          "doors_then": 1,
+          "points": 1920,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "enterprise"
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "born_at": 838,
+          "newborn": "R0134",
+          "action": "T2_TECHNICAL",
+          "pairs": 4,
+          "pair_points": 1920,
+          "gateways": [
+            "R0048",
+            "R0120"
+          ],
+          "distance": 4,
+          "meets": true,
+          "wins": 15,
+          "wins_above": 3,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null,
+            "R0120": null
+          },
+          "listed": {
+            "R0048": false,
+            "R0120": false
+          },
+          "above_then": 34,
+          "doors_then": 2,
+          "points": 480,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 15
+            },
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "dashboard"
+            }
+          ]
+        },
+        {
+          "born_at": 645,
+          "newborn": "R0109",
+          "action": "T2_TECHNICAL",
+          "pairs": 2,
+          "pair_points": 400,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 14,
+          "wins_above": 3,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0048": null
+          },
+          "listed": {
+            "R0048": false
+          },
+          "above_then": 19,
+          "doors_then": 1,
+          "points": 200,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "api"
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 3
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "born_at": 361,
+          "newborn": "R0073",
+          "action": "SELF_SERVICE_DEFLECT",
+          "pairs": 1,
+          "pair_points": 240,
+          "gateways": [
+            "R0048"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 10,
+          "wins_above": 3,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0048": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0048": true
+          },
+          "above_then": 9,
+          "doors_then": 1,
+          "points": 240,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "lte",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [
+            {
+              "rule_id": "R0048",
+              "action": "T2_TECHNICAL",
+              "born_at": 154,
+              "cause": "ERROR",
+              "listed": 6,
+              "wins": 4,
+              "losses": 2,
+              "by_verdict": {
+                "beats:ok": 4,
+                "loses_to:cierra_ciclo": 2
+              }
+            },
+            {
+              "rule_id": "R0120",
+              "action": "T2_TECHNICAL",
+              "born_at": 754,
+              "cause": "ERROR",
+              "listed": 24,
+              "wins": 24,
+              "losses": 0,
+              "by_verdict": {
+                "beats:cierra_ciclo": 7,
+                "beats:ok": 17
+              }
+            }
+          ],
+          "doors": [
+            {
+              "rule_id": "R0016",
+              "action": "T2_TECHNICAL",
+              "born_at": 23,
+              "cause": "ERROR",
+              "listed": 4,
+              "wins": 4,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 4
+              }
+            },
+            {
+              "rule_id": "R0051",
+              "action": "T1_GENERAL",
+              "born_at": 162,
+              "cause": "ERROR",
+              "listed": 11,
+              "wins": 10,
+              "losses": 1,
+              "by_verdict": {
+                "beats:ok": 10,
+                "loses_to:cierra_ciclo": 1
+              }
+            },
+            {
+              "rule_id": "R0143",
+              "action": "SELF_SERVICE_DEFLECT",
+              "born_at": 897,
+              "cause": "ERROR",
+              "listed": 17,
+              "wins": 13,
+              "losses": 4,
+              "by_verdict": {
+                "beats:cierra_ciclo": 1,
+                "beats:ok": 12,
+                "loses_to:cierra_ciclo": 4
+              }
+            },
+            {
+              "rule_id": "R0234",
+              "action": "T1_GENERAL",
+              "born_at": 1624,
+              "cause": "ERROR",
+              "listed": 87,
+              "wins": 87,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 87
+              }
+            },
+            {
+              "rule_id": "R0265",
+              "action": "T1_GENERAL",
+              "born_at": 1895,
+              "cause": "CONFLICT",
+              "listed": 79,
+              "wins": 79,
+              "losses": 0,
+              "by_verdict": {
+                "beats:cierra_ciclo": 31,
+                "beats:ok": 48
+              }
+            }
+          ],
+          "rounds_that_listed_a_gateway": {
+            "beats:cierra_ciclo": 9,
+            "beats:ok": 5,
+            "loses_to:cierra_ciclo": 35,
+            "loses_to:ok": 33
+          },
+          "every_round": {
+            "rounds": 266,
+            "wins": 4029,
+            "losses": 2457,
+            "without_a_loss": 56,
+            "by_verdict": {
+              "beats:cierra_ciclo": 1183,
+              "beats:ok": 2772,
+              "beats:outside": 74,
+              "loses_to:cierra_ciclo": 976,
+              "loses_to:ok": 1481
+            }
+          }
+        }
+      }
+    },
+    "l_r3": {
+      "summary": {
+        "gateways": [
+          "R0016"
+        ],
+        "first_gateway_born_at": 19,
+        "rules": 273,
+        "born_after": 257,
+        "above": 49,
+        "above_born_after": 49,
+        "above_by_queue": {
+          "T2_TECHNICAL": 15,
+          "SELF_SERVICE_DEFLECT": 17,
+          "SECURITY_INCIDENT": 1,
+          "BILLING_SPECIALIST": 5,
+          "T1_GENERAL": 5,
+          "ACCOUNT_MANAGER": 1,
+          "ONCALL_ESCALATION": 2,
+          "T3_ENGINEERING": 3
+        },
+        "born_after_by_queue": {
+          "T1_GENERAL": 33,
+          "BILLING_SPECIALIST": 69,
+          "ACCOUNT_MANAGER": 18,
+          "T2_TECHNICAL": 67,
+          "SELF_SERVICE_DEFLECT": 44,
+          "SECURITY_INCIDENT": 15,
+          "ONCALL_ESCALATION": 4,
+          "T3_ENGINEERING": 7
+        },
+        "entries": {
+          "containment": 5,
+          "own_wins": 40,
+          "brought": 4,
+          "at_gateway": 0
+        },
+        "through": {
+          "brought:by_losses": 2,
+          "brought:by_region": 2
+        },
+        "depth": {
+          "1": 8,
+          "2": 21,
+          "3": 16,
+          "4": 4
+        },
+        "doors": {
+          "rules": 8,
+          "edges": {
+            "nested": 1,
+            "gateway_loss": 0,
+            "door_win": 7
+          },
+          "verdicts": {
+            "door_win:wrong": 6,
+            "door_win:even": 1,
+            "nested:even": 1
+          }
+        },
+        "pairs": {
+          "pairs": 1,
+          "points": 840,
+          "meets": 840,
+          "misses": 0,
+          "distance": {
+            "1": 840
+          }
+        },
+        "newborns": 1
+      },
+      "gateways": [
+        {
+          "rule_id": "R0016",
+          "action": "T2_TECHNICAL",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "born_at": 19,
+          "cause": "ERROR",
+          "ticket_rule": "H03",
+          "points": 840
+        }
+      ],
+      "curve": [
+        [
+          19,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          27,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          38,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          42,
+          0
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          44,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          46,
+          0
+        ],
+        [
+          48,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          59,
+          0
+        ],
+        [
+          63,
+          0
+        ],
+        [
+          64,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          69,
+          0
+        ],
+        [
+          72,
+          0
+        ],
+        [
+          74,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          86,
+          0
+        ],
+        [
+          87,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          91,
+          0
+        ],
+        [
+          94,
+          0
+        ],
+        [
+          97,
+          0
+        ],
+        [
+          98,
+          0
+        ],
+        [
+          99,
+          1
+        ],
+        [
+          100,
+          1
+        ],
+        [
+          101,
+          1
+        ],
+        [
+          103,
+          1
+        ],
+        [
+          105,
+          1
+        ],
+        [
+          106,
+          1
+        ],
+        [
+          114,
+          1
+        ],
+        [
+          124,
+          1
+        ],
+        [
+          136,
+          1
+        ],
+        [
+          147,
+          1
+        ],
+        [
+          149,
+          1
+        ],
+        [
+          165,
+          1
+        ],
+        [
+          174,
+          1
+        ],
+        [
+          178,
+          1
+        ],
+        [
+          181,
+          1
+        ],
+        [
+          183,
+          2
+        ],
+        [
+          187,
+          2
+        ],
+        [
+          199,
+          2
+        ],
+        [
+          213,
+          2
+        ],
+        [
+          218,
+          2
+        ],
+        [
+          227,
+          2
+        ],
+        [
+          230,
+          2
+        ],
+        [
+          235,
+          2
+        ],
+        [
+          240,
+          2
+        ],
+        [
+          245,
+          2
+        ],
+        [
+          250,
+          2
+        ],
+        [
+          255,
+          2
+        ],
+        [
+          264,
+          2
+        ],
+        [
+          265,
+          2
+        ],
+        [
+          271,
+          2
+        ],
+        [
+          274,
+          2
+        ],
+        [
+          279,
+          2
+        ],
+        [
+          291,
+          2
+        ],
+        [
+          298,
+          2
+        ],
+        [
+          303,
+          2
+        ],
+        [
+          310,
+          2
+        ],
+        [
+          339,
+          2
+        ],
+        [
+          345,
+          2
+        ],
+        [
+          356,
+          2
+        ],
+        [
+          357,
+          2
+        ],
+        [
+          361,
+          2
+        ],
+        [
+          365,
+          2
+        ],
+        [
+          372,
+          5
+        ],
+        [
+          381,
+          5
+        ],
+        [
+          383,
+          5
+        ],
+        [
+          401,
+          5
+        ],
+        [
+          402,
+          5
+        ],
+        [
+          410,
+          5
+        ],
+        [
+          425,
+          6
+        ],
+        [
+          427,
+          6
+        ],
+        [
+          430,
+          6
+        ],
+        [
+          448,
+          6
+        ],
+        [
+          450,
+          6
+        ],
+        [
+          477,
+          7
+        ],
+        [
+          485,
+          7
+        ],
+        [
+          522,
+          7
+        ],
+        [
+          529,
+          7
+        ],
+        [
+          530,
+          7
+        ],
+        [
+          564,
+          7
+        ],
+        [
+          577,
+          7
+        ],
+        [
+          580,
+          7
+        ],
+        [
+          583,
+          7
+        ],
+        [
+          586,
+          7
+        ],
+        [
+          587,
+          7
+        ],
+        [
+          593,
+          7
+        ],
+        [
+          599,
+          7
+        ],
+        [
+          617,
+          7
+        ],
+        [
+          625,
+          7
+        ],
+        [
+          632,
+          7
+        ],
+        [
+          642,
+          7
+        ],
+        [
+          645,
+          7
+        ],
+        [
+          655,
+          7
+        ],
+        [
+          657,
+          7
+        ],
+        [
+          674,
+          7
+        ],
+        [
+          677,
+          9
+        ],
+        [
+          678,
+          9
+        ],
+        [
+          681,
+          9
+        ],
+        [
+          708,
+          9
+        ],
+        [
+          732,
+          9
+        ],
+        [
+          739,
+          9
+        ],
+        [
+          751,
+          9
+        ],
+        [
+          755,
+          9
+        ],
+        [
+          757,
+          9
+        ],
+        [
+          768,
+          9
+        ],
+        [
+          780,
+          9
+        ],
+        [
+          789,
+          10
+        ],
+        [
+          794,
+          10
+        ],
+        [
+          798,
+          10
+        ],
+        [
+          810,
+          10
+        ],
+        [
+          811,
+          10
+        ],
+        [
+          826,
+          10
+        ],
+        [
+          838,
+          10
+        ],
+        [
+          845,
+          10
+        ],
+        [
+          850,
+          10
+        ],
+        [
+          861,
+          10
+        ],
+        [
+          881,
+          11
+        ],
+        [
+          882,
+          11
+        ],
+        [
+          888,
+          11
+        ],
+        [
+          895,
+          11
+        ],
+        [
+          902,
+          11
+        ],
+        [
+          904,
+          11
+        ],
+        [
+          914,
+          11
+        ],
+        [
+          918,
+          11
+        ],
+        [
+          922,
+          11
+        ],
+        [
+          925,
+          11
+        ],
+        [
+          933,
+          12
+        ],
+        [
+          954,
+          13
+        ],
+        [
+          964,
+          13
+        ],
+        [
+          978,
+          13
+        ],
+        [
+          980,
+          13
+        ],
+        [
+          981,
+          13
+        ],
+        [
+          985,
+          13
+        ],
+        [
+          997,
+          14
+        ],
+        [
+          998,
+          15
+        ],
+        [
+          1014,
+          15
+        ],
+        [
+          1015,
+          15
+        ],
+        [
+          1018,
+          15
+        ],
+        [
+          1029,
+          15
+        ],
+        [
+          1037,
+          15
+        ],
+        [
+          1043,
+          15
+        ],
+        [
+          1044,
+          15
+        ],
+        [
+          1052,
+          15
+        ],
+        [
+          1058,
+          15
+        ],
+        [
+          1065,
+          15
+        ],
+        [
+          1067,
+          15
+        ],
+        [
+          1086,
+          16
+        ],
+        [
+          1089,
+          16
+        ],
+        [
+          1090,
+          16
+        ],
+        [
+          1097,
+          16
+        ],
+        [
+          1104,
+          17
+        ],
+        [
+          1107,
+          17
+        ],
+        [
+          1108,
+          17
+        ],
+        [
+          1140,
+          18
+        ],
+        [
+          1143,
+          18
+        ],
+        [
+          1145,
+          20
+        ],
+        [
+          1147,
+          20
+        ],
+        [
+          1150,
+          20
+        ],
+        [
+          1162,
+          20
+        ],
+        [
+          1163,
+          20
+        ],
+        [
+          1164,
+          20
+        ],
+        [
+          1168,
+          20
+        ],
+        [
+          1169,
+          20
+        ],
+        [
+          1172,
+          20
+        ],
+        [
+          1174,
+          21
+        ],
+        [
+          1186,
+          21
+        ],
+        [
+          1213,
+          21
+        ],
+        [
+          1235,
+          21
+        ],
+        [
+          1253,
+          21
+        ],
+        [
+          1254,
+          21
+        ],
+        [
+          1264,
+          21
+        ],
+        [
+          1275,
+          21
+        ],
+        [
+          1281,
+          22
+        ],
+        [
+          1284,
+          22
+        ],
+        [
+          1312,
+          23
+        ],
+        [
+          1333,
+          24
+        ],
+        [
+          1365,
+          24
+        ],
+        [
+          1370,
+          25
+        ],
+        [
+          1381,
+          26
+        ],
+        [
+          1383,
+          26
+        ],
+        [
+          1388,
+          26
+        ],
+        [
+          1394,
+          26
+        ],
+        [
+          1399,
+          26
+        ],
+        [
+          1401,
+          27
+        ],
+        [
+          1403,
+          28
+        ],
+        [
+          1412,
+          28
+        ],
+        [
+          1417,
+          29
+        ],
+        [
+          1432,
+          30
+        ],
+        [
+          1434,
+          30
+        ],
+        [
+          1452,
+          31
+        ],
+        [
+          1461,
+          31
+        ],
+        [
+          1467,
+          31
+        ],
+        [
+          1481,
+          32
+        ],
+        [
+          1510,
+          32
+        ],
+        [
+          1514,
+          33
+        ],
+        [
+          1516,
+          33
+        ],
+        [
+          1523,
+          33
+        ],
+        [
+          1534,
+          33
+        ],
+        [
+          1535,
+          33
+        ],
+        [
+          1537,
+          33
+        ],
+        [
+          1573,
+          34
+        ],
+        [
+          1578,
+          35
+        ],
+        [
+          1596,
+          36
+        ],
+        [
+          1597,
+          36
+        ],
+        [
+          1607,
+          36
+        ],
+        [
+          1618,
+          37
+        ],
+        [
+          1630,
+          37
+        ],
+        [
+          1638,
+          38
+        ],
+        [
+          1643,
+          38
+        ],
+        [
+          1648,
+          38
+        ],
+        [
+          1658,
+          38
+        ],
+        [
+          1676,
+          38
+        ],
+        [
+          1677,
+          39
+        ],
+        [
+          1684,
+          39
+        ],
+        [
+          1688,
+          39
+        ],
+        [
+          1697,
+          39
+        ],
+        [
+          1704,
+          39
+        ],
+        [
+          1710,
+          39
+        ],
+        [
+          1715,
+          40
+        ],
+        [
+          1718,
+          40
+        ],
+        [
+          1724,
+          40
+        ],
+        [
+          1733,
+          41
+        ],
+        [
+          1749,
+          41
+        ],
+        [
+          1767,
+          41
+        ],
+        [
+          1777,
+          41
+        ],
+        [
+          1779,
+          41
+        ],
+        [
+          1788,
+          41
+        ],
+        [
+          1791,
+          42
+        ],
+        [
+          1802,
+          42
+        ],
+        [
+          1809,
+          42
+        ],
+        [
+          1812,
+          43
+        ],
+        [
+          1824,
+          43
+        ],
+        [
+          1827,
+          43
+        ],
+        [
+          1840,
+          44
+        ],
+        [
+          1848,
+          45
+        ],
+        [
+          1853,
+          45
+        ],
+        [
+          1865,
+          45
+        ],
+        [
+          1881,
+          45
+        ],
+        [
+          1891,
+          46
+        ],
+        [
+          1893,
+          46
+        ],
+        [
+          1896,
+          47
+        ],
+        [
+          1904,
+          47
+        ],
+        [
+          1922,
+          47
+        ],
+        [
+          1927,
+          48
+        ],
+        [
+          1961,
+          48
+        ],
+        [
+          1962,
+          48
+        ],
+        [
+          1974,
+          49
+        ]
+      ],
+      "entries": {
+        "R0038": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0090",
+          "at": 372
+        },
+        "R0044": {
+          "class": "brought",
+          "through": "by_region",
+          "bridge": "R0122",
+          "at": 677
+        },
+        "R0048": {
+          "class": "own_wins",
+          "at": 99
+        },
+        "R0063": {
+          "class": "own_wins",
+          "at": 183
+        },
+        "R0078": {
+          "class": "brought",
+          "through": "by_losses",
+          "bridge": "R0090",
+          "at": 372
+        },
+        "R0090": {
+          "class": "own_wins",
+          "at": 372
+        },
+        "R0096": {
+          "class": "own_wins",
+          "at": 425
+        },
+        "R0101": {
+          "class": "own_wins",
+          "at": 477
+        },
+        "R0122": {
+          "class": "own_wins",
+          "at": 677
+        },
+        "R0133": {
+          "class": "own_wins",
+          "at": 789
+        },
+        "R0143": {
+          "class": "own_wins",
+          "at": 881
+        },
+        "R0148": {
+          "class": "brought",
+          "through": "by_region",
+          "bridge": "R0182",
+          "at": 1145
+        },
+        "R0153": {
+          "class": "own_wins",
+          "at": 933
+        },
+        "R0154": {
+          "class": "own_wins",
+          "at": 954
+        },
+        "R0160": {
+          "class": "own_wins",
+          "at": 997
+        },
+        "R0161": {
+          "class": "own_wins",
+          "at": 998
+        },
+        "R0173": {
+          "class": "own_wins",
+          "at": 1086
+        },
+        "R0177": {
+          "class": "own_wins",
+          "at": 1104
+        },
+        "R0180": {
+          "class": "own_wins",
+          "at": 1140
+        },
+        "R0182": {
+          "class": "own_wins",
+          "at": 1145
+        },
+        "R0191": {
+          "class": "own_wins",
+          "at": 1174
+        },
+        "R0199": {
+          "class": "own_wins",
+          "at": 1281
+        },
+        "R0201": {
+          "class": "own_wins",
+          "at": 1312
+        },
+        "R0202": {
+          "class": "own_wins",
+          "at": 1333
+        },
+        "R0204": {
+          "class": "own_wins",
+          "at": 1370
+        },
+        "R0205": {
+          "class": "own_wins",
+          "at": 1381
+        },
+        "R0210": {
+          "class": "containment",
+          "at": 1401
+        },
+        "R0211": {
+          "class": "own_wins",
+          "at": 1403
+        },
+        "R0213": {
+          "class": "own_wins",
+          "at": 1417
+        },
+        "R0214": {
+          "class": "own_wins",
+          "at": 1432
+        },
+        "R0216": {
+          "class": "containment",
+          "at": 1452
+        },
+        "R0219": {
+          "class": "containment",
+          "at": 1481
+        },
+        "R0221": {
+          "class": "own_wins",
+          "at": 1514
+        },
+        "R0227": {
+          "class": "own_wins",
+          "at": 1573
+        },
+        "R0228": {
+          "class": "own_wins",
+          "at": 1578
+        },
+        "R0229": {
+          "class": "own_wins",
+          "at": 1596
+        },
+        "R0232": {
+          "class": "own_wins",
+          "at": 1618
+        },
+        "R0234": {
+          "class": "containment",
+          "at": 1638
+        },
+        "R0239": {
+          "class": "own_wins",
+          "at": 1677
+        },
+        "R0245": {
+          "class": "own_wins",
+          "at": 1715
+        },
+        "R0248": {
+          "class": "own_wins",
+          "at": 1733
+        },
+        "R0254": {
+          "class": "own_wins",
+          "at": 1791
+        },
+        "R0257": {
+          "class": "own_wins",
+          "at": 1812
+        },
+        "R0260": {
+          "class": "own_wins",
+          "at": 1840
+        },
+        "R0261": {
+          "class": "own_wins",
+          "at": 1848
+        },
+        "R0265": {
+          "class": "own_wins",
+          "at": 1891
+        },
+        "R0267": {
+          "class": "own_wins",
+          "at": 1896
+        },
+        "R0270": {
+          "class": "containment",
+          "at": 1927
+        },
+        "R0273": {
+          "class": "own_wins",
+          "at": 1974
+        }
+      },
+      "bridges": [
+        {
+          "bridge": "R0090",
+          "action": "BILLING_SPECIALIST",
+          "born_at": 372,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 2,
+          "by_losses": 2,
+          "by_region": 0
+        },
+        {
+          "bridge": "R0122",
+          "action": "T1_GENERAL",
+          "born_at": 677,
+          "cause": "ERROR",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 0,
+          "by_region": 1
+        },
+        {
+          "bridge": "R0182",
+          "action": "T2_TECHNICAL",
+          "born_at": 1145,
+          "cause": "CONFLICT",
+          "entry": "own_wins",
+          "brought": 1,
+          "by_losses": 0,
+          "by_region": 1
+        }
+      ],
+      "doors": [
+        {
+          "door": "R0048",
+          "gateway": "R0016",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 99,
+          "born_at": 99,
+          "verdict": "wrong",
+          "carries": 42,
+          "alone": 1
+        },
+        {
+          "door": "R0063",
+          "gateway": "R0016",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 183,
+          "born_at": 183,
+          "verdict": "wrong",
+          "carries": 3,
+          "alone": 0
+        },
+        {
+          "door": "R0090",
+          "gateway": "R0016",
+          "action": "BILLING_SPECIALIST",
+          "kind": "door_win",
+          "installed_at": 372,
+          "born_at": 372,
+          "verdict": "wrong",
+          "carries": 47,
+          "alone": 4
+        },
+        {
+          "door": "R0096",
+          "gateway": "R0016",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 425,
+          "born_at": 425,
+          "verdict": "wrong",
+          "carries": 3,
+          "alone": 0
+        },
+        {
+          "door": "R0122",
+          "gateway": "R0016",
+          "action": "T1_GENERAL",
+          "kind": "door_win",
+          "installed_at": 677,
+          "born_at": 677,
+          "verdict": "wrong",
+          "carries": 44,
+          "alone": 1
+        },
+        {
+          "door": "R0153",
+          "gateway": "R0016",
+          "action": "ACCOUNT_MANAGER",
+          "kind": "door_win",
+          "installed_at": 933,
+          "born_at": 933,
+          "verdict": "even",
+          "carries": 18,
+          "alone": 0
+        },
+        {
+          "door": "R0210",
+          "gateway": "R0016",
+          "action": "T2_TECHNICAL",
+          "kind": "nested",
+          "installed_at": null,
+          "born_at": 1401,
+          "verdict": "even",
+          "carries": 2,
+          "alone": 0
+        },
+        {
+          "door": "R0273",
+          "gateway": "R0016",
+          "action": "SELF_SERVICE_DEFLECT",
+          "kind": "door_win",
+          "installed_at": 1974,
+          "born_at": 1974,
+          "verdict": "wrong",
+          "carries": 1,
+          "alone": 0
+        }
+      ],
+      "newborns": [
+        {
+          "born_at": 372,
+          "newborn": "R0090",
+          "action": "BILLING_SPECIALIST",
+          "pairs": 1,
+          "pair_points": 840,
+          "gateways": [
+            "R0016"
+          ],
+          "distance": 1,
+          "meets": true,
+          "wins": 13,
+          "wins_above": 1,
+          "nearest_win": 0,
+          "contained_above": 0,
+          "said": {
+            "R0016": [
+              "beats",
+              "ok"
+            ]
+          },
+          "listed": {
+            "R0016": true
+          },
+          "above_then": 5,
+          "doors_then": 3,
+          "points": 840,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "billing"
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            },
+            {
+              "attr": "severity",
+              "op": "lte",
+              "value": 3
+            }
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [
+            {
+              "rule_id": "R0016",
+              "action": "T2_TECHNICAL",
+              "born_at": 19,
+              "cause": "ERROR",
+              "listed": 5,
+              "wins": 5,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 5
+              }
+            }
+          ],
+          "doors": [
+            {
+              "rule_id": "R0048",
+              "action": "SELF_SERVICE_DEFLECT",
+              "born_at": 99,
+              "cause": "ERROR",
+              "listed": 7,
+              "wins": 7,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 7
+              }
+            },
+            {
+              "rule_id": "R0063",
+              "action": "SELF_SERVICE_DEFLECT",
+              "born_at": 183,
+              "cause": "ERROR",
+              "listed": 6,
+              "wins": 5,
+              "losses": 1,
+              "by_verdict": {
+                "beats:ok": 5,
+                "loses_to:cierra_ciclo": 1
+              }
+            },
+            {
+              "rule_id": "R0090",
+              "action": "BILLING_SPECIALIST",
+              "born_at": 372,
+              "cause": "ERROR",
+              "listed": 16,
+              "wins": 13,
+              "losses": 3,
+              "by_verdict": {
+                "beats:ok": 13,
+                "loses_to:cierra_ciclo": 1,
+                "loses_to:ok": 2
+              }
+            },
+            {
+              "rule_id": "R0096",
+              "action": "SELF_SERVICE_DEFLECT",
+              "born_at": 425,
+              "cause": "ERROR",
+              "listed": 8,
+              "wins": 6,
+              "losses": 2,
+              "by_verdict": {
+                "beats:ok": 6,
+                "loses_to:cierra_ciclo": 2
+              }
+            },
+            {
+              "rule_id": "R0122",
+              "action": "T1_GENERAL",
+              "born_at": 677,
+              "cause": "ERROR",
+              "listed": 12,
+              "wins": 12,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 12
+              }
+            },
+            {
+              "rule_id": "R0153",
+              "action": "ACCOUNT_MANAGER",
+              "born_at": 933,
+              "cause": "ERROR",
+              "listed": 77,
+              "wins": 67,
+              "losses": 10,
+              "by_verdict": {
+                "beats:ok": 67,
+                "loses_to:cierra_ciclo": 10
+              }
+            },
+            {
+              "rule_id": "R0210",
+              "action": "T2_TECHNICAL",
+              "born_at": 1401,
+              "cause": "ERROR",
+              "listed": 74,
+              "wins": 74,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 74
+              }
+            },
+            {
+              "rule_id": "R0273",
+              "action": "SELF_SERVICE_DEFLECT",
+              "born_at": 1974,
+              "cause": "ERROR",
+              "listed": 141,
+              "wins": 141,
+              "losses": 0,
+              "by_verdict": {
+                "beats:ok": 141
+              }
+            }
+          ],
+          "rounds_that_listed_a_gateway": {
+            "beats:cierra_ciclo": 3,
+            "beats:ok": 7,
+            "loses_to:cierra_ciclo": 12,
+            "loses_to:ok": 85
+          },
+          "every_round": {
+            "rounds": 263,
+            "wins": 3304,
+            "losses": 2878,
+            "without_a_loss": 54,
+            "by_verdict": {
+              "beats:cierra_ciclo": 701,
+              "beats:ok": 2603,
+              "loses_to:cierra_ciclo": 895,
+              "loses_to:ok": 1983
+            }
+          }
+        }
+      }
+    },
+    "n_r1": {
+      "summary": {
+        "gateways": [],
+        "first_gateway_born_at": null,
+        "rules": 322,
+        "born_after": 0,
+        "above": 0,
+        "above_born_after": 0,
+        "above_by_queue": {},
+        "born_after_by_queue": {},
+        "entries": {
+          "containment": 0,
+          "own_wins": 0,
+          "brought": 0,
+          "at_gateway": 0
+        },
+        "through": {},
+        "depth": {},
+        "doors": {
+          "rules": 0,
+          "edges": {
+            "nested": 0,
+            "gateway_loss": 0,
+            "door_win": 0
+          },
+          "verdicts": {}
+        },
+        "pairs": {
+          "pairs": 0,
+          "points": 0,
+          "meets": 0,
+          "misses": 0,
+          "distance": {}
+        },
+        "newborns": 0
+      },
+      "gateways": [],
+      "curve": [],
+      "entries": {},
+      "bridges": [],
+      "doors": [],
+      "newborns": [],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [],
+          "doors": [],
+          "rounds_that_listed_a_gateway": {},
+          "every_round": {
+            "rounds": 315,
+            "wins": 3821,
+            "losses": 3893,
+            "without_a_loss": 50,
+            "by_verdict": {
+              "beats:cierra_ciclo": 235,
+              "beats:ok": 3585,
+              "beats:outside": 1,
+              "loses_to:cierra_ciclo": 766,
+              "loses_to:ok": 3127
+            }
+          }
+        }
+      }
+    },
+    "n_r2": {
+      "summary": {
+        "gateways": [],
+        "first_gateway_born_at": null,
+        "rules": 312,
+        "born_after": 0,
+        "above": 0,
+        "above_born_after": 0,
+        "above_by_queue": {},
+        "born_after_by_queue": {},
+        "entries": {
+          "containment": 0,
+          "own_wins": 0,
+          "brought": 0,
+          "at_gateway": 0
+        },
+        "through": {},
+        "depth": {},
+        "doors": {
+          "rules": 0,
+          "edges": {
+            "nested": 0,
+            "gateway_loss": 0,
+            "door_win": 0
+          },
+          "verdicts": {}
+        },
+        "pairs": {
+          "pairs": 0,
+          "points": 0,
+          "meets": 0,
+          "misses": 0,
+          "distance": {}
+        },
+        "newborns": 0
+      },
+      "gateways": [],
+      "curve": [],
+      "entries": {},
+      "bridges": [],
+      "doors": [],
+      "newborns": [],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [],
+          "doors": [],
+          "rounds_that_listed_a_gateway": {},
+          "every_round": {
+            "rounds": 306,
+            "wins": 4962,
+            "losses": 3754,
+            "without_a_loss": 57,
+            "by_verdict": {
+              "beats:cierra_ciclo": 341,
+              "beats:ok": 4621,
+              "loses_to:cierra_ciclo": 431,
+              "loses_to:ok": 3323
+            }
+          }
+        }
+      }
+    },
+    "n_r3": {
+      "summary": {
+        "gateways": [
+          "R0175"
+        ],
+        "first_gateway_born_at": 613,
+        "rules": 331,
+        "born_after": 156,
+        "above": 5,
+        "above_born_after": 5,
+        "above_by_queue": {
+          "T2_TECHNICAL": 2,
+          "ACCOUNT_MANAGER": 1,
+          "BILLING_SPECIALIST": 1,
+          "SELF_SERVICE_DEFLECT": 1
+        },
+        "born_after_by_queue": {
+          "T1_GENERAL": 40,
+          "SELF_SERVICE_DEFLECT": 10,
+          "BILLING_SPECIALIST": 25,
+          "T2_TECHNICAL": 56,
+          "ONCALL_ESCALATION": 16,
+          "SECURITY_INCIDENT": 7,
+          "ACCOUNT_MANAGER": 2
+        },
+        "entries": {
+          "containment": 0,
+          "own_wins": 5,
+          "brought": 0,
+          "at_gateway": 0
+        },
+        "through": {},
+        "depth": {
+          "1": 1,
+          "2": 1,
+          "3": 2,
+          "4": 1
+        },
+        "doors": {
+          "rules": 1,
+          "edges": {
+            "nested": 0,
+            "gateway_loss": 0,
+            "door_win": 1
+          },
+          "verdicts": {
+            "door_win:right": 1
+          }
+        },
+        "pairs": {
+          "pairs": 28,
+          "points": 98240,
+          "meets": 9520,
+          "misses": 88720,
+          "distance": {
+            "3": 9520,
+            "4": 88720
+          }
+        },
+        "newborns": 2
+      },
+      "gateways": [
+        {
+          "rule_id": "R0175",
+          "action": "T1_GENERAL",
+          "conditions": [
+            {
+              "attr": "has_security_keyword",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "eq",
+              "value": 4
+            },
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "free"
+            }
+          ],
+          "born_at": 613,
+          "cause": "ERROR",
+          "ticket_rule": "H03",
+          "points": 98240
+        }
+      ],
+      "curve": [
+        [
+          613,
+          0
+        ],
+        [
+          620,
+          0
+        ],
+        [
+          626,
+          0
+        ],
+        [
+          628,
+          0
+        ],
+        [
+          629,
+          0
+        ],
+        [
+          631,
+          0
+        ],
+        [
+          633,
+          0
+        ],
+        [
+          637,
+          0
+        ],
+        [
+          640,
+          0
+        ],
+        [
+          642,
+          0
+        ],
+        [
+          644,
+          0
+        ],
+        [
+          647,
+          0
+        ],
+        [
+          651,
+          0
+        ],
+        [
+          655,
+          0
+        ],
+        [
+          662,
+          0
+        ],
+        [
+          663,
+          0
+        ],
+        [
+          677,
+          0
+        ],
+        [
+          682,
+          0
+        ],
+        [
+          683,
+          0
+        ],
+        [
+          685,
+          0
+        ],
+        [
+          690,
+          0
+        ],
+        [
+          701,
+          0
+        ],
+        [
+          703,
+          0
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          733,
+          0
+        ],
+        [
+          745,
+          0
+        ],
+        [
+          746,
+          0
+        ],
+        [
+          748,
+          0
+        ],
+        [
+          754,
+          0
+        ],
+        [
+          758,
+          0
+        ],
+        [
+          763,
+          0
+        ],
+        [
+          767,
+          0
+        ],
+        [
+          775,
+          0
+        ],
+        [
+          776,
+          0
+        ],
+        [
+          778,
+          0
+        ],
+        [
+          784,
+          1
+        ],
+        [
+          785,
+          1
+        ],
+        [
+          791,
+          1
+        ],
+        [
+          806,
+          1
+        ],
+        [
+          808,
+          1
+        ],
+        [
+          810,
+          1
+        ],
+        [
+          816,
+          1
+        ],
+        [
+          820,
+          1
+        ],
+        [
+          833,
+          1
+        ],
+        [
+          839,
+          1
+        ],
+        [
+          842,
+          1
+        ],
+        [
+          845,
+          1
+        ],
+        [
+          848,
+          1
+        ],
+        [
+          849,
+          1
+        ],
+        [
+          851,
+          1
+        ],
+        [
+          857,
+          1
+        ],
+        [
+          859,
+          1
+        ],
+        [
+          860,
+          1
+        ],
+        [
+          868,
+          1
+        ],
+        [
+          870,
+          1
+        ],
+        [
+          878,
+          1
+        ],
+        [
+          881,
+          1
+        ],
+        [
+          882,
+          1
+        ],
+        [
+          883,
+          1
+        ],
+        [
+          886,
+          1
+        ],
+        [
+          889,
+          1
+        ],
+        [
+          891,
+          1
+        ],
+        [
+          897,
+          1
+        ],
+        [
+          900,
+          1
+        ],
+        [
+          901,
+          1
+        ],
+        [
+          904,
+          1
+        ],
+        [
+          913,
+          1
+        ],
+        [
+          914,
+          1
+        ],
+        [
+          922,
+          1
+        ],
+        [
+          928,
+          1
+        ],
+        [
+          936,
+          1
+        ],
+        [
+          938,
+          1
+        ],
+        [
+          941,
+          1
+        ],
+        [
+          942,
+          1
+        ],
+        [
+          947,
+          1
+        ],
+        [
+          951,
+          1
+        ],
+        [
+          962,
+          1
+        ],
+        [
+          964,
+          2
+        ],
+        [
+          968,
+          2
+        ],
+        [
+          978,
+          2
+        ],
+        [
+          979,
+          2
+        ],
+        [
+          980,
+          2
+        ],
+        [
+          986,
+          2
+        ],
+        [
+          987,
+          2
+        ],
+        [
+          988,
+          2
+        ],
+        [
+          992,
+          2
+        ],
+        [
+          1005,
+          2
+        ],
+        [
+          1008,
+          2
+        ],
+        [
+          1011,
+          2
+        ],
+        [
+          1012,
+          2
+        ],
+        [
+          1015,
+          2
+        ],
+        [
+          1016,
+          2
+        ],
+        [
+          1018,
+          2
+        ],
+        [
+          1020,
+          2
+        ],
+        [
+          1025,
+          2
+        ],
+        [
+          1035,
+          2
+        ],
+        [
+          1041,
+          2
+        ],
+        [
+          1048,
+          2
+        ],
+        [
+          1051,
+          2
+        ],
+        [
+          1052,
+          2
+        ],
+        [
+          1053,
+          2
+        ],
+        [
+          1055,
+          2
+        ],
+        [
+          1057,
+          2
+        ],
+        [
+          1059,
+          2
+        ],
+        [
+          1061,
+          2
+        ],
+        [
+          1064,
+          2
+        ],
+        [
+          1070,
+          2
+        ],
+        [
+          1073,
+          2
+        ],
+        [
+          1075,
+          2
+        ],
+        [
+          1077,
+          2
+        ],
+        [
+          1079,
+          2
+        ],
+        [
+          1080,
+          2
+        ],
+        [
+          1082,
+          2
+        ],
+        [
+          1087,
+          2
+        ],
+        [
+          1089,
+          2
+        ],
+        [
+          1091,
+          2
+        ],
+        [
+          1092,
+          2
+        ],
+        [
+          1095,
+          2
+        ],
+        [
+          1096,
+          2
+        ],
+        [
+          1097,
+          2
+        ],
+        [
+          1099,
+          2
+        ],
+        [
+          1107,
+          2
+        ],
+        [
+          1109,
+          2
+        ],
+        [
+          1112,
+          2
+        ],
+        [
+          1113,
+          2
+        ],
+        [
+          1114,
+          2
+        ],
+        [
+          1115,
+          2
+        ],
+        [
+          1122,
+          2
+        ],
+        [
+          1125,
+          2
+        ],
+        [
+          1127,
+          2
+        ],
+        [
+          1137,
+          2
+        ],
+        [
+          1147,
+          2
+        ],
+        [
+          1149,
+          2
+        ],
+        [
+          1151,
+          2
+        ],
+        [
+          1153,
+          2
+        ],
+        [
+          1162,
+          2
+        ],
+        [
+          1163,
+          2
+        ],
+        [
+          1164,
+          2
+        ],
+        [
+          1169,
+          2
+        ],
+        [
+          1172,
+          3
+        ],
+        [
+          1174,
+          3
+        ],
+        [
+          1175,
+          3
+        ],
+        [
+          1177,
+          3
+        ],
+        [
+          1180,
+          3
+        ],
+        [
+          1184,
+          3
+        ],
+        [
+          1189,
+          3
+        ],
+        [
+          1192,
+          3
+        ],
+        [
+          1197,
+          3
+        ],
+        [
+          1201,
+          3
+        ],
+        [
+          1202,
+          3
+        ],
+        [
+          1206,
+          3
+        ],
+        [
+          1208,
+          3
+        ],
+        [
+          1220,
+          4
+        ],
+        [
+          1222,
+          5
+        ]
+      ],
+      "entries": {
+        "R0213": {
+          "class": "own_wins",
+          "at": 784
+        },
+        "R0255": {
+          "class": "own_wins",
+          "at": 964
+        },
+        "R0317": {
+          "class": "own_wins",
+          "at": 1172
+        },
+        "R0330": {
+          "class": "own_wins",
+          "at": 1220
+        },
+        "R0331": {
+          "class": "own_wins",
+          "at": 1222
+        }
+      },
+      "bridges": [],
+      "doors": [
+        {
+          "door": "R0213",
+          "gateway": "R0175",
+          "action": "T2_TECHNICAL",
+          "kind": "door_win",
+          "installed_at": 784,
+          "born_at": 784,
+          "verdict": "right",
+          "carries": 5,
+          "alone": 5
+        }
+      ],
+      "newborns": [
+        {
+          "born_at": 1220,
+          "newborn": "R0330",
+          "action": "ACCOUNT_MANAGER",
+          "pairs": 14,
+          "pair_points": 88720,
+          "gateways": [
+            "R0175"
+          ],
+          "distance": 4,
+          "meets": false,
+          "wins": 108,
+          "wins_above": 1,
+          "nearest_win": 3,
+          "contained_above": 0,
+          "said": {
+            "R0175": null
+          },
+          "listed": {
+            "R0175": false
+          },
+          "above_then": 4,
+          "doors_then": 1,
+          "points": 6400,
+          "cause": "ERROR",
+          "conditions": [
+            {
+              "attr": "customer_tier",
+              "op": "eq",
+              "value": "business"
+            },
+            {
+              "attr": "prior_tickets_30d",
+              "op": "gte",
+              "value": 5
+            },
+            {
+              "attr": "severity",
+              "op": "gte",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "born_at": 1222,
+          "newborn": "R0331",
+          "action": "T2_TECHNICAL",
+          "pairs": 14,
+          "pair_points": 9520,
+          "gateways": [
+            "R0175"
+          ],
+          "distance": 3,
+          "meets": true,
+          "wins": 39,
+          "wins_above": 1,
+          "nearest_win": 2,
+          "contained_above": 0,
+          "said": {
+            "R0175": [
+              "loses_to",
+              "cierra_ciclo"
+            ]
+          },
+          "listed": {
+            "R0175": true
+          },
+          "above_then": 5,
+          "doors_then": 1,
+          "points": 680,
+          "cause": "CONFLICT",
+          "conditions": [
+            {
+              "attr": "product",
+              "op": "eq",
+              "value": "integrations"
+            },
+            {
+              "attr": "channel",
+              "op": "eq",
+              "value": "phone"
+            },
+            {
+              "attr": "off_hours",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "attr": "severity",
+              "op": "neq",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay is the base",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the gateways and the pairs are paths.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "every edge a birth tries has the rule born there on one side",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rules above the gateways only grow",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every newborn of a pair through a gateway reaches one of its gateways, at a distance no shorter than paths.json's path",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "every rule above a gateway is classed once, at a depth of at least one, and every door's edge is classed",
+          "passes": true
+        }
+      ],
+      "added_after_the_first_run": {
+        "answers": {
+          "gateways": [
+            {
+              "rule_id": "R0175",
+              "action": "T1_GENERAL",
+              "born_at": 613,
+              "cause": "ERROR",
+              "listed": 41,
+              "wins": 31,
+              "losses": 10,
+              "by_verdict": {
+                "beats:ok": 31,
+                "loses_to:cierra_ciclo": 10
+              }
+            }
+          ],
+          "doors": [
+            {
+              "rule_id": "R0213",
+              "action": "T2_TECHNICAL",
+              "born_at": 784,
+              "cause": "CONFLICT",
+              "listed": 26,
+              "wins": 17,
+              "losses": 9,
+              "by_verdict": {
+                "beats:ok": 17,
+                "loses_to:cierra_ciclo": 9
+              }
+            }
+          ],
+          "rounds_that_listed_a_gateway": {
+            "beats:cierra_ciclo": 18,
+            "beats:ok": 1,
+            "loses_to:cierra_ciclo": 1,
+            "loses_to:ok": 20
+          },
+          "every_round": {
+            "rounds": 314,
+            "wins": 4783,
+            "losses": 3784,
+            "without_a_loss": 48,
+            "by_verdict": {
+              "beats:cierra_ciclo": 379,
+              "beats:ok": 4404,
+              "loses_to:cierra_ciclo": 526,
+              "loses_to:ok": 3258
+            }
+          }
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "D1",
+      "what": "of the rules born after their run's first gateway, at least half are above a gateway at the run's end",
+      "reading": {
+        "above": 215,
+        "of": 704,
+        "share": {
+          "fraction": "215/704",
+          "value": 0.305398
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "D2",
+      "what": "of the rules above a gateway at the end, at least half entered own_wins",
+      "reading": {
+        "own_wins": 166,
+        "of": 218,
+        "share": {
+          "fraction": "83/109",
+          "value": 0.761468
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "D3",
+      "what": "of the rules above a gateway at the end, at least half are at a depth of two or more",
+      "reading": {
+        "deep": 204,
+        "of": 218,
+        "share": {
+          "fraction": "102/109",
+          "value": 0.93578
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "D4",
+      "what": "of the declared edges from a door into a gateway at the end, at least half are door_win",
+      "reading": {
+        "door_win": 13,
+        "of": 13,
+        "share": {
+          "fraction": "1",
+          "value": 1.0
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "D5",
+      "what": "at least half of the points of the pairs through a gateway are in pairs whose newborn shares no point with any of the pair's gateways",
+      "reading": {
+        "misses": 130420,
+        "of": 202170,
+        "share": {
+          "fraction": "13042/20217",
+          "value": 0.645101
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "D6",
+      "what": "in N r3, of the rules born after its gateway, at least half are above it at the run's end",
+      "reading": {
+        "above": 5,
+        "of": 156,
+        "share": {
+          "fraction": "5/156",
+          "value": 0.032051
+        }
+      },
+      "holds": false
+    }
+  ]
+}
