@@ -8,8 +8,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The scorer's correction during Stage C, Stage C, this record, the banner that
   closes the plan and the indexes** reached it in #240, the pull request this
   record was opened in, merged on 2026-11-14.
-- **The POST-RUN reading of why the final base forgets its corrections** reaches
-  it in #242.
+- **The POST-RUN reading of why the final base forgets its corrections** reached
+  it in #242, merged on 2026-11-14.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -59,11 +59,12 @@ corrected during Stage C.**
 > **[NOTE 2026-11-14] One more record, written after Stage C by code added
 > after it.** [`forgotten.json`](forgotten.json) is the POST-RUN reading of why
 > the final base forgets its corrections.
-> - **It was written from `f15bcae`**, on that reading's branch. Its section
->   below names the commit that carries its expectation.
+> - **It was written from `f15bcae`**, on the branch of #242, which is `2bf3345`
+>   on `main`. Its section below names the commit that carries its expectation.
 > - **Its code digest is `3a4358941b384393`**, not Stage C's, because
->   `corrections/forgotten.py` was added after Stage C. The modules Stage C ran
->   did not change.
+>   `corrections/forgotten.py` was added after Stage C. `main` computes it at
+>   `2bf3345`, and still at the merge of #242. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -422,10 +423,14 @@ or a refused placement takes each one back. This reading asks the records, and
 spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.forgotten`, on
-2026-11-14, from `f15bcae` on a clean tree, on this reading's branch.
-- **The commits.** `c2d180d` carries the reading and its expectation, written
-  before the reading ran. `f15bcae` carries the part added after the first run,
-  which moves no clause. The record was committed alone, as `292f8b6`.
+2026-11-14, from `f15bcae` on a clean tree, on the branch of #242, which is
+`2bf3345` on `main`.
+- **The commits.** `cefaa74` on `main` carries the reading and its expectation,
+  written before the reading ran. `2bf3345` carries the part added after the
+  first run, which moves no clause. The record was committed alone, as
+  `157b509`. On #242's branch they were `c2d180d`, `f15bcae` and `292f8b6`.
+- **Each pair has the same subject, the same tree and the same `git patch-id
+  --stable`.** The GitHub API names #242 behind the three `main` commits.
 - **The record is [`forgotten.json`](forgotten.json).** Its five gates passed in
   all three L runs:
   - the replay is the base;
