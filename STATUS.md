@@ -3249,6 +3249,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        is not the loop that would have run.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why a rule's wins reach the rule it should lose to*.
+     **[NOTE 2026-11-15] Why so many rules sit above the gateway, read POST-RUN:
+     not so many, through few doors.**
+     - **Not so many.** 215 of the 704 rules L's runs bore after their first
+       gateway end above one, and 5 of N r3's 156.
+     - **The doors placed themselves.** All 13 declared edges from a door into a
+       gateway were the door's own answer. In L, 238 of the 267 rounds that
+       listed a gateway put it above their newborn. In L r1 one door, born at the
+       birth after the gateway's, carries all 67 rules above it.
+     - **The paths are long because the rules above accreted on the doors.** 166
+       of L's 218 entered by one of their own declared wins, and 204 sit two
+       steps or more from every gateway.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why so many rules sit above the gateway*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
