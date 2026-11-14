@@ -159,6 +159,27 @@ r3's verdicts. Nor which rule decides a labelled point, or any rule, region or
 edge of any L run but `R0006`.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHO KEEPS THE TICKET, AND WHO TAKES IT
+--------------------------------------------------------------------------
+The first run found the forgotten points mostly never right. About half of the
+reports that bore a rule left their point wrong, nearly always because a rule
+nested inside the correction beat it there by containment. The points taken
+back were lost mostly by an edge, to rules born at conflicts more often than at
+reported errors. So, for every run, this part reads:
+- **the born reports by breadth**: each correction's conditions and points of
+  the space, against whether it left its point right;
+- **the nested reports**: how many nested rules beat the correction, whether
+  the rule that decided the reported case is among them, and the cause that
+  rule was born at;
+- **the last losses**: whether the rules undefeated at the point before held
+  the point's own correction, and how many cases the point had stood right;
+- **the takers against the births**: the causes of the last losses' newborns
+  beside the causes of all births, by run.
+
+It was written after the six clauses above had been read: F2, F4 and F6 hold,
+and F1, F3 and F5 fail. It carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-14, after Stage C. The expectation
@@ -230,6 +251,10 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-14, after Stage C. The expectation in the "
     "module's docstring was written and committed before the reading ran. Not a signed "
     "row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: the born reports by "
+    "breadth, the nested reports' rules, the last losses' targets and spans, and the "
+    "takers' causes beside the births'. No expectation; no clause moves.")
 
 
 def record_path():
@@ -542,6 +567,7 @@ def read_run(record: dict[str, Any], corpus: Sequence, space: Space,
                    and reports_ok},
     ]
     return {"points": out_points, "summary": summarise(out_points, record),
+            "added_after_the_first_run": added(out_points, record, final),
             "labelled_points": len(pts), "labels": n_labels,
             "labelled_arrivals": [arrivals_right, arrivals_n], "gates": gates}
 
@@ -578,6 +604,71 @@ def summarise(points: list[dict[str, Any]], record: dict[str, Any]) -> dict[str,
         "kept_after_a_loss": sum(1 for x in points if x["class"] == KEPT
                                  and any(ev["lost"] for ev in x["events"])),
         "births_by_cause": dict(births_by_cause),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Added after the first run
+# ---------------------------------------------------------------------------
+
+def middle(xs: list[int]) -> int | None:
+    """The lower median, a count and never a fraction."""
+    xs = sorted(xs)
+    return xs[(len(xs) - 1) // 2] if xs else None
+
+
+def added(points: list[dict[str, Any]], record: dict[str, Any],
+          final: PriorityEngine) -> dict[str, Any]:
+    """ADDED AFTER THE FIRST RUN. Who keeps a correction's ticket, and who
+    takes a point back. No expectation."""
+    rules = {r["rule_id"]: r for r in record["rules"]}
+    escs = escalation_at(record)
+    rows = {r["idx"]: r for r in record["records"]}
+
+    def born_cause(rid: str | None) -> str | None:
+        r = rules.get(rid) if rid else None
+        return None if r is None else (escs.get(r["born_at"]) or {}).get("kind")
+
+    born = [b for x in points for b in x["at_born_reports"]]
+    breadth: dict[int, dict[str, int]] = {}
+    for b in born:
+        n = len(rules[b["rule_id"]]["conditions"])
+        side = "right" if b["right"] else "not_right"
+        breadth.setdefault(n, {"right": 0, "not_right": 0})[side] += 1
+    points_of = {side: middle([final.ext[b["rule_id"]].bit_count() for b in born
+                               if b["right"] == want])
+                 for side, want in (("right", True), ("not_right", False))}
+    nested = [b for b in born if b["why"] == NESTED]
+    erred = [(rows.get(b["report"]) or {}).get("engine_rule") for b in nested]
+    taken = [x for x in points if x["class"] == TAKEN_BACK]
+    spans = []
+    own_before = 0
+    for x in taken:
+        loss = x["last_loss"]
+        own = {r["rule_id"] for r in x["reports"] if r["verdict"] == BORN}
+        own_before += bool(set(loss["before"]) & own)
+        gains = [ev["born_at"] for ev in x["events"]
+                 if not ev["lost"] and ev["born_at"] < loss["born_at"]]
+        spans.append(loss["born_at"] - (gains[-1] if gains else x["reports"][0]["idx"]))
+    births = Counter(esc["kind"] for esc in record["escalations"] if esc["verdict"] == BORN)
+    return {
+        "born_reports_by_conditions": {str(n): breadth[n] for n in sorted(breadth)},
+        "median_points_of_the_correction": points_of,
+        "nested_reports": {
+            "reports": len(nested),
+            "beaten_by_several_nested": sum(1 for b in nested if len(b["nested"]) > 1),
+            "erred_is_nested": sum(1 for b in nested if b.get("erred_is_nested")),
+            "erred_born_at": dict(Counter(born_cause(r) for r in erred))},
+        "last_losses": {
+            "taken_back": len(taken),
+            "own_correction_undefeated_before": own_before,
+            "cases_stood_right": {"lower_median": middle(spans),
+                                  "least": min(spans) if spans else None,
+                                  "most": max(spans) if spans else None},
+            "by_cause_and_how": {f"{c}/{h}": n for (c, h), n in sorted(Counter(
+                (x["last_loss"]["cause"], x["last_loss"]["how"]) for x in taken).items())}},
+        "takers_by_cause": dict(Counter(x["last_loss"]["cause"] for x in taken)),
+        "births_by_cause": dict(births),
     }
 
 
@@ -688,6 +779,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": score["_env"].get("git_commit")},
         "surface": "the labelled points of each L run, points of the space read at "
