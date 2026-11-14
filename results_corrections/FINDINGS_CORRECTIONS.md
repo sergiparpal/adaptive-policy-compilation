@@ -6,14 +6,14 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The plan, its package, the signature, Stage A, the smoke runs, the six runs
   and the five at-once sessions** reached `main` in #239, merged on 2026-11-14.
 - **The scorer's correction during Stage C, Stage C, this record, the banner that
-  closes the plan and the indexes** reach it in #240, the pull request this
-  record was opened in.
+  closes the plan and the indexes** reached it in #240, the pull request this
+  record was opened in, merged on 2026-11-14.
 
 Every record names in its `_env` the commit it was written from. All but the
-last were written on #239's branch, and the rebase merge gave each of those
-commits a new hash on `main`. Each pair has the same subject, the same tree and
-the same `git patch-id --stable`: the branch sat on `main` throughout, so the
-rebase moved nothing under it.
+last were written on #239's branch, and the last on #240's. The rebase merge
+gave each of those commits a new hash on `main`. Each pair has the same subject,
+the same tree and the same `git patch-id --stable`: each branch sat on `main`
+throughout, so the rebase moved nothing under it.
 
 | record | written from, on #239's branch | the same commit on `main` | code digest | `git_dirty`, `code_dirty` |
 |---|---|---|---|---|
@@ -31,7 +31,7 @@ rebase moved nothing under it.
 | `loop_l_r3.json` | `f6bf3f0`, N r2's commit | `d9ddc02` | `df7fa48670a7e1ca` | false, false |
 | `atonce_l_r3.json` | `08de8bf`, L r3's commit | `13aa838` | `df7fa48670a7e1ca` | false, false |
 | `loop_n_r3.json` | `7ed362d`, session l_r3's commit | `27b5fc9` | `df7fa48670a7e1ca` | false, false |
-| `score.json` | `9a157db`, the scorer's correction, on this record's branch | named after the merge | `fa4f7a8c91feae8c` | false, false |
+| `score.json` | `9a157db`, the scorer's correction, on #240's branch | `c36164c` | `fa4f7a8c91feae8c` | false, false |
 
 **`git_dirty` and `code_dirty` are false in every record.** Stage A and Stage B
 carry one code digest, `df7fa48670a7e1ca`. The package's code did not change
@@ -47,9 +47,12 @@ corrected during Stage C.**
 - **What it wrote and printed: nothing.** The scorer computes the rows before
   `CR-g`, and prints them only after the record is written. So no verdict and no
   figure of Stage C existed when the function was corrected.
-- **The correction**, `9a157db`, reads every arrival's truth off the corpus
-  labels, `plan.labels()`, the ones the trigger reads. It keeps the cases the
-  run read beside the online figure. No row's statistic reads that function.
+- **The correction**, `c36164c` on `main` (`9a157db` on #240's branch), reads
+  every arrival's truth off the corpus labels, `plan.labels()`, the ones the
+  trigger reads. It keeps the cases the run read beside the online figure. No
+  row's statistic reads that function.
+- **`main` computes `score.json`'s digest at `c36164c`**, and still at the merge
+  of #240: no later commit of #240 changed code the digest reads.
 
 **This record owns every figure in it.**
 
@@ -254,7 +257,8 @@ generation id. The bills are kept outside the tree.
 ## Stage C — the six adjudications
 
 **What was run.** `python3 -m corrections.score`, on 2026-11-14, with
-`PYTHONHASHSEED=0`, from `9a157db` on a clean tree. `CR-g1` to `CR-g3` passed
+`PYTHONHASHSEED=0`, from `9a157db` on a clean tree, on #240's branch: `c36164c`
+on `main`. `CR-g1` to `CR-g3` passed
 again, with the suite green. Nothing was missing: six runs and five sessions. The
 record is [`score.json`](score.json).
 - **What was checked of every run.** Its base, rebuilt, is the run's. Its calls
