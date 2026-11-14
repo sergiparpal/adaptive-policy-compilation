@@ -17,7 +17,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why a rule's wins reach the rule it should lose to**
   reached it in #248, merged on 2026-11-14.
 - **The POST-RUN reading of why so many rules sit above the gateway** reaches it
-  in the pull request it is opened in.
+  in #250.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
