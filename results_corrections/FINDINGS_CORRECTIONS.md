@@ -13,7 +13,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why the first call writes broad corrections** reached
   it in #244, merged on 2026-11-14.
 - **The POST-RUN reading of why the loop's share of the space peaked and fell**
-  reaches it in #246.
+  reached it in #246, merged on 2026-11-14.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -80,11 +80,12 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-14, later still] And a third.** [`fall.json`](fall.json) is the
 > POST-RUN reading of why the loop's share of the space peaked and fell.
-> - **It was written from `a31b396`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `a31b396`**, on the branch of #246, which is `1aa3ca0`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `c7b7a612cafbf0fb`**, because `corrections/fall.py` was
->   added after the readings above. The modules Stage C ran did not change.
+>   added after the readings above. `main` computes it at `1aa3ca0`, and still
+>   at the merge of #246. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -775,10 +776,14 @@ before the last label in every run, and fell, L r2's by a third of the space.
 over the whole space, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.fall`, on 2026-11-14,
-from `a31b396` on a clean tree, on this reading's branch.
-- **The commits.** `67a3f1b` carries the reading and its expectation, written
-  before the reading ran. `a31b396` carries the part added after the first run,
-  which moves no clause. The record was committed alone, as `08f56aa`.
+from `a31b396` on a clean tree, on the branch of #246, which is `1aa3ca0` on
+`main`.
+- **The commits.** `f03b020` on `main` carries the reading and its expectation,
+  written before the reading ran. `1aa3ca0` carries the part added after the
+  first run, which moves no clause. The record was committed alone, as
+  `246c4d4`. On #246's branch they were `67a3f1b`, `a31b396` and `08f56aa`.
+- **Each pair has the same subject, the same tree and the same `git patch-id
+  --stable`.** The GitHub API names #246 behind the three `main` commits.
 - **The record is [`fall.json`](fall.json).** Its five gates passed in all six
   runs:
   - the replay is the base;
