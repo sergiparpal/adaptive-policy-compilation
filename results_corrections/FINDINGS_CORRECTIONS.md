@@ -15,7 +15,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why the loop's share of the space peaked and fell**
   reached it in #246, merged on 2026-11-14.
 - **The POST-RUN reading of why a rule's wins reach the rule it should lose to**
-  reaches it in #248.
+  reached it in #248, merged on 2026-11-14.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -91,11 +91,12 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-14, last] And a fourth.** [`paths.json`](paths.json) is the
 > POST-RUN reading of why a rule's wins reach the rule it should lose to.
-> - **It was written from `19201ed`**, on that reading's branch: the commit that
->   corrects a count of the part added after its first run. Its section below
->   names the commits before it.
+> - **It was written from `19201ed`**, on the branch of #248, which is `d58335c`
+>   on `main`: the commit that corrects a count of the part added after its
+>   first run. Its section below names the commits before it.
 > - **Its code digest is `e24481dd56c2b8ba`**, because `corrections/paths.py` was
->   added after the readings above. The modules Stage C ran did not change.
+>   added after the readings above. `main` computes it at `d58335c`, and still
+>   at the merge of #248. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1002,16 +1003,21 @@ through rules wrongly above `SECURITY_INCIDENT`'s, or through rules that do not
 match the contested points. This reading asks the records, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.paths`, on
-2026-11-14, from `19201ed` on a clean tree, on this reading's branch.
-- **The commits.** `f17fb2d` carries the reading and its expectation, written
-  before the reading ran. `5769c4b` carries the part added after the first run,
-  which moves no clause.
-- **`19201ed` corrects a count of that part.** Its list of the rules above the
+2026-11-14, from `19201ed` on a clean tree, on the branch of #248, which is
+`d58335c` on `main`.
+- **The commits.** `5c1ac9c` on `main` carries the reading and its expectation,
+  written before the reading ran. `63a44d1` carries the part added after the
+  first run, which moves no clause.
+- **`d58335c` corrects a count of that part.** Its list of the rules above the
   even crossings had added a pair's points once per crossing, and so gave one rule
   more points than its pairs held. The first run's record was not committed, and
   no clause reads the list.
-- **The record was committed alone**, as `c80cd5d`. It is
-  [`paths.json`](paths.json). Its six gates passed in all six runs:
+- **The record was committed alone**, as `b1b68e6`. On #248's branch the four
+  commits were `f17fb2d`, `5769c4b`, `19201ed` and `c80cd5d`. Each pair has the
+  same subject, the same tree and the same `git patch-id --stable`, and the
+  GitHub API names #248 behind the four `main` commits.
+- **The record is [`paths.json`](paths.json).** Its six gates passed in all six
+  runs:
   - the replay is the base;
   - the pairs are `fall.json`'s: in every run their points sum to `beside`'s
     below_refused;
