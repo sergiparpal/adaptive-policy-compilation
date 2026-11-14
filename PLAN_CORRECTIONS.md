@@ -1,5 +1,32 @@
 # PLAN_CORRECTIONS — the learning regime: a report that carries the true queue, under level 1's catalogue, beside the same loop without it
 
+> **[CLOSED 2026-11-14] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-12, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-14.
+> - **`CR-a`, `CR-c` and `CR-d` hold.**
+> - **`CR-b` and `CR-f` are refuted, and `CR-e` is refuted, thinly.**
+> - `CR-g` is reported.
+>
+> **The figures are owned by
+> [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md)**,
+> and no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Three things went otherwise than this file says.** The findings give each.
+> - **The scorer was corrected once, during Stage C.** Its first launch stopped
+>   in a reading of `CR-g`, on a run the cap had stopped, before it wrote or
+>   printed anything. No row's statistic reads the function corrected.
+> - **L escalated more than §1 guessed**: 348 to 377 times a run, against 150 to
+>   300. No L run reached the cap, and every N run did.
+> - **The runs and the asks took a day and a half**, against §1's three to four
+>   days. §1's money held: the six runs were billed within its two to four
+>   dollars, and the asks under its dollar.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted and completed, and it has been false since 2026-11-12.
+> The line is kept unedited and this banner is its correction. The banner
+> touches no line of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-12, completed before signature the same
 day, and unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
 and may not sign it. **Nothing runs and no record is written until Sergi has
