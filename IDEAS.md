@@ -531,6 +531,21 @@ learner of the labels alone matched the loop. What that leaves:
   decide about half of their own labelled tickets right. Whether a later rule, a
   declared edge or a refused placement takes each one back. Free on the
   records, ticket by ticket.
+  **[NOTE 2026-11-14] Read POST-RUN: the loop mostly never kept them.** About
+  half the forgotten corrections were born and never decided their own ticket.
+  A rule nested inside the correction kept it by containment, mostly the rule
+  that had erred there, and v1c's round never lists a nested rule. A quarter
+  were never born, mostly unplaced, and a quarter were taken back, mostly by an
+  edge from a rule born at a conflict, and not seen again. So the next levers
+  are a loop that checks a correction decides its own ticket after its birth,
+  and a round that lists the rule that decided the reported case. Calls.
+  `FINDINGS_CORRECTIONS.md`, *Why the final base forgets its corrections*.
+- **Why the first call drafts a correction broader than the rule that erred.**
+  It is blind, and told only that the engine decided the ticket and erred. Its
+  reasoning is in the records. Free on the records.
+- **Why the rules born at conflicts were placed above the corrections.** They
+  were written without a label, and took most of the points taken back. Their
+  placement answers are in the records. Free on the records.
 - **Why the loop's share of the space peaked and fell.** In every L run it
   peaked well before the last label, and in run 2 it fell by about a third of
   the space. `corrections/score.py`'s `base_after` rebuilds the base after any
