@@ -16,6 +16,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   reached it in #246, merged on 2026-11-14.
 - **The POST-RUN reading of why a rule's wins reach the rule it should lose to**
   reached it in #248, merged on 2026-11-14.
+- **The POST-RUN reading of why so many rules sit above the gateway** reaches it
+  in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -97,6 +99,14 @@ corrected during Stage C.**
 > - **Its code digest is `e24481dd56c2b8ba`**, because `corrections/paths.py` was
 >   added after the readings above. `main` computes it at `d58335c`, and still
 >   at the merge of #248. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15] And a fifth.** [`gateway.json`](gateway.json) is the
+> POST-RUN reading of why so many rules sit above the gateway.
+> - **It was written from `bcf20d8`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `1757cc92488e3bec`**, because `corrections/gateway.py`
+>   was added after the readings above. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1186,8 +1196,215 @@ refused right edge had found. `K2` held on 4,111 points.
 2. **Why so many rules sit above the gateway.** The reading does not say which
    declarations put them there, nor why the paths run so long. Free on the
    records.
+   **[NOTE 2026-11-15] Read POST-RUN, below: not so many.** About three in ten
+   of the rules L bore after the gateway end above it, through few doors, which
+   mostly placed themselves above it. The paths are long because the rules above
+   accreted on those doors, mostly by their own wins. *Why so many rules sit
+   above the gateway*.
 3. **Whether a first call that kept `H03`'s tier would have opened no gateway.**
    A plan with calls.
+
+## Why so many rules sit above the gateway — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** It found the
+paths of the refused right sides entering `SECURITY_INCIDENT`'s rule through a
+rule nested in the keyword's region, born at a reported ticket of `H03`. Its
+*What it does not settle*, item 2, left which declarations put the rules of
+other queues above that rule, and why the paths to it run so long. This reading
+asks the records, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.gateway`, on
+2026-11-15 in local time, from `bcf20d8` on a clean tree, on this reading's
+branch.
+- **The commits.** `b7512e3` carries the reading and its expectation, written
+  before the reading ran. `bcf20d8` carries the part added after the first run,
+  which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `51a3039`. It is
+  [`gateway.json`](gateway.json). Its six gates passed in all six runs:
+  - the replay is the base;
+  - the gateways and the pairs are `paths.json`'s, and each gateway lies inside
+    the keyword's region;
+  - every edge a birth tries has the rule born there on one side;
+  - the rules above the gateways only grow;
+  - every newborn of a pair through a gateway reaches one of its gateways, at a
+    distance `paths.json`'s shortest path allows;
+  - every rule above a gateway is classed once, at a depth of at least one, and
+    every door's edge is classed.
+
+**What it reads.**
+- **A run's gateways** are the rules `paths.json` gives above its even
+  crossings, born at a ticket of `H03`, of a queue other than
+  `SECURITY_INCIDENT`: `R0061` in L r1, `R0048` and `R0120` in L r2, `R0016` in
+  L r3 and `R0175` in N r3. N r1 and N r2 have none.
+- **The base is replayed in birth order.** After each birth the reading takes
+  the rules that reach a gateway born so far, by containment and by declared
+  edges.
+  - **A door** is a rule one step above a gateway: nested inside it, or
+    declared above it.
+  - **A rule's depth** is the fewest steps from it to a gateway.
+- **Each rule above a gateway entered at one birth**, the first after which it
+  reaches one:
+  - *own_wins*, at its own birth, through one of its declared wins;
+  - *containment*, at its own birth, through a rule that contains it;
+  - *brought*, at a later birth, through the rule born then;
+  - *at_gateway*, at a gateway's birth.
+- **The pairs through a gateway** are `paths.json`'s pairs whose even crossings
+  run from a gateway. Their newborns are read right after their births, and
+  each pair is weighed by its points, as `paths.json` weighs it.
+
+### 1. Not so many
+
+| run | gateways | rules born after the first | above a gateway at the end | rules above, in all | doors | two steps or more away |
+|---|---|---|---|---|---|---|
+| L r1 | `R0061` | 221 | 66 | 67 | 1 | 66 |
+| L r2 | `R0048`, `R0120` | 226 | 100 | 102 | 5 | 97 |
+| L r3 | `R0016` | 257 | 49 | 49 | 8 | 41 |
+| N r3 | `R0175` | 156 | 5 | 5 | 1 | 4 |
+
+- **About three in ten of the rules L bore after its first gateway end above
+  one** (D1 fails): 215 of 704. In N r3, five of 156 do (D6 fails).
+- **Few, and enough.** Each newborn of a pair through a gateway reached it at
+  its birth through one to seven of its declared wins, of the 1 to 108 it
+  declared. None reached it through a rule that contains it. At those births,
+  4 to 94 rules sat above a gateway.
+
+### 2. The doors placed themselves
+
+| run | rounds that listed a gateway | it above the newborn, installed | it above, refused for a cycle | the newborn above it, installed | the newborn above, refused for a cycle |
+|---|---|---|---|---|---|
+| L r1 | 78 | 64 | 9 | 1 | 4 |
+| L r2 | 82 | 33 | 35 | 5 | 9 |
+| L r3 | 107 | 85 | 12 | 7 | 3 |
+| N r3 | 40 | 20 | 1 | 1 | 18 |
+
+A round that listed both of L r2's gateways is counted once for each.
+
+- **Every declared edge from a door into a gateway was the door's own answer**
+  (D4 holds): 13 of 13. Three more doors are nested inside a gateway: `R0016`
+  and `R0265` in L r2, and `R0210` in L r3.
+- **No gateway's answer put a rule above it.** The five gateways' answers
+  declared 82 wins and 12 losses, and the engine refused the 12 for closing
+  cycles.
+- **The rounds that listed a gateway mostly put it above their newborn.** In L,
+  238 of the 267 declared the newborn below the gateway, and 29 above it. 13 of
+  those 29 were installed: the doors. Over every round, L's answers declared
+  their newborn below 8,035 of the 19,921 rules they placed.
+- **L r1 has one door.** `R0062`, `customer_tier = business ∧
+  prior_tickets_30d ≥ 20 → ACCOUNT_MANAGER`, was born at a conflict at the birth
+  after `R0061`'s.
+  - **Its answer declared it above 19 rules**, `R0061` among them, and below 9,
+    all refused for cycles.
+  - **Every one of the 67 rules above `R0061` reaches it only through `R0062`.**
+  - **The policy's verdict on the edge is even.** The 200 points the two rules
+    share are `SECURITY_INCIDENT`'s, by `H01`.
+- **In L r2, `R0051` carries nearly all.** `severity = 4 ∧ customer_tier = pro ∧
+  prior_tickets_30d ≥ 15 → T1_GENERAL` was born at a reported error, three
+  births after `R0048`.
+  - **101 of the 102 rules above a gateway reach it**, itself included, and 63
+    reach a gateway only through it.
+  - **The policy calls its edge wrong.** The 240 points it shares with `R0048`
+    are `T2_TECHNICAL`'s, by `H03`.
+- **N r3's one door is right by the policy.** `R0213`, `product = api ∧
+  customer_tier = free ∧ severity = 4 ∧ prior_tickets_30d ≥ 10 → T2_TECHNICAL`,
+  shares 440 points with `R0175`. All are `T2_TECHNICAL`'s, by `H03`, where
+  `R0175` names `T1_GENERAL`. All five rules above `R0175` reach it only
+  through `R0213`.
+
+### 3. The rules above entered by their own wins
+
+| run | own_wins | containment | brought | at_gateway |
+|---|---|---|---|---|
+| L r1 | 52 | 10 | 5 | 0 |
+| L r2 | 74 | 23 | 5 | 0 |
+| L r3 | 40 | 5 | 4 | 0 |
+| N r3 | 5 | 0 | 0 | 0 |
+
+- **Most entered at their own birth, by one of their declared wins** (D2 holds,
+  the bet): 166 of L's 218. 38 entered through a rule that contains them, and
+  14 were brought up by a later rule. None entered at a gateway's birth.
+- **Some against their own answer.** 56 of the 238 declarations in L that put a
+  gateway above the newborn were refused. The newborn's wins, installed first,
+  already reached the gateway.
+
+### 4. Why the paths run long
+
+| run | one step | two | three | four | five | six |
+|---|---|---|---|---|---|---|
+| L r1 | | 27,670 | 42,600 | | | |
+| L r2 | | 6,920 | 45,160 | 60,200 | 15,000 | 3,780 |
+| L r3 | 840 | | | | | |
+| N r3 | | | 9,520 | 88,720 | | |
+
+The pair-points through a gateway, by the newborn's distance to it.
+
+- **Nearly every rule above sits two steps or more from every gateway** (D3
+  holds): 204 of L's 218, and up to five.
+- **The rules above accreted on few doors**, most of them through a win over a
+  rule already above. A newborn's nearest win above a gateway was mostly two
+  steps or more from it, so most of the newborns' paths run three steps or more
+  to it.
+
+### 5. The newborns mostly miss their gateway
+
+- **On most pair-points the newborn shares no point with its gateways** (D5
+  holds): 130,420 of L's 202,170.
+  - **L r2 carries it**, with 108,420 of 131,060.
+  - **In L r1 most pair-points are in pairs whose newborn meets `R0061`**:
+    48,270 of the 70,270.
+- **An edge between two rules that share no point is never installed.** So such
+  a newborn reaches its gateway only through rules that meet both.
+- **Of the 17 newborns in L that meet a gateway:**
+  - **10 are of `T2_TECHNICAL`, the gateway's own queue.** v1c lists only rules
+    of other queues, so their rounds never listed the gateway.
+  - **6 were listed it and declared themselves below it.** The engine refused
+    that too, for the same cycle: `R0214`, `R0199` and `R0274` in L r1, and
+    `R0095`, `R0068` and `R0073` in L r2.
+  - **One, L r3's `R0090`, declared itself above it**, and is one of its doors.
+
+### The expectation
+
+Written in `corrections/gateway.py`'s docstring and committed before the reading
+ran. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| D1, of the rules born after their run's first gateway, at least half above one at the end | 215 of 704 | fails |
+| D2, of the rules above a gateway at the end, at least half entered own_wins | 166 of 218 | **holds** |
+| D3, of those, at least half at a depth of two or more | 204 of 218 | **holds** |
+| D4, of the declared edges from a door into a gateway, at least half door_win | 13 of 13 | **holds** |
+| D5, at least half of the pair-points in pairs whose newborn shares no point with its gateways | 130,420 of 202,170 | **holds** |
+| D6, in N r3, of the rules born after its gateway, at least half above it at the end | 5 of 156 | fails |
+
+**D2, D3, D4 and D5 hold, and D1 and D6 fail.** The bet D2 held. D5, trusted
+least, held on L r2's pair-points: on L r1's alone it would have failed. D1 was
+the question's own premise, and it failed: the rules above the gateway are not
+many.
+
+### What it says
+
+- **The rules above the gateway are few, and the newborns' wins find them.**
+  About three in ten of the rules L bore after its gateways end above one, and
+  five of 156 in N r3. Each newborn of a refused right side reached a gateway
+  through a few of its declared wins.
+- **The declared doors put themselves above the gateway, against what most
+  answers did.** In L, nine answers in ten that were listed a gateway put it
+  above their newborn. The few whose rule was installed above it are the
+  declared doors. In L r1 one door, born at the next birth, carries every rule
+  above.
+- **The paths run long because the rules above accreted on few doors**, mostly
+  through a win over a rule already above. So nearly every rule above is two
+  steps or more from the gateway.
+- **The newborns mostly miss the gateway.** Those that meet it are mostly of its
+  queue, and v1c never lists it to them. Six of the seven listed it put it above
+  themselves, and their wins had already put them above it.
+
+### What it does not settle
+
+1. **Why the doors declared themselves above the gateway**, where nine answers
+   in ten in L put it above. Their reasoning is in the records. Free.
+2. **How much of the fall the doors carry.** A replay of the same births without
+   the doors' edges is free on the records. It is not the loop that would have
+   run.
 
 ---
 
@@ -1208,3 +1425,5 @@ refused right edge had found. `K2` held on 4,111 points.
   and fell.
 - [`paths.json`](paths.json): POST-RUN, why a rule's wins reach the rule it
   should lose to.
+- [`gateway.json`](gateway.json): POST-RUN, why so many rules sit above the
+  gateway.
