@@ -22,6 +22,9 @@ Also pinned:
 - the six gates on that run, and each failing on its own;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on the same run with its rounds' lists: what an
+answer declared, the gateway's and the doors' answers, every round that listed
+the gateway by what its answer declared of it, and every round.
 """
 
 from __future__ import annotations
@@ -329,6 +332,47 @@ class TestTheGates(unittest.TestCase):
             got = read()
         self.assertFalse(gate(got, 6))
         self.assertTrue(all(gate(got, k) for k in (1, 2, 3, 4, 5)))
+
+
+class TestWhatTheAnswersDeclared(unittest.TestCase):
+    """Added after the first run."""
+
+    @classmethod
+    def setUpClass(cls):
+        births = list(RUN["births"])
+        births[11] = (ERR, r_("M", 11, BI, [c_("language", "eq", "pt")], beats=["W"],
+                              refused=["U", "X"]))
+        run = {**RUN, "births": births, "edges": RUN["edges"] + [(11, "X", "M", EDGE_CYCLE)]}
+        cls.got = read(record(run, listed={4: ["P"], 5: ["X"], 9: ["W", "T", "X"],
+                                           10: ["U", "W"], 11: ["U", "X"]}))
+        cls.answers = cls.got["added_after_the_first_run"]["answers"]
+
+    def test_the_sides_of_one_answer(self):
+        rule = r_("M", 11, BI, [], beats=["W"], loses_to=["T"], refused=["U", "X"])
+        self.assertEqual(GW.sides(rule), {"wins": 1, "losses": 3,
+                                          "by_verdict": {"beats:ok": 1, "loses_to:ok": 1,
+                                                         f"loses_to:{EDGE_CYCLE}": 2}})
+
+    def test_the_gateway_s_and_the_doors_answers(self):
+        self.assertEqual([(a["rule_id"], a["listed"], a["wins"], a["losses"])
+                          for a in self.answers["gateways"]], [("X", 1, 0, 1)])
+        self.assertEqual([(a["rule_id"], a["listed"], a["wins"], a["losses"])
+                          for a in self.answers["doors"]],
+                         [("P", 0, 0, 0), ("Y", 0, 0, 0), ("W", 1, 1, 0)])
+
+    def test_every_round_that_listed_the_gateway(self):
+        self.assertEqual(self.answers["rounds_that_listed_a_gateway"],
+                         {"beats:ok": 1, f"loses_to:{EDGE_CYCLE}": 1, "none:none": 1})
+
+    def test_every_round(self):
+        self.assertEqual(self.answers["every_round"],
+                         {"rounds": 5, "wins": 4, "losses": 5, "without_a_loss": 1,
+                          "by_verdict": {"beats:ok": 4, "loses_to:ok": 2,
+                                         f"loses_to:{EDGE_CYCLE}": 3}})
+
+    def test_it_moves_nothing_else(self):
+        self.assertEqual([g["passes"] for g in self.got["gates"]], [True] * 6)
+        self.assertEqual(self.got["summary"]["entries"], read()["summary"]["entries"])
 
 
 def summary(born_after=100, above_born_after=50, above=100, own=50, deep=50,
