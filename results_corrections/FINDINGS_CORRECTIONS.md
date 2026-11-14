@@ -10,8 +10,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   record was opened in, merged on 2026-11-14.
 - **The POST-RUN reading of why the final base forgets its corrections** reached
   it in #242, merged on 2026-11-14.
-- **The POST-RUN reading of why the first call writes broad corrections** reaches
-  it in #244.
+- **The POST-RUN reading of why the first call writes broad corrections** reached
+  it in #244, merged on 2026-11-14.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -70,10 +70,11 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-14, later] And one more.** [`broad.json`](broad.json) is the
 > POST-RUN reading of why the first call writes broad corrections.
-> - **It was written from `44ea2c9`**, on that reading's branch, the commit that
->   carries its codebook and its expectation.
+> - **It was written from `44ea2c9`**, on the branch of #244, which is `147321b`
+>   on `main`: the commit that carries its codebook and its expectation.
 > - **Its code digest is `a26162430c936c46`**, because `corrections/broad.py` was
->   added after the reading above. The modules Stage C ran did not change.
+>   added after the reading above. `main` computes it at `147321b`, and still at
+>   the merge of #244. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -610,9 +611,18 @@ correction broader than the rule that erred. This reading asks the records, and
 spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.broad`, on
-2026-11-14, from `44ea2c9` on a clean tree, on this reading's branch. That
-commit carries the reading's codebook and its expectation, written before the
-reading ran on runs 2 and 3. The record was committed alone, as `7bf3896`.
+2026-11-14, from `44ea2c9` on a clean tree, on the branch of #244, which is
+`147321b` on `main`.
+- **The commits.** `147321b` on `main` carries the reading's codebook and its
+  expectation, written before the reading ran on runs 2 and 3. The record was
+  committed alone, as `9c84f6b`. On #244's branch they were `44ea2c9` and
+  `7bf3896`. #244 was opened on top of #243 and rebased onto `main` once #243
+  merged, which made them `50d70e0` and `93a8b13` before the merge.
+- **`44ea2c9`, `50d70e0` and `147321b` have the same subject, the same tree and
+  the same `git patch-id --stable`, and so do `7bf3896`, `93a8b13` and
+  `9c84f6b`.** `main` after #243's merge had the tree of #243's head, so the
+  rebase moved nothing under them. The GitHub API names #244 behind both `main`
+  commits.
 - **The record is [`broad.json`](broad.json).** Its four gates passed:
   - the reading above's gates pass, and its reading of each born report is the
     one read here;
