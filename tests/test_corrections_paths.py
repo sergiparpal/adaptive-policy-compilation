@@ -18,6 +18,12 @@ Also pinned:
 - the five gates on those runs, and each failing on its own;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on a fourth run where the rule above the keyword's
+rule is nested in it and even by the policy:
+- the cut with the even crossings taken out too, and the rules above them;
+- the engine that refuses only where the cycle is: it keeps a refusal whose
+  cycle is at a point the edge decides, installs one whose cycle is at none,
+  and gate 6.
 """
 
 from __future__ import annotations
@@ -87,6 +93,20 @@ RUN_B = {
     ],
     "edges": [(3, "N", "X"), (3, "U", "N", EDGE_CYCLE), (3, "T", "N")],
     "truth": TRUTH_AB, "final": 107520,
+}
+# Run D: the keyword's low-severity tickets of small accounts are T2's, as at H03.
+SMALL = SPACE.mask["customer_tier"]["free"] | SPACE.mask["customer_tier"]["pro"]
+LOW = SPACE.mask["severity"][3] | SPACE.mask["severity"][4]
+TRUTH_D = {T2: KW & SMALL & LOW, SEC: KW & ~(SMALL & LOW), T1: NOKW}
+RUN_D = {
+    "births": [
+        (IMP, r_("U", 0, SEC, [KEYWORD])),
+        (IMP, r_("T", 1, T1, [NO_KEYWORD])),
+        (ERR, r_("X", 2, T2, [KEYWORD, c_("severity", "gte", 3)])),
+        (ERR, r_("N", 3, BI, [BILLING], beats=["X"], loses_to=["T"], refused=["U"])),
+    ],
+    "edges": [(3, "N", "X"), (3, "U", "N", EDGE_CYCLE), (3, "T", "N")],
+    "truth": TRUTH_D, "final": 107520,
 }
 RUN_C = {
     "births": [
@@ -185,9 +205,9 @@ class TestTheClasses(unittest.TestCase):
     def setUpClass(cls):
         cls.a, cls.b, cls.c = read(RUN_A), read(RUN_B), read(RUN_C)
 
-    def test_all_five_gates_pass_on_the_three_runs(self):
+    def test_all_six_gates_pass_on_the_three_runs(self):
         for got in (self.a, self.b, self.c):
-            self.assertEqual([g["passes"] for g in got["gates"]], [True] * 5)
+            self.assertEqual([g["passes"] for g in got["gates"]], [True] * 6)
 
     def test_run_a_a_rule_declared_wrongly_above(self):
         s = self.a["summary"]
@@ -266,6 +286,70 @@ class TestTheGates(unittest.TestCase):
             got = read(RUN_B)
         self.assertFalse(gate(got, 5))
         self.assertTrue(gate(got, 1) and gate(got, 2) and gate(got, 3) and gate(got, 4))
+
+
+class TestTheEvenCrossings(unittest.TestCase):
+    """Added after the first run."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.d = read(RUN_D)
+
+    def test_run_d_is_right_and_cut_by_its_even_crossing(self):
+        s, a = self.d["summary"], self.d["added_after_the_first_run"]
+        self.assertEqual([g["passes"] for g in self.d["gates"]], [True] * 6)
+        self.assertEqual((s["pairs"], s["points"]), (1, 6720))
+        self.assertEqual(s["by_class"], {G.WRONG_DECLARED: 0, G.WRONG_NESTED: 0,
+                                         G.RIGHT: 6720})
+        self.assertEqual(s["crossings"], {"nested:even": 1})
+        self.assertEqual((a["even_cut"], a["stands_on_right"]), (6720, 0))
+        self.assertEqual([(r["rule_id"], r["action"], r["cause"], r["points"])
+                          for r in a["rules_above_even"]], [("X", T2, ERR, 6720)])
+
+    def test_a_right_crossing_is_not_an_even_one(self):
+        a = read(RUN_C)["added_after_the_first_run"]
+        self.assertEqual((a["even_cut"], a["stands_on_right"], a["rules_above_even"]),
+                         (0, 5040, []))
+        a = read(RUN_A)["added_after_the_first_run"]
+        self.assertEqual((a["even_cut"], a["stands_on_right"]), (0, 0))
+
+
+class TestTheEngineThatRefusesOnlyWhereTheCycleIs(unittest.TestCase):
+    """Added after the first run."""
+
+    def test_it_keeps_a_refusal_whose_cycle_is_at_a_point_the_edge_decides(self):
+        w = read(RUN_D)["added_after_the_first_run"]["where"]
+        self.assertEqual((w["engine"]["final"]["right"], w["engine"]["refused_for_a_cycle"]),
+                         (107520, 1))
+        self.assertEqual(w["record"]["final"]["right"], 107520)
+
+    def test_it_installs_one_whose_cycle_is_at_no_such_point(self):
+        """Run C's cycle runs through a rule of severity 3 or more, and the pair
+        shares only severities 1 and 2: the edge installed, U decides the
+        pair's points, and X2 its chat tickets."""
+        w = read(RUN_C)["added_after_the_first_run"]["where"]
+        self.assertEqual((w["engine"]["final"]["right"], w["engine"]["refused_for_a_cycle"]),
+                         (94080 + 5040 + 1680, 0))
+        self.assertEqual(w["record"]["final"]["right"], 94080)
+
+    def test_try_edge_where_against_try_edge(self):
+        engine = PriorityEngine(space=SPACE)
+        rec = record(RUN_C)
+        born, by_birth = erb.births(rec), erb.edges_by_birth(rec)
+        for idx in sorted(born):
+            engine.add(rule_from(born[idx]), born_at=idx, keep_id=True)
+            for e in by_birth.get(idx, []):
+                if (e.winner, e.loser) != ("U", "N"):
+                    self.assertEqual(G.try_edge_where(engine, e.winner, e.loser), EDGE_OK)
+        self.assertEqual(engine.try_edge("U", "N"), EDGE_CYCLE)
+        self.assertEqual(G.try_edge_where(engine, "U", "N"), EDGE_OK)
+        self.assertIn("U", engine.decl_below["N"])
+        self.assertEqual(G.try_edge_where(engine, "U", "U"), "auto_referencia")
+
+    def test_gate_6_fails_when_the_replay_s_masks_are_not_the_engine_s(self):
+        with mock.patch.object(G.brows, "undefeated_masks", return_value={}):
+            got = read(RUN_C)
+        self.assertFalse(gate(got, 6))
 
 
 def summary(points=100, declared=25, nested=25, somewhere=50, distinct=10, at_error=5,

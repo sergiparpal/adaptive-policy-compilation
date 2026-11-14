@@ -132,6 +132,38 @@ refused a loss to, any crossing, or any verdict of the policy on an edge of the
 base.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE EVEN CROSSINGS, AND AN ENGINE THAT REFUSES
+ONLY WHERE THE CYCLE IS
+--------------------------------------------------------------------------
+The first run found almost every pair right, and almost every cycle nowhere.
+Read by hand, the largest pairs' paths entered `SECURITY_INCIDENT`'s rule
+through a rule of `T2_TECHNICAL` nested inside it. The verdict on that crossing
+is even: the nested rule matches as many of `SECURITY_INCIDENT`'s points as of
+its own queue's. So this part reads:
+- **the even crossings.** Each pair's paths are cut again, with the wrong and the
+  even crossings taken out. The pairs of class right that this cuts are read
+  apart. Per run, the distinct rules above those even crossings are given with
+  their conditions, the cause of their birth and the policy's rule for the
+  ticket they were born at.
+- **an engine that refuses only where the cycle is.** The same births and the
+  same declarations, in the record's order, are replayed with an edge refused for
+  a cycle only when the cycle runs through rules that all match some point both
+  of its rules match. That is a point the edge decides. Such an engine leaves a
+  cycle through rules that miss every such point in the base, where no point
+  sees it. The replay gives the peak, the final share, the fall, the recall of
+  `SECURITY_INCIDENT`, the conflicts and the edges refused, beside the record's
+  engine. It is not the loop that would have run: a base ordered otherwise
+  decides the arrivals otherwise, and would have escalated other cases.
+
+It adds gate 6. The replayed engine leaves no point that some rule matches with
+no rule undefeated. Every 997th point is decided by its masks as
+`PriorityEngine.decide` decides it, and its masks are
+`blind.rows.undefeated_masks`' over its final base. Both parts were tried on
+the records in a scratch script before they were written here. They were
+written after the five clauses above had been read: K2 holds, and K1, K3, K4 and
+K5 fail. They carry no expectation and move no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-14, after `corrections/fall.py`. The
@@ -139,7 +171,7 @@ expectation above was written and committed before the reading ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. Zero API
 calls.
 
-Usage:  python3 -m corrections.paths --dry-run   # gates 1 to 5; writes nothing
+Usage:  python3 -m corrections.paths --dry-run   # gates 1 to 6; writes nothing
         PYTHONHASHSEED=0 python3 -m corrections.paths
 """
 
@@ -160,7 +192,9 @@ from edges import rebuild as erb
 from fidelity.replay import rule_from
 from manual import instrument as MI
 from reuse import structure as st
-from rung2.engine2 import EDGE_CYCLE, EDGE_OK, PriorityEngine, Space
+from blind import rows as brows
+from rung2.engine2 import (EDGE_CONTRADICTS, EDGE_CYCLE, EDGE_DISJOINT, EDGE_OK, EDGE_SELF,
+                           EDGE_UNKNOWN, PriorityEngine, Space, strictly_below)
 
 from . import fall as fl
 from . import forgotten as fg
@@ -188,6 +222,14 @@ PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-14, after corrections/fall.py. The expectation "
     "in the module's docstring was written and committed before the reading ran. Not a "
     "signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its five clauses were read: each pair cut again with "
+    "the wrong and the even crossings taken out, the rules above the even crossings, and the "
+    "same births replayed with an engine that refuses an edge only where its cycle runs "
+    "through rules that all match a point the edge decides. Both were tried in a scratch "
+    "script first. No expectation; no clause moves.")
+# Gate 6 reads every STRIDE-th point of the replayed engine's final base.
+STRIDE = fl.STRIDE
 
 share, frac = fg.share, fg.frac
 
@@ -328,6 +370,9 @@ def analyse(engine: PriorityEngine, n: str, u: str, at: int, action: dict[str, s
         cls = WRONG_NESTED
     else:
         cls = RIGHT
+    not_right = {(c["upper"], c["lower"]) for c in crossings
+                 if c["verdict"] != RIGHT_VERDICT}
+    even_cut = cls == RIGHT and u not in forward(engine, n, not_right)
     shared = engine.ext[n] & engine.ext[u]
     touched = 0
     for x in rules:
@@ -337,6 +382,7 @@ def analyse(engine: PriorityEngine, n: str, u: str, at: int, action: dict[str, s
             "shortest": shortest(engine, n, u, nodes), "path_rules": len(rules),
             "touched": touched.bit_count(),
             "own_crossing": any(c["upper"] == n for c in crossings),
+            "even_cut": even_cut,
             "crossings": crossings,
             "reaches": u in reach_n,
             "beaters_miss": not any(engine.ext[b] & at for b in engine.beats_me(u)),
@@ -381,6 +427,67 @@ def trace(record: dict[str, Any], space: Space, truth: dict[str, int],
                 pairs.append(got)
     return {"engine": engine, "pairs": pairs, "logged_ok": logged_ok,
             "births_by_cause": dict(Counter(cause_of.values()))}
+
+
+# ---------------------------------------------------------------------------
+# Added after the first run: an engine that refuses only where the cycle is
+# ---------------------------------------------------------------------------
+
+def try_edge_where(engine: PriorityEngine, winner: str, loser: str) -> str:
+    """`PriorityEngine.try_edge`, with a cycle refused only when it runs through
+    rules that all match some point both of the edge's rules match. The engine
+    is not edited: this installs the edge in its sets as `try_edge` does."""
+    if winner == loser:
+        return EDGE_SELF
+    if winner not in engine.ext or loser not in engine.ext:
+        return EDGE_UNKNOWN
+    ew, el = engine.ext[winner], engine.ext[loser]
+    if ew & el == 0:
+        return EDGE_DISJOINT
+    if strictly_below(el, ew):
+        return EDGE_CONTRADICTS
+    if strictly_below(ew, el):
+        return EDGE_OK
+    if fl.reaches(engine, loser, winner):
+        nodes = forward(engine, loser) & backward(engine, winner)
+        if local_reach(engine, loser, winner, nodes, ew & el):
+            return EDGE_CYCLE
+    engine.decl_below[loser].add(winner)
+    engine.decl_above[winner].add(loser)
+    return EDGE_OK
+
+
+def where_replay(record: dict[str, Any], space: Space, truth: dict[str, int],
+                 cases: Sequence) -> dict[str, Any]:
+    """The same births and declarations, in the record's order, with
+    `try_edge_where` for `try_edge`; and gate 6's checks on its final base."""
+    born, by_birth = erb.births(record), erb.edges_by_birth(record)
+    engine = PriorityEngine(space=space)
+    und: dict[str, int] = {}
+    action: dict[str, str] = {}
+    curve: list[int] = []
+    refused = 0
+    for idx in sorted(born):
+        d = born[idx]
+        rid = d["rule_id"]
+        engine.add(rule_from(d), born_at=idx, keep_id=True)
+        for e in by_birth.get(idx, []):
+            refused += try_edge_where(engine, e.winner, e.loser) == EDGE_CYCLE
+        fl.settle(engine, und, action, rid, d["action"])
+        curve.append(fl.right_of(fl.decision(und, action), truth).bit_count())
+    dec = fl.decision(und, action)
+    right = fl.right_of(dec, truth)
+    matched = 0
+    for r in engine.rules:
+        matched |= engine.ext[r.rule_id]
+    n = space.n
+    decide_ok = all(fl.is_the_engines(engine, cases[n - 1 - j], dec, j)
+                    for j in range(0, n, STRIDE))
+    return {"curve": curve, "refused": refused, "right": right.bit_count(),
+            "security": (right & truth.get(fl.SEC, 0)).bit_count(),
+            "conflict": dec["two"].bit_count(),
+            "ok": (matched & ~dec["one"]) == 0 and decide_ok
+                  and und == brows.undefeated_masks(engine)}
 
 
 # ---------------------------------------------------------------------------
@@ -445,13 +552,43 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int], cases:
          "passes": sum(summary["by_class"].values()) == points
                    and sum(summary["where"].values()) == points},
     ]
+    rows = {r["idx"]: r for r in record["records"]}
+    rules = {r["rule_id"]: r for r in record["rules"]}
+    escs = fg.escalation_at(record)
+    above_even: dict[str, int] = {}
+    for p in pairs:
+        if p["even_cut"]:
+            for c in p["crossings"]:
+                if c["verdict"] == EVEN:
+                    above_even[c["upper"]] = above_even.get(c["upper"], 0) + p["points"]
+    where_run = where_replay(record, space, truth, cases)
+    gates.append({"gate": 6, "what": "the engine that refuses only where the cycle is leaves "
+                                     "no point without a rule undefeated, and decides as "
+                                     "its masks do",
+                  "passes": where_run["ok"]})
+    added = {
+        "even_cut": sum(p["points"] for p in pairs if p["even_cut"]),
+        "stands_on_right": sum(p["points"] for p in pairs
+                               if p["class"] == RIGHT and not p["even_cut"]),
+        "rules_above_even": [
+            {"rule_id": rid, "action": rules[rid]["action"],
+             "conditions": rules[rid]["conditions"], "born_at": rules[rid]["born_at"],
+             "cause": (escs.get(rules[rid]["born_at"]) or {}).get("kind"),
+             "ticket_rule": (rows.get(rules[rid]["born_at"]) or {}).get("truth_rule"),
+             "points": pts}
+            for rid, pts in sorted(above_even.items(), key=lambda kv: (-kv[1], kv[0]))],
+        "where": {"engine": fl.order_summary({**where_run, "cycles": where_run["refused"]},
+                                             truth, space.n),
+                  "record": fall_run["added_after_the_first_run"]["orders"]["declared"]},
+    }
     keep = ("born_at", "newborn", "rule", "queue", "points", "class", "where", "shortest",
-            "path_rules", "touched", "own_crossing")
+            "path_rules", "touched", "own_crossing", "even_cut")
     out_pairs = [{**{k: p[k] for k in keep},
                   "crossings": [{k: c[k] for k in ("upper", "lower", "kind", "verdict",
                                                    "installed_at", "cause")}
                                 for c in p["crossings"]]} for p in pairs]
-    return {"summary": summary, "pairs": out_pairs, "gates": gates}
+    return {"summary": summary, "pairs": out_pairs, "gates": gates,
+            "added_after_the_first_run": added}
 
 
 def read_all_runs(records: dict[str, dict], fall_record: dict[str, Any], space: Space,
@@ -523,7 +660,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Why a rule's wins reach the rule it should "
                                              "lose to (POST-RUN, free).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="run gates 1 to 5 and stop; writes nothing")
+                    help="run gates 1 to 6 and stop; writes nothing")
     args = ap.parse_args(argv)
     gate = plan.refuse_unsigned(f"corrections/paths.py writes {record_path()}")
     records, fall_record = read_all()
@@ -544,6 +681,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"fall": str(fl.record_path()),
                    "fall_from": fall_record["_env"].get("git_commit")},
         "surface": "the refused right sides at the points lost by a conflict after each "
@@ -561,6 +699,10 @@ def main(argv: list[str] | None = None) -> int:
         s = r["summary"]
         print(f"  {t}: {s['pairs']} pairs on {s['points']} points; {s['by_class']}; "
               f"{s['where']}")
+        a = r["added_after_the_first_run"]
+        print(f"    even cut {a['even_cut']}, stands on right {a['stands_on_right']}; final "
+              f"share, the record's engine {a['where']['record']['final']['share']['value']:.4f}, "
+              f"refusing only where the cycle is {a['where']['engine']['final']['share']['value']:.4f}")
     print(f"\n-> {record_path()}\n  {describe()}")
     return 0
 
