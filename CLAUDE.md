@@ -1377,6 +1377,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.forgotten                     # POST-RUN: why the final base forgets its corrections
     PYTHONHASHSEED=0 python3 -m corrections.broad                         # POST-RUN: why the first call writes broad corrections
     PYTHONHASHSEED=0 python3 -m corrections.fall                          # POST-RUN: why the loop's share of the space peaked and fell
+    PYTHONHASHSEED=0 python3 -m corrections.paths                         # POST-RUN: why a rule's wins reach the rule it should lose to
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1425,6 +1426,18 @@ each birth's losses first, the same declarations kept most of it. A loop that
 installs declarations should try a rule's losses before its wins, or say in §0
 what a refused right side does. And a curve read only at checkpoints hides its
 peak: read the base after every birth before saying where it turned.
+
+**Read POST-RUN, the engine refused those right sides for cycles no contested
+point sees.** At a point lost by a conflict the right rule is undefeated, so no
+rule that beats it matches the point, and the refused cycle is never there.
+Mostly it was nowhere the pair shares either: it ran through rules that miss
+every point the edge decides. The paths mostly entered the keyword's rule
+through a rule nested in it, born at a reported ticket of `H03`, which the
+policy calls right on half its points. A rule nested in a broad one opens a path
+into it for the whole base. An engine that refuses every global cycle refuses
+edges no point would see: a plan that keeps such an engine should say in §0 what
+a cycle through unrelated rules costs. And a verdict with a tie rule can decide
+a clause on the tie: count the even cases before signing.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

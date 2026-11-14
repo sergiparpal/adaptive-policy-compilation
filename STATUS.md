@@ -3234,6 +3234,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        than L r3's 0.1277.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the loop's share of the space peaked and fell*.
+     **[NOTE 2026-11-14, last] Why the wins reach `SECURITY_INCIDENT`'s rule,
+     read POST-RUN: through rules no contested point sees.**
+     - **The cycle is nowhere the pair decides.** On 198,741 of L's 220,541
+       pair-points, every path runs through a rule that misses every point the
+       pair shares. Only 4,111 need a crossing the policy calls wrong.
+     - **The gateway is the policy's exception.** In L r1, L r2 and N r3 every
+       pair of `SECURITY_INCIDENT` is cut once one or two rules nested in the
+       keyword's region are taken out. Those rules were born at reported tickets
+       of `H03`. In L they drop the tier, and their points are as many
+       `SECURITY_INCIDENT`'s as their own.
+     - **An engine refusing a cycle only where it is** ends L r1 at 0.7432 of the
+       space, L r2 at 0.6154 and N r3 at 0.5535, on the same declarations. That
+       is not the loop that would have run.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why a rule's wins reach the rule it should lose to*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
