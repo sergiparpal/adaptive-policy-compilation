@@ -14,6 +14,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   it in #244, merged on 2026-11-14.
 - **The POST-RUN reading of why the loop's share of the space peaked and fell**
   reached it in #246, merged on 2026-11-14.
+- **The POST-RUN reading of why a rule's wins reach the rule it should lose to**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -86,6 +88,14 @@ corrected during Stage C.**
 > - **Its code digest is `c7b7a612cafbf0fb`**, because `corrections/fall.py` was
 >   added after the readings above. `main` computes it at `1aa3ca0`, and still
 >   at the merge of #246. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-14, last] And a fourth.** [`paths.json`](paths.json) is the
+> POST-RUN reading of why a rule's wins reach the rule it should lose to.
+> - **It was written from `19201ed`**, on that reading's branch: the commit that
+>   corrects a count of the part added after its first run. Its section below
+>   names the commits before it.
+> - **Its code digest is `e24481dd56c2b8ba`**, because `corrections/paths.py` was
+>   added after the readings above. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -971,11 +981,207 @@ L r3, and `Q3` failed by 0.0063.
    trace the cycles' paths. They may run through rules wrongly above
    `SECURITY_INCIDENT`'s, or through rules that do not match the contested
    points. Free on the records.
+   **[NOTE 2026-11-14] Read POST-RUN, below: through rules that miss every
+   point the pair shares.** They enter `SECURITY_INCIDENT`'s rule through a rule
+   nested inside it, born at a reported ticket of `H03`, which the policy's
+   verdict calls even. *Why a rule's wins reach the rule it should lose to*.
 3. **Whether this is the order Stage C left open.** In L r1 and L r2 the same
    declarations, installed losses first, come within 0.03 of the at-once answers
    at all of their labels, 0.7584 and 0.6252. In L r3 they do not. The at-once
    answer is other rules, installed in their own list order, so the two are not
    separated.
+
+
+## Why a rule's wins reach the rule it should lose to — POST-RUN
+
+**Asked for by Sergi on 2026-11-14, after the reading above.** It found the
+share lost mostly at conflicts, where the engine had refused the right side for
+closing a cycle that the newborn's own wins had closed. Its *What it does not
+settle*, item 2, left why those wins reach the rule the newborn should lose to:
+through rules wrongly above `SECURITY_INCIDENT`'s, or through rules that do not
+match the contested points. This reading asks the records, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.paths`, on
+2026-11-14, from `19201ed` on a clean tree, on this reading's branch.
+- **The commits.** `f17fb2d` carries the reading and its expectation, written
+  before the reading ran. `5769c4b` carries the part added after the first run,
+  which moves no clause.
+- **`19201ed` corrects a count of that part.** Its list of the rules above the
+  even crossings had added a pair's points once per crossing, and so gave one rule
+  more points than its pairs held. The first run's record was not committed, and
+  no clause reads the list.
+- **The record was committed alone**, as `c80cd5d`. It is
+  [`paths.json`](paths.json). Its six gates passed in all six runs:
+  - the replay is the base;
+  - the pairs are `fall.json`'s: in every run their points sum to `beside`'s
+    below_refused;
+  - every refusal is the engine's;
+  - no path touches the pair's points;
+  - the classes partition the pairs' points;
+  - the engine that refuses only where the cycle is leaves no point without a
+    rule undefeated, and decides as its masks do.
+
+**What it reads.** Every right side that `corrections/fall.py`'s `beside` classed
+below_refused. At a point lost by a conflict, the newborn `n` had been declared
+below `u`, a rule of the point's true queue, and the edge was refused for
+closing a cycle. Each pair is read right after `n`'s birth, and weighed by its
+points.
+- **The paths** are the chains of what beats what from `n` to `u`.
+  - **A crossing** is a step from a rule of another queue to a rule of `u`'s
+    queue: nested inside it, or declared above it.
+  - **The policy's verdict on a crossing** reads the points both of its rules
+    match. It is *wrong* when more are `u`'s queue's, *right* when fewer, and
+    *even* when as many.
+- **A pair is in one of three classes.** It is *wrong_declared* when no path is
+  left once the wrong declared crossings are taken out, and *wrong_nested* when
+  none is left once the wrong nested ones go too. Otherwise it is *right*.
+- **The cycle is never at the pair's points.** `u` is undefeated there, so no
+  rule that beats it matches them (gate 4). So the reading asks whether the cycle
+  is *somewhere* in the pair's shared region, through rules that all match one of
+  its points, or *nowhere*.
+
+### 1. The cycle is nowhere the pair decides
+
+| run | pairs | points | wrong_declared | wrong_nested | right | somewhere | nowhere |
+|---|---|---|---|---|---|---|---|
+| L r1 | 94 | 79,155 | 25 | 530 | 78,600 | 14,975 | 64,180 |
+| L r2 | 134 | 136,505 | 1,935 | 0 | 134,570 | 3,925 | 132,580 |
+| L r3 | 19 | 4,881 | 1,621 | 0 | 3,260 | 2,900 | 1,981 |
+| N r1 | 2 | 555 | 0 | 75 | 480 | 555 | 0 |
+| N r2 | 5 | 180 | 0 | 60 | 120 | 160 | 20 |
+| N r3 | 32 | 99,205 | 100 | 0 | 99,105 | 5,620 | 93,585 |
+
+- **The paths need no wrong crossing** (K1 fails). Over L's runs, 4,111 of the
+  220,541 pair-points are in pairs a wrong crossing carries, and 3,581 of those
+  need a wrong declared one (K2 holds).
+- **The cycle is nowhere in the pair's shared region** (K4 fails, the bet). Over
+  L's runs, 21,800 of the 220,541 pair-points are in pairs whose cycle runs
+  through rules that all match some point both rules of the pair match. For the
+  rest, every path runs through a rule that misses every point either rule of
+  the pair decides.
+- **The paths are long.**
+  - **The shortest path** has three or four steps on most of L r1's pair-points,
+    four to six on L r2's, and five on N r3's.
+  - **The paths' rules touch few of the pair's points**: 290 of L r1's 79,155,
+    430 of L r2's 136,505 and 13,280 of N r3's 99,205.
+- **The corrections installed less than their share of the wrong declared
+  crossings** (K3 fails): 111 of 213, 0.5211, where they were 0.6152 of the
+  births.
+- **N r3's refused right sides are of L's kind** (K5 fails): 100 of its 99,205
+  pair-points need a wrong crossing.
+
+### 2. The even crossings — added after the first run
+
+| run | right | cut once the even crossings are out too | stands on right crossings |
+|---|---|---|---|
+| L r1 | 78,600 | 70,270 | 8,330 |
+| L r2 | 134,570 | 131,060 | 3,510 |
+| L r3 | 3,260 | 840 | 2,420 |
+| N r1 | 480 | 0 | 480 |
+| N r2 | 120 | 40 | 80 |
+| N r3 | 99,105 | 98,240 | 865 |
+
+- **The crossings into `SECURITY_INCIDENT` were even.** Taken out too, they cut
+  the paths on 70,270 of L r1's 78,600 points of class right, 131,060 of L r2's
+  134,570 and 98,240 of N r3's 99,105. Those are all three runs' pair-points of
+  `SECURITY_INCIDENT`.
+- **The rules above them are the policy's exception, nested in the keyword's
+  region.**
+  - **In L r1**, `R0061`: `has_security_keyword = true ∧ severity = 4 →
+    T2_TECHNICAL`.
+  - **In L r2**, `R0048`: `has_security_keyword = true ∧ severity ≥ 4 ∧ product =
+    billing → T2_TECHNICAL`, and `R0120`: `has_security_keyword = true ∧ severity
+    ≥ 3 → T2_TECHNICAL`.
+  - **In L r3**, `R0016`: `has_security_keyword = true ∧ severity ≥ 3 →
+    T2_TECHNICAL`, on 840 points.
+  - **In N r3**, `R0175`: `has_security_keyword = true ∧ severity = 4 ∧
+    customer_tier = free → T1_GENERAL`.
+  - **Each was born at a reported ticket of `H03`**, the policy's exception for
+    security mentions on small accounts at low severity.
+- **Why even.** Each L rule drops the tier. Its points are `SECURITY_INCIDENT`'s
+  on the large accounts and `T2_TECHNICAL`'s on the small ones, as many of each.
+  N r3's keeps the tier and names `T1_GENERAL` where the policy says
+  `T2_TECHNICAL`, so neither of its two queues is the truth there.
+- **Such a rule beats the keyword's rule by containment**, so every rule above
+  it reaches the keyword's rule through it. A newborn whose wins reach any of
+  those rules cannot be placed below the keyword's rule, however far its path
+  runs from the contested points.
+
+### 3. An engine that refuses only where the cycle is — added after the first run
+
+| run | the record's engine: final | fall | `SECURITY_INCIDENT` recall | refusing only where the cycle is: final | fall | `SECURITY_INCIDENT` recall | edges refused, record → this engine |
+|---|---|---|---|---|---|---|---|
+| L r1 | 0.5647 | 0.1249 | 0.3514 | 0.7432 | 0.0333 | 0.7327 | 1,849 → 1,430 |
+| L r2 | 0.4221 | 0.3553 | 0.1437 | 0.6154 | 0.1724 | 0.6405 | 2,159 → 1,182 |
+| L r3 | 0.5618 | 0.1277 | 0.2976 | 0.5629 | 0.1366 | 0.2976 | 1,597 → 1,462 |
+| N r1 | 0.5519 | 0.0485 | 0.9250 | 0.5430 | 0.0691 | 0.9250 | 1,007 → 791 |
+| N r2 | 0.5785 | 0.0221 | 1.0000 | 0.5794 | 0.0212 | 1.0000 | 772 → 700 |
+| N r3 | 0.4932 | 0.1343 | 0.6929 | 0.5535 | 0.0710 | 0.8333 | 905 → 727 |
+
+This engine refuses an edge for a cycle only when the cycle runs through rules
+that all match some point the edge decides. The same births and declarations
+are installed in the record's order.
+
+- **It keeps most of what L r1 and L r2 lost.**
+  - **L r1 ends at 0.7432 of the space, L r2 at 0.6154 and N r3 at 0.5535**,
+    where the record's engine ends them at 0.5647, 0.4221 and 0.4932.
+  - **`SECURITY_INCIDENT`'s recall rises** from 0.3514 to 0.7327, from 0.1437 to
+    0.6405, and from 0.6929 to 0.8333.
+  - **L r3 barely moves**, from 0.5618 to 0.5629: its fall was taken by
+    containment. N r1 loses 0.0089, and N r2 gains 0.0009.
+- **It leaves no point without a rule undefeated, and decides as its masks do**
+  (gate 6). A cycle through rules that miss every point an edge decides is seen
+  by no point.
+- **Beside `corrections/fall.py`'s losses first**, which ended L r1 at 0.7374, L
+  r2 at 0.6539 and N r3 at 0.5459, it keeps more in L r1 and N r3, and less in L
+  r2.
+- **It is not the loop that would have run.** A base ordered otherwise decides
+  the arrivals otherwise, and would have escalated other cases.
+
+### The expectation
+
+Written in `corrections/paths.py`'s docstring and committed before the reading
+ran. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| K1, at least half of L's pair-points in pairs a wrong crossing carries | 4,111 of 220,541 | fails |
+| K2, at least half of those need a wrong declared one | 3,581 of 4,111 | **holds** |
+| K3, the corrections' share of the wrong declared crossings at least their share of the births | 0.5211 against 0.6152 | fails |
+| K4, at least half of L's pair-points in pairs whose cycle is somewhere | 21,800 of 220,541 | fails |
+| K5, in N r3, at least half of the pair-points in pairs a wrong crossing carries | 100 of 99,205 | fails |
+
+**K2 holds, and K1, K3, K4 and K5 fail.** The bet `K4` failed: the cycle the
+engine refuses is nowhere the pair decides, as `PLAN_CHANNEL.md`'s reading of a
+refused right edge had found. `K2` held on 4,111 points.
+
+### What it says
+
+- **On nine of every ten pair-points, the engine refused the right side for a
+  cycle no point sees.** The paths run through rules that miss every point the
+  pair shares. Installed, the edge would have decided the pair's points rightly,
+  and closed a cycle at no point of the base.
+- **The gateway is the policy's exception, compiled as a rule nested in the
+  keyword's region.** A correction at a ticket of `H03` drops the tier, nests
+  inside the keyword's rule and beats it by containment. Every rule above it then
+  reaches the keyword's rule, and so does any newborn whose wins reach one of
+  them.
+- **The label is not needed for it.** N r3's gateway was drafted at a ticket of
+  `H03` without one, and named a queue the policy does not.
+- **Two levers keep most of the share on the same declarations, with no call**:
+  installing a rule's losses before its wins, or refusing a cycle only where it
+  is. Neither is the loop that would have run.
+
+### What it does not settle
+
+1. **Whether a loop whose engine refuses a cycle only where it is keeps its
+   share.** A plan with calls, and an engine of its own: `rung2/engine2.py` is the
+   closed records' engine and is not edited.
+2. **Why so many rules sit above the gateway.** The reading does not say which
+   declarations put them there, nor why the paths run so long. Free on the
+   records.
+3. **Whether a first call that kept `H03`'s tier would have opened no gateway.**
+   A plan with calls.
 
 ---
 
@@ -994,3 +1200,5 @@ L r3, and `Q3` failed by 0.0063.
   corrections.
 - [`fall.json`](fall.json): POST-RUN, why the loop's share of the space peaked
   and fell.
+- [`paths.json`](paths.json): POST-RUN, why a rule's wins reach the rule it
+  should lose to.
