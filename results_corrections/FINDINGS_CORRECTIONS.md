@@ -10,6 +10,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   record was opened in, merged on 2026-11-14.
 - **The POST-RUN reading of why the final base forgets its corrections** reached
   it in #242, merged on 2026-11-14.
+- **The POST-RUN reading of why the first call writes broad corrections** reaches
+  it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -65,6 +67,13 @@ corrected during Stage C.**
 >   `corrections/forgotten.py` was added after Stage C. `main` computes it at
 >   `2bf3345`, and still at the merge of #242. The modules Stage C ran did not
 >   change.
+>
+> **[NOTE 2026-11-14, later] And one more.** [`broad.json`](broad.json) is the
+> POST-RUN reading of why the first call writes broad corrections.
+> - **It was written from `44ea2c9`**, on that reading's branch, the commit that
+>   carries its codebook and its expectation.
+> - **Its code digest is `a26162430c936c46`**, because `corrections/broad.py` was
+>   added after the reading above. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -582,11 +591,150 @@ reading ran. It is not signed, and it is on no scoreboard.
 1. **Why the first call drafts a correction broader than the rule that erred.**
    It is blind, and told only that the engine decided the ticket and that the
    decision was wrong. Its reasoning is in the records, and is free to read.
+   **[NOTE 2026-11-14] Read POST-RUN, below.** It writes the queue's general
+   rule, which the base mostly holds already, and the report does not make it
+   broader. *Why the first call writes broad corrections*.
 2. **Whether a correction checked at its birth would keep its ticket.** A loop
    that lists the rule that decided the reported case, or refuses a correction
    that does not decide its own ticket, is a plan with calls.
 3. **Why the rules written at conflicts were placed above the corrections.**
    Their placement answers are in the records, and are free to read.
+
+## Why the first call writes broad corrections — POST-RUN
+
+**Asked for by Sergi on 2026-11-14, after the reading above.** It found that
+most forgotten corrections never decided their own ticket: a rule nested inside
+the correction kept it by containment, and the corrections that lose are the
+broad ones. Its *What it does not settle* left why the first call drafts a
+correction broader than the rule that erred. This reading asks the records, and
+spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.broad`, on
+2026-11-14, from `44ea2c9` on a clean tree, on this reading's branch. That
+commit carries the reading's codebook and its expectation, written before the
+reading ran on runs 2 and 3. The record was committed alone, as `7bf3896`.
+- **The record is [`broad.json`](broad.json).** Its four gates passed:
+  - the reading above's gates pass, and its reading of each born report is the
+    one read here;
+  - each run's two arms read the same draws;
+  - every rule of another queue nested inside a losing correction was left out
+    of its round as inside the draft, and none was listed: 101, 73 and 223 of
+    them by run;
+  - the codebook gives its development counts on run 1.
+
+**What it reads.** Every first call of the six runs. A draft is *valid* when its
+conditions build a region, *broad* with one or two conditions and *narrow* with
+three or more. A correction *duplicates* a rule when its region equals that of a
+rule of the same queue already in the base.
+- **Run 1 of each arm is the development set.** The codebook was frozen there,
+  and every clause reads runs 2 and 3. The development figures stand in the
+  tables beside the held-out ones, marked.
+- **The same ticket, with and without the report.** Both arms of a run read the
+  same draws, and the first call is blind. So a case that both arms' bases
+  decided wrongly, and the channel reported, was asked in messages that differ by
+  the report alone (`CR-g1`).
+
+### 1. The report does not widen the draft
+
+| run | reported in both arms | valid pairs | L's draft broader | N's broader | equal | N named the label's queue |
+|---|---|---|---|---|---|---|
+| r1, development | 91 | 86 | 33 | 50 | 3 | 6 |
+| r2 | 82 | 79 | 26 | 46 | 7 | 8 |
+| r3 | 99 | 99 | 29 | 62 | 8 | 13 |
+
+- **On the same ticket, the first call without the report wrote the broader
+  draft about twice as often.** Of the 163 held-out pairs whose drafts differ in
+  points, N's was the broader in 108 and L's in 55.
+- **What the report changes is the queue.** N named the label's queue in 21 of
+  the 178 held-out pairs. Where both named it, the broader draft was L's in 6
+  and N's in 9, and they were equal in 6.
+
+### 2. The losing correction was already in the base
+
+| run | born corrections | left wrong | of them duplicates | duplicates | duplicates left right |
+|---|---|---|---|---|---|
+| r1, development | 163 | 80 | 42 | 45 | 3 |
+| r2 | 158 | 63 | 38 | 46 | 8 |
+| r3 | 189 | 105 | 74 | 76 | 2 |
+
+- **Two thirds of the held-out corrections left wrong duplicate a rule of their
+  queue**: 112 of 168. The base held that rule already, so the correction added
+  nothing.
+- **A duplicate does not take its ticket**: 10 of the 122 held-out duplicates
+  did.
+- **The same correction was written again and again.** In every L run the
+  correction born at the most reports was `product = billing ->
+  BILLING_SPECIALIST`, one condition: 17 times in r1, 21 in r2 and 33 in r3. It
+  took its ticket once.
+- **The rule that kept the ticket was never shown.** Each rule of another queue
+  nested inside a losing correction was left out of the round as inside the
+  draft, as v1c leaves out every nested rule.
+
+### 3. What the reasoning says
+
+Among the first calls at reported errors whose draft is valid:
+
+| run | L's broad drafts | `DEFER` | `ANY` | L's narrow drafts | `DEFER` | `ANY` |
+|---|---|---|---|---|---|---|
+| r1, development | 76 | 64 | 44 | 133 | 119 | 48 |
+| r2 | 71 | 64 | 54 | 131 | 108 | 46 |
+| r3 | 102 | 100 | 73 | 133 | 123 | 44 |
+
+- **`DEFER`: the first call leaves the overlaps to the round.** Its reasoning
+  takes up that overlapping rules will be listed after the draft in 395 of the
+  437 held-out first calls. v2b's paragraph says so.
+- **`ANY`: a broad correction is written for any ticket of its kind.** The code
+  is in 0.7341 of the held-out broad drafts and 0.3409 of the narrow ones.
+- **Both are the prompt's, not the report's.** N's first calls at its reported
+  errors carry `DEFER` in 579 of 648 held-out valid drafts, and `ANY` in 167 of
+  their 243 broad ones.
+
+### The expectation
+
+Written in `corrections/broad.py`'s docstring and committed before the reading
+ran on runs 2 and 3. It is not signed, and it is on no scoreboard.
+
+| clause | runs 2 and 3 | |
+|---|---|---|
+| B1, L's draft the broader in at most half the differing pairs | 55 of 163 | **holds** |
+| B2, at least two fifths of the corrections left wrong duplicate a rule of their queue | 112 of 168 | **holds** |
+| B3, at most a fifth of the duplicates take their ticket | 10 of 122 | **holds** |
+| B4, `DEFER` in at least three quarters of L's first calls at reported errors | 395 of 437 | **holds** |
+| B5, `ANY` at least 0.15 more often among the broad drafts | 0.7341 against 0.3409 | **holds** |
+| B6, in each L run the most written correction has one or two conditions and five births or more | 21 and 33 births, one condition | **holds** |
+
+**All six hold, the bet `B2` among them.** Each was drawn from run 1, so each
+holding says the reading generalised to runs 2 and 3, not that the drafter
+foresaw it.
+
+### What it says
+
+- **The first call writes the queue's general rule.** The system prompt asks
+  every call for a generalizable rule for the ticket and its analogous cases,
+  and the catalogue gives each queue a general line. Told the true queue, the
+  first call writes that line: billing tickets to `BILLING_SPECIALIST`.
+- **The report does not make it broad.** Without the report, on the same
+  ticket, the first call wrote the broader draft twice as often. What the
+  report changes is the queue.
+- **The base already holds that rule.** Two thirds of the corrections left
+  wrong duplicate it. The same one, billing tickets to `BILLING_SPECIALIST`,
+  was written 17, 21 and 33 times.
+- **The rule that erred is narrower, of another queue, and inside it.** The
+  first call cannot see it. It expects the round to list the overlapping rules,
+  and the round leaves every nested rule out. So the narrow wrong rule is never
+  shown, and keeps the ticket by the order the system prompt describes: the
+  contained rule wins.
+
+### What it does not settle
+
+1. **Whether a first call shown the rule that decided the reported case writes
+   a correction that takes its ticket.** A plan with calls.
+2. **Whether refusing a duplicate correction, or turning it into a placement
+   against the rule that erred, would keep the label.** The loop detects a
+   duplicate and bears it anyway. A plan with calls.
+3. **Why the narrow rules of another queue were drafted inside the queue's
+   general region**, as rules of `SELF_SERVICE_DEFLECT` on billing tickets were
+   in run 1. Free on the records.
 
 ---
 
@@ -600,4 +748,6 @@ reading ran. It is not signed, and it is on no scoreboard.
   `atonce_l_r3.json`: the at-once sessions.
 - [`score.json`](score.json): Stage C, the six verdicts and `CR-g`.
 - [`forgotten.json`](forgotten.json): POST-RUN, why the final base forgets its
+  corrections.
+- [`broad.json`](broad.json): POST-RUN, why the first call writes broad
   corrections.
