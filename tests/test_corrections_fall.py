@@ -17,9 +17,15 @@ Also pinned:
 - the masks' decision, its points right, its outcome at a point, and the ends
   of a mask;
 - the space's enumeration, case `k` at bit `n - 1 - k`;
-- the four gates on that run, and each failing on its own;
+- the five gates on that run, and each failing on its own;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on a second run built by hand, where a rule's own
+win closes the cycle that refuses its right loss:
+- a citation's three records, and each class of a pair beside the newborn;
+- what closed a refused cycle, the base or the birth's own edges;
+- the pairs beside at a conflict, refused, not listed, or listed with no side;
+- the same births with each birth's losses tried first, and gate 5.
 """
 
 from __future__ import annotations
@@ -33,7 +39,8 @@ from corrections import plan
 from edges import rebuild as erb
 from harness.ceiling_check import all_cases
 from harness.domain import ATTRIBUTES, Case
-from rung2.engine2 import EDGE_OK, Space
+from fidelity.replay import rule_from
+from rung2.engine2 import EDGE_CYCLE, EDGE_OK, PriorityEngine, Space
 
 F = Fraction
 SPACE = Space()
@@ -69,7 +76,7 @@ BIRTHS = [
     (IMP, r_("R2", 1, BI, product="billing")),                   # right on 26,880
     (IMP, r_("R3", 2, T1, product="mobile")),                    # right on 26,880: the peak
     (ERR, r_("R4", 3, T3, product="api", severity=1)),           # nested in R1: 6,720 lost
-    (ERR, r_("R5", 4, AM, channel="chat")),                      # above R2, crossing R3
+    (ERR, {**r_("R5", 4, AM, channel="chat"), "beats": ["R2"], "loses_to": ["R1"]}),
     (IMP, r_("R6", 5, T1, product="integrations", channel="email")),   # 6,720 gained
     (CON, r_("R7", 6, BI, product="api", channel="portal")),     # nested in R1: 5,040 lost
     (ERR, r_("R8", 7, T2, product="api", channel="portal", severity=2)),   # 1,680 won back
@@ -82,19 +89,26 @@ UNBORN = [(9, ERR)]
 CORPUS = [ticket() for _ in range(10)]
 
 
-def record(edges=EDGES):
-    rows = [{"idx": i, "edge_reasons": []} for i in range(len(CORPUS))]
+def record(edges=EDGES, births=BIRTHS, unborn=UNBORN, listed=None, cases=len(CORPUS)):
+    """A loop record: its rules, rows, edge log and escalations. An edge is
+    `(born, winner, loser)`, or with its verdict last; `listed` gives an
+    escalation's placement list by case."""
+    rows = [{"idx": i, "edge_reasons": []} for i in range(cases)]
     rules, escalations, log = [], [], []
-    for cause, rule in BIRTHS:
+    for cause, rule in births:
         rules.append(rule)
         escalations.append({"idx": rule["born_at"], "kind": cause, "verdict": "nacida",
                             "rule_id": rule["rule_id"]})
-    for idx, cause in UNBORN:
+    for idx, cause in unborn:
         escalations.append({"idx": idx, "kind": cause, "verdict": "sin_situar",
                             "rule_id": None})
-    for born, w, l in edges:
-        rows[born]["edge_reasons"].append(EDGE_OK)
-        log.append([w, l, EDGE_OK])
+    for born, w, l, *why in edges:
+        reason = why[0] if why else EDGE_OK
+        rows[born]["edge_reasons"].append(reason)
+        log.append([w, l, reason])
+    for e in escalations:
+        if listed and e["idx"] in listed:
+            e["listed"] = listed[e["idx"]]
     escalations.sort(key=lambda e: e["idx"])
     return {"rules": rules, "records": rows, "edge_log": log, "escalations": escalations}
 
@@ -111,9 +125,9 @@ STAGE_C = {"space": fraction(63504),
                      {"case": 9, "loop": fraction(63504)}]}
 
 
-def read(rec=None, stage_c=STAGE_C, final_rec=None):
+def read(rec=None, stage_c=STAGE_C, final_rec=None, corpus=CORPUS):
     rec = rec or record()
-    final = erb.rebuild(final_rec or rec, CORPUS, SPACE).engine
+    final = erb.rebuild(final_rec or rec, corpus, SPACE).engine
     return G.read_run(rec, SPACE, TRUTH, CASES, stage_c, final=final)
 
 
@@ -231,9 +245,9 @@ class TestTheCurve(unittest.TestCase):
 
 class TestTheGates(unittest.TestCase):
 
-    def test_all_four_pass_on_the_run(self):
+    def test_all_five_pass_on_the_run(self):
         got = read()
-        self.assertEqual([g["passes"] for g in got["gates"]], [True] * 4)
+        self.assertEqual([g["passes"] for g in got["gates"]], [True] * 5)
         self.assertTrue(all(got["checks"].values()))
 
     def test_gate_1_fails_on_another_base(self):
@@ -338,6 +352,132 @@ class TestTheExpectation(unittest.TestCase):
         self.assertEqual({q: got[q] for q in ("Q1", "Q2", "Q3", "Q4", "Q5")},
                          {q: False for q in ("Q1", "Q2", "Q3", "Q4", "Q5")})
         self.assertFalse({c["clause"]: c["holds"] for c in G.read_expectation({})}["Q6"])
+
+
+# ---------------------------------------------------------------------------
+# Added after the first run
+# ---------------------------------------------------------------------------
+
+# A second run: B is declared above A, and C above B. C's loss to A is refused,
+# because C's own win over B, tried first, reaches A through B.
+CYCLE_BIRTHS = [
+    (IMP, r_("A", 0, T2, product="api")),
+    (IMP, {**r_("B", 1, AM, channel="chat"), "beats": ["A"]}),
+    (ERR, {**r_("C", 2, T3, severity=1), "beats": ["B"],
+           "dropped_edges": ["loses_to:A:" + EDGE_CYCLE]}),
+]
+CYCLE_EDGES = [(1, "B", "A"), (2, "C", "B"), (2, "A", "C", EDGE_CYCLE)]
+CYCLE_CORPUS = CORPUS[:3]
+
+
+def cycle_record(**over):
+    kw = dict(edges=CYCLE_EDGES, births=CYCLE_BIRTHS, unborn=[], listed={2: ["A", "B"]},
+              cases=3)
+    kw.update(over)
+    return record(**kw)
+
+
+def read_cycle(rec=None):
+    rec = rec or cycle_record()
+    return read(rec=rec, stage_c={"space": fraction(15120)}, corpus=CYCLE_CORPUS)
+
+
+class TestTheDeclarations(unittest.TestCase):
+
+    def test_a_citation_s_three_records(self):
+        rule = {"beats": ["X"], "loses_to": ["Y"],
+                "dropped_edges": ["loses_to:Z:" + EDGE_CYCLE, "beats:W"]}
+        self.assertEqual(G.declared(rule), {"X": ("beats", EDGE_OK), "Y": ("loses_to", EDGE_OK),
+                                            "Z": ("loses_to", EDGE_CYCLE),
+                                            "W": ("beats", G.OUTSIDE)})
+
+    def test_each_class_of_a_pair(self):
+        self.assertEqual(G.pair_class(("loses_to", EDGE_CYCLE), True), G.BELOW_REFUSED)
+        self.assertEqual(G.pair_class(("beats", EDGE_CYCLE), True), G.ABOVE_REFUSED)
+        self.assertEqual(G.pair_class(("beats", G.OUTSIDE), False), G.OUTSIDE)
+        self.assertEqual(G.pair_class(None, True), G.NO_SIDE)
+        self.assertEqual(G.pair_class(None, False), G.NOT_LISTED)
+        self.assertEqual(G.pair_class(("beats", "no_solapan"), True), G.OTHER)
+
+    def test_what_closed_a_refused_cycle(self):
+        engine = PriorityEngine(space=SPACE)
+        for i, (rid, q, conds) in enumerate([
+                ("X", T2, {"product": "api"}), ("Y", AM, {"channel": "chat"})]):
+            engine.add(rule_from(r_(rid, i, q, **conds)), born_at=i, keep_id=True)
+        engine.try_edge("X", "Y")
+        # N is nested in X, so beats it, and X beats Y: N reaches Y by the base.
+        engine.add(rule_from(r_("N", 2, T3, product="api", severity=1)), born_at=2,
+                   keep_id=True)
+        self.assertEqual(G.closed_by(engine, "N", "Y", "loses_to"), G.BY_THE_BASE)
+        # M is nested in nothing: only its own edges could reach Y.
+        engine.add(rule_from(r_("M", 3, T3, severity=1)), born_at=3, keep_id=True)
+        self.assertEqual(G.closed_by(engine, "M", "Y", "loses_to"), G.BY_ITS_OWN)
+        self.assertEqual(G.closed_by(engine, "M", "X", "beats"), G.BY_ITS_OWN)
+        # W is above K, nested in V: W reaches V by the base, so V above W closes one.
+        for i, (rid, q, conds) in enumerate([
+                ("W", AM, {"channel": "email"}),
+                ("K", T3, {"product": "billing", "severity": 2, "language": "en"})], start=4):
+            engine.add(rule_from(r_(rid, i, q, **conds)), born_at=i, keep_id=True)
+        engine.try_edge("W", "K")
+        engine.add(rule_from(r_("V", 6, T2, product="billing", severity=2)), born_at=6,
+                   keep_id=True)
+        self.assertEqual(G.closed_by(engine, "V", "W", "beats"), G.BY_THE_BASE)
+
+
+class TestThePairsBeside(unittest.TestCase):
+
+    def test_the_second_run_loses_by_an_edge_and_by_a_conflict(self):
+        got = read_cycle()
+        self.assertEqual([c["right"] for c in got["curve"]], [26880, 20160, 15120])
+        self.assertEqual(got["summary"]["lost"]["by_kind"],
+                         {G.BY_CONTAINMENT: 0, G.BY_EDGE: 6720, G.CONFLICT: 5040})
+        self.assertEqual([g["passes"] for g in got["gates"]], [True] * 5)
+
+    def test_a_right_loss_refused_by_the_rule_s_own_win(self):
+        beside = read_cycle()["added_after_the_first_run"]["beside"]
+        none = {k: 0 for k in G.PAIR_CLASSES}
+        self.assertEqual(beside, {"points": 5040, "pairs": {**none, G.BELOW_REFUSED: 5040},
+                                  "closed_by": {G.BELOW_REFUSED: {G.BY_ITS_OWN: 5040},
+                                                G.ABOVE_REFUSED: {}},
+                                  "by_queue_beside": {T2: 5040},
+                                  "every_pair_below_refused": 5040})
+
+    def test_a_pair_not_listed_or_listed_with_no_side(self):
+        """The first run's conflict: R5 beside R3, with no declaration."""
+        none = {k: 0 for k in G.PAIR_CLASSES}
+        got = read()["added_after_the_first_run"]["beside"]
+        self.assertEqual((got["points"], got["pairs"]), (6720, {**none, G.NOT_LISTED: 6720}))
+        self.assertEqual(got["every_pair_below_refused"], 0)
+        listed = read(rec=record(listed={4: ["R1", "R2", "R3"]}))
+        self.assertEqual(listed["added_after_the_first_run"]["beside"]["pairs"],
+                         {**none, G.NO_SIDE: 6720})
+
+
+class TestTheLossesFirst(unittest.TestCase):
+
+    def test_the_losses_first_keep_what_the_record_s_order_left_in_conflict(self):
+        orders = read_cycle()["added_after_the_first_run"]["orders"]
+        d, f = orders["declared"], orders["losses_first"]
+        self.assertEqual((d["final"]["right"], d["refused_for_a_cycle"]), (15120, 1))
+        self.assertEqual((f["final"]["right"], f["refused_for_a_cycle"]), (20160, 1))
+        self.assertEqual((d["peak"]["birth"], d["peak"]["right"]), (1, 26880))
+        self.assertEqual(d["fall"]["fraction"], str(F(26880 - 15120, N_POINTS)))
+        self.assertEqual(d["conflict"]["points"], 5040)
+
+    def test_the_order_replay_is_the_reading_s(self):
+        rec = cycle_record()
+        self.assertEqual(G.order_replay(rec, SPACE, TRUTH, losses_first=False)["curve"],
+                         [26880, 20160, 15120])
+        got = G.order_replay(rec, SPACE, TRUTH, losses_first=True)
+        self.assertEqual(got["curve"], [26880, 20160, 20160])
+        self.assertTrue(got["masks_ok"])
+
+    def test_gate_5_fails_off_the_record_s_refusals(self):
+        """The log says the loss to A was installed; replayed, it is refused."""
+        rec = cycle_record(edges=CYCLE_EDGES[:2] + [(2, "A", "C")])
+        got = read_cycle(rec)
+        self.assertFalse(gate(got, 5))
+        self.assertTrue(gate(got, 1) and gate(got, 3) and gate(got, 4))
 
 
 class TestTheWriter(unittest.TestCase):
