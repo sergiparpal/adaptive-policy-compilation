@@ -16,7 +16,9 @@ Also pinned:
 - the final ways of the forgotten points;
 - the five gates on that run, and each failing on its own;
 - the expectation's clauses at their edges, and a clause over nothing;
-- that the writer refuses unsigned before it reads or writes.
+- that the writer refuses unsigned before it reads or writes;
+- and, added after the first run, the born reports by breadth, the nested
+  reports' rules, the last losses' targets and spans, and the takers' causes.
 """
 
 from __future__ import annotations
@@ -207,6 +209,42 @@ class TestTheClasses(unittest.TestCase):
         self.assertTrue(all(g["passes"] for g in self.got["gates"]), self.got["gates"])
         self.assertEqual(self.got["labelled_arrivals"], [1, 7])
         self.assertEqual((self.got["labels"], self.got["labelled_points"]), (6, 6))
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.got = read()["added_after_the_first_run"]
+
+    def test_the_born_reports_by_breadth(self):
+        # R4, one condition, left ticket 3 wrong; R2, R7, R10 and R12, two each,
+        # left theirs right.
+        self.assertEqual(self.got["born_reports_by_conditions"],
+                         {"1": {"right": 0, "not_right": 1}, "2": {"right": 4, "not_right": 0}})
+        pts = self.got["median_points_of_the_correction"]
+        self.assertGreater(pts["not_right"], pts["right"])
+
+    def test_the_nested_reports(self):
+        self.assertEqual(self.got["nested_reports"],
+                         {"reports": 1, "beaten_by_several_nested": 0, "erred_is_nested": 1,
+                          "erred_born_at": {"IMPASSE": 1}})
+
+    def test_the_last_losses(self):
+        # Tickets 1, 6 and 9 were each decided by their own correction before the
+        # loss, and stood right 3, 1 and 1 cases.
+        self.assertEqual(self.got["last_losses"],
+                         {"taken_back": 3, "own_correction_undefeated_before": 3,
+                          "cases_stood_right": {"lower_median": 1, "least": 1, "most": 3},
+                          "by_cause_and_how": {"IMPASSE/by_containment": 1,
+                                               "IMPASSE/by_edge": 1, "IMPASSE/conflict": 1}})
+
+    def test_the_takers_beside_the_births(self):
+        self.assertEqual(self.got["takers_by_cause"], {"IMPASSE": 3})
+        self.assertEqual(self.got["births_by_cause"], {"IMPASSE": 7, "ERROR": 5})
+
+    def test_the_lower_median(self):
+        self.assertEqual((G.middle([4, 1, 3, 2]), G.middle([5]), G.middle([])), (2, 5, None))
 
 
 class TestTheGatesFail(unittest.TestCase):
