@@ -432,6 +432,19 @@ class TestAddedAfterTheFirstRun(unittest.TestCase):
         self.assertEqual(len(RUN["added_after_the_first_run"][ON]["takers"]),
                          len(RUN["takers"][ON]["takers"]))
 
+    def test_what_a_replay_turns_right_by_the_way_the_record_lost_it(self):
+        g = RUN["levers"]["by_queue"][ON][C.LOSSES_FIRST]
+        by_way = g["turned_right_by_way"]
+        # Installed losses first, Q beats Y: the contested points, and nothing
+        # outranked.
+        self.assertEqual(by_way["contested"], g["turned_right"])
+        self.assertEqual(by_way["conflict"], g["turned_right"])
+        self.assertEqual(by_way["outranked"], 0)
+        self.assertEqual(sum(by_way[k] for k in L.WAYS), g["turned_right"])
+        self.assertNotIn("turned_right_by_way",
+                         C.given_back({k: {"right_mask": 0} for k in (C.RECORD,) + C.LEVERS},
+                                      TRUTH[ON])[C.WHERE])
+
 
 class TestTheWriter(unittest.TestCase):
 

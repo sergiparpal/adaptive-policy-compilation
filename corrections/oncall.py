@@ -218,9 +218,15 @@ reads, for every rule that takes a queue's points:
 The taken points are weighed by the queue of the rule that erred, a point
 several takers share counted for each.
 
-It was tried on the records in a scratch script before it was written here,
-after the seven clauses above had been read: O1 to O6 hold, and O7 fails. It
-carries no expectation and moves no clause.
+**And what each replay turns right, by the way the record lost it.** The first
+run found each replay giving back about as many points as the record left
+contested, in both queues. So part 3 splits the points each replay turns right
+by the way the record's final base lost them: an impasse, a conflict, contested
+or not, unwritten or outranked.
+
+Both were tried on the records in a scratch script before they were written
+here, after the seven clauses above had been read: O1 to O6 hold, and O7 fails.
+They carry no expectation and move no clause.
 
 --------------------------------------------------------------------------
 PROVENANCE
@@ -295,8 +301,9 @@ ADDED = (
     "Added after the first run, after its seven clauses were read: for every rule that takes "
     "a queue's points, the rule that had decided its ticket at a reported error, and the "
     "edges between it and the queue's rules, those its own answer declared at its birth and "
-    "those later rules of the queue declared against it, each with the engine's verdict. "
-    "Tried in a scratch script first. No expectation; no clause moves.")
+    "those later rules of the queue declared against it, each with the engine's verdict; and "
+    "the points each replay turns right, split by the way the record's final base lost them. "
+    "Both tried in a scratch script first. No expectation; no clause moves.")
 OWN, LATER = "own", "later"
 WINS, LOSSES = "wins", "losses"
 
@@ -656,16 +663,22 @@ def levers_ok(got: dict[str, dict[str, Any]], truth: dict[str, int], n: int,
             and all(g["masks_ok"] for g in got.values()))
 
 
-def given_back(got: dict[str, dict[str, Any]], truth: int) -> dict[str, dict[str, int]]:
+def given_back(got: dict[str, dict[str, Any]], truth: int,
+               w: dict[str, Any] | None = None) -> dict[str, dict[str, Any]]:
     """For one queue: its points each replay decides right, what it gives back
-    against the record's order, and the points it turns right and wrong."""
+    against the record's order, and the points it turns right and wrong. Given
+    the record's ways, `w`, the points each replay turns right are split by the
+    way the record's final base lost them: added after the first run."""
     rec = got[RECORD]["right_mask"] & truth
-    out = {RECORD: {"right": rec.bit_count()}}
+    out: dict[str, dict[str, Any]] = {RECORD: {"right": rec.bit_count()}}
     for k in LEVERS:
         m = got[k]["right_mask"] & truth
         out[k] = {"right": m.bit_count(), "gives_back": m.bit_count() - rec.bit_count(),
                   "turned_right": (m & ~rec).bit_count(),
                   "turned_wrong": (rec & ~m).bit_count()}
+        if w is not None:
+            out[k]["turned_right_by_way"] = {x: (m & ~rec & w[x]).bit_count()
+                                             for x in L.WAYS + ("contested",)}
     return out
 
 
@@ -716,7 +729,7 @@ def read_run(record: dict[str, Any], oncall_run: dict[str, Any], space: Space,
                and final_right & truth[q] == w["right"]
                and (at_peak & ~final_right & truth[q]).bit_count() == fall_lost.get(q, 0))
         peak_part[q] = by_peak(w, at_peak)
-        lever_part[q] = given_back(got, truth[q])
+        lever_part[q] = given_back(got, truth[q], w)
     gates.append({"gate": 6, "what": "the takers partition the taken points, and every report "
                                      "names its ticket's true queue",
                   "passes": ok6})
