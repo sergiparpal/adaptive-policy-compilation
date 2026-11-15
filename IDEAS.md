@@ -633,6 +633,24 @@ learner of the labels alone matched the loop. What that leaves:
   always put the security rules first might make fewer doors. Calls.
 - **Why some answers put their newborn above every rule of their list.** Some
   climbs did, the security rules included. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: mostly what the list lacks.** The answers
+  place the rules of `SECURITY_INCIDENT` as one block and those of
+  `ONCALL_ESCALATION` nearly so, and put their newborn above the rules that
+  hold its ticket. So a list with neither queue's rule often comes out above
+  every rule. The few above the security block read every rule by its
+  conditions, or are their queue's general rule read as a domain, and most
+  then go above the whole list. The draft's conditions raise it. The bet's
+  cell, a narrow draft against few security rules, held thinly in L and failed
+  in N. `FINDINGS_CORRECTIONS.md`, *Why some answers put their newborn above
+  every rule of their list*.
+- **What makes one answer read the list by its conditions and another by its
+  queues.** The same draft does both, and the draft's conditions raise the
+  first without making it common. Whether the list's order moves it, as it
+  moved the reading of the gateway, is not read. Free on the records.
+- **A placement round that defines `beats` by the queue that should decide.**
+  v1c defines it as an exception, and the few answers above the security
+  block read that as specificity. A round that asked which queue should decide
+  the shared tickets might keep them below it. Calls.
 - **A placement round that shows what containment orders.** v1c's list gives
   each rule's declared wins, not the rules it beats by containment. Most of the
   doors' answers declared their newborn below the security rule the gateway

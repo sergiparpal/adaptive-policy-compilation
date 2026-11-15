@@ -3303,6 +3303,25 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        about 0.03.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What makes an answer read a keyword rule by its queue*.
+     **[NOTE 2026-11-15, after the eighth] Why some answers put their newborn
+     above every rule of their list, read POST-RUN: mostly what the list
+     lacks.**
+     - **Two queues first.** In L r2 and L r3, all 228 rounds whose list held
+       two or more rules of `SECURITY_INCIDENT` placed them as one block. A
+       rule of `ONCALL_ESCALATION` held the answer down: 70 of 148 rounds
+       went above every rule without one, and 2 of 24 with one.
+     - **The ticket.** At reported errors, 813 of 833 placements against a
+       listed rule that holds the ticket put the newborn above.
+     - **The few above the security block** read every rule by its
+       conditions, or are their queue's general rule read as a domain: 7 of
+       326 rounds in L and 7 of 403 in N. Drafts of four or more conditions
+       did it about four times as often, in both arms.
+     - **The bet held on one round, and its statement failed in N.** A narrow
+       draft against one or two security rules went above them in 1 of 17
+       rounds in L and 0 of 17 in N, and 12 of the 14 rounds above the block
+       had three or more.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why some answers put their newborn above every rule of their list*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
