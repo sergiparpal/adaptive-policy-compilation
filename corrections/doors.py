@@ -183,6 +183,25 @@ declared of a rule other than its gateway, any listing's other keyword rules or
 security rules, any placement's kind, and any reasoning.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE WHOLE LIST, AND THE GATEWAY'S QUEUE
+--------------------------------------------------------------------------
+The first run found F4 failing: seven of the held-out climbs put their newborn
+above every security rule their round listed. Read in a scratch script, those
+answers had put it above every rule of their list. And F2 reads the gateway
+beside other keyword rules, not beside its own queue. So this part reads, for
+each listing:
+- **what its answer did with every rule its round listed**;
+- **the rules of the gateway's queue its round listed** that are not keyword
+  rules, the gateways left out, and what its answer did with them. An answer
+  that reads the gateway by its queue places it as it places those rules;
+and, for each run, the listings of each side by both, and the climbs by what
+they did with the security rules and with the whole list.
+It was tried on the records in a scratch script before it was written here. It
+was written after the six clauses above had been read: F1, F2, F3 and F6 hold,
+and F4 and F5 fail. It carries no expectation and moves no clause, and it adds
+no gate.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-15, after `corrections/gateway.py`.
@@ -266,6 +285,13 @@ PROVENANCE = (
     "expectation was committed before the reading ran on the other runs. Not a signed row; no "
     "verdict moves.")
 
+ADDED = (
+    "Added after the first run, after its six clauses were read: what each listing's answer "
+    "did with every rule its round listed, and with the rules of the gateway's queue that are "
+    "not keyword rules; each side's listings by both, and the climbs by what they did with the "
+    "security rules and with the whole list. Tried in a scratch script first. No expectation; "
+    "no clause moves.")
+
 share, frac = fg.share, fg.frac
 
 
@@ -348,6 +374,9 @@ def listings(record: dict[str, Any], gates: list[dict[str, Any]], ext: dict[str,
                             and rules[x]["action"] != SEC and keyword_rule(ext[x], kw))
             secs = sorted(x for x in listed if rules[x]["action"] == SEC
                           and strictly_below(ext[gid], ext[x]))
+            same = sorted(x for x in listed if x not in gate_ids
+                          and rules[x]["action"] == rules[gid]["action"]
+                          and not keyword_rule(ext[x], kw))
             en, eg = ext[n], ext[gid]
             out.append({
                 "born_at": idx, "newborn": n, "action": r["action"], "cause": esc.get("kind"),
@@ -364,8 +393,23 @@ def listings(record: dict[str, Any], gates: list[dict[str, Any]], ext: dict[str,
                 "security_rules": secs, "security_toward": toward(said, secs),
                 "security_losses": {x: said[x][1] for x in secs
                                     if said.get(x, (None, None))[0] == "loses_to"},
+                "added_after_the_first_run": {
+                    "list_toward": toward(said, listed),
+                    "queue_rules": same, "queue_toward": toward(said, same)},
             })
     return out
+
+
+def added(ls: list[dict[str, Any]]) -> dict[str, Any]:
+    """Added after the first run: what each side's answers did with the whole
+    list and with the rules of the gateway's queue that are not keyword rules,
+    and the climbs by what they did with the security rules and with the list."""
+    flat = [{"side": l["side"], **l["added_after_the_first_run"],
+             "security_toward": l["security_toward"]} for l in ls]
+    return {"list_toward": by_side(flat, "list_toward"),
+            "queue_toward": by_side(flat, "queue_toward"),
+            "climbs": dict(sorted(Counter(f"{l['security_toward']}:{l['list_toward']}"
+                                          for l in flat if l["side"] == CLIMB).items()))}
 
 
 def placements(record: dict[str, Any], gates: list[dict[str, Any]], ext: dict[str, int],
@@ -470,7 +514,8 @@ def read_run(record: dict[str, Any], gateway_run: dict[str, Any], space: Space,
                        if l["side"] == CLIMB and l["said"][1] == EDGE_OK
                        for why in l["security_losses"].values())},
     ]
-    run = {"summary": summary, "listings": ls, "gates": gates_out}
+    run = {"summary": summary, "listings": ls, "gates": gates_out,
+           "added_after_the_first_run": added(ls)}
     if tag == DEVELOPMENT_RUN:
         run["development"] = development(run)
         gates_out.append({"gate": 5, "what": "the development set gives DEVELOPMENT's counts",
@@ -567,6 +612,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"gateway": str(gw.record_path()),
                    "gateway_from": gateway_record["_env"].get("git_commit")},
         "surface": "every round of each run that listed a gateway of gateway.json born before "
