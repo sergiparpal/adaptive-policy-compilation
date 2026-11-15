@@ -1382,6 +1382,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.doors                         # POST-RUN: why the doors declared themselves above the gateway
     PYTHONHASHSEED=0 python3 -m corrections.carry                         # POST-RUN: how much of the fall the doors carry
     PYTHONHASHSEED=0 python3 -m corrections.byqueue                       # POST-RUN: what makes an answer read a keyword rule by its queue
+    PYTHONHASHSEED=0 python3 -m corrections.above                         # POST-RUN: why some answers put their newborn above every rule of their list
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1484,6 +1485,17 @@ held the answer down. A protocol that shuffles its list has run an experiment on
 the order: read it. **And a development set can miss what the held-out runs
 show.** This one had few climbs, and the clause trusted most failed. Size a
 development set for the effect it rules out.
+
+**Read POST-RUN, an answer above every rule of its list mostly met no rule of
+the queues it puts first.** The answers place the security rules as one block,
+and the on-call rules nearly so, and put their newborn above the rules that hold
+its ticket. The few above the security block count conditions, as the round's
+`beats`, an exception, invites, or are their queue's general rule read as a
+domain. A round that defines a side as an exception invites an answer that
+counts conditions. **And a cell joins two leads.** This one joined the draft's
+conditions, which held in both arms, to the block's length, which rested on a
+few rounds of the development set and reversed. Band each half apart, so the
+half that holds is not read through the half that fails.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
