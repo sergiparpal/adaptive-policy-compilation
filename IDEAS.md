@@ -610,6 +610,25 @@ learner of the labels alone matched the loop. What that leaves:
 - **Why the doors declared themselves above the gateway.** Most answers that
   were listed it put it above their newborn, and the doors' did not. Their
   reasoning is in the records. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: they read it by its queue.** The answers
+  place a keyword rule of another queue as a security rule, and the gateway is
+  such a rule. The answers that climbed over it read it as a rule of
+  `T2_TECHNICAL`, as they read the round's other keyword rules of other queues
+  and the rules of its own queue. Most of the doors still put their newborn
+  below the security rule the gateway beats by containment, and the engine
+  refused that loss. The rest put their newborn above every rule of their list.
+  `FINDINGS_CORRECTIONS.md`, *Why the doors declared themselves above the
+  gateway*.
+- **What makes an answer read a keyword rule by its queue.** Both readings
+  appear in the same reasonings, and nothing structural read so far tells a
+  climb's round from a cede's. Free on the records.
+- **Why some answers put their newborn above every rule of their list.** Some
+  climbs did, the security rules included. Free on the records.
+- **A placement round that shows what containment orders.** v1c's list gives
+  each rule's declared wins, not the rules it beats by containment. Most of the
+  doors' answers declared their newborn below the security rule the gateway
+  beats that way, and some climbs said the security rules would win anyway. A
+  round that showed it might keep them below the gateway. Calls.
 - **How much of the fall the doors carry.** A replay of the same births without
   the doors' edges would say how much of what L lost rests on them. It is not
   the loop that would have run. Free on the records.
