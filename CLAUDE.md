@@ -1384,6 +1384,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.byqueue                       # POST-RUN: what makes an answer read a keyword rule by its queue
     PYTHONHASHSEED=0 python3 -m corrections.above                         # POST-RUN: why some answers put their newborn above every rule of their list
     PYTHONHASHSEED=0 python3 -m corrections.conditions                    # POST-RUN: what makes an answer read the list by its conditions
+    PYTHONHASHSEED=0 python3 -m corrections.oncall                        # POST-RUN: why L loses ONCALL_ESCALATION
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1507,6 +1508,17 @@ reads a rule on its own. **A rare outcome can pool several mechanisms.** Class
 each case by what its reasoning does before banding one feature over all of
 them. The cheaper reasoning belonged to the enumerations and to the queue read
 the other way, not to the readings by conditions.
+
+**Read POST-RUN, L lost the rarest queue where it learned the layer below it.**
+In every run of both arms the queue's first rule was born at a ticket of another
+queue: the catalogue's reading of severity 1, covering the queue and the layer
+below it. N's reports name no queue, and its proposer wrote the queue again at
+them, so N kept the queue and never learned the layer. L's reports named the
+layer. Each correction was a slice of severity 1 by product that kept the
+queue's tiers, and it won over the rule that had erred there. Installing losses
+first gives back what is left contested, in both queues. Nothing gives back what
+is outranked. **A queue a loop keeps may be kept by an error nobody corrects.**
+Read where a queue's rules were born before crediting the arm that keeps it.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

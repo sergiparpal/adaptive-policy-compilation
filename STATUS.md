@@ -3338,6 +3338,32 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        three never read a security rule on its own.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What makes an answer read the list by its conditions*.
+     **[NOTE 2026-11-15, after the tenth] Which rules take the rarest queue's
+     points, read POST-RUN: corrections of the layer below, over a rule of the
+     queue written there.**
+     - **Written whole, at the layer below.** In every run of both arms the
+       queue's first rule was born at a ticket of another queue, five times of
+       six at a severity-1 ticket of `H07` or `H08`, and four of those five at
+       an impasse. Those five cover the queue whole. No point L lost is
+       unwritten.
+     - **Lost two ways.** Of the 10,825 points L's three runs lost, 4,540 are
+       contested conflicts and 6,285 are outranked. 5,805 of the outranked are
+       decided only by rules born at a reported error, and 4,920 are outranked by
+       an edge.
+     - **The takers are slices of severity 1 by product** that keep the queue's
+       tiers, born mostly at reported tickets of `H06` to `H08`. In L r1 and L
+       r2 the rule they corrected was the queue's own.
+     - **Only the contested come back.** Installing losses first gives back
+       4,120 of the queue's points. Every point any replay turns right was
+       contested, in both queues, and none was outranked.
+     - **N keeps the queue because nothing corrects its rule.** 20 to 22 of each
+       N run's rules of the queue were born at reported errors, which name no
+       queue.
+     - **The rest of `SECURITY_INCIDENT`'s.** Of its points not right at the
+       peak, L r1 left 11,480 of 17,300 in conflicts. In L r3 the gateway born
+       at case 19 took 11,927 of 16,800, none ever right.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why L loses `ONCALL_ESCALATION`*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
@@ -3373,7 +3399,7 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      and the loop's base is ordered by containment and declared edges. No row
      separates the two.
 
-   The first and the last are free on the records.
+   The first is read above, and the last is free on the records.
 
 ---
 
