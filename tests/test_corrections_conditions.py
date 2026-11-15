@@ -335,6 +335,32 @@ class TestTheExpectation(unittest.TestCase):
         self.assertEqual(got, {k: False for k in ("C1", "C2", "C3", "C4", "C5")})
 
 
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+    """Whether the reasoning names a listed security rule only in lines that
+    enumerate the list."""
+
+    def test_a_line_that_enumerates(self):
+        listed = ["U", "X", "A", "B"]
+        self.assertTrue(C.enumerated_only("All: U, X, A.\nPut them in beats.", listed, ["U"]))
+        self.assertFalse(C.enumerated_only("All: U, X, A.\nU is security.", listed, ["U"]))
+        self.assertFalse(C.enumerated_only("U and X.", listed, ["U"]))
+        self.assertFalse(C.enumerated_only("X, A and B.", listed, ["U"]))
+        self.assertTrue(C.enumerated_only("U, X, A, B", ["U", "X", "A", "B", "Y", "Z"], ["U"]))
+        self.assertFalse(C.enumerated_only("U, X, A", ["U", "X", "A", "B", "Y", "Z", "W"], ["U"]))
+
+    def test_on_the_run(self):
+        run = read()
+        self.assertEqual(run["added_after_the_first_run"],
+                         {CEDE: {"named_apart": 2}, CLIMB: {"named_apart": 2}})
+        births = [b if b[2]["rule_id"] != "C" else
+                  (b[0], b[1], b[2], b[3], "In order: U, X and A.\nAll below us.", b[5])
+                  for b in BIRTHS]
+        run = read(rec=record(births))
+        self.assertEqual(run["added_after_the_first_run"][CEDE],
+                         {"enumerated_only": 1, "named_apart": 1})
+        self.assertEqual([g["gate"] for g in run["gates"]], [1, 2, 3, 4])
+
+
 class TestTheWriter(unittest.TestCase):
 
     def test_it_refuses_unsigned_before_it_reads_or_writes(self):
