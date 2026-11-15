@@ -1,0 +1,6602 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-15T21:01:21Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "5e15c43b695bbce93966dbb0ada36066a1a17c8e",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "f0e1e3d4b07d05d2"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-15, after corrections/oncall.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: at each checkpoint, each label that names the queue with its ticket's governing rule, severity, tier, hours and product; and for each answer, how many times its reasoning writes ONCALL_ESCALATION. Tried in a scratch script first. No expectation; no clause moves.",
+  "source": {
+    "score": "results_corrections/score.json",
+    "score_from": "9a157dbd86ea4105970a2742a0e1e2662117da4b",
+    "sessions": {
+      "l_r1": "results_corrections/atonce_l_r1.json",
+      "l_r2": "results_corrections/atonce_l_r2.json",
+      "l_r3": "results_corrections/atonce_l_r3.json",
+      "prior": "results_corrections/atonce_prior.json"
+    },
+    "sessions_from": {
+      "l_r1": "fe891f4155d6deb71a0ee793927a7169e9c4c129",
+      "l_r2": "319383ad743462c4671f1f8463da8a03253b39bf",
+      "l_r3": "08de8bf4964ed0152512d6b51accf95aa098c4bc",
+      "prior": "57e55342c7b374364db6f4e40482328b8e592ba2"
+    }
+  },
+  "surface": "the whole space, 134,400 points: every at-once answer Stage C read, installed as CR-d reads it, and the loop's base after each checkpoint's label",
+  "layer": {
+    "rules": [
+      "H06",
+      "H07",
+      "H08"
+    ],
+    "points": 10500,
+    "what": "the points of severity 1, outside the keyword, whose true queue is not ONCALL_ESCALATION's"
+  },
+  "constants": {
+    "WHOLE": "9/10",
+    "HALF": "1/2",
+    "A4_ASKS": 2
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the labels are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the answers are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "the loop's bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "the readings partition",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the labels are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the answers are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "the loop's bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "the readings partition",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the labels are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the answers are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "the loop's bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "the readings partition",
+      "passes": true
+    },
+    {
+      "run": "prior",
+      "gate": 1,
+      "what": "the labels are the record's",
+      "passes": true
+    },
+    {
+      "run": "prior",
+      "gate": 2,
+      "what": "the answers are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "prior",
+      "gate": 4,
+      "what": "the readings partition",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": null,
+      "what": "the layer is the first match of H06, H07 and H08",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "checkpoints": [
+        {
+          "labels": 10,
+          "case": 66,
+          "make_up": {
+            "labels": 10,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 0,
+            "of_the_layer_by_queue": {},
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "14087/26880",
+              "value": 0.52407
+            },
+            "queue": {
+              "right": 3780,
+              "lost": 2520,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 2520,
+              "contested": 0,
+              "by_edge": 2520,
+              "by_containment": 0
+            },
+            "queue_right_by_part": {
+              "H04": 2520,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 420,
+              "as_the_queue": 6300,
+              "as_another_queue": 3780,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "3/5",
+                "value": 0.6
+              },
+              "T3_ENGINEERING": {
+                "fraction": "21/409",
+                "value": 0.051345
+              },
+              "T2_TECHNICAL": {
+                "fraction": "533/3672",
+                "value": 0.145153
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027"
+              ],
+              "holding_h05_whole": [
+                "R0027"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "7499/13440",
+                  "value": 0.557961
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 0,
+                  "as_the_queue": 10500,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "55/459",
+                    "value": 0.119826
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "2663/4480",
+                  "value": 0.59442
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 0,
+                  "as_the_queue": 10500,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "35/459",
+                    "value": 0.076253
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 9
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "4391/6720",
+                  "value": 0.653423
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 2940,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 3360,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "147/409",
+                    "value": 0.359413
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "229/918",
+                    "value": 0.249455
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 15
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "2663/4480",
+                "value": 0.59442
+              },
+              "queue_recall": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "t3_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t2_recall": {
+                "fraction": "55/459",
+                "value": 0.119826
+              },
+              "layer_right": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "layer_as_the_queue": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 20,
+          "case": 98,
+          "make_up": {
+            "labels": 20,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 1,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "15469/26880",
+              "value": 0.575484
+            },
+            "queue": {
+              "right": 3780,
+              "lost": 2520,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 2520,
+              "contested": 0,
+              "by_edge": 2520,
+              "by_containment": 0
+            },
+            "queue_right_by_part": {
+              "H04": 2520,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 1260,
+              "as_the_queue": 6300,
+              "as_another_queue": 2940,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "3/5",
+                "value": 0.6
+              },
+              "T3_ENGINEERING": {
+                "fraction": "21/409",
+                "value": 0.051345
+              },
+              "T2_TECHNICAL": {
+                "fraction": "2041/7344",
+                "value": 0.277914
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027"
+              ],
+              "holding_h05_whole": [
+                "R0027"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "1957/3360",
+                  "value": 0.58244
+                },
+                "queue": {
+                  "right": 3780,
+                  "lost": 2520,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 2520,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 2520
+                },
+                "queue_right_by_part": {
+                  "H04": 2520,
+                  "H05": 1260
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 6300,
+                  "as_another_queue": 840,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "3/5",
+                    "value": 0.6
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "97/459",
+                    "value": 0.211329
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0004"
+                  ],
+                  "holding_h05_whole": [
+                    "R0004"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 15
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "2711/4480",
+                  "value": 0.605134
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "7/51",
+                    "value": 0.137255
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "1741/2688",
+                  "value": 0.647693
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "359/918",
+                    "value": 0.391068
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 6
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "2711/4480",
+                "value": 0.605134
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t2_recall": {
+                "fraction": "97/459",
+                "value": 0.211329
+              },
+              "layer_right": {
+                "fraction": "8/25",
+                "value": 0.32
+              },
+              "layer_as_the_queue": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 40,
+          "case": 257,
+          "make_up": {
+            "labels": 40,
+            "naming_the_queue": 1,
+            "tickets_of_the_layer": 2,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 1,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": [
+              {
+                "case": 257,
+                "governing": "H05",
+                "severity": 1,
+                "customer_tier": "business",
+                "off_hours": true,
+                "product": "dashboard",
+                "has_security_keyword": false
+              }
+            ]
+          },
+          "loop": {
+            "space": {
+              "fraction": "3469/6720",
+              "value": 0.51622
+            },
+            "queue": {
+              "right": 5040,
+              "lost": 1260,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 1260,
+              "contested": 0,
+              "by_edge": 1260,
+              "by_containment": 0
+            },
+            "queue_right_by_part": {
+              "H04": 2940,
+              "H05": 2100
+            },
+            "layer": {
+              "right": 2060,
+              "as_the_queue": 6680,
+              "as_another_queue": 1660,
+              "conflict": 100,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "4/5",
+                "value": 0.8
+              },
+              "T3_ENGINEERING": {
+                "fraction": "108/409",
+                "value": 0.264059
+              },
+              "T2_TECHNICAL": {
+                "fraction": "244/459",
+                "value": 0.53159
+              }
+            },
+            "queue_rules": {
+              "rules": 2,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027"
+              ],
+              "holding_h05_whole": [
+                "R0027",
+                "R0066"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "9343/13440",
+                  "value": 0.695164
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 5040,
+                  "as_the_queue": 2100,
+                  "as_another_queue": 3360,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "194/409",
+                    "value": 0.474328
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "362/459",
+                    "value": 0.788671
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "261/448",
+                  "value": 0.582589
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 2940,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 3360,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "163/409",
+                    "value": 0.398533
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "11/17",
+                    "value": 0.647059
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0001"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "1667/2240",
+                  "value": 0.744196
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 8400,
+                  "as_the_queue": 2100,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "184/409",
+                    "value": 0.449878
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "394/459",
+                    "value": 0.858388
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 12
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "9343/13440",
+                "value": 0.695164
+              },
+              "queue_recall": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "t3_recall": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "t2_recall": {
+                "fraction": "362/459",
+                "value": 0.788671
+              },
+              "layer_right": {
+                "fraction": "12/25",
+                "value": 0.48
+              },
+              "layer_as_the_queue": {
+                "fraction": "1/5",
+                "value": 0.2
+              },
+              "asks_naming_the_tier": 2
+            }
+          }
+        },
+        {
+          "labels": 80,
+          "case": 633,
+          "make_up": {
+            "labels": 80,
+            "naming_the_queue": 1,
+            "tickets_of_the_layer": 5,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 4,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": [
+              {
+                "case": 257,
+                "governing": "H05",
+                "severity": 1,
+                "customer_tier": "business",
+                "off_hours": true,
+                "product": "dashboard",
+                "has_security_keyword": false
+              }
+            ]
+          },
+          "loop": {
+            "space": {
+              "fraction": "2197/3360",
+              "value": 0.653869
+            },
+            "queue": {
+              "right": 3140,
+              "lost": 3160,
+              "impasse": 0,
+              "conflict": 1480,
+              "unwritten": 0,
+              "outranked": 1680,
+              "contested": 1480,
+              "by_edge": 1680,
+              "by_containment": 0
+            },
+            "queue_right_by_part": {
+              "H04": 1880,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 3320,
+              "as_the_queue": 4400,
+              "as_another_queue": 1260,
+              "conflict": 1520,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "157/315",
+                "value": 0.498413
+              },
+              "T3_ENGINEERING": {
+                "fraction": "186/409",
+                "value": 0.454768
+              },
+              "T2_TECHNICAL": {
+                "fraction": "1489/1836",
+                "value": 0.811002
+              }
+            },
+            "queue_rules": {
+              "rules": 2,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027"
+              ],
+              "holding_h05_whole": [
+                "R0027",
+                "R0066"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "6203/13440",
+                  "value": 0.461533
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 8820,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "215/409",
+                    "value": 0.525672
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "401/459",
+                    "value": 0.873638
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 13
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "6397/13440",
+                  "value": 0.475967
+                },
+                "queue": {
+                  "right": 3360,
+                  "lost": 2940,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 840,
+                  "contested": 0,
+                  "by_edge": 840,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 1680,
+                  "H05": 1680
+                },
+                "layer": {
+                  "right": 8820,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "8/15",
+                    "value": 0.533333
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "205/409",
+                    "value": 0.501222
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "44/51",
+                    "value": 0.862745
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 10
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "1429/2688",
+                  "value": 0.531622
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 8400,
+                  "as_the_queue": 2100,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "194/409",
+                    "value": 0.474328
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "133/153",
+                    "value": 0.869281
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [
+                    "R0001"
+                  ],
+                  "holding_h05_whole": [
+                    "R0001"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 6
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "6397/13440",
+                "value": 0.475967
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "205/409",
+                "value": 0.501222
+              },
+              "t2_recall": {
+                "fraction": "133/153",
+                "value": 0.869281
+              },
+              "layer_right": {
+                "fraction": "21/25",
+                "value": 0.84
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 3
+            }
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1280,
+          "make_up": {
+            "labels": 160,
+            "naming_the_queue": 1,
+            "tickets_of_the_layer": 12,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 9,
+              "T3_ENGINEERING": 3
+            },
+            "queue_tickets": [
+              {
+                "case": 257,
+                "governing": "H05",
+                "severity": 1,
+                "customer_tier": "business",
+                "off_hours": true,
+                "product": "dashboard",
+                "has_security_keyword": false
+              }
+            ]
+          },
+          "loop": {
+            "space": {
+              "fraction": "691/1120",
+              "value": 0.616964
+            },
+            "queue": {
+              "right": 3360,
+              "lost": 2940,
+              "impasse": 0,
+              "conflict": 1680,
+              "unwritten": 0,
+              "outranked": 1260,
+              "contested": 1680,
+              "by_edge": 420,
+              "by_containment": 840
+            },
+            "queue_right_by_part": {
+              "H04": 2520,
+              "H05": 840
+            },
+            "layer": {
+              "right": 3780,
+              "as_the_queue": 2520,
+              "as_another_queue": 840,
+              "conflict": 3360,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "8/15",
+                "value": 0.533333
+              },
+              "T3_ENGINEERING": {
+                "fraction": "176/409",
+                "value": 0.430318
+              },
+              "T2_TECHNICAL": {
+                "fraction": "6121/7344",
+                "value": 0.833469
+              }
+            },
+            "queue_rules": {
+              "rules": 8,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027",
+                "R0164",
+                "R0173",
+                "R0179"
+              ],
+              "holding_h05_whole": [
+                "R0027",
+                "R0066",
+                "R0151",
+                "R0164",
+                "R0173",
+                "R0179",
+                "R0196",
+                "R0198"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "4933/6720",
+                  "value": 0.734077
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 7980,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "263/409",
+                    "value": 0.643032
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "14/17",
+                    "value": 0.823529
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 3
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "10783/13440",
+                  "value": 0.802307
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 10500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "305/409",
+                    "value": 0.745721
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "8/9",
+                    "value": 0.888889
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "2651/3360",
+                  "value": 0.788988
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 7980,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "367/409",
+                    "value": 0.897311
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "433/459",
+                    "value": 0.943355
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 9
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "2651/3360",
+                "value": 0.788988
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "305/409",
+                "value": 0.745721
+              },
+              "t2_recall": {
+                "fraction": "8/9",
+                "value": 0.888889
+              },
+              "layer_right": {
+                "fraction": "19/25",
+                "value": 0.76
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 3
+            }
+          }
+        },
+        {
+          "labels": 216,
+          "case": 1994,
+          "make_up": {
+            "labels": 216,
+            "naming_the_queue": 1,
+            "tickets_of_the_layer": 17,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 13,
+              "T3_ENGINEERING": 4
+            },
+            "queue_tickets": [
+              {
+                "case": 257,
+                "governing": "H05",
+                "severity": 1,
+                "customer_tier": "business",
+                "off_hours": true,
+                "product": "dashboard",
+                "has_security_keyword": false
+              }
+            ]
+          },
+          "loop": {
+            "space": {
+              "fraction": "253/448",
+              "value": 0.564732
+            },
+            "queue": {
+              "right": 2520,
+              "lost": 3780,
+              "impasse": 0,
+              "conflict": 1680,
+              "unwritten": 0,
+              "outranked": 2100,
+              "contested": 1680,
+              "by_edge": 1260,
+              "by_containment": 840
+            },
+            "queue_right_by_part": {
+              "H04": 1680,
+              "H05": 840
+            },
+            "layer": {
+              "right": 4620,
+              "as_the_queue": 1260,
+              "as_another_queue": 840,
+              "conflict": 3780,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "T3_ENGINEERING": {
+                "fraction": "177/409",
+                "value": 0.432763
+              },
+              "T2_TECHNICAL": {
+                "fraction": "1577/1836",
+                "value": 0.858932
+              }
+            },
+            "queue_rules": {
+              "rules": 19,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0027",
+                "R0164",
+                "R0173",
+                "R0179",
+                "R0224",
+                "R0252",
+                "R0278"
+              ],
+              "holding_h05_whole": [
+                "R0027",
+                "R0066",
+                "R0151",
+                "R0164",
+                "R0173",
+                "R0179",
+                "R0196",
+                "R0198",
+                "R0221",
+                "R0223",
+                "R0224",
+                "R0226",
+                "R0227",
+                "R0246",
+                "R0252",
+                "R0253",
+                "R0259",
+                "R0270",
+                "R0278"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "21001/26880",
+                  "value": 0.781287
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 10500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "305/409",
+                    "value": 0.745721
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "437/459",
+                    "value": 0.95207
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "in",
+                        [
+                          "business",
+                          "enterprise"
+                        ]
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "2005/2688",
+                  "value": 0.745908
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 10500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "389/409",
+                    "value": 0.9511
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "133/153",
+                    "value": 0.869281
+                  }
+                },
+                "queue_rules": {
+                  "rules": 2,
+                  "naming_the_tier": 2,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "eq",
+                        "business"
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ],
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "eq",
+                        "enterprise"
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 13
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "10193/13440",
+                  "value": 0.758408
+                },
+                "queue": {
+                  "right": 420,
+                  "lost": 5880,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 5880,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 420
+                },
+                "layer": {
+                  "right": 9240,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1260,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1/15",
+                    "value": 0.066667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "336/409",
+                    "value": 0.821516
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "913/918",
+                    "value": 0.994553
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 1,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "customer_tier",
+                        "eq",
+                        "business"
+                      ],
+                      [
+                        "product",
+                        "eq",
+                        "dashboard"
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 13
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "10193/13440",
+                "value": 0.758408
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "336/409",
+                "value": 0.821516
+              },
+              "t2_recall": {
+                "fraction": "437/459",
+                "value": 0.95207
+              },
+              "layer_right": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 3
+            }
+          }
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the labels are the record's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the answers are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the loop's bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the readings partition",
+          "passes": true
+        }
+      ]
+    },
+    "l_r2": {
+      "checkpoints": [
+        {
+          "labels": 10,
+          "case": 78,
+          "make_up": {
+            "labels": 10,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 2,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 1,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "3051/4480",
+              "value": 0.681027
+            },
+            "queue": {
+              "right": 5040,
+              "lost": 1260,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 1260,
+              "contested": 0,
+              "by_edge": 0,
+              "by_containment": 1260
+            },
+            "queue_right_by_part": {
+              "H04": 3360,
+              "H05": 1680
+            },
+            "layer": {
+              "right": 5460,
+              "as_the_queue": 3360,
+              "as_another_queue": 1680,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "4/5",
+                "value": 0.8
+              },
+              "T3_ENGINEERING": {
+                "fraction": "105/409",
+                "value": 0.256724
+              },
+              "T2_TECHNICAL": {
+                "fraction": "4513/7344",
+                "value": 0.614515
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "7481/13440",
+                  "value": 0.556622
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3780,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "63/409",
+                    "value": 0.154034
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "1531/1836",
+                    "value": 0.833878
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 10
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "7447/13440",
+                  "value": 0.554092
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3780,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "63/409",
+                    "value": 0.154034
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "565/918",
+                    "value": 0.615468
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 5
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "4469/8960",
+                  "value": 0.498772
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3150,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 3150,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "63/409",
+                    "value": 0.154034
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "2297/3672",
+                    "value": 0.625545
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "7447/13440",
+                "value": 0.554092
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "63/409",
+                "value": 0.154034
+              },
+              "t2_recall": {
+                "fraction": "2297/3672",
+                "value": 0.625545
+              },
+              "layer_right": {
+                "fraction": "9/25",
+                "value": 0.36
+              },
+              "layer_as_the_queue": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 20,
+          "case": 158,
+          "make_up": {
+            "labels": 20,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 2,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 1,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "1021/1344",
+              "value": 0.759673
+            },
+            "queue": {
+              "right": 5040,
+              "lost": 1260,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 1260,
+              "contested": 0,
+              "by_edge": 0,
+              "by_containment": 1260
+            },
+            "queue_right_by_part": {
+              "H04": 3360,
+              "H05": 1680
+            },
+            "layer": {
+              "right": 5460,
+              "as_the_queue": 3360,
+              "as_another_queue": 1680,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "4/5",
+                "value": 0.8
+              },
+              "T3_ENGINEERING": {
+                "fraction": "105/409",
+                "value": 0.256724
+              },
+              "T2_TECHNICAL": {
+                "fraction": "4757/7344",
+                "value": 0.64774
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "1207/1920",
+                  "value": 0.628646
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 2280,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 4020,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "72/409",
+                    "value": 0.176039
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "523/918",
+                    "value": 0.569717
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "7519/13440",
+                  "value": 0.559449
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 2100,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 4200,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "21/409",
+                    "value": 0.051345
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "356/459",
+                    "value": 0.775599
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 10
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "4531/8960",
+                  "value": 0.505692
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 5040,
+                  "as_the_queue": 0,
+                  "as_another_queue": 5460,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "84/409",
+                    "value": 0.205379
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "7/9",
+                    "value": 0.777778
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "7519/13440",
+                "value": 0.559449
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "72/409",
+                "value": 0.176039
+              },
+              "t2_recall": {
+                "fraction": "356/459",
+                "value": 0.775599
+              },
+              "layer_right": {
+                "fraction": "38/175",
+                "value": 0.217143
+              },
+              "layer_as_the_queue": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 40,
+          "case": 362,
+          "make_up": {
+            "labels": 40,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 2,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 1,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "20191/26880",
+              "value": 0.751153
+            },
+            "queue": {
+              "right": 4400,
+              "lost": 1900,
+              "impasse": 0,
+              "conflict": 640,
+              "unwritten": 0,
+              "outranked": 1260,
+              "contested": 640,
+              "by_edge": 0,
+              "by_containment": 1260
+            },
+            "queue_right_by_part": {
+              "H04": 2720,
+              "H05": 1680
+            },
+            "layer": {
+              "right": 5460,
+              "as_the_queue": 3360,
+              "as_another_queue": 1680,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "44/63",
+                "value": 0.698413
+              },
+              "T3_ENGINEERING": {
+                "fraction": "204/409",
+                "value": 0.498778
+              },
+              "T2_TECHNICAL": {
+                "fraction": "383/612",
+                "value": 0.625817
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "3419/6720",
+                  "value": 0.50878
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3040,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 3260,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "310/409",
+                    "value": 0.757946
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "427/918",
+                    "value": 0.465142
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "14111/26880",
+                  "value": 0.524963
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 4620,
+                  "as_the_queue": 0,
+                  "as_another_queue": 5880,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "389/409",
+                    "value": 0.9511
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "641/918",
+                    "value": 0.698257
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 4
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "4439/6720",
+                  "value": 0.660565
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 2520,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 3780,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "200/409",
+                    "value": 0.488998
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "21/34",
+                    "value": 0.617647
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 10
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "14111/26880",
+                "value": 0.524963
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "310/409",
+                "value": 0.757946
+              },
+              "t2_recall": {
+                "fraction": "21/34",
+                "value": 0.617647
+              },
+              "layer_right": {
+                "fraction": "152/525",
+                "value": 0.289524
+              },
+              "layer_as_the_queue": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 80,
+          "case": 802,
+          "make_up": {
+            "labels": 80,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 6,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 4,
+              "T3_ENGINEERING": 2
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "7379/13440",
+              "value": 0.549033
+            },
+            "queue": {
+              "right": 3780,
+              "lost": 2520,
+              "impasse": 0,
+              "conflict": 220,
+              "unwritten": 0,
+              "outranked": 2300,
+              "contested": 0,
+              "by_edge": 840,
+              "by_containment": 1460
+            },
+            "queue_right_by_part": {
+              "H04": 2520,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 4800,
+              "as_the_queue": 1680,
+              "as_another_queue": 2940,
+              "conflict": 1080,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "3/5",
+                "value": 0.6
+              },
+              "T3_ENGINEERING": {
+                "fraction": "270/409",
+                "value": 0.660147
+              },
+              "T2_TECHNICAL": {
+                "fraction": "2743/3672",
+                "value": 0.747004
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "4519/6720",
+                  "value": 0.67247
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 4200,
+                  "as_the_queue": 0,
+                  "as_another_queue": 6300,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "184/409",
+                    "value": 0.449878
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "352/459",
+                    "value": 0.766885
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 1
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "1915/5376",
+                  "value": 0.356213
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 3780,
+                  "as_the_queue": 0,
+                  "as_another_queue": 6720,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "389/409",
+                    "value": 0.9511
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "277/459",
+                    "value": 0.603486
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 0
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "2573/6720",
+                  "value": 0.382887
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 4620,
+                  "as_the_queue": 0,
+                  "as_another_queue": 5880,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "357/409",
+                    "value": 0.872861
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "112/153",
+                    "value": 0.732026
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 3
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "2573/6720",
+                "value": 0.382887
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "357/409",
+                "value": 0.872861
+              },
+              "t2_recall": {
+                "fraction": "112/153",
+                "value": 0.732026
+              },
+              "layer_right": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1507,
+          "make_up": {
+            "labels": 160,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 14,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 8,
+              "T3_ENGINEERING": 6
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "13753/26880",
+              "value": 0.511644
+            },
+            "queue": {
+              "right": 3780,
+              "lost": 2520,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 2520,
+              "contested": 0,
+              "by_edge": 2100,
+              "by_containment": 420
+            },
+            "queue_right_by_part": {
+              "H04": 2520,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 7560,
+              "as_the_queue": 1680,
+              "as_another_queue": 1260,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "3/5",
+                "value": 0.6
+              },
+              "T3_ENGINEERING": {
+                "fraction": "313/409",
+                "value": 0.765281
+              },
+              "T2_TECHNICAL": {
+                "fraction": "5623/7344",
+                "value": 0.765659
+              }
+            },
+            "queue_rules": {
+              "rules": 2,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020",
+                "R0135"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "1285/1792",
+                  "value": 0.717076
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 10500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "301/409",
+                    "value": 0.735941
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "26/27",
+                    "value": 0.962963
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "97/256",
+                  "value": 0.378906
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 4200,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 6300,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 4200
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "367/409",
+                    "value": 0.897311
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "217/306",
+                    "value": 0.70915
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 3
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "8387/13440",
+                  "value": 0.624033
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 8820,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "387/409",
+                    "value": 0.94621
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "49/54",
+                    "value": 0.907407
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 0
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "8387/13440",
+                "value": 0.624033
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "367/409",
+                "value": 0.897311
+              },
+              "t2_recall": {
+                "fraction": "49/54",
+                "value": 0.907407
+              },
+              "layer_right": {
+                "fraction": "21/25",
+                "value": 0.84
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 209,
+          "case": 1998,
+          "make_up": {
+            "labels": 209,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 15,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 8,
+              "T3_ENGINEERING": 7
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "2269/5376",
+              "value": 0.422061
+            },
+            "queue": {
+              "right": 2820,
+              "lost": 3480,
+              "impasse": 0,
+              "conflict": 960,
+              "unwritten": 0,
+              "outranked": 2520,
+              "contested": 960,
+              "by_edge": 2100,
+              "by_containment": 420
+            },
+            "queue_right_by_part": {
+              "H04": 1880,
+              "H05": 940
+            },
+            "layer": {
+              "right": 5860,
+              "as_the_queue": 1680,
+              "as_another_queue": 2960,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "47/105",
+                "value": 0.447619
+              },
+              "T3_ENGINEERING": {
+                "fraction": "303/409",
+                "value": 0.740831
+              },
+              "T2_TECHNICAL": {
+                "fraction": "79/136",
+                "value": 0.580882
+              }
+            },
+            "queue_rules": {
+              "rules": 2,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0020"
+              ],
+              "holding_h05_whole": [
+                "R0020",
+                "R0135"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "1877/3360",
+                  "value": 0.558631
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 6720,
+                  "as_the_queue": 0,
+                  "as_another_queue": 3780,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "328/409",
+                    "value": 0.801956
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "79/102",
+                    "value": 0.77451
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "3361/5376",
+                  "value": 0.625186
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 840,
+                  "conflict": 0,
+                  "unwritten": 5460,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 7980,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "347/409",
+                    "value": 0.848411
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "1259/1836",
+                    "value": 0.68573
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "3281/4480",
+                  "value": 0.732366
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 8820,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "89/102",
+                    "value": 0.872549
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "3361/5376",
+                "value": 0.625186
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "347/409",
+                "value": 0.848411
+              },
+              "t2_recall": {
+                "fraction": "79/102",
+                "value": 0.77451
+              },
+              "layer_right": {
+                "fraction": "19/25",
+                "value": 0.76
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the labels are the record's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the answers are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the loop's bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the readings partition",
+          "passes": true
+        }
+      ]
+    },
+    "l_r3": {
+      "checkpoints": [
+        {
+          "labels": 10,
+          "case": 43,
+          "make_up": {
+            "labels": 10,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 0,
+            "of_the_layer_by_queue": {},
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "283/896",
+              "value": 0.315848
+            },
+            "queue": {
+              "right": 0,
+              "lost": 6300,
+              "impasse": 3760,
+              "conflict": 0,
+              "unwritten": 2540,
+              "outranked": 0,
+              "contested": 0,
+              "by_edge": 0,
+              "by_containment": 0
+            },
+            "queue_right_by_part": {
+              "H04": 0,
+              "H05": 0
+            },
+            "layer": {
+              "right": 0,
+              "as_the_queue": 0,
+              "as_another_queue": 4220,
+              "conflict": 0,
+              "impasse": 6280
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "T3_ENGINEERING": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "T2_TECHNICAL": {
+                "fraction": "1373/1836",
+                "value": 0.747821
+              }
+            },
+            "queue_rules": {
+              "rules": 0,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [],
+              "holding_h05_whole": [],
+              "conditions": []
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "3839/6720",
+                  "value": 0.57128
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 0,
+                  "as_the_queue": 10500,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "49/153",
+                    "value": 0.320261
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0003"
+                  ],
+                  "holding_h05_whole": [
+                    "R0003"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "2197/3360",
+                  "value": 0.653869
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 0,
+                  "as_the_queue": 10500,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "278/459",
+                    "value": 0.605664
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 13
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "107/210",
+                  "value": 0.509524
+                },
+                "queue": {
+                  "right": 6300,
+                  "lost": 0,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 0,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 4200,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 0,
+                  "as_the_queue": 10500,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "1",
+                    "value": 1.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "245/1224",
+                    "value": 0.200163
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [
+                    "R0002"
+                  ],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 8
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "3839/6720",
+                "value": 0.57128
+              },
+              "queue_recall": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "t3_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t2_recall": {
+                "fraction": "49/153",
+                "value": 0.320261
+              },
+              "layer_right": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "layer_as_the_queue": {
+                "fraction": "1",
+                "value": 1.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 20,
+          "case": 90,
+          "make_up": {
+            "labels": 20,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 2,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 2
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "17441/26880",
+              "value": 0.648847
+            },
+            "queue": {
+              "right": 4935,
+              "lost": 1365,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 1365,
+              "contested": 0,
+              "by_edge": 1260,
+              "by_containment": 105
+            },
+            "queue_right_by_part": {
+              "H04": 3255,
+              "H05": 1680
+            },
+            "layer": {
+              "right": 1890,
+              "as_the_queue": 8085,
+              "as_another_queue": 525,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "T3_ENGINEERING": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "T2_TECHNICAL": {
+                "fraction": "169/216",
+                "value": 0.782407
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0028"
+              ],
+              "holding_h05_whole": [
+                "R0028"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "9101/13440",
+                  "value": 0.677158
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "112/153",
+                    "value": 0.732026
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 9
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "2711/4480",
+                  "value": 0.605134
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "319/459",
+                    "value": 0.694989
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 11
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "7879/13440",
+                  "value": 0.586235
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 3360,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "112/153",
+                    "value": 0.732026
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0001"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 14
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "2711/4480",
+                "value": 0.605134
+              },
+              "queue_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "t3_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t2_recall": {
+                "fraction": "112/153",
+                "value": 0.732026
+              },
+              "layer_right": {
+                "fraction": "8/25",
+                "value": 0.32
+              },
+              "layer_as_the_queue": {
+                "fraction": "2/5",
+                "value": 0.4
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 40,
+          "case": 230,
+          "make_up": {
+            "labels": 40,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 3,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 2,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "12169/19200",
+              "value": 0.633802
+            },
+            "queue": {
+              "right": 3675,
+              "lost": 2625,
+              "impasse": 0,
+              "conflict": 0,
+              "unwritten": 0,
+              "outranked": 2625,
+              "contested": 0,
+              "by_edge": 2520,
+              "by_containment": 105
+            },
+            "queue_right_by_part": {
+              "H04": 2415,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 3990,
+              "as_the_queue": 5985,
+              "as_another_queue": 525,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "7/12",
+                "value": 0.583333
+              },
+              "T3_ENGINEERING": {
+                "fraction": "105/409",
+                "value": 0.256724
+              },
+              "T2_TECHNICAL": {
+                "fraction": "809/1080",
+                "value": 0.749074
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0028"
+              ],
+              "holding_h05_whole": [
+                "R0028"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "4657/6720",
+                  "value": 0.693006
+                },
+                "queue": {
+                  "right": 4200,
+                  "lost": 2100,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 2100,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 2100,
+                  "H05": 2100
+                },
+                "layer": {
+                  "right": 4620,
+                  "as_the_queue": 4200,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "2/3",
+                    "value": 0.666667
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "63/409",
+                    "value": 0.154034
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "112/153",
+                    "value": 0.732026
+                  }
+                },
+                "queue_rules": {
+                  "rules": 1,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [
+                    "R0002"
+                  ],
+                  "conditions": [
+                    [
+                      [
+                        "severity",
+                        "eq",
+                        1
+                      ],
+                      [
+                        "off_hours",
+                        "eq",
+                        true
+                      ]
+                    ]
+                  ]
+                },
+                "reasoning_names_the_queue": 7
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "129/280",
+                  "value": 0.460714
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 8820,
+                  "as_the_queue": 0,
+                  "as_another_queue": 1680,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "105/409",
+                    "value": 0.256724
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "404/459",
+                    "value": 0.880174
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 1
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "5077/13440",
+                  "value": 0.377753
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 8500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2000,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "89/409",
+                    "value": 0.217604
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "293/459",
+                    "value": 0.638344
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "129/280",
+                "value": 0.460714
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "89/409",
+                "value": 0.217604
+              },
+              "t2_recall": {
+                "fraction": "112/153",
+                "value": 0.732026
+              },
+              "layer_right": {
+                "fraction": "17/21",
+                "value": 0.809524
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 80,
+          "case": 587,
+          "make_up": {
+            "labels": 80,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 4,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 3,
+              "T3_ENGINEERING": 1
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "24539/44800",
+              "value": 0.547746
+            },
+            "queue": {
+              "right": 1835,
+              "lost": 4465,
+              "impasse": 0,
+              "conflict": 1840,
+              "unwritten": 0,
+              "outranked": 2625,
+              "contested": 1840,
+              "by_edge": 2520,
+              "by_containment": 105
+            },
+            "queue_right_by_part": {
+              "H04": 575,
+              "H05": 1260
+            },
+            "layer": {
+              "right": 5250,
+              "as_the_queue": 3465,
+              "as_another_queue": 1785,
+              "conflict": 0,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "367/1260",
+                "value": 0.29127
+              },
+              "T3_ENGINEERING": {
+                "fraction": "247/409",
+                "value": 0.603912
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3637/4590",
+                "value": 0.792375
+              }
+            },
+            "queue_rules": {
+              "rules": 1,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0028"
+              ],
+              "holding_h05_whole": [
+                "R0028"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "1097/1792",
+                  "value": 0.612165
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 1680,
+                  "conflict": 0,
+                  "unwritten": 4620,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 4200,
+                  "as_the_queue": 0,
+                  "as_another_queue": 4620,
+                  "conflict": 0,
+                  "impasse": 1680
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "142/409",
+                    "value": 0.347188
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "209/306",
+                    "value": 0.683007
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "1063/1680",
+                  "value": 0.632738
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 1680,
+                  "conflict": 0,
+                  "unwritten": 4620,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 5040,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2940,
+                  "conflict": 0,
+                  "impasse": 2520
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "116/409",
+                    "value": 0.283619
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "251/306",
+                    "value": 0.820261
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "8213/13440",
+                  "value": 0.611086
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 4620,
+                  "as_the_queue": 0,
+                  "as_another_queue": 5880,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "163/409",
+                    "value": 0.398533
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "65/102",
+                    "value": 0.637255
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 0
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "1097/1792",
+                "value": 0.612165
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "142/409",
+                "value": 0.347188
+              },
+              "t2_recall": {
+                "fraction": "209/306",
+                "value": 0.683007
+              },
+              "layer_right": {
+                "fraction": "11/25",
+                "value": 0.44
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1254,
+          "make_up": {
+            "labels": 160,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 9,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 6,
+              "T3_ENGINEERING": 3
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "22797/44800",
+              "value": 0.508862
+            },
+            "queue": {
+              "right": 4475,
+              "lost": 1825,
+              "impasse": 0,
+              "conflict": 880,
+              "unwritten": 0,
+              "outranked": 945,
+              "contested": 880,
+              "by_edge": 840,
+              "by_containment": 105
+            },
+            "queue_right_by_part": {
+              "H04": 2375,
+              "H05": 2100
+            },
+            "layer": {
+              "right": 5880,
+              "as_the_queue": 1995,
+              "as_another_queue": 2205,
+              "conflict": 420,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "179/252",
+                "value": 0.710317
+              },
+              "T3_ENGINEERING": {
+                "fraction": "204/409",
+                "value": 0.498778
+              },
+              "T2_TECHNICAL": {
+                "fraction": "10129/12240",
+                "value": 0.827533
+              }
+            },
+            "queue_rules": {
+              "rules": 2,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0028"
+              ],
+              "holding_h05_whole": [
+                "R0028",
+                "R0154"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "8359/13440",
+                  "value": 0.621949
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 10500,
+                  "as_the_queue": 0,
+                  "as_another_queue": 0,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "305/409",
+                    "value": 0.745721
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "56/153",
+                    "value": 0.366013
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 0
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "9311/13440",
+                  "value": 0.692783
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 7980,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "205/409",
+                    "value": 0.501222
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "22/27",
+                    "value": 0.814815
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 0
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "9487/13440",
+                  "value": 0.705878
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 7980,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2520,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "163/409",
+                    "value": 0.398533
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "415/459",
+                    "value": 0.904139
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 1
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "9311/13440",
+                "value": 0.692783
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "205/409",
+                "value": 0.501222
+              },
+              "t2_recall": {
+                "fraction": "22/27",
+                "value": 0.814815
+              },
+              "layer_right": {
+                "fraction": "19/25",
+                "value": 0.76
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        },
+        {
+          "labels": 235,
+          "case": 1985,
+          "make_up": {
+            "labels": 235,
+            "naming_the_queue": 0,
+            "tickets_of_the_layer": 12,
+            "of_the_layer_by_queue": {
+              "T2_TECHNICAL": 8,
+              "T3_ENGINEERING": 4
+            },
+            "queue_tickets": []
+          },
+          "loop": {
+            "space": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            },
+            "queue": {
+              "right": 2735,
+              "lost": 3565,
+              "impasse": 0,
+              "conflict": 1900,
+              "unwritten": 0,
+              "outranked": 1665,
+              "contested": 1900,
+              "by_edge": 1560,
+              "by_containment": 105
+            },
+            "queue_right_by_part": {
+              "H04": 1835,
+              "H05": 900
+            },
+            "layer": {
+              "right": 7980,
+              "as_the_queue": 1125,
+              "as_another_queue": 675,
+              "conflict": 720,
+              "impasse": 0
+            },
+            "recall": {
+              "ONCALL_ESCALATION": {
+                "fraction": "547/1260",
+                "value": 0.434127
+              },
+              "T3_ENGINEERING": {
+                "fraction": "278/409",
+                "value": 0.679707
+              },
+              "T2_TECHNICAL": {
+                "fraction": "841/918",
+                "value": 0.916122
+              }
+            },
+            "queue_rules": {
+              "rules": 4,
+              "naming_the_tier": 0,
+              "holding_h04_whole": [
+                "R0028",
+                "R0262"
+              ],
+              "holding_h05_whole": [
+                "R0028",
+                "R0154",
+                "R0214",
+                "R0262"
+              ],
+              "conditions": [
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "has_security_keyword",
+                    "eq",
+                    false
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ],
+                  [
+                    "off_hours",
+                    "eq",
+                    true
+                  ]
+                ],
+                [
+                  [
+                    "severity",
+                    "eq",
+                    1
+                  ]
+                ]
+              ]
+            }
+          },
+          "at_once": {
+            "asks": [
+              {
+                "k": 1,
+                "space": {
+                  "fraction": "5191/6720",
+                  "value": 0.77247
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 7780,
+                  "as_the_queue": 0,
+                  "as_another_queue": 2720,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "337/409",
+                    "value": 0.823961
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "181/459",
+                    "value": 0.394336
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 3
+              },
+              {
+                "k": 2,
+                "space": {
+                  "fraction": "803/960",
+                  "value": 0.836458
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 5460,
+                  "as_the_queue": 0,
+                  "as_another_queue": 5040,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "273/409",
+                    "value": 0.667482
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "382/459",
+                    "value": 0.832244
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 1
+              },
+              {
+                "k": 3,
+                "space": {
+                  "fraction": "4279/5600",
+                  "value": 0.764107
+                },
+                "queue": {
+                  "right": 0,
+                  "lost": 6300,
+                  "impasse": 0,
+                  "conflict": 0,
+                  "unwritten": 6300,
+                  "outranked": 0,
+                  "contested": 0,
+                  "by_edge": 0,
+                  "by_containment": 0
+                },
+                "queue_right_by_part": {
+                  "H04": 0,
+                  "H05": 0
+                },
+                "layer": {
+                  "right": 6300,
+                  "as_the_queue": 0,
+                  "as_another_queue": 4200,
+                  "conflict": 0,
+                  "impasse": 0
+                },
+                "recall": {
+                  "ONCALL_ESCALATION": {
+                    "fraction": "0",
+                    "value": 0.0
+                  },
+                  "T3_ENGINEERING": {
+                    "fraction": "163/409",
+                    "value": 0.398533
+                  },
+                  "T2_TECHNICAL": {
+                    "fraction": "260/459",
+                    "value": 0.566449
+                  }
+                },
+                "queue_rules": {
+                  "rules": 0,
+                  "naming_the_tier": 0,
+                  "holding_h04_whole": [],
+                  "holding_h05_whole": [],
+                  "conditions": []
+                },
+                "reasoning_names_the_queue": 2
+              }
+            ],
+            "median": {
+              "asks": 3,
+              "space": {
+                "fraction": "5191/6720",
+                "value": 0.77247
+              },
+              "queue_recall": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "t3_recall": {
+                "fraction": "273/409",
+                "value": 0.667482
+              },
+              "t2_recall": {
+                "fraction": "260/459",
+                "value": 0.566449
+              },
+              "layer_right": {
+                "fraction": "3/5",
+                "value": 0.6
+              },
+              "layer_as_the_queue": {
+                "fraction": "0",
+                "value": 0.0
+              },
+              "asks_naming_the_tier": 0
+            }
+          }
+        }
+      ],
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the labels are the record's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the answers are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the loop's bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the readings partition",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "prior": {
+    "asked": {
+      "asks": [
+        {
+          "k": 1,
+          "space": {
+            "fraction": "157/240",
+            "value": 0.654167
+          },
+          "queue": {
+            "right": 4200,
+            "lost": 2100,
+            "impasse": 0,
+            "conflict": 0,
+            "unwritten": 2100,
+            "outranked": 0,
+            "contested": 0,
+            "by_edge": 0,
+            "by_containment": 0
+          },
+          "queue_right_by_part": {
+            "H04": 2100,
+            "H05": 2100
+          },
+          "layer": {
+            "right": 2940,
+            "as_the_queue": 4200,
+            "as_another_queue": 3360,
+            "conflict": 0,
+            "impasse": 0
+          },
+          "recall": {
+            "ONCALL_ESCALATION": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "T3_ENGINEERING": {
+              "fraction": "147/409",
+              "value": 0.359413
+            },
+            "T2_TECHNICAL": {
+              "fraction": "55/459",
+              "value": 0.119826
+            }
+          },
+          "queue_rules": {
+            "rules": 1,
+            "naming_the_tier": 0,
+            "holding_h04_whole": [],
+            "holding_h05_whole": [
+              "R0002"
+            ],
+            "conditions": [
+              [
+                [
+                  "severity",
+                  "eq",
+                  1
+                ],
+                [
+                  "off_hours",
+                  "eq",
+                  true
+                ]
+              ]
+            ]
+          },
+          "reasoning_names_the_queue": 13
+        },
+        {
+          "k": 2,
+          "space": {
+            "fraction": "1737/2800",
+            "value": 0.620357
+          },
+          "queue": {
+            "right": 4200,
+            "lost": 2100,
+            "impasse": 0,
+            "conflict": 0,
+            "unwritten": 2100,
+            "outranked": 0,
+            "contested": 0,
+            "by_edge": 0,
+            "by_containment": 0
+          },
+          "queue_right_by_part": {
+            "H04": 2100,
+            "H05": 2100
+          },
+          "layer": {
+            "right": 2940,
+            "as_the_queue": 4200,
+            "as_another_queue": 3360,
+            "conflict": 0,
+            "impasse": 0
+          },
+          "recall": {
+            "ONCALL_ESCALATION": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "T3_ENGINEERING": {
+              "fraction": "147/409",
+              "value": 0.359413
+            },
+            "T2_TECHNICAL": {
+              "fraction": "110/459",
+              "value": 0.239651
+            }
+          },
+          "queue_rules": {
+            "rules": 1,
+            "naming_the_tier": 0,
+            "holding_h04_whole": [],
+            "holding_h05_whole": [
+              "R0002"
+            ],
+            "conditions": [
+              [
+                [
+                  "severity",
+                  "eq",
+                  1
+                ],
+                [
+                  "off_hours",
+                  "eq",
+                  true
+                ]
+              ]
+            ]
+          },
+          "reasoning_names_the_queue": 6
+        },
+        {
+          "k": 3,
+          "space": {
+            "fraction": "4147/6720",
+            "value": 0.617113
+          },
+          "queue": {
+            "right": 6300,
+            "lost": 0,
+            "impasse": 0,
+            "conflict": 0,
+            "unwritten": 0,
+            "outranked": 0,
+            "contested": 0,
+            "by_edge": 0,
+            "by_containment": 0
+          },
+          "queue_right_by_part": {
+            "H04": 4200,
+            "H05": 2100
+          },
+          "layer": {
+            "right": 0,
+            "as_the_queue": 10500,
+            "as_another_queue": 0,
+            "conflict": 0,
+            "impasse": 0
+          },
+          "recall": {
+            "ONCALL_ESCALATION": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "T3_ENGINEERING": {
+              "fraction": "220/409",
+              "value": 0.537897
+            },
+            "T2_TECHNICAL": {
+              "fraction": "55/459",
+              "value": 0.119826
+            }
+          },
+          "queue_rules": {
+            "rules": 1,
+            "naming_the_tier": 0,
+            "holding_h04_whole": [
+              "R0002"
+            ],
+            "holding_h05_whole": [
+              "R0002"
+            ],
+            "conditions": [
+              [
+                [
+                  "severity",
+                  "eq",
+                  1
+                ]
+              ]
+            ]
+          },
+          "reasoning_names_the_queue": 12
+        },
+        {
+          "k": 4,
+          "space": {
+            "fraction": "2243/3360",
+            "value": 0.66756
+          },
+          "queue": {
+            "right": 6300,
+            "lost": 0,
+            "impasse": 0,
+            "conflict": 0,
+            "unwritten": 0,
+            "outranked": 0,
+            "contested": 0,
+            "by_edge": 0,
+            "by_containment": 0
+          },
+          "queue_right_by_part": {
+            "H04": 4200,
+            "H05": 2100
+          },
+          "layer": {
+            "right": 0,
+            "as_the_queue": 10500,
+            "as_another_queue": 0,
+            "conflict": 0,
+            "impasse": 0
+          },
+          "recall": {
+            "ONCALL_ESCALATION": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "T3_ENGINEERING": {
+              "fraction": "208/409",
+              "value": 0.508557
+            },
+            "T2_TECHNICAL": {
+              "fraction": "52/459",
+              "value": 0.11329
+            }
+          },
+          "queue_rules": {
+            "rules": 1,
+            "naming_the_tier": 0,
+            "holding_h04_whole": [
+              "R0002"
+            ],
+            "holding_h05_whole": [
+              "R0002"
+            ],
+            "conditions": [
+              [
+                [
+                  "severity",
+                  "eq",
+                  1
+                ],
+                [
+                  "has_security_keyword",
+                  "eq",
+                  false
+                ]
+              ]
+            ]
+          },
+          "reasoning_names_the_queue": 7
+        },
+        {
+          "k": 5,
+          "space": {
+            "fraction": "289/448",
+            "value": 0.645089
+          },
+          "queue": {
+            "right": 6300,
+            "lost": 0,
+            "impasse": 0,
+            "conflict": 0,
+            "unwritten": 0,
+            "outranked": 0,
+            "contested": 0,
+            "by_edge": 0,
+            "by_containment": 0
+          },
+          "queue_right_by_part": {
+            "H04": 4200,
+            "H05": 2100
+          },
+          "layer": {
+            "right": 0,
+            "as_the_queue": 10500,
+            "as_another_queue": 0,
+            "conflict": 0,
+            "impasse": 0
+          },
+          "recall": {
+            "ONCALL_ESCALATION": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "T3_ENGINEERING": {
+              "fraction": "200/409",
+              "value": 0.488998
+            },
+            "T2_TECHNICAL": {
+              "fraction": "79/459",
+              "value": 0.172113
+            }
+          },
+          "queue_rules": {
+            "rules": 1,
+            "naming_the_tier": 0,
+            "holding_h04_whole": [
+              "R0002"
+            ],
+            "holding_h05_whole": [
+              "R0002"
+            ],
+            "conditions": [
+              [
+                [
+                  "severity",
+                  "eq",
+                  1
+                ]
+              ]
+            ]
+          },
+          "reasoning_names_the_queue": 13
+        }
+      ],
+      "median": {
+        "asks": 5,
+        "space": {
+          "fraction": "289/448",
+          "value": 0.645089
+        },
+        "queue_recall": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "t3_recall": {
+          "fraction": "200/409",
+          "value": 0.488998
+        },
+        "t2_recall": {
+          "fraction": "55/459",
+          "value": 0.119826
+        },
+        "layer_right": {
+          "fraction": "0",
+          "value": 0.0
+        },
+        "layer_as_the_queue": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "asks_naming_the_tier": 0
+      }
+    },
+    "gates": [
+      {
+        "gate": 1,
+        "what": "the labels are the record's",
+        "passes": true
+      },
+      {
+        "gate": 2,
+        "what": "the answers are Stage C's",
+        "passes": true
+      },
+      {
+        "gate": 4,
+        "what": "the readings partition",
+        "passes": true
+      }
+    ]
+  },
+  "expectation": [
+    {
+      "clause": "A1",
+      "what": "at every checkpoint of each L run, the median at-once answer recalls at least as much of the queue as the loop's base",
+      "reading": {
+        "l_r1": [
+          {
+            "labels": 10,
+            "at_once": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "loop": {
+              "fraction": "3/5",
+              "value": 0.6
+            }
+          },
+          {
+            "labels": 20,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "3/5",
+              "value": 0.6
+            }
+          },
+          {
+            "labels": 40,
+            "at_once": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "loop": {
+              "fraction": "4/5",
+              "value": 0.8
+            }
+          },
+          {
+            "labels": 80,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "157/315",
+              "value": 0.498413
+            }
+          },
+          {
+            "labels": 160,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "8/15",
+              "value": 0.533333
+            }
+          },
+          {
+            "labels": 216,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "2/5",
+              "value": 0.4
+            }
+          }
+        ],
+        "l_r2": [
+          {
+            "labels": 10,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "4/5",
+              "value": 0.8
+            }
+          },
+          {
+            "labels": 20,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "4/5",
+              "value": 0.8
+            }
+          },
+          {
+            "labels": 40,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "44/63",
+              "value": 0.698413
+            }
+          },
+          {
+            "labels": 80,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "3/5",
+              "value": 0.6
+            }
+          },
+          {
+            "labels": 160,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "3/5",
+              "value": 0.6
+            }
+          },
+          {
+            "labels": 209,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "47/105",
+              "value": 0.447619
+            }
+          }
+        ],
+        "l_r3": [
+          {
+            "labels": 10,
+            "at_once": {
+              "fraction": "1",
+              "value": 1.0
+            },
+            "loop": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          {
+            "labels": 20,
+            "at_once": {
+              "fraction": "2/3",
+              "value": 0.666667
+            },
+            "loop": {
+              "fraction": "47/60",
+              "value": 0.783333
+            }
+          },
+          {
+            "labels": 40,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "7/12",
+              "value": 0.583333
+            }
+          },
+          {
+            "labels": 80,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "367/1260",
+              "value": 0.29127
+            }
+          },
+          {
+            "labels": 160,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "179/252",
+              "value": 0.710317
+            }
+          },
+          {
+            "labels": 235,
+            "at_once": {
+              "fraction": "0",
+              "value": 0.0
+            },
+            "loop": {
+              "fraction": "547/1260",
+              "value": 0.434127
+            }
+          }
+        ]
+      },
+      "holds": false
+    },
+    {
+      "clause": "A2",
+      "what": "at all of each L run's labels, the median at-once answer recalls at least 9/10 of the queue",
+      "reading": {
+        "l_r1": {
+          "fraction": "2/3",
+          "value": 0.666667
+        },
+        "l_r2": {
+          "fraction": "0",
+          "value": 0.0
+        },
+        "l_r3": {
+          "fraction": "0",
+          "value": 0.0
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "A3",
+      "what": "at all of each L run's labels, the median at-once answer decides right at least half of the layer's points",
+      "reading": {
+        "l_r1": {
+          "fraction": "1",
+          "value": 1.0
+        },
+        "l_r2": {
+          "fraction": "19/25",
+          "value": 0.76
+        },
+        "l_r3": {
+          "fraction": "3/5",
+          "value": 0.6
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "A4",
+      "what": "at all of each L run's labels, at least two of its three at-once answers write a rule of the queue naming customer_tier",
+      "reading": {
+        "l_r1": 3,
+        "l_r2": 0,
+        "l_r3": 0
+      },
+      "holds": false
+    },
+    {
+      "clause": "A5",
+      "what": "without a label, the median prior answer decides as the queue at least half of the layer's points",
+      "reading": {
+        "fraction": "1",
+        "value": 1.0
+      },
+      "holds": true
+    },
+    {
+      "clause": "A6",
+      "what": "without a label, the median prior answer recalls at least 9/10 of the queue",
+      "reading": {
+        "fraction": "1",
+        "value": 1.0
+      },
+      "holds": true
+    }
+  ]
+}
