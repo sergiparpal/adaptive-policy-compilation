@@ -27,7 +27,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why some answers put their newborn above every rule
   of their list** reached it in #259, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read the list by its
-  conditions** reaches it in the pull request it is opened in.
+  conditions** reaches it in #261.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
