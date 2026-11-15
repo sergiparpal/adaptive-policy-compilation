@@ -161,6 +161,21 @@ records:
 - any climb's reasoning tokens against the cedes'.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE SECURITY RULES NAMED ONLY IN THE LIST
+--------------------------------------------------------------------------
+The first run found C2, C3 and C5 failing. Read in a scratch script, three of
+the held-out climbs' passages were lines that enumerate the whole list: the
+answer never named a security rule on its own, and put every rule in `beats`.
+So this part reads, for each round, whether every line of the placement
+reasoning that names a listed security rule enumerates the list. Such a line
+names at least three of the listed rules, and at least half of them. It also
+reads, for each run, the rounds of each side by it.
+It was tried on the records in a scratch script before it was written here. It
+was written after the five clauses above had been read: C1 and C4 hold, and
+C2, C3 and C5 fail. It carries no expectation and moves no clause, and it adds
+no gate.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-15, after `corrections/above.py`.
@@ -249,6 +264,12 @@ PROVENANCE = (
     "written; the expectation was committed before the reading ran on the other runs. Not a "
     "signed row; no verdict moves.")
 
+ADDED = (
+    "Added after the first run, after its five clauses were read: for each round, whether "
+    "every line of the placement reasoning that names a listed security rule enumerates "
+    "the list, naming at least three of its rules and at least half; each side's rounds by "
+    "it. Tried in a scratch script first. No expectation; no clause moves.")
+
 share, frac = fg.share, fg.frac
 
 
@@ -277,6 +298,22 @@ def passages(text: str, ids: Sequence[str]) -> str:
         if any(p.search(line) for p in pats):
             out.append("\n".join(lines[i:i + AFTER + 1]))
     return "\n".join(out)
+
+
+def enumerated_only(text: str, listed: Sequence[str], secs: Sequence[str]) -> bool:
+    """Added after the first run: whether the reasoning names a listed security
+    rule, and only in lines that enumerate the list, each naming at least three
+    of its rules and at least half of them."""
+    pats = {x: re.compile(rf"\b{re.escape(x)}\b") for x in listed}
+    s = set(secs)
+    seen = False
+    for line in text.split("\n"):
+        named = [x for x in listed if pats[x].search(line)]
+        if s & set(named):
+            seen = True
+            if len(named) < 3 or 2 * len(named) < len(listed):
+                return False
+    return seen
 
 
 def side_of(toward: str) -> str:
@@ -320,6 +357,8 @@ def rounds(record: dict[str, Any]) -> list[dict[str, Any]]:
             "has_reasoning": bool(text),
             "passage": bool(p), "priority": prio, "conditions_code": cond,
             "conditions_no_priority": cond and not prio,
+            "added_after_the_first_run": {
+                "enumerated_only": enumerated_only(text, listed, secs)},
         })
     return out
 
@@ -392,7 +431,9 @@ def also(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
     def precedent(r):
         c = F(r["ceding_shown"], r["listed"])
-        return "none" if not r["ceding_shown"] else "under_a_third" if c < F(1, 3) else "a_third_or_more"
+        if not r["ceding_shown"]:
+            return "none"
+        return "under_a_third" if c < F(1, 3) else "a_third_or_more"
 
     med = medians(rows)
     return {
@@ -405,6 +446,18 @@ def also(rows: list[dict[str, Any]]) -> dict[str, Any]:
                     "priority": r["priority"], "conditions_code": r["conditions_code"]}
                    for r in by_side(rows, CLIMB)],
     }
+
+
+def added(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Added after the first run: each side's rounds by whether their reasoning
+    named a listed security rule only in lines that enumerate the list."""
+    out: dict[str, dict[str, int]] = {}
+    for r in rows:
+        k = ("enumerated_only" if r["added_after_the_first_run"]["enumerated_only"]
+             else "named_apart")
+        out.setdefault(r["side"], {}).setdefault(k, 0)
+        out[r["side"]][k] += 1
+    return {s: dict(sorted(v.items())) for s, v in sorted(out.items())}
 
 
 def development(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -471,6 +524,7 @@ def read_run(record: dict[str, Any], above_run: dict[str, Any],
          "passes": all(ceding_installed(i) for i in idxs)},
     ]
     run = {"summary": summary(rows), "also_read": also(rows),
+           "added_after_the_first_run": added(rows),
            "rounds": [{**r, "opens_expected": str(r["opens_expected"])} for r in rows],
            "gates": gates_out}
     if tag in DEVELOPMENT_RUNS:
@@ -510,7 +564,8 @@ def read_expectation(runs: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     return [
         {"clause": "C1", "what": "of the climbs, the number whose list opened with a security "
                                  "rule is at least half what the shuffle gives",
-         "reading": {"opens": o["opens"], "of": o["rounds"], "expected": frac(exp) if climbs else None},
+         "reading": {"opens": o["opens"], "of": o["rounds"],
+                     "expected": frac(exp) if climbs else None},
          "holds": bool(climbs) and exp > 0 and o["opens"] >= C1_SHARE * exp},
         share_clause("C2", "at least two thirds of the climbs spent fewer reasoning tokens than "
                            "the lower median of the cedes at the same length of list",
@@ -562,6 +617,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"above": str(ab.record_path()),
                    "above_from": above_record["_env"].get("git_commit")},
         "surface": "every born rule of each run whose round listed a rule of SECURITY_INCIDENT, "
