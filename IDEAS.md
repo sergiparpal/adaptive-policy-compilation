@@ -622,6 +622,15 @@ learner of the labels alone matched the loop. What that leaves:
 - **What makes an answer read a keyword rule by its queue.** Both readings
   appear in the same reasonings, and nothing structural read so far tells a
   climb's round from a cede's. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: partly what the list shows.** The same
+  draft goes both ways, so the draft does not set the reading. In L r2 and L r3
+  the gateway listed before every security rule climbed far more often, and a
+  list showing another rule ceding to it held the answer down. v1c's shuffle
+  drew the slot, so that part is the presentation's. `FINDINGS_CORRECTIONS.md`,
+  *What makes an answer read a keyword rule by its queue*.
+- **A placement round that lists the security rules first.** In L r2 and L r3
+  the gateway listed after a security rule was rarely climbed over. A round that
+  always put the security rules first might make fewer doors. Calls.
 - **Why some answers put their newborn above every rule of their list.** Some
   climbs did, the security rules included. Free on the records.
 - **A placement round that shows what containment orders.** v1c's list gives
