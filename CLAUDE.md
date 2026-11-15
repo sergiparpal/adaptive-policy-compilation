@@ -1381,6 +1381,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.gateway                       # POST-RUN: why so many rules sit above the gateway
     PYTHONHASHSEED=0 python3 -m corrections.doors                         # POST-RUN: why the doors declared themselves above the gateway
     PYTHONHASHSEED=0 python3 -m corrections.carry                         # POST-RUN: how much of the fall the doors carry
+    PYTHONHASHSEED=0 python3 -m corrections.byqueue                       # POST-RUN: what makes an answer read a keyword rule by its queue
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1474,6 +1475,15 @@ read on the same records. **And a sandbox counts its mounts as untracked
 files.** While Bash ran in Sergi's sandbox, placeholder files in the
 repository's root made every record's `git_dirty` true. `code_dirty` still
 identifies the code, and the FINDINGS should say why `git_dirty` is set.
+
+**Read POST-RUN, the list's order moves the reading.** The same draft goes both
+ways, so the draft does not set it. v1c shows its list in a seeded shuffle, and
+in the held-out runs the gateway listed before every security rule was climbed
+over far more often than after one. A list that showed another rule ceding to it
+held the answer down. A protocol that shuffles its list has run an experiment on
+the order: read it. **And a development set can miss what the held-out runs
+show.** This one had few climbs, and the clause trusted most failed. Size a
+development set for the effect it rules out.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

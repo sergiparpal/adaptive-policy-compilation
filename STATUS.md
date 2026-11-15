@@ -3290,6 +3290,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      - **N r3 ends at 0.5474**, where the record ends at 0.4932.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *How much of the fall the doors carry*.
+     **[NOTE 2026-11-15, after it] What makes an answer read a keyword rule by
+     its queue, read POST-RUN: partly what the list shows.**
+     - **Not the draft.** In L r2 and L r3, 233 of the 1,120 pairs of listings of
+       the same draft disagree, where independent draws would give 221.5.
+     - **The shuffled slot moves it.** The gateway listed before every security
+       rule climbed in 14 of 51 listings, and after one in 10 of 135.
+     - **So does the precedent.** With no listed rule shown ceding to the
+       gateway, 13 of 61 climbed, and with one, 11 of 128. Together, from 8 in
+       19 to 5 in 96.
+     - **The development runs had not shown the slot.** L r1 and N r3 moved by
+       about 0.03.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What makes an answer read a keyword rule by its queue*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
