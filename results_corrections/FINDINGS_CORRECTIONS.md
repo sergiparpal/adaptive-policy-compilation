@@ -31,7 +31,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reached it in
   #263, merged on 2026-11-15.
 - **The POST-RUN reading of what the at-once asks wrote for
-  `ONCALL_ESCALATION`** reaches it in the pull request it is opened in.
+  `ONCALL_ESCALATION`** reaches it in #265.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
