@@ -119,8 +119,9 @@ November 12, 2026**: `PLAN_HALVES.md`, six signed rows, four held and two
 refuted, and one reported, written up in `results_halves/`. **The learning
 regime, a report that carries the true queue under level 1's catalogue, closed
 on November 14, 2026**: `PLAN_CORRECTIONS.md`, six signed rows, three held and
-three refuted, and one reported, written up in `results_corrections/`. This is a
-list of things not done,
+three refuted, and one reported, written up in `results_corrections/`. **Why L
+loses `ONCALL_ESCALATION` was read POST-RUN on November 15, 2026**, and the item
+it answers is struck in place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -523,16 +524,45 @@ function did not move.
 Compiled at once, the same labels gave a base far better than the loop's, and a
 learner of the labels alone matched the loop. What that leaves:
 
-- **Why L's rules take the regions the catalogue held.** L's bases lost most of
-  `SECURITY_INCIDENT` and more than half of `ONCALL_ESCALATION`, which N's kept
-  from the catalogue. Which rules decide the lost points, and from which labels
-  they were drafted. Free on the records.
+- ~~**Why L's rules take the regions the catalogue held.**~~ **Read POST-RUN on
+  2026-11-15** (`FINDINGS_CORRECTIONS.md`, *Why L loses `ONCALL_ESCALATION`*), by
+  `corrections/oncall.py`, which calls `channel/oncall.py`'s reading.
+  - **The rarest queue was written whole, at the layer below.** In every run of
+    both arms its first rule was born at a ticket of another queue, mostly a
+    severity-1 ticket of `H07` or `H08` at an impasse, and covers the queue. No
+    point L lost is unwritten.
+  - **L lost it beside its corrections and below them.** About two fifths of the
+    points are left contested. The rest are outranked by corrections born at
+    reported tickets of the layer below: slices of severity 1 by product that
+    keep the queue's tiers. In L r1 and L r2 the rule they corrected was the
+    queue's own. It is the form `placement/oncall.py` found deciding the queue's
+    points under v1c, severity 1 and one product. There no rule of the queue
+    matched them; here one does, and loses.
+  - **Installing losses first gives back what is contested, and nothing gives
+    back what is outranked**, in both queues.
+  - **N kept the queue because nothing corrects its rule.** At its reported
+    errors, which name no queue, its proposer wrote the queue again.
+  - **The rest of `SECURITY_INCIDENT`'s** was left in conflicts in L r1, and
+    taken in L r3 by the gateway born at case 19.
+  So the levers left are the first call shown the rule that erred, which the
+  reading of broad corrections below names, and a catalogue line that bounds the
+  queue by tier. Both are calls.
   **[NOTE 2026-11-14] Read in part POST-RUN.** The points of
   `SECURITY_INCIDENT` right at each L run's peak and lost after it were read.
   They were mostly left in conflicts by right sides the engine refused, and in L
   r3 mostly taken by one correction of `T2_TECHNICAL` nested in the keyword's
   region. Those not right at the peak are not read. `FINDINGS_CORRECTIONS.md`,
   *Why the loop's share of the space peaked and fell*.
+- **Why a correction at the layer's ticket keeps the rarest queue's tiers.** The
+  ticket's tier is in the prompt, and the policy gives the layer no enterprise
+  ticket at severity 1, and no business ticket off hours. The first calls'
+  reasoning is in the records. Free on the records.
+- **A catalogue line that bounds the rarest queue by tier.** The catalogue's
+  line, critical incidents that cannot wait, is read as severity 1, and the
+  queue's first rule is written at the layer's tickets in every run. A line that
+  named the tiers might keep it off them. Calls, and a new text.
+- **Why some of L r1's contested points of the rarest queue do not come back
+  with losses first.** In L r2 and L r3 every one does. Free on the records.
 - **Why the final base forgets its own corrections.** At the end, L's bases
   decide about half of their own labelled tickets right. Whether a later rule, a
   declared edge or a refused placement takes each one back. Free on the
