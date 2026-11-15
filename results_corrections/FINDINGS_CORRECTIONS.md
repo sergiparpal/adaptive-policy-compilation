@@ -25,7 +25,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of what makes an answer read a keyword rule by its
   queue** reached it in #256, merged on 2026-11-15.
 - **The POST-RUN reading of why some answers put their newborn above every rule
-  of their list** reaches it in #259.
+  of their list** reached it in #259, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -151,12 +151,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-15, after the eighth] And a ninth.** [`above.json`](above.json)
 > is the POST-RUN reading of why some answers put their newborn above every rule
 > of their list.
-> - **It was written from `13ce82d`**, on that reading's branch: the commit that
->   carries its expectation. Nothing was added after its first run.
+> - **It was written from `13ce82d`**, on the branch of #259, which is `ccef280`
+>   on `main`: the commit that carries its expectation. Nothing was added after
+>   its first run.
 > - **Its code digest is `ff2e2076bc7bd312`**, because `corrections/above.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `ccef280`, and
+>   still at the merge of #259. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1981,7 +1982,8 @@ not settle*, item 2, left why. This reading asks the records, and spends
 nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.above`, on 2026-11-15
-in local time, from `13ce82d` with its code clean, on this reading's branch.
+in local time, from `13ce82d` with its code clean, on the branch of #259, which
+is `ccef280` on `main`.
 - **The development set.** L r1 and N r3 were read before the expectation was
   written: every round with what its answer declared of every listed rule, every
   placement by the two rules' queues, conditions and points and by the ticket,
@@ -1993,13 +1995,17 @@ in local time, from `13ce82d` with its code clean, on this reading's branch.
   of `SECURITY_INCIDENT` and how many of those were above every rule, and how
   many newborns were of `SECURITY_INCIDENT`, all of them above every rule. The
   module's docstring says so, and no clause reads them.
-- **The commits.** `13ce82d` carries the reading and its expectation, written
-  before the reading ran on the other runs. Nothing was added after the first
-  run. The first run's record was not committed.
-- **The record was committed alone**, as `59f47e7`.
+- **The commits.** `ccef280` on `main` carries the reading and its expectation,
+  written before the reading ran on the other runs. Nothing was added after the
+  first run. The first run's record was not committed.
+- **The record was committed alone**, as `d24d351`. On #259's branch the two
+  commits were `13ce82d` and `59f47e7`. Each pair has the same subject, the same
+  tree and the same `git patch-id --stable`, and the GitHub API names #259
+  behind both `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `ff2e2076bc7bd312`, is the one `13ce82d` computes.
+  digest, `ff2e2076bc7bd312`, is the one `main` computes at `ccef280`, and still
+  at the merge.
 - **The record is [`above.json`](above.json).** Its five gates passed in all six
   runs:
   - what each answer declared, rebuilt from its rule's accepted and refused
