@@ -19,7 +19,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why so many rules sit above the gateway** reached
   it in #250, merged on 2026-11-15.
 - **The POST-RUN reading of why the doors declared themselves above the
-  gateway** reaches it in #252.
+  gateway** reached it in #252, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -113,11 +113,12 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-15, later] And a sixth.** [`doors.json`](doors.json) is the
 > POST-RUN reading of why the doors declared themselves above the gateway.
-> - **It was written from `48900e0`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `48900e0`**, on the branch of #252, which is `a46490f`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `b4a2acc7fdd0cd3e`**, because `corrections/doors.py`
->   was added after the readings above. The modules Stage C ran did not change.
+>   was added after the readings above. `main` computes it at `a46490f`, and
+>   still at the merge of #252. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1437,18 +1438,23 @@ does not settle*, item 1, left why. This reading asks the records, and spends
 nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.doors`, on 2026-11-15
-in local time, from `48900e0` on a clean tree, on this reading's branch.
+in local time, from `48900e0` on a clean tree, on the branch of #252, which is
+`a46490f` on `main`.
 - **The development set.** L r1 was read before the expectation was written:
   its rounds that listed the gateway, what their answers declared, the passages
   of their reasoning that name the gateway, and five candidate codes over those
   passages. The codes told the sides apart by little, so the reading reads what
   each answer declared. Every clause reads L r2 and L r3, pooled, and N r3.
-- **The commits.** `5751982` carries the reading and its expectation, written
-  before the reading ran on the other runs. `48900e0` carries the part added
-  after the first run, which moves no clause. The first run's record was not
-  committed.
-- **The record was committed alone**, as `cba5f86`. It is
-  [`doors.json`](doors.json). Its gates passed in all six runs:
+- **The commits.** `0a61c8e` on `main` carries the reading and its
+  expectation, written before the reading ran on the other runs. `a46490f`
+  carries the part added after the first run, which moves no clause. The first
+  run's record was not committed.
+- **The record was committed alone**, as `e13cb90`. On #252's branch the three
+  commits were `5751982`, `48900e0` and `cba5f86`. Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #252 behind the three `main` commits.
+- **The record is [`doors.json`](doors.json).** Its gates passed in all six
+  runs:
   - the listings are `gateway.json`'s, by what each answer declared of its
     gateway and what the engine did;
   - the climbs the engine installed are its doors' declared edges;
