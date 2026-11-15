@@ -1,0 +1,2539 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-15T11:10:10Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "f9d3c46e05ba38f093ab83ac296fafd5ea85fb10",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "fdf19c791cc3b129"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-15, after corrections/doors.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: where each replay's final base decides otherwise than the record's order, by the points it gets right and wrong, the points that change from one wrong outcome to another, and the record's conflicts it decides, those decided wrongly by the queue that decides them and their true queue. Tried in a scratch script first. No expectation; no clause moves.",
+  "source": {
+    "gateway": "results_corrections/gateway.json",
+    "doors": "results_corrections/doors.json",
+    "fall": "results_corrections/fall.json",
+    "gateway_from": "bcf20d8fab95fa2004e8ff2e35e1d7794ec1540e",
+    "doors_from": "48900e0f74237fb07b9c07384aaf073bf0ac166c",
+    "fall_from": "a31b396389f7452fd5c06b0578e219c5bdfcabc5"
+  },
+  "surface": "each run's base over the whole space after every birth, in the record's order, with the doors' edges, every declared win over a gateway, or each door's edges left out",
+  "constants": {
+    "C1_SHARE": "1/2",
+    "C2_SHARE": "1/2",
+    "C3_SHARE": "1/4",
+    "C4_SHARE": "1/2",
+    "C5_SHARE": "1/2",
+    "C5_RUN": "l_r2",
+    "C5_DOOR": "R0051",
+    "C6_SHARE": "1/4",
+    "C6_RUN": "n_r3"
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "n_r1",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "n_r2",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 1,
+      "what": "the replay that leaves nothing out is fall.json's record order",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 2,
+      "what": "the edges left out are the records'",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 3,
+      "what": "each replay is the record's order until it leaves an edge out",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 4,
+      "what": "every replay's masks are its engine's",
+      "passes": true
+    },
+    {
+      "run": "n_r3",
+      "gate": 5,
+      "what": "a run without a gateway leaves nothing out",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "summary": {
+        "gateways": [
+          "R0061"
+        ],
+        "births": 282,
+        "record": {
+          "peak": {
+            "birth": 87,
+            "right": 92680,
+            "share": {
+              "fraction": "331/480",
+              "value": 0.689583
+            }
+          },
+          "final": {
+            "right": 75900,
+            "share": {
+              "fraction": "253/448",
+              "value": 0.564732
+            }
+          },
+          "fall": {
+            "fraction": "839/6720",
+            "value": 0.124851
+          },
+          "security_recall": {
+            "fraction": "253/720",
+            "value": 0.351389
+          },
+          "conflict": {
+            "points": 36425,
+            "share": {
+              "fraction": "1457/5376",
+              "value": 0.271019
+            }
+          },
+          "refused_for_a_cycle": 1849,
+          "fall_points": 16780
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 229,
+            "right": 105175,
+            "share": {
+              "fraction": "601/768",
+              "value": 0.782552
+            }
+          },
+          "final": {
+            "right": 99450,
+            "share": {
+              "fraction": "663/896",
+              "value": 0.739955
+            }
+          },
+          "fall": {
+            "fraction": "229/5376",
+            "value": 0.042597
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 10855,
+            "share": {
+              "fraction": "2171/26880",
+              "value": 0.080766
+            }
+          },
+          "refused_for_a_cycle": 1502,
+          "left_out": [
+            [
+              "R0062",
+              "R0061"
+            ]
+          ],
+          "kept": {
+            "points": 23550,
+            "share": {
+              "fraction": "157/896",
+              "value": 0.175223
+            }
+          },
+          "of_the_fall": {
+            "fraction": "2355/1678",
+            "value": 1.403456
+          },
+          "refused_there_installed_here": 356,
+          "installed_there_refused_here": 9,
+          "right_sides_installed": 211,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 24570,
+            "lost": 1020,
+            "gained_security": 24290,
+            "lost_security": 0,
+            "wrong_to_wrong": 2980,
+            "conflicts_resolved": 26870,
+            "resolved_wrongly": 2580,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 2580
+            },
+            "decided_to_conflict": 1300
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 229,
+            "right": 105175,
+            "share": {
+              "fraction": "601/768",
+              "value": 0.782552
+            }
+          },
+          "final": {
+            "right": 99450,
+            "share": {
+              "fraction": "663/896",
+              "value": 0.739955
+            }
+          },
+          "fall": {
+            "fraction": "229/5376",
+            "value": 0.042597
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 10855,
+            "share": {
+              "fraction": "2171/26880",
+              "value": 0.080766
+            }
+          },
+          "refused_for_a_cycle": 1498,
+          "left_out": [
+            [
+              "R0062",
+              "R0061"
+            ],
+            [
+              "R0099",
+              "R0061"
+            ],
+            [
+              "R0153",
+              "R0061"
+            ],
+            [
+              "R0192",
+              "R0061"
+            ],
+            [
+              "R0273",
+              "R0061"
+            ]
+          ],
+          "kept": {
+            "points": 23550,
+            "share": {
+              "fraction": "157/896",
+              "value": 0.175223
+            }
+          },
+          "of_the_fall": {
+            "fraction": "2355/1678",
+            "value": 1.403456
+          },
+          "refused_there_installed_here": 356,
+          "installed_there_refused_here": 9,
+          "right_sides_installed": 211,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 24570,
+            "lost": 1020,
+            "gained_security": 24290,
+            "lost_security": 0,
+            "wrong_to_wrong": 2980,
+            "conflicts_resolved": 26870,
+            "resolved_wrongly": 2580,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 2580
+            },
+            "decided_to_conflict": 1300
+          }
+        }
+      },
+      "doors": {
+        "R0062": {
+          "peak": {
+            "birth": 229,
+            "right": 105175,
+            "share": {
+              "fraction": "601/768",
+              "value": 0.782552
+            }
+          },
+          "final": {
+            "right": 99450,
+            "share": {
+              "fraction": "663/896",
+              "value": 0.739955
+            }
+          },
+          "fall": {
+            "fraction": "229/5376",
+            "value": 0.042597
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 10855,
+            "share": {
+              "fraction": "2171/26880",
+              "value": 0.080766
+            }
+          },
+          "refused_for_a_cycle": 1502,
+          "left_out": [
+            [
+              "R0062",
+              "R0061"
+            ]
+          ],
+          "kept": {
+            "points": 23550,
+            "share": {
+              "fraction": "157/896",
+              "value": 0.175223
+            }
+          },
+          "of_the_fall": {
+            "fraction": "2355/1678",
+            "value": 1.403456
+          },
+          "refused_there_installed_here": 356,
+          "installed_there_refused_here": 9,
+          "right_sides_installed": 211,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 24570,
+            "lost": 1020,
+            "gained_security": 24290,
+            "lost_security": 0,
+            "wrong_to_wrong": 2980,
+            "conflicts_resolved": 26870,
+            "resolved_wrongly": 2580,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 2580
+            },
+            "decided_to_conflict": 1300
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    },
+    "l_r2": {
+      "summary": {
+        "gateways": [
+          "R0048",
+          "R0120"
+        ],
+        "births": 274,
+        "record": {
+          "peak": {
+            "birth": 66,
+            "right": 104475,
+            "share": {
+              "fraction": "199/256",
+              "value": 0.777344
+            }
+          },
+          "final": {
+            "right": 56725,
+            "share": {
+              "fraction": "2269/5376",
+              "value": 0.422061
+            }
+          },
+          "fall": {
+            "fraction": "955/2688",
+            "value": 0.355283
+          },
+          "security_recall": {
+            "fraction": "23/160",
+            "value": 0.14375
+          },
+          "conflict": {
+            "points": 49705,
+            "share": {
+              "fraction": "9941/26880",
+              "value": 0.369829
+            }
+          },
+          "refused_for_a_cycle": 2159,
+          "fall_points": 47750
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 68,
+            "right": 106075,
+            "share": {
+              "fraction": "4243/5376",
+              "value": 0.789249
+            }
+          },
+          "final": {
+            "right": 85385,
+            "share": {
+              "fraction": "17077/26880",
+              "value": 0.635305
+            }
+          },
+          "fall": {
+            "fraction": "2069/13440",
+            "value": 0.153943
+          },
+          "security_recall": {
+            "fraction": "2/3",
+            "value": 0.666667
+          },
+          "conflict": {
+            "points": 7225,
+            "share": {
+              "fraction": "289/5376",
+              "value": 0.053757
+            }
+          },
+          "refused_for_a_cycle": 1251,
+          "left_out": [
+            [
+              "R0051",
+              "R0048"
+            ],
+            [
+              "R0143",
+              "R0048"
+            ],
+            [
+              "R0143",
+              "R0120"
+            ],
+            [
+              "R0234",
+              "R0048"
+            ],
+            [
+              "R0234",
+              "R0120"
+            ]
+          ],
+          "kept": {
+            "points": 28660,
+            "share": {
+              "fraction": "1433/6720",
+              "value": 0.213244
+            }
+          },
+          "of_the_fall": {
+            "fraction": "2866/4775",
+            "value": 0.600209
+          },
+          "refused_there_installed_here": 916,
+          "installed_there_refused_here": 8,
+          "right_sides_installed": 370,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 28740,
+            "lost": 80,
+            "gained_security": 26355,
+            "lost_security": 0,
+            "wrong_to_wrong": 14245,
+            "conflicts_resolved": 42615,
+            "resolved_wrongly": 14085,
+            "resolved_wrongly_by_queue": {
+              "T1_GENERAL:SECURITY_INCIDENT": 4715,
+              "T1_GENERAL:T2_TECHNICAL": 5050,
+              "T2_TECHNICAL:SECURITY_INCIDENT": 4320
+            },
+            "decided_to_conflict": 135
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 68,
+            "right": 106075,
+            "share": {
+              "fraction": "4243/5376",
+              "value": 0.789249
+            }
+          },
+          "final": {
+            "right": 85385,
+            "share": {
+              "fraction": "17077/26880",
+              "value": 0.635305
+            }
+          },
+          "fall": {
+            "fraction": "2069/13440",
+            "value": 0.153943
+          },
+          "security_recall": {
+            "fraction": "2/3",
+            "value": 0.666667
+          },
+          "conflict": {
+            "points": 7225,
+            "share": {
+              "fraction": "289/5376",
+              "value": 0.053757
+            }
+          },
+          "refused_for_a_cycle": 1242,
+          "left_out": [
+            [
+              "R0051",
+              "R0048"
+            ],
+            [
+              "R0054",
+              "R0048"
+            ],
+            [
+              "R0091",
+              "R0048"
+            ],
+            [
+              "R0139",
+              "R0120"
+            ],
+            [
+              "R0143",
+              "R0048"
+            ],
+            [
+              "R0143",
+              "R0120"
+            ],
+            [
+              "R0144",
+              "R0120"
+            ],
+            [
+              "R0189",
+              "R0120"
+            ],
+            [
+              "R0211",
+              "R0120"
+            ],
+            [
+              "R0230",
+              "R0120"
+            ],
+            [
+              "R0234",
+              "R0048"
+            ],
+            [
+              "R0234",
+              "R0120"
+            ],
+            [
+              "R0268",
+              "R0120"
+            ],
+            [
+              "R0272",
+              "R0120"
+            ]
+          ],
+          "kept": {
+            "points": 28660,
+            "share": {
+              "fraction": "1433/6720",
+              "value": 0.213244
+            }
+          },
+          "of_the_fall": {
+            "fraction": "2866/4775",
+            "value": 0.600209
+          },
+          "refused_there_installed_here": 916,
+          "installed_there_refused_here": 8,
+          "right_sides_installed": 370,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 28740,
+            "lost": 80,
+            "gained_security": 26355,
+            "lost_security": 0,
+            "wrong_to_wrong": 14245,
+            "conflicts_resolved": 42615,
+            "resolved_wrongly": 14085,
+            "resolved_wrongly_by_queue": {
+              "T1_GENERAL:SECURITY_INCIDENT": 4715,
+              "T1_GENERAL:T2_TECHNICAL": 5050,
+              "T2_TECHNICAL:SECURITY_INCIDENT": 4320
+            },
+            "decided_to_conflict": 135
+          }
+        }
+      },
+      "doors": {
+        "R0051": {
+          "peak": {
+            "birth": 68,
+            "right": 106075,
+            "share": {
+              "fraction": "4243/5376",
+              "value": 0.789249
+            }
+          },
+          "final": {
+            "right": 85325,
+            "share": {
+              "fraction": "3413/5376",
+              "value": 0.634859
+            }
+          },
+          "fall": {
+            "fraction": "415/2688",
+            "value": 0.15439
+          },
+          "security_recall": {
+            "fraction": "2/3",
+            "value": 0.666667
+          },
+          "conflict": {
+            "points": 12670,
+            "share": {
+              "fraction": "181/1920",
+              "value": 0.094271
+            }
+          },
+          "refused_for_a_cycle": 1275,
+          "left_out": [
+            [
+              "R0051",
+              "R0048"
+            ]
+          ],
+          "kept": {
+            "points": 28600,
+            "share": {
+              "fraction": "143/672",
+              "value": 0.212798
+            }
+          },
+          "of_the_fall": {
+            "fraction": "572/955",
+            "value": 0.598953
+          },
+          "refused_there_installed_here": 894,
+          "installed_there_refused_here": 10,
+          "right_sides_installed": 368,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 28680,
+            "lost": 80,
+            "gained_security": 26355,
+            "lost_security": 0,
+            "wrong_to_wrong": 8755,
+            "conflicts_resolved": 37170,
+            "resolved_wrongly": 8700,
+            "resolved_wrongly_by_queue": {
+              "T1_GENERAL:SECURITY_INCIDENT": 3435,
+              "T1_GENERAL:T2_TECHNICAL": 1050,
+              "T2_TECHNICAL:SECURITY_INCIDENT": 4215
+            },
+            "decided_to_conflict": 135
+          }
+        },
+        "R0143": {
+          "peak": {
+            "birth": 66,
+            "right": 104475,
+            "share": {
+              "fraction": "199/256",
+              "value": 0.777344
+            }
+          },
+          "final": {
+            "right": 56725,
+            "share": {
+              "fraction": "2269/5376",
+              "value": 0.422061
+            }
+          },
+          "fall": {
+            "fraction": "955/2688",
+            "value": 0.355283
+          },
+          "security_recall": {
+            "fraction": "23/160",
+            "value": 0.14375
+          },
+          "conflict": {
+            "points": 49705,
+            "share": {
+              "fraction": "9941/26880",
+              "value": 0.369829
+            }
+          },
+          "refused_for_a_cycle": 2159,
+          "left_out": [
+            [
+              "R0143",
+              "R0048"
+            ],
+            [
+              "R0143",
+              "R0120"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "R0234": {
+          "peak": {
+            "birth": 66,
+            "right": 104475,
+            "share": {
+              "fraction": "199/256",
+              "value": 0.777344
+            }
+          },
+          "final": {
+            "right": 56725,
+            "share": {
+              "fraction": "2269/5376",
+              "value": 0.422061
+            }
+          },
+          "fall": {
+            "fraction": "955/2688",
+            "value": 0.355283
+          },
+          "security_recall": {
+            "fraction": "23/160",
+            "value": 0.14375
+          },
+          "conflict": {
+            "points": 49810,
+            "share": {
+              "fraction": "4981/13440",
+              "value": 0.37061
+            }
+          },
+          "refused_for_a_cycle": 2159,
+          "left_out": [
+            [
+              "R0234",
+              "R0048"
+            ],
+            [
+              "R0234",
+              "R0120"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 105,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 105
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    },
+    "l_r3": {
+      "summary": {
+        "gateways": [
+          "R0016"
+        ],
+        "births": 273,
+        "record": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13371,
+            "share": {
+              "fraction": "4457/44800",
+              "value": 0.099487
+            }
+          },
+          "refused_for_a_cycle": 1597,
+          "fall_points": 17164
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 81,
+            "right": 92757,
+            "share": {
+              "fraction": "4417/6400",
+              "value": 0.690156
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "77/600",
+            "value": 0.128333
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 11198,
+            "share": {
+              "fraction": "5599/67200",
+              "value": 0.083318
+            }
+          },
+          "refused_for_a_cycle": 1510,
+          "left_out": [
+            [
+              "R0048",
+              "R0016"
+            ],
+            [
+              "R0063",
+              "R0016"
+            ],
+            [
+              "R0090",
+              "R0016"
+            ],
+            [
+              "R0096",
+              "R0016"
+            ],
+            [
+              "R0122",
+              "R0016"
+            ],
+            [
+              "R0153",
+              "R0016"
+            ],
+            [
+              "R0273",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 90,
+          "installed_there_refused_here": 3,
+          "right_sides_installed": 15,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 6553,
+            "conflicts_resolved": 4253,
+            "resolved_wrongly": 4253,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 4253
+            },
+            "decided_to_conflict": 2080
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 81,
+            "right": 92757,
+            "share": {
+              "fraction": "4417/6400",
+              "value": 0.690156
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "77/600",
+            "value": 0.128333
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 11198,
+            "share": {
+              "fraction": "5599/67200",
+              "value": 0.083318
+            }
+          },
+          "refused_for_a_cycle": 1507,
+          "left_out": [
+            [
+              "R0048",
+              "R0016"
+            ],
+            [
+              "R0063",
+              "R0016"
+            ],
+            [
+              "R0090",
+              "R0016"
+            ],
+            [
+              "R0096",
+              "R0016"
+            ],
+            [
+              "R0122",
+              "R0016"
+            ],
+            [
+              "R0146",
+              "R0016"
+            ],
+            [
+              "R0153",
+              "R0016"
+            ],
+            [
+              "R0246",
+              "R0016"
+            ],
+            [
+              "R0269",
+              "R0016"
+            ],
+            [
+              "R0273",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 90,
+          "installed_there_refused_here": 3,
+          "right_sides_installed": 15,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 6553,
+            "conflicts_resolved": 4253,
+            "resolved_wrongly": 4253,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 4253
+            },
+            "decided_to_conflict": 2080
+          }
+        }
+      },
+      "doors": {
+        "R0048": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13371,
+            "share": {
+              "fraction": "4457/44800",
+              "value": 0.099487
+            }
+          },
+          "refused_for_a_cycle": 1586,
+          "left_out": [
+            [
+              "R0048",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 11,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "R0063": {
+          "peak": {
+            "birth": 81,
+            "right": 92757,
+            "share": {
+              "fraction": "4417/6400",
+              "value": 0.690156
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "77/600",
+            "value": 0.128333
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13371,
+            "share": {
+              "fraction": "4457/44800",
+              "value": 0.099487
+            }
+          },
+          "refused_for_a_cycle": 1586,
+          "left_out": [
+            [
+              "R0063",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 12,
+          "installed_there_refused_here": 1,
+          "right_sides_installed": 1,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "R0090": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 11691,
+            "share": {
+              "fraction": "3897/44800",
+              "value": 0.086987
+            }
+          },
+          "refused_for_a_cycle": 1554,
+          "left_out": [
+            [
+              "R0090",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 44,
+          "installed_there_refused_here": 1,
+          "right_sides_installed": 12,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 1680,
+            "conflicts_resolved": 1680,
+            "resolved_wrongly": 1680,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 1680
+            },
+            "decided_to_conflict": 0
+          }
+        },
+        "R0096": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13371,
+            "share": {
+              "fraction": "4457/44800",
+              "value": 0.099487
+            }
+          },
+          "refused_for_a_cycle": 1597,
+          "left_out": [
+            [
+              "R0096",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "R0122": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13371,
+            "share": {
+              "fraction": "4457/44800",
+              "value": 0.099487
+            }
+          },
+          "refused_for_a_cycle": 1597,
+          "left_out": [
+            [
+              "R0122",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "R0153": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 74824,
+            "share": {
+              "fraction": "9353/16800",
+              "value": 0.556726
+            }
+          },
+          "fall": {
+            "fraction": "17849/134400",
+            "value": 0.132805
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 15489,
+            "share": {
+              "fraction": "5163/44800",
+              "value": 0.115246
+            }
+          },
+          "refused_for_a_cycle": 1604,
+          "left_out": [
+            [
+              "R0153",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": -685,
+            "share": {
+              "fraction": "-137/26880",
+              "value": -0.005097
+            }
+          },
+          "of_the_fall": {
+            "fraction": "-685/17164",
+            "value": -0.039909
+          },
+          "refused_there_installed_here": 1,
+          "installed_there_refused_here": 8,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 685,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 2797,
+            "conflicts_resolved": 572,
+            "resolved_wrongly": 572,
+            "resolved_wrongly_by_queue": {
+              "T2_TECHNICAL:SECURITY_INCIDENT": 572
+            },
+            "decided_to_conflict": 2690
+          }
+        },
+        "R0273": {
+          "peak": {
+            "birth": 81,
+            "right": 92673,
+            "share": {
+              "fraction": "4413/6400",
+              "value": 0.689531
+            }
+          },
+          "final": {
+            "right": 75509,
+            "share": {
+              "fraction": "10787/19200",
+              "value": 0.561823
+            }
+          },
+          "fall": {
+            "fraction": "613/4800",
+            "value": 0.127708
+          },
+          "security_recall": {
+            "fraction": "25/84",
+            "value": 0.297619
+          },
+          "conflict": {
+            "points": 13471,
+            "share": {
+              "fraction": "13471/134400",
+              "value": 0.100231
+            }
+          },
+          "refused_for_a_cycle": 1597,
+          "left_out": [
+            [
+              "R0273",
+              "R0016"
+            ]
+          ],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 100,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 100
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    },
+    "n_r1": {
+      "summary": {
+        "gateways": [],
+        "births": 322,
+        "record": {
+          "peak": {
+            "birth": 115,
+            "right": 80695,
+            "share": {
+              "fraction": "16139/26880",
+              "value": 0.600409
+            }
+          },
+          "final": {
+            "right": 74175,
+            "share": {
+              "fraction": "989/1792",
+              "value": 0.551897
+            }
+          },
+          "fall": {
+            "fraction": "163/3360",
+            "value": 0.048512
+          },
+          "security_recall": {
+            "fraction": "37/40",
+            "value": 0.925
+          },
+          "conflict": {
+            "points": 7770,
+            "share": {
+              "fraction": "37/640",
+              "value": 0.057813
+            }
+          },
+          "refused_for_a_cycle": 1007,
+          "fall_points": 6520
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 115,
+            "right": 80695,
+            "share": {
+              "fraction": "16139/26880",
+              "value": 0.600409
+            }
+          },
+          "final": {
+            "right": 74175,
+            "share": {
+              "fraction": "989/1792",
+              "value": 0.551897
+            }
+          },
+          "fall": {
+            "fraction": "163/3360",
+            "value": 0.048512
+          },
+          "security_recall": {
+            "fraction": "37/40",
+            "value": 0.925
+          },
+          "conflict": {
+            "points": 7770,
+            "share": {
+              "fraction": "37/640",
+              "value": 0.057813
+            }
+          },
+          "refused_for_a_cycle": 1007,
+          "left_out": [],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 115,
+            "right": 80695,
+            "share": {
+              "fraction": "16139/26880",
+              "value": 0.600409
+            }
+          },
+          "final": {
+            "right": 74175,
+            "share": {
+              "fraction": "989/1792",
+              "value": 0.551897
+            }
+          },
+          "fall": {
+            "fraction": "163/3360",
+            "value": 0.048512
+          },
+          "security_recall": {
+            "fraction": "37/40",
+            "value": 0.925
+          },
+          "conflict": {
+            "points": 7770,
+            "share": {
+              "fraction": "37/640",
+              "value": 0.057813
+            }
+          },
+          "refused_for_a_cycle": 1007,
+          "left_out": [],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        }
+      },
+      "doors": {},
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    },
+    "n_r2": {
+      "summary": {
+        "gateways": [],
+        "births": 312,
+        "record": {
+          "peak": {
+            "birth": 50,
+            "right": 80720,
+            "share": {
+              "fraction": "1009/1680",
+              "value": 0.600595
+            }
+          },
+          "final": {
+            "right": 77755,
+            "share": {
+              "fraction": "15551/26880",
+              "value": 0.578534
+            }
+          },
+          "fall": {
+            "fraction": "593/26880",
+            "value": 0.022061
+          },
+          "security_recall": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "conflict": {
+            "points": 945,
+            "share": {
+              "fraction": "9/1280",
+              "value": 0.007031
+            }
+          },
+          "refused_for_a_cycle": 772,
+          "fall_points": 2965
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 50,
+            "right": 80720,
+            "share": {
+              "fraction": "1009/1680",
+              "value": 0.600595
+            }
+          },
+          "final": {
+            "right": 77755,
+            "share": {
+              "fraction": "15551/26880",
+              "value": 0.578534
+            }
+          },
+          "fall": {
+            "fraction": "593/26880",
+            "value": 0.022061
+          },
+          "security_recall": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "conflict": {
+            "points": 945,
+            "share": {
+              "fraction": "9/1280",
+              "value": 0.007031
+            }
+          },
+          "refused_for_a_cycle": 772,
+          "left_out": [],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 50,
+            "right": 80720,
+            "share": {
+              "fraction": "1009/1680",
+              "value": 0.600595
+            }
+          },
+          "final": {
+            "right": 77755,
+            "share": {
+              "fraction": "15551/26880",
+              "value": 0.578534
+            }
+          },
+          "fall": {
+            "fraction": "593/26880",
+            "value": 0.022061
+          },
+          "security_recall": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "conflict": {
+            "points": 945,
+            "share": {
+              "fraction": "9/1280",
+              "value": 0.007031
+            }
+          },
+          "refused_for_a_cycle": 772,
+          "left_out": [],
+          "kept": {
+            "points": 0,
+            "share": {
+              "fraction": "0",
+              "value": 0.0
+            }
+          },
+          "of_the_fall": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "refused_there_installed_here": 0,
+          "installed_there_refused_here": 0,
+          "right_sides_installed": 0,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 0,
+            "lost": 0,
+            "gained_security": 0,
+            "lost_security": 0,
+            "wrong_to_wrong": 0,
+            "conflicts_resolved": 0,
+            "resolved_wrongly": 0,
+            "resolved_wrongly_by_queue": {},
+            "decided_to_conflict": 0
+          }
+        }
+      },
+      "doors": {},
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    },
+    "n_r3": {
+      "summary": {
+        "gateways": [
+          "R0175"
+        ],
+        "births": 331,
+        "record": {
+          "peak": {
+            "birth": 295,
+            "right": 84335,
+            "share": {
+              "fraction": "16867/26880",
+              "value": 0.627493
+            }
+          },
+          "final": {
+            "right": 66280,
+            "share": {
+              "fraction": "1657/3360",
+              "value": 0.493155
+            }
+          },
+          "fall": {
+            "fraction": "3611/26880",
+            "value": 0.134338
+          },
+          "security_recall": {
+            "fraction": "97/140",
+            "value": 0.692857
+          },
+          "conflict": {
+            "points": 12435,
+            "share": {
+              "fraction": "829/8960",
+              "value": 0.092522
+            }
+          },
+          "refused_for_a_cycle": 905,
+          "fall_points": 18055
+        }
+      },
+      "replays": {
+        "doors": {
+          "peak": {
+            "birth": 295,
+            "right": 83675,
+            "share": {
+              "fraction": "3347/5376",
+              "value": 0.622582
+            }
+          },
+          "final": {
+            "right": 73565,
+            "share": {
+              "fraction": "14713/26880",
+              "value": 0.547359
+            }
+          },
+          "fall": {
+            "fraction": "337/4480",
+            "value": 0.075223
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 4290,
+            "share": {
+              "fraction": "143/4480",
+              "value": 0.03192
+            }
+          },
+          "refused_for_a_cycle": 864,
+          "left_out": [
+            [
+              "R0213",
+              "R0175"
+            ]
+          ],
+          "kept": {
+            "points": 7285,
+            "share": {
+              "fraction": "1457/26880",
+              "value": 0.054204
+            }
+          },
+          "of_the_fall": {
+            "fraction": "1457/3611",
+            "value": 0.403489
+          },
+          "refused_there_installed_here": 43,
+          "installed_there_refused_here": 2,
+          "right_sides_installed": 35,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 7890,
+            "lost": 605,
+            "gained_security": 7080,
+            "lost_security": 0,
+            "wrong_to_wrong": 420,
+            "conflicts_resolved": 8310,
+            "resolved_wrongly": 420,
+            "resolved_wrongly_by_queue": {
+              "SECURITY_INCIDENT:T2_TECHNICAL": 315,
+              "T1_GENERAL:T2_TECHNICAL": 105
+            },
+            "decided_to_conflict": 165
+          }
+        },
+        "climbs": {
+          "peak": {
+            "birth": 295,
+            "right": 83675,
+            "share": {
+              "fraction": "3347/5376",
+              "value": 0.622582
+            }
+          },
+          "final": {
+            "right": 73565,
+            "share": {
+              "fraction": "14713/26880",
+              "value": 0.547359
+            }
+          },
+          "fall": {
+            "fraction": "337/4480",
+            "value": 0.075223
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 4290,
+            "share": {
+              "fraction": "143/4480",
+              "value": 0.03192
+            }
+          },
+          "refused_for_a_cycle": 846,
+          "left_out": [
+            [
+              "R0177",
+              "R0175"
+            ],
+            [
+              "R0178",
+              "R0175"
+            ],
+            [
+              "R0180",
+              "R0175"
+            ],
+            [
+              "R0185",
+              "R0175"
+            ],
+            [
+              "R0195",
+              "R0175"
+            ],
+            [
+              "R0201",
+              "R0175"
+            ],
+            [
+              "R0213",
+              "R0175"
+            ],
+            [
+              "R0216",
+              "R0175"
+            ],
+            [
+              "R0222",
+              "R0175"
+            ],
+            [
+              "R0231",
+              "R0175"
+            ],
+            [
+              "R0240",
+              "R0175"
+            ],
+            [
+              "R0243",
+              "R0175"
+            ],
+            [
+              "R0253",
+              "R0175"
+            ],
+            [
+              "R0277",
+              "R0175"
+            ],
+            [
+              "R0286",
+              "R0175"
+            ],
+            [
+              "R0300",
+              "R0175"
+            ],
+            [
+              "R0310",
+              "R0175"
+            ],
+            [
+              "R0315",
+              "R0175"
+            ],
+            [
+              "R0322",
+              "R0175"
+            ]
+          ],
+          "kept": {
+            "points": 7285,
+            "share": {
+              "fraction": "1457/26880",
+              "value": 0.054204
+            }
+          },
+          "of_the_fall": {
+            "fraction": "1457/3611",
+            "value": 0.403489
+          },
+          "refused_there_installed_here": 43,
+          "installed_there_refused_here": 2,
+          "right_sides_installed": 35,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 7890,
+            "lost": 605,
+            "gained_security": 7080,
+            "lost_security": 0,
+            "wrong_to_wrong": 420,
+            "conflicts_resolved": 8310,
+            "resolved_wrongly": 420,
+            "resolved_wrongly_by_queue": {
+              "SECURITY_INCIDENT:T2_TECHNICAL": 315,
+              "T1_GENERAL:T2_TECHNICAL": 105
+            },
+            "decided_to_conflict": 165
+          }
+        }
+      },
+      "doors": {
+        "R0213": {
+          "peak": {
+            "birth": 295,
+            "right": 83675,
+            "share": {
+              "fraction": "3347/5376",
+              "value": 0.622582
+            }
+          },
+          "final": {
+            "right": 73565,
+            "share": {
+              "fraction": "14713/26880",
+              "value": 0.547359
+            }
+          },
+          "fall": {
+            "fraction": "337/4480",
+            "value": 0.075223
+          },
+          "security_recall": {
+            "fraction": "5/6",
+            "value": 0.833333
+          },
+          "conflict": {
+            "points": 4290,
+            "share": {
+              "fraction": "143/4480",
+              "value": 0.03192
+            }
+          },
+          "refused_for_a_cycle": 864,
+          "left_out": [
+            [
+              "R0213",
+              "R0175"
+            ]
+          ],
+          "kept": {
+            "points": 7285,
+            "share": {
+              "fraction": "1457/26880",
+              "value": 0.054204
+            }
+          },
+          "of_the_fall": {
+            "fraction": "1457/3611",
+            "value": 0.403489
+          },
+          "refused_there_installed_here": 43,
+          "installed_there_refused_here": 2,
+          "right_sides_installed": 35,
+          "new_doors": [],
+          "added_after_the_first_run": {
+            "gained": 7890,
+            "lost": 605,
+            "gained_security": 7080,
+            "lost_security": 0,
+            "wrong_to_wrong": 420,
+            "conflicts_resolved": 8310,
+            "resolved_wrongly": 420,
+            "resolved_wrongly_by_queue": {
+              "SECURITY_INCIDENT:T2_TECHNICAL": 315,
+              "T1_GENERAL:T2_TECHNICAL": 105
+            },
+            "decided_to_conflict": 165
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the replay that leaves nothing out is fall.json's record order",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the edges left out are the records'",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "each replay is the record's order until it leaves an edge out",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "every replay's masks are its engine's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "a run without a gateway leaves nothing out",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "C1",
+      "what": "without its door's edge, L r1 keeps at least half of its fall",
+      "reading": {
+        "kept": 23550,
+        "fall": 16780,
+        "share": {
+          "fraction": "2355/1678",
+          "value": 1.403456
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "C2",
+      "what": "without its doors' edges, L r2 keeps at least half of its fall",
+      "reading": {
+        "kept": 28660,
+        "fall": 47750,
+        "share": {
+          "fraction": "2866/4775",
+          "value": 0.600209
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "C3",
+      "what": "without its doors' edges, L r3 keeps at most a quarter of its fall",
+      "reading": {
+        "kept": 0,
+        "fall": 17164,
+        "share": {
+          "fraction": "0",
+          "value": 0.0
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "C4",
+      "what": "without their doors' edges, the three L runs keep at least half of their falls, summed",
+      "reading": {
+        "kept": 52210,
+        "fall": 81694,
+        "share": {
+          "fraction": "26105/40847",
+          "value": 0.639092
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "C5",
+      "what": "without R0051's edge alone, L r2 keeps at least half of what it keeps without all its doors' edges",
+      "reading": {
+        "kept": 28600,
+        "of": 28660,
+        "share": {
+          "fraction": "1430/1433",
+          "value": 0.997906
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "C6",
+      "what": "without its door's edge, N r3 keeps at least a quarter of its fall",
+      "reading": {
+        "kept": 7285,
+        "fall": 18055,
+        "share": {
+          "fraction": "1457/3611",
+          "value": 0.403489
+        }
+      },
+      "holds": true
+    }
+  ]
+}
