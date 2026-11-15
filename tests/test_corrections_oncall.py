@@ -23,6 +23,9 @@ Also pinned:
 - every gate on that run, and gates 6 to 8 each failing on its own;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on the same run and on one with a later rule of the
+queue: the rule that erred at each taker's ticket, and the edges between each
+taker and the queue's rules, its own and the later ones, by verdict.
 """
 
 from __future__ import annotations
@@ -82,10 +85,13 @@ BIRTHS = [
 EDGES = [(1, "S", "Q"), (4, "X", "Q"), (5, "Y", "X"), (5, "Q", "Y", EDGE_CYCLE)]
 
 
-def record(arm="l", births=None, edges=None, handed=None):
+def record(arm="l", births=None, edges=None, handed=None, erred=None):
     births = births or BIRTHS
+    erred = erred or {}
     rows = [{"idx": rule["born_at"], "truth": truth, "truth_rule": gov, "cause": cause,
-             "escalated": True, "reported": cause == ERR, "edge_reasons": []}
+             "escalated": True, "reported": cause == ERR, "edge_reasons": [],
+             "engine_rule": (erred.get(rule["born_at"]) or (None, None))[0],
+             "engine_action": (erred.get(rule["born_at"]) or (None, None))[1]}
             for cause, gov, truth, rule in births]
     log = []
     for born, w, l, *why in (edges if edges is not None else EDGES):
@@ -389,6 +395,42 @@ class TestTheExpectation(unittest.TestCase):
         runs = {t: fake(10, 5, 10, 5, 3, 6, 8, 4, 4, 5, 10, 5) for t in C.L_RUNS}
         runs["n_r1"] = fake(100, 0, 100, 0, 0, 60, 80, 0, 0, 0, 100, 0)
         self.assertEqual(self.clauses(runs), {f"O{k}": True for k in range(1, 8)})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_the_rule_that_erred_and_the_takers_own_edges(self):
+        rec = record(erred={2: ("Q", ON), 3: ("Q", ON), 4: ("S", SEC)})
+        rows = RUN["takers"][ON]["takers"]
+        action = {r["rule_id"]: r["action"] for r in rec["rules"]}
+        got = C.erred_and_edges(rec, rows, ON, action)
+        by = {t["rule_id"]: t for t in got["takers"]}
+        self.assertEqual(by["C"]["erred"], {"rule_id": "Q", "action": ON})
+        self.assertEqual(by["Y"]["erred"], {"rule_id": None, "action": None})
+        # X declared its win over Q; Y its loss to Q, refused. Y's win over X is
+        # not against the queue.
+        self.assertEqual(by["X"]["edges"][C.OWN], {C.WINS: {EDGE_OK: 1}, C.LOSSES: {}})
+        self.assertEqual(by["Y"]["edges"][C.OWN], {C.WINS: {}, C.LOSSES: {EDGE_CYCLE: 1}})
+        self.assertEqual(by["Y"]["edges"][C.LATER], {C.WINS: {}, C.LOSSES: {}})
+        self.assertEqual(got["taken_by_the_erred_queue"],
+                         {ON: by["C"]["taken"] + by["A"]["taken"], SEC: by["X"]["taken"],
+                          "None": by["Y"]["taken"]})
+
+    def test_a_later_rule_of_the_queue(self):
+        births = BIRTHS + [(IMP, "H05", ON, r_("P", 6, ON, [SEV1, c_("off_hours", "eq", True)]))]
+        rec = record(births=births, edges=EDGES + [(6, "P", "C"), (6, "Y", "P", EDGE_CYCLE)])
+        rows = [{"rule_id": "C", "born_at": 2, "action": T3, "cause": ERR, "taken": 10},
+                {"rule_id": "Y", "born_at": 5, "action": T2, "cause": CON, "taken": 5}]
+        action = {r["rule_id"]: r["action"] for r in rec["rules"]}
+        got = {t["rule_id"]: t for t in C.erred_and_edges(rec, rows, ON, action)["takers"]}
+        self.assertEqual(got["C"]["edges"][C.LATER], {C.WINS: {}, C.LOSSES: {EDGE_OK: 1}})
+        self.assertEqual(got["Y"]["edges"][C.LATER], {C.WINS: {EDGE_CYCLE: 1}, C.LOSSES: {}})
+        self.assertEqual(got["Y"]["edges"][C.OWN], {C.WINS: {}, C.LOSSES: {EDGE_CYCLE: 1}})
+
+    def test_the_run_carries_it(self):
+        self.assertEqual(set(RUN["added_after_the_first_run"]), set(C.QUEUES))
+        self.assertEqual(len(RUN["added_after_the_first_run"][ON]["takers"]),
+                         len(RUN["takers"][ON]["takers"]))
 
 
 class TestTheWriter(unittest.TestCase):
