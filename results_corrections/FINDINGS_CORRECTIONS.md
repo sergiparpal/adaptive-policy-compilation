@@ -23,7 +23,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of how much of the fall the doors carry** reached it in
   #254, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read a keyword rule by its
-  queue** reaches it in #256.
+  queue** reached it in #256, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -138,13 +138,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-15, after it] And an eighth.** [`byqueue.json`](byqueue.json)
 > is the POST-RUN reading of what makes an answer read a keyword rule by its
 > queue.
-> - **It was written from `7379251`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `7379251`**, on the branch of #256, which is `d5c8c19`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `3d849b1feeb3c1cd`**, because `corrections/byqueue.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `d5c8c19`, and
+>   still at the merge of #256. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1807,19 +1807,23 @@ settle*, item 1, left what makes it read them by their queue. This reading asks
 the records, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.byqueue`, on
-2026-11-15 in local time, from `7379251` with its code clean, on this reading's
-branch.
+2026-11-15 in local time, from `7379251` with its code clean, on the branch of
+#256, which is `d5c8c19` on `main`.
 - **The development set.** L r1 and N r3 were read before the expectation was
   written: every listing with its draft, slot, precedent, cause and reasoning
   tokens, and the side. Every clause reads L r2 and L r3, pooled.
-- **The commits.** `410f04e` carries the reading and its expectation, written
-  before the reading ran on L r2 and L r3. `7379251` carries the part added
-  after the first run, which moves no clause. The first run's record was not
-  committed.
-- **The record was committed alone**, as `068d65b`.
+- **The commits.** `f0e1853` on `main` carries the reading and its expectation,
+  written before the reading ran on L r2 and L r3. `d5c8c19` carries the part
+  added after the first run, which moves no clause. The first run's record was
+  not committed.
+- **The record was committed alone**, as `ea51576`. On #256's branch the three
+  commits were `410f04e`, `7379251` and `068d65b`. Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #256 behind the three `main` commits.
 - **Its `_env` says `git_dirty`**, for files the session's sandbox mounted in
   the repository's root, untracked. `code_dirty` is false, and the code digest,
-  `3d849b1feeb3c1cd`, is the one `7379251` computes.
+  `3d849b1feeb3c1cd`, is the one `main` computes at `d5c8c19`, and still at the
+  merge.
 - **The record is [`byqueue.json`](byqueue.json).** Its five gates passed in the
   four runs it reads:
   - the listings are `doors.json`'s, rebuilt from the record with the side each
