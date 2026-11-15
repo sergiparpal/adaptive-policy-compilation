@@ -203,6 +203,26 @@ escalation on its tickets, its curve, any replay's recall of it, and any point
 of `SECURITY_INCIDENT` lost before a peak.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE RULE THAT ERRED, AND THE EDGES
+--------------------------------------------------------------------------
+The first run found the queue written whole in every L run, and its taken points
+decided by corrections of the layer below, mostly by an edge. So this part
+reads, for every rule that takes a queue's points:
+- **the rule that erred**: at a reported error, the rule that had decided the
+  ticket, and its queue, as the record keeps them;
+- **the edges between it and the queue's rules**, each with the engine's
+  verdict:
+  own    those its answer declared at its birth, wins over the queue's rules
+         and losses to them;
+  later  those a rule of the queue born after it declared against it.
+The taken points are weighed by the queue of the rule that erred, a point
+several takers share counted for each.
+
+It was tried on the records in a scratch script before it was written here,
+after the seven clauses above had been read: O1 to O6 hold, and O7 fails. It
+carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Proposed by the agent and asked for by Sergi on 2026-11-15, after
@@ -271,6 +291,14 @@ PROVENANCE = (
     "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-15, after "
     "corrections/conditions.py. The expectation in the module's docstring was written and "
     "committed before the reading ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its seven clauses were read: for every rule that takes "
+    "a queue's points, the rule that had decided its ticket at a reported error, and the "
+    "edges between it and the queue's rules, those its own answer declared at its birth and "
+    "those later rules of the queue declared against it, each with the engine's verdict. "
+    "Tried in a scratch script first. No expectation; no clause moves.")
+OWN, LATER = "own", "later"
+WINS, LOSSES = "wins", "losses"
 
 
 def record_path():
@@ -419,6 +447,44 @@ def takers(w: dict[str, Any], births: dict[str, dict[str, Any]], engine: Priorit
         "takers": rows,
     }
     return summary, masks
+
+
+def erred_and_edges(record: dict[str, Any], rows_taken: Sequence[dict[str, Any]], queue: str,
+                    action: dict[str, str]) -> dict[str, Any]:
+    """ADDED AFTER THE FIRST RUN. For every taker: the rule that had decided its
+    ticket, at a reported error, and the edges between it and the queue's rules,
+    those its answer declared at its birth and those a later rule of the queue
+    declared against it, by the engine's verdict. The taken points weighed by the
+    queue of the rule that erred, a point several takers share counted for
+    each."""
+    rows = {r["idx"]: r for r in record["records"]}
+    by_birth = erb.edges_by_birth(record)
+    born_at = {r["rule_id"]: r["born_at"] for r in record["rules"]}
+    out, weighed = [], Counter()
+    for t in rows_taken:
+        rid, born = t["rule_id"], t["born_at"]
+        row = rows.get(born, {})
+        edges = {OWN: {WINS: Counter(), LOSSES: Counter()},
+                 LATER: {WINS: Counter(), LOSSES: Counter()}}
+        for idx, es in by_birth.items():
+            for e in es:
+                if rid not in (e.winner, e.loser):
+                    continue
+                other = e.loser if e.winner == rid else e.winner
+                if action.get(other) != queue:
+                    continue
+                side = WINS if e.winner == rid else LOSSES
+                if idx == born:
+                    edges[OWN][side][e.verdict] += 1
+                elif born_at.get(other) == idx:
+                    edges[LATER][side][e.verdict] += 1
+        erred = {"rule_id": row.get("engine_rule"), "action": row.get("engine_action")}
+        weighed[str(erred["action"])] += t["taken"]
+        out.append({"rule_id": rid, "action": t["action"], "born_at": born,
+                    "cause": t["cause"], "taken": t["taken"], "erred": erred,
+                    "edges": {k: {s: dict(sorted(c.items())) for s, c in v.items()}
+                              for k, v in edges.items()}})
+    return {"takers": out, "taken_by_the_erred_queue": dict(sorted(weighed.items()))}
 
 
 # ---------------------------------------------------------------------------
@@ -633,7 +699,8 @@ def read_run(record: dict[str, Any], oncall_run: dict[str, Any], space: Space,
     out: dict[str, Any] = {"peak": None if p is None else {
         "birth": p + 1, "born_at": steps[p]["idx"], "rule_id": steps[p]["rule_id"]}}
     gates = []
-    taken_part, hist_part, peak_part, lever_part = {}, {}, {}, {}
+    taken_part, hist_part, peak_part, lever_part, added = {}, {}, {}, {}, {}
+    action = {r.rule_id: r.action for r in final.rules}
     ok6 = reports_are_the_truth(record)
     ok7 = (all(rep["ok"].values()) and p is not None and fall_peak is not None
            and p + 1 == fall_peak["birth"])
@@ -641,6 +708,7 @@ def read_run(record: dict[str, Any], oncall_run: dict[str, Any], space: Space,
         w = L.ways(final, truth[q], q)
         summ, masks = takers(w, births, final, record, parts if q == QUEUE else None)
         taken_part[q] = summ
+        added[q] = erred_and_edges(record, summ["takers"], q, action)
         ok6 = ok6 and all(partitions_ok(m, taken_of(w)) for m in masks.values())
         h, hm = history(steps, p, truth[q], w["lost"], births)
         hist_part[q] = h
@@ -669,6 +737,7 @@ def read_run(record: dict[str, Any], oncall_run: dict[str, Any], space: Space,
         "gates": [{"queue": QUEUE, **g} for g in oncall_run["reading"]["gates"]]
                  + [{"queue": SEC, **g} for g in security["gates"]]
                  + [{"queue": None, **g} for g in gates],
+        "added_after_the_first_run": added,
     })
     return out
 
@@ -782,6 +851,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()), "fall": str(fl.record_path()),
                    "paths": str(pa.record_path()), "carry": str(cr.record_path()),
                    "gateway": str(gw.record_path()),
