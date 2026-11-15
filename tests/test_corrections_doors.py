@@ -22,6 +22,10 @@ Also pinned:
 - the expectation's clauses at their edges, on the held-out runs alone, and over
   nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on the same run and on one where a climb is above
+every rule of its list and a round lists a rule of the gateway's queue outside
+the keyword: what each answer did with its whole list and with that queue, and
+each side by both.
 """
 
 from __future__ import annotations
@@ -352,6 +356,48 @@ class TestTheExpectation(unittest.TestCase):
 
     def test_a_clause_over_nothing_fails(self):
         self.assertEqual(clauses({"l_r2": run_of([], 0, 0)}), {k: False for k in ALL})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+    """The whole list and the gateway's queue, on the run and on one where H is
+    above every rule of its list, and a round lists a rule of the gateway's
+    queue outside the keyword, P."""
+
+    def other(self):
+        births = copy.deepcopy(BIRTHS)
+        births[7][1]["beats"] = ["U", "K"]
+        births[7][1]["loses_to"] = []
+        births += [(IMP, r_("P", 11, T2, [c_("product", "eq", "api")]), []),
+                   (ERR, r_("V", 12, BI, [c_("channel", "eq", "phone")], beats=["G", "P"],
+                            loses_to=["U"]), ["U", "G", "P"])]
+        corpus = CORPUS + [ticket(product="api"), ticket(channel="phone")]
+        return D.read_run(record(births), gateway_run(), SPACE, corpus)
+
+    def test_the_whole_list(self):
+        got = {l["newborn"]: l["added_after_the_first_run"]["list_toward"]
+               for l in read()["listings"]}
+        self.assertEqual(got, {"D": D.MIXED, "C": D.MIXED, "E": D.BELOW, "H": D.MIXED,
+                               "M": D.MIXED, "W": D.MIXED})
+        by = {l["newborn"]: l["added_after_the_first_run"] for l in self.other()["listings"]}
+        self.assertEqual(by["H"]["list_toward"], D.ABOVE)
+
+    def test_the_gateways_queue_outside_the_keyword(self):
+        self.assertTrue(all(l["added_after_the_first_run"]["queue_rules"] == []
+                            for l in read()["listings"]))
+        by = {l["newborn"]: l["added_after_the_first_run"] for l in self.other()["listings"]}
+        self.assertEqual(by["V"]["queue_rules"], ["P"])
+        self.assertEqual(by["V"]["queue_toward"], D.ABOVE)
+        self.assertEqual(by["E"]["queue_toward"], D.NONE_LISTED)
+
+    def test_each_side_by_both(self):
+        got = self.other()["added_after_the_first_run"]
+        self.assertEqual(got["climbs"], {"above_every:above_every": 1,
+                                         "below_every:mixed": 3})
+        self.assertEqual(got["queue_toward"][D.CLIMB], {D.ABOVE: 1, D.NONE_LISTED: 3})
+        self.assertEqual(got["list_toward"][D.CEDE], {D.BELOW: 1, D.MIXED: 2})
+
+    def test_it_moves_no_gate(self):
+        self.assertEqual([g["gate"] for g in read()["gates"]], [1, 2, 3, 4])
 
 
 class TestTheWriter(unittest.TestCase):
