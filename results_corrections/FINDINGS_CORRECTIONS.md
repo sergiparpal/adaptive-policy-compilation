@@ -23,7 +23,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of how much of the fall the doors carry** reached it in
   #254, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read a keyword rule by its
-  queue** reaches it in the pull request it is opened in.
+  queue** reaches it in #256.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
