@@ -18,6 +18,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   reached it in #248, merged on 2026-11-14.
 - **The POST-RUN reading of why so many rules sit above the gateway** reached
   it in #250, merged on 2026-11-15.
+- **The POST-RUN reading of why the doors declared themselves above the
+  gateway** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -108,6 +110,14 @@ corrected during Stage C.**
 > - **Its code digest is `1757cc92488e3bec`**, because `corrections/gateway.py`
 >   was added after the readings above. `main` computes it at `31a3479`, and
 >   still at the merge of #250. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, later] And a sixth.** [`doors.json`](doors.json) is the
+> POST-RUN reading of why the doors declared themselves above the gateway.
+> - **It was written from `48900e0`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `b4a2acc7fdd0cd3e`**, because `corrections/doors.py`
+>   was added after the readings above. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1407,9 +1417,193 @@ many.
 
 1. **Why the doors declared themselves above the gateway**, where nine answers
    in ten in L put it above. Their reasoning is in the records. Free.
+   **[NOTE 2026-11-15] Read POST-RUN, below: they read it by its queue.** The
+   answers place a keyword rule of another queue as a security rule, and the
+   answers that climbed over the gateway read it as a rule of `T2_TECHNICAL`.
+   Most of the doors still put their newborn below the security rule the
+   gateway beats by containment, and the engine refused that loss. The rest put
+   their newborn above every rule of their list. *Why the doors declared
+   themselves above the gateway*.
 2. **How much of the fall the doors carry.** A replay of the same births without
    the doors' edges is free on the records. It is not the loop that would have
    run.
+
+## Why the doors declared themselves above the gateway — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** It found few doors
+into the gateways, each declared one placed by its own answer, where nine answers
+in ten in L that were listed a gateway put it above their newborn. Its *What it
+does not settle*, item 1, left why. This reading asks the records, and spends
+nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.doors`, on 2026-11-15
+in local time, from `48900e0` on a clean tree, on this reading's branch.
+- **The development set.** L r1 was read before the expectation was written:
+  its rounds that listed the gateway, what their answers declared, the passages
+  of their reasoning that name the gateway, and five candidate codes over those
+  passages. The codes told the sides apart by little, so the reading reads what
+  each answer declared. Every clause reads L r2 and L r3, pooled, and N r3.
+- **The commits.** `5751982` carries the reading and its expectation, written
+  before the reading ran on the other runs. `48900e0` carries the part added
+  after the first run, which moves no clause. The first run's record was not
+  committed.
+- **The record was committed alone**, as `cba5f86`. It is
+  [`doors.json`](doors.json). Its gates passed in all six runs:
+  - the listings are `gateway.json`'s, by what each answer declared of its
+    gateway and what the engine did;
+  - the climbs the engine installed are its doors' declared edges;
+  - every listing's newborn crosses its gateway, of another queue;
+  - every installed climb's loss to a security rule that contains its gateway
+    was refused for a cycle;
+  - L r1 gives the counts the module's docstring gives of it.
+
+**What it reads.**
+- **A listing** is a round that listed a gateway born before it, once per
+  gateway, as `gateway.json` counts them. Its side is what its answer declared of
+  the gateway, whatever the engine did: a *climb* put the newborn above it, a
+  *cede* below it. The doors are the climbs the engine installed.
+- **For each listing**, what its answer did with two sets of the rules its round
+  listed. It put its newborn above every one, below every one, or some of each.
+  - **The other keyword rules** are the rules of a queue other than
+    `SECURITY_INCIDENT` whose region lies inside the keyword's half, the gateways
+    left out.
+  - **The security rules** are the rules of `SECURITY_INCIDENT` whose region
+    contains the gateway's. The gateway beats each of them by containment.
+- **Every placement of every round**, by the kind of rule placed.
+- **Added after the first run**: what each answer did with its whole list, and
+  with the round's rules of the gateway's queue that are not keyword rules.
+
+### 1. The answers place a keyword rule as a security rule
+
+| run | security rules | other keyword rules | gateways | rules outside the keyword |
+|---|---|---|---|---|
+| L r1, development | 678 of 689 | 59 of 63 | 73 of 78 | 1,890 of 6,423 |
+| L r2 | 921 of 945 | 49 of 59 | 68 of 82 | 1,419 of 5,326 |
+| L r3 | 916 of 950 | 88 of 99 | 97 of 107 | 1,777 of 5,026 |
+| N r3 | 1,337 of 1,369 | | 21 of 40 | 2,426 of 7,158 |
+
+The placements that put the newborn below the rule placed, by the rule's kind.
+
+- **The answers put their newborn below nearly every security rule** they
+  placed, and below a quarter to two fifths of the rules outside the keyword's
+  half.
+- **They put it below a keyword rule of another queue nearly as often** (F1
+  holds): below 137 of the 158 such placements in L r2 and L r3.
+- **The gateway is such a rule.** In L, 238 of the 267 rounds that listed one
+  put it above their newborn. No round of N r3 listed another keyword rule, and
+  21 of its 40 rounds put its gateway, a rule of `T1_GENERAL`, above their
+  newborn.
+
+### 2. The climbs read it by its queue
+
+| run | climbs | above every other keyword rule | none listed | cedes | below every other keyword rule | above every one | none listed |
+|---|---|---|---|---|---|---|---|
+| L r1, development | 5 | 3 | 2 | 73 | 57 | 1 | 15 |
+| L r2 | 14 | 10 | 4 | 68 | 50 | | 18 |
+| L r3 | 10 | 6 | 4 | 97 | 65 | | 32 |
+| N r3 | 19 | | 19 | 21 | | | 21 |
+
+- **Every held-out climb whose round listed another keyword rule put its newborn
+  above every one** (F2 holds, the bet): 16 of 16. **Every such cede put its
+  newborn below every one** (F3 holds): 115 of 115. An answer places the keyword
+  rules of other queues one way, and the gateway with them.
+- **The climbs place the gateway as they place its queue.** Added after the
+  first run: 21 of the 24 held-out climbs put their newborn above every rule of
+  the gateway's queue that is not a keyword rule, and 17 of N r3's 19. Of the
+  165 held-out cedes, 67 did too, and still put the gateway above: they place it
+  apart from its queue.
+- **In L r1's reasoning**, the development set, the cedes call the gateway
+  security, by its keyword: "Pierde porque security". The climbs call it a rule
+  of `T2_TECHNICAL`: "R0061 is T2, so our rule should beat it".
+
+### 3. Two kinds of climb
+
+| run | climbs | below every security rule | above every rule of the list | above every security rule, not the whole list | no security rule listed |
+|---|---|---|---|---|---|
+| L r1, development | 5 | 4 | | 1 | |
+| L r2 | 14 | 10 | 4 | | |
+| L r3 | 10 | 5 | 3 | | 2 |
+| N r3 | 19 | 18 | 1 | | |
+
+- **Most climbs still yield to security, in the same answer.** 15 of the 22
+  held-out climbs whose round listed a security rule put their newborn below
+  every one, short of F4's three quarters. 18 of N r3's 19 did (F6 holds). Two
+  of L r1's climbs say the security rules will win over both anyway.
+- **The rest put their newborn above every rule of their list**, added after the
+  first run: all 7 held-out climbs above every security rule, and N r3's one.
+  L r1's R0273 placed its list by the number of conditions, and put its newborn
+  above the security rules too.
+
+### 4. The doors
+
+- **8 of L's 13 door edges yield to security**: `R0062` in L r1; `R0051`, and
+  `R0143` into both gateways, in L r2; `R0063`, `R0090`, `R0096` and `R0153` in
+  L r3. So does N r3's one door, `R0213`.
+  - **Each answer declared its newborn below a security rule that contains the
+    gateway**, and the engine refused every such loss for a cycle (gate 4).
+  - **The door, installed above the gateway, was already above that rule.** The
+    loop installs a newborn's wins before its losses, and the gateway beats the
+    rule by containment. The round's list gives each rule's declared wins, not
+    what containment orders.
+- **The other 5 are above every rule of their list**: `R0234`, into both of
+  L r2's gateways, and `R0048`, `R0122` and `R0273` in L r3.
+- **In each L run, the declared door that carries the most rules above a
+  gateway yields to security.** In `gateway.json`, `R0062` carries all 67 of
+  L r1's, `R0051` 101 of L r2's 102, and `R0090` 47 of L r3's 49.
+
+### 5. Not by the ticket, nor by size
+
+- **No listing's ticket lies inside its gateway**, in any run. No answer climbed
+  to take its own ticket from the gateway.
+- **The climbs' newborns are no narrower than the cedes'.** Narrower than the
+  gateway: 11 of L r2's 14 climbs and 51 of its 68 cedes; all 10 of L r3's
+  climbs and all 97 of its cedes; 5 of N r3's 19 climbs and 5 of its 21 cedes.
+
+### The expectation
+
+Written in `corrections/doors.py`'s docstring after L r1 was read, and committed
+before the reading ran on the other runs. It is not signed, and it is on no
+scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| F1, of the placements against other keyword rules, at least three quarters below | 137 of 158 | **holds** |
+| F2, of the climbs whose round listed another keyword rule, at least three quarters above every one | 16 of 16 | **holds** |
+| F3, of such cedes, at least three quarters below every one | 115 of 115 | **holds** |
+| F4, of the climbs whose round listed a security rule, at least three quarters below every one | 15 of 22 | fails |
+| F5, in N r3, F2's statement | nothing to read | fails |
+| F6, in N r3, F4's statement | 18 of 19 | **holds** |
+
+**F1, F2, F3 and F6 hold, and F4 and F5 fail.** The bet F2 held. F4 failed on
+the climbs that put their newborn above every rule of their list. F5, trusted
+least, read nothing: no round of N r3 listed another keyword rule, and a share
+over nothing fails.
+
+### What it says
+
+- **The answers yield to the security queue, and place a keyword rule of another
+  queue as a security rule.** The gateway is a rule of `T2_TECHNICAL` on the
+  keyword, so nine answers in ten put it above their newborn.
+- **The climbs read the gateway by its queue.** They put their newborn above it,
+  as above the round's other keyword rules of other queues, and as above the
+  rules of the gateway's own queue outside the keyword.
+- **Most climbs still yield to security in the same answer.** The engine cannot
+  keep both. The gateway lies inside the keyword's security rule and beats it by
+  containment, which the round does not show. Every installed one had its loss
+  to that rule refused, and in each L run the declared door that carries the
+  most rules above a gateway is of this kind.
+- **The other climbs put their newborn above every rule of their list.**
+- **Neither the ticket nor the size tells a climb from a cede.**
+
+### What it does not settle
+
+1. **What makes an answer read a keyword rule by its queue.** Both readings
+   appear in the same reasonings, and nothing read here tells a climb's round
+   from a cede's beyond what its answer did. Free on the records.
+2. **Why some answers put their newborn above every rule of their list.** Free
+   on the records.
+3. **Whether a round that showed what containment orders would have kept the
+   doors below the gateway.** A plan with calls.
 
 ---
 
@@ -1432,3 +1626,5 @@ many.
   should lose to.
 - [`gateway.json`](gateway.json): POST-RUN, why so many rules sit above the
   gateway.
+- [`doors.json`](doors.json): POST-RUN, why the doors declared themselves above
+  the gateway.
