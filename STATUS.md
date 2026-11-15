@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 14, 2026. **Not a history** — that is the four
+What is known, as of November 15, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
