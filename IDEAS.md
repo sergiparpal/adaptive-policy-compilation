@@ -557,10 +557,26 @@ learner of the labels alone matched the loop. What that leaves:
   ticket's tier is in the prompt, and the policy gives the layer no enterprise
   ticket at severity 1, and no business ticket off hours. The first calls'
   reasoning is in the records. Free on the records.
+  **[NOTE 2026-11-15] Read in part POST-RUN: nothing the call is given carries
+  the tiers.** The catalogue names none for the queue, and L's labels name the
+  queue once in three runs. Compiled at once, the same labels lose the queue
+  where they never name it. The first calls' own reasoning is still not read.
+  `FINDINGS_CORRECTIONS.md`, *What the at-once asks wrote for
+  `ONCALL_ESCALATION`*.
 - **A catalogue line that bounds the rarest queue by tier.** The catalogue's
   line, critical incidents that cannot wait, is read as severity 1, and the
   queue's first rule is written at the layer's tickets in every run. A line that
   named the tiers might keep it off them. Calls, and a new text.
+  **[NOTE 2026-11-15] The prose of level 2 already names them.** A critical
+  ticket of an enterprise client calls the on-call team, and of a business
+  client only off hours. Compiled at once at level 1, the labels lose the queue
+  where they never name it, and L r1's one label of `H05` was read off hours.
+  So the cheapest test is the next entry.
+- **At-once asks at level 2 on the same labels.** The prose in place of the
+  catalogue, with L's labels at the same checkpoints. Would the queue stay whole
+  while the layer is learned? Asks only, cents.
+- **Why L r3's at-once answers decide less of the layer than its loop.** In L r1
+  and L r2 they decide more. Free on the records.
 - **Why some of L r1's contested points of the rarest queue do not come back
   with losses first.** In L r2 and L r3 every one does. Free on the records.
 - **Why the final base forgets its own corrections.** At the end, L's bases
@@ -722,11 +738,20 @@ learner of the labels alone matched the loop. What that leaves:
   and not in L r3. That does not separate shape from order: the at-once answer is
   other rules. `FINDINGS_CORRECTIONS.md`, *Why the loop's share of the
   space peaked and fell*.
+  **[NOTE 2026-11-15] For the rarest queue at once does not win, read POST-RUN.**
+  The same labels, compiled at once, lose the whole queue in L r2 and L r3,
+  whose labels never name it, and the loop keeps more of it there. What decides
+  it is what the labels carry, not the shape. `FINDINGS_CORRECTIONS.md`, *What
+  the at-once asks wrote for `ONCALL_ESCALATION`*.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,
   instead of writing one rule at a time, is the next design these records
   suggest. Calls.
+  **[NOTE 2026-11-15] At level 1 it would lose the rarest queue.** Under L's
+  labels, two runs of three never name it, and at once their answers write no
+  rule of it. A plan for it should say in §0 what it does where the labels
+  never name a queue.
 - **The report or the label.** L's paragraph says both that the base erred and
   what the right queue is, and §2.2's third arm, which would separate them, was
   not run. Calls.

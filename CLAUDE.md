@@ -1385,6 +1385,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.above                         # POST-RUN: why some answers put their newborn above every rule of their list
     PYTHONHASHSEED=0 python3 -m corrections.conditions                    # POST-RUN: what makes an answer read the list by its conditions
     PYTHONHASHSEED=0 python3 -m corrections.oncall                        # POST-RUN: why L loses ONCALL_ESCALATION
+    PYTHONHASHSEED=0 python3 -m corrections.layer                         # POST-RUN: what the at-once asks wrote for ONCALL_ESCALATION
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1519,6 +1520,15 @@ queue's tiers, and it won over the rule that had erred there. Installing losses
 first gives back what is left contested, in both queues. Nothing gives back what
 is outranked. **A queue a loop keeps may be kept by an error nobody corrects.**
 Read where a queue's rules were born before crediting the arm that keeps it.
+
+**Read POST-RUN, compiling the same labels at once loses the rarest queue where
+no label names it.** The labels show the layer below the queue and almost never
+the queue. Without a label the catalogue writes the queue over severity 1, the
+layer with it; with a few of the layer's labels, the at-once answers stop
+writing the queue, and their reasoning says no correction names it. The loop
+keeps more of it, because its first rule stays. **What a compile cannot see, no
+shape of it learns.** Before blaming a loop's shape for a lost queue, count how
+often the labels it learns from name that queue.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
