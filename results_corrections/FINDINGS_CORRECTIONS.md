@@ -26,6 +26,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   queue** reached it in #256, merged on 2026-11-15.
 - **The POST-RUN reading of why some answers put their newborn above every rule
   of their list** reached it in #259, merged on 2026-11-15.
+- **The POST-RUN reading of what makes an answer read the list by its
+  conditions** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -158,6 +160,17 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `ccef280`, and
 >   still at the merge of #259. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, after the ninth] And a tenth.**
+> [`conditions.json`](conditions.json) is the POST-RUN reading of what makes an
+> answer read the list by its conditions.
+> - **It was written from `a8ca66e`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `2b3e6ca0a22c99ae`**, because
+>   `corrections/conditions.py` was added after the readings above. Its `_env`
+>   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -2194,9 +2207,183 @@ and its statement failed in N (E6, trusted least). E1, trusted most, held at
    queues**, when the same draft does both. The draft's conditions raise it, and
    leave it rare. Whether the list's order moves it, as it moved the reading of
    the gateway, is not read. Free on the records.
+   **[NOTE 2026-11-15] Read POST-RUN, below: not the order, and not one
+   reading.** The shuffle's order and the precedent shown did not tell the
+   climbs from the cedes. The cedes weigh the queue. The climbs mostly count
+   conditions, but two rank on-call above security, and some never read a
+   security rule on its own. *What makes an answer read the list by its
+   conditions*.
 2. **Whether a round that defined `beats` by the queue that should decide the
    shared tickets, and not as an exception, would keep the narrow drafts below
    the security block.** A plan with calls.
+
+---
+
+## What makes an answer read the list by its conditions — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** It found that the
+answers place the rules of `SECURITY_INCIDENT` as one block. The few above it
+read the list by its conditions, or are their queue's general rule read as a
+domain, and the same draft went both ways. Its
+*What it does not settle*, item 1, left what makes one answer read the list by
+its conditions and another by its queues, and asked whether the list's order
+moves it. This reading asks the records, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.conditions`, on
+2026-11-15 in local time, from `a8ca66e` with its code clean, on this reading's
+branch.
+- **The development set.** L r1 and N r3 were read before the expectation was
+  written. That covered every round whose list held a security rule: its side,
+  its list's opening, what the list showed, its reasoning tokens, and its
+  passages about the security rules, coded for several candidates. C1 to C4
+  pool L r2, L r3, N r1 and N r2, the two arms together, and C5 reads each arm
+  apart.
+- **The commits.** `798201c` carries the reading and its expectation, written
+  before the reading ran on the other runs. `a8ca66e` carries the part added
+  after the first run, which moves no clause. The first run's record was not
+  committed.
+- **The record was committed alone**, as `04fb81c`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `2b3e6ca0a22c99ae`, is the one `a8ca66e` computes.
+- **The record is [`conditions.json`](conditions.json).** Its five gates passed
+  in all six runs:
+  - the rounds and their sides against the security rules are `above.json`'s;
+  - every list is the seeded shuffle v1c showed;
+  - every placement call carries its reasoning and its reasoning tokens;
+  - every listed rule shown ceding to a listed security rule had that edge
+    installed at its own birth;
+  - the development set gives the counts the module's docstring gives of it.
+
+**What it reads.** Every round whose list held a rule of `SECURITY_INCIDENT`,
+newborn not of it, by its side: a *climb* above every such rule, a *cede* below
+every one. For each, what the round gave the answer and what the answer spent:
+- **the order**: whether v1c's seeded shuffle opened the list with a security
+  rule, against what chance gives;
+- **the precedent**: the listed rules shown ceding to a listed security rule,
+  `[pierde con` it`]`, and climbing over one, `[gana a` it`]`;
+- **the reasoning**: the placement call's reasoning tokens, against the cedes'
+  lower median at the same length of list, binned 1-3, 4-8, 9-20, 21-50 and 51
+  or more;
+- **the account**: the lines of the reasoning that name a listed security rule,
+  each with the two lines after it, coded for priority and for conditions.
+
+**Added after the first run**: whether every such line enumerates the list,
+naming at least three of its rules and at least half.
+
+### 1. Not the order, nor the precedent
+
+| | climbs | lists opened with a security rule | the shuffle gives | cedes | lists opened with a security rule | the shuffle gives |
+|---|---|---|---|---|---|---|
+| L r1 and N r3, development | 8 | 2 | 2.80 | 379 | 130 | 128.78 |
+| L r2, L r3, N r1 and N r2 | 14 | 3 | 4.33 | 714 | 249 | 259.57 |
+
+- **The shuffle opened the climbs' lists with a security rule about as often as
+  chance would** (C1 holds): 3 of the 14 held-out climbs, where it gives 4.33.
+  The cedes' opened so 249 times, where it gives 259.57.
+- **A rule shown climbing over a security rule did not raise it**: 1 of the 67
+  held-out rounds whose list showed one climbed, and 13 of the 662 without.
+- **Nor did the precedent of rules shown ceding**, at a given length of list.
+  At lists of 21 to 50, 1 of the 16 rounds with no rule shown ceding climbed, 1
+  of the 106 with under a third of the list shown so, and 3 of the 99 with a
+  third or more.
+
+### 2. The climbs reasoned less, short of the bet
+
+- **9 of the 14 held-out climbs spent fewer reasoning tokens than the cedes'
+  lower median at their length of list** (C2 fails, the bet): short of two
+  thirds. In the development set, 2 of 3 and 5 of 5, each against its own run's
+  cedes.
+- **Not in L** (C5 fails): 4 of 7 in L r2 and L r3, and 5 of 7 in N r1 and N r2.
+
+### 3. The account: the cedes weigh the queue
+
+| | climbs | conditions, never priority | priority | cedes | conditions, never priority | priority |
+|---|---|---|---|---|---|---|
+| L r1 and N r3, development | 8 | 5 | 3 | 379 | 18 | 354 |
+| L r2, L r3, N r1 and N r2 | 14 | 6 | 5 | 714 | 26 | 675 |
+
+The rounds whose passages about the security rules carry each code.
+
+- **The cedes' passages weigh the queue** (C4 holds, trusted most): 26 of the
+  714 held-out cedes' speak of conditions and never of priority, and 675 name
+  priority.
+- **Fewer than half the climbs' passages speak only of conditions** (C3 fails):
+  6 of the 14.
+
+### 4. The climbs are not one reading
+
+Read after the first run, in a scratch script: the passages of the fourteen
+held-out climbs.
+- **Six read every rule by its conditions**, and their passages never name
+  priority, as C3 counted.
+- **Two read it so and claim priority for their own rule**, or name the task:
+  "it's appropriate to prioritize it over the more general rules".
+- **The two drafts of `ONCALL_ESCALATION` read by the queue, and rank on-call
+  above security**: "Given the critical nature, I think ONCALL_ESCALATION should
+  take precedence because it's the immediate response team".
+- **One weighed security and climbed all the same.**
+- **Three carry neither code.** Their passages about the security rules are the
+  list's identifiers, enumerated: "Ahora, debo listar todos los IDs de las
+  reglas que se solapan ... Pondré todas en beats". Two are `product = billing`
+  in L r2.
+
+**The reasoning splits by the same line.** The five that enumerate the list or
+read on-call above security all spent fewer tokens than their length's median.
+Of the eight that read by conditions, four did. The one that weighed security
+did not.
+
+### 5. The security rules named only in the list — added after the first run
+
+| | climbs | named only in lines that enumerate the list | cedes | so named |
+|---|---|---|---|---|
+| L r1 and N r3, development | 8 | 3 | 379 | 40 |
+| L r2, L r3, N r1 and N r2 | 14 | 3 | 714 | 78 |
+
+- **About twice as often among the climbs**: 3 of the 14 held-out, and 78 of
+  the 714 cedes.
+- **The measure takes an enumeration written on one line.** It caught one of
+  the three passages read as enumerations, and two others. It misses a list
+  written one rule to a line, as one of L r2's billing rules wrote it.
+
+### The expectation
+
+Written in `corrections/conditions.py`'s docstring after L r1 and N r3 were
+read, and committed before the reading ran on the other runs. It is not signed,
+and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| C1, of the climbs, the lists opened with a security rule at least half what the shuffle gives | 3, where it gives 4.33 | **holds** |
+| C2, at least two thirds of the climbs spent fewer reasoning tokens than the cedes at their length | 9 of 14 | fails |
+| C3, of the climbs, at least half speak of conditions and never of priority | 6 of 14 | fails |
+| C4, of the cedes, at most one in ten do | 26 of 714 | **holds** |
+| C5, C2's statement in each arm | 4 of 7 in L, 5 of 7 in N | fails |
+
+**C1 and C4 hold, and C2, C3 and C5 fail.** The bet C2 fell short, at 9 of 14
+against two thirds. C4, trusted most, held. C5, trusted least, failed in L.
+
+### What it says
+
+- **What the round showed does not set it.** The shuffle's order and the
+  precedent of rules ceding to security or climbing over it did not tell the
+  climbs from the cedes.
+- **The cedes weigh the queue**, nearly every one of them.
+- **The climbs are several readings, not one.** Most count conditions. The two
+  drafts of `ONCALL_ESCALATION` weigh the queue and rank on-call first. Three
+  never read a security rule on their own, and put the whole list in `beats`.
+- **They reasoned less, but not as the bet said.** The answers that enumerated
+  the list or ranked on-call first reasoned less than the cedes. The ones that
+  counted conditions reasoned about as much.
+
+### What it does not settle
+
+1. **Why two drafts of `ONCALL_ESCALATION` rank on-call above security**, when
+   34 of the queue's 36 held-out rounds against security cede to it. The catalogue's line calls
+   on-call the queue of incidents that cannot wait. Free on the records.
+2. **Whether a round that asked for each listed rule's side apart would leave
+   fewer answers that place the whole list in one declaration.** A plan with
+   calls.
 
 ---
 
@@ -2226,3 +2413,5 @@ and its statement failed in N (E6, trusted least). E1, trusted most, held at
   rule by its queue.
 - [`above.json`](above.json): POST-RUN, why some answers put their newborn above
   every rule of their list.
+- [`conditions.json`](conditions.json): POST-RUN, what makes an answer read the
+  list by its conditions.
