@@ -28,6 +28,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   of their list** reached it in #259, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read the list by its
   conditions** reached it in #261, merged on 2026-11-15.
+- **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -172,6 +174,16 @@ corrected during Stage C.**
 >   computes it at `f33321e`, and still at the merge of #261. Its `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. The modules Stage
 >   C ran did not change.
+>
+> **[NOTE 2026-11-15, after the tenth] And an eleventh.**
+> [`oncall.json`](oncall.json) is the POST-RUN reading of why L loses
+> `ONCALL_ESCALATION`.
+> - **It was written from `24753d8`**, on that reading's branch: the commit that
+>   carries the second part added after its first run. Its section below names
+>   the commits before it.
+> - **Its code digest is `c19988c1a4a6ee4e`**, because `corrections/oncall.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -513,6 +525,13 @@ best of the learners trained on the same labels:
   L r3 most of `SECURITY_INCIDENT`'s went to one correction of `T2_TECHNICAL`,
   nested in the keyword's region. The rest were not right at the peak, and are not
   read. *Why the loop's share of the space peaked and fell*.
+  **[NOTE 2026-11-15] The rest read POST-RUN, below, with `ONCALL_ESCALATION`.**
+  L wrote the rarest queue whole in every run, and lost it beside or below
+  corrections of the policy's layer below it. Installing losses first gives back
+  the part left contested, and nothing gives back the part outranked. Of
+  `SECURITY_INCIDENT`'s points not right at the peak, L r1 left most in
+  conflicts, and L r3 lost all of them to a gateway born at case 19. *Why L loses
+  `ONCALL_ESCALATION`*.
 - **Why the final base forgets its own labelled tickets.** Whether a later rule,
   a declared edge or a refused placement takes each one back is free on the
   records, ticket by ticket.
@@ -2390,6 +2409,259 @@ against two thirds. C4, trusted most, held. C5, trusted least, failed in L.
    fewer answers that place the whole list in one declaration.** A plan with
    calls.
 
+## Why L loses `ONCALL_ESCALATION` — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-15, after the reading
+above.** Stage C found L's final bases recalling 0.4, 0.4476 and 0.4341 of the
+rarest queue over the space, where N's recall 1, 0.7333 and 1 (`CR-f` refuted).
+Its *What Stage C does not settle*, item 1, left which rules decide the points L
+loses, and from which labels they were drafted. *Why the loop's share of the
+space peaked and fell* had read `SECURITY_INCIDENT`'s points right at each L
+run's peak, and none of this queue's. This reading asks the records, and spends
+nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.oncall`, on
+2026-11-15 in local time, from `24753d8` with its code clean, on this reading's
+branch.
+- **The commits.** `5f06316` carries the reading and its expectation, written
+  before the reading ran. `2993e46` and `24753d8` carry the two parts added
+  after the first run, which move no clause. The first run's records were not
+  committed.
+- **The record was committed alone**, as `4cf0f8b`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `c19988c1a4a6ee4e`, is the one `24753d8` computes.
+- **The record is [`oncall.json`](oncall.json).** Its 72 gates passed in all
+  six runs:
+  - `channel/oncall.py`'s five for the queue and `channel/lost.py`'s four for
+    `SECURITY_INCIDENT`, gate 1 of each holding the final base's right points
+    to Stage C's recall;
+  - the takers partition the points another queue decides, and every report
+    names its ticket's true queue;
+  - the last losses partition what was right once, the replay is the final
+    base, and the peak and the points lost at it are `fall.json`'s;
+  - each replay is the one `fall.json`, `paths.json` or `carry.json` keeps.
+- **One figure was seen before the expectation was written**, and the
+  docstring says so: after L r1's peak, the refused right sides against rules of
+  the queue weigh 6,300 pair-points in `paths.json`. O1 and O6 rest on it.
+
+**What it reads.** `channel/oncall.py`'s reading of the queue, and
+`channel/lost.py`'s of `SECURITY_INCIDENT`, in every run of both arms: each lost
+point by the way it was lost. And three parts of its own:
+- **who takes the points**: every rule deciding a lost point that one other
+  queue decides, with its birth, its ticket's governing rule and the queue the
+  report named;
+- **when they were lost**: never right after any birth, or at the last loss,
+  with `fall.py`'s kind, set against the run's peak;
+- **what the levers give back**: the queue's points right in the final base of
+  three replays. One installs each birth's losses before its wins, one uses the
+  engine that refuses a cycle only where it is, and one leaves out the doors.
+
+**Added after the first run**: the rule that had decided each taker's ticket,
+the edges between each taker and the queue's rules, and what each replay turns
+right by the way the record lost it.
+
+### 1. Written whole, and lost two ways
+
+| run | lost | contested | outranked | by an edge | by containment | unwritten or impasse | rules of the queue holding `H04`'s part whole |
+|---|---|---|---|---|---|---|---|
+| L r1 | 3,780 | 1,680 | 2,100 | 1,260 | 840 | 0 | 7 |
+| L r2 | 3,480 | 960 | 2,520 | 2,100 | 420 | 0 | 1 |
+| L r3 | 3,565 | 1,900 | 1,665 | 1,560 | 105 | 0 | 2 |
+| N r1 | 0 | | | | | | 13 |
+| N r2 | 1,680 | 0 | 1,680 | 420 | 1,260 | 0 | 10 |
+| N r3 | 0 | | | | | | 13 |
+
+- **No lost point is unwritten, in any run.** Every base of either arm holds
+  rules of the queue covering `H04`'s part and `H05`'s whole. The label did not
+  narrow the queue.
+- **What L loses, it loses beside other queues' rules or below them.** Of the
+  three runs' 10,825 lost points, 4,540 are contested conflicts and 6,285 are
+  outranked. Every conflict is contested.
+- **N r2 is the one N run that loses some**: 1,680 of `H04`'s points, to
+  `R0023` of `T3_ENGINEERING`, `severity = 1 ∧ off_hours = False ∧
+  has_security_keyword = False`, born at case 45 at an impasse. They were never
+  right.
+
+### 2. Born at the tickets of the layer below
+
+| run | rules of the queue | born at its own tickets | the first: born at | its ticket | its points of the queue |
+|---|---|---|---|---|---|
+| L r1 | 19 | 2 | case 58, an impasse | `H07`'s | 6,300 |
+| L r2 | 2 | 0 | case 45, an impasse | `H08`'s | 6,300 |
+| L r3 | 4 | 2 | case 45, an impasse | `H08`'s | 6,300 |
+| N r1 | 24 | 0 | case 45, an impasse | `H08`'s | 6,300 |
+| N r2 | 21 | 0 | case 74, a reported error | `H08`'s | 6,300 |
+| N r3 | 24 | 0 | case 31, an impasse | `H13`'s | 1,100 |
+
+- **The queue was first written at a ticket of another queue, in every run.**
+  Five of the six firsts were born at a severity-1 ticket of `H07` or `H08`,
+  `T3_ENGINEERING`'s or `T2_TECHNICAL`'s, and none at a report that named a
+  queue. Those five cover the whole queue: L r1's first is `R0027`, `severity =
+  1 ∧ has_security_keyword = False`, and L r2's is `R0020`, `severity = 1`.
+- **So the queue's rule holds the layer below it too**, as the catalogue's line
+  reads severity 1: critical incidents that cannot wait.
+- **N wrote it again at its reported errors.** 20 to 22 of each N run's rules of
+  the queue were born at reported errors, none at a ticket of the queue. Its
+  reports name no queue.
+- **L wrote it at its own tickets twice in two runs, and never in L r2.**
+
+### 3. Contested after the peak, outranked before it
+
+| run | lost at the peak | contested | lost before it | outranked |
+|---|---|---|---|---|
+| L r1 | 2,100 | 1,260 | 1,680 | 1,260 |
+| L r2 | 2,220 | 960 | 1,260 | 1,260 |
+| L r3 | 1,360 | 880 | 2,205 | 1,185 |
+
+- **What fell after the peak was mostly left contested**: 3,100 of 5,680 (O1
+  holds), though under half in L r2, 960 of 2,220.
+- **What was lost before it was mostly outranked**: 3,705 of 5,145 (O2 holds).
+- **Nearly every lost point had been right after some birth.** 420 of L r1's
+  never were, and none of L r2's or L r3's.
+
+### 4. The corrections of the layer below take it
+
+| run | outranked | by `T3_ENGINEERING` | by `T2_TECHNICAL` | by other queues | only by corrections | only by rules born at tickets of `H06` to `H08` |
+|---|---|---|---|---|---|---|
+| L r1 | 2,100 | 1,260 | 840 | 0 | 2,100 | 2,100 |
+| L r2 | 2,520 | 1,680 | 840 | 0 | 2,520 | 2,100 |
+| L r3 | 1,665 | 1,020 | 125 | 520 | 1,185 | 545 |
+
+- **By the corrections** (O4 holds): 5,805 of 6,285, every one of L r1's and L
+  r2's.
+- **Born at the layer's tickets** (O5 holds): 4,745 of 6,285, though only 545 of
+  L r3's 1,665. L r3's others were born at tickets of `H10`, `H13`, `H14` and
+  `H17`, one of them at a conflict, with no label.
+- **Mostly by an edge** (O3 holds): 4,920 of 6,285.
+- **Each is a slice of severity 1 by product, and leaves the queue's tiers in.**
+  - In L r1, two take 840 each: `R0129` of `T2_TECHNICAL`, `product = mobile ∧
+    severity = 1 ∧ off_hours = True ∧ customer_tier ∈ {pro, business,
+    enterprise} ∧ has_security_keyword = False`, and `R0266` of
+    `T3_ENGINEERING`, `severity = 1 ∧ product = dashboard ∧ customer_tier ∈
+    {business, enterprise} ∧ has_security_keyword = False`.
+  - In L r2, `R0222` of `T3_ENGINEERING`, `severity = 1 ∧ product = api ∧
+    has_security_keyword = False`, takes 1,260, and `R0145` of
+    `T2_TECHNICAL`, the same with `product = billing`, takes 840.
+  - In L r3, `R0202`, with `R0222`'s conditions, takes 540.
+- **The policy gives those slices to the layer only below `H04` and `H05`.** A
+  slice that keeps the enterprise tier, or business off hours, takes the queue's
+  tickets of its product with it.
+
+### 5. The rule that erred was the queue's — added after the first run
+
+| run | taken points, each taker counted | of takers whose ticket a rule of the queue had decided |
+|---|---|---|
+| L r1 | 2,100 | 1,680 |
+| L r2 | 2,940 | 2,100 |
+| L r3 | 1,905 | 125 |
+
+- **In L r1 and L r2 the takers corrected the queue's own rule.** The rule that
+  had decided their tickets wrongly was a rule of the queue: `R0027`, or
+  `R0179`, the same conditions born at a conflict at case 1114, in L r1; and
+  `R0135`, `severity = 1 ∧ off_hours = True`, in L r2. The report named the
+  layer's queue, and the correction won over the rule that erred.
+- **In L r3 they mostly corrected rules of `T2_TECHNICAL` and
+  `T3_ENGINEERING`.**
+- **Their own answers' edges against the queue are not one story.**
+  - L r2's two largest each declared a win over a rule of the queue, installed.
+  - L r1's `R0129` is nested in the rule that erred, and takes its points by
+    containment, with no edge.
+  - L r1's `R0266` declared itself below the queue's rules eleven times, every
+    one refused for a cycle.
+
+### 6. Installing losses first gives back the contested, and only them
+
+| run | contested | losses first | where the cycle is | without the doors |
+|---|---|---|---|---|
+| L r1 | 1,680 | 1,260 | 0 | 0 |
+| L r2 | 960 | 960 | 440 | 0 |
+| L r3 | 1,900 | 1,900 | 0 | 0 |
+
+- **Installing each birth's losses first gives back 4,120 of the queue's
+  points** (O6 holds), against the 5,680 lost at the peak. It turns none wrong.
+- **Every point any replay turns right was contested in the record, in both
+  queues, and none outranked.** For `SECURITY_INCIDENT` the losses first give
+  back 24,290, 26,355 and 600 in L's runs, and 7,080 in N r3: each run's
+  contested points exactly.
+- **The engine that refuses only where the cycle is gives back little of the
+  queue**: 440 in L r2, turning 640 right and 200 wrong, and none in L r1 or L
+  r3.
+- **Without the doors nothing comes back for the queue.** The doors climb over a
+  gateway in the keyword's region, where the queue has no point.
+- **The outranked points stay outranked under every replay.**
+
+### 7. The rest of `SECURITY_INCIDENT`'s
+
+| run | lost before the peak | in a conflict | contested | outranked | by `T2_TECHNICAL` |
+|---|---|---|---|---|---|
+| L r1 | 17,300 | 11,480 | 8,900 | 5,820 | 5,700 |
+| L r2 | 1,680 | 1,545 | 0 | 135 | 30 |
+| L r3 | 16,800 | 2,573 | 0 | 14,227 | 11,927 |
+
+- **Under half went to `T2_TECHNICAL`** (O7 fails): 17,657 of 35,780.
+- **In L r1 two thirds were left in conflicts.** The gateway `R0061`,
+  `has_security_keyword = True ∧ severity = 4`, born at a reported ticket of
+  `H03`, took 5,660 by containment.
+- **In L r3 the gateway, born at case 19, took most of them.** `R0016`,
+  `has_security_keyword = True ∧ severity ≥ 3`, born at a reported ticket of
+  `H03`, decides 11,927 of them by containment. None of the 16,800 was ever
+  right.
+
+### The expectation
+
+Written in `corrections/oncall.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| O1, at least half of the queue's points lost at the peak are contested | 3,100 of 5,680 | **holds** |
+| O2, at least half of those lost before the peak are outranked | 3,705 of 5,145 | **holds** |
+| O3, at least half of the outranked are outranked by an edge | 4,920 of 6,285 | **holds** |
+| O4, at least half of the taken are decided only by rules born at a reported error | 5,805 of 6,285 | **holds** |
+| O5, at least half are decided only by rules born at tickets of `H06` to `H08` | 4,745 of 6,285 | **holds** |
+| O6, installed losses first, the replay gives back half as many as were lost at the peak | 4,120 against 5,680 | **holds** |
+| O7, at least half of `SECURITY_INCIDENT`'s points lost before the peak are decided by `T2_TECHNICAL` | 17,657 of 35,780 | fails |
+
+**O1 to O6 hold, and O7 fails.** The bet, O2, held. O1, trusted most, held,
+though under half in L r2. O3, trusted least, held. The drafter expected the
+corrections to be their queue's general rule, as *Why the first call writes
+broad corrections* found. They were slices of severity 1 by product.
+
+### What it says
+
+- **Neither arm ever learned the rarest queue from its own tickets.** Its first
+  rule, in every run, was the catalogue's reading of severity 1, written at a
+  ticket of the layer below. It covers the queue whole, and the layer too.
+- **N keeps the queue because nothing corrects that rule.** Its reports name no
+  queue, and at them its proposer wrote the queue again, twenty times a run or
+  more. `T3_ENGINEERING`'s recall is 0 in two N runs of three.
+- **L corrects the rule and overshoots it.** Its reports name the layer's queue,
+  and each correction is a slice of severity 1 by product that keeps the
+  queue's tiers. It wins over the rule that erred, mostly by an edge, and takes
+  the queue's tickets of its product.
+- **What is left contested comes back by order, and what is outranked does
+  not.** In both queues, installing each birth's losses first gives back the
+  contested points, and no replay gives back an outranked one.
+- **So the rarest queue is lost where L learns the layer below it.** The levers
+  read so far change what the engine refuses, and the outranked part is what
+  the corrections were placed to win.
+
+### What it does not settle
+
+1. **Why a correction at the layer's ticket keeps the queue's tiers**, when the
+   ticket's tier is in the prompt. The policy gives the layer no enterprise
+   ticket at severity 1, and no business ticket off hours. The first calls'
+   reasoning is in the records. Free on the records.
+2. **Whether a first call shown the rule that erred would write the correction
+   as an exception that leaves the queue's tiers out.** That is the lever *Why
+   the first call writes broad corrections* named. A plan with calls.
+3. **Whether a catalogue line that bounds the queue by tier would keep the first
+   call from writing it at the layer's tickets.** A plan with calls, and a new
+   text.
+4. **Why 420 of L r1's contested points do not come back with losses first.**
+   Free on the records.
+
 ---
 
 ## Files
@@ -2420,3 +2692,4 @@ against two thirds. C4, trusted most, held. C5, trusted least, failed in L.
   every rule of their list.
 - [`conditions.json`](conditions.json): POST-RUN, what makes an answer read the
   list by its conditions.
+- [`oncall.json`](oncall.json): POST-RUN, why L loses `ONCALL_ESCALATION`.
