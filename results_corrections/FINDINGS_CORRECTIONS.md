@@ -24,6 +24,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   #254, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read a keyword rule by its
   queue** reached it in #256, merged on 2026-11-15.
+- **The POST-RUN reading of why some answers put their newborn above every rule
+  of their list** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -145,6 +147,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `d5c8c19`, and
 >   still at the merge of #256. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, after the eighth] And a ninth.** [`above.json`](above.json)
+> is the POST-RUN reading of why some answers put their newborn above every rule
+> of their list.
+> - **It was written from `13ce82d`**, on that reading's branch: the commit that
+>   carries its expectation. Nothing was added after its first run.
+> - **Its code digest is `ff2e2076bc7bd312`**, because `corrections/above.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -1643,6 +1655,12 @@ over nothing fails.
    queue*.
 2. **Why some answers put their newborn above every rule of their list.** Free
    on the records.
+   **[NOTE 2026-11-15, later] Read POST-RUN, below: mostly what the list
+   lacks.** The answers place the security rules as one block and the on-call
+   rules nearly so, and put their newborn above the rules that hold its ticket.
+   The few above the security block read every rule by its conditions, or are
+   their queue's general rule read as a domain. *Why some answers put their
+   newborn above every rule of their list*.
 3. **Whether a round that showed what containment orders would have kept the
    doors below the gateway.** A plan with calls.
 
@@ -1953,6 +1971,229 @@ showed one. `B3`, trusted least, held.
 
 ---
 
+## Why some answers put their newborn above every rule of their list — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** The reading of why
+the doors declared themselves above the gateway found that most climbs still put
+their newborn below every security rule of their round, and that the rest put it
+above every rule of their list, the security rules included. Its *What it does
+not settle*, item 2, left why. This reading asks the records, and spends
+nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.above`, on 2026-11-15
+in local time, from `13ce82d` with its code clean, on this reading's branch.
+- **The development set.** L r1 and N r3 were read before the expectation was
+  written: every round with what its answer declared of every listed rule, every
+  placement by the two rules' queues, conditions and points and by the ticket,
+  and the notes and reasoning of the seven rounds above every rule of a list that
+  held a security rule. E1 to E4 read L r2 and L r3, pooled. E5 and E6 read
+  N r1 and N r2, pooled, as the control.
+- **Counts of every run were printed before the development set was chosen**:
+  how many rounds put their newborn above every rule, how many lists held a rule
+  of `SECURITY_INCIDENT` and how many of those were above every rule, and how
+  many newborns were of `SECURITY_INCIDENT`, all of them above every rule. The
+  module's docstring says so, and no clause reads them.
+- **The commits.** `13ce82d` carries the reading and its expectation, written
+  before the reading ran on the other runs. Nothing was added after the first
+  run. The first run's record was not committed.
+- **The record was committed alone**, as `59f47e7`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `ff2e2076bc7bd312`, is the one `13ce82d` computes.
+- **The record is [`above.json`](above.json).** Its five gates passed in all six
+  runs:
+  - what each answer declared, rebuilt from its rule's accepted and refused
+    edges, is its placement call's `beats` and `loses_to`;
+  - every listed rule is of another queue and crosses the newborn;
+  - every answer declared a side against every rule of its list;
+  - every list is the seeded shuffle v1c showed;
+  - the development set gives the counts the module's docstring gives of it.
+
+**What it reads.** Every round of the six runs: a born rule whose round listed
+rules, with what its answer declared of each, its newborn above it or below it.
+For each round, what the answer did with:
+- **its whole list**, its newborn above every rule, below every rule, or some of
+  each;
+- **the queues put first**: the listed rules of `SECURITY_INCIDENT`, and those of
+  `ONCALL_ESCALATION` for a newborn of neither queue;
+- **the rules that hold its ticket**, those whose region holds the round's
+  ticket, placement by placement and by the cause.
+
+It also reads the draft's conditions, how many security rules the list held, and
+two codes over the placement call's note, frozen on the development set: that
+the rule is more specific, an exception or adds conditions, and that the note
+names security.
+
+### 1. What the list lacks
+
+| run | newborn of `SECURITY_INCIDENT` | list with neither queue's rule | with a rule of `ONCALL_ESCALATION` | with a rule of `SECURITY_INCIDENT` |
+|---|---|---|---|---|
+| L r1, development | 8 of 8 | 30 of 68 | 1 of 22 | 2 of 170 |
+| N r3, development | 14 of 14 | 26 of 56 | 3 of 27 | 5 of 217 |
+| L r2 | 14 of 14 | 37 of 79 | 2 of 9 | 3 of 164 |
+| L r3 | 15 of 15 | 35 of 71 | 0 of 15 | 4 of 162 |
+| N r1 | 17 of 17 | 30 of 86 | 1 of 12 | 2 of 200 |
+| N r2 | 20 of 20 | 33 of 74 | 1 of 9 | 3 of 203 |
+
+The rounds that put their newborn above every rule of their list, by their
+newborn's queue and what their list held. A list with a rule of
+`SECURITY_INCIDENT` is counted there, whatever else it held.
+
+- **A newborn of `SECURITY_INCIDENT` is above every rule of its list**, in every
+  run: 88 of 88. These counts were printed before the development set was
+  chosen, and no clause reads them.
+- **A list with neither queue's rule comes out above every rule about half the
+  time**: 72 of 150 in L r2 and L r3.
+- **A rule of `ONCALL_ESCALATION` holds the answer down** (E2 holds). Of the
+  rounds whose newborn is of neither queue and whose list held no security rule,
+  70 of the 148 without an on-call rule put their newborn above every rule, and
+  2 of the 24 with one, a ratio of 5.68 where E2 asked 3.
+- **A rule of `SECURITY_INCIDENT` holds it down further**: 7 of the 326 rounds
+  whose list held one, newborn not of that queue.
+
+### 2. The security rules are one block
+
+- **Every held-out round whose list held two or more security rules placed them
+  as one** (E1 holds, trusted most): 228 of 228, 222 below its newborn and 6
+  above. In N r1 and N r2, 333 of 334 did, and in the development set 313 of
+  313.
+- **The on-call rules nearly so.** Of the rounds whose list held two or more,
+  newborn of neither queue, 50 of 53 placed them as one in L r2 and L r3, and 90
+  of 92 in N r1 and N r2.
+
+### 3. Above the rules that hold the ticket
+
+| | at reported errors, rules that hold the ticket | the rest | at conflicts, rules that hold the ticket | the rest |
+|---|---|---|---|---|
+| L r1 and N r3, development | 1,077 of 1,139 | 5,484 of 9,824 | 369 of 454 | 2,324 of 4,220 |
+| L r2 and L r3 | 813 of 833 | 3,541 of 6,900 | 502 of 615 | 2,296 of 3,996 |
+| N r1 and N r2 | 1,089 of 1,204 | 6,787 of 13,059 | 202 of 236 | 586 of 1,673 |
+
+The placements that put the newborn above the listed rule, by whether the rule's
+region holds the round's ticket.
+
+- **At reported errors the answers put their newborn above nearly every listed
+  rule that holds its ticket** (E3 holds): 813 of 833 in L r2 and L r3, and
+  about half of the rest.
+- **N does it too, without a label**: 1,089 of 1,204. At conflicts, a little
+  less, in both arms.
+
+### 4. The few above the security block
+
+| | narrow draft against a short block | the others | four or more conditions | three or fewer | one or two security rules | three or more |
+|---|---|---|---|---|---|---|
+| L r1 and N r3, development | 4 of 24 | 4 of 363 | 4 of 52 | 4 of 335 | 5 of 118 | 3 of 269 |
+| L r2 and L r3 | 1 of 17 | 6 of 309 | 3 of 49 | 4 of 277 | 1 of 123 | 6 of 203 |
+| N r1 and N r2 | 0 of 17 | 7 of 386 | 3 of 67 | 4 of 336 | 1 of 91 | 6 of 312 |
+
+The rounds whose list held a rule of `SECURITY_INCIDENT`, newborn not of it,
+that put their newborn above every such rule. A narrow draft has four or more
+conditions, and a short block one or two security rules.
+
+- **The bet held on one round** (E4 holds, thinly): 1 of the 17 narrow drafts
+  against a short block in L r2 and L r3, and 6 of the other 309, a ratio of
+  3.03 where E4 asked 3.
+- **In N it failed** (E6 fails, trusted least): none of the 17, and 7 of the
+  other 386.
+- **The cell joined a lead that held to one that reversed.** Drafts of four or
+  more conditions went above the block about four times as often as the others,
+  in both arms. One or two security rules did not raise it: 12 of the 14
+  held-out rounds above the block had three or more. The development set's
+  short blocks came from five rounds.
+- **By the draft's conditions alone, it is highest at four or more and next at
+  one**, in both arms. In L r2 and L r3, one condition went above the block in 2
+  of 76 rounds, two in 0 of 82, three in 2 of 119 and four or more in 3 of 49.
+  In N r1 and N r2, 1 of 59, 1 of 98, 2 of 179 and 3 of 67.
+- **Most went above the whole list** (E5 fails in N): all 7 in L r2 and L r3,
+  and 5 of the 7 in N r1 and N r2.
+
+### 5. Two readings, read in the notes
+
+Read after the first run, in a scratch script: the notes of the fourteen rounds
+above the block in L r2, L r3, N r1 and N r2.
+- **Ten are drafts of three or four conditions that read every rule by its
+  conditions.** "La regla es más específica que las reglas de T2_TECHNICAL y
+  SECURITY_INCIDENT porque añade condiciones de canal y tier". The keyword's
+  rule has one condition.
+- **Four are their queue's general rule, read as a domain**: `product = billing`
+  twice in L r2, and `severity = 1` and `severity = 1, off_hours` of
+  `ONCALL_ESCALATION` in N. "This rule overrides any other routing logic (e.g.,
+  security, severity, tier, off-hours)"; "deben ir a guardia independientemente
+  del producto, tier o si tienen palabras de seguridad".
+- **The two of N above the block and not the whole list** still ceded to some
+  rules. One put three rules of `ACCOUNT_MANAGER` above its newborn: "Pierde
+  frente a reglas de account manager que requieren muchos tickets previos". The
+  other put 25 rules of `T2_TECHNICAL`, `BILLING_SPECIALIST` and `T1_GENERAL`
+  above it, which its note calls specialized product rules.
+- **The codes frozen on the development set.** The note says more specific, an
+  exception or added conditions in 6 of L's 7 and 5 of N's 7, and in 225 of the
+  319 held-out rounds below the block in L and 299 of 395 in N. It names
+  security in 4 of L's 7 and 6 of N's 7, and in 314 of 319 and 392 of 395 below
+  it. The split the development set showed, 4 of 8 against 377 of 379, held in
+  L and not in N.
+
+### 6. Not by the draft
+
+- **The drafts listed against security more than once that went above it once
+  went below it at their other listings**, in every run that had one:
+  `product = billing` 2 times above and 25 below in L r2; `severity = 1` of
+  `ONCALL_ESCALATION` once and 7 times, a draft of four conditions of
+  `T1_GENERAL` once and once in N r1; `severity = 1, off_hours` of
+  `ONCALL_ESCALATION` once and 7 times in N r2.
+- **The causes.** 13 of the 14 held-out rounds above the block were at reported
+  errors, where 544 of the 729 rounds with a security rule were.
+
+### The expectation
+
+Written in `corrections/above.py`'s docstring after L r1 and N r3 were read, and
+committed before the reading ran on the other runs. It is not signed, and it is
+on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| E1, of the rounds whose list holds two or more security rules, at least nineteen in twenty place them as one block | 228 of 228 | **holds** |
+| E2, above every rule at least three times as often without an on-call rule as with one | 70 of 148 against 2 of 24, a ratio of 5.68 | **holds** |
+| E3, at reported errors, of the placements against a rule that holds the ticket, at least nine in ten above | 813 of 833 | **holds** |
+| E4, above every security rule at least three times as often for a narrow draft against a short block | 1 of 17 against 6 of 309, a ratio of 3.03 | **holds** |
+| E5, in N r1 and N r2, of the rounds above every security rule, at least three quarters above the whole list | 5 of 7 | fails |
+| E6, in N r1 and N r2, E4's statement | 0 of 17 against 7 of 386 | fails |
+
+**E1, E2, E3 and E4 hold, and E5 and E6 fail.** The bet E4 held on one round,
+and its statement failed in N (E6, trusted least). E1, trusted most, held at
+228 of 228.
+
+### What it says
+
+- **Above every rule of the list is mostly what the list lacks.**
+  - **The answers put two queues first.** They place the rules of
+    `SECURITY_INCIDENT` as one block, nearly always below their newborn, and
+    those of `ONCALL_ESCALATION` nearly so.
+  - **They put their newborn above the rules that hold its ticket**, with a
+    label and without one.
+  - **So a list with neither queue's rule often comes out above every rule**,
+    about half the time in L, and a newborn of `SECURITY_INCIDENT` always.
+- **The few above the security block read the list another way.** Most are
+  drafts of three or four conditions that call themselves more specific than
+  rules of one condition, as the round's `beats`, an exception, invites. The
+  rest are their queue's general rule, read as a domain that wins regardless.
+  Most then put their newborn above the whole list.
+- **The draft's conditions raise it; the block's length does not.** The cell the
+  bet drew joined the two, and held one round in L and none in N.
+- **The reading is the answer's, not the draft's.** The same draft went above
+  the block once and below it at its other listings.
+
+### What it does not settle
+
+1. **What makes one answer read the list by its conditions and another by its
+   queues**, when the same draft does both. The draft's conditions raise it, and
+   leave it rare. Whether the list's order moves it, as it moved the reading of
+   the gateway, is not read. Free on the records.
+2. **Whether a round that defined `beats` by the queue that should decide the
+   shared tickets, and not as an exception, would keep the narrow drafts below
+   the security block.** A plan with calls.
+
+---
+
 ## Files
 
 - [`sample.json`](sample.json): Stage A.
@@ -1977,3 +2218,5 @@ showed one. `B3`, trusted least, held.
 - [`carry.json`](carry.json): POST-RUN, how much of the fall the doors carry.
 - [`byqueue.json`](byqueue.json): POST-RUN, what makes an answer read a keyword
   rule by its queue.
+- [`above.json`](above.json): POST-RUN, why some answers put their newborn above
+  every rule of their list.
