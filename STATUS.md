@@ -3398,6 +3398,23 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
    - **Shape or order.** The at-once answer is installed in its own list order,
      and the loop's base is ordered by containment and declared edges. No row
      separates the two.
+     **[NOTE 2026-11-15, after the eleventh] For the rarest queue at once does
+     not win, read POST-RUN: what decides it is information, not shape.**
+     - **At once, the queue goes where no label names it.** L r2's and L r3's
+       labels never name `ONCALL_ESCALATION`, and at all of them no at-once
+       answer writes a rule of it: the median recalls 0, where the loop recalls
+       0.4476 and 0.4341.
+     - **One label keeps 2/3.** L r1's labels name it once, a ticket of `H05`,
+       and its answers wrote the queue as severity 1 off hours.
+     - **Without a label the catalogue writes it over severity 1**, the layer
+       below with it: the prior's median takes all 10,500 of the layer's points
+       as the queue.
+     - **At once learns the layer**: it decides right 1, 0.76 and 0.6 of it at
+       all labels, against the loop's 0.44, 0.5581 and 0.76.
+
+     So the catalogue names no tier for the queue, and the labels seldom name
+     the queue; the prose of level 2 names its tiers.
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What the at-once asks wrote for `ONCALL_ESCALATION`*.
 
    The first is read above, and the last is free on the records.
 
