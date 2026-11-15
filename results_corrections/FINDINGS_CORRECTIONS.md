@@ -30,6 +30,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   conditions** reached it in #261, merged on 2026-11-15.
 - **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reached it in
   #263, merged on 2026-11-15.
+- **The POST-RUN reading of what the at-once asks wrote for
+  `ONCALL_ESCALATION`** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -185,6 +187,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `8292de4`, and
 >   still at the merge of #263. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, after the eleventh] And a twelfth.**
+> [`layer.json`](layer.json) is the POST-RUN reading of what the at-once asks
+> wrote for `ONCALL_ESCALATION` and the layer below it.
+> - **It was written from `5e15c43`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `f0e1e3d4b07d05d2`**, because `corrections/layer.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -546,6 +558,11 @@ best of the learners trained on the same labels:
 - **Whether at once wins because of the shape or because of the order.** The
   at-once answer is installed in its own list order, and the loop's base is
   ordered by containment and declared edges. No row separates the two.
+  **[NOTE 2026-11-15] For the rarest queue at once does not win, read POST-RUN,
+  below.** Compiled at once, the same labels lose the whole queue in L r2 and L
+  r3, whose labels never name it, and keep 2/3 of it in L r1, whose labels name
+  it once. The loop keeps more of it in L r2 and L r3. *What the at-once asks
+  wrote for `ONCALL_ESCALATION`*.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
 
@@ -2664,8 +2681,178 @@ broad corrections* found. They were slices of severity 1 by product.
 3. **Whether a catalogue line that bounds the queue by tier would keep the first
    call from writing it at the layer's tickets.** A plan with calls, and a new
    text.
+   **[NOTE 2026-11-15] Read in part POST-RUN, below.** Compiled at once, the
+   same labels lose the queue where no label names it. The catalogue names no
+   tier for the queue, and the prose of level 2 does. *What the at-once asks
+   wrote for `ONCALL_ESCALATION`*.
 4. **Why 420 of L r1's contested points do not come back with losses first.**
    Free on the records.
+
+## What the at-once asks wrote for `ONCALL_ESCALATION` — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-15, after the reading
+above.** It found L's loop writing the rarest queue whole at the layer below it,
+and losing it to corrections of that layer that keep the queue's tiers. Two
+accounts fit. Either level 1's catalogue names no tier for the queue, so no call
+can keep its tiers. Or the loop's shape, one ticket at a time, loses what the
+labels carry together, since the same labels compiled at once decide far more of
+the space (`CR-d` holds). The at-once asks were paid for in Stage B. This reading
+reads them again, for the queue and its layer, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.layer`, on
+2026-11-15 in local time, from `5e15c43` with its code clean, on this reading's
+branch.
+- **The commits.** `264010b` carries the reading and its expectation, written
+  before the reading ran. `5e15c43` carries the part added after the first run,
+  which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `9302837`. Its message says A1 fell
+  below the loop at some checkpoint of every run. It fell below in L r2 and L
+  r3, and never in L r1.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `f0e1e3d4b07d05d2`, is the one `5e15c43` computes.
+- **The record is [`layer.json`](layer.json).** Its 16 gates passed:
+  - each L session's labels are its run's reported errors, and each ask's are
+    the first ones, as many as its checkpoint; the prior's carry none;
+  - each chosen answer, installed, gives the share of the space and the
+    installation summary `score.json` keeps for it, in L's sessions and the
+    prior's;
+  - each loop base after a checkpoint's label gives the share `score.json`
+    keeps;
+  - the readings partition in every base, and the layer is the first match of
+    `H06`, `H07` and `H08`.
+- **The labels' make-up was counted before the expectation was written**, and
+  the docstring says so.
+
+**What it reads.** Every at-once answer Stage C read, installed as `CR-d` reads
+it, beside the loop's base after the same label:
+- three asks at each of L's checkpoints, at 10, 20, 40, 80 and 160 labels and at
+  all of them, and the prior's five asks with no label;
+- in each base, the queue's points by `channel/lost.py`'s ways, and the layer:
+  the 10,500 points of severity 1, outside the keyword, that are not the queue's,
+  `H06`'s, `H07`'s and `H08`'s;
+- the queue's rules, and whether they name `customer_tier`.
+
+**Added after the first run**: each label of the queue with its ticket, and how
+many times each answer's reasoning writes `ONCALL_ESCALATION`.
+
+### 1. At once the queue goes, unless a label names it
+
+The median of each checkpoint's three answers, and the loop's base after the
+same label:
+
+| run | labels | of the queue | of the layer | at once: the queue | at once: the layer right | the loop: the queue | the loop: the layer right |
+|---|---|---|---|---|---|---|---|
+| L r1 | 10 | 0 | 0 | 1 | 0 | 0.6 | 0.04 |
+| | 20 | 0 | 1 | 2/3 | 0.32 | 0.6 | 0.12 |
+| | 40 | 1 | 2 | 1 | 0.48 | 0.8 | 0.1962 |
+| | 80 | 1 | 5 | 2/3 | 0.84 | 0.4984 | 0.3162 |
+| | 160 | 1 | 12 | 2/3 | 0.76 | 0.5333 | 0.36 |
+| | 216, all | 1 | 17 | 2/3 | 1 | 0.4 | 0.44 |
+| L r2 | 10 | 0 | 2 | 2/3 | 0.36 | 0.8 | 0.52 |
+| | 20 | 0 | 2 | 2/3 | 0.2171 | 0.8 | 0.52 |
+| | 40 | 0 | 2 | 2/3 | 0.2895 | 0.6984 | 0.52 |
+| | 80 | 0 | 6 | 0 | 0.4 | 0.6 | 0.4571 |
+| | 160 | 0 | 14 | 0 | 0.84 | 0.6 | 0.72 |
+| | 209, all | 0 | 15 | 0 | 0.76 | 0.4476 | 0.5581 |
+| L r3 | 10 | 0 | 0 | 1 | 0 | 0 | 0 |
+| | 20 | 0 | 2 | 2/3 | 0.32 | 0.7833 | 0.18 |
+| | 40 | 0 | 3 | 0 | 0.8095 | 0.5833 | 0.38 |
+| | 80 | 0 | 4 | 0 | 0.44 | 0.2913 | 0.5 |
+| | 160 | 0 | 9 | 0 | 0.76 | 0.7103 | 0.56 |
+| | 235, all | 0 | 12 | 0 | 0.6 | 0.4341 | 0.76 |
+
+- **In L r2 and L r3 no label names the queue, and at once it is gone.** From 80
+  labels in L r2, and 40 in L r3, the median answer recalls none of it. At all
+  their labels, none of the six answers writes a rule of the queue (A2 and A4
+  fail).
+- **In L r1 one label names it, and at once keeps 2/3 of it.**
+- **The loop keeps more of it than at once in L r2 and L r3** (A1 fails), 0.4476
+  and 0.4341 at all labels. Its rule of the queue was born before the labels,
+  and stays.
+- **At once learns the layer** (A3 holds): at all labels it decides right 1,
+  0.76 and 0.6 of it. That is more than the loop in L r1 and L r2, and less in L
+  r3.
+
+### 2. Without a label, the catalogue's reading
+
+The five prior answers write one rule of the queue each:
+- three over severity 1, alone or outside the keyword. They recall the whole
+  queue and take the whole layer as the queue;
+- two over severity 1 off hours. They recall 2/3 of the queue, and take 4,200 of
+  the layer's points.
+
+**The median takes the whole layer as the queue** (A5 holds), and recalls the
+whole queue (A6 holds). It is the reading every loop's first rule of the queue
+wrote.
+
+### 3. What the labels say, and the answers read — added after the first run
+
+- **L r1's one label of the queue is a ticket of `H05`**, case 257: severity 1,
+  business, off hours, `dashboard`.
+- **Its answers wrote the queue off hours.** At all labels:
+  - one wrote `severity = 1 ∧ customer_tier ∈ {business, enterprise} ∧
+    off_hours = True`;
+  - one wrote the same as two rules, one per tier;
+  - one wrote the label's own combination, which recalls 1/15.
+
+  None wrote `H04`'s enterprise tickets in hours, a third of the queue.
+- **At all of L r2's and L r3's labels, each answer's reasoning writes the
+  queue's identifier one to three times.** Most of those passages note that no
+  label names the queue, and leave it out:
+  - "ONCALL_ESCALATION for critical? We haven't seen ONCALL_ESCALATION in
+    corrections. Possibly for severity 1 with off_hours? But no examples. So we
+    may not need it." (L r2, the first ask);
+  - "No ONCALL_ESCALATION appears in corrections, so maybe it's for specific
+    cases not shown." (L r3, the third).
+- **Some guess it would be severity 1 off hours**, as two of the prior's five
+  wrote it: "critical incidents outside hours" (L r3, the second).
+
+### The expectation
+
+Written in `corrections/layer.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| A1, at every checkpoint of each L run, at once recalls at least as much of the queue as the loop | at every checkpoint of L r1, at none of L r2's, and at L r3's only at 10 labels | fails |
+| A2, at all labels, at once recalls at least 9/10 of the queue, in each L run | 2/3, 0 and 0 | fails |
+| A3, at all labels, at once decides right at least half of the layer, in each L run | 1, 0.76 and 0.6 | **holds** |
+| A4, at all labels, at least two of three answers write a rule of the queue naming the tier | 3, 0 and 0 | fails |
+| A5, without a label, the median prior answer takes at least half of the layer as the queue | all of it | **holds** |
+| A6, without a label, the median prior answer recalls at least 9/10 of the queue | all of it | **holds** |
+
+**A3, A5 and A6 hold, and A1, A2 and A4 fail.** The bet, A2, failed. A5, trusted
+most, held. A4, trusted least, failed, though not as the drafter feared: L r2's
+and L r3's answers wrote no rule of the queue at all.
+
+### What it says
+
+- **For the rarest queue, the loss is information, not shape.** Compiled at
+  once, the same labels lose the whole queue in the two runs whose labels never
+  name it. In the run whose labels name it once, they keep 2/3.
+- **The layer's labels take the catalogue's reading away, and nothing puts the
+  queue back.** Without a label, the catalogue writes the queue over severity
+  1, the layer with it. With a few of the layer's tickets labelled, the answers
+  stop writing the queue, and say why: no correction names it.
+- **One label of the queue is read off hours.** It was a ticket of `H05`, and
+  the catalogue's line, incidents that cannot wait for the next shift, reads so
+  too.
+- **So the loop keeps more of the rarest queue than at once.** It keeps what is
+  left of its first rule, an error the corrections did not reach.
+- **Neither shape gets the queue's tiers from level 1.** The catalogue does not
+  name them, and the labels name the queue once in three runs. The prose of
+  level 2 names them: a critical ticket of an enterprise client calls the on-call
+  team, and of a business client only off hours.
+
+### What it does not settle
+
+1. **Whether the prose of level 2 keeps the queue at once, on the same labels.**
+   The at-once asks are asks only, so this costs cents. A plan with calls.
+2. **Whether a label of the queue in hours would complete it at once.** No run's
+   labels hold one. A plan with calls.
+3. **Why L r3's at-once answers decide less of the layer than its loop.** Free on
+   the records.
 
 ---
 
@@ -2698,3 +2885,5 @@ broad corrections* found. They were slices of severity 1 by product.
 - [`conditions.json`](conditions.json): POST-RUN, what makes an answer read the
   list by its conditions.
 - [`oncall.json`](oncall.json): POST-RUN, why L loses `ONCALL_ESCALATION`.
+- [`layer.json`](layer.json): POST-RUN, what the at-once asks wrote for
+  `ONCALL_ESCALATION` and the layer below it.
