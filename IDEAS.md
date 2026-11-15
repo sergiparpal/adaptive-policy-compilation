@@ -632,6 +632,18 @@ learner of the labels alone matched the loop. What that leaves:
 - **How much of the fall the doors carry.** A replay of the same births without
   the doors' edges would say how much of what L lost rests on them. It is not
   the loop that would have run. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: most of L's.** Without the doors' edges,
+  the same births and declarations keep most of what L r1 and L r2 lost, and
+  the engine installs the right sides it refused. One edge carries L r1's fall,
+  and one door L r2's. L r3, whose fall was mostly taken by containment, keeps
+  nothing. `FINDINGS_CORRECTIONS.md`, *How much of the fall the doors carry*.
+- **A loop that refuses a climb over a rule nested in the keyword's region.**
+  The doors' edges are such climbs, and the base without them keeps most of what
+  L lost. Whether a loop that refused them would keep its share is a protocol
+  change. Calls.
+- **Which rules decide wrongly the conflicts the doorless replay resolves in
+  L r2.** They are rules of `T1_GENERAL` and `T2_TECHNICAL`, on points of other
+  queues. Free on the records.
 - **Shape or order.** The at-once answer is installed in its own list order, and
   the loop's base is ordered by containment and declared edges. Installing each
   in the other's order would separate the two. Free on the records.

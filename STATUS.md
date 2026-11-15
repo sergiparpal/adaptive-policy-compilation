@@ -3278,6 +3278,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        edges. The other 5 put their newborn above every rule of their list.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the doors declared themselves above the gateway*.
+     **[NOTE 2026-11-15, last] How much of the fall the doors carry, read
+     POST-RUN: most of L's.** The same births and declarations, installed in the
+     record's order without the doors' edges:
+     - **keep 52,210 points of L's three falls, summed, 81,694**: 0.6391;
+     - **L r1, without one edge, ends at 0.7400 of the space**, where the record
+       ends at 0.5647, above its peak;
+     - **L r2 ends at 0.6353**, where the record ends at 0.4221, and one door's
+       edge alone keeps 28,600 of its 28,660 points;
+     - **L r3 keeps nothing**: most of its fall was taken by containment;
+     - **N r3 ends at 0.5474**, where the record ends at 0.4932.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *How much of the fall the doors carry*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
