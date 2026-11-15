@@ -647,6 +647,19 @@ learner of the labels alone matched the loop. What that leaves:
   queues.** The same draft does both, and the draft's conditions raise the
   first without making it common. Whether the list's order moves it, as it
   moved the reading of the gateway, is not read. Free on the records.
+  **[NOTE 2026-11-15] Read POST-RUN: not the order, and not one reading.** The
+  shuffle's order and the precedent shown did not tell the climbs from the
+  cedes, and the cedes weigh the queue. The climbs mostly count conditions.
+  The drafts of `ONCALL_ESCALATION` among them rank on-call above security,
+  and some never read a security rule on its own. They reasoned less than the
+  cedes, short of the bet. `FINDINGS_CORRECTIONS.md`, *What makes an answer
+  read the list by its conditions*.
+- **Why some drafts of `ONCALL_ESCALATION` rank on-call above security.** Most
+  of the queue's rounds against security cede to it. The catalogue's line calls
+  on-call the queue of incidents that cannot wait. Free on the records.
+- **A placement round that asks for each listed rule's side apart.** Some
+  answers place the whole list in one declaration, and never read a security
+  rule on its own. A round that asked rule by rule might leave fewer. Calls.
 - **A placement round that defines `beats` by the queue that should decide.**
   v1c defines it as an exception, and the few answers above the security
   block read that as specificity. A round that asked which queue should decide

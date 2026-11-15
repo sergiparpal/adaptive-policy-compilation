@@ -3322,6 +3322,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        had three or more.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why some answers put their newborn above every rule of their list*.
+     **[NOTE 2026-11-15, after the ninth] What makes an answer read the list by
+     its conditions, read POST-RUN: not the order, and not one reading.**
+     - **Not what the round showed.** In L r2, L r3, N r1 and N r2, v1c's
+       shuffle opened 3 of the 14 climbs' lists with a security rule, where
+       chance gives 4.33. A rule shown climbing over security did not raise
+       it: 1 of 67 rounds climbed with one, and 13 of 662 without.
+     - **The cedes weigh the queue.** 26 of the 714 cedes' passages about the
+       security rules speak of conditions and never of priority.
+     - **The climbs reasoned less, short of the bet.** 9 of the 14 spent fewer
+       reasoning tokens than the cedes at their length of list, against two
+       thirds, and 4 of 7 in L.
+     - **Several readings.** Read POST-RUN, most climbs count conditions. The
+       two drafts of `ONCALL_ESCALATION` rank on-call above security, and
+       three never read a security rule on its own.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What makes an answer read the list by its conditions*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
