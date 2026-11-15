@@ -28,8 +28,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   of their list** reached it in #259, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read the list by its
   conditions** reached it in #261, merged on 2026-11-15.
-- **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reaches it in
-  #263.
+- **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reached it in
+  #263, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -178,12 +178,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-15, after the tenth] And an eleventh.**
 > [`oncall.json`](oncall.json) is the POST-RUN reading of why L loses
 > `ONCALL_ESCALATION`.
-> - **It was written from `24753d8`**, on that reading's branch: the commit that
->   carries the second part added after its first run. Its section below names
->   the commits before it.
+> - **It was written from `24753d8`**, on the branch of #263, which is `8292de4`
+>   on `main`: the commit that carries the second part added after its first
+>   run. Its section below names the commits before it.
 > - **Its code digest is `c19988c1a4a6ee4e`**, because `corrections/oncall.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. The modules Stage C ran did not change.
+>   was added after the readings above. `main` computes it at `8292de4`, and
+>   still at the merge of #263. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -2421,16 +2422,20 @@ run's peak, and none of this queue's. This reading asks the records, and spends
 nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.oncall`, on
-2026-11-15 in local time, from `24753d8` with its code clean, on this reading's
-branch.
-- **The commits.** `5f06316` carries the reading and its expectation, written
-  before the reading ran. `2993e46` and `24753d8` carry the two parts added
-  after the first run, which move no clause. The first run's records were not
-  committed.
-- **The record was committed alone**, as `4cf0f8b`.
+2026-11-15 in local time, from `24753d8` with its code clean, on the branch of
+#263, which is `8292de4` on `main`.
+- **The commits.** `4de8f8b` on `main` carries the reading and its expectation,
+  written before the reading ran. `863666a` and `8292de4` carry the two parts
+  added after the first run, which move no clause. The first run's records were
+  not committed.
+- **The record was committed alone**, as `afaede6`. On #263's branch the four
+  commits were `5f06316`, `2993e46`, `24753d8` and `4cf0f8b`. Each pair has the
+  same subject, the same tree and the same `git patch-id --stable`, and the
+  GitHub API names #263 behind the four `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `c19988c1a4a6ee4e`, is the one `24753d8` computes.
+  digest, `c19988c1a4a6ee4e`, is the one `main` computes at `8292de4`, and still
+  at the merge.
 - **The record is [`oncall.json`](oncall.json).** Its 72 gates passed in all
   six runs:
   - `channel/oncall.py`'s five for the queue and `channel/lost.py`'s four for
