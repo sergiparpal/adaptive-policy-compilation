@@ -20,8 +20,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   it in #250, merged on 2026-11-15.
 - **The POST-RUN reading of why the doors declared themselves above the
   gateway** reached it in #252, merged on 2026-11-15.
-- **The POST-RUN reading of how much of the fall the doors carry** reaches it in
-  #254.
+- **The POST-RUN reading of how much of the fall the doors carry** reached it in
+  #254, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -124,12 +124,13 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-15, last] And a seventh.** [`carry.json`](carry.json) is the
 > POST-RUN reading of how much of the fall the doors carry.
-> - **It was written from `f9d3c46`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `f9d3c46`**, on the branch of #254, which is `770931a`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `fdf19c791cc3b129`**, because `corrections/carry.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for files
->   the session's sandbox mounted in the repository's root, untracked, and
+>   was added after the readings above. `main` computes it at `770931a`, and
+>   still at the merge of #254. Its `_env` says `git_dirty`, for files the
+>   session's sandbox mounted in the repository's root, untracked, and
 >   `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
@@ -1636,15 +1637,19 @@ them. This reading replays the same births and declarations without the doors'
 edges, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.carry`, on 2026-11-15
-in local time, from `f9d3c46` with its code clean, on this reading's branch.
-- **The commits.** `3165456` carries the reading and its expectation, written
-  before the reading ran. `f9d3c46` carries the part added after the first run,
-  which moves no clause. The first run's record was not committed.
-- **The record was committed alone**, as `de5fd6b`.
+in local time, from `f9d3c46` with its code clean, on the branch of #254, which
+is `770931a` on `main`.
+- **The commits.** `971cf17` on `main` carries the reading and its expectation,
+  written before the reading ran. `770931a` carries the part added after the
+  first run, which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `7ef2a59`. On #254's branch the three
+  commits were `3165456`, `f9d3c46` and `de5fd6b`. Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #254 behind the three `main` commits.
 - **Its `_env` says `git_dirty`**, because the sandbox the session ran in mounts
   placeholder files in the repository's root, which git counts as untracked.
   `code_dirty` is false, and the code digest, `fdf19c791cc3b129`, is the one
-  `f9d3c46` computes.
+  `main` computes at `770931a`, and still at the merge.
 - **The record is [`carry.json`](carry.json).** Its five gates passed in all six
   runs:
   - the replay that leaves nothing out is `fall.json`'s record order, at every
