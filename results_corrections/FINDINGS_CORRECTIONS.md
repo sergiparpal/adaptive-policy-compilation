@@ -22,6 +22,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   gateway** reached it in #252, merged on 2026-11-15.
 - **The POST-RUN reading of how much of the fall the doors carry** reached it in
   #254, merged on 2026-11-15.
+- **The POST-RUN reading of what makes an answer read a keyword rule by its
+  queue** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -132,6 +134,17 @@ corrected during Stage C.**
 >   still at the merge of #254. Its `_env` says `git_dirty`, for files the
 >   session's sandbox mounted in the repository's root, untracked, and
 >   `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, after it] And an eighth.** [`byqueue.json`](byqueue.json)
+> is the POST-RUN reading of what makes an answer read a keyword rule by its
+> queue.
+> - **It was written from `7379251`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `3d849b1feeb3c1cd`**, because `corrections/byqueue.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -1623,6 +1636,11 @@ over nothing fails.
 1. **What makes an answer read a keyword rule by its queue.** Both readings
    appear in the same reasonings, and nothing read here tells a climb's round
    from a cede's beyond what its answer did. Free on the records.
+   **[NOTE 2026-11-15] Read POST-RUN, below: partly what the list shows.** The
+   same draft goes both ways. In L r2 and L r3 the gateway listed before every
+   security rule climbed far more often, and a list showing a rule ceding to it
+   held the answer down. *What makes an answer read a keyword rule by its
+   queue*.
 2. **Why some answers put their newborn above every rule of their list.** Free
    on the records.
 3. **Whether a round that showed what containment orders would have kept the
@@ -1779,6 +1797,156 @@ held at 0.9979.
    They are rules of `T1_GENERAL` and `T2_TECHNICAL`, on points of
    `T2_TECHNICAL` and `SECURITY_INCIDENT`. Free on the records.
 
+## What makes an answer read a keyword rule by its queue — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** The reading of why
+the doors declared themselves above the gateway found that an answer places a
+keyword rule of another queue as a security rule, and cedes to the gateway,
+unless it reads that rule by its queue, and climbs. Its *What it does not
+settle*, item 1, left what makes it read them by their queue. This reading asks
+the records, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.byqueue`, on
+2026-11-15 in local time, from `7379251` with its code clean, on this reading's
+branch.
+- **The development set.** L r1 and N r3 were read before the expectation was
+  written: every listing with its draft, slot, precedent, cause and reasoning
+  tokens, and the side. Every clause reads L r2 and L r3, pooled.
+- **The commits.** `410f04e` carries the reading and its expectation, written
+  before the reading ran on L r2 and L r3. `7379251` carries the part added
+  after the first run, which moves no clause. The first run's record was not
+  committed.
+- **The record was committed alone**, as `068d65b`.
+- **Its `_env` says `git_dirty`**, for files the session's sandbox mounted in
+  the repository's root, untracked. `code_dirty` is false, and the code digest,
+  `3d849b1feeb3c1cd`, is the one `7379251` computes.
+- **The record is [`byqueue.json`](byqueue.json).** Its five gates passed in the
+  four runs it reads:
+  - the listings are `doors.json`'s, rebuilt from the record with the side each
+    answer declared;
+  - every list is the seeded shuffle v1c showed;
+  - every placement call carries its reasoning tokens;
+  - every listed rule shown ceding to the gateway had that edge installed at its
+    own birth;
+  - the development set gives the counts the module's docstring gives of it.
+
+**What it reads.** `doors.json`'s listings, each a round that listed a gateway,
+with the side its answer declared: a *climb* above the gateway, or a *cede*
+below it. For each listing, what the round gave the answer:
+- **the draft**, its queue and conditions;
+- **the slot**, where the gateway stands in the list. v1c shows the list in a
+  shuffle seeded by the case and the round, so the slot is drawn, not chosen;
+- **the precedent**, the listed rules the list shows ceding to the gateway,
+  `[pierde con` it`]`, as each rule's accepted declarations render;
+- **the cause** of the escalation;
+- **the reasoning**, the placement call's reasoning tokens per listed rule.
+
+Two listings of the same draft, listed the same gateway, *disagree* when one
+climbs and the other cedes. **Added after the first run**: how many security
+rules the list shows before the gateway, and the slot crossed with the
+precedent.
+
+### 1. The same draft goes both ways
+
+| run | listings | climbs | pairs of the same draft | that disagree | independent draws at the run's rate |
+|---|---|---|---|---|---|
+| L r1, development | 78 | 5 | 309 | 26 | 37.1 |
+| N r3, development | 40 | 19 | 138 | 71 | 68.8 |
+| L r2 | 82 | 14 | 279 | 119 | 79.0 |
+| L r3 | 107 | 10 | 841 | 114 | 142.5 |
+
+- **The draft does not set the reading** (B1 holds, the bet). In L r2 and L r3,
+  233 of the 1,120 pairs of the same draft disagree, where independent draws at
+  each run's climb rate would give 221.5.
+- **In N r3, `product = billing → BILLING_SPECIALIST` was listed `R0175` 17
+  times, and climbed 7.**
+
+### 2. The slot moves it
+
+| run | the gateway before every security rule | after a security rule |
+|---|---|---|
+| L r1, development | 2 of 23 | 3 of 55 |
+| N r3, development | 5 of 10 | 14 of 30 |
+| L r2 | 8 of 25 | 6 of 57 |
+| L r3 | 6 of 26 | 4 of 78 |
+
+The listings that climbed, by where the gateway stands in the shuffled list.
+
+- **In L r2 and L r3, the gateway listed before every security rule climbs
+  nearly four times as often** (B2 fails): 14 of 51, against 10 of 135, a gap of
+  0.2004 where B2 allowed 0.10.
+- **The shuffle drew the slot**, so the gap is the presentation's, not the
+  draft's or the round's.
+- **The development runs did not show it.** In L r1 the gap was 0.0324, on five
+  climbs, and in N r3 the gateway climbed about half the time wherever it stood.
+
+### 3. The precedent too, and the two add up
+
+| L r2 and L r3 | no rule shown ceding to the gateway | a rule shown ceding |
+|---|---|---|
+| the gateway before every security rule | 8 of 19 | 6 of 32 |
+| after a security rule | 5 of 39 | 5 of 96 |
+
+- **A list that shows a rule ceding to the gateway holds the answer down** (B3
+  holds): 13 of the 61 listings without one climbed, and 11 of the 128 with one.
+- **Within each slot the precedent lowers the rate, and within each precedent
+  the slot does**: from 8 in 19 at one corner to 5 in 96 at the other. This is
+  added after the first run.
+- **What counts is whether any security rule comes first.** With none before
+  the gateway, 14 of 54 listings climbed. With one, 1 of 41; with two or three,
+  5 of 32; with four or more, 4 of 62.
+
+### 4. Not the reasoning's amount
+
+- **The climbs reasoned about as much per listed rule as the cedes** (B4 holds):
+  a lower median of 179 tokens against 213 in L r2 and L r3. In the development
+  runs, 232 against 208 in L r1, and 194 against 182 in N r3.
+- **The cause leans one way**, as `doors.json` had shown. In L r2 and L r3, 21
+  of the 133 listings at reported errors climbed, and 3 of the 52 at conflicts.
+- **The gateway's queue is not separated from the arm.** Every keyword rule of
+  another queue that L's lists showed was of `T2_TECHNICAL`. N r3's only one was
+  its gateway, of `T1_GENERAL`.
+
+### The expectation
+
+Written in `corrections/byqueue.py`'s docstring after L r1 and N r3 were read,
+and committed before the reading ran on L r2 and L r3. It is not signed, and it
+is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| B1, pairs of the same draft disagree at least half as often as independent draws would | 233 of 1,120, against 221.5 | **holds** |
+| B2, the slot moves the climb rate by at most 0.10 | 14 of 51 against 10 of 135, a gap of 0.2004 | fails |
+| B3, the rate with no precedent shown at least the rate with one | 13 of 61 against 11 of 128 | **holds** |
+| B4, the climbs' reasoning per listed rule within a quarter of the cedes' | 179 against 213 | **holds** |
+
+**B1, B3 and B4 hold, and B2 fails.** The bet `B1` held. `B2`, trusted most,
+failed: the development runs had shown no slot effect, and the held-out runs
+showed one. `B3`, trusted least, held.
+
+### What it says
+
+- **The reading is not the draft's.** The same draft, listed the same gateway,
+  goes both ways about as often as independent draws would.
+- **What the list shows moves it.** An answer that meets a security rule before
+  the gateway mostly places the gateway with it. An answer whose list shows
+  another rule ceding to the gateway mostly cedes too. Together they take the
+  climb rate from 8 in 19 to 5 in 96.
+- **The slot is the shuffle's**, so this is the round's presentation: v1c's
+  seeded order decides part of which answers climb over the gateway.
+- **The development set missed it.** L r1 had five climbs, and in N r3 the
+  answers climbed about half the time wherever the gateway stood. The bet set on
+  it held, and the clause trusted most failed on the held-out runs.
+
+### What it does not settle
+
+1. **Whether a round that lists the security rules first makes fewer doors.**
+   v1c's shuffle puts them first in some rounds and not in others. A plan with
+   calls.
+2. **Why N r3's answers climb about half the time wherever the gateway stands.**
+   Its gateway is of `T1_GENERAL` and its arm has no label, and one run cannot
+   separate the two.
+
 ---
 
 ## Files
@@ -1803,3 +1971,5 @@ held at 0.9979.
 - [`doors.json`](doors.json): POST-RUN, why the doors declared themselves above
   the gateway.
 - [`carry.json`](carry.json): POST-RUN, how much of the fall the doors carry.
+- [`byqueue.json`](byqueue.json): POST-RUN, what makes an answer read a keyword
+  rule by its queue.
