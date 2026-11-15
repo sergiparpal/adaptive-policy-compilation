@@ -121,6 +121,21 @@ reading of any queue at a checkpoint, the prior answers' rules, and any
 answer's reasoning.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: THE QUEUE'S LABELS, AND WHAT THE REASONING NAMES
+--------------------------------------------------------------------------
+The first run found the at-once answers writing no rule of the queue at all at
+all of L r2's and L r3's labels, which name the queue nowhere. At L r1's, which
+name it once, they wrote it off hours. So this part reads:
+- **the queue's labelled tickets**: at each checkpoint, each label that names
+  the queue, with its ticket's governing rule, severity, tier, hours and
+  product, from the corpus;
+- **what the reasoning names**: for each answer, how many times its reasoning
+  writes the queue's identifier, `ONCALL_ESCALATION`.
+It was tried on the records in a scratch script before it was written here,
+after the six clauses above had been read: A3, A5 and A6 hold, and A1, A2 and
+A4 fail. It carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Proposed by the agent and asked for by Sergi on 2026-11-15, after
@@ -182,6 +197,12 @@ PROVENANCE = (
     "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-15, after "
     "corrections/oncall.py. The expectation in the module's docstring was written and "
     "committed before the reading ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: at each checkpoint, each "
+    "label that names the queue with its ticket's governing rule, severity, tier, hours and "
+    "product; and for each answer, how many times its reasoning writes ONCALL_ESCALATION. "
+    "Tried in a scratch script first. No expectation; no clause moves.")
+TICKET = ("severity", "customer_tier", "off_hours", "product", "has_security_keyword")
 
 median = rl_score.median
 share, frac = fg.share, fg.frac
@@ -316,12 +337,26 @@ def labels_are_the_records(session: dict[str, Any], record: dict[str, Any] | Non
     return all([list(p) for p in r["labelled"]] == lab[:r["checkpoint"]] for r in session["rows"])
 
 
-def make_up(pairs: Sequence[tuple[int, str]], rows: dict[int, dict]) -> dict[str, Any]:
+def make_up(pairs: Sequence[tuple[int, str]], rows: dict[int, dict],
+            corpus: Sequence | None = None) -> dict[str, Any]:
     """What a checkpoint's labels hold: those that name the queue, and the
-    tickets of the layer by the queue named."""
+    tickets of the layer by the queue named. Given the corpus, each label that
+    names the queue with its ticket: added after the first run."""
     lay = Counter(q for i, q in pairs if rows[i].get("truth_rule") in LAYER)
-    return {"labels": len(pairs), "naming_the_queue": sum(1 for _, q in pairs if q == QUEUE),
-            "tickets_of_the_layer": sum(lay.values()), "of_the_layer_by_queue": dict(sorted(lay.items()))}
+    out = {"labels": len(pairs), "naming_the_queue": sum(1 for _, q in pairs if q == QUEUE),
+           "tickets_of_the_layer": sum(lay.values()),
+           "of_the_layer_by_queue": dict(sorted(lay.items()))}
+    if corpus is not None:
+        out["queue_tickets"] = [{"case": i, "governing": rows[i].get("truth_rule"),
+                                 **{a: getattr(corpus[i], a) for a in TICKET}}
+                                for i, q in pairs if q == QUEUE]
+    return out
+
+
+def names_the_queue(row: dict[str, Any]) -> int:
+    """Added after the first run: how many times an answer's reasoning writes
+    the queue's identifier."""
+    return (row.get("reasoning") or "").count(QUEUE)
 
 
 def read_session(session: dict[str, Any], stored: dict[str, Any], truth: dict[str, int],
@@ -335,6 +370,7 @@ def read_session(session: dict[str, Any], stored: dict[str, Any], truth: dict[st
         inst = installed(row["payload"])
         rd, ok = read_base(inst.engine, truth, parts, layer)
         ok4 &= ok
+        rd["reasoning_names_the_queue"] = names_the_queue(row)
         by_j.setdefault(j, []).append((k, rd, inst.summary()))
     ok2 = sorted(int(j) for j in stored) == sorted(by_j)
     out = {}
@@ -365,6 +401,7 @@ def read_run(record: dict[str, Any], session: dict[str, Any], curve: Sequence[di
     run."""
     pairs = ask.labelled(record)
     rows = {r["idx"]: r for r in record["records"]}
+    corpus = list(MI.corpus())
     stored = {str(c["labels"]): c["at_once"] for c in curve if c.get("at_once")}
     asked, ok2, ok4 = read_session(session, stored, truth, parts, layer)
     ok3 = True
@@ -375,7 +412,7 @@ def read_run(record: dict[str, Any], session: dict[str, Any], curve: Sequence[di
         rd, ok = read_base(eng, truth, parts, layer)
         ok4 &= ok
         ok3 &= rd["space"] == F(c["loop"]["fraction"])
-        checkpoints.append({"labels": j, "case": idx, "make_up": make_up(pairs[:j], rows),
+        checkpoints.append({"labels": j, "case": idx, "make_up": make_up(pairs[:j], rows, corpus),
                             "loop": stored_base(rd), "at_once": asked.get(j)})
     gates = [
         {"gate": 1, "what": "the labels are the record's",
@@ -514,6 +551,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": score["_env"].get("git_commit"),
                    "sessions": {n: str(session_path(n)) for n in sessions},

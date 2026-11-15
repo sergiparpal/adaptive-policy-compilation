@@ -18,6 +18,8 @@ Also pinned:
   it, and gates 1 to 3 each failing on its own;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run: a label of the queue with its ticket's attributes,
+and how many times a reasoning writes the queue's identifier.
 """
 
 from __future__ import annotations
@@ -198,8 +200,10 @@ class TestTheRun(unittest.TestCase):
         c = run()["checkpoints"][0]
         self.assertEqual(c["make_up"], {"labels": 2, "naming_the_queue": 0,
                                         "tickets_of_the_layer": 2,
-                                        "of_the_layer_by_queue": {T2: 1, T3: 1}})
+                                        "of_the_layer_by_queue": {T2: 1, T3: 1},
+                                        "queue_tickets": []})
         self.assertEqual(c["at_once"]["median"]["asks"], 3)
+        self.assertEqual([a["reasoning_names_the_queue"] for a in c["at_once"]["asks"]], [0, 0, 0])
         # The loop's base is the catalogue's rule with its two slices.
         loop, _ = C.read_base(C.loop_base(REC, 2), TRUTH, PARTS, LAYER)
         self.assertEqual(c["loop"]["queue"], loop["queue"])
@@ -273,6 +277,25 @@ class TestTheExpectation(unittest.TestCase):
     def test_over_nothing(self):
         got = self.clauses({}, {"asked": None})
         self.assertEqual(got, {f"A{k}": False for k in range(1, 7)})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_a_label_of_the_queue_with_its_ticket(self):
+        corpus = list(MI.corpus())
+        got = C.make_up([(5, ON), (6, T2)], {5: {"truth_rule": "H05"}, 6: {"truth_rule": "H08"}},
+                        corpus)
+        self.assertEqual(got["naming_the_queue"], 1)
+        self.assertEqual(got["queue_tickets"],
+                         [{"case": 5, "governing": "H05",
+                           **{a: getattr(corpus[5], a) for a in C.TICKET}}])
+        self.assertNotIn("queue_tickets", C.make_up([(5, ON)], {5: {"truth_rule": "H05"}}))
+
+    def test_what_the_reasoning_names(self):
+        self.assertEqual(C.names_the_queue({"reasoning": "ONCALL_ESCALATION? no ONCALL_ESCALATION"}),
+                         2)
+        self.assertEqual(C.names_the_queue({"reasoning": "on-call, guardia"}), 0)
+        self.assertEqual(C.names_the_queue({}), 0)
 
 
 class TestTheWriter(unittest.TestCase):
