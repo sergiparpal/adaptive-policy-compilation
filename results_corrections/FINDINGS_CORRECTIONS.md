@@ -16,8 +16,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   reached it in #246, merged on 2026-11-14.
 - **The POST-RUN reading of why a rule's wins reach the rule it should lose to**
   reached it in #248, merged on 2026-11-14.
-- **The POST-RUN reading of why so many rules sit above the gateway** reaches it
-  in #250.
+- **The POST-RUN reading of why so many rules sit above the gateway** reached
+  it in #250, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -102,11 +102,12 @@ corrected during Stage C.**
 >
 > **[NOTE 2026-11-15] And a fifth.** [`gateway.json`](gateway.json) is the
 > POST-RUN reading of why so many rules sit above the gateway.
-> - **It was written from `bcf20d8`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `bcf20d8`**, on the branch of #250, which is `31a3479`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `1757cc92488e3bec`**, because `corrections/gateway.py`
->   was added after the readings above. The modules Stage C ran did not change.
+>   was added after the readings above. `main` computes it at `31a3479`, and
+>   still at the merge of #250. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1214,13 +1215,17 @@ other queues above that rule, and why the paths to it run so long. This reading
 asks the records, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.gateway`, on
-2026-11-15 in local time, from `bcf20d8` on a clean tree, on this reading's
-branch.
-- **The commits.** `b7512e3` carries the reading and its expectation, written
-  before the reading ran. `bcf20d8` carries the part added after the first run,
-  which moves no clause. The first run's record was not committed.
-- **The record was committed alone**, as `51a3039`. It is
-  [`gateway.json`](gateway.json). Its six gates passed in all six runs:
+2026-11-15 in local time, from `bcf20d8` on a clean tree, on the branch of
+#250, which is `31a3479` on `main`.
+- **The commits.** `f285f8b` on `main` carries the reading and its expectation,
+  written before the reading ran. `31a3479` carries the part added after the
+  first run, which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `3ae3f2b`. On #250's branch the three
+  commits were `b7512e3`, `bcf20d8` and `51a3039`. Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #250 behind the three `main` commits.
+- **The record is [`gateway.json`](gateway.json).** Its six gates passed in all
+  six runs:
   - the replay is the base;
   - the gateways and the pairs are `paths.json`'s, and each gateway lies inside
     the keyword's region;
