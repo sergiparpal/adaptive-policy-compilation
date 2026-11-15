@@ -20,6 +20,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   it in #250, merged on 2026-11-15.
 - **The POST-RUN reading of why the doors declared themselves above the
   gateway** reached it in #252, merged on 2026-11-15.
+- **The POST-RUN reading of how much of the fall the doors carry** reaches it in
+  the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -119,6 +121,16 @@ corrected during Stage C.**
 > - **Its code digest is `b4a2acc7fdd0cd3e`**, because `corrections/doors.py`
 >   was added after the readings above. `main` computes it at `a46490f`, and
 >   still at the merge of #252. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-15, last] And a seventh.** [`carry.json`](carry.json) is the
+> POST-RUN reading of how much of the fall the doors carry.
+> - **It was written from `f9d3c46`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `fdf19c791cc3b129`**, because `corrections/carry.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for files
+>   the session's sandbox mounted in the repository's root, untracked, and
+>   `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -1428,6 +1440,10 @@ many.
 2. **How much of the fall the doors carry.** A replay of the same births without
    the doors' edges is free on the records. It is not the loop that would have
    run.
+   **[NOTE 2026-11-15] Read POST-RUN, below: most of L's.** Without the doors'
+   edges, the same births and declarations keep 0.6391 of L's three falls,
+   summed. One edge carries more than L r1's, one door L r2's, and L r3 keeps
+   nothing. *How much of the fall the doors carry*.
 
 ## Why the doors declared themselves above the gateway — POST-RUN
 
@@ -1611,6 +1627,153 @@ over nothing fails.
 3. **Whether a round that showed what containment orders would have kept the
    doors below the gateway.** A plan with calls.
 
+## How much of the fall the doors carry — POST-RUN
+
+**Asked for by Sergi on 2026-11-15, after the reading above.** The reading of why
+so many rules sit above the gateway found them reaching it through few doors.
+Its *What it does not settle*, item 2, left how much of what L lost rests on
+them. This reading replays the same births and declarations without the doors'
+edges, and spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.carry`, on 2026-11-15
+in local time, from `f9d3c46` with its code clean, on this reading's branch.
+- **The commits.** `3165456` carries the reading and its expectation, written
+  before the reading ran. `f9d3c46` carries the part added after the first run,
+  which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `de5fd6b`.
+- **Its `_env` says `git_dirty`**, because the sandbox the session ran in mounts
+  placeholder files in the repository's root, which git counts as untracked.
+  `code_dirty` is false, and the code digest, `fdf19c791cc3b129`, is the one
+  `f9d3c46` computes.
+- **The record is [`carry.json`](carry.json).** Its five gates passed in all six
+  runs:
+  - the replay that leaves nothing out is `fall.json`'s record order, at every
+    birth;
+  - the edges left out are the records';
+  - each replay is the record's order until it leaves an edge out;
+  - every replay's masks are its engine's;
+  - a run without a gateway leaves nothing out.
+
+**What it reads.** Each run's births and declarations, installed in the record's
+order as `corrections/fall.py`'s `order_replay` installs them, with declared
+edges left out:
+- **the doors' edges**, `gateway.json`'s declared wins of a door over a gateway;
+- **every declared win over a gateway**, the doors' and the climbs the engine
+  refused;
+- **each door's edges alone.**
+
+A door nested inside a gateway beats it by containment, which is no edge, and
+stays in every replay. Each replay is read over the space's 134,400 points as
+`fall.json` reads the record's order. **What it keeps** is its final less the
+record's, set beside the record's fall, peak less final. **Added after the
+first run**: where each replay's final base decides otherwise than the record's.
+
+### 1. The doors carry most of L's fall
+
+| run | the record's order: final | fall | without the doors' edges: final | kept | of the fall | `SECURITY_INCIDENT` recall | conflict points |
+|---|---|---|---|---|---|---|---|
+| L r1 | 0.5647 | 0.1249 | 0.7400 | 23,550 | 1.4035 | 0.3514 → 0.8333 | 36,425 → 10,855 |
+| L r2 | 0.4221 | 0.3553 | 0.6353 | 28,660 | 0.6002 | 0.1437 → 0.6667 | 49,705 → 7,225 |
+| L r3 | 0.5618 | 0.1277 | 0.5618 | 0 | 0 | 0.2976 → 0.2976 | 13,371 → 11,198 |
+| N r3 | 0.4932 | 0.1343 | 0.5474 | 7,285 | 0.4035 | 0.6929 → 0.8333 | 12,435 → 4,290 |
+
+N r1 and N r2 have no gateway, and leave nothing out.
+
+- **One edge carries more than L r1's fall** (C1 holds). Without `R0062`'s edge
+  into `R0061`, L r1 keeps 23,550 points, where its record's order fell 16,780
+  from its peak. It ends at 0.7400, above that peak.
+- **One door carries L r2's** (C2 and C5 hold).
+  - **Without its doors' edges, L r2 keeps 28,660 points**, 0.6002 of its fall
+    of 47,750.
+  - **`R0051`'s edge alone keeps 28,600 of them.**
+  - **`R0143`'s and `R0234`'s edges, each alone, keep nothing.**
+- **L r3 keeps nothing** (C3 holds). Most of its fall was taken by containment.
+- **Over the three L runs, the doors carry most of the fall** (C4 holds, the
+  bet): 52,210 points of the 81,694 their falls sum to, 0.6391.
+- **N r3 keeps 0.4035 of its fall** (C6 holds), though its one door is right by
+  the policy on the points it shares with the gateway.
+- **Beside the two levers read before**, the doors replay ends between them in
+  L r1, L r2 and N r3. Losses first ended them at 0.7374, 0.6539 and 0.5459, and
+  the engine that refuses a cycle only where it is at 0.7432, 0.6154 and 0.5535.
+- **No climb the record refused became a door.** With every declared win over a
+  gateway left out, every run ends where it ends without the doors' edges.
+
+### 2. What the engine installs instead
+
+| run | refused for a cycle in the record, installed here | the newborns' losses to `SECURITY_INCIDENT`'s rules among them | installed in the record, refused here | refusals for a cycle |
+|---|---|---|---|---|
+| L r1 | 356 | 211 | 9 | 1,849 → 1,502 |
+| L r2 | 916 | 370 | 8 | 2,159 → 1,251 |
+| L r3 | 90 | 15 | 3 | 1,597 → 1,510 |
+| N r3 | 43 | 35 | 2 | 905 → 864 |
+
+- **Without the doors' edges, the engine installs the right sides it refused.**
+  In L r1, 211 of the 356 edges it now installs are newborns' losses to a rule of
+  `SECURITY_INCIDENT`, and 370 of L r2's 916.
+- **Few edges go the other way**: nine in L r1, eight in L r2.
+
+### 3. Where the replay decides otherwise — added after the first run
+
+| run | gained right | `SECURITY_INCIDENT`'s | lost | the record's conflicts decided | decided wrongly | changed from wrong to wrong | decided to conflict |
+|---|---|---|---|---|---|---|---|
+| L r1 | 24,570 | 24,290 | 1,020 | 26,870 | 2,580 | 2,980 | 1,300 |
+| L r2 | 28,740 | 26,355 | 80 | 42,615 | 14,085 | 14,245 | 135 |
+| L r3 | 0 | 0 | 0 | 4,253 | 4,253 | 6,553 | 2,080 |
+| N r3 | 7,890 | 7,080 | 605 | 8,310 | 420 | 420 | 165 |
+
+- **What the replay gains is mostly `SECURITY_INCIDENT`'s**, and it loses little:
+  1,020 points in L r1, 80 in L r2 and 605 in N r3.
+- **In L r3 every point it changes goes from one wrong outcome to another.** The
+  4,253 conflicts it decides all go to rules of `T2_TECHNICAL`, on
+  `SECURITY_INCIDENT`'s points.
+- **In L r2 a third of the conflicts it decides go wrongly**: 14,085 of 42,615.
+  - **To rules of `T1_GENERAL`**: 5,050 points of `T2_TECHNICAL` and 4,715 of
+    `SECURITY_INCIDENT`.
+  - **To rules of `T2_TECHNICAL`**: 4,320 of `SECURITY_INCIDENT`.
+- **In L r1, the 2,580 decided wrongly go to rules of `T2_TECHNICAL`**, on
+  `SECURITY_INCIDENT`'s points.
+
+### The expectation
+
+Written in `corrections/carry.py`'s docstring and committed before the reading
+ran. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| C1, without its door's edge, L r1 keeps at least half of its fall | 23,550 of 16,780 | **holds** |
+| C2, without its doors' edges, L r2 keeps at least half of its fall | 28,660 of 47,750 | **holds** |
+| C3, without its doors' edges, L r3 keeps at most a quarter of its fall | 0 of 17,164 | **holds** |
+| C4, without their doors' edges, the three L runs keep at least half of their falls, summed | 52,210 of 81,694 | **holds** |
+| C5, without `R0051`'s edge alone, L r2 keeps at least half of what it keeps without all its doors' edges | 28,600 of 28,660 | **holds** |
+| C6, without its door's edge, N r3 keeps at least a quarter of its fall | 7,285 of 18,055 | **holds** |
+
+**All six hold.** The bet `C4` held, on L r1 and L r2. `C5`, trusted least,
+held at 0.9979.
+
+### What it says
+
+- **The doors carry most of L's fall.** One edge carries more than L r1's, and
+  one door carries L r2's.
+- **Without them, the engine installs the right sides it refused.** The
+  newborns' losses to the keyword's rule go in, and the conflicts the fall left
+  close mostly in `SECURITY_INCIDENT`'s favour.
+- **Where containment took the fall, no edge left out brings it back.** In L r3
+  the replay moves points only between wrong outcomes.
+- **Rules of other queues still decide wrongly part of what the doors left.**
+  The conflicts the replay decides wrongly go to rules of `T2_TECHNICAL` and
+  `T1_GENERAL`, on points the policy gives another queue.
+- **It is not the loop that would have run.** A base without those edges decides
+  the arrivals otherwise, and would have escalated other cases.
+
+### What it does not settle
+
+1. **Whether a loop that refuses a climb over a rule nested in the keyword's
+   region keeps its share.** The doors' edges are such climbs. A protocol
+   change, with calls.
+2. **Which rules decide wrongly the conflicts the replay resolves in L r2.**
+   They are rules of `T1_GENERAL` and `T2_TECHNICAL`, on points of
+   `T2_TECHNICAL` and `SECURITY_INCIDENT`. Free on the records.
+
 ---
 
 ## Files
@@ -1634,3 +1797,4 @@ over nothing fails.
   gateway.
 - [`doors.json`](doors.json): POST-RUN, why the doors declared themselves above
   the gateway.
+- [`carry.json`](carry.json): POST-RUN, how much of the fall the doors carry.
