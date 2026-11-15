@@ -1383,6 +1383,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.carry                         # POST-RUN: how much of the fall the doors carry
     PYTHONHASHSEED=0 python3 -m corrections.byqueue                       # POST-RUN: what makes an answer read a keyword rule by its queue
     PYTHONHASHSEED=0 python3 -m corrections.above                         # POST-RUN: why some answers put their newborn above every rule of their list
+    PYTHONHASHSEED=0 python3 -m corrections.conditions                    # POST-RUN: what makes an answer read the list by its conditions
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1496,6 +1497,16 @@ counts conditions. **And a cell joins two leads.** This one joined the draft's
 conditions, which held in both arms, to the block's length, which rested on a
 few rounds of the development set and reversed. Band each half apart, so the
 half that holds is not read through the half that fails.
+
+**Read POST-RUN, what makes an answer read the list by its conditions is not
+the list.** v1c's shuffled order and the precedent each list shows did not tell
+the climbs over the security block from the cedes, and the bet that the climbs
+reason less fell short. Read case by case, the climbs were several readings: by
+conditions, by a queue ranked above security, and an enumeration that never
+reads a rule on its own. **A rare outcome can pool several mechanisms.** Class
+each case by what its reasoning does before banding one feature over all of
+them. The cheaper reasoning belonged to the enumerations and to the queue read
+the other way, not to the readings by conditions.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
