@@ -1379,6 +1379,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.fall                          # POST-RUN: why the loop's share of the space peaked and fell
     PYTHONHASHSEED=0 python3 -m corrections.paths                         # POST-RUN: why a rule's wins reach the rule it should lose to
     PYTHONHASHSEED=0 python3 -m corrections.gateway                       # POST-RUN: why so many rules sit above the gateway
+    PYTHONHASHSEED=0 python3 -m corrections.doors                         # POST-RUN: why the doors declared themselves above the gateway
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1449,6 +1450,18 @@ their newborn. In L r1 a single door, born at the next birth, carried every
 rule above it. The paths are long because the rules above accreted on those
 few doors, mostly by their own declared wins. A reading of what a refusal
 rests on should look for the few edges every path passes through.
+
+**Read POST-RUN, the doors read the nested rule by its queue.** The answers place
+a keyword rule of another queue as a security rule, and the nested rule is
+such a rule, so most answers put it above their newborn. The answers that
+climbed over it read it by its queue, as they read the round's other keyword
+rules. Most of the doors still put their newborn below the keyword's security
+rule, which the nested rule beats by containment. The round does not show what
+containment orders, and the engine refused every such door's loss. A placement round that shows each listed rule's
+declared wins and hides what containment orders invites an answer the engine
+cannot keep. The reasoning's words told the sides apart by little on the
+development set, and what each answer declared told them apart cleanly. Test a
+codebook against the structure an answer declares before reading its words.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

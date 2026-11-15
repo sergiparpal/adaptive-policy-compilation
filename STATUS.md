@@ -3262,6 +3262,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        steps or more from every gateway.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why so many rules sit above the gateway*.
+     **[NOTE 2026-11-15, later] Why the doors declared themselves above the
+     gateway, read POST-RUN: they read it by its queue.**
+     - **A keyword rule of another queue is placed as a security rule.** In L r2
+       and L r3 the answers put their newborn below 137 of the 158 such rules
+       they placed, and in L 238 of the 267 rounds that listed a gateway put it
+       above their newborn.
+     - **The climbs read the gateway by its queue.** All 16 held-out climbs whose
+       round listed another keyword rule put their newborn above every one, and
+       all 115 such cedes below every one.
+     - **Most climbs still yield to security, in the same answer.** 15 of the 22
+       held-out climbs whose round listed a security rule put their newborn
+       below every one. The gateway beats that rule by containment, so the
+       engine refused the loss of every door of this kind: 8 of L's 13 door
+       edges. The other 5 put their newborn above every rule of their list.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the doors declared themselves above the gateway*.
    - **Its final base forgets about half of its own labelled tickets.** Whether
      a later rule, a declared edge or a refused placement takes each one back
      is not read.
