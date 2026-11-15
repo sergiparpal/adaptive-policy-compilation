@@ -27,7 +27,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why some answers put their newborn above every rule
   of their list** reached it in #259, merged on 2026-11-15.
 - **The POST-RUN reading of what makes an answer read the list by its
-  conditions** reaches it in #261.
+  conditions** reached it in #261, merged on 2026-11-15.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -164,13 +164,14 @@ corrected during Stage C.**
 > **[NOTE 2026-11-15, after the ninth] And a tenth.**
 > [`conditions.json`](conditions.json) is the POST-RUN reading of what makes an
 > answer read the list by its conditions.
-> - **It was written from `a8ca66e`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `a8ca66e`**, on the branch of #261, which is `f33321e`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `2b3e6ca0a22c99ae`**, because
->   `corrections/conditions.py` was added after the readings above. Its `_env`
->   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
->   Stage C ran did not change.
+>   `corrections/conditions.py` was added after the readings above. `main`
+>   computes it at `f33321e`, and still at the merge of #261. Its `_env` says
+>   `git_dirty`, for the same files, and `code_dirty` is false. The modules Stage
+>   C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -2230,22 +2231,26 @@ its conditions and another by its queues, and asked whether the list's order
 moves it. This reading asks the records, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.conditions`, on
-2026-11-15 in local time, from `a8ca66e` with its code clean, on this reading's
-branch.
+2026-11-15 in local time, from `a8ca66e` with its code clean, on the branch of
+#261, which is `f33321e` on `main`.
 - **The development set.** L r1 and N r3 were read before the expectation was
   written. That covered every round whose list held a security rule: its side,
   its list's opening, what the list showed, its reasoning tokens, and its
   passages about the security rules, coded for several candidates. C1 to C4
   pool L r2, L r3, N r1 and N r2, the two arms together, and C5 reads each arm
   apart.
-- **The commits.** `798201c` carries the reading and its expectation, written
-  before the reading ran on the other runs. `a8ca66e` carries the part added
-  after the first run, which moves no clause. The first run's record was not
-  committed.
-- **The record was committed alone**, as `04fb81c`.
+- **The commits.** `663e2b1` on `main` carries the reading and its expectation,
+  written before the reading ran on the other runs. `f33321e` carries the part
+  added after the first run, which moves no clause. The first run's record was
+  not committed.
+- **The record was committed alone**, as `8662e3a`. On #261's branch the three
+  commits were `798201c`, `a8ca66e` and `04fb81c`. Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #261 behind the three `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `2b3e6ca0a22c99ae`, is the one `a8ca66e` computes.
+  digest, `2b3e6ca0a22c99ae`, is the one `main` computes at `f33321e`, and still
+  at the merge.
 - **The record is [`conditions.json`](conditions.json).** Its five gates passed
   in all six runs:
   - the rounds and their sides against the security rules are `above.json`'s;
