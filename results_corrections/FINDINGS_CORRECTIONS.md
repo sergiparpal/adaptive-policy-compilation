@@ -31,7 +31,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why L loses `ONCALL_ESCALATION`** reached it in
   #263, merged on 2026-11-15.
 - **The POST-RUN reading of what the at-once asks wrote for
-  `ONCALL_ESCALATION`** reaches it in #265.
+  `ONCALL_ESCALATION`** reached it in #265, merged on 2026-11-16 in local
+  time.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -191,12 +192,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-15, after the eleventh] And a twelfth.**
 > [`layer.json`](layer.json) is the POST-RUN reading of what the at-once asks
 > wrote for `ONCALL_ESCALATION` and the layer below it.
-> - **It was written from `5e15c43`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `5e15c43`**, on the branch of #265, which is `0e72e6e`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `f0e1e3d4b07d05d2`**, because `corrections/layer.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. The modules Stage C ran did not change.
+>   was added after the readings above. `main` computes it at `0e72e6e`, and
+>   still at the merge of #265. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -2700,17 +2702,22 @@ the space (`CR-d` holds). The at-once asks were paid for in Stage B. This readin
 reads them again, for the queue and its layer, and spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.layer`, on
-2026-11-15 in local time, from `5e15c43` with its code clean, on this reading's
-branch.
-- **The commits.** `264010b` carries the reading and its expectation, written
-  before the reading ran. `5e15c43` carries the part added after the first run,
-  which moves no clause. The first run's record was not committed.
-- **The record was committed alone**, as `9302837`. Its message says A1 fell
+2026-11-15 in local time, from `5e15c43` with its code clean, on the branch of
+#265, which is `0e72e6e` on `main`.
+- **The commits.** `c534c9d` on `main` carries the reading and its expectation,
+  written before the reading ran. `0e72e6e` carries the part added after the
+  first run, which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `c2de2bc`. Its message says A1 fell
   below the loop at some checkpoint of every run. It fell below in L r2 and L
   r3, and never in L r1.
+- **On #265's branch the three commits were `264010b`, `5e15c43` and
+  `9302837`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`, and the GitHub API names #265 behind the three
+  `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `f0e1e3d4b07d05d2`, is the one `5e15c43` computes.
+  digest, `f0e1e3d4b07d05d2`, is the one `main` computes at `0e72e6e`, and still
+  at the merge.
 - **The record is [`layer.json`](layer.json).** Its 16 gates passed:
   - each L session's labels are its run's reported errors, and each ask's are
     the first ones, as many as its checkpoint; the prior's carry none;
