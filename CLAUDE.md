@@ -1380,6 +1380,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.paths                         # POST-RUN: why a rule's wins reach the rule it should lose to
     PYTHONHASHSEED=0 python3 -m corrections.gateway                       # POST-RUN: why so many rules sit above the gateway
     PYTHONHASHSEED=0 python3 -m corrections.doors                         # POST-RUN: why the doors declared themselves above the gateway
+    PYTHONHASHSEED=0 python3 -m corrections.carry                         # POST-RUN: how much of the fall the doors carry
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1462,6 +1463,17 @@ declared wins and hides what containment orders invites an answer the engine
 cannot keep. The reasoning's words told the sides apart by little on the
 development set, and what each answer declared told them apart cleanly. Test a
 codebook against the structure an answer declares before reading its words.
+
+**Read POST-RUN, the doors carry most of L's fall.** The same births and
+declarations, installed in the record's order without the doors' edges, keep
+most of what L lost. In L r1 one edge carries more than its fall, and in L r2
+one door carries it. Where containment took the fall, no edge left out brings it
+back. A replay that leaves out a few edges can say how much of a loss they
+carry. It is not the loop that would have run: set it beside the other levers
+read on the same records. **And a sandbox counts its mounts as untracked
+files.** While Bash ran in Sergi's sandbox, placeholder files in the
+repository's root made every record's `git_dirty` true. `code_dirty` still
+identifies the code, and the FINDINGS should say why `git_dirty` is set.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
