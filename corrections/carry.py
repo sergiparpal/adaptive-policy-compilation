@@ -130,6 +130,23 @@ other doors and rules may have carried the paths.
 **What the drafter had not seen**: any replay with an edge left out.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHERE THE REPLAY DECIDES OTHERWISE
+--------------------------------------------------------------------------
+The first run found every clause holding, and L r3 keeping nothing although
+its doors replay installed right sides the record had refused, and left fewer
+points in conflict. So this part reads, for each replay, where its final base
+decides otherwise than the record's order:
+- the points it gets right that the record did not, and the reverse, with
+  SECURITY_INCIDENT's among them;
+- the points that change from one wrong outcome to another;
+- the record's conflicts the replay decides, and those it decides wrongly, by
+  the queue that decides them and their true queue;
+- the points the replay leaves in a conflict that the record decided.
+It was tried on the records in a scratch script before it was written here. It
+was written after the six clauses above had been read: all six hold. It carries
+no expectation and moves no clause, and it adds no gate.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-15, after `corrections/doors.py`.
@@ -187,6 +204,13 @@ PROVENANCE = (
     "in the module's docstring was written and committed before the reading ran. Not a "
     "signed row; no verdict moves.")
 
+ADDED = (
+    "Added after the first run, after its six clauses were read: where each replay's final "
+    "base decides otherwise than the record's order, by the points it gets right and wrong, "
+    "the points that change from one wrong outcome to another, and the record's conflicts it "
+    "decides, those decided wrongly by the queue that decides them and their true queue. "
+    "Tried in a scratch script first. No expectation; no clause moves.")
+
 share, frac = fg.share, fg.frac
 
 
@@ -227,7 +251,7 @@ def replay(record: dict[str, Any], space: Space, truth: dict[str, int],
         curve.append(fl.right_of(fl.decision(und, action), truth).bit_count())
     dec = fl.decision(und, action)
     right = fl.right_of(dec, truth)
-    return {"engine": engine, "action": action, "curve": curve, "tried": tried,
+    return {"engine": engine, "action": action, "und": und, "curve": curve, "tried": tried,
             "first_skip": first_skip, "right": right.bit_count(),
             "security": (right & truth.get(SEC, 0)).bit_count(),
             "conflict": dec["two"].bit_count(),
@@ -265,6 +289,44 @@ def against(base: dict[str, Any], got: dict[str, Any], gates: set[str]) -> dict[
             "installed_there_refused_here": len(now_out),
             "right_sides_installed": len(right_sides),
             "new_doors": new_doors}
+
+
+def where(base: dict[str, Any], got: dict[str, Any], truth: dict[str, int]) -> dict[str, Any]:
+    """Added after the first run: where a replay's final base decides otherwise
+    than the record's order. The points it gets right that the record did not,
+    and the reverse, SECURITY_INCIDENT's among them; the points that change from
+    one wrong outcome to another; and the record's conflicts the replay decides,
+    those it decides wrongly by the queue that decides them and their true
+    queue, and the points the replay leaves in a conflict the record decided."""
+    a = fl.decision(base["und"], base["action"])
+    b = fl.decision(got["und"], got["action"])
+    ra, rb = fl.right_of(a, truth), fl.right_of(b, truth)
+
+    def decided(dec: dict[str, Any]) -> dict[str, int]:
+        only = dec["one"] & ~dec["two"]
+        return {q: m & only for q, m in dec["by_queue"].items()}
+
+    qa, qb = decided(a), decided(b)
+    changed = a["two"] ^ b["two"]
+    for q in set(qa) | set(qb):
+        changed |= qa.get(q, 0) ^ qb.get(q, 0)
+    resolved = a["two"] & ~b["two"] & b["one"]
+    wrong = resolved & ~rb
+    by: dict[str, int] = {}
+    for q, m in qb.items():
+        for tq, tm in truth.items():
+            k = (m & wrong & tm).bit_count()
+            if k:
+                by[f"{q}:{tq}"] = by.get(f"{q}:{tq}", 0) + k
+    sec = truth.get(SEC, 0)
+    gained, lost = rb & ~ra, ra & ~rb
+    return {"gained": gained.bit_count(), "lost": lost.bit_count(),
+            "gained_security": (gained & sec).bit_count(),
+            "lost_security": (lost & sec).bit_count(),
+            "wrong_to_wrong": (changed & ~ra & ~rb).bit_count(),
+            "conflicts_resolved": resolved.bit_count(), "resolved_wrongly": wrong.bit_count(),
+            "resolved_wrongly_by_queue": dict(sorted(by.items())),
+            "decided_to_conflict": (b["two"] & ~a["two"]).bit_count()}
 
 
 # ---------------------------------------------------------------------------
@@ -317,7 +379,8 @@ def read_run(record: dict[str, Any], space: Space, truth: dict[str, int],
                      "left_out": [list(e) for e in sorted(skip)],
                      "kept": {"points": kept, "share": frac(F(kept, n))},
                      "of_the_fall": frac(share(kept, fall_points)),
-                     **against(base, got, set(gates))}
+                     **against(base, got, set(gates)),
+                     "added_after_the_first_run": where(base, got, truth)}
 
     replays = {}
     out_arms, out_doors = {}, {}
@@ -459,6 +522,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"gateway": str(gw.record_path()), "doors": str(dr.record_path()),
                    "fall": str(fl.record_path()),
                    "gateway_from": gateway_record["_env"].get("git_commit"),

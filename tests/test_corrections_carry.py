@@ -21,6 +21,9 @@ Also pinned:
 - the expectation's clauses at their edges, pooled, on one door, and over
   nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on masks built by hand and on the same run: where a
+replay's final base decides otherwise than the record's order, the record
+against itself deciding nothing otherwise.
 """
 
 from __future__ import annotations
@@ -324,6 +327,40 @@ class TestTheExpectation(unittest.TestCase):
     def test_a_clause_over_nothing_fails(self):
         got = clauses({})
         self.assertEqual({k: got[k] for k in ALL}, {k: False for k in ALL})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+    """Where a replay's final base decides otherwise than the record's order."""
+
+    def test_on_masks_built_by_hand(self):
+        # Four points. The record leaves point 1 in a conflict of X and Y; the
+        # replay gives it to X, whose queue is not its truth.
+        base = {"und": {"A": 0b0011, "B": 0b0110}, "action": {"A": "X", "B": "Y"}}
+        got = {"und": {"A": 0b0011, "B": 0b0100}, "action": {"A": "X", "B": "Y"}}
+        truth = {"X": 0b0001, "Y": 0b0110, SEC: 0b1000}
+        self.assertEqual(C.where(base, got, truth), {
+            "gained": 0, "lost": 0, "gained_security": 0, "lost_security": 0,
+            "wrong_to_wrong": 1, "conflicts_resolved": 1, "resolved_wrongly": 1,
+            "resolved_wrongly_by_queue": {"X:Y": 1}, "decided_to_conflict": 0})
+        self.assertEqual(C.where(got, base, truth)["decided_to_conflict"], 1)
+
+    def test_on_the_run(self):
+        run = read()
+        got = run["replays"][C.DOORS]["added_after_the_first_run"]
+        self.assertEqual(got["gained"] - got["lost"], run["replays"][C.DOORS]["kept"]["points"])
+        self.assertGreater(got["gained_security"], 0)
+        self.assertEqual(sum(got["resolved_wrongly_by_queue"].values()), got["resolved_wrongly"])
+        self.assertLessEqual(got["resolved_wrongly"], got["conflicts_resolved"])
+
+    def test_the_record_against_itself(self):
+        base = C.replay(record(), SPACE, TRUTH)
+        got = C.where(base, base, TRUTH)
+        self.assertEqual(got["resolved_wrongly_by_queue"], {})
+        self.assertEqual({k: v for k, v in got.items() if k != "resolved_wrongly_by_queue"},
+                         {k: 0 for k in got if k != "resolved_wrongly_by_queue"})
+
+    def test_it_moves_no_gate(self):
+        self.assertEqual([g["gate"] for g in read()["gates"]], [1, 2, 3, 4, 5])
 
 
 class TestTheWriter(unittest.TestCase):
