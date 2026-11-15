@@ -16,6 +16,9 @@ Also pinned:
 - the five gates on that run, and each failing on its own;
 - the expectation's clauses at their edges and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run, on rows built by hand and on the same run: how many
+security rules each list shows before the gateway, and the climb rates by that
+count and by the slot crossed with the precedent.
 """
 
 from __future__ import annotations
@@ -274,6 +277,37 @@ class TestTheExpectation(unittest.TestCase):
 
     def test_a_clause_over_nothing_fails(self):
         self.assertEqual(self.clauses({}), {k: False for k in ("B1", "B2", "B3", "B4")})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+    """How many security rules come before the gateway, and the slot with the
+    precedent."""
+
+    def test_the_security_rules_before_the_gateway(self):
+        rec = record()
+        for r in Q.rows_of(rec, doors_run()):
+            listed = next(e["listed"] for e in rec["escalations"] if e["idx"] == r["born_at"])
+            self.assertEqual(r["security_before"], int(listed.index("U") < listed.index("G")))
+
+    def test_the_rates(self):
+        rows = [{**row(CLIMB, before=True), "security_before": 0},
+                {**row(CEDE, before=False, ceded=["A"]), "security_before": 1},
+                {**row(CEDE, before=False), "security_before": 5},
+                {**row(CLIMB), "security_before": 0}]
+        got = Q.added(rows)
+        self.assertEqual({k: (v["climbs"], v["of"]) for k, v in got["security_before"].items()},
+                         {"0": (2, 2), "1": (0, 1), "4+": (0, 1)})
+        self.assertEqual({k: (v["climbs"], v["of"]) for k, v in got["slot_by_precedent"].items()},
+                         {"after_a_security_rule/none_ceding": (0, 1),
+                          "after_a_security_rule/some_ceding": (0, 1),
+                          "before_every_security/none_ceding": (1, 1)})
+
+    def test_on_the_run(self):
+        run = read()
+        self.assertIn("security_before", run["added_after_the_first_run"])
+        self.assertEqual(sum(v["of"] for v in
+                             run["added_after_the_first_run"]["security_before"].values()), 4)
+        self.assertEqual([g["gate"] for g in run["gates"]], [1, 2, 3, 4])
 
 
 class TestTheWriter(unittest.TestCase):

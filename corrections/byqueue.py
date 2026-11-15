@@ -131,6 +131,21 @@ alone, and on a few listings.
 precedent, reasoning tokens or draft group.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: HOW MANY SECURITY RULES COME FIRST, AND THE SLOT
+WITH THE PRECEDENT
+--------------------------------------------------------------------------
+The first run found B2 failing: in L r2 and L r3 the listings whose gateway
+stands before every security rule climbed far more often than the rest. And B3
+held, so the precedent leaned the same way. Read in a scratch script, the two
+added to each other. So this part reads:
+- **for each listing, how many security rules its list shows before the
+  gateway**, and each run's climb rate by that count;
+- **each run's climb rate by the slot crossed with the precedent.**
+It was tried on the records in a scratch script before it was written here. It
+was written after the four clauses above had been read: B1, B3 and B4 hold, and
+B2 fails. It carries no expectation and moves no clause, and it adds no gate.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Asked for by Sergi on 2026-11-15, after `corrections/carry.py`.
@@ -197,6 +212,12 @@ PROVENANCE = (
     "written; the expectation was committed before the reading ran on L r2 and L r3. Not a "
     "signed row; no verdict moves.")
 
+ADDED = (
+    "Added after the first run, after its four clauses were read: each listing's count of the "
+    "security rules its list shows before the gateway, and each run's climb rate by that count "
+    "and by the slot crossed with the precedent. Tried in a scratch script first. No "
+    "expectation; no clause moves.")
+
 share, frac = fg.share, fg.frac
 
 
@@ -251,6 +272,7 @@ def rows_of(record: dict[str, Any], doors_run: dict[str, Any]) -> list[dict[str,
             "first_half": slot * 2 < len(listed),
             "security_listed": len(secs),
             "before_every_security": (all(slot < i for i in secs) if secs else None),
+            "security_before": sum(1 for i in secs if i < slot),
             "ceded_shown": ceded, "climbed_shown": climbed,
             "reasoning_tokens": toks,
             "per_rule": (F(toks, len(listed)) if toks is not None else None)})
@@ -322,6 +344,20 @@ def keyword_placements(record: dict[str, Any], space: Space) -> dict[str, dict[s
     return {q: dict(sorted(c.items())) for q, c in sorted(out.items())}
 
 
+def added(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Added after the first run: the climb rate by how many security rules the
+    list shows before the gateway, and by the slot crossed with the precedent."""
+    def many(k: int) -> str:
+        return "0" if k == 0 else "1" if k == 1 else "2-3" if k <= 3 else "4+"
+
+    slot = [r for r in rows if r["before_every_security"] is not None]
+    return {"security_before": by(rows, lambda r: many(r["security_before"])),
+            "slot_by_precedent": by(slot, lambda r: (
+                ("before_every_security" if r["before_every_security"]
+                 else "after_a_security_rule") + "/"
+                + ("some_ceding" if r["ceded_shown"] else "none_ceding")))}
+
+
 def development(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """The counts the docstring gives of a development run."""
     before = [r for r in rows if r["before_every_security"] is True]
@@ -390,6 +426,7 @@ def read_run(record: dict[str, Any], doors_run: dict[str, Any], space: Space,
         "cause": by(rows, lambda r: r["cause"]),
         "median_per_rule": medians(rows),
         "keyword_placements": keyword_placements(record, space)},
+        "added_after_the_first_run": added(rows),
         "rows": [{**r, "ceded_shown": len(r["ceded_shown"]),
                   "climbed_shown": len(r["climbed_shown"]),
                   "per_rule": frac(r["per_rule"]) if r["per_rule"] is not None else None}
@@ -513,6 +550,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"doors": str(dr.record_path()),
                    "doors_from": doors_record["_env"].get("git_commit")},
         "surface": "doors.json's listings of L r1, L r2, L r3 and N r3, each with what its round "
