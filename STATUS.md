@@ -3433,6 +3433,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        and 0.0080 with the truth.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Shape or order*.
+     **[NOTE 2026-11-16, after the thirteenth] And the order is mostly a
+     ranking of the queues, read POST-RUN.** Each base was read in the order of
+     every ranking of the eight queues that rung 2's engine can install.
+     - **In L r1 and L r2 one ranking orders the loop's rules above at once**:
+       0.7796 and 0.7091 of the space, against 0.7584 and 0.6252. It puts
+       `SECURITY_INCIDENT` first and takes the keyword half as the order with
+       the truth does. In L r3 no ranking reaches at once, as no order does.
+     - **Stage C's ranking**, fitted on the hidden policy's labelled pairs,
+       comes within 0.002 of the best.
+     - **What the loop had does not find it.** The rankings the run's labels
+       choose decide 0.4470, 0.5285 and 0.5302 at their median. The model's
+       stated rankings decide 0.6806, 0.5794 and 0.5169: they put
+       `SECURITY_INCIDENT` first and give `ACCOUNT_MANAGER` away.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *A ranking of the queues as the order*.
 
    All three are read above.
 

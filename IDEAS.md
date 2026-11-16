@@ -772,8 +772,29 @@ learner of the labels alone matched the loop. What that leaves:
   their own best. Handed the loop's final base and its labels, and asked for the
   rules in order, would it find what the search found with the truth? Asks
   only, cents.
+  **[NOTE 2026-11-16] Much of that order is one ranking of the queues.** In
+  L r1 and L r2 the loop's rules, ordered by their best ranking, beat at once,
+  and the model's stated rankings do not find it: they give
+  `ACCOUNT_MANAGER` away. A plan that asks for the rules' order should set it
+  beside the ranking. `FINDINGS_CORRECTIONS.md`, *A ranking of the queues as
+  the order*.
 - **What the labels bought in L r2.** Searched on its labels, L r2's base gained
   far more of the space than L r1's or L r3's. Free on the records.
+- **A loop that orders its rules by a ranking.** In L r1 and L r2 the loop's
+  final rules, ordered by one ranking of the queues after the run, beat
+  compiling at once. A loop whose engine installed each birth by a fixed
+  ranking would decide other cases on the way and write other rules. Calls.
+- **Where a deployment would get the ranking.** Stage C's comes within 0.002
+  of the best, and it was fitted on the answer key of the hidden policy's 170
+  labelled pairs. How few of those pairs fit one as good is free on the
+  pairwise thread's records. Whether the model gives it when shown the order
+  at work is `PLAN_RANKING.md`'s open item: asks, cents.
+- **What the best ranking leaves outside the keyword half.** Which pairs of
+  queues it orders against the order with the truth, and on how many points.
+  Free on the records.
+- **The tie-break inside a queue.** Where containment pulls a rule into
+  another queue's place, its birth sets its place among that queue's rules.
+  Free on the records.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,
@@ -1910,6 +1931,10 @@ leaves:
   asks §2.1's pairwise question over the 28 queue pairs, with no rule shown, and
   compiles the answers. Calls, and a plan of their own. A plan that asks a model
   for an order should show it the order at work.
+  **[NOTE 2026-11-16] On the corrections loop's rules it matters.** Ordering
+  L's final bases, the stated rankings decide less than compiling at once in
+  every run, and Stage C's ranking more in two runs of three.
+  `FINDINGS_CORRECTIONS.md`, *A ranking of the queues as the order*.
 - **The revealed ranking as the rule that reads no truth.** Copeland over the
   model's own pairwise answers about the learned base clears `P-d`'s threshold
   on the signed cell, which the ranking it states does not. Stage A scored it as
