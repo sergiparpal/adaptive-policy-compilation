@@ -44,8 +44,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   merged, so it was closed by hand.
 - **The POST-RUN reading of the ranking the loop declared, as it went** reached
   it in #275, merged on 2026-11-16.
-- **The POST-RUN reading of the ranking and a guard on containment** reaches it
-  in #277.
+- **The POST-RUN reading of the ranking and a guard on containment** reached it
+  in #277, merged on 2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -274,12 +274,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the seventeenth] And an eighteenth.**
 > [`guard.json`](guard.json) is the POST-RUN reading of the ranking as the loop
 > went, with a guard on containment.
-> - **It was written from `563e125`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `563e125`**, on the branch of #277, which is `4be6503`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `e2894cf3b18b0191`**, because `corrections/guard.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `4be6503`, and
+>   still at the merge of #277. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -3859,13 +3860,18 @@ keyword's region to `T2_TECHNICAL`, and a rule of that queue written for it,
 nested in a security rule, is set aside with the rest.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.guard`, on 2026-11-16
-in local time, from `563e125` with its code clean, on this reading's branch.
-- **The commits.** `563e125` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `91886d8`.
+in local time, from `563e125` with its code clean, on the branch of #277, which
+is `4be6503` on `main`.
+- **The commits.** `4be6503` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `f98bd57`.
+- **On #277's branch the two commits were `563e125` and `91886d8`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #277 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `e2894cf3b18b0191`, is the one `563e125` computes.
+  digest, `e2894cf3b18b0191`, is the one `main` computes at `4be6503`, and still
+  at the merge.
 - **The record is [`guard.json`](guard.json).** Its 12 gates passed:
   - each L run's final base is Stage C's;
   - without the guard, the replay decides at every birth what `online.json`
