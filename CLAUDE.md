@@ -1393,6 +1393,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.online                        # POST-RUN: the ranking the loop declared, as it went
     PYTHONHASHSEED=0 python3 -m corrections.guard                         # POST-RUN: the ranking as it went, and a guard on containment
     PYTHONHASHSEED=0 python3 -m corrections.billing                       # POST-RUN: why the declarations put BILLING_SPECIALIST low
+    PYTHONHASHSEED=0 python3 -m corrections.gap                           # POST-RUN: what the rest of what the declared ranking lacks is
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1600,6 +1601,15 @@ ranking gives one direction to every pair of rules of two queues, and the count
 gives it to the side with more votes, not to where the pair decides. **A ranking
 gathered from votes should say in §0 how it weighs a vote about points its pair
 does not decide.**
+
+**Read POST-RUN, one pair's order is most of what the declared ranking lacks,
+and its votes were wrong.** Turning `T3_ENGINEERING` and `ACCOUNT_MANAGER` alone
+gains most of it, and the best ranking's other moves add to it exactly. The
+pair decides in the churn layer, which the policy puts before product routing.
+Most votes for `T3_ENGINEERING` named the worse rule, and they outnumbered the
+right ones. **A count that reads no truth cannot tell a wrong vote from a right
+one**: a plan that ranks by declarations should say in §0 what it does where a
+pair's votes are wrong.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

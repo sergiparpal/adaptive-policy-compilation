@@ -127,7 +127,9 @@ the item it answers is struck in place. **The readings that read the answers'
 declarations through `corrections/fall.py`'s `declared` were audited POST-RUN
 on November 16, 2026**, and the item the audit answers is struck in place.
 **Why the declarations put `BILLING_SPECIALIST` low was read POST-RUN the same
-day**, and the item it answers is struck in place.
+day**, and the item it answers is struck in place. **What the rest of what the
+declared ranking lacks is was read POST-RUN the same day**, and the item it
+answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -813,6 +815,14 @@ learner of the labels alone matched the loop. What that leaves:
   were right about points the pair does not decide. A plan that ranks by the
   declarations should say in §0 how it counts them. `FINDINGS_CORRECTIONS.md`,
   *Why the declarations put `BILLING_SPECIALIST` low*.
+  **[NOTE 2026-11-16] One pair is most of what that ranking misses, read
+  POST-RUN.** With `ACCOUNT_MANAGER` turned above `T3_ENGINEERING` alone, the
+  declared ranking beats at once in L r1 and L r2. The pair's votes for
+  `T3_ENGINEERING` were mostly wrong and outnumbered the right ones, and a
+  count that reads no truth cannot tell them apart. A plan that ranks by the
+  declarations should say in §0 what it does where a pair's votes are wrong.
+  `FINDINGS_CORRECTIONS.md`, *What the rest of what the declared ranking lacks
+  is*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
@@ -869,10 +879,23 @@ learner of the labels alone matched the loop. What that leaves:
   - **Its place is a minority of what the declared ranking lacks.** At its
     best place billing gets the best ranking's recall, and the ranking still
     lacks most of what it lacked.
-- **What the rest of what the declared ranking lacks is.** At billing's best
-  place the declared ranking still lacks most of what it lacked. Every
-  declared ranking puts `T3_ENGINEERING` above `ACCOUNT_MANAGER`, and every
-  best ranking puts it below. Free on the records.
+- ~~**What the rest of what the declared ranking lacks is.**~~ **Read POST-RUN
+  on 2026-11-16** (`FINDINGS_CORRECTIONS.md`, *What the rest of what the
+  declared ranking lacks is*), by `corrections/gap.py`.
+  - **That pair carries most of it.** Turned alone, it gains most of what the
+    declared ranking lacks in every run, and the best ranking's other moves
+    add to it exactly.
+  - **It decides in the churn layer**, which the policy puts before product
+    routing.
+  - **Its votes were wrong pair by pair.** Most strict votes for
+    `T3_ENGINEERING` named the worse rule, and every strict one for
+    `ACCOUNT_MANAGER` the better; the first outnumbered the second.
+- **Why `T3_ENGINEERING`'s newborns put themselves above `ACCOUNT_MANAGER`'s
+  churn.** They cast most of the votes for that queue, and most of its strict
+  votes name the worse rule. Their reasoning is not read. Free on the records.
+- **Which surface a ranking should serve.** In L r2 the best ranking of the
+  space decides fewer arrivals than the declared one. Which pairs the two
+  surfaces order differently is not read. Free on the records.
 - **Why the answers name the worse rule against `SELF_SERVICE_DEFLECT`.** In
   L r1 and L r3 most strict votes that put that queue above billing name the
   worse rule, and in L r3 most of those that put `ACCOUNT_MANAGER` above it.
