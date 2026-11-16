@@ -3249,8 +3249,12 @@ The share of the space, the first three columns from `shape.json`:
     The ranking is `SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `ACCOUNT_MANAGER`,
     `T2_TECHNICAL`, `T3_ENGINEERING`, `BILLING_SPECIALIST`,
     `SELF_SERVICE_DEFLECT`, `T1_GENERAL`, the first of 12 that tie.
-  - **They fall short where the drafter read the policy's contradictions**:
+  - **They fall short at two of the three contradictions the drafter read**:
     `BILLING_SPECIALIST`'s recall is 0.7135, and `T3_ENGINEERING`'s 0.8411.
+  - **The third costs nothing.** `T2_TECHNICAL` and `SELF_SERVICE_DEFLECT` are
+    decided whole. Read again after the run, earlier rules of the policy decide
+    every point their three rules share, so no point sees that contradiction.
+    The docstring keeps it, as it was written before the reading ran.
   - **The rankings on record**: Stage C's decides 0.9321 of it, the stated
     rankings 0.8867 at their median, and the revealed one 0.7836.
 
