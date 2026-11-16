@@ -1,0 +1,844 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-16T12:18:48Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "88c8d91158b962c2ca682aa52c490824d5bf4ed9",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "0c21da60ca73814e"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-16, after corrections/declared.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "added_after_the_first_run": "Added after the first run, after its six clauses were read: a third pass, past the pins, on the other side's copies with each reading's DEVELOPMENT compared, recorded and let through; and the gates a refusal names. Tried in a scratch script first. No expectation; no clause moves.",
+  "source": {
+    "runs": {
+      "n_r1": "results_corrections/loop_n_r1.json",
+      "n_r2": "results_corrections/loop_n_r2.json",
+      "n_r3": "results_corrections/loop_n_r3.json",
+      "l_r1": "results_corrections/loop_l_r1.json",
+      "l_r2": "results_corrections/loop_l_r2.json",
+      "l_r3": "results_corrections/loop_l_r3.json"
+    },
+    "readings": {
+      "fall": "results_corrections/fall.json",
+      "paths": "results_corrections/paths.json",
+      "gateway": "results_corrections/gateway.json",
+      "doors": "results_corrections/doors.json",
+      "byqueue": "results_corrections/byqueue.json",
+      "above": "results_corrections/above.json",
+      "conditions": "results_corrections/conditions.json",
+      "carry": "results_corrections/carry.json",
+      "oncall": "results_corrections/oncall.json"
+    }
+  },
+  "surface": "the nine readings that read the answers' declarations through corrections/fall.py's declared, or read the records of those that do, each run twice: as committed, and keeping the side declared drops for a rule an answer cites on both sides; and, added after the first run, a third time on the second's copies, past the pins of the development counts",
+  "constants": {
+    "order": [
+      "fall",
+      "paths",
+      "gateway",
+      "doors",
+      "byqueue",
+      "above",
+      "conditions",
+      "carry",
+      "oncall"
+    ],
+    "direct": [
+      "fall",
+      "gateway",
+      "doors",
+      "byqueue",
+      "above",
+      "conditions"
+    ],
+    "kept_leaves": 400,
+    "pinned": [
+      "doors",
+      "byqueue",
+      "above",
+      "conditions"
+    ]
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "what": "the citations are the records'",
+      "passes": true,
+      "by_run": {
+        "n_r1": true,
+        "n_r2": true,
+        "n_r3": true,
+        "l_r1": true,
+        "l_r2": true,
+        "l_r3": true
+      }
+    },
+    {
+      "gate": 2,
+      "what": "the copies change only the citations on both sides",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "what": "every reading reproduces its record",
+      "passes": true,
+      "by_reading": {
+        "fall": true,
+        "paths": true,
+        "gateway": true,
+        "doors": true,
+        "byqueue": true,
+        "above": true,
+        "conditions": true,
+        "carry": true,
+        "oncall": true
+      }
+    }
+  ],
+  "both_sides": [
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0002",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0037",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0033",
+      "ref_queue": "SELF_SERVICE_DEFLECT",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0041",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0102",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "n_r1",
+      "rule": "R0263",
+      "born_at": 976,
+      "queue": "T1_GENERAL",
+      "ref": "R0124",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "l_r1",
+      "rule": "R0159",
+      "born_at": 891,
+      "queue": "T1_GENERAL",
+      "ref": "R0021",
+      "ref_queue": "SELF_SERVICE_DEFLECT",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    },
+    {
+      "run": "l_r2",
+      "rule": "R0198",
+      "born_at": 1303,
+      "queue": "SELF_SERVICE_DEFLECT",
+      "ref": "R0176",
+      "ref_queue": "T2_TECHNICAL",
+      "sides": [
+        {
+          "side": "beats",
+          "verdict": "ok"
+        },
+        {
+          "side": "loses_to",
+          "verdict": "cierra_ciclo"
+        }
+      ],
+      "declared_keeps": "loses_to"
+    }
+  ],
+  "readings": {
+    "fall": {
+      "seconds": {
+        "as_committed": 15.1,
+        "other_side": 16.6
+      },
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "paths": {
+      "seconds": {
+        "as_committed": 38.1,
+        "other_side": 40.9
+      },
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "gateway": {
+      "seconds": {
+        "as_committed": 9.3,
+        "other_side": 10.0
+      },
+      "refused": null,
+      "moved": 12,
+      "leaves": [
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 3460,
+          "other_side": 3461
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 756,
+          "other_side": 755
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 2700,
+          "other_side": 2699
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 4553,
+          "other_side": 4554
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 2772,
+          "other_side": 2773
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 976,
+          "other_side": 975
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 2457,
+          "other_side": 2456
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 4029,
+          "other_side": 4030
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 3585,
+          "other_side": 3591
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 766,
+          "other_side": 760
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 3893,
+          "other_side": 3887
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 3821,
+          "other_side": 3827
+        }
+      ],
+      "clauses": []
+    },
+    "doors": {
+      "seconds": {
+        "as_committed": 0.6,
+        "other_side": 0.4
+      },
+      "refused": "REFUSED: a gate failed; nothing was written.; gate 5 run l_r1: FAIL  the development set gives DEVELOPMENT's counts",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    },
+    "byqueue": {
+      "seconds": {
+        "as_committed": 0.3,
+        "other_side": 0.2
+      },
+      "refused": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/doors.json'",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    },
+    "above": {
+      "seconds": {
+        "as_committed": 0.7,
+        "other_side": 0.6
+      },
+      "refused": "REFUSED: a gate failed; nothing was written.; gate 5 run l_r1: FAIL  the development set gives DEVELOPMENT's counts",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    },
+    "conditions": {
+      "seconds": {
+        "as_committed": 3.1,
+        "other_side": 0.2
+      },
+      "refused": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/above.json'",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    },
+    "carry": {
+      "seconds": {
+        "as_committed": 11.2,
+        "other_side": 0.2
+      },
+      "refused": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/doors.json'",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    },
+    "oncall": {
+      "seconds": {
+        "as_committed": 73.8,
+        "other_side": 0.2
+      },
+      "refused": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/carry.json'",
+      "moved": null,
+      "leaves": [],
+      "clauses": []
+    }
+  },
+  "past_the_pins": {
+    "fall": {
+      "seconds": 14.4,
+      "pin": null,
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "paths": {
+      "seconds": 45.4,
+      "pin": null,
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "gateway": {
+      "seconds": 10.2,
+      "pin": null,
+      "refused": null,
+      "moved": 12,
+      "leaves": [
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 3460,
+          "other_side": 3461
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 756,
+          "other_side": 755
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 2700,
+          "other_side": 2699
+        },
+        {
+          "path": "runs.l_r1.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 4553,
+          "other_side": 4554
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 2772,
+          "other_side": 2773
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 976,
+          "other_side": 975
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 2457,
+          "other_side": 2456
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 4029,
+          "other_side": 4030
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.by_verdict.beats:ok",
+          "as_committed": 3585,
+          "other_side": 3591
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.by_verdict.loses_to:cierra_ciclo",
+          "as_committed": 766,
+          "other_side": 760
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.losses",
+          "as_committed": 3893,
+          "other_side": 3887
+        },
+        {
+          "path": "runs.n_r1.added_after_the_first_run.answers.every_round.wins",
+          "as_committed": 3821,
+          "other_side": 3827
+        }
+      ],
+      "clauses": []
+    },
+    "doors": {
+      "seconds": 0.5,
+      "pin": {
+        "compared": 1,
+        "differed": true
+      },
+      "refused": null,
+      "moved": 11,
+      "leaves": [
+        {
+          "path": "runs.l_r1.development.outside_below",
+          "as_committed": 1890,
+          "other_side": 1889
+        },
+        {
+          "path": "runs.l_r1.summary.placements.outside:cede",
+          "as_committed": 1890,
+          "other_side": 1889
+        },
+        {
+          "path": "runs.l_r1.summary.placements.outside:climb",
+          "as_committed": 4533,
+          "other_side": 4534
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.queue_toward.cede.above_every",
+          "as_committed": 37,
+          "other_side": 39
+        },
+        {
+          "path": "runs.l_r2.added_after_the_first_run.queue_toward.cede.mixed",
+          "as_committed": 14,
+          "other_side": 12
+        },
+        {
+          "path": "runs.l_r2.listings[47].added_after_the_first_run.queue_toward",
+          "as_committed": "mixed",
+          "other_side": "above_every"
+        },
+        {
+          "path": "runs.l_r2.listings[48].added_after_the_first_run.queue_toward",
+          "as_committed": "mixed",
+          "other_side": "above_every"
+        },
+        {
+          "path": "runs.l_r2.summary.placements.outside:cede",
+          "as_committed": 1419,
+          "other_side": 1418
+        },
+        {
+          "path": "runs.l_r2.summary.placements.outside:climb",
+          "as_committed": 3907,
+          "other_side": 3908
+        },
+        {
+          "path": "runs.n_r1.summary.placements.outside:cede",
+          "as_committed": 2503,
+          "other_side": 2497
+        },
+        {
+          "path": "runs.n_r1.summary.placements.outside:climb",
+          "as_committed": 3773,
+          "other_side": 3779
+        }
+      ],
+      "clauses": []
+    },
+    "byqueue": {
+      "seconds": 0.4,
+      "pin": {
+        "l_r1": {
+          "compared": 1,
+          "differed": false
+        },
+        "n_r3": {
+          "compared": 1,
+          "differed": false
+        }
+      },
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "above": {
+      "seconds": 0.8,
+      "pin": {
+        "l_r1": {
+          "compared": 1,
+          "differed": true
+        },
+        "n_r3": {
+          "compared": 1,
+          "differed": false
+        }
+      },
+      "refused": null,
+      "moved": 19,
+      "leaves": [
+        {
+          "path": "runs.l_r1.development.elsewhere_at_errors[0]",
+          "as_committed": 1870,
+          "other_side": 1871
+        },
+        {
+          "path": "runs.l_r1.rounds[144].placed.elsewhere.cede",
+          "as_committed": 5,
+          "other_side": 4
+        },
+        {
+          "path": "runs.l_r1.rounds[144].placed.elsewhere.climb",
+          "as_committed": 19,
+          "other_side": 20
+        },
+        {
+          "path": "runs.l_r1.summary.placements_by_cause.ERROR.elsewhere:cede",
+          "as_committed": 1434,
+          "other_side": 1433
+        },
+        {
+          "path": "runs.l_r1.summary.placements_by_cause.ERROR.elsewhere:climb",
+          "as_committed": 1870,
+          "other_side": 1871
+        },
+        {
+          "path": "runs.l_r2.rounds[189].placed.elsewhere.cede",
+          "as_committed": 14,
+          "other_side": 13
+        },
+        {
+          "path": "runs.l_r2.rounds[189].placed.elsewhere.climb",
+          "as_committed": 91,
+          "other_side": 92
+        },
+        {
+          "path": "runs.l_r2.summary.placements_by_cause.CONFLICT.elsewhere:cede",
+          "as_committed": 891,
+          "other_side": 890
+        },
+        {
+          "path": "runs.l_r2.summary.placements_by_cause.CONFLICT.elsewhere:climb",
+          "as_committed": 1483,
+          "other_side": 1484
+        },
+        {
+          "path": "runs.n_r1.rounds[255].list_toward",
+          "as_committed": "below_every",
+          "other_side": "mixed"
+        },
+        {
+          "path": "runs.n_r1.rounds[255].placed.ticket.cede",
+          "as_committed": 6,
+          "other_side": null
+        },
+        {
+          "path": "runs.n_r1.rounds[255].placed.ticket.climb",
+          "as_committed": null,
+          "other_side": 6
+        },
+        {
+          "path": "runs.n_r1.rounds[255].ticket_toward",
+          "as_committed": "below_every",
+          "other_side": "above_every"
+        },
+        {
+          "path": "runs.n_r1.summary.by_group.neither_listed.below_every",
+          "as_committed": 34,
+          "other_side": 33
+        },
+        {
+          "path": "runs.n_r1.summary.by_group.neither_listed.mixed",
+          "as_committed": 22,
+          "other_side": 23
+        },
+        {
+          "path": "runs.n_r1.summary.list_toward.below_every",
+          "as_committed": 109,
+          "other_side": 108
+        },
+        {
+          "path": "runs.n_r1.summary.list_toward.mixed",
+          "as_committed": 156,
+          "other_side": 157
+        },
+        {
+          "path": "runs.n_r1.summary.placements_by_cause.ERROR.ticket:cede",
+          "as_committed": 68,
+          "other_side": 62
+        },
+        {
+          "path": "runs.n_r1.summary.placements_by_cause.ERROR.ticket:climb",
+          "as_committed": 536,
+          "other_side": 542
+        }
+      ],
+      "clauses": []
+    },
+    "conditions": {
+      "seconds": 3.1,
+      "pin": {
+        "l_r1": {
+          "compared": 1,
+          "differed": false
+        },
+        "n_r3": {
+          "compared": 1,
+          "differed": false
+        }
+      },
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "carry": {
+      "seconds": 11.5,
+      "pin": null,
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    },
+    "oncall": {
+      "seconds": 72.6,
+      "pin": null,
+      "refused": null,
+      "moved": 0,
+      "leaves": [],
+      "clauses": []
+    }
+  },
+  "expectation": [
+    {
+      "clause": "Z1",
+      "what": "the rules an answer cites on both sides are R0021, cited by L r1's R0159, and R0176, cited by L r2's R0198",
+      "reading": [
+        [
+          "l_r1",
+          "R0159",
+          "R0021"
+        ],
+        [
+          "l_r2",
+          "R0198",
+          "R0176"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0002"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0033"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0037"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0041"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0102"
+        ],
+        [
+          "n_r1",
+          "R0263",
+          "R0124"
+        ]
+      ],
+      "holds": false
+    },
+    {
+      "clause": "Z2",
+      "what": "under the other side, gateway.json and above.json move",
+      "reading": {
+        "gateway": 12,
+        "above": null
+      },
+      "holds": false
+    },
+    {
+      "clause": "Z3",
+      "what": "fall.json does not move",
+      "reading": {
+        "fall": 0
+      },
+      "holds": true
+    },
+    {
+      "clause": "Z4",
+      "what": "paths, doors, byqueue, conditions, carry and oncall do not move",
+      "reading": {
+        "paths": 0,
+        "doors": null,
+        "byqueue": null,
+        "conditions": null,
+        "carry": null,
+        "oncall": null
+      },
+      "holds": false
+    },
+    {
+      "clause": "Z5",
+      "what": "no clause of the nine readings changes its verdict",
+      "reading": {
+        "fall": [],
+        "paths": [],
+        "gateway": [],
+        "doors": [],
+        "byqueue": [],
+        "above": [],
+        "conditions": [],
+        "carry": [],
+        "oncall": []
+      },
+      "holds": false
+    },
+    {
+      "clause": "Z6",
+      "what": "every reading writes under the other side",
+      "reading": {
+        "fall": null,
+        "paths": null,
+        "gateway": null,
+        "doors": "REFUSED: a gate failed; nothing was written.; gate 5 run l_r1: FAIL  the development set gives DEVELOPMENT's counts",
+        "byqueue": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/doors.json'",
+        "above": "REFUSED: a gate failed; nothing was written.; gate 5 run l_r1: FAIL  the development set gives DEVELOPMENT's counts",
+        "conditions": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/above.json'",
+        "carry": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/doors.json'",
+        "oncall": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-1000/tmpys3wmv_5/other_side/carry.json'"
+      },
+      "holds": false
+    }
+  ]
+}
