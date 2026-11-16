@@ -39,6 +39,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   the queues** reached it in #269, merged on 2026-11-16.
 - **The POST-RUN reading of whether the loop declared the ranking it lacks**
   reached it in #271, merged on 2026-11-16.
+- **The POST-RUN audit of the citations on both sides** reaches it in the pull
+  request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -239,6 +241,17 @@ corrected during Stage C.**
 >   `corrections/declared.py` was added after the readings above. `main`
 >   computes it at `6c5c03f`, and still at the merge of #271. Its `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the fifteenth] And a sixteenth.**
+> [`citations.json`](citations.json) is the POST-RUN audit of the citations on
+> both sides: what the readings that read declarations through `declared` move.
+> - **It was written from `88c8d91`**, on that audit's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `0c21da60ca73814e`**, because
+>   `corrections/citations.py` was added after the readings above. Its `_env`
+>   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
 >   Stage C ran did not change.
 
 **This record owns every figure in it.**
@@ -1452,6 +1465,12 @@ A round that listed both of L r2's gateways is counted once for each.
   238 of the 267 declared the newborn below the gateway, and 29 above it. 13 of
   those 29 were installed: the doors. Over every round, L's answers declared
   their newborn below 8,035 of the 19,921 rules they placed.
+  > **[ERRATUM 2026-11-16] 8,033, read on the other side.** In L r1 and L r2
+  > one answer each cited a rule both above, installed, and below, refused for
+  > the cycle the first side had closed. `corrections/fall.py`'s `declared`,
+  > through which this is counted, keeps the second. Kept on the first, L's
+  > answers declared their newborn below 8,033 of the 19,921 rules they
+  > placed: *The citations on both sides*, below. No verdict moves.
 - **L r1 has one door.** `R0062`, `customer_tier = business ∧
   prior_tickets_30d ≥ 20 → ACCOUNT_MANAGER`, was born at a conflict at the birth
   after `R0061`'s.
@@ -1641,6 +1660,14 @@ in local time, from `48900e0` on a clean tree, on the branch of #252, which is
 
 The placements that put the newborn below the rule placed, by the rule's kind.
 
+> **[ERRATUM 2026-11-16] 1,889 and 1,418, read on the other side.** In L r1 and
+> L r2 one answer each cited a rule outside the keyword both above, installed,
+> and below, refused for the cycle the first side had closed.
+> `corrections/fall.py`'s `declared`, through which this reading counts, keeps
+> the second. Kept on the first, L r1's rules outside the keyword placed below
+> are 1,889 of 6,423, and L r2's 1,418 of 5,326: *The citations on both sides*,
+> below. No verdict moves.
+
 - **The answers put their newborn below nearly every security rule** they
   placed, and below a quarter to two fifths of the rules outside the keyword's
   half.
@@ -1669,6 +1696,12 @@ The placements that put the newborn below the rule placed, by the rule's kind.
   the gateway's queue that is not a keyword rule, and 17 of N r3's 19. Of the
   165 held-out cedes, 67 did too, and still put the gateway above: they place it
   apart from its queue.
+  > **[ERRATUM 2026-11-16] 69, read on the other side.** L r2's `R0198` ceded
+  > to both of the run's gateways, and cited `R0176`, a rule of their queue,
+  > both above, installed, and below, refused. `declared` keeps the second.
+  > Kept on the first, both of its listings put the newborn above every such
+  > rule: 69 of the 165 cedes. *The citations on both sides*, below. No
+  > verdict moves.
 - **In L r1's reasoning**, the development set, the cedes call the gateway
   security, by its keyword: "Pierde porque security". The climbs call it a rule
   of `T2_TECHNICAL`: "R0061 is T2, so our rule should beat it".
@@ -2185,6 +2218,16 @@ newborn's queue and what their list held. A list with a rule of
 
 The placements that put the newborn above the listed rule, by whether the rule's
 region holds the round's ticket.
+
+> **[ERRATUM 2026-11-16] Three cells move, read on the other side.** One answer
+> in L r1, one in L r2 and one in N r1 cited rules both above, installed, and
+> below, refused for the cycle the first side had closed: one rule each in L,
+> six in N r1. `corrections/fall.py`'s `declared`, through which this reading
+> counts, keeps the second. Kept on the first, the development set's rest at
+> reported errors is 5,485 of 9,824. L r2's and L r3's rest at conflicts is
+> 2,297 of 3,996. N r1's and N r2's rules that hold the ticket at reported
+> errors are 1,095 of 1,204, which the line below gives as 1,089. *The
+> citations on both sides*, below. No verdict moves.
 
 - **At reported errors the answers put their newborn above nearly every listed
   rule that holds its ticket** (E3 holds): 813 of 833 in L r2 and L r3, and
@@ -3485,9 +3528,138 @@ left no pair with `SECURITY_INCIDENT` even.
    each cited a rule on both sides. `fall.py`, `conditions.py`, `gateway.py`,
    `above.py`, `byqueue.py` and `doors.py` read declarations through it.
    Whether a figure of theirs moves is not read. Free on the records.
+   **[NOTE 2026-11-16] Read POST-RUN, below: seven figures move, by one to six,
+   and no verdict.** *The citations on both sides*.
 3. **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
    votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
    `SELF_SERVICE_DEFLECT` go against it. Free on the records.
+
+## The citations on both sides — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** `corrections/fall.py`'s `declared` keeps one citation a rule, and in L
+r1 and L r2 one answer each cited a rule on both sides (*The ranking the loop
+declared*). Six readings read the answers' declarations through it, and three
+more read their records. This audit asks which of their figures move when the
+side `declared` drops is the one kept. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.citations`, on
+2026-11-16 in local time, from `88c8d91` with its code clean, on this audit's
+branch. It runs the nine readings in the order their records feed one another,
+each writing to a temporary directory, three times:
+- **as committed**, on the runs as they are;
+- **the other side**, on copies of the runs in which every answer that cites a
+  rule on both sides cites it only on the side `declared` drops, in the rule's
+  lists and in its placement call's answer;
+- **past the pins**, added after the first run: the same copies, with the
+  development counts that `doors.py`, `byqueue.py`, `above.py` and
+  `conditions.py` write in their code compared, recorded and let through.
+
+Each record is compared with the first pass's leaf by leaf, but for `_env` and
+`source`, and so is every clause's verdict.
+- **The commits.** `7dd08f7` carries the audit and its expectation, written
+  before it ran. `88c8d91` carries the third pass, added after the first run,
+  which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `6c3427d`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `0c21da60ca73814e`, is the one `88c8d91` computes.
+- **The record is [`citations.json`](citations.json).** Its 3 gates passed:
+  the citations match the runs' edge logs, the copies change only the citations
+  on both sides, and as committed the nine readings give their records.
+
+### 1. Eight citations on both sides, in three answers
+
+| run | answer | its queue | the rules it cites on both sides |
+|---|---|---|---|
+| L r1 | `R0159` | `T1_GENERAL` | `R0021`, of `SELF_SERVICE_DEFLECT` |
+| L r2 | `R0198` | `SELF_SERVICE_DEFLECT` | `R0176`, of `T2_TECHNICAL` |
+| N r1 | `R0263` | `T1_GENERAL` | five of `T2_TECHNICAL`, and `R0033`, of `SELF_SERVICE_DEFLECT` |
+
+- **Every one was declared above, installed, and below, refused** for the cycle
+  the first side had closed. The loop installs a newborn's wins first, and
+  `declared` keeps the refused side.
+- **None is in L r3, N r2 or N r3.**
+
+### 2. What moves
+
+On the second pass `doors.py` and `above.py` refused at their gate 5, which
+holds L r1's development counts, written in their code, to what they compute.
+Those counts moved, and the four readings after them could not run. Past the
+pins:
+
+| reading | leaves that move | where |
+|---|---|---|
+| `fall.py`, `paths.py` | 0 | |
+| `gateway.py` | 12 | every answer's sides, in L r1, L r2 and N r1 |
+| `doors.py` | 11 | the placements outside the keyword, in L r1, L r2 and N r1, and L r2's two listings of `R0198`'s round |
+| `byqueue.py`, `conditions.py`, `carry.py`, `oncall.py` | 0 | |
+| `above.py` | 19 | the placements by cause, in L r1, L r2 and N r1, and N r1's round of `R0263` |
+
+- **Every count moves by the citations on both sides it counts**: by one or
+  two in L r1 and L r2, where `R0198`'s round is listed twice, and by up to six
+  in N r1.
+- **No clause of the nine readings changes its verdict.**
+- **Seven figures this record cites move**, in three sections, and each now
+  carries a dated erratum:
+  - *Why so many rules sit above the gateway*: L's answers declared their
+    newborn below 8,033 of the 19,921 rules they placed, not 8,035;
+  - *Why the doors declared themselves above the gateway*: the rules outside
+    the keyword placed below are 1,889 of 6,423 in L r1 and 1,418 of 5,326 in
+    L r2, not 1,890 and 1,419. Of the 165 held-out cedes, 69 put their newborn
+    above every rule of the gateway's queue that is not a keyword rule, not 67;
+  - *Why some answers put their newborn above every rule of their list*:
+    5,485 of 9,824, 2,297 of 3,996 and 1,095 of 1,204, not 5,484, 2,296 and
+    1,089.
+- **Nothing `STATUS.md`, `IDEAS.md` or `CLAUDE.md` cites moves.**
+
+### The expectation
+
+Written in `corrections/citations.py`'s docstring before the audit ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| Z1, the rules an answer cites on both sides are R0021, cited by L r1's R0159, and R0176, cited by L r2's R0198 | eight, six of them cited by N r1's R0263 | fails |
+| Z2, under the other side, gateway.json and above.json move | `gateway.json` 12 leaves; `above.py` refused | fails |
+| Z3, fall.json does not move | 0 leaves | **holds** |
+| Z4, paths, doors, byqueue, conditions, carry and oncall do not move | `paths.json` 0 leaves; `doors.py` refused, and the four after it could not run | fails |
+| Z5, no clause of the nine readings changes its verdict | six readings refused or could not run | fails |
+| Z6, every reading writes under the other side | six did not | fails |
+
+**Z3 holds, and Z1, Z2, Z4, Z5 and Z6 fail.**
+- **Z1, trusted least, failed on N's runs**, which `corrections/declared.py`
+  never read.
+- **Z2, Z4, Z5 and Z6 failed on the second pass's refusals.** A pin of counts
+  refuses any change below it.
+- **Past the pins**, added after the first run and read by no clause,
+  `gateway.py` and `above.py` move, as Z2 said, and `doors.py` moves too,
+  against Z4. The drafter's account held that neither answer's round could list
+  a keyword rule. `R0198` does not exclude the keyword, and its round listed
+  both of L r2's gateways. No verdict changes, as Z5 said.
+
+### What it says
+
+- **The figures that move are counts of sides**, and each moves by its
+  citations on both sides. They lie in three readings, `gateway.py`, `doors.py`
+  and `above.py`, and no verdict moves.
+- **The rest of what the nine readings found stands.** That covers the
+  conflicts the loop left and the cycles that closed them, the rules above the
+  gateways and the doors, the codes, what the doors carry, and why L loses
+  `ONCALL_ESCALATION`.
+- **A pin of counts refuses any change below it.** The development counts that
+  four readings write in their code made two of them refuse, and stopped four
+  more. An audit that changes a record has to let such pins through to see
+  what moves, and say so.
+
+### What it does not settle
+
+1. **Which side the answers meant.** Each of the three declared its newborn
+   above and below the same rules, in one answer. The records keep both sides.
+   The audit reads each, and neither is the answer's alone.
+2. **Whether readings of other threads key citations by rule.** The loops of
+   `PLAN_REASONED_LOOP.md`, `PLAN_CHANNEL.md`, `PLAN_PLACEMENT.md` and
+   `PLAN_WHOLE.md` record their declarations the same way. Free on the records.
 
 ---
 
@@ -3528,3 +3700,5 @@ left no pair with `SECURITY_INCIDENT` even.
   is a ranking of the queues.
 - [`declared.json`](declared.json): POST-RUN, whether the loop declared the
   ranking it lacks.
+- [`citations.json`](citations.json): POST-RUN, the citations on both sides:
+  what the readings that kept one move.
