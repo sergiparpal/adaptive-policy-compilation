@@ -39,7 +39,9 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   the queues** reached it in #269, merged on 2026-11-16.
 - **The POST-RUN reading of whether the loop declared the ranking it lacks**
   reached it in #271, merged on 2026-11-16.
-- **The POST-RUN audit of the citations on both sides** reaches it in #273.
+- **The POST-RUN audit of the citations on both sides** reached it from #273, on
+  2026-11-16. The merge answered 502, and GitHub never marked the pull request
+  merged, so it was closed by hand.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -245,13 +247,14 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the fifteenth] And a sixteenth.**
 > [`citations.json`](citations.json) is the POST-RUN audit of the citations on
 > both sides: what the readings that read declarations through `declared` move.
-> - **It was written from `88c8d91`**, on that audit's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `88c8d91`**, on the branch of #273, which is `f7f1c44`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `0c21da60ca73814e`**, because
->   `corrections/citations.py` was added after the readings above. Its `_env`
->   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
->   Stage C ran did not change.
+>   `corrections/citations.py` was added after the readings above. `main`
+>   computes it at `f7f1c44`, and still at `0a28202`, the last of #273's
+>   commits. Its `_env` says `git_dirty`, for the same files, and `code_dirty`
+>   is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -3543,9 +3546,9 @@ more read their records. This audit asks which of their figures move when the
 side `declared` drops is the one kept. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.citations`, on
-2026-11-16 in local time, from `88c8d91` with its code clean, on this audit's
-branch. It runs the nine readings in the order their records feed one another,
-each writing to a temporary directory, three times:
+2026-11-16 in local time, from `88c8d91` with its code clean, on the branch of
+#273, which is `f7f1c44` on `main`. It runs the nine readings in the order their
+records feed one another, each writing to a temporary directory, three times:
 - **as committed**, on the runs as they are;
 - **the other side**, on copies of the runs in which every answer that cites a
   rule on both sides cites it only on the side `declared` drops, in the rule's
@@ -3556,13 +3559,18 @@ each writing to a temporary directory, three times:
 
 Each record is compared with the first pass's leaf by leaf, but for `_env` and
 `source`, and so is every clause's verdict.
-- **The commits.** `7dd08f7` carries the audit and its expectation, written
-  before it ran. `88c8d91` carries the third pass, added after the first run,
-  which moves no clause. The first run's record was not committed.
-- **The record was committed alone**, as `6c3427d`.
+- **The commits.** `7f89683` on `main` carries the audit and its expectation,
+  written before it ran. `f7f1c44` carries the third pass, added after the
+  first run, which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `78522ec`.
+- **On #273's branch the three commits were `7dd08f7`, `88c8d91` and
+  `6c3427d`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`. GitHub's API names no pull request behind the
+  `main` commits, since it never marked #273 merged.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `0c21da60ca73814e`, is the one `88c8d91` computes.
+  digest, `0c21da60ca73814e`, is the one `main` computes at `f7f1c44`, and
+  still at `0a28202`.
 - **The record is [`citations.json`](citations.json).** Its 3 gates passed:
   the citations match the runs' edge logs, the copies change only the citations
   on both sides, and as committed the nine readings give their records.
