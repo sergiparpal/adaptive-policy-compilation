@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 15, 2026. **Not a history** — that is the four
+What is known, as of November 16, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -3415,8 +3415,26 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      So the catalogue names no tier for the queue, and the labels seldom name
      the queue; the prose of level 2 names its tiers.
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What the at-once asks wrote for `ONCALL_ESCALATION`*.
+     **[NOTE 2026-11-16, after the twelfth] Over the space, read POST-RUN: the
+     order in L r1 and L r2, the rules in L r3.** Each base was read in the
+     orders rung 2's engine can install. Rung 3's declared optimizer, kept to
+     those orders, searched them, after it found the hidden policy's known
+     optimum.
+     - **In L r1 and L r2 the loop's own rules, ordered with the truth, beat at
+       once**: 0.8610 and 0.7837 of the space, against 0.7584 and 0.6252.
+     - **In L r3 no order of them reaches it.** Their bound is 0.7192, against
+       0.7725. Two rules of `T2_TECHNICAL` nested in the keyword's region, the
+       gateway born at case 19 among them, hold two thirds of
+       `SECURITY_INCIDENT`'s points by containment.
+     - **Neither completing the base by birth nor searching it on its labels
+       finds the order.** Completed, the bases decide 0.5983, 0.4637 and 0.5801.
+       Searched on their labels, they decide 0.6115, 0.5738 and 0.6127.
+     - **The answers are at or near their own best**: their median gains 0, 0
+       and 0.0080 with the truth.
 
-   The first is read above, and the last is free on the records.
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Shape or order*.
+
+   All three are read above.
 
 ---
 

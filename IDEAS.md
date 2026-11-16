@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 15, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 16, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -121,7 +121,9 @@ regime, a report that carries the true queue under level 1's catalogue, closed
 on November 14, 2026**: `PLAN_CORRECTIONS.md`, six signed rows, three held and
 three refuted, and one reported, written up in `results_corrections/`. **Why L
 loses `ONCALL_ESCALATION` was read POST-RUN on November 15, 2026**, and the item
-it answers is struck in place. This is a list of things not done,
+it answers is struck in place. **Shape or order, whether at once beats the loop
+by its rules or by their order, was read POST-RUN on November 16, 2026**, and
+the item it answers is struck in place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -727,12 +729,32 @@ learner of the labels alone matched the loop. What that leaves:
   The doors' edges are such climbs, and the base without them keeps most of what
   L lost. Whether a loop that refused them would keep its share is a protocol
   change. Calls.
+  **[NOTE 2026-11-16] In L r3 refusing climbs would not be enough.** There two
+  rules of `T2_TECHNICAL` nested in the keyword's region hold two thirds of
+  `SECURITY_INCIDENT`'s points by containment, which no edge changes. A loop
+  that kept the region would have to keep such a rule from being born there.
+  `FINDINGS_CORRECTIONS.md`, *Shape or order*.
 - **Which rules decide wrongly the conflicts the doorless replay resolves in
   L r2.** They are rules of `T1_GENERAL` and `T2_TECHNICAL`, on points of other
   queues. Free on the records.
-- **Shape or order.** The at-once answer is installed in its own list order, and
-  the loop's base is ordered by containment and declared edges. Installing each
-  in the other's order would separate the two. Free on the records.
+- ~~**Shape or order.**~~ **Read POST-RUN on 2026-11-16** (`FINDINGS_CORRECTIONS.md`,
+  *Shape or order*), by `corrections/shape.py`. Installing each base in the
+  other's order is not defined, since the two are different rules. So it read
+  each base in the best order rung 2's engine can install. Rung 3's declared
+  optimizer, kept to those orders, searched them, after it found the hidden
+  policy's known optimum.
+  - **In L r1 and L r2 the gap is order.** An order of the loop's own rules,
+    found with the truth, decides more of the space than at once, most of it
+    `SECURITY_INCIDENT`'s region.
+  - **In L r3 it is the rules.** No order of them reaches at once. Two rules of
+    `T2_TECHNICAL` nested in the keyword's region, the gateway born at case 19
+    among them, hold two thirds of `SECURITY_INCIDENT`'s points by containment.
+  - **Neither completing the base by birth nor searching it on its own labels
+    finds the order.** Both stay below at once in every run, and what the labels
+    buy lies mostly outside the keyword half.
+  - **The at-once answers are at or near their own best.**
+  So the levers left are an ordering the loop does not get from its labels, and
+  a rule of another queue kept out of the keyword's region. Both are calls.
   **[NOTE 2026-11-14] The loop's own order moves its base.** Its declarations,
   installed losses first, come close to the at-once answers in L r1 and L r2,
   and not in L r3. That does not separate shape from order: the at-once answer is
@@ -743,6 +765,15 @@ learner of the labels alone matched the loop. What that leaves:
   whose labels never name it, and the loop keeps more of it there. What decides
   it is what the labels carry, not the shape. `FINDINGS_CORRECTIONS.md`, *What
   the at-once asks wrote for `ONCALL_ESCALATION`*.
+- **How far below their ceiling the orders found are.** Each loop's best order
+  came from one start of 65, below the bound of its rules. `PLAN_BOUND.md`'s
+  certificate could tighten the bound. Free on the records.
+- **The model asked to order the loop's rules.** Its at-once answers are near
+  their own best. Handed the loop's final base and its labels, and asked for the
+  rules in order, would it find what the search found with the truth? Asks
+  only, cents.
+- **What the labels bought in L r2.** Searched on its labels, L r2's base gained
+  far more of the space than L r1's or L r3's. Free on the records.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,
@@ -752,6 +783,11 @@ learner of the labels alone matched the loop. What that leaves:
   labels, two runs of three never name it, and at once their answers write no
   rule of it. A plan for it should say in §0 what it does where the labels
   never name a queue.
+  **[NOTE 2026-11-16] In L r1 and L r2 its rules would not need re-inducing.**
+  An order of the loop's own rules, found with the truth, decides more of the
+  space than at once there: what lost was the order. In L r3 two rules nested in
+  the keyword's region would have to go. `FINDINGS_CORRECTIONS.md`, *Shape or
+  order*.
 - **The report or the label.** L's paragraph says both that the base erred and
   what the right queue is, and §2.2's third arm, which would separate them, was
   not run. Calls.
