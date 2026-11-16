@@ -1,0 +1,4283 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-16T16:54:56Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "9e1b3f70481488f049f9d408a587ba6e0b43898e",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "7503c8caefb3f598"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: proposed by the agent after corrections/guard.py, and asked for by Sergi on 2026-11-16. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "declared": "results_corrections/declared.json",
+    "declared_from": "62587b8a8742211efb07b8bb2f00b4749761e8cb",
+    "hierarchy": "results_corrections/hierarchy.json",
+    "hierarchy_from": "f5ff52915970d193dbd1ec06739a0bf58f30b63a",
+    "shape": "results_corrections/shape.json",
+    "runs": {
+      "l_r1": "results_corrections/loop_l_r1.json",
+      "l_r2": "results_corrections/loop_l_r2.json",
+      "l_r3": "results_corrections/loop_l_r3.json"
+    }
+  },
+  "surface": "the whole space, 134,400 points, and the corpus, 2,000 arrivals: each L run's placement declarations on BILLING_SPECIALIST's pairs read rule by rule, and its final base ordered by its declared ranking with that queue at each of its eight places, under corrections/hierarchy.py's pulled construction",
+  "constants": {
+    "construction": "pulled",
+    "read": [
+      "l_r1",
+      "l_r3"
+    ],
+    "layers": {
+      "above": "H01-H08",
+      "billing": "H09-H12",
+      "below": "H13-H29"
+    },
+    "best_place": "the most right points of the space; among ties the nearest to the declared place, then the higher"
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 6,
+      "what": "the truth is the policy's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 6,
+      "what": "the truth is the policy's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 6,
+      "what": "the truth is the policy's",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "votes": {
+        "against": {
+          "votes": 2368,
+          "by_answer": {
+            "the_other_queues": 1620,
+            "its_own": 748
+          },
+          "by_verdict": {
+            "installed": 2068,
+            "refused": 300
+          },
+          "answers": 128,
+          "largest_answer": {
+            "newborn": "R0242",
+            "votes": 54
+          },
+          "nested": 0,
+          "billing_rule_larger": 1464,
+          "shared_median": {
+            "fraction": "1680",
+            "value": 1680.0
+          },
+          "space": {
+            "votes": 2368,
+            "strict": 2321,
+            "named": 1739,
+            "tie": 5,
+            "neither": 42,
+            "share": {
+              "fraction": "1739/2321",
+              "value": 0.749246
+            }
+          },
+          "corpus": {
+            "votes": 2368,
+            "strict": 1669,
+            "named": 1101,
+            "tie": 11,
+            "neither": 688,
+            "share": {
+              "fraction": "1101/1669",
+              "value": 0.659676
+            }
+          },
+          "layers": {
+            "above": 6799255,
+            "billing": 855890,
+            "below": 0
+          }
+        },
+        "for": {
+          "votes": 896,
+          "by_answer": {
+            "the_other_queues": 414,
+            "its_own": 482
+          },
+          "by_verdict": {
+            "installed": 331,
+            "refused": 565
+          },
+          "answers": 85,
+          "largest_answer": {
+            "newborn": "R0277",
+            "votes": 55
+          },
+          "nested": 0,
+          "billing_rule_larger": 791,
+          "shared_median": {
+            "fraction": "840",
+            "value": 840.0
+          },
+          "space": {
+            "votes": 896,
+            "strict": 729,
+            "named": 564,
+            "tie": 34,
+            "neither": 133,
+            "share": {
+              "fraction": "188/243",
+              "value": 0.773663
+            }
+          },
+          "corpus": {
+            "votes": 896,
+            "strict": 753,
+            "named": 585,
+            "tie": 3,
+            "neither": 140,
+            "share": {
+              "fraction": "195/251",
+              "value": 0.776892
+            }
+          },
+          "layers": {
+            "above": 354285,
+            "billing": 618065,
+            "below": 0
+          }
+        },
+        "by_queue": {
+          "T1_GENERAL": {
+            "against": {
+              "votes": 108,
+              "by_answer": {
+                "the_other_queues": 107,
+                "its_own": 1
+              },
+              "by_verdict": {
+                "installed": 75,
+                "refused": 33
+              },
+              "answers": 3,
+              "largest_answer": {
+                "newborn": "R0242",
+                "votes": 54
+              },
+              "nested": 0,
+              "billing_rule_larger": 106,
+              "shared_median": {
+                "fraction": "480",
+                "value": 480.0
+              },
+              "space": {
+                "votes": 108,
+                "strict": 108,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 108,
+                "strict": 108,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 8760,
+                "billing": 55980,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 183,
+              "by_answer": {
+                "the_other_queues": 152,
+                "its_own": 31
+              },
+              "by_verdict": {
+                "installed": 100,
+                "refused": 83
+              },
+              "answers": 22,
+              "largest_answer": {
+                "newborn": "R0277",
+                "votes": 55
+              },
+              "nested": 0,
+              "billing_rule_larger": 160,
+              "shared_median": {
+                "fraction": "420",
+                "value": 420.0
+              },
+              "space": {
+                "votes": 183,
+                "strict": 98,
+                "named": 98,
+                "tie": 0,
+                "neither": 85,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 183,
+                "strict": 98,
+                "named": 98,
+                "tie": 0,
+                "neither": 85,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 11160,
+                "billing": 112710,
+                "below": 0
+              }
+            }
+          },
+          "T2_TECHNICAL": {
+            "against": {
+              "votes": 167,
+              "by_answer": {
+                "the_other_queues": 55,
+                "its_own": 112
+              },
+              "by_verdict": {
+                "installed": 166,
+                "refused": 1
+              },
+              "answers": 58,
+              "largest_answer": {
+                "newborn": "R0150",
+                "votes": 24
+              },
+              "nested": 0,
+              "billing_rule_larger": 143,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 167,
+                "strict": 158,
+                "named": 150,
+                "tie": 0,
+                "neither": 9,
+                "share": {
+                  "fraction": "75/79",
+                  "value": 0.949367
+                }
+              },
+              "corpus": {
+                "votes": 167,
+                "strict": 158,
+                "named": 150,
+                "tie": 0,
+                "neither": 9,
+                "share": {
+                  "fraction": "75/79",
+                  "value": 0.949367
+                }
+              },
+              "layers": {
+                "above": 290100,
+                "billing": 3840,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 166,
+              "by_answer": {
+                "the_other_queues": 122,
+                "its_own": 44
+              },
+              "by_verdict": {
+                "installed": 73,
+                "refused": 93
+              },
+              "answers": 37,
+              "largest_answer": {
+                "newborn": "R0240",
+                "votes": 46
+              },
+              "nested": 0,
+              "billing_rule_larger": 155,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 166,
+                "strict": 91,
+                "named": 41,
+                "tie": 27,
+                "neither": 48,
+                "share": {
+                  "fraction": "41/91",
+                  "value": 0.450549
+                }
+              },
+              "corpus": {
+                "votes": 166,
+                "strict": 118,
+                "named": 68,
+                "tie": 0,
+                "neither": 48,
+                "share": {
+                  "fraction": "34/59",
+                  "value": 0.576271
+                }
+              },
+              "layers": {
+                "above": 67240,
+                "billing": 83640,
+                "below": 0
+              }
+            }
+          },
+          "T3_ENGINEERING": {
+            "against": {
+              "votes": 6,
+              "by_answer": {
+                "the_other_queues": 4,
+                "its_own": 2
+              },
+              "by_verdict": {
+                "installed": 6
+              },
+              "answers": 3,
+              "largest_answer": {
+                "newborn": "R0161",
+                "votes": 4
+              },
+              "nested": 0,
+              "billing_rule_larger": 4,
+              "shared_median": {
+                "fraction": "1260",
+                "value": 1260.0
+              },
+              "space": {
+                "votes": 6,
+                "strict": 4,
+                "named": 4,
+                "tie": 0,
+                "neither": 2,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 6,
+                "strict": 4,
+                "named": 4,
+                "tie": 0,
+                "neither": 2,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 8340,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 0,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 0
+              },
+              "by_verdict": {},
+              "answers": 0,
+              "largest_answer": null,
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": null,
+              "space": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "corpus": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "layers": {
+                "above": 0,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "SECURITY_INCIDENT": {
+            "against": {
+              "votes": 363,
+              "by_answer": {
+                "the_other_queues": 182,
+                "its_own": 181
+              },
+              "by_verdict": {
+                "installed": 339,
+                "refused": 24
+              },
+              "answers": 52,
+              "largest_answer": {
+                "newborn": "R0261",
+                "votes": 43
+              },
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": {
+                "fraction": "13440",
+                "value": 13440.0
+              },
+              "space": {
+                "votes": 363,
+                "strict": 362,
+                "named": 362,
+                "tie": 0,
+                "neither": 1,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 363,
+                "strict": 311,
+                "named": 311,
+                "tie": 0,
+                "neither": 52,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 3697650,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 1,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 1
+              },
+              "by_verdict": {
+                "refused": 1
+              },
+              "answers": 1,
+              "largest_answer": {
+                "newborn": "R0056",
+                "votes": 1
+              },
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": {
+                "fraction": "13440",
+                "value": 13440.0
+              },
+              "space": {
+                "votes": 1,
+                "strict": 1,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 1,
+                "strict": 1,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 13440,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "ACCOUNT_MANAGER": {
+            "against": {
+              "votes": 429,
+              "by_answer": {
+                "the_other_queues": 250,
+                "its_own": 179
+              },
+              "by_verdict": {
+                "installed": 413,
+                "refused": 16
+              },
+              "answers": 44,
+              "largest_answer": {
+                "newborn": "R0257",
+                "votes": 52
+              },
+              "nested": 0,
+              "billing_rule_larger": 314,
+              "shared_median": {
+                "fraction": "1920",
+                "value": 1920.0
+              },
+              "space": {
+                "votes": 429,
+                "strict": 429,
+                "named": 261,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "87/143",
+                  "value": 0.608392
+                }
+              },
+              "corpus": {
+                "votes": 429,
+                "strict": 397,
+                "named": 235,
+                "tie": 0,
+                "neither": 32,
+                "share": {
+                  "fraction": "235/397",
+                  "value": 0.59194
+                }
+              },
+              "layers": {
+                "above": 378160,
+                "billing": 502760,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 164,
+              "by_answer": {
+                "the_other_queues": 20,
+                "its_own": 144
+              },
+              "by_verdict": {
+                "installed": 6,
+                "refused": 158
+              },
+              "answers": 35,
+              "largest_answer": {
+                "newborn": "R0096",
+                "votes": 14
+              },
+              "nested": 0,
+              "billing_rule_larger": 135,
+              "shared_median": {
+                "fraction": "1760",
+                "value": 1760.0
+              },
+              "space": {
+                "votes": 164,
+                "strict": 164,
+                "named": 132,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "33/41",
+                  "value": 0.804878
+                }
+              },
+              "corpus": {
+                "votes": 164,
+                "strict": 158,
+                "named": 130,
+                "tie": 0,
+                "neither": 6,
+                "share": {
+                  "fraction": "65/79",
+                  "value": 0.822785
+                }
+              },
+              "layers": {
+                "above": 194040,
+                "billing": 161320,
+                "below": 0
+              }
+            }
+          },
+          "ONCALL_ESCALATION": {
+            "against": {
+              "votes": 723,
+              "by_answer": {
+                "the_other_queues": 565,
+                "its_own": 158
+              },
+              "by_verdict": {
+                "installed": 672,
+                "refused": 51
+              },
+              "answers": 62,
+              "largest_answer": {
+                "newborn": "R0246",
+                "votes": 44
+              },
+              "nested": 0,
+              "billing_rule_larger": 351,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 723,
+                "strict": 693,
+                "named": 693,
+                "tie": 0,
+                "neither": 30,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 723,
+                "strict": 130,
+                "named": 130,
+                "tie": 0,
+                "neither": 593,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 2379240,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 1,
+              "by_answer": {
+                "the_other_queues": 1,
+                "its_own": 0
+              },
+              "by_verdict": {
+                "installed": 1
+              },
+              "answers": 1,
+              "largest_answer": {
+                "newborn": "R0027",
+                "votes": 1
+              },
+              "nested": 0,
+              "billing_rule_larger": 1,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 1,
+                "strict": 1,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 1,
+                "strict": 1,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 3360,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "against": {
+              "votes": 572,
+              "by_answer": {
+                "the_other_queues": 457,
+                "its_own": 115
+              },
+              "by_verdict": {
+                "installed": 397,
+                "refused": 175
+              },
+              "answers": 47,
+              "largest_answer": {
+                "newborn": "R0265",
+                "votes": 54
+              },
+              "nested": 0,
+              "billing_rule_larger": 546,
+              "shared_median": {
+                "fraction": "320",
+                "value": 320.0
+              },
+              "space": {
+                "votes": 572,
+                "strict": 567,
+                "named": 269,
+                "tie": 5,
+                "neither": 0,
+                "share": {
+                  "fraction": "269/567",
+                  "value": 0.474427
+                }
+              },
+              "corpus": {
+                "votes": 572,
+                "strict": 561,
+                "named": 271,
+                "tie": 11,
+                "neither": 0,
+                "share": {
+                  "fraction": "271/561",
+                  "value": 0.483066
+                }
+              },
+              "layers": {
+                "above": 37005,
+                "billing": 293310,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 381,
+              "by_answer": {
+                "the_other_queues": 119,
+                "its_own": 262
+              },
+              "by_verdict": {
+                "installed": 151,
+                "refused": 230
+              },
+              "answers": 66,
+              "largest_answer": {
+                "newborn": "R0180",
+                "votes": 37
+              },
+              "nested": 0,
+              "billing_rule_larger": 340,
+              "shared_median": {
+                "fraction": "720",
+                "value": 720.0
+              },
+              "space": {
+                "votes": 381,
+                "strict": 374,
+                "named": 293,
+                "tie": 7,
+                "neither": 0,
+                "share": {
+                  "fraction": "293/374",
+                  "value": 0.783422
+                }
+              },
+              "corpus": {
+                "votes": 381,
+                "strict": 377,
+                "named": 289,
+                "tie": 3,
+                "neither": 1,
+                "share": {
+                  "fraction": "289/377",
+                  "value": 0.766578
+                }
+              },
+              "layers": {
+                "above": 65045,
+                "billing": 260395,
+                "below": 0
+              }
+            }
+          }
+        },
+        "elsewhere": {
+          "votes": 3990,
+          "space": {
+            "votes": 3990,
+            "strict": 3271,
+            "named": 2567,
+            "tie": 238,
+            "neither": 481,
+            "share": {
+              "fraction": "2567/3271",
+              "value": 0.784775
+            }
+          },
+          "corpus": {
+            "votes": 3990,
+            "strict": 2753,
+            "named": 1950,
+            "tie": 5,
+            "neither": 1232,
+            "share": {
+              "fraction": "1950/2753",
+              "value": 0.708318
+            }
+          }
+        }
+      },
+      "place": {
+        "declared_ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "BILLING_SPECIALIST",
+          "T1_GENERAL"
+        ],
+        "declared": 7,
+        "best": 4,
+        "best_ranking": [
+          "SECURITY_INCIDENT",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL"
+        ],
+        "best_ranking_place": 2,
+        "lacks": {
+          "points": 4045,
+          "share": {
+            "fraction": "809/26880",
+            "value": 0.030097
+          }
+        },
+        "gain": {
+          "points": 805,
+          "share": {
+            "fraction": "23/3840",
+            "value": 0.00599
+          },
+          "of_what_it_lacks": {
+            "fraction": "161/809",
+            "value": 0.199011
+          }
+        },
+        "corpus_gain": 8,
+        "places": {
+          "1": {
+            "ranking": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 89780,
+              "share": {
+                "fraction": "4489/6720",
+                "value": 0.668006
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 28570,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 4800,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 10200,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "40/57",
+                "value": 0.701754
+              }
+            },
+            "corpus": {
+              "right": 1492,
+              "share": {
+                "fraction": "373/500",
+                "value": 0.746
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 629,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 151,
+                "SECURITY_INCIDENT": 12,
+                "ACCOUNT_MANAGER": 71,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "151/271",
+                "value": 0.557196
+              }
+            }
+          },
+          "2": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 101540,
+              "share": {
+                "fraction": "5077/6720",
+                "value": 0.755506
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 4800,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 10200,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "40/57",
+                "value": 0.701754
+              }
+            },
+            "corpus": {
+              "right": 1510,
+              "share": {
+                "fraction": "151/200",
+                "value": 0.755
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 151,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 71,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "151/271",
+                "value": 0.557196
+              }
+            }
+          },
+          "3": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "BILLING_SPECIALIST",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 101540,
+              "share": {
+                "fraction": "5077/6720",
+                "value": 0.755506
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 4800,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 10200,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "40/57",
+                "value": 0.701754
+              }
+            },
+            "corpus": {
+              "right": 1510,
+              "share": {
+                "fraction": "151/200",
+                "value": 0.755
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 151,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 71,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "151/271",
+                "value": 0.557196
+              }
+            }
+          },
+          "4": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 101540,
+              "share": {
+                "fraction": "5077/6720",
+                "value": 0.755506
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 4800,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 10200,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "40/57",
+                "value": 0.701754
+              }
+            },
+            "corpus": {
+              "right": 1510,
+              "share": {
+                "fraction": "151/200",
+                "value": 0.755
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 151,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 71,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "151/271",
+                "value": 0.557196
+              }
+            }
+          },
+          "5": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 101310,
+              "share": {
+                "fraction": "3377/4480",
+                "value": 0.753795
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 2890,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 11880,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "289/684",
+                "value": 0.422515
+              }
+            },
+            "corpus": {
+              "right": 1499,
+              "share": {
+                "fraction": "1499/2000",
+                "value": 0.7495
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 119,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 92,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "119/271",
+                "value": 0.439114
+              }
+            }
+          },
+          "6": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 101310,
+              "share": {
+                "fraction": "3377/4480",
+                "value": 0.753795
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 2890,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 11880,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3000
+              },
+              "billing_recall": {
+                "fraction": "289/684",
+                "value": 0.422515
+              }
+            },
+            "corpus": {
+              "right": 1499,
+              "share": {
+                "fraction": "1499/2000",
+                "value": 0.7495
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 119,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 92,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 399
+              },
+              "billing_recall": {
+                "fraction": "119/271",
+                "value": 0.439114
+              }
+            }
+          },
+          "7": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 100735,
+              "share": {
+                "fraction": "20147/26880",
+                "value": 0.749516
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 2045,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 11880,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3270
+              },
+              "billing_recall": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              }
+            },
+            "corpus": {
+              "right": 1502,
+              "share": {
+                "fraction": "751/1000",
+                "value": 0.751
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 93,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 92,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 428
+              },
+              "billing_recall": {
+                "fraction": "93/271",
+                "value": 0.343173
+              }
+            }
+          },
+          "8": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "space": {
+              "right": 100735,
+              "share": {
+                "fraction": "20147/26880",
+                "value": 0.749516
+              },
+              "by_queue": {
+                "T1_GENERAL": 2990,
+                "T2_TECHNICAL": 31930,
+                "T3_ENGINEERING": 3680,
+                "BILLING_SPECIALIST": 2045,
+                "SECURITY_INCIDENT": 42000,
+                "ACCOUNT_MANAGER": 11880,
+                "ONCALL_ESCALATION": 2940,
+                "SELF_SERVICE_DEFLECT": 3270
+              },
+              "billing_recall": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              }
+            },
+            "corpus": {
+              "right": 1502,
+              "share": {
+                "fraction": "751/1000",
+                "value": 0.751
+              },
+              "by_queue": {
+                "T1_GENERAL": 184,
+                "T2_TECHNICAL": 642,
+                "T3_ENGINEERING": 43,
+                "BILLING_SPECIALIST": 93,
+                "SECURITY_INCIDENT": 17,
+                "ACCOUNT_MANAGER": 92,
+                "ONCALL_ESCALATION": 3,
+                "SELF_SERVICE_DEFLECT": 428
+              },
+              "billing_recall": {
+                "fraction": "93/271",
+                "value": 0.343173
+              }
+            }
+          }
+        },
+        "path": [
+          {
+            "from": 7,
+            "to": 6,
+            "passes": "SELF_SERVICE_DEFLECT",
+            "up": true,
+            "space": 575,
+            "corpus": -3,
+            "by_queue": {
+              "BILLING_SPECIALIST": 845,
+              "SELF_SERVICE_DEFLECT": -270
+            }
+          },
+          {
+            "from": 6,
+            "to": 5,
+            "passes": "T2_TECHNICAL",
+            "up": true,
+            "space": 0,
+            "corpus": 0,
+            "by_queue": {}
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "passes": "ACCOUNT_MANAGER",
+            "up": true,
+            "space": 230,
+            "corpus": 11,
+            "by_queue": {
+              "BILLING_SPECIALIST": 1910,
+              "ACCOUNT_MANAGER": -1680
+            }
+          }
+        ]
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's",
+          "passes": true
+        }
+      ]
+    },
+    "l_r2": {
+      "votes": {
+        "against": {
+          "votes": 912,
+          "by_answer": {
+            "the_other_queues": 421,
+            "its_own": 491
+          },
+          "by_verdict": {
+            "installed": 769,
+            "outside": 1,
+            "refused": 142
+          },
+          "answers": 94,
+          "largest_answer": {
+            "newborn": "R0220",
+            "votes": 38
+          },
+          "nested": 0,
+          "billing_rule_larger": 389,
+          "shared_median": {
+            "fraction": "6720",
+            "value": 6720.0
+          },
+          "space": {
+            "votes": 912,
+            "strict": 887,
+            "named": 692,
+            "tie": 0,
+            "neither": 25,
+            "share": {
+              "fraction": "692/887",
+              "value": 0.780158
+            }
+          },
+          "corpus": {
+            "votes": 912,
+            "strict": 821,
+            "named": 640,
+            "tie": 10,
+            "neither": 81,
+            "share": {
+              "fraction": "640/821",
+              "value": 0.779537
+            }
+          },
+          "layers": {
+            "above": 6047355,
+            "billing": 296375,
+            "below": 0
+          }
+        },
+        "for": {
+          "votes": 674,
+          "by_answer": {
+            "the_other_queues": 254,
+            "its_own": 420
+          },
+          "by_verdict": {
+            "installed": 246,
+            "refused": 428
+          },
+          "answers": 61,
+          "largest_answer": {
+            "newborn": "R0255",
+            "votes": 33
+          },
+          "nested": 0,
+          "billing_rule_larger": 601,
+          "shared_median": {
+            "fraction": "840",
+            "value": 840.0
+          },
+          "space": {
+            "votes": 674,
+            "strict": 551,
+            "named": 393,
+            "tie": 0,
+            "neither": 123,
+            "share": {
+              "fraction": "393/551",
+              "value": 0.713249
+            }
+          },
+          "corpus": {
+            "votes": 674,
+            "strict": 520,
+            "named": 362,
+            "tie": 27,
+            "neither": 127,
+            "share": {
+              "fraction": "181/260",
+              "value": 0.696154
+            }
+          },
+          "layers": {
+            "above": 490330,
+            "billing": 428030,
+            "below": 0
+          }
+        },
+        "by_queue": {
+          "T1_GENERAL": {
+            "against": {
+              "votes": 57,
+              "by_answer": {
+                "the_other_queues": 42,
+                "its_own": 15
+              },
+              "by_verdict": {
+                "installed": 47,
+                "refused": 10
+              },
+              "answers": 12,
+              "largest_answer": {
+                "newborn": "R0234",
+                "votes": 30
+              },
+              "nested": 0,
+              "billing_rule_larger": 52,
+              "shared_median": {
+                "fraction": "210",
+                "value": 210.0
+              },
+              "space": {
+                "votes": 57,
+                "strict": 50,
+                "named": 0,
+                "tie": 0,
+                "neither": 7,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 57,
+                "strict": 49,
+                "named": 0,
+                "tie": 0,
+                "neither": 8,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 12615,
+                "billing": 28145,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 239,
+              "by_answer": {
+                "the_other_queues": 129,
+                "its_own": 110
+              },
+              "by_verdict": {
+                "installed": 123,
+                "refused": 116
+              },
+              "answers": 44,
+              "largest_answer": {
+                "newborn": "R0241",
+                "votes": 31
+              },
+              "nested": 0,
+              "billing_rule_larger": 222,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 239,
+                "strict": 141,
+                "named": 141,
+                "tie": 0,
+                "neither": 98,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 239,
+                "strict": 141,
+                "named": 141,
+                "tie": 0,
+                "neither": 98,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 57910,
+                "billing": 181100,
+                "below": 0
+              }
+            }
+          },
+          "T2_TECHNICAL": {
+            "against": {
+              "votes": 75,
+              "by_answer": {
+                "the_other_queues": 13,
+                "its_own": 62
+              },
+              "by_verdict": {
+                "installed": 69,
+                "refused": 6
+              },
+              "answers": 32,
+              "largest_answer": {
+                "newborn": "R0169",
+                "votes": 8
+              },
+              "nested": 0,
+              "billing_rule_larger": 50,
+              "shared_median": {
+                "fraction": "1680",
+                "value": 1680.0
+              },
+              "space": {
+                "votes": 75,
+                "strict": 58,
+                "named": 58,
+                "tie": 0,
+                "neither": 17,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 75,
+                "strict": 53,
+                "named": 53,
+                "tie": 0,
+                "neither": 22,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 216200,
+                "billing": 9260,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 81,
+              "by_answer": {
+                "the_other_queues": 34,
+                "its_own": 47
+              },
+              "by_verdict": {
+                "installed": 11,
+                "refused": 70
+              },
+              "answers": 34,
+              "largest_answer": {
+                "newborn": "R0257",
+                "votes": 33
+              },
+              "nested": 0,
+              "billing_rule_larger": 64,
+              "shared_median": {
+                "fraction": "1680",
+                "value": 1680.0
+              },
+              "space": {
+                "votes": 81,
+                "strict": 56,
+                "named": 42,
+                "tie": 0,
+                "neither": 25,
+                "share": {
+                  "fraction": "3/4",
+                  "value": 0.75
+                }
+              },
+              "corpus": {
+                "votes": 81,
+                "strict": 56,
+                "named": 42,
+                "tie": 0,
+                "neither": 25,
+                "share": {
+                  "fraction": "3/4",
+                  "value": 0.75
+                }
+              },
+              "layers": {
+                "above": 109120,
+                "billing": 67120,
+                "below": 0
+              }
+            }
+          },
+          "T3_ENGINEERING": {
+            "against": {
+              "votes": 10,
+              "by_answer": {
+                "the_other_queues": 6,
+                "its_own": 4
+              },
+              "by_verdict": {
+                "installed": 10
+              },
+              "answers": 6,
+              "largest_answer": {
+                "newborn": "R0240",
+                "votes": 4
+              },
+              "nested": 0,
+              "billing_rule_larger": 8,
+              "shared_median": {
+                "fraction": "1680",
+                "value": 1680.0
+              },
+              "space": {
+                "votes": 10,
+                "strict": 10,
+                "named": 10,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 10,
+                "strict": 10,
+                "named": 10,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 21400,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 0,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 0
+              },
+              "by_verdict": {},
+              "answers": 0,
+              "largest_answer": null,
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": null,
+              "space": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "corpus": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "layers": {
+                "above": 0,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "SECURITY_INCIDENT": {
+            "against": {
+              "votes": 448,
+              "by_answer": {
+                "the_other_queues": 200,
+                "its_own": 248
+              },
+              "by_verdict": {
+                "installed": 392,
+                "refused": 56
+              },
+              "answers": 44,
+              "largest_answer": {
+                "newborn": "R0273",
+                "votes": 33
+              },
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": {
+                "fraction": "13440",
+                "value": 13440.0
+              },
+              "space": {
+                "votes": 448,
+                "strict": 448,
+                "named": 448,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 448,
+                "strict": 434,
+                "named": 434,
+                "tie": 0,
+                "neither": 14,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 5555200,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 14,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 14
+              },
+              "by_verdict": {
+                "refused": 14
+              },
+              "answers": 2,
+              "largest_answer": {
+                "newborn": "R0230",
+                "votes": 10
+              },
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": {
+                "fraction": "13440",
+                "value": 13440.0
+              },
+              "space": {
+                "votes": 14,
+                "strict": 14,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 14,
+                "strict": 14,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 188160,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "ACCOUNT_MANAGER": {
+            "against": {
+              "votes": 142,
+              "by_answer": {
+                "the_other_queues": 63,
+                "its_own": 79
+              },
+              "by_verdict": {
+                "installed": 102,
+                "refused": 40
+              },
+              "answers": 28,
+              "largest_answer": {
+                "newborn": "R0169",
+                "votes": 14
+              },
+              "nested": 0,
+              "billing_rule_larger": 113,
+              "shared_median": {
+                "fraction": "1320",
+                "value": 1320.0
+              },
+              "space": {
+                "votes": 142,
+                "strict": 142,
+                "named": 91,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "91/142",
+                  "value": 0.640845
+                }
+              },
+              "corpus": {
+                "votes": 142,
+                "strict": 136,
+                "named": 85,
+                "tie": 0,
+                "neither": 6,
+                "share": {
+                  "fraction": "5/8",
+                  "value": 0.625
+                }
+              },
+              "layers": {
+                "above": 113160,
+                "billing": 168880,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 57,
+              "by_answer": {
+                "the_other_queues": 5,
+                "its_own": 52
+              },
+              "by_verdict": {
+                "installed": 25,
+                "refused": 32
+              },
+              "answers": 26,
+              "largest_answer": {
+                "newborn": "R0102",
+                "votes": 8
+              },
+              "nested": 0,
+              "billing_rule_larger": 36,
+              "shared_median": {
+                "fraction": "1320",
+                "value": 1320.0
+              },
+              "space": {
+                "votes": 57,
+                "strict": 57,
+                "named": 21,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "7/19",
+                  "value": 0.368421
+                }
+              },
+              "corpus": {
+                "votes": 57,
+                "strict": 57,
+                "named": 21,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "7/19",
+                  "value": 0.368421
+                }
+              },
+              "layers": {
+                "above": 61560,
+                "billing": 71400,
+                "below": 0
+              }
+            }
+          },
+          "ONCALL_ESCALATION": {
+            "against": {
+              "votes": 33,
+              "by_answer": {
+                "the_other_queues": 6,
+                "its_own": 27
+              },
+              "by_verdict": {
+                "installed": 31,
+                "refused": 2
+              },
+              "answers": 27,
+              "largest_answer": {
+                "newborn": "R0135",
+                "votes": 5
+              },
+              "nested": 0,
+              "billing_rule_larger": 24,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 33,
+                "strict": 33,
+                "named": 33,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 33,
+                "strict": 3,
+                "named": 3,
+                "tie": 0,
+                "neither": 30,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 110280,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 4,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 4
+              },
+              "by_verdict": {
+                "refused": 4
+              },
+              "answers": 4,
+              "largest_answer": {
+                "newborn": "R0139",
+                "votes": 1
+              },
+              "nested": 0,
+              "billing_rule_larger": 4,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 4,
+                "strict": 4,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 4,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 4,
+                "share": null
+              },
+              "layers": {
+                "above": 13440,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "against": {
+              "votes": 147,
+              "by_answer": {
+                "the_other_queues": 91,
+                "its_own": 56
+              },
+              "by_verdict": {
+                "installed": 118,
+                "outside": 1,
+                "refused": 28
+              },
+              "answers": 24,
+              "largest_answer": {
+                "newborn": "R0220",
+                "votes": 24
+              },
+              "nested": 0,
+              "billing_rule_larger": 142,
+              "shared_median": {
+                "fraction": "420",
+                "value": 420.0
+              },
+              "space": {
+                "votes": 147,
+                "strict": 146,
+                "named": 52,
+                "tie": 0,
+                "neither": 1,
+                "share": {
+                  "fraction": "26/73",
+                  "value": 0.356164
+                }
+              },
+              "corpus": {
+                "votes": 147,
+                "strict": 136,
+                "named": 55,
+                "tie": 10,
+                "neither": 1,
+                "share": {
+                  "fraction": "55/136",
+                  "value": 0.404412
+                }
+              },
+              "layers": {
+                "above": 18500,
+                "billing": 90090,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 279,
+              "by_answer": {
+                "the_other_queues": 86,
+                "its_own": 193
+              },
+              "by_verdict": {
+                "installed": 87,
+                "refused": 192
+              },
+              "answers": 48,
+              "largest_answer": {
+                "newborn": "R0255",
+                "votes": 33
+              },
+              "nested": 0,
+              "billing_rule_larger": 275,
+              "shared_median": {
+                "fraction": "420",
+                "value": 420.0
+              },
+              "space": {
+                "votes": 279,
+                "strict": 279,
+                "named": 189,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "21/31",
+                  "value": 0.677419
+                }
+              },
+              "corpus": {
+                "votes": 279,
+                "strict": 252,
+                "named": 158,
+                "tie": 27,
+                "neither": 0,
+                "share": {
+                  "fraction": "79/126",
+                  "value": 0.626984
+                }
+              },
+              "layers": {
+                "above": 60140,
+                "billing": 108410,
+                "below": 0
+              }
+            }
+          }
+        },
+        "elsewhere": {
+          "votes": 4874,
+          "space": {
+            "votes": 4874,
+            "strict": 4066,
+            "named": 2930,
+            "tie": 288,
+            "neither": 520,
+            "share": {
+              "fraction": "1465/2033",
+              "value": 0.72061
+            }
+          },
+          "corpus": {
+            "votes": 4874,
+            "strict": 3475,
+            "named": 2162,
+            "tie": 7,
+            "neither": 1392,
+            "share": {
+              "fraction": "2162/3475",
+              "value": 0.622158
+            }
+          }
+        }
+      },
+      "place": {
+        "declared_ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL"
+        ],
+        "declared": 5,
+        "best": 5,
+        "best_ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT",
+          "T2_TECHNICAL",
+          "T1_GENERAL"
+        ],
+        "best_ranking_place": 5,
+        "lacks": {
+          "points": 3095,
+          "share": {
+            "fraction": "619/26880",
+            "value": 0.023028
+          }
+        },
+        "gain": {
+          "points": 0,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          },
+          "of_what_it_lacks": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "corpus_gain": 0,
+        "places": {
+          "1": {
+            "ranking": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 82810,
+              "share": {
+                "fraction": "1183/1920",
+                "value": 0.616146
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 24450,
+                "T3_ENGINEERING": 5920,
+                "BILLING_SPECIALIST": 6480,
+                "SECURITY_INCIDENT": 26880,
+                "ACCOUNT_MANAGER": 10020,
+                "ONCALL_ESCALATION": 4620,
+                "SELF_SERVICE_DEFLECT": 1930
+              },
+              "billing_recall": {
+                "fraction": "18/19",
+                "value": 0.947368
+              }
+            },
+            "corpus": {
+              "right": 1473,
+              "share": {
+                "fraction": "1473/2000",
+                "value": 0.7365
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 537,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 257,
+                "SECURITY_INCIDENT": 10,
+                "ACCOUNT_MANAGER": 74,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 328
+              },
+              "billing_recall": {
+                "fraction": "257/271",
+                "value": 0.948339
+              }
+            }
+          },
+          "2": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 92090,
+              "share": {
+                "fraction": "9209/13440",
+                "value": 0.685193
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 27010,
+                "T3_ENGINEERING": 5920,
+                "BILLING_SPECIALIST": 6480,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 10020,
+                "ONCALL_ESCALATION": 4620,
+                "SELF_SERVICE_DEFLECT": 1930
+              },
+              "billing_recall": {
+                "fraction": "18/19",
+                "value": 0.947368
+              }
+            },
+            "corpus": {
+              "right": 1482,
+              "share": {
+                "fraction": "741/1000",
+                "value": 0.741
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 541,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 257,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 74,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 328
+              },
+              "billing_recall": {
+                "fraction": "257/271",
+                "value": 0.948339
+              }
+            }
+          },
+          "3": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "BILLING_SPECIALIST",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 91670,
+              "share": {
+                "fraction": "9167/13440",
+                "value": 0.682068
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 6480,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 10020,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1930
+              },
+              "billing_recall": {
+                "fraction": "18/19",
+                "value": 0.947368
+              }
+            },
+            "corpus": {
+              "right": 1470,
+              "share": {
+                "fraction": "147/200",
+                "value": 0.735
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 257,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 74,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 328
+              },
+              "billing_recall": {
+                "fraction": "257/271",
+                "value": 0.948339
+              }
+            }
+          },
+          "4": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 91670,
+              "share": {
+                "fraction": "9167/13440",
+                "value": 0.682068
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 6480,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 10020,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1930
+              },
+              "billing_recall": {
+                "fraction": "18/19",
+                "value": 0.947368
+              }
+            },
+            "corpus": {
+              "right": 1470,
+              "share": {
+                "fraction": "147/200",
+                "value": 0.735
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 257,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 74,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 328
+              },
+              "billing_recall": {
+                "fraction": "257/271",
+                "value": 0.948339
+              }
+            }
+          },
+          "5": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 92210,
+              "share": {
+                "fraction": "9221/13440",
+                "value": 0.686086
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 4560,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 12480,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1930
+              },
+              "billing_recall": {
+                "fraction": "2/3",
+                "value": 0.666667
+              }
+            },
+            "corpus": {
+              "right": 1456,
+              "share": {
+                "fraction": "91/125",
+                "value": 0.728
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 224,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 93,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 328
+              },
+              "billing_recall": {
+                "fraction": "224/271",
+                "value": 0.826568
+              }
+            }
+          },
+          "6": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 89900,
+              "share": {
+                "fraction": "899/1344",
+                "value": 0.668899
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 2460,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 12480,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1720
+              },
+              "billing_recall": {
+                "fraction": "41/114",
+                "value": 0.359649
+              }
+            },
+            "corpus": {
+              "right": 1399,
+              "share": {
+                "fraction": "1399/2000",
+                "value": 0.6995
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 179,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 93,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 316
+              },
+              "billing_recall": {
+                "fraction": "179/271",
+                "value": 0.660517
+              }
+            }
+          },
+          "7": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 88450,
+              "share": {
+                "fraction": "1769/2688",
+                "value": 0.65811
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 1010,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 12480,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1720
+              },
+              "billing_recall": {
+                "fraction": "101/684",
+                "value": 0.147661
+              }
+            },
+            "corpus": {
+              "right": 1288,
+              "share": {
+                "fraction": "161/250",
+                "value": 0.644
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 68,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 93,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 316
+              },
+              "billing_recall": {
+                "fraction": "68/271",
+                "value": 0.250923
+              }
+            }
+          },
+          "8": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "space": {
+              "right": 88420,
+              "share": {
+                "fraction": "4421/6720",
+                "value": 0.657887
+              },
+              "by_queue": {
+                "T1_GENERAL": 2510,
+                "T2_TECHNICAL": 25330,
+                "T3_ENGINEERING": 6340,
+                "BILLING_SPECIALIST": 980,
+                "SECURITY_INCIDENT": 33600,
+                "ACCOUNT_MANAGER": 12480,
+                "ONCALL_ESCALATION": 5460,
+                "SELF_SERVICE_DEFLECT": 1720
+              },
+              "billing_recall": {
+                "fraction": "49/342",
+                "value": 0.143275
+              }
+            },
+            "corpus": {
+              "right": 1283,
+              "share": {
+                "fraction": "1283/2000",
+                "value": 0.6415
+              },
+              "by_queue": {
+                "T1_GENERAL": 159,
+                "T2_TECHNICAL": 525,
+                "T3_ENGINEERING": 106,
+                "BILLING_SPECIALIST": 63,
+                "SECURITY_INCIDENT": 15,
+                "ACCOUNT_MANAGER": 93,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 316
+              },
+              "billing_recall": {
+                "fraction": "63/271",
+                "value": 0.232472
+              }
+            }
+          }
+        },
+        "path": []
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's",
+          "passes": true
+        }
+      ]
+    },
+    "l_r3": {
+      "votes": {
+        "against": {
+          "votes": 1965,
+          "by_answer": {
+            "the_other_queues": 1093,
+            "its_own": 872
+          },
+          "by_verdict": {
+            "installed": 1806,
+            "refused": 159
+          },
+          "answers": 124,
+          "largest_answer": {
+            "newborn": "R0273",
+            "votes": 65
+          },
+          "nested": 0,
+          "billing_rule_larger": 1129,
+          "shared_median": {
+            "fraction": "2560",
+            "value": 2560.0
+          },
+          "space": {
+            "votes": 1965,
+            "strict": 1897,
+            "named": 1110,
+            "tie": 23,
+            "neither": 45,
+            "share": {
+              "fraction": "1110/1897",
+              "value": 0.585134
+            }
+          },
+          "corpus": {
+            "votes": 1965,
+            "strict": 1697,
+            "named": 918,
+            "tie": 3,
+            "neither": 265,
+            "share": {
+              "fraction": "918/1697",
+              "value": 0.540955
+            }
+          },
+          "layers": {
+            "above": 7763097,
+            "billing": 1004292,
+            "below": 0
+          }
+        },
+        "for": {
+          "votes": 843,
+          "by_answer": {
+            "the_other_queues": 452,
+            "its_own": 391
+          },
+          "by_verdict": {
+            "installed": 266,
+            "refused": 577
+          },
+          "answers": 81,
+          "largest_answer": {
+            "newborn": "R0229",
+            "votes": 53
+          },
+          "nested": 0,
+          "billing_rule_larger": 747,
+          "shared_median": {
+            "fraction": "840",
+            "value": 840.0
+          },
+          "space": {
+            "votes": 843,
+            "strict": 772,
+            "named": 595,
+            "tie": 35,
+            "neither": 36,
+            "share": {
+              "fraction": "595/772",
+              "value": 0.770725
+            }
+          },
+          "corpus": {
+            "votes": 843,
+            "strict": 771,
+            "named": 615,
+            "tie": 4,
+            "neither": 68,
+            "share": {
+              "fraction": "205/257",
+              "value": 0.797665
+            }
+          },
+          "layers": {
+            "above": 440394,
+            "billing": 611032,
+            "below": 0
+          }
+        },
+        "by_queue": {
+          "T1_GENERAL": {
+            "against": {
+              "votes": 31,
+              "by_answer": {
+                "the_other_queues": 23,
+                "its_own": 8
+              },
+              "by_verdict": {
+                "installed": 31
+              },
+              "answers": 6,
+              "largest_answer": {
+                "newborn": "R0136",
+                "votes": 23
+              },
+              "nested": 0,
+              "billing_rule_larger": 28,
+              "shared_median": {
+                "fraction": "1680",
+                "value": 1680.0
+              },
+              "space": {
+                "votes": 31,
+                "strict": 5,
+                "named": 0,
+                "tie": 0,
+                "neither": 26,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 31,
+                "strict": 5,
+                "named": 0,
+                "tie": 0,
+                "neither": 26,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 840,
+                "billing": 44940,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 214,
+              "by_answer": {
+                "the_other_queues": 186,
+                "its_own": 28
+              },
+              "by_verdict": {
+                "installed": 87,
+                "refused": 127
+              },
+              "answers": 33,
+              "largest_answer": {
+                "newborn": "R0229",
+                "votes": 53
+              },
+              "nested": 0,
+              "billing_rule_larger": 205,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 214,
+                "strict": 185,
+                "named": 185,
+                "tie": 0,
+                "neither": 29,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 214,
+                "strict": 184,
+                "named": 184,
+                "tie": 0,
+                "neither": 30,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 40110,
+                "billing": 139650,
+                "below": 0
+              }
+            }
+          },
+          "T2_TECHNICAL": {
+            "against": {
+              "votes": 207,
+              "by_answer": {
+                "the_other_queues": 52,
+                "its_own": 155
+              },
+              "by_verdict": {
+                "installed": 193,
+                "refused": 14
+              },
+              "answers": 67,
+              "largest_answer": {
+                "newborn": "R0210",
+                "votes": 38
+              },
+              "nested": 0,
+              "billing_rule_larger": 99,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 207,
+                "strict": 194,
+                "named": 186,
+                "tie": 2,
+                "neither": 11,
+                "share": {
+                  "fraction": "93/97",
+                  "value": 0.958763
+                }
+              },
+              "corpus": {
+                "votes": 207,
+                "strict": 194,
+                "named": 184,
+                "tie": 0,
+                "neither": 13,
+                "share": {
+                  "fraction": "92/97",
+                  "value": 0.948454
+                }
+              },
+              "layers": {
+                "above": 940190,
+                "billing": 11360,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 93,
+              "by_answer": {
+                "the_other_queues": 43,
+                "its_own": 50
+              },
+              "by_verdict": {
+                "installed": 54,
+                "refused": 39
+              },
+              "answers": 31,
+              "largest_answer": {
+                "newborn": "R0171",
+                "votes": 35
+              },
+              "nested": 0,
+              "billing_rule_larger": 77,
+              "shared_median": {
+                "fraction": "880",
+                "value": 880.0
+              },
+              "space": {
+                "votes": 93,
+                "strict": 61,
+                "named": 28,
+                "tie": 32,
+                "neither": 0,
+                "share": {
+                  "fraction": "28/61",
+                  "value": 0.459016
+                }
+              },
+              "corpus": {
+                "votes": 93,
+                "strict": 91,
+                "named": 59,
+                "tie": 0,
+                "neither": 2,
+                "share": {
+                  "fraction": "59/91",
+                  "value": 0.648352
+                }
+              },
+              "layers": {
+                "above": 129535,
+                "billing": 43035,
+                "below": 0
+              }
+            }
+          },
+          "T3_ENGINEERING": {
+            "against": {
+              "votes": 58,
+              "by_answer": {
+                "the_other_queues": 55,
+                "its_own": 3
+              },
+              "by_verdict": {
+                "installed": 58
+              },
+              "answers": 4,
+              "largest_answer": {
+                "newborn": "R0245",
+                "votes": 55
+              },
+              "nested": 0,
+              "billing_rule_larger": 58,
+              "shared_median": {
+                "fraction": "960",
+                "value": 960.0
+              },
+              "space": {
+                "votes": 58,
+                "strict": 58,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "corpus": {
+                "votes": 58,
+                "strict": 57,
+                "named": 0,
+                "tie": 0,
+                "neither": 1,
+                "share": {
+                  "fraction": "0",
+                  "value": 0.0
+                }
+              },
+              "layers": {
+                "above": 33300,
+                "billing": 13740,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 4,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 4
+              },
+              "by_verdict": {
+                "installed": 1,
+                "refused": 3
+              },
+              "answers": 4,
+              "largest_answer": {
+                "newborn": "R0246",
+                "votes": 1
+              },
+              "nested": 0,
+              "billing_rule_larger": 3,
+              "shared_median": {
+                "fraction": "960",
+                "value": 960.0
+              },
+              "space": {
+                "votes": 4,
+                "strict": 4,
+                "named": 4,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 4,
+                "strict": 4,
+                "named": 4,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 2160,
+                "billing": 960,
+                "below": 0
+              }
+            }
+          },
+          "SECURITY_INCIDENT": {
+            "against": {
+              "votes": 546,
+              "by_answer": {
+                "the_other_queues": 254,
+                "its_own": 292
+              },
+              "by_verdict": {
+                "installed": 475,
+                "refused": 71
+              },
+              "answers": 67,
+              "largest_answer": {
+                "newborn": "R0221",
+                "votes": 40
+              },
+              "nested": 0,
+              "billing_rule_larger": 43,
+              "shared_median": {
+                "fraction": "13440",
+                "value": 13440.0
+              },
+              "space": {
+                "votes": 546,
+                "strict": 546,
+                "named": 546,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 546,
+                "strict": 493,
+                "named": 493,
+                "tie": 0,
+                "neither": 53,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 5581800,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 0,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 0
+              },
+              "by_verdict": {},
+              "answers": 0,
+              "largest_answer": null,
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": null,
+              "space": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "corpus": {
+                "votes": 0,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 0,
+                "share": null
+              },
+              "layers": {
+                "above": 0,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "ACCOUNT_MANAGER": {
+            "against": {
+              "votes": 566,
+              "by_answer": {
+                "the_other_queues": 333,
+                "its_own": 233
+              },
+              "by_verdict": {
+                "installed": 517,
+                "refused": 49
+              },
+              "answers": 45,
+              "largest_answer": {
+                "newborn": "R0259",
+                "votes": 62
+              },
+              "nested": 0,
+              "billing_rule_larger": 415,
+              "shared_median": {
+                "fraction": "2560",
+                "value": 2560.0
+              },
+              "space": {
+                "votes": 566,
+                "strict": 566,
+                "named": 128,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "64/283",
+                  "value": 0.226148
+                }
+              },
+              "corpus": {
+                "votes": 566,
+                "strict": 525,
+                "named": 90,
+                "tie": 0,
+                "neither": 41,
+                "share": {
+                  "fraction": "6/35",
+                  "value": 0.171429
+                }
+              },
+              "layers": {
+                "above": 740465,
+                "billing": 706195,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 194,
+              "by_answer": {
+                "the_other_queues": 29,
+                "its_own": 165
+              },
+              "by_verdict": {
+                "installed": 33,
+                "refused": 161
+              },
+              "answers": 38,
+              "largest_answer": {
+                "newborn": "R0139",
+                "votes": 27
+              },
+              "nested": 0,
+              "billing_rule_larger": 164,
+              "shared_median": {
+                "fraction": "1920",
+                "value": 1920.0
+              },
+              "space": {
+                "votes": 194,
+                "strict": 194,
+                "named": 129,
+                "tie": 0,
+                "neither": 0,
+                "share": {
+                  "fraction": "129/194",
+                  "value": 0.664948
+                }
+              },
+              "corpus": {
+                "votes": 194,
+                "strict": 166,
+                "named": 128,
+                "tie": 0,
+                "neither": 28,
+                "share": {
+                  "fraction": "64/83",
+                  "value": 0.771084
+                }
+              },
+              "layers": {
+                "above": 207960,
+                "billing": 177060,
+                "below": 0
+              }
+            }
+          },
+          "ONCALL_ESCALATION": {
+            "against": {
+              "votes": 144,
+              "by_answer": {
+                "the_other_queues": 77,
+                "its_own": 67
+              },
+              "by_verdict": {
+                "installed": 138,
+                "refused": 6
+              },
+              "answers": 43,
+              "largest_answer": {
+                "newborn": "R0214",
+                "votes": 46
+              },
+              "nested": 0,
+              "billing_rule_larger": 88,
+              "shared_median": {
+                "fraction": "3360",
+                "value": 3360.0
+              },
+              "space": {
+                "votes": 144,
+                "strict": 138,
+                "named": 138,
+                "tie": 0,
+                "neither": 6,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "corpus": {
+                "votes": 144,
+                "strict": 16,
+                "named": 16,
+                "tie": 0,
+                "neither": 128,
+                "share": {
+                  "fraction": "1",
+                  "value": 1.0
+                }
+              },
+              "layers": {
+                "above": 397320,
+                "billing": 0,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 1,
+              "by_answer": {
+                "the_other_queues": 0,
+                "its_own": 1
+              },
+              "by_verdict": {
+                "installed": 1
+              },
+              "answers": 1,
+              "largest_answer": {
+                "newborn": "R0090",
+                "votes": 1
+              },
+              "nested": 0,
+              "billing_rule_larger": 0,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 1,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 1,
+                "share": null
+              },
+              "corpus": {
+                "votes": 1,
+                "strict": 0,
+                "named": 0,
+                "tie": 0,
+                "neither": 1,
+                "share": null
+              },
+              "layers": {
+                "above": 840,
+                "billing": 0,
+                "below": 0
+              }
+            }
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "against": {
+              "votes": 413,
+              "by_answer": {
+                "the_other_queues": 299,
+                "its_own": 114
+              },
+              "by_verdict": {
+                "installed": 394,
+                "refused": 19
+              },
+              "answers": 45,
+              "largest_answer": {
+                "newborn": "R0273",
+                "votes": 65
+              },
+              "nested": 0,
+              "billing_rule_larger": 398,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 413,
+                "strict": 390,
+                "named": 112,
+                "tie": 21,
+                "neither": 2,
+                "share": {
+                  "fraction": "56/195",
+                  "value": 0.287179
+                }
+              },
+              "corpus": {
+                "votes": 413,
+                "strict": 407,
+                "named": 135,
+                "tie": 3,
+                "neither": 3,
+                "share": {
+                  "fraction": "135/407",
+                  "value": 0.331695
+                }
+              },
+              "layers": {
+                "above": 69182,
+                "billing": 228057,
+                "below": 0
+              }
+            },
+            "for": {
+              "votes": 337,
+              "by_answer": {
+                "the_other_queues": 194,
+                "its_own": 143
+              },
+              "by_verdict": {
+                "installed": 90,
+                "refused": 247
+              },
+              "answers": 64,
+              "largest_answer": {
+                "newborn": "R0204",
+                "votes": 45
+              },
+              "nested": 0,
+              "billing_rule_larger": 298,
+              "shared_median": {
+                "fraction": "840",
+                "value": 840.0
+              },
+              "space": {
+                "votes": 337,
+                "strict": 328,
+                "named": 249,
+                "tie": 3,
+                "neither": 6,
+                "share": {
+                  "fraction": "249/328",
+                  "value": 0.759146
+                }
+              },
+              "corpus": {
+                "votes": 337,
+                "strict": 326,
+                "named": 240,
+                "tie": 4,
+                "neither": 7,
+                "share": {
+                  "fraction": "120/163",
+                  "value": 0.736196
+                }
+              },
+              "layers": {
+                "above": 59789,
+                "billing": 250327,
+                "below": 0
+              }
+            }
+          }
+        },
+        "elsewhere": {
+          "votes": 3374,
+          "space": {
+            "votes": 3374,
+            "strict": 2802,
+            "named": 2240,
+            "tie": 169,
+            "neither": 403,
+            "share": {
+              "fraction": "1120/1401",
+              "value": 0.799429
+            }
+          },
+          "corpus": {
+            "votes": 3374,
+            "strict": 2250,
+            "named": 1649,
+            "tie": 25,
+            "neither": 1099,
+            "share": {
+              "fraction": "1649/2250",
+              "value": 0.732889
+            }
+          }
+        }
+      },
+      "place": {
+        "declared_ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "BILLING_SPECIALIST",
+          "T1_GENERAL"
+        ],
+        "declared": 7,
+        "best": 5,
+        "best_ranking": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL"
+        ],
+        "best_ranking_place": 5,
+        "lacks": {
+          "points": 2500,
+          "share": {
+            "fraction": "25/1344",
+            "value": 0.018601
+          }
+        },
+        "gain": {
+          "points": 900,
+          "share": {
+            "fraction": "3/448",
+            "value": 0.006696
+          },
+          "of_what_it_lacks": {
+            "fraction": "9/25",
+            "value": 0.36
+          }
+        },
+        "corpus_gain": 14,
+        "places": {
+          "1": {
+            "ranking": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 71720,
+              "share": {
+                "fraction": "1793/3360",
+                "value": 0.533631
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 29625,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 3240,
+                "SECURITY_INCIDENT": 13440,
+                "ACCOUNT_MANAGER": 10520,
+                "ONCALL_ESCALATION": 3675,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "9/19",
+                "value": 0.473684
+              }
+            },
+            "corpus": {
+              "right": 1449,
+              "share": {
+                "fraction": "1449/2000",
+                "value": 0.7245
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 640,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 103,
+                "SECURITY_INCIDENT": 4,
+                "ACCOUNT_MANAGER": 72,
+                "ONCALL_ESCALATION": 5,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "103/271",
+                "value": 0.380074
+              }
+            }
+          },
+          "2": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 78440,
+              "share": {
+                "fraction": "1961/3360",
+                "value": 0.583631
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 32985,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 3240,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 10520,
+                "ONCALL_ESCALATION": 3675,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "9/19",
+                "value": 0.473684
+              }
+            },
+            "corpus": {
+              "right": 1463,
+              "share": {
+                "fraction": "1463/2000",
+                "value": 0.7315
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 653,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 103,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 72,
+                "ONCALL_ESCALATION": 5,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "103/271",
+                "value": 0.380074
+              }
+            }
+          },
+          "3": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "BILLING_SPECIALIST",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 80330,
+              "share": {
+                "fraction": "8033/13440",
+                "value": 0.597693
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 3240,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 10520,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "9/19",
+                "value": 0.473684
+              }
+            },
+            "corpus": {
+              "right": 1466,
+              "share": {
+                "fraction": "733/1000",
+                "value": 0.733
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 103,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 72,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "103/271",
+                "value": 0.380074
+              }
+            }
+          },
+          "4": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 80090,
+              "share": {
+                "fraction": "8009/13440",
+                "value": 0.595908
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 3000,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 10520,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "25/57",
+                "value": 0.438596
+              }
+            },
+            "corpus": {
+              "right": 1465,
+              "share": {
+                "fraction": "293/400",
+                "value": 0.7325
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 102,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 72,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "102/271",
+                "value": 0.376384
+              }
+            }
+          },
+          "5": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 81370,
+              "share": {
+                "fraction": "8137/13440",
+                "value": 0.605432
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 1960,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 12840,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "49/171",
+                "value": 0.28655
+              }
+            },
+            "corpus": {
+              "right": 1467,
+              "share": {
+                "fraction": "1467/2000",
+                "value": 0.7335
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 80,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 96,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "80/271",
+                "value": 0.295203
+              }
+            }
+          },
+          "6": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 80430,
+              "share": {
+                "fraction": "383/640",
+                "value": 0.598437
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 1020,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 12840,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 1935
+              },
+              "billing_recall": {
+                "fraction": "17/114",
+                "value": 0.149123
+              }
+            },
+            "corpus": {
+              "right": 1451,
+              "share": {
+                "fraction": "1451/2000",
+                "value": 0.7255
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 64,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 96,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 353
+              },
+              "billing_recall": {
+                "fraction": "64/271",
+                "value": 0.236162
+              }
+            }
+          },
+          "7": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "space": {
+              "right": 80470,
+              "share": {
+                "fraction": "8047/13440",
+                "value": 0.598735
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 940,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 12840,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 2055
+              },
+              "billing_recall": {
+                "fraction": "47/342",
+                "value": 0.137427
+              }
+            },
+            "corpus": {
+              "right": 1453,
+              "share": {
+                "fraction": "1453/2000",
+                "value": 0.7265
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 58,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 96,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 361
+              },
+              "billing_recall": {
+                "fraction": "58/271",
+                "value": 0.214022
+              }
+            }
+          },
+          "8": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "space": {
+              "right": 80470,
+              "share": {
+                "fraction": "8047/13440",
+                "value": 0.598735
+              },
+              "by_queue": {
+                "T1_GENERAL": 3205,
+                "T2_TECHNICAL": 33615,
+                "T3_ENGINEERING": 6080,
+                "BILLING_SPECIALIST": 940,
+                "SECURITY_INCIDENT": 16800,
+                "ACCOUNT_MANAGER": 12840,
+                "ONCALL_ESCALATION": 4935,
+                "SELF_SERVICE_DEFLECT": 2055
+              },
+              "billing_recall": {
+                "fraction": "47/342",
+                "value": 0.137427
+              }
+            },
+            "corpus": {
+              "right": 1453,
+              "share": {
+                "fraction": "1453/2000",
+                "value": 0.7265
+              },
+              "by_queue": {
+                "T1_GENERAL": 170,
+                "T2_TECHNICAL": 655,
+                "T3_ENGINEERING": 102,
+                "BILLING_SPECIALIST": 58,
+                "SECURITY_INCIDENT": 5,
+                "ACCOUNT_MANAGER": 96,
+                "ONCALL_ESCALATION": 6,
+                "SELF_SERVICE_DEFLECT": 361
+              },
+              "billing_recall": {
+                "fraction": "58/271",
+                "value": 0.214022
+              }
+            }
+          }
+        },
+        "path": [
+          {
+            "from": 7,
+            "to": 6,
+            "passes": "SELF_SERVICE_DEFLECT",
+            "up": true,
+            "space": -40,
+            "corpus": -2,
+            "by_queue": {
+              "BILLING_SPECIALIST": 80,
+              "SELF_SERVICE_DEFLECT": -120
+            }
+          },
+          {
+            "from": 6,
+            "to": 5,
+            "passes": "T2_TECHNICAL",
+            "up": true,
+            "space": 940,
+            "corpus": 16,
+            "by_queue": {
+              "BILLING_SPECIALIST": 940
+            }
+          }
+        ]
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "V1",
+      "what": "in L r1 and in L r3, most votes against BILLING_SPECIALIST were cast by the answers of other queues' newborns",
+      "reading": {
+        "l_r1": {
+          "by_the_others": 1620,
+          "against": 2368
+        },
+        "l_r3": {
+          "by_the_others": 1093,
+          "against": 1965
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "V2",
+      "what": "in L r1 and in L r3, of the strict votes against it, most name the better rule",
+      "reading": {
+        "l_r1": {
+          "named": 1739,
+          "strict": 2321
+        },
+        "l_r3": {
+          "named": 1110,
+          "strict": 1897
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "V3",
+      "what": "in L r1 and in L r3, at its best place the ranking decides more of the space than at its declared place, by more than half of what the declared ranking lacks",
+      "reading": {
+        "l_r1": {
+          "gain": 805,
+          "lacks": 4045
+        },
+        "l_r3": {
+          "gain": 900,
+          "lacks": 2500
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "V4",
+      "what": "in L r1 and in L r3, on the path to its best place, a step moves it above a queue and gains points of the space, though more of that pair's votes put the other queue above it, and most of the pair's strict votes against it name the better rule",
+      "reading": {
+        "l_r1": {
+          "right_steps": [
+            "ACCOUNT_MANAGER"
+          ]
+        },
+        "l_r3": {
+          "right_steps": [
+            "T2_TECHNICAL"
+          ]
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "V5",
+      "what": "in L r1 and in L r3, at its best place the ranking decides more of the corpus than at its declared place",
+      "reading": {
+        "l_r1": {
+          "corpus_best": 1510,
+          "corpus_declared": 1502
+        },
+        "l_r3": {
+          "corpus_best": 1467,
+          "corpus_declared": 1453
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "V6",
+      "what": "in L r1 and in L r3, the votes against it stand, at their median, on a smaller shared region than the votes for it",
+      "reading": {
+        "l_r1": {
+          "median_against": {
+            "fraction": "1680",
+            "value": 1680.0
+          },
+          "median_for": {
+            "fraction": "840",
+            "value": 840.0
+          }
+        },
+        "l_r3": {
+          "median_against": {
+            "fraction": "2560",
+            "value": 2560.0
+          },
+          "median_for": {
+            "fraction": "840",
+            "value": 840.0
+          }
+        }
+      },
+      "holds": false
+    }
+  ]
+}
