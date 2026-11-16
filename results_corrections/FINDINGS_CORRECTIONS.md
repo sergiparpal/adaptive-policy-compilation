@@ -33,7 +33,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of what the at-once asks wrote for
   `ONCALL_ESCALATION`** reached it in #265, merged on 2026-11-16 in local
   time.
-- **The POST-RUN reading of shape or order** reaches it in #267.
+- **The POST-RUN reading of shape or order** reached it in #267, merged on
+  2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -204,12 +205,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the twelfth] And a thirteenth.**
 > [`shape.json`](shape.json) is the POST-RUN reading of shape or order: what the
 > loop's own rules could decide, ordered.
-> - **It was written from `770f4dd`**, on that reading's branch: the commit that
->   carries the part added after its first run. Its section below names the
->   commit that carries its expectation.
+> - **It was written from `770f4dd`**, on the branch of #267, which is `7929328`
+>   on `main`: the commit that carries the part added after its first run. Its
+>   section below names the commit that carries its expectation.
 > - **Its code digest is `36b0735352d7dde6`**, because `corrections/shape.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. The modules Stage C ran did not change.
+>   was added after the readings above. `main` computes it at `7929328`, and
+>   still at the merge of #267. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -2903,15 +2905,21 @@ completed into one such order, decides every point the base decides as the base
 does.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.shape`, on
-2026-11-16 in local time, from `770f4dd` with its code clean, on this reading's
-branch. It ran in three processes, one for each L run.
-- **The commits.** `b13930c` carries the reading and its expectation, written
-  before the reading ran. `770f4dd` carries the part added after the first run,
-  which moves no clause. The first run's record was not committed.
-- **The record was committed alone**, as `9629c84`.
+2026-11-16 in local time, from `770f4dd` with its code clean, on the branch of
+#267, which is `7929328` on `main`. It ran in three processes, one for each L
+run.
+- **The commits.** `cf71953` on `main` carries the reading and its expectation,
+  written before the reading ran. `7929328` carries the part added after the
+  first run, which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `82294e7`.
+- **On #267's branch the three commits were `b13930c`, `770f4dd` and
+  `9629c84`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`, and the GitHub API names #267 behind the three
+  `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `36b0735352d7dde6`, is the one `770f4dd` computes.
+  digest, `36b0735352d7dde6`, is the one `main` computes at `7929328`, and still
+  at the merge.
 - **The record is [`shape.json`](shape.json).** Its 16 gates passed:
   - **the search found the hidden policy's optimum**, all 134,400 points, from
     the 64 declared random starts alone. 11 of them found it, the first at start
