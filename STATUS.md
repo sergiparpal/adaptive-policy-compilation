@@ -3460,6 +3460,13 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        those it installed.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking the loop declared*.
+     **[NOTE 2026-11-16, after the fifteenth] And the readings that counted the
+     declarations were audited, POST-RUN.** Three answers cite rules on both
+     sides, and `corrections/fall.py`'s `declared` kept the refused side. Read
+     on the other side, seven figures of that record move, by one to six, each
+     now with a dated erratum there. No verdict moves, and none is cited here.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The citations on both sides*.
 
    All three are read above.
 
