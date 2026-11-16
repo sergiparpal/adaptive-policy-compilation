@@ -3488,6 +3488,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        above the ranking alone in L r3 alone: 0.6783 against 0.5987.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking and a guard on containment*.
+     **[NOTE 2026-11-16, after the eighteenth] And why that ranking puts
+     `BILLING_SPECIALIST` low, POST-RUN.** It puts the queue seventh in L r1 and
+     L r3, where the best ranking puts it second and fifth.
+     - **Most votes against it were right about the two rules each placed**,
+       most of them the security and on-call pairs', about the layers the
+       policy decides before billing's. Beyond those, 684 of 1,266 strict
+       votes were right in L r1, and 426 of 1,213 in L r3.
+     - **Where its place costs, a pair's right votes can be wrong as a
+       ranking.** In L r3 billing above `T2_TECHNICAL` gains 940 points of the
+       space, though 186 of that pair's 194 strict votes against it were
+       right.
+     - **Its place is a minority of what the ranking lacks.** Moved to its
+       best place, it gains 805 of the 4,045 points the declared ranking
+       lacks in L r1, and 900 of 2,500 in L r3.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the declarations put `BILLING_SPECIALIST` low*.
 
    All three are read above.
 
