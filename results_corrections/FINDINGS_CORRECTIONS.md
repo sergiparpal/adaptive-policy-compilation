@@ -44,6 +44,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   merged, so it was closed by hand.
 - **The POST-RUN reading of the ranking the loop declared, as it went** reached
   it in #275, merged on 2026-11-16.
+- **The POST-RUN reading of the ranking and a guard on containment** reaches it
+  in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -268,6 +270,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `4e7676d`, and
 >   still at the merge of #275. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the seventeenth] And an eighteenth.**
+> [`guard.json`](guard.json) is the POST-RUN reading of the ranking as the loop
+> went, with a guard on containment.
+> - **It was written from `563e125`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `e2894cf3b18b0191`**, because `corrections/guard.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -3813,6 +3825,9 @@ r2 and L r3, and U6 on L r2 alone.
   and a rule of another queue kept from being born nested in the keyword's
   region. The replay shows what the first buys on these births, and the second
   is what it leaves.
+  **[NOTE 2026-11-16] A guard on the second was replayed POST-RUN, below.** It
+  gives back what containment held, and takes the loop's own exception with it.
+  *The ranking and a guard on containment*.
 
 ### What it does not settle
 
@@ -3825,6 +3840,150 @@ r2 and L r3, and U6 on L r2 alone.
 3. **What the other drops are.** The largest drop of L r2 and of L r3 is a birth
    nested in the keyword's region. The others are not read. Free on the
    records.
+
+## The ranking and a guard on containment — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** Ranked as it went, the loop kept what conflicts cost it, and not what
+containment cost it. In L r2 and L r3 the replay fell where a rule of another
+queue was born nested in a security rule. This reading replays the same births
+with both levers: the same ranking, and a guard on containment. It spends
+nothing.
+
+**The guard.** After each birth, under the ranking chosen then, every rule born
+so far that lies strictly inside a rule born so far of a queue ranked above its
+own is set aside, and decides nothing while that holds. The rest are ordered and
+read as the reading above reads them. Neither lever reads the truth. The
+drafter named the guard's cost before it ran: the policy sends part of the
+keyword's region to `T2_TECHNICAL`, and a rule of that queue written for it,
+nested in a security rule, is set aside with the rest.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.guard`, on 2026-11-16
+in local time, from `563e125` with its code clean, on this reading's branch.
+- **The commits.** `563e125` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `91886d8`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `e2894cf3b18b0191`, is the one `563e125` computes.
+- **The record is [`guard.json`](guard.json).** Its 12 gates passed:
+  - each L run's final base is Stage C's;
+  - without the guard, the replay decides at every birth what `online.json`
+    keeps;
+  - the record's curve is `fall.json`'s, and meets `score.json`'s checkpoints;
+  - at each checkpoint, the base the guard keeps, installed in the replay's
+    order into a fresh rung 2 engine, closes no cycle, and the engine and first
+    match each decide what the replay reads.
+
+### 1. The guard takes the exceptions with the errors
+
+At the end of each run, against the ranking alone:
+
+| run | rules set aside | points gained | `SECURITY_INCIDENT`'s | points lost | `T2_TECHNICAL`'s |
+|---|---|---|---|---|---|
+| L r1 | 65 | 14,885 | 8,400 | 27,630 | 21,940 |
+| L r2 | 77 | 20,935 | 16,800 | 22,010 | 16,800 |
+| L r3 | 39 | 36,395 | 33,600 | 25,705 | 22,145 |
+
+- **It gives `SECURITY_INCIDENT` back what containment held from it**: 8,400,
+  16,800 and 33,600 points, as *Shape or order* counted them. `R0120` and
+  `R0104` are among the rules it sets aside (X1 holds).
+- **It takes the loop's exception with them.** The policy sends the keyword's
+  tickets of free and pro clients at severity 3 or more to `T2_TECHNICAL`. In
+  L r1 the loop wrote that exception as `R0085`, and the guard sets it aside.
+  Most of what the guard loses is that queue's: 21,940, 16,800 and 22,145
+  points.
+- **In L r2 the two even out**: 16,800 of `SECURITY_INCIDENT`'s points gained,
+  and 16,800 of `T2_TECHNICAL`'s lost. `R0120`, the keyword at severity 3 or
+  more, held as much of the one as of the other.
+- **In L r3 the gain is larger.** `R0104`, the keyword at every severity but 1,
+  was broader than the exception.
+- **It sets aside rules outside the keyword too.** The largest group is
+  `T1_GENERAL`'s, 27, 37 and 17 rules, such as L r2's `R0054`, off hours at
+  severity 3 or more.
+
+### 2. At the checkpoints
+
+The share of the space, at once's from `score.json` and the ranking alone's
+from `online.json`:
+
+| run | | 10 | 20 | 40 | 80 | 160 | all |
+|---|---|---|---|---|---|---|---|
+| L r1 | both levers | 0.5185 | 0.5686 | 0.6144 | 0.6739 | 0.6602 | 0.6547 |
+| | the ranking alone | 0.5231 | 0.5686 | 0.6272 | 0.7408 | 0.7541 | 0.7495 |
+| | at once | 0.5944 | 0.6051 | 0.6952 | 0.4760 | 0.7890 | 0.7584 |
+| L r2 | both levers | 0.5490 | 0.6641 | 0.6769 | 0.6632 | 0.6813 | 0.6781 |
+| | the ranking alone | 0.6391 | 0.7398 | 0.7433 | 0.6997 | 0.7228 | 0.6861 |
+| | at once | 0.5541 | 0.5594 | 0.5250 | 0.3829 | 0.6240 | 0.6252 |
+| L r3 | both levers | 0.2586 | 0.6456 | 0.6664 | 0.7015 | 0.6817 | 0.6783 |
+| | the ranking alone | 0.2398 | 0.6402 | 0.6422 | 0.5759 | 0.5907 | 0.5987 |
+| | at once | 0.5713 | 0.6051 | 0.4607 | 0.6122 | 0.6928 | 0.7725 |
+
+- **In L r1 the guard is never above the ranking alone, and in L r2 always
+  below it** (X4 fails).
+- **In L r3 it is above the ranking alone at every checkpoint**, and above at
+  once at 20, 40 and 80 labels.
+- **At all labels it is above at once in L r2 alone** (X2 fails, the bet).
+
+### 3. The peak and the fall
+
+| run | both levers: peak | at birth | final | the ranking alone: final | the record: peak |
+|---|---|---|---|---|---|
+| L r1 | 0.6816 | 123 | 0.6547 | 0.7495 | 0.6896 |
+| L r2 | 0.6893 | 110 | 0.6781 | 0.6861 | 0.7773 |
+| L r3 | 0.7050 | 126 | 0.6783 | 0.5987 | 0.6895 |
+
+- **It still falls**, by 0.0269, 0.0112 and 0.0267 from its peak (X3 fails on L
+  r1 and L r3).
+- **Its peak is above the record's in L r3 alone** (X6 fails).
+
+### The expectation
+
+Written in `corrections/guard.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| X1, at the end, the guard sets aside R0120 in L r2 and R0104 in L r3 | both set aside | **holds** |
+| X2, in every L run, at all labels, the replay with both levers decides more of the space than at once | 0.6547, 0.6781 and 0.6783, against 0.7584, 0.6252 and 0.7725 | fails |
+| X3, in every L run, its final is within 0.02 of the space of its own peak | 0.0269, 0.0112 and 0.0267 below it | fails |
+| X4, in every L run, at all labels, it decides more of the space than the ranking alone | 0.6547, 0.6781 and 0.6783, against 0.7495, 0.6861 and 0.5987 | fails |
+| X5, in every L run, the points the guard loses at the end are fewer than a quarter of those it gains | 27,630, 22,010 and 25,705 lost, against 14,885, 20,935 and 36,395 gained | fails |
+| X6, in every L run, its peak is at least the record's | 0.6816, 0.6893 and 0.7050, against 0.6896, 0.7773 and 0.6895 | fails |
+
+**X1 holds, and X2 to X6 fail.** The bet, X2, failed on L r1 and L r3. X1,
+trusted most, held. X5, trusted least, failed in every run, by more than its
+account allowed: in L r1 and L r2 the guard lost more than it gained.
+
+### What it says
+
+- **A guard that reads no truth takes the loop's exceptions with its errors.**
+  The same nesting that let rules of another queue take `SECURITY_INCIDENT`'s
+  points carries the loop's rules for the policy's own exception in the
+  keyword's region. Setting aside every rule nested in a higher queue's gives
+  the first back and takes the second away.
+- **It pays where the nested rule was broader than the exception**, as `R0104`
+  was in L r3. It loses where the loop wrote the exception itself, as `R0085`
+  in L r1.
+- **On these births the ranking alone is the better lever**: above the guard at
+  all labels in L r1 and L r2.
+- **So what containment costs lies in which rules are born.** A guard on the
+  order cannot tell a right exception from a wrong one, since that takes
+  reading what each rule decides. That leaves the births: a loop that writes the
+  exception narrow, or one shown the rule its draft would nest in. Calls.
+
+### What it does not settle
+
+1. **A guard that tells an exception from an error without the truth.** This
+   one sets aside every nested rule of a lower queue. One that kept a nested
+   rule narrower than some share of its container would keep `R0085` and set
+   aside `R0104`. Its line would have to be set before it is read, with an
+   expectation of its own, or it is tuning. Free on the records.
+2. **The loop that would have run.** These are the loop's own births. A loop
+   with both levers would decide other cases, escalate others and write other
+   rules. Calls, and a plan.
+3. **What the rules set aside outside the keyword decided.** The largest group
+   is `T1_GENERAL`'s, and what each cost is not read. Free on the records.
 
 ---
 
@@ -3869,3 +4028,5 @@ r2 and L r3, and U6 on L r2 alone.
   what the readings that kept one move.
 - [`online.json`](online.json): POST-RUN, the ranking the loop declared, as it
   went.
+- [`guard.json`](guard.json): POST-RUN, the ranking as the loop went, and a
+  guard on containment.
