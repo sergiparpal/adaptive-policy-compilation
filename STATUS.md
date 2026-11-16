@@ -3504,6 +3504,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        lacks in L r1, and 900 of 2,500 in L r3.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *Why the declarations put `BILLING_SPECIALIST` low*.
+     **[NOTE 2026-11-16, after the nineteenth] And what the rest of what that
+     ranking lacks is, POST-RUN.** Every declared ranking puts `T3_ENGINEERING`
+     above `ACCOUNT_MANAGER`, and every best ranking puts it below.
+     - **That pair carries most of it.** Turned alone, it gains 3,240 of the
+       4,045 points the declared ranking lacks in L r1, 2,900 of 3,095 in L r2
+       and 1,600 of 2,500 in L r3, in the churn layer, which the policy puts
+       before product routing. The best ranking's other moves add to it
+       exactly.
+     - **With it turned, the declared ranking beats at once in L r1 and L r2**:
+       0.7736 and 0.7077 of the space, against 0.7584 and 0.6252.
+     - **Its votes were wrong pair by pair.** 20 of 46, 17 of 49 and 17 of 36
+       strict votes for `T3_ENGINEERING` named the better rule, and every
+       strict vote for `ACCOUNT_MANAGER`.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What the rest of what the declared ranking lacks is*.
 
    All three are read above.
 
