@@ -35,6 +35,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   time.
 - **The POST-RUN reading of shape or order** reached it in #267, merged on
   2026-11-16.
+- **The POST-RUN reading of whether the order the loop lacks is a ranking of
+  the queues** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -212,6 +214,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `7929328`, and
 >   still at the merge of #267. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the thirteenth] And a fourteenth.**
+> [`hierarchy.json`](hierarchy.json) is the POST-RUN reading of whether the
+> order the loop lacks is a ranking of the queues.
+> - **It was written from `f5ff529`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `423f43512f91c958`**, because
+>   `corrections/hierarchy.py` was added after the readings above. Its `_env`
+>   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -583,6 +595,11 @@ best of the learners trained on the same labels:
   the truth, decides more of the space than at once. In L r3 no order of them
   reaches it: rules of another queue nested in the keyword's region hold
   `SECURITY_INCIDENT`'s points there by containment. *Shape or order*.
+  **[NOTE 2026-11-16] And the order it lacks there is mostly a ranking, read
+  POST-RUN below.** Ordered by one ranking of the queues, `SECURITY_INCIDENT`
+  first, the loop's own rules decide more of the space than at once in L r1 and
+  L r2. Neither its labels nor the model's stated rankings find it. *A ranking
+  of the queues as the order*.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
 
@@ -3087,6 +3104,214 @@ trusted least, failed in every run.
 3. **What the labels bought in L r2**, and why so much more than in L r1 and L
    r3. Free on the records.
 
+## A ranking of the queues as the order — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** In L r1 and L r2 an order of the loop's own rules, found with the
+truth, decides more of the space than at once. Neither completing the base by
+birth nor searching it on its own labels found that order (*Shape or order*),
+and the levers left were calls, the model asked to order the loop's rules among
+them. This reading asks first whether the order the loop lacks is a ranking of
+the eight queues: one fixed order between them, which an operator could give
+once, a few labels could fit, or a model has already stated. There are 40,320,
+and every one is read. It spends nothing.
+
+**A ranking, as an order rung 2's engine can install.**
+`rung3/queue_hierarchy_floor.py` sorts the rules by their queue's rank. Rung 2's
+engine lets a rule strictly inside another beat it wherever both match, so an
+order it installs puts every such rule before the rule around it (*Shape or
+order*). Where a rule of a lower-ranked queue lies strictly inside one of a
+higher-ranked queue, no order keeps both the ranking and containment. Two
+constructions place the pair:
+- **pulled**, which the clauses read: each rule as early as its queue's rank and
+  containment allow, the rules nested in it just before it, in its place;
+- **waiting**: each rule at its own queue's rank, a rule waiting for every rule
+  nested in it.
+Where containment is silent both are rung 3's order, by rank and then by birth.
+Inside a queue the ties go by birth.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.hierarchy`, on
+2026-11-16 in local time, from `f5ff529` with its code clean, on this reading's
+branch. It ran in three processes, one for each L run, and read the hidden
+policy's rules in the parent.
+- **The commits.** `f5ff529` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `eb355d9`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `423f43512f91c958`, is the one `f5ff529` computes.
+- **The record is [`hierarchy.json`](hierarchy.json).** Its 18 gates passed:
+  - each L run's final base and its three at-once answers at all labels are
+    Stage C's. On this reading's instances, the record, the bound and the order
+    with the truth that `shape.json` keeps give its figures;
+  - every order of every ranking, under both constructions, puts every rule
+    strictly inside another before it. Every order reported installs into a
+    fresh rung 2 engine and closes no cycle, and the engine and first match each
+    give it the share read;
+  - no ranking decides more than its rules' bound;
+  - each set of rules was read under all 40,320 rankings, and every ranking on
+    record is one of them.
+
+**What it reads.** Each L run's final base under every ranking and both
+constructions:
+- **the best ranking**, chosen with the truth;
+- **the blind rankings**, all 40,320, and grouped by the place they give
+  `SECURITY_INCIDENT`;
+- **the rankings its labels choose**: those that decide the most of the run's
+  labels right, the reported errors with their true queues;
+- **the rankings on record**:
+  - **stated**: the 24 the model gave in `PLAN_RANKING.md`'s session, asked for
+    the order that decides which queue wins a contested ticket and shown the
+    queues' names alone, and their Borda count;
+  - **revealed**: Copeland over the model's pairwise answers about rung 1's
+    learned base;
+  - **Stage C's**: the ranking that best fits the answer key of the hidden
+    policy's 170 labelled pairs. It reads the policy, on another object.
+
+Each run's three at-once answers, and the hidden policy's own rules written as
+an answer, are read under every ranking too.
+
+### 1. One ranking orders the loop's rules above at once in L r1 and L r2
+
+The share of the space, the first three columns from `shape.json`:
+
+| run | at once | the loop: completed | with the truth | best ranking | Stage C's | stated, median | by its labels, median | blind, median |
+|---|---|---|---|---|---|---|---|---|
+| L r1 | 0.7584 | 0.5983 | 0.8610 | 0.7796 | 0.7779 | 0.6806 | 0.4470 | 0.3907 |
+| L r2 | 0.6252 | 0.4637 | 0.7837 | 0.7091 | 0.7077 | 0.5794 | 0.5285 | 0.3430 |
+| L r3 | 0.7725 | 0.5801 | 0.6903 | 0.6173 | 0.6173 | 0.5169 | 0.5302 | 0.3654 |
+
+- **In L r1 and L r2 a ranking is enough** (Y2 holds, the bet). Ordered by
+  their best ranking, the loop's own rules decide more of the space than at
+  once. They stay below their order with the truth (Y1 holds).
+- **It puts `SECURITY_INCIDENT` first**, in every run (Y3 holds).
+  - **L r1's best** is `SECURITY_INCIDENT`, `BILLING_SPECIALIST`,
+    `ONCALL_ESCALATION`, `ACCOUNT_MANAGER`, `T3_ENGINEERING`, `T2_TECHNICAL`,
+    `SELF_SERVICE_DEFLECT`, `T1_GENERAL`.
+  - **L r2's** puts `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and `T3_ENGINEERING`
+    next, and **L r3's** is Stage C's.
+  - **The rankings that put the queue first** decide 0.6703, 0.5638 and 0.4895
+    of the space at their median.
+- **It takes the keyword half as the order with the truth does.** In L r1 and
+  L r3 it decides right the same points there, 58,800 and 33,600, and in L r2
+  47,040 against 48,520. What it lacks lies outside: 45,980 points there
+  against 56,915 in L r1, 48,265 against 56,810 in L r2, and 49,370 against
+  59,171 in L r3.
+- **It keeps more of the rarest queue than the order with the truth.**
+  `ONCALL_ESCALATION`'s recall is 0.4667, 0.8667 and 0.7833 under it, against
+  0.3492, 0.2952 and 0.5611.
+- **Stage C's ranking comes within 0.002 of the best**, and in L r3 it is the
+  best. It was fitted on the hidden policy's pairs, not on these runs.
+
+### 2. What the loop had does not find it
+
+- **The labels do not choose it** (Y4 holds).
+  - **L r1's never place `SECURITY_INCIDENT`.** 128 rankings decide the most of
+    its labels right, 120 of 216, and they put the queue in each of the eight
+    places 16 times. At their median they decide 0.4470 of the space, below the
+    base completed.
+  - **L r2's and L r3's place it in the first four.** They choose 4 rankings
+    and 60, which decide 0.5285 and 0.5302 at their median.
+  - **The best of each set decides 0.7762, 0.6756 and 0.5801**, and nothing in
+    the labels picks it out.
+  - **The rankings fit the labels between the base completed and the
+    completed order searched on them** (*Shape or order*): 120, 138 and 119
+    labels right, against 116, 107 and 107, and 165, 181 and 163.
+- **The model's stated rankings take the keyword half and give the rest away**
+  (Y5 fails, on L r3 alone).
+  - **All 24 put `SECURITY_INCIDENT` first.** The modal one, given by 14 asks
+    and their Borda count, decides right in the keyword half what the best
+    ranking does, in every run.
+  - **It puts `ACCOUNT_MANAGER` seventh of eight**, below every technical tier,
+    `T1_GENERAL` and `BILLING_SPECIALIST`. The queue's recall falls to 0.0000,
+    0.0037 and 0.0347.
+  - **At their median they decide 0.6806, 0.5794 and 0.5169**: above the base
+    completed in L r1 and L r2, below it in L r3, and below at once in every
+    run.
+- **The revealed ranking puts `ONCALL_ESCALATION` first**, and loses part of
+  the keyword half: `SECURITY_INCIDENT`'s recall is 0.5, 0.3333 and 0.1667
+  under it. It decides 0.5894, 0.5585 and 0.5093.
+
+### 3. Pulled, waiting, the answers and the policy
+
+- **Waiting, no ranking reaches at once in L r1 and L r2** (Y6 holds). The
+  best decides 0.6564, 0.4905 and 0.6004. There the queue's rule waits for the
+  rules of other queues nested in it, behind the rules of the queues ranked
+  between. `SECURITY_INCIDENT`'s recall is 0.6686, 0.3421 and 0.3333 under the
+  best.
+- **The at-once answers are rankings already.** Each answer's best ranking
+  decides at least what its own list does, and in six of the nine what its
+  order with the truth does. Ranked the same way, the median answer decides
+  0.7584, 0.6981 and 0.7725: less than the loop's rules in L r1 and L r2, more
+  in L r3.
+- **The hidden policy lies near a ranking.**
+  - **Its own rules, under their best ranking, decide 0.9756 of the space.**
+    The ranking is `SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `ACCOUNT_MANAGER`,
+    `T2_TECHNICAL`, `T3_ENGINEERING`, `BILLING_SPECIALIST`,
+    `SELF_SERVICE_DEFLECT`, `T1_GENERAL`, the first of 12 that tie.
+  - **They fall short where the drafter read the policy's contradictions**:
+    `BILLING_SPECIALIST`'s recall is 0.7135, and `T3_ENGINEERING`'s 0.8411.
+  - **The rankings on record**: Stage C's decides 0.9321 of it, the stated
+    rankings 0.8867 at their median, and the revealed one 0.7836.
+
+### The expectation
+
+Written in `corrections/hierarchy.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| Y1, in every L run, the best ranking of the loop's rules decides less of the space than its rules with the truth | 0.7796, 0.7091 and 0.6173, against 0.8610, 0.7837 and 0.6903 | **holds** |
+| Y2, in L r1 and in L r2, the best ranking of the loop's rules decides more of the space than at once | 0.7796 and 0.7091, against 0.7584 and 0.6252 | **holds** |
+| Y3, in every L run, the best ranking of the loop's rules puts `SECURITY_INCIDENT` first | first in all three | **holds** |
+| Y4, in every L run, the rankings its labels choose decide, at their median, less of the space than at once | 0.4470, 0.5285 and 0.5302, against 0.7584, 0.6252 and 0.7725 | **holds** |
+| Y5, in every L run, the model's stated rankings decide, at their median, more of the space than the loop's base completed | 0.6806, 0.5794 and 0.5169, against 0.5983, 0.4637 and 0.5801 | fails |
+| Y6, in L r1 and in L r2, the best ranking pulled decides more of the space than the best ranking waiting | 0.7796 and 0.7091, against 0.6564 and 0.4905 | **holds** |
+
+**Y1, Y2, Y3, Y4 and Y6 hold, and Y5 fails.** The bet, Y2, held. Y5, trusted
+least, failed on L r3 alone: there the stated rankings lose more outside the
+keyword half than the base completed by birth does. Y4 could not fail in L r3,
+as its account said.
+
+### What it says
+
+- **In L r1 and L r2 the order the loop lacks is mostly one ranking of the
+  queues**, with `SECURITY_INCIDENT` first. Ordered by it, the loop's own rules
+  beat at once there. What the ranking leaves to an order chosen rule by rule
+  lies outside the keyword half. There the policy orders some pairs of queues
+  one way in one region and the other way in another.
+- **Such a ranking exists without these runs.** Stage C's comes within 0.002 of
+  the best. It was fitted on which of two of the policy's rules should win, 170
+  times: knowledge of the policy, not of the runs.
+- **What the loop had does not give it.** Its labels never place
+  `SECURITY_INCIDENT` in L r1, and choose rankings that decide less than its
+  base completed there. The model's stated rankings place the queue first and
+  give `ACCOUNT_MANAGER` away: asked for an order, the model gave a priority, as
+  `PLAN_RANKING.md` found.
+- **How a ranking meets containment matters as much as the ranking.** Pulled,
+  the best ranking beats at once in L r1 and L r2. Waiting, none does.
+- **In L r3 no ranking helps**, as no order does: rules of another queue nested
+  in the keyword's region hold the queue's points.
+- **The at-once answers are rankings already, and the policy lies near one.**
+  Ranked the same way, the loop's rules beat the answers in two runs of three.
+
+### What it does not settle
+
+1. **A loop that orders its rules by a ranking.** These are the loop's final
+   rules, ordered after the run. A loop whose engine installed each birth by a
+   fixed ranking would decide other cases on the way, escalate others, and
+   write other rules. Calls, and a plan.
+2. **Where a deployment would get the ranking.** Stage C's was fitted on the
+   hidden policy's answer key. Whether the model gives it when shown the order
+   at work, as `PLAN_RANKING.md` left open, or how few labelled pairs fit it,
+   is not read. The first is asks, cents.
+3. **What the best ranking leaves outside the keyword half**: which pairs of
+   queues it orders against the order with the truth, and on how many points.
+   Free on the records.
+4. **The tie-break inside a queue.** Where containment pulls a rule into
+   another queue's place, its birth sets its place among that queue's rules.
+   Another tie-break could move the figures. Not read.
+
 ---
 
 ## Files
@@ -3122,3 +3347,5 @@ trusted least, failed in every run.
   `ONCALL_ESCALATION` and the layer below it.
 - [`shape.json`](shape.json): POST-RUN, shape or order: what the loop's own
   rules could decide, ordered.
+- [`hierarchy.json`](hierarchy.json): POST-RUN, whether the order the loop lacks
+  is a ranking of the queues.
