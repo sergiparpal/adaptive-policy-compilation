@@ -37,6 +37,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   2026-11-16.
 - **The POST-RUN reading of whether the order the loop lacks is a ranking of
   the queues** reached it in #269, merged on 2026-11-16.
+- **The POST-RUN reading of whether the loop declared the ranking it lacks**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -225,6 +227,16 @@ corrected during Stage C.**
 >   `corrections/hierarchy.py` was added after the readings above. `main`
 >   computes it at `f801387`, and still at the merge of #269. Its `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the fourteenth] And a fifteenth.**
+> [`declared.json`](declared.json) is the POST-RUN reading of whether the loop
+> declared the ranking it lacks.
+> - **It was written from `62587b8`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `da99302475a446c0`**, because
+>   `corrections/declared.py` was added after the readings above. Its `_env`
+>   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
 >   Stage C ran did not change.
 
 **This record owns every figure in it.**
@@ -602,6 +614,10 @@ best of the learners trained on the same labels:
   first, the loop's own rules decide more of the space than at once in L r1 and
   L r2. Neither its labels nor the model's stated rankings find it. *A ranking
   of the queues as the order*.
+  **[NOTE 2026-11-16] And the loop had declared most of it, read POST-RUN
+  below.** Gathered by pair of queues, its own placement declarations choose
+  one ranking, `SECURITY_INCIDENT` first, which orders its rules above at once
+  in L r2 and just below it in L r1. *The ranking the loop declared*.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
 
@@ -3322,6 +3338,151 @@ as its account said.
    another queue's place, its birth sets its place among that queue's rules.
    Another tie-break could move the figures. Not read.
 
+## The ranking the loop declared — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** In L r1 and L r2 one ranking of the queues orders the loop's own rules
+above at once, and neither the run's labels nor the model's stated rankings find
+it (*A ranking of the queues as the order*). This reading asks whether the loop
+had declared it. At every birth, the placement round's answer declared the
+newborn above or below rules of other queues. Gathered by pair of queues, the
+declarations choose rankings, and those order the loop's rules as the reading
+above orders them, pulled. It spends nothing.
+
+**The declarations.** Each citation of each answer is one vote for the queue
+it declared above, whether the engine installed it, refused it for closing a
+cycle, or never ruled on it because the round had not shown the rule
+(outside). A citation of a rule of the newborn's own queue is left out.
+`corrections/fall.py`'s `declared` keeps one citation a rule. This reading
+keeps one a rule and side, because in L r1 and L r2 one answer each cited a
+rule on both sides. The rankings the declarations choose are those, of the
+40,320, that agree with the most votes.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.declared`, on
+2026-11-16 in local time, from `62587b8` with its code clean, on this reading's
+branch.
+- **The commits.** `62587b8` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `7dc6f7a`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `da99302475a446c0`, is the one `62587b8` computes.
+- **The record is [`declared.json`](declared.json).** Its 15 gates passed:
+  - each L run's final base is Stage C's, and its instance `shape.json`'s;
+  - every declaration the engine ruled on is in the run's edge log, with the
+    verdict read, and every edge of the log is one of them;
+  - the run's best ranking in `hierarchy.json`, read here, decides what that
+    record keeps;
+  - every order read installs into a fresh rung 2 engine and closes no cycle,
+    and the engine and first match each give it the share read. No ranking
+    read decides more than the rules' bound.
+
+### 1. The loop declared one ranking, `SECURITY_INCIDENT` first
+
+- **The votes.** L r1's answers cast 7,254: 5,405 installed and 1,849 refused.
+  L r2's cast 6,460: 4,254 installed, 2,159 refused and 47 outside the round.
+  27 more cited rules of the newborn's own queue the round had not shown, and
+  are left out. L r3's cast 6,182: 4,586 installed and 1,596 refused.
+- **One ranking a run** (W1 holds). The votes leave no pair of queues even, and
+  choose one ranking in every run:
+  - **L r1 and L r3**: `SECURITY_INCIDENT`, `ONCALL_ESCALATION`,
+    `T3_ENGINEERING`, `ACCOUNT_MANAGER`, `T2_TECHNICAL`,
+    `SELF_SERVICE_DEFLECT`, `BILLING_SPECIALIST`, `T1_GENERAL`;
+  - **L r2**: the same, with `BILLING_SPECIALIST` fifth.
+- **Few votes go against `SECURITY_INCIDENT`**: 11 of 1,236 that meet it in L
+  r1, 24 of 1,985 in L r2, and 34 of 1,557 in L r3.
+
+### 2. It orders the loop's rules better than the loop did
+
+The share of the space, the first two columns from `shape.json` and the next
+two from `hierarchy.json`:
+
+| run | at once | the loop: completed | best ranking | stated, median | the ranking declared | from the installed votes alone |
+|---|---|---|---|---|---|---|
+| L r1 | 0.7584 | 0.5983 | 0.7796 | 0.6806 | 0.7495 | 0.7495 |
+| L r2 | 0.6252 | 0.4637 | 0.7091 | 0.5794 | 0.6861 | 0.6419 |
+| L r3 | 0.7725 | 0.5801 | 0.6173 | 0.5169 | 0.5987 | 0.5330 |
+
+- **Above the base completed and the stated rankings, in every run** (W3 and
+  W6 hold).
+- **Above at once in L r2, and 0.0089 of the space below it in L r1** (W2, the
+  bet, fails on L r1 alone).
+- **It takes the keyword half as the best ranking does**: 58,800, 47,040 and
+  33,600 points there. What it lacks lies outside: 41,935, 45,170 and 46,870
+  points, against the best ranking's 45,980, 48,265 and 49,370.
+- **What it lacks is mostly the queues of the billing tickets.**
+  `ACCOUNT_MANAGER`'s recall is 0.7226, 0.7591 and 0.7810 under it, against the
+  best ranking's 0.8321, 0.9562 and 0.8929. `BILLING_SPECIALIST`'s is 0.2990
+  and 0.1374 in L r1 and L r3, against 0.7018 and 0.2866, and
+  `SELF_SERVICE_DEFLECT`'s 0.4488 in L r2, against 0.9593.
+
+### 3. The refused votes were the righter ones
+
+- **Most votes agree with the best ranking**: 0.6023, 0.7537 and 0.7624 of
+  them (W4 holds).
+- **The refused agree more often than the installed**: 0.7123 against 0.5647
+  in L r1, and 0.7767 against 0.7426 in L r2 (W5 holds). In L r3, 0.8352
+  against 0.7370.
+- **Gathered from the installed votes alone**, the ranking is the same in L r1,
+  and decides less in L r2 and L r3, in L r3 less than the base completed.
+  What the engine refused carried part of the order.
+
+### The expectation
+
+Written in `corrections/declared.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| W1, in every L run, every ranking its declarations choose puts `SECURITY_INCIDENT` first | one ranking a run, `SECURITY_INCIDENT` first in all three | **holds** |
+| W2, in L r1 and in L r2, the rankings its declarations choose decide, at their median, more of the space than at once | 0.7495 and 0.6861, against 0.7584 and 0.6252 | fails |
+| W3, in every L run, they decide, at their median, more of the space than the loop's base completed | 0.7495, 0.6861 and 0.5987, against 0.5983, 0.4637 and 0.5801 | **holds** |
+| W4, in every L run, more than half of its votes agree with the best ranking | 0.6023, 0.7537 and 0.7624 | **holds** |
+| W5, in L r1 and in L r2, the votes the engine refused agree with the best ranking more often than those it installed | 0.7123 and 0.7767, against 0.5647 and 0.7426 | **holds** |
+| W6, in every L run, the rankings its declarations choose decide, at their median, more of the space than the model's stated rankings at theirs | 0.7495, 0.6861 and 0.5987, against 0.6806, 0.5794 and 0.5169 | **holds** |
+
+**W1, W3, W4, W5 and W6 hold, and W2 fails.** The bet, W2, failed on L r1
+alone, by 0.0089 of the space. W1, trusted least, held: the answers that climb
+left no pair with `SECURITY_INCIDENT` even.
+
+### What it says
+
+- **The loop declared most of the order it lacks.** Gathered by pair of
+  queues, its own declarations choose one ranking, `SECURITY_INCIDENT` first.
+  It orders the loop's rules better than the base the loop installed, in every
+  run. It beats at once in L r2, and falls just short in L r1.
+- **The loop lost it installing its declarations one at a time.** The votes
+  the engine refused for closing a cycle agree with the best ranking more often
+  than those it installed. Without them the ranking decides less in two runs of
+  three.
+- **Declaring beside the rules, the model ranks queues better than with their
+  names alone.** The same model put `ACCOUNT_MANAGER` fourth in every run's
+  declared ranking, and seventh in the ranking it stated most often. The two
+  differ in more than the rules in sight: the loop reasoned and had level 1's
+  catalogue, and the stated rankings were asked with reasoning off.
+- **What it misses is mostly the queues of the billing tickets**:
+  `ACCOUNT_MANAGER`'s in every run, `BILLING_SPECIALIST`'s in L r1 and L r3,
+  and `SELF_SERVICE_DEFLECT`'s in L r2.
+- **So a lever needs no new input.** A loop that gathered its own declarations
+  into one ranking, and installed its rules by it, would need no labels, no
+  operator and no new question. Whether it would keep this while writing its
+  rules is calls.
+
+### What it does not settle
+
+1. **A loop that installs by the ranking its declarations choose.** These are
+   the final declarations, gathered after the run. A loop that ranked as it
+   went would decide other cases on the way and write other rules. Calls, and
+   a plan.
+2. **The readings that read declarations through `corrections/fall.py`'s
+   `declared`.** It keeps one citation a rule, and in L r1 and L r2 one answer
+   each cited a rule on both sides. `fall.py`, `conditions.py`, `gateway.py`,
+   `above.py`, `byqueue.py` and `doors.py` read declarations through it.
+   Whether a figure of theirs moves is not read. Free on the records.
+3. **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
+   votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
+   `SELF_SERVICE_DEFLECT` go against it. Free on the records.
+
 ---
 
 ## Files
@@ -3359,3 +3520,5 @@ as its account said.
   rules could decide, ordered.
 - [`hierarchy.json`](hierarchy.json): POST-RUN, whether the order the loop lacks
   is a ranking of the queues.
+- [`declared.json`](declared.json): POST-RUN, whether the loop declared the
+  ranking it lacks.
