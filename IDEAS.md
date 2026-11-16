@@ -123,7 +123,10 @@ three refuted, and one reported, written up in `results_corrections/`. **Why L
 loses `ONCALL_ESCALATION` was read POST-RUN on November 15, 2026**, and the item
 it answers is struck in place. **Shape or order, whether at once beats the loop
 by its rules or by their order, was read POST-RUN on November 16, 2026**, and
-the item it answers is struck in place. This is a list of things not done,
+the item it answers is struck in place. **The readings that read the answers'
+declarations through `corrections/fall.py`'s `declared` were audited POST-RUN
+on November 16, 2026**, and the item the audit answers is struck in place.
+This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -804,11 +807,19 @@ learner of the labels alone matched the loop. What that leaves:
 - **The tie-break inside a queue.** Where containment pulls a rule into
   another queue's place, its birth sets its place among that queue's rules.
   Free on the records.
-- **The readings that read declarations through `corrections/fall.py`'s
-  `declared`.** It keeps one citation a rule, and in L r1 and L r2 one answer
-  each cited a rule on both sides. `fall.py`, `conditions.py`, `gateway.py`,
-  `above.py`, `byqueue.py` and `doors.py` read declarations through it.
-  Whether a figure of theirs moves is free on the records.
+- ~~**The readings that read declarations through `corrections/fall.py`'s
+  `declared`.**~~ **Audited POST-RUN on 2026-11-16** (`FINDINGS_CORRECTIONS.md`,
+  *The citations on both sides*), by `corrections/citations.py`.
+  - **Three answers cite rules on both sides**, eight in all, six of them N
+    r1's `R0263`. Each declared the rule above, installed, and below, refused,
+    and `declared` keeps the second.
+  - **Read on the other side, seven figures of the record move**, by one to
+    six, and each now carries a dated erratum. No verdict moves, and nothing
+    `STATUS.md` or this file cites.
+- **Whether readings of other threads key citations by rule.** The loops of
+  `PLAN_REASONED_LOOP.md`, `PLAN_CHANNEL.md`, `PLAN_PLACEMENT.md` and
+  `PLAN_WHOLE.md` record their declarations the same way, and their readings
+  may read them one citation a rule. Free on the records.
 - **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
   votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
   `SELF_SERVICE_DEFLECT` go against it, where the best ranking puts it second.
