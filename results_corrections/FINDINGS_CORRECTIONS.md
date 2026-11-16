@@ -39,8 +39,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   the queues** reached it in #269, merged on 2026-11-16.
 - **The POST-RUN reading of whether the loop declared the ranking it lacks**
   reached it in #271, merged on 2026-11-16.
-- **The POST-RUN audit of the citations on both sides** reaches it in the pull
-  request it is opened in.
+- **The POST-RUN audit of the citations on both sides** reaches it in #273.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
