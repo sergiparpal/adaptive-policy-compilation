@@ -19,6 +19,9 @@ What is pinned is the instrument:
 - the instrument's ceiling on the hidden policy;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
+Added after the first run: where a base's bound falls short, its three ways
+partitioning what the bound leaves, the rules that hold the points lost to
+containment, what an answer decides among them, and the median answer.
 """
 
 from __future__ import annotations
@@ -345,6 +348,67 @@ class TestTheLabels(unittest.TestCase):
         self.assertGreaterEqual(got["labels"]["searched"], got["labels"]["completed"])
         self.assertGreaterEqual(got["labels"]["completed"], got["labels"]["record"])
         self.assertEqual(got["labels"]["of"], 60)
+
+
+class TestWhereTheBoundFallsShort(unittest.TestCase):
+    """Added after the first run."""
+
+    def setUp(self):
+        # The keyword's rule, a rule of another queue nested in it, and a rule that
+        # carries a queue billing tickets rarely have; no catch-all.
+        raw = [r_("SECURITY_INCIDENT", c_("has_security_keyword", "eq", True)),
+               r_("T2_TECHNICAL", c_("has_security_keyword", "eq", True), c_("severity", "gte", 3)),
+               r_("T1_GENERAL", c_("product", "eq", "billing"))]
+        self.eng = MC.install(raw, SPACE).engine
+        self.ids = [r.rule_id for r in self.eng.rules]
+
+    def test_the_ways_partition_what_the_bound_leaves(self):
+        ways = S.short_of(self.eng, TRUTH, SPACE.n)
+        inside, around = S.containment(self.eng)
+        inst = S.instance(self.eng.rules, self.eng.ext, inside, around, TRUTH, SPACE.n)
+        self.assertEqual(ways["short"].bit_count(), SPACE.n - S.coverage(inst))
+        parts = [ways[k] for k in ("impasse", "unwritten", "contained")]
+        self.assertTrue(all(p for p in parts))
+        self.assertEqual(parts[0] | parts[1] | parts[2], ways["short"])
+        self.assertEqual(sum(p.bit_count() for p in parts), ways["short"].bit_count())
+        covered = 0
+        for e in self.eng.ext.values():
+            covered |= e
+        self.assertEqual(ways["impasse"], ways["short"] & ~covered)
+        kw = SPACE.mask["has_security_keyword"][True]
+        self.assertEqual(ways["contained"] & ~kw, 0)
+
+    def test_the_nested_rule_holds_the_keywords_points(self):
+        got, ok = S.read_short(self.eng, SPACE, TRUTH, answer_right=None)
+        self.assertTrue(ok)
+        self.assertEqual(got["held_by"][0]["rule"], self.ids[1])
+        self.assertEqual(got["held_by"][0]["action"], "T2_TECHNICAL")
+        self.assertIn("SECURITY_INCIDENT", got["contained_by_queue"])
+        self.assertEqual(got["contained"]["keyword"], got["contained"]["points"])
+        self.assertNotIn("the_median_answer_right", got)
+
+    def test_what_an_answer_decides_among_them(self):
+        ways = S.short_of(self.eng, TRUTH, SPACE.n)
+        right = MC.install([r_("SECURITY_INCIDENT", c_("has_security_keyword", "eq", True))],
+                           SPACE).engine
+        mask = MI.right_mask(right)
+        got, _ = S.read_short(self.eng, SPACE, TRUTH, answer_right=mask)
+        self.assertEqual(got["the_median_answer_right"]["points"],
+                         (mask & ways["short"]).bit_count())
+        self.assertGreater(got["the_median_answer_right"]["by_queue"]["SECURITY_INCIDENT"], 0)
+
+    def test_the_median_answer(self):
+        def row(*rules):
+            return {"payload": {"rules": list(rules)}}
+        sec = r_("SECURITY_INCIDENT", c_("has_security_keyword", "eq", True))
+        bil = r_("BILLING_SPECIALIST", c_("product", "eq", "billing"))
+        t1 = r_("T1_GENERAL", c_("severity", "gte", 1))
+        rows = [(1, row(sec, bil, t1)), (2, row(sec)), (3, row(sec, bil))]
+        rights = sorted(MI.right_mask(MC.install(r["payload"]["rules"], SPACE).engine).bit_count()
+                        for _, r in rows)
+        got = S.median_answer_right(rows)
+        self.assertEqual(got.bit_count(), rights[1])
+        self.assertIsNone(S.median_answer_right([]))
 
 
 class TestTheCeiling(unittest.TestCase):
