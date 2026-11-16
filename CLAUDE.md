@@ -1391,6 +1391,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.declared                      # POST-RUN: whether the loop declared the ranking it lacks
     PYTHONHASHSEED=0 python3 -m corrections.citations                     # POST-RUN: the citations on both sides, what the readings that kept one move
     PYTHONHASHSEED=0 python3 -m corrections.online                        # POST-RUN: the ranking the loop declared, as it went
+    PYTHONHASHSEED=0 python3 -m corrections.guard                         # POST-RUN: the ranking as it went, and a guard on containment
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1582,6 +1583,13 @@ after each birth by its declarations so far ends above the record in every
 run. It falls where a rule of another queue is born nested in the keyword's
 region. **A lever on the order leaves the rules it lets be born**: a ranking
 orders rules, and does not undo containment.
+
+**Read POST-RUN, a guard on containment that reads no truth takes the loop's
+exceptions with its errors.** The same nesting carries a rule of another queue
+that takes a queue's points, and the loop's rule for the policy's own exception.
+Set aside together, the guard lost more than it gained in two runs of three.
+**A lever that cannot read what a rule decides cannot tell an exception from an
+error.**
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

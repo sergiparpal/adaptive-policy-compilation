@@ -799,6 +799,13 @@ learner of the labels alone matched the loop. What that leaves:
   region, which no ranking undoes. So the plan has two levers to set beside
   each other: the ranking, and keeping such a rule from being born.
   `FINDINGS_CORRECTIONS.md`, *The ranking the loop declared, as it went*.
+  **[NOTE 2026-11-16] A guard on containment, replayed beside the ranking,
+  takes the loop's exceptions with its errors.** Setting aside every rule
+  nested in a higher-ranked queue's gave `SECURITY_INCIDENT` its points back,
+  and took the loop's rule for the policy's own exception in the keyword's
+  region. It lost more than it gained in L r1 and L r2. So the second lever is
+  in the births, not in a guard on the order. `FINDINGS_CORRECTIONS.md`, *The
+  ranking and a guard on containment*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
@@ -833,6 +840,14 @@ learner of the labels alone matched the loop. What that leaves:
 - **What the replay's other drops are.** Its largest drop in L r2 and in L r3 is
   a birth nested in the keyword's region. The others are not read. Free on the
   records.
+- **A guard that tells an exception from an error without the truth.** The
+  replayed guard set aside every nested rule of a lower queue. One that kept a
+  nested rule narrower than some share of its container would keep the loop's
+  exception and set aside the broad rule that took a queue's points. Its line
+  must be set before it is read, with an expectation, or it is tuning. Free on
+  the records.
+- **What the rules the guard set aside outside the keyword decided.** The
+  largest group was `T1_GENERAL`'s. Free on the records.
 - **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
   votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
   `SELF_SERVICE_DEFLECT` go against it, where the best ranking puts it second.

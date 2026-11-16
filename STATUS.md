@@ -3477,6 +3477,17 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        in the keyword's region, which no ranking undoes.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking the loop declared, as it went*.
+     **[NOTE 2026-11-16, after the seventeenth] And a guard on containment
+     beside that ranking, POST-RUN.** The guard set aside every rule nested in a
+     rule of a higher-ranked queue.
+     - **It gave `SECURITY_INCIDENT` back what containment held**, and took the
+       loop's own exception with it: the keyword's tickets of free and pro
+       clients at severity 3 or more, which the policy sends to
+       `T2_TECHNICAL`.
+     - **It lost more than it gained in L r1 and L r2**, and at all labels it is
+       above the ranking alone in L r3 alone: 0.6783 against 0.5987.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking and a guard on containment*.
 
    All three are read above.
 
