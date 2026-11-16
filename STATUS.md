@@ -3467,6 +3467,16 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      now with a dated erratum there. No verdict moves, and none is cited here.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The citations on both sides*.
+     **[NOTE 2026-11-16, after the sixteenth] And that ranking, replayed as the
+     loop went, POST-RUN.** On the loop's own births, the base ranked after each
+     birth by the declarations so far:
+     - **ends above the record in every run**, and in L r1 does not fall;
+     - **beats at once at every checkpoint in L r2**: from 40 labels on, 0.7433,
+       0.6997, 0.7228 and 0.6861, against 0.5250, 0.3829, 0.6240 and 0.6252;
+     - **falls in L r2 and L r3** where a rule of another queue is born nested
+       in the keyword's region, which no ranking undoes.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking the loop declared, as it went*.
 
    All three are read above.
 
