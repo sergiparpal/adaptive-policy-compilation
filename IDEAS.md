@@ -126,6 +126,8 @@ by its rules or by their order, was read POST-RUN on November 16, 2026**, and
 the item it answers is struck in place. **The readings that read the answers'
 declarations through `corrections/fall.py`'s `declared` were audited POST-RUN
 on November 16, 2026**, and the item the audit answers is struck in place.
+**Why the declarations put `BILLING_SPECIALIST` low was read POST-RUN the same
+day**, and the item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -806,6 +808,11 @@ learner of the labels alone matched the loop. What that leaves:
   region. It lost more than it gained in L r1 and L r2. So the second lever is
   in the births, not in a guard on the order. `FINDINGS_CORRECTIONS.md`, *The
   ranking and a guard on containment*.
+  **[NOTE 2026-11-16] The count is the weak part of that ranking, read
+  POST-RUN.** It puts `BILLING_SPECIALIST` below queues whose votes against it
+  were right about points the pair does not decide. A plan that ranks by the
+  declarations should say in §0 how it counts them. `FINDINGS_CORRECTIONS.md`,
+  *Why the declarations put `BILLING_SPECIALIST` low*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
@@ -848,10 +855,32 @@ learner of the labels alone matched the loop. What that leaves:
   the records.
 - **What the rules the guard set aside outside the keyword decided.** The
   largest group was `T1_GENERAL`'s. Free on the records.
-- **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
-  votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
-  `SELF_SERVICE_DEFLECT` go against it, where the best ranking puts it second.
-  Free on the records.
+- ~~**Why the declarations put `BILLING_SPECIALIST` low.**~~ **Read POST-RUN on
+  2026-11-16** (`FINDINGS_CORRECTIONS.md`, *Why the declarations put
+  `BILLING_SPECIALIST` low*), by `corrections/billing.py`.
+  - **Most votes against it were right about the two rules each placed**, most
+    of them about the layers the policy decides before billing's: security and
+    severity 1. Beyond those, about half were right in L r1, and a third in
+    L r3.
+  - **Where its place costs, a pair's right votes can be wrong as a ranking.**
+    A ranking gives one direction to every pair of rules of two queues, and
+    the count gives it to the side with more votes, not to where the pair
+    decides.
+  - **Its place is a minority of what the declared ranking lacks.** At its
+    best place billing gets the best ranking's recall, and the ranking still
+    lacks most of what it lacked.
+- **What the rest of what the declared ranking lacks is.** At billing's best
+  place the declared ranking still lacks most of what it lacked. Every
+  declared ranking puts `T3_ENGINEERING` above `ACCOUNT_MANAGER`, and every
+  best ranking puts it below. Free on the records.
+- **Why the answers name the worse rule against `SELF_SERVICE_DEFLECT`.** In
+  L r1 and L r3 most strict votes that put that queue above billing name the
+  worse rule, and in L r3 most of those that put `ACCOUNT_MANAGER` above it.
+  Their reasoning is not read. Free on the records.
+- **A count of what each pair decides.** A vote about points its pair does not
+  decide says nothing a ranking can use there. A count that left such votes
+  out, reading the base's own order and no truth, could choose another
+  ranking. Free on the records.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,

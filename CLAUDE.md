@@ -1392,6 +1392,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.citations                     # POST-RUN: the citations on both sides, what the readings that kept one move
     PYTHONHASHSEED=0 python3 -m corrections.online                        # POST-RUN: the ranking the loop declared, as it went
     PYTHONHASHSEED=0 python3 -m corrections.guard                         # POST-RUN: the ranking as it went, and a guard on containment
+    PYTHONHASHSEED=0 python3 -m corrections.billing                       # POST-RUN: why the declarations put BILLING_SPECIALIST low
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1590,6 +1591,15 @@ that takes a queue's points, and the loop's rule for the policy's own exception.
 Set aside together, the guard lost more than it gained in two runs of three.
 **A lever that cannot read what a rule decides cannot tell an exception from an
 error.**
+
+**Read POST-RUN, the declarations put `BILLING_SPECIALIST` low by a count that
+weighs every vote alike.** Most votes against it were right about the two rules
+each placed, most of them about the layers the policy decides before billing's.
+Where its place costs, a pair's votes were right and the ranking wrong. A
+ranking gives one direction to every pair of rules of two queues, and the count
+gives it to the side with more votes, not to where the pair decides. **A ranking
+gathered from votes should say in §0 how it weighs a vote about points its pair
+does not decide.**
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
