@@ -1386,6 +1386,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.conditions                    # POST-RUN: what makes an answer read the list by its conditions
     PYTHONHASHSEED=0 python3 -m corrections.oncall                        # POST-RUN: why L loses ONCALL_ESCALATION
     PYTHONHASHSEED=0 python3 -m corrections.layer                         # POST-RUN: what the at-once asks wrote for ONCALL_ESCALATION
+    PYTHONHASHSEED=0 python3 -m corrections.shape                         # POST-RUN: shape or order, the loop's own rules ordered
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1529,6 +1530,19 @@ writing the queue, and their reasoning says no correction names it. The loop
 keeps more of it, because its first rule stays. **What a compile cannot see, no
 shape of it learns.** Before blaming a loop's shape for a lost queue, count how
 often the labels it learns from name that queue.
+
+**Read POST-RUN, whether at once beats the loop by its rules or by their order
+has no single answer.** Installing each base in the other's order is not
+defined, since they are different rules. `corrections/shape.py` asks instead
+what each set of rules decides in the best order its engine can install, found
+by search and capped by a bound. In two runs the loop's own rules held more
+than at once, and its order lost it. In the third, rules of another queue
+nested in the keyword's region held the region by containment, which no order
+changes. **A search over orders an engine cannot install measures another
+machine.** Rung 3's optimizer was kept to the orders rung 2's engine installs,
+and measured on the hidden policy's known optimum before it read a record.
+**And a bound settles what a search cannot.** Where a set of rules' bound falls
+below a competitor, no order helps, and no search is needed to say so.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
