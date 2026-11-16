@@ -42,8 +42,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN audit of the citations on both sides** reached it from #273, on
   2026-11-16. The merge answered 502, and GitHub never marked the pull request
   merged, so it was closed by hand.
-- **The POST-RUN reading of the ranking the loop declared, as it went** reaches
-  it in #275.
+- **The POST-RUN reading of the ranking the loop declared, as it went** reached
+  it in #275, merged on 2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -261,12 +261,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the sixteenth] And a seventeenth.**
 > [`online.json`](online.json) is the POST-RUN reading of the ranking the loop
 > declared, as it went.
-> - **It was written from `685f46f`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `685f46f`**, on the branch of #275, which is `4e7676d`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `88db753e70125983`**, because `corrections/online.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `4e7676d`, and
+>   still at the merge of #275. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -3702,14 +3703,18 @@ over the space as rung 2's engine decides. **It is a replay, not the loop that
 would have run**: its rules are the ones the loop wrote.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.online`, on
-2026-11-16 in local time, from `685f46f` with its code clean, on this reading's
-branch.
-- **The commits.** `685f46f` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `f21ec45`.
+2026-11-16 in local time, from `685f46f` with its code clean, on the branch of
+#275, which is `4e7676d` on `main`.
+- **The commits.** `4e7676d` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `89576d3`.
+- **On #275's branch the two commits were `685f46f` and `f21ec45`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #275 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `88db753e70125983`, is the one `685f46f` computes.
+  digest, `88db753e70125983`, is the one `main` computes at `4e7676d`, and still
+  at the merge.
 - **The record is [`online.json`](online.json).** Its 12 gates passed:
   - each L run's final base is Stage C's;
   - after the last birth the votes, the ranking and what it decides are
