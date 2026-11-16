@@ -1387,6 +1387,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.oncall                        # POST-RUN: why L loses ONCALL_ESCALATION
     PYTHONHASHSEED=0 python3 -m corrections.layer                         # POST-RUN: what the at-once asks wrote for ONCALL_ESCALATION
     PYTHONHASHSEED=0 python3 -m corrections.shape                         # POST-RUN: shape or order, the loop's own rules ordered
+    PYTHONHASHSEED=0 python3 -m corrections.hierarchy                     # POST-RUN: whether the order the loop lacks is a ranking of the queues
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1543,6 +1544,17 @@ machine.** Rung 3's optimizer was kept to the orders rung 2's engine installs,
 and measured on the hidden policy's known optimum before it read a record.
 **And a bound settles what a search cannot.** Where a set of rules' bound falls
 below a competitor, no order helps, and no search is needed to say so.
+
+**Read POST-RUN, in two runs of three the order the loop lacks is mostly one
+ranking of the queues.** Ordered by it, the loop's own rules beat compiling at
+once. A ranking fitted to the policy's labelled pairs comes close to the best,
+and neither the run's labels nor the model's stated rankings find it. **A
+ranking must say how it meets containment.** Where a rule of a lower-ranked
+queue lies inside one of a higher-ranked queue, rung 2's engine cannot keep
+both. Pulling the nested rule up, or making the container wait, moved the
+result as much as the choice of ranking. **And count what labels decide before
+fitting to them**: in one run no labelled ticket decided where the queue that
+mattered goes.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
