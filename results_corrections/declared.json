@@ -1,0 +1,3230 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-16T10:18:16Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "62587b8a8742211efb07b8bb2f00b4749761e8cb",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "da99302475a446c0"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-16, after corrections/hierarchy.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "hierarchy": "results_corrections/hierarchy.json",
+    "hierarchy_from": "f5ff52915970d193dbd1ec06739a0bf58f30b63a",
+    "shape": "results_corrections/shape.json",
+    "runs": {
+      "l_r1": "results_corrections/loop_l_r1.json",
+      "l_r2": "results_corrections/loop_l_r2.json",
+      "l_r3": "results_corrections/loop_l_r3.json"
+    }
+  },
+  "surface": "the whole space, 134,400 points: each L run's final base, ordered by the rankings of the eight queues that its own placement declarations choose, under corrections/hierarchy.py's pulled construction",
+  "constants": {
+    "rankings": 40320,
+    "construction": "pulled"
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "the orders are hierarchy.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 5,
+      "what": "every order read installs, and the bound bounds",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "the orders are hierarchy.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 5,
+      "what": "every order read installs, and the bound bounds",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "the orders are hierarchy.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 5,
+      "what": "every order read installs, and the bound bounds",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "declarations": {
+        "of": 7254,
+        "by_verdict": {
+          "installed": 5405,
+          "refused": 1849
+        },
+        "within_a_queue": 0,
+        "unknown_rule": 0
+      },
+      "votes": {
+        "all": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 120,
+            "for_second": 314
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 1
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 108,
+            "for_second": 183
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 82
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 22,
+            "for_second": 86
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 232,
+            "for_second": 407
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 27,
+            "for_second": 92
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 167,
+            "for_second": 166
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 2,
+            "for_second": 344
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 109,
+            "for_second": 208
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 7,
+            "for_second": 255
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 410,
+            "for_second": 271
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 6,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 96
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 68,
+            "for_second": 44
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 3,
+            "for_second": 161
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 10,
+            "for_second": 1
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 1,
+            "for_second": 363
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 164,
+            "for_second": 429
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 723
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 381,
+            "for_second": 572
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 96,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 128,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 116,
+            "for_second": 8
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 179
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 65,
+            "for_second": 9
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 17,
+            "for_second": 0
+          }
+        ],
+        "installed": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 94,
+            "for_second": 260
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 1
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 75,
+            "for_second": 100
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 44
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 20,
+            "for_second": 70
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 192,
+            "for_second": 272
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 24,
+            "for_second": 80
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 166,
+            "for_second": 73
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 2,
+            "for_second": 218
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 85,
+            "for_second": 178
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 6,
+            "for_second": 217
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 375,
+            "for_second": 143
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 6,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 88
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 48,
+            "for_second": 31
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 3,
+            "for_second": 110
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 10,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 339
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 6,
+            "for_second": 413
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 672
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 151,
+            "for_second": 397
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 72,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 32,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 112,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 136
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 59,
+            "for_second": 7
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 17,
+            "for_second": 0
+          }
+        ]
+      },
+      "every_declaration": {
+        "votes": 7254,
+        "agreeing": 5578,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "quarter": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "median": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "three_quarters": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "most": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "mean": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          }
+        }
+      },
+      "installed_alone": {
+        "votes": 5405,
+        "agreeing": 4492,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "quarter": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "median": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "three_quarters": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "most": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "mean": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "right": 100735,
+            "halves": {
+              "keyword": 58800,
+              "outside": 41935
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "299/522",
+                "value": 0.572797
+              },
+              "T2_TECHNICAL": {
+                "fraction": "3193/3672",
+                "value": 0.869553
+              },
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "409/1368",
+                "value": 0.298977
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "5/6",
+                "value": 0.833333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "7/15",
+                "value": 0.466667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "327/430",
+                "value": 0.760465
+              }
+            },
+            "index": 24083
+          }
+        }
+      },
+      "against_best": {
+        "best": [
+          "SECURITY_INCIDENT",
+          "BILLING_SPECIALIST",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL"
+        ],
+        "all": {
+          "votes": 7254,
+          "agreeing": 4369,
+          "share": {
+            "fraction": "4369/7254",
+            "value": 0.602288
+          }
+        },
+        "installed": {
+          "votes": 5405,
+          "agreeing": 3052,
+          "share": {
+            "fraction": "3052/5405",
+            "value": 0.564662
+          }
+        },
+        "refused": {
+          "votes": 1849,
+          "agreeing": 1317,
+          "share": {
+            "fraction": "1317/1849",
+            "value": 0.712277
+          }
+        },
+        "outside": {
+          "votes": 0,
+          "agreeing": 0,
+          "share": null
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the orders are hierarchy.json's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, and the bound bounds",
+          "passes": true
+        }
+      ]
+    },
+    "l_r2": {
+      "declarations": {
+        "of": 6487,
+        "by_verdict": {
+          "installed": 4254,
+          "outside": 74,
+          "refused": 2159
+        },
+        "within_a_queue": 27,
+        "unknown_rule": 0
+      },
+      "votes": {
+        "all": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 326,
+            "for_second": 568
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 7
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 57,
+            "for_second": 239
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 10,
+            "for_second": 194
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 27,
+            "for_second": 179
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 144,
+            "for_second": 479
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 15,
+            "for_second": 108
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 75,
+            "for_second": 81
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 832
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 197,
+            "for_second": 285
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 2,
+            "for_second": 47
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 406,
+            "for_second": 362
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 10,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 154
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 79,
+            "for_second": 15
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 15
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 2,
+            "for_second": 10
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 14,
+            "for_second": 448
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 57,
+            "for_second": 142
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 4,
+            "for_second": 33
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 279,
+            "for_second": 147
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 154,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 28,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 151,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 22
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 33,
+            "for_second": 18
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 2,
+            "for_second": 2
+          }
+        ],
+        "installed": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 254,
+            "for_second": 445
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 6
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 47,
+            "for_second": 123
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 10,
+            "for_second": 91
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 17,
+            "for_second": 121
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 88,
+            "for_second": 398
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 14,
+            "for_second": 84
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 69,
+            "for_second": 11
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 482
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 126,
+            "for_second": 230
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 2,
+            "for_second": 41
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 239,
+            "for_second": 303
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 10,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 42
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 68,
+            "for_second": 5
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 11
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 2,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 392
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 25,
+            "for_second": 102
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 31
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 87,
+            "for_second": 118
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 70,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 14,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 23,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 19
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 15,
+            "for_second": 17
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 1,
+            "for_second": 0
+          }
+        ]
+      },
+      "every_declaration": {
+        "votes": 6460,
+        "agreeing": 4977,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "quarter": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "median": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "three_quarters": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "most": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "mean": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "9221/13440",
+              "value": 0.686086
+            },
+            "right": 92210,
+            "halves": {
+              "keyword": 47040,
+              "outside": 45170
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "251/522",
+                "value": 0.480843
+              },
+              "T2_TECHNICAL": {
+                "fraction": "149/216",
+                "value": 0.689815
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "104/137",
+                "value": 0.759124
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "193/430",
+                "value": 0.448837
+              }
+            },
+            "index": 24087
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "9221/13440",
+              "value": 0.686086
+            },
+            "right": 92210,
+            "halves": {
+              "keyword": 47040,
+              "outside": 45170
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "251/522",
+                "value": 0.480843
+              },
+              "T2_TECHNICAL": {
+                "fraction": "149/216",
+                "value": 0.689815
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "104/137",
+                "value": 0.759124
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "193/430",
+                "value": 0.448837
+              }
+            },
+            "index": 24087
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "BILLING_SPECIALIST",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "9221/13440",
+              "value": 0.686086
+            },
+            "right": 92210,
+            "halves": {
+              "keyword": 47040,
+              "outside": 45170
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "251/522",
+                "value": 0.480843
+              },
+              "T2_TECHNICAL": {
+                "fraction": "149/216",
+                "value": 0.689815
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "104/137",
+                "value": 0.759124
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "193/430",
+                "value": 0.448837
+              }
+            },
+            "index": 24087
+          }
+        }
+      },
+      "installed_alone": {
+        "votes": 4254,
+        "agreeing": 3313,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          },
+          "quarter": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          },
+          "median": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          },
+          "three_quarters": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          },
+          "most": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          },
+          "mean": {
+            "fraction": "5751/8960",
+            "value": 0.641853
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "5751/8960",
+              "value": 0.641853
+            },
+            "right": 86265,
+            "halves": {
+              "keyword": 47040,
+              "outside": 39225
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "146/261",
+                "value": 0.559387
+              },
+              "T2_TECHNICAL": {
+                "fraction": "515/816",
+                "value": 0.631127
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "101/684",
+                "value": 0.147661
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "1927/3288",
+                "value": 0.586071
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "165/172",
+                "value": 0.959302
+              }
+            },
+            "index": 24117
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "5751/8960",
+              "value": 0.641853
+            },
+            "right": 86265,
+            "halves": {
+              "keyword": 47040,
+              "outside": 39225
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "146/261",
+                "value": 0.559387
+              },
+              "T2_TECHNICAL": {
+                "fraction": "515/816",
+                "value": 0.631127
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "101/684",
+                "value": 0.147661
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "1927/3288",
+                "value": 0.586071
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "165/172",
+                "value": 0.959302
+              }
+            },
+            "index": 24117
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "5751/8960",
+              "value": 0.641853
+            },
+            "right": 86265,
+            "halves": {
+              "keyword": 47040,
+              "outside": 39225
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "146/261",
+                "value": 0.559387
+              },
+              "T2_TECHNICAL": {
+                "fraction": "515/816",
+                "value": 0.631127
+              },
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "101/684",
+                "value": 0.147661
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "2/3",
+                "value": 0.666667
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "1927/3288",
+                "value": 0.586071
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "13/15",
+                "value": 0.866667
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "165/172",
+                "value": 0.959302
+              }
+            },
+            "index": 24117
+          }
+        }
+      },
+      "against_best": {
+        "best": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST",
+          "SELF_SERVICE_DEFLECT",
+          "T2_TECHNICAL",
+          "T1_GENERAL"
+        ],
+        "all": {
+          "votes": 6460,
+          "agreeing": 4869,
+          "share": {
+            "fraction": "4869/6460",
+            "value": 0.753715
+          }
+        },
+        "installed": {
+          "votes": 4254,
+          "agreeing": 3159,
+          "share": {
+            "fraction": "1053/1418",
+            "value": 0.742595
+          }
+        },
+        "refused": {
+          "votes": 2159,
+          "agreeing": 1677,
+          "share": {
+            "fraction": "1677/2159",
+            "value": 0.776748
+          }
+        },
+        "outside": {
+          "votes": 47,
+          "agreeing": 33,
+          "share": {
+            "fraction": "33/47",
+            "value": 0.702128
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the orders are hierarchy.json's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, and the bound bounds",
+          "passes": true
+        }
+      ]
+    },
+    "l_r3": {
+      "declarations": {
+        "of": 6182,
+        "by_verdict": {
+          "installed": 4586,
+          "refused": 1596
+        },
+        "within_a_queue": 0,
+        "unknown_rule": 0
+      },
+      "votes": {
+        "all": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 34,
+            "for_second": 320
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 31,
+            "for_second": 214
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 6,
+            "for_second": 83
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 11,
+            "for_second": 121
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 113,
+            "for_second": 341
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 11,
+            "for_second": 76
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 207,
+            "for_second": 93
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 443
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 154,
+            "for_second": 268
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 3,
+            "for_second": 65
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 434,
+            "for_second": 188
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 58,
+            "for_second": 4
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 13,
+            "for_second": 45
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 40,
+            "for_second": 24
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 5,
+            "for_second": 13
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 5,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 546
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 194,
+            "for_second": 566
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 144
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 337,
+            "for_second": 413
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 191,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 24,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 191,
+            "for_second": 15
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 46
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 62,
+            "for_second": 26
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 3,
+            "for_second": 0
+          }
+        ],
+        "installed": [
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T2_TECHNICAL"
+            ],
+            "for_first": 30,
+            "for_second": 250
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 31,
+            "for_second": 87
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 6,
+            "for_second": 51
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 7,
+            "for_second": 81
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "T1_GENERAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 101,
+            "for_second": 289
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "T3_ENGINEERING"
+            ],
+            "for_first": 11,
+            "for_second": 62
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 193,
+            "for_second": 54
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 331
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 134,
+            "for_second": 131
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 3,
+            "for_second": 59
+          },
+          {
+            "pair": [
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 326,
+            "for_second": 167
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "BILLING_SPECIALIST"
+            ],
+            "for_first": 58,
+            "for_second": 1
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 13,
+            "for_second": 29
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 38,
+            "for_second": 9
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 5,
+            "for_second": 7
+          },
+          {
+            "pair": [
+              "T3_ENGINEERING",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 5,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SECURITY_INCIDENT"
+            ],
+            "for_first": 0,
+            "for_second": 475
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 33,
+            "for_second": 517
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 1,
+            "for_second": 138
+          },
+          {
+            "pair": [
+              "BILLING_SPECIALIST",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 90,
+            "for_second": 394
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ACCOUNT_MANAGER"
+            ],
+            "for_first": 177,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 2,
+            "for_second": 0
+          },
+          {
+            "pair": [
+              "SECURITY_INCIDENT",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 74,
+            "for_second": 15
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "ONCALL_ESCALATION"
+            ],
+            "for_first": 0,
+            "for_second": 43
+          },
+          {
+            "pair": [
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 32,
+            "for_second": 23
+          },
+          {
+            "pair": [
+              "ONCALL_ESCALATION",
+              "SELF_SERVICE_DEFLECT"
+            ],
+            "for_first": 3,
+            "for_second": 0
+          }
+        ]
+      },
+      "every_declaration": {
+        "votes": 6182,
+        "agreeing": 4919,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "quarter": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "median": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "three_quarters": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "most": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "mean": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "8047/13440",
+              "value": 0.598735
+            },
+            "right": 80470,
+            "halves": {
+              "keyword": 33600,
+              "outside": 46870
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "641/1044",
+                "value": 0.613985
+              },
+              "T2_TECHNICAL": {
+                "fraction": "249/272",
+                "value": 0.915441
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "107/137",
+                "value": 0.781022
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24083
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "8047/13440",
+              "value": 0.598735
+            },
+            "right": 80470,
+            "halves": {
+              "keyword": 33600,
+              "outside": 46870
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "641/1044",
+                "value": 0.613985
+              },
+              "T2_TECHNICAL": {
+                "fraction": "249/272",
+                "value": 0.915441
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "107/137",
+                "value": 0.781022
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24083
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "ACCOUNT_MANAGER",
+              "T2_TECHNICAL",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "8047/13440",
+              "value": 0.598735
+            },
+            "right": 80470,
+            "halves": {
+              "keyword": 33600,
+              "outside": 46870
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "641/1044",
+                "value": 0.613985
+              },
+              "T2_TECHNICAL": {
+                "fraction": "249/272",
+                "value": 0.915441
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "107/137",
+                "value": 0.781022
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24083
+          }
+        }
+      },
+      "installed_alone": {
+        "votes": 4586,
+        "agreeing": 3855,
+        "rankings": 1,
+        "shares": {
+          "of": 1,
+          "least": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          },
+          "quarter": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          },
+          "median": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          },
+          "three_quarters": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          },
+          "most": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          },
+          "mean": {
+            "fraction": "14327/26880",
+            "value": 0.532999
+          }
+        },
+        "security_first": 1,
+        "by_place_of_security": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "pairs_left_free": [],
+        "orders": {
+          "least": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "14327/26880",
+              "value": 0.532999
+            },
+            "right": 71635,
+            "halves": {
+              "keyword": 33600,
+              "outside": 38035
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "619/1044",
+                "value": 0.592912
+              },
+              "T2_TECHNICAL": {
+                "fraction": "137/144",
+                "value": 0.951389
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "559/3288",
+                "value": 0.170012
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24041
+          },
+          "median": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "14327/26880",
+              "value": 0.532999
+            },
+            "right": 71635,
+            "halves": {
+              "keyword": 33600,
+              "outside": 38035
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "619/1044",
+                "value": 0.592912
+              },
+              "T2_TECHNICAL": {
+                "fraction": "137/144",
+                "value": 0.951389
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "559/3288",
+                "value": 0.170012
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24041
+          },
+          "most": {
+            "ranking": [
+              "SECURITY_INCIDENT",
+              "ONCALL_ESCALATION",
+              "T3_ENGINEERING",
+              "T2_TECHNICAL",
+              "ACCOUNT_MANAGER",
+              "SELF_SERVICE_DEFLECT",
+              "BILLING_SPECIALIST",
+              "T1_GENERAL"
+            ],
+            "construction": "pulled",
+            "share": {
+              "fraction": "14327/26880",
+              "value": 0.532999
+            },
+            "right": 71635,
+            "halves": {
+              "keyword": 33600,
+              "outside": 38035
+            },
+            "recall": {
+              "T1_GENERAL": {
+                "fraction": "619/1044",
+                "value": 0.592912
+              },
+              "T2_TECHNICAL": {
+                "fraction": "137/144",
+                "value": 0.951389
+              },
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "BILLING_SPECIALIST": {
+                "fraction": "47/342",
+                "value": 0.137427
+              },
+              "SECURITY_INCIDENT": {
+                "fraction": "1/3",
+                "value": 0.333333
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "559/3288",
+                "value": 0.170012
+              },
+              "ONCALL_ESCALATION": {
+                "fraction": "47/60",
+                "value": 0.783333
+              },
+              "SELF_SERVICE_DEFLECT": {
+                "fraction": "411/860",
+                "value": 0.477907
+              }
+            },
+            "index": 24041
+          }
+        }
+      },
+      "against_best": {
+        "best": [
+          "SECURITY_INCIDENT",
+          "ONCALL_ESCALATION",
+          "ACCOUNT_MANAGER",
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST",
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT",
+          "T1_GENERAL"
+        ],
+        "all": {
+          "votes": 6182,
+          "agreeing": 4713,
+          "share": {
+            "fraction": "4713/6182",
+            "value": 0.762375
+          }
+        },
+        "installed": {
+          "votes": 4586,
+          "agreeing": 3380,
+          "share": {
+            "fraction": "1690/2293",
+            "value": 0.737026
+          }
+        },
+        "refused": {
+          "votes": 1596,
+          "agreeing": 1333,
+          "share": {
+            "fraction": "1333/1596",
+            "value": 0.835213
+          }
+        },
+        "outside": {
+          "votes": 0,
+          "agreeing": 0,
+          "share": null
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the orders are hierarchy.json's",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, and the bound bounds",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "W1",
+      "what": "in every L run, every ranking its declarations choose puts SECURITY_INCIDENT first",
+      "reading": {
+        "l_r1": {
+          "security_first": 1,
+          "rankings": 1
+        },
+        "l_r2": {
+          "security_first": 1,
+          "rankings": 1
+        },
+        "l_r3": {
+          "security_first": 1,
+          "rankings": 1
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "W2",
+      "what": "in L r1 and in L r2, the rankings its declarations choose decide, at their median, more of the space than at once",
+      "reading": {
+        "l_r1": {
+          "chosen_median": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "at_once": {
+            "fraction": "10193/13440",
+            "value": 0.758408
+          }
+        },
+        "l_r2": {
+          "chosen_median": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "at_once": {
+            "fraction": "3361/5376",
+            "value": 0.625186
+          }
+        },
+        "l_r3": {
+          "chosen_median": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "at_once": {
+            "fraction": "5191/6720",
+            "value": 0.77247
+          }
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "W3",
+      "what": "in every L run, the rankings its declarations choose decide, at their median, more of the space than the loop's base completed",
+      "reading": {
+        "l_r1": {
+          "chosen_median": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "completed": {
+            "fraction": "16081/26880",
+            "value": 0.598251
+          }
+        },
+        "l_r2": {
+          "chosen_median": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "completed": {
+            "fraction": "779/1680",
+            "value": 0.46369
+          }
+        },
+        "l_r3": {
+          "chosen_median": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "completed": {
+            "fraction": "6497/11200",
+            "value": 0.580089
+          }
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "W4",
+      "what": "in every L run, more than half of its votes agree with the best ranking",
+      "reading": {
+        "l_r1": {
+          "agree_all": {
+            "fraction": "4369/7254",
+            "value": 0.602288
+          }
+        },
+        "l_r2": {
+          "agree_all": {
+            "fraction": "4869/6460",
+            "value": 0.753715
+          }
+        },
+        "l_r3": {
+          "agree_all": {
+            "fraction": "4713/6182",
+            "value": 0.762375
+          }
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "W5",
+      "what": "in L r1 and in L r2, the votes the engine refused agree with the best ranking more often than those it installed",
+      "reading": {
+        "l_r1": {
+          "agree_refused": {
+            "fraction": "1317/1849",
+            "value": 0.712277
+          },
+          "agree_installed": {
+            "fraction": "3052/5405",
+            "value": 0.564662
+          }
+        },
+        "l_r2": {
+          "agree_refused": {
+            "fraction": "1677/2159",
+            "value": 0.776748
+          },
+          "agree_installed": {
+            "fraction": "1053/1418",
+            "value": 0.742595
+          }
+        },
+        "l_r3": {
+          "agree_refused": {
+            "fraction": "1333/1596",
+            "value": 0.835213
+          },
+          "agree_installed": {
+            "fraction": "1690/2293",
+            "value": 0.737026
+          }
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "W6",
+      "what": "in every L run, the rankings its declarations choose decide, at their median, more of the space than the model's stated rankings at theirs",
+      "reading": {
+        "l_r1": {
+          "chosen_median": {
+            "fraction": "20147/26880",
+            "value": 0.749516
+          },
+          "stated_median": {
+            "fraction": "3659/5376",
+            "value": 0.680618
+          }
+        },
+        "l_r2": {
+          "chosen_median": {
+            "fraction": "9221/13440",
+            "value": 0.686086
+          },
+          "stated_median": {
+            "fraction": "5191/8960",
+            "value": 0.579353
+          }
+        },
+        "l_r3": {
+          "chosen_median": {
+            "fraction": "8047/13440",
+            "value": 0.598735
+          },
+          "stated_median": {
+            "fraction": "397/768",
+            "value": 0.516927
+          }
+        }
+      },
+      "holds": true
+    }
+  ]
+}
