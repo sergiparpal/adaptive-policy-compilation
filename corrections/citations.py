@@ -123,6 +123,24 @@ nothing it can be read for.
 sides, and any reading's record under the other side.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: PAST THE PINS
+--------------------------------------------------------------------------
+On the first run, under the other side, `doors.py` and `above.py` refused at
+their gate 5. It holds the counts of their development set, written in their
+code before their expectation, to what the reading computes, and in L r1 those
+counts moved. The four readings that read their records, `byqueue.py`,
+`conditions.py`, `carry.py` and `oncall.py`, could not run. So the audit adds a
+third pass:
+- **past the pins**: the other side's copies, with each reading's
+  `DEVELOPMENT` compared, recorded and let through, so the reading writes.
+  Every other gate holds as it is. `doors.py`, `byqueue.py`, `above.py` and
+  `conditions.py` keep such a pin.
+Its leaves and clauses are read against the first pass, as the second's are,
+with which pins it let through. A refusal now names the gates that failed. It
+was tried in a scratch script first. It carries no expectation and moves no
+clause: the clauses read the second pass, as written.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Proposed by the agent and asked for by Sergi on 2026-11-16, after
@@ -161,12 +179,18 @@ from . import plan
 ORDER = ("fall", "paths", "gateway", "doors", "byqueue", "above", "conditions", "carry",
          "oncall")
 DIRECT = ("fall", "gateway", "doors", "byqueue", "above", "conditions")
-PASSES = ("as_committed", "other_side")
+PASSES = ("as_committed", "other_side", "past_the_pins")
+PINNED = ("doors", "byqueue", "above", "conditions")
 KEPT_LEAVES = 400                   # the leaves kept a reading, in path order
 PROVENANCE = (
     "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-16, after "
     "corrections/declared.py. The expectation in the module's docstring was written and "
     "committed before the reading ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: a third pass, past the pins, "
+    "on the other side's copies with each reading's DEVELOPMENT compared, recorded and let "
+    "through; and the gates a refusal names. Tried in a scratch script first. No expectation; "
+    "no clause moves.")
 
 # ---------------------------------------------------------------------------
 # The citations on both sides
@@ -269,6 +293,54 @@ def gate_two(runs: dict[str, dict[str, Any]]) -> dict[str, Any]:
 # The two passes
 # ---------------------------------------------------------------------------
 
+class Through(dict):
+    """A pinned count let through: equal to whatever it is compared with, and a
+    record of whether it differed. Added after the first run."""
+    __hash__ = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.differed: list[bool] = []
+
+    def __eq__(self, other):
+        self.differed.append(not dict.__eq__(self, other))
+        return True
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
+class ThroughByRun(dict):
+    """`DEVELOPMENT` kept by run, each run's counts let through. Added after the
+    first run."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.lets: dict[str, Through] = {}
+
+    def get(self, key, default=None):
+        if key not in self.lets:
+            self.lets[key] = Through(super().get(key, default) or {})
+        return self.lets[key]
+
+
+def let_through(pin: dict[str, Any]) -> dict[str, Any]:
+    """A reading's `DEVELOPMENT`, let through: one run's counts, or counts by run."""
+    if pin and all(isinstance(v, dict) for v in pin.values()):
+        return ThroughByRun(pin)
+    return Through(pin)
+
+
+def differed(pin: dict[str, Any]) -> dict[str, Any]:
+    """Whether a pin let through was compared, and whether it differed."""
+    if isinstance(pin, ThroughByRun):
+        return {tag: {"compared": len(t.differed), "differed": any(t.differed)}
+                for tag, t in pin.lets.items()}
+    if isinstance(pin, Through):
+        return {"compared": len(pin.differed), "differed": any(pin.differed)}
+    return {}
+
+
 def run_pass(name: str, out_dir: Path, runs: dict[str, dict[str, Any]]
              ) -> dict[str, dict[str, Any]]:
     """The nine readings, in order, each writing to `out_dir`; on the copies of
@@ -276,8 +348,10 @@ def run_pass(name: str, out_dir: Path, runs: dict[str, dict[str, Any]]
     mods = {m: importlib.import_module(f"corrections.{m}") for m in ORDER}
     paths = {m: mods[m].record_path for m in ORDER}
     run_path = plan.run_path
+    pins = {m: mods[m].DEVELOPMENT for m in PINNED
+            if m in mods and hasattr(mods[m], "DEVELOPMENT")}
     copies = {}
-    if name == "other_side":
+    if name in ("other_side", "past_the_pins"):
         for tag, record in runs.items():
             copy_, where = other_side(record)
             if where:
@@ -298,6 +372,9 @@ def run_pass(name: str, out_dir: Path, runs: dict[str, dict[str, Any]]
         for m in ORDER:
             mods[m].record_path = (lambda p=out_dir / f"{m}.json": p)
         plan.run_path = (lambda arm, rep: copies.get(plan.tag(arm, rep)) or run_path(arm, rep))
+        if name == "past_the_pins":
+            for m, pin in pins.items():
+                mods[m].DEVELOPMENT = let_through(pin)
         for m in ORDER:
             t = time.time()
             said = io.StringIO()
@@ -306,14 +383,18 @@ def run_pass(name: str, out_dir: Path, runs: dict[str, dict[str, Any]]
                 with contextlib.redirect_stdout(said):
                     mods[m].main([])
             except SystemExit as e:
-                refused = str(e).strip() or f"exit {e.code}"
+                failed = [x.strip() for x in said.getvalue().splitlines() if ": FAIL" in x]
+                refused = "; ".join([str(e).strip() or f"exit {e.code}"] + failed)
             except Exception as e:            # a reading that cannot run is read as refused
                 refused = f"{type(e).__name__}: {e}"
             p = out_dir / f"{m}.json"
             out[m] = {"record": load(p) if refused is None and p.exists() else None,
-                      "refused": refused, "seconds": round(time.time() - t, 1)}
+                      "refused": refused, "seconds": round(time.time() - t, 1),
+                      "pin": differed(mods[m].DEVELOPMENT) if m in pins else None}
     finally:
         plan.run_path = run_path
+        for m, pin in pins.items():
+            mods[m].DEVELOPMENT = pin
         for m in ORDER:
             mods[m].record_path = paths[m]
     return out
@@ -445,33 +526,43 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  gate {g['gate']}: {'PASS' if g['passes'] else 'FAIL'}  {g['what']}")
     if not all(g["passes"] for g in gates):
         sys.exit("\nREFUSED: a gate failed; nothing was written.\n")
-    readings = {m: {"seconds": {p: passes[p][m]["seconds"] for p in PASSES},
+    readings = {m: {"seconds": {p: passes[p][m]["seconds"] for p in PASSES[:2]},
                     **compare(passes["as_committed"][m], passes["other_side"][m])}
                 for m in ORDER}
+    past = {m: {"seconds": passes["past_the_pins"][m]["seconds"],
+                "pin": passes["past_the_pins"][m]["pin"],
+                **compare(passes["as_committed"][m], passes["past_the_pins"][m])}
+            for m in ORDER}
     expectation = read_expectation(found, readings)
     record_path().write_text(json.dumps(st._rounded({
         "_env": environment(),
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"runs": {plan.tag(a, k): str(plan.run_path(a, k))
                             for a in plan.ARMS for k in range(1, plan.REPS + 1)},
                    "readings": {m: str(committed[m]) for m in ORDER}},
         "surface": "the nine readings that read the answers' declarations through "
                    "corrections/fall.py's declared, or read the records of those that do, each "
                    "run twice: as committed, and keeping the side declared drops for a rule an "
-                   "answer cites on both sides",
-        "constants": {"order": list(ORDER), "direct": list(DIRECT), "kept_leaves": KEPT_LEAVES},
+                   "answer cites on both sides; and, added after the first run, a third time on "
+                   "the second's copies, past the pins of the development counts",
+        "constants": {"order": list(ORDER), "direct": list(DIRECT), "kept_leaves": KEPT_LEAVES,
+                      "pinned": list(PINNED)},
         "gates": gates,
         "both_sides": found,
         "readings": readings,
+        "past_the_pins": past,
         "expectation": expectation,
     }), indent=2, default=fg.plain) + "\n")
     for c in expectation:
         print(f"  {c['clause']}: {'holds' if c['holds'] else 'fails'}")
-    for m, r in readings.items():
-        state = "refused" if r["refused"] is not None else f"{r['moved']} leaves move"
-        print(f"  {m}: {state}; clauses that flip: {[c['clause'] for c in r['clauses']]}")
+    for label, rd in (("other side", readings), ("past the pins", past)):
+        for m, r in rd.items():
+            state = "refused" if r["refused"] is not None else f"{r['moved']} leaves move"
+            print(f"  {label}, {m}: {state}; clauses that flip: "
+                  f"{[c['clause'] for c in r['clauses']]}")
     print(f"\n-> {record_path()}\n  {describe()}")
     return 0
 
