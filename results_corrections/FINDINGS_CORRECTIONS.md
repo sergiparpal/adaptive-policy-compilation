@@ -46,6 +46,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   it in #275, merged on 2026-11-16.
 - **The POST-RUN reading of the ranking and a guard on containment** reached it
   in #277, merged on 2026-11-16.
+- **The POST-RUN reading of why the declarations put `BILLING_SPECIALIST` low**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -281,6 +283,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `4be6503`, and
 >   still at the merge of #277. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the eighteenth] And a nineteenth.**
+> [`billing.json`](billing.json) is the POST-RUN reading of why the
+> declarations put `BILLING_SPECIALIST` low.
+> - **It was written from `9e1b3f7`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `7503c8caefb3f598`**, because `corrections/billing.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -3564,6 +3576,11 @@ left no pair with `SECURITY_INCIDENT` even.
 3. **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
    votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
    `SELF_SERVICE_DEFLECT` go against it. Free on the records.
+   **[NOTE 2026-11-16] Read POST-RUN, below: most votes against it were
+   right, about the layers above billing's, and where its place costs, a
+   pair's right votes can be wrong as a ranking.** Its place carries a
+   minority of what the declared ranking lacks. *Why the declarations put
+   `BILLING_SPECIALIST` low*.
 
 ## The citations on both sides — POST-RUN
 
@@ -3991,6 +4008,218 @@ account allowed: in L r1 and L r2 the guard lost more than it gained.
 3. **What the rules set aside outside the keyword decided.** The largest group
    is `T1_GENERAL`'s, and what each cost is not read. Free on the records.
 
+## Why the declarations put `BILLING_SPECIALIST` low — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** The loop's declarations, gathered by pair of queues, choose one
+ranking a run. It puts `BILLING_SPECIALIST` seventh of eight in L r1 and L r3,
+where the best ranking of each run's rules, chosen with the truth, puts it
+second and fifth (*The ranking the loop declared*). This reading asks why.
+Either the answers that put the queue below another were wrong about the two
+rules each placed, or they were right about them and wrong as a ranking. It
+spends nothing.
+
+**The votes.** They are *The ranking the loop declared*'s: each citation of a
+rule of another queue, one a rule and side, is one vote. This reading keeps
+those between billing and another queue, against it or for it. Each vote is
+read for:
+- **whose answer cast it**, billing's own or the other queue's;
+- **its two rules and their shared region**;
+- **the better rule**, as `rung3/edge_direction.py` reads it: over the shared
+  region, the rule whose queue is the true queue of more of its points. It is
+  read on the space, and on the corpus, each arrival once;
+- **where the shared region lies in the policy**: above billing's layer, with
+  the security and severity-1 rules, `H01` to `H08`; in billing's own, `H09` to
+  `H12`; or below it.
+
+**Its place.** The queue is moved through the eight places of each run's
+declared ranking, the other seven kept in their order, and each order is read
+on both surfaces. Its best place is the one that decides the most of the space.
+Among places that tie, it is the one nearest its declared place.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.billing`, on
+2026-11-16 in local time, from `9e1b3f7` with its code clean, on this reading's
+branch.
+- **The commits.** `9e1b3f7` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `52239c8`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `7503c8caefb3f598`, is the one `9e1b3f7` computes.
+- **The record is [`billing.json`](billing.json).** Its 18 gates passed:
+  - each L run's final base is Stage C's, and its instance `shape.json`'s;
+  - every declaration the engine ruled on is in the run's edge log, and every
+    edge of the log is one of them;
+  - the votes choose the ranking `declared.json` keeps, and it decides what
+    that record keeps. The best ranking decides what `hierarchy.json` keeps;
+  - every order read installs into a fresh rung 2 engine and closes no cycle.
+    On the space the engine and first match each decide what the reading
+    reads, and on the corpus the engine does;
+  - the policy's regions partition the space and give each queue its points.
+    Every arrival lies in one region, and its label is that region's queue.
+
+### 1. Most votes against it were right, most of them above billing's layer
+
+| run | votes against | cast by other queues' answers | strict, naming the better rule | votes for | strict, naming it | the votes between other queues, naming it |
+|---|---|---|---|---|---|---|
+| L r1 | 2,368 | 1,620 | 1,739 of 2,321, 0.7492 | 896 | 564 of 729, 0.7737 | 0.7848 |
+| L r2 | 912 | 421 | 692 of 887, 0.7802 | 674 | 393 of 551, 0.7132 | 0.7206 |
+| L r3 | 1,965 | 1,093 | 1,110 of 1,897, 0.5851 | 843 | 595 of 772, 0.7707 | 0.7994 |
+
+- **Most votes against it were cast by other queues' answers** (V1 holds).
+  Billing's own answers cast the other 748 in L r1 and 872 in L r3. In L r2
+  they cast most of them: 491 of 912.
+- **Most of them name the better rule** (V2 holds).
+- **The security and on-call pairs carry that.** They cast 1,086 of the votes
+  against it in L r1 and 690 in L r3. Every one of their strict votes names
+  the better rule: 1,055 in L r1 and 684 in L r3. Their shared regions lie
+  wholly in the policy's security and severity-1 layers.
+- **Beyond those two pairs, the votes against it name the better rule about
+  half the time in L r1, and a third of the time in L r3**: 684 of 1,266 and
+  426 of 1,213 strict votes.
+  - **Against `SELF_SERVICE_DEFLECT` they mostly name the worse rule**: 269 of
+    567 name the better in L r1, and 112 of 390 in L r3.
+  - **Against `ACCOUNT_MANAGER`**, 261 of 429 name it in L r1, and 128 of 566
+    in L r3.
+  - **Against `T2_TECHNICAL` nearly all do**: 150 of 158, and 186 of 194.
+  - **None of the strict votes that put `T1_GENERAL` above it does**: 108 in
+    L r1 and 5 in L r3. Nor do the 58 that put `T3_ENGINEERING` above it in
+    L r3.
+- **They stand above billing's layer.** Counted once a vote, 0.8882 of the
+  points of their shared regions lie in the policy's security and severity-1
+  layers in L r1, and 0.8855 in L r3. For the votes for it, the shares are
+  0.3644 and 0.4189. No shared region of a vote on billing's pairs reaches
+  below billing's layer, in any run.
+- **They stand on larger regions than the votes for it** (V6 fails): 1,680 and
+  2,560 points at their median, against 840 and 840. The security and on-call
+  rules are broad.
+- **The engine installed most of them, and refused most of the votes for it.**
+  It installed 2,068 of the 2,368 against it in L r1, and refused 565 of the
+  896 for it. In L r3 the counts are 1,806 of 1,965, and 577 of 843. The
+  ranking counts every vote, installed or refused.
+- **On the corpus they name the better rule less often**: 1,101 of 1,669 strict
+  votes in L r1, and 918 of 1,697 in L r3.
+
+### 2. Its place costs less than what the ranking lacks
+
+The share of the space, and on the corpus the arrivals decided right, of 2,000:
+
+| run | declared place | best place | the declared ranking | at its best place | the best ranking | billing's recall: declared, best place, best ranking | corpus: declared, best place |
+|---|---|---|---|---|---|---|---|
+| L r1 | 7 | 4 | 0.7495 | 0.7555 | 0.7796 | 0.2990, 0.7018, 0.7018 | 1,502, 1,510 |
+| L r2 | 5 | 5 | 0.6861 | 0.6861 | 0.7091 | 0.6667, 0.6667, 0.6667 | 1,456, 1,456 |
+| L r3 | 7 | 5 | 0.5987 | 0.6054 | 0.6173 | 0.1374, 0.2866, 0.2866 | 1,453, 1,467 |
+
+- **At its best place the queue gets what the best ranking gives it.** Its
+  recall there is the best ranking's, in every run.
+- **That is a minority of what the declared ranking lacks** (V3 fails). The
+  move gains 805 of the 4,045 points it lacks in L r1, and 900 of 2,500 in
+  L r3. At billing's best place the ranking still lacks 3,240 and 1,600. In
+  L r2 its declared place is its best.
+- **In L r1 the second, third and fourth places tie.** Above
+  `T3_ENGINEERING` and `ONCALL_ESCALATION` it gains nothing more. Above
+  `SECURITY_INCIDENT` it loses 11,760 points.
+- **On the corpus it pays too** (V5 holds): by 8 arrivals in L r1 and 14 in
+  L r3.
+
+### 3. The steps that pay
+
+From its declared place up, each step passes one queue. The pair's votes are
+those between billing and the queue passed:
+
+| run | passes | the space | billing's points | the other queue's | the pair's votes, against and for | strict votes against, naming the better rule |
+|---|---|---|---|---|---|---|
+| L r1 | `SELF_SERVICE_DEFLECT` | +575 | +845 | −270 | 572 and 381 | 269 of 567 |
+| L r1 | `T2_TECHNICAL` | 0 | 0 | 0 | 167 and 166 | 150 of 158 |
+| L r1 | `ACCOUNT_MANAGER` | +230 | +1,910 | −1,680 | 429 and 164 | 261 of 429 |
+| L r3 | `SELF_SERVICE_DEFLECT` | −40 | +80 | −120 | 413 and 337 | 112 of 390 |
+| L r3 | `T2_TECHNICAL` | +940 | +940 | 0 | 207 and 93 | 186 of 194 |
+
+- **A step that pays passes a queue whose votes were right** (V4 holds, the
+  bet).
+  - **In L r3 it is `T2_TECHNICAL`.** 186 of its 194 strict votes against
+    billing name the better rule. Billing above it gains 940 of billing's
+    points, and costs it none.
+  - **In L r1 it is `ACCOUNT_MANAGER`.** 261 of its 429 strict votes against
+    billing name the better rule. Billing above it gains 1,910 of billing's
+    points and costs it 1,680 of its own: 230 points net.
+- **The two pairs are right in different places.**
+  - **`T2_TECHNICAL`'s votes stand almost wholly above billing's layer**:
+    940,190 of their 951,550 points in L r3, counted once a vote. The step
+    changes only billing's right points, and all of billing's points lie in
+    its own layer.
+  - **`ACCOUNT_MANAGER`'s stand more in billing's own layer than above it**:
+    502,760 of their 880,920 points in L r1. There the policy gives enterprise
+    clients' billing tickets to that queue, and most of the rest to billing.
+- **In L r1 the step past `SELF_SERVICE_DEFLECT` pays too, and its votes were
+  mostly wrong.**
+
+### The expectation
+
+Written in `corrections/billing.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| V1, in L r1 and in L r3, most votes against `BILLING_SPECIALIST` were cast by the answers of other queues' newborns | 1,620 of 2,368, and 1,093 of 1,965 | **holds** |
+| V2, in L r1 and in L r3, of the strict votes against it, most name the better rule | 1,739 of 2,321, and 1,110 of 1,897 | **holds** |
+| V3, in L r1 and in L r3, at its best place the ranking decides more of the space than at its declared place, by more than half of what the declared ranking lacks | 805 of 4,045 points, and 900 of 2,500 | fails |
+| V4, in L r1 and in L r3, on the path to its best place, a step moves it above a queue and gains points of the space, though more of that pair's votes put the other queue above it, and most of the pair's strict votes against it name the better rule | `ACCOUNT_MANAGER` in L r1, `T2_TECHNICAL` in L r3 | **holds** |
+| V5, in L r1 and in L r3, at its best place the ranking decides more of the corpus than at its declared place | 1,510 against 1,502, and 1,467 against 1,453 | **holds** |
+| V6, in L r1 and in L r3, the votes against it stand, at their median, on a smaller shared region than the votes for it | 1,680 against 840, and 2,560 against 840 | fails |
+
+**V1, V2, V4 and V5 hold, and V3 and V6 fail.**
+- **The bet, V4, held**: in L r1 by 230 points of the space, on a pair whose
+  strict votes name the better rule 261 times of 429.
+- **V1, trusted most, held.**
+- **V5, trusted least, held**, by 8 and 14 arrivals.
+- **V3 failed as its account allowed in L r3**: billing's own points there did
+  not reach half of what the ranking lacks. In L r1 its best place gave billing
+  the best ranking's recall, and covered 805 of 4,045 points.
+- **V6's account was wrong.** The votes against billing stand on the broad
+  regions of the security and on-call rules, and the votes for it on narrow
+  ones.
+
+### What it says
+
+- **Most votes against billing are right, and most of the right ones are about
+  the layers above its own.** The security and on-call pairs name the better
+  rule wherever there is one, and their shared regions lie wholly in the
+  layers the policy decides before billing's.
+- **Beyond them, the votes against it are right about half the time in L r1,
+  and a third in L r3.** Against `SELF_SERVICE_DEFLECT` they mostly name the
+  worse rule in both runs, and against `ACCOUNT_MANAGER` in L r3.
+- **Where its place costs, a pair's right votes can be wrong as a ranking.** A
+  ranking gives one direction to every pair of rules of two queues. The count
+  gives it to the side with more votes, wherever the votes stand, and not to
+  where the pair decides.
+  - **`T2_TECHNICAL`'s votes are right about the layers above billing's.**
+    In L r3 billing above it costs it nothing, and gains billing's points.
+  - **`ACCOUNT_MANAGER`'s are right about part of billing's own layer.** One
+    direction for the pair cannot serve both the enterprise clients' tickets
+    and the rest.
+- **What the declared ranking lacks is mostly not billing's place.** At its
+  best place the queue's recall is the best ranking's, and the ranking still
+  lacks most of what it lacked.
+- **For a loop that ranks by its own declarations, the count is the weak
+  part.** Votes about points the pair does not decide weigh as much as votes
+  about the points it does.
+
+### What it does not settle
+
+1. **What the rest of what the declared ranking lacks is.** At billing's best
+   place it still lacks 3,240, 3,095 and 1,600 points. Every declared ranking
+   puts `T3_ENGINEERING` above `ACCOUNT_MANAGER`, and every best ranking puts
+   it below. Whether that pair carries the rest is not read. Free on the
+   records.
+2. **Why the answers name the worse rule against `SELF_SERVICE_DEFLECT`, and
+   against `ACCOUNT_MANAGER` in L r3.** Their reasoning is not read. Free on the
+   records.
+3. **A count of what each pair decides.** A vote about points the pair does
+   not decide says nothing a ranking can use there. A count that left such
+   votes out, reading the base's own order and no truth, could choose another
+   ranking. Whether it places billing better is not read. Free on the records.
+
 ---
 
 ## Files
@@ -4036,3 +4265,5 @@ account allowed: in L r1 and L r2 the guard lost more than it gained.
   went.
 - [`guard.json`](guard.json): POST-RUN, the ranking as the loop went, and a
   guard on containment.
+- [`billing.json`](billing.json): POST-RUN, why the declarations put
+  `BILLING_SPECIALIST` low.
