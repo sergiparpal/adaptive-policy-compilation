@@ -33,6 +33,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of what the at-once asks wrote for
   `ONCALL_ESCALATION`** reached it in #265, merged on 2026-11-16 in local
   time.
+- **The POST-RUN reading of shape or order** reaches it in the pull request it
+  is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -199,6 +201,16 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `0e72e6e`, and
 >   still at the merge of #265. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the twelfth] And a thirteenth.**
+> [`shape.json`](shape.json) is the POST-RUN reading of shape or order: what the
+> loop's own rules could decide, ordered.
+> - **It was written from `770f4dd`**, on that reading's branch: the commit that
+>   carries the part added after its first run. Its section below names the
+>   commit that carries its expectation.
+> - **Its code digest is `36b0735352d7dde6`**, because `corrections/shape.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -565,6 +577,11 @@ best of the learners trained on the same labels:
   r3, whose labels never name it, and keep 2/3 of it in L r1, whose labels name
   it once. The loop keeps more of it in L r2 and L r3. *What the at-once asks
   wrote for `ONCALL_ESCALATION`*.
+  **[NOTE 2026-11-16] Read POST-RUN, below: the order in L r1 and L r2, the
+  rules in L r3.** In L r1 and L r2 an order of the loop's own rules, found with
+  the truth, decides more of the space than at once. In L r3 no order of them
+  reaches it: rules of another queue nested in the keyword's region hold
+  `SECURITY_INCIDENT`'s points there by containment. *Shape or order*.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
 
@@ -2861,6 +2878,208 @@ and L r3's answers wrote no rule of the queue at all.
 3. **Why L r3's at-once answers decide less of the layer than its loop.** Free on
    the records.
 
+## Shape or order — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** Compiled at once, L's labels give a base far better than the loop's
+(`CR-d` holds). Two accounts fit:
+- **shape.** The loop's rules are worse than an answer written whole;
+- **order.** They are as good, and the loop orders them worse: by containment,
+  by the edges it declared one birth at a time, and by what the engine refused.
+For the rarest queue the reading above found information. For the rest of the
+space no reading had separated the two. The replays of *Why the loop's share of
+the space peaked and fell* and *How much of the fall the doors carry* keep the
+loop's own declarations. Installing each base in the other's order is not
+defined, since the two are different rules. This reading asks instead what each
+set of rules decides in the best order rung 2's engine can install, and spends
+nothing.
+
+**The orders rung 2's engine can install.** The engine lets a rule strictly
+inside another beat it wherever both match, so it can install an order as
+written when every rule strictly inside another comes before it. Installed as
+`CR-d` installs an answer, such an order closes no cycle, and the engine decides
+each point by the order's first rule that matches it. **No base of the same
+rules decides right more than the best such order**: a base's own graph,
+completed into one such order, decides every point the base decides as the base
+does.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.shape`, on
+2026-11-16 in local time, from `770f4dd` with its code clean, on this reading's
+branch. It ran in three processes, one for each L run.
+- **The commits.** `b13930c` carries the reading and its expectation, written
+  before the reading ran. `770f4dd` carries the part added after the first run,
+  which moves no clause. The first run's record was not committed.
+- **The record was committed alone**, as `9629c84`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `36b0735352d7dde6`, is the one `770f4dd` computes.
+- **The record is [`shape.json`](shape.json).** Its 16 gates passed:
+  - **the search found the hidden policy's optimum**, all 134,400 points, from
+    the 64 declared random starts alone. 11 of them found it, the first at start
+    4;
+  - each L run's final base and its three at-once answers at all labels are
+    Stage C's;
+  - every order read installs into a fresh rung 2 engine and closes no cycle,
+    and the engine and first match each give it the share the search reckons;
+  - completing a base loses nothing, and no order decides more than its rules'
+    bound;
+  - where a bound falls short, its three ways partition the points it leaves.
+
+**The search.** Rung 3's declared optimizer: moves and swaps, strict
+improvement only, from 64 random starts of seed 17. It is kept to the orders the
+engine can install. A move or a swap that would put a rule after one strictly
+around it is skipped, and each random start is first repaired. Where
+containment is silent it is rung 3's search, move for move. It searches the
+contested points only, where the rules undefeated by containment carry more than
+one queue.
+
+**What it reads.** Each L run's final base, five ways:
+- **the record**: `CR-d`'s `space(B)`;
+- **completed**: its own graph completed into one order, otherwise by birth, so
+  its conflicts go to the rule born first;
+- **by its labels**: the completed order, searched from there alone on the
+  run's labels, the reported errors with their true queues. It is what a loop
+  that reordered its base on its own labels would keep;
+- **with the truth**: the best order the search finds over the space, the
+  completed order first among its 65 starts;
+- **the bound**: the points some rule undefeated by containment gets right. No
+  order decides more.
+
+Each run's three at-once answers at all labels are read four ways: the record,
+completed in their list's order, with the truth, and the bound.
+
+**Added after the first run**: where each final base's bound falls short, by
+how its points are lost, the rules that hold them, and what the median at-once
+answer decides right among them.
+
+### 1. In L r1 and L r2 the loop's rules hold more than at once, and in L r3 they do not
+
+The share of the space:
+
+| run | at once | the loop: record | completed | by its labels | with the truth | bound |
+|---|---|---|---|---|---|---|
+| L r1 | 0.7584 | 0.5647 | 0.5983 | 0.6115 | 0.8610 | 0.8957 |
+| L r2 | 0.6252 | 0.4221 | 0.4637 | 0.5738 | 0.7837 | 0.8522 |
+| L r3 | 0.7725 | 0.5618 | 0.5801 | 0.6127 | 0.6903 | 0.7192 |
+
+- **In L r1 and L r2 the gap is order.** An order of the loop's own rules
+  decides 0.8610 and 0.7837 of the space, more than at once. The loop wrote the
+  rules of a better base than the answer's, and did not order them so.
+- **In L r3 it is the rules.** No order of them reaches at once: their bound,
+  0.7192, is below its 0.7725. S1 and S2 fail on L r3 alone.
+- **The orders found are floors.** Each loop's best came from one random start
+  of the 65, and the starts ended far apart, the lowest at 0.5699, 0.6278 and
+  0.6609. From the completed order the search stopped at 0.7571, 0.7262 and
+  0.6868. In L r3 the bound settles the row without the search.
+- **Completing gives back little** (S3 fails). It adds 0.0335, 0.0416 and
+  0.0183 of the space, against half gaps of 0.0968, 0.1016 and 0.1053.
+- **The labels buy some order, and not at once's** (S4 holds).
+  - **The space.** Searched on its labels, the completed base gains 0.0132,
+    0.1102 and 0.0326.
+  - **The labels.** It then decides right 165, 181 and 163 of its 216, 209 and
+    235 labels, against 108, 107 and 103 as recorded.
+  - **The halves.** It gains outside the keyword half, 3,775, 11,400 and 6,202
+    points. In it, it loses 2,000 in L r1 and 1,820 in L r3, and gains 3,405 in L
+    r2. It recalls less of `SECURITY_INCIDENT` than its record in L r1 and L r3,
+    and more in L r2.
+
+### 2. Where the order gains, and where at once stands
+
+- **With the truth, the order gains most in the keyword half in L r1 and L r2**
+  (S5 holds). It gains 24,465 and 33,580 points there, net, against 15,350 and
+  15,025 outside. In L r3 it gains 1,900 there, against 15,362 outside.
+- **It is `SECURITY_INCIDENT`'s region.** The queue's recall goes from 0.3514 to
+  0.8333 in L r1, from 0.1437 to 0.6667 in L r2, and from 0.2976 to 0.3333 in L
+  r3. In every run that is every point of the queue that containment leaves the
+  loop's rules: section 3.
+- **The rarest queue pays for it in L r1 and L r2.** `ONCALL_ESCALATION`'s recall
+  falls from 0.4 to 0.3492 and from 0.4476 to 0.2952, and in L r3 rises from
+  0.4341 to 0.5611.
+- **At once is at or near its own best** (S6 holds). The median answer gains 0,
+  0 and 0.0080 with the truth over its record, against the loop's 0.2962, 0.3616
+  and 0.1284. In L r1 and L r2 two of the three answers already decide everything
+  their bound allows.
+
+### 3. Where the bound falls short — added after the first run
+
+The points no rule undefeated by containment gets right, by how they are lost:
+
+| run | short of the bound | no rule matches | no matching rule carries the true queue | the right rule lost to containment | of them `SECURITY_INCIDENT`'s | the median answer right among them |
+|---|---|---|---|---|---|---|
+| L r1 | 14,020 | 0 | 765 | 13,255 | 8,400 | 11,455 |
+| L r2 | 19,870 | 0 | 1,040 | 18,830 | 16,800 | 17,760 |
+| L r3 | 37,739 | 50 | 1,425 | 36,264 | 33,600 | 36,484 |
+
+- **Almost all of it is lost to containment.** A rule of the point's true queue
+  matches it, and so does a rule strictly inside that rule, and no order changes
+  that.
+- **Most of it is `SECURITY_INCIDENT`'s**, held by rules of other queues nested
+  in the keyword's region:
+  - **L r3**: two rules of `T2_TECHNICAL`, 16,800 points each. One is the
+    gateway born at case 19, the keyword at severity 3 or more. The other, born
+    at case 529, is the keyword at every severity but 1, and holds severity 2,
+    where the gateway does not reach. Between them they hold two thirds of the
+    queue's points;
+  - **L r1**: the gateway `R0061`, of `T2_TECHNICAL`, the keyword at severity 4,
+    born at case 238: 8,400;
+  - **L r2**: one rule of `T2_TECHNICAL`, the keyword at severity 3 or more,
+    born at case 754, with 8,400. Beside it, one of `T1_GENERAL`, the keyword at
+    severity 4, born at case 1,895, with 7,610.
+- **At once decides right most of what the loop's bound leaves**: 11,455, 17,760
+  and 36,484 of those points. That includes every point of `SECURITY_INCIDENT`
+  among them.
+
+### The expectation
+
+Written in `corrections/shape.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| S1, in every L run, the loop's bound is at least at once | 0.8957, 0.8522 and 0.7192, against 0.7584, 0.6252 and 0.7725 | fails |
+| S2, in every L run, the loop's rules with the truth decide at least as much of the space as at once | 0.8610, 0.7837 and 0.6903 | fails |
+| S3, in at least two of L's runs, completing the loop's base gives back at least half of the gap | 0.0335, 0.0416 and 0.0183, against 0.0968, 0.1016 and 0.1053 | fails |
+| S4, in every L run, the loop's base by its labels decides less of the space than at once | 0.6115, 0.5738 and 0.6127 | **holds** |
+| S5, in L r1 and in L r2, the points the loop's rules with the truth decide right, less the record's, are more in the keyword half than outside it | 24,465 against 15,350, and 33,580 against 15,025 | **holds** |
+| S6, in every L run, the median answer's gain with the truth over its record is smaller than the loop's | 0, 0 and 0.0080, against 0.2962, 0.3616 and 0.1284 | **holds** |
+
+**S4, S5 and S6 hold, and S1, S2 and S3 fail.** The bet, S2, failed on L r3
+alone, and so did S1, trusted most. The drafter had read that L r3's fall was
+mostly containment, and still bet that the bound would clear at once there. S3,
+trusted least, failed in every run.
+
+### What it says
+
+- **In L r1 and L r2 the gap is order.** An order of the loop's own rules
+  decides more than at once. Rules nested in the keyword's region already held a
+  sixth and a third of `SECURITY_INCIDENT`'s points, and what was left was
+  enough. The loop ordered its rules, one declaration at a time, into a base
+  that decides less, and most of what it lost is that queue's region.
+- **In L r3 the gap is the rules.** Two rules of `T2_TECHNICAL` nested in the
+  keyword's region hold two thirds of `SECURITY_INCIDENT`'s points by
+  containment, and no order gives them back. At once decides them right.
+- **So shape or order has no single answer.** The same loop, under the same
+  kind of labels, lost by its order in two runs and by its rules in the third.
+- **Neither completing nor the labels finds the order.** Completing by birth
+  gives back little. Searched from there on its labels, the base gains some, most
+  in L r2, and stays below at once in every run. What it gains lies mostly
+  outside the keyword half, and the order found with the truth gains most inside
+  it. The corpus holds few tickets of that half, and so do its labels.
+- **The answers are ordered about as well as their rules allow.** The loop's
+  rules allow more in L r1 and L r2, and its order gets far less of it.
+
+### What it does not settle
+
+1. **How far below their ceiling the orders found are.** Each loop's best came
+   from one start of 65, below its bound. `PLAN_BOUND.md`'s certificate could
+   tighten the bound. Free.
+2. **Whether the model would order the loop's rules well.** Its at-once answers
+   are near their own best. Handed the loop's final base and its labels, and
+   asked for the rules in order, would it find what the search found? Asks only,
+   cents. A plan with calls.
+3. **What the labels bought in L r2**, and why so much more than in L r1 and L
+   r3. Free on the records.
+
 ---
 
 ## Files
@@ -2894,3 +3113,5 @@ and L r3's answers wrote no rule of the queue at all.
 - [`oncall.json`](oncall.json): POST-RUN, why L loses `ONCALL_ESCALATION`.
 - [`layer.json`](layer.json): POST-RUN, what the at-once asks wrote for
   `ONCALL_ESCALATION` and the layer below it.
+- [`shape.json`](shape.json): POST-RUN, shape or order: what the loop's own
+  rules could decide, ordered.
