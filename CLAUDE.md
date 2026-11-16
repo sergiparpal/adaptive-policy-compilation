@@ -1390,6 +1390,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.hierarchy                     # POST-RUN: whether the order the loop lacks is a ranking of the queues
     PYTHONHASHSEED=0 python3 -m corrections.declared                      # POST-RUN: whether the loop declared the ranking it lacks
     PYTHONHASHSEED=0 python3 -m corrections.citations                     # POST-RUN: the citations on both sides, what the readings that kept one move
+    PYTHONHASHSEED=0 python3 -m corrections.online                        # POST-RUN: the ranking the loop declared, as it went
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1574,6 +1575,13 @@ any change below it.** The development counts four readings write in their
 code refused the copies, and stopped the readings after them. An audit that
 changes a record has to let such pins through, record what they held, and say
 so.
+
+**Read POST-RUN, ranked as it went, the loop keeps what conflicts cost it, and
+not what containment costs it.** Replayed on its own births, the base ranked
+after each birth by its declarations so far ends above the record in every
+run. It falls where a rule of another queue is born nested in the keyword's
+region. **A lever on the order leaves the rules it lets be born**: a ranking
+orders rules, and does not undo containment.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

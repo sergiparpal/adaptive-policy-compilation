@@ -792,6 +792,13 @@ learner of the labels alone matched the loop. What that leaves:
   final rules above at once in L r2 and just below it in L r1. A loop that
   ranked by its own declarations as it went needs no new input.
   `FINDINGS_CORRECTIONS.md`, *The ranking the loop declared*.
+  **[NOTE 2026-11-16] Replayed POST-RUN on the loop's own births.** Ranked
+  after each birth by the declarations so far, the base ends above the record
+  in every run, and beats at once at every checkpoint in L r2. It falls in L r2
+  and L r3 where a rule of another queue is born nested in the keyword's
+  region, which no ranking undoes. So the plan has two levers to set beside
+  each other: the ranking, and keeping such a rule from being born.
+  `FINDINGS_CORRECTIONS.md`, *The ranking the loop declared, as it went*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
@@ -820,6 +827,12 @@ learner of the labels alone matched the loop. What that leaves:
   `PLAN_REASONED_LOOP.md`, `PLAN_CHANNEL.md`, `PLAN_PLACEMENT.md` and
   `PLAN_WHOLE.md` record their declarations the same way, and their readings
   may read them one citation a rule. Free on the records.
+- **The replay's tie rule.** Early in a run many rankings tie, and the replay of
+  the ranking as the loop went takes the earliest. Another rule that reads no
+  truth could move its early curve. Free on the records.
+- **What the replay's other drops are.** Its largest drop in L r2 and in L r3 is
+  a birth nested in the keyword's region. The others are not read. Free on the
+  records.
 - **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
   votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
   `SELF_SERVICE_DEFLECT` go against it, where the best ranking puts it second.
