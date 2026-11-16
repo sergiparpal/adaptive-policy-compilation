@@ -1,0 +1,1751 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-16T21:12:54Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "a9e075c8dca4548fdefe703bdb6608bc398b76ee",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "9dfd3236d1b5332e"
+  },
+  "plan": "PLAN_CORRECTIONS.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CORRECTIONS.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CORRECTIONS.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: proposed by the agent after corrections/billing.py, and asked for by Sergi on 2026-11-16. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "declared": "results_corrections/declared.json",
+    "declared_from": "62587b8a8742211efb07b8bb2f00b4749761e8cb",
+    "hierarchy": "results_corrections/hierarchy.json",
+    "hierarchy_from": "f5ff52915970d193dbd1ec06739a0bf58f30b63a",
+    "shape": "results_corrections/shape.json",
+    "runs": {
+      "l_r1": "results_corrections/loop_l_r1.json",
+      "l_r2": "results_corrections/loop_l_r2.json",
+      "l_r3": "results_corrections/loop_l_r3.json"
+    }
+  },
+  "surface": "the whole space, 134,400 points, and the corpus, 2,000 arrivals: each L run's final base ordered by its declared ranking, by that ranking with ACCOUNT_MANAGER and T3_ENGINEERING exchanged, by its best ranking, and by that ranking with the two exchanged back, under corrections/hierarchy.py's pulled construction; and the run's placement declarations on that pair read rule by rule",
+  "constants": {
+    "construction": "pulled",
+    "pair": [
+      "T3_ENGINEERING",
+      "ACCOUNT_MANAGER"
+    ],
+    "layers": {
+      "security": "H01-H03",
+      "severity_1": "H04-H08",
+      "billing": "H09-H12",
+      "churn": "H13-H14",
+      "product": "H15-H20",
+      "staffing": "H21-H23",
+      "deflection": "H24-H26",
+      "defaults": "H27-H29"
+    }
+  },
+  "gates": [
+    {
+      "run": "l_r1",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r1",
+      "gate": 6,
+      "what": "the truth is the policy's, and its layers partition the space",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r2",
+      "gate": 6,
+      "what": "the truth is the policy's, and its layers partition the space",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 1,
+      "what": "the bases are Stage C's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 2,
+      "what": "the instances are shape.json's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 3,
+      "what": "the declarations are the record's",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 4,
+      "what": "the rankings are the records'",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 5,
+      "what": "every order read installs, on both surfaces",
+      "passes": true
+    },
+    {
+      "run": "l_r3",
+      "gate": 6,
+      "what": "the truth is the policy's, and its layers partition the space",
+      "passes": true
+    }
+  ],
+  "runs": {
+    "l_r1": {
+      "orders": {
+        "declared": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 100735,
+            "share": {
+              "fraction": "20147/26880",
+              "value": 0.749516
+            },
+            "by_queue": {
+              "T1_GENERAL": 2990,
+              "T2_TECHNICAL": 31930,
+              "T3_ENGINEERING": 3680,
+              "BILLING_SPECIALIST": 2045,
+              "SECURITY_INCIDENT": 42000,
+              "ACCOUNT_MANAGER": 11880,
+              "ONCALL_ESCALATION": 2940,
+              "SELF_SERVICE_DEFLECT": 3270
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "99/137",
+                "value": 0.722628
+              }
+            }
+          },
+          "corpus": {
+            "right": 1502,
+            "share": {
+              "fraction": "751/1000",
+              "value": 0.751
+            },
+            "by_queue": {
+              "T1_GENERAL": 184,
+              "T2_TECHNICAL": 642,
+              "T3_ENGINEERING": 43,
+              "BILLING_SPECIALIST": 93,
+              "SECURITY_INCIDENT": 17,
+              "ACCOUNT_MANAGER": 92,
+              "ONCALL_ESCALATION": 3,
+              "SELF_SERVICE_DEFLECT": 428
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "43/117",
+                "value": 0.367521
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "92/109",
+                "value": 0.844037
+              }
+            }
+          }
+        },
+        "swap": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 103975,
+            "share": {
+              "fraction": "4159/5376",
+              "value": 0.773624
+            },
+            "by_queue": {
+              "T1_GENERAL": 2990,
+              "T2_TECHNICAL": 31810,
+              "T3_ENGINEERING": 3560,
+              "BILLING_SPECIALIST": 2045,
+              "SECURITY_INCIDENT": 42000,
+              "ACCOUNT_MANAGER": 15360,
+              "ONCALL_ESCALATION": 2940,
+              "SELF_SERVICE_DEFLECT": 3270
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "178/409",
+                "value": 0.435208
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "128/137",
+                "value": 0.934307
+              }
+            }
+          },
+          "corpus": {
+            "right": 1509,
+            "share": {
+              "fraction": "1509/2000",
+              "value": 0.7545
+            },
+            "by_queue": {
+              "T1_GENERAL": 184,
+              "T2_TECHNICAL": 641,
+              "T3_ENGINEERING": 41,
+              "BILLING_SPECIALIST": 93,
+              "SECURITY_INCIDENT": 17,
+              "ACCOUNT_MANAGER": 102,
+              "ONCALL_ESCALATION": 3,
+              "SELF_SERVICE_DEFLECT": 428
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "41/117",
+                "value": 0.350427
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "102/109",
+                "value": 0.93578
+              }
+            }
+          }
+        },
+        "rest": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 101540,
+            "share": {
+              "fraction": "5077/6720",
+              "value": 0.755506
+            },
+            "by_queue": {
+              "T1_GENERAL": 2990,
+              "T2_TECHNICAL": 31930,
+              "T3_ENGINEERING": 3680,
+              "BILLING_SPECIALIST": 4800,
+              "SECURITY_INCIDENT": 42000,
+              "ACCOUNT_MANAGER": 10200,
+              "ONCALL_ESCALATION": 2940,
+              "SELF_SERVICE_DEFLECT": 3000
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "184/409",
+                "value": 0.449878
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "85/137",
+                "value": 0.620438
+              }
+            }
+          },
+          "corpus": {
+            "right": 1510,
+            "share": {
+              "fraction": "151/200",
+              "value": 0.755
+            },
+            "by_queue": {
+              "T1_GENERAL": 184,
+              "T2_TECHNICAL": 642,
+              "T3_ENGINEERING": 43,
+              "BILLING_SPECIALIST": 151,
+              "SECURITY_INCIDENT": 17,
+              "ACCOUNT_MANAGER": 71,
+              "ONCALL_ESCALATION": 3,
+              "SELF_SERVICE_DEFLECT": 399
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "43/117",
+                "value": 0.367521
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "71/109",
+                "value": 0.651376
+              }
+            }
+          }
+        },
+        "best": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "BILLING_SPECIALIST",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 104780,
+            "share": {
+              "fraction": "5239/6720",
+              "value": 0.779613
+            },
+            "by_queue": {
+              "T1_GENERAL": 2990,
+              "T2_TECHNICAL": 31810,
+              "T3_ENGINEERING": 3560,
+              "BILLING_SPECIALIST": 4800,
+              "SECURITY_INCIDENT": 42000,
+              "ACCOUNT_MANAGER": 13680,
+              "ONCALL_ESCALATION": 2940,
+              "SELF_SERVICE_DEFLECT": 3000
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "178/409",
+                "value": 0.435208
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "114/137",
+                "value": 0.832117
+              }
+            }
+          },
+          "corpus": {
+            "right": 1517,
+            "share": {
+              "fraction": "1517/2000",
+              "value": 0.7585
+            },
+            "by_queue": {
+              "T1_GENERAL": 184,
+              "T2_TECHNICAL": 641,
+              "T3_ENGINEERING": 41,
+              "BILLING_SPECIALIST": 151,
+              "SECURITY_INCIDENT": 17,
+              "ACCOUNT_MANAGER": 81,
+              "ONCALL_ESCALATION": 3,
+              "SELF_SERVICE_DEFLECT": 399
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "41/117",
+                "value": 0.350427
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "81/109",
+                "value": 0.743119
+              }
+            }
+          }
+        }
+      },
+      "inverted": [
+        [
+          "ONCALL_ESCALATION",
+          "BILLING_SPECIALIST"
+        ],
+        [
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER"
+        ],
+        [
+          "T3_ENGINEERING",
+          "BILLING_SPECIALIST"
+        ],
+        [
+          "ACCOUNT_MANAGER",
+          "BILLING_SPECIALIST"
+        ],
+        [
+          "T2_TECHNICAL",
+          "BILLING_SPECIALIST"
+        ],
+        [
+          "SELF_SERVICE_DEFLECT",
+          "BILLING_SPECIALIST"
+        ]
+      ],
+      "gap": {
+        "space": {
+          "lacks": 4045,
+          "swap_alone": 3240,
+          "rest_alone": 805,
+          "swap_given_rest": 3240,
+          "left_to_each_other": 0
+        },
+        "corpus": {
+          "lacks": 15,
+          "swap_alone": 7,
+          "rest_alone": 8,
+          "swap_given_rest": 7,
+          "left_to_each_other": 0
+        }
+      },
+      "the_swap": {
+        "space": {
+          "gained": {
+            "points": 3480,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 3480
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 3480,
+              "product": 0,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          },
+          "lost": {
+            "points": 240,
+            "by_queue": {
+              "T2_TECHNICAL": 120,
+              "T3_ENGINEERING": 120
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 0,
+              "product": 240,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          }
+        },
+        "corpus": {
+          "gained": {
+            "points": 10,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 10
+            }
+          },
+          "lost": {
+            "points": 3,
+            "by_queue": {
+              "T2_TECHNICAL": 1,
+              "T3_ENGINEERING": 2
+            }
+          }
+        }
+      },
+      "votes": {
+        "for_t3": {
+          "votes": 68,
+          "by_answer": {
+            "T3_ENGINEERING": 45,
+            "ACCOUNT_MANAGER": 23
+          },
+          "by_verdict": {
+            "installed": 48,
+            "refused": 20
+          },
+          "answers": 16,
+          "largest_answer": {
+            "newborn": "R0266",
+            "votes": 8
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "880",
+            "value": 880.0
+          },
+          "space": {
+            "votes": 68,
+            "strict": 46,
+            "named": 20,
+            "tie": 0,
+            "neither": 22,
+            "share": {
+              "fraction": "10/23",
+              "value": 0.434783
+            }
+          },
+          "corpus": {
+            "votes": 68,
+            "strict": 21,
+            "named": 13,
+            "tie": 0,
+            "neither": 47,
+            "share": {
+              "fraction": "13/21",
+              "value": 0.619048
+            }
+          },
+          "layers": {
+            "security": 29560,
+            "severity_1": 28960,
+            "billing": 0,
+            "churn": 12200,
+            "product": 1080,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        },
+        "for_am": {
+          "votes": 44,
+          "by_answer": {
+            "T3_ENGINEERING": 25,
+            "ACCOUNT_MANAGER": 19
+          },
+          "by_verdict": {
+            "installed": 31,
+            "refused": 13
+          },
+          "answers": 12,
+          "largest_answer": {
+            "newborn": "R0207",
+            "votes": 8
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "1040",
+            "value": 1040.0
+          },
+          "space": {
+            "votes": 44,
+            "strict": 44,
+            "named": 44,
+            "tie": 0,
+            "neither": 0,
+            "share": {
+              "fraction": "1",
+              "value": 1.0
+            }
+          },
+          "corpus": {
+            "votes": 44,
+            "strict": 12,
+            "named": 10,
+            "tie": 0,
+            "neither": 32,
+            "share": {
+              "fraction": "5/6",
+              "value": 0.833333
+            }
+          },
+          "layers": {
+            "security": 22280,
+            "severity_1": 7440,
+            "billing": 0,
+            "churn": 19680,
+            "product": 720,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's, and its layers partition the space",
+          "passes": true
+        }
+      ]
+    },
+    "l_r2": {
+      "orders": {
+        "declared": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 92210,
+            "share": {
+              "fraction": "9221/13440",
+              "value": 0.686086
+            },
+            "by_queue": {
+              "T1_GENERAL": 2510,
+              "T2_TECHNICAL": 25330,
+              "T3_ENGINEERING": 6340,
+              "BILLING_SPECIALIST": 4560,
+              "SECURITY_INCIDENT": 33600,
+              "ACCOUNT_MANAGER": 12480,
+              "ONCALL_ESCALATION": 5460,
+              "SELF_SERVICE_DEFLECT": 1930
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "104/137",
+                "value": 0.759124
+              }
+            }
+          },
+          "corpus": {
+            "right": 1456,
+            "share": {
+              "fraction": "91/125",
+              "value": 0.728
+            },
+            "by_queue": {
+              "T1_GENERAL": 159,
+              "T2_TECHNICAL": 525,
+              "T3_ENGINEERING": 106,
+              "BILLING_SPECIALIST": 224,
+              "SECURITY_INCIDENT": 15,
+              "ACCOUNT_MANAGER": 93,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 328
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "106/117",
+                "value": 0.905983
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "93/109",
+                "value": 0.853211
+              }
+            }
+          }
+        },
+        "swap": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 95110,
+            "share": {
+              "fraction": "9511/13440",
+              "value": 0.707664
+            },
+            "by_queue": {
+              "T1_GENERAL": 2510,
+              "T2_TECHNICAL": 25330,
+              "T3_ENGINEERING": 6000,
+              "BILLING_SPECIALIST": 4560,
+              "SECURITY_INCIDENT": 33600,
+              "ACCOUNT_MANAGER": 15720,
+              "ONCALL_ESCALATION": 5460,
+              "SELF_SERVICE_DEFLECT": 1930
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "300/409",
+                "value": 0.733496
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "131/137",
+                "value": 0.956204
+              }
+            }
+          },
+          "corpus": {
+            "right": 1467,
+            "share": {
+              "fraction": "1467/2000",
+              "value": 0.7335
+            },
+            "by_queue": {
+              "T1_GENERAL": 159,
+              "T2_TECHNICAL": 525,
+              "T3_ENGINEERING": 105,
+              "BILLING_SPECIALIST": 224,
+              "SECURITY_INCIDENT": 15,
+              "ACCOUNT_MANAGER": 105,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 328
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "35/39",
+                "value": 0.897436
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "105/109",
+                "value": 0.963303
+              }
+            }
+          }
+        },
+        "rest": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 92405,
+            "share": {
+              "fraction": "18481/26880",
+              "value": 0.687537
+            },
+            "by_queue": {
+              "T1_GENERAL": 2740,
+              "T2_TECHNICAL": 23100,
+              "T3_ENGINEERING": 6340,
+              "BILLING_SPECIALIST": 4560,
+              "SECURITY_INCIDENT": 33600,
+              "ACCOUNT_MANAGER": 12480,
+              "ONCALL_ESCALATION": 5460,
+              "SELF_SERVICE_DEFLECT": 4125
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "317/409",
+                "value": 0.775061
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "104/137",
+                "value": 0.759124
+              }
+            }
+          },
+          "corpus": {
+            "right": 1423,
+            "share": {
+              "fraction": "1423/2000",
+              "value": 0.7115
+            },
+            "by_queue": {
+              "T1_GENERAL": 153,
+              "T2_TECHNICAL": 371,
+              "T3_ENGINEERING": 106,
+              "BILLING_SPECIALIST": 224,
+              "SECURITY_INCIDENT": 15,
+              "ACCOUNT_MANAGER": 93,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 455
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "106/117",
+                "value": 0.905983
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "93/109",
+                "value": 0.853211
+              }
+            }
+          }
+        },
+        "best": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T2_TECHNICAL",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 95305,
+            "share": {
+              "fraction": "2723/3840",
+              "value": 0.709115
+            },
+            "by_queue": {
+              "T1_GENERAL": 2740,
+              "T2_TECHNICAL": 23100,
+              "T3_ENGINEERING": 6000,
+              "BILLING_SPECIALIST": 4560,
+              "SECURITY_INCIDENT": 33600,
+              "ACCOUNT_MANAGER": 15720,
+              "ONCALL_ESCALATION": 5460,
+              "SELF_SERVICE_DEFLECT": 4125
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "300/409",
+                "value": 0.733496
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "131/137",
+                "value": 0.956204
+              }
+            }
+          },
+          "corpus": {
+            "right": 1434,
+            "share": {
+              "fraction": "717/1000",
+              "value": 0.717
+            },
+            "by_queue": {
+              "T1_GENERAL": 153,
+              "T2_TECHNICAL": 371,
+              "T3_ENGINEERING": 105,
+              "BILLING_SPECIALIST": 224,
+              "SECURITY_INCIDENT": 15,
+              "ACCOUNT_MANAGER": 105,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 455
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "35/39",
+                "value": 0.897436
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "105/109",
+                "value": 0.963303
+              }
+            }
+          }
+        }
+      },
+      "inverted": [
+        [
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER"
+        ],
+        [
+          "T2_TECHNICAL",
+          "SELF_SERVICE_DEFLECT"
+        ]
+      ],
+      "gap": {
+        "space": {
+          "lacks": 3095,
+          "swap_alone": 2900,
+          "rest_alone": 195,
+          "swap_given_rest": 2900,
+          "left_to_each_other": 0
+        },
+        "corpus": {
+          "lacks": -22,
+          "swap_alone": 11,
+          "rest_alone": -33,
+          "swap_given_rest": 11,
+          "left_to_each_other": 0
+        }
+      },
+      "the_swap": {
+        "space": {
+          "gained": {
+            "points": 3240,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 3240
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 3240,
+              "product": 0,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          },
+          "lost": {
+            "points": 340,
+            "by_queue": {
+              "T3_ENGINEERING": 340
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 0,
+              "product": 340,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          }
+        },
+        "corpus": {
+          "gained": {
+            "points": 12,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 12
+            }
+          },
+          "lost": {
+            "points": 1,
+            "by_queue": {
+              "T3_ENGINEERING": 1
+            }
+          }
+        }
+      },
+      "votes": {
+        "for_t3": {
+          "votes": 79,
+          "by_answer": {
+            "T3_ENGINEERING": 67,
+            "ACCOUNT_MANAGER": 12
+          },
+          "by_verdict": {
+            "installed": 68,
+            "refused": 11
+          },
+          "answers": 20,
+          "largest_answer": {
+            "newborn": "R0240",
+            "votes": 10
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "840",
+            "value": 840.0
+          },
+          "space": {
+            "votes": 79,
+            "strict": 49,
+            "named": 17,
+            "tie": 0,
+            "neither": 30,
+            "share": {
+              "fraction": "17/49",
+              "value": 0.346939
+            }
+          },
+          "corpus": {
+            "votes": 79,
+            "strict": 25,
+            "named": 11,
+            "tie": 0,
+            "neither": 54,
+            "share": {
+              "fraction": "11/25",
+              "value": 0.44
+            }
+          },
+          "layers": {
+            "security": 22400,
+            "severity_1": 32820,
+            "billing": 0,
+            "churn": 15280,
+            "product": 920,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        },
+        "for_am": {
+          "votes": 15,
+          "by_answer": {
+            "T3_ENGINEERING": 8,
+            "ACCOUNT_MANAGER": 7
+          },
+          "by_verdict": {
+            "installed": 5,
+            "refused": 10
+          },
+          "answers": 4,
+          "largest_answer": {
+            "newborn": "R0253",
+            "votes": 8
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "960",
+            "value": 960.0
+          },
+          "space": {
+            "votes": 15,
+            "strict": 15,
+            "named": 15,
+            "tie": 0,
+            "neither": 0,
+            "share": {
+              "fraction": "1",
+              "value": 1.0
+            }
+          },
+          "corpus": {
+            "votes": 15,
+            "strict": 8,
+            "named": 8,
+            "tie": 0,
+            "neither": 7,
+            "share": {
+              "fraction": "1",
+              "value": 1.0
+            }
+          },
+          "layers": {
+            "security": 5720,
+            "severity_1": 4360,
+            "billing": 0,
+            "churn": 7080,
+            "product": 200,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's, and its layers partition the space",
+          "passes": true
+        }
+      ]
+    },
+    "l_r3": {
+      "orders": {
+        "declared": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 80470,
+            "share": {
+              "fraction": "8047/13440",
+              "value": 0.598735
+            },
+            "by_queue": {
+              "T1_GENERAL": 3205,
+              "T2_TECHNICAL": 33615,
+              "T3_ENGINEERING": 6080,
+              "BILLING_SPECIALIST": 940,
+              "SECURITY_INCIDENT": 16800,
+              "ACCOUNT_MANAGER": 12840,
+              "ONCALL_ESCALATION": 4935,
+              "SELF_SERVICE_DEFLECT": 2055
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "107/137",
+                "value": 0.781022
+              }
+            }
+          },
+          "corpus": {
+            "right": 1453,
+            "share": {
+              "fraction": "1453/2000",
+              "value": 0.7265
+            },
+            "by_queue": {
+              "T1_GENERAL": 170,
+              "T2_TECHNICAL": 655,
+              "T3_ENGINEERING": 102,
+              "BILLING_SPECIALIST": 58,
+              "SECURITY_INCIDENT": 5,
+              "ACCOUNT_MANAGER": 96,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 361
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "34/39",
+                "value": 0.871795
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "96/109",
+                "value": 0.880734
+              }
+            }
+          }
+        },
+        "swap": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 82070,
+            "share": {
+              "fraction": "8207/13440",
+              "value": 0.61064
+            },
+            "by_queue": {
+              "T1_GENERAL": 3205,
+              "T2_TECHNICAL": 33615,
+              "T3_ENGINEERING": 5840,
+              "BILLING_SPECIALIST": 940,
+              "SECURITY_INCIDENT": 16800,
+              "ACCOUNT_MANAGER": 14680,
+              "ONCALL_ESCALATION": 4935,
+              "SELF_SERVICE_DEFLECT": 2055
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "292/409",
+                "value": 0.713936
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "367/411",
+                "value": 0.892944
+              }
+            }
+          },
+          "corpus": {
+            "right": 1456,
+            "share": {
+              "fraction": "91/125",
+              "value": 0.728
+            },
+            "by_queue": {
+              "T1_GENERAL": 170,
+              "T2_TECHNICAL": 655,
+              "T3_ENGINEERING": 100,
+              "BILLING_SPECIALIST": 58,
+              "SECURITY_INCIDENT": 5,
+              "ACCOUNT_MANAGER": 101,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 361
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "100/117",
+                "value": 0.854701
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "101/109",
+                "value": 0.926606
+              }
+            }
+          }
+        },
+        "rest": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 81370,
+            "share": {
+              "fraction": "8137/13440",
+              "value": 0.605432
+            },
+            "by_queue": {
+              "T1_GENERAL": 3205,
+              "T2_TECHNICAL": 33615,
+              "T3_ENGINEERING": 6080,
+              "BILLING_SPECIALIST": 1960,
+              "SECURITY_INCIDENT": 16800,
+              "ACCOUNT_MANAGER": 12840,
+              "ONCALL_ESCALATION": 4935,
+              "SELF_SERVICE_DEFLECT": 1935
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "304/409",
+                "value": 0.743276
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "107/137",
+                "value": 0.781022
+              }
+            }
+          },
+          "corpus": {
+            "right": 1467,
+            "share": {
+              "fraction": "1467/2000",
+              "value": 0.7335
+            },
+            "by_queue": {
+              "T1_GENERAL": 170,
+              "T2_TECHNICAL": 655,
+              "T3_ENGINEERING": 102,
+              "BILLING_SPECIALIST": 80,
+              "SECURITY_INCIDENT": 5,
+              "ACCOUNT_MANAGER": 96,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 353
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "34/39",
+                "value": 0.871795
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "96/109",
+                "value": 0.880734
+              }
+            }
+          }
+        },
+        "best": {
+          "ranking": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "BILLING_SPECIALIST",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "space": {
+            "right": 82970,
+            "share": {
+              "fraction": "8297/13440",
+              "value": 0.617336
+            },
+            "by_queue": {
+              "T1_GENERAL": 3205,
+              "T2_TECHNICAL": 33615,
+              "T3_ENGINEERING": 5840,
+              "BILLING_SPECIALIST": 1960,
+              "SECURITY_INCIDENT": 16800,
+              "ACCOUNT_MANAGER": 14680,
+              "ONCALL_ESCALATION": 4935,
+              "SELF_SERVICE_DEFLECT": 1935
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "292/409",
+                "value": 0.713936
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "367/411",
+                "value": 0.892944
+              }
+            }
+          },
+          "corpus": {
+            "right": 1470,
+            "share": {
+              "fraction": "147/200",
+              "value": 0.735
+            },
+            "by_queue": {
+              "T1_GENERAL": 170,
+              "T2_TECHNICAL": 655,
+              "T3_ENGINEERING": 100,
+              "BILLING_SPECIALIST": 80,
+              "SECURITY_INCIDENT": 5,
+              "ACCOUNT_MANAGER": 101,
+              "ONCALL_ESCALATION": 6,
+              "SELF_SERVICE_DEFLECT": 353
+            },
+            "recall": {
+              "T3_ENGINEERING": {
+                "fraction": "100/117",
+                "value": 0.854701
+              },
+              "ACCOUNT_MANAGER": {
+                "fraction": "101/109",
+                "value": 0.926606
+              }
+            }
+          }
+        }
+      },
+      "inverted": [
+        [
+          "T3_ENGINEERING",
+          "ACCOUNT_MANAGER"
+        ],
+        [
+          "T2_TECHNICAL",
+          "BILLING_SPECIALIST"
+        ],
+        [
+          "SELF_SERVICE_DEFLECT",
+          "BILLING_SPECIALIST"
+        ]
+      ],
+      "gap": {
+        "space": {
+          "lacks": 2500,
+          "swap_alone": 1600,
+          "rest_alone": 900,
+          "swap_given_rest": 1600,
+          "left_to_each_other": 0
+        },
+        "corpus": {
+          "lacks": 17,
+          "swap_alone": 3,
+          "rest_alone": 14,
+          "swap_given_rest": 3,
+          "left_to_each_other": 0
+        }
+      },
+      "the_swap": {
+        "space": {
+          "gained": {
+            "points": 1840,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 1840
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 1840,
+              "product": 0,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          },
+          "lost": {
+            "points": 240,
+            "by_queue": {
+              "T3_ENGINEERING": 240
+            },
+            "by_layer": {
+              "security": 0,
+              "severity_1": 0,
+              "billing": 0,
+              "churn": 0,
+              "product": 240,
+              "staffing": 0,
+              "deflection": 0,
+              "defaults": 0
+            }
+          }
+        },
+        "corpus": {
+          "gained": {
+            "points": 5,
+            "by_queue": {
+              "ACCOUNT_MANAGER": 5
+            }
+          },
+          "lost": {
+            "points": 2,
+            "by_queue": {
+              "T3_ENGINEERING": 2
+            }
+          }
+        }
+      },
+      "votes": {
+        "for_t3": {
+          "votes": 40,
+          "by_answer": {
+            "T3_ENGINEERING": 27,
+            "ACCOUNT_MANAGER": 13
+          },
+          "by_verdict": {
+            "installed": 38,
+            "refused": 2
+          },
+          "answers": 14,
+          "largest_answer": {
+            "newborn": "R0227",
+            "votes": 9
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "840",
+            "value": 840.0
+          },
+          "space": {
+            "votes": 40,
+            "strict": 36,
+            "named": 17,
+            "tie": 0,
+            "neither": 4,
+            "share": {
+              "fraction": "17/36",
+              "value": 0.472222
+            }
+          },
+          "corpus": {
+            "votes": 40,
+            "strict": 10,
+            "named": 6,
+            "tie": 0,
+            "neither": 30,
+            "share": {
+              "fraction": "3/5",
+              "value": 0.6
+            }
+          },
+          "layers": {
+            "security": 13660,
+            "severity_1": 12620,
+            "billing": 400,
+            "churn": 6020,
+            "product": 120,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        },
+        "for_am": {
+          "votes": 24,
+          "by_answer": {
+            "T3_ENGINEERING": 4,
+            "ACCOUNT_MANAGER": 20
+          },
+          "by_verdict": {
+            "installed": 9,
+            "refused": 15
+          },
+          "answers": 10,
+          "largest_answer": {
+            "newborn": "R0268",
+            "votes": 4
+          },
+          "nested": 0,
+          "shared_median": {
+            "fraction": "960",
+            "value": 960.0
+          },
+          "space": {
+            "votes": 24,
+            "strict": 23,
+            "named": 23,
+            "tie": 0,
+            "neither": 1,
+            "share": {
+              "fraction": "1",
+              "value": 1.0
+            }
+          },
+          "corpus": {
+            "votes": 24,
+            "strict": 9,
+            "named": 7,
+            "tie": 0,
+            "neither": 15,
+            "share": {
+              "fraction": "7/9",
+              "value": 0.777778
+            }
+          },
+          "layers": {
+            "security": 15180,
+            "severity_1": 5820,
+            "billing": 0,
+            "churn": 9000,
+            "product": 360,
+            "staffing": 0,
+            "deflection": 0,
+            "defaults": 0
+          }
+        }
+      },
+      "gates": [
+        {
+          "gate": 1,
+          "what": "the bases are Stage C's",
+          "passes": true
+        },
+        {
+          "gate": 2,
+          "what": "the instances are shape.json's",
+          "passes": true
+        },
+        {
+          "gate": 3,
+          "what": "the declarations are the record's",
+          "passes": true
+        },
+        {
+          "gate": 4,
+          "what": "the rankings are the records'",
+          "passes": true
+        },
+        {
+          "gate": 5,
+          "what": "every order read installs, on both surfaces",
+          "passes": true
+        },
+        {
+          "gate": 6,
+          "what": "the truth is the policy's, and its layers partition the space",
+          "passes": true
+        }
+      ]
+    }
+  },
+  "expectation": [
+    {
+      "clause": "G1",
+      "what": "in every L run, the swap alone gains more than half of what the declared ranking lacks",
+      "reading": {
+        "l_r1": {
+          "swap_alone": 3240,
+          "lacks": 4045
+        },
+        "l_r2": {
+          "swap_alone": 2900,
+          "lacks": 3095
+        },
+        "l_r3": {
+          "swap_alone": 1600,
+          "lacks": 2500
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "G2",
+      "what": "in every L run, most votes for T3_ENGINEERING were cast by the answers of its own newborns",
+      "reading": {
+        "l_r1": {
+          "by_its_own": 45,
+          "votes": 68
+        },
+        "l_r2": {
+          "by_its_own": 67,
+          "votes": 79
+        },
+        "l_r3": {
+          "by_its_own": 27,
+          "votes": 40
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "G3",
+      "what": "in every L run, of the strict votes for T3_ENGINEERING, most name the better rule",
+      "reading": {
+        "l_r1": {
+          "named": 20,
+          "strict": 46
+        },
+        "l_r2": {
+          "named": 17,
+          "strict": 49
+        },
+        "l_r3": {
+          "named": 17,
+          "strict": 36
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "G4",
+      "what": "in every L run, most of the points of the shared regions of the votes for T3_ENGINEERING, counted once a vote, lie in the policy's severity-1 layer",
+      "reading": {
+        "l_r1": {
+          "severity_1": 28960,
+          "all_layers": 71800
+        },
+        "l_r2": {
+          "severity_1": 32820,
+          "all_layers": 71420
+        },
+        "l_r3": {
+          "severity_1": 12620,
+          "all_layers": 32820
+        }
+      },
+      "holds": false
+    },
+    {
+      "clause": "G5",
+      "what": "in every L run, most of the points the swap gains lie in the policy's churn layer",
+      "reading": {
+        "l_r1": {
+          "gained_in_churn": 3480,
+          "gained": 3480
+        },
+        "l_r2": {
+          "gained_in_churn": 3240,
+          "gained": 3240
+        },
+        "l_r3": {
+          "gained_in_churn": 1840,
+          "gained": 1840
+        }
+      },
+      "holds": true
+    },
+    {
+      "clause": "G6",
+      "what": "in every L run, the swap decides more of the corpus than the declared ranking",
+      "reading": {
+        "l_r1": {
+          "corpus_swap_alone": 7
+        },
+        "l_r2": {
+          "corpus_swap_alone": 11
+        },
+        "l_r3": {
+          "corpus_swap_alone": 3
+        }
+      },
+      "holds": true
+    }
+  ]
+}
