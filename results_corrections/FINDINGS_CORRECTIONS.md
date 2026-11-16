@@ -42,6 +42,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN audit of the citations on both sides** reached it from #273, on
   2026-11-16. The merge answered 502, and GitHub never marked the pull request
   merged, so it was closed by hand.
+- **The POST-RUN reading of the ranking the loop declared, as it went** reaches
+  it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -255,6 +257,16 @@ corrected during Stage C.**
 >   computes it at `f7f1c44`, and still at `0a28202`, the last of #273's
 >   commits. Its `_env` says `git_dirty`, for the same files, and `code_dirty`
 >   is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the sixteenth] And a seventeenth.**
+> [`online.json`](online.json) is the POST-RUN reading of the ranking the loop
+> declared, as it went.
+> - **It was written from `685f46f`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `88db753e70125983`**, because `corrections/online.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -3525,6 +3537,9 @@ left no pair with `SECURITY_INCIDENT` even.
    the final declarations, gathered after the run. A loop that ranked as it
    went would decide other cases on the way and write other rules. Calls, and
    a plan.
+   **[NOTE 2026-11-16] Replayed POST-RUN, below, on the loop's own births.** It
+   keeps what conflicts cost, and not what containment costs. *The ranking the
+   loop declared, as it went*.
 2. **The readings that read declarations through `corrections/fall.py`'s
    `declared`.** It keeps one citation a rule, and in L r1 and L r2 one answer
    each cited a rule on both sides. `fall.py`, `conditions.py`, `gateway.py`,
@@ -3668,6 +3683,144 @@ committed before it. It is not signed, and it is on no scoreboard.
    `PLAN_REASONED_LOOP.md`, `PLAN_CHANNEL.md`, `PLAN_PLACEMENT.md` and
    `PLAN_WHOLE.md` record their declarations the same way. Free on the records.
 
+## The ranking the loop declared, as it went — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the audit
+above.** Gathered after the run, the loop's declarations choose one ranking that
+orders its final rules above at once in L r2, and just below it in L r1 (*The
+ranking the loop declared*). A loop that ranked its base by its own
+declarations while it ran is calls and a plan. This reading replays each L
+run's births in their order, and after every birth orders the base so far by
+the ranking its declarations so far choose. It spends nothing.
+
+**The replay.** After each birth the votes are those of the answers born so
+far, read as *The ranking the loop declared* reads them. Of the rankings that
+agree with the most of them, the replay takes the earliest in
+`itertools.permutations(ACTIONS)`: a loop must take one, and that rule reads no
+truth. It orders the base so far under the pulled construction, and reads it
+over the space as rung 2's engine decides. **It is a replay, not the loop that
+would have run**: its rules are the ones the loop wrote.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.online`, on
+2026-11-16 in local time, from `685f46f` with its code clean, on this reading's
+branch.
+- **The commits.** `685f46f` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `f21ec45`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `88db753e70125983`, is the one `685f46f` computes.
+- **The record is [`online.json`](online.json).** Its 12 gates passed:
+  - each L run's final base is Stage C's;
+  - after the last birth the votes, the ranking and what it decides are
+    `declared.json`'s;
+  - the record's curve is `fall.json`'s, and at each checkpoint it gives the
+    loop's share `score.json` keeps;
+  - at each checkpoint, the base installed in the replay's order into a fresh
+    rung 2 engine closes no cycle, and the engine and first match each decide
+    what the replay reads.
+
+### 1. At the checkpoints
+
+The share of the space at each count of labels, the loop's and at once's from
+`score.json`:
+
+| run | | 10 | 20 | 40 | 80 | 160 | all |
+|---|---|---|---|---|---|---|---|
+| L r1 | the replay | 0.5231 | 0.5686 | 0.6272 | 0.7408 | 0.7541 | 0.7495 |
+| | the loop | 0.5241 | 0.5755 | 0.5162 | 0.6539 | 0.6170 | 0.5647 |
+| | at once | 0.5944 | 0.6051 | 0.6952 | 0.4760 | 0.7890 | 0.7584 |
+| L r2 | the replay | 0.6391 | 0.7398 | 0.7433 | 0.6997 | 0.7228 | 0.6861 |
+| | the loop | 0.6810 | 0.7597 | 0.7512 | 0.5490 | 0.5116 | 0.4221 |
+| | at once | 0.5541 | 0.5594 | 0.5250 | 0.3829 | 0.6240 | 0.6252 |
+| L r3 | the replay | 0.2398 | 0.6402 | 0.6422 | 0.5759 | 0.5907 | 0.5987 |
+| | the loop | 0.3158 | 0.6488 | 0.6338 | 0.5477 | 0.5089 | 0.5618 |
+| | at once | 0.5713 | 0.6051 | 0.4607 | 0.6122 | 0.6928 | 0.7725 |
+
+- **In L r2 the replay is above at once at every checkpoint** (U4 holds, the
+  bet), and above the loop from 80 labels on.
+- **In L r1 it is above the loop from 40 labels on**, and above at once at 80
+  labels only.
+- **In L r3 it is above the loop from 40 labels on**, and below at once from
+  80 labels on.
+
+### 2. The peak, the fall and the ranking
+
+| run | the replay: peak | at birth | final | the record: peak | at birth | final |
+|---|---|---|---|---|---|---|
+| L r1 | 0.7638 | 257 | 0.7495 | 0.6896 | 87 | 0.5647 |
+| L r2 | 0.7596 | 65 | 0.6861 | 0.7773 | 66 | 0.4221 |
+| L r3 | 0.7002 | 81 | 0.5987 | 0.6895 | 81 | 0.5618 |
+
+- **In L r1 the replay does not fall.** It peaks late, at birth 257 of 282,
+  and ends 0.0142 below its peak. From the record's peak on it is never below
+  the record.
+- **In L r2 and L r3 it falls**, by 0.0735 and 0.1015 (U3 fails).
+  - **The largest drop of each is a rule nested in the keyword's region.** In
+    L r2, the birth of `R0120`, of `T2_TECHNICAL`, the keyword at severity 3 or
+    more, takes 7,560 points. In L r3, the birth of `R0104`, of `T2_TECHNICAL`,
+    the keyword at every severity but 1, takes 16,800. Each holds
+    `SECURITY_INCIDENT`'s points by containment (*Shape or order*, section 3),
+    and no ranking moves containment.
+  - **After the record's peak the replay falls below it** at 13 births in L r2
+    and 7 in L r3 (U2 fails).
+  - **In L r2 the replay's peak, 0.7596, is below the record's, 0.7773** (U6
+    fails), one birth before it.
+- **The ranking puts `SECURITY_INCIDENT` first early**, for good from births
+  23, 25 and 62 (U1 holds).
+- **Its lower places settle late.** The ranking changes 21, 23 and 32 times,
+  and is the final one for good only from births 250, 257 and 265. At the
+  record's peak it is not the final ranking in any run (U5 fails).
+
+### The expectation
+
+Written in `corrections/online.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| U1, in every L run, the replay's ranking puts `SECURITY_INCIDENT` first for good by the record's peak birth | from births 23, 25 and 62, against peaks at 87, 66 and 81 | **holds** |
+| U2, in every L run, at every birth from the record's peak on, the replay decides at least as much of the space as the record | below it at 0, 13 and 7 births | fails |
+| U3, in every L run, the replay's final is within 0.02 of the space of its own peak | 0.0142, 0.0735 and 0.1015 below it | fails |
+| U4, in L r2, at every checkpoint from 40 labels on, the replay decides more of the space than at once | 0.7433, 0.6997, 0.7228 and 0.6861, against 0.5250, 0.3829, 0.6240 and 0.6252 | **holds** |
+| U5, in every L run, the replay's ranking at the record's peak birth is its final ranking | in none | fails |
+| U6, in every L run, the replay's peak is at least the record's | 0.7638, 0.7596 and 0.7002, against 0.6896, 0.7773 and 0.6895 | fails |
+
+**U1 and U4 hold, and U2, U3, U5 and U6 fail.** The bet, U4, held, and so did
+U1, trusted most. U5, trusted least, failed in every run. U2 and U3 failed on L
+r2 and L r3, and U6 on L r2 alone.
+
+### What it says
+
+- **Ranked as it went, the loop keeps what conflicts cost it.** L r1's replay
+  rises nearly to the end and does not fall. In every run the replay ends
+  above the record.
+- **It does not keep what containment costs it.** In L r2 and L r3 it falls
+  where a rule of another queue is born nested in the keyword's region. A
+  ranking orders rules, and does not undo containment.
+- **In L r2 it beats at once at every checkpoint.** On these births, a loop that
+  ranked as it went would have beaten compiling at once there all along. In L
+  r1 and L r3 it does not.
+- **The ranking needs few births for its first place, and many for the rest.**
+  `SECURITY_INCIDENT` comes first by birth 62 in every run, and the lower places
+  move until births 250, 257 and 265.
+- **So two levers remain, and both are calls**: a loop that ranks as it goes,
+  and a rule of another queue kept from being born nested in the keyword's
+  region. The replay shows what the first buys on these births, and the second
+  is what it leaves.
+
+### What it does not settle
+
+1. **The loop that ranks as it goes.** These are the loop's own births. A loop
+   that ranked its base as it went would decide other cases on the way,
+   escalate others and write other rules. Calls, and a plan.
+2. **The tie rule.** Early on, many rankings tie, and the replay takes the
+   earliest. Another rule that reads no truth could move the early curve. Free
+   on the records.
+3. **What the other drops are.** The largest drop of L r2 and of L r3 is a birth
+   nested in the keyword's region. The others are not read. Free on the
+   records.
+
 ---
 
 ## Files
@@ -3709,3 +3862,5 @@ committed before it. It is not signed, and it is on no scoreboard.
   ranking it lacks.
 - [`citations.json`](citations.json): POST-RUN, the citations on both sides:
   what the readings that kept one move.
+- [`online.json`](online.json): POST-RUN, the ranking the loop declared, as it
+  went.
