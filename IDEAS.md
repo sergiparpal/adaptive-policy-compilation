@@ -784,16 +784,34 @@ learner of the labels alone matched the loop. What that leaves:
   final rules, ordered by one ranking of the queues after the run, beat
   compiling at once. A loop whose engine installed each birth by a fixed
   ranking would decide other cases on the way and write other rules. Calls.
+  **[NOTE 2026-11-16] The ranking could be the loop's own.** Gathered by pair
+  of queues, its placement declarations choose one ranking, which orders its
+  final rules above at once in L r2 and just below it in L r1. A loop that
+  ranked by its own declarations as it went needs no new input.
+  `FINDINGS_CORRECTIONS.md`, *The ranking the loop declared*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
   pairwise thread's records. Whether the model gives it when shown the order
   at work is `PLAN_RANKING.md`'s open item: asks, cents.
+  **[NOTE 2026-11-16] Most of it is in the loop's own declarations**, read
+  POST-RUN. The ranking they choose falls short of the best mostly on the
+  queues of the billing tickets. `FINDINGS_CORRECTIONS.md`, *The ranking the
+  loop declared*.
 - **What the best ranking leaves outside the keyword half.** Which pairs of
   queues it orders against the order with the truth, and on how many points.
   Free on the records.
 - **The tie-break inside a queue.** Where containment pulls a rule into
   another queue's place, its birth sets its place among that queue's rules.
+  Free on the records.
+- **The readings that read declarations through `corrections/fall.py`'s
+  `declared`.** It keeps one citation a rule, and in L r1 and L r2 one answer
+  each cited a rule on both sides. `fall.py`, `conditions.py`, `gateway.py`,
+  `above.py`, `byqueue.py` and `doors.py` read declarations through it.
+  Whether a figure of theirs moves is free on the records.
+- **Why the declarations put `BILLING_SPECIALIST` low.** In L r1 most of its
+  votes against `ONCALL_ESCALATION`, `ACCOUNT_MANAGER` and
+  `SELF_SERVICE_DEFLECT` go against it, where the best ranking puts it second.
   Free on the records.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that

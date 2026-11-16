@@ -3448,6 +3448,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        `SECURITY_INCIDENT` first and give `ACCOUNT_MANAGER` away.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *A ranking of the queues as the order*.
+     **[NOTE 2026-11-16, after the fourteenth] And the loop had declared most of
+     it, read POST-RUN.** Gathered by pair of queues, each run's own placement
+     declarations choose one ranking, `SECURITY_INCIDENT` first.
+     - **It orders the loop's rules better than the loop did**: 0.7495, 0.6861
+       and 0.5987 of the space, above the base completed and the stated
+       rankings in every run. It beats at once in L r2, and falls 0.0089 short
+       in L r1.
+     - **The refused votes were the righter ones.** The declarations the engine
+       refused for closing a cycle agree with the best ranking more often than
+       those it installed.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *The ranking the loop declared*.
 
    All three are read above.
 
