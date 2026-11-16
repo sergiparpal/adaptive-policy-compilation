@@ -169,6 +169,24 @@ any completed base, and anything the search finds, by the labels or with the
 truth.
 
 --------------------------------------------------------------------------
+ADDED AFTER THE FIRST RUN: WHERE THE BOUND FALLS SHORT
+--------------------------------------------------------------------------
+The first run found the loop's bound below at once in L r3, and above it in L r1
+and L r2: S1 and S2 fail on L r3 alone. So this part reads, for each L run's
+final base, the points no rule undefeated by containment gets right:
+- **by how they are lost**: no rule matches; no rule that matches carries the
+  true queue; or one does, and a rule strictly inside it matches too, so
+  containment defeats it in every order;
+- **those lost to containment** by true queue, in the keyword half and outside
+  it, and the undefeated rules that hold them, with their births. A point can be
+  held by more than one;
+- **what the median at-once answer decides right among them**, by queue.
+Gate 6 holds the three ways to a partition of the points the bound leaves. It
+was tried on the records in a scratch script before it was written here, after
+the six clauses above had been read: S4, S5 and S6 hold, and S1, S2 and S3
+fail. It carries no expectation and moves no clause.
+
+--------------------------------------------------------------------------
 PROVENANCE
 --------------------------------------------------------------------------
 **POST-RUN.** Proposed by the agent and asked for by Sergi on 2026-11-16, after
@@ -214,6 +232,13 @@ PROVENANCE = (
     "POST-RUN: proposed by the agent and asked for by Sergi on 2026-11-16, after "
     "corrections/layer.py. The expectation in the module's docstring was written and "
     "committed before the reading ran. Not a signed row; no verdict moves.")
+ADDED = (
+    "Added after the first run, after its six clauses were read: for each L run's final base, "
+    "the points no rule undefeated by containment gets right, by how they are lost, those lost "
+    "to containment by true queue and by the undefeated rules that hold them, and what the "
+    "median at-once answer decides right among them; and gate 6, that the ways partition them. "
+    "Tried in a scratch script first. No expectation; no clause moves.")
+HOLDERS = 6                        # the undefeated rules kept, most points first
 
 median = rl_score.median
 share, frac = fg.share, fg.frac
@@ -773,6 +798,72 @@ def read_rules(engine: PriorityEngine, space: Space, truth: dict[str, int],
 
 
 # ---------------------------------------------------------------------------
+# Added after the first run: where the bound falls short
+# ---------------------------------------------------------------------------
+
+def short_of(engine: PriorityEngine, truth: dict[str, int], n: int) -> dict[str, int]:
+    """The points no rule undefeated by containment gets right, by how they are
+    lost: no rule matches them, no rule that matches carries the true queue, or
+    one does and a rule strictly inside it matches too. Added after the first
+    run."""
+    inside, _ = containment(engine)
+    und = undefeated(engine.ext, inside)
+    action = {r.rule_id: r.action for r in engine.rules}
+    reach = covered = written = 0
+    for r, m in und.items():
+        reach |= m & truth.get(action[r], 0)
+    for r, e in engine.ext.items():
+        covered |= e
+        written |= e & truth.get(action[r], 0)
+    short = ((1 << n) - 1) & ~reach
+    return {"short": short, "impasse": short & ~covered,
+            "unwritten": short & covered & ~written, "contained": short & written}
+
+
+def read_short(engine: PriorityEngine, space: Space, truth: dict[str, int],
+               answer_right: int | None) -> tuple[dict[str, Any], bool]:
+    """Where a base's bound falls short, read; `answer_right` is the median
+    at-once answer's right points. Also gate 6: the ways partition the points
+    the bound leaves."""
+    ways = short_of(engine, truth, space.n)
+    kw = space.mask[KEYWORD][True]
+    inside, _ = containment(engine)
+    und = undefeated(engine.ext, inside)
+    rules = {r.rule_id: r for r in engine.rules}
+    cont = ways["contained"]
+    held = sorted(((r, (m & cont).bit_count(), (m & cont & kw).bit_count())
+                   for r, m in und.items() if m & cont),
+                  key=lambda x: (-x[1], rules[x[0]].born_at, x[0]))
+    union = ways["impasse"] | ways["unwritten"] | ways["contained"]
+    total = sum(ways[k].bit_count() for k in ("impasse", "unwritten", "contained"))
+    ok = union == ways["short"] and total == ways["short"].bit_count()
+    out = {k: {"points": m.bit_count(), "keyword": (m & kw).bit_count()} for k, m in ways.items()}
+    out["contained_by_queue"] = {q: (cont & m).bit_count() for q, m in truth.items()
+                                 if cont & m}
+    out["held_by"] = [{"rule": r, "action": rules[r].action, "born_at": rules[r].born_at,
+                       "conditions": [[c.attr, c.op, c.value] for c in rules[r].conditions],
+                       "points": p, "keyword": k} for r, p, k in held[:HOLDERS]]
+    if answer_right is not None:
+        b = answer_right & ways["short"]
+        out["the_median_answer_right"] = {
+            "points": b.bit_count(), "keyword": (b & kw).bit_count(),
+            "by_queue": {q: (b & m).bit_count() for q, m in truth.items() if b & m}}
+    return out, ok
+
+
+def median_answer_right(rows: Sequence[dict[str, Any]]) -> int | None:
+    """The right points of the run's median at-once answer by share, ties to the
+    earlier ask."""
+    rights = []
+    for k, row in rows:
+        rights.append((MI.right_mask(LY.installed(row["payload"]).engine), k))
+    if not rights:
+        return None
+    rights.sort(key=lambda x: (x[0].bit_count(), x[1]))
+    return rights[(len(rights) - 1) // 2][0]
+
+
+# ---------------------------------------------------------------------------
 # One run, read
 # ---------------------------------------------------------------------------
 
@@ -813,13 +904,18 @@ def stage_c(tag: str) -> dict[str, Any]:
 
 def read_run(tag: str) -> dict[str, Any]:
     """One L run: its final base and its three at-once answers at all labels,
-    each read, with gates 1 to 4. It runs in a process of its own."""
+    each read, with gates 1 to 4; and, added after the first run, where the
+    base's bound falls short, with gate 6. It runs in a process of its own."""
     record, session, _ = inputs(tag)
     space, truth = MI.space(), MI.space_truth()
     labels = ask.labelled(record)
-    loop = read_rules(MI.final_engine(record), space, truth, labels=labels)
+    engine = MI.final_engine(record)
+    loop = read_rules(engine, space, truth, labels=labels)
+    answers = answers_at_all(session, len(labels))
     asks = [{"k": k, **read_rules(LY.installed(row["payload"]).engine, space, truth)}
-            for k, row in answers_at_all(session, len(labels))]
+            for k, row in answers]
+    short, ok6 = read_short(engine, space, truth, median_answer_right(answers))
+    loop["short"] = short
     g = {"installs": True, "completing_loses_nothing": True, "bound_bounds": True}
     for x in [loop, *asks]:
         for key in g:
@@ -827,7 +923,9 @@ def read_run(tag: str) -> dict[str, Any]:
     gates = [stage_c(tag),
              {"gate": 2, "what": "every order is one the engine installs", "passes": g["installs"]},
              {"gate": 3, "what": "completing loses nothing", "passes": g["completing_loses_nothing"]},
-             {"gate": 4, "what": "the bound bounds", "passes": g["bound_bounds"]}]
+             {"gate": 4, "what": "the bound bounds", "passes": g["bound_bounds"]},
+             {"gate": 6, "what": "where the bound falls short, its ways partition it",
+              "passes": ok6 and short["short"]["points"] == space.n - loop["bound"]["right"]}]
 
     def med(key: str) -> dict[str, Any] | None:
         return frac(median([F(a[key]["share"]["fraction"]) for a in asks])) if asks else None
@@ -958,6 +1056,7 @@ def main(argv: list[str] | None = None) -> int:
         "plan": str(plan.PLAN),
         "signature": gate,
         "provenance": PROVENANCE,
+        "added_after_the_first_run": ADDED,
         "source": {"score": str(plan.score_path()),
                    "score_from": score["_env"].get("git_commit"),
                    "runs": {t: str(plan.run_path(plan.LABELLED, k))
@@ -965,7 +1064,9 @@ def main(argv: list[str] | None = None) -> int:
                    "sessions": {t: str(LY.session_path(t)) for t in L_RUNS}},
         "surface": "the whole space, 134,400 points: each L run's final base and its three "
                    "at-once answers at all labels, as CR-d reads them, each read in the orders "
-                   "rung 2's engine can install",
+                   "rung 2's engine can install; and, added after the first run, where each "
+                   "final base's bound falls short",
+        "holders_kept": HOLDERS,
         "constants": {"MULTISTART_SEED": LS.MULTISTART_SEED,
                       "MULTISTART_STARTS": LS.MULTISTART_STARTS,
                       "DECLARED_NEIGHBOURHOOD": LS.DECLARED_NEIGHBOURHOOD,
