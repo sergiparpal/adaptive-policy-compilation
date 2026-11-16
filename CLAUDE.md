@@ -1388,6 +1388,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.layer                         # POST-RUN: what the at-once asks wrote for ONCALL_ESCALATION
     PYTHONHASHSEED=0 python3 -m corrections.shape                         # POST-RUN: shape or order, the loop's own rules ordered
     PYTHONHASHSEED=0 python3 -m corrections.hierarchy                     # POST-RUN: whether the order the loop lacks is a ranking of the queues
+    PYTHONHASHSEED=0 python3 -m corrections.declared                      # POST-RUN: whether the loop declared the ranking it lacks
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1555,6 +1556,14 @@ both. Pulling the nested rule up, or making the container wait, moved the
 result as much as the choice of ranking. **And count what labels decide before
 fitting to them**: in one run no labelled ticket decided where the queue that
 mattered goes.
+
+**Read POST-RUN, the loop had declared most of the ranking it lacks.** Gathered
+by pair of queues, its own placement declarations choose one ranking, and it
+orders the loop's rules better than the base the loop installed. The
+declarations the engine refused were the righter ones. **A reader that keys an
+answer's citations by the rule cited drops a side**: an answer can cite one
+rule on both sides, and `corrections/fall.py`'s `declared` keeps one. Key them
+by rule and side, and match them to the edge log before counting them.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
