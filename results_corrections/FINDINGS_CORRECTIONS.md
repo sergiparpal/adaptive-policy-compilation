@@ -47,7 +47,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of the ranking and a guard on containment** reached it
   in #277, merged on 2026-11-16.
 - **The POST-RUN reading of why the declarations put `BILLING_SPECIALIST` low**
-  reaches it in #279.
+  reached it in #279, merged on 2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -287,12 +287,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the eighteenth] And a nineteenth.**
 > [`billing.json`](billing.json) is the POST-RUN reading of why the
 > declarations put `BILLING_SPECIALIST` low.
-> - **It was written from `9e1b3f7`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `9e1b3f7`**, on the branch of #279, which is `e0a3c26`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `7503c8caefb3f598`**, because `corrections/billing.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `e0a3c26`, and
+>   still at the merge of #279. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -4038,14 +4039,18 @@ on both surfaces. Its best place is the one that decides the most of the space.
 Among places that tie, it is the one nearest its declared place.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.billing`, on
-2026-11-16 in local time, from `9e1b3f7` with its code clean, on this reading's
-branch.
-- **The commits.** `9e1b3f7` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `52239c8`.
+2026-11-16 in local time, from `9e1b3f7` with its code clean, on the branch of
+#279, which is `e0a3c26` on `main`.
+- **The commits.** `e0a3c26` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `3b94e54`.
+- **On #279's branch the two commits were `9e1b3f7` and `52239c8`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #279 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `7503c8caefb3f598`, is the one `9e1b3f7` computes.
+  digest, `7503c8caefb3f598`, is the one `main` computes at `e0a3c26`, and still
+  at the merge.
 - **The record is [`billing.json`](billing.json).** Its 18 gates passed:
   - each L run's final base is Stage C's, and its instance `shape.json`'s;
   - every declaration the engine ruled on is in the run's edge log, and every
