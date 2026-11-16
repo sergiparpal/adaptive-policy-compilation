@@ -49,7 +49,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of why the declarations put `BILLING_SPECIALIST` low**
   reached it in #279, merged on 2026-11-16.
 - **The POST-RUN reading of what the rest of what the declared ranking lacks
-  is** reaches it in #281.
+  is** reached it in #281, merged on 2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -300,11 +300,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the nineteenth] And a twentieth.**
 > [`gap.json`](gap.json) is the POST-RUN reading of what the rest of what the
 > declared ranking lacks is.
-> - **It was written from `a9e075c`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `a9e075c`**, on the branch of #281, which is `9787ee6`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `9dfd3236d1b5332e`**, because `corrections/gap.py` was
->   added after the readings above. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. The modules Stage C ran did not change.
+>   added after the readings above. `main` computes it at `9787ee6`, and still
+>   at the merge of #281. Its `_env` says `git_dirty`, for the same files, and
+>   `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -4266,13 +4268,18 @@ and the defaults. The votes on the pair are read as the reading above reads
 billing's.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.gap`, on 2026-11-16
-in local time, from `a9e075c` with its code clean, on this reading's branch.
-- **The commits.** `a9e075c` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `6cc9d9e`.
+in local time, from `a9e075c` with its code clean, on the branch of #281, which
+is `9787ee6` on `main`.
+- **The commits.** `9787ee6` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `fae3a91`.
+- **On #281's branch the two commits were `a9e075c` and `6cc9d9e`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #281 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `9dfd3236d1b5332e`, is the one `a9e075c` computes.
+  digest, `9dfd3236d1b5332e`, is the one `main` computes at `9787ee6`, and still
+  at the merge.
 - **The record is [`gap.json`](gap.json).** Its 18 gates passed: the reading
   above's six in each run, gate 6 also reading that the policy's eight layers
   partition the space.
