@@ -15,6 +15,9 @@ What is pinned is the instrument:
   says so, writes where the pass says, is read as refused where it fails, and
   the pass puts every path back;
 - the comparison of two passes: leaves moved, clauses flipped, a refusal;
+- added after the first run: a pinned count let through, alone and by run,
+  and a pass past the pins that lets a reading's gate 5 through, names the
+  failing gate where it refuses, and puts the pin back;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
 """
@@ -177,6 +180,58 @@ class TestAPass(unittest.TestCase):
         got = CI.compare({"record": {}, "refused": None}, second["fake"])
         self.assertIsNotNone(got["refused"])
         self.assertIsNone(got["moved"])
+
+
+def pinned_reading(name: str, pin: dict) -> types.ModuleType:
+    """A reading with a development pin its gate 5 holds the run's counts to: the
+    counts are what `plan.run_path` gave it."""
+    mod = fake_reading(name)
+
+    def main(argv=None):
+        read = str(plan.run_path("l", 1))
+        counts = {"committed": read == str(plan.OUT / "loop_l_r1.json")}
+        if counts != mod.DEVELOPMENT:
+            print("  gate 5 run l_r1: FAIL  the development set gives DEVELOPMENT's counts")
+            raise SystemExit("REFUSED: a gate failed; nothing was written.")
+        mod.record_path().write_text(json.dumps({"_env": {}, "development": counts}))
+        return 0
+
+    mod.main = main
+    mod.DEVELOPMENT = pin
+    return mod
+
+
+class TestPastThePins(unittest.TestCase):
+    """Added after the first run."""
+
+    def test_a_pin_let_through(self):
+        t = CI.Through({"a": 1})
+        self.assertTrue({"a": 2} == t)
+        self.assertTrue(t == {"a": 1})
+        self.assertFalse({"a": 2} != t)
+        self.assertEqual(CI.differed(t), {"compared": 3, "differed": True})
+        self.assertEqual(dict(t), {"a": 1})
+
+    def test_pins_by_run(self):
+        pin = CI.let_through({"l_r1": {"a": 1}, "n_r3": {"a": 2}})
+        self.assertIsInstance(pin, CI.ThroughByRun)
+        self.assertTrue({"a": 9} == pin.get("l_r1"))
+        self.assertIs(pin.get("l_r1"), pin.get("l_r1"))
+        self.assertEqual(CI.differed(pin), {"l_r1": {"compared": 1, "differed": True}})
+        self.assertIsInstance(CI.let_through({"a": 1}), CI.Through)
+        self.assertEqual(json.loads(json.dumps(pin)), {"l_r1": {"a": 1}, "n_r3": {"a": 2}})
+
+    def test_the_pass_lets_the_pin_through_and_puts_it_back(self):
+        pin = {"committed": True}
+        mods = {"fake": pinned_reading("fake", pin)}
+        with mock.patch.object(CI, "PINNED", ("fake",)):
+            second = TestAPass.run_with(self, mods, "other_side")
+            third = TestAPass.run_with(self, mods, "past_the_pins")
+        self.assertIn("gate 5 run l_r1: FAIL", second["fake"]["refused"])
+        self.assertIsNone(third["fake"]["refused"])
+        self.assertEqual(third["fake"]["record"]["development"], {"committed": False})
+        self.assertEqual(third["fake"]["pin"], {"compared": 1, "differed": True})
+        self.assertIs(mods["fake"].DEVELOPMENT, pin)
 
 
 def readings(moved=None, refused=None, clauses=None):
