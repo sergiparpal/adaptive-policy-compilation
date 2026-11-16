@@ -48,6 +48,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   in #277, merged on 2026-11-16.
 - **The POST-RUN reading of why the declarations put `BILLING_SPECIALIST` low**
   reached it in #279, merged on 2026-11-16.
+- **The POST-RUN reading of what the rest of what the declared ranking lacks
+  is** reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -294,6 +296,15 @@ corrected during Stage C.**
 >   was added after the readings above. `main` computes it at `e0a3c26`, and
 >   still at the merge of #279. Its `_env` says `git_dirty`, for the same files,
 >   and `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-16, after the nineteenth] And a twentieth.**
+> [`gap.json`](gap.json) is the POST-RUN reading of what the rest of what the
+> declared ranking lacks is.
+> - **It was written from `a9e075c`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `9dfd3236d1b5332e`**, because `corrections/gap.py` was
+>   added after the readings above. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -4217,6 +4228,10 @@ committed before it. It is not signed, and it is on no scoreboard.
    puts `T3_ENGINEERING` above `ACCOUNT_MANAGER`, and every best ranking puts
    it below. Whether that pair carries the rest is not read. Free on the
    records.
+   **[NOTE 2026-11-16] Read POST-RUN, below: that pair carries most of it.**
+   Turned alone, it gains 3,240, 2,900 and 1,600 points, and adds to the
+   best ranking's other moves exactly. Its votes were mostly wrong. *What the
+   rest of what the declared ranking lacks is*.
 2. **Why the answers name the worse rule against `SELF_SERVICE_DEFLECT`, and
    against `ACCOUNT_MANAGER` in L r3.** Their reasoning is not read. Free on the
    records.
@@ -4224,6 +4239,166 @@ committed before it. It is not signed, and it is on no scoreboard.
    not decide says nothing a ranking can use there. A count that left such
    votes out, reading the base's own order and no truth, could choose another
    ranking. Whether it places billing better is not read. Free on the records.
+
+## What the rest of what the declared ranking lacks is — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-16, after the reading
+above.** Billing's place carries a minority of what each L run's declared
+ranking lacks against the best ranking of its rules. Every declared ranking puts
+`T3_ENGINEERING` above `ACCOUNT_MANAGER`, and every best ranking puts it below.
+This reading asks whether that pair's order carries the rest, where the pair
+decides, and why the declarations order it as they do. It spends nothing.
+
+**The four orders.** Each L run's final base is ordered, under the pulled
+construction, by four rankings:
+- **the declared ranking**;
+- **the swap**: the declared ranking with the two queues exchanged;
+- **the best ranking**;
+- **the rest**: the best ranking with the two exchanged back, which makes its
+  other moves and not the swap.
+
+Each order is read on the space and on the corpus. What the declared ranking
+lacks splits into the swap alone, the rest alone, and what they leave to each
+other, which is zero where the two add. The points the swap moves are read by
+true queue and by the policy's eight layers, as its file names them: security,
+severity 1, billing, churn, product routing, language and staffing, deflection
+and the defaults. The votes on the pair are read as the reading above reads
+billing's.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.gap`, on 2026-11-16
+in local time, from `a9e075c` with its code clean, on this reading's branch.
+- **The commits.** `a9e075c` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `6cc9d9e`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `9dfd3236d1b5332e`, is the one `a9e075c` computes.
+- **The record is [`gap.json`](gap.json).** Its 18 gates passed: the reading
+  above's six in each run, gate 6 also reading that the policy's eight layers
+  partition the space.
+
+### 1. One pair carries most of it, and the moves add
+
+The points of the space:
+
+| run | what the declared ranking lacks | the swap alone | the rest alone | the swap given the rest | left to each other |
+|---|---|---|---|---|---|
+| L r1 | 4,045 | 3,240 | 805 | 3,240 | 0 |
+| L r2 | 3,095 | 2,900 | 195 | 2,900 | 0 |
+| L r3 | 2,500 | 1,600 | 900 | 1,600 | 0 |
+
+The share of the space, at once's from `shape.json`:
+
+| run | the declared ranking | the swap | the best ranking | at once |
+|---|---|---|---|---|
+| L r1 | 0.7495 | 0.7736 | 0.7796 | 0.7584 |
+| L r2 | 0.6861 | 0.7077 | 0.7091 | 0.6252 |
+| L r3 | 0.5987 | 0.6106 | 0.6173 | 0.7725 |
+
+- **The swap alone gains most of what the declared ranking lacks** (G1 holds):
+  3,240 of 4,045 points, 2,900 of 3,095 and 1,600 of 2,500.
+- **The two parts add exactly**, on the space and on the corpus. In L r1 and
+  L r3 the rest is billing's move, and gains what the reading above found, 805
+  and 900 points. In L r2 it is `SELF_SERVICE_DEFLECT` above `T2_TECHNICAL`,
+  195 points.
+- **With the swap alone, the declared ranking beats at once in L r1 and L r2**:
+  0.7736 and 0.7077 of the space, against 0.7584 and 0.6252. *The ranking the
+  loop declared* found it 0.0089 short of at once in L r1.
+
+### 2. The pair decides in the churn layer
+
+- **Every point the swap gains is `ACCOUNT_MANAGER`'s, in the churn layer**
+  (G5 holds): 3,480, 3,240 and 1,840 points. The policy puts churn before
+  product routing.
+- **It loses only product-routing points**: 240 in L r1, half
+  `T3_ENGINEERING`'s and half `T2_TECHNICAL`'s, and 340 and 240 of
+  `T3_ENGINEERING`'s in L r2 and L r3.
+- **`ACCOUNT_MANAGER`'s recall** goes from 0.7226 to 0.9343 in L r1, from 0.7591
+  to 0.9562 in L r2, and from 0.7810 to 0.8929 in L r3.
+  **`T3_ENGINEERING`'s** goes from 0.4499 to 0.4352, from 0.7751 to 0.7335, and
+  from 0.7433 to 0.7139.
+- **In L r1 the best ranking gives 1,680 of those points back.** Billing above
+  `ACCOUNT_MANAGER` takes them, as the reading above found, and the queue's
+  recall there is 0.8321.
+
+### 3. The votes for `T3_ENGINEERING` were mostly wrong
+
+| run | votes for `T3_ENGINEERING` | cast by its own newborns | strict, naming the better rule | with no better rule | votes for `ACCOUNT_MANAGER` | strict, naming the better rule |
+|---|---|---|---|---|---|---|
+| L r1 | 68 | 45 | 20 of 46 | 22 | 44 | 44 of 44 |
+| L r2 | 79 | 67 | 17 of 49 | 30 | 15 | 15 of 15 |
+| L r3 | 40 | 27 | 17 of 36 | 4 | 24 | 23 of 23 |
+
+- **Most votes for `T3_ENGINEERING` were cast by its own newborns** (G2 holds).
+- **Most of its strict votes name the worse rule** (G3, the bet, fails). Every
+  strict vote for `ACCOUNT_MANAGER` names the better rule.
+- **The count took the more numerous side.** The votes for `T3_ENGINEERING`
+  outnumber those for `ACCOUNT_MANAGER` in every run.
+- **They do not stand mostly on severity 1** (G4 fails). Counted once a vote,
+  28,960 of the 71,800 points of their shared regions lie in the severity-1
+  layer in L r1, 32,820 of 71,420 in L r2, and 12,620 of 32,820 in L r3. The
+  security layer holds 29,560, 22,400 and 13,660, and the churn layer 12,200,
+  15,280 and 6,020.
+- **On the corpus** the strict votes for `T3_ENGINEERING` name the better rule
+  13 times of 21, 11 of 25 and 6 of 10, and those for `ACCOUNT_MANAGER` 10 of
+  12, 8 of 8 and 7 of 9.
+
+### 4. On the corpus
+
+- **The swap pays on the arrivals too** (G6 holds): 7, 11 and 3 more of 2,000.
+  It gains 10, 12 and 5 of `ACCOUNT_MANAGER`'s, and loses 3, 1 and 2.
+- **In L r2 the best ranking decides 22 fewer arrivals than the declared
+  ranking.** Its other move, `SELF_SERVICE_DEFLECT` above `T2_TECHNICAL`,
+  gains 195 points of the space and loses 33 arrivals.
+
+### The expectation
+
+Written in `corrections/gap.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| G1, in every L run, the swap alone gains more than half of what the declared ranking lacks | 3,240 of 4,045, 2,900 of 3,095, and 1,600 of 2,500 | **holds** |
+| G2, in every L run, most votes for `T3_ENGINEERING` were cast by the answers of its own newborns | 45 of 68, 67 of 79, and 27 of 40 | **holds** |
+| G3, in every L run, of the strict votes for `T3_ENGINEERING`, most name the better rule | 20 of 46, 17 of 49, and 17 of 36 | fails |
+| G4, in every L run, most of the points of the shared regions of the votes for `T3_ENGINEERING`, counted once a vote, lie in the policy's severity-1 layer | 28,960 of 71,800, 32,820 of 71,420, and 12,620 of 32,820 | fails |
+| G5, in every L run, most of the points the swap gains lie in the policy's churn layer | 3,480 of 3,480, 3,240 of 3,240, and 1,840 of 1,840 | **holds** |
+| G6, in every L run, the swap decides more of the corpus than the declared ranking | 7, 11 and 3 more arrivals | **holds** |
+
+**G1, G2, G5 and G6 hold, and G3 and G4 fail.**
+- **The bet, G3, failed in every run.** The account carried the reading above
+  over to this pair, and the votes here were wrong where those were right.
+- **G1, trusted most, held.** The moves add, as its account assumed.
+- **G6, trusted least, held**, by 7, 11 and 3 arrivals.
+- **G4 failed with G3.** Most of the votes' shared regions lie outside
+  severity 1, in the security and churn layers.
+
+### What it says
+
+- **One pair's order is most of what the declared ranking lacks.** Turning
+  `T3_ENGINEERING` and `ACCOUNT_MANAGER` alone gives 3,240, 2,900 and 1,600
+  points, and the best ranking's other moves add to it exactly. With that pair
+  turned, the declared ranking beats at once in L r1 and L r2.
+- **The pair decides in the churn layer.** The policy puts churn before product
+  routing. Every point the swap gains is `ACCOUNT_MANAGER`'s there, and it loses
+  only product-routing points.
+- **Here the votes were wrong pair by pair.** Most strict votes for
+  `T3_ENGINEERING` named the worse rule, and every strict vote for
+  `ACCOUNT_MANAGER` the better. Its own newborns cast most of the first, and
+  they outnumbered the second.
+- **So a count of the declarations fails in two ways.** For billing, right
+  votes about points the pair does not decide outweighed the rest. Here, wrong
+  votes outnumbered right ones. A count that reads no truth could leave out
+  votes about points a pair does not decide. It cannot tell a wrong vote from a
+  right one.
+
+### What it does not settle
+
+1. **Why `T3_ENGINEERING`'s newborns put themselves above `ACCOUNT_MANAGER`'s
+   churn.** Their reasoning is not read. Free on the records.
+2. **Which surface a ranking should serve.** In L r2 the best ranking of the
+   space decides 22 fewer arrivals than the declared one. Which pairs the two
+   surfaces order differently is not read. Free on the records.
 
 ---
 
@@ -4272,3 +4447,5 @@ committed before it. It is not signed, and it is on no scoreboard.
   guard on containment.
 - [`billing.json`](billing.json): POST-RUN, why the declarations put
   `BILLING_SPECIALIST` low.
+- [`gap.json`](gap.json): POST-RUN, what the rest of what the declared ranking
+  lacks is.
