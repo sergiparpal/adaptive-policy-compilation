@@ -36,7 +36,7 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
 - **The POST-RUN reading of shape or order** reached it in #267, merged on
   2026-11-16.
 - **The POST-RUN reading of whether the order the loop lacks is a ranking of
-  the queues** reaches it in #269.
+  the queues** reached it in #269, merged on 2026-11-16.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -218,11 +218,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-16, after the thirteenth] And a fourteenth.**
 > [`hierarchy.json`](hierarchy.json) is the POST-RUN reading of whether the
 > order the loop lacks is a ranking of the queues.
-> - **It was written from `f5ff529`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `f5ff529`**, on the branch of #269, which is `f801387`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `423f43512f91c958`**, because
->   `corrections/hierarchy.py` was added after the readings above. Its `_env`
->   says `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   `corrections/hierarchy.py` was added after the readings above. `main`
+>   computes it at `f801387`, and still at the merge of #269. Its `_env` says
+>   `git_dirty`, for the same files, and `code_dirty` is false. The modules
 >   Stage C ran did not change.
 
 **This record owns every figure in it.**
@@ -3131,15 +3133,19 @@ Where containment is silent both are rung 3's order, by rank and then by birth.
 Inside a queue the ties go by birth.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.hierarchy`, on
-2026-11-16 in local time, from `f5ff529` with its code clean, on this reading's
-branch. It ran in three processes, one for each L run, and read the hidden
-policy's rules in the parent.
-- **The commits.** `f5ff529` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `eb355d9`.
+2026-11-16 in local time, from `f5ff529` with its code clean, on the branch of
+#269, which is `f801387` on `main`. It ran in three processes, one for each L
+run, and read the hidden policy's rules in the parent.
+- **The commits.** `f801387` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `b40fff7`.
+- **On #269's branch the two commits were `f5ff529` and `eb355d9`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #269 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `423f43512f91c958`, is the one `f5ff529` computes.
+  digest, `423f43512f91c958`, is the one `main` computes at `f801387`, and still
+  at the merge.
 - **The record is [`hierarchy.json`](hierarchy.json).** Its 18 gates passed:
   - each L run's final base and its three at-once answers at all labels are
     Stage C's. On this reading's instances, the record, the bound and the order
