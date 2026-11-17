@@ -50,8 +50,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   reached it in #279, merged on 2026-11-16.
 - **The POST-RUN reading of what the rest of what the declared ranking lacks
   is** reached it in #281, merged on 2026-11-16.
-- **The POST-RUN reading of a count of what each pair decides** reaches it in
-  #283.
+- **The POST-RUN reading of a count of what each pair decides** reached it in
+  #283, merged on 2026-11-17.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -313,12 +313,13 @@ corrected during Stage C.**
 > **[NOTE 2026-11-17, after the twentieth] And a twenty-first.**
 > [`decides.json`](decides.json) is the POST-RUN reading of a count of what each
 > pair decides.
-> - **It was written from `b0a2870`**, on that reading's branch: the commit that
->   carries the reading and its expectation. Nothing was added after it ran.
+> - **It was written from `b0a2870`**, on the branch of #283, which is `0c71e41`
+>   on `main`: the commit that carries the reading and its expectation. Nothing
+>   was added after it ran.
 > - **Its code digest is `dfa39f382703efca`**, because `corrections/decides.py`
->   was added after the readings above. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. The modules Stage C ran did not
->   change.
+>   was added after the readings above. `main` computes it at `0c71e41`, and
+>   still at the merge of #283. Its `_env` says `git_dirty`, for the same files,
+>   and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -4442,14 +4443,18 @@ it chooses. A count weighted by the points each pair decides was set aside
 before the reading ran, so that no choice between variants is made after it.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m corrections.decides`, on
-2026-11-17 in local time, from `b0a2870` with its code clean, on this reading's
-branch.
-- **The commits.** `b0a2870` carries the reading and its expectation, written
-  before the reading ran. Nothing was added after it.
-- **The record was committed alone**, as `364da29`.
+2026-11-17 in local time, from `b0a2870` with its code clean, on the branch of
+#283, which is `0c71e41` on `main`.
+- **The commits.** `0c71e41` on `main` carries the reading and its
+  expectation, written before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `ac74325`.
+- **On #283's branch the two commits were `b0a2870` and `364da29`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #283 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest, `dfa39f382703efca`, is the one `b0a2870` computes.
+  digest, `dfa39f382703efca`, is the one `main` computes at `0c71e41`, and still
+  at the merge.
 - **The record is [`decides.json`](decides.json).** Its 15 gates passed:
   - each L run's final base is Stage C's, and its instance `shape.json`'s;
   - the declarations are the record's edge log, and every vote chooses the
