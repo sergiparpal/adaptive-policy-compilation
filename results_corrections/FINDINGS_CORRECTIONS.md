@@ -50,6 +50,8 @@ before any figure below existed, in a commit of its own: `6908564` on `main`.
   reached it in #279, merged on 2026-11-16.
 - **The POST-RUN reading of what the rest of what the declared ranking lacks
   is** reached it in #281, merged on 2026-11-16.
+- **The POST-RUN reading of a count of what each pair decides** reaches it in
+  the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All but the
 last were written on #239's branch, and the last on #240's. The rebase merge
@@ -307,6 +309,16 @@ corrected during Stage C.**
 >   added after the readings above. `main` computes it at `9787ee6`, and still
 >   at the merge of #281. Its `_env` says `git_dirty`, for the same files, and
 >   `code_dirty` is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-17, after the twentieth] And a twenty-first.**
+> [`decides.json`](decides.json) is the POST-RUN reading of a count of what each
+> pair decides.
+> - **It was written from `b0a2870`**, on that reading's branch: the commit that
+>   carries the reading and its expectation. Nothing was added after it ran.
+> - **Its code digest is `dfa39f382703efca`**, because `corrections/decides.py`
+>   was added after the readings above. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. The modules Stage C ran did not
+>   change.
 
 **This record owns every figure in it.**
 
@@ -4241,6 +4253,10 @@ committed before it. It is not signed, and it is on no scoreboard.
    not decide says nothing a ranking can use there. A count that left such
    votes out, reading the base's own order and no truth, could choose another
    ranking. Whether it places billing better is not read. Free on the records.
+   **[NOTE 2026-11-17] Read POST-RUN, below, in the declared ranking's order:
+   no lever.** It keeps between an eighth and a sixth of the votes, raises
+   billing in L r1 and L r3 and lowers it in L r2, and turns pairs on a
+   handful of votes. *A count of what each pair decides*.
 
 ## What the rest of what the declared ranking lacks is — POST-RUN
 
@@ -4407,6 +4423,143 @@ committed before it. It is not signed, and it is on no scoreboard.
    space decides 22 fewer arrivals than the declared one. Which pairs the two
    surfaces order differently is not read. Free on the records.
 
+## A count of what each pair decides — POST-RUN
+
+**Proposed by the agent and asked for by Sergi on 2026-11-17, after the reading
+above.** The two readings above found two ways the count of the declarations
+fails. Right votes about points the pair does not decide outweighed the rest,
+and wrong votes outnumbered right ones. A count that reads no truth can leave
+out the first kind. This reading asks whether doing so places the queues
+better. It spends nothing.
+
+**The count.** A pair decides a point in an order where both of its rules match
+it with no rule strictly inside them that does, and no rule placed before both
+does either. That reads the rules and the space, and no truth. The kept votes
+are those whose pair decides at least one point in the declared ranking's order,
+and the kept count is theirs, one a vote. It chooses rankings as *The ranking
+the loop declared* chooses them, and **the kept ranking** is the median of those
+it chooses. A count weighted by the points each pair decides was set aside
+before the reading ran, so that no choice between variants is made after it.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m corrections.decides`, on
+2026-11-17 in local time, from `b0a2870` with its code clean, on this reading's
+branch.
+- **The commits.** `b0a2870` carries the reading and its expectation, written
+  before the reading ran. Nothing was added after it.
+- **The record was committed alone**, as `364da29`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest, `dfa39f382703efca`, is the one `b0a2870` computes.
+- **The record is [`decides.json`](decides.json).** Its 15 gates passed:
+  - each L run's final base is Stage C's, and its instance `shape.json`'s;
+  - the declarations are the record's edge log, and every vote chooses the
+    ranking `declared.json` keeps, which decides what that record keeps;
+  - the best ranking decides what `hierarchy.json` keeps;
+  - every order read installs into a fresh rung 2 engine and closes no cycle,
+    and none decides more than the rules' bound. On the space the engine and
+    first match, and on the corpus the engine, decide what the reading reads.
+
+### 1. Most votes are about points their pair does not decide
+
+In the declared ranking's order the pair of 865 of L r1's 7,254 votes decides a
+point, of 1,006 of L r2's 6,460, and of 769 of L r3's 6,182: between an eighth
+and a sixth of them. The rest are left out.
+
+### 2. What the kept count chooses
+
+One ranking a run. The share of the space, at once's from `shape.json`, and the
+arrivals of 2,000 decided right:
+
+| run | the kept ranking | its share | the declared ranking | the best ranking | at once | corpus: kept, declared |
+|---|---|---|---|---|---|---|
+| L r1 | `SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `ACCOUNT_MANAGER`, `T3_ENGINEERING`, `T2_TECHNICAL`, `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT`, `T1_GENERAL` | 0.7779 | 0.7495 | 0.7796 | 0.7584 | 1,506, 1,502 |
+| L r2 | `SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `T3_ENGINEERING`, `ACCOUNT_MANAGER`, `T2_TECHNICAL`, `SELF_SERVICE_DEFLECT`, `BILLING_SPECIALIST`, `T1_GENERAL` | 0.6581 | 0.6861 | 0.7091 | 0.6252 | 1,288, 1,456 |
+| L r3 | `SECURITY_INCIDENT`, `ONCALL_ESCALATION`, `T3_ENGINEERING`, `ACCOUNT_MANAGER`, `T2_TECHNICAL`, `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT`, `T1_GENERAL` | 0.5984 | 0.5987 | 0.6173 | 0.7725 | 1,451, 1,453 |
+
+- **In L r1 it turns the pair and raises billing** past
+  `SELF_SERVICE_DEFLECT`. It decides 0.7779 of the space, 0.0017 short of the
+  best ranking and above at once.
+- **In L r2 billing falls** from fifth to seventh, below `T2_TECHNICAL` and
+  `SELF_SERVICE_DEFLECT`. It decides 0.0280 of the space less than the declared
+  ranking, and 168 fewer arrivals.
+- **In L r3 billing rises past `SELF_SERVICE_DEFLECT`**, and the pair does not
+  turn. It decides 40 points less, the step *Why the declarations put
+  `BILLING_SPECIALIST` low* read there.
+- **So billing rises in L r1 and L r3** (P1 holds), and the kept ranking is
+  above at once in L r1 and L r2 (P4 holds), in L r2 as the declared ranking
+  already was. **It decides more than the declared ranking in L r1 alone** (P2
+  fails), **turns the pair in L r1 alone** (P3, the bet, fails), and **decides
+  fewer arrivals in L r2 and L r3** (P6 fails).
+
+### 3. The pairs turn on a handful of votes
+
+The votes for the first queue of each pair and for the second, all and kept:
+
+| run | pair | all | kept |
+|---|---|---|---|
+| L r1 | `T3_ENGINEERING`, `ACCOUNT_MANAGER` | 68 and 44 | 14 and 15 |
+| L r1 | `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT` | 381 and 572 | 40 and 13 |
+| L r2 | `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT` | 279 and 147 | 4 and 17 |
+| L r2 | `T2_TECHNICAL`, `BILLING_SPECIALIST` | 75 and 81 | 7 and 2 |
+| L r3 | `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT` | 337 and 413 | 13 and 12 |
+| L r3 | `T3_ENGINEERING`, `ACCOUNT_MANAGER` | 40 and 24 | 18 and 8 |
+
+- **In L r1 the pair turns by one vote**, and in L r3 billing passes
+  `SELF_SERVICE_DEFLECT` by one.
+- **In L r2 billing's two pairs turn against it** on 21 and 9 kept votes.
+- **The kept votes are the righter ones in L r1 alone** (P5 fails). There they
+  agree with the best ranking 621 times of 865, against 3,748 of 6,389 for the
+  votes left out. In L r2 the shares are 0.6262 and 0.7772, and in L r3 0.6853
+  and 0.7733.
+- **The count is not stable.** Read again in the order of the ranking it
+  chooses, the kept count chooses another ranking in every run.
+
+### The expectation
+
+Written in `corrections/decides.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| P1, in L r1 and in L r3, the kept ranking puts `BILLING_SPECIALIST` higher than the declared ranking does | sixth against seventh in both | **holds** |
+| P2, in every L run, the kept ranking decides more of the space than the declared ranking | 0.7779, 0.6581 and 0.5984, against 0.7495, 0.6861 and 0.5987 | fails |
+| P3, in every L run, the kept ranking puts `ACCOUNT_MANAGER` above `T3_ENGINEERING` | in L r1 alone | fails |
+| P4, in L r1 and in L r2, the kept ranking decides more of the space than at once | 0.7779 and 0.6581, against 0.7584 and 0.6252 | **holds** |
+| P5, in every L run, the kept votes agree with the best ranking more often than the votes left out | 0.7179, 0.6262 and 0.6853, against 0.5866, 0.7772 and 0.7733 | fails |
+| P6, in every L run, the kept ranking decides more of the corpus than the declared ranking | 1,506, 1,288 and 1,451 arrivals, against 1,502, 1,456 and 1,453 | fails |
+
+**P1 and P4 hold, and P2, P3, P5 and P6 fail.**
+- **The bet, P3, failed in L r2 and L r3.** In L r1 it held by one vote.
+- **P1, trusted most, held**, though in L r2, which it does not read, billing
+  fell.
+- **P6, trusted least, failed**, in L r2 by 168 arrivals.
+- **P4 held on L r1's turn and on L r2's margin**: there the declared ranking
+  was already above at once.
+
+### What it says
+
+- **Most votes are about points their pair does not decide.** In the declared
+  ranking's order, between a sixth and an eighth of them meet a point their
+  pair decides.
+- **Left out, they leave a count too thin to choose with.** The pairs that move
+  turn on a handful of votes, some on one. The kept count came within 0.0017 of
+  the best ranking in L r1, fell 0.0280 below the declared ranking in L r2, and
+  chooses another ranking when read again in its own order.
+- **So it is no lever.** The count of every vote stays the better default for a
+  loop that ranks by its declarations. It is right where the declarations are
+  right, and where they are wrong, as on `T3_ENGINEERING` and `ACCOUNT_MANAGER`,
+  no count that reads no truth was found to fix it.
+
+### What it does not settle
+
+1. **A count that keeps more of the votes**: one weighted by the points each
+   pair decides, or one that reads what a pair decides in the base the loop
+   installed. Each would be read after this one: a plan that wants one should
+   set it before its own run. Free on the records.
+2. **Whether the kept count settles.** It chooses another ranking when read
+   again in its own order. Whether reading it again and again settles, and
+   where, is not read. Free on the records.
+
 ---
 
 ## Files
@@ -4456,3 +4609,4 @@ committed before it. It is not signed, and it is on no scoreboard.
   `BILLING_SPECIALIST` low.
 - [`gap.json`](gap.json): POST-RUN, what the rest of what the declared ranking
   lacks is.
+- [`decides.json`](decides.json): POST-RUN, a count of what each pair decides.
