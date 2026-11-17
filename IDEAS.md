@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 16, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 17, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -129,7 +129,8 @@ on November 16, 2026**, and the item the audit answers is struck in place.
 **Why the declarations put `BILLING_SPECIALIST` low was read POST-RUN the same
 day**, and the item it answers is struck in place. **What the rest of what the
 declared ranking lacks is was read POST-RUN the same day**, and the item it
-answers is struck in place.
+answers is struck in place. **A count of what each pair decides was read
+POST-RUN on November 17, 2026**, and the item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -823,6 +824,12 @@ learner of the labels alone matched the loop. What that leaves:
   declarations should say in §0 what it does where a pair's votes are wrong.
   `FINDINGS_CORRECTIONS.md`, *What the rest of what the declared ranking lacks
   is*.
+  **[NOTE 2026-11-17] Leaving out the votes about points their pair does not
+  decide is no lever, read POST-RUN.** Most votes are such, and the rest turn
+  pairs on a handful of votes: the count helped one run, hurt another, and
+  chose another ranking when read again in its own order. The count of every
+  vote stays the default. `FINDINGS_CORRECTIONS.md`, *A count of what each
+  pair decides*.
 - **Where a deployment would get the ranking.** Stage C's comes within 0.002
   of the best, and it was fitted on the answer key of the hidden policy's 170
   labelled pairs. How few of those pairs fit one as good is free on the
@@ -900,10 +907,20 @@ learner of the labels alone matched the loop. What that leaves:
   L r1 and L r3 most strict votes that put that queue above billing name the
   worse rule, and in L r3 most of those that put `ACCOUNT_MANAGER` above it.
   Their reasoning is not read. Free on the records.
-- **A count of what each pair decides.** A vote about points its pair does not
-  decide says nothing a ranking can use there. A count that left such votes
-  out, reading the base's own order and no truth, could choose another
-  ranking. Free on the records.
+- ~~**A count of what each pair decides.**~~ **Read POST-RUN on 2026-11-17**
+  (`FINDINGS_CORRECTIONS.md`, *A count of what each pair decides*), by
+  `corrections/decides.py`, in the declared ranking's order.
+  - **Most votes are about points their pair does not decide.**
+  - **Left out, they leave a count too thin to choose with.** The pairs that
+    move turn on a handful of votes, some on one. It came close to the best
+    ranking in L r1, fell below the declared ranking in L r2, and is not
+    stable.
+- **A count that keeps more of the votes**: one weighted by the points each
+  pair decides, or one that reads what a pair decides in the base the loop
+  installed. Each would be read after the count above: a plan that wants one
+  should set it before its own run. Free on the records.
+- **Whether the kept count settles.** Read again in the order of the ranking
+  it chooses, it chooses another. Free on the records.
 - **A loop that compiles at once.** At all of a run's labels, compiling at once
   won every run, though not at every checkpoint on the way. A loop that
   re-induces its whole base from the reports so far, every so many reports,
