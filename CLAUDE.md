@@ -1394,6 +1394,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m corrections.guard                         # POST-RUN: the ranking as it went, and a guard on containment
     PYTHONHASHSEED=0 python3 -m corrections.billing                       # POST-RUN: why the declarations put BILLING_SPECIALIST low
     PYTHONHASHSEED=0 python3 -m corrections.gap                           # POST-RUN: what the rest of what the declared ranking lacks is
+    PYTHONHASHSEED=0 python3 -m corrections.decides                       # POST-RUN: a count of what each pair decides
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, never side by side
 
@@ -1610,6 +1611,12 @@ Most votes for `T3_ENGINEERING` named the worse rule, and they outnumbered the
 right ones. **A count that reads no truth cannot tell a wrong vote from a right
 one**: a plan that ranks by declarations should say in §0 what it does where a
 pair's votes are wrong.
+
+**Read POST-RUN, leaving out the votes about points their pair does not decide
+is no lever.** Most votes are such, and the rest turn pairs on a handful of
+votes. The count helped one run, hurt another, and chose another ranking when
+read again in its own order. **A filter that leaves out most of a count should
+be read for how many votes decide each pair it turns**, before a plan adopts it.
 
 **Its runs were launched by the agent, as §2.8 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed

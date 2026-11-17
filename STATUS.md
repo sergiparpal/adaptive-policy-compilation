@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 16, 2026. **Not a history** — that is the four
+What is known, as of November 17, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -3519,6 +3519,17 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        strict vote for `ACCOUNT_MANAGER`.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *What the rest of what the declared ranking lacks is*.
+     **[NOTE 2026-11-17, after the twentieth] And a count of what each pair
+     decides, POST-RUN.** It keeps the votes whose pair decides a point in the
+     declared ranking's order, reading no truth.
+     - **Most votes are about points their pair does not decide**: 865 of
+       7,254 are kept in L r1, 1,006 of 6,460 in L r2 and 769 of 6,182 in L r3.
+     - **The kept count is no lever.** It decides 0.7779, 0.6581 and 0.5984 of
+       the space, against the declared ranking's 0.7495, 0.6861 and 0.5987.
+       Its pairs turn on a handful of votes, and read again in its own order
+       it chooses another ranking.
+
+     [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *A count of what each pair decides*.
 
    All three are read above.
 
