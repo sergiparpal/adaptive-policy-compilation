@@ -1,0 +1,1188 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-18T12:35:16Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "608bb1db351d91e5bd1129eae658e33153b06eca",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "9365213bfb38e2a3"
+  },
+  "plan": "PLAN_RANKED.md",
+  "shape": "at once",
+  "level": 1,
+  "model": "deepseek/deepseek-v4-flash",
+  "temperature": 0,
+  "settings": {
+    "reasoning": {
+      "effort": "high"
+    },
+    "max_tokens": 32000
+  },
+  "provider": {
+    "order": [
+      "deepinfra/fp8"
+    ],
+    "allow_fallbacks": false
+  },
+  "call_retry_wait": [
+    10,
+    30
+  ],
+  "rate_limit_wait": [
+    60,
+    120,
+    240,
+    480,
+    960
+  ],
+  "seed": 17,
+  "n": 2000,
+  "workers": 4,
+  "max_reasks": 2,
+  "session": "prior",
+  "source_sha256": null,
+  "texts_sha16": {
+    "system_prompt": "fb6af1748467d1eb",
+    "header": "034afad4aaaee649",
+    "compile_user": "4d6d61e0ddb7f96f"
+  },
+  "stage": "B",
+  "system_prompt": "Eres el autor de la base de reglas de un sistema de triaje de tickets.\n\nTu tarea: escribir, de una vez, la base de reglas COMPLETA con la que el motor\nsimbolico decidira a que cola va cada ticket.\n\nCOMO APLICA EL MOTOR TU BASE\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana. Las excepciones anidadas\n  dentro de un caso general se ordenan solas.\n\n  NIVEL 2, por tu orden: cuando dos reglas se solapan sin que una contenga a la\n  otra, gana la que aparece antes en tu lista.\n\nUn ticket que no casa ninguna regla queda sin decidir. Toda regla necesita al\nmenos una condicion: si quieres una regla por defecto, dale una condicion que\ncasen todos los tickets.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"rules\": [\n    {\"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n     \"action\": \"<accion>\",\n     \"note\": \"<una frase>\"}\n  ],\n  \"note\": \"<una frase sobre la base en su conjunto>\"\n}\n\nLas reglas van en el orden en que el motor debe aplicar el nivel 2.",
+  "header_text": "CORRECCIONES DE REVISORES: el sistema decidio mal cada uno de estos\ntickets, y un revisor le dio su cola correcta.\n",
+  "compile_user": "Escribe ahora la base de reglas completa.",
+  "source_record": null,
+  "labelled": [],
+  "checkpoints": [
+    0
+  ],
+  "gates": {
+    "RK-g1": {
+      "what": "PLAN_CORRECTIONS.md's own blocking checks pass; on its three L runs' answers arm l gives back the run, arm k with rung 2's decision put back gives back the same record and messages, its ranking is the replay's at every birth and its votes the record's, and its own decision is rung 2's but at a CONFLICT, where the ranking decides; it overrides decide alone; the suite green",
+      "corrections_checks": {
+        "CR-g1": true,
+        "CR-g2": true,
+        "CR-g3": true,
+        "instruments": true,
+        "passes": true
+      },
+      "replays": {
+        "l_r1": {
+          "calls": 722,
+          "reported_errors": 216,
+          "placement_calls": 345,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 154,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r2": {
+          "calls": 715,
+          "reported_errors": 209,
+          "placement_calls": 347,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 163,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r3": {
+          "calls": 686,
+          "reported_errors": 235,
+          "placement_calls": 338,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 75,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        }
+      },
+      "decide_alone": true,
+      "suite": {
+        "ran": true,
+        "tests": 3493,
+        "result": "OK (skipped=3)",
+        "seconds": 326.5,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g2": {
+      "what": "both arms send PLAN_CORRECTIONS.md's arm L's texts, by digest, and its request with the pin, and differ in their headers by the engine alone; the at-once asks send that plan's texts and request with their budget; \u00a70's figures 2 to 7 come back",
+      "texts": {
+        "keys": true,
+        "system_prompt_level_1": true,
+        "report_r1": true,
+        "three_are_v1cs": true,
+        "both_arms_the_same_texts": true,
+        "the_arms_differ_by_the_engine": true,
+        "at_once_system_prompt": true,
+        "at_once_header": true,
+        "passes": true
+      },
+      "requests": {
+        "both_arms_corrections_0": true,
+        "at_once_but_for_the_budget_0": true,
+        "both_arms_corrections_1": true,
+        "at_once_but_for_the_budget_1": true,
+        "pin": true,
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "set_aside": true,
+          "final_bases": true,
+          "as_it_went": true,
+          "asked_conflicts": true,
+          "pair_arrivals": true,
+          "schedule": true
+        },
+        "sound": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g3": {
+      "what": "six runs alternating from the arm the seed draws; the smoke runs 30 cases an arm on PLAN_CHANNEL.md's smoke draws; coverage 1/2; the cap 400; \u00a72.6's constants and a session after every run; the ask pool for the asks alone; Step 0: under the transcriber and each draw, arm k's engine gives back rung 2's record and its ranking decides nothing; each competitor's ceiling",
+      "schedule": [
+        [
+          "l",
+          1
+        ],
+        [
+          "k",
+          1
+        ],
+        [
+          "l",
+          2
+        ],
+        [
+          "k",
+          2
+        ],
+        [
+          "l",
+          3
+        ],
+        [
+          "k",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "cap": true,
+      "draws_are_corrections": true,
+      "at_once": true,
+      "a_session_after_every_run": true,
+      "the_pool_is_for_asks": true,
+      "before_any_vote_the_domains_order": true,
+      "step_zero": {
+        "r1": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "r2": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 132280
+        },
+        "r3": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "passes": true
+      },
+      "competitors_ceilings": true,
+      "passes": true
+    },
+    "RK-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_RANKED.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "started_at": "2026-11-18T12:33:32+00:00",
+  "first_kept": "2026-11-18T12:34:29+00:00",
+  "resumed_at": [],
+  "finished_at": "2026-11-18T12:35:16+00:00",
+  "rows": [
+    {
+      "session": "prior",
+      "position": 0,
+      "id": "prior:0:1",
+      "checkpoint": 0,
+      "k": 1,
+      "reask": 0,
+      "labelled": [],
+      "digest": "bcf9bf5333318e31",
+      "served_by": "DeepInfra",
+      "valid": true,
+      "why_invalid": null,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Cualquier ticket con palabra clave de seguridad se deriva al equipo de incidentes de seguridad."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Incidentes cr\u00edticos fuera del horario laboral se escalan al guardia."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Incidentes cr\u00edticos en horario laboral se env\u00edan a ingenier\u00eda para investigaci\u00f3n del c\u00f3digo."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Problemas de facturaci\u00f3n de severidad media o baja se derivan al especialista en facturaci\u00f3n."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 10
+              },
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Clientes enterprise con alta recurrencia de tickets y baja severidad se asignan al gestor de cuenta para retenci\u00f3n."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "free",
+                  "pro"
+                ]
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Tickets de baja severidad por portal de usuarios gratuitos o pro se responden con autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "dashboard",
+                  "api",
+                  "mobile",
+                  "integrations"
+                ]
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Incidentes t\u00e9cnicos de severidad media se env\u00edan al soporte t\u00e9cnico de segundo nivel."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 1
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Por defecto, cualquier ticket que no cumpla las condiciones anteriores se asigna al primer nivel de soporte."
+          }
+        ],
+        "note": "Base de reglas para triaje autom\u00e1tico de tickets. Las reglas espec\u00edficas (seguridad, cr\u00edtico, facturaci\u00f3n, etc.) tienen prioridad sobre las generales gracias al orden y la contenci\u00f3n de condiciones."
+      },
+      "keys": [
+        "rules",
+        "note"
+      ],
+      "reasoning": "We need to write a complete rule base for a ticket triage system. The attributes and their domains are given. The actions are the queues. The routing manual describes each queue's purpose. We need to define rules that map ticket conditions to actions.\n\nWe need to consider the two-level resolution: Level 1 (automatic: more specific rule wins if its condition set is subset of another), Level 2 (order-based for overlapping non-contained). So we should order rules appropriately.\n\nWe need to cover all tickets? Not necessarily, but a default rule might be needed. The manual suggests T1_GENERAL is for general inquiries. Also SELF_SERVICE_DEFLECT for self-service. We need to define rules based on severity, customer tier, product, channel, off_hours, prior_tickets_30d, has_security_keyword, language.\n\nImportant: security incidents should go to SECURITY_INCIDENT. Critical severity (severity=1) might need ONCALL_ESCALATION if off_hours? Or for enterprise? The manual says \"Incidentes cr\u00edticos que no pueden esperar al siguiente turno, a cualquier hora.\" So severity=1 should go to ONCALL_ESCALATION? But also security incidents might be critical. We need to prioritize: if has_security_keyword true, go to SECURITY_INCIDENT regardless? Or if severity=1 and security? Possibly SECURITY_INCIDENT is a specific queue for security, and ONCALL_ESCALATION is for critical non-security? The manual says ONCALL_ESCALATION is for critical incidents that can't wait. So we should have a rule: if severity=1 and not security? But security might also be critical. Let's interpret: Security incidents are separate, so if has_security_keyword true, route to SECURITY_INCIDENT. But if severity=1 and security, maybe still SECURITY_INCIDENT? Probably yes, security incidents are handled by that team. Also if severity=1 and off_hours? ONCALL_ESCALATION might be for any critical after hours? But the manual says \"a cualquier hora\" so it's for critical regardless of off_hours? Actually \"que no pueden esperar al siguiente turno\" implies that during business hours they might be handled by other teams? But T3_ENGINEERING might handle severity=1 during business hours? Let's think typical: Severity 1 (critical) should go to on-call if off_hours, otherwise to engineering? But the manual says ONCALL_ESCALATION is for critical incidents that can't wait, so maybe always? But there is also T3_ENGINEERING for product bugs. So we need to differentiate: if severity=1 and product bug? Possibly T3_ENGINEERING for bugs, but if off_hours then on-call. Also billing issues? BILLING_SPECIALIST for billing. Account manager for high-tier customers? ACCOUNT_MANAGER for business/enterprise? The manual says \"La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So maybe for enterprise or business with certain conditions? Also SELF_SERVICE_DEFLECT for simple queries? Possibly for free tier, low severity, non-critical.\n\nWe need to define rules that cover common scenarios. Let's list possible rule categories:\n\n1. Security: has_security_keyword true -> SECURITY_INCIDENT (high priority, should override others)\n\n2. Critical severity (severity=1):\n   - If off_hours -> ONCALL_ESCALATION (since no one else available)\n   - Else -> T3_ENGINEERING? But could be billing or other? Possibly if product=billing? But billing critical? Probably still engineering for billing issues? But billing has BILLING_SPECIALIST. So we need to be careful.\n   - Maybe severity=1 always goes to ONCALL_ESCALATION? But that might overload on-call. The manual says \"Incidentes cr\u00edticos que no pueden esperar al siguiente turno\" so during business hours they might be handled by engineering? Actually \"no pueden esperar al siguiente turno\" implies they need immediate attention regardless of time. So likely ONCALL_ESCALATION is for after hours or when engineering is not available. But if during business hours, engineering is available. So we could have: severity=1 and off_hours=true -> ONCALL_ESCALATION; severity=1 and off_hours=false -> T3_ENGINEERING. But also consider enterprise? Possibly ACCOUNT_MANAGER for enterprise? Not for technical issues.\n\n3. Severity=2 (high) - might go to T2_TECHNICAL or T3_ENGINEERING depending on product? Or T1? Typically T1 handles severity 3-4, T2 handles severity 2-3, T3 handles severity 1-2. So we need to map.\n\n4. Billing issues: product=billing. For billing, if severity 1? Maybe ONCALL? But likely BILLING_SPECIALIST for billing issues. So if product=billing, route to BILLING_SPECIALIST (except if security or critical? Security overrides). Also for billing, low severity might go to T1? But billing specialist is for specialized billing.\n\n5. Account management: for high-tier customers (enterprise, business) with certain conditions? Maybe if prior_tickets_30d high indicating churn risk? Or if customer_tier=enterprise or business? The manual says \"cuentas clave\" so probably enterprise. Also \"incluidas las que corren riesgo de darse de baja\" so maybe if prior_tickets_30d > some threshold? But we can define a rule: customer_tier=enterprise and channel=phone? Or maybe any ticket from enterprise? But that would overwhelm. Typically account manager handles high-touch issues. Maybe we route enterprise tickets with severity 3 or 4? Not sure. Possibly we should have a rule: if customer_tier=enterprise and (severity <=2?) No. Let's think: The account manager is for relationship, not technical support. So maybe for non-technical queries from enterprise? Like general inquiries? But T1_GENERAL handles general. Perhaps we route enterprise tickets that are not security, not billing, not critical, to ACCOUNT_MANAGER? That might be too broad. Alternatively, we can have a rule for enterprise with prior_tickets_30d >= 10 indicating many tickets, churn risk. That seems plausible.\n\n6. Self-service deflect: for simple queries that can be answered by documentation. Typically free tier, low severity, portal channel, maybe language=en? Or for all languages? Possibly for severity=4, channel=portal, customer_tier=free? Or any low severity from portal? The manual says SELF_SERVICE_DEFLECT for autoservicio, so we want to deflect tickets that are likely simple. So rule: severity>=3 (i.e., 3 or 4) and channel=portal and customer_tier in [free,pro]? But also consider prior_tickets_30d low? Might be too specific. We can make a broad rule: severity=4 and channel=portal -> SELF_SERVICE_DEFLECT. But also off_hours? Possibly off_hours and low severity -> SELF_SERVICE_DEFLECT because no agents? But manual says \"se responde con documentaci\u00f3n y respuestas autom\u00e1ticas\" so it's fine.\n\n7. General: T1_GENERAL for everything that doesn't fit above, especially low severity, non-technical.\n\n8. Technical: T2_TECHNICAL for severity 2-3 technical issues? And T3_ENGINEERING for severity 1-2 bugs? But we need to distinguish product types. For example, product=api or integrations might be technical, product=dashboard might be UI issues. Maybe we route all non-billing, non-security, non-critical to T2_TECHNICAL, and then critical to T3_ENGINEERING or ONCALL. But then T1_GENERAL would be for simple queries like \"how to use\" which are usually severity 4, channel portal.\n\nWe need to define the rules in order. Since level 2 resolves overlaps by order, we should put more specific rules first. Also level 1 automatically handles subset relationships. So we can use general rules later.\n\nLet's outline the rules:\n\n1. Security: if has_security_keyword true -> SECURITY_INCIDENT (override everything). This is very specific.\n\n2. Critical severity (1) with off_hours: if severity=1 and off_hours=true -> ONCALL_ESCALATION (since no one else, and it's critical). But note: if also security, rule 1 already catches. So rule 2 is for non-security critical off-hours.\n\n3. Critical severity (1) without off_hours: if severity=1 and off_hours=false -> T3_ENGINEERING? Or maybe still ONCALL? Let's think: during business hours, engineering is available. So T3_ENGINEERING is appropriate for critical bugs. But what about billing critical? If product=billing and severity=1, should go to BILLING_SPECIALIST? But billing specialist might not handle critical? Possibly still T3_ENGINEERING because it's a product issue? The manual for T3 says \"Fallos del producto que necesitan que un ingeniero investigue el c\u00f3digo\". So critical billing issue might be a product bug in billing system, so T3. But if it's a billing question like \"overcharged\", that might be severity 2 or 3. So we can assume severity=1 is always a product failure, so T3_ENGINEERING. But to be safe, we can route severity=1 to T3_ENGINEERING if not off_hours, and not billing? Actually billing product might have its own engineering? But we have BILLING_SPECIALIST queue, which is for billing specialists, not engineers. So maybe severity=1 billing should go to ONCALL? That seems odd. Let's check manual: BILLING_SPECIALIST: \"Cobros, facturas y pagos que necesitan la intervenci\u00f3n de una persona.\" So it's for non-automated billing issues. If it's critical (severity=1), it might be a major billing outage, which would be a product failure, so T3. So we'll route all severity=1 (non-security, non-off-hours) to T3_ENGINEERING. But we also need to consider if customer_tier=enterprise and severity=1? Possibly ACCOUNT_MANAGER? Unlikely, as critical technical issues need engineering.\n\n4. Billing issues: product=billing and severity<=2? Actually billing issues of any severity should go to BILLING_SPECIALIST, but if severity=1 we already routed to T3. So for severity 2-4 billing, we can route to BILLING_SPECIALIST. But also consider if it's a simple billing query? Possibly T1 could handle? But manual says BILLING_SPECIALIST is for when a person is needed. So we can route all billing tickets to BILLING_SPECIALIST except those already covered by security or critical. But to avoid overlapping, we can define rule: product=billing and severity in [2,3,4] -> BILLING_SPECIALIST. But also if severity=1, we already have rule for critical. So we need order: rule 3 (critical non-off-hours) first, then rule 4 for billing. But rule 3 applies to severity=1, so billing severity=1 goes to T3, not billing specialist. That's fine.\n\n5. Enterprise account management: For enterprise tier, maybe route certain tickets to ACCOUNT_MANAGER. The manual says \"cuentas clave\" and \"riesgo de darse de baja\". So we can use prior_tickets_30d as indicator of churn risk. For example, if customer_tier=enterprise and prior_tickets_30d >= 10 (high volume) and severity>=3 (not critical) -> ACCOUNT_MANAGER. Or maybe also for business tier? Possibly. Also for tickets that are not technical? But we can keep it simple. Also, if enterprise and channel=phone? Might be high touch. But we need to be careful not to send all enterprise tickets to account manager. So we can define: customer_tier=enterprise and prior_tickets_30d >= 10 and severity >= 3 -> ACCOUNT_MANAGER. But also if severity=1 or 2, they go to technical queues. So this rule should be after technical rules? Actually we want account manager to handle relationship issues, not technical. So it should be for low severity. So we put it after technical rules.\n\n6. Self-service deflect: For tickets that can be handled automatically. Typical: severity=4 (lowest), channel=portal, and maybe customer_tier=free or pro? Also off_hours? Could be any off_hours low severity? But to be safe, we can define: severity=4 and channel=portal and customer_tier in [free, pro] and language=en (since documentation is mainly English?) But we have multiple languages. Maybe we can include all languages but documentation might not be available. Simpler: severity=4 and channel=portal -> SELF_SERVICE_DEFLECT. But that might deflect too many, including enterprise. However, enterprise might expect human response. But if it's low severity, self-service is fine. Alternatively, we can restrict to free and pro. Let's do: severity>=3 (i.e., 3 or 4) and channel=portal and customer_tier in [free, pro] -> SELF_SERVICE_DEFLECT. But severity=3 might be moderate, not always self-service. Better to only severity=4. So rule: severity=4 and channel=portal and customer_tier in [free, pro] -> SELF_SERVICE_DEFLECT. Also possibly if off_hours and severity=4? But we have that. Also consider language? If not English, maybe still self-service? We'll assume all languages have some self-service.\n\n7. General technical support: For tickets that are not caught above, likely severity 2-3 and product technical (api, integrations, mobile, dashboard) should go to T2_TECHNICAL. But also billing we already handled. So we can define: severity in [2,3] and product in [dashboard, api, mobile, integrations] -> T2_TECHNICAL. But what about severity=4 technical? Possibly T1 or self-service? We have self-service for free/pro portal. So severity=4 technical might go to T1_GENERAL. Also for enterprise severity=4, maybe T1.\n\n8. General first level: For everything else, T1_GENERAL. This includes severity=4 from any channel, severity=3 from portal? Actually we need a catch-all. So rule: (no condition) -> T1_GENERAL? But we need at least one condition. We can set a condition like customer_tier in [free, pro, business, enterprise] which always true, but that might cause overlapping with other rules. Since we have other rules that are more specific, level 1 will handle subset. But to avoid level 2 conflicts, we can put a default rule at the end with a condition that always matches, like severity>=1 (always true). But careful: other rules have conditions that are subsets of this? For example, severity=1 is a subset of severity>=1, so level 1 would cause the more specific rule to win. That's fine. So we can have a default rule: conditions: [{\"attr\": \"severity\", \"op\": \"gte\", \"value\": 1}] -> T1_GENERAL. That will catch all tickets not matched by previous rules. But note: our previous rules have conditions that are not necessarily subsets of this (e.g., product=billing). However, the default rule's condition is very broad, so any ticket satisfies it. So if a ticket matches a previous rule, it will also match this default rule. But level 1 says: if the set of cases covered by one rule is contained in another, the more contained wins. So if a rule has condition product=billing, that set is contained in severity>=1 (since all billing tickets have severity>=1). So the more specific rule (billing) would win. That's good. However, we must be careful: if two rules have overlapping but not containment, level 2 order decides. So we need to order rules so that more specific rules come before the default. So default at the end.\n\nBut we also need to consider that some rules may have overlapping with each other (e.g., billing and enterprise). We'll order them.\n\nLet's write the rules in order:\n\n1. Security: has_security_keyword = true -> SECURITY_INCIDENT\n\n2. Critical off-hours: severity = 1 AND off_hours = true -> ONCALL_ESCALATION\n\n3. Critical non-off-hours: severity = 1 AND off_hours = false -> T3_ENGINEERING\n\n4. Billing issues (non-critical): product = billing AND severity in [2,3,4] -> BILLING_SPECIALIST. Note: severity=1 already covered.\n\n5. Enterprise account management: customer_tier = enterprise AND prior_tickets_30d >= 10 AND severity in [3,4] -> ACCOUNT_MANAGER. (We exclude severity 2 because that might be technical, but could also be relationship? Let's keep to low severity.)\n\n6. Self-service deflect: severity = 4 AND channel = portal AND customer_tier in [free, pro] -> SELF_SERVICE_DEFLECT\n\n7. Technical support (non-critical, non-billing): severity in [2,3] AND product in [dashboard, api, mobile, integrations] -> T2_TECHNICAL\n\n8. Default: severity >= 1 -> T1_GENERAL (or any condition that always true, like customer_tier in list of all tiers)\n\nBut we also need to consider other attributes like language? Possibly not needed. Also prior_tickets_30d might be used for escalation? Not given in manual. We used it for account manager. Also maybe for high volume from free? Not specified.\n\nWe should also consider that T3_ENGINEERING might be needed for severity=2 if product bug? But we have T2 for severity 2-3. Typically T2 handles high severity too? But manual says T2 diagnoses and resolves technical incidents, T3 for code fixes. So severity 2 might go to T2, and if cannot resolve, escalate to T3. But we are triaging, so we can send severity 2 to T2 initially. So that's fine.\n\nAlso for enterprise with severity 1, we already send to ONCALL or T3, not account manager.\n\nWhat about channel=phone? For high priority, phone might be urgent. But we don't have specific rule. The channel might influence but we already have severity-based.\n\nAlso off_hours: for non-critical, we might want to deflect to self-service? But we have self-service only for portal. For email or chat during off_hours, maybe still T1? But T1 might not be staffed? The manual doesn't specify. We'll assume T1 handles off-hours as well, but maybe slower. So default covers.\n\nNow, we need to ensure that rules do not conflict in level 2 unnecessarily. For example, rule 5 (enterprise account) and rule 6 (self-service) could overlap if enterprise customer with severity=4 and portal? But rule 6 applies only to free/pro, so no overlap. Rule 5 and rule 4: enterprise billing? If enterprise has billing issue severity 3, rule 4 (billing) and rule 5 both apply? Billing has product=billing, enterprise with prior_tickets_30d>=10 and severity=3. These conditions are not subsets of each other: billing rule condition is product=billing and severity in [2,3,4]; enterprise rule is customer_tier=enterprise, prior>=10, severity in [3,4]. They overlap for enterprise billing severity 3 or 4. Which should win? According to manual, billing issues should go to BILLING_SPECIALIST. Account manager is for relationship, but billing is a specific issue. So billing rule should take precedence. So we need to order rule 4 before rule 5. So we'll put billing before account manager.\n\nSimilarly, rule 3 (critical) and rule 4? No overlap because severity 1 vs 2-4.\n\nRule 6 (self-service) might overlap with rule 7 (technical) if severity=4, product=api, customer_tier=free, portal? Self-service rule applies to severity=4, portal, free/pro. Rule 7 applies to severity in [2,3] so no overlap because severity 4 not in [2,3]. So fine.\n\nRule 7 and rule 8 default: default catches all, but rule 7 is more specific (subset of default for severity 2-3 and product in list). So level 1 handles.\n\nNow, we should also consider that for severity=4 and product in technical, not portal, they would go to default (T1) which is fine.\n\nWhat about severity=4 and channel=chat? T1.\n\nAlso, we might want a rule for high priority from enterprise? Maybe if severity=2 and enterprise, send to ACCOUNT_MANAGER? Not necessary.\n\nAlso, note that the default rule should have a condition that is always true. Using severity>=1 is fine. But we must ensure that all other rules are more specific subsets. Since severity>=1 covers all, any rule with additional conditions is subset. So level 1 works.\n\nNow, let's write the JSON.\n\nWe need to include a note for the overall base and each rule.\n\nWe'll write in Spanish? The instructions are in Spanish, but the attributes are in English. We can write notes in Spanish or English. Since the user wrote in Spanish, we'll write notes in Spanish.\n\nLet's produce the JSON.",
+      "finish_reason": "stop",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1795005215-CfvzXoSIm2yxkAd0FU37",
+          "provider": "DeepInfra",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1040,
+          "completion_tokens": 5574,
+          "reasoning_tokens": 4753,
+          "error": null
+        }
+      ],
+      "seconds": 56.79,
+      "asked_at": "2026-11-18T12:34:29+00:00"
+    },
+    {
+      "session": "prior",
+      "position": 1,
+      "id": "prior:0:2",
+      "checkpoint": 0,
+      "k": 2,
+      "reask": 0,
+      "labelled": [],
+      "digest": "bcf9bf5333318e31",
+      "served_by": "DeepInfra",
+      "valid": true,
+      "why_invalid": null,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Any ticket with security keywords is a potential incident and must be handled by the security response team immediately."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Critical severity tickets cannot wait for the next shift and require immediate attention from the on-call team, regardless of other attributes."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "All billing-related issues, except those already routed as security or critical, are handled by billing specialists."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 10
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Enterprise customers with a high volume of recent tickets (indicating potential churn risk) are routed to the account manager to preserve the commercial relationship."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              },
+              {
+                "attr": "language",
+                "op": "eq",
+                "value": "en"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free-tier users submitting low-urgency tickets in English via the portal can be served by automated self-service documentation."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "dashboard",
+                  "mobile",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "High-severity technical tickets from users with a history of multiple recent tickets likely indicate a bug that requires engineering investigation."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "dashboard",
+                  "mobile",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "lte",
+                "value": 4
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "High-severity technical tickets without a recent ticket history are routed to the second-level technical support team for diagnosis and resolution."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "dashboard",
+                  "mobile",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 3
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Medium-severity technical tickets are handled by the technical support team."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "dashboard",
+                  "mobile",
+                  "integrations"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Low-severity technical tickets are treated as general queries and go to first-level support."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 1
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Catch-all rule: any ticket not matched by more specific rules is sent to first-level support for initial handling."
+          }
+        ],
+        "note": "The rule base prioritises security, critical incidents, and commercial concerns first, then uses severity, product, customer tier, and ticket history to route technical issues to the appropriate support or engineering queue, with a default fallback to general support."
+      },
+      "keys": [
+        "rules",
+        "note"
+      ],
+      "reasoning": "We need to write a complete rule base for the triage system. The attributes are customer_tier, severity, product, channel, off_hours, prior_tickets_30d, has_security_keyword, language. Actions: T1_GENERAL, T2_TECHNICAL, T3_ENGINEERING, BILLING_SPECIALIST, SECURITY_INCIDENT, ACCOUNT_MANAGER, ONCALL_ESCALATION, SELF_SERVICE_DEFLECT.\n\nWe need to follow the company's routing manual. The manual describes what each queue does. We need to define rules that map tickets to appropriate queues based on conditions.\n\nLet's think about typical scenarios:\n\n- Security incidents: has_security_keyword true -> SECURITY_INCIDENT. Possibly also high severity? But any security keyword should go to security incident.\n- Billing issues: product billing, maybe also customer_tier? Billing specialist handles billing issues. So if product is billing, likely go to BILLING_SPECIALIST unless it's a security issue.\n- Account manager: likely for high-tier customers (enterprise?) or accounts at risk. But manual says \"relacion comercial con cuentas clave, incluidas las que corren riesgo de darse de baja\". Could be based on customer_tier enterprise or business? Also maybe high number of prior tickets indicating dissatisfaction? But not specified exactly. We'll have to infer.\n- ONCALL_ESCALATION: critical incidents that cannot wait. So severity 1, off_hours true? Or any severity 1? Possibly severity 1 always goes to oncall? But manual says \"incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora\". So if severity 1, and maybe off_hours true, but also could be during business hours? The oncall is for after-hours or weekends. But it says \"a cualquier hora\", meaning anytime. But then it's like a escalation for critical. Maybe we route all severity 1 to ONCALL_ESCALATION? But then what about T3? Engineering might handle critical bugs. However, oncall is for immediate response. So severity 1 should go to oncall first. But also could be security incident. Security incident might also be severity 1. So we need to handle overlap. Rule ordering: if security keyword, go to SECURITY_INCIDENT; else if severity 1, go to ONCALL_ESCALATION? But oncall might handle security too? Usually security incident is separate. So security incident should take precedence.\n\n- T1_GENERAL: general queries, usage doubts, requests that don't need technical diagnosis. Likely low severity (3 or 4), not product billing or security, maybe channel portal? But we need to define conditions.\n\n- T2_TECHNICAL: technical support second level. Diagnose and resolve technical incidents. So for technical issues not critical, maybe severity 2 or 3, product like api, dashboard, mobile, integrations? But not billing.\n\n- T3_ENGINEERING: product bugs needing code investigation. So likely severity 2 or 3? But also could be severity 1? If severity 1, oncall might handle first then escalate to engineering. But rule base should decide final queue. We need to decide based on manual: T3 is for bugs that need engineer. So if it's a bug, maybe product is api, dashboard, etc., and severity 2 or 3? But not all tickets are bugs. We need a condition like product in technical products and severity > 1? But we don't have a \"bug\" flag. So maybe we assume that tickets not resolved by T1 go to T2, and if T2 cannot, they escalate to T3. But our rules are automatic triage, so we need to decide directly.\n\n- SELF_SERVICE_DEFLECT: respond with documentation and auto replies, no agent. So likely for very simple queries, like low severity, channel portal, maybe language en? Could be for free tier? But manual doesn't specify. We can set a default for free tier with low severity? But we need to be careful.\n\n- Also consider customer_tier: enterprise might get account manager or higher priority.\n\nWe need to write rules that are complete and handle all combinations? The system will apply level 1 (containment) and level 2 (order). So we need to define rules that are mutually exclusive or ordered to avoid ambiguity.\n\nLet's think about typical routing logic:\n\n1. Security incident: if has_security_keyword true -> SECURITY_INCIDENT. This should be highest priority because security is critical. So put it first.\n\n2. Billing: if product is billing -> BILLING_SPECIALIST. But if it's also security, security wins. So we can put billing after security.\n\n3. Critical severity (severity 1): should go to ONCALL_ESCALATION. But if it's security, already handled. If it's billing? Billing critical? Possibly but billing specialist may not handle after hours? Oncall might handle then escalate. So we can put severity 1 and not security -> ONCALL_ESCALATION.\n\n4. Account manager: for high-value customers or accounts at risk. We can define for customer_tier enterprise or business? But not all enterprise go to account manager? Manual says \"relacion comercial con las cuentas clave\". So maybe enterprise tier, and possibly also if they have many prior tickets (risk of churn). But we need a condition. Let's set: if customer_tier is enterprise and prior_tickets_30d > 5? That might indicate issues. Or simply enterprise -> ACCOUNT_MANAGER? But then enterprise might have general queries too. Perhaps we should route enterprise tickets to account manager for anything? That might be too broad. Alternatively, we can have a rule for enterprise with severity low? Let's think: The manual says \"incluidas las que corren riesgo de darse de baja\". So not all enterprise. We could use a combination: customer_tier enterprise AND prior_tickets_30d >= 10? Or something. But we don't have churn risk flag. Alternatively, we can have a rule for any enterprise ticket that is not security, billing, or critical to go to account manager? But then T1, T2, T3 might not be used for enterprise. That might be okay. Or we could have account manager as a special queue for commercial issues. Let's define: if customer_tier is enterprise and product is not billing and has_security_keyword false -> ACCOUNT_MANAGER? But then what about technical issues? They might need technical support. So perhaps enterprise technical issues should go to T2/T3. So account manager is for commercial relationship, not technical. So maybe we route only when the issue is general or non-technical? But we don't have that distinction. Perhaps we should not route enterprise to account manager automatically; instead, account manager is for specific situations like churn. Without clear info, we can skip account manager or make it a rule for enterprise with high prior tickets. Let's decide: if customer_tier is enterprise and prior_tickets_30d > 10 and severity > 1 -> ACCOUNT_MANAGER. That might indicate a dissatisfied customer. But we need to be careful with containment.\n\n5. Self-service deflect: for simple questions that can be answered by documentation. Possibly for free tier users, low severity, and channel portal? Or maybe for tickets that are not urgent and have low complexity. We can set: if customer_tier is free and severity >= 3 and channel is portal and language is en -> SELF_SERVICE_DEFLECT. But we need to ensure it doesn't conflict with other rules.\n\n6. T1 General: for general queries. Perhaps low severity (3 or 4), and product not billing, not security, not critical. But we have to decide which tickets go to T1 vs T2. T1 is first level. Typically, all tickets start at T1 unless they are clearly technical. But we can route based on severity and product. For example, severity 3 or 4, product in dashboard, mobile, integrations? But that's vague. Alternatively, we can route all tickets that are not matched by previous rules to T1. That would be a catch-all. But then T1 would handle everything including technical? But manual says T1 handles general queries, not technical diagnosis. So we need to separate. T2 handles technical incidents. So we need to identify technical products. The products: dashboard, api, mobile, integrations are technical. Billing is financial. So we can say: if product is in [api, dashboard, mobile, integrations] and severity <= 3 (not critical? severity 2 or 3) and no security and not billing -> T2_TECHNICAL. But severity 2 is more serious, could go to T2 or T3? T3 is for engineering bugs. So we need to further split: if severity 2 and product technical -> T2? Or T3? Typically, T2 diagnoses, T3 fixes. So we might route severity 2 to T2, and if T2 can't solve, they escalate. But our rules should direct to the correct queue. Possibly severity 2 and product technical -> T3 if it's a bug? But we don't know. Let's simplify: For technical products, if severity 1 -> oncall (already), severity 2 -> T3_ENGINEERING? Because severity 2 is still high and may need engineering. But manual says T3 is for bugs. Not all severity 2 are bugs. We need more conditions. Since we don't have a \"bug\" flag, we might have to use heuristics. Alternatively, we can route all technical product tickets that are not severity 1 and not security to T2, and then let T2 escalate to T3. That might be simpler. But then T3 would never be used automatically? That's possible; T3 might be only for escalations. But manual says T3 is for engineering. We can have a rule for severity 2 and product api? Or maybe for high prior tickets? Not clear.\n\nGiven the complexity, we should design a rule base that covers the main cases and uses ordering to resolve conflicts.\n\nLet's outline:\n\nRule 1: Security incident - has_security_keyword true -> SECURITY_INCIDENT\nRule 2: Billing - product billing -> BILLING_SPECIALIST (unless security)\nRule 3: Critical severity - severity eq 1 -> ONCALL_ESCALATION (unless security)\nRule 4: Enterprise with high prior tickets - customer_tier enterprise and prior_tickets_30d gte 10 -> ACCOUNT_MANAGER (unless above)\nRule 5: Self-service - customer_tier free and severity gte 3 and channel portal and language en -> SELF_SERVICE_DEFLECT\nRule 6: Technical tickets - product in [api, dashboard, mobile, integrations] and severity lte 3 -> T2_TECHNICAL (since severity 2 or 3)\nRule 7: General - severity gte 3 and channel not phone? Or catch-all? We need a default. Could be severity 4 and channel portal -> T1_GENERAL? But also severity 3? Let's define: severity gte 3 and product not in technical? Actually, if not caught by previous, it could be general. But we also have language? Not needed.\nWe can have a rule: if customer_tier in [pro, business] and severity 4 -> T1_GENERAL? Or just a catch-all: if none of above -> T1_GENERAL. But then T1 would get everything including severity 2 from non-technical? That might be okay. But we need to ensure that non-technical products like billing are already handled. Billing is handled. So remaining products are maybe only \"?\" Actually product list: dashboard, billing, api, mobile, integrations. All are technical except billing. So after billing and security and critical, the rest are technical products. So all non-billing, non-security, non-critical are technical. So they should go to T2 or T3. But we need to differentiate between T2 and T3. Let's decide: severity 2 or 3 for technical products -> T2. severity 4 -> maybe T1? Because low severity general queries could be handled by T1. So we can have: if product in technical and severity 4 -> T1_GENERAL. But manual says T1 is for general queries, not technical. So if a user has a technical issue with low severity, it might still be technical. However, often low severity technical issues are handled by T1 (first level) and escalated if needed. So it's plausible.\n\nAlternatively, we can route all technical products to T2 regardless of severity (except severity 1), and let T2 decide. That might be simpler. Then T1 would only get non-technical general queries. But what are non-technical? Only billing? But billing is handled separately. So then T1 would get nothing. That's not good. We need some tickets for T1. Maybe for product \"dashboard\" there could be general usage questions. So perhaps we need a condition based on severity and channel? For example, if severity 4 and channel portal, it's likely a simple question -> T1. If severity 3 and channel chat, maybe also T1? But we need to avoid overcomplicating.\n\nGiven the constraints, I'll propose a set of rules that cover the main cases and then a default rule for everything else to T1. But we need to ensure that T1 is not overwhelmed with technical issues. So we should route technical issues to T2.\n\nLet's define:\n\n- Rule 1: Security keyword -> SECURITY_INCIDENT\n- Rule 2: Billing product -> BILLING_SPECIALIST\n- Rule 3: Severity 1 -> ONCALL_ESCALATION\n- Rule 4: Customer_tier enterprise and prior_tickets_30d >= 10 -> ACCOUNT_MANAGER (could also consider business tier? But let's keep enterprise)\n- Rule 5: Customer_tier free and severity >= 3 and channel portal and language en -> SELF_SERVICE_DEFLECT\n- Rule 6: Product in [api, dashboard, mobile, integrations] and severity <= 3 -> T2_TECHNICAL (includes severity 2 and 3; severity 1 already caught; severity 4 goes to T1)\n- Rule 7: Product in [api, dashboard, mobile, integrations] and severity 4 -> T1_GENERAL (low severity technical general questions)\n- Rule 8: Catch-all: default -> T1_GENERAL (for any other combination, like non-technical non-billing non-security, but there is no other product. So this will catch cases like language other than en for free? Or off_hours? But we need to ensure no ticket falls through.)\n\nBut we have to consider ordering and containment. Rules 1-5 are specific, rule 6 and 7 are for technical products, rule 8 is default. Since rule 6 has condition product in technical and severity lte 3, and rule 7 has product in technical and severity 4, they are mutually exclusive because severity lte 3 vs eq 4. So order doesn't matter between them. Rule 8 will catch any ticket not caught by previous, e.g., if product is billing but not billing? Actually billing is caught by rule 2. So remaining after rule 7 would be only if product is not in technical? But all products are either billing or technical. So if product is billing, it's caught. If product is technical, it's caught by 6 or 7. So rule 8 may never fire. But we should keep it as a safety.\n\nAlso consider off_hours? We didn't use off_hours. Possibly for oncall escalation, we might want to only route if off_hours true? But manual says \"a cualquier hora\", so even during business hours, critical incidents should go to oncall? Actually oncall is for after-hours escalation. But if it's business hours, there might be regular teams. So we could refine: severity 1 and off_hours true -> ONCALL_ESCALATION; severity 1 and off_hours false -> T3_ENGINEERING? But then we need to decide. The manual says \"Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\" That implies that oncall is available 24/7 for critical. So we can route all severity 1 to oncall regardless of off_hours. But then during business hours, oncall might be the same as T3? Actually oncall is a separate queue for urgent after-hours. During business hours, critical incidents might be handled by T3 or by oncall? Typically, oncall is for after-hours, but here it says \"a cualquier hora\", so maybe it's a dedicated escalation path. I'll keep severity 1 -> ONCALL_ESCALATION.\n\nAlso consider prior_tickets_30d: we used for account manager. Could also use for self-service? Not needed.\n\nAlso language: we used only for self-service.\n\nChannel: we used only for self-service.\n\nWe need to ensure that the rules are not too broad. For example, rule 6: product in technical and severity <=3 includes severity 3. But severity 3 might be a general question about dashboard. Should it go to T2 or T1? T2 is technical support, so if it's a technical issue, it's fine. But if it's a usage question, T1 might be better. Since we don't have a way to distinguish, we'll assume that for technical products, any issue with severity <=3 is technical enough for T2. Severity 4 (lowest) can be handled by T1 as general.\n\nWe also need to consider customer_tier: enterprise might get different treatment? We already have rule 4 for account manager. But what about enterprise with technical issue? Should it go to T2 or to account manager? Rule 4 is only for high prior tickets. So enterprise with low prior tickets and technical issue will go to rule 6 or 7. That seems okay.\n\nWe should also consider pro and business tiers? They might get priority? Not specified.\n\nAnother important aspect: off_hours might affect routing for non-critical? For example, if off_hours true and severity 2, should it go to oncall? Probably not, because it can wait. So we don't use off_hours except possibly for oncall but we already have severity 1.\n\nLet's write the rules in JSON format. We need to specify conditions with attr, op, value. For \"in\" operator, value is array. For equality, use \"eq\". For \"lte\"/\"gte\", use numbers. For boolean, use true/false.\n\nWe'll order rules as:\n\n1. Security: has_security_keyword eq true -> SECURITY_INCIDENT\n2. Billing: product eq \"billing\" -> BILLING_SPECIALIST\n3. Critical: severity eq 1 -> ONCALL_ESCALATION\n4. Account Manager: customer_tier eq \"enterprise\" and prior_tickets_30d gte 10 -> ACCOUNT_MANAGER\n5. Self-service: customer_tier eq \"free\" and severity gte 3 and channel eq \"portal\" and language eq \"en\" -> SELF_SERVICE_DEFLECT\n6. Technical (sev 2-3): product in [\"api\",\"dashboard\",\"mobile\",\"integrations\"] and severity lte 3 -> T2_TECHNICAL\n7. Technical (sev 4): product in [\"api\",\"dashboard\",\"mobile\",\"integrations\"] and severity eq 4 -> T1_GENERAL\n8. Default: (catch-all) -> T1_GENERAL. We need a condition that always true? We can use customer_tier in all values? But easiest: use attr with op that always true like \"customer_tier\" in all? But we have to ensure it matches everything not caught. Since previous rules cover all products and severities, we can omit default or use a condition that never conflicts. But to be safe, we can add a rule with no conditions? The instruction says \"Toda regla necesita al menos una condicion\". So we need at least one condition. We can use something like \"severity gte 1\" which is always true. So rule 8: severity gte 1 -> T1_GENERAL. But this will match all tickets, and because it's last, it will catch only those not matched by previous rules. However, note that this rule is more general than some previous rules? For example, rule 1 has condition has_security_keyword eq true. Rule 8 has condition severity gte 1 which is broader. So in level 1 containment, rule 8 contains rule 1? Actually rule 8's condition is broader (any severity), and rule 1 has additional condition. So rule 1 is contained in rule 8? Yes, rule 1's tickets are a subset of rule 8's tickets. So level 1 would make rule 1 win over rule 8 for those tickets. That's good. Similarly, rule 8 contains rule 2, etc. So level 1 will automatically give precedence to more specific rules. But rule 8 will catch the rest. However, we must ensure that rule 8 does not accidentally override more specific rules that are not contained? Actually all previous rules are more specific because they have additional conditions. So level 1 will ensure they win. So ordering in level 2 doesn't matter for these. But we still need to order them, but level 1 will handle. So we can put the default last.\n\nBut there is a problem: rule 6 (technical sev <=3) and rule 7 (technical sev 4) are mutually exclusive based on severity. They are both subsets of rule 8. So they will win over rule 8. But rule 6 and rule 7 are not contained in each other because severity lte 3 and eq 4 are disjoint. So level 1 doesn't apply between them; they don't overlap. So order doesn't matter.\n\nNow consider rule 4 (account manager) and rule 6: they might overlap if customer_tier enterprise and prior_tickets_30d >=10 and product technical and severity <=3. Which should win? Account manager is for commercial, technical issue might need technical support. The manual says account manager handles commercial relationship, not technical. So probably technical should go to T2 first, and then account manager might be notified? But our rules must assign one queue. We need to decide priority. Since account manager is for churn risk, maybe we want that to take precedence to ensure customer retention. But if it's a technical issue, the account manager might coordinate with T2. However, we can prioritize account manager. So we should put rule 4 before rule 6. That way, if conditions for account manager are met, it goes to ACCOUNT_MANAGER. Similarly, rule 4 might also overlap with rule 3? If severity 1 and enterprise and high prior tickets, rule 3 (critical) should probably win because it's urgent. So rule 3 should be before rule 4. So ordering: 1,2,3,4,5,6,7,8.\n\nNow check rule 5: self-service. It might overlap with rule 4? If free tier, but rule 4 is for enterprise, so no overlap. With rule 6? If free tier and product technical and severity <=3 and channel portal and language en, then rule 5 would send to self-service, but rule 6 would send to T2. Which is correct? Self-service is for simple queries that can be automated. If it's a technical issue, self-service might not be appropriate. But rule 5's conditions are more specific (free, portal, en, sev>=3). It is contained in rule 6? Rule 6 requires product in technical and sev<=3, but rule 5 also requires free, portal, en. So rule 5 is a subset of rule 6? Not necessarily because rule 6 includes all customer_tier, not just free. So rule 5's condition set is not a subset of rule 6 because rule 6 doesn't have customer_tier condition. Actually rule 6's condition set is {product in technical, severity <=3}. Rule 5's condition set is {customer_tier free, severity >=3, channel portal, language en}. The intersection is not empty, but neither is a subset of the other. So level 1 doesn't apply. So we need level 2 ordering. Which should win? Self-service deflect is a lower-touch option, so if the ticket qualifies for self-service, we should deflect rather than send to T2. So rule 5 should come before rule 6. That way, if conditions for self-service are met, it goes there. Similarly, rule 5 might also overlap with rule 7 (sev 4). Since rule 5 has sev>=3 (so includes 3 and 4), and rule 7 has sev=4. So rule 5 is broader in severity? Actually rule 5 includes sev3 and sev4, rule 7 only sev4. So rule 7 is a subset of rule 5? Not exactly because rule 5 has additional conditions (free, portal, en). So rule 7's condition set is {product in technical, sev=4}. That is not a subset of rule 5 because rule 5 requires free, portal, en. So again, they overlap. We should prioritize self-service if applicable. So rule 5 before rule 7.\n\nNow consider rule 5 and rule 3? If severity 1, rule 3 applies. Rule 5 has sev>=3, so sev1 is not in rule 5. So no overlap. Rule 5 and rule 2? billing product vs product technical? billing is not in technical, so no overlap. Rule 5 and rule 1? security keyword vs free? possible overlap if free and security keyword. Rule 1 should win because security is critical. So rule 1 before rule 5.\n\nThus final order: 1,2,3,4,5,6,7,8.\n\nWe also need to consider language: only used in self-service. Other languages? For non-English, they might go to T1 or T2. That's fine.\n\nNow we should also consider that some tickets might not have any conditions met? For example, if product is billing but has_security_keyword true, rule 1 catches. If product is billing and severity 1, rule 1 catches? Actually rule 1 catches all with security keyword, regardless of product. So if billing ticket has security keyword, it goes to security. Good. If billing ticket no security, rule 2 catches. If billing ticket no security and severity 1? Actually rule 3 is severity 1, but rule 2 is billing product. Which is more specific? Rule 2 has product=billing, rule 3 has severity=1. They overlap. Neither is a subset of the other. So we need to decide order. We put rule 2 before rule 3. So billing product with severity 1 goes to BILLING_SPECIALIST? But severity 1 critical billing issue might need oncall? But billing specialist might not be available off-hours. So maybe severity 1 billing should go to oncall? The manual says oncall for critical incidents. A critical billing issue could be a security breach or system failure. But we have security keyword for security. If it's just a critical billing error, it might still be urgent. I think oncall should handle critical regardless of product. So we should put rule 3 before rule 2. That way, severity 1 goes to oncall first, even if billing. Then billing specialist handles non-critical billing. But what about billing with security keyword? Rule 1 already takes precedence. So order should be: rule1, rule3, rule2? But rule2 and rule3 overlap. Let's reconsider: The manual says oncall for critical incidents that cannot wait. So any severity 1 should go to oncall, including billing. So rule 3 should come before rule 2. Also, security is highest priority, so rule1 first. Then rule3 (severity 1), then rule2 (billing), then others. But then what about billing with severity 2? That goes to rule2. That's fine. So update order: 1,3,2,4,5,6,7,8.\n\nBut also consider rule4 (account manager) with severity 1? If enterprise high prior tickets and severity 1, rule3 will catch it first, sending to oncall. That's appropriate. So rule3 before rule4.\n\nNow rule5 self-service: if free and portal and en and severity >=3, but severity 1 is not in rule5, so no conflict with rule3. If severity 2, rule5 has sev>=3, so severity 2 not in rule5. So rule5 only applies for sev3 and 4. That's fine.\n\nNow rule6: technical sev<=3 (so sev2 and 3). But sev1 already caught by rule3, so rule6 will only get sev2 and 3. Sev2 is included. But rule5 also includes sev3 for free. So for sev3 free portal en, rule5 and rule6 overlap. As we decided, rule5 should win (self-service deflect). So rule5 before rule6.\n\nRule7: technical sev4. Overlap with rule5? rule5 includes sev4 for free portal en. So rule5 wins again. So rule5 before rule7.\n\nNow what about sev4 technical for non-free or non-portal or non-en? They go to rule7 (T1). That's fine.\n\nRule8 default catches any remaining, but after these, likely nothing left.\n\nWe also need to consider off_hours? Not used, but maybe we should add a rule for oncall only when off_hours? But manual says oncall for critical at any hour, so we keep rule3 as is.\n\nOne more thing: what about tickets with language non-English? They might need special handling? Not specified, so they will go through normal rules. Self-service only for English.\n\nAlso, consider channel phone? Could be for urgent? But we don't have specific rules. Phone might be for critical? But we already have severity.\n\nGiven the manual, we should also consider that T3 Engineering might be needed for bugs. But we didn't route any to T3. Maybe we should add a rule for severity 2 and product in technical? But we already route severity 2 to T2. Could we route severity 2 to T3? Let's think: Severity 2 is \"high\" (since 1 is critical, 2 is high). Usually, high severity bugs go to engineering. But manual says T2 diagnoses and resolves technical incidents. T3 is for bugs needing code investigation. So perhaps severity 2 technical tickets should go to T3 directly if they are bugs? But we can't know if it's a bug. Maybe we can use prior_tickets_30d as a proxy? For example, if a user has many prior tickets, it might indicate a recurring issue that needs engineering. But not reliable. Alternatively, we can have a rule: if product in technical and severity 2 and prior_tickets_30d >= 5 -> T3_ENGINEERING. That might be reasonable. But then we need to adjust order. Let's incorporate that.\n\nAlso, what about severity 3 technical? Could go to T2. Severity 4 technical to T1.\n\nWe also haven't used channel or off_hours much. Maybe we can use off_hours for oncall only? But we already have severity 1.\n\nAnother possibility: For enterprise, we might want to route all tickets to account manager? But manual says account manager for commercial relationship, not technical. So I'll stick with only high prior tickets.\n\nLet's refine the rules:\n\n- Rule1: security\n- Rule2: severity 1 (critical) -> ONCALL\n- Rule3: billing product -> BILLING_SPECIALIST\n- Rule4: enterprise with prior_tickets_30d >= 10 -> ACCOUNT_MANAGER\n- Rule5: self-service: free, portal, en, severity >= 3 -> SELF_SERVICE_DEFLECT\n- Rule6: technical product (api,dashboard,mobile,integrations) and severity 2 and prior_tickets_30d >= 5 -> T3_ENGINEERING (possible bug)\n- Rule7: technical product and severity 2 and prior_tickets_30d < 5 -> T2_TECHNICAL\n- Rule8: technical product and severity 3 -> T2_TECHNICAL\n- Rule9: technical product and severity 4 -> T1_GENERAL\n- Rule10: default -> T1_GENERAL (catch-all)\n\nBut we have many rules. We need to ensure they don't conflict. Also, note that rule6 and rule7 are mutually exclusive on prior_tickets_30d. But rule7 includes condition prior_tickets_30d <5, which is not a direct operator? We have lte and gte. We can use prior_tickets_30d lte 4 for <5. So condition: prior_tickets_30d lte 4. That works.\n\nNow rule5 includes severity 3 and 4. It might overlap with rule8 (sev3) and rule9 (sev4) for free, portal, en. Since rule5 is more specific (extra conditions), it will be contained in rule8? Actually rule8 condition is {product in technical, severity 3}. Rule5 condition is {free, portal, en, severity>=3}. The intersection includes sev3 cases. Rule5 is not a subset of rule8 because rule5 has additional conditions, but rule8 does not have those conditions. So rule5 is more specific? Actually, rule5 has more conditions, so its set is smaller. So rule5 is contained in rule8? No, because rule5's condition set is not a subset of rule8's condition set: rule5 requires free, portal, en; rule8 does not require those, but rule8 requires product in technical and severity 3. A ticket that satisfies rule5 must have product in technical? Not necessarily: rule5 does not restrict product. So a ticket with product billing could satisfy rule5? But rule5 has severity>=3 and free and portal and en, but product could be billing. That would not be caught by rule8 because product not technical. So rule5 and rule8 overlap only for tickets that have product in technical, severity 3, free, portal, en. For those tickets, rule5's condition set is a subset of rule8? Actually rule8's condition set is {product in technical, severity 3}. Rule5's condition set includes those plus free, portal, en. So rule5's set is a subset of rule8's set? Because any ticket satisfying rule5 (with product technical and sev3) also satisfies rule8. So yes, rule5 is contained in rule8 for that overlap. So level 1 would give precedence to rule5 (the more specific). Similarly, rule5 is contained in rule9 for sev4 technical tickets. So rule5 will automatically win. So we don't need to order rule5 before rule8/9; level 1 handles it. But we still need to order rule5 relative to rule6/7? Rule5 only applies to sev3 and 4, so no overlap with rule6/7 (sev2). So fine.\n\nNow rule6 and rule7: they are disjoint due to prior_tickets_30d condition. No overlap.\n\nRule4 (account manager) might overlap with rule6 or rule7? If enterprise, high prior tickets, and severity 2 technical product. Rule4 condition: enterprise and prior>=10. Rule6 condition: technical product, sev2, prior>=5. So they overlap for enterprise, prior>=10, sev2 technical. Which should win? Account manager is for commercial, but if it's a technical issue with high priority, maybe we want technical support. However, account manager might handle the relationship. I think account manager should take precedence for enterprise with high prior tickets because it indicates churn risk. So we put rule4 before rule6/7. Level 1: rule4's condition set is {enterprise, prior>=10}. Rule6's condition set is {technical product, sev2, prior>=5}. They overlap for enterprise, prior>=10, technical, sev2. Is rule4 contained in rule6? No, because rule4 does not require technical product or sev2. So neither is subset. So we need ordering. We put rule4 before rule6/7. So if enterprise high prior, it goes to account manager even if technical. That seems plausible.\n\nSimilarly, rule4 might overlap with rule8 (sev3 technical). Same logic.\n\nRule4 also might overlap with rule3 (billing)? If enterprise high prior and billing product, rule3 (billing) and rule4 overlap. Which should win? Billing specialist is for billing issues. Account manager for commercial relationship. Possibly billing issues should go to billing specialist, but if the customer is at risk, account manager might be better. We need to decide. Since rule3 is billing product, and rule4 is enterprise high prior, neither is subset. Order: we have rule3 before rule4? Actually our order currently: rule1, rule2, rule3, rule4. So rule3 (billing) before rule4. That means billing issues go to billing specialist even for enterprise with high prior. That might be acceptable because billing specialist can handle billing, and then maybe account manager gets involved later. But we could also prioritize account manager for enterprise. Let's keep as is.\n\nNow rule2 (severity 1) before rule4, so critical goes to oncall.\n\nNow rule5 self-service: it's after rule4. But as argued, level 1 will handle containment.\n\nNow we also have rule10 default. That will catch any ticket not caught, e.g., product billing with severity 4? Actually billing is caught by rule3. So default might catch tickets with product technical but severity 2 and prior_tickets_30d exactly 5? Wait, rule6 uses prior>=5, rule7 uses prior<=4. So prior=5 is covered by rule6. So fine. What about product technical, severity 1? Already rule2. So default probably never fires, but it's safe.\n\nWe should also consider language and channel for default? Not needed.\n\nNow we need to ensure that all attributes are used appropriately. We haven't used off_hours at all. Maybe we should use it for oncall? Let's modify rule2: severity 1 and off_hours true -> ONCALL; severity 1 and off_hours false -> maybe T3_ENGINEERING? But then we need to decide. Manual says oncall for critical that cannot wait. If off_hours false, during business hours, there might be T3 available. But oncall is still available. However, to avoid overloading oncall during business hours, we could route severity 1 during business hours to T3 or T2? But manual says oncall for any hour. So I'll keep it simple: all severity 1 to oncall.\n\nAlternatively, we could route severity 1 to ONCALL only if off_hours true, and if off_hours false, route to T3_ENGINEERING (since engineering might handle critical bugs during work hours). But then what about critical billing? That would go to billing specialist? Hmm. Let's decide not to use off_hours to keep rules simpler.\n\nAlso, we haven't used channel except in self-service. Could use channel phone for urgency? Not needed.\n\nNow, we need to write the rules in JSON. We'll use the conditions as arrays. For multiple conditions, they are AND.\n\nLet's write them:\n\nRule1: conditions: [{\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}] -> SECURITY_INCIDENT\n\nRule2: conditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}] -> ONCALL_ESCALATION\n\nRule3: conditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}] -> BILLING_SPECIALIST\n\nRule4: conditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 10}] -> ACCOUNT_MANAGER\n\nRule5: conditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}, {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"portal\"}, {\"attr\": \"language\", \"op\": \"eq\", \"value\": \"en\"}] -> SELF_SERVICE_DEFLECT\n\nRule6: conditions: [{\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\",\"dashboard\",\"mobile\",\"integrations\"]}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"prior_tickets_30d\", \"op\": \"gte\", \"value\": 5}] -> T3_ENGINEERING\n\nRule7: conditions: [{\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\",\"dashboard\",\"mobile\",\"integrations\"]}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"prior_tickets_30d\", \"op\": \"lte\", \"value\": 4}] -> T2_TECHNICAL\n\nRule8: conditions: [{\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\",\"dashboard\",\"mobile\",\"integrations\"]}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3}] -> T2_TECHNICAL\n\nRule9: conditions: [{\"attr\": \"product\", \"op\": \"in\", \"value\": [\"api\",\"dashboard\",\"mobile\",\"integrations\"]}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}] -> T1_GENERAL\n\nRule10: conditions: [{\"attr\": \"severity\", \"op\": \"gte\", \"value\": 1}] -> T1_GENERAL\n\nNote: Rule10 will match all tickets because severity is between 1 and 4. So it's a true default.\n\nWe should also consider that rule5 might catch tickets that are not product technical? For example, free, portal, en, sev3, product billing? That would be caught by rule3 first because rule3 is before rule5? Actually our order has rule3 before rule5, so billing goes to billing specialist, not self-service. That's fine. For product technical, rule5 will catch them before rule8/9 due to level 1. But rule5 is after rule4 and rule2 etc. So for free, portal, en, sev3, technical product, rule5 will win because it's more specific than rule8. So that's good.\n\nNow, we need to add notes for each rule explaining why. And a note for the whole base.\n\nLet's write the JSON.",
+      "finish_reason": "stop",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1795005215-56l7qx9VKSo4qqOuck1J",
+          "provider": "DeepInfra",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1040,
+          "completion_tokens": 10469,
+          "reasoning_tokens": 9333,
+          "error": null
+        }
+      ],
+      "seconds": 96.92,
+      "asked_at": "2026-11-18T12:35:09+00:00"
+    },
+    {
+      "session": "prior",
+      "position": 2,
+      "id": "prior:0:3",
+      "checkpoint": 0,
+      "k": 3,
+      "reask": 0,
+      "labelled": [],
+      "digest": "bcf9bf5333318e31",
+      "served_by": "DeepInfra",
+      "valid": true,
+      "why_invalid": null,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Cualquier ticket con palabra clave de seguridad se dirige al equipo de incidentes de seguridad."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Incidentes cr\u00edticos fuera del horario laboral escalan a guardia."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Todos los tickets de facturaci\u00f3n van al especialista de facturaci\u00f3n."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Incidentes cr\u00edticos en horario laboral se asignan a ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "mobile",
+                  "integrations"
+                ]
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Problemas de gravedad 2 en productos t\u00e9cnicos espec\u00edficos requieren ingenier\u00eda."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "mobile",
+                  "integrations",
+                  "dashboard"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  2,
+                  3
+                ]
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Problemas t\u00e9cnicos de gravedad 2 o 3 en productos t\u00e9cnicos se derivan a soporte t\u00e9cnico."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Cuentas enterprise se asignan al gestor de cuenta para atenci\u00f3n comercial."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "business"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 10
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Cuentas business con muchos tickets recientes (posible riesgo de baja) van al gestor de cuenta."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Tickets de baja gravedad de usuarios gratuitos se responden con autoservicio."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 1
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Regla por defecto: todo ticket no clasificado previamente va a soporte general."
+          }
+        ],
+        "note": "Base de reglas prioriza seguridad, criticidad y facturaci\u00f3n; luego t\u00e9cnico e ingenier\u00eda; cuentas clave y autoservicio; finalmente soporte general."
+      },
+      "keys": [
+        "rules",
+        "note"
+      ],
+      "reasoning": "We need to write a complete rule base for triage. The attributes and domains are given. We have to follow the routing policy described. The manual says: T1_GENERAL for general queries, T2_TECHNICAL for technical issues, T3_ENGINEERING for product bugs, BILLING_SPECIALIST for billing, SECURITY_INCIDENT for security, ACCOUNT_MANAGER for key accounts or churn risk, ONCALL_ESCALATION for critical incidents off-hours, SELF_SERVICE_DEFLECT for deflect to self-service.\n\nWe need to think about typical rules. Since we have to cover all tickets, we need a default rule maybe. But we also need to handle exceptions.\n\nLet's design rules in order of precedence (level 2 ordering). We'll start with the most specific or urgent.\n\nImportant: The motor uses level 1 (subsumption) automatically, but we also need level 2 ordering for overlapping non-contained rules.\n\nWe should write rules for each action. Consider:\n\n- Security incident: has_security_keyword true, or maybe severity 1 with security? Probably any security keyword should go to SECURITY_INCIDENT. That is a high priority. Also if severity 1 and has_security_keyword, but we can combine.\n\n- Oncall escalation: severity 1 AND off_hours true? Or maybe severity 1 and critical product? The manual says \"Incidentes cr\u00edticos que no pueden esperar al siguiente turno, a cualquier hora.\" So severity 1 and off_hours? But also maybe during off hours any severity 1? But we need to route to oncall. But we also have other queues for severity 1 during business hours? Possibly T3_ENGINEERING or T2_TECHNICAL. We need to decide.\n\n- Account manager: customer_tier enterprise? Or maybe high severity with business? The manual: \"La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So maybe enterprise tier, or business tier with many prior tickets? But we don't have churn indicator. So maybe enterprise tier gets ACCOUNT_MANAGER for any? Or only for certain issues? Could also be if customer_tier is enterprise and severity 1? But we need to be careful.\n\n- Billing specialist: product billing, or maybe channel? Usually billing issues go to billing.\n\n- T1_GENERAL: default for non-technical, non-billing, non-security, etc.\n\n- T2_TECHNICAL: technical issues that are not bugs? For example, integrations, API, mobile, dashboard? But dashboard might be general? We need to differentiate.\n\n- T3_ENGINEERING: product bugs, maybe severity 1 or 2, or specific products like api, mobile, integrations that require code fix.\n\n- Self-service deflect: maybe for low severity (4) and free tier, or for general queries that can be answered by documentation. The manual says \"Se responde con documentaci\u00f3n y respuestas autom\u00e1ticas, sin que intervenga un agente.\" So perhaps for severity 4 and customer_tier free? Or for language? Could be for certain channels like portal.\n\nWe also have off_hours and prior_tickets_30d. Prior tickets might indicate recurring issue or frustrated customer.\n\nWe need to write a complete set of rules covering all tickets. Possibly we can have a default rule at the end with no conditions or a condition that always true, like customer_tier in [free,pro,business,enterprise] but that's all. But the instruction says \"Toda regla necesita al menos una condicion\". So we can have a rule with condition like severity gte 1 (always true) or customer_tier in all. But we need to ensure that if no other rule matches, this default applies.\n\nGiven the complexity, we should write about 10-15 rules.\n\nLet's think step by step.\n\nFirst, security: if has_security_keyword true, then SECURITY_INCIDENT. This should be high priority. But also if security and severity 1, still security. So rule1: condition has_security_keyword eq true -> SECURITY_INCIDENT.\n\nSecond, oncall: severity 1 and off_hours true -> ONCALL_ESCALATION. But also maybe severity 1 and off_hours false? Then maybe T3_ENGINEERING or T2? We need to decide. Let's make rule2: severity eq 1 and off_hours eq true -> ONCALL_ESCALATION. Also could be severity 1 and off_hours false? That would be during business hours. Should go to T3_ENGINEERING perhaps because it's critical bug? Or to T2? I'd say T3_ENGINEERING for severity 1 as it's critical and needs engineering. But also T2 might handle. Better to route severity 1 to T3_ENGINEERING (or maybe ONCALL if off hours). So rule3: severity eq 1 and off_hours eq false -> T3_ENGINEERING. But then what about severity 2? Severity 2 is high but not critical. Could be T2 or T3. We'll decide.\n\nThird, billing: product billing -> BILLING_SPECIALIST. But if severity 1? That might be security? But billing product with security keyword? Unlikely. So rule4: product eq billing -> BILLING_SPECIALIST.\n\nFourth, account manager: customer_tier enterprise and (maybe severity 1 or 2?) Or just enterprise? The manual says \"cuentas clave\". Enterprise is key. Also possibly business with many prior tickets? We could do: customer_tier eq enterprise -> ACCOUNT_MANAGER. But that would send all enterprise tickets to account manager, which might not be appropriate if it's a simple question. However, the manual says \"La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So it's about commercial relationship. Maybe enterprise tickets should go to account manager for any issue? That could be a valid rule. But then we need to ensure that security incidents override? Since security is more specific (has_security_keyword), it will be contained? Actually, a ticket with enterprise and security keyword matches both rules. The motor's level 1: if rule1's condition set is contained in rule5's? rule1 has has_security_keyword true, rule5 has customer_tier enterprise. They are not subsets of each other (one attribute vs another). So they are overlapping but not contained. So level 2 ordering will decide. We want security to win, so we put rule1 before rule5. So that's fine.\n\nBut we also have other tiers: free, pro, business. They might go to T1, T2, etc.\n\nFifth, self-service deflect: for low severity, maybe severity eq 4 and customer_tier eq free? Or maybe channel eq portal? Self-service could be for simple queries that can be answered by documentation. Typically, tickets that are not urgent, not technical, and can be handled automatically. Let's define: severity gte 3 (i.e., 3 or 4) and customer_tier eq free and language eq en (maybe) and product eq dashboard? Not sure. Better to be conservative. We can have: severity eq 4 and customer_tier eq free -> SELF_SERVICE_DEFLECT. But also maybe for pro? But free is more likely to be deflected. We'll use that.\n\nSixth, T3_ENGINEERING: for product bugs. What indicates a bug? Possibly severity 1 or 2, or product api/mobile/integrations? Also has_security_keyword is separate. So we need rules for T3. For severity 2, and product in [api, mobile, integrations]? Or all products? Could be: severity lte 2 (i.e., 1 or 2) and product in [api, mobile, integrations] -> T3_ENGINEERING. But severity 1 we already handled for off_hours? Actually severity 1 and off_hours false we put to T3, so that's fine. For severity 2, we need to decide. Also for severity 3 or 4, maybe T2 or T1.\n\nSeventh, T2_TECHNICAL: for technical issues that are not bugs. For example, product dashboard, billing (but billing goes to billing specialist), integrations? Actually integrations might be technical but could be configuration issues. Also API issues. But we already have T3 for severity 1/2 on those. So for severity 3 and 4 on those products, maybe T2. Or for all products except billing? Also for mobile app issues. Also for channel chat or email? Not sure.\n\nEighth, T1_GENERAL: for general queries, low severity, not technical, not billing, not security, not account manager. Also for free tier with low severity.\n\nWe also have prior_tickets_30d: many prior tickets might indicate a recurring issue or a frustrated customer. Could route to account manager or T2. But we can incorporate that.\n\nAlso language: if non-English, maybe need specialist? But we don't have language-specific queues. So we can ignore.\n\nNow, we need to write rules in order. The order should put the most specific/urgent first. Also we need to consider level 1 subsumption automatically, so we can write general rules that are contained by more specific ones later. But we must ensure that overlapping non-contained rules are ordered correctly.\n\nLet's list potential rules in order:\n\n1. Security incident: has_security_keyword eq true -> SECURITY_INCIDENT. (Very specific, should be first.)\n\n2. Oncall escalation: severity eq 1 and off_hours eq true -> ONCALL_ESCALATION. (Specific condition, but note that if also security keyword, rule1 would match first, so security wins. That's fine.)\n\n3. Critical during business hours: severity eq 1 and off_hours eq false -> T3_ENGINEERING. (Alternatively could go to T2, but we'll put T3.)\n\n4. Account manager for enterprise: customer_tier eq enterprise -> ACCOUNT_MANAGER. (But if severity 1, rule3 would match first? Actually severity 1 and off_hours false matches rule3, and customer_tier enterprise matches rule4. They overlap. Rule3 is more specific because it has two conditions. In level 1, rule3's condition set is a subset of rule4? No, rule3 has severity=1 and off_hours=false; rule4 has customer_tier=enterprise. Neither is subset of the other. So level 2 ordering: we put rule3 before rule4, so severity 1 enterprise goes to T3, not account manager. That might be correct because it's a critical issue. But enterprise might still want account manager involved? Possibly, but the manual says account manager is for commercial relationship, not for technical issues. So we want technical issues to go to technical queues. So it's fine.)\n\n5. Billing specialist: product eq billing -> BILLING_SPECIALIST. (But if enterprise, rule4 would match first? Actually rule4 is before rule5, so enterprise billing goes to account manager? That might not be ideal. Maybe we want billing specialist for billing regardless. So we should put billing rule before account manager? But then enterprise billing goes to billing specialist. Which is correct? The account manager rule is for commercial relationship, but billing is a specific issue that needs billing specialist. Probably billing specialist should take precedence. So we should reorder: put billing rule before account manager. Also security and oncall are more urgent, so keep them first. So order: 1 security, 2 oncall, 3 severity1 off_hours false, 4 billing, 5 account manager. But then severity1 enterprise billing? That would match severity1 off_hours false first, so T3. Good.)\n\n6. Self-service deflect: severity eq 4 and customer_tier eq free and product eq dashboard? Or just severity 4 and free? We'll make it: severity eq 4 and customer_tier eq free -> SELF_SERVICE_DEFLECT. (But if enterprise severity4, it would go to account manager first? Actually account manager is after billing, and self-service is after that? We need to place self-service before default but after more specific. However, self-service should only apply if no other rule matches. So we put it near the end, before default. But we have to ensure that severity4 free tickets that are not security, not oncall, not billing, not enterprise, etc., go to self-service. That's fine.)\n\n7. T3_ENGINEERING for severity 2 with technical products: severity eq 2 and product in [api, mobile, integrations] -> T3_ENGINEERING. (But what about severity 2 with dashboard? Could be T2. Also severity 2 with billing? Already handled by billing. Severity 2 with security? Already security.)\n\n8. T3_ENGINEERING for severity 3? No, severity 3 is low. Probably T2 or T1.\n\n9. T2_TECHNICAL for severity 2 and product dashboard? Or for all products not already covered? We need a rule for T2. Let's define: product in [api, mobile, integrations, dashboard] and severity lte 3? But we already have severity 1 and 2 for some products. To avoid duplication, we can have a general T2 rule for technical products with severity 3 or 4? Actually severity 4 is low, maybe T1. Let's think.\n\nBetter to define T2 as: product in [api, mobile, integrations, dashboard] and severity in [2,3]? But severity 2 might already go to T3 for api/mobile/integrations? We have rule7 for severity2 and those products -> T3. So for dashboard severity2, no rule yet, so it could go to T2. So we need a rule for dashboard severity2 -> T2. Also for api/mobile/integrations severity3 -> T2? We'll create rules.\n\nTo simplify, we can have:\n\n- T3 for severity 1 (any product except maybe billing? but billing is already separate) and severity 2 for api/mobile/integrations.\n\n- T2 for severity 2 for dashboard, and severity 3 for all technical products (api, mobile, integrations, dashboard) and maybe also for other products like billing? But billing has its own queue. So T2 for technical products with severity 3.\n\n- T1 for the rest, including severity 4, non-technical products, etc.\n\nBut we also have account manager for enterprise, which might take some tickets.\n\nAlso we have self-service for free severity4.\n\nWe also need to consider prior_tickets_30d. For customers with many prior tickets, they might be frustrated and need account manager. For example, if prior_tickets_30d > 10 and customer_tier business or enterprise, maybe ACCOUNT_MANAGER. That could be a rule.\n\nAlso for severity 1 and off_hours false, we put T3, but what if it's a billing issue? Billing severity 1? That's rare, but possible. The billing rule would come after? Actually we put billing before T3? We have order: 1 security, 2 oncall, 3 billing? Wait, we need to decide order of severity1 off_hours false vs billing. If severity1 billing, which queue? It's critical billing issue. Should go to billing specialist? Or engineering? Probably billing specialist can handle, but if it's a system bug, engineering. Since we don't have a specific rule, we need to decide. The manual doesn't say. I think billing specialist can handle critical billing issues. So we should put billing rule before severity1 rule? But severity1 rule is for off_hours false only. If billing severity1, billing rule would match first if we put billing before. But then off_hours true? Oncall would match first if off_hours true. So let's reorder: put billing rule after security and oncall, but before severity1 off_hours false? Actually we have to be careful. Let's set order:\n\n1. Security (has_security_keyword)\n2. Oncall (severity1 and off_hours true)\n3. Billing (product billing)\n4. Critical off-hours? Actually severity1 off_hours false is next. But if billing severity1, we want billing to win, so billing rule before severity1 rule. So order: security, oncall, billing, then severity1 off_hours false.\n5. Account manager (enterprise)\n6. Self-service deflect (severity4 free)\n7. T3 for severity2 and technical products (api, mobile, integrations)\n8. T2 for severity2 dashboard and severity3 technical products? We'll define a general T2 rule for technical products with severity 2 or 3, but exclude those already covered by T3. To avoid overlap, we can have T2 for severity2 and product dashboard, and for severity3 and product in technical list. Or a combined rule: product in [api, mobile, integrations, dashboard] and severity in [2,3] -> T2? But then severity2 api would conflict with T3 rule7. Since T3 rule7 is more specific (severity2 and product in [api,mobile,integrations]), it will win in level 1? Actually T3 rule7 condition set: severity=2 and product in {api,mobile,integrations} is a subset of T2 condition: product in all four and severity in {2,3}? No, T2 has larger set (includes dashboard and severity3). So T3 is contained in T2? Actually T3: (severity=2) AND (product in {api,mobile,integrations}). T2: (product in all four) AND (severity in {2,3}). T3's condition is a subset of T2's? Because T3's product set is subset of T2's product set, and T3's severity (2) is subset of T2's severity set (2,3). So T3's condition is more specific, so in level 1, T3 would win automatically. So we can define T2 as a broader rule covering all technical products with severity 2 or 3, and then T3 as a more specific rule for severity2 and specific products. That works. But we also have T3 for severity1 off_hours false, which is separate.\n\nSo we can have:\n\n- T3: severity eq 1 and off_hours eq false -> T3_ENGINEERING (this is broad but specific to severity1)\n- T3: severity eq 2 and product in [api, mobile, integrations] -> T3_ENGINEERING (more specific)\n- T2: product in [api, mobile, integrations, dashboard] and severity in [2,3] -> T2_TECHNICAL (but then severity2 api will be overridden by the more specific T3, so that's fine)\n- For severity2 dashboard, T2 will apply.\n- For severity3, T2 applies for all technical products.\n\nBut we also need to handle severity 4 for technical products? Possibly T1. And non-technical products (like billing? but billing separate, and maybe there is no other product? Actually product list: dashboard, billing, api, mobile, integrations. So non-technical? Billing is non-technical? Billing is financial. Dashboard could be technical but also general. We treat dashboard as technical. So all except billing are technical? Actually billing is a product but it's about billing, so it's not a technical product per se. So we have billing as its own queue.\n\nNow, what about severity 3 or 4 for billing? Already covered by billing rule. What about severity 4 for enterprise? Account manager rule would match if enterprise, but account manager is for commercial, not for low severity billing? But we have billing rule before account manager, so billing takes precedence. For enterprise severity4 with product dashboard, account manager would match because account manager rule (enterprise) is before T2? Actually we put account manager after billing and after severity1? Let's define order fully.\n\nWe also need a default rule at the end for everything else. That default rule could be T1_GENERAL. But we must have at least one condition. So we can have condition: customer_tier in [free, pro, business, enterprise] (all) or severity gte 1. That will match all tickets not matched earlier.\n\nNow, we also have channel and language. Could use for self-service? Maybe self-service for portal channel? But we already have a self-service rule.\n\nAlso prior_tickets_30d: we can add a rule for account manager for business/enterprise with many prior tickets. For example, prior_tickets_30d gte 10 and customer_tier in [business, enterprise] -> ACCOUNT_MANAGER. But we already have enterprise rule. We could have a separate rule for business with many tickets. We'll add that after enterprise rule? Or before? Business with many tickets might be more important than just enterprise? But enterprise is always key. So we can put enterprise rule first, then business with many tickets. Also for free/pro with many tickets? Possibly T2 or T1.\n\nLet's write a comprehensive set.\n\nAlso note: we need to ensure that the rules are mutually exclusive as much as possible, but overlaps are handled by ordering.\n\nFinal rule list (in order of application for level 2):\n\n1. Security: has_security_keyword eq true -> SECURITY_INCIDENT\n2. Oncall: severity eq 1 and off_hours eq true -> ONCALL_ESCALATION\n3. Billing: product eq billing -> BILLING_SPECIALIST\n4. Critical bug: severity eq 1 and off_hours eq false -> T3_ENGINEERING\n5. Account manager enterprise: customer_tier eq enterprise -> ACCOUNT_MANAGER\n6. Account manager business with many tickets: customer_tier eq business and prior_tickets_30d gte 10 -> ACCOUNT_MANAGER\n7. T3 for severity2 on specific products: severity eq 2 and product in [api, mobile, integrations] -> T3_ENGINEERING\n8. T2 for technical products severity 2 or 3: product in [api, mobile, integrations, dashboard] and severity in [2,3] -> T2_TECHNICAL\n9. Self-service deflect: severity eq 4 and customer_tier eq free -> SELF_SERVICE_DEFLECT\n10. Default: T1_GENERAL for all remaining. Use condition severity gte 1 (always true). But we need to ensure it's last.\n\nBut we also have free/pro with severity 2 or 3 technical? Rule8 would catch them if product is technical. So that's fine.\n\nWhat about severity 4 technical? Not covered by rule8, so would go to default T1. But maybe severity 4 technical should also go to T1? Possibly yes.\n\nWhat about severity 4 free non-technical (like billing? but billing already handled, so dashboard? It would go to default T1). But we have self-service for free severity4, so that would match rule9. So for free severity4, self-service wins. For pro or business severity4, default T1.\n\nWhat about severity 3 free? Not covered by self-service, so rule8 if technical, else default.\n\nAlso we need to consider off_hours for non-critical? Not needed.\n\nAlso, what about severity 1 billing? That would match rule3 (billing) first, so goes to billing specialist. That's fine.\n\nWhat about severity 1 enterprise? Matches rule4 (critical bug) before rule5? Since rule4 is before rule5, it goes to T3. That might be okay, but if it's a billing issue, rule3 would have matched earlier (rule3 before rule4). So enterprise severity1 billing goes to billing specialist. Good.\n\nWhat about severity 2 enterprise billing? Matches rule3, billing specialist.\n\nSeverity 2 enterprise dashboard? Does not match rule3, rule4 (severity1 only), rule5 (enterprise) matches before rule7? Rule5 is before rule7, so goes to account manager. But is that correct? It's a technical issue severity 2. Should it go to account manager? Possibly not, but the account manager rule is broad. We might want technical issues to go to technical queues even for enterprise. So we should put account manager rule after T2 and T3 rules? But then enterprise severity2 dashboard would go to T2. That seems better. However, the manual says account manager is for commercial relationship, including churn risk. A technical issue might be handled by T2, but if it's a key account, maybe account manager should be involved? But the queue assignment is about who resolves the ticket. Account manager is not a technical resolver. So likely technical issues should go to technical queues, and account manager only for commercial queries. Therefore, we should put account manager rule after T2/T3, or make it more specific (e.g., only for non-technical products or low severity). But the manual says \"cuentas clave, incluidas las que corren riesgo de darse de baja.\" That implies any issue from key accounts might need account manager attention, but the actual resolution might still be technical. However, the routing is about which queue handles the ticket. Typically, account manager handles relationship, not technical support. So maybe enterprise tickets should go to T1 or T2, and if it's a commercial issue, it would be identified by content? But we don't have content. So we have to decide. Let's re-read manual: \"ACCOUNT_MANAGER: gestor de cuenta. La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So they handle commercial relationship. So if an enterprise customer has a technical issue, it should go to technical support, not account manager. So we should only route to account manager for tickets that are likely commercial. But we don't have a commercial attribute. So maybe we should not have a blanket enterprise rule. Instead, we could use prior tickets as a signal of churn risk. Or maybe for enterprise, only for low severity (4) or for product billing? That is tricky. Given the ambiguity, it's safer to not have a blanket enterprise rule, but have a rule for enterprise with many prior tickets (churn risk) or for billing. But the manual says \"cuentas clave\", so enterprise is key. Possibly we should have a rule for enterprise with severity 4? That would be a general query that might be commercial. But we also have self-service for free. Let's think.\n\nAnother approach: Use account manager only for high-value customers with many prior tickets (indicating frustration) or for billing issues? But billing already has its own queue. So maybe account manager is for non-technical, non-billing, non-security issues from enterprise. That could be a default for enterprise. But we can put account manager as a fallback for enterprise after technical queues. So we can reorder: put technical queues (T2, T3) before account manager, then account manager for enterprise, then default. That way, enterprise technical issues go to technical queues, and only non-technical (low severity, or general) go to account manager. But we also have self-service for free, so for enterprise severity4, it would go to account manager if no other rule matches. That might be acceptable.\n\nLet's reorder:\n\n1. Security\n2. Oncall\n3. Billing\n4. Critical bug (severity1 off_hours false) -> T3\n5. T3 severity2 specific products -> T3\n6. T2 technical products severity 2 or 3 -> T2\n7. Account manager enterprise -> ACCOUNT_MANAGER\n8. Account manager business with many prior tickets -> ACCOUNT_MANAGER\n9. Self-service free severity4 -> SELF_SERVICE_DEFLECT\n10. Default T1\n\nBut then what about enterprise severity4? It would go to account manager (rule7) before self-service? Actually self-service is after account manager, so enterprise severity4 goes to account manager. That might be okay. But free severity4 goes to self-service.\n\nWhat about pro severity4? Not enterprise, not business with many tickets, so goes to default T1.\n\nAlso we need to handle prior_tickets_30d for other tiers? Not necessary.\n\nWe also need a rule for severity 3 technical products? Already in rule6 (severity in [2,3]). But severity 3 for api etc. goes to T2. Good.\n\nWhat about severity 4 technical? Not covered by rule6 (since severity not in [2,3]), so goes to default T1.\n\nWhat about severity 1 or 2 for billing? Already covered by billing rule.\n\nWhat about severity 1 for non-billing, non-security? Rule4 covers severity1 off_hours false -> T3. Off_hours true -> rule2 oncall.\n\nNow, we have to ensure that the default rule has a condition. We'll use severity gte 1 (all severities) so it matches all.\n\nBut we also need to consider that some tickets might not match any rule due to missing attribute? But all attributes are covered.\n\nLet's write the rules in JSON.\n\nAlso note: we have to use operators: eq, neq, lte, gte, in. For lists, use 'in'.\n\nFor severity and prior_tickets_30d, use lte/gte.\n\nNow, we'll produce the JSON.",
+      "finish_reason": "stop",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1795005215-i27sN6KuesJeaWLDb0Ao",
+          "provider": "DeepInfra",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1040,
+          "completion_tokens": 7231,
+          "reasoning_tokens": 6349,
+          "error": null
+        }
+      ],
+      "seconds": 72.22,
+      "asked_at": "2026-11-18T12:34:44+00:00"
+    },
+    {
+      "session": "prior",
+      "position": 3,
+      "id": "prior:0:4",
+      "checkpoint": 0,
+      "k": 4,
+      "reask": 0,
+      "labelled": [],
+      "digest": "bcf9bf5333318e31",
+      "served_by": "DeepInfra",
+      "valid": true,
+      "why_invalid": null,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Security keyword detected"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Critical issue during off hours"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Critical severity"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "Billing issue"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "business",
+                  "enterprise"
+                ]
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 5
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Key account with multiple recent tickets"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "in",
+                "value": [
+                  "api",
+                  "mobile",
+                  "integrations",
+                  "dashboard"
+                ]
+              },
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  2,
+                  3
+                ]
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Technical issue with medium severity"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Low severity portal inquiry - self-service"
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 4
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Default: general support"
+          }
+        ],
+        "note": "Rules prioritize security, critical, billing, account manager for key accounts, then technical, self-service, and finally general support."
+      },
+      "keys": [
+        "rules",
+        "note"
+      ],
+      "reasoning": "We need to write a complete rule base for the ticket triage system. The attributes and domains are given. The actions are listed. The routing policy is described: we need to assign tickets to appropriate queues based on conditions. We need to consider the two-level priority: containment (more specific wins) and ordering for overlapping non-contained rules.\n\nWe must write rules that cover all possible tickets? Not necessarily, but we need a comprehensive set. The note at the end should describe the overall logic.\n\nLet's think about typical support ticket routing. The manual describes each queue's purpose.\n\nWe have severity levels: 1 (critical) to 4 (low). Customer tiers: free, pro, business, enterprise. Products: dashboard, billing, api, mobile, integrations. Channels: portal, email, chat, phone. Off hours boolean. Prior tickets count up to 20. Security keyword boolean. Language: en, es, pt, de, fr.\n\nActions: T1_GENERAL, T2_TECHNICAL, T3_ENGINEERING, BILLING_SPECIALIST, SECURITY_INCIDENT, ACCOUNT_MANAGER, ONCALL_ESCALATION, SELF_SERVICE_DEFLECT.\n\nWe need to define rules. Important: The engine uses two levels: level 1 automatic containment ordering, level 2 by order in list. So we should order rules carefully: more general rules later? Actually, level 2: when two rules overlap without containment, the one that appears first wins. So we want to put more specific exceptions before general rules? But containment already handles nested exceptions. For non-nested overlapping, we need to order. So we should write rules in a logical order, with the most specific rules first, and then general fallbacks.\n\nLet's design rules:\n\n1. Security incidents: If has_security_keyword is true, that should go to SECURITY_INCIDENT. Possibly also if severity is 1 and security keyword? But security keyword is a specific trigger. So rule: if has_security_keyword eq true -> SECURITY_INCIDENT. This is a strong signal. But also consider off hours? Probably still security incident.\n\n2. Critical severity (severity=1) should go to ONCALL_ESCALATION if off hours? Actually, ONCALL_ESCALATION is for critical incidents that can't wait. So maybe if severity=1 and off_hours=true -> ONCALL_ESCALATION. But also if severity=1 and not off_hours? Could go to T3_ENGINEERING? Actually, critical issues need immediate attention. But T3_ENGINEERING is engineering, not necessarily on-call. The manual says: \"ONCALL_ESCALATION: guardia. Incidentes cr\u00edticos que no pueden esperar al siguiente turno, a cualquier hora.\" So severity=1 with off_hours=true should go to on-call. But also severity=1 during business hours might go to T3? Or to T2? Let's think: T2 technical handles technical issues. T3 engineering is for code/platform bugs. Critical severity could be either. But we need to define rules. Perhaps we have a rule: if severity=1 and off_hours=true -> ONCALL_ESCALATION. For severity=1 and not off_hours, maybe T3_ENGINEERING because critical bugs need engineering. But also could be T2 if it's a technical issue. However, to be safe, we might route severity=1 to T3_ENGINEERING, and if off_hours, override to on-call. But note: containment: if we have rule severity=1 -> T3, and another rule severity=1 and off_hours=true -> ONCALL, the second is more specific (contained in first) so it wins automatically. So we can put general rule: severity=1 -> T3_ENGINEERING, and then a more specific rule: severity=1 and off_hours=true -> ONCALL_ESCALATION. That works.\n\n3. Billing issues: product = billing. These should go to BILLING_SPECIALIST. But maybe also consider severity? If billing is critical? Possibly still billing specialist. However, security keyword overrides? Security should override billing. So we should put security rule first. So rule: if product eq billing -> BILLING_SPECIALIST. But also if customer_tier is enterprise? Possibly account manager? The manual says ACCOUNT_MANAGER for relationship with key accounts, including those at risk of churn. So maybe if customer_tier=enterprise and product=billing? Or general enterprise? We need to think.\n\n4. Account manager: For business and enterprise tiers, maybe some tickets go to account manager. The manual: \"ACCOUNT_MANAGER: gestor de cuenta. La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So maybe for enterprise tier, all tickets? But that would flood. Probably only for certain conditions like high prior tickets or specific product? Alternatively, we can route enterprise tickets to T1_GENERAL normally, and only if they have many prior tickets (indicating dissatisfaction) to account manager. Also, maybe if customer_tier is business and severity is low? Not sure.\n\nLet's define a rule: if customer_tier eq enterprise and prior_tickets_30d gte 5 -> ACCOUNT_MANAGER (many tickets, possibly risk). Or if customer_tier eq business and prior_tickets_30d gte 10? But we need to be reasonable.\n\nAlso, the manual mentions \"incluidas las que corren riesgo de darse de baja.\" So we can use prior tickets as a proxy.\n\n5. T1_GENERAL: general first level. This is for simple queries. We can define a default rule for tickets that don't match anything else. But we need conditions. For example, if channel is portal and severity is 4 (low) and product is not billing, etc. But to avoid complexity, we can have a catch-all rule: always true -> T1_GENERAL. But then we need to ensure more specific rules are before it. Since containment: if a rule has conditions that are a subset of another, the subset wins. A catch-all rule with no conditions (or always true) will contain all other rules? Actually, a rule with condition always true is the most general, so any more specific rule will be contained in it. So the more specific rule wins automatically. So we can put a default rule at the end: action T1_GENERAL with condition that always true? But we need at least one condition. We can use a condition like severity lte 4 (which is always true) or prior_tickets_30d gte 0 (always true). That will be a catch-all.\n\nBut we also have SELF_SERVICE_DEFLECT for self-service. Maybe for low severity and specific channels? The manual: \"SELF_SERVICE_DEFLECT: autoservicio. Se responde con documentaci\u00f3n y respuestas autom\u00e1ticas, sin que intervenga un agente.\" So we can route some tickets to self-service instead of T1. For example, if channel is portal and severity is 4 and product is dashboard? Or maybe for all free tier? But we need to be careful.\n\nLet's design systematically:\n\nFirst, security incidents: rule1: has_security_keyword eq true -> SECURITY_INCIDENT.\n\nSecond, critical severity off hours: rule2: severity eq 1 and off_hours eq true -> ONCALL_ESCALATION.\n\nThird, critical severity (not off hours, but rule2 more specific): rule3: severity eq 1 -> T3_ENGINEERING. (since rule2 is contained in rule3, rule2 wins when off_hours).\n\nFourth, billing product: rule4: product eq billing -> BILLING_SPECIALIST. But note: if security keyword true, rule1 wins because it's more specific? Actually, rule1 condition is has_security_keyword, rule4 is product=billing. They overlap? If a ticket has both security keyword and billing product, they are not contained; they overlap partially. In that case, level 2 ordering matters. We want security to override billing, so we put rule1 before rule4. So order: rule1 first, then rule4. That way, when both conditions true, rule1 wins because it appears first.\n\nFifth, account manager for high prior tickets with enterprise or business? Also, maybe for specific product like integrations? Let's define: rule5: customer_tier in [enterprise, business] and prior_tickets_30d gte 5 -> ACCOUNT_MANAGER. But also consider if severity is high? Maybe only for low severity? Actually, if they have many tickets, they might be frustrated. So we put this rule.\n\nSixth, maybe for enterprise tier, we want to send to account manager for any ticket? But that would overwhelm. Let's not.\n\nSeventh, T2_TECHNICAL: For technical issues that are not critical. Possibly for product api, mobile, integrations, dashboard? But dashboard might be general. We need to decide. T2 is for technical diagnosis. So for products like api, mobile, integrations, and severity not 1 (since critical already handled). Also, maybe for severity 2 and 3. Also, consider channel? If channel is phone, maybe still T2.\n\nWe can have rule: product in [api, mobile, integrations] and severity gte 2 -> T2_TECHNICAL. But also if product is dashboard? Dashboard might be T1. Actually, dashboard is a product, could have technical issues too. But we can let T1 handle general dashboard queries, and if it's technical, T2. But we need to differentiate. Without more info, we can route all non-billing, non-critical, non-security technical products to T2? But then T1 would have only general questions? Let's think.\n\nWe also have SELF_SERVICE_DEFLECT. That could be for simple issues: severity=4, channel=portal, and maybe language en? Or for free tier? We can define rule: severity eq 4 and channel eq portal and product eq dashboard -> SELF_SERVICE_DEFLECT. Or for all products? But we need to avoid sending billing to self-service.\n\nLet's create a comprehensive set:\n\nRule order (level 2) should be from most specific to least specific. We'll list them.\n\nPotential rules:\n\n1. SECURITY_INCIDENT: has_security_keyword true.\n2. ONCALL_ESCALATION: severity=1 and off_hours=true.\n3. T3_ENGINEERING: severity=1 (covers rest critical).\n4. BILLING_SPECIALIST: product=billing.\n5. ACCOUNT_MANAGER: customer_tier in [business, enterprise] and prior_tickets_30d >= 5.\n6. T2_TECHNICAL: product in [api, mobile, integrations] and severity in [2,3] (since severity 1 already handled, severity 4 maybe self-service?).\n7. SELF_SERVICE_DEFLECT: severity=4 and channel=portal and product not billing? But we need to avoid conflicts with billing rule. Since billing rule is more specific? Actually, billing rule is product=billing. Self-service with product=billing would not be contained, but since billing rule is earlier, it wins. So we can have self-service for severity=4 and channel=portal and product not in [billing]? But we can't easily express \"not in\" without a condition. We can use condition: product in [dashboard, api, mobile, integrations]? Or we can have self-service for all severity=4 portal tickets, and then billing will catch billing ones earlier. That's fine.\n8. T1_GENERAL: default for everything else. Use condition severity lte 4 (always true) or something.\n\nBut we also need to consider language? Possibly not needed. Also, consider prior tickets? If a user has many prior tickets, maybe they need account manager, which we already have.\n\nAlso, consider channel: phone might be more urgent? Not necessarily.\n\nWe also need to handle off_hours for non-critical? Maybe for off_hours, we still route to T1 or T2, but no on-call unless critical.\n\nLet's refine rule 6: T2_TECHNICAL for technical products with severity 2 or 3. Also maybe severity 4? If severity 4 and technical product, maybe T1 or self-service? We'll let self-service handle severity 4 portal, but if channel is email or phone, maybe T1. So we can have T2 only for severity 2 and 3.\n\nAlso, consider product dashboard: dashboard is a product, but it might be more general. We can route dashboard severity 2 or 3 to T2 as well? Possibly. Let's include dashboard in T2 for severity 2 and 3? But dashboard is a UI, so issues could be technical. Let's add dashboard to T2 for severity 2 and 3.\n\nSo rule6: product in [api, mobile, integrations, dashboard] and severity in [2,3] -> T2_TECHNICAL.\n\nBut then what about severity 4? For these products, if channel is portal, self-service; else T1.\n\nNow, rule7: SELF_SERVICE_DEFLECT: severity eq 4 and channel eq portal. This will cover many low-severity portal tickets. But if it's billing, billing rule catches earlier. If it's technical product, self-service is fine. If it's dashboard, also fine.\n\nNow, rule8: default T1_GENERAL: condition severity lte 4 (always true) -> T1_GENERAL.\n\nBut we also need to consider that some tickets might not be covered by any rule? With default, all covered.\n\nHowever, we need to ensure that rule5 (account manager) is placed correctly. It could overlap with other rules. For example, if enterprise customer with prior tickets >=5 and severity=1, then rule3 (T3) and rule5 overlap. Which wins? Since rule3 condition is severity=1, rule5 condition is tier and prior tickets. They are not contained. So order matters. We want critical severity to override account manager? Or maybe account manager is for relationship, but critical issues should go to engineering. So we should put rule3 before rule5. Similarly, billing rule before rule5? If billing product and enterprise, billing specialist vs account manager? Billing specialist is specific to billing, so billing should win. So rule4 before rule5. Also security before rule5. So our order: 1,2,3,4,5,6,7,8. That seems good.\n\nBut we also need to consider if account manager should apply for severity 1? Probably not, because critical needs engineering. So rule3 before rule5 is correct.\n\nNow, what about off_hours and non-critical? No special rule needed.\n\nOne more: maybe for free tier, we want to route to self-service more aggressively? Or maybe free tier always to self-service? But the manual doesn't specify. We'll keep as is.\n\nAlso, consider language: if language is not English, maybe still T1.\n\nThus, the rule base is ready.\n\nNow we need to write in JSON format. Each rule has conditions list (multiple conditions AND together). We need to use operators: eq, neq, lte, gte, in. For in, we need a list.\n\nExample: {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 1}\n\nFor prior_tickets_30d, use gte.\n\nNote: The engine might handle multiple conditions as AND. So we list them.\n\nLet's write the rules:\n\n1. has_security_keyword eq true -> SECURITY_INCIDENT\n2. severity eq 1, off_hours eq true -> ONCALL_ESCALATION\n3. severity eq 1 -> T3_ENGINEERING\n4. product eq billing -> BILLING_SPECIALIST\n5. customer_tier in [business, enterprise], prior_tickets_30d gte 5 -> ACCOUNT_MANAGER\n6. product in [api, mobile, integrations, dashboard], severity in [2,3] -> T2_TECHNICAL\n7. severity eq 4, channel eq portal -> SELF_SERVICE_DEFLECT\n8. severity lte 4 -> T1_GENERAL (default)\n\nBut rule8: severity lte 4 is always true since severity only 1-4. So it's a catch-all.\n\nWe need to ensure that rule6 and rule7 don't conflict with rule8? Rule8 is more general, so rule6 and rule7 will win automatically due to containment? Actually, rule6 conditions: product in list and severity in [2,3]. This is a subset of rule8 condition (severity lte 4) because rule8 has no product condition. So rule6 is more specific, so it wins. Similarly rule7 is more specific. So ordering in level 2 doesn't matter for these because containment handles it. But we still need to order them correctly relative to non-contained rules like rule5. We already ordered.\n\nAlso, note that rule7 (severity=4, channel=portal) is contained within rule8? Yes, because rule8 has no channel condition, so rule7 is more specific. So it wins.\n\nNow, what about a ticket with severity=4, channel=portal, product=billing? Rule4 (billing) and rule7 overlap. They are not contained (rule4 has product=billing, rule7 has severity=4 and channel=portal). So level 2 ordering: rule4 appears before rule7, so billing wins. That's correct.\n\nSimilarly, severity=4, channel=portal, customer_tier=enterprise, prior_tickets_30d=5: rule5 and rule7 overlap. Rule5 is before rule7, so account manager wins? Is that correct? Possibly, if enterprise with many tickets, they might need account manager even for low severity portal. So fine.\n\nNow, we also have rule6 for severity=2 or 3 and product in list. If a ticket has severity=2, product=api, and also customer_tier=enterprise with prior tickets>=5, then rule5 and rule6 overlap. Rule5 is before rule6, so account manager wins. That might be okay because account manager can handle technical issues? But maybe technical should go to T2. However, we could reorder rule6 before rule5? But then account manager might not get triggered for technical issues. The manual says account manager handles commercial relationship, not technical support. So likely technical issues should go to T2 even for enterprise. So we should put rule6 before rule5. That is, T2_TECHNICAL should take precedence over account manager for technical products? Or account manager should handle all tickets for key accounts? The manual: \"ACCOUNT_MANAGER: gestor de cuenta. La relaci\u00f3n comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" This suggests they handle the relationship, not necessarily technical issues. But they could redirect. However, it's better to route technical issues to technical teams and let account manager handle relationship separately. So I think we should have technical rules before account manager. So reorder: rule6 before rule5. Also, rule3 (critical) before rule5 we already have.\n\nSimilarly, billing rule should be before technical? Billing is specific, so it's fine.\n\nLet's adjust order: 1,2,3,4,6,5,7,8. But then rule6 (T2) and rule4 (billing) - if billing product with severity=2, rule4 wins because it's before rule6? Actually, rule4 is before rule6, so billing specialist wins. That's correct. If billing product with severity=1, rule3 wins? Actually, rule3 is before rule4, so critical billing goes to T3. That's okay.\n\nNow, rule5 after rule6: so technical products with enterprise and many prior tickets will go to T2 first, not account manager. That seems fine.\n\nBut consider: what about a non-technical product (like dashboard? Actually dashboard is in rule6 list, so it's technical. What about product not in that list? Only billing is separate. So other products? Actually, products are: dashboard, billing, api, mobile, integrations. So all are covered either by billing rule or technical rule. So what about a ticket with product=billing and severity=4 and channel=portal? It will go to billing (rule4) before self-service (rule7). Good.\n\nNow, we also have the default T1 for any ticket that doesn't match any of the above? For example, severity=4, channel=email, product=dashboard? But dashboard is in rule6 list, but rule6 only covers severity 2-3. So severity=4 dashboard email does not match rule6. Also not rule7 because channel not portal. So it will fall to rule8 T1. That's fine.\n\nBut what about severity=2, product=billing? That goes to billing rule (rule4) because rule4 is before rule6. Good.\n\nSeverity=2, product=api, channel=phone, customer_tier=free, prior_tickets=0: matches rule6 (product in list, severity 2) -> T2. Good.\n\nSeverity=1, product=api, off_hours=false: matches rule3 -> T3.\n\nSeverity=1, off_hours=true: matches rule2 -> ONCALL.\n\nSeverity=3, product=integrations, customer_tier=enterprise, prior_tickets=10: matches rule6 (T2) then rule5? Actually, rule6 is before rule5, so T2 wins. But if we want account manager to handle high prior tickets, maybe we should put rule5 before rule6? It's a trade-off. The manual says account manager for key accounts at risk of churn. Many prior tickets might indicate churn risk. So maybe we should give account manager priority over technical? But then technical issues might be handled by account manager who is not technical. That could be inefficient. However, the account manager can then involve technical teams. It's a business decision. Given the manual, it's ambiguous. I think it's safer to keep technical routing first for technical products, and account manager for non-technical or general. But since we have a catch-all T1, account manager could still catch some tickets that are not technical? Actually, rule5 condition includes any product, so it would also catch technical products. If we put rule5 before rule6, then for enterprise with many prior tickets, even technical issues go to account manager. That might be the intention: for key accounts, the account manager is the single point of contact. So I'll reconsider: perhaps account manager should take precedence for enterprise/business with many tickets, regardless of product, because they are key accounts. Then technical team can be involved later. So put rule5 before rule6.\n\nLet's set order: 1,2,3,4,5,6,7,8. This means account manager beats T2 for technical products. Also beats self-service. That seems plausible for key accounts.\n\nBut then what about billing? Billing rule (4) is before account manager, so billing goes to billing specialist even for enterprise. That's fine.\n\nNow, also consider: for enterprise with many prior tickets and severity=1? Rule3 (critical) is before rule5, so critical goes to T3. Good.\n\nSo final order: 1,2,3,4,5,6,7,8.\n\nNow, we need to write the JSON.\n\nNote: Each rule conditions are a list of objects. For \"in\" operator, value is an array. For \"gte\" and \"lte\", value is a number.\n\nAlso, we need a note for each rule and a global note.\n\nLet's write them.\n\nRule1: \"Security incident detected\" note.\nRule2: \"Critical issue during off hours\"\nRule3: \"Critical severity\"\nRule4: \"Billing issue\"\nRule5: \"Key account with multiple recent tickets\"\nRule6: \"Technical issue with medium severity\"\nRule7: \"Low severity portal inquiry - self-service\"\nRule8: \"Default: general support\"\n\nGlobal note: \"Rules prioritize security, critical, billing, account manager for key accounts, then technical, self-service, and finally general support.\"\n\nMake sure to use correct attribute names: customer_tier, severity, product, channel, off_hours, prior_tickets_30d, has_security_keyword, language (not used).\n\nAlso, for rule5, condition: customer_tier in [\"business\",\"enterprise\"] and prior_tickets_30d gte 5. Use \"in\" for list.\n\nFor rule6: product in [\"api\",\"mobile\",\"integrations\",\"dashboard\"] and severity in [2,3]. Use \"in\" for both.\n\nFor rule7: severity eq 4 and channel eq portal.\n\nFor rule8: severity lte 4 (but since max 4, it's always true). Use \"lte\" operator.\n\nNow, output as JSON.",
+      "finish_reason": "stop",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1795005215-D25WUsjAhmXPdL5b8CdH",
+          "provider": "DeepInfra",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1040,
+          "completion_tokens": 5954,
+          "reasoning_tokens": 5380,
+          "error": null
+        }
+      ],
+      "seconds": 58.47,
+      "asked_at": "2026-11-18T12:34:31+00:00"
+    },
+    {
+      "session": "prior",
+      "position": 4,
+      "id": "prior:0:5",
+      "checkpoint": 0,
+      "k": 5,
+      "reask": 0,
+      "labelled": [],
+      "digest": "bcf9bf5333318e31",
+      "served_by": "DeepInfra",
+      "valid": true,
+      "why_invalid": null,
+      "payload": {
+        "rules": [
+          {
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "SECURITY_INCIDENT",
+            "note": "Any ticket with a security keyword is routed to the security incident queue for immediate handling."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "action": "BILLING_SPECIALIST",
+            "note": "All billing-related tickets go to billing specialists for financial matters."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "action": "ONCALL_ESCALATION",
+            "note": "Critical severity incidents during off-hours require immediate on-call escalation."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 1
+              }
+            ],
+            "action": "T3_ENGINEERING",
+            "note": "Critical severity tickets (non-security, non-billing) are escalated to engineering for code-level investigation."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "prior_tickets_30d",
+                "op": "gte",
+                "value": 10
+              }
+            ],
+            "action": "ACCOUNT_MANAGER",
+            "note": "Enterprise customers with high ticket volume (10+ in 30 days) are routed to account manager for relationship management and churn prevention."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "action": "SELF_SERVICE_DEFLECT",
+            "note": "Free tier customers with low-severity issues are deflected to self-service resources."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              }
+            ],
+            "action": "T2_TECHNICAL",
+            "note": "Moderate severity tickets (level 2) are handled by technical support second level."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "in",
+                "value": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Low severity tickets (levels 3 and 4) that are not caught by more specific rules go to general first-level support."
+          },
+          {
+            "conditions": [
+              {
+                "attr": "language",
+                "op": "in",
+                "value": [
+                  "en",
+                  "es",
+                  "pt",
+                  "de",
+                  "fr"
+                ]
+              }
+            ],
+            "action": "T1_GENERAL",
+            "note": "Default rule: any ticket that hasn't matched previous rules is routed to general support."
+          }
+        ],
+        "note": "This rule base prioritizes security and critical incidents, then billing, then enterprise account management, then free tier self-service deflection, and finally routes remaining tickets by severity to technical or general support. A catch-all default ensures no ticket is left unassigned."
+      },
+      "keys": [
+        "rules",
+        "note"
+      ],
+      "reasoning": "We need to write a complete rule base for the ticket triage system based on the provided routing manual and attributes. The rules should be ordered carefully, considering the two-level conflict resolution: first, subset containment (more specific rules win over general ones automatically), and second, for overlapping non-contained rules, the earlier in the list wins.\n\nWe must cover all possible tickets? Not necessarily, but we should aim for a comprehensive set. The manual describes queues and typical routing logic. We need to translate that into conditions.\n\nLet's recall the queues:\n- T1_GENERAL: general queries, usage doubts, non-technical requests.\n- T2_TECHNICAL: technical support, diagnose product issues.\n- T3_ENGINEERING: product bugs needing engineer investigation.\n- BILLING_SPECIALIST: billing, invoices, payments.\n- SECURITY_INCIDENT: security incidents, breaches, unauthorized access.\n- ACCOUNT_MANAGER: account management, key accounts, churn risk.\n- ONCALL_ESCALATION: critical incidents outside business hours.\n- SELF_SERVICE_DEFLECT: deflect to self-service (no agent).\n\nWe have attributes: customer_tier, severity, product, channel, off_hours, prior_tickets_30d, has_security_keyword, language.\n\nWe need to define rules that assign tickets to appropriate queues.\n\nImportant: We should prioritize security incidents, critical issues, etc.\n\nConsider typical routing:\n- Security keyword: go to SECURITY_INCIDENT.\n- High severity (1 or 2?) maybe to engineering or oncall depending.\n- Billing product issues to billing specialist.\n- Enterprise tier might go to account manager for certain issues.\n- Self-service deflection for low severity, maybe free tier, common questions?\n- Off-hours and high severity -> ONCALL_ESCALATION.\n- Language? Not specified in manual, but maybe we need to route to appropriate support? The manual doesn't mention language, so probably we don't use language for routing except maybe if there's a specific queue? But we have no language-specific queues. So ignore language for now, unless we want to route to a general queue regardless. Since all queues presumably handle multiple languages, we can ignore.\n\nWe need to define rules. Let's think about the order: we want more specific rules first, but the engine automatically handles containment. So we can list rules in any order, but for overlapping non-contained, the order matters. We'll list them in priority order from most important (security, critical) to less.\n\nLet's outline possible rules:\n\n1. Security incident: if has_security_keyword is true, route to SECURITY_INCIDENT. This should be high priority. It may overlap with others, but it's a distinct condition. Since it's a specific keyword, it's likely contained in no other rule (unless another rule also checks that keyword, but we won't). So we put it first.\n\n2. Critical severity (severity 1) with off_hours true? The manual says ONCALL_ESCALATION for critical incidents that cannot wait. So severity=1 and off_hours=true? Or just severity=1? Probably severity=1 should go to oncall if off-hours, otherwise maybe to engineering? But severity 1 is critical, so maybe always to engineering or oncall. The manual: \"ONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\" So if severity=1 and off_hours=true, definitely oncall. If severity=1 and off_hours=false, could go to engineering or maybe T2? But severity 1 is critical, so likely engineering. But we need to decide.\n\nWe have T3_ENGINEERING for product bugs. Not all severity 1 are bugs? Could be billing issue? But severity 1 billing might be a critical billing error, which should go to billing specialist? However, severity 1 is critical, so maybe we need to handle that. The manual doesn't specify mapping severity to queues directly, but we can infer.\n\nLet's define rules based on typical support flows:\n\n- If severity=1 and product=api or dashboard or mobile or integrations? Actually, all products could have critical bugs. But engineering queue is for product bugs. So severity=1 likely indicates a critical bug or incident. Could also be security, but we already covered security keyword. So for severity=1, we should route to T3_ENGINEERING, unless it's a billing issue? But billing critical could be handled by billing specialist? However, billing specialist might not handle critical? The manual says \"BILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\" It doesn't specify severity. So we could route billing product with severity=1 to billing specialist? But then conflict: billing product with severity=1 vs engineering? We need to decide. Probably billing issues are not typically severity 1? But could be. We'll create a rule for billing product that goes to billing specialist regardless of severity? But then a critical billing issue might need engineering? Actually billing issues are not product bugs, they are financial. So BILLING_SPECIALIST is appropriate. So we need to separate.\n\nBetter to define rules based on product and other attributes.\n\nLet's think of a hierarchy:\n\n- Security incidents: has_security_keyword true -> SECURITY_INCIDENT.\n- Billing product: product=billing -> BILLING_SPECIALIST (unless security, but security already caught). Also consider severity? Possibly high severity billing might need account manager? But account manager is for relationship, not billing. So billing specialist handles all billing.\n- Enterprise tier? ACCOUNT_MANAGER for key accounts? The manual: \"ACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So maybe enterprise tier with certain conditions? Or any ticket from enterprise? Not necessarily; enterprise might have a dedicated account manager, but not all tickets go to account manager. The account manager queue is for commercial relationship, not technical support. So we need to be careful. Perhaps tickets from enterprise with high severity or churn risk? But we don't have churn risk attribute. So maybe we only route to account manager if customer_tier=enterprise and severity is low? Or maybe not. The manual doesn't give clear rules. We might need to infer from typical support: enterprise gets priority, but they still go through T1/T2. Maybe we only use ACCOUNT_MANAGER for specific cases like when prior_tickets_30d is high? Or maybe not.\n\nLet's look at the available attributes: prior_tickets_30d could indicate churn risk? Not directly. Also off_hours.\n\nPerhaps we should define a default rule at the end for self-service deflection? But the manual says SELF_SERVICE_DEFLECT is for deflecting to self-service, not for all unassigned. So we should have a default rule that sends to T1_GENERAL? Or maybe we want to deflect low severity, free tier, etc. But we need to cover all.\n\nLet's think step by step.\n\nWe need a complete set of rules. I'll create rules in order of priority (level 2 order) but consider containment.\n\nI'll start with the most specific and important:\n\nRule 1: Security incident - has_security_keyword true -> SECURITY_INCIDENT.\n\nRule 2: Critical severity (severity=1) and off_hours=true -> ONCALL_ESCALATION. Because critical and off-hours need immediate attention.\n\nRule 3: Severity=1 (regardless of off_hours, but we already covered off_hours true, so this covers off_hours false) -> T3_ENGINEERING. But careful: if severity=1 and off_hours=false, it goes to engineering. But what if it's a billing product? We'll have a separate rule for billing that might be more specific? Billing product with severity=1 is a subset of severity=1? Yes, product=billing is a condition that is more specific than just severity=1. So the containment mechanism will give precedence to the billing rule if we put it later? Actually, the engine: if one rule's conditions are a subset of another, the more specific wins. So if we have a rule: severity=1 -> T3, and another rule: severity=1 AND product=billing -> BILLING, then the second is more specific (its condition set is a subset of the first? Actually, the second has additional condition, so its condition set is contained within the first? Wait: condition set of second: {severity=1, product=billing}. Condition set of first: {severity=1}. The second is more specific (contains all conditions of first plus an extra), so the second is a subset? No: The set of tickets matching the second rule is a subset of tickets matching the first rule (since every ticket with severity=1 and product=billing also has severity=1). So the second rule's cases are contained in the first rule's cases. Therefore, the more specific rule (second) wins. So order doesn't matter for containment. So we can put the general severity=1 rule first, and the billing specific rule later, and the billing one will override for billing tickets. That's fine.\n\nSo we can have:\n\nRule A: severity=1 and off_hours=true -> ONCALL (most specific: both conditions)\nRule B: severity=1 -> T3 (covers severity=1 but not off_hours true? Actually Rule A is more specific because it has off_hours true. So for severity=1 and off_hours true, Rule A wins. For severity=1 and off_hours false, Rule B applies.)\nBut careful: Rule A condition set is {severity=1, off_hours=true}. Rule B is {severity=1}. So Rule A is a subset of Rule B? Yes, because every ticket with severity=1 and off_hours=true also has severity=1. So Rule A is more specific, so it will win over Rule B for those tickets. Good.\n\nNow, we need billing rule: product=billing -> BILLING_SPECIALIST. But that would also cover billing with severity=1. That condition set is {product=billing}. This is not a subset of severity=1 nor vice versa? They overlap but neither contains the other (some billing tickets have severity=1, some not; some severity=1 tickets are billing, some not). So these are overlapping non-contained. So order matters. Since billing is a specific product, we might want billing to go to billing specialist regardless of severity? But if severity=1, should it go to engineering or billing? The manual doesn't say. I think billing issues, even critical, are handled by billing specialists, not engineers. So we want billing rule to take precedence over severity=1 rule. So we should put billing rule before severity=1 rule in the list. Because for tickets that are billing and severity=1, both rules match, and since they are not contained, the earlier wins. So we put billing rule earlier.\n\nSimilarly, for other products? For example, if product=api and severity=1, should it go to engineering? That's fine.\n\nNow, what about other queues? T2_TECHNICAL: for technical issues that need diagnosis but not engineering. Probably severity 2 or 3, non-billing, non-security. T1_GENERAL: general queries, maybe low severity, or specific channels? Self-service deflect: for simple issues that can be handled automatically. Possibly low severity, free tier, or specific products? We need to define.\n\nAlso, ACCOUNT_MANAGER: for enterprise or churn risk. We have prior_tickets_30d; maybe high number of tickets indicates churn risk? Or maybe enterprise tier with high severity? The manual says \"cuentas clave\" and \"corren riesgo de darse de baja\". So we could use customer_tier=enterprise and prior_tickets_30d >= some threshold? Or maybe if customer_tier=enterprise and severity is low? Not sure.\n\nLet's think of typical rules from ITIL or support:\n\n- If it's a security incident (has_security_keyword), send to security.\n- If it's a billing issue (product=billing), send to billing.\n- If it's a critical severity (1) and off-hours, send to oncall.\n- If it's severity 1, send to engineering.\n- If it's severity 2, send to T2 technical.\n- If it's severity 3 or 4, send to T1 general.\n- But also consider customer_tier: free tier might be deflected to self-service if low severity? And enterprise might get account manager for certain issues.\n- Also channel: if portal, maybe self-service? But manual says self-service deflect is for automated responses, not necessarily channel.\n\nLet's define a set of rules. We'll aim for coverage.\n\nI'll create rules in order:\n\n1. has_security_keyword true -> SECURITY_INCIDENT.\n2. product=billing -> BILLING_SPECIALIST.\n3. severity=1 AND off_hours=true -> ONCALL_ESCALATION.\n4. severity=1 -> T3_ENGINEERING.\n5. customer_tier=enterprise AND prior_tickets_30d >= 10? Or maybe just enterprise with high severity? Let's decide: ACCOUNT_MANAGER for enterprise with many tickets? Or for enterprise with severity=1? But severity=1 already goes to engineering. So maybe for enterprise with severity=2? We need to define a condition that is not already covered. Perhaps enterprise with severity <=2? Or enterprise with any issue? But account manager is not for technical issues, it's for relationship. So maybe we should only route to account manager if the ticket is about account management? But we don't have that attribute. So maybe we use a rule that catches tickets that are not technical? That's vague. Alternatively, we might not use ACCOUNT_MANAGER at all? But we must include it as a possible action. The manual mentions it, so we should have rules for it.\n\nMaybe: if customer_tier=enterprise and severity=4 (low) and product not billing? That seems arbitrary.\n\nAnother idea: ACCOUNT_MANAGER for enterprise customers with prior_tickets_30d > 5 (indicating many issues) to manage relationship. But that might conflict with other rules.\n\nLet's look at the manual again: \"ACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\" So it's for commercial relationship, not support. So likely, tickets that are not technical but are from enterprise customers? Or maybe if the customer is enterprise and the ticket is about a product that is not billing? Not clear.\n\nGiven the ambiguity, we can create a rule for enterprise with severity=4 (lowest) to go to account manager? But that might be too broad. Alternatively, we can create a rule for enterprise with any severity but only if the channel is portal? Hmm.\n\nI think the safest is to not include ACCOUNT_MANAGER unless we have a clear condition. But we must include it. Perhaps we can use prior_tickets_30d as a proxy for churn risk. If a customer (any tier) has many tickets in last 30 days, they might be at risk. But enterprise tier is specifically for key accounts. So we can define: customer_tier=enterprise AND prior_tickets_30d >= 10 -> ACCOUNT_MANAGER. Or maybe >=5. And also maybe for any tier with high prior tickets? But only enterprise is key. So let's set a threshold.\n\nAlso, we might want to deflect free tier low severity to self-service. For example: customer_tier=free AND severity >=3 (i.e., 3 or 4) AND product not billing? But billing is separate. So we can have a rule: customer_tier=free AND severity in [3,4] -> SELF_SERVICE_DEFLECT. But note that if product=billing, we already have billing rule earlier, so that overrides.\n\nSimilarly, for pro tier? Maybe pro goes to T1 for low severity.\n\nNow, we need to handle T2_TECHNICAL and T1_GENERAL. We can define:\n\n- severity=2 -> T2_TECHNICAL.\n- severity=3 or 4 -> T1_GENERAL, but with exceptions: free tier low severity deflect, enterprise high tickets account manager.\n\nBut we also have other attributes like off_hours? For severity 2 off-hours, maybe still T2? But not critical, so no need for oncall.\n\nAlso, product=integrations? Possibly engineering? But we have severity-based routing.\n\nWe also need to consider language? Not needed.\n\nLet's list all rules we want:\n\nOrder (level 2 priority):\n\n1. Security: has_security_keyword = true -> SECURITY_INCIDENT.\n2. Billing: product = billing -> BILLING_SPECIALIST.\n3. Critical off-hours: severity = 1 AND off_hours = true -> ONCALL_ESCALATION.\n4. Critical: severity = 1 -> T3_ENGINEERING.\n5. Enterprise high tickets: customer_tier = enterprise AND prior_tickets_30d >= 10 -> ACCOUNT_MANAGER. (Note: this may overlap with other rules; we place it after critical and billing, so for enterprise critical, it goes to engineering (rule 4) or oncall (rule 3) because they are earlier? But rule 5 is after 4, so for a ticket that matches both rule 4 and rule 5 (enterprise severity 1), rule 4 wins because it's earlier. That's fine, we want critical to go to engineering. For enterprise severity 2, rule 5 would conflict with rule for severity 2 (to be added later). We need to place rule 5 appropriately. Since we haven't defined severity 2 rule yet, we'll place rule 5 after severity 1 but before severity 2? Or after? We'll see.\n\nLet's continue:\n\n6. Low severity free deflect: customer_tier = free AND severity in [3,4] -> SELF_SERVICE_DEFLECT.\n7. Severity = 2 -> T2_TECHNICAL.\n8. Severity = 3 or 4 -> T1_GENERAL.\n9. Default rule? If no match, maybe also T1_GENERAL? But we can have a catch-all with a condition that always true, e.g., language = \"en\" or something? But that would match all. Better to have a default rule at the end: condition: true (or any attribute that always matches). Since we need at least one condition, we can use language in [\"en\",\"es\",\"pt\",\"de\",\"fr\"] (all languages) -> T1_GENERAL. That will catch all remaining tickets.\n\nBut careful: The default rule will match everything, so it will be the least specific. But it will be overridden by any more specific rule due to containment? Actually, if we have a rule with condition true (or language in all), it is a superset of all other rules (since every ticket matches it). So any other rule is a subset, so they win. So the default rule at the end is fine.\n\nBut we need to ensure that rules like enterprise high tickets (5) and free deflect (6) are not superseded by severity 2 rule? They are not subsets; they have additional conditions. For example, rule 6: free and severity 3-4. Rule 8: severity 3-4. Rule 6 is more specific (has additional free condition), so rule 6 wins over rule 8. So that's fine. Rule 5: enterprise and prior_tickets_30d>=10. Rule 7: severity=2. They overlap but not containment. Since rule 5 is before rule 7, for enterprise severity 2 with many tickets, rule 5 wins. That might be intentional: if enterprise has many tickets, even severity 2 goes to account manager instead of T2. That seems plausible.\n\nSimilarly, rule 5 vs rule 8: enterprise with many tickets and severity 3 or 4: rule 5 before rule 8, so goes to account manager. That's fine.\n\nNow, what about off_hours for non-critical? For severity 2 off-hours, it would go to rule 7 (T2) unless it also matches rule 5. That's fine.\n\nWe should also consider that if product=billing and enterprise with many tickets, rule 2 (billing) is before rule 5, so billing wins. That's good.\n\nNow, we need to include all rules. Also, what about severity=1 and enterprise? Already handled.\n\nAlso, we might want a rule for severe (severity=1 or 2) and off-hours? Already have for severity=1 off-hours to oncall; severity=2 off-hours goes to T2.\n\nNow, what about channel? The manual doesn't specify channel-based routing, so we can ignore.\n\nOne more: product=integrations? Not separate.\n\nNow, we need to write the conditions correctly. Use operators: eq, neq, lte, gte, in.\n\nFor severity, use eq or in. For prior_tickets_30d, use gte or lte.\n\nLet's write rules in JSON format.\n\nAlso, note: The engine expects each condition to have attr, op, value. For \"in\", value is a list.\n\nWe'll include a note for each rule explaining the reasoning.\n\nFinally, a note for the whole base.\n\nLet's produce the JSON.",
+      "finish_reason": "stop",
+      "failure": null,
+      "attempts": 1,
+      "retries": [],
+      "call_attempts": [
+        {
+          "generation_id": "gen-1795005271-K2rRNT0uN1nCFL7LHqwc",
+          "provider": "DeepInfra",
+          "model": "deepseek/deepseek-v4-flash",
+          "system_fingerprint": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "prompt_tokens": 1040,
+          "completion_tokens": 5391,
+          "reasoning_tokens": 4639,
+          "error": null
+        }
+      ],
+      "seconds": 46.76,
+      "asked_at": "2026-11-18T12:35:16+00:00"
+    }
+  ]
+}
