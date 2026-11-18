@@ -42,6 +42,28 @@ the plan says what replaced it.
 **No float decides a check.** Counts are compared as integers, shares as
 fractions and digests as strings.
 
+**One did, until 2026-11-18, and it was the wall clock's.** Step 0 compared two
+records whole, and a record keeps the seconds each call took, rounded to
+hundredths. `RK-g1`'s replays are timed by a clock that reads 0. Step 0's loop
+was not, and neither was the reference it is set against, which
+`placement/references.py` builds.
+
+- **What happened.** On 2026-11-18, after both smoke runs, Step 0 refused the
+  at-once smoke session twice, before any spend.
+- **What parted the records.** Followed again with the difference printed, that
+  launch's path parted them in one field of 40,606: the seconds of one call of
+  the transcriber, 0.03 under arm `k`'s engine and 0.0 in the reference. Every
+  rule, citation, edge and case was the same, and the ranking decided no case.
+- **Why every time.** The path refused each of the four times it was followed,
+  at the same call both times its difference was printed. It passed once its
+  allocations were perturbed. The pause is the size of that process's
+  collections of the oldest generation, which fall where a path's own
+  allocations put them. That is an inference: no collection was seen inside
+  the call.
+- **What changed.** Step 0 compares the two records without their calls'
+  seconds (`without_the_clock`), and whole otherwise. `tests/test_ranked.py`
+  pins that it leaves out nothing else.
+
 **This module is offline.** It reads the corpus labels, and the policy through
 the manual's level-3 text and the instruments' own gates, modules already
 allowed to carry it. It sends nothing. What a dry run prints is pass or fail,
@@ -52,6 +74,7 @@ from __future__ import annotations
 
 import ast
 import json
+import time
 from dataclasses import dataclass
 from fractions import Fraction
 from pathlib import Path
@@ -280,13 +303,27 @@ def requests() -> dict[str, Any]:
     return {**out, "passes": all(out.values())}
 
 
-def transcriber_under(engine: PriorityEngine, rep: int):
+def transcriber_under(engine: PriorityEngine, rep: int, clock=time.monotonic):
     """The transcriber through `PLAN_PLACEMENT.md`'s loop under v1c, on `engine`,
-    with run `rep`'s draws."""
+    with run `rep`'s draws, timed by `clock`: the wall clock's, as that plan's
+    own reference is."""
     return pl_loop.run_loop(list(MI.corpus()), plan.labels(), engine,
                             rl_refs.Transcriber(engine), plan.COVERAGE,
                             plan.draws(plan.stream(plan.RANKED, rep)),
-                            propose=pl_protocol.propose_v1c)
+                            propose=pl_protocol.propose_v1c, clock=clock)
+
+
+def without_the_clock(record: dict[str, Any]) -> dict[str, Any]:
+    """A loop's record without the seconds of its calls: readings of the wall
+    clock, and nothing an engine gives. Two loops timed by the wall clock agree
+    on them only while every call rounds to no hundredth of a second, and one
+    slow call parts two records that agree on everything else. Nothing else is
+    left out, and `record` is not changed."""
+    rec = as_json(record)
+    for esc in rec["escalations"]:
+        for call in esc["calls"]:
+            call.pop("seconds", None)
+    return rec
 
 
 def set_aside_reading() -> dict[str, Any]:
@@ -424,21 +461,29 @@ def the_pool_is_for_asks() -> bool:
     return users == ["ask.py"]
 
 
+def step_zero_at(rep: int, space, clock=time.monotonic) -> dict[str, Any]:
+    """Step 0 under run `rep`'s draws, with arm `k`'s loop timed by `clock`.
+
+    The reference is `PLAN_PLACEMENT.md`'s own, which its module built and timed
+    by the wall clock, and that package is called and not edited. So the two
+    records are compared without their calls' seconds, and whole otherwise."""
+    engine = E.RankedEngine(space=space, keep_log=True)
+    res = transcriber_under(engine, rep, clock)
+    ref = pl_refs.transcriber("v1c", rep)
+    taken = sum(1 for c in engine.case_log if c["by"] == E.RANKING)
+    return {"record_is_rung_2s": (without_the_clock(pl_loop.record_of(res, engine))
+                                  == without_the_clock(ref["record"])),
+            "decided_by_the_ranking": taken,
+            "space_right": MI.over_space(engine)["correct"]}
+
+
 def step_zero() -> dict[str, Any]:
     """Step 0, as `EXTERNAL_REVIEW.md` §1.1 makes it a method: under a proposer
     that never errs, arm `k`'s engine gives back the record rung 2's engine
     gives, case for case, and its ranking decides nothing."""
     space = MI.space()
-    out: dict[str, Any] = {}
-    for rep in range(1, plan.REPS + 1):
-        engine = E.RankedEngine(space=space, keep_log=True)
-        res = transcriber_under(engine, rep)
-        ref = pl_refs.transcriber("v1c", rep)
-        taken = sum(1 for c in engine.case_log if c["by"] == E.RANKING)
-        out[f"r{rep}"] = {"record_is_rung_2s": (as_json(pl_loop.record_of(res, engine))
-                                               == as_json(ref["record"])),
-                          "decided_by_the_ranking": taken,
-                          "space_right": MI.over_space(engine)["correct"]}
+    out: dict[str, Any] = {f"r{rep}": step_zero_at(rep, space)
+                           for rep in range(1, plan.REPS + 1)}
     out["passes"] = all(v["record_is_rung_2s"] and v["decided_by_the_ranking"] == 0
                         for v in out.values())
     return out
