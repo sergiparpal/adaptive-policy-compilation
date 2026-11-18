@@ -18,6 +18,8 @@ What is pinned:
   at a CONFLICT and arm K decides it; a reported error hands its own label in
   both arms; arm K's record keeps what its engine did, and the check on it
   catches a log that is not its births'.
+* **Step 0 does not read the wall clock** (since 2026-11-18). Its two records
+  are compared without their calls' seconds, and whole otherwise.
 * The readings over the space against the engine's decisions; the two designs
   set aside; the sessions' design; Stage C's exact lines, medians, thin labels,
   counts of runs and every reason a row has no value; nothing built, asked or
@@ -29,6 +31,7 @@ drafting are recomputed by `RK-g2`, which this file runs.
 
 from __future__ import annotations
 
+import copy
 import json
 import random
 import tempfile
@@ -625,6 +628,66 @@ class TestTheGates(unittest.TestCase):
         self.assertTrue(gates.requests()["passes"])
         self.assertTrue(gates.the_pool_is_for_asks())
         self.assertTrue(gates.step_zero()["passes"])
+
+    def test_step_zero_leaves_out_the_clock_and_nothing_else(self):
+        """Two records that differ in a call's seconds alone are one record to
+        Step 0. Two that differ anywhere else are not."""
+        rec = {"rules": [{"rule_id": "r1", "action": T1, "beats": []}],
+               "edge_log": [],
+               "records": [{"idx": 0, "outcome": "ACTION", "winner_id": "r1", "seconds": 7}],
+               "escalations": [{"idx": 0, "kind": "IMPASSE",
+                                "calls": [{"round": 0, "seconds": 0.0, "action": T1},
+                                          {"round": 1, "seconds": 0.0, "action": T1}]}]}
+        slow = copy.deepcopy(rec)
+        slow["escalations"][0]["calls"][1]["seconds"] = 0.03
+        self.assertNotEqual(gates.as_json(rec), gates.as_json(slow))
+        self.assertEqual(gates.without_the_clock(rec), gates.without_the_clock(slow))
+
+        kept = gates.without_the_clock(rec)
+        self.assertEqual(kept["escalations"][0]["calls"],
+                         [{"round": 0, "action": T1}, {"round": 1, "action": T1}])
+        self.assertEqual({k: v for k, v in kept.items() if k != "escalations"},
+                         {k: v for k, v in rec.items() if k != "escalations"})
+        self.assertEqual(rec["escalations"][0]["calls"][0]["seconds"], 0.0)   # not changed
+
+        changes = (lambda r: r["records"][0].update(winner_id="r2"),
+                   lambda r: r["records"][0].update(seconds=8),       # a case's, not a call's
+                   lambda r: r["rules"][0]["beats"].append("r0"),
+                   lambda r: r["edge_log"].append(["r1", "r0"]),
+                   lambda r: r["escalations"][0].update(kind="ERROR"),
+                   lambda r: r["escalations"][0]["calls"][1].update(action=T2),
+                   lambda r: r["escalations"][0]["calls"].pop())
+        for change in changes:
+            other = copy.deepcopy(rec)
+            change(other)
+            self.assertNotEqual(gates.without_the_clock(rec), gates.without_the_clock(other))
+
+    def test_a_slow_call_does_not_part_step_zero(self):
+        """What refused the at-once smoke session on 2026-11-18: a call of the
+        transcriber that takes hundredths of a second by the clock. Here every
+        call does, and arm `k`'s record is still rung 2's."""
+        class Slow:
+            """A clock that reads three hundredths of a second later every time."""
+            t = 0.0
+
+            def __call__(self):
+                self.t += 0.03
+                return self.t
+
+        space = MI.space()
+        engine = E.RankedEngine(space=space)
+        res = gates.transcriber_under(engine, 1, clock=Slow())
+        mine = gates.as_json(gates.pl_loop.record_of(res, engine))
+        theirs = gates.as_json(gates.pl_refs.transcriber("v1c", 1)["record"])
+        seconds = [c["seconds"] for esc in mine["escalations"] for c in esc["calls"]]
+        self.assertTrue(seconds)
+        self.assertTrue(all(s > 0 for s in seconds), seconds)
+        self.assertNotEqual(mine, theirs)                 # compared whole, the clock parts them
+        self.assertEqual(gates.without_the_clock(mine), gates.without_the_clock(theirs))
+
+        got = gates.step_zero_at(1, space, clock=Slow())
+        self.assertTrue(got["record_is_rung_2s"])
+        self.assertEqual(got["decided_by_the_ranking"], 0)
 
     def test_the_declared_figures_come_back(self):
         """§0's figures 2 to 7, recomputed from the closed records and the corpus."""
