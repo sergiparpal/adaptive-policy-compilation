@@ -105,3 +105,6 @@ results_halves/*.partial.jsonl
 # And the smoke runs, the runs and the at-once sessions of PLAN_CORRECTIONS.md
 # (corrections/run.py, corrections/ask.py).
 results_corrections/*.partial.jsonl
+# And the smoke runs, the runs and the at-once sessions of PLAN_RANKED.md
+# (ranked/run.py, ranked/ask.py).
+results_ranked/*.partial.jsonl

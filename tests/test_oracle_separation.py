@@ -228,13 +228,28 @@ ONLINE_LOOP = [
     "corrections/prompts.py",
     "corrections/run.py",
     "corrections/ask.py",
+    # Added 2026-11-18 with PLAN_RANKED.md, which runs PLAN_CORRECTIONS.md's arm
+    # L on two engines: rung 2's, and one that decides by the ranking its own
+    # votes choose where rung 2's would return CONFLICT (§5 of the plan). These
+    # four modules hold that engine, hand it to `corrections/loop.py`'s loop,
+    # called, and send both shapes' requests through `corrections/protocol.py`
+    # and `corrections/ask.py`, called. So the texts are that plan's, the label
+    # reaches a prompt by that plan's one route, in both arms, and
+    # `TestTheAuthorityChannel` watches them too. **The engine reads the answers'
+    # citations and nothing of the truth**: `tests/test_ranked.py` pins that its
+    # votes are a function of the rules, and `ranked/reading.py`, which reads the
+    # truth, is not on this list and is imported by none of the four.
+    "ranked/engine.py",
+    "ranked/loop.py",
+    "ranked/run.py",
+    "ranked/ask.py",
 ]
 
 # The names that carry the hidden policy in code without being the oracle's
 # own: its DSL transcription, the module that holds it, and the edges derived
 # from its layer order. The authority channel's proposer path may import none.
 POLICY_IN_CODE = {"HIDDEN_DSL", "ceiling_check", "hidden_priority"}
-AUTHORITY_CHANNEL = ONLINE_LOOP[-30:]
+AUTHORITY_CHANNEL = ONLINE_LOOP[-34:]
 
 
 def imports_of(path: Path) -> set[str]:
@@ -333,7 +348,7 @@ class TestTheOnlineLoopDoesNotSeeTheOracle(unittest.TestCase):
                      "spotcheck", "unreached", "manual", "apply",
                      "queue_alone", "first_match", "reasoned_rule",
                      "reasoned_loop", "channel", "placement", "whole",
-                     "halves", "corrections"):
+                     "halves", "corrections", "ranked"):
             for f in (REPO / root).rglob("*.py"):
                 if "__pycache__" in f.parts:
                     continue
@@ -349,15 +364,16 @@ class TestTheAuthorityChannel(unittest.TestCase):
     """`PLAN_MANUAL.md` gives the proposer the policy, and says by which route.
     These tests hold it to that route: the frozen text, and nothing in code."""
 
-    def test_the_thirty_modules_are_the_ones_watched(self):
+    def test_the_thirty_four_modules_are_the_ones_watched(self):
         """`PLAN_MANUAL.md`'s five, since 2026-10-23 `PLAN_APPLY.md`'s two, since
         2026-10-24 `PLAN_QUEUE_ALONE.md`'s two, since 2026-10-25
         `PLAN_FIRST_MATCH.md`'s two and `PLAN_REASONED_RULE.md`'s two, since
         2026-10-31 `PLAN_REASONED_LOOP.md`'s three, since 2026-11-04
         `PLAN_CHANNEL.md`'s two, since 2026-11-07 `PLAN_PLACEMENT.md`'s three,
         since 2026-11-09 `PLAN_WHOLE.md`'s two, since 2026-11-10
-        `PLAN_HALVES.md`'s two, and since 2026-11-12 `PLAN_CORRECTIONS.md`'s
-        five, which send the same texts again, and in one arm a label."""
+        `PLAN_HALVES.md`'s two, since 2026-11-12 `PLAN_CORRECTIONS.md`'s five,
+        which send the same texts again, and in one arm a label, and since
+        2026-11-18 `PLAN_RANKED.md`'s four, which send that plan's again."""
         self.assertEqual(AUTHORITY_CHANNEL, ["manual/levels.py", "manual/prompts.py",
                                              "manual/compile.py", "manual/ask.py",
                                              "manual/run.py", "apply/prompts.py",
@@ -372,7 +388,9 @@ class TestTheAuthorityChannel(unittest.TestCase):
                                              "whole/run.py", "halves/prompts.py",
                                              "halves/ask.py", "corrections/protocol.py",
                                              "corrections/loop.py", "corrections/prompts.py",
-                                             "corrections/run.py", "corrections/ask.py"])
+                                             "corrections/run.py", "corrections/ask.py",
+                                             "ranked/engine.py", "ranked/loop.py",
+                                             "ranked/run.py", "ranked/ask.py"])
 
     def test_no_proposer_path_module_imports_the_policy_in_code(self):
         for rel in AUTHORITY_CHANNEL:
