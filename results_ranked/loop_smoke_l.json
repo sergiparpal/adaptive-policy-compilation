@@ -1,0 +1,3152 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-18T11:20:35Z",
+    "python": "3.12.3",
+    "openai": "2.53.0",
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "298b8c33bf008f1c9616b6da917cfbd1998775f7",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "569f908634f2ceac"
+  },
+  "plan": "PLAN_RANKED.md",
+  "protocol": "v1c",
+  "level": 1,
+  "engine": "rung2",
+  "engine_rule": null,
+  "model": "deepseek/deepseek-v4-flash",
+  "temperature": 0,
+  "settings": {
+    "reasoning": {
+      "effort": "high"
+    },
+    "max_tokens": 16000
+  },
+  "provider": {
+    "order": [
+      "deepinfra/fp8"
+    ],
+    "allow_fallbacks": false
+  },
+  "call_retry_wait": [
+    10,
+    30
+  ],
+  "rate_limit_wait": [
+    60,
+    120,
+    240,
+    480,
+    960
+  ],
+  "seed": 17,
+  "n": 30,
+  "arm": "l",
+  "run": "smoke_l",
+  "cap": 400,
+  "listing_seed": 17,
+  "fingerprint": "1ae589feb92a1594",
+  "texts_sha16": {
+    "system_prompt": "fb72980e84c9aa16",
+    "blind_base": "8de0ebf50ce9a54b",
+    "placement_template": "ccfd0eceba1468b2",
+    "retry_message": "ca7b3803f1bef2dd",
+    "report": "89809fb99b3aee4b"
+  },
+  "channel_coverage": "1/2",
+  "draws_seed": "PLAN_CHANNEL/channel/97/smoke",
+  "draws_sha16": "029047351ae2d471",
+  "draws_n": 2000,
+  "stage": "B",
+  "rep": "smoke",
+  "rung": 2,
+  "started_at": "2026-11-18T11:17:53+00:00",
+  "first_kept": "2026-11-18T10:34:26+00:00",
+  "resumed": true,
+  "labels_from": "results_reuse/run_n2000_r1.json",
+  "system_prompt": "Eres el componente de excepcion de un sistema de triaje de tickets.\n\nEl motor simbolico no ha podido decidir este ticket. Tu tarea:\n\n1. Decidir la cola de destino correcta para ESTE ticket.\n2. Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\n3. Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\n\nCOMO ARBITRA EL MOTOR (importante para el punto 3)\n\nEl motor aplica dos niveles:\n\n  NIVEL 1, automatico: si el conjunto de casos que cubre una regla esta\n  CONTENIDO en el de otra, la mas contenida gana sin que nadie lo declare. Las\n  excepciones anidadas dentro de un caso general se ordenan solas.\n\n  NIVEL 2, declarado por ti: cuando dos reglas se solapan pero ninguna contiene\n  a la otra, el motor no tiene forma de saber cual debe mandar. Si no lo\n  declaras, seguira sin saberlo y escalara cada vez que ambas casen.\n\nPor eso solo necesitas declarar prioridad frente a reglas que se solapan con la\ntuya sin que una contenga a la otra. Si tu regla es un caso particular de otra,\nno declares nada: el nivel 1 ya lo resuelve.\n\nATRIBUTOS DISPONIBLES Y SUS DOMINIOS:\n{\n  \"customer_tier\": [\n    \"free\",\n    \"pro\",\n    \"business\",\n    \"enterprise\"\n  ],\n  \"severity\": [\n    1,\n    2,\n    3,\n    4\n  ],\n  \"product\": [\n    \"dashboard\",\n    \"billing\",\n    \"api\",\n    \"mobile\",\n    \"integrations\"\n  ],\n  \"channel\": [\n    \"portal\",\n    \"email\",\n    \"chat\",\n    \"phone\"\n  ],\n  \"off_hours\": [\n    false,\n    true\n  ],\n  \"prior_tickets_30d\": [\n    0,\n    1,\n    2,\n    3,\n    4,\n    5,\n    6,\n    7,\n    8,\n    9,\n    10,\n    11,\n    12,\n    13,\n    14,\n    15,\n    16,\n    17,\n    18,\n    19,\n    20\n  ],\n  \"has_security_keyword\": [\n    false,\n    true\n  ],\n  \"language\": [\n    \"en\",\n    \"es\",\n    \"pt\",\n    \"de\",\n    \"fr\"\n  ]\n}\n\nseverity: 1 = critica, 4 = baja.\n\nACCIONES POSIBLES:\n[\n  \"T1_GENERAL\",\n  \"T2_TECHNICAL\",\n  \"T3_ENGINEERING\",\n  \"BILLING_SPECIALIST\",\n  \"SECURITY_INCIDENT\",\n  \"ACCOUNT_MANAGER\",\n  \"ONCALL_ESCALATION\",\n  \"SELF_SERVICE_DEFLECT\"\n]\n\nMANUAL DE ENRUTAMIENTO DE LA EMPRESA (es la politica que hay que seguir):\n\nQUE HACE CADA COLA\n\nT1_GENERAL: primer nivel de soporte. Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\nT2_TECHNICAL: soporte tecnico de segundo nivel. Diagnostica y resuelve las incidencias tecnicas del producto.\nT3_ENGINEERING: ingenieria. Fallos del producto que necesitan que un ingeniero investigue el codigo o la plataforma.\nBILLING_SPECIALIST: especialistas de facturacion. Cobros, facturas y pagos que necesitan la intervencion de una persona.\nSECURITY_INCIDENT: respuesta a incidentes de seguridad. Posibles brechas, accesos indebidos o vulnerabilidades.\nACCOUNT_MANAGER: gestor de cuenta. La relacion comercial con las cuentas clave, incluidas las que corren riesgo de darse de baja.\nONCALL_ESCALATION: guardia. Incidentes criticos que no pueden esperar al siguiente turno, a cualquier hora.\nSELF_SERVICE_DEFLECT: autoservicio. Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\n\nOPERADORES: eq, neq, lte, gte, in\n  - lte y gte SOLO sobre severity y prior_tickets_30d\n  - in requiere una lista de valores del dominio\n\nResponde UNICAMENTE con un objeto JSON, sin markdown, sin preambulo:\n\n{\n  \"action\": \"<accion para este ticket>\",\n  \"conditions\": [{\"attr\": \"...\", \"op\": \"...\", \"value\": ...}],\n  \"beats\": [\"<id de regla existente a la que la tuya debe ganar>\"],\n  \"loses_to\": [\"<id de regla existente que debe ganar a la tuya>\"],\n  \"note\": \"<una frase justificando el nivel de abstraccion y la prioridad elegidos>\"\n}\n\n`beats` y `loses_to` solo pueden citar identificadores de reglas que aparezcan\nen la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\n\nLa regla DEBE casar el ticket presentado.",
+  "base_text": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\n",
+  "report_template": "AVISO DE REVISION: este ticket no es un impasse. El motor lo decidio, y un\nrevisor ha marcado esa decision como erronea. La cola correcta de este\nticket es {queue}.\n",
+  "placement_template": "Tu regla se solapa con estas reglas existentes de OTRA cola (calculado por el\nmotor sobre el espacio completo de casos):\n{lista}\nResponde de nuevo con el mismo formato y con LA MISMA regla: la misma accion y\nlas mismas condiciones. Situala frente a cada una de la lista: ponla en `beats`\nsi tu regla es una EXCEPCION a ella, de modo que la tuya manda donde casen las\ndos; en `loses_to` si es un caso GENERAL por debajo de ella, de modo que la otra\nmanda. No cambies la regla: una regla distinta se rechaza.",
+  "reports_handed": {
+    "17": "SELF_SERVICE_DEFLECT",
+    "19": "T2_TECHNICAL",
+    "27": "BILLING_SPECIALIST"
+  },
+  "ranked": null,
+  "gates": {
+    "RK-g1": {
+      "what": "PLAN_CORRECTIONS.md's own blocking checks pass; on its three L runs' answers arm l gives back the run, arm k with rung 2's decision put back gives back the same record and messages, its ranking is the replay's at every birth and its votes the record's, and its own decision is rung 2's but at a CONFLICT, where the ranking decides; it overrides decide alone; the suite green",
+      "corrections_checks": {
+        "CR-g1": true,
+        "CR-g2": true,
+        "CR-g3": true,
+        "instruments": true,
+        "passes": true
+      },
+      "replays": {
+        "l_r1": {
+          "calls": 722,
+          "reported_errors": 216,
+          "placement_calls": 345,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 154,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r2": {
+          "calls": 715,
+          "reported_errors": 209,
+          "placement_calls": 347,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 163,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r3": {
+          "calls": 686,
+          "reported_errors": 235,
+          "placement_calls": 338,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 75,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        }
+      },
+      "decide_alone": true,
+      "suite": {
+        "ran": true,
+        "tests": 3491,
+        "result": "OK (skipped=3)",
+        "seconds": 228.5,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g2": {
+      "what": "both arms send PLAN_CORRECTIONS.md's arm L's texts, by digest, and its request with the pin, and differ in their headers by the engine alone; the at-once asks send that plan's texts and request with their budget; \u00a70's figures 2 to 7 come back",
+      "texts": {
+        "keys": true,
+        "system_prompt_level_1": true,
+        "report_r1": true,
+        "three_are_v1cs": true,
+        "both_arms_the_same_texts": true,
+        "the_arms_differ_by_the_engine": true,
+        "at_once_system_prompt": true,
+        "at_once_header": true,
+        "passes": true
+      },
+      "requests": {
+        "both_arms_corrections_0": true,
+        "at_once_but_for_the_budget_0": true,
+        "both_arms_corrections_1": true,
+        "at_once_but_for_the_budget_1": true,
+        "pin": true,
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "set_aside": true,
+          "final_bases": true,
+          "as_it_went": true,
+          "asked_conflicts": true,
+          "pair_arrivals": true,
+          "schedule": true
+        },
+        "sound": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g3": {
+      "what": "six runs alternating from the arm the seed draws; the smoke runs 30 cases an arm on PLAN_CHANNEL.md's smoke draws; coverage 1/2; the cap 400; \u00a72.6's constants and a session after every run; the ask pool for the asks alone; Step 0: under the transcriber and each draw, arm k's engine gives back rung 2's record and its ranking decides nothing; each competitor's ceiling",
+      "schedule": [
+        [
+          "l",
+          1
+        ],
+        [
+          "k",
+          1
+        ],
+        [
+          "l",
+          2
+        ],
+        [
+          "k",
+          2
+        ],
+        [
+          "l",
+          3
+        ],
+        [
+          "k",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "cap": true,
+      "draws_are_corrections": true,
+      "at_once": true,
+      "a_session_after_every_run": true,
+      "the_pool_is_for_asks": true,
+      "before_any_vote_the_domains_order": true,
+      "step_zero": {
+        "r1": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "r2": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 132280
+        },
+        "r3": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "passes": true
+      },
+      "competitors_ceilings": true,
+      "passes": true
+    },
+    "RK-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_RANKED.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "metrics": {
+    "n_cases": 30,
+    "n_rules": 14,
+    "hidden_policy_size": 29,
+    "rejected_rules": 0,
+    "failed_proposals": 0,
+    "escalations": 14,
+    "escalation_rate": 0.4667,
+    "escalation_curve_by_decile": [
+      1.0,
+      0.333,
+      1.0,
+      0.333,
+      0.333,
+      0.667,
+      0.333,
+      0.333,
+      0.0,
+      0.333
+    ],
+    "final_decile_escalation_rate": 0.333,
+    "impasses": 11,
+    "conflicts": 0,
+    "coverage": 0.6333,
+    "shadow_accuracy": 0.7368,
+    "silent_error_rate": 0.2632,
+    "silent_errors_abs": 5,
+    "e2e_accuracy": 0.4667,
+    "reuse_rate": 0.4286,
+    "median_fires_per_rule": 0.0,
+    "dead_rules": 8,
+    "proposal_action_accuracy": 0.5714,
+    "llm_calls": 14,
+    "edges_proposed": 21,
+    "edges_accepted": 21,
+    "edge_reasons": {
+      "ok": 21
+    },
+    "subsumption_pairs": 3,
+    "rules_with_edges": 7,
+    "escalations_with_base_shown": 0,
+    "escalations_on_conflict": 0
+  },
+  "v1b": {
+    "arm_escalations": {
+      "IMPASSE": 11,
+      "CONFLICT": 0,
+      "ERROR": 3
+    },
+    "cover": null,
+    "stopped_at": null,
+    "cases_read": 30,
+    "decisions_that_stood": 16,
+    "silent_errors_among_them": 5,
+    "channel": {
+      "coverage": "1/2",
+      "wrong_decisions": 8,
+      "reported": 3,
+      "unreported": 5
+    }
+  },
+  "calls": 21,
+  "rules": [
+    {
+      "rule_id": "R0001",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "enterprise"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 0,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Enterprise customers with low severity (4) tickets are routed to T1_GENERAL for first-level support, as their issues are not critical and can be handled by general support. This rule covers the given ticket and analogous cases."
+    },
+    {
+      "rule_id": "R0002",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "pro"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "email"
+        },
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 1,
+      "fire_count": 1,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "This rule routes pro-tier dashboard tickets with severity 3 during off-hours via email to T2, as they are technical issues that can wait until business hours, avoiding unnecessary on-call escalation."
+    },
+    {
+      "rule_id": "R0003",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 2,
+      "fire_count": 3,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Free tier users with lowest severity (4) typically have general inquiries that do not require technical or specialized support, so they are routed to T1_GENERAL for first-level assistance."
+    },
+    {
+      "rule_id": "R0004",
+      "conditions": [
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 3,
+      "fire_count": 1,
+      "correct_count": 1,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Mobile product issues with severity 2 require technical diagnosis and are not general queries, so they belong to T2_TECHNICAL. The rule is abstracted by severity and product to cover all similar mobile severity 2 tickets regardless of customer tier or channel."
+    },
+    {
+      "rule_id": "R0005",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 6,
+      "fire_count": 4,
+      "correct_count": 4,
+      "beats": [
+        "R0003",
+        "R0001"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Los tickets del producto billing requieren especialista en facturaci\u00f3n, incluso si el cliente es free o enterprise con severidad 4. Por tanto, esta regla es una excepci\u00f3n a las reglas que env\u00edan esos perfiles a T1_GENERAL."
+    },
+    {
+      "rule_id": "R0006",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "api"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 7,
+      "fire_count": 4,
+      "correct_count": 4,
+      "beats": [
+        "R0001",
+        "R0003"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "La regla para API con severidad >=3 es una excepci\u00f3n t\u00e9cnica a las reglas que env\u00edan severidad 4 a T1 para enterprise y free, porque los problemas de API son inherentemente t\u00e9cnicos y requieren T2 incluso en severidad baja."
+    },
+    {
+      "rule_id": "R0007",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "mobile"
+        },
+        {
+          "attr": "channel",
+          "op": "eq",
+          "value": "portal"
+        },
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": false
+        },
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 8,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Free tier customers with medium severity mobile product issues during business hours via portal are typical first-level support cases, as they do not involve security, billing, or critical incidents."
+    },
+    {
+      "rule_id": "R0008",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "integrations"
+        },
+        {
+          "attr": "severity",
+          "op": "lte",
+          "value": 3
+        }
+      ],
+      "action": "T1_GENERAL",
+      "born_at": 9,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Free tier customers with integrations product and severity \u22643 are typically first-level queries, so they go to general support."
+    },
+    {
+      "rule_id": "R0009",
+      "conditions": [
+        {
+          "attr": "off_hours",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "attr": "customer_tier",
+          "op": "in",
+          "value": [
+            "pro",
+            "business",
+            "enterprise"
+          ]
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 13,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [
+        "R0005"
+      ],
+      "dropped_edges": [],
+      "note": "Mi regla cubre tickets de severidad 2 fuera de horas para clientes de pago, pero R0005 es espec\u00edfica para productos de billing. Dado que billing tiene su propia cola especializada, cuando ambas coincidan debe prevalecer BILLING_SPECIALIST, por lo que mi regla pierde frente a R000"
+    },
+    {
+      "rule_id": "R0010",
+      "conditions": [
+        {
+          "attr": "customer_tier",
+          "op": "eq",
+          "value": "free"
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "dashboard"
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 15,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Un ticket de tier free con severidad 2 en el producto dashboard es una incidencia t\u00e9cnica que debe ir a T2_TECHNICAL. La regla es espec\u00edfica para este perfil, cubriendo casos an\u00e1logos."
+    },
+    {
+      "rule_id": "R0011",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        },
+        {
+          "attr": "severity",
+          "op": "gte",
+          "value": 3
+        },
+        {
+          "attr": "customer_tier",
+          "op": "neq",
+          "value": "enterprise"
+        }
+      ],
+      "action": "SELF_SERVICE_DEFLECT",
+      "born_at": 17,
+      "fire_count": 3,
+      "correct_count": 2,
+      "beats": [
+        "R0003"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "The new rule is more specific than R0003 for billing tickets: it adds a product condition and covers severity 3 as well. For overlapping cases (free, severity 4, billing), the self-service deflection should take precedence over T1_GENERAL because billing inquiries for non-enterpr"
+    },
+    {
+      "rule_id": "R0012",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "attr": "severity",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "action": "T2_TECHNICAL",
+      "born_at": 19,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [
+        "R0003",
+        "R0005",
+        "R0001",
+        "R0011"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Las palabras clave de seguridad con severidad baja (4) no son incidentes reales y deben ir a soporte t\u00e9cnico (T2), incluso si coinciden con reglas de T1_GENERAL, BILLING_SPECIALIST o SELF_SERVICE_DEFLECT. Esta regla es una excepci\u00f3n a todas ellas."
+    },
+    {
+      "rule_id": "R0013",
+      "conditions": [
+        {
+          "attr": "has_security_keyword",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "action": "SECURITY_INCIDENT",
+      "born_at": 23,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [
+        "R0008",
+        "R0011",
+        "R0004",
+        "R0006",
+        "R0009",
+        "R0005",
+        "R0010"
+      ],
+      "loses_to": [],
+      "dropped_edges": [],
+      "note": "Security incidents override all other routing rules because they require immediate specialized handling, regardless of customer tier, product, severity, or channel."
+    },
+    {
+      "rule_id": "R0014",
+      "conditions": [
+        {
+          "attr": "product",
+          "op": "eq",
+          "value": "billing"
+        }
+      ],
+      "action": "BILLING_SPECIALIST",
+      "born_at": 27,
+      "fire_count": 0,
+      "correct_count": 0,
+      "beats": [
+        "R0009",
+        "R0001"
+      ],
+      "loses_to": [
+        "R0013",
+        "R0012"
+      ],
+      "dropped_edges": [],
+      "note": "La regla asigna todo ticket de producto billing a BILLING_SPECIALIST. Se declara que pierde frente a reglas de seguridad (R0013 y R0012) porque un incidente de seguridad o una incidencia con keyword de seguridad debe priorizarse sobre la facturaci\u00f3n, incluso si es de billing. Se "
+    }
+  ],
+  "edge_log": [
+    [
+      "R0005",
+      "R0003",
+      "ok"
+    ],
+    [
+      "R0005",
+      "R0001",
+      "ok"
+    ],
+    [
+      "R0006",
+      "R0001",
+      "ok"
+    ],
+    [
+      "R0006",
+      "R0003",
+      "ok"
+    ],
+    [
+      "R0005",
+      "R0009",
+      "ok"
+    ],
+    [
+      "R0011",
+      "R0003",
+      "ok"
+    ],
+    [
+      "R0012",
+      "R0003",
+      "ok"
+    ],
+    [
+      "R0012",
+      "R0005",
+      "ok"
+    ],
+    [
+      "R0012",
+      "R0001",
+      "ok"
+    ],
+    [
+      "R0012",
+      "R0011",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0008",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0011",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0004",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0006",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0009",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0005",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0010",
+      "ok"
+    ],
+    [
+      "R0014",
+      "R0009",
+      "ok"
+    ],
+    [
+      "R0014",
+      "R0001",
+      "ok"
+    ],
+    [
+      "R0013",
+      "R0014",
+      "ok"
+    ],
+    [
+      "R0012",
+      "R0014",
+      "ok"
+    ]
+  ],
+  "edge_channels": [
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write",
+    "write"
+  ],
+  "records": [
+    {
+      "idx": 0,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "ACCOUNT_MANAGER",
+      "truth_rule": "H13",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.7169457403444619,
+      "reported": null
+    },
+    {
+      "idx": 1,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.09914073609825802,
+      "reported": null
+    },
+    {
+      "idx": 2,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.9613897157393586,
+      "reported": null
+    },
+    {
+      "idx": 3,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.3012132606580714,
+      "reported": null
+    },
+    {
+      "idx": 4,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.7950217369962218,
+      "reported": false
+    },
+    {
+      "idx": 5,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5838476524175755,
+      "reported": false
+    },
+    {
+      "idx": 6,
+      "outcome": "IMPASSE",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 2,
+      "edges_accepted": 2,
+      "edge_reasons": [
+        "ok",
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.6907706357477099,
+      "reported": null
+    },
+    {
+      "idx": 7,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 2,
+      "edges_accepted": 2,
+      "edge_reasons": [
+        "ok",
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.6944105272629888,
+      "reported": null
+    },
+    {
+      "idx": 8,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.6675309804283207,
+      "reported": null
+    },
+    {
+      "idx": 9,
+      "outcome": "IMPASSE",
+      "predicted": "T1_GENERAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H18",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.22215483869964214,
+      "reported": null
+    },
+    {
+      "idx": 10,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.7737019620530716,
+      "reported": null
+    },
+    {
+      "idx": 11,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.46832003018600277,
+      "reported": null
+    },
+    {
+      "idx": 12,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H19",
+      "correct": true,
+      "winner_id": "R0004",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.26503244874195353,
+      "reported": null
+    },
+    {
+      "idx": 13,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 1,
+      "edges_accepted": 1,
+      "edge_reasons": [
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.1580582458142774,
+      "reported": null
+    },
+    {
+      "idx": 14,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5555939017917501,
+      "reported": null
+    },
+    {
+      "idx": 15,
+      "outcome": "IMPASSE",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H20",
+      "correct": true,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.40194145186871566,
+      "reported": null
+    },
+    {
+      "idx": 16,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.8710883503455622,
+      "reported": null
+    },
+    {
+      "idx": 17,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 1,
+      "edges_accepted": 1,
+      "edge_reasons": [
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "ERROR",
+      "engine_action": "BILLING_SPECIALIST",
+      "engine_rule": "R0005",
+      "draw": 0.2035034946159895,
+      "reported": true
+    },
+    {
+      "idx": 18,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": false,
+      "winner_id": "R0011",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.7780549911327248,
+      "reported": false
+    },
+    {
+      "idx": 19,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": true,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 4,
+      "edges_accepted": 4,
+      "edge_reasons": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "ERROR",
+      "engine_action": "T1_GENERAL",
+      "engine_rule": "R0003",
+      "draw": 0.46451476778912804,
+      "reported": true
+    },
+    {
+      "idx": 20,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.9306285994106593,
+      "reported": null
+    },
+    {
+      "idx": 21,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T1_GENERAL",
+      "truth_rule": "H29",
+      "correct": false,
+      "winner_id": "R0002",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5791831121914629,
+      "reported": false
+    },
+    {
+      "idx": 22,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": true,
+      "winner_id": "R0011",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5465484274909421,
+      "reported": null
+    },
+    {
+      "idx": 23,
+      "outcome": "IMPASSE",
+      "predicted": "SECURITY_INCIDENT",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H03",
+      "correct": false,
+      "winner_id": null,
+      "n_matched": 0,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": false,
+      "edges_proposed": 7,
+      "edges_accepted": 7,
+      "edge_reasons": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "IMPASSE",
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.4737510253611831,
+      "reported": null
+    },
+    {
+      "idx": 24,
+      "outcome": "ACTION",
+      "predicted": "SELF_SERVICE_DEFLECT",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H12",
+      "correct": true,
+      "winner_id": "R0011",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5664625281897997,
+      "reported": null
+    },
+    {
+      "idx": 25,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.9707034360901763,
+      "reported": null
+    },
+    {
+      "idx": 26,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H10",
+      "correct": true,
+      "winner_id": "R0005",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.5617138342701069,
+      "reported": null
+    },
+    {
+      "idx": 27,
+      "outcome": "ACTION",
+      "predicted": "BILLING_SPECIALIST",
+      "truth": "BILLING_SPECIALIST",
+      "truth_rule": "H11",
+      "correct": true,
+      "winner_id": "R0011",
+      "n_matched": 2,
+      "escalated": true,
+      "shown_ids": [],
+      "shown_kind": "ciego",
+      "proposal_action_correct": true,
+      "edges_proposed": 4,
+      "edges_accepted": 4,
+      "edge_reasons": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "rejected_reason": null,
+      "cause": "ERROR",
+      "engine_action": "SELF_SERVICE_DEFLECT",
+      "engine_rule": "R0011",
+      "draw": 0.2802212471402037,
+      "reported": true
+    },
+    {
+      "idx": 28,
+      "outcome": "ACTION",
+      "predicted": "T2_TECHNICAL",
+      "truth": "T2_TECHNICAL",
+      "truth_rule": "H16",
+      "correct": true,
+      "winner_id": "R0006",
+      "n_matched": 2,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.7135578479245921,
+      "reported": null
+    },
+    {
+      "idx": 29,
+      "outcome": "ACTION",
+      "predicted": "T1_GENERAL",
+      "truth": "SELF_SERVICE_DEFLECT",
+      "truth_rule": "H24",
+      "correct": false,
+      "winner_id": "R0003",
+      "n_matched": 1,
+      "escalated": false,
+      "shown_ids": [],
+      "shown_kind": null,
+      "proposal_action_correct": null,
+      "edges_proposed": 0,
+      "edges_accepted": 0,
+      "edge_reasons": [],
+      "rejected_reason": null,
+      "cause": null,
+      "engine_action": null,
+      "engine_rule": null,
+      "draw": 0.6927482595485273,
+      "reported": false
+    }
+  ],
+  "escalations": [
+    {
+      "idx": 0,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T1_GENERAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "enterprise"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Enterprise customers with low severity (4) tickets are routed to T1_GENERAL for first-level support, as their issues are not critical and can be handled by general support. This rule covers the given ticket and analogous cases."
+          },
+          "failure": null,
+          "seconds": 14.52,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1794998048-RaFfAGEQgfdqHipW3T8a",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1323,
+              "completion_tokens": 2111,
+              "reasoning_tokens": 1985,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We are given a ticket that the symbolic engine couldn't decide. We need to assign it to a queue and write a rule. The ticket details: has_security_keyword: false, severity: 4 (lowest), customer_tier: \"enterprise\", product: \"dashboard\", channel: \"chat\", prior_tickets_30d: 7, off_hours: false, language: \"en\".\n\nWe need to decide the destination queue. The manual describes queues: T1_GENERAL (first level, general queries), T2_TECHNICAL (technical support second level), T3_ENGINEERING (engineering for product bugs), BILLING_SPECIALIST (billing), SECURITY_INCIDENT (security), ACCOUNT_MANAGER (account manager for key accounts, including those at risk of churn), ONCALL_ESCALATION (critical incidents that can't wait), SELF_SERVICE_DEFLECT (deflect to self-service).\n\nThe ticket is low severity (4), enterprise tier, product dashboard, chat channel, not off hours, 7 prior tickets in 30 days, English. No security keyword.\n\nGiven that it's enterprise, and severity is low, it might be a general query or a technical issue? But severity 4 is low. The product is dashboard, so it could be a usage question. Also, the customer has 7 prior tickets in 30 days, which is moderate. Enterprise customers often get account managers for relationship management. But the ticket doesn't indicate churn risk explicitly. However, enterprise tier might be handled by account manager for commercial queries. But the manual says ACCOUNT_MANAGER handles \"The commercial relationship with key accounts, including those at risk of cancellation.\" This ticket doesn't have any churn indicators. So maybe T1_GENERAL is appropriate for general queries? But enterprise might bypass T1? The manual doesn't specify that enterprise goes to account manager automatically.\n\nAlternatively, since it's low severity and product dashboard, maybe it's a technical issue that can be handled by T2_TECHNICAL? But severity 4 is low, so T1 could handle it. Also, channel is chat, which is often for quick questions.\n\nWe need to write a rule that matches this ticket and is generalizable. The rule should be based on attributes. Since the ticket has enterprise tier and severity low, maybe enterprise customers with low severity go to ACCOUNT_MANAGER? But that seems overkill for a low severity ticket. Typically, enterprise customers might have a dedicated support path. However, the manual says ACCOUNT_MANAGER is for commercial relationship, not technical support. So maybe T1_GENERAL or T2_TECHNICAL.\n\nConsider prior_tickets_30d: 7. That's moderate. Could indicate a recurring issue? But severity is low, so not critical.\n\nGiven the impasse, we need to decide. Possibly, enterprise customers should be routed to a higher level? But the queues don't have an \"enterprise support\" specifically. There is ACCOUNT_MANAGER for commercial, but for technical issues, they might go to T2. However, the ticket has no technical keywords. It's a dashboard product. Could be a question about using the dashboard.\n\nI think a reasonable rule: For enterprise customers with low severity (severity 4), route to T1_GENERAL because it's a general query. But enterprise might deserve better? Alternatively, route to ACCOUNT_MANAGER because enterprise customers should have a dedicated point of contact. However, the manual says ACCOUNT_MANAGER is for commercial relationship and at-risk accounts. This ticket doesn't indicate commercial or at-risk.\n\nMaybe it's a billing issue? No, product is dashboard, not billing.\n\nGiven that the engine couldn't decide, perhaps there are conflicting rules. We need to write a rule that is generalizable. I'll propose that enterprise customers with severity 4 and product dashboard go to T1_GENERAL. But we need to ensure it doesn't conflict with other rules.\n\nSince we don't see the existing rules, we'll have to assume our rule might conflict. But the instructions say: if it overlaps with existing rules from other queues, they will be listed later. So we will provide the rule now, and later we may need to adjust beats/loses_to. For now, we only need to output the JSON with the action and conditions, and empty beats/loses_to? But the instruction says: \"Escribe tu regla para este ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are to provide the rule first, then after that, we will be shown existing rules that overlap. But the current prompt says \"Responde UNICAMENTE con un objeto JSON...\". So we must output the JSON now, presumably with beats and loses_to as empty for now, because we don't know the existing rules yet. But the instruction says: \"beats y loses_to solo pueden citar identificadores de reglas que aparezcan en la lista de arriba. Si no hay ninguna relacion que declarar, dejalos vacios.\" Since we don't have the list of existing rules yet, we leave them empty. However, the note says \"BASE DE REGLAS: no se te muestra en este paso.\" So we are to provide the rule without knowing existing rules. So we will output an empty beats and loses_to. Later, in a follow-up, we might be shown overlapping rules and asked to adjust. But for this response, we just provide the rule.\n\nThus, I'll choose action: T1_GENERAL. Conditions: customer_tier eq \"enterprise\", severity lte 4? Actually severity is 4, but we want low severity, so severity gte 4? Actually severity 4 is lowest, so severity eq 4? But to generalize, maybe severity gte 3? But we want low severity. For enterprise, low severity might be handled by T1. I'll set conditions: customer_tier eq \"enterprise\", severity eq 4? But that's very specific. Better: customer_tier eq \"enterprise\" and severity gte 3? Actually severity 3 is medium, 4 is low. Maybe severity gte 4? That means severity 4 only. But to cover cases like this, I'll use severity gte 4? But \"gte\" means greater than or equal, so severity 4 only if we set gte 4. But if we set severity gte 4, that's only severity 4. Alternatively, we can set severity lte 4? That would include all severities because 1-4 are all <=4. That's too broad. So we need to be specific: severity eq 4? But then it only matches severity 4. Maybe we want enterprise customers with low severity (4) to go to T1. But enterprise customers with severity 3 might also go to T1? Possibly. But the rule should be generalizable: enterprise customers with non-critical issues go to T1? But \"non-critical\" could be severity 3 and 4. Let's define low severity as severity >= 3? Actually severity 1 is critical, 2 high, 3 medium, 4 low. So low is 3 and 4? Typically low is 4 only. I'll stick with severity eq 4 for clarity.\n\nAlso, product is dashboard, but we might not need to include product because it's a general query. But to be safe, include product eq \"dashboard\"? That would narrow the rule. Alternatively, we can omit product to make it general for any product for enterprise with low severity. But the ticket is about dashboard, so we can include product to match exactly, but then it's less generalizable. The instruction says \"Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\" So we need to think of analogous cases: other enterprise customers with low severity tickets on any product? Or specifically on dashboard? Probably any product, because the key is enterprise tier and low severity. So I'll set conditions: customer_tier eq \"enterprise\", severity eq 4. That should cover this ticket and similar ones.\n\nBut also consider channel? The channel is chat, but that might not matter. prior_tickets_30d is 7, but not necessarily relevant. off_hours false. language en. None of these seem critical for routing to T1.\n\nThus, I propose:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Enterprise customers with low severity (4) tickets are routed to T1_GENERAL for first-level support, as their issues are not critical and can be handled by general support. This rule covers the given ticket and analogous cases.\"\n}\n\nBut wait: The manual says ACCOUNT_MANAGER handles commercial relationship. Could enterprise low severity be considered for account manager? Possibly, but not necessarily. I think T1 is safer.\n\nAlternatively, maybe it should be SELF_SERVICE_DEFLECT? But severity 4 is low, but enterprise might expect human support. So T1.\n\nI'll go with that.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0001",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 1,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "pro"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 3
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "email"
+              },
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "This rule routes pro-tier dashboard tickets with severity 3 during off-hours via email to T2, as they are technical issues that can wait until business hours, avoiding unnecessary on-call escalation."
+          },
+          "failure": null,
+          "seconds": 11.9,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1794998062-BaaENIQ32GFKJCOesqi0",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1438,
+              "reasoning_tokens": 1237,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to analyze the ticket and decide the appropriate queue. The ticket has: severity 3 (moderate), customer_tier \"pro\", product \"dashboard\", channel \"email\", off_hours true, language \"de\", no security keyword, prior_tickets_30d=2.\n\nGiven the manual: T1_GENERAL is for general queries, usage doubts, requests not needing technical diagnosis. T2_TECHNICAL is for technical support, diagnosing and resolving technical incidents. T3_ENGINEERING is for product bugs needing engineer investigation. BILLING_SPECIALIST for billing. SECURITY_INCIDENT for security (but has_security_keyword false). ACCOUNT_MANAGER for business relationship. ONCALL_ESCALATION for critical incidents that cannot wait. SELF_SERVICE_DEFLECT for self-service with documentation.\n\nThis ticket is off-hours, severity 3, pro tier, product dashboard. Since it's off-hours and severity 3 (not critical), it might not be ONCALL_ESCALATION because that's for critical incidents. Could be T2_TECHNICAL or T1_GENERAL? The product is dashboard, which is a product, so likely technical. But severity 3 and off-hours, with prior_tickets=2, not high. Could be T1? But manual says T1 for general queries, T2 for technical incidents. Since product is dashboard, it's likely a technical issue. However, we need to consider the language German. There might be a rule for language? Not in current context. Also off-hours, so maybe it should go to T2? But T2 is technical support, but during off-hours, if it's not critical, it might wait? But the system is triaging, so we need to decide.\n\nGiven the manual, I think the most appropriate is T2_TECHNICAL because it's a product dashboard issue, severity 3, not critical, but technical. Could also be T1 if it's a general question, but we don't know the content. Since the ticket is in impasse, the motor couldn't decide, so we need to create a rule.\n\nI'll write a rule that captures this: For pro tier, dashboard product, severity 3, off-hours, channel email, no security keyword, send to T2_TECHNICAL. But we need to generalize.\n\nAlternatively, maybe it should go to ONCALL? No, severity 3 is not critical (1 is critical). Off-hours, but not critical, so it can wait. So T2 is fine.\n\nBut we also need to consider that off-hours might affect routing? Possibly to ONCALL only for severity 1 or 2? The manual says ONCALL for critical incidents that cannot wait. Severity 3 is moderate, not critical.\n\nThus, I'll propose T2_TECHNICAL.\n\nNow conditions: We need to match this ticket. Conditions: customer_tier eq \"pro\", product eq \"dashboard\", severity eq 3, off_hours eq true, channel eq \"email\", has_security_keyword eq false. But we should generalize: maybe all pro tier dashboard tickets off-hours? But that might be too broad. We need a rule that covers this and analogous future cases. Analogous: similar tickets with same pattern.\n\nI'll write conditions: customer_tier eq \"pro\", product eq \"dashboard\", severity lte 3 (since 3 is moderate, but maybe also severity 2? But careful: severity 2 might be more urgent? Actually severity 1 critical, 2 high, 3 moderate, 4 low. So off-hours with severity 3 or 4? But we have severity 3. Could generalize to severity gte 3? But then severity 4 also? But severity 4 low might go to self-service? We need to consider.\n\nGiven off-hours, maybe we want to route technical issues to T2, but if low severity, maybe to self-service? But manual says SELF_SERVICE_DEFLECT for self-service with documentation. Not sure.\n\nBetter to keep it specific to severity 3 for now.\n\nAlso channel email, but that might not matter. And prior_tickets_30d=2, but not a factor.\n\nSo conditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"pro\"}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3}, {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}, {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"email\"}, {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}]\n\nBut that's too specific. Generalize: maybe all pro tier dashboard tickets off-hours with severity 3? Or maybe all off-hours dashboard tickets with severity 3? But we need to ensure it's not already covered by another rule.\n\nSince no base rules are shown, we assume no conflicting rules yet. But we need to declare beats and loses_to. Since we don't know existing rules, we can leave empty. However, the instruction says \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are to write the rule first, and then after we submit, we might get feedback? But the response format requires beats and loses_to. We can assume no conflict yet.\n\nI'll produce a JSON with action T2_TECHNICAL, conditions as above, beats and loses_to empty, and a note explaining.\n\nBut note: The rule should be generalizable. I'll phrase note: \"This rule routes pro-tier dashboard tickets with severity 3 during off-hours via email to T2, as they are technical issues that can wait until business hours.\"\n\nLet's write the JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0002",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 2,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T1_GENERAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Free tier users with lowest severity (4) typically have general inquiries that do not require technical or specialized support, so they are routed to T1_GENERAL for first-level assistance."
+          },
+          "failure": null,
+          "seconds": 11.59,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000676-aaIPE5EmndmCb022iLG9",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1572,
+              "reasoning_tokens": 1454,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We are given a ticket that has no security keyword, severity 4 (low), customer tier free, product mobile, channel chat, prior_tickets_30d 0, off_hours false, language en. The motor could not decide, so we need to decide the correct queue and write a rule that covers this ticket and analogous future ones.\n\nWe need to consider the manual: What queue is appropriate? The ticket is low severity (4), free tier, product mobile, chat channel, no prior tickets, off hours false, English. This seems like a general inquiry or simple issue. Possibly T1_GENERAL or SELF_SERVICE_DEFLECT? But SELF_SERVICE_DEFLECT is for deflection to self-service without agent intervention. However, the ticket came through chat, so it might be a live chat. But severity 4 and free tier suggests it's not critical. Could be a general question about using the mobile product. T1_GENERAL handles general queries and non-technical issues. T2_TECHNICAL is for technical diagnosis. Since it's mobile product and chat, it could be a technical issue? But severity 4 is low, and free tier, so likely not a complex technical issue that requires T2. Also, no prior tickets, so not a recurring issue.\n\nGiven it's a free tier user with low severity, it might be appropriate to deflect to self-service if there is a knowledge base, but the channel is chat, so maybe they expect an agent. The manual says SELF_SERVICE_DEFLECT responds with documentation and automatic responses, no agent. But if the ticket is in chat, maybe it's already a live interaction? However, the system is a triage system for tickets, so it's about routing the ticket to the right queue. The ticket has not been resolved yet.\n\nPerhaps the best action is T1_GENERAL for general support. But we need to consider if there is any other rule that might be more specific. Since the motor couldn't decide, there might be conflicting rules. We'll write a rule that covers this case.\n\nLet's think about the attributes: customer_tier free, severity 4, product mobile, channel chat, prior_tickets_30d 0, off_hours false, language en. A rule could be: if customer_tier is free and severity is 4 and product is mobile and channel is chat, then T1_GENERAL? But that seems too specific. We need a generalizable rule. Maybe: For free tier users with low severity (4) and no prior tickets, route to T1_GENERAL. But we should consider that free tier users often get self-service. However, the manual says T1_GENERAL handles general queries. Since it's a chat, it might be a direct interaction, so T1 is appropriate.\n\nAlternatively, it could be SELF_SERVICE_DEFLECT because free tier and low severity might be automated. But the manual says SELF_SERVICE_DEFLECT is for responses without agent. But if the ticket is already in chat, maybe they want an agent? The ticket is \"in impasse\" meaning the motor couldn't decide, so we need to assign a queue.\n\nI think T1_GENERAL is safe. But we need to see if any existing rules might conflict. Since the base of rules is not shown, we will assume we need to write a rule and then later the system may show conflicting rules. The response format expects \"beats\" and \"loses_to\" to reference existing rule IDs. Since we don't have them, we can leave them empty or we'll be shown later? The instruction says: \"BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we first write the rule, then later we might see conflicts. So for now, we just write the rule and action, and leave beats and loses_to empty for now? But the format requires an array. We'll put empty arrays.\n\nWe need to write conditions that match this ticket. The conditions should be general enough to cover analogous cases. For example: customer_tier eq \"free\", severity gte 4? Actually severity 4 is low, so maybe severity eq 4? But could be severity 4 or lower? Typically, severity 4 is the lowest, so \"severity eq 4\" is fine. But we might want to include severity 4 only? Or maybe severity 4 and 3? But free tier users with severity 4 are likely general. To be generalizable, we might say: if customer_tier is free and severity is 4 (lowest), then T1_GENERAL. But also consider prior_tickets_30d? That is 0, but could be low. Not sure.\n\nAlternatively, we could use: customer_tier free, severity 4, product mobile? That is too specific. Better to generalize: For free tier users with low severity (4) and no prior tickets? But prior_tickets_30d is 0, but might be a factor. However, the rule should be simple.\n\nGiven the manual, T1_GENERAL is for first level support. Free tier users often get T1. So a rule like: if customer_tier is \"free\" and severity is 4, then T1_GENERAL. But what about other products? It should apply to any product. So we can omit product. Channel? Chat might be handled by T1 as well. So we can just use customer_tier and severity.\n\nBut we need to ensure the rule matches this ticket exactly. The ticket has customer_tier free, severity 4, so it would match.\n\nLet's write the rule:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Free tier users with lowest severity (4) typically have general inquiries that do not require technical or specialized support, so they are routed to T1_GENERAL for first-level assistance.\"\n}\n\nBut we should consider if this rule might conflict with other rules. For example, if there is a rule for free tier and severity 4 that sends to SELF_SERVICE_DEFLECT, then we have a conflict. But since we don't know, we leave beats/loses_to empty. The system will later tell us if there are conflicts.\n\nAlternatively, we could be more precise: include prior_tickets_30d eq 0? But that might be too narrow.\n\nGiven the ticket, it's a chat, off hours false, language en. Not critical.\n\nI think the rule is reasonable.\n\nWe'll output JSON as required.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0003",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 3,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Mobile product issues with severity 2 require technical diagnosis and are not general queries, so they belong to T2_TECHNICAL. The rule is abstracted by severity and product to cover all similar mobile severity 2 tickets regardless of customer tier or channel."
+          },
+          "failure": null,
+          "seconds": 8.36,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000687-CvlOWiyUwRVxm3B2yIVt",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1043,
+              "reasoning_tokens": 911,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the correct queue for this ticket. The ticket has severity 2, product mobile, customer tier pro, channel email, no security keyword, off_hours false, prior_tickets_30d 2, language de. The manual describes queues: T1_GENERAL, T2_TECHNICAL, T3_ENGINEERING, BILLING_SPECIALIST, SECURITY_INCIDENT, ACCOUNT_MANAGER, ONCALL_ESCALATION, SELF_SERVICE_DEFLECT.\n\nGiven severity 2 (high, but not critical), product mobile (likely technical issue), customer tier pro (not enterprise), prior tickets low (2), off hours false. No security keywords. This seems like a technical support issue. Could be T2_TECHNICAL. Possibly T1_GENERAL if it's a simple query, but severity 2 suggests not trivial. Also mobile product often has technical issues. I think T2_TECHNICAL is appropriate.\n\nNow we need to write a rule that covers this ticket and similar future cases. The rule should generalize: maybe severity 2, product mobile, customer tier pro? But need to consider other attributes. Could be: severity lte 2, product mobile, channel email? But need to avoid overgeneralization. Perhaps: severity 2 and product mobile and customer_tier pro? But that's too specific. Better: severity 2, product mobile, and not security keyword? But security keyword false is default.\n\nAlternatively, think about what makes it different from other rules. Since we don't know existing rules, we have to make a reasonable abstraction. Possibly: \"Mobile technical issues with severity 2 should go to T2_TECHNICAL\". But we need to consider that severity 2 might also go to T3_ENGINEERING if it's a bug? However, manual says T2_TECHNICAL diagnoses and resolves technical incidents, T3_ENGINEERING is for product failures needing code investigation. Severity 2 is high but not critical. Typically, severity 2 goes to T2 unless it's a known bug. Since we don't have more info, T2 is safe.\n\nWe need to output conditions as a list of objects. For example: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}, ...]. But we need a rule that matches this ticket. Possibly: severity eq 2, product eq mobile, customer_tier eq pro? But that's too narrow. Better: severity eq 2 and product eq mobile. That covers this ticket and any mobile severity 2 ticket. But what about severity 2 mobile with different tier? That might also be similar. So conditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}]. But we also need to consider that severity 2 might be handled by T1 if it's a simple question? But typically severity 2 indicates some urgency, so T2.\n\nWe also need to decide beats and loses_to. Since we don't have existing rules, we leave them empty for now. But the instruction says: \"Si no hay ninguna relacion que declarar, dejalos vacios.\" So we set beats: [], loses_to: [].\n\nNote: justify abstraction level. We choose to abstract by severity and product because these are key drivers for technical support. Customer tier might not matter as much for mobile technical issues.\n\nThus, output JSON.\n\nBut wait: The ticket has language de. Should we consider language? Probably not; it's not a factor in routing according to manual. So ignore.\n\nAlso, channel email: not relevant.\n\nSo final rule: action: \"T2_TECHNICAL\", conditions: [{\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}], beats: [], loses_to: [], note: \"Mobile product issues with severity 2 require technical diagnosis and are not general queries, so they belong to T2_TECHNICAL. The rule is abstracted by severity and product to cover all similar mobile severity 2 tickets regardless of customer tier or channel.\"",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0004",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 6,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "BILLING_SPECIALIST",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Todos los tickets del producto billing deben ir a BILLING_SPECIALIST, independientemente de severidad o tier, ya que requieren conocimiento especializado en facturaci\u00f3n. Esta regla es general y no tiene conflictos conocidos."
+          },
+          "failure": null,
+          "seconds": 4.58,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000695-LaDbM9ZwEHHOdx5QXyZF",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1323,
+              "completion_tokens": 653,
+              "reasoning_tokens": 542,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the queue for this ticket. Ticket details: has_security_keyword=false, severity=4 (low), customer_tier=pro, product=billing, channel=portal, prior_tickets_30d=8, off_hours=false, language=es.\n\nThe manual: BILLING_SPECIALIST handles billing issues (invoices, payments). This ticket is about billing product. Severity is low (4), but billing often requires specialist. However, T1_GENERAL might handle general inquiries. But product is billing, so likely billing specialist. Also, customer tier is pro, not enterprise, but still pro. No security keyword. Channel portal. Prior tickets 30d=8, not too high. Off hours false. Language es.\n\nWe need to write a rule that covers this ticket and similar ones. The rule should assign to BILLING_SPECIALIST. Conditions: product eq billing, and maybe severity? But severity is low, but billing tickets could be low severity. Also customer_tier? Could be any. But we want to capture billing product tickets that are not security-related. Since security is false, that's fine.\n\nBut we must consider existing rules? Not given. So we assume no existing rules? The instructions say \"BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we write a rule now, and later we may need to adjust beats/loses_to if conflicts arise. For now, we just output the rule.\n\nThe rule should be generalizable: for any billing product ticket, send to BILLING_SPECIALIST. But maybe there are exceptions? For example, if security keyword true, then SECURITY_INCIDENT. But we can assume that rule exists. So our rule: conditions: product eq billing. That's simple.\n\nBut we need to consider if other rules might cover this? Since we don't know, we set beats and loses_to empty for now. The note should justify.\n\nAction: BILLING_SPECIALIST.\n\nConditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}]\n\nNote: \"Todos los tickets del producto billing deben ir a BILLING_SPECIALIST, independientemente de severidad o tier, ya que requieren conocimiento especializado en facturaci\u00f3n. Esta regla es general y no tiene conflictos conocidos.\"\n\nBut we must ensure it matches this ticket: product=billing, yes.\n\nNow output JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": [
+            "R0001",
+            "R0003"
+          ],
+          "copies": [],
+          "left_out": {},
+          "listed": [
+            "R0003",
+            "R0001"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "BILLING_SPECIALIST",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "beats": [
+              "R0003",
+              "R0001"
+            ],
+            "loses_to": [],
+            "note": "Los tickets del producto billing requieren especialista en facturaci\u00f3n, incluso si el cliente es free o enterprise con severidad 4. Por tanto, esta regla es una excepci\u00f3n a las reglas que env\u00edan esos perfiles a T1_GENERAL."
+          },
+          "failure": null,
+          "seconds": 5.12,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000700-lRusDmqrIrO0ZpvZNPX5",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1625,
+              "completion_tokens": 545,
+              "reasoning_tokens": 419,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "Analicemos el solapamiento. Mi regla es: product eq billing -> BILLING_SPECIALIST. Las reglas existentes son:\n\n- R0003: customer_tier free AND severity eq 4 -> T1_GENERAL\n- R0001: customer_tier enterprise AND severity eq 4 -> T1_GENERAL\n\nMi regla no contiene ni est\u00e1 contenida por ninguna de estas. Se solapan cuando se cumple mi condici\u00f3n (product=billing) y adem\u00e1s se cumple la condici\u00f3n de la otra (por ejemplo, free y severity 4). En ese caso, ambas reglas casan. Mi regla es m\u00e1s espec\u00edfica? No, porque mi regla solo requiere product=billing, mientras que R0003 requiere tier=free y severity=4. No hay contenci\u00f3n: mi regla no est\u00e1 contenida en R0003 (porque hay casos con product=billing que no son free/severity4), y R0003 no est\u00e1 contenida en mi regla (porque hay casos free/severity4 que no son billing). Es un solapamiento parcial. Por lo tanto, necesito declarar prioridad. \u00bfCu\u00e1l debe ganar? Seg\u00fan la pol\u00edtica, los tickets de billing deben ir a BILLING_SPECIALIST, independientemente del tier o severidad. Incluso si el ticket es de un cliente free con severidad 4, si es de billing, debe ir a especialista. Por tanto, mi regla es una excepci\u00f3n a las reglas generales que env\u00edan a T1_GENERAL para free/severity4. Debo poner mi regla en beats frente a R0003 y R0001, ya que mi regla debe ganar cuando se cumplan ambas condiciones. Adem\u00e1s, notar que mi regla tambi\u00e9n podr\u00eda solaparse con otras, pero solo se me listan estas. As\u00ed que beats = [\"R0003\", \"R0001\"]. loses_to vac\u00edo.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0005",
+      "copy_of": null,
+      "listed": [
+        "R0003",
+        "R0001"
+      ],
+      "order": []
+    },
+    {
+      "idx": 7,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "API issues with severity 3 or 4 are technical problems that require diagnostic and resolution by T2, as they are not critical enough for engineering or on-call escalation, but need technical expertise beyond general support."
+          },
+          "failure": null,
+          "seconds": 12.9,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000705-u7sjrtncrsse8THQXPoy",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1822,
+              "reasoning_tokens": 1699,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the correct queue for this ticket. The ticket: severity 3, customer_tier free, product api, channel chat, prior_tickets_30d 2, off_hours false, language de, has_security_keyword false.\n\nGiven the manual: T1_GENERAL for general inquiries, T2_TECHNICAL for technical issues, T3_ENGINEERING for product bugs, BILLING_SPECIALIST for billing, SECURITY_INCIDENT for security, ACCOUNT_MANAGER for account management, ONCALL_ESCALATION for critical off-hours, SELF_SERVICE_DEFLECT for deflection to documentation.\n\nThe ticket is about \"api\" product, severity 3 (medium), free tier, chat channel. Likely a technical issue with the API. Not security, not billing, not account management. Not critical (severity 3 not 1 or 2?). Could be a general usage question? But API is technical. Possibly T2_TECHNICAL. However, free tier customers might be handled by T1? But API issues usually require technical support. Also, off_hours false, so no need for on-call. Has no security keyword. So likely T2_TECHNICAL.\n\nBut we need to write a rule that covers this ticket and analogous cases. The conditions: product = api, severity <= 3? Actually severity 3. Could be: if product is api and severity is not critical (1) and not low (4)? But need to think about what makes it technical. Alternatively, perhaps for free tier, api issues go to T2? But note that T1 handles general queries, T2 technical. So any technical issue with the API should go to T2. But also, if it's a simple usage question, T1 might handle. However, the manual says T1: \"Consultas generales, dudas de uso y peticiones que no necesitan un diagnostico tecnico.\" So if the user has a question about using the API, that might be T1. But this ticket is in impasse, meaning the symbolic engine couldn't decide. So we need to make a decision.\n\nMaybe the ticket is about a problem with the API that requires technical diagnosis. Severity 3 is medium, not critical. For free tier, they might not have access to T2? Actually, free tier customers can still get technical support? Usually free tier gets limited support, but here T2 is for all tiers? The manual doesn't specify tier restrictions. So likely T2 for technical issues.\n\nBut we need to write a rule generalizable. Let's think about what other similar tickets: product api, severity 3, free tier. Maybe the rule: if product is api and severity is 3 and customer_tier is free, then T2? But that's too specific. Better: if product is api and severity is 3, then T2? Or if product is api and severity >= 3? Actually severity 3 is medium, 4 is low. For low severity, maybe self-service? But not sure.\n\nAlternatively, consider that the ticket has prior_tickets_30d=2, not many. Language German. Channel chat. Chat might indicate immediate help, but not necessarily.\n\nGiven that the motor is symbolic, we need to define a rule that matches this ticket. Let's propose: T2_TECHNICAL. Conditions: product eq \"api\", severity lte 3? But lte 3 includes severity 1,2,3. Severity 1 and 2 might go to on-call or engineering? Actually severity 1 is critical, might go to ONCALL_ESCALATION if off-hours? But off-hours false, so maybe T3 or T2? Need to consider existing rules? But we are told base rules not shown, but we might need to consider that the rule we write will be compared to existing ones.\n\nWe also need to consider if any existing rule would cover this ticket. Since it's in impasse, there must be at least two rules that conflict. But we don't know which. So we need to write a rule that resolves this ticket.\n\nPerhaps the conflict is between T1 and T2? Or between T2 and T3? Given product api, it's technical. But free tier might be directed to self-service? However, self-service deflect is for documentation. The ticket has prior_tickets_30d=2, so not first time. Maybe they tried self-service? Not sure.\n\nI'll decide on T2_TECHNICAL. Conditions: product eq \"api\", severity gte 2? Actually we need to be general. For API issues, if severity is 3 or 4, it's likely not critical but still technical. But severity 4 might be low priority, could be deflected? However, the manual says T1 handles general queries, not technical. So any API issue that is not a simple usage question should be T2. But to distinguish from T1, we could add condition that the issue is not a general query? But we don't have that attribute.\n\nMaybe we can use the channel? Chat could be for quick questions. But that's not a reliable indicator.\n\nAlternatively, consider that free tier customers might be routed to T1 for non-critical issues? But the product is api, which is a technical product. I think T2 is appropriate.\n\nLet's write the rule: action T2_TECHNICAL, conditions: [{\"attr\":\"product\",\"op\":\"eq\",\"value\":\"api\"}, {\"attr\":\"severity\",\"op\":\"gte\",\"value\":3}]? But gte 3 includes 3 and 4. Or lte 3 includes 1,2,3. We need to pick one that covers this ticket. Since severity is 3, either works. But to be general, we might want to cover only medium to low severity for T2? Actually, high severity (1,2) might go to T3 or on-call. So we want to exclude critical. So condition: severity gte 3 (i.e., 3 or 4). That would cover this ticket. But is severity 4 (low) also T2? Maybe low severity API issues could be handled by self-service or T1? But if it's technical, T2. However, we need to be careful. Perhaps the rule should be: if product is api and severity is 3 or 4, then T2. But also consider customer_tier free? Free tier might have lower support level? Not specified.\n\nGiven the manual, there's no tier-based restriction. So I'll go with product api and severity >= 3.\n\nAlso, we need to consider \"beats\" and \"loses_to\". Since we don't know existing rules, we can't specify. But we are told: \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So after we submit, we might get feedback. But the instruction says: \"Responde UNICAMENTE con un objeto JSON\". So we need to provide the rule now, and then later we might adjust? Actually, the prompt says: \"Escribe tu regla para este ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are to write the rule now, and then after that, the system might tell us about conflicts. But we need to provide beats and loses_to now. Since we don't know, we can set them empty and then adjust later? But the instruction says \"Responde UNICAMENTE con un objeto JSON\" and we must include those fields. We can set them to empty arrays.\n\nLet's craft the JSON.\n\nNote: The note should justify the abstraction and priority. I'll write: \"API issues with medium to low severity (3 or 4) are technical in nature and should be handled by T2_TECHNICAL, as they require technical diagnosis but are not critical enough for T3 or on-call.\"\n\nBut also consider that free tier might be handled differently? Not in manual.\n\nI'll proceed.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": [
+            "R0001",
+            "R0003"
+          ],
+          "copies": [],
+          "left_out": {},
+          "listed": [
+            "R0001",
+            "R0003"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "api"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              }
+            ],
+            "beats": [
+              "R0001",
+              "R0003"
+            ],
+            "loses_to": [],
+            "note": "La regla para API con severidad >=3 es una excepci\u00f3n t\u00e9cnica a las reglas que env\u00edan severidad 4 a T1 para enterprise y free, porque los problemas de API son inherentemente t\u00e9cnicos y requieren T2 incluso en severidad baja."
+          },
+          "failure": null,
+          "seconds": 5.0,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000718-xYKB2Ql0CfB27Yhw6WQP",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1633,
+              "completion_tokens": 672,
+              "reasoning_tokens": 529,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to analyze the overlap between the new rule (action T2_TECHNICAL, conditions: product=api AND severity >=3) and existing rules R0001 and R0003.\n\nR0001: customer_tier eq enterprise AND severity eq 4 => T1_GENERAL\nR0003: customer_tier eq free AND severity eq 4 => T1_GENERAL\n\nOur rule covers cases where product=api and severity >=3. This includes severity=3 and severity=4. For severity=4, it overlaps with R0001 and R0003 when customer_tier is enterprise or free respectively. But note: our rule does NOT mention customer_tier, so it applies to all tiers. The existing rules are specific to particular tiers and severity exactly 4. So our rule is more general in terms of severity (>=3) and product (api) but less specific in customer_tier (any). The overlap: when customer_tier is enterprise and severity=4 and product=api, both rules apply. Which one should take precedence? The manual says: if one rule is a particular case of another (i.e., its conditions are a subset), then the more specific wins automatically (level 1). Here, our rule has conditions: product=api, severity>=3. R0001 has: customer_tier=enterprise, severity=4. Neither set of conditions is a subset of the other. They are overlapping but not contained. So we need to declare priority. The question: is our rule an exception to those rules? Or should those rules take precedence? Consider the policy: T1_GENERAL is for general queries, T2_TECHNICAL for technical issues. API issues are inherently technical. Severity 4 is low, but still technical. The existing rules send enterprise and free tier with severity 4 to T1. But our rule says any API issue with severity >=3 goes to T2. That would override the existing rule for severity 4 API issues for enterprise/free. That seems reasonable because API issues are technical and should go to T2 even if low severity. So our rule should beat those rules where they overlap. Therefore, we put R0001 and R0003 in beats. We don't need loses_to because we are overriding them. Also, note that our rule applies to severity 3 as well, which is not covered by those existing rules, so no conflict there. So final answer: same action and conditions, beats: [\"R0001\", \"R0003\"], loses_to: [].",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0006",
+      "copy_of": null,
+      "listed": [
+        "R0001",
+        "R0003"
+      ],
+      "order": []
+    },
+    {
+      "idx": 8,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T1_GENERAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 3
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "mobile"
+              },
+              {
+                "attr": "channel",
+                "op": "eq",
+                "value": "portal"
+              },
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": false
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Free tier customers with medium severity mobile product issues during business hours via portal are typical first-level support cases, as they do not involve security, billing, or critical incidents."
+          },
+          "failure": null,
+          "seconds": 9.32,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000723-svd6RePjQbhQ26C7wGrA",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1362,
+              "reasoning_tokens": 1167,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the correct queue for this ticket. The ticket has: severity 3 (medium), customer_tier free, product mobile, channel portal, prior_tickets_30d 3, off_hours false, language es, no security keyword.\n\nGiven the manual:\n- T1_GENERAL: first level, general inquiries, usage doubts, requests not needing technical diagnosis.\n- T2_TECHNICAL: technical support, diagnose and resolve technical incidents.\n- T3_ENGINEERING: product bugs needing engineer to investigate code.\n- BILLING_SPECIALIST: billing issues.\n- SECURITY_INCIDENT: security incidents.\n- ACCOUNT_MANAGER: key accounts, at-risk accounts.\n- ONCALL_ESCALATION: critical incidents outside hours.\n- SELF_SERVICE_DEFLECT: deflect to self-service.\n\nThis ticket is from a free tier customer, with severity 3, product mobile, channel portal. No indication of security, billing, or account management. It's a general technical issue? The product is mobile, which could be a technical issue. But severity 3 is medium. Prior tickets 3 in 30 days, so not a new user but not excessive.\n\nGiven free tier, they likely get T1 or maybe T2 if technical. However, the manual says T1 is for general inquiries and usage doubts. T2 is for technical incidents. This could be a technical issue with the mobile app. But we need to decide.\n\nAlso, language is Spanish, but that doesn't change queue.\n\nSince the motor is stuck, we need to write a rule that matches this ticket and decide the action. Let's think of a generalizable rule: For free tier customers with medium severity (3) and product mobile, and no security keyword, likely go to T1_GENERAL? Or T2_TECHNICAL? \n\nLooking at typical triage: free tier often gets lower level support. Severity 3 is not critical. Prior tickets 3 might indicate they have some history. Possibly they need technical help, but T1 can handle many issues and escalate if needed. However, the manual says T1 is for general inquiries and usage doubts. A technical issue with mobile might be beyond T1? But T1 can diagnose and escalate to T2 if needed. Since the motor is symbolic, we need to assign a queue.\n\nAnother possibility: SELF_SERVICE_DEFLECT? But severity 3 and prior tickets 3, maybe not. Usually self-service for very low severity or known issues.\n\nI think T1_GENERAL is appropriate for a free tier customer with a non-critical issue. The product is mobile, but mobile support could be handled by T1 first. The rule should be general: For free tier, severity 3, product mobile, channel portal, off_hours false, no security keyword, then T1_GENERAL.\n\nBut we must consider existing rules. Since not shown, we assume we need to declare beats/loses_to if any. We don't know existing rules, so we leave beats and loses_to empty for now. If the system later shows conflicting rules, we adjust.\n\nThus, I'll propose action T1_GENERAL.\n\nConditions: customer_tier eq free, severity lte 3? Actually severity is exactly 3. But to generalize, maybe severity between 3 and 4? But we can use eq 3. But better to use severity lte 3? But then it would also cover 1 and 2, which might be higher priority. Better to keep specific: severity eq 3. Also product eq mobile, channel eq portal, off_hours eq false, has_security_keyword eq false. But to avoid over-specific, we can generalize: for free tier, severity 3, product mobile, channel portal, off_hours false. That is already quite specific. But the task is to write a generalizable rule that covers this and similar cases. Similar cases: free tier, severity 3, mobile product, portal channel, during business hours, no security. That seems reasonable.\n\nBut note: prior_tickets_30d=3 might be irrelevant? Could be included or not. I think we can omit it to keep rule general. Similarly language is es, but we can ignore language as it doesn't affect queue per manual.\n\nThus, conditions: [\n  {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n  {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3},\n  {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"},\n  {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"portal\"},\n  {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": false},\n  {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}\n]\n\nBut that might be too many conditions. Alternatively, we can simplify: for free tier and severity 3 and product mobile, regardless of channel? But channel is portal, but maybe other channels also similar. However, to be safe, include channel.\n\nBut we need to ensure the rule matches this ticket exactly. It does.\n\nNow, note: there might be existing rules that cover part of this. Since we don't know, we leave beats and loses_to empty.\n\nAction: T1_GENERAL.\n\nNote justification: \"Free tier customers with medium severity mobile product issues during business hours via portal are typical first-level support cases, as they do not involve security, billing, or critical incidents.\"\n\nThus, final JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0007",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 9,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T1_GENERAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "integrations"
+              },
+              {
+                "attr": "severity",
+                "op": "lte",
+                "value": 3
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Free tier customers with integrations product and severity \u22643 are typically first-level queries, so they go to general support."
+          },
+          "failure": null,
+          "seconds": 7.51,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000732-knq6hmFYIbGSBv0I8CXu",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1323,
+              "completion_tokens": 923,
+              "reasoning_tokens": 798,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to analyze the ticket and determine the correct queue. The ticket has: free tier, severity 3, product integrations, chat channel, no security keyword, 0 prior tickets, not off hours, Spanish language.\n\nAccording to the routing manual, we need to decide which queue is appropriate. The ticket is a general query or technical issue? Product is integrations, which could be technical. But severity 3 is moderate. Customer is free tier, no prior tickets. Channel is chat.\n\nPossible queues: T1_GENERAL for general queries, T2_TECHNICAL for technical issues, SELF_SERVICE_DEFLECT for self-service. Since it's a chat, it's likely a live interaction. Given it's a free tier customer with no prior tickets, it might be a simple question. But we need to see if there's any rule that would send it to a specific queue.\n\nSince the base of rules is not shown, we have to write a rule that matches this ticket and decide its action. We also need to consider potential conflicts with existing rules. But we are told: \"BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este ticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we only need to propose a rule. Later we might get feedback about overlaps.\n\nBut for now, we need to output the JSON with conditions, action, beats, loses_to (empty for now), and note.\n\nGiven the ticket: free tier, severity 3, product integrations, chat, no prior tickets, off hours false, language es. What is the best queue? Possibly T1_GENERAL because it's a general query from a free user. But integrations might be technical. However, severity 3 is not critical. Free tier customers typically get T1. Also, 0 prior tickets suggests a new user. Could also be SELF_SERVICE_DEFLECT but since it's a chat, it's likely an agent interaction. The manual says SELF_SERVICE_DEFLECT is for automated responses without agent. So probably not.\n\nI think T1_GENERAL is appropriate. But we need to write a rule that matches this ticket and others like it. Conditions: customer_tier eq free, product eq integrations, severity lte 3? Actually severity 3, but we could make it more general. Since free tier customers with product integrations and severity up to 3 might go to T1. But need to consider if there are other rules for free tier with integrations.\n\nLet's propose: conditions: [{\"attr\":\"customer_tier\",\"op\":\"eq\",\"value\":\"free\"}, {\"attr\":\"product\",\"op\":\"eq\",\"value\":\"integrations\"}, {\"attr\":\"severity\",\"op\":\"lte\",\"value\":3}]? But severity 3 is lte 3. Also maybe channel? Not necessary.\n\nBut to be precise, we should match exactly the ticket's attributes? The rule should be generalizable. So we can define a rule that covers this ticket and similar cases. For example, free tier customers with product integrations and severity <=3 go to T1_GENERAL. But if severity 4, maybe SELF_SERVICE? Not sure.\n\nAlternatively, maybe it should go to T2_TECHNICAL because integrations is a technical product. But free tier usually gets T1 first. Without more context, I think T1 is safe.\n\nLet's set action: \"T1_GENERAL\". Conditions: customer_tier eq free, product eq integrations, severity lte 3. Note: \"Free tier customers with integrations product and severity <=3 are routed to general support as they typically have basic queries.\"\n\nBut we also need to consider language? Not necessary.\n\nSince we don't know existing rules, we leave beats and loses_to empty.\n\nNow output JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0008",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 13,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "pro",
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Selecciono T2_TECHNICAL porque es un ticket de severidad alta (2) en horario no laboral de un cliente de pago. No es cr\u00edtico (severidad 1) como para requerir ONCALL, pero tampoco es tan bajo como para autoservicio. La regla abstrae a clientes de pago (pro o superior) con severidad 2 fuera de horas, que probablemente necesiten soporte t\u00e9cnico real al siguiente turno."
+          },
+          "failure": null,
+          "seconds": 10.03,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000740-knLLvzJg9mgEU38eiD7u",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1275,
+              "reasoning_tokens": 1060,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the destination for this ticket. Attributes: no security keyword, severity 2 (high), customer tier pro, product dashboard, channel portal, prior tickets 30d 2, off_hours true, language en.\n\nGiven off_hours true and severity 2 (high but not critical). Also pro tier. The manual says ONCALL_ESCALATION is for critical incidents that cannot wait. Severity 2 is not critical (severity 1 is critical). But off_hours true means outside business hours. Could it be something that needs immediate attention? But severity 2 is \"high\" but not critical. The manual: \"Guardia. Incidentes cr\u00edticos que no pueden esperar al siguiente turno, a cualquier hora.\" So only for critical. So likely not ONCALL.\n\nSince it's pro tier and off_hours, but product dashboard. Could be T2_TECHNICAL? But severity 2, high. The ticket is from portal, prior tickets low. No security.\n\nMaybe it should go to T1_GENERAL? But severity 2 is high, so probably technical. Also off_hours, but T2 works during business hours? Actually the queues are for different teams; ONCALL is for after hours. But if it's not critical, it might wait.\n\nGiven off_hours true, maybe it should be handled by the next business day? But the system might need to decide now. Could be SELF_SERVICE_DEFLECT? But severity 2, not low.\n\nMaybe it should go to T2_TECHNICAL. But we need to consider if there are existing rules that might conflict. Since we don't have the base rules list, we must write a rule that captures this ticket. The rule should be generalizable: e.g., for pro tier, severity 2, off_hours, product dashboard? But that's too specific.\n\nBetter: off_hours and severity 2 and not critical? Or maybe combine with tier.\n\nI think a reasonable rule: if off_hours is true and severity is 2 (high) and customer tier is pro or above, then route to T2_TECHNICAL? But off_hours might require ONCALL only for severity 1. So for severity 2, it can wait.\n\nAlternatively, maybe it should go to T1_GENERAL? But severity 2 is high, so likely technical.\n\nGiven that the product is dashboard, which is a core product, technical issues.\n\nI'll propose action T2_TECHNICAL.\n\nNow, conditions: need to match this ticket. Use off_hours true, severity 2, customer tier pro? But to be general, maybe tier in [pro, business, enterprise]? But severity 2 and off_hours. Could also include product dashboard? But not necessary.\n\nLet's define conditions: off_hours true, severity lte 2? Actually severity 2 is high, but we could say severity lte 2 (including 1). But severity 1 would go to ONCALL typically. So we need to avoid overlap. If we use severity lte 2, it would also cover severity 1, which should be ONCALL. So we need to exclude severity 1. So condition: severity eq 2? But then only exactly severity 2. That is specific. Alternatively, we could say severity gte 2? That would include 2,3,4. But then it's too broad. Better to combine with off_hours and tier.\n\nMaybe: off_hours true, severity in [2,3,4]? But then low severity might go to T1. So maybe severity eq 2 specifically.\n\nBut the rule should be generalizable for similar cases. Perhaps: off_hours true, severity eq 2, and customer_tier in [pro, business, enterprise]? That seems reasonable: for paying customers with high severity outside hours, route to T2. But why not T1? Because severity 2 is high, requires technical.\n\nAlternatively, maybe it should be ONCALL? But manual says critical only. So not.\n\nGiven that the ticket has prior_tickets_30d = 2, not a repeat issue.\n\nI think T2_TECHNICAL is appropriate.\n\nNow, we need to consider beats and loses_to. Since we don't have the existing rules, we will leave those arrays empty for now. But note: if there are existing rules that also match this ticket and are from different queues, we need to declare priority. Since we are not shown, we assume no conflicts? But the instruction says \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are in the first step; we write the rule, and later we might be told about conflicts. So for now, we output the rule with empty beats and loses_to.\n\nBut careful: the system might expect that we declare priority if we know of any common conflicts. Since we don't know, we leave empty.\n\nThe note should justify the abstraction level.\n\nLet's write the JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0005"
+          ],
+          "same_queue": [
+            "R0004"
+          ],
+          "unplaced": [
+            "R0005"
+          ],
+          "copies": [],
+          "left_out": {},
+          "listed": [
+            "R0005"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "off_hours",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "customer_tier",
+                "op": "in",
+                "value": [
+                  "pro",
+                  "business",
+                  "enterprise"
+                ]
+              }
+            ],
+            "beats": [],
+            "loses_to": [
+              "R0005"
+            ],
+            "note": "Mi regla cubre tickets de severidad 2 fuera de horas para clientes de pago, pero R0005 es espec\u00edfica para productos de billing. Dado que billing tiene su propia cola especializada, cuando ambas coincidan debe prevalecer BILLING_SPECIALIST, por lo que mi regla pierde frente a R0005."
+          },
+          "failure": null,
+          "seconds": 6.83,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000750-QqUQlpyrsdusAzINvV7y",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1706,
+              "completion_tokens": 840,
+              "reasoning_tokens": 652,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "El ticket no es de billing (product = dashboard), as\u00ed que la regla R0005 no se solapa realmente con mi regla porque mi condici\u00f3n requiere product eq \"dashboard\", pero la regla R0005 es sobre billing. Sin embargo, el motor dice que se solapan en el espacio completo de casos. Revisemos: mi regla no menciona product, as\u00ed que cubre todos los productos. La regla R0005 cubre product eq billing. Ambas pueden casar un ticket con product=billing y off_hours=true, severity=2, customer_tier=pro. Eso es un solapamiento. Mi regla es m\u00e1s espec\u00edfica porque tiene condiciones adicionales (off_hours, severity, customer_tier). La regla R0005 solo tiene product=billing. Por lo tanto, mi regla es una excepci\u00f3n a R0005: cuando el ticket es de billing pero adem\u00e1s cumple mis condiciones, deber\u00eda ir a T2_TECHNICAL en lugar de BILLING_SPECIALIST? Eso no tiene sentido porque si es billing, deber\u00eda ir a BILLING_SPECIALIST. Sin embargo, el manual dice que BILLING_SPECIALIST es para facturaci\u00f3n. Un ticket de billing con severidad 2 fuera de horas de un cliente pro podr\u00eda ser t\u00e9cnico? Pero la regla existente R0005 es general para billing. Mi regla es m\u00e1s espec\u00edfica (off_hours, severity, customer_tier). Deber\u00eda declarar que mi regla gana a R0005? Pero eso har\u00eda que un ticket de billing con esas condiciones vaya a T2_TECHNICAL, lo cual puede no ser correcto. El sistema de triaje debe priorizar seg\u00fan la pol\u00edtica. Como el ticket actual no es de billing, no importa. Pero debo declarar la relaci\u00f3n. Probablemente, la regla de billing debe prevalecer sobre la m\u00eda porque es un especialista. Sin embargo, mi regla tiene condiciones adicionales que la hacen m\u00e1s espec\u00edfica. En teor\u00eda, si una regla es m\u00e1s espec\u00edfica, deber\u00eda ganar (nivel 1). Pero aqu\u00ed no hay contenci\u00f3n porque mi regla no contiene a R0005 ni viceversa. R0005 cubre un subconjunto (product=billing) y mi regla cubre otro subconjunto (off_hours, severity, customer_tier). Se intersecan. Por lo tanto, debo declarar prioridad. Dado que el manual indica que BILLING_SPECIALIST es para facturaci\u00f3n, y si un ticket de billing cumple condiciones de severidad alta fuera de horas, quiz\u00e1s deber\u00eda ir a BILLING_SPECIALIST igualmente, o tal vez a ONCALL si es cr\u00edtico. Pero no es cr\u00edtico (severity 2). Creo que lo correcto es que la regla de billing sea m\u00e1s importante, porque el producto es el factor determinante. Por tanto, mi regla debe perder frente a R0005. As\u00ed que la pongo en loses_to.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0005"
+          ],
+          "same_queue": [
+            "R0004"
+          ],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0009",
+      "copy_of": null,
+      "listed": [
+        "R0005"
+      ],
+      "order": []
+    },
+    {
+      "idx": 15,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "customer_tier",
+                "op": "eq",
+                "value": "free"
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 2
+              },
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "dashboard"
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Un ticket de tier free con severidad 2 en el producto dashboard es una incidencia t\u00e9cnica que debe ir a T2_TECHNICAL. La regla es espec\u00edfica para este perfil, cubriendo casos an\u00e1logos."
+          },
+          "failure": null,
+          "seconds": 8.86,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000757-ZgpR6X6GR7ZauwBWbCSD",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 1367,
+              "reasoning_tokens": 1217,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the appropriate queue for this ticket. The ticket: severity=2 (high), customer_tier=free, product=dashboard, channel=email, no security keyword, off_hours=false, language=de, prior_tickets_30d=4.\n\nFirst, consider the manual: T1_GENERAL for general queries, T2_TECHNICAL for technical issues, T3_ENGINEERING for product bugs needing code investigation, BILLING_SPECIALIST for billing, SECURITY_INCIDENT for security, ACCOUNT_MANAGER for key accounts, ONCALL_ESCALATION for critical after-hours, SELF_SERVICE_DEFLECT for deflection.\n\nSeverity 2 is high (not critical, that's 1). Customer tier free. Product dashboard. Channel email. No security. Off hours false. 4 tickets in 30 days.\n\nGiven it's a dashboard product with severity 2, it could be a technical issue. But free tier, so no account manager. Billing? No indication. Security? No keyword. Engineering? Possibly if it's a bug, but severity 2 might be high enough for engineering? Usually T2 handles technical, T3 for bugs that need code fix. Since it's not off-hours, not critical (severity 1), likely T2_TECHNICAL.\n\nBut we need to consider if any rule already exists. Since we don't see the base rules, we must write a rule that matches this ticket and decide queue. The note: \"Decidir la cola de destino correcta para ESTE ticket.\" So we output action and conditions that match this ticket exactly? Or a generalizable rule? The instruction says \"Escribir UNA regla generalizable que lo cubra a el y a casos analogos futuros.\" So we need to write conditions that capture this ticket and similar ones.\n\nThe ticket: free tier, severity 2, dashboard, email, not off-hours, no security, 4 prior tickets, language de. But language might not be relevant for routing? Possibly.\n\nA generalizable rule: For free tier customers with high severity (2) on dashboard product via email, route to T2_TECHNICAL? But is there a reason to route to T3? Severity 2 is high but not critical. Free tier may not warrant engineering. Typically T2 handles technical issues. Also, dashboard is a product, likely technical.\n\nConsider if there is a rule for free tier and severity 2? Possibly.\n\nWe need to anticipate existing rules. Since we don't know them, we might need to declare beats/loses_to later if we see conflicts. But for now, we just output the rule.\n\nI'll propose: conditions: customer_tier eq free, severity lte 2 (since severity 2 is high, but we might want to include 2 only? \"lte 2\" would include 1 and 2, but severity 1 is critical and might go to ONCALL or T3. Better to be specific: severity eq 2? But generalizable: for free tier, high severity (2) on dashboard, route to T2. But maybe also include product eq dashboard? Yes.\n\nAlternative: Could be T3_ENGINEERING if it's a bug? But we don't have info. The ticket doesn't have security keyword, so not security.\n\nLet's decide: T2_TECHNICAL.\n\nBut note: The instruction says \"El motor simbolico no ha podido decidir este ticket.\" So it's an exception. The rule we write should resolve it.\n\nI'll set conditions: customer_tier = free, severity = 2, product = dashboard, channel = email. That matches exactly. But generalizable? Could generalize to any channel? But the ticket is email. Might be too narrow. Better to generalize: free tier, severity 2, product dashboard, any channel? But channel might affect routing? Possibly not. We can omit channel to make it more general. However, the rule must cover this ticket. If we omit channel, it still matches. But we need to ensure it doesn't accidentally match other cases that should go elsewhere. Since we don't know existing rules, we might need to keep it narrow.\n\nGiven that this is an exception handler, we should write a rule that is specific enough to not conflict with existing rules. But we don't know them.\n\nMaybe the ticket is a technical issue on dashboard, so T2. I'll write: customer_tier eq free, severity eq 2, product eq dashboard. That covers this ticket.\n\nNow, beats and loses_to: Since we don't have the base rules list, we leave empty? The instruction says \"Si no hay ninguna relacion que declarar, dejalos vacios.\" So we can leave them empty. But later we might be shown base rules and asked to adjust. For now, we output.\n\nNote: The language is German, but not likely relevant.\n\nI'll output action: \"T2_TECHNICAL\".\n\nConditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"}]\n\nBut we need to ensure it's a valid JSON. Also, note that severity is number, so value 2 without quotes.\n\nBeats and loses_to: empty arrays.\n\nNote: \"Un ticket de tier free con severidad 2 en el producto dashboard es una incidencia t\u00e9cnica que debe ir a T2_TECHNICAL. La regla es espec\u00edfica para este perfil, cubriendo casos an\u00e1logos.\"\n\nBut we could also consider including prior_tickets_30d? 4 is moderate. Not necessary.\n\nI'll proceed.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [],
+          "same_queue": [],
+          "unplaced": [],
+          "copies": [],
+          "left_out": {}
+        }
+      ],
+      "rule_id": "R0010",
+      "copy_of": null,
+      "listed": [],
+      "order": []
+    },
+    {
+      "idx": 17,
+      "kind": "ERROR",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "SELF_SERVICE_DEFLECT",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Billing inquiries with severity 3 or 4 (non-critical) for non-enterprise customers can be deflected to self-service as they are likely common questions that do not require a specialist."
+          },
+          "failure": null,
+          "seconds": 9.16,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000765-ydz3x57AatGVQBlyt4tw",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1377,
+              "completion_tokens": 1322,
+              "reasoning_tokens": 1178,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to generate a rule that matches this ticket and routes to SELF_SERVICE_DEFLECT. The ticket has: has_security_keyword=false, severity=3, customer_tier=pro, product=billing, channel=email, prior_tickets_30d=1, off_hours=false, language=es. The correct action is SELF_SERVICE_DEFLECT. We need to write a condition that generalizes to analogous cases. Since the ticket is about billing (product=billing) and low severity (3), and customer tier pro, and language es? But we should generalize. The note says: \"Este ticket no es un impasse. El motor lo decidi\u00f3, y un revisor ha marcado esa decisi\u00f3n como erronea. La cola correcta de este ticket es SELF_SERVICE_DEFLECT.\" So the previous decision was wrong, now we need to write a rule that would send it to self-service. Possibly the rule should capture billing inquiries that are not urgent, maybe for pro tier? But we need to see what existing rules might conflict. Since we are not shown the base of rules, we need to assume that there are existing rules. The instruction says: \"Si se solapa con reglas existentes de OTRA cola, se te listaran despu\u00e9s.\" So after we write the rule, we may get feedback about overlaps. But for now, we need to propose a rule. Given the ticket, a plausible generalization: For billing product, with severity >= 3 (low priority), and customer tier not enterprise? Or maybe any billing inquiry that is not security-related and not high severity. But we need to be careful. Since the action is SELF_SERVICE_DEFLECT, it means we want to deflect to self-service. Possibly for common billing questions that don't require a specialist. The ticket has language \"es\" (Spanish). Could be a language-specific rule? But that might be too narrow. Better to keep it general: product=billing, severity >= 3, and maybe prior_tickets_30d <= 1? Or just product=billing and severity >= 3? But we need to ensure it doesn't conflict with rules that route billing to BILLING_SPECIALIST. Typically, billing inquiries might go to billing specialist for higher severity or for enterprise. So perhaps our rule should be: if product=billing and severity >= 3 and customer_tier not in [enterprise]? Or something like that. Also note that the ticket has customer_tier=pro, so it's not enterprise. Let's think: The goal is to write a rule that matches this ticket and similar ones. Since the reviewer says the correct action is SELF_SERVICE_DEFLECT, we should create a rule that captures billing issues that are not critical (severity 3 or 4) and possibly for non-enterprise customers? Also, the ticket has prior_tickets_30d=1, which is low. Maybe we can include prior_tickets_30d <= 1 as a condition to indicate it's a new issue that can be deflected. But we need to be careful not to overfit. A reasonable rule: product=billing, severity >= 3 (meaning 3 or 4), customer_tier not in [\"enterprise\"]? But enterprise might need account manager? Actually, enterprise billing might go to account manager or billing specialist. Alternatively, we could use severity >= 3 and product=billing and channel=email? But channel might be too specific. The ticket is via email, but self-service deflection could be for any channel? Possibly. Let's propose a rule:\n\nconditions: [\n  {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n  {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3},\n  {\"attr\": \"customer_tier\", \"op\": \"neq\", \"value\": \"enterprise\"}\n]\n\nThis would match this ticket. But we need to consider if there are existing rules that might also match, like a rule sending billing severity 3 to BILLING_SPECIALIST? We don't know. Since we are asked to write a rule and then later will be shown overlapping rules, we should write a reasonable rule. Also note the language is \"es\". Maybe we should include language? Not necessary. The note says \"justificando el nivel de abstraccion y la prioridad elegidos\". We need to justify. Possibly the abstraction is that billing inquiries with low severity for non-enterprise customers can be handled by self-service. \n\nAlso, we need to consider beats and loses_to. Since we don't know existing rules, we leave them empty for now. But we might later need to specify priorities. However, the instruction says: \"Si se solapa con reglas existentes de OTRA cola, se te listar\u00e1n despu\u00e9s.\" So we will receive that information later. For now, we just output the rule.\n\nThus, I'll output:\n\n{\n  \"action\": \"SELF_SERVICE_DEFLECT\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3},\n    {\"attr\": \"customer_tier\", \"op\": \"neq\", \"value\": \"enterprise\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Billing inquiries with severity 3 or 4 (non-critical) for non-enterprise customers can be deflected to self-service as they are likely common questions that do not require a specialist.\"\n}",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0003",
+            "R0005"
+          ],
+          "same_queue": [],
+          "unplaced": [
+            "R0003"
+          ],
+          "copies": [],
+          "left_out": {
+            "R0005": "containing"
+          },
+          "listed": [
+            "R0003"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "SELF_SERVICE_DEFLECT",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              },
+              {
+                "attr": "severity",
+                "op": "gte",
+                "value": 3
+              },
+              {
+                "attr": "customer_tier",
+                "op": "neq",
+                "value": "enterprise"
+              }
+            ],
+            "beats": [
+              "R0003"
+            ],
+            "loses_to": [],
+            "note": "The new rule is more specific than R0003 for billing tickets: it adds a product condition and covers severity 3 as well. For overlapping cases (free, severity 4, billing), the self-service deflection should take precedence over T1_GENERAL because billing inquiries for non-enterprise are better handled automatically."
+          },
+          "failure": null,
+          "seconds": 8.57,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000775-ekaDZ7F7aSvfy6SmbXqb",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1683,
+              "completion_tokens": 1115,
+              "reasoning_tokens": 942,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to determine the relationship between the new rule (R_new) and R0003. R0003: customer_tier eq free AND severity eq 4 \u2192 T1_GENERAL. The new rule: product eq billing, severity gte 3, customer_tier neq enterprise \u2192 SELF_SERVICE_DEFLECT. These two rules overlap? They can overlap if a ticket has customer_tier free, severity 4, product billing, and customer_tier neq enterprise (free is neq enterprise). So they both apply to tickets with customer_tier free, severity 4, product billing. The new rule says SELF_SERVICE_DEFLECT, R0003 says T1_GENERAL. Need to decide which should win. The note says billing inquiries with severity 3 or 4 for non-enterprise can be deflected. But free tier with severity 4? The manual: T1_GENERAL is for general queries, SELF_SERVICE_DEFLECT is for auto responses. Possibly the new rule should be an exception to R0003? But R0003 is for free tier, severity 4. The new rule covers free tier only if product billing and severity 3 or 4 (since severity gte 3 includes 4). So the new rule is more specific: it adds product billing condition. Since the new rule has an additional condition (product=billing) that is not in R0003, the set of cases of the new rule is a subset of R0003? Actually, R0003: free and severity=4. The new rule: product=billing, severity>=3, tier\u2260enterprise. The intersection: free, severity=4, product=billing. That's a subset of R0003. But the new rule also covers other cases (e.g., free, severity=3, product=billing) which R0003 does not cover because severity=3 not 4. So the new rule is not a subset of R0003; it's a superset in some dimensions? Let's compare: R0003's condition set: {tier=free, severity=4}. New rule's condition set: {product=billing, severity>=3, tier\u2260enterprise}. The intersection is free tier, severity=4, product=billing. But new rule also includes free, severity=3, product=billing (which R0003 does not cover because severity=3). So the new rule is not a subset of R0003 because it covers cases that R0003 doesn't (severity=3). Conversely, R0003 covers cases that new rule doesn't: free, severity=4, product not billing (e.g., dashboard). So neither rule is a subset of the other. They partially overlap. Therefore, we need to declare priority. Since the new rule is about billing product, and R0003 is about free tier with severity 4, it's plausible that for the overlapping cases (free, severity 4, billing), the new rule should win because it's more specific about product? But we need to decide based on policy. The manual says SELF_SERVICE_DEFLECT for billing inquiries with severity 3 or 4 for non-enterprise. Free tier is non-enterprise, so it's included. R0003 sends free severity 4 to T1_GENERAL. The revisor says the correct action for this ticket (which is pro tier, severity 3, billing) is SELF_SERVICE_DEFLECT. So the policy is that billing non-critical for non-enterprise should be self-service. For free tier with severity 4, it's also billing non-critical? Severity 4 is low. So likely the new rule should override R0003 for the overlapping cases. So the new rule beats R0003. Since the new rule is more specific (adds product condition), but it's not a strict subset, we declare beats. Alternatively, could it be that R0003 should win because free tier with severity 4 might need human? But the policy says billing queries should be deflected. So we put the new rule in beats for R0003. Also note: R0003 is a rule that already exists, and we are adding a new rule. The new rule should beat R0003 on the overlap. So beats: [\"R0003\"]. There's no other rule listed. Also check if the new rule loses to any? Not from list. So answer with same conditions, action, beats, loses_to empty.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0003",
+            "R0005"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0011",
+      "copy_of": null,
+      "listed": [
+        "R0003"
+      ],
+      "order": []
+    },
+    {
+      "idx": 19,
+      "kind": "ERROR",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Las palabras clave de seguridad con severidad baja (4) no son incidentes reales y deben ir a soporte t\u00e9cnico. Esta regla es un subconjunto de cualquier regla que env\u00ede todos los security_keyword a SECURITY_INCIDENT, por lo que no necesita prioridad declarada."
+          },
+          "failure": null,
+          "seconds": 10.32,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000783-6KsTBDR9gndnOVSKP0s6",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1375,
+              "completion_tokens": 1366,
+              "reasoning_tokens": 1217,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to write a rule that matches this ticket and assigns T2_TECHNICAL. The ticket has has_security_keyword: true, severity 4, customer_tier free, product mobile, channel portal, prior_tickets_30d 1, off_hours false, language es.\n\nThe rule must cover this ticket and similar future cases. The note should justify the abstraction level and priority.\n\nThe action is T2_TECHNICAL. We need conditions that capture this scenario.\n\nImportant: The manual says T2_TECHNICAL is for technical support, second level. Security keyword is true but severity is 4 (low). So it's a low severity security-related issue? Possibly a non-urgent security concern? But security incidents should go to SECURITY_INCIDENT. However, severity is low (4) and customer is free, so maybe not a real security incident? The reviewer says correct queue is T2_TECHNICAL, not SECURITY_INCIDENT. So we need to distinguish: low severity security keywords for free tier go to T2_TECHNICAL? Or maybe it's about mobile product? Let's think.\n\nThe rule should be generalizable. Conditions: has_security_keyword true, severity 4, customer_tier free? Or maybe all low severity security keywords for non-enterprise? But we need to ensure it doesn't incorrectly match high severity security incidents.\n\nProbably the rule: if has_security_keyword is true and severity is 4, then T2_TECHNICAL, regardless of tier? But we need to check if there are existing rules that would conflict. Since we don't have the existing rules list, we must assume there might be a rule that sends security keyword to SECURITY_INCIDENT regardless of severity. In that case, our rule is a more specific (severity=4) case of that rule? Actually if the general rule is \"if has_security_keyword then SECURITY_INCIDENT\", then our rule with severity=4 is a subset (since it adds extra condition) and the more specific rule should win automatically (NIVEL 1). So we don't need to declare beats/loses_to. But we need to be careful: the existing rule might also consider other attributes. However, we are told to write the rule for this ticket; if it overlaps with existing rules, they will be listed later. Since the instruction says \"Si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are to write the rule first, then later we might get a list. But in this response, we just output the rule. So we can assume we don't have to declare beats/loses_to now? The format includes beats and loses_to arrays. We should leave them empty unless we know. Since we don't know existing rules, we leave empty.\n\nBut we must ensure the rule matches this ticket. Let's define conditions:\n\n- has_security_keyword: true\n- severity: 4\n- customer_tier: free? Or maybe not necessary? The ticket has free, but we can generalize? If we include customer_tier free, then only free customers with low severity security keywords go to T2_TECHNICAL. But maybe pro or business also? The reviewer said correct queue is T2_TECHNICAL for this specific ticket. But we need to generalize to analogous future cases. What is analogous? Possibly any low severity (4) security keyword ticket for non-enterprise? Or maybe for mobile product? The product is mobile. Could be a specific product issue? But the manual doesn't specify. I'd lean towards a simple rule: low severity security keywords are not real security incidents; they might be general inquiries about security features. So they go to T2_TECHNICAL. However, we need to avoid conflict with higher severity. So condition: severity eq 4 and has_security_keyword eq true. That's a reasonable rule. It's more specific than any rule that sends all security keywords to SECURITY_INCIDENT. So it will win automatically.\n\nWe should also consider that customer_tier free might be relevant because free tier gets less priority? But the manual says T2_TECHNICAL is for technical support, not necessarily tier-specific. I think we can drop customer_tier.\n\nAlso product mobile? Not necessarily.\n\nThus conditions: [{\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}]\n\nBut note: severity is 4, which is low. Using eq 4 is fine. However, we might want to use gte? No, we only want severity exactly 4? Or could be severity 4 or 3? The ticket is 4, so we stick to that.\n\nAlternatively, could be severity gte 3? That would include severity 3 and 4. But we don't know if severity 3 should go to T2 or security. To be safe, we keep exact 4.\n\nThus the rule: if has_security_keyword true and severity equals 4, then T2_TECHNICAL.\n\nNote: \"una frase justificando el nivel de abstraccion y la prioridad elegidos\" - we need to justify why we chose this abstraction (not too specific, not too general) and why priority (if any) is not needed because it's a subset of a more general rule.\n\nWe'll write note: \"Las palabras clave de seguridad con severidad baja (4) no son incidentes reales y deben ir a soporte t\u00e9cnico. Esta regla es un subconjunto de cualquier regla que env\u00ede todos los security_keyword a SECURITY_INCIDENT, por lo que no necesita prioridad declarada.\"\n\nNow output JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0005",
+            "R0011"
+          ],
+          "same_queue": [
+            "R0006"
+          ],
+          "unplaced": [
+            "R0001",
+            "R0003",
+            "R0005",
+            "R0011"
+          ],
+          "copies": [],
+          "left_out": {},
+          "listed": [
+            "R0003",
+            "R0005",
+            "R0001",
+            "R0011"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "T2_TECHNICAL",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "attr": "severity",
+                "op": "eq",
+                "value": 4
+              }
+            ],
+            "beats": [
+              "R0003",
+              "R0005",
+              "R0001",
+              "R0011"
+            ],
+            "loses_to": [],
+            "note": "Las palabras clave de seguridad con severidad baja (4) no son incidentes reales y deben ir a soporte t\u00e9cnico (T2), incluso si coinciden con reglas de T1_GENERAL, BILLING_SPECIALIST o SELF_SERVICE_DEFLECT. Esta regla es una excepci\u00f3n a todas ellas."
+          },
+          "failure": null,
+          "seconds": 5.29,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000794-9gg8LHX8ipUkqiX28jlt",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1785,
+              "completion_tokens": 754,
+              "reasoning_tokens": 580,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to place the rule against the existing rules. The rule we proposed: has_security_keyword true AND severity eq 4 => T2_TECHNICAL.\n\nOverlapping rules:\n- R0003: customer_tier eq free AND severity eq 4 => T1_GENERAL. Our rule: has_security_keyword true AND severity eq 4. These two can overlap: e.g., free customer with severity 4 and security keyword. They are not subsets: one condition is free, the other is security keyword. So they overlap but not containment. Which should win? The manual says security keywords with low severity are not incidents, go to technical. So our rule should beat R0003 (i.e., it's an exception: when security keyword is present, even if free+severity4, it goes to T2 instead of T1). So put our rule in beats for R0003.\n- R0005: product eq billing => BILLING_SPECIALIST. Overlap? Our rule has product mobile, so no overlap? Actually overlapping condition: product eq billing and our rule has no product condition, so our rule could apply to any product including billing. So if product is billing AND has_security_keyword true AND severity 4, then both rules apply. They are not subsets. Which should win? Security keyword with low severity should go to T2, not billing specialist. So our rule should beat R0005. But note: R0005 already beats R0003 and R0001. So we need to declare our rule beats R0005.\n- R0001: customer_tier eq enterprise AND severity eq 4 => T1_GENERAL. Overlap: enterprise with severity 4 and security keyword. Similar to R0003, our rule should beat it. So beats R0001.\n- R0011: product eq billing AND severity gte 3 AND customer_tier neq enterprise => SELF_SERVICE_DEFLECT. Overlap: if product billing, severity 4 (gte 3), not enterprise, and has_security_keyword true. Both apply. Which should win? Security keyword low severity -> T2, not self-service. So our rule beats R0011. But note R0011 already beats R0003. So we add to beats.\n\nThus beats: [\"R0003\", \"R0005\", \"R0001\", \"R0011\"].\n\nLoses_to: none, because our rule is more specific? Actually it's not contained in any of them. So we need to declare beats for all overlapping.\n\nBut we must also consider if any of these rules should beat ours? No, because the manual says security keywords with low severity go to technical, not to general, billing, or self-service.\n\nSo final answer.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0005",
+            "R0011"
+          ],
+          "same_queue": [
+            "R0006"
+          ],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0012",
+      "copy_of": null,
+      "listed": [
+        "R0003",
+        "R0005",
+        "R0001",
+        "R0011"
+      ],
+      "order": []
+    },
+    {
+      "idx": 23,
+      "kind": "IMPASSE",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "SECURITY_INCIDENT",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Any ticket flagged with security keywords must be routed to SECURITY_INCIDENT regardless of tier, severity, or channel, as security incidents require specialized handling. This rule covers all such tickets."
+          },
+          "failure": null,
+          "seconds": 8.18,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000799-Zh4qSLnYtpWoujFySVI0",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1322,
+              "completion_tokens": 894,
+              "reasoning_tokens": 796,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to decide the correct queue for this ticket. The ticket has has_security_keyword: true, severity 3, customer_tier free, product mobile, channel portal, prior_tickets_30d 8, off_hours true, language en.\n\nSecurity keyword true suggests it might be a security incident. But security incidents usually go to SECURITY_INCIDENT. However, severity is 3 (not critical). Also customer_tier free. The manual says SECURITY_INCIDENT is for possible breaches, unauthorized access, vulnerabilities. So any security-related keyword should likely go to SECURITY_INCIDENT regardless of tier? But we need to consider the policy. Usually security incidents are high priority. But severity 3 is medium. However, off_hours true means it's outside business hours. Could be an escalation? ONCALL_ESCALATION is for critical incidents that can't wait. Severity 3 is not critical (severity 1 is critical). So likely not ONCALL.\n\nGiven that has_security_keyword is true, it should be treated as a security incident. Even if free tier, security issues are important. So I think SECURITY_INCIDENT is appropriate.\n\nNow we need to write a rule that covers this ticket and similar cases. The condition should be: has_security_keyword equals true. That's the simplest. But we might want to consider severity? Possibly any security keyword should go to SECURITY_INCIDENT regardless of severity? However, if severity is low and it's a false positive? But the policy says security incidents. So I'll make rule: has_security_keyword = true -> SECURITY_INCIDENT.\n\nNow we need to consider if this rule might conflict with other rules. We don't know existing rules. But we need to declare beats/loses_to if necessary. Since we don't see the base rules, we must assume there might be other rules that also match this ticket, e.g., maybe a rule for free tier or off_hours or product mobile. But those would be more general? Actually, our rule is quite specific: security keyword. Other rules might be more general. If there is a rule like \"free tier -> T1_GENERAL\", that would be more general and our rule is a subset? Actually, our rule is more specific because it adds condition on security keyword. So if there is a general rule for free tier, our rule is contained in that? No, our rule requires security keyword, so it's a subset of free tier? Actually, free tier tickets include those with and without security keyword. So our rule is a subset of the free tier rule. So the more specific rule (ours) should win automatically by level 1. So no need to declare beats. Similarly, off_hours or product mobile might have rules, but our rule is more specific because it adds security keyword. So likely no conflict. However, we might have a rule for SECURITY_INCIDENT that already exists with different conditions? Possibly there is already a rule for security keyword? But we are writing a new rule. Since we are the exception handler, we need to add this rule. The base rules are not shown, but we should assume that we need to write a rule that matches this ticket and is generalizable.\n\nSo I'll set conditions: [{\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": true}]. Action: SECURITY_INCIDENT.\n\nNo beats or loses_to needed unless we anticipate conflict. But the instruction says: \"Si no hay ninguna relacion que declarar, dejalos vacios.\" So we can leave them empty.\n\nNote: Justify: \"Any ticket flagged with security keywords must be routed to SECURITY_INCIDENT regardless of tier, severity, or channel, as security incidents require specialized handling. This rule covers all such tickets.\"",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012"
+          ],
+          "same_queue": [],
+          "unplaced": [
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011"
+          ],
+          "copies": [],
+          "left_out": {
+            "R0001": "governed",
+            "R0003": "governed",
+            "R0012": "inside"
+          },
+          "listed": [
+            "R0008",
+            "R0011",
+            "R0004",
+            "R0006",
+            "R0009",
+            "R0005",
+            "R0010"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "SECURITY_INCIDENT",
+            "conditions": [
+              {
+                "attr": "has_security_keyword",
+                "op": "eq",
+                "value": true
+              }
+            ],
+            "beats": [
+              "R0008",
+              "R0011",
+              "R0004",
+              "R0006",
+              "R0009",
+              "R0005",
+              "R0010"
+            ],
+            "loses_to": [],
+            "note": "Security incidents override all other routing rules because they require immediate specialized handling, regardless of customer tier, product, severity, or channel."
+          },
+          "failure": null,
+          "seconds": 6.86,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000807-j5S7mrre3vtIVwW8Prvn",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1805,
+              "completion_tokens": 942,
+              "reasoning_tokens": 822,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to position the rule: action SECURITY_INCIDENT, condition: has_security_keyword eq true.\n\nWe have existing rules from other queues. Our rule covers all tickets with has_security_keyword true. That's a specific condition. Now we need to compare with each listed rule to see if they overlap and if one contains the other.\n\nFirst, note: our rule has only one condition. It covers any ticket with has_security_keyword true regardless of other attributes. The existing rules have various conditions that may or may not include tickets with has_security_keyword true. If a ticket has has_security_keyword true, it might also satisfy conditions of other rules. So there is overlap.\n\nWe need to decide: is our rule a more specific case (exception) of those rules, or a more general rule that they are exceptions of? Typically, a security incident is a special case that should override other routing. So our rule should beat most rules, unless there is a rule that is even more specific (e.g., a rule that also includes security keyword but with additional conditions). But here none of the existing rules mention has_security_keyword. So our rule is a specific condition that is not contained in any of the others (since they don't have that condition). Conversely, our rule does not contain any of the others because they have additional conditions that might not be covered by ours (e.g., product=billing). So the overlap is partial: our rule covers some tickets that also satisfy those rules, but not all tickets of those rules. So it's a case of overlapping but not containment. Therefore we need to declare beats or loses_to.\n\nWhich direction? Since security incidents are high priority and should be handled by SECURITY_INCIDENT, our rule should take precedence over general routing rules. So we want our rule to beat those other rules. That means we put those rules in \"beats\" (our rule beats them). However, we must check if any of those rules are specifically for security? No. Also note: some rules have higher severity or specific products, but security keyword should override. So we put all overlapping rules in beats.\n\nBut careful: R0008: customer_tier eq free AND product eq integrations AND severity lte 3. If a ticket has has_security_keyword true and also satisfies R0008, we want SECURITY_INCIDENT to win. So our rule beats R0008.\n\nR0011: product eq billing AND severity gte 3 AND customer_tier neq enterprise. If a billing ticket has security keyword, we want security incident. So beat.\n\nR0004: severity eq 2 AND product eq mobile. If mobile ticket with severity 2 and security keyword, we want security. Beat.\n\nR0006: product eq api AND severity gte 3. Beat.\n\nR0009: off_hours eq True AND severity eq 2 AND customer_tier in ['pro','business','enterprise']. If such a ticket has security keyword, we want security. Beat.\n\nR0005: product eq billing. This is a broad rule: any billing ticket goes to BILLING_SPECIALIST. But if it has security keyword, security incident should take priority. So beat.\n\nR0010: customer_tier eq free AND severity eq 2 AND product eq dashboard. Beat.\n\nThus, our rule should beat all of them. But note: There is also a possibility that some rules have higher priority due to manual declarations (e.g., R0006 beats R0001, R0003). But that doesn't affect us. We just need to declare beats for all overlapping rules.\n\nAlso check: Does our rule lose to any? For instance, if there were a rule that specifically says \"if has_security_keyword true and something else\" then that would be more specific. But none exist. So loses_to empty.\n\nThus, answer: same action and conditions, beats list all those rule IDs, loses_to empty.\n\nNow format.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0004",
+            "R0005",
+            "R0006",
+            "R0008",
+            "R0009",
+            "R0010",
+            "R0011",
+            "R0012"
+          ],
+          "same_queue": [],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0013",
+      "copy_of": null,
+      "listed": [
+        "R0008",
+        "R0011",
+        "R0004",
+        "R0006",
+        "R0009",
+        "R0005",
+        "R0010"
+      ],
+      "order": []
+    },
+    {
+      "idx": 27,
+      "kind": "ERROR",
+      "verdict": "nacida",
+      "calls": [
+        {
+          "round": 0,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "BILLING_SPECIALIST",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "beats": [],
+            "loses_to": [],
+            "note": "Todos los tickets de producto billing deben ir a BILLING_SPECIALIST, independientemente de severidad, horario o tier, ya que requieren intervenci\u00f3n especializada en facturaci\u00f3n."
+          },
+          "failure": null,
+          "seconds": 8.05,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000814-kEUaZgnPhT4KKSDJbVkm",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1377,
+              "completion_tokens": 964,
+              "reasoning_tokens": 862,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to create a rule that assigns this ticket to BILLING_SPECIALIST. The ticket has product=billing, severity=3, customer_tier=free, channel=portal, prior_tickets_30d=9, off_hours=true, language=fr, no security keyword.\n\nGiven the manual: BILLING_SPECIALIST handles billing issues. This ticket is about billing product, so likely a billing issue. However, note that severity is 3 (medium), customer tier free, off hours true. But we need a rule that generalizes.\n\nWe must consider existing rules (not shown yet) but we are told that if the rule overlaps with others, we will be given conflicts later. For now, just write the rule.\n\nThe rule should match this ticket: product billing, maybe also severity? But we want it to be generalizable: e.g., any billing product ticket? But careful: BILLING_SPECIALIST is for billing issues. However, there might be other rules that also match billing tickets (like T1_GENERAL or T2_TECHNICAL). Since the reviewer says correct queue is BILLING_SPECIALIST, we need to ensure our rule wins over any conflicting rules.\n\nPotential conditions: product eq \"billing\". That is too broad? But maybe that's the intent: all billing product tickets go to BILLING_SPECIALIST? But then what about security? If has_security_keyword true, might go to SECURITY_INCIDENT. But that's separate. Also severity? Could be any severity? But manual says BILLING_SPECIALIST handles billing issues. So likely any billing product ticket goes to billing specialist, unless it's a security incident or something else.\n\nHowever, we need to consider off_hours: if off_hours true, maybe ONCALL_ESCALATION? But that's for critical incidents. Severity 3 is not critical. So not.\n\nAlso customer_tier free: maybe self-service? But product billing often requires human intervention.\n\nThus, a simple rule: product eq \"billing\" -> BILLING_SPECIALIST. But we need to check if there is a more specific rule like billing and severity=1? Or billing and customer_tier enterprise? We don't know. But we can write the rule with just product billing.\n\nSince the ticket has off_hours true, but billing specialist might not be on call? However, manual says BILLING_SPECIALIST is for billing issues, so presumably they handle off hours as well? Or maybe not? But the reviewer says it's correct, so we assume billing specialist works.\n\nThus, conditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}]\n\nBut note: language is French, but that might not affect queue.\n\nNow, we need to consider beats and loses_to. Since we don't know existing rules, we will leave empty for now. But the instruction says: \"Si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So after this, we will be given conflicts. So for now, we just output the rule without beats/loses_to? But the format requires those arrays. We'll put empty arrays.\n\nAlso note: the rule must case this ticket. With product eq \"billing\", it does.\n\nThus, JSON:\n\n{\n  \"action\": \"BILLING_SPECIALIST\",\n  \"conditions\": [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Todos los tickets de producto billing deben ir a BILLING_SPECIALIST, independientemente de severidad, horario o tier, ya que requieren intervenci\u00f3n especializada en facturaci\u00f3n.\"\n}\n\nBut wait: The ticket has prior_tickets_30d=9, which might indicate a repeat issue? But still billing.\n\nAlso, consider that there might be a rule for T1_GENERAL that catches product=billing? Possibly. But we don't know.\n\nWe'll proceed.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0009",
+            "R0011",
+            "R0012",
+            "R0013"
+          ],
+          "same_queue": [
+            "R0005"
+          ],
+          "unplaced": [
+            "R0001",
+            "R0009",
+            "R0012",
+            "R0013"
+          ],
+          "copies": [
+            "R0005"
+          ],
+          "left_out": {
+            "R0003": "governed",
+            "R0011": "inside"
+          },
+          "listed": [
+            "R0013",
+            "R0009",
+            "R0012",
+            "R0001"
+          ]
+        },
+        {
+          "round": 1,
+          "form": "rule",
+          "finish_reason": "stop",
+          "attempts": 1,
+          "raw": null,
+          "payload": {
+            "action": "BILLING_SPECIALIST",
+            "conditions": [
+              {
+                "attr": "product",
+                "op": "eq",
+                "value": "billing"
+              }
+            ],
+            "beats": [
+              "R0009",
+              "R0001"
+            ],
+            "loses_to": [
+              "R0013",
+              "R0012"
+            ],
+            "note": "La regla asigna todo ticket de producto billing a BILLING_SPECIALIST. Se declara que pierde frente a reglas de seguridad (R0013 y R0012) porque un incidente de seguridad o una incidencia con keyword de seguridad debe priorizarse sobre la facturaci\u00f3n, incluso si es de billing. Se declara que gana frente a reglas generales de horario y tier (R0009, R0001) porque la naturaleza del producto billing es m\u00e1s espec\u00edfica que esas condiciones."
+          },
+          "failure": null,
+          "seconds": 15.45,
+          "call_attempts": [
+            {
+              "generation_id": "gen-1795000822-dN0IsVHaHMz7zbM83BZa",
+              "provider": "DeepInfra",
+              "model": "deepseek/deepseek-v4-flash",
+              "system_fingerprint": null,
+              "finish_reason": "stop",
+              "native_finish_reason": "stop",
+              "prompt_tokens": 1797,
+              "completion_tokens": 2193,
+              "reasoning_tokens": 2006,
+              "error": null
+            }
+          ],
+          "keys": [
+            "action",
+            "conditions",
+            "beats",
+            "loses_to",
+            "note"
+          ],
+          "reasoning": "We need to analyze the overlap between our rule (product eq billing -> BILLING_SPECIALIST) and the listed existing rules from other queues.\n\nFirst, recall our rule: conditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}] -> BILLING_SPECIALIST.\n\nNow consider each existing rule:\n\nR0013: has_security_keyword eq True -> SECURITY_INCIDENT. This rule's condition is on security keyword, not product. Overlap occurs when a ticket has both product=billing and has_security_keyword=True. Which rule should win? Our rule is specific to billing; the security incident rule is specific to security. Since security incidents are a separate critical category, typically security takes precedence over billing. But we need to decide based on business logic. The manual says BILLING_SPECIALIST handles billing issues; SECURITY_INCIDENT handles security breaches. If a ticket is about billing but also has security keyword, it might be a security issue related to billing. The motor's existing beats/loses_to for R0013 shows it beats many rules. Our rule is new. We need to decide if our rule should beat or lose to R0013. Since security incidents are critical and often override other assignments, I think SECURITY_INCIDENT should win over billing specialist when both conditions hold. So our rule should lose to R0013. Thus loses_to: [\"R0013\"].\n\nR0009: off_hours eq True AND severity eq 2 AND customer_tier in ['pro','business','enterprise'] -> T2_TECHNICAL. This rule applies only to severity 2 and specific tiers during off hours. Our rule applies to any severity, any tier, any hours, as long as product=billing. Overlap: when product=billing, off_hours=True, severity=2, customer_tier in that list. Which should win? Our rule is a specific product assignment. Billing issues go to billing specialist regardless of other factors. The manual says BILLING_SPECIALIST is for billing-related inquiries. So if it's a billing issue, it should go to billing, not technical. So our rule should beat R0009. But note: R0009 loses to R0005 (some other rule). We need to see if our rule is an exception to R0009. Since our rule is more specific on product, and product is not a condition in R0009, our rule covers a subset of R0009's cases (those with billing product). Actually, our rule's condition (product=billing) is not a subset of R0009's conditions; it's a different attribute. So there is a overlap but not containment. The motor says if no containment, we need to declare priority. I think billing specialist should take precedence over T2 technical for billing issues. So our rule beats R0009.\n\nR0012: has_security_keyword eq True AND severity eq 4 -> T2_TECHNICAL. This rule applies to security keyword and severity 4. Overlap: when product=billing, has_security_keyword=True, severity=4. Again, security keyword suggests security incident, but severity 4 is low. However, R0012 is a specific rule for security keyword with low severity. But our rule is product-specific. Likely security-related tickets should go to security incident, not billing. But R0012 sends to T2_TECHNICAL, not SECURITY_INCIDENT. That's odd: why would security keyword with severity 4 go to technical? Possibly a default. But we have R0013 for security keyword (any severity?) that goes to SECURITY_INCIDENT. Actually R0013 is just has_security_keyword True -> SECURITY_INCIDENT, so R0013 covers all security keywords. R0012 is a more specific case (severity 4) that sends to T2_TECHNICAL. That seems contradictory; maybe R0012 is an exception? But the beats/loses_to show R0012 beats R0003, R0005, R0001, R0011. It doesn't mention R0013. So R0012 is for security keyword with severity 4 going to technical, not security incident. That might be a policy: low severity security issues go to technical. Our rule: billing product. Overlap: product=billing, security keyword, severity 4. Which should win? Since security keyword is present, and there is a specific rule for that (R0012), but our rule is product-based. I think the product billing specialist should handle billing issues even if there is a security keyword? Probably not, because security keyword indicates a security concern. But R0012 sends to technical, not security incident. So maybe billing specialist is not appropriate for security-related billing issues. I think it's safer to let R0012 win because it's a specific combination. Alternatively, our rule might be more specific on product, but product is not in R0012. No containment. I'd say our rule should lose to R0012 because security-related issues (even low severity) should be handled by technical or security, not billing specialist. But note: R0012 is T2_TECHNICAL, not SECURITY_INCIDENT. However, our rule is BILLING_SPECIALIST. Which is more appropriate? The manual: BILLING_SPECIALIST for billing, SECURITY_INCIDENT for security. If a ticket has security keyword, it might be a security incident, but severity 4 is low, so they route to technical. So likely they don't want billing specialist to handle security-tagged tickets. So I think our rule should lose to R0012. But also note R0013 would also apply; but R0013 beats R0012? Actually R0013 beats many including R0012? Not listed; R0013 beats R0008, R0011, R0004, R0006, R0009, R0005, R0010. Not R0012. So R0013 and R0012 may overlap? R0013 condition: has_security_keyword True; R0012 condition: has_security_keyword True AND severity eq 4. So R0012 is a subset of R0013 (since severity 4 is additional). So by containment, R0012 wins over R0013 because it's more specific? Actually, the rule with more conditions is more specific. So R0012 should beat R0013 automatically (since its condition set is contained in R0013? Wait: R0012's condition set is {has_security_keyword=True, severity=4}. R0013's condition set is {has_security_keyword=True}. The set of cases satisfying R0012 is a subset of those satisfying R0013. So R0012 is more specific, so it should win automatically. But the beats list doesn't show that because it's automatic. So in overlapping cases, R0012 would win over R0013. So for a ticket with security keyword and severity 4, it goes to T2_TECHNICAL. Now, our rule (product=billing) is orthogonal. So we need to decide priority between our rule and R0012. I think R0012 should win because it's a specific security-related routing. So loses_to: [\"R0012\"].\n\nR0001: customer_tier eq enterprise AND severity eq 4 -> T1_GENERAL. This rule applies to enterprise tier, severity 4. Overlap: when product=billing, customer_tier=enterprise, severity=4. Our rule says billing goes to billing specialist. For enterprise customers, maybe they have account managers? But R0001 sends to T1_GENERAL. That seems odd: enterprise with low severity goes to general? Possibly a default. Our rule is more specific on product. Billing issues should go to billing specialist regardless of tier. So our rule should beat R0001. But note: there might be other rules for enterprise. But we only have R0001. So beats: [\"R0001\"].\n\nNow we need to list beats and loses_to. We have:\n- loses_to: [\"R0013\", \"R0012\"]? But careful: R0013 and R0012 are separate. We need to decide if both are necessary. For R0013, we said our rule loses to it. For R0012, we also said loses. But note that R0012 is a subset of R0013? Actually, R0012's condition includes security keyword, so any ticket that matches R0012 also matches R0013. But since R0012 is more specific, it would win over R0013 automatically. So if our rule loses to both, then in a case that matches both R0012 and our rule, R0012 would win because we declared loses_to R0012. But what about a case that matches R0013 and our rule but not R0012 (e.g., security keyword with severity not 4)? Then our rule loses to R0013. So both are needed.\n\nBut we need to ensure consistency: does our rule also lose to R0013? Yes, because security incidents override billing. So loses_to includes both.\n\nNow beats: we have R0009 and R0001. Also check if our rule beats R0012? No, we said loses. So beats: [\"R0009\", \"R0001\"].\n\nNow we must output the same rule conditions and action. The note should justify.\n\nThus final JSON.",
+          "retries": [],
+          "served_by": "DeepInfra",
+          "overlapped": [
+            "R0001",
+            "R0003",
+            "R0009",
+            "R0011",
+            "R0012",
+            "R0013"
+          ],
+          "same_queue": [
+            "R0005"
+          ],
+          "unplaced": []
+        }
+      ],
+      "rule_id": "R0014",
+      "copy_of": "R0005",
+      "listed": [
+        "R0013",
+        "R0009",
+        "R0012",
+        "R0001"
+      ],
+      "order": []
+    }
+  ]
+}
