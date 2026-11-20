@@ -50,6 +50,25 @@ THE QUESTIONS
        queue that lost, stood in K r2.
   G-c. **The rules that won the errors.** Every wrong decision of each K run's
        ranking, by group, with the winner's rules and their births.
+  G-d. **Added after the first run, and read by no clause.**
+       - **The arrivals by the hidden rule governing them**, in each K run: how
+         many the ranking decided, right and wrong, how many rung 2 did, and how
+         many nobody did.
+       - **How each pair of the ranking's cases stayed unordered.** At every case
+         of the ranking, the pairs between the winner's rules and the
+         runner-up's: `refused` when an edge between the two was tried at some
+         birth and not installed, with the rule it declared above and the
+         engine's verdict; `never tried` when no edge between them was. By
+         group, how many cases each, how many of the refused ones had declared
+         above it the rule of the case's true queue, and how many each decided
+         right. Beside it, whether every edge of the log was tried at a birth
+         with the newborn at one end, so that an edge between two rules
+         standing at a case was tried before it.
+       - **What kept the losing queue out of K r2.** At the arrivals of G-b that
+         K r2 decided with one queue standing: whether that queue was one that
+         lost there in K r1 or K r3; otherwise whether a rule of such a queue
+         matched the ticket in K r2, and if one did, whether a declared edge, a
+         rule nested in it, or both kept every such rule from standing there.
 
 --------------------------------------------------------------------------
 THE GATES
@@ -138,6 +157,10 @@ six readings. The expectation above was written and committed before the
 reading ran. Not a signed row, not on `STATUS.md`'s scoreboard, not a
 calibration event. Zero API calls.
 
+**One part was added after the first run**, G-d, in a commit of its own. The
+first run had printed every clause's verdict, and its readings G-a to G-c had
+been read whole. No clause reads the added part, and no clause was changed.
+
 Usage:  python3 -m ranked.conflicts --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.conflicts
 """
@@ -152,6 +175,7 @@ from typing import Any, Sequence
 
 from harness.provenance import describe, environment
 
+from edges import rebuild as erb
 from manual import instrument as MI
 from reuse import structure as st
 from rung2.engine2 import Condition, Space
@@ -192,9 +216,22 @@ def group_of(queues: Sequence[str]) -> str:
 # Every case of a K run, as its engine held it
 # ---------------------------------------------------------------------------
 
+def defeat(engine, rid: str, here: int) -> str:
+    """Added after the first run. What keeps a rule that matches a point from
+    standing there: a rule declared above it, a rule nested in it, or both,
+    among those that beat it and match the point."""
+    beaters = [b for b in engine.beats_me(rid) if engine.ext[b] & here]
+    declared = any(b in engine.decl_below[rid] for b in beaters)
+    nested = any(b in engine.sub_below[rid] for b in beaters)
+    return "both" if declared and nested else "declared" if declared else \
+        "containment" if nested else "neither"
+
+
 def cases_of(record: dict[str, Any], space: Space, corpus: Sequence) -> tuple[list[dict], bool]:
     """Every case of a K record: who decided it, the queues standing in the
-    ranking's order then, and the rules standing by queue; and gate 2."""
+    ranking's order then, and the rules standing by queue; and gate 2. Added
+    after the first run: the rules that match the ticket and do not stand
+    there, with their queue and what keeps each out."""
     walk = R.Walk(record, space)
     rows, logs = record["records"], record["ranked"]["cases"]
     ok = len(rows) == len(logs) and all(r["idx"] == i for i, r in enumerate(rows))
@@ -203,9 +240,12 @@ def cases_of(record: dict[str, Any], space: Space, corpus: Sequence) -> tuple[li
         idx = row["idx"]
         here = R.point_of(corpus[idx], space)
         standing: dict[str, list[str]] = {}
+        kept_out: dict[str, list[str]] = {}
         for rid, m in walk.und.items():
             if m & here:
                 standing.setdefault(walk.action[rid], []).append(rid)
+            elif walk.engine.ext[rid] & here:
+                kept_out[rid] = [walk.action[rid], defeat(walk.engine, rid, here)]
         present = [q for q in walk.tally.ranking if q in standing]
         by = logged["by"]
         expected = E.RANKING if len(present) > 1 else E.RUNG2 if present else None
@@ -218,7 +258,8 @@ def cases_of(record: dict[str, Any], space: Space, corpus: Sequence) -> tuple[li
                     "truth": row["truth"], "governing": row["truth_rule"],
                     "decision": decision,
                     "right": decision is not None and decision == row["truth"],
-                    "reported": row["cause"] == plan.ERROR})
+                    "reported": row["cause"] == plan.ERROR,
+                    "kept_out": dict(sorted(kept_out.items()))})
         if idx in walk.born:
             walk.birth(idx)
     return out, bool(ok)
@@ -384,6 +425,121 @@ def errors(cases: Sequence[dict], births: dict[str, dict]) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# G-d: added after the first run, and read by no clause
+# ---------------------------------------------------------------------------
+
+DECIDED_BY = ("ranking_right", "ranking_wrong", "rung2_right", "rung2_wrong", "nobody")
+
+
+def arrivals_by_rule(cases: Sequence[dict]) -> dict[str, dict[str, int]]:
+    """A run's arrivals by the hidden rule governing them, by who decided each."""
+    out: dict[str, dict[str, int]] = {}
+    for c in cases:
+        d = out.setdefault(c["governing"], {"arrivals": 0, **{k: 0 for k in DECIDED_BY}})
+        d["arrivals"] += 1
+        if c["by"] == E.RANKING:
+            d["ranking_right" if c["right"] else "ranking_wrong"] += 1
+        elif c["by"] == E.RUNG2:
+            d["rung2_right" if c["right"] else "rung2_wrong"] += 1
+        else:
+            d["nobody"] += 1
+    return dict(sorted(out.items(), key=lambda kv: kv[0]))
+
+
+def edge_history(record: dict[str, Any]) -> dict[frozenset, list[tuple[str, str, str]]]:
+    """Every edge the record's births tried, by the pair of rules, in order."""
+    out: dict[frozenset, list[tuple[str, str, str]]] = {}
+    for winner, loser, verdict in record.get("edge_log") or []:
+        out.setdefault(frozenset((winner, loser)), []).append((winner, loser, verdict))
+    return out
+
+
+def unordered(cases: Sequence[dict], history: dict[frozenset, list],
+              action: dict[str, str]) -> dict[str, Any]:
+    """How each pair of the ranking's cases stayed unordered: an edge between a
+    rule of the winner's queue and one of the runner-up's tried and refused, or
+    none tried. `installed` would be a pair both standing with an edge between
+    them installed, which the engine does not allow."""
+    rows = []
+    for c in cases:
+        if c["by"] != E.RANKING:
+            continue
+        won, lost = c["queues"][0], c["queues"][1]
+        refused, tried = [], False
+        for w in c["standing"][won]:
+            for rid in c["standing"][lost]:
+                for a, b, verdict in history.get(frozenset((w, rid)), []):
+                    tried = True
+                    if verdict != "ok":
+                        refused.append({"above": a, "below": b, "verdict": verdict,
+                                        "above_queue": action[a]})
+        rows.append({"case": c["case"], "group": group_of(c["queues"]), "right": c["right"],
+                     "kind": "refused" if refused else "installed" if tried else "never_tried",
+                     "refused_named_the_truth": any(r["above_queue"] == c["truth"]
+                                                    for r in refused),
+                     "refused": refused})
+    summary = {}
+    for g in GROUPS:
+        mine = [r for r in rows if r["group"] == g]
+        summary[g] = {k: {"cases": sum(1 for r in mine if r["kind"] == k),
+                          "right": sum(1 for r in mine if r["kind"] == k and r["right"])}
+                      for k in ("refused", "never_tried", "installed")}
+        summary[g]["refused"]["named_the_truth"] = sum(
+            1 for r in mine if r["kind"] == "refused" and r["refused_named_the_truth"])
+        summary[g]["refused"]["verdicts"] = dict(sorted(Counter(
+            x["verdict"] for r in mine for x in r["refused"]).items()))
+        summary[g]["cases"] = len(mine)
+    return {"by_group": summary, "rows": rows}
+
+
+def newborn_at_one_end(record: dict[str, Any]) -> bool:
+    """Every edge of the log was tried at a birth with the newborn at one end,
+    so an edge between two rules standing at a case was tried before it."""
+    born = erb.births(record)
+    try:
+        by_birth = erb.edges_by_birth(record)
+    except erb.RebuildError:
+        return False
+    return sum(len(v) for v in by_birth.values()) == len(record.get("edge_log") or []) and all(
+        born[idx]["rule_id"] in (e.winner, e.loser) for idx, es in by_birth.items() for e in es)
+
+
+def what_kept_out(at_others: dict[str, Any] | None, k2: Sequence[dict]) -> dict[str, Any] | None:
+    """At the arrivals of G-b K r2 decided with one queue standing: was it a
+    queue that lost there in K r1 or K r3; if not, did a rule of such a queue
+    match the ticket in K r2, and what kept every such rule out."""
+    if at_others is None:
+        return None
+    by_case = {c["case"]: c for c in k2}
+    rows = []
+    for r in at_others["rows"]:
+        c = by_case[r["case"]]
+        if c["by"] != E.RUNG2:
+            continue
+        lost = {o["lost"] for o in r["others"].values()}
+        kinds = [kind for q, kind in c["kept_out"].values() if q in lost]
+        if c["queues"][0] in lost:
+            cls = "a losing queue stood alone"
+        elif not kinds:
+            cls = "none matched"
+        elif all(k in ("declared", "both") for k in kinds):
+            cls = "declared"
+        elif all(k == "containment" for k in kinds):
+            cls = "containment"
+        else:
+            cls = "mixed"
+        rows.append({"case": r["case"], "class": cls, "right": c["right"],
+                     "kept_out": {rid: v for rid, v in c["kept_out"].items() if v[0] in lost}})
+    counts = Counter(r["class"] for r in rows)
+    return {"arrivals": len(rows),
+            "by_class": {k: {"arrivals": counts.get(k, 0),
+                             "right": sum(1 for r in rows if r["class"] == k and r["right"])}
+                         for k in ("declared", "containment", "mixed", "none matched",
+                                   "a losing queue stood alone")},
+            "rows": rows}
+
+
+# ---------------------------------------------------------------------------
 # The expectation
 # ---------------------------------------------------------------------------
 
@@ -466,10 +622,20 @@ def read_everything(records: dict[str, dict], kept: dict[str, Any]
                       "passes": logged})
         gates.append({"gate": 3, "run": t, "what": "a rule standing was born of its escalation",
                       "passes": born_of_its_escalation(per_run[t], births[t])})
+    others = at_the_others(per_run)
     readings = {
         "behind": {t: {g: behind(per_run[t], births[t], g) for g in GROUPS} for t in per_run},
-        "k_r2_at_the_others": at_the_others(per_run),
+        "k_r2_at_the_others": others,
         "errors": {t: errors(per_run[t], births[t]) for t in per_run},
+        # added after the first run, and read by no clause
+        "added": {
+            "arrivals_by_rule": {t: arrivals_by_rule(per_run[t]) for t in per_run},
+            "unordered": {t: unordered(per_run[t], edge_history(records[t]),
+                                       {d["rule_id"]: d["action"] for d in records[t]["rules"]})
+                          for t in per_run},
+            "newborn_at_one_end": {t: newborn_at_one_end(records[t]) for t in per_run},
+            "kept_out_of_k_r2": what_kept_out(others, per_run.get("k_r2") or []),
+        },
     }
     return readings, gates
 

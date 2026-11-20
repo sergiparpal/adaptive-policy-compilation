@@ -13,7 +13,12 @@ What is pinned is the instrument:
 - the gates with teeth, on K r3's record: they pass on it, and a figure moved by
   one fails them;
 - the expectation's clauses at their edges, and over nothing;
-- that the writer refuses unsigned before it reads or writes.
+- that the writer refuses unsigned before it reads or writes;
+- and, added after the first run: what keeps a rule that matches a point from
+  standing there; the arrivals by the rule governing them; how each pair of the
+  ranking's cases stayed unordered, refused, never tried or installed; what
+  kept the losing queue out of K r2; and every edge of K r3's log tried with
+  its newborn at one end, which a moved entry breaks.
 """
 
 from __future__ import annotations
@@ -252,6 +257,110 @@ class TestTheWriter(unittest.TestCase):
             with self.assertRaises(SystemExit) as got:
                 CF.main([])
         self.assertIn("unsigned", str(got.exception))
+
+
+# ---------------------------------------------------------------------------
+# Added after the first run
+# ---------------------------------------------------------------------------
+
+class FakeEngine:
+    def __init__(self, ext, sub_below, decl_below):
+        self.ext, self.sub_below, self.decl_below = ext, sub_below, decl_below
+
+    def beats_me(self, rid):
+        return self.sub_below[rid] | self.decl_below[rid]
+
+
+class TestWhatKeepsARuleOut(unittest.TestCase):
+
+    def test_each_kind(self):
+        eng = FakeEngine(ext={"A": 0b111, "N": 0b001, "D": 0b011, "F": 0b100},
+                         sub_below={"A": {"N"}, "N": set(), "D": set(), "F": set()},
+                         decl_below={"A": {"D", "F"}, "N": set(), "D": set(), "F": set()})
+        self.assertEqual(CF.defeat(eng, "A", 0b001), "both")          # N nested, D declared
+        self.assertEqual(CF.defeat(eng, "A", 0b010), "declared")      # D alone matches
+        self.assertEqual(CF.defeat(eng, "A", 0b100), "declared")      # F declared above it
+        eng.decl_below["A"] = set()
+        self.assertEqual(CF.defeat(eng, "A", 0b001), "containment")
+        self.assertEqual(CF.defeat(eng, "A", 0b010), "neither")
+
+
+class TestArrivalsByRule(unittest.TestCase):
+
+    def test_who_decided_each(self):
+        cases = [case(1, [BILL, SS], {}, BILL, SS, governing="H12"),
+                 case(2, [SS], {}, SS, SS, by=E.RUNG2, governing="H12"),
+                 case(3, [BILL], {}, BILL, SS, by=E.RUNG2, governing="H12"),
+                 case(4, [], {}, None, BILL, by=None, governing="H11"),
+                 case(5, [AM, BILL], {}, AM, AM, governing="H09")]
+        got = CF.arrivals_by_rule(cases)
+        self.assertEqual(list(got), ["H09", "H11", "H12"])
+        self.assertEqual(got["H12"], {"arrivals": 3, "ranking_right": 0, "ranking_wrong": 1,
+                                      "rung2_right": 1, "rung2_wrong": 1, "nobody": 0})
+        self.assertEqual(got["H11"]["nobody"], 1)
+        self.assertEqual(got["H09"]["ranking_right"], 1)
+
+
+class TestUnordered(unittest.TestCase):
+
+    def test_refused_never_tried_installed(self):
+        action = {"R1": SS, "R2": T2, "R3": T2, "R4": BILL, "R5": SS, "R6": AM}
+        history = {frozenset(("R1", "R2")): [("R1", "R2", "cierra_ciclo")],
+                   frozenset(("R4", "R5")): [("R5", "R4", "cierra_ciclo")],
+                   frozenset(("R6", "R4")): [("R6", "R4", "ok")]}
+        cases = [case(1, [T2, SS], {T2: ["R2"], SS: ["R1"]}, T2, T2, governing="H16"),
+                 case(2, [T2, SS], {T2: ["R3"], SS: ["R1"]}, T2, SS),
+                 case(3, [BILL, SS], {BILL: ["R4"], SS: ["R5"]}, BILL, SS, governing="H12"),
+                 case(4, [AM, BILL], {AM: ["R6"], BILL: ["R4"]}, AM, BILL, governing="H11"),
+                 case(5, [SS], {SS: ["R1"]}, SS, SS, by=E.RUNG2)]
+        got = CF.unordered(cases, history, action)
+        kinds = {r["case"]: r["kind"] for r in got["rows"]}
+        self.assertEqual(kinds, {1: "refused", 2: "never_tried", 3: "refused", 4: "installed"})
+        named = {r["case"]: r["refused_named_the_truth"] for r in got["rows"]}
+        self.assertEqual((named[1], named[3]), (False, True))   # SS above T2 at T2's; SS at SS's
+        d = got["by_group"]["deflection"]
+        self.assertEqual((d["cases"], d["refused"]["cases"], d["refused"]["right"],
+                          d["never_tried"]["cases"]), (2, 1, 1, 1))
+        self.assertEqual(d["refused"]["verdicts"], {"cierra_ciclo": 1})
+        self.assertEqual(got["by_group"]["billing"]["refused"]["named_the_truth"], 1)
+        self.assertEqual(got["by_group"]["billing"]["installed"]["cases"], 1)
+
+
+class TestWhatKeptOut(unittest.TestCase):
+
+    def test_each_class(self):
+        others = {"rows": [
+            {"case": c, "others": {"k_r1": {"won": T2, "lost": SS, "right": True}}}
+            for c in (1, 2, 3, 4, 5, 6)]}
+        k2 = [dict(case(1, [T2], {T2: ["R2"]}, T2, T2, by=E.RUNG2),
+                   kept_out={"R1": [SS, "declared"], "R9": [T1, "containment"]}),
+              dict(case(2, [T2], {T2: ["R2"]}, T2, T2, by=E.RUNG2),
+                   kept_out={"R1": [SS, "both"], "R5": [SS, "declared"]}),
+              dict(case(3, [T2], {T2: ["R2"]}, T2, T2, by=E.RUNG2),
+                   kept_out={"R1": [SS, "containment"], "R5": [SS, "declared"]}),
+              dict(case(4, [T2], {T2: ["R2"]}, T2, T2, by=E.RUNG2), kept_out={}),
+              dict(case(5, [SS], {SS: ["R1"]}, SS, T2, by=E.RUNG2), kept_out={}),
+              dict(case(6, [T2, SS], {T2: ["R2"], SS: ["R1"]}, T2, T2), kept_out={})]
+        got = CF.what_kept_out(others, k2)
+        self.assertEqual({r["case"]: r["class"] for r in got["rows"]},
+                         {1: "declared", 2: "declared", 3: "mixed", 4: "none matched",
+                          5: "a losing queue stood alone"})
+        self.assertEqual(got["arrivals"], 5)
+        self.assertEqual(got["by_class"]["a losing queue stood alone"], {"arrivals": 1, "right": 0})
+        self.assertEqual(got["rows"][0]["kept_out"], {"R1": [SS, "declared"]})
+        self.assertIsNone(CF.what_kept_out(None, k2))
+
+
+class TestTheEdgesNewborns(unittest.TestCase):
+
+    def test_on_k_r3(self):
+        record = json.loads(plan.run_path(plan.RANKED, 3).read_text())
+        self.assertTrue(CF.newborn_at_one_end(record))
+        log = record["edge_log"]
+        i = next(k for k, e in enumerate(log) if e[2] == "ok")
+        others = [d["rule_id"] for d in record["rules"] if d["rule_id"] not in log[i][:2]]
+        log[i] = [others[0], others[1], log[i][2]]
+        self.assertFalse(CF.newborn_at_one_end(record))
 
 
 if __name__ == "__main__":
