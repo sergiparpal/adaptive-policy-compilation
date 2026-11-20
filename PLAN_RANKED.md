@@ -20,8 +20,8 @@
 >   before any spend. Step 0 now compares the records without their calls'
 >   seconds. §7's sentence stands as signed, and Sergi had the correction
 >   pushed before any step ran behind it.
-> - **K escalated less than §1 guessed**: 190 to 252 times a run, against 250
->   to 400. No K run reached the cap, and two L runs did.
+> - **K escalated at the low end of §1's guess, or under it**: 190 to 252 times
+>   a run, against 250 to 400. No K run reached the cap, and two L runs did.
 > - **The runs cost less than §1 priced**: $3.1349 in all, against about four
 >   dollars, and K's three runs were billed less than half of L's. They took a
 >   day and a half, against about two days.
