@@ -1667,6 +1667,8 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.readings                      # POST-RUN: the six readings Stage C left free
     PYTHONHASHSEED=0 python3 -m ranked.conflicts                     # POST-RUN: where K r2's conflicts fell, and which births made them
     PYTHONHASHSEED=0 python3 -m ranked.drafts                        # POST-RUN: why one prompt drew different drafts
+    PYTHONHASHSEED=0 python3 -m ranked.refusals                      # POST-RUN: why the refusals fell where they did
+    PYTHONHASHSEED=0 python3 -m ranked.billing                       # POST-RUN: why K r2's base lost H11's tickets with one queue standing
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1745,6 +1747,22 @@ ticket several times, or say in §0 what one draw stands for. **And name a
 reading's questions apart from the signed rows**: these two readings labelled
 theirs with a capital, a hyphen and a letter, which `tests/test_prose_tables.py`
 reads in the prose as a row.
+
+**Read POST-RUN, the refusals fell around older rules nested in broad
+newborns.** The loop installs a newborn's wins first, so a broad newborn's
+declared wins were refused through narrower rules inside its region that
+earlier declarations had placed below the rules it claimed to beat. In one run
+that rule was born of the wrong queue at an impasse in the first cases, and the
+refused declarations were mostly wrong; the ranking righted them. An engine
+that refused only real cycles would have installed them. A plan that would
+install refused declarations should read what they declared first.
+
+**And a report names the queue, not the attribute that parts two layers.**
+Deflection's rules drafted at reported tickets of the layer billing shares its
+tickets with left out the prior tickets that part the two. They lay inside
+billing's broad rules, and took the other layer's tickets by containment. Both
+bets of those readings assumed the declarations did the ordering; containment
+did more of it.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
