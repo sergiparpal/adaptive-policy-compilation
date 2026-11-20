@@ -134,7 +134,9 @@ POST-RUN on November 17, 2026**, and the item it answers is struck in place.
 **The loop that settles its conflicts by the ranking its own votes choose
 closed on November 20, 2026**: `PLAN_RANKED.md`, six signed rows, five held and
 one refuted, and one reported, written up in `results_ranked/`. The item it
-answers is struck in place. This is a list of things not done,
+answers is struck in place. **Six things its Stage C left free were read
+POST-RUN the same day**, and the six items they answer are struck in place.
+This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -552,40 +554,65 @@ most of the votes the loop's placement answers have cast so far. The votes
 ranked `SECURITY_INCIDENT` first, and K decided about a sixth of the space more
 than L and reached compiling at once at the median, thinly. What that leaves:
 
-- **Why K r2's ranking decided its conflicts at half.** K r1's and K r3's
-  decided more than four in five right, under the same last ranking. Which pairs
-  of queues K r2's conflicts fell between, and when in the run. Free on the
-  records.
-- **The tickets that beget a rule nested in the keyword's region.** In both arms
-  the rules of `T2_TECHNICAL` wholly inside the keyword's region were born at a
-  few tickets, each in more than one run. The one born at case 529 holds two
-  thirds of `SECURITY_INCIDENT` in K r2. Which tickets they are, and what each
-  first call was told. Free on the records.
+- ~~**Why K r2's ranking decided its conflicts at half.**~~ **Read POST-RUN on
+  2026-11-20** (`FINDINGS_RANKED.md`, *Six things Stage C left free*, A). No
+  wrong decision of any K run would have been right under its last ranking. A
+  larger share of K r2's conflicts fell in billing's layer, which no ranking of
+  the queues orders right, and a far smaller one between deflection and the
+  technical or general queue, which the last ranking orders right. Each error
+  fell on its own point.
+- ~~**The tickets that beget a rule nested in the keyword's region.**~~ **Read
+  POST-RUN on 2026-11-20** (the same section, B). Every nested rule of the six
+  runs is `T2_TECHNICAL`'s, born at a ticket of `H03` whose report named the
+  queue. Blind, the first call explained the label by severity, and every rule
+  that reaches `SECURITY_INCIDENT`'s region drops the tier. No first call wrote
+  `H03`'s region whole, and one ticket's first calls drew the same draft in a
+  third of the pairs of runs that asked it.
 - **Keeping such a rule from being born.** The ranking settles what conflicts
   cost the loop, and leaves what containment costs it. The lever left is in the
   births: a first call shown the rule that erred, which `PLAN_CORRECTIONS.md`'s
   readings named. Calls.
-- **Where K's gain lies outside the keyword half.** In K r1 and K r2 most of it
-  does, where §0 expected it in `SECURITY_INCIDENT`'s region. Which queues'
-  points the ranking decides there that L leaves in conflict. Free on the
-  records.
-- **K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`.** Every K
-  ranking put `T3_ENGINEERING` above, the order that cost the closed runs'
-  declared ranking most of what it lacked, and K's bases still recall
-  `ACCOUNT_MANAGER` well. What the pair decides in K's bases. Free on the
-  records.
-- **Why K r2's at-once answers decided so much more than its loop.** Its labels
-  named `SECURITY_INCIDENT` more often than any other run's. Free on the
-  records.
+  **[NOTE 2026-11-20] Or a report that says why.** Read POST-RUN, the rule is
+  born of a report that names the queue and not the reason. Level 2's prose
+  names the exception's tier, and the loop has not run under it with reports.
+  Compiled at once, the same label beside those that name `SECURITY_INCIDENT` at
+  free and pro accounts gave the keyword half whole. Calls.
+- ~~**Where K's gain lies outside the keyword half.**~~ **Read POST-RUN on
+  2026-11-20** (the same section, C). Mostly `ACCOUNT_MANAGER`'s, and mostly
+  not the ranking's: it decides right a third, a sixth and under half of the
+  gain there. At about three fifths of the points L decides wrong and K right
+  stands a rule L wrote at a conflict it asked about.
+- ~~**K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`.**~~ **Read
+  POST-RUN on 2026-11-20** (the same section, D). The pair meets nowhere in
+  K r1's and K r2's bases, and on a few hundred points in K r3's, none of them
+  `ACCOUNT_MANAGER`'s. Its order costs K nothing.
+- ~~**Why K r2's at-once answers decided so much more than its loop.**~~ **Read
+  POST-RUN on 2026-11-20** (the same section, E). Its labels named
+  `SECURITY_INCIDENT` at tickets of `H02`, free and pro accounts at severity 1
+  or 2, as well as of `H01`. Its answers decided the keyword half whole, which
+  its loop held half of, as L r3's did, whose labels named one ticket of `H02`.
 - **The decision or the rules it leads to.** Each cross-reading reads one arm's
   rules under the other arm's engine, and no reading of these records
   separates the two (§13 of the plan, its first item).
+  **[NOTE 2026-11-20] L's side, read POST-RUN.** Outside the keyword half a rule
+  L wrote at a conflict it asked about stands at about three fifths of the
+  points L decides wrong and K right. That says where L's rules err, and not
+  what K would have written without its decision.
 - **Telling the proposer how the engine settles a conflict.** The system prompt
   still describes rung 2's engine in both arms. Calls.
-- **An engine that abstains where its votes are silent.** No case K's ranking
-  took was decided on a tie of votes between the winner's queue and the next.
-  What such an engine would have left in conflict is not read. Free on the
+- ~~**An engine that abstains where its votes are silent.**~~ **Read POST-RUN on
+  2026-11-20** (the same section, F). It would have abstained nowhere: no pair
+  the ranking decided between was silent or even, at the arrivals or over the
+  space.
+- **Why K r2's conflicts fell where its ranking errs.** Its ranking took about
+  as many conflicts in billing's layer as K r1's and K r3's did, and erred at
+  more of them, and far fewer between deflection and the technical or general
+  queue. Which births made those conflicts, and from which reports. Free on the
   records.
+- **Why one prompt drew different drafts.** A ticket's first call is sent the
+  same texts in every run and both arms, and at case 529 one run drew severity
+  other than 1 where another drew severity at least 3. Each first call's
+  reasoning is in the records, and no stage codes it. Free on the records.
 
 Lessons it leaves:
 
@@ -614,6 +641,14 @@ Lessons it leaves:
 - **A large record can time a push out.** GitHub answered HTTP 408 to a 15 MB
   record, and the fourth attempt went through. A supervisor's retries should
   outlast that.
+- **A recall over the space says which queue lost, not to whom.** The POST-RUN
+  readings' bet read K r2's low recall of `BILLING_SPECIALIST` as lost to
+  `T2_TECHNICAL`, and at the arrivals its ranking sent billing's tickets to
+  `ACCOUNT_MANAGER`. Read the decisions before betting on the pair.
+- **A clause on a share of a set that can be empty fails with nothing to
+  read.** Two of those readings' clauses did: the pair decided no point of the
+  queue it was read for, and the abstaining engine left nothing. Say in the
+  expectation what an empty set means.
 
 ---
 

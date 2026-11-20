@@ -3589,6 +3589,28 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        which that rule holds two thirds of the queue.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md).
+     **[NOTE 2026-11-20, later] And six things its Stage C left free, read
+     POST-RUN.**
+     - **Where its ranking erred.** No wrong decision of the ranking would have
+       been right under the run's last ranking. K r2 erred at half because a
+       larger share of its conflicts fell in billing's layer, which no ranking
+       of the queues orders right, and a far smaller one where the ranking is
+       right.
+     - **The nested rule is born of a report read alone.** Every rule nested in
+       the keyword's region is `T2_TECHNICAL`'s, born at a ticket of `H03`
+       whose report named the queue. The blind first call explained the label
+       by severity and dropped the tier. Compiled at once beside the labels
+       that name `SECURITY_INCIDENT` at free and pro accounts, the same label
+       gave the keyword half whole.
+     - **Outside the keyword half the ranking decides little of the gain.** At
+       about three fifths of the points L decides wrong and K right stands a
+       rule L wrote at a conflict it asked about.
+     - **Two levers read nothing.** The pair `T3_ENGINEERING`,
+       `ACCOUNT_MANAGER` decides almost nothing in K's bases, and no pair the
+       ranking decided between was silent or even.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *Six things Stage C left free*.
 
    All three are read above.
 

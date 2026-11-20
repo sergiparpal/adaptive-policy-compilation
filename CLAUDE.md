@@ -1664,6 +1664,7 @@ The first command is blocking and writes nothing:
     python3 -m ranked.run --dry-run                                  # RK-g1..RK-g3; must pass first
     PYTHONHASHSEED=0 python3 -m ranked.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m ranked.score                         # Stage C, free, from the runs and the asks
+    PYTHONHASHSEED=0 python3 -m ranked.readings                      # POST-RUN: the six readings Stage C left free
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1708,6 +1709,23 @@ ran the smoke runs, the sessions and the six runs one at a time. It committed
 each record alone and pushed it to one pull request. The smoke phase was paused
 once at Sergi's request, and resumed from its partial file. The merge waited for
 Sergi's word.
+
+**Read POST-RUN, the ranking erred where its conflicts fell, not as it moved.**
+No wrong decision of the ranking would have been right under the run's last
+ranking, and the three runs ended on one ranking. The run that erred at half
+met a larger share of conflicts in billing's layer, whose queues the policy
+interleaves, so no ranking of the queues orders them right. A lever on a
+ranking should read where its conflicts fall before how the ranking moves.
+
+**And the rule nested in the keyword's region is born of a report read
+alone.** Told only that a keyword ticket of the policy's exception is
+`T2_TECHNICAL`'s, the blind first call explains it by severity and drops the
+tier the exception also reads. Compiled at once, the same label beside those
+that name `SECURITY_INCIDENT` at free and pro accounts gave the half whole. A
+protocol that hands the proposer one label at a time should say in §0 what a
+label leaves out. **And one prompt draws different drafts**: sent the same
+texts, the same ticket's first call drew different rules in most of the pairs
+of runs that asked it.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
