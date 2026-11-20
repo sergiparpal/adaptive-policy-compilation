@@ -3657,6 +3657,26 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *One thing the last two readings left free*.
+     **[NOTE 2026-11-20, after the sixth] And two things that reading left
+     free, read POST-RUN.**
+     - **The copies are mostly billing's general line, written again at
+       reported errors and kept out of their ticket.** 319 of the 461 were
+       born at a reported error, and in the final bases they decide their own
+       ticket at 1 to 10 a run.
+     - **A copy does not inherit its original's order.** Left out, the copies
+       cost little in four runs. In L r2 the base decides 9,709 points more
+       without them, 7,980 of them one copy's: its win over the security rule
+       its original had lost to was refused for a cycle, and the conflict
+       reopened. In L r3 another copy's losses to the security rules were
+       refused the same way. In K r2 one copy's installed wins took back 1,650
+       points its original had lost.
+     - **L's twins at its conflicts are a correction's region drawn again.** At
+       28 of the 35 the newborn named another queue standing at the ticket, and
+       was right at 3; at 25 a twin had been born where a report named its
+       queue.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *Two things the last reading left free*.
 
    All three are read above.
 
