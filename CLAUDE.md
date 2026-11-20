@@ -1670,6 +1670,8 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.refusals                      # POST-RUN: why the refusals fell where they did
     PYTHONHASHSEED=0 python3 -m ranked.billing                       # POST-RUN: why K r2's base lost H11's tickets with one queue standing
     PYTHONHASHSEED=0 python3 -m ranked.twins                         # POST-RUN: one region under two queues
+    PYTHONHASHSEED=0 python3 -m ranked.copies                        # POST-RUN: copies of the same queue, and what they cost
+    PYTHONHASHSEED=0 python3 -m ranked.asked                         # POST-RUN: why L's twins are born at the conflicts it asks about
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1773,6 +1775,24 @@ the loop writes again far more often is its own queue's rule. **The case that
 prompts a reading may be the exception**: this one began from a wrong side, and
 bet on it. Count the population before betting on the case that raised the
 question.
+
+**Read POST-RUN, the loop's copies are mostly billing's general line, written
+again at reported errors and kept out of their ticket.** A copy covers exactly
+an earlier rule of its own queue. Most were born at a reported error, where the
+rule that erred, nested in the copy, kept the ticket by containment, and almost
+none decides its ticket in the final base. **A copy does not inherit its
+original's order.** It enters the region with its own answer's sides. Where the
+engine refused them, the copy stood beside rules its original had lost to, and
+reopened a conflict with the keyword's security rules. A protocol that lets a
+copy be born should say in §0 what of its original's order the copy keeps.
+
+**Read POST-RUN, L's twins at its conflicts are mostly a correction's region
+drawn again under the other side's queue.** At a conflict the first call gets no
+report. It drew the region a report had taught an earlier rule, and named
+another queue standing at the ticket, almost always wrong. **A clause on the
+rule that stood can be met by its queue**: the twin itself was often beaten at
+the ticket, and another rule of its queue stood there. Read the queue beside
+the rule before betting on the rule.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

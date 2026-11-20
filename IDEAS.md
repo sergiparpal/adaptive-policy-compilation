@@ -140,7 +140,9 @@ POST-RUN the same day**, and the six items they answer are struck in place.
 too**, and the two items they answer are struck in place. **Two things those
 two readings left free were read POST-RUN the same day as well**, and the two
 items they answer are struck in place. **One thing those two left free was read
-POST-RUN the same day too**, and the item it answers is struck in place.
+POST-RUN the same day too**, and the item it answers is struck in place. **Two
+things that one left free were read POST-RUN the same day as well**, and the two
+items they answer are struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -651,13 +653,34 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   Seldom: under a tenth of every run's births. The newborn mostly declared
   itself above its twin, and three installed sides in five are right by the
   policy. The regions go mostly to rules born later.
-- **Copies of the same queue.** About three births in ten cover exactly an
-  earlier rule of their own queue. What they cost the base, and whether they
-  are mostly the queue's general line written again at reported errors, as
-  `PLAN_CORRECTIONS.md`'s readings found. Free on the records.
-- **Why L's twins are born at the conflicts it asks about.** Asked about a
-  conflict, L's first call mostly drew exactly an earlier rule's region under
-  another queue. Its reasoning is in the records. Free on the records.
+- ~~**Copies of the same queue.**~~ **Read POST-RUN on 2026-11-20**
+  (`FINDINGS_RANKED.md`, *Two things the last reading left free*, L). Mostly
+  billing's general line, `product = billing`, written again and again at
+  reported errors of `H11`, where the rule that erred, nested in the copy, keeps
+  the ticket by containment. Almost none decides its ticket in the final base.
+  In four runs they move little either way. A copy enters its original's region
+  with its own answer's sides, not its original's order: in K r2 one copy's
+  installed wins took back what its original had lost, and in L r2 and L r3 two
+  copies' refused sides reopened conflicts beside the keyword's security rules,
+  one of them over much of the keyword half.
+- ~~**Why L's twins are born at the conflicts it asks about.**~~ **Read POST-RUN
+  on 2026-11-20** (the same section, M). The conflict mostly set a correction,
+  a rule born where a report named its queue, against a rule of another queue.
+  Asked with no report, the blind first call drew the correction's region again
+  and named another queue standing there, almost always wrong. The twin itself
+  was often beaten at the ticket, and another rule of its queue stood there.
+- **Whether a loop that refused copies would run better.** v1c records a copy
+  and lets it be born, and a copy enters its original's region without the
+  losses later rules declared against it. Refusing the copy, or installing its
+  original's order with it, would change which cases escalate after it. Calls.
+- **Why the copies' declared sides closed cycles.** In L r2 `R0258`'s win over
+  `R0252`, and in L r3 `R0275`'s losses to the keyword's security rules, were
+  refused. Through which rules, and whether they are older rules nested in the
+  copy's region, as the refusals reading found in K. Free on the records.
+- **A first call shown the conflict.** At a conflict L asked about, the first
+  call does not know which rules disagree, and drew the region a correction had
+  drawn under the other queue. Shown the two, with their queues, it might side
+  otherwise. Calls.
 - **Whether the draw is the provider's.** No attempt carried a system
   fingerprint. One prompt asked several times on one day, at temperature 0 and
   at the provider's default, would tell. Calls.
@@ -726,6 +749,15 @@ Lessons it leaves:
   region under two queues began from `R0118` above `R0117`, a wrong side, and
   bet that the sides would mostly be wrong. Most were right. Count the
   population before betting on the case that raised the question.
+- **A copy does not inherit its original's order.** It enters the region with
+  its own answer's sides only. Installed, they can win back what its original
+  had lost; refused, they leave the copy beside the rules its original had lost
+  to. A reading of what a copy costs should replay the base without it, one copy
+  at a time as well as all together.
+- **A clause about the rule that stood can be met by its queue.** The reading
+  of L's twins at its conflicts bet most on the twin itself standing at the
+  ticket. It was often beaten there, and another rule of its queue stood. Read
+  the queue beside the rule before betting on the rule.
 
 ---
 
