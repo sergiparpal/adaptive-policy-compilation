@@ -279,5 +279,47 @@ class TestTheWriter(unittest.TestCase):
         self.assertIn("unsigned", str(got.exception))
 
 
+# ---------------------------------------------------------------------------
+# Added after the first run
+# ---------------------------------------------------------------------------
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_the_rules_nested_at_the_newborn(self):
+        # A win: X nested in the newborn W carries the path in.
+        eng = Engine({"W": 0b1111, "L": 0b0110, "X": 0b0011, "Y": 0b0001},
+                     nested=[("X", "W"), ("Y", "W"), ("Y", "X")], declared=[("L", "X")])
+        nodes = RF.CP.forward(eng, "L") & RF.CP.backward(eng, "W")
+        self.assertEqual(RF.nested_at_newborn(eng, "W", "L", "W", nodes), ["X"])
+        # A loss: the newborn L nested in Z, which reaches W.
+        eng2 = Engine({"W": 0b0111, "L": 0b0110, "Z": 0b1111},
+                      nested=[("L", "Z")], declared=[("Z", "W")])
+        nodes2 = RF.CP.forward(eng2, "L") & RF.CP.backward(eng2, "W")
+        self.assertEqual(RF.nested_at_newborn(eng2, "W", "L", "L", nodes2), ["Z"])
+        self.assertEqual(RF.nested_at_newborn(eng2, "W", "L", "Q", nodes2), [])
+
+    def test_read_added(self):
+        def birth(q, right=True):
+            return {"queue": q, "born_at": 1, "kind": "ERROR", "report": q,
+                    "governing": "H24", "right_at_birth": right, "conditions": []}
+        births = {"W": birth(SS), "L": birth(T2), "X": birth("T1_GENERAL", right=False),
+                  "V": birth(SS), "N": birth(SS)}
+        found = {("W", "L"): {"closes": RF.CONTAINMENT, "newborn": "W",
+                              "nested_at_newborn": ["X"]},
+                 ("V", "L"): {"closes": RF.EITHER, "newborn": "V", "nested_at_newborn": ["N"]},
+                 ("L", "W"): {"closes": RF.OWN, "newborn": "L", "nested_at_newborn": []}}
+        units = [{"above": "W", "below": "L"}, {"above": "W", "below": "L"},
+                 {"above": "V", "below": "L"}, {"above": "L", "below": "W"}]
+        doors = [{"upper": "X", "lower": "W", "kind": RF.NESTED, "refusals": 2}]
+        got = RF.read_added(units, found, births, doors)
+        c = got["containment"]
+        self.assertEqual((c["refusals"], c["through_a_rule_of_another_queue"],
+                          c["through_a_rule_wrong_at_its_birth"]), (3, 2, 2))
+        self.assertEqual([(r["rule_id"], r["refusals"]) for r in c["rules"]],
+                         [("X", 2), ("N", 1)])
+        self.assertEqual(got["doors"][0]["upper_birth"]["queue"], "T1_GENERAL")
+        self.assertFalse(got["doors"][0]["upper_birth"]["right_at_birth"])
+
+
 if __name__ == "__main__":
     unittest.main()

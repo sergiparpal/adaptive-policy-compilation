@@ -51,6 +51,12 @@ THE QUESTIONS
       declared edges that keep billing's rules out at the most losses, with
       their rules and births.
   (c) **Beside them**, K r1 and K r3 read the same way.
+  (d) **Added after the first run, and read by no clause.** At each loss: whether
+      every rule standing was born at a ticket of `H12`, the layer `H11`
+      shares billing's tickets with, and whether any conditions on prior
+      tickets, which part the two; how each rule of billing that matches is
+      kept out, declared, nested or both; and whether a rule standing is
+      nested in one of them, or declared above one.
 
 --------------------------------------------------------------------------
 THE GATES
@@ -131,6 +137,10 @@ PROVENANCE
 `ranked/drafts.py`. The expectation above was written and committed before the
 reading ran. Not a signed row, not on `STATUS.md`'s scoreboard, not a
 calibration event. Zero API calls.
+
+**One part was added after the first run**, (d), in a commit of its own. The
+first run had printed every clause's verdict, and its readings (a) to (c) had
+been read whole. No clause reads the added part, and no clause was changed.
 
 Usage:  python3 -m ranked.billing --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.billing
@@ -253,7 +263,10 @@ def losses_of(record: dict[str, Any], space: Space, corpus: Sequence,
                             else BILLINGS if (installed.get((x, b)) or {}).get("newborn") == b
                             else None),
                      "verdict": CP.verdict(eng, x, b, walk.action, truth)}
-                    for x in declared], "nested": nested})
+                    for x in declared], "nested": nested,
+                    # added after the first run: how the rules standing beat it
+                    "standing_nested": [s for s in standing if s in eng.sub_below[b]],
+                    "standing_declared": [s for s in standing if s in eng.decl_below[b]]})
             stand_ok &= len(queues) == 1 and BILL not in queues
             out.append({"case": idx, "queue": queues[0] if queues else None,
                         "decision": S.engines_decision(row), "reported": row["cause"] == plan.ERROR,
@@ -271,6 +284,28 @@ def declared_side(loss: dict[str, Any]) -> tuple[str | None, str | None]:
         return None, None
     verdict = "wrong" if all(d["verdict"] == CP.WRONG for d in edges) else "not all wrong"
     return by_class([d["by"] for d in edges]), verdict
+
+
+def read_added(losses: Sequence[dict], births: dict[str, dict]) -> dict[str, Any]:
+    """Added after the first run, and read by no clause."""
+    def all_h12(x):
+        return bool(x["standing"]) and all(births[r]["governing"] == "H12" for r in x["standing"])
+
+    def priors(x):
+        return any("prior_tickets_30d" in births[r]["attributes"] for r in x["standing"])
+
+    kinds = Counter(k["kind"] for x in losses for k in x["billing"])
+    return {
+        "standing_all_born_at_h12": sum(1 for x in losses if all_h12(x)),
+        "standing_born_at": dict(sorted(Counter(births[r]["governing"] for x in losses
+                                                for r in x["standing"]).items())),
+        "standing_with_a_prior_bound": sum(1 for x in losses if priors(x)),
+        "billing_rules_by_kind": dict(sorted(kinds.items())),
+        "a_standing_rule_nested_in_billing": sum(
+            1 for x in losses if any(k["standing_nested"] for k in x["billing"])),
+        "a_standing_rule_declared_above_billing": sum(
+            1 for x in losses if any(k["standing_declared"] for k in x["billing"])),
+    }
 
 
 def read_run(losses: Sequence[dict], births: dict[str, dict]) -> dict[str, Any]:
@@ -390,6 +425,8 @@ def read_everything(records: dict[str, dict], conflicts: dict[str, Any]
                       "passes": bool(edges_ok)})
         births = CF.births_of(records[t], space, truth)
         runs[t] = read_run(losses, births)
+        # added after the first run, and read by no clause
+        runs[t]["added"] = read_added(losses, births)
     return {"runs": runs}, gates
 
 
