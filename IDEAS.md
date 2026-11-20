@@ -139,7 +139,8 @@ POST-RUN the same day**, and the six items they answer are struck in place.
 **Two things those six readings left free were read POST-RUN the same day
 too**, and the two items they answer are struck in place. **Two things those
 two readings left free were read POST-RUN the same day as well**, and the two
-items they answer are struck in place.
+items they answer are struck in place. **One thing those two left free was read
+POST-RUN the same day too**, and the item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -645,9 +646,18 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   prior tickets that part the two layers and win inside billing's broad rules
   by containment, far more than by declarations. A rule of the general queue
   of pro accounts took the rest of K r2's excess.
-- **One region under two queues.** How often the loop wrote one region as two
-  queues' rules, as K r2's `R0117` and `R0118`, and what the side declared
-  between them decided. Free on the records.
+- ~~**One region under two queues.**~~ **Read POST-RUN on 2026-11-20**
+  (`FINDINGS_RANKED.md`, *One thing the last two readings left free*, K).
+  Seldom: under a tenth of every run's births. The newborn mostly declared
+  itself above its twin, and three installed sides in five are right by the
+  policy. The regions go mostly to rules born later.
+- **Copies of the same queue.** About three births in ten cover exactly an
+  earlier rule of their own queue. What they cost the base, and whether they
+  are mostly the queue's general line written again at reported errors, as
+  `PLAN_CORRECTIONS.md`'s readings found. Free on the records.
+- **Why L's twins are born at the conflicts it asks about.** Asked about a
+  conflict, L's first call mostly drew exactly an earlier rule's region under
+  another queue. Its reasoning is in the records. Free on the records.
 - **Whether the draw is the provider's.** No attempt carried a system
   fingerprint. One prompt asked several times on one day, at temperature 0 and
   at the provider's default, would tell. Calls.
@@ -712,6 +722,10 @@ Lessons it leaves:
   `H11`'s tickets nested rules kept billing's rules out far more often, and in
   K r2 the refused cycles were real. A plan that bands a lever on declarations
   should count first what containment already orders.
+- **The case that prompts a reading may be the exception.** The reading of one
+  region under two queues began from `R0118` above `R0117`, a wrong side, and
+  bet that the sides would mostly be wrong. Most were right. Count the
+  population before betting on the case that raised the question.
 
 ---
 
