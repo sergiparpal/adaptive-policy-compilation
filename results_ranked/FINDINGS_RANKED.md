@@ -13,7 +13,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The POST-RUN reading of two things the six readings left free** reached it
   in #289, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the last two readings left free**
-  reaches it in #291.
+  reached it in #291, merged on 2026-11-20 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -190,13 +190,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-20, last] And two more.** [`refusals.json`](refusals.json)
 > and [`billing.json`](billing.json) are the POST-RUN reading of two things the
 > last two readings left free.
-> - **They were written from `00c7c5e`**, on the branch of #291: the commit that
->   adds the part read after the first run. The readings and their expectations
->   are the commit before it, `95abfbb`.
+> - **They were written from `00c7c5e`**, on the branch of #291, which is
+>   `3165cb3` on `main`: the commit that adds the part read after the first
+>   run. The readings and their expectations are the commit before it,
+>   `95abfbb`, which is `5264425` on `main`.
 > - **Their code digest is `1a1536f33438d3f0`**, because `ranked/refusals.py`
->   and `ranked/billing.py` were added after the last two readings. Their
->   `_env` says `git_dirty`, for the same files, and `code_dirty` is false. No
->   module an earlier record of this plan ran changed.
+>   and `ranked/billing.py` were added after the last two readings. `main`
+>   computes it at `3165cb3`, and still at the merge of #291. Their `_env` says
+>   `git_dirty`, for the same files, and `code_dirty` is false. No module an
+>   earlier record of this plan ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1281,17 +1283,22 @@ This reading answers both on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.refusals` and
 `PYTHONHASHSEED=0 python3 -m ranked.billing`, on 2026-11-20, from `00c7c5e`
-with its code clean, on the branch of #291.
-- **The commits.** `95abfbb` carries both readings and their expectations,
-  written and committed before either ran. `00c7c5e` adds one part to each
-  after the first run, read by no clause: who the rules are that the cycles and
-  the losses run through. The first run, from `95abfbb`, had printed every
-  clause's verdict, and its readings had been read whole. Its records were not
-  kept.
-- **Each record was committed alone**, as `1c607f1` and `2064f4b`.
+with its code clean, on the branch of #291, which is `3165cb3` on `main`.
+- **The commits.** `5264425` on `main` carries both readings and their
+  expectations, written and committed before either ran. `3165cb3` adds one
+  part to each after the first run, read by no clause: who the rules are that
+  the cycles and the losses run through. The first run, from the first of the
+  two, had printed every clause's verdict, and its readings had been read
+  whole. Its records were not kept.
+- **Each record was committed alone**, as `a8f888f` and `7cd3f73`.
+- **On #291's branch the four commits were `95abfbb`, `00c7c5e`, `1c607f1` and
+  `2064f4b`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`, and the GitHub API names #291 behind the four
+  `main` commits.
 - **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `1a1536f33438d3f0`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `1a1536f33438d3f0`, is the one `main` computes at `3165cb3`, and still at the
+  merge.
 - **The records are [`refusals.json`](refusals.json) and
   [`billing.json`](billing.json).** Their 18 gates passed:
   - in each K run, the replay gives every edge the log's verdict, meets every
