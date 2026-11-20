@@ -17,7 +17,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The POST-RUN reading of one region under two queues** reached it in #293,
   merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things that reading left free** reaches it in
-  the pull request it is opened in.
+  #295.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -218,8 +218,8 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-20, after the sixth] And a seventh and an eighth.**
 > [`copies.json`](copies.json) and [`asked.json`](asked.json) are the POST-RUN
 > reading of two things the last reading left free.
-> - **They were written from `83e4458`**, on the branch of the pull request
->   they are opened in: the commit that adds the part read after the first run.
+> - **They were written from `83e4458`**, on the branch of #295: the commit
+>   that adds the part read after the first run.
 >   The readings and their expectations are the commit before it, `979dc1e`.
 > - **Their code digest is `d1d5ba3587246981`**, because `ranked/copies.py` and
 >   `ranked/asked.py` were added after the last reading. Their `_env` says
@@ -1671,7 +1671,7 @@ readings answer both on the records alone. They spend nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.copies` and
 `PYTHONHASHSEED=0 python3 -m ranked.asked`, on 2026-11-20, from `83e4458` with
-its code clean, on the branch of the pull request they are opened in.
+its code clean, on the branch of #295.
 - **The commits.** `979dc1e` carries both readings and their expectations,
   written and committed before either ran. `83e4458` adds one part to each after
   the first run, (d), read by no clause: in `copies.py` each copy left out
