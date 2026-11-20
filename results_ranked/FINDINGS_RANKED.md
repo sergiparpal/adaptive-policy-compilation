@@ -898,9 +898,10 @@ E1 and F3 fail.**
 - **K r2's ranking erred at half because of the conflicts its base met**, not
   because its ranking was unsettled. Every error is the last ranking's own
   order, or a ticket with no rule of its queue standing, and all three runs
-  share that ranking. K r2 met more of billing's layer, which no ranking of the
-  queues orders right, and fewer of the conflicts between deflection and the
-  technical or general queue, which the ranking orders right.
+  share that ranking. A larger share of K r2's conflicts fell in billing's
+  layer, which no ranking of the queues orders right, and a far smaller one
+  between deflection and the technical or general queue, which the ranking
+  orders right.
 - **The rule nested in the keyword's region is born of a report read alone.**
   Told only that a keyword ticket of `H03` is `T2_TECHNICAL`'s, the blind first
   call explains it by severity, and leaves out the tier the policy's exception
@@ -917,9 +918,10 @@ E1 and F3 fail.**
 
 ### What it does not settle
 
-1. **Why K r2's base met billing's layer and few of deflection's conflicts.**
-   Which births made those conflicts, and from which reports, is not read. Free
-   on the records.
+1. **Why K r2's conflicts fell where its ranking errs**, in billing's layer, and
+   so seldom between deflection and the technical or general queue. Which
+   births made those conflicts, and from which reports, is not read. Free on
+   the records.
 2. **A first call that keeps the tier.** Shown the rule that erred, as
    `results_corrections/FINDINGS_CORRECTIONS.md`'s readings proposed, or under
    level 2's prose, which names the exception's tier, it might not drop it.
