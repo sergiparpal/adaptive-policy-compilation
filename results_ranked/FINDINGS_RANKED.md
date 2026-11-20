@@ -10,6 +10,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in the same pull request, the one this record was opened in.
 - **The POST-RUN reading of six things Stage C left free** reached it in #287,
   merged on 2026-11-20 at Sergi's word.
+- **The POST-RUN reading of two things the six readings left free** reaches it
+  in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -930,6 +932,11 @@ E1 and F3 fail.**
    so seldom between deflection and the technical or general queue. Which
    births made those conflicts, and from which reports, is not read. Free on
    the records.
+   **[NOTE 2026-11-20, later] Read POST-RUN: where its engine refused
+   declarations.** Every conflict the ranking took was a pair whose declared
+   edge closed a cycle. K r2's engine installed the declarations K r1's and K
+   r3's refused at product routing's tickets, and refused others in billing's
+   layer. *Two things the six readings left free*, G, below.
 2. **A first call that keeps the tier.** Shown the rule that erred, as
    `results_corrections/FINDINGS_CORRECTIONS.md`'s readings proposed, or under
    level 2's prose, which names the exception's tier, it might not drop it.
@@ -940,6 +947,287 @@ E1 and F3 fail.**
 4. **Why one prompt drew different drafts.** At case 529 one run drew severity
    other than 1, and another severity at least 3. Each first call's reasoning is
    in the records, and no stage codes it. Free on the records.
+   **[NOTE 2026-11-20, later] Read POST-RUN: the reasoning is a draw.** Two
+   answers to one prompt part in their opening words, and the draft follows
+   the path. *Two things the six readings left free*, H, below.
+
+---
+
+## Two things the six readings left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-20, after the six readings.** Their *What it
+does not settle*, above, names two things the records can answer without a
+call: why K r2's conflicts fell where its ranking errs, its first item, and why
+one prompt drew different drafts, its fourth. This reading answers both on the
+records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.conflicts` and
+`PYTHONHASHSEED=0 python3 -m ranked.drafts`, on 2026-11-20, from `03e1d87` with
+its code clean, on the branch of the pull request it is opened in.
+- **The commits.** `583fa67` carries both readings and their expectations,
+  written and committed before either ran. `03e1d87` adds one part to
+  `ranked/conflicts.py` after the first run, read by no clause: three things
+  the findings below needed on the record, the arrivals by the rule governing
+  them, how each pair the ranking decided stayed unordered, and what kept the
+  losing queue out of K r2. The first run, from `583fa67`, had printed every
+  clause's verdict, and its readings had been read whole. Its records were not
+  kept.
+- **Each record was committed alone**, as `3c7540e` and `d9b8ea7`.
+- **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `f3bdb353a9d85ae7`.
+- **The records are [`conflicts.json`](conflicts.json) and
+  [`drafts.json`](drafts.json).** Their 34 gates passed:
+  - in each K run, the cases the replay finds decided by the ranking, with
+    their queues, decision, truth and governing rule, are A's above; the
+    replay is the engine's log at every case; and every rule standing at a
+    case of the ranking was born of its escalation;
+  - in each of the six runs, the texts are `corrections/protocol.py`'s; every
+    first call was answered at its first attempt, with no retry; a report is
+    the ticket's own; and a born draft is its rule;
+  - within each prompt, every first call's prompt tokens are the same.
+
+### G. Why K r2's conflicts fell where its ranking errs
+
+A's groups: a case of the ranking is `deflection` when the winner's queue and
+the runner-up's are `SELF_SERVICE_DEFLECT` and `T2_TECHNICAL` or `T1_GENERAL`,
+either way; `billing` when they are `ACCOUNT_MANAGER` and `BILLING_SPECIALIST`,
+or `BILLING_SPECIALIST` and `SELF_SERVICE_DEFLECT`; and `rest` otherwise. The
+last ranking puts `ACCOUNT_MANAGER` above `T2_TECHNICAL`, above
+`BILLING_SPECIALIST`, above `SELF_SERVICE_DEFLECT`, above `T1_GENERAL`.
+
+- **Every conflict the ranking took was a declaration the engine had
+  refused.** At every case K's ranking took, in every run, a rule of the
+  winner's queue and one of the runner-up's had had an edge between them tried
+  at a birth and refused, each time for closing a cycle. Every edge of the
+  three logs was tried at a birth with its newborn at one end, so each was
+  tried before the cases it bears on.
+- **So the ranking decides where the refusals fall**, and it is right there
+  where its order of the two queues is the policy's at those tickets, whichever
+  side the refused edge had declared above.
+
+**K r1's and K r3's deflection conflicts were mostly refusals around one rule
+each, most of them at product routing's tickets.**
+- **K r1.** `R0089`, of `SELF_SERVICE_DEFLECT`, drafted at a reported ticket of
+  `H24` as free accounts at severity 4 without the keyword, stands at 113 of the
+  129 (G1 holds).
+  - **Its answer.** Its placement answer declared it above all 25 rules its
+    round listed. The engine refused 15 of those wins for closing a cycle, among
+    them those over `T2_TECHNICAL`'s rules of api and integrations tickets,
+    `R0059`, `R0075` and `R0078`, and over `T1_GENERAL`'s `R0058`.
+  - **The ranking righted it.** At 102 of the 129 cases every refused edge had
+    declared the wrong rule above. The ranking puts `T2_TECHNICAL` first there,
+    as the policy's product routing does, and `SELF_SERVICE_DEFLECT` above
+    `T1_GENERAL`, and it decided all 129 right.
+- **K r3.** `R0124`, the same draft at another ticket of `H24`, declared itself
+  above all 36 rules its round listed, and the engine installed every one.
+  - **The next refusal.** Two births later `R0126`, of `T2_TECHNICAL`, drafted
+    at a reported ticket of `H16` as api tickets without the keyword, declared
+    itself above `R0124`. The engine refused it for closing a cycle.
+  - **What it left.** That pair stands at 31 of the 72 cases, and `R0126` at 41
+    (G1 holds). At 71 of the 72 a refused edge had declared the right rule
+    above, and the ranking decided 71 right.
+
+**K r2 met the same arrivals with one queue standing.** K r1's and K r3's
+rankings took a deflection conflict at 178 arrivals. K r2's engine decided 168
+of them with one queue standing and 10 by its ranking (G2 holds), and was right
+at 172 (G3 holds).
+- **At 160 of the 168, K r2 held the crossing rule too**: a rule of the queue
+  that lost there in K r1 or K r3 matched the ticket. A declared edge kept every
+  such rule from standing at 146. At the other 14, declared edges kept some out
+  and rules nested in them the rest. All 160 were right.
+- **At 3, no rule of that queue matched**, and at 5 it stood alone. K r2
+  decided one of each right.
+- **So K r2's engine settled those pairs itself**, by declarations it
+  installed, where K r1's and K r3's refused them and left them to the ranking.
+
+**K r2's refusals fell where its ranking errs.** Its 27 conflicts in billing's
+layer, and its 33 of deflection, were refused pairs too. Billing's conflicts, by
+the pair and the rule governing the ticket:
+
+| run | `ACCOUNT_MANAGER`, `BILLING_SPECIALIST` at `H09` | the same at `H10` and `H11` | `BILLING_SPECIALIST`, `SELF_SERVICE_DEFLECT` at `H11` | the same at `H12` |
+|---|---|---|---|---|
+| K r1 | 5, none wrong | 3, all wrong | 6, none wrong | 7, all wrong |
+| K r2 | none | 9, 8 wrong | 6, none wrong | 12, all wrong |
+| K r3 | 11, none wrong | 5, all wrong | 8, none wrong | none |
+
+- **None where the ranking is right.** The policy gives `H09`'s tickets,
+  enterprise billing, to `ACCOUNT_MANAGER`, as the ranking does. K r1's and K
+  r3's rankings took 10 and 11 of `H09`'s 26 arrivals, all right, 5 of K r1's
+  against `SELF_SERVICE_DEFLECT`. K r2's engine decided all 26 with one queue
+  standing, and 11 of them wrong.
+- **At `H12`'s tickets, billing's general line against deflection.**
+  - **The rules.** `BILLING_SPECIALIST`'s rules there were drafted at reported
+    tickets of `H11`: as billing at severity 2 or more without the keyword,
+    `R0102`, or as all of billing without it, `R0046`. `SELF_SERVICE_DEFLECT`'s,
+    `R0093` and `R0012`, were drafted at reported tickets of `H12`.
+  - **The refusals.** The engine refused their edges both ways: `R0102` above
+    `R0093` at 6 cases, and `R0012` above `R0046` at 4. The ranking puts
+    `BILLING_SPECIALIST` first there, and the policy sends those tickets to
+    `SELF_SERVICE_DEFLECT`.
+- **At `H10`'s and `H11`'s, the account manager's churn rule.** `R0083` was
+  drafted at a reported ticket of `H14` as business accounts with five prior
+  tickets or more, of any product, where the policy asks eight. It reaches
+  billing's tickets of such accounts. Its edge above `BILLING_SPECIALIST`'s
+  `R0106` was refused at 6 cases. The ranking puts `ACCOUNT_MANAGER` first
+  there, and the policy sends those tickets to `BILLING_SPECIALIST`.
+- **Seven rules won K r2's 20 errors in billing's layer** (G4 fails): four of
+  `BILLING_SPECIALIST` and three of `ACCOUNT_MANAGER`. Six were born at reported
+  errors whose report named their queue, and `R0037`, of `ACCOUNT_MANAGER`, at
+  an impasse (G5 fails, the bet).
+- **K r2's deflection errors were won by rules wrong at their birth.**
+  - **8 of its 11 sent `H24`'s tickets to `T2_TECHNICAL`.** `R0041` won 7. It was
+    born at an impasse at a ticket of `H24`, as free dashboard accounts at
+    severity 3 or less with five prior tickets or more. `R0008`, born at an
+    impasse at another ticket of `H24`, won 1. The policy sends those tickets
+    to `SELF_SERVICE_DEFLECT`.
+  - **The other 3** sent `H29`'s tickets to `SELF_SERVICE_DEFLECT`'s `R0161`.
+
+**What the ranking lost at `H12`, the base lost anyway.** The arrivals of two of
+billing's rules, decided wrong:
+
+| run | `H12`'s 154 | by the ranking | with one queue standing | `H11`'s 186 | with one queue standing |
+|---|---|---|---|---|---|
+| K r1 | 49 | 7 | 42 | 93 | 90 |
+| K r2 | 40 | 12 | 28 | 117 | 110 |
+| K r3 | 25 | none | 25 | 64 | 59 |
+
+- **K r2 lost fewer of `H12`'s tickets than K r1**, and its ranking took 12 of
+  them. K r3's base lost 25 with one queue standing, which its ranking never
+  met.
+- **K r2's largest loss in billing's layer was `H11`'s**, 110 decided wrong with
+  one queue standing, which no conflict met.
+
+**So the ranking's share right is the share of its refusals that fall where its
+order is the policy's.** K r1 and K r3 each held a rule of
+`SELF_SERVICE_DEFLECT` whose refusals fell mostly at product routing's tickets
+and deflection's, where the ranking orders the queues as the policy does. K r2's
+engine installed the declarations that order those pairs. Its refusals fell in
+billing's layer, and at rules born of the wrong queue, where the ranking errs.
+
+### H. Why one prompt drew different drafts
+
+A first call's prompt is the system prompt and the blind user message, with the
+ticket's attributes and, at a reported error, the report naming its queue.
+Nothing else enters it. Two first calls are sent the same prompt when their
+tickets carry the same attributes and their reports name the same queue, or
+neither has one. A pair is two first calls sent the same prompt, in two runs or
+at two cases of one run.
+
+- **The material.** The six runs asked 1,822 first calls, of 1,098 prompts.
+  - **The pairs.** 411 prompts were sent twice or more. They make 1,273 pairs:
+    862 whose prompt carries a report, and 411 whose prompt carries none.
+  - **How they were asked.** Every call was answered at its first attempt, by
+    DeepInfra, at temperature 0 and with reasoning at high effort. No attempt
+    carried a system fingerprint.
+- **One prompt drew one draft in a fifth of the pairs.** 274 of the 1,273 drew
+  the same queue and extension (H1 holds).
+  - **Told the queue**, both calls drew it in all 862 pairs (H2 holds), and the
+    same extension in 215.
+  - **Without a report**, 318 of 411 drew one queue (H6 holds), 59 one
+    extension, and 93 two queues.
+  - **Sent often, a prompt drew many drafts.** Of the 15 prompts sent six
+    times, 8 drew six drafts. The one prompt sent seven times, a reported
+    ticket of `H11`, drew billing's whole product as `BILLING_SPECIALIST`'s all
+    seven times: the queue's general line, which G found reaching `H12`'s
+    tickets.
+- **Two answers to one prompt part in their first words.** Their reasonings
+  part at a median of 11 characters, and at 252 at most: 1,107 of the 1,273
+  within 50 (H3 holds). No two are the same text (H4 holds). A first call's
+  reasoning runs a median of 1,256.5 tokens.
+  - **Where.** 343 pairs part after "We ", and 423 after "We need to ". Most
+    calls open "We need to write a rule…", "We need to decide the…" or "We are
+    given a ticket…".
+  - **The pairs that drew one draft part as early**, at a median of 11
+    characters too.
+- **So the reasoning was drawn, though the request asked for temperature 0.** A
+  decoder that took the likeliest token every time would give one prompt one
+  reasoning. Two answers could then part only where two tokens were nearly
+  tied. Every pair parted in its opening words. Whether the provider sampled,
+  or decoded so that its first tokens vary, the records cannot say: no attempt
+  carried a fingerprint.
+- **What differs is mostly which attributes the draft keeps.** Of the 906 pairs
+  that drew one queue and two extensions, 828 condition on other attributes
+  (H5 holds), and 78 on the same attributes with other values.
+  - **The keyword most.** In 410 of them one draft conditions on the security
+    keyword and the other does not. Then the tier, 287, and the channel, 164.
+  - **Severity's bound.** Where both drafts condition on one attribute
+    differently, it is mostly severity, 226.
+- **At the exception's tickets.** The seven tickets of `H03` that begot a
+  reaching rule and were asked as reported errors in two runs or more give B's
+  nine pairs, three of them alike. Their reasonings part at 3 to 31
+  characters, in their opening words: "We need to write a rule that matches this
+  ticket…" against "We are given a ticket that the motor decided
+  incorrectly…".
+  - **At case 529** both explained the label by a severity that is not
+    critical. K r2's wrote it as severity other than 1, and L r3's as severity
+    3 or 4, each in its note.
+  - **At case 238** L r1's widened the ticket's severity 4 to severity 3 or
+    more, "low severity". K r1's kept severity 4 and the free tier, "to avoid
+    overgeneralization", and so did K r2's.
+- **So one prompt drew different drafts because its reasoning is a draw.** The
+  answers part in their opening words, and each path explains the label its own
+  way: severity bounded at 2 or at 3, the tier kept or dropped, the keyword named
+  or not. One ask of a first call is one draw of its draft, and the rules B
+  found nested in the keyword's region are born of such draws.
+
+### The expectation
+
+Written in the two modules' docstrings before either reading ran, and committed
+before them. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| G1, in K r1 and in K r3, one rule stands at more than half of the cases the ranking took in the deflection group | 113 of 129, and 41 of 72 | **holds** |
+| G2, at more than half of the cases at which K r1's or K r3's ranking took a deflection conflict, K r2 decided the same arrival by rung 2, with one queue standing | 168 of 178 | **holds** |
+| G3, at more than half of those cases, K r2's decision was right | 172 of 178 | **holds** |
+| G4, in K r2, at most three rules won the ranking's wrong decisions in billing's layer | 7 rules | fails |
+| G5, each of those rules was born at a reported error whose report named its queue | 6 of 7 | fails |
+| H1, fewer than half of the pairs drew the same queue and extension | 274 of 1,273 | **holds** |
+| H2, of the pairs whose prompt carries a report, more than nine in ten drew the same queue | 862 of 862 | **holds** |
+| H3, in more than half of the pairs, the reasonings part within their first 200 characters | 1,272 of 1,273 | **holds** |
+| H4, no pair's reasonings are the same text | none of 1,273 | **holds** |
+| H5, of the pairs that drew one queue and two extensions, more than half condition on other attributes | 828 of 906 | **holds** |
+| H6, of the pairs whose prompt carries no report, more than half drew the same queue | 318 of 411 | **holds** |
+
+**G1 to G3 and H1 to H6 hold, and G4 and G5 fail.**
+- **The first reading's bet, G5, failed by one rule**: `R0037`, born at an
+  impasse.
+- **The second's bet, H3, held**: the answers part at once.
+- **G2, G3, H2 and H4, trusted most, held.** Of the four trusted least, G1, H5
+  and H6 held, and G4 failed.
+
+### What it says
+
+- **K r2's ranking erred where its engine had refused declarations.** Every
+  conflict the ranking took was a pair whose declared edge closed a cycle. K r1
+  and K r3 each held a rule of `SELF_SERVICE_DEFLECT` whose refusals fell mostly
+  at product routing's tickets and deflection's, where the ranking orders the
+  queues as the policy does. K r2's engine installed the declarations that order
+  those pairs. Its refusals fell in billing's layer, and at rules born of the
+  wrong queue, where the ranking errs.
+- **What the ranking lost there, the base lost anyway.** K r2's ranking took 12
+  of the 40 tickets of `H12` its base lost, and K r1's base lost more of them.
+- **One prompt drew different drafts because its reasoning is a draw.** Sent at
+  temperature 0, two answers to one prompt part in their opening words, and no
+  two reasonings are alike. The draft follows the path. It keeps the queue when
+  the report names it, and four pairs in five draw another extension, mostly by
+  which attributes it keeps.
+
+### What it does not settle
+
+1. **Why the refusals fell where they did.** Which earlier declarations closed
+   each refused edge's cycle, and whether the paths ran through rules no
+   contested point sees, as `results_corrections/FINDINGS_CORRECTIONS.md` found
+   for the closed L runs. Free on the records.
+2. **Why K r2's base decided `H11`'s tickets wrong with one queue standing**,
+   110 of 186, which no conflict met. Free on the records.
+3. **Whether the draw is the provider's.** The request asked for temperature 0,
+   and no attempt carried a fingerprint. One prompt asked several times on one
+   day, at temperature 0 and at the provider's default, would tell. Calls.
+4. **Which draft a prompt draws most.** With several asks a ticket, the most
+   frequent draft at the exception's tickets, and whether it keeps the tier.
+   Calls.
 
 ---
 
@@ -954,3 +1242,5 @@ E1 and F3 fail.**
   sessions.
 - [`score.json`](score.json): Stage C, the six verdicts and `RK-g`.
 - [`readings.json`](readings.json): POST-RUN, six things Stage C left free.
+- [`conflicts.json`](conflicts.json), [`drafts.json`](drafts.json): POST-RUN, two
+  things the six readings left free.
