@@ -8,8 +8,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   `main` in #285, merged on 2026-11-20 at Sergi's word.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reached it in the same pull request, the one this record was opened in.
-- **The POST-RUN reading of six things Stage C left free** reaches it in the
-  pull request it is opened in.
+- **The POST-RUN reading of six things Stage C left free** reaches it in #287.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -161,9 +160,9 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-20] And a POST-RUN record.** [`readings.json`](readings.json)
 > is the POST-RUN reading of six things Stage C left free.
-> - **It was written from `308e5c1`**, on the branch of the pull request it is
->   opened in: the commit that adds the part read after the first run. The
->   reading and its expectation are the commit before it, `6eda07b`.
+> - **It was written from `308e5c1`**, on the branch of #287: the commit that
+>   adds the part read after the first run. The reading and its expectation are
+>   the commit before it, `6eda07b`.
 > - **Its code digest is `722f5e7cd521fdfe`**, because `ranked/readings.py` was
 >   added after Stage C. Its `_env` says `git_dirty`, for the same files, and
 >   `code_dirty` is false. The modules Stage C ran did not change.
@@ -611,8 +610,7 @@ settle*, above, names six things the records can answer without a call. This
 reading answers the six on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.readings`, on 2026-11-20,
-from `308e5c1` with its code clean, on the branch of the pull request it is
-opened in.
+from `308e5c1` with its code clean, on the branch of #287.
 - **The commits.** `6eda07b` carries the reading and its expectation, written
   and committed before the reading ran. `308e5c1` adds one part after the first
   run, read by no clause: what decides L's wrong points outside the keyword
