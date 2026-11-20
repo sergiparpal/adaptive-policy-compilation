@@ -48,6 +48,18 @@ THE QUESTIONS
       its birth and in the final base, and whether an original stands there.
   (c) **What they cost.** The points of the space the base without its copies
       decides right, beside the run's final base, by half.
+  (d) **Added after the first run, and read by no clause.**
+      - **Each copy left out alone**: what the base decides right without it,
+        beside the final base, in all and in the keyword half.
+      - **Where the two copies that count most count**: the one whose leaving
+        out gains most, and the one whose leaving out loses most. Where each
+        costs and where it pays, by the points' true queue; the rules standing
+        there with it and without it; and the edges of its answer the engine
+        refused that name a rule standing where it costs.
+      - **The copies' regions**: how many are broad, with one or two
+        conditions, as `corrections/broad.py` reads a draft; how many distinct
+        regions they cover, each under its queue; the region written most
+        often; and how many copies' originals are copies themselves.
 
 --------------------------------------------------------------------------
 THE GATES
@@ -122,6 +134,12 @@ expectation above was written and committed before the reading ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. Zero API
 calls.
 
+**One part was added after the first run**, (d), in a commit of its own. The
+first run had printed every clause's verdict, and its readings (a) to (c) had
+been read whole. The added part's figures were first read in a draft outside
+the repository, then written into the module. No clause reads the added part,
+and no clause was changed.
+
 Usage:  python3 -m ranked.copies --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.copies
 """
@@ -137,6 +155,7 @@ from typing import Any, Sequence
 from harness.provenance import describe, environment
 
 from blind import rows as brows
+from corrections import broad as cb
 from edges import rebuild as erb
 from fidelity.replay import rule_from
 from manual import instrument as MI
@@ -153,8 +172,8 @@ RUNS = RD.RUNS
 HUNDREDTH = RD.HUNDREDTH
 PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-20, after ranked/twins.py. The expectation in "
-    "the module's docstring was written and committed before the reading ran. Not a signed "
-    "row; no verdict moves.")
+    "the module's docstring was written and committed before the reading ran. Part (d) was "
+    "added after the first run, and no clause reads it. Not a signed row; no verdict moves.")
 
 frac, share, plain = RD.frac, RD.share, RD.plain
 
@@ -250,11 +269,12 @@ def in_final(base: dict[str, Any], copies: Sequence[dict], space: Space,
 # (c): the base without its copies
 # ---------------------------------------------------------------------------
 
-def replay_without(record: dict[str, Any], space: Space, truth: dict[str, int],
-                   drop: set[str]) -> dict[str, Any]:
+def replayed(record: dict[str, Any], space: Space, truth: dict[str, int],
+             drop: set[str]) -> dict[str, Any]:
     """The run's births in order, the rules in `drop` left out with every edge
     that has one at an end, and in arm K their votes uncounted; read on the
-    run's own engine, as Stage C reads a base."""
+    run's own engine, as Stage C reads a base. Where each rule is undefeated,
+    and the points decided right."""
     born, by_birth = erb.births(record), erb.edges_by_birth(record)
     eng = PriorityEngine(space=space)
     action: dict[str, str] = {}
@@ -271,10 +291,17 @@ def replay_without(record: dict[str, Any], space: Space, truth: dict[str, int],
             eng.try_edge(e.winner, e.loser)
         action[rid] = d["action"]
         tally.born(d)
-    queues = R.by_queue(brows.undefeated_masks(eng), action)
-    got = R.read(queues, tally.ranking, truth)
+    und = brows.undefeated_masks(eng)
+    got = R.read(R.by_queue(und, action), tally.ranking, truth)
     own = "ranked" if record.get("arm") == plan.RANKED else "rung2"
-    return {"right": got[own], "rules": len(eng.rules)}
+    return {"right": got[own], "rules": len(eng.rules), "und": und, "action": action}
+
+
+def replay_without(record: dict[str, Any], space: Space, truth: dict[str, int],
+                   drop: set[str]) -> dict[str, Any]:
+    """What `replayed` decides right, and how many rules it holds."""
+    got = replayed(record, space, truth, drop)
+    return {"right": got["right"], "rules": got["rules"]}
 
 
 def cost(record: dict[str, Any], base: dict[str, Any], copies: Sequence[dict], space: Space,
@@ -290,6 +317,45 @@ def cost(record: dict[str, Any], base: dict[str, Any], copies: Sequence[dict], s
 
 
 # ---------------------------------------------------------------------------
+# (d), added after the first run, and read by no clause
+# ---------------------------------------------------------------------------
+
+def each_alone(record: dict[str, Any], base: dict[str, Any], copies: Sequence[dict],
+               space: Space, truth: dict[str, int], keyword: int) -> dict[str, dict[str, int]]:
+    """Each copy left out alone: what the base without it decides right, less
+    what the final base decides right, in all and in the keyword half."""
+    f = base["right"]
+    out = {}
+    for c in copies:
+        w = replay_without(record, space, truth, {c["rule_id"]})["right"]
+        out[c["rule_id"]] = {"change": w.bit_count() - f.bit_count(),
+                             "keyword": (w & keyword).bit_count() - (f & keyword).bit_count()}
+    return out
+
+
+def regions(record: dict[str, Any], copies: Sequence[dict], space: Space) -> dict[str, Any]:
+    """The copies' regions: broad or narrow as `corrections/broad.py` reads a
+    draft, how many distinct regions, the one written most often, its ties
+    broken by the earliest birth, and the copies whose original is a copy
+    itself."""
+    rules = {d["rule_id"]: d for d in record["rules"]}
+    ids = {c["rule_id"] for c in copies}
+    groups: dict[tuple[str, int], list[dict]] = {}
+    for c in sorted(copies, key=lambda c: c["born_at"]):
+        ext = TW.extension(space, rules[c["rule_id"]]["conditions"])
+        groups.setdefault((c["queue"], ext), []).append(c)
+    most = None
+    if groups:
+        (queue, ext), group = max(groups.items(), key=lambda kv: (len(kv[1]),
+                                                                   -kv[1][0]["born_at"]))
+        most = {"queue": queue, "conditions": group[0]["conditions"], "copies": len(group),
+                "points": ext.bit_count()}
+    return {"broad": sum(len(c["conditions"]) <= cb.BROAD_MOST for c in copies),
+            "distinct": len(groups), "most_written": most,
+            "original_a_copy": sum(any(o in ids for o in c["originals"]) for c in copies)}
+
+
+# ---------------------------------------------------------------------------
 # One run
 # ---------------------------------------------------------------------------
 
@@ -298,7 +364,9 @@ def read_run(record: dict[str, Any], base: dict[str, Any], space: Space,
     copies, ok = copies_of_run(record, space)
     born = at_birth(record, copies, space, corpus)
     final = {x["rule_id"]: x for x in in_final(base, copies, space, corpus)}
-    rows = [dict(c, at_birth=born[c["rule_id"]], final=final[c["rule_id"]]) for c in copies]
+    alone = each_alone(record, base, copies, space, truth, keyword)
+    rows = [dict(c, at_birth=born[c["rule_id"]], final=final[c["rule_id"]],
+                 alone=alone[c["rule_id"]]) for c in copies]
     reported = [c for c in rows if c["kind"] == plan.ERROR]
     births = sum(1 for e in record["escalations"] if e["verdict"] == "nacida")
     return ({"births": births, "copies": len(rows),
@@ -315,7 +383,73 @@ def read_run(record: dict[str, Any], base: dict[str, Any], space: Space,
              "an_original_stands_there": sum(c["final"]["original_stands"] for c in rows),
              "ticket_right_in_the_final_base": sum(c["final"]["right"] for c in rows),
              "cost": cost(record, base, copies, space, truth, keyword),
+             # (d), added after the first run, and read by no clause
+             "alone": alone_summary(rows),
+             "where": where_they_count(record, rows, space, truth),
+             "regions": regions(record, copies, space),
              "rows": rows}, ok)
+
+
+def where_it_counts(record: dict[str, Any], space: Space, truth: dict[str, int],
+                    rid: str) -> dict[str, Any]:
+    """(d): where one copy counts. Where it costs, the points the base decides
+    right without it and wrong with it, and where it pays, the reverse: each by
+    the points' true queue, with the four rules standing on most of them with
+    the copy and without it. And the edges of the copy's answer the engine
+    refused that name a rule standing where it costs."""
+    on, off = replayed(record, space, truth, set()), replayed(record, space, truth, {rid})
+
+    def standing(r, mask):
+        got = sorted(((x, (m & mask).bit_count()) for x, m in r["und"].items() if m & mask),
+                     key=lambda kv: (-kv[1], kv[0]))[:4]
+        return [{"rule_id": x, "queue": r["action"][x], "points": n} for x, n in got]
+
+    def side(mask):
+        return {"points": mask.bit_count(),
+                "truth": {q: (mask & m).bit_count() for q, m in sorted(truth.items())
+                          if mask & m},
+                "standing_with_it": standing(on, mask),
+                "standing_without_it": standing(off, mask)}
+
+    costs = side(off["right"] & ~on["right"])
+    pays = side(on["right"] & ~off["right"])
+    named = {x["rule_id"] for x in costs["standing_with_it"]}
+    rules = {d["rule_id"]: d for d in record["rules"]}
+    return {"rule_id": rid, "costs": costs, "pays": pays,
+            "refused_naming_them": [e for e in rules[rid].get("dropped_edges") or []
+                                    if e.split(":")[1] in named]}
+
+
+def alone_summary(rows: Sequence[dict]) -> dict[str, Any]:
+    """(d): the copy whose leaving out alone gains most, and loses most, and the
+    copies whose leaving out alone moves nothing or a hundredth or more."""
+    if not rows:
+        return {"most_gained": None, "most_lost": None, "nothing": 0, "a_hundredth": 0,
+                "sum": 0}
+    key = lambda r: (r["alone"]["change"], r["born_at"])
+    hi, lo = max(rows, key=key), min(rows, key=key)
+
+    def one(r):
+        return {"rule_id": r["rule_id"], "queue": r["queue"], "born_at": r["born_at"],
+                "kind": r["kind"], "governing": r["governing"], "conditions": r["conditions"],
+                **r["alone"]}
+
+    return {"most_gained": one(hi), "most_lost": one(lo),
+            "nothing": sum(r["alone"]["change"] == 0 for r in rows),
+            "a_hundredth": sum(abs(r["alone"]["change"]) >= HUNDREDTH for r in rows),
+            "sum": sum(r["alone"]["change"] for r in rows)}
+
+
+def where_they_count(record: dict[str, Any], rows: Sequence[dict], space: Space,
+                     truth: dict[str, int]) -> dict[str, Any]:
+    """(d): where the copy whose leaving out alone gains most counts, if one
+    gains, and the one whose leaving out loses most, if one loses."""
+    s = alone_summary(rows)
+    hi, lo = s["most_gained"], s["most_lost"]
+    return {"most_gained": where_it_counts(record, space, truth, hi["rule_id"])
+            if hi and hi["change"] > 0 else None,
+            "most_lost": where_it_counts(record, space, truth, lo["rule_id"])
+            if lo and lo["change"] < 0 else None}
 
 
 # ---------------------------------------------------------------------------

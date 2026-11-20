@@ -14,6 +14,9 @@ What is pinned is the instrument:
 - the replay without the copies: with nothing left out it is the base (gate 3),
   and a copy left out takes its edges with it;
 - what the copies cost, read off a replay;
+- the part added after the first run: each copy left out alone, where a copy
+  pays and where it costs, its refused edge reopening a conflict its original
+  had lost, the copies' regions, and the copy that gains most and loses most;
 - gate 1 with teeth on K r2's record;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
@@ -69,6 +72,23 @@ def nested_record(arm="l"):
                          esc(3, "R3", ["R1"])],
          "records": rows(), "edge_log": [], "reports_handed": {"3": BILL}}
     r["records"][3]["engine_rule"] = "R2"
+    return r
+
+
+def refused_record():
+    """R2 declared itself above R1 and above R4, which is nested in R1 and in
+    its copy R3. R3 declares itself above R2, and the engine refuses it, since
+    R2 reaches R3 through R4: R3 stands beside R2 where R1 had lost to it."""
+    r = {"arm": "l", "rules": [rule("R1", BILL, 1, MOBILE), rule("R4", T1, 2, MOBILE_PRO),
+                               rule("R2", SS, 3, SEV2, beats=["R1", "R4"]),
+                               dict(rule("R3", BILL, 4, MOBILE),
+                                    dropped_edges=["beats:R2:cierra_ciclo"])],
+         "escalations": [esc(1, "R1", [], kind="IMPASSE"), esc(2, "R4", [], kind="IMPASSE"),
+                         esc(3, "R2", [], kind="IMPASSE"), esc(4, "R3", ["R1"])],
+         "records": rows(),
+         "edge_log": [["R2", "R1", "ok"], ["R2", "R4", "ok"], ["R3", "R2", "cierra_ciclo"]]}
+    r["records"][3]["edge_reasons"] = ["ok", "ok"]
+    r["records"][4]["edge_reasons"] = ["cierra_ciclo"]
     return r
 
 
@@ -229,6 +249,90 @@ class TestTheCost(unittest.TestCase):
         self.assertEqual(got, {"final": {"right": 3, "halves": [2, 1]},
                                "without": {"right": 3, "rules": 5, "halves": [2, 1]},
                                "change": 0, "gained_without": 1, "lost_without": 1})
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.space = MI.space()
+        cls.mobile = cls.space.extension([CO.TW.Condition(**c) for c in MOBILE])
+        cls.both = cls.mobile & cls.space.extension([CO.TW.Condition(**c) for c in SEV2])
+        cls.keyword = cls.space.mask["has_security_keyword"][True]
+
+    def test_each_copy_alone(self):
+        r = conflict_record(edge=True)
+        truth = {BILL: self.mobile}
+        copies, _ = CO.copies_of_run(r, self.space)
+        got = CO.each_alone(r, RD.base_of(r, self.space, truth), copies, self.space, truth,
+                            self.keyword)
+        self.assertEqual(got, {"R3": {"change": -self.both.bit_count(),
+                                      "keyword": -(self.both & self.keyword).bit_count()}})
+
+    def test_where_a_copy_pays(self):
+        r = conflict_record(edge=True)
+        got = CO.where_it_counts(r, self.space, {BILL: self.mobile}, "R3")
+        n = self.both.bit_count()
+        self.assertEqual(got["costs"], {"points": 0, "truth": {}, "standing_with_it": [],
+                                        "standing_without_it": []})
+        self.assertEqual(got["pays"], {
+            "points": n, "truth": {BILL: n},
+            "standing_with_it": [{"rule_id": "R1", "queue": BILL, "points": n},
+                                 {"rule_id": "R3", "queue": BILL, "points": n}],
+            "standing_without_it": [{"rule_id": "R1", "queue": BILL, "points": n},
+                                    {"rule_id": "R2", "queue": SS, "points": n}]})
+        self.assertEqual(got["refused_naming_them"], [])
+
+    def test_where_a_refused_copy_costs(self):
+        r = refused_record()
+        pro = self.space.extension([CO.TW.Condition(**c) for c in MOBILE_PRO])
+        truth = {SS: self.both}
+        got = CO.where_it_counts(r, self.space, truth, "R3")
+        n = (self.both & ~pro).bit_count()
+        self.assertEqual(got["costs"], {
+            "points": n, "truth": {SS: n},
+            "standing_with_it": [{"rule_id": "R2", "queue": SS, "points": n},
+                                 {"rule_id": "R3", "queue": BILL, "points": n}],
+            "standing_without_it": [{"rule_id": "R2", "queue": SS, "points": n}]})
+        self.assertEqual(got["pays"]["points"], 0)
+        self.assertEqual(got["refused_naming_them"], ["beats:R2:cierra_ciclo"])
+        rows_ = [{"rule_id": "R3", "queue": BILL, "born_at": 4, "kind": "ERROR",
+                  "governing": "H12", "conditions": [], "alone": {"change": n, "keyword": 0}}]
+        both = CO.where_they_count(r, rows_, self.space, truth)
+        self.assertEqual((both["most_gained"]["rule_id"], both["most_lost"]), ("R3", None))
+
+    def test_the_regions(self):
+        r = {"rules": [rule("R1", BILL, 1, MOBILE), rule("R3", BILL, 3, MOBILE),
+                       rule("R5", BILL, 5, MOBILE), rule("R6", SS, 6, SEV2),
+                       rule("R7", SS, 7, SEV2 + MOBILE)]}
+        copies = [{"rule_id": "R3", "queue": BILL, "born_at": 3, "originals": ["R1"],
+                   "conditions": [["product", "eq", "mobile"]]},
+                  {"rule_id": "R5", "queue": BILL, "born_at": 5, "originals": ["R3"],
+                   "conditions": [["product", "eq", "mobile"]]},
+                  {"rule_id": "R7", "queue": SS, "born_at": 7, "originals": ["R6"],
+                   "conditions": [["severity", "eq", 2], ["product", "eq", "mobile"],
+                                  ["customer_tier", "eq", "pro"]]}]
+        got = CO.regions(r, copies, self.space)
+        self.assertEqual(got, {"broad": 2, "distinct": 2, "original_a_copy": 1,
+                               "most_written": {"queue": BILL,
+                                                "conditions": [["product", "eq", "mobile"]],
+                                                "copies": 2,
+                                                "points": self.mobile.bit_count()}})
+        self.assertEqual(CO.regions(r, [], self.space),
+                         {"broad": 0, "distinct": 0, "most_written": None, "original_a_copy": 0})
+
+    def test_the_summary(self):
+        def row(rid, change, born_at):
+            return {"rule_id": rid, "queue": BILL, "born_at": born_at, "kind": "ERROR",
+                    "governing": "H11", "conditions": [], "alone": {"change": change,
+                                                                    "keyword": 0}}
+        rows = [row("R3", 0, 3), row("R5", 1344, 5), row("R7", -20, 7), row("R9", 1344, 9)]
+        got = CO.alone_summary(rows)
+        self.assertEqual((got["most_gained"]["rule_id"], got["most_lost"]["rule_id"],
+                          got["nothing"], got["a_hundredth"], got["sum"]),
+                         ("R9", "R7", 1, 2, 2668))
+        self.assertEqual(CO.alone_summary([]), {"most_gained": None, "most_lost": None,
+                                                "nothing": 0, "a_hundredth": 0, "sum": 0})
 
 
 class TestGateOneOnARecord(unittest.TestCase):

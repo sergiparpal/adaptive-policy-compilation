@@ -41,6 +41,10 @@ THE QUESTIONS
       of another queue.
   (c) **The reasoning.** For each conflict twin, the end of its first call's
       reasoning, kept for reading.
+  (d) **Added after the first run, and read by no clause.** How each twin was
+      born: at which kind of escalation, and, at a reported error, whether the
+      report named its queue. And at each conflict twin, whether a twin's queue
+      stood at the ticket, and whether it stood there beside the newborn's.
 
 --------------------------------------------------------------------------
 THE GATES
@@ -116,6 +120,12 @@ expectation above was written and committed before the reading ran. Not a
 signed row, not on `STATUS.md`'s scoreboard, not a calibration event. Zero API
 calls.
 
+**One part was added after the first run**, (d), in a commit of its own. The
+first run had printed every clause's verdict, and its readings (a) to (c) had
+been read whole. The added part's figures were first read in a draft outside
+the repository, then written into the module. No clause reads the added part,
+and no clause was changed.
+
 Usage:  python3 -m ranked.asked --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.asked
 """
@@ -147,8 +157,8 @@ ANOTHER = "another queue standing"
 NOT_STANDING = "a queue not standing"
 PROVENANCE = (
     "POST-RUN: asked for by Sergi on 2026-11-20, after ranked/twins.py. The expectation in "
-    "the module's docstring was written and committed before the reading ran. Not a signed "
-    "row; no verdict moves.")
+    "the module's docstring was written and committed before the reading ran. Part (d) was "
+    "added after the first run, and no clause reads it. Not a signed row; no verdict moves.")
 
 frac, plain = RD.frac, RD.plain
 
@@ -208,6 +218,7 @@ def read_births(record: dict[str, Any], births: dict[str, list[dict]],
     rows = record["records"]
     rules = {d["rule_id"]: d for d in record["rules"]}
     escs = {e["idx"]: e for e in record["escalations"]}
+    handed = record.get("reports_handed") or {}
     was_conflict = drafts_ok = True
     out = []
     for rid, pairs in births.items():
@@ -223,7 +234,11 @@ def read_births(record: dict[str, Any], births: dict[str, list[dict]],
         twins = [{"rule": p["twin"], "queue": p["queues"][1],
                   "born_at": p["twin_born_at"],
                   "stood": p["twin"] in here.get(p["queues"][1], []),
-                  "conditions": len(rules[p["twin"]]["conditions"])} for p in pairs]
+                  "conditions": len(rules[p["twin"]]["conditions"]),
+                  # added after the first run, and read by no clause
+                  "born_of": escs[p["twin_born_at"]]["kind"],
+                  "report_named_it": handed.get(str(p["twin_born_at"])) == p["queues"][1]}
+                 for p in pairs]
         reasoning = call.get("reasoning") or ""
         out.append({"newborn": rid, "case": idx, "queue": n["action"],
                     "truth": row["truth"], "governing": row["truth_rule"],
@@ -236,8 +251,21 @@ def read_births(record: dict[str, Any], births: dict[str, list[dict]],
                     "region": RD.conditions_of(n["conditions"]),
                     "points": TW.extension(space, n["conditions"]).bit_count(),
                     "reasoning_chars": len(reasoning),
-                    "tail": reasoning[-TAIL:]})
+                    "tail": reasoning[-TAIL:],
+                    **after_the_first_run(n["action"], twins, here)})
     return out, bool(was_conflict), bool(drafts_ok)
+
+
+def after_the_first_run(queue: str, twins: Sequence[dict],
+                        here: dict[str, list[str]]) -> dict[str, bool]:
+    """(d), added after the first run and read by no clause: whether a twin's
+    queue stood at the ticket, beside the newborn's or not, and whether a twin
+    was a correction, born at a reported error whose report named its queue."""
+    twin_queue = any(t["queue"] in here for t in twins)
+    return {"twin_queue_stood": twin_queue,
+            "both_queues_stood": twin_queue and queue in here,
+            "twin_a_correction": any(t["born_of"] == plan.ERROR and t["report_named_it"]
+                                     for t in twins)}
 
 
 # ---------------------------------------------------------------------------
@@ -354,6 +382,12 @@ def read_everything(records: dict[str, dict], twins: dict[str, Any]
                    "queues": dict(sorted(Counter(r["queue"] for r in rows).items())),
                    "standing_queues": dict(sorted(Counter(len(r["standing"])
                                                           for r in rows).items())),
+                   # (d), added after the first run, and read by no clause
+                   "twin_queue_stood": sum(r["twin_queue_stood"] for r in rows),
+                   "both_queues_stood": sum(r["both_queues_stood"] for r in rows),
+                   "twin_a_correction": sum(r["twin_a_correction"] for r in rows),
+                   "twins_born_of": dict(sorted(Counter(t["born_of"] for r in rows
+                                                        for t in r["twins"]).items())),
                    "conditions": {k: dict(sorted(Counter(v).items())) for k, v in beside.items()}}
     summary: dict[str, Any] = {f"{k}_median": frac(median_of(v)) for k, v in conditions.items()}
     summary.update({f"{k}_births": len(v) for k, v in conditions.items()})
