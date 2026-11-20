@@ -1,5 +1,36 @@
 # PLAN_RANKED — the loop that settles its conflicts by the ranking its own votes choose, beside the same loop, which asks
 
+> **[CLOSED 2026-11-20] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-18, before any figure of the plan existed. All six rows were
+> adjudicated on 2026-11-20.
+> - **`RK-a` and `RK-e` hold, and `RK-b`, `RK-c` and `RK-d` hold, thinly.**
+> - **`RK-f` is refuted.**
+> - `RK-g` is reported.
+>
+> **The figures are owned by
+> [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md)**,
+> and no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Three things went otherwise than this file says.** The findings give each.
+> - **`RK-g3`'s Step 0 was corrected once, after the signature**, in a commit of
+>   its own. It compared two records whole, and a record keeps the wall-clock
+>   seconds of each call. One call of the transcriber, timed at 0.03 seconds
+>   against the reference's 0.0, refused the at-once smoke session twice,
+>   before any spend. Step 0 now compares the records without their calls'
+>   seconds. §7's sentence stands as signed, and Sergi had the correction
+>   pushed before any step ran behind it.
+> - **K escalated less than §1 guessed**: 190 to 252 times a run, against 250
+>   to 400. No K run reached the cap, and two L runs did.
+> - **The runs cost less than §1 priced**: $3.1349 in all, against about four
+>   dollars, and K's three runs were billed less than half of L's. They took a
+>   day and a half, against about two days.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted and completed, and it has been false since 2026-11-18.
+> The line is kept unedited and this banner is its correction. The banner
+> touches no line of §0, adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-17, redrafted on 2026-11-18 after its
 first blocking check failed, completed against the package the same day, and
 unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band and may
