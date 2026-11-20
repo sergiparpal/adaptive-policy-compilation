@@ -1665,6 +1665,8 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m ranked.score                         # Stage C, free, from the runs and the asks
     PYTHONHASHSEED=0 python3 -m ranked.readings                      # POST-RUN: the six readings Stage C left free
+    PYTHONHASHSEED=0 python3 -m ranked.conflicts                     # POST-RUN: where K r2's conflicts fell, and which births made them
+    PYTHONHASHSEED=0 python3 -m ranked.drafts                        # POST-RUN: why one prompt drew different drafts
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1726,6 +1728,23 @@ protocol that hands the proposer one label at a time should say in §0 what a
 label leaves out. **And one prompt draws different drafts**: sent the same
 texts, the same ticket's first call drew different rules in most of the pairs
 of runs that asked it.
+
+**Read POST-RUN, the ranking decides the declarations its engine refused.**
+Every conflict K's ranking took was a pair whose declared edge closed a cycle.
+Where a run's refusals fell at product routing's tickets, the ranking ordered
+the queues as the policy does. Where a run's engine installed those
+declarations, its refusals fell in billing's layer, which no ranking of the
+queues orders right. A reading of what a ranking decides should read where the
+engine refused before what the ranking chose.
+
+**And one prompt's reasoning is a draw.** Sent at temperature 0, two answers to
+one prompt parted in their opening words, and no two reasonings were alike. The
+draft followed the path: it kept the queue a report named, and chose its
+attributes anew. A plan that reads a draft ticket by ticket should ask each
+ticket several times, or say in §0 what one draw stands for. **And name a
+reading's questions apart from the signed rows**: these two readings labelled
+theirs with a capital, a hyphen and a letter, which `tests/test_prose_tables.py`
+reads in the prose as a row.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
