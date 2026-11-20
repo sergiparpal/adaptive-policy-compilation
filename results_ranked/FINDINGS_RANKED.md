@@ -13,7 +13,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The POST-RUN reading of two things the six readings left free** reached it
   in #289, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the last two readings left free**
-  reaches it in the pull request it is opened in.
+  reaches it in #291.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -190,9 +190,9 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-20, last] And two more.** [`refusals.json`](refusals.json)
 > and [`billing.json`](billing.json) are the POST-RUN reading of two things the
 > last two readings left free.
-> - **They were written from `00c7c5e`**, on the branch of the pull request it
->   is opened in: the commit that adds the part read after the first run. The
->   readings and their expectations are the commit before it, `95abfbb`.
+> - **They were written from `00c7c5e`**, on the branch of #291: the commit that
+>   adds the part read after the first run. The readings and their expectations
+>   are the commit before it, `95abfbb`.
 > - **Their code digest is `1a1536f33438d3f0`**, because `ranked/refusals.py`
 >   and `ranked/billing.py` were added after the last two readings. Their
 >   `_env` says `git_dirty`, for the same files, and `code_dirty` is false. No
@@ -1281,7 +1281,7 @@ This reading answers both on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.refusals` and
 `PYTHONHASHSEED=0 python3 -m ranked.billing`, on 2026-11-20, from `00c7c5e`
-with its code clean, on the branch of the pull request it is opened in.
+with its code clean, on the branch of #291.
 - **The commits.** `95abfbb` carries both readings and their expectations,
   written and committed before either ran. `00c7c5e` adds one part to each
   after the first run, read by no clause: who the rules are that the cycles and
