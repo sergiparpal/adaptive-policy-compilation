@@ -10,8 +10,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in the same pull request, the one this record was opened in.
 - **The POST-RUN reading of six things Stage C left free** reached it in #287,
   merged on 2026-11-20 at Sergi's word.
-- **The POST-RUN reading of two things the six readings left free** reaches it
-  in #289.
+- **The POST-RUN reading of two things the six readings left free** reached it
+  in #289, merged on 2026-11-20 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -175,11 +175,13 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-20, later] And two more POST-RUN records.**
 > [`conflicts.json`](conflicts.json) and [`drafts.json`](drafts.json) are the
 > POST-RUN reading of two things the six readings left free.
-> - **They were written from `03e1d87`**, on the branch of #289: the commit that
->   adds the part read after the first run. The readings and their expectations
->   are the commit before it, `583fa67`.
+> - **They were written from `03e1d87`**, on the branch of #289, which is
+>   `cf1aee3` on `main`: the commit that adds the part read after the first
+>   run. The readings and their expectations are the commit before it,
+>   `583fa67`, which is `d525076` on `main`.
 > - **Their code digest is `f3bdb353a9d85ae7`**, because `ranked/conflicts.py`
->   and `ranked/drafts.py` were added after the six readings. Their `_env` says
+>   and `ranked/drafts.py` were added after the six readings. `main` computes it
+>   at `cf1aee3`, and still at the merge of #289. Their `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. The modules
 >   Stage C and the six readings ran did not change.
 
@@ -974,19 +976,24 @@ records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.conflicts` and
 `PYTHONHASHSEED=0 python3 -m ranked.drafts`, on 2026-11-20, from `03e1d87` with
-its code clean, on the branch of #289.
-- **The commits.** `583fa67` carries both readings and their expectations,
-  written and committed before either ran. `03e1d87` adds one part to
-  `ranked/conflicts.py` after the first run, read by no clause: three things
-  the findings below needed on the record, the arrivals by the rule governing
-  them, how each pair the ranking decided stayed unordered, and what kept the
-  losing queue out of K r2. The first run, from `583fa67`, had printed every
-  clause's verdict, and its readings had been read whole. Its records were not
-  kept.
-- **Each record was committed alone**, as `3c7540e` and `d9b8ea7`.
+its code clean, on the branch of #289, which is `cf1aee3` on `main`.
+- **The commits.** `d525076` on `main` carries both readings and their
+  expectations, written and committed before either ran. `cf1aee3` adds one
+  part to `ranked/conflicts.py` after the first run, read by no clause: three
+  things the findings below needed on the record, the arrivals by the rule
+  governing them, how each pair the ranking decided stayed unordered, and what
+  kept the losing queue out of K r2. The first run, from the first of the two,
+  had printed every clause's verdict, and its readings had been read whole. Its
+  records were not kept.
+- **Each record was committed alone**, as `ca17bb4` and `3e3c5b1`.
+- **On #289's branch the four commits were `583fa67`, `03e1d87`, `3c7540e` and
+  `d9b8ea7`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`, and the GitHub API names #289 behind the four
+  `main` commits.
 - **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `f3bdb353a9d85ae7`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `f3bdb353a9d85ae7`, is the one `main` computes at `cf1aee3`, and still at the
+  merge.
 - **The records are [`conflicts.json`](conflicts.json) and
   [`drafts.json`](drafts.json).** Their 34 gates passed:
   - in each K run, the cases the replay finds decided by the ranking, with
