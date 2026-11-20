@@ -136,6 +136,8 @@ closed on November 20, 2026**: `PLAN_RANKED.md`, six signed rows, five held and
 one refuted, and one reported, written up in `results_ranked/`. The item it
 answers is struck in place. **Six things its Stage C left free were read
 POST-RUN the same day**, and the six items they answer are struck in place.
+**Two things those six readings left free were read POST-RUN the same day
+too**, and the two items they answer are struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -577,6 +579,11 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   names the exception's tier, and the loop has not run under it with reports.
   Compiled at once, the same label beside those that name `SECURITY_INCIDENT` at
   free and pro accounts gave the keyword half whole. Calls.
+  **[NOTE 2026-11-20, later] And one ask is one draw.** Read POST-RUN, two first
+  calls sent one prompt drew one draft in about a fifth of the pairs, and at the
+  exception's tickets in a third. A plan that bands what a new text
+  does to the births should ask each ticket several times, or say in §0 what one
+  draw stands for.
 - ~~**Where K's gain lies outside the keyword half.**~~ **Read POST-RUN on
   2026-11-20** (the same section, C). Mostly `ACCOUNT_MANAGER`'s, and mostly
   not the ranking's: it decides right a third, a sixth and under half of the
@@ -604,15 +611,33 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   2026-11-20** (the same section, F). It would have abstained nowhere: no pair
   the ranking decided between was silent or even, at the arrivals or over the
   space.
-- **Why K r2's conflicts fell where its ranking errs.** Its ranking took about
-  as many conflicts in billing's layer as K r1's and K r3's did, and erred at
-  more of them, and far fewer between deflection and the technical or general
-  queue. Which births made those conflicts, and from which reports. Free on the
-  records.
-- **Why one prompt drew different drafts.** A ticket's first call is sent the
-  same texts in every run and both arms, and at case 529 one run drew severity
-  other than 1 where another drew severity at least 3. Each first call's
-  reasoning is in the records, and no stage codes it. Free on the records.
+- ~~**Why K r2's conflicts fell where its ranking errs.**~~ **Read POST-RUN on
+  2026-11-20** (`FINDINGS_RANKED.md`, *Two things the six readings left free*,
+  G). Every conflict K's ranking took was a pair whose declared edge the engine
+  had refused for closing a cycle. K r1's and K r3's deflection conflicts were
+  mostly refusals around one rule of `SELF_SERVICE_DEFLECT` each, at product
+  routing's tickets, which the ranking decides right. At the same arrivals K
+  r2's engine had installed the declarations, and decided most of them with one
+  queue standing. K r2's refusals fell in billing's layer, and at rules born of
+  the wrong queue, where the ranking errs.
+- ~~**Why one prompt drew different drafts.**~~ **Read POST-RUN on 2026-11-20**
+  (the same section, H). Though the request asked for temperature 0, two
+  answers to one prompt part in their opening words, and no two reasonings are
+  alike. The draft follows the path: it keeps the queue a report names, and
+  draws its attributes anew. At case 529 both calls read the label as a
+  severity that is not critical, and bounded it at 2 and at 3.
+- **Why the refusals fell where they did.** Which earlier declarations closed
+  each refused edge's cycle, and whether the paths ran through rules no
+  contested point sees, as `PLAN_CORRECTIONS.md`'s readings found for its L
+  runs. Free on the records.
+- **Why K r2's base decided `H11`'s tickets wrong with one queue standing.** It
+  lost most of them so, and no conflict met them. Free on the records.
+- **Whether the draw is the provider's.** No attempt carried a system
+  fingerprint. One prompt asked several times on one day, at temperature 0 and
+  at the provider's default, would tell. Calls.
+- **Which draft a prompt draws most.** With several asks a ticket, the most
+  frequent draft at the exception's tickets, and whether it keeps the tier.
+  Calls.
 
 Lessons it leaves:
 
@@ -649,6 +674,18 @@ Lessons it leaves:
   read.** Two of those readings' clauses did: the pair decided no point of the
   queue it was read for, and the abstaining engine left nothing. Say in the
   expectation what an empty set means.
+- **A ranking's share right reads where its engine refused.** Every conflict
+  the ranking took was a declaration the engine refused for closing a cycle.
+  Three runs ended on one ranking and erred at very different shares, because
+  their refusals fell in different layers. Read the refusals before the
+  ranking.
+- **One ask of a first call is one draw.** Sent at temperature 0, two answers
+  to one prompt parted in their opening words. A reading of a draft ticket by
+  ticket should ask each ticket several times, or say what one draw stands for.
+- **Name a reading's questions apart from the signed rows.** `ranked/conflicts.py`
+  and `ranked/drafts.py` labelled their questions with a capital, a hyphen and
+  a letter, as two closed plans label their rows, and `tests/test_prose_tables.py`
+  reads any such label in the prose as a row. The FINDINGS left the labels out.
 
 ---
 

@@ -3611,6 +3611,23 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *Six things Stage C left free*.
+     **[NOTE 2026-11-20, last] And two things those six readings left free,
+     read POST-RUN.**
+     - **The ranking decides the declarations its engine refused.** Every
+       conflict K's ranking took was a pair whose declared edge closed a cycle.
+       K r1's and K r3's refusals fell mostly at product routing's tickets,
+       where the ranking orders the queues as the policy does. At the same
+       arrivals K r2's engine had installed the declarations: it decided 168
+       of the 178 with one queue standing, and 172 right. Its refusals fell in
+       billing's layer, and at rules born of the wrong queue.
+     - **One prompt's reasoning is a draw.** Sent at temperature 0, two answers
+       to one prompt part at a median of 11 characters, and no two reasonings
+       are alike. One prompt drew one draft in 274 of 1,273 pairs, and drafts
+       of one queue differ mostly in which attributes they keep. A reading of
+       one ask a ticket reads one draw.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *Two things the six readings left free*.
 
    All three are read above.
 
