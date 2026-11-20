@@ -68,6 +68,11 @@ THE QUESTIONS
      against L's, over the other half: K's points right by rung 2's decision
      and by its ranking; L's right, decided wrong, left in conflict and
      undecided; each by true queue. **K's gain** is K's right points less L's.
+     **Added after the first run**, and read by no clause: the points each base
+     decides wrong there, one queue standing, by how the rules that decide them
+     were born, at an impasse, at a reported error or at a conflict the loop
+     asked about; and of the points L decides wrong and K right, those where a
+     rule L wrote at a conflict stands.
   D. **K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`.** In each
      K base, the points **the pair decides**: rules of both queues stand, and no
      queue the last ranking puts above both does. Their truth. Beside them: the
@@ -247,6 +252,11 @@ PROVENANCE
 C. The expectation above was written and committed before the reading ran. Not
 a signed row, not on `STATUS.md`'s scoreboard, not a calibration event. Zero
 API calls.
+
+**One part was added after the first run**, C's decided-wrong points by birth,
+in a commit of its own. The first run had printed every clause's verdict, and
+its readings A to F had been read whole. No clause reads the added part, and
+no clause was changed.
 
 Usage:  python3 -m ranked.readings --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.readings
@@ -725,7 +735,34 @@ def half(base: dict[str, Any], truth: dict[str, int], mask: int) -> dict[str, An
     return out
 
 
-def read_c(bases: dict[str, dict], truth: dict[str, int], other: int) -> dict[str, Any]:
+CAUSES = (plan.IMPASSE, plan.ERROR, plan.CONFLICT)
+
+
+def by_birth(base: dict[str, Any], record: dict[str, Any], mask: int,
+             truth: dict[str, int]) -> dict[str, Any]:
+    """Added after the first run. The points of `mask` a base decides wrong, one
+    queue standing, by how the rules that decide them were born: at an impasse,
+    at a reported error, or at a conflict the loop asked about. A point is
+    `conflict` when a rule born at a conflict stands there, and `only_conflict`
+    when every rule that stands there was."""
+    cause = {e["idx"]: e["kind"] for e in record["escalations"]}
+    rd = base["read"]
+    wrong = rd["decided"] & ~rd["conflict"] & ~rd["rung2"] & mask
+    born = {c: 0 for c in CAUSES}
+    for r in base["walk"].engine.rules:
+        born[cause[r.born_at]] |= base["walk"].und[r.rule_id] & wrong
+    others = born[plan.IMPASSE] | born[plan.ERROR]
+    only = born[plan.CONFLICT] & ~others
+    return {"wrong": wrong.bit_count(),
+            **{c.lower(): born[c].bit_count() for c in CAUSES},
+            "only_conflict": only.bit_count(),
+            "conflict_by_queue": {q: (born[plan.CONFLICT] & truth.get(q, 0)).bit_count()
+                                  for q in ACTIONS},
+            "masks": {"conflict": born[plan.CONFLICT], "wrong": wrong}}
+
+
+def read_c(bases: dict[str, dict], truth: dict[str, int], other: int,
+           records: dict[str, dict] | None = None) -> dict[str, Any]:
     out = {}
     for k in range(1, plan.REPS + 1):
         kt, lt = tag_of(plan.RANKED, k), tag_of(plan.CONTROL, k)
@@ -743,6 +780,19 @@ def read_c(bases: dict[str, dict], truth: dict[str, int], other: int) -> dict[st
                 "points": k_on_it.bit_count(),
                 "by_ranking": (k_on_it & kb["read"]["conflict"]).bit_count(),
                 "by_queue": {q: (k_on_it & truth.get(q, 0)).bit_count() for q in ACTIONS}}}
+        if records and lt in records and kt in records:
+            # added after the first run: what decides wrong the points L errs on
+            lw = by_birth(lb, records[lt], other, truth)
+            kw = by_birth(kb, records[kt], other, truth)
+            gain_points = lw["masks"]["wrong"] & kb["right"]
+            out[f"r{k}"]["decided_wrong_by_birth"] = {
+                "l": {x: v for x, v in lw.items() if x != "masks"},
+                "k": {x: v for x, v in kw.items() if x != "masks"},
+                "l_wrong_k_right": {
+                    "points": gain_points.bit_count(),
+                    "a_conflict_birth_stands": (gain_points & lw["masks"]["conflict"]).bit_count(),
+                    "by_queue": {q: (gain_points & truth.get(q, 0)).bit_count()
+                                 for q in ACTIONS}}}
     return out
 
 
@@ -1084,7 +1134,7 @@ def read_everything(records: dict[str, dict], sessions: dict[str, dict],
          "excess": None if ex is None else
          {"total": frac(ex["total"]), "by_class": {k: frac(v) for k, v in ex["by_class"].items()}}}
     b = read_b(nested, calls)
-    c = read_c(bases, truth, other)
+    c = read_c(bases, truth, other, records)
     d = {t: read_d(bases[t], truth) for t in K_RUNS if t in bases}
     f = {"arrivals": {t: abstentions(rows) for t, rows in per_run_taken.items()},
          "space": {t: abstentions_over_space(bases[t]["queues"], bases[t]["ranking"],
