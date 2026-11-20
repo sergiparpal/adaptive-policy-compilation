@@ -16,6 +16,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in #291, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of one region under two queues** reached it in #293,
   merged on 2026-11-20 at Sergi's word.
+- **The POST-RUN reading of two things that reading left free** reaches it in
+  the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -212,6 +214,17 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   still at the merge of #293. Its `_env` says `git_dirty`, for the same
 >   files, and `code_dirty` is false. No module an earlier record of this plan
 >   ran changed.
+>
+> **[NOTE 2026-11-20, after the sixth] And a seventh and an eighth.**
+> [`copies.json`](copies.json) and [`asked.json`](asked.json) are the POST-RUN
+> reading of two things the last reading left free.
+> - **They were written from `83e4458`**, on the branch of the pull request
+>   they are opened in: the commit that adds the part read after the first run.
+>   The readings and their expectations are the commit before it, `979dc1e`.
+> - **Their code digest is `d1d5ba3587246981`**, because `ranked/copies.py` and
+>   `ranked/asked.py` were added after the last reading. Their `_env` says
+>   `git_dirty`, for the same files, and `code_dirty` is false. No module an
+>   earlier record of this plan ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1631,9 +1644,231 @@ it. It is not signed, and it is on no scoreboard.
    be the queue's general line, which the base already holds. What the copies
    cost the base, and whether they are mostly such corrections, is free on the
    records.
+   **[NOTE 2026-11-20, after the sixth] Read POST-RUN: mostly billing's line,
+   written again at reported errors and kept out of their ticket.** Most were
+   born at a reported error, and almost none decides its ticket in the final
+   base. They cost little in four runs; in L r2 and in L r3 a copy reopened a
+   conflict its original had lost. *Two things the last reading left free*, L,
+   below.
 2. **Why L's twins are born at the conflicts it asks about.** At 35 conflicts
    the first call drew exactly an earlier rule's region under another queue.
    Its reasoning is in the records. Free on the records.
+   **[NOTE 2026-11-20, after the sixth] Read POST-RUN: a correction's region,
+   drawn again under the other side's queue.** At 28 of the 35 the newborn
+   named another queue standing at the ticket, and was right at 3; at 25 a twin
+   had been born where a report named its queue. The same section, M, below.
+
+---
+
+## Two things the last reading left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-20, after the last reading.** Its *What it does
+not settle*, above, names two things the records can answer without a call:
+what the copies of a queue's own rule cost the base, and whether they are
+mostly its general line written again at reported errors, its first item; and
+why L's twins are born at the conflicts it asks about, its second. These
+readings answer both on the records alone. They spend nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.copies` and
+`PYTHONHASHSEED=0 python3 -m ranked.asked`, on 2026-11-20, from `83e4458` with
+its code clean, on the branch of the pull request they are opened in.
+- **The commits.** `979dc1e` carries both readings and their expectations,
+  written and committed before either ran. `83e4458` adds one part to each after
+  the first run, (d), read by no clause: in `copies.py` each copy left out
+  alone, where the two that count most count, and the copies' regions; in
+  `asked.py` how each twin was born, and whether a twin's queue stood. The first
+  run, from `979dc1e`, had printed every clause's verdict, and its readings had
+  been read whole. Its records were not kept.
+  - **The added part was extended once before anything was pushed.** A first
+    version was run, and its record overwritten; the commit was amended to add
+    where the two copies that count most count. Every run printed the same
+    verdicts.
+- **Each record was committed alone**, as `42e10dd` and `39ed49b`.
+- **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `d1d5ba3587246981`.
+- **The records are [`copies.json`](copies.json) and
+  [`asked.json`](asked.json).** Their 27 gates passed:
+  - in each of the six runs, every copy recorded its original among its first
+    call's copies and the two rules cover exactly the same points, the final
+    base is Stage C's, and the replay that leaves rules out, leaving out
+    nothing, decides exactly what the final base decides right;
+  - in each L run, the conflict twins are `twins.json`'s pairs born at a
+    conflict, rules of two queues or more stood at each ticket and the row says
+    the engine returned a conflict there, and each born draft is its rule.
+
+### L. Copies of the same queue
+
+A copy is a born rule whose first call recorded, among its copies, an earlier
+rule of its own queue, its original: the two cover exactly the same tickets and
+send them to the same queue. v1c records a copy and lets it be born. Its birth is
+never an impasse, since its original matches its ticket.
+
+| run | births | copies | born at a reported error | the rule that erred nested in it | decide their ticket after birth | in the final base | the base without them, less the final base |
+|---|---|---|---|---|---|---|---|
+| L r1 | 326 | 101 | 64 | 35 | 11 | 10 | −845 |
+| K r1 | 196 | 49 | 49 | 30 | 4 | 1 | −490 |
+| L r2 | 291 | 93 | 54 | 29 | 14 | 9 | +9,709 |
+| K r2 | 212 | 71 | 71 | 37 | 5 | 4 | −1,970 |
+| L r3 | 329 | 109 | 43 | 24 | 11 | 4 | −220 |
+| K r3 | 165 | 38 | 38 | 12 | 8 | 4 | −305 |
+
+- **Mostly at reported errors** (L1 holds): 319 of the 461, and every report
+  named the copy's queue. In K every copy was born at one, since K asks about no
+  conflict. In L, 161 of 303 were, and the rest at a conflict L asked about.
+- **Mostly billing's general line.** `H11`, billing tickets of accounts with
+  three prior tickets or more, governs 237 of the 461 tickets, and 265 copies
+  are `BILLING_SPECIALIST`'s. Read after the first run:
+  - **in every run the region written most often is `product = billing`**,
+    under `BILLING_SPECIALIST`: 30, 23, 29, 39, 45 and 16 times;
+  - **377 of the 461 are broad**, with one or two conditions;
+  - **they cover few regions**, each under its queue: 36, 13, 29, 16, 35 and
+    14;
+  - **and most originals are copies themselves**: 65, 36, 64, 55, 74 and 24.
+- **Below the rule that erred** (L2 holds, by eight copies). At 167 of the 319
+  born at a reported error, the rule that had decided the ticket wrongly lies
+  strictly inside the copy, and beats it there by containment, as it beat the
+  original.
+- **Kept out of their ticket** (L3 holds, the bet). In the final base the
+  copies decide their own ticket at 10 of 101, 1 of 49, 9 of 93, 4 of 71, 4 of
+  109 and 4 of 38. Right after the birth they decided it at 11, 4, 14, 5, 11 and
+  8. An original stood at the ticket when the case arrived at 9, 1, 12, 1, 5 and
+  0.
+- **What they cost** (L4 fails). Left out, with their edges and in K their
+  votes, the copies change what the base decides right by −845, −490, +9,709,
+  −1,970, −220 and −305 points. Within a hundredth in four runs. K r2's copies
+  are worth 1,970 points to its base. L r2's base decides 9,709 more without its
+  copies, 10,030 more in the keyword half and 321 fewer in the other.
+- **Alone, most copies change nothing.** Read after the first run, each copy
+  left out alone changes what the base decides right at none of 402 of the
+  461: 85 of 101, 48 of 49, 74 of 93, 66 of 71, 99 of 109 and 30 of 38. Three
+  move it by a hundredth or more. Each entered its original's region with its
+  own answer's sides, and not with the order its original had been given.
+  - **`R0258`, in L r2, costs 7,980 points**, all `SECURITY_INCIDENT`'s, in the
+    keyword half. It is of `T2_TECHNICAL`, keyword tickets at severity 3 or 4,
+    born at case 1742, a reported ticket of `H03`. Its original, `R0160`, born
+    at case 956, had lost to `R0252`, of `SECURITY_INCIDENT`, keyword tickets at
+    severity 1 to 3. `R0252`, born at case 1704, had declared itself above
+    `R0160`, and then decided `R0258`'s ticket wrongly. `R0258`'s answer
+    declared it above `R0252`, and the engine refused that edge for closing a
+    cycle. With the copy, `R0252` and `R0258` stand side by side on those
+    points: a conflict, left wrong in L. Without it, `R0252` stands alone.
+  - **`R0275`, in L r3, costs 2,355.** It is of `T3_ENGINEERING`, the API at
+    severity 1, born at case 1333, a reported ticket of `H07`. Its original,
+    `R0073`, had lost to the keyword's security rules: to `R0027` by its own
+    answer, and to `R0181`, `R0234` and `R0238` by theirs. `R0275`'s answer
+    declared it below all four, and the engine refused those losses for closing
+    cycles. So it stands beside them on the API's keyword tickets at severity
+    1: it costs 2,730 points of `SECURITY_INCIDENT`'s and 465 of
+    `ONCALL_ESCALATION`'s, and pays 840 of `T3_ENGINEERING`'s.
+  - **`R0091`, in K r2, is worth 1,650**, all `ACCOUNT_MANAGER`'s. It is of
+    that queue, enterprise accounts with ten prior tickets or more, born at
+    case 355, a reported ticket of `H13`. Its original, `R0051`, born at case
+    127, had lost to rules of `T2_TECHNICAL` and `T1_GENERAL` born after it,
+    which declared themselves above it. `R0091`'s answer declared it above them,
+    and the engine installed it. Without it, those rules stand there.
+
+### M. Why L's twins are born at the conflicts it asks about
+
+A conflict twin is a birth of arm L that twins an earlier rule of another queue,
+born at a conflict L asked about: when its ticket arrived, rules of two queues or
+more stood undefeated there. Its twins are the earlier rules of another queue
+whose region it covers exactly, one or several. Each is read at its ticket as the
+engine held it when the case arrived, before the birth. The first call is blind:
+it is told the engine could not decide the ticket, and is shown no rule.
+
+| run | conflict twins | pairs | a twin stood | a twin's queue stood | the newborn named another queue standing | the newborn right | a twin's queue right | a twin was a correction |
+|---|---|---|---|---|---|---|---|---|
+| L r1 | 10 | 10 | 5 | 8 | 9 | 0 | 9 | 8 |
+| L r2 | 6 | 8 | 3 | 6 | 5 | 0 | 5 | 6 |
+| L r3 | 19 | 39 | 8 | 16 | 14 | 3 | 11 | 11 |
+
+- **Two queues stood at each conflict**, three at one. The twin itself stood at
+  16 of the 35 (M1 fails, trusted most). Read after the first run, a twin's
+  queue stood at 30: at 14 the twin was beaten at the ticket, and another rule
+  of its queue stood there.
+- **The newborn named the other side** (M2 holds, the bet): at 28 of 35 its
+  queue was another queue standing there. At 23, a twin's queue and the
+  newborn's both stood: the conflict was between them.
+- **And it was wrong.** The newborn's queue was the ticket's true queue at 3 of
+  35 (M3 holds); a twin's queue was at 25. At 20 both queues stood, a twin's
+  was right and the newborn's wrong.
+- **The twin was mostly a correction.** Read after the first run, at 25 of the
+  35 one of the twins had been born at a reported error whose report named its
+  queue, and at 20 of those its queue was the conflict ticket's truth. Of the 57
+  pairs' twins, 33 were born at a reported error, 19 at a conflict, all of
+  them in L r3, and 5 at an impasse.
+- **Mostly the general queue over deflection's tickets.** 19 of the 35
+  newborns are `T1_GENERAL`'s, 13 of them at a ticket whose truth is
+  `SELF_SERVICE_DEFLECT`'s. `H24`, free accounts at severity 3 or 4, governs
+  15 of the 35 tickets, and `H16`, the API, 7.
+- **Not a coarser region** (M4 fails, trusted least). The median number of
+  conditions is 3 for the 35, for the 18 other twins of L, and for the 893 L
+  births that twin no rule of another queue.
+- **The reasoning does not see the conflict.** The drafter read the ends of
+  six of the 35 reasonings, chosen, not drawn; the record keeps every one's
+  last 800 characters. None names a rule of the base, and three say outright
+  that its rules are unknown to the call: "No overlapping rules known yet."
+- **Every newborn's region holds its own ticket**, so every twin's does too: at
+  the 19 conflicts where no twin stood, each was beaten at the ticket.
+
+**So the conflict mostly set a correction against a rule of another queue, and
+the first call sided with the other.** At 25 of the 35 a twin had been born
+where a report named its queue, and at 23 its queue and the newborn's both stood
+at the ticket. Asked about the conflict with no report, the blind first call
+drew the correction's region again, and named another queue standing there,
+wrong at all but 3.
+
+### The expectation
+
+Written in each module's docstring before either reading ran, and committed
+before them. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| L1, in the six runs pooled, more than half of the copies were born at a reported error | 319 of 461 | **holds** |
+| L2, of the copies born at a reported error, pooled, at more than half the rule that erred is nested in the copy | 167 of 319 | **holds** |
+| L3, in every run, more than half of the copies do not decide their own ticket in the final base | they decide it at 10 of 101, 1 of 49, 9 of 93, 4 of 71, 4 of 109 and 4 of 38 | **holds** |
+| L4, in every run, what the base without its copies decides right differs from what the run's final base decides right by fewer than 1,344 points | −845, −490, +9,709, −1,970, −220 and −305 | fails |
+| M1, of the conflict twins pooled, at more than half one of the birth's twins was among the rules standing at the ticket | 16 of 35 | fails |
+| M2, of them, at more than half the newborn's queue was another queue standing there | 28 of 35 | **holds** |
+| M3, of them, at fewer than half the newborn's queue is the ticket's true queue | 3 of 35 | **holds** |
+| M4, the conflict twins' median number of conditions is below the median of L's births that twin no rule of another queue | 3 and 3 | fails |
+
+**L1, L2, L3, M2 and M3 hold, and L4, M1 and M4 fail.**
+- **Both bets held**, L3 and M2.
+- **Of the clauses trusted most, L1 held and M1 failed.** The twin itself was
+  beaten at the ticket at 19 of the 35 conflicts, and at 14 of those another
+  rule of its queue stood there.
+- **Both clauses trusted least failed**, L4 and M4.
+
+### What they say
+
+- **The copies are mostly billing's general line, written again at reported
+  errors and kept out of their ticket.** The rule that erred, nested in the
+  copy, keeps the ticket by containment, as it kept it from the original.
+- **A copy does not inherit its original's order.** It enters the region with
+  its own answer's sides only. Installed, they can win back what its original
+  had lost, as in K r2. Refused, they leave the copy beside rules its original
+  had lost to, and reopen a conflict: in L r2 and L r3, both times beside the
+  keyword's security rules, at 7,980 and 2,730 points of theirs.
+- **L's twins at its conflicts are mostly a correction's region, drawn again
+  under the other side's queue.** At a conflict the first call gets no report,
+  and it named another queue standing at the ticket, wrong at all but 3 of 35.
+
+### What it does not settle
+
+1. **Whether a loop that refused copies would run better.** v1c records a copy
+   and lets it be born, without its original's order. Refusing the copy, or
+   installing its original's order with it, would change which cases escalate
+   after it. Calls.
+2. **Why the copies' declared sides closed cycles.** `R0258`'s win over
+   `R0252`, and `R0275`'s losses to the keyword's security rules, were refused.
+   Through which rules, and whether they are older rules nested in the copy's
+   region, as the refusals reading found in K, is free on the records.
+3. **A first call shown the conflict.** At a conflict L asked about, the first
+   call does not know which rules disagree. Shown them, with their queues, it
+   might side otherwise. Calls.
 
 ---
 
@@ -1653,3 +1888,5 @@ it. It is not signed, and it is on no scoreboard.
 - [`refusals.json`](refusals.json), [`billing.json`](billing.json): POST-RUN, two
   things the last two readings left free.
 - [`twins.json`](twins.json): POST-RUN, one region under two queues.
+- [`copies.json`](copies.json), [`asked.json`](asked.json): POST-RUN, two things
+  the last reading left free.
