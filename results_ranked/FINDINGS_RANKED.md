@@ -14,7 +14,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   in #289, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the last two readings left free**
   reached it in #291, merged on 2026-11-20 at Sergi's word.
-- **The POST-RUN reading of one region under two queues** reaches it in #293.
+- **The POST-RUN reading of one region under two queues** reached it in #293,
+  merged on 2026-11-20 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -203,12 +204,14 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-20, latest] And one more.** [`twins.json`](twins.json) is the
 > POST-RUN reading of one region under two queues.
-> - **It was written from `57a5d3f`**, on the branch of #293: the commit that
->   carries the reading and its expectation.
+> - **It was written from `57a5d3f`**, on the branch of #293, which is
+>   `58b7b1b` on `main`: the commit that carries the reading and its
+>   expectation.
 > - **Its code digest is `bcaccda1496dc28e`**, because `ranked/twins.py` was
->   added after the last two readings. Its `_env` says `git_dirty`, for the
->   same files, and `code_dirty` is false. No module an earlier record of this
->   plan ran changed.
+>   added after the last two readings. `main` computes it at `58b7b1b`, and
+>   still at the merge of #293. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. No module an earlier record of this plan
+>   ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1522,14 +1525,19 @@ and what the side declared between them decided. This reading answers it on the
 records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.twins`, on 2026-11-20,
-from `57a5d3f` with its code clean, on the branch of #293.
-- **The commit.** `57a5d3f` carries the reading and its expectation, written and
-  committed before the reading ran. Nothing was added after the first run, and
-  its record is the one kept.
-- **The record was committed alone**, as `e6ac287`.
+from `57a5d3f` with its code clean, on the branch of #293, which is `58b7b1b`
+on `main`.
+- **The commit.** `58b7b1b` on `main` carries the reading and its expectation,
+  written and committed before the reading ran. Nothing was added after the
+  first run, and its record is the one kept.
+- **The record was committed alone**, as `ed68c92`.
+- **On #293's branch the two commits were `57a5d3f` and `e6ac287`.** Each pair
+  has the same subject, the same tree and the same `git patch-id --stable`, and
+  the GitHub API names #293 behind the two `main` commits.
 - **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `bcaccda1496dc28e`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `bcaccda1496dc28e`, is the one `main` computes at `58b7b1b`, and still at the
+  merge.
 - **The record is [`twins.json`](twins.json).** Its 18 gates passed: in each
   run, every pair's newborn recorded its twin among its first call's copies and
   the two rules cover exactly the same points, the final base is Stage C's, and
