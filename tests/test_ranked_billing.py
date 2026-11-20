@@ -200,5 +200,47 @@ class TestTheWriter(unittest.TestCase):
         self.assertIn("unsigned", str(got.exception))
 
 
+# ---------------------------------------------------------------------------
+# Added after the first run
+# ---------------------------------------------------------------------------
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_read_added(self):
+        def birth(gov, attributes=()):
+            return {"governing": gov, "attributes": list(attributes)}
+        births = {"S1": birth("H12"), "S2": birth("H24", ["prior_tickets_30d"]),
+                  "T": birth("H29")}
+
+        def kept(kind, nested=(), declared=()):
+            return {"rule": "B", "kind": kind, "declared": [], "nested": [],
+                    "standing_nested": list(nested), "standing_declared": list(declared)}
+        losses = [loss(1, SS, [kept("containment", nested=["S1"]), kept("both")], BL.MIXED,
+                       standing=("S1",)),
+                  loss(2, SS, [kept("declared", declared=["S2"])], BL.DECLARED,
+                       standing=("S1", "S2")),
+                  loss(3, T1, [kept("containment")], BL.CONTAINMENT, standing=("T",))]
+        got = BL.read_added(losses, births)
+        self.assertEqual(got["standing_all_born_at_h12"], 1)
+        self.assertEqual(got["standing_born_at"], {"H12": 2, "H24": 1, "H29": 1})
+        self.assertEqual(got["standing_with_a_prior_bound"], 1)
+        self.assertEqual(got["billing_rules_by_kind"], {"both": 1, "containment": 2,
+                                                        "declared": 1})
+        self.assertEqual(got["a_standing_rule_nested_in_billing"], 1)
+        self.assertEqual(got["a_standing_rule_declared_above_billing"], 1)
+
+    def test_on_k_r3_the_standing_beat_billing_as_the_engine_says(self):
+        record = json.loads(plan.run_path(plan.RANKED, 3).read_text())
+        space, truth = MI.space(), MI.space_truth()
+        losses, _, _ = BL.losses_of(record, space, list(MI.corpus()),
+                                    BL.installers(record), truth)
+        for x in losses:
+            for k in x["billing"]:
+                self.assertTrue(set(k["standing_nested"]) <= set(x["standing"]))
+                self.assertTrue(set(k["standing_declared"]) <= set(k_["above"] for k_ in
+                                                                    k["declared"]))
+                self.assertTrue(set(k["standing_nested"]) <= set(k["nested"]))
+
+
 if __name__ == "__main__":
     unittest.main()

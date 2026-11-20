@@ -62,6 +62,11 @@ THE QUESTIONS
       the ranking was right, apart for the refusals whose cycle is nowhere.
   Beside them: each distinct refused edge, read once, with its newborn, its
   shortest path and the rules its paths run through.
+  (d) **Added after the first run, and read by no clause.** The births of the
+      two rules of each door listed; and at every refusal whose cycle closes
+      through containment, the rules nested in the newborn, or the newborn is
+      nested in, that its paths run through, with their births: by whether
+      each is of the newborn's queue, and whether it was right at its birth.
 
 --------------------------------------------------------------------------
 THE GATES
@@ -138,6 +143,10 @@ PROVENANCE
 reading ran. Not a signed row, not on `STATUS.md`'s scoreboard, not a
 calibration event. Zero API calls.
 
+**One part was added after the first run**, (d), in a commit of its own. The
+first run had printed every clause's verdict, and its readings (a) to (c) had
+been read whole. No clause reads the added part, and no clause was changed.
+
 Usage:  python3 -m ranked.refusals --dry-run   # the gates; writes nothing
         PYTHONHASHSEED=0 python3 -m ranked.refusals
 """
@@ -159,6 +168,7 @@ from manual import instrument as MI
 from reuse import structure as st
 from rung2.engine2 import EDGE_CYCLE, EDGE_OK, PriorityEngine, Space
 
+from . import conflicts as CF
 from . import plan
 from . import readings as RD
 
@@ -247,14 +257,27 @@ def analyse(engine: PriorityEngine, winner: str, loser: str, newborn: str, idx: 
            "verdict": CP.verdict(engine, winner, loser, action, truth),
            "shared_points": shared.bit_count()}
     if not reaches:
-        return dict(out, closes=None, where=None, shortest=None, path_rules=[], doors=[])
+        return dict(out, closes=None, where=None, shortest=None, path_rules=[], doors=[],
+                    nested_at_newborn=[])
     return dict(out,
                 closes=closes(engine, winner, loser, newborn, own, nodes),
                 where=SOMEWHERE if CP.local_reach(engine, loser, winner, nodes, shared)
                 else NOWHERE,
                 shortest=CP.shortest(engine, loser, winner, nodes),
                 path_rules=sorted(nodes - {winner, loser}),
-                doors=doors_of(engine, winner, loser, nodes, installed_at, idx, action))
+                doors=doors_of(engine, winner, loser, nodes, installed_at, idx, action),
+                nested_at_newborn=nested_at_newborn(engine, winner, loser, newborn, nodes))
+
+
+def nested_at_newborn(engine: PriorityEngine, winner: str, loser: str, newborn: str,
+                      nodes: set[str]) -> list[str]:
+    """Added after the first run. The rules the paths step through by
+    containment at the newborn: nested in it on a win, holding it on a loss."""
+    if newborn == winner:
+        return sorted(x for x in nodes if newborn in engine.sub_above[x])
+    if newborn == loser:
+        return sorted(y for y in engine.sub_above[newborn] if y in nodes)
+    return []
 
 
 def replay(record: dict[str, Any], space: Space, truth: dict[str, int],
@@ -308,6 +331,32 @@ def same_base(engine: PriorityEngine, record: dict[str, Any], space: Space) -> b
 def tally(units: Sequence[dict], key, keys: Sequence[str]) -> dict[str, int]:
     c = Counter(key(u) for u in units)
     return {k: c.get(k, 0) for k in keys}
+
+
+def read_added(units: Sequence[dict], found: dict[tuple[str, str], dict],
+               births: dict[str, dict], doors: Sequence[dict]) -> dict[str, Any]:
+    """Added after the first run, and read by no clause: the births of the
+    doors' rules, and the rules the cycles step through by containment at the
+    newborn."""
+    keys = ("queue", "born_at", "kind", "report", "governing", "right_at_birth", "conditions")
+    door_births = [dict(d, upper_birth={k: births[d["upper"]][k] for k in keys},
+                        lower_birth={k: births[d["lower"]][k] for k in keys}) for d in doors]
+    at = [(u, found[(u["above"], u["below"])]) for u in units]
+    contained = [(u, a) for u, a in at if a["closes"] in (CONTAINMENT, EITHER)]
+    rules: Counter = Counter(r for _, a in contained for r in a["nested_at_newborn"])
+    other = sum(1 for _, a in contained
+                if any(births[r]["queue"] != births[a["newborn"]]["queue"]
+                       for r in a["nested_at_newborn"]))
+    wrong = sum(1 for _, a in contained
+                if any(not births[r]["right_at_birth"] for r in a["nested_at_newborn"]))
+    return {"doors": door_births,
+            "containment": {"refusals": len(contained),
+                            "through_a_rule_of_another_queue": other,
+                            "through_a_rule_wrong_at_its_birth": wrong,
+                            "rules": [dict({k: births[r][k] for k in keys}, rule_id=r,
+                                           refusals=n)
+                                      for r, n in sorted(rules.items(),
+                                                         key=lambda kv: (-kv[1], kv[0]))[:TOP_DOORS]]}}
 
 
 def read_run(units: Sequence[dict], found: dict[tuple[str, str], dict],
@@ -433,6 +482,9 @@ def read_everything(records: dict[str, dict], conflicts: dict[str, Any],
                       "passes": same_base(got["engine"], records[t], space)})
         truth_of = {c["case"]: c["truth"] for c in a_cases[t]}
         runs[t] = read_run(units, got["found"], truth_of, got["action"])
+        # added after the first run, and read by no clause
+        runs[t]["added"] = read_added(units, got["found"],
+                                      CF.births_of(records[t], space, truth), runs[t]["doors"])
     return {"runs": runs}, gates
 
 
