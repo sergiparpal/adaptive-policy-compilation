@@ -396,8 +396,8 @@ The recall of every queue over the space, by run. The rows `RK-b`, `RK-c` and
   `SELF_SERVICE_DEFLECT` above `BILLING_SPECIALIST`. L cast 7,155, 8,182 and
   7,550 votes, and its ranking put `SECURITY_INCIDENT` first for good from
   births 31, 51 and 21.
-- **No case K's ranking took was decided on a tie** between the winner's queue
-  and the next, so the domain's order decided nothing at the arrivals.
+- **No case K's ranking took was decided on a tie** of votes between the
+  winner's queue and the next.
 
 ### What the ranking took, and what L asked
 
@@ -515,10 +515,11 @@ In-sample, and reported only.
   ranking.
 - **Settling conflicts by that ranking bought about a sixth of the space over
   the loop that asks** (`RK-b`, thin), in both halves of it.
-- **The ranking settles a conflict better than asking did.** It decided right
-  more than four in five of the cases it took in K r1 and K r3, and half in K r2
-  (`RK-e`). At L's own conflicts the first call named the true queue at under
-  half.
+- **The ranking settles a conflict better than asking did.** At L's own
+  conflicts, the ranking its votes had chosen would have decided right 92, 78
+  and 104, where L's first call named the true queue at 60, 36 and 73. In K it
+  decided right more than four in five of the cases it took in K r1 and K r3,
+  and half in K r2 (`RK-e`).
 - **What K still loses of `SECURITY_INCIDENT` is containment's** (`RK-c`,
   thin). Every point it loses lies inside a rule of `T2_TECHNICAL` nested in
   rules of the queue, where the ranking never decides.
@@ -555,8 +556,9 @@ In-sample, and reported only.
 - **Telling the proposer how K's engine settles a conflict**, §13's second
   item. Calls.
 - **An engine that abstains where its votes are silent**, §13's fifth item. No
-  case K's ranking took was decided on a tie, so at the arrivals it would have
-  changed nothing. Over the space it is not read. Free on the records.
+  case K's ranking took was decided on a tie of votes between the winner's
+  queue and the next. What such an engine would have left in conflict, at the
+  arrivals and over the space, is not read. Free on the records.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
 
