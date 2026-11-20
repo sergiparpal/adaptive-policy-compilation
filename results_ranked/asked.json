@@ -1,0 +1,2365 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-20T18:51:55Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "83e4458d46f6f40c00b2bfae5fec95efd97338cd",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "d1d5ba3587246981"
+  },
+  "plan": "PLAN_RANKED.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_RANKED.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-20, after ranked/twins.py. The expectation in the module's docstring was written and committed before the reading ran. Part (d) was added after the first run, and no clause reads it. Not a signed row; no verdict moves.",
+  "source": {
+    "twins": "results_ranked/twins.json",
+    "twins_from": "57a5d3fb0e4e0f1a74eda23113dfd445ee020e5f",
+    "runs": {
+      "l_r1": "results_ranked/loop_l_r1.json",
+      "l_r2": "results_ranked/loop_l_r2.json",
+      "l_r3": "results_ranked/loop_l_r3.json"
+    }
+  },
+  "surface": "the births of arm L's three runs that twin a rule of another queue and were born at a conflict the loop asked about, each read at its ticket as the engine held it when the case arrived, and the conditions of arm L's births",
+  "constants": {
+    "tail": 800
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "run": "l_r1",
+      "what": "the pairs are twins.json's",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r1",
+      "what": "each was a conflict",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r1",
+      "what": "a born draft is its rule",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r2",
+      "what": "the pairs are twins.json's",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r2",
+      "what": "each was a conflict",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r2",
+      "what": "a born draft is its rule",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r3",
+      "what": "the pairs are twins.json's",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r3",
+      "what": "each was a conflict",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r3",
+      "what": "a born draft is its rule",
+      "passes": true
+    }
+  ],
+  "readings": {
+    "runs": {
+      "l_r1": {
+        "births": [
+          {
+            "newborn": "R0144",
+            "case": 607,
+            "queue": "T2_TECHNICAL",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0126"
+              ],
+              "T2_TECHNICAL": [
+                "R0105"
+              ],
+              "T3_ENGINEERING": [
+                "R0084"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0084",
+                "queue": "T3_ENGINEERING",
+                "born_at": 227,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "severity",
+                "eq",
+                2
+              ],
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "customer_tier",
+                "in",
+                [
+                  "business",
+                  "enterprise"
+                ]
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 9200,
+            "tail": "turno, a cualquier hora.\" Severity 2 is not critical (1 is critical), so not that.\n\nThus, final JSON:\n\n{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"},\n    {\"attr\": \"customer_tier\", \"op\": \"in\", \"value\": [\"business\", \"enterprise\"]}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de severidad alta (2) en un producto t\u00e9cnico (api) y un cliente business/enterprise. El soporte t\u00e9cnico de segundo nivel (T2) es el m\u00e1s adecuado para diagnosticar y resolver incidencias t\u00e9cnicas en productos como la API. Se excluye T3_ENGINEERING porque no hay indicio de bug, y ONCALL_ESCALATION porque la severidad no es cr\u00edtica. Se agrupa business y enterprise por tener un nivel de soporte similar.\"\n}",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0146",
+            "case": 616,
+            "queue": "T2_TECHNICAL",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H14",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0063"
+              ],
+              "T2_TECHNICAL": [
+                "R0103"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0116",
+                "queue": "T1_GENERAL",
+                "born_at": 447,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "business"
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 5082,
+            "tail": "les are provided, we assume no overlap with other queues yet. So beats and loses_to empty.\n\nBut we must be careful: if there is a rule that says \"business tier goes to ACCOUNT_MANAGER\" or \"mobile product goes to T3_ENGINEERING\", we might need to declare priority. Since we don't know, we'll leave empty.\n\nSo final JSON.\n\n{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Business customers reporting issues with the mobile app at moderate to low severity should be handled by technical support for diagnosis and resolution. This covers the current ticket and similar future cases.\"\n}",
+            "twin_queue_stood": false,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0243",
+            "case": 1256,
+            "queue": "T2_TECHNICAL",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15",
+            "standing": {
+              "T2_TECHNICAL": [
+                "R0154"
+              ],
+              "T3_ENGINEERING": [
+                "R0228"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0236",
+                "queue": "T3_ENGINEERING",
+                "born_at": 1217,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "severity",
+                "lte",
+                2
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 3876,
+            "tail": "d use that.\n\nBut we need to be careful: the rule should not be too narrow. We want to cover similar cases.\n\nLet's propose: conditions: product eq \"api\", severity lte 2, customer_tier eq \"free\". That would match this ticket. But is that too broad? Could it conflict with other rules? For example, if there is a rule for severity 1 api that goes to ONCALL, but severity 1 is not in our condition. So it's fine.\n\nAlternatively, we could include prior_tickets_30d gte 5 to indicate repeat issues, but that might miss some. Since the ticket has 8, it's a good indicator.\n\nI'll go with: product eq \"api\", severity lte 2, customer_tier eq \"free\".\n\nAction: T2_TECHNICAL.\n\nNote: We need to justify abstraction and priority. Since we don't know existing rules, we assume no overlap declared.\n\nThus output JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0247",
+            "case": 1268,
+            "queue": "BILLING_SPECIALIST",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0224"
+              ],
+              "BILLING_SPECIALIST": [
+                "R0234"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0224",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 1144,
+                "stood": true,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "billing"
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "enterprise"
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 4587,
+            "tail": " be told later.\n\nThus, our response should be:\n\n{\n  \"action\": \"BILLING_SPECIALIST\",\n  \"conditions\": [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Los tickets de facturacion de clientes enterprise deben ir al especialista de facturacion, ya que son asuntos financieros que requieren intervencion humana, independientemente del nivel de severidad.\"\n}\n\nBut we need to ensure it matches the ticket: product=billing, customer_tier=enterprise. Yes.\n\nWe could also add severity condition? The ticket severity is 4, but we don't need to limit. It's fine.\n\nAlternatively, we could add channel or language, but that would be too specific. The rule should be generalizable.\n\nSo I'll go with that.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0252",
+            "case": 1320,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0025",
+                "R0150"
+              ],
+              "T1_GENERAL": [
+                "R0181"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0150",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 629,
+                "stood": true,
+                "conditions": 5,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 5,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "product",
+                "eq",
+                "dashboard"
+              ],
+              [
+                "channel",
+                "eq",
+                "portal"
+              ],
+              [
+                "has_security_keyword",
+                "eq",
+                false
+              ]
+            ],
+            "points": 210,
+            "reasoning_chars": 7116,
+            "tail": "tr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"}, {\"attr\": \"channel\", \"op\": \"eq\", \"value\": \"portal\"}, {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}]. That matches the ticket.\n\nNow, beats and loses_to: Since we don't know existing rules, we leave them empty for now. The note says \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we provide initially empty arrays.\n\nNote: justify the level of abstraction and priority. We chose a specific rule because the ticket is a typical low-priority free-tier dashboard inquiry via portal, which should go to T1_GENERAL. The rule is specific enough to avoid conflict with technical or billing rules.\n\nSo final JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0275",
+            "case": 1526,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0003",
+                "R0072"
+              ],
+              "T1_GENERAL": [
+                "R0274"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0003",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 2,
+                "stood": true,
+                "conditions": 4,
+                "born_of": "IMPASSE",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 4,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ],
+              [
+                "channel",
+                "eq",
+                "chat"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 840,
+            "reasoning_chars": 7105,
+            "tail": "ns, so our set is a subset of the mobile rule's set. So the mobile rule is more general. Thus, the motor would automatically pick the more specific rule (ours) when both apply. So no conflict. Similarly, if there is a rule for chat channel -> something, our rule adds product and tier, so it's more specific. So likely no need to declare.\n\nThus, we can write rule with conditions as above and empty beats/loses_to.\n\nNote: The note should justify the abstraction level. We'll say: This rule covers free tier users with mobile product issues of moderate or low severity coming via chat, which are typically general inquiries or simple technical issues best handled by first-level support. It abstracts from the specific values by using severity >=3 and specific product and channel.\n\nI'll produce JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0286",
+            "case": 1586,
+            "queue": "BILLING_SPECIALIST",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09",
+            "standing": {
+              "BILLING_SPECIALIST": [
+                "R0247"
+              ],
+              "SELF_SERVICE_DEFLECT": [
+                "R0100"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0224",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 1144,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "billing"
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "enterprise"
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 14627,
+            "tail": "s better to include a potential conflict. I'll use placeholder IDs. But to be precise, I'll not use specific IDs. Instead, I'll note that there is no conflict to declare. However, the instruction says \"cuando haga falta\". So if no conflict, leave empty.\n\nThus, final output:\n\n{\n  \"action\": \"BILLING_SPECIALIST\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"El ticket es de facturacion (product=billing) y cliente enterprise. La cola BILLING_SPECIALIST es la adecuada para incidencias de facturacion, independientemente del tier. Esta regla es mas especifica que cualquier regla general de enterprise o billing, por lo que no necesita declarar prioridad.\"\n}",
+            "twin_queue_stood": false,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0301",
+            "case": 1687,
+            "queue": "T1_GENERAL",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H13",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0204"
+              ],
+              "T1_GENERAL": [
+                "R0181"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0001",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 0,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "IMPASSE",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "enterprise"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 3781,
+            "tail": " know, we'll assume not. We'll set beats and loses_to empty initially, but if the system later shows conflicts, we adjust.\n\nThe note should justify the abstraction.\n\nLet's write the rule:\n\naction: \"T1_GENERAL\"\nconditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}]\n\nBut note: severity 4 is low, so using eq. Could also use gte? No, we want exactly 4.\n\nNow, need to consider if there are other rules that might cover this ticket partially. Since we don't have the base, we'll leave beats and loses_to empty. But the instruction says: \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are to write first, then they might list conflicts. So for now, we'll output with empty arrays.\n\nLet's produce the JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0314",
+            "case": 1752,
+            "queue": "T2_TECHNICAL",
+            "truth": "T1_GENERAL",
+            "governing": "H28",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0237"
+              ],
+              "T1_GENERAL": [
+                "R0145"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0145",
+                "queue": "T1_GENERAL",
+                "born_at": 610,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "business"
+              ],
+              [
+                "product",
+                "eq",
+                "dashboard"
+              ],
+              [
+                "severity",
+                "eq",
+                3
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 6211,
+            "tail": "el.\n\nI'll go with that.\n\nSo JSON:\n\n{\n  \"action\": \"T2_TECHNICAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"business\"},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"dashboard\"},\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 3}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Para clientes business con incidencias de severidad 3 en dashboard, se asigna a soporte t\u00e9cnico de segundo nivel porque combinan un producto t\u00e9cnico con un nivel de urgencia medio que requiere diagn\u00f3stico, pero no es cr\u00edtico ni de autoservicio.\"\n}\n\nBut note: The rule must match the ticket exactly. The ticket has severity 3, so eq works. But what about other tickets with same conditions? That's fine.\n\nWe could also add channel eq portal to be more specific, but not required.\n\nI'll keep as is.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0319",
+            "case": 1813,
+            "queue": "T2_TECHNICAL",
+            "truth": "T3_ENGINEERING",
+            "governing": "H15",
+            "standing": {
+              "T2_TECHNICAL": [
+                "R0154"
+              ],
+              "T3_ENGINEERING": [
+                "R0228"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0172",
+                "queue": "T3_ENGINEERING",
+                "born_at": 720,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "severity",
+                "eq",
+                2
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 7997,
+            "tail": " go to T2. That seems reasonable.\n\nAlso consider customer_tier? Free tier might have different treatment? The manual doesn't mention tier-based routing except for ACCOUNT_MANAGER for key accounts. Free is not key. So probably no.\n\nI'll go with: action: \"T2_TECHNICAL\", conditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}]. Note: \"eq\" for severity 2.\n\nNow note: explain justification. Also consider beats/loses_to empty.\n\nBut we need to be careful: the rule should be generalizable. Maybe we can include prior_tickets_30d > 5? Not sure. The ticket has 9, but not necessarily a pattern. Better to stick with product and severity.\n\nThus final JSON.\n\nHowever, we should also consider if there is a rule for \"free\" tier? Probably not.\n\nLet's produce.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          }
+        ],
+        "conflict_twins": 10,
+        "pairs": 10,
+        "twin_stood": 5,
+        "named": {
+          "a queue not standing": 1,
+          "another queue standing": 9
+        },
+        "newborn_right": 0,
+        "twin_right": 9,
+        "queues": {
+          "BILLING_SPECIALIST": 2,
+          "T1_GENERAL": 3,
+          "T2_TECHNICAL": 5
+        },
+        "standing_queues": {
+          "2": 9,
+          "3": 1
+        },
+        "twin_queue_stood": 8,
+        "both_queues_stood": 7,
+        "twin_a_correction": 8,
+        "twins_born_of": {
+          "ERROR": 8,
+          "IMPASSE": 2
+        },
+        "conditions": {
+          "conflict_twins": {
+            "2": 4,
+            "3": 4,
+            "4": 1,
+            "5": 1
+          },
+          "other_twins": {
+            "2": 3,
+            "5": 1
+          },
+          "no_twin": {
+            "1": 42,
+            "2": 71,
+            "3": 112,
+            "4": 62,
+            "5": 22,
+            "6": 3
+          }
+        }
+      },
+      "l_r2": {
+        "births": [
+          {
+            "newborn": "R0176",
+            "case": 1059,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0100"
+              ],
+              "T1_GENERAL": [
+                "R0164"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0100",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 440,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ],
+              [
+                "product",
+                "eq",
+                "dashboard"
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 4830,
+            "tail": "t declare beats or loses_to. The instruction says: \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So after we submit, they will show existing rules that overlap. But in this first step, we only write the rule. So we should just provide conditions that match this ticket.\n\nLet's decide action: T1_GENERAL.\n\nConditions: I'll use:\n- attr: customer_tier, op: eq, value: \"free\"\n- attr: severity, op: gte, value: 3   (since severity 4 is >=3)\n- attr: product, op: eq, value: \"dashboard\"\n\nThis matches the ticket. Also note: prior_tickets_30d 0, but we don't need to include that.\n\nNote: We could also consider language, but not necessary.\n\nNow, beats and loses_to are empty for now because no overlapping rules known.\n\nNote: Provide a brief justification.\n\nLet's construct JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0182",
+            "case": 1096,
+            "queue": "BILLING_SPECIALIST",
+            "truth": "ACCOUNT_MANAGER",
+            "governing": "H09",
+            "standing": {
+              "ACCOUNT_MANAGER": [
+                "R0049",
+                "R0088",
+                "R0137",
+                "R0173"
+              ],
+              "BILLING_SPECIALIST": [
+                "R0143"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0049",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 135,
+                "stood": true,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0088",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 320,
+                "stood": true,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0137",
+                "queue": "ACCOUNT_MANAGER",
+                "born_at": 732,
+                "stood": true,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "billing"
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "enterprise"
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 5928,
+            "tail": "ALIST\"\n\nNow, we need to write a note justifying the level of abstraction and priority. The note should explain why we chose that action and the conditions. Also mention that we are not declaring beats/loses_to yet because we don't know overlaps.\n\nThus the JSON:\n\n{\n  \"action\": \"BILLING_SPECIALIST\",\n  \"conditions\": [\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"billing\"},\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"enterprise\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"For enterprise customers with billing product, the issue is likely a billing matter that requires a specialist. The rule covers all severities and channels for enterprise billing tickets, as they should be handled by BILLING_SPECIALIST regardless of off-hours or prior tickets. No overlapping rules known yet.\"\n}",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0248",
+            "case": 1665,
+            "queue": "T1_GENERAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0236",
+                "R0241"
+              ],
+              "T2_TECHNICAL": [
+                "R0189"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0241",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1635,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "has_security_keyword",
+                "eq",
+                false
+              ]
+            ],
+            "points": 4200,
+            "reasoning_chars": 4314,
+            "tail": "e might be a rule that routes free tier severity 4 to SELF_SERVICE_DEFLECT. Or to T2 for API? We don't know. But we can anticipate conflicts. Since the manual says T1 is for general, T2 for technical. Free tier low severity might be considered general. I'll leave beats and loses_to empty for now, unless later told of conflicts. But the instruction says \"si se solapa con reglas existentes de OTRA cola, se te listaran despu\u00e9s.\" So after writing this, we will be given the conflicting rules. So for now, I'll output the rule with empty beats/loses_to. But we must include note.\n\nNote: \"Free tier users with low severity (4) and no security keywords should be routed to T1_GENERAL as they likely have basic inquiries that do not require specialized technical or billing support.\"\n\nNow format as JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0270",
+            "case": 1831,
+            "queue": "T2_TECHNICAL",
+            "truth": "T3_ENGINEERING",
+            "governing": "H17",
+            "standing": {
+              "T2_TECHNICAL": [
+                "R0209"
+              ],
+              "T3_ENGINEERING": [
+                "R0219"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0224",
+                "queue": "T3_ENGINEERING",
+                "born_at": 1426,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "integrations"
+              ],
+              [
+                "severity",
+                "eq",
+                2
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 6237,
+            "tail": "s that after we output this, the system might show conflicting rules and we need to adjust. But in this single response, we just propose a rule. So I'll output with empty beats and loses_to.\n\nNote: We must also provide a note justifying.\n\nAction: T2_TECHNICAL.\n\nConditions: [{\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 2}]\n\nBut is that enough? Maybe also include customer_tier? Not needed.\n\nBut consider: if there is a rule that for free tier and severity 2, it goes to T1_GENERAL, then our rule would conflict. But we don't know. So we'll propose.\n\nAlternatively, we could make a more specific rule including off_hours? But off_hours is true here, but future tickets might be during hours. So better to not include off_hours.\n\nThus final JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0276",
+            "case": 1866,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0062"
+              ],
+              "T1_GENERAL": [
+                "R0243"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0239",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1594,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 2344,
+            "tail": "lso maybe non-technical products? But dashboard is a product.\n\nWe need to check if this rule would conflict with existing rules. Since no existing rules are shown, we assume none. But we must consider potential overlaps with other queues. For example, if there is a rule that sends all free tier tickets to SELF_SERVICE_DEFLECT? But that's not in the manual. The manual says SELF_SERVICE_DEFLECT is for autoservice with documentation. Not specified.\n\nGiven the ticket has language German, but that shouldn't affect routing.\n\nThus, rule: conditions: customer_tier eq free, severity eq 4 -> T1_GENERAL.\n\nBut we must ensure the rule cashes this ticket. It does: free, severity 4.\n\nNow beats and loses_to: Since no existing rules are given, we leave empty.\n\nNote: justify abstraction.\n\nI'll produce JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0282",
+            "case": 1914,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0062"
+              ],
+              "T1_GENERAL": [
+                "R0243"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0241",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1635,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "has_security_keyword",
+                "eq",
+                false
+              ]
+            ],
+            "points": 4200,
+            "reasoning_chars": 13047,
+            "tail": "e no existing rules that require declaration, or that the system will handle it. But the ticket is in impasse, so there must be some conflict. Let's examine the ticket: severity 4, free tier, product dashboard. Possibly there is a rule for free tier to SELF_SERVICE and another for dashboard to T2, causing conflict. So we need to decide.\n\nI think T1_GENERAL is a good default for low severity free tier. So I'll set action to T1_GENERAL, conditions as above, and beats: maybe we need to beat any rule that would send it to SELF_SERVICE or T2. But we don't have IDs. Since we can't reference unknown IDs, we must leave empty.\n\nThe note should justify: \"Free tier customers with low severity and no security keyword typically have general queries suitable for first-level support.\"\n\nThus, output JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          }
+        ],
+        "conflict_twins": 6,
+        "pairs": 8,
+        "twin_stood": 3,
+        "named": {
+          "a queue not standing": 1,
+          "another queue standing": 5
+        },
+        "newborn_right": 0,
+        "twin_right": 5,
+        "queues": {
+          "BILLING_SPECIALIST": 1,
+          "T1_GENERAL": 4,
+          "T2_TECHNICAL": 1
+        },
+        "standing_queues": {
+          "2": 6
+        },
+        "twin_queue_stood": 6,
+        "both_queues_stood": 5,
+        "twin_a_correction": 6,
+        "twins_born_of": {
+          "ERROR": 8
+        },
+        "conditions": {
+          "conflict_twins": {
+            "2": 3,
+            "3": 3
+          },
+          "other_twins": {
+            "3": 4
+          },
+          "no_twin": {
+            "1": 47,
+            "2": 76,
+            "3": 101,
+            "4": 42,
+            "5": 12,
+            "6": 3
+          }
+        }
+      },
+      "l_r3": {
+        "births": [
+          {
+            "newborn": "R0074",
+            "case": 184,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0029"
+              ],
+              "T2_TECHNICAL": [
+                "R0009"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0009",
+                "queue": "T2_TECHNICAL",
+                "born_at": 8,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "IMPASSE",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 4887,
+            "tail": "action = \"T1_GENERAL\".\n\nConditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}]\n\nBut wait, severity gte 3 includes severity 3 and 4. That's fine.\n\nWe don't know existing rules, so beats and loses_to empty for now. Later if rules are shown, we may update.\n\nBut the instruction says: \"Si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So after we submit, we may get feedback. But we must submit now.\n\nThus, we produce JSON.\n\nNote: \"Free tier customers with moderate severity (3-4) on mobile product should be handled by first-level support (T1_GENERAL) as they typically need general assistance or initial technical troubleshooting before escalation.\"\n\nLet's output.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0102",
+            "case": 316,
+            "queue": "SELF_SERVICE_DEFLECT",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0062"
+              ],
+              "T1_GENERAL": [
+                "R0067"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0067",
+                "queue": "T1_GENERAL",
+                "born_at": 169,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "product",
+                "eq",
+                "api"
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 6334,
+            "tail": "Alternatively, we could include channel email? But self-service can respond via email too. So no need to restrict channel.\n\nAlso, prior_tickets_30d = 0 might indicate new customer, but not necessary for rule.\n\nThus, conditions: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}, {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}]\n\nNow, beats and loses_to: we don't know existing rules, so leave empty.\n\nNote: Justify abstraction: \"Free tier customers with low severity API queries are best handled by self-service deflection to reduce agent load and provide immediate documentation.\"\n\nBut wait: The manual says SELF_SERVICE_DEFLECT: \"Se responde con documentaci\u00f3n y respuestas autom\u00e1ticas, sin que intervenga un agente.\" That fits.\n\nThus, final JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0104",
+            "case": 323,
+            "queue": "T2_TECHNICAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0062",
+                "R0079"
+              ],
+              "T1_GENERAL": [
+                "R0067"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0067",
+                "queue": "T1_GENERAL",
+                "born_at": 169,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0102",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 316,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "a queue not standing",
+            "newborn_right": true,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 5946,
+            "tail": "ion says we need to list them if there are conflicts. Since we don't have the base rules, we cannot list. However, the instruction says \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" So we are in the first step, no list yet. So we can leave beats and loses_to empty. But we need to write a note justifying.\n\nLet's write the JSON.\n\nI'll choose T2_TECHNICAL. Note: \"Free tier customers with API product and severity 4 should be directed to T2_TECHNICAL because API issues are technical in nature and low severity does not warrant escalation to engineering.\"\n\nBut we need to ensure the rule covers this ticket exactly. Conditions: customer_tier eq free, product eq api, severity eq 4. That matches.\n\nAlternatively, we could include language en but not necessary.\n\nThus final.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0122",
+            "case": 412,
+            "queue": "BILLING_SPECIALIST",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H12",
+            "standing": {
+              "BILLING_SPECIALIST": [
+                "R0116"
+              ],
+              "SELF_SERVICE_DEFLECT": [
+                "R0121"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0121",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 406,
+                "stood": true,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "product",
+                "eq",
+                "billing"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 6720,
+            "reasoning_chars": 5850,
+            "tail": "ridad baja (4) deben ir a BILLING_SPECIALIST, ya que requieren intervenci\u00f3n humana para resolver consultas de cobro o factura, independientemente del canal o idioma. Se generaliza solo por producto y severidad para cubrir casos an\u00e1logos.\"\n\nBut wait: severity 4 is low. Could there be a rule that sends all billing tickets to BILLING_SPECIALIST regardless of severity? Possibly. But then this rule would be redundant. However, we need to match this ticket. The ticket severity is 4. So condition severity eq 4 is fine.\n\nAlternatively, we could use severity lte 4 (which is all severities) but that's too broad. Since it's low, we keep it.\n\nI think it's okay.\n\nBut note: The ticket also has customer_tier \"pro\". Could there be a rule that sends pro billing tickets to T1? Unlikely.\n\nLet's produce JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0135",
+            "case": 508,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0111"
+              ],
+              "T1_GENERAL": [
+                "R0085"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0034",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 56,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0038",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 66,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0053",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 122,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 7021,
+            "tail": "\n\nThus, I'll output:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Los usuarios gratuitos con severidad baja (4) suelen tener consultas generales que no requieren diagnostico tecnico, por lo que se asignan a T1_GENERAL. Esta regla cubre el ticket actual y casos analogos futuros con las mismas condiciones.\"\n}\n\nBut is severity 4 exactly? Could be lte? But eq is fine. However, if there is a rule for severity 4 and free that goes to something else, we'll see. For now, it's ok.\n\nAlternatively, we could include product mobile? To be more specific? But the note says generalizable. I think free + severity 4 is general enough.\n\nLet's proceed.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0147",
+            "case": 570,
+            "queue": "BILLING_SPECIALIST",
+            "truth": "BILLING_SPECIALIST",
+            "governing": "H11",
+            "standing": {
+              "BILLING_SPECIALIST": [
+                "R0141"
+              ],
+              "SELF_SERVICE_DEFLECT": [
+                "R0120"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0120",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 405,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": true,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "product",
+                "eq",
+                "billing"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 3159,
+            "tail": "nditions: product eq billing, severity eq 4, customer_tier eq free. But note: severity is numeric, so we can use eq or gte/lte? For a specific value, eq is fine. But we want generalizable: for free tier, low severity billing issues. Maybe we should include prior_tickets_30d? Not necessarily; the 8 might be high but not defining.\n\nAlternatively, we could make it broader: if product=billing and severity=4 then BILLING_SPECIALIST? That might conflict with other rules for higher tiers. But since we don't know existing rules, we need to be careful.\n\nThe note should justify the abstraction level. I'll go with: product=billing, severity=4, customer_tier=free -> BILLING_SPECIALIST. Because free tier often gets less priority, but billing issues are specific.\n\nWe need to output JSON. Let's build it.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0195",
+            "case": 806,
+            "queue": "T2_TECHNICAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0113"
+              ],
+              "T1_GENERAL": [
+                "R0030"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0030",
+                "queue": "T1_GENERAL",
+                "born_at": 48,
+                "stood": true,
+                "conditions": 4,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 4,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ],
+              [
+                "channel",
+                "eq",
+                "chat"
+              ],
+              [
+                "severity",
+                "eq",
+                3
+              ]
+            ],
+            "points": 420,
+            "reasoning_chars": 6827,
+            "tail": " route elsewhere (maybe T1 or T3). So we need to be precise.\n\nLet's consider typical triage: Free tier users often go to T1 unless technical. But here it's a chat, which is interactive, and product mobile suggests technical. So T2 is reasonable.\n\nI'll propose conditions: \n- product eq mobile\n- channel eq chat\n- severity eq 3\n- customer_tier eq free\n\nThat's four conditions. It matches this ticket exactly. But we need generalizable. Perhaps we can drop customer_tier? But then it would apply to all tiers, which might conflict with enterprise rules. Better to keep.\n\nSince we don't know existing rules, we can leave beats and loses_to empty. The note should explain that this rule covers free tier mobile chat issues of moderate severity, which are technical and should go to T2.\n\nLet's write JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0217",
+            "case": 938,
+            "queue": "T1_GENERAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0159"
+              ],
+              "T2_TECHNICAL": [
+                "R0186"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0102",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 316,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0104",
+                "queue": "T2_TECHNICAL",
+                "born_at": 323,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": false,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 6686,
+            "tail": " But I'll reconsider: The attributes: severity 4, free tier, prior_tickets_30d=1, channel email. This looks like a new user asking a simple question. T1_GENERAL is first-level support. So I'll pick that.\n\nNow, write the rule conditions: \n- product eq \"api\"\n- severity eq 4\n- customer_tier eq \"free\"\n\nThat covers this ticket. But we might also include channel email? Not necessary.\n\nAlternatively, we could include prior_tickets_30d lte 1 to be more specific? But that might be too specific. We want generalizable.\n\nI'll write: {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"api\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}, {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}.\n\nNote: The note should justify abstraction and priority.\n\nI'll set beats and loses_to as empty arrays.\n\nNow, produce JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0223",
+            "case": 978,
+            "queue": "T1_GENERAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "T1_GENERAL": [
+                "R0217"
+              ],
+              "T2_TECHNICAL": [
+                "R0222"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0029",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 47,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "IMPASSE",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0113",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 365,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ],
+              [
+                "has_security_keyword",
+                "eq",
+                false
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 7055,
+            "tail": "alue\": 3},\n  {\"attr\": \"has_security_keyword\", \"op\": \"eq\", \"value\": false}\n]\n\nThat covers free tier, low severity, non-security tickets. That seems reasonable.\n\nNow, note: The manual also has SELF_SERVICE_DEFLECT for automatic responses. Maybe this ticket could be deflected? But the manual says \"Se responde con documentacion y respuestas automaticas, sin que intervenga un agente.\" That might be appropriate for free tier simple queries. However, we need to decide. Given that it's a ticket that reached impasse, maybe the engine couldn't decide between T1 and self-service? We don't know. I'll stick with T1.\n\nWe'll leave beats and loses_to empty for now, as we don't have existing rules.\n\nNote: The response format requires \"action\", \"conditions\", \"beats\", \"loses_to\", \"note\".\n\nLet's produce JSON.",
+            "twin_queue_stood": false,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0225",
+            "case": 983,
+            "queue": "T1_GENERAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "T1_GENERAL": [
+                "R0217"
+              ],
+              "T2_TECHNICAL": [
+                "R0222"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0034",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 56,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0038",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 66,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0053",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 122,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": false,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                4
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 3268,
+            "tail": "4 is low, so we want severity >=4? But severity 4 is the lowest; using gte 4 would also include severity 4 only, since max is 4. Actually, severity values: 1=critical, 4=low. So \"gte\" 4 means severity >=4, which is only severity 4. So that's fine. But we could also use \"eq\" 4. I think \"gte\" 4 is safe.\n\nAlternatively, condition: severity lte? No, low severity is high number. So gte 4.\n\nBut note: the manual might have a rule for severity 1 or 2. We'll keep it simple.\n\nI'll set conditions: customer_tier eq \"free\", severity gte 4. But this covers only severity 4? Actually, gte 4 includes 4 only because max is 4. That's fine.\n\nAlso, to be safe, we might want to exclude security incidents? But since has_security_keyword is false, it's fine. Our rule doesn't need to mention that.\n\nSo output JSON.",
+            "twin_queue_stood": false,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0227",
+            "case": 994,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0159"
+              ],
+              "T1_GENERAL": [
+                "R0094"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0034",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 56,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0038",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 66,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0053",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 122,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 6364,
+            "tail": "ons: [{\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"}, {\"attr\": \"severity\", \"op\": \"eq\", \"value\": 4}]\n\nBut careful: severity is numeric, so value 4.\n\nbeats and loses_to: empty.\n\nNote: Justify level of abstraction and priority. Since it's a specific combination of free tier and low severity, it's a case that should be handled by first level support as it's not urgent and the user is free. There might be more general rules that would send free users to self-service, but severity 4 might still require a human? Actually, manual says SELF_SERVICE_DEFLECT is for automatic responses, which might be for very common questions. But we don't have info. So I'll state that this rule captures a common scenario for free users with low-priority issues, which are best handled by T1.\n\nThus final JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0231",
+            "case": 1027,
+            "queue": "T2_TECHNICAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H16",
+            "standing": {
+              "T1_GENERAL": [
+                "R0217"
+              ],
+              "T2_TECHNICAL": [
+                "R0080",
+                "R0222"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0067",
+                "queue": "T1_GENERAL",
+                "born_at": 169,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0102",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 316,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0217",
+                "queue": "T1_GENERAL",
+                "born_at": 938,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": true,
+            "twin_right": false,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "api"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 7457,
+            "tail": "y eq 4 to be precise, but then the rule only covers severity 4. That's okay because similar tickets with severity 3 might be handled differently. I'll go with severity eq 4.\n\nAlso off_hours is true, but I think off_hours doesn't change the queue, just the timing. So I won't include off_hours.\n\nThus, conditions: customer_tier eq \"free\", product eq \"api\", severity eq 4.\n\nThat yields action T2_TECHNICAL.\n\nNow, beats and loses_to: We don't know existing rules, so I'll put empty arrays. But the instruction says \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" That implies that after we submit, we might be told conflicts. But the response format requires them now. I'll assume no conflicts for now and set both to [].\n\nNote: Provide a justification.\n\nLet's construct JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0289",
+            "case": 1447,
+            "queue": "T1_GENERAL",
+            "truth": "T2_TECHNICAL",
+            "governing": "H18",
+            "standing": {
+              "T1_GENERAL": [
+                "R0010"
+              ],
+              "T2_TECHNICAL": [
+                "R0193"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0046",
+                "queue": "T2_TECHNICAL",
+                "born_at": 94,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              },
+              {
+                "rule": "R0182",
+                "queue": "T2_TECHNICAL",
+                "born_at": 753,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0187",
+                "queue": "T2_TECHNICAL",
+                "born_at": 777,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "integrations"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 6383,
+            "tail": "s vacios.\" So we can leave them empty.\n\nBut wait, the output format includes beats and loses_to. Since we have no existing rules to compare, we can set them to empty lists.\n\nThus, final JSON.\n\nLet's write conditions as an array of objects. Use eq and gte.\n\nNote: For severity gte 3, value is 3? Actually gte means >=, so value is 3.\n\nThus:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"integrations\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Free tier customers with integration queries at non-critical severity (3 or 4) are directed to first-level general support as they likely involve usage questions rather than technical bugs.\"\n}",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0293",
+            "case": 1495,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "T1_GENERAL": [
+                "R0271"
+              ],
+              "T2_TECHNICAL": [
+                "R0037"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0137",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 516,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0188",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 781,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0221",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 969,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0259",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1221,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "off_hours",
+                "eq",
+                true
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 7663,
+            "tail": "upposed to write a rule that covers this and analogous future tickets. Perhaps the intention is to create a rule that routes free tier off hours with non-critical severity to T1_GENERAL.\n\nI'll go with that.\n\nNow, the note: justify the level of abstraction and priority. Since no existing rules to compare, we don't need beats/loses_to.\n\nThus, JSON:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Free tier users with non-critical severity during off-hours are routed to first-level support for general assistance, as they do not require immediate escalation or technical intervention.\"\n}",
+            "twin_queue_stood": false,
+            "both_queues_stood": false,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0294",
+            "case": 1502,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0268"
+              ],
+              "T1_GENERAL": [
+                "R0085"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0009",
+                "queue": "T2_TECHNICAL",
+                "born_at": 8,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "IMPASSE",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0111",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 354,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 8106,
+            "tail": "ondition matches.\n\nWe could also include channel? Not needed.\n\nNow, beats and loses_to: empty for now.\n\nNote: justify abstraction level.\n\nSo final JSON.\n\nBut wait: the instruction says \"Situar esa regla respecto a las reglas que ya existen, cuando haga falta.\" That will come later. So for now, just output.\n\nI'll produce:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3},\n    {\"attr\": \"product\", \"op\": \"eq\", \"value\": \"mobile\"}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Free tier users with low severity (3 or 4) on mobile product are routed to first-level general support, as they likely have non-critical inquiries or simple technical issues that do not require specialized teams.\"\n}",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0302",
+            "case": 1547,
+            "queue": "T2_TECHNICAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0115",
+                "R0125",
+                "R0159"
+              ],
+              "T1_GENERAL": [
+                "R0271"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0075",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 213,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "a queue not standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "product",
+                "eq",
+                "dashboard"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 3360,
+            "reasoning_chars": 4997,
+            "tail": "ack? But the response format requires beats and loses_to. Since we don't have existing rule IDs, we can leave them empty. But the note should justify.\n\nAlternatively, we might consider if there are typical rules: maybe there is a rule for free tier general issues going to T1. This rule would be more specific because it includes product dashboard. So it would be a subclass of that rule. But we don't know. We'll leave beats and loses_to empty.\n\nAction: T2_TECHNICAL.\n\nNote: \"This ticket involves a dashboard issue for a free-tier customer with moderate severity. Dashboard issues are technical, so T2_TECHNICAL is appropriate. The rule captures free-tier dashboard issues with severity 3 or higher (non-critical), as they are technical but not urgent enough for engineering or on-call.\"\n\nThus JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": false,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0306",
+            "case": 1614,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0115",
+                "R0159"
+              ],
+              "T1_GENERAL": [
+                "R0271"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0137",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 516,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0188",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 781,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0221",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 969,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              },
+              {
+                "rule": "R0259",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1221,
+                "stood": false,
+                "conditions": 3,
+                "born_of": "CONFLICT",
+                "report_named_it": false
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "off_hours",
+                "eq",
+                true
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 8400,
+            "reasoning_chars": 6356,
+            "tail": "hours rule is for ONCALL_ESCALATION and ours for T1_GENERAL, then the more specific rule (ours) would take precedence. That is fine. But we need to ensure that our rule is indeed more specific. It is. So no need to declare.\n\nSimilarly, if there is a rule \"severity >=3 -> SELF_SERVICE\" etc., ours is more specific. So leave beats and loses_to empty.\n\nThus, final JSON:\n\n{\n  \"action\": \"T1_GENERAL\",\n  \"conditions\": [\n    {\"attr\": \"customer_tier\", \"op\": \"eq\", \"value\": \"free\"},\n    {\"attr\": \"severity\", \"op\": \"gte\", \"value\": 3},\n    {\"attr\": \"off_hours\", \"op\": \"eq\", \"value\": true}\n  ],\n  \"beats\": [],\n  \"loses_to\": [],\n  \"note\": \"Free tier users with non-critical severity during off-hours are routed to general support, as they are not urgent enough for on-call and free tier typically goes to T1.\"\n}",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": false
+          },
+          {
+            "newborn": "R0307",
+            "case": 1619,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0110"
+              ],
+              "T1_GENERAL": [
+                "R0271"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0303",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1557,
+                "stood": false,
+                "conditions": 2,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": false,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 2,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "gte",
+                3
+              ]
+            ],
+            "points": 16800,
+            "reasoning_chars": 9478,
+            "tail": "as existentes de OTRA cola, se te listaran despues.\" That implies that in this step we don't have the list, so we can't fill beats/loses_to. Maybe we should put placeholder? No, must be valid JSON.\n\nI'll proceed with an empty array for beats and loses_to, and in note justify the action.\n\nAction: T1_GENERAL.\n\nConditions: customer_tier eq \"free\", severity gte 3.\n\nNote: \"Free tier customers with severity 3 or 4 should be routed to T1 for first-level support, as they are not critical and free tier typically does not qualify for technical escalation. This rule generalizes to all free tier tickets with moderate or low severity.\"\n\nBut we need to ensure it matches exactly: severity 3 is gte 3, so yes.\n\nAlso, we could include off_hours? Not necessary.\n\nI think that's reasonable.\n\nLet's output JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          },
+          {
+            "newborn": "R0329",
+            "case": 1753,
+            "queue": "T1_GENERAL",
+            "truth": "SELF_SERVICE_DEFLECT",
+            "governing": "H24",
+            "standing": {
+              "SELF_SERVICE_DEFLECT": [
+                "R0268"
+              ],
+              "T1_GENERAL": [
+                "R0085"
+              ]
+            },
+            "twins": [
+              {
+                "rule": "R0268",
+                "queue": "SELF_SERVICE_DEFLECT",
+                "born_at": 1271,
+                "stood": true,
+                "conditions": 3,
+                "born_of": "ERROR",
+                "report_named_it": true
+              }
+            ],
+            "twin_stood": true,
+            "named": "another queue standing",
+            "newborn_right": false,
+            "twin_right": true,
+            "conditions": 3,
+            "region": [
+              [
+                "customer_tier",
+                "eq",
+                "free"
+              ],
+              [
+                "severity",
+                "eq",
+                4
+              ],
+              [
+                "product",
+                "eq",
+                "mobile"
+              ]
+            ],
+            "points": 1680,
+            "reasoning_chars": 3131,
+            "tail": "e for all free tier? Not sure.\n\nGiven the impasse, we need to declare beats/loses_to. But we don't have existing rule IDs. The instructions say: \"si se solapa con reglas existentes de OTRA cola, se te listaran despues.\" But the user didn't provide any list. So maybe there are no existing rules? Or we are to assume no conflicts? The output requires beats and loses_to arrays. If none, empty.\n\nThus, I'll propose a rule: conditions: customer_tier eq free, severity eq 4, product eq mobile. That covers this ticket. Action: T1_GENERAL. Note: Free tier users with low severity mobile issues are best handled by first-level support.\n\nBut wait: prior_tickets_30d=7 might indicate a repeat issue. Could be a candidate for T2? However, severity is 4, so it's low. I'll stick with T1.\n\nI'll output the JSON.",
+            "twin_queue_stood": true,
+            "both_queues_stood": true,
+            "twin_a_correction": true
+          }
+        ],
+        "conflict_twins": 19,
+        "pairs": 39,
+        "twin_stood": 8,
+        "named": {
+          "a queue not standing": 5,
+          "another queue standing": 14
+        },
+        "newborn_right": 3,
+        "twin_right": 11,
+        "queues": {
+          "BILLING_SPECIALIST": 2,
+          "SELF_SERVICE_DEFLECT": 1,
+          "T1_GENERAL": 12,
+          "T2_TECHNICAL": 4
+        },
+        "standing_queues": {
+          "2": 19
+        },
+        "twin_queue_stood": 16,
+        "both_queues_stood": 11,
+        "twin_a_correction": 11,
+        "twins_born_of": {
+          "CONFLICT": 19,
+          "ERROR": 17,
+          "IMPASSE": 3
+        },
+        "conditions": {
+          "conflict_twins": {
+            "2": 5,
+            "3": 13,
+            "4": 1
+          },
+          "other_twins": {
+            "2": 3,
+            "3": 6,
+            "5": 1
+          },
+          "no_twin": {
+            "1": 57,
+            "2": 61,
+            "3": 112,
+            "4": 56,
+            "5": 11,
+            "6": 2,
+            "7": 1
+          }
+        }
+      }
+    },
+    "conditions": {
+      "conflict_twins_median": {
+        "fraction": "3",
+        "value": 3.0
+      },
+      "other_twins_median": {
+        "fraction": "3",
+        "value": 3.0
+      },
+      "no_twin_median": {
+        "fraction": "3",
+        "value": 3.0
+      },
+      "conflict_twins_births": 35,
+      "other_twins_births": 18,
+      "no_twin_births": 893
+    }
+  },
+  "expectation": [
+    {
+      "clause": "M1",
+      "what": "of the conflict twins pooled, at more than half one of the birth's twins was among the rules standing at the ticket",
+      "reading": {
+        "births": 35,
+        "twin_stood": 16
+      },
+      "holds": false
+    },
+    {
+      "clause": "M2",
+      "what": "of them, at more than half the newborn's queue was another queue standing there",
+      "reading": {
+        "births": 35,
+        "another_queue_standing": 28
+      },
+      "holds": true
+    },
+    {
+      "clause": "M3",
+      "what": "of them, at fewer than half the newborn's queue is the ticket's true queue",
+      "reading": {
+        "births": 35,
+        "newborn_right": 3
+      },
+      "holds": true
+    },
+    {
+      "clause": "M4",
+      "what": "the conflict twins' median number of conditions is below the median of L's births that twin no rule of another queue",
+      "reading": {
+        "conflict_twins": {
+          "fraction": "3",
+          "value": 3.0
+        },
+        "no_twin": {
+          "fraction": "3",
+          "value": 3.0
+        }
+      },
+      "holds": false
+    }
+  ]
+}
