@@ -583,8 +583,9 @@ than L and reached compiling at once at the median, thinly. What that leaves:
 - **Telling the proposer how the engine settles a conflict.** The system prompt
   still describes rung 2's engine in both arms. Calls.
 - **An engine that abstains where its votes are silent.** No case K's ranking
-  took was decided on a tie, so at the arrivals it would have changed nothing.
-  Over the space it is not read. Free on the records.
+  took was decided on a tie of votes between the winner's queue and the next.
+  What such an engine would have left in conflict is not read. Free on the
+  records.
 
 Lessons it leaves:
 
