@@ -3645,6 +3645,18 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *Two things the last two readings left free*.
+     **[NOTE 2026-11-20, final] And one region under two queues, read
+     POST-RUN.**
+     - **Rare, and its side mostly right.** 71 of the six runs' 1,519 births
+       cover exactly an earlier rule's region under another queue. The newborn
+       was installed above its twin at 76 of the 104 pairs, and of the 98
+       installed sides 59 are right by the policy over the region, 34 wrong.
+       The regions go mostly to rules born later.
+     - **Its own queue's rule, written again, is far more common**: 461 births
+       copy an earlier rule of their own queue exactly.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *One thing the last two readings left free*.
 
    All three are read above.
 

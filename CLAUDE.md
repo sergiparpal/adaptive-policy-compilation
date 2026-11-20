@@ -1669,6 +1669,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.drafts                        # POST-RUN: why one prompt drew different drafts
     PYTHONHASHSEED=0 python3 -m ranked.refusals                      # POST-RUN: why the refusals fell where they did
     PYTHONHASHSEED=0 python3 -m ranked.billing                       # POST-RUN: why K r2's base lost H11's tickets with one queue standing
+    PYTHONHASHSEED=0 python3 -m ranked.twins                         # POST-RUN: one region under two queues
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1763,6 +1764,15 @@ tickets with left out the prior tickets that part the two. They lay inside
 billing's broad rules, and took the other layer's tickets by containment. Both
 bets of those readings assumed the declarations did the ordering; containment
 did more of it.
+
+**Read POST-RUN, one region under two queues is rare, and its side mostly
+right.** The loop seldom wrote an earlier rule's region again under another
+queue. The newborn mostly put itself above its twin, and was right by the
+policy more often than wrong, and later rules took most of the region. What
+the loop writes again far more often is its own queue's rule. **The case that
+prompts a reading may be the exception**: this one began from a wrong side, and
+bet on it. Count the population before betting on the case that raised the
+question.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
