@@ -16,8 +16,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in #291, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of one region under two queues** reached it in #293,
   merged on 2026-11-20 at Sergi's word.
-- **The POST-RUN reading of two things that reading left free** reaches it in
-  #295.
+- **The POST-RUN reading of two things that reading left free** reached it in
+  #295, merged on 2026-11-20 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -218,13 +218,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-20, after the sixth] And a seventh and an eighth.**
 > [`copies.json`](copies.json) and [`asked.json`](asked.json) are the POST-RUN
 > reading of two things the last reading left free.
-> - **They were written from `83e4458`**, on the branch of #295: the commit
->   that adds the part read after the first run.
->   The readings and their expectations are the commit before it, `979dc1e`.
+> - **They were written from `83e4458`**, on the branch of #295, which is
+>   `a92d3f9` on `main`: the commit that adds the part read after the first
+>   run. The readings and their expectations are the commit before it,
+>   `979dc1e`, which is `eefcd14` on `main`.
 > - **Their code digest is `d1d5ba3587246981`**, because `ranked/copies.py` and
->   `ranked/asked.py` were added after the last reading. Their `_env` says
->   `git_dirty`, for the same files, and `code_dirty` is false. No module an
->   earlier record of this plan ran changed.
+>   `ranked/asked.py` were added after the last reading. `main` computes it at
+>   `a92d3f9`, and still at the merge of #295. Their `_env` says `git_dirty`,
+>   for the same files, and `code_dirty` is false. No module an earlier record
+>   of this plan ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1671,22 +1673,27 @@ readings answer both on the records alone. They spend nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.copies` and
 `PYTHONHASHSEED=0 python3 -m ranked.asked`, on 2026-11-20, from `83e4458` with
-its code clean, on the branch of #295.
-- **The commits.** `979dc1e` carries both readings and their expectations,
-  written and committed before either ran. `83e4458` adds one part to each after
-  the first run, (d), read by no clause: in `copies.py` each copy left out
+its code clean, on the branch of #295, which is `a92d3f9` on `main`.
+- **The commits.** `eefcd14` on `main` carries both readings and their
+  expectations, written and committed before either ran. `a92d3f9` adds one
+  part to each after the first run, (d), read by no clause: in `copies.py` each copy left out
   alone, where the two that count most count, and the copies' regions; in
   `asked.py` how each twin was born, and whether a twin's queue stood. The first
-  run, from `979dc1e`, had printed every clause's verdict, and its readings had
-  been read whole. Its records were not kept.
+  run, from the first of the two, had printed every clause's verdict, and its
+  readings had been read whole. Its records were not kept.
   - **The added part was extended once before anything was pushed.** A first
     version was run, and its record overwritten; the commit was amended to add
     where the two copies that count most count. Every run printed the same
     verdicts.
-- **Each record was committed alone**, as `42e10dd` and `39ed49b`.
+- **Each record was committed alone**, as `7777c97` and `d19f1bb`.
+- **On #295's branch the seven commits were `979dc1e`, `83e4458`, `42e10dd`,
+  `39ed49b`, `6fa8452`, `2ed5330` and `4024f66`.** Each pair has the same
+  subject, the same tree and the same `git patch-id --stable`, and the GitHub
+  API names #295 behind the seven `main` commits.
 - **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `d1d5ba3587246981`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `d1d5ba3587246981`, is the one `main` computes at `a92d3f9`, and still at the
+  merge.
 - **The records are [`copies.json`](copies.json) and
   [`asked.json`](asked.json).** Their 27 gates passed:
   - in each of the six runs, every copy recorded its original among its first
