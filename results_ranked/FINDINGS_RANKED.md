@@ -2,36 +2,39 @@
 
 Record opened on November 20, 2026, under
 [`PLAN_RANKED.md`](../PLAN_RANKED.md). Sergi signed §0 on 2026-11-18, before any
-figure below existed, in a commit of its own: `ad00b18` on #285's branch.
+figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The plan, its package, the signature, Stage A, the smoke runs, the
-  correction of Step 0, the six runs and the eight at-once sessions** are on
-  #285's branch, with Stage C, this record, the banner that closes the plan and
-  the indexes. All of it reaches `main` in that pull request.
-- **The merge waits for Sergi's word.** A rebase merge gives each commit a new
-  hash on `main`, and a commit after the merge names them.
+  correction of Step 0, the six runs and the eight at-once sessions** reached
+  `main` in #285, merged on 2026-11-20 at Sergi's word.
+- **Stage C, this record, the banner that closes the plan and the indexes**
+  reached it in the same pull request, the one this record was opened in.
 
-Every record names in its `_env` the commit it was written from:
+Every record names in its `_env` the commit it was written from. All were
+written on #285's branch. The rebase merge gave each of those commits a new hash
+on `main`. Each pair has the same subject, the same tree and the same
+`git patch-id --stable`: the branch sat on `main` throughout, so the rebase
+moved nothing under it.
 
-| record | written from, on #285's branch | code digest | `git_dirty`, `code_dirty` |
-|---|---|---|---|
-| `sample.json` | `ad00b18`, the signature | `569f908634f2ceac` | true, false |
-| `loop_smoke_l.json` | `298b8c3`, Stage A's commit | `569f908634f2ceac` | true, false |
-| `loop_smoke_k.json` | `fa42a23`, L's smoke run's commit | `569f908634f2ceac` | true, false |
-| `atonce_smoke.json` | `6295e23`, the correction of Step 0 | `9365213bfb38e2a3` | true, false |
-| `atonce_prior.json` | `608bb1d`, the smoke session's commit | `9365213bfb38e2a3` | true, false |
-| `loop_l_r1.json` | `0c19203`, the prior session's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_l_r1.json` | `e5ea296`, L r1's commit | `9365213bfb38e2a3` | true, false |
-| `loop_k_r1.json` | `b7d220d`, session l_r1's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_k_r1.json` | `8d349c0`, K r1's commit | `9365213bfb38e2a3` | true, false |
-| `loop_l_r2.json` | `9716bd6`, session k_r1's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_l_r2.json` | `b1a4245`, L r2's commit | `9365213bfb38e2a3` | true, false |
-| `loop_k_r2.json` | `9a9d17f`, session l_r2's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_k_r2.json` | `df720ab`, K r2's commit | `9365213bfb38e2a3` | true, false |
-| `loop_l_r3.json` | `43a2197`, session k_r2's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_l_r3.json` | `05dc100`, L r3's commit | `9365213bfb38e2a3` | true, false |
-| `loop_k_r3.json` | `15bd3c5`, session l_r3's commit | `9365213bfb38e2a3` | true, false |
-| `atonce_k_r3.json` | `588fba1`, K r3's commit | `9365213bfb38e2a3` | true, false |
-| `score.json` | `ab6d626`, session k_r3's commit | `9365213bfb38e2a3` | true, false |
+| record | written from, on #285's branch | the same commit on `main` | code digest | `git_dirty`, `code_dirty` |
+|---|---|---|---|---|
+| `sample.json` | `ad00b18`, the signature | `d6d507f` | `569f908634f2ceac` | true, false |
+| `loop_smoke_l.json` | `298b8c3`, Stage A's commit | `6548538` | `569f908634f2ceac` | true, false |
+| `loop_smoke_k.json` | `fa42a23`, L's smoke run's commit | `e7dce7c` | `569f908634f2ceac` | true, false |
+| `atonce_smoke.json` | `6295e23`, the correction of Step 0 | `5cfaf08` | `9365213bfb38e2a3` | true, false |
+| `atonce_prior.json` | `608bb1d`, the smoke session's commit | `e4a4c53` | `9365213bfb38e2a3` | true, false |
+| `loop_l_r1.json` | `0c19203`, the prior session's commit | `c8dff97` | `9365213bfb38e2a3` | true, false |
+| `atonce_l_r1.json` | `e5ea296`, L r1's commit | `7910116` | `9365213bfb38e2a3` | true, false |
+| `loop_k_r1.json` | `b7d220d`, session l_r1's commit | `51cbfd9` | `9365213bfb38e2a3` | true, false |
+| `atonce_k_r1.json` | `8d349c0`, K r1's commit | `b0f02b7` | `9365213bfb38e2a3` | true, false |
+| `loop_l_r2.json` | `9716bd6`, session k_r1's commit | `43b7e24` | `9365213bfb38e2a3` | true, false |
+| `atonce_l_r2.json` | `b1a4245`, L r2's commit | `e0e3808` | `9365213bfb38e2a3` | true, false |
+| `loop_k_r2.json` | `9a9d17f`, session l_r2's commit | `815d301` | `9365213bfb38e2a3` | true, false |
+| `atonce_k_r2.json` | `df720ab`, K r2's commit | `291ac3a` | `9365213bfb38e2a3` | true, false |
+| `loop_l_r3.json` | `43a2197`, session k_r2's commit | `df29cbd` | `9365213bfb38e2a3` | true, false |
+| `atonce_l_r3.json` | `05dc100`, L r3's commit | `9c795ec` | `9365213bfb38e2a3` | true, false |
+| `loop_k_r3.json` | `15bd3c5`, session l_r3's commit | `cfedf28` | `9365213bfb38e2a3` | true, false |
+| `atonce_k_r3.json` | `588fba1`, K r3's commit | `64a0b0d` | `9365213bfb38e2a3` | true, false |
+| `score.json` | `ab6d626`, session k_r3's commit | `95f7edd` | `9365213bfb38e2a3` | true, false |
 
 **`code_dirty` is false in every record, and `git_dirty` is true in every
 one.** Since 2026-11-15 Bash runs in Sergi's sandbox, which mounts twelve empty,
@@ -42,7 +45,10 @@ supervisor committed every record before it launched the next step.
 
 **Every record after the smoke runs carries another digest, because `RK-g3`'s
 Step 0 was corrected on 2026-11-18, after the signature.** The correction is
-`6295e23`, a commit of its own, with two tests.
+`5cfaf08` on `main` (`6295e23` on #285's branch), a commit of its own, with two
+tests. `main` computes `569f908634f2ceac` at `d6d507f`, the signature, and
+`9365213bfb38e2a3` at `5cfaf08`, and still at the merge of #285, `2375f98`: no
+later commit of #285 changed code the digest reads.
 - **What stopped.** Step 0 holds arm K's engine, under the transcriber, to
   `PLAN_PLACEMENT.md`'s reference for rung 2's, and it compared the two records
   whole. After both smoke runs it refused the at-once smoke session twice, at
@@ -303,10 +309,10 @@ generation id. The bills are kept outside the tree.
 ## Stage C — the six adjudications
 
 **What was run.** `python3 -m ranked.score`, on 2026-11-20 at 01:54 UTC, with
-`PYTHONHASHSEED=0`, from `ab6d626`, session k_r3's commit. `RK-g1` to `RK-g3`
-passed again, with the suite green, and `RK-g4` found the plan signed. Nothing
-was missing: six runs and eight sessions. The record is
-[`score.json`](score.json).
+`PYTHONHASHSEED=0`, from `ab6d626`, session k_r3's commit, which is `95f7edd`
+on `main`. `RK-g1` to `RK-g3` passed again, with the suite green, and `RK-g4`
+found the plan signed. Nothing was missing: six runs and eight sessions. The
+record is [`score.json`](score.json).
 - **What was checked of every run.** Its base, rebuilt, is the run's. Its calls
   are as recorded, and it handed labels by §4's route alone. Every K record's
   log of its engine is what its own births give.

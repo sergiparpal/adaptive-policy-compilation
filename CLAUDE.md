@@ -1706,7 +1706,7 @@ GitHub refused one several times before it took it.
 **Its runs were launched by the agent, as §2.10 let Sergi choose.** A supervisor
 ran the smoke runs, the sessions and the six runs one at a time. It committed
 each record alone and pushed it to one pull request. The smoke phase was paused
-once at Sergi's request, and resumed from its partial file. The merge waits for
+once at Sergi's request, and resumed from its partial file. The merge waited for
 Sergi's word.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
